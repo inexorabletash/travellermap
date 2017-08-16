@@ -1,0 +1,289 @@
+Jathig Sector
+
+A: Atha                      a.dat
+B: Bathi                     b.dat
+C: Cothi                     c.dat
+D: Dagith                    d.dat
+E: Ethag                     e.dat
+F: Fothig                    f.dat
+G: Gatheer                   g.dat
+H: Hathib                    h.dat
+I: Ithiga                    i.dat
+J: Jath                      j.dat
+K: Gazith                    k.dat
+L: Lathig                    l.dat
+M: Meethi                    m.dat
+N: Neethig                   n.dat
+O: Ogath                     o.dat
+P: Pathaar                   p.dat
+
+Bases:
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Atha SECTOR: Jathig Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0804 C9C499B-8    Fl Hi           A  602 Na
+A-2           0807 C10047A-A    Ni Va           B  304 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Bathi SECTOR: Jathig Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           1008 B775588-8    Ag Ni              420 Na
+B-2           1101 X000501-2    As              R  502 Na
+B-3           1110 C78A762-6    Ri Wa              904 Na
+B-4           1303 C84A454-C  S Ni Wa              710 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Cothi SECTOR: Jathig Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1904 C989679-7    Ni Ri           B  505 Na
+C-2           2001 B401123-B  S Ic Lo Ni Va        811 Na
+C-3           2004 C533351-7    Lo Ni Po           900 Na
+C-4           2009 C000858-B  S As Na              703 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Dagith SECTOR: Jathig Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           3002 D260278-8    De Lo Ni        B  304 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ethag SECTOR: Jathig Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0117 B738756-8  2                    323 Na
+E-2           0216 C893400-A  S Ni                 700 Na
+E-3           0713 A41068A-B    Na Ni              802 Na
+E-4           0714 B525673-7    Ni              B  210 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Fothig SECTOR: Jathig Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0920 C554334-9  S Lo Ni              513 Na
+F-2           1515 B436236-A    Lo Ni              714 Na
+F-3           1615 A2469BB-E  S Hi In              801 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Gatheer SECTOR: Jathig Sector
+#
+# Jump-routes
+$1812 1913 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1812 A3608BE-D    De                 211 Na
+G-2           1913 A664300-B  N Lo Ni              303 Na
+G-3           2316 C310023-6  S Lo Ni              103 Na
+G-4           2320 C511534-5  S Ic Ni              504 Na
+G-5           2411 C665544-9    Ag Ni              703 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hathib SECTOR: Jathig Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2814 B4258AC-C  S                    812 Na
+H-2           2818 C78A444-8  S Ni Wa              513 Na
+H-3           2920 B243144-9    Lo Ni Po           503 Na
+H-4           3111 C322222-6    Lo Ni Po           803 Na
+H-5           3117 C340686-8  S De Ni Po           510 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ithiga SECTOR: Jathig Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0122 B454523-C  S Ag Ni              900 Na
+I-2           0127 C435687-8    Ni                 614 Na
+I-3           0225 E68A777-3    Ri Wa           B  303 Na
+I-4           0426 C748ABC-B    Hi In              505 Na
+I-5           0523 E410565-5    Ni                 400 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jath SECTOR: Jathig Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           1629 C621595-8  S Ni Po              300 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Gazith SECTOR: Jathig Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1723 B303658-C    Ic Na Ni Va        414 Na
+K-2           2021 B636AAA-C    Hi In              304 Na
+K-3           2129 A494454-C    Ni                 425 Na
+K-4           2323 C7A2314-7  S Fl Lo Ni           703 Na
+K-5           2424 X325300-4    Lo              R  200 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hathig SECTOR: Jathig Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2726 C696302-6    Lo Ni              101 Na
+L-2           2828 C454332-7    Lo Ni              500 Na
+L-3           3022 C9CAA67-C    Fl Hi Wa        A  503 Na
+L-4           3130 C527336-8  S Lo Ni              802 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Meethi SECTOR: Jathig Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0131 C362658-A  S Ni Ri              420 Na
+M-2           0235 C666689-6    Ag Ni Ri           612 Na
+M-3           0335 D324322-6  S Lo Ni              804 Na
+M-4           0537 C100864-B    Na Va              920 Na
+M-5           0735 C74AABE-D    Hi In Wa           503 Na
+M-6           0840 E000897-5    As Na              414 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Neethig SECTOR: Jathig Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0936 C667511-9    Ag Ni              732 Na
+N-2           1238 C565021-5    Lo Ni              710 Na
+N-3           1438 C200100-7    Lo Ni Va           124 Na
+N-4           1536 E410778-6    Na              B  323 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ogath SECTOR: Jathig Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1733 E766559-8    Ag Ni              810 Na
+O-2           1735 E86A551-A    Ni Wa              802 Na
+O-3           1831 B672313-7  S Lo Ni              703 Na
+O-4           1836 D9C3540-7  S Fl Ni           A  413 Na
+O-5           1939 A8896A8-C    Ni                 504 Na
+O-6           2432 A000435-C    As Ni              914 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Pathaar SECTOR: Jathig Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2538 C587675-3  S Ag Ni Ri        B  904 Na
+P-2           2631 C562640-3  S Ni Ri              614 Na
+P-3           2640 CA68559-5    Ag Ni              900 Na
+P-4           2836 D302996-7  S Hi Ic Na Va        402 Na
+P-5           3237 B736548-7  N Ni                 214 Na
+

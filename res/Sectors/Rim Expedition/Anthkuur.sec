@@ -1,0 +1,286 @@
+Anthkuur Sector
+
+A: Akuur                     a.dat
+B: Banthk                    b.dat
+C: Cuur                      c.dat
+D: Duuranthk                 d.dat
+E: Edanth                    e.dat
+F: Furkuur                   f.dat
+G: Ganth                     g.dat
+H: Huurr                     h.dat
+I: Ianka                     i.dat
+J: Jankka                    j.dat
+K: Kuurd                     k.dat
+L: Luuqs                     l.dat
+M: Manthk                    m.dat
+N: Nunkuur                   n.dat
+O: Okarr                     o.dat
+P: Puuk                      p.dat
+
+Bases:
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Akuur SECTOR: Anthkuur Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0308 CA9A244-9    Lo Ni Wa           104 Na
+A-2           0403 C433352-8  S Lo Ni Po           701 Na
+A-3           0410 E327678-6    Ni              B  804 Na
+A-4           0504 D9656B7-2    Ag Ni              700 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Banthk SECTOR: Anthkuur Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           1102 C443789-7    Po                 113 Na
+B-2           1309 C979111-7    Lo Ni              512 Na
+B-3           1604 E542A89-5    Hi In Po           904 Na
+B-4           1607 B559430-7  S Ni                 925 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Cuur SECTOR: Anthkuur Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1704 D755541-5  S Ag Ni              503 Na
+C-2           1806 B598633-6  N Ag Ni              624 Na
+C-3           2003 A885520-B  N Ag Ni              303 Na
+C-4           2109 C350777-7    De Po           B  404 Na
+C-5           2408 E79646B-6    Ni                 900 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Duuranthk SECTOR: Anthkuur Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2502 C56597B-7    Hi              B  114 Na
+D-2           2609 BAB79BA-8    Fl Hi           A  204 Na
+D-3           2703 B251334-9  N Lo Ni Po           923 Na
+D-4           2803 E844675-6    Ag Ni           B  222 Na
+D-5           3006 C451341-8  S Lo Ni Po           502 Na
+D-6           3208 C567AED-8    Hi                 423 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Edanth SECTOR: Anthkuur Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Furkuur SECTOR: Anthkuur Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0919 C1006AB-A  S Na Ni Va           823 Na
+F-2           1513 D346564-4  S Ag Ni              914 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ganth SECTOR: Anthkuur Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1716 A7776B7-9  N Ag Ni              414 Na
+G-2           1920 D7A4245-6  S Fl Lo Ni           702 Na
+G-3           2014 E120303-A    De Lo Ni Po        103 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Huurr SECTOR: Anthkuur Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2518 C659215-6    Lo Ni              103 Na
+H-2           2618 E110589-9    Ni                 702 Na
+H-3           2620 E000000-9    As Ba Lo Ni        303 Na
+H-4           2714 B66A69B-A  N Ni Ri Wa           101 Na
+H-5           3116 C426584-6  S Ni                 814 Na
+H-6           3118 X501122-0    Ic Lo Va        R  203 Na
+H-7           3220 C448300-9    Lo Ni              404 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ianka SECTOR: Anthkuur Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0321 D353841-4    Po                 603 Na
+I-2           0621 C327AC9-D    Hi In              503 Na
+I-3           0629 B480656-A    De Ni Ri           500 Na
+I-4           0729 E784785-3    Ag Ri              103 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jankka SECTOR: Anthkuur Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           1126 D4239EF-8  S Hi In Na Po        823 Na
+J-2           1225 C8B3A98-D  S Fl Hi           A  513 Na
+J-3           1329 C421100-7    Lo Ni Po           104 Na
+J-4           1330 B66A447-8  S Ni Wa              912 Na
+J-5           1523 B561456-9  N Ni                 610 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kuurd SECTOR: Anthkuur Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1730 D63A249-8  S Lo Ni Wa           610 Na
+K-2           1928 C48868C-9    Ag Ni Ri           813 Na
+K-3           2130 E776722-6    Ag                 912 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Luuqs SECTOR: Anthkuur Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2624 D26399A-7  S Hi                 600 Na
+L-2           2625 E511121-8    Ic Lo Ni           403 Na
+L-3           2628 D310442-5    Ni                 922 Na
+L-4           2726 D582343-2    Lo Ni              305 Na
+L-5           2922 C95A521-6    Ni Wa              211 Na
+L-6           3025 C426665-5    Ni                 804 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Manthk SECTOR: Anthkuur Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0439 C78A565-9  S Ni Wa              723 Na
+M-2           0631 D788365-5  S Lo Ni              203 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nunkuur SECTOR: Anthkuur Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0931 E8B69BA-8    Fl Hi           A  400 Na
+N-2           1132 C000667-A    As Na Ni           210 Na
+N-3           1240 C7A0536-A    De Ni              213 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Okarr SECTOR: Anthkuur Sector
+#
+# Jump-routes
+$2131 2331 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1739 B400168-A    Lo Ni Va           402 Na
+O-2           2131 B9B1354-B  N Fl Lo Ni        A  521 Na
+O-3           2331 B553353-8  2 Lo Ni Po           613 Na
+O-4           2439 C534569-7    Ni                 813 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Puuk SECTOR: Anthkuur Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2736 D688520-7  S Ag Ni              910 Na
+P-2           3133 D100312-7  S Lo Ni Va           703 Na
+P-3           3236 C576842-5                       314 Na
+

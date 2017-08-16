@@ -1,0 +1,389 @@
+Iturokil Sector
+
+A: Aituro                    a.dat
+B: Biturok                   b.dat
+C: Cturokil                  c.dat
+D: Draturo                   d.dat
+E: Eaturol                   e.dat
+F: Fiturokin                 f.dat
+G: Ghitunno                  g.dat
+H: Hyturok                   h.dat
+I: Ituroki                   i.dat
+J: Jitu                      j.dat
+K: Kritur                    k.dat
+L: Laitur                    l.dat
+M: Meaturok                  m.dat
+N: Nurokil                   n.dat
+O: Okilitu                   o.dat
+P: Pituro                    p.dat
+
+Bases:
+A = Ammaki Military
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+12 Ac = Ammaki Conquests
+14 Ds = Duraag Sanctuary
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Aituro SECTOR: Iturokil Sector
+#
+# Jump-routes
+$0807 0910 1 0
+#
+$0110 3007 -1 0 10
+$0110 0411 0 1 10
+$0807 0605 0 0 11
+$0807 0907 1 0 11
+$0605 0504 0 0 11
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Quihtan       0110 D6718CE-5  S                    902 Na
+A-2           0308 D510766-7  S Na                 105 Na
+A-3           0502 E8D0311-8    De Lo Ni           603 Na
+A-4           0504 A687472-9  N Ni              B  314 Na
+A-5           0605 B648313-7  2 Lo Ni              901 Na
+A-6           0707 X675766-0    Ag              R  323 Na
+A-7           0807 A657664-C    Ag Ni              200 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Biturok SECTOR: Iturokil Sector
+#
+# Jump-routes
+$0910 0807 -1 0
+#
+$0907 0807 -1 0 11
+$0910 0913 0 1 11
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           0905 E555421-2    Ni                 602 Na
+B-2           0907 C625958-A    Hi In              813 Na
+B-3           0910 AAB6A62-E    Fl Hi           A  710 Na
+B-4           1101 AA99443-B    Ni                 401 Na
+B-5           1108 E221420-7    Ni Po              114 Na
+B-6           1201 C884521-8  S Ag Ni              714 Na
+B-7           1203 C674100-A  S Lo Ni              903 Na
+B-8           1204 E548765-4    Ag                 303 Na
+B-9           1507 C9C5874-9    Fl              A  514 Na
+B-10          1602 B236347-8  S Lo Ni              303 Na
+B-11          1603 C4348B9-9  S                    500 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Cturokil SECTOR: Iturokil Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           2003 B659642-7    Ni                 804 Na
+C-2           2205 D6867AC-4  S Ag                 304 Na
+C-3           2303 C9C3873-7    Fl              A  423 Na
+C-4           2306 C668401-A  S Ni                 803 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Draturo SECTOR: Iturokil Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2505 B4487A6-8  N Ag                 704 Na
+D-2           2607 C8585AA-8  S Ag Ni              504 Na
+D-3           2703 C10099A-A    Hi Na Va           715 Na
+D-4           2705 E655002-3    Lo Ni              213 Na
+D-5           2706 C665200-8    Lo Ni              614 Na
+D-6           3008 C437A97-9    Hi In              804 Na
+D-7           3010 B696374-8    Lo Ni           B  203 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ituroki SECTOR: Iturokil Sector
+#
+# Jump-routes
+#
+$0411 0110 0 -1 10
+$0411 0813 0 0 10
+$0813 1116 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Duraag        0215 A200330-F    Lo Ni Va           900 Ds
+E-2           0219 C795553-9  S Ag Ni              804 Na
+Reagreem      0411 C333412-A  S Ni Po              401 Na
+Shujunna      0813 D48667B-5    Ag Ni Ri        B  205 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Fiturokin SECTOR: Iturokil Sector
+#
+# Jump-routes
+$1117 1319 0 0
+#
+$1116 0813 -1 0 10
+$1116 1319 0 0 10
+$1319 1719 1 0 10
+$0913 0910 0 -1 11
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0913 B8A4886-A    Fl                 800 Na
+F-2           1014 E140402-A    De Ni Po           204 Na
+Miunamm       1116 D250320-7    De Lo Ni Po        104 Na
+F-4           1117 AA95677-8  S Ag Ni           B  303 Na
+F-5           1119 E244010-3    Lo Ni              703 Na
+F-6           1215 D652389-5  S Lo Ni Po           712 Na
+F-7           1217 C330579-A  S De Ni Po        B  610 Na
+F-8           1315 B120643-B  N De Na Ni Po        802 Na
+Yahmiera      1319 B150002-C    De Lo Ni Po        403 Na
+F-10          1413 D3107AA-5  S Na                 824 Na
+F-11          1519 E410523-4    Ni                 504 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ghitunno SECTOR: Iturokil Sector
+#
+# Jump-routes
+#
+$1719 1319 -1 0 10
+$1719 1820 0 0 10
+$1820 2022 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Ghunndonn     1719 B110512-9  S Ni                 903 Na
+G-2           1814 B643620-8  2 Ni Po              214 Na
+G-3           1816 C200353-8    Lo Ni Va           105 Na
+G-4           1817 C765542-4  S Ag Ni              603 Na
+Washuol       1820 D9D7345-5    Fl Lo Ni           414 Na
+G-6           2117 B538546-A    Ni                 410 Na
+G-7           2120 C569654-6  S Ni Ri              923 Na
+G-8           2211 C200656-9    Na Ni Va           114 Na
+G-9           2216 D665458-5  S Ni                 803 Na
+G-10          2315 C551569-6    Ni Po              212 Na
+G-11          2417 B504631-A  N Ic Ni Va           404 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hyturok SECTOR: Iturokil Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2716 C484325-6    Lo Ni              701 Na
+H-2           2919 B565104-7    Lo Ni              505 Na
+H-3           3011 A887695-B    Ag Ni Ri           600 Na
+H-4           3014 C767665-3    Ag Ni Ri           813 Na
+H-5           3112 C511577-9  S Ic Ni           B  723 Na
+H-6           3214 B84A88A-8    Wa                 424 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ituroki SECTOR: Iturokil Sector
+#
+# Jump-routes
+#
+$0725 0928 1 0 2
+$0725 0425 0 0 2
+$0425 0222 0 0 2
+$0222 3122 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Drahag        0222 C463895-5  S Ri                 404 Na
+I-2           0330 A632330-9  S Lo Ni Po           600 Na
+I-3           0421 E20088C-4    Na Va              700 Na
+Waupp         0425 C897344-9    Lo Ni              103 Na
+I-5           0622 C150575-9    De Ni Po        B  423 Na
+Illyann       0725 C3379BC-7  S Hi In              103 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jitu SECTOR: Iturokil Sector
+#
+# Jump-routes
+#
+$0928 1131 0 1 2
+$0928 0725 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0923 B545494-9  2 Ni                 804 Na
+Kaolo         0928 E533876-6    Na Po           B  421 Na
+J-3           1122 B4559A9-D    Hi                 223 Na
+J-4           1224 D222543-4    Ni Po              103 Na
+J-5           1230 D45168C-6    Ni Po              200 Na
+J-6           1322 C545774-6    Ag              B  915 Na
+J-7           1329 C787669-7  S Ag Ni Ri           203 Na
+J-8           1330 B200477-C  N Ni Va           B  202 Na
+J-9           1430 D446366-6    Lo Ni              814 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kritur SECTOR: Iturokil Sector
+#
+# Jump-routes
+#
+$2022 1820 0 -1 10
+$2022 2126 0 0 10
+$2126 2425 0 0 10
+$2425 2529 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Uuppa         2022 C423545-A    Ni Po              721 Na
+Tinaxad       2126 C96977A-7  S Ri              B  913 Na
+Kolidi        2425 E652224-6    Lo Ni Po           223 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Laitur SECTOR: Iturokil Sector
+#
+# Jump-routes
+#
+$2529 2425 -1 0 10
+$2529 2432 -1 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2522 C7A4451-B  S Fl Ni              100 Na
+Linlin        2529 E330666-5    De Na Ni Po        402 Na
+L-3           2627 E322587-6    Ni Po              914 Na
+L-4           2729 A63A796-A  N Wa                 804 Na
+L-5           2921 E484310-4    Lo Ni              800 Na
+L-6           3129 C967141-4    Lo Ni              701 Na
+L-7           3221 C561000-8  S Ba Lo Ni           400 Na
+L-8           3227 C974212-9    Lo Ni              705 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Meaturok SECTOR: Iturokil Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0838 C76687B-6    Ri              B  622 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nurokil SECTOR: Iturokil Sector
+#
+# Jump-routes
+#
+$1039 1102 0 1 2
+$1039 0937 0 0 2
+$0937 1134 0 0 2
+$1134 1131 0 0 2
+$1131 0928 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Kaleagua      0937 X2428DG-0    Po              R  501 Na
+Tilliadu      1039 CAB4757-8    Fl              A  724 Na
+Naguinn       1131 C58438B-5    Lo Ni              313 Na
+Harouoh       1134 C6A068C-6    De Ni              404 Na
+N-5           1135 C79A544-A  S Ni Wa              510 Na
+N-6           1233 E8D9724-4    Fl                 110 Na
+N-7           1440 C500420-8  S Ni Va              300 Na
+N-8           1532 A310433-A    Ni                 914 Na
+N-9           1633 E442689-3    Ni Po              603 Na
+N-10          1634 A200689-A    Na Ni Va           104 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Okilitu SECTOR: Iturokil Sector
+#
+# Jump-routes
+$1839 1939 0 0
+#
+$2432 2529 1 -1 10
+$2432 2436 0 0 10
+$2436 2537 1 0 10
+$1839 1939 0 0 12
+$1939 2139 0 0 12
+$2139 1940 0 0 12
+$1940 1839 0 0 12
+$1940 1939 0 0 12
+$1839 1902 0 1 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Ammaki        1839 A227475-F  A Ni              B  124 Ac
+O-2           1939 C431545-6  A Ni Po              400 Ac
+O-3           1940 C581A63-8    Hi                 112 Ac
+O-4           2135 C130856-A  S De Na Po           104 Na
+O-5           2139 B747866-8                       400 Ac
+Jaggon        2432 D767752-6  S Ag Ri              301 Na
+Ogier         2436 C874300-9  S Lo Ni              803 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Pituro SECTOR: Iturokil Sector
+#
+# Jump-routes
+#
+$2537 2436 -1 0 10
+$2537 2740 0 0 10
+$2740 2603 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2532 C3649BF-B    Hi                 314 Na
+Vituula       2537 C440540-7    De Ni Po           703 Na
+Pananga       2740 D410853-6  S Na                 503 Na
+P-4           3033 E76A347-5    Lo Ni Wa           803 Na
+P-5           3036 B798268-B    Lo Ni              620 Na
+P-6           3040 B44455A-9    Ag Ni              303 Na
+P-7           3133 D7858CC-5                       212 Na
+

@@ -1,0 +1,384 @@
+Ambrook Sector
+
+A: Ambroo                    a.dat
+B: Brool                     b.dat
+C: Cambrouh                  c.dat
+D: Drooka                    d.dat
+E: Embrook                   e.dat
+F: Fambree                   f.dat
+G: Gambrell                  g.dat
+H: Hambraz                   h.dat
+I: Imbroor                   i.dat
+J: Jabmroo                   j.dat
+K: Kambook                   k.dat
+L: Lombra                    l.dat
+M: Mambroos                  m.dat
+N: Nambruux                  n.dat
+O: Ombreesa                  o.dat
+P: Pamkloor                  p.dat
+
+Bases:
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+12 Is = Irrabor Sovereign
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ambroo SECTOR: Ambrook Sector
+#
+# Jump-routes
+$0605 0804 0 0
+$0804 0904 1 0
+$0804 1005 1 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0310 D768964-6    Hi                 621 Na
+A-2           0602 C302115-B    Ic Lo Ni Va        204 Na
+A-3           0605 A210512-D    Ni                 423 Na
+A-4           0609 C786411-5    Ni                 815 Na
+A-5           0705 B5A2230-7    Fl Lo Ni           904 Na
+A-6           0710 C110448-7    Ni                 701 Na
+A-7           0804 A6B2110-A    Fl Lo Ni        A  203 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Brool SECTOR: Ambrook Sector
+#
+# Jump-routes
+$0904 0804 -1 0
+$1005 0804 -1 0
+$0904 1003 0 0
+#
+$1608 2010 1 0 2
+$1608 1206 0 0 2
+$1206 1003 0 0 2
+$1003 1039 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           0904 A100000-C  2 Ba Lo Ni Va        823 Na
+B-2           0908 C9E8679-4    Fl Ni           B  610 Na
+Barihn        1003 C432004-B    Lo Ni Po           511 Na
+B-4           1005 C470968-7    De Hi In           310 Na
+B-5           1006 E456574-6    Ag Ni           B  600 Na
+B-6           1105 C321884-5  S Na Po              302 Na
+B-7           1106 B447AB9-A    Hi In              702 Na
+Naghurr       1206 C697100-A    Lo Ni              822 Na
+B-9           1604 C587210-4  S Lo Ni              901 Na
+B-10          1605 A855431-D  N Ni                 320 Na
+Bommoni       1608 C364A9A-C  S Hi                 604 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Cambrouh SECTOR: Ambrook Sector
+#
+# Jump-routes
+$2303 2305 0 0
+#
+$2403 2501 1 0 10
+$2403 2407 0 0 10
+$2407 2409 0 0 10
+$2409 2512 1 1 10
+$2010 2212 0 1 2
+$2010 1608 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1702 C537112-7    Lo Ni              904 Na
+C-2           1808 C6A3663-6    Fl Ni              400 Na
+C-3           1809 B6B4584-8    Fl Ni           A  303 Na
+C-4           2005 B726613-B    Ni                 803 Na
+Ciloka        2010 C210550-8    Ni                 423 Na
+C-6           2105 D675230-2  S Lo Ni              100 Na
+C-7           2108 C425662-5  S Ni                 921 Na
+C-8           2202 C646478-7  S Ni              B  603 Na
+C-9           2303 BA79424-C  N Ni                 613 Na
+C-10          2305 C785A9A-9    Hi                 604 Na
+Commar        2403 D310005-8  S Lo Ni              501 Na
+Urnnase       2407 C633587-8    Ni Po              604 Na
+Chadroon      2409 C535557-A  S Ni                 513 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Drooka SECTOR: Ambrook Sector
+#
+# Jump-routes
+#
+$2501 2538 0 -1 10
+$2501 2403 -1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Dlanru        2501 C56678C-6    Ag Ri              914 Na
+D-2           2507 B687897-5  S Ri                 304 Na
+D-3           2705 D666540-3    Ag Ni              715 Na
+D-4           3206 C000520-7  S As Ni              402 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Embrook SECTOR: Ambrook Sector
+#
+# Jump-routes
+$0817 0917 1 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0216 C86A512-A    Ni Wa              500 Na
+E-2           0311 B539341-8  N Lo Ni              623 Na
+E-3           0417 B360976-A  N De Hi           B  402 Na
+E-4           0618 X5258AA-0                    R  304 Na
+E-5           0817 B351410-9    Ni Po              114 Na
+E-6           0818 C8A0652-6    De Ni              210 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Fambree SECTOR: Ambrook Sector
+#
+# Jump-routes
+$0917 0817 -1 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0916 E251500-9    Ni Po              320 Na
+F-2           0917 A7B4333-C  N Fl Lo Ni        A  302 Na
+F-3           1314 E69A543-4    Ni Wa              502 Na
+F-4           1413 C87976B-9                       304 Na
+F-5           1419 E5A4776-3    Fl              B  805 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Gambrell SECTOR: Ambrook Sector
+#
+# Jump-routes
+#
+$2415 2718 1 0 2
+$2415 2212 0 0 2
+$2212 2010 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1714 C200441-9    Ni Va              110 Na
+G-2           1720 C3008BD-9  S Na Va              712 Na
+G-3           2116 C555656-7    Ag Ni              415 Na
+G-4           2120 E779325-6    Lo Ni              412 Na
+Veinarta      2212 C695333-9    Lo Ni              324 Na
+G-6           2413 E948799-4    Ag                 700 Na
+Gooanla       2415 C55547B-6    Ni              B  104 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hambraz SECTOR: Ambrook Sector
+#
+# Jump-routes
+#
+$2512 2409 -1 -1 10
+$2512 2813 0 0 10
+$2813 2817 0 0 10
+$2817 3218 0 0 10
+$3218 0216 1 0 10
+$2920 3221 0 1 2
+$2920 2718 0 0 2
+$2718 2415 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Harmok        2512 E595303-5    Lo Ni              103 Na
+H-2           2513 C659310-A    Lo Ni              501 Na
+Ennliar       2718 C411840-5    Ic Na              803 Na
+Embriit       2813 C549564-9  S Ni                 901 Na
+H-5           2815 C335730-A  S                    900 Na
+Islambra      2817 D200513-6  S Ni Va              504 Na
+Hanasha       2920 C425666-6    Ni                 614 Na
+Carveda       3218 C541614-3    Ni Po              211 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Imbroor SECTOR: Ambrook Sector
+#
+# Jump-routes
+#
+$0429 0330 0 0 12
+$0330 0233 0 1 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0223 A593234-8  N Lo Ni              403 Na
+I-2           0330 D274ACA-9    Hi In              900 Is
+I-3           0425 C130561-9    De Ni Po           910 Na
+Irrabor       0429 A444300-F    Lo Ni              800 Is
+I-5           0522 E463330-8    Lo Ni              803 Na
+I-6           0626 D100324-9    Lo Ni Va           414 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jabmroo SECTOR: Ambrook Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           1025 D627522-6  S Ni                 424 Na
+J-2           1030 B89875A-8    Ag                 114 Na
+J-3           1127 E543200-3    Lo Ni Po           902 Na
+J-4           1223 C734440-8    Ni                 325 Na
+J-5           1225 D200A8B-B    Hi Na Va           805 Na
+J-6           1227 C566501-5  S Ag Ni              404 Na
+J-7           1230 D681214-3  S Lo Ni              814 Na
+J-8           1321 B9B5421-8    Fl Ni           A  802 Na
+J-9           1523 B745575-7    Ag Ni           B  602 Na
+J-10          1525 D265201-9    Lo Ni              920 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kambook SECTOR: Ambrook Sector
+#
+# Jump-routes
+$2426 2628 1 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1824 C9E7873-8  S Fl              B  903 Na
+K-2           1922 C42666A-9    Ni                 824 Na
+K-3           2022 C000658-A    As Na Ni           904 Na
+K-4           2321 E666685-1    Ag Ni Ri           300 Na
+K-5           2426 A451258-D    Lo Ni Po           804 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lombra SECTOR: Ambrook Sector
+#
+# Jump-routes
+$2628 2426 -1 0
+#
+$3221 0224 1 0 2
+$3221 2920 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2622 C567345-4    Lo Ni              103 Na
+L-2           2628 B498002-C  N Lo Ni              600 Na
+L-3           3030 E631994-9    Hi In Na Po        513 Na
+L-4           3126 C332420-A    Ni Po              703 Na
+La-Nalla      3221 B200653-A    Na Ni Va           232 Na
+L-6           3224 C695322-9  S Lo Ni              414 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Mambroos SECTOR: Ambrook Sector
+#
+# Jump-routes
+#
+$0233 0330 0 -1 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0233 B226856-B                       402 Is
+M-2           0334 D000676-9  S As Na Ni        B  100 Na
+M-3           0436 C688526-7    Ag Ni              615 Na
+M-4           0736 CA7A88B-7  S Wa                 202 Na
+M-5           0840 C8C5336-5  S Fl Lo Ni        A  802 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nambruux SECTOR: Ambrook Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0933 E400645-5    Na Ni Va           824 Na
+N-2           1034 CA8A200-7    Lo Ni Wa           202 Na
+N-3           1235 C310888-5    Na                 103 Na
+N-4           1335 C79A201-9  S Lo Ni Wa           704 Na
+N-5           1440 C528642-5  S Ni                 614 Na
+N-6           1531 C7B0789-6    De              A  803 Na
+N-7           1534 C236001-7  S Lo Ni              703 Na
+N-8           1535 C574200-8  S Lo Ni              402 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ombreesa SECTOR: Ambrook Sector
+#
+# Jump-routes
+$1739 1839 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1732 CAE5432-7  S Fl Ni              103 Na
+O-2           1739 CA88410-9  S Ni                 201 Na
+O-3           1839 B434220-C    Lo Ni              904 Na
+O-4           1840 B473256-C  2 Lo Ni              602 Na
+O-5           1940 E8A3203-5    Fl Lo Ni           812 Na
+O-6           2032 C584675-3  S Ag Ni Ri        B  605 Na
+O-7           2035 B788355-C  2 Lo Ni              303 Na
+O-8           2133 BA98411-7    Ni                 302 Na
+O-9           2135 C585334-9  S Lo Ni              223 Na
+O-10          2232 B9C8400-9  N Fl Ni           A  200 Na
+O-11          2234 E444134-4    Lo Ni              515 Na
+O-12          2236 D573776-5  S                 B  504 Na
+O-13          2431 B686510-8  2 Ag Ni              113 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Pamkloor SECTOR: Ambrook Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2634 B788324-6    Lo Ni              804 Na
+P-2           2635 E62379A-2    Na Po              202 Na
+P-3           2640 B967744-6  N Ag Ri              603 Na
+P-4           2934 C778667-8    Ag Ni              904 Na
+P-5           3031 C000797-6    As Na              500 Na
+

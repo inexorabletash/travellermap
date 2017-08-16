@@ -1,0 +1,1082 @@
+Charbreyne Sector
+
+A: Achar                     a.dat
+B: Breyne                    b.dat
+C: Chrarary                  c.dat
+D: Dlabrey                   d.dat
+E: Echarb                    e.dat
+F: Freyneb                   f.dat
+G: Gharchar                  g.dat
+H: Habreyne                  h.dat
+I: Ibreyn                    i.dat
+J: Jachara                   j.dat
+K: Kreynab                   k.dat
+L: Lechey                    l.dat
+M: Mreyne                    m.dat
+N: Nicharn                   n.dat
+O: Ocharb                    o.dat
+P: Placha                    p.dat
+
+Bases:
+J = Klushan Navy
+K = Klushan Scout
+L = Klushan Navy & Scout
+M = Oshusheen Navy
+N = Navy
+O = Oshusheen Scout
+P = Oshusheen Navy & Scout
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+05 Ki = Klushan Imperium
+07 Na = Non-Aligned
+03 Os = Oshusheen Commonwealth
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Achar SECTOR: Charbreyne Sector
+#
+# Jump-routes
+#
+$0601 0902 1 0 5
+$0601 0401 0 0 5
+$0401 0301 0 0 5
+$0301 0201 0 0 5
+$0201 0203 0 0 5
+$0606 0906 1 0 5
+$0608 0909 1 0 5
+$0608 0606 0 0 5
+$0606 0405 0 0 5
+$0405 0306 0 0 5
+$0207 0307 0 0 5
+$0307 0306 0 0 5
+$0307 0608 0 0 5
+$0306 0203 0 0 5
+$0608 0711 0 1 5
+$0608 0711 0 1 2
+$0608 0405 0 0 2
+$0405 0302 0 0 2
+$0302 3240 -1 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0102 E351AED-8    Hi Po              102 Ki
+A-2           0105 D120430-A  S De Ni Po           104 Ki
+A-3           0106 C5678CE-8                       505 Ki
+A-4           0108 C586110-5  S Lo Ni              312 Ki
+A-5           0109 C11077A-6    Na              B  104 Na
+A-6           0110 C55959B-6    Ni                 912 Os
+A-7           0201 A584430-B  2 Ni                 903 Ki
+A-8           0203 B140898-7    De Po              114 Ki
+A-9           0204 D7C09B9-6  S De Hi           A  104 Ki
+A-10          0207 A899654-E  2 Ni                 402 Ki
+A-11          0208 E985355-8    Lo Ni              704 Ki
+A-12          0301 B798497-B  N Ni                 104 Ki
+Liertni       0302 C433973-7    Hi In Na Po     B  812 Na
+A-14          0305 C4326A8-7  S Na Ni Po           200 Ki
+A-15          0306 B676543-A    Ag Ni              313 Ki
+A-16          0307 A3029A7-F    Hi Ic Na Va        501 Ki
+A-17          0401 A5339DC-A  S Hi In Na Po        424 Ki
+A-18          0404 E857131-2    Lo Ni              402 Ki
+Giahnak       0405 B754421-6  N Ni                 412 Ki
+A-20          0407 E371150-7    Lo Ni              404 Ki
+A-21          0409 C99A120-6    Lo Ni Wa           101 Ki
+A-22          0501 X96A432-4    Wa              R  400 Na
+A-23          0503 C987632-4    Ag Ni              404 Ki
+A-24          0506 E7899CD-4    Hi                 800 Ki
+A-25          0601 B479330-D  2 Lo Ni              912 Ki
+A-26          0604 D9A6130-7  S Fl Lo Ni           514 Ki
+A-27          0606 A7C368B-C  N Fl Ni           A  204 Ki
+Allia         0608 B494200-C  N Lo Ni              611 Ki
+A-29          0609 C98A78A-8    Ri Wa              523 Ki
+A-30          0610 D775547-3  S Ag Ni              622 Ki
+A-31          0702 E77A462-6    Ni Wa              703 Ki
+A-32          0705 E673102-4    Lo Ni              824 Ki
+A-33          0706 C442320-6  S Lo Ni Po           304 Ki
+A-34          0707 C411A54-E    Hi Ic Na           612 Ki
+A-35          0708 C555234-8  S Lo Ni              923 Ki
+A-36          0802 C898AFG-7  S Hi In           A  514 Ki
+A-37          0804 CAC1544-6  S Fl Ni           A  923 Ki
+A-38          0805 C413876-A    Ic Na           B  314 Na
+A-39          0806 C955301-A    Lo Ni              222 Ki
+A-40          0809 C463443-A  S Ni                 800 Ki
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Breyne SECTOR: Charbreyne Sector
+#
+# Jump-routes
+#
+$1601 1640 0 -1 5
+$1601 1803 1 0 5
+$1607 1907 1 0 5
+$1607 1305 0 0 5
+$1305 1102 0 0 5
+$1102 1139 0 -1 5
+$1102 0902 0 0 5
+$0902 0904 0 0 5
+$0904 0906 0 0 5
+$0906 1305 0 0 5
+$0906 1109 0 0 5
+$1109 0909 0 0 5
+$0902 0601 -1 0 5
+$0906 0606 -1 0 5
+$0909 0608 -1 0 5
+$1109 0912 0 1 5
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           0902 B355543-8    Ag Ni              705 Ki
+B-2           0903 C233134-A  S Lo Ni Po           622 Ki
+B-3           0904 B98578A-6  N Ag Ri              714 Ki
+B-4           0906 B270663-6  S De Ni              300 Ki
+B-5           0909 A78246B-C    Ni                 224 Ki
+B-6           1001 D230474-7  S De Ni Po        B  121 Na
+B-7           1002 E000454-B    As Ni              802 Ki
+B-8           1005 D100344-A    Lo Ni Va           103 Ki
+B-9           1006 D626366-5    Lo Ni              814 Ki
+B-10          1007 E443432-8    Ni Po              711 Ki
+B-11          1010 C574599-9    Ag Ni              502 Ki
+B-12          1102 A563855-C    Ri                 502 Ki
+B-13          1109 A5826B8-9    Ni                 204 Ki
+B-14          1202 C79A400-9    Ni Wa              133 Ki
+B-15          1204 C354236-A  S Lo Ni              403 Ki
+B-16          1208 E325ABA-C    Hi In              503 Ki
+B-17          1301 C47648A-6    Ni                 401 Ki
+B-18          1302 C110677-9  S Na Ni           B  521 Na
+B-19          1305 B995225-B  N Lo Ni              313 Ki
+B-20          1307 D854534-7    Ag Ni              321 Ki
+B-21          1308 D554678-2  S Ag Ni           B  302 Na
+B-22          1401 C120204-A    De Lo Ni Po        702 Ki
+B-23          1404 C324566-7    Ni                 503 Ki
+B-24          1408 C364322-5    Lo Ni              410 Ki
+B-25          1503 E130547-A    De Ni Po           423 Ki
+B-26          1504 E483968-5    Hi                 100 Ki
+B-27          1509 E575678-6    Ag Ni           B  405 Na
+B-28          1510 C4548A7-6                       213 Ki
+B-29          1601 B452346-8  N Lo Ni Po           913 Ki
+B-30          1602 C271000-8  S Ba Lo Ni           713 Ki
+B-31          1603 C500230-A    Lo Ni Va           222 Ki
+B-32          1605 B75767A-5    Ag Ni           B  101 Na
+B-33          1607 B75679B-9    Ag                 721 Ki
+B-34          1609 C5526AB-5  S Ni Po              913 Ki
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Chrarary SECTOR: Charbreyne Sector
+#
+# Jump-routes
+#
+$1803 1601 -1 0 5
+$1803 1839 0 -1 5
+$1803 1907 0 0 5
+$1907 2008 0 0 5
+$2008 2106 0 0 5
+$2008 1711 0 1 5
+$1803 2106 0 0 5
+$2303 2601 1 0 5
+$2303 2106 0 0 5
+$1907 1607 -1 0 5
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1702 DAA3746-3  S Fl                 313 Ki
+C-2           1705 XA8A894-3    Ri Wa           R  700 Na
+C-3           1706 X6239A9-4    Hi In Po        R  814 Na
+C-4           1709 E100651-8    Na Ni Va           120 Ki
+C-5           1801 B79A767-7    Wa                 803 Ki
+C-6           1803 A372567-E  2 Ni                 704 Ki
+C-7           1804 C62A520-9    Ni Wa              502 Ki
+C-8           1806 EA97742-4    Ag                 800 Ki
+C-9           1901 D241100-7    Lo Ni Po           504 Ki
+C-10          1903 B644477-A  S Ni              B  411 Na
+C-11          1907 B83A223-D  S Lo Ni Wa           913 Ki
+C-12          1909 E626455-8    Ni                 624 Ki
+Chagg         2008 A8A1A67-H    Fl Hi Cx           425 Ki
+C-14          2102 D7B2130-3  S Fl Lo Ni        A  410 Ki
+C-15          2103 E241455-7    Ni Po              223 Ki
+C-16          2104 C542243-4    Lo Ni Po           912 Ki
+C-17          2106 A66749D-8  2 Ni                 704 Ki
+C-18          2201 C221214-8  S Lo Ni Po           913 Ki
+C-19          2202 D400740-4    Na Va              104 Ki
+C-20          2205 C358643-4    Ag Ni              614 Ki
+C-21          2206 E5589A9-6    Hi                 910 Ki
+C-22          2207 D2308AF-8  S De Na Po           900 Ki
+C-23          2302 C225AD9-A  S Hi In              522 Ki
+C-24          2303 C130244-B    De Lo Ni Po        304 Ki
+C-25          2305 B310677-8    Na Ni           B  814 Na
+C-26          2307 E365547-8    Ag Ni              712 Ki
+C-27          2402 C641454-7    Ni Po              404 Ki
+C-28          2404 E230342-5    De Lo Ni Po        214 Ki
+C-29          2407 E43227B-9    Lo Ni Po        B  924 Na
+C-30          2408 C6B3614-7    Fl Ni           A  920 Ki
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Dlabrey SECTOR: Charbreyne Sector
+#
+# Jump-routes
+#
+$2601 2640 0 -1 5
+$2601 2501 0 0 5
+$2501 2640 0 -1 5
+$2601 2303 -1 0 5
+$2509 2511 0 1 5
+$2509 2807 0 0 5
+$2807 2909 0 0 5
+$2909 3109 0 0 5
+$3109 3206 0 0 5
+$3206 3004 0 0 5
+$3004 2807 0 0 5
+$2601 2903 0 0 5
+$2903 3004 0 0 5
+$2909 3112 0 1 5
+$3109 0110 1 0 5
+$3109 0208 1 0 5
+$3206 0204 1 0 5
+$2903 2640 0 -1 10
+$2903 3106 0 0 10
+$3106 0107 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2501 A559546-9  S Ni                 720 Ki
+D-2           2502 E8A7311-7    Fl Lo Ni           504 Ki
+D-3           2503 D9D7432-4    Fl Ni              811 Ki
+D-4           2506 E434761-4                       604 Ki
+D-5           2507 C464010-9    Lo Ni              201 Ki
+D-6           2508 C686310-9  S Lo Ni              705 Ki
+D-7           2509 B99A100-B    Lo Ni Wa           932 Ki
+D-8           2510 E454001-8    Lo Ni              324 Ki
+D-9           2601 B491547-C  S Ni                 205 Ki
+D-10          2604 E37488C-6                       503 Ki
+D-11          2605 CAB87CA-6  S Fl              A  800 Ki
+D-12          2606 C686113-4    Lo Ni              422 Ki
+D-13          2701 CA7A420-8    Ni Wa              703 Ki
+D-14          2704 C300004-8    Lo Ni Va           924 Ki
+D-15          2705 C000100-A    As Lo Ni           100 Ki
+D-16          2708 E764220-6    Lo Ni              104 Ki
+D-17          2709 C411104-C  S Ic Lo Ni           924 Ki
+D-18          2710 C638445-9  S Ni                 205 Ki
+D-19          2801 D333563-5    Ni Po              312 Ki
+D-20          2804 C436134-A    Lo Ni              614 Ki
+D-21          2805 E563542-7    Ni                 814 Ki
+D-22          2807 B7768B9-A                       402 Ki
+D-23          2901 X675002-3    Lo              R  604 Na
+Dranna        2903 C3407CC-8    De Po              801 Ki
+D-25          2904 C310588-7  S Ni                 104 Ki
+D-26          2906 C6A0578-5  S De Ni           B  324 Na
+D-27          2907 E6367BB-3                       304 Ki
+D-28          2909 B300412-D  N Ni Va              904 Ki
+D-29          2910 C202100-A    Ic Lo Ni Va        103 Ki
+D-30          3001 C8A5ABB-A    Fl Hi              703 Ki
+D-31          3004 B86A558-9    Ni Wa              702 Ki
+D-32          3007 E261325-4    Lo Ni              323 Ki
+D-33          3010 D797623-6  S Ag Ni              810 Ki
+Morranna      3106 C47266A-9    Ni                 602 Ki
+D-35          3107 C795752-5    Ag                 404 Ki
+D-36          3108 D63A500-B  S Ni Wa              405 Ki
+D-37          3109 B6437AC-6  S Po                 702 Ki
+D-38          3110 C444557-9    Ag Ni              612 Ki
+D-39          3206 B635300-A  N Lo Ni              520 Ki
+D-40          3209 B7C4633-7    Fl Ni           A  803 Ki
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Echarb SECTOR: Charbreyne Sector
+#
+# Jump-routes
+#
+$0711 0608 0 -1 5
+$0711 0912 1 0 5
+$0212 0214 0 0 3
+$0119 0318 0 0 3
+$0318 0417 0 0 3
+$0417 0517 0 0 3
+$0517 0718 0 0 3
+$0718 0720 0 0 3
+$0318 0214 0 0 3
+$0119 0122 0 1 3
+$0711 1013 1 0 2
+$0711 0608 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0111 E9B8520-6    Fl Ni           A  503 Os
+E-2           0113 C699758-5  M                    210 Os
+E-3           0114 E676699-6    Ag Ni              403 Os
+E-4           0116 C7A8766-6    Fl                 523 Os
+E-5           0117 D8869AE-5    Hi                 804 Os
+E-6           0119 B351569-A  M Ni Po              710 Os
+E-7           0211 E557ACC-9    Hi                 803 Os
+E-8           0212 B5A1423-8    Fl Ni              500 Os
+E-9           0213 B757310-7    Lo Ni              612 Os
+E-10          0214 B321544-B    Ni Po              904 Os
+E-11          0215 E506898-4    Ic Va              404 Os
+E-12          0218 B47685A-A  M                    624 Os
+E-13          0219 CA56663-8    Ag Ni              820 Os
+E-14          0313 C336278-6    Ni Va              304 Os
+E-15          0315 D595365-5    Lo Ni              710 Os
+E-16          0316 D8B5312-5    Fl Lo Ni        A  802 Os
+E-17          0317 C460400-7  O De Ni              605 Os
+E-18          0318 A120548-E  M De Ni Po           511 Os
+E-19          0411 C634532-8  J Ni                 503 Ki
+E-20          0412 C653538-7    Ni Po              403 Na
+E-21          0413 C9C466A-6    Fl Ni           A  725 Na
+E-22          0415 E350447-7    De Ni Po           314 Na
+E-23          0417 B200798-C  M Na Va              125 Os
+E-24          0511 C571556-A  J Ni                 310 Ki
+E-25          0515 E325335-7    Lo Ni              410 Na
+E-26          0517 B310320-D  O Lo Ni              304 Os
+E-27          0611 E68856B-5    Ag Ni              113 Ki
+E-28          0616 C7A1522-8    Fl Ni              403 Os
+E-29          0617 E84A664-7    Ni Wa              903 Os
+E-30          0620 E75966A-3    Ni                 222 Ki
+Ememat        0711 B57A59A-B  J Ni Wa              802 Ki
+E-32          0712 C544111-6    Lo Ni              103 Ki
+E-33          0716 C645531-8  M Ag Ni              104 Os
+E-34          0718 A221322-A    Lo Ni Po           102 Os
+E-35          0720 B64A765-9  M Wa                 103 Os
+E-36          0814 C310768-7    Na                 914 Na
+E-37          0819 C300443-8    Ni Va              903 Os
+E-38          0820 C200854-A  M Na Va              504 Os
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Freyneb SECTOR: Charbreyne Sector
+#
+# Jump-routes
+#
+$0912 0711 -1 0 5
+$0912 1014 0 0 5
+$1014 1015 0 0 5
+$1014 1316 0 0 5
+$1316 1616 0 0 5
+$0912 1109 0 -1 5
+$1616 1814 1 0 5
+$1316 1218 0 0 5
+$1218 1220 0 0 5
+$1220 1324 0 1 5
+$1418 1621 0 1 2
+$1418 1215 0 0 2
+$1215 1013 0 0 2
+$1013 0711 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0911 C565665-5    Ag Ni Ri           413 Ki
+F-2           0912 B400565-A  S Ni Va              604 Ki
+F-3           1011 C423689-8    Na Ni Po           104 Ki
+Clinnfa       1013 E898402-7    Ni                 612 Ki
+F-5           1014 A311531-C  N Ic Ni              122 Ki
+F-6           1015 B201510-8  N Ic Ni Va           604 Ki
+F-7           1017 EA77745-3    Ag                 502 Ki
+F-8           1018 C4516A9-4    Ni Po              103 Ki
+F-9           1020 D629745-3  S                    924 Ki
+F-10          1112 D10069A-9    Na Ni Va           400 Ki
+F-11          1116 D300353-6  S Lo Ni Va           204 Ki
+F-12          1117 D561456-4    Ni                 214 Ki
+F-13          1118 X98A89B-3    Ri Wa           R  501 Na
+F-14          1119 C676221-7  S Lo Ni              113 Ki
+F-15          1120 A535577-C  S Ni              B  605 Na
+F-16          1211 E100330-6    Lo Ni Va           700 Ki
+F-17          1212 C583323-8    Lo Ni              424 Ki
+F-18          1214 D120A97-A    De Hi In Na Po     812 Ki
+Ubbilar       1215 C140734-6    De Po              311 Ki
+F-20          1216 D5A2101-6    Fl Lo Ni           400 Ki
+F-21          1218 B1508CB-8    De Po              102 Ki
+F-22          1220 B58799B-A    Hi                 503 Ki
+F-23          1311 C848ACG-A  S Hi In              723 Ki
+F-24          1312 D877410-7    Ni                 923 Ki
+F-25          1315 C462200-8    Lo Ni              513 Ki
+F-26          1316 B434351-E  N Lo Ni              904 Ki
+F-27          1319 X210574-1                    R  401 Na
+F-28          1416 C575533-9    Ag Ni              111 Ki
+F-29          1417 B638451-B    Ni                 403 Ki
+Fughurra      1418 C100357-C  S Lo Ni Va           514 Ki
+F-31          1419 C8B9402-9    Fl Ni           A  205 Ki
+F-32          1511 D445687-3  S Ag Ni              300 Ki
+F-33          1514 C6B69AF-7    Fl Hi           A  400 Ki
+F-34          1517 C4477B9-8    Ag                 103 Ki
+F-35          1518 C330254-9    De Lo Ni Po        803 Ki
+F-36          1520 C100585-B  S Ni Va              102 Ki
+F-37          1611 D8C0520-8    De Ni           A  814 Ki
+F-38          1612 C530410-9    De Ni Po           702 Ki
+F-39          1614 C668575-6  S Ag Ni           B  204 Na
+F-40          1616 A232762-E    Na Po              102 Ki
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Gharchar SECTOR: Charbreyne Sector
+#
+# Jump-routes
+#
+$1711 2008 0 -1 5
+$1814 1616 -1 0 5
+$1814 1914 0 0 5
+$1814 1712 0 0 5
+$1712 1711 0 0 5
+$2019 2321 0 1 5
+$2019 1918 0 0 5
+$1918 1814 0 0 5
+$2019 2020 0 0 5
+$2020 2122 0 1 5
+$1914 2312 0 0 5
+$2312 2511 1 0 5
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1711 A546356-E    Lo Ni              703 Ki
+G-2           1712 B544689-8    Ag Ni              604 Ki
+G-3           1718 C656AD9-5  S Hi                 805 Ki
+G-4           1720 A658776-C  N Ag              B  213 Na
+G-5           1811 B355475-7  N Ni              B  811 Na
+G-6           1814 B435552-C  N Ni                 104 Ki
+G-7           1816 E400977-7    Hi Na Va        B  623 Na
+G-8           1817 C777685-4    Ag Ni              211 Ki
+G-9           1818 C500486-9    Ni Va              604 Ki
+G-10          1820 C877000-6    Ba Lo Ni           904 Ki
+G-11          1914 B572688-A  2 Ni                 504 Ki
+G-12          1916 C5468BC-4                       400 Ki
+G-13          1918 A000475-D  N As Ni           B  900 Na
+G-14          1919 D202153-9    Ic Lo Ni Va        902 Ki
+G-15          2013 C978895-3  S                    703 Ki
+G-16          2014 C321988-7  S Hi In Na Po        403 Ki
+G-17          2016 CAE6497-6  S Fl Ni              604 Ki
+G-18          2018 C000400-9    As Ni              920 Ki
+G-19          2019 A847410-9  2 Ni                 304 Ki
+G-20          2020 B7C5AB7-F  2 Fl Hi           A  804 Ki
+G-21          2113 B75677B-9    Ag              B  803 Na
+G-22          2117 D100423-9  S Ni Va              614 Ki
+G-23          2118 X000411-3    As              R  414 Na
+G-24          2212 C984313-4    Lo Ni              800 Ki
+G-25          2214 D6258B8-4  S                    223 Ki
+G-26          2216 C6B18DG-4  S Fl              A  410 Ki
+G-27          2217 C110240-7  S Lo Ni              514 Ki
+G-28          2218 C261461-A  S Ni                 824 Ki
+G-29          2219 DA98220-5    Lo Ni              912 Ki
+G-30          2220 B647576-8    Ag Ni           B  812 Na
+G-31          2311 C676522-9  S Ag Ni              704 Ki
+G-32          2312 B847436-7  2 Ni                 900 Ki
+G-33          2314 C67A510-7    Ni Wa              513 Ki
+G-34          2315 C625447-7    Ni                 622 Ki
+G-35          2319 C75A403-C    Ni Wa              400 Ki
+G-36          2411 C87A565-8  S Ni Wa              913 Ki
+G-37          2412 E371444-4    Ni                 813 Ki
+G-38          2413 D6B3656-6    Fl Ni           A  603 Ki
+G-39          2415 C8B3688-6    Fl Ni           A  700 Ki
+G-40          2418 C895122-7    Lo Ni              104 Ki
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Habreyne SECTOR: Charbreyne Sector
+#
+# Jump-routes
+#
+$2511 2312 -1 0 5
+$2511 2509 0 -1 5
+$3112 2909 0 -1 5
+$3112 3214 0 0 5
+$2511 2613 0 0 5
+$2613 2914 0 0 5
+$2914 3214 0 0 5
+$2619 2522 0 1 5
+$2619 2719 0 0 5
+$2719 2917 0 0 5
+$2917 3214 0 0 5
+$3214 0314 1 0 5
+$3214 0117 1 0 5
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2511 B300565-B    Ni Va              501 Ki
+H-2           2513 C7B8002-9    Fl Lo Ni        A  904 Ki
+H-3           2516 C7B4651-9  S Fl Ni           A  502 Ki
+H-4           2517 C427599-8    Ni                 203 Ki
+H-5           2518 D411105-8    Ic Lo Ni           905 Ki
+H-6           2611 C959257-9    Lo Ni              202 Ki
+H-7           2612 C340556-8    De Ni Po           103 Ki
+H-8           2613 A375230-A  N Lo Ni              300 Ki
+H-9           2616 C545484-4  S Ni                 110 Ki
+H-10          2619 B9B1524-9  N Fl Ni           A  823 Ki
+H-11          2711 C86A854-9  S Ri Wa              404 Ki
+H-12          2713 D000545-A    As Ni              600 Ki
+H-13          2714 C75A105-7  S Lo Ni Wa           212 Ki
+H-14          2718 X753101-3    Lo Po           R  420 Na
+H-15          2719 B877598-6    Ag Ni              714 Ki
+H-16          2720 C336767-7  S                    802 Ki
+H-17          2813 E120000-6    Ba De Lo Ni Po     200 Ki
+H-18          2816 C344345-A    Lo Ni              803 Ki
+H-19          2817 C794567-7    Ag Ni              313 Ki
+H-20          2818 C210666-8  S Na Ni              513 Ki
+H-21          2819 C200400-A  S Ni Va              313 Ki
+H-22          2820 C120100-9    De Lo Ni Po        823 Ki
+H-23          2914 B433977-9  S Hi In Na Po     B  902 Na
+H-24          2917 B453243-8    Lo Ni Po           615 Ki
+H-25          2919 CAC1311-9    Fl Lo Ni        A  223 Ki
+H-26          2920 E200568-9    Ni Va              315 Ki
+H-27          3011 EAD9553-7    Fl Ni              803 Ki
+H-28          3012 C303988-8    Hi Ic Na Va        813 Ki
+H-29          3014 X9C4420-0    Fl              R  203 Na
+H-30          3015 D645301-7    Lo Ni              303 Ki
+H-31          3016 C639456-7    Ni                 104 Ki
+H-32          3017 D463245-3  S Lo Ni              800 Ki
+H-33          3019 C9A26BD-5    Fl Ni              714 Ki
+H-34          3112 B410300-E    Lo Ni              513 Ki
+H-35          3113 C89A467-7    Ni Wa              410 Ki
+H-36          3116 D444333-4  S Lo Ni              903 Ki
+H-37          3213 C8C6675-9  S Fl Ni           A  702 Ki
+H-38          3214 A484142-D    Lo Ni              903 Ki
+H-39          3215 D78A957-6  S Hi Wa              913 Ki
+H-40          3219 C9896BC-9    Ni                 112 Ki
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ibreyn SECTOR: Charbreyne Sector
+#
+# Jump-routes
+#
+$0726 0927 1 0 5
+$0726 0623 0 0 5
+$0623 0522 0 0 5
+$0522 0521 0 0 5
+$0522 0822 0 0 5
+$0822 1022 1 0 5
+$0122 0119 0 -1 3
+$0122 0224 0 0 3
+$0224 0127 0 0 3
+$0127 0328 0 0 3
+$0328 0329 0 0 3
+$0329 0231 0 1 3
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0121 C538354-8    Lo Ni              414 Os
+I-2           0122 B64A9C8-D    Hi In Wa           414 Os
+I-3           0123 C324534-8    Ni                 614 Os
+I-4           0124 X510314-0    Lo              R  700 Na
+I-5           0127 A8A9143-F    Fl Lo Ni           924 Os
+I-6           0128 C799203-8    Lo Ni              613 Os
+I-7           0129 E567857-6    Ri                 324 Os
+I-8           0221 C222624-7  M Na Ni Po           422 Os
+I-9           0223 C677532-8  M Ag Ni              824 Os
+I-10          0224 A233467-D  O Ni Po              511 Os
+I-11          0225 E97949A-4    Ni                 625 Os
+I-12          0228 X5559B7-2    Hi              R  704 Na
+I-13          0229 C5517B8-5    Po                 824 Os
+I-14          0230 D494147-4    Lo Ni              322 Os
+I-15          0321 C87A587-8    Ni Wa              404 Os
+I-16          0322 C426514-B    Ni                 604 Os
+I-17          0323 C351763-5  M Po                 113 Os
+I-18          0324 E728555-9    Ni                 804 Os
+I-19          0326 C235548-7    Ni                 622 Os
+I-20          0328 B759440-9    Ni                 314 Os
+I-21          0329 B777334-9  O Lo Ni              621 Os
+I-22          0423 C688322-8    Lo Ni              902 Na
+I-23          0425 C413227-A    Ic Lo Ni           814 Na
+I-24          0428 CA8A210-9  O Lo Ni Wa           403 Os
+I-25          0429 C631202-9    Lo Ni Po           202 Os
+I-26          0430 E758200-3    Lo Ni              614 Os
+I-27          0521 A869633-8    Ni                 312 Ki
+I-28          0522 A3749AE-F    Hi In              902 Ki
+I-29          0525 C4336AA-6    Na Ni Po           120 Na
+I-30          0622 D365A76-A  S Hi              B  911 Na
+I-31          0623 B592124-A  K Lo Ni              314 Ki
+I-32          0624 C5A0354-7    De Lo Ni           202 Ki
+I-33          0626 C263524-7    Ni                 713 Ki
+I-34          0630 C13097C-B  S De Hi In Na Po  B  200 Na
+I-35          0726 B7B3243-9  K Fl Lo Ni        A  214 Ki
+I-36          0727 E84A598-6    Ni Wa              702 Ki
+I-37          0729 C656444-4    Ni                 804 Na
+I-38          0822 B68499B-8  L Hi                 803 Ki
+I-39          0826 C97A666-7    Ni Wa              903 Ki
+I-40          0827 CA7A664-5    Ni Wa              632 Ki
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jachara SECTOR: Charbreyne Sector
+#
+# Jump-routes
+#
+$1324 1220 0 -1 5
+$1324 1426 0 0 5
+$1426 1129 0 0 5
+$1129 1029 0 0 5
+$1129 0927 0 0 5
+$0927 0726 -1 0 5
+$1022 0822 -1 0 5
+$1022 1324 0 0 5
+$1029 0927 0 0 5
+$1129 1230 0 0 5
+$1230 1529 0 0 5
+$1529 1427 0 0 5
+$1427 1426 0 0 5
+$1529 1826 1 0 5
+$1426 1826 1 0 5
+$1230 1334 0 1 5
+$1621 1823 1 0 2
+$1621 1418 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0921 C20048B-B  S Ni Va              500 Ki
+J-2           0922 D685265-4  S Lo Ni              601 Ki
+J-3           0924 D464646-2    Ag Ni Ri           514 Ki
+J-4           0925 C565742-8  S Ag Ri              901 Ki
+J-5           0927 A848100-B  N Lo Ni              103 Ki
+J-6           0928 E0009BA-6    As Hi Na           502 Ki
+J-7           1022 C357967-A  S Hi                 902 Ki
+J-8           1026 C554898-4                       202 Ki
+J-9           1027 D110A73-C  S Hi Na           B  222 Na
+J-10          1029 BA9A321-A  N Lo Ni Wa           902 Ki
+J-11          1121 X544789-0    Ag              R  504 Na
+J-12          1126 D433648-4    Na Ni Po           702 Ki
+J-13          1127 E454A65-8    Hi                 703 Ki
+J-14          1128 B200574-A    Ni Va           B  603 Na
+J-15          1129 B2007AF-B    Na Va              600 Ki
+J-16          1130 B72A876-B  N Wa              B  604 Na
+J-17          1222 E523688-5    Na Ni Po           614 Ki
+J-18          1224 E8567A7-5    Ag                 903 Ki
+J-19          1229 C212354-8  S Ic Lo Ni           100 Ki
+J-20          1230 B100544-B  N Ni Va              803 Ki
+J-21          1322 E97A531-5    Ni Wa              523 Ki
+J-22          1324 B9D6886-6    Fl                 500 Ki
+J-23          1325 E3248B8-7                       203 Ki
+J-24          1326 C1309AA-B  S De Hi In Na Po     814 Ki
+J-25          1328 C6658AB-6                       510 Ki
+J-26          1329 C545469-7    Ni                 300 Ki
+J-27          1422 C766656-6    Ag Ni Ri           810 Ki
+J-28          1423 D120320-6  S De Lo Ni Po        100 Ki
+J-29          1424 C23257A-8    Ni Po           B  314 Na
+J-30          1426 B200133-D    Lo Ni Va           701 Ki
+J-31          1427 B223311-C    Lo Ni Po           603 Ki
+J-32          1428 C254531-8    Ag Ni              610 Ki
+J-33          1429 C438312-9    Lo Ni              214 Ki
+J-34          1526 D758535-2  S Ag Ni              723 Ki
+J-35          1529 A54A100-F  N Lo Ni Wa           204 Ki
+Jaycarra      1621 E233833-4    Na Po              712 Ki
+J-37          1622 D878532-4    Ag Ni              123 Ki
+J-38          1623 B000000-D  S As Ba Lo Ni        502 Ki
+J-39          1625 C88A878-6    Ri Wa           B  120 Na
+J-40          1628 C466586-9    Ag Ni              524 Ki
+J-41          1629 C7C6411-7  S Fl Ni           A  823 Ki
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kreynab SECTOR: Charbreyne Sector
+#
+# Jump-routes
+#
+$1826 1529 -1 0 5
+$1826 1426 -1 0 5
+$1826 2027 0 0 5
+$2027 2229 0 0 5
+$1826 1824 0 0 5
+$1824 1723 0 0 5
+$1723 1924 0 0 5
+$1824 1924 0 0 5
+$1924 2223 0 0 5
+$2223 2321 0 0 5
+$2321 2019 0 -1 5
+$2122 2020 0 -1 5
+$2122 2223 0 0 5
+$2321 2522 1 0 5
+$2223 2522 1 0 5
+$2229 2232 0 1 5
+$2229 2333 0 1 2
+$2229 2026 0 0 2
+$2026 1823 0 0 2
+$1823 1621 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1722 E542612-3    Ni Po              710 Ki
+K-2           1723 A30076B-A    Na Va              114 Ki
+K-3           1822 B97977A-9                    B  700 Na
+Antta         1823 B9B1778-B    Fl              A  202 Ki
+K-5           1824 B773689-7    Ni                 301 Ki
+K-6           1825 C223498-8    Ni Po              304 Ki
+K-7           1826 B320854-8    De Na Po           803 Ki
+K-8           1827 D561466-4  S Ni                 414 Ki
+K-9           1830 D665665-4    Ag Ni Ri           705 Ki
+K-10          1922 D7C0210-7  S De Lo Ni        A  604 Ki
+K-11          1924 B639667-C  2 Ni                 824 Ki
+K-12          1925 B684478-A  2 Ni              B  105 Na
+K-13          1928 D784763-3    Ag Ri              100 Ki
+K-14          1930 C696635-4    Ag Ni              101 Ki
+K-15          2021 E767774-3    Ag Ri           B  404 Na
+K-16          2023 X685553-0    Ag              R  500 Na
+Kooladi       2026 E4748AE-5                       722 Ki
+K-18          2027 B342543-9    Ni Po              300 Ki
+K-19          2028 E5969C9-4    Hi In              500 Ki
+K-20          2029 E500220-3    Lo Ni Va           201 Ki
+K-21          2030 C776AAE-7  S Hi In              314 Ki
+K-22          2121 C34099A-6    De Hi In Po        300 Ki
+K-23          2122 B536300-8  S Lo Ni              713 Ki
+K-24          2124 C410410-A  S Ni                 813 Ki
+K-25          2125 C560644-6    De Ni Ri           300 Ki
+K-26          2127 C7A057A-5    De Ni           B  801 Na
+K-27          2128 C4117AE-8    Ic Na              711 Ki
+K-28          2223 B611522-C    Ic Ni              804 Ki
+K-29          2225 D768211-6  S Lo Ni              613 Ki
+K-30          2227 C898867-5                       104 Ki
+K-31          2228 C783354-8    Lo Ni              204 Ki
+Braychi       2229 A384232-B    Lo Ni              711 Ki
+K-33          2230 E224696-7    Ni                 413 Ki
+K-34          2321 B78A557-E    Ni Wa              414 Ki
+K-35          2323 C86A554-B  S Ni Wa              311 Ki
+K-36          2421 E361213-5    Lo Ni              123 Ki
+K-37          2422 C594467-5    Ni                 303 Ki
+K-38          2424 C658320-7    Lo Ni              901 Ki
+K-39          2425 CAD779B-9    Fl                 204 Ki
+K-40          2430 X245504-2    Ag              R  413 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lechey SECTOR: Charbreyne Sector
+#
+# Jump-routes
+#
+$2522 2321 -1 0 5
+$2522 2619 0 -1 5
+$2522 2223 -1 0 5
+$2522 2525 0 0 5
+$2525 2728 0 0 5
+$2728 3028 0 0 5
+$3028 3029 0 0 5
+$3028 3226 0 0 5
+$3226 3024 0 0 5
+$3024 2724 0 0 5
+$2724 2525 0 0 5
+$3024 3022 0 0 5
+$3022 2823 0 0 5
+$2823 2724 0 0 5
+$2724 2522 0 0 5
+$3029 3133 0 1 5
+$3022 0122 1 0 5
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2522 B356643-A  S Ag Ni              214 Ki
+L-2           2523 C250A96-9    De Hi Po           522 Ki
+L-3           2525 B786104-A  N Lo Ni              313 Ki
+L-4           2528 C4349AA-C  S Hi In              504 Ki
+L-5           2622 C566458-8    Ni                 602 Ki
+L-6           2625 C967652-7    Ag Ni Ri           304 Ki
+L-7           2630 C98A555-8    Ni Wa              115 Ki
+L-8           2722 D432103-5  S Lo Ni Po           121 Ki
+L-9           2724 B697497-A  N Ni                 705 Ki
+L-10          2725 C97A585-8  S Ni Wa              503 Ki
+L-11          2727 D475688-6  S Ag Ni              523 Ki
+L-12          2728 B333ACD-D  2 Hi In Na Po        103 Ki
+L-13          2730 E8B2500-9    Fl Ni           A  223 Ki
+L-14          2821 C888101-6    Lo Ni              803 Ki
+L-15          2822 C7B7540-9  S Fl Ni           A  931 Ki
+L-16          2823 B342786-8  N Po                 503 Ki
+L-17          2825 D464434-5  S Ni                 600 Ki
+L-18          2826 B8A3672-B    Fl Ni           B  914 Na
+L-19          2921 C78A654-A  S Ni Ri Wa           605 Ki
+L-20          2922 C858648-6  S Ag Ni              500 Ki
+L-21          2923 C480411-9  S De Ni              110 Ki
+L-22          3021 D665437-4  S Ni                 805 Ki
+L-23          3022 A6B58AE-B    Fl              A  305 Ki
+L-24          3024 A475334-A    Lo Ni              403 Ki
+L-25          3025 C655577-8    Ag Ni           B  900 Na
+L-26          3028 A510120-E    Lo Ni              204 Ki
+L-27          3029 B897100-A  S Lo Ni              501 Ki
+L-28          3122 C5A1530-9    Fl Ni              414 Ki
+L-29          3124 D978445-4    Ni                 501 Ki
+L-30          3126 C9A2362-7  S Fl Lo Ni           614 Ki
+L-31          3127 D377321-5    Lo Ni              520 Ki
+L-32          3128 D585777-6  S Ag Ri           B  624 Na
+L-33          3129 D737235-8  S Lo Ni              412 Ki
+L-34          3130 C561368-4  S Lo Ni              804 Ki
+L-35          3222 C557321-6  S Lo Ni              714 Ki
+L-36          3223 E681854-5    Ri                 304 Ki
+L-37          3226 B400864-A  2 Na Va              100 Ki
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Mreyne SECTOR: Charbreyne Sector
+#
+# Jump-routes
+#
+$0231 0329 0 -1 3
+$0231 0132 0 0 3
+$0132 0434 0 0 3
+$0434 0538 0 0 3
+$0538 0539 0 0 3
+$0539 0140 0 0 3
+$0434 0634 0 0 3
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0131 C130134-A    De Lo Ni Po        504 Os
+M-2           0132 B100200-F    Lo Ni Va           830 Os
+M-3           0134 D311563-5  M Ic Ni              113 Os
+M-4           0140 B548542-9  M Ag Ni              114 Os
+M-5           0231 B58A664-C  M Ni Ri Wa           623 Os
+M-6           0232 D8B959C-9  M Fl Ni           A  203 Os
+M-7           0233 D79A555-7    Ni Wa              224 Os
+M-8           0236 C8648AA-7  P                    732 Os
+M-9           0331 E767103-3    Lo Ni              502 Os
+M-10          0332 C898620-3    Ag Ni              700 Os
+M-11          0333 D310769-6  O Na                 102 Os
+M-12          0334 C326531-A    Ni                 510 Os
+M-13          0335 D310361-7  O Lo Ni              302 Os
+M-14          0337 C333551-C  M Ni Po              324 Os
+M-15          0338 X9B39AE-0    Fl Hi           R  603 Na
+M-16          0431 C8A456C-A    Fl Ni              702 Os
+M-17          0432 X469799-0    Ri              R  715 Na
+M-18          0434 A669200-B  O Lo Ni              334 Os
+M-19          0437 C234697-9    Ni                 103 Os
+M-20          0531 D784498-5  S Ni                 713 Na
+M-21          0533 E8A346A-8    Fl Ni              304 Os
+M-22          0534 E6137AB-3    Ic Na              614 Os
+M-23          0535 D764346-5    Lo Ni              400 Os
+M-24          0536 CAC6520-5  O Fl Ni           A  904 Os
+M-25          0538 B360638-7  M De Ni              425 Os
+M-26          0539 A533566-9  M Ni Po              800 Os
+M-27          0631 C596277-4  S Lo Ni           B  305 Na
+M-28          0632 C370110-5  O De Lo Ni           704 Os
+M-29          0634 A555653-A  M Ag Ni              300 Os
+M-30          0637 C222530-A  M Ni Po              813 Os
+M-31          0732 C334698-6    Ni                 704 Na
+M-32          0733 C9688CC-8                       104 Na
+M-33          0734 X484746-3    Ag Ri           R  214 Na
+M-34          0736 C247347-A    Lo Ni              402 Na
+M-35          0737 E463978-9    Hi              B  512 Na
+M-36          0738 C667469-7    Ni                 503 Na
+M-37          0831 C110994-B    Hi Na              314 Na
+M-38          0832 C222213-A    Lo Ni Po           322 Na
+M-39          0835 C455879-4                    B  101 Na
+M-40          0836 C441676-6    Ni Po           B  202 Na
+M-41          0837 C76A9B9-9  S Hi Wa              214 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nicharn SECTOR: Charbreyne Sector
+#
+# Jump-routes
+#
+$1635 1832 1 0 5
+$1334 1230 0 -1 5
+$1334 1535 0 0 5
+$1535 1635 0 0 5
+$1635 1537 0 0 5
+$1537 1539 0 0 5
+$1539 1640 0 0 5
+$1539 1439 0 0 5
+$1439 1239 0 0 5
+$1239 1038 0 0 5
+$1038 1238 0 0 5
+$1238 1338 0 0 5
+$1338 1537 0 0 5
+$1537 1334 0 0 5
+$1640 2040 1 0 5
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0935 C88A99A-9    Hi Wa              703 Ki
+N-2           0937 C490548-9  S De Ni              103 Ki
+N-3           0939 C234778-5  S                 B  824 Na
+N-4           1032 C410355-A  S Lo Ni              903 Ki
+N-5           1038 A429651-B    Ni                 812 Ki
+N-6           1040 C357559-6    Ag Ni              515 Ki
+N-7           1134 DA89001-5    Lo Ni              100 Ki
+N-8           1137 C000555-A    As Ni              902 Ki
+N-9           1140 C54138B-8  S Lo Ni Po           203 Ki
+N-10          1232 D2007A9-6  S Na Va              313 Ki
+N-11          1237 E7A8558-6    Fl Ni              703 Ki
+N-12          1238 B885226-A  N Lo Ni              134 Ki
+N-13          1239 B461733-9  2                    403 Ki
+N-14          1240 C5788A9-5                       910 Ki
+N-15          1331 C454666-8    Ag Ni              925 Ki
+N-16          1332 C86A100-A    Lo Ni Wa           204 Ki
+N-17          1333 C000699-6  S As Na Ni           822 Ki
+N-18          1334 A693510-B  N Ni                 112 Ki
+N-19          1335 C310465-6    Ni                 504 Ki
+N-20          1336 D6696A8-5    Ni                 703 Ki
+N-21          1338 B432466-C  N Ni Po              502 Ki
+N-22          1340 E78A267-6    Lo Ni Wa           103 Ki
+N-23          1431 E768979-8    Hi              B  101 Na
+N-24          1433 C5A09A9-7    De Hi              413 Ki
+N-25          1434 C664767-4    Ag Ri              100 Ki
+N-26          1435 B262697-7  N Ni Ri              703 Ki
+N-27          1436 C535000-A  S Ba Lo Ni           312 Ki
+N-28          1438 C555213-4  S Lo Ni              804 Ki
+N-29          1439 A212310-B  N Ic Lo Ni           404 Ki
+N-30          1533 C371889-7                       914 Ki
+N-31          1534 C10079B-8    Na Va              502 Ki
+N-32          1535 B210631-8    Na Ni              525 Ki
+N-33          1537 B526234-A  2 Lo Ni              701 Ki
+N-34          1538 A464589-9  N Ag Ni              502 Ki
+N-35          1539 A501042-C  N Ic Lo Ni Va        702 Ki
+N-36          1632 E646210-6    Lo Ni              404 Ki
+N-37          1634 C100664-B    Na Ni Va           120 Ki
+N-38          1635 B493587-8  N Ni                 403 Ki
+N-39          1637 D200213-9  S Lo Ni Va           103 Ki
+N-40          1638 C9C7A72-B  S Fl Hi           A  514 Ki
+N-41          1640 B591523-6  N Ni                 600 Ki
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ocharb SECTOR: Charbreyne Sector
+#
+# Jump-routes
+#
+$2232 2229 0 -1 5
+$2232 1832 0 0 5
+$1832 1635 -1 0 5
+$2040 1640 -1 0 5
+$2040 2039 0 0 5
+$2039 2038 0 0 5
+$2038 1936 0 0 5
+$1936 1832 0 0 5
+$2232 2333 0 0 5
+$2038 2337 0 0 5
+$2337 2737 1 0 5
+$2333 2635 1 0 2
+$2333 2229 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1736 C110301-9  S Lo Ni              520 Ki
+O-2           1737 D9B8432-4  S Fl Ni           A  603 Ki
+O-3           1738 X627966-5    Hi In           R  303 Na
+O-4           1831 C564303-A    Lo Ni              415 Ki
+O-5           1832 B686A87-E  N Hi                 501 Ki
+O-6           1833 D000543-8  S As Ni              312 Ki
+O-7           1836 E7A3684-5    Fl Ni              803 Ki
+O-8           1839 A7C2674-A  N Fl Ni           A  100 Ki
+O-9           1933 C46348A-5    Ni                 910 Ki
+O-10          1935 E8A5645-2    Fl Ni              924 Ki
+O-11          1936 B352757-9    Po                 814 Ki
+O-12          1937 E453564-5    Ni Po              200 Ki
+O-13          1938 C473105-7  S Lo Ni              304 Ki
+O-14          1940 C78769C-3    Ag Ni Ri           203 Ki
+O-15          2033 B211102-A  N Ic Lo Ni           323 Ki
+O-16          2034 B632873-9  N Na Po           B  204 Na
+O-17          2037 E554223-3    Lo Ni              715 Ki
+O-18          2038 B63369B-A    Na Ni Po           904 Ki
+O-19          2039 B100440-E  N Ni Va              803 Ki
+O-20          2040 A88A431-E  N Ni Wa              703 Ki
+O-21          2132 C3605A6-9    De Ni              924 Ki
+O-22          2133 C5568BE-3                       722 Ki
+O-23          2134 B47167A-9  2 Ni              B  823 Na
+O-24          2137 C599543-7  S Ni                 500 Ki
+O-25          2138 C8B4454-B    Fl Ni           A  910 Ki
+O-26          2140 C456883-5                       600 Ki
+O-27          2231 E737536-8    Ni                 412 Ki
+O-28          2232 B678467-A    Ni                 220 Ki
+O-29          2234 D884720-2  S Ag                 502 Ki
+O-30          2237 C887742-5  S Ag Ri              104 Ki
+Ochach        2333 B5527CC-9    Po                 804 Ki
+O-32          2337 C210124-B    Lo Ni              803 Ki
+O-33          2338 E502644-7    Ic Na Ni Va        713 Ki
+O-34          2339 C51057A-5    Ni              B  702 Na
+O-35          2340 D563324-4    Lo Ni              800 Ki
+O-36          2431 C322895-A  S Na Po              123 Ki
+O-37          2434 C100201-B    Lo Ni Va           715 Ki
+O-38          2435 C310303-8    Lo Ni              603 Ki
+O-39          2436 D676100-8    Lo Ni              521 Ki
+O-40          2437 CAF4489-6    Fl Ni              123 Ki
+O-41          2438 C333465-A    Ni Po              814 Ki
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Placha SECTOR: Charbreyne Sector
+#
+# Jump-routes
+#
+$3133 3029 0 -1 5
+$3133 3134 0 0 5
+$3134 3035 0 0 5
+$3035 3037 0 0 5
+$3037 2737 0 0 5
+$2737 2938 0 0 5
+$2938 3139 0 0 5
+$3139 3238 0 0 5
+$3238 3037 0 0 5
+$3035 2933 0 0 5
+$2933 3133 0 0 5
+$2737 2337 -1 0 5
+$3238 0138 1 0 5
+$3134 0333 1 0 5
+$3036 0139 1 0 2
+$3036 2635 0 0 2
+$2635 2333 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2531 D697500-7  S Ag Ni              210 Ki
+P-2           2533 C544872-7                    B  600 Na
+P-3           2539 X6B5565-2    Fl              R  813 Na
+P-4           2633 C54567C-4  S Ag Ni           B  104 Na
+Renchraa      2635 D6687CC-3  S Ag                 803 Ki
+P-6           2637 C6488A5-5                       403 Ki
+P-7           2731 E555674-1    Ag Ni           B  225 Na
+P-8           2736 B527677-7    Ni              B  404 Na
+P-9           2737 A574324-D    Lo Ni              210 Ki
+P-10          2738 C775666-8  S Ag Ni              924 Ki
+P-11          2833 E758787-2    Ag                 704 Ki
+P-12          2834 C526641-8    Ni                 123 Ki
+P-13          2837 C9B5534-A  S Fl Ni           A  521 Ki
+P-14          2838 C61196B-9    Hi Ic Na           910 Ki
+P-15          2931 C267443-9  S Ni                 202 Ki
+P-16          2932 C5685AD-4    Ag Ni              624 Ki
+P-17          2933 A748426-8  N Ni                 200 Ki
+P-18          2934 C400202-7    Lo Ni Va           412 Ki
+P-19          2936 X57648C-1                    R  211 Na
+P-20          2938 A69A413-F    Ni Wa              203 Ki
+P-21          3034 C502641-9  S Ic Na Ni Va        903 Ki
+P-22          3035 B451130-9    Lo Ni Po           312 Ki
+Phahhan       3036 C464423-6    Ni                 701 Ki
+P-24          3037 A20065A-E    Na Ni Va           624 Ki
+P-25          3133 A673312-A  N Lo Ni              400 Ki
+P-26          3134 A130212-B  N De Lo Ni Po        904 Ki
+P-27          3135 C346100-7    Lo Ni              110 Ki
+P-28          3136 C300433-B    Ni Va              300 Ki
+P-29          3138 C7765AF-9  S Ag Ni              620 Ki
+P-30          3139 B100795-D    Na Va              803 Ki
+P-31          3237 E000334-A    As Lo Ni           312 Ki
+P-32          3238 B9A37CE-6  N Fl                 203 Ki
+

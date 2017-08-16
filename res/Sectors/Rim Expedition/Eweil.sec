@@ -1,0 +1,400 @@
+Eweil Sector
+
+A: Aeweil                    a.dat
+B: Bewein                    b.dat
+C: Ceweik                    c.dat
+D: Dleweig                   d.dat
+E: Eweimm                    e.dat
+F: Freweiss                  f.dat
+G: Ghorewei                  g.dat
+H: Haeweih                   h.dat
+I: Iwewei                    i.dat
+J: Jeweinn                   j.dat
+K: Kleweiner                 k.dat
+L: Linewei                   l.dat
+M: Maneweim                  m.dat
+N: Neweita                   n.dat
+O: Oseweil                   o.dat
+P: Peweil                    p.dat
+
+Bases:
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Aeweil SECTOR: Eweil Sector
+#
+# Jump-routes
+#
+$0710 0812 0 1 2
+$0710 0606 0 0 2
+$0606 0404 0 0 2
+$0404 0502 0 0 2
+$0502 0239 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0105 C996478-7  S Ni              B  903 Na
+A-2           0108 E9A2556-5    Fl Ni              202 Na
+A-3           0305 E664432-7    Ni                 804 Na
+Razzios       0404 C887326-9    Lo Ni              325 Na
+Agrann        0502 EAEA997-7    Fl Hi Wa           212 Na
+A-6           0602 C753431-9  S Ni Po              701 Na
+A-7           0605 E342853-4    Po                 602 Na
+Htaer         0606 D89968B-5    Ni                 821 Na
+A-9           0705 E300679-8    Na Ni Va        B  310 Na
+Crurarra      0710 C869522-6  S Ni                 804 Na
+A-11          0805 C9C6657-7    Fl Ni           A  203 Na
+A-12          0810 D77855A-5  S Ag Ni              103 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Bewein SECTOR: Eweil Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           1101 X9D1642-2    Fl              R  613 Na
+B-2           1105 C567343-5  S Lo Ni              301 Na
+B-3           1107 C738756-9                       803 Na
+B-4           1206 E77A434-6    Ni Wa              512 Na
+B-5           1401 D261688-5  S Ni Ri              824 Na
+B-6           1405 C451667-5    Ni Po              504 Na
+B-7           1406 C9A9554-A    Fl Ni              723 Na
+B-8           1409 E210552-8    Ni                 202 Na
+B-9           1604 B742698-A    Ni Po              104 Na
+B-10          1608 B200783-9    Na Va              402 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ceweik SECTOR: Eweil Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1801 E443156-7    Lo Ni Po           403 Na
+C-2           1803 B100111-9  N Lo Ni Va           712 Na
+C-3           2002 C566336-8  S Lo Ni              604 Na
+C-4           2007 C788522-5  S Ag Ni              213 Na
+C-5           2205 B410367-9    Lo Ni              210 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Dleweig SECTOR: Eweil Sector
+#
+# Jump-routes
+#
+$3101 2839 0 -1 10
+$3101 0104 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2503 A787653-C  2 Ag Ni Ri           804 Na
+D-2           2603 E243540-4    Ni Po              904 Na
+D-3           2609 C799453-A    Ni                 203 Na
+D-4           2704 C537766-8                       114 Na
+D-5           2804 B1207AD-C  N De Na Po           304 Na
+D-6           2807 D301777-7  S Ic Na Va        B  905 Na
+Dratta        3101 B000544-C  S As Ni              403 Na
+D-8           3108 E110555-A    Ni                 603 Na
+D-9           3205 B500401-C    Ni Va              703 Na
+D-10          3207 B200555-D  N Ni Va              204 Na
+D-11          3210 C222213-B    Lo Ni Po           201 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Eweimm SECTOR: Eweil Sector
+#
+# Jump-routes
+#
+$0619 0821 0 1 2
+$0619 0816 0 0 2
+$0816 0812 0 0 2
+$0812 0710 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0218 D9A4521-8  S Fl Ni              303 Na
+E-2           0312 E867444-2    Ni                 203 Na
+E-3           0415 CA65774-8    Ag Ri           B  724 Na
+Dukklane      0619 D998413-4    Ni                 224 Na
+Bahr          0812 A9A7000-B  N Ba Fl Lo Ni        622 Na
+Ammiuc        0816 D130567-6  S De Ni Po           803 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Freweiss SECTOR: Eweil Sector
+#
+# Jump-routes
+$1514 1613 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           1212 C668576-6  S Ag Ni           B  304 Na
+F-2           1216 C210A67-9    Hi Na              911 Na
+F-3           1319 D331254-9    Lo Ni Po           504 Na
+F-4           1416 B44857B-9  S Ag Ni           B  422 Na
+F-5           1514 A598345-D    Lo Ni              804 Na
+F-6           1517 C302310-A  S Ic Lo Ni Va        604 Na
+F-7           1612 D525885-4                       201 Na
+F-8           1613 B514100-8  N Ic Lo Ni           900 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ghorewei SECTOR: Eweil Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1717 X47499A-2    Hi In           R  304 Na
+G-2           1814 C986588-8  S Ag Ni              602 Na
+G-3           1915 B528787-8  S                    104 Na
+G-4           1919 C682420-9  S Ni                 414 Na
+G-5           2115 B00066A-8  N As Na Ni           620 Na
+G-6           2212 C84A200-A  S Lo Ni Wa           303 Na
+G-7           2316 C24259B-A    Ni Po              200 Na
+G-8           2318 A64667A-9  N Ag Ni           B  902 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Haeweih SECTOR: Eweil Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2512 C477405-A  S Ni                 304 Na
+H-2           2519 B444755-A  N Ag                 203 Na
+H-3           2815 B989675-A  2 Ni Ri           B  804 Na
+H-4           2817 D336334-7  S Lo Ni              804 Na
+H-5           2913 C337558-9  S Ni                 903 Na
+H-6           2917 E628320-6    Lo Ni              603 Na
+H-7           3011 C466768-4    Ag Ri              102 Na
+H-8           3114 B8C3855-7  N Fl              A  903 Na
+H-9           3211 C334100-9    Lo Ni              721 Na
+H-10          3217 E76A5A9-9    Ni Wa              905 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Iwewei SECTOR: Eweil Sector
+#
+# Jump-routes
+#
+$0821 0924 1 0 2
+$0821 0619 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0123 D87A753-8    Wa                 304 Na
+I-2           0226 C10058A-7    Ni Va              120 Na
+I-3           0524 C799444-6    Ni                 504 Na
+I-4           0525 E455444-8    Ni                 101 Na
+I-5           0721 C693486-7    Ni                 502 Na
+Illisse       0821 D746134-4  S Lo Ni              503 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jeweinn SECTOR: Eweil Sector
+#
+# Jump-routes
+#
+$1628 1831 1 1 2
+$1628 1326 0 0 2
+$1326 0924 0 0 2
+$0924 0821 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Gallazar      0924 D785265-5  S Lo Ni              603 Na
+J-2           1127 D434663-4  S Ni                 824 Na
+J-3           1129 B654888-9  N                    103 Na
+J-4           1223 C725469-9  S Ni                 103 Na
+J-5           1324 C75A968-A    Hi Wa              803 Na
+Xavaance      1326 C785402-8    Ni                 225 Na
+J-7           1424 D769431-4  S Ni                 602 Na
+J-8           1525 D130654-A    De Na Ni Po        420 Na
+Jarrza        1628 D581772-4  S Ri              B  601 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kleweiner SECTOR: Eweil Sector
+#
+# Jump-routes
+$1825 1926 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1726 E667654-6    Ag Ni Ri           114 Na
+K-2           1824 B322510-B    Ni Po              602 Na
+K-3           1825 BA8A464-C  N Ni Wa              901 Na
+K-4           1830 EA79300-8    Lo Ni              602 Na
+K-5           1921 DAA1845-7    Fl                 813 Na
+K-6           1926 B536663-B    Ni                 104 Na
+K-7           1929 C365640-5    Ag Ni Ri           704 Na
+K-8           2328 C647569-6  S Ag Ni              602 Na
+K-9           2330 B7B4842-7    Fl              A  113 Na
+K-10          2430 E325755-8                       500 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Linewei SECTOR: Eweil Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2524 C63879A-9  S                    313 Na
+L-2           2625 D879675-6  S Ni              B  604 Na
+L-3           2724 C242435-7    Ni Po              122 Na
+L-4           2822 B8489A5-B    Hi In              801 Na
+L-5           2824 C681549-7  S Ni                 813 Na
+L-6           2829 B9978BA-8  N                    600 Na
+L-7           2830 C84987B-9                    B  303 Na
+L-8           2925 D160556-6  S De Ni              101 Na
+L-9           2929 A9B5674-9    Fl Ni           A  301 Na
+L-10          3027 D99899A-6  S Hi In              400 Na
+L-11          3122 C450765-9    De Po              520 Na
+L-12          3126 D000320-7    As Lo Ni           104 Na
+L-13          3224 B487000-7    Ba Lo Ni           204 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Maneweim SECTOR: Eweil Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0232 C736697-6    Ni                 403 Na
+M-2           0233 B354766-B  N Ag                 404 Na
+M-3           0240 C9A136A-7  S Fl Lo Ni           300 Na
+M-4           0331 D69A233-5    Lo Ni Wa           921 Na
+M-5           0431 B878123-9    Lo Ni              413 Na
+M-6           0436 X763464-0                    R  400 Na
+M-7           0533 C564663-4    Ag Ni Ri           504 Na
+M-8           0837 D512643-5  S Ic Na Ni           503 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Neweita SECTOR: Eweil Sector
+#
+# Jump-routes
+$1332 1533 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0938 D00077A-7  S As Na           B  212 Na
+N-2           1236 C538001-7  S Lo Ni              212 Na
+N-3           1331 D455488-3    Ni                 713 Na
+N-4           1332 B472522-8  N Ni                 904 Na
+N-5           1338 C581997-9    Hi                 323 Na
+N-6           1434 C79AAAD-B  S Hi In Wa           403 Na
+N-7           1533 B100499-D    Ni Va              403 Na
+N-8           1537 C796310-9    Lo Ni              804 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Oseweil SECTOR: Eweil Sector
+#
+# Jump-routes
+#
+$2234 2636 1 0 2
+$2234 2033 0 0 2
+$2033 1831 0 0 2
+$1831 1628 -1 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1732 D422646-3  S Na Ni Po           823 Na
+Datryia       1831 E8A6998-8    Fl Hi              404 Na
+Ammioul       2033 E200746-3    Na Va              904 Na
+O-4           2137 B322333-8    Lo Ni Po           900 Na
+O-5           2139 C546664-7  S Ag Ni              613 Na
+O-6           2140 E526420-7    Ni                 214 Na
+Okra          2234 C7B1421-6  S Fl Ni           A  613 Na
+O-8           2238 C302310-A  S Ic Lo Ni Va        624 Na
+O-9           2239 C241631-9    Ni Po              704 Na
+O-10          2334 B427332-D  N Lo Ni              704 Na
+O-11          2337 X645336-1    Lo              R  902 Na
+O-12          2433 C535103-6    Lo Ni              404 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Peweil SECTOR: Eweil Sector
+#
+# Jump-routes
+#
+$3237 0238 1 0 2
+$3237 2837 0 0 2
+$2837 2636 0 0 2
+$2636 2234 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Ryantra       2636 C64999A-7  S Hi In              313 Na
+P-2           2637 C522348-7    Lo Ni Po           621 Na
+P-3           2736 C591785-3  S                    315 Na
+P-4           2834 C446577-6    Ag Ni           B  614 Na
+Picoolie      2837 C12099E-D    De Hi In Na Po     712 Na
+P-6           2838 B340203-A    De Lo Ni Po        403 Na
+P-7           3031 C572631-8    Ni                 423 Na
+P-8           3037 C6A1611-8    Fl Ni              802 Na
+P-9           3039 X250765-0    De Po           R  603 Na
+P-10          3132 B563102-8  2 Lo Ni              610 Na
+P-11          3134 C585720-6    Ag                 120 Na
+Tugashui      3237 C355300-B  S Lo Ni              814 Na
+

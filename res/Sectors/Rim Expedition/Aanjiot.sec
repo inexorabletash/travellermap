@@ -1,0 +1,426 @@
+Aanjiot Sector
+
+A: Aanjio                    a.dat
+B: Banjiot                   b.dat
+C: Claanji                   c.dat
+D: Draanji                   d.dat
+E: Ejiot                     e.dat
+F: Fijionn                   f.dat
+G: Gaanja                    g.dat
+H: Huiota                    h.dat
+I: Injinn                    i.dat
+J: Jaanja                    j.dat
+K: Kaanjiot                  k.dat
+L: Lijiok                    l.dat
+M: Maanji                    m.dat
+N: Nanjanna                  n.dat
+O: Ojiota                    o.dat
+P: Paan                      p.dat
+
+Bases:
+M = Elaharem Military
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Aanjio SECTOR: Aanjiot Sector
+#
+# Jump-routes
+$0107 0308 0 0
+$0204 0305 0 0
+$0305 0308 0 0
+#
+$0204 0107 0 0 11
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0107 A224846-C  N                    704 Na
+A-2           0204 B447363-8  S Lo Ni              704 Na
+A-3           0305 A7A1448-E  2 Fl Ni              402 Na
+A-4           0308 C100466-C    Ni Va              705 Na
+A-5           0803 D8B6778-6  S Fl              A  302 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Banjiot SECTOR: Aanjiot Sector
+#
+# Jump-routes
+$1102 1105 0 0
+#
+$1208 1311 0 1 2
+$1208 1105 0 0 2
+$1105 0902 0 0 2
+$0902 0938 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Wouipin       0902 D8A29DA-6  S Fl Hi              402 Na
+B-2           0905 E24578B-6    Ag                 202 Na
+B-3           1001 C89A202-A  S Lo Ni Wa           702 Na
+B-4           1101 C523652-6  S Na Ni Po           803 Na
+B-5           1102 C210651-7    Na Ni              303 Na
+Blogh         1105 A431002-E  N Lo Ni Po           303 Na
+Ramppa        1208 B544200-B    Lo Ni              403 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Claanji SECTOR: Aanjiot Sector
+#
+# Jump-routes
+$2209 2409 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1704 X495130-2    Lo              R  121 Na
+C-2           1802 B945000-9  N Ba Lo Ni           402 Na
+C-3           1903 X310321-0    Lo              R  513 Na
+C-4           1908 C889562-A  S Ni                 221 Na
+C-5           2003 C340200-B  S De Lo Ni Po        500 Na
+C-6           2006 C272473-9    Ni              B  603 Na
+C-7           2007 A140545-A  N De Ni Po           202 Na
+C-8           2103 C698366-4    Lo Ni              712 Na
+C-9           2208 C9B38A7-9    Fl              A  205 Na
+C-10          2209 B432656-D  N Na Ni Po           404 Na
+C-11          2210 D541965-7  S Hi In Po           615 Na
+C-12          2305 C362320-5    Lo Ni              723 Na
+C-13          2401 D749124-3    Lo Ni              204 Na
+C-14          2409 A633321-9  N Lo Ni Po           602 Na
+C-15          2410 E857310-5    Lo Ni              103 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Draanji SECTOR: Aanjiot Sector
+#
+# Jump-routes
+#
+$3202 3238 0 -1 10
+$3202 3206 0 0 10
+$3206 0408 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2702 C956673-5  S Ag Ni           B  504 Na
+D-2           2705 C888322-5    Lo Ni              402 Na
+D-3           3105 C478311-7  S Lo Ni              712 Na
+Arnavva       3202 E355530-6    Ag Ni              714 Na
+Dreena        3206 D333320-6  S Lo Ni Po           501 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ejiot SECTOR: Aanjiot Sector
+#
+# Jump-routes
+#
+$0613 0413 0 0 12
+$0613 0517 0 0 12
+$0517 0419 0 0 12
+$0517 0620 0 0 12
+$0419 0620 0 0 12
+$0620 0722 0 1 12
+$0613 0912 1 0 12
+$0517 0917 1 0 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0112 C200373-6    Lo Ni Va        B  805 Na
+E-2           0311 D432478-8  S Ni Po           B  314 Na
+E-3           0413 C100668-B  M Na Ni Va           113 Eg
+E-4           0419 B300100-D  M Lo Ni Va           103 Eg
+E-5           0420 E777310-4    Lo Ni              503 Eg
+E-6           0517 C657863-4                       603 Eg
+Elaharem      0613 A0009AB-H  M As Hi Na Cx        615 Eg
+E-8           0615 E6696B9-3    Ni                 513 Eg
+E-9           0618 E778656-3    Ag Ni              704 Eg
+E-10          0620 B665433-6    Ni                 402 Eg
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Fijionn SECTOR: Aanjiot Sector
+#
+# Jump-routes
+#
+$1419 1621 0 1 2
+$1419 1416 0 0 2
+$1416 1314 0 0 2
+$1314 1311 0 0 2
+$1311 1208 0 -1 2
+$0912 0613 -1 0 12
+$0912 1314 0 0 12
+$1416 1318 0 0 12
+$1318 0917 0 0 12
+$0917 0517 -1 0 12
+$1416 1716 1 0 12
+$1314 1716 1 0 12
+$1311 0912 0 0 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0912 C551433-8  M Ni Po              214 Eg
+F-2           0917 C79A566-7    Ni Wa              415 Eg
+F-3           1213 D200A99-9    Hi Na Va           601 Eg
+Hyamiena      1311 C343441-8    Ni Po              705 Eg
+Shotakk       1314 C6758CC-3                       611 Eg
+F-6           1318 C300640-7  M Na Ni Va           620 Eg
+Hatatt        1416 A989669-A  M Ni Ri              113 Eg
+Flowanni      1419 X100987-6    Hi Va           R  404 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Gaanja SECTOR: Aanjiot Sector
+#
+# Jump-routes
+#
+$1716 1416 -1 0 12
+$1716 1816 0 0 12
+$1716 1314 -1 0 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1716 C777954-8    Hi In              522 Eg
+G-2           1816 CA58520-4    Ag Ni              203 Eg
+G-3           2111 D492557-6  S Ni                 900 Na
+G-4           2113 D37159A-3  S Ni                 813 Na
+G-5           2412 C0008CG-6    As Na              703 Na
+G-6           2417 B686674-8  N Ag Ni Ri        B  413 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Huiota SECTOR: Aanjiot Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2513 C664365-4  S Lo Ni              323 Na
+H-2           2616 X223499-3    Po              R  702 Na
+H-3           2819 D222964-8  S Hi In Na Po        805 Na
+H-4           2911 C679ACC-A    Hi In              602 Na
+H-5           2918 C510525-9  S Ni                 812 Na
+H-6           3020 BAE527A-A  N Fl Lo Ni        B  700 Na
+H-7           3111 B220562-C    De Ni Po           412 Na
+H-8           3115 E11088D-5    Na                 703 Na
+H-9           3118 BA67020-A  N Lo Ni              313 Na
+H-10          3217 C87A584-B    Ni Wa              821 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Injinn SECTOR: Aanjiot Sector
+#
+# Jump-routes
+$0729 0731 0 1
+#
+$0722 0620 0 -1 12
+$0722 0623 0 0 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0124 C7B0758-9  S De              A  623 Na
+I-2           0125 A586566-C    Ag Ni              203 Na
+I-3           0225 D120474-5  S De Ni Po        B  304 Na
+I-4           0230 C200411-A    Ni Va              900 Na
+I-5           0321 C6B1343-8    Fl Lo Ni        A  724 Na
+I-6           0327 B656679-8  S Ag Ni           B  225 Na
+I-7           0330 C46369A-6  S Ni Ri              223 Na
+I-8           0429 E84A237-4    Lo Ni Wa           514 Na
+I-9           0623 C641667-7  M Ni Po              205 Eg
+I-10          0722 C23389A-8    Na Po              202 Eg
+I-11          0728 C414754-A    Ic                 501 Na
+I-12          0729 C6B1332-7    Fl Lo Ni        A  725 Na
+I-13          0827 C452467-7    Ni Po              604 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jaanja SECTOR: Aanjiot Sector
+#
+# Jump-routes
+$1621 1723 1 0
+#
+$1621 1723 1 0 2
+$1621 1419 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           1230 B210248-C    Lo Ni              802 Na
+J-2           1321 C7B2547-A  S Fl Ni           A  102 Na
+J-3           1322 C869276-5    Lo Ni           B  122 Na
+J-4           1323 B200432-A  S Ni Va              103 Na
+J-5           1330 D77A410-4  S Ni Wa              324 Na
+J-6           1428 C889259-9    Lo Ni              601 Na
+Jaaull        1621 B6558A9-9                       212 Na
+J-8           1628 C535400-8  S Ni                 802 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kaanjiot SECTOR: Aanjiot Sector
+#
+# Jump-routes
+$1723 1621 -1 0
+#
+$2424 2727 1 0 2
+$2424 2022 0 0 2
+$2022 1723 0 0 2
+$1723 1621 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Anware        1723 A89A58B-A  N Ni Wa              604 Na
+K-2           1830 B448585-9    Ag Ni              603 Na
+K-3           2021 C474423-7  S Ni                 800 Na
+Teilnan       2022 X529424-0                    R  421 Na
+K-5           2028 C251344-A    Lo Ni Po           323 Na
+K-6           2123 A749674-8  2 Ni              B  702 Na
+K-7           2225 BAD5764-8  N Fl                 624 Na
+Kronerin      2424 X88A513-2    Wa              R  911 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lijiok SECTOR: Aanjiot Sector
+#
+# Jump-routes
+$2825 2927 0 0
+#
+$2630 2933 0 1 2
+$2630 2727 0 0 2
+$2727 2424 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2521 C753413-5  S Ni Po              503 Na
+Ziecca        2630 C663686-8    Ni Ri              701 Na
+Liladl        2727 C8A4246-9  S Fl Lo Ni           103 Na
+L-4           2825 A210535-C    Ni                 604 Na
+L-5           2927 B585783-9    Ag Ri              504 Na
+L-6           3025 CAC988A-8  S Fl              A  123 Na
+L-7           3026 C567766-3    Ag Ri              405 Na
+L-8           3222 C3009AB-8    Hi Na Va           112 Na
+L-9           3225 E484358-9    Lo Ni              904 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Maanji SECTOR: Aanjiot Sector
+#
+# Jump-routes
+$0731 0729 0 -1
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0232 C765763-3  S Ag Ri              404 Na
+M-2           0239 B637510-8    Ni                 422 Na
+M-3           0240 A254400-B    Ni                 534 Na
+M-4           0438 E95A579-7    Ni Wa           B  704 Na
+M-5           0535 C200698-9  S Na Ni Va           104 Na
+M-6           0536 C656843-8  S                    804 Na
+M-7           0539 C532105-9    Lo Ni Po           403 Na
+M-8           0636 C513962-8    Hi Ic Na           720 Na
+M-9           0731 B8A5834-7  S Fl                 103 Na
+M-10          0736 C6B3243-5  S Fl Lo Ni        A  502 Na
+M-11          0833 E766346-5    Lo Ni              104 Na
+M-12          0837 C668130-9  S Lo Ni              504 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nanjanna SECTOR: Aanjiot Sector
+#
+# Jump-routes
+$1438 1539 0 0
+#
+$1635 1734 1 0 11
+$1635 1736 1 0 11
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           1234 C83468C-8  S Ni                 102 Na
+N-2           1240 C160486-7    De Ni              313 Na
+N-3           1332 C130795-8  S De Na Po           524 Na
+N-4           1438 B77A8AE-A  S Wa                 102 Na
+N-5           1539 B7828BB-A                       614 Na
+N-6           1635 C68435A-5    Lo Ni              602 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ojiota SECTOR: Aanjiot Sector
+#
+# Jump-routes
+$1734 1736 0 0
+#
+$1734 1635 -1 0 11
+$1736 1738 0 0 11
+$1736 1937 0 0 11
+$1736 1635 -1 0 11
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1734 A458957-E  S Hi                 504 Na
+O-2           1736 C88AACE-E    Hi Wa              603 Na
+O-3           1738 C67A8AB-8    Wa                 212 Na
+O-4           1740 C000022-A    As Lo Ni           914 Na
+O-5           1937 C669000-6    Ba Lo Ni           300 Na
+O-6           2037 B89769D-5  2 Ag Ni              103 Na
+O-7           2038 B33289C-7  S Na Po              104 Na
+O-8           2135 B7B8424-8  2 Fl Ni           A  503 Na
+O-9           2431 A663666-9    Ni Ri              505 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Paan SECTOR: Aanjiot Sector
+#
+# Jump-routes
+#
+$2936 0138 1 0 2
+$2936 2933 0 0 2
+$2933 2630 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2539 C769213-8  S Lo Ni              504 Na
+P-2           2831 C886752-4    Ag Ri              410 Na
+Bienvas       2933 C694356-8    Lo Ni              703 Na
+Gitriel       2936 C535301-8    Lo Ni              104 Na
+P-5           3140 B9B8445-9    Fl Ni           A  200 Na
+P-6           3232 C320434-9    De Ni Po           614 Na
+

@@ -1,0 +1,296 @@
+Yakli Sector
+
+A: Akli                      a.dat
+B: Baykli                    b.dat
+C: Cayvass                   c.dat
+D: Danli                     d.dat
+E: Eiklie                    e.dat
+F: Fazzie                    f.dat
+G: Ganyi                     g.dat
+H: Hadlie                    h.dat
+I: Iklak                     i.dat
+J: Jailai                    j.dat
+K: Kandieer                  k.dat
+L: Layli                     l.dat
+M: Miyak                     m.dat
+N: Nazay                     n.dat
+O: Oilie                     o.dat
+P: Payil                     p.dat
+
+Bases:
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Akli SECTOR: Yakli Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0109 C9C8658-8    Fl Ni           A  522 Na
+A-2           0305 E310200-9    Lo Ni              900 Na
+A-3           0706 C656444-5  S Ni                 903 Na
+A-4           0809 D5A189B-2  S Fl                 814 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Baykli SECTOR: Yakli Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           0902 B45495A-B    Hi                 902 Na
+B-2           1205 E482220-8    Lo Ni              714 Na
+B-3           1301 A738878-A  N                 B  505 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Cayvass SECTOR: Yakli Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1705 C689775-9    Ri              B  503 Na
+C-2           2103 E7C679A-7    Fl              A  721 Na
+C-3           2201 B0008CB-D    As Na              405 Na
+C-4           2401 C234111-A    Lo Ni              615 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Danli SECTOR: Yakli Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2605 A337567-A  N Ni                 420 Na
+D-2           2908 C76A204-7  S Lo Ni Wa           504 Na
+D-3           3001 A246411-9    Ni                 611 Na
+D-4           3105 D466242-8  S Lo Ni              115 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Eiklie SECTOR: Yakli Sector
+#
+# Jump-routes
+$0717 0719 0 0
+$0719 0820 0 0
+$0719 0722 0 1
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0717 A374223-E  N Lo Ni              403 Na
+E-2           0719 B375120-A  S Lo Ni              314 Na
+E-3           0820 C766223-7  S Lo Ni              202 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Fazzie SECTOR: Yakli Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           1415 A550778-7  N De Po           B  502 Na
+F-2           1611 E5578CH-6                       803 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ganyi SECTOR: Yakli Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1712 D512563-8  S Ic Ni              423 Na
+G-2           2019 C567472-8    Ni              B  404 Na
+G-3           2215 E413762-4    Ic Na              404 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hadlie SECTOR: Yakli Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2612 C30447C-6    Ic Ni Va        B  100 Na
+H-2           2618 B37048C-C    De Ni              604 Na
+H-3           2716 C230766-9  S De Na Po           322 Na
+H-4           3217 C477574-6    Ag Ni           B  403 Na
+H-5           3220 D210688-8  S Na Ni              104 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Iklak SECTOR: Yakli Sector
+#
+# Jump-routes
+$0722 0719 0 -1
+$0224 0226 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0128 C320351-7  S De Lo Ni Po        104 Na
+I-2           0224 B100433-B  2 Ni Va              814 Na
+I-3           0226 C231226-6    Lo Ni Po           503 Na
+I-4           0228 B100220-A    Lo Ni Va           805 Na
+I-5           0623 C756686-7  S Ag Ni              114 Na
+Iklak         0722 A100667-F    Na Ni Va           804 Na
+I-7           0723 C585497-9  S Ni                 933 Na
+I-8           0729 C344400-9    Ni                 604 Na
+I-9           0827 C463200-9    Lo Ni              620 Na
+I-10          0829 C638363-5    Lo Ni              905 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jailai SECTOR: Yakli Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           1027 C410875-5  S Na              B  803 Na
+J-2           1226 C675301-6  S Lo Ni              203 Na
+J-3           1523 X441559-4    Po              R  904 Na
+J-4           1626 C3329A8-7    Hi In Na Po        710 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kandieer SECTOR: Yakli Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1726 E468562-6    Ag Ni              913 Na
+K-2           1829 C462123-9  S Lo Ni              802 Na
+K-3           1923 C895656-7    Ag Ni              904 Na
+K-4           1927 B150655-A  S De Ni Po           323 Na
+K-5           2026 D410263-5    Lo Ni              920 Na
+K-6           2322 E326222-4    Lo Ni              604 Na
+K-7           2328 C783654-5    Ni Ri              411 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Layli SECTOR: Yakli Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2924 D3106AA-3    Na Ni              314 Na
+L-2           3123 C692479-5    Ni              B  301 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Miyak SECTOR: Yakli Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0132 C773501-A    Ni                 415 Na
+M-2           0438 C355546-A  S Ag Ni              302 Na
+M-3           0538 D662968-5    Hi                 904 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nazay SECTOR: Yakli Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           1431 C333343-8  S Lo Ni Po           904 Na
+N-2           1631 D557662-2  S Ag Ni              913 Na
+N-3           1637 B696343-A    Lo Ni              602 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Oilie SECTOR: Yakli Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1731 C250854-5  S De Po              103 Na
+O-2           2038 B7A5875-B    Fl              B  613 Na
+O-3           2332 C626420-8    Ni                 623 Na
+O-4           2437 C410445-8  S Ni                 103 Na
+O-5           2439 E557898-4                       814 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Payil SECTOR: Yakli Sector
+#
+# Jump-routes
+$3137 3139 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2834 C345668-4    Ag Ni              803 Na
+P-2           3137 B000520-E    As Ni              715 Na
+P-3           3139 C374675-7  S Ag Ni           B  624 Na
+P-4           3231 C9A9789-5    Fl                 704 Na
+

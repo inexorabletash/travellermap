@@ -1,0 +1,1033 @@
+Ataurre
+
+A: Ataur                     a.dat
+B: Baurre                    b.dat
+C: Catauk                    c.dat
+D: Daurtee                   d.dat
+E: Erruat                    e.dat
+F: Flataur                   f.dat
+G: Ghaurrge                  g.dat
+H: Hurrek                    h.dat
+I: Itaurres                  i.dat
+J: Jataum                    j.dat
+K: Klatau                    k.dat
+L: Laurrex                   l.dat
+M: Muarred                   m.dat
+N: Natuaan                   n.dat
+O: Otauna                    o.dat
+P: Pretau                    p.dat
+
+Bases:
+A = Itaurrec Navy
+B = Itaurrec Scout
+C = Itaurrec Navy & Scout
+D = Itaurrec Army
+E = Hillayag Navy
+F = Hillayag Scout
+G = Hillayag Navy & Scout
+H = Hillayag Army
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+12 Hi = Hillayag Federation
+14 It = Itaurrec Unification
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ataur SECTOR: Ataurre
+#
+# Jump-routes
+#
+$0809 0512 0 1 14
+$0809 0708 0 0 14
+$0702 0903 1 0 14
+$0702 0504 0 0 14
+$0504 0403 0 0 14
+$0504 0605 0 0 14
+$0605 0708 0 0 14
+$0809 1110 1 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0102 C85A655-8  A Ni Wa              400 It
+A-2           0107 E778346-7    Lo Ni              903 It
+A-3           0109 C9B299B-8    Fl Hi           A  503 It
+A-4           0204 D100796-6  D Na Va              224 It
+A-5           0208 C5469DB-4    Hi In              213 It
+A-6           0301 E8A9435-5    Fl Ni              900 It
+A-7           0303 E352201-8    Lo Ni Po           714 It
+A-8           0305 C95669B-3    Ag Ni              201 It
+A-9           0307 D77A7BF-7  A Wa                 234 It
+A-10          0309 C432855-B    Na Po              513 It
+A-11          0402 D541442-7  B Ni Po              302 It
+A-12          0403 B310100-B    Lo Ni              312 It
+A-13          0404 C673432-5    Ni                 600 It
+A-14          0408 E00077A-9    As Na           B  524 Na
+A-15          0410 C234422-7  B Ni                 603 It
+A-16          0501 C372212-9    Lo Ni              804 It
+A-17          0504 A456520-9    Ag Ni              703 It
+A-18          0505 C512422-A  B Ic Ni              613 It
+A-19          0507 C855558-6  A Ag Ni              723 It
+A-20          0508 C310421-9    Ni                 204 It
+A-21          0510 D6766AA-2  A Ag Ni              303 It
+A-22          0604 E400502-6    Ni Va              313 It
+A-23          0605 C9EA764-A    Fl Wa              703 It
+A-24          0606 C748365-9  B Lo Ni              504 It
+A-25          0607 E8A6678-7    Fl Ni           B  204 Na
+A-26          0610 E150478-9    De Ni Po        B  502 Na
+A-27          0702 A314120-E    Ic Lo Ni           604 It
+A-28          0705 C000866-6  D As Na              903 It
+A-29          0708 B86A445-B  B Ni Wa              503 It
+A-30          0710 C87A225-9  B Lo Ni Wa           903 It
+A-31          0801 C440569-7    De Ni Po           904 It
+A-32          0802 B300421-A    Ni Va              124 It
+A-33          0809 B665454-C    Ni                 204 It
+A-34          0810 C436154-B    Lo Ni              823 It
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Baurre SECTOR: Ataurre
+#
+# Jump-routes
+#
+$1110 0913 0 1 14
+$1110 1209 0 0 14
+$1209 1006 0 0 14
+$1006 1004 0 0 14
+$1004 1105 0 0 14
+$1004 0903 0 0 14
+$0903 1001 0 0 14
+$0903 0702 -1 0 14
+$1110 0809 -1 0 14
+$1001 1401 0 0 14
+$1401 1603 0 0 14
+$1603 1405 0 0 14
+$1405 1105 0 0 14
+$1405 1508 0 0 14
+$1508 1609 0 0 14
+$1609 1411 0 1 14
+$1110 1411 0 1 14
+$1609 1811 1 1 14
+$1609 1709 1 0 14
+$1603 1802 1 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           0902 D413553-5  A Ic Ni              724 It
+B-2           0903 A524000-C    Ba Lo Ni           100 It
+B-3           0904 C986336-5    Lo Ni              304 It
+B-4           0906 A20047A-F    Ni Va           B  414 Na
+B-5           0907 X9A887A-2    Fl              R  720 Na
+B-6           1001 B130755-E  A De Na Po           204 It
+B-7           1002 C8B4322-8  B Fl Lo Ni           923 It
+B-8           1004 B9A5764-8  C Fl                 312 It
+B-9           1005 C646543-6  A Ag Ni              603 It
+B-10          1006 B24426B-C    Lo Ni              700 It
+B-11          1007 C685441-7    Ni                 101 It
+B-12          1010 C34067A-6    De Ni Po        B  103 Na
+B-13          1102 C466456-8    Ni                 204 It
+B-14          1104 C7A057A-A    De Ni           B  904 Na
+B-15          1105 A95A79B-9  A Wa                 103 It
+B-16          1106 C684300-7  B Lo Ni              321 It
+B-17          1110 B9A4448-8    Fl Ni              801 It
+B-18          1207 E994010-6    Lo Ni              724 It
+B-19          1208 C7B1444-A  B Fl Ni           A  903 It
+B-20          1209 B887536-6  D Ag Ni              820 It
+B-21          1303 D100612-9    Na Ni Va           604 It
+B-22          1304 C545566-6    Ag Ni              704 It
+B-23          1307 X454111-0    Lo              R  624 Na
+B-24          1401 B1308AC-8  D De Na Po           911 It
+B-25          1404 C336648-9    Ni                 404 It
+B-26          1405 A000510-D  A As Ni              414 It
+B-27          1409 C8D3020-4  B Fl Lo Ni           510 It
+B-28          1410 X759533-1                    R  701 Na
+B-29          1502 C6468A6-7                       905 It
+B-30          1506 C310305-C    Lo Ni              704 It
+B-31          1507 D44898A-6  A Hi In              302 It
+B-32          1508 B567688-A  D Ag Ni Ri           220 It
+B-33          1509 C224563-6    Ni                 312 It
+B-34          1510 E533534-4    Ni Po              202 It
+B-35          1601 C7B1A79-8    Fl Hi           A  203 It
+B-36          1602 C300732-5    Na Va              504 It
+B-37          1603 A120331-B    De Lo Ni Po        623 It
+B-38          1606 E210358-9    Lo Ni              204 It
+B-39          1608 E424895-7                       505 It
+B-40          1609 A300983-F    Hi Na Va           703 It
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Catauk SECTOR: Ataurre
+#
+# Jump-routes
+#
+$1709 1609 -1 0 14
+$1709 1909 0 0 14
+$1909 1811 0 1 14
+$2208 2510 1 0 14
+$2208 1909 0 0 14
+$1802 1603 -1 0 14
+$1802 2002 0 0 14
+$2002 2101 0 0 14
+$2101 2402 0 0 14
+$2208 2206 0 0 14
+$2402 2604 1 0 14
+$2206 2205 0 0 14
+$2205 2002 0 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1708 C888515-6  D Ag Ni              703 It
+C-2           1709 A9BA785-E    Fl Wa           A  502 It
+C-3           1801 A8A4222-9    Fl Lo Ni           604 It
+C-4           1802 B422444-D  B Ni Po              904 It
+C-5           1803 X635742-2                    R  602 Na
+C-6           1806 X327465-0                    R  612 Na
+C-7           1807 E252452-8    Ni Po              200 It
+C-8           1810 X676566-0    Ag              R  200 Na
+C-9           1903 C64578A-7    Ag                 604 It
+C-10          1905 D580447-5    De Ni              513 It
+C-11          1909 B785434-6    Ni                 614 It
+C-12          2001 C959543-7    Ni                 703 It
+C-13          2002 A000431-C  B As Ni              914 It
+C-14          2003 D552668-4  D Ni Po              505 It
+C-15          2004 C9C6510-7  A Fl Ni           A  501 It
+C-16          2005 E576676-6    Ag Ni           B  904 Na
+C-17          2007 C567224-9    Lo Ni              301 It
+C-18          2008 C887258-9  B Lo Ni              712 It
+C-19          2009 C261474-9    Ni              B  614 Na
+C-20          2101 A575463-9  B Ni                 602 It
+C-21          2110 C77A6A6-6    Ni Wa              202 It
+C-22          2205 C95A7A7-9  A Wa                 402 It
+C-23          2206 B899500-8  A Ni                 313 It
+C-24          2208 B99879A-9    Ag                 420 It
+C-25          2209 C6A6444-8    Fl Ni              113 It
+C-26          2301 C695447-4    Ni                 404 It
+C-27          2304 D44457A-5    Ag Ni           B  801 Na
+C-28          2308 E555100-4    Lo Ni              403 It
+C-29          2402 B203AAA-E  A Hi Ic Na Va        204 It
+C-30          2403 C554220-7    Lo Ni              403 It
+C-31          2405 E5668DG-4                       302 It
+C-32          2406 CAAA964-9  A Fl Hi Wa           412 It
+C-33          2407 E7A3567-6    Fl Ni              523 It
+C-34          2408 D521849-3  D Na Po              704 It
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Daurtee SECTOR: Ataurre
+#
+# Jump-routes
+#
+$2510 2511 0 1 14
+$2510 2208 -1 0 14
+$2510 2807 0 0 14
+$2807 3108 0 0 14
+$2807 2805 0 0 14
+$2805 2604 0 0 14
+$2604 2801 0 0 14
+$2604 2402 -1 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2503 C5A0425-7    De Ni              114 It
+D-2           2507 C79A99A-A  A Hi In Wa           305 It
+D-3           2509 E666220-5    Lo Ni              910 It
+D-4           2510 B889200-C  B Lo Ni              403 It
+D-5           2602 C251458-B    Ni Po              521 It
+D-6           2604 A899346-D    Lo Ni              814 It
+D-7           2605 C8A4226-6    Fl Lo Ni           303 It
+D-8           2606 E569542-5    Ni                 604 It
+D-9           2610 E521016-2    Lo Ni Po           804 It
+D-10          2701 C769769-5  A Ri                 302 It
+D-11          2702 C9B0435-6  B De Ni           A  713 It
+D-12          2703 C669599-A    Ni                 722 It
+D-13          2704 C454524-6    Ag Ni              723 It
+D-14          2705 A646340-D  B Lo Ni              810 It
+D-15          2706 C120255-A    De Lo Ni Po        103 It
+D-16          2708 C547336-8    Lo Ni              314 It
+D-17          2709 D776455-5  B Ni                 503 It
+D-18          2710 E4467BC-6    Ag                 200 It
+D-19          2801 A333555-D  D Ni Po              804 It
+D-20          2802 CAC8969-7  A Fl Hi           A  122 It
+D-21          2804 D460856-8    De Ri              504 It
+D-22          2805 B443657-7    Ni Po              400 It
+D-23          2807 B699536-A    Ni                 600 It
+D-24          2902 E300673-8    Na Ni Va        B  723 Na
+D-25          2904 C685755-5  C Ag Ri              703 It
+D-26          2908 D6B3533-6  A Fl Ni           A  314 It
+D-27          2910 C77846A-7    Ni                 500 It
+D-28          3008 C250720-6  D De Po              705 It
+D-29          3105 D663497-4  B Ni                 824 It
+D-30          3107 C52066A-4    De Na Ni Po        625 It
+D-31          3108 B7A0510-8  A De Ni              933 It
+D-32          3110 C100531-A    Ni Va              110 It
+D-33          3203 C532323-8  B Lo Ni Po           702 It
+D-34          3206 E86A587-5    Ni Wa              412 It
+D-35          3207 C545587-7    Ag Ni              110 It
+D-36          3209 C764249-7    Lo Ni              903 It
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Erruat SECTOR: Ataurre
+#
+# Jump-routes
+#
+$0114 3213 -1 0 14
+$0317 3219 -1 0 14
+$0317 0114 0 0 14
+$0317 0515 0 0 14
+$0515 0512 0 0 14
+$0114 0312 0 0 14
+$0312 0311 0 0 14
+$0311 0512 0 0 14
+$0512 0809 0 -1 14
+$0512 0913 1 0 14
+$0515 0915 1 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0112 C441597-9  A Ni Po              911 It
+E-2           0114 B667436-9  B Ni                 703 It
+E-3           0116 C537635-5  A Ni                 804 It
+E-4           0118 C410967-8  D Hi Na              900 It
+E-5           0211 X54688A-0                    R  614 Na
+E-6           0212 C7A0586-6    De Ni              204 It
+E-7           0214 C110120-B    Lo Ni              913 It
+E-8           0217 D51168D-7  A Ic Na Ni           822 It
+E-9           0219 C556647-8    Ag Ni              904 It
+E-10          0311 B100410-B  B Ni Va              204 It
+E-11          0312 B786322-9    Lo Ni              103 It
+E-12          0314 C333534-7    Ni Po              103 It
+E-13          0315 E775664-6    Ag Ni              503 It
+E-14          0316 E592100-6    Lo Ni              103 It
+E-15          0317 B586400-7  B Ni                 212 It
+E-16          0319 C547340-4  B Lo Ni              512 It
+E-17          0411 C483226-7    Lo Ni              904 It
+E-18          0412 E655444-3    Ni                 513 It
+E-19          0416 X556425-0                    R  804 Na
+E-20          0418 E99A564-7    Ni Wa              502 It
+E-21          0420 C444321-8  B Lo Ni              800 It
+E-22          0512 B65A000-A    Ba Lo Ni Wa        523 It
+E-23          0513 D568301-4    Lo Ni              831 It
+E-24          0514 C000453-C    As Ni              502 It
+E-25          0515 A636522-E  A Ni                 614 It
+E-26          0517 C510420-A    Ni                 100 It
+E-27          0519 C5A2544-5    Fl Ni              104 It
+E-28          0520 D637301-6  B Lo Ni              811 It
+E-29          0616 D87A204-6    Lo Ni Wa           802 It
+E-30          0619 C535675-9    Ni                 424 It
+E-31          0711 E401000-8    Ba Ic Lo Ni Va     202 It
+E-32          0712 C566777-6    Ag Ri           B  400 Na
+E-33          0713 C503320-7    Ic Lo Ni Va        313 It
+E-34          0720 E465564-7    Ag Ni              604 It
+E-35          0812 C2236A9-A  D Na Ni Po           801 It
+E-36          0816 E322A67-7    Hi In Na Po        920 It
+E-37          0818 C200A65-9    Hi Na Va           314 It
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Flataur SECTOR: Ataurre
+#
+# Jump-routes
+#
+$0913 0512 -1 0 14
+$0915 0515 -1 0 14
+$0913 1110 0 -1 14
+$1411 1609 0 -1 14
+$1411 1110 0 -1 14
+$1411 1413 0 0 14
+$1413 1516 0 0 14
+$1516 1517 0 0 14
+$1517 1618 0 0 14
+$1618 1619 0 0 14
+$1619 1520 0 0 14
+$0915 1214 0 0 14
+$0913 1214 0 0 14
+$1214 1517 0 0 14
+$1520 1521 0 1 14
+$1520 1121 0 1 14
+$1517 1715 1 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0911 C686368-9  B Lo Ni              915 It
+F-2           0912 C8B258A-6  D Fl Ni           A  904 It
+F-3           0913 B76A537-C  A Ni Wa              524 It
+F-4           0915 B201158-C    Ic Lo Ni Va        214 It
+F-5           0918 CA9A433-B    Ni Wa              303 It
+F-6           1017 D410514-7  A Ni                 513 It
+F-7           1112 C899336-8    Lo Ni              414 It
+F-8           1114 A898335-B  B Lo Ni              203 It
+F-9           1116 C6B4304-9    Fl Lo Ni        A  402 It
+F-10          1118 C744788-5    Ag                 523 It
+F-11          1119 C400440-B  B Ni Va              600 It
+F-12          1213 A6A0775-A    De              B  703 Na
+F-13          1214 A310410-D  B Ni                 214 It
+F-14          1215 C231387-6  B Lo Ni Po           204 It
+F-15          1219 C322630-5  D Na Ni Po           911 It
+F-16          1220 C552226-4    Lo Ni Po           124 It
+F-17          1314 E358677-6    Ag Ni           B  500 Na
+F-18          1316 E511154-7    Ic Lo Ni           100 It
+F-19          1317 C459333-7  B Lo Ni              710 It
+F-20          1319 C75A522-A  A Ni Wa              500 It
+F-21          1411 B210401-E  B Ni                 812 It
+F-22          1412 C97A997-9  A Hi In Wa           304 It
+F-23          1413 B636989-A  D Hi In              403 It
+F-24          1414 C4307CF-A  A De Na Po           414 It
+F-25          1513 C8C4777-9    Fl              B  123 Na
+F-26          1514 C430668-9    De Na Ni Po        603 It
+F-27          1515 D465100-8  B Lo Ni              601 It
+F-28          1516 A257011-A  B Lo Ni              702 It
+F-29          1517 B5A3ABB-D  D Fl Hi              622 It
+F-30          1519 E88A533-5    Ni Wa              910 It
+F-31          1520 A767634-8    Ag Ni              103 It
+F-32          1614 D994552-7  A Ag Ni              312 It
+F-33          1617 D221ADB-9  C Hi In Na Po        703 It
+F-34          1618 A775532-D    Ag Ni              402 It
+F-35          1619 B98A654-8  A Ni Ri Wa           910 It
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ghaurrge SECTOR: Ataurre
+#
+# Jump-routes
+#
+$2418 2322 0 1 14
+$2418 2417 0 0 14
+$2417 2414 0 0 14
+$2417 2217 0 0 14
+$2217 2118 0 0 14
+$2118 2016 0 0 14
+$2016 1715 0 0 14
+$2118 2017 0 0 14
+$1715 1811 0 0 14
+$1811 1812 0 0 14
+$1715 1517 -1 0 14
+$1811 1609 -1 -1 14
+$1811 1909 0 -1 14
+$2414 2511 1 0 14
+$2417 2516 1 0 14
+$2414 2516 1 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1715 A301735-9  D Ic Na Va           224 It
+G-2           1718 E7A0437-4    De Ni              604 It
+G-3           1719 E472435-5    Ni                 704 It
+G-4           1720 X452104-2    Lo Po           R  503 Na
+G-5           1811 B4609BF-D  D De Hi              803 It
+G-6           1812 B557232-6  B Lo Ni              501 It
+G-7           1816 C659210-A  B Lo Ni              903 It
+G-8           1818 C310546-8    Ni                 715 It
+G-9           1819 E88A77B-8    Ri Wa           B  512 Na
+G-10          1915 C363200-9    Lo Ni              313 It
+G-11          1917 C3546BB-9  A Ag Ni              900 It
+G-12          1920 C110100-B    Lo Ni              510 It
+G-13          2011 C778448-8  B Ni                 803 It
+G-14          2013 C7C19A8-A    Fl Hi           A  910 It
+G-15          2015 C787777-8    Ag Ri           B  703 Na
+G-16          2016 B331000-B  B Ba Lo Ni Po        405 It
+G-17          2017 B749554-8  A Ni                 431 It
+G-18          2019 C584768-3  D Ag Ri              401 It
+G-19          2020 D765632-5  A Ag Ni              300 It
+G-20          2112 D889658-8    Ni Ri              801 It
+G-21          2116 C301697-8  D Ic Na Ni Va        602 It
+G-22          2117 B634679-A    Ni              B  200 Na
+G-23          2118 B635558-B  A Ni                 301 It
+G-24          2120 C636420-6  B Ni                 222 It
+G-25          2212 X485757-2    Ag Ri           R  404 Na
+G-26          2214 C353887-6    Po                 510 It
+G-27          2217 B5766AC-A  D Ag Ni              913 It
+G-28          2219 C413A59-B    Hi Ic Na           114 It
+G-29          2220 D251336-5  B Lo Ni Po           503 It
+G-30          2313 C449214-9  B Lo Ni              303 It
+G-31          2316 B467751-8    Ag Ri              105 It
+G-32          2317 C452736-6    Po                 804 It
+G-33          2412 D635678-7    Ni              B  401 Na
+G-34          2413 C3216AA-8  D Na Ni Po           433 It
+G-35          2414 B676589-7  A Ag Ni              713 It
+G-36          2417 A9C5343-B    Fl Lo Ni           804 It
+G-37          2418 BA8A8AB-9    Wa                 613 It
+G-38          2420 C200655-B  A Na Ni Va           201 It
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hurrek SECTOR: Ataurre
+#
+# Jump-routes
+#
+$2511 2414 -1 0 14
+$2511 2510 0 -1 14
+$2516 2417 -1 0 14
+$2516 2414 -1 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2511 B414ADB-9  D Hi Ic              303 It
+H-2           2512 D99A302-7    Lo Ni Wa           304 It
+H-3           2515 E100646-7    Na Ni Va           803 It
+H-4           2516 B744640-A  A Ag Ni              302 It
+H-5           2517 B000579-C    As Ni           B  311 Na
+H-6           2518 C55358A-9    Ni Po              913 It
+H-7           2519 C535000-8  B Ba Lo Ni           122 It
+H-8           2520 E585566-6    Ag Ni              703 It
+H-9           2612 C000589-7    As Ni              204 It
+H-10          2615 D566698-3  A Ag Ni Ri           703 It
+H-11          2617 C623201-6    Lo Ni Po           423 It
+H-12          2618 D67378B-3  C                    312 It
+H-13          2712 C5118AA-8    Ic Na              904 It
+H-14          2713 E2327A8-4    Na Po              505 It
+H-15          2715 C989556-A    Ni                 402 It
+H-16          2716 X572437-0                    R  203 Na
+H-17          2718 X533547-4    Po              R  603 Na
+H-18          2719 E666103-7    Lo Ni              403 It
+H-19          2720 C100779-A    Na Va           B  812 Na
+H-20          2811 C445569-5  A Ag Ni              814 It
+H-21          2812 C310469-9    Ni                 902 It
+H-22          2813 X984757-2    Ag Ri           R  303 Na
+H-23          2815 C9D8589-5  A Fl Ni              213 It
+H-24          2816 C533231-9  B Lo Ni Po           700 It
+H-25          2817 C697223-8    Lo Ni              921 It
+H-26          2819 C9D1889-4    Fl                 900 It
+H-27          2916 C260854-7  D De Ri              820 It
+H-28          2918 A345667-A  D Ag Ni              302 It
+H-29          2920 C45689A-9                       434 It
+H-30          3011 B631102-8  B Lo Ni Po           700 It
+H-31          3015 C689567-8  A Ni                 512 It
+H-32          3017 C96827C-9    Lo Ni           B  404 Na
+H-33          3114 C476998-8  A Hi In              201 It
+H-34          3116 C515445-8    Ic Ni              701 It
+H-35          3117 D577240-2  B Lo Ni              304 It
+H-36          3118 D77A400-8  B Ni Wa              915 It
+H-37          3211 C000320-C  B As Lo Ni           513 It
+H-38          3214 C130101-C  B De Lo Ni Po        610 It
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Itaurres SECTOR: Ataurre
+#
+# Jump-routes
+#
+$0429 0731 0 1 14
+$0821 1121 1 0 14
+$0821 0522 0 0 14
+$0522 0525 0 0 14
+$0525 0326 0 0 14
+$0326 0325 0 0 14
+$0325 0123 0 0 14
+$0123 3222 -1 0 14
+$0326 3224 -1 0 14
+$0326 0429 0 0 14
+$0825 0525 0 0 14
+$0825 0821 0 0 14
+$0825 0726 0 0 14
+$0825 0826 0 0 14
+$0825 1125 1 0 14
+$0825 1026 1 0 14
+$0226 3224 -1 0 10
+$0226 0427 0 0 10
+$0427 0829 0 0 10
+$0829 1230 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0123 B686857-9  D Ri                 203 It
+I-2           0126 E655666-6    Ag Ni              104 It
+I-3           0128 E565552-5    Ag Ni              504 It
+I-4           0129 C7B247A-A    Fl Ni           A  415 It
+I-5           0130 D453688-4    Ni Po              303 It
+I-6           0221 C465302-7    Lo Ni              610 It
+I-7           0223 CAA7000-5  B Ba Fl Lo Ni        823 It
+Staffad       0226 E696355-5    Lo Ni              601 It
+I-9           0229 C657321-5  B Lo Ni              323 It
+I-10          0230 E120100-A    De Lo Ni Po        414 It
+I-11          0321 D568598-7  A Ag Ni              714 It
+I-12          0322 D68399C-6  D Hi                 723 It
+I-13          0324 D623300-6    Lo Ni Po           700 It
+I-14          0325 A7A4547-B    Fl Ni              101 It
+I-15          0326 B100544-D    Ni Va              802 It
+I-16          0327 B6A0476-A    De Ni           B  203 Na
+I-17          0330 D331531-6  A Ni Po              402 It
+I-18          0421 C9B5664-6  A Fl Ni           A  224 It
+I-19          0422 E99A897-3    Wa                 805 It
+I-20          0423 D100672-5    Na Ni Va        B  214 Na
+I-21          0426 B221723-A  C Na Po              810 It
+Chanax        0427 E223854-5    Na Po              904 It
+I-23          0428 C302666-6  A Ic Na Ni Va        212 It
+I-24          0429 B436355-C  B Lo Ni              504 It
+I-25          0430 D653251-7    Lo Ni Po           404 It
+I-26          0522 A6688BB-8  D                    203 It
+I-27          0525 B7A69CB-9    Fl Hi              300 It
+I-28          0621 C330231-6    De Lo Ni Po        904 It
+I-29          0625 X551379-1    Lo Po           R  604 Na
+I-30          0629 D572510-3  A Ni                 213 It
+I-31          0722 C100974-8    Hi Na Va        B  601 Na
+I-32          0726 B487325-C  B Lo Ni              311 It
+I-33          0821 B130568-C  A De Ni Po           110 It
+I-34          0822 C664875-3    Ri              B  801 Na
+Johrn         0825 A788A55-H  D Hi Cx              123 It
+I-36          0826 B525300-B  B Lo Ni              814 It
+I-37          0827 A200572-C    Ni Va           B  111 Na
+Ilgotan       0829 C586941-9    Hi                 303 It
+I-39          0830 D899230-8  B Lo Ni              210 It
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jataum SECTOR: Ataurre
+#
+# Jump-routes
+#
+$1521 1520 0 -1 14
+$1121 1520 0 -1 14
+$1121 0821 -1 0 14
+$1125 0825 -1 0 14
+$1026 0825 -1 0 14
+$1026 1126 0 0 14
+$1126 1425 0 0 14
+$1126 1125 0 0 14
+$1125 1121 0 0 14
+$1521 1524 0 0 14
+$1524 1425 0 0 14
+$1524 1926 1 0 14
+$1521 1721 1 0 14
+$1230 0829 -1 0 10
+$1230 1533 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0922 D200855-7    Na Va              613 It
+J-2           0923 C465554-B    Ag Ni              404 It
+J-3           0925 C414412-6  B Ic Ni              303 It
+J-4           0926 B543567-7  A Ni Po              712 It
+J-5           0927 E3237C9-7    Na Po              204 It
+J-6           1023 B8B99D9-A  A Fl Hi           A  204 It
+J-7           1024 C436AAC-9  D Hi In              404 It
+J-8           1025 D334653-6  D Ni                 822 It
+J-9           1026 B426525-C  A Ni                 200 It
+J-10          1028 C100532-7    Ni Va              603 It
+J-11          1121 B100642-8  A Na Ni Va           411 It
+J-12          1125 B200146-D    Lo Ni Va           602 It
+J-13          1126 A120101-F  B De Lo Ni Po        401 It
+J-14          1127 X346512-3    Ag              R  403 Na
+J-15          1221 C100646-6    Na Ni Va           503 It
+J-16          1225 C200A88-9    Hi Na Va           900 It
+J-17          1228 C336A54-C    Hi In              605 It
+Jocabba       1230 D7B1557-9    Fl Ni           A  613 It
+J-19          1321 E566861-2    Ri                 621 It
+J-20          1325 E33597B-A    Hi In           B  602 Na
+J-21          1328 E788313-7    Lo Ni              205 It
+J-22          1329 E322252-7    Lo Ni Po           503 It
+J-23          1330 D210686-4  D Na Ni              804 It
+J-24          1423 C442447-A  B Ni Po              604 It
+J-25          1424 E150679-8    De Ni Po        B  820 Na
+J-26          1425 B584388-B    Lo Ni              303 It
+J-27          1426 C566320-5    Lo Ni              104 It
+J-28          1427 D452645-4  A Ni Po              504 It
+J-29          1430 C2008DI-6  D Na Va           A  502 It
+J-30          1521 A425455-E  B Ni                 613 It
+J-31          1523 B422787-C    Na Po              323 It
+J-32          1524 B541557-9  D Ni Po              324 It
+J-33          1622 D885663-5  A Ag Ni Ri           503 It
+J-34          1623 E4549CD-6    Hi                 104 It
+J-35          1625 X000301-4    As Lo           R  414 Na
+J-36          1626 D000454-B  B As Ni              501 It
+J-37          1627 D587A51-8    Hi                 300 It
+J-38          1630 C426530-8    Ni                 700 It
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Klatau SECTOR: Ataurre
+#
+# Jump-routes
+#
+$1926 1524 -1 0 14
+$1721 1521 -1 0 14
+$2429 2629 1 0 14
+$2429 2128 0 0 14
+$2128 1926 0 0 14
+$1926 1928 0 0 14
+$1928 1730 0 0 14
+$1730 1631 -1 1 14
+$1926 2024 0 0 14
+$2024 2124 0 0 14
+$2124 2327 0 0 14
+$2327 2429 0 0 14
+$2124 2424 0 0 14
+$2124 2322 0 0 14
+$2322 2418 0 -1 14
+$2424 2624 1 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1721 A410789-A    Na                 321 It
+K-2           1723 C405646-7  A Ic Ni Va           100 It
+K-3           1727 C223788-A    Na Po              304 It
+K-4           1730 B512346-B  B Ic Lo Ni           214 It
+K-5           1821 E77275A-2                       515 It
+K-6           1825 C7A27A8-7    Fl                 801 It
+K-7           1827 C538745-8                       201 It
+K-8           1830 E200631-4    Na Ni Va           104 It
+K-9           1921 C430263-6  B De Lo Ni Po        620 It
+K-10          1926 B543013-6  B Lo Ni Po           214 It
+K-11          1927 C466555-7  A Ag Ni              213 It
+K-12          1928 B222630-7  A Na Ni Po           620 It
+K-13          2023 E568514-5    Ag Ni              403 It
+K-14          2024 B4728A8-8                       513 It
+K-15          2124 A400511-F    Ni Va              900 It
+K-16          2125 D340655-7    De Ni Po           210 It
+K-17          2126 C200114-A    Lo Ni Va           304 It
+K-18          2128 B572202-9  B Lo Ni              503 It
+K-19          2221 E687167-4    Lo Ni              504 It
+K-20          2222 C684764-8  A Ag Ri              213 It
+K-21          2223 D454536-5    Ag Ni              204 It
+K-22          2225 C66379A-7    Ri                 914 It
+K-23          2228 B774676-7    Ag Ni           B  902 Na
+K-24          2322 B674644-5  A Ag Ni              704 It
+K-25          2325 C523544-7    Ni Po              822 It
+K-26          2326 X543678-0    Po              R  923 Na
+K-27          2327 B954432-9    Ni                 504 It
+K-28          2329 B596565-B  A Ag Ni              210 It
+K-29          2422 C410300-B    Lo Ni              334 It
+K-30          2423 C0009DC-7  D As Hi Na           603 It
+K-31          2424 B32159B-C    Ni Po              323 It
+K-32          2425 X000523-6    As              R  800 Na
+K-33          2426 X8B9656-3    Fl              R  124 Na
+K-34          2428 E555626-5    Ag Ni              803 It
+K-35          2429 B3867CE-8  D Ag                 715 It
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Laurrex SECTOR: Ataurre
+#
+# Jump-routes
+#
+$3030 2931 0 1 14
+$3030 3029 0 0 14
+$3029 3127 0 0 14
+$3127 2825 0 0 14
+$2825 2624 0 0 14
+$2624 2627 0 0 14
+$2627 2629 0 0 14
+$2629 2931 0 1 14
+$2629 2429 -1 0 14
+$2624 2424 -1 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2521 E524655-3    Ni                 104 It
+L-2           2522 C54499D-A  D Hi In              603 It
+L-3           2528 C9A6553-6  D Fl Ni              303 It
+L-4           2529 C777585-7    Ag Ni              600 It
+L-5           2621 C545867-8                       413 It
+L-6           2623 C96A322-A    Lo Ni Wa           115 It
+L-7           2624 B7A27AA-6  A Fl                 702 It
+L-8           2627 A201366-B  B Ic Lo Ni Va        703 It
+L-9           2629 A6319BE-F    Hi In Na Po        811 It
+L-10          2727 CAB7541-8    Fl Ni           A  212 It
+L-11          2728 C89A567-6    Ni Wa              104 It
+L-12          2729 E677879-2                    B  900 Na
+L-13          2822 E863443-5    Ni                 204 It
+L-14          2825 A677326-9    Lo Ni              303 It
+L-15          2827 E4209AD-9    De Hi In Na Po     702 It
+L-16          2828 C255659-6    Ag Ni              312 It
+L-17          2921 C354463-6    Ni                 300 It
+L-18          2922 C224244-9  B Lo Ni              325 It
+L-19          2924 E556ACB-9    Hi                 602 It
+L-20          2925 B868855-8    Ri                 411 It
+L-21          2926 B67A101-9  B Lo Ni Wa           101 It
+L-22          2928 E977777-3    Ag              B  124 Na
+L-23          2929 C253456-A    Ni Po              100 It
+L-24          3022 C376484-6    Ni                 903 It
+L-25          3023 C6B16B8-5    Fl Ni           A  303 It
+L-26          3024 C100584-8    Ni Va              901 It
+L-27          3025 X2219DB-1    Hi In Na Po     R  500 Na
+L-28          3026 E232212-9    Lo Ni Po           200 It
+L-29          3029 A785889-7    Ri                 214 It
+L-30          3030 B20286A-C  C Ic Na Va           520 It
+L-31          3121 C89A263-6    Lo Ni Wa           324 It
+L-32          3124 C544644-6    Ag Ni              603 It
+L-33          3126 C475642-8  A Ag Ni              100 It
+L-34          3127 A500010-8    Lo Ni Va           804 It
+L-35          3128 E2105AB-4    Ni                 704 It
+L-36          3129 C555A76-8    Hi              B  500 Na
+L-37          3222 B326325-C    Lo Ni              202 It
+L-38          3228 C200120-9  B Lo Ni Va           724 It
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Muarred SECTOR: Ataurre
+#
+# Jump-routes
+#
+$0135 3036 -1 0 14
+$0135 0535 0 0 14
+$0535 0534 0 0 14
+$0534 0731 0 0 14
+$0731 0833 0 0 14
+$0731 0429 0 -1 14
+$0833 1134 1 0 14
+$0640 0501 0 1 12
+$0640 0702 0 1 12
+$0135 0236 0 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0133 C273483-8  B Ni                 602 It
+M-2           0135 B473300-9  B Lo Ni              302 It
+M-3           0138 C300746-6    Na Va              213 Na
+M-4           0139 D777477-6    Ni              B  813 Na
+M-5           0232 C5369BE-8    Hi In              405 It
+M-6           0233 X376512-1    Ag              R  724 Na
+M-7           0234 C427789-7                       113 It
+M-8           0235 D43549C-9  B Ni                 704 It
+M-9           0236 B510756-8  A Na                 602 It
+M-10          0237 C000589-7  A As Ni              210 It
+M-11          0238 D323437-8    Ni Po              612 Na
+M-12          0240 D526589-8    Ni                 902 Na
+M-13          0331 C888265-8    Lo Ni              204 It
+M-14          0332 C45358C-6    Ni Po              302 It
+M-15          0334 C330322-6  B De Lo Ni Po        822 It
+M-16          0335 C2548AE-5                       703 It
+M-17          0337 X538236-2    Lo              R  603 Na
+M-18          0339 C472334-8  F Lo Ni              300 Hi
+M-19          0340 C367221-9    Lo Ni              524 Hi
+M-20          0433 D794499-5  B Ni                 714 It
+M-21          0435 C44027A-A    De Lo Ni Po     B  821 Na
+M-22          0436 B846795-8  A Ag                 624 It
+M-23          0438 C37059E-5  G De Ni              801 Hi
+M-24          0440 D556666-6    Ag Ni              703 Hi
+M-25          0533 C500123-7    Lo Ni Va           925 It
+M-26          0534 B755330-9    Lo Ni              802 It
+M-27          0535 A64A533-B    Ni Wa              314 It
+M-28          0536 C432233-A    Lo Ni Po           602 It
+M-29          0539 C662000-8  F Ba Lo Ni           504 Hi
+M-30          0631 D485654-5    Ag Ni Ri           904 It
+M-31          0635 C74A654-6  C Ni Wa              800 It
+M-32          0639 C370555-9    De Ni              202 Hi
+M-33          0640 A374231-B    Lo Ni              402 Hi
+Muuhara       0731 A100101-G    Lo Ni Va Cx        704 It
+M-35          0733 C63A9CA-9    Hi In Wa           722 It
+M-36          0736 C370310-9  B De Lo Ni           603 It
+M-37          0738 C88A686-6  S Ni Ri Wa           500 Na
+M-38          0740 C364331-5    Lo Ni              604 Hi
+M-39          0833 A646965-A  D Hi In              902 It
+M-40          0834 X89A622-0    Wa              R  900 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Natuaan SECTOR: Ataurre
+#
+# Jump-routes
+#
+$1134 0833 -1 0 14
+$1134 1232 0 0 14
+$1232 1431 0 0 14
+$1431 1831 1 0 14
+$1134 1534 0 0 14
+$1534 1537 0 0 14
+$1534 1631 0 0 14
+$1631 1730 1 -1 14
+$1533 1230 0 -1 10
+$1533 1735 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0932 C3238AA-8    Na Po              512 It
+N-2           0936 A95A477-C  S Ni Wa           B  200 Na
+N-3           0937 E000200-B    As Lo Ni           710 Na
+N-4           0938 C562862-5  S Ri                 100 Na
+N-5           0940 A567A7C-C  2 Hi              B  803 Na
+N-6           1031 E460633-3    De Ni              904 It
+N-7           1032 E410654-4    Na Ni              115 It
+N-8           1035 C638568-8  S Ni                 603 Na
+N-9           1036 C5A0563-6  S De Ni              220 Na
+N-10          1037 B310548-B    Ni                 705 Na
+N-11          1038 C30069C-9  S Na Ni Va           412 Na
+N-12          1039 C683458-7    Ni                 424 Na
+N-13          1131 D310365-4  B Lo Ni              202 It
+N-14          1132 XAC9300-4    Fl Lo           R  703 Na
+N-15          1134 B563650-B    Ni Ri              714 It
+N-16          1136 E777979-7    Hi In           B  400 Na
+N-17          1137 D310522-9  S Ni                 304 Na
+N-18          1138 CA87798-3    Ag Ri              704 Na
+N-19          1232 B242310-9    Lo Ni Po           100 It
+N-20          1235 C667334-4    Lo Ni              511 Na
+N-21          1237 E657448-5    Ni                 314 Na
+N-22          1239 X5547C9-0    Ag              R  905 Na
+N-23          1331 D424324-7    Lo Ni              403 It
+N-24          1332 C89A012-7    Lo Ni Wa           704 It
+N-25          1340 B8C4ABB-A    Fl Hi           A  912 Na
+N-26          1431 BA97487-8  B Ni                 724 It
+N-27          1432 C567855-8  A Ri                 104 It
+N-28          1434 C546ADE-A  D Hi In              603 It
+N-29          1435 C7C2277-8    Fl Lo Ni        A  504 It
+N-30          1436 C697000-6    Ba Lo Ni           301 It
+N-31          1532 EAD1651-6    Fl Ni              402 It
+Millers       1533 C4629CA-8    Hi                 803 It
+N-33          1534 A000405-F  B As Ni              700 It
+N-34          1535 B493441-7    Ni                 704 It
+N-35          1536 B100478-D    Ni Va           B  600 Na
+N-36          1537 B455623-A  A Ag Ni              404 It
+N-37          1539 D562868-6  S Ri                 810 Na
+N-38          1631 C7878AB-5                       412 It
+N-39          1633 D8A4888-4  D Fl                 304 It
+N-40          1639 D544344-6  S Lo Ni              702 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Otauna SECTOR: Ataurre
+#
+# Jump-routes
+#
+$1831 1431 -1 0 14
+$1831 1932 0 0 14
+$1932 2031 0 0 14
+$2031 2232 0 0 14
+$2232 2135 0 0 14
+$2135 2434 0 0 14
+$2434 2633 1 0 14
+$2135 1932 0 0 14
+$2139 2002 0 1 12
+$2139 2239 0 0 12
+$2239 2201 0 1 12
+$1735 1533 -1 0 10
+$1735 2037 0 0 10
+$2037 2339 0 0 10
+$2339 2601 1 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1731 E2009DG-7    Hi Na Va           204 It
+Coopaar       1735 C578430-4    Ni                 402 Na
+O-3           1737 C76A455-8    Ni Wa              614 Na
+O-4           1738 C4008CE-8  S Na Va              804 Na
+O-5           1831 A786567-C  C Ag Ni              404 It
+O-6           1835 D7A3010-7  S Fl Lo Ni           520 Na
+O-7           1836 C454140-7  S Lo Ni              700 Na
+O-8           1838 D9C7478-5  S Fl Ni           A  404 Na
+O-9           1840 C538346-5  S Lo Ni              713 Na
+O-10          1931 C45649C-A    Ni                 700 It
+O-11          1932 A564545-B    Ag Ni              701 It
+O-12          1935 E547897-5                       723 Na
+O-13          1936 E564110-6    Lo Ni              902 Na
+O-14          1937 C261778-5    Ri              B  604 Na
+O-15          2031 B535353-D    Lo Ni              303 It
+O-16          2033 C898788-8  D Ag                 103 It
+O-17          2034 C68A122-6    Lo Ni Wa           701 It
+Overann       2037 E5798AE-4                       524 Hi
+O-19          2039 C784002-4    Lo Ni              103 Hi
+O-20          2040 B310576-C  S Ni              B  705 Na
+O-21          2135 B331489-D  B Ni Po              803 It
+O-22          2137 C341554-6    Ni Po              514 Hi
+O-23          2138 D7C3479-4    Fl Ni           A  400 Hi
+O-24          2139 B553966-7  E Hi Po              111 Hi
+O-25          2232 A64736B-A  B Lo Ni              401 It
+O-26          2233 C447695-5    Ag Ni              313 It
+O-27          2235 E5727BG-2                       703 It
+O-28          2238 C7888DA-3                       903 Hi
+O-29          2239 B778647-5    Ag Ni              303 Hi
+O-30          2331 E643745-4    Po                 413 It
+O-31          2332 X130677-3    De Po           R  813 Na
+O-32          2335 D356998-4  C Hi                 604 It
+O-33          2337 E410655-5    Na Ni              524 Na
+Ollivar       2339 C9D5542-7    Fl Ni              405 Hi
+O-35          2432 D976645-3    Ag Ni              204 It
+O-36          2434 B87A456-B    Ni Wa              814 It
+O-37          2435 D529588-7    Ni                 112 It
+O-38          2436 D552233-5    Lo Ni Po           402 Na
+O-39          2440 C679300-B  S Lo Ni              214 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Pretau SECTOR: Ataurre
+#
+# Jump-routes
+#
+$2633 2434 -1 0 14
+$2633 2932 0 0 14
+$2932 3232 0 0 14
+$2932 2931 0 0 14
+$2931 3030 0 -1 14
+$2931 2629 0 -1 14
+$2939 3138 0 0 12
+$3138 3240 0 0 12
+$2939 2801 0 1 12
+$3240 3202 0 1 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2532 E874024-4    Lo Ni              100 It
+P-2           2534 C676848-7                       102 It
+P-3           2535 C244534-A    Ag Ni              722 It
+P-4           2539 C8A57A8-9    Fl                 913 Na
+P-5           2631 E0006AC-7    As Na Ni           704 It
+P-6           2632 X9A7404-5    Fl              R  803 Na
+P-7           2633 B463440-8    Ni                 324 It
+P-8           2638 C000A64-C    As Hi Na           500 Na
+P-9           2639 C474655-8    Ag Ni              524 Na
+P-10          2731 C43568C-5    Ni                 315 It
+P-11          2732 C331AAC-B    Hi In Na Po        103 It
+P-12          2832 C9A5144-7    Fl Lo Ni           201 It
+P-13          2835 E536557-5    Ni                 904 Na
+P-14          2837 E9D8410-8    Fl Ni              503 Hi
+P-15          2838 D7848B8-5  G                    502 Hi
+P-16          2931 A100126-C    Lo Ni Va           214 It
+P-17          2932 A400413-B    Ni Va              404 It
+P-18          2934 E468979-6    Hi              B  422 Na
+P-19          2937 C000636-9    As Na Ni           104 Hi
+Pogalla       2939 A120120-G  F De Lo Ni Po Cx     102 Hi
+P-21          3031 C8588BA-5                       715 It
+P-22          3032 C695454-7    Ni                 903 It
+P-23          3033 C877756-6  A Ag                 103 It
+P-24          3035 C787986-8    Hi                 513 Na
+P-25          3037 C325883-9  G                    425 Hi
+P-26          3134 E677872-4                    B  614 Na
+P-27          3135 D241949-8  S Hi In Po           702 Na
+P-28          3138 B7A5785-9  H Fl                 323 Hi
+P-29          3139 C637553-B  G Ni                 503 Hi
+P-30          3231 EAE58BF-2    Fl                 314 It
+P-31          3232 B641369-A    Lo Ni Po           804 It
+P-32          3234 D646012-1    Lo Ni              503 Na
+P-33          3236 D968222-4  S Lo Ni              301 Na
+P-34          3239 X683843-1    Ri              R  202 Hi
+P-35          3240 B898A8A-A    Hi In              302 Hi
+

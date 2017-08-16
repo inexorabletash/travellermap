@@ -1,0 +1,1099 @@
+Xanjier Sector
+
+A: Axanji                    a.dat
+B: Banjier                   b.dat
+C: Canjin                    c.dat
+D: Dax                       d.dat
+E: Exanjie                   e.dat
+F: Fraxanj                   f.dat
+G: Ganjier                   g.dat
+H: Haxanna                   h.dat
+I: Ixanjier                  i.dat
+J: Jieraxa                   j.dat
+K: Klaxanji                  k.dat
+L: Lanjiera                  l.dat
+M: Moxanj                    m.dat
+N: Naxanjier                 n.dat
+O: Oxannaj                   o.dat
+P: Planjiex                  p.dat
+
+Bases:
+A = Breeon Navy
+B = Breeon Scout
+C = Breeon Military
+D = Ellanx Navy
+E = Ellanx Scout
+F = Ellanx Army
+L = Shaf Military
+M = Colreen Military
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+15 Bs = Brotherhood of Shaf's
+11 Ci = Colreen Imperial Union
+03 El = Ellanx League of Worlds
+07 Na = Non-Aligned
+14 Ub = Union of Breeon 
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Axanji SECTOR: Xanjier Sector
+#
+# Jump-routes
+#
+$0709 0411 0 1 3
+$0709 1010 1 0 3
+$0709 0607 0 0 3
+$0607 0507 0 0 3
+$0801 0840 0 -1 15
+$0801 0902 1 0 15
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0101 E616200-4    Ic Lo Ni           804 Na
+A-2           0102 C626202-B    Lo Ni              704 Na
+A-3           0104 C675310-7    Lo Ni              520 Na
+A-4           0107 BAB6479-8  S Fl Ni           A  612 Na
+A-5           0110 C2379B8-A  S Hi In              200 Na
+A-6           0202 E352315-3    Lo Ni Po           613 Na
+A-7           0205 E878757-4    Ag                 720 Na
+A-8           0208 C9A3442-A  S Fl Ni              421 Na
+A-9           0308 C7A6578-6    Fl Ni           B  912 Na
+A-10          0310 C130544-7    De Ni Po           304 El
+A-11          0402 C4316A6-7    Na Ni Po           422 Na
+A-12          0404 D628645-7    Ni                 902 Na
+A-13          0408 C120467-A  E De Ni Po           802 El
+A-14          0409 C260530-6  D De Ni              110 El
+A-15          0410 D535541-7  D Ni                 732 El
+A-16          0503 E85888A-2                       202 Na
+A-17          0504 C7A2510-A    Fl Ni              224 Na
+A-18          0505 E422444-6    Ni Po              215 Na
+A-19          0507 B553888-9    Po                 901 El
+A-20          0510 D340775-3    De Po           B  611 Na
+A-21          0605 E853520-5    Ni Po              114 Na
+A-22          0607 B200140-D  E Lo Ni Va           502 El
+A-23          0608 C436777-6                    B  503 Na
+A-24          0703 C400972-8    Hi Na Va        B  700 Na
+A-25          0704 C240578-7    De Ni Po        B  620 Na
+A-26          0708 C274200-8  E Lo Ni              934 El
+A-27          0709 A693122-A  E Lo Ni              605 El
+A-28          0801 B310569-C  L Ni                 614 Bs
+A-29          0804 D5467A6-6    Ag                 804 Bs
+A-30          0807 D646553-3  D Ag Ni              101 El
+A-31          0808 C76A746-9  F Ri Wa              503 El
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Banjier SECTOR: Xanjier Sector
+#
+# Jump-routes
+#
+$1010 0709 -1 0 3
+$1010 0913 0 1 3
+$1010 1107 0 0 3
+$0902 0801 -1 0 15
+$0902 1102 0 0 15
+$1102 1101 0 0 15
+$1101 1040 0 -1 15
+$1102 1303 0 0 15
+$1303 1504 0 0 15
+$1504 1502 0 0 15
+$1502 1303 0 0 15
+$1504 1704 1 0 15
+$1608 1709 1 0 11
+$1603 2005 1 0 2
+$1603 1303 0 0 2
+$1303 0902 0 0 2
+$0902 0540 -1 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Shabna        0902 C412522-A    Ic Ni              701 Bs
+B-2           0903 E593323-3    Lo Ni              925 Bs
+B-3           0905 C8877BA-3    Ag                 800 Bs
+B-4           0908 D68A674-3    Ni Ri Wa        B  422 Na
+B-5           0910 D262653-8  D Ni Ri              623 El
+B-6           1002 D6B5237-8    Fl Lo Ni        A  602 Bs
+B-7           1004 D77A58B-8    Ni Wa              902 Bs
+B-8           1007 C7A2564-8    Fl Ni              504 El
+B-9           1008 C495244-8  E Lo Ni              901 El
+B-10          1009 C328243-6    Lo Ni              202 El
+B-11          1010 A32458C-B  D Ni                 523 El
+Shafieri      1101 B426529-D    Ni Cx              322 Bs
+B-13          1102 B9B5220-B  L Fl Lo Ni        A  603 Bs
+B-14          1103 C593211-5    Lo Ni              713 Bs
+B-15          1104 C789111-9    Lo Ni              303 Bs
+B-16          1105 D55287B-1    Po              B  304 Na
+B-17          1107 B655762-9    Ag                 714 El
+B-18          1110 D675521-7  D Ag Ni              413 El
+B-19          1205 E585210-2    Lo Ni              312 Na
+B-20          1207 C321245-6    Lo Ni Po           710 El
+B-21          1208 C662533-9    Ni                 404 El
+B-22          1209 C524455-A    Ni                 614 El
+B-23          1210 C997688-4  D Ag Ni              333 El
+B-24          1301 E8A458A-5    Fl Ni              405 Bs
+B-25          1302 C454369-8    Lo Ni              500 Bs
+Yansh         1303 B57965A-7    Ni                 822 Bs
+B-27          1308 E3039DC-7    Hi Ic Na Va        224 Na
+B-28          1309 D75736B-4  E Lo Ni              910 El
+B-29          1310 E656424-7    Ni                 724 Na
+B-30          1402 E367778-2    Ag Ri           B  503 Na
+B-31          1403 C785110-9    Lo Ni              103 Bs
+B-32          1407 C358553-A    Ag Ni              600 Na
+B-33          1409 E332410-5    Ni Po              913 Na
+B-34          1502 B756549-6    Ag Ni              514 Bs
+B-35          1504 B566344-A  L Lo Ni              722 Bs
+B-36          1506 C431431-A    Ni Po              503 Na
+B-37          1509 E583324-2    Lo Ni              103 Na
+Bernack       1603 E698432-4    Ni                 412 Bs
+B-39          1605 B100576-D  N Ni Va           B  202 Na
+B-40          1608 B543660-8  M Ni Po              204 Ci
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Canjin SECTOR: Xanjier Sector
+#
+# Jump-routes
+#
+$1704 1504 -1 0 15
+$1704 1705 0 0 15
+$1705 1804 0 0 15
+$1804 2004 0 0 15
+$2004 2203 0 0 15
+$2203 2204 0 0 15
+$2204 2104 0 0 15
+$2004 2005 0 0 15
+$2005 2007 0 0 15
+$1809 1709 0 0 11
+$1709 1608 -1 0 11
+$1809 1812 0 1 11
+$1704 1804 0 0 15
+$2308 2510 1 0 2
+$2308 2005 0 0 2
+$2005 1603 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1701 C130698-9  S De Na Ni Po        710 Na
+C-2           1704 B89A610-C    Ni Wa              822 Bs
+C-3           1705 B595000-7  L Ba Lo Ni           112 Bs
+C-4           1709 B62486C-8  M                    314 Ci
+C-5           1710 C454665-4    Ag Ni              803 Ci
+C-6           1803 X84A873-1    Wa              R  502 Bs
+C-7           1804 B684766-6    Ag Ri              303 Bs
+C-8           1808 E6A0A6A-A    De Hi              915 Ci
+Colreen       1809 B40066B-C  M Na Ni Va Cx        105 Ci
+C-10          1901 E0007BE-9    As Na              803 Na
+C-11          1902 C220432-6    De Ni Po           612 Bs
+C-12          1903 E563A77-6    Hi              B  410 Na
+C-13          1910 C9B4464-7    Fl Ni           A  503 Ci
+C-14          2001 C624401-A    Ni                 105 Bs
+C-15          2002 BAA647A-C    Fl Ni           B  105 Na
+C-16          2003 C542543-7  L Ni Po              124 Bs
+C-17          2004 A696984-9  L Hi In              213 Bs
+Rannce        2005 C766544-6    Ag Ni              901 Bs
+C-19          2007 B987562-9    Ag Ni              602 Bs
+C-20          2101 C335343-A  L Lo Ni              102 Bs
+C-21          2102 C557747-5  L Ag                 424 Bs
+C-22          2103 C5769A9-7    Hi In              503 Bs
+C-23          2104 C453310-7  L Lo Ni Po           703 Bs
+C-24          2105 C544999-5  L Hi In              311 Bs
+C-25          2108 C553488-5    Ni Po              401 Bs
+C-26          2109 C100333-8  L Lo Ni Va           204 Bs
+C-27          2110 C537445-5  L Ni                 814 Bs
+C-28          2202 D426465-8  L Ni                 325 Bs
+C-29          2203 A698335-8    Lo Ni              402 Bs
+C-30          2204 B8B3437-B    Fl Ni           A  501 Bs
+C-31          2206 C545732-5  S Ag                 914 Na
+C-32          2302 E550731-6    De Po              800 Na
+C-33          2304 X686732-0    Ag              R  403 Na
+C-34          2306 D84A688-5  S Ni Wa              911 Na
+C-35          2307 D574633-5  S Ag Ni              223 Na
+Colnur        2308 E799668-6    Ni                 101 Na
+C-37          2310 C89A66D-A    Ni Wa              101 Ci
+C-38          2401 D484322-7    Lo Ni              703 Na
+C-39          2403 X8A8544-0    Fl              R  800 Na
+C-40          2404 D7A0775-2    De              B  602 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Dax SECTOR: Xanjier Sector
+#
+# Jump-routes
+#
+$3202 0204 1 0 14
+$3109 2711 0 1 14
+$2508 2711 0 1 14
+$2508 2605 0 0 14
+$2605 2903 0 0 14
+$2903 3202 0 0 14
+$2903 2602 0 0 14
+$2605 2707 0 0 14
+$2707 3109 0 0 14
+$3202 3240 0 -1 14
+$2903 2740 0 -1 10
+$2903 3106 0 0 10
+$3106 0109 1 0 10
+$2510 2712 0 1 2
+$2510 2308 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2501 C200436-6    Ni Va              225 Na
+D-2           2502 C678589-8  B Ag Ni              314 Ub
+D-3           2503 B6B066A-6  C De Ni           A  512 Ub
+D-4           2505 C526300-7    Lo Ni              904 Ub
+D-5           2507 E63A132-9    Lo Ni Wa           313 Ub
+D-6           2508 A400331-E    Lo Ni Va           503 Ub
+Dodraak       2510 C22156A-8    Ni Po              813 Na
+D-8           2602 B130401-D  B De Ni Po           503 Ub
+D-9           2603 B5727AA-9  A                    710 Ub
+D-10          2605 A869248-B  B Lo Ni              400 Ub
+D-11          2608 C426466-A  B Ni                 914 Ub
+D-12          2610 C350523-8  B De Ni Po           710 Ub
+D-13          2703 C537420-9  B Ni                 213 Ub
+D-14          2705 C310A9C-C  A Hi Na              612 Ub
+D-15          2706 E773102-5    Lo Ni              603 Ub
+D-16          2707 B110467-E    Ni                 614 Ub
+D-17          2708 C869627-4    Ni                 914 Ub
+D-18          2710 C858532-7  A Ag Ni              202 Ub
+D-19          2804 D86A533-6    Ni Wa              100 Ub
+D-20          2808 B000674-A  S As Na Ni        B  113 Na
+D-21          2901 C23469A-9    Ni                 102 Ub
+Doika         2903 B879545-9  B Ni                 802 Ub
+D-23          2904 C343353-A  B Lo Ni Po           511 Ub
+D-24          2907 C565000-7  B Ba Lo Ni           433 Ub
+D-25          2909 E94A665-7    Ni Wa              102 Ub
+D-26          3007 C594144-7  B Lo Ni              710 Ub
+D-27          3008 E533110-7    Lo Ni Po           814 Ub
+D-28          3101 C7A2767-7    Fl                 714 Ub
+Klitara       3106 C457234-9    Lo Ni              605 Ub
+D-30          3109 B554664-A    Ag Ni              703 Ub
+D-31          3202 B220431-B    De Ni Po           900 Ub
+D-32          3207 E675642-2    Ag Ni              110 Ub
+D-33          3208 D000674-8  S As Na Ni        B  924 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Exanjie SECTOR: Xanjier Sector
+#
+# Jump-routes
+#
+$0814 0715 0 0 3
+$0814 0717 0 0 3
+$0814 0913 1 0 3
+$0814 0412 0 0 3
+$0412 0312 0 0 3
+$0312 0411 0 0 3
+$0411 0412 0 0 3
+$0411 0709 0 -1 3
+$0717 0720 0 0 3
+$0717 0617 0 0 3
+$0617 0316 0 0 3
+$0316 0116 0 0 3
+$0116 0317 0 0 3
+$0317 0316 0 0 3
+$0317 0617 0 0 3
+$0617 0719 0 0 3
+$0719 1118 1 0 3
+$0717 1118 1 0 3
+$0720 0523 0 1 3
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0116 B222564-B  D Ni Po              412 El
+E-2           0118 CA9879D-4    Ag                 113 El
+E-3           0211 C667300-9    Lo Ni              700 El
+E-4           0215 E530877-7    De Na Po        B  613 Na
+E-5           0217 C260952-8  F De Hi              702 El
+E-6           0220 C300011-A    Lo Ni Va           505 El
+E-7           0311 C130551-9  D De Ni Po           122 El
+E-8           0312 A2225A8-D  D Ni Po              222 El
+E-9           0313 C7859CF-8    Hi                 102 El
+E-10          0316 B796535-A  D Ag Ni              224 El
+E-11          0317 B797349-9  E Lo Ni              922 El
+E-12          0319 C200232-A    Lo Ni Va           512 El
+E-13          0411 B344369-9  E Lo Ni              900 El
+E-14          0412 A876336-A    Lo Ni              804 El
+E-15          0413 C200222-A    Lo Ni Va           123 El
+E-16          0416 E687620-5    Ag Ni              505 El
+E-17          0419 E328335-9    Lo Ni              100 El
+E-18          0420 E666654-2    Ag Ni Ri           613 El
+E-19          0511 C635755-6                       313 El
+E-20          0512 C774551-8  D Ag Ni              900 El
+E-21          0513 E42376B-4    Na Po              404 El
+E-22          0514 D448244-3  E Lo Ni              403 El
+E-23          0516 C320376-9    De Lo Ni Po     B  820 Na
+E-24          0518 C474100-8  E Lo Ni              213 El
+E-25          0520 C83A89A-8  D Wa                 313 El
+E-26          0612 C3548C7-8  F                    813 El
+E-27          0615 C684610-7  D Ag Ni              914 El
+E-28          0616 E424400-5    Ni                 215 El
+E-29          0617 B303238-B  E Ic Lo Ni Va        504 El
+E-30          0619 C77459A-8    Ag Ni              900 El
+E-31          0620 C446002-7  E Lo Ni              912 El
+E-32          0711 C310531-B    Ni                 402 El
+E-33          0712 C663688-5    Ni Ri              413 El
+E-34          0713 B461875-B    Ri              B  603 Na
+E-35          0715 B312003-B  E Ic Lo Ni           404 El
+E-36          0717 B77A945-A  D Hi In Wa           114 El
+E-37          0719 A527001-D  E Lo Ni              502 El
+E-38          0720 B778238-9  E Lo Ni              602 El
+E-39          0813 C6A5400-6    Fl Ni              502 El
+Ellanx        0814 A120302-G  E De Lo Ni Po Cx     620 El
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Fraxanj SECTOR: Xanjier Sector
+#
+# Jump-routes
+#
+$0913 0814 -1 0 3
+$0913 1010 0 -1 3
+$1118 0719 -1 0 3
+$1118 0717 -1 0 3
+$1118 1214 0 0 3
+$1214 0913 0 0 3
+$1214 1516 0 0 3
+$1516 1619 0 0 3
+$1619 1419 0 0 3
+$1419 1118 0 0 3
+$1619 1720 1 0 3
+$1619 1822 1 1 3
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0913 BAA1597-8    Fl Ni              701 El
+F-2           0914 C424301-9  E Lo Ni              320 El
+F-3           0915 C423102-7  E Lo Ni Po           425 El
+F-4           0917 D110972-A    Hi Na           B  704 Na
+F-5           0918 E100484-8    Ni Va              903 El
+F-6           0919 C487434-A    Ni                 404 El
+F-7           1013 C347653-8    Ag Ni              913 El
+F-8           1015 D410567-4    Ni                 724 El
+F-9           1018 D986313-5    Lo Ni              304 El
+F-10          1019 C8B7569-7  D Fl Ni           A  823 El
+F-11          1115 C72A489-9  E Ni Wa              701 El
+F-12          1116 E7B2125-7    Fl Lo Ni        A  614 El
+F-13          1117 C200675-7    Na Ni Va        B  103 Na
+F-14          1118 B777643-6  D Ag Ni              104 El
+F-15          1119 C526110-9  E Lo Ni              703 El
+F-16          1214 B948664-A    Ag Ni              932 El
+F-17          1215 C500562-5    Ni Va              103 El
+F-18          1312 C541613-4    Ni Po              520 El
+F-19          1313 D665642-2    Ag Ni Ri           505 El
+F-20          1314 C762333-5    Lo Ni              224 El
+F-21          1315 E366ABG-B    Hi                 510 El
+F-22          1317 C336410-A    Ni                 502 El
+F-23          1319 X876524-0    Ag              R  424 El
+F-24          1320 E9B3441-4    Fl Ni           A  313 El
+F-25          1412 C649000-8  E Ba Lo Ni           210 El
+F-26          1415 C647400-5  E Ni                 101 El
+F-27          1417 E7A297A-7    Fl Hi           B  300 Na
+F-28          1418 C383002-7    Lo Ni              913 El
+F-29          1419 B582220-6    Lo Ni              605 El
+F-30          1513 C594A6E-7    Hi In              104 Ci
+F-31          1515 C664984-8    Hi                 902 El
+F-32          1516 B23056B-A    De Ni Po           904 El
+F-33          1517 E777856-7                       803 El
+F-34          1518 D798465-3    Ni                 314 El
+F-35          1519 C529223-B    Lo Ni              824 El
+F-36          1612 C211560-A    Ic Ni              123 Ci
+.             1613 *4 Live Fire Target Range    A      --
+.             1614 *4 Live Fire Target Range    A      --
+.             1615 *4 Live Fire Target Range    A      --
+.             1616 *4 Live Fire Target Range    A      --
+F-37          1617 C334486-7    Ni                 413 El
+F-38          1619 B85569C-6    Ag Ni              814 El
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ganjier SECTOR: Xanjier Sector
+#
+# Jump-routes
+#
+$1720 1619 -1 0 3
+$1720 1820 0 0 3
+$1820 2021 0 1 3
+$1720 1818 0 0 3
+$1818 2018 0 0 3
+$2018 2217 0 0 3
+$2217 2219 0 0 3
+$2219 2220 0 0 3
+$2220 2221 0 1 3
+$1812 1809 0 -1 11
+$1812 2012 0 0 11
+$2012 2211 0 0 11
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1712 C323664-5    Na Ni Po           903 Ci
+G-2           1713 C62526A-5    Lo Ni           A  403 Ci
+G-3           1714 E210757-6    Target Range    A  610 Na
+G-4           1715 C67A543-B    Target Range    A  305 Na
+.             1716 *4 Live Fire Target Range    A      --
+.             1717 *4 Live Fire Target Range    A      --
+G-5           1718 C300845-8  F Na Va              923 El
+G-6           1720 B8B6100-B  E Fl Lo Ni        A  714 El
+G-7           1811 D54966F-3    Ni                 405 Ci
+G-8           1812 B241863-7    Po                 611 Ci
+G-9           1813 E438144-5    Target Range    A  100 Na
+.             1814 *4 Live Fire Target Range    A      --
+G-10          1815 C648865-3  S Target Range    A  111 Na
+G-11          1816 E77A453-6    Target Range    A  422 Na
+G-12          1817 C578120-6    Lo Ni              900 El
+G-13          1818 B340320-B  E De Lo Ni Po        910 El
+G-14          1820 A669433-A    Ni                 104 El
+.             1913 *4 Live Fire Target Range    A      --
+G-15          1914 D996462-7  S Target Range    A  903 Na
+.             1915 *4 Live Fire Target Rangge   A      --
+G-16          1916 D773133-3  S Target Range    A  404 Na
+G-17          1920 A360576-E  N De Ni           B  524 Na
+G-18          2012 C89A262-7  M Lo Ni Wa           823 Ci
+.             2013 *4 Live Fire Target Range    A      --
+G-19          2014 E635210-7    Target Range    A  421 Na
+.             2015 *4 Live Fire Target Range    A      --
+G-20          2018 B624241-9  E Lo Ni              505 El
+G-21          2019 C764443-5    Ni                 704 El
+G-22          2112 C6A066A-6    De Ni              713 Ci
+.             2114 *4 Live Fire Target Range    A      --
+.             2115 *4 Live Fire Target Range    A      --
+G-23          2116 E724300-8    Lo Ni              104 El
+G-24          2117 D566210-2    Lo Ni              904 El
+G-25          2118 C000203-8    As Lo Ni           200 El
+G-26          2120 C100201-B    Lo Ni Va           624 El
+G-27          2211 B969365-A    Lo Ni              715 Ci
+G-28          2214 C9B488A-8  F Fl              A  421 El
+G-29          2215 C300133-B    Lo Ni Va           614 El
+G-30          2216 C367520-7    Ag Ni              413 El
+G-31          2217 B110420-E  E Ni                 403 El
+G-32          2218 CAD8258-A    Fl Lo Ni           901 El
+G-33          2219 A544203-B  E Lo Ni              224 El
+G-34          2220 B535597-B  D Ni                 610 El
+G-35          2311 C8D5367-9  M Fl Lo Ni           315 Ci
+G-36          2318 C365341-6    Lo Ni              400 El
+G-37          2411 D844363-5  M Lo Ni              113 Ci
+G-38          2413 C6A0678-8    De Ni           B  604 Na
+G-39          2414 E657353-3    Lo Ni              602 Na
+G-40          2416 C200569-B    Ni Va              523 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Haxanna SECTOR: Xanjier Sector
+#
+# Jump-routes
+#
+$3017 0117 1 0 14
+$3017 2914 0 0 14
+$2914 2813 0 0 14
+$2813 2711 0 0 14
+$2711 3109 0 -1 14
+$2711 2508 0 -1 14
+$2819 3022 0 1 2
+$2819 2815 0 0 2
+$2815 2712 0 0 2
+$2712 2510 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2515 C58178A-5  S Ri                 400 Na
+H-2           2519 X365637-2    Ag              R  304 Na
+H-3           2520 C350305-8  S De Lo Ni Po        923 Na
+H-4           2613 E799412-3    Ni                 812 Na
+H-5           2616 C338758-8                       604 Na
+H-6           2617 C000400-C    As Ni              304 Na
+H-7           2618 E56347A-7    Ni              B  814 Na
+H-8           2619 D130100-8  S De Lo Ni Po        323 Na
+H-9           2620 X5A047C-2    De              R  110 Na
+H-10          2711 A201210-B  B Ic Lo Ni Va        220 Ub
+Carlieri      2712 D5645A6-6    Ag Ni              602 Ub
+H-12          2713 D894000-6  B Ba Lo Ni           900 Ub
+H-13          2714 C310799-9    Na                 902 Ub
+H-14          2718 C200620-7    Na Ni Va           702 Na
+H-15          2720 C84A301-B  S Lo Ni Wa           700 Na
+H-16          2813 A76A367-D  B Lo Ni Wa           702 Ub
+Teeonna       2815 C470655-9  S De Ni              724 Na
+H-18          2816 C4589BC-9    Hi                 521 Na
+H-19          2817 C524A96-B    Hi In              603 Na
+H-20          2818 C9C8430-8  S Fl Ni           A  722 Na
+Hiashiim      2819 C220233-7  S De Lo Ni Po        103 Na
+H-22          2820 C221865-6    Na Po              402 Na
+H-23          2911 C79658C-5  A Ag Ni              404 Ub
+H-24          2914 B350465-8  B De Ni Po           812 Ub
+H-25          2920 C88A475-8  S Ni Wa           B  500 Na
+H-26          3011 E887463-3    Ni                 422 Ub
+H-27          3012 C332564-7  C Ni Po              704 Ub
+H-28          3017 B201856-8    Ic Na Va           514 Ub
+H-29          3018 C351034-6    Lo Ni Po           312 Na
+H-30          3019 D438440-5    Ni                 502 Na
+H-31          3112 B958443-A  B Ni                 503 Ub
+H-32          3113 C312766-A  A Ic Na              412 Ub
+H-33          3114 C6877A8-8    Ag                 404 Ub
+H-34          3116 C651212-7  B Lo Ni Po           802 Ub
+H-35          3117 D98A200-A    Lo Ni Wa           203 Ub
+H-36          3120 C243631-9    Ni Po              904 Na
+H-37          3211 C346342-5    Lo Ni              800 Ub
+H-38          3212 E454203-6    Lo Ni              705 Ub
+H-39          3217 C5239DC-8    Hi In Na Po        102 Ub
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ixanjier SECTOR: Xanjier Sector
+#
+# Jump-routes
+#
+$0523 0720 0 -1 3
+$0523 0423 0 0 3
+$0423 0225 0 0 3
+$0225 0228 0 0 3
+$0225 0221 0 0 3
+$0221 0523 0 0 3
+$0523 0526 0 0 3
+$0526 0626 0 0 3
+$0626 0729 0 0 3
+$0729 0930 1 0 3
+$0626 1026 1 0 3
+$0228 0128 0 0 3
+$0128 0227 0 0 3
+$0228 0332 0 1 3
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0121 C8A6579-6    Fl Ni           B  513 Na
+I-2           0123 C343266-7    Lo Ni Po           300 El
+I-3           0124 D5495AA-4  D Ni                 202 El
+I-4           0125 C87A003-6  E Lo Ni Wa           215 El
+I-5           0126 E849985-5    Hi In              802 El
+I-6           0128 B371355-8  E Lo Ni              423 El
+I-7           0129 C46478C-8    Ag Ri              224 El
+I-8           0221 B333742-9  D Na Po              804 El
+I-9           0223 C63A420-B  E Ni Wa              505 El
+I-10          0225 B330857-D  F De Na Po           704 El
+I-11          0227 A357647-D    Ag Ni              113 El
+I-12          0228 B673686-7    Ni                 803 El
+I-13          0321 E6A4536-6    Fl Ni              402 El
+I-14          0421 C596776-4    Ag              B  902 Na
+I-15          0422 C450535-7    De Ni Po           720 El
+I-16          0423 B77A645-C    Ni Wa              614 El
+I-17          0426 C876411-6    Ni                 905 El
+I-18          0429 E866472-5    Ni              B  813 Na
+I-19          0521 E000000-A    As Ba Lo Ni        702 El
+I-20          0522 C7A2226-7  E Fl Lo Ni           202 El
+I-21          0523 B000510-B  D As Ni              800 El
+I-22          0526 B756557-9    Ag Ni              303 El
+I-23          0528 D67A143-9  E Lo Ni Wa           303 El
+I-24          0529 C549863-6                       114 El
+I-25          0626 A302852-F  F Ic Na Va           922 El
+I-26          0630 C120121-A    De Lo Ni Po        605 El
+I-27          0722 C886215-8    Lo Ni              603 El
+I-28          0724 C542255-5    Lo Ni Po           623 El
+I-29          0727 D000000-8  E As Ba Lo Ni        324 El
+I-30          0729 B459412-9    Ni                 503 El
+I-31          0822 C663000-5    Ba Lo Ni           102 El
+I-32          0825 D552210-3  E Lo Ni Po           403 El
+I-33          0827 D6B5553-9    Fl Ni           A  801 El
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jieraxa SECTOR: Xanjier Sector
+#
+# Jump-routes
+#
+$0930 0729 -1 0 3
+$1026 0626 -1 0 3
+$0930 0932 0 1 3
+$1328 1729 1 0 3
+$1328 1324 0 0 3
+$1328 1128 0 0 3
+$1128 1026 0 0 3
+$1128 1028 0 0 3
+$1028 0930 0 0 3
+$1026 1226 0 0 3
+$1226 1225 0 0 3
+$1225 1125 0 0 3
+$1125 1026 0 0 3
+$1225 1324 0 0 3
+$1226 1328 0 0 3
+$1625 1729 1 0 3
+$1625 1324 0 0 3
+$1625 1824 1 0 3
+$1328 1131 0 1 3
+$0930 1131 0 1 3
+$1625 1822 1 0 3
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0921 C6B0564-7  D De Ni           A  604 El
+J-2           0922 C798754-9    Ag                 112 El
+J-3           0926 D130254-8  E De Lo Ni Po        812 El
+J-4           0928 C878788-5    Ag                 420 El
+J-5           0929 D160865-6  F De Ri              324 El
+J-6           0930 B879610-7    Ni                 414 El
+J-7           1021 C000564-C    As Ni              512 El
+J-8           1022 E745797-1    Ag                 204 El
+J-9           1025 E788512-7    Ag Ni              503 El
+J-10          1026 B6A0225-C    De Lo Ni           704 El
+J-11          1028 A6B0656-9  D De Ni           A  400 El
+J-12          1029 X89A9AB-2    Hi In Wa        R  504 El
+J-13          1030 D646587-3  D Ag Ni              213 El
+J-14          1122 C000444-C    As Ni              803 El
+J-15          1124 E6769AC-8    Hi In              304 El
+J-16          1125 A458689-D    Ag Ni              315 El
+J-17          1128 B775342-B  E Lo Ni              810 El
+J-18          1221 C979864-6                       203 El
+J-19          1223 E550322-5    De Lo Ni Po        202 El
+J-20          1225 B7787A9-8    Ag                 914 El
+J-21          1226 A535546-B  D Ni                 903 El
+J-22          1321 E7B3301-9    Fl Lo Ni        A  704 El
+J-23          1322 C654651-7    Ag Ni              703 El
+J-24          1324 B78A58A-C  D Ni Wa              400 El
+J-25          1325 D867123-7    Lo Ni              104 El
+J-26          1326 E5547B7-2    Ag                 810 El
+J-27          1327 A400112-F  E Lo Ni Va           723 El
+J-28          1328 A341446-9    Ni Po              222 El
+J-29          1422 C224588-8  D Ni                 400 El
+J-30          1423 C87A457-9  E Ni Wa              904 El
+J-31          1424 E410400-8    Ni                 600 El
+J-32          1425 C1006BE-A    Na Ni Va           202 El
+J-33          1426 C449675-6    Ni              B  804 Na
+J-34          1427 C576A97-8    Hi In              904 El
+J-35          1524 DADA341-6  E Fl Lo Ni Wa        701 El
+J-36          1526 A100574-E    Ni Va           B  620 Na
+J-37          1529 C381201-A    Lo Ni              911 El
+J-38          1530 C6388AD-5                       604 El
+J-39          1625 A688653-C    Ag Ni Ri           403 El
+J-40          1628 D9C6324-5  E Fl Lo Ni        A  403 El
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Klaxanji SECTOR: Xanjier Sector
+#
+# Jump-routes
+#
+$1729 1632 -1 1 3
+$1729 1931 0 1 3
+$1729 2131 0 1 3
+$1729 1328 -1 0 3
+$1729 1625 -1 0 3
+$1824 1625 -1 0 3
+$2021 1820 0 -1 3
+$2021 1822 0 0 3
+$1822 1824 0 0 3
+$1822 1625 -1 0 3
+$1822 1619 -1 -1 3
+$2221 2220 0 -1 3
+$2221 2121 0 0 3
+$2121 2021 0 0 3
+$2221 2422 0 0 3
+$2422 2424 0 0 3
+$2424 2428 0 0 3
+$2428 2231 0 1 3
+$2424 2226 0 0 3
+$2226 1927 0 0 3
+$1927 1729 0 0 3
+$1927 1824 0 0 3
+$1822 2124 0 0 3
+$2124 2424 0 0 3
+$2424 2524 1 0 3
+$2428 2528 1 0 3
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1721 E230995-7    De Hi In Na Po     913 El
+K-2           1723 E120876-7    De Na Po        B  722 Na
+K-3           1724 C44746B-A    Ni                 300 El
+K-4           1725 B9D6575-C    Fl Ni           B  314 Na
+K-5           1728 C140574-6    De Ni Po        B  803 Na
+K-6           1729 A595535-9    Ag Ni              301 El
+K-7           1822 B97999D-9    Hi In              404 El
+K-8           1823 E545542-3    Ag Ni              214 El
+K-9           1824 B462AAB-A  F Hi                 610 El
+K-10          1825 C72A413-7    Ni Wa              820 El
+K-11          1826 D200532-4  D Ni Va              424 El
+K-12          1829 C352777-8    Po              B  203 Na
+K-13          1924 E301964-8    Hi Ic Na Va        510 El
+K-14          1927 B467861-9  F Ri                 822 El
+K-15          1928 X632899-3    Po              R  715 El
+K-16          1930 C583001-5    Lo Ni              302 El
+K-17          2021 B353100-9    Lo Ni Po           304 El
+K-18          2023 D267302-6  E Lo Ni              403 El
+K-19          2024 EAD5887-4    Fl                 400 El
+K-20          2026 E100326-9    Lo Ni Va           604 El
+K-21          2028 C100451-8    Ni Va              610 El
+K-22          2029 C68477B-8    Ag Ri           B  324 Na
+K-23          2121 B220443-D  E De Ni Po           404 El
+K-24          2122 E36367A-4    Ni Ri           B  203 Na
+K-25          2124 B44748B-A  E Ni                 910 El
+K-26          2127 D89A400-9  E Ni Wa              623 El
+K-27          2129 C654231-5    Lo Ni              704 El
+K-28          2221 BAA5645-7    Fl Ni              912 El
+K-29          2222 C527AC8-D    Hi In              804 El
+K-30          2226 B540000-9  E Ba De Lo Ni Po     214 El
+K-31          2227 CA7A350-A    Lo Ni Wa           301 El
+K-32          2321 E87A7BA-7    Wa                 903 El
+K-33          2324 C676656-8  D Ag Ni              324 El
+K-34          2326 E677975-5    Hi In           B  112 Na
+K-35          2329 C88A633-6    Ni Wa              702 El
+K-36          2422 B55889A-6  F                    523 El
+K-37          2424 B612244-B    Ic Lo Ni           224 El
+K-38          2426 B4708DE-4    De                 114 El
+K-39          2428 B503561-8  D Ic Ni Va           400 El
+K-40          2429 C9A3659-8  D Fl Ni              320 El
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lanjiera SECTOR: Xanjier Sector
+#
+# Jump-routes
+#
+$3128 0127 1 0 14
+$3128 0129 1 0 14
+$3128 3232 0 1 14
+$2524 2424 -1 0 3
+$2524 2624 0 0 3
+$2624 2528 0 0 3
+$2528 2428 -1 0 3
+$2528 2729 0 0 3
+$3129 3232 0 1 2
+$3129 3026 0 0 2
+$3026 3022 0 0 2
+$3022 2819 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2524 A340554-C  D De Ni Po           103 El
+L-2           2528 A231410-A    Ni Po              521 El
+L-3           2624 B000410-C  E As Ni              713 El
+L-4           2625 B576774-9    Ag              B  404 Na
+L-5           2628 E787300-6    Lo Ni              203 El
+L-6           2629 C530000-9    Ba De Lo Ni Po     801 El
+L-7           2721 E579757-5                       110 Na
+L-8           2724 C6B0221-9    De Lo Ni        A  634 El
+L-9           2725 C6A5343-8    Fl Lo Ni           905 El
+L-10          2729 A544766-9  F Ag                 924 El
+L-11          2821 C400610-6    Na Ni Va           413 Na
+L-12          2822 B99A876-C  2 Wa              B  104 Na
+L-13          2826 E8A9657-5    Fl Ni              310 Na
+L-14          2830 C76A669-8  S Ni Ri Wa           415 Na
+L-15          2921 E5A2A89-9    Fl Hi              924 Na
+L-16          2922 E6B0698-5    De Ni           A  914 Na
+L-17          2925 C544432-9    Ni                 813 Na
+L-18          2927 C220101-C    De Lo Ni Po        904 Na
+L-19          2928 C798525-6    Ag Ni              702 Na
+Reakiln       3022 C9D3774-8  S Fl              B  724 Na
+L-21          3023 E000634-4    As Na Ni           614 Na
+Drikan        3026 C6828DG-3  B                    814 Ub
+L-23          3027 C662252-8  B Lo Ni              504 Ub
+L-24          3029 C879510-9    Ni                 523 Ub
+L-25          3030 C7289BB-9    Hi In              620 Ub
+L-26          3122 C653347-5  S Lo Ni Po           323 Na
+L-27          3128 B785744-7    Ag Ri              104 Ub
+Litharra      3129 D78669A-1  C Ag Ni Ri           101 Ub
+L-29          3223 E686332-4    Lo Ni              202 Na
+L-30          3226 D52968A-3  B Ni                 824 Ub
+L-31          3229 C333610-5    Na Ni Po           102 Ub
+L-32          3230 C786036-5    Lo Ni              710 Ub
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Moxanj SECTOR: Xanjier Sector
+#
+# Jump-routes
+#
+$0332 0228 0 -1 3
+$0332 0333 0 0 3
+$0333 0433 0 0 3
+$0433 0635 0 0 3
+$0635 0636 0 0 3
+$0636 0738 0 0 3
+$0738 0439 0 0 3
+$0439 0338 0 0 3
+$0338 0135 0 0 3
+$0135 0333 0 0 3
+$0333 0335 0 0 3
+$0135 0335 0 0 3
+$0335 0636 0 0 3
+$0738 0938 1 0 3
+$0635 0936 1 0 3
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0131 E160425-9    De Ni              720 El
+M-2           0134 E410468-4    Ni                 322 El
+M-3           0135 A777242-B  E Lo Ni              415 El
+M-4           0136 C428658-A    Ni                 804 El
+M-5           0137 C200300-B    Lo Ni Va           710 El
+M-6           0138 D513168-8  E Ic Lo Ni           202 El
+M-7           0140 C368465-6    Ni                 204 Na
+M-8           0231 D323988-5    Hi In Na Po        812 El
+M-9           0237 C585633-6  D Ag Ni              520 El
+M-10          0332 B691453-A    Ni                 814 El
+M-11          0333 B858201-C  E Lo Ni              215 El
+M-12          0334 C584334-8    Lo Ni              603 El
+M-13          0335 B24066A-A  D De Ni Po           524 El
+M-14          0336 X623200-0    Lo Po           R  522 El
+M-15          0337 E200330-5    Lo Ni Va           803 El
+M-16          0338 B7A2786-8  F Fl                 402 El
+M-17          0433 B884951-8    Hi                 505 El
+M-18          0434 E40247A-5    Ic Ni Va        B  800 Na
+M-19          0439 B53A214-A  E Lo Ni Wa           904 El
+M-20          0440 C9A5567-6    Fl Ni              400 El
+M-21          0532 C435100-B    Lo Ni              920 El
+M-22          0534 D555457-8    Ni                 900 El
+M-23          0536 A20056A-D  D Ni Va              304 El
+M-24          0538 C7B0778-8    De              A  103 El
+M-25          0632 C57569D-5  D Ag Ni              102 El
+M-26          0634 CA8A200-7    Lo Ni Wa           225 El
+M-27          0635 A265322-9  E Lo Ni              102 El
+M-28          0636 B686101-8    Lo Ni              105 El
+M-29          0637 C8A59B7-9    Fl Hi              104 El
+M-30          0638 E532103-8    Lo Ni Po           913 El
+M-31          0639 C77A336-8  E Lo Ni Wa           510 El
+M-32          0640 B686379-A    Lo Ni           B  104 Na
+M-33          0734 C427336-8    Lo Ni              901 El
+M-34          0736 X6A0532-1    De              R  603 El
+M-35          0738 B868264-9  E Lo Ni              204 El
+M-36          0739 C6A2310-8    Fl Lo Ni           500 El
+M-37          0832 C412987-A    Hi Ic Na           614 El
+M-38          0833 C754556-A    Ag Ni              622 El
+M-39          0834 EA7A754-6    Wa                 714 El
+M-40          0837 C100322-B    Lo Ni Va           802 El
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Naxanjier SECTOR: Xanjier Sector
+#
+# Jump-routes
+#
+$0938 0738 -1 0 3
+$0932 0930 0 -1 3
+$0932 1032 0 0 3
+$0938 1240 0 0 3
+$0936 0635 -1 0 3
+$0936 0932 0 0 3
+$1032 1234 0 0 3
+$1234 1336 0 0 3
+$1336 1338 0 0 3
+$0938 0936 0 0 3
+$1338 1240 0 0 3
+$1240 1439 0 0 3
+$1439 1338 0 0 3
+$0938 1338 0 0 3
+$0936 1336 0 0 3
+$1336 1735 1 0 3
+$1633 1735 1 0 3
+$1633 1632 0 0 3
+$1632 1729 1 -1 3
+$1131 1328 0 -1 3
+$1131 1234 0 0 3
+$1131 0930 0 -1 3
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0931 C777758-8    Ag                 811 El
+N-2           0932 B666240-8  E Lo Ni              912 El
+N-3           0934 C8A1555-6    Fl Ni              204 El
+N-4           0936 B8B5789-B  F Fl              A  711 El
+N-5           0937 C35265A-8    Ni Po              903 El
+N-6           0938 B86A200-E  E Lo Ni Wa           903 El
+N-7           0939 D310865-6  F Na                 502 El
+N-8           1032 B310300-C    Lo Ni              200 El
+N-9           1033 C235878-9                    B  611 Na
+N-10          1036 E22286A-5    Na Po              500 El
+N-11          1040 E100866-8    Na Va              702 Na
+N-12          1131 B150767-C    De Po              304 El
+N-13          1133 E261223-5    Lo Ni              900 El
+N-14          1135 D98A310-9  E Lo Ni Wa           200 El
+N-15          1136 E413223-7    Ic Lo Ni           222 El
+N-16          1138 C9B9559-8    Fl Ni           A  702 El
+N-17          1231 E666873-3    Ri              B  722 Na
+N-18          1233 E65A530-9    Ni Wa              614 El
+N-19          1234 B441569-A  D Ni Po              422 El
+N-20          1240 A222589-D    Ni Po              714 El
+N-21          1332 C400104-7    Lo Ni Va           314 El
+N-22          1336 A9B4686-B    Fl Ni           A  312 El
+N-23          1337 B000535-B  D As Ni              100 El
+N-24          1338 A8B4263-9    Fl Lo Ni        A  402 El
+N-25          1339 C743569-6  D Ni Po              622 El
+N-26          1439 A577663-8  D Ag Ni              503 El
+N-27          1440 C324388-B  E Lo Ni              300 El
+N-28          1534 C545431-7  E Ni                 503 El
+N-29          1535 C898756-9    Ag                 513 El
+N-30          1537 C400544-9    Ni Va              803 El
+N-31          1539 C220455-9  E De Ni Po           601 El
+N-32          1631 C240540-7    De Ni Po           705 El
+N-33          1632 AA68986-9    Hi                 604 El
+N-34          1633 B4739A7-9    Hi In              404 El
+N-35          1634 X748200-2    Lo              R  914 El
+N-36          1636 C2239A7-9    Hi In Na Po        900 El
+N-37          1637 C533542-9    Ni Po              611 El
+N-38          1638 C200536-B    Ni Va              214 El
+N-39          1640 D879684-3    Ni                 304 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Oxannaj SECTOR: Xanjier Sector
+#
+# Jump-routes
+#
+$2437 2637 1 0 14
+$1735 1336 -1 0 3
+$1735 1937 0 0 3
+$1937 2037 0 0 3
+$2037 2040 0 0 3
+$2037 2235 0 0 3
+$2235 2231 0 0 3
+$2235 2035 0 0 3
+$2035 1735 0 0 3
+$1735 1633 -1 0 3
+$2231 2131 0 0 3
+$2131 2031 0 0 3
+$2031 1931 0 0 3
+$1931 1729 0 -1 3
+$2131 1729 0 -1 3
+$2231 2428 0 -1 3
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1731 E5017A9-6    Ic Na Va           313 El
+O-2           1732 X210357-3    Lo              R  714 El
+O-3           1735 B998124-7  E Lo Ni              105 El
+O-4           1737 E35478B-2    Ag                 404 El
+O-5           1739 C94A325-6  E Lo Ni Wa           100 El
+O-6           1740 C536501-9    Ni                 303 Na
+O-7           1833 E43168B-7    Na Ni Po           600 El
+O-8           1836 C447135-A    Lo Ni              704 El
+O-9           1931 B2408AA-8    De Po              323 El
+O-10          1932 D641566-2  D Ni Po              325 El
+O-11          1933 C353766-7  F Po                 705 El
+O-12          1935 C420211-9    De Lo Ni Po        602 El
+O-13          1937 A327487-C    Ni                 900 El
+O-14          1938 C140567-9  D De Ni Po           113 El
+O-15          1940 C9C2310-7  E Fl Lo Ni        A  623 El
+O-16          2031 B77979A-8  F                    300 El
+O-17          2034 E795402-8    Ni                 410 El
+O-18          2035 B300689-C  D Na Ni Va           714 El
+O-19          2036 E56A87A-5    Ri Wa           B  304 Na
+O-20          2037 B200761-B  F Na Va              813 El
+O-21          2040 B559553-D  D Ni                 300 El
+O-22          2131 B200204-A  E Lo Ni Va           904 El
+O-23          2132 E321147-6    Lo Ni Po           814 El
+O-24          2135 E646144-5    Lo Ni              815 El
+O-25          2136 C667410-7    Ni                 200 El
+O-26          2231 B3269A9-E  F Hi In              212 El
+O-27          2232 E495666-3    Ag Ni              205 El
+O-28          2235 B538322-B  E Lo Ni              104 El
+O-29          2238 E99A7AA-5    Wa                 304 Na
+O-30          2239 C562111-6    Lo Ni              210 Na
+O-31          2240 C85A104-A    Lo Ni Wa           223 Na
+O-32          2335 C567321-4    Lo Ni              605 Na
+O-33          2336 D8D4223-4    Fl Lo Ni           702 Na
+O-34          2432 D44359B-4    Ni Po              420 Na
+O-35          2437 B69768B-5  C Ag Ni              423 Ub
+O-36          2439 E88AA97-B    Hi Wa              902 Na
+O-37          2440 C47659A-A    Ag Ni              114 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Planjiex SECTOR: Xanjier Sector
+#
+# Jump-routes
+#
+$3232 3128 0 -1 14
+$3232 3233 0 0 14
+$3233 3136 0 0 14
+$3136 3137 0 0 14
+$3137 0236 1 0 14
+$3137 3037 0 0 14
+$3037 3040 0 0 14
+$3040 2940 0 0 14
+$2940 2840 0 0 14
+$3037 2835 0 0 14
+$3037 2837 0 0 14
+$2837 2737 0 0 14
+$2737 2637 0 0 14
+$2637 2835 0 0 14
+$2637 2638 0 0 14
+$2638 2840 0 0 14
+$2637 2738 0 0 14
+$2637 2437 -1 0 14
+$3239 0102 1 1 2
+$3239 3136 0 0 2
+$3136 3232 0 0 2
+$3232 3129 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2531 C747200-6  S Lo Ni              804 Na
+P-2           2532 C554499-8  S Ni                 315 Na
+P-3           2538 E200763-8    Na Va              212 Ub
+P-4           2632 D8D5249-5    Fl Lo Ni           704 Na
+P-5           2634 C756589-7    Ag Ni              902 Na
+P-6           2637 A75659C-D    Ag Ni              704 Ub
+P-7           2638 B583326-B  B Lo Ni              404 Ub
+P-8           2639 E686145-7    Lo Ni              211 Ub
+P-9           2640 E362020-7    Lo Ni              801 Ub
+P-10          2733 E442AAC-A    Hi In Po           404 Na
+P-11          2735 D500697-7    Na Ni Va           520 Ub
+P-12          2736 C401610-5    Ic Na Ni Va        802 Ub
+P-13          2737 B483211-A  B Lo Ni              503 Ub
+P-14          2738 B3006AB-C    Na Ni Va           324 Ub
+P-15          2831 C76A641-5  S Ni Ri Wa           602 Na
+P-16          2835 B6449DA-A  C Hi In              902 Ub
+P-17          2837 B100616-9  C Na Ni Va           600 Ub
+P-18          2838 E210400-5    Ni                 904 Ub
+P-19          2840 A230556-C    De Ni Po           800 Ub
+P-20          2935 C6A0433-8    De Ni              104 Ub
+P-21          2937 C95859C-4    Ag Ni              604 Ub
+P-22          2940 B746385-7    Lo Ni              314 Ub
+P-23          3032 C746866-3                       200 Na
+P-24          3033 C500623-5  S Na Ni Va           910 Na
+P-25          3035 D00036B-A  B As Lo Ni           202 Ub
+P-26          3037 B300142-B  B Lo Ni Va           320 Ub
+P-27          3040 B584533-7  A Ag Ni              213 Ub
+P-28          3133 C422568-A    Ni Po              104 Ub
+Pidionna      3136 A403888-A    Ic Na Va           304 Ub
+P-30          3137 B485422-9  B Ni                 413 Ub
+Calleeon      3232 B110558-C  A Ni                 105 Ub
+P-32          3233 A378220-E  B Lo Ni              910 Ub
+Irnacha       3239 C776330-6  B Lo Ni              703 Ub
+

@@ -1,0 +1,379 @@
+Siuk Sector
+
+A: Asiu                      a.dat
+B: Basiuk                    b.dat
+C: Cesiun                    c.dat
+D: Desiuk                    d.dat
+E: Esiuuk                    e.dat
+F: Fissiu                    f.dat
+G: Gisiuub                   g.dat
+H: Hossiub                   h.dat
+I: Issiuk                    i.dat
+J: Jossiut                   j.dat
+K: Kussiun                   k.dat
+L: Lussiuy                   l.dat
+M: Masiug                    m.dat
+N: Nsiue                     n.dat
+O: Osiuzz                    o.dat
+P: Puipuik                   p.dat
+
+Bases:
+F = Fusiku Military
+M = Niuka Military
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+13 Ft = Fusiku Trade Guild
+07 Na = Non-Aligned
+11 Ni = Niuka Independence
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Asiu SECTOR: Siuk Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0202 C769300-A  S Lo Ni              525 Na
+A-2           0310 C89A441-6    Ni Wa              702 Na
+A-3           0409 A455675-8  N Ag Ni           B  304 Na
+A-4           0708 C235478-A    Ni              B  704 Na
+A-5           0803 C5A0424-8  S De Ni              815 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Basiuk SECTOR: Siuk Sector
+#
+# Jump-routes
+#
+$1108 1408 0 0 13
+$1108 1011 0 1 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           0909 D542743-6    Po                 400 Ft
+B-2           1010 E77648A-7    Ni                 200 Ft
+B-3           1107 C8D4000-5    Ba Fl Lo Ni        624 Ft
+B-4           1108 B24469D-8  F Ag Ni              910 Ft
+B-5           1303 B300488-D    Ni Va              803 Na
+B-6           1304 X0006BC-2    As              R  123 Na
+B-7           1401 E580261-2    De Lo Ni           414 Na
+B-8           1404 C300224-6  S Lo Ni Va           723 Na
+B-9           1408 B254100-D    Lo Ni              105 Ft
+B-10          1504 E000445-A    As Ni              923 Na
+B-11          1603 A333479-E    Ni Po           B  704 Na
+B-12          1609 C242776-4    Po              B  104 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Cesiun SECTOR: Siuk Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1801 C451300-8    Lo Ni Po           724 Na
+C-2           1809 C766310-7    Lo Ni              102 Na
+C-3           1910 C000578-8  S As Ni           B  404 Na
+C-4           2009 C535976-7  S Hi In           B  302 Na
+C-5           2110 C300788-6  S Na Va              202 Na
+C-6           2208 B9A5205-D  S Fl Lo Ni           302 Na
+C-7           2401 E63859A-8    Ni                 510 Na
+C-8           2410 C331213-7  S Lo Ni Po           104 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Desiuk SECTOR: Siuk Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2608 D535577-4  S Ni              B  104 Na
+D-2           2809 E452844-5    Po                 402 Na
+D-3           2810 C210561-8    Ni                 104 Na
+D-4           2902 C526542-6    Ni                 222 Na
+D-5           2903 C65646A-8    Ni                 705 Na
+D-6           3204 A666875-7    Ri              B  104 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Esiuuk SECTOR: Siuk Sector
+#
+# Jump-routes
+#
+$0216 3218 -1 0 10
+$0216 0516 0 0 10
+$0516 0520 0 0 10
+$0520 0920 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0111 E9B3220-3    Fl Lo Ni        A  924 Na
+E-2           0113 C667403-6    Ni                 704 Na
+E-3           0114 C768547-7    Ag Ni              300 Na
+Emmanann      0216 B639564-A  2 Ni                 303 Na
+Nanjaa        0516 B440875-7    De Po           B  203 Na
+Veegett       0520 C546556-8    Ag Ni              725 Na
+E-7           0712 B566576-B  N Ag Ni           B  603 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Fissiu SECTOR: Siuk Sector
+#
+# Jump-routes
+#
+$0920 0520 -1 0 10
+$0920 1320 0 0 10
+$1320 1620 0 0 10
+$1620 1823 1 1 10
+$1116 1315 0 0 13
+$1116 0919 0 0 13
+$1315 1212 0 0 13
+$1212 1011 0 0 13
+$1011 1108 0 -1 13
+$0919 1321 0 1 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0915 D532104-8    Lo Ni Po           814 Ft
+F-2           0919 B7A0200-B  F De Lo Ni           813 Ft
+Bhasuar       0920 E231000-8    Ba Lo Ni Po        511 Ft
+F-4           1011 A200020-D    Lo Ni Va           412 Ft
+F-5           1113 C635876-4                    B  100 Na
+Fusiku        1116 A422200-G  F Lo Ni Po Cx        223 Ft
+F-7           1118 X894322-3    Lo              R  612 Na
+F-8           1212 D534310-7    Lo Ni              302 Ft
+F-9           1312 C500120-6    Lo Ni Va           903 Ft
+F-10          1315 B530646-8    De Na Ni Po        305 Ft
+Tayaa         1320 C24399C-9  F Hi In Po           924 Ft
+F-12          1415 C110694-A    Na Ni              304 Ft
+Duilla        1620 C232134-6    Lo Ni Po           904 Ft
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Gisiuub SECTOR: Siuk Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hossiub SECTOR: Siuk Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2711 C77A502-B    Ni Wa              800 Na
+H-2           2717 C667462-8    Ni                 703 Na
+H-3           2718 E536446-3    Ni                 813 Na
+H-4           2811 C873321-4    Lo Ni              904 Na
+H-5           2820 D300779-4    Na Va           B  414 Na
+H-6           3112 C574221-9  S Lo Ni              803 Na
+H-7           3115 E575677-2    Ag Ni           B  822 Na
+H-8           3211 C84A351-7  S Lo Ni Wa           600 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Issiuk SECTOR: Siuk Sector
+#
+# Jump-routes
+#
+$0630 0833 0 1 2
+$0630 0626 0 0 2
+$0626 0224 0 0 2
+$0224 3221 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0223 E655343-7    Lo Ni              604 Na
+Tiriucca      0224 C584456-6    Ni                 112 Na
+Wannilla      0626 B97A727-A    Wa                 602 Na
+I-4           0627 E869244-3    Lo Ni              602 Na
+I-5           0629 E342627-4    Ni Po              503 Na
+Immerik       0630 D528641-3    Ni                 202 Na
+I-7           0729 C365347-9    Lo Ni              302 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jossiut SECTOR: Siuk Sector
+#
+# Jump-routes
+#
+$1321 0919 0 -1 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           1128 C234332-8    Lo Ni              821 Na
+J-2           1321 B140220-8    De Lo Ni Po        803 Ft
+J-3           1327 C310487-9    Ni                 301 Na
+J-4           1429 C100AEF-E    Hi Na Va           503 Na
+J-5           1430 E434738-6                       704 Na
+J-6           1521 D310643-8    Na Ni              615 Ft
+J-7           1526 E201669-3    Ic Na Ni Va        514 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kussiun SECTOR: Siuk Sector
+#
+# Jump-routes
+#
+$1823 1620 -1 -1 10
+$1823 1927 0 0 10
+$1927 1930 0 0 10
+$1930 2031 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Kolasta       1823 C739000-B    Ba Lo Ni           103 Na
+K-2           1924 C867235-9  S Lo Ni              204 Na
+Froonar       1927 C542355-5    Lo Ni Po           911 Na
+Vajjin        1930 C437543-7    Ni                 514 Na
+K-5           2124 E73A987-B    Hi In Wa           802 Na
+K-6           2221 C9C7547-8  S Fl Ni           A  222 Na
+K-7           2223 B372575-8    Ni              B  801 Na
+K-8           2225 C4465A9-5  S Ag Ni              203 Na
+K-9           2230 B332567-A  S Ni Po              422 Na
+K-10          2428 C768100-8  S Lo Ni              610 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lussiuy SECTOR: Siuk Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2623 B352496-A  N Ni Po              100 Na
+L-2           2625 E370401-4    De Ni              412 Na
+L-3           2725 E532886-6    Na Po              603 Na
+L-4           2727 C426245-8  S Lo Ni              313 Na
+L-5           2821 B776254-A    Lo Ni              310 Na
+L-6           3124 B632147-7  2 Lo Ni Po           603 Na
+L-7           3225 B5558AA-8  2                    814 Na
+L-8           3228 C562740-3  S Ri                 803 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Masiug SECTOR: Siuk Sector
+#
+# Jump-routes
+#
+$0837 1237 1 0 2
+$0837 0833 0 0 2
+$0833 0630 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0232 B6A1565-B    Fl Ni              302 Na
+M-2           0431 CAC1578-7    Fl Ni           A  103 Na
+M-3           0634 C9A4AAB-8  S Fl Hi              501 Na
+M-4           0636 D301200-5    Ic Lo Ni Va        604 Na
+M-5           0733 D160302-6    De Lo Ni           324 Na
+M-6           0735 D300433-6  S Ni Va              201 Na
+Himmium       0833 C52579C-7                       412 Na
+Miukla        0837 E7749AF-4    Hi In              503 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nsiue SECTOR: Siuk Sector
+#
+# Jump-routes
+#
+$1237 1301 0 1 2
+$1237 0837 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           1033 A545662-7  N Ag Ni              102 Na
+N-2           1232 E230679-5    De Na Ni Po     B  123 Na
+N-3           1236 A55069B-C  N De Ni Po           504 Na
+Niuka         1237 A100673-F  M Na Ni Va        B  904 Ni
+N-5           1432 E785869-1    Ri                 601 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Osiuzz SECTOR: Siuk Sector
+#
+# Jump-routes
+#
+$2031 1930 0 -1 10
+$2031 2134 0 0 10
+$2134 2335 0 0 10
+$2335 2537 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1840 C788877-3    Ri              B  603 Na
+Aweern        2031 CAD4314-6    Fl Lo Ni           624 Na
+Oiakha        2134 EA58333-2    Lo Ni              601 Na
+Dlarina       2335 C231300-9    Lo Ni Po           503 Na
+O-5           2338 C100469-9    Ni Va              813 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Puipuik SECTOR: Siuk Sector
+#
+# Jump-routes
+#
+$2537 2335 -1 0 10
+$2537 2938 0 0 10
+$2938 2901 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Poshkan       2537 B463133-A    Lo Ni              903 Na
+P-2           2538 D5467BE-6    Ag                 903 Na
+P-3           2631 C54488B-5                       613 Na
+P-4           2832 C200400-A    Ni Va              512 Na
+Nabloon       2938 C200534-B    Ni Va              205 Na
+

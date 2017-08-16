@@ -1,0 +1,423 @@
+Moeentra Sector
+
+A: Amoee                     a.dat
+B: Beentra                   b.dat
+C: Centrall                  c.dat
+D: Doeent                    d.dat
+E: Eentra                    e.dat
+F: Famoeen                   f.dat
+G: Geent                     g.dat
+H: Himoeer                   h.dat
+I: Imoeen                    i.dat
+J: Jeentral                  j.dat
+K: Kloeena                   k.dat
+L: Lentraas                  l.dat
+M: Moeent                    m.dat
+N: Noeeas                    n.dat
+O: Oeentra                   o.dat
+P: Peentrad                  p.dat
+
+Bases:
+L = Lraasa Navy
+M = Lraasa Scout
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+14 Lb = Lraasa Brothers
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Amoee SECTOR: Moeentra Sector
+#
+# Jump-routes
+#
+$0107 3104 -1 0 10
+$0107 0310 0 0 10
+$0310 0710 0 0 10
+$0710 1009 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Drogh         0107 C6A3313-5    Fl Lo Ni           403 Na
+A-2           0202 C7789A9-9    Hi In              900 Na
+Ziontra       0310 C330854-B    De Na Po           805 Na
+A-4           0401 C7A5773-6    Fl              B  703 Na
+A-5           0407 B74A99A-C    Hi In Wa           402 Na
+A-6           0510 D525500-8  S Ni                 300 Na
+A-7           0605 C411589-A    Ic Ni              504 Na
+Martrag       0710 D776657-6    Ag Ni              224 Na
+A-9           0807 C438886-9                       204 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Beentra SECTOR: Moeentra Sector
+#
+# Jump-routes
+$1403 1504 0 0
+#
+$1009 0710 -1 0 10
+$1009 1211 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Jailore       1009 C657976-8  S Hi              B  924 Na
+B-2           1107 D300888-7  S Na Va              820 Na
+B-3           1203 E679965-6    Hi In              720 Na
+B-4           1204 B332634-C  2 Na Ni Po           802 Na
+B-5           1205 C4345AB-8    Ni                 214 Na
+B-6           1301 C676342-8  S Lo Ni              104 Na
+B-7           1403 B425446-8  N Ni                 104 Na
+B-8           1404 B130345-B  N De Lo Ni Po        723 Na
+B-9           1504 B684555-B    Ag Ni              820 Na
+B-10          1606 E483610-2    Ni                 914 Na
+B-11          1609 C263354-9    Lo Ni              620 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Centrall SECTOR: Moeentra Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1805 B222433-C  N Ni Po              200 Na
+C-2           1809 E264748-5    Ag Ri              903 Na
+C-3           1905 C8388DG-5                       101 Na
+C-4           2102 C556400-9  S Ni                 412 Na
+C-5           2308 A568404-D    Ni                 804 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Doeent SECTOR: Moeentra Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2602 C200210-7    Lo Ni Va           315 Na
+D-2           2610 C587646-3  S Ag Ni Ri           204 Na
+D-3           2710 C55578B-4    Ag                 905 Na
+D-4           2902 B6A4545-9    Fl Ni              203 Na
+D-5           2906 D8B3563-7  S Fl Ni           A  402 Na
+D-6           3009 C4666AA-8  S Ag Ni              203 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Eentra SECTOR: Moeentra Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0113 D88A8BB-7    Wa                 610 Na
+E-2           0119 B764500-A  2 Ag Ni              100 Na
+E-3           0315 C455334-8    Lo Ni              514 Na
+E-4           0711 B647669-8    Ag Ni              703 Na
+E-5           0820 C6269CC-7    Hi In              900 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Famoeen SECTOR: Moeentra Sector
+#
+# Jump-routes
+#
+$1211 1009 0 -1 10
+$1211 1313 0 0 10
+$1313 1614 0 0 10
+$1614 2016 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0920 A576530-A  2 Ag Ni              203 Na
+F-2           1018 B476888-A                       802 Na
+F-3           1020 C326220-B    Lo Ni              405 Na
+F-4           1114 A201237-E  2 Ic Lo Ni Va        820 Na
+Ipidra        1211 B000110-A  N As Lo Ni           311 Na
+F-6           1311 C7A1333-7  S Fl Lo Ni           100 Na
+Unnaji        1313 C433130-8    Lo Ni Po           303 Na
+Fuutran       1614 C576552-9  S Ag Ni              813 Na
+F-9           1620 B355426-A  N Ni                 904 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Geent SECTOR: Moeentra Sector
+#
+# Jump-routes
+#
+$2016 1614 -1 0 10
+$2016 2319 0 0 10
+$2319 2720 1 0 10
+$2415 2615 1 0 14
+$2415 2215 0 0 14
+$2215 2114 0 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1820 C546662-3    Ag Ni              701 Na
+G-2           2013 D447943-9  M Hi In              222 Lb
+Carrletr      2016 C967767-6    Ag Ri              811 Na
+G-4           2019 C212675-8  S Ic Na Ni           104 Na
+G-5           2020 D559223-7  S Lo Ni              600 Na
+G-6           2114 B2106BF-A  L Na Ni              603 Lb
+G-7           2117 B580377-7  2 De Lo Ni        B  603 Na
+G-8           2215 B110563-B    Ni                 802 Lb
+G-9           2216 D210311-6  M Lo Ni              414 Lb
+Samorta       2319 C263631-6    Ni                 614 Na
+G-11          2415 B544320-7  M Lo Ni              314 Lb
+G-12          2420 CAF7454-7    Fl Ni              402 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Himoeer SECTOR: Moeentra Sector
+#
+# Jump-routes
+#
+$2720 2319 -1 0 10
+$2720 2823 0 1 10
+$3115 3117 0 0 14
+$3217 3016 0 0 14
+$3016 2615 0 0 14
+$3217 3119 0 0 14
+$3119 3221 0 1 14
+$2615 2415 -1 0 14
+$2615 2718 0 0 14
+$2718 3119 0 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2615 B441343-8  M Lo Ni Po           403 Lb
+H-2           2717 D4225AC-8  M Ni Po              520 Lb
+H-3           2718 B6A7589-9    Fl Ni              900 Lb
+Nuatra        2720 C549789-8  S                    203 Na
+H-5           2918 D998853-3                       214 Lb
+H-6           3012 E303768-4    Ic Na Va           123 Na
+H-7           3016 B558200-9    Lo Ni              602 Lb
+Hioen         3115 A000461-G  L As Ni Cx           904 Lb
+H-9           3117 BA9A595-A    Ni Wa              614 Lb
+H-10          3118 C441777-6  S Po              B  905 Na
+H-11          3119 B88A798-C    Ri Wa              103 Lb
+H-12          3217 B97A687-9  M Ni Wa              304 Lb
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Imoeen SECTOR: Moeentra Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0228 C764AAA-9  S Hi                 921 Na
+I-2           0229 D565232-3    Lo Ni              912 Na
+I-3           0321 E477547-6    Ag Ni              102 Na
+I-4           0328 E77499B-7    Hi In              323 Na
+I-5           0428 C436422-6    Ni                 800 Na
+I-6           0526 A345646-D    Ag Ni              824 Na
+I-7           0722 D544530-6    Ag Ni              304 Na
+I-8           0727 E5A0875-4    De              B  902 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jeentral SECTOR: Moeentra Sector
+#
+# Jump-routes
+$1626 1727 1 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           1227 C463543-8  S Ni                 513 Na
+J-2           1328 C9C9348-9    Fl Lo Ni        A  210 Na
+J-3           1521 C549745-4                       413 Na
+J-4           1523 B200204-A  2 Lo Ni Va           724 Na
+J-5           1524 C233357-A  S Lo Ni Po           414 Na
+J-6           1528 D75676A-6  S Ag                 203 Na
+J-7           1623 C664475-5  S Ni              B  324 Na
+J-8           1626 B792327-6  N Lo Ni              405 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kloeena SECTOR: Moeentra Sector
+#
+# Jump-routes
+$1727 1626 -1 0
+$1927 1929 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1727 C7759AC-9    Hi In              204 Na
+K-2           1824 C549733-6  S                    302 Na
+K-3           1921 C73A587-8    Ni Wa              802 Na
+K-4           1926 C312597-A    Ic Ni              123 Na
+K-5           1927 B86859A-B  N Ag Ni              313 Na
+K-6           1929 C94A466-6    Ni Wa              413 Na
+K-7           2426 B255579-B    Ag Ni           B  103 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lentraas SECTOR: Moeentra Sector
+#
+# Jump-routes
+#
+$2823 2720 0 -1 10
+$2823 2827 0 0 10
+$2827 2530 0 0 10
+$2530 2331 -1 1 10
+$3221 3119 0 -1 14
+$3221 3224 0 0 14
+$3224 3026 0 0 14
+$3026 2827 0 0 14
+$2827 2625 0 0 14
+$2625 2525 0 0 14
+$2827 2930 0 0 14
+$2930 2631 0 1 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2525 B64579C-6  L Ag                 402 Lb
+Hadrace       2530 C685520-7    Ag Ni              523 Na
+L-3           2625 A445430-B  M Ni                 913 Lb
+L-4           2822 C79A798-7    Wa                 224 Na
+Ererra        2823 C457363-9    Lo Ni              802 Na
+Lillion       2827 B11089A-C    Na                 515 Lb
+L-7           2928 C573522-4    Ni                 704 Lb
+L-8           2930 B310434-D    Ni                 604 Lb
+L-9           3026 B000347-C    As Lo Ni           604 Lb
+L-10          3122 E8A57CD-6    Fl                 100 Lb
+Lraasa        3221 B230AA6-G  L Cx Hi In Na Po     833 Lb
+L-12          3224 B400AA7-B    Hi Na Va           904 Lb
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Moeent SECTOR: Moeentra Sector
+#
+# Jump-routes
+#
+$0539 0702 0 1 2
+$0539 0237 0 0 2
+$0237 0134 0 0 2
+$0134 3232 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Cauummika     0134 C546A9A-7    Hi In              114 Na
+Jawwad        0237 C526957-7    Hi In              101 Na
+Mikleeg       0539 E4645A7-6    Ag Ni              915 Na
+M-4           0636 E5889A8-4    Hi                 404 Na
+M-5           0835 B410330-A  2 Lo Ni              602 Na
+M-6           0840 E878303-3    Lo Ni              501 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Noeeas SECTOR: Moeentra Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0931 C210315-6    Lo Ni              414 Na
+N-2           1034 E56A458-7    Ni Wa              513 Na
+N-3           1136 B86A47B-D    Ni Wa           B  703 Na
+N-4           1336 E698146-2    Lo Ni              903 Na
+N-5           1339 B65959B-C  N Ni                 204 Na
+N-6           1340 C86AAFI-9    Hi Wa           R  313 Na
+N-7           1433 C548ACD-C    Hi In              203 Na
+N-8           1438 C85A400-C  S Ni Wa              114 Na
+N-9           1632 D323487-9  S Ni Po              624 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Oeentra SECTOR: Moeentra Sector
+#
+# Jump-routes
+$2235 2335 0 0
+#
+$2331 2530 1 -1 10
+$2331 2335 0 0 10
+$2335 2436 0 0 10
+$2436 2638 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1732 C553343-8  S Lo Ni Po           302 Na
+O-2           1734 B4538C7-8    Po                 614 Na
+O-3           1737 C32769D-9    Ni                 314 Na
+O-4           1840 A40189A-C    Ic Na Va           502 Na
+O-5           2040 C89A310-7    Lo Ni Wa           203 Na
+O-6           2139 D86A99A-7  S Hi Wa              113 Na
+O-7           2233 E456523-3    Ag Ni              214 Na
+O-8           2235 C566221-9    Lo Ni              913 Na
+Oliollo       2331 C797899-6                       111 Na
+Weermia       2335 B77A9A9-A    Hi In Wa           504 Na
+O-11          2336 B443588-B  N Ni Po              502 Na
+Aqueesa       2436 E566233-2    Lo Ni              421 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Peentrad SECTOR: Moeentra Sector
+#
+# Jump-routes
+#
+$2638 2436 -1 0 10
+$2638 3038 0 0 10
+$3038 3102 0 1 10
+$2631 2930 0 -1 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2531 C585567-8    Ag Ni              602 Lb
+P-2           2533 C888631-8    Ag Ni              702 Lb
+P-3           2631 B500232-9  M Lo Ni Va           301 Lb
+Merrinass     2638 C62A963-9    Hi In Wa           404 Na
+P-5           2732 C8B4144-8    Fl Lo Ni        A  103 Lb
+P-6           2733 E77367C-1    Ni                 800 Lb
+Porthon       3038 C431440-6    Ni Po              403 Na
+P-8           3131 C332AEF-A    Hi In Na Po        610 Lb
+P-9           3133 D7B7363-7    Fl Lo Ni        A  603 Na
+P-10          3234 C494875-8  S                 B  401 Na
+

@@ -1,0 +1,392 @@
+Rassis Sector
+
+A: Arassi                    a.dat
+B: Brassis                   b.dat
+C: Cloass                    c.dat
+D: Drassis                   d.dat
+E: Ehrassia                  e.dat
+F: Flamassi                  f.dat
+G: Gronassi                  g.dat
+H: Hassamis                  h.dat
+I: Irassis                   i.dat
+J: Junnassi                  j.dat
+K: Kharossis                 k.dat
+L: Lassina                   l.dat
+M: Massist                   m.dat
+N: Nissast                   n.dat
+O: Oassi                     o.dat
+P: Phassist                  p.dat
+
+Bases:
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Arassi SECTOR: Rassis Sector
+#
+# Jump-routes
+#
+$0102 3001 -1 0 10
+$0102 0404 0 0 10
+$0404 0706 0 0 10
+$0706 1008 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Harkool       0102 B326643-A  N Ni                 904 Na
+A-2           0104 E581359-3    Lo Ni              701 Na
+A-3           0209 C443768-5  S Po                 413 Na
+A-4           0304 D7897A8-5  S                    200 Na
+A-5           0306 E250596-6    De Ni Po           924 Na
+A-6           0308 E444437-8    Ni                 314 Na
+Shallia       0404 C200501-9    Ni Va              814 Na
+Vrangier      0706 C68879A-7  S Ag Ri              901 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Brassis SECTOR: Rassis Sector
+#
+# Jump-routes
+#
+$1008 0706 -1 0 10
+$1008 1308 0 0 10
+$1308 1511 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           0902 C458432-5    Ni                 803 Na
+B-2           1005 D3108AB-8    Na                 700 Na
+Blatori       1008 B421524-B  N Ni Po              604 Na
+B-4           1103 A426534-B  N Ni                 900 Na
+B-5           1104 A673403-A  N Ni                 505 Na
+B-6           1203 C768320-7    Lo Ni              925 Na
+Dratagos      1308 C9C3200-6  S Fl Lo Ni        A  915 Na
+B-8           1504 E10069C-7    Na Ni Va           505 Na
+B-9           1509 C52799C-B  S Hi In              804 Na
+B-10          1601 C543444-9  S Ni Po              214 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Cloass SECTOR: Rassis Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1704 C776797-8    Ag                 424 Na
+C-2           1705 C9C8638-6  S Fl Ni           A  111 Na
+C-3           1804 C200544-6  S Ni Va              823 Na
+C-4           1910 C465324-8    Lo Ni              712 Na
+C-5           2003 E420256-A    De Lo Ni Po        804 Na
+C-6           2101 C466357-9  S Lo Ni              513 Na
+C-7           2307 C542A72-B    Hi In Po        B  903 Na
+C-8           2310 C5559BA-7    Hi                 421 Na
+C-9           2410 A565110-A  N Lo Ni              100 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Drassis SECTOR: Rassis Sector
+#
+# Jump-routes
+$2707 2907 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2507 E220324-5    De Lo Ni Po        812 Na
+D-2           2508 D649357-8  S Lo Ni              713 Na
+D-3           2510 C351856-9  S Po                 712 Na
+D-4           2707 B470220-B  S De Lo Ni           424 Na
+D-5           2708 C4105AB-A    Ni                 104 Na
+D-6           2907 A343888-D    Po                 800 Na
+D-7           3006 C262000-8    Ba Lo Ni           925 Na
+D-8           3107 C140830-6    De Po              303 Na
+D-9           3110 C7396A9-5    Ni                 300 Na
+D-10          3210 C698424-8    Ni                 113 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ehrassia SECTOR: Rassis Sector
+#
+# Jump-routes
+#
+$0113 3213 -1 0 11
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0113 C636620-6  S Ni                 220 Na
+E-2           0314 C584786-4    Ag Ri              203 Na
+E-3           0714 C6A3577-8  S Fl Ni           B  200 Na
+E-4           0813 X8A2101-5    Fl Lo           R  704 Na
+E-5           0819 C2037AF-9    Ic Na Va           712 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Flamassi SECTOR: Rassis Sector
+#
+# Jump-routes
+#
+$1511 1308 0 -1 10
+$1511 1812 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0919 C335636-A    Ni                 404 Na
+F-2           0920 C5769A8-9  S Hi In              903 Na
+F-3           1218 D203000-7    Ba Ic Lo Ni Va     504 Na
+F-4           1219 C433544-9    Ni Po              605 Na
+F-5           1314 A566330-9  N Lo Ni              113 Na
+F-6           1412 C549312-5  S Lo Ni              614 Na
+Reshasha      1511 D584443-3    Ni                 504 Na
+F-8           1617 B664569-9  S Ag Ni              202 Na
+F-9           1619 E76A37A-4    Lo Ni Wa        B  100 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Gronassi SECTOR: Rassis Sector
+#
+# Jump-routes
+#
+$1812 1511 -1 0 10
+$1812 2015 0 0 10
+$2015 2218 0 0 10
+$2218 2421 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Glavacca      1812 B551488-7  2 Ni Po              913 Na
+G-2           1912 D67989D-4  S                    205 Na
+Zorrour       2015 C474300-9  S Lo Ni              603 Na
+G-4           2020 B576788-7    Ag                 901 Na
+G-5           2117 C98A166-7    Lo Ni Wa           802 Na
+G-6           2216 AA89494-9    Ni                 330 Na
+Jinnik        2218 C733744-8  S Na Po              302 Na
+G-8           2219 E766944-6    Hi                 125 Na
+G-9           2318 B592585-6  N Ni                 625 Na
+G-10          2411 C410974-C    Hi Na           B  214 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hassamis SECTOR: Rassis Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2716 C100453-8    Ni Va              214 Na
+H-2           2916 E8A2442-4    Fl Ni              202 Na
+H-3           2919 C465234-7    Lo Ni              423 Na
+H-4           3216 C200663-8    Na Ni Va           514 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Irassis SECTOR: Rassis Sector
+#
+# Jump-routes
+$0829 0930 1 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0128 D9B3278-3  S Fl Lo Ni        A  703 Na
+I-2           0225 E211001-4    Ic Lo Ni           505 Na
+I-3           0229 C799376-9    Lo Ni           B  614 Na
+I-4           0429 DAC969A-6    Fl Ni           A  803 Na
+I-5           0829 B585158-9  N Lo Ni              913 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Junnassi SECTOR: Rassis Sector
+#
+# Jump-routes
+$0930 0829 -1 0
+$0927 0930 0 0
+$0928 1030 0 0
+$0930 1030 0 0
+$1030 1132 0 1
+$1528 1628 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0927 B565335-9  N Lo Ni              802 Na
+J-2           0928 B464587-7  2 Ag Ni              524 Na
+J-3           0930 A564337-D  2 Lo Ni              803 Na
+J-4           1030 BAA5AAA-D  2 Fl Hi              503 Na
+J-5           1121 D8B4485-5  S Fl Ni           A  704 Na
+J-6           1127 C449120-9    Lo Ni              104 Na
+J-7           1222 D45578A-3  S Ag                 600 Na
+J-8           1322 C8A9588-8    Fl Ni              402 Na
+J-9           1422 C2409B9-9    De Hi In Po        820 Na
+J-10          1424 C64489C-7  S                    702 Na
+J-11          1523 C441230-8    Lo Ni Po           803 Na
+J-12          1528 B7A0851-A    De                 512 Na
+J-13          1628 C87A400-9    Ni Wa              202 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kharossis SECTOR: Rassis Sector
+#
+# Jump-routes
+#
+$2421 2218 0 -1 10
+$2421 2623 1 0 10
+$2329 2527 1 0 10
+$2329 2432 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1722 C86A424-8  S Ni Wa              904 Na
+K-2           1726 A4027BA-9  N Ic Na Va           402 Na
+K-3           1925 A789677-C  2 Ni Ri           B  813 Na
+K-4           1928 CA66596-9  S Ag Ni              404 Na
+K-5           2027 B6926A9-9  N Ni                 503 Na
+K-6           2028 CA9A566-8    Ni Wa              822 Na
+K-7           2029 X7C18BC-2    Fl              R  203 Na
+K-8           2322 D636300-7  S Lo Ni              404 Na
+Cashawn       2329 B474A97-D    Hi In              904 Na
+Kababba       2421 B87A677-C  S Ni Wa           B  402 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lassina SECTOR: Rassis Sector
+#
+# Jump-routes
+#
+$2623 2421 -1 0 10
+$2623 2527 0 0 10
+$2527 2329 -1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Aspairia      2527 C87A120-6    Lo Ni Wa           201 Na
+Lortreen      2623 B456100-A  S Lo Ni              304 Na
+L-3           2724 C626240-9  S Lo Ni              400 Na
+L-4           2827 X616559-2    Ic              R  304 Na
+L-5           2921 C581A8B-8  S Hi                 801 Na
+L-6           3129 C510486-9    Ni                 914 Na
+L-7           3130 C665454-5    Ni                 404 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Massist SECTOR: Rassis Sector
+#
+# Jump-routes
+#
+$0138 0301 0 1 2
+$0138 3234 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Millar        0138 B585230-A    Lo Ni              603 Na
+M-2           0334 C576210-7    Lo Ni              111 Na
+M-3           0435 C454757-8    Ag                 604 Na
+M-4           0436 C56859A-6    Ag Ni              714 Na
+M-5           0538 C672244-6  S Lo Ni              112 Na
+M-6           0633 X8666A9-0    Ag              R  314 Na
+M-7           0739 D9A347B-4  S Fl Ni           B  604 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nissast SECTOR: Rassis Sector
+#
+# Jump-routes
+$1132 1030 0 -1
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0934 B310589-9  N Ni                 802 Na
+N-2           1132 A625468-9  N Ni                 622 Na
+N-3           1234 C333734-7    Na Po              313 Na
+N-4           1238 C747645-3  S Ag Ni              704 Na
+N-5           1332 C9E2302-6    Fl Lo Ni           814 Na
+N-6           1335 B4029AA-A    Hi Ic Na Va        710 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Oassi SECTOR: Rassis Sector
+#
+# Jump-routes
+#
+$2432 2329 0 -1 10
+$2432 2634 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           2032 D211844-5    Ic Na              703 Na
+O-2           2035 B304332-B    Ic Lo Ni Va        602 Na
+O-3           2236 C868100-7    Lo Ni              303 Na
+Olliomma      2432 C563300-7    Lo Ni              304 Na
+O-5           2436 C120510-7  S De Ni Po           210 Na
+O-6           2440 B615669-8  N Ic Ni              102 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Phassist SECTOR: Rassis Sector
+#
+# Jump-routes
+#
+$2634 2432 -1 0 10
+$2634 2837 0 0 10
+$2837 3040 0 0 10
+$3040 2904 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2539 C576756-6  S Ag                 214 Na
+P-2           2540 D66456B-2    Ag Ni              814 Na
+Panndour      2634 B766651-9    Ag Ni Ri           223 Na
+P-4           2735 E240676-2    De Ni Po        B  205 Na
+Markreece     2837 C646887-5                       611 Na
+P-6           2938 C411200-8    Ic Lo Ni           503 Na
+P-7           3031 C84A685-8  S Ni Wa              730 Na
+Ellandoff     3040 D89A5AB-6    Ni Wa              104 Na
+P-9           3135 E120300-A    De Lo Ni Po        224 Na
+P-10          3136 C585786-5  S Ag Ri              403 Na
+P-11          3232 B875310-7    Lo Ni              703 Na
+

@@ -1,0 +1,882 @@
+Old Expanses
+
+A: Dethenes                  sec_a.dat
+B: Quinoid                   sec_b.dat
+C: Ahrhi                     sec_c.dat
+D: Rusco                     sec_d.dat
+E: Srys                      sec_e.dat
+F: Jayna                     sec_f.dat
+G: 21 Worlds                 sec_g.dat
+H: Ile                       sec_h.dat
+I: Thoezennt                 sec_i.dat
+J: Shenk                     sec_j.dat
+K: Karse                     sec_k.dat
+L: Vendtup                   sec_l.dat
+M: Nicosia                   sec_m.dat
+N: Sarid                     sec_n.dat
+O: So Skire                  sec_o.dat
+P: Bascoj                    sec_p.dat
+
+Bases:
+A = Navy & Scout Bases
+D = Naval Depot
+N = Naval Base
+S = Scout Base
+W = Way Station
+  = None
+
+Allegiance:
+12 Im = Imperial
+11 So = Solomani
+07 Na = Non-aligned
+04 Cs = Client State
+10 Ch = Unknown
+13 En = Unknown
+14 Po = Unknown
+08    = Unknown
+
+
+Old Expanses - Credits
+-----------------------
+
+The Old Expanses data was ftped from Sunbane.
+
+The Old Expanses sector was covered to some extent in
+issue 12 of The Travellers' Digest put out by Digest
+Group Publications in 1988. The people involved in the
+Old Expanses write-up from that issue were Nancy Parker
+and Robert Parker.
+
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_A   SECTOR: oldexpan
+#
+# Trade routes within the subsector
+$0201 0302 0 0
+$0302 0304 0 0
+$0304 0204 0 0
+$0302 0403 0 0
+$0606 0607 0 0
+$0109 0310 0 0
+$0310 0311 0 1
+$0109 0108 0 0
+$0108 3207 -1 0
+$0204 3204 -1 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Croesus       0108 C230675-9  S De Na Ni Po     A  804 Im
+Datarkt       0109 C433AD9-7    Hi Na Po        R  404 Im
+Elyan         0201 B752855-B  A Po              A  402 Im
+Thubria       0204 C112234-B  S Ic Lo Ni           500 Im
+Larmix        0209 C787878-5  S Ri              B  404 Im
+Bincia        0302 B598652-9  A Ag Ni           A  315 Im
+Kri           0304 B646459-C    Ni              A  902 Im
+Diacy         0306 E667A74-9    Hi              B  702 Im
+Styge         0310 D655699-6    Ag Ni              613 Im
+Dethenes      0403 AA89A44-G    Hi              A  730 Im
+Larspri       0408 X1B1000-0    Ba Fl Lo Ni     R  400 Im
+Preodis       0508 E341856-6    Po                 204 Im
+Eupry         0603 C4448B6-6                       414 Im
+Linourice     0606 C521321-9  S Lo Ni Po        R  901 Im
+Inthra        0607 C422AD9-9  A Hi In Na Po     R  524 Im
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_B   SECTOR: oldexpan
+#
+# Trade routes within the subsector
+$1004 1104 0 0
+$1004 1105 0 0
+$1104 1106 0 0
+$1106 1006 0 0
+$1106 1306 0 0
+$1106 1311 0 1
+$1104 1202 0 0
+$1202 1401 0 0
+$1401 1503 0 0
+$1503 1403 0 0
+$1503 1603 0 0
+$1603 1604 0 0
+$1306 1202 0 0
+$1306 1205 0 0
+$1306 1208 0 0
+$1306 1507 0 0
+$1306 1403 0 0
+$1306 1604 0 0
+$1604 1702 1 0
+#
+$1503 1805 1 0 2
+$1503 1101 0 0 2
+$1101 0938 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Tarpeian      0908 XA83421-5    Ni              R  600 Im
+Paragon       0909 B766655-C    Ag Ni Ri           602 Im
+Sternway      1002 B784644-A  S Ag Ni Ri           605 Im
+Sidrat        1004 A122655-F    Na Ni Po           524 Im
+Serpila       1006 A674A98-F  S Hi In              503 Im
+Safire        1007 A96A657-E    Ni Wa Ri           900 Im
+Kase          1008 C887744-7  S Ag Ri              311 Im
+Montero       1010 A865644-C    Ag Ni Ri           704 Im
+Mizar-5       1101 C210500-C    Ni                 602 Im
+Talien        1104 A84897A-E    Hi In           B  814 Im
+Estrem        1105 B672999-C    Hi In              522 Im
+Vaward        1106 A795A99-F  N Hi In              102 Im
+Quin          1201 B000665-D    As Na Ni           401 Im
+Tricard       1202 A773A89-F    Hi In              214 Im
+Margate       1203 A689653-D    Ni Ri              420 Im
+Jone          1205 A310565-F  S Ni                 904 Im
+Darby         1206 A465665-D    Ag Ni Ri           604 Im
+Sygma         1208 A99A699-E  N Ni Wa              110 Im
+Tantal        1301 C000564-C  S As Ni              800 Im
+Arzhent       1302 B000564-E  S As Ni              101 Im
+Farina        1303 A767745-C    Ag Ri              800 Im
+Thurber       1305 CAA1694-9    Fl Ni              134 Im
+Veraq         1306 A86585A-F    Ri                 703 Im
+Issek         1307 B679634-B  S Ni                 500 Im
+Zetta         1309 B221766-B  S Na Po              820 Im
+Palique       1310 A4686C8-C    Ag Ni              500 Im
+Pallad        1401 A000665-F    As Na Ni           604 Im
+Andicotte     1403 B626996-C    Hi In              223 Im
+Aristera      1405 A567768-C  N Ag Ri              501 Im
+Levan         1408 C4128AA-9    Ic Na              303 Im
+Antres        1502 D839568-7    Ni                 704 Im
+Terzin        1503 A444AAA-F  N Hi In              304 Im
+Scytha        1504 C455511-9  S Ag Ni              310 Im
+Leome         1507 B672989-A    Hi In              501 Im
+Treviere      1508 B364743-A    Ag Ri              400 Im
+Fezzan        1510 C650644-8    De Ni Po           503 Im
+Sardis        1602 B554764-A  S Ag                 700 Im
+Chayne        1603 A211522-F    Ic Ni              605 Im
+Medallion     1604 A110511-F  N Ni                 403 Im
+Krupp         1605 C588736-7    Ag                 102 Im
+Gryphon       1609 A124513-D  S Ni                 401 Im
+Darius        1610 B455757-A    Ag                 302 Im
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_C   SECTOR: oldexpan
+#
+# Trade routes within the subsector
+$1702 1604 -1 0
+$1702 1802 0 0
+$1802 1803 0 0
+$1803 1904 0 0
+$1904 2204 0 0
+$2204 2405 0 0
+$2405 2605 1 0
+$1904 1805 0 0
+$1805 2006 0 0
+$1805 1806 0 0
+$1806 1909 0 0
+$1909 1809 0 0
+$1909 1911 0 1
+#
+$1802 1639 -1 -1 10
+$1802 2203 0 0 10
+$2203 2603 1 0 10
+$2008 2211 0 1 2
+$2008 1805 0 0 2
+$1805 1503 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Dredel        1702 A257110-A    Lo Ni              823 Im
+Shilhen       1709 D565220-5  S Lo Ni              921 Im
+Yestor        1710 C667478-4  S Ni              B  904 Im
+Simblent      1802 A57A651-D    Ni Wa              901 Im
+Ahri          1803 C357A95-B  S Hi                 703 Im
+Lhmoore       1804 A122959-A    Hi In Na Po        223 Im
+Zell          1805 B8A6358-D    Fl Lo Ni           623 Im
+Abeare        1806 B453543-8  N Ni Po              412 Im
+Louks         1809 D9DA613-9  S Fl Ni Wa           704 Im
+Fulinara      1904 C566336-6    Lo Ni           A  723 Im
+Debruler      1906 C9A6200-8  S Fl Lo Ni           104 Im
+Algren        1907 E653754-7    Po              A  712 Im
+Silvis        1909 B34459E-7    Ag Ni              803 Im
+Biros         1910 B594258-9    Lo Ni              604 Im
+Ince          2003 D465200-6  S Lo Ni              100 Im
+Arend         2004 EAB8495-8    Fl Ni           A  300 Im
+134-635       2005 X6A5000-0    Ba Fl Lo Ni     R  713 Im
+Dese          2006 B57A887-9  N Wa                 624 Im
+Phoub         2008 E447311-7    Lo Ni              503 Im
+Drand         2103 B544744-8  S Ag                 501 Im
+Yeaph         2105 D675349-6  S Lo Ni              104 Im
+Thal          2203 B599144-9    Lo Ni              601 Im
+Imdra         2204 D867447-6    Ni                 102 Im
+Millington    2210 C48A789-7    Wa Ri           A  901 Im
+Vate          2305 B22168A-A  N Na Ni Po           403 Im
+Tesb          2403 D77A544-7    Ni Wa              603 Im
+Calan         2405 C834110-9    Lo Ni              404 Im
+Kize          2410 C100135-B    Lo Ni Va           110 Im
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_D   SECTOR: oldexpan
+#
+# Trade routes within the subsector
+$3204 0104 1 0
+$2605 2405 -1 0
+$2605 2706 0 0
+$2706 3006 0 0
+$3006 3204 0 0
+$3204 3102 0 0
+$3102 3240 0 -1
+$2706 2607 0 0
+$2607 2609 0 0
+$2609 2511 0 1
+#
+$2603 2203 -1 0 10
+$2603 2806 0 0 10
+$2806 3206 0 0 10
+$3206 0407 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Lamber        2502 C875654-A  S Ag Ni              500 Im
+Sonfeld       2510 C6AA523-A    Fl Ni Wa           803 Im
+Acrolund      2601 X777770-7    Ag              R  623 Im
+Carmon        2602 C898854-B                       910 Im
+Loydecal      2603 A2518AB-E    Po                 402 Im
+Benson        2605 C2016B6-A    Ic Na Ni Va        704 Im
+Polluc        2607 C000700-B    As Na              804 Im
+Gilway        2609 A845711-E  A Ag                 403 Im
+Rannow        2704 B430463-B  A De Ni Po           702 Im
+Daslon        2705 B8766BE-D    Ag Ni              520 Im
+Rusco         2706 A646653-B    Ag Ni              423 Im
+Makan         2707 B66A558-B  A Ni Wa              812 Im
+Nautz         2801 C852768-9    Po                 901 Im
+Caborn        2803 C733653-9    Na Ni Po           710 Im
+Dycarl        2806 B458776-E    Ag              B  805 Im
+Zin           2807 B9BA231-E  S Fl Lo Ni Wa     A  302 Im
+Horejs        2907 B685510-B    Ag Ni              122 Im
+Straker       2909 C567610-9    Ag Ni              202 Im
+Crowell       3003 C678637-9    Ag Ni              604 Im
+Smales        3004 X5867AF-0    Ag              R  603 Im
+Voskl         3006 B8439BC-A  A Hi In Po           604 Im
+Siaj          3102 C440534-8    De Ni Po           200 Im
+Engle         3204 BA578AB-F  N                    423 Im
+Drakenwald    3206 B9AA436-E  N Fl Ni Wa           100 Im
+Van Cleef     3209 B110627-D  A Na Ni              412 Cs
+Crakatoa      3210 B554977-E    Hi              B  224 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_E   SECTOR: oldexpan
+#
+# Trade routes within the subsector
+$0311 0310 0 -1
+$0311 0516 0 0
+$0413 0114 0 0
+$0114 3014 -1 0
+$0413 0613 0 0
+$0516 0520 0 0
+$0516 0416 0 0
+$0416 0318 0 0
+$0416 0518 0 0
+$0419 0318 0 0
+$0419 0518 0 0
+$0817 0222 0 1
+$0817 0818 0 0
+$0717 0918 1 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Klan          0112 A79788E-E  S                    800 Im
+Wott          0113 B530655-D  A De Na Ni Po        724 Im
+Dachnis       0114 A212A85-F  S Hi Ic In Na        110 Im
+Xulfor        0117 D35A573-6    Ni Wa           B  122 Im
+Jenms         0118 C561659-9  S Ni Ri              102 Im
+Laurence      0212 A446867-A  A                    912 Im
+Ranb          0311 C766766-9    Ag Ri              502 Im
+Olxber        0312 C000505-B  S As Ni              604 Im
+Bede          0317 B201766-D  N Ic Na Va           500 Im
+Strat         0318 A9BA8A8-F  S Fl Wa           A  304 Im
+Sanlorthan    0412 C757663-A  S Ag Ni              104 Im
+Clersor       0413 A1009CC-F    Hi In Na Va        210 Im
+Exage         0416 AA85978-F  N Hi              B  204 Im
+Seefare       0418 C31079A-8    Na                 610 Im
+Polei         0419 A86A814-F    Wa                 704 Im
+Waroh         0512 A789846-E  A Ri                 820 Im
+Yeroltoy      0513 BA43763-E    Po                 935 Im
+Frallsord     0516 A462A26-F  W Hi                 204 Im
+Ajjeig        0518 A3259AA-F    Hi In              504 Im
+Srys          0520 A767924-F    Hi                 202 Im
+Vinooks       0613 A440756-F  A De Po              103 Im
+Afrend        0614 B676876-D                    B  801 Im
+Marsol        0620 B122623-C    Na Ni Po           904 Im
+Sulthanbran   0712 B000732-E    As Na              304 Im
+Lidator       0713 C9CA735-9    Fl Wa           A  120 Im
+Vard          0714 X9BA997-7    Fl Hi Wa        R  204 Im
+Ilm           0715 B662936-D    Hi                 715 Im
+Sarcathon     0716 C963610-9    Ni                 804 Im
+Ritaboll      0717 A35A979-F  S Hi Wa           B  804 Im
+Zinorow       0811 B688844-E  S Ri                 704 Im
+Flanture      0812 B743735-E    Po                 905 Im
+Quan          0813 B530748-E    De Na Po           704 Im
+Inftow        0817 A2039A5-E    Hi Ic In Na Va     213 Im
+Yerhen        0818 A374779-F    Ag              B  803 Im
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_F   SECTOR: oldexpan
+#
+# Trade routes within the subsector
+$0918 0817 -1 0
+$0918 1118 0 0
+$1118 1519 0 0
+$1519 1321 0 1
+$1519 1422 0 1
+$1519 1719 1 0
+$1519 1415 0 0
+$1415 1213 0 0
+$1213 1311 0 0
+$1311 1512 0 0
+$1512 1213 0 0
+$1311 1208 0 -1
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Dahlec        0913 C786643-A  S Ag Ni Ri           902 Im
+Rebields      0918 A7A8956-F  S Fl Hi              213 Im
+Kestral       1011 A7588B9-B                       914 Im
+Linnert       1013 A642430-D  N Ni Po              404 Im
+Aneth         1111 A456704-B    Ag                 600 Im
+Sveinel       1114 B454737-A    Ag                 421 Im
+Czerniak      1118 A9899C8-C  S Hi                 800 Im
+Wileth        1211 B737574-9    Ni              B  404 Im
+Mofare        1212 B7A3663-A    Fl Ni              520 Im
+Ultraneta     1213 A00055A-F  D As Ni              704 Im
+Indigo        1215 B749747-E                       322 Im
+Phoru         1311 B375AC9-A  S Hi In              102 Im
+Marejen       1312 B245638-B    Ag Ni              402 Im
+Walager       1318 B974638-B  S Ag Ni              604 Im
+Skerry        1320 C334300-8    Lo Ni              602 Im
+Chrimarko     1412 B491732-B                       300 Im
+Kata          1414 A997774-B    Ag              B  603 Im
+Thanatos      1415 B653622-9    Ni Po              214 Im
+Lyart         1512 A200A6B-E  N Hi In Na Va        110 Im
+Krag          1517 B737655-A    Ni                 103 Im
+Galiano       1519 A767847-F  N Ri                 704 Im
+Kunni         1520 B874643-B    Ag Ni              414 Im
+Anirl         1611 C131655-B    Na Ni Po           505 Im
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_G   SECTOR: oldexpan
+#
+# Trade routes within the subsector
+$1719 1519 -1 0
+$1719 1920 0 0
+$1920 2120 0 0
+$2120 2114 0 0
+$2114 2315 0 0
+$2315 2218 0 0
+$2218 2021 0 1
+$2114 1911 0 0
+$1911 1909 0 -1
+#
+# Note: Trav Digest #12 p33 shows a world at parsec 2116
+#       No such world exists in the Sunbane data. For this
+#       reason, the "21 Worlds" subsector only seems to
+#       have 20 worlds, since I'm going by the Sunbane data.
+#
+$2418 2621 1 1 2
+$2418 2315 0 0 2
+$2315 2211 0 0 2
+$2211 2008 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Sharrif       1717 C9B7500-A    Fl Ni           A  605 Im
+Akka          1718 B74A668-D    Ni Wa              604 Im
+Bonsher       1719 A865947-F    Hi                 520 Im
+Layor         1817 C768620-C    Ag Ni              120 Im
+Mnash         1911 A200942-F  N Hi In Na Va        513 Im
+Cenno         1920 A97A8AA-B    Wa                 202 Im
+Pashintor     2013 C5288C8-B                       510 Im
+Leblion       2019 C000533-D    As Ni              600 Im
+Chenek        2114 B985797-D  N Ag Ri              905 Im
+Maazel        2120 B1108AA-F  W Na                 505 Im
+Gauras        2211 C565588-9  S Ag Ni              323 Im
+Cimabue       2212 C438635-D    Ni                 102 Im
+Kuznets       2215 B21089A-E    Na                 603 Im
+Kantord       2218 B510947-F    Hi In Na           922 Im
+Atil          2315 A331A53-F    Hi Na Po           900 Im
+Sulpt         2411 C410578-B    Ni              B  902 Im
+Bourj         2413 C50077A-B  S Na Va           B  204 Im
+Khar          2416 C659722-D                       404 Im
+Khe           2417 C63A547-B    Ni Wa              502 Im
+Khyme         2418 C120411-A  S De Ni Po           724 Im
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_H   SECTOR: oldexpan
+#
+# Trade routes within the subsector
+$2511 2609 0 -1
+$2511 2611 0 0
+$2611 2811 0 0
+$2811 2814 0 0
+$2811 3012 0 0
+$3012 3111 0 0
+$3111 3212 0 0
+$3212 3213 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Dorp          2511 B433100-9  N Lo Ni Po        R  915 Im
+Warner        2611 A564655-8  N Ag Ni Ri           602 Im
+Pradock       2711 E567762-5    Ag Ri              913 Im
+Fentel        2811 CA78622-7  S Ag Ni              522 Im
+Doerr         2814 B1108AA-9    Na                 904 Im
+Barron        2816 B300477-8  A Ni Va           B  903 Im
+Torrel        2818 C357A95-A  A Hi                 304 Im
+Nash          2911 D122959-A  N Hi In Na Po        403 Im
+Garz          2914 B8A6358-D    Fl Lo Ni           114 Im
+Kalemn        2916 B453543-8  N Ni Po              914 Im
+Paro          2917 D9CA613-9  S Fl Ni Wa        A  703 Im
+Quen          3012 C566366-5    Lo Ni              822 Im
+Yesta         3015 A35795C-C    Hi                 502 Im
+Carris        3111 C9A6200-8  S Fl Lo Ni           404 Im
+Srzilkrozia   3212 E653754-7    Po                 223 Im
+Kresh         3213 B641000-8  A Ba Lo Ni Po        805 Im
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_I   SECTOR: oldexpan
+#
+# Trade routes within the subsector
+$0222 0520 0 -1
+$0703 0520 0 -1
+$0222 0125 0 0
+$0125 0127 0 0
+$0127 0327 0 0
+$0327 0334 0 1
+$0330 0732 0 1
+$0327 3123 -1 0
+$0723 0922 1 0
+$0723 0926 1 0
+$0829 0732 0 1
+$0829 0929 1 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Martham       0121 C452824-A    Po                 202 Im
+Sibbage       0123 A254644-E  N Ag Ni              502 Im
+Burlta        0125 A799A97-D  S Hi In              700 Im
+Possin        0127 A322ADA-F    Hi In Na Po        102 Im
+Darainne      0128 A53189A-E    Na Po              702 Im
+New Martham   0221 BAC3625-E    Fl Ni           A  112 Im
+Hodg          0222 A758813-F                       402 Im
+La Shend      0224 C9C4732-9    Fl              A  902 Im
+Lote          0229 B77A632-E  N Ni Wa              702 Im
+Bwan Murr     0325 C455741-9    Ag                 425 Im
+Sh' Lur       0327 A426954-F  W Hi In              521 Im
+Tarryel       0330 C572886-B  S                    502 Im
+Sauler        0424 B884574-B  S Ag Ni           B  600 Im
+Drila         0521 C232633-B    Na Ni Po           622 Im
+Etpur         0621 C637744-E  S                    825 Im
+Meadsk        0628 X987556-2    Ag Ni           R  904 Im
+Dho Il's Worl 0721 C2206AF-C  S De Na Ni Po     A  905 Im
+Traeviss      0722 C000601-D    As Na Ni           804 Im
+Coaise        0723 A556834-F  N                    414 Im
+Marax         0726 C573652-A    Ni                 903 Im
+Zoraith       0729 B525764-D                    A  512 Im
+Shaphry       0823 B734762-E                       300 Im
+Tiniyd        0825 C543645-C  S Ni Po              321 Im
+Xezor         0829 B87A746-A  A Wa                 601 Im
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_J   SECTOR: oldexpan
+#
+# Trade routes within the subsector
+$1021 0723 -1 0
+$0922 0924 0 0
+$1021 1221 0 0
+$1221 1321 0 0
+$1221 1623 0 0
+$1422 1621 0 0
+$1621 1623 0 0
+$1623 1424 0 0
+$1422 1427 0 0
+$1427 1528 0 0
+$1528 1626 0 0
+$1426 1128 0 0
+$1128 0926 0 0
+$0926 0723 -1 0
+$0924 1125 0 0
+$1125 1126 0 0
+$1125 1224 0 0
+$1224 1221 0 0
+$1128 1229 0 0
+$1229 1131 0 1
+$1229 1333 0 1
+$1321 1519 0 -1
+$1422 1519 0 -1
+$1629 1532 0 1
+$0929 0829 -1 0
+$0929 0930 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Moy           0922 B313444-C  W Ic Ni              302 Im
+Avis          0924 C513363-8    Ic Lo Ni           413 Im
+Berkin        0926 B66A974-C  N Hi Wa           B  704 Im
+Reagan        0929 B210420-9  N Ni                 412 Im
+Welch         0930 B344720-B    Ag                 622 Im
+Dorian        1021 B310422-A    Ni                 203 Im
+Cooke         1024 C422256-A    Lo Ni Po           100 Im
+Janie         1125 B769844-B    Ri                 513 Im
+Slandow       1126 C9A4685-8    Fl Ni              804 Im
+Shenk         1128 A554823-E  S                    212 Im
+Sovtor        1221 A302620-C  S Ic Na Ni Va        700 Im
+Mueller       1223 B554823-B  N                    413 Im
+Dunas         1224 B631820-A  A Na Po              802 Im
+Wall          1227 A5009A8-E    Hi In Na Va        710 Im
+Fisher's Worl 1229 A769825-E  W                    504 Im
+Marcena       1321 B575723-B  N Ag                 514 Im
+Solee         1322 B675857-A  N                    700 Im
+Barnet        1327 A631823-C    Na Po              914 Im
+Tequila       1328 B371663-9    Ni                 314 Im
+Hindahl       1422 A754A86-B    Hi                 300 Im
+Kmak          1424 A696935-D    Hi In              101 Im
+Herbe         1426 C8C5461-8    Fl Ni           A  403 Im
+Lawart        1427 B78A879-C    Wa Ri           B  402 Im
+Yontez        1527 D663966-6    Hi              A  802 Im
+Kruml         1528 B330447-A  N De Ni Po           703 Im
+Aniston       1621 B412579-C    Ic Ni           B  901 Im
+Dothan        1623 A549852-A  N                    503 Im
+Canton        1626 A344774-C  S Ag              B  120 Im
+Astrid        1628 C200374-8    Lo Ni Va        B  101 Im
+Olney         1629 A511865-B  N Ic Na              904 Im
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_K   SECTOR: oldexpan
+#
+# Trade routes within the subsector
+$2329 2628 1 0
+$2125 2523 1 0
+$2021 2218 0 -1
+$1721 1822 0 0
+$1822 2125 0 0
+$2125 2228 0 0
+$2228 2229 0 0
+$2228 2329 0 0
+$2228 2030 0 0
+$2030 2031 0 1
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Rotal         1721 B546849-C  S                 A  302 Im
+Bote          1727 A778761-C    Ag                 200 Im
+Ames          1821 B50087B-B    Na Va           B  810 Im
+Ropram        1822 B467ABB-B    Hi                 924 Im
+Mager         1825 C866710-A  S Ag                 915 Im
+Antalan       1826 C435440-A    Ni                 813 Im
+Rolf          1827 C594769-B    Ag                 903 Im
+Letron        1829 C27287C-8                    A  501 Im
+Cupprio       1922 A665200-B    Lo Ni              514 Im
+Moppo         1925 B83677A-C                    B  614 Im
+Phildelia     1928 B100732-E    Na Va              314 Im
+Villan        2021 A2319CF-F    Hi Na Po           813 Im
+Bytor         2022 B543634-B    Ni Po              401 Im
+Femerial      2030 A665787-E    Ag Ri              410 Im
+Sxip          2123 B796732-D    Ag                 510 Im
+Barsk         2124 B100896-E    Na Va              811 Im
+Mexit         2125 B455AA6-F  W Hi                 813 Im
+Lapper        2126 X455773-1    Ag              R  103 Im
+Elanor        2127 B333715-D    Na Po              504 Im
+Darpi         2130 B453620-C  N Ni Po              802 Im
+Gonzu         2221 X9DA646-1    Fl Ni Wa        R  400 Im
+Harple        2225 B100756-E  S Na Va              212 Im
+Traynos       2227 C562662-8    Ni Ri              620 Im
+Welzer        2228 B579864-E  W                    220 Im
+Karse         2229 B241876-F  S Po              B  604 Im
+Kolop         2325 C662622-9  S Ni                 504 Im
+Samosk        2329 A200976-F    Hi In Na Va     B  312 Im
+Goldbach      2422 C445310-A    Lo Ni              302 Im
+Kolipio       2424 X226612-4    Ni              R  305 Im
+Allenz        2425 B656135-A    Lo Ni              503 Im
+Quest         2428 C766665-C    Ag Ni Ri           722 Im
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_L   SECTOR: oldexpan
+#
+# Trade routes within the subsector
+$2523 2823 0 0
+$2823 2628 0 0
+$2628 2633 0 1
+$2523 2125 -1 0
+$2628 2329 -1 0
+#
+$3128 0131 1 1 2
+$3128 3025 0 0 2
+$3025 2823 0 0 2
+$2823 2621 0 0 2
+$2621 2418 -1 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Usinea        2523 A310939-F    Hi In Na           524 Im
+Vreeland      2524 C553624-D    Ni Po              904 Im
+092-007       2529 B66A133-D    Lo Ni Wa           802 Im
+New Dakar     2621 B8A176A-D    Fl                 601 Im
+Vendtup Stati 2622 B769457-C    Ni                 114 Im
+Porrl         2628 B858258-B    Lo Ni              300 Im
+Lannor        2726 C243755-C    Po                 811 Im
+Republicos    2727 B64A557-B    Ni Wa              212 Im
+Vendtup       2728 B64A557-B    Ni Wa              814 Im
+Albach        2823 B458432-E    Ni                 304 Im
+Burncloud     2824 CAB3613-9    Fl Ni           A  712 Im
+Ayra          2825 B5217A9-E    Na Po              723 Im
+Scorch        2828 E541946-7    Hi In Po        A  500 Im
+Cold Rock     2829 E4006A7-5    Na Ni Va           705 Im
+Reine         2924 B79A677-7    Ni Wa           B  904 Im
+Olorna        2928 C35357A-9    Ni Po           B  701 Im
+Chapet        3025 A510410-E    Ni                 901 Ch
+New Titan     3125 B100568-C    Ni Va              903 Ch
+Neuruhr       3126 C376546-A    Ag Ni              702 Im
+Portrine      3128 A261201-B    Lo Ni              111 Po
+Lorsch        3223 A89A366-A    Lo Ni Wa           903 En
+En Livereh    3224 C98A416-7    Ni Wa              502 En
+Haven         3225 A537000-0    Ba Lo Ni           113 Im
+Curuna        3226 A7A3461-C    Fl Ni              604 Po
+Urbain        3229 A4538BC-B    Po                 600 Im
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_M   SECTOR: oldexpan
+#
+# Trade routes within the subsector
+$0334 0330 0 -1
+$0732 0330 0 -1
+$0732 0829 0 -1
+$0334 0437 0 0
+$0437 0640 0 0
+$0640 0601 0 1
+$0640 0738 0 0
+$0437 0738 0 0
+$0738 1139 1 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Arvid         0131 A9C7866-E    Fl              A  425 Im
+Keipes        0132 A6778BC-B  N                    311 Im
+Atrase        0134 A68A357-C    Lo Ni Wa           315 Im
+Savjanni      0135 A330764-E  S De Na Po           103 Im
+Svarla        0137 B200765-D  S Na Va              201 Im
+Nicosia       0138 A56667A-C  N Ag Ni Ri        B  411 Im
+Thorell       0231 X510276-0    Lo Ni           R  720 Im
+Kresek        0236 C8C7675-A    Fl Ni           A  302 Im
+Peirsma       0240 A000646-D    As Na Ni           210 Im
+Buhle         0334 A51099B-F  A Hi In Na           404 Im
+Trybec        0336 B443610-E  S Ni Po              603 Im
+Rohit         0337 C110543-C    Ni                 222 Im
+Adrian        0432 A42667A-E    Ni              B  103 Im
+Fija          0434 C553754-D  S Po                 605 Im
+Macis         0436 A8C5856-B  N Fl              A  824 Im
+Vezina        0437 B344778-F  W Ag              A  804 Im
+Lancer        0439 C55A657-A  S Ni Wa              914 Im
+Galos         0535 C576664-9  S Ag Ni              504 Im
+Zloff         0632 C674666-8    Ag Ni              302 Im
+Schall        0638 X47A113-5    Lo Ni Wa        R  534 Im
+Seliga        0640 A532747-F  A Na Po              801 Im
+Hite          0732 B4478A9-F  N                    913 Im
+Kruyter       0735 A000475-B    As Ni           B  203 Im
+Fuetz         0737 A267437-C    Ni                 304 Im
+Vras          0738 A78A773-F    Wa Ri           B  704 Im
+Conner        0840 A31058A-A  S Ni                 303 Im
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_N   SECTOR: oldexpan
+#
+# Trade routes within the subsector
+$1131 1229 0 -1
+$1333 1229 0 -1
+$1139 0738 -1 0
+$1139 1235 0 0
+$1235 1035 0 0
+$1235 1636 0 0
+$1636 1726 1 0
+$1235 1333 0 0
+$1333 1532 0 0
+$1532 1629 0 -1
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Herring       0931 X686110-2    Lo Ni           R  604 Im
+Dono          0932 C510611-A    Na Ni              602 Im
+Spires        0936 X894654-1    Ag Ni           R  903 Im
+Heppling      1032 CAAA762-B    Fl Wa              202 Im
+Saloga        1035 A430425-E    De Ni Po           904 Im
+Luhtala       1039 C474600-A    Ag Ni              932 Im
+Bestor        1131 A110663-E    Na Ni              904 Im
+Hoff          1139 B585441-A  S Ni                 604 Im
+Willow        1234 C648301-A    Lo Ni              110 Im
+Nemyer        1235 B8469CA-C  W Hi In              703 Im
+Corrig        1331 C622620-9    Na Ni Po           803 Im
+L'steich      1333 A9A4975-F  S Fl Hi           B  414 Im
+Spencer       1338 C89A355-9  S Lo Ni Wa           711 Im
+Kal           1339 C778400-A    Ni                 902 Im
+Nex           1431 A554720-C    Ag                 713 Im
+Junak         1432 B671789-D                       703 Im
+Teldora       1437 C554754-A    Ag                 803 Im
+Sarid         1532 B0007A5-D    As Na              604 Im
+Coast         1540 C400320-B    Lo Ni Va           913 Im
+Nimz          1633 C222664-B  S Na Ni Po           200 Im
+Tuer          1636 B8C2733-E  A Fl              A  113 Im
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_O   SECTOR: oldexpan
+#
+# Trade routes within the subsector
+$1835 1636 -1 0
+$2031 2030 0 -1
+$2031 2132 0 0
+$2132 2135 0 0
+$2135 2234 0 0
+$2234 2134 0 0
+$2134 1934 0 0
+$2234 2333 0 0
+$2333 2332 0 0
+$2333 2432 0 0
+$2432 2431 0 0
+$2431 2332 0 0
+$1733 1734 0 0
+$1734 1833 0 0
+$1833 1838 0 0
+$1834 1934 0 0
+$1735 2237 0 0
+$2237 2236 0 0
+$2236 1838 0 0
+$1936 1836 0 0
+$2037 1937 0 0
+$1937 1837 0 0
+$2240 2440 0 0
+$2440 2439 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+So Skire      1732 E657843-1                       104 Im
+Keghe         1733 D6B6258-8  S Fl Lo Ni        A  202 Im
+Ehart         1734 C348102-9    Lo Ni              112 Im
+Lamneth       1735 E2437A7-4    Po                 614 Im
+Poyzen        1736 C797202-5  S Lo Ni              203 Im
+Targa         1833 C577556-9    Ag Ni              610 Im
+Peart         1834 A565779-D    Ag Ri           B  812 Im
+Cobham        1835 A79A9D9-E  S Hi In Wa           802 Im
+Grenbard      1836 E322354-A    Lo Ni Po           911 Im
+Cleland       1837 A7C8765-A  S Fl              A  211 Im
+Janazzo       1838 A354633-A  S Ag Ni              523 Im
+Wrangell      1839 X666302-4    Lo Ni           R  303 Im
+Dobbet        1840 B374999-8  S Hi In              520 Im
+Barlow        1934 C687577-8  S Ag Ni           B  813 Im
+Bonham        1936 E8968A9-3                       800 Im
+Schotz        1937 B546877-5  S                 B  212 Im
+Burbelson     1938 D648566-3    Ag Ni              613 Im
+Pohl          2031 C776699-3    Ag Ni              902 Im
+Dunbar        2036 C453579-6  S Ni Po           B  920 Im
+Mitmos        2037 B434576-A  S Ni              B  623 Im
+Pratt         2039 E877622-4    Ag Ni              100 Im
+Atkins        2132 BAAA964-D    Fl Hi Wa           914 Im
+Tama          2134 A867502-9    Ag Ni              921 Im
+Khatru        2135 B548325-8    Lo Ni              414 Im
+Canzar        2137 C445555-7    Ag Ni              715 Im
+Palin         2234 B330489-A    De Ni Po           214 Im
+Dimeola       2236 B488221-7  N Lo Ni              714 Im
+Hell          2237 B260332-7  S De Lo Ni           211 Im
+Patuxant      2240 A597745-9    Ag                 514 So
+Valdost       2332 C693510-6    Ni                 603 Im
+Clarke        2333 C566788-7  S Ag Ri              923 Im
+Bordelon      2340 E341669-2    Ni Po              200 So
+Salinos       2431 C97A867-8  S Wa                 405 Im
+Hjorts        2432 A553224-9  N Lo Ni Po           714 Im
+Wuss          2434 E787796-4    Ag Ri              523 Im
+Khan          2439 C634778-9                    B  203 So
+Digriz        2440 B689414-A    Ni                 604 So
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_P   SECTOR: oldexpan
+#
+# Trade routes within the subsector
+$2633 2628 0 -1
+$2633 2832 0 0
+$2633 2835 0 0
+$2832 2835 0 0
+$2833 2733 0 0
+$2736 2835 0 0
+$2838 2739 0 0
+$2739 2701 0 1
+$2640 2740 0 0
+$2740 3039 0 0
+$3039 3001 0 1
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Surren        2533 C877610-9    Ag Ni              503 Im
+Lemos         2536 A8C5979-F    Fl Hi           A  404 Im
+Sontar        2537 BBC0923-C  N De Hi           A  114 Im
+Vleeman       2538 A000A67-D  S As Hi In Na        924 Im
+Aice          2631 B7C8552-B  N Fl Ni           A  804 Im
+Kodants       2632 A454720-F  N Ag                 104 Im
+Zi            2633 B211A74-F    Hi Ic In Na        403 Im
+An Cizow      2639 C000451-9  N As Ni              103 So
+Phront        2640 ACA0AC9-E    De Hi              914 So
+Caprica       2733 A120100-D  A De Lo Ni Po        514 Im
+Berlitzi      2736 A43A8B4-E    Wa                 605 Im
+Stech         2739 C000533-B  N As Ni              201 So
+Jeamasm       2740 AAC08B4-D  N De              A  323 So
+Tanbeck       2832 B2208A9-A    De Na Po           413 Im
+Fletcher      2833 B211768-C    Ic Na              914 Im
+Syrim         2835 A86AA40-F  N Hi Wa              814 Im
+Lusky         2838 X9479C5-3    Hi In           R  514 So
+Dunashaap     2933 CBC4735-9    Fl              A  104 Im
+Maurcam       2934 B84A700-B    Wa                 702 Im
+Hiland        2935 BCC4899-B  S Fl              A  411 Im
+Roth          3031 X97A000-0    Ba Lo Ni Wa     R  202 Cs
+Ord           3036 C271522-9    Ni                 205 Na
+Stad          3039 A433A73-E  N Hi Na Po        B  301 So
+Markham       3040 B44A863-A  N Wa                 903 So
+Hendura       3131 AAC0A99-D  N De Hi           A  804 Na
+Melock        3136 XA30000-0    Ba De Lo Ni Po  R  212 Cs
+Andra         3233 D4458D9-5                       704 Cs
+Laste         3238 E715200-6    Ic Lo Ni           314 Cs
+

@@ -1,0 +1,379 @@
+Puktrall Sector
+
+A: Apukt                     a.dat
+B: Buktrall                  b.dat
+C: Capukt                    c.dat
+D: Duktrazz                  d.dat
+E: Epuktrat                  e.dat
+F: Fipktt                    f.dat
+G: Gepuktann                 g.dat
+H: Hapakta                   h.dat
+I: Ipuktlaal                 i.dat
+J: Japakt                    j.dat
+K: Kijuktra                  k.dat
+L: Lamuktrin                 l.dat
+M: Muktrazz                  m.dat
+N: Nasukte                   n.dat
+O: Oluktra                   o.dat
+P: Pukpukt                   p.dat
+
+Bases:
+A = Aktra Military
+F = Fraira Military
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+13 Ac = Aktra Colonies
+14 Fs = Fraira State
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Apukt SECTOR: Puktrall Sector
+#
+# Jump-routes
+#
+$0103 3240 -1 -1 10
+$0103 0503 0 0 10
+$0503 0605 0 0 10
+$0605 0908 1 0 10
+$0203 0206 0 0 13
+$0203 0503 0 0 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Emashaac      0103 C949877-7                    B  802 Na
+Aktra         0203 A100453-G  A Ni Va Cx           903 Ac
+A-3           0206 B857565-7  A Ag Ni              715 Ac
+A-4           0401 C200000-7    Ba Lo Ni Va        105 Ac
+Zoolarr       0503 B573A96-E  A Hi In              623 Ac
+A-6           0604 E100014-4    Lo Ni Va           624 Ac
+Ayakka        0605 E591437-7    Ni                 602 Ac
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Buktrall SECTOR: Puktrall Sector
+#
+# Jump-routes
+$1010 1311 0 1
+#
+$0908 0605 -1 0 10
+$0908 0912 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Blarnice      0908 E688345-2    Lo Ni              521 Na
+B-2           1010 A464588-C    Ag Ni              510 Na
+B-3           1302 X632767-0    Po              R  623 Na
+B-4           1506 C6868A6-5  S                    504 Na
+B-5           1603 C8D4767-4    Fl                 404 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Capukt SECTOR: Puktrall Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1701 D566648-3  S Ag Ni Ri           114 Na
+C-2           1901 E616ABD-A    Hi Ic              700 Na
+C-3           1904 B000255-E    As Lo Ni           503 Na
+C-4           1905 B332031-B  N Lo Ni Po           613 Na
+C-5           1908 XA9A630-3    Wa              R  803 Na
+C-6           2002 C120521-C    De Ni Po           300 Na
+C-7           2008 D96A7BE-3  S Wa                 912 Na
+C-8           2207 B644100-9  2 Lo Ni              220 Na
+C-9           2303 C563996-6    Hi                 804 Na
+C-10          2310 E87A755-7    Wa                 320 Na
+C-11          2409 B478788-A  2 Ag                 903 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Duktrazz SECTOR: Puktrall Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2803 C555468-9    Ni                 404 Na
+D-2           2804 C424279-B  S Lo Ni           B  931 Na
+D-3           3004 E260522-7    De Ni              605 Na
+D-4           3203 C576546-8    Ag Ni              513 Na
+D-5           3204 C466755-9    Ag Ri              602 Na
+D-6           3209 C455231-9  S Lo Ni              822 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Epuktrat SECTOR: Puktrall Sector
+#
+# Jump-routes
+$0118 0218 0 0
+#
+$0714 0912 1 0 10
+$0714 0617 0 0 10
+$0617 1019 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0118 C58A786-A    Ri Wa              502 Na
+E-2           0218 B271751-8  S                    803 Na
+E-3           0313 E594310-7    Lo Ni              600 Na
+E-4           0616 B99A167-C  S Lo Ni Wa           104 Na
+Nokliann      0617 C73A235-7    Lo Ni Wa           502 Na
+E-6           0711 B449876-A  N                 B  614 Na
+Emilli        0714 C448413-8    Ni                 613 Na
+E-8           0716 E9A39EG-7    Fl Hi           A  104 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Fipktt SECTOR: Puktrall Sector
+#
+# Jump-routes
+$1311 1010 0 -1
+#
+$0912 0908 0 -1 10
+$0912 0714 -1 0 10
+$1019 0617 -1 0 10
+$1019 1320 0 0 10
+$1320 1721 1 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Toureeta      0912 X7479AD-4    Hi In           R  825 Na
+F-2           0914 C8A98D9-8  S Fl                 110 Na
+Drafra        1019 B150227-C    De Lo Ni Po        802 Na
+F-4           1311 B400332-8    Lo Ni Va           810 Na
+F-5           1312 C463687-7    Ni Ri              303 Na
+Colpeeb       1320 E100368-5    Lo Ni Va           223 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Gepuktann SECTOR: Puktrall Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1911 C857212-9  S Lo Ni              630 Na
+G-2           1917 E110222-9    Lo Ni              900 Na
+G-3           2016 E97A210-8    Lo Ni Wa           500 Na
+G-4           2020 X322001-3    Lo Po           R  710 Na
+G-5           2113 C8A4ABG-A    Fl Hi              813 Na
+G-6           2213 C579665-5  S Ni                 701 Na
+G-7           2220 C323988-C  S Hi In Na Po        501 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hapakta SECTOR: Puktrall Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2518 C512436-7    Ic Ni              603 Na
+H-2           2711 E9A4653-7    Fl Ni              113 Na
+H-3           2814 A664201-D  N Lo Ni              603 Na
+H-4           3112 C769683-9  S Ni Ri              403 Na
+H-5           3220 B310752-C    Na                 403 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ipuktlaal SECTOR: Puktrall Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0223 D100444-8    Ni Va              813 Na
+I-2           0324 C896755-9    Ag                 503 Na
+I-3           0326 E664442-6    Ni                 901 Na
+I-4           0327 C36577A-8    Ag Ri           B  313 Na
+I-5           0425 C679557-6    Ni                 403 Na
+I-6           0426 C561657-8  S Ni Ri              313 Na
+I-7           0522 C300541-9    Ni Va              312 Na
+I-8           0530 C242402-6    Ni Po              302 Na
+I-9           0726 C0008DD-8    As Na              420 Na
+I-10          0822 A646538-B    Ag Ni              405 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Japakt SECTOR: Puktrall Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0926 D546223-6  S Lo Ni              304 Na
+J-2           1021 E462465-8    Ni                 900 Na
+J-3           1030 B430678-9  N De Na Ni Po     B  710 Na
+J-4           1123 A65259D-A  2 Ni Po              520 Na
+J-5           1321 C000643-A  S As Na Ni           604 Na
+J-6           1327 E675ACH-6    Hi In              403 Na
+J-7           1528 C4538BD-9  S Po                 703 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kijuktra SECTOR: Puktrall Sector
+#
+# Jump-routes
+#
+$1721 1320 -1 -1 10
+$1721 2123 0 0 10
+$2123 2226 0 0 10
+$2226 2429 0 0 10
+$2429 2533 1 1 10
+$2429 2430 0 0 14
+$2429 2428 0 0 14
+$2428 2527 1 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Kannakci      1721 B232200-C  N Lo Ni Po           803 Na
+K-2           1727 B335310-8    Lo Ni              521 Na
+K-3           2122 D877953-8    Hi In              803 Na
+Awhikka       2123 C99A530-6  S Ni Wa              205 Na
+Yannip        2226 C859655-6  S Ni                 414 Na
+K-6           2428 B98A5A9-8    Ni Wa              503 Fs
+Fraira        2429 A400468-F    Ni Va              824 Fs
+K-8           2430 B453747-B  F Po                 104 Fs
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lamuktrin SECTOR: Puktrall Sector
+#
+# Jump-routes
+#
+$2527 2428 -1 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2527 A356510-B    Ag Ni              304 Fs
+L-2           2622 C569A8B-A  S Hi                 404 Na
+L-3           2630 X668520-0    Ag              R  300 Na
+L-4           3124 C77A767-5    Wa                 802 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Muktrazz SECTOR: Puktrall Sector
+#
+# Jump-routes
+#
+$0737 1039 1 0 2
+$0737 0335 0 0 2
+$0335 3136 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0333 A1409AC-E  2 De Hi In Po        705 Na
+Oannam        0335 D412466-7  S Ic Ni              725 Na
+M-3           0536 E536315-3    Lo Ni              824 Na
+M-4           0731 B130576-A    De Ni Po        B  523 Na
+Mihigna       0737 D767676-5    Ag Ni Ri        B  712 Na
+M-6           0839 C566865-7    Ri                 200 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nasukte SECTOR: Puktrall Sector
+#
+# Jump-routes
+#
+$1039 1003 0 1 2
+$1039 0737 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0937 B444136-B  N Lo Ni              203 Na
+N-2           1032 C110247-9    Lo Ni              614 Na
+Noll          1039 X433979-5    Hi In Po        R  203 Na
+N-4           1438 C330786-6    De Na Po           504 Na
+N-5           1531 E533656-4    Na Ni Po           610 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Oluktra SECTOR: Puktrall Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1837 C86A799-9  S Ri Wa              803 Na
+O-2           1933 D77A686-6    Ni Wa              300 Na
+O-3           1934 D140797-3    De Po              613 Na
+O-4           1939 C200569-8    Ni Va              802 Na
+O-5           2035 B346837-6  N                    305 Na
+O-6           2138 X366879-2    Ri              R  812 Na
+O-7           2236 C537451-A    Ni                 104 Na
+O-8           2337 C411627-6    Ic Na Ni           902 Na
+O-9           2434 E490877-5    De              B  400 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Pukpukt SECTOR: Puktrall Sector
+#
+# Jump-routes
+#
+$2533 2429 -1 -1 10
+$2533 2535 0 0 10
+$2535 2538 0 0 10
+$2538 2501 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Kaliba        2533 E35766A-7    Ag Ni              513 Na
+Ofrazz        2535 A7A57BB-8  N Fl                 734 Na
+Vineerva      2538 D364777-3  S Ag Ri           B  804 Na
+P-4           2731 C460210-6    De Lo Ni           402 Na
+P-5           2838 X899323-4    Lo              R  402 Na
+P-6           3032 B7769C8-B  N Hi In              104 Na
+P-7           3038 BAB7335-A  2 Fl Lo Ni        A  902 Na
+P-8           3135 C8A5A65-9    Fl Hi              204 Na
+P-9           3137 E878300-4    Lo Ni              403 Na
+P-10          3234 C49349B-A  S Ni                 613 Na
+

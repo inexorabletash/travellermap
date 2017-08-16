@@ -1,0 +1,391 @@
+Fupolo Sector
+
+A: Afupol                    a.dat
+B: Bufolo                    b.dat
+C: Caffu                     c.dat
+D: Duffol                    d.dat
+E: Efuppo                    e.dat
+F: Fuppoll                   f.dat
+G: Gummolo                   g.dat
+H: Huponne                   h.dat
+I: Ifuune                    i.dat
+J: Juhholo                   j.dat
+K: Kofulu                    k.dat
+L: Lolofu                    l.dat
+M: Mufuut                    m.dat
+N: Nopolk                    n.dat
+O: Olopuf                    o.dat
+P: Polant                    p.dat
+
+Bases:
+B = Banawlo Navy
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+14 Bf = Banawlo Federation
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Afupol SECTOR: Fupolo Sector
+#
+# Jump-routes
+#
+$0206 3204 -1 0 10
+$0206 0608 0 0 10
+$0608 1010 1 0 10
+$0608 0408 0 0 14
+$0408 0206 0 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0203 C563999-9  B Hi                 722 Bf
+Rahurn        0206 B76A642-8  B Ni Ri Wa           812 Bf
+A-3           0308 E570404-4    De Ni              404 Bf
+A-4           0408 B400744-A    Na Va              103 Bf
+A-5           0606 E5A1544-4    Fl Ni              804 Bf
+Nerkuh        0608 A277746-C  B Ag                 803 Bf
+A-7           0701 C457674-8    Ag Ni           B  903 Na
+A-8           0705 D100788-6  B Na Va              902 Bf
+A-9           0708 C500100-8    Lo Ni Va           200 Bf
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Bufolo SECTOR: Fupolo Sector
+#
+# Jump-routes
+#
+$1010 0608 -1 0 10
+$1010 1013 0 1 10
+$1608 1310 0 0 14
+$1310 1010 0 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           1003 D7A4344-8    Fl Lo Ni           703 Na
+Boliara       1010 B352ADE-C  B Hi Po              601 Bf
+B-3           1106 B8559DB-6  B Hi                 410 Bf
+B-4           1201 C300341-7    Lo Ni Va           103 Na
+B-5           1301 D774968-3  S Hi In              702 Na
+B-6           1307 C6278BD-9  B                    123 Bf
+B-7           1308 C8B0553-A    De Ni           A  601 Bf
+B-8           1310 B54189A-A  B Po                 113 Bf
+B-9           1408 C364433-9    Ni                 201 Bf
+Banawlo       1608 A98AAA5-G  B Hi Wa Cx           114 Bf
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Caffu SECTOR: Fupolo Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1706 C434100-A  S Lo Ni              703 Na
+C-2           1904 B383755-7  N Ri                 101 Na
+C-3           1905 B100534-E  N Ni Va              802 Na
+C-4           1907 D445630-6    Ag Ni              300 Na
+C-5           2110 XAC7574-0    Fl              R  701 Na
+C-6           2407 C4009CG-9    Hi Na Va           804 Na
+C-7           2410 A10089D-D    Na Va              304 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Duffol SECTOR: Fupolo Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2703 B100640-B  N Na Ni Va           103 Na
+D-2           2809 B590658-8    De Ni              714 Na
+D-3           2910 D778689-4    Ag Ni              104 Na
+D-4           3101 A685000-C  S Ba Lo Ni           223 Na
+D-5           3102 C4556A9-7  S Ag Ni              704 Na
+D-6           3110 E130353-7    De Lo Ni Po        505 Na
+D-7           3209 X6A2633-2    Fl              R  714 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Efuppo SECTOR: Fupolo Sector
+#
+# Jump-routes
+$0517 0617 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0219 E6A1776-5    Fl              B  703 Na
+E-2           0317 X202300-1    Ic Lo Va        R  614 Na
+E-3           0319 E200566-9    Ni Va              504 Na
+E-4           0417 E667266-7    Lo Ni              300 Na
+E-5           0516 C150511-6    De Ni Po           404 Na
+E-6           0517 C352362-9    Lo Ni Po           120 Na
+E-7           0617 B1306BA-A  2 De Na Ni Po        320 Na
+E-8           0814 C444125-5    Lo Ni              104 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Fuppoll SECTOR: Fupolo Sector
+#
+# Jump-routes
+#
+$1013 1010 0 -1 10
+$1013 1415 0 0 10
+$1415 1417 0 0 10
+$1417 1520 0 0 10
+$1520 1723 1 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0914 E858675-5    Ag Ni           B  404 Na
+F-2           0918 C537786-4                       403 Na
+Tresha        1013 C574686-5  S Ag Ni              904 Na
+F-4           1116 C889774-4    Ri              B  620 Na
+F-5           1220 C59655A-7  S Ag Ni              103 Na
+Floundra      1415 C659210-8  S Lo Ni              204 Na
+Woommiel      1417 C445613-6  S Ag Ni              202 Na
+Slazzia       1520 E140512-7    De Ni Po           413 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Gummolo SECTOR: Fupolo Sector
+#
+# Jump-routes
+$2020 1921 0 1
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1715 C567422-7  S Ni                 823 Na
+G-2           1814 B669747-B  N Ri                 403 Na
+G-3           1818 D304510-9  S Ic Ni Va           914 Na
+G-4           1820 E000656-8    As Na Ni           800 Na
+G-5           1915 E996454-3    Ni                 400 Na
+G-6           2012 B410620-A    Na Ni              404 Na
+G-7           2016 C535743-5  S                    325 Na
+G-8           2020 B563638-A    Ni                 704 Na
+G-9           2113 B646346-A    Lo Ni              922 Na
+G-10          2217 C533401-B    Ni Po              103 Na
+G-11          2411 X564553-0    Ag              R  201 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Huponne SECTOR: Fupolo Sector
+#
+# Jump-routes
+$2814 3015 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2519 E989579-3    Ni              B  204 Na
+H-2           2617 C612611-6  S Ic Na Ni           804 Na
+H-3           2619 C440553-A    De Ni Po           704 Na
+H-4           2814 B333477-B  2 Ni Po           B  303 Na
+H-5           2817 E766667-2    Ag Ni Ri           422 Na
+H-6           2914 D460755-8  S De Ri              204 Na
+H-7           2920 B429742-9  S                    702 Na
+H-8           3012 X52399A-2    Hi In Po        R  903 Na
+H-9           3015 B561511-7  S Ni                 325 Na
+H-10          3116 C411788-5    Ic Na              704 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ifuune SECTOR: Fupolo Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0129 C9D67AA-4    Fl                 704 Na
+I-2           0330 E423137-5    Lo Ni Po           400 Na
+I-3           0622 B566686-A  2 Ag Ni Ri           904 Na
+I-4           0627 A33069A-A  N De Na Ni Po        201 Na
+I-5           0821 E636877-6                    B  201 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Juhholo SECTOR: Fupolo Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0924 E527503-5    Ni                 704 Na
+J-2           1224 A334211-A  N Lo Ni              814 Na
+J-3           1328 C453467-8    Ni Po              412 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kofulu SECTOR: Fupolo Sector
+#
+# Jump-routes
+$1921 2020 0 -1
+$1828 2029 0 0
+$2029 2230 0 0
+#
+$1723 1520 -1 -1 10
+$1723 2025 0 0 10
+$2025 2128 0 0 10
+$2128 2230 0 0 10
+$2230 2333 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Killiman      1723 X533366-0    Lo Po           R  514 Na
+K-2           1828 B7B1446-A  2 Fl Ni           A  711 Na
+K-3           1921 C460434-7    De Ni              705 Na
+K-4           2022 E401747-8    Ic Na Va           403 Na
+Dunnure       2025 A778799-A    Ag                 505 Na
+K-6           2029 B663568-8  N Ni                 722 Na
+Ranciid       2128 C789330-9    Lo Ni              711 Na
+K-8           2224 B546748-5  N Ag                 823 Na
+Justien       2230 B774367-B    Lo Ni              511 Na
+K-10          2323 X7B0522-0    De              R  822 Na
+K-11          2428 E649687-6    Ni                 500 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lolofu SECTOR: Fupolo Sector
+#
+# Jump-routes
+$2527 2529 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2527 A894322-D  2 Lo Ni              423 Na
+L-2           2529 B426535-9  N Ni                 122 Na
+L-3           2625 C200554-B  S Ni Va              303 Na
+L-4           2724 B62A221-B  S Lo Ni Wa           800 Na
+L-5           2725 B6876A6-5    Ag Ni              714 Na
+L-6           2925 C744A7A-C    Hi In           B  802 Na
+L-7           2928 D647510-4  S Ag Ni              502 Na
+L-8           3027 D649546-5    Ni                 223 Na
+L-9           3124 C2516A9-9    Ni Po              403 Na
+L-10          3128 C200401-B    Ni Va              304 Na
+L-11          3223 B687667-8    Ag Ni Ri           714 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Mufuut SECTOR: Fupolo Sector
+#
+# Jump-routes
+#
+$0734 1136 1 0 2
+$0734 0332 0 0 2
+$0332 3232 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0131 B483123-7    Lo Ni              702 Na
+M-2           0137 C546751-8    Ag                 704 Na
+Jiahk         0332 E8A2464-7    Fl Ni              201 Na
+M-4           0334 D688688-4    Ag Ni Ri           404 Na
+M-5           0632 X500205-0    Lo Va           R  422 Na
+M-6           0733 C200766-6    Na Va              503 Na
+Muibbia       0734 C96A102-C    Lo Ni Wa           811 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nopolk SECTOR: Fupolo Sector
+#
+# Jump-routes
+#
+$0939 0702 -1 1 2
+$0939 1136 0 0 2
+$1136 0734 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Naccassa      0939 D54A775-3  S Wa              B  103 Na
+N-2           1037 C551669-6    Ni Po              802 Na
+N-3           1132 C698632-4    Ag Ni              101 Na
+Lassissi      1136 B78768A-6  S Ag Ni Ri           312 Na
+N-5           1231 C25087B-4  S De Po           B  310 Na
+N-6           1234 E68A310-8    Lo Ni Wa           920 Na
+N-7           1237 C572221-4    Lo Ni              523 Na
+N-8           1238 B451554-D  N Ni Po              723 Na
+N-9           1438 C552312-6    Lo Ni Po           715 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Olopuf SECTOR: Fupolo Sector
+#
+# Jump-routes
+#
+$2333 2230 0 -1 10
+$2333 2236 0 0 10
+$2236 2037 0 0 10
+$2037 1940 0 0 10
+$1940 1902 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1931 C200688-A    Na Ni Va           122 Na
+Olkam         1940 C300434-B  S Ni Va              703 Na
+Eranda        2037 C659005-8    Lo Ni              103 Na
+O-4           2131 B668ACB-E    Hi                 503 Na
+Inchaak       2236 C474143-5    Lo Ni              703 Na
+Arrvarr       2333 C140551-9    De Ni Po           921 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Polant SECTOR: Fupolo Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2540 E885414-6    Ni                 313 Na
+P-2           2836 C353200-6  S Lo Ni Po           105 Na
+P-3           2936 C47379B-9                       704 Na
+P-4           2937 CA9A467-A    Ni Wa              405 Na
+P-5           3031 X5A0000-2    Ba De Lo        R  703 Na
+P-6           3133 B7579A9-A  N Hi                 330 Na
+

@@ -1,0 +1,749 @@
+Lorspane
+
+A: Alore                     a.dat
+B: Borspa                    b.dat
+C: Craspan                   c.dat
+D: Dralor                    d.dat
+E: Elspane                   e.dat
+F: Florsann                  f.dat
+G: Ghorespa                  g.dat
+H: Haspana                   h.dat
+I: Illura                    i.dat
+J: Jalon                     j.dat
+K: Kraspen                   k.dat
+L: Lalorez                   l.dat
+M: Moresp                    m.dat
+N: Nerelore                  n.dat
+O: Ogoress                   o.dat
+P: Plalorn                   p.dat
+
+Bases:
+A = Itaurrec Navy
+B = Itaurrec Scout
+C = Itaurrec Navy & Scout
+D = Itaurrec Army
+E = Fed. Embassy Center
+F = Fed. Military&Navy Base
+L = Federation Navy Base
+M = Fed. Military Base
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+09 Hv = Hive Federation 
+14 It = Itaurrec Unification
+07 Na = Non-Aligned
+08 Un = Unpopulated
+04 -- = Unknown
+
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+Leroy Guatney........................... For his Quadrant IV dot map.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Alore SECTOR: Lorspane
+#
+#
+# Hiver Government Codes
+#
+# Codes 0,1,2,6, and the following are specifically used by Hiver's.
+# S Sept. Governing committee of seven nest leaders.
+# T Unsupervised Anarchy. Individual agreements between all nests.
+# U Supervised Anarchy. Individual agreements between all nests.
+# W Committee. Governing committee of nest leaders.
+# 
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+0101          0101 A5939S3-9    Hi In              905 Hv
+0109          0109 E959402-3    Ni                 604 Hv
+0206          0206 E421525-4    Ni Po              113 Hv
+0208          0208 E4659T1-7    Hi                 203 Hv
+0209          0209 E8B2562-5    Fl Ni           A  803 Hv
+0301          0301 A110004-D  F Ba Lo Ni           200 Hv
+0303          0303 A323563-F    Ni Po              724 Hv
+0306          0306 E773006-6    Ba Lo Ni           303 Hv
+0402          0402 A2009T3-F    Hi Na Va           125 Hv
+0505          0505 E6A0411-5    De Ni              524 Hv
+0506          0506 E742302-4    Lo Ni Po           302 Hv
+0510          0510 E4259S5-8    Hi In              210 Hv
+0603          0603 D465402-9  M Ni                 513 Hv
+0604          0604 E6797S4-2                       624 Hv
+0606          0606 E676201-4    Lo Ni              813 Hv
+0607          0607 E549521-7    Ni                 915 Hv
+0701          0701 D72A413-6    Ni Wa              505 Hv
+0703          0703 D662526-4  M Ni                 701 Hv
+0803          0803 D7769T4-8  M Hi In              104 Hv
+0806          0806 E3637S3-5    Ri                 702 Hv
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Borspa SECTOR: Lorspane
+#
+#
+# Hiver Government Codes
+#
+# Codes 0,1,2,6, and the following are specifically used by Hiver's.
+# S Sept. Governing committee of seven nest leaders.
+# T Unsupervised Anarchy. Individual agreements between all nests.
+# U Supervised Anarchy. Individual agreements between all nests.
+# W Committee. Governing committee of nest leaders.
+#
+# Jump-routes
+#
+# #--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+0906          0906 A446564-A    Ag Ni              701 Hv
+0907          0907 C897764-8    Ag                 404 Hv
+0908          0908 C300322-7    Lo Ni Va           302 Hv
+1001          1001 B558661-5  F Ag Ni              712 Hv
+1008          1008 C7C0523-A    De Ni           A  905 Hv
+1105          1105 A545416-8  F Ni                 505 Hv
+1109          1109 C84A7S5-5    Wa                 604 Hv
+1201          1201 B67A203-D    Lo Ni Wa           201 Hv
+1202          1202 B7C0524-A  M De Ni           A  320 Hv
+1204          1204 C623762-5    Na Po              300 Hv
+1208          1208 C334301-7  M Lo Ni              300 Hv
+1209          1209 C427625-8    Ni                 204 Hv
+1303          1303 CA9A422-A    Ni Wa              903 Hv
+1304          1304 B898204-6  F Lo Ni              702 Hv
+1305          1305 C442661-6    Ni Po              112 Hv
+1307          1307 C5757S3-5    Ag                 530 Hv
+1308          1308 C100564-B    Ni Va              820 Hv
+1309          1309 C676621-3    Ag Ni              103 Hv
+1402          1402 B89A7S6-C    Wa                 503 Hv
+1404          1404 C58A9T6-C    Hi Wa              915 Hv
+1503          1503 B338525-8  L Ni                 404 Hv
+1601          1601 B231661-A    Na Ni Po           815 Hv
+1603          1603 B475204-B    Lo Ni              302 Hv
+1609          1609 A410522-D    Ni                 105 Hv
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Craspan SECTOR: Lorspane
+#
+#
+# Hiver Government Codes
+#
+# Codes 0,1,2,6, and the following are specifically used by Hiver's.
+# S Sept. Governing committee of seven nest leaders.
+# T Unsupervised Anarchy. Individual agreements between all nests.
+# U Supervised Anarchy. Individual agreements between all nests.
+# W Committee. Governing committee of nest leaders.
+# 
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+1702          1702 C664404-6    Ni                 822 Hv
+1708          1708 E532521-7    Ni Po              402 Hv
+1801          1801 X779312-0    Lo              R  624 Hv
+1809          1809 E69A505-8    Ni Wa              203 Hv
+1903          1903 C898406-4    Ni                 923 Hv
+2001          2001 X9E2103-3    Fl Lo           R  203 Hv
+2002          2002 C300312-B  M Lo Ni Va           703 Hv
+2201          2201 C453321-8    Lo Ni Po           605 Hv
+2308          2308 E100304-A    Lo Ni Va           505 Hv
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Dralor SECTOR: Lorspane
+#
+#
+# Hiver Government Codes
+#
+# Codes 0,1,2,6, and the following are specifically used by Hiver's.
+# S Sept. Governing committee of seven nest leaders.
+# T Unsupervised Anarchy. Individual agreements between all nests.
+# U Supervised Anarchy. Individual agreements between all nests.
+# W Committee. Governing committee of nest leaders.
+# 
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+2502          2502 A666564-B  L Ag Ni              200 Hv
+2504          2504 A87A322-F    Lo Ni Wa           610 Hv
+2601          2601 A768321-8    Lo Ni              701 Hv
+Ghavin        2803 A100314-G  F Lo Ni Va           624 Hv
+2903          2903 A2438S5-C  M Po                 402 Hv
+2910          2910 E56A521-8    Ni Wa              313 Hv
+3001          3001 A8A7562-9  L Fl Ni              320 Hv
+3003          3003 A672106-9  L Lo Ni              222 Hv
+3101          3101 A99A8T1-D  L Wa                 403 Hv
+3103          3103 A66A7S5-E  F Ri Wa              913 Hv
+3201          3201 A535664-8  L Ni                 713 Hv
+3202          3202 A4907S3-A    De                 912 Hv
+3206          3206 E210422-6    Ni                 423 Hv
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Elspane SECTOR: Lorspane
+#
+#
+# Hiver Government Codes
+#
+# Codes 0,1,2,6, and the following are specifically used by Hiver's.
+# S Sept. Governing committee of seven nest leaders.
+# T Unsupervised Anarchy. Individual agreements between all nests.
+# U Supervised Anarchy. Individual agreements between all nests.
+# W Committee. Governing committee of nest leaders.
+# 
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+0116          0116 D300305-8    Lo Ni Va           704 Hv
+0117          0117 B656101-B  L Lo Ni              900 Hv
+0119          0119 B67A303-E  L Lo Ni Wa           600 Hv
+0213          0213 A222664-A  F Na Ni Po           702 Hv
+0214          0214 C544101-4    Lo Ni              113 Hv
+0217          0217 E439521-B    Ni                 402 Hv
+0218          0218 E67A663-6    Ni Wa              612 Hv
+0219          0219 E5027S6-7    Ic Na Va           824 Hv
+0220          0220 C442614-9  M Ni Po              624 Hv
+0311          0311 B676563-A  L Ag Ni              504 Hv
+0313          0313 C6627S3-8    Ri                 820 Hv
+0317          0317 C765315-4  M Lo Ni              705 Hv
+0319          0319 B367401-C    Ni                 900 Hv
+0413          0413 C262563-6  M Ni                 200 Hv
+0415          0415 E88A312-8    Lo Ni Wa           715 Hv
+0416          0416 E678511-5    Ag Ni              413 Hv
+0417          0417 C896462-A    Ni                 902 Hv
+0512          0512 C622565-8    Ni Po              511 Hv
+0514          0514 A6546S4-C    Ag Ni              600 Hv
+0515          0515 C585523-A    Ag Ni              402 Hv
+0612          0612 C78A511-8    Ni Wa              305 Hv
+0618          0618 E5857S6-2    Ag                 123 Hv
+0619          0619 E532202-5    Lo Ni Po           320 Hv
+0620          0620 E7738T4-2                       503 Hv
+0712          0712 C478562-5  M Ag Ni              502 Hv
+0718          0718 D4108T3-6    Na                 402 Hv
+0719          0719 D270415-4  M De Ni              122 Hv
+0720          0720 D2407S5-5    De Po              900 Hv
+0812          0812 C3006S2-6    Na Ni Va           704 Hv
+0814          0814 D626304-5  M Lo Ni              603 Hv
+0818          0818 D375312-8    Lo Ni              600 Hv
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Florsann SECTOR: Lorspane
+#
+#
+# Hiver Government Codes
+#
+# Codes 0,1,2,6, and the following are specifically used by Hiver's.
+# S Sept. Governing committee of seven nest leaders.
+# T Unsupervised Anarchy. Individual agreements between all nests.
+# U Supervised Anarchy. Individual agreements between all nests.
+# W Committee. Governing committee of nest leaders.
+# 
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+0915          0915 A593201-E  F Lo Ni              913 Hv
+0920          0920 E87A562-9    Ni Wa              900 Hv
+1011          1011 B6389T6-9    Hi In              214 Hv
+1012          1012 B8987S4-5  L Ag                 513 Hv
+1016          1016 A6377S3-B                       711 Hv
+1018          1018 E7736S5-1    Ni                 204 Hv
+1112          1112 B844764-6    Ag                 712 Hv
+1113          1113 C531202-B    Lo Ni Po           905 Hv
+1116          1116 E491301-4    Lo Ni              404 Hv
+1118          1118 E323413-6    Ni Po              600 Hv
+1211          1211 C747663-5  S Ag Ni              302 Hv
+1212          1212 C692661-3    Ni                 103 Hv
+1213          1213 C451525-7  S Ni Po              815 Hv
+1219          1219 D100663-A    Na Ni Va           214 Hv
+1317          1317 D4367S6-7  M                    402 Hv
+1319          1319 D635211-6    Lo Ni              815 Hv
+1320          1320 D753762-3  M Po                 603 Hv
+1412          1412 C634104-9  M Lo Ni              125 Hv
+1413          1413 C200413-9    Ni Va              405 Hv
+1418          1418 C485405-6    Ni                 513 Hv
+1420          1420 C321512-9    Ni Po              714 Hv
+1513          1513 CAB4762-9  M Fl              A  702 Hv
+1515          1515 C7A38S4-9    Fl                 201 Hv
+Etribb        1518 A100301-G    Lo Ni Va           712 Hv
+1519          1519 A1007S4-D    Na Va              802 Hv
+1612          1612 C455102-6    Lo Ni              910 Hv
+1615          1615 C300503-B  M Ni Va              203 Hv
+1616          1616 C326861-7  M                    312 Hv
+1617          1617 A5866S6-B    Ag Ni Ri           622 Hv
+1620          1620 A635563-D    Ni                 425 Hv
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ghorespa SECTOR: Lorspane
+#
+#
+# Hiver Government Codes
+#
+# Codes 0,1,2,6, and the following are specifically used by Hiver's.
+# S Sept. Governing committee of seven nest leaders.
+# T Unsupervised Anarchy. Individual agreements between all nests.
+# U Supervised Anarchy. Individual agreements between all nests.
+# W Committee. Governing committee of nest leaders.
+# 
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+1711          1711 C400102-7    Lo Ni Va           103 Hv
+2019          2019 B513661-A  M Ic Na Ni           611 Hv
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Haspana SECTOR: Lorspane
+#
+#
+# Hiver Government Codes
+#
+# Codes 0,1,2,6, and the following are specifically used by Hiver's.
+# S Sept. Governing committee of seven nest leaders.
+# T Unsupervised Anarchy. Individual agreements between all nests.
+# U Supervised Anarchy. Individual agreements between all nests.
+# W Committee. Governing committee of nest leaders.
+# 
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+2516          2516 A7B39T2-D    Fl Hi           A  105 Hv
+2713          2713 C547311-6    Lo Ni              603 Hv
+3118          3118 C440424-A    De Ni Po           114 Hv
+3120          3120 C200321-6  M Lo Ni Va           801 Hv
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Illura SECTOR: Lorspane
+#
+#
+# Hiver Government Codes
+#
+# Codes 0,1,2,6, and the following are specifically used by Hiver's.
+# S Sept. Governing committee of seven nest leaders.
+# T Unsupervised Anarchy. Individual agreements between all nests.
+# U Supervised Anarchy. Individual agreements between all nests.
+# W Committee. Governing committee of nest leaders.
+# 
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+0121          0121 C98A312-B    Lo Ni Wa           410 Hv
+0126          0126 C896513-6    Ag Ni              700 Hv
+0130          0130 C8697S5-7  M Ri                 603 Hv
+Phoga         0221 A67AAU5-I  E Hi In Wa           903 Hv
+0224          0224 C332422-B    Ni Po              303 Hv
+0323          0323 C443204-8    Lo Ni Po           904 Hv
+0329          0329 XAA2661-3    Fl              R  103 Hv
+0425          0425 C77A421-8    Ni Wa              623 Hv
+0426          0426 X443103-1    Lo Po           R  312 Hv
+0428          0428 B6767S6-9    Ag                 400 Hv
+0522          0522 C564402-8    Ni                 301 Hv
+0523          0523 C1108T4-B    Na                 604 Hv
+0527          0527 C3236S5-6    Na Ni Po           903 Hv
+0528          0528 B9B3562-A  F Fl Ni           A  324 Hv
+0529          0529 B494677-8  S Ag Ni           B  504 Na
+0530          0530 B885886-A    Ri                 204 Na
+0625          0625 X53A7S3-5    Wa              R  514 Hv
+0627          0627 B300661-B    Na Ni Va           503 Hv
+0630          0630 B300441-A  N Ni Va              102 Na
+0721          0721 X3208S2-0    De Po           R  312 Hv
+0723          0723 X224421-2                    R  700 Hv
+0730          0730 B752677-A    Ni Po           B  605 Na
+0824          0824 E353304-3    Lo Ni Po           522 Hv
+0826          0826 C5119B8-9  S Hi Ic Na           404 --
+0827          0827 A535966-C    Hi In              304 --
+0828          0828 B327668-A  N Ni                 703 Na
+0830          0830 B120731-D  N De Na Po           603 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jalon SECTOR: Lorspane
+#
+#
+# Hiver Government Codes
+#
+# Codes 0,1,2,6, and the following are specifically used by Hiver's.
+# S Sept. Governing committee of seven nest leaders.
+# T Unsupervised Anarchy. Individual agreements between all nests.
+# U Supervised Anarchy. Individual agreements between all nests.
+# W Committee. Governing committee of nest leaders.
+# 
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+0924          0924 B775510-8    Ag Ni              413 --
+0927          0927 C999368-5    Lo Ni              530 Na
+0928          0928 D4128CD-3  S Ic Na              603 --
+1024          1024 B501300-A    Ic Lo Ni Va        504 --
+1025          1025 B457300-9  S Lo Ni              320 --
+1026          1026 B534A84-D  N Hi In              202 --
+1028          1028 E000465-5    As Ni              112 --
+1127          1127 B450410-A  N De Ni Po           713 --
+1129          1129 E79858A-2    Ag Ni              624 --
+1130          1130 B799647-8  N Ni                 623 --
+1224          1224 A664444-8    Ni                 824 --
+1225          1225 C202147-6  S Ic Lo Ni Va        102 Na
+1227          1227 B87A330-9    Lo Ni Wa           510 --
+1228          1228 B776553-9    Ag Ni              724 --
+1229          1229 A563669-9  N Ni Ri              204 --
+1230          1230 D444669-5  S Ag Ni              434 --
+1322          1322 B55326B-B    Lo Ni Po           211 --
+1324          1324 A000566-C  2 As Ni              113 --
+1325          1325 C3647AD-9    Ag                 800 Na
+1327          1327 E9A589C-4    Fl                 800 --
+1328          1328 E784444-2    Ni                 405 --
+1329          1329 E8A4443-8    Fl Ni              224 --
+1330          1330 E000000-8    As Ba Lo Ni        801 --
+1422          1422 A455445-C  N Ni                 834 --
+1423          1423 A4846BA-C  N Ag Ni              503 --
+1424          1424 A876331-B  N Lo Ni              422 --
+1426          1426 E447500-8    Ag Ni              604 --
+1427          1427 E348001-8    Lo Ni              803 --
+1428          1428 E654400-4    Ni                 203 --
+1429          1429 E586721-6    Ag                 302 --
+1430          1430 E100501-7    Ni Va              602 --
+1524          1524 B66A7SK-8    Ri Wa              704 Hv
+1525          1525 E9A7466-6    Fl Ni              200 --
+1526          1526 E86A7A5-4    Wa                 303 --
+1527          1527 E753257-5    Lo Ni Po           514 --
+1528          1528 D979021-6  S Lo Ni              800 --
+1529          1529 E9C8688-2    Fl Ni           A  100 --
+1530          1530 E526410-5    Ni                 405 --
+1626          1626 E422200-5    Lo Ni Po           504 --
+1627          1627 E200403-9    Ni Va              200 --
+1628          1628 E300301-8    Lo Ni Va           903 --
+1629          1629 E795843-5                       703 --
+1630          1630 E788204-6    Lo Ni              520 --
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kraspen SECTOR: Lorspane
+#
+#
+# Hiver Government Codes
+#
+# Codes 0,1,2,6, and the following are specifically used by Hiver's.
+# S Sept. Governing committee of seven nest leaders.
+# T Unsupervised Anarchy. Individual agreements between all nests.
+# U Supervised Anarchy. Individual agreements between all nests.
+# W Committee. Governing committee of nest leaders.
+# 
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+1726          1726 D9B78BC-2  S Fl              A  704 --
+1727          1727 D437354-5  S Lo Ni              303 --
+1728          1728 E612469-3    Ic Ni              722 --
+1729          1729 E785242-4    Lo Ni              124 --
+1730          1730 E353468-5    Ni Po              504 --
+1822          1822 C669562-7    Ni                 802 Hv
+1823          1823 C777564-5  M Ag Ni              603 Hv
+1826          1826 E786331-7    Lo Ni              400 --
+1827          1827 E43189A-8    Na Po              902 --
+1828          1828 E668669-2    Ag Ni Ri           203 --
+1829          1829 E776566-7    Ag Ni              924 --
+1830          1830 E000120-8    As Lo Ni           614 --
+1924          1924 CAA67S4-5    Fl                 510 Hv
+1926          1926 E200446-9    Ni Va              824 --
+1927          1927 E7B1552-4    Fl Ni           A  103 --
+1928          1928 E355388-5    Lo Ni              413 --
+1929          1929 E235112-5    Lo Ni              704 --
+1930          1930 E4355A9-7    Ni                 104 --
+2024          2024 B523422-A    Ni Po              804 --
+2025          2025 B8586A6-6    Ag Ni              514 --
+2027          2027 B000389-9    As Lo Ni           403 --
+2028          2028 B67A598-9    Ni Wa              104 --
+2029          2029 E511168-7    Ic Lo Ni           702 --
+2030          2030 B0006BD-B  2 As Na Ni           513 --
+2123          2123 C348324-8    Lo Ni              904 Hv
+2124          2124 C2409T2-A  M De Hi In Po        200 Hv
+2125          2125 D786664-2  S Ag Ni Ri           903 Na
+2126          2126 D330445-7  S De Ni Po           305 Na
+2129          2129 C779756-5  S                    325 --
+2130          2130 C887698-7    Ag Ni Ri           123 --
+2223          2223 C310564-B    Ni                 800 Hv
+2224          2224 D342AA6-B    Hi In Po           514 Na
+2225          2225 D549887-3                       814 Na
+2226          2226 D465665-6  S Ag Ni Ri           904 Na
+2227          2227 D400667-3    Na Ni Va           213 Na
+2229          2229 C99958B-7  S Ni                 612 --
+2230          2230 C577699-5  S Ag Ni              114 --
+2321          2321 C130461-C  M De Ni Po           402 Hv
+2327          2327 C548255-9  S Lo Ni              904 --
+2328          2328 C783464-9  S Ni                 703 --
+2329          2329 C57369B-6  S Ni                 313 --
+2330          2330 D510553-7  S Ni                 814 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lalorez SECTOR: Lorspane
+#
+#
+# Hiver Government Codes
+#
+# Codes 0,1,2,6, and the following are specifically used by Hiver's.
+# S Sept. Governing committee of seven nest leaders.
+# T Unsupervised Anarchy. Individual agreements between all nests.
+# U Supervised Anarchy. Individual agreements between all nests.
+# W Committee. Governing committee of nest leaders.
+# 
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+2525          2525 B627300-9  N Lo Ni              302 Na
+2526          2526 E578520-7    Ag Ni              805 Na
+2529          2529 E526520-6    Ni                 613 Na
+2530          2530 E410643-3    Na Ni              114 Na
+2621          2621 B232512-D    Ni Po              301 Hv
+2623          2623 B340AW3-D  M De Hi In Po        102 Hv
+2625          2625 E573413-4    Ni                 424 Na
+2627          2627 C343531-A  S Ni Po              603 Na
+2630          2630 E47175A-4                       321 Na
+2721          2721 B6237S2-8  L Na Po              924 Hv
+2829          2829 B9A4623-7    Fl Ni              213 Na
+2830          2830 BAD8956-C    Fl Hi              104 Na
+2923          2923 B310403-A    Ni                 700 Hv
+2928          2928 B7B0201-D    De Lo Ni        A  800 Na
+2929          2929 B867732-9  N Ag                 603 Na
+3030          3030 B577731-5  S Ag                 603 Na
+3123          3123 E344522-5    Ag Ni              203 Hv
+3125          3125 B6597S1-7  L                    815 Hv
+3126          3126 B89A8S5-8  L Wa                 314 Hv
+3129          3129 B412569-8  N Ic Ni              913 Na
+3223          3223 E637103-4    Lo Ni              103 Hv
+3225          3225 E5788S5-4                       302 Hv
+3227          3227 E242662-7    Ni Po              601 Hv
+3229          3229 B584568-B  N Ag Ni              714 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Moresp SECTOR: Lorspane
+#
+# Jump-routes
+#
+$0135 3232 -1 0 10
+$0135 0537 0 0 10
+$0537 0640 0 0 10
+$0640 0803 0 1 10
+$0540 0701 0 1 14
+$0540 0537 0 0 14
+$0540 0239 0 0 14
+$0239 0337 0 0 14
+$0337 0435 0 0 14
+$0435 0537 0 0 14
+$0435 0834 0 0 14
+$0834 1137 1 0 14
+$0239 0202 0 1 14
+$0239 0402 0 1 2
+$0239 3139 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+0133          0133 B75469E-5  S Ag Ni              605 Na
+Juusti        0135 B472356-9    Lo Ni              713 Na
+0233          0233 B6B17AB-7    Fl              A  810 Na
+Cillindhar    0239 A578313-D    Lo Ni              403 It
+0331          0331 B150310-B    De Lo Ni Po        723 Na
+0337          0337 A768651-8  A Ag Ni Ri           714 It
+0435          0435 A755656-D  A Ag Ni              500 It
+Vearn         0537 A100455-F    Ni Va              814 It
+0540          0540 A643445-C  B Ni Po              103 It
+0634          0634 C515220-8  B Ic Lo Ni           402 It
+0637          0637 C57788A-5  D                    233 It
+Micken        0640 D400454-5  B Ni Va              713 It
+0832          0832 D000263-A    As Lo Ni           204 --
+0834          0834 A36188B-D    Ri                 204 It
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nerelore SECTOR: Lorspane
+#
+# Jump-routes
+#
+$1137 0834 -1 0 14
+$1137 1037 0 0 14
+$1037 1039 0 0 14
+$1039 1003 0 1 14
+$1137 1338 0 0 14
+$1338 1039 0 0 14
+$1538 1840 1 0 14
+$1538 1338 0 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+0931          0931 B225226-A    Lo Ni              624 Na
+0932          0932 D597376-2  S Lo Ni              403 --
+0936          0936 BA9A677-C  S Ni Wa           B  914 Na
+1031          1031 C4008DE-4  S Na Va              914 --
+1037          1037 B644441-7  B Ni                 321 It
+1039          1039 B787555-8  C Ag Ni              703 It
+1131          1131 C2206BE-6  S De Na Ni Po        501 --
+1134          1134 B568499-7    Ni                 403 Na
+1137          1137 B3006BE-C    Na Ni Va           103 It
+1231          1231 C6A1667-6    Fl Ni              320 --
+1232          1232 C9B4668-4    Fl Ni           A  503 --
+1234          1234 C74588B-5  S                    804 --
+1235          1235 C557666-6    Ag Ni              402 --
+1331          1331 B793243-8  N Lo Ni              124 --
+1332          1332 B9C8130-7  S Fl Lo Ni        A  604 --
+1333          1333 B423256-9    Lo Ni Po           113 --
+1334          1334 C55746A-4    Ni                 522 --
+1335          1335 C9C0987-8    De Hi           A  905 Na
+1336          1336 C326664-9  S Ni                 204 --
+1338          1338 BA6A203-A  B Lo Ni Wa           713 It
+1431          1431 E402466-4    Ic Ni Va           203 --
+1432          1432 E539862-6                       703 --
+1433          1433 E673A86-9    Hi In              401 --
+1434          1434 E500657-5    Na Ni Va           104 --
+1531          1531 E878644-4    Ag Ni              812 --
+1532          1532 E763655-7    Ni Ri              104 --
+1533          1533 E9D5A8B-7    Fl Hi              403 --
+1534          1534 E87A531-6    Ni Wa              600 --
+1538          1538 C8B2741-7  C Fl              A  514 It
+1631          1631 E000210-6    As Lo Ni           524 --
+1632          1632 E797434-4    Ni                 213 --
+1633          1633 E592654-2    Ni                 724 --
+1634          1634 E000541-A    As Ni              534 --
+1636          1636 E797766-6    Ag                 204 --
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ogoress SECTOR: Lorspane
+#
+# Jump-routes
+#
+$1840 1901 0 1 14
+$1840 1939 0 0 14
+$1939 2139 0 0 14
+$2139 2202 0 1 14
+$2438 2536 1 0 14
+$2438 2139 0 0 14
+$1840 1538 -1 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+1731          1731 E301313-7    Ic Lo Ni Va        504 --
+1732          1732 E575100-8    Lo Ni              804 --
+1733          1733 E6A0202-9    De Lo Ni           300 --
+1734          1734 E000300-6    As Lo Ni           505 --
+1735          1735 E83A412-5    Ni Wa              910 --
+1736          1736 E795A68-6    Hi In              203 --
+1831          1831 E474200-6    Lo Ni              300 --
+1832          1832 C7A767A-4    Fl Ni              213 --
+1833          1833 B446665-6    Ag Ni              704 --
+1834          1834 B836235-B    Lo Ni              402 --
+1840          1840 A6466AB-A    Ag Ni              100 It
+1931          1931 E200426-9    Ni Va              902 --
+1932          1932 C555200-7  S Lo Ni              501 --
+1933          1933 C411656-7  S Ic Na Ni           803 --
+1934          1934 C30358B-8  S Ic Ni Va           422 --
+1939          1939 A9E5535-9    Fl Ni              800 It
+1940          1940 D3506BB-2  B De Ni Po           115 It
+2031          2031 E223647-4    Na Ni Po           624 --
+2032          2032 C76A646-9    Ni Ri Wa           804 --
+2033          2033 C9D6422-5    Fl Ni              204 --
+2035          2035 C9D9664-A  S Fl Ni              903 Na
+2131          2131 E73A200-A    Lo Ni Wa           214 --
+2132          2132 C427465-7  S Ni                 604 --
+2133          2133 C343368-6    Lo Ni Po           223 --
+2134          2134 C300256-7    Lo Ni Va           903 --
+2135          2135 C100ABB-F    Hi Na Va           510 Na
+2139          2139 A787524-A    Ag Ni              604 It
+2231          2231 E7B2531-4    Fl Ni           A  134 --
+2232          2232 D7A78BC-4  S Fl                 822 --
+2234          2234 D9B3687-7  S Fl Ni           A  404 --
+2235          2235 D849144-4    Lo Ni              600 --
+2331          2331 E546102-7    Lo Ni              712 --
+2332          2332 C300789-A  S Na Va              932 Na
+2334          2334 C552447-5  S Ni Po              314 Na
+2431          2431 D9A2366-5    Fl Lo Ni           415 --
+2438          2438 C539233-6  B Lo Ni              613 It
+2440          2440 C383562-9    Ni                 323 It
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Plalorn SECTOR: Lorspane
+#
+# Jump-routes
+#
+$3140 3001 0 1 14
+$3140 3038 0 0 14
+$2940 2801 0 1 14
+$2940 2738 0 0 14
+$2738 2536 0 0 14
+$3038 2940 0 0 14
+$2536 2438 -1 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+2532          2532 A759343-C  S Lo Ni              313 --
+2536          2536 B3538B9-6  A Po                 302 It
+2631          2631 D76A305-6  S Lo Ni Wa           304 Na
+2733          2733 D897510-3    Ag Ni              700 Na
+2738          2738 B7A2311-9  B Fl Lo Ni           723 It
+2833          2833 E566445-7    Ni                 811 Na
+2834          2834 E76688B-2    Ri                 213 Na
+2931          2931 E375666-5    Ag Ni              500 Na
+2940          2940 B342535-A    Ni Po              303 It
+3033          3033 E747447-5    Ni                 104 Na
+3038          3038 B552321-B  B Lo Ni Po           712 It
+3140          3140 B9A7534-8    Fl Ni              103 It
+3231          3231 E556652-4    Ag Ni              703 Na
+

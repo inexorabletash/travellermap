@@ -1,0 +1,384 @@
+Jubraal Sector
+
+A: Ajuub                     a.dat
+B: Braal                     b.dat
+C: Cajuulm                   c.dat
+D: Dabruce                   d.dat
+E: Ejubruu                   e.dat
+F: Fauhuaj                   f.dat
+G: Grebruulk                 g.dat
+H: Hubrauu                   h.dat
+I: Ijabra                    i.dat
+J: Jabruulz                  j.dat
+K: Kijubruu                  k.dat
+L: Lajabruu                  l.dat
+M: Meejax                    m.dat
+N: Narbruuj                  n.dat
+O: Obruulii                  o.dat
+P: Parnbree                  p.dat
+
+Bases:
+L = Lubraal Police
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+12 Ls = Lubraal State
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ajuub SECTOR: Jubraal Sector
+#
+# Jump-routes
+$0102 0105 0 0
+$0610 0512 0 1
+$0610 0811 0 1
+#
+$0807 1010 1 0 2
+$0807 0505 0 0 2
+$0505 0203 0 0 2
+$0203 0102 0 0 2
+$0102 3140 -1 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Sliohja       0102 A555300-E    Lo Ni              534 Na
+A-2           0105 C7B5798-6  S Fl              A  423 Na
+Kammurre      0203 E897576-2    Ag Ni           B  821 Na
+A-4           0306 C543876-4  S Po              B  101 Na
+A-5           0501 B798863-7  N                    825 Na
+Arhija        0505 B100433-B  N Ni Va              424 Na
+A-7           0602 E4856AA-7    Ag Ni              315 Na
+A-8           0609 A364440-9  N Ni                 600 Na
+A-9           0610 A487620-D  2 Ag Ni              104 Na
+A-10          0801 C769A88-B    Hi                 614 Na
+Najaaja       0807 E482213-4    Lo Ni              913 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Braal SECTOR: Jubraal Sector
+#
+# Jump-routes
+#
+$1010 1213 0 1 2
+$1010 0807 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           0905 C442656-8    Ni Po              911 Na
+B-2           1006 X641678-0    Po              R  803 Na
+Buunaala      1010 B458512-9    Ag Ni              213 Na
+B-4           1105 C668987-8    Hi                 600 Na
+B-5           1206 C5439BC-7    Hi In Po           303 Na
+B-6           1302 B8B7ABB-A  N Fl Hi           A  504 Na
+B-7           1510 C210564-7    Ni                 823 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Cajuulm SECTOR: Jubraal Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1703 E557665-6    Ag Ni              900 Na
+C-2           1705 E300836-3    Na Va              613 Na
+C-3           2001 C220567-6    De Ni Po           510 Na
+C-4           2004 C8C367A-9    Fl Ni           A  302 Na
+C-5           2110 C56399B-8    Hi                 813 Na
+C-6           2407 C88A259-C    Lo Ni Wa           513 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Dabruce SECTOR: Jubraal Sector
+#
+# Jump-routes
+#
+$3201 2940 0 -1 10
+$3201 3203 0 0 10
+$3203 0205 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2505 C210754-A    Na                 904 Na
+D-2           2604 C345226-5    Lo Ni              103 Na
+D-3           2704 C7C1688-4  S Fl Ni           A  821 Na
+D-4           2908 A240689-A    De Ni Po           530 Na
+Durazzle      3201 C424A62-D  S Hi In              213 Na
+Carmmella     3203 C88855A-7    Ag Ni              803 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ejubruu SECTOR: Jubraal Sector
+#
+# Jump-routes
+$0512 0610 0 -1
+$0811 0610 0 -1
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0312 C300564-B  S Ni Va              300 Na
+E-2           0318 E76588B-5    Ri                 204 Na
+E-3           0511 C944202-5    Lo Ni              915 Na
+E-4           0512 B756465-9  2 Ni                 604 Na
+E-5           0619 B767300-B    Lo Ni              314 Na
+E-6           0717 B767778-9  N Ag Ri           B  702 Na
+E-7           0811 C452113-5    Lo Ni Po           300 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Fauhuaj SECTOR: Jubraal Sector
+#
+# Jump-routes
+$1414 1614 0 0
+$1611 1614 0 0
+#
+$1614 1916 1 0 2
+$1614 1213 0 0 2
+$1213 1010 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0917 B647595-6    Ag Ni              824 Na
+F-2           0918 B524553-A    Ni                 225 Na
+F-3           1013 B95A538-A    Ni Wa              205 Na
+Fillagja      1213 E310531-7    Ni                 511 Na
+F-5           1216 B466114-C  S Lo Ni              404 Na
+F-6           1220 C769536-9  S Ni                 920 Na
+F-7           1414 B234400-D    Ni                 421 Na
+F-8           1611 B783337-A  S Lo Ni              802 Na
+Maghaali      1614 A4127BC-D    Ic Na              604 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Grebruulk SECTOR: Jubraal Sector
+#
+# Jump-routes
+#
+$2418 2721 1 1 2
+$2418 2216 0 0 2
+$2216 1916 0 0 2
+$1916 1614 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1914 C535975-9    Hi In           B  911 Na
+Kolijaalor    1916 C783410-5  S Ni                 102 Na
+G-3           2112 C555540-5    Ag Ni              402 Na
+G-4           2114 C58079A-8  S De Ri              803 Na
+G-5           2116 C466775-8    Ag Ri           B  122 Na
+G-6           2214 C30087C-5  S Na Va           B  401 Na
+Babaani       2216 B769265-9  N Lo Ni              404 Na
+Ciukuu        2418 C847497-5    Ni                 114 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hubrauu SECTOR: Jubraal Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2611 A110620-B    Na Ni              302 Na
+H-2           2617 C685514-9    Ag Ni              513 Na
+H-3           2716 B6529CC-C  N Hi Po              713 Na
+H-4           2717 C583510-7    Ni                 813 Na
+H-5           2811 D301996-5    Hi Ic Na Va        423 Na
+H-6           2911 A798300-D  N Lo Ni              305 Na
+H-7           2912 C669888-9    Ri                 404 Na
+H-8           3011 E252515-8    Ni Po              920 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ijabra SECTOR: Jubraal Sector
+#
+# Jump-routes
+$0522 0621 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0228 C410310-6  S Lo Ni              200 Na
+I-2           0324 A457855-B                       202 Na
+I-3           0424 D89A630-7  S Ni Wa              302 Na
+I-4           0427 DA9A988-8  S Hi In Wa           604 Na
+I-5           0521 E46079B-5    De Ri              300 Na
+I-6           0522 A9D2300-A    Fl Lo Ni           600 Na
+I-7           0621 C94A103-7  S Lo Ni Wa           800 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jabruulz SECTOR: Jubraal Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           1029 B55525A-8  N Lo Ni              804 Na
+J-2           1221 E586400-6    Ni                 713 Na
+J-3           1229 D863879-3  S Ri              B  700 Na
+J-4           1522 C100641-9  S Na Ni Va           703 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kijubruu SECTOR: Jubraal Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1725 C532112-7    Lo Ni Po           814 Na
+K-2           1923 B100487-D  N Ni Va              801 Na
+K-3           2224 D464330-3    Lo Ni              303 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lajabruu SECTOR: Jubraal Sector
+#
+# Jump-routes
+$2629 2730 0 0
+#
+$2730 2833 0 1 2
+$2730 2827 0 0 2
+$2827 2926 0 0 2
+$2926 2822 0 0 2
+$2822 2721 0 0 2
+$2721 2418 -1 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2629 A5A0468-A  N De Ni              204 Na
+Trejaal       2721 C562537-8  S Ni                 602 Na
+L-3           2722 C362120-7  S Lo Ni              900 Na
+Lubraal       2730 A120976-H  L Cx Hi In Na Po  B  232 Ls
+Lanntetri     2827 A643230-C  N Lo Ni Po           324 Na
+Caajaali      2822 C35158C-A    Ni Po              413 Na
+Mirricaal     2926 B5467CB-A    Ag                 333 Na
+L-8           3127 CA8A69A-A    Ni Ri Wa           224 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Meejax SECTOR: Jubraal Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0335 C657316-6  S Lo Ni              514 Na
+M-2           0538 C443103-8  S Lo Ni Po           824 Na
+M-3           0638 C633897-8    Na Po              914 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Narbruuj SECTOR: Jubraal Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0940 C87A379-B    Lo Ni Wa        B  113 Na
+N-2           1032 D444568-8  S Ag Ni              230 Na
+N-3           1035 E564833-3                       233 Na
+N-4           1037 E587402-5    Ni                 110 Na
+N-5           1232 D592333-3    Lo Ni              202 Na
+N-6           1235 C372436-A    Ni                 721 Na
+N-7           1238 C968320-4    Lo Ni              210 Na
+N-8           1240 C777364-4  S Lo Ni              611 Na
+N-9           1539 D647867-1  S                    103 Na
+N-10          1634 D561313-7    Lo Ni              823 Na
+N-11          1637 E510557-9    Ni                 510 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Obruulii SECTOR: Jubraal Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1737 C8D0531-7    De Ni              605 Na
+O-2           1833 E471678-6    Ni              B  525 Na
+O-3           1836 C422311-9    Lo Ni Po           533 Na
+O-4           1838 D7A1432-5    Fl Ni              500 Na
+O-5           1840 C38569A-6  S Ag Ni Ri           800 Na
+O-6           2032 C35356B-7  S Ni Po              723 Na
+O-7           2035 C423995-9  S Hi In Na Po        824 Na
+O-8           2040 C742002-5    Lo Ni Po           203 Na
+O-9           2133 C884340-8    Lo Ni              514 Na
+O-10          2135 D130455-7  S De Ni Po           305 Na
+O-11          2339 C898775-5  S Ag              B  301 Na
+O-12          2436 C403875-8    Ic Na Va        B  712 Na
+O-13          2438 E436433-8    Ni                 302 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Parnbree SECTOR: Jubraal Sector
+#
+# Jump-routes
+$2932 3033 0 0
+$3031 3033 0 0
+$3033 3036 0 0
+#
+$3036 0238 1 0 2
+$3036 2833 0 0 2
+$2833 2730 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2733 D457236-5    Lo Ni              412 Na
+P-2           2736 X160627-4    De              R  601 Na
+P-3           2740 C578543-9    Ag Ni              303 Na
+Jakrator      2833 D9A5A52-B  S Fl Hi              411 Na
+P-5           2932 C445761-8    Ag                 500 Na
+P-6           3031 C568489-9  S Ni                 202 Na
+P-7           3033 A443723-D  N Po                 104 Na
+Killat        3036 A00049C-B    As Ni              903 Na
+P-9           3140 C464012-6    Lo Ni              213 Na
+

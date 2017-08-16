@@ -1,0 +1,304 @@
+Puuahdesh Sector
+
+A: Ahdes                     a.dat
+B: Buuahd                    b.dat
+C: Ceuuah                    c.dat
+D: Deshu                     d.dat
+E: Eshua                     e.dat
+F: Fuuahda                   f.dat
+G: Geshuuah                  g.dat
+H: Huuah                     h.dat
+I: Idesha                    i.dat
+J: Jeshuu                    j.dat
+K: Kahdech                   k.dat
+L: Luuahd                    l.dat
+M: Mudesh                    m.dat
+N: Nesha                     n.dat
+O: Opuuad                    o.dat
+P: Puuah                     p.dat
+
+Bases:
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ahdes SECTOR: Puuahdesh Sector
+#
+# Jump-routes
+#
+$0203 3104 -1 0 10
+$0203 0506 0 0 10
+$0506 0709 0 0 10
+$0709 1111 1 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Zhallneer     0203 B491559-D  S Ni                 813 Na
+Klakuua       0506 C558864-6  S                    901 Na
+Nannauua      0709 CA9AAFG-B    Hi In Wa        A  604 Na
+A-4           0710 B425410-D    Ni                 113 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Buuahd SECTOR: Puuahdesh Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           0902 D487444-6    Ni                 203 Na
+B-2           1101 C7A088B-9  S De                 901 Na
+B-3           1206 E67526A-6    Lo Ni              823 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ceuuah SECTOR: Puuahdesh Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1807 D724553-6    Ni                 414 Na
+C-2           2005 C555210-4  S Lo Ni              324 Na
+C-3           2010 D549421-7    Ni                 833 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Deshu SECTOR: Puuahdesh Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Eshua SECTOR: Puuahdesh Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Fuuahda SECTOR: Puuahdesh Sector
+#
+# Jump-routes
+#
+$1111 0709 -1 -1 10
+$1111 1512 0 0 10
+$1512 1415 0 0 10
+$1415 1618 0 0 10
+$1618 1421 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0917 E200349-4    Lo Ni Va           324 Na
+Ghuuammoa     1111 E631445-8    Ni Po              413 Na
+Macshuuk      1415 A558230-C  S Lo Ni              224 Na
+Fuuluhg       1512 C345610-6    Ag Ni              711 Na
+F-5           1612 B230755-C  2 De Na Po           704 Na
+Scaauuac      1618 C5856B9-7    Ag Ni              103 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Geshuuah SECTOR: Puuahdesh Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1917 E8A6998-4    Fl Hi              713 Na
+G-2           1919 E545389-2    Lo Ni              801 Na
+G-3           2012 CA7A989-A  S Hi In Wa           723 Na
+G-4           2415 C446783-4  S Ag                 703 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Huuah SECTOR: Puuahdesh Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2614 D210467-9  S Ni                 714 Na
+H-2           2711 D200AA6-8    Hi Na Va           400 Na
+H-3           2813 X655445-0                    R  413 Na
+H-4           2916 C510378-A  S Lo Ni           B  820 Na
+H-5           3212 C220105-9    De Lo Ni Po        200 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Idesha SECTOR: Puuahdesh Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0122 C664001-5  S Lo Ni              413 Na
+I-2           0127 B9A4227-7    Fl Lo Ni           724 Na
+I-3           0224 E837679-6    Ni              B  205 Na
+I-4           0429 B50067A-8    Na Ni Va        B  110 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jeshuu SECTOR: Puuahdesh Sector
+#
+# Jump-routes
+#
+$1421 1618 0 -1 10
+$1421 1624 0 0 10
+$1624 1628 0 0 10
+$1628 1830 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0925 C738356-8    Lo Ni              213 Na
+Dloauud       1421 E679726-2                       423 Na
+Attuuaine     1624 C511558-6    Ic Ni              413 Na
+Milppuua      1628 B444563-8  N Ag Ni              914 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kahdech SECTOR: Puuahdesh Sector
+#
+# Jump-routes
+#
+$1830 1628 -1 0 10
+$1830 2032 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Kiuui         1830 C526378-8    Lo Ni           B  501 Na
+K-2           2026 C502768-4    Ic Na Va           814 Na
+K-3           2321 B344100-D  N Lo Ni              302 Na
+K-4           2426 B521453-A    Ni Po              223 Na
+K-5           2429 B884433-B  N Ni                 201 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Luuahd SECTOR: Puuahdesh Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2721 C865963-8    Hi                 302 Na
+L-2           2722 B243567-9  S Ni Po              214 Na
+L-3           3024 C210273-7  S Lo Ni           B  900 Na
+L-4           3027 D200357-7    Lo Ni Va           600 Na
+L-5           3126 C773987-9  S Hi In              500 Na
+L-6           3226 E320948-9    De Hi In Na Po     320 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Mudesh SECTOR: Puuahdesh Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0336 C250547-6    De Ni Po           604 Na
+M-2           0540 B422878-8  N Na Po           B  703 Na
+M-3           0636 B564332-B    Lo Ni              804 Na
+M-4           0737 C534358-7  S Lo Ni              402 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nesha SECTOR: Puuahdesh Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0936 D371251-7    Lo Ni              400 Na
+N-2           1136 B695559-7  2 Ag Ni              205 Na
+N-3           1639 B210563-8  S Ni                 204 Na
+N-4           1640 D252326-4    Lo Ni Po           904 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Opuuad SECTOR: Puuahdesh Sector
+#
+# Jump-routes
+#
+$2032 1830 0 -1 10
+$2032 2136 0 0 10
+$2136 2438 0 0 10
+$2438 2838 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Cauukna       2032 CAB7831-8    Fl              A  402 Na
+Reacvuun      2136 E7A2564-6    Fl Ni              502 Na
+Pauuhitana    2438 E654563-2    Ag Ni              502 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Puuah SECTOR: Puuahdesh Sector
+#
+# Jump-routes
+#
+$2838 2438 -1 0 10
+$2838 3239 0 0 10
+$3239 0101 1 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Uuaablr       2838 D535410-7  S Ni                 302 Na
+P-2           3031 B403468-D    Ic Ni Va           523 Na
+Iokkuucx      3239 E757675-4    Ag Ni           B  814 Na
+

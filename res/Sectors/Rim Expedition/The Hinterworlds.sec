@@ -1,0 +1,855 @@
+Hinterworlds
+
+A: Adar                      sec_a.dat
+B: Tlianke                   sec_b.dat
+C: Anubis                    sec_c.dat
+D: Pendiash Ginshar          sec_d.dat
+E: Cimeon                    sec_e.dat
+F: Darvis                    sec_f.dat
+G: Cromar                    sec_g.dat
+H: Menere's Reach            sec_h.dat
+I: Nullia                    sec_i.dat
+J: Bruia                     sec_j.dat
+K: Silver Laurel             sec_k.dat
+L: Sontra                    sec_l.dat
+M: Hashi                     sec_m.dat
+N: Kandra                    sec_n.dat
+O: Tempri                    sec_o.dat
+P: Aquila                    sec_p.dat
+
+Bases:
+N = Naval Base
+S = Scout Base
+F = Unknown
+J = Unknown
+M = Unknown
+  = None
+
+Allegiance:
+12 Im = Imperial
+11 So = Solomani
+07 Na = Non-aligned
+04 Cs = Client State
+14 Ac = Anubian Trade Coalition
+13 Cu = Cytrialin Unity
+10 Gi = Gniivi
+09 Lp = Council of Leh Perash
+02 Ow = Outcasts of the Whispering Sky
+03 Ra = Ral Ranta
+08    = Unknown
+
+
+Hinterworlds - Credits
+----------------------
+
+The Hinterworlds data was ftped from Sunbane.
+
+Similar data seems to have been published in issue 39 of
+Challenge, put out by Game Designers' Workshop in 1989.
+The Hinterworlds article lists the following credits:
+
+  Design . . . . . . . . . . . . Rob Caswell, Karl Johnson
+  Design Assistance. . . . . . . .Tom Peters, Mike Mikesh,
+                           Joe Fugate Sr., Marc W. Miller,
+                                          Thomas McCarroll
+  Technical Support, Maps . . . .Digest Group Publications
+  Development . . . . . . . .Timothy B. Brown, Deb Zeigler
+
+Although there is no precise game-date for any of the data,
+they are current as of sometime during the MegaTraveller Era.
+The jump/trade routes reflect both those of individual client
+states as well as those of the larger empires.
+
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_A   SECTOR: hinter
+#
+# Trade routes within the subsector
+$0104 3204 -1 0
+$0104 0102 0 0
+$0102 0201 0 0
+$0201 0402 0 0
+$0402 0602 0 0
+$0602 0801 0 0
+$0801 1001 1 0
+$0402 0603 0 0
+$0603 0605 0 0
+$0605 0806 0 0
+$0806 0907 1 0
+$0608 0907 1 0
+$0608 0407 0 0
+$0608 0610 0 0
+$0610 0410 0 0
+$0210 0311 0 1
+$0410 0311 0 1
+$0610 0712 0 1
+#
+$0407 3206 -1 0 10
+$0407 0610 0 0 10
+$0610 0813 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Nahru         0101 D100201-6    Ni Va              703 Ra
+Halanna       0102 X62A442-5    Ni Wa           R  300 Ra
+Adar          0104 B100456-A    Ni Va Cx           402 Im
+Kaggits       0201 A445300-B  F Ni                 214 Ra
+Deymun Na     0210 B110352-D  F Ni                 104 Ra
+Terbain       0306 C98A523-6    Ni Wa              603 Na
+Nii           0307 C110599-C    Ni                 803 Na
+Venad         0402 A221621-B    Ni Po Na           324 Im
+Dirmidi       0406 E3107CE-4    Na              A  403 Na
+Gerdane       0407 C000110-7    Ni As              901 Ra
+Leral         0410 D110411-9    Ni                 921 Ra
+Ginshar       0501 A410631-B  J Ni Na           A  803 Na
+Luki          0504 E79A758-7    Wa                 604 Na
+Frelda        0505 C100441-8    Ni Va              812 Ra
+Fugitak       0602 C5A027A-5    Ni De           A  125 Na
+Dermif Na     0603 B442521-7  F Ni Po              522 Ra
+Luggi         0605 C6978AD-5                       324 Ra
+Sablass       0608 B6A0402-B  F Ni De              803 Ra
+Konn          0610 E555416-6    Ni                 104 Na
+Pike          0708 A637644-8    Ni                 104 Na
+Neuria        0710 E200444-8    Ni Va              112 Na
+Boilingbrook  0801 A9C9751-D                    A  700 Na
+Uumanur       0806 B552444-A  M Ni Po              820 Na
+Salmri        0807 E769585-6    Ni              A  202 Ra
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_B   SECTOR: hinter
+#
+# Trade routes within the subsector
+$1001 0801 -1 0
+$1001 1103 0 0
+$1103 1202 0 0
+$1202 1402 0 0
+$1402 1601 0 0
+$1601 2003 1 0
+$1007 0806 -1 0
+$1007 1210 0 0
+$1210 1211 0 1
+$0907 0909 0 0
+$1402 1401 0 0
+$1401 1601 0 0
+$1605 1606 0 0
+$1605 1705 1 0
+$1606 1707 1 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Eskufet       0902 E779103-6    C1 Ni              604 Na
+Damii         0906 A000359-D  F Ni As           A  700 Na
+Serala Na     0907 C486220-5    Ni                 303 Ra
+Dibs          0909 B654331-8    Ni                 902 Ra
+Kupakii       1001 C654352-A  S Ni                 905 Cs
+Durne         1006 B539511-A  J Ni              A  814 Ra
+Gomms         1007 A110679-C    Ni Na           B  724 Ra
+Gimisapun     1103 A000000-B    Ni As Ba           603 Na
+Tlianke       1104 B664AA9-C  M Hi                 220 Na
+Khumukunar    1105 B594100-8  M Ni                 902 Na
+Breevort      1109 C9B48AA-5                    A  424 Na
+Arghikii      1202 E653557-8    Ni Po              102 Na
+Girar         1205 B645766-9  M Ag              A  322 Na
+Gashuumi      1206 B527769-7                       923 Na
+Aquiar        1210 A87A300-D    Ni Wa              124 Na
+Imukushush    1301 C45969A-5  S Ni                 720 Na
+Hyraxa        1302 X341777-1    Po              R  624 Na
+Zelebex       1306 C769235-8    Ni                 204 Na
+Mupikaa       1307 A426588-A    Ni                 903 Na
+Gustavus      1401 A100345-B    Ni Va              601 Ac
+Utgaard       1402 D1009BB-A    Hi In Va Na        305 Ac
+Drosyodryu    1408 B241887-7    D0 Po           A  401 Na
+Shilikhulu    1409 B67A110-9    Ni Wa              503 Na
+Tudor         1601 A94956A-9    Ni                 923 Na
+Ankhamon      1604 C889101-B    Ni              A  614 Ac
+Kayhyurv      1605 C97A100-A    D0 Ni Wa           302 Ac
+Rambaran      1606 CAE3443-7    Ni                 704 Ac
+Ariden        1609 A55578B-A    Ag                 214 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_C   SECTOR: hinter
+#
+# Trade routes within the subsector
+$2003 1601 -1 0
+$2003 2005 0 0
+$2005 2205 0 0
+$2205 2504 1 0
+$2404 2506 1 0
+$1804 1605 -1 0
+$1807 1606 -1 0
+$2001 2006 0 0
+$1807 2006 0 0
+$1804 2005 0 0
+$2001 2201 0 0
+$2006 2107 0 0
+$2107 2306 0 0
+$2306 2506 1 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Glower        1705 E448442-4    Ni                 900 Ac
+Hammerhead    1707 B1007BC-B  J Va Na              224 Ac
+Xavier        1709 E200410-9    Ni Va              604 Na
+Dry Drop      1710 E3238AA-3    Po Na              905 Na
+Calvice       1802 A553334-B    Ni Po              704 Ac
+Bryce         1804 D324427-8    Ni                 604 Ac
+Deddigan      1806 E100779-6    Va Na           B  505 Ac
+Jorsmuur      1807 B244244-7    Ni                 303 Ac
+Gamasav       1809 E625200-8    Ni                 914 Na
+Jennethaka    1810 C434730-9                       920 Na
+Ansumer       1907 A72A538-C  J Ni Wa              901 Ac
+Heflet        1908 C100126-9    Ni Va              724 Ac
+Brandi        1909 A655620-9    Ni Ag              133 Na
+Borman        2001 E547666-6    Ni Ag              804 Na
+Apogee        2003 A7678A6-B                       104 Ac
+Anubis        2005 B110ABD-C  F Hi In Na           704 Ac
+Chester       2006 B866441-6  M Ni                 614 Ac
+Hyam          2010 A553744-9    Po                 612 Na
+Rimswing      2107 B428532-A  J Ni                 810 Ac
+Gibbett       2109 B000445-D    Ni As              221 Na
+Tur-Hunar     2110 D84A666-7  S Ni Wa              703 Na
+Reuper        2201 A110743-C    Na                 603 Ac
+Didinack      2205 B200689-9    Ni Va Na           310 Ac
+Brang         2206 A40026A-B    Ni Va              414 Ac
+Testament     2301 A100489-D    Ni Va              804 Na
+Fafi          2306 C567764-6    Ri Ag              204 Ac
+Dullsure      2401 B584741-9    C4 Ri Ag           904 Na
+Kemphus       2404 DAA869A-7    Ni                 904 Ac
+Sextant       2408 E42785A-5                       700 Na
+Tuscaloma     2409 D100230-9    Ni Va              714 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_D   SECTOR: hinter
+#
+# Trade routes within the subsector
+$2504 2404 -1 0
+$2607 2404 -1 0
+$2504 2705 0 0
+$2705 3003 0 0
+$2607 2806 0 0
+$2806 2804 0 0
+$2806 2907 0 0
+$2907 2909 0 0
+$2909 3009 0 0
+$3009 3111 0 1
+$2506 2306 -1 0
+$2506 2504 0 0
+$2608 2907 0 0
+$3009 3110 0 0
+$3110 0109 1 0
+$3003 3102 0 0
+$3003 3104 0 0
+$3102 0102 1 0
+$3104 0104 1 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Vaughn        2504 A79A343-A  F Ni Wa              403 Ac
+Remik         2506 B789127-8    C1 Ni              713 Ac
+Nagikare      2607 C54248C-7    Ni Po              914 Cu
+Goore         2608 B4336A8-C  J Ni Po Na           522 Cu
+Dashimev      2610 E747303-7    Ni              A  200 Cu
+Cessinyv      2705 D697537-3    Ni Ag              604 Na
+Verganeg      2708 BA9A566-9    Ni Wa              902 Cu
+Darunne       2709 C300775-A    Va Na           B  502 Cu
+Kikove        2802 C457231-6    Ni              A  904 Na
+Maggiv        2804 B110733-9  J Na                 405 Cu
+Terpunne      2806 C559210-6    Ni                 113 Cu
+Baliev        2901 D689563-4    Ni                 204 Cu
+Cikuek        2907 B658433-B  M Ni                 102 Cu
+Gigivere      2909 C222484-A    C2 Ni Po           913 Cu
+Varmuki       3001 E7767AA-4    Ag                 721 Cu
+Hetriame      3002 D555772-6    Ag              B  320 Cu
+Alike         3003 A53898A-D  N Hi                 603 Cu
+Darun         3004 D9D1320-7    Ni                 203 Cu
+Lerive        3005 D551764-2    Po                 401 Cu
+Twohoy        3009 C596775-3    C7 Ag           B  811 Cu
+Beedrav       3101 E6A6665-3    Ni              A  603 Cu
+Nemini        3102 B334100-E    Ni                 612 Cu
+Bachev        3103 BAC4333-A  F Ni                 303 Cu
+Civerimu      3104 C693567-7    Ni                 423 Cu
+Gavarisu      3110 C100572-9    Ni Va           B  200 Cu
+Catek         3206 D10049D-6    Ni Va              614 Cu
+Frumurev      3209 C200666-9    Ni Va Na           704 Cu
+Bage          3210 E8A4512-6    Ni                 602 Cu
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_E   SECTOR: hinter
+#
+# Trade routes within the subsector
+$0114 0315 0 0
+$0315 0413 0 0
+$0413 0514 0 0
+$0514 0516 0 0
+$0514 0714 0 0
+$0714 0813 0 0
+$0813 0814 0 0
+$0814 0916 1 0
+$0813 0610 0 -1
+$0311 0410 0 -1
+$0311 0210 0 -1
+#
+$0813 0610 0 -1 10
+$0813 0916 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Ranlm         0114 C100630-A    Ni Va Na           503 Ra
+Shaa          0116 A300842-A    Va Na              600 Na
+Aqqle         0120 E9D89B9-4    Hi                 822 Na
+Berange       0311 C428ACB-B    Hi In              414 Ra
+Gisamuve      0315 C9A6249-7    Ni                 605 Ra
+Ravane        0316 B7B6675-7    Ni              A  301 Ra
+Herann        0317 C225473-9  S Ni              B  603 Na
+Gaggin        0318 D310411-7    Ni                 404 Na
+Blessed       0320 E20068A-4    Ni Va Na           102 Na
+Kandusa       0413 B20076B-7    Va Na              804 Ra
+Galia         0417 D346015-5    Ni                 300 Na
+Strend        0419 B2006AA-8    Ni Va Na           113 Na
+Shadow        0514 D434223-4    Ni                 504 Ra
+Twukayudiess  0515 E537200-8    C6 Ni              100 Ra
+Gavime        0516 C77678A-4    Ag                 814 Ra
+Lodanar       0517 X798132-1    Ni              R  904 Na
+Harov         0520 A77A433-C  F Ni Wa              503 Na
+Dyse          0617 X100532-1    Ni Va           R  904 Na
+Tiffany       0620 CA8A788-9  S Ri Wa              604 Na
+Nummen        0712 B95A653-B  J Ni Wa              224 Ra
+Scordon       0713 C252577-5    Ni Po           B  505 Na
+Even-Score    0714 C625856-7                       804 Na
+Parthia       0718 C110100-9    Ni                 404 Na
+Dold          0813 A372202-D  F Ni                 205 Ra
+Baller        0814 E100135-A    Ni Va              813 Ra
+Quiet Pride   0817 A9A7478-8  F Ni              B  501 Na
+Golus         0818 E100446-9    Ni Va              204 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_F   SECTOR: hinter
+#
+# Trade routes within the subsector
+$0916 1115 0 0
+$1115 1315 0 0
+$1315 1316 0 0
+$1316 1519 0 0
+$1519 1710 1 0
+$1519 1521 0 1
+$1315 1413 0 0
+$1413 1212 0 0
+$1212 1210 0 -1
+$0916 0814 -1 0
+#
+$0916 0813 -1 0 10
+$0916 1316 0 0 10
+$1316 1519 0 0 10
+$1519 1622 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Hattop        0916 C846634-3    Ni Ag              124 Ra
+Cassius       0917 C97A631-7    Ni Wa              613 Na
+Khadi         0918 E453414-8    Ni Po              503 Cs
+Edmund        0919 E400798-3    Va Na              312 Na
+Khushudug     1012 C895687-3    Ni Ag           A  401 Na
+Agbi          1015 C23149B-9    Ni Po              603 Na
+Caliban       1020 E110343-7    Ni                 913 Na
+Ceearr        1115 E1006BE-6    Ni Va Na        A  214 Na
+Kanterovich   1116 D687313-3    Ni                 203 Na
+Carbaday      1117 B635788-8                       703 Na
+Undru         1120 C100125-9    Ni Va              904 Na
+Liibaar       1211 C666897-6  S Ri                 303 Cs
+Rotstern      1212 D351457-9    Ni Po              714 Na
+Lu            1313 B100668-9    Ni Va Na           624 Na
+Arkon         1315 C56999B-A    Hi              A  113 Na
+G-R           1316 C676200-5    Ni                 813 Na
+Early Frost   1413 E556552-5    Ni Ag              803 Na
+Varag         1417 A588762-8    Ri Ag              803 Na
+Normand       1420 C5436BG-3    Ni Po              904 Na
+Ikumm         1514 C110732-8    Na                 810 Na
+Mainline      1519 B6797AB-9  M                    814 Na
+Peterstadt    1520 B83769A-9  M Ni                 805 Na
+Deanne        1611 E99A300-5    Ni Wa              405 Na
+Hont          1613 C479355-9    Ni                 803 Na
+Zhreggeushi   1614 E434121-4    Ni                 922 Na
+Darny's Rock  1615 C100644-7    Ni Va Na           902 Na
+Thanas        1616 B763786-6    Ri                 604 Na
+Bucolia       1619 C87858C-7    Ni Ag              900 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_G   SECTOR: hinter
+#
+# Trade routes within the subsector
+$2316 2516 1 0
+$2316 2318 0 0
+$2318 2216 0 0
+$2318 2418 0 0
+$2318 1820 0 0
+$1820 1822 0 1
+$1820 1619 -1 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Glass         1711 B525856-A  M                    822 Na
+Strane        1712 D648865-1                       810 Na
+Helvo         1714 D200852-6    Va Na              404 Na
+Yellowtide    1719 C363226-9    Ni                 904 Na
+Annex         1720 B434300-C    Ni              A  104 Na
+Skigg         1816 A100120-D    Ni Va              213 Na
+Namillo       1817 C666341-9  S Ni                 220 Na
+Ipidina       1820 C3008B7-8    Va Na              711 Na
+Streeve       1915 C99A698-8    Ni Wa              314 Na
+Mey Tyro      1917 D534654-7    Ni                 102 Na
+Xavid         1920 C43579A-6                       102 Na
+Likugash      2011 C537477-A    Ni              B  423 Na
+Effit         2015 A5936B6-A    Ni                 104 Na
+Kishir        2016 B73A344-A    Ni Wa              701 Na
+Hasvari       2111 C3245AC-7    Ni                 204 Na
+Jaris         2112 C354000-6    Ni Ba              704 Na
+Drygrass      2119 C546576-4    Ni Ag           A  214 Na
+Manak         2120 D433551-9    Ni Po              902 Na
+Jaffik        2216 C9B2453-A    Ni              A  904 Na
+Zisurar       2218 D522302-8    Ni Po              902 Na
+Tamrice       2313 B332496-A  M Ni Po              320 Na
+Khugili       2315 C445111-8    Ni                 304 Na
+Trial         2316 A363566-C  F Ni                 304 Na
+Scratch       2318 C546354-6    Ni                 522 Na
+Arctica Nova  2413 D529666-5    Ni                 604 Na
+Dar           2414 B666002-9    Ni                 623 Na
+Hypagg        2418 C474242-A  S Ni                 414 Cs
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_H   SECTOR: hinter
+#
+# Trade routes within the subsector
+$3111 3009 0 -1
+$3111 2912 0 0
+$2912 2813 0 0
+$2813 2814 0 0
+$2814 2516 0 0
+$2516 2316 -1 0
+$2817 2917 0 0
+$2917 3117 0 0
+$3117 3119 0 0
+$2920 3218 0 0
+$3218 0119 1 0
+$2920 2821 0 1
+$2920 3021 0 1
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Whitesheet    2516 C787303-5    Ni                 902 Na
+Obendal       2614 B9D3431-7    Ni              A  504 Na
+Lost Echo     2615 B376148-8    Ni                 303 Na
+Carmine       2617 C7A2400-5    Ni                 703 Na
+Marble        2620 CAB4530-5    Ni              A  504 Na
+Calbern       2713 C000543-A    Ni As              714 Na
+Mura          2813 B884556-A    Ni Ag              523 Na
+Tren          2814 B4007BG-B  F Va Na              711 Na
+Gruuvurr      2816 BAA9326-7    Ni                 904 Na
+Pru-magu      2817 A9B2433-A    Ni              A  201 Gi
+Cerban        2912 C234420-A    Ni                 521 Na
+Treber        2916 A66A535-B    Ni Wa              610 Na
+Ar-domm'l     2917 A100374-C  J Ni Va           B  614 Gi
+Pru-drend     2920 D110564-A    Ni                 525 Gi
+Kwekyl        3015 B965645-8    Ni Ri Ag           104 Na
+Lermeliv      3111 E534622-2    Ni                 502 Cu
+Jukake        3114 C778530-3    Ni Ag              503 Na
+Pru-trumonn   3117 C543157-7    Ni Po              404 Gi
+Pru-devum     3119 C986666-6    Ni Ri Ag           914 Gi
+Speehl        3212 A000245-D    Ni As              504 Na
+Pru-gam       3218 C100344-9    Ni Va              602 Gi
+Ghi-nabrin'l  3219 X527333-1    Ni              R  702 Gi
+Ghi-radul     3220 X8A0325-0    Ni De           R  203 Gi
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_I   SECTOR: hinter
+#
+# Trade routes within the subsector
+$0128 0528 0 0
+$0528 0524 0 0
+$0524 0623 0 0
+$0623 0824 0 0
+$0824 0924 1 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Kunlam        0123 D451522-3    Ni Po              613 Na
+Relar         0124 C467669-4    Ni Ri Ag           115 Na
+Khi           0126 A643500-B    Ni Po              805 Na
+Irdikur       0128 B666777-8    Ri Ag           A  221 So
+Mire          0322 C66859D-7    Ni Ag              402 Na
+Aympe         0326 A6A037A-9  F C5 Ni De        B  223 Na
+Strabbin      0327 B765236-B    C2 Ni           A  603 Na
+Galazii       0328 B8A3679-6  M Ni                 713 Na
+Benson        0423 A357200-F    Ni                 702 Na
+Arkina        0424 B997621-7    Ni Ag              803 Na
+Morgan's Rest 0521 C525200-9    Ni                 512 Na
+Turek         0523 E89A7BB-7    Wa                 103 Na
+Riies         0524 C888975-8    Hi              B  923 Na
+Assar         0525 C744010-6    Ni                 103 Na
+Everana       0526 B538555-9    Ni                 501 Na
+Windsor       0528 B652542-A  M Ni Po              703 Na
+Torrent       0621 C78A379-8    Ni Wa           B  414 Na
+Calmere       0622 D655643-4    Ni Ag              503 Na
+Straub        0623 C11088A-9    Na                 124 Na
+Hugus         0624 D334554-8    C5 Ni              302 Na
+Brannif       0721 C100126-9    Ni Va              721 Na
+Windrift      0722 C366559-A    Ni Ag              904 Na
+Hapsburg      0725 B521345-8  M Ni Po           A  603 So
+Nullia        0824 A4669B7-D  F Hi                 524 Na
+Sweet Water   0830 B475545-C    Ni Ag              902 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_J   SECTOR: hinter
+#
+# Trade routes within the subsector
+$0924 0824 -1 0
+$0924 1124 0 0
+$1124 1223 0 0
+$1223 1423 0 0
+$1423 1622 0 0
+$1622 1822 1 0
+$1522 1723 1 0
+$1522 1520 0 -1
+$1128 1329 0 0
+$1329 1328 0 0
+$1328 1427 0 0
+$1427 1426 0 0
+$1426 1625 0 0
+$1625 1726 1 0
+$1630 1531 0 1
+$1630 1730 1 0
+#
+$1622 1519 0 -1 10
+$1622 1925 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Brosak        0921 B544576-A    Ni Ag           B  804 Na
+Sigam         0923 C66A59C-A    Ni Wa              501 Na
+Lady Mac      0924 A200320-A    Ni Va           A  415 So
+Overshoal     1021 C67A878-7    Wa              B  303 Na
+Angerhelm     1026 A888699-9  F Ni Ri Ag        A  402 Na
+Far Cry       1030 B368500-B  F Ni Ag              205 Na
+Meadow        1123 C495654-7    Ni Ag              103 Na
+Ane           1124 B684511-8    Ni Ag              713 Na
+213-584       1128 A100321-C    Ni Va           A  204 Ow
+Calm Reverie  1221 C110374-8    Ni              B  702 Na
+Uga           1223 E566740-3    Ri Ag              203 Na
+Yokoya's Stand1322 D5A36B9-3    Ni                 224 Na
+214-389       1328 D75887B-6                    A  414 Ow
+Daniss        1329 C100312-8    Ni Va           R  114 Ow
+Stailveiki    1421 C100511-7    Ni Va              411 Na
+Horton        1423 D668200-7    Ni                 305 Na
+212-332       1426 C858100-7    Ni              A  605 Ow
+213-701       1427 C694126-9    Ni              A  103 Ow
+Shugii        1522 E776620-3    Ni Ag              904 Na
+Lastop        1523 B344532-9    Ni Ag              303 Na
+Briua         1622 B55199E-C  F Hi Po              902 Na
+Blood         1625 C766100-7    Ni              A  204 Ow
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_K   SECTOR: hinter
+#
+# Trade routes within the subsector
+$1924 1822 0 0
+$1924 1622 -1 0
+$1822 1622 -1 0
+$1822 1820 0 -1
+$1924 1928 0 0
+$1928 2029 0 0
+$2029 1931 0 1
+$1826 1625 -1 0
+$1726 1730 0 0
+$1730 1531 -1 1
+#
+$1925 1622 -1 0 10
+$1925 1928 0 0 10
+$1928 1931 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Hood          1723 CA96122-6    Ni                 603 Na
+211-111       1726 B656313-7    Ni              A  904 Ow
+Shista        1728 C000788-6    As Na           A  520 Ow
+Keratl        1730 A110658-A    Ni Na           A  303 Ow
+Greene        1822 C787586-9    Ni Ag              412 Na
+211-902       1826 E210235-8    Ni              A  903 Ow
+Givan         1829 B665488-7    Ni                 404 Na
+Kiree         1830 B8B0323-8    Ni De           A  205 Na
+Orphan        1923 B656565-7    Ni Ag              302 Na
+Branch        1924 E655540-4    Ni Ag              412 Na
+Rouen         1925 D765366-5    Ni                 711 Na
+Green Lip     1926 E744444-5    Ni                 504 Na
+Sponge        1928 C2008A7-6    Va Na              403 Na
+DN-4457       1930 D300410-4    Ni Va              324 Na
+Turnstyle     2026 D410476-8    Ni              B  224 Na
+Archambault   2027 B955012-5    Ni                 804 Na
+Pulfenex      2029 A76A313-C  F C1 Ni Wa           704 Na
+Plant         2127 C100436-6    Ni Va              201 Na
+Lorbin        2128 B100533-B    Ni Va           A  302 Na
+Pusan         2129 B21098B-B    Hi In Na           701 Na
+Ry Deena      2130 E435434-7    Ni                 114 Na
+Perseus       2222 B692400-7  M Ni                 505 Na
+Gured         2223 C548100-7    Ni                 704 Na
+Allaqua       2224 B4546AA-9  M Ni Ag              504 Na
+Scarab        2225 B100449-C    Ni Va              214 Na
+Barks' Pebbles2226 B000510-A    Ni As              903 Na
+Garmill       2228 C345568-8    Ni Ag              214 Na
+Ariadne       2230 C454669-4    Ni Ag              124 Na
+Dreead'n      2322 A000100-D  F Ni As              923 Na
+Hardball      2330 E300653-4    Ni Va Na           413 Na
+Nermiss       2421 A464544-B    Ni Ag              801 Na
+Stessull      2423 E100647-7    Ni Va Na           604 Na
+Cepnu         2424 C7A0485-7    Ni De              404 Na
+Serifia       2425 X3337C8-0    Po Na           R  304 Na
+Hyrexim       2428 B21077B-B  M D1 Na           B  800 Na
+Pyfis         2429 D867556-5    Ni Ag           A  804 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_L   SECTOA: hinter
+#
+# Trade routes within the subsector
+$2821 2721 0 0
+$2821 2920 0 -1
+$3021 2920 0 -1
+$3021 3122 0 0
+$3122 3221 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Anador        2521 B555524-8  M Ni Ag              500 Na
+Kifynn        2523 D686455-5    Ni                 400 Na
+Benankas      2524 A7A3353-C    Ni                 903 Na
+Reeta Yuonn   2623 A100025-D    Ni Va              804 Na
+Kinji         2625 C774231-7    Ni                 110 Na
+Vyran         2626 B552520-9  M Ni Po              404 Na
+Ar-stoon'l    2721 A7B2547-9  J Ni              A  703 Gi
+Nerfane       2725 B575645-5    C1 Ni Ag           604 Na
+Gardeel       2727 A7A2000-B    Ni Ba              501 Na
+PaGa          2728 B783787-6    Ri              A  603 Na
+Pru-grov      2821 D100788-7    Va Na              303 Gi
+Iaasiv        2829 EAC3AA9-B    Hi              A  603 Na
+Pru-mavin     2924 D855887-2                       204 Gi
+Pru-berv      3021 A88A420-B    Ni Wa              203 Gi
+Gefry         3026 A6A378B-8                       603 Na
+Nils          3027 D859015-5    Ni              A  400 Na
+Byroon 67     3029 D300433-7    Ni Va              200 Na
+Deverya       3030 C995753-4    Ag                 501 Na
+Pru-buash     3122 C6A5473-9    Ni              B  904 Gi
+Pru-ummur     3123 E425241-7    Ni                 603 Gi
+Weyloor       3128 A200248-B    Ni Va              204 Na
+Nyzch         3129 B200435-B    Ni Va              313 Na
+Lylol         3130 A775313-8    Ni                 202 Na
+Pru-goomh     3221 A100310-C    Ni Va              504 Gi
+Ghi-koord'l   3222 X3728A9-0                    A  200 Gi
+Pru-pasch     3223 B6A0488-C    Ni De              513 Gi
+Elyxis        3224 A65A551-D    Ni Wa              703 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_M   SECTOR: hinter
+#
+# Trade routes within the subsector
+#
+$0839 0803 0 1 2
+$0839 0737 0 0 2
+$0737 0634 0 0 2
+$0634 0334 0 0 2
+$0334 0131 0 0 2
+$0131 3128 -1 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Krevor        0131 B200686-7    Ni Va Na           115 Na
+Byooki        0134 D11079A-6    Na                 903 Na
+Eki Chi       0137 D200640-4    Ni Va Na           400 Na
+Murlum        0232 C8A5420-8    Ni              A  502 So
+Goromas       0233 C728787-8                       620 Na
+Ame           0238 C876221-6    Ni                 513 Na
+Famerra       0239 E110499-5    Ni                 104 Na
+Kotori        0334 C747654-4    Ni Ag              904 Na
+Tonde Monai   0337 B200200-E  M Ni Va              215 Na
+Haiiro        0438 E799000-8    Ni Ba              804 Na
+York          0439 B100303-9  M Ni Va              104 Na
+Franzweld     0440 B65747A-A  M Ni              B  903 Na
+Haru          0533 C667510-9    Ni Ag              104 Na
+Schmutz       0634 E100202-7    Ni Va              613 Na
+Mizu          0640 B87A034-7    Ni Wa              600 Na
+Saito         0732 C748AC8-8    In Hi              204 Na
+Tyotto        0737 E8C4100-4    Ni              A  601 Na
+Hurn          0738 A73659D-D  F Ni                 800 Na
+Gustavus      0739 C000525-B    Ni As           A  504 So
+Strnad        0740 C200664-7    Ni Va Na           320 Na
+Vanguardia    0834 B99A9A8-9    Hi Wa              804 Na
+Prospect      0835 C564667-5    Ni Ri Ag        A  924 Na
+Selding       0836 A661444-9  F Ni                 812 Na
+Edwards' Meet 0839 C64A667-9    Ni Wa              722 Na
+Cleavon       0840 E434441-8    Ni                 103 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_N   SECTOR: hinter
+#
+# Trade routes within the subsector
+$1531 1730 1 -1
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Hotspur       0933 C110569-A    Ni                 504 Na
+Xenxeng       0938 C100210-8    Ni Va              312 Na
+Red Sky       0939 D56667A-4    Ni Ri Ag        B  302 Na
+Shan-Hu       1038 C11058A-9    Ni                 633 Na
+Hefry's Dregs 1040 A100020-A    Ni Va              503 Na
+Parmenter     1131 E100235-9    Ni Va              704 Na
+Strom         1132 B461656-8  F Ni Ri              603 Na
+Ayyar         1134 B110144-C    C0 Ni              312 Na
+Nix           1136 E100200-7    Ni Va              603 Na
+Strabbid      1139 B100842-8    Va Na              612 Na
+Leroy         1231 C574969-9    Hi In           A  111 Na
+Vizier        1233 C52A220-9    Ni Wa              104 Na
+Yoryunssoy    1235 E254562-4    D5 Ni Ag           711 Na
+Eskerson      1237 D222425-9    Ni Po              905 Na
+Champion      1238 A889330-C    Ni                 803 Na
+Slider        1334 C588210-4    Ni                 203 Na
+Elan          1335 B3218AC-A    Po Na              303 Na
+Avatar        1339 E436000-7    Ni Ba              604 Na
+Leenitakot    1432 X77A6BB-1    C8 Ni Wa        R  310 Ow
+Gammist       1435 B551201-9  F Ni Po              403 Na
+Murmur        1436 B9B448B-A  F Ni              A  704 So
+Nectar        1438 D485776-7    Ri Ag           B  103 Na
+Rendezvous    1439 D310033-6    Ni                 504 Na
+Base 45       1440 B351105-8    Ni Po              304 Na
+Kervid        1531 E99A7CD-7    Wa              A  804 Ow
+Keasarge      1536 B110253-A    Ni                 404 Na
+Brand         1539 B4595A9-B  M Ni                 913 Na
+Gamvina       1632 B94A6BE-9    Ni Wa              903 Na
+Nerkaal       1634 C422637-5    Ni Po Na           904 Na
+Driank        1635 B110455-D  M Ni                 504 Na
+Cinder        1640 D300387-6    Ni Va              404 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_O   SECTOR: hinter
+#
+# Trade routes within the subsector
+$2436 2536 1 0
+$2436 2236 0 0
+$2236 2137 0 0
+$2138 1801 0 1
+$2138 2133 0 0
+$2133 2032 0 0
+$2032 1931 0 0
+$1931 2029 0 -1
+#
+$1931 1928 0 -1 10
+$1931 2033 0 0 10
+$2033 2137 0 0 10
+$2137 1940 0 0 10
+$1940 2003 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Sharina       1733 C725455-9    Ni                 204 Na
+Forban        1734 C544663-7    Ni Ag              403 Na
+Ki Gaven      1740 E442769-2  M Po                 105 Na
+Lerein        1831 C76699D-5    Hi              A  710 Na
+Davin         1833 E436310-6    Ni                 801 Na
+Spire         1836 A6A0842-9    De                 103 Na
+Long Shadow   1838 E895557-5    Ni Ag              804 Na
+Baliell       1931 B226425-A  M Ni                 214 Na
+Hardgas       1937 B978510-9  M Ni Ag              404 Na
+Herod         1940 B100335-A  M Ni Va           A  204 Na
+Dahlia        2032 B754A8A-B    D5 Hi              603 Na
+Stoner        2033 C100577-7    Ni Va           A  111 Na
+Lorrain       2034 D553156-6    Ni Po              914 Na
+Grange        2035 C100310-A    Ni Va              422 Na
+Tibbets       2039 B310567-A    Ni                 504 Na
+Golgotha      2131 X8C3536-2    Ni              R  504 Na
+Yerve         2132 B410847-A  F Na                 501 Na
+Second Wash   2133 B58A310-9    Ni Wa              504 Na
+Hike          2135 C547879-3                    B  312 Na
+Tempri        2137 A758878-A  N                 B  905 Cs
+Alpert        2138 A345458-B  F Ni                 200 Na
+Gymex         2231 C110467-6    Ni                 804 Na
+Rumoskyl      2236 C100767-A    Va Na              504 Na
+Shi-shi       2240 E110420-6    Ni                 602 Na
+Mereasis      2332 B868653-8    Ni Ri Ag           701 Na
+Sanctus       2340 C11078A-8    Na                 303 Na
+Pipeline      2435 E574453-8    C4 Ni              203 Na
+Duster        2436 E331537-5    Ni Po              914 Na
+Lykoov        2438 B555555-B    Ni Ag              623 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_P   SECTOR: hinter
+#
+# Trade routes within the subsector
+$3136 0136 1 0
+$3136 2834 0 0
+$2834 2436 -1 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Mamgarimu     2533 C68479B-4    D3 Ri Ag           404 Na
+Derivann      2534 B85A210-9    Ni Wa              203 Na
+Beenateotyl   2536 E772132-5    Ni                 703 Na
+Huraal        2539 E698143-6    Ni                 111 Na
+Wygren        2540 B884350-9    Ni                 524 Na
+Shilling      2634 C789774-4    Ri              B  903 Na
+Glodon        2635 D400501-4    Ni Va              600 Na
+Caramond      2731 A534454-B    Ni                 502 Na
+Giliim        2736 C7A3435-9    Ni                 803 Na
+Varin-yeel    2738 B353630-A    Ni Po              714 Na
+Carnir        2739 A11045A-D    Ni                 714 Na
+Opayix        2831 B422513-8    Ni Po           A  323 Na
+Cyveel        2832 BA5A203-B    Ni Wa              313 Na
+Entyrbal      2833 A579410-A    C1 Ni              712 Na
+Syth          2834 C8C8853-6                    A  110 Na
+Isannix       2840 C110546-8    Ni                 524 Na
+Sysix         2935 B623300-B    Ni Po              624 Lp
+Horizon       2936 E20099B-9    Hi In Va Na        204 Lp
+Osyrmir       3031 C6B1677-7    Ni              A  103 Na
+Brovarr       3033 C100876-7    Va Na           B  824 Na
+Geval         3035 B426777-C                    B  112 Lp
+Hervash       3131 C88A79B-5    Ri Wa              702 Na
+Sanzig        3135 C300867-A    Va Na              103 Lp
+Nyralys       3136 B4448BC-9                       704 Lp
+Lendisa       3233 C785556-A    Ni Ag              104 Lp
+

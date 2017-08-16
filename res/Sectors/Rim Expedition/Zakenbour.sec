@@ -1,0 +1,318 @@
+Zakenbour Sector
+
+A: Azaken                    a.dat
+B: Benbour                   b.dat
+C: Cakenb                    c.dat
+D: Drasen                    d.dat
+E: Enbour                    e.dat
+F: Falkin                    f.dat
+G: Genebou                   g.dat
+H: Haken                     h.dat
+I: Ikeb                      i.dat
+J: Jabenkour                 j.dat
+K: Kenboura                  k.dat
+L: Lemaken                   l.dat
+M: Meken                     m.dat
+N: Nenbout                   n.dat
+O: Ozaken                    o.dat
+P: Pazaken                   p.dat
+
+Bases:
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Azaken SECTOR: Zakenbour Sector
+#
+# Jump-routes
+#
+$0106 3005 -1 0 10
+$0106 0405 0 0 10
+$0405 0707 0 0 10
+$0707 1109 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Challak       0106 B445576-7    Ag Ni           B  405 Na
+A-2           0209 C9D1212-9  S Fl Lo Ni           223 Na
+A-3           0404 C658AAA-C  S Hi                 600 Na
+Nammanna      0405 C300467-8    Ni Va              304 Na
+A-5           0502 C874556-A    Ag Ni              612 Na
+Kleeth        0707 CA79331-A  S Lo Ni              914 Na
+A-7           0801 B455688-6  S Ag Ni              804 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Benbour SECTOR: Zakenbour Sector
+#
+# Jump-routes
+#
+$1109 0707 -1 0 10
+$1109 1212 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Biokgra       1109 D563ACB-9    Hi                 203 Na
+B-2           1202 C312304-A    Ic Lo Ni           303 Na
+B-3           1208 E5406BG-4    De Ni Po           423 Na
+B-4           1502 X8A1257-5    Fl Lo           R  703 Na
+B-5           1503 C756766-3  S Ag                 700 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Cakenb SECTOR: Zakenbour Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1810 C885747-5  S Ag Ri              913 Na
+C-2           1906 C412654-B    Ic Na Ni           505 Na
+C-3           2005 X200443-0    Va              R  920 Na
+C-4           2307 D763156-4    Lo Ni              805 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Drasen SECTOR: Zakenbour Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2502 B883834-5                       914 Na
+D-2           2602 A659210-A  N Lo Ni              813 Na
+D-3           2703 B447862-8                       503 Na
+D-4           2710 A5868CE-8  N                    812 Na
+D-5           2810 C76A575-8  S Ni Wa           B  203 Na
+D-6           2906 AAA2343-9  S Fl Lo Ni           720 Na
+D-7           3210 C254723-5  S Ag                 302 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Enbour SECTOR: Zakenbour Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0313 E786550-7    Ag Ni              402 Na
+E-2           0520 E242742-7    Po                 510 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Falkin SECTOR: Zakenbour Sector
+#
+# Jump-routes
+#
+$1212 1109 0 -1 10
+$1212 1316 0 0 10
+$1316 1618 0 0 10
+$1618 1920 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           1013 C34576A-4    Ag                 213 Na
+F-2           1111 C776798-5    Ag                 723 Na
+F-3           1112 C9D1638-9  S Fl Ni              102 Na
+Ckohshar      1212 C958543-4    Ag Ni              203 Na
+Erthine       1316 A000230-C    As Lo Ni           904 Na
+Yuimmi        1618 C868444-7    Ni                 802 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Genebou SECTOR: Zakenbour Sector
+#
+# Jump-routes
+#
+$1920 1618 -1 0 10
+$1920 2320 0 0 10
+$2320 2721 1 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1817 A13089D-A  N De Na Po           404 Na
+Gleeok        1920 C455430-6  S Ni                 304 Na
+G-3           2114 C756434-9    Ni                 603 Na
+Ackank        2320 C588224-7  S Lo Ni              424 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Haken SECTOR: Zakenbour Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2620 D210420-9  S Ni                 204 Na
+H-2           2913 C66A874-9  S Ri Wa           B  213 Na
+H-3           3220 D365304-6    Lo Ni              913 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ikeb SECTOR: Zakenbour Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Ikeb          0129 A310558-F  S Ni                 903 Na
+I-2           0530 C524576-6  S Ni              B  600 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jabenkour SECTOR: Zakenbour Sector
+#
+# Jump-routes
+$0926 1227 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Jaben         0926 A110887-F    Na                 202 Na
+J-2           1024 CAA9338-7  S Fl Lo Ni           824 Na
+J-3           1227 A357253-D    Lo Ni              902 Na
+J-4           1524 B330575-9    De Ni Po        B  702 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kenboura SECTOR: Zakenbour Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1726 C3115A7-B    Ic Ni              303 Na
+K-2           2129 C503113-8    Ic Lo Ni Va        204 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lemaken SECTOR: Zakenbour Sector
+#
+# Jump-routes
+#
+$2721 2320 -1 -1 10
+$2721 2725 0 0 10
+$2725 2628 0 0 10
+$2628 2431 -1 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Hayum         2721 B5898AA-9                       603 Na
+Blaianna      2628 C456144-5  S Lo Ni              523 Na
+Soppuun       2725 C534758-7  S                    101 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Meken SECTOR: Zakenbour Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0133 C20077A-8  S Na Va           B  914 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nenbout SECTOR: Zakenbour Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0935 E665534-4    Ag Ni              703 Na
+N-2           0938 C624846-7  S                    514 Na
+N-3           1035 C695665-8    Ag Ni              724 Na
+N-4           1134 C547231-5  S Lo Ni              814 Na
+N-5           1139 B522654-9  N Na Ni Po           411 Na
+N-6           1233 D110000-6  S Ba Lo Ni           434 Na
+N-7           1238 C6B6674-5    Fl Ni           A  104 Na
+N-8           1334 B213223-A  S Ic Lo Ni           604 Na
+N-9           1337 B4238AA-8  N Na Po              703 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ozaken SECTOR: Zakenbour Sector
+#
+# Jump-routes
+#
+$2431 2628 1 -1 10
+$2431 2634 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1733 C45088A-4    De Po              204 Na
+O-2           2034 E545511-4    Ag Ni              603 Na
+O-3           2037 C8C47CF-7  S Fl              A  503 Na
+Ovlovba       2431 E200214-9    Lo Ni Va           803 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Pazaken SECTOR: Zakenbour Sector
+#
+# Jump-routes
+$2938 3038 0 0
+#
+$2634 2431 -1 0 10
+$2634 2636 0 0 10
+$2636 3038 0 0 10
+$3038 3002 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Piggaine      2634 B8A38BE-6    Fl                 201 Na
+Marcean       2636 D362042-5    Lo Ni              903 Na
+P-3           2938 C779648-9  S Ni                 214 Na
+P-4           3032 E561789-3    Ri                 402 Na
+Foabbiol      3038 B301678-B    Ic Na Ni Va     B  822 Na
+P-6           3236 X325656-2                    R  620 Na
+

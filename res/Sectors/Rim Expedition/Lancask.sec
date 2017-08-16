@@ -1,0 +1,964 @@
+Lancask
+
+A: Alanca                    a.dat
+B: Bancass                   b.dat
+C: Casklier                  c.dat
+D: Dancask                   d.dat
+E: Erancl                    e.dat
+F: Frocask                   f.dat
+G: Ghancask                  g.dat
+H: Hacasell                  h.dat
+I: Icaskarn                  i.dat
+J: Jananca                   j.dat
+K: Kloonac                   k.dat
+L: Lanikasc                  l.dat
+M: Milanco                   m.dat
+N: Nolcask                   n.dat
+O: Olannak                   o.dat
+P: Pocanask                  p.dat
+
+Bases:
+A = Itaurrec Navy
+B = Itaurrec Scout
+C = Itaurrec Navy & Scout
+D = Itaurrec Army
+E = Hillayag Navy
+F = Hillayag Scout
+G = Hillayag Navy & Scout
+H = Hillayag Army
+J = Klushan Navy
+K = Klushan Scout
+L = Klushan Navy & Scout
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+12 Hi = Hillayag Federation
+14 It = Itaurrec Unification
+05 Ki = Klushan Imperium
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Alanca SECTOR: Lancask
+#
+# Jump-routes
+#
+$0204 3202 -1 0 12
+$0204 0306 0 0 12
+$0306 0107 0 0 12
+$0107 0210 0 0 12
+$0107 3108 -1 0 12
+$0210 0313 0 1 12
+$0704 0803 0 0 14
+$0803 1001 1 0 14
+$0209 3107 -1 0 10
+$0209 0412 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0102 D859749-3  G                    903 Hi
+A-2           0107 B100423-C  F Ni Va              400 Hi
+A-3           0109 C382265-6    Lo Ni              704 Hi
+A-4           0110 C457A84-B  H Hi                 313 Hi
+A-5           0202 C458641-8    Ag Ni              301 Hi
+A-6           0204 B5A0000-7  F Ba De Lo Ni        313 Hi
+A-7           0207 C674AFG-8    Hi In           A  903 Hi
+Holgun        0209 C767674-8    Ag Ni Ri        B  632 Na
+A-9           0210 A7A3566-D  E Fl Ni              214 Hi
+A-10          0303 C502227-6  F Ic Lo Ni Va        905 Hi
+A-11          0304 C313411-A  F Ic Ni              200 Hi
+A-12          0306 BAA4202-B    Fl Lo Ni           704 Hi
+A-13          0307 C756531-9  E Ag Ni              303 Hi
+A-14          0310 E5658C8-5                       800 Hi
+A-15          0402 C10059C-A  C Ni Va              902 It
+A-16          0406 C456413-A    Ni                 613 Hi
+A-17          0407 C000589-9    As Ni              402 Hi
+A-18          0409 E678000-2    Ba Lo Ni           603 Hi
+A-19          0410 C558411-5    Ni                 810 Hi
+A-20          0501 C699244-5    Lo Ni              813 It
+A-21          0502 C201956-A    Hi Ic Na Va        903 It
+A-22          0504 C688498-6  B Ni                 513 It
+A-23          0508 E565520-6    Ag Ni              402 Hi
+A-24          0509 CAA9537-9    Fl Ni              734 Hi
+A-25          0601 E67A424-8    Ni Wa              712 It
+A-26          0602 D442762-2    Po                 104 It
+A-27          0604 C779732-6                       913 It
+A-28          0702 E639444-9    Ni                 724 It
+A-29          0703 C562488-9  B Ni                 200 It
+A-30          0704 B2108BE-7  A Na                 203 It
+A-31          0706 C54888A-5                       503 Na
+A-32          0707 C66298A-6  S Hi                 304 Na
+A-33          0803 A977668-9  D Ag Ni              805 It
+A-34          0806 C565120-4  S Lo Ni              105 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Bancass SECTOR: Lancask
+#
+# Jump-routes
+#
+$1503 1705 1 0 14
+$1406 1705 1 0 14
+$1406 1509 0 0 14
+$1001 0803 -1 0 14
+$1509 1909 1 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           0902 E75AA69-8    Hi Wa              400 It
+B-2           0906 C747675-5    Ag Ni           B  303 Na
+B-3           0909 B251677-B  2 Ni Po           B  300 Na
+B-4           1001 B6867A9-7    Ag                 401 It
+B-5           1004 C596476-9    Ni              B  414 Na
+B-6           1006 E458586-5    Ag Ni              813 Na
+B-7           1008 B201643-C  N Ic Na Ni Va        504 Na
+B-8           1102 C200537-6  A Ni Va              913 It
+B-9           1106 D676323-2    Lo Ni              804 Na
+B-10          1305 C210467-A    Ni                 602 It
+B-11          1308 E76A432-9    Ni Wa              223 It
+B-12          1309 C788665-3  A Ag Ni Ri           425 It
+B-13          1401 C2109BE-B    Hi Na              724 It
+B-14          1406 B6A2863-7  C Fl                 624 It
+B-15          1408 C8B4855-6    Fl              A  225 It
+B-16          1409 C000678-6    As Na Ni        B  205 Na
+B-17          1503 B140653-B  C De Ni Po           322 It
+B-18          1508 C44689B-8                       500 It
+B-19          1509 B945835-7                       414 It
+B-20          1601 C100668-9    Na Ni Va           432 It
+B-21          1602 D76A567-8  A Ni Wa              603 It
+B-22          1605 C72A78A-7  A Wa                 901 It
+B-23          1607 C547768-3  D Ag                 320 It
+B-24          1610 E4739B7-4    Hi In              705 It
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Casklier SECTOR: Lancask
+#
+# Jump-routes
+#
+$2308 2507 1 0 14
+$2308 1909 0 0 14
+$1909 1805 0 0 14
+$1805 2203 0 0 14
+$1805 1705 0 0 14
+$1705 1503 -1 0 14
+$1705 1406 -1 0 14
+$1909 1509 -1 0 14
+$1909 1913 0 1 14
+$2308 2312 0 1 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1701 C303765-9    Ic Na Va           701 It
+C-2           1705 B8797BC-9  A                    200 It
+C-3           1706 C632575-5    Ni Po           B  404 Na
+C-4           1707 D582357-8  B Lo Ni              303 It
+C-5           1708 C55688D-8                       510 It
+C-6           1709 D767763-3  D Ag Ri              203 It
+C-7           1805 B410205-C    Lo Ni              603 It
+C-8           1906 C539457-8    Ni                 600 It
+C-9           1907 C884111-4    Lo Ni              703 It
+C-10          1909 B8747C9-5    Ag                 104 It
+C-11          2002 C64588B-4  A                    225 It
+C-12          2004 A2006B6-9  A Na Ni Va           805 It
+C-13          2005 E669726-3                       204 It
+C-14          2010 C443642-6  A Ni Po              323 It
+C-15          2104 B7B1610-7  D Fl Ni           A  704 It
+C-16          2105 C360227-A    De Lo Ni           614 It
+C-17          2106 E000568-8    As Ni              634 It
+C-18          2108 C321757-7    Na Po              903 It
+C-19          2203 B643633-5    Ni Po              215 It
+C-20          2204 E76A400-6    Ni Wa              923 It
+C-21          2206 D8C0200-8  B De Lo Ni        A  423 It
+C-22          2208 X865353-3    Lo              R  414 Na
+C-23          2303 CAA6562-A    Fl Ni              310 It
+C-24          2306 C552324-8  B Lo Ni Po           402 It
+C-25          2308 B4419CB-A    Hi In Po           913 It
+C-26          2309 C887499-5    Ni                 624 It
+C-27          2310 C98A555-A  A Ni Wa              123 It
+C-28          2402 A536978-B    Hi In           B  403 Na
+C-29          2404 E898257-5    Lo Ni              504 It
+C-30          2405 C634854-8                       202 It
+C-31          2406 D610ACF-9  D Hi Na              602 It
+C-32          2407 C968664-6    Ag Ni Ri           503 It
+C-33          2410 C140969-8  A De Hi In Po        425 It
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Dancask SECTOR: Lancask
+#
+# Jump-routes
+#
+$2901 3001 0 0 14
+$3001 3105 0 0 14
+$3105 3208 0 0 14
+$3208 2808 0 0 14
+$2901 2702 0 0 14
+$2702 2703 0 0 14
+$2703 2805 0 0 14
+$2805 2808 0 0 14
+$2808 2508 0 0 14
+$2508 2507 0 0 14
+$2507 2805 0 0 14
+$2507 2308 -1 0 14
+$2808 2811 0 1 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2502 E99A78A-6    Wa                 812 It
+D-2           2507 B23169A-A  A Na Ni Po           314 It
+D-3           2508 B575552-7  A Ag Ni              820 It
+D-4           2602 C73A365-9    Lo Ni Wa           713 It
+D-5           2606 C300674-6    Na Ni Va        B  702 Na
+D-6           2607 X794467-2                    R  123 Na
+D-7           2608 E20078A-7    Na Va              603 It
+D-8           2610 E888535-4    Ag Ni              723 It
+D-9           2702 B885200-8  N Lo Ni              320 It
+D-10          2703 B583563-A  A Ni                 600 It
+D-11          2704 E260220-7    De Lo Ni           704 It
+D-12          2705 C958420-7  B Ni                 402 It
+D-13          2707 C9966A8-8  D Ag Ni              813 It
+D-14          2801 C539572-7    Ni              B  802 Na
+D-15          2805 B9D6359-8    Fl Lo Ni           901 It
+D-16          2806 C553776-6    Po              B  404 Na
+D-17          2807 D33766A-4  A Ni                 414 It
+D-18          2808 B376645-A  A Ag Ni              614 It
+D-19          2901 B210785-A  D Na                 701 It
+D-20          2903 C734226-6  B Lo Ni              704 It
+D-21          2908 C555896-7                       812 It
+D-22          3001 B655434-B    Ni                 100 It
+D-23          3008 D000201-7  B As Lo Ni           314 It
+D-24          3010 C758300-9  B Lo Ni              802 It
+D-25          3103 C666334-6    Lo Ni              210 It
+D-26          3105 B699ADD-8  C Hi In              300 It
+D-27          3106 X775333-0    Lo              R  213 Na
+D-28          3108 C9D3346-8    Fl Lo Ni           910 It
+D-29          3110 C200366-7    Lo Ni Va           502 It
+D-30          3205 C1207BA-8  D De Na Po           402 It
+D-31          3208 B533303-B    Lo Ni Po           920 It
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Erancl SECTOR: Lancask
+#
+# Jump-routes
+#
+$0313 0210 0 -1 12
+$0313 0314 0 0 12
+$0314 0215 0 0 12
+$0215 3216 -1 0 12
+$0618 0421 0 1 12
+$0618 0717 0 0 12
+$0717 0816 0 0 12
+$0314 0514 0 0 12
+$0514 0717 0 0 12
+$0514 0912 1 0 12
+$0816 1017 1 0 12
+$0412 0209 0 -1 10
+$0412 0516 0 0 10
+$0516 0618 0 0 10
+$0618 1020 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0114 E4218CE-3    Na Po              313 Hi
+E-2           0115 C437545-7    Ni                 224 Hi
+E-3           0118 D7A0448-8    De Ni              621 Hi
+E-4           0119 C9B0686-5    De Ni           A  103 Hi
+E-5           0213 C544679-5    Ag Ni           B  710 Na
+E-6           0215 B748343-8  F Lo Ni              103 Hi
+E-7           0218 C130475-B    De Ni Po        B  124 Na
+E-8           0219 C362351-6  F Lo Ni              700 Hi
+E-9           0311 E96A766-8    Ri Wa              400 Hi
+E-10          0313 A84A89B-A  E Wa                 802 Hi
+E-11          0314 B664102-C  F Lo Ni              803 Hi
+E-12          0411 E62A352-9    Lo Ni Wa           322 Hi
+Vamorra       0412 C633622-9  E Na Ni Po           712 Hi
+E-14          0413 D647262-3  F Lo Ni              402 Hi
+E-15          0415 E236522-7    Ni                 804 Hi
+E-16          0417 E666572-4    Ag Ni           B  300 Na
+E-17          0514 C9A6510-8  E Fl Ni              800 Hi
+Effranas      0516 E4009AD-9  H Hi Na Va           303 Hi
+E-19          0614 C775488-7  F Ni                 410 Hi
+E-20          0617 D000420-7  F As Ni              323 Hi
+Coolaner      0618 A445769-C    Ag                 624 Hi
+E-22          0717 A434455-E    Ni                 102 Hi
+E-23          0813 X343356-0    Lo Po           R  523 Hi
+E-24          0814 C697673-7    Ag Ni           B  312 Na
+E-25          0816 B34299A-B    Hi In Po           802 Hi
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Frocask SECTOR: Lancask
+#
+# Jump-routes
+#
+$0912 0514 -1 0 12
+$0912 0915 0 0 12
+$0915 1017 0 0 12
+$1017 1020 0 0 12
+$1017 0816 -1 0 12
+$1020 0821 -1 1 12
+$1517 1718 1 0 12
+$1517 1516 0 0 12
+$1517 1316 0 0 12
+$1316 1017 0 0 12
+$1020 0618 -1 0 10
+$1020 1124 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0911 X778610-0    Ag              R  710 Hi
+F-2           0912 B97A422-8    Ni Wa              103 Hi
+F-3           0913 C737767-9                       800 Hi
+F-4           0915 B464147-7    Lo Ni              515 Hi
+F-5           0916 X201420-1    Ic Va           R  401 Hi
+F-6           0917 C559200-9  F Lo Ni              700 Hi
+F-7           1012 E443123-5    Lo Ni Po           504 Hi
+F-8           1014 C88AA79-C    Hi Wa           B  703 Na
+F-9           1016 C220897-A  E De Na Po           510 Hi
+F-10          1017 B787315-A    Lo Ni              211 Hi
+F-11          1018 C484577-9    Ag Ni           B  701 Na
+F-12          1019 C221522-A  E Ni Po              305 Hi
+Drannia       1020 B56699D-A  G Hi                 701 Hi
+F-14          1112 EAE9635-6    Fl Ni              210 Hi
+F-15          1114 E381678-7    Ni Ri           B  414 Na
+F-16          1116 E472ABE-A    Hi In              500 Hi
+F-17          1119 D552144-4  F Lo Ni Po           904 Hi
+F-18          1212 X7768CE-0                    R  403 Hi
+F-19          1213 D979777-6                    B  723 Na
+F-20          1216 D475625-5    Ag Ni              800 Hi
+F-21          1217 D201463-6  F Ic Ni Va           310 Hi
+F-22          1218 E580211-3    De Lo Ni           304 Hi
+F-23          1219 C4108CA-6    Na                 432 Hi
+F-24          1312 E300000-8    Ba Lo Ni Va        713 Hi
+F-25          1316 C579566-A  E Ni                 404 Hi
+F-26          1319 D230347-5  F De Lo Ni Po        805 Hi
+F-27          1320 C63497B-A    Hi In           B  414 Na
+F-28          1411 C541975-7    Hi In Po        B  605 Na
+F-29          1414 B511675-6    Ic Na Ni        B  402 Na
+F-30          1516 B565988-B  H Hi                 904 Hi
+F-31          1517 B100334-E    Lo Ni Va           300 Hi
+F-32          1519 E9B5400-9    Fl Ni           A  512 Hi
+F-33          1520 C643697-8  E Ni Po              514 Hi
+F-34          1614 E424300-A    Lo Ni              620 Hi
+F-35          1615 C340200-9  F De Lo Ni Po        700 Hi
+F-36          1616 C6A049B-5    De Ni              512 Hi
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ghancask SECTOR: Lancask
+#
+# Jump-routes
+#
+$1818 1921 0 1 12
+$1818 1718 0 0 12
+$1718 1517 -1 0 12
+$1913 1909 0 -1 14
+$1913 2211 0 0 14
+$2211 2312 0 0 14
+$2312 2308 0 -1 14
+$2312 2614 1 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1711 C000A87-E    As Hi Na           213 It
+G-2           1712 E7A258B-8    Fl Ni              223 It
+G-3           1716 C574567-4    Ag Ni              904 Hi
+G-4           1717 A6B4147-E    Fl Lo Ni        A  104 Hi
+G-5           1718 B426642-8  G Ni                 703 Hi
+G-6           1812 C989732-4                       902 It
+G-7           1814 C00059A-9  S As Ni              430 Na
+G-8           1815 E5468BD-2                       901 Na
+G-9           1816 C438232-B    Lo Ni              604 Hi
+G-10          1818 A210302-B  F Lo Ni              112 Hi
+G-11          1911 E453679-4    Ni Po           B  700 Na
+G-12          1912 C33368A-6    Na Ni Po           600 It
+G-13          1913 B140ABD-F  C De Hi In Po        104 It
+G-14          1915 C529733-A                       800 Na
+G-15          1918 C775995-6  H Hi In              314 Hi
+G-16          1919 C678479-6    Ni              B  310 Na
+G-17          2013 E412568-4    Ic Ni              202 It
+G-18          2015 B412675-9    Ic Na Ni        B  314 Na
+G-19          2017 E663953-5    Hi                 105 Hi
+G-20          2112 C251630-9    Ni Po              123 It
+G-21          2113 E887694-5    Ag Ni Ri           903 It
+G-22          2114 D68A864-6  C Ri Wa              914 It
+G-23          2115 C544885-4                       210 Na
+G-24          2118 C77948D-8    Ni                 414 Hi
+G-25          2211 B6737BC-9                       804 It
+G-26          2214 X310103-4    Lo              R  203 Na
+G-27          2215 C3407AE-8  S De Po              804 Na
+G-28          2312 A3008CE-9    Na Va              803 It
+G-29          2315 C552164-6    Lo Ni Po           803 Na
+G-30          2412 CA79426-A    Ni                 724 It
+G-31          2417 D377424-8  S Ni                 700 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hacasell SECTOR: Lancask
+#
+# Jump-routes
+#
+$2811 2808 0 -1 14
+$2811 3213 0 0 14
+$3213 3116 0 0 14
+$3116 3016 0 0 14
+$3016 2614 0 0 14
+$2614 2312 -1 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2511 D130110-5    De Lo Ni Po        310 It
+H-2           2512 E5A199D-5    Fl Hi              900 It
+H-3           2515 C1208B9-9    De Na Po           202 It
+H-4           2517 C1107CB-A    Na                 310 Na
+H-5           2518 B56459B-A    Ag Ni              714 Na
+H-6           2611 C441253-A  B Lo Ni Po           104 It
+H-7           2613 E543768-4    Po                 503 It
+H-8           2614 B234995-9                       702 It
+H-9           2615 C646633-6  A Ag Ni              402 It
+H-10          2711 E410654-6    Na Ni              415 It
+H-11          2714 CAAA459-D    Fl Ni Wa           402 It
+H-12          2718 B100674-A    Na Ni Va        B  305 Na
+H-13          2720 C788610-4    Ag Ni              800 Na
+H-14          2811 B40398A-D  A Hi Ic Na Va        925 It
+H-15          2817 B547A74-C  N Hi In           B  604 Na
+H-16          2911 C160676-9  S De Ni Ri        B  713 Na
+H-17          2913 C86A444-B    Ni Wa              923 It
+H-18          2914 C542300-A    Lo Ni Po           702 It
+H-19          2915 D697740-4    Ag                 302 It
+H-20          2919 C424874-A                    B  723 Na
+H-21          3014 C480676-4    De Ni Ri        B  303 Na
+H-22          3016 A745112-8    Lo Ni              500 It
+H-23          3018 C472221-6    Lo Ni              403 Na
+H-24          3019 E55A7A9-5    Wa                 615 Na
+H-25          3112 C330575-9  S De Ni Po        B  710 Na
+H-26          3113 D210227-8  B Lo Ni              712 It
+H-27          3115 C554545-8  B Ag Ni              514 It
+H-28          3116 A304300-C    Ic Lo Ni Va        513 It
+H-29          3117 C458AB8-8    Hi                 234 It
+H-30          3120 E7A8548-6    Fl Ni              412 Na
+H-31          3212 C320620-7    De Na Ni Po        111 It
+H-32          3213 B9A4441-9  B Fl Ni              915 It
+H-33          3214 C5269C7-7    Hi In              203 It
+H-34          3216 D535254-6  B Lo Ni              812 It
+H-35          3219 C6459DF-7    Hi In              504 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Icaskarn SECTOR: Lancask
+#
+# Jump-routes
+#
+$0421 3221 -1 0 12
+$0421 0821 0 0 12
+$0421 0618 0 -1 12
+$0821 1020 1 -1 12
+$0821 0823 0 0 12
+$0823 1224 1 0 12
+$0823 0525 0 0 12
+$0525 0425 0 0 12
+$0529 0631 0 1 12
+$0529 0525 0 0 12
+$0525 0222 0 0 12
+$0222 3125 -1 0 12
+$0529 0131 0 1 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0125 E220457-A    De Ni Po           603 Hi
+I-2           0126 D7869DB-6  E Hi                 111 Hi
+I-3           0127 C632530-7    Ni Po              903 Hi
+I-4           0128 BAB4676-9    Fl Ni           A  310 Hi
+I-5           0221 C36157B-8    Ni              B  102 Na
+I-6           0222 B338347-D    Lo Ni              823 Hi
+I-7           0322 C573000-6  F Ba Lo Ni           613 Hi
+I-8           0326 E224ABC-8    Hi In              320 Hi
+I-9           0329 E453556-8    Ni Po              205 Hi
+I-10          0421 A795566-A    Ag Ni              705 Hi
+I-11          0422 D57758A-4  E Ag Ni              620 Hi
+I-12          0423 D200996-A  E Hi Na Va           505 Hi
+I-13          0425 B344426-8  F Ni                 521 Hi
+I-14          0430 C678335-5  F Lo Ni              204 Hi
+I-15          0521 C529676-7    Ni              B  314 Na
+I-16          0525 B1009A9-A  H Hi Na Va           103 Hi
+I-17          0529 C9E8203-8  F Fl Lo Ni           704 Hi
+I-18          0621 D220211-6    De Lo Ni Po        712 Hi
+I-19          0623 D374664-7  E Ag Ni              800 Hi
+I-20          0625 E543613-5    Ni Po              600 Hi
+I-21          0626 A9B86BF-D    Fl Ni           A  105 Hi
+I-22          0628 D7A3374-4    Fl Lo Ni        B  420 Na
+I-23          0629 C442302-9    Lo Ni Po           422 Hi
+I-24          0728 C65697A-9    Hi              B  613 Na
+I-25          0729 E8B558D-6    Fl Ni           A  113 Hi
+I-26          0730 C85A869-9    Wa                 104 Hi
+I-27          0821 B797664-6  E Ag Ni              714 Hi
+I-28          0823 B110201-C  F Lo Ni              703 Hi
+I-29          0827 X332678-3    Po              R  800 Hi
+I-30          0829 C120688-6    De Na Ni Po        402 Hi
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jananca SECTOR: Lancask
+#
+# Jump-routes
+#
+$1224 0823 -1 0 12
+$1224 1523 0 0 12
+$1523 1625 0 0 12
+$1625 1627 0 0 12
+$1627 1530 0 0 12
+$1530 1229 0 0 12
+$1625 1327 0 0 12
+$1327 1224 0 0 12
+$1327 1229 0 0 12
+$1523 1623 0 0 12
+$1523 1921 1 0 12
+$1530 1531 0 1 12
+$1330 1533 0 1 10
+$1124 1020 0 -1 10
+$1124 1327 0 0 10
+$1327 1330 0 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0922 D410732-7    Na                 204 Hi
+J-2           0924 D743435-4  F Ni Po              914 Hi
+J-3           0927 CAD6799-4    Fl                 314 Hi
+J-4           0929 D300242-8  F Lo Ni Va           800 Hi
+J-5           1021 C95A8BC-6    Wa                 504 Hi
+J-6           1022 E561751-4    Ri                 311 Hi
+J-7           1024 DA9A564-6  E Ni Wa              403 Hi
+J-8           1026 C8D3254-A  F Fl Lo Ni           710 Hi
+J-9           1121 E757836-1                       103 Hi
+Brimmier      1124 C878100-A  F Lo Ni              303 Hi
+J-11          1125 E684010-1    Lo Ni              122 Hi
+J-12          1221 C67955A-B  E Ni                 324 Hi
+J-13          1223 C579100-9    Lo Ni              314 Hi
+J-14          1224 A7A47B9-9  G Fl                 403 Hi
+J-15          1229 B89A455-A  F Ni Wa              824 Hi
+J-16          1321 C7B4688-8    Fl Ni              513 Hi
+J-17          1325 CAC7400-8    Fl Ni           A  112 Hi
+Jarnawl       1327 B978555-9    Ag Ni              803 Hi
+J-19          1329 D555102-4  F Lo Ni              104 Hi
+Zimpuun       1330 E8477BG-6    Ag                 703 Hi
+J-21          1421 C789532-7    Ni                 300 Hi
+J-22          1423 EA8A48C-7    Ni Wa              820 Hi
+J-23          1425 C200545-9    Ni Va              112 Hi
+J-24          1426 B539545-A    Ni                 523 Hi
+J-25          1428 D213667-6  E Ic Na Ni           100 Hi
+J-26          1429 E330547-5    De Ni Po           302 Hi
+J-27          1522 C140259-C    De Lo Ni Po        103 Hi
+J-28          1523 A6679BC-9  H Hi                 804 Hi
+J-29          1524 E557423-4    Ni                 113 Hi
+J-30          1528 D1108B7-7  E Na                 113 Hi
+J-31          1529 C12057B-7    De Ni Po        B  905 Na
+J-32          1530 BAA1696-6    Fl Ni              503 Hi
+J-33          1621 C465426-7  F Ni                 634 Hi
+J-34          1623 B789000-C    Ba Lo Ni           404 Hi
+J-35          1625 B210413-A  F Ni                 313 Hi
+J-36          1626 B775138-A    Lo Ni              303 Hi
+J-37          1627 B300850-8    Na Va              913 Hi
+J-38          1628 C7A3423-5    Fl Ni              314 Hi
+J-39          1629 C666413-9    Ni                 532 Hi
+J-40          1630 D612378-6    Ic Lo Ni        B  300 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kloonac SECTOR: Lancask
+#
+# Jump-routes
+#
+$1921 1523 -1 0 12
+$1921 2021 0 0 12
+$2021 2423 0 0 12
+$1921 1818 0 -1 12
+$2423 2723 1 0 12
+$2327 2729 1 0 12
+$2427 2423 0 0 12
+$2327 2227 0 0 12
+$2227 2024 0 0 12
+$2024 1921 0 0 12
+$2427 2331 0 1 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1722 BA8A830-8    Wa                 623 Hi
+K-2           1726 C669104-7    Lo Ni              314 Hi
+K-3           1728 B7A3533-C    Fl Ni              424 Hi
+K-4           1730 X65567B-0    Ag              R  902 Hi
+K-5           1821 D62A9BE-B  G Hi In Wa           702 Hi
+K-6           1822 C85A500-C  E Ni Wa              102 Hi
+K-7           1823 C77A6BE-7    Ni Wa              520 Hi
+K-8           1829 A463549-B    Ni                 934 Hi
+K-9           1830 E2318DF-2    Na Po              213 Hi
+K-10          1921 A553588-D    Ni Po              915 Hi
+K-11          1922 D410367-7  F Lo Ni              224 Hi
+K-12          1926 C574877-8                    B  313 Na
+K-13          1928 C668531-6    Ag Ni              820 Hi
+K-14          1929 E736633-2    Ni                 823 Hi
+K-15          2021 B564544-6  E Ag Ni              122 Hi
+K-16          2023 E353358-7    Lo Ni Po           513 Hi
+K-17          2024 B110312-E  F Lo Ni              804 Hi
+K-18          2026 C679100-A    Lo Ni              300 Hi
+K-19          2027 E462122-6    Lo Ni              824 Hi
+K-20          2124 C515530-7    Ic Ni              311 Hi
+K-21          2126 C787965-A  E Hi                 602 Hi
+K-22          2128 D756545-4    Ag Ni              603 Hi
+K-23          2130 B386972-C    Hi              B  614 Na
+K-24          2221 C530489-9    De Ni Po           703 Hi
+K-25          2224 E748000-6    Ba Lo Ni           113 Hi
+K-26          2225 B532AC9-C  H Hi In Na Po        220 Hi
+K-27          2226 C611110-8  F Ic Lo Ni           703 Hi
+K-28          2227 A000300-C  F As Lo Ni           702 Hi
+K-29          2321 EACA100-7    Fl Lo Ni Wa     A  203 Hi
+K-30          2323 C468452-B  F Ni                 302 Hi
+K-31          2326 E571457-4    Ni                 414 Hi
+K-32          2327 B3007A8-C    Na Va              215 Hi
+K-33          2421 C777872-7                    B  511 Na
+K-34          2423 BAE448A-9  F Fl Ni              804 Hi
+K-35          2424 D435153-8  F Lo Ni              713 Hi
+K-36          2427 A322534-E  E Ni Po              312 Hi
+K-37          2428 C8C0A7A-C    De Hi           A  900 Hi
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lanikasc SECTOR: Lancask
+#
+# Jump-routes
+#
+$2723 2423 -1 0 12
+$2723 2925 0 0 12
+$2925 3126 0 0 12
+$3126 2929 0 0 12
+$2929 2729 0 0 12
+$2729 2327 -1 0 12
+$2929 2933 0 1 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2523 E353655-6    Ni Po              102 Hi
+L-2           2524 D464520-6    Ag Ni              503 Hi
+L-3           2525 E97A765-5    Wa                 800 Hi
+L-4           2526 D160953-6    De Hi              602 Hi
+L-5           2527 C400766-9    Na Va              703 Hi
+L-6           2528 D749667-3    Ni                 715 Hi
+L-7           2621 C774543-7  E Ag Ni              104 Hi
+L-8           2623 D876464-6    Ni                 303 Hi
+L-9           2625 B994779-7    Ag              B  700 Na
+L-10          2629 C692203-5  F Lo Ni              400 Hi
+L-11          2721 C9B6648-8  E Fl Ni           A  801 Hi
+L-12          2723 B68A567-8  E Ni Wa              401 Hi
+L-13          2727 C51478A-9    Ic                 500 Hi
+L-14          2729 B563500-7    Ni                 924 Hi
+L-15          2821 C100455-D    Ni Va              304 Hi
+L-16          2824 C000595-8  E As Ni              820 Hi
+L-17          2825 C000469-B  F As Ni              702 Hi
+L-18          2827 X233200-6    Lo Po           R  804 Hi
+L-19          2828 D571A88-5    Hi In              905 Hi
+L-20          2829 C9A2ABF-A    Fl Hi              404 Hi
+L-21          2830 C200674-9    Na Ni Va        B  123 Na
+L-22          2924 C8A29CC-A    Fl Hi              334 Hi
+L-23          2925 B000743-B  H As Na              102 Hi
+L-24          2926 E688452-4    Ni                 903 Hi
+L-25          2929 A355683-A  E Ag Ni              215 Hi
+L-26          2930 C96A234-A    Lo Ni Wa           514 Hi
+L-27          3024 D999723-2  G                    604 Hi
+L-28          3026 E211885-7    Ic Na              115 Hi
+L-29          3029 E5635A6-5    Ni                 312 Hi
+L-30          3126 A439434-E    Ni                 502 Hi
+L-31          3127 E2335AC-5    Ni Po              502 Hi
+L-32          3222 C666769-3  G Ag Ri              305 Hi
+L-33          3225 D78A554-5    Ni Wa              504 Hi
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Milanco SECTOR: Lancask
+#
+# Jump-routes
+#
+$0631 0931 1 0 12
+$0631 0433 0 0 12
+$0631 0529 0 -1 12
+$0636 0936 1 0 12
+$0636 0534 0 0 12
+$0534 0433 0 0 12
+$0433 0131 0 0 12
+$0131 3233 -1 0 12
+$0131 0529 0 -1 12
+$0433 0135 0 0 12
+$0135 3233 -1 0 12
+$0135 3138 -1 0 12
+$0436 0438 0 0 12
+$0636 0437 0 0 12
+$0437 0135 0 0 12
+$0438 0502 0 1 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0131 A414464-C    Ic Ni              714 Hi
+M-2           0134 CAD9103-B    Fl Lo Ni           903 Hi
+M-3           0135 A665430-D    Ni                 504 Hi
+M-4           0137 B234973-D    Hi In           B  303 Na
+M-5           0138 E699212-6    Lo Ni              512 Hi
+M-6           0140 E9B6958-9    Fl Hi           A  700 Hi
+M-7           0232 E7C7233-5    Fl Lo Ni        A  700 Hi
+M-8           0233 C67859A-6    Ag Ni              712 Hi
+M-9           0235 E433553-A    Ni Po              800 Hi
+M-10          0331 C425ACC-E    Hi In              403 Hi
+M-11          0333 D401000-4  F Ba Ic Lo Ni Va     603 Hi
+M-12          0336 C493766-8  G                    614 Hi
+M-13          0339 C7B375A-9  G Fl              A  512 Hi
+M-14          0431 D534989-9  E Hi In              413 Hi
+M-15          0432 E5A4412-5    Fl Ni              414 Hi
+M-16          0433 A697340-A  F Lo Ni              500 Hi
+M-17          0435 C220302-A    De Lo Ni Po        412 Hi
+M-18          0436 A300797-9    Na Va              504 Hi
+M-19          0437 B533301-D  F Lo Ni Po           815 Hi
+M-20          0438 B683104-C  F Lo Ni              911 Hi
+M-21          0440 C747589-5    Ag Ni              614 Hi
+M-22          0533 C7468CD-8  E                    704 Hi
+M-23          0534 B9E08BB-8  H De                 703 Hi
+M-24          0535 E376554-6    Ag Ni              910 Hi
+M-25          0537 C95A7AD-9  E Wa                 402 Hi
+M-26          0539 C778200-9    Lo Ni              304 Hi
+M-27          0631 A000753-D    As Na              613 Hi
+M-28          0636 B591121-B  F Lo Ni              800 Hi
+M-29          0638 D448799-5  E Ag                 103 Hi
+M-30          0639 C663859-6  G Ri                 502 Hi
+M-31          0732 C637435-6  F Ni                 904 Hi
+M-32          0735 C756410-8  F Ni                 403 Hi
+M-33          0737 E68A310-8    Lo Ni Wa           203 Hi
+M-34          0832 B585377-7    Lo Ni           B  220 Na
+M-35          0836 C000A99-A    As Hi Na           814 Hi
+M-36          0840 E867430-7    Ni                 710 Hi
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nolcask SECTOR: Lancask
+#
+# Jump-routes
+#
+$1434 1736 1 0 12
+$1434 1533 0 0 12
+$1533 1531 0 0 12
+$1531 1530 0 -1 12
+$1434 1333 0 0 12
+$1333 0931 0 0 12
+$0931 0631 -1 0 12
+$1434 1335 0 0 12
+$1335 0936 0 0 12
+$0936 0636 -1 0 12
+$1636 1940 1 0 10
+$1636 1533 0 0 10
+$1533 1330 0 -1 10
+$1140 1102 0 1 12
+$1140 1337 0 0 12
+$1337 1434 0 0 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0931 B323467-A    Ni Po              921 Hi
+N-2           0936 B996554-9  E Ag Ni              212 Hi
+N-3           0938 C76A7AC-A    Wa                 810 Hi
+N-4           1031 B694ACC-B    Hi In              204 Hi
+N-5           1032 B893555-9  E Ni                 804 Hi
+N-6           1033 C684636-7  E Ag Ni              101 Hi
+N-7           1037 D332348-7    Lo Ni Po           214 Hi
+N-8           1039 C000536-8  E As Ni              102 Hi
+N-9           1040 C59438B-8    Lo Ni              505 Hi
+N-10          1131 C65A962-B  E Hi Wa              300 Hi
+N-11          1132 B645585-A    Ag Ni              923 Hi
+N-12          1133 C879255-7    Lo Ni              110 Hi
+N-13          1134 X56657C-1    Ag              R  124 Hi
+N-14          1138 E471340-3    Lo Ni              810 Hi
+N-15          1140 B77A9AB-C  E Hi In Wa           805 Hi
+N-16          1233 X310378-5    Lo Ni           B  600 Na
+N-17          1234 C885632-7  E Ag Ni              421 Hi
+N-18          1235 C767687-7  E Ag Ni Ri           903 Hi
+N-19          1238 E635435-4    Ni                 514 Hi
+N-20          1333 A546534-9    Ag Ni              404 Hi
+N-21          1335 B968201-B    Lo Ni              502 Hi
+N-22          1337 C634666-8    Ni                 904 Hi
+N-23          1434 B120301-C    De Lo Ni Po        503 Hi
+N-24          1440 D3268CF-5                       800 Hi
+N-25          1531 A120155-E    De Lo Ni Po        900 Hi
+Shurill       1533 A795344-B    Lo Ni              514 Hi
+N-27          1536 C9A5242-9  F Fl Lo Ni           705 Hi
+N-28          1538 C200784-7    Na Va              120 Hi
+N-29          1631 C8C77CD-9    Fl              A  503 Hi
+Mikkoon       1636 DA8A697-5    Ni Ri Wa           303 Hi
+N-31          1640 C3257BB-A  H                    903 Hi
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Olannak SECTOR: Lancask
+#
+# Jump-routes
+#
+$2331 2427 0 -1 12
+$2331 2233 0 0 12
+$2233 1935 0 0 12
+$1935 1736 0 0 12
+$1736 1836 0 0 12
+$1836 1936 0 0 12
+$1936 2036 0 0 12
+$1739 1736 0 0 12
+$1935 1939 0 0 12
+$2331 2532 1 0 12
+$2233 2634 1 0 12
+$1939 1839 0 0 12
+$1839 1739 0 0 12
+$1736 1434 -1 0 12
+$1940 2302 0 1 10
+$1940 1636 -1 0 10
+$1839 1902 0 1 12
+$1739 1502 -1 1 12
+$2338 2302 0 1 12
+$2338 2036 0 0 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1731 A573121-8    Lo Ni              703 Hi
+O-2           1734 E10077B-6    Na Va           B  300 Na
+O-3           1736 B365552-9  E Ag Ni              200 Hi
+O-4           1738 C467230-A  F Lo Ni              303 Hi
+O-5           1739 B330AB6-F    De Hi In Na Po     803 Hi
+O-6           1832 B676000-6  F Ba Lo Ni           510 Hi
+O-7           1834 C778346-7    Lo Ni              202 Hi
+O-8           1835 B72A966-D    Hi In Wa           904 Hi
+O-9           1836 B886889-7    Ri                 824 Hi
+O-10          1838 C331AAC-D  E Hi In Na Po        805 Hi
+O-11          1839 B8A5433-B    Fl Ni              800 Hi
+O-12          1932 C200598-A    Ni Va              904 Hi
+O-13          1934 C527AD9-6    Hi In              403 Hi
+O-14          1935 B778413-8  F Ni                 604 Hi
+O-15          1936 B423899-8  E Na Po              203 Hi
+O-16          1937 C551720-8    Po                 213 Hi
+O-17          1939 B789000-9    Ba Lo Ni           424 Hi
+Onnulli       1940 E676741-3    Ag                 814 Hi
+O-19          2031 C4239BC-7    Hi In Na Po        122 Hi
+O-20          2032 C64268B-7    Ni Po              103 Hi
+O-21          2035 C757789-4    Ag                 804 Hi
+O-22          2036 A10078A-F    Na Va              914 Hi
+O-23          2040 E410ABB-A    Hi Na              300 Hi
+O-24          2131 C666697-5    Ag Ni Ri           602 Hi
+O-25          2133 C684254-6  F Lo Ni              300 Hi
+O-26          2136 C100265-B    Lo Ni Va           304 Hi
+O-27          2137 C110863-6    Na                 402 Hi
+O-28          2139 E230420-8    De Ni Po           723 Hi
+O-29          2140 C310488-B  F Ni                 414 Hi
+O-30          2232 CAF7977-A    Fl Hi           B  204 Na
+O-31          2233 B969537-A    Ni                 735 Hi
+O-32          2234 B854579-9    Ag Ni           B  514 Na
+O-33          2235 C88A555-8    Ni Wa              504 Hi
+O-34          2237 D666452-4  F Ni                 303 Hi
+O-35          2238 C225473-A    Ni              B  202 Na
+O-36          2240 X324336-2    Lo              R  102 Hi
+O-37          2331 B33268A-B  H Na Ni Po           523 Hi
+O-38          2338 C333720-7  E Na Po              604 Hi
+O-39          2431 D350012-7  F De Lo Ni Po        210 Hi
+O-40          2435 B778875-5                    B  303 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Pocanask SECTOR: Lancask
+#
+# Jump-routes
+#
+$2532 2331 -1 0 12
+$2532 2732 0 0 12
+$2732 2933 0 0 12
+$2933 3234 0 0 12
+$2933 2929 0 -1 12
+$2933 2936 0 0 12
+$2936 2634 0 0 12
+$2634 2532 0 0 12
+$3234 3235 0 0 12
+$3235 2936 0 0 12
+$2634 2233 -1 0 12
+$2840 2703 0 1 5
+$2840 3101 0 1 5
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2531 C120100-A    De Lo Ni Po        100 Hi
+P-2           2532 B221761-9    Na Po              404 Hi
+P-3           2534 C140557-B  E De Ni Po           100 Hi
+P-4           2537 C63666B-7  E Ni                 504 Hi
+P-5           2538 B420678-B    De Na Ni Po     B  700 Na
+P-6           2539 E342855-3    Po                 902 Hi
+P-7           2540 B9B5110-9  F Fl Lo Ni        A  222 Hi
+P-8           2633 C8A7569-8  E Fl Ni              914 Hi
+P-9           2634 B362500-8    Ni                 205 Hi
+P-10          2636 C263415-7    Ni                 404 Hi
+P-11          2639 C7B5533-9    Fl Ni           A  503 Hi
+P-12          2732 B774430-B  F Ni                 500 Hi
+P-13          2737 D89A565-9  E Ni Wa              603 Hi
+P-14          2739 C679ABD-B  E Hi In              722 Hi
+P-15          2833 C325542-8    Ni                 303 Hi
+P-16          2836 C9C7330-8  F Fl Lo Ni           510 Hi
+P-17          2838 C9C5320-6  F Fl Lo Ni        A  913 Hi
+P-18          2840 A986110-D  K Lo Ni              703 Ki
+P-19          2931 E88A300-6    Lo Ni Wa           502 Hi
+P-20          2932 C7A6000-5  F Ba Fl Lo Ni        615 Hi
+P-21          2933 A692964-B  H Hi In              204 Hi
+P-22          2935 B473103-B  F Lo Ni              404 Hi
+P-23          2936 A8498AD-D  E                    231 Hi
+P-24          2937 C264773-9    Ag Ri           B  501 Na
+P-25          3031 C200558-B  E Ni Va              814 Hi
+P-26          3038 D764655-5  J Ag Ni Ri           904 Ki
+P-27          3039 E5446AC-4    Ag Ni              632 Ki
+P-28          3135 E430655-8    De Na Ni Po        112 Hi
+P-29          3136 C492354-6  F Lo Ni              312 Hi
+P-30          3137 C3636AD-5  E Ni                 114 Hi
+P-31          3139 E225668-3    Ni                 910 Ki
+P-32          3231 E756527-2    Ag Ni              324 Hi
+P-33          3232 D0009BF-A    As Hi Na           503 Hi
+P-34          3234 B351124-B    Lo Ni Po           604 Hi
+P-35          3235 B777555-8    Ag Ni              504 Hi
+P-36          3236 C443336-9    Lo Ni Po           921 Hi
+P-37          3238 C897867-5  L                    304 Ki
+P-38          3239 D77A865-3  L Wa                 324 Ki
+P-39          3240 C88A324-9    Lo Ni Wa           404 Ki
+

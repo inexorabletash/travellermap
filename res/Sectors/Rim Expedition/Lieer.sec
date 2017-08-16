@@ -1,0 +1,278 @@
+Lieer Sector
+
+A: Alinn                     a.dat
+B: Bieew                     b.dat
+C: Cioieen                   c.dat
+D: Daziee                    d.dat
+E: Eenn                      e.dat
+F: Fadieer                   f.dat
+G: Gasieet                   g.dat
+H: Hovieed                   h.dat
+I: Ibieem                    i.dat
+J: Jolieer                   j.dat
+K: Keeiee                    k.dat
+L: Lieeb                     l.dat
+M: Moieeq                    m.dat
+N: Nobieer                   n.dat
+O: Oxariee                   o.dat
+P: Pieer                     p.dat
+
+Bases:
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Alinn SECTOR: Lieer Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0109 C363230-5    Lo Ni              112 Na
+A-2           0309 C55A8BA-8    Wa                 411 Na
+A-3           0709 B665424-A  N Ni                 611 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Bieew SECTOR: Lieer Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           0901 C64A543-A  S Ni Wa              900 Na
+B-2           0910 X200755-1    Va              R  504 Na
+B-3           1001 C733873-5    Na Po           B  703 Na
+B-4           1008 A333655-D  S Na Ni Po           723 Na
+B-5           1509 C35177B-7    Po              B  512 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Cioieen SECTOR: Lieer Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1902 C310545-B    Ni                 912 Na
+C-2           2107 D576742-2    Ag                 310 Na
+C-3           2208 C686520-7    Ag Ni              812 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Daziee SECTOR: Lieer Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2604 B655564-A  2 Ag Ni              324 Na
+D-2           2901 B537758-B  N                    425 Na
+D-3           3003 D65A204-8  S Lo Ni Wa           705 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Eenn SECTOR: Lieer Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0213 C87A786-A    Wa                 803 Na
+E-2           0219 E370500-8    De Ni              403 Na
+E-3           0616 C5267BD-7  S                    503 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Fadieer SECTOR: Lieer Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0917 C200558-9  S Ni Va              903 Na
+F-2           0919 D533402-5  S Ni Po              522 Na
+F-3           1113 B567433-7  N Ni                 914 Na
+F-4           1116 D75A665-8    Ni Wa              924 Na
+F-5           1515 C431777-8    Na Po           B  900 Na
+F-6           1617 B7A6865-7  N Fl                 502 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Gasieet SECTOR: Lieer Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1919 C453623-7  S Ni Po              110 Na
+G-2           2211 C420621-8  S De Na Ni Po        811 Na
+G-3           2315 C786473-4    Ni              B  910 Na
+G-4           2418 C544210-9  S Lo Ni              202 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hovieed SECTOR: Lieer Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2617 C85AA96-B  S Hi Wa              804 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ibieem SECTOR: Lieer Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0426 B649412-B    Ni                 403 Na
+I-2           0624 A334425-B  N Ni                 704 Na
+I-3           0730 C6897A7-7  S                    602 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jolieer SECTOR: Lieer Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           1022 C77A102-B  S Lo Ni Wa           904 Na
+J-2           1230 B868465-B    Ni                 801 Na
+J-3           1424 C559852-7                       804 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Keeiee SECTOR: Lieer Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1827 C671589-6    Ni                 804 Na
+K-2           1829 C95A455-C  S Ni Wa              403 Na
+K-3           2025 B222430-D    Ni Po              905 Na
+K-4           2122 A566440-B  N Ni                 110 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lieeb SECTOR: Lieer Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           3222 C220211-9    De Lo Ni Po        204 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Moieeq SECTOR: Lieer Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0231 B687222-9    Lo Ni              113 Na
+M-2           0337 B000240-E    As Lo Ni           115 Na
+M-3           0539 E5879DD-2    Hi                 425 Na
+M-4           0732 B227300-A    Lo Ni              902 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nobieer SECTOR: Lieer Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0932 C300248-6    Lo Ni Va           403 Na
+N-2           1036 C3509AC-7  S De Hi Po           120 Na
+N-3           1132 C88A443-6    Ni Wa              303 Na
+N-4           1233 C2109AD-B  S Hi Na              304 Na
+N-5           1340 B544754-A  S Ag                 403 Na
+N-6           1535 C555AFH-A    Hi              A  202 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Oxariee SECTOR: Lieer Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           2032 B100776-9  N Na Va           B  104 Na
+O-2           2231 C140488-8    De Ni Po           903 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Pieer SECTOR: Lieer Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           3039 C585220-4  S Lo Ni              112 Na
+P-2           3134 C657327-6    Lo Ni              100 Na
+P-3           3137 B542333-9  2 Lo Ni Po           102 Na
+

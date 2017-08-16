@@ -1,0 +1,280 @@
+Vir Sector
+
+A: Ave                       a.dat
+B: Bavac                     b.dat
+C: Civalone                  c.dat
+D: Dir                       d.dat
+E: Eazi                      e.dat
+F: Fior                      f.dat
+G: Gikir                     g.dat
+H: Haki                      h.dat
+I: Ir                        i.dat
+J: Jawir                     j.dat
+K: Kinir                     k.dat
+L: Lavirr                    l.dat
+M: Miv                       m.dat
+N: Nov                       n.dat
+O: Ovis                      o.dat
+P: Pevir                     p.dat
+
+Bases:
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ave SECTOR: Vir Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0107 C887400-A  S Ni                 104 Na
+A-2           0403 C73987C-9                    B  500 Na
+A-3           0601 C6118DD-7  S Ic Na              423 Na
+A-4           0802 D110415-5  S Ni                 714 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Bavac SECTOR: Vir Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           1204 D797686-1    Ag Ni              700 Na
+B-2           1210 C110431-9  S Ni                 502 Na
+B-3           1303 A8C3669-A    Fl Ni           A  504 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Civalone SECTOR: Vir Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1908 D300331-7    Lo Ni Va           812 Na
+C-2           2304 E554697-3    Ag Ni              405 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Dir SECTOR: Vir Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2601 D578231-4  S Lo Ni              412 Na
+D-2           2808 C2108A8-6    Na                 403 Na
+D-3           3001 C687765-5  S Ag Ri              424 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Eazi SECTOR: Vir Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0114 C564445-5  S Ni                 424 Na
+E-2           0116 B443102-9    Lo Ni Po           612 Na
+E-3           0211 D676675-4  S Ag Ni           B  200 Na
+E-4           0216 C500311-7  S Lo Ni Va           114 Na
+E-5           0319 E310899-8    Na                 114 Na
+E-6           0713 X6A0242-0    De Lo           R  902 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Fior SECTOR: Vir Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           1015 C22559A-7    Ni                 500 Na
+F-2           1020 D735955-9  S Hi In              103 Na
+F-3           1414 C301333-9    Ic Lo Ni Va        412 Na
+F-4           1517 C9A4885-9  S Fl                 814 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Gikir SECTOR: Vir Sector
+#
+# Jump-routes
+$2017 2118 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           2017 B100565-B  S Ni Va              103 Na
+G-2           2118 A200589-A    Ni Va              303 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Haki SECTOR: Vir Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2513 E425200-6    Lo Ni              721 Na
+H-2           2614 C65A223-6  S Lo Ni Wa           103 Na
+H-3           2720 X301566-2    Ic Va           R  400 Na
+H-4           3112 A150100-E    De Lo Ni Po        603 Na
+H-5           3114 E534311-6    Lo Ni              604 Na
+H-6           3220 C78A105-C  S Lo Ni Wa           225 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ir SECTOR: Vir Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0426 E7C5210-8    Fl Lo Ni        A  603 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jawir SECTOR: Vir Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0927 B632415-A    Ni Po              501 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kinir SECTOR: Vir Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           2024 D342ACG-9  S Hi In Po           403 Na
+K-2           2129 C65579A-6    Ag                 403 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lavirr SECTOR: Vir Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2526 B524222-A  N Lo Ni              825 Na
+L-2           2724 B323761-9    Na Po              215 Na
+L-3           2928 C3118DB-7    Ic Na              204 Na
+L-4           2930 A201302-C  N Ic Lo Ni Va        804 Na
+L-5           3122 D667889-3  S Ri                 614 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Miv SECTOR: Vir Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0336 E120ACB-9    De Hi In Na Po     922 Na
+M-2           0737 B310321-9    Lo Ni              301 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nov SECTOR: Vir Sector
+#
+# Jump-routes
+$1633 1733 1 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           1535 X553533-1    Po              R  325 Na
+N-2           1632 D226687-8    Ni                 424 Na
+N-3           1633 C140330-B    De Lo Ni Po        811 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ovis SECTOR: Vir Sector
+#
+# Jump-routes
+$1733 1633 -1 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1733 A568864-A    Ri                 825 Na
+O-2           1740 C327302-B    Lo Ni              124 Na
+O-3           1834 C446414-9  S Ni                 404 Na
+O-4           1936 B956462-8    Ni                 102 Na
+O-5           2335 C646365-7  S Lo Ni              612 Na
+O-6           2435 B753867-A    Po                 900 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Pevir SECTOR: Vir Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2532 C400955-B    Hi Na Va           602 Na
+P-2           2734 D544300-6  S Lo Ni              123 Na
+P-3           2735 C413777-9  S Ic Na           B  700 Na
+

@@ -1,0 +1,382 @@
+Indraak Sector
+
+A: Ainga                     a.dat
+B: Biongree                  b.dat
+C: Chimmaak                  c.dat
+D: Drindrak                  d.dat
+E: Einhurr                   e.dat
+F: Fringaak                  f.dat
+G: Golindra                  g.dat
+H: Hinkarr                   h.dat
+I: Inmaier                   i.dat
+J: Jinok                     j.dat
+K: Kinnewe                   k.dat
+L: Linyrr                    l.dat
+M: Mikinna                   m.dat
+N: Ninkra                    n.dat
+O: Oinik                     o.dat
+P: Pinnit                    p.dat
+
+Bases:
+A = Agraak Navy
+B = Agraak Scout
+C = Agraak Navy & Scout
+D = Agraak Army
+E = Eindrakurr Navy
+F = Eindrakurr Scout
+G = Eindrakurr Army
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+06 Au = Agraak Unification
+03 Ce = Council of Eindrakurr
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ainga SECTOR: Indraak Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0202 D564975-3    Hi              B  832 Na
+A-2           0302 C465400-8  S Ni                 405 Na
+A-3           0303 B72A886-D  2 Wa                 323 Na
+A-4           0405 C000412-C    As Ni              401 Na
+A-5           0410 E324300-A    Lo Ni              523 Na
+A-6           0703 C210354-8  S Lo Ni              604 Na
+A-7           0707 C435887-9                       411 Na
+A-8           0810 E20089D-3    Na Va              414 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Biongree SECTOR: Indraak Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           0905 C343831-4  S Po                 904 Na
+B-2           1007 C55678B-6  S Ag                 503 Na
+B-3           1106 E585776-3    Ag Ri           B  214 Na
+B-4           1203 D645000-6  S Ba Lo Ni           515 Na
+B-5           1206 B875599-6  2 Ag Ni              415 Na
+B-6           1407 C210977-A    Hi Na           B  420 Na
+B-7           1607 B321649-7  N Na Ni Po           503 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Chimmaak SECTOR: Indraak Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1704 C687411-6  S Ni                 502 Na
+C-2           1706 C463532-9    Ni                 815 Na
+C-3           1804 B688577-A  N Ag Ni           B  100 Na
+C-4           1903 E400200-9    Lo Ni Va           823 Na
+C-5           1910 B685577-9    Ag Ni           B  114 Na
+C-6           2101 C678667-4    Ag Ni              504 Na
+C-7           2103 B89A667-B    Ni Wa              204 Na
+C-8           2109 E512847-5    Ic Na              502 Na
+C-9           2307 B9B55AB-C  N Fl Ni           A  811 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Drindrak SECTOR: Indraak Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2601 DA88764-3    Ag Ri              420 Na
+D-2           2605 C140253-9    De Lo Ni Po        600 Na
+D-3           2610 E9E58BE-4    Fl                 721 Na
+D-4           2803 E6B19E9-6    Fl Hi           A  700 Na
+D-5           2908 B360521-7  S De Ni              800 Na
+D-6           3008 B33546B-D  N Ni                 803 Na
+D-7           3106 A7798AA-C  S                    702 Na
+D-8           3203 E200554-7    Ni Va              604 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Einhurr SECTOR: Indraak Sector
+#
+# Jump-routes
+#
+$0214 3211 -1 0 10
+$0214 0417 0 0 10
+$0417 0619 0 0 10
+$0619 0822 0 1 10
+$0214 0514 0 0 3
+$0514 0714 0 0 3
+$0214 0111 0 0 3
+$0111 3211 -1 0 3
+$0214 3115 -1 0 3
+$0417 0220 0 0 3
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0111 C723666-4  G Na Ni Po           300 Ce
+E-2           0114 E679013-6    Lo Ni              120 Ce
+Eindrakurr    0214 A433556-G  E Ni Po Cx           214 Ce
+E-4           0220 B76598A-C  E Hi                 113 Ce
+E-5           0411 E435544-7    Ni                 414 Ce
+E-6           0415 E79A99A-5    Hi In Wa           324 Ce
+Eklianna      0417 B597000-7    Ba Lo Ni           521 Ce
+E-8           0514 C456648-7    Ag Ni              610 Ce
+E-9           0617 C8C08CF-9    De              A  805 Na
+Avavan        0619 E7B6323-6    Fl Lo Ni        A  404 Na
+E-11          0712 C351577-5    Ni Po           B  514 Na
+E-12          0714 C300302-A    Lo Ni Va           305 Ce
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Fringaak SECTOR: Indraak Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           1017 XA99565-1                    R  504 Na
+F-2           1111 C35578D-6    Ag                 722 Na
+F-3           1112 C250333-8    De Lo Ni Po        403 Na
+F-4           1113 B544651-B    Ag Ni              404 Na
+F-5           1313 E9D2110-5    Fl Lo Ni           325 Na
+F-6           1415 C33646A-6    Ni                 420 Na
+F-7           1615 D77A677-7  S Ni Wa           B  400 Na
+F-8           1619 C643300-8    Lo Ni Po           503 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Golindra SECTOR: Indraak Sector
+#
+# Jump-routes
+$1813 1815 0 0
+$1813 1817 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1813 A52147A-B  2 Ni Po           B  202 Na
+G-2           1815 B300465-B  N Ni Va              712 Na
+G-3           1817 B672899-9  2                    904 Na
+G-4           2112 C2235A8-A    Ni Po              902 Na
+G-5           2114 C458415-6    Ni                 823 Na
+G-6           2212 C300430-8  S Ni Va              304 Na
+G-7           2218 B1208CC-A  N De Na Po           720 Na
+G-8           2419 D637622-5    Ni                 100 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hinkarr SECTOR: Indraak Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2520 D737567-5  S Ni                 123 Na
+H-2           2613 C5578A8-5                       300 Na
+H-3           2715 D000230-A  S As Lo Ni           223 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Inmaier SECTOR: Indraak Sector
+#
+# Jump-routes
+#
+$0822 0619 0 -1 10
+$0822 1024 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0123 CAC1303-B  S Fl Lo Ni        A  320 Na
+I-2           0325 B200333-A    Lo Ni Va           314 Na
+I-3           0326 D5566AE-4  S Ag Ni              114 Na
+I-4           0724 B75A003-9  N Lo Ni Wa           402 Na
+I-5           0727 C8A1520-7    Fl Ni              712 Na
+Ijidiet       0822 C695555-8    Ag Ni              224 Na
+I-7           0830 C430943-A    De Hi In Na Po     310 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jinok SECTOR: Indraak Sector
+#
+# Jump-routes
+#
+$1024 0822 -1 0 10
+$1024 1127 0 0 10
+$1127 1030 0 0 10
+$1030 1133 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Buarrn        1024 E140997-5    De Hi In Po        301 Na
+Jionoi        1030 B669367-8  N Lo Ni              311 Na
+J-3           1121 B100231-E  2 Lo Ni Va           300 Na
+Polua         1127 B648547-A  N Ag Ni              923 Na
+J-5           1323 C436304-7    Lo Ni              704 Na
+J-6           1424 C412150-9  S Ic Lo Ni           404 Na
+J-7           1622 C596679-5  S Ag Ni           B  204 Na
+J-8           1623 C876269-4    Lo Ni              400 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kinnewe SECTOR: Indraak Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           2121 C7A19EA-9  S Fl Hi              514 Na
+K-2           2222 C435340-9    Lo Ni              303 Na
+K-3           2327 C120302-9    De Lo Ni Po        814 Na
+K-4           2422 B754422-6    Ni                 312 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Linyrr SECTOR: Indraak Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2524 BAC1776-B  N Fl              A  804 Na
+L-2           2621 C323773-7  S Na Po           B  104 Na
+L-3           2729 E100422-8    Ni Va              404 Na
+L-4           2922 E522402-6    Ni Po              514 Na
+L-5           2929 B762555-7    Ni                 115 Na
+L-6           3024 B866513-9    Ag Ni              704 Na
+L-7           3123 B8A0434-8    De Ni              213 Na
+L-8           3223 E110486-A    Ni                 520 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Mikinna SECTOR: Indraak Sector
+#
+# Jump-routes
+#
+$0139 0302 0 1 2
+$0139 2937 -1 0 2
+$0636 0938 1 0 6
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Ieakk         0139 C300789-9    Na Va              802 Na
+M-2           0333 B644779-5    Ag              B  513 Na
+M-3           0636 A403720-D  D Ic Na Va           103 Au
+M-4           0731 C777420-4    Ni                 801 Na
+M-5           0732 C5A2596-7  S Fl Ni              923 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ninkra SECTOR: Indraak Sector
+#
+# Jump-routes
+#
+$1133 1030 0 -1 10
+$1133 1035 0 0 10
+$1035 1237 0 0 10
+$1237 1539 0 0 10
+$1539 1502 0 1 10
+$0938 0901 0 1 6
+$0938 0636 -1 0 6
+$0938 1340 0 0 6
+$1340 1103 0 1 6
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0934 C8C1245-7    Fl Lo Ni        A  103 Na
+N-2           0938 B887624-9  C Ag Ni              303 Au
+N-3           1031 C795665-5    Ag Ni              514 Na
+Awerna        1035 C87A887-5  S Wa                 814 Na
+Nielaal       1133 C7B2447-7    Fl Ni           A  802 Na
+Uuatani       1237 C458214-9    Lo Ni              914 Na
+N-7           1239 C648347-9    Lo Ni              202 Au
+N-8           1334 C545200-9    Lo Ni              612 Na
+N-9           1340 B366885-9  A Ri                 904 Au
+N-10          1532 C556642-5  S Ag Ni              100 Na
+Branseen      1539 E638234-5    Lo Ni              902 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Oinik SECTOR: Indraak Sector
+#
+# Jump-routes
+#
+$2240 2540 1 0 6
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           2037 X673988-2    Hi In           R  913 Na
+O-2           2131 D647300-7    Lo Ni              801 Na
+O-3           2233 A320572-D    De Ni Po        B  804 Na
+O-4           2240 B7C7668-9  A Fl Ni           A  615 Au
+O-5           2339 DA6A597-5    Ni Wa              104 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Pinnit SECTOR: Indraak Sector
+#
+# Jump-routes
+#
+$2540 2501 0 1 6
+$2540 2240 -1 0 6
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2540 B455100-D    Lo Ni              903 Au
+P-2           2631 E97A435-9    Ni Wa              603 Na
+P-3           2632 X6A4565-1    Fl              R  803 Na
+P-4           2737 C20027A-6  S Lo Ni Va        B  425 Na
+P-5           3234 C345363-5  S Lo Ni              503 Na
+

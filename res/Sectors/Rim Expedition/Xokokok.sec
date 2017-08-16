@@ -1,0 +1,280 @@
+Xokokok Sector
+
+A: Axo                       a.dat
+B: Bahax                     b.dat
+C: Cokix                     c.dat
+D: Defox                     d.dat
+E: Exok                      e.dat
+F: Filkoxo                   f.dat
+G: Goxokk                    g.dat
+H: Hokokox                   h.dat
+I: Ixox                      i.dat
+J: Jaxx                      j.dat
+K: Kokkil                    k.dat
+L: Loxa                      l.dat
+M: Moko                      m.dat
+N: Naxokok                   n.dat
+O: Okokok                    o.dat
+P: Pazax                     p.dat
+
+Bases:
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Axo SECTOR: Xokokok Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0410 D641540-4    Ni Po              300 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Bahax SECTOR: Xokokok Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           0902 E626455-5    Ni                 804 Na
+B-2           0905 C4597A8-5                       802 Na
+B-3           1207 C574679-4  S Ag Ni           B  204 Na
+B-4           1301 B638400-A  N Ni                 913 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Cokix SECTOR: Xokokok Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           2101 C767540-5    Ag Ni              914 Na
+C-2           2107 E434859-7                       800 Na
+C-3           2202 C597201-6    Lo Ni              600 Na
+C-4           2304 E24259B-8    Ni Po              604 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Defox SECTOR: Xokokok Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2607 C330000-8    Ba De Lo Ni Po     504 Na
+D-2           2807 B200312-A    Lo Ni Va           400 Na
+D-3           3004 B300575-A  N Ni Va           B  702 Na
+D-4           3010 E451230-3    Lo Ni Po           502 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Exok SECTOR: Xokokok Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0317 C9B6653-A    Fl Ni           A  913 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Filkoxo SECTOR: Xokokok Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           1115 E464459-5    Ni                 324 Na
+F-2           1417 C522744-9    Na Po              221 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Goxokk SECTOR: Xokokok Sector
+#
+# Jump-routes
+$2319 2420 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1920 C574596-9  S Ag Ni              903 Na
+G-2           2018 E560668-1    De Ni Ri           703 Na
+G-3           2120 B464568-A  N Ag Ni              502 Na
+G-4           2217 C562598-5  S Ni                 402 Na
+G-5           2319 C7799EF-8  S Hi In              320 Na
+G-6           2420 B5569CA-B    Hi                 232 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hokokox SECTOR: Xokokok Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2611 C6637BD-5  S                    604 Na
+H-2           2819 B58469D-A  N Ag Ni Ri           412 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ixox SECTOR: Xokokok Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0130 E323542-7    Ni Po              904 Na
+I-2           0524 B55A745-8    Wa                 201 Na
+I-3           0623 C451546-A    Ni Po              700 Na
+I-4           0824 B9B4A88-A    Fl Hi           A  812 Na
+I-5           0828 A4257A8-D                       904 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jaxx SECTOR: Xokokok Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Jokoma        1423 A100977-G    Hi Na Va Cx     B  503 Na
+J-2           1429 E768ABE-6    Hi                 723 Na
+J-3           1622 B647200-A    Lo Ni              214 Na
+J-4           1626 D56587B-6  S Ri              B  610 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kokkil SECTOR: Xokokok Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1729 C576343-8    Lo Ni              510 Na
+K-2           1923 B627445-B    Ni                 804 Na
+K-3           2023 B100ADB-A    Hi Na Va           403 Na
+K-4           2222 B5007BA-7    Na Va              204 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Loxa SECTOR: Xokokok Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2523 C756457-7    Ni                 404 Na
+L-2           2826 C673961-5    Hi In              100 Na
+L-3           3029 A733434-9  N Ni Po              710 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Moko SECTOR: Xokokok Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0337 B7A2545-8  2 Fl Ni              604 Na
+M-2           0339 X324889-0                    R  210 Na
+M-3           0340 E130532-9    De Ni Po           324 Na
+M-4           0534 C62698A-8    Hi In              410 Na
+M-5           0734 D592976-6  S Hi In           B  104 Na
+M-6           0738 A245A8B-D  N Hi In              704 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Naxokok SECTOR: Xokokok Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           1636 C444443-9    Ni                 603 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Okokok SECTOR: Xokokok Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1833 E110AEC-C    Hi Na              603 Na
+O-2           1939 A435457-C    Ni                 805 Na
+O-3           2235 C7B0544-A    De Ni           A  314 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Pazax SECTOR: Xokokok Sector
+#
+# Jump-routes
+$3037 3140 0 0
+$3140 3238 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           3037 A242643-9  S Ni Po              800 Na
+P-2           3140 A225AAA-E    Hi In              211 Na
+P-3           3238 B7C4543-9    Fl Ni           A  800 Na
+

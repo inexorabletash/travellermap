@@ -1,0 +1,405 @@
+Ziorr Sector
+
+A: Azio                      a.dat
+B: Bzior                     b.dat
+C: Calzio                    c.dat
+D: Demziot                   d.dat
+E: Eziorr                    e.dat
+F: Frizio                    f.dat
+G: Graziong                  g.dat
+H: Hozior                    h.dat
+I: Izion                     i.dat
+J: Juziorr                   j.dat
+K: Kavizo                    k.dat
+L: Lezion                    l.dat
+M: Mizior                    m.dat
+N: Neziok                    n.dat
+O: Ozior                     o.dat
+P: Prazi                     p.dat
+
+Bases:
+A = Mlan-El Jijok Navy
+B = Mlan-El Jijok Scout
+C = Mlan-El Jijok Navy & Scout
+D = Mlan-El Jijok Army
+E = Mlan-El Jijok Research
+F = Mlan-El Jijok Preserve
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+12 Mj = Mlan-El Jijok Confed.
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Azio SECTOR: Ziorr Sector
+#
+# Jump-routes
+#
+$0101 3240 -1 -1 12
+$0101 0102 0 0 12
+$0101 0501 0 0 12
+$0501 0901 1 0 12
+$0409 3207 -1 0 10
+$0409 0811 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0101 A889995-F  D Hi                 213 Mj
+A-2           0102 A868662-A    Ag Ni Ri           313 Mj
+A-3           0103 D612124-5  E Ic Lo Ni           212 Mj
+A-4           0301 A56355A-C    Ni                 804 Mj
+A-5           0303 E435401-5    Ni                 804 Mj
+A-6           0402 E99A500-8    Ni Wa              312 Mj
+Flauul        0409 C7B7455-B  A Fl Ni           A  912 Na
+A-8           0501 B853554-8  A Ni Po              814 Mj
+A-9           0503 E544300-8    Lo Ni              602 Mj
+A-10          0602 E448400-6    Ni                 114 Mj
+A-11          0605 E7878AA-1                       200 Na
+A-12          0701 B353430-B  A Ni Po              413 Mj
+A-13          0802 D889677-7    Ni Ri           B  714 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Bzior SECTOR: Ziorr Sector
+#
+# Jump-routes
+#
+$0901 0501 -1 0 12
+$0901 0902 0 0 12
+$0901 1001 0 0 12
+$1001 1304 0 0 12
+$1304 1501 0 0 12
+$1501 1601 0 0 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           0901 B545657-B    Ag Ni              101 Mj
+B-2           0902 B649545-B    Ni                 823 Mj
+B-3           0905 D625899-3                       103 Na
+B-4           1001 B754427-7  A Ni                 404 Mj
+B-5           1010 C8B0574-5    De Ni           A  803 Na
+B-6           1201 C99458A-9    Ag Ni              500 Mj
+B-7           1301 B510878-6    Na              B  703 Na
+B-8           1304 B1006BA-8    Na Ni Va           304 Mj
+B-9           1501 B225653-B    Ni                 103 Mj
+B-10          1601 B726648-A  A Ni                 304 Mj
+B-11          1608 C68A510-8    Ni Wa              204 Na
+B-12          1609 C766655-5    Ag Ni Ri           900 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Calzio SECTOR: Ziorr Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1807 A000744-B    As Na              903 Na
+C-2           1907 C546123-8    Lo Ni              612 Na
+C-3           2105 C665021-3  S Lo Ni              801 Na
+C-4           2210 C55479D-7    Ag                 901 Na
+C-5           2305 B678300-B  S Lo Ni              800 Na
+C-6           2306 A1009DE-C    Hi Na Va           402 Na
+C-7           2307 C555633-8    Ag Ni              713 Na
+C-8           2310 E662362-5    Lo Ni              824 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Demziot SECTOR: Ziorr Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2501 C546685-6    Ag Ni              413 Na
+D-2           2608 C333655-B  S Na Ni Po           801 Na
+D-3           2704 C411663-8    Ic Na Ni           912 Na
+D-4           2708 E335752-6                       903 Na
+D-5           3109 D243014-6    Lo Ni Po           800 Na
+D-6           3201 E651545-7    Ni Po              724 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Eziorr SECTOR: Ziorr Sector
+#
+# Jump-routes
+$0119 0122 0 1
+#
+$0811 0409 0 -1 10
+$0811 1213 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0119 C554566-6  S Ag Ni              302 Na
+E-2           0316 E484364-6    Lo Ni              600 Na
+E-3           0719 C150345-9    De Lo Ni Po        805 Na
+Vlaag         0811 B2106BC-A  N Na Ni              802 Na
+E-5           0812 B654764-8    Ag                 413 Na
+E-6           0815 C8A5511-6    Fl Ni              302 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Frizio SECTOR: Ziorr Sector
+#
+# Jump-routes
+$0911 1011 0 0
+#
+$1213 0811 -1 0 10
+$1213 1614 0 0 10
+$1614 1817 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0911 B130641-C  N De Na Ni Po        903 Na
+F-2           1011 B478520-9    Ag Ni              800 Na
+F-3           1112 B224564-8    Ni                 822 Na
+F-4           1117 B995645-8  S Ag Ni              404 Na
+Filla         1213 CA99454-8    Ni                 314 Na
+F-6           1414 C67879D-7    Ag                 104 Na
+F-7           1415 C532634-4    Na Ni Po           510 Na
+Hokree        1614 C8B0434-7  S De Ni           A  514 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Graziong SECTOR: Ziorr Sector
+#
+# Jump-routes
+#
+$1817 1614 -1 0 10
+$1817 2219 0 0 10
+$2219 2123 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1811 D200666-3  S Na Ni Va           123 Na
+G-2           1812 E668202-4    Lo Ni              414 Na
+Ragraa        1817 E000653-A    As Na Ni           413 Na
+G-4           2211 C2108CB-9  S Na                 200 Na
+G-5           2214 C243331-A  S Lo Ni Po           624 Na
+G-6           2216 D464567-8  S Ag Ni              804 Na
+Globrein      2219 C9C4555-6    Fl Ni           A  511 Na
+G-8           2418 B99A696-7    Ni Wa              204 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hozior SECTOR: Ziorr Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2614 E558224-5    Lo Ni              714 Na
+H-2           2617 C335420-B    Ni                 534 Na
+H-3           2618 B300588-B    Ni Va              103 Na
+H-4           2720 E671495-2    Ni                 625 Na
+H-5           2917 C421AAE-C    Hi In Na Po        514 Na
+H-6           3015 C673014-5  S Lo Ni              403 Na
+H-7           3111 B230666-9  2 De Na Ni Po        210 Na
+H-8           3114 C000461-C  S As Ni              200 Na
+H-9           3211 B8A3261-8    Fl Lo Ni           805 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Izion SECTOR: Ziorr Sector
+#
+# Jump-routes
+$0122 0119 0 -1
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0122 A764752-B  N Ag Ri              103 Na
+I-2           0430 C447266-6  S Lo Ni              814 Na
+I-3           0522 E100272-7    Lo Ni Va        B  901 Na
+I-4           0525 C446455-9    Ni                 723 Na
+I-5           0630 C322404-B  S Ni Po              502 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Juziorr SECTOR: Ziorr Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           1027 X527525-3                    R  422 Na
+J-2           1028 A53359A-D    Ni Po              913 Na
+J-3           1030 C54669B-3    Ag Ni              902 Na
+J-4           1125 E9A8520-6    Fl Ni              504 Na
+J-5           1225 A878430-8  S Ni                 812 Na
+J-6           1228 C9B8ACD-A    Fl Hi           A  204 Na
+J-7           1329 E548853-3                       105 Na
+J-8           1428 C844677-8    Ag Ni           B  401 Na
+J-9           1430 C422556-7  S Ni Po              204 Na
+J-10          1623 E504303-7    Ic Lo Ni Va        723 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kavizo SECTOR: Ziorr Sector
+#
+# Jump-routes
+#
+$2123 2219 0 -1 10
+$2123 2326 0 0 10
+$2326 2624 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1821 E140667-4    De Ni Po           422 Na
+K-2           1928 C574AAC-9    Hi In              603 Na
+Liootta       2123 C494743-9  S Ag                 705 Na
+K-4           2127 C794200-5    Lo Ni              202 Na
+K-5           2225 C683522-8    Ni                 922 Na
+Opareeda      2326 XAA9453-4    Fl              R  704 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lezion SECTOR: Ziorr Sector
+#
+# Jump-routes
+$3229 3231 0 1
+#
+$2624 2326 -1 0 10
+$2624 2827 0 0 10
+$2827 3030 0 0 10
+$3030 3034 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2530 E432321-4    Lo Ni Po           504 Na
+Bolorral      2624 C376136-5  S Lo Ni              523 Na
+Doohanna      2827 E2508A6-4    De Po              504 Na
+Frihaan       3030 E475888-6                       613 Na
+L-5           3124 B884404-7    Ni                 104 Na
+L-6           3229 C237643-8    Ni                 412 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Mizior SECTOR: Ziorr Sector
+#
+# Jump-routes
+#
+$0737 0701 0 1 2
+$0737 0535 0 0 2
+$0535 0333 0 0 2
+$0333 0131 0 0 2
+$0131 3028 -1 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Anziuh        0131 D6699AD-9    Hi                 803 Na
+M-2           0133 C364348-A  S Lo Ni              504 Na
+M-3           0231 B667521-6  S Ag Ni              500 Na
+M-4           0237 E898546-6    Ag Ni              702 Na
+Jaahik        0333 E4108AD-6    Na                 213 Na
+M-6           0340 A554400-A    Ni                 722 Na
+Izaana        0535 D466997-4  S Hi                 204 Na
+M-8           0631 D538743-7  S                    902 Na
+Maroour       0737 B561244-B  2 Lo Ni              814 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Neziok SECTOR: Ziorr Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0933 C210688-6  S Na Ni              905 Na
+N-2           0934 D9C2988-9    Fl Hi           A  703 Na
+N-3           0939 B776320-6  N Lo Ni              114 Na
+N-4           0940 C2327B9-9    Na Po              704 Na
+N-5           1032 E857622-6    Ag Ni              920 Na
+N-6           1037 C327230-A  S Lo Ni              322 Na
+N-7           1131 C838220-7    Lo Ni              700 Na
+N-8           1239 C11049B-8    Ni                 910 Na
+N-9           1338 A636746-C  N                    600 Na
+N-10          1435 C4439B9-9  S Hi In Po           603 Na
+N-11          1534 C8488A6-7                       304 Na
+N-12          1635 BA8756A-A  N Ag Ni              603 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ozior SECTOR: Ziorr Sector
+#
+# Jump-routes
+$2039 2240 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1838 B441467-9  N Ni Po              500 Na
+O-2           1939 E735424-4    Ni                 703 Na
+O-3           2034 C365210-9    Lo Ni              203 Na
+O-4           2039 B234768-9                       704 Na
+O-5           2139 E788200-3    Lo Ni              801 Na
+O-6           2238 C325669-A  S Ni                 800 Na
+O-7           2240 A386797-B    Ag Ri              514 Na
+O-8           2440 D691545-4    Ni                 412 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Prazi SECTOR: Ziorr Sector
+#
+# Jump-routes
+$3231 3229 0 -1
+#
+$3034 3030 0 -1 10
+$3034 3236 0 0 10
+$3236 3239 0 0 10
+$3239 0103 1 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2736 A884756-B  N Ag Ri              101 Na
+P-2           2839 D5568AC-3  S                    125 Na
+Pijomm        3034 A5677A7-8  S Ag                 414 Na
+P-4           3231 A637344-C  N Lo Ni              514 Na
+Dalliak       3236 D684200-4  S Lo Ni              605 Na
+Havvin        3239 C538988-A    Hi In              815 Na
+

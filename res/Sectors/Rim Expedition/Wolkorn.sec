@@ -1,0 +1,420 @@
+Wolkorn Sector
+
+A: Awolk                     a.dat
+B: Blkorn                    b.dat
+C: Clornk                    c.dat
+D: Drawolk                   d.dat
+E: Ewolk                     e.dat
+F: Frekorn                   f.dat
+G: Geekorn                   g.dat
+H: Howolk                    h.dat
+I: Iwolorn                   i.dat
+J: Jakorn                    j.dat
+K: Kornawo                   k.dat
+L: Lokore                    l.dat
+M: Mawolko                   m.dat
+N: Nolk                      n.dat
+O: Olkorn                    o.dat
+P: Pawolk                    p.dat
+
+Bases:
+K = Kolkor Military
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+14 Kp = Kolkor Provence
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Awolk SECTOR: Wolkorn Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0101 A000653-B  N As Na Ni           512 Na
+A-2           0501 C350234-5    De Lo Ni Po        903 Na
+A-3           0602 C420950-8  S De Hi In Na Po     513 Na
+A-4           0609 E310540-6    Ni                 302 Na
+A-5           0809 C244300-7    Lo Ni              924 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Blkorn SECTOR: Wolkorn Sector
+#
+# Jump-routes
+$1007 1106 0 0
+$1106 1207 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           1001 B345653-A  2 Ag Ni              200 Na
+B-2           1002 D889442-4    Ni                 823 Na
+B-3           1004 D889758-4  S Ri                 714 Na
+B-4           1007 C580465-7  S De Ni              614 Na
+B-5           1101 D692688-1    Ni                 700 Na
+B-6           1106 A5A2676-C  N Fl Ni           B  404 Na
+B-7           1108 B220841-8  N De Na Po           802 Na
+B-8           1207 C233440-7    Ni Po              302 Na
+B-9           1305 D446538-6  S Ag Ni              801 Na
+B-10          1403 B567568-8  N Ag Ni              504 Na
+B-11          1406 B3558CF-7                       900 Na
+B-12          1409 D476474-6  S Ni              B  600 Na
+B-13          1410 D410323-6  S Lo Ni              903 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Clornk SECTOR: Wolkorn Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1906 CAD1403-6  S Fl Ni              924 Na
+C-2           2008 C625754-A                       604 Na
+C-3           2107 D7B7159-5  S Fl Lo Ni        A  504 Na
+C-4           2108 C400733-A  S Na Va              604 Na
+C-5           2210 B547546-8    Ag Ni              722 Na
+C-6           2303 B321749-C  N Na Po              404 Na
+C-7           2309 C455698-6  S Ag Ni              714 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Drawolk SECTOR: Wolkorn Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2503 C9A198C-7  S Fl Hi              622 Na
+D-2           2505 C000753-B  S As Na              304 Na
+D-3           2604 C434435-A  S Ni                 501 Na
+D-4           2703 C541210-7    Lo Ni Po           704 Na
+D-5           2802 CA87323-6  S Lo Ni              222 Na
+D-6           3001 D568552-4    Ag Ni              305 Na
+D-7           3009 C73887C-7  S                 B  102 Na
+D-8           3110 D545022-6    Lo Ni              610 Na
+D-9           3206 B320514-B  N De Ni Po           110 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ewolk SECTOR: Wolkorn Sector
+#
+# Jump-routes
+#
+$0318 3116 -1 0 10
+$0318 0618 0 0 10
+$0618 0920 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0116 E224874-8                    B  803 Na
+E-2           0118 D988534-6    Ag Ni              614 Na
+E-3           0214 C994464-7  S Ni                 802 Na
+E-4           0312 C765355-6    Lo Ni              602 Na
+Echamma       0318 C777365-8    Lo Ni              722 Na
+E-6           0414 C455103-A  S Lo Ni              104 Na
+E-7           0416 C8A0102-B  S De Lo Ni           800 Na
+E-8           0511 C653000-4  S Ba Lo Ni Po        404 Na
+E-9           0514 C323786-A  S Na Po              903 Na
+Verbage       0618 C303967-A  S Hi Ic Na Va        314 Na
+E-11          0716 D757463-2  S Ni                 103 Na
+E-12          0719 E675879-3                    B  923 Na
+E-13          0818 B400210-9    Lo Ni Va           721 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Frekorn SECTOR: Wolkorn Sector
+#
+# Jump-routes
+$0915 1018 0 0
+#
+$0920 0618 -1 0 10
+$0920 1123 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0915 B9A5683-B    Fl Ni              303 Na
+Kaligua       0920 C479123-6    Lo Ni              313 Na
+F-3           1011 C574587-9    Ag Ni              514 Na
+F-4           1018 A75749B-D  N Ni                 924 Na
+F-5           1116 B336678-9    Ni              B  814 Na
+F-6           1118 CAA4654-8    Fl Ni              802 Na
+F-7           1215 C53999A-9    Hi In              714 Na
+F-8           1314 B869430-C  N Ni                 114 Na
+F-9           1413 X543430-1    Po              R  501 Na
+F-10          1617 E758542-2    Ag Ni              415 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Geekorn SECTOR: Wolkorn Sector
+#
+# Jump-routes
+$1811 1813 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1712 C678544-7    Ag Ni              214 Na
+G-2           1716 E250579-6    De Ni Po        B  524 Na
+G-3           1717 C336573-A  S Ni              B  403 Na
+G-4           1811 B788A9C-B  N Hi                 104 Na
+G-5           1813 C510777-9    Na              B  813 Na
+G-6           2018 C00076A-6    As Na              821 Na
+G-7           2115 X201301-4    Ic Lo Va        R  710 Na
+G-8           2212 B999775-7  S                 B  103 Na
+G-9           2219 C786301-6    Lo Ni              504 Na
+G-10          2220 A50077A-9    Na Va           B  204 Na
+G-11          2412 CAC3544-A  S Fl Ni           A  503 Na
+G-12          2418 C140530-8  S De Ni Po           403 Na
+G-13          2419 B9D9134-B    Fl Lo Ni           310 Na
+G-14          2420 BAC68BB-7  N Fl              A  413 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Howolk SECTOR: Wolkorn Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2512 D562549-3  S Ni                 513 Na
+H-2           2518 B647542-A  S Ag Ni              301 Na
+H-3           2616 B323795-A  N Na Po              413 Na
+H-4           2715 C47287B-6                    B  605 Na
+H-5           2720 C210644-9    Na Ni              804 Na
+H-6           2818 C8D1867-9    Fl                 103 Na
+H-7           2914 B868866-7    Ri                 224 Na
+H-8           3112 B7A2015-8  N Fl Lo Ni           614 Na
+H-9           3117 B89A69C-9  N Ni Wa              805 Na
+H-10          3220 C769457-8    Ni                 113 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Iwolorn SECTOR: Wolkorn Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0322 D456565-5    Ag Ni              101 Na
+I-2           0324 B401431-A    Ic Ni Va           700 Na
+I-3           0327 C130545-A    De Ni Po           325 Na
+I-4           0425 C565553-9    Ag Ni              600 Na
+I-5           0426 C224679-9  S Ni              B  704 Na
+I-6           0625 B667203-B    Lo Ni              900 Na
+I-7           0629 B743846-7    Po                 123 Na
+I-8           0823 A463763-A  S Ri                 500 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jakorn SECTOR: Wolkorn Sector
+#
+# Jump-routes
+#
+$1123 0920 0 -1 10
+$1123 1324 0 0 10
+$1324 1427 0 0 10
+$1427 1629 0 0 10
+$1629 2030 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0929 C245647-8    Ag Ni              532 Na
+J-2           1025 E686886-2    Ri                 413 Na
+J-3           1029 C8C577A-8  S Fl              B  410 Na
+Marnian       1123 C7B1586-A  S Fl Ni           A  501 Na
+J-5           1124 B9C2855-B    Fl              A  103 Na
+J-6           1228 E322377-7    Lo Ni Po        B  203 Na
+J-7           1229 D000553-7  S As Ni              504 Na
+Gwann         1324 C243427-9  S Ni Po              302 Na
+J-9           1328 B8B8754-7  2 Fl              A  222 Na
+Willia        1427 A797422-8    Ni                 802 Na
+J-11          1428 C76469D-6  S Ag Ni Ri           502 Na
+J-12          1524 C420475-8    De Ni Po        B  603 Na
+J-13          1525 B87A622-9    Ni Wa              902 Na
+J-14          1530 B431AA8-D  2 Hi In Na Po        702 Na
+J-15          1623 E322121-6    Lo Ni Po           403 Na
+J-16          1624 C130436-7    De Ni Po           403 Na
+Mikarra       1629 E674787-1    Ag                 501 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kornawo SECTOR: Wolkorn Sector
+#
+# Jump-routes
+#
+$2030 1629 -1 0 10
+$2030 2033 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1721 A86999B-C  N Hi                 120 Na
+K-2           1928 X468130-4    Lo              R  603 Na
+K-3           2022 E876022-3    Lo Ni              500 Na
+Collona       2030 B6357AB-6  S                    703 Na
+Kolkor        2126 A000222-G  K As Lo Ni Cx        302 Kp
+K-6           2422 D647868-4  S                    410 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lokore SECTOR: Wolkorn Sector
+#
+# Jump-routes
+$2921 2923 0 0
+$2921 3021 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2527 C699230-8    Lo Ni              904 Na
+L-2           2824 X130310-1    De Lo Po        R  103 Na
+L-3           2921 A78A852-D    Ri Wa              104 Na
+L-4           2923 C537410-9    Ni                 120 Na
+L-5           2930 C538577-9    Ni              B  504 Na
+L-6           3021 A524676-9  N Ni              B  524 Na
+L-7           3123 C654533-4    Ag Ni              204 Na
+L-8           3125 C563645-5    Ni Ri              212 Na
+L-9           3229 B896877-A                    B  414 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Mawolko SECTOR: Wolkorn Sector
+#
+# Jump-routes
+$0833 0934 1 0
+#
+$0339 0302 0 1 2
+$0339 3237 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0134 B220555-B    De Ni Po           403 Na
+M-2           0231 B656344-7  S Lo Ni              510 Na
+M-3           0232 B624410-A  S Ni                 202 Na
+M-4           0236 E68568A-2    Ag Ni Ri           600 Na
+M-5           0335 C79A888-A  S Wa                 812 Na
+Mluean        0339 C265775-5    Ag Ri           B  401 Na
+M-7           0634 C9A6411-6    Fl Ni              600 Na
+M-8           0635 C534034-8    Lo Ni              600 Na
+M-9           0833 AAC5995-C    Fl Hi           A  602 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nolk SECTOR: Wolkorn Sector
+#
+# Jump-routes
+$0934 0833 -1 0
+$1537 1737 1 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0934 B343766-B    Po                 603 Na
+N-2           1035 E512766-4    Ic Na              804 Na
+N-3           1039 E879499-3    Ni                 414 Na
+N-4           1132 C342256-7  S Lo Ni Po           801 Na
+N-5           1238 C575562-6  S Ag Ni              700 Na
+N-6           1239 B463664-A    Ni Ri              305 Na
+N-7           1333 E75A210-8    Lo Ni Wa           303 Na
+N-8           1335 C502000-7  S Ba Ic Lo Ni Va     600 Na
+N-9           1440 C767772-6    Ag Ri           B  600 Na
+N-10          1537 B345402-A    Ni                 503 Na
+N-11          1639 E120235-9    De Lo Ni Po        324 Na
+N-12          1640 B200996-E    Hi Na Va           303 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Olkorn SECTOR: Wolkorn Sector
+#
+# Jump-routes
+$1737 1537 -1 0
+#
+$2033 2030 0 -1 10
+$2033 2336 0 0 10
+$2336 2438 0 0 10
+$2438 2639 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1737 A263100-B  N Lo Ni              802 Na
+O-2           1835 B423444-D  N Ni Po              404 Na
+O-3           1935 E987300-4    Lo Ni              815 Na
+Oprahn        2033 C450653-8  S De Ni Po           314 Na
+O-5           2037 E557541-5    Ag Ni              513 Na
+O-6           2132 B455798-6  2 Ag                 104 Na
+Sulibba       2336 D430438-6    De Ni Po           603 Na
+O-8           2433 CAC3423-7    Fl Ni           A  603 Na
+Zanzee        2438 C698555-9  S Ag Ni              104 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Pawolk SECTOR: Wolkorn Sector
+#
+# Jump-routes
+$3136 3138 0 0
+#
+$2639 2438 -1 0 10
+$2639 3001 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2538 E351313-5    Lo Ni Po           431 Na
+P-2           2540 C577245-5    Lo Ni              210 Na
+Billashu      2639 B72A537-D  2 Ni Wa              524 Na
+P-4           2733 E735576-5    Ni              B  704 Na
+P-5           2838 E9B8553-6    Fl Ni           A  824 Na
+P-6           2935 E552624-6    Ni Po              804 Na
+P-7           2939 D453853-8  S Po                 410 Na
+P-8           3035 C45547B-6    Ni              B  213 Na
+P-9           3131 D465A9D-A    Hi                 703 Na
+P-10          3136 B557799-9  2 Ag                 314 Na
+P-11          3138 C786ABA-C    Hi                 902 Na
+P-12          3140 E7A5644-6    Fl Ni              820 Na
+

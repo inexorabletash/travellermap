@@ -1,0 +1,913 @@
+Wratwani Sector
+
+A: Awrat                     a.dat
+B: Batwran                   b.dat
+C: Cctranni                  c.dat
+D: Dratwan                   d.dat
+E: Eratwan                   e.dat
+F: Frawrat                   f.dat
+G: Gherwa                    g.dat
+H: Hwratt                    h.dat
+I: Iwratin                   i.dat
+J: Jawrata                   j.dat
+K: Kyrwran                   k.dat
+L: Latwani                   l.dat
+M: Mawrat                    m.dat
+N: Natrane                   n.dat
+O: Owratwa                   o.dat
+P: Patraine                  p.dat
+
+Bases:
+D = Malawii Navy
+E = Malawii Scout
+F = Malawii Navy & Scout
+G = Malawii Army
+H = Malawii Research
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+14 Mp = Malawii Protectorate
+06 Mg = Malawii Game Preserve
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Awrat SECTOR: Wratwani Sector
+#
+# Jump-routes
+#
+$0209 3210 -1 0 14
+$0209 0607 0 0 14
+$0507 0808 0 0 14
+$0607 0704 0 0 14
+$0704 0603 0 0 14
+$0603 0602 0 0 14
+$0602 0803 0 0 14
+$0803 0704 0 0 14
+$0803 1103 1 0 14
+$0803 0801 0 0 14
+$0808 0911 1 1 14
+$0209 0306 0 0 14
+$0306 0507 0 0 14
+$0306 0603 0 0 14
+$0602 0801 0 0 14
+$0207 3005 -1 0 10
+$0207 0510 0 0 10
+$0510 0413 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0101 B556443-9  E Ni                 803 Mp
+A-2           0102 B7B5678-B  D Fl Ni           A  504 Mp
+A-3           0103 C787566-5    Ag Ni              804 Mp
+A-4           0105 C75566A-5    Ag Ni              520 Mp
+A-5           0107 X511555-2  H Ic              R  102 Mg
+Chetrata      0207 C322459-8    Ni Po              605 Mp
+A-7           0208 B345678-8    Ag Ni           B  403 Na
+A-8           0209 B100024-B  H Lo Ni Va           820 Mg
+A-9           0302 E224985-8    Hi In              100 Mp
+A-10          0303 C673955-6  G Hi In              403 Mp
+A-11          0304 C100000-C  H Ba Lo Ni Va        803 Mg
+A-12          0306 A00067B-D  D As Na Ni        B  522 Na
+A-13          0307 C48556A-A    Ag Ni              704 Mp
+A-14          0308 C676651-8    Ag Ni              804 Mp
+A-15          0309 E300833-7    Na Va              804 Mp
+A-16          0310 E100223-6    Lo Ni Va           620 Mp
+A-17          0403 C9C08CC-5    De              A  203 Mp
+A-18          0404 C510AB9-9    Hi Na              204 Mp
+A-19          0406 C698257-A    Lo Ni              200 Mp
+A-20          0407 C998734-3  G Ag                 903 Mp
+A-21          0409 E212557-A    Ic Ni              913 Mp
+A-22          0503 C635566-6    Ni                 623 Mp
+A-23          0505 C500501-B  E Ni Va              100 Mp
+A-24          0506 X453774-0  H Po              R  813 Mg
+A-25          0507 B330662-7  D De Na Ni Po        804 Mp
+Miranna       0510 C324352-8  E Lo Ni              734 Mp
+A-27          0602 A40068A-B    Na Ni Va           414 Mp
+A-28          0603 B210465-B  N Ni                 113 Mp
+A-29          0604 C450544-9    De Ni Po           325 Mp
+A-30          0607 B8A37B9-8  D Fl                 403 Mp
+A-31          0609 C324511-7    Ni                 224 Mp
+A-32          0701 E89A200-9    Lo Ni Wa           603 Mp
+A-33          0704 B453447-8    Ni Po              512 Mp
+A-34          0706 C322300-B  E Lo Ni Po           412 Mp
+A-35          0707 C77A654-7  D Ni Wa              200 Mp
+A-36          0708 B300200-D    Lo Ni Va           820 Mp
+A-37          0801 B8C6555-D    Fl Ni           A  401 Mp
+A-38          0803 A672520-9  G Ni                 215 Mp
+A-39          0807 C9DA998-C  D Fl Hi Wa           405 Mp
+A-40          0808 B9D3464-9    Fl Ni              901 Mp
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Batwran SECTOR: Wratwani Sector
+#
+# Jump-routes
+#
+$1103 0803 -1 0 14
+$1103 1101 0 0 14
+$1604 1704 1 0 14
+$1604 1607 0 0 14
+$1607 2006 1 0 14
+$1607 1305 0 0 14
+$1305 1103 0 0 14
+$1607 1711 1 1 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           0902 C130852-C  G De Na Po           524 Mp
+B-2           0906 X342334-2  H Lo Po           R  701 Mg
+B-3           0909 C785644-7  D Ag Ni Ri           415 Mp
+B-4           1003 C420640-6    De Na Ni Po        204 Mp
+B-5           1004 X360200-4  H De Lo           R  210 Mg
+B-6           1008 C8A9111-A  H Fl Lo Ni           424 Mg
+B-7           1101 B449411-8  N Ni                 923 Mp
+B-8           1102 C5848AF-7                       400 Mp
+B-9           1103 B535555-A    Ni                 803 Mp
+B-10          1104 C575676-5    Ag Ni           B  913 Na
+B-11          1107 D998433-6  E Ni                 603 Mp
+B-12          1201 C430463-8    De Ni Po           524 Mp
+B-13          1207 E78A310-6    Lo Ni Wa           122 Mp
+B-14          1208 C655004-6  H Lo Ni              213 Mg
+B-15          1209 D250441-8    De Ni Po           922 Mp
+B-16          1305 CAA3510-9    Fl Ni              202 Mp
+B-17          1307 D5988AF-3  G                    101 Mp
+B-18          1308 C2009EE-A    Hi Na Va           714 Mp
+B-19          1309 D7A0454-4    De Ni              303 Mp
+B-20          1401 E566337-3    Lo Ni              303 Mp
+B-21          1404 E649201-5    Lo Ni              312 Mp
+B-22          1405 C6B0223-8  E De Lo Ni        A  901 Mp
+B-23          1407 C563333-7    Lo Ni              803 Mp
+B-24          1502 C435563-B  D Ni                 903 Mp
+B-25          1504 C722310-A  E Lo Ni Po           604 Mp
+B-26          1505 C200442-6    Ni Va              410 Mp
+B-27          1508 D8999A8-8    Hi In              222 Mp
+B-28          1509 C220642-9    De Na Ni Po        224 Mp
+B-29          1510 C885531-8  D Ag Ni              423 Mp
+B-30          1603 E7A3745-4    Fl                 803 Mp
+Brogaana      1604 A1005AC-G  G Ni Va              712 Mp
+B-32          1605 B75A545-B    Ni Wa              613 Mp
+B-33          1607 B9B3459-8  E Fl Ni           A  900 Mp
+B-34          1609 E799A98-7    Hi In              301 Mp
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Cctranni SECTOR: Wratwani Sector
+#
+# Jump-routes
+#
+$2407 2505 1 0 14
+$2407 2608 1 0 14
+$2407 2006 0 0 14
+$2006 2002 0 0 14
+$2004 2105 0 0 14
+$2003 1704 0 0 14
+$1704 1604 -1 0 14
+$2006 1607 -1 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1704 B858233-6    Lo Ni              123 Mp
+C-2           1705 X699553-4  H                 R  411 Mg
+C-3           1706 E30079A-4    Na Va              504 Mp
+C-4           1707 C78468D-7  G Ag Ni Ri           802 Mp
+C-5           1708 C411524-B  D Ic Ni              623 Mp
+C-6           1709 C646343-4  E Lo Ni              313 Mp
+C-7           1710 D695444-2  E Ni                 403 Mp
+C-8           1804 C220785-6  D De Na Po           403 Mp
+C-9           1806 C232274-7    Lo Ni Po        B  800 Na
+C-10          1808 C656112-7  H Lo Ni              824 Mg
+C-11          1809 E100841-8    Na Va              603 Mp
+C-12          1903 C3289A7-8    Hi In              204 Mp
+C-13          1906 C510737-8    Na                 213 Mp
+C-14          2001 C532101-7  H Lo Ni Po           513 Mg
+C-15          2002 B554300-8  E Lo Ni              905 Mp
+C-16          2003 A86A79A-D  D Ri Wa              902 Mp
+C-17          2004 B120533-A  G De Ni Po           311 Mp
+C-18          2005 D3417A9-3  D Po                 802 Mp
+C-19          2006 A433003-A  H Lo Ni Po           105 Mg
+C-20          2010 E36289B-6    Ri                 904 Mp
+C-21          2101 C687341-5    Lo Ni              804 Mp
+C-22          2103 C000AEF-C    As Hi Na           203 Mp
+C-23          2105 A3609CB-A    De Hi              812 Mp
+C-24          2106 C58047B-5    De Ni           B  501 Na
+C-25          2107 C554458-6    Ni                 804 Mp
+C-26          2110 E582320-6    Lo Ni              614 Mp
+C-27          2203 E7B158C-4    Fl Ni           A  921 Mp
+C-28          2204 C476330-9    Lo Ni              500 Mp
+C-29          2208 C746205-6  E Lo Ni              100 Mp
+C-30          2209 C898687-3  D Ag Ni              515 Mp
+C-31          2301 C358721-7    Ag                 605 Mp
+C-32          2304 C78A221-A  E Lo Ni Wa           814 Mp
+C-33          2305 C89A687-A    Ni Wa              503 Mp
+C-34          2309 D5519BA-3  G Hi Po              303 Mp
+C-35          2404 E462100-9  H Lo Ni              302 Mg
+C-36          2405 CA7A434-6  E Ni Wa              201 Mp
+C-37          2406 C85A400-7    Ni Wa              210 Mp
+C-38          2407 A577212-8  N Lo Ni              803 Mp
+C-39          2408 C7A3135-A  H Fl Lo Ni           100 Mg
+C-40          2410 C77558A-4  D Ag Ni              904 Mp
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Dratwan SECTOR: Wratwani Sector
+#
+# Jump-routes
+#
+$2609 2413 -1 1 14
+$2609 2605 0 0 14
+$2605 2505 0 0 14
+$2505 2407 -1 0 14
+$2608 2407 -1 0 14
+$2609 2806 0 0 14
+$2806 2803 0 0 14
+$2806 3204 0 0 14
+$3204 3205 0 0 14
+$3204 3103 0 0 14
+$3103 3101 0 0 14
+$3101 2701 0 0 14
+$3103 3002 0 0 14
+$3002 2803 0 0 14
+$2803 2806 0 0 14
+$2803 2703 0 0 14
+$2803 2701 0 0 14
+$2803 2505 0 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2504 D73A242-5    Lo Ni Wa           103 Mp
+D-2           2505 A7A0759-9    De                 814 Mp
+D-3           2506 C355255-8    Lo Ni              620 Mp
+D-4           2508 D222103-8  H Lo Ni Po           913 Mg
+D-5           2601 E325310-6    Lo Ni              704 Mp
+D-6           2602 C464332-8  E Lo Ni              204 Mp
+D-7           2603 E471200-7    Lo Ni              214 Mp
+D-8           2604 C200333-6    Lo Ni Va           802 Mp
+D-9           2605 B55849A-7  E Ni                 711 Mp
+D-10          2606 D577635-3    Ag Ni              714 Mp
+D-11          2607 C347886-8                       410 Mp
+D-12          2608 A676643-A    Ag Ni              714 Mp
+D-13          2609 B210ABF-B  F Hi Na              810 Mp
+D-14          2610 C686210-9    Lo Ni              313 Mp
+D-15          2701 B367333-8    Lo Ni              504 Mp
+D-16          2703 B34399A-A    Hi In Po           622 Mp
+D-17          2707 C34055A-B    De Ni Po           213 Mp
+D-18          2708 C886246-4  E Lo Ni              304 Mp
+D-19          2802 E613100-7  H Ic Lo Ni           324 Mg
+D-20          2803 A668000-C  H Ba Lo Ni           103 Mg
+D-21          2804 E557200-4    Lo Ni              903 Mp
+D-22          2805 C300777-9    Na Va           B  404 Na
+D-23          2806 A30045A-B  E Ni Va              820 Mp
+D-24          2808 X404651-1  H Ic Va           R  122 Mg
+D-25          2810 C896443-9  E Ni                 810 Mp
+D-26          2901 E77A166-8  H Lo Ni Wa           323 Mg
+D-27          2902 E558A78-A    Hi              B  303 Na 
+D-28          2907 C554669-4  G Ag Ni              613 Mp
+D-29          2909 C5A0510-6    De Ni              334 Mp
+D-30          3002 B120200-E    De Lo Ni Po        503 Mp
+D-31          3008 C736257-8    Lo Ni              702 Mp
+D-32          3101 B626ADC-D    Hi In              404 Mp
+D-33          3102 C210663-A    Na Ni              822 Mp
+D-34          3103 B67986A-8  D                    824 Mp
+D-35          3106 X8A877B-0  H Fl              R  110 Mg
+D-36          3109 D3539ED-6  G Hi Po              314 Mp
+D-37          3202 C446510-9  D Ag Ni              301 Mp
+D-38          3204 A9A8411-B  E Fl Ni              814 Mp
+D-39          3205 A675340-8    Lo Ni              400 Mp
+D-40          3208 C7A2311-6  E Fl Lo Ni           800 Mp
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Eratwan SECTOR: Wratwani Sector
+#
+# Jump-routes
+#
+$0519 0421 0 1 14
+$0218 3117 -1 0 14
+$0218 0519 0 0 14
+$0115 3213 -1 0 14
+$0115 0218 0 0 14
+$0115 0715 0 0 14
+$0519 0617 0 0 14
+$0617 0715 0 0 14
+$0515 0416 0 0 14
+$0416 0317 0 0 14
+$0317 0218 0 0 14
+$0715 0914 1 0 14
+$0617 1019 1 0 14
+$0413 0510 0 -1 10
+$0413 0616 0 0 10
+$0616 0919 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0111 C524311-5  E Lo Ni              204 Mp
+E-2           0112 B202376-8    Ic Lo Ni Va     B  625 Na
+E-3           0113 D489000-8  H Ba Lo Ni           703 Mg
+E-4           0114 A10027A-D    Lo Ni Va        B  500 Na
+E-5           0115 B150322-A  E De Lo Ni Po        711 Mp
+E-6           0116 C85A202-C    Lo Ni Wa           903 Mp
+E-7           0119 C868534-7    Ag Ni              610 Mp
+E-8           0211 C351414-9  E Ni Po              503 Mp
+E-9           0217 C2265AB-A    Ni                 403 Mp
+E-10          0218 B853AAA-A    Hi Po              124 Mp
+E-11          0220 C300476-9    Ni Va           B  504 Na
+E-12          0311 D565567-4    Ag Ni              100 Mp
+E-13          0312 D320443-4  E De Ni Po           824 Mp
+E-14          0315 B664213-7    Lo Ni              720 Mp
+E-15          0317 B657346-A    Lo Ni              704 Mp
+E-16          0318 BAD5575-9    Fl Ni           B  300 Na
+E-17          0319 C9A1301-8  E Fl Lo Ni           200 Mp
+Neperlla      0413 E478202-9    Lo Ni              802 Mp
+E-19          0414 D415200-5  E Ic Lo Ni           104 Mp
+E-20          0415 B8C4200-C  E Fl Lo Ni        A  213 Mp
+E-21          0416 B798554-7  D Ag Ni              805 Mp
+E-22          0418 C876224-9  E Lo Ni              603 Mp
+E-23          0419 C4828AE-4  G                    204 Mp
+E-24          0420 D656344-5  E Lo Ni              312 Mp
+E-25          0512 C446330-6  E Lo Ni              711 Mp
+E-26          0515 A210685-B  G Na Ni              904 Mp
+E-27          0516 C625457-8  E Ni                 704 Mp
+E-28          0518 E642899-4    Po                 900 Mp
+E-29          0519 B997669-8    Ag Ni              715 Mp
+E-30          0614 X5407AA-0  H De Po           R  310 Mg
+Hawanni       0616 C669424-A  E Ni                 501 Mp
+E-32          0617 B453552-A    Ni Po              500 Mp
+E-33          0619 C7A3667-6    Fl Ni              801 Mp
+E-34          0713 C400658-B    Na Ni Va           205 Mp
+E-35          0714 C673334-9  E Lo Ni              614 Mp
+E-36          0715 A76A232-C    Lo Ni Wa           102 Mp
+E-37          0811 C598553-A  D Ag Ni              302 Mp
+E-38          0814 CA987A7-7    Ag                 405 Mp
+E-39          0818 D87A205-6    Lo Ni Wa           424 Mp
+E-40          0820 C443225-8  E Lo Ni Po           605 Mp
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Frawrat SECTOR: Wratwani Sector
+#
+# Jump-routes
+#
+$0914 0715 -1 0 14
+$0914 0911 0 0 14
+$0911 1211 0 0 14
+$1211 1312 0 0 14
+$1312 1415 0 0 14
+$0914 1215 0 0 14
+$1215 1318 0 0 14
+$1318 1319 0 0 14
+$1319 1219 0 0 14
+$1219 1019 0 0 14
+$1019 0617 -1 0 14
+$1319 1617 0 0 14
+$1617 1415 0 0 14
+$1019 1121 0 1 14
+$1319 1521 0 1 14
+$0911 0808 -1 -1 14
+$1617 1919 1 0 14
+$1312 1711 1 0 14
+$0919 0616 -1 0 10
+$0919 1122 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0911 B683564-B  D Ni                 803 Mp
+F-2           0912 B632635-8  G Na Ni Po           121 Mp
+F-3           0913 E584677-4    Ag Ni Ri        B  304 Na
+F-4           0914 B448985-B  D Hi In              215 Mp
+F-5           0918 E463669-3    Ni Ri              904 Mp
+Faaniki       0919 C667244-6  E Lo Ni              101 Mp
+F-7           1011 C347577-9    Ag Ni           B  803 Na
+F-8           1012 C100111-B  H Lo Ni Va           102 Mg
+F-9           1013 C764433-4    Ni                 612 Mp
+F-10          1017 C776898-4                       802 Mp
+F-11          1019 B565984-A  G Hi                 205 Mp
+F-12          1111 C574242-8  E Lo Ni              824 Mp
+F-13          1114 E510843-6    Na                 710 Mp
+F-14          1116 D426598-8  D Ni                 505 Mp
+F-15          1117 D9D5844-2  D Fl                 603 Mp
+F-16          1118 C6A0A9D-C    De Hi              604 Mp
+F-17          1211 B55479C-8  D Ag                 913 Mp
+F-18          1212 C7B48AB-8    Fl              A  602 Mp
+F-19          1215 A686587-B    Ag Ni              804 Mp
+F-20          1216 C776ACE-8  G Hi In              915 Mp
+F-21          1217 D998321-2  E Lo Ni              913 Mp
+F-22          1219 A110978-D    Hi Na           B  603 Na
+F-23          1312 A644689-9  D Ag Ni              414 Mp
+F-24          1315 C439400-A    Ni                 503 Mp
+F-25          1316 C245357-B    Lo Ni              605 Mp
+F-26          1318 A66538A-A  E Lo Ni              424 Mp
+F-27          1319 A483345-A    Lo Ni              602 Mp
+F-28          1320 C225774-A                    B  901 Na
+F-29          1411 D645441-2    Ni                 900 Mp
+F-30          1414 E6A4653-6    Fl Ni              503 Mp
+F-31          1415 B638000-9  H Ba Lo Ni           503 Mg
+F-32          1418 X674249-0  H Lo              R  501 Mg
+F-33          1512 E8B48AA-5    Fl              A  705 Mp
+F-34          1513 E797410-4    Ni                 401 Mp
+F-35          1514 C785669-8    Ag Ni Ri           910 Mp
+F-36          1516 C75296A-7    Hi Po              620 Mp
+F-37          1612 C6A3479-6    Fl Ni           B  313 Na
+F-38          1615 C5A36BA-9    Fl Ni              902 Mp
+F-39          1617 A9A5723-8    Fl                 532 Mp
+F-40          1618 C69A576-6    Ni Wa           B  713 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Gherwa SECTOR: Wratwani Sector
+#
+# Jump-routes
+#
+$1919 1921 0 1 14
+$1919 1617 -1 0 14
+$2220 2322 0 1 14
+$2220 2219 0 0 14
+$2219 2318 0 0 14
+$2318 2515 1 0 14
+$2318 2116 0 0 14
+$2116 1915 0 0 14
+$1915 1919 0 0 14
+$1919 2219 0 0 14
+$1811 2213 0 0 14
+$2213 2515 1 0 14
+$1813 2012 0 0 14
+$2012 2011 0 0 14
+$2213 2413 0 0 14
+$2413 2412 0 0 14
+$2413 2609 1 -1 14
+$1711 1607 -1 -1 14
+$1711 1811 0 0 14
+$1711 1312 -1 0 14
+$1813 1915 0 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1711 C585233-8    Lo Ni              300 Mp
+G-2           1712 C554866-5                       915 Mp
+G-3           1716 D63757A-3    Ni              B  315 Na
+G-4           1719 D610403-4  E Ni                 704 Mp
+G-5           1720 C879411-A    Ni                 305 Mp
+G-6           1811 B443434-9  E Ni Po              304 Mp
+G-7           1813 A2517AB-D  G Po                 803 Mp
+G-8           1814 D447661-2  D Ag Ni              810 Mp
+G-9           1815 C84789B-4  G                    803 Mp
+G-10          1818 D757423-7  E Ni                 824 Mp
+G-11          1911 E332765-4    Na Po              114 Mp
+G-12          1912 C9B5576-A  D Fl Ni           A  305 Mp
+G-13          1913 B757104-C  H Lo Ni              603 Mg
+G-14          1914 C342572-6    Ni Po           B  923 Na
+G-15          1915 B7868CA-5                       604 Mp
+G-16          1916 D326454-8  E Ni                 903 Mp
+G-17          1918 C659784-5  D                    922 Mp
+G-18          1919 B7777C8-7    Ag                 504 Mp
+G-19          1920 C340610-5    De Ni Po           524 Mp
+G-20          2011 B563302-C  E Lo Ni              314 Mp
+G-21          2012 B997557-8  D Ag Ni              904 Mp
+G-22          2015 B381578-7    Ni              B  103 Na
+G-23          2113 C633621-7    Na Ni Po           114 Mp
+G-24          2114 C343445-9  E Ni Po              404 Mp
+G-25          2116 A8A3365-C    Fl Lo Ni           813 Mp
+G-26          2213 A5637BB-A  G                    520 Mp
+G-27          2216 C558322-4  E Lo Ni              123 Mp
+G-28          2218 C265724-8  D Ag                 802 Mp
+G-29          2219 A8A3765-9  D Fl                 404 Mp
+G-30          2220 B27398A-B  G Hi In              604 Mp
+G-31          2312 C47478C-9  D Ag                 500 Mp
+G-32          2313 C7B4341-A  E Fl Lo Ni        A  112 Mp
+G-33          2318 B999550-C  D Ni                 900 Mp
+G-34          2319 C252100-A  H Lo Ni Po           411 Mg
+G-35          2412 B888032-8  H Lo Ni              304 Mg
+G-36          2413 B300543-C    Ni Va              303 Mp
+G-37          2414 C576ACE-9  F Hi In              711 Mp
+G-38          2415 C55256A-7    Ni Po              624 Mp
+G-39          2416 C857200-8    Lo Ni              600 Mp
+G-40          2419 DA69666-5  D Ni Ri              803 Mp
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hwratt SECTOR: Wratwani Sector
+#
+# Jump-routes
+#
+$2515 2318 -1 0 14
+$2515 2213 -1 0 14
+$2515 2716 0 0 14
+$2716 2815 0 0 14
+$2716 3018 0 0 14
+$3018 3121 0 1 14
+$3018 2821 0 1 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2511 B403477-A    Ic Ni Va        B  402 Na
+H-2           2512 C98A633-A  G Ni Wa              924 Mp
+H-3           2514 C337646-5    Ni                 213 Mp
+H-4           2515 A658668-7  D Ag Ni              604 Mp
+H-5           2518 X242000-2  H Ba Lo Po        R  904 Mg
+H-6           2519 C3266AD-8  D Ni                 803 Mp
+H-7           2520 C234310-6    Lo Ni              203 Mp
+H-8           2611 E464102-7  H Lo Ni              512 Mg
+H-9           2614 E652367-6    Lo Ni Po           504 Mp
+H-10          2615 E9E5452-4    Fl Ni              402 Mp
+H-11          2616 E4488CD-4                       801 Mp
+H-12          2619 C739445-8  E Ni                 500 Mp
+H-13          2713 C11046A-C  E Ni                 403 Mp
+H-14          2716 A667635-C    Ag Ni              503 Mp
+H-15          2720 C33388B-6  G Na Po              602 Mp
+H-16          2811 C85A877-6    Wa              B  204 Na
+H-17          2813 B554676-5    Ag Ni           B  613 Na
+H-18          2815 B864357-8  E Lo Ni              805 Mp
+H-19          2818 E7626BF-2    Ni                 415 Mp
+H-20          2916 C311303-C  E Ic Lo Ni           703 Mp
+H-21          2920 C765864-6  D Ri                 823 Mp
+H-22          3011 C556244-8  E Lo Ni              415 Mp
+H-23          3012 C768674-8    Ag Ni Ri        B  213 Na
+H-24          3018 B220400-C    De Ni Po           301 Mp
+H-25          3111 E9C4467-6    Fl Ni           A  424 Mp
+H-26          3112 B000546-B    As Ni              803 Mp
+H-27          3113 C486753-5    Ag Ri              204 Mp
+H-28          3116 E8857CA-5    Ag                 313 Mp
+H-29          3117 C777023-8  H Lo Ni              704 Mg
+H-30          3212 B565263-7  E Lo Ni              512 Mp
+H-31          3218 C728333-8  E Lo Ni              301 Mp
+H-32          3219 C845537-4  D Ag Ni              400 Mp
+H-33          3220 C584764-8    Ag Ri              413 Mp
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Iwratin SECTOR: Wratwani Sector
+#
+# Jump-routes
+#
+$0228 3230 -1 0 14
+$0123 3122 -1 0 14
+$0123 0326 0 0 14
+$0326 0228 0 0 14
+$0326 0727 0 0 14
+$0727 0729 0 0 14
+$0729 0830 0 0 14
+$0228 0529 0 0 14
+$0529 0729 0 0 14
+$0727 0926 1 0 14
+$0727 0526 0 0 14
+$0526 0425 0 0 14
+$0425 0326 0 0 14
+$0123 0421 0 0 14
+$0421 0519 0 -1 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0123 B404444-8    Ic Ni Va           914 Mp
+I-2           0124 D63677A-4                    B  804 Na
+I-3           0126 C737635-5    Ni                 413 Mp
+I-4           0127 D879599-7    Ni                 301 Mp
+I-5           0128 C99A568-A  D Ni Wa              121 Mp
+I-6           0226 C668772-4    Ag Ri           B  802 Na
+I-7           0227 E644888-2                       824 Mp
+I-8           0228 B354786-9  G Ag                 304 Mp
+I-9           0322 E775644-4    Ag Ni              733 Mp
+I-10          0323 C987464-6    Ni                 300 Mp
+I-11          0324 C613541-5    Ic Ni              402 Mp
+I-12          0325 E558625-3    Ag Ni              612 Mp
+I-13          0326 A34258A-D  D Ni Po              910 Mp
+I-14          0328 D687444-6  E Ni                 200 Mp
+I-15          0330 C526667-4    Ni                 424 Mp
+I-16          0421 A782544-8    Ni                 304 Mp
+I-17          0424 C551020-5  H Lo Ni Po           104 Mg
+I-18          0425 B5625A8-8  D Ni                 402 Mp
+I-19          0429 C32099A-9    De Hi In Na Po     302 Mp
+I-20          0430 C688699-7  D Ag Ni Ri           903 Mp
+I-21          0521 C786979-5    Hi              B  500 Na
+I-22          0524 C445375-9    Lo Ni           B  520 Na
+I-23          0525 C344757-5    Ag                 323 Mp
+I-24          0526 B966768-5    Ag Ri              824 Mp
+I-25          0527 C78479B-7    Ag Ri              903 Mp
+I-26          0529 B410488-D  E Ni                 123 Mp
+I-27          0530 E100564-8    Ni Va              704 Mp
+I-28          0621 D596340-3    Lo Ni              503 Mp
+I-29          0622 C452763-7    Po                 903 Mp
+I-30          0625 E562320-4    Lo Ni              204 Mp
+I-31          0628 C666645-8    Ag Ni Ri           303 Mp
+I-32          0629 C461565-7  F Ni                 103 Mp
+I-33          0630 E879465-7    Ni                 924 Mp
+I-34          0721 X666425-0  H                 R  404 Mg
+I-35          0727 A213314-C    Ic Lo Ni           504 Mp
+I-36          0729 A864321-8    Lo Ni              200 Mp
+I-37          0823 E356788-5    Ag                 803 Mp
+I-38          0824 C647323-7    Lo Ni              601 Mp
+I-39          0827 E665200-4    Lo Ni              723 Mp
+I-40          0830 B55798B-B    Hi                 825 Mp
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jawrata SECTOR: Wratwani Sector
+#
+# Jump-routes
+#
+$0926 0727 -1 0 14
+$1121 1019 0 -1 14
+$1121 1122 0 0 14
+$1521 1319 0 -1 14
+$1521 1524 0 0 14
+$1524 1122 0 0 14
+$1524 1427 0 0 14
+$1427 1329 0 0 14
+$1329 1027 0 0 14
+$1027 0926 0 0 14
+$1329 1629 0 0 14
+$1629 1728 1 0 14
+$1524 1723 1 0 14
+$1122 0919 0 -1 10
+$1122 1225 0 0 10
+$1225 1428 0 0 10
+$1428 1631 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0921 B878875-9                    B  110 Na
+J-2           0926 A739130-E  H Lo Ni              313 Mg
+J-3           0927 C76379B-8    Ri                 421 Mp
+J-4           0928 C9C7110-A  H Fl Lo Ni        A  204 Mg
+J-5           0929 C676446-4  E Ni                 900 Mp
+J-6           1021 C7B4262-5    Fl Lo Ni        A  502 Mp
+J-7           1023 C34059A-6    De Ni Po           902 Mp
+J-8           1025 C744424-8    Ni                 824 Mp
+J-9           1027 B443577-B    Ni Po           B  334 Na
+J-10          1029 E536312-8    Lo Ni              504 Mp
+J-11          1121 A667321-D  E Lo Ni              620 Mp
+Jadea         1122 B656457-9    Ni                 103 Mp
+J-13          1123 C665576-6    Ag Ni           B  915 Na
+J-14          1125 C8B268A-7    Fl Ni           A  512 Mp
+J-15          1128 D969635-4  D Ni                 504 Mp
+J-16          1129 C565362-9    Lo Ni              400 Mp
+J-17          1222 E725763-3                       201 Mp
+Zawihn        1225 C300444-B    Ni Va              711 Mp
+J-19          1324 D9A4885-2  G Fl                 421 Mp
+J-20          1326 C532300-6    Lo Ni Po           903 Mp
+J-21          1329 A87A240-E  E Lo Ni Wa           114 Mp
+J-22          1330 C6B438C-A    Fl Lo Ni        A  914 Mp
+J-23          1422 C344213-9  E Lo Ni              920 Mp
+J-24          1424 C505521-A  D Ic Ni Va           504 Mp
+J-25          1426 C540120-6  H De Lo Ni Po        801 Mg
+J-26          1427 B426310-C  N Lo Ni              412 Mp
+Masawii       1428 C523465-7  E Ni Po              303 Mp
+J-28          1521 B889735-8  G                    100 Mp
+J-29          1523 C000567-9    As Ni              715 Mp
+J-30          1524 A66288D-7    Ri                 403 Mp
+J-31          1526 E412AA5-C    Hi Ic Na           203 Mp
+J-32          1621 C351433-8  E Ni Po              104 Mp
+J-33          1629 B669799-A  D Ri                 301 Mp
+J-34          1630 C7A1210-8    Fl Lo Ni           603 Mp
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kyrwran SECTOR: Wratwani Sector
+#
+# Jump-routes
+#
+$1728 1629 -1 0 14
+$1728 1723 0 0 14
+$1723 1524 -1 0 14
+$1723 1923 0 0 14
+$1923 2022 0 0 14
+$2022 2123 0 0 14
+$2123 2224 0 0 14
+$2224 2328 0 0 14
+$2328 2428 0 0 14
+$2123 2322 0 0 14
+$2123 1921 0 0 14
+$1921 1919 0 -1 14
+$2322 2220 0 -1 14
+$2428 2729 1 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1723 A5866AB-7  D Ag Ni              203 Mp
+K-2           1726 B3449BC-9  G Hi In              904 Mp
+K-3           1727 C5549EB-A  G Hi                 922 Mp
+K-4           1728 B784652-B  D Ag Ni Ri           624 Mp
+K-5           1729 C7697CA-9                       225 Mp
+K-6           1730 C573788-5                       822 Mp
+K-7           1823 C203542-A    Ic Ni Va           102 Mp
+K-8           1824 C353889-7  F Po                 704 Mp
+K-9           1826 C410354-7    Lo Ni              932 Mp
+K-10          1827 C578785-3    Ag                 302 Mp
+K-11          1828 D864554-7  D Ag Ni              522 Mp
+K-12          1829 C512762-9    Ic Na              720 Mp
+K-13          1830 E627445-3    Ni                 611 Mp
+K-14          1921 B110452-B  E Ni                 703 Mp
+K-15          1922 D522778-3    Na Po           B  205 Na
+K-16          1923 B525222-8  E Lo Ni              220 Mp
+K-17          1925 E100526-8    Ni Va              103 Mp
+K-18          1928 E7579AD-4    Hi                 102 Mp
+K-19          2022 B7B36AA-7    Fl Ni           A  712 Mp
+K-20          2023 D9B1657-7  D Fl Ni           A  711 Mp
+K-21          2025 C567864-4  D Ri                 614 Mp
+K-22          2026 E99A101-6  H Lo Ni Wa           314 Mg
+K-23          2028 C200300-C  E Lo Ni Va           503 Mp
+K-24          2029 C8A279D-6  D Fl                 923 Mp
+K-25          2121 C4439DC-9  G Hi In Po           324 Mp
+K-26          2123 B4778BD-B  F                    202 Mp
+K-27          2125 E6A0442-5    De Ni              904 Mp
+K-28          2223 CAC1410-9    Fl Ni           A  514 Mp
+K-29          2224 B637633-B    Ni                 804 Mp
+K-30          2225 C542777-6    Po              B  320 Na
+K-31          2226 D676454-4  E Ni                 600 Mp
+K-32          2230 C000679-9    As Na Ni        B  901 Na
+K-33          2322 B400420-B  E Ni Va              310 Mp
+K-34          2326 C884447-4  E Ni                 214 Mp
+K-35          2328 B7C666A-8    Fl Ni           A  501 Mp
+K-36          2421 C5955AC-6    Ag Ni              530 Mp
+K-37          2423 C565300-A    Lo Ni              613 Mp
+K-38          2428 B97A489-8  E Ni Wa              100 Mp
+K-39          2429 D595564-3  D Ag Ni              603 Mp
+K-40          2430 C2608CC-5    De                 914 Mp
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Latwani SECTOR: Wratwani Sector
+#
+# Jump-routes
+#
+$3121 3018 0 -1 14
+$3121 3125 0 0 14
+$2821 3018 0 -1 14
+$2821 2824 0 0 14
+$2824 2826 0 0 14
+$3125 3126 0 0 14
+$3126 3027 0 0 14
+$3027 2729 0 0 14
+$2729 2826 0 0 14
+$2729 2428 -1 0 14
+$2729 2831 0 1 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2522 E320954-A    De Hi In Na Po     812 Mp
+L-2           2524 C7447C7-4    Ag                 722 Mp
+L-3           2525 E686557-8    Ag Ni              104 Mp
+L-4           2526 E544799-2    Ag                 502 Mp
+L-5           2527 C688310-7    Lo Ni              504 Mp
+L-6           2622 C996621-5  D Ag Ni              503 Mp
+L-7           2624 C445551-B  D Ag Ni              310 Mp
+L-8           2625 D000388-6    As Lo Ni           715 Mp
+L-9           2629 C224151-C  H Lo Ni              704 Mg
+L-10          2722 E584011-2  H Lo Ni              624 Mg
+L-11          2723 C7A3444-A    Fl Ni              914 Mp
+L-12          2724 X887568-0  H Ag              R  712 Mg
+L-13          2729 A412488-F  E Ic Ni              701 Mp
+L-14          2821 BA97236-B    Lo Ni              600 Mp
+L-15          2823 C5348B9-5  G                    824 Mp
+L-16          2824 B210675-8    Na Ni           B  820 Na
+L-17          2825 C110524-7    Ni                 313 Mp
+L-18          2826 B567356-9  E Lo Ni              705 Mp
+L-19          2828 C33759B-8    Ni                 703 Mp
+L-20          2829 D100588-6  D Ni Va              210 Mp
+L-21          2921 D9C4688-6  D Fl Ni           A  401 Mp
+L-22          2923 C160610-7    De Ni              614 Mp
+L-23          2928 B449101-9  H Lo Ni              615 Mg
+L-24          2930 B243675-8    Ni Po           B  103 Na
+L-25          3021 X421500-2  H Po              R  923 Mg
+L-26          3026 C767421-7    Ni                 914 Mp
+L-27          3027 B402897-9  G Ic Na Va           400 Mp
+L-28          3028 C63369C-9    Na Ni Po           702 Mp
+L-29          3029 E100898-9    Na Va              125 Mp
+L-30          3121 A465544-C    Ag Ni              312 Mp
+L-31          3125 B585510-B  D Ag Ni              403 Mp
+L-32          3126 B2606BE-9  D De Ni              504 Mp
+L-33          3127 E370427-6    De Ni              723 Mp
+L-34          3128 E14065A-6    De Ni Po           613 Mp
+L-35          3221 C639531-B  D Ni                 210 Mp
+L-36          3222 C9B2888-8    Fl              A  812 Mp
+L-37          3223 C455556-6    Ag Ni              302 Mp
+L-38          3227 C99A323-7  E Lo Ni Wa           303 Mp
+L-39          3228 E4448AA-3                       305 Mp
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Mawrat SECTOR: Wratwani Sector
+#
+# Jump-routes
+#
+$0231 3230 -1 -1 14
+$0231 0334 0 0 14
+$0334 0436 0 0 14
+$0239 0502 0 1 2
+$0239 3139 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0231 B7B3A73-F  F Fl Hi           A  500 Mp
+M-2           0236 E55396A-4    Hi Po              302 Na
+Naloode       0239 E98A9DB-4    Hi Wa              823 Na
+M-4           0334 B240852-8    De Po              402 Mp
+M-5           0436 B9C6755-9  F Fl              A  113 Mp
+M-6           0638 C32677C-5                    B  102 Na
+M-7           0736 E000546-7    As Ni              300 Na
+M-8           0837 C210787-8  E Na                 603 Na
+M-9           0840 B537034-6  H Lo Ni              500 Mg
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Natrane SECTOR: Wratwani Sector
+#
+# Jump-routes
+#
+$1631 1428 0 -1 10
+$1631 1734 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0934 D231699-4  S Na Ni Po           514 Na
+N-2           1431 E425899-5                       104 Na
+N-3           1433 D5748AA-1                       803 Na
+N-4           1536 A855652-8  D Ag Ni              202 Na
+N-5           1538 X474797-1  H Ag              R  502 Mg
+Nostromi      1631 C367523-A    Ag Ni              103 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Owratwa SECTOR: Wratwani Sector
+#
+# Jump-routes
+#
+$1734 1631 -1 0 10
+$1734 2035 0 0 10
+$2035 2336 0 0 10
+$2336 2537 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1733 C9A4000-9  H Ba Fl Lo Ni        903 Mg
+Orinda        1734 D9E4A74-7    Fl Hi           B  714 Na
+O-3           1836 C998896-7                       904 Na
+Jasparr       2035 A763667-7    Ni Ri              924 Na
+O-5           2234 C460638-4  S De Ni              621 Na
+O-6           2236 D576788-3  S Ag                 604 Na
+Sumarra       2336 C658233-5  S Lo Ni              324 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Patraine SECTOR: Wratwani Sector
+#
+# Jump-routes
+#
+$2831 2729 0 -1 14
+$2831 2933 0 0 14
+$2933 3234 0 0 14
+$2537 2336 -1 0 10
+$2537 2839 0 0 10
+$2839 3101 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Liverri       2537 A79646B-A    Ni                 104 Na
+P-2           2735 E75A357-6    Lo Ni Wa           323 Na
+P-3           2739 B433223-9  N Lo Ni Po           801 Na
+P-4           2831 B798301-C  E Lo Ni              504 Mp
+P-5           2833 D512358-5    Ic Lo Ni           600 Na
+Parkka        2839 C442696-7    Ni Po              514 Na
+P-7           2933 C3768A9-4  F                    503 Mp
+P-8           3133 C232988-B    Hi In Na Po        404 Na
+P-9           3136 C797797-8  S Ag                 403 Na
+P-10          3234 A150856-B  D De Po              611 Mp
+

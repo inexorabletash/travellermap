@@ -1,0 +1,1108 @@
+Suaar Sector
+
+A: Ashuan                    a.dat
+B: Baanah                    b.dat
+C: Cashuar                   c.dat
+D: Deschuia                  d.dat
+E: Eeshuun                   e.dat
+F: Fash                      f.dat
+G: Ghuaar                    g.dat
+H: Hushu                     h.dat
+I: Ishfuaan                  i.dat
+J: Juishan                   j.dat
+K: Kiushu                    k.dat
+L: Laaru                     l.dat
+M: Muuaar                    m.dat
+N: Naasch                    n.dat
+O: Oshush                    o.dat
+P: Pinshuar                  p.dat
+
+Bases:
+E = Hillayag Navy
+F = Hillayag Scout
+G = Hillayag Navy & Scout
+H = Hillayag Army
+J = Klushan Navy
+K = Klushan Scout
+L = Klushan Navy & Scout
+M = Oshusheen Navy
+N = Navy
+O = Oshusheen Scout
+P = Oshusheen Navy & Scout
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+12 Hi = Hillayag Federation
+05 Ki = Klushan Imperium
+07 Na = Non-Aligned
+03 Os = Oshusheen Commonwealth
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ashuan SECTOR: Suaar Sector
+#
+# Jump-routes
+#
+$0302 0202 0 0 12
+$0202 0203 0 0 12
+$0302 0305 0 0 12
+$0305 0507 0 0 12
+$0207 0310 0 0 12
+$0106 0105 0 0 12
+$0310 0509 0 0 12
+$0507 0706 0 0 12
+$0509 0612 0 1 12
+$0806 1106 1 0 12
+$0502 0438 0 -1 12
+$0502 0802 0 0 12
+$0502 0302 0 0 12
+$0502 0305 0 0 12
+$0507 0509 0 0 12
+$0509 0810 0 0 12
+$0810 0910 1 0 12
+$0802 1102 1 0 12
+$0202 0203 0 0 12
+$0203 0105 0 0 12
+$0105 0106 0 0 12
+$0106 0207 0 0 12
+$0806 0706 0 0 12
+$0710 0610 0 0 12
+$0310 0412 0 1 2
+$0310 0306 0 0 2
+$0306 0202 0 0 2
+$0202 3140 -1 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0103 E548320-2    Lo Ni              102 Hi
+A-2           0105 B325565-A    Ni                 504 Hi
+A-3           0106 B564000-9  F Ba Lo Ni           214 Hi
+A-4           0108 D3217A6-3  H Na Po              204 Hi
+Greelic       0202 B326556-B  E Ni                 725 Hi
+A-6           0203 B848884-7                       102 Hi
+A-7           0207 B00048C-E  F As Ni              220 Hi
+A-8           0208 C9B3300-A  F Fl Lo Ni        A  602 Hi
+A-9           0209 C426562-8  E Ni                 602 Hi
+A-10          0302 A8B1410-D  F Fl Ni           A  423 Hi
+A-11          0305 B623333-C  F Lo Ni Po           502 Hi
+Eannsha       0306 D443598-8  E Ni Po              223 Hi
+A-13          0307 C150676-7    De Ni Po        B  300 Na
+Allshuus      0310 B555776-A    Ag              B  114 Na
+A-15          0402 C31088C-7    Na                 902 Hi
+A-16          0403 B567645-6    Ag Ni Ri           800 Hi
+A-17          0404 C26068A-8  E De Ni Ri           812 Hi
+A-18          0407 D454524-3  E Ag Ni              401 Hi
+A-19          0408 C223504-8  E Ni Po              414 Hi
+A-20          0410 C87A653-B    Ni Wa              804 Hi
+A-21          0502 B77A000-8    Ba Lo Ni Wa        513 Hi
+A-22          0503 C434410-6    Ni                 202 Hi
+A-23          0504 E7C2789-5    Fl              A  403 Hi
+A-24          0506 E355478-4    Ni              B  120 Na
+A-25          0507 B637885-9  G                    213 Hi
+A-26          0508 C9B6513-8  E Fl Ni           A  613 Hi
+A-27          0509 B97A304-D    Lo Ni Wa           502 Hi
+A-28          0605 C757552-9  E Ag Ni              821 Hi
+A-29          0606 C443363-7  F Lo Ni Po           700 Hi
+A-30          0608 D88A464-7    Ni Wa              825 Hi
+A-31          0610 B753569-7    Ni Po              805 Hi
+A-32          0701 C64879C-3    Ag                 713 Hi
+A-33          0702 C24079D-7    De Po              720 Hi
+A-34          0706 B889413-A  F Ni                 901 Hi
+A-35          0707 C300336-8    Lo Ni Va           204 Hi
+A-36          0710 B222763-7  E Na Po              400 Hi
+A-37          0802 B628300-A  F Lo Ni              405 Hi
+A-38          0806 B551A76-9  H Hi Po              902 Hi
+A-39          0807 C6769A7-A    Hi In              210 Hi
+A-40          0810 B310414-B  F Ni                 600 Hi
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Baanah SECTOR: Suaar Sector
+#
+# Jump-routes
+#
+$1610 1507 0 0 12
+$1507 1106 0 0 12
+$1106 0806 -1 0 12
+$1106 1209 0 0 12
+$1209 0910 0 0 12
+$0910 1011 0 1 12
+$1209 1011 0 1 12
+$1610 1209 0 0 12
+$0910 0810 -1 0 12
+$1507 1804 1 0 12
+$1610 2008 1 0 12
+$1502 1739 1 -1 12
+$1502 1102 0 0 12
+$1102 1106 0 0 12
+$1102 0802 -1 0 12
+$1102 1140 0 -1 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           0902 D7477A8-6    Ag                 523 Hi
+B-2           0910 B77698D-B  G Hi In              102 Hi
+B-3           1004 E511432-8    Ic Ni              104 Hi
+B-4           1008 E000311-9    As Lo Ni           602 Hi
+B-5           1102 B587511-9  E Ag Ni              324 Hi
+B-6           1103 D100488-9    Ni Va              304 Hi
+B-7           1106 A00099C-F    As Hi Na           930 Hi
+B-8           1108 E66A847-8    Ri Wa              604 Hi
+B-9           1109 E540148-7    De Lo Ni Po        103 Hi
+B-10          1204 E574464-7    Ni                 220 Hi
+B-11          1206 C110400-8  F Ni                 903 Hi
+B-12          1209 B6657BE-A    Ag                 414 Hi
+B-13          1210 C4519DG-4    Hi Po              720 Hi
+B-14          1302 C34655A-A  E Ag Ni              703 Hi
+B-15          1308 C345253-6  F Lo Ni              220 Hi
+B-16          1309 CAC3554-B    Fl Ni           A  114 Hi
+B-17          1402 E868855-2    Ri                 700 Hi
+B-18          1404 E5A599B-6    Fl Hi              603 Hi
+B-19          1405 C745578-5  E Ag Ni           B  810 Na
+B-20          1406 C343663-4    Ni Po              612 Hi
+Banarr        1502 A000422-G  F As Ni Cx           514 Hi
+B-22          1503 C68A37A-A    Lo Ni Wa        B  804 Na
+B-23          1504 C688474-9    Ni              B  404 Na
+B-24          1507 A556469-D  F Ni                 200 Hi
+B-25          1510 E210510-8    Ni                 703 Hi
+B-26          1602 C35678D-5  G Ag                 802 Hi
+B-27          1603 X437031-2    Lo              R  803 Hi
+B-28          1605 C411967-8  H Hi Ic Na           215 Hi
+B-29          1607 C8D3644-4  G Fl Ni              504 Hi
+B-30          1608 C331668-A    Na Ni Po           902 Hi
+B-31          1610 A100499-D    Ni Va              613 Hi
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Cashuar SECTOR: Suaar Sector
+#
+# Jump-routes
+#
+$2008 2209 0 0 12
+$1804 1906 0 0 12
+$1906 2008 0 0 12
+$1804 2003 0 0 12
+$1906 2304 0 0 12
+$2209 2309 0 0 12
+$1902 1839 0 -1 12
+$1902 2003 0 0 12
+$1804 1507 -1 0 12
+$2008 1610 -1 0 12
+$2204 2306 0 0 12
+$2306 2309 0 0 12
+$2304 2302 0 0 12
+$2302 2338 0 -1 12
+$2302 2604 1 0 10
+$2302 1940 0 -1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1701 C551000-4  F Ba Lo Ni Po        420 Hi
+C-2           1707 E638357-5    Lo Ni              510 Hi
+C-3           1709 C354322-9  F Lo Ni              900 Hi
+C-4           1801 C222837-5    Na Po              504 Hi
+C-5           1804 C441AAA-D  H Hi In Po           805 Hi
+C-6           1805 C449302-C    Lo Ni              114 Hi
+C-7           1806 C41097A-C    Hi Na           B  804 Na
+C-8           1902 C644223-9  F Lo Ni              404 Hi
+C-9           1903 C360100-A    De Lo Ni           822 Hi
+C-10          1904 D67A422-9  F Ni Wa              122 Hi
+C-11          1906 B353677-9    Ni Po           B  303 Na
+C-12          1909 C578777-7    Ag              B  612 Na
+C-13          2002 C672000-8  F Ba Lo Ni           104 Hi
+C-14          2003 A546111-9    Lo Ni              404 Hi
+C-15          2005 B437344-9    Lo Ni              803 Hi
+C-16          2008 A693303-E  F Lo Ni              723 Hi
+C-17          2009 C4748AF-5                       603 Hi
+C-18          2010 C6B2210-5    Fl Lo Ni        A  814 Hi
+C-19          2101 C555413-9    Ni                 314 Hi
+C-20          2102 C665577-4    Ag Ni           B  605 Na
+C-21          2103 D6B2114-4  F Fl Lo Ni        A  404 Hi
+C-22          2104 C200887-9    Na Va              410 Hi
+C-23          2108 EAA7632-4    Fl Ni              703 Hi
+C-24          2109 A645014-7    Lo Ni              400 Hi
+C-25          2110 C7C3687-4  E Fl Ni           A  624 Hi
+C-26          2203 D857542-2    Ag Ni              112 Hi
+C-27          2204 B4368CA-B                       503 Hi
+C-28          2205 C593123-6    Lo Ni              602 Hi
+C-29          2209 A411367-A    Ic Lo Ni           504 Hi
+C-30          2210 E448010-4    Lo Ni              503 Hi
+C-31          2301 C464220-A  F Lo Ni              302 Hi
+Cliaboo       2302 B000421-9  F As Ni              712 Hi
+C-33          2303 C353048-4    Lo Ni Po           202 Hi
+C-34          2304 B642574-9    Ni Po              503 Hi
+C-35          2306 C432521-B    Ni Po              702 Hi
+C-36          2307 B6A0777-9    De              B  700 Na
+C-37          2308 C386201-6  F Lo Ni              900 Hi
+C-38          2309 A360434-9    De Ni              115 Hi
+C-39          2401 DACA985-7    Fl Hi Wa        A  300 Hi
+C-40          2404 B447311-9    Lo Ni              614 Hi
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Deschuia SECTOR: Suaar Sector
+#
+# Jump-routes
+#
+$2604 2807 0 0 10
+$2604 2302 -1 0 10
+$2807 3110 0 0 10
+$2808 3111 0 1 5
+$2808 3111 0 1 5
+$2710 2611 0 1 5
+$2710 2507 0 0 5
+$2507 2604 0 0 5
+$2604 2703 0 0 5
+$2703 2704 0 0 5
+$2704 2807 0 0 5
+$3110 0312 1 1 10
+$2703 2840 0 -1 5
+$3101 2840 0 -1 5
+$3101 0102 1 0 5
+$2807 2808 0 0 5
+$2808 2710 0 0 5
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2502 C6B4002-6    Fl Lo Ni        A  702 Ki
+D-2           2504 B3538A7-8    Po                 814 Ki
+D-3           2505 C885434-6    Ni                 801 Ki
+D-4           2506 E777655-6    Ag Ni              522 Ki
+D-5           2507 B7B4468-A    Fl Ni           A  900 Ki
+D-6           2508 C555113-5  S Lo Ni              213 Ki
+D-7           2509 C303679-5  S Ic Na Ni Va     B  904 Ki
+D-8           2510 C642853-9  S Po                 810 Ki
+D-9           2601 C645546-4    Ag Ni              724 Ki
+Schanjar      2604 B743465-9  K Ni Po              311 Ki
+D-11          2609 D130999-7  S De Hi In Na Po     200 Ki
+D-12          2610 B694799-9  2 Ag                 624 Ki
+D-13          2703 A200263-C    Lo Ni Va           624 Ki
+D-14          2704 A330021-9    De Lo Ni Po        503 Ki
+D-15          2705 C240300-8  S De Lo Ni Po        714 Ki
+D-16          2709 D9A7335-5  S Fl Lo Ni           714 Ki
+D-17          2710 B1008C8-A    Na Va              513 Ki
+D-18          2806 C14078B-A  S De Po              603 Ki
+Dikjum        2807 B5A1742-6  S Fl                 404 Ki
+D-20          2808 A347899-D  2                    611 Ki
+D-21          2810 E85A564-5    Ni Wa              424 Ki
+D-22          2901 C656655-9  J Ag Ni              724 Ki
+D-23          2902 X445152-1    Lo              R  703 Na
+D-24          2903 C9558AA-5                       413 Ki
+D-25          2904 E320752-7    De Na Po           310 Ki
+D-26          2906 C412866-5  S Ic Na              405 Ki
+D-27          2910 D346221-7  S Lo Ni              502 Ki
+D-28          3001 D794A87-5  L Hi In              632 Ki
+D-29          3006 D467644-5  S Ag Ni Ri           204 Ki
+D-30          3007 C354343-9  S Lo Ni              200 Ki
+D-31          3008 E000213-8    As Lo Ni           524 Ki
+D-32          3009 C384466-5    Ni                 212 Ki
+D-33          3101 B53A659-9    Ni Wa              100 Ki
+D-34          3103 D696A7B-5    Hi In           B  304 Na
+D-35          3104 C554796-5    Ag                 112 Ki
+D-36          3109 C86A55A-9  S Ni Wa              422 Ki
+Arwiia        3110 E423266-6    Lo Ni Po           921 Ki
+D-38          3202 C767672-5  S Ag Ni Ri        B  104 Na
+D-39          3206 B559572-8  S Ni              B  224 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Eeshuun SECTOR: Suaar Sector
+#
+# Jump-routes
+#
+$0612 0509 0 -1 12
+$0519 0818 0 0 12
+$0519 0316 0 0 12
+$0612 1011 1 0 12
+$0316 0513 0 0 12
+$0513 0612 0 0 12
+$0818 0917 1 0 12
+$0519 0320 0 0 12
+$0619 0623 0 1 2
+$0619 0516 0 0 2
+$0516 0412 0 0 2
+$0412 0310 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0111 C000555-9    As Ni              903 Hi
+E-2           0112 E210667-7    Na Ni              715 Hi
+E-3           0118 E98A542-7    Ni Wa              901 Hi
+E-4           0211 E47857C-8    Ag Ni           B  804 Na
+E-5           0212 C4749CH-B  H Hi In              402 Hi
+E-6           0214 C867534-6    Ag Ni              104 Hi
+E-7           0217 E244689-2    Ag Ni              502 Hi
+E-8           0220 D485404-4    Ni                 402 Hi
+E-9           0311 E786999-3    Hi                 714 Hi
+E-10          0312 D6337AA-4    Na Po              913 Hi
+E-11          0315 C666221-9  F Lo Ni              804 Hi
+E-12          0316 B576400-9    Ni                 400 Hi
+E-13          0319 D846853-5                       101 Hi
+E-14          0320 B653555-8  E Ni Po              902 Hi
+Csaanee       0412 C505556-B  E Ic Ni Va           523 Hi
+E-16          0414 E636666-2    Ni                 223 Hi
+E-17          0415 B445884-6                       612 Hi
+E-18          0417 C562314-8  F Lo Ni              311 Hi
+E-19          0511 C8C8466-6    Fl Ni           A  302 Hi
+E-20          0513 B300789-C    Na Va              301 Hi
+E-21          0514 D301643-8    Ic Na Ni Va        223 Hi
+Flawarr       0516 C525776-7                    B  703 Na
+E-23          0517 C79A200-C    Lo Ni Wa           703 Hi
+E-24          0518 E65A762-3    Wa                 205 Hi
+E-25          0519 A150420-F  F De Ni Po           704 Hi
+E-26          0611 C7797BB-4  G                    914 Hi
+E-27          0612 B89A58A-9  E Ni Wa              112 Hi
+E-28          0613 C100599-8    Ni Va              714 Hi
+Ebbebaab      0619 C200774-9    Na Va           B  223 Na
+E-30          0620 B200675-8    Na Ni Va        B  703 Na
+E-31          0711 E8C1445-3    Fl Ni           A  815 Hi
+E-32          0712 DA9958B-4  E Ni                 212 Hi
+E-33          0713 C88879B-5    Ag Ri              900 Hi
+E-34          0714 C987320-8    Lo Ni              202 Hi
+E-35          0715 X555645-2    Ag              R  104 Hi
+E-36          0717 C5A0568-8  E De Ni              410 Hi
+E-37          0813 C461765-4    Ri                 700 Hi
+E-38          0814 C210120-6    Lo Ni              704 Hi
+E-39          0818 A573561-D  E Ni                 302 Hi
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Fash SECTOR: Suaar Sector
+#
+# Jump-routes
+#
+$1620 1621 0 1 5
+$1620 1720 1 0 5
+$1011 0913 0 0 12
+$1011 0910 0 -1 12
+$1011 1209 0 -1 12
+$1011 0612 -1 0 12
+$1516 1614 0 0 5
+$1614 1812 1 0 5
+$0913 1014 0 0 12
+$1614 1413 0 0 5
+$1614 1616 0 0 5
+$1616 1620 0 0 5
+$0917 0818 -1 0 12
+$0917 1014 0 0 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0913 A667552-C    Ag Ni              804 Hi
+F-2           0914 E253338-4    Lo Ni Po           203 Hi
+F-3           0917 B55586A-5                       503 Hi
+F-4           0920 EAB757C-5    Fl Ni           A  902 Na
+F-5           1011 A521967-E  H Hi In Na Po        824 Hi
+F-6           1013 D88A552-A    Ni Wa              115 Hi
+F-7           1014 A5837CC-A  G                    703 Hi
+F-8           1015 E100657-7    Na Ni Va           502 Hi
+F-9           1018 C477032-9  S Lo Ni              420 Na
+F-10          1019 E444365-3    Lo Ni              100 Na
+F-11          1111 D733211-5    Lo Ni Po           403 Hi
+F-12          1114 BAB5420-9  F Fl Ni           A  603 Hi
+F-13          1116 C357656-9    Ag Ni              203 Hi
+F-14          1118 D967110-6    Lo Ni              824 Na
+F-15          1214 CAC5679-4    Fl Ni           A  904 Na
+F-16          1216 E536477-3    Ni              B  800 Na
+F-17          1217 C768544-4  S Ag Ni              205 Na
+F-18          1220 C797A89-8  S Hi In              620 Na
+F-19          1315 C8A938A-6    Fl Lo Ni           320 Na
+F-20          1319 B20057B-8    Ni Va           B  604 Na
+F-21          1320 E777868-3                       804 Na
+F-22          1411 C5669B9-7    Hi                 504 Hi
+F-23          1413 B677400-8  K Ni                 404 Ki
+F-24          1414 C410100-B  K Lo Ni              705 Ki
+F-25          1418 C120556-8    De Ni Po           304 Na
+F-26          1419 C3475AB-7  S Ag Ni              610 Na
+F-27          1511 D666515-2    Ag Ni              215 Hi
+F-28          1513 D232866-7  J Na Po              603 Ki
+F-29          1514 C4008AC-7    Na Va              902 Ki
+F-30          1516 A776778-C    Ag              B  704 Na
+F-31          1518 C672642-7  S Ni                 904 Na
+F-32          1519 C9A7003-8    Fl Lo Ni           103 Na
+F-33          1611 C481747-7    Ri                 204 Hi
+F-34          1612 C555433-5    Ni                 703 Ki
+F-35          1614 B443954-B  L Hi In Po           914 Ki
+F-36          1616 B8B3212-8    Fl Lo Ni        A  203 Ki
+F-37          1620 B211333-9  K Ic Lo Ni           212 Ki
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ghuaar SECTOR: Suaar Sector
+#
+# Jump-routes
+#
+$1720 1620 -1 0 5
+$1720 1816 0 0 5
+$1816 2119 0 0 5
+$2119 2123 0 1 5
+$2119 2419 0 0 5
+$2317 2517 1 0 5
+$2317 2419 0 0 5
+$2317 2015 0 0 5
+$2015 1816 0 0 5
+$1812 1614 -1 0 5
+$1812 1913 0 0 5
+$2015 1913 0 0 5
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1713 E695789-2    Ag                 105 Ki
+G-2           1718 E87A422-5    Ni Wa              523 Ki
+G-3           1720 B2505AC-7  S De Ni Po           404 Ki
+G-4           1811 DAB8551-8  J Fl Ni           A  404 Ki
+C-5           1812 C0009AE-D  L As Hi Na           104 Ki
+G-6           1816 A335625-9    Ni                 922 Ki
+G-7           1817 E364366-5    Lo Ni              520 Ki
+G-8           1819 B686444-6    Ni                 600 Ki
+G-9           1820 D98A367-7    Lo Ni Wa           324 Ki
+G-10          1911 B864420-6    Ni                 403 Ki
+G-11          1912 E551486-4    Ni Po              902 Ki
+G-12          1913 B622552-A    Ni Po              403 Ki
+G-13          1915 B888477-7  2 Ni              B  825 Ki
+G-14          1917 E738310-3    Lo Ni              513 Ki
+G-15          1919 C8A5200-7    Fl Lo Ni           903 Ki
+G-16          1920 C63A678-A    Ni Wa           B  203 Ki
+G-17          2011 C300685-6    Na Ni Va           213 Ki
+G-18          2012 C52616B-6    Lo Ni              700 Ki
+G-19          2015 A535650-9  N Ni                 523 Ki
+G-20          2018 C5A2524-7  S Fl Ni              314 Ki
+G-21          2019 C62A000-A    Ba Lo Ni Wa        602 Ki
+G-22          2020 E699105-5    Lo Ni              104 Ki
+G-23          2111 C223597-9  E Ni Po              313 Hi
+G-24          2112 C643123-5  K Lo Ni Po           231 Ki
+G-25          2115 C53168A-9  S Na Ni Po           103 Ki
+G-26          2116 C749669-7  S Ni                 614 Ki
+G-27          2117 C88A748-8  S Ri Wa              800 Ki
+G-28          2119 A350630-C  N De Ni Po           304 Ki
+G-29          2211 C454442-A    Ni                 810 Ki
+G-30          2217 X372953-2    Hi In           R  913 Na
+G-31          2220 C000513-9    As Ni              100 Ki
+G-32          2313 C749421-9  S Ni                 704 Ki
+G-33          2315 C435112-9  S Lo Ni              603 Ki
+G-34          2317 B300565-D  N Ni Va              314 Ki
+G-35          2318 C7787CG-4    Ag                 413 Ki
+G-36          2411 C877799-6    Ag                 311 Ki
+G-37          2412 C51577B-6    Ic              B  104 Ki
+G-38          2415 C310300-9    Lo Ni              603 Ki
+G-39          2416 CA8A543-A  S Ni Wa              703 Ki
+G-40          2419 B470335-9  S De Lo Ni           604 Ki
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hushu SECTOR: Suaar Sector
+#
+# Jump-routes
+#
+$3020 3121 0 1 5
+$2914 3111 0 0 5
+$2914 2611 0 0 5
+$2914 3213 0 0 5
+$2914 2613 0 0 5
+$2613 2517 0 0 5
+$2517 2317 -1 0 5
+$2914 2816 0 0 5
+$2816 3020 0 0 5
+$3111 2808 0 -1 5
+$2611 2710 0 -1 5
+$3213 0312 1 0 5
+$3213 0116 1 0 5
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2511 B274787-A  S Ag                 204 Ki
+H-2           2513 C333105-7  S Lo Ni Po           301 Ki
+H-3           2517 B897222-6    Lo Ni              814 Ki
+H-4           2611 A000A79-E  N As Hi Na        B  502 Ki
+H-5           2612 C3568D8-7                       514 Ki
+H-6           2613 A997158-B    Lo Ni              923 Ki
+H-7           2614 C0007AE-7  S As Na              424 Ki
+H-8           2615 C534641-6  S Ni                 503 Ki
+H-9           2616 E2306A9-8    De Na Ni Po        804 Ki
+H-10          2617 C230866-8    De Na Po           403 Ki
+H-11          2618 B000656-A  N As Na Ni           114 Ki
+H-12          2619 B120210-9    De Lo Ni Po        904 Ki
+H-13          2712 C796031-4    Lo Ni              713 Ki
+H-14          2715 C3009BA-C    Hi Na Va           704 Ki
+H-15          2717 C566100-5    Lo Ni              124 Ki
+H-16          2812 C452865-9  S Po                 603 Ki
+H-17          2816 B223402-C    Ni Po              322 Ki
+H-18          2817 C510553-8    Ni                 813 Ki
+H-19          2819 C423469-A  S Ni Po              410 Ki
+H-20          2911 C651000-8    Ba Lo Ni Po        104 Ki
+H-21          2912 C430559-B  S De Ni Po           404 Ki
+H-22          2913 E625777-3                    B  905 Ki
+H-23          2914 B110551-E  N Ni                 804 Ki
+H-24          2915 C677575-8  S Ag Ni           B  214 Ki
+H-25          2916 C664753-5    Ag Ri              614 Ki
+H-26          2918 C877895-5                       104 Ki
+H-27          2920 C448300-6  S Lo Ni              103 Ki
+H-28          3012 B453675-8  N Ni Po           B  602 Ki
+H-29          3016 C431256-8    Lo Ni Po           714 Ki
+H-30          3017 C698561-9  S Ag Ni              821 Ki
+H-31          3020 B764100-8  S Lo Ni              325 Ki
+H-32          3111 B551100-8  N Lo Ni Po           923 Ki
+H-33          3113 E879573-8    Ni              B  422 Ki
+H-34          3118 B673753-A  N                    124 Ki
+H-35          3212 D411478-8  S Ic Ni           B  922 Ki
+H-36          3213 B1007A8-D    Na Va              523 Ki
+H-37          3214 C340687-8  S De Ni Po           304 Ki
+H-38          3216 C769456-A  S Ni                 200 Ki
+H-39          3217 B120358-C  S De Lo Ni Po        903 Ki
+H-40          3218 C787445-9    Ni                 815 Ki
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ishfuaan SECTOR: Suaar Sector
+#
+# Jump-routes
+#
+$0726 1126 1 0 3
+$0629 0726 0 0 3
+$0327 0726 0 0 3
+$0726 0623 0 0 3
+$0623 0323 0 0 3
+$0629 0533 0 1 3
+$0623 0721 0 0 3
+$0721 0321 0 0 3
+$0321 0323 0 0 3
+$0323 0222 0 0 3
+$0222 0123 0 0 3
+$0123 0224 0 0 3
+$0224 0327 0 0 3
+$0327 0130 0 0 3
+$0130 0429 0 0 3
+$0429 0629 0 0 3
+$0727 0725 0 0 3
+$0726 0527 0 0 3
+$0130 0131 0 1 3
+$0721 0922 1 0 3
+$0623 0926 1 0 2
+$0623 0619 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0123 B775452-A    Ni                 203 Os
+I-2           0124 C429446-B    Ni                 604 Os
+I-3           0127 C335765-A  P                    403 Os
+I-4           0129 C363463-9    Ni                 414 Os
+I-5           0130 B202999-B    Hi Ic Na Va        504 Os
+I-6           0222 B686200-9  2 Lo Ni              513 Os
+I-7           0224 B87A669-9  S Ni Wa              411 Os
+I-8           0225 C446132-8    Lo Ni              505 Os
+I-9           0229 C8A5541-6  S Fl Ni              110 Os
+I-10          0230 C575854-4                       704 Os
+I-11          0321 B000542-A  S As Ni              920 Os
+I-12          0322 C570585-7    De Ni              324 Os
+I-13          0323 B889256-B  N Lo Ni              302 Os
+I-14          0324 E69688A-5                       902 Os
+I-15          0326 C273558-8    Ni                 912 Os
+I-16          0327 B332320-B  N Lo Ni Po           714 Os
+I-17          0330 C545633-5    Ag Ni              304 Os
+I-18          0421 E844646-4    Ag Ni              324 Os
+I-19          0425 C44298C-6  S Hi In Po           303 Os
+I-20          0426 C555449-7    Ni                 103 Os
+I-21          0427 C48399A-9    Hi                 924 Os
+I-22          0429 B253546-9  N Ni Po              803 Os
+I-23          0525 D100436-A  S Ni Va              201 Os
+I-24          0526 D25356A-8  S Ni Po              713 Os
+I-25          0527 B8777A7-6  2 Ag                 714 Os
+I-26          0528 C450468-9    De Ni Po           401 Os
+I-27          0529 C759887-7                       700 Os
+I-28          0621 C775246-5    Lo Ni              622 Os
+Innhash       0623 B450669-9  2 De Ni Po           903 Os
+I-30          0624 E442343-6    Lo Ni Po           114 Os
+I-31          0626 B88958A-8    Ni                 303 Os
+I-32          0629 B555326-B    Lo Ni              904 Os
+I-33          0721 B446665-7  M Ag Ni              615 Os
+I-34          0725 B452245-9    Lo Ni Po           504 Os
+I-35          0726 C120657-C  2 De Na Ni Po        414 Os
+I-36          0727 B555255-9    Lo Ni              803 Os
+I-37          0730 E574783-2    Ag                 804 Os
+I-38          0821 C666667-7    Ag Ni Ri           612 Os
+I-39          0826 C130554-B    De Ni Po           203 Os
+I-40          0830 C200652-9    Na Ni Va           905 Os
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Juishan SECTOR: Suaar Sector
+#
+# Jump-routes
+#
+$1330 1632 0 1 3
+$1330 1229 0 0 3
+$1229 1130 0 0 3
+$1229 1126 0 0 3
+$1126 1024 0 0 3
+$1126 0726 -1 0 3
+$1621 1823 1 0 5
+$1621 1620 0 -1 5
+$1030 1031 0 1 3
+$1030 1130 0 0 3
+$1024 1223 0 0 3
+$1229 1629 0 0 3
+$1629 1626 0 0 3
+$1629 1730 1 0 3
+$0922 0721 -1 0 3
+$0922 1024 0 0 3
+$1626 1526 0 0 3
+$1526 1126 0 0 3
+$1129 1531 0 1 2
+$1129 0926 0 0 2
+$0926 0623 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0922 C799883-9                       202 Os
+J-2           0924 C000587-A  S As Ni              713 Os
+Tooradin      0926 C9B4035-7    Fl Lo Ni        A  324 Os
+J-4           0927 C96A546-B  S Ni Wa              200 Os
+J-5           1022 C677636-4  L Ag Ni              801 Os
+J-6           1024 B326786-B  O                    614 Os
+J-7           1026 C7A2AAA-8  S Fl Hi              504 Os
+J-8           1027 C333788-A  S Na Po              305 Os
+J-9           1030 A88638D-8  2 Lo Ni              822 Os
+J-10          1124 B433687-9  S Na Ni Po           501 Os
+J-11          1126 B31096A-9  O Hi Na              302 Os
+J-12          1127 D998540-6  S Ag Ni              724 Os
+J-13          1128 CA9A6BF-5  S Ni Wa              505 Os
+Jalltra       1129 C738557-7  S Ni                 602 Os
+J-15          1130 A410230-C  O Lo Ni              513 Os
+J-16          1223 B5838A9-6                       201 Os
+J-17          1226 C88A445-9  S Ni Wa              800 Os
+J-18          1227 C9A8222-5  S Fl Lo Ni           705 Os
+J-19          1229 B224424-D    Ni                 413 Os
+J-20          1230 X440100-0    De Lo Po        R  114 Os
+J-21          1326 C968469-6    Ni                 904 Os
+J-22          1330 B21046B-C  O Ni                 400 Os
+J-23          1424 D786415-5  O Ni                 514 Os
+J-24          1426 X849778-1                    R  712 Na
+J-25          1427 E555540-3    Ag Ni              400 Os
+J-26          1428 C67A113-9  O Lo Ni Wa           502 Os
+J-27          1523 C100368-B  K Lo Ni Va           814 Ki
+J-28          1524 A555678-A    Ag Ni           B  123 Na
+J-29          1525 C357256-A  O Lo Ni              203 Os
+J-30          1526 C9A7300-9  O Fl Lo Ni           903 Os
+J-31          1527 C200467-7  O Ni Va              604 Na
+J-32          1528 E636487-3    Ni                 405 Os
+J-33          1530 D350103-5    De Lo Ni Po        203 Os
+J-34          1621 A443334-D  K Lo Ni Po           902 Ki
+J-35          1626 A440532-E  P De Ni Po           710 Os
+J-36          1628 D549213-3  O Lo Ni              602 Os
+J-37          1629 B300557-A  M Ni Va              303 Os
+J-38          1630 C425898-9                       600 Os
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kiushu SECTOR: Suaar Sector
+#
+# Jump-routes
+#
+$2123 1823 0 0 5
+$1823 1621 -1 0 5
+$2123 2119 0 -1 5
+$2123 2322 0 0 5
+$2322 2421 0 0 5
+$2322 2424 0 0 5
+$2424 2426 0 0 5
+$2426 2529 1 0 5
+$2421 2523 1 0 5
+$1730 1629 -1 0 3
+$1730 1933 0 1 3
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1722 C534652-A  S Ni                 123 Ki
+K-2           1725 C656688-3    Ag Ni              304 Ki
+K-3           1728 C545669-8  P Ag Ni              612 Os
+K-4           1729 E301556-7    Ic Ni Va           324 Os
+K-5           1730 B695634-6  M Ag Ni              105 Os
+K-6           1821 C75899C-9    Hi                 920 Ki
+K-7           1822 X9595AB-0                    R  322 Ki
+K-8           1823 B454003-C  N Lo Ni              403 Ki
+K-9           1824 C66855A-A    Ag Ni              214 Ki
+K-10          1827 C553752-7  P Po                 103 Os
+K-11          1828 E54768B-3    Ag Ni              104 Os
+K-12          1924 C230A8B-9    De Hi In Na Po     320 Ki
+K-13          1925 C6348BB-8                       905 Ki
+K-14          2022 C354456-7    Ni                 504 Ki
+K-15          2023 D9D3845-6  S Fl                 725 Ki
+K-16          2027 C7B3223-5  S Fl Lo Ni        A  302 Na
+K-17          2028 E729389-8    Lo Ni              305 Na
+K-18          2029 D668975-5    Hi              B  103 Na
+K-19          2030 C6496AA-4    Ni                 215 Na
+Klushan       2123 A000989-H  K As Hi Na Cx        623 Ki
+K-21          2124 X685541-0    Ag              R  203 Na
+K-22          2125 C469878-7  S Ri              B  612 Ki
+K-23          2126 E644403-8    Ni                 500 Ki
+K-24          2128 C4349CG-9    Hi In              603 Na
+K-25          2221 C976635-6  S Ag Ni              512 Ki
+K-26          2224 C864554-5  S Ag Ni              504 Ki
+K-27          2228 X222331-5    Lo Po           R  514 Na
+K-28          2229 C877598-9  S Ag Ni              214 Na
+K-29          2230 D337663-8    Ni                 500 Na
+K-30          2322 B421233-A  2 Lo Ni Po           622 Ki
+K-31          2324 X649326-3    Lo              R  505 Na
+K-32          2327 C73778B-9  S                    623 Ki
+K-33          2421 A253747-C  N Po                 214 Ki
+K-34          2422 D100548-5    Ni Va              425 Ki
+K-35          2424 B68A411-C    Ni Wa              304 Ki
+K-36          2426 B645464-9  N Ni                 404 Ki
+K-37          2427 C227510-8    Ni                 511 Ki
+K-38          2428 C444400-9    Ni                 702 Ki
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Laaru SECTOR: Suaar Sector
+#
+# Jump-routes
+#
+$2529 2426 -1 0 5
+$2529 2530 0 0 5
+$2530 2728 0 0 5
+$2728 2928 0 0 5
+$2928 3228 0 0 5
+$3228 3225 0 0 5
+$2823 3025 0 0 5
+$3025 3225 0 0 5
+$2823 2523 0 0 5
+$2523 2421 -1 0 5
+$2823 3022 0 0 5
+$3022 3121 0 0 5
+$3121 3020 0 -1 5
+$2930 3228 0 0 5
+$2930 2530 0 0 5
+$3228 0131 1 1 5
+$3228 0126 1 0 5
+$3225 0126 1 0 5
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2523 B89A655-B    Ni Wa              813 Ki
+L-2           2524 D637300-6  S Lo Ni              303 Ki
+L-3           2525 E402865-8    Ic Na Va           811 Ki
+L-4           2529 A796651-C  2 Ag Ni              515 Ki
+L-5           2530 A9E4552-E  2 Fl Ni              712 Ki
+L-6           2621 C69A665-A    Ni Wa              204 Ki
+L-7           2622 D99AA76-9    Hi In Wa        B  503 Ki
+L-8           2623 B659343-B    Lo Ni              114 Ki
+L-9           2624 E657789-6    Ag                 310 Ki
+L-10          2625 C695100-5  S Lo Ni              522 Ki
+L-11          2626 B582433-A    Ni                 613 Ki
+L-12          2627 C275AAB-A    Hi In              305 Ki
+L-13          2628 C225652-B    Ni                 702 Ki
+L-14          2630 C674620-6    Ag Ni              403 Ki
+L-15          2723 C687766-3    Ag Ri              715 Ki
+L-16          2726 X789434-0                    R  413 Na
+L-17          2727 C656973-7  S Hi              B  324 Ki
+L-18          2728 B766200-C  S Lo Ni              303 Ki
+L-19          2729 D52266A-6  S Na Ni Po           114 Ki
+L-20          2823 B331530-D  S Ni Po              902 Ki
+L-21          2826 X000764-5    As              R  503 Na
+L-22          2828 C644320-5  S Lo Ni              602 Ki
+L-23          2921 C645623-6  S Ag Ni              614 Ki
+L-24          2923 CA7A500-A    Ni Wa              523 Ki
+L-25          2927 C524553-9  S Ni                 310 Ki
+L-26          2928 B661456-C  N Ni                 515 Ki
+L-27          2930 A693ABF-D  K Hi In              503 Ki
+L-28          3022 A555320-8  S Lo Ni              104 Ki
+L-29          3024 C482333-5    Lo Ni              914 Ki
+L-30          3025 A546240-D  N Lo Ni              200 Ki
+L-31          3027 C868144-5  S Lo Ni              503 Ki
+L-32          3121 B100162-C  S Lo Ni Va           612 Ki
+L-33          3127 C201222-B    Ic Lo Ni Va        713 Ki
+L-34          3129 C310756-8  S Na                 205 Ki
+L-35          3221 C78878A-7    Ag Ri              204 Ki
+L-36          3225 A560457-C    De Ni              604 Ki
+L-37          3228 A531311-D    Lo Ni Po           903 Ki
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Muuaar SECTOR: Suaar Sector
+#
+# Jump-routes
+#
+$0435 0533 0 0 3
+$0435 0738 0 0 3
+$0435 0437 0 0 3
+$0435 0237 0 0 3
+$0435 0334 0 0 3
+$0738 0935 1 0 3
+$0533 0629 0 -1 3
+$0131 0130 0 -1 3
+$0131 0334 0 0 3
+$0237 0239 0 0 3
+$0533 0534 0 0 3
+$0738 0840 0 0 3
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0131 B459212-B  N Lo Ni              705 Os
+M-2           0137 C000205-C    As Lo Ni           814 Os
+M-3           0231 C3108CD-A    Na                 613 Os
+M-4           0233 C0007C8-A    As Na              104 Os
+M-5           0235 C83A431-C  S Ni Wa              205 Os
+M-6           0237 A4439DE-B    Hi In Po           104 Os
+M-7           0238 E564636-6    Ag Ni              114 Os
+M-8           0239 BA9A645-C  2 Ni Wa              821 Os
+M-9           0240 C669861-6    Ri                 614 Os
+M-10          0331 C663688-8  S Ni Ri              304 Os
+M-11          0332 E443530-7    Ni Po              704 Os
+M-12          0334 A570333-8  N De Lo Ni           103 Os
+M-13          0335 C7C0554-7    De Ni           A  505 Os
+M-14          0337 D62746A-3  O Ni                 603 Os
+M-15          0340 C576522-4    Ag Ni              403 Os
+M-16          0433 C381799-8  S Ri                 704 Os
+M-17          0434 C110478-9    Ni                 422 Os
+M-18          0435 B63A569-E    Ni Wa              314 Os
+M-19          0437 A672145-9  N Lo Ni              104 Os
+M-20          0440 B6838CA-7  2                    622 Os
+M-21          0531 B543840-7    Po                 400 Os
+M-22          0532 D577452-5    Ni                 903 Os
+M-23          0533 B320443-D    De Ni Po           804 Os
+M-24          0534 B6967CF-8  N Ag                 804 Os
+M-25          0535 C655141-6    Lo Ni              313 Os
+M-26          0537 CAB6358-A    Fl Lo Ni        A  504 Os
+M-27          0540 D587158-5    Lo Ni              400 Os
+M-28          0633 E99A9DG-8    Hi In Wa           100 Os
+M-29          0634 C200989-C  S Hi Na Va           214 Os
+M-30          0635 D200111-7    Lo Ni Va           624 Os
+M-31          0731 C637633-6    Ni                 213 Os
+M-32          0735 E98A685-5    Ni Ri Wa           723 Os
+M-33          0736 C83A79A-6  S Wa                 902 Os
+M-34          0737 C679300-B    Lo Ni              600 Os
+M-35          0738 A4127A7-D    Ic Na              814 Os
+M-36          0831 B200668-8  N Na Ni Va           712 Os
+M-37          0832 B310366-9    Lo Ni              404 Os
+M-38          0836 EAA746A-7    Fl Ni              604 Os
+M-39          0838 C000630-6  S As Na Ni           133 Os
+M-40          0840 B646551-7    Ag Ni              312 Os
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Naasch SECTOR: Suaar Sector
+#
+# Jump-routes
+#
+$1632 1933 1 0 3
+$1632 1234 0 0 3
+$1632 1330 0 -1 3
+$0935 0738 -1 0 3
+$0935 1234 0 0 3
+$1234 1136 0 0 3
+$1234 1031 0 0 3
+$1031 1030 0 -1 3
+$1640 1837 1 0 3
+$1531 1933 1 0 2
+$1531 1129 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0933 C342220-8  S Lo Ni Po           300 Os
+N-2           0934 E310684-8    Na Ni              304 Os
+N-3           0935 B756100-A  2 Lo Ni              513 Os
+N-4           0936 E622465-8    Ni Po              203 Os
+N-5           0939 C569457-8    Ni                 804 Os
+N-6           1031 B200342-8  N Lo Ni Va           801 Os
+N-7           1032 C441657-8    Ni Po              402 Os
+N-8           1039 C503363-7  S Ic Lo Ni Va        914 Os
+N-9           1040 CAA1546-7  S Fl Ni              714 Os
+N-10          1132 B324664-8    Ni                 220 Os
+N-11          1133 C446349-9  S Lo Ni              303 Os
+N-12          1136 B885983-A    Hi                 503 Os
+N-13          1140 D000886-4    As Na              100 Os
+N-14          1232 D363865-4    Ri                 801 Os
+N-15          1233 C320224-9  S De Lo Ni Po        312 Os
+N-16          1234 A100768-D  O Na Va              200 Os
+N-17          1237 CA97554-9    Ag Ni              402 Os
+N-18          1240 C7776A8-8  S Ag Ni              704 Os
+N-19          1335 C436675-5    Ni                 300 Os
+N-20          1337 C728AB9-A  S Hi In              903 Os
+N-21          1338 C460552-9    De Ni              304 Os
+N-22          1433 B788754-8  S Ag Ri              714 Os
+N-23          1435 D569565-6    Ni                 910 Os
+N-24          1436 C8A59CH-B    Fl Hi              410 Os
+Nacarra       1531 C34669B-7    Ag Ni              401 Os
+N-26          1532 C422765-7    Na Po              100 Os
+N-27          1535 D353761-3  S Po                 900 Os
+N-28          1537 C784586-7    Ag Ni              603 Os
+N-29          1538 C555666-3    Ag Ni              203 Os
+N-30          1539 D410765-5  M Na                 504 Os
+N-31          1631 C79A404-8  S Ni Wa              502 Os
+N-32          1632 A768112-C  O Lo Ni              903 Os
+N-33          1636 C597669-5  S Ag Ni              121 Os
+N-34          1638 D723564-6    Ni Po              214 Os
+N-35          1640 B500743-7    Na Va              522 Os
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Oshush SECTOR: Suaar Sector
+#
+# Jump-routes
+#
+$1933 2033 0 0 3
+$1933 2132 0 0 3
+$2434 2132 0 0 3
+$2434 2535 1 0 3
+$1933 1632 -1 0 3
+$1933 1836 0 0 3
+$1836 1837 0 0 3
+$1837 2137 0 0 3
+$2137 2338 0 0 3
+$2434 2435 0 0 3
+$2434 2338 0 0 3
+$2338 2340 0 0 3
+$1933 1730 0 -1 3
+$1837 2038 0 0 3
+$2038 2240 0 0 3
+$2240 2340 0 0 3
+$1933 1834 0 0 3
+$1837 1640 -1 0 3
+$2233 2536 1 0 2
+$2233 1933 0 0 2
+$1933 1531 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1733 X460003-2    De Lo           R  203 Na
+O-2           1734 B87A102-9  2 Lo Ni Wa           620 Os
+O-3           1736 C68A543-B  S Ni Wa              204 Os
+O-4           1833 C000149-C  S As Lo Ni           800 Os
+O-5           1834 B100598-9  N Ni Va              524 Os
+O-6           1836 B86986B-A  O Ri                 712 Os
+O-7           1837 A55578A-C  N Ag                 213 Os
+O-8           1840 C584335-5    Lo Ni              704 Os
+O-9           1932 C458758-6  S Ag                 702 Os
+Oshush        1933 A000954-H  O As Hi Na Cx        723 Os
+O-11          1935 C548455-A  S Ni                 801 Os
+O-12          1936 C584104-5    Lo Ni              204 Os
+O-13          1938 B646465-A  O Ni                 504 Os
+O-14          2033 B9D6102-8  O Fl Lo Ni           314 Os
+O-15          2035 C354111-7    Lo Ni              903 Os
+O-16          2036 E786998-4    Hi                 924 Os
+O-17          2037 E380447-5    De Ni              624 Os
+O-18          2038 B454335-9  S Lo Ni              605 Os
+O-19          2040 X336200-2    Lo              R  900 Na
+O-20          2131 C335123-9  S Lo Ni              302 Os
+O-21          2132 A514444-B  O Ic Ni              302 Os
+O-22          2137 B538AA6-C  O Hi In              813 Os
+O-23          2232 C537A9B-C  S Hi In              301 Os
+Oskaan        2233 C536355-8    Lo Ni              704 Os
+O-25          2235 C203311-A  S Ic Lo Ni Va        710 Os
+O-26          2237 C678100-5    Lo Ni              314 Os
+O-27          2239 CAA4357-B    Fl Lo Ni           304 Os
+O-28          2240 A326432-A    Ni                 501 Os
+O-29          2332 C456348-9  S Lo Ni              304 Os
+O-30          2338 B445940-D  N Hi In              203 Os
+O-31          2339 E9A5798-5    Fl                 621 Os
+O-32          2340 A539765-B  S                    402 Os
+O-33          2432 E545102-3    Lo Ni              825 Os
+O-34          2434 A100664-F  O Na Ni Va           102 Os
+O-35          2435 B8A1584-8  2 Fl Ni              224 Os
+O-36          2436 D213105-8    Ic Lo Ni           700 Os
+O-37          2439 C779557-6    Ni                 704 Os
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Pinshuar SECTOR: Suaar Sector
+#
+# Jump-routes
+#
+$2535 2434 -1 0 3
+$2535 2734 0 0 3
+$2734 2932 0 0 3
+$2932 3134 0 0 3
+$3134 3137 0 0 3
+$3137 3239 0 0 3
+$3134 2734 0 0 3
+$2734 2738 0 0 3
+$2738 2838 0 0 3
+$3240 3239 0 0 3
+$3239 2938 0 0 3
+$2938 2838 0 0 3
+$3240 0302 1 1 2
+$3240 2938 0 0 2
+$2938 2536 0 0 2
+$2536 2233 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2534 C000665-6    As Na Ni           505 Os
+P-2           2535 A755200-9  O Lo Ni              913 Os
+Uugnarr       2536 C20059D-A  S Ni Va              721 Os
+P-4           2539 E599AAB-A    Hi In              624 Os
+P-5           2540 D537664-6  O Ni                 714 Os
+P-6           2631 C868884-6    Ri                 914 Na
+P-7           2632 B442331-8  N Lo Ni Po           103 Na
+P-8           2638 B370100-C  S De Lo Ni           801 Os
+P-9           2639 B200446-B    Ni Va              420 Os
+P-10          2640 C733885-7    Na Po              421 Os
+P-11          2734 A300666-E  O Na Ni Va           314 Os
+P-12          2735 A323312-A  S Lo Ni Po           210 Os
+P-13          2737 C561266-7  S Lo Ni              803 Os
+P-14          2738 A8A468C-B  2 Fl Ni              810 Os
+P-15          2740 C463210-9  S Lo Ni              712 Os
+P-16          2832 B8A4968-A    Fl Hi              202 Os
+P-17          2834 X7B49B8-1    Fl Hi           R  503 Na
+P-18          2838 A644730-B    Ag                 700 Os
+P-19          2840 DAB4300-4  S Fl Lo Ni        A  903 Os
+P-20          2931 D72A655-9  S Ni Wa              104 Os
+P-21          2932 C1009BB-D  S Hi Na Va           903 Os
+P-22          2933 B120697-B  N De Na Ni Po        701 Os
+P-23          2934 A4739BE-C    Hi In              724 Os
+P-24          2937 C674544-7    Ag Ni              624 Os
+Draanki       2938 B455124-A  2 Lo Ni              701 Os
+P-26          3035 D436287-9    Lo Ni              714 Os
+P-27          3037 C506121-A    Ic Lo Ni Va        605 Os
+P-28          3038 C440342-5  S De Lo Ni Po        604 Os
+P-29          3040 C643351-6  S Lo Ni Po           604 Os
+P-30          3133 C444744-7    Ag                 803 Os
+P-31          3134 A854554-9    Ag Ni              914 Os
+P-32          3136 B797662-A  N Ag Ni              310 Os
+P-33          3137 B462233-A  N Lo Ni              103 Os
+P-34          3139 E436205-A    Lo Ni              610 Os
+P-35          3232 C9B65AC-7  S Fl Ni           A  300 Os
+P-36          3235 B675247-7    Lo Ni              912 Os
+P-37          3236 B8C6320-8  2 Fl Lo Ni        A  502 Os
+P-38          3237 C222A87-9    Hi In Na Po        703 Os
+P-39          3239 B432544-9    Ni Po              814 Os
+Zall          3240 B635965-D  S Hi In              401 Os
+

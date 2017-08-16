@@ -1,0 +1,295 @@
+Foth Sector
+
+A: Aazz                      a.dat
+B: Bouth                     b.dat
+C: Cannoaz                   c.dat
+D: Derooth                   d.dat
+E: Eopaath                   e.dat
+F: Fazaoth                   f.dat
+G: Gotroth                   g.dat
+H: Holboath                  h.dat
+I: Ieoth                     i.dat
+J: Jothuuq                   j.dat
+K: Kosch                     k.dat
+L: Lopanch                   l.dat
+M: Mohl                      m.dat
+N: Naeree                    n.dat
+O: Ozadoth                   o.dat
+P: Polwl                     p.dat
+
+Bases:
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Aazz SECTOR: Foth Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0310 X796A89-4    Hi In           R  900 Na
+A-2           0501 DAA58AC-5  S Fl                 103 Na
+A-3           0509 A442754-C    Po                 412 Na
+A-4           0705 E262400-7    Ni                 200 Na
+A-5           0802 C332455-C  S Ni Po              120 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Bouth SECTOR: Foth Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           1107 C360100-9  S De Lo Ni           603 Na
+B-2           1202 C8B4475-6  S Fl Ni           A  903 Na
+B-3           1203 C4488B7-5  S                    904 Na
+B-4           1505 A88AA9C-D    Hi Wa              714 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Cannoaz SECTOR: Foth Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1903 B898557-7    Ag Ni              311 Na
+C-2           2107 B63A642-D  2 Ni Wa              824 Na
+C-3           2409 C557763-4    Ag                 220 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Derooth SECTOR: Foth Sector
+#
+# Jump-routes
+$2804 2806 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2501 C350430-7  S De Ni Po           200 Na
+D-2           2804 A626301-B    Lo Ni              322 Na
+D-3           2806 B468777-B    Ag Ri           B  903 Na
+D-4           3201 C110A68-A  S Hi Na              703 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Eopaath SECTOR: Foth Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0418 D400865-5  S Na Va              703 Na
+E-2           0813 C8C6AD9-8    Fl Hi           A  402 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Fazaoth SECTOR: Foth Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0912 C000311-9    As Lo Ni           500 Na
+F-2           0913 A777379-C  N Lo Ni           B  323 Na
+F-3           1113 E374ABA-7    Hi In              604 Na
+F-4           1120 B140352-E  2 De Lo Ni Po        204 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Gotroth SECTOR: Foth Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           2011 B9C4796-A  2 Fl              A  910 Na
+G-2           2113 B110489-B    Ni                 114 Na
+G-3           2212 D436545-9    Ni                 504 Na
+G-4           2413 CA88798-6    Ag Ri              803 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Holboath SECTOR: Foth Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2611 B56478A-9  2 Ag Ri              123 Na
+H-2           2717 A665330-8    Lo Ni              915 Na
+H-3           2812 E7A69A9-7    Fl Hi              604 Na
+H-4           2813 D200300-9  S Lo Ni Va           920 Na
+H-5           2918 C628343-A    Lo Ni              801 Na
+H-6           3116 C4769DB-4    Hi In              204 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ieoth SECTOR: Foth Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jothuuq SECTOR: Foth Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           1125 C656211-6    Lo Ni              414 Na
+J-2           1225 D9C7744-5  S Fl              A  301 Na
+J-3           1228 C330402-8    De Ni Po           600 Na
+J-4           1327 E401222-7    Ic Lo Ni Va        400 Na
+J-5           1328 C410A9C-A    Hi Na              101 Na
+J-6           1430 C594010-5  S Lo Ni              313 Na
+J-7           1530 B546424-8  N Ni                 704 Na
+J-8           1622 C6B6786-6    Fl              A  400 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kosch SECTOR: Foth Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1724 B886868-9  2 Ri                 100 Na
+K-2           1728 C83A879-A    Wa              B  604 Na
+K-3           1926 E000100-8    As Lo Ni           413 Na
+K-4           1927 D763577-4  S Ni              B  722 Na
+K-5           2327 D554365-4    Lo Ni              703 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lopanch SECTOR: Foth Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2729 C664576-5    Ag Ni           B  101 Na
+L-2           2824 E563351-6    Lo Ni              203 Na
+L-3           3029 CAA9000-6    Ba Fl Lo Ni        201 Na
+L-4           3124 D457331-6  S Lo Ni              405 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Mohl SECTOR: Foth Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0133 B785864-9  2 Ri                 604 Na
+M-2           0236 C130641-8  S De Na Ni Po        203 Na
+M-3           0537 D428231-8    Lo Ni              713 Na
+M-4           0631 X300742-3    Va              R  203 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Naeree SECTOR: Foth Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0936 CA9A556-A  S Ni Wa              803 Na
+N-2           1234 B340426-B  N De Ni Po           104 Na
+N-3           1336 A754655-C    Ag Ni              710 Na
+N-4           1539 E784789-5    Ag Ri              800 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ozadoth SECTOR: Foth Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1836 C568531-9  S Ag Ni              825 Na
+O-2           1840 B200995-9    Hi Na Va           712 Na
+O-3           2134 E85A523-7    Ni Wa              602 Na
+O-4           2135 A484440-9    Ni                 703 Na
+O-5           2431 DA9A000-4  S Ba Lo Ni Wa        103 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Polwl SECTOR: Foth Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2532 C450778-8  S De Po           B  513 Na
+P-2           2534 X896222-0    Lo              R  303 Na
+P-3           2537 C8D5984-8    Fl Hi              102 Na
+P-4           2634 E88558B-5    Ag Ni              402 Na
+P-5           2735 B798643-A  N Ag Ni              202 Na
+P-6           2840 D987544-6    Ag Ni              704 Na
+P-7           2932 C461776-4    Ri              B  224 Na
+P-8           3240 B0008BB-D    As Na              312 Na
+

@@ -1,0 +1,418 @@
+Dokliern Sector
+
+A: Adokli                    a.dat
+B: Bokliern                  b.dat
+C: Cloklierr                 c.dat
+D: Drokl                     d.dat
+E: Edrok                     e.dat
+F: Fakliere                  f.dat
+G: Ghokli                    g.dat
+H: Hierna                    h.dat
+I: Iklien                    i.dat
+J: Jadokli                   j.dat
+K: Kladok                    k.dat
+L: Liernass                  l.dat
+M: Modoklier                 m.dat
+N: Nukodok                   n.dat
+O: Okliern                   o.dat
+P: Padoka                    p.dat
+
+Bases:
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Adokli SECTOR: Dokliern Sector
+#
+# Jump-routes
+#
+$0806 1107 1 0 2
+$0806 0603 0 0 2
+$0603 0440 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0103 C8D08A7-9  S De                 102 Na
+A-2           0106 B6A1375-7  2 Fl Lo Ni        B  303 Na
+A-3           0107 B647458-8    Ni                 204 Na
+A-4           0304 C150210-7    De Lo Ni Po        204 Na
+A-5           0310 C77A79B-9  S Wa                 322 Na
+A-6           0403 C470575-8    De Ni           B  910 Na
+A-7           0410 B547311-6  N Lo Ni              615 Na
+A-8           0601 C867332-7    Lo Ni              323 Na
+Denonn        0603 C5A0423-9    De Ni              613 Na
+A-10          0610 D996A8A-7  S Hi In              205 Na
+Nansca        0806 E638733-7                       113 Na
+A-12          0808 C6A0320-A    De Lo Ni           523 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Bokliern SECTOR: Dokliern Sector
+#
+# Jump-routes
+$0907 0909 0 0
+$0909 1010 0 0
+$1609 1710 1 0
+#
+$1408 1710 1 0 2
+$1408 1107 0 0 2
+$1107 0806 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           0907 C66348B-8  S Ni                 514 Na
+B-2           0909 A534688-A    Ni                 314 Na
+B-3           1003 C263274-7    Lo Ni           B  204 Na
+B-4           1008 C240689-5    De Ni Po           600 Na
+B-5           1010 B562497-6    Ni                 802 Na
+B-6           1105 C422966-8  S Hi In Na Po        800 Na
+Cololon       1107 D2259AC-7  S Hi In              714 Na
+B-8           1108 C668122-8    Lo Ni              104 Na
+B-9           1109 C6A0AFG-8    De Hi           A  203 Na
+B-10          1309 D443559-7  S Ni Po              124 Na
+Aviini        1408 B9D349E-8  2 Fl Ni              904 Na
+B-12          1505 C336755-B  S                    503 Na
+B-13          1601 E323346-6    Lo Ni Po           912 Na
+B-14          1609 B43359B-8  N Ni Po              304 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Cloklierr SECTOR: Dokliern Sector
+#
+# Jump-routes
+$1710 1609 -1 0
+$1710 1812 0 1
+#
+$1710 1812 0 1 2
+$1710 1408 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Marrarra      1710 A423379-B    Lo Ni Po           714 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Drokl SECTOR: Dokliern Sector
+#
+# Jump-routes
+#
+$3002 3040 0 -1 10
+$3002 2906 0 0 10
+$2906 2708 0 0 10
+$2708 2711 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2603 C595778-8    Ag              B  125 Na
+D-2           2610 C5678BB-7                       103 Na
+Sadeari       2708 B551749-6  N Po                 521 Na
+D-4           2801 C9E3435-6    Fl Ni              924 Na
+D-5           2807 C437445-8    Ni                 522 Na
+D-6           2901 C210730-7    Na                 800 Na
+Mokaal        2906 C7A5520-9  S Fl Ni              715 Na
+Drainia       3002 C794455-A  S Ni                 221 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Edrok SECTOR: Dokliern Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0112 C200246-6    Lo Ni Va           404 Na
+E-2           0113 C244779-8  S Ag              B  411 Na
+E-3           0115 E658313-6    Lo Ni              220 Na
+E-4           0318 D333104-9    Lo Ni Po           503 Na
+E-5           0417 B77936A-8    Lo Ni              814 Na
+E-6           0420 D513843-4  S Ic Na              124 Na
+E-7           0615 B31068A-8    Na Ni              702 Na
+E-8           0711 EAAA648-9    Fl Ni Wa           424 Na
+E-9           0714 D586867-2    Ri                 513 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Fakliere SECTOR: Dokliern Sector
+#
+# Jump-routes
+#
+$1619 1318 0 0 11
+$1619 1717 1 0 11
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0914 B8B3656-B  2 Fl Ni           A  600 Na
+F-2           0916 C221278-8  S Lo Ni Po        B  900 Na
+F-3           1216 D755255-4    Lo Ni              405 Na
+F-4           1312 B673100-A    Lo Ni              104 Na
+F-5           1318 A525525-B    Ni                 513 Na
+F-6           1413 D566201-4  S Lo Ni              904 Na
+F-7           1619 A243527-E  N Ni Po              303 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ghokli SECTOR: Dokliern Sector
+#
+# Jump-routes
+$1812 1710 0 -1
+#
+$2420 2423 0 1 2
+$2420 2218 0 0 2
+$2218 2015 0 0 2
+$2015 1812 0 0 2
+$1812 1710 0 -1 2
+$1717 1619 -1 0 11
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1717 C8B4513-8    Fl Ni           A  723 Na
+Holinarr      1812 A536110-E    Lo Ni              902 Na
+G-3           1915 E355201-9    Lo Ni              902 Na
+Jammiese      2015 B300736-C    Na Va              704 Na
+G-5           2020 C659736-9                       615 Na
+Roascha       2218 C997649-4  S Ag Ni              621 Na
+G-7           2315 C230976-9    De Hi In Na Po  B  803 Na
+G-8           2316 B678863-6                       204 Na
+Glanna        2420 B410255-B  N Lo Ni              824 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hierna SECTOR: Dokliern Sector
+#
+# Jump-routes
+$3117 3119 0 0
+#
+$2711 2708 0 -1 10
+$2711 3012 0 0 10
+$3012 0112 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2516 D423625-8  S Na Ni Po           301 Na
+H-2           2518 X66769D-0    Ag Ri           R  114 Na
+H-3           2614 C2479AD-8    Hi In              912 Na
+Hiliili       2711 C684726-5  S Ag                 905 Na
+H-5           2716 C433220-8  S Lo Ni Po           414 Na
+H-6           2912 C8B6577-5    Fl Ni           A  804 Na
+H-7           2920 C336778-5                    B  702 Na
+H-8           3011 B98A974-9    Hi Wa           B  121 Na
+Unitaan       3012 C350387-5  S De Lo Ni Po        314 Na
+H-10          3014 C6568CB-8                       602 Na
+H-11          3116 C877522-7    Ag Ni              520 Na
+H-12          3117 C541347-8    Lo Ni Po           404 Na
+H-13          3119 B598111-B    Lo Ni              704 Na
+H-14          3211 C4439AD-6  S Hi In Po           202 Na
+H-15          3212 B250221-A    De Lo Ni Po        502 Na
+H-16          3216 C9D5597-5    Fl Ni              113 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Iklien SECTOR: Dokliern Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0124 C100886-7  S Na Va              604 Na
+I-2           0129 C87A787-5  S Wa                 702 Na
+I-3           0224 B634542-7    Ni                 824 Na
+I-4           0325 C989334-5    Lo Ni              804 Na
+I-5           0522 C242426-A  S Ni Po              823 Na
+I-6           0526 E555774-3    Ag              B  402 Na
+I-7           0627 D370401-5  S De Ni              714 Na
+I-8           0725 B888779-8  2 Ag Ri           B  900 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jadokli SECTOR: Dokliern Sector
+#
+# Jump-routes
+$0928 1029 0 0
+$1029 1128 0 0
+#
+$1029 1031 0 1 11
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0928 C557546-8  S Ag Ni              510 Na
+J-2           0929 E300356-6    Lo Ni Va           910 Na
+J-3           1026 X457458-4                    R  503 Na
+J-4           1029 A443111-E  N Lo Ni Po           604 Na
+J-5           1128 C78477C-8    Ag Ri           B  112 Na
+J-6           1222 C668669-6  S Ag Ni Ri           404 Na
+J-7           1226 C342632-8  S Ni Po              123 Na
+J-8           1426 E354556-6    Ag Ni              415 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kladok SECTOR: Dokliern Sector
+#
+# Jump-routes
+$2225 2326 0 0
+$2326 2525 1 0
+#
+$2423 2525 1 0 2
+$2423 2420 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1723 E776101-3    Lo Ni              712 Na
+K-2           1728 B465556-A    Ag Ni              600 Na
+K-3           2025 D231488-7  S Ni Po              322 Na
+K-4           2225 B77878A-9    Ag                 314 Na
+K-5           2326 B434100-A  2 Lo Ni              705 Na
+Harfraugh     2423 C547635-5    Ag Ni              402 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Liernass SECTOR: Dokliern Sector
+#
+# Jump-routes
+$2525 2326 -1 0
+$2629 2729 0 0
+#
+$3129 0132 1 1 2
+$3129 2728 0 0 2
+$2728 2525 0 0 2
+$2525 2423 -1 0 2
+$2525 2527 0 0 11
+$2527 2728 0 0 11
+$2728 2729 0 0 11
+$2629 2527 0 0 11
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2522 E110431-6    Ni                 503 Na
+Cellina       2525 A725342-E  N Lo Ni              204 Na
+L-3           2527 C427966-8    Hi In              821 Na
+L-4           2629 C200147-A  S Lo Ni Va           205 Na
+Lenensa       2728 C688666-4    Ag Ni Ri           404 Na
+L-6           2729 A884774-7    Ag Ri           B  303 Na
+L-7           2823 C544335-4    Lo Ni              702 Na
+L-8           2921 C664264-8  S Lo Ni              802 Na
+Vikkrean      3129 E887523-6    Ag Ni              705 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Modoklier SECTOR: Dokliern Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0132 C543757-4    Po                 404 Na
+M-2           0137 C312642-9  S Ic Na Ni           621 Na
+M-3           0138 E7C0A87-6    De Hi           A  800 Na
+M-4           0233 C432400-A  S Ni Po              120 Na
+M-5           0238 B7A2795-7  N Fl                 220 Na
+M-6           0437 B735454-9    Ni                 700 Na
+M-7           0438 C310A78-E  S Hi Na           B  104 Na
+M-8           0635 C476521-8    Ag Ni              303 Na
+M-9           0733 B588677-8  N Ag Ni Ri        B  302 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nukodok SECTOR: Dokliern Sector
+#
+# Jump-routes
+$1337 1437 0 0
+$1337 1537 0 0
+$1437 1537 0 0
+#
+$1031 1029 0 -1 11
+$1031 1132 0 0 11
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0938 C7367AA-5                       124 Na
+N-2           1031 B000565-B    As Ni              820 Na
+N-3           1035 B596542-9  S Ag Ni              604 Na
+N-4           1132 C150689-9  S De Ni Po           320 Na
+N-5           1239 C795230-7  S Lo Ni              300 Na
+N-6           1337 A563665-C  N Ni Ri              803 Na
+N-7           1437 B310155-A    Lo Ni              904 Na
+N-8           1537 C570489-8  S De Ni              622 Na
+N-9           1632 C769AA8-A    Hi                 822 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Okliern SECTOR: Dokliern Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1832 D3808AA-2    De                 523 Na
+O-2           1937 C736696-4  S Ni                 604 Na
+O-3           2140 B000531-E    As Ni              402 Na
+O-4           2234 C324000-7  S Ba Lo Ni           800 Na
+O-5           2237 B665475-B    Ni              B  322 Na
+O-6           2331 D61088A-5  S Na                 303 Na
+O-7           2440 C558000-7    Ba Lo Ni           100 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Padoka SECTOR: Dokliern Sector
+#
+# Jump-routes
+$2632 2734 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2534 B696132-9    Lo Ni              101 Na
+P-2           2537 C646453-A    Ni                 914 Na
+P-3           2632 B699345-C  N Lo Ni              603 Na
+P-4           2635 C9A8446-A    Fl Ni              605 Na
+P-5           2734 B2008AC-8  S Na Va              824 Na
+P-6           2838 E636668-4    Ni                 804 Na
+P-7           3034 C53546B-5  S Ni                 924 Na
+P-8           3140 B96A551-D  N Ni Wa              602 Na
+P-9           3232 C000438-B    As Ni              514 Na
+

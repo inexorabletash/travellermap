@@ -1,0 +1,364 @@
+Tanklik Sector
+
+A: Atank                     a.dat
+B: Bankli                    b.dat
+C: Caunk                     c.dat
+D: Danbkli                   d.dat
+E: Eklik                     e.dat
+F: Fanklik                   f.dat
+G: Gatank                    g.dat
+H: Hortank                   h.dat
+I: Itanklik                  i.dat
+J: Janasank                  j.dat
+K: Klankli                   k.dat
+L: Lataunk                   l.dat
+M: Mazankli                  m.dat
+N: Nagank                    n.dat
+O: Otank                     o.dat
+P: Panklik                   p.dat
+
+Bases:
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Atank SECTOR: Tanklik Sector
+#
+# Jump-routes
+$0204 0304 0 0
+$0602 0702 0 0
+#
+$0705 0906 1 0 2
+$0705 0304 0 0 2
+$0304 0101 0 0 2
+$0101 3138 -1 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Gadamaar      0101 C9A856A-9    Fl Ni              102 Na
+A-2           0204 C372577-6    Ni              B  714 Na
+A-3           0206 B644000-7  S Ba Lo Ni           704 Na
+Allitan       0304 B8999EC-C  2 Hi In              923 Na
+A-5           0401 D737572-6    Ni              B  203 Na
+A-6           0407 X235442-4                    R  702 Na
+A-7           0408 E100310-7    Lo Ni Va           211 Na
+A-8           0602 B210537-9    Ni                 824 Na
+A-9           0701 C220556-C    De Ni Po           523 Na
+A-10          0702 A334532-A    Ni                 622 Na
+Nujahha       0705 D244744-7    Ag                 112 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Bankli SECTOR: Tanklik Sector
+#
+# Jump-routes
+#
+$1009 1212 0 1 2
+$1009 0906 0 0 2
+$0906 0705 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Klitta        0906 D4559BE-9  S Hi                 213 Na
+B-2           1006 C545797-8    Ag                 315 Na
+Bassaas       1009 C400772-A  S Na Va           B  101 Na
+B-4           1107 C76A943-8  S Hi Wa              600 Na
+B-5           1303 CAA75A9-9    Fl Ni              403 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Caunk SECTOR: Tanklik Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           2008 C646427-9    Ni                 120 Na
+C-2           2207 C567655-4  S Ag Ni Ri           612 Na
+C-3           2301 C764436-7    Ni                 100 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Danbkli SECTOR: Tanklik Sector
+#
+# Jump-routes
+#
+$2502 2739 0 -1 10
+$2502 2704 0 0 10
+$2704 2907 0 0 10
+$2907 0109 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Duhhuug       2502 C685774-5    Ag Ri           B  301 Na
+D-2           2510 B559345-C    Lo Ni              923 Na
+Sadallfa      2704 D677866-1  S                    721 Na
+Vicrath       2907 C4536BC-9    Ni Po              613 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Eklik SECTOR: Tanklik Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0320 B372747-A                       402 Na
+E-2           0419 C877200-A  S Lo Ni              801 Na
+E-3           0520 D401579-6    Ic Ni Va        B  414 Na
+E-4           0612 B886730-6  N Ag                 502 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Fanklik SECTOR: Tanklik Sector
+#
+# Jump-routes
+#
+$1515 1717 1 0 2
+$1515 1212 0 0 2
+$1212 1009 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           1011 C400126-A  S Lo Ni Va           413 Na
+F-2           1115 C676001-9    Lo Ni              402 Na
+Flagghuu      1212 C310651-A    Na Ni              315 Na
+F-4           1220 E663997-8    Hi                 915 Na
+F-5           1311 D889898-3    Ri                 400 Na
+F-6           1513 B5A3554-A    Fl Ni              301 Na
+Mittik        1515 C5457CE-7    Ag                 713 Na
+F-8           1612 E244852-7                       614 Na
+F-9           1619 A410203-E  N Lo Ni              305 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Gatank SECTOR: Tanklik Sector
+#
+# Jump-routes
+#
+$2119 2322 0 1 2
+$2119 1717 0 0 2
+$1717 1515 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1713 C878105-7    Lo Ni              422 Na
+G-2           1716 B386687-7    Ag Ni Ri           903 Na
+Eyaggra       1717 B428310-9  2 Lo Ni              713 Na
+G-4           1915 B310742-9    Na                 622 Na
+G-5           2111 A556341-D    Lo Ni              212 Na
+G-6           2112 D985246-4  S Lo Ni              103 Na
+Ghatrain      2119 D577620-1  S Ag Ni              303 Na
+G-8           2220 C68769A-3  S Ag Ni Ri           302 Na
+G-9           2415 C576102-A    Lo Ni              322 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hortank SECTOR: Tanklik Sector
+#
+# Jump-routes
+$2818 2919 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2811 B43186A-B  N Na Po              103 Na
+H-2           2818 A999545-C  2 Ni                 314 Na
+H-3           2919 B580320-6  S De Lo Ni           504 Na
+H-4           3219 C786122-9  S Lo Ni              105 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Itanklik SECTOR: Tanklik Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0222 C723527-5    Ni Po              500 Na
+I-2           0329 B996310-6    Lo Ni              905 Na
+I-3           0429 B400555-C  N Ni Va              112 Na
+I-4           0726 A787553-E  S Ag Ni              903 Na
+I-5           0826 E87A434-4    Ni Wa              320 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Janasank SECTOR: Tanklik Sector
+#
+# Jump-routes
+$1427 1529 0 0
+$1529 1431 0 1
+$1529 1631 0 1
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           1226 C454477-6    Ni              B  710 Na
+J-2           1229 C445AB8-8  S Hi In              404 Na
+J-3           1427 B887689-5  N Ag Ni Ri           504 Na
+J-4           1529 A899563-C  N Ni                 700 Na
+J-5           1626 D758442-4  S Ni                 202 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Klankli SECTOR: Tanklik Sector
+#
+# Jump-routes
+#
+$2322 2525 1 0 2
+$2322 2119 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1927 C6A68B8-8    Fl                 304 Na
+Kreaff        2322 C76A056-A  S Lo Ni Wa           222 Na
+K-3           2421 E469640-6    Ni Ri              303 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lataunk SECTOR: Tanklik Sector
+#
+# Jump-routes
+#
+$3130 3033 0 1 2
+$3130 2929 0 0 2
+$2929 2726 0 0 2
+$2726 2525 0 0 2
+$2525 2322 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Burnoch       2525 C676AEA-C    Hi In              723 Na
+Halkuura      2726 C6A0ACB-9    De Hi              815 Na
+L-3           2826 D5A2337-7  S Fl Lo Ni           110 Na
+L-4           2829 CAD2834-4  S Fl                 415 Na
+Be-Nain       2929 A562557-A    Ni                 502 Na
+L-6           3126 B221630-B  2 Na Ni Po           614 Na
+Laarnda       3130 A130644-E  N De Na Ni Po        802 Na
+L-8           3225 E68A221-4    Lo Ni Wa           505 Na
+L-9           3230 E8498A9-6                       400 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Mazankli SECTOR: Tanklik Sector
+#
+# Jump-routes
+$0337 0439 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0136 X99A48B-2    Wa              R  704 Na
+M-2           0337 A59A378-C    Lo Ni Wa        B  504 Na
+M-3           0439 A966302-A    Lo Ni              714 Na
+M-4           0535 C647463-5    Ni                 902 Na
+M-5           0631 C9B5598-6  S Fl Ni           A  900 Na
+M-6           0735 C889364-6    Lo Ni              404 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nagank SECTOR: Tanklik Sector
+#
+# Jump-routes
+$1431 1529 0 -1
+$1631 1529 0 -1
+$1039 1139 0 0
+$1434 1534 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           1039 C453731-9  S Po                 200 Na
+N-2           1139 B787447-7    Ni                 413 Na
+N-3           1140 A220773-B    De Na Po        B  604 Na
+N-4           1431 B442210-8    Lo Ni Po           903 Na
+N-5           1434 B666565-B  2 Ag Ni              923 Na
+N-6           1534 C55379D-7    Po                 220 Na
+N-7           1537 B5A3436-7    Fl Ni              424 Na
+N-8           1631 B585225-7  N Lo Ni              302 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Otank SECTOR: Tanklik Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1738 C30279C-9    Ic Na Va           622 Na
+O-2           1834 C100699-6    Na Ni Va           803 Na
+O-3           1839 B1009CE-C    Hi Na Va           112 Na
+O-4           1932 C434987-C    Hi In              620 Na
+O-5           2038 D746269-3    Lo Ni              604 Na
+O-6           2233 B785359-9    Lo Ni              804 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Panklik SECTOR: Tanklik Sector
+#
+# Jump-routes
+#
+$3139 0102 1 1 2
+$3139 2838 0 0 2
+$2838 2835 0 0 2
+$2835 3033 0 0 2
+$3033 3130 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2631 B6577AE-9  N Ag                 404 Na
+P-2           2637 E313257-7    Ic Lo Ni           204 Na
+P-3           2639 D68A532-6    Ni Wa              200 Na
+Amoshka       2835 E302778-5    Ic Na Va        B  914 Na
+Fratikki      2838 A69999B-C  S Hi In              303 Na
+Guhhna        3033 C636772-7                    B  413 Na
+P-7           3034 E535477-5    Ni              B  504 Na
+P-8           3040 D8A4654-8  S Fl Ni              102 Na
+Ma-Kalla      3139 C889000-8    Ba Lo Ni           804 Na
+

@@ -1,0 +1,339 @@
+Skoreell Sector
+
+A: Askore                    a.dat
+B: Boreell                   b.dat
+C: Cskaa                     c.dat
+D: Dorreesk                  d.dat
+E: Eellsk                    e.dat
+F: Faskore                   f.dat
+G: Gaskoreen                 g.dat
+H: Horeell                   h.dat
+I: Iskor                     i.dat
+J: Joskorei                  j.dat
+K: Kaskorre                  k.dat
+L: Laskore                   l.dat
+M: Miskreer                  m.dat
+N: Nishask                   n.dat
+O: Oreellaa                  o.dat
+P: Paskor                    p.dat
+
+Bases:
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Askore SECTOR: Skoreell Sector
+#
+# Jump-routes
+#
+$0101 3239 -1 -1 10
+$0101 0105 0 0 10
+$0105 0306 0 0 10
+$0306 0705 0 0 10
+$0705 0906 1 0 10
+$0809 0906 1 0 10
+$0809 1012 1 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Heeymuui      0101 E568A89-A    Hi                 211 Na
+A-2           0103 B562334-7    Lo Ni              614 Na
+Jarrella      0105 C8C7275-A  S Fl Lo Ni        A  312 Na
+A-4           0107 E434545-9    Ni                 424 Na
+Buanfaar      0306 D5548DH-3                    A  925 Na
+A-6           0610 C436300-7  S Lo Ni              101 Na
+Huvhuva       0705 E100245-7    Lo Ni Va           722 Na
+A-8           0710 X477595-0    Ag              R  612 Na
+Cahalam       0809 D564865-1  S Ri                 802 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Boreell SECTOR: Skoreell Sector
+#
+# Jump-routes
+#
+$0906 0705 -1 0 10
+$0906 0809 -1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Vaarkreel     0906 E7A2300-4    Fl Lo Ni           405 Na
+B-2           1002 E538104-9    Lo Ni              703 Na
+B-3           1202 C758353-5    Lo Ni              634 Na
+B-4           1205 D578400-6  S Ni                 113 Na
+B-5           1606 E100141-9    Lo Ni Va           501 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Cskaa SECTOR: Skoreell Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1901 E887850-2    Ri                 514 Na
+C-2           1906 C562456-7  S Ni                 303 Na
+C-3           2004 D542720-5  S Po                 800 Na
+C-4           2008 D437689-8  S Ni                 902 Na
+C-5           2206 D503999-9    Hi Ic Na Va        904 Na
+C-6           2210 E786564-4    Ag Ni              723 Na
+C-7           2304 E463665-5    Ni Ri              722 Na
+C-8           2305 C8A6665-6  S Fl Ni              202 Na
+C-9           2307 E356686-7    Ag Ni              904 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Dorreesk SECTOR: Skoreell Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2602 E67947B-7    Ni              B  600 Na
+D-2           3006 B585201-C  N Lo Ni              204 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Eellsk SECTOR: Skoreell Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0117 C300734-8    Na Va              400 Na
+E-2           0618 E787200-4    Lo Ni              404 Na
+E-3           0714 C66799B-9    Hi                 302 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Faskore SECTOR: Skoreell Sector
+#
+# Jump-routes
+#
+$1012 0809 -1 -1 10
+$1012 1115 0 0 10
+$1115 1218 0 0 10
+$1218 1420 0 0 10
+$1420 1623 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Baskliok      1012 X95A6BD-1    Wa              R  505 Na
+Folkreen      1115 B38848D-B  N Ni                 801 Na
+F-3           1211 C666777-8    Ag Ri           B  105 Na
+Skoopa        1218 B477963-C    Hi In              201 Na
+Minask        1420 B563855-B  N Ri                 524 Na
+F-6           1513 B649245-9  2 Lo Ni              903 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Gaskoreen SECTOR: Skoreell Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           2016 D432510-6  S Ni Po              622 Na
+G-2           2215 C212783-8  S Ic Na              104 Na
+G-3           2218 C302100-A    Ic Lo Ni Va        323 Na
+G-4           2414 E513211-4    Ic Lo Ni           602 Na
+G-5           2418 E879210-3    Lo Ni              720 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Horeell SECTOR: Skoreell Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2614 D000249-9    As Lo Ni           803 Na
+H-2           2711 B575484-9    Ni                 600 Na
+H-3           2813 E6789A9-4    Hi In              903 Na
+H-4           2912 D323425-5  S Ni Po              304 Na
+H-5           3117 B96A77A-C  N Ri Wa           B  500 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Iskor SECTOR: Skoreell Sector
+#
+# Jump-routes
+#
+$0830 1033 1 1 2
+$0830 0429 0 0 2
+$0429 0127 0 0 2
+$0127 3226 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Jhaana        0127 C65898C-7  S Hi                 504 Na
+Tannask       0429 E778548-2    Ag Ni              602 Na
+Iskath        0830 C140441-8  S De Ni Po           404 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Joskorei SECTOR: Skoreell Sector
+#
+# Jump-routes
+#
+$1623 1420 0 -1 10
+$1623 1426 0 0 10
+$1426 1629 0 0 10
+$1629 1832 1 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0926 E6A7883-3    Fl                 503 Na
+J-2           1121 B483555-B  S Ni                 423 Na
+J-3           1329 D488743-3  S Ag Ri              713 Na
+Arbeelk       1426 A557477-C  N Ni              B  103 Na
+Rheheet       1623 D000777-4    As Na           B  503 Na
+Haschask      1629 A411765-E  2 Ic Na              115 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kaskorre SECTOR: Skoreell Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1829 C000036-B    As Lo Ni           320 Na
+K-2           2121 B86A555-D    Ni Wa              114 Na
+K-3           2226 D222027-4  S Lo Ni Po           123 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Laskore SECTOR: Skoreell Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2721 C150688-5  S De Ni Po           613 Na
+L-2           2929 E9486AE-6    Ag Ni              404 Na
+L-3           3021 E6647A6-2    Ag                 704 Na
+L-4           3022 C989310-9  S Lo Ni              904 Na
+L-5           3129 A423655-A  N Na Ni Po           511 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Miskreer SECTOR: Skoreell Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0335 B444699-6    Ag Ni              120 Na
+M-2           0640 C774000-5    Ba Lo Ni           315 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nishask SECTOR: Skoreell Sector
+#
+# Jump-routes
+#
+$1240 1104 0 1 2
+$1240 1137 0 0 2
+$1137 1033 0 0 2
+$1033 0830 -1 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Nleeskoo      1033 E242644-5    Ni Po              522 Na
+N-2           1037 A673400-D    Ni                 103 Na
+Askoa         1137 E534244-4    Lo Ni              624 Na
+N-4           1139 D100794-6    Na Va              105 Na
+N-5           1235 B400410-C  N Ni Va              424 Na
+Nassarrel     1240 E328455-6    Ni                 414 Na
+N-7           1334 C353300-9    Lo Ni Po           620 Na
+N-8           1431 C6B3463-6  S Fl Ni           A  904 Na
+N-9           1438 E89A778-8    Wa              B  222 Na
+N-10          1531 D424341-8  S Lo Ni              413 Na
+N-11          1536 CAE8001-A  S Fl Lo Ni           102 Na
+N-12          1631 D37679B-4  S Ag                 623 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Oreellaa SECTOR: Skoreell Sector
+#
+# Jump-routes
+#
+$1832 1629 -1 -1 10
+$1832 1936 0 0 10
+$1936 2138 0 0 10
+$2138 2440 0 0 10
+$2440 2504 1 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1731 B502456-A  S Ic Ni Va           601 Na
+Mallinnisc    1832 C59567A-7  S Ag Ni           B  421 Na
+Tasknea       1936 C735423-7    Ni                 603 Na
+O-4           1938 E130322-7    De Lo Ni Po        103 Na
+O-5           2037 B230500-9  N De Ni Po           200 Na
+Cklookin      2138 B201645-B  S Ic Na Ni Va        714 Na
+O-7           2436 E738552-8    Ni                 400 Na
+Awakkle       2440 D8B3341-7  S Fl Lo Ni        A  204 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Paskor SECTOR: Skoreell Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2537 B969410-A  N Ni                 305 Na
+

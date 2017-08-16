@@ -1,0 +1,356 @@
+Anklekk Sector
+
+A: Anklek                    a.dat
+B: Bankle                    b.dat
+C: Cankore                   c.dat
+D: Dranklor                  d.dat
+E: Evankl                    e.dat
+F: Fanklekk                  f.dat
+G: Glanka                    g.dat
+H: Hilank                    h.dat
+I: Illankk                   i.dat
+J: Janank                    j.dat
+K: Kanklu                    k.dat
+L: Labank                    l.dat
+M: Mourank                   m.dat
+N: Nalankk                   n.dat
+O: Olank                     o.dat
+P: Pankle                    p.dat
+
+Bases:
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Anklek SECTOR: Anklekk Sector
+#
+# Jump-routes
+#
+$0707 1008 1 0 2
+$0707 0404 0 0 2
+$0404 0402 0 0 2
+$0402 0101 0 0 2
+$0101 3138 -1 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Ayyacca       0101 C345647-5    Ag Ni              104 Na
+A-2           0308 D786004-5  S Lo Ni              402 Na
+A-3           0401 D232024-4    Lo Ni Po           601 Na
+Gyunnian      0402 C656564-8  S Ag Ni              714 Na
+Hoillm        0404 A636576-A    Ni              B  201 Na
+A-6           0501 D436556-8    Ni                 913 Na
+Drinolla      0707 B78A342-B    Lo Ni Wa           702 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Bankle SECTOR: Anklekk Sector
+#
+# Jump-routes
+#
+$1508 1808 1 0 2
+$1508 1207 0 0 2
+$1207 1008 0 0 2
+$1008 0707 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Neealkha      1008 D453322-5  S Lo Ni Po           315 Na
+B-2           1204 C625775-7  S                 B  605 Na
+Vhasoure      1207 C625763-4  S                    703 Na
+B-4           1410 C662203-9  S Lo Ni              424 Na
+Bajjah        1508 C160854-A    De Ri              103 Na
+B-6           1510 E579424-8    Ni                 814 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Cankore SECTOR: Anklekk Sector
+#
+# Jump-routes
+$2205 2506 1 0
+#
+$2308 2511 1 1 2
+$2308 1906 0 0 2
+$1906 1808 0 0 2
+$1808 1508 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Ernnonn       1808 E130674-7    De Na Ni Po     B  304 Na
+Keevass       1906 B160565-D  N De Ni              202 Na
+C-3           2004 C64338D-4    Lo Ni Po           205 Na
+C-4           2205 A330756-D    De Na Po           811 Na
+Miaacc        2308 C331504-B    Ni Po              713 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Dranklor SECTOR: Anklekk Sector
+#
+# Jump-routes
+$2506 2205 -1 0
+$2506 2706 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2506 A687153-C    Lo Ni              304 Na
+D-2           2706 B767486-7  N Ni                 104 Na
+D-3           2710 A360247-B    De Lo Ni           104 Na
+D-4           2810 C535301-6    Lo Ni              901 Na
+D-5           2906 DAD9153-9  S Fl Lo Ni           614 Na
+D-6           2910 C737967-6    Hi In              603 Na
+D-7           3004 D548011-3  S Lo Ni              113 Na
+D-8           3110 C656545-6  S Ag Ni              404 Na
+D-9           3203 DA5A459-6    Ni Wa              632 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Evankl SECTOR: Anklekk Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0117 C535721-4  S                    204 Na
+E-2           0313 C000788-8    As Na              300 Na
+E-3           0320 C65A532-B  S Ni Wa              402 Na
+E-4           0617 X2439EE-4    Hi In Po        R  821 Na
+E-5           0618 B548543-7    Ag Ni              903 Na
+E-6           0712 D656334-6  S Lo Ni              102 Na
+E-7           0720 B000355-A    As Lo Ni           104 Na
+E-8           0816 C303841-A  S Ic Na Va           304 Na
+E-9           0817 C536778-7                    B  302 Na
+E-10          0818 C410642-7  S Na Ni              613 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Fanklekk SECTOR: Anklekk Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           1011 C886789-5  S Ag Ri              700 Na
+F-2           1016 E5A0698-4    De Ni              202 Na
+F-3           1118 A784512-C    Ag Ni              301 Na
+F-4           1616 B344897-7                       215 Na
+F-5           1618 C769478-6    Ni              B  514 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Glanka SECTOR: Anklekk Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1717 B220988-B    De Hi In Na Po     814 Na
+G-2           1719 C5469BC-8  S Hi In              813 Na
+G-3           2113 C8A4741-6  S Fl                 403 Na
+G-4           2319 CAA68AE-8  S Fl                 504 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hilank SECTOR: Anklekk Sector
+#
+# Jump-routes
+#
+$3020 3222 0 1 2
+$3020 3016 0 0 2
+$3016 2915 0 0 2
+$2915 2612 0 0 2
+$2612 2511 0 0 2
+$2511 2308 -1 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Annjah        2511 B000998-B    As Hi Na           803 Na
+Corrta        2612 B589747-6    Ri                 904 Na
+H-3           2811 D534112-3  S Lo Ni              103 Na
+Frehaan       2915 B633511-C  N Ni Po              622 Na
+Duukarr       3016 C75A726-8    Wa                 714 Na
+Honnbara      3020 C5758AD-8  S                    304 Na
+H-7           3115 B402633-9  S Ic Na Ni Va        203 Na
+H-8           3211 C95A147-8    Lo Ni Wa           622 Na
+H-9           3220 C628442-5  S Ni                 204 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Illankk SECTOR: Anklekk Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0123 C300667-9  S Na Ni Va           312 Na
+I-2           0125 D87A489-5    Ni Wa              310 Na
+I-3           0230 E411475-9    Ic Ni           B  723 Na
+I-4           0321 E325568-8    Ni                 210 Na
+I-5           0423 C458625-6    Ag Ni              304 Na
+I-6           0424 CAE9300-A    Fl Lo Ni           924 Na
+I-7           0522 C404988-B    Hi Ic Va           523 Na
+I-8           0729 E56999C-4    Hi                 103 Na
+I-9           0823 C320447-B    De Ni Po           403 Na
+I-10          0829 B675266-6    Lo Ni              800 Na
+I-11          0830 D00076B-6  S As Na              403 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Janank SECTOR: Anklekk Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Janan         0925 A322313-F    Lo Ni Po           800 Na
+J-2           0930 C200AAA-B  S Hi Na Va           621 Na
+J-3           1221 B31049B-9  2 Ni                 304 Na
+J-4           1330 C87A100-A  S Lo Ni Wa           604 Na
+J-5           1627 C539513-8    Ni                 210 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kanklu SECTOR: Anklekk Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1825 E8A2116-8    Fl Lo Ni           104 Na
+K-2           1827 CABA953-9  S Fl Hi Wa        A  703 Na
+K-3           1828 C636200-B    Lo Ni              804 Na
+K-4           1930 D110988-7  S Hi Na              313 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Labank SECTOR: Anklekk Sector
+#
+# Jump-routes
+#
+$3226 0127 1 0 2
+$3226 3222 0 0 2
+$3222 3020 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2522 D747110-5  S Lo Ni              124 Na
+L-2           2526 B568130-B    Lo Ni              900 Na
+L-3           2530 C786268-6  S Lo Ni              914 Na
+L-4           2730 C594220-7    Lo Ni              400 Na
+L-5           2826 C222020-A    Lo Ni Po           403 Na
+L-6           2921 E735555-4    Ni                 813 Na
+L-7           3022 C8889B7-6  S Hi                 702 Na
+Lounnria      3222 C996A66-9    Hi In              101 Na
+Lhiihba       3226 C636422-6  S Ni                 712 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Mourank SECTOR: Anklekk Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0234 B5A09BD-D    De Hi              704 Na
+M-2           0238 B99A961-E    Hi In Wa           904 Na
+M-3           0431 C000657-B    As Na Ni           600 Na
+M-4           0633 C43587C-9                    B  921 Na
+M-5           0634 B497530-A    Ag Ni              312 Na
+M-6           0731 C567545-4  S Ag Ni              213 Na
+M-7           0733 C994620-7    Ag Ni              800 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nalankk SECTOR: Anklekk Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0935 C33858C-8    Ni                 605 Na
+N-2           0940 D647500-3  S Ag Ni              220 Na
+N-3           1134 D257735-4    Ag                 413 Na
+N-4           1140 B467433-7  N Ni                 702 Na
+N-5           1331 E75A163-8    Lo Ni Wa           102 Na
+N-6           1435 C220452-7  S De Ni Po           503 Na
+N-7           1540 E8C6741-7    Fl              A  413 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Olank SECTOR: Anklekk Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1735 D586300-5  S Lo Ni              800 Na
+O-2           1832 B576953-C    Hi In              102 Na
+O-3           1837 E261000-4    Ba Lo Ni           914 Na
+O-4           2139 X410454-1                    R  912 Na
+O-5           2332 C787314-9  S Lo Ni              114 Na
+O-6           2338 C449654-7    Ni                 604 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Pankle SECTOR: Anklekk Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2631 C447832-7                       601 Na
+P-2           2831 B400100-9    Lo Ni Va           212 Na
+P-3           2933 C485863-5  S Ri                 413 Na
+

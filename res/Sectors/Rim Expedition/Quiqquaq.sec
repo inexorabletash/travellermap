@@ -1,0 +1,363 @@
+Quiqquaq Sector
+
+A: Aquiq                     a.dat
+B: Buiqua                    b.dat
+C: Cuiqquaq                  c.dat
+D: Duaq                      d.dat
+E: Equiq                     e.dat
+F: Fuiquar                   f.dat
+G: Guaqar                    g.dat
+H: Huiquaq                   h.dat
+I: Iquianna                  i.dat
+J: Juaquih                   j.dat
+K: Kluiquaq                  k.dat
+L: Luaqa                     l.dat
+M: Muiquaq                   m.dat
+N: Noquiq                    n.dat
+O: Oquaqq                    o.dat
+P: Paqua                     p.dat
+
+Bases:
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Aquiq SECTOR: Quiqquaq Sector
+#
+# Jump-routes
+#
+$0805 1107 1 0 2
+$0805 0703 0 0 2
+$0703 0739 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0110 B667567-9  N Ag Ni              600 Na
+A-2           0207 E879440-7    Ni                 704 Na
+A-3           0309 D632300-8    Lo Ni Po           423 Na
+A-4           0402 B433410-8  N Ni Po              303 Na
+A-5           0505 A451366-9  S Lo Ni Po           624 Na
+Krounarq      0703 C468424-9    Ni                 903 Na
+A-7           0804 C55A458-9    Ni Wa              512 Na
+Aikkiaq       0805 CAC2468-6    Fl Ni           A  601 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Buiqua SECTOR: Quiqquaq Sector
+#
+# Jump-routes
+#
+$1107 1111 0 1 2
+$1107 0805 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Jaqabba       1107 D120537-A  S De Ni Po           924 Na
+B-2           1304 BA88655-B  S Ag Ni Ri           502 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Cuiqquaq SECTOR: Quiqquaq Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1901 B638694-7  2 Ni                 614 Na
+C-2           2210 A968247-9    Lo Ni              614 Na
+C-3           2307 C789113-A  S Lo Ni              805 Na
+C-4           2401 X75A8CA-4    Wa              R  621 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Duaq SECTOR: Quiqquaq Sector
+#
+# Jump-routes
+#
+$2701 2640 0 -1 10
+$2701 3003 0 0 10
+$3003 3007 0 0 10
+$3007 0109 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2607 CA889DD-5    Hi                 102 Na
+D-2           2610 C470775-6    De              B  102 Na
+Dhahl         2701 C99A410-8    Ni Wa              911 Na
+D-4           2706 C79A576-7    Ni Wa           B  103 Na
+D-5           2807 E5566BC-6    Ag Ni              100 Na
+Haghaga       3003 C120896-8    De Na Po           401 Na
+Raiinac       3007 C581534-9    Ni                 501 Na
+D-8           3010 E445248-6    Lo Ni              113 Na
+D-9           3105 E65647A-2    Ni              B  313 Na
+D-10          3108 C76338B-5    Lo Ni              402 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Equiq SECTOR: Quiqquaq Sector
+#
+# Jump-routes
+#
+$0818 0822 0 1 2
+$0818 0615 0 0 2
+$0615 0914 1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0216 E733530-3    Ni Po              103 Na
+E-2           0318 C611741-8    Ic Na              503 Na
+E-3           0515 C684643-5    Ag Ni Ri           502 Na
+Saqqi         0615 E410100-6    Lo Ni              604 Na
+E-5           0718 DAD2100-7  S Fl Lo Ni           323 Na
+Endaqar       0818 C77998A-9  S Hi In              501 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Fuiquar SECTOR: Quiqquaq Sector
+#
+# Jump-routes
+#
+$0914 0615 -1 0 2
+$0914 1111 0 0 2
+$1111 1107 0 -1 2
+$1316 1317 0 0 14
+$1317 1519 0 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0911 C7A39AA-9  S Fl Hi              113 Na
+Follgaq       0914 C88A7AA-A    Wa                 403 Na
+Hammalon      1111 B959220-7  S Lo Ni              422 Na
+F-4           1312 C100457-9    Ni Va              801 Na
+Fuiqua        1316 A140452-F  2 De Ni Po           613 Na
+F-6           1317 B53689B-9                       812 Na
+F-7           1519 B57669B-6    Ag Ni              404 Na
+F-8           1616 E320457-9    De Ni Po           903 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Guaqar SECTOR: Quiqquaq Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1715 X797340-1    Lo              R  904 Na
+G-2           1719 E797132-4    Lo Ni              611 Na
+G-3           2316 C337977-7    Hi In           B  102 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Huiquaq SECTOR: Quiqquaq Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2513 C9759DE-7    Hi In              910 Na
+H-2           2713 C765684-6    Ag Ni Ri           403 Na
+H-3           2715 E799595-5    Ni                 604 Na
+H-4           2718 B8A6100-9  S Fl Lo Ni           303 Na
+H-5           3017 B200426-B    Ni Va              300 Na
+H-6           3116 C612994-7    Hi Ic Na           600 Na
+H-7           3120 A432667-D  2 Na Ni Po           113 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Iquianna SECTOR: Quiqquaq Sector
+#
+# Jump-routes
+#
+$0822 1024 1 0 2
+$0822 0818 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0622 A614200-D    Ic Lo Ni           920 Na
+I-2           0630 C7A4530-6  S Fl Ni              511 Na
+Intiaar       0822 C7859AA-6    Hi                 304 Na
+I-4           0827 B468510-B  S Ag Ni              600 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Juaquih SECTOR: Quiqquaq Sector
+#
+# Jump-routes
+#
+$1029 1032 0 1 2
+$1029 0928 0 0 2
+$0928 1024 0 0 2
+$1024 0822 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0923 D10099D-9  S Hi Na Va           404 Na
+Uffamat       0928 A4727CD-8                       213 Na
+Alkarraq      1024 B9B8102-9  N Fl Lo Ni        A  113 Na
+Malagr        1029 C527966-7    Hi In              803 Na
+J-5           1123 B768337-B    Lo Ni              404 Na
+J-6           1327 D20066A-8  S Na Ni Va           900 Na
+J-7           1329 D97A668-3  S Ni Wa              700 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kluiquaq SECTOR: Quiqquaq Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1823 C201455-C  S Ic Ni Va           402 Na
+K-2           1827 B537578-8  2 Ni              B  801 Na
+K-3           1926 D446513-6    Ag Ni              200 Na
+K-4           2026 C535422-5    Ni                 703 Na
+K-5           2423 D557110-3  S Lo Ni              802 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Luaqa SECTOR: Quiqquaq Sector
+#
+# Jump-routes
+$3027 3129 0 0
+$3129 3228 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2523 X7B3366-1    Fl Lo           R  504 Na
+L-2           2525 A8A8620-B  S Fl Ni              412 Na
+L-3           2526 C300346-9  S Lo Ni Va           124 Na
+L-4           2621 E542988-3    Hi In Po           803 Na
+L-5           2723 B67756B-8  N Ag Ni              224 Na
+L-6           2821 B6B079D-7  S De              A  722 Na
+L-7           3021 B525456-8  N Ni                 502 Na
+L-8           3027 B373669-B  N Ni                 802 Na
+L-9           3129 B2518BC-B    Po                 823 Na
+L-10          3225 E210677-7    Na Ni           B  303 Na
+L-11          3228 A447335-B  S Lo Ni              601 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Muiquaq SECTOR: Quiqquaq Sector
+#
+# Jump-routes
+$0539 0639 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0235 D222731-8    Na Po              814 Na
+M-2           0238 C779231-6    Lo Ni              723 Na
+M-3           0339 E140723-8    De Po              403 Na
+M-4           0434 C000100-9    As Lo Ni           920 Na
+M-5           0439 C634010-8    Lo Ni              503 Na
+M-6           0539 C99A38C-B    Lo Ni Wa           603 Na
+M-7           0639 B43588B-C  N                    212 Na
+M-8           0731 C536542-8    Ni                 805 Na
+M-9           0734 D300302-7    Lo Ni Va           125 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Noquiq SECTOR: Quiqquaq Sector
+#
+# Jump-routes
+#
+$1637 1936 1 0 2
+$1637 1236 0 0 2
+$1236 1135 0 0 2
+$1135 1032 0 0 2
+$1032 1029 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Ghuqqa        1032 D547135-2    Lo Ni              213 Na
+N-2           1035 C200574-B    Ni Va           B  601 Na
+Falamaak      1135 B100447-C    Ni Va              501 Na
+Jikkla        1236 B433435-B    Ni Po              201 Na
+N-5           1538 EAA2643-2    Fl Ni              604 Na
+Nuutreqa      1637 C7B2421-A    Fl Ni           A  221 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Oquaqq SECTOR: Quiqquaq Sector
+#
+# Jump-routes
+#
+$2237 2637 1 0 2
+$2237 1936 0 0 2
+$1936 1637 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1932 E311434-9    Ic Ni              702 Na
+Zaahuuq       1936 D99A552-9  S Ni Wa              611 Na
+O-3           2132 B464542-9    Ag Ni              902 Na
+O-4           2139 E350543-4    De Ni Po           704 Na
+Olloqa        2237 C364100-6  S Lo Ni              604 Na
+O-6           2335 C86A9BB-B  S Hi Wa              615 Na
+O-7           2340 C8A0720-8    De                 714 Na
+O-8           2432 B7657BC-8  N Ag                 504 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Paqua SECTOR: Quiqquaq Sector
+#
+# Jump-routes
+#
+$3039 0140 1 0 2
+$3039 2637 0 0 2
+$2637 2237 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Quaqua        2637 B667510-7    Ag Ni              104 Na
+P-2           2833 C0009CC-B    As Hi Na           904 Na
+Taanaar       3039 D944310-5    Lo Ni              603 Na
+P-4           3239 B452110-A    Lo Ni Po           104 Na
+

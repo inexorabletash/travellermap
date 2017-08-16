@@ -1,0 +1,988 @@
+Zostromm Sector
+
+A: Atromm                    a.dat
+B: Bazos                     b.dat
+C: Clostro                   c.dat
+D: Drozos                    d.dat
+E: Etrozo                    e.dat
+F: Flozost                   f.dat
+G: Ghostomm                  g.dat
+H: Hostra                    h.dat
+I: Izosti                    i.dat
+J: Jozosomm                  j.dat
+K: Ktromm                    k.dat
+L: Lozooll                   l.dat
+M: Mozomm                    m.dat
+N: Notromm                   n.dat
+O: Otrozz                    o.dat
+P: Pozost                    p.dat
+
+Bases:
+H = Koruul Navy
+J = Koruul Scout
+K = Koruul Navy & Scout
+L = Koruul Research
+M = Koruul Army & Marine
+N = Navy
+S = Scout
+Y = Zamaire Navy
+Z = Zamaire Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+12 Ke = Koruul Empire
+07 Na = Non-Aligned
+03 Za = Zamaire Alliance
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Atromm SECTOR: Zostromm Sector
+#
+# Jump-routes
+#
+$0410 0111 0 1 12
+$0410 0510 0 0 12
+$0510 0608 0 0 12
+$0608 0206 0 0 12
+$0206 0106 0 0 12
+$0106 0205 0 0 12
+$0205 0206 0 0 12
+$0205 0302 0 0 12
+$0302 0501 0 0 12
+$0608 0805 0 0 12
+$0805 0905 1 0 12
+$0608 0811 0 1 12
+$0206 3104 -1 0 10
+$0206 0608 0 0 10
+$0608 0811 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0101 C110300-D  J Lo Ni              112 Ke
+A-2           0102 C66A167-8  L Lo Ni Wa           903 Ke
+A-3           0106 B276404-D    Ni                 304 Ke
+A-4           0109 C59746B-6  H Ni                 200 Ke
+A-5           0201 E4528AB-6    Po                 505 Ke
+A-6           0205 B100748-C  H Na Va              504 Ke
+Badrek        0206 B233346-8  J Lo Ni Po           824 Ke
+A-8           0301 C247335-9    Lo Ni              320 Ke
+A-9           0302 B220332-8  J De Lo Ni Po        500 Ke
+A-10          0307 DA89532-8  H Ni                 405 Ke
+A-11          0309 C524475-7    Ni              B  415 Na
+A-12          0310 E456637-3    Ag Ni              304 Ke
+A-13          0403 C656985-6    Hi                 700 Ke
+A-14          0410 B665496-A  H Ni                 502 Ke
+A-15          0501 B6837BB-8  H                    324 Ke
+A-16          0506 C44438A-5  H Lo Ni              504 Ke
+A-17          0507 C8D7723-4    Fl                 100 Ke
+A-18          0508 D75A232-6    Lo Ni Wa           710 Ke
+A-19          0510 B786745-A  H Ag Ri              724 Ke
+A-20          0602 D500365-7  J Lo Ni Va           503 Ke
+A-21          0603 C400796-7    Na Va              131 Ke
+A-22          0604 C436012-7  L Lo Ni              223 Ke
+A-23          0605 C67A333-B    Lo Ni Wa           100 Ke
+Hupruul       0608 A685430-A  H Ni                 903 Ke
+A-25          0702 C45478D-5  H Ag                 504 Ke
+A-26          0704 C1009AD-A    Hi Na Va           214 Ke
+A-27          0707 C484636-8  H Ag Ni              725 Ke
+A-28          0708 A435876-C                    B  413 Na
+A-29          0709 C300895-A    Na Va              402 Ke
+A-30          0710 C667534-6  H Ag Ni              620 Ke
+A-31          0804 C4459AC-A  K Hi In              703 Ke
+A-32          0805 A210847-A    Na                 313 Ke
+A-33          0807 C570269-4  J De Lo Ni           202 Ke
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Bazos SECTOR: Zostromm Sector
+#
+# Jump-routes
+#
+$0905 0805 -1 0 12
+$0905 1107 0 0 12
+$1107 1209 0 0 12
+$1209 1113 0 1 12
+$1209 1313 0 1 12
+$1209 1408 0 0 12
+$1408 1406 0 0 12
+$1107 1406 0 0 12
+$1406 1604 0 0 12
+$1408 1809 1 0 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           0902 C67359C-6    Ni                 915 Ke
+B-2           0905 AA99698-9    Ni                 713 Ke
+B-3           0906 C223436-6  H Ni Po              510 Ke
+B-4           1001 D433579-8    Ni Po           B  213 Na
+B-5           1003 C595698-3    Ag Ni              221 Ke
+B-6           1007 C562353-6    Lo Ni              603 Ke
+B-7           1103 C100775-A    Na Va           B  612 Na
+B-8           1104 C797778-7    Ag              B  100 Na
+B-9           1105 C300100-B  L Lo Ni Va           204 Ke
+B-10          1106 C737500-9    Ni                 322 Ke
+B-11          1107 A612334-D  J Ic Lo Ni           603 Ke
+B-12          1109 D300AA8-9  M Hi Na Va           314 Ke
+B-13          1110 E510741-6    Na                 300 Ke
+B-14          1205 C465446-A  H Ni                 423 Ke
+B-15          1206 E7A5667-6    Fl Ni              610 Ke
+B-16          1207 E667201-5    Lo Ni              722 Ke
+B-17          1208 C400412-A  H Ni Va              202 Ke
+B-18          1209 B459767-8  H                    714 Ke
+B-19          1302 CAD3231-8    Fl Lo Ni           824 Ke
+B-20          1303 D510545-6  H Ni                 703 Ke
+B-21          1309 C400401-B    Ni Va              303 Ke
+B-22          1310 C586403-6  H Ni                 500 Ke
+B-23          1401 C7B8978-B  K Fl Hi           A  112 Ke
+B-24          1405 E7B0345-5    De Lo Ni        A  801 Ke
+B-25          1406 B421203-C  J Lo Ni Po           914 Ke
+B-26          1408 A4017AB-9  H Ic Na Va           400 Ke
+B-27          1508 E541454-6    Ni Po              704 Ke
+B-28          1509 C7A2676-6    Fl Ni           B  203 Na
+B-29          1601 D8888AD-2  K                    303 Ke
+B-30          1602 D854686-2  H Ag Ni              400 Ke
+B-31          1603 C6A1434-9    Fl Ni              512 Ke
+B-32          1604 A787558-A  H Ag Ni              805 Ke
+B-33          1608 C457599-A    Ag Ni              804 Ke
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Clostro SECTOR: Zostromm Sector
+#
+# Jump-routes
+#
+$1809 1408 -1 0 12
+$2302 2603 1 0 3
+$2302 2104 0 0 3
+$2104 2105 0 0 3
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1701 E556310-5    Lo Ni              403 Ke
+C-2           1702 C666220-6  J Lo Ni              303 Ke
+C-3           1704 B847576-6    Ag Ni           B  600 Na
+C-4           1706 E663488-5    Ni                 125 Na
+C-5           1707 D230665-6  J De Na Ni Po        910 Ke
+C-6           1708 C10089C-7    Na Va              913 Ke
+C-7           1709 C505889-9    Ic Va              702 Ke
+C-8           1710 B996865-7                       202 Ke
+C-9           1803 D7C5AFF-A  S Fl Hi           A  704 Na
+C-10          1808 E545876-3                    B  504 Na
+C-11          1809 A573585-A  H Ni                 913 Ke
+C-12          1904 C527543-A    Ni                 513 Na
+C-13          1906 CA6A576-8    Ni Wa           B  514 Na
+C-14          1910 C766855-5  H Ri                 514 Ke
+C-15          2002 B66A47A-C    Ni Wa           B  604 Na
+C-16          2004 C200447-6  Z Ni Va              622 Za
+C-17          2005 E88799D-5    Hi                 812 Na
+C-18          2006 D76968B-2    Ni Ri              605 Za
+C-19          2010 C446567-A    Ag Ni              503 Ke
+C-20          2102 C449123-7    Lo Ni              213 Za
+C-21          2104 B404634-A  Y Ic Ni Va           100 Za
+C-22          2105 B867A9A-A    Hi                 814 Za
+C-23          2106 D244987-7  Y Hi In              700 Za
+C-24          2107 C464253-8    Lo Ni              904 Za
+C-25          2209 E797ABC-6    Hi In              600 Na
+C-26          2302 B100103-C  Z Lo Ni Va           713 Za
+C-27          2303 D512779-3    Ic Na           B  301 Na
+C-28          2307 C532654-8  Y Na Ni Po           913 Za
+C-29          2310 C678340-5    Lo Ni              505 Na
+C-30          2402 D8B8775-7  Y Fl              A  612 Za
+C-31          2405 C542774-8    Po              B  204 Na
+C-32          2408 C210763-5    Na                 324 Na
+C-33          2410 E656433-6    Ni                 113 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Drozos SECTOR: Zostromm Sector
+#
+# Jump-routes
+#
+$2801 2603 0 0 3
+$2603 2302 -1 0 3
+$2603 2704 0 0 3
+$2704 2706 0 0 3
+$2706 2507 0 0 3
+$2704 3005 0 0 3
+$3005 3105 0 0 3
+$3210 3011 0 1 3
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2501 C551784-5    Po                 113 Za
+D-2           2502 D210559-9    Ni                 103 Za
+D-3           2503 C5119A7-B  Y Hi Ic Na           424 Za
+D-4           2507 A611764-8    Ic Na              514 Za
+D-5           2509 D583ADC-6    Hi                 301 Na
+D-6           2510 C462310-5    Lo Ni              414 Na
+D-7           2603 A7A2584-A  Y Fl Ni              100 Za
+D-8           2605 D220544-5    De Ni Po           812 Za
+D-9           2606 B6A3566-7    Fl Ni              623 Za
+D-10          2607 C400357-8    Lo Ni Va           213 Za
+D-11          2609 C442214-A    Lo Ni Po           304 Na
+D-12          2701 C8A5688-8  Y Fl Ni              702 Za
+D-13          2703 C563552-5    Ni                 304 Za
+D-14          2704 B8A5334-8    Fl Lo Ni           213 Za
+D-15          2705 B6A2520-7  Y Fl Ni              123 Za
+D-16          2706 B235788-9  Y                    814 Za
+D-17          2707 E99A38D-4    Lo Ni Wa           813 Za
+D-18          2710 C410203-8    Lo Ni              914 Na
+D-19          2801 B795766-A  Y Ag                 524 Za
+D-20          2803 E6A2750-6    Fl                 913 Za
+D-21          2805 B663572-8    Ni              B  123 Na
+D-22          2806 C241664-6  Y Ni Po              603 Za
+D-23          2808 C639322-9  S Lo Ni              800 Na
+D-24          2901 C588469-7  Z Ni                 803 Za
+D-25          2905 A345549-A    Ag Ni              122 Za
+D-26          2906 B66A67C-9    Ni Ri Wa        B  513 Na
+D-27          2908 C564556-7    Ag Ni              603 Na
+D-28          2909 D100345-7  S Lo Ni Va           824 Na
+D-29          3001 C475564-6    Ag Ni              414 Za
+D-30          3004 C8C7755-7    Fl              A  322 Za
+D-31          3005 B332A84-E  Y Hi In Na Po        904 Za
+D-32          3006 C786975-A    Hi              B  904 Na
+D-33          3101 E977548-5    Ag Ni              103 Za
+D-34          3105 A848533-A  Y Ag Ni              423 Za
+D-35          3106 E567510-7    Ag Ni              124 Za
+D-36          3107 C242403-A  Z Ni Po              700 Za
+D-37          3110 C656152-8    Lo Ni              100 Za
+D-38          3205 B575A7A-C    Hi In           B  330 Na
+D-39          3206 B53567A-8    Ni              B  703 Na
+D-40          3210 B510201-9    Lo Ni              810 Za
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Etrozo SECTOR: Zostromm Sector
+#
+# Jump-routes
+#
+$0111 3012 -1 0 12
+$0111 0314 0 0 12
+$0314 0315 0 0 12
+$0414 0116 0 0 12
+$0116 2916 -1 0 12
+$0111 0410 0 -1 12
+$0818 0917 1 0 12
+$0813 1013 1 0 12
+$0813 0811 0 0 12
+$0811 0608 0 -1 12
+$0813 0515 0 0 12
+$0515 0314 0 0 12
+$0714 0613 0 0 12
+$0613 0414 0 0 12
+$0515 0617 0 0 12
+$0617 0818 0 0 12
+$0818 1018 1 0 12
+$0811 0608 0 -1 10
+$0811 1014 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0111 BAC8585-9    Fl Ni           A  604 Ke
+E-2           0116 B100440-D    Ni Va              104 Ke
+E-3           0119 C200514-6    Ni Va              200 Ke
+E-4           0120 C748251-5    Lo Ni              425 Ke
+E-5           0212 E754877-1                    B  514 Na
+E-6           0217 C798238-9  J Lo Ni              804 Ke
+E-7           0219 C21035A-B    Lo Ni              522 Ke
+E-8           0311 B474676-A    Ag Ni           B  200 Na
+E-9           0313 A578677-C    Ag Ni           B  600 Na
+E-10          0314 B653523-A    Ni Po              130 Ke
+E-11          0315 B99A556-B  H Ni Wa              902 Ke
+E-12          0318 C510589-A  H Ni                 903 Ke
+E-13          0412 C9B2465-7  H Fl Ni           A  513 Ke
+E-14          0413 C444654-7    Ag Ni              100 Ke
+E-15          0414 A450522-C    De Ni Po           114 Ke
+E-16          0512 C646511-4  H Ag Ni              510 Ke
+E-17          0515 B674635-7    Ag Ni              412 Ke
+E-18          0516 C100652-7    Na Ni Va           214 Ke
+E-19          0518 D564549-6  H Ag Ni              204 Ke
+E-20          0519 C000572-7    As Ni           B  705 Na
+E-21          0613 B9D5333-9  J Fl Lo Ni           222 Ke
+E-22          0614 C3359B7-8  K Hi In              200 Ke
+E-23          0615 E300100-6  L Lo Ni Va           712 Ke
+E-24          0617 B97A146-9  L Lo Ni Wa           403 Ke
+E-25          0618 C110444-9    Ni                 104 Ke
+E-26          0714 A120740-C  H De Na Po           603 Ke
+E-27          0718 X599463-4                    R  313 Ke
+Kuranna       0811 A674787-9  H Ag                 814 Ke
+E-29          0812 C310666-6  H Na Ni              303 Ke
+E-30          0813 B996699-9  H Ag Ni              500 Ke
+E-31          0816 C986433-6    Ni                 401 Ke
+E-32          0818 A646368-8  J Lo Ni              504 Ke
+E-33          0820 C10088C-6    Na Va              803 Ke
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Flozost SECTOR: Zostromm Sector
+#
+# Jump-routes
+#
+$1113 1209 0 -1 12
+$1313 1209 0 -1 12
+$1313 1414 0 0 12
+$1414 1616 0 0 12
+$1616 1916 1 0 12
+$1113 1114 0 0 12
+$1113 1013 0 0 12
+$1013 0917 0 0 12
+$0917 0818 -1 0 12
+$1013 0813 -1 0 12
+$1616 1518 0 0 12
+$1518 1219 0 0 12
+$1219 1018 0 0 12
+$1018 0818 -1 0 12
+$1018 1118 0 0 12
+$1118 1318 0 0 12
+$1318 1518 0 0 12
+$1518 1522 0 1 12
+$1518 1819 1 0 12
+$1014 0811 -1 0 10
+$1014 1118 0 0 10
+$1118 1321 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0914 E33878C-8                       712 Ke
+F-2           0917 A5A0665-A    De Ni              800 Ke
+F-3           1013 B665656-B  H Ag Ni Ri           603 Ke
+Flasha        1014 X4647BB-0    Ag              R  611 Ke
+F-5           1015 X88847A-2                    R  402 Ke
+F-6           1018 B678666-7    Ag Ni              903 Ke
+F-7           1019 D000146-6  L As Lo Ni           100 Ke
+F-8           1111 C334544-B  H Ni                 310 Ke
+F-9           1113 B2345AA-8  H Ni                 414 Ke
+F-10          1114 A310587-A    Ni                 223 Ke
+Rehahul       1118 A9B4510-A    Fl Ni           A  301 Ke
+F-12          1211 E9E3653-6    Fl Ni              814 Ke
+F-13          1212 C8A0477-5    De Ni           B  400 Na
+F-14          1213 X896974-0    Hi In           R  500 Ke
+F-15          1214 C476A9B-9  M Hi In              504 Ke
+F-16          1215 E496456-5    Ni                 802 Ke
+F-17          1218 E321554-9    Ni Po              403 Ke
+F-18          1219 B5A6556-C  H Fl Ni              503 Ke
+F-19          1220 C000220-7  J As Lo Ni           404 Ke
+F-20          1312 C231775-A    Na Po           B  803 Na
+F-21          1313 B261543-B    Ni                 802 Ke
+F-22          1314 C110400-8  H Ni                 401 Ke
+F-23          1317 C694353-7    Lo Ni              404 Ke
+F-24          1318 B514640-6  H Ic Ni              620 Ke
+F-25          1319 C36668A-8    Ag Ni Ri           704 Ke
+F-26          1411 C12087B-A    De Na Po        B  114 Na
+F-27          1413 C150786-8  H De Po              610 Ke
+F-28          1414 B598442-9  H Ni                 205 Ke
+F-29          1417 E555847-4                       113 Ke
+F-30          1418 A516642-C    Ic Ni              800 Ke
+F-31          1419 E899246-6    Lo Ni              103 Ke
+F-32          1511 C775688-3    Ag Ni              104 Ke
+F-33          1514 X895300-0    Lo              R  720 Ke
+F-34          1515 E563987-4    Hi                 920 Ke
+F-35          1517 C656973-9    Hi              B  712 Na
+F-36          1518 A411467-E  H Ic Ni              720 Ke
+F-37          1612 C645599-6    Ag Ni              704 Ke
+F-38          1613 E42268B-5    Na Ni Po           104 Ke
+F-39          1616 A100413-F    Ni Va              214 Ke
+F-40          1617 E789420-8    Ni                 702 Ke
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ghostomm SECTOR: Zostromm Sector
+#
+# Jump-routes
+#
+$1916 1616 -1 0 12
+$1819 1518 -1 0 12
+$2117 1715 0 0 12
+$2117 2114 0 0 12
+$1916 1915 0 0 12
+$2117 2317 0 0 12
+$2317 2414 0 0 12
+$2117 2118 0 0 12
+$2118 1819 0 0 12
+$2118 2221 0 1 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1711 C886953-6  K Hi                 324 Ke
+G-2           1712 E5A1587-7    Fl Ni              524 Ke
+G-3           1715 B799545-9    Ni                 403 Ke
+G-4           1716 C735000-6  L Ba Lo Ni           600 Ke
+G-5           1718 B655774-8    Ag              B  711 Na
+G-6           1719 C886210-5    Lo Ni              604 Ke
+G-7           1811 C556544-5  H Ag Ni              224 Ke
+G-8           1815 C536779-5                    B  103 Na
+G-9           1816 C421887-7  K Na Po              303 Ke
+G-10          1817 C120672-8    De Na Ni Po     B  504 Na
+G-11          1819 B8679DC-8  K Hi                 910 Ke
+G-12          1913 D8856AD-3    Ag Ni              405 Ke
+G-13          1915 BAF4727-8    Fl                 704 Ke
+G-14          1916 B566365-7  J Lo Ni              905 Ke
+G-15          1918 C423304-7    Lo Ni Po           420 Ke
+G-16          1919 A869576-A    Ni              B  323 Na
+G-17          1920 E546333-6    Lo Ni              503 Ke
+G-18          2012 E688332-7    Lo Ni              303 Ke
+G-19          2015 C202895-5  K Ic Na Va           403 Ke
+G-20          2019 C412846-9    Ic Na              204 Ke
+G-21          2114 B598211-9    Lo Ni              604 Ke
+G-22          2116 B757413-9  H Ni                 600 Ke
+Gottrom       2117 A000204-H  J As Lo Ni Cx        102 Ke
+G-24          2118 B639315-D  J Lo Ni              704 Ke
+G-25          2214 C200301-C  J Lo Ni Va           901 Ke
+G-26          2215 C5458DB-6                       905 Ke
+G-27          2217 C9A5665-5    Fl Ni              625 Ke
+G-28          2312 C422488-9  H Ni Po              625 Ke
+G-29          2314 C453415-7    Ni Po              223 Ke
+G-30          2315 C10068A-8  H Na Ni Va           122 Ke
+G-31          2316 C85A300-8    Lo Ni Wa           402 Ke
+G-32          2317 A300112-A  L Lo Ni Va           303 Ke
+G-33          2319 C225699-5    Ni                 803 Ke
+G-34          2411 X78A200-2    Lo Wa           R  913 Ke
+G-35          2412 D9D6212-3    Fl Lo Ni           710 Ke
+G-36          2413 E443797-7    Po                 104 Ke
+G-37          2414 B471458-8    Ni                 823 Ke
+G-38          2415 C95A332-6    Lo Ni Wa           122 Ke
+G-39          2417 C87659A-4    Ag Ni              200 Ke
+G-40          2419 D895001-5  L Lo Ni              500 Ke
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hostra SECTOR: Zostromm Sector
+#
+# Jump-routes
+#
+$3011 3210 0 -1 3
+$3011 2812 0 0 3
+$2812 2913 0 0 3
+$2913 2915 0 0 3
+$2915 3014 0 0 3
+$2915 3017 0 0 3
+$3017 3119 0 0 3
+$3119 3121 0 1 3
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2511 C83A8D8-5    Wa                 803 Na
+H-2           2516 C540320-9    De Lo Ni Po        402 Ke
+H-3           2517 C300545-A  H Ni Va              604 Ke
+H-4           2613 E696754-7    Ag                 604 Na
+H-5           2618 C565843-6  S Ri                 300 Na
+H-6           2711 E69A58C-5    Ni Wa              702 Na
+H-7           2713 A322577-B    Ni Po           B  610 Na
+H-8           2715 D525200-5  S Lo Ni              802 Na
+H-9           2718 C000336-C    As Lo Ni           204 Na
+H-10          2719 C225455-8  S Ni                 810 Na
+H-11          2812 A8C4457-A    Fl Ni           A  621 Za
+H-12          2813 E634411-8    Ni                 924 Na
+H-13          2819 CAD3133-7  S Fl Lo Ni           401 Na
+H-14          2820 D736ACF-7  S Hi In              900 Na
+H-15          2912 D551214-2    Lo Ni Po           804 Za
+H-16          2913 A210565-B  Y Ni                 303 Za
+H-17          2915 B000ADH-A  Y As Hi Na        A  404 Za
+H-18          2916 C8C6847-8  Y Fl              A  302 Za
+H-19          2919 C442898-6    Po                 403 Na
+H-20          3011 B514442-9  Y Ic Ni              503 Za
+H-21          3012 X588442-2                    R  801 Za
+H-22          3014 B330998-9  Y De Hi In Na Po     203 Za
+H-23          3015 D6958DD-3                       304 Za
+H-24          3017 B5A3555-9    Fl Ni              113 Za
+H-25          3114 D526789-2                       604 Za
+H-26          3116 CA5A99B-9  Y Hi Wa              604 Za
+H-27          3119 B686231-A  Z Lo Ni              600 Za
+H-28          3216 C130585-C    De Ni Po           125 Za
+H-29          3219 C240500-9    De Ni Po           804 Za
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Izosti SECTOR: Zostromm Sector
+#
+# Jump-routes
+#
+$0127 3128 -1 0 12
+$0127 3124 -1 0 12
+$0127 0425 0 0 12
+$0425 0623 0 0 12
+$0623 0627 0 0 12
+$0627 0425 0 0 12
+$0627 0929 1 0 12
+$0623 1024 1 0 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0126 X9B8420-1    Fl              R  103 Ke
+I-2           0127 A99A8AC-E  K Wa                 605 Ke
+I-3           0128 E544127-4  L Lo Ni              511 Ke
+I-4           0221 D250786-3  H De Po              504 Ke
+I-5           0222 E898567-3    Ag Ni              605 Ke
+I-6           0223 C54068A-5    De Ni Po           901 Ke
+I-7           0224 D323557-9    Ni Po              425 Ke
+I-8           0225 E648579-3    Ag Ni           B  812 Na
+I-9           0227 C652663-7  H Ni Po              703 Ke
+I-10          0322 C346773-7    Ag              B  220 Na
+I-11          0326 C99A200-8  J Lo Ni Wa           604 Ke
+I-12          0327 E553ACA-6    Hi Po              923 Ke
+I-13          0422 D433A7A-B    Hi In Na Po     B  514 Na
+I-14          0424 C76A466-8    Ni Wa              202 Ke
+I-15          0425 BAA5564-C  H Fl Ni              502 Ke
+I-16          0426 E100569-7    Ni Va              910 Ke
+I-17          0525 C100444-C    Ni Va              405 Ke
+I-18          0526 C777626-8    Ag Ni              721 Ke
+I-19          0527 D778866-2                       805 Ke
+I-20          0622 E431334-9    Lo Ni Po           723 Ke
+I-21          0623 B555984-8  K Hi                 213 Ke
+I-22          0625 B000686-9  H As Na Ni           202 Ke
+I-23          0627 A457566-B    Ag Ni              303 Ke
+I-24          0630 E73A314-8    Lo Ni Wa           303 Ke
+I-25          0721 E100566-A    Ni Va              924 Ke
+I-26          0722 D000300-6  J As Lo Ni           500 Ke
+I-27          0727 C481233-5    Lo Ni              700 Ke
+I-28          0730 D32526B-7    Lo Ni              205 Ke
+I-29          0821 C584310-8    Lo Ni              204 Ke
+I-30          0824 DAE3664-3    Fl Ni              413 Ke
+I-31          0825 D4929AB-6  K Hi In              602 Ke
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jozosomm SECTOR: Zostromm Sector
+#
+# Jump-routes
+#
+$0929 0627 -1 0 12
+$1024 0623 -1 0 12
+$1024 1323 0 0 12
+$1323 1522 0 0 12
+$1522 1518 0 -1 12
+$1024 1126 0 0 12
+$1126 1128 0 0 12
+$1128 0928 0 0 12
+$0928 1024 0 0 12
+$0928 0929 0 0 12
+$0929 1229 0 0 12
+$1229 1330 0 0 12
+$1330 1429 0 0 12
+$1429 1528 0 0 12
+$1429 1730 1 0 12
+$1528 1128 0 0 12
+$1126 1328 0 0 12
+$1328 1429 0 0 12
+$1429 1532 0 1 12
+$0929 0931 0 1 12
+$1321 1118 0 -1 10
+$1321 1623 0 0 10
+$1623 1727 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0921 D8B5847-7  K Fl              A  102 Ke
+J-2           0924 C6719BB-7    Hi In              710 Ke
+J-3           0925 C66A000-8  L Ba Lo Ni Wa        701 Ke
+J-4           0926 C668548-7    Ag Ni              805 Ke
+J-5           0928 A2009BB-F    Hi Na Va           812 Ke
+J-6           0929 A99A262-E  J Lo Ni Wa           902 Ke
+J-7           0930 C655847-3                       403 Ke
+J-8           1024 B546232-9    Lo Ni              403 Ke
+J-9           1026 C573635-5    Ni                 813 Ke
+J-10          1027 C533400-B  H Ni Po              323 Ke
+J-11          1029 DAA58AF-5    Fl                 503 Ke
+J-12          1030 C577750-6  H Ag                 604 Ke
+J-13          1126 B696435-8  H Ni                 714 Ke
+J-14          1128 B9D2114-C  L Fl Lo Ni           612 Ke
+J-15          1130 C000748-7    As Na              314 Ke
+J-16          1222 C446787-6  H Ag                 303 Ke
+J-17          1223 C582574-8    Ni              B  303 Na
+J-18          1224 D340300-8  J De Lo Ni Po        313 Ke
+J-19          1227 C461642-4    Ni Ri              902 Ke
+J-20          1229 B301866-B    Ic Na Va           803 Ke
+Ikugu         1321 D224121-4  L Lo Ni              904 Ke
+J-22          1323 A668452-9  H Ni                 500 Ke
+J-23          1326 C544767-5  H Ag                 302 Ke
+J-24          1327 DA8A235-9  J Lo Ni Wa           103 Ke
+J-25          1328 A697211-C    Lo Ni              500 Ke
+J-26          1330 B100888-8  K Na Va              623 Ke
+J-27          1421 C84A575-A    Ni Wa           B  501 Na
+J-28          1427 D100300-B  J Lo Ni Va           104 Ke
+J-29          1428 C462995-7  K Hi                 300 Ke
+J-30          1429 B77A520-A  H Ni Wa              403 Ke
+J-31          1521 C979132-9  L Lo Ni              515 Ke
+J-32          1522 B656740-7  H Ag                 614 Ke
+J-33          1523 X130343-1    De Lo Po        R  403 Ke
+J-34          1525 C546412-6    Ni                 110 Ke
+J-35          1526 C69557A-8    Ag Ni           B  104 Na
+J-36          1528 B575559-9  H Ag Ni              120 Ke
+J-37          1622 C444542-9    Ag Ni              322 Ke
+Chahag        1623 C356336-5    Lo Ni              311 Ke
+J-39          1627 B24077B-A    De Po           B  824 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ktromm SECTOR: Zostromm Sector
+#
+# Jump-routes
+#
+$1730 1429 -1 0 12
+$1730 1933 0 1 12
+$2221 2118 0 -1 12
+$2221 2325 0 0 12
+$2325 2226 0 0 12
+$1727 1623 -1 0 10
+$1727 2029 0 0 10
+$2029 2431 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1722 C838AAC-A  M Hi In              701 Ke
+Arsah         1727 C366151-7  L Lo Ni              112 Ke
+K-3           1728 C35177B-4    Po              B  204 Na
+K-4           1729 D10059A-A    Ni Va              625 Ke
+K-5           1730 B784964-B    Hi                 800 Ke
+K-6           1822 CAC7300-7    Fl Lo Ni        A  620 Ke
+K-7           1823 C30056A-9  H Ni Va              904 Ke
+K-8           1827 E472641-7    Ni                 800 Ke
+K-9           1830 C9A1211-5  J Fl Lo Ni           900 Ke
+K-10          1921 C000AAA-C    As Hi Na           904 Ke
+K-11          1925 C100335-A    Lo Ni Va           404 Ke
+K-12          1926 C8A86AB-8    Fl Ni              613 Ke
+K-13          1929 EAC8869-6    Fl              A  710 Ke
+K-14          2022 E968A62-5    Hi                 704 Ke
+K-15          2023 C336204-9  J Lo Ni              110 Ke
+K-16          2025 D210652-9  H Na Ni              903 Ke
+Eraweara      2029 C67568C-7    Ag Ni              201 Ke
+K-18          2122 C663A76-C    Hi              B  403 Na
+K-19          2124 C578752-5    Ag                 523 Ke
+K-20          2127 CAB5565-9  H Fl Ni           A  804 Ke
+K-21          2130 C244561-6    Ag Ni              900 Ke
+K-22          2221 B222614-8    Na Ni Po           822 Ke
+K-23          2226 B110843-9    Na                 200 Ke
+K-24          2229 C527456-A    Ni                 913 Ke
+K-25          2322 C472773-9                    B  603 Na
+K-26          2325 B786303-7    Lo Ni              803 Ke
+K-27          2326 E78438A-3    Lo Ni              524 Ke
+K-28          2328 C51068A-5    Na Ni              400 Ke
+K-29          2330 D686589-2    Ag Ni              724 Ke
+K-30          2424 B000575-B    As Ni           B  602 Na
+K-31          2425 C410538-B    Ni                 404 Ke
+K-32          2427 C98A787-A    Ri Wa              214 Ke
+K-33          2429 X553866-0    Po              R  523 Ke
+K-34          2430 C000569-8    As Ni              123 Ke
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lozooll SECTOR: Zostromm Sector
+#
+# Jump-routes
+#
+$3121 3119 0 -1 3
+$3121 2922 0 0 3
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2626 C2517BD-5    Po                 700 Na
+L-2           2922 B468754-7  Y Ag Ri              604 Za
+L-3           2930 C100326-A  J Lo Ni Va           101 Ke
+L-4           3024 C793001-6  Z Lo Ni              800 Za
+L-5           3121 B445022-6  Z Lo Ni              814 Za
+L-6           3122 D476200-4    Lo Ni              105 Za
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Mozomm SECTOR: Zostromm Sector
+#
+# Jump-routes
+#
+$0233 3134 -1 0 12
+$0233 0237 0 0 12
+$0237 0138 0 0 12
+$0138 3038 -1 0 12
+$0734 0933 1 0 12
+$0734 0735 0 0 12
+$0735 0935 1 0 12
+$0735 0538 0 0 12
+$0538 0539 0 0 12
+$0539 0439 0 0 12
+$0439 0338 0 0 12
+$0338 0237 0 0 12
+$0338 0437 0 0 12
+$0437 0538 0 0 12
+$0233 0535 0 0 12
+$0535 0735 0 0 12
+$0237 0240 0 0 12
+$0240 0439 0 0 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0131 E441113-3  L Lo Ni Po           314 Ke
+M-2           0137 C347202-7    Lo Ni              914 Ke
+M-3           0138 B382201-B  J Lo Ni              403 Ke
+M-4           0232 C989663-7  H Ni Ri              624 Ke
+M-5           0233 A575334-C  J Lo Ni              813 Ke
+M-6           0234 E542330-3    Lo Ni Po           304 Ke
+M-7           0235 C5528A6-4  K Po                 805 Ke
+M-8           0237 BA96587-7  H Ag Ni              904 Ke
+M-9           0238 E591301-3    Lo Ni              402 Ke
+M-10          0239 C45868B-4    Ag Ni              300 Ke
+M-11          0240 A577124-8  L Lo Ni              303 Ke
+M-12          0333 C545257-5    Lo Ni              425 Ke
+M-13          0334 D576757-7    Ag                 703 Ke
+M-14          0336 E571455-3    Ni                 204 Ke
+M-15          0338 B662787-7  H Ri                 402 Ke
+M-16          0339 C674535-9  H Ag Ni              503 Ke
+M-17          0432 X9C5110-0  L Fl Lo           R  805 Ke
+M-18          0437 B749510-B  H Ni                 103 Ke
+M-19          0439 B5A2312-B  J Fl Lo Ni           903 Ke
+M-20          0440 D474610-2  H Ag Ni              423 Ke
+M-21          0535 B463204-9  J Lo Ni              800 Ke
+M-22          0537 C410ACD-C  M Hi Na              800 Ke
+M-23          0538 A643788-A  H Po                 920 Ke
+M-24          0539 B445000-C  L Ba Lo Ni           802 Ke
+M-25          0540 C775698-4    Ag Ni              704 Ke
+M-26          0631 D888644-1    Ag Ni Ri           602 Ke
+M-27          0634 C571A75-B    Hi In           B  302 Na
+M-28          0635 E210554-5    Ni                 700 Ke
+M-29          0636 C7A39DA-9    Fl Hi              821 Ke
+M-30          0637 C236240-B    Lo Ni              600 Ke
+M-31          0639 C536101-6  L Lo Ni              623 Ke
+M-32          0731 C536574-9    Ni              B  604 Na
+M-33          0732 X373535-2                    R  605 Ke
+M-34          0734 B592ADC-8  M Hi In              603 Ke
+M-35          0735 B213100-E  L Ic Lo Ni           711 Ke
+M-36          0739 D52967C-6    Ni              B  303 Na
+M-37          0831 C2038A7-8    Ic Na Va           400 Ke
+M-38          0832 E8676AB-1    Ag Ni              722 Ke
+M-39          0837 C536421-5  H Ni                 904 Ke
+M-40          0838 C584425-5    Ni                 903 Ke
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Notromm SECTOR: Zostromm Sector
+#
+# Jump-routes
+#
+$1532 1429 0 -1 12
+$1532 1933 1 0 12
+$0931 0929 0 -1 12
+$0931 0935 0 0 12
+$0935 0937 0 0 12
+$0933 0734 -1 0 12
+$0935 0735 -1 0 12
+$0937 1238 0 0 12
+$1238 1440 0 0 12
+$1440 1640 0 0 12
+$1640 1837 1 0 12
+$1635 1734 1 0 12
+$1635 1634 0 0 12
+$1634 1534 0 0 12
+$1534 1532 0 0 12
+$1238 1336 0 0 12
+$1336 1635 0 0 12
+$1336 0935 0 0 12
+$1336 1534 0 0 12
+$1440 1602 0 1 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0931 A6677BB-A  H Ag                 414 Ke
+N-2           0933 B5A1630-9  H Fl Ni              213 Ke
+N-3           0935 A465344-D  J Lo Ni              104 Ke
+N-4           0937 B78A246-9  J Lo Ni Wa           223 Ke
+N-5           0939 C663534-6    Ni                 805 Ke
+N-6           1033 C9A3102-A  L Fl Lo Ni           124 Ke
+N-7           1034 C657243-8  J Lo Ni              103 Ke
+N-8           1037 D20068C-3  H Na Ni Va           514 Ke
+N-9           1039 C210432-A  H Ni                 915 Ke
+N-10          1040 C32789D-9  K                    714 Ke
+N-11          1131 C442200-8  J Lo Ni Po           224 Ke
+N-12          1133 E323455-9    Ni Po              802 Ke
+N-13          1135 C89A651-8  H Ni Wa              713 Ke
+N-14          1139 C110776-9    Na              B  900 Na
+N-15          1233 C510855-9    Na                 813 Ke
+N-16          1236 D000300-A    As Lo Ni           902 Ke
+N-17          1237 E350687-5    De Ni Po           805 Ke
+N-18          1238 B596744-7  H Ag                 913 Ke
+N-19          1240 C897755-6  H Ag                 703 Ke
+N-20          1332 X582300-3    Lo              R  302 Ke
+N-21          1334 C000364-C    As Lo Ni           703 Ke
+N-22          1336 B52279A-7  H Na Po              905 Ke
+N-23          1433 C377768-5    Ag                 714 Ke
+N-24          1434 D545445-6    Ni                 803 Ke
+N-25          1435 E4449ED-7    Hi In              912 Ke
+N-26          1436 C865795-4    Ag Ri              313 Ke
+N-27          1437 C210477-7    Ni              B  912 Na
+N-28          1438 C597620-4    Ag Ni              603 Ke
+N-29          1440 B530420-7    De Ni Po           603 Ke
+N-30          1532 B420200-A  J De Lo Ni Po        504 Ke
+N-31          1533 E666676-4    Ag Ni Ri        B  604 Na
+N-32          1534 AAA3333-9    Fl Lo Ni           403 Ke
+N-33          1536 C546630-8  H Ag Ni              604 Ke
+N-34          1537 C676135-7  L Lo Ni              603 Ke
+N-35          1538 C310202-A    Lo Ni              322 Ke
+N-36          1632 C556430-4  H Ni                 204 Ke
+N-37          1633 C438343-7  J Lo Ni              504 Ke
+N-38          1634 B987438-A    Ni                 600 Ke
+N-39          1635 A100622-D  H Na Ni Va           303 Ke
+N-40          1640 A449535-D    Ni                 304 Ke
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Otrozz SECTOR: Zostromm Sector
+#
+# Jump-routes
+#
+$1933 1532 -1 0 12
+$1933 1730 0 -1 12
+$1837 1640 -1 0 12
+$1837 1935 0 0 12
+$1935 1933 0 0 12
+$1933 1734 0 0 12
+$1734 1635 -1 0 12
+$1837 1938 0 0 12
+$1938 2140 0 0 12
+$2140 2301 0 1 12
+$2340 2301 0 1 12
+$2340 2238 0 0 12
+$2238 1938 0 0 12
+$1933 2231 0 0 12
+$2231 2533 1 0 12
+$2431 2029 0 -1 10
+$2431 2534 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1734 A2568AA-C                       702 Ke
+O-2           1736 C310531-A  H Ni                 402 Ke
+O-3           1737 C786436-5    Ni                 915 Ke
+O-4           1740 C473101-9  L Lo Ni              504 Ke
+O-5           1831 C7668AC-5                       103 Ke
+O-6           1832 C365444-6  H Ni                 321 Ke
+O-7           1833 C675685-5    Ag Ni              725 Ke
+O-8           1834 C98A533-A    Ni Wa              803 Ke
+O-9           1835 C545269-8  J Lo Ni              114 Ke
+O-10          1837 A68789A-9  K Ri                 202 Ke
+O-11          1840 D9E6376-5    Fl Lo Ni        B  603 Na
+O-12          1931 E447101-4  L Lo Ni              813 Ke
+O-13          1933 A363756-D  H Ri                 203 Ke
+O-14          1934 C472657-9    Ni                 824 Ke
+O-15          1935 B744110-6  L Lo Ni              704 Ke
+O-16          1938 A7B269B-D  H Fl Ni           A  905 Ke
+O-17          1939 C696114-6  L Lo Ni              204 Ke
+O-18          1940 C253511-8  H Ni Po              424 Ke
+O-19          2031 D777521-2  H Ag Ni              220 Ke
+O-20          2035 E000888-4    As Na              224 Ke
+O-21          2036 B697474-7    Ni              B  115 Na
+O-22          2037 D5486A8-4    Ag Ni              923 Ke
+O-23          2039 C999453-9  H Ni                 404 Ke
+O-24          2040 CA9A845-9    Wa                 703 Ke
+O-25          2135 E51146B-6    Ic Ni              900 Ke
+O-26          2136 E571540-7    Ni                 200 Ke
+O-27          2139 C334755-7                       513 Ke
+O-28          2140 B220363-B  J De Lo Ni Po        500 Ke
+O-29          2231 B765224-9  J Lo Ni              200 Ke
+O-30          2233 B568476-7    Ni              B  214 Na
+O-31          2238 B569343-9    Lo Ni              104 Ke
+O-32          2239 C668879-8    Ri              B  902 Na
+O-33          2240 C547105-8  L Lo Ni              922 Ke
+O-34          2334 C575788-8    Ag                 714 Ke
+O-35          2339 E989683-7    Ni Ri              104 Ke
+O-36          2340 A8B5564-D    Fl Ni           A  410 Ke
+Opokka        2431 X669522-1                    R  221 Ke
+O-38          2432 X686AD8-0    Hi              R  605 Ke
+O-39          2436 DAE6386-4  J Fl Lo Ni           704 Ke
+O-40          2437 C659334-A    Lo Ni              304 Ke
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Pozost SECTOR: Zostromm Sector
+#
+# Jump-routes
+#
+$2533 2231 -1 0 12
+$2533 2833 0 0 12
+$2833 3034 0 0 12
+$2533 2534 0 0 12
+$2534 2635 0 0 12
+$2839 3101 0 1 12
+$2839 2737 0 0 12
+$2737 2635 0 0 12
+$2534 2431 -1 0 10
+$2534 2737 0 0 10
+$2737 2840 0 0 10
+$2840 3003 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2533 B61478C-6  H Ic                 903 Ke
+Mordieg       2534 A553443-9  H Ni Po              414 Ke
+P-3           2536 E7485A8-2    Ag Ni              112 Ke
+P-4           2538 C997674-8    Ag Ni           B  804 Na
+P-5           2539 E57A69A-5    Ni Wa              304 Ke
+P-6           2631 C000303-D  J As Lo Ni           913 Ke
+P-7           2635 B47089B-7    De                 723 Ke
+P-8           2636 C546410-6  H Ni                 612 Ke
+P-9           2638 C697320-9    Lo Ni              812 Ke
+P-10          2639 C6486BB-3    Ag Ni              415 Ke
+P-11          2640 E99A331-5    Lo Ni Wa           200 Ke
+P-12          2732 D7659EF-8  K Hi                 701 Ke
+P-13          2733 C10076A-8  H Na Va              821 Ke
+P-14          2734 C3005AB-A    Ni Va              404 Ke
+P-15          2735 C895977-8    Hi In           B  700 Na
+Drallok       2737 B9A3320-9  J Fl Lo Ni           214 Ke
+P-17          2740 E4745A8-4    Ag Ni              514 Ke
+P-18          2831 C544200-6    Lo Ni              734 Ke
+P-19          2832 C89AA9C-9  M Hi In Wa           314 Ke
+P-20          2833 B533400-B  H Ni Po              302 Ke
+P-21          2837 E564343-6    Lo Ni              204 Ke
+P-22          2839 A431547-A  H Ni Po              923 Ke
+Buguree       2840 C99615A-9  L Lo Ni              214 Ke
+P-24          2931 C797224-9    Lo Ni              403 Ke
+P-25          2932 D225544-4    Ni                 804 Ke
+P-26          2933 C547341-6    Lo Ni              902 Ke
+P-27          2936 C6A5224-9    Fl Lo Ni           605 Ke
+P-28          2937 C220A78-9  M De Hi In Na Po  B  413 Na
+P-29          2938 D746245-5  J Lo Ni              514 Ke
+P-30          3034 B748100-8  L Lo Ni              404 Ke
+P-31          3035 C203977-C    Hi Ic Na Va     B  904 Na
+P-32          3036 C8B3100-8  L Fl Lo Ni        A  502 Ke
+P-33          3039 C673100-6  L Lo Ni              613 Ke
+P-34          3040 C5656AB-5    Ag Ni              104 Ke
+P-35          3138 E376242-3    Lo Ni              615 Ke
+P-36          3139 C8A0202-A  J De Lo Ni           400 Ke
+P-37          3233 C999477-6    Ni              B  204 Na
+P-38          3234 A7B2269-A    Fl Lo Ni        A  913 Ke
+P-39          3237 C344753-5    Ag                 904 Ke
+P-40          3239 D555638-4  H Ag Ni              614 Ke
+

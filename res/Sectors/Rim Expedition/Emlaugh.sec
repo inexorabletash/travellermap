@@ -1,0 +1,1070 @@
+Emlaugh Sector
+
+A: Aemlaug                   a.dat
+B: Bemlau                    b.dat
+C: Claugh                    c.dat
+D: Demlazau                  d.dat
+E: Emlauga                   e.dat
+F: Flougha                   f.dat
+G: Gremlager                 g.dat
+H: Haught                    h.dat
+I: Ilaught                   i.dat
+J: Jemmaug                   j.dat
+K: Klemauh                   k.dat
+L: Laughten                  l.dat
+M: Menlaur                   m.dat
+N: Nenlaute                  n.dat
+O: Oemoug                    o.dat
+P: Phenla                    p.dat
+
+Bases:
+A = Alemuurea Navy
+B = Alemuurea Scout
+C = Alemuurea Navy & Scout
+D = Alemuurea Army
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+03 Ad = Alemuurea Dynasty
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Aemlaug SECTOR: Emlaugh Sector
+#
+# Jump-routes
+#
+$0703 0305 0 0 3
+$0703 0707 0 0 3
+$0707 0508 0 0 3
+$0508 0509 0 0 3
+$0508 0305 0 0 3
+$0305 0204 0 0 3
+$0305 0201 0 0 3
+$0201 0237 0 -1 3
+$0703 1104 1 0 3
+$0707 1008 1 0 3
+$0707 0905 1 0 3
+$0703 0840 0 -1 3
+$0509 0511 0 1 3
+$0707 0910 1 0 2
+$0707 0404 0 0 2
+$0404 0201 0 0 2
+$0201 3039 -1 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0103 E525036-7    Lo Ni              313 Ad
+A-2           0104 E371001-6    Lo Ni              903 Ad
+A-3           0107 E67A566-5    Ni Wa              104 Ad
+A-4           0110 C240577-6    De Ni Po        B  804 Na
+Navoen        0201 B677211-B  B Lo Ni              624 Ad
+A-6           0203 D663676-5    Ni Ri           B  500 Na
+A-7           0204 B8B5553-8    Fl Ni           A  813 Ad
+A-8           0208 D773342-4  B Lo Ni              510 Ad
+A-9           0210 C484886-4    Ri                 403 Ad
+A-10          0304 C8B2576-5    Fl Ni           A  100 Ad
+A-11          0305 B335535-8  A Ni                 602 Ad
+A-12          0308 A566573-D    Ag Ni           B  905 Na
+A-13          0309 E999759-5                       823 Ad
+A-14          0310 C654666-6    Ag Ni              314 Ad
+Ahbahies      0404 C9B2034-7    Fl Lo Ni        A  404 Ad
+A-16          0406 C9A6565-5  A Fl Ni              104 Ad
+A-17          0407 C654886-5                       502 Ad
+A-18          0408 C8A1898-5    Fl                 702 Ad
+A-19          0409 E677100-8    Lo Ni              922 Ad
+A-20          0410 C8B5551-A  A Fl Ni           A  403 Ad
+A-21          0502 C546552-A    Ag Ni              222 Ad
+A-22          0503 C88A432-6    Ni Wa              903 Ad
+A-23          0506 C276773-7    Ag              B  600 Na
+A-24          0508 B8C4242-9  B Fl Lo Ni        A  313 Ad
+A-25          0509 B682995-9  C Hi                 101 Ad
+A-26          0601 D120A87-D  D De Hi In Na Po     110 Ad
+A-27          0602 C232142-A    Lo Ni Po           700 Ad
+A-28          0603 C200588-A    Ni Va              403 Ad
+A-29          0605 C444598-A    Ag Ni              611 Ad
+A-30          0606 C683A9A-B  D Hi                 400 Ad
+A-31          0701 X55758B-0    Ag              R  703 Ad
+Alem          0703 A338994-G  C Hi In Cx           501 Ad
+A-33          0706 C5545A7-9  A Ag Ni              405 Ad
+Amrayien      0707 B210465-D    Ni                 501 Ad
+A-35          0803 CAA6898-9    Fl                 911 Ad
+A-36          0804 C559332-8  B Lo Ni              303 Ad
+A-37          0805 C38489A-7  C Ri                 824 Ad
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Bemlau SECTOR: Emlaugh Sector
+#
+# Jump-routes
+#
+$1104 0703 -1 0 3
+$1008 0707 -1 0 3
+$0905 0707 -1 0 3
+$0905 1104 0 0 3
+$1104 1402 0 0 3
+$1402 1406 0 0 3
+$1406 1508 0 0 3
+$1406 1008 0 0 3
+$1104 1406 0 0 3
+$1402 1440 0 -1 3
+$1402 1702 1 0 3
+$1508 1411 0 1 3
+$1508 1710 1 0 3
+$0910 1013 0 1 2
+$0910 0707 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           0901 A65A577-C    Ni Wa           B  203 Na
+B-2           0904 E2708DI-2    De              A  403 Ad
+B-3           0905 B223789-B  A Na Po              402 Ad
+B-4           0906 E678410-4    Ni                 104 Ad
+B-5           0909 C434511-8    Ni                 222 Ad
+Blallana      0910 C150598-8    De Ni Po           504 Ad
+B-7           1002 C310673-6    Na Ni           B  203 Na
+B-8           1004 C9C29A6-A    Fl Hi           A  905 Ad
+B-9           1005 D360741-7    De Ri              410 Ad
+B-10          1008 B422898-8  C Na Po              605 Ad
+B-11          1009 C251363-8  B Lo Ni Po           704 Ad
+B-12          1010 D452589-4  A Ni Po              110 Ad
+B-13          1104 B555415-B  A Ni                 912 Ad
+B-14          1106 E885986-4    Hi                 103 Ad
+B-15          1108 E556316-3    Lo Ni              525 Ad
+B-16          1109 C544866-7                       520 Ad
+B-17          1204 C724545-7    Ni                 612 Ad
+B-18          1207 C3008BE-5    Na Va              723 Ad
+B-19          1208 C354163-6  B Lo Ni              204 Ad
+B-20          1301 D85359A-3    Ni Po              401 Ad
+B-21          1305 C6445AA-9  A Ag Ni              504 Ad
+B-22          1401 C559588-9    Ni                 804 Ad
+B-23          1402 B885342-B  B Lo Ni              502 Ad
+B-24          1403 D233522-8  A Ni Po              505 Ad
+B-25          1404 C99A569-B    Ni Wa              413 Ad
+B-26          1406 A461666-8  A Ni Ri              812 Ad
+B-27          1408 E1008BE-8    Na Va              303 Ad
+B-28          1409 C763494-7  A Ni                 813 Ad
+B-29          1503 D763559-8  A Ni                 523 Ad
+B-30          1504 C402411-6  A Ic Ni Va           113 Ad
+B-31          1508 A7A2464-B    Fl Ni              320 Ad
+B-32          1601 C625338-9    Lo Ni              503 Ad
+B-33          1603 C465400-B    Ni                 623 Ad
+B-34          1605 C778632-6    Ag Ni              715 Ad
+B-35          1606 E260563-8    De Ni              300 Ad
+B-36          1610 D757446-7    Ni                 810 Ad
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Claugh SECTOR: Emlaugh Sector
+#
+# Jump-routes
+#
+$1702 1402 -1 0 3
+$1702 2001 0 0 3
+$2001 2201 0 0 3
+$2201 2302 0 0 3
+$2201 2239 0 -1 3
+$2001 2040 0 -1 3
+$1703 1739 0 -1 3
+$2302 2502 1 0 3
+$1710 1508 -1 0 3
+$1710 1711 0 1 3
+$1710 2111 0 1 3
+$2408 2111 0 1 3
+$1703 1906 0 0 3
+$2408 2505 1 0 3
+$2408 2510 1 0 3
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1702 B5A199B-B    Fl Hi              421 Ad
+C-2           1703 A9E5896-B  C Fl                 222 Ad
+C-3           1705 C533647-6  A Na Ni Po           900 Ad
+C-4           1707 C648525-6    Ag Ni              303 Ad
+C-5           1709 E878001-7    Lo Ni              102 Ad
+C-6           1710 B565845-8    Ri                 402 Ad
+C-7           1803 D345673-4    Ag Ni           B  302 Na
+C-8           1809 C588134-7    Lo Ni              223 Ad
+C-9           1901 C76657C-7    Ag Ni           B  523 Na
+C-10          1903 C8B5567-9    Fl Ni           A  404 Ad
+C-11          1906 A988432-C    Ni                 710 Ad
+C-12          1907 C678689-6  A Ag Ni              404 Ad
+C-13          1910 C262312-9    Lo Ni              223 Ad
+C-14          2001 B351578-8  A Ni Po              901 Ad
+C-15          2002 C200267-A  B Lo Ni Va           802 Ad
+C-16          2104 B232274-9    Lo Ni Po        B  711 Na
+C-17          2105 C462667-8  A Ni Ri              633 Ad
+C-18          2107 C8B3376-6    Fl Lo Ni        A  110 Ad
+C-19          2108 E867300-6    Lo Ni              104 Ad
+C-20          2109 C35177A-5    Po              B  924 Na
+C-21          2201 A00086A-F    As Na              505 Ad
+C-22          2202 C7A0645-7    De Ni              520 Ad
+C-23          2204 E666599-3    Ag Ni              500 Ad
+C-24          2207 C7B2232-9    Fl Lo Ni        A  712 Ad
+C-25          2209 CAA5443-5    Fl Ni              904 Ad
+C-26          2210 X6B4410-4    Fl              R  714 Ad
+C-27          2301 C7A4686-9  A Fl Ni              622 Ad
+C-28          2302 A774555-E    Ag Ni              204 Ad
+C-29          2304 E6B0100-6    De Lo Ni        A  613 Ad
+C-30          2306 D000122-6    As Lo Ni           120 Ad
+C-31          2307 C42568B-9  A Ni                 402 Ad
+C-32          2402 C7C4365-5    Fl Lo Ni        A  902 Ad
+C-33          2408 A367452-C  A Ni                 314 Ad
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Demlazau SECTOR: Emlaugh Sector
+#
+# Jump-routes
+#
+$2502 2302 -1 0 3
+$2502 2640 0 -1 3
+$2505 2408 -1 0 3
+$2510 2408 -1 0 3
+$2510 2713 0 1 3
+$2505 2502 0 0 3
+$2505 2604 0 0 3
+$2604 2804 0 0 3
+$2804 3003 0 0 3
+$3003 3103 0 0 3
+$3003 3104 0 0 3
+$3104 0105 1 0 3
+$2505 2807 0 0 3
+$2807 3010 0 0 3
+$3010 3209 0 0 3
+$3209 0109 1 0 3
+$3010 3111 0 1 3
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2502 B476944-D    Hi In              601 Ad
+D-2           2505 A412864-D    Ic Na              322 Ad
+D-3           2510 B835421-C    Ni                 112 Ad
+D-4           2601 C554203-8  B Lo Ni              324 Ad
+D-5           2603 C000321-8    As Lo Ni           900 Ad
+D-6           2604 A5847BB-C  A Ag                 823 Ad
+D-7           2605 X24059C-4    De Po           R  200 Ad
+D-8           2606 D2106A9-7  A Na Ni              700 Ad
+D-9           2610 C3648AB-7  C                    623 Ad
+D-10          2701 C789876-9    Ri              B  803 Na
+D-11          2703 C695302-5  B Lo Ni              923 Ad
+D-12          2704 C242249-A    Lo Ni Po           921 Ad
+D-13          2707 B541777-A    Po              B  103 Na
+D-14          2710 C494556-8  A Ag Ni              803 Ad
+D-15          2803 C51269A-9  A Ic Na Ni           705 Ad
+D-16          2804 A645400-C    Ni                 604 Ad
+D-17          2805 C200300-B    Lo Ni Va           813 Ad
+D-18          2806 X669642-1    Ri              R  333 Ad
+D-19          2807 B23358C-B  A Ni Po              204 Ad
+D-20          2903 D150685-5  A De Ni Po           324 Ad
+D-21          2907 C7B4100-A    Fl Lo Ni        A  802 Ad
+D-22          2908 C140566-7    De Ni Po           102 Ad
+D-23          2909 C98A578-7    Ni Wa           B  502 Na
+D-24          2910 C6378CB-4  C                    900 Ad
+D-25          3001 C673653-4    Ni                 301 Ad
+D-26          3002 CA78522-7  A Ag Ni              500 Ad
+D-27          3003 A120364-C  B De Lo Ni Po        304 Ad
+D-28          3004 C7579BD-5    Hi                 603 Ad
+D-29          3007 C673499-6  A Ni                 304 Ad
+D-30          3010 B8A6884-9    Fl                 303 Ad
+D-31          3103 B783747-6  A Ri                 105 Ad
+D-32          3104 B545568-A  A Ag Ni              805 Ad
+D-33          3107 E100895-8    Na Va              214 Ad
+D-34          3108 C343787-9  A Po                 304 Ad
+D-35          3202 C766759-6  A Ag Ri              804 Ad
+D-36          3203 C347575-8    Ag Ni           B  223 Na
+D-37          3205 C894857-9                       600 Ad
+D-38          3209 B1009AA-A  C Hi Na Va           211 Ad
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Emlauga SECTOR: Emlaugh Sector
+#
+# Jump-routes
+#
+$0511 0509 0 -1 3
+$0511 0514 0 0 3
+$0514 0516 0 0 3
+$0516 0116 0 0 3
+$0513 0412 0 0 3
+$0412 0413 0 0 3
+$0413 0514 0 0 3
+$0516 0619 0 0 3
+$0619 0622 0 1 3
+$0619 0419 0 0 3
+$0419 0319 0 0 3
+$0619 0919 1 0 3
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0111 D552431-4  A Ni Po              612 Ad
+E-2           0112 C626856-9  C                    305 Ad
+E-3           0115 D588346-6    Lo Ni              802 Ad
+E-4           0116 B434533-8    Ni                 914 Ad
+E-5           0118 C310978-8    Hi Na           B  200 Na
+E-6           0212 C786788-7  A Ag Ri              904 Ad
+E-7           0214 D556545-2  A Ag Ni              923 Ad
+E-8           0215 C4229CA-B  C Hi In Na Po        523 Ad
+E-9           0216 C561213-9  B Lo Ni              703 Ad
+E-10          0218 C3437AC-5    Po                 621 Ad
+E-11          0220 C8B0253-7  B De Lo Ni        A  115 Ad
+E-12          0311 C000622-6    As Na Ni           204 Ad
+E-13          0312 C8B4543-5    Fl Ni           A  813 Ad
+E-14          0313 C240568-8    De Ni Po           803 Ad
+E-15          0315 X483699-2    Ri              R  304 Ad
+E-16          0318 C225468-B    Ni                 500 Ad
+E-17          0319 B523355-C    Lo Ni Po           401 Ad
+E-18          0320 C100543-8  A Ni Va              311 Ad
+E-19          0412 B7B5510-C  A Fl Ni           A  830 Ad
+E-20          0413 B240553-A  A De Ni Po           303 Ad
+E-21          0419 B25089B-6  C De Po              613 Ad
+E-22          0511 B657556-B    Ag Ni              515 Ad
+E-23          0513 B668327-6  B Lo Ni              214 Ad
+E-24          0514 A599310-E    Lo Ni              102 Ad
+E-25          0515 C232588-A    Ni Po              215 Ad
+E-26          0516 B546510-9  A Ag Ni              200 Ad
+E-27          0518 E979400-5    Ni                 220 Ad
+E-28          0520 CAE6302-6    Fl Lo Ni           303 Ad
+E-29          0613 A555877-8                    B  114 Na
+E-30          0617 C9A2877-7    Fl              B  211 Na
+E-31          0619 B875101-7    Lo Ni              601 Ad
+E-32          0711 E16098B-6    De Hi              400 Ad
+E-33          0712 C583235-5    Lo Ni              423 Ad
+E-34          0716 E100310-8    Lo Ni Va           424 Ad
+E-35          0717 C566221-5  B Lo Ni              510 Ad
+E-36          0718 C3777A6-5    Ag                 703 Ad
+E-37          0719 C754356-A    Lo Ni              102 Ad
+E-38          0720 E200378-6    Lo Ni Va        B  814 Na
+E-39          0811 C795351-A    Lo Ni              303 Ad
+E-40          0813 E9C458C-4    Fl Ni           A  804 Ad
+E-41          0814 D664425-4  A Ni                 315 Ad
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Flougha SECTOR: Emlaugh Sector
+#
+# Jump-routes
+#
+$1411 1508 0 -1 3
+$1614 1711 1 0 3
+$1519 1721 1 1 3
+$1411 1614 0 0 3
+$1614 1618 0 0 3
+$1618 1519 0 0 3
+$1519 1220 0 0 3
+$1220 1322 0 1 3
+$1220 0919 0 0 3
+$1614 1215 0 0 3
+$1215 1014 0 0 3
+$0919 0619 -1 0 3
+$0919 0921 0 1 3
+$1418 1522 0 1 2
+$1418 1215 0 0 2
+$1215 1013 0 0 2
+$1013 0910 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0912 C532733-7  A Na Po              121 Ad
+F-2           0914 D300335-5    Lo Ni Va           803 Ad
+F-3           0916 C210100-A    Lo Ni              604 Ad
+F-4           0917 C629100-B    Lo Ni              621 Ad
+F-5           0918 D311321-7    Ic Lo Ni           802 Ad
+F-6           0919 A4007AA-9  A Na Va              813 Ad
+Mergoun       1013 C626332-A    Lo Ni              321 Ad
+F-8           1014 B485532-B  A Ag Ni              802 Ad
+F-9           1017 E868200-8    Lo Ni              212 Ad
+F-10          1019 A250321-D  B De Lo Ni Po        413 Ad
+F-11          1115 A510738-9    Na                 315 Ad
+F-12          1117 C7B0842-8  C De              A  403 Ad
+F-13          1120 C795248-5  B Lo Ni              513 Ad
+F-14          1212 X301631-0    Ic Va           R  800 Ad
+F-15          1214 D5427B7-1  A Po                 300 Ad
+Gataata       1215 B5377AC-6  A                    314 Ad
+F-17          1217 C371747-8  A                    624 Ad
+F-18          1219 E363479-8    Ni              B  404 Na
+F-19          1220 B333757-B  A Na Po              203 Ad
+F-20          1311 D500669-4    Na Ni Va           905 Ad
+F-21          1314 C979510-5    Ni                 510 Ad
+F-22          1316 C556AEH-7  D Hi              A  624 Ad
+F-23          1317 C628034-8    Lo Ni              321 Ad
+F-24          1319 C879631-7    Ni                 210 Ad
+F-25          1411 B9A7120-7  B Fl Lo Ni           314 Ad
+F-26          1414 C86A862-6    Ri Wa              602 Ad
+Farfaulli     1418 D6A2837-5    Fl                 404 Ad
+F-28          1419 X250376-0    De Lo Po        R  701 Ad
+F-29          1511 E510878-6    Na              B  913 Na
+F-30          1515 E565695-3    Ag Ni Ri           704 Ad
+F-31          1516 A89357C-D    Ni              B  914 Na
+F-32          1518 X76A377-1    Lo Wa           R  403 Ad
+F-33          1519 B789444-B  A Ni                 814 Ad
+F-34          1611 E677577-5    Ag Ni           B  720 Na
+F-35          1613 D562659-2  A Ni Ri              713 Ad
+F-36          1614 B466321-9    Lo Ni              402 Ad
+F-37          1615 C1208BF-8  C De Na Po           404 Ad
+F-38          1616 C425100-9    Lo Ni              405 Ad
+F-39          1617 B130675-8    De Na Ni Po     B  115 Na
+F-40          1618 A797686-A    Ag Ni              800 Ad
+F-41          1619 C471564-5  A Ni                 404 Ad
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Gremlager SECTOR: Emlaugh Sector
+#
+# Jump-routes
+#
+$1711 1710 0 -1 3
+$1711 1614 -1 0 3
+$2111 1710 0 -1 3
+$2111 2408 0 -1 3
+$2419 2520 1 0 3
+$2216 2614 1 0 3
+$2216 2419 0 0 3
+$2216 2116 0 0 3
+$2216 2115 0 0 3
+$2116 2115 0 0 3
+$2115 2111 0 0 3
+$2419 2122 0 1 3
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1711 B4309C8-A    De Hi In Na Po     825 Ad
+G-2           1713 C130866-B    De Na Po           203 Ad
+G-3           1714 D658100-8  B Lo Ni              915 Ad
+G-4           1715 E665524-6    Ag Ni              303 Ad
+G-5           1716 E754678-4    Ag Ni           B  403 Na
+G-6           1717 C649333-6  B Lo Ni              700 Ad
+G-7           1719 C9897AB-9  A                    124 Ad
+G-8           1720 C646565-9  A Ag Ni              621 Ad
+G-9           1811 C00068A-B  A As Na Ni           903 Ad
+G-10          1814 C78A220-8    Lo Ni Wa           412 Ad
+G-11          1815 C667998-7    Hi                 505 Ad
+G-12          1818 C6677A7-7  A Ag                 600 Ad
+G-13          1820 C381301-7  B Lo Ni              910 Ad
+G-14          1911 E447748-6    Ag                 224 Ad
+G-15          1916 C635598-8  A Ni                 100 Ad
+G-16          1917 C7B0866-6  C De              A  314 Ad
+G-17          1918 C867458-A  A Ni                 612 Ad
+G-18          1919 C5236AA-7  A Na Ni Po           210 Ad
+G-19          1920 C200534-A  A Ni Va              111 Ad
+G-20          2011 C96A002-8  B Lo Ni Wa           803 Ad
+G-21          2014 C87389A-6  C                    115 Ad
+G-22          2016 C696100-7    Lo Ni              204 Ad
+G-23          2017 C7465A6-8    Ag Ni              203 Ad
+G-24          2111 B200540-A  A Ni Va              422 Ad
+G-25          2113 E566434-4    Ni                 500 Ad
+G-26          2114 C6585A9-6    Ag Ni              400 Ad
+G-27          2115 B610666-A    Na Ni              612 Ad
+G-28          2116 B648546-8    Ag Ni              202 Ad
+G-29          2117 C100545-7  A Ni Va              600 Ad
+G-30          2119 D794422-4  A Ni                 202 Ad
+G-31          2213 C8B1999-8    Fl Hi           A  413 Ad
+G-32          2216 B655200-B    Lo Ni              705 Ad
+G-33          2217 C100510-C  A Ni Va              204 Ad
+G-34          2311 C644659-6  A Ag Ni              704 Ad
+G-35          2312 E9948A8-4                       402 Ad
+G-36          2316 C736545-8  A Ni                 312 Ad
+G-37          2319 C231534-B    Ni Po              212 Ad
+G-38          2414 D565003-6  B Lo Ni              802 Ad
+G-39          2419 B554586-9  A Ag Ni              713 Ad
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Haught SECTOR: Emlaugh Sector
+#
+# Jump-routes
+#
+$2713 2510 0 -1 3
+$3111 3010 0 -1 3
+$3111 2713 0 0 3
+$2713 2714 0 0 3
+$2714 2614 0 0 3
+$3111 3115 0 0 3
+$3115 3216 0 0 3
+$3216 0217 1 0 3
+$3216 3219 0 0 3
+$3219 3119 0 0 3
+$3119 0217 1 0 3
+$3119 2820 0 0 3
+$2820 2520 0 0 3
+$2520 2419 -1 0 3
+$2520 2623 0 1 3
+$2614 2216 -1 0 3
+$3111 0213 1 0 3
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2511 D564757-2  A Ag Ri              200 Ad
+H-2           2513 C526744-5  A                    804 Ad
+H-3           2515 X462211-0    Lo              R  903 Ad
+H-4           2518 D988689-3  A Ag Ni Ri           514 Ad
+H-5           2520 B000784-C  A As Na              105 Ad
+H-6           2614 A372430-E  A Ni                 104 Ad
+H-7           2620 C576146-9    Lo Ni              814 Ad
+H-8           2713 A9C3343-C    Fl Lo Ni        A  604 Ad
+H-9           2714 B577120-7  B Lo Ni              600 Ad
+H-10          2715 E236522-7    Ni                 204 Ad
+H-11          2717 C588430-6  A Ni                 405 Ad
+H-12          2812 B300643-9  A Na Ni Va           503 Ad
+H-13          2814 C000564-7  A As Ni              104 Ad
+H-14          2815 B834310-8    Lo Ni              613 Ad
+H-15          2817 E463432-7    Ni                 301 Ad
+H-16          2820 B526438-C  A Ni                 800 Ad
+H-17          2912 A7A1466-B    Fl Ni              914 Ad
+H-18          2915 E2108B7-3    Na                 102 Ad
+H-19          2917 E99A302-7    Lo Ni Wa           722 Ad
+H-20          2920 B788579-B    Ag Ni           B  502 Na
+H-21          3013 C47186A-6  C                    502 Ad
+H-22          3015 C300376-B    Lo Ni Va        B  103 Na
+H-23          3016 E7C1325-5    Fl Lo Ni        A  504 Ad
+H-24          3017 D548642-3    Ag Ni              525 Ad
+H-25          3111 A644440-C  A Ni                 403 Ad
+H-26          3112 C3649AF-A    Hi                 420 Ad
+H-27          3115 B4005A9-C    Ni Va              814 Ad
+H-28          3116 E736675-6    Ni              B  403 Na
+H-29          3119 A337744-A  A                    704 Ad
+H-30          3211 C454665-9  A Ag Ni              704 Ad
+H-31          3212 C888279-7    Lo Ni           B  702 Na
+H-32          3214 C799857-7                       414 Ad
+H-33          3216 A544A9A-E    Hi In              804 Ad
+H-34          3218 B302453-B    Ic Ni Va           403 Ad
+H-35          3219 A7B7785-9  A Fl              A  501 Ad
+H-36          3220 D434668-7    Ni                 110 Ad
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ilaught SECTOR: Emlaugh Sector
+#
+# Jump-routes
+#
+$0622 0619 0 -1 3
+$0622 0523 0 0 3
+$0523 0426 0 0 3
+$0426 0227 0 0 3
+$0227 0127 0 0 3
+$0622 0726 0 0 3
+$0726 0627 0 0 3
+$0627 0426 0 0 3
+$0227 0231 0 1 3
+$0726 1126 1 0 3
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0127 B979589-C  A Ni                 204 Ad
+I-2           0129 C655651-7  A Ag Ni              712 Ad
+I-3           0221 E62A67A-8    Ni Wa           B  623 Na
+I-4           0222 E400556-6    Ni Va              404 Ad
+I-5           0226 C767ABF-A  D Hi                 104 Ad
+I-6           0227 A555125-A  B Lo Ni              303 Ad
+I-7           0321 D7A2620-2    Fl Ni              325 Ad
+I-8           0322 D68299B-7    Hi                 203 Ad
+I-9           0324 E955889-6                       804 Ad
+I-10          0325 D120736-7  A De Na Po           912 Ad
+I-11          0329 C324500-8  A Ni                 905 Ad
+I-12          0330 D647866-6                       202 Ad
+I-13          0421 D511101-6  B Ic Lo Ni           805 Ad
+I-14          0426 B324221-C  B Lo Ni              713 Ad
+I-15          0428 B8A6273-9    Fl Lo Ni        B  704 Na
+I-16          0429 C221587-8    Ni Po              221 Ad
+I-17          0430 E311216-5    Ic Lo Ni           704 Ad
+I-18          0521 X879302-5    Lo              R  500 Ad
+I-19          0523 B664457-C  A Ni                 314 Ad
+I-20          0524 E348312-4    Lo Ni              504 Ad
+I-21          0525 E2229ED-8    Hi In Na Po        504 Ad
+I-22          0526 C7686BF-7  A Ag Ni              403 Ad
+I-23          0528 C427443-A    Ni                 403 Ad
+I-24          0530 D4207A8-7  A De Na Po           705 Ad
+I-25          0622 B300100-C    Lo Ni Va           203 Ad
+I-26          0623 C454610-7  A Ag Ni              720 Ad
+I-27          0624 C796330-8    Lo Ni              802 Ad
+I-28          0627 B665420-B  A Ni                 400 Ad
+I-29          0629 C798223-9    Lo Ni              600 Ad
+I-30          0721 C481887-6    Ri                 910 Ad
+I-31          0722 E564541-3    Ag Ni              701 Ad
+I-32          0724 C652578-7    Ni Po           B  104 Na
+I-33          0726 B96A554-E  A Ni Wa              214 Ad
+I-34          0727 D6A6462-5  A Fl Ni              600 Ad
+I-35          0728 C777A53-D    Hi In              300 Ad
+I-36          0729 E7476AE-4    Ag Ni              914 Ad
+I-37          0821 A68889C-7    Ri                 401 Ad
+I-38          0825 C785133-4  B Lo Ni              204 Ad
+I-39          0827 E552879-1    Po                 705 Ad
+I-40          0829 C99A584-A  A Ni Wa              610 Ad
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jemmaug SECTOR: Emlaugh Sector
+#
+# Jump-routes
+#
+$1322 1220 0 -1 3
+$1322 1423 0 0 3
+$1423 1723 1 0 3
+$1126 0726 -1 0 3
+$1126 0923 0 0 3
+$0923 0921 0 0 3
+$0921 0919 0 -1 3
+$1126 1328 0 0 3
+$1328 1427 0 0 3
+$1427 1423 0 0 3
+$1423 1223 0 0 3
+$1223 1222 0 0 3
+$1222 1322 0 0 3
+$1328 1130 0 0 3
+$1130 1032 0 1 3
+$1522 1823 1 0 2
+$1522 1418 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0921 B578469-B  A Ni                 300 Ad
+J-2           0923 B100468-E  A Ni Va              114 Ad
+J-3           0924 E869346-6    Lo Ni              705 Ad
+J-4           0925 E9A9310-4    Fl Lo Ni           603 Ad
+J-5           0927 E000641-9    As Na Ni           511 Ad
+J-6           0930 D44966A-3  A Ni                 700 Ad
+J-7           1021 C568102-7  B Lo Ni              714 Ad
+J-8           1023 C65669B-4  A Ag Ni              503 Ad
+J-9           1024 A684564-D    Ag Ni              903 Ad
+J-10          1025 X632320-1    Lo Po           R  403 Ad
+J-11          1028 E98A544-6    Ni Wa              904 Ad
+J-12          1030 D4558BE-6                       210 Ad
+J-13          1121 C100200-8    Lo Ni Va           704 Ad
+J-14          1126 B7479CF-8    Hi In              500 Ad
+J-15          1127 C000522-C    As Ni              804 Ad
+J-16          1130 A465000-B    Ba Lo Ni           420 Ad
+J-17          1221 C645510-9    Ag Ni              904 Ad
+J-18          1222 B656745-6    Ag                 104 Ad
+J-19          1223 B543100-7    Lo Ni Po           503 Ad
+J-20          1228 C410341-9    Lo Ni              334 Ad
+J-21          1230 C24498B-9  C Hi In              303 Ad
+J-22          1321 C97A878-A    Wa              B  701 Na
+J-23          1322 B333996-D    Hi In Na Po        604 Ad
+J-24          1328 B426656-A  A Ni                 612 Ad
+J-25          1422 C200887-8    Na Va              503 Ad
+J-26          1423 B79A557-9    Ni Wa              503 Ad
+J-27          1426 C300686-8    Na Ni Va           323 Ad
+J-28          1427 A97A454-C    Ni Wa              902 Ad
+J-29          1430 C451323-8  B Lo Ni Po           604 Ad
+Jahhiun       1522 C253568-7  A Ni Po              901 Ad
+J-31          1525 C200886-A  C Na Va              704 Ad
+J-32          1627 C586536-4  A Ag Ni              804 Ad
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Klemauh SECTOR: Emlaugh Sector
+#
+# Jump-routes
+#
+$2122 2419 0 -1 3
+$2122 1721 0 0 3
+$1721 1519 -1 -1 3
+$1723 1423 -1 0 3
+$1723 1924 0 0 3
+$1924 2224 0 0 3
+$2224 2323 0 0 3
+$2323 2122 0 0 3
+$2430 2031 0 1 3
+$2430 2428 0 0 3
+$2428 2327 0 0 3
+$2327 2326 0 0 3
+$2326 2224 0 0 3
+$2327 2126 0 0 3
+$2126 1924 0 0 3
+$2323 2623 1 0 3
+$2327 2525 1 0 3
+$2430 2530 1 0 3
+$2329 2432 0 1 2
+$2329 2126 0 0 2
+$2126 1823 0 0 2
+$1823 1522 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1721 B230333-9  B De Lo Ni Po        402 Ad
+K-2           1723 BAC9414-A  A Fl Ni           A  600 Ad
+K-3           1725 E000157-A    As Lo Ni           703 Ad
+K-4           1726 B594577-6    Ag Ni           B  401 Na
+K-5           1729 E5A69BD-4    Fl Hi              324 Ad
+Iddean        1823 D742845-6  C Po                 321 Ad
+K-7           1824 D436658-4    Ni                 100 Ad
+K-8           1825 B354878-9                    B  610 Na
+K-9           1828 E666444-2    Ni                 700 Ad
+K-10          1829 E400446-5    Ni Va              714 Ad
+K-11          1830 E150525-4    De Ni Po           300 Ad
+K-12          1921 C485100-A  B Lo Ni              803 Ad
+K-13          1922 C998404-5  A Ni                 304 Ad
+K-14          1924 B9D4411-9    Fl Ni              910 Ad
+K-15          1925 C58558A-5  A Ag Ni              204 Ad
+K-16          1927 C864462-7    Ni                 723 Ad
+K-17          1930 C332544-A    Ni Po              603 Ad
+K-18          2021 C200557-8  A Ni Va              600 Ad
+K-19          2023 C537464-8    Ni                 613 Ad
+K-20          2029 E431797-7    Na Po              615 Ad
+K-21          2122 B412242-9  B Ic Lo Ni           103 Ad
+K-22          2123 X88A546-1    Wa              R  303 Ad
+K-23          2124 C3427AB-7    Po                 804 Ad
+K-24          2125 C210437-8    Ni                 224 Ad
+Avlearra      2126 B578459-7  A Ni                 904 Ad
+K-26          2128 D440655-8  A De Ni Po           102 Ad
+K-27          2224 B558546-9  A Ag Ni              401 Ad
+K-28          2226 C4635AE-8  A Ni                 400 Ad
+K-29          2228 C99A675-8    Ni Wa           B  500 Na
+K-30          2323 B472852-8                       324 Ad
+K-31          2326 B310512-8    Ni                 915 Ad
+K-32          2327 A683842-7  C Ri                 711 Ad
+K-33          2328 E443653-5    Ni Po              414 Ad
+Kikiian       2329 X664541-0    Ag              R  803 Ad
+K-35          2421 E857522-4    Ag Ni              223 Ad
+K-36          2428 B666887-9    Ri                 900 Ad
+K-37          2429 C000120-7  B As Lo Ni           700 Ad
+K-38          2430 B786349-B    Lo Ni              404 Ad
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Laughten SECTOR: Emlaugh Sector
+#
+# Jump-routes
+#
+$2623 2520 0 -1 3
+$2623 2323 -1 0 3
+$2623 2525 0 0 3
+$2525 2327 -1 0 3
+$2530 2430 -1 0 3
+$2530 2630 0 0 3
+$2630 2828 0 0 3
+$2828 3226 0 0 3
+$2828 2824 0 0 3
+$2824 2623 0 0 3
+$2824 3226 0 0 3
+$3226 0326 1 0 3
+$2828 2832 0 1 3
+$2828 3031 0 1 3
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2523 C573875-8                    B  224 Na
+L-2           2525 A6B3646-9  A Fl Ni           A  412 Ad
+L-3           2527 E453331-5    Lo Ni Po           203 Ad
+L-4           2528 C6977CF-7  A Ag                 812 Ad
+L-5           2529 C6B1333-7  B Fl Lo Ni        A  703 Ad
+L-6           2530 A7C7787-B  A Fl              A  703 Ad
+L-7           2621 C254503-6    Ag Ni              104 Ad
+L-8           2623 A7A3134-B  B Fl Lo Ni           204 Ad
+L-9           2626 E587103-6    Lo Ni              614 Ad
+L-10          2628 C310300-9    Lo Ni              803 Ad
+L-11          2630 A000665-F  A As Na Ni           603 Ad
+L-12          2725 C350887-9    De Po              425 Ad
+L-13          2726 E857300-8    Lo Ni              720 Ad
+L-14          2727 C662610-8  A Ni                 702 Ad
+L-15          2729 C553100-A    Lo Ni Po           630 Ad
+L-16          2730 C68779B-8  A Ag Ri              303 Ad
+L-17          2824 B67A410-9  A Ni Wa              202 Ad
+L-18          2826 C446644-8    Ag Ni              800 Ad
+Larrgdu       2828 A429333-G  B Lo Ni Cx           120 Ad
+L-20          2924 C53068A-6    De Na Ni Po        600 Ad
+L-21          2925 C661887-5    Ri                 104 Ad
+L-22          2927 C7779DG-6  C Hi In              921 Ad
+L-23          2928 C686344-4    Lo Ni              500 Ad
+L-24          2929 C639634-9  A Ni                 101 Ad
+L-25          3022 C8D2216-6  B Fl Lo Ni           700 Ad
+L-26          3023 C8C7664-6  A Fl Ni           A  414 Ad
+L-27          3026 C568A9D-8    Hi                 404 Ad
+L-28          3027 C86A200-8  B Lo Ni Wa           420 Ad
+L-29          3030 C899552-B  A Ni                 802 Ad
+L-30          3121 C342524-7    Ni Po              204 Ad
+L-31          3122 C130732-B    De Na Po           400 Ad
+L-32          3123 C7A5304-6    Fl Lo Ni           402 Ad
+L-33          3127 C9B2322-6    Fl Lo Ni        A  705 Ad
+L-34          3128 E74A656-9    Ni Wa              304 Ad
+L-35          3129 B468577-C    Ag Ni           B  314 Na
+L-36          3130 E9C87A9-5    Fl              A  414 Ad
+L-37          3222 C988431-8    Ni                 704 Ad
+L-38          3224 C200367-B    Lo Ni Va           804 Ad
+L-39          3226 B200114-C  B Lo Ni Va           201 Ad
+L-40          3228 C655496-5  A Ni                 414 Ad
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Menlaur SECTOR: Emlaugh Sector
+#
+# Jump-routes
+#
+$0231 0227 0 -1 3
+$0231 0132 0 0 3
+$0231 0332 0 0 3
+$0231 0335 0 0 3
+$0335 0336 0 0 3
+$0335 0435 0 0 3
+$0435 0635 0 0 3
+$0335 0236 0 0 3
+$0236 0435 0 0 3
+$0635 0935 1 0 3
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0132 C7B4447-6    Fl Ni           A  203 Ad
+M-2           0135 C658343-9    Lo Ni              504 Ad
+M-3           0140 E580100-4    De Lo Ni           414 Ad
+M-4           0231 B110520-B  A Ni                 904 Ad
+M-5           0233 C486221-A  B Lo Ni              123 Ad
+M-6           0234 C969100-7    Lo Ni              903 Ad
+M-7           0236 A485300-E    Lo Ni              103 Ad
+M-8           0237 E84848C-3    Ni                 810 Ad
+M-9           0238 C330430-6    De Ni Po           704 Ad
+M-10          0240 C200454-9  A Ni Va              314 Ad
+M-11          0331 X8A4400-2    Fl              R  700 Ad
+M-12          0332 B424742-7  A                    430 Ad
+M-13          0333 C98766B-6    Ag Ni Ri           204 Ad
+M-14          0335 B877311-A    Lo Ni              811 Ad
+M-15          0336 B2007A6-7  A Na Va              102 Ad
+M-16          0339 C200035-A    Lo Ni Va           512 Ad
+M-17          0433 D520643-2    De Na Ni Po        503 Ad
+M-18          0435 A253102-A    Lo Ni Po           133 Ad
+M-19          0436 C434333-B    Lo Ni              601 Ad
+M-20          0439 C225646-A  A Ni                 522 Ad
+M-21          0531 C787889-5    Ri                 822 Ad
+M-22          0534 E55A36B-5    Lo Ni Wa           903 Ad
+M-23          0539 E200589-5    Ni Va              504 Ad
+M-24          0540 D533422-5    Ni Po              403 Ad
+M-25          0632 E683558-5    Ni                 314 Ad
+M-26          0635 A747AAA-D  D Hi In              800 Ad
+M-27          0636 D410632-6  A Na Ni              124 Ad
+M-28          0638 E643159-3    Lo Ni Po           814 Ad
+M-29          0640 C634300-9  B Lo Ni              424 Ad
+M-30          0733 C452769-9    Po                 524 Ad
+M-31          0737 E769332-4    Lo Ni              901 Ad
+M-32          0833 C343984-7    Hi In Po           313 Ad
+M-33          0834 C5628BA-7                       200 Ad
+M-34          0838 CAD5362-9    Fl Lo Ni           203 Ad
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nenlaute SECTOR: Emlaugh Sector
+#
+# Jump-routes
+#
+$0935 0635 -1 0 3
+$0935 1134 0 0 3
+$1032 1130 0 -1 3
+$1032 1134 0 0 3
+$1134 1334 0 0 3
+$1334 1534 0 0 3
+$1534 1532 0 0 3
+$1134 1237 0 0 3
+$1237 1240 0 0 3
+$1240 0940 0 0 3
+$1237 1537 0 0 3
+$1537 1639 0 0 3
+$1639 1838 1 0 3
+$1537 1334 0 0 3
+$1534 1736 1 0 3
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0933 X000322-4    As Lo           R  704 Ad
+N-2           0935 B443530-8    Ni Po              414 Ad
+N-3           0940 B7B6556-A  A Fl Ni           A  320 Ad
+N-4           1032 B7A78B9-6    Fl                 600 Ad
+N-5           1034 B2105AA-C  A Ni                 905 Ad
+N-6           1035 C763353-6    Lo Ni              311 Ad
+N-7           1036 C100422-A    Ni Va              415 Ad
+N-8           1038 C367841-6    Ri                 425 Ad
+N-9           1040 C23279A-7  A Na Po              404 Ad
+N-10          1131 C537642-5    Ni                 903 Ad
+N-11          1132 B8C8687-9  A Fl Ni           A  500 Ad
+N-12          1134 B000433-B    As Ni              303 Ad
+N-13          1135 C644686-8    Ag Ni              522 Ad
+N-14          1139 A320675-C    De Na Ni Po     B  112 Na
+N-15          1235 X865663-0    Ag Ri           R  302 Ad
+N-16          1237 B537542-B    Ni                 824 Ad
+N-17          1239 C648878-4                    B  704 Na
+N-18          1240 B442304-B    Lo Ni Po           115 Ad
+N-19          1334 B98A565-D  A Ni Wa              600 Ad
+N-20          1336 C61257B-8    Ic Ni           B  404 Na
+N-21          1337 C548965-A    Hi In              302 Ad
+N-22          1338 C100303-B  B Lo Ni Va           523 Ad
+N-23          1339 C5747A9-6    Ag                 304 Ad
+N-24          1340 C100566-A    Ni Va              302 Ad
+N-25          1433 D678884-2  C                    203 Ad
+N-26          1434 C859420-8    Ni                 201 Ad
+N-27          1435 B527536-8  A Ni                 511 Ad
+N-28          1437 C698467-4    Ni                 905 Ad
+N-29          1439 D3107AB-6  A Na                 903 Ad
+N-30          1532 B447414-9  A Ni                 102 Ad
+N-31          1534 B321759-8  A Na Po              104 Ad
+N-32          1536 C8856AC-7    Ag Ni              603 Ad
+N-33          1537 A5A2652-D  A Fl Ni              210 Ad
+N-34          1538 C1006AB-6    Na Ni Va           805 Ad
+N-35          1632 D333443-9    Ni Po              303 Ad
+N-36          1633 D421446-4    Ni Po              202 Ad
+N-37          1636 C410687-5    Na Ni              703 Ad
+N-38          1638 C323100-B    Lo Ni Po           603 Ad
+N-39          1639 A455546-9  A Ag Ni              200 Ad
+N-40          1640 C867634-5    Ag Ni              205 Ad
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Oemoug SECTOR: Emlaugh Sector
+#
+# Jump-routes
+#
+$1838 1639 -1 0 3
+$1736 1534 -1 0 3
+$1736 2035 0 0 3
+$2035 2036 0 0 3
+$2036 1838 0 0 3
+$2035 2031 0 0 3
+$2031 2430 0 -1 3
+$2440 2639 1 0 3
+$2432 2834 1 0 2
+$2432 2329 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1731 C857210-4    Lo Ni              803 Ad
+O-2           1732 C679136-5  B Lo Ni              703 Ad
+O-3           1736 B474450-8    Ni                 203 Ad
+O-4           1740 C533546-8  A Ni Po              504 Ad
+O-5           1831 E41048B-9    Ni                 502 Ad
+O-6           1832 X4289AB-2    Hi In           R  714 Ad
+O-7           1834 E687100-8    Lo Ni              501 Ad
+O-8           1835 CA9A331-A  B Lo Ni Wa           104 Ad
+O-9           1838 B200120-B    Lo Ni Va           602 Ad
+O-10          1840 D88A141-5    Lo Ni Wa           414 Ad
+O-11          1931 A596412-D    Ni                 910 Ad
+O-12          1932 C456764-4  A Ag                 113 Ad
+O-13          1934 E695620-1    Ag Ni              800 Ad
+O-14          1940 C796652-5  A Ag Ni              402 Ad
+O-15          2031 B110767-A  A Na                 813 Ad
+O-16          2032 B100513-B  A Ni Va              614 Ad
+O-17          2033 C76A315-8    Lo Ni Wa           904 Ad
+O-18          2034 C686100-9    Lo Ni              523 Ad
+O-19          2035 B221102-A    Lo Ni Po           800 Ad
+O-20          2036 B405001-B  B Ic Lo Ni Va        922 Ad
+O-21          2039 C444610-8    Ag Ni              202 Ad
+O-22          2040 E665400-7    Ni                 203 Ad
+O-23          2131 D242688-2    Ni Po              503 Ad
+O-24          2132 C655676-4    Ag Ni           B  713 Na
+O-25          2134 C442742-5    Po                 501 Ad
+O-26          2135 C837410-8  A Ni                 424 Ad
+O-27          2136 X436632-1                    R  721 Ad
+O-28          2140 C564436-4    Ni                 203 Ad
+O-29          2232 C4259ED-9  C Hi In              904 Ad
+O-30          2233 C300364-9  B Lo Ni Va           721 Ad
+O-31          2331 C65A320-9  B Lo Ni Wa           722 Ad
+O-32          2332 X456873-1                    R  423 Ad
+O-33          2333 C677316-5    Lo Ni              304 Ad
+O-34          2336 C777561-7    Ag Ni              313 Ad
+O-35          2431 C5748A7-4                       222 Ad
+Onnosh        2432 D8A4655-6  A Fl Ni              103 Ad
+O-37          2434 E3106A6-8    Na Ni              503 Ad
+O-38          2436 D645733-3  A Ag                 800 Ad
+O-39          2437 C538312-6  B Lo Ni              113 Ad
+O-40          2438 C232365-B  B Lo Ni Po           702 Ad
+O-41          2440 B535465-B    Ni                 724 Ad
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Phenla SECTOR: Emlaugh Sector
+#
+# Jump-routes
+#
+$2832 2828 0 -1 3
+$3031 2828 0 -1 3
+$2832 3134 0 0 3
+$3134 0232 1 0 3
+$3131 0232 1 0 3
+$3131 3031 0 0 3
+$3131 0129 1 -1 3
+$3040 0239 1 0 3
+$3040 2940 0 0 3
+$2940 2639 0 0 3
+$2639 2637 0 0 3
+$2639 2440 -1 0 3
+$3239 0202 1 1 2
+$3239 3037 0 0 2
+$3037 2834 0 0 2
+$2834 2432 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2533 D895487-2  A Ni                 604 Ad
+P-2           2534 C490323-7  B De Lo Ni           413 Ad
+P-3           2535 D10088A-6  C Na Va              812 Ad
+P-4           2633 B775876-9                    B  404 Na
+P-5           2634 C000786-B    As Na              723 Ad
+P-6           2637 B99A568-D    Ni Wa              922 Ad
+P-7           2638 C350877-9    De Po           B  802 Na
+P-8           2639 B000788-B  A As Na              603 Ad
+P-9           2735 C573695-4    Ni                 304 Ad
+P-10          2736 C346422-9  A Ni                 321 Ad
+P-11          2738 C562679-3    Ni Ri           B  900 Na
+P-12          2739 D332504-9  A Ni Po              805 Ad
+P-13          2831 C34378C-8    Po                 403 Ad
+P-14          2832 B322341-9  B Lo Ni Po           314 Ad
+Poakki        2834 C301999-B    Hi Ic Na Va        913 Ad
+P-16          2933 D264255-7    Lo Ni              603 Ad
+P-17          2934 E475442-8    Ni                 723 Ad
+P-18          2935 D211656-5  A Ic Na Ni           413 Ad
+P-19          2936 E546330-2    Lo Ni              104 Ad
+P-20          2940 A333300-E    Lo Ni Po           304 Ad
+P-21          3031 A794330-8  B Lo Ni              704 Ad
+P-22          3033 C000520-C    As Ni              602 Ad
+P-23          3035 C8B6321-9  B Fl Lo Ni        A  403 Ad
+Hietla        3037 CAA4102-9    Fl Lo Ni           202 Ad
+P-25          3038 E797596-3    Ag Ni              301 Ad
+P-26          3039 D322887-5    Na Po              513 Ad
+P-27          3040 A77A313-B  B Lo Ni Wa           601 Ad
+P-28          3131 B422411-B    Ni Po              123 Ad
+P-29          3133 E767330-6    Lo Ni              104 Ad
+P-30          3134 B85A305-C  B Lo Ni Wa           914 Ad
+P-31          3135 E66448B-7    Ni                 604 Ad
+P-32          3137 C779473-6    Ni              B  513 Na
+P-33          3138 D381341-6    Lo Ni              513 Ad
+P-34          3231 C525230-5  B Lo Ni              614 Ad
+P-35          3233 C334324-6    Lo Ni              304 Ad
+P-36          3234 C8B6164-7  B Fl Lo Ni        A  323 Ad
+P-37          3238 C776A9A-C    Hi In              220 Ad
+Hurrjahs      3239 C775430-5    Ni                 214 Ad
+P-39          3240 E375302-7    Lo Ni              102 Ad
+

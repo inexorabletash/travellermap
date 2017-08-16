@@ -1,0 +1,373 @@
+Bomarien Sector
+
+A: Abomar                    a.dat
+B: Bomari                    b.dat
+C: Comarien                  c.dat
+D: Domarn                    d.dat
+E: Emarien                   e.dat
+F: Fomar                     f.dat
+G: Gomarien                  g.dat
+H: Hoimarr                   h.dat
+I: Ibaiern                   i.dat
+J: Jomariet                  j.dat
+K: Kolamiet                  k.dat
+L: Lomarie                   l.dat
+M: Marien                    m.dat
+N: Nariena                   n.dat
+O: Omarien                   o.dat
+P: Poobar                    p.dat
+
+Bases:
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Abomar SECTOR: Bomarien Sector
+#
+# Jump-routes
+#
+$0102 3239 -1 -1 10
+$0102 0205 0 0 10
+$0205 0606 0 0 10
+$0606 0907 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Axaaffa       0102 C455377-6    Lo Ni           B  801 Na
+A-2           0107 D454634-7  S Ag Ni              301 Na
+Urgtaas       0205 E332888-7    Na Po              203 Na
+A-4           0303 C160867-6  S De Ri              914 Na
+A-5           0304 C323464-6  S Ni Po              715 Na
+A-6           0407 B300675-7    Na Ni Va        B  120 Na
+A-7           0510 B231332-B    Lo Ni Po           605 Na
+Ottmeier      0606 C656744-3    Ag                 112 Na
+A-9           0708 A461563-A    Ni                 132 Na
+A-10          0808 C666978-5  S Hi              B  504 Na
+A-11          0809 D768123-7  S Lo Ni              304 Na
+A-12          0810 B878665-5  N Ag Ni              905 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Bomari SECTOR: Bomarien Sector
+#
+# Jump-routes
+#
+$0907 0606 -1 0 10
+$0907 1309 0 0 10
+$1309 1412 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           0901 C84668D-6  S Ag Ni              634 Na
+Blauure       0907 C581222-4    Lo Ni              104 Na
+Milghure      1309 C1107BE-6    Na                 704 Na
+B-4           1403 B544311-8  2 Lo Ni              223 Na
+B-5           1501 C250557-B  S De Ni Po           214 Na
+B-6           1507 B69859A-B    Ag Ni              402 Na
+B-7           1510 C696431-5    Ni                 205 Na
+B-8           1604 C5A0122-8  S De Lo Ni           414 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Comarien SECTOR: Bomarien Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1901 E10069B-7    Na Ni Va           424 Na
+C-2           1903 C757558-A    Ag Ni              903 Na
+C-3           1908 E342654-7    Ni Po              604 Na
+C-4           2106 C83A433-8  S Ni Wa              604 Na
+C-5           2109 E100630-5    Na Ni Va           810 Na
+C-6           2304 C533530-6  S Ni Po              400 Na
+C-7           2408 E222167-9    Lo Ni Po           904 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Domarn SECTOR: Bomarien Sector
+#
+# Jump-routes
+$2607 2808 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2607 C510389-A    Lo Ni              802 Na
+D-2           2609 C475788-5    Ag                 400 Na
+D-3           2808 A88A443-D    Ni Wa              703 Na
+D-4           2907 EA6A565-4    Ni Wa              700 Na
+D-5           2908 D32467A-5  S Ni              B  800 Na
+D-6           3004 E231554-7    Ni Po              922 Na
+D-7           3102 B457646-6    Ag Ni              803 Na
+D-8           3104 E6839CC-4    Hi                 703 Na
+D-9           3107 C7A6884-9    Fl                 814 Na
+D-10          3208 E400356-9    Lo Ni Va           103 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Emarien SECTOR: Bomarien Sector
+#
+# Jump-routes
+$0520 0620 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0216 C9989A5-6  S Hi In              504 Na
+E-2           0515 C9A8100-6    Fl Lo Ni           502 Na
+E-3           0520 B768765-8  N Ag Ri              604 Na
+E-4           0620 C422467-9  S Ni Po              822 Na
+E-5           0719 C465234-6    Lo Ni              600 Na
+E-6           0820 C410325-7    Lo Ni              210 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Fomar SECTOR: Bomarien Sector
+#
+# Jump-routes
+#
+$1412 1309 0 -1 10
+$1412 1714 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           1017 C665100-8    Lo Ni              300 Na
+F-2           1120 C470324-6  S De Lo Ni           414 Na
+Fuibana       1412 C200676-5  S Na Ni Va        B  205 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Gomarien SECTOR: Bomarien Sector
+#
+# Jump-routes
+#
+$1714 1412 -1 0 10
+$1714 1717 0 0 10
+$1717 1920 0 0 10
+$1920 2023 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Gokaaba       1714 B100455-A    Ni Va              912 Na
+Allreaan      1717 E5696AA-2    Ni                 605 Na
+G-3           1820 C442433-6    Ni Po              400 Na
+Wahuhua       1920 C24177A-5  S Po              B  713 Na
+G-5           2013 E99A633-6    Ni Wa              103 Na
+G-6           2111 C9D2756-8    Fl                 315 Na
+G-7           2211 C551654-5    Ni Po              600 Na
+G-8           2213 E974573-6    Ag Ni           B  224 Na
+G-9           2313 E300842-7    Na Va              500 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hoimarr SECTOR: Bomarien Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2515 D465558-9  S Ag Ni              813 Na
+H-2           2711 B322520-D  S Ni Po              304 Na
+H-3           2812 B683457-8    Ni                 503 Na
+H-4           3013 C555110-4    Lo Ni              103 Na
+H-5           3112 C466541-A    Ag Ni              704 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ibaiern SECTOR: Bomarien Sector
+#
+# Jump-routes
+#
+$0429 0533 0 1 2
+$0429 0327 0 0 2
+$0327 3128 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0123 D202320-9  S Ic Lo Ni Va        814 Na
+I-2           0323 A413873-D    Ic Na           B  710 Na
+Corrihn       0327 B9D68BA-7  S Fl                 913 Na
+I-4           0425 C311556-B  S Ic Ni              604 Na
+I-5           0428 C100768-8  S Na Va              803 Na
+Innioopa      0429 C532669-6    Na Ni Po           413 Na
+I-7           0526 A335122-C    Lo Ni              901 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jomariet SECTOR: Bomarien Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           1026 E694599-4    Ag Ni              214 Na
+J-2           1227 C554768-6    Ag                 315 Na
+J-3           1324 E555354-3    Lo Ni              200 Na
+J-4           1421 D200485-7    Ni Va              403 Na
+J-5           1425 B697338-B  N Lo Ni              705 Na
+J-6           1521 C8A5679-9    Fl Ni           B  203 Na
+J-7           1524 D5458BF-6                       120 Na
+J-8           1630 E612768-6    Ic Na              504 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kolamiet SECTOR: Bomarien Sector
+#
+# Jump-routes
+#
+$2023 1920 0 -1 10
+$2023 2225 0 0 10
+$2225 2428 0 0 10
+$2428 2731 1 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1726 E9E3753-6    Fl                 604 Na
+K-2           1827 E548688-1    Ag Ni              100 Na
+K-3           1928 C257755-8    Ag                 602 Na
+K-4           1930 C412432-A    Ic Ni              315 Na
+Kaarearr      2023 C310872-8    Na              B  821 Na
+Dlaneiec      2225 C422321-7  S Lo Ni Po           801 Na
+Eyattana      2428 B210427-B  N Ni                 523 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lomarie SECTOR: Bomarien Sector
+#
+# Jump-routes
+$2629 2731 0 1
+$2724 2826 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2624 C88A366-6  S Lo Ni Wa           302 Na
+L-2           2629 A510875-C  N Na              B  300 Na
+L-3           2722 C301A99-B    Hi Ic Na Va        703 Na
+L-4           2724 B403887-B  N Ic Na Va           800 Na
+L-5           2826 B411878-A  S Ic Na           B  914 Na
+L-6           2927 B242205-D  N Lo Ni Po           223 Na
+L-7           3026 C694233-5    Lo Ni              423 Na
+L-8           3224 E745503-8    Ag Ni              314 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Marien SECTOR: Bomarien Sector
+#
+# Jump-routes
+#
+$0839 0903 1 1 2
+$0839 0537 0 0 2
+$0537 0533 0 0 2
+$0533 0429 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0333 E98A8BF-7    Wa                 423 Na
+M-2           0339 A787242-9  N Lo Ni              403 Na
+Mavaal        0533 C635241-6  S Lo Ni              623 Na
+Mopooihg      0537 B557215-9    Lo Ni              705 Na
+M-5           0632 C424464-A    Ni                 703 Na
+Meyiakch      0839 C544753-6  S Ag                 402 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nariena SECTOR: Bomarien Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           1233 C2209BD-A  S De Hi In Na Po     404 Na
+N-2           1431 A78A100-D    Lo Ni Wa           720 Na
+N-3           1439 C230302-9    De Lo Ni Po        505 Na
+N-4           1536 C510542-9    Ni                 313 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Omarien SECTOR: Bomarien Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1935 C655543-9  S Ag Ni              603 Na
+O-2           1936 C302500-B    Ic Ni Va           702 Na
+O-3           1938 E777366-3    Lo Ni              100 Na
+O-4           2035 C328587-A  S Ni                 824 Na
+O-5           2036 D331566-7    Ni Po              202 Na
+O-6           2137 B2009A8-C    Hi Na Va           404 Na
+O-7           2235 A8C8537-B  S Fl Ni           A  603 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Poobar SECTOR: Bomarien Sector
+#
+# Jump-routes
+$2731 2629 0 -1
+#
+$2731 2428 -1 -1 10
+$2731 2734 0 0 10
+$2734 2738 0 0 10
+$2738 2701 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2539 C63656A-8    Ni                 103 Na
+P-2           2634 B8A5556-9    Fl Ni              310 Na
+Huwuupi       2731 C473557-6  S Ni                 303 Na
+Phashaf       2734 B400797-C    Na Va              421 Na
+Ieammi        2738 C5358B8-8  S                    522 Na
+P-6           2835 C686330-4    Lo Ni              503 Na
+P-7           2939 B769447-B  N Ni                 504 Na
+P-8           3035 B353220-A    Lo Ni Po           701 Na
+P-9           3240 E8C2230-4    Fl Lo Ni           514 Na
+

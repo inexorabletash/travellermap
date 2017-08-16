@@ -1,0 +1,476 @@
+Uberloin Sector
+
+A: Auberl                    a.dat
+B: Buberloi                  b.dat
+C: Cuberloin                 c.dat
+D: Derloin                   d.dat
+E: Erloinn                   e.dat
+F: Fruberyl                  f.dat
+G: Ghubann                   g.dat
+H: Hurloik                   h.dat
+I: Iberlass                  i.dat
+J: Judloin                   j.dat
+K: Kubderan                  k.dat
+L: Lubloit                   l.dat
+M: Munerloih                 m.dat
+N: Nucubra                   n.dat
+O: Ounuber                   o.dat
+P: Punube                    p.dat
+
+Bases:
+E = Eindrakurr Navy
+F = Eindrakurr Scout
+G = Eindrakurr Army
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+03 Ce = Council of Eindrakurr
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Auberl SECTOR: Uberloin Sector
+#
+# Jump-routes
+#
+$0606 0909 1 0 2
+$0606 0503 0 0 2
+$0503 0340 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0306 CAD6533-5  S Fl Ni              712 Na
+Drauciin      0503 E698521-4    Ag Ni              804 Na
+Accerran      0606 B441475-C  S Ni Po           B  213 Na
+A-4           0701 B7B4546-8  S Fl Ni              112 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Buberloi SECTOR: Uberloin Sector
+#
+# Jump-routes
+#
+$0909 1012 0 1 2
+$0909 0606 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Billard       0909 C978759-6    Ag                 904 Na
+B-2           1005 A120899-A    De Na Po           803 Na
+B-3           1102 B62278B-B    Na Po              813 Na
+B-4           1302 C667334-7  S Lo Ni              803 Na
+B-5           1304 C667768-4    Ag Ri              914 Na
+B-6           1307 C100524-7    Ni Va              504 Na
+B-7           1308 AAF5775-C    Fl              B  612 Na
+B-8           1401 B000566-C  N As Ni              104 Na
+B-9           1404 C466000-5    Ba Lo Ni           810 Na
+B-10          1406 C555966-9  S Hi                 700 Na
+B-11          1507 B56A310-B    Lo Ni Wa           900 Na
+B-12          1606 C99A675-A  S Ni Wa           B  104 Na
+B-13          1607 D628056-8  S Lo Ni              923 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Cuberloin SECTOR: Uberloin Sector
+#
+# Jump-routes
+#
+$1801 1740 0 -1 10
+$1801 2201 0 0 10
+$2201 2503 1 0 10
+$2208 2606 1 0 3
+$2208 2107 0 0 3
+$2208 2009 0 0 3
+$2208 2210 0 0 3
+$2210 2211 0 1 3
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1702 C210655-B    Na Ni              205 Na
+C-2           1705 E574667-6    Ag Ni              314 Na
+Clorill       1801 C89A300-C    Lo Ni Wa           603 Na
+C-4           2009 C345431-8    Ni                 300 Ce
+C-5           2107 C589553-A  E Ni                 604 Ce
+Teetee        2201 C97867B-3    Ag Ni           B  424 Na
+C-7           2204 C74856B-5  S Ag Ni              200 Na
+C-8           2208 B442331-C  F Lo Ni Po           214 Ce
+C-9           2210 CA59469-5    Ni                 715 Ce
+C-10          2302 C220376-B    De Lo Ni Po     B  300 Na
+C-11          2402 E440511-3    De Ni Po           502 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Derloin SECTOR: Uberloin Sector
+#
+# Jump-routes
+#
+$2503 2201 -1 0 10
+$2503 2606 0 0 10
+$2606 3008 0 0 10
+$3008 3211 0 1 10
+$3009 3012 0 1 3
+$3009 3008 0 0 3
+$3008 2907 0 0 3
+$2907 2606 0 0 3
+$2907 2704 0 0 3
+$2704 2503 0 0 3
+$2704 2904 0 0 3
+$3008 3109 0 0 3
+$3109 3009 0 0 3
+$2606 2208 -1 0 3
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Denei         2503 B4029CB-9  G Hi Ic Na Va        302 Ce
+D-2           2510 E787510-2    Ag Ni              303 Ce
+D-3           2605 D9A5858-5  G Fl                 704 Ce
+Fharra        2606 A571967-B  G Hi In              104 Ce
+D-5           2609 D649424-3  F Ni                 622 Ce
+D-6           2704 C362666-4    Ni Ri              702 Ce
+D-7           2705 D898659-6    Ag Ni              110 Ce
+D-8           2904 C875698-4    Ag Ni              903 Ce
+D-9           2906 E455333-7    Lo Ni              705 Ce
+D-10          2907 B6A09B8-C  E De Hi              701 Ce
+D-11          2908 C699573-9  S Ni              B  305 Na
+D-12          3003 D100455-7  F Ni Va              202 Ce
+D-13          3006 X350775-1    De Po           R  104 Ce
+Krivoure      3008 A226515-B    Ni                 902 Ce
+D-15          3009 B76497A-C  N Hi              B  123 Na
+D-16          3109 C643255-5    Lo Ni Po           404 Ce
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Erloinn SECTOR: Uberloin Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0215 A792633-A  N Ni                 404 Na
+E-2           0318 C5988AC-4                       303 Na
+E-3           0415 C202677-7    Ic Na Ni Va     B  202 Na
+E-4           0514 B590698-6    De Ni              704 Na
+E-5           0517 C200455-A    Ni Va              803 Na
+E-6           0519 C686141-7  S Lo Ni              823 Na
+E-7           0611 D500545-6    Ni Va              514 Na
+E-8           0615 AA9A767-A  2 Wa                 503 Na
+E-9           0713 C543588-9  S Ni Po              815 Na
+E-10          0714 E510372-8    Lo Ni           B  514 Na
+E-11          0814 C552677-4    Ni Po           B  520 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Fruberyl SECTOR: Uberloin Sector
+#
+# Jump-routes
+#
+$1617 1521 0 1 2
+$1617 1215 0 0 2
+$1215 1012 0 0 2
+$1012 0909 0 -1 2
+$1020 1122 0 1 11
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Dorrazi       1012 C3656AD-7  S Ag Ni              301 Na
+F-2           1015 E8A6485-8    Fl Ni              201 Na
+F-3           1020 B100100-E  S Lo Ni Va           713 Na
+Weraine       1215 B536774-8  N                 B  521 Na
+Flomao        1617 D120551-7    De Ni Po           913 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ghubann SECTOR: Uberloin Sector
+#
+# Jump-routes
+#
+$2211 2210 0 -1 3
+$2415 2513 1 0 3
+$2415 2213 0 0 3
+$2213 2211 0 0 3
+$2211 2513 1 0 3
+$2213 1813 0 0 3
+$1813 1816 0 0 3
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1813 B89A786-9  E Wa                 805 Ce
+G-2           1816 B223623-C  E Na Ni Po           331 Ce
+G-3           2013 E425442-7    Ni                 904 Ce
+G-4           2020 C987300-7  S Lo Ni              700 Na
+G-5           2211 B643100-A    Lo Ni Po           222 Ce
+G-6           2213 C79969D-8  G Ni                 924 Ce
+G-7           2220 D23078A-8    De Na Po           604 Na
+G-8           2312 C584221-6  F Lo Ni              523 Ce
+G-9           2415 B300844-C  E Na Va              304 Ce
+G-10          2419 E000555-6    As Ni              524 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hurloik SECTOR: Uberloin Sector
+#
+# Jump-routes
+#
+$3211 3008 0 -1 10
+$3211 0214 1 0 10
+$3211 0111 1 0 3
+$3211 3012 0 0 3
+$3012 3115 0 0 3
+$3115 0214 1 0 3
+$3012 3009 0 -1 3
+$3012 2812 0 0 3
+$2812 2713 0 0 3
+$2713 2513 0 0 3
+$2513 2415 -1 0 3
+$2513 2211 -1 0 3
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2513 B332430-9  F Ni Po              513 Ce
+H-2           2516 C675596-7    Ag Ni              303 Ce
+H-3           2713 C457465-7  F Ni                 623 Ce
+H-4           2812 C657331-9  F Lo Ni              803 Ce
+H-5           2813 C8A5548-7    Fl Ni              515 Ce
+H-6           2819 BAA8645-9    Fl Ni              204 Na
+H-7           2918 B874552-8  S Ag Ni              500 Na
+H-8           2920 A682474-9    Ni              B  902 Na
+H-9           3012 A000789-B    As Na              503 Ce
+H-10          3014 B434579-A    Ni              B  602 Na
+H-11          3018 B5006AC-8  N Na Ni Va           100 Na
+H-12          3115 C1006AC-7  G Na Ni Va           700 Ce
+H-13          3117 E3008DF-3    Na Va              524 Na
+Hilliox       3211 B655758-8    Ag                 104 Ce
+H-15          3217 E888300-5    Lo Ni              501 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Iberlass SECTOR: Uberloin Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0325 C2105A9-A    Ni                 200 Na
+I-2           0327 C7A1A99-9    Fl Hi              704 Na
+I-3           0530 C224302-8  S Lo Ni              505 Na
+I-4           0629 C548375-7  S Lo Ni           B  514 Na
+I-5           0723 B9889EI-8  2 Hi              A  923 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Judloin SECTOR: Uberloin Sector
+#
+# Jump-routes
+#
+$1521 1823 1 0 2
+$1521 1617 0 -1 2
+$1122 1020 0 -1 11
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0922 E343ACG-B    Hi In Po           104 Na
+J-2           0930 D657576-6    Ag Ni           B  910 Na
+J-3           1021 C357596-5    Ag Ni              205 Na
+J-4           1122 C668533-9    Ag Ni              300 Na
+J-5           1321 C100544-B    Ni Va              514 Na
+J-6           1328 X691110-1    Lo              R  910 Na
+J-7           1329 C567972-7  S Hi              B  104 Na
+J-8           1427 C524A68-D  S Hi In              104 Na
+Jabbarwa      1521 C310500-C    Ni                 924 Na
+J-10          1528 C637556-7    Ni                 403 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kubderan SECTOR: Uberloin Sector
+#
+# Jump-routes
+$2425 2526 1 0
+$2425 2727 1 0
+#
+$1929 2331 0 1 2
+$1929 1826 0 0 2
+$1826 1823 0 0 2
+$1823 1521 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1727 E764649-2    Ag Ni Ri           314 Na
+K-2           1729 E361576-8    Ni              B  202 Na
+Schalli       1823 C352634-9    Ni Po              204 Na
+Varseeki      1826 E675720-4    Ag                 702 Na
+K-5           1922 C677877-3                    B  603 Na
+Kreadore      1929 C410210-8    Lo Ni              812 Na
+K-7           2129 C5558A9-3                       503 Na
+K-8           2322 D467554-7  S Ag Ni              600 Na
+K-9           2425 A535301-E    Lo Ni              105 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lubloit SECTOR: Uberloin Sector
+#
+# Jump-routes
+$2526 2425 -1 0
+$2727 2425 -1 0
+#
+$2727 2728 0 0 11
+$2728 2829 0 0 11
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2526 C798588-6    Ag Ni              204 Na
+L-2           2626 D83A774-4  S Wa              B  103 Na
+L-3           2630 C773322-5    Lo Ni              721 Na
+L-4           2721 C8B6953-B    Fl Hi           A  203 Na
+L-5           2722 C314688-7    Ic Ni              302 Na
+L-6           2724 E556751-7    Ag                 402 Na
+L-7           2727 A758522-9  N Ag Ni              503 Na
+L-8           2728 B200210-9    Lo Ni Va           810 Na
+L-9           2821 E328434-9    Ni                 523 Na
+L-10          2829 A523424-A  N Ni Po              920 Na
+L-11          2922 EAC5420-6    Fl Ni           A  601 Na
+L-12          2924 C879100-B    Lo Ni              224 Na
+L-13          2926 C274484-6  S Ni                 204 Na
+L-14          3021 D560312-4    De Lo Ni           514 Na
+L-15          3024 C26499B-7  S Hi                 900 Na
+L-16          3030 C6458CB-3                       401 Na
+L-17          3223 C787572-5  S Ag Ni           B  302 Na
+L-18          3229 E57589B-2                       912 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Munerloih SECTOR: Uberloin Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0133 X462784-3    Ri              R  603 Na
+M-2           0139 C523243-6    Lo Ni Po           913 Na
+M-3           0140 B5367BF-7                       604 Na
+M-4           0239 C568577-9  S Ag Ni           B  115 Na
+M-5           0335 D8A5332-3  S Fl Lo Ni           623 Na
+M-6           0340 E8A66BD-4    Fl Ni              400 Na
+M-7           0439 E7357C9-6                       624 Na
+M-8           0540 E2129EF-A    Hi Ic Na           312 Na
+M-9           0632 C000100-9    As Lo Ni           700 Na
+M-10          0639 C453689-4    Ni Po              312 Na
+M-11          0739 C3538BC-5    Po                 904 Na
+M-12          0740 C69A136-B  S Lo Ni Wa           504 Na
+M-13          0835 C302363-A    Ic Lo Ni Va        902 Na
+M-14          0837 A6369CF-D  N Hi In              403 Na
+M-15          0840 E2416BC-3    Ni Po              222 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nucubra SECTOR: Uberloin Sector
+#
+# Jump-routes
+$1535 1634 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0936 E888321-6    Lo Ni              704 Na
+N-2           0939 B693698-7    Ni                 702 Na
+N-3           0940 C74967A-7  S Ni              B  323 Na
+N-4           1031 C6B0264-8  S De Lo Ni        A  113 Na
+N-5           1032 D659455-9  S Ni                 310 Na
+N-6           1039 A788A88-D  2 Hi                 103 Na
+N-7           1040 C6669BD-6  S Hi                 422 Na
+N-8           1133 B595987-8    Hi In              613 Na
+N-9           1140 E3405AA-3    De Ni Po           903 Na
+N-10          1231 C665121-6    Lo Ni              903 Na
+N-11          1232 D210311-8  S Lo Ni              302 Na
+N-12          1240 B5276AC-A    Ni                 213 Na
+N-13          1340 B429252-A    Lo Ni              415 Na
+N-14          1435 C786100-A    Lo Ni              402 Na
+N-15          1440 B5559DG-7  N Hi                 303 Na
+N-16          1535 B85968D-7  N Ni                 821 Na
+N-17          1540 B5977AB-A  N Ag                 203 Na
+N-18          1634 A000003-D    As Lo Ni           502 Na
+N-19          1640 A566777-8  N Ag Ri           B  703 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ounuber SECTOR: Uberloin Sector
+#
+# Jump-routes
+$1936 2237 0 0
+#
+$2331 2534 1 0 2
+$2331 1929 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1834 D668555-3  S Ag Ni              503 Na
+O-2           1840 B210698-A  S Na Ni              403 Na
+O-3           1936 B465478-C    Ni              B  703 Na
+O-4           2040 B387310-C  N Lo Ni              304 Na
+O-5           2237 A222896-D    Na Po              502 Na
+Ogaja         2331 B546554-A  N Ag Ni              601 Na
+O-7           2431 D358AEG-A    Hi              A  400 Na
+O-8           2437 E400666-4    Na Ni Va           221 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Punube SECTOR: Uberloin Sector
+#
+# Jump-routes
+#
+$2937 0139 1 0 2
+$2937 2834 0 0 2
+$2834 2534 0 0 2
+$2534 2331 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2531 C120841-A    De Na Po           914 Na
+Xanang        2534 A443753-9  N Po                 814 Na
+P-3           2539 C9B0215-A    De Lo Ni        A  414 Na
+P-4           2540 X559530-0                    R  904 Na
+Pneunan       2834 X765210-0    Lo              R  901 Na
+P-6           2838 C9A2688-9    Fl Ni              700 Na
+Garayn        2937 C300520-9    Ni Va              714 Na
+

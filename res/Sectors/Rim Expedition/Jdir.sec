@@ -1,0 +1,384 @@
+Jdir Sector
+
+A: Aajdir                    a.dat
+B: Bejdir                    b.dat
+C: Cajdir                    c.dat
+D: Dejdir                    d.dat
+E: Eejdir                    e.dat
+F: Fayjdir                   f.dat
+G: Gajdir                    g.dat
+H: Hojdir                    h.dat
+I: Iijdir                    i.dat
+J: Jayjdir                   j.dat
+K: Kejdir                    k.dat
+L: Lujdir                    l.dat
+M: Mejdir                    m.dat
+N: Najdir                    n.dat
+O: Ohjdir                    o.dat
+P: Pijdir                    p.dat
+
+Bases:
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ajdir SECTOR: Jdir Sector
+#
+# Jump-routes
+$0203 0304 0 0
+#
+$0608 0909 1 0 2
+$0608 0405 0 0 2
+$0405 0203 0 0 2
+$0203 0201 0 0 2
+$0201 3239 -1 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Ahuhu         0201 E355724-3    Ag                 323 Na
+Kotraa        0203 C362234-7    Lo Ni              204 Na
+A-3           0208 B20048A-C  N Ni Va              410 Na
+A-4           0304 B337300-A  S Lo Ni              812 Na
+Villonga      0405 B553659-8    Ni Po              915 Na
+A-6           0501 C88A224-8  S Lo Ni Wa           513 Na
+Louraah       0608 D554A8A-A  S Hi                 821 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Bejdir SECTOR: Jdir Sector
+#
+# Jump-routes
+$1609 1611 0 1
+#
+$0909 1112 0 1 2
+$0909 0608 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Bikart        0909 E9E7765-2    Fl                 813 Na
+B-2           1008 C400722-9    Na Va              204 Na
+B-3           1303 E6227BC-6    Na Po              502 Na
+B-4           1308 C665555-8    Ag Ni              304 Na
+B-5           1406 C232886-8    Na Po              924 Na
+B-6           1506 A453677-D  N Ni Po           B  812 Na
+B-7           1601 A755238-C    Lo Ni              901 Na
+B-8           1609 C000300-D    As Lo Ni           300 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Cajdir SECTOR: Jdir Sector
+#
+# Jump-routes
+$2407 2506 1 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           2005 C4739B8-8  S Hi In              913 Na
+C-2           2008 B240110-7    De Lo Ni Po        504 Na
+C-3           2010 X688334-2    Lo              R  223 Na
+C-4           2103 C654165-4    Lo Ni              713 Na
+C-5           2105 CA97975-7  S Hi In           B  300 Na
+C-6           2309 D7B1696-4    Fl Ni           A  802 Na
+C-7           2402 C343422-9    Ni Po              604 Na
+C-8           2407 A62647A-E    Ni              B  215 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Dejdir SECTOR: Jdir Sector
+#
+# Jump-routes
+$2506 2407 -1 0
+#
+$3102 3138 0 -1 10
+$3102 0104 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2506 B675558-A    Ag Ni              220 Na
+D-2           2508 D100366-6    Lo Ni Va           900 Na
+D-3           2802 D45379C-3    Po                 924 Na
+D-4           2902 C774667-5  S Ag Ni              700 Na
+D-5           3007 C36358B-6    Ni                 300 Na
+Kliogg        3102 C300446-B    Ni Va              404 Na
+D-7           3105 C20165A-8    Ic Na Ni Va        203 Na
+D-8           3203 E998ACC-5    Hi In              112 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Iijdir SECTOR: Jdir Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0313 B568488-7  S Ni                 600 Na
+E-2           0419 E889431-3    Ni                 100 Na
+E-3           0518 E110527-8    Ni                 710 Na
+E-4           0520 C643ADC-8    Hi In Po           702 Na
+E-5           0714 C435000-7    Ba Lo Ni           423 Na
+E-6           0817 D303726-6  S Ic Na Va           801 Na
+E-7           0820 B350111-A  S De Lo Ni Po        304 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Fayjdir SECTOR: Jdir Sector
+#
+# Jump-routes
+$1611 1609 0 -1
+#
+$1619 1722 1 1 2
+$1619 1318 0 0 2
+$1318 1215 0 0 2
+$1215 1112 0 0 2
+$1112 0909 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           1011 C76A424-7    Ni Wa              701 Na
+F-2           1014 E000459-9    As Ni              105 Na
+Rimouna       1112 C7A4768-7    Fl                 523 Na
+Walyacci      1215 A487501-A    Ag Ni              723 Na
+Selaine       1318 E150487-6    De Ni Po           901 Na
+F-6           1413 E96A254-9    Lo Ni Wa           812 Na
+F-7           1515 D437636-5    Ni                 404 Na
+F-8           1516 B350320-8  S De Lo Ni Po        904 Na
+F-9           1611 B746256-7  N Lo Ni              104 Na
+F-10          1615 C232120-7    Lo Ni Po           613 Na
+Migreal       1619 B120138-B  N De Lo Ni Po        804 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Gajdir SECTOR: Jdir Sector
+#
+# Jump-routes
+$2220 2520 1 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1812 X446755-3    Ag              R  503 Na
+G-2           1919 C3338CA-5    Na Po              202 Na
+G-3           2011 C350347-7    De Lo Ni Po        511 Na
+G-4           2114 B759698-6    Ni                 400 Na
+G-5           2220 A15036A-D    De Lo Ni Po        500 Na
+G-6           2312 B566866-5  N Ri                 904 Na
+G-7           2413 E230537-9    De Ni Po           803 Na
+G-8           2415 E100364-6    Lo Ni Va           303 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hojdir SECTOR: Jdir Sector
+#
+# Jump-routes
+$2520 2220 -1 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2519 C859386-A  S Lo Ni              902 Na
+H-2           2520 B442774-8    Po              B  213 Na
+H-3           2711 C536559-6    Ni                 602 Na
+H-4           2719 D798444-5    Ni                 204 Na
+H-5           2812 C89A46B-7    Ni Wa              203 Na
+H-6           2819 D274762-6  S Ag                 100 Na
+H-7           2916 B637500-C  2 Ni                 413 Na
+H-8           2918 D236411-9    Ni                 605 Na
+H-9           3113 C321863-9    Na Po              610 Na
+H-10          3117 X433867-2    Po              R  102 Na
+H-11          3213 C200762-6    Na Va              113 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Iijdir SECTOR: Jdir Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0127 C86747A-5    Ni              B  200 Na
+I-2           0427 E89A677-3    Ni Wa           B  300 Na
+I-3           0429 C585520-8  S Ag Ni              512 Na
+I-4           0523 E573153-3    Lo Ni              813 Na
+I-5           0530 B300622-B  N Na Ni Va           901 Na
+I-6           0621 D6476AA-4    Ag Ni              710 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jayjdir SECTOR: Jdir Sector
+#
+# Jump-routes
+$1429 1529 0 0
+$1429 1530 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           1027 C446200-8    Lo Ni              814 Na
+J-2           1028 E544676-1    Ag Ni           B  603 Na
+J-3           1125 E334523-4    Ni                 105 Na
+J-4           1128 C446465-6  S Ni                 602 Na
+J-5           1224 B110413-D  N Ni                 712 Na
+J-6           1225 C596569-4    Ag Ni              512 Na
+J-7           1327 E545472-6    Ni              B  610 Na
+J-8           1425 C8B98AE-9    Fl              A  404 Na
+J-9           1429 B758967-B  N Hi                 911 Na
+J-10          1529 B110752-A  2 Na                 701 Na
+J-11          1530 C4009B8-9  S Hi Na Va           601 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kejdir SECTOR: Jdir Sector
+#
+# Jump-routes
+#
+$2029 2033 0 1 2
+$2029 1827 0 0 2
+$1827 1824 0 0 2
+$1824 1722 0 0 2
+$1722 1619 -1 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1721 D873100-8  S Lo Ni              502 Na
+Tachinni      1722 C573433-9    Ni                 824 Na
+K-3           1821 CA9A997-B  S Hi In Wa           524 Na
+Ugranu        1824 E310530-9    Ni                 505 Na
+Kielair       1827 A764532-B    Ag Ni              501 Na
+Potrann       2029 B555524-6    Ag Ni              501 Na
+K-7           2123 B653420-6  S Ni Po              702 Na
+K-8           2124 B739576-8  N Ni              B  903 Na
+K-9           2128 C332778-8    Na Po           B  604 Na
+K-10          2324 E464441-6    Ni                 224 Na
+K-11          2327 E337355-8    Lo Ni              623 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lujdir SECTOR: Jdir Sector
+#
+# Jump-routes
+$3028 3031 0 1
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2923 B866302-A  N Lo Ni              524 Na
+L-2           2925 E5206AC-4    De Na Ni Po        903 Na
+L-3           3021 E300340-9    Lo Ni Va           404 Na
+L-4           3028 B510000-9  S Ba Lo Ni           704 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Mejdir SECTOR: Jdir Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0433 C9A1100-7  S Fl Lo Ni           912 Na
+M-2           0534 C479434-6    Ni                 520 Na
+M-3           0631 B885454-C    Ni                 512 Na
+M-4           0733 C375204-8  S Lo Ni              304 Na
+M-5           0832 E533520-8    Ni Po              310 Na
+M-6           0835 C0007AD-B  S As Na              614 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Najdir SECTOR: Jdir Sector
+#
+# Jump-routes
+$0938 1139 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0938 A74869D-C    Ag Ni              814 Na
+N-2           1032 E652027-2    Lo Ni Po           222 Na
+N-3           1035 C589010-8    Lo Ni              110 Na
+N-4           1139 A633320-C  N Lo Ni Po           812 Na
+N-5           1532 C100302-D    Lo Ni Va           414 Na
+N-6           1539 B110522-D  S Ni                 512 Na
+N-7           1640 C858535-6    Ag Ni              904 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ohjdir SECTOR: Jdir Sector
+#
+# Jump-routes
+#
+$2338 2637 1 0 2
+$2338 2037 0 0 2
+$2037 2033 0 0 2
+$2033 2029 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1740 E436557-8    Ni                 603 Na
+O-2           1835 C232321-8  S Lo Ni Po           403 Na
+Hojoon        2033 E1008AF-5    Na Va              403 Na
+Ernilli       2037 C363120-8  S Lo Ni              801 Na
+Ocalool       2338 D78678A-1  S Ag Ri              413 Na
+O-6           2437 C576455-5  S Ni                 303 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Pijdir SECTOR: Jdir Sector
+#
+# Jump-routes
+$3031 3028 0 -1
+#
+$3039 0139 1 0 2
+$3039 2637 0 0 2
+$2637 2338 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Irrodiun      2637 C100679-8    Na Ni Va        B  802 Na
+P-2           3031 A635300-E  N Lo Ni              603 Na
+Lagolle       3039 E321236-8    Lo Ni Po           402 Na
+

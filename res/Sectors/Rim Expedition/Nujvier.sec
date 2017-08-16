@@ -1,0 +1,349 @@
+Nujvier Sector
+
+A: Anuj                      a.dat
+B: Bavier                    b.dat
+C: Canuj                     c.dat
+D: Dananjj                   d.dat
+E: Ejvier                    e.dat
+F: Fajvi                     f.dat
+G: Gnuvier                   g.dat
+H: Hajaja                    h.dat
+I: Ijviera                   i.dat
+J: Jijier                    j.dat
+K: Kiernuj                   k.dat
+L: Lijvane                   l.dat
+M: Majier                    m.dat
+N: Nunjaa                    n.dat
+O: Ojun                      o.dat
+P: Phunier                   p.dat
+
+Bases:
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Anuj SECTOR: Nujvier Sector
+#
+# Jump-routes
+#
+$0709 1109 1 0 2
+$0709 0805 0 0 2
+$0805 0903 1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0205 C451320-9    Lo Ni Po           804 Na
+A-2           0301 D455533-4    Ag Ni              700 Na
+A-3           0409 E200A89-8    Hi Na Va           601 Na
+A-4           0410 D491233-4    Lo Ni              604 Na
+A-5           0505 E472200-4    Lo Ni              414 Na
+Ahiji         0709 EAC7311-4    Fl Lo Ni        A  413 Na
+Drojiad       0805 E762568-7    Ni                 224 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Bavier SECTOR: Nujvier Sector
+#
+# Jump-routes
+#
+$1109 1112 0 1 2
+$1109 0709 -1 0 2
+$0903 0805 -1 0 2
+$0903 0839 -1 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Vanuji        0903 C9C9235-7  S Fl Lo Ni        A  511 Na
+Blujunna      1109 E668420-6    Ni                 313 Na
+B-3           1403 E8A0568-7    De Ni              800 Na
+B-4           1405 B89A631-C    Ni Wa              804 Na
+B-5           1606 C764336-6    Lo Ni              402 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Canuj SECTOR: Nujvier Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1908 C445A9A-C    Hi In              403 Na
+C-2           2005 C86A536-9    Ni Wa              320 Na
+C-3           2110 C68598B-8    Hi                 523 Na
+C-4           2203 D9E6210-7    Fl Lo Ni           504 Na
+C-5           2210 E462647-7    Ni Ri              814 Na
+C-6           2410 C569221-8    Lo Ni              422 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Dananjj SECTOR: Nujvier Sector
+#
+# Jump-routes
+#
+$2701 2738 0 -1 10
+$2701 2704 0 0 10
+$2704 3004 0 0 10
+$3004 0204 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Doovava       2701 C460777-6    De Ri           B  402 Na
+Voldrath      2704 C9B8520-A  S Fl Ni           A  812 Na
+D-3           2709 C436645-A  S Ni                 910 Na
+D-4           2906 C777899-4                       812 Na
+D-5           2909 D474553-5  S Ag Ni              200 Na
+Tiahkna       3004 CAB5113-5    Fl Lo Ni        A  405 Na
+D-7           3105 C555110-4    Lo Ni              314 Na
+D-8           3209 C120652-B    De Na Ni Po        213 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ejvier SECTOR: Nujvier Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0118 C537865-6                       810 Na
+E-2           0212 E210687-3    Na Ni              602 Na
+E-3           0311 D52079D-5    De Na Po           424 Na
+E-4           0314 C363213-7    Lo Ni              120 Na
+E-5           0320 CAE8697-5    Fl Ni              314 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Fajvi SECTOR: Nujvier Sector
+#
+# Jump-routes
+$1416 1517 0 0
+$1416 1616 0 0
+#
+$1120 1422 0 1 2
+$1120 1116 0 0 2
+$1116 1112 0 0 2
+$1112 1109 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0918 C476320-7    Lo Ni              423 Na
+F-2           0920 C535100-6    Lo Ni              914 Na
+Ajjiamna      1112 C789310-7  S Lo Ni              622 Na
+Erchaji       1116 B16048A-B    De Ni              902 Na
+Faajnuj       1120 B538695-A  N Ni                 204 Na
+F-6           1416 A675A75-C    Hi In           B  500 Na
+Fajvi         1512 A000554-F    As Ni              403 Na
+F-8           1517 B8739CC-A    Hi In              303 Na
+F-9           1616 C656420-6  S Ni                 313 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Gnuvier SECTOR: Nujvier Sector
+#
+# Jump-routes
+#
+$1820 2121 0 1 2
+$1820 1422 -1 1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Gurjuni       1820 C120865-7  S De Na Po           703 Na
+G-2           1913 D788310-2    Lo Ni              104 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hajaja SECTOR: Nujvier Sector
+#
+# Jump-routes
+$2818 2918 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2517 C73A668-6  S Ni Wa              700 Na
+H-2           2619 B7997BA-A                       515 Na
+H-3           2818 A78767B-9  S Ag Ni Ri        B  511 Na
+H-4           2918 C21079B-8    Na                 713 Na
+H-5           3016 D797446-4    Ni                 903 Na
+H-6           3115 C454032-9    Lo Ni              904 Na
+H-7           3215 D444657-6  S Ag Ni              112 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ijviera SECTOR: Nujvier Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0223 E510745-6    Na                 324 Na
+I-2           0230 B695540-9    Ag Ni              913 Na
+I-3           0327 B656898-8  N                    405 Na
+I-4           0623 B321412-C  S Ni Po              202 Na
+I-5           0821 E454420-4    Ni                 504 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jijier SECTOR: Nujvier Sector
+#
+# Jump-routes
+#
+$1422 1820 1 -1 2
+$1422 1120 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0925 C160125-7    De Lo Ni           502 Na
+J-2           1024 X430432-1    De Po           R  610 Na
+J-3           1121 B656ABB-D  N Hi                 500 Na
+J-4           1124 B100501-C  N Ni Va              110 Na
+J-5           1127 B9B8314-7    Fl Lo Ni        A  703 Na
+J-6           1228 B400587-9  S Ni Va              725 Na
+J-7           1322 B55936A-8  2 Lo Ni              604 Na
+Jujjuiji      1422 C784455-9  S Ni                 504 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kiernuj SECTOR: Nujvier Sector
+#
+# Jump-routes
+#
+$2325 2626 1 0 2
+$2325 2223 0 0 2
+$2223 2121 0 0 2
+$2121 1820 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1727 C431AAB-A    Hi In Na Po        111 Na
+Cliamage      2121 C784332-7  S Lo Ni              104 Na
+Buladdaj      2223 C666637-3  S Ag Ni              701 Na
+K-4           2229 B446222-C    Lo Ni              710 Na
+Klajani       2325 C100676-B    Na Ni Va        B  103 Na
+K-6           2424 B87A553-E    Ni Wa              215 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lijvane SECTOR: Nujvier Sector
+#
+# Jump-routes
+#
+$3028 0128 1 0 2
+$3028 2626 0 0 2
+$2626 2325 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2522 C345768-9  S Ag                 613 Na
+L-2           2530 C683313-9    Lo Ni              104 Na
+L-3           2623 E688366-6    Lo Ni              603 Na
+Laanujj       2626 D34589A-4                       523 Na
+L-5           2826 B557305-B  N Lo Ni              213 Na
+L-6           3023 C6368BE-8                       102 Na
+Lorenacc      3028 X549140-4    Lo              R  201 Na
+L-8           3225 C99A534-8    Ni Wa              603 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Majier SECTOR: Nujvier Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0231 B8B9579-D  S Fl Ni           A  704 Na
+M-2           0437 E554026-4    Lo Ni              513 Na
+M-3           0439 D221643-5    Na Ni Po           605 Na
+Majier        0535 B432AA7-F  N Hi In Na Po        403 Na
+M-5           0638 C546584-9  S Ag Ni              202 Na
+M-6           0737 E22047A-8    De Ni Po        B  204 Na
+M-7           0832 C836786-7  S                    510 Na
+M-8           0836 C554662-6    Ag Ni              104 Na
+M-9           0837 C140A95-B    De Hi In Po        120 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nunjaa SECTOR: Nujvier Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           1231 C130240-7    De Lo Ni Po        315 Na
+N-2           1239 D382758-8    Ri                 714 Na
+N-3           1335 C958100-A    Lo Ni              800 Na
+N-4           1338 C677210-7  S Lo Ni              600 Na
+N-5           1535 D578211-6  S Lo Ni              813 Na
+N-6           1636 C762466-5    Ni                 421 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ojun SECTOR: Nujvier Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1937 D223224-4    Lo Ni Po           102 Na
+O-2           2031 C200221-A  S Lo Ni Va           314 Na
+O-3           2136 C443773-5    Po              B  710 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Phunier SECTOR: Nujvier Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2838 D344AA9-B  S Hi In              814 Na
+P-2           3233 D00068A-8  S As Na Ni           124 Na
+

@@ -1,0 +1,312 @@
+Quavos Sector
+
+A: Aqav                      a.dat
+B: Baqan                     b.dat
+C: Caqass                    c.dat
+D: Deqos                     d.dat
+E: Equie                     e.dat
+F: Feqav                     f.dat
+G: Gavaq                     g.dat
+H: Hoqaz                     h.dat
+I: Iquinnas                  i.dat
+J: Jaqwa                     j.dat
+K: Kalkasq                   k.dat
+L: Lamaq                     l.dat
+M: Minquil                   m.dat
+N: Nyqan                     n.dat
+O: Oqava                     o.dat
+P: Paqaq                     p.dat
+
+Bases:
+J = Lallamos Navy
+K = Lallamos Scout
+L = Lallamos Navy & Scout
+M = Lallamos Army
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+14 Lr = Lallamos Regency
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Aqav SECTOR: Quavos Sector
+#
+# Jump-routes
+#
+$0701 0738 0 -1 2
+$0608 0711 0 1 2
+$0608 0806 0 0 2
+$0806 0803 0 0 2
+$0803 0701 0 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0305 C301634-A    Ic Na Ni Va        402 Na
+Akaahm        0608 B636554-C  N Ni                 202 Na
+Dreaial       0701 E577852-4                       205 Na
+Cahnill       0803 D664335-6  S Lo Ni              605 Na
+Buurfa        0806 B576777-A  2 Ag              B  714 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Baqan SECTOR: Quavos Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           1001 C572656-9    Ni                 704 Na
+B-2           1309 C3578BB-4                       604 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Caqass SECTOR: Quavos Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1903 B427662-C  S Ni                 704 Na
+C-2           2303 C532587-9    Ni Po              910 Na
+C-3           2404 C684567-5    Ag Ni              703 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Deqos SECTOR: Quavos Sector
+#
+# Jump-routes
+#
+$3001 2640 0 -1 10
+$3001 0203 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2507 A445742-9    Ag                 222 Na
+D-2           2805 E8A8633-6    Fl Ni              214 Na
+D-3           2807 C428113-B  S Lo Ni              104 Na
+D-4           2910 E84A647-8    Ni Wa              105 Na
+Dieegga       3001 D649401-8    Ni                 804 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Equie SECTOR: Quavos Sector
+#
+# Jump-routes
+#
+$0717 0920 1 0 2
+$0717 0514 0 0 2
+$0514 0711 0 0 2
+$0711 0608 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Thuanna       0711 C447303-B    Lo Ni              201 Na
+Norath        0514 A200565-B  2 Ni Va              721 Na
+Etlamma       0717 C321595-B  S Ni Po              302 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Feqav SECTOR: Quavos Sector
+#
+# Jump-routes
+#
+$0920 1322 0 1 2
+$0920 0717 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Fulluanna     0920 C777530-8  S Ag Ni              404 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Gavaq SECTOR: Quavos Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hoqaz SECTOR: Quavos Sector
+#
+# Jump-routes
+#
+$3114 0211 1 0 10
+$3114 3217 0 0 10
+$3217 3019 0 0 10
+$3019 3023 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2515 B525457-B  N Ni                 504 Na
+Avkaan        3019 A687614-C  N Ag Ni              704 Na
+Hiutta        3114 C331998-8    Hi In Na Po        604 Na
+Ferokk        3217 B528655-B  N Ni                 822 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Iquinnas SECTOR: Quavos Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0228 A110A9B-E    Hi Na              522 Na
+I-2           0325 E874552-5    Ag Ni              204 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jaqwa SECTOR: Quavos Sector
+#
+# Jump-routes
+#
+$1322 1724 1 0 2
+$1322 0920 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0928 C2008CG-8  L Na Va              504 Lr
+J-2           1026 C746685-8  J Ag Ni              110 Lr
+J-3           1129 C300566-7  J Ni Va              800 Lr
+J-4           1322 B7B387A-B    Fl              A  220 Lr
+J-5           1523 C100200-A  K Lo Ni Va           120 Lr
+J-6           1630 C463410-9    Ni                 821 Lr
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kalkasq SECTOR: Quavos Sector
+#
+# Jump-routes
+#
+$2430 2729 1 0 2
+$2430 2129 0 0 2
+$2129 1827 0 0 2
+$1827 1724 0 0 2
+$1724 1322 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Oshsa         1724 C450326-5  K De Lo Ni Po        213 Lr
+Stikko        1827 C639654-A  J Ni                 803 Lr
+K-3           1928 X4556BD-0    Ag              R  210 Lr
+K-4           2024 C4369A6-7  M Hi In              111 Lr
+K-5           2129 C8A59AC-B  L Fl Hi              823 Lr
+K-6           2324 B737768-B                       420 Lr
+Karrgaf       2430 C548455-7    Ni                 421 Lr
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lamaq SECTOR: Quavos Sector
+#
+# Jump-routes
+#
+$3023 3019 0 -1 10
+$3023 2926 0 0 10
+$2926 2928 0 0 10
+$2928 2729 0 0 2
+$2729 2430 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Bannechia     2729 A72A657-B  J Ni Wa              404 Lr
+Chadag        2926 B546587-B  J Ag Ni              702 Lr
+Lallamos      2928 A424A9A-H  L Hi In Cx           121 Lr
+Liomme        3023 D351787-6  M Po                 924 Lr
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Minquil SECTOR: Quavos Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0132 C638877-8                    B  213 Na
+M-2           0136 E31346A-6    Ic Ni              223 Na
+M-3           0538 B537976-C    Hi In           B  703 Na
+M-4           0837 A556787-B    Ag                 104 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nyqan SECTOR: Quavos Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0932 C468355-7    Lo Ni              903 Lr
+N-2           1032 X57A667-2    Wa              R  501 Lr
+N-3           1332 E836695-3    Ni                 513 Lr
+N-4           1631 D445768-2    Ag                 904 Lr
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Oqava SECTOR: Quavos Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1831 B68568D-8  J Ag Ni Ri           702 Lr
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Paqaq SECTOR: Quavos Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2838 C541211-5  S Lo Ni Po           403 Na
+P-2           3133 C767345-8  S Lo Ni              402 Na
+P-3           3240 E568572-6    Ag Ni           B  104 Na
+

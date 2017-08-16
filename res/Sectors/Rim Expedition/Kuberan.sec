@@ -1,0 +1,383 @@
+Kuberan Sector
+
+A: Aburan                    a.dat
+B: Buranus                   b.dat
+C: Cuberann                  c.dat
+D: Dukeran                   d.dat
+E: Euburak                   e.dat
+F: Flukerab                  f.dat
+G: Ghuber                    g.dat
+H: Huberannis                h.dat
+I: Iberazz                   i.dat
+J: Jubertan                  j.dat
+K: Kubert                    k.dat
+L: Lujuran                   l.dat
+M: Mubera                    m.dat
+N: Nutrann                   n.dat
+O: Oburees                   o.dat
+P: Pibrannis                 p.dat
+
+Bases:
+A = Allax Military
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+14 Ac = Allax Commons
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Aburan SECTOR: Kuberan Sector
+#
+# Jump-routes
+#
+$0205 3203 -1 0 10
+$0205 0405 0 0 10
+$0405 0608 0 0 10
+$0608 0711 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0101 B9B7200-A    Fl Lo Ni        A  925 Na
+A-2           0107 C334224-8    Lo Ni              600 Na
+A-3           0204 A778477-B  N Ni              B  910 Na
+Vremiom       0205 C9A5144-A    Fl Lo Ni           101 Na
+A-5           0310 E466320-7    Lo Ni              300 Na
+Zukraal       0405 B875369-6  2 Lo Ni              403 Na
+A-7           0605 C455210-8    Lo Ni              403 Na
+Manarn        0608 B75A727-B    Wa                 714 Na
+A-9           0610 E66659C-6    Ag Ni              924 Na
+A-10          0707 B6A3875-A    Fl              B  413 Na
+A-11          0803 C655120-7  S Lo Ni              220 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Buranus SECTOR: Kuberan Sector
+#
+# Jump-routes
+$1104 1305 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           1101 C9A6525-7    Fl Ni              702 Na
+B-2           1104 C310515-7    Ni                 404 Na
+B-3           1107 B695633-6  N Ag Ni              412 Na
+B-4           1302 C999345-9  S Lo Ni              322 Na
+B-5           1305 A548AAA-C    Hi In              710 Na
+B-6           1306 C200789-5  S Na Va              405 Na
+B-7           1402 C66268C-4  S Ni Ri              103 Na
+B-8           1405 E77A646-4    Ni Wa              304 Na
+B-9           1501 B888587-B    Ag Ni              424 Na
+B-10          1506 D654768-3  S Ag                 123 Na
+B-11          1510 C440A63-A  S De Hi In Po        314 Na
+B-12          1609 C351897-9  S Po                 714 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Cuberann SECTOR: Kuberan Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1802 C000789-B  S As Na              103 Na
+C-2           1908 B644387-7    Lo Ni              603 Na
+C-3           2003 C789100-A    Lo Ni              205 Na
+C-4           2303 E000265-6    As Lo Ni           604 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Dukeran SECTOR: Kuberan Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2610 X558100-0    Lo              R  114 Na
+D-2           2703 D474631-6  S Ag Ni              714 Na
+D-3           2709 C100331-7  S Lo Ni Va           704 Na
+D-4           3008 C796553-7    Ag Ni              603 Na
+D-5           3206 C8A5435-8  S Fl Ni              800 Na
+D-6           3208 B663662-5  S Ni Ri              805 Na
+D-7           3209 C884466-8    Ni                 415 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Euburak SECTOR: Kuberan Sector
+#
+# Jump-routes
+#
+$0711 0608 0 -1 10
+$0711 1111 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0513 E120200-B    De Lo Ni Po        111 Na
+E-2           0514 E432456-7    Ni Po              602 Na
+E-3           0515 C779142-6  S Lo Ni              410 Na
+Calambri      0711 C879273-7  S Lo Ni           B  112 Na
+E-5           0712 C72778A-6  S                    103 Na
+E-6           0714 D6A38A8-2    Fl                 601 Na
+E-7           0717 B7B3867-7    Fl              A  400 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Flukerab SECTOR: Kuberan Sector
+#
+# Jump-routes
+$1311 1411 0 0
+$1311 1511 0 0
+$1411 1511 0 0
+#
+$1111 0711 -1 0 10
+$1111 1511 0 0 10
+$1511 1812 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0917 X425031-0    Lo              R  923 Na
+F-2           1014 B665335-6    Lo Ni              402 Na
+F-3           1017 C569642-9    Ni Ri              515 Na
+Hottatta      1111 B774767-6  N Ag                 202 Na
+F-5           1119 C6769DG-8  S Hi In              603 Na
+F-6           1311 B8A6322-A  S Fl Lo Ni           600 Na
+F-7           1313 C76A485-A  S Ni Wa              702 Na
+F-8           1411 C6A3333-7  S Fl Lo Ni           514 Na
+Mulattat      1511 B400588-D    Ni Va              203 Na
+F-10          1612 C87A020-9    Lo Ni Wa           814 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ghuber SECTOR: Kuberan Sector
+#
+# Jump-routes
+$2213 2313 0 0
+#
+$1812 1511 -1 0 10
+$1812 2015 0 0 10
+$2015 2117 0 0 10
+$2117 2419 0 0 10
+$2419 2222 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Gullarr       1812 C412413-8  S Ic Ni              414 Na
+G-2           1814 C1307CB-A  S De Na Po           314 Na
+Haffuin       2015 C864765-4  S Ag Ri              812 Na
+Mammagg       2117 D487520-5    Ag Ni              614 Na
+G-5           2213 C360785-8  S De Ri              123 Na
+G-6           2313 B120440-B  S De Ni Po           503 Na
+Dwellina      2419 CA88416-5    Ni                 613 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Huberannis SECTOR: Kuberan Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2813 C500635-5  S Na Ni Va           900 Na
+H-2           3019 C3469AB-9  S Hi In              314 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Iberazz SECTOR: Kuberan Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0222 X696632-0    Ag              R  504 Na
+I-2           0223 C653978-9    Hi Po           B  114 Na
+I-3           0323 D335869-3                       604 Na
+I-4           0325 B222361-D  N Lo Ni Po           704 Na
+I-5           0328 C4757AD-4    Ag                 804 Na
+I-6           0422 E8768CA-3                       810 Na
+I-7           0426 E311347-5    Ic Lo Ni           403 Na
+I-8           0623 E220645-5    De Na Ni Po        510 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jubertan SECTOR: Kuberan Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0922 C89A001-B    Lo Ni Wa           300 Na
+J-2           0926 CA9A253-7    Lo Ni Wa           403 Na
+J-3           1127 E87888B-2                       822 Na
+J-4           1225 C4779A8-7    Hi In              213 Na
+J-5           1422 X667552-4    Ag              R  111 Na
+J-6           1424 C510332-8    Lo Ni              921 Na
+J-7           1426 C9C8550-6  S Fl Ni           A  601 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kubert SECTOR: Kuberan Sector
+#
+# Jump-routes
+#
+$2222 2419 0 -1 10
+$2222 2226 0 0 10
+$2226 2330 0 0 10
+$2330 2533 1 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1828 C987555-8    Ag Ni              315 Na
+K-2           2030 C654468-8    Ni                 820 Na
+Stashag       2222 A647653-C    Ag Ni              604 Na
+Reazea        2226 E7A0400-5    De Ni              701 Na
+Avriol        2330 E304877-3    Ic Va           B  104 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lujuran SECTOR: Kuberan Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2624 B9C6624-B  S Fl Ni           A  303 Na
+L-2           2726 C222046-7    Lo Ni Po           500 Na
+L-3           2925 C848405-7    Ni                 804 Na
+L-4           3021 C9A4658-A    Fl Ni              901 Na
+L-5           3026 C334535-8  S Ni                 403 Na
+L-6           3128 B95A513-8  N Ni Wa              812 Na
+L-7           3225 E3376A6-3    Ni                 600 Na
+L-8           3230 CAC9505-7    Fl Ni           A  602 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Mubera SECTOR: Kuberan Sector
+#
+# Jump-routes
+#
+$0839 0802 0 1 2
+$0839 0538 0 0 2
+$0538 0238 0 0 2
+$0238 3036 -1 0 2
+$0839 0602 0 1 14
+$0839 1039 1 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0132 C888637-4  S Ag Ni              401 Na
+M-2           0231 C799300-B    Lo Ni              300 Na
+Mliarra       0238 CAC7000-9    Ba Fl Lo Ni     A  104 Na
+M-4           0239 B301799-B    Ic Na Va           114 Na
+M-5           0434 E5A1AC9-7    Fl Hi              120 Na
+Garrtok       0538 C311621-A    Ic Na Ni           714 Na
+M-7           0736 CA9A243-7  S Lo Ni Wa           204 Na
+Mawritt       0839 A6389AC-C  A Hi In              605 Ac
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nutrann SECTOR: Kuberan Sector
+#
+# Jump-routes
+#
+$1039 0839 -1 0 14
+$1039 1439 0 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0932 C3009EE-B    Hi Na Va           823 Na
+N-2           1033 CAD7627-8    Fl Ni              114 Na
+N-3           1039 B69A5AA-B  A Ni Wa              514 Ac
+N-4           1138 C100333-9    Lo Ni Va           404 Na
+N-5           1336 C79A245-B  S Lo Ni Wa           804 Na
+N-6           1436 C72A405-A    Ni Wa              903 Na
+N-7           1439 B546305-C    Lo Ni              203 Ac
+N-8           1533 C140400-9  S De Ni Po           504 Na
+N-9           1631 C357766-7  S Ag                 305 Na
+N-10          1632 B77657A-6    Ag Ni           B  602 Na
+N-11          1637 C552403-9  S Ni Po              400 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Oburees SECTOR: Kuberan Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1733 E9C4431-3    Fl Ni           A  614 Na
+O-2           1740 C735666-6    Ni                 204 Na
+O-3           1834 C433987-8  S Hi In Na Po        903 Na
+O-4           1840 E7859BA-5    Hi                 114 Na
+O-5           1934 D242999-8    Hi In Po           304 Na
+O-6           2132 C000ADC-D    As Hi Na           503 Na
+O-7           2432 C72A679-8  S Ni Wa           B  511 Na
+O-8           2440 EAD8330-6    Fl Lo Ni           404 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Pibrannis SECTOR: Kuberan Sector
+#
+# Jump-routes
+#
+$2533 2330 -1 -1 10
+$2533 2735 0 0 10
+$2735 2937 0 0 10
+$2937 3039 0 0 10
+$3039 3102 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2531 C55579B-7  S Ag                 724 Na
+Dhall         2533 C998369-4    Lo Ni              614 Na
+Sammoll       2735 D301511-5  S Ic Ni Va           801 Na
+Atioko        2937 D898475-5  S Ni              B  503 Na
+Kimalier      3039 C8A8497-8    Fl Ni              711 Na
+P-6           3236 D2508AE-4  S De Po              504 Na
+

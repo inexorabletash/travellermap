@@ -1,0 +1,337 @@
+Hiyukrill Sector
+
+A: Ahiyuk                    a.dat
+B: Bayuk                     b.dat
+C: Cukrill                   c.dat
+D: Dahiyui                   d.dat
+E: Ehuyuk                    e.dat
+F: Fuhukyu                   f.dat
+G: Ghuyukr                   g.dat
+H: Huykyu                    h.dat
+I: Ikrilli                   i.dat
+J: Jayukri                   j.dat
+K: Kyukyuk                   k.dat
+L: Lihiyui                   l.dat
+M: Miyukri                   m.dat
+N: Nikilli                   n.dat
+O: Oyukr                     o.dat
+P: Pikuyu                    p.dat
+
+Bases:
+M = Oadda Military
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+07 Na = Non-Aligned
+14 Ot = Oadda Territories
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ahiyuk SECTOR: Hiyukrill Sector
+#
+# Jump-routes
+#
+$0310 3209 -1 0 10
+$0310 0708 0 0 10
+$0708 0910 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Dasserk       0310 B330653-D    De Na Ni Po        222 Na
+A-2           0507 B776678-6  N Ag Ni           B  200 Na
+A-3           0602 C569220-7  S Lo Ni              904 Na
+Acliry        0708 X54459E-1    Ag              R  803 Na
+A-5           0804 B635110-8    Lo Ni              312 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Bayuk SECTOR: Hiyukrill Sector
+#
+# Jump-routes
+#
+$0910 0708 -1 0 10
+$0910 1312 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           0901 B300300-9    Lo Ni Va           304 Na
+B-2           0907 B489ADD-E    Hi                 213 Na
+B-3           0909 C899634-8    Ni                 500 Na
+Byiunta       0910 C431349-B    Lo Ni Po           802 Na
+B-5           1202 B320212-8  S De Lo Ni Po        103 Na
+B-6           1210 C445453-A    Ni                 605 Na
+B-7           1305 C659530-7    Ni                 303 Na
+B-8           1604 E549646-5    Ni                 705 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Cukrill SECTOR: Hiyukrill Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Dahiyui SECTOR: Hiyukrill Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2503 X8B8597-2    Fl              R  300 Na
+D-2           2506 EAA3675-4    Fl Ni           B  713 Na
+D-3           2610 C654558-A  S Ag Ni              503 Na
+D-4           3007 C100453-8    Ni Va              711 Na
+D-5           3103 C244652-7  S Ag Ni              503 Na
+D-6           3206 B362200-D    Lo Ni              924 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ehuyuk SECTOR: Hiyukrill Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0419 D464553-4  S Ag Ni              902 Na
+E-2           0620 D77648A-7    Ni                 822 Na
+E-3           0713 B469451-C    Ni                 802 Na
+E-4           0812 C896300-5  S Lo Ni              800 Na
+E-5           0814 C789543-8    Ni                 620 Na
+E-6           0817 B350435-8  S De Ni Po           204 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Fuhukyu SECTOR: Hiyukrill Sector
+#
+# Jump-routes
+#
+$1312 0910 0 -1 10
+$1312 1514 0 0 10
+$1514 1715 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           1016 B4207BB-7    De Na Po           102 Na
+F-2           1018 C88A300-9  S Lo Ni Wa           311 Na
+F-3           1113 E40048B-6    Ni Va              604 Na
+F-4           1218 D7B2544-7  S Fl Ni           A  300 Na
+Fleebbee      1312 C8A7669-9  S Fl Ni              501 Na
+Mommohy       1514 C446556-A    Ag Ni              111 Na
+F-7           1517 C320100-8    De Lo Ni Po        114 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ghuyukr SECTOR: Hiyukrill Sector
+#
+# Jump-routes
+#
+$1715 1514 -1 0 10
+$1715 2116 0 0 10
+$2116 2518 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Gehrigg       1715 C4465AE-8  S Ag Ni              503 Na
+Vlyryyc       2116 B270268-8    De Lo Ni           411 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Huykyu SECTOR: Hiyukrill Sector
+#
+# Jump-routes
+#
+$2518 2116 -1 0 10
+$2518 2818 0 0 10
+$2818 3021 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Cayyann       2518 C1009DF-6  S Hi Na Va           401 Na
+H-2           2614 E787101-7    Lo Ni              702 Na
+H-3           2713 B79359D-A    Ni                 121 Na
+H-4           2812 C674A86-7    Hi In              604 Na
+Hyllantha     2818 D410975-9    Hi Na           B  903 Na
+H-6           3012 B4579AB-A  S Hi                 203 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ikrilli SECTOR: Hiyukrill Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0126 C46699B-9  S Hi                 323 Na
+I-2           0128 E210220-6    Lo Ni              804 Na
+I-3           0222 C355669-6  S Ag Ni              701 Na
+I-4           0425 C737640-6    Ni                 204 Na
+I-5           0624 C897347-9    Lo Ni              400 Na
+I-6           0628 B561768-9    Ri                 210 Na
+I-7           0728 C340676-9    De Ni Po        B  804 Na
+I-8           0828 C422845-7  S Na Po              700 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jayukri SECTOR: Hiyukrill Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           1126 C756778-5    Ag              B  500 Na
+J-2           1323 C898786-5  S Ag                 814 Na
+J-3           1325 B858533-B    Ag Ni              103 Na
+J-4           1622 C464658-5    Ag Ni Ri           205 Na
+J-5           1624 C445324-6  S Lo Ni              103 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kyukyuk SECTOR: Hiyukrill Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1726 A477157-B    Lo Ni              804 Na
+K-2           2129 C443558-6    Ni Po              910 Na
+K-3           2130 C4325A7-7    Ni Po              114 Na
+K-4           2227 C580114-4    De Lo Ni           504 Na
+K-5           2325 C241421-7    Ni Po              704 Na
+K-6           2328 D120854-9  S De Na Po           600 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lihiyui SECTOR: Hiyukrill Sector
+#
+# Jump-routes
+#
+$3021 2818 0 -1 10
+$3021 3124 0 0 10
+$3124 3027 0 0 10
+$3027 2830 0 0 10
+$2830 2834 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2627 C100674-7    Na Ni Va        B  602 Na
+L-2           2628 C666630-8    Ag Ni              501 Na
+L-3           2828 C529346-6    Lo Ni              101 Na
+Ivianny       2830 E556110-2    Lo Ni              712 Na
+Larylar       3021 C563686-8    Ni Ri              921 Ot
+Ghehrena      3027 B643866-9  M Po                 603 Ot
+Oadda         3124 A428324-F    Lo Ni              601 Ot
+L-8           3130 B573335-7    Lo Ni              804 Ot
+L-9           3229 C785677-3    Ag Ni Ri        B  102 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Miyukri SECTOR: Hiyukrill Sector
+#
+# Jump-routes
+#
+$0238 0102 0 1 2
+$0238 0338 0 0 2
+$0338 0434 0 0 2
+$0434 0433 0 0 2
+$0433 0131 0 0 2
+$0131 2932 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Akkagh        0131 E261686-3    Ni Ri              503 Na
+Mooth         0238 C77A851-A  S Wa                 514 Na
+Collina       0338 C364567-6  S Ag Ni              405 Na
+Olkronth      0433 C523300-9    Lo Ni Po           403 Na
+Mahgra        0434 D435244-8  S Lo Ni              814 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nikilli SECTOR: Hiyukrill Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           1038 D96A766-5  S Ri Wa              815 Na
+N-2           1235 C4347A9-5  S                    323 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Oyukr SECTOR: Hiyukrill Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1737 D655765-2  S Ag                 902 Na
+O-2           1840 A53599D-B    Hi In              805 Na
+O-3           1940 E535630-4    Ni                 321 Na
+O-4           2136 E655557-7    Ag Ni              802 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Pikuyu SECTOR: Hiyukrill Sector
+#
+# Jump-routes
+#
+$2834 2830 0 -1 10
+$2834 2938 0 0 10
+$2938 3001 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2533 C542658-4  S Ni Po              804 Na
+P-2           2638 E785343-6    Lo Ni              814 Na
+Dreshikla     2834 E264201-6    Lo Ni              302 Na
+Tarranki      2938 BAF5687-7    Fl Ni              612 Na
+

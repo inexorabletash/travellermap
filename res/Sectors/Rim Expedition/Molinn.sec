@@ -1,0 +1,400 @@
+Molinn Sector
+
+A: Amoli                     a.dat
+B: Bramol                    b.dat
+C: Camolinn                  c.dat
+D: Dramolina                 d.dat
+E: Emolin                    e.dat
+F: Flomoli                   f.dat
+G: Ghurmo                    g.dat
+H: Himol                     h.dat
+I: Innamol                   i.dat
+J: Jinnamm                   j.dat
+K: Klimoli                   k.dat
+L: Lamolinn                  l.dat
+M: Moli                      m.dat
+N: Namolina                  n.dat
+O: Olmolinn                  o.dat
+P: Phormol                   p.dat
+
+Bases:
+D = Drakas Navy
+E = Drakas Scout
+N = Navy
+O = Oloom Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+12 Dl = Drakas League
+07 Na = Non-Aligned
+14 Od = Oloom Dynasty
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Amoli SECTOR: Molinn Sector
+#
+# Jump-routes
+#
+$0205 3203 -1 0 10
+$0205 0309 0 0 10
+$0309 0512 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Marcasio      0205 B49565A-9  N Ag Ni              401 Na
+Attrat        0309 C6745A7-9  S Ag Ni              523 Na
+A-3           0401 C536000-8  S Ba Lo Ni           110 Na
+A-4           0402 C360545-7  S De Ni              402 Na
+A-5           0503 C374430-7    Ni                 403 Na
+A-6           0508 B537947-D    Hi In              205 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Bramol SECTOR: Molinn Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           1201 C6A0534-8    De Ni              704 Na
+B-2           1207 C752642-4    Ni Po              301 Na
+B-3           1309 D443459-6    Ni Po              120 Na
+B-4           1405 C657AAD-A  S Hi                 704 Na
+B-5           1506 E501362-5    Ic Lo Ni Va        903 Na
+B-6           1610 A524576-C    Ni              B  602 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Camolinn SECTOR: Molinn Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1801 D424699-6  S Ni                 113 Na
+C-2           1805 C320588-9  S De Ni Po           604 Na
+C-3           2106 D4628CF-2  S                    810 Na
+C-4           2307 C446400-9    Ni                 603 Na
+C-5           2310 C300300-A    Lo Ni Va           513 Na
+C-6           2402 D88A37A-4  S Lo Ni Wa        B  210 Na
+C-7           2407 D999855-3  S                    400 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Dramolina SECTOR: Molinn Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2603 B200333-A    Lo Ni Va           314 Na
+D-2           2604 D5566AE-4  S Ag Ni              114 Na
+D-3           3002 B75A003-9  N Lo Ni Wa           402 Na
+D-4           3005 C8A1520-7    Fl Ni              712 Na
+D-5           3010 C695555-8    Ag Ni              224 Na
+D-6           3108 C430943-A    De Hi In Na Po     310 Na
+D-7           3208 C300789-9    Na Va              802 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Emolin SECTOR: Molinn Sector
+#
+# Jump-routes
+#
+$0512 0309 0 -1 10
+$0512 0715 0 0 10
+$0715 1017 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0113 C202223-7    Ic Lo Ni Va        704 Na
+E-2           0219 C331AAB-E    Hi In Na Po        623 Na
+Emman         0512 C4468AB-8  S                    903 Na
+E-4           0615 C510687-9  S Na Ni              103 Na
+E-5           0619 X536734-0                    R  123 Na
+Caeena        0715 C10088C-B  S Na Va              733 Na
+E-7           0720 B682032-5    Lo Ni              700 Na
+E-8           0812 C9D7544-7    Fl Ni              200 Na
+E-9           0819 D475302-4  S Lo Ni              114 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Flomoli SECTOR: Molinn Sector
+#
+# Jump-routes
+$0920 0821 -1 1
+#
+$1017 0715 -1 0 10
+$1017 1219 0 0 10
+$1219 1522 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0913 E227332-5    Lo Ni              404 Na
+F-2           0920 A2008BB-A    Na Va              302 Na
+F-3           1012 B7C636A-8  S Fl Lo Ni        A  513 Na
+Flarga        1017 C8C5A57-C    Fl Hi           A  701 Na
+F-5           1215 D330585-9  S De Ni Po           204 Na
+Nillana       1219 C526566-6  S Ni                 403 Na
+F-7           1319 C7A5514-8  S Fl Ni              904 Na
+F-8           1411 C888413-5    Ni                 904 Na
+F-9           1415 E526102-4    Lo Ni              400 Na
+F-10          1514 C9A2657-9    Fl Ni              600 Na
+F-11          1517 C246223-5    Lo Ni              300 Na
+F-12          1611 C243769-5    Po                 103 Na
+F-13          1616 B6737A6-A  N                    902 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ghurmo SECTOR: Molinn Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1816 C474310-6  S Lo Ni              503 Na
+G-2           1914 C410423-8    Ni                 124 Na
+G-3           2019 X556554-0    Ag              R  902 Na
+G-4           2213 A000777-E  2 As Na           B  424 Na
+G-5           2214 B55A476-B    Ni Wa           B  314 Na
+G-6           2220 C696657-6    Ag Ni              324 Na
+G-7           2420 D564975-3    Hi              B  832 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Himol SECTOR: Molinn Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2611 B644779-5    Ag              B  513 Na
+H-2           2914 A403720-D  S Ic Na Va           103 Na
+H-3           2919 C777420-4    Ni                 801 Na
+H-4           2920 C5A2596-7  S Fl Ni              923 Na
+H-5           3213 C343831-4  S Po                 904 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Innamol SECTOR: Molinn Sector
+#
+# Jump-routes
+$0525 0623 0 0
+$0525 0826 0 0
+$0821 0920 1 -1
+$0826 1025 1 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0124 C696453-6    Ni                 103 Na
+I-2           0525 A615873-D    Ic              B  300 Na
+I-3           0623 A8C4887-A    Fl              A  700 Na
+I-4           0821 C75A442-8    Ni Wa              825 Na
+I-5           0826 A877641-9  N Ag Ni              324 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jinnamm SECTOR: Molinn Sector
+#
+# Jump-routes
+$1025 0826 -1 0
+#
+$1522 1219 0 -1 10
+$1522 1923 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0921 B9D7388-B  N Fl Lo Ni           401 Na
+J-2           1024 B200475-9    Ni Va           B  912 Na
+J-3           1025 A73678B-C                       234 Na
+J-4           1027 C8D1432-7  S Fl Ni              604 Na
+J-5           1221 C678889-8                       702 Na
+J-6           1225 E200ABE-8    Hi Na Va           914 Na
+J-7           1230 E7657AA-6    Ag                 800 Na
+J-8           1326 D5A338B-8  S Fl Lo Ni           323 Na
+J-9           1429 D547487-4  S Ni                 200 Na
+Jambar        1522 B9A4723-6    Fl                 503 Na
+J-11          1524 C9C4673-4  S Fl Ni           A  604 Na
+J-12          1625 C100A9A-B    Hi Na Va           100 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Klimoli SECTOR: Molinn Sector
+#
+# Jump-routes
+#
+$1923 1522 -1 0 10
+$1923 2225 0 0 10
+$2225 2329 0 0 10
+$2329 2431 0 1 10
+$1730 1732 0 1 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1730 C465400-8  O Ni                 405 Od
+K-2           1821 B72A886-D  2 Wa                 323 Na
+Ashille       1923 C000412-C    As Ni              401 Na
+K-4           1928 E324300-A    Lo Ni              523 Na
+K-5           2221 C210354-8  S Lo Ni              604 Na
+Chinore       2225 C435887-9                       411 Na
+K-7           2328 E20089D-3    Na Va              414 Na
+Oblorn        2329 C723666-4  S Na Ni Po           301 Na
+K-9           2422 E679013-6    Lo Ni              120 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lamolinn SECTOR: Molinn Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2525 C55678B-6  S Ag                 503 Na
+L-2           2624 E585776-3    Ag Ri           B  214 Na
+L-3           2721 D645000-6  S Ba Lo Ni           515 Na
+L-4           2724 B875599-6  2 Ag Ni              415 Na
+L-5           2925 C210977-A    Hi Na           B  420 Na
+L-6           3125 B321649-7  N Na Ni Po           503 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Moli SECTOR: Molinn Sector
+#
+# Jump-routes
+$0140 0239 0 0
+#
+$0239 0501 0 1 2
+$0239 3236 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0131 B84797A-7  S Hi In           B  405 Na
+M-2           0137 D685747-2  S Ag Ri              702 Na
+M-3           0140 A8A7755-9  2 Fl                 602 Na
+Ebbieri       0239 A210599-D  S Ni                 604 Na
+M-5           0335 B120544-A  S De Ni Po           124 Na
+M-6           0534 C546265-9    Lo Ni              323 Na
+M-7           0536 E89A666-7    Ni Wa              203 Na
+M-8           0636 C98A37A-A    Lo Ni Wa        B  503 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Namolina SECTOR: Molinn Sector
+#
+# Jump-routes
+#
+$1333 1732 1 0 14
+$1333 1335 0 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0931 C7A1323-A  S Fl Lo Ni           602 Na
+N-2           0934 C421151-B    Lo Ni Po           900 Na
+N-3           0936 C150310-A    De Lo Ni Po        810 Na
+N-4           1040 E547685-4    Ag Ni              903 Na
+N-5           1139 B895A88-B    Hi In              514 Na
+N-6           1238 E414522-6    Ic Ni              413 Na
+N-7           1333 B120348-C    De Lo Ni Po        110 Od
+N-8           1335 C547654-6    Ag Ni              324 Od
+N-9           1340 A9B2441-B    Fl Ni           A  403 Na
+N-10          1635 C574622-5    Ag Ni              214 Od
+N-11          1637 E554654-5    Ag Ni              900 Od
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Olmolinn SECTOR: Molinn Sector
+#
+# Jump-routes
+#
+$2431 2329 0 -1 10
+$2431 2535 1 0 10
+$1732 1935 0 0 14
+$1732 1333 -1 0 14
+$1732 1730 0 -1 14
+$1732 2032 0 0 14
+$1935 1738 0 0 14
+$1738 1701 0 1 14
+$2032 2232 0 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Oloom         1732 A433556-G  O Ni Po Cx           214 Od
+O-2           1738 B76598A-C  O Hi                 113 Od
+O-3           1839 E435544-7    Ni                 414 Od
+O-4           1933 E79A99A-5    Hi In Wa           324 Od
+O-5           1935 B597000-7    Ba Lo Ni           521 Od
+O-6           2032 C456648-7    Ag Ni              610 Od
+O-7           2135 C8C08CF-9    De              A  805 Na
+O-8           2137 E7B6323-6    Fl Lo Ni        A  404 Na
+O-9           2140 C351577-5    Ni Po           B  514 Na
+O-10          2232 C300302-A    Lo Ni Va           305 Od
+Ocrak         2431 CAC1303-B  S Fl Lo Ni        A  321 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Phormol SECTOR: Molinn Sector
+#
+# Jump-routes
+#
+$2535 2431 -1 0 10
+$2535 2539 0 0 10
+$2539 2540 0 0 10
+$2540 2403 -1 1 10
+$2540 2504 0 1 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Prmati        2535 XA99565-1                    R  504 Na
+Artinna       2539 C35578D-6    Ag                 722 Dl     m
+Jakkra        2540 C250333-8    De Lo Ni Po        403 Dl
+P-4           2631 B544651-B    Ag Ni              404 Na
+P-5           2831 E9D2110-5    Fl Lo Ni           325 Na
+P-6           2933 C33646A-6    Ni                 420 Na
+P-7           3133 D77A677-7  S Ni Wa           B  400 Na
+P-8           3137 C643300-8    Lo Ni Po           503 Na
+

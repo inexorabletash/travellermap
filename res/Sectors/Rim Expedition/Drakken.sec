@@ -1,0 +1,828 @@
+Drakken
+
+A: Akke                      a.dat
+B: Brakkez                   b.dat
+C: Cikken                    c.dat
+D: Drakka                    d.dat
+E: Ekkur                     e.dat
+F: Flokkam                   f.dat
+G: Ghorkk                    g.dat
+H: Hakken                    h.dat
+I: Irakkom                   i.dat
+J: Jekkem                    j.dat
+K: Klokken                   k.dat
+L: Lotrakk                   l.dat
+M: Mukkur                    m.dat
+N: Nidekker                  n.dat
+O: Okken                     o.dat
+P: Pakks                     p.dat
+
+Bases:
+N = Navy
+S = Scout
+2 = Navy & Scout
+L = Federation Navy Base
+E = Fed. Embassy Center
+M = Fed. Military Base
+F = Fed. Military&Navy Base
+  = None
+
+Allegiance:
+09 Hv = Hive Federation 
+07 Na = Non-Aligned
+08 Un = Unpopulated
+06 CH = Hiver Client State
+04 H1 = Hiver Client/Component
+08    = Unknown
+
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+Leroy Guatney........................... For his Quadrant IV dot map.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Akke SECTOR: Drakken
+#
+#
+# Hiver Government Codes
+#
+# Codes 0,1,2,6, and the following are specifically used by Hiver's.
+# S Sept. Governing committee of seven nest leaders.
+# T Unsupervised Anarchy. Individual agreements between all nests.
+# U Supervised Anarchy. Individual agreements between all nests.
+# W Committee. Governing committee of nest leaders.
+# 
+# Jump-routes
+#
+$0407 0411 0 1 2
+$0407 0304 0 0 2
+$0304 0240 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+0106          0106 E448AW2-7    Hi In              924 Hv
+0203          0203 B89A8S3-8  L Wa                 314 Hv
+0207          0207 EAA8305-3    Fl Lo Ni           702 Hv
+0302          0302 B401522-9  M Ic Ni Va           702 Hv
+Yahhzima      0304 E6B06S6-4    De Ni           A  204 Hv
+0305          0305 E510321-8    Lo Ni              304 Hv
+0306          0306 E7877T1-2    Ag Ri              613 Hv
+0307          0307 E628211-5    Lo Ni              812 Hv
+0308          0308 E888663-5    Ag Ni              212 Hv
+0310          0310 E8957S4-1    Ag                 411 Hv
+0405          0405 E471313-8    Lo Ni              723 Hv
+Alzhiiz       0407 E667521-2    Ag Ni              404 Hv
+0408          0408 D375564-5  M Ag Ni              100 Hv
+0410          0410 D4457S5-6  M Ag                 710 Hv
+0509          0509 E2628S6-2                       305 Hv
+0602          0602 D1407S3-4  M De Po              414 Hv
+0605          0605 B669526-7    Ni                 313 Hv
+0610          0610 E578661-3    Ag Ni              200 Hv
+0702          0702 D2109U2-7  M Hi Na              102 Hv
+0703          0703 A4108T1-F  E Na Va              704 Hv
+0704          0704 D242511-7  M Ni Po              903 Hv
+0708          0708 B581522-8    Ni                 302 Hv
+0710          0710 E432411-5    Ni Po              520 Hv
+0801          0801 C84A9T4-8    Hi In Wa           123 Hv
+0809          0809 E7C0205-6    De Lo Ni        A  801 Hv
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Brakkez SECTOR: Drakken
+#
+#
+# Hiver Government Codes
+#
+# Codes 0,1,2,6, and the following are specifically used by Hiver's.
+# S Sept. Governing committee of seven nest leaders.
+# T Unsupervised Anarchy. Individual agreements between all nests.
+# U Supervised Anarchy. Individual agreements between all nests.
+# W Committee. Governing committee of nest leaders.
+# 
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+0902          0902 A773464-A  L Ni                 504 Hv
+0906          0906 A798662-9  M Ag Ni              203 Hv
+0910          0910 A665521-B  L Ag Ni              704 Hv
+1001          1001 A879203-D  L Lo Ni              801 Hv
+1002          1002 A76A311-F  L Lo Ni Wa           103 Hv
+1004          1004 A310104-B    Lo Ni              403 Hv
+1104          1104 BABA564-A  L Fl Ni Wa        A  220 Hv
+1105          1105 A663216-9  L Lo Ni              813 Hv
+1106          1106 A555325-A  L Lo Ni              104 Hv
+1108          1108 B5366S1-7  L Ni                 614 Hv
+1207          1207 X6766S4-0    Ag Ni           R  605 Hv
+1208          1208 A664522-C    Ag Ni              800 Hv
+1209          1209 A565623-D    Ag Ni Ri           104 Hv
+1301          1301 C223563-A    Ni Po              303 Hv
+1306          1306 X226AW5-7    Hi In           R  902 Hv
+1308          1308 E3568T3-7                       303 Hv
+1402          1402 C9B56S6-6    Fl Ni           A  503 Hv
+1405          1405 X210324-1    Lo Ni           R  501 Hv
+1406          1406 X3006S1-2    Na Ni Va        R  400 Hv
+1409          1409 C839462-7  M Ni                 401 Hv
+1501          1501 C674101-7    Lo Ni              904 Hv
+1502          1502 C6777S4-4  M Ag                 702 Hv
+1505          1505 XAC7AU5-3    Fl Hi           R  124 Hv
+1506          1506 X979213-4    Lo Ni           R  220 Hv
+1509          1509 C6A48S1-4    Fl                 703 Hv
+1603          1603 A67AAT6-F  L Hi In Wa           903 Hv
+1606          1606 C6465S5-8  M Ag Ni              703 Hv
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Cikken SECTOR: Drakken
+#
+#
+# Hiver Government Codes
+#
+# Codes 0,1,2,6, and the following are specifically used by Hiver's.
+# S Sept. Governing committee of seven nest leaders.
+# T Unsupervised Anarchy. Individual agreements between all nests.
+# U Supervised Anarchy. Individual agreements between all nests.
+# W Committee. Governing committee of nest leaders.
+# 
+# Jump-routes
+#
+$2302 2238 0 -1 10
+$2302 2504 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+1705          1705 X302411-4    Ic Ni Va        R  402 Hv
+1707          1707 X233312-4    Lo Ni Po        R  922 Hv
+1709          1709 X252525-4    Ni Po           R  634 Hv
+1710          1710 X649103-3    Lo Ni           R  314 Hv
+1805          1805 C547522-7    Ag Ni              604 Hv
+1806          1806 C768301-A    Lo Ni              901 Hv
+1809          1809 C6439S5-6  M Hi In Po           213 Hv
+1902          1902 C230211-B  M De Lo Ni Po        814 Hv
+1906          1906 C887521-4  M Ag Ni              605 Hv
+1907          1907 C447306-8  M Lo Ni              102 Hv
+1910          1910 C6899S4-8    Hi                 305 Hv
+2001          2001 C9C2312-8    Fl Lo Ni        A  122 Hv
+2003          2003 C543422-7  M Ni Po              513 Hv
+2008          2008 C3636S1-5    Ni Ri              205 Hv
+2102          2102 D3108T3-8  M Na                 202 Hv
+2104          2104 D237764-8                       715 Hv
+2105          2105 D100325-6  M Lo Ni Va           634 Hv
+2108          2108 C865104-7    Lo Ni              400 Hv
+2109          2109 D474562-9  M Ag Ni              810 Hv
+2110          2110 C3026S6-5    Ic Na Ni Va        104 Hv
+2201          2201 D898312-4    Lo Ni              612 Hv
+2203          2203 D799AW1-9  M Hi In              804 Hv
+2206          2206 B627401-9  L Ni                 500 Hv
+2301          2301 AAA7102-A    Fl Lo Ni           303 Hv
+Freedle       2302 A658414-9  L Ni                 424 Hv
+2304          2304 B471662-B  F Ni                 120 Hv
+2306          2306 B1309S3-B  L De Hi In Na Po     303 Hv
+2402          2402 A510201-A  L Lo Ni              712 Hv
+2404          2404 A868204-C  M Lo Ni              713 Hv
+2408          2408 E86A8S6-6    Ri Wa              624 Hv
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Drakka SECTOR: Drakken
+#
+#
+# Hiver Government Codes
+#
+# Codes 0,1,2,6, and the following are specifically used by Hiver's.
+# S Sept. Governing committee of seven nest leaders.
+# T Unsupervised Anarchy. Individual agreements between all nests.
+# U Supervised Anarchy. Individual agreements between all nests.
+# W Committee. Governing committee of nest leaders.
+# 
+# Jump-routes
+#
+$2504 2302 -1 0 10
+$2504 2607 0 0 10
+$2607 2711 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Sommorra      2504 B7A6421-9    Fl Ni              802 Hv
+2509          2509 A5756S6-7    Ag Ni              404 Hv
+2510          2510 A795462-C    Ni                 703 Hv
+2603          2603 B9C39T1-D  L Fl Hi           A  404 Hv
+2605          2605 C4437S4-8    Po                 824 Hv
+Hughees       2607 A445864-D                       103 Hv
+2701          2701 B3369T2-9    Hi In              433 Hv
+2703          2703 B555412-B  M Ni                 810 Hv
+2707          2707 C000421-7    As Ni              213 Hv
+2708          2708 C7578T5-5                       623 Hv
+2710          2710 C202324-9  M Ic Lo Ni Va        820 Hv
+2802          2802 B969203-C    Lo Ni              200 Hv
+2803          2803 B3655U6-8    Ag Ni              112 Hv
+2805          2805 E5107S1-6    Na                 222 Hv
+2902          2902 B573664-B  F Ni                 500 Hv
+2903          2903 B744762-A  M Ag                 714 Hv
+2907          2907 D445001-6  M Lo Ni              702 Hv
+2909          2909 D759563-8  M Ni                 502 Hv
+3002          3002 B677664-A  L Ag Ni              303 Hv
+3005          3005 E798522-2    Ag Ni              624 Hv
+3008          3008 D2004U4-8  M Ni Va              303 Hv
+3101          3101 B7578S4-5                       904 Hv
+3103          3103 C8986S5-7    Ag Ni              602 Hv
+3108          3108 D876005-2  M Lo Ni              701 Hv
+3110          3110 D666201-6  M Lo Ni              405 Hv
+3201          3201 C100521-B  M Ni Va              200 Hv
+3208          3208 D768661-3    Ag Ni              924 Hv
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ekkur SECTOR: Drakken
+#
+#
+# Hiver Government Codes
+#
+# Codes 0,1,2,6, and the following are specifically used by Hiver's.
+# S Sept. Governing committee of seven nest leaders.
+# T Unsupervised Anarchy. Individual agreements between all nests.
+# U Supervised Anarchy. Individual agreements between all nests.
+# W Committee. Governing committee of nest leaders.
+# 
+# Jump-routes
+#
+$0713 1014 1 0 2
+$0713 0411 0 0 2
+$0411 0407 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+0111          0111 B200642-7    Na Ni Va           213 Hv
+0113          0113 B481421-A    Ni                 613 Hv
+0117          0117 A445201-C    Lo Ni              301 Hv
+0212          0212 B310405-C  F Ni                 825 Hv
+0214          0214 C6566S3-5    Ag Ni              503 Hv
+0217          0217 A848521-9  L Ag Ni              204 Hv
+0220          0220 A000422-C    As Ni              700 Hv
+0312          0312 C588204-9  M Lo Ni              212 Hv
+0315          0315 C200511-6  M Ni Va              122 Hv
+0318          0318 A652521-B  F Ni Po              405 Hv
+Ehzzahn       0411 B410303-9    Lo Ni              404 Hv
+0414          0414 C669105-A  M Lo Ni              722 Hv
+0418          0418 A300621-B  L Na Ni Va           824 Hv
+0511          0511 C100102-A    Lo Ni Va           703 Hv
+0512          0512 C656423-9  M Ni                 620 Hv
+0516          0516 C130416-C  M De Ni Po           105 Hv
+0518          0518 A243764-C    Po                 103 Hv
+0611          0611 C0008T1-A  M As Na              900 Hv
+0612          0612 C8758S5-2                       900 Hv
+0615          0615 C2009T3-A    Hi Na Va           903 Hv
+0618          0618 A400514-A    Ni Va              413 Hv
+0619          0619 D130562-8  M De Ni Po           504 Hv
+0620          0620 D000612-8  M As Na Ni           713 Hv
+0711          0711 C8466S1-3    Ag Ni              310 Hv
+Fahzha        0713 C8C4201-8    Fl Lo Ni        A  203 Hv
+0818          0818 D796AU6-7    Hi In              300 Hv
+0820          0820 D844422-4  M Ni                 123 Hv
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Flokkam SECTOR: Drakken
+#
+#
+# Hiver Government Codes
+#
+# Codes 0,1,2,6, and the following are specifically used by Hiver's.
+# S Sept. Governing committee of seven nest leaders.
+# T Unsupervised Anarchy. Individual agreements between all nests.
+# U Supervised Anarchy. Individual agreements between all nests.
+# W Committee. Governing committee of nest leaders.
+# 
+# Jump-routes
+#
+$1519 1820 1 0 2
+$1519 1216 0 0 2
+$1216 1014 0 0 2
+$1014 0713 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+0912          0912 B511421-C    Ic Ni              201 Hv
+0919          0919 C000661-6    As Na Ni           803 Hv
+0920          0920 B436212-B  M Lo Ni              513 Hv
+1011          1011 C785204-6    Lo Ni              504 Hv
+Dlizlaz       1014 C252302-A  M Lo Ni Po           503 Hv
+1015          1015 C201413-B  M Ic Ni Va           702 Hv
+1016          1016 C4658S6-6    Ri                 124 Hv
+1113          1113 C5428S5-5    Po                 531 Hv
+1115          1115 C000204-8  M As Lo Ni           302 Hv
+1212          1212 C8888S1-8    Ri                 512 Hv
+Flzzahk       1216 D545AW5-9  M Hi In              322 Hv
+1218          1218 D2607S3-6  M De Ri              304 Hv
+1312          1312 C8C2662-6  M Fl Ni           A  604 Hv
+1318          1318 D410324-8  M Lo Ni              803 Hv
+1416          1416 D8368S2-2  M                    625 Hv
+1512          1512 C574301-8  M Lo Ni              712 Hv
+1513          1513 C794763-8    Ag                 205 Hv
+1515          1515 C626206-7    Lo Ni              304 Hv
+1516          1516 C2008S1-A  M Na Va              604 Hv
+1517          1517 C7B5312-5    Fl Lo Ni        A  803 Hv
+Razzahk       1519 D523563-9    Ni Po              503 Hv
+1617          1617 C442311-9    Lo Ni Po           804 Hv
+1618          1618 C335402-C    Ni                 103 Hv
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ghorkk SECTOR: Drakken
+#
+#
+# Hiver Government Codes
+#
+# Codes 0,1,2,6, and the following are specifically used by Hiver's.
+# S Sept. Governing committee of seven nest leaders.
+# T Unsupervised Anarchy. Individual agreements between all nests.
+# U Supervised Anarchy. Individual agreements between all nests.
+# W Committee. Governing committee of nest leaders.
+# 
+# Jump-routes
+#
+$1820 2022 0 1 2
+$1820 1519 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+1711          1711 D694662-2    Ag Ni              203 Hv
+1715          1715 E6347S3-3                       312 Hv
+1716          1716 E300564-7    Ni Va              604 Hv
+1717          1717 E2416S4-6    Ni Po              804 Hv
+1811          1811 D244421-8    Ni                 503 Hv
+1813          1813 E69AAT2-A    Hi In Wa           402 Hv
+1815          1815 E957201-7    Lo Ni              523 Hv
+1816          1816 E87A561-6    Ni Wa              600 Hv
+1817          1817 E484323-7    Lo Ni              900 Hv
+1818          1818 E431461-9    Ni Po              214 Hv
+Mazhuan       1820 E697204-5    Lo Ni              514 Hv
+1912          1912 D796424-8    Ni                 704 Hv
+1914          1914 E401AU6-7    Hi Ic Na Va        302 Hv
+1917          1917 E565303-7    Lo Ni              904 Hv
+2012          2012 D340201-4  M De Lo Ni Po        111 Hv
+2013          2013 E2648S5-7    Ri                 603 Hv
+2014          2014 E4246S2-5    Ni                 903 Hv
+2018          2018 B423201-9    Lo Ni Po           113 Hv
+2020          2020 C557402-4    Ni                 522 Hv
+2112          2112 D300304-6  M Lo Ni Va           303 Hv
+2114          2114 D483411-7    Ni                 114 Hv
+2115          2115 E682205-2    Lo Ni              405 Hv
+2116          2116 E667562-6    Ag Ni              503 Hv
+2119          2119 B87A426-B    Ni Wa              733 Hv
+2120          2120 B877421-8  L Ni                 511 Hv
+2315          2315 C777411-9    Ni                 704 Hv
+2319          2319 C210103-7    Lo Ni              603 Hv
+2411          2411 D444402-3  M Ni                 502 Hv
+2412          2412 D440412-5  M De Ni Po           704 Hv
+2416          2416 C596421-5  M Ni                 504 Hv
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hakken SECTOR: Drakken
+#
+#
+# Hiver Government Codes
+#
+# Codes 0,1,2,6, and the following are specifically used by Hiver's.
+# S Sept. Governing committee of seven nest leaders.
+# T Unsupervised Anarchy. Individual agreements between all nests.
+# U Supervised Anarchy. Individual agreements between all nests.
+# W Committee. Governing committee of nest leaders.
+# 
+# Jump-routes
+#
+$2711 2607 0 -1 10
+$2711 2814 0 0 10
+$2814 3017 0 0 10
+$3017 3220 0 0 10
+$3220 3224 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+2511          2511 B6238S2-6    Na Po              820 Hv
+2512          2512 A000566-C  F As Ni              113 Hv
+2613          2613 A86A214-C    Lo Ni Wa           223 Hv
+2616          2616 A400401-C    Ni Va              600 Hv
+2619          2619 B696515-8    Ag Ni              102 Hv
+Ruulis        2711 A9D4822-9    Fl                 912 Hv
+2712          2712 A769421-D  L Ni                 600 Hv
+2715          2715 E300623-5    Na Ni Va           624 Hv
+Ammazza       2814 E7B4406-5    Fl Ni           A  913 Hv
+2816          2816 E4108S6-4    Na                 103 Hv
+2916          2916 B577663-A    Ag Ni              702 Hv
+2917          2917 B000521-D  M As Ni              505 Hv
+2919          2919 C658AT5-A    Hi                 313 Hv
+3014          3014 B100AU3-F    Hi Na Va           310 Hv
+3015          3015 B797401-8    Ni                 105 Hv
+Waienna       3017 B8C3642-9    Fl Ni           A  703 Hv
+3018          3018 B427403-E    Ni                 103 Hv
+3115          3115 C2008S1-5    Na Va              613 Hv
+3116          3116 C482621-7    Ni Ri              122 Hv
+3212          3212 E0007S4-8    As Na              610 Hv
+3218          3218 E9A3303-9    Fl Lo Ni           702 Hv
+Armaah        3220 E411AT4-C    Hi Ic Na           204 Hv
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Irakkom SECTOR: Drakken
+#
+#
+# Hiver Government Codes
+#
+# Codes 0,1,2,6, and the following are specifically used by Hiver's.
+# S Sept. Governing committee of seven nest leaders.
+# T Unsupervised Anarchy. Individual agreements between all nests.
+# U Supervised Anarchy. Individual agreements between all nests.
+# W Committee. Governing committee of nest leaders.
+# 
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+0125          0125 C645521-5  M Ag Ni              414 Hv
+0130          0130 C200511-A  M Ni Va              404 Hv
+0223          0223 B326204-D  F Lo Ni              203 Hv
+0227          0227 C563512-5    Ni                 413 Hv
+0324          0324 B4347S5-B  F                    914 Hv
+0328          0328 B425465-9    Ni                 904 Hv
+0421          0421 B988762-8    Ag Ri              500 Hv
+0423          0423 B220AT3-C  L De Hi In Na Po     602 Hv
+0427          0427 B5439S6-C  L Hi In Po           712 Hv
+0522          0522 B6366S4-A  M Ni                 313 Hv
+0524          0524 B747564-8  L Ag Ni              820 Hv
+0526          0526 B434525-8    Ni                 102 Hv
+0530          0530 B643301-9    Lo Ni Po           404 Hv
+0622          0622 A455513-9    Ag Ni              103 Hv
+0628          0628 A353624-A    Ni Po              424 Hv
+0630          0630 A302621-A    Ic Na Ni Va        213 Hv
+0724          0724 E5678S2-3    Ri                 810 Hv
+0727          0727 B565103-7  F Lo Ni              602 Hv
+0822          0822 E98A104-8    Lo Ni Wa           612 Hv
+0824          0824 E536521-8    Ni                 904 Hv
+0827          0827 E4326S5-3    Na Ni Po           200 Hv
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jekkem SECTOR: Drakken
+#
+#
+# Hiver Government Codes
+#
+# Codes 0,1,2,6, and the following are specifically used by Hiver's.
+# S Sept. Governing committee of seven nest leaders.
+# T Unsupervised Anarchy. Individual agreements between all nests.
+# U Supervised Anarchy. Individual agreements between all nests.
+# W Committee. Governing committee of nest leaders.
+# 
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+0921          0921 A7569T3-E    Hi                 802 Hv
+0925          0925 A547521-B    Ag Ni              503 Hv
+0926          0926 A000511-C  L As Ni              303 Hv
+0927          0927 A5667S4-B    Ag Ri              204 Hv
+0928          0928 A3009T3-D  L Hi Na Va           801 Hv
+0929          0929 A493662-C  L Ni                 702 Hv
+0930          0930 A222202-C    Lo Ni Po           405 Hv
+1021          1021 A658415-9  F Ni                 104 Hv
+1023          1023 A997401-D  L Ni                 222 Hv
+1124          1124 A5A0204-9    De Lo Ni           520 Hv
+1125          1125 A401563-E  L Ic Ni Va           614 Hv
+1126          1126 A3676S6-D    Ag Ni Ri           820 Hv
+1128          1128 A7898S3-C  M Ri                 702 Hv
+1221          1221 B446405-8  F Ni                 102 Hv
+1226          1226 E895311-7    Lo Ni              303 Hv
+1229          1229 B787103-8  M Lo Ni              902 Hv
+1325          1325 E362421-8    Ni                 712 Hv
+1329          1329 B447004-A    Lo Ni              914 Hv
+1423          1423 E96A515-4    Ni Wa              901 Hv
+1424          1424 B676202-9  L Lo Ni              313 Hv
+1428          1428 B3337S1-7    Na Po              220 Hv
+1429          1429 B340206-8  L De Lo Ni Po        403 Hv
+1430          1430 B546662-8    Ag Ni              702 Hv
+1523          1523 B572212-A  L Lo Ni              502 Hv
+1528          1528 B1209T1-D  L De Hi In Na Po     820 Hv
+1529          1529 B231204-A  L Lo Ni Po           612 Hv
+1621          1621 B867402-A  L Ni                 924 Hv
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Klokken SECTOR: Drakken
+#
+#
+# Hiver Government Codes
+#
+# Codes 0,1,2,6, and the following are specifically used by Hiver's.
+# S Sept. Governing committee of seven nest leaders.
+# T Unsupervised Anarchy. Individual agreements between all nests.
+# U Supervised Anarchy. Individual agreements between all nests.
+# W Committee. Governing committee of nest leaders.
+# 
+# Jump-routes
+#
+$2430 2832 1 1 2
+$2430 2427 0 0 2
+$2427 2224 0 0 2
+$2224 2022 0 0 2
+$2022 1820 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+1723          1723 E9A28S4-6    Fl                 904 Hv
+1828          1828 E458762-4    Ag                 513 Hv
+1924          1924 E5257S1-4                       905 Hv
+1925          1925 E581203-5    Lo Ni              224 Hv
+Zeashaz       2022 E325763-8                       103 Hv
+2024          2024 E580526-3    De Ni              400 Hv
+2027          2027 X76A514-5    Ni Wa           R  414 Hv
+2029          2029 X585401-3    Ni              R  901 Hv
+2030          2030 X663000-0    Lo Ni           R  800 Un
+2121          2121 C9A66S3-9  M Fl Ni              714 Hv
+2122          2122 C8A2004-4    Fl Lo Ni           904 Hv
+2129          2129 C6699T2-8  M Hi                 714 Hv
+2221          2221 C424202-6  M Lo Ni              413 Hv
+2222          2222 C455411-7    Ni                 323 Hv
+Ghezzaer      2224 A523303-B    Lo Ni Po           222 Hv
+2229          2229 B130463-D    De Ni Po           303 Hv
+2323          2323 C5679T4-5    Hi                 802 Hv
+2325          2325 A1609U6-D  F De Hi              604 Hv
+2329          2329 B744521-B  F Ag Ni              523 Hv
+2421          2421 C767102-9  M Lo Ni              702 Hv
+2422          2422 C738AW4-9  M Hi In              602 Hv
+2423          2423 C563423-5    Ni                 122 Hv
+2426          2426 B5697W5-A  L                    220 Hv
+Klzzin        2427 C556103-6    Lo Ni              903 Hv
+2428          2428 B436611-B  L Ni                 703 Hv
+hazzines      2430 B3439S5-A    Hi In Po           813 Hv
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lotrakk SECTOR: Drakken
+#
+#
+# Hiver Government Codes
+#
+# Codes 0,1,2,6, and the following are specifically used by Hiver's.
+# S Sept. Governing committee of seven nest leaders.
+# T Unsupervised Anarchy. Individual agreements between all nests.
+# U Supervised Anarchy. Individual agreements between all nests.
+# W Committee. Governing committee of nest leaders.
+#
+# Jump-routes
+# 
+$3224 3220 0 -1 10
+$3224 3228 0 0 10
+$3228 3232 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+2521          2521 E6749T4-8    Hi In              800 Hv
+2529          2529 E565425-2    Ni                 104 Hv
+2622          2622 E434502-7    Ni                 525 Hv
+2624          2624 E326621-8    Ni                 704 Hv
+2628          2628 E110203-7    Lo Ni              401 Hv
+2630          2630 E778301-7    Lo Ni              604 Hv
+2723          2723 X675664-0    Ag              R  802 Hv
+2725          2725 X567105-1    Lo              R  114 Hv
+2824          2824 X9899T6-3    Hi              R  923 Hv
+2828          2828 C120665-9    De Na Ni Po        220 Hv
+2923          2923 X352402-4    Po              R  614 Hv
+2924          2924 X434105-2    Lo              R  500 Hv
+2925          2925 X88A424-4    Wa              R  210 Hv
+2928          2928 C5638T3-4  M Ri                 800 Hv
+3022          3022 C645521-8  M Ag Ni              810 Hv
+3023          3023 C759402-7  M Ni                 614 Hv
+3030          3030 C966404-4    Ni                 710 Hv
+3127          3127 C74A621-7    Ni Wa              213 Hv
+3222          3222 B384522-7  F Ag Ni              802 Hv
+3223          3223 B543305-8    Lo Ni Po           214 Hv
+Clintour      3224 B485AU5-E    Hi                 424 Hv
+3226          3226 C6458S4-3                       823 Hv
+3227          3227 C0008T6-7    As Na              902 Hv
+Drassa        3228 B560661-B    De Ni Ri           115 Hv
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Mukkur SECTOR: Drakken
+#
+#
+# Hiver Government Codes
+#
+# Codes 0,1,2,6, and the following are specifically used by Hiver's.
+# S Sept. Governing committee of seven nest leaders.
+# T Unsupervised Anarchy. Individual agreements between all nests.
+# U Supervised Anarchy. Individual agreements between all nests.
+# W Committee. Governing committee of nest leaders.
+# 
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+0133          0133 E446AT1-A    Hi In              510 Hv
+Electra       0140 C475433-6    Ni                 200 Na
+0233          0233 E331414-4    Ni Po              724 Hv
+0234          0234 X5A08SK-1    De              R  114 Hv
+Sunnyvale     0236 D522698-4  S Na Ni Po           704 Na
+Neuyll        0237 D2107A7-4    Na                 203 Na
+0333          0333 E544304-6    Lo Ni              303 Hv
+Erill         0338 D769253-7  S Lo Ni              402 Na
+0431          0431 X8978S1-2                    R  124 Hv
+Fairflank     0435 B326A8A-G  2 Hi In              502 Na
+Josiah        0436 B87788A-8  N                    723 Na
+Cortnay       0439 B567421-A    Ni                 700 Na
+0532          0532 X789303-0    Lo              R  304 Hv
+0534          0534 B524523-9    Ni                 603 Hv
+Gaspee        0539 B454544-C    Ag Ni              904 Na
+Yateli        0540 C663310-5    Lo Ni              301 Na
+0632          0632 X869621-2                    R  414 Hv
+0634          0634 B7C1301-7  L Fl Lo Ni        A  200 Hv
+0733          0733 X96A414-0    Wa              R  803 Hv
+Engle         0737 B423524-8  N Ni Po              924 Na
+Pala          0738 B8C5100-C    Fl Lo Ni        A  614 Na
+Calvert       0740 B9A5304-D    Fl Lo Ni           323 Na
+0834          0834 C767203-7    Lo Ni              510 Hv
+Strod         0838 B563101-8    Lo Ni              612 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nidekker SECTOR: Drakken
+#
+#
+# Hiver Government Codes
+#
+# Codes 0,1,2,6, and the following are specifically used by Hiver's.
+# S Sept. Governing committee of seven nest leaders.
+# T Unsupervised Anarchy. Individual agreements between all nests.
+# U Supervised Anarchy. Individual agreements between all nests.
+# W Committee. Governing committee of nest leaders.
+# 
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+0932          0932 A425203-F  M Lo Ni              902 Hv
+0934          0934 B2207S2-8    De Na Po           703 Hv
+Nacer         0936 C610224-9    Lo Ni              811 Na
+1032          1032 B323521-D  L Ni Po              300 Hv
+1034          1034 B110205-C    Lo Ni              903 Hv
+Savonarola    1040 C356768-4    Ag                 600 Na
+1132          1132 BAE7403-9    Fl Ni              814 Hv
+1133          1133 B422422-C    Ni Po              123 Hv
+1134          1134 B774521-8    Ag Ni              314 Hv
+Cyprus        1138 C465374-7  S Lo Ni              412 Na
+Wendr         1139 C2555AF-A    Ag Ni              113 Na
+1231          1231 B7A67S3-9    Fl                 911 Hv
+1232          1232 B661425-7  L Ni                 114 Hv
+1233          1233 E877202-5    Lo Ni              404 Hv
+1234          1234 B8899T1-C  L Hi                 600 Hv
+1235          1235 E4837S5-3    Ri                 922 Hv
+Linette       1238 C532400-6    Ni Po              802 Na
+1331          1331 B859303-A  M Lo Ni              212 Hv
+Boyne         1337 A6A09DC-8    De Hi              600 Na
+Constantine   1340 A77658C-9    Ag Ni              310 Na
+1432          1432 B7797S2-7  F                    513 Hv
+1435          1435 B8A28T5-7  L Fl                 900 Hv
+1436          1436 B885003-9  F Lo Ni              113 Hv
+Boeing        1438 A334254-D  S Lo Ni              412 Na
+Vndyrwynd     1440 A453464-C  S Ni Po              103 Na
+1531          1531 C254001-A  M Ba Lo Ni           224 Hv
+1532          1532 C2259T6-9    Hi In              104 Hv
+1534          1534 C776411-9    Ni                 702 Hv
+1535          1535 C110425-B  M Ni                 503 Hv
+Raynaldo      1538 A724200-A    Lo Ni              403 Na
+Berdine       1539 A334626-B    Ni                 802 Na
+Phoebe        1640 A100400-D  N Ni Va              204 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Okken SECTOR: Drakken
+#
+#
+# Hiver Government Codes
+#
+# Codes 0,1,2,6, and the following are specifically used by Hiver's.
+# S Sept. Governing committee of seven nest leaders.
+# T Unsupervised Anarchy. Individual agreements between all nests.
+# U Supervised Anarchy. Individual agreements between all nests.
+# W Committee. Governing committee of nest leaders.
+# 
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+1731          1731 B9547S6-5    Ag                 623 Hv
+1734          1734 X668301-2    Lo              R  300 Hv
+Hickman       1739 A442534-9    Ni Po              304 Na
+1834          1834 X684000-0    Ba Lo           R  213 Un
+1836          1836 X4569U5-1    Hi              R  102 Hv
+Lucky         1837 A525520-9    Ni                 713 Na
+Skyllith      1840 AAD9000-B    Ba Fl Lo Ni        905 Na
+1935          1935 X2627S6-0    Ri              R  610 Hv
+1936          1936 X236562-5                    R  704 Hv
+Sgeulaiche    2038 A7B3001-E    Fl Lo Ni        A  103 Na
+Emsay         2039 A557200-B  N Lo Ni              713 Na
+Tove          2040 A655741-8  N Ag                 522 Na
+2133          2133 C5026S1-9    Ic Na Ni Va        714 Hv
+2232          2232 C240205-9    De Lo Ni Po        414 Hv
+Pitchblend    2237 B558897-A  N                    913 Na
+Sabo          2238 B342467-A  N Ni Po              604 Na
+2335          2335 C473206-5    Lo Ni              914 Hv
+2336          2336 C3109T1-8    Hi Na              213 Hv
+Pendragon     2337 B1008A7-A  N Na Va              900 Na
+Mutsumi       2339 B300466-A  2 Ni Va              402 Na
+2432          2432 X5457S5-0    Ag              R  404 Hv
+2434          2434 C799206-8    Lo Ni              803 Hv
+Tinus         2436 A4108AC-D  N Na                 900 Na
+Bantus        2437 A586255-C  N Lo Ni              702 Na
+Jennifer      2440 A31246A-B  2 Ic Ni              413 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Pakks SECTOR: Drakken
+#
+#
+# Hiver Government Codes
+#
+# Codes 0,1,2,6, and the following are specifically used by Hiver's.
+# S Sept. Governing committee of seven nest leaders.
+# T Unsupervised Anarchy. Individual agreements between all nests.
+# U Supervised Anarchy. Individual agreements between all nests.
+# W Committee. Governing committee of nest leaders.
+# 
+# Jump-routes
+#
+$3232 3228 0 -1 10
+$3232 0135 1 0 10
+$3139 0239 1 0 2
+$3139 3035 0 0 2
+$3035 2832 0 0 2
+$2832 2430 -1 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Ponchartrain  2536 B334431-9    Ni                 810 Na
+Hueng         2538 BA6A545-9    Ni Wa              314 Na
+2632          2632 B242662-B  L Ni Po              302 Hv
+2633          2633 B245001-A  L Lo Ni              104 Hv
+Eirikr        2637 B575545-6  N Ag Ni              112 Na
+Josephson     2639 C759642-4    Ni                 504 Na
+2731          2731 B77A523-D  L Ni Wa              801 Hv
+2734          2734 B584301-B  M Lo Ni              202 Hv
+Rosenberg     2736 B568114-7    Lo Ni              903 Na
+Cezzse        2832 B323563-A  L Ni Po              703 Hv
+2833          2833 B77A8T6-7    Wa                 403 Hv
+2931          2931 B6A3101-8    Fl Lo Ni           903 Hv
+2933          2933 E5397S6-4                       213 Hv
+2934          2934 B7A4564-A  F Fl Ni              522 Hv
+Peen          2940 B300200-C  S Lo Ni Va           800 Na
+Nigel         3035 B885886-A    Ri                 204 Na
+Serma         3039 B9B3732-8  N Fl              A  604 Na
+3132          3132 E210523-5    Ni                 320 Hv
+3133          3133 E110564-7    Ni                 514 Hv
+Aethelread    3134 A566567-C    Ag Ni              904 Na
+Haque         3136 B786220-7    Lo Ni              304 Na
+Pildor        3139 B200300-9  N Lo Ni Va           304 Na
+Shammez       3232 E779101-9    Lo Ni              904 Hv
+Cei           3239 A84A632-A    Ni Wa              203 Na
+

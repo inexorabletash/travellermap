@@ -1,0 +1,1071 @@
+Vortaana Sector
+
+A: Avorta                    a.dat
+B: Bortanna                  b.dat
+C: Chavort                   c.dat
+D: Drovort                   d.dat
+E: Evortan                   e.dat
+F: Franna                    f.dat
+G: Gevanna                   g.dat
+H: Hotavann                  h.dat
+I: Ivanavor                  i.dat
+J: Javorti                   j.dat
+K: Krevorta                  k.dat
+L: Lavanna                   l.dat
+M: Mavorva                   m.dat
+N: Novaver                   n.dat
+O: Ovorta                    o.dat
+P: Portav                    p.dat
+
+Bases:
+J = Klushan Navy
+K = Klushan Scout
+L = Klushan Navy & Scout
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+05 Ki = Klushan Imperium
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Avorta SECTOR: Vortaana Sector
+#
+# Jump-routes
+#
+$0110 3109 -1 0 5
+$0208 3109 -1 0 5
+$0204 3206 -1 0 5
+$0204 0103 0 0 5
+$0103 0101 0 0 5
+$0101 3140 -1 -1 5
+$0101 0402 0 0 5
+$0402 0603 0 0 5
+$0603 0703 0 0 5
+$0703 0801 0 0 5
+$0204 0306 0 0 5
+$0306 0208 0 0 5
+$0306 0505 0 0 5
+$0505 0603 0 0 5
+$0204 0303 0 0 5
+$0303 0402 0 0 5
+$0603 0804 0 0 5
+$0804 0904 1 0 5
+$0801 0901 1 0 5
+$0110 0411 0 1 5
+$0710 0711 0 1 5
+$0710 0909 1 0 5
+$0107 3106 -1 0 10
+$0107 0310 0 0 10
+$0310 0413 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0101 B556230-B    Lo Ni              700 Ki
+A-2           0102 C410436-A    Ni                 300 Ki
+A-3           0103 A387659-9  J Ag Ni Ri           404 Ki
+A-4           0105 C241300-B    Lo Ni Po           302 Ki
+A-5           0106 C897100-9    Lo Ni              423 Ki
+Avaeral       0107 C657631-7  J Ag Ni              404 Ki
+A-7           0109 C000686-B  J As Na Ni           812 Ki
+A-8           0110 A300647-B    Na Ni Va           724 Ki
+A-9           0201 C5A0664-7    De Ni              514 Ki
+A-10          0203 C481722-8  L                    704 Ki
+A-11          0204 A648885-C                       502 Ki
+A-12          0208 B578449-B  K Ni                 704 Ki
+A-13          0209 D552455-4    Ni Po              505 Ki
+A-14          0302 B565544-9  J Ag Ni              124 Ki
+A-15          0303 A524643-A    Ni                 113 Ki
+A-16          0304 CA8A633-9  J Ni Wa              510 Ki
+A-17          0306 B37479B-B    Ag                 421 Ki
+Vinnor        0310 E888510-6    Ag Ni              403 Ki
+A-19          0401 X678888-0                    R  602 Na
+A-20          0402 A402644-E    Ic Na Ni Va        920 Ki
+A-21          0403 E320366-6    De Lo Ni Po        500 Ki
+A-22          0406 B7C8204-C  K Fl Lo Ni        A  222 Ki
+A-23          0409 C585231-6  K Lo Ni              600 Ki
+A-24          0410 X555868-0                    R  523 Na
+A-25          0502 E7C4300-7    Fl Lo Ni        A  603 Ki
+A-26          0503 B88A140-C  K Lo Ni Wa           125 Ki
+A-27          0505 B537436-9  K Ni                 324 Ki
+A-28          0601 B14047B-D    De Ni Po        B  924 Na
+A-29          0603 B557444-A    Ni                 104 Ki
+A-30          0604 C746664-3    Ag Ni              911 Ki
+A-31          0608 X434557-4                    R  714 Na
+A-32          0610 B436573-9    Ni              B  103 Na
+A-33          0703 A969655-B    Ni Ri              803 Ki
+A-34          0705 D655689-2    Ag Ni              810 Ki
+A-35          0710 B3328AA-B  L Na Po              200 Ki
+A-36          0801 B403454-C    Ic Ni Va           403 Ki
+A-37          0804 B53A220-9  K Lo Ni Wa           913 Ki
+A-38          0807 CAA6100-6    Fl Lo Ni           124 Ki
+A-39          0809 D9A59CE-7    Fl Hi              823 Ki
+A-40          0810 C627241-5    Lo Ni              802 Ki
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Bortanna SECTOR: Vortaana Sector
+#
+# Jump-routes
+#
+$0904 0804 -1 0 5
+$0901 0801 -1 0 5
+$0909 0710 -1 0 5
+$0901 1203 0 0 5
+$1203 1005 0 0 5
+$1005 0904 0 0 5
+$0904 0901 0 0 5
+$1005 1008 0 0 5
+$1008 0909 0 0 5
+$1008 1009 0 0 5
+$1009 0909 0 0 5
+$1009 1209 0 0 5
+$1009 0911 0 1 5
+$1009 1111 0 1 5
+$1209 1509 0 0 5
+$1509 1513 0 1 5
+$1509 1911 1 1 5
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           0901 B764665-9  J Ag Ni Ri           913 Ki
+B-2           0903 E223646-4    Na Ni Po           115 Ki
+B-3           0904 B210522-9    Ni                 400 Ki
+B-4           0905 C302789-5    Ic Na Va           404 Ki
+B-5           0908 E9B2210-4    Fl Lo Ni        A  102 Ki
+B-6           0909 B568301-A  K Lo Ni              504 Ki
+B-7           1001 E62A434-6    Ni Wa              922 Ki
+B-8           1003 C347978-B    Hi In           B  711 Na
+B-9           1004 D98A543-7    Ni Wa              910 Ki
+B-10          1005 A795ACD-C    Hi In              515 Ki
+B-11          1006 C623630-9  J Na Ni Po           603 Ki
+B-12          1008 A575968-B    Hi In              214 Ki
+B-13          1009 B000244-D  K As Lo Ni           214 Ki
+B-14          1101 E6487A5-5    Ag                 305 Ki
+B-15          1103 C667655-7    Ag Ni Ri           714 Ki
+B-16          1106 C998667-3  J Ag Ni              903 Ki
+B-17          1107 D777437-6  K Ni                 404 Ki
+B-18          1108 C414676-8    Ic Ni           B  201 Na
+B-19          1110 D578744-1    Ag                 100 Ki
+B-20          1202 C247776-5    Ag              B  622 Na
+B-21          1203 B340995-D  L De Hi In Po        315 Ki
+B-22          1207 C463568-8    Ni                 514 Ki
+B-23          1208 E553332-3    Lo Ni Po           314 Ki
+B-24          1209 A3007B9-9  J Na Va              303 Ki
+B-25          1304 C9A38CB-6  L Fl                 604 Ki
+B-26          1308 X160699-0    De Ri           R  922 Na
+B-27          1401 B869677-9    Ni Ri           B  700 Na
+B-28          1402 C432576-B    Ni Po           B  210 Na
+B-29          1407 E97A123-7    Lo Ni Wa           200 Ki
+B-30          1409 C545731-5    Ag                 720 Ki
+B-31          1410 C426453-A    Ni                 203 Ki
+B-32          1504 C65367C-3    Ni Po           B  903 Na
+B-33          1505 E573666-6    Ni                 423 Ki
+B-34          1507 C546888-6  L                    404 Ki
+B-35          1509 A423643-C  J Na Ni Po           913 Ki
+B-36          1602 C524994-6  L Hi In              604 Ki
+B-37          1604 C779487-8  K Ni                 300 Ki
+B-38          1606 D8B2489-4  K Fl Ni           A  924 Ki
+B-39          1608 C544862-6                       603 Ki
+B-40          1610 C875420-9  K Ni                 503 Ki
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Chavort SECTOR: Vortaana Sector
+#
+# Jump-routes
+#
+$2206 2507 1 0 5
+$2206 2106 0 0 5
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1702 B210140-9  K Lo Ni              812 Ki
+C-2           1703 B550988-7  L De Hi Po           302 Ki
+C-3           1704 C242335-7  K Lo Ni Po           922 Ki
+C-4           1705 DAB7414-7  K Fl Ni           A  605 Ki
+C-5           1708 C423100-9    Lo Ni Po           924 Ki
+C-6           1710 E414200-A    Ic Lo Ni           700 Ki
+C-7           1804 D374441-5  K Ni                 804 Ki
+C-8           1807 E323342-8    Lo Ni Po           905 Ki
+C-9           1810 B78A576-8    Ni Wa           B  521 Na
+C-10          1901 C454227-5    Lo Ni              704 Ki
+C-11          1906 E533857-5    Na Po              804 Ki
+C-12          1907 C78A401-9  K Ni Wa              603 Ki
+C-13          2001 C775997-6  L Hi In              802 Ki
+C-14          2003 D74778D-6    Ag                 902 Ki
+C-15          2004 E689464-4    Ni                 803 Ki
+C-16          2005 D210004-8    Lo Ni              212 Ki
+C-17          2008 C689969-8  L Hi                 600 Ki
+C-18          2009 E564867-4    Ri                 403 Ki
+C-19          2101 C8A5414-8    Fl Ni              103 Ki
+C-20          2103 B6B2AA7-C  L Fl Hi           A  802 Ki
+C-21          2104 C540486-8    De Ni Po           612 Ki
+C-22          2106 B555356-7  K Lo Ni              421 Ki
+C-23          2201 C866447-4    Ni                 803 Ki
+C-24          2202 E340896-5    De Po              513 Ki
+C-25          2203 C788576-9    Ag Ni           B  920 Na
+C-26          2205 C9A5440-A    Fl Ni              204 Ki
+C-27          2206 B9A679B-7  L Fl                 100 Ki
+C-28          2209 C696346-6  K Lo Ni              322 Ki
+C-29          2210 C696564-7    Ag Ni              804 Ki
+C-30          2301 A67565A-A  J Ag Ni              403 Ki
+C-31          2302 E432763-6    Na Po              103 Ki
+C-32          2306 C5656AA-6    Ag Ni              105 Ki
+C-33          2308 C88A555-C  J Ni Wa              112 Ki
+C-34          2310 D347434-8  K Ni                 603 Ki
+C-35          2401 A5A0565-E  J De Ni              820 Ki
+C-36          2403 C87A888-7    Wa                 822 Ki
+C-37          2406 C566788-3  L Ag Ri              924 Ki
+C-38          2407 C96A787-6    Ri Wa              703 Ki
+C-39          2410 C757433-4    Ni                 614 Ki
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Drovort SECTOR: Vortaana Sector
+#
+# Jump-routes
+#
+$2510 2111 -1 1 5
+$2510 2507 0 0 5
+$2507 2206 -1 0 5
+$2507 2807 0 0 5
+$2807 2906 0 0 5
+$2507 2704 0 0 5
+$2704 2703 0 0 5
+$2704 2803 0 0 5
+$2510 2714 0 1 5
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2505 A75A655-C  J Ni Wa              223 Ki
+D-2           2506 E243468-5    Ni Po              714 Ki
+D-3           2507 B493100-D    Lo Ni              113 Ki
+D-4           2510 B426796-9  L                    500 Ki
+D-5           2601 E223610-4    Na Ni Po           315 Ki
+D-6           2606 D628111-4    Lo Ni              904 Ki
+D-7           2702 C300598-8    Ni Va              100 Ki
+D-8           2703 B7A3846-7  L Fl                 204 Ki
+D-9           2704 A996434-D  K Ni                 504 Ki
+D-10          2708 C7B6453-7  K Fl Ni           A  914 Ki
+D-11          2709 C556230-7  K Lo Ni              702 Ki
+D-12          2710 C648100-7  K Lo Ni              504 Ki
+D-13          2801 C424000-9    Ba Lo Ni           600 Ki
+D-14          2802 C75A330-7    Lo Ni Wa           925 Ki
+D-15          2803 B564210-9    Lo Ni              303 Ki
+D-16          2804 C547644-6  J Ag Ni              402 Ki
+D-17          2805 D738761-4                       103 Ki
+D-18          2806 C97A579-8    Ni Wa              621 Ki
+D-19          2807 B66766A-5    Ag Ni Ri           413 Ki
+D-20          2808 C746434-7  K Ni                 103 Ki
+D-21          2809 D633354-5    Lo Ni Po           803 Ki
+D-22          2901 C310565-7    Ni                 115 Ki
+D-23          2903 C84A689-7  J Ni Wa              704 Ki
+D-24          2906 B240441-C  K De Ni Po           204 Ki
+D-25          2907 D767556-6  J Ag Ni              320 Ki
+D-26          2909 C67976A-9  L                    704 Ki
+D-27          3001 C000573-8  J As Ni              505 Ki
+D-28          3002 E425884-6                       220 Ki
+D-29          3005 C533A88-8  L Hi In Na Po        605 Ki
+D-30          3010 E400531-8    Ni Va              900 Ki
+D-31          3108 E897212-2    Lo Ni              700 Ki
+D-32          3109 E528756-5                       215 Ki
+D-33          3110 C421964-A    Hi In Na Po        903 Ki
+D-34          3201 E578520-6    Ag Ni              110 Ki
+D-35          3203 C7697AC-5                       601 Ki
+D-36          3207 C887846-4  L Ri                 804 Ki
+D-37          3209 C5828DC-6                       200 Ki
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Evortan SECTOR: Vortaana Sector
+#
+# Jump-routes
+#
+$0314 3214 -1 0 5
+$0117 3214 -1 0 5
+$0411 0110 0 -1 5
+$0411 0512 0 0 5
+$0512 0711 0 0 5
+$0711 0710 0 -1 5
+$0314 0414 0 0 5
+$0414 0514 0 0 5
+$0514 0413 0 0 5
+$0413 0314 0 0 5
+$0413 0512 0 0 5
+$0514 0814 0 0 5
+$0117 0118 0 0 5
+$0118 0320 0 0 5
+$0320 0122 0 1 5
+$0320 0419 0 0 5
+$0419 0417 0 0 5
+$0417 0518 0 0 5
+$0417 0414 0 0 5
+$0518 0619 0 0 5
+$0619 0622 0 1 5
+$0711 0911 1 0 5
+$0814 0913 1 0 5
+$0413 0310 0 -1 10
+$0413 0716 0 0 10
+$0716 0919 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0115 C48159A-5  J Ni                 323 Ki
+E-2           0117 A320898-A  L De Na Po           603 Ki
+E-3           0118 A585656-8    Ag Ni Ri           703 Ki
+E-4           0216 C516244-6  K Ic Lo Ni           623 Ki
+E-5           0219 E513021-5    Ic Lo Ni           505 Ki
+E-6           0313 D556731-1    Ag                 603 Ki
+E-7           0314 A323A50-F  L Hi In Na Po        103 Ki
+E-8           0315 C366599-A    Ag Ni              605 Ki
+E-9           0316 X775588-1    Ag              R  104 Na
+E-10          0318 E754101-8    Lo Ni              204 Ki
+E-11          0320 B100486-A    Ni Va              403 Ki
+E-12          0411 B472510-A  J Ni                 404 Ki
+E-13          0412 C100885-8  L Na Va              603 Ki
+Elginna       0413 B201000-D    Ba Ic Lo Ni Va     802 Ki
+E-15          0414 A768786-B  L Ag Ri              204 Ki
+E-16          0416 C867110-5    Lo Ni              100 Ki
+E-17          0417 A9B16BB-D    Fl Ni           A  803 Ki
+E-18          0418 B6986BA-8  J Ag Ni              510 Ki
+E-19          0419 B749676-6    Ni                 103 Ki
+E-20          0512 B594415-A    Ni                 101 Ki
+E-21          0514 B599846-6  L                    503 Ki
+E-22          0517 C5008CD-9    Na Va              900 Ki
+E-23          0518 A644200-B  K Lo Ni              103 Ki
+E-24          0611 C63A222-C  K Lo Ni Wa           602 Ki
+E-25          0613 C310673-8  J Na Ni              703 Ki
+E-26          0614 C8C4531-7    Fl Ni           A  513 Ki
+E-27          0617 C572445-4  K Ni                 824 Ki
+E-28          0619 B244372-9  K Lo Ni              803 Ki
+E-29          0620 C200443-7    Ni Va              113 Ki
+E-30          0711 B554530-8    Ag Ni              603 Ki
+E-31          0713 C795496-9    Ni                 512 Ki
+E-32          0715 C400210-A  K Lo Ni Va           314 Ki
+Shatfa        0716 E639401-A    Ni                 103 Ki
+E-34          0717 E889520-3    Ni                 714 Ki
+E-35          0719 C4009AA-8    Hi Na Va           404 Ki
+E-36          0720 E72A124-A    Lo Ni Wa           900 Ki
+E-37          0813 C232378-B    Lo Ni Po           325 Ki
+E-38          0814 B9E2374-B    Fl Lo Ni           104 Ki
+E-39          0816 C510234-8    Lo Ni              221 Ki
+E-40          0817 E694338-6    Lo Ni              413 Ki
+E-41          0818 C7A1666-7    Fl Ni              914 Ki
+E-42          0820 C526411-5    Ni                 900 Ki
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Franna SECTOR: Vortaana Sector
+#
+# Jump-routes
+#
+$0911 1009 0 -1 5
+$0911 0711 -1 0 5
+$0913 0814 -1 0 5
+$0913 0911 0 0 5
+$0911 1111 0 0 5
+$1111 1009 0 -1 5
+$1111 1513 0 0 5
+$1513 1414 0 0 5
+$1414 1316 0 0 5
+$1316 1318 0 0 5
+$1316 1217 0 0 5
+$1316 1618 0 0 5
+$1618 1620 0 0 5
+$1620 1419 0 0 5
+$1620 1318 0 0 5
+$1620 1523 0 1 5
+$1620 2020 1 0 5
+$1620 1821 1 1 5
+$1217 1318 0 0 5
+$1318 1419 0 0 5
+$1620 1220 0 0 5
+$1220 1523 0 1 5
+$1513 1713 1 0 5
+$1513 1509 0 -1 5
+$0919 0716 -1 0 10
+$0919 1122 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0911 B76A410-B  K Ni Wa              812 Ki
+F-2           0913 B210246-8  K Lo Ni              424 Ki
+F-3           0914 D573668-4    Ni                 722 Ki
+F-4           0918 E000832-9    As Na              210 Ki
+Waienn        0919 C500230-5  K Lo Ni Va           824 Ki
+F-6           1012 C476344-7  K Lo Ni              203 Ki
+F-7           1013 E795246-6    Lo Ni              113 Ki
+F-8           1014 D656400-7    Ni                 700 Ki
+F-9           1015 C887456-7    Ni                 410 Ki
+F-10          1016 D360A86-A  L De Hi              725 Ki
+F-11          1017 C739643-6  J Ni                 410 Ki
+F-12          1020 C773456-6  K Ni                 704 Ki
+F-13          1111 B89A577-D  J Ni Wa              613 Ki
+F-14          1117 C9A4233-7    Fl Lo Ni           524 Ki
+F-15          1118 D454335-3    Lo Ni              825 Ki
+F-16          1214 E343501-9    Ni Po              502 Ki
+F-17          1215 E758548-7    Ag Ni              400 Ki
+F-18          1217 B766677-8    Ag Ni Ri           702 Ki
+F-19          1220 B100524-C  J Ni Va              503 Ki
+F-20          1311 C100895-6  L Na Va              622 Ki
+F-21          1316 A000547-E    As Ni              104 Ki
+F-22          1317 E84A554-9    Ni Wa              724 Ki
+F-23          1318 A694666-9    Ag Ni              204 Ki
+F-24          1319 C7679A8-A  L Hi                 304 Ki
+F-25          1320 E200516-5    Ni Va              314 Ki
+F-26          1414 B88A430-A  K Ni Wa              102 Ki
+F-27          1417 D100421-8  K Ni Va              804 Ki
+F-28          1418 X224899-1                    R  300 Na
+F-29          1419 B637ADA-C  L Hi In              311 Ki
+F-30          1420 E200ABE-8    Hi Na Va           825 Ki
+F-31          1513 B567655-7  J Ag Ni Ri           304 Ki
+F-32          1514 D226310-6  K Lo Ni              223 Ki
+F-33          1517 C100369-B  K Lo Ni Va           804 Ki
+F-34          1518 C696014-7    Lo Ni              404 Ki
+F-35          1613 C57478A-8    Ag                 504 Ki
+F-36          1617 D6A46AA-4  J Fl Ni              200 Ki
+F-37          1618 B6548AD-8  L                    803 Ki
+F-38          1619 D665698-5    Ag Ni Ri           504 Ki
+Fularna       1620 A321205-G    Lo Ni Po Cx        512 Ki
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Gevanna SECTOR: Vortaana Sector
+#
+# Jump-routes
+#
+$2020 1620 -1 0 5
+$2020 2219 0 0 5
+$2219 2416 0 0 5
+$1713 1513 -1 0 5
+$1713 1911 0 0 5
+$1911 2111 0 0 5
+$2111 2510 1 -1 5
+$1911 1509 -1 -1 5
+$2416 2714 1 0 5
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1711 C424226-9    Lo Ni              900 Ki
+G-2           1713 A6779B8-E  L Hi In              204 Ki
+G-3           1716 D683778-2    Ri              B  712 Na
+G-4           1718 C8B5302-A    Fl Lo Ni        A  610 Ki
+G-5           1719 C426640-A    Ni                 804 Ki
+G-6           1815 B697776-A    Ag              B  821 Na
+G-7           1816 E220555-6    De Ni Po           200 Ki
+G-8           1817 E0007CE-5    As Na              522 Ki
+G-9           1911 B140767-9    De Po              502 Ki
+G-10          1915 E7787BB-5    Ag                 622 Ki
+G-11          1916 C7599DD-7    Hi                 304 Ki
+G-12          1920 E530876-3    De Na Po        B  610 Na
+G-13          2012 C9A7989-6    Fl Hi              905 Ki
+G-14          2014 C7889A8-6    Hi                 500 Ki
+G-15          2015 D512666-5  J Ic Na Ni           200 Ki
+G-16          2019 B667677-6    Ag Ni Ri        B  404 Na
+G-17          2020 A8C5683-9  J Fl Ni           A  111 Ki
+G-18          2111 B100125-A    Lo Ni Va           104 Ki
+G-19          2115 E400643-8    Na Ni Va           303 Ki
+G-20          2118 C542202-5    Lo Ni Po           713 Ki
+G-21          2120 C775530-9    Ag Ni              212 Ki
+G-22          2219 B000620-9  J As Na Ni           920 Ki
+G-23          2314 C9A6888-6  L Fl                 122 Ki
+G-24          2315 E68485A-5    Ri                 222 Ki
+G-25          2411 B436575-A    Ni              B  704 Na
+G-26          2413 C888887-7  L Ri                 202 Ki
+G-27          2414 C885277-8    Lo Ni           B  104 Na
+G-28          2416 B513653-7  J Ic Na Ni           803 Ki
+G-29          2418 C262100-9  K Lo Ni              805 Ki
+G-30          2420 C403402-9  K Ic Ni Va           602 Ki
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hotavann SECTOR: Vortaana Sector
+#
+# Jump-routes
+#
+$2714 2510 0 -1 5
+$2714 2715 0 0 5
+$2714 2416 -1 0 5
+$2714 3115 0 0 5
+$3115 3216 0 0 5
+$3216 3217 0 0 5
+$3217 3018 0 0 5
+$3018 3020 0 0 5
+$3020 3124 0 1 5
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2512 C5A3999-9  L Fl Hi              704 Ki
+H-2           2514 C432300-B  K Lo Ni Po           303 Ki
+H-3           2515 E130326-5    De Lo Ni Po        623 Ki
+H-4           2520 C1106AA-8    Na Ni              624 Ki
+H-5           2611 C675447-5    Ni                 903 Ki
+H-6           2612 D1607AB-3  L De                 503 Ki
+H-7           2613 E370469-4    De Ni              904 Ki
+H-8           2616 C433775-7    Na Po           B  114 Na
+H-9           2618 E423553-7    Ni Po              200 Ki
+H-10          2619 C9E2377-7    Fl Lo Ni        B  610 Na
+H-11          2713 D537523-5  J Ni                 813 Ki
+H-12          2714 B130330-E    De Lo Ni Po        921 Ki
+H-13          2715 B345310-7  K Lo Ni              402 Ki
+H-14          2716 C537566-A    Ni                 802 Ki
+H-15          2719 C575686-6  J Ag Ni              405 Ki
+H-16          2811 C89658A-9    Ag Ni              723 Ki
+H-17          2816 D6B7473-3    Fl Ni           A  104 Ki
+H-18          2912 E370368-4    De Lo Ni           413 Ki
+H-19          2913 CA68742-7    Ag Ri              420 Ki
+H-20          2915 E43567A-5    Ni              B  833 Na
+H-21          2916 C9C59CE-8    Fl Hi           A  612 Ki
+H-22          2918 D689267-3    Lo Ni              823 Ki
+H-23          3012 C636569-9  J Ni                 301 Ki
+H-24          3014 A438676-B    Ni              B  202 Na
+H-25          3017 C6358AB-8                       304 Ki
+H-26          3018 B72A595-D  J Ni Wa              903 Ki
+H-27          3019 E100321-8    Lo Ni Va           504 Ki
+H-28          3020 B357256-C    Lo Ni              705 Ki
+H-29          3111 C5645A5-7  J Ag Ni              402 Ki
+H-30          3113 C373669-6  J Ni                 201 Ki
+H-31          3114 E553420-7    Ni Po              703 Ki
+H-32          3115 B44379A-9  L Po                 513 Ki
+H-33          3116 C220332-6    De Lo Ni Po        813 Ki
+H-34          3117 C452840-7    Po                 600 Ki
+H-35          3119 C9A4501-9  J Fl Ni              203 Ki
+H-36          3212 D42678A-5  L                    824 Ki
+H-37          3214 E584733-2    Ag                 913 Ki
+H-38          3216 B743386-9  K Lo Ni Po           114 Ki
+H-39          3217 B885259-7    Lo Ni              913 Ki
+H-40          3220 C756100-6    Lo Ni              104 Ki
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ivanavor SECTOR: Vortaana Sector
+#
+# Jump-routes
+#
+$0122 3022 -1 0 5
+$0122 0320 0 -1 5
+$0622 0619 0 -1 5
+$0622 0523 0 0 5
+$0523 0122 0 0 5
+$0523 0725 0 0 5
+$0725 0825 0 0 5
+$0825 1225 1 0 5
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0122 B26069A-8  J De Ni Ri           704 Ki
+I-2           0124 C20058B-A    Ni Va              504 Ki
+I-3           0127 E5A2463-5    Fl Ni              504 Ki
+I-4           0128 EAA3499-6    Fl Ni              224 Ki
+I-5           0129 C575146-4  K Lo Ni              200 Ki
+I-6           0130 C563553-6  J Ni                 902 Ki
+I-7           0221 C768330-8    Lo Ni              403 Ki
+I-8           0222 C8B86AD-8    Fl Ni           A  802 Ki
+I-9           0224 E566300-8    Lo Ni              423 Ki
+I-10          0227 X439776-0                    R  620 Na
+I-11          0228 C765988-8  L Hi                 200 Ki
+I-12          0322 C527755-5                       503 Ki
+I-13          0324 B625278-C    Lo Ni           B  904 Na
+I-14          0326 D325689-6    Ni                 823 Ki
+I-15          0421 C425556-B  J Ni                 210 Ki
+I-16          0428 D63A221-7    Lo Ni Wa           703 Ki
+I-17          0430 C879340-7  K Lo Ni              924 Ki
+I-18          0521 C210786-6    Na                 704 Ki
+I-19          0523 B743355-B    Lo Ni Po           222 Ki
+I-20          0526 C472000-6    Ba Lo Ni           100 Ki
+I-21          0527 C595469-8    Ni                 701 Ki
+I-22          0622 B200634-9  J Na Ni Va           620 Ki
+I-23          0627 E242003-3    Lo Ni Po           103 Ki
+I-24          0630 D7B5415-3  K Fl Ni           A  722 Ki
+I-25          0721 C678103-7  K Lo Ni              802 Ki
+I-26          0722 C528558-B  J Ni                 803 Ki
+I-27          0724 C444989-B    Hi In              903 Ki
+I-28          0725 B000300-A  K As Lo Ni           203 Ki
+I-29          0729 C366640-6    Ag Ni Ri           834 Ki
+I-30          0821 D685264-4  K Lo Ni              805 Ki
+I-31          0824 C20088A-8  L Na Va              621 Ki
+I-32          0825 B87A69B-9  J Ni Wa              923 Ki
+I-33          0826 CAE97A6-8  L Fl                 224 Ki
+I-34          0827 E6767AC-6    Ag                 104 Ki
+I-35          0828 D7279A7-8  L Hi In              624 Ki
+I-36          0830 C312275-9    Ic Lo Ni        B  230 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Javorti SECTOR: Vortaana Sector
+#
+# Jump-routes
+#
+$1225 0825 -1 0 5
+$1229 0931 0 1 5
+$1229 1225 0 0 5
+$1523 1620 0 -1 5
+$1523 1225 0 0 5
+$1523 1220 0 -1 5
+$1229 1431 0 1 5
+$1122 0919 0 -1 10
+$1122 1225 0 0 10
+$1225 1528 0 0 10
+$1528 1830 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0921 C773225-9    Lo Ni              800 Ki
+J-2           0923 C674412-6  K Ni                 704 Ki
+J-3           0924 D464542-4  J Ag Ni              713 Ki
+J-4           0925 C300031-8    Lo Ni Va           700 Ki
+J-5           0927 C46279A-9  L Ri                 500 Ki
+J-6           1022 D130433-A    De Ni Po           101 Ki
+J-7           1023 X000500-3    As              R  403 Na
+J-8           1028 C78A48B-6    Ni Wa              324 Ki
+J-9           1029 C434545-A  J Ni                 204 Ki
+Janiver       1122 C97A300-B    Lo Ni Wa           702 Ki
+J-11          1126 E685735-1    Ag                 814 Ki
+J-12          1129 E593386-4    Lo Ni              704 Ki
+J-13          1130 C547752-9    Ag                 313 Ki
+J-14          1224 C345040-7    Lo Ni              700 Ki
+Elbakka       1225 B573326-A  K Lo Ni              924 Ki
+J-16          1227 C10078C-A    Na Va              310 Ki
+J-17          1229 A694534-8    Ag Ni              903 Ki
+J-18          1324 C410651-A  J Na Ni              614 Ki
+J-19          1326 C333534-8  J Ni Po              403 Ki
+J-20          1327 C400895-6    Na Va              314 Ki
+J-21          1328 C758545-6  J Ag Ni              105 Ki
+J-22          1329 C325344-6  K Lo Ni              505 Ki
+J-23          1428 A465875-9    Ri              B  402 Na
+J-24          1521 D795687-1  J Ag Ni              525 Ki
+J-25          1522 E300563-7    Ni Va              723 Ki
+J-26          1523 B100769-B    Na Va              923 Ki
+J-27          1525 E300449-9    Ni Va              114 Ki
+J-28          1527 C140557-B    De Ni Po           904 Ki
+Slangara      1528 C685785-6  L Ag Ri              512 Ki
+J-30          1530 B201276-D    Ic Lo Ni Va     B  103 Na
+J-31          1623 E651555-5    Ni Po              824 Ki
+J-32          1625 E221657-8    Na Ni Po           123 Ki
+J-33          1626 C579130-5  K Lo Ni              304 Ki
+J-34          1627 X243AAA-4    Hi In Po        R  913 Na
+J-35          1630 C614200-B  K Ic Lo Ni           710 Ki
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Krevorta SECTOR: Vortaana Sector
+#
+# Jump-routes
+#
+$1930 1832 0 1 5
+$1821 1620 -1 -1 5
+$2130 2131 0 1 5
+$2130 1930 0 0 5
+$2130 2230 0 0 5
+$2230 2329 0 0 5
+$2329 2328 0 0 5
+$1930 1828 0 0 5
+$1828 1826 0 0 5
+$1826 2025 0 0 5
+$2025 2324 0 0 5
+$2324 2424 0 0 5
+$2328 2025 0 0 5
+$2025 1924 0 0 5
+$1924 1821 0 0 5
+$1830 1528 -1 0 10
+$1830 2232 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1721 B26287A-7    Ri              B  900 Na
+K-2           1724 C885105-8    Lo Ni              803 Ki
+K-3           1725 E566101-5    Lo Ni              223 Ki
+K-4           1821 A234532-D    Ni                 610 Ki
+K-5           1824 X999899-2                    R  324 Na
+K-6           1826 B403322-C  K Ic Lo Ni Va        900 Ki
+K-7           1828 B9B0589-B    De Ni           A  805 Ki
+K-8           1829 C7B1111-5    Fl Lo Ni        A  610 Ki
+Krincia       1830 C79A8AC-9  L Wa                 904 Ki
+K-10          1922 C559110-5    Lo Ni              800 Ki
+K-11          1923 C535A98-B  L Hi In              400 Ki
+K-12          1924 C100AAD-B  L Hi Na Va           201 Ki
+K-13          1926 C5696BA-8  J Ni                 803 Ki
+K-14          1927 B58137C-9  K Lo Ni           B  403 Na
+K-15          1928 C997441-6    Ni                 902 Ki
+K-16          1929 E433436-6    Ni Po              412 Ki
+K-17          1930 A894102-A  K Lo Ni              402 Ki
+K-18          2021 E568374-2    Lo Ni           B  314 Na
+K-19          2025 A250566-B  J De Ni Po           603 Ki
+K-20          2029 C87978B-9                       603 Ki
+K-21          2030 E464656-7    Ag Ni Ri           905 Ki
+K-22          2121 C2039C9-9    Hi Ic Na Va        902 Ki
+K-23          2122 D446787-4    Ag                 524 Ki
+K-24          2123 C477454-8    Ni                 803 Ki
+K-25          2125 D240683-4  J De Ni Po           901 Ki
+K-26          2127 C74A376-6    Lo Ni Wa        B  921 Na
+K-27          2128 C200957-9  L Hi Na Va           203 Ki
+K-28          2130 B9A46A6-A    Fl Ni              810 Ki
+K-29          2226 D88A131-6  K Lo Ni Wa           220 Ki
+K-30          2228 C75A48B-6  K Ni Wa              804 Ki
+K-31          2230 A865510-A  J Ag Ni              904 Ki
+K-32          2322 E646872-6                    B  900 Na
+K-33          2324 B468644-A  J Ag Ni Ri           400 Ki
+K-34          2326 C424426-7    Ni                 204 Ki
+K-35          2327 B77A579-9    Ni Wa           B  702 Na
+K-36          2328 B501443-7    Ic Ni Va           704 Ki
+K-37          2329 B778315-B  K Lo Ni              404 Ki
+K-38          2424 B363245-8    Lo Ni              903 Ki
+K-39          2427 C593220-8    Lo Ni              214 Ki
+K-40          2428 C634302-8    Lo Ni              404 Ki
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lavanna SECTOR: Vortaana Sector
+#
+# Jump-routes
+#
+$3124 3020 0 -1 5
+$3124 2924 0 0 5
+$2924 2925 0 0 5
+$3124 3224 0 0 5
+$3124 3126 0 0 5
+$3126 3028 0 0 5
+$3028 3029 0 0 5
+$3029 2932 0 1 5
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2521 B364745-6    Ag Ri              723 Ki
+L-2           2522 X5057BG-3    Ic Va           R  914 Na
+L-3           2523 E449455-6    Ni                 320 Ki
+L-4           2526 D692598-7  J Ni                 410 Ki
+L-5           2527 B583201-9    Lo Ni              914 Ki
+L-6           2530 C472422-5  K Ni                 802 Ki
+L-7           2621 C272769-9                       505 Ki
+L-8           2625 B8C2612-A    Fl Ni           A  924 Ki
+L-9           2626 C787110-5    Lo Ni              903 Ki
+L-10          2627 CAB6568-7    Fl Ni           A  404 Ki
+L-11          2628 D545303-3    Lo Ni              903 Ki
+L-12          2630 C88A687-8    Ni Ri Wa           433 Ki
+L-13          2725 D767322-3  K Lo Ni              700 Ki
+L-14          2728 C321220-9    Lo Ni Po           113 Ki
+L-15          2729 C000123-8    As Lo Ni           902 Ki
+L-16          2730 C86A242-8  K Lo Ni Wa           320 Ki
+L-17          2821 C3558AB-4  L                    702 Ki
+L-18          2824 C340002-6    De Lo Ni Po        712 Ki
+L-19          2825 C424578-6    Ni              B  913 Na
+L-20          2830 C555300-8    Lo Ni              921 Ki
+L-21          2921 CA6A644-5  J Ni Ri Wa           705 Ki
+L-22          2923 E7589AA-4    Hi                 503 Ki
+L-23          2924 B774467-A    Ni                 503 Ki
+L-24          2925 B510447-7  K Ni                 402 Ki
+L-25          2927 C210310-7    Lo Ni              500 Ki
+L-26          3023 C626314-A    Lo Ni              604 Ki
+L-27          3025 C9C457B-7  J Fl Ni           A  603 Ki
+L-28          3027 C212475-9    Ic Ni           B  714 Na
+L-29          3028 B444997-B  L Hi In              623 Ki
+L-30          3029 A000888-E    As Na              310 Ki
+L-31          3124 A78A89E-9  L Ri Wa              903 Ki
+L-32          3126 A4007CD-D    Na Va              403 Ki
+L-33          3128 B666473-9    Ni              B  504 Na
+L-34          3129 C8C3485-6  K Fl Ni           A  524 Ki
+L-35          3130 C456364-7    Lo Ni              122 Ki
+L-36          3223 C454665-8    Ag Ni              903 Ki
+L-37          3224 B7B2440-7  K Fl Ni           A  503 Ki
+L-38          3225 C375457-7    Ni                 313 Ki
+L-39          3226 C7767A9-4    Ag                 900 Ki
+L-40          3228 C350565-5  J De Ni Po           404 Ki
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Mavorva SECTOR: Vortaana Sector
+#
+# Jump-routes
+#
+$0138 3238 -1 0 5
+$0333 3134 -1 0 5
+$0333 0534 0 0 5
+$0534 0834 0 0 5
+$0138 0237 0 0 5
+$0237 0435 0 0 5
+$0435 0534 0 0 5
+$0237 0540 0 0 5
+$0540 0838 0 0 5
+$0838 0834 0 0 5
+$0838 0638 0 0 5
+$0638 0538 0 0 5
+$0538 0237 0 0 5
+$0838 1040 1 0 5
+$0834 0933 1 0 5
+$0540 0501 0 1 5
+$0139 0302 0 1 2
+$0139 3036 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0131 C65A999-9  L Hi Wa              424 Ki
+M-2           0134 C100378-C    Lo Ni Va        B  703 Na
+M-3           0135 E5A2542-6    Fl Ni              504 Ki
+M-4           0137 C68435A-9    Lo Ni              102 Ki
+M-5           0138 B839732-8  L                    401 Ki
+Mallvuun      0139 E444240-5    Lo Ni              903 Ki
+M-7           0231 CA7A527-9  J Ni Wa              200 Ki
+M-8           0234 B656874-5                    B  803 Na
+M-9           0237 A555736-8    Ag                 500 Ki
+M-10          0331 E45558B-7    Ag Ni              301 Ki
+M-11          0332 XAD5A8B-6    Fl Hi           R  904 Na
+M-12          0333 B995664-8  J Ag Ni              814 Ki
+M-13          0340 D77A9DC-4  J Hi In Wa           502 Ki
+M-14          0435 B9A3796-6  L Fl                 304 Ki
+M-15          0437 EA6A96B-A    Hi Wa              202 Ki
+M-16          0438 D000965-B  L As Hi Na           900 Ki
+M-17          0439 C765AAB-8    Hi                 804 Ki
+M-18          0534 A200431-F  K Ni Va              104 Ki
+M-19          0537 C462120-7    Lo Ni              403 Ki
+M-20          0538 A9B679C-A    Fl              A  923 Ki
+M-21          0540 B000430-9  K As Ni              500 Ki
+M-22          0633 C877533-7    Ag Ni              500 Ki
+M-23          0635 E110888-7    Na                 704 Ki
+M-24          0637 X885A99-6    Hi              R  101 Na
+M-25          0638 A7C3001-B    Fl Lo Ni        A  102 Ki
+M-26          0640 C526405-B    Ni                 610 Ki
+M-27          0732 C120523-9    De Ni Po           313 Ki
+M-28          0734 C5A4445-9  K Fl Ni              103 Ki
+M-29          0736 E662AAE-6    Hi                 803 Ki
+M-30          0737 E567632-5    Ag Ni              604 Ki
+M-31          0740 C110544-B    Ni                 901 Ki
+M-32          0833 C663554-A    Ni                 313 Ki
+M-33          0834 B150435-D  K De Ni Po           905 Ki
+M-34          0835 E223104-6    Lo Ni Po           801 Ki
+M-35          0837 D68A316-6  K Lo Ni Wa           104 Ki
+M-36          0838 B6A5635-7  J Fl Ni              203 Ki
+M-37          0839 E5648BB-4                       203 Ki
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Novaver SECTOR: Vortaana Sector
+#
+# Jump-routes
+#
+$1040 0838 -1 0 5
+$0933 0834 -1 0 5
+$0933 0931 0 0 5
+$0931 1229 0 -1 5
+$1535 1431 0 0 5
+$1535 1234 0 0 5
+$1535 1638 0 0 5
+$1638 1440 0 0 5
+$1440 1040 0 0 5
+$1535 1736 1 0 5
+$1535 1934 1 0 5
+$1535 1832 1 0 5
+$1431 1229 0 -1 5
+$1234 0933 0 0 5
+$1638 1701 1 1 5
+$1440 1601 0 1 5
+$1040 0901 0 1 5
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0931 B757211-9  K Lo Ni              704 Ki
+N-2           0932 C34868D-7  J Ag Ni              123 Ki
+N-3           0933 B949654-7    Ni                 903 Ki
+N-4           0935 E150120-7    De Lo Ni Po        223 Ki
+N-5           0937 D546467-4  K Ni                 304 Ki
+N-6           0938 D532110-5  K Lo Ni Po           102 Ki
+N-7           1033 D8B3440-6  K Fl Ni           A  804 Ki
+N-8           1034 C647541-7  J Ag Ni              500 Ki
+N-9           1035 D782442-7  K Ni                 304 Ki
+N-10          1037 C526699-4    Ni                 304 Ki
+N-11          1040 B223420-C    Ni Po              202 Ki
+N-12          1132 B276445-9    Ni                 414 Ki
+N-13          1134 CAB689D-5    Fl              A  704 Ki
+N-14          1135 C510434-9  K Ni                 213 Ki
+N-15          1136 B445672-B    Ag Ni           B  524 Na
+N-16          1138 C1209BA-9  L De Hi In Na Po     903 Ki
+N-17          1232 D400300-8    Lo Ni Va           703 Ki
+N-18          1233 B99A47A-B    Ni Wa           B  721 Na
+N-19          1234 A420000-B    Ba De Lo Ni Po     114 Ki
+N-20          1237 D300878-3    Na Va           B  700 Na
+N-21          1239 D633565-6  J Ni Po              105 Ki
+N-22          1240 C565220-5    Lo Ni              704 Ki
+N-23          1335 C000468-7  K As Ni              812 Ki
+N-24          1336 X322865-1    Po              R  902 Na
+N-25          1338 C546331-8  K Lo Ni              205 Ki
+N-26          1340 C685000-6    Ba Lo Ni           125 Ki
+N-27          1431 A6A4310-A    Fl Lo Ni           900 Ki
+N-28          1435 E798967-4    Hi In              423 Ki
+N-29          1439 C324254-B  K Lo Ni              123 Ki
+N-30          1440 B562744-8    Ri                 800 Ki
+N-31          1531 E793675-3    Ni              B  421 Na
+N-32          1532 D559034-5    Lo Ni              123 Ki
+N-33          1533 E681530-2    Ni                 222 Ki
+Navavanaal    1535 A110432-G  K Ni Cx              103 Ki
+N-35          1538 D220334-4    De Lo Ni Po        604 Ki
+N-36          1539 C375558-9    Ag Ni              323 Ki
+N-37          1632 D788330-7  K Lo Ni              814 Ki
+N-38          1633 E65216A-2    Lo Ni Po           501 Ki
+N-39          1636 C753342-7    Lo Ni Po           904 Ki
+N-40          1638 B000241-D  K As Lo Ni           601 Ki
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ovorta SECTOR: Vortaana Sector
+#
+# Jump-routes
+#
+$1736 1535 -1 0 5
+$1934 1535 -1 0 5
+$1832 1535 -1 0 5
+$1832 1930 0 -1 5
+$1736 2036 0 0 5
+$2036 2137 0 0 5
+$2137 2434 0 0 5
+$2434 2433 0 0 5
+$2433 2331 0 0 5
+$2331 2131 0 0 5
+$2131 1832 0 0 5
+$1832 1934 0 0 5
+$1934 2036 0 0 5
+$2131 2130 0 -1 5
+$2137 2537 1 0 5
+$2434 2633 1 0 5
+$2232 1830 0 -1 10
+$2232 2634 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1736 B76A7BE-C  J Wa                 200 Ki
+O-2           1738 D325421-8  K Ni                 701 Ki
+O-3           1831 C76A763-7    Ri Wa              903 Ki
+O-4           1832 A300764-E  L Na Va              815 Ki
+O-5           1833 C64AA68-A  J Hi In Wa           904 Ki
+O-6           1834 C635444-5    Ni                 804 Ki
+O-7           1839 C440547-9    De Ni Po           201 Ki
+O-8           1932 C675438-5    Ni                 914 Ki
+O-9           1934 A300250-E    Lo Ni Va           700 Ki
+O-10          1937 C657237-5    Lo Ni              514 Ki
+O-11          1938 C5845AE-5    Ag Ni              710 Ki
+O-12          2035 C747565-9    Ag Ni              403 Ki
+O-13          2036 A456855-B  L                    103 Ki
+O-14          2038 C683335-7  K Lo Ni              902 Ki
+O-15          2040 C537102-8  K Lo Ni              604 Ki
+O-16          2131 A130241-D    De Lo Ni Po        504 Ki
+O-17          2135 C84A659-A    Ni Wa              414 Ki
+O-18          2137 B510738-A  L Na                 103 Ki
+O-19          2138 E242411-5    Ni Po              324 Ki
+Mooreess      2232 C66688D-3    Ri                 504 Ki
+O-21          2236 E436789-6                       100 Ki
+O-22          2331 B3126A6-7  J Ic Na Ni           912 Ki
+O-23          2332 C200310-6  K Lo Ni Va           703 Ki
+O-24          2333 D367414-5  K Ni                 204 Ki
+O-25          2334 E97AA99-7    Hi In Wa           403 Ki
+O-26          2339 C220442-7    De Ni Po           623 Ki
+O-27          2433 B532433-A  K Ni Po              710 Ki
+O-28          2434 B535AA5-A    Hi In              113 Ki
+O-29          2440 C232200-7    Lo Ni Po           504 Ki
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Portav SECTOR: Vortaana Sector
+#
+# Jump-routes
+#
+$2932 3029 0 -1 5
+$2932 2633 0 0 5
+$2633 2634 0 0 5
+$2634 2537 0 0 5
+$2537 2137 -1 0 5
+$2633 2434 -1 0 5
+$2633 2834 0 0 5
+$2834 3033 0 0 5
+$3033 2932 0 0 5
+$2834 3036 0 0 5
+$3036 3138 0 0 5
+$3138 2839 0 0 5
+$2839 2537 0 0 5
+$2839 2602 0 1 5
+$3138 2901 0 1 5
+$2634 2232 -1 0 10
+$2634 2837 0 0 10
+$2837 3040 0 0 10
+$3040 0202 1 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2531 C210589-9    Ni                 122 Ki
+P-2           2532 C68458A-7  J Ag Ni              504 Ki
+P-3           2533 C9A8867-5    Fl                 603 Ki
+P-4           2536 E8A556A-7    Fl Ni              604 Ki
+P-5           2537 B160452-C    De Ni              500 Ki
+P-6           2632 D687200-8  K Lo Ni              624 Ki
+P-7           2633 A344120-C    Lo Ni              900 Ki
+Chantarr      2634 B3107BA-8  L Na                 314 Ki
+P-9           2636 C223554-8    Ni Po              500 Ki
+P-10          2638 B68967A-A    Ni Ri           B  403 Na
+P-11          2640 D859620-4    Ni                 711 Ki
+P-12          2733 AAC7411-E    Fl Ni           A  603 Ki
+P-13          2734 B647321-6    Lo Ni              914 Ki
+P-14          2735 C9A4752-A    Fl                 930 Ki
+P-15          2736 C546633-7  J Ag Ni              603 Ki
+P-16          2737 E000497-5    As Ni              303 Ki
+P-17          2738 D120654-5  J De Na Ni Po        404 Ki
+P-18          2831 C363100-B    Lo Ni              913 Ki
+P-19          2832 C225327-8  K Lo Ni              814 Ki
+P-20          2833 E32299B-8    Hi In Na Po        200 Ki
+P-21          2834 B343566-B    Ni Po              200 Ki
+Olibar        2837 C414767-8  L Ic                 405 Ki
+P-23          2839 A583769-8  L Ri                 404 Ki
+P-24          2931 C557999-7  L Hi                 600 Ki
+P-25          2932 A344255-E    Lo Ni              904 Ki
+P-26          2940 C230662-7    De Na Ni Po        604 Ki
+P-27          3031 C723378-9    Lo Ni Po        B  224 Na
+P-28          3033 B340359-A  K De Lo Ni Po        204 Ki
+P-29          3034 D676675-2    Ag Ni           B  202 Na
+P-30          3036 AA89665-8  J Ni Ri              701 Ki
+P-31          3037 C69A103-7    Lo Ni Wa           724 Ki
+P-32          3039 D7A2583-3  J Fl Ni              704 Ki
+Pananier      3040 C558254-7    Lo Ni              103 Ki
+P-34          3132 E947000-6    Ba Lo Ni           405 Ki
+P-35          3133 C646531-7    Ag Ni              704 Ki
+P-36          3137 C77A99B-A  J Hi In Wa           600 Ki
+P-37          3138 A576ABD-D    Hi In              412 Ki
+P-38          3139 E571788-5                       802 Ki
+P-39          3234 C75A947-A  J Hi Wa              103 Ki
+P-40          3240 C745214-5    Lo Ni              122 Ki
+

@@ -1,0 +1,361 @@
+Cuulromi Sector
+
+A: Acuul                     a.dat
+B: Buulrom                   b.dat
+C: Cuul                      c.dat
+D: Deromi                    d.dat
+E: Ecuulo                    e.dat
+F: Fulromi                   f.dat
+G: Guualron                  g.dat
+H: Hauulcuu                  h.dat
+I: Iromic                    i.dat
+J: Jacuul                    j.dat
+K: Kuulassel                 k.dat
+L: Luulrom                   l.dat
+M: Momiuul                   m.dat
+N: Nuulacca                  n.dat
+O: Omicuu                    o.dat
+P: Paluul                    p.dat
+
+Bases:
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Acuul SECTOR: Cuulromi Sector
+#
+# Jump-routes
+#
+$0204 3102 -1 0 10
+$0204 0606 0 0 10
+$0606 0908 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Malore        0204 B6A1124-8    Fl Lo Ni           902 Na
+A-2           0209 D263788-3    Ri                 200 Na
+A-3           0503 D414338-5    Ic Lo Ni           520 Na
+A-4           0508 C484673-7    Ag Ni Ri        B  502 Na
+Suldanna      0606 C875241-5    Lo Ni              611 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Buulrom SECTOR: Cuulromi Sector
+#
+# Jump-routes
+#
+$0908 0606 -1 0 10
+$0908 1011 0 1 10
+$1410 1011 0 1 10
+$1410 1811 1 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Jorreck       0908 C100633-B  S Na Ni Va           403 Na
+B-2           1006 E888678-3    Ag Ni Ri        B  514 Na
+B-3           1105 CAA7634-9  S Fl Ni              702 Na
+B-4           1302 C000100-C  S As Lo Ni           105 Na
+B-5           1303 C527431-8    Ni                 812 Na
+B-6           1305 C787552-8  S Ag Ni              214 Na
+B-7           1306 E000A98-B    As Hi Na           610 Na
+B-8           1401 E687434-3    Ni                 305 Na
+Uissara       1410 E547664-2    Ag Ni              405 Na
+Buul          1502 A522300-F  N Lo Ni Po           614 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Cuul SECTOR: Cuulromi Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           2404 E542277-7    Lo Ni Po        B  524 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Deromi SECTOR: Cuulromi Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2806 E310422-4    Ni                 600 Na
+D-2           2909 C767236-7    Lo Ni              210 Na
+D-3           3009 B410897-A    Na                 704 Na
+D-4           3107 C436444-A    Ni                 723 Na
+D-5           3209 E463988-7    Hi                 802 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ecuulo SECTOR: Cuulromi Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0214 A758733-A  N Ag                 204 Na
+E-2           0217 C40189A-7    Ic Na Va           102 Na
+E-3           0311 C512530-8    Ic Ni              622 Na
+E-4           0315 D23169D-4  S Na Ni Po           800 Na
+E-5           0412 C7C0874-7    De              A  202 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Fulromi SECTOR: Cuulromi Sector
+#
+# Jump-routes
+#
+$1011 0908 0 -1 10
+$1011 1410 0 -1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Marscall      1011 C210310-B  S Lo Ni              204 Na
+F-2           1114 B84A100-E    Lo Ni Wa           702 Na
+F-3           1213 E200886-6    Na Va              222 Na
+F-4           1319 C886333-4    Lo Ni              514 Na
+F-5           1511 E541100-5    Lo Ni Po           612 Na
+F-6           1517 D5859DE-3    Hi                 813 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Guualron SECTOR: Cuulromi Sector
+#
+# Jump-routes
+$2019 2021 0 1
+#
+$1811 1410 -1 -1 10
+$1811 1914 0 0 10
+$1914 2016 0 0 10
+$2016 2019 0 0 10
+$2019 2021 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Glouinn       1811 C679522-6  S Ni                 413 Na
+Ettiff        1914 E768203-5    Lo Ni              604 Na
+Guual         1916 A223400-F  N Ni Po              122 Na
+Memmemm       2016 EA87366-2    Lo Ni              724 Na
+Laurrla       2019 C572454-6    Ni                 714 Na
+G-6           2111 B663321-9  N Lo Ni              815 Na
+G-7           2114 E544588-7    Ag Ni              604 Na
+G-8           2212 E467A75-B    Hi              B  500 Na
+G-9           2216 D100342-7    Lo Ni Va           913 Na
+G-10          2414 C68A203-A  S Lo Ni Wa           413 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hauulcuu SECTOR: Cuulromi Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2514 CAE777A-8  S Fl              B  110 Na
+H-2           2518 C664444-6    Ni                 802 Na
+H-3           2612 C564879-7    Ri              B  113 Na
+H-4           2716 C420652-A    De Na Ni Po        300 Na
+H-5           2915 B644500-C    Ag Ni              701 Na
+H-6           2919 E310799-3    Na                 913 Na
+H-7           3013 C86A59A-A    Ni Wa              304 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Iromic SECTOR: Cuulromi Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0324 D655864-5                       903 Na
+I-2           0328 B6438BF-5  N Po                 303 Na
+I-3           0423 C412889-5    Ic Na              423 Na
+I-4           0521 C749335-9    Lo Ni              903 Na
+I-5           0522 C4668CG-9                       100 Na
+I-6           0529 C542A97-B  S Hi In Po           402 Na
+I-7           0622 B69A76B-9  S Wa                 804 Na
+I-8           0624 E200657-7    Na Ni Va           204 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jacuul SECTOR: Cuulromi Sector
+#
+# Jump-routes
+$1522 1623 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0925 C98A57C-B    Ni Wa           B  722 Na
+J-2           1023 B54567C-A    Ag Ni           B  102 Na
+J-3           1029 C9D389B-7    Fl                 822 Na
+J-4           1123 A7B3676-B    Fl Ni           A  622 Na
+J-5           1125 E699732-3                       223 Na
+J-6           1430 B75979B-6  N                    211 Na
+J-7           1522 B559723-6  S                    112 Na
+J-8           1525 C531211-9    Lo Ni Po           912 Na
+J-9           1530 D587252-7  S Lo Ni              500 Na
+J-10          1621 C538787-6  S                    303 Na
+J-11          1623 C448210-8  S Lo Ni              324 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kuulassel SECTOR: Cuulromi Sector
+#
+# Jump-routes
+$2021 2019 0 -1
+$1822 1923 0 0
+#
+$2021 2019 0 -1 10
+$2021 2423 0 0 10
+$2423 2527 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1726 C3009AB-A  S Hi Na Va           302 Na
+K-2           1730 C546233-8    Lo Ni              301 Na
+K-3           1821 CAD6215-8  S Fl Lo Ni           814 Na
+K-4           1822 C429122-A  S Lo Ni              804 Na
+K-5           1825 C577335-7  S Lo Ni              104 Na
+K-6           1923 B363246-8  S Lo Ni              404 Na
+K-7           1928 C10089A-9  S Na Va              723 Na
+Killocsa      2021 B420203-C    De Lo Ni Po        201 Na
+K-9           2025 E635675-7    Ni              B  523 Na
+Dabbuika      2423 C6A4544-8    Fl Ni              913 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Luulrom SECTOR: Cuulromi Sector
+#
+# Jump-routes
+#
+$2527 2423 -1 0 10
+$2527 2629 0 0 10
+$2629 2633 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Laggade       2527 C110775-B  S Na              B  902 Na
+Dillonee      2629 C460597-8    De Ni              611 Na
+L-3           2725 E4848A8-6                       701 Na
+L-4           2823 B31289A-7  N Ic Na              624 Na
+L-5           2924 X200535-2    Va              R  123 Na
+L-6           3029 B9C2479-B  N Fl Ni           A  910 Na
+L-7           3127 E785367-2    Lo Ni              213 Na
+L-8           3227 CAB9343-A    Fl Lo Ni        A  800 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Momiuul SECTOR: Cuulromi Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0238 D400236-4    Lo Ni Va           313 Na
+M-2           0639 D47647A-4  S Ni              B  523 Na
+M-3           0734 C423200-B  S Lo Ni Po           801 Na
+M-4           0740 C796751-8    Ag                 513 Na
+M-5           0839 D559663-4  S Ni                 203 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nuulacca SECTOR: Cuulromi Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0932 C99A952-B    Hi In Wa           704 Na
+N-2           1336 DAE6479-8    Fl Ni           B  103 Na
+N-3           1339 C350410-6    De Ni Po           720 Na
+N-4           1432 D110240-9  S Lo Ni              500 Na
+N-5           1434 B424457-C  N Ni                 823 Na
+N-6           1536 D868557-8  S Ag Ni              603 Na
+N-7           1637 C5487A6-6    Ag                 312 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Omicuu SECTOR: Cuulromi Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           2134 C480553-7    De Ni              910 Na
+O-2           2140 D100A9B-9  S Hi Na Va           721 Na
+O-3           2340 C556530-5    Ag Ni              823 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Paluul SECTOR: Cuulromi Sector
+#
+# Jump-routes
+#
+$2633 2629 0 -1 10
+$2633 2934 0 0 10
+$2934 3137 0 0 10
+$3137 3239 0 0 10
+$3239 0102 1 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Porgranna     2633 C759524-8    Ni                 323 Na
+P-2           2637 C53658B-9    Ni                 300 Na
+P-3           2838 C440569-8    De Ni Po           905 Na
+Ahujji        2934 B4278AD-A                       103 Na
+P-5           3031 C1408A5-6    De Po              605 Na
+Taakilla      3137 D335300-6  S Lo Ni              604 Na
+Juollo        3239 C6116BD-6    Ic Na Ni           404 Na
+

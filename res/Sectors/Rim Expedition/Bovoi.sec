@@ -1,0 +1,423 @@
+Bovoi Sector
+
+A: Abovoi                    a.dat
+B: Boviren                   b.dat
+C: Covoin                    c.dat
+D: Dlovoik                   d.dat
+E: Ebovi                     e.dat
+F: Frabov                    f.dat
+G: Grebovi                   g.dat
+H: Hobovo                    h.dat
+I: Ibovoim                   i.dat
+J: Jabova                    j.dat
+K: Klovob                    k.dat
+L: Loboih                    l.dat
+M: Movoim                    m.dat
+N: Nurvovi                   n.dat
+O: Obovoi                    o.dat
+P: Pobov                     p.dat
+
+Bases:
+F = Fauan Military
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+13 Fc = Fauan Commons
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Abovoi SECTOR: Bovoi Sector
+#
+# Jump-routes
+#
+$0203 3004 -1 0 10
+$0203 0605 0 0 10
+$0605 1004 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Asharn        0203 C678830-5                       814 Na
+A-2           0403 C500523-7    Ni Va              223 Na
+A-3           0407 B566003-6  S Lo Ni              124 Na
+A-4           0601 C23169C-9    Na Ni Po           804 Na
+Grokallan     0605 C765AAC-8    Hi                 202 Na
+A-6           0704 C130578-8    De Ni Po        B  200 Na
+A-7           0705 X210500-1                    R  601 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Boviren SECTOR: Bovoi Sector
+#
+# Jump-routes
+#
+$1004 0605 -1 0 10
+$1004 1108 0 0 10
+$1108 1210 0 0 10
+$1210 1214 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           1003 C655434-4  S Ni                 714 Na
+Bladier       1004 C836557-B    Ni                 901 Na
+B-3           1104 E310745-4    Na                 324 Na
+Shagreda      1108 E9A5675-5    Fl Ni           B  513 Na
+Huvavaan      1210 E896444-5    Ni                 201 Na
+B-6           1504 BA9A457-9  N Ni Wa              704 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Covoin SECTOR: Bovoi Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1703 D5256AB-7  S Ni                 824 Na
+C-2           1705 B5828CC-5  N                    304 Na
+C-3           1709 B000522-C    As Ni              104 Na
+C-4           1905 C230999-B    De Hi In Na Po     402 Na
+C-5           1906 C645775-8    Ag              B  612 Na
+C-6           1910 B83A58B-B    Ni Wa              104 Na
+C-7           2003 E877210-6    Lo Ni              420 Na
+C-8           2101 C596676-6  S Ag Ni           B  515 Na
+C-9           2203 C5117AF-4  S Ic Na              504 Na
+C-10          2207 D100201-7    Lo Ni Va           510 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Dlovoik SECTOR: Bovoi Sector
+#
+# Jump-routes
+$2806 3007 0 0
+$2905 3007 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2501 D547887-1  S                    413 Na
+D-2           2606 X353775-0    Po              R  514 Na
+D-3           2710 B956220-9  N Lo Ni              902 Na
+D-4           2803 C2706AD-5    De Ni              705 Na
+D-5           2806 C737200-6    Lo Ni              603 Na
+D-6           2905 C8A3676-5    Fl Ni           B  502 Na
+D-7           3001 C656689-3    Ag Ni              704 Na
+D-8           3007 A000799-E  2 As Na              500 Na
+D-9           3203 C532110-8    Lo Ni Po           511 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ebovi SECTOR: Bovoi Sector
+#
+# Jump-routes
+#
+$0711 1113 1 0 13
+$0711 0412 0 0 13
+$0517 0919 1 0 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0412 B512100-C  F Ic Lo Ni           714 Fc
+E-2           0414 E4748AB-4                       225 Fc
+E-3           0517 C230220-9    De Lo Ni Po        102 Fc
+E-4           0611 B8A9463-B  F Fl Ni              903 Fc
+E-5           0619 D000300-6  F As Lo Ni           105 Fc
+E-6           0711 A986889-8  F Ri                 505 Fc
+E-7           0714 E575100-8    Lo Ni              122 Fc
+E-8           0718 C430201-7  F De Lo Ni Po        100 Fc
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Frabov SECTOR: Bovoi Sector
+#
+# Jump-routes
+#
+$1214 1210 0 -1 10
+$1214 1218 0 0 10
+$1218 1321 0 1 10
+$1020 1218 0 0 13
+$1218 1017 0 0 13
+$1017 1020 0 0 13
+$1020 0919 0 0 13
+$1017 1015 0 0 13
+$1015 1214 0 0 13
+$1214 1113 0 0 13
+$1113 0711 -1 0 13
+$1020 1321 0 1 13
+$1020 1024 0 1 13
+$1020 0822 -1 1 13
+$1017 0919 0 0 13
+$0919 0517 -1 0 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0919 C475696-4  F Ag Ni              514 Fc
+F-2           1015 C523452-6  F Ni Po              412 Fc
+F-3           1017 C465415-8    Ni                 600 Fc
+F-4           1018 B8C8846-6  F Fl              A  112 Fc
+Fauan         1020 A461A8B-H  F Hi Cx              613 Fc
+F-6           1113 B62966B-7    Ni                 422 Fc
+F-7           1117 X639321-3    Lo              R  100 Na
+F-8           1118 BA67787-7    Ag Ri              724 Fc
+Flozour       1214 B6479EE-8  F Hi In              412 Fc
+Fuerlich      1218 A4017CE-D  F Ic Na Va           102 Fc
+F-11          1319 E5998AF-5                       904 Fc
+F-12          1512 C539652-9    Ni                 603 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Grebovi SECTOR: Bovoi Sector
+#
+# Jump-routes
+#
+$1720 1723 0 1 13
+$1720 1321 -1 1 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1720 C537467-5  F Ni                 512 Fc
+G-2           1815 C663200-7  S Lo Ni              820 Na
+G-3           2012 C634444-7    Ni                 100 Na
+G-4           2213 C667499-4  S Ni                 920 Na
+G-5           2316 B648000-8  2 Ba Lo Ni           930 Na
+G-6           2318 C542630-3  S Ni Po              613 Na
+G-7           2411 C877100-5    Lo Ni              801 Na
+G-8           2412 C5A278A-8    Fl                 104 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hobovo SECTOR: Bovoi Sector
+#
+# Jump-routes
+#
+$2917 2615 0 0 11
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2514 C234636-7    Ni                 502 Na
+H-2           2515 B53447A-9  S Ni              B  920 Na
+H-3           2615 C303258-C  S Ic Lo Ni Va        203 Na
+H-4           2616 D86A324-9  S Lo Ni Wa           525 Na
+H-5           2619 C485410-5  S Ni                 103 Na
+H-6           2718 C425657-6    Ni                 113 Na
+H-7           2811 D375144-4  S Lo Ni              803 Na
+H-8           2917 A457ABB-E    Hi                 702 Na
+H-9           2918 C5617A9-3  S                    624 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ibovoim SECTOR: Bovoi Sector
+#
+# Jump-routes
+#
+$0729 0832 0 1 2
+$0729 0329 0 0 2
+$0329 3129 -1 0 2
+$0822 1024 1 0 13
+$0822 1020 1 -1 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0225 C663623-7    Ni                 604 Na
+Bumoig        0329 C65898A-8    Hi                 701 Na
+I-3           0424 B453964-8  N Hi Po              804 Na
+I-4           0529 E574355-3    Lo Ni              210 Na
+I-5           0624 E000567-5    As Ni              611 Na
+I-6           0627 B775756-B  S Ag                 803 Na
+Ioloim        0729 B200221-D    Lo Ni Va           922 Na
+I-8           0822 C61488A-9    Ic                 602 Fc
+I-9           0827 C98A730-6  S Wa                 624 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jabova SECTOR: Bovoi Sector
+#
+# Jump-routes
+#
+$1321 1218 0 -1 10
+$1321 1723 1 0 10
+$1321 1020 0 -1 13
+$1321 1423 0 0 13
+$1024 1020 0 -1 13
+$1024 0822 -1 0 13
+$1024 1423 0 0 13
+$1423 1723 1 0 13
+$1321 1720 1 -1 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           1024 C6688CD-5                       412 Fc
+J-2           1122 C679478-6  S Ni              B  204 Na
+J-3           1228 B857558-7    Ag Ni              303 Na
+Klileena      1321 C888789-3    Ag Ri              102 Fc
+J-5           1423 B510AA9-C    Hi Na              211 Fc
+J-6           1424 C9A1577-7    Fl Ni           B  714 Na
+J-7           1521 E43437C-5    Lo Ni           B  103 Na
+J-8           1528 E160633-4    De Ni              510 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Klovob SECTOR: Bovoi Sector
+#
+# Jump-routes
+#
+$1723 1321 -1 0 10
+$1723 2025 0 0 10
+$2025 2326 0 0 10
+$2326 2330 0 0 10
+$2330 2631 1 1 10
+$1723 1423 -1 0 13
+$1723 1720 0 -1 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Hernoon       1723 C140358-C    De Lo Ni Po        304 Fc
+Kazzazia      2025 C400740-5  F Na Va              924 Fc
+Banear        2326 E564687-5    Ag Ni Ri           425 Na
+Mawach        2330 B482338-7    Lo Ni              114 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Loboih SECTOR: Bovoi Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2626 A110843-D  N Na                 603 Na
+L-2           2721 C786A8A-8    Hi                 200 Na
+L-3           2829 C486532-8  S Ag Ni              914 Na
+L-4           3022 E597340-4    Lo Ni              900 Na
+L-5           3026 C252662-8  S Ni Po              624 Na
+L-6           3130 C4469A9-A  S Hi In              513 Na
+L-7           3225 E6A068C-4    De Ni              700 Na
+L-8           3229 E87767B-6    Ag Ni           B  111 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Movoim SECTOR: Bovoi Sector
+#
+# Jump-routes
+#
+$0832 0935 1 0 2
+$0832 0729 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0239 D563459-6  S Ni                 204 Na
+M-2           0537 C130A58-C  S De Hi In Na Po     923 Na
+M-3           0737 C222378-8    Lo Ni Po        B  102 Na
+Canloi        0832 E9D7578-7    Fl Ni           B  603 Na
+M-5           0839 C666103-9    Lo Ni              403 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nurvovi SECTOR: Bovoi Sector
+#
+# Jump-routes
+#
+$1540 1702 1 1 2
+$1540 1337 0 0 2
+$1337 0935 0 0 2
+$0935 0832 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0933 D4739AD-8  S Hi In              704 Na
+N-2           0934 D300368-5    Lo Ni Va           203 Na
+Jolodda       0935 C362332-A    Lo Ni              312 Na
+N-4           1033 E000410-9    As Ni              803 Na
+N-5           1038 C498647-7    Ag Ni              424 Na
+N-6           1133 D639149-9  S Lo Ni              502 Na
+N-7           1238 C79687C-7                    B  523 Na
+Nasalli       1337 C350479-7  S De Ni Po        B  813 Na
+N-9           1339 C350565-6  S De Ni Po           710 Na
+N-10          1436 X866898-0    Ri              R  604 Na
+N-11          1535 E322432-7    Ni Po              500 Na
+Namirr        1540 C557798-3    Ag                 201 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Obovoi SECTOR: Bovoi Sector
+#
+# Jump-routes
+$2132 2333 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1739 C30059B-B    Ni Va              614 Na
+O-2           1833 E7A1876-4    Fl              B  924 Na
+O-3           1835 B343575-C  2 Ni Po           B  525 Na
+O-4           2132 A988210-C    Lo Ni              503 Na
+O-5           2134 E555985-4    Hi                 210 Na
+O-6           2137 C5247AD-7                       104 Na
+O-7           2139 C662768-5    Ri                 703 Na
+O-8           2333 A200634-9  N Na Ni Va           614 Na
+O-9           2431 D614542-4  S Ic Ni              104 Na
+O-10          2432 C531231-6    Lo Ni Po           114 Na
+O-11          2436 C835641-4  S Ni                 720 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Pobov SECTOR: Bovoi Sector
+#
+# Jump-routes
+#
+$2631 2330 -1 -1 10
+$2631 2834 0 0 10
+$2834 2937 0 0 10
+$2937 3040 0 0 10
+$3040 3203 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Balaabi       2631 B669512-C    Ni                 112 Na
+P-2           2738 C240245-8  S De Lo Ni Po        914 Na
+Valazi        2834 C400456-A    Ni Va              504 Na
+Fatramma      2937 C6567AB-3  S Ag                 703 Na
+Pattanaal     3040 A526320-B  N Lo Ni              902 Na
+P-6           3138 E242520-3    Ni Po              514 Na
+P-7           3233 D457104-9    Lo Ni              813 Na
+

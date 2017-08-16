@@ -1,0 +1,1048 @@
+Sporinne Sector
+
+A: Aspoor                    a.dat
+B: Boorinn                   b.dat
+C: Crinner                   c.dat
+D: Draspor                   d.dat
+E: Einnesp                   e.dat
+F: Floorinn                  f.dat
+G: Greinne                   g.dat
+H: Hospoore                  h.dat
+I: Isporeia                  i.dat
+J: Jaspord                   j.dat
+K: Kaspoor                   k.dat
+L: Loorein                   l.dat
+M: Mooreiss                  m.dat
+N: Noreinne                  n.dat
+O: Oreinnet                  o.dat
+P: Poorein                   p.dat
+
+Bases:
+N = Navy
+P = Preinne Navy
+Q = Preinne Scout
+R = Preinne Navy & Scout
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+07 Na = Non-Aligned
+14 Pa = Preinne Alliance
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Aspoor SECTOR: Sporinne Sector
+#
+# Jump-routes
+#
+$0710 1110 1 0 14
+$0603 0903 1 0 14
+$0603 0402 0 0 14
+$0402 0502 0 0 14
+$0502 0801 0 0 14
+$0801 0903 1 0 14
+$0710 0510 0 0 14
+$0510 0408 0 0 14
+$0408 0508 0 0 14
+$0508 0710 0 0 14
+$0710 0711 0 1 14
+$0510 0511 0 1 14
+$0510 0112 0 1 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0101 B100474-E    Ni Va           B  224 Na
+A-2           0110 B68747A-8    Ni              B  303 Na
+A-3           0202 C765443-6  P Ni                 700 Pa
+A-4           0209 C200585-B    Ni Va              712 Pa
+A-5           0301 X8989BD-3    Hi In           R  601 Pa
+A-6           0302 C322300-B  Q Lo Ni Po           902 Pa
+A-7           0303 C110430-C    Ni                 214 Pa
+A-8           0305 C347421-7    Ni                 204 Pa
+A-9           0307 E651300-4    Lo Ni Po           111 Pa
+A-10          0308 E968887-2    Ri                 620 Pa
+A-11          0402 AAE8488-A  P Fl Ni              305 Pa
+A-12          0403 C200658-9    Na Ni Va           100 Pa
+A-13          0404 C64995A-7  R Hi In              412 Pa
+A-14          0408 A320656-B  P De Na Ni Po        702 Pa
+A-15          0409 CAD2333-6  Q Fl Lo Ni           922 Pa
+A-16          0502 B667524-B  P Ag Ni              400 Pa
+A-17          0504 C210510-8  P Ni                 711 Pa
+A-18          0506 C776246-4    Lo Ni              400 Pa
+A-19          0508 A9A4686-A  P Fl Ni              200 Pa
+A-20          0510 A887531-8  P Ag Ni              120 Pa
+A-21          0603 B222553-B  P Ni Po              524 Pa
+A-22          0604 C575388-5    Lo Ni              403 Pa
+A-23          0606 C54559B-4  P Ag Ni              504 Pa
+A-24          0608 C440748-4    De Po              603 Pa
+A-25          0705 D653200-6  Q Lo Ni Po           903 Pa
+A-26          0706 C45897A-7    Hi              B  303 Na
+A-27          0707 D300779-3    Na Va           B  714 Na
+A-28          0710 A551300-9  Q Lo Ni Po           902 Pa
+A-29          0801 B347456-9    Ni                 805 Pa
+A-30          0802 B42187A-8    Na Po           B  813 Na
+A-31          0803 C210353-A    Lo Ni              901 Pa
+A-32          0804 C400000-A    Ba Lo Ni Va        104 Pa
+A-33          0809 D410543-4  P Ni                 833 Pa
+A-34          0810 E210355-A    Lo Ni              313 Pa
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Boorinn SECTOR: Sporinne Sector
+#
+# Jump-routes
+#
+$1307 1104 0 0 14
+$1307 1406 0 0 14
+$1307 1405 0 0 14
+$1307 1608 0 0 14
+$1307 1308 0 0 14
+$1308 1110 0 0 14
+$1308 1410 0 0 14
+$1104 0903 0 0 14
+$1104 1405 0 0 14
+$1405 1406 0 0 14
+$1608 1611 0 1 14
+$1609 1410 0 0 14
+$1410 1110 0 0 14
+$1110 0710 -1 0 14
+$0903 0603 -1 0 14
+$0903 0801 -1 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           0902 C573AB8-C    Hi In              603 Pa
+B-2           0903 AA65488-C  P Ni                 204 Pa
+B-3           0910 C426333-8    Lo Ni              603 Pa
+B-4           1005 C10068A-7  P Na Ni Va           303 Pa
+B-5           1006 C300534-8  P Ni Va              303 Pa
+B-6           1007 C100140-A    Lo Ni Va           200 Pa
+B-7           1008 C352121-7  Q Lo Ni Po           323 Pa
+B-8           1009 C977145-7    Lo Ni              102 Pa
+B-9           1103 D311355-A  Q Ic Lo Ni           304 Pa
+B-10          1104 B400421-8  P Ni Va              404 Pa
+B-11          1107 C211520-A    Ic Ni              113 Pa
+B-12          1108 C7886BD-8    Ag Ni              413 Pa
+B-13          1110 B496435-7  P Ni                 802 Pa
+B-14          1203 C576344-5  Q Lo Ni              603 Pa
+B-15          1204 C99A200-C  Q Lo Ni Wa           802 Pa
+B-16          1205 C76769D-5  P Ag Ni Ri           412 Pa
+B-17          1207 C698449-6  P Ni                 203 Pa
+B-18          1209 C404542-9    Ic Ni Va           103 Pa
+B-19          1210 E677326-7    Lo Ni              113 Pa
+B-20          1302 D100744-8    Na Va              722 Pa
+B-21          1303 C000232-9    As Lo Ni           312 Pa
+Boorura       1307 A100200-G    Lo Ni Va Cx        304 Pa
+B-23          1308 B979433-C    Ni                 424 Pa
+B-24          1309 D786688-2    Ag Ni Ri           303 Pa
+B-25          1310 C7A18BD-7    Fl                 104 Pa
+B-26          1403 D51159D-6  P Ic Ni              623 Pa
+B-27          1404 C200204-A    Lo Ni Va           404 Pa
+B-28          1405 B87A644-7  P Ni Wa              100 Pa
+B-29          1406 B554324-B  Q Lo Ni              920 Pa
+B-30          1410 B100443-E  P Ni Va              102 Pa
+B-31          1501 C9697A8-7                       324 Pa
+B-32          1503 C591543-4    Ni                 604 Pa
+B-33          1504 C313500-7    Ic Ni              600 Pa
+B-34          1507 C444867-4                       610 Pa
+B-35          1510 AAB8666-D    Fl Ni           A  815 Pa
+B-36          1601 B5649CA-C    Hi                 304 Pa
+B-37          1605 C627114-A    Lo Ni              512 Pa
+B-38          1608 B755697-5    Ag Ni              305 Pa
+B-39          1609 B300789-7  P Na Va              511 Pa
+B-40          1610 A595587-D    Ag Ni              312 Pa
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Crinner SECTOR: Sporinne Sector
+#
+# Jump-routes
+#
+$2309 2411 0 1 14
+$2309 2208 0 0 14
+$2309 2206 0 0 14
+$2206 1905 0 0 14
+$2206 2606 1 0 14
+$2309 2606 1 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1702 D000667-4    As Na Ni           401 Pa
+C-2           1703 C5529DC-3  R Hi Po              115 Pa
+C-3           1706 C440742-9    De Po              203 Pa
+C-4           1707 C6B5423-A  P Fl Ni           A  104 Pa
+C-5           1708 C421549-9    Ni Po              903 Pa
+C-6           1709 C867366-6    Lo Ni              402 Pa
+C-7           1801 C89659B-7  P Ag Ni              700 Pa
+C-8           1802 C363124-7    Lo Ni              704 Pa
+C-9           1803 X67A234-3    Lo Wa           R  304 Pa
+C-10          1805 DAA8369-6    Fl Lo Ni           513 Pa
+C-11          1806 E100545-7    Ni Va              900 Pa
+C-12          1807 C400624-5    Na Ni Va           800 Pa
+C-13          1901 B502520-8  P Ic Ni Va           502 Pa
+C-14          1902 E310300-7    Lo Ni              101 Pa
+C-15          1903 C56556B-8  P Ag Ni              303 Pa
+C-16          1905 B797647-5  P Ag Ni              201 Pa
+C-17          1907 E20038A-4    Lo Ni Va           914 Pa
+C-18          1908 C355566-5  P Ag Ni              601 Pa
+C-19          1910 C226976-A    Hi In           B  601 Na
+C-20          2001 B226876-C                    B  320 Na
+C-21          2002 C254747-4  P Ag                 603 Pa
+C-22          2004 C243697-5    Ni Po              502 Pa
+C-23          2005 C432544-A  P Ni Po              803 Pa
+C-24          2008 B360678-9    De Ni Ri        B  212 Na
+C-25          2101 X664311-0    Lo              R  901 Pa
+C-26          2102 D6487BC-1  P Ag                 422 Pa
+C-27          2104 D548430-7  P Ni                 402 Pa
+C-28          2107 E000265-5    As Lo Ni           122 Pa
+C-29          2202 C564ABD-8    Hi                 414 Pa
+C-30          2206 B85A9BB-C  R Hi Wa              400 Pa
+C-31          2208 B635611-7    Ni                 602 Pa
+C-32          2209 C977213-7  Q Lo Ni              900 Pa
+C-33          2210 C241103-9    Lo Ni Po           102 Pa
+C-34          2304 C563587-4  P Ni                 504 Pa
+C-35          2305 C654559-9    Ag Ni              915 Pa
+C-36          2307 C230799-7    De Na Po           904 Pa
+C-37          2309 B96A7A9-C  P Wa                 201 Pa
+C-38          2401 C340533-5    De Ni Po           321 Pa
+C-39          2402 C978023-6    Lo Ni              800 Pa
+C-40          2406 C656431-9    Ni                 602 Pa
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Draspor SECTOR: Sporinne Sector
+#
+# Jump-routes
+#
+$2606 2206 -1 0 14
+$2606 2309 -1 0 14
+$2606 2706 0 0 14
+$2706 2704 0 0 14
+$2704 2503 0 0 14
+$2606 2909 0 0 14
+$2909 2810 0 0 14
+$2810 2711 0 1 14
+$2909 3009 0 0 14
+$2704 3102 0 0 14
+$3102 3201 0 0 14
+$3009 3112 0 1 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2502 C41077C-8    Na              B  204 Na
+D-2           2503 B231999-9  R Hi In Na Po        200 Pa
+D-3           2504 D9C8A94-A  R Fl Hi           A  813 Pa
+D-4           2505 E547452-5    Ni                 612 Pa
+D-5           2507 C337610-5    Ni                 610 Pa
+D-6           2604 C000453-8  P As Ni              101 Pa
+D-7           2606 A230545-C  P De Ni Po           713 Pa
+D-8           2607 E99A411-8    Ni Wa              303 Pa
+D-9           2609 C000576-C    As Ni           B  803 Na
+D-10          2701 X4239CA-2    Hi In Po        R  814 Pa
+D-11          2702 C669655-6    Ni Ri              704 Pa
+D-12          2703 D569565-6    Ni                 804 Pa
+D-13          2704 B489599-B  P Ni                 304 Pa
+D-14          2706 B500012-A  Q Lo Ni Va           604 Pa
+D-15          2804 E666622-6    Ag Ni              322 Pa
+D-16          2806 C346234-6  Q Lo Ni              502 Pa
+D-17          2807 C617330-5    Ic Lo Ni           603 Pa
+D-18          2810 B522855-8  R Na Po              100 Pa
+D-19          2901 D33069D-5    De Na Ni Po        402 Pa
+D-20          2902 D226110-6  P Lo Ni              802 Pa
+D-21          2903 C324353-9  Q Lo Ni              205 Pa
+D-22          2907 X200404-2    Va              R  603 Pa
+D-23          2909 A686621-C    Ag Ni              824 Pa
+D-24          2910 D632343-7    Lo Ni Po           400 Pa
+D-25          3008 E454588-4    Ag Ni              902 Pa
+D-26          3009 B893755-7  P                    820 Pa
+D-27          3010 C7B5552-7  P Fl Ni           A  710 Pa
+D-28          3102 B4826AC-8    Ni                 903 Pa
+D-29          3103 C410610-7  P Na Ni              900 Pa
+D-30          3104 E223667-8    Na Ni Po           310 Pa
+D-31          3105 C6A3341-A  Q Fl Lo Ni           104 Pa
+D-32          3107 C000364-8    As Lo Ni           302 Pa
+D-33          3108 D8A4000-8    Ba Fl Lo Ni        200 Pa
+D-34          3110 C673566-4    Ni                 102 Pa
+D-35          3201 B968669-5  P Ag Ni Ri           803 Pa
+D-36          3205 E669564-5    Ni                 304 Pa
+D-37          3208 C956310-7    Lo Ni              410 Pa
+D-38          3209 C795133-4  Q Lo Ni              502 Pa
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Einnesp SECTOR: Sporinne Sector
+#
+# Jump-routes
+#
+$0711 0710 0 -1 14
+$0511 0510 0 -1 14
+$0112 0510 0 -1 14
+$0112 0214 0 0 14
+$0719 1120 1 0 14
+$0719 0720 0 0 14
+$0719 0418 0 0 14
+$0418 0316 0 0 14
+$0316 0214 0 0 14
+$0316 0413 0 0 14
+$0413 0412 0 0 14
+$0412 0511 0 0 14
+$0413 0612 0 0 14
+$0612 0711 0 0 14
+$0418 0419 0 0 14
+$0316 0116 0 0 14
+$0211 3208 -1 -1 10
+$0211 0315 0 0 10
+$0315 0518 0 0 10
+$0518 0820 0 0 10
+$0820 0924 1 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0112 B363659-8  P Ni Ri              414 Pa
+E-2           0115 C775377-9    Lo Ni           B  123 Na
+E-3           0116 A785432-A  P Ni                 100 Pa
+E-4           0117 C453330-7    Lo Ni Po           800 Pa
+E-5           0119 C7796AA-5    Ni                 920 Pa
+Traik         0211 E200664-7    Na Ni Va           620 Pa
+E-7           0212 D313759-9    Ic Na              514 Pa
+E-8           0213 E386662-7    Ag Ni Ri           625 Pa
+E-9           0214 B6678BA-8                       912 Pa
+E-10          0215 C300852-A  R Na Va              304 Pa
+E-11          0218 X564954-5    Hi              R  704 Pa
+E-12          0219 C979310-6    Lo Ni              202 Pa
+E-13          0312 C664884-7  R Ri                 602 Pa
+E-14          0314 C2746AD-4  P Ag Ni              103 Pa
+Tajaa         0315 E749559-4    Ni                 303 Pa
+E-16          0316 A274532-C  P Ag Ni              103 Pa
+E-17          0318 C247777-8    Ag              B  110 Na
+E-18          0412 A00087B-F    As Na              700 Pa
+E-19          0413 A323110-B    Lo Ni Po           513 Pa
+E-20          0417 C222253-8  Q Lo Ni Po           701 Pa
+E-21          0418 A331155-D  Q Lo Ni Po           603 Pa
+E-22          0419 B300550-C    Ni Va              513 Pa
+E-23          0420 C100686-B    Na Ni Va           414 Pa
+E-24          0511 B140311-9    De Lo Ni Po        904 Pa
+E-25          0512 E477436-5    Ni                 204 Pa
+E-26          0516 C456100-8  Q Lo Ni              214 Pa
+Wieamm        0518 E66898A-4    Hi                 623 Pa
+E-28          0612 B776234-B  Q Lo Ni              104 Pa
+E-29          0615 C998546-8    Ag Ni              503 Pa
+E-30          0620 C5157BC-6    Ic                 910 Pa
+E-31          0711 B0008A8-C  R As Na              704 Pa
+E-32          0713 C576279-9    Lo Ni           B  301 Na
+E-33          0715 C677332-4    Lo Ni              205 Pa
+E-34          0716 C585645-5    Ag Ni Ri           620 Pa
+E-35          0718 C421663-9    Na Ni Po           903 Pa
+E-36          0719 A402545-D    Ic Ni Va           412 Pa
+E-37          0720 A776331-8  Q Lo Ni              903 Pa
+E-38          0811 C23069A-5  P De Na Ni Po        604 Pa
+E-39          0819 C4777AB-9    Ag                 113 Pa
+Qarrat        0820 C492656-6    Ni                 623 Pa
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Floorinn SECTOR: Sporinne Sector
+#
+# Jump-routes
+#
+$1611 1608 0 -1 14
+$1611 1812 1 0 14
+$1120 1323 0 1 14
+$1120 1320 0 0 14
+$1120 0922 0 1 14
+$1120 0719 -1 0 14
+$1320 1722 1 1 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0911 A000574-E    As Ni           B  703 Na
+F-2           0912 C330769-7    De Na Po           900 Pa
+F-3           0914 C536554-B    Ni                 303 Pa
+F-4           0916 B120587-D    De Ni Po           600 Pa
+F-5           1012 E654426-6    Ni                 400 Pa
+F-6           1015 E563430-5    Ni                 101 Pa
+F-7           1018 C553301-8    Lo Ni Po           600 Pa
+F-8           1111 C777778-4    Ag              B  204 Na
+F-9           1114 C4916BA-8  P Ni                 300 Pa
+F-10          1115 B635588-9  P Ni                 702 Pa
+F-11          1119 D34079B-5  P De Po              603 Pa
+Fluria        1120 B75AAB8-G  R Hi Wa Cx           400 Pa
+F-13          1212 C110501-B    Ni                 500 Pa
+F-14          1214 B000333-B    As Lo Ni           502 Pa
+F-15          1215 D64A300-5  Q Lo Ni Wa           504 Pa
+F-16          1216 C779674-7    Ni              B  400 Na
+F-17          1219 E201455-6    Ic Ni Va           324 Pa
+F-18          1311 E553255-6    Lo Ni Po           104 Pa
+F-19          1312 C304479-6    Ic Ni Va        B  600 Na
+F-20          1313 C988995-5  R Hi                 623 Pa
+F-21          1316 C4366A9-9  P Ni                 304 Pa
+F-22          1318 B493677-7    Ni              B  604 Na
+F-23          1319 C796342-7    Lo Ni              211 Pa
+F-24          1320 B583989-9    Hi                 904 Pa
+F-25          1411 C67A786-6    Wa                 800 Pa
+F-26          1414 E53459A-8    Ni                 203 Pa
+F-27          1415 D224352-9  Q Lo Ni              314 Pa
+F-28          1418 C623300-A    Lo Ni Po           724 Pa
+F-29          1420 E22089E-3    De Na Po           323 Pa
+F-30          1512 C657348-5    Lo Ni              713 Pa
+F-31          1514 C130846-7  R De Na Po           304 Pa
+F-32          1519 D667210-7  Q Lo Ni              805 Pa
+F-33          1611 A200021-D    Lo Ni Va           702 Pa
+F-34          1612 C849499-9    Ni                 112 Pa
+F-35          1613 E98A750-6    Ri Wa              805 Pa
+F-36          1614 C110442-B  P Ni                 802 Pa
+F-37          1616 C245744-9  P Ag                 504 Pa
+F-38          1617 C210656-7  P Na Ni              600 Pa
+F-39          1619 C763100-7    Lo Ni              403 Pa
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Greinne SECTOR: Sporinne Sector
+#
+# Jump-routes
+#
+$1812 1611 -1 0 14
+$1812 1813 0 0 14
+$1812 1912 0 0 14
+$1813 2115 0 0 14
+$2115 2113 0 0 14
+$2013 2411 0 0 14
+$2113 1912 0 0 14
+$2411 2309 0 -1 14
+$2411 2613 1 0 14
+$2411 2711 1 0 14
+$2419 2618 1 0 14
+$2419 2021 0 1 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1713 C532788-7    Na Po              300 Pa
+G-2           1715 C8C3101-6    Fl Lo Ni        A  223 Pa
+G-3           1719 C410687-7  P Na Ni              610 Pa
+G-4           1812 B4316A9-8  P Na Ni Po           324 Pa
+G-5           1813 A330645-B  P De Na Ni Po        402 Pa
+G-6           1814 C5286A6-7  P Ni                 605 Pa
+G-7           1818 E301552-7    Ic Ni Va           304 Pa
+G-8           1819 C310240-B  Q Lo Ni              503 Pa
+G-9           1820 C344212-8  Q Lo Ni              424 Pa
+G-10          1911 C4256AB-A    Ni                 224 Pa
+G-11          1912 B46589A-A    Ri                 102 Pa
+G-12          1913 E428567-4    Ni                 612 Pa
+G-13          1914 E543677-3    Ni Po           B  604 Na
+G-14          1916 C323727-6  P Na Po              423 Pa
+G-15          1919 C56846B-4    Ni                 310 Pa
+G-16          1920 C89835A-6    Lo Ni              114 Pa
+G-17          2013 B583689-6  P Ni Ri              910 Pa
+G-18          2015 C000000-C    As Ba Lo Ni        704 Pa
+G-19          2018 C250686-7  P De Ni Po           112 Pa
+G-20          2112 D310562-8  P Ni                 702 Pa
+G-21          2113 A838687-D  P Ni                 301 Pa
+G-22          2114 C150102-B    De Lo Ni Po        604 Pa
+G-23          2115 B300698-A  P Na Ni Va           122 Pa
+G-24          2116 E6A0565-4    De Ni              710 Pa
+G-25          2211 C988695-6  P Ag Ni Ri           813 Pa
+G-26          2212 A847734-C    Ag                 522 Pa
+G-27          2216 D443AC8-8    Hi In Po           504 Pa
+G-28          2217 C576788-7    Ag                 604 Pa
+G-29          2219 C9D5364-8    Fl Lo Ni           703 Pa
+G-30          2220 C75A557-B  P Ni Wa              203 Pa
+G-31          2311 CAD9304-7    Fl Lo Ni           103 Pa
+G-32          2312 E437659-6    Ni                 304 Pa
+G-33          2314 C6639EB-8  R Hi                 104 Pa
+G-34          2315 E6B0546-4    De Ni           A  313 Pa
+G-35          2411 B000357-F    As Lo Ni           703 Pa
+G-36          2415 E456679-2    Ag Ni           B  402 Na
+G-37          2417 C679525-9    Ni                 122 Pa
+G-38          2418 E20058A-8    Ni Va              403 Pa
+G-39          2419 A300AA6-F  R Hi Na Va           202 Pa
+G-40          2420 C896442-4    Ni                 204 Pa
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hospoore SECTOR: Sporinne Sector
+#
+# Jump-routes
+#
+$2613 2411 -1 0 14
+$2711 2411 -1 0 14
+$2711 2810 0 -1 14
+$3112 3009 0 -1 14
+$2613 2715 0 0 14
+$2715 2716 0 0 14
+$2716 2618 0 0 14
+$2716 2817 0 0 14
+$2716 3116 0 0 14
+$3116 3112 0 0 14
+$2817 2819 0 0 14
+$2819 2920 0 0 14
+$2819 2720 0 0 14
+$2720 2618 0 0 14
+$2819 2821 0 1 14
+$2618 2419 -1 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2511 C673100-6    Lo Ni              904 Pa
+H-2           2516 D758733-3    Ag                 614 Pa
+H-3           2518 X567530-0    Ag              R  223 Pa
+H-4           2519 C659556-9    Ni                 305 Pa
+H-5           2612 C664413-5    Ni                 721 Pa
+H-6           2613 B210342-9  Q Lo Ni              704 Pa
+H-7           2615 E552532-6    Ni Po              413 Pa
+H-8           2616 C658578-4    Ag Ni           B  200 Na
+H-9           2618 A67A310-A  Q Lo Ni Wa           824 Pa
+H-10          2619 A381577-C    Ni              B  623 Na
+H-11          2620 D65A420-8  P Ni Wa              700 Pa
+H-12          2711 B73A448-D    Ni Wa              202 Pa
+H-13          2714 E97A59A-9    Ni Wa              502 Pa
+H-14          2715 A9E7445-C  P Fl Ni              403 Pa
+H-15          2716 A378656-D    Ag Ni              922 Pa
+H-16          2717 C243456-9    Ni Po              703 Pa
+H-17          2718 C2627B7-7  P                    604 Pa
+H-18          2720 A400000-A  Q Ba Lo Ni Va        724 Pa
+H-19          2815 D200333-8  Q Lo Ni Va           600 Pa
+H-20          2817 A4427BB-A    Po                 302 Pa
+H-21          2819 B845323-A    Lo Ni              400 Pa
+H-22          2911 D463966-6  P Hi                 804 Pa
+H-23          2912 D410555-8  P Ni                 923 Pa
+H-24          2916 C58A69C-6    Ni Ri Wa           613 Pa
+H-25          2920 A578463-9    Ni                 405 Pa
+H-26          3012 C000444-A    As Ni              904 Pa
+H-27          3013 E865763-4    Ag Ri              505 Pa
+H-28          3014 D426121-8    Lo Ni              903 Pa
+H-29          3017 A30067A-D    Na Ni Va        B  500 Na
+H-30          3018 D484200-7    Lo Ni              700 Pa
+H-31          3019 C500312-7  Q Lo Ni Va           904 Pa
+H-32          3112 BA5A8DB-5    Wa                 232 Pa
+H-33          3113 C648536-6    Ag Ni              105 Pa
+H-34          3114 C200640-8    Na Ni Va           103 Pa
+H-35          3116 A585159-D  Q Lo Ni              403 Pa
+H-36          3213 C2457B8-5    Ag                 115 Pa
+H-37          3215 D536594-3    Ni                 803 Pa
+H-38          3216 C400355-C  Q Lo Ni Va           100 Pa
+H-39          3218 C692520-8    Ni                 803 Pa
+H-40          3219 C95A579-8    Ni Wa           B  703 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Isporeia SECTOR: Sporinne Sector
+#
+# Jump-routes
+#
+$0524 0922 1 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0124 C300223-6    Lo Ni Va           702 Pa
+I-2           0225 C325214-C    Lo Ni              704 Pa
+I-3           0321 C873561-7  P Ni                 634 Pa
+I-4           0325 C522547-5    Ni Po              704 Pa
+I-5           0327 C698459-A    Ni                 720 Pa
+I-6           0328 C85A300-B    Lo Ni Wa           620 Pa
+I-7           0329 C250552-8    De Ni Po           701 Pa
+I-8           0330 E79568B-6    Ag Ni              720 Pa
+I-9           0426 C000400-D    As Ni              504 Pa
+I-10          0427 D110769-8  P Na                 201 Pa
+I-11          0524 A85A58B-D  P Ni Wa              702 Pa
+I-12          0528 C300555-B    Ni Va              302 Pa
+I-13          0629 D8C7722-2  P Fl              A  400 Pa
+I-14          0630 E68136A-7    Lo Ni              314 Pa
+I-15          0722 C00068D-8    As Na Ni           824 Pa
+I-16          0724 C11097A-D    Hi Na           B  611 Na
+I-17          0825 C877869-4                       703 Pa
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jaspord SECTOR: Sporinne Sector
+#
+# Jump-routes
+#
+$1523 1722 1 0 14
+$1523 1323 0 0 14
+$1323 0922 0 0 14
+$1323 1424 0 0 14
+$1424 1523 0 0 14
+$1323 1120 0 -1 14
+$0922 1120 0 -1 14
+$0922 0524 -1 0 14
+$1628 1727 1 0 14
+$1424 1826 1 0 14
+$1029 1132 0 1 14
+$1029 1229 0 0 14
+$1229 1628 0 0 14
+$0924 0820 -1 -1 10
+$0924 1027 0 0 10
+$1027 1429 0 0 10
+$1429 1831 1 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0921 E87A8CD-7    Wa                 814 Pa
+J-2           0922 B425386-8  Q Lo Ni              621 Pa
+Zortann       0924 C551523-9  P Ni Po              714 Pa
+J-4           0925 D548315-5  Q Lo Ni              404 Pa
+J-5           0926 C5797A7-7  P                    231 Pa
+J-6           0927 C542899-3  P Po                 104 Pa
+J-7           0928 C676664-8  P Ag Ni              400 Pa
+J-8           0930 E533303-4    Lo Ni Po           303 Pa
+J-9           1021 C78A221-A  Q Lo Ni Wa           704 Pa
+J-10          1022 C8D2324-6    Fl Lo Ni           112 Pa
+J-11          1024 C995554-9  P Ag Ni              424 Pa
+Uqaan         1027 C435358-9  Q Lo Ni              414 Pa
+J-13          1028 D546345-6    Lo Ni              403 Pa
+J-14          1029 A536310-D  Q Lo Ni              300 Pa
+J-15          1123 CA7A556-7  P Ni Wa              504 Pa
+J-16          1128 D858857-5  P                    910 Pa
+J-17          1129 C69A565-9    Ni Wa              920 Pa
+J-18          1225 CAF5A97-C  P Fl Hi              720 Pa
+J-19          1229 A58966A-C    Ni Ri              200 Pa
+J-20          1230 E140241-6    De Lo Ni Po        823 Pa
+J-21          1323 B772010-7  Q Lo Ni              903 Pa
+J-22          1326 C77747A-5    Ni              B  503 Na
+J-23          1329 C9E6669-4    Fl Ni              103 Pa
+J-24          1423 EAB5376-3    Fl Lo Ni        A  503 Pa
+J-25          1424 B698454-7    Ni                 423 Pa
+J-26          1428 C000202-D  Q As Lo Ni           602 Pa
+Slaqqi        1429 C587538-4  P Ag Ni              502 Pa
+J-28          1523 B331455-A    Ni Po              423 Pa
+J-29          1524 X310943-2    Hi              R  404 Pa
+J-30          1528 C657321-6  Q Lo Ni              200 Pa
+J-31          1529 X64A410-3    Wa              R  924 Pa
+J-32          1621 C9C9522-9    Fl Ni           A  812 Pa
+J-33          1624 C646369-6  Q Lo Ni              413 Pa
+J-34          1625 D448342-7    Lo Ni              925 Pa
+J-35          1627 E597578-7    Ag Ni           B  313 Na
+J-36          1628 B663244-6  Q Lo Ni              613 Pa
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kaspoor SECTOR: Sporinne Sector
+#
+# Jump-routes
+#
+$2021 2419 0 -1 14
+$2021 1722 0 0 14
+$2222 2523 1 0 14
+$2222 2021 0 0 14
+$2426 2527 1 0 14
+$2426 2425 0 0 14
+$2425 2222 0 0 14
+$2426 2026 0 0 14
+$2026 1826 0 0 14
+$1826 1727 0 0 14
+$1727 1827 0 0 14
+$1826 1828 0 0 14
+$1828 2029 0 0 14
+$2029 2028 0 0 14
+$2028 1827 0 0 14
+$2028 2426 0 0 14
+$1828 1831 0 1 14
+$1722 1523 -1 0 14
+$1727 1628 -1 0 14
+$1826 1424 -1 0 14
+$1722 1320 -1 -1 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1721 C000542-8    As Ni              600 Pa
+K-2           1722 A510768-D    Na                 703 Pa
+K-3           1727 A581200-E    Lo Ni              712 Pa
+K-4           1730 D14077B-5    De Po           B  515 Na
+K-5           1822 C649640-5  P Ni                 402 Pa
+K-6           1823 D2006A8-6  P Na Ni Va           304 Pa
+K-7           1826 B000443-9  P As Ni              500 Pa
+K-8           1827 B413201-A    Ic Lo Ni           402 Pa
+K-9           1828 B440614-8    De Ni Po           805 Pa
+K-10          1829 D310666-7    Na Ni              210 Pa
+K-11          1830 E400446-9    Ni Va              403 Pa
+K-12          1923 E426303-8    Lo Ni              603 Pa
+K-13          1924 C7A0879-9    De              B  422 Na
+K-14          1925 D203300-6    Ic Lo Ni Va        403 Pa
+K-15          1926 C451A88-9    Hi Po              723 Pa
+K-16          1930 C110200-A    Lo Ni              204 Pa
+K-17          2021 A202446-F  P Ic Ni Va           823 Pa
+K-18          2023 C310220-6  Q Lo Ni              504 Pa
+K-19          2024 C22389B-A    Na Po              803 Pa
+K-20          2026 B340469-8  P De Ni Po           814 Pa
+K-21          2028 B757787-8  P Ag                 314 Pa
+K-22          2029 A423557-C  P Ni Po              804 Pa
+K-23          2030 C77A525-9  P Ni Wa              703 Pa
+K-24          2121 C536277-9    Lo Ni           B  801 Na
+K-25          2128 C7686AA-7  P Ag Ni              803 Pa
+K-26          2130 C41079A-7    Na                 425 Pa
+K-27          2222 B74855A-7    Ag Ni              423 Pa
+K-28          2224 C876774-5    Ag              B  503 Na
+K-29          2228 C566100-6    Lo Ni              914 Pa
+K-30          2321 C000873-9    As Na           B  703 Na
+K-31          2327 E565657-6    Ag Ni Ri           704 Pa
+K-32          2329 E423768-8    Na Po              804 Pa
+K-33          2330 C423738-7    Na Po              711 Pa
+K-34          2422 C120122-8    De Lo Ni Po        412 Pa
+K-35          2423 C5576BA-4  P Ag Ni              501 Pa
+K-36          2425 B98A333-B  Q Lo Ni Wa           811 Pa
+K-37          2426 B989555-8    Ni                 624 Pa
+K-38          2429 C66A410-8  P Ni Wa              302 Pa
+K-39          2430 C352579-A    Ni Po           B  700 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Loorein SECTOR: Sporinne Sector
+#
+# Jump-routes
+#
+$2821 2819 0 -1 14
+$2821 3022 0 0 14
+$3022 3224 0 0 14
+$3224 3125 0 0 14
+$2821 2523 0 0 14
+$2523 2527 0 0 14
+$2821 2825 0 0 14
+$2825 2828 0 0 14
+$2828 2929 0 0 14
+$2929 3130 0 0 14
+$3130 3128 0 0 14
+$3128 3228 0 0 14
+$3128 3125 0 0 14
+$2828 2628 0 0 14
+$2628 2527 0 0 14
+$2628 2629 0 0 14
+$2629 2531 0 1 14
+$3130 3032 0 1 14
+$2523 2222 -1 0 14
+$2527 2426 -1 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2521 C6B2100-9  Q Fl Lo Ni        A  804 Pa
+L-2           2522 C5A059A-5    De Ni              100 Pa
+L-3           2523 B434310-9    Lo Ni              304 Pa
+L-4           2525 C678A88-7  R Hi In              114 Pa
+L-5           2527 B231547-8    Ni Po              615 Pa
+L-6           2528 E120438-5    De Ni Po           212 Pa
+L-7           2529 C375658-A  P Ag Ni              403 Pa
+L-8           2530 C33555A-B  P Ni                 405 Pa
+L-9           2622 D778565-2  P Ag Ni              422 Pa
+L-10          2627 B400576-A    Ni Va           B  805 Na
+L-11          2628 A225333-E  Q Lo Ni              204 Pa
+L-12          2629 A000444-E    As Ni              820 Pa
+L-13          2722 C345325-8  Q Lo Ni              804 Pa
+L-14          2729 D373866-2                       812 Pa
+L-15          2730 A469373-E    Lo Ni           B  204 Na
+L-16          2821 B555100-B    Lo Ni              404 Pa
+L-17          2823 C000865-A    As Na              402 Pa
+L-18          2824 C100456-8  P Ni Va              202 Pa
+L-19          2825 A302420-B  P Ic Ni Va           513 Pa
+L-20          2827 C333665-6    Na Ni Po           102 Pa
+L-21          2828 B575102-B  Q Lo Ni              803 Pa
+L-22          2830 C565ABB-8  R Hi                 114 Pa
+L-23          2922 C874750-9    Ag                 610 Pa
+L-24          2924 C749312-7    Lo Ni              303 Pa
+L-25          2929 A560445-8    De Ni              110 Pa
+L-26          3021 C638112-9    Lo Ni              105 Pa
+L-27          3022 A333333-B  Q Lo Ni Po           715 Pa
+L-28          3023 C899542-5    Ni                 203 Pa
+L-29          3027 C9B4543-6  P Fl Ni           A  404 Pa
+L-30          3028 C481686-9    Ni Ri              312 Pa
+L-31          3121 C665322-8  Q Lo Ni              822 Pa
+L-32          3122 C644342-8  Q Lo Ni              903 Pa
+L-33          3123 C6998A6-8                       504 Pa
+L-34          3125 B574689-6  P Ag Ni              602 Pa
+L-35          3127 B465737-9  P Ag                 703 Pa
+L-36          3128 B344346-9    Lo Ni              503 Pa
+L-37          3130 B547534-A    Ag Ni              925 Pa
+L-38          3224 B353324-7  Q Lo Ni Po           203 Pa
+L-39          3228 B551466-6    Ni Po              413 Pa
+L-40          3230 E648676-1    Ag Ni           B  102 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Mooreiss SECTOR: Sporinne Sector
+#
+# Jump-routes
+#
+$0834 0933 1 0 14
+$0834 0433 0 0 14
+$0433 0332 0 0 14
+$0332 0232 0 0 14
+$0232 0233 0 0 14
+$0233 0335 0 0 14
+$0335 0433 0 0 14
+$0335 0138 0 0 14
+$0138 0240 0 0 14
+$0240 0302 0 1 14
+$0140 0103 0 1 2
+$0140 3037 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0132 E362445-6    Ni                 113 Pa
+M-2           0133 D788655-4  P Ag Ni Ri           914 Pa
+M-3           0136 C9BA000-8    Ba Fl Lo Ni Wa  A  514 Pa
+M-4           0138 B434557-9  P Ni                 214 Pa
+Mourilli      0140 E523254-6    Lo Ni Po           403 Pa
+M-6           0232 A434233-C  Q Lo Ni              324 Pa
+M-7           0233 B210210-C    Lo Ni              221 Pa
+M-8           0234 BADA675-9    Fl Ni Wa        B  901 Na
+M-9           0237 C5538BB-4  R Po                 200 Pa
+M-10          0240 B774400-B    Ni                 622 Pa
+M-11          0331 C110202-D    Lo Ni              502 Pa
+M-12          0332 B1009EA-A    Hi Na Va           813 Pa
+M-13          0333 B436478-9    Ni              B  510 Na
+M-14          0335 B553452-C  P Ni Po              514 Pa
+M-15          0337 E6728C9-3                       303 Pa
+M-16          0339 D554226-4  Q Lo Ni              604 Pa
+M-17          0432 E595534-4    Ag Ni              724 Pa
+M-18          0433 A300615-B  P Na Ni Va           121 Pa
+M-19          0438 C896767-4    Ag                 103 Pa
+M-20          0532 D647436-3    Ni                 710 Pa
+M-21          0536 E53989D-4                       202 Pa
+M-22          0537 C854789-6    Ag                 513 Pa
+M-23          0538 C663022-3    Lo Ni              602 Pa
+M-24          0539 C752798-5    Po                 511 Pa
+M-25          0632 C5858BB-3  R                    403 Pa
+M-26          0634 E464655-7    Ag Ni Ri           600 Pa
+M-27          0638 D6A3469-5    Fl Ni              804 Pa
+M-28          0731 E587200-6    Lo Ni              200 Pa
+M-29          0732 C451443-8    Ni Po              220 Pa
+M-30          0733 D535333-5  Q Lo Ni              810 Pa
+M-31          0737 E223652-9    Na Ni Po           104 Pa
+M-32          0739 E000556-6    As Ni              404 Pa
+M-33          0740 A354977-D    Hi              B  923 Na
+M-34          0834 B557459-C    Ni                 501 Pa
+M-35          0835 C584400-5  P Ni                 313 Pa
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Noreinne SECTOR: Sporinne Sector
+#
+# Jump-routes
+#
+$1432 1831 1 0 14
+$1634 1834 1 0 14
+$1432 1132 0 0 14
+$1132 0933 0 0 14
+$0932 1133 0 0 14
+$1133 1132 0 0 14
+$1132 1029 0 -1 14
+$0933 0834 -1 0 14
+$1133 1135 0 0 14
+$1135 0938 0 0 14
+$0938 0902 0 1 14
+$1634 1336 0 0 14
+$1336 1135 0 0 14
+$1336 1636 0 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0931 C0009B8-D    As Hi Na           600 Pa
+N-2           0932 B220636-7  P De Na Ni Po        924 Pa
+N-3           0933 B9A4588-A  P Fl Ni              214 Pa
+N-4           0935 C44348C-7  P Ni Po              424 Pa
+N-5           0937 C421A78-D    Hi In Na Po     B  400 Na
+N-6           0938 A512554-E    Ic Ni              203 Pa
+N-7           0939 C748363-6    Lo Ni              705 Pa
+N-8           1031 C8A5447-8    Fl Ni              204 Pa
+N-9           1032 B57A423-A  P Ni Wa              403 Pa
+N-10          1036 A669462-9  P Ni                 901 Pa
+N-11          1037 C1008AB-7    Na Va              603 Pa
+N-12          1038 E658100-3    Lo Ni              503 Pa
+N-13          1040 C68A776-8    Ri Wa           B  202 Na
+N-14          1131 CADA566-8  P Fl Ni Wa           304 Pa
+N-15          1132 B533400-9  P Ni Po              902 Pa
+N-16          1133 B9D6866-9  R Fl                 601 Pa
+N-17          1135 B676402-7  P Ni                 202 Pa
+N-18          1136 C120848-7    De Na Po           604 Pa
+N-19          1137 C000544-8  P As Ni              901 Pa
+N-20          1138 X440458-1    De Po           R  705 Pa
+N-21          1140 D5219DD-5    Hi In Na Po        314 Pa
+N-22          1231 D310304-5  Q Lo Ni              204 Pa
+N-23          1232 C535658-5  P Ni                 224 Pa
+N-24          1236 C448311-5  Q Lo Ni              705 Pa
+N-25          1239 C777426-4    Ni                 315 Pa
+N-26          1331 C8A7634-4    Fl Ni              603 Pa
+N-27          1332 C545667-4    Ag Ni              502 Pa
+N-28          1335 C460640-9    De Ni Ri           400 Pa
+N-29          1336 A79A245-F  Q Lo Ni Wa           113 Pa
+N-30          1432 B000433-C  P As Ni              913 Pa
+N-31          1433 C794653-9    Ag Ni              214 Pa
+N-32          1436 C874764-4    Ag                 101 Pa
+N-33          1531 C764842-7    Ri                 222 Pa
+N-34          1533 C210553-B  P Ni                 601 Pa
+N-35          1535 C473459-7  P Ni                 712 Pa
+N-36          1538 E83A004-A    Lo Ni Wa           402 Pa
+N-37          1540 C200475-8    Ni Va           B  113 Na
+N-38          1632 C221200-7  Q Lo Ni Po           503 Pa
+N-39          1634 BAF8310-9    Fl Lo Ni           105 Pa
+N-40          1636 B764555-A  P Ag Ni              205 Pa
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Oreinnet SECTOR: Sporinne Sector
+#
+# Jump-routes
+#
+$1839 2138 0 0 14
+$2138 2538 1 0 14
+$2332 2531 1 0 14
+$2332 2133 0 0 14
+$2133 2034 0 0 14
+$2034 2138 0 0 14
+$2034 1834 0 0 14
+$1834 1831 0 0 14
+$1831 2133 0 0 14
+$1831 1828 0 -1 14
+$1831 1432 -1 0 14
+$1834 1634 -1 0 14
+$1839 1701 0 1 14
+$2138 2102 0 1 14
+$1831 1429 -1 -1 10
+$1831 2034 0 0 10
+$2034 2237 0 0 10
+$2237 2440 0 0 10
+$2440 2802 1 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1732 E100636-4    Na Ni Va           201 Pa
+O-2           1733 C577574-4    Ag Ni           B  203 Na
+O-3           1739 E797210-2    Lo Ni              712 Pa
+Qotuur        1831 B48469B-9    Ag Ni Ri           813 Pa
+O-5           1833 A35479C-A  P Ag                 810 Pa
+O-6           1834 B210753-8  P Na                 100 Pa
+O-7           1836 C110302-D    Lo Ni              503 Pa
+Orianna       1839 A244ABC-H  R Hi In Cx           103 Pa
+O-9           1931 E573213-7    Lo Ni              702 Pa
+O-10          1932 C7A2533-6    Fl Ni              823 Pa
+O-11          1933 C7439BA-8  R Hi In Po           414 Pa
+O-12          1936 C686330-6  Q Lo Ni              414 Pa
+O-13          1937 C0009CD-C  R As Hi Na           802 Pa
+O-14          1940 D356320-5    Lo Ni              904 Pa
+O-15          2031 C524420-A    Ni                 303 Pa
+Ollqa         2034 B796520-8  P Ag Ni              604 Pa
+O-17          2036 C793661-3  P Ni                 613 Pa
+O-18          2039 D534440-4  P Ni                 702 Pa
+O-19          2040 C346533-8    Ag Ni              324 Pa
+O-20          2131 D20097B-9    Hi Na Va        B  703 Na
+O-21          2132 C9A4545-6    Fl Ni              702 Pa
+O-22          2133 B469532-9  P Ni                 303 Pa
+O-23          2135 C64A684-8  P Ni Wa              800 Pa
+O-24          2138 B000424-A  P As Ni              604 Pa
+O-25          2139 C445475-9    Ni              B  904 Na
+Ya-Qiera      2237 C999665-4    Ni                 303 Pa
+O-27          2238 C32467A-5    Ni              B  414 Na
+O-28          2240 C100666-A    Na Ni Va           413 Pa
+O-29          2332 A7849BE-D  R Hi                 801 Pa
+O-30          2333 D9C4646-5  P Fl Ni           A  224 Pa
+O-31          2334 E200223-6    Lo Ni Va           304 Pa
+O-32          2336 C778310-9  Q Lo Ni              224 Pa
+O-33          2338 X656732-0    Ag              R  424 Pa
+O-34          2339 C48856B-8    Ag Ni              622 Pa
+O-35          2431 B320585-8  P De Ni Po           901 Pa
+O-36          2433 E638415-4    Ni                 501 Pa
+O-37          2434 C88A443-9  P Ni Wa              512 Pa
+O-38          2439 C766300-6  Q Lo Ni              404 Pa
+Chaqua        2440 D646536-5  P Ag Ni              500 Pa
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Poorein SECTOR: Sporinne Sector
+#
+# Jump-routes
+#
+$2531 2629 0 -1 14
+$3032 3130 0 -1 14
+$2531 2732 0 0 14
+$2732 3032 0 0 14
+$3032 3232 0 0 14
+$3032 2734 0 0 14
+$2734 2732 0 0 14
+$2734 2636 0 0 14
+$2636 2538 0 0 14
+$2734 2936 0 0 14
+$2936 3035 0 0 14
+$3035 3032 0 0 14
+$2936 2538 0 0 14
+$2538 2840 0 0 14
+$2538 2138 -1 0 14
+$2531 2332 -1 0 14
+$2840 3101 0 1 14
+$2840 2401 -1 1 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2531 B000356-D    As Lo Ni           212 Pa
+P-2           2533 E000300-8    As Lo Ni           211 Pa
+P-3           2534 C251432-9    Ni Po              800 Pa
+P-4           2538 B873542-7    Ni                 702 Pa
+P-5           2632 C897431-7  P Ni                 303 Pa
+P-6           2636 B55579D-A  P Ag                 912 Pa
+P-7           2638 C5668BC-8  R                    300 Pa
+P-8           2731 X56559D-0    Ag              R  403 Pa
+P-9           2732 A338510-E  P Ni                 204 Pa
+P-10          2733 C678445-5    Ni                 313 Pa
+P-11          2734 B461556-B    Ni                 204 Pa
+P-12          2736 C535344-5    Lo Ni              525 Pa
+P-13          2738 D553773-6    Po              B  704 Na
+P-14          2739 C469787-8  P Ri                 214 Pa
+P-15          2832 D433455-7    Ni Po              905 Pa
+P-16          2833 B885000-9    Ba Lo Ni           503 Pa
+P-17          2837 C9967AA-3    Ag                 522 Pa
+P-18          2840 B577233-9  Q Lo Ni              500 Pa
+P-19          2931 C447330-A    Lo Ni              803 Pa
+P-20          2932 E464674-5    Ag Ni Ri        B  604 Na
+P-21          2933 D9A05A7-5    De Ni              113 Pa
+P-22          2936 B696658-A    Ag Ni              905 Pa
+P-23          2938 CA77557-A    Ag Ni              204 Pa
+P-24          2940 C350444-6    De Ni Po           703 Pa
+P-25          3032 A150588-D  P De Ni Po           410 Pa
+P-26          3035 B458321-9  Q Lo Ni              415 Pa
+P-27          3036 C200200-8    Lo Ni Va           823 Pa
+P-28          3039 C95A897-9    Wa                 612 Pa
+P-29          3040 C76A744-9    Ri Wa              514 Pa
+P-30          3131 C300300-B  Q Lo Ni Va           804 Pa
+P-31          3133 C332464-B    Ni Po              833 Pa
+P-32          3134 C331674-7    Na Ni Po        B  102 Na
+P-33          3136 E120334-7    De Lo Ni Po        222 Pa
+P-34          3232 B661766-5  P Ri                 204 Pa
+P-35          3233 E200100-9    Lo Ni Va           914 Pa
+P-36          3235 A9B68B8-9  R Fl              A  503 Pa
+P-37          3237 E200347-9    Lo Ni Va           920 Pa
+P-38          3240 C260ADB-8  R De Hi              901 Pa
+

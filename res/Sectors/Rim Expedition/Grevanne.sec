@@ -1,0 +1,1083 @@
+Grevanne Sector
+
+A: Annegra                   a.dat
+B: Brevanne                  b.dat
+C: Chreva                    c.dat
+D: Dreshav                   d.dat
+E: Egravanne                 e.dat
+F: Flograve                  f.dat
+G: Gravan                    g.dat
+H: Hovanne                   h.dat
+I: Ivanner                   i.dat
+J: Jagravar                  j.dat
+K: Klagran                   k.dat
+L: Lagravan                  l.dat
+M: Migranne                  m.dat
+N: Navagrav                  n.dat
+O: Ogravier                  o.dat
+P: Poivara                   p.dat
+
+Bases:
+C = Pooina Civ Research
+J = Klushan Navy
+K = Klushan Scout
+L = Klushan Navy & Scout
+M = Pooina Mil Research
+P = Pooina Navy
+Q = Pooina Army
+R = Pooina Scout
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+05 Ki = Klushan Imperium
+07 Na = Non-Aligned
+14 Pm = Pooina Maag Bureau
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Annegra SECTOR: Grevanne Sector
+#
+# Jump-routes
+#
+$0608 0909 1 0 14
+$0608 0807 0 0 14
+$0807 1006 1 0 14
+$0608 0411 0 1 14
+$0202 3004 -1 0 5
+$0202 0401 0 0 5
+$0401 0601 0 0 5
+$0601 0703 0 0 5
+$0107 3004 -1 0 5
+$0107 0109 0 0 5
+$0109 3110 -1 0 5
+$0202 3040 -1 -1 10
+$0202 0306 0 0 10
+$0306 0509 0 0 10
+$0509 0712 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0101 C510830-4    Na                 200 Ki
+A-2           0105 C44486A-4  J                    724 Ki
+A-3           0107 A656985-D    Hi                 511 Ki
+A-4           0108 B8B8467-C    Fl Ni           A  903 Ki
+A-5           0109 B5A4013-B  K Fl Lo Ni           402 Ki
+A-6           0110 C25435A-8    Lo Ni              305 Ki
+A-7           0201 A775773-A    Ag              B  304 Na
+Terinna       0202 B120788-C  L De Na Po           702 Ki
+A-9           0203 E130445-6    De Ni Po           725 Ki
+A-10          0204 D562335-3  K Lo Ni              304 Ki
+A-11          0205 B504977-9  N Hi Ic Va        B  120 Na
+A-12          0206 D8C4A99-8    Fl Hi           A  300 Ki
+A-13          0207 C576565-4    Ag Ni              405 Ki
+A-14          0302 E324201-6    Lo Ni              522 Ki
+A-15          0305 C514225-8    Ic Lo Ni           802 Ki
+Hartagga      0306 C51269D-6  J Ic Na Ni           714 Ki
+A-17          0308 D257314-6    Lo Ni              105 Na
+A-18          0401 B330458-A    De Ni Po           623 Ki
+A-19          0403 C100312-9    Lo Ni Va           410 Ki
+A-20          0407 D584555-7  S Ag Ni              200 Na
+A-21          0408 C875300-9  S Lo Ni              904 Na
+A-22          0503 C446788-4  L Ag                 114 Ki
+A-23          0504 C331862-9    Na Po              903 Ki
+A-24          0505 X586869-0    Ri              R  603 Na
+Arnonn        0509 C557A89-B  R Hi                 415 Pm
+A-26          0601 B110362-D    Lo Ni              503 Ki
+A-27          0602 C574569-7    Ag Ni              201 Ki
+A-28          0608 B58A753-B  P Ri Wa              404 Pm
+A-29          0610 C9E3432-6    Fl Ni              102 Pm
+A-30          0703 B97A486-A  K Ni Wa              204 Ki
+A-31          0705 C200234-A  S Lo Ni Va           103 Na
+A-32          0708 E867543-7    Ag Ni              310 Pm
+A-33          0710 C9B7768-9  R Fl              A  902 Pm
+A-34          0802 D5637AE-2  L                    103 Ki
+A-35          0804 C234102-A    Lo Ni              704 Na
+A-36          0805 C88A536-9  S Ni Wa              313 Na
+A-37          0807 B1207BB-A    De Na Po           303 Pm
+A-38          0808 C410455-9    Ni                 603 Pm
+A-39          0810 X3359BC-5    Hi In           R  501 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Brevanne SECTOR: Grevanne Sector
+#
+# Jump-routes
+#
+$1503 1903 1 0 14
+$1403 1602 0 0 14
+$1608 1707 1 0 14
+$1503 1203 0 0 14
+$1203 1006 0 0 14
+$1006 1010 0 0 14
+$1006 1206 0 0 14
+$1206 1608 0 0 14
+$1206 1310 0 0 14
+$1010 0909 0 0 14
+$0909 0608 -1 0 14
+$1006 0807 -1 0 14
+$1010 0811 -1 1 14
+$1310 1512 0 1 14
+$1608 1511 0 1 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           0901 E567401-8    Ni                 404 Ki
+B-2           0902 C302401-B    Ic Ni Va           913 Ki
+B-3           0909 B000642-B    As Na Ni           203 Pm
+B-4           0910 C777669-8  R Ag Ni              105 Pm
+B-5           1002 C310400-B  K Ni                 313 Ki
+B-6           1004 D342ACB-9  Q Hi In Po           900 Pm
+B-7           1005 C565558-A    Ag Ni              400 Pm
+B-8           1006 A574689-B    Ag Ni              213 Pm
+B-9           1008 B525258-9  R Lo Ni              602 Pm
+B-10          1009 B323677-7  N Na Ni Po        B  103 Na
+B-11          1010 A559633-B    Ni                 420 Pm
+B-12          1105 B75A676-C    Ni Wa           B  220 Na
+B-13          1107 C536685-9    Ni                 610 Pm
+B-14          1110 E551542-4    Ni Po              302 Pm
+B-15          1203 B8A5469-9  R Fl Ni              613 Pm
+B-16          1204 CA8A444-7    Ni Wa              405 Pm
+B-17          1206 A543002-B  R Lo Ni Po           112 Pm
+B-18          1207 C6496AE-8    Ni                 613 Pm
+B-19          1302 C533720-6  Q Na Po              614 Pm
+B-20          1303 D558568-5    Ag Ni              410 Pm
+B-21          1307 C310200-9    Lo Ni              515 Pm
+B-22          1309 C462ADD-9    Hi                 413 Pm
+B-23          1310 A6B5864-B    Fl              A  302 Pm
+B-24          1402 E553773-2    Po              B  923 Na
+B-25          1403 B310014-8    Lo Ni              110 Pm
+B-26          1404 E53A569-5    Ni Wa              203 Pm
+B-27          1407 C435577-8  R Ni              B  212 Na
+B-28          1409 E000335-7    As Lo Ni           212 Pm
+B-29          1410 C300566-B  R Ni Va              802 Pm
+B-30          1502 D202546-7    Ic Ni Va           203 Pm
+B-31          1503 B889557-A    Ni                 503 Pm
+B-32          1507 A965677-B    Ag Ni Ri        B  713 Na
+B-33          1508 CA98A87-C  P Hi In              403 Pm
+B-34          1601 C566642-4    Ag Ni Ri           103 Pm
+B-35          1602 B8B98A9-C  P Fl              A  605 Pm
+B-36          1604 D675730-1  Q Ag                 213 Pm
+B-37          1606 E5008AD-3    Na Va              902 Pm
+B-38          1607 C9C4ABF-A  P Fl Hi           A  903 Pm
+B-39          1608 B557400-C  R Ni                 712 Pm
+B-40          1609 C87A411-8    Ni Wa              701 Pm
+B-41          1610 E42659D-7    Ni                 903 Pm
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Chreva SECTOR: Grevanne Sector
+#
+# Jump-routes
+#
+$2208 2510 1 0 14
+$2208 2204 0 0 14
+$2305 1903 0 0 14
+$2204 2302 0 0 14
+$2302 2301 0 0 14
+$2207 1909 0 0 14
+$1909 1905 0 0 14
+$1905 1903 0 0 14
+$1909 2010 0 0 14
+$2010 2211 0 1 14
+$2208 2211 0 1 14
+$1903 1503 -1 0 14
+$1909 1707 0 0 14
+$1707 1608 -1 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1704 E69769E-5    Ag Ni              520 Pm
+C-2           1705 C474300-7  R Lo Ni              404 Pm 
+C-3           1707 A230677-B    De Na Ni Po     B  312 Na
+C-4           1801 E867475-4    Ni              B  601 Na
+C-5           1802 C634544-5    Ni                 402 Pm 
+C-6           1804 C000520-8    As Ni              112 Pm
+C-7           1807 E200964-5    Hi Na Va           315 Pm
+C-8           1808 E87AA9B-A    Hi In Wa           803 Pm
+C-9           1809 C43778C-8                       804 Pm
+C-10          1810 C425323-6    Lo Ni              224 Pm
+C-11          1903 A488467-C  R Ni                 902 Pm
+C-12          1904 E250455-7    De Ni Po           801 Pm
+C-13          1905 B314300-9  R Ic Lo Ni           110 Pm
+C-14          1906 C838564-9    Ni                 411 Pm
+C-15          1908 B450423-8    De Ni Po           410 Pm
+C-16          1909 B342100-D    Lo Ni Po           804 Pm
+C-17          1910 D365100-8  S Lo Ni              704 Pm
+C-18          2002 C3447AF-9    Ag                 114 Pm
+C-19          2003 C783220-4  R Lo Ni              403 Pm
+C-20          2004 C9B467B-7  P Fl Ni           A  804 Pm
+C-21          2009 E100341-7    Lo Ni Va           900 Pm
+C-22          2010 B87A200-B  R Lo Ni Wa           613 Pm
+C-23          2103 E6108BB-6    Na                 500 Pm
+C-24          2104 C5977AB-5  S Ag                 914 Pm
+C-25          2105 C794210-7    Lo Ni              903 Pm
+C-26          2107 D877555-4  S Ag Ni              413 Pm
+C-27          2108 C524ABB-B  Q Hi In              403 Pm
+C-28          2110 C44277C-6    Po              B  820 Na
+C-29          2204 B897543-A    Ag Ni              102 Pm
+C-30          2205 B746235-9  R Lo Ni              400 Pm
+C-31          2206 B68A546-8  P Ni Wa              421 Pm
+C-32          2207 B222211-D    Lo Ni Po           202 Pm
+C-33          2208 A689568-A  R Ni                 305 Pm
+C-34          2209 C574553-A  R Ag Ni              703 Pm
+C-35          2301 B986794-9  P Ag Ri              201 Pm
+C-36          2302 A571643-B    Ni                 603 Pm
+C-37          2305 A695247-8  R Lo Ni              604 Pm
+C-38          2309 D666646-4    Ag Ni Ri           633 Pm
+C-39          2402 D557686-5    Ag Ni              714 Pm
+C-40          2404 C100553-9  Q Ni Va              222 Pm
+C-41          2405 C613420-5  R Ic Ni              310 Pm
+C-42          2406 C200200-9    Lo Ni Va           401 Pm
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Dreshav SECTOR: Grevanne Sector
+#
+# Jump-routes
+#
+$2510 2711 0 1 14
+$2510 2208 -1 0 14
+$2902 3003 0 0 5
+$3003 3104 0 0 5
+$3003 3106 0 0 5
+$3106 3205 0 0 5
+$3106 3208 0 0 5
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2503 D432673-4    Na Ni Po        B  900 Na
+D-2           2507 C6258AA-9  S                    401 Na
+D-3           2510 B5645A9-6  R Ag Ni              114 Pm
+D-4           2603 E120652-7    De Na Ni Po        504 Na
+D-5           2605 C410223-8  S Lo Ni              403 Na
+D-6           2606 C343597-A    Ni Po              923 Na
+D-7           2608 E401ACD-B    Hi Ic Na Va        523 Na
+D-8           2701 E000425-6    As Ni              225 Ki
+D-9           2702 C463434-A    Ni                 311 Ki
+D-10          2703 C6A3635-9    Fl Ni              604 Ki
+D-11          2705 C797520-4    Ag Ni              414 Na
+D-12          2709 C668620-6    Ag Ni              403 Na
+D-13          2801 E511455-5    Ic Ni              804 Ki
+D-14          2803 D575669-4  J Ag Ni              700 Ki
+D-15          2804 E336587-5    Ni                 624 Na
+D-16          2806 C543575-4  S Ni Po           B  714 Na
+D-17          2808 X779646-3                    R  703 Na
+D-18          2810 C531334-8  S Lo Ni Po           404 Na
+D-19          2901 C220456-9  K De Ni Po           403 Ki
+D-20          2902 B000112-A    As Lo Ni           204 Ki
+D-21          2907 E537011-3    Lo Ni              220 Na
+D-22          2908 X470743-0    De              R  800 Na
+D-23          2909 C402464-B  S Ic Ni Va           205 Na
+D-24          2910 X272520-0                    R  403 Na
+D-25          3001 C432561-6    Ni Po              604 Ki
+D-26          3003 A432745-A    Na Po              802 Ki
+D-27          3005 C564535-9    Ag Ni              904 Ki
+D-28          3007 C79A557-9    Ni Wa              713 Na
+D-29          3008 X586559-3    Ag              R  302 Na
+D-30          3104 B400724-7  L Na Va              604 Ki
+D-31          3106 B262440-B  K Ni                 523 Ki
+D-32          3204 C753232-9  K Lo Ni Po           523 Ki
+D-33          3205 A510858-A    Na                 903 Ki
+D-34          3206 D526966-6    Hi In              803 Ki
+D-35          3208 A235344-F  K Lo Ni              404 Ki
+D-36          3210 C659466-6  S Ni                 710 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Egravanne SECTOR: Grevanne Sector
+#
+# Jump-routes
+#
+$0811 1010 1 -1 14
+$0411 0608 0 -1 14
+$0411 0511 0 0 14
+$0511 0611 0 0 14
+$0611 0811 0 0 14
+$0811 0715 0 0 14
+$0715 0815 0 0 14
+$0815 1115 1 0 14
+$0815 1017 1 0 14
+$0520 0423 0 1 5
+$0520 0418 0 0 5
+$0520 0719 0 0 5
+$0319 3119 -1 0 5
+$0319 0418 0 0 5
+$0712 0509 0 -1 10
+$0712 0915 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0113 D88A235-4    Lo Ni Wa           705 Na
+E-2           0115 C986333-6  S Lo Ni              904 Na
+E-3           0116 B240573-7  2 De Ni Po        B  524 Na
+E-4           0117 C684427-6    Ni                 113 Ki
+E-5           0118 D584766-5  L Ag Ri              724 Ki
+E-6           0120 C554565-7    Ag Ni              704 Ki
+E-7           0214 C360355-B    De Lo Ni           303 Na
+E-8           0215 C541201-5  S Lo Ni Po           900 Na
+E-9           0216 C322584-6    Ni Po              714 Ki
+E-10          0219 D9B86AC-3    Fl Ni           A  510 Ki
+E-11          0220 C555976-6    Hi              B  405 Na
+E-12          0315 C483364-6  S Lo Ni              105 Na
+E-13          0319 C434234-B  K Lo Ni              103 Ki
+E-14          0411 B662AA9-C  P Hi                 624 Pm
+E-15          0412 C7626AE-3  Q Ni                 301 Pm
+E-16          0413 C300433-B  R Ni Va              903 Pm
+E-17          0415 D492747-6  S                    202 Na
+E-18          0417 C665535-4    Ag Ni              801 Ki
+E-19          0418 B595440-A    Ni                 113 Ki
+E-20          0419 C110144-9    Lo Ni              103 Ki
+E-21          0511 B100753-9    Na Va              204 Pm
+E-22          0518 C20097A-A    Hi Na Va        B  512 Na
+E-23          0520 A564585-B    Ag Ni              823 Na
+E-24          0611 A697663-9    Ag Ni              200 Pm
+E-25          0612 C787410-5  R Ni                 205 Pm
+E-26          0615 D558524-5    Ag Ni              314 Pm
+E-27          0618 D7A6316-4  K Fl Lo Ni           513 Ki
+E-28          0619 C35158A-9    Ni Po              714 Ki
+Diorba        0712 C251424-8    Ni Po              902 Pm
+E-30          0715 B539455-E  R Ni                 601 Pm
+E-31          0719 BAC2544-9    Fl Ni           A  304 Ki
+E-32          0720 C656979-5  S Hi              B  513 Na
+E-33          0811 A512241-E    Ic Lo Ni           500 Pm
+E-34          0812 C468668-7    Ag Ni Ri           611 Pm
+E-35          0815 B669437-B  P Ni                 905 Pm
+E-36          0819 C789A74-D    Hi              B  410 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Flograve SECTOR: Grevanne Sector
+#
+# Jump-routes
+#
+$1618 1817 1 0 14
+$1414 1815 1 0 14
+$1414 1115 0 0 14
+$1115 0815 -1 0 14
+$1017 0815 -1 0 14
+$1414 1512 0 0 14
+$1512 1310 0 -1 14
+$1414 1313 0 0 14
+$1512 1511 0 0 14
+$1511 1608 0 -1 14
+$1414 1516 0 0 14
+$1017 1319 0 0 14
+$1319 1418 0 0 14
+$1418 1618 0 0 14
+$1618 1516 0 0 14
+$1319 1421 0 1 14
+$1618 1621 0 1 14
+$0915 0712 -1 0 10
+$0915 1018 0 0 10
+$1018 1122 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0914 D755327-5  R Lo Ni              200 Pm
+Qachall       0915 E557347-2    Lo Ni              605 Pm
+F-3           0916 C260442-6    De Ni              723 Pm
+F-4           0917 C36379C-6  P Ri                 114 Pm
+F-5           0920 D312541-5    Ic Ni              615 Na
+F-6           1011 C899222-9    Lo Ni              703 Pm
+F-7           1014 C747740-7    Ag                 913 Pm
+F-8           1017 B766ACB-B    Hi                 104 Pm
+Taween        1018 E78A420-6    Ni Wa              311 Pm
+F-10          1020 D684789-2  P Ag Ri              804 Pm
+F-11          1111 C73989B-9                       204 Pm
+F-12          1113 D52177A-4    Na Po           B  204 Na
+F-13          1115 B42079B-9    De Na Po           103 Pm
+F-14          1116 C685434-7    Ni                 415 Pm
+F-15          1117 C836620-9  P Ni                 910 Pm
+F-16          1120 E6579CA-3    Hi                 312 Pm
+F-17          1215 C793526-6    Ni                 313 Pm
+F-18          1216 D9B48CB-6  Q Fl              A  420 Pm
+F-19          1217 E542642-5    Ni Po              100 Pm
+F-20          1219 E637988-5    Hi In              800 Pm
+F-21          1220 E250100-5    De Lo Ni Po        434 Pm
+F-22          1311 B3259AC-C    Hi In              524 Pm
+F-23          1312 X88A7A9-2    Wa              R  704 Na
+F-24          1313 B368536-8    Ag Ni              414 Pm
+F-25          1314 C461351-8    Lo Ni              504 Pm
+F-26          1317 E7B79EF-7    Fl Hi           A  624 Pm
+F-27          1319 B98A552-A  P Ni Wa              604 Pm
+F-28          1320 C414420-A    Ic Ni              524 Pm
+F-29          1411 C97A546-8  P Ni Wa              310 Pm
+F-30          1413 C764210-4    Lo Ni              103 Pm
+F-31          1414 A688110-D  R Lo Ni              703 Pm
+F-32          1416 C262410-9  R Ni                 204 Pm
+F-33          1418 A464667-A    Ag Ni Ri           505 Pm
+F-34          1420 C000454-8  R As Ni              202 Pm
+F-35          1511 B3707AA-6    De                 403 Pm
+F-36          1512 A595340-B  R Lo Ni              302 Pm
+F-37          1514 C552101-8  R Lo Ni Po           404 Pm
+F-38          1516 B682130-8  R Lo Ni              713 Pm
+F-39          1611 C474422-8    Ni                 504 Pm
+F-40          1614 E9D4301-5    Fl Lo Ni           300 Pm
+F-41          1617 C56547A-9    Ni              B  603 Na
+F-42          1618 B100466-E  P Ni Va              223 Pm
+F-43          1620 C557364-6  R Lo Ni              914 Pm
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Gravan SECTOR: Grevanne Sector
+#
+# Jump-routes
+#
+$2120 2124 0 1 14
+$2120 2116 0 0 14
+$2116 2516 1 0 14
+$2211 2010 0 -1 14
+$2211 2208 0 -1 14
+$2116 1916 0 0 14
+$1916 1815 0 0 14
+$1916 1817 0 0 14
+$1817 1918 0 0 14
+$1918 2120 0 0 14
+$1817 1618 -1 0 14
+$1815 1414 -1 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1711 E243AEG-A    Hi In Po        A  723 Pm
+G-2           1712 C571423-6    Ni                 620 Pm
+G-3           1713 C88A789-8  P Ri Wa              503 Pm
+G-4           1714 D410569-8    Ni                 503 Pm
+G-5           1716 C759684-8    Ni                 804 Pm
+G-6           1719 D9A4443-6    Fl Ni              925 Pm
+G-7           1720 C200300-C    Lo Ni Va           905 Pm
+G-8           1813 C244844-7  P                    712 Pm
+G-9           1814 E57879D-3    Ag                 303 Pm
+G-10          1815 BACA210-9    Fl Lo Ni Wa     A  913 Pm
+G-11          1816 C431676-7    Na Ni Po        B  402 Na
+G-12          1817 A564741-A  R Ag Ri              924 Pm
+G-13          1819 D310211-6    Lo Ni              713 Pm
+G-14          1911 C79A513-8  P Ni Wa              303 Pm
+G-15          1915 E00098B-7    As Hi Na           903 Pm
+G-16          1916 B678400-8  R Ni                 104 Pm
+G-17          1918 BA5A333-8  R Lo Ni Wa           723 Pm
+G-18          2013 C9A6783-6  P Fl                 314 Pm
+G-19          2016 C452786-9    Po                 912 Pm
+G-20          2019 C313520-6    Ic Ni              820 Pm
+G-21          2020 C753375-4    Lo Ni Po        B  524 Na
+G-22          2111 C8B1774-4    Fl              A  925 Pm
+G-23          2113 C464635-4    Ag Ni              910 Pm
+G-24          2115 EAEA768-7    Fl Wa              704 Pm
+G-25          2116 A447769-B    Ag                 711 Pm
+G-26          2117 B76A5AB-A  Q Ni Wa              400 Pm
+G-27          2120 B556522-A  R Ag Ni              602 Pm
+G-28          2211 B56669E-7  R Ag Ni Ri           704 Pm
+G-29          2212 E689554-7    Ni                 814 Pm
+G-30          2213 D7A4656-4  Q Fl Ni              203 Pm
+G-31          2214 C778320-8    Lo Ni              903 Pm
+G-32          2215 C210126-B    Lo Ni              324 Pm
+G-33          2219 C500103-6    Lo Ni Va           110 Pm
+G-34          2312 C546421-9    Ni                 624 Pm
+G-35          2316 E666327-4    Lo Ni              603 Pm
+G-36          2318 E435330-7    Lo Ni              904 Pm
+G-37          2320 C678640-8    Ag Ni              100 Pm
+G-38          2412 C65AAC9-D  P Hi Wa              913 Pm
+G-39          2415 E3029EA-A    Hi Ic Na Va        400 Pm
+G-40          2420 C534454-A  R Ni                 815 Pm
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hovanne SECTOR: Grevanne Sector
+#
+# Jump-routes
+#
+$2516 2116 -1 0 14
+$2516 2619 0 0 14
+$2619 2620 0 0 14
+$2619 3020 0 0 14
+$3020 3022 0 1 14
+$3020 3219 0 0 14
+$2516 2813 0 0 14
+$2813 2711 0 0 14
+$2711 2811 0 0 14
+$2516 2514 0 0 14
+$2514 2711 0 0 14
+$2711 2510 0 -1 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2513 D6995AE-7  P Ni                 101 Pm
+H-2           2514 B758594-8    Ag Ni              904 Pm
+H-3           2515 D696348-4  R Lo Ni              104 Pm
+H-4           2516 B0007AD-B  Q As Na              503 Pm
+H-5           2618 D764564-5  Q Ag Ni              924 Pm
+H-6           2619 B4119BF-E    Hi Ic Na           703 Pm
+H-7           2620 B8B1787-A  Q Fl              A  720 Pm
+H-8           2711 B444456-B    Ni                 204 Pm
+H-9           2712 C76698C-7    Hi                 903 Pm
+H-10          2714 C552410-9    Ni Po              411 Pm
+H-11          2716 C100548-B  R Ni Va              813 Pm
+H-12          2720 D478643-4    Ag Ni              201 Pm
+H-13          2811 B404634-7  R Ic Ni Va           213 Pm
+H-14          2813 B581533-7  R Ni                 713 Pm
+H-15          2814 C221453-B  R Ni Po              403 Pm
+H-16          2815 D487486-7  P Ni                 503 Pm
+H-17          2816 E9D6745-6    Fl                 611 Pm
+H-18          2912 C7A5375-9    Fl Lo Ni        B  301 Na
+H-19          2918 E799A85-B    Hi In              534 Pm
+H-20          2919 C10069A-A    Na Ni Va           805 Pm
+H-21          3011 E777763-4    Ag                 700 Na
+H-22          3012 X7B2355-2    Fl Lo           R  603 Na
+H-23          3016 E748635-2    Ag Ni              813 Pm
+H-24          3017 C565538-5    Ag Ni              800 Pm
+H-25          3019 E458437-7    Ni                 613 Pm
+H-26          3020 A668400-9  R Ni                 210 Pm
+H-27          3112 DAA6A58-8  S Fl Hi              703 Na
+H-28          3117 E000335-8    As Lo Ni           714 Pm
+H-29          3119 C3326B9-A    Na Ni Po           604 Pm
+H-30          3211 CAB699A-7  S Fl Hi           A  603 Na
+H-31          3213 C98A310-7  S Lo Ni Wa           600 Na
+H-32          3219 A777000-C  R Ba Lo Ni           503 Pm
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ivanner SECTOR: Grevanne Sector
+#
+# Jump-routes
+#
+$0423 3222 -1 0 5
+$0423 0226 0 0 5
+$0226 0327 0 0 5
+$0226 0229 0 0 5
+$0229 0230 0 0 5
+$0423 0520 0 -1 5
+$0226 3125 -1 0 5
+$0226 3228 -1 0 5
+$0230 0231 0 1 5
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0123 C7387BC-9                       503 Ki
+I-2           0124 X454011-2    Lo              R  223 Na
+I-3           0126 C42045A-9  K De Ni Po           404 Ki
+I-4           0130 E777321-2    Lo Ni              112 Ki
+I-5           0226 A888400-B    Ni                 814 Ki
+I-6           0228 C445100-A  K Lo Ni              724 Ki
+I-7           0229 B665846-A  L Ri                 220 Ki
+I-8           0230 A76A9C8-B    Hi Wa              200 Ki
+I-9           0321 C410433-7    Ni                 513 Ki
+I-10          0323 C462645-8  J Ni Ri              124 Ki
+I-11          0326 D8A2473-3  S Fl Ni           B  100 Na
+I-12          0327 B686056-7  K Lo Ni              403 Ki
+I-13          0328 C6A2668-8  J Fl Ni              404 Ki
+I-14          0330 E67569C-3    Ag Ni              615 Ki
+I-15          0421 D658985-3    Hi                 404 Ki
+I-16          0423 B5649BD-7    Hi                 805 Ki
+I-17          0426 C564985-8  J Hi                 400 Ki
+I-18          0427 D236377-9  S Lo Ni           B  824 Na
+I-19          0429 C675310-4    Lo Ni              304 Ki
+I-20          0525 C342862-8    Po                 115 Na
+I-21          0528 C537115-7    Lo Ni              714 Na
+I-22          0621 C401220-B  S Ic Lo Ni Va        713 Na
+I-23          0622 E552431-3    Ni Po              605 Na
+I-24          0624 E435564-4    Ni                 424 Na
+I-25          0625 C224384-6  S Lo Ni              205 Na
+I-26          0629 CAA6410-9    Fl Ni              204 Na
+I-27          0630 C537311-9  S Lo Ni              104 Na
+I-28          0721 C362985-6  S Hi                 202 Na
+I-29          0724 C300A88-E    Hi Na Va           823 Na
+I-30          0725 C474610-4  S Ag Ni              714 Na
+I-31          0727 C100373-9    Lo Ni Va        B  522 Na
+I-32          0821 C366200-9  S Lo Ni              513 Na
+I-33          0824 C120552-B  S De Ni Po           824 Na
+I-34          0826 C244344-6    Lo Ni              723 Na
+I-35          0827 C753544-6    Ni Po              104 Na
+I-36          0828 D878573-6  S Ag Ni           B  305 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jagravar SECTOR: Grevanne Sector
+#
+# Jump-routes
+#
+$1329 1729 1 0 14
+$1421 1319 0 -1 14
+$1421 1422 0 0 14
+$1422 1122 0 0 14
+$1122 1126 0 0 14
+$1126 1329 0 0 14
+$1421 1521 0 0 14
+$1521 1621 0 0 14
+$1621 1618 0 -1 14
+$1621 1721 1 0 14
+$1329 1229 0 0 14
+$1329 1330 0 0 14
+$1230 1133 0 1 14
+$1230 1330 0 0 14
+$1122 1018 0 -1 10
+$1122 1325 0 0 10
+$1325 1627 0 0 10
+$1627 1830 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0921 E100520-A    Ni Va              422 Na
+J-2           0923 C637104-A  R Lo Ni              924 Na
+J-3           0924 E473579-8    Ni              B  503 Na
+J-4           0929 C435567-9    Ni                 804 Na
+J-5           1021 C768300-8  R Lo Ni              100 Pm
+J-6           1024 C67A644-7  R Ni Wa              200 Pm
+J-7           1029 X555878-2                    R  403 Na
+Jokoll        1122 B464733-8    Ag                 102 Pm
+J-9           1123 C67388A-6                       920 Pm
+J-10          1124 C43369E-9    Na Ni Po           500 Pm
+J-11          1126 B89A459-A    Ni Wa              104 Pm
+J-12          1128 D8A5367-4    Fl Lo Ni           423 Pm
+J-13          1222 C561653-4    Ni Ri              203 Pm
+J-14          1224 C787578-8    Ag Ni           B  503 Na
+J-15          1227 A320468-B  R De Ni Po           704 Pm
+J-16          1228 C749568-5  P Ni                 312 Pm
+J-17          1229 B551688-7    Ni Po              100 Pm
+J-18          1230 C25499A-9    Hi                 904 Pm
+J-19          1323 C344545-9  Q Ag Ni              704 Pm
+Lorria        1325 C100236-B  R Lo Ni Va           501 Pm
+J-21          1326 C66448D-6    Ni                 603 Pm
+J-22          1327 X668200-0    Lo              R  624 Na
+J-23          1329 B370996-C  Q De Hi In           603 Pm
+J-24          1330 B7C8452-D    Fl Ni           A  702 Pm
+J-25          1421 A76A861-E    Ri Wa              400 Pm
+J-26          1422 A140762-E  P De Po              200 Pm
+J-27          1424 C487224-9  R Lo Ni              403 Pm
+J-28          1426 C437999-9    Hi In              911 Pm
+J-29          1430 C867443-7    Ni                 914 Pm
+J-30          1521 C565505-7  Q Ag Ni              403 Pm
+J-31          1522 C657778-3    Ag              B  301 Na
+J-32          1523 C6B4542-6    Fl Ni           A  700 Pm
+J-33          1525 A444405-D    Ni                 910 Pm
+J-34          1526 C6A5769-7  P Fl                 503 Pm
+J-35          1528 B26077A-6    De Ri           B  705 Na
+J-36          1621 A201474-B    Ic Ni Va           400 Pm
+J-37          1626 E464599-5    Ag Ni              804 Pm
+Wazzina       1627 B310568-C  Q Ni                 602 Pm
+J-39          1628 C550751-5    De Po              104 Pm
+J-40          1629 C5A3331-6    Fl Lo Ni           833 Pm
+J-41          1630 C57698B-8  P Hi In              402 Pm
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Klagran SECTOR: Grevanne Sector
+#
+# Jump-routes
+#
+$2124 2526 1 0 14
+$2124 2223 0 0 14
+$2124 1925 0 0 14
+$2124 2120 0 -1 14
+$1829 1932 0 1 14
+$1829 1729 0 0 14
+$1729 1329 -1 0 14
+$1721 1621 -1 0 14
+$1721 2022 0 0 14
+$2022 2124 0 0 14
+$1829 2229 0 0 14
+$2229 2530 1 0 14
+$2229 2331 0 1 14
+$1830 1627 -1 0 10
+$1830 2033 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1721 B000785-9    As Na              810 Pm
+K-2           1723 B7B3242-8  R Fl Lo Ni        A  703 Pm
+K-3           1725 C100578-8    Ni Va           B  302 Na
+K-4           1729 A533010-C    Lo Ni Po           813 Pm
+K-5           1730 C454300-8    Lo Ni              602 Pm
+K-6           1823 C9A5765-5    Fl                 624 Pm
+K-7           1824 E455255-4    Lo Ni              800 Pm
+K-8           1825 C7A7210-9    Fl Lo Ni           114 Pm
+K-9           1827 D78A333-6  R Lo Ni Wa           823 Pm
+K-10          1829 B58A100-C  R Lo Ni Wa           112 Pm
+Kliarn        1830 A647321-9    Lo Ni              203 Pm
+K-12          1924 B243779-6    Po              B  824 Na
+K-13          1925 A798442-A    Ni                 303 Pm
+K-14          1928 E4617CC-4                       722 Pm
+K-15          2022 B77A387-C    Lo Ni Wa           312 Pm
+K-16          2023 C000867-7    As Na              600 Pm
+K-17          2026 C5346A8-4    Ni                 503 Pm
+K-18          2121 C72847A-7    Ni              B  502 Na
+K-19          2123 C479453-8  R Ni                 413 Pm
+K-20          2124 B677200-A  R Lo Ni              911 Pm
+K-21          2128 C99A552-9  P Ni Wa              104 Pm
+K-22          2129 C492455-9  R Ni                 903 Pm
+K-23          2223 B65A585-8  P Ni Wa              613 Pm
+K-24          2224 C784777-7    Ag Ri           B  722 Na
+K-25          2225 C74A867-8    Wa                 602 Pm
+K-26          2229 B510431-C  R Ni                 210 Pm
+K-27          2321 CAA7A75-8    Fl Hi           B  310 Na
+K-28          2322 C737A84-8  P Hi In              504 Pm
+K-29          2327 C667345-7    Lo Ni              314 Pm
+K-30          2328 C000ADA-C  Q As Hi Na           900 Pm
+K-31          2424 E6676BC-4    Ag Ni              723 Pm
+K-32          2430 D543455-3  R Ni Po              123 Pm
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lagravan SECTOR: Grevanne Sector
+#
+# Jump-routes
+#
+$2529 2533 0 1 14
+$2529 2526 0 0 14
+$2530 2930 0 0 14
+$2930 3030 0 0 14
+$3030 3131 0 1 14
+$2526 2124 -1 0 14
+$3022 3020 0 -1 14
+$3022 3025 0 0 14
+$3022 3222 0 0 14
+$2530 2229 -1 0 14
+$3025 2826 0 0 14
+$2826 2526 0 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2522 C443522-8  P Ni Po              701 Pm
+L-2           2523 C696447-6  R Ni                 505 Pm
+L-3           2526 A99A997-C  P Hi In Wa           103 Pm
+L-4           2527 A00089B-C    As Na              201 Pm
+L-5           2529 B576389-B    Lo Ni              901 Pm
+L-6           2530 B533558-C  R Ni Po              113 Pm
+L-7           2622 C536897-8  Q                    223 Pm
+L-8           2625 C325300-8    Lo Ni              103 Pm
+L-9           2626 C657100-A    Lo Ni              804 Pm
+L-10          2627 E575302-5    Lo Ni              203 Pm
+L-11          2629 B5718BG-9                       621 Pm
+L-12          2630 C757311-7  R Lo Ni              420 Pm
+L-13          2721 E662367-2    Lo Ni              413 Pm
+L-14          2724 C597553-8  P Ag Ni              222 Pm
+L-15          2825 C571555-5  P Ni                 800 Pm
+L-16          2826 C311312-A  R Ic Lo Ni           204 Pm
+L-17          2830 D273204-5    Lo Ni              723 Pm
+L-18          2922 D420630-6  Q De Na Ni Po        723 Pm
+L-19          2925 C140474-B    De Ni Po        B  714 Na
+L-20          2929 C8D3333-A    Fl Lo Ni           420 Pm
+L-21          2930 A594576-B    Ag Ni           B  411 Na
+L-22          3022 A000224-D  R As Lo Ni           404 Pm
+L-23          3024 C64A223-6    Lo Ni Wa           200 Pm
+L-24          3025 B410410-B    Ni                 524 Pm
+L-25          3027 D756686-1    Ag Ni              103 Na
+L-26          3028 E5578CB-2                       503 Na
+L-27          3030 B6A2623-6  Q Fl Ni              111 Pm
+L-28          3121 C629340-6  R Lo Ni              923 Pm
+L-29          3122 E632400-4    Ni Po              604 Pm
+L-30          3125 C635865-8  P                    904 Na
+L-31          3127 C855532-7    Ag Ni              704 Na
+L-32          3221 D333100-9    Lo Ni Po           602 Pm
+L-33          3222 B86868D-A  P Ag Ni Ri           704 Pm
+L-34          3223 D779433-7    Ni                 904 Pm
+L-35          3224 C755646-3    Ag Ni              224 Pm
+L-36          3225 D88A100-5  R Lo Ni Wa           203 Pm
+L-37          3228 C327799-6                       602 Na
+L-38          3229 C574400-6  R Ni                 915 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Migranne SECTOR: Grevanne Sector
+#
+# Jump-routes
+#
+$0822 0933 1 0 14
+$0832 0731 0 0 14
+$0837 1035 1 0 14
+$0837 0736 0 0 14
+$0736 0536 0 0 14
+$0736 0832 0 0 14
+$0837 0701 0 1 14
+$0140 0102 0 1 14
+$0140 0440 0 0 14
+$0440 0402 0 1 14
+$0231 0230 0 -1 5
+$0231 0232 0 0 5
+$0232 0135 0 0 5
+$0135 3236 -1 0 5
+$0232 3232 -1 0 5
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0131 D000448-5    As Ni              302 Ki
+M-2           0135 B22456A-A    Ni                 103 Ki
+M-3           0136 C400222-7    Lo Ni Va           302 Ki
+M-4           0137 E463320-4    Lo Ni              214 Na
+M-5           0138 C578246-6    Lo Ni              902 Na
+M-6           0140 AA977AB-9    Ag                 714 Pm
+M-7           0231 B130989-A    De Hi In Na Po     903 Ki
+M-8           0232 B6A09AE-A    De Hi              820 Ki
+M-9           0235 E300234-4    Lo Ni Va           504 Na
+M-10          0237 C65947A-6  S Ni              B  113 Na
+M-11          0238 C456100-6  S Lo Ni              104 Na
+M-12          0331 E2546AA-3    Ag Ni              704 Ki
+M-13          0336 D628200-6  S Lo Ni              525 Na
+M-14          0337 C683544-5    Ni                 405 Na
+M-15          0434 C978866-5                       823 Pm
+M-16          0436 C53677B-4                    B  904 Na
+M-17          0440 AAA7886-9    Fl                 603 Pm
+M-18          0534 C324210-6    Lo Ni              715 Pm
+M-19          0536 B330420-D    De Ni Po           813 Pm
+M-20          0632 C333521-8    Ni Po              323 Pm
+M-21          0633 C877324-9    Lo Ni              600 Pm
+M-22          0634 C4369AE-8  R Hi In              602 Pm
+M-23          0636 E555973-7    Hi              B  104 Na
+M-24          0640 D000474-6    As Ni           B  600 Na
+M-25          0731 B735656-8    Ni                 112 Pm
+M-26          0733 C564435-6    Ni                 104 Pm
+M-27          0734 D539430-5  R Ni                 713 Pm
+M-28          0735 C644979-A    Hi In           B  403 Na
+M-29          0736 B686567-8  P Ag Ni              304 Pm
+M-30          0737 D130545-8    De Ni Po           304 Pm
+M-31          0832 B7B5998-C  P Fl Hi           A  504 Pm
+M-32          0833 E531415-3    Ni Po              704 Pm
+M-33          0837 B210AB7-C  R Hi Na              411 Pm
+M-34          0839 E9A37A7-2    Fl                 704 Pm
+M-35          0840 D94A578-9    Ni Wa           B  104 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Navagrav SECTOR: Grevanne Sector
+#
+# Jump-routes
+#
+$1133 1230 0 -1 14
+$1133 0933 0 0 14
+$0933 0822 -1 0 14
+$0933 1034 0 0 14
+$1034 1035 0 0 14
+$1133 1433 0 0 14
+$1133 1335 0 0 14
+$1335 1536 0 0 14
+$1536 1635 0 0 14
+$1635 1736 1 0 14
+$1435 1538 0 0 14
+$1538 1339 0 0 14
+$1339 1240 0 0 14
+$1035 0837 -1 0 14
+$1433 1633 0 0 14
+$1633 2033 1 0 14
+$1339 1302 0 1 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0932 C563402-6    Ni                 103 Pm
+N-2           0933 A548452-A    Ni                 803 Pm
+N-3           0934 C685200-9    Lo Ni              104 Pm
+N-4           0935 D425476-4    Ni              B  304 Na
+N-5           0937 D676848-3  Q                    810 Pm
+N-6           0938 C234424-6  R Ni                 314 Pm
+N-7           0939 D778253-7    Lo Ni              932 Pm
+N-8           0940 C545733-4  P Ag                 213 Pm
+N-9           1031 C32669A-7    Ni                 304 Pm
+N-10          1032 C310137-A    Lo Ni              503 Pm
+N-11          1033 C33156A-7    Ni Po              202 Pm
+N-12          1034 B513333-A    Ic Lo Ni           612 Pm
+N-13          1035 B445688-8    Ag Ni              801 Pm
+N-14          1036 C255568-7  P Ag Ni              924 Pm
+N-15          1040 D42358C-4  R Ni Po              903 Pm
+N-16          1132 C431733-A    Na Po              805 Pm
+N-17          1133 B677334-B    Lo Ni              204 Pm
+N-18          1140 D356401-6  R Ni                 803 Pm
+N-19          1232 C253630-6    Ni Po              403 Pm
+N-20          1233 C434898-7                       304 Pm
+N-21          1234 D458401-6    Ni                 513 Pm
+N-22          1235 C3588B9-5  P                    712 Pm
+N-23          1236 C412257-8    Ic Lo Ni           533 Pm
+N-24          1237 C632752-6    Na Po              832 Pm
+N-25          1240 B66A010-8  R Lo Ni Wa           401 Pm
+N-26          1334 C322630-8  Q Na Ni Po           204 Pm
+N-27          1335 B898799-9  P Ag                 110 Pm
+N-28          1337 B6B0344-B  R De Lo Ni        A  414 Pm
+N-29          1339 B577550-A    Ag Ni              624 Pm
+N-30          1432 C310446-B  R Ni                 503 Pm
+N-31          1433 AAE788D-8  P Fl                 304 Pm
+N-32          1435 B230366-D  R De Lo Ni Po        104 Pm
+N-33          1437 E88A753-7    Ri Wa              903 Pm
+N-34          1440 C79A59C-9    Ni Wa              914 Pm
+N-35          1532 C958320-8    Lo Ni              922 Pm
+N-36          1535 C599537-A    Ni                 302 Pm
+N-37          1536 B746466-8    Ni                 403 Pm
+N-38          1538 B675310-9    Lo Ni              800 Pm
+N-39          1633 B100678-C    Na Ni Va        B  103 Na
+N-40          1635 A327644-9    Ni                 102 Pm
+N-41          1636 E10037A-A    Lo Ni Va        B  223 Na
+N-42          1637 D88A410-5  R Ni Wa              602 Pm
+N-43          1640 C98A844-A  P Ri Wa              104 Pm
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ogravier SECTOR: Grevanne Sector
+#
+# Jump-routes
+#
+$2339 2637 1 0 14
+$2436 2637 1 0 14
+$2436 2435 0 0 14
+$2435 2033 0 0 14
+$2033 1932 0 0 14
+$1932 1829 0 -1 14
+$2033 2331 0 0 14
+$2033 2038 0 0 14
+$2339 2038 0 0 14
+$2038 1837 0 0 14
+$1837 1739 0 0 14
+$1837 1736 0 0 14
+$2331 2229 0 -1 14
+$1736 1635 -1 0 14
+$2033 1633 -1 0 14
+$2038 1902 0 1 14
+$2033 1830 0 -1 10
+$2033 2235 0 0 10
+$2235 2438 0 0 10
+$2438 2601 1 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1731 C503731-4  P Ic Na Va           500 Pm
+O-2           1733 C9A8536-5    Fl Ni              404 Pm
+O-3           1734 C9D4767-9    Fl                 522 Pm
+O-4           1735 E424620-6    Ni                 801 Pm
+O-5           1736 B6A079E-8    De                 515 Pm
+O-6           1738 D120744-7    De Na Po           901 Pm
+O-7           1739 A667964-D    Hi                 803 Pm
+O-8           1740 D370153-5    De Lo Ni           910 Pm
+O-9           1834 C200447-6  R Ni Va              502 Pm
+O-10          1835 C435A9B-D    Hi In              904 Pm
+O-11          1836 C885786-7  Q Ag Ri              200 Pm
+O-12          1837 B120136-D    De Lo Ni Po        402 Pm
+O-13          1932 B758546-9  R Ag Ni              514 Pm
+O-14          1935 D324344-4    Lo Ni              505 Pm
+O-15          1936 E444662-2    Ag Ni              404 Pm
+O-16          1939 C765756-7  P Ag Ri              605 Pm
+Omakka        2033 B3639DG-B    Hi                 204 Pm
+O-18          2035 B997467-8  R Ni                 104 Pm
+O-19          2036 C8A259A-9  R Fl Ni              722 Pm
+O-20          2037 B100668-D  Q Na Ni Va           402 Pm
+O-21          2038 B241436-7  R Ni Po              112 Pm
+O-22          2040 C453447-7    Ni Po              104 Pm
+O-23          2131 E8A4567-8    Fl Ni              100 Pm
+O-24          2133 C43399A-8  P Hi In Na Po        214 Pm
+O-25          2134 C6A0110-5    De Lo Ni           105 Pm
+O-26          2135 D320557-6  P De Ni Po           304 Pm
+O-27          2137 B340775-8    De Po           B  602 Na
+O-28          2233 C4275AE-7  P Ni                 713 Pm
+O-29          2234 A340520-E    De Ni Po           104 Pm
+Gunadda       2235 C474248-8  R Lo Ni              114 Pm
+O-31          2237 E6128B9-3    Ic Na              204 Pm
+O-32          2238 C333553-C  P Ni Po              220 Pm
+O-33          2239 EAFA300-9    Fl Lo Ni Wa        204 Pm
+O-34          2331 B525244-9    Lo Ni              504 Pm
+O-35          2333 E380543-5    De Ni              703 Pm
+O-36          2334 C635264-6  R Lo Ni              914 Pm
+O-37          2335 A200987-C    Hi Na Va           102 Pm
+O-38          2336 E202346-9    Ic Lo Ni Va        900 Pm
+O-39          2337 CAB899C-7  P Fl Hi           A  614 Pm
+O-40          2339 B637667-6    Ni                 512 Pm
+O-41          2435 B5A0756-7  Q De                 110 Pm
+O-42          2436 B74A434-9    Ni Wa              420 Pm
+Eartina       2438 A66A89B-9  P Ri Wa              412 Pm
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Poivara SECTOR: Grevanne Sector
+#
+# Jump-routes
+#
+$2637 2640 0 0 14
+$2640 2604 0 1 14
+$2637 2339 -1 0 14
+$2637 2436 -1 0 14
+$2637 2535 0 0 14
+$2535 2533 0 0 14
+$2637 2737 0 0 14
+$2737 3138 0 0 14
+$3138 3238 0 0 14
+$3238 3239 0 0 14
+$3239 3203 0 1 14
+$2533 2529 0 -1 14
+$3131 3030 0 -1 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2531 C664884-3  Q Ri                 202 Pm
+P-2           2533 A695455-D    Ni                 302 Pm
+P-3           2535 B897532-B  R Ag Ni              424 Pm
+P-4           2536 C360631-8  R De Ni              504 Pm
+P-5           2537 C7B4965-6    Fl Hi           A  900 Pm
+P-6           2538 D460200-8    De Lo Ni           804 Pm
+P-7           2540 C200AB9-D  M Hi Na Va           224 Pm
+P-8           2632 E786410-4    Ni                 510 Pm
+P-9           2634 C785531-4    Ag Ni              302 Pm
+P-10          2635 C698498-7    Ni                 714 Pm
+Pooinass      2637 A000A9D-I  P As Hi Na Cx        845 Pm
+P-12          2638 A986273-C    Lo Ni           B  122 Pm
+P-13          2639 E424101-7    Lo Ni              800 Pm
+P-14          2640 A512110-D    Ic Lo Ni           122 Pm
+P-15          2731 C360655-6    De Ni Ri           101 Pm
+P-16          2732 C79A897-8  P Wa                 702 Pm
+P-17          2733 D778144-2    Lo Ni              321 Pm
+P-18          2737 A310574-B  R Ni              B  314 Pm
+P-19          2739 C444741-9  Q Ag                 712 Pm
+P-20          2831 C334244-8  R Lo Ni              201 Pm
+P-21          2838 B633220-8    Lo Ni Po           210 Pm
+P-22          2839 C75A666-5  P Ni Wa              710 Pm
+P-23          2931 E83949B-4    Ni                 123 Pm
+P-24          2934 C302666-5  S Ic Na Ni Va        222 Na
+P-25          2936 C20038D-8    Lo Ni Va           302 Pm
+P-26          2937 E430565-9    De Ni Po           313 Pm
+P-27          2938 C8B99A5-B  C Fl Hi           A  802 Pm
+P-28          2939 E210466-9    Ni                 304 Pm
+P-29          3031 C120346-C  R De Lo Ni Po        804 Pm
+P-30          3032 EAD7354-6    Fl Lo Ni           910 Pm
+P-31          3035 CA9A78A-9    Wa                 314 Pm
+P-32          3036 C323651-6  Q Na Ni Po           604 Pm
+P-33          3039 C000ADH-C  M As Hi Na        A  104 Pm
+P-34          3040 C430667-6    De Na Ni Po        813 Pm
+P-35          3131 B655958-9  P Hi                 612 Pm
+P-36          3134 C623640-7  S Na Ni Po           303 Na
+P-37          3137 C867247-9  R Lo Ni              504 Pm
+P-38          3138 A11089B-D    Na                 313 Pm
+P-39          3233 C449569-A  S Ni                 610 Na
+P-40          3237 C533999-7  P Hi In Na Po        121 Pm
+P-41          3238 B377114-9  R Lo Ni              814 Pm
+P-42          3239 A449402-D    Ni                 623 Pm
+

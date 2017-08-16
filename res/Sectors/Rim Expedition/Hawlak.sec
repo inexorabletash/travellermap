@@ -1,0 +1,424 @@
+Hawlak Sector
+
+A: Ahawla                    a.dat
+B: Bawlak                    b.dat
+C: Cloawlan                  c.dat
+D: Drahaw                    d.dat
+E: Ehawlak                   e.dat
+F: Frawla                    f.dat
+G: Ghowl                     g.dat
+H: Hawla                     h.dat
+I: Ihawlie                   i.dat
+J: Jawlak                    j.dat
+K: Khawla                    k.dat
+L: Lakawl                    l.dat
+M: Mawlakan                  m.dat
+N: Nulawker                  n.dat
+O: Okawlaw                   o.dat
+P: Pawlka                    p.dat
+
+Bases:
+H = Houren Navy
+M = Opali Military
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+14 Hc = Houren Conquests
+07 Na = Non-Aligned
+13 Op = Opali Magistrate
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ahawla SECTOR: Hawlak Sector
+#
+# Jump-routes
+#
+$0106 2905 -1 0 10
+$0106 0506 0 0 10
+$0506 0609 0 0 10
+$0609 1008 1 0 10
+$0204 3106 -1 0 13
+$0204 0506 0 0 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0104 E347763-4    Ag                 204 Op
+Klablala      0106 D97A878-8  S Wa              B  913 Na
+A-3           0204 B550163-A    De Lo Ni Po        314 Op
+A-4           0301 C130575-A    De Ni Po        B  204 Na
+Agahimm       0506 B571866-9  M                    633 Op
+Shaarra       0609 E7A0798-7    De                 613 Na
+A-7           0704 C767679-6  S Ag Ni Ri        B  803 Na
+A-8           0809 E666543-2    Ag Ni              913 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Bawlak SECTOR: Hawlak Sector
+#
+# Jump-routes
+#
+$1008 0609 -1 0 10
+$1008 1407 0 0 10
+$1407 1809 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           0902 C753544-6  S Ni Po              704 Na
+B-2           0910 C300311-8    Lo Ni Va           104 Na
+Blinbli       1008 B636043-A  S Lo Ni              204 Na
+B-4           1207 AAAA444-D    Fl Ni Wa           404 Na
+B-5           1304 B674554-9  N Ag Ni              503 Na
+B-6           1307 C223487-7    Ni Po              104 Na
+B-7           1405 E662864-3    Ri                 901 Na
+Tawanga       1407 E555375-3    Lo Ni           B  801 Na
+B-9           1608 D896554-3  S Ag Ni              112 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Cloawlan SECTOR: Hawlak Sector
+#
+# Jump-routes
+#
+$1809 1407 -1 0 10
+$1809 2112 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1702 C000422-7  S As Ni              404 Na
+C-2           1705 X7758DD-0                    R  503 Na
+Clachier      1809 E565652-2    Ag Ni Ri           603 Na
+C-4           2103 C868410-5    Ni                 304 Na
+C-5           2105 C7C3954-B    Fl Hi           A  513 Na
+C-6           2207 C455747-4  S Ag                 413 Na
+C-7           2301 C887300-5    Lo Ni              910 Na
+C-8           2304 C443ACC-9  S Hi In Po           900 Na
+C-9           2306 C789120-5    Lo Ni              411 Na
+C-10          2308 B342677-7    Ni Po           B  112 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Drahaw SECTOR: Hawlak Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2607 B110303-B  N Lo Ni              124 Na
+D-2           2703 XA8A963-4    Hi Wa           R  112 Na
+D-3           2804 C302831-7    Ic Na Va           210 Na
+D-4           2907 C737753-9                       800 Na
+D-5           2910 C9A75A6-6  S Fl Ni              405 Na
+D-6           3102 C8A5485-8    Fl Ni              705 Na
+D-7           3105 C2369BB-A  S Hi In              612 Na
+D-8           3209 C656102-9    Lo Ni              623 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ehawlak SECTOR: Hawlak Sector
+#
+# Jump-routes
+$0613 0714 0 0
+#
+$0212 3112 -1 0 13
+$0815 0714 0 0 11
+$0815 0817 0 0 11
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0212 C432589-B    Ni Po              913 Op
+E-2           0417 E9B1537-5    Fl Ni           A  203 Na
+E-3           0518 B73A320-E    Lo Ni Wa           704 Na
+E-4           0613 C333400-C    Ni Po              100 Na
+E-5           0714 B333687-C    Na Ni Po           501 Na
+E-6           0815 A9A5240-E  N Fl Lo Ni           812 Na
+E-7           0817 C58A330-7    Lo Ni Wa           501 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Frawla SECTOR: Hawlak Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           1017 E74A416-4    Ni Wa              622 Na
+F-2           1019 E413654-6    Ic Na Ni           201 Na
+F-3           1119 E898688-6    Ag Ni              410 Na
+F-4           1215 C641330-5    Lo Ni Po           122 Na
+F-5           1513 E888116-7    Lo Ni              804 Na
+F-6           1613 C320402-B    De Ni Po           213 Na
+F-7           1619 EA89532-5    Ni                 904 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ghowl SECTOR: Hawlak Sector
+#
+# Jump-routes
+#
+$2112 1809 0 -1 10
+$2112 2014 0 0 10
+$2014 2017 0 0 10
+$2017 2019 0 0 10
+$2019 2322 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1818 B334755-B  N                    803 Na
+Ottello       2014 A667876-8  N Ri              B  622 Na
+Missarawg     2017 C201346-A    Ic Lo Ni Va        411 Na
+Ghikiu        2019 C655345-6    Lo Ni              104 Na
+Goppier       2112 B30389C-8  2 Ic Na Va           823 Na
+G-6           2212 C766624-8    Ag Ni              704 Na
+G-7           2413 CAA7575-9    Fl Ni           B  900 Na
+G-8           2420 D888474-5  S Ni              B  904 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hawla SECTOR: Hawlak Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2515 E8A4250-7    Fl Lo Ni           514 Na
+H-2           2519 C885357-5    Lo Ni              902 Na
+H-3           2611 C220366-7  S De Lo Ni Po        604 Na
+H-4           2615 C6A6966-9    Fl Hi              503 Na
+H-5           2718 C528468-6    Ni                 303 Na
+H-6           2818 C344440-A    Ni                 325 Na
+H-7           2819 A9A2452-A  S Fl Ni              104 Na
+H-8           3115 D334545-5    Ni                 100 Na
+H-9           3119 E978400-6    Ni                 620 Na
+H-10          3217 A675120-C    Lo Ni              115 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ihawlie SECTOR: Hawlak Sector
+#
+# Jump-routes
+$0528 0726 0 0
+$0624 0726 0 0
+$0624 0822 0 0
+$0624 0825 0 0
+$0822 0825 0 0
+#
+$0121 3221 -1 0 14
+$0121 3119 -1 -1 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0121 B505885-A  H Ic Va              224 Hc
+I-2           0327 E100AB8-A    Hi Na Va           503 Na
+I-3           0330 A446410-D    Ni                 722 Na
+I-4           0528 A364678-C  2 Ag Ni Ri           604 Na
+I-5           0624 A785341-B  N Lo Ni              300 Na
+I-6           0627 D4458BE-7                       602 Na
+I-7           0726 A521523-C  2 Ni Po              412 Na
+I-8           0822 A657776-7  N Ag              B  103 Na
+I-9           0825 B75479C-8  N Ag                 404 Na
+I-10          0830 C884536-8    Ag Ni              504 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jawlak SECTOR: Hawlak Sector
+#
+# Jump-routes
+#
+$1530 1729 1 0 11
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0926 B768579-A  2 Ag Ni           B  902 Na
+J-2           0928 X346100-4    Lo              R  615 Na
+J-3           1022 E354438-5    Ni                 912 Na
+J-4           1123 C465421-9    Ni                 604 Na
+J-5           1222 C593134-5    Lo Ni              105 Na
+J-6           1326 D320666-7  S De Na Ni Po        101 Na
+J-7           1429 C200AEG-A    Hi Na Va        A  814 Na
+J-8           1526 A310368-A  S Lo Ni              613 Na
+J-9           1528 D300431-4  S Ni Va              802 Na
+J-10          1530 C231565-B    Ni Po              502 Na
+J-11          1621 C2556AD-6  S Ag Ni              204 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Khawla SECTOR: Hawlak Sector
+#
+# Jump-routes
+$1729 1828 0 0
+#
+$2322 2019 0 -1 10
+$2322 2423 0 0 10
+$2423 2526 1 0 10
+$1828 1928 0 0 11
+$1729 1530 -1 0 11
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1729 A425688-E    Ni                 402 Na
+K-2           1828 C796265-6    Lo Ni              104 Na
+K-3           1928 C977A53-A    Hi In              215 Na
+K-4           2025 E66957B-5    Ni              B  105 Na
+K-5           2029 D454347-8  S Lo Ni              803 Na
+K-6           2228 D386541-7  S Ag Ni              724 Na
+Kobite        2322 C473200-6  S Lo Ni              614 Na
+K-8           2327 D697599-3    Ag Ni              704 Na
+K-9           2328 D22158B-5  S Ni Po              103 Na
+Vandore       2423 B340567-B    De Ni Po           201 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lakawl SECTOR: Hawlak Sector
+#
+# Jump-routes
+#
+$2526 2423 -1 0 10
+$2526 2628 0 0 10
+$2628 2931 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2521 C348100-B  S Lo Ni              324 Na
+Lityuun       2526 C7A2789-5  S Fl                 105 Na
+L-3           2622 C000513-7  S As Ni              810 Na
+Farewag       2628 C5216AC-9    Na Ni Po           902 Na
+L-5           2725 C442277-6  S Lo Ni Po        B  903 Na
+L-6           2728 C596667-3  S Ag Ni              101 Na
+L-7           2821 C444457-8    Ni                 101 Na
+L-8           2826 C311400-9  S Ic Ni              813 Na
+L-9           3225 C322534-A    Ni Po              600 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Mawlakan SECTOR: Hawlak Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0133 B301346-9    Ic Lo Ni Va        215 Na
+M-2           0334 C300300-9    Lo Ni Va           304 Na
+M-3           0436 B342778-9  N Po              B  305 Na
+M-4           0538 B100100-A  2 Lo Ni Va           311 Na
+M-5           0539 C567689-7    Ag Ni Ri           424 Na
+M-6           0631 C436443-A    Ni                 715 Na
+M-7           0639 B3426A8-A    Ni Po              303 Na
+M-8           0732 E798456-4    Ni                 504 Na
+M-9           0735 C597878-3                    B  611 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nulawker SECTOR: Hawlak Sector
+#
+# Jump-routes
+$0936 1036 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0936 C666383-6  S Lo Ni              800 Na
+N-2           0940 C73A502-8  S Ni Wa              800 Na
+N-3           1036 A86A697-D    Ni Ri Wa           300 Na
+N-4           1131 C679A6A-A  S Hi In              904 Na
+N-5           1331 C869754-8    Ri                 422 Na
+N-6           1436 D300642-3    Na Ni Va           424 Na
+N-7           1532 D400697-8    Na Ni Va           604 Na
+N-8           1533 B100541-E  N Ni Va              434 Na
+N-9           1535 C33336A-B  S Lo Ni Po           102 Na
+N-10          1537 A000876-B  N As Na           B  512 Na
+N-11          1539 C45378B-6  S Po                 802 Na
+N-12          1540 C000654-B  S As Na Ni           703 Na
+N-13          1632 E9B5842-7    Fl              A  322 Na
+N-14          1637 C79A535-A  S Ni Wa              722 Na
+N-15          1638 E410323-7    Lo Ni              900 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Okawlaw SECTOR: Hawlak Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1733 C10067A-A  S Na Ni Va        B  404 Na
+O-2           1740 A5447C9-7    Ag                 404 Na
+O-3           1835 C424410-7  S Ni                 914 Na
+O-4           1836 C340858-8  S De Po              920 Na
+O-5           2033 B5019CA-B    Hi Ic Na Va        104 Na
+O-6           2133 E1409A9-8    De Hi In Po        502 Na
+O-7           2136 D24289A-7  S Po                 503 Na
+O-8           2435 C9A7761-4  S Fl                 103 Na
+O-9           2440 C26688A-9    Ri                 213 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Pawlka SECTOR: Hawlak Sector
+#
+# Jump-routes
+#
+$2931 2628 0 -1 10
+$2931 2935 0 0 10
+$2935 3138 0 0 10
+$3138 3102 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2539 D522123-3  S Lo Ni Po           912 Na
+P-2           2633 D875561-5    Ag Ni              714 Na
+P-3           2635 C375141-9    Lo Ni              823 Na
+P-4           2640 B5A3723-B  S Fl                 905 Na
+P-5           2837 C1009A8-A    Hi Na Va           810 Na
+P-6           2840 C100400-9    Ni Va              912 Na
+Jaggara       2931 C410778-6    Na              B  623 Na
+Minnina       2935 D225125-4  S Lo Ni              804 Na
+P-9           2936 E352686-2    Ni Po              403 Na
+P-10          3037 C378453-8  S Ni                 402 Na
+P-11          3131 X647674-0    Ag              R  703 Na
+Gravies       3138 B371330-8    Lo Ni              204 Na
+P-13          3139 E757430-5    Ni                 315 Na
+P-14          3236 C47098A-8  S De Hi In           223 Na
+

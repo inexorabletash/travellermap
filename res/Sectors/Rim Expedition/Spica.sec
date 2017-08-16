@@ -1,0 +1,771 @@
+Spica
+
+A: Naav                      sec_a.dat           f
+B: Bain                      sec_b.dat           f
+C: Spica                     sec_c.dat           f
+D: al Ajib                   sec_d.dat           f
+E: Tupindur                  sec_e.dat           f
+F: Three Spheres             sec_f.dat           f
+G: Virginis                  sec_g.dat           f
+H: Sline                     sec_h.dat           f
+I: Boreal                    sec_i.dat           f
+J: Flux                      sec_j.dat
+K: Farbor                    sec_k.dat
+L: Erest                     sec_l.dat
+M: Trillion                  sec_m.dat           
+N: Tohira                    sec_n.dat
+O: Kurfane                   sec_o.dat
+P: Syzygy                    sec_p.dat           f
+
+Bases:
+A = Navy & Scout Bases
+D = Naval Depot
+E = Fed. Embassy Center
+F = Fed. Military&Navy Base
+G = Solomani Navy Base
+L = Federation Navy Base
+M = Fed. Military Base
+N = Naval Base
+S = Scout Base
+  = None
+
+Allegiance:
+09 Hv = Hive Federation 
+11 Hf = Fed. Develop. Agency 
+07 Xf = FDA world outside of HF
+02 H* = Star Patterns Trading
+10 Hi = Six Eyes Nest
+08 Un = Unpopulated
+04 Cs = Client State
+07 Na = Non-aligned
+11 So = Solomani Confederation
+
+
+Source: names from Core [http://members.nova.org/~sol/core/]
+Uwps from Missouri Archives, apparently from original sources.
+
+Edited 12-08-2001 for Hiver GOV codes by Bari Z. Stafford Sr.
+aka: General Turokan (generalturokan@juno.com).
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_a   SECTOR: Spica
+#
+# 
+$0803 1104 1 0 2
+$0803 0839 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Meridian      0102 E550887-5    De Po              135 So
+Naav          0103 A53289D-B  F Na Po              114 So
+Skyserpentine 0106 E6A6300-8    Fl Lo Ni           711 So
+Feldon        0107 C9A8121-9    Fl Lo Ni           704 So
+Elk Grove     0108 B597550-9    Ag Ni              300 So
+Grimaldi      0109 C550240-8    De Lo Ni Po        704 So
+Antairtic     0202 B3018BE-7    Ic Na Va           920 So
+Nadir         0204 A522520-A    Ni Po              700 So
+Craterville   0208 E731268-5    Lo Ni Po           925 So
+New Colchis   0209 C3337AB-5    Na Po              314 So
+700-210       0210 E211741-3    Ic Na              903 So
+Dandee        0307 B674424-8    Ni                 303 So
+Nagg'Astphay  0309 C42287A-6    Na Po           B  702 So
+Clan Mccracken0401 A4545A9-B    Ag Ni              703 So
+Spairn        0405 B358698-6  F Ag Ni              202 So
+Altus Iii     0502 B4508CD-8    De Po              510 So
+Lowell        0507 B411646-A    Ic Na Ni           104 So
+Innerlocken   0509 D233159-9    Lo Ni Po           501 So
+Talbot        0601 C301678-5    Ic Na Ni Va     B  300 So
+Shelby        0602 E899212-6    Lo Ni              320 So
+Milano        0608 C475851-5                       504 So
+Ben Gunn      0610 E534875-3                    B  310 So
+Turaak        0701 C101632-A    Ic Na Ni Va        900 Na
+Transitaal    0710 B47A440-A  F Ni Wa              904 So
+Hyborea       0803 A54699C-A  F Hi In              403 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_b   SECTOR: Spica
+#
+# 
+$1207 1311 0 1 2
+$1207 1104 0 0 2
+$1104 0803 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Trafalgar     0901 B323858-D    Na Po              900 Na
+Gliese        0903 C331647-6    Na Ni Po           411 Na
+Bain          0909 A78A874-A    Wa Ri           B  813 So
+Simpson       0910 C776875-6                    B  413 Na
+Vale          1002 C201563-6    Ic Ni Va           500 Na
+Hearthwood    1010 E777454-8    Ni                 710 Na
+Oscura        1104 A665663-A  F Ag Ni Ri           523 Na
+Shireene      1106 B233798-B    Na Po              500 Na
+Rhizopus      1206 CA99535-9    Ni                 900 Na
+Vaduz         1207 A551875-7  F Po                 514 Na
+Alta Republic 1208 C788543-7    Ag Ni              110 Na
+Nathrop       1209 B48A886-A    Wa Ri              604 Na
+Carrollton    1301 E77A578-7    Ni Wa           B  402 Na
+Evermere      1302 BA9A677-B    Ni Wa           B  115 Na
+Icestop       1303 C201467-9    Ic Ni Va           520 Na
+Gomez         1307 C550778-6    De Po           B  803 Na
+Freeport      1401 C411500-B    Ic Ni              900 Na
+Halverson     1405 A211377-D    Ic Lo Ni        B  610 Na
+Sessions      1407 E6A5888-7    Fl                 305 Na
+Larellum      1410 C535587-5    Ni                 503 Na
+Foster        1502 C326522-B    Ni                 314 Na
+Tsusist       1508 E550499-6    De Ni Po           303 Na
+Trivia        1601 C101540-B    Ic Ni Va           800 Na
+Rippel        1604 D843547-7    Ni Po              400 Na
+Pugeot        1605 D442626-6    Ni Po              200 Na
+Xoar Delta    1607 D311734-5    Ic Na              500 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_c   SECTOR: Spica
+#
+#
+$2003 1940 0 -1 10
+$2306 2607 1 0 10
+$2306 2003 0 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Nightshield   1702 E101665-9    Ic Na Ni Va        703 Na 
+Gronin        1705 C884665-8    Ag Ni Ri           710 Na 
+[Skull Hills) 1706 E7A38AD-6    Fl                 904 Na 
+Storewell     1802 C5208AA-7    De Na Po           803 Na 
+Xoar Beta     1805 E310332-4    Lo Ni              600 Na 
+Dobson Parish 1901 C8765AA-6    Ag Ni              213 Na 
+Xoar Alpha    1904 X411753-5    Ic Na           R  720 Na 
+Ringwald      1905 D72278B-6    Na Po              900 Na 
+Padre         1906 B330432-D    De Ni Po           200 Na 
+Wemutta       1907 D658889-1                       320 Na 
+Xoar Gamma    1909 D311841-4    Ic Na              200 Na 
+Ceril         1910 C200222-A    Lo Ni Va           610 Na 
+Liam          2002 A899002-E    Lo Ni              102 Na 
+Tyrolia       2003 A41199B-C    Hi Ic In Na        703 Na 
+Nugent        2010 A431965-F    Hi Na Po           304 Na 
+Strictland    2103 B550676-7  F De Ni Po        B  603 Na 
+Malley        2105 C6A98AA-6    Fl                 802 Na 
+[Good Place)  2109 C6A9731-7    Fl                 314 Na 
+Spica         2205 C755684-5    Ag Ni              704 Na 
+Faller        2207 C557663-4    Ag Ni              513 Na 
+Stewart       2306 A49A855-B    Wa                 211 Na 
+Spyral        2307 B456730-A  F Ag                 703 Na 
+Term Tukera   2310 B6A6213-C  F Fl Lo Ni           804 Na 
+Apollo        2401 A5239DE-9    Hi In Na Po        104 Na 
+Port Manatee  2404 A79A120-C    Lo Ni Wa           714 Na 
+Mandayyay     2405 A641300-A  F Lo Ni Po           704 Na 
+Wycliff       2406 C440300-B    De Lo Ni Po        830 Na 
+Abbott        2407 A665799-C    Ag Ri              705 Na 
+Wunderkind    2410 C451200-A    Lo Ni Po           412 Na 
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_d   SECTOR: Spica
+#
+#
+$2607 2306 -1 0 10
+$2607 2710 0 0 10
+$2710 3012 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Basque        2606 B736858-9                       300 Na
+Lierne        2607 C5538B9-7    Po                 101 Na
+Proximal      2609 C131204-8    Lo Ni Po           810 Na
+Crescendo     2610 E359559-7    Ni                 905 Na
+St. Vladimir  2704 B788865-6  F Ri                 303 Na
+Xoar Epsilon  2706 B211348-8    Ic Lo Ni           710 Na
+Berglund Belts2707 B000433-E  F As Ni              813 Na
+Liebfraumilch 2710 B545441-7  F Ni                 314 Na 
+Dugout        2801 B101621-B    Ic Na Ni Va        600 Na
+al'Ajib       2806 D552640-3    Ni Po              903 Na
+Marginal      2906 B7547CC-5    Ag                 400 Na
+Feral         3001 B6A48BD-9  F Fl                 604 Na
+Bountiful     3004 C6678AA-7                       105 Na
+Jumpers       3010 B7B4544-8    Fl Ni           A  620 Na
+703-704       3104 E335334-8    Lo Ni              710 Na
+Willrich      3105 C410657-9    Na Ni              200 Na
+Fellows       3106 E955148-7    Lo Ni              224 Na
+Esmiol        3109 E77A876-8    Wa              B  614 Na
+Pentarchus    3201 A786476-D  F Ni              B  703 Na
+Sullivan      3202 B430115-D  F De Lo Ni Po        604 Na
+Claytown      3207 C43089C-6    De Na Po           601 Na
+Phylum        3210 C689367-7    Lo Ni              704 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_e   SECTOR: Spica
+# 
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Utopia Mines  0112 C441569-8    Ni Po              603 So 
+Schemley      0113 B89A365-D  F Lo Ni Wa           715 So 
+Horizon       0217 E631511-8    Ni Po              404 So 
+Theen         0220 B210887-9    Na                 702 So 
+Tern          0313 C0009BB-B    As Hi In Na        610 So 
+Crown         0315 A12179A-D    Na Po              800 So 
+Tupindur      0317 A44399C-A  F Hi In Po           403 So 
+Vortex        0411 C58A845-8    Wa Ri              311 So 
+Quadrille     0415 C645667-4    Ag Ni              413 So 
+Montanna      0416 B7B39BA-C    Fl Hi           A  813 So 
+Smithall      0419 D755237-2    Lo Ni              703 So 
+Syrtis Nova   0512 C441213-7    Lo Ni Po           320 So 
+Eden          0518 B466899-9  F Ri                 304 So 
+Shiprock      0615 B000634-9  F As Na Ni           813 So 
+Indigo        0619 D89A100-6    Lo Ni Wa           805 So 
+Blakewell     0713 D66A769-5    Wa Ri              703 Na 
+Subterra      0715 C668476-4    Ni              B  420 So 
+Actinic Lambda0717 E766246-4    Lo Ni              824 So 
+Sunflower     0720 X55078C-1    De Po           R  620 So 
+Alebee        0816 B868854-8    Ri                 402 So 
+Aeolus        0817 B555640-7    Ag Ni              914 So 
+Jumpbuckle    0818 A200679-9  F Na Ni Va        B  300 So 
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_f   SECTOR: Spica
+#
+#
+#
+# Hiver Government Codes
+#
+# Codes 0,1,2,6, and the following are specifically used by Hiver's.
+# S Sept. Governing committee of seven nest leaders.
+# T Unsupervised Anarchy. Individual agreements between all nests.
+# U Supervised Anarchy. Individual agreements between all nests.
+# W Committee. Governing committee of nest leaders.
+# 
+$1616 1818 1 0 2
+$1616 1613 0 0 2
+$1613 1311 0 0 2
+$1311 1207 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Wargast       0913 B11185A-D    Ic Na              700 Na 
+Devitrific    0914 C150526-7    De Ni Po           810 Na 
+Juess         0917 E100964-6    Hi In Na Va        900 So 
+Kashaharun    1014 D6888DE-2                       810 Na 
+Tobken        1016 D420500-8    De Ni Po           602 So 
+Stronghold    1017 B326558-A  F Ni                 325 So 
+Issachar      1019 C301684-6    Ic Na Ni Va        210 So 
+Farihna       1020 C552213-4    Lo Ni Po           204 So 
+Bevin         1111 B4329CA-D  F Hi Na Po           714 Na 
+Circassia     1116 C201885-9    Ic Na Va           613 So 
+Rhiza         1120 E264442-4    Ni                 100 So 
+Holy Place    1211 C6A9321-6    Fl Lo Ni           103 Na 
+Hale          1212 C796852-6                       400 Na 
+Talmud        1216 C346105-7    Lo Ni              910 Na 
+Lupine        1219 C141442-A    Ni Po              214 So 
+Sephor        1311 C444336-A    Lo Ni              402 Na 
+Lucullan      1318 B7975AB-A    Ag Ni              400 Na 
+Quatre        1319 B121565-A    Ni Po NH           914 Hv  
+Distal        1416 B141223-8    Lo Ni Po           720 Na 
+Duomo         1417 D5328DE-4    Na Po              903 Na 
+Sabbatha      1517 E745500-7    Ag Ni              300 Na 
+Diva          1519 E5989S3-B    Hi In              814 Hv 
+Albumena      1613 EAE9313-7    Fl Lo Ni           303 Na 
+Antilles      1616 B769522-A    Ni                 204 Hv 
+Halderaan     1617 E200222-7    Lo Ni Va           204 Na 
+Parathos Iii  1618 A89A468-C    Ni Wa              800 Na 
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_g   SECTOR: Spica
+# 
+#
+#
+# Hiver Government Codes
+#
+# Codes 0,1,2,6, and the following are specifically used by Hiver's.
+# S Sept. Governing committee of seven nest leaders.
+# T Unsupervised Anarchy. Individual agreements between all nests.
+# U Supervised Anarchy. Individual agreements between all nests.
+# W Committee. Governing committee of nest leaders.
+# 
+$1818 1922 0 1 2
+$1818 1616 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Foreseven     1712 C5678A8-4                       200 Na 
+Xoar Zeta     1714 C3115AB-8    Ic Ni              402 Na 
+Nehndil       1717 C550205-A    De Lo Ni Po        105 Hv 
+Egesta        1718 E7B8306-8    Fl Lo Ni        A  720 Hv 
+Upsilon       1811 C4017BB-9    Ic Na Va           904 Na 
+Tsent         1818 A765561-A    Ag Ni              703 Hv 
+Lelihr        1819 B7986S4-9    Ag Ni              323 Hv 
+Raral         1820 E58A562-B    Ni Wa              510 Hv 
+Delea I       1913 C231665-9    Na Ni Po           600 Na 
+Caldor        1914 C377567-5    Ag Ni              214 Na 
+Sorgho        1919 B6A8852-C    Fl                 803 Na 
+Aesop         2015 C895356-7    Lo Ni              600 Na 
+Adamantium    2113 A101354-D    Ic Lo Ni Va        300 Na 
+Rasomb        2117 B464202-C    Lo Ni              602 Hv 
+Deru Nooq     2118 A8628S2-C    Ri                 210 Hv 
+Zokel         2120 C6348S3-C                       534 Hv 
+Nandan        2218 B440204-E    De Lo Ni Po        614 Hv 
+Dapan         2219 C411106-9    Ic Lo Ni           320 Hv 
+Raphael       2312 C550545-6    De Ni Po           303 Na 
+Gabriel       2313 C7C9444-B    Fl Ni           A  804 Na 
+Cache         2314 C8B99BA-A    Fl Hi           A  704 Na 
+Triarchos     2317 C520477-9    De Ni Po        B  412 Na 
+Baren         2318 A651464-B  E Ni Po              400 Hv 
+Piyrul        2320 E5305S4-8    De Ni Po           700 Hv 
+Michael       2412 B00078A-C    As Na              122 Na 
+Nyebal        2420 B131104-A    Lo Ni Po           713 Hv 
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_h   SECTOR: Spica
+#
+#
+#
+# Hiver Government Codes
+#
+# Codes 0,1,2,6, and the following are specifically used by Hiver's.
+# S Sept. Governing committee of seven nest leaders.
+# T Unsupervised Anarchy. Individual agreements between all nests.
+# U Supervised Anarchy. Individual agreements between all nests.
+# W Committee. Governing committee of nest leaders.
+# 
+$3012 2710 0 -1 10
+$3012 0115 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Star Harvest  2518 A78A464-9  F Ni Wa              203 Hv 
+Lucubratious  2520 E000243-5    As Lo Ni           514 Na 
+Slater        2612 B887765-A  F Ag Ri              921 Na 
+Deseret       2613 E674747-5    Ag                 704 Na 
+Tritran       2619 E3325S4-A    Ni Po              523 Hv 
+Helios Alpha  2712 D65A311-6    Lo Ni Wa           903 Na 
+Louis         2714 X110995-4    Hi In Na        R  824 Na 
+Mt. Ommet     2716 C9D87S1-C    Fl                 704 Hv 
+Thousand Oaks 2717 E334754-8                       900 Na 
+Canto         2718 D87A597-7    Ni Wa              811 Na 
+Sardica       2814 B440402-D    De Ni Po           804 Na 
+Deuterios     2815 B559333-9  F Lo Ni              820 Na 
+History Club  2820 E577204-D    Lo Ni              200 Hv 
+Paros         2914 C6898CD-4                       900 Na 
+Nggele        2917 D550764-C    De Po              400 Hv 
+Aventicum Vaud3012 A568452-E  F Ni                 713 Na 
+Viscera       3018 B8978B9-5  F                    114 Na 
+Manihl        3020 B4007S2-E    Na Va              904 Hv 
+Nerts         3112 B111885-8    Ic Na              822 Na 
+Montevideo    3113 A4307A6-B    De Na Po           604 Na 
+Zongehl       3116 C2336S1-C    Na Ni Po           401 Hv 
+Bombir Ii     3119 E4217S2-D    Na Po              300 Hv 
+Filterpool    3120 C674521-B    Ag Ni              404 Hv 
+Bedlam        3211 C8C4368-5    Fl Lo Ni        A  603 Na 
+Sline         3214 B1319A7-E  F Hi Na Po           502 Na 
+Tintific      3216 A442773-D  F Po              B  903 Na 
+Ulrich        3218 B731233-B    Lo Ni Po           202 Na 
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_i   SECTOR: Spica
+# 
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Nereides      0122 E79A79A-7    Wa                 604 So 
+Kapybarrdos   0123 D422621-6    Na Ni Po           305 So 
+Athabasca     0124 A534535-C    Ni                 500 So 
+Newbandar     0125 C2508CC-5    De Po              800 So 
+Cook's World  0127 C47A851-7    Wa                 700 So 
+Cataldyne     0129 D247755-6    Ag                 903 So 
+Yingyang      0130 C445433-5    Ni                 920 So 
+Spekle        0222 C424402-8    Ni                 200 So 
+Hialbedo      0227 A86A326-C    Lo Ni Wa           825 So 
+Massive       0228 CA97157-6    Lo Ni              403 So 
+Hommonculus   0321 B596126-7    Lo Ni              404 So 
+Renfrew       0322 C867355-7    Lo Ni              312 So 
+Striped       0323 B450897-9  F De Po              304 So 
+Smudge        0325 D24458B-4    Ag Ni              912 So 
+Hummongus     0328 CA88855-7    Ri                 800 So 
+Hue           0329 C4568AF-7                       710 So 
+Arquiro       0429 C7B2687-7    Fl Ni           A  711 So 
+Renascence    0522 C776585-5    Ag Ni              512 So 
+Aureal        0523 C479402-7    Ni                 104 So 
+Port Arthur   0621 C662100-A    Lo Ni              400 So 
+Taniaustralis 0622 CA69755-A    Ri                 323 So 
+Boreal        0623 A3309C9-E    De Hi Na Po        205 So 
+Tigr          0626 C8C899C-8    Fl Hi           A  903 So 
+Twilight Belts0725 D000201-7    As Lo Ni           314 So 
+Tawny Belt    0727 C000310-C    As Lo Ni           802 So 
+Little Jove   0728 CAE979A-8    Fl                 710 So 
+Vitek         0822 E100997-9    Hi In Na Va        303 So 
+Adobe         0823 E765136-2    Lo Ni              100 So 
+Ravenwood     0824 B383666-6    Ni Ri              503 So 
+Mannford      0828 B377122-B    Lo Ni              710 So 
+Spires        0829 D101232-A    Ic Lo Ni Va        303 So 
+Cheyenne Wells0830 D2306A7-3    De Na Ni Po        913 So 
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_j   SECTOR: Spica
+#
+#
+# Hiver Government Codes
+#
+# Codes 0,1,2,6, and the following are specifically used by Hiver's.
+# S Sept. Governing committee of seven nest leaders.
+# T Unsupervised Anarchy. Individual agreements between all nests.
+# U Supervised Anarchy. Individual agreements between all nests.
+# W Committee. Governing committee of nest leaders.
+# 
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Crestmont     0922 E301410-7    Ic Ni Va           210 So 
+Bairable      0923 C311131-9    Ic Lo Ni           704 So 
+Wormwood      0927 D8C5557-9    Fl Ni           A  703 So 
+Thalassa      0928 B97A453-9    Ni Wa              822 So 
+Painted       0929 C340325-6    De Lo Ni Po        302 So 
+Uggi          0930 E48AAFC-D    Hi Wa              703 So 
+Xur Alliance  1021 D698379-2    Lo Ni           B  802 So 
+Buenos Aguas  1022 E996200-5    Lo Ni              602 So 
+Leighton      1023 B686126-6    Lo Ni              100 So 
+Nax'Nor       1024 C7B9885-8    Fl              A  504 So 
+Stratonimbus  1029 E79A9S4-7    Hi In Wa           302 Hv 
+Seaspots      1030 E121415-8    Ni Po              504 So 
+Domecile      1123 C533565-7    Ni Po              803 So 
+Aequine       1126 A75A364-D    Lo Ni Wa           300 So 
+Evermore      1128 A864320-8  F Lo Ni              824 So 
+Portends      1129 A663002-8  F Lo Ni              502 So 
+Nestlands     1224 B565205-B    Lo Ni              820 Hv 
+Drake         1225 E47A444-6    Ni Wa              400 So 
+One World     1230 B568413-8    Ni                 600 Hv 
+Gropie        1322 C799313-7    Lo Ni              305 Hv 
+Nax'Hah'Nor   1323 C7B876B-7    Fl              A  804 So 
+Border        1324 BA9A7T4-F    Wa                 523 Hv 
+Regal         1325 E201642-7    Ic Na Ni Va        400 So 
+Tiring Antes  1327 B989466-C  F Ni                 813 Hv 
+Xezelfarb     1423 D344723-C    Ag                 610 Hv 
+Aow'Post      1427 C7B4000-0    Ba Fl Lo Ni NH  A  310 Hv 
+Waft          1522 B5118T5-F  F Ic Na              914 Hv 
+House Lu      1527 B301463-F    Ic Ni Va           800 Hv 
+Raxt Durb     1528 B000761-E    As Na              412 Hv 
+Adub [Bath)   1629 B25A765-D    Wa                 414 Hv 
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_k   SECTOR: Spica
+#
+#
+#
+# Hiver Government Codes
+#
+# Codes 0,1,2,6, and the following are specifically used by Hiver's.
+# S Sept. Governing committee of seven nest leaders.
+# T Unsupervised Anarchy. Individual agreements between all nests.
+# U Supervised Anarchy. Individual agreements between all nests.
+# W Committee. Governing committee of nest leaders.
+# 
+$2427 2529 1 0 2
+$2427 2224 0 0 2
+$2224 1922 0 0 2
+$1922 1818 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Tasimkin      1721 D540323-D    De Lo Ni Po        710 Hv 
+Star Hub      1722 A401414-E  F Ic Ni Va           514 Hv 
+Yengilz       1729 E550306-8    De Lo Ni Po        611 Hv 
+Shallows      1824 X88A6S5-A    Ni Wa Ri        R  702 Hv 
+Malza         1826 B220205-D    De Lo Ni Po        800 Hv 
+Tapon         1827 A654201-9    Lo Ni              400 Hv 
+Tuasye        1828 B1006S6-D    Na Ni Va           710 Hv 
+Cetic Ii      1830 A7BA313-D  F Fl Lo Ni Wa     A  202 Hv 
+Xoarax        1921 D1118S5-3    Ic Na NH           400 Hv 
+Pilza         1922 B78A665-F  F Ni Wa Ri           104 Hv 
+Naros         1923 E4998S5-C                       810 Hv 
+Zinam         1925 D69A305-C    Lo Ni Wa           313 Hv 
+Particulately 1926 A743206-A  E Lo Ni Po NH        200 Hv 
+Wrengex Iv    1927 B789205-E    Lo Ni              500 Hv 
+Kurzon Dax    1930 D7986S6-A    Ag Ni              503 Hv 
+Nelyo         2026 B5328T6-F    Na Po              205 Hv 
+Splosh        2030 EA9A412-9    Ni Wa              905 Hv 
+Bolehlz       2122 D7BA000-0    Ba Fl Lo Ni Wa  A  300 Hv 
+Delf Iii      2124 C6A4422-7    Fl Ni              402 Hv 
+Bapeng        2125 D6AA7T2-7    Fl Wa              402 Hv 
+Pekihr        2127 E6A7463-9    Fl Ni              610 Hv 
+Ubreyukask    2129 X596404-5    Ni              R  504 Hv 
+Pezal         2224 AAC9466-7  E Fl Ni NH        A  804 Hv 
+Cap Subsidiary2230 B101614-E    Ic Na Ni Va        104 Hv 
+Thinel        2321 B252865-E    Po                 114 Hv 
+Nethok        2323 C141306-C    Lo Ni Po           500 Hv 
+Lihnor        2328 A445206-9  F Lo Ni NH           100 Hv 
+Kasal         2329 C89A803-F    Wa                 410 Hv 
+Sandzdorp     2421 B442202-E    Lo Ni Po           504 Hv 
+Nihtehl       2422 B131303-C    Lo Ni Po           914 Hv 
+Tehyehl       2423 D89A123-8    Lo Ni Wa           200 Hv 
+Benong Iv     2424 A8CA663-C    Fl Ni Wa        A  510 Hv 
+Zeko          2427 E468702-9    Ag Ri              404 Hv 
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_l   SECTOR: Spica
+#
+#
+#
+# Hiver Government Codes
+#
+# Codes 0,1,2,6, and the following are specifically used by Hiver's.
+# S Sept. Governing committee of seven nest leaders.
+# T Unsupervised Anarchy. Individual agreements between all nests.
+# U Supervised Anarchy. Individual agreements between all nests.
+# W Committee. Governing committee of nest leaders.
+# 
+$2529 2532 0 1 2
+$2529 2427 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Zlaleld       2522 C798501-E    Ag Ni              804 Hv 
+Rebang        2523 C896415-7    Ni                 914 Hv 
+Deso          2524 B6557T4-E    Ag                 220 Hv 
+Bendus        2525 D1006S6-A    Na Ni Va           305 Hv 
+Erest         2529 A695703-F    Ag                 424 Hv 
+Nehron        2530 C699000-0    Ba Lo Ni           600 Hv 
+Pihras        2621 A5549S3-D    Hi                 200 Hv 
+Ryabhan       2624 B3117S4-E  F Ic Na              801 Hv 
+Lyalop        2628 B8C5416-F  F Fl Ni           A  803 Hv 
+Rasup         2630 B6795S5-E  F Ni                 903 Hv 
+Nandip        2722 D46A603-D    Ni Wa Ri           302 Hv 
+Benes Gelb    2724 A451461-F  E Ni Po              200 Hv 
+Torrent       2725 C210AU1-A    Hi In Na           800 Hv 
+Dihngu        2728 C5788T1-E                       424 Hv 
+Eldsay        2729 X687101-A    Lo Ni           R  600 Hv 
+Ryolin        2730 C301603-8    Ic Na Ni Va        500 Hv 
+Untion        2823 C5625S4-A    Ni                 500 Hv 
+Item          2828 D7A6306-B    Fl Lo Ni           300 Hv 
+Melzigh Ii    2921 B5985S6-D    Ag Ni              904 Hv 
+Iiiiii        2922 D621463-8    Ni Po              404 Hv 
+Lilop Vi      2925 B952525-F  F Ni Po              622 Hv 
+Rodeld        2926 B769664-8    Ni Ri              300 Hv 
+Nyoneng       2929 E5509T5-C    De Hi Po           513 Hv 
+Danim         2930 DA9A302-D    Lo Ni Wa           915 Hv 
+Yombe Iv      3021 C1616S2-9    Ni Ri              605 Hv 
+Vensel        3023 C88A306-C    Lo Ni Wa           700 Hv 
+Dihrep        3025 B7797S3-F                       605 Hv 
+Panen         3127 A6A8564-9  E Fl Ni NH           113 Hv 
+Atsalan       3130 XAEA504-7    Fl Ni Wa        R  601 Hv 
+Nonil         3221 A1106S5-F    Na Ni              222 Hv 
+Lebhar        3223 B100312-D    Lo Ni Va           400 Hv 
+Nomeh         3224 D531411-D    Ni Po              303 Hv 
+Hygox         3225 B7799T6-F    Hi In              300 Hv 
+Rese          3226 E342104-A    Lo Ni Po           503 Hv 
+Nduran        3230 C4105S1-A    Ni                 400 Hv 
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_m   SECTOR: Spica
+# 
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Nelson        0135 A552554-9  F Ni Po              904 So 
+Bestine       0136 B8CA546-9    Fl Ni Wa        A  624 So 
+Luxor         0231 B4367A9-B  F                    902 So 
+Iodinium      0234 D79A410-8    Ni Wa              325 So 
+Pyrolysia     0238 A7B3269-C  F Fl Lo Ni        A  123 So 
+Keepout       0240 X757968-1    Hi              R  404 So 
+Bassett       0332 B501446-9    Ic Ni Va           212 So 
+Mcfarland     0333 B459242-A    Lo Ni              100 So 
+La Junta      0334 B121858-9    Na Po              801 So 
+Port Burnaby  0337 C400100-8    Lo Ni Va           305 So 
+Xanadu        0338 E6688C7-4                       703 So 
+Diln          0339 E00099C-B    As Hi In Na        404 So 
+Kestral       0431 B89A775-B    Wa              B  300 So 
+Massaro       0432 C6558CB-8                       704 So 
+Purdee        0435 B552100-A    Lo Ni Po           110 So 
+Cravity       0437 C111599-7    Ic Ni              314 So 
+File          0439 C13099A-D    De Hi Na Po        503 So 
+Solido        0536 B161884-7    Ri                 110 So 
+Mikado        0539 A662889-8  F Ri                 702 So 
+Longstreet    0631 C121423-B    Ni Po              105 So 
+Trilion       0634 A8C899C-F  M Fl Hi           A  312 So 
+Jedson        0635 E31137A-8    Ic Lo Ni        B  700 So 
+Davis         0639 B440555-D    De Ni Po           204 So 
+Harmaline     0731 A6A6359-E    Fl Lo Ni           813 So 
+Caloris       0733 A450320-C    De Lo Ni Po        800 So 
+Ion Atoll     0739 D87A410-9    Ni Wa              112 So 
+Blood Orchard 0831 C7BA410-B    Fl Ni Wa        A  301 So 
+Alaarum       0832 E531445-6    Ni Po              803 So 
+Pagoda        0834 X857386-1    Lo Ni           R  500 So 
+Dxymyx Cafr   0835 D99668A-1    Ag Ni              403 So 
+Fairlane      0838 E520588-8    De Ni Po           404 So 
+Langford      0840 A555340-9    Lo Ni              313 So 
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_n   SECTOR: Spica
+#
+#
+#
+# Hiver Government Codes
+#
+# Codes 0,1,2,6, and the following are specifically used by Hiver's.
+# S Sept. Governing committee of seven nest leaders.
+# T Unsupervised Anarchy. Individual agreements between all nests.
+# U Supervised Anarchy. Individual agreements between all nests.
+# W Committee. Governing committee of nest leaders.
+# 
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Kafiristan    0935 B235837-9                       100 So 
+Arroyo Grande 0936 D450345-7    De Lo Ni Po        110 So 
+Flatbush      1032 C4237BF-7    Na Po              414 So 
+Beaucoup      1033 B6768A9-9                       702 So 
+713-206       1036 E79A640-5    Ni Wa              310 So 
+Nedlest Gog   1038 C347564-B    Ag Ni              710 Hv 
+Fornax        1040 B565305-B    Lo Ni              314 Hv 
+Solitude      1133 E457053-6    Lo Ni              800 So 
+Lass          1134 B645500-8  F Ag Ni              904 So 
+Sirrinn       1137 B351457-8  F Ni Po              100 So 
+Front Yards   1139 B577614-B  F Ag Ni              100 Hv 
+Oasis         1239 C330162-B    De Lo Ni Po        202 So 
+Dezand        1332 A894644-F  F Ag Ni              205 Hv 
+Murkur Folp   1333 BA9A203-E  F Lo Ni Wa           800 Hv 
+Tohira        1335 C0009BA-8    As Hi In Na        910 So 
+New Freedom   1336 A141620-C    Ni Po              120 So 
+Korkov        1337 B2306AD-A  F De Na Ni Po        210 So 
+Nyihldeng     1338 B101203-F  F Ic Lo Ni Va        600 Hv 
+Dozihld       1340 D357303-7    Lo Ni              602 Hv 
+Lyihtar       1431 D3237S2-A    Na Po              100 Hv 
+Peris         1432 B545876-6  F                 B  913 So 
+Tongariro     1433 E468557-6    Ag Ni              420 So 
+Kasur         1436 E521866-8    Na Po              614 Hv 
+Cairgax       1438 C5318T3-5    Na Po NH FA        810 Hv 
+Royran        1439 C5328T6-C    Na Po              710 Hv 
+Denher Iv     1440 A257425-F  F Ni                 324 Hv 
+Lehkak        1539 D896662-A    Ag Ni              500 Hv 
+Bazat         1540 C440000-0    Ba De Lo Ni Po     804 Hv 
+Nihner        1631 B440312-9    De Lo Ni Po        925 Hv 
+Bihla         1635 E140205-7    De Lo Ni Po        410 Hv 
+Karbane       1637 B36A315-C    Lo Ni Wa           324 Hv 
+Nimbas        1638 C3336S1-A    Na Ni Po           410 Hv 
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_o   SECTOR: Spica
+# 
+#
+#
+# Hiver Government Codes
+#
+# Codes 0,1,2,6, and the following are specifically used by Hiver's.
+# S Sept. Governing committee of seven nest leaders.
+# T Unsupervised Anarchy. Individual agreements between all nests.
+# U Supervised Anarchy. Individual agreements between all nests.
+# W Committee. Governing committee of nest leaders.
+# 
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Mihne         1731 B430303-8  F De Lo Ni Po        504 Hv 
+Buron         1736 E688462-A    Ni                 510 Hv 
+Waxatha       1738 C8C6566-4    Fl Ni NH        A  413 Hv 
+Doduk         1740 A663104-E    Lo Ni              304 Hv 
+Damol Ii      1831 B6757S3-F  F Ag                 705 Hv 
+Amflax Ops    1832 A441416-F    Ni Po              313 Hv 
+Breadbasket   1833 E6947S3-6    Ag                 704 Hv 
+Sealene       1934 XA7A501-A    Ni Wa           R  415 Hv 
+Danan         1938 B677566-C    Ag Ni              335 Hv 
+Gorong        2033 CAEA8S5-B    Fl Wa              704 Hv 
+Amrad         2034 C223314-8    Lo Ni Po NH        200 Hv 
+Baral         2037 C5506S6-C    De Ni Po           803 Hv 
+Zeldar        2133 B898864-F                       804 Hv 
+Bingon        2134 C867604-9    Ag Ni Ri           724 Hv 
+Tharal        2136 A541566-A  E Ni Po NH           713 Hv 
+Dari          2137 B766562-F  F Ag Ni              824 Hv 
+Mehlang       2231 C6559S2-D    Hi                 314 Hv 
+Pendar Hai    2232 D355205-8    Lo Ni              212 Hv 
+Banihld       2233 A89A5S2-B    Ni Wa              510 Hv 
+Mehndong      2235 A8976S1-F  F Ag Ni              412 Hv 
+Dosos         2240 A6A25S1-E    Fl Ni              600 Hv 
+Dehlzo        2331 C859403-C    Ni                 215 Hv 
+Ff            2334 B140464-E  F De Ni Po           804 Hv 
+Gridwork      2336 C100561-D    Ni Va              914 Hv 
+Ditihm        2339 A6268S1-F  F                    423 Hv 
+Prt'aow       2340 C966302-A    Lo Ni              711 Hv 
+Ordva         2431 D634662-4    Ni NH              500 Hv 
+Birak         2432 E6465S2-6    Ag Ni              302 Hv 
+Zalehs        2433 A8536S6-A    Ni Po              905 Hv 
+Lonibh        2435 C6748S1-C                       724 Hv 
+Rehndol       2437 B450421-B    De Ni Po           803 Hv 
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_p   SECTOR: Spica
+# 
+#
+#
+# Hiver Government Codes
+#
+# Codes 0,1,2,6, and the following are specifically used by Hiver's.
+# S Sept. Governing committee of seven nest leaders.
+# T Unsupervised Anarchy. Individual agreements between all nests.
+# U Supervised Anarchy. Individual agreements between all nests.
+# W Committee. Governing committee of nest leaders.
+# 
+$3237 0240 1 0 2
+$3237 3035 0 0 2
+$3035 2833 0 0 2
+$2833 2532 0 0 2
+$2532 2529 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Shipsboat     2532 B6689U2-F  F Hi                 503 Hv 
+Nehlar        2536 A8427S5-F    Po                 400 Hv 
+Raghehk       2537 A956563-E    Ag Ni              424 Hv 
+Kinyar Vi     2539 B47A7S4-F    Wa                 904 Hv 
+Momentory     2632 A584104-9    Lo Ni              400 Hv 
+Rekar         2637 E101105-A    Ic Lo Ni Va        105 Hv 
+Stez Flotz    2639 C323201-D    Lo Ni Po           702 Hv 
+Namek         2640 B334AU5-F    Hi                 724 Hv 
+Pehnon        2833 D556204-B    Lo Ni              513 Hv 
+Hrilll        2834 X9DA7T4-A    Fl Wa           R  815 Hv 
+Roror         2934 B799101-F  F Lo Ni              913 Hv 
+Bilda         2936 C57A104-D    Lo Ni Wa           403 Hv 
+Yard Explorer 2938 A8CA561-F    Fl Ni Wa        A  404 Hv 
+Pixhemp       2940 B7B8465-6  F Fl Ni NH        A  411 Hv 
+Bihtis        3032 C101101-8    Ic Lo Ni Va        310 Hv 
+Nehbir        3034 C523201-C    Lo Ni Po           903 Hv 
+Dihyral       3035 B8C86S6-E    Fl Ni           A  723 Hv 
+Ryapak Iii    3036 E687465-8    Ni                 414 Hv 
+Import Yards  3040 B434662-F    Ni                 510 Hv 
+Ridhi         3134 D6387S2-7                       300 Hv 
+Zonggand      3138 C795201-C    Lo Ni              420 Hv 
+Petar         3237 E1019S2-F    Hi Ic In Na Va     602 Hv 
+Ourn          3238 C3117S5-C    Ic Na              110 Hv 
+

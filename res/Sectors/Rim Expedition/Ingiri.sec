@@ -1,0 +1,288 @@
+Ingiri Sector
+
+A: Agir                      a.dat
+B: Bigirn                    b.dat
+C: Cigit                     c.dat
+D: Digirinn                  d.dat
+E: Eigirt                    e.dat
+F: Fihi                      f.dat
+G: Gigigi                    g.dat
+H: Hikigree                  h.dat
+I: Ingiok                    i.dat
+J: Jiffigir                  j.dat
+K: Kiogoi                    k.dat
+L: Ligindee                  l.dat
+M: Mirgidi                   m.dat
+N: Nijigiuu                  n.dat
+O: Oiggiri                   o.dat
+P: Phigimm                   p.dat
+
+Bases:
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Agir SECTOR: Ingiri Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0708 C000788-A    As Na              203 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Bigirn SECTOR: Ingiri Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           1010 A787567-A    Ag Ni              213 Na
+B-2           1306 C779300-7    Lo Ni              312 Na
+B-3           1505 C52498C-7  S Hi In              303 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Cigit SECTOR: Ingiri Sector
+#
+# Jump-routes
+$1809 1909 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1704 BA8A523-9    Ni Wa              325 Na
+C-2           1809 B343898-9  N Po                 102 Na
+C-3           1909 C692500-9  S Ni                 602 Na
+C-4           2101 D120314-6  S De Lo Ni Po        200 Na
+C-5           2109 B564636-A  N Ag Ni              703 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Digirinn SECTOR: Ingiri Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Eigirt SECTOR: Ingiri Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0212 C4157A8-A  S Ic                 414 Na
+E-2           0318 E356276-6    Lo Ni           B  203 Na
+E-3           0716 C200301-7  S Lo Ni Va           703 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Fihi SECTOR: Ingiri Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           1614 C43867A-5    Ni              B  524 Na
+F-2           1619 AA98123-9    Lo Ni              524 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Gigigi SECTOR: Ingiri Sector
+#
+# Jump-routes
+$2218 2319 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1813 C77A733-7  S Wa                 805 Na
+G-2           1819 C87A334-8    Lo Ni Wa           300 Na
+G-3           1917 B63889B-9  N                    603 Na
+G-4           2117 C473525-7    Ni                 705 Na
+G-5           2120 E374678-7    Ag Ni           B  314 Na
+G-6           2218 A7B2374-9  S Fl Lo Ni        A  313 Na
+Gigigi        2319 A433230-F    Lo Ni Po           501 Na
+G-8           2413 C000647-6    As Na Ni           405 Na
+G-9           2415 B201445-9    Ic Ni Va           404 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hikigree SECTOR: Ingiri Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2914 B328314-B    Lo Ni              422 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ingiok SECTOR: Ingiri Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0121 B889100-B  S Lo Ni              912 Na
+I-2           0525 C857575-7    Ag Ni           B  103 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jiffigir SECTOR: Ingiri Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           1027 C424597-7  S Ni                 402 Na
+J-2           1030 C8859DE-7    Hi                 520 Na
+J-3           1327 C6529A9-8    Hi Po              324 Na
+J-4           1424 C300322-9  S Lo Ni Va           203 Na
+J-5           1430 E130A83-8    De Hi In Na Po     504 Na
+J-6           1623 C776787-7    Ag                 101 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kiogoi SECTOR: Ingiri Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1727 C272424-6  S Ni                 402 Na
+K-2           1730 D762542-7    Ni                 300 Na
+K-3           1826 B412103-B    Ic Lo Ni           704 Na
+K-4           1924 B865865-8    Ri                 105 Na
+K-5           2230 E686641-4    Ag Ni Ri           113 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ligindee SECTOR: Ingiri Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2530 C756531-4    Ag Ni              100 Na
+L-2           2626 D5777AA-6    Ag                 411 Na
+L-3           3221 E220149-5    De Lo Ni Po        423 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Mirgidi SECTOR: Ingiri Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0137 C9A6543-8  S Fl Ni              321 Na
+M-2           0235 E697999-4    Hi In              610 Na
+M-3           0733 C666A84-B  S Hi                 300 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nijigiuu SECTOR: Ingiri Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0936 CAB8002-6  S Fl Lo Ni        A  212 Na
+N-2           1031 BACA331-C    Fl Lo Ni Wa     A  902 Na
+N-3           1337 A34599C-B    Hi In              822 Na
+N-4           1433 C688597-8  S Ag Ni              935 Na
+N-5           1536 B100863-D  S Na Va              723 Na
+N-6           1633 B358323-7  N Lo Ni              812 Na
+N-7           1638 C336212-8    Lo Ni              400 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Oiggiri SECTOR: Ingiri Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1834 C510557-8    Ni                 504 Na
+O-2           1840 D472689-2  S Ni                 104 Na
+O-3           1938 D588521-7  S Ag Ni              703 Na
+O-4           2133 D667653-7  S Ag Ni Ri           503 Na
+O-5           2237 C699422-5  S Ni                 205 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Phigimm SECTOR: Ingiri Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2537 B642320-9  2 Lo Ni Po           810 Na
+P-2           2538 C200202-9    Lo Ni Va           112 Na
+P-3           2631 C99A999-B  S Hi In Wa           212 Na
+P-4           2732 B769535-8    Ni                 714 Na
+P-5           3032 B7A6830-9  2 Fl                 610 Na
+P-6           3034 B401753-9    Ic Na Va           122 Na
+P-7           3040 E624268-6    Lo Ni              601 Na
+

@@ -1,0 +1,365 @@
+Htryl Sector
+
+A: Aryl                      a.dat
+B: Bahtry                    b.dat
+C: Cryll                     c.dat
+D: Dahtryl                   d.dat
+E: Erylt                     e.dat
+F: Fatyll                    f.dat
+G: Gatryy                    g.dat
+H: Htryr                     h.dat
+I: Ihtrann                   i.dat
+J: Jahatryl                  j.dat
+K: Khatryf                   k.dat
+L: Liniht                    l.dat
+M: Mehtry                    m.dat
+N: Nothtryl                  n.dat
+O: Oshtry                    o.dat
+P: Poghtryl                  p.dat
+
+Bases:
+E = Errylak Guardian's
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+12 Ec = Errylak Corporate
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Aryl SECTOR: Htryl Sector
+#
+# Jump-routes
+#
+$0210 3010 -1 0 10
+$0210 0511 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Mookknaa      0210 E410211-4    Lo Ni              122 Na
+A-2           0709 B210674-7  N Na Ni           B  423 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Bahtry SECTOR: Htryl Sector
+#
+# Jump-routes
+#
+$1509 1111 0 1 10
+$1509 1710 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           0903 C956300-A  S Lo Ni              423 Na
+B-2           0906 C481120-7    Lo Ni              502 Na
+B-3           1102 A567695-7  N Ag Ni Ri           705 Na
+B-4           1105 C897453-7    Ni                 203 Na
+B-5           1405 C300433-6    Ni Va              820 Na
+Brobba        1509 E210697-8    Na Ni              401 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Cryll SECTOR: Htryl Sector
+#
+# Jump-routes
+#
+$1710 1509 -1 0 10
+$1710 1913 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Chann         1710 A73559B-A  2 Ni                 204 Na
+C-2           1906 C351632-8    Ni Po              724 Na
+C-3           2405 C463458-6  S Ni                 700 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Dahtryl SECTOR: Htryl Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2509 D8B7554-7  S Fl Ni           A  701 Na
+D-2           2702 C746551-5    Ag Ni              804 Na
+D-3           2704 E796764-1    Ag                 802 Na
+D-4           2806 E272454-9    Ni                 104 Na
+D-5           2807 E110262-8    Lo Ni              103 Na
+D-6           2910 D410520-7  S Ni                 212 Na
+D-7           3204 E578344-5    Lo Ni              225 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Erylt SECTOR: Htryl Sector
+#
+# Jump-routes
+#
+$0511 0210 0 -1 10
+$0511 0913 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0316 E200730-5  E Na Va              822 Ec
+E-2           0417 D732362-6  E Lo Ni Po           514 Ec
+Errylak       0418 A100452-H  E Ni Va Cx           823 Ec
+Cartinna      0511 X88848B-0                    R  814 Na
+E-5           0517 D88A852-8  E Ri Wa              313 Ec
+E-6           0520 C97A226-8  E Lo Ni Wa           314 Ec
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Fatyll SECTOR: Htryl Sector
+#
+# Jump-routes
+$1313 1415 0 0
+$1413 1415 0 0
+#
+$0913 0511 -1 0 10
+$0913 1111 0 0 10
+$1111 1509 0 -1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Ishta         0913 C536330-7    Lo Ni              313 Na
+F-2           0915 B562544-A    Ni                 632 Na
+F-3           0916 C140665-6  S De Ni Po           610 Na
+F-4           1015 D221215-9  S Lo Ni Po           402 Na
+Flochoo       1111 C8C5401-9  S Fl Ni           A  824 Na
+F-6           1213 C100722-A    Na Va              504 Na
+F-7           1312 C410757-6    Na                 904 Na
+F-8           1313 B98A773-7    Ri Wa           B  224 Na
+F-9           1411 D536344-3    Lo Ni              103 Na
+F-10          1413 B657767-A  S Ag                 413 Na
+F-11          1415 B100551-E  S Ni Va              513 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Gatryy SECTOR: Htryl Sector
+#
+# Jump-routes
+$1820 1822 0 1
+$1914 2016 0 0
+$1916 2016 0 0
+#
+$1913 1710 0 -1 10
+$1913 2116 0 0 10
+$2116 2218 0 0 10
+$2218 2221 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1815 C510686-6    Na Ni              114 Na
+G-2           1820 A9D6165-C  2 Fl Lo Ni           900 Na
+Ellimma       1913 C547200-7  S Lo Ni              701 Na
+G-4           1914 B426533-D  N Ni                 702 Na
+G-5           1916 C4748A8-9                       123 Na
+G-6           1920 E61068A-2    Na Ni              103 Na
+G-7           2016 A545230-8    Lo Ni              914 Na
+G-8           2017 E300450-5    Ni Va              315 Na
+Vlagrien      2116 D534222-8  S Lo Ni              803 Na
+G-10          2217 CAD8203-A    Fl Lo Ni           902 Na
+Ruadunn       2218 C563778-5    Ri              B  404 Na
+G-12          2312 B88737A-A    Lo Ni           B  513 Na
+G-13          2313 C9D2348-5    Fl Lo Ni           103 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Htryr SECTOR: Htryl Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2715 A568400-C    Ni                 203 Na
+H-2           3120 C65A465-8    Ni Wa              324 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ihtrann SECTOR: Htryl Sector
+#
+# Jump-routes
+$0625 0726 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0122 C667200-5    Lo Ni              905 Na
+I-2           0329 C445642-5    Ag Ni              902 Na
+I-3           0624 C461000-7    Ba Lo Ni           103 Na
+I-4           0625 C241855-6    Po                 411 Na
+I-5           0726 B00049A-C  S As Ni              913 Na
+I-6           0830 C243200-A    Lo Ni Po           212 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jahatryl SECTOR: Htryl Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0925 C626335-6    Lo Ni              805 Na
+J-2           1022 C7A4578-7    Fl Ni           B  220 Na
+J-3           1030 C542426-7    Ni Po              903 Na
+J-4           1124 C302668-9    Ic Na Ni Va        110 Na
+J-5           1327 D7B7784-4  S Fl              A  301 Na
+J-6           1421 B796951-8  S Hi In              604 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Khatryf SECTOR: Htryl Sector
+#
+# Jump-routes
+$1822 1820 0 -1
+#
+$2221 2218 0 -1 10
+$2221 2225 0 0 10
+$2225 2229 0 0 10
+$2229 2133 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1727 E773897-5                       510 Na
+K-2           1822 C434874-7  S                 B  911 Na
+K-3           1825 C7A4996-7    Fl Hi              400 Na
+K-4           2122 E87879A-3    Ag                 113 Na
+Kloppia       2221 E94A268-6    Lo Ni Wa           804 Na
+Alloph        2225 C3437A7-7  S Po                 403 Na
+Zophier       2229 B334332-C    Lo Ni              710 Na
+K-8           2325 C76689C-5    Ri                 503 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Liniht SECTOR: Htryl Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2523 C7B5A76-9    Fl Hi           A  312 Na
+L-2           2621 C000423-9    As Ni              222 Na
+L-3           2729 C9B9477-A    Fl Ni           A  123 Na
+L-4           2927 C46449D-A    Ni                 205 Na
+L-5           3227 C7A18A8-7  S Fl                 603 Na
+L-6           3229 X7B37AA-0    Fl              R  812 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Mehtry SECTOR: Htryl Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0131 C753279-9    Lo Ni Po        B  603 Na
+M-2           0334 C000833-B    As Na              900 Na
+M-3           0431 E439674-4    Ni              B  900 Na
+M-4           0436 C748688-7    Ag Ni              334 Na
+M-5           0536 B6A0221-7  N De Lo Ni           503 Na
+M-6           0539 C765533-5    Ag Ni              404 Na
+M-7           0635 C100786-B    Na Va              404 Na
+M-8           0636 B697102-9    Lo Ni              614 Na
+M-9           0731 A230622-E    De Na Ni Po        305 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nothtryl SECTOR: Htryl Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           1036 D8B1557-9    Fl Ni           A  603 Na
+N-2           1040 B344314-A    Lo Ni              603 Na
+N-3           1140 E552776-2    Po              B  701 Na
+N-4           1338 E445884-7                       603 Na
+N-5           1439 C251411-8    Ni Po              500 Na
+N-6           1535 D668876-2  S Ri              B  603 Na
+N-7           1640 C353885-6    Po                 412 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Oshtry SECTOR: Htryl Sector
+#
+# Jump-routes
+#
+$2133 2229 0 -1 10
+$2133 2036 0 0 10
+$2036 2339 0 0 10
+$2339 2639 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1837 A78A101-E  S Lo Ni Wa           803 Na
+Chrishan      2036 C658100-7  S Lo Ni              615 Na
+O-3           2131 C310323-B    Lo Ni              813 Na
+Ophauna       2133 B595622-6    Ag Ni              404 Na
+Awerya        2339 D775512-2    Ag Ni              802 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Poghtryl SECTOR: Htryl Sector
+#
+# Jump-routes
+$2735 2737 0 0
+$2737 2835 0 0
+#
+$2639 2339 -1 0 10
+$2639 2940 0 0 10
+$2940 3201 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Pauopuo       2639 C766A56-9    Hi                 604 Na
+P-2           2735 B775300-7    Lo Ni              825 Na
+P-3           2737 A447463-D    Ni                 513 Na
+P-4           2835 C232348-8    Lo Ni Po           303 Na
+Nanuua        2940 D9847AB-5    Ag                 723 Na
+P-6           3032 A77567B-A    Ag Ni           B  514 Na
+P-7           3136 C798465-4    Ni                 403 Na
+

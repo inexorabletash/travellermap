@@ -1,0 +1,883 @@
+Massilia Sector
+
+A: Kerr                      sec_a.dat
+B: Arar                      sec_b.dat
+C: Khisham                   sec_c.dat
+D: Zalucha                   sec_d.dat
+E: Keum                      sec_e.dat
+F: Vaait                     sec_f.dat
+G: Forquee                   sec_g.dat
+H: Palasha                   sec_h.dat
+I: Ten Suns                  sec_i.dat
+J: Shiwonee                  sec_j.dat
+K: Nes'Vra                   sec_k.dat
+L: Tooka                     sec_l.dat
+M: Annari                    sec_m.dat
+N: Shokee                    sec_n.dat
+O: Shimmer                   sec_o.dat
+P: Oreo                      sec_p.dat
+
+Bases:
+A = Navy & Scout Bases
+D = Naval Depot
+N = Naval Base
+S = Scout Base
+  = None
+
+Allegiance:
+12 Li = Lucan's Imperium
+11 Ma = Margaret's Imperium
+07 Na = Non-aligned
+04 Cs = Client State
+08    = Unknown
+
+
+Massilia Sector - Credits
+-------------------------
+
+The Massilia Sector data was ftped from Sunbane.
+
+This sector was also covered to some extent in issue 11 of
+The Travellers' Digest put out by Digest Group Publications
+in 1988. The people involved in the Massilia write-up from
+that issue were Nancy Parker and Robert Parker.
+
+One interesting tidbit about this sector is that while
+DGP spells it "Massilia", GDW seems to prefer the spelling
+"Massila". I wrote the TML asking for an explanation, and
+Mark Seemann (mark@dk-online.dk) wrote me back with the
+following:
+
+     Massilia is the Latin word for the French city of
+     Marseilles. It makes good sense that Solomani
+     conquerers would name a sector after a Terran city,
+     and the name would then have stuck. I don't think
+     Massila means anything, and having heard about DGP's
+     Gary Thomas' fondness for ancient Terran languages,
+     this explanation makes the most sense to me.
+
+For this reason, and for the reason that DGP (not GDW) did the
+development of this sector, I decided to go with their version
+of the name.
+
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_A   SECTOR: massilia
+#
+# Trade routes within the subsector
+$0205 3203 -1 0
+$0205 0508 0 0
+$0508 0711 0 1
+$0809 0711 0 1
+$0809 0908 1 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Tahspek       0109 B5468BA-A                       613 Li
+Mond          0110 B737794-A                       721 Li
+Vilardi       0205 A8C6426-E    Ni Fl           A  813 Li
+Trostar       0206 B78A635-C  N Ni Wa              920 Li
+Kapabu Sepple 0207 B87888B-A  N                    604 Li
+Tanoo         0210 B78A452-D  N Ni Wa              202 Li
+Depot         0301 B78A777-C  D Ri Wa           B  300 Li
+Ralton        0303 C9B58A9-8  S Fl              A  413 Li
+Fournier      0304 B641764-A    Po                 405 Li
+Yadro         0306 B35376A-A    Po                 404 Li
+Thallium      0307 B1008A7-C  S Va Na              502 Li
+Selenopod     0308 B331003-C    Ni Po Lo           114 Li
+Cronsis       0309 D75A310-A    Ni Wa Lo           604 Li
+Kaggushus     0402 A442AA7-G    Hi In Po Cp        904 Li
+Cleves        0403 A566422-E    Ni              A  512 Li
+Towering      0501 B6548AC-B                       600 Li
+Cronin        0502 B55205A-A  N Ni Po Lo           903 Li
+Ershur        0504 B386521-B  N Ni Ag              923 Li
+Lebensraum    0507 B544000-B  N Ni Ba Lo           904 Li
+Ticularosta   0508 A100654-G    Ni Va Na           322 Li
+Nedupon       0509 B100632-C    Ni Va Na           400 Li
+Cluseret      0510 B3627BD-C                       604 Li
+Tigma-tel     0601 E5536A9-5    Ni Po              424 Li
+Chamati       0602 B253364-D    Ni Po Lo           510 Li
+Gade          0604 B797021-9    Ni Lo              312 Li
+Munoch        0606 E868576-7    Ni Ag           B  313 Li
+Theodisus     0608 B11058B-D  S Ni                 902 Li
+Clausen       0609 A456002-D  N Ni Lo              204 Li
+Raldery IV    0701 D567466-8  S Ni                 602 Li
+Death         0703 B100300-E  N Ni Va Lo        A  612 Li
+Besholm       0704 B84A445-C  N Ni Wa              904 Li
+Dalsgaard     0706 B687100-D    Ni Lo              220 Li
+Yagas         0707 B566AFC-E    Hi                 502 Li
+Villana       0801 B677334-B    Ni Lo              305 Li
+Aagkhuur      0802 D100958-C    Hi In Va Na        224 Li
+Nasuga        0803 A300620-D    Ni Va Na           214 Li
+Soro          0805 B7A0684-C    Ni De              204 Li
+Observatory   0807 C531544-9    Ni Po              714 Li
+Resaca        0808 B452456-D    Ni Po              810 Li
+Golden Ring   0810 B698541-A  N Ni Ag              104 Li
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_B   SECTOR: massilia
+#
+# Trade routes within the subsector
+$0908 0711 -1 1
+$1104 1601 0 0
+$1601 1640 0 -1
+$1508 1808 1 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Little Jupiter0901 A8B2855-F  S Fl              A  213 Li
+Transvaal     0904 B357584-C    Ni Ag              404 Li
+Griku         0906 E455338-7    Ni Lo              322 Li
+Sargashad     0908 A9A4878-C  N Fl Pr           A  400 Li
+Monkota       1001 D100586-9  S Ni Va              503 Li
+Jaspa         1002 B675898-9                       614 Li
+Hallinsa      1003 B638400-C  S Ni                 210 Li
+Quetcro       1004 BAA5234-C    Ni Fl Lo           703 Li
+Seyers        1101 B2476BE-C    Ni Ag           A  202 Li
+Arar          1104 B233A72-G    Hi Po Na Cp     B  524 Li
+Dailra        1106 C110557-E    Ni                 801 Ma
+Khipshunam    1108 C544ABA-C  S Hi In              403 Ma
+Datrumna      1203 A362686-D    Ni Ri              403 Li
+Balfour       1303 E8A6569-9    Ni Fl              624 Na
+Barony        1304 B569597-D    Ni              A  700 Ma
+Amulric       1305 B100500-E    Ni Va              704 Ma
+Chaeolimin    1307 B653525-A    Ni Po              201 Ma
+Lattaunist    1308 B444656-B  N C7 Ni Ag           104 Ma
+Rynic         1310 E898320-7    Ni Lo              403 Ma
+Dalphta Three 1404 C9A9533-A    Ni Fl           A  911 Ma
+Wondrous      1408 B7A6226-C  N Ni Fl Lo           112 Ma
+Pytirsun      1503 C75A310-B    Ni Wa Lo           913 Ma
+Basolus       1506 B694664-A    Ni Ag              415 Ma
+Verifervid    1507 B310100-D    Ni Lo              920 Ma
+Gasha         1508 A250510-G    Ni Rs              924 Ma
+Anamoni       1510 B99A425-D    Ni Wa              803 Ma
+Suttas Belts  1601 A000200-G    Ni As Lo           100 Li
+Drayton       1603 B262333-C    Ni Lo              103 Ma
+Stramentox    1605 B210454-E    D2 Ni           A  322 Ma
+Wirz          1606 B727441-C    Ni                 415 Ma
+Biloxi        1607 B5448CB-B  N                    122 Ma
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_C   SECTOR: massilia
+#
+# Trade routes within the subsector
+$1808 1508 -1 0
+$1808 1910 0 0
+$1910 2008 0 0
+$1910 2013 0 1
+$2008 2407 0 0
+$2407 2607 1 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Tersani       1703 B100532-F    Ni Va              203 Ma
+Varina        1705 E110001-B    Ni Lo              204 Ma
+Dodda Vis     1804 B544555-D  N Ni Ag              110 Ma
+Ketola        1807 B354377-C    Ni Lo           B  802 Ma
+Riarette      1808 A110877-E    Na              B  214 Ma
+Engorr        1809 D110566-B    Ni                 600 Ma
+Peneplain     1905 B465478-D  N Ni              B  114 Ma
+Madden        1907 C524522-9    Ni                 524 Ma
+Ektorr        1909 B4638A9-B                       211 Ma
+Khishan       1910 A1009AE-G    Hi In Na Va Cp     814 Ma
+Marfa         2001 B20079D-D    Va Na              503 Li
+Germer        2004 B100100-F    Ni Va Lo           824 Ma
+Iggarir       2007 B787AA9-E  S Hi                 623 Ma
+Irlu          2008 A200654-F    Ni Va Na           603 Ma
+Wikk          2010 B648655-C  N Ni Ag              924 Ma
+Trikster      2102 B200530-C    Ni Va              114 Li
+Inarim        2103 B565AFG-F    Hi                 103 Li
+Landwasser    2105 B875544-C  S Ni Ag              924 Ma
+Murcia        2109 E564945-7    Hi                 814 Ma
+Symond        2201 D638353-9    Ni Lo              504 Li
+Bakerian      2301 A421300-F    Ni Po Lo           503 Li
+Elan          2302 B66889D-B  N Ri                 805 Li
+The Auybes    2305 B300543-C  N Ni Va              413 Ma
+Terelleresika 2306 A342031-C    Ni Lo Po Rs        402 Ma
+Dumeras       2308 B789AAD-G  N Hi              A  103 Ma
+Mina          2401 B461568-C    Ni                 204 Li
+Solarda       2403 E798576-6    Ni Ag           B  702 Ma
+Rizon         2405 B545400-B  N Ni              A  513 Ma
+Perilous      2406 B768635-B  N C4 Ni Ag           434 Ma
+Wynd          2407 A310AAB-G    Hi In Na           914 Ma
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_D   SECTOR: massilia
+#
+# Trade routes within the subsector
+$2607 2407 -1 0
+$2607 2809 0 0
+$2607 2906 0 0
+$2809 2913 0 1
+$2906 3238 0 -1
+$3003 0105 1 0
+#
+$3002 2839 0 -1 10
+$3002 0105 1 0 10
+$2710 2813 0 1 2
+$2710 2606 0 0 2
+$2606 2503 0 0 2
+$2503 2439 -1 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Moran         2503 B3227B8-B    Po Na              414 Ma
+Hayashi       2506 B434678-C  N Ni              B  323 Ma
+Janeen        2508 A100610-G  N Ni Va Na           302 Ma
+Euteneier     2503 B3227B8-B    Po Na              414 Ma
+Cragun 3      2506 B434678-C  N Ni              B  323 Ma
+Zalucha       2508 A100610-G  N Ni Va Na Cp        302 Ma
+H'rachovina   2605 B433211-C    Ni Po Lo           403 Ma
+Galus         2606 B782777-A  N Ri              B  904 Ma
+Athay         2607 B679675-A  N Ni              B  402 Ma
+Keholutes     2609 B300168-C    Ni Va Lo           605 Ma
+Magallanes    2703 B77A330-E    Ni Wa Lo           413 Ma
+Ayarra        2710 B38457A-C  N C7 Ni Ag        B  614 Ma
+Ioannides     2809 A525546-E  N Ni                 505 Ma
+Stockton      2810 C573430-8    Ni                 820 Ma
+Watia         2902 B245776-A    Ag              B  824 Ma
+Vuong         2904 B559532-C  S Ni              A  924 Ma
+Aderveen      2905 B45487B-C  S C6              B  302 Ma
+Yorgasan      2906 B646547-B  N Ni Ag              703 Ma
+Rochon        2908 E675538-7    Ni Ag              613 Ma
+New Stockton  2910 B3226BA-C  S Ni Po Na           103 Ma
+Reisland      3001 C888373-A    Ni Lo           B  121 Ma
+Southard      3002 B645410-B    Ni                 104 Ma
+Titmus        3003 A8A0422-F    Ni De              703 Ma
+Zabel         3008 A575210-C    Ni Lo              202 Ma
+Coxe          3009 B000101-G  S Ni As Lo           414 Ma
+Vageau        3106 E110884-A    Na                 312 Ma
+Sanidon       3108 B0008AA-D    As Na              121 Ma
+Freelund      3203 E7C0743-8    De              A  302 Ma
+Dolenar       3206 B542310-A    Ni Po Lo           500 Ma
+Hamagami      3207 B300000-E    Ni Va Ba Lo        503 Ma
+Kusha         3208 B8B45A7-C    Ni Fl           A  802 Ma
+Friton        3210 D856666-5    C1 Ni Ag           304 Ma
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_E   SECTOR: massilia
+#
+# Trade routes within the subsector
+$0711 0609 0 -1
+$0711 0512 0 0
+$0512 0312 0 0
+$0512 0314 0 0
+$0314 0318 0 0
+$0318 0717 0 0
+$0717 0919 1 0
+$0717 0914 1 0
+$0711 0811 0 0
+$0811 1012 1 0
+$0318 3218 -1 0
+$0711 0908 1 -1
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Arilla        0112 E585448-6    Ni                 803 Li
+Enid          0113 B676958-E    Hi In              801 Li
+Juweit        0115 C21068A-B    Ni Na              914 Li
+Appomma       0116 C646223-9  S Ni Lo              810 Li
+Ambriana      0118 B200034-B    Ni Va Lo           713 Li
+Enrique       0212 B200967-F    Hi In Va Na        904 Li
+Naston        0213 B9E7565-C  S Ni Fl              602 Li
+Shigi         0214 C6489BF-9    Hi In           A  213 Li
+Rommen-Kucera 0217 C879575-B    Ni              B  311 Li
+Rebin         0312 A88A436-F    Ni Wa              202 Li
+Ergo          0314 A20099B-G  N Hi In Va Na        804 Li
+Abarre        0315 C10059C-C  S Ni Va              400 Li
+Masawa        0318 A895523-E  N Ni Ag              704 Li
+Kuiper        0319 E954430-6    Ni                 523 Li
+Chigan Taal   0411 B233758-C    Po Na              605 Li
+Laisarlo      0414 B100758-F  N Va Na              101 Li
+Emsingale     0415 B8B4999-D  N Hi Fl           A  221 Li
+Enriter       0416 B100120-D    Ni Va Lo           313 Li
+Korthalis     0417 C541216-8  S Lo Ni Po           400 Li
+Mairs         0418 E400300-A    Ni Va Lo           203 Li
+Arineau       0511 B363635-C    Ni                 721 Li
+Essin         0512 A200100-F  N Ni Va Lo           925 Li
+Daho          0513 E9C6454-A    Ni Fl           A  624 Li
+Kaflowe       0514 D465545-8    Ni Ag              303 Li
+Salt          0519 B87A454-F    Ni Wa              403 Li
+Lismal        0520 B361124-D    Ni Lo              704 Li
+Zimrimairs    0611 A442679-E    Ni Po           B  703 Li
+Marcusen      0616 D575549-8    Ni Ag              602 Li
+Jonen         0617 B658569-B    Ni Ag              802 Li
+Tephant       0618 B86457B-B  N Ni Ag           B  302 Li
+Makinen       0619 E488110-8    Ni Lo           A  211 Li
+Newport       0711 A427303-F    Ni Lo              624 Li
+Latt          0712 B979124-B    Ni Lo              903 Li
+Ariman        0715 B658558-D  N Ni Ag              802 Li
+Mannai Nila   0716 B200542-D  S Ni Va              923 Li
+Uson          0717 A6847CD-C  N Ag              A  822 Li
+Amaya         0720 A100321-G    Ni Va Lo           924 Li
+Ample         0811 C668563-8    Ni Ag              204 Li
+Mancilla      0814 B100442-D    Ni Va              305 Li
+Keum          0815 A6A198A-E    Fl Hi Cx           704 Li
+Capson        0816 B351459-E    Ni Po              233 Li
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_F   SECTOR: massilia
+#
+# Trade routes within the subsector
+$1012 0717 -1 0
+$0919 0717 -1 0
+$1012 0811 -1 0
+$0919 1121 0 1
+$1419 1322 0 1
+$1419 1719 1 0
+$1613 1813 1 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Lenora        0914 B7A4775-B  N Fl              B  313 Li
+Nonodaga      0915 BAA9642-C    Ni Fl              825 Li
+Stard         0916 E10056A-A    Ni Va              624 Li
+Aarze         0918 B547AEJ-F    Hi In              224 Li
+Aram          0919 A6B0836-D  N De              A  403 Li
+Lysitihia     1012 A774300-D    Ni Lo              214 Li
+Silum         1014 E865899-6    Ri                 201 Li
+Naramorz Rock 1015 B300567-D    Ni Va              404 Li
+Anniga        1017 B300100-F    Ni Va Lo           202 Li
+Shimshan      1019 A110720-G    Na                 813 Li
+Groves        1020 E64648A-6    Ni                 210 Li
+Nary          1117 D000000-B  S Ni As Ba Lo        904 Li
+Avarro        1120 B8B5445-D  N Ni Fl           A  402 Li
+Zebecca       1213 E551210-8    Ni Po Lo           403 Ma
+Gurvin        1215 A7A6656-F    Ni Fl Rs           304 Li
+Reetage       1220 B557015-9  N Ni Lo              903 Li
+Lupaning      1312 B222662-B    Na Ni Po           105 Ma
+Nealis        1313 B569276-C    Ni Lo           B  303 Ma
+Wakatani Belt 1314 C000668-B    Ni As Na           410 Ma
+Muush         1319 B100653-F    Ni Va Na           803 Li
+Sagramore     1320 B1005AE-F    Ni Va              505 Li
+Neoland       1419 A653503-D  N Ni Po              523 Li
+Haamish       1420 B472101-C    Ni Lo              601 Li
+Dalken        1512 E4577A8-8    Ag                 415 Ma
+Malad         1514 E534633-8    Ni                 102 Ma
+Dubleen       1515 B848945-C  S Hi In Cp           234 Ma
+Nonama        1519 B327634-C    Ni                 600 Li
+Toleenal      1520 B551225-C    Ni Po Lo           314 Li
+Epel          1612 D895998-8    Hi                 703 Ma
+Nauto         1613 A76279A-C  N Ri              A  104 Ma
+Lybone        1614 D5498BC-7                       404 Ma
+Shukadiin     1616 B300463-E    Ni Va              123 Ma
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_G   SECTOR: massilia
+#
+# Trade routes within the subsector
+$2013 1910 0 -1
+$2013 1613 -1 0
+$2013 2116 0 0
+$2116 2118 0 0
+$2118 1719 0 0
+$1719 1419 -1 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Hasaggan      1711 B735978-E    Hi              B  923 Ma
+Wander        1713 B10057B-F    Ni Va           B  712 Ma
+Narrad        1717 B321040-B    Ni Po Lo           603 Ma
+Forquee       1719 B464AAE-E    Hi Cp           A  903 Ma
+Alla'mar      1813 B243455-C  N Ni Po              500 Ma
+Arlur         1814 C665A9B-C    Hi                 114 Ma
+P'ley         1818 B110899-C    Na                 601 Ma
+Wiscott       1820 B100866-C  N Va Na              423 Li
+Deeber        1915 C110763-A    Na                 204 Ma
+Stenbon       1916 C6A0147-9    Ni De Lo           325 Ma
+North         1917 C410433-A  S C0 Ni              421 Ma
+Cinthy        1918 B747423-B    Ni                 101 Ma
+Niswander     2013 A341555-E    Ni Po              204 Ma
+Liaw          2017 B568664-9  N Ni Ri Ag           925 Ma
+Oliphant      2018 C110541-B    Ni                 324 Ma
+Charted       2019 B585020-A    Ni Lo              401 Ma
+Olden         2116 A625132-E    Ni Lo              505 Ma
+Pintar        2118 A426589-E    Ni                 214 Ma
+Epmeyer       2119 C110516-C    Ni                 703 Ma
+Veny          2211 B344767-B    Ag              A  810 Ma
+Pirnie        2212 C576842-7                       913 Ma
+Meroi         2213 B588332-C    Ni Lo              214 Ma
+Nogmolen      2216 C110545-D    Ni                 304 Ma
+Lutnikpo      2217 C446100-B    Ni Lo              822 Ma
+Anbock        2220 C856887-9                       323 Ma
+Udipeni       2316 B687ACA-E    Hi                 103 Ma
+Pirrong       2317 B300301-D    Ni Va Lo           713 Ma
+Villia        2318 E100535-9    Ni Va              904 Ma
+Gowandon      2319 B76A99A-F    Hi Wa              814 Ma
+Kerak         2411 B100576-D  S Ni Va           B  604 Ma
+Rode          2414 B755220-C    Ni Lo              403 Ma
+Modawutt      2417 EAA7249-7    Ni Fl Lo           410 Ma
+Rechon        2418 B10079B-E    Va Na              922 Ma
+Telfre        2420 B453202-C    Ni Po Lo           401 Ma
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_H   SECTOR: massilia
+#
+# Trade routes within the subsector
+$2913 2809 0 -1
+$2913 3013 0 0
+$2913 2916 0 0
+$3013 3215 0 0
+$3215 0115 1 0
+$2916 2718 0 0
+$2718 2621 0 1
+#
+$2920 3123 0 1 2
+$2920 2917 0 0 2
+$2917 2813 0 0 2
+$2813 2710 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+The Maralee   2512 D57379A-7                       803 Ma
+Atina         2513 B6318A8-A    Po Na              902 Ma
+Rovick        2514 E454420-8    Ni                 822 Ma
+Rudeen        2516 C100320-B    Ni Va Lo           600 Ma
+Doenye        2519 C222124-A    Ni Po Lo           113 Ma
+Neld          2613 B100895-D    Va Na              601 Ma
+Athoff        2615 B85A7CE-D  N Wa                 802 Ma
+Saint John    2616 C458345-B    Ni Lo              723 Ma
+Ccoman        2714 B76A003-E    Ni Wa Lo           203 Ma
+Saad          2716 B597327-A  N Ni Lo              714 Ma
+Yan           2718 A100854-F    Va Na              222 Ma
+Parcic        2719 E100204-A    Ni Va Lo           600 Ma
+Xuni          2811 C74A421-C    Ni Wa              602 Ma
+Grund         2812 D9A6833-7    Fl                 903 Ma
+Clu           2813 C667796-9    Ri Ag              923 Ma
+Paragreen     2814 B887533-A    Ni Ag              904 Ma
+Kharrl        2815 D100446-9    Ni Va              701 Ma
+Zurn          2820 D64159B-6    Ni Po              604 Ma
+Rynea         2913 B400300-F  S Ni Va Lo           400 Ma
+Man-sabala    2916 B11069B-C  S Ni Na              603 Ma
+Pinkhurim     2917 B11099C-F    Hi In Na           602 Ma
+Murland       2918 A564659-C    Ni Ri Ag           502 Ma
+Nauphtain     2920 C875724-8    Ag                 814 Ma
+Palasha       3013 A55599D-E    Hi Cp              903 Ma
+Euclid        3014 B442455-E  S Ni Po              903 Ma
+Gaff          3016 B110995-E    Hi In Na           104 Ma
+Daiid         3115 C7859AD-9    Hi              A  132 Ma
+Sabbagh       3117 B100631-C    Ni Va Na           724 Ma
+Porto         3211 B256AEC-G    Hi                 114 Ma
+Ryther        3214 B265200-C    Ni Lo              812 Ma
+Remundo       3215 B889468-D  N Ni                 325 Ma
+Letycia       3219 B684113-C    Ni Lo           A  904 Ma
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_I   SECTOR: massilia
+#
+# Trade routes within the subsector
+$0524 0526 0 0
+$0526 0327 0 0
+$0327 0130 0 0
+$0130 0231 0 1
+$0327 0631 0 1
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Meridian      0121 B657453-B    Ni                 904 Li
+Albion        0123 D565326-7    Ni Lo              525 Li
+K'Zass        0124 B246965-C    Hi In Cp           714 Li
+Lant          0125 D11067C-9    Ni Na           B  200 Li
+Dalsam        0130 A9B2456-E    Ni Fl           A  913 Li
+Aymon         0221 E657322-7    Ni Lo              814 Li
+Huon          0223 B100948-G    Hi In Va Na     A  221 Li
+Kiholm        0226 D200656-9    Ni Va Na           303 Li
+Dezik         0228 A9C8333-F    Ni Fl Lo        A  605 Li
+Viiman        0321 B887655-A    Ni Ri Ag           210 Li
+Kirgis        0325 B95A010-B    Ni Wa Lo           323 Li
+Droyna Four   0327 A588844-B    D5 Ri              304 Li
+Dirac         0330 B7B59BB-E  N Hi Fl           A  812 Li
+Zaibeth       0425 D110000-9    Ni Ba Lo           624 Li
+Rocks         0426 C000495-D    Ni As An           304 Li
+Savisz        0428 B977646-9  N Ni Ag              822 Li
+Kingston      0430 EACA76A-9    Wa Fl           A  214 Li
+Marach        0522 B48487A-C    Ri              B  704 Li
+Bloom         0524 A566535-D    Ni Ag              604 Li
+Damber        0525 B473553-C    C2 Ni              103 Li
+Nowell        0526 A441321-F    Ni Po Lo           610 Li
+Reon          0528 C9A7532-A    Ni Fl              402 Li
+Xarian        0529 B768733-B    Ag                 523 Li
+Quuke         0530 A100579-G    Ni Va           B  801 Li
+Kinnas        0621 EAC7446-8    Ni Fl           A  310 Li
+Nananana      0624 B8C1349-C    Ni Fl Lo           804 Li
+Beoff         0627 B7A1300-E    Ni Fl Lo           105 Li
+Crian         0630 B527472-C    Ni              B  103 Li
+Mura          0725 B9D3743-B    Fl                 312 Li
+Goglus        0726 E446538-8    Ni Ag              303 Li
+Bathy         0728 B300555-D    Ni Va              503 Li
+Phlox         0825 B652445-A  N Ni Po              401 Li
+Hervey        0826 B554400-D    Ni              A  420 Li
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_J   SECTOR: massilia
+#
+# Trade routes within the subsector
+$1430 1133 0 1
+$1430 1533 0 1
+$1430 1630 0 0
+$1630 1731 1 1
+$1430 1328 0 0
+$1328 1322 0 0
+$1322 1419 0 -1
+$1322 1121 0 0
+$1121 0919 0 -1
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Selruke       0921 C352422-B  S Ni Po              213 Li
+Rigaal        0928 B100679-E    Ni Va Na        B  714 Li
+Far Trinity   1025 D767661-7  S Ni Ri Ag           601 Li
+Hiponee       1027 B686351-B  N Ni Lo              721 Li
+Dreva         1028 E30089D-7    Va Na              610 Li
+Lagna         1029 A110A97-G    Hi In Na           231 Li
+Strogy        1121 A425347-E    Ni Lo              604 Li
+Elemza        1122 E10046B-9    Ni Va              303 Li
+Stenardee     1130 B110346-D    Ni Lo              114 Li
+Adep 5        1223 D45458B-7  S Ni Ag              903 Li
+Zetra         1321 B7A2544-B    Ni Fl              813 Li
+San Son       1322 A864337-E    Ni Lo              803 Li
+Levatra       1325 B200262-E    Ni Va Lo           503 Li
+Talow         1326 B7B0676-A  S Ni De           A  102 Li
+Tlasov        1328 A100663-F    Ni Va Na           903 Li
+Prindee       1330 D443578-9  S Ni Po           B  524 Li
+Mag' Lphr     1424 B100435-F  S Ni Va              703 Li
+Nindaro       1428 B9896BB-A    Ni                 300 Li
+Shiwonee      1430 AA86831-G  N Ni An Cp           433 Li
+Lasiter       1522 E210843-9    Na              A  302 Li
+Thun          1524 C000653-D    Ni As Na        A  614 Li
+Revie         1621 A978757-D    Ag                 805 Li
+Pohkrow       1629 B568338-C    Ni Lo              502 Li
+Bisks Planet  1630 B55A476-E  S Ni Wa           B  112 Li
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_K   SECTOR: massilia
+#
+# Trade routes within the subsector
+$2130 2529 1 0
+$2130 1731 0 1
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Ven           1721 E362621-7    Ni                 903 Li
+League        1724 D252983-8  S Hi Po              502 Li
+Ri Trios      1726 B57255A-B  N Ni                 504 Li
+Lurun         1728 B6357BA-A                       814 Li
+Kindstrom     1730 C884034-8  S Ni Lo              200 Li
+Herzog        1823 B547531-B    Ni Ag              314 Li
+Star Triven   1921 B481321-D  S Ni Lo              913 Li
+Rahum         1924 D8A6000-8    Ni Ba Fl Lo        113 Li
+Gober         1927 B768455-B    Ni                 301 Ma
+Rarian        2029 B271120-C    Ni Lo              214 Ma
+Hexum         2030 B461525-B    Ni                 900 Ma
+Ugdukida      2127 C33199A-B    Hi Na Po Cp        413 Ma
+Bern          2130 A343413-F  N Ni Po              910 Ma
+Muimarir      2224 D657972-7    Hi              B  913 Ma
+Independent   2228 C252599-B    Ni Po              600 Ma
+Imaean        2230 E627788-7                       714 Ma
+Noward        2323 B5A5200-D    Ni Fl Lo           114 Ma
+Hezeltine     2324 B84A436-E  N Ni Wa           A  921 Ma
+Hermes Station2328 E100579-B    Ni Va           B  404 Ma
+Braemere      2421 B310322-E    Ni Lo              713 Ma
+Gurd          2422 B8D06A9-B    Ni De              700 Ma
+Flassen       2425 D000434-B    Ni As              813 Ma
+Silas         2428 B310543-C    Ni                 500 Ma
+Cheresa       2430 B655300-C  N Ni Lo              302 Ma
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_L   SECTOR: massilia
+#
+# Trade routes within the subsector
+$2621 2718 0 -1
+$2621 2523 0 0
+$2621 2822 0 0
+$2822 2624 0 0
+$2822 3122 0 0
+$2822 2926 0 0
+$2926 2727 0 0
+$2727 2529 0 0
+$2529 2130 -1 0
+#
+$3225 0228 1 0 2
+$3225 3123 0 0 2
+$3123 2920 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Logol         2521 B5735A9-B    Ni                 713 Ma
+Gernice       2522 B684645-B    Ni Ri Ag           810 Ma
+Barden        2523 B355787-B  S Ag              A  601 Ma
+Feiths        2529 A3108BC-E    Na                 824 Ma
+Shigeko       2530 C363832-8                       110 Ma
+Lendining     2621 A545743-D    Ag                 304 Ma
+Goematt       2622 C8C7304-B  S Ni Fl Lo        A  320 Ma
+Lorfee        2624 B865465-C  S Ni                 802 Ma
+Rolando       2630 D100345-B    Ni Va Lo           702 Ma
+Baetrin       2724 B68856A-C    Dw Ag Ni           622 Ma
+Seneca        2727 B265379-C  N Ni Lo           B  510 Ma
+Rinkenbine    2729 B11037A-F    Ni Lo           B  201 Ma
+Ferron        2730 B491651-C    Ni                 303 Ma
+Macaw         2822 A726742-E                       603 Ma
+Jobi          2827 B100453-F    Ni Va              314 Ma
+Gilafill      2828 B484253-E    Ni Lo              900 Ma
+Giirsha       2925 B87AA97-F    Hi In Wa           110 Ma
+Nova          2926 B200303-E  S Ni Va Lo           211 Ma
+Haterbur      2927 B110246-F    Ni Lo              402 Ma
+Varglen       2929 B110687-C    Ni Na              400 Ma
+Danmer        2930 B525554-E    Ni              A  401 Ma
+Haela         3021 B553400-D    Ni Po              603 Ma
+Erro          3026 B729110-C    Ni Lo              812 Ma
+Poorstar      3027 B100333-E  N Ni Va Lo           802 Ma
+Glerum        3122 A000300-G    Ni As Lo           800 Ma
+Mingle        3123 D100897-A    Va Na              514 Ma
+Tooka         3124 A241553-G  S Ni Po An Cp        602 Ma
+Noplace       3125 B100777-D    Va Na           B  124 Ma
+Whidden       3127 A466542-E    Ni Ag           A  813 Ma
+Lensfer       3128 B331510-E    Ni Po              100 Ma
+Gelornamite   3129 C8A1756-A    Fl                 123 Ma
+Tichette      3221 B551314-C    Ni Po Lo           401 Ma
+Goldazax      3222 EAA47AD-8    Fl                 802 Ma
+Nystrom       3225 A568333-C  S Ni Lo              105 Ma
+Shallow       3228 B87A345-D    Ni Wa Lo           602 Ma
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_M   SECTOR: massilia
+#
+# Trade routes within the subsector
+$0839 1040 1 0
+$0839 0736 0 0
+$0736 0933 1 0
+$0736 0434 0 0
+$0434 0134 0 0
+$0434 0130 0 -1
+$0834 0530 0 -1
+$0733 0933 1 0
+$0134 3233 -1 0
+$0239 0301 0 1
+$0839 0502 0 1
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Forever       0134 A000100-G  N Ni As Lo           503 Li
+Kenbine       0138 C321123-C    Ni Po Lo           903 Li
+Sekeltin      0140 B633447-B  N Ni Po           A  101 Li
+Annari        0231 A9A2878-E    Fl Cp              832 Li
+Lumbian       0234 E100200-C    Ni Va Lo           802 Li
+Inger         0235 B794776-9  N Ag              B  512 Li
+Tencrux       0239 A553346-E  N Ni Po Lo           924 Li
+Sarabin       0240 E84A430-9    Ni Wa              405 Li
+Staalun       0331 B434872-D                    B  111 Li
+Gusson        0335 B568100-D  N Ni Lo              521 Li
+Ledstat       0336 B3007CC-C    Va Na              114 Li
+Hunberri      0339 B884622-A    Ni Ag              504 Li
+Pocker        0432 B338254-E    Ni Lo              303 Li
+Rigold        0434 A264000-E    Ni Ba Lo           413 Li
+Dax           0436 B565877-B  S Ri              B  103 Li
+Shanell       0437 E695840-7                       402 Li
+Crater        0440 D300645-8    Ni Va Na           604 Li
+Hadie         0532 B664856-B    Ri                 104 Li
+Beeson        0534 E11089B-A    Na                 503 Li
+Firman        0536 B87A225-C    Ni Wa Lo           400 Li
+Orichalc      0539 B78A974-E    Hi Wa           B  705 Li
+Nilrebmah     0540 B889653-C    Ni Ri           A  214 Li
+Plaacen       0631 B225888-C                       402 Li
+Monapoan      0632 A562435-D  N Ni                 313 Li
+Lumbine       0732 B200887-C    Va Na              804 Li
+Crussel       0733 A451246-D    Ni Po Lo           723 Li
+Sorrento      0734 B798640-A    Ni Ag              424 Li
+Block         0736 A561101-E  N Ni Lo              800 Li
+Teradd        0737 B6758AA-A                       102 Li
+Rarderger     0738 E79A766-8    Wa                 713 Li
+Kiggens       0739 B531323-D    Ni Po Lo        A  603 Li
+Matila        0740 A100684-F    Ni Va Na           902 Li
+Secorra       0834 A698767-C    Ag                 102 Li
+Ryson         0836 B668300-B    Ni Lo              812 Li
+Leam          0837 E110A83-D    Hi In Na        A  722 Li
+Lowisa        0839 A100576-G    Ni Va           B  804 Li
+Kilarn        0840 B41089A-C    Na                 114 Li
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_N   SECTOR: massilia
+#
+# Trade routes within the subsector
+$1533 0733 -1 0
+$1533 1835 1 0
+$1436 1835 1 0
+$1540 1701 1 1
+$1540 1340 0 0
+$1340 1040 0 0
+$1040 0839 -1 0
+$0933 0834 -1 0
+$1133 1430 0 -1
+$1533 1430 0 -1
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Llyrn         0931 C333AAC-D    Hi Po Na           533 Li
+Ar Chaa       0932 B8D0400-C    Ni De              603 Li
+Jacat         0933 A352556-F  S Ni Po              114 Li
+Deward        0934 D10078C-9    Va Na              815 Li
+Lodd          0937 B847649-9    Ni Ag              800 Li
+Baughallum    0938 B300644-D    Ni Va Na           104 Li
+Timely        0939 D31058C-A    Ni                 100 Li
+Vakris        1032 B3548DF-8  S                    503 Li
+Melot         1038 C100653-B    Ni Va Na           313 Li
+Bruy          1040 A585326-C    Ni Lo              505 Li
+Ashavakuna    1131 B567622-9  N Ni Ag              810 Li
+Garency       1133 A645786-D  N Ag                 503 Li
+Conlyte       1134 C845554-9  S Ni Ag           A  104 Li
+Nagiida       1233 B667ACC-E    Hi Cp              820 Li
+Weemar        1234 B000699-C    Ni As Na           703 Li
+Ruetzel       1235 B747133-A  N Ni Lo              403 Li
+Tanny         1238 C567567-9    Ni Ag              704 Li
+Nilton        1239 B684300-B    Ni Lo              604 Li
+Scole         1335 B436222-C    Ni Lo              202 Li
+Wewarbinner   1340 B567227-B    Ni Lo              102 Li
+Nemille       1432 C64A101-B    Ni Wa Lo           910 Li
+Filliagi      1434 B453316-D    Ni Po Lo           800 Li
+Wergatoen     1436 B65557A-C  N Ni Ag           B  914 Li
+Tenonyn       1532 B424779-D  S                 B  623 Li
+Serock        1533 B492685-B    Ni              A  302 Li
+Theradway     1534 C762116-A  S C0 Ni Lo           800 Li
+Dyglen        1535 D425495-A    Ni                 602 Li
+Nobody        1538 B100200-F    Ni Va Lo        A  515 Li
+Marilithe     1540 A879485-D  N Ni              A  104 Li
+Jade          1634 B110130-F  S Ni Lo              922 Li
+Wranklin      1639 D547345-6    Lo Ni              201 Li
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_O   SECTOR: massilia
+#
+# Trade routes within the subsector
+$2238 2540 1 0
+$2238 1701 0 1
+$2238 2234 0 0
+$2238 1835 0 0
+$1835 1533 -1 0
+$1835 1436 -1 0
+$1731 1630 -1 -1
+$1731 2130 0 -1
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Myimpia       1731 B784202-B  A Ni Lo              222 Li
+Gilkla        1733 B475677-B    Ni Ag           B  903 Ma
+Kasenca       1740 B7A6433-C  N Ni Fl              213 Li
+Daven         1831 B100695-C    Ni Va Na           613 Ma
+Broo          1832 B541043-9  N Ni Po Lo           825 Ma
+Earthstone    1833 C775452-B  S Ni              A  520 Ma
+Mitt          1834 D96A776-7  S Ri Wa           B  802 Ma
+Waize         1835 A9A7663-D    Ni Fl              301 Ma
+Rattu         1837 B352675-C  S Ni Po           B  323 Ma
+Simmersong    1931 C478344-A    Ni Lo           A  304 Ma
+Danmoire      1936 D331758-A    Po Na           A  920 Ma
+Merold        1938 B110446-D    Ni                 301 Ma
+Arka          1940 A798545-D    Ni Ag              922 Ma
+Umbia         2031 B8D48B9-B    Fl                 304 Ma
+Devan         2032 C97789A-7                       313 Ma
+Sempir        2037 D484454-8    Ni                 312 Ma
+Shimmer       2039 B9A1737-B    Fl                 922 Ma
+Sroos         2040 B876332-B    Ni Lo           A  802 Ma
+Honatty       2132 C545851-A                       104 Ma
+Landing       2135 B75758D-A    Ni Ag              304 Ma
+Enbrie        2136 B4738CH-C                       313 Ma
+Santaw        2138 B263552-C    Ni                 104 Ma
+Damz          2139 B355585-B    Ni Ag              804 Ma
+Nituu         2231 E100877-A    Va Na           B  405 Ma
+Halfway       2233 B533699-C    Ni Po Na           410 Ma
+Norfriboah    2234 A646785-C    Ag                 122 Ma
+Virim         2237 A553568-E    Ni Po              713 Ma
+Binsarah      2238 A636415-E    Ni                 302 Ma
+Ferring       2331 E200652-8    Ni Va Na           613 Ma
+Lybo          2334 C545373-A    Ni Lo           B  425 Ma
+Nanonlin      2335 B8866A6-9    Ni Ag              814 Ma
+Todkar        2336 B53A543-E  N Ni Wa              704 Ma
+Luri          2340 B55698D-D  N Hi Cp           A  913 Ma
+Shanmos       2433 D100311-9    Ni Va Lo           414 Ma
+Nyroah        2435 C76366B-8    Ni Ri              502 Ma
+Skillern      2439 B646885-9  N                    703 Ma
+Rington       2440 B443222-B  N Ni Po Lo           124 Ma
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: sec_P   SECTOR: massilia
+#
+# Trade routes within the subsector
+$2737 3136 0 0
+$2737 2540 0 0
+$2540 2501 0 1
+$2540 2429 -1 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Luong         2531 A500596-D    Ni Va           A  214 Ma
+Oreo          2540 B1009AD-F    Hi In Va Na Cp     113 Ma
+Misthaven     2632 B758987-D    Hi              A  603 Ma
+Ortega        2633 C426AFJ-E    Hi In              703 Ma
+Landis        2640 B522003-D  N Ni Po Lo        A  510 Ma
+Cordell       2731 A100203-G  N Ni Va Lo           803 Ma
+Jenina        2732 B264599-C  N Ni Ag              523 Ma
+Floting       2734 B65569B-B    Ni Ag              911 Ma
+Vonda         2735 B110102-G  S Ni Lo              431 Ma
+Wedna         2737 A673353-F    Ni Lo              304 Ma
+Mona          2738 B210558-E    D1 Ni              700 Ma
+Cusgrove      2739 DA76520-6    Ni Ag           A  104 Ma
+Goiri         2837 D200456-B    Ni Va              913 Ma
+Amanita       2931 B100587-D    Ni Va              603 Ma
+Doane         2932 E676687-6    Ni Ag              314 Ma
+Quoc          2933 B410267-C  N Ni Lo              114 Ma
+Parahee       2934 C10099D-D  S Hi In Va Na        813 Ma
+Mission       2938 C574430-A    Ni                 602 Ma
+Granporr      3035 B4768AE-A  N                    813 Ma
+Dobaran       3131 A793330-D  N Ni Lo Rs           500 Ma
+Blaser        3136 A10088C-E    Va Na           A  723 Ma
+Malaga        3139 B423474-C    Ni Po           B  722 Ma
+Domy          3231 B85A376-D  N Ni Wa Lo        B  805 Ma
+Randanna      3232 B300796-B    Va Na           A  403 Ma
+Double        3233 B10066A-D  N Ni Va Na           504 Ma
+Esten         3236 C100155-D    Ni Va Lo           703 Ma
+

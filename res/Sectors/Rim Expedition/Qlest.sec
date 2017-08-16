@@ -1,0 +1,364 @@
+Qlest Sector
+
+A: Aqlest                    a.dat
+B: Baqest                    b.dat
+C: Clest                     c.dat
+D: Decless                   d.dat
+E: Eqesta                    e.dat
+F: Feqlesa                   f.dat
+G: Ghaqest                   g.dat
+H: Hlest                     h.dat
+I: Iqlestan                  i.dat
+J: Juqese                    j.dat
+K: Klesta                    k.dat
+L: Lesteq                    l.dat
+M: Millest                   m.dat
+N: Nulestan                  n.dat
+O: Oqest                     o.dat
+P: Paqeese                   p.dat
+
+Bases:
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Aqlest SECTOR: Qlest Sector
+#
+# Jump-routes
+#
+$0710 0714 0 1 2
+$0710 0607 0 0 2
+$0607 0505 0 0 2
+$0505 0702 0 0 2
+$0702 0539 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0204 E9B4346-5    Fl Lo Ni        A  114 Na
+Driddia       0505 E582320-2    Lo Ni              404 Na
+A-3           0506 C510555-6  S Ni                 815 Na
+Lianda        0607 C310410-B  S Ni                 414 Na
+Haunna        0702 C846542-8    Ag Ni              903 Na
+Amriss        0710 D321422-6  S Ni Po              303 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Baqest SECTOR: Qlest Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           0908 C447200-8    Lo Ni              302 Na
+B-2           1404 A957555-D    Ag Ni              514 Na
+B-3           1602 B557673-A  S Ag Ni           B  903 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Clest SECTOR: Qlest Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1702 A210764-B  N Na                 411 Na
+C-2           1806 C5477AB-5  S Ag                 715 Na
+C-3           1908 C426651-A  S Ni                 220 Na
+C-4           2310 B636666-7    Ni                 915 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Decless SECTOR: Qlest Sector
+#
+# Jump-routes
+#
+$3102 3038 0 -1 10
+$3102 3105 0 0 10
+$3105 0206 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2808 D525310-4  S Lo Ni              102 Na
+D-2           2909 C356850-7                       104 Na
+D-3           3001 B627546-B  N Ni                 601 Na
+Doggure       3102 D551655-5    Ni Po              511 Na
+Odranaan      3105 C453567-9    Ni Po              614 Na
+D-6           3106 B322547-9  N Ni Po              223 Na
+D-7           3201 C3719A7-7    Hi In              410 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Eqesta SECTOR: Qlest Sector
+#
+# Jump-routes
+#
+$0714 0917 1 0 2
+$0714 0710 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0113 D7B0400-4    De Ni           A  702 Na
+E-2           0114 D410610-7  S Na Ni              920 Na
+E-3           0119 B591310-6    Lo Ni              811 Na
+E-4           0215 C236400-A  S Ni                 103 Na
+E-5           0311 E897203-6    Lo Ni              600 Na
+E-6           0320 E624300-6    Lo Ni              623 Na
+E-7           0618 E7A1668-5    Fl Ni              904 Na
+E-8           0713 C470664-5    De Ni              603 Na
+Eqtaal        0714 D000677-5  S As Na Ni        B  214 Na
+E-10          0811 A7565A6-C  N Ag Ni              704 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Feqlesa SECTOR: Qlest Sector
+#
+# Jump-routes
+#
+$1619 1623 0 1 2
+$1619 1217 0 0 2
+$1217 0917 0 0 2
+$0917 0714 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0911 C556A87-C    Hi                 713 Na
+Moadma        0917 C758574-9  S Ag Ni           B  314 Na
+F-3           1019 C8C3377-7    Fl Lo Ni        A  213 Na
+Arquien       1217 D856557-5    Ag Ni              813 Na
+F-5           1411 C424467-A  S Ni                 414 Na
+F-6           1416 C484568-7  S Ag Ni              302 Na
+F-7           1618 B366966-9    Hi                 404 Na
+Fhazann       1619 E535ADD-4    Hi In              901 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ghaqest SECTOR: Qlest Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1818 A446945-B    Hi In              423 Na
+G-2           2114 C6A49A7-B    Fl Hi              822 Na
+G-3           2311 D76A678-3  S Ni Ri Wa        B  503 Na
+G-4           2319 C89A588-6    Ni Wa              223 Na
+G-5           2414 C5669AA-A  S Hi                 504 Na
+G-6           2419 B493553-B  N Ni                 900 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hlest SECTOR: Qlest Sector
+#
+# Jump-routes
+$2811 2911 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2513 A322353-E  N Lo Ni Po           823 Na
+H-2           2617 C50067B-4    Na Ni Va        B  200 Na
+H-3           2620 C451943-9    Hi Po              400 Na
+H-4           2717 C510669-5    Na Ni              723 Na
+H-5           2719 C331240-7    Lo Ni Po           924 Na
+H-6           2811 B000A98-D    As Hi Na           203 Na
+H-7           2911 B328751-A  S                    922 Na
+H-8           2918 E130141-5    De Lo Ni Po        504 Na
+H-9           3114 D434988-5    Hi In              204 Na
+H-10          3219 E654522-6    Ag Ni              521 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Iqlestan SECTOR: Qlest Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0130 A410767-9    Na                 203 Na
+I-2           0223 A363566-A  N Ni                 803 Na
+I-3           0227 E200688-7    Na Ni Va           201 Na
+I-4           0325 B541248-8  N Lo Ni Po           602 Na
+I-5           0327 DAA479C-3  S Fl                 901 Na
+I-6           0424 C2109A7-7  S Hi Na              604 Na
+I-7           0426 C97A775-8    Wa              B  924 Na
+I-8           0529 C544200-7  S Lo Ni              804 Na
+I-9           0827 A775224-A  S Lo Ni              602 Na
+I-10          0829 E666333-5    Lo Ni              914 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Juqese SECTOR: Qlest Sector
+#
+# Jump-routes
+#
+$1626 1728 1 0 2
+$1626 1623 0 0 2
+$1623 1619 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0925 D86A244-8  S Lo Ni Wa           304 Na
+J-2           0927 C52A499-C  S Ni Wa              204 Na
+J-3           1228 BAC6502-9    Fl Ni           A  704 Na
+J-4           1323 A7677BA-A    Ag                 934 Na
+J-5           1327 B230232-B  N De Lo Ni Po        104 Na
+J-6           1529 C201387-9    Ic Lo Ni Va        714 Na
+Vretacce      1623 B878ACB-D    Hi In              222 Na
+Jah-Mass      1626 D401310-4  S Ic Lo Ni Va        711 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Klesta SECTOR: Qlest Sector
+#
+# Jump-routes
+#
+$2029 2132 0 1 2
+$2029 1728 0 0 2
+$1728 1626 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Coaasala      1728 X200633-0    Va              R  922 Na
+K-2           1827 C426001-6    Lo Ni              112 Na
+K-3           1921 C443675-6  S Ni Po           B  624 Na
+K-4           2026 B448132-9    Lo Ni              404 Na
+Etennia       2029 B6339CA-D  N Hi In Na Po        601 Na
+K-6           2222 C471332-A    Lo Ni              214 Na
+K-7           2324 C539159-9  S Lo Ni              303 Na
+K-8           2329 C000010-9  S As Lo Ni           910 Na
+K-9           2422 B52356A-B  N Ni Po              915 Na
+K-10          2425 C97A765-8  S Wa                 204 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lesteq SECTOR: Qlest Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2630 C614412-6    Ic Ni              400 Na
+L-2           2722 B8A4534-9    Fl Ni              601 Na
+L-3           2925 C210443-B  S Ni                 424 Na
+L-4           3121 X62689B-0                    R  103 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Millest SECTOR: Qlest Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0133 C100554-A  S Ni Va              712 Na
+M-2           0240 C749500-B    Ni                 200 Na
+M-3           0534 B200400-9  N Ni Va              321 Na
+M-4           0638 B423797-9  S Na Po              703 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nulestan SECTOR: Qlest Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0934 X956200-1    Lo              R  921 Na
+N-2           1031 C364789-6    Ag Ri              400 Na
+N-3           1039 C869453-8    Ni                 700 Na
+N-4           1332 E788651-5    Ag Ni Ri           310 Na
+N-5           1333 B677578-A  N Ag Ni           B  205 Na
+N-6           1539 A593200-9  N Lo Ni              703 Na
+N-7           1631 E000669-4    As Na Ni           705 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Oqest SECTOR: Qlest Sector
+#
+# Jump-routes
+#
+$2234 2536 1 0 2
+$2234 2132 0 0 2
+$2132 2029 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1738 C622587-6  S Ni Po              500 Na
+O-2           1936 B10079A-8  N Na Va              920 Na
+O-3           2034 A566451-9  N Ni                 515 Na
+Graaci        2132 C8B3845-7  S Fl              A  215 Na
+Olohk         2234 C669410-9    Ni                 311 Na
+O-6           2438 D300511-8    Ni Va              303 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Paqeese SECTOR: Qlest Sector
+#
+# Jump-routes
+#
+$3139 0340 1 0 2
+$3139 2737 0 0 2
+$2737 2536 0 0 2
+$2536 2234 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Juim          2536 C562557-8  S Ni                 603 Na
+P-2           2633 X353510-0    Po              R  422 Na
+P-3           2635 A351583-D    Ni Po              900 Na
+P-4           2639 C523058-9    Lo Ni Po           203 Na
+Heeqlan       2737 E895311-7    Lo Ni              905 Na
+P-6           2833 A6538BD-9  S Po                 600 Na
+P-7           2839 C224233-A  S Lo Ni              710 Na
+P-8           2931 C300864-9    Na Va              303 Na
+Gohgra        3139 B240301-D  N De Lo Ni Po        904 Na
+

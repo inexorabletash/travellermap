@@ -1,0 +1,376 @@
+Xiist Sector
+
+A: Axiis                     a.dat
+B: Biist                     b.dat
+C: Caiiste                   c.dat
+D: Daxiist                   d.dat
+E: Exiist                    e.dat
+F: Foxii                     f.dat
+G: Ghaxii                    g.dat
+H: Huxiis                    h.dat
+I: Ixiit                     i.dat
+J: Jixas                     j.dat
+K: Kiloxii                   k.dat
+L: Laxiist                   l.dat
+M: Mixiis                    m.dat
+N: Naxaiit                   n.dat
+O: Oxaxii                    o.dat
+P: Pixiist                   p.dat
+
+Bases:
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Axiis SECTOR: Xiist Sector
+#
+# Jump-routes
+#
+$0607 0711 0 1 2
+$0607 0705 0 0 2
+$0705 0701 0 0 2
+$0701 0737 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0403 E8B399B-5    Fl Hi           A  702 Na
+A-2           0406 C886956-B    Hi                 104 Na
+A-3           0506 C100233-B    Lo Ni Va           835 Na
+A-4           0508 A74499C-C    Hi In              301 Na
+Ajiinia       0607 B210546-A  N Ni                 303 Na
+Chiixiin      0701 B529302-A  N Lo Ni              901 Na
+Gregiic       0705 E645440-7    Ni                 811 Na
+A-8           0806 B436765-9                       202 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Biist SECTOR: Xiist Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           1005 E79A46B-6    Ni Wa              104 Na
+B-2           1201 D967530-7    Ag Ni              304 Na
+B-3           1203 B8A7545-B  N Fl Ni              303 Na
+B-4           1306 D664765-5  S Ag Ri              804 Na
+B-5           1501 B656664-9    Ag Ni              102 Na
+B-6           1505 E300224-4    Lo Ni Va           403 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Caiiste SECTOR: Xiist Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1806 D440201-5    De Lo Ni Po        412 Na
+C-2           1905 D77878D-1  S Ag                 914 Na
+C-3           2001 C400352-B    Lo Ni Va           412 Na
+C-4           2010 E00078C-8    As Na              424 Na
+C-5           2102 C410379-B    Lo Ni           B  113 Na
+C-6           2107 D564547-3  S Ag Ni              823 Na
+C-7           2310 X488001-0    Lo              R  705 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Daxiist SECTOR: Xiist Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2508 C557695-5  S Ag Ni              501 Na
+D-2           2806 B689343-8  S Lo Ni              700 Na
+D-3           2906 XA79402-0                    R  224 Na
+D-4           3005 B6A0310-7  2 De Lo Ni           500 Na
+D-5           3010 C877884-5                       924 Na
+D-6           3106 B671421-B    Ni                 605 Na
+D-7           3210 C623454-7  S Ni Po              300 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Exiist SECTOR: Xiist Sector
+#
+# Jump-routes
+#
+$0814 0916 1 0 2
+$0814 0711 0 0 2
+$0711 0607 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0111 C25487B-7  S                 B  503 Na
+E-2           0120 B5489C8-9    Hi In              702 Na
+E-3           0520 B535500-A  S Ni                 914 Na
+E-4           0615 D448777-5    Ag              B  903 Na
+Miiloox       0711 D994472-6    Ni              B  503 Na
+Emiiuz        0814 D4538B8-4    Po                 604 Na
+E-7           0819 C584612-6  S Ag Ni              312 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Foxii SECTOR: Xiist Sector
+#
+# Jump-routes
+$1619 1719 1 0
+#
+$1519 1720 1 0 2
+$1519 1218 0 0 2
+$1218 0916 0 0 2
+$0916 0814 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Xiian         0916 B3008CF-C  S Na Va              122 Na
+F-2           1014 C7A8665-9    Fl Ni              201 Na
+F-3           1016 C567564-5    Ag Ni              424 Na
+F-4           1113 D130153-7  S De Lo Ni Po        713 Na
+F-5           1117 C748524-5    Ag Ni              303 Na
+F-6           1215 X551884-1    Po              R  503 Na
+Riixamm       1218 B8A4796-9    Fl                 105 Na
+F-8           1411 C633005-8    Lo Ni Po           620 Na
+F-9           1412 C979578-8  S Ni              B  130 Na
+Foox          1519 C2126BC-A    Ic Na Ni           804 Na
+F-11          1619 A412565-E    Ic Ni              105 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ghaxii SECTOR: Xiist Sector
+#
+# Jump-routes
+$1719 1619 -1 0
+#
+$1720 2121 0 1 2
+$1720 1519 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1719 AA78334-D  S Lo Ni              214 Na
+Gabbiix       1720 B7B4ABC-C  S Fl Hi           A  402 Na
+G-3           2011 C4109CC-C  S Hi Na              924 Na
+G-4           2216 E665555-8    Ag Ni              804 Na
+G-5           2312 B58459A-B    Ag Ni              305 Na
+G-6           2314 E2108BA-3    Na                 714 Na
+G-7           2318 C457436-9    Ni                 921 Na
+G-8           2419 B310667-A  N Na Ni              223 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Huxiis SECTOR: Xiist Sector
+#
+# Jump-routes
+$2919 2923 0 1
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2518 D490500-7  S De Ni              704 Na
+H-2           2714 C411769-7  S Ic Na              503 Na
+H-3           2915 C543251-6    Lo Ni Po           824 Na
+H-4           2916 B00077A-B    As Na           B  320 Na
+H-5           2919 A000566-D    As Ni              424 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ixiit SECTOR: Xiist Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0524 B1008DE-A    Na Va              900 Na
+I-2           0529 E8B5777-4    Fl              B  801 Na
+I-3           0625 X453735-0    Po              R  522 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jixas SECTOR: Xiist Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           1126 C10068A-B    Na Ni Va           220 Na
+J-2           1225 E545469-2    Ni                 210 Na
+J-3           1421 C848776-3    Ag              B  313 Na
+J-4           1527 B674432-7  S Ni                 603 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kiloxii SECTOR: Xiist Sector
+#
+# Jump-routes
+#
+$2328 2331 0 1 2
+$2328 2224 0 0 2
+$2224 2121 0 0 2
+$2121 1720 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1723 C584200-5  S Lo Ni              900 Na
+K-2           1825 C363026-8  S Lo Ni              322 Na
+K-3           1921 E512675-7    Ic Na Ni        B  504 Na
+K-4           1928 B442575-7  N Ni Po           B  724 Na
+K-5           2024 C553222-4    Lo Ni Po           303 Na
+Ullxiim       2121 E87A479-9    Ni Wa           B  802 Na
+K-7           2123 B536775-A                    B  600 Na
+Aximok        2224 C9D49CC-B  S Fl Hi              901 Na
+Kliixik       2328 C78A573-B  S Ni Wa           B  301 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Laxiist SECTOR: Xiist Sector
+#
+# Jump-routes
+$2923 2919 0 -1
+$2629 2730 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2523 C515A78-9  S Hi Ic           B  304 Na
+L-2           2629 A200367-C  N Lo Ni Va           213 Na
+L-3           2730 C4746B8-8    Ag Ni              910 Na
+L-4           2826 C210667-8  S Na Ni              915 Na
+L-5           2827 C512897-6    Ic Na              212 Na
+L-6           2921 D120227-8  S De Lo Ni Po        515 Na
+L-7           2923 B8A3985-D  S Fl Hi              710 Na
+L-8           3028 D311100-9  S Ic Lo Ni           504 Na
+L-9           3223 C798520-7  S Ag Ni              120 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Mixiis SECTOR: Xiist Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0133 C634799-4  S                    224 Na
+M-2           0537 A347310-D  2 Lo Ni              124 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Naxaiit SECTOR: Xiist Sector
+#
+# Jump-routes
+$1033 1035 0 0
+$1431 1531 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0934 X673774-0                    R  513 Na
+N-2           0935 D585777-3  S Ag Ri           B  922 Na
+N-3           0936 C5459DC-4    Hi In              700 Na
+N-4           1032 D495620-5    Ag Ni              904 Na
+N-5           1033 C65167C-6    Ni Po           B  323 Na
+N-6           1034 A8549AD-9  N Hi                 205 Na
+N-7           1035 B599655-B    Ni                 612 Na
+N-8           1036 C140021-8    De Lo Ni Po        723 Na
+N-9           1040 C22159C-B  S Ni Po              513 Na
+N-10          1233 C88727B-4    Lo Ni           B  810 Na
+N-11          1236 C310346-B    Lo Ni              814 Na
+N-12          1239 E869676-3    Ni Ri           B  503 Na
+N-13          1431 B230975-D  2 De Hi In Na Po     131 Na
+N-14          1531 A896883-A                       404 Na
+N-15          1535 CAC5203-8    Fl Lo Ni        A  810 Na
+N-16          1632 C564444-5  S Ni                 404 Na
+N-17          1636 C000486-C    As Ni              720 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Oxaxii SECTOR: Xiist Sector
+#
+# Jump-routes
+#
+$2331 2732 1 0 2
+$2331 2328 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1834 C5A0568-5  S De Ni              802 Na
+O-2           1839 B367686-6  N Ag Ni Ri           201 Na
+O-3           2037 E99968A-3    Ni                 511 Na
+O-4           2039 D4649B7-4    Hi                 403 Na
+O-5           2135 E9D3664-2    Fl Ni              520 Na
+O-6           2136 A221962-E  N Hi In Na Po        304 Na
+O-7           2137 B4517AB-9  S Po                 823 Na
+O-8           2238 C120304-D  S De Lo Ni Po        903 Na
+Oxiixi        2331 A785455-9    Ni                 103 Na
+O-10          2337 E462201-4    Lo Ni              631 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Pixiist SECTOR: Xiist Sector
+#
+# Jump-routes
+#
+$3235 0238 1 0 2
+$3235 3033 0 0 2
+$3033 2732 0 0 2
+$2732 2331 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2535 B202445-C  N Ic Ni Va           802 Na
+P-2           2539 C885110-6  S Lo Ni              713 Na
+Jiliisx       2732 B000520-B  N As Ni              703 Na
+P-4           2738 E363955-5    Hi                 703 Na
+P-5           2839 C450137-8    De Lo Ni Po        700 Na
+P-6           2938 C8958DD-4                       510 Na
+Miliixs       3033 BAD7530-8  S Fl Ni              613 Na
+P-8           3233 E200144-7    Lo Ni Va           701 Na
+Planilli      3235 C68778C-3  S Ag Ri              201 Na
+

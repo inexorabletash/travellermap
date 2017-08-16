@@ -1,0 +1,297 @@
+Triklien Sector
+
+A: Atrik                     a.dat
+B: Biklien                   b.dat
+C: Cotrikl                   c.dat
+D: Doklien                   d.dat
+E: Etrikl                    e.dat
+F: Fienk                     f.dat
+G: Gatrien                   g.dat
+H: Hatri                     h.dat
+I: Itrienne                  i.dat
+J: Jatkliem                  j.dat
+K: Krikrie                   k.dat
+L: Latrilli                  l.dat
+M: Metriaas                  m.dat
+N: Naritri                   n.dat
+O: Oktrien                   o.dat
+P: Pitran                    p.dat
+
+Bases:
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Atrik SECTOR: Triklien Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0105 C353305-7    Lo Ni Po           911 Na
+A-2           0204 A5547CC-A  N Ag                 603 Na
+A-3           0510 A0007A8-C    As Na              420 Na
+A-4           0803 C759658-8  S Ni                 900 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Biklien SECTOR: Triklien Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           1102 E758953-4    Hi                 723 Na
+B-2           1201 C542579-6    Ni Po           B  604 Na
+B-3           1202 D10069A-6    Na Ni Va           612 Na
+B-4           1410 D646542-4  S Ag Ni              902 Na
+B-5           1602 C358977-B  S Hi              B  303 Na
+B-6           1609 C200354-C  S Lo Ni Va           105 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Cotrikl SECTOR: Triklien Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1710 A686154-A  N Lo Ni              700 Na
+C-2           2209 C3216BA-9    Na Ni Po           301 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Doklien SECTOR: Triklien Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2703 C6B769A-7    Fl Ni           A  702 Na
+D-2           3006 E439479-A    Ni              B  114 Na
+D-3           3203 B8768A8-5  N                    701 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Etrikl SECTOR: Triklien Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0114 B252720-9  N Po                 712 Na
+E-2           0211 D310522-4    Ni                 904 Na
+E-3           0411 C000559-B  S As Ni              720 Na
+E-4           0518 A736524-D  N Ni                 704 Na
+E-5           0716 X200688-2    Va              R  802 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Fienk SECTOR: Triklien Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           1018 C678947-9    Hi In              704 Na
+F-2           1516 BAEA559-D  2 Fl Ni Wa           424 Na
+F-3           1611 C230000-B    Ba De Lo Ni Po     703 Na
+F-4           1614 C57A432-B    Ni Wa              512 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Gatrien SECTOR: Triklien Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1812 D515443-7  S Ic Ni              905 Na
+G-2           2118 C110899-A    Na                 914 Na
+G-3           2213 B444445-C  2 Ni                 904 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hatri SECTOR: Triklien Sector
+#
+# Jump-routes
+$2919 3017 0 0
+$2919 3120 0 0
+$2919 3121 0 1
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2516 BAA5322-C  2 Fl Lo Ni           600 Na
+H-2           2718 C556113-6  S Lo Ni              813 Na
+H-3           2919 AA8A401-E    Ni Wa              513 Na
+H-4           3017 BAD8335-C    Fl Lo Ni           623 Na
+H-5           3120 A160401-D    De Ni              902 Na
+H-6           3214 BAA6572-A  2 Fl Ni           B  405 Na
+H-7           3217 B30379C-B    Ic Na Va           613 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Itrienne SECTOR: Triklien Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0328 B437167-A  S Lo Ni              514 Na
+I-2           0425 E110625-6    Na Ni              314 Na
+I-3           0829 C100377-8  S Lo Ni Va        B  823 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jatkliem SECTOR: Triklien Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           1029 C120569-9  S De Ni Po           703 Na
+J-2           1225 B756524-A    Ag Ni              201 Na
+J-3           1228 C310200-7    Lo Ni              700 Na
+J-4           1528 B462677-7  2 Ni Ri           B  504 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Krikrie SECTOR: Triklien Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1927 D555610-6  S Ag Ni              502 Na
+K-2           2027 D744564-3    Ag Ni              802 Na
+K-3           2327 D592540-6    Ni                 202 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Latrilli SECTOR: Triklien Sector
+#
+# Jump-routes
+$3121 2919 0 -1
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2721 B301320-B  S Ic Lo Ni Va        514 Na
+L-2           2823 D77A111-9  S Lo Ni Wa           512 Na
+L-3           2924 E475145-4    Lo Ni              605 Na
+L-4           3121 A486312-E  N Lo Ni              802 Na
+L-5           3129 C442546-6    Ni Po              414 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Metriaas SECTOR: Triklien Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0131 D400524-5  S Ni Va              215 Na
+M-2           0138 A5797A7-D  N                    200 Na
+M-3           0635 CAB8330-A  S Fl Lo Ni        A  703 Na
+M-4           0731 D757002-5  S Lo Ni              824 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Naritri SECTOR: Triklien Sector
+#
+# Jump-routes
+$0939 1038 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0939 AA6A888-A    Ri Wa              912 Na
+N-2           1038 B65A999-E  N Hi Wa              703 Na
+N-3           1137 C470358-6    De Lo Ni           423 Na
+N-4           1237 B455544-A    Ag Ni              603 Na
+N-5           1440 B568630-A  N Ag Ni              400 Na
+N-6           1631 C444244-A  S Lo Ni              202 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Oktrien SECTOR: Triklien Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1731 C67659A-4  S Ag Ni              900 Na
+O-2           1840 B788244-A  S Lo Ni              513 Na
+O-3           1934 B636100-A    Lo Ni              412 Na
+O-4           2238 X3379DB-0    Hi In           R  423 Na
+O-5           2337 C676777-3    Ag              B  604 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Pitran SECTOR: Triklien Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2631 C447336-5    Lo Ni              903 Na
+P-2           2632 C5A0101-A    De Lo Ni           103 Na
+P-3           2835 EA9A353-7    Lo Ni Wa           401 Na
+P-4           3139 C8A8755-5    Fl                 402 Na
+

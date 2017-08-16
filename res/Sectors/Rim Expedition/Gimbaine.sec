@@ -1,0 +1,1124 @@
+Gimbaine Sector
+
+A: Agimba                    a.dat
+B: Baine                     b.dat
+C: Climbai                   c.dat
+D: Dlimban                   d.dat
+E: Embaine                   e.dat
+F: Flimbar                   f.dat
+G: Glimbar                   g.dat
+H: Himbain                   h.dat
+I: Imbaine                   i.dat
+J: Jainee                    j.dat
+K: Klimbaer                  k.dat
+L: Limbair                   l.dat
+M: Mibare                    m.dat
+N: Nimbain                   n.dat
+O: Obaine                    o.dat
+P: Phimba                    p.dat
+
+Bases:
+H = Koruul Navy
+J = Koruul Scout
+K = Koruul Navy & Scout
+L = Koruul Research
+M = Koruul Army & Marine
+P = Preinne Navy
+Q = Preinne Scout
+R = Preinne Navy & Scout
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+12 Ke = Koruul Empire
+07 Na = Non-Aligned
+14 Pa = Preinne Alliance
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Agimba SECTOR: Gimbaine Sector
+#
+# Jump-routes
+#
+$0201 0140 0 -1 14
+$0702 0540 0 -1 14
+$0702 0839 0 -1 14
+$0702 0604 0 0 14
+$0604 0504 0 0 14
+$0504 0201 0 0 14
+$0604 0506 0 0 14
+$0506 0609 0 0 14
+$0609 1007 1 0 14
+$0604 1005 1 0 14
+$0609 0711 0 1 14
+$0707 0711 0 1 2
+$0707 0504 0 0 2
+$0504 0201 0 0 2
+$0201 3238 -1 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0101 C310410-A    Ni                 523 Pa
+A-2           0102 E8A2744-6    Fl                 603 Pa
+A-3           0107 D538599-7  S Ni                 512 Na
+A-4           0108 C558864-6  S                    900 Na
+Rilliarr      0201 B6B17CH-A    Fl                 514 Pa
+A-6           0202 C210652-6    Na Ni              300 Pa
+A-7           0205 E54678D-4    Ag                 533 Na
+A-8           0206 E343AEG-9    Hi In Po        A  123 Na
+A-9           0207 D442445-3  S Ni Po              905 Na
+A-10          0208 C544664-3  S Ag Ni              623 Na
+A-11          0209 E674104-8    Lo Ni              205 Na
+A-12          0210 D496330-6  S Lo Ni              700 Na
+A-13          0302 D6106AA-7    Na Ni              603 Pa
+A-14          0304 E591611-3    Ni                 914 Na
+A-15          0305 C130415-9  S De Ni Po           900 Na
+A-16          0307 C9B4685-6  S Fl Ni           A  124 Na
+A-17          0309 D20079A-4  S Na Va              414 Na
+A-18          0403 C555575-9    Ag Ni           B  804 Na
+A-19          0407 C848010-8  S Lo Ni              304 Na
+A-20          0409 C975310-8    Lo Ni              710 Na
+A-21          0501 E671476-7    Ni              B  103 Na
+A-22          0502 E769AA8-7    Hi                 504 Pa
+A-23          0503 C6468BA-7                       603 Pa
+Griinar       0504 B6775A7-7  P Ag Ni              921 Pa
+A-25          0506 BA8A8CH-C    Wa                 233 Pa
+A-26          0509 D999695-4  P Ni                 725 Pa
+A-27          0510 E9A288C-6    Fl                 904 Na
+A-28          0603 C662203-6    Lo Ni              212 Pa
+A-29          0604 B313545-9  P Ic Ni              604 Pa
+A-30          0605 C200576-6    Ni Va           B  604 Na
+A-31          0607 E8A3643-4    Fl Ni              614 Pa
+A-32          0609 B210000-C    Ba Lo Ni           311 Pa
+A-33          0701 C8A56BD-4    Fl Ni              705 Pa
+A-34          0702 B260656-8    De Ni Ri           302 Pa
+A-35          0703 C658ACC-B    Hi                 400 Pa
+A-36          0704 C5856B9-7    Ag Ni              103 Pa
+A-37          0705 C445734-4  P Ag                 400 Pa
+Alliuuh       0707 C757699-3  P Ag Ni              222 Pa
+A-39          0708 C9C8654-8    Fl Ni           A  313 Pa
+A-40          0804 C568798-8    Ag Ri              615 Pa
+A-41          0808 C310551-9  P Ni                 701 Pa
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Baine SECTOR: Gimbaine Sector
+#
+# Jump-routes
+#
+$1007 0609 -1 0 14
+$1005 0604 -1 0 14
+$1007 1107 0 0 14
+$1107 1205 0 0 14
+$1205 1005 0 0 14
+$1205 1504 0 0 14
+$1504 1402 0 0 14
+$1504 1703 1 0 14
+$1504 1704 1 0 14
+$1504 1505 0 0 14
+$1505 1406 0 0 14
+$1406 1407 0 0 14
+$1407 1107 0 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           0901 C300441-9    Ni Va              413 Pa
+B-2           0902 C97A254-B  Q Lo Ni Wa           325 Pa
+B-3           0903 C5555A9-7    Ag Ni              524 Pa
+B-4           0906 C7997BB-7                       802 Pa
+B-5           0907 C4137BA-A    Ic Na              503 Pa
+B-6           0908 E668305-5    Lo Ni              205 Pa
+B-7           1003 C87A553-C  P Ni Wa              413 Pa
+B-8           1005 A1407AD-E  R De Po              700 Pa
+B-9           1007 B351655-B    Ni Po              703 Pa
+B-10          1107 B485300-B    Lo Ni              205 Pa
+B-11          1108 C412643-9  P Ic Na Ni           201 Pa
+B-12          1110 C6A0234-6    De Lo Ni           604 Na
+B-13          1203 C231864-8  R Na Po              422 Pa
+B-14          1205 B533320-B    Lo Ni Po           514 Pa
+B-15          1206 C9B9AAA-9    Fl Hi           A  510 Pa
+B-16          1210 C310100-9    Lo Ni              500 Na
+B-17          1303 D641102-5  Q Lo Ni Po           904 Pa
+B-18          1306 C430643-5  P De Na Ni Po        614 Pa
+B-19          1307 C643438-9  P Ni Po              803 Pa
+B-20          1309 C576412-7  S Ni                 800 Na
+B-21          1310 C965667-7    Ag Ni Ri           205 Na
+B-22          1402 B998410-7    Ni                 403 Pa
+B-23          1404 D30186A-8  R Ic Na Va           401 Pa
+B-24          1405 C383556-8  P Ni                 915 Pa
+B-25          1406 B347100-9    Lo Ni              324 Pa
+B-26          1407 B79A641-8    Ni Wa              500 Pa
+B-27          1408 E443589-7    Ni Po              323 Na
+B-28          1409 C787685-8    Ag Ni Ri           614 Na
+B-29          1502 C9C4300-6    Fl Lo Ni        A  200 Pa
+B-30          1503 E382878-4    Ri              B  803 Na
+B-31          1504 BAA6665-7  P Fl Ni              904 Pa
+B-32          1505 B311554-9    Ic Ni              222 Pa
+B-33          1506 D567222-6  Q Lo Ni              215 Pa
+B-34          1510 E100468-9    Ni Va              604 Na
+B-35          1601 C000ABC-C  R As Hi Na           413 Pa
+B-36          1602 C567325-6    Lo Ni              422 Pa
+B-37          1604 E000888-8    As Na              120 Pa
+B-38          1608 C100166-A    Lo Ni Va           923 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Climbai SECTOR: Gimbaine Sector
+#
+# Jump-routes
+#
+$1703 1504 -1 0 14
+$1703 1704 0 0 14
+$1704 1504 -1 0 14
+$2308 2606 1 0 12
+$2304 2604 1 0 12
+$2304 2305 0 0 12
+$2305 2308 0 0 12
+$2308 2007 0 0 12
+$2007 1908 0 0 12
+$2308 2311 0 1 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1701 C464755-5    Ag Ri              602 Pa
+C-2           1703 B793200-8    Lo Ni              800 Pa
+C-3           1704 B350212-A    De Lo Ni Po        623 Pa
+C-4           1705 C9B5440-5    Fl Ni           A  613 Pa
+C-5           1706 C120851-C  R De Na Po           213 Pa
+C-6           1710 C512135-6    Ic Lo Ni           411 Ke
+C-7           1805 C210100-9    Lo Ni              512 Pa
+C-8           1808 E000846-4    As Na              603 Ke
+C-9           1810 C678505-A    Ag Ni              513 Ke
+C-10          1901 E669542-6    Ni                 513 Na
+C-11          1903 C3316A8-A    Na Ni Po           500 Na
+C-12          1904 B00077A-9    As Na           B  500 Na
+C-13          1907 D85A303-A    Lo Ni Wa           502 Ke
+C-14          1908 B676633-7    Ag Ni              903 Ke
+C-15          2001 D100877-4    Na Va           B  104 Na
+C-16          2007 B754422-7  H Ni                 731 Ke
+C-17          2008 C454489-7  H Ni                 600 Ke
+C-18          2101 C626666-4    Ni                 304 Na
+C-19          2102 C254001-9  S Lo Ni              602 Na
+C-20          2103 C120685-B    De Na Ni Po        404 Na
+C-21          2107 E210555-7    Ni                 913 Ke
+C-22          2109 C150225-6  J De Lo Ni Po        903 Ke
+C-23          2110 X200135-4  L Lo Va           R  904 Ke
+C-24          2201 C456720-4    Ag                 305 Na
+C-25          2202 C300885-6    Na Va              610 Na
+C-26          2205 CA8A348-6  J Lo Ni Wa           700 Ke
+C-27          2206 C346620-8    Ag Ni              401 Ke
+C-28          2209 C100421-C  H Ni Va              304 Ke
+C-29          2210 C100797-7    Na Va              901 Ke
+C-30          2301 C241447-6  S Ni Po              924 Na
+C-31          2304 A463435-E  H Ni                 704 Ke
+C-32          2305 B444621-9  H Ag Ni              613 Ke
+C-33          2306 D514447-6  H Ic Ni              325 Ke
+C-34          2308 B666663-7    Ag Ni Ri           104 Ke
+C-35          2402 E364673-6    Ag Ni Ri        B  504 Na
+C-36          2407 C000210-7    As Lo Ni           612 Ke
+C-37          2408 C849778-8                    B  202 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Dlimban SECTOR: Gimbaine Sector
+#
+# Jump-routes
+#
+$3003 2940 0 -1 10
+$3109 3107 0 0 12
+$3107 3004 0 0 12
+$3004 2604 0 0 12
+$2604 2606 0 0 12
+$2606 2308 -1 0 12
+$2604 2304 -1 0 12
+$3109 3211 0 1 12
+$3109 2811 0 1 12
+$3109 0210 1 0 12
+$3109 0208 1 0 12
+$3107 0204 1 0 12
+$3003 0105 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2502 D689677-7    Ni Ri           B  513 Na
+D-2           2503 C444865-5  S                    102 Na
+D-3           2506 C585797-8  H Ag Ri              513 Ke
+D-4           2507 C789114-5  L Lo Ni              622 Ke
+D-5           2508 D310558-7  H Ni                 503 Ke
+D-6           2510 C626331-5  J Lo Ni              704 Ke
+D-7           2601 B665777-5    Ag Ri           B  604 Na
+D-8           2604 BA9A569-9  H Ni Wa              804 Ke
+D-9           2605 C322300-A    Lo Ni Po           120 Ke
+D-10          2606 A000ADD-E  M As Hi Na           713 Ke
+D-11          2609 C453676-9    Ni Po           B  810 Na
+D-12          2610 C2308BA-9    De Na Po           103 Ke
+D-13          2701 C488778-4    Ag Ri           B  614 Na
+D-14          2702 C230314-B    De Lo Ni Po        622 Na
+D-15          2703 C8A4313-9    Fl Lo Ni           604 Na
+D-16          2705 C348A88-9    Hi In              801 Ke
+D-17          2706 X503113-4  L Ic Lo Va        R  403 Ke
+D-18          2802 C7B7535-8  S Fl Ni           A  524 Na
+D-19          2805 C683110-9  L Lo Ni              804 Ke
+D-20          2809 X677101-4  L Lo              R  901 Ke
+D-21          2810 D586996-7    Hi                 103 Ke
+D-22          2903 C473488-8    Ni                 101 Na
+D-23          2910 C655AAF-B    Hi                 804 Ke
+D-24          3002 C856666-8    Ag Ni              510 Na
+Dlonne        3003 E8A3775-5    Fl              B  301 Na
+D-26          3004 BAD4232-B  J Fl Lo Ni           303 Ke
+D-27          3005 C335866-6  K                    822 Ke
+D-28          3007 C462556-7    Ni                 813 Ke
+D-29          3010 C8B3547-9  H Fl Ni           A  600 Ke
+D-30          3102 C738AEF-D  S Hi In              105 Na
+D-31          3104 C150887-8    De Po              203 Ke
+D-32          3105 C639343-A    Lo Ni              402 Ke
+D-33          3107 B5728A8-5  K                    603 Ke
+D-34          3108 D441310-3  J Lo Ni Po           801 Ke
+Durgane       3109 A0005AF-G    As Ni Cx           914 Ke
+D-36          3203 C454431-7    Ni                 312 Ke
+D-37          3204 C898500-7  H Ag Ni              914 Ke
+D-38          3209 C53359A-6  H Ni Po              900 Ke
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Embaine SECTOR: Gimbaine Sector
+#
+# Jump-routes
+#
+$0711 0609 0 -1 14
+$0711 0811 0 0 14
+$0716 0914 1 0 12
+$0816 1017 1 0 12
+$0816 0515 0 0 12
+$0515 0415 0 0 12
+$0415 0317 0 0 12
+$0317 0120 0 0 12
+$0120 0119 0 0 12
+$0716 0618 0 0 12
+$0618 0720 0 0 12
+$0618 0520 0 0 12
+$0520 0420 0 0 12
+$0420 0220 0 0 12
+$0220 0120 0 0 12
+$0120 0122 0 1 12
+$0420 0422 0 1 12
+$0720 0923 1 1 12
+$0813 1116 1 0 2
+$0813 0711 0 0 2
+$0711 0707 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0111 D350300-6  S De Lo Ni Po        312 Na
+E-2           0119 B847245-A    Lo Ni              813 Ke
+E-3           0120 A354234-B  J Lo Ni              703 Ke
+E-4           0212 E44499A-8    Hi In              820 Na
+E-5           0214 C787754-4    Ag Ri              600 Ke
+E-6           0216 E7B3756-8    Fl              A  700 Na
+E-7           0217 C562000-5  L Ba Lo Ni           203 Ke
+E-8           0220 B482466-A  H Ni                 703 Ke
+E-9           0311 C665794-5  S Ag Ri              104 Na
+E-10          0313 E97A786-4    Wa                 400 Na
+E-11          0315 C524313-A    Lo Ni              714 Ke
+E-12          0316 D549421-7    Ni                 833 Ke
+E-13          0317 A8A35AC-A  H Fl Ni              523 Ke
+E-14          0318 CAA4521-9  H Fl Ni              513 Ke
+E-15          0412 C66968C-8    Ni Ri              212 Na
+E-16          0413 E403544-6    Ic Ni Va           920 Na
+E-17          0415 A263266-B  J Lo Ni              510 Ke
+E-18          0419 C8B47BD-4  H Fl              A  922 Ke
+E-19          0420 AAD3555-A  H Fl Ni              522 Ke
+E-20          0515 A244444-B    Ni                 604 Ke
+E-21          0517 C898402-7  H Ni                 405 Ke
+E-22          0519 C54149D-6  H Ni Po              604 Ke
+E-23          0520 A685734-8  H Ag                 623 Ke
+E-24          0613 E98A437-4    Ni Wa              214 Na
+E-25          0614 C9E4430-A    Fl Ni              905 Ke
+E-26          0618 B521453-A    Ni Po              223 Ke
+Waigga        0711 B884433-B  Q Ni                 201 Pa
+E-28          0712 E574875-3                    B  804 Na
+E-29          0715 C8787BA-8    Ag                 702 Ke
+E-30          0716 A99A8B6-B  K Wa                 712 Ke
+E-31          0718 C435646-8  H Ni                 804 Ke
+E-32          0720 A436441-F  H Ni                 214 Ke
+Eakaine       0811 A000977-G  N As Hi Na Cx     B  803 Na
+Errainna      0813 E41548B-5    Ic Ni              213 Na
+E-35          0816 B74559A-9  H Ag Ni              600 Ke
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Flimbar SECTOR: Gimbaine Sector
+#
+# Jump-routes
+#
+$1614 1815 1 0 12
+$1614 1512 0 0 12
+$1614 1413 0 0 12
+$1614 1415 0 0 12
+$1415 1216 0 0 12
+$1216 1116 0 0 12
+$1116 0914 0 0 12
+$0914 0716 -1 0 12
+$1216 1017 0 0 12
+$1017 0816 -1 0 12
+$1319 1421 0 1 2
+$1319 1116 0 0 2
+$1116 0813 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0914 B310447-9  H Ni                 304 Ke
+F-2           0915 C250347-6    De Lo Ni Po        613 Ke
+F-3           1012 C898523-7    Ag Ni              422 Ke
+F-4           1014 C66558A-9    Ag Ni              800 Ke
+F-5           1017 A100788-C    Na Va              900 Ke
+F-6           1020 D531468-6    Ni Po              314 Ke
+Chaihai       1116 A448537-A    Ag Ni              102 Ke
+F-8           1118 E778210-3    Lo Ni              810 Ke
+F-9           1120 D4756AC-7  H Ag Ni              314 Ke
+F-10          1211 C5A6543-9    Fl Ni              500 Ke
+F-11          1212 C98A673-5    Ni Ri Wa        B  901 Na
+F-12          1213 C210647-6  H Na Ni              201 Ke
+F-13          1214 E340355-7    De Lo Ni Po        200 Ke
+F-14          1215 C460632-6  H De Ni              804 Ke
+F-15          1216 B302344-8  J Ic Lo Ni Va        504 Ke
+F-16          1217 C000434-B  H As Ni              412 Ke
+F-17          1219 D697432-7  H Ni                 704 Ke
+F-18          1220 E510341-6    Lo Ni              214 Ke
+F-19          1313 B526775-B                    B  801 Na
+F-20          1314 C331999-A    Hi In Na Po        305 Ke
+Flainerr      1319 C527467-7    Ni                 623 Ke
+F-22          1412 E79A131-7  L Lo Ni Wa           403 Ke
+F-23          1413 A878757-C  H Ag                 234 Ke
+F-24          1415 B8A45AB-A  H Fl Ni              310 Ke
+F-25          1416 E000122-7  L As Lo Ni           104 Ke
+F-26          1417 D668641-1  H Ag Ni Ri           212 Ke
+F-27          1418 C554983-8  K Hi                 324 Ke
+F-28          1512 A87A255-F    Lo Ni Wa           414 Ke
+F-29          1513 C3019EC-8  K Hi Ic Na Va        201 Ke
+F-30          1516 E340644-4    De Ni Po           500 Ke
+F-31          1518 CA7A334-A    Lo Ni Wa           903 Ke
+F-32          1519 CA6A110-9  L Lo Ni Wa           203 Ke
+F-33          1611 C877677-3    Ag Ni           B  501 Na
+F-34          1612 C32659B-6    Ni                 901 Ke
+F-35          1614 B664322-6    Lo Ni              103 Ke
+F-36          1616 C9D6775-5    Fl              B  303 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Glimbar SECTOR: Gimbaine Sector
+#
+# Jump-routes
+#
+$2311 2308 0 -1 12
+$2311 2211 0 0 12
+$2311 2313 0 0 12
+$2311 2612 1 0 12
+$2419 2519 1 0 12
+$2315 2613 1 0 12
+$2315 2313 0 0 12
+$2419 2118 0 0 12
+$2118 1917 0 0 12
+$1917 1818 0 0 12
+$1917 1815 0 0 12
+$1815 1915 0 0 12
+$1915 2013 0 0 12
+$2013 2211 0 0 12
+$2315 2215 0 0 12
+$2215 1917 0 0 12
+$2315 2317 0 0 12
+$2317 2418 0 0 12
+$2418 2419 0 0 12
+$2419 2021 0 1 12
+$1818 1921 0 1 12
+$1815 1614 -1 0 12
+$2419 2523 1 1 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1711 C100310-9  J Lo Ni Va           723 Ke
+G-2           1712 C656866-5                       204 Ke
+G-3           1714 E438575-5    Ni              B  211 Na
+G-4           1716 CA69732-8                       705 Ke
+G-5           1717 A343A76-F    Hi In Po        B  500 Na
+G-6           1813 E796221-6    Lo Ni              203 Ke
+G-7           1815 B535443-C    Ni                 214 Ke
+G-8           1818 B724345-B  J Lo Ni              100 Ke
+G-9           1819 B467778-9    Ag Ri           B  303 Na
+G-10          1820 E757766-1    Ag                 503 Ke
+G-11          1911 E443145-8  L Lo Ni Po           302 Ke
+G-12          1915 A420200-D    De Lo Ni Po        603 Ke
+G-13          1917 B0008CC-B    As Na              513 Ke
+G-14          1918 D88A98A-9  K Hi Wa              104 Ke
+G-15          1919 E977877-5                    B  213 Na
+G-16          2013 B000365-9  J As Lo Ni           604 Ke
+G-17          2016 E310323-4    Lo Ni              904 Ke
+G-18          2019 C526732-8  H                    814 Ke
+G-19          2020 C304767-6    Ic Va              903 Ke
+G-20          2114 C330100-C  L De Lo Ni Po        313 Ke
+G-21          2118 B267400-C    Ni                 712 Ke
+G-22          2119 CA7A878-7    Wa              B  213 Na
+G-23          2211 B526652-A  H Ni                 302 Ke
+G-24          2212 C120A85-A    De Hi In Na Po     202 Ke
+G-25          2214 D567210-5  J Lo Ni              403 Ke
+G-26          2215 B200264-B  J Lo Ni Va           104 Ke
+G-27          2217 B22057A-D    De Ni Po        B  714 Na
+G-28          2220 C333445-6  H Ni Po              500 Ke
+G-29          2311 A500003-E  L Lo Ni Va           204 Ke
+G-30          2313 A528763-C  H                    704 Ke
+G-31          2315 B7A0661-A  H De Ni              602 Ke
+G-32          2316 D878748-2    Ag                 803 Ke
+G-33          2317 B9B9632-B    Fl Ni           A  205 Ke
+G-34          2319 D6A0632-5  H De Ni              124 Ke
+G-35          2412 D77A361-8    Lo Ni Wa           600 Ke
+G-36          2414 C766642-7    Ag Ni Ri           403 Ke
+G-37          2418 B464211-C  J Lo Ni              231 Ke
+G-38          2419 BAB4A64-F    Fl Hi           A  103 Ke
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Himbain SECTOR: Gimbaine Sector
+#
+# Jump-routes
+#
+$2612 2311 -1 0 12
+$3211 3109 0 -1 12
+$2811 3109 0 -1 12
+$2811 2612 0 0 12
+$3211 0211 1 0 12
+$3115 0215 1 0 12
+$3118 0319 1 0 12
+$3118 3017 0 0 12
+$3017 3115 0 0 12
+$3115 3212 0 0 12
+$3212 3211 0 0 12
+$3211 2811 0 0 12
+$2612 2613 0 0 12
+$2613 2714 0 0 12
+$2714 3115 0 0 12
+$3017 2919 0 0 12
+$2919 2819 0 0 12
+$2819 2519 0 0 12
+$2519 2419 -1 0 12
+$2613 2315 -1 0 12
+$2519 2621 0 1 12
+$2819 2622 0 1 12
+$2919 3021 0 1 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2515 C334630-8    Ni                 802 Ke
+H-2           2517 B557476-A    Ni              B  104 Na
+H-3           2518 X610100-2    Lo              R  201 Ke
+H-4           2519 B2009ED-A    Hi Na Va           224 Ke
+H-5           2520 E446326-6    Lo Ni              515 Ke
+H-6           2611 D7749EE-5  K Hi In              213 Ke
+H-7           2612 A878469-D  H Ni                 402 Ke
+H-8           2613 B2439A8-A  K Hi In Po           704 Ke
+H-9           2614 C43677B-9                    B  913 Na
+H-10          2616 C378557-9  H Ag Ni              324 Ke
+H-11          2620 C652647-8    Ni Po              403 Ke
+H-12          2712 D89A687-5  H Ni Wa              604 Ke
+H-13          2713 C666230-9  J Lo Ni              322 Ke
+H-14          2714 BAA8488-9  H Fl Ni              204 Ke
+H-15          2719 C579004-6    Lo Ni              614 Ke
+H-16          2720 X8588BC-0                    R  724 Ke
+H-17          2811 A9E769E-A    Fl Ni              104 Ke
+H-18          2812 B62A67A-A    Ni Wa           B  833 Na
+H-19          2819 A777510-D  H Ag Ni              304 Ke
+H-20          2912 C6447BC-8    Ag                 824 Ke
+H-21          2913 C355899-6  K                    424 Ke
+H-22          2919 B3458BG-6  K                    700 Ke
+H-23          2920 E260866-3    De Ri              703 Ke
+H-24          3011 C100234-C  J Lo Ni Va           833 Ke
+H-25          3013 B410777-9    Na              B  513 Na
+H-26          3017 B300441-B  H Ni Va              731 Ke
+H-27          3020 E9B3244-3    Fl Lo Ni        A  704 Ke
+H-28          3112 C444245-9    Lo Ni              113 Ke
+H-29          3115 B444336-A  J Lo Ni              900 Ke
+H-30          3116 C999351-9  J Lo Ni              203 Ke
+H-31          3117 C574320-7    Lo Ni              304 Ke
+H-32          3118 A636366-B  J Lo Ni              802 Ke
+H-33          3119 C887778-7    Ag Ri           B  302 Na
+H-34          3211 B370A8A-B  M De Hi In           414 Ke
+H-35          3212 B436635-A    Ni                 504 Ke
+H-36          3213 C535545-9    Ni                 805 Ke
+H-37          3215 C89A365-9    Lo Ni Wa           904 Ke
+H-38          3217 C334632-7    Ni                 203 Ke
+H-39          3219 E210561-7    Ni                 614 Ke
+H-40          3220 BA8A775-7    Ri Wa           B  121 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Imbaine SECTOR: Gimbaine Sector
+#
+# Jump-routes
+#
+$0122 0120 0 -1 12
+$0422 0420 0 -1 12
+$0422 0323 0 0 12
+$0323 0122 0 0 12
+$0323 0325 0 0 12
+$0325 0427 0 0 12
+$0427 0428 0 0 12
+$0428 0828 0 0 12
+$0428 0330 0 0 12
+$0330 0227 0 0 12
+$0428 0127 0 0 12
+$0227 0225 0 0 12
+$0125 0225 0 0 12
+$0225 0325 0 0 12
+$0330 0331 0 1 12
+$0828 0831 0 1 12
+$0828 1227 1 0 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0122 B431200-B    Lo Ni Po           403 Ke
+I-2           0124 X587698-1    Ag Ri           R  200 Ke
+I-3           0125 BAA2652-7  H Fl Ni              204 Ke
+I-4           0127 BAB5433-B  H Fl Ni           A  903 Ke
+I-5           0128 C120522-9  H De Ni Po           122 Ke
+I-6           0223 C68A6BE-A    Ni Wa              822 Ke
+I-7           0224 C441520-5  H Ni Po              302 Ke
+I-8           0225 B766401-8    Ni                 813 Ke
+I-9           0226 A987564-8    Ag Ni              304 Ke
+I-10          0227 A414768-A    Ic                 830 Ke
+I-11          0229 DA9A330-6  J Lo Ni Wa           803 Ke
+I-12          0230 X542452-4    Po              R  605 Ke
+I-13          0323 A745757-A  H Ag                 602 Ke
+I-14          0324 B481577-8    Ni              B  305 Na
+I-15          0325 A77856A-8  H Ag Ni              400 Ke
+I-16          0326 E869137-7  L Lo Ni              724 Ke
+I-17          0329 CAA6448-6    Fl Ni              202 Ke
+I-18          0330 B542346-B  J Lo Ni Po           413 Ke
+I-19          0422 B522100-C  L Lo Ni Po           602 Ke
+I-20          0424 X563463-2                    R  402 Ke
+I-21          0425 C000334-A    As Lo Ni           923 Ke
+I-22          0427 B898500-8    Ag Ni              104 Ke
+I-23          0428 B430055-D  L De Lo Ni Po        111 Ke
+I-24          0429 B434778-7                    B  904 Na
+I-25          0430 X493899-0                    R  815 Ke
+I-26          0525 C797447-4    Ni                 203 Ke
+I-27          0527 BAA3273-8    Fl Lo Ni        B  901 Na
+I-28          0530 C510ACC-A    Hi Na              311 Ke
+I-29          0624 C773663-7    Ni                 723 Ke
+I-30          0625 C687567-6    Ag Ni              524 Ke
+I-31          0626 C6559A8-A    Hi                 920 Ke
+I-32          0721 C000987-C  K As Hi Na           913 Ke
+I-33          0723 C5587B9-8    Ag                 502 Ke
+I-34          0725 C666789-5    Ag Ri              814 Ke
+I-35          0727 D652534-6  H Ni Po              404 Ke
+I-36          0821 C544579-9    Ag Ni           B  712 Na
+I-37          0825 C877589-8    Ag Ni              223 Ke
+I-38          0826 C76A8A6-8    Wa                 603 Ke
+I-39          0828 B352857-B  K Po                 504 Ke
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jainee SECTOR: Gimbaine Sector
+#
+# Jump-routes
+#
+$0923 0720 -1 -1 12
+$1227 0828 -1 0 12
+$1227 1329 0 0 12
+$1329 1629 0 0 12
+$1629 1729 1 0 12
+$1629 1533 0 1 12
+$1329 1332 0 1 12
+$1421 1723 1 0 2
+$1421 1319 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0922 C886641-8    Ag Ni Ri           522 Ke
+J-2           0923 B301758-D  H Ic Na Va           602 Ke
+J-3           0927 C686232-8  J Lo Ni              614 Ke
+J-4           0928 C9D0344-7    De Lo Ni           514 Ke
+J-5           0930 C58936A-9    Lo Ni              900 Ke
+J-6           1024 B766579-A    Ag Ni           B  903 Na
+J-7           1025 C597942-8    Hi In              224 Ke
+J-8           1026 C472698-7    Ni                 403 Ke
+J-9           1028 C88489B-4  K Ri                 103 Ke
+J-10          1029 C6296B9-7  H Ni                 500 Ke
+J-11          1121 C130874-A    De Na Po        B  701 Na
+J-12          1123 C567533-4    Ag Ni              920 Ke
+J-13          1127 E422433-9    Ni Po              903 Ke
+J-14          1128 E351653-5    Ni Po              804 Ke
+J-15          1129 C754556-5  H Ag Ni              703 Ke
+J-16          1221 C65278C-7    Po                 802 Ke
+J-17          1224 D457246-4    Lo Ni              205 Ke
+J-18          1225 C52A999-D    Hi In Wa           414 Ke
+J-19          1227 B859789-8                       103 Ke
+J-20          1228 C763655-9    Ni Ri              501 Ke
+J-21          1229 B200676-B    Na Ni Va        B  404 Na
+J-22          1323 C575212-4  J Lo Ni              101 Ke
+J-23          1326 C566766-3  H Ag Ri              415 Ke
+J-24          1327 C5839C8-A    Hi                 220 Ke
+J-25          1328 C100ABD-B    Hi Na Va           314 Ke
+J-26          1329 B755400-7  H Ni                 902 Ke
+J-27          1330 X567889-0    Ri              R  914 Ke
+Juuivva       1421 C645773-4    Ag              B  201 Na
+J-29          1423 C533557-7    Ni Po              900 Ke
+J-30          1424 E9B0677-6    De Ni           A  610 Ke
+J-31          1425 C25056B-8  H De Ni Po           102 Ke
+J-32          1426 C424A83-B    Hi In              203 Ke
+J-33          1430 E8A3554-7    Fl Ni              114 Ke
+J-34          1526 C200425-9  H Ni Va              504 Ke
+J-35          1527 C875ADH-5    Hi In           A  512 Ke
+J-36          1528 C445769-5  H Ag                 415 Ke
+J-37          1529 CAA4476-5    Fl Ni           B  414 Na
+J-38          1622 C8636AE-5  H Ni                 914 Ke
+J-39          1628 C300420-9  H Ni Va              704 Ke
+J-40          1629 A959166-D  L Lo Ni              103 Ke
+J-41          1630 C546673-8    Ag Ni           B  804 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Klimbaer SECTOR: Gimbaine Sector
+#
+# Jump-routes
+#
+$2021 2419 0 -1 12
+$2021 1921 0 0 12
+$1921 1722 0 0 12
+$1921 1818 0 -1 12
+$1729 1629 -1 0 12
+$1722 1823 0 0 12
+$1823 2021 0 0 12
+$1823 1727 0 0 12
+$1727 1729 0 0 12
+$1729 1930 0 0 12
+$1930 2230 0 0 12
+$2230 2530 1 0 12
+$1930 1932 0 1 12
+$2426 2523 1 0 12
+$2426 2530 1 0 12
+$2129 2332 0 1 2
+$2129 1926 0 0 2
+$1926 1723 0 0 2
+$1723 1421 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1722 AA8A468-D    Ni Wa              724 Ke
+Teehnias      1723 E989443-8    Ni                 603 Ke
+K-3           1727 B786621-5  H Ag Ni              704 Ke
+K-4           1728 B000204-A    As Lo Ni           623 Ke
+K-5           1729 A646412-8  H Ni                 805 Ke
+K-6           1821 B5868BE-5  K                    300 Ke
+K-7           1823 A256103-A  L Lo Ni              615 Ke
+K-8           1828 C100730-B  H Na Va              822 Ke
+K-9           1829 X472130-4  L Lo              R  623 Ke
+K-10          1830 E441678-5    Ni Po           B  900 Na
+K-11          1921 B510655-C  H Na Ni              303 Ke
+K-12          1925 C3657AA-4    Ag                 510 Ke
+Yaghia        1926 C446410-6  H Ni                 424 Ke
+K-14          1927 B100574-D    Ni Va           B  323 Na
+K-15          1930 B8A956A-B  H Fl Ni              804 Ke
+K-16          2021 B537234-7  J Lo Ni              921 Ke
+K-17          2022 B72A777-D    Wa              B  413 Na
+K-18          2023 CAC8552-9  H Fl Ni           A  613 Ke
+K-19          2027 C300857-9  K Na Va              500 Ke
+K-20          2029 E256323-5    Lo Ni              722 Ke
+K-21          2122 C788778-6    Ag Ri           B  803 Na
+K-22          2126 C2106BC-A  H Na Ni              303 Ke
+K-23          2127 C300572-A    Ni Va           B  700 Na
+Kainell       2129 CA9A452-B  H Ni Wa              101 Ke
+K-25          2130 C363430-9    Ni                 104 Ke
+K-26          2222 E435457-6    Ni                 802 Ke
+K-27          2225 C656655-4    Ag Ni              612 Ke
+K-28          2226 C455965-8  K Hi                 113 Ke
+K-29          2230 B200210-A    Lo Ni Va           903 Ke
+K-30          2322 E566766-5    Ag Ri              104 Ke
+K-31          2325 C345311-A    Lo Ni              514 Ke
+K-32          2327 C65A100-7  L Lo Ni Wa           505 Ke
+K-33          2328 C878300-9    Lo Ni              414 Ke
+K-34          2329 C889845-9    Ri                 712 Ke
+K-35          2422 C445522-9  H Ag Ni              602 Ke
+K-36          2426 A677533-8  H Ag Ni              404 Ke
+K-37          2427 C898302-A    Lo Ni              204 Ke
+K-38          2430 A73827A-E    Lo Ni           B  931 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Limbair SECTOR: Gimbaine Sector
+#
+# Jump-routes
+#
+$2530 2230 -1 0 12
+$2621 2519 0 -1 12
+$2622 2819 0 -1 12
+$2622 2523 0 0 12
+$2622 2621 0 0 12
+$2523 2419 -1 -1 12
+$2523 2426 -1 0 12
+$2530 2426 -1 0 12
+$2721 3021 0 0 12
+$3021 2919 0 -1 12
+$3021 3023 0 0 12
+$3023 2926 0 0 12
+$2926 2826 0 0 12
+$3023 3126 0 0 12
+$3126 0226 1 0 12
+$2926 3126 0 0 12
+$3021 0121 1 0 12
+$2530 2532 0 1 12
+$2530 2931 0 1 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2521 C342765-9    Po                 703 Ke
+L-2           2522 E6587A9-1    Ag                 304 Ke
+L-3           2523 A637220-B    Lo Ni              102 Ke
+L-4           2527 C1009C7-8    Hi Na Va           324 Ke
+L-5           2529 E200432-8    Ni Va              504 Ke
+L-6           2530 B270389-8    De Lo Ni           505 Ke
+L-7           2621 A8959DC-B  K Hi In              812 Ke
+L-8           2622 B445205-C  J Lo Ni              504 Ke
+L-9           2625 C796642-5  H Ag Ni              720 Ke
+L-10          2626 E554101-6  L Lo Ni              115 Ke
+L-11          2628 C4578AC-8                       304 Ke
+L-12          2721 A754610-8  H Ag Ni              704 Ke
+L-13          2725 C694589-8    Ag Ni              624 Ke
+L-14          2726 D9C9301-7    Fl Lo Ni        A  302 Ke
+L-15          2728 C6B3772-7  H Fl              A  203 Ke
+L-16          2729 C533875-8    Na Po           B  724 Na
+L-17          2822 E437666-8    Ni                 514 Ke
+L-18          2824 C56879C-5  H Ag Ri              812 Ke
+L-19          2825 D8A546A-4  H Fl Ni              115 Ke
+L-20          2826 B331898-B  K Na Po              900 Ke
+L-21          2827 E2109CB-7    Hi Na              104 Ke
+L-22          2921 B569879-B    Ri              B  402 Na
+L-23          2925 X000646-1    As              R  204 Ke
+L-24          2926 B100100-E  L Lo Ni Va           323 Ke
+L-25          2927 D564333-6  J Lo Ni              204 Ke
+L-26          2929 C25288B-8    Po                 702 Ke
+L-27          3021 A674553-A  H Ag Ni              924 Ke
+L-28          3023 B848723-9  H Ag                 913 Ke
+L-29          3025 X9B4577-3    Fl              R  313 Ke
+L-30          3026 CA9A96B-A    Hi In Wa           500 Ke
+L-31          3028 C100233-8  J Lo Ni Va           313 Ke
+L-32          3029 B571374-6    Lo Ni           B  505 Na
+L-33          3030 C310300-A    Lo Ni              402 Ke
+L-34          3121 C669222-9  J Lo Ni              302 Ke
+L-35          3122 D420456-6  H De Ni Po           104 Ke
+L-36          3124 C310510-9  H Ni                 204 Ke
+L-37          3126 A756737-8    Ag                 204 Ke
+L-38          3128 C322345-B  J Lo Ni Po           804 Ke
+L-39          3227 E564532-2    Ag Ni              224 Ke
+L-40          3228 D381111-3  L Lo Ni              602 Ke
+L-41          3229 E454686-7    Ag Ni              520 Ke
+L-42          3230 B645978-C    Hi In           B  711 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Mibare SECTOR: Gimbaine Sector
+#
+# Jump-routes
+#
+$0331 0330 0 -1 12
+$0331 0431 0 0 12
+$0431 0531 0 0 12
+$0531 0831 0 0 12
+$0331 0232 0 0 12
+$0831 0828 0 -1 12
+$0831 0932 1 0 12
+$0232 0235 0 0 12
+$0431 0633 0 0 12
+$0633 0736 0 0 12
+$0736 0838 0 0 12
+$0838 0440 0 0 12
+$0440 0140 0 0 12
+$0633 0831 0 0 12
+$0838 1038 1 0 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0132 E555AEH-6    Hi              A  813 Ke
+M-2           0136 X326200-2    Lo              R  925 Ke
+M-3           0137 X524100-0  L Lo              R  500 Ke
+M-4           0138 C688551-8    Ag Ni              213 Ke
+Morba         0140 B110AAA-G  M Hi Na Cx           114 Ke
+M-6           0232 A565444-C    Ni                 710 Ke
+M-7           0233 C220000-7  L Ba De Lo Ni Po     914 Ke
+M-8           0235 B5A0784-B    De                 104 Ke
+M-9           0236 C000427-9    As Ni              904 Ke
+M-10          0240 X576662-0    Ag              R  214 Ke
+M-11          0331 B337597-C  H Ni                 304 Ke
+M-12          0333 C532667-8  H Na Ni Po           205 Ke
+M-13          0334 E795887-3                       323 Ke
+M-14          0337 C8A247C-A    Fl Ni           B  303 Na
+M-15          0338 C425100-B  L Lo Ni              233 Ke
+M-16          0431 B556334-A  J Lo Ni              500 Ke
+M-17          0434 C30286A-A  K Ic Na Va           822 Ke
+M-18          0435 C669244-6  J Lo Ni              125 Ke
+M-19          0440 B510885-9  K Na                 714 Ke
+M-20          0531 A200400-D    Ni Va              405 Ke
+M-21          0533 C6A3A67-9  M Fl Hi              814 Ke
+M-22          0534 D513789-2  H Ic Na              201 Ke
+M-23          0535 C240302-8    De Lo Ni Po        124 Ke
+M-24          0538 C524747-8                       304 Ke
+M-25          0539 C8B7411-5    Fl Ni           A  104 Ke
+M-26          0540 C536697-4    Ni                 412 Ke
+M-27          0631 C5559AB-6    Hi                 404 Ke
+M-28          0633 B573247-7  J Lo Ni              501 Ke
+M-29          0634 C352436-8  H Ni Po              102 Ke
+M-30          0636 C310400-B    Ni                 201 Ke
+M-31          0637 E326100-9  L Lo Ni              105 Ke
+M-32          0638 C462567-7  H Ni                 314 Ke
+M-33          0639 C632866-9  K Na Po              724 Ke
+M-34          0731 C253247-7  J Lo Ni Po           620 Ke
+M-35          0732 C467667-9    Ag Ni Ri           504 Ke
+M-36          0734 C627111-5  L Lo Ni              813 Ke
+M-37          0735 C51297A-7    Hi Ic Na        B  614 Na
+M-38          0736 A957300-E  J Lo Ni              402 Ke
+M-39          0737 C200767-7  H Na Va              900 Ke
+M-40          0831 B553467-9  H Ni Po              912 Ke
+M-41          0838 B200989-C  K Hi Na Va           104 Ke
+M-42          0840 C130455-9    De Ni Po           600 Ke
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nimbain SECTOR: Gimbaine Sector
+#
+# Jump-routes
+#
+$0932 0831 -1 0 12
+$1533 1629 0 -1 12
+$1332 1329 0 -1 12
+$1038 0838 -1 0 12
+$1038 1139 0 0 12
+$0932 1032 0 0 12
+$1032 1332 0 0 12
+$1332 1533 0 0 12
+$1533 1435 0 0 12
+$1435 1638 0 0 12
+$1435 1135 0 0 12
+$1032 1135 0 0 12
+$1135 1137 0 0 12
+$1137 1036 0 0 12
+$1036 1038 0 0 12
+$1139 1137 0 0 12
+$1036 1135 0 0 12
+$1638 2037 1 0 12
+$1533 1735 1 0 12
+$1435 1737 1 0 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0931 C98755A-5  H Ag Ni              224 Ke
+N-2           0932 A4649DF-9    Hi                 200 Ke
+N-3           0933 D735576-6    Ni              B  803 Na
+N-4           0936 C56677A-7    Ag Ri           B  701 Na
+N-5           0938 CA7A7BE-8  H Wa                 722 Ke
+N-6           1031 C79A7BA-6  H Wa                 904 Ke
+N-7           1032 B54749A-B    Ni                 913 Ke
+N-8           1034 E986586-4    Ag Ni              423 Ke
+N-9           1035 C563545-6    Ni                 104 Ke
+N-10          1036 B434001-A  L Lo Ni              301 Ke
+N-11          1038 B638698-B  H Ni                 213 Ke
+N-12          1132 C554420-5  H Ni                 400 Ke
+N-13          1135 A968587-8  H Ag Ni              615 Ke
+N-14          1137 A699543-C    Ni                 214 Ke
+N-15          1139 B796110-B  L Lo Ni              204 Ke
+N-16          1140 C856533-6    Ag Ni              314 Ke
+N-17          1231 C787645-4    Ag Ni Ri           722 Ke
+N-18          1233 C340454-8    De Ni Po           203 Ke
+N-19          1234 E537564-3    Ni                 612 Ke
+N-20          1235 C967000-5  L Ba Lo Ni           520 Ke
+N-21          1239 C528446-A  H Ni                 302 Ke
+N-22          1332 B432543-8    Ni Po              913 Ke
+N-23          1336 D547899-5                       102 Ke
+N-24          1337 C555795-5  H Ag                 113 Ke
+N-25          1338 X362784-0    Ri              R  313 Ke
+N-26          1339 E57659D-2    Ag Ni              414 Ke
+N-27          1433 C552102-5  L Lo Ni Po           504 Ke
+N-28          1435 A768662-8    Ag Ni Ri           214 Ke
+N-29          1438 C78679D-6    Ag Ri              704 Ke
+N-30          1531 C6636AF-3    Ni                 203 Ke
+N-31          1533 A444733-D    Ag                 911 Ke
+N-32          1534 C97A334-A  J Lo Ni Wa           910 Ke
+N-33          1536 C856155-A  L Lo Ni              103 Ke
+N-34          1538 E95688C-2                       123 Ke
+N-35          1539 C589843-6  K Ri                 804 Ke
+N-36          1540 C878644-8  H Ag Ni              224 Ke
+N-37          1632 C100253-B    Lo Ni Va           904 Ke
+N-38          1634 C59A6A6-6    Ni Wa              713 Ke
+N-39          1638 B557535-9    Ag Ni              703 Ke
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Obaine SECTOR: Gimbaine Sector
+#
+# Jump-routes
+#
+$1932 1930 0 -1 12
+$2037 1638 -1 0 12
+$2037 1740 0 0 12
+$2037 2040 0 0 12
+$2037 1935 0 0 12
+$1935 1932 0 0 12
+$2037 1735 0 0 12
+$1735 1533 -1 0 12
+$2037 1737 0 0 12
+$1737 1435 -1 0 12
+$2332 2734 1 0 2
+$2332 2129 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1731 C68A230-7    Lo Ni Wa           810 Ke
+O-2           1734 C100996-9  K Hi Na Va           901 Ke
+O-3           1735 B77A783-A    Wa                 504 Ke
+O-4           1736 C629300-B  J Lo Ni              203 Ke
+O-5           1737 B444530-A  H Ag Ni              100 Ke
+O-6           1738 D575867-5  K                    205 Ke
+O-7           1740 B737054-8  L Lo Ni              102 Ke
+O-8           1831 C243000-9  L Ba Lo Ni Po        321 Ke
+O-9           1832 A8B367A-B    Fl Ni           A  720 Ke
+O-10          1833 C341322-A    Lo Ni Po           403 Ke
+O-11          1834 X78A746-3    Ri Wa           R  805 Ke
+O-12          1835 C779556-B    Ni                 313 Ke
+O-13          1838 D150445-8    De Ni Po           404 Ke
+O-14          1839 C773434-4  H Ni                 904 Ke
+O-15          1840 C9D0510-9  H De Ni              113 Ke
+O-16          1932 A895555-B    Ag Ni              813 Ke
+O-17          1933 E372364-8    Lo Ni              600 Ke
+O-18          1934 C411761-9    Ic Na              624 Ke
+O-19          1935 B531561-9  H Ni Po              903 Ke
+O-20          1936 C546763-3    Ag                 201 Ke
+O-21          1938 D638442-7    Ni                 901 Ke
+O-22          2032 C785542-4    Ag Ni              501 Ke
+O-23          2034 E253100-5  L Lo Ni Po           404 Ke
+O-24          2035 C77867B-4    Ag Ni           B  702 Na
+O-25          2036 E310366-8    Lo Ni              800 Ke
+Obramair      2037 B83AA59-G  M Hi In Wa Cx        102 Ke
+O-27          2038 C546449-4  H Ni                 101 Ke
+O-28          2040 B562523-6  H Ni                 803 Ke
+O-29          2131 E547635-6    Ag Ni              905 Ke
+O-30          2132 C665337-5    Lo Ni              314 Ke
+O-31          2133 E402542-8    Ic Ni Va           300 Ke
+O-32          2138 C210956-A  K Hi Na              622 Ke
+O-33          2140 E325654-6    Ni                 313 Ke
+O-34          2235 D666134-7  L Lo Ni              804 Ke
+Onnkian       2332 E100ABB-C    Hi Na Va           612 Ke
+O-36          2334 C858300-5    Lo Ni              102 Ke
+O-37          2335 C2515AC-6  H Ni Po              102 Ke
+O-38          2336 B454478-7    Ni              B  204 Na
+O-39          2337 C6548CD-7  K                    823 Ke
+O-40          2338 B667878-6    Ri              B  103 Na
+O-41          2340 D544677-4    Ag Ni           B  504 Na
+O-42          2437 E6A6689-2    Fl Ni              310 Ke
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Phimba SECTOR: Gimbaine Sector
+#
+# Jump-routes
+#
+$2532 2530 0 -1 12
+$2532 2734 0 0 12
+$2734 2637 0 0 12
+$2532 2931 0 0 12
+$2931 2530 0 -1 12
+$2637 2639 0 0 12
+$2734 2835 0 0 12
+$2835 3038 0 0 12
+$3038 2938 0 0 12
+$2938 2639 0 0 12
+$2938 2937 0 0 12
+$2937 3135 0 0 12
+$3135 2833 0 0 12
+$2734 2833 0 0 12
+$2833 2931 0 0 12
+$3135 0233 1 0 12
+$3135 0136 1 0 12
+$3038 0138 1 0 12
+$3136 0238 1 0 2
+$3136 2734 0 0 2
+$2734 2332 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2532 B696014-9  L Lo Ni              703 Ke
+P-2           2533 B86A378-8    Lo Ni Wa        B  703 Na
+P-3           2534 C360357-7  J De Lo Ni           703 Ke
+P-4           2535 C240304-9    De Lo Ni Po        510 Ke
+P-5           2537 C646353-8    Lo Ni              502 Ke
+P-6           2632 E8B2337-4    Fl Lo Ni        A  814 Ke
+P-7           2633 C664310-9    Lo Ni              103 Ke
+P-8           2636 CA8A334-6  J Lo Ni Wa           703 Ke
+P-9           2637 B6A0000-7  L Ba De Lo Ni        523 Ke
+P-10          2639 B474330-8  J Lo Ni              620 Ke
+P-11          2640 D427735-5                       704 Ke
+P-12          2731 C440638-8    De Ni Po           804 Ke
+Laiccai       2734 B8769CE-C  K Hi In              404 Ke
+P-14          2736 A595573-B    Ag Ni           B  620 Na
+P-15          2738 C896114-6  L Lo Ni              704 Ke
+P-16          2740 C100896-6  K Na Va              425 Ke
+P-17          2831 C645112-4  L Lo Ni              411 Ke
+P-18          2832 C344532-8    Ag Ni              804 Ke
+P-19          2833 B78A466-9    Ni Wa              604 Ke
+P-20          2834 C624536-6    Ni                 604 Ke
+P-21          2835 B766845-7    Ri                 202 Ke
+P-22          2837 C545100-9  L Lo Ni              804 Ke
+P-23          2838 C574263-9  J Lo Ni              522 Ke
+P-24          2839 C435400-8    Ni                 522 Ke
+P-25          2840 CA9A120-7  L Lo Ni Wa           504 Ke
+P-26          2931 A7A6551-D    Fl Ni              502 Ke
+P-27          2932 D9A87B9-3  H Fl                 801 Ke
+P-28          2933 C300333-8    Lo Ni Va           522 Ke
+P-29          2937 A97869A-8  H Ag Ni              404 Ke
+P-30          2938 A000663-F  H As Na Ni           612 Ke
+P-31          3033 C130330-C    De Lo Ni Po        802 Ke
+P-32          3037 C754547-9  H Ag Ni              404 Ke
+P-33          3038 A40099A-B  K Hi Na Va           105 Ke
+P-34          3040 X8C0416-0    De              R  103 Ke
+P-35          3131 C795422-9  H Ni                 710 Ke
+P-36          3134 D846536-4  H Ag Ni              620 Ke
+P-37          3135 B211437-B  H Ic Ni              514 Ke
+Paggione      3136 C577001-9  L Lo Ni              401 Ke
+P-39          3137 C785430-8  H Ni                 623 Ke
+P-40          3232 C755443-6    Ni                 702 Ke
+P-41          3234 C645768-3  H Ag                 603 Ke
+P-42          3237 D587641-4    Ag Ni Ri           614 Ke
+

@@ -1,0 +1,330 @@
+Yugdorra Sector
+
+A: Ayug                      a.dat
+B: Buyug                     b.dat
+C: Ceyug                     c.dat
+D: Dorra                     d.dat
+E: Eugda                     e.dat
+F: Fugdorr                   f.dat
+G: Guydorrg                  g.dat
+H: Haugborr                  h.dat
+I: Itrug                     i.dat
+J: Juhd                      j.dat
+K: Kugdanna                  k.dat
+L: Lorrag                    l.dat
+M: Mugder                    m.dat
+N: Nugdorr                   n.dat
+O: Oyugdo                    o.dat
+P: Paug                      p.dat
+
+Bases:
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ayug SECTOR: Yugdorra Sector
+#
+# Jump-routes
+#
+$0109 2907 -1 0 10
+$0109 0307 0 0 10
+$0307 0605 0 0 10
+$0605 1007 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0102 C8776A8-4  S Ag Ni              403 Na
+Fallalalan    0109 E322543-7    Ni Po              411 Na
+A-3           0208 E200594-7    Ni Va              805 Na
+Ahvahj        0307 A202765-C  N Ic Na Va           814 Na
+A-5           0309 C742213-8    Lo Ni Po           612 Na
+A-6           0504 X234575-4                    R  404 Na
+Tyreen        0605 C753774-6    Po              B  203 Na
+A-8           0701 C270202-8  S De Lo Ni           901 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Buyug SECTOR: Yugdorra Sector
+#
+# Jump-routes
+#
+$1007 0605 -1 0 10
+$1007 1010 0 0 10
+$1010 0914 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Bhkabhu       1007 C76A587-9    Ni Wa              202 Na
+Ektanan       1010 B765544-6  N Ag Ni              403 Na
+B-3           1203 A000753-E    As Na              405 Na
+B-4           1309 B465586-A  N Ag Ni              504 Na
+B-5           1504 C356556-7  S Ag Ni              703 Na
+B-6           1509 B536466-9    Ni                 623 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ceyug SECTOR: Yugdorra Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1704 C421543-8    Ni Po              902 Na
+C-2           1707 B410324-D    Lo Ni              101 Na
+C-3           2106 E10057A-7    Ni Va           B  113 Na
+C-4           2201 A455568-E  N Ag Ni              403 Na
+C-5           2204 E200420-7    Ni Va              104 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Dorra SECTOR: Yugdorra Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2509 E59565A-7    Ag Ni              504 Na
+D-2           2707 C68379A-4    Ri                 103 Na
+D-3           2805 E695522-2    Ag Ni              102 Na
+D-4           2910 B87A774-7  2 Wa              B  522 Na
+D-5           3107 CAE9659-6    Fl Ni              322 Na
+D-6           3108 C879479-9  S Ni              B  814 Na
+D-7           3204 E545574-7    Ag Ni           B  304 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Eugda SECTOR: Yugdorra Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0414 D9D5435-5    Fl Ni              314 Na
+E-2           0418 E000564-8    As Ni              803 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Fugdorr SECTOR: Yugdorra Sector
+#
+# Jump-routes
+#
+$0914 1010 0 -1 10
+$0914 1216 0 0 10
+$1216 1219 0 0 10
+$1219 1123 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Calakta       0914 C7A0544-9  S De Ni              903 Na
+Fyibretta     1216 C64AA98-9    Hi In Wa           901 Na
+Fieebiea      1219 D525300-9  S Lo Ni              604 Na
+F-4           1318 B4509C9-C    De Hi Po           302 Na
+F-5           1615 C967332-9  S Lo Ni              304 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Guydorrg SECTOR: Yugdorra Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1715 E466425-4    Ni                 710 Na
+G-2           1718 C362136-7    Lo Ni              124 Na
+G-3           1916 E6105A9-4    Ni                 710 Na
+G-4           2113 CA8A8B9-9    Wa                 100 Na
+G-5           2316 C661335-8    Lo Ni              505 Na
+G-6           2413 B678400-8  2 Ni                 200 Na
+G-7           2419 D361300-5  S Lo Ni              113 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Haugborr SECTOR: Yugdorra Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2517 C100446-8  S Ni Va              221 Na
+H-2           2518 C320553-B    De Ni Po           422 Na
+H-3           2811 C50048A-5  S Ni Va              520 Na
+H-4           2911 B223154-B  S Lo Ni Po           704 Na
+H-5           2917 E561355-6    Lo Ni              110 Na
+H-6           3120 A340410-9  N De Ni Po           503 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Itrug SECTOR: Yugdorra Sector
+#
+# Jump-routes
+$0629 0731 0 1
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0124 C7B5442-6  S Fl Ni           A  120 Na
+I-2           0629 B160203-B    De Lo Ni           424 Na
+I-3           0722 X77A669-1    Wa              R  115 Na
+I-4           0730 C583745-6    Ri                 204 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Juhd SECTOR: Yugdorra Sector
+#
+# Jump-routes
+$1022 1124 0 0
+#
+$1123 1219 0 -1 10
+$1123 1525 0 0 10
+$1525 1724 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           1022 B233573-A    Ni Po           B  202 Na
+Jammarla      1123 C4506A6-9    De Ni Po           302 Na
+J-3           1124 B77A786-C  2 Wa                 503 Na
+Yuahgao       1525 C54375A-8  S Po                 601 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kugdanna SECTOR: Yugdorra Sector
+#
+# Jump-routes
+#
+$1724 1525 -1 0 10
+$1724 2025 0 0 10
+$2025 2128 0 0 10
+$2128 1830 0 0 10
+$1830 1934 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Kattat        1724 B595863-7                       901 Na
+K-2           1824 C676777-4  S Ag              B  405 Na
+Imbaahk       1830 C656542-4    Ag Ni              801 Na
+K-4           2021 E549567-6    Ni                 902 Na
+Ajjauya       2025 C35256B-8    Ni Po              111 Na
+Gehrasc       2128 C8A4244-A  S Fl Lo Ni           522 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lorrag SECTOR: Yugdorra Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2622 A344333-B  S Lo Ni              502 Na
+L-2           2822 B240200-9    De Lo Ni Po        923 Na
+L-3           3022 E55A457-9    Ni Wa              904 Na
+L-4           3024 D400630-5  S Na Ni Va           624 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Mugder SECTOR: Yugdorra Sector
+#
+# Jump-routes
+$0731 0629 0 -1
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0632 C433444-7    Ni Po              500 Na
+M-2           0637 C388200-9  S Lo Ni              313 Na
+M-3           0731 B525447-B  N Ni                 702 Na
+M-4           0736 E8A5522-8    Fl Ni              803 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nugdorr SECTOR: Yugdorra Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           1434 D462464-4    Ni                 412 Na
+N-2           1536 C110200-B  S Lo Ni              414 Na
+N-3           1538 C644013-6  S Lo Ni              124 Na
+N-4           1539 C743554-6    Ni Po              312 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Oyugdo SECTOR: Yugdorra Sector
+#
+# Jump-routes
+#
+$1934 1830 0 -1 10
+$1934 2037 0 0 10
+$2037 2039 0 0 10
+$2039 2103 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1731 B453420-8  2 Ni Po              301 Na
+Oveyrn        1934 B2529B9-8    Hi Po              903 Na
+Fttaaey       2037 B343751-B  N Po                 905 Na
+Riahjuul      2039 D858545-3  S Ag Ni              602 Na
+O-5           2235 D476840-4                       610 Na
+O-6           2236 C676665-7  S Ag Ni              202 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Paug SECTOR: Yugdorra Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           3138 C234955-D    Hi In              611 Na
+P-2           3232 C2107A8-9    Na                 920 Na
+

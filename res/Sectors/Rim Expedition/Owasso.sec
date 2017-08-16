@@ -1,0 +1,351 @@
+Owasso Sector
+
+A: Awass                     a.dat
+B: Bosso                     b.dat
+C: Cowassa                   c.dat
+D: Dewaas                    d.dat
+E: Ewadda                    e.dat
+F: Fallass                   f.dat
+G: Gowasso                   g.dat
+H: Hawasa                    h.dat
+I: Iwesa                     i.dat
+J: Jonoso                    j.dat
+K: Kessesa                   k.dat
+L: Liosso                    l.dat
+M: Massawo                   m.dat
+N: Nussan                    n.dat
+O: Owatt                     o.dat
+P: Powoss                    p.dat
+
+Bases:
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Awass SECTOR: Owasso Sector
+#
+# Jump-routes
+#
+$0804 1206 1 0 2
+$0804 0503 0 0 2
+$0503 0340 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0109 C321687-7    Na Ni Po           100 Na
+A-2           0208 C254444-9    Ni                 604 Na
+Ghrawlla      0503 D221355-5  S Lo Ni Po           204 Na
+A-4           0508 C627262-A  S Lo Ni              304 Na
+A-5           0607 C300000-9    Ba Lo Ni Va        103 Na
+Allioka       0804 AA8A323-C  N Lo Ni Wa           614 Na
+A-7           0806 B656100-A    Lo Ni              904 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Bosso SECTOR: Owasso Sector
+#
+# Jump-routes
+#
+$1010 1014 0 1 2
+$1010 1209 0 0 2
+$1209 1206 0 0 2
+$1206 0804 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           1003 C8A7797-6    Fl                 803 Na
+B-2           1004 E649ABC-A    Hi In              720 Na
+Btazawa       1010 C9C5631-8    Fl Ni           A  921 Na
+B-4           1103 B61037A-C    Lo Ni           B  303 Na
+Mowoosa       1206 E6B2301-5    Fl Lo Ni        A  202 Na
+Kliorrz       1209 B555302-B    Lo Ni              602 Na
+B-7           1408 E210413-4    Ni                 814 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Cowassa SECTOR: Owasso Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1802 C654203-5  S Lo Ni              904 Na
+C-2           2004 A410553-C  N Ni                 702 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Dewaas SECTOR: Owasso Sector
+#
+# Jump-routes
+#
+$2902 2940 0 -1 10
+$2902 3104 0 0 10
+$3104 0203 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2804 C425251-A  S Lo Ni              220 Na
+D-2           2807 CAB8877-7    Fl              A  104 Na
+D-3           2810 C98A438-7    Ni Wa              202 Na
+Diiniiti      2902 D668300-8  S Lo Ni              924 Na
+Malooso       3104 B55A200-C    Lo Ni Wa           601 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ewadda SECTOR: Owasso Sector
+#
+# Jump-routes
+#
+$0820 0924 1 1 2
+$0820 1018 1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0118 B543889-5  S Po                 712 Na
+E-2           0316 A000567-B  2 As Ni              405 Na
+E-3           0411 C461441-7  S Ni                 602 Na
+E-4           0417 D354405-8  S Ni                 501 Na
+E-5           0711 C441566-5    Ni Po              505 Na
+E-6           0718 B8D6622-B  N Fl Ni              500 Na
+E-7           0720 C241353-9    Lo Ni Po           302 Na
+Ellalaso      0820 C894427-5  S Ni                 804 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Fallass SECTOR: Owasso Sector
+#
+# Jump-routes
+#
+$1018 0820 -1 0 2
+$1018 1014 0 0 2
+$1014 1010 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Kizzarra      1014 C100120-7  S Lo Ni Va           421 Na
+Flalawa       1018 E9B5100-8    Fl Lo Ni        A  702 Na
+F-3           1216 C673211-7  S Lo Ni              514 Na
+F-4           1219 C898323-8    Lo Ni              804 Na
+F-5           1316 E3259B9-7    Hi In              903 Na
+F-6           1415 C302378-9  S Ic Lo Ni Va     B  400 Na
+F-7           1417 C448832-8  S                    704 Na
+F-8           1612 C3108DA-3  S Na                 423 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Gowasso SECTOR: Owasso Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1713 C210653-7    Na Ni              403 Na
+G-2           1819 B87A269-D    Lo Ni Wa           600 Na
+G-3           2319 D446410-6  S Ni                 100 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hawasa SECTOR: Owasso Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2716 B100311-E  2 Lo Ni Va           624 Na
+H-2           3113 E776676-1    Ag Ni           B  324 Na
+H-3           3211 C884332-8    Lo Ni              403 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Iwesa SECTOR: Owasso Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0226 E150102-5    De Lo Ni Po        405 Na
+I-2           0228 C775610-3  S Ag Ni              700 Na
+I-3           0421 D538643-5    Ni                 703 Na
+I-4           0423 C20078A-7  S Na Va              225 Na
+I-5           0525 C567520-5    Ag Ni              714 Na
+I-6           0623 C986235-8    Lo Ni              303 Na
+I-7           0724 E5528DA-0    Po                 413 Na
+I-8           0824 C240635-6  S De Ni Po           704 Na
+I-9           0829 B578684-6    Ag Ni              703 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jonoso SECTOR: Owasso Sector
+#
+# Jump-routes
+#
+$1129 1332 0 1 2
+$1129 1026 0 0 2
+$1026 0924 0 0 2
+$0924 0820 -1 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Gewsa         0924 A77A7AD-C  N Wa                 614 Na
+Ratmim        1026 C665550-6  S Ag Ni              412 Na
+Junnikma      1129 B0009CA-D  2 As Hi Na           903 Na
+J-4           1527 C555646-7    Ag Ni              300 Na
+J-5           1528 C67999A-A  S Hi In              500 Na
+J-6           1623 C495451-8  S Ni                 315 Na
+J-7           1625 C222585-7    Ni Po              504 Na
+J-8           1629 C26379A-4    Ri                 520 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kessesa SECTOR: Owasso Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1826 A77868D-A    Ag Ni              123 Na
+K-2           1827 A520526-E  2 De Ni Po           113 Na
+K-3           1923 C56676A-8    Ag Ri              200 Na
+K-4           2124 DA9A550-5    Ni Wa              514 Na
+K-5           2127 A89A301-D    Lo Ni Wa           413 Na
+K-6           2130 E967557-5    Ag Ni              521 Na
+K-7           2322 C538410-9    Ni                 704 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Liosso SECTOR: Owasso Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2823 C572300-A    Lo Ni              802 Na
+L-2           2923 C6579BG-6    Hi                 403 Na
+L-3           3028 E441124-3    Lo Ni Po           323 Na
+L-4           3121 A563223-B  N Lo Ni              700 Na
+L-5           3126 C512778-8  S Ic Na           B  204 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Massawo SECTOR: Owasso Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0132 B410562-9  N Ni                 513 Na
+M-2           0437 B654444-9  S Ni                 413 Na
+M-3           0533 C250346-7  S De Lo Ni Po        814 Na
+M-4           0534 A337733-E  2                    200 Na
+M-5           0736 E120305-8    De Lo Ni Po        100 Na
+M-6           0737 E12099B-9    De Hi In Na Po     213 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nussan SECTOR: Owasso Sector
+#
+# Jump-routes
+#
+$1540 1940 1 0 2
+$1540 1138 0 0 2
+$1138 1035 0 0 2
+$1035 1233 0 0 2
+$1233 1332 0 0 2
+$1332 1129 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Hekliennk     1035 C639669-8  S Ni                 823 Na
+Noewwna       1138 E55579A-2    Ag                 804 Na
+Codarr        1233 C64677B-6    Ag              B  802 Na
+Addkarra      1332 E598758-2    Ag                 222 Na
+N-5           1339 B7A3677-8  S Fl Ni           B  702 Na
+N-6           1340 C8D7898-4  S Fl                 614 Na
+Naytioy       1540 B566579-9  N Ag Ni           B  114 Na
+N-8           1634 C5A3858-A    Fl                 314 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Owatt SECTOR: Owasso Sector
+#
+# Jump-routes
+$1933 2132 0 0
+#
+$2339 2538 1 0 2
+$2339 1940 0 0 2
+$1940 1540 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Owatt         1933 A310302-F  N Lo Ni              413 Na
+Okriin        1940 B578551-9  N Ag Ni              314 Na
+O-3           2132 B331A8C-D    Hi In Na Po        623 Na
+Gahahrin      2339 C598335-5  S Lo Ni              503 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Powoss SECTOR: Owasso Sector
+#
+# Jump-routes
+#
+$3138 0101 1 1 2
+$3138 2835 0 0 2
+$2835 2538 0 0 2
+$2538 2339 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Ponnra        2538 C311696-9    Ic Na Ni           311 Na
+Cahnaa        2835 B433966-E    Hi In Na Po        701 Na
+P-3           2939 DAB6103-4    Fl Lo Ni        A  332 Na
+Pyclarre      3138 A456632-D  N Ag Ni              204 Na
+

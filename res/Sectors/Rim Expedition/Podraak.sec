@@ -1,0 +1,924 @@
+Podraak Sector
+
+A: Apodr                     a.dat
+B: Bopodr                    b.dat
+C: Codraak                   c.dat
+D: Draaki                    d.dat
+E: Epoden                    e.dat
+F: Frodreed                  f.dat
+G: Ghrodr                    g.dat
+H: Hopodo                    h.dat
+I: Ipodman                   i.dat
+J: Jodrine                   j.dat
+K: Kopolane                  k.dat
+L: Lanopod                   l.dat
+M: Medope                    m.dat
+N: Nipodraa                  n.dat
+O: Odropol                   o.dat
+P: Podra                     p.dat
+
+Bases:
+A = Agraak Navy
+B = Agraak Scout
+C = Agraak Navy & Scout
+D = Agraak Army
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+06 Au = Agraak Unification
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Apodr SECTOR: Podraak Sector
+#
+# Jump-routes
+#
+$0109 3208 -1 0 6
+$0109 0210 0 0 6
+$0210 0211 0 1 6
+$0210 3113 -1 1 6
+$0109 0107 0 0 6
+$0107 3007 -1 0 6
+$0810 0911 1 1 6
+$0810 0710 0 0 6
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0107 A575540-8    Ag Ni              704 Au
+A-2           0109 B300966-9  D Hi Na Va           114 Au
+A-3           0207 C440675-5    De Ni Po        B  304 Na
+A-4           0209 X7B4483-0    Fl              R  123 Au
+Agraak        0210 A98AAEE-G  A Hi Wa Cx           400 Au
+A-6           0408 A623975-D    Hi In Na Po     B  104 Na
+A-7           0410 C553122-7    Lo Ni Po           303 Au
+A-8           0508 C659776-6                    B  515 Na
+A-9           0509 E673AFH-8    Hi In           A  311 Au
+A-10          0608 C303230-B    Ic Lo Ni Va        704 Au
+A-11          0710 A867424-B    Ni                 503 Au
+A-12          0806 C444450-7  A Ni                 120 Au
+A-13          0808 E86A431-5    Ni Wa              104 Au
+A-14          0810 A785869-7  A Ri                 605 Au
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Bopodr SECTOR: Podraak Sector
+#
+# Jump-routes
+#
+$1010 1011 0 1 6
+$1310 1311 0 1 6
+$1310 1207 0 0 6
+$1207 1106 0 0 6
+$1106 1109 0 0 6
+$1109 1010 0 0 6
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           0908 C655553-5  A Ag Ni              812 Au
+B-2           0909 D255223-3    Lo Ni              610 Au
+B-3           1010 B637640-7  A Ni                 200 Au
+B-4           1104 C7B0557-8    De Ni           A  703 Na
+B-5           1106 B458410-A    Ni                 600 Au
+B-6           1109 B335632-9  A Ni                 912 Au
+B-7           1203 D88A523-8  S Ni Wa              504 Na
+B-8           1207 B89A895-A  C Wa                 215 Au
+B-9           1208 E661643-5    Ni Ri              904 Au
+B-10          1302 C765773-5    Ag Ri           B  404 Na
+B-11          1308 C7B4020-7    Fl Lo Ni        A  203 Au
+B-12          1310 B54A420-D  A Ni Wa              322 Au
+B-13          1409 C120112-7    De Lo Ni Po        324 Au
+B-14          1609 C15099A-9  D De Hi Po           214 Au
+B-15          1610 C200349-7  B Lo Ni Va           900 Au
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Codraak SECTOR: Podraak Sector
+#
+# Jump-routes
+#
+$2010 2011 0 1 6
+$2010 2410 0 0 6
+$2410 2611 1 1 6
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1703 A443899-A    Po                 103 Na
+C-2           1704 X759100-3    Lo              R  703 Na
+C-3           1710 C555995-5    Hi                 213 Au
+C-4           1802 C62237A-5    Lo Ni Po        B  604 Na
+C-5           1809 C559996-A    Hi                 125 Au
+C-6           1903 C849643-4    Ni                 124 Na
+C-7           2010 B757255-9  B Lo Ni              800 Au
+C-8           2210 C969774-9    Ri              B  524 Na
+C-9           2302 X7C89CD-3    Fl Hi           R  624 Na
+C-10          2303 C515432-7  S Ic Ni              714 Na
+C-11          2405 A260532-B  S De Ni              820 Na
+C-12          2410 B424454-9    Ni                 300 Au
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Draaki SECTOR: Podraak Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2501 E9A5479-8    Fl Ni           B  704 Na
+D-2           2701 C000200-8  S As Lo Ni           401 Na
+D-3           2906 C86A575-7    Ni Wa           B  200 Na
+D-4           3009 E783301-6    Lo Ni              221 Na
+D-5           3104 D633158-8  S Lo Ni Po           411 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Epoden SECTOR: Podraak Sector
+#
+# Jump-routes
+#
+$0211 0210 0 -1 6
+$0211 0115 0 0 6
+$0115 3215 -1 0 6
+$0115 0316 0 0 6
+$0316 0516 0 0 6
+$0516 0515 0 0 6
+$0516 0914 1 0 6
+$0819 1018 1 0 6
+$0819 0620 0 0 6
+$0620 0722 0 1 6
+$0220 3118 -1 0 10
+$0220 0622 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0112 C789521-5    Ni                 803 Au
+E-2           0114 E472663-2    Ni                 903 Au
+E-3           0115 A220504-B    De Ni Po           725 Au
+E-4           0118 E536510-8    Ni                 614 Au
+E-5           0119 E5029AF-5    Hi Ic Na Va        700 Au
+E-6           0211 B85A420-9    Ni Wa              303 Au
+E-7           0212 D652ABD-A    Hi Po              232 Au
+E-8           0214 B587877-5    Ri              B  814 Na
+E-9           0218 C5A0165-7  B De Lo Ni           503 Au
+E-10          0219 C33458B-B    Ni                 810 Au
+Ashiera       0220 A330866-B    De Na Po           423 Au
+E-12          0312 D210126-7    Lo Ni              713 Au
+E-13          0315 C354789-7  A Ag                 404 Au
+E-14          0316 B556ACD-E  D Hi                 612 Au
+E-15          0317 C788384-8  B Lo Ni              913 Au
+E-16          0318 C100433-9  A Ni Va              202 Au
+E-17          0319 C686588-7  A Ag Ni              111 Au
+E-18          0411 C4409BF-B    De Hi In Po        102 Au
+E-19          0414 E300010-6    Lo Ni Va           903 Au
+E-20          0415 D76A445-4    Ni Wa              310 Au
+E-21          0416 B54157A-A    Ni Po           B  501 Na
+E-22          0417 B9C6402-A    Fl Ni           A  434 Au
+E-23          0418 D000557-7  A As Ni              114 Au
+E-24          0420 C568664-3    Ag Ni Ri           900 Au
+E-25          0512 C340989-7    De Hi In Po        603 Au
+E-26          0515 B77255A-A  A Ni                 233 Au
+E-27          0516 A5538A9-C    Po                 325 Au
+E-28          0520 C644021-8  B Lo Ni              224 Au
+E-29          0612 C539320-6    Lo Ni              601 Au
+E-30          0614 C370534-9    De Ni              312 Au
+E-31          0616 C221455-A    Ni Po              814 Au
+E-32          0618 D789545-6  A Ni                 424 Au
+E-33          0620 B59438D-8    Lo Ni              423 Au
+E-34          0711 C7668DE-3                       720 Au
+E-35          0718 CAA9300-7    Fl Lo Ni           104 Au
+E-36          0812 E597450-7    Ni                 120 Au
+E-37          0813 E431577-6    Ni Po           B  700 Na
+E-38          0815 C000569-A    As Ni              604 Au
+E-39          0817 C200376-6    Lo Ni Va        B  202 Na
+E-40          0818 E610101-4    Lo Ni              612 Au
+E-41          0819 B4468B7-A                       100 Au
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Frodreed SECTOR: Podraak Sector
+#
+# Jump-routes
+#
+$0914 0516 -1 0 6
+$0914 1215 0 0 6
+$0914 1011 0 0 6
+$0911 1212 0 0 6
+$1212 1512 0 0 6
+$1011 1010 0 -1 6
+$1215 1212 0 0 6
+$1212 1311 0 0 6
+$1311 1310 0 -1 6
+$0911 0810 -1 -1 6
+$1215 1418 0 0 6
+$1215 1018 0 0 6
+$1018 0920 0 0 6
+$1018 0819 -1 0 6
+$0920 0722 -1 1 6
+$1419 1321 0 1 6
+$1419 1418 0 0 6
+$1018 1219 0 0 6
+$1219 1321 0 1 6
+$1418 1516 0 0 6
+$1516 1514 0 0 6
+$1514 1512 0 0 6
+$1514 1714 1 0 6
+$1516 1717 1 0 6
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0911 B347320-B  B Lo Ni              502 Au
+F-2           0913 E626742-3                       420 Au
+F-3           0914 A340363-C  B De Lo Ni Po        100 Au
+F-4           0915 C335358-A    Lo Ni              904 Au
+F-5           0920 B100367-A  B Lo Ni Va           703 Au
+F-6           1011 A000331-C    As Lo Ni           704 Au
+F-7           1012 B555776-5    Ag              B  313 Na
+F-8           1014 B958AA8-E  D Hi                 204 Au
+F-9           1016 C130757-C  A De Na Po           724 Au
+F-10          1018 A614241-E    Ic Lo Ni           603 Au
+F-11          1019 X310001-0    Lo              R  624 Au
+F-12          1111 E000254-B    As Lo Ni           102 Au
+F-13          1112 A6B3278-D  B Fl Lo Ni        A  214 Au
+F-14          1114 C424311-A    Lo Ni              803 Au
+F-15          1118 C452564-9  A Ni Po              302 Au
+F-16          1119 C64336A-5  B Lo Ni Po           122 Au
+F-17          1211 C638569-8    Ni                 902 Au
+F-18          1212 B445454-B    Ni                 203 Au
+F-19          1213 D678487-3    Ni                 700 Au
+F-20          1214 D551442-2    Ni Po              720 Au
+F-21          1215 B99A466-D    Ni Wa              102 Au
+F-22          1218 C759987-7    Hi                 303 Au
+F-23          1219 A8A0100-F    De Lo Ni           104 Au
+F-24          1311 B6A5630-6    Fl Ni              803 Au
+F-25          1312 C323425-7    Ni Po              900 Au
+F-26          1313 C100796-B    Na Va              303 Au
+F-27          1315 C21098A-A    Hi Na              315 Au
+F-28          1317 B110345-D    Lo Ni              204 Au
+F-29          1319 C765211-5    Lo Ni              211 Au
+F-30          1411 C79548C-8    Ni                 102 Au
+F-31          1414 C774411-5  A Ni                 602 Au
+F-32          1417 C22367A-7    Na Ni Po        B  100 Na
+F-33          1418 B56665A-8    Ag Ni Ri           605 Au
+F-34          1419 BAE8997-B  C Fl Hi              503 Au
+F-35          1420 C434578-B    Ni              B  402 Na
+F-36          1512 B200889-7  C Na Va              623 Au
+F-37          1514 A9DA404-D  A Fl Ni Wa           515 Au
+F-38          1516 B320520-B  A De Ni Po           104 Au
+F-39          1518 C314679-7    Ic Ni           B  310 Na
+F-40          1519 C776687-3  A Ag Ni              503 Au
+F-41          1615 C321300-C    Lo Ni Po           702 Au
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ghrodr SECTOR: Podraak Sector
+#
+# Jump-routes
+#
+$1714 1514 -1 0 6
+$1714 1912 0 0 6
+$1912 2011 0 0 6
+$2011 2010 0 -1 6
+$2011 2113 0 0 6
+$2113 2414 0 0 6
+$1717 1516 -1 0 6
+$1717 2017 0 0 6
+$2414 2611 1 0 6
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1711 D424400-9    Ni                 105 Au
+G-2           1713 C300778-7    Na Va           B  414 Na
+G-3           1714 B50179D-B    Ic Na Va           203 Au
+G-4           1717 B559462-7    Ni                 404 Au
+G-5           1720 C000311-B  B As Lo Ni           413 Au
+G-6           1811 C331867-7    Na Po              920 Au
+G-7           1815 D546445-4  A Ni                 102 Au
+G-8           1816 CA79595-9    Ni                 424 Au
+G-9           1912 B655213-9  B Lo Ni              804 Au
+G-10          1915 C300872-5    Na Va           B  204 Na
+G-11          2011 B400130-A  B Lo Ni Va           700 Au
+G-12          2013 C58247A-6    Ni              B  103 Na
+G-13          2017 B332635-9  A Na Ni Po           210 Au
+G-14          2112 C2639CE-B    Hi                 104 Au
+G-15          2113 B557310-9  B Lo Ni              610 Au
+G-16          2114 C586559-8    Ag Ni              604 Au
+G-17          2115 C556210-4    Lo Ni              403 Au
+G-18          2116 X456574-2    Ag              R  112 Au
+G-19          2214 C3517A8-6  A Po                 600 Au
+G-20          2215 C75A787-A  A Wa                 802 Au
+G-21          2216 E76A99A-A    Hi Wa              602 Au
+G-22          2217 C300510-8  A Ni Va              123 Au
+G-23          2218 C363552-9    Ni                 824 Au
+G-24          2311 E24097A-8    De Hi In Po     B  113 Na
+G-25          2312 C2019AF-7    Hi Ic Na Va        914 Au
+G-26          2315 D7A57A8-7    Fl                 704 Au
+G-27          2319 C8D7033-8    Fl Lo Ni           405 Au
+G-28          2320 C344999-6    Hi In              605 Au
+G-29          2412 C555335-5    Lo Ni              804 Au
+G-30          2414 B62A325-A  B Lo Ni Wa           201 Au
+G-31          2415 C140774-5    De Po           B  204 Na
+G-32          2416 C5448AA-6  A                    502 Au
+G-33          2419 E7A3AA5-9    Fl Hi              401 Au
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hopodo SECTOR: Podraak Sector
+#
+# Jump-routes
+#
+$2611 2414 -1 0 6
+$2611 2410 -1 -1 6
+$3220 3224 0 1 6
+$2720 2722 0 1 6
+$2720 2618 0 0 6
+$2618 2519 0 0 6
+$2519 2722 0 1 6
+$3220 3120 0 0 6
+$3120 2720 0 0 6
+$3120 3118 0 0 6
+$3118 2916 0 0 6
+$2916 2618 0 0 6
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2512 D7A29BB-5  D Fl Hi              112 Au
+H-2           2518 C32659C-9    Ni                 614 Au
+H-3           2519 A9E7414-E  A Fl Ni              501 Au
+H-4           2611 B434A99-C  C Hi In              310 Au
+H-5           2612 X240445-1    De Po           R  301 Au
+H-6           2613 C783943-6    Hi                 703 Au
+H-7           2614 C999551-9    Ni                 700 Au
+H-8           2615 D224762-4                       922 Au
+H-9           2616 C625854-A                       924 Au
+H-10          2618 A8A5624-A  A Fl Ni              903 Au
+H-11          2712 C110664-6  A Na Ni              123 Au
+H-12          2713 C673448-5  A Ni                 723 Au
+H-13          2716 E6A2683-6    Fl Ni              401 Au
+H-14          2719 D250353-6  B De Lo Ni Po        223 Au
+H-15          2720 A66A58A-C    Ni Wa              413 Au
+H-16          2812 C876965-A    Hi In              122 Au
+H-17          2814 C9A7674-7    Fl Ni           B  604 Na
+H-18          2815 C859276-6    Lo Ni           B  904 Na
+H-19          2820 E260740-7    De Ri              310 Au
+H-20          2913 E8C4688-7    Fl Ni           A  213 Au
+H-21          2914 X78A255-4    Lo Wa           R  900 Au
+H-22          2915 C767568-5  A Ag Ni              303 Au
+H-23          2916 A352687-8  A Ni Po              604 Au
+H-24          2919 C535248-8    Lo Ni              702 Au
+H-25          2920 B261436-7  A Ni                 405 Au
+H-26          3013 D537220-7  B Lo Ni              214 Au
+H-27          3016 C200572-8    Ni Va           B  710 Na
+H-28          3017 C7C4433-8  A Fl Ni           A  303 Au
+H-29          3111 B95A555-D    Ni Wa              201 Au
+H-30          3112 E7C2575-4    Fl Ni           A  803 Au
+H-31          3114 C7B0666-8    De Ni           A  424 Au
+H-32          3117 X334613-0                    R  403 Au
+H-33          3118 A778520-9  A Ag Ni              704 Au
+H-34          3119 B6B3012-A  B Fl Lo Ni        A  833 Au
+H-35          3120 B747210-B  B Lo Ni              304 Au
+H-36          3211 C000532-C    As Ni              513 Au
+H-37          3213 D100320-5    Lo Ni Va           101 Au
+H-38          3218 C657442-7  A Ni                 522 Au
+H-39          3220 B335100-C    Lo Ni              322 Au
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ipodman SECTOR: Podraak Sector
+#
+# Jump-routes
+#
+$0129 3231 -1 1 6
+$0722 0620 0 -1 6
+$0722 0424 0 0 6
+$0424 0328 0 0 6
+$0328 0129 0 0 6
+$0328 0330 0 0 6
+$0330 0129 0 0 6
+$0330 0732 0 1 6
+$0829 0732 0 1 6
+$0829 0529 0 0 6
+$0529 0328 0 0 6
+$0722 0824 0 0 6
+$0722 1022 1 0 6
+$0824 0927 1 0 6
+$0829 0927 1 0 6
+$0722 0920 1 -1 6
+$0622 0220 0 -1 10
+$0622 0925 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0122 E85A633-7    Ni Wa              502 Au
+I-2           0123 E89A650-8    Ni Wa              705 Au
+I-3           0125 C525462-8    Ni                 924 Au
+I-4           0126 C341242-5    Lo Ni Po           913 Au
+I-5           0129 B210697-A  A Na Ni              410 Au
+I-6           0130 B450773-7    De Po           B  523 Na
+I-7           0221 C555554-6  A Ag Ni              713 Au
+I-8           0227 E653946-8    Hi Po              504 Au
+I-9           0229 C200754-8    Na Va              803 Au
+I-10          0322 C240754-8  A De Po              724 Au
+I-11          0326 C695542-7  A Ag Ni              400 Au
+I-12          0328 A6A4000-A    Ba Fl Lo Ni        403 Au
+I-13          0329 E8A599A-7    Fl Hi              403 Au
+I-14          0330 A231465-F    Ni Po              704 Au
+I-15          0421 C2546AA-7  A Ag Ni              602 Au
+I-16          0423 B9C4376-9  B Fl Lo Ni        A  524 Au
+I-17          0424 B200161-8    Lo Ni Va           410 Au
+I-18          0425 C497665-4  A Ag Ni              624 Au
+I-19          0427 X464669-3    Ag Ri           R  704 Au
+I-20          0429 B513479-8    Ic Ni           B  603 Na
+I-21          0430 E24299E-6    Hi In Po           114 Au
+I-22          0521 C264656-7  A Ag Ni Ri           800 Au
+I-23          0522 D726557-9    Ni                 400 Au
+I-24          0526 C334879-5                    B  202 Na
+I-25          0527 E887531-4    Ag Ni              600 Au
+I-26          0528 C55266A-4    Ni Po              503 Au
+I-27          0529 B729588-A  A Ni                 523 Au
+I-28          0530 D000342-A  B As Lo Ni           203 Au
+Mindar        0622 C5766AA-6    Ag Ni              805 Au
+I-30          0623 C33459D-B  A Ni                 301 Au
+I-31          0628 D9658CB-5  D                    704 Au
+I-32          0630 A797976-C    Hi In           B  112 Na
+I-33          0722 A752401-A    Ni Po              904 Au
+I-34          0728 C515102-B    Ic Lo Ni           514 Au
+I-35          0821 C452530-9  A Ni Po              202 Au
+I-36          0823 C626343-8  B Lo Ni              823 Au
+I-37          0824 B563421-8  A Ni                 313 Au
+I-38          0827 C656001-5    Lo Ni              904 Au
+I-39          0829 A312203-E  B Ic Lo Ni           800 Au
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jodrine SECTOR: Podraak Sector
+#
+# Jump-routes
+#
+$1022 0722 -1 0 6
+$0927 0824 -1 0 6
+$0927 0829 -1 0 6
+$0927 1130 0 0 6
+$1130 1131 0 1 6
+$1424 1724 1 0 6
+$1424 1222 0 0 6
+$1222 1022 0 0 6
+$1222 1321 0 0 6
+$1424 1125 0 0 6
+$1125 0927 0 0 6
+$1130 1227 0 0 6
+$1227 1528 0 0 6
+$1528 1626 0 0 6
+$1626 1424 0 0 6
+$1626 1927 1 0 6
+$1321 1419 0 -1 6
+$1321 1219 0 -1 6
+$0925 0622 -1 0 10
+$0925 1128 0 0 10
+$1128 1331 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Lashangra     0925 X445300-5    Lo              R  522 Au
+J-2           0927 B577631-5  A Ag Ni              414 Au
+J-3           0929 E66A659-5    Ni Ri Wa           303 Au
+J-4           0930 C335333-6  B Lo Ni              304 Au
+J-5           1021 B8A7876-8    Fl              B  910 Na
+J-6           1022 A5296AA-B    Ni                 700 Au
+J-7           1025 D686848-2    Ri                 402 Au
+J-8           1029 X671100-4    Lo              R  313 Au
+J-9           1123 E674320-2    Lo Ni              505 Au
+J-10          1124 B73787A-8                    B  600 Na
+J-11          1125 B673687-5  A Ni                 404 Au
+J-12          1126 C795403-8  A Ni                 604 Au
+J-13          1127 E568224-2    Lo Ni              802 Au
+Jassaki       1128 C68276A-7    Ri                 911 Au
+J-15          1130 A559200-A    Lo Ni              603 Au
+J-16          1221 C976987-9  A Hi In              404 Au
+J-17          1222 A120547-C    De Ni Po           721 Au
+J-18          1223 E677520-2    Ag Ni              304 Au
+J-19          1224 C3259AB-9    Hi In              202 Au
+J-20          1226 C788026-8  B Lo Ni              310 Au
+J-21          1227 A475245-C    Lo Ni              303 Au
+J-22          1228 C4546BD-8  A Ag Ni              813 Au
+J-23          1229 D947786-6    Ag                 804 Au
+J-24          1230 C76A47B-9    Ni Wa           B  503 Na
+J-25          1321 B695630-9  A Ag Ni              404 Au
+J-26          1323 D553501-3    Ni Po              104 Au
+J-27          1325 E69A434-7    Ni Wa              800 Au
+J-28          1327 C210557-C  A Ni                 603 Au
+J-29          1328 C3658A5-6  A                    900 Au
+J-30          1330 CAB747A-9    Fl Ni           A  723 Au
+J-31          1422 C100555-D  A Ni Va              703 Au
+J-32          1424 B1209CB-F  D De Hi In Na Po     320 Au
+J-33          1427 X9E5435-0    Fl              R  814 Au
+J-34          1429 C614421-5    Ic Ni              504 Au
+J-35          1523 D553579-4    Ni Po           B  414 Na
+J-36          1526 C525795-8                       502 Au
+J-37          1528 AAA186B-9    Fl                 512 Au
+J-38          1621 X433235-4    Lo Po           R  413 Au
+J-39          1626 B747345-6  B Lo Ni              803 Au
+J-40          1628 C8948AA-6                       703 Au
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kopolane SECTOR: Podraak Sector
+#
+# Jump-routes
+#
+$2027 1931 0 1 6
+$2027 1927 0 0 6
+$1927 1923 0 0 6
+$1923 1822 0 0 6
+$1822 1724 0 0 6
+$1724 1927 0 0 6
+$1724 1424 -1 0 6
+$1927 1626 -1 0 6
+$1923 2122 0 0 6
+$2122 2325 0 0 6
+$2325 1923 0 0 6
+$2027 2428 0 0 6
+$2428 2325 0 0 6
+$2325 2625 1 0 6
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1724 A365252-C  B Lo Ni              903 Au
+K-2           1727 C6379DF-8    Hi In              604 Au
+K-3           1730 C897640-6    Ag Ni              920 Au
+K-4           1822 B524400-D    Ni                 323 Au
+K-5           1825 B200361-9  B Lo Ni Va           820 Au
+K-6           1826 C471679-8    Ni              B  503 Na
+K-7           1827 C65468B-7  A Ag Ni              614 Au
+K-8           1829 D000526-5    As Ni              104 Au
+K-9           1923 B645221-6    Lo Ni              403 Au
+K-10          1924 A353310-C    Lo Ni Po           200 Au
+K-11          1925 C310313-9    Lo Ni              514 Au
+K-12          1926 C551645-5    Ni Po              110 Au
+K-13          1927 B261300-C  B Lo Ni              804 Au
+K-14          1928 CA78464-6  A Ni                 523 Au
+K-15          2027 B545421-7  A Ni                 610 Au
+K-16          2028 C684400-5    Ni                 303 Au
+K-17          2122 B211323-C  B Ic Lo Ni           603 Au
+K-18          2123 E000344-5    As Lo Ni           702 Au
+K-19          2124 B511964-8  A Hi Ic Na           901 Au
+K-20          2125 C565643-7    Ag Ni Ri           222 Au
+K-21          2128 D200530-4    Ni Va              603 Au
+K-22          2130 C000431-8    As Ni              204 Au
+K-23          2222 C748330-6    Lo Ni              200 Au
+K-24          2223 B300510-C  A Ni Va              802 Au
+K-25          2224 C254640-4    Ag Ni              214 Au
+K-26          2225 E3048A7-8    Ic Va              403 Au
+K-27          2226 C647AFH-A    Hi In           A  412 Au
+K-28          2227 C430300-9  B De Lo Ni Po        902 Au
+K-29          2322 C79A466-B  A Ni Wa              503 Au
+K-30          2324 C686A99-9  A Hi                 912 Au
+K-31          2325 B647888-7                       203 Au
+K-32          2329 C554475-9    Ni              B  705 Na
+K-33          2421 C3608BC-9    De                 802 Au
+K-34          2422 C437684-7    Ni                 200 Au
+K-35          2423 C6787AA-4  A Ag                 923 Au
+K-36          2425 CA6A530-8  A Ni Wa              721 Au
+K-37          2426 C5569CG-8  D Hi                 803 Au
+K-38          2428 A400532-B    Ni Va              704 Au
+K-39          2429 C500133-6    Lo Ni Va           803 Au
+K-40          2430 C746340-9  B Lo Ni              624 Au
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lanopod SECTOR: Podraak Sector
+#
+# Jump-routes
+#
+$2625 2325 -1 0 6
+$3224 2824 0 0 6
+$3224 3124 0 0 6
+$3224 3220 0 -1 6
+$3124 2823 0 0 6
+$2823 2722 0 0 6
+$2722 2720 0 -1 6
+$2722 2519 0 -1 6
+$2823 2824 0 0 6
+$2824 2625 0 0 6
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2523 DA6668B-6  A Ag Ni Ri           400 Au
+L-2           2525 CA7A942-9    Hi In Wa           204 Au
+L-3           2528 D5848A8-4  D                    203 Au
+L-4           2530 B749974-B    Hi In           B  614 Na
+L-5           2622 E323AAC-7    Hi In Na Po        504 Au
+L-6           2623 E55688A-2                       624 Au
+L-7           2625 B865748-6    Ag Ri              501 Au
+L-8           2626 C536844-6                       301 Au
+L-9           2627 C732346-5  B Lo Ni Po           200 Au
+L-10          2630 C57458D-4  A Ag Ni              923 Au
+L-11          2721 C7569AB-5    Hi                 202 Au
+L-12          2722 B557545-7    Ag Ni              800 Au
+L-13          2725 C777425-5    Ni                 203 Au
+L-14          2728 D432AAD-A    Hi In Na Po        904 Au
+L-15          2729 C4229BB-8    Hi In Na Po        304 Au
+L-16          2822 X435677-2                    R  824 Au
+L-17          2823 A737122-A  B Lo Ni              703 Au
+L-18          2824 B440568-9  A De Ni Po           913 Au
+L-19          2825 C240789-9    De Po              104 Au
+L-20          2826 E52935A-7    Lo Ni              423 Au
+L-21          2828 C200211-A    Lo Ni Va           704 Au
+L-22          2829 E86A001-9    Lo Ni Wa           303 Au
+L-23          2921 E342641-7    Ni Po              525 Au
+L-24          2922 C200102-8  B Lo Ni Va           102 Au
+L-25          2925 C3507A8-7  A De Po              205 Au
+L-26          2926 E425401-9    Ni                 701 Au
+L-27          2929 CAE9752-7    Fl                 512 Au
+L-28          3023 C320623-8    De Na Ni Po        204 Au
+L-29          3024 B5569EE-8    Hi                 702 Au
+L-30          3025 E96A584-9    Ni Wa              600 Au
+L-31          3027 C585345-7    Lo Ni              101 Au
+L-32          3124 A789685-B    Ni Ri              605 Au
+L-33          3125 C75A473-6    Ni Wa           B  621 Na
+L-34          3128 D9C5554-5  A Fl Ni           A  600 Au
+L-35          3130 C4476A5-5    Ag Ni              124 Na
+L-36          3221 C5868AE-7  C                    203 Au
+L-37          3222 D000633-8    As Na Ni           403 Au
+Lordred       3224 A325AA9-G    Hi In Cx           321 Au
+L-39          3226 C77856A-7  A Ag Ni              500 Au
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Medope SECTOR: Podraak Sector
+#
+# Jump-routes
+#
+$0732 0330 0 -1 6
+$0732 0829 0 -1 6
+$0732 0632 0 0 6
+$0732 0834 0 0 6
+$0834 0637 0 0 6
+$0637 0839 0 0 6
+$0637 0239 0 0 6
+$0239 0136 0 0 6
+$0136 3237 -1 0 6
+$0136 3133 -1 0 6
+$0239 3240 -1 0 6
+$0239 0501 0 1 6
+$0839 0939 1 0 6
+$0239 0501 0 1 2
+$0239 3236 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0131 C9796A8-4  A Ni                 224 Au
+M-2           0132 D79A536-8    Ni Wa              503 Au
+M-3           0133 C55479A-4  A Ag                 101 Au
+M-4           0135 C000799-9  A As Na              203 Au
+M-5           0136 A5456A7-A    Ag Ni              704 Au
+M-6           0137 C75A9DC-5    Hi Wa              301 Au
+M-7           0138 C633445-A    Ni Po              605 Au
+M-8           0140 C557235-4    Lo Ni              900 Au
+M-9           0233 CA69656-A    Ni Ri              224 Au
+M-10          0234 D696333-4  B Lo Ni              303 Au
+M-11          0236 D995496-3    Ni                 814 Au
+M-12          0237 C557456-6  A Ni                 801 Au
+Maapeari      0239 AA85332-C    Lo Ni              502 Au
+M-14          0331 E4237A9-7    Na Po              403 Au
+M-15          0332 C542477-5    Ni Po           B  900 Na
+M-16          0333 EAB456B-4    Fl Ni           A  703 Au
+M-17          0335 C363000-A    Ba Lo Ni           702 Au
+M-18          0338 C1008BB-6    Na Va              722 Au
+M-19          0432 E343754-6    Po                 414 Au
+M-20          0433 EAA6336-6    Fl Lo Ni           110 Au
+M-21          0434 A210375-F    Lo Ni           B  600 Na
+M-22          0438 C46468C-7    Ag Ni Ri           224 Au
+M-23          0440 E424333-8    Lo Ni              610 Au
+M-24          0533 C659410-7    Ni                 504 Au
+M-25          0536 D442777-6    Po              B  411 Na
+M-26          0540 C788745-3    Ag Ri              202 Au
+M-27          0632 B323511-8    Ni Po              432 Au
+M-28          0633 E9CA242-A    Fl Lo Ni Wa     A  514 Au
+M-29          0634 B68A677-8    Ni Ri Wa        B  801 Na
+M-30          0637 B200345-8  B Lo Ni Va           203 Au
+M-31          0639 C423405-7    Ni Po              512 Au
+M-32          0731 C65A766-A  A Wa                 604 Au
+M-33          0732 A99A627-B    Ni Wa              534 Au
+M-34          0734 C555652-6    Ag Ni              710 Au
+M-35          0735 C652764-8    Po                 921 Au
+M-36          0738 X686897-2    Ri              R  123 Au
+M-37          0834 B454267-B  B Lo Ni              923 Au
+M-38          0836 C445454-8    Ni                 300 Au
+M-39          0839 B769253-9    Lo Ni              314 Au
+M-40          0840 CAA88D9-4  A Fl                 910 Au
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nipodraa SECTOR: Podraak Sector
+#
+# Jump-routes
+#
+$0939 1001 0 1 6
+$0939 0839 -1 0 6
+$1131 1130 0 -1 6
+$1131 1433 0 0 6
+$1433 1533 0 0 6
+$1533 1635 0 0 6
+$1635 1836 1 0 6
+$1440 1402 0 1 6
+$1440 1001 0 1 6
+$1331 1128 0 -1 10
+$1331 1633 0 0 10
+$1633 1836 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0932 C996258-8    Lo Ni              102 Au
+N-2           0933 E585733-5    Ag                 234 Au
+N-3           0934 C310878-5    Na              B  622 Na
+N-4           0936 B768577-B    Ag Ni           B  203 Na
+N-5           0939 B987322-A    Lo Ni              811 Au
+N-6           1031 C100869-8  A Na Va              122 Au
+N-7           1035 D442357-6  B Lo Ni Po           503 Au
+N-8           1038 E64459A-7    Ag Ni              422 Au
+N-9           1131 B563232-6    Lo Ni              614 Au
+N-10          1132 C000654-8  A As Na Ni           512 Au
+N-11          1134 X652210-2    Lo Po           R  815 Au
+N-12          1135 B96A372-C    Lo Ni Wa        B  405 Na
+N-13          1137 E445300-5    Lo Ni              204 Au
+N-14          1232 D969A98-8    Hi                 723 Au
+N-15          1237 D874212-4  B Lo Ni              210 Au
+Nieall        1331 E335347-9    Lo Ni              605 Au
+N-17          1333 CA7A647-6  A Ni Wa              812 Au
+N-18          1335 C130301-D  B De Lo Ni Po        925 Au
+N-19          1336 C641131-6  B Lo Ni Po           713 Au
+N-20          1338 C689588-8    Ni                 913 Au
+N-21          1340 X86A699-3    Ri Wa           R  601 Au
+N-22          1431 D130014-4    De Lo Ni Po        704 Au
+N-23          1433 B7688CD-5  A                    721 Au
+N-24          1435 EACAAFF-C    Fl Hi Wa        A  513 Au
+N-25          1438 D57798A-5  D Hi In              830 Au
+N-26          1440 A455133-B    Lo Ni              120 Au
+N-27          1532 C773655-9  A Ni                 901 Au
+N-28          1533 A240531-B    De Ni Po           124 Au
+N-29          1538 E247135-8    Lo Ni              703 Au
+N-30          1539 E8686A9-6    Ag Ni              903 Au
+Ammoura       1633 CA99677-4    Ni              B  103 Na
+N-32          1634 C77A334-6    Lo Ni Wa           704 Au
+N-33          1635 B9E7344-7    Fl Lo Ni           814 Au
+N-34          1636 C100375-9    Lo Ni Va        B  112 Na
+N-35          1637 C688953-6    Hi                 305 Au
+N-36          1638 C8A2644-4  A Fl Ni              113 Au
+N-37          1640 D11056A-6  A Ni                 210 Au
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Odropol SECTOR: Podraak Sector
+#
+# Jump-routes
+#
+$1836 1635 -1 0 6
+$1836 1939 0 0 6
+$1939 2238 0 0 6
+$2238 2336 0 0 6
+$2336 2433 0 0 6
+$2433 2032 0 0 6
+$2032 2033 0 0 6
+$2033 1836 0 0 6
+$2032 1931 0 0 6
+$1931 2027 0 -1 6
+$2433 2734 1 0 6
+$1939 1901 0 1 6
+$1836 1633 -1 0 10
+$1836 2238 0 0 10
+$2238 2640 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1731 C567443-7  A Ni                 314 Au
+O-2           1733 C636430-8    Ni                 400 Au
+O-3           1736 C202242-A    Ic Lo Ni Va        814 Au
+O-4           1739 E340845-5    De Po              402 Au
+O-5           1831 C9A7885-5    Fl                 505 Au
+O-6           1834 E240201-9    De Lo Ni Po        723 Au
+O-7           1835 C54A576-7    Ni Wa           B  910 Na
+Olanfa        1836 B7A3510-7    Fl Ni              202 Au
+O-9           1837 B42547A-A  A Ni              B  703 Na
+O-10          1931 B536240-B  B Lo Ni              203 Au
+O-11          1933 E883583-5    Ni                 203 Au
+O-12          1934 D766ACE-6  D Hi                 403 Au
+O-13          1935 C87A6BA-5  A Ni Wa              401 Au
+O-14          1939 A585242-A  B Lo Ni              703 Au
+O-15          1940 E648678-6    Ag Ni           B  223 Na
+O-16          2032 A652054-B    Lo Ni Po           612 Au
+O-17          2033 B130468-9  A De Ni Po           302 Au
+O-18          2037 C655487-7    Ni                 704 Au
+O-19          2132 C424586-7    Ni                 614 Au
+O-20          2133 C777346-4    Lo Ni              200 Au
+O-21          2134 CA87210-6  B Lo Ni              523 Au
+O-22          2137 EAB9620-7    Fl Ni           A  101 Au
+O-23          2138 C987667-5    Ag Ni Ri           302 Au
+O-24          2139 C9C5678-8  A Fl Ni           A  800 Au
+O-25          2231 C5035AB-A  A Ic Ni Va           810 Au
+O-26          2235 E5789BC-4    Hi In              304 Au
+Havagg        2238 A786645-B    Ag Ni Ri           503 Au
+O-28          2331 D9B7550-6  A Fl Ni           A  102 Au
+O-29          2334 C484688-9    Ag Ni Ri           812 Au
+O-30          2336 B534311-C  B Lo Ni              503 Au
+O-31          2337 C638978-7    Hi In           B  402 Na
+O-32          2433 B224133-9  B Lo Ni              500 Au
+O-33          2436 C897686-8    Ag Ni              523 Au
+O-34          2438 C561789-8  A Ri                 322 Au
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Podra SECTOR: Podraak Sector
+#
+# Jump-routes
+#
+$2734 2433 -1 0 6
+$2734 2935 0 0 6
+$2935 2838 0 0 6
+$2734 2831 0 0 6
+$2640 2238 -1 0 10
+$2640 2803 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2531 C555867-5                       301 Au
+P-2           2533 C562574-8    Ni              B  920 Na
+P-3           2534 C223279-B    Lo Ni Po        B  513 Na
+P-4           2535 C9C6204-A  B Fl Lo Ni        A  504 Au
+P-5           2539 C000000-A  B As Ba Lo Ni        200 Au
+P-6           2540 C648267-5    Lo Ni              910 Au
+P-7           2631 E000266-9    As Lo Ni           500 Au
+P-8           2637 C8B2478-9    Fl Ni           A  412 Au
+P-9           2639 C4327BD-8  A Na Po              600 Au
+Flioona       2640 C586312-5  B Lo Ni              501 Au
+P-11          2732 D510322-3  B Lo Ni              904 Au
+P-12          2734 A40069D-B    Na Ni Va           704 Au
+P-13          2735 D976722-2    Ag                 505 Au
+P-14          2737 E560559-3    De Ni              803 Au
+P-15          2738 C4118CE-9  A Ic Na              720 Au
+P-16          2739 C79A566-9    Ni Wa              703 Au
+P-17          2831 B569A64-C  A Hi                 703 Au
+P-18          2832 X120569-4    De Po           R  913 Au
+P-19          2836 C425141-9  B Lo Ni              112 Au
+P-20          2838 B364786-9    Ag Ri              410 Au
+P-21          2931 C242446-6    Ni Po              315 Au
+P-22          2934 C76A111-7    Lo Ni Wa           610 Au
+P-23          2935 B351753-A  A Po                 102 Au
+P-24          2937 X245110-1    Lo              R  605 Au
+P-25          3031 C300100-B    Lo Ni Va           201 Au
+P-26          3032 C88A100-7    Lo Ni Wa           803 Au
+P-27          3033 C446558-6  A Ag Ni              233 Au
+P-28          3035 E497565-7    Ag Ni              100 Au
+P-29          3036 C130100-B  B De Lo Ni Po        114 Au
+P-30          3038 C95A510-8    Ni Wa              904 Na
+P-31          3039 C599245-8    Lo Ni              314 Na
+P-32          3040 C4046AA-A  A Ic Ni Va           905 Na
+P-33          3131 C667110-9  B Lo Ni              410 Na
+P-34          3134 C462569-7  A Ni                 413 Na
+P-35          3139 C000476-B    As Ni           B  405 Na
+P-36          3140 C473437-9  A Ni                 631 Na
+P-37          3231 E100110-5    Lo Ni Va           212 Na
+P-38          3232 C438100-C    Lo Ni              814 Na
+P-39          3235 D000997-7  D As Hi Na           714 Na
+P-40          3236 C535244-7  B Lo Ni              603 Na
+P-41          3238 D534466-6  A Ni                 604 Na
+

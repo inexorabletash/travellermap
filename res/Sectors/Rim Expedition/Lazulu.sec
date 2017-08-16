@@ -1,0 +1,397 @@
+Lazulu Sector
+
+A: Alazu                     a.dat
+B: Blazul                    b.dat
+C: Crazulu                   c.dat
+D: Drazullu                  d.dat
+E: Elazu                     e.dat
+F: Fhazulu                   f.dat
+G: Glazazul                  g.dat
+H: Holazu                    h.dat
+I: Izzule                    i.dat
+J: Jhazzull                  j.dat
+K: Kraazu                    k.dat
+L: Lalazza                   l.dat
+M: Mibaza                    m.dat
+N: Norazull                  n.dat
+O: Ozulu                     o.dat
+P: Pnuzulu                   p.dat
+
+Bases:
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Alazu SECTOR: Lazulu Sector
+#
+# Jump-routes
+#
+$0808 0911 1 1 2
+$0808 0608 0 0 2
+$0608 0505 0 0 2
+$0505 0302 0 0 2
+$0302 0139 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0201 C785465-8    Ni                 424 Na
+Gretian       0302 C756475-6    Ni              B  303 Na
+A-3           0402 E451543-6    Ni Po              223 Na
+A-4           0408 C879210-8    Lo Ni              804 Na
+A-5           0409 C684630-7  S Ag Ni              302 Na
+A-6           0501 X986345-3    Lo              R  413 Na
+Hallalla      0505 C9C4475-6  S Fl Ni           A  611 Na
+Indrieus      0608 C551698-5    Ni Po              512 Na
+A-9           0802 C130778-9  S De Na Po        B  600 Na
+Akeedu        0808 C433231-B  S Lo Ni Po           722 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Blazul SECTOR: Lazulu Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           1101 X8A3457-5    Fl              R  700 Na
+B-2           1105 E84A324-8    Lo Ni Wa           222 Na
+B-3           1302 C577211-7    Lo Ni              824 Na
+B-4           1506 C590486-5    De Ni              412 Na
+B-5           1507 B31048B-B  2 Ni                 414 Na
+B-6           1601 C3308A7-A  S De Na Po           823 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Crazulu SECTOR: Lazulu Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1702 C998420-5    Ni                 420 Na
+C-2           1801 C404747-7  S Ic Va              321 Na
+C-3           2002 B5068BA-B  S Ic Va              300 Na
+C-4           2008 D100531-9    Ni Va              504 Na
+C-5           2106 B524686-8  2 Ni                 303 Na
+C-6           2107 A6A3786-A    Fl                 200 Na
+C-7           2204 C000448-8  S As Ni              203 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Drazullu SECTOR: Lazulu Sector
+#
+# Jump-routes
+#
+$3102 2940 0 -1 10
+$3102 3205 0 0 10
+$3205 0406 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2510 C000653-A    As Na Ni           502 Na
+D-2           2602 X221532-2    Po              R  603 Na
+Hynast        3102 D769588-4    Ni                 815 Na
+Dlachu        3205 E68368A-3    Ni Ri              115 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Elazu SECTOR: Lazulu Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0115 C694410-7    Ni                 713 Na
+E-2           0219 D524150-9  S Lo Ni              902 Na
+E-3           0412 C636523-5  S Ni                 604 Na
+E-4           0515 C8875A6-5  S Ag Ni              604 Na
+E-5           0611 C89A68D-7  S Ni Wa              213 Na
+E-6           0719 B410683-7    Na Ni              503 Na
+E-7           0812 D53358C-7    Ni Po              103 Na
+E-8           0818 C639995-C    Hi In              413 Na
+E-9           0820 E330466-8    De Ni Po           524 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Fhazulu SECTOR: Lazulu Sector
+#
+# Jump-routes
+$1020 0921 0 1
+$1412 1513 0 0
+#
+$1614 1917 1 0 2
+$1614 1412 0 0 2
+$1412 1114 0 0 2
+$1114 0911 0 0 2
+$0911 0808 -1 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Youliss       0911 E98A897-7    Ri Wa              812 Na
+F-2           0912 B691362-6  N Lo Ni              902 Na
+F-3           1020 A7C3646-A  N Fl Ni           A  104 Na
+Arshok        1114 D531355-8    Lo Ni Po           201 Na
+F-5           1119 C100447-7  S Ni Va              100 Na
+Boshall       1412 C572895-7  S                    321 Na
+F-7           1417 CAF646A-6  S Fl Ni              102 Na
+F-8           1420 A686767-B  N Ag Ri              324 Na
+F-9           1513 A6A2022-D  S Fl Lo Ni           803 Na
+Flazaron      1614 E353553-5    Ni Po              521 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Glazazul SECTOR: Lazulu Sector
+#
+# Jump-routes
+$1713 1814 0 0
+$1714 1814 0 0
+#
+$2318 2619 1 0 2
+$2318 1917 0 0 2
+$1917 1614 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1713 A110333-B  N Lo Ni              202 Na
+G-2           1714 C628687-9  S Ni                 304 Na
+G-3           1813 B7538A9-8  N Po                 314 Na
+G-4           1814 B426350-A  N Lo Ni              301 Na
+G-5           1911 C794852-4                       102 Na
+G-6           1912 C89A677-6    Ni Wa           B  614 Na
+G-7           1914 E547657-5    Ag Ni              203 Na
+G-8           1915 B998456-8  2 Ni                 803 Na
+Mucheen       1917 B368425-8  N Ni                 111 Na
+G-10          2017 D78A987-A    Hi Wa              120 Na
+G-11          2215 B583645-6    Ni Ri              213 Na
+G-12          2220 A66668B-A  N Ag Ni Ri           203 Na
+G-13          2315 CAB76BC-4    Fl Ni           A  704 Na
+Greasala      2318 C332101-C  S Lo Ni Po           115 Na
+G-15          2413 E747599-2    Ag Ni              601 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Holazu SECTOR: Lazulu Sector
+#
+# Jump-routes
+#
+$2619 2723 0 1 2
+$2619 2318 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2512 D000956-A  S As Hi Na           400 Na
+H-2           2518 C769312-5  S Lo Ni              404 Na
+H-3           2612 B85A661-C    Ni Wa              723 Na
+H-4           2618 B8B2655-8    Fl Ni           A  614 Na
+Hoillan       2619 C6A168D-9  S Fl Ni              404 Na
+H-6           2717 C373777-7                    B  704 Na
+H-7           2719 C998989-7    Hi In              504 Na
+H-8           2811 A768169-C    Lo Ni              813 Na
+H-9           2812 E100776-6    Na Va           B  203 Na
+H-10          2814 X500555-1    Va              R  210 Na
+H-11          2815 C979220-8  S Lo Ni              601 Na
+H-12          2816 E552555-5    Ni Po              802 Na
+H-13          2914 B8888CE-8                       312 Na
+H-14          2916 C521524-7    Ni Po              424 Na
+H-15          3018 C667300-A    Lo Ni              414 Na
+H-16          3114 C655488-8  S Ni                 821 Na
+H-17          3116 C48265A-5    Ni Ri              710 Na
+H-18          3117 C8B4457-6    Fl Ni           A  120 Na
+H-19          3118 C120621-7  S De Na Ni Po        314 Na
+H-20          3120 B6B2438-8  N Fl Ni           A  304 Na
+H-21          3214 E383774-6    Ri              B  604 Na
+H-22          3215 C88A667-A    Ni Ri Wa           100 Na
+H-23          3218 C67AADE-9    Hi In Wa           100 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Izzule SECTOR: Lazulu Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0226 E686523-6    Ag Ni              102 Na
+I-2           0422 B2019AC-E    Hi Ic Na Va        611 Na
+I-3           0527 C444777-5    Ag              B  413 Na
+I-4           0529 C9C7455-7    Fl Ni           A  704 Na
+I-5           0829 C554796-8  S Ag                 903 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jhazzull SECTOR: Lazulu Sector
+#
+# Jump-routes
+$0921 1020 0 -1
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0921 B567267-7    Lo Ni              400 Na
+J-2           1022 C431727-9    Na Po              401 Na
+J-3           1026 A4848B8-D  N                    205 Na
+J-4           1123 B459665-9  N Ni                 112 Na
+J-5           1228 C333640-9    Na Ni Po           613 Na
+J-6           1325 D223743-3  S Na Po              214 Na
+J-7           1327 B431589-9  N Ni Po              200 Na
+J-8           1527 A65548B-9  N Ni                 823 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kraazu SECTOR: Lazulu Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1727 B566102-A    Lo Ni              703 Na
+K-2           1728 C440433-A  S De Ni Po           302 Na
+K-3           2024 D00089E-6  S As Na              603 Na
+K-4           2027 C4876BB-6    Ag Ni              902 Na
+K-5           2328 E210411-4    Ni                 503 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lalazza SECTOR: Lazulu Sector
+#
+# Jump-routes
+#
+$3025 0226 1 0 2
+$3025 2723 0 0 2
+$2723 2619 0 -1 2
+$2928 3025 0 0 11
+$3025 3127 0 0 11
+$3127 2928 0 0 11
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2529 C77A777-7  S Wa              B  213 Na
+L-2           2621 E435569-7    Ni                 324 Na
+L-3           2623 E378269-6    Lo Ni              704 Na
+L-4           2625 C344259-6    Lo Ni              800 Na
+L-5           2626 B310375-A  N Lo Ni           B  204 Na
+Klasiees      2723 C0007A9-7    As Na              801 Na
+L-7           2923 E476426-4    Ni                 203 Na
+L-8           2928 B100421-E  2 Ni Va              814 Na
+Lakash        3025 A381457-C  N Ni                 824 Na
+L-10          3127 C894996-8  S Hi In              402 Na
+L-11          3224 E353ACC-9    Hi Po              311 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Mibaza SECTOR: Lazulu Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0137 D211663-4  S Ic Na Ni           603 Na
+M-2           0237 C300434-A  S Ni Va              503 Na
+M-3           0331 X53569D-2                    R  914 Na
+M-4           0732 C8689CB-6    Hi                 600 Na
+M-5           0738 B457256-8    Lo Ni              513 Na
+M-6           0836 C130850-C    De Na Po           103 Na
+M-7           0837 C130753-7    De Na Po           103 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Norazull SECTOR: Lazulu Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0940 C646550-6  S Ag Ni              504 Na
+N-2           1035 C775577-6    Ag Ni           B  502 Na
+N-3           1038 C22078B-7    De Na Po           313 Na
+N-4           1039 C425514-B  S Ni                 804 Na
+N-5           1134 C9D9643-9    Fl Ni              110 Na
+N-6           1334 C632552-6    Ni Po              604 Na
+N-7           1432 C977452-7  S Ni                 813 Na
+N-8           1532 E56269A-3    Ni Ri              410 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ozulu SECTOR: Lazulu Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1734 B7A8278-8  N Fl Lo Ni        B  614 Na
+O-2           1834 A524767-C                       304 Na
+O-3           1838 E253697-7    Ni Po              714 Na
+O-4           1839 B434794-C  S                    904 Na
+O-5           1937 E74979D-5                       222 Na
+O-6           2034 C959734-7  S                    514 Na
+O-7           2131 E792476-7    Ni              B  700 Na
+O-8           2136 C253532-5    Ni Po              423 Na
+O-9           2234 A786634-C  N Ag Ni              815 Na
+O-10          2240 B877423-6    Ni                 434 Na
+O-11          2335 C535410-6  S Ni                 210 Na
+O-12          2435 C6A0846-8    De                 201 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Pnuzulu SECTOR: Lazulu Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2639 X452552-0    Po              R  400 Na
+P-2           2837 B221565-9    Ni Po              124 Na
+P-3           2940 C1508AC-8    De Po              204 Na
+P-4           3136 C401894-5    Ic Na Va           603 Na
+

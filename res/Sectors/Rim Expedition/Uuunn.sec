@@ -1,0 +1,442 @@
+Uuunn Sector
+
+A: Aauuunn                   a.dat
+B: Beeuuunn                  b.dat
+C: Caauuunn                  c.dat
+D: Diiuuunn                  d.dat
+E: Eeuuunn                   e.dat
+F: Fnaauuunn                 f.dat
+G: Ghuuunn                   g.dat
+H: Hoouuunn                  h.dat
+I: Iiuuunn                   i.dat
+J: Jaahuuunn                 j.dat
+K: Keeuuunn                  k.dat
+L: Liiuuunn                  l.dat
+M: Maauuunn                  m.dat
+N: Nuuunn                    n.dat
+O: Oouuunn                   o.dat
+P: Peeuuunn                  p.dat
+
+Bases:
+A = Beeuuunni Navy
+B = Beeuuunni Scout
+C = Beeuuunni Navy & Scout
+D - Beeuuunni Military
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+14 Bl = Beeuuunni League
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Aauuunn SECTOR: Uuunn Sector
+#
+# Jump-routes
+#
+$0605 1004 1 0 14
+$0605 0506 0 0 14
+$0506 0306 0 0 14
+$0801 1004 1 0 2
+$0801 0739 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0306 A6485AD-8  A Ag Ni              200 Bl
+A-2           0404 C694667-8    Ag Ni              903 Bl
+A-3           0502 D454220-3    Lo Ni              804 Bl
+A-4           0506 C10057A-9    Ni Va           B  703 Bl
+A-5           0510 B9B3699-9    Fl Ni           A  805 Bl
+A-6           0602 E100889-5    Na Va              402 Bl
+A-7           0605 B639211-A  A Lo Ni              403 Bl
+A-8           0610 C000532-9    As Ni              712 Bl
+Ahvuun        0801 C423320-A    Lo Ni Po           604 Bl
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Beeuuunn SECTOR: Uuunn Sector
+#
+# Jump-routes
+#
+$1209 1107 0 0 14
+$1107 1004 0 0 14
+$1004 0605 -1 0 14
+$1209 1506 0 0 14
+$1506 1504 0 0 14
+$1504 1501 0 0 14
+$1209 1213 0 1 14
+$1506 1705 1 0 14
+$1209 1709 1 0 14
+$1501 1739 1 -1 14
+$1209 1213 0 1 2
+$1209 1107 0 0 2
+$1107 1004 0 0 2
+$1004 0801 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Ruuinnia      1004 C899631-4    Ni                 404 Bl
+Nassuuna      1107 C5248AC-4  B                    511 Bl
+B-3           1110 D87778B-4  B Ag                 302 Bl
+B-4           1206 E555402-3    Ni                 503 Bl
+Beeunaal      1209 A130A55-K  C Cx Hi In Na Po     303 Bl     m
+B-6           1210 X221648-4    Po              R  315 Bl
+B-7           1309 D436435-5    Ni                 212 Bl
+Beeuuok       1501 A63497B-F    Hi In           B  700 Bl
+B-9           1504 C443720-8  B Po                 504 Bl
+B-10          1506 B363210-9    Lo Ni              704 Bl
+B-11          1603 C352655-8    Ni Po              511 Bl
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Caauuunn SECTOR: Uuunn Sector
+#
+# Jump-routes
+#
+$1705 1506 -1 0 14
+$1705 1802 0 0 14
+$1705 1907 0 0 14
+$1907 2207 0 0 14
+$1709 1209 -1 0 14
+$1709 1907 0 0 14
+$1907 2210 0 0 14
+$2210 2311 0 1 14
+$1802 2002 0 0 14
+$2002 2402 0 0 14
+$2402 2502 1 0 14
+$2402 2205 0 0 14
+$2205 2207 0 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1705 B88A433-A  B Ni Wa              402 Bl
+C-2           1709 B7A0834-9  A De                 104 Bl
+C-3           1802 B77A256-E  C Lo Ni Wa           204 Bl
+C-4           1907 B482533-B  B Ni                 414 Bl
+C-5           2002 C4457BA-9    Ag                 823 Bl
+C-6           2205 E85469B-5    Ag Ni              702 Bl
+C-7           2207 C627425-8  S Ni                 714 Bl
+C-8           2210 C442310-7  B Lo Ni Po           611 Bl
+C-9           2402 B1009D9-9    Hi Na Va           900 Bl
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Diiuuunn SECTOR: Uuunn Sector
+#
+# Jump-routes
+#
+$2502 2402 -1 0 14
+$3104 3240 0 -1 10
+$3104 0107 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2502 A130545-E    De Ni Po           204 Bl
+D-2           2606 C55699C-8    Hi                 814 Na
+Armuun        3104 E554314-4    Lo Ni              903 Na
+D-4           3105 B301214-8    Ic Lo Ni Va        100 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Eeuuunn SECTOR: Uuunn Sector
+#
+# Jump-routes
+#
+$0413 0914 1 0 14
+$0617 1018 1 0 14
+$0617 0518 0 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0411 E542400-5    Ni Po              705 Bl
+E-2           0413 D748011-6  B Lo Ni              400 Bl
+E-3           0518 C634444-A  B Ni                 404 Bl
+E-4           0617 B534321-9  A Lo Ni              814 Bl
+E-5           0813 E582844-6    Ri                 203 Bl
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Fnaauuunn SECTOR: Uuunn Sector
+#
+# Jump-routes
+#
+$1213 1209 0 -1 14
+$1213 1115 0 0 14
+$1115 1319 0 0 14
+$1319 1421 0 1 14
+$1115 0914 0 0 14
+$0914 0413 -1 0 14
+$1115 1018 0 0 14
+$1018 0617 -1 0 14
+$1018 0821 -1 1 14
+$1618 1820 1 0 2
+$1618 1615 0 0 2
+$1615 1213 0 0 2
+$1213 1209 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0914 B84848D-9    Ni                 311 Bl
+F-2           0916 DA8A572-9    Ni Wa           B  503 Bl
+F-3           1011 C87A324-8    Lo Ni Wa           703 Bl
+F-4           1012 C5568BC-3                       704 Bl
+F-5           1017 C796624-7    Ag Ni              513 Bl
+F-6           1018 D435235-7  B Lo Ni              323 Bl
+F-7           1115 B666343-9    Lo Ni              903 Bl
+F-8           1119 B687205-C    Lo Ni              403 Bl
+Diuunass      1213 C77A320-7  B Lo Ni Wa           213 Bl
+F-10          1319 C130422-7  B De Ni Po           330 Bl
+F-11          1419 C583544-6    Ni                 313 Bl
+F-12          1517 B446673-7    Ag Ni           B  114 Bl
+Erfuuin       1615 C241459-8    Ni Po              103 Bl
+F-14          1617 E552401-8    Ni Po              403 Bl
+Fluuba        1618 C2228BC-8    Na Po              203 Bl
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ghuuunn SECTOR: Uuunn Sector
+#
+# Jump-routes
+#
+$2311 2210 0 -1 14
+$2219 2521 1 1 2
+$2219 1820 0 0 2
+$1820 1618 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Tiiasuu       1820 B302435-B    Ic Ni Va           624 Na
+Glinnba       2219 E300A9A-A    Hi Na Va           502 Na
+G-3           2311 D595621-6  S Ag Ni              410 Bl
+G-4           2320 B686433-8  S Ni                 620 Na
+G-5           2411 C576547-9    Ag Ni              813 Bl
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hoouuunn SECTOR: Uuunn Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2514 C564423-9    Ni                 402 Na
+H-2           2520 C465778-6    Ag Ri           B  104 Na
+H-3           2812 C575200-8    Lo Ni              422 Na
+H-4           3113 D564599-2    Ag Ni              200 Na
+H-5           3114 E767300-7    Lo Ni              714 Na
+H-6           3218 B644300-A  2 Lo Ni              604 Na
+H-7           3219 C515500-8  S Ic Ni              501 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Iiuuunn SECTOR: Uuunn Sector
+#
+# Jump-routes
+#
+$0821 1018 1 -1 14
+$0821 0623 0 0 14
+$0623 0323 0 0 14
+$0623 0825 0 0 14
+$0825 0726 0 0 14
+$0825 1023 1 0 14
+$0323 0124 0 0 14
+$0124 0228 0 0 14
+$0228 0430 0 0 14
+$0430 0732 0 1 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0124 C4228CB-6    Na Po              704 Bl
+I-2           0222 D5106BB-6    Na Ni              924 Bl
+I-3           0228 B87A402-C    Ni Wa              524 Bl
+I-4           0321 C686966-7    Hi                 722 Bl
+I-5           0323 B668531-7  A Ag Ni              200 Bl
+I-6           0430 C5A0898-8  B De                 404 Bl
+I-7           0623 B62256B-7    Ni Po              602 Bl
+I-8           0721 E898887-6                       103 Bl
+I-9           0726 C738772-7                    B  424 Bl
+I-10          0821 B230552-D    De Ni Po           504 Bl
+Iuuki         0825 A266455-F    Ni                 325 Bl
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jaahuuunn SECTOR: Uuunn Sector
+#
+# Jump-routes
+#
+$1421 1319 0 -1 14
+$1023 0825 -1 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0921 E210788-4    Na                 615 Bl
+J-2           1023 C222887-8  S Na Po              204 Bl
+J-3           1122 E251667-5    Ni Po              301 Bl
+J-4           1329 D698503-3  S Ag Ni              814 Na
+J-5           1421 D625563-5  S Ni                 114 Bl
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Keeuuunn SECTOR: Uuunn Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           2221 E637835-7                       200 Na
+K-2           2427 C957558-A  S Ag Ni              620 Na
+K-3           2428 E230644-7    De Na Ni Po        614 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Liiuuunn SECTOR: Uuunn Sector
+#
+# Jump-routes
+#
+$2629 2931 0 1 2
+$2629 2727 0 0 2
+$2727 2724 0 0 2
+$2724 2521 0 0 2
+$2521 2219 -1 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Mhuuba        2521 E686467-5    Ni                 701 Na
+Lieduuh       2629 B1109BC-A    Hi Na              603 Na
+Fairuu        2724 C444445-8  S Ni                 713 Na
+Ghuunicla     2727 C635300-A  S Lo Ni              601 Na
+L-5           3026 E945112-3    Lo Ni              904 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Maauuunn SECTOR: Uuunn Sector
+#
+# Jump-routes
+#
+$0731 0732 0 0 14
+$0732 0533 0 0 14
+$0533 0233 0 0 14
+$0233 0135 0 0 14
+$0135 0438 0 0 14
+$0438 0539 0 0 14
+$0539 0540 0 0 14
+$0732 0430 0 -1 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Maauel        0135 A434100-G    Lo Ni              510 Bl
+M-2           0233 A140000-D    Ba De Lo Ni Po     500 Bl
+M-3           0434 E87478A-3    Ag                 303 Bl
+M-4           0438 C579898-5  B                    915 Bl
+M-5           0533 C789477-8  B Ni              B  420 Bl
+M-6           0539 C2009AD-7  B Hi Na Va           704 Bl
+M-7           0540 B374440-B  B Ni                 803 Bl
+M-8           0731 B8A3302-A    Fl Lo Ni           604 Bl
+M-9           0732 A534655-B  A Ni                 600 Bl
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nuuunn SECTOR: Uuunn Sector
+#
+# Jump-routes
+$1436 1536 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           1039 C34088A-7  S De Po              624 Na
+N-2           1139 A000648-C    As Na Ni           703 Na
+N-3           1231 C6627AB-8  S                    703 Na
+N-4           1233 E9A0420-4    De Ni              625 Na
+N-5           1234 B342342-8    Lo Ni Po           803 Na
+N-6           1235 C1006AA-B    Na Ni Va           132 Na
+N-7           1332 E677666-1    Ag Ni              800 Na
+N-8           1435 E302224-7    Ic Lo Ni Va        104 Na
+N-9           1436 B593377-A    Lo Ni           B  100 Na
+N-10          1536 C527546-9    Ni                 803 Na
+N-11          1540 C79836A-7    Lo Ni              800 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Oouuunn SECTOR: Uuunn Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1731 E994599-6    Ag Ni              623 Na
+O-2           1732 C100674-7    Na Ni Va        B  403 Na
+O-3           1831 B567420-B  S Ni                 805 Na
+O-4           1836 B627742-A                       604 Na
+O-5           2031 B424757-9  2                    203 Na
+O-6           2034 C321336-7    Lo Ni Po           922 Na
+O-7           2038 D873235-6    Lo Ni              211 Na
+O-8           2236 A8C8111-9  S Fl Lo Ni        A  313 Na
+O-9           2237 B6389DA-A  2 Hi In              921 Na
+O-10          2340 D764233-4    Lo Ni              732 Na
+O-11          2440 C575775-7  S Ag              B  132 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Peeuuunn SECTOR: Uuunn Sector
+#
+# Jump-routes
+#
+$3237 0239 1 0 2
+$3237 3233 0 0 2
+$3233 2931 0 0 2
+$2931 2629 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2738 D67416B-5  S Lo Ni              315 Na
+P-2           2739 B444401-9  N Ni                 600 Na
+Vluuya        2931 D774300-6    Lo Ni              613 Na
+P-4           3035 C360768-4    De Ri              604 Na
+P-5           3036 B231232-9  2 Lo Ni Po           605 Na
+Mauunca       3233 A546425-C  N Ni                 101 Na
+P-7           3234 C86A568-6    Ni Wa              222 Na
+Vartiel       3237 D330436-8    De Ni Po           303 Na
+

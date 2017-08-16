@@ -1,0 +1,397 @@
+Neecheck Sector
+
+A: Aneech                    a.dat
+B: Beechec                   b.dat
+C: Ceecheck                  c.dat
+D: Deech                     d.dat
+E: Echeche                   e.dat
+F: Feech                     f.dat
+G: Gammeech                  g.dat
+H: Homeeche                  h.dat
+I: Icheck                    i.dat
+J: Jeecher                   j.dat
+K: Keecheg                   k.dat
+L: Laneech                   l.dat
+M: Meechun                   m.dat
+N: Neechar                   n.dat
+O: Omeeca                    o.dat
+P: Peecheck                  p.dat
+
+Bases:
+N = Navy
+P = Peedech Security
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+07 Na = Non-Aligned
+14 Ps = Peedech States
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Aneech SECTOR: Neecheck Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0101 C7C5112-7    Fl Lo Ni        A  704 Na
+A-2           0106 C557630-3  S Ag Ni              903 Na
+A-3           0110 B444898-B  N                    102 Na
+A-4           0208 E510268-4    Lo Ni              903 Na
+A-5           0303 E100345-A    Lo Ni Va           304 Na
+A-6           0401 E100400-9    Ni Va              520 Na
+A-7           0405 B120666-D  N De Na Ni Po        403 Na
+A-8           0408 C422587-B    Ni Po              501 Na
+A-9           0506 C5A288D-8  S Fl                 904 Na
+A-10          0805 E792588-7    Ni                 923 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Beechec SECTOR: Neecheck Sector
+#
+# Jump-routes
+$1303 1401 0 0
+$1303 1604 0 0
+#
+$1604 1805 1 0 2
+$1604 1401 0 0 2
+$1401 1438 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           0905 C556220-8    Lo Ni              405 Na
+B-2           1004 C458565-8  S Ag Ni              502 Na
+B-3           1106 D510002-5  S Lo Ni              514 Na
+B-4           1205 C738422-9    Ni                 803 Na
+B-5           1303 A555588-B  2 Ag Ni              502 Na
+B-6           1307 C87A868-5  S Wa                 312 Na
+Greelarr      1401 A745143-B    Lo Ni              612 Na
+B-8           1402 C778130-5  S Lo Ni              703 Na
+B-9           1509 C547472-9    Ni              B  703 Na
+B-10          1601 C235688-7  S Ni                 913 Na
+Booleelo      1604 A724322-B  N Lo Ni              203 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ceecheck SECTOR: Neecheck Sector
+#
+# Jump-routes
+#
+$2008 2211 0 1 2
+$2008 1805 0 0 2
+$1805 1604 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1701 C330330-6  S De Lo Ni Po        401 Na
+Veedliam      1805 B9B2588-A  2 Fl Ni           A  322 Na
+C-3           1808 C353996-9  S Hi Po              200 Na
+Ceecheeli     2008 E777578-4    Ag Ni           B  505 Na
+C-5           2106 X693000-2    Ba Lo           R  700 Na
+C-6           2208 C639448-A    Ni                 705 Na
+C-7           2306 E434997-9    Hi In              802 Na
+C-8           2308 B262232-B    Lo Ni              300 Na
+C-9           2401 C455223-5  S Lo Ni              903 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Deech SECTOR: Neecheck Sector
+#
+# Jump-routes
+#
+$3104 3140 0 -1 10
+$3104 0107 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2502 E77A552-8    Ni Wa              102 Na
+D-2           2504 C877301-A  S Lo Ni              200 Na
+D-3           2508 B6B0225-C  N De Lo Ni        A  815 Na
+D-4           2608 C444510-8    Ag Ni              602 Na
+D-5           2808 A79679A-A  S Ag                 310 Na
+D-6           2904 C246652-7    Ag Ni              315 Na
+D-7           3005 C438557-C    Ni                 722 Na
+D-8           3006 E3236BA-5    Na Ni Po           823 Na
+D-9           3007 D0007CC-6    As Na              114 Na
+D-10          3010 E303241-9    Ic Lo Ni Va        103 Na
+D-11          3101 D377689-4    Ag Ni              323 Na
+Dillawe       3104 E512967-7    Hi Ic Na           403 Na
+D-13          3107 B3007CD-B  S Na Va              204 Na
+D-14          3201 B336443-B    Ni                 804 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Echeche SECTOR: Neecheck Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0314 A230777-B  2 De Na Po        B  224 Na
+E-2           0614 C735534-A  S Ni                 304 Na
+E-3           0713 C775964-7    Hi In              203 Na
+E-4           0812 C220656-8    De Na Ni Po        104 Na
+E-5           0814 E510100-4    Lo Ni              810 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Feech SECTOR: Neecheck Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0920 C54989C-5  S                    404 Na
+F-2           1012 B8B7200-8  2 Fl Lo Ni        A  200 Na
+F-3           1020 X310535-2                    R  724 Na
+F-4           1113 B955104-9    Lo Ni              500 Na
+F-5           1217 C464ABB-D    Hi                 705 Na
+F-6           1313 C437765-7  S                    114 Na
+F-7           1415 D336521-7  S Ni                 200 Na
+F-8           1513 C844598-5  S Ag Ni              420 Na
+F-9           1616 C8B6356-9  S Fl Lo Ni        A  823 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Gammeech SECTOR: Neecheck Sector
+#
+# Jump-routes
+$2418 2619 1 0
+#
+$2318 2619 1 0 2
+$2318 2214 0 0 2
+$2214 2211 0 0 2
+$2211 2008 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           2014 B647766-7    Ag                 504 Na
+Narreem       2211 C4529BD-9  S Hi Po              832 Na
+Zeenak        2214 D410899-7    Na                 425 Na
+G-4           2215 B150541-8  N De Ni Po           504 Na
+G-5           2313 D767487-4    Ni                 900 Na
+G-6           2314 C342631-8  S Ni Po              614 Na
+Geegeegia     2318 C324538-8  S Ni                 803 Na
+G-8           2413 C447510-7    Ag Ni              821 Na
+G-9           2418 B210000-C  2 Ba Lo Ni           314 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Homeeche SECTOR: Neecheck Sector
+#
+# Jump-routes
+$2619 2418 -1 0
+#
+$2619 3021 0 1 2
+$2619 2318 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2515 X110410-5                    R  213 Na
+Hakarees      2619 B639633-A  S Ni                 203 Na
+H-3           2718 C272410-7  S Ni                 905 Na
+H-4           2816 B456646-9  S Ag Ni              210 Na
+H-5           3012 C9A4477-6    Fl Ni           B  303 Na
+H-6           3013 E8A5644-5    Fl Ni              923 Na
+H-7           3019 E322655-8    Na Ni Po           504 Na
+H-8           3111 A76598C-A    Hi                 501 Na
+H-9           3117 C401122-6    Ic Lo Ni Va        603 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Icheck SECTOR: Neecheck Sector
+#
+# Jump-routes
+$0628 0729 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0130 C857843-4                       300 Na
+I-2           0227 A653400-9  N Ni Po              704 Na
+I-3           0326 C200741-8  S Na Va              714 Na
+I-4           0330 E4416BE-6    Ni Po              110 Na
+I-5           0628 C773264-6    Lo Ni              301 Na
+I-6           0723 E100221-9    Lo Ni Va           612 Na
+I-7           0725 B456200-8    Lo Ni              424 Na
+I-8           0729 B1009A5-E    Hi Na Va           403 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jeecher SECTOR: Neecheck Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           1022 C625356-6    Lo Ni              803 Na
+J-2           1127 B370345-7  2 De Lo Ni           404 Na
+J-3           1130 C435615-6    Ni                 202 Na
+J-4           1230 C798A79-A  S Hi In           B  204 Na
+J-5           1428 B645554-B  S Ag Ni              404 Na
+J-6           1529 E200103-5    Lo Ni Va           903 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Keecheg SECTOR: Neecheck Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1726 D65A8BE-5    Wa                 202 Na
+K-2           1728 B549557-B    Ni                 412 Na
+K-3           1825 C5269B9-B    Hi In              611 Na
+K-4           1930 C664551-6    Ag Ni              500 Na
+K-5           2127 B364572-7  N Ag Ni           B  930 Na
+K-6           2225 B682335-A    Lo Ni              910 Na
+K-7           2322 E587201-3    Lo Ni              504 Na
+K-8           2330 E373332-6    Lo Ni              513 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Laneech SECTOR: Neecheck Sector
+#
+# Jump-routes
+$2824 3024 0 0
+$2824 3025 0 0
+#
+$2728 2931 0 1 2
+$2728 2824 0 0 2
+$2824 3021 0 0 2
+$3021 2619 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2725 C678346-8    Lo Ni              722 Na
+Liianu        2728 C200201-A  S Lo Ni Va           513 Na
+Ikeere        2824 A14088A-E    De Po              203 Na
+Aneehla       3021 C424544-6  S Ni                 801 Na
+L-5           3022 C784110-6  S Lo Ni              823 Na
+L-6           3024 A355766-9    Ag                 724 Na
+L-7           3025 C6B0200-7    De Lo Ni        A  510 Na
+L-8           3126 A779578-9  N Ni              B  503 Na
+L-9           3221 C456333-8  S Lo Ni              524 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Meechun SECTOR: Neecheck Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0137 C572544-7    Ni                 630 Na
+M-2           0240 C668437-9    Ni                 224 Na
+M-3           0335 B566655-6  N Ag Ni Ri           300 Na
+M-4           0636 B486554-8  2 Ag Ni              305 Na
+M-5           0735 E535AB9-8    Hi In              902 Na
+M-6           0831 C457679-4  S Ag Ni           B  602 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Neechar SECTOR: Neecheck Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           1036 E20085A-6    Na Va              612 Na
+N-2           1038 C4359CB-A  S Hi In              703 Na
+N-3           1233 A510352-B    Lo Ni              605 Na
+N-4           1438 B757454-8    Ni                 803 Na
+N-5           1535 B552315-B    Lo Ni Po           310 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Omeeca SECTOR: Neecheck Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1732 C554477-8  S Ni              B  620 Na
+O-2           1831 B765200-8  N Lo Ni              920 Na
+O-3           1834 C846985-9  S Hi In              800 Na
+O-4           1836 B253000-8  N Ba Lo Ni Po        703 Na
+O-5           1939 D768000-3    Ba Lo Ni           900 Na
+O-6           2134 C410735-8  S Na                 303 Na
+O-7           2139 B210301-E    Lo Ni              305 Na
+O-8           2331 D9A1668-2  S Fl Ni              910 Na
+O-9           2332 E221554-A    Ni Po              300 Na
+O-10          2335 B50457B-8  2 Ic Ni Va        B  303 Na
+O-11          2433 C200404-C    Ni Va              222 Na
+O-12          2439 C657467-9  S Ni                 304 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Peecheck SECTOR: Neecheck Sector
+#
+# Jump-routes
+#
+$3232 0134 1 0 2
+$3232 2931 0 0 2
+$2931 2728 0 -1 2
+$3031 3032 0 0 14
+$3032 2933 0 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2539 B6B2443-A  N Fl Ni           A  504 Na
+P-2           2740 A574377-B    Lo Ni           B  124 Na
+P-3           2836 C440165-A  P De Lo Ni Po        903 Ps
+Coleek        2931 C334778-A                    B  521 Na
+P-5           2933 AA9A98C-E  P Hi In Wa           914 Ps
+Peedech       3031 A100205-F  P Lo Ni Va           521 Ps
+P-7           3032 A598656-8    Ag Ni              803 Ps
+P-8           3034 C875AA9-8  P Hi In              820 Ps
+Tranndia      3232 C2506AA-7    De Ni Po           134 Ps
+P-10          3234 C659656-8  P Ni                 824 Ps
+P-11          3239 B220331-A    De Lo Ni Po        505 Na
+

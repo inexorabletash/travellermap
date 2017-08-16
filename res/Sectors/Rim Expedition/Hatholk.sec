@@ -1,0 +1,308 @@
+Hatholk Sector
+
+A: Atholk                    a.dat
+B: Bazoth                    b.dat
+C: Coholk                    c.dat
+D: Desoth                    d.dat
+E: Errthoh                   e.dat
+F: Freeholk                  f.dat
+G: Gathieer                  g.dat
+H: Hatholt                   h.dat
+I: Irdolth                   i.dat
+J: Jolth                     j.dat
+K: Kothold                   k.dat
+L: Loboth                    l.dat
+M: Manooth                   m.dat
+N: Nugolt                    n.dat
+O: Ograth                    o.dat
+P: Polthos                   p.dat
+
+Bases:
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Atholk SECTOR: Hatholk Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0108 C668533-9    Ag Ni              300 Na
+A-2           0307 C100544-B    Ni Va              514 Na
+A-3           0603 C540445-6  S De Ni Po           400 Na
+A-4           0703 A662663-B    Ni Ri              315 Na
+A-5           0809 B440450-A  N De Ni Po           904 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Bazoth SECTOR: Hatholk Sector
+#
+# Jump-routes
+$1202 1403 0 0
+$1406 1507 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           1003 C000220-9    As Lo Ni           102 Na
+B-2           1109 B89A786-9  S Wa                 805 Na
+B-3           1202 B223623-C  N Na Ni Po           331 Na
+B-4           1403 B656343-A  N Lo Ni              925 Na
+B-5           1406 C987300-7  S Lo Ni              700 Na
+B-6           1507 B643100-A    Lo Ni Po           222 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Coholk SECTOR: Hatholk Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1804 C743112-4    Lo Ni Po           204 Na
+C-2           2206 B302576-8  N Ic Ni Va        B  200 Na
+C-3           2207 C632515-8    Ni Po              402 Na
+C-4           2304 C897633-8    Ag Ni              725 Na
+C-5           2306 C100646-6    Na Ni Va           103 Na
+C-6           2410 C747530-4    Ag Ni              212 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Desoth SECTOR: Hatholk Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2504 B66A645-8    Ni Ri Wa           923 Na
+D-2           2505 C420566-A    De Ni Po           902 Na
+D-3           2810 E200863-5    Na Va              100 Na
+D-4           3001 C658310-7    Lo Ni              520 Na
+Desoth        3204 A120789-F    De Na Po           300 Na
+D-6           3207 C1006AC-7  S Na Ni Va           700 Na
+D-7           3209 E3008DF-3    Na Va              524 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Errthoh SECTOR: Hatholk Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0112 C637556-7    Ni                 403 Na
+E-2           0413 E456542-8    Ag Ni              114 Na
+E-3           0515 C480346-6    De Lo Ni           505 Na
+E-4           0720 B7B6101-9  N Fl Lo Ni        A  910 Na
+E-5           0812 X654103-0    Lo              R  215 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Freeholk SECTOR: Hatholk Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0915 CA9A7AA-7    Wa                 812 Na
+F-2           1116 C584221-6  S Lo Ni              523 Na
+F-3           1311 B225111-C  N Lo Ni              213 Na
+F-4           1317 C444533-7  S Ag Ni              504 Na
+F-5           1411 E764649-2    Ag Ni Ri           314 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Gathieer SECTOR: Hatholk Sector
+#
+# Jump-routes
+$2413 2513 1 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1714 C84A636-8  S Ni Wa              410 Na
+G-2           2211 D898659-6    Ag Ni              110 Na
+G-3           2320 C875698-4    Ag Ni              903 Na
+G-4           2412 E455333-7    Lo Ni              705 Na
+G-5           2413 B6A09B8-C  N De Hi              701 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hatholt SECTOR: Hatholk Sector
+#
+# Jump-routes
+$2513 2413 -1 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2513 B655758-8    Ag                 104 Na
+H-2           3019 D553894-5  S Po                 503 Na
+H-3           3111 C868104-5    Lo Ni              100 Na
+H-4           3220 D401746-6  S Ic Na Va           711 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Irdolth SECTOR: Hatholk Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0126 C437750-7  S                    104 Na
+I-2           0130 C684512-7    Ag Ni              913 Na
+I-3           0227 C786100-A    Lo Ni              402 Na
+I-4           0327 B85968D-7  N Ni                 821 Na
+I-5           0526 B859552-9    Ni                 202 Na
+I-6           0626 C613377-7    Ic Lo Ni        B  702 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jolth SECTOR: Hatholk Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0925 C352634-9    Ni Po              204 Na
+J-2           0928 E675720-4    Ag                 702 Na
+J-3           1527 D758311-2  S Lo Ni              405 Na
+J-4           1624 X472476-1                    R  723 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kothold SECTOR: Hatholk Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1724 D150537-6  S De Ni Po           212 Na
+K-2           2027 C684576-9    Ag Ni           B  801 Na
+K-3           2230 A572588-B  N Ni                 620 Na
+K-4           2428 C210300-9  S Lo Ni              420 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Loboth SECTOR: Hatholk Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2625 B8C4765-6  S Fl              A  120 Na
+L-2           2626 E556751-7    Ag                 402 Na
+L-3           2730 D120532-5    De Ni Po           200 Na
+L-4           3024 C889588-9  S Ni                 323 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Manooth SECTOR: Hatholk Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0131 C89A300-C    Lo Ni Wa           603 Na
+M-2           0339 C345431-8    Ni                 300 Na
+M-3           0437 C589553-A  S Ni                 604 Na
+M-4           0531 C97867B-3    Ag Ni           B  424 Na
+M-5           0534 C74856B-5  S Ag Ni              200 Na
+M-6           0634 B331884-7  2 Na Po              302 Na
+M-7           0832 E773522-4    Ni                 905 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nugolt SECTOR: Hatholk Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           1134 CAA27CH-5    Fl                 103 Na
+N-2           1331 E68866B-5    Ag Ni Ri           804 Na
+N-3           1334 C452A96-C  S Hi Po              914 Na
+N-4           1533 C527225-5    Lo Ni              510 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ograth SECTOR: Hatholk Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1739 B332430-9  S Ni Po              513 Na
+O-2           1832 C675596-7    Ag Ni              303 Na
+O-3           2337 C776324-6  S Lo Ni              803 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Polthos SECTOR: Hatholk Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2639 C333643-5    Na Ni Po           104 Na
+P-2           2739 B64A613-7  2 Ni Wa              203 Na
+P-3           2935 D560312-4    De Lo Ni           514 Na
+P-4           2938 C26499B-7  S Hi                 900 Na
+P-5           3139 E350125-4    De Lo Ni Po        910 Na
+

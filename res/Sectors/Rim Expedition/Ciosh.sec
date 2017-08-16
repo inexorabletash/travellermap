@@ -1,0 +1,278 @@
+Ciosh Sector
+
+A: Aion                      a.dat
+B: Bicosh                    b.dat
+C: Cioj                      c.dat
+D: Denosh                    d.dat
+E: Ezash                     e.dat
+F: Fiok                      f.dat
+G: Geocsh                    g.dat
+H: Hubosh                    h.dat
+I: Ilash                     i.dat
+J: Juiosh                    j.dat
+K: Kimish                    k.dat
+L: Lomask                    l.dat
+M: Moio                      m.dat
+N: Nuosh                     n.dat
+O: Ozadash                   o.dat
+P: Pinuin                    p.dat
+
+Bases:
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Aion SECTOR: Ciosh Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0103 A488000-A  N Ba Lo Ni           802 Na
+A-2           0201 C88A313-A  S Lo Ni Wa           824 Na
+A-3           0302 B494864-8  2                    412 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Bicosh SECTOR: Ciosh Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           1105 D8789A9-3    Hi In              705 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Cioj SECTOR: Ciosh Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1705 C577668-6    Ag Ni              800 Na
+C-2           1801 B79447B-9    Ni              B  124 Na
+C-3           2206 B896100-A  2 Lo Ni              601 Na
+C-4           2208 C859522-6  S Ni                 804 Na
+C-5           2407 C00068A-9  S As Na Ni           404 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Denosh SECTOR: Ciosh Sector
+#
+# Jump-routes
+$2509 2511 0 1
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2509 C212510-B    Ic Ni              703 Na
+D-2           2608 B592637-6  2 Ni                 613 Na
+D-3           2805 A272756-9                       113 Na
+D-4           2810 A668555-B  2 Ag Ni              901 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ezash SECTOR: Ciosh Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0120 D437001-9  S Lo Ni              500 Na
+E-2           0316 B6958AF-7  N                    200 Na
+E-3           0816 E666044-6    Lo Ni              814 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Fiok SECTOR: Ciosh Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0915 C88A436-A    Ni Wa              702 Na
+F-2           0916 B8569DH-9    Hi              A  302 Na
+F-3           1020 A588310-8  2 Lo Ni              105 Na
+F-4           1615 C6A2669-4    Fl Ni              224 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Geocsh SECTOR: Ciosh Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1714 C251731-4  S Po                 112 Na
+G-2           1915 E44369B-7    Ni Po              904 Na
+G-3           2114 B675522-6  N Ag Ni              825 Na
+G-4           2313 C8C59AD-B    Fl Hi           A  400 Na
+G-5           2411 EAC7A9A-6    Fl Hi           A  304 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hubosh SECTOR: Ciosh Sector
+#
+# Jump-routes
+$2511 2509 0 -1
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2511 B6B7120-A    Fl Lo Ni        A  800 Na
+H-2           3120 E140552-9    De Ni Po           402 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ilash SECTOR: Ciosh Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Juiosh SECTOR: Ciosh Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           1127 E595877-3                    B  605 Na
+J-2           1523 C7A7367-5    Fl Lo Ni           224 Na
+J-3           1525 C513642-4    Ic Na Ni           403 Na
+J-4           1526 EAC6653-7    Fl Ni           A  705 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kimish SECTOR: Ciosh Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1825 C4366BC-5  S Ni                 300 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lomask SECTOR: Ciosh Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2523 C511421-6  S Ic Ni              813 Na
+L-2           2725 C300324-9  S Lo Ni Va           702 Na
+L-3           2828 B100575-D    Ni Va           B  400 Na
+L-4           3029 B76A400-D    Ni Wa              525 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Moio SECTOR: Ciosh Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0232 C3708CA-6  S De                 502 Na
+M-2           0238 C322451-B  S Ni Po              300 Na
+M-3           0437 B568222-6    Lo Ni              512 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nuosh SECTOR: Ciosh Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0937 X500465-3    Va              R  324 Na
+N-2           1135 A5809BB-9  N De Hi              223 Na
+N-3           1239 E568100-6    Lo Ni              613 Na
+N-4           1438 A1009A8-C  2 Hi Na Va           214 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ozadash SECTOR: Ciosh Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1735 B304325-8    Ic Lo Ni Va        613 Na
+O-2           1737 B8697BF-9                       702 Na
+O-3           2137 C582744-5    Ri                 604 Na
+O-4           2239 C533345-8    Lo Ni Po           602 Na
+O-5           2333 E403120-5    Ic Lo Ni Va        924 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Pinuin SECTOR: Ciosh Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2836 B440ACB-D  N De Hi In Po        212 Na
+P-2           2931 E443525-8    Ni Po              210 Na
+P-3           3133 C662100-6    Lo Ni              203 Na
+P-4           3231 X346212-3    Lo              R  502 Na
+

@@ -1,0 +1,413 @@
+Venereen Sector
+
+A: Avene                     a.dat
+B: Beneree                   b.dat
+C: Ceneven                   c.dat
+D: Davene                    d.dat
+E: Enereen                   e.dat
+F: Fivener                   f.dat
+G: Generia                   g.dat
+H: Hivenne                   h.dat
+I: Ivenere                   i.dat
+J: Jenereen                  j.dat
+K: Kenevere                  k.dat
+L: Leenerev                  l.dat
+M: Mevenea                   m.dat
+N: Nereen                    n.dat
+O: Ovenereen                 o.dat
+P: Phenereev                 p.dat
+
+Bases:
+F = Fenvenar Military
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+12 Fs = Fenvenar State
+12 Js = Jimjones Sanctuary
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Avene SECTOR: Venereen Sector
+#
+# Jump-routes
+#
+$0510 0711 0 1 2
+$0510 0406 0 0 2
+$0406 0203 0 0 2
+$0203 0140 0 -1 2
+$0808 0711 0 1 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0108 A4118BD-C  S Ic Na              603 Na
+Moonada       0203 E5A2727-4    Fl                 444 Na
+A-3           0306 D979302-7    Lo Ni              703 Na
+Daninsa       0406 D688325-7    Lo Ni              204 Na
+Xavaugh       0510 A330356-B    De Lo Ni Po        822 Na
+A-6           0601 C856001-5  S Lo Ni              610 Na
+A-7           0702 E8A2523-4    Fl Ni              102 Na
+A-8           0802 CAC6300-B  S Fl Lo Ni        A  812 Na
+A-9           0806 D748321-6    Lo Ni              414 Na
+A-10          0808 B678722-A  F Ag                 402 Fs
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Beneree SECTOR: Venereen Sector
+#
+# Jump-routes
+$1105 1205 0 0
+#
+$1205 1403 0 0 11
+$1205 1006 0 0 11
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           0908 D665359-8  S Lo Ni              102 Na
+B-2           0909 E76A304-8    Lo Ni Wa           223 Na
+B-3           1006 C54348C-9  S Ni Po              804 Na
+B-4           1105 A3108CD-A  2 Na                 704 Na
+B-5           1205 B1105AB-E  N Ni                 122 Na
+B-6           1403 B675463-6    Ni                 934 Na
+B-7           1508 B674424-B    Ni                 910 Na
+B-8           1608 C8A19CF-8    Fl Hi              310 Na
+B-9           1610 C88A9EF-B    Hi Wa              800 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ceneven SECTOR: Venereen Sector
+#
+# Jump-routes
+#
+$2302 2139 0 -1 10
+$2302 2602 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1903 B666334-6  N Lo Ni              404 Na
+C-2           2106 C672020-8  S Lo Ni              811 Na
+C-3           2204 C776695-6  S Ag Ni              222 Na
+C-4           2205 B3207AD-C    De Na Po           214 Na
+C-5           2210 B5557A9-5    Ag                 604 Na
+Nindarra      2302 A546853-8  S                    204 Na
+C-7           2402 B2008C9-A    Na Va              205 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Davene SECTOR: Venereen Sector
+#
+# Jump-routes
+#
+$2602 2302 -1 0 10
+$2602 3004 0 0 10
+$3004 0203 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Veedari       2602 B7469AB-7  S Hi In              204 Na
+D-2           2807 C210454-A  S Ni                 302 Na
+D-3           2808 E120211-8    De Lo Ni Po        213 Na
+D-4           2907 C410312-6    Lo Ni              900 Na
+Drivalla      3004 B665467-B    Ni                 923 Na
+D-6           3104 D556789-5  S Ag                 502 Na
+D-7           3110 B654853-8  S                    802 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Enereen SECTOR: Venereen Sector
+#
+# Jump-routes
+#
+$0518 0621 0 1 2
+$0518 0614 0 0 2
+$0614 0711 0 0 2
+$0711 0510 0 -1 2
+$0711 1012 1 0 12
+$0711 0808 0 -1 12
+$0614 0913 1 0 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0119 C220956-B    De Hi In Na Po     411 Na
+E-2           0216 E574447-5    Ni                 412 Na
+E-3           0419 C7C1358-7  S Fl Lo Ni        A  220 Na
+Makonn        0518 C677888-3                       403 Na
+Thrase        0614 C616203-B    Ic Lo Ni           404 Fs
+Allolli       0711 C595A99-C    Hi In              913 Fs
+E-7           0714 C658795-5  F Ag                 124 Fs
+E-8           0813 E310776-8    Na              B  414 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Fivener SECTOR: Venereen Sector
+#
+# Jump-routes
+$1020 0921 0 1
+#
+$1012 0913 0 0 12
+$1012 1014 0 0 12
+$1012 1212 0 0 12
+$1212 1512 0 0 12
+$1012 0711 -1 0 12
+$0913 0614 -1 0 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0913 A7799A9-D  F Hi In              203 Fs
+Fenvenar      1012 A000451-F    As Ni              823 Fs
+F-3           1014 B758236-6  F Lo Ni              400 Fs
+F-4           1020 A344857-D                       512 Na
+F-5           1117 C549886-6                       113 Na
+F-6           1212 B752421-7  F Ni Po              204 Fs
+F-7           1512 B456496-A  F Ni                 314 Fs
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Generia SECTOR: Venereen Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1712 C23549D-A    Ni                 710 Na
+G-2           1720 C572475-4  S Ni              B  824 Na
+G-3           1915 D300324-7  S Lo Ni Va           203 Na
+G-4           2011 C877420-5  S Ni                 513 Na
+G-5           2218 D537650-4  S Ni                 912 Na
+G-6           2311 C200120-8  S Lo Ni Va           704 Na
+G-7           2416 B150567-8  N De Ni Po           110 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hivenne SECTOR: Venereen Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2513 C461340-5  S Lo Ni              101 Na
+H-2           2518 B535674-9  N Ni              B  612 Na
+H-3           2615 C487965-B    Hi                 304 Na
+H-4           2617 E300666-3    Na Ni Va           102 Na
+H-5           2812 C8A1766-8    Fl                 203 Na
+H-6           3013 C443434-A    Ni Po              812 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ivenere SECTOR: Venereen Sector
+#
+# Jump-routes
+$0821 0921 1 0
+$0821 0922 1 0
+#
+$0621 1023 1 0 2
+$0621 0518 0 -1 2
+$0621 0821 0 0 11
+$0621 0624 0 0 11
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0128 EA8A886-6    Ri Wa              505 Na
+I-2           0227 A632487-B  N Ni Po              404 Na
+I-3           0327 D88889D-1    Ri                 603 Na
+I-4           0524 C75A111-8    Lo Ni Wa           800 Na
+Ilankur       0621 A210431-E  S Ni                 913 Na
+I-6           0624 C4749CB-A    Hi In              804 Na
+I-7           0725 D000A9C-A  S As Hi Na           703 Na
+I-8           0728 D130844-8  S De Na Po           202 Na
+I-9           0730 D6A3555-4    Fl Ni              911 Na
+I-10          0821 B8C4584-C  N Fl Ni           A  304 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jenereen SECTOR: Venereen Sector
+#
+# Jump-routes
+$0921 0821 -1 0
+$0922 0821 -1 0
+$0921 1020 0 -1
+#
+$1526 1827 1 0 2
+$1526 1225 0 0 2
+$1225 1023 0 0 2
+$1023 0621 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0921 A574440-B  N Ni                 312 Na
+J-2           0922 C535231-8    Lo Ni              504 Na
+J-3           0929 D6237BA-5  S Na Po              503 Na
+Avalace       1023 D632AFA-B  S Hi In Na Po        305 Na
+J-5           1129 B895547-8  S Ag Ni              902 Na
+Ekllain       1225 C759568-6  S Ni                 623 Na
+J-7           1226 C522300-7    Lo Ni Po           501 Na
+J-8           1327 EA7A100-6    Lo Ni Wa           303 Na
+Joallam       1526 X866785-0    Ag Ri           R  113 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kenevere SECTOR: Venereen Sector
+#
+# Jump-routes
+#
+$2428 2728 1 0 2
+$2428 2029 0 0 2
+$2029 1827 0 0 2
+$1827 1526 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1721 C3778A9-7  S                    402 Na
+K-2           1730 C211100-9    Ic Lo Ni           804 Na
+K-3           1824 E000200-A    As Lo Ni           503 Na
+K-4           1825 E443000-3    Ba Lo Ni Po        624 Na
+Agroima       1827 A5238A6-D    Na Po              101 Na
+K-6           1828 D8B6101-8  S Fl Lo Ni        A  703 Na
+K-7           2021 C425335-A    Lo Ni              614 Na
+Raufloi       2029 C120530-A    De Ni Po           713 Na
+K-9           2226 B4338B7-B  S Na Po              915 Na
+Klisaoi       2428 C454456-6  S Ni                 203 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Leenerev SECTOR: Venereen Sector
+#
+# Jump-routes
+#
+$3129 0329 1 0 2
+$3129 2728 0 0 2
+$2728 2428 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2627 C442210-A    Lo Ni Po           603 Na
+Crenain       2728 D66A669-4    Ni Ri Wa           511 Na
+L-3           2923 A551641-B    Ni Po              115 Na
+L-4           3030 E356863-6                       602 Na
+L-5           3123 C522635-7    Na Ni Po           504 Na
+Lollina       3129 C6728B9-7                       611 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Mevenea SECTOR: Venereen Sector
+#
+# Jump-routes
+$0140 0240 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0132 E446200-6    Lo Ni              802 Na
+Jimjones      0134 C6989EJ-6    Hi In           R  601 Js
+M-3           0140 C441545-9  S Ni Po              204 Na
+M-4           0232 D201037-3  S Ic Lo Ni Va        914 Na
+M-5           0235 C65757B-8    Ag Ni           B  524 Na
+M-6           0240 B666344-B  N Lo Ni              703 Na
+M-7           0438 CAB6565-7    Fl Ni           A  400 Na
+M-8           0531 BAC8113-A  N Fl Lo Ni        A  534 Na
+M-9           0532 A545785-C    Ag                 923 Na
+M-10          0637 C310AAB-C    Hi Na              704 Na
+M-11          0731 C000636-7    As Na Ni           311 Na
+M-12          0735 B9B4413-A    Fl Ni           A  204 Na
+M-13          0736 B585797-8    Ag Ri              100 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nereen SECTOR: Venereen Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           1036 E257368-5    Lo Ni              921 Na
+N-2           1133 C87A798-A    Wa                 703 Na
+N-3           1235 E451445-8    Ni Po              205 Na
+N-4           1434 E796666-1    Ag Ni              224 Na
+N-5           1438 E9A3450-7    Fl Ni              705 Na
+N-6           1532 E525447-5    Ni                 805 Na
+N-7           1639 B838101-A    Lo Ni              505 Na
+N-8           1640 C446300-A  S Lo Ni              310 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ovenereen SECTOR: Venereen Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           2033 A573754-A  2                    203 Na
+O-2           2140 D612588-5  S Ic Ni              803 Na
+O-3           2235 C86A630-5    Ni Wa              904 Na
+O-4           2236 C4469DF-9    Hi In              803 Na
+O-5           2237 C437531-A    Ni                 411 Na
+O-6           2331 C549522-6    Ni                 310 Na
+O-7           2334 B373003-8    Lo Ni              104 Na
+O-8           2338 C839320-A    Lo Ni              304 Na
+O-9           2435 D7B4202-9  S Fl Lo Ni        A  430 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Phenereev SECTOR: Venereen Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2535 E8A3778-5    Fl              B  604 Na
+P-2           2633 B442724-8  2 Po                 902 Na
+P-3           2734 X445776-3    Ag              R  211 Na
+P-4           2735 D535200-9  S Lo Ni              412 Na
+P-5           2736 C00067C-7    As Na Ni        B  903 Na
+P-6           3031 C343434-5    Ni Po              101 Na
+P-7           3034 CA998C8-5  S                    225 Na
+P-8           3131 B779400-D    Ni                 900 Na
+P-9           3133 E1009CE-B    Hi Na Va           114 Na
+P-10          3135 C585100-6    Lo Ni              904 Na
+P-11          3239 D526630-5  S Ni                 404 Na
+P-12          3240 B665564-6    Ag Ni              704 Na
+

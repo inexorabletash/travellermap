@@ -1,0 +1,406 @@
+Eggugul Sector
+
+A: Aggug                     a.dat
+B: Beggug                    b.dat
+C: Cugul                     c.dat
+D: Druggug                   d.dat
+E: Eggug                     e.dat
+F: Flaggul                   f.dat
+G: Ghugg                     g.dat
+H: Hughgu                    h.dat
+I: Igulgu                    i.dat
+J: Juggi                     j.dat
+K: Kluggul                   k.dat
+L: Luggass                   l.dat
+M: Mulgug                    m.dat
+N: Nuglug                    n.dat
+O: Ogglu                     o.dat
+P: Panugul                   p.dat
+
+Bases:
+C = Iggia Military
+D = Drutagg Military
+J = Monrove Navy
+K = Monrove Scout
+L = Monrove Army
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+13 Ds = Drutagg State
+14 Ic = Iggia Conquests
+12 Md = Monrove Dynasty
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Aggug SECTOR: Eggugul Sector
+#
+# Jump-routes
+#
+$0603 0906 1 0 2
+$0603 0301 0 0 2
+$0301 0340 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0102 D6A5102-9  S Fl Lo Ni           700 Na
+A-2           0108 C442100-8  S Lo Ni Po           710 Na
+Akricci       0301 C322233-7  S Lo Ni Po           303 Na
+A-4           0309 E677220-5    Lo Ni              504 Na
+A-5           0406 C657775-7  S Ag              B  304 Na
+A-6           0506 A431622-D    Na Ni Po           302 Na
+A-7           0508 E898877-1                    B  202 Na
+Pauunacci     0603 D623220-3  S Lo Ni Po           503 Na
+A-9           0802 C465404-6  S Ni                 805 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Beggug SECTOR: Eggugul Sector
+#
+# Jump-routes
+#
+$1009 1113 0 1 2
+$1009 0906 0 0 2
+$0906 0603 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Buuyanno      0906 B737A9C-A    Hi In              621 Na
+B-2           1003 C863A9A-9    Hi                 724 Na
+Veedaci       1009 D210667-7  S Na Ni              402 Na
+B-4           1101 E59478A-2    Ag                 811 Na
+B-5           1205 B0008A9-9    As Na              200 Na
+B-6           1301 C100001-9  S Lo Ni Va           504 Na
+B-7           1402 E545896-1                       623 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Cugul SECTOR: Eggugul Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1803 A435540-A  N Ni                 504 Na
+C-2           1804 C510787-7    Na                 904 Na
+C-3           2001 B585100-C  N Lo Ni              111 Na
+C-4           2006 C774201-5  S Lo Ni              803 Na
+C-5           2007 C5A279B-7    Fl                 322 Na
+C-6           2203 X778432-0                    R  602 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Druggug SECTOR: Eggugul Sector
+#
+# Jump-routes
+#
+$2802 2739 0 -1 10
+$2802 3004 0 0 10
+$3004 0206 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2504 E370465-3    De Ni              420 Na
+D-2           2607 E698510-3    Ag Ni              204 Na
+D-3           2702 C310426-6    Ni                 504 Na
+Nananty       2802 C255400-9    Ni                 502 Na
+D-5           2908 X100463-1    Va              R  702 Na
+Drutagg       3004 A693A9B-G  D Hi In Cx           303 Ds
+D-7           3103 C000445-A    As Ni              204 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Eggug SECTOR: Eggugul Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0114 E643588-7    Ni Po              904 Na
+E-2           0120 C99A459-8  C Ni Wa              403 Ic
+E-3           0215 C160742-9    De Ri              103 Na
+E-4           0313 B684675-5  S Ag Ni Ri        B  430 Na
+E-5           0315 A000100-D  S As Lo Ni           104 Na
+E-6           0718 C3348AB-9                       903 Na
+E-7           0820 C566ABE-8  S Hi                 104 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Flaggul SECTOR: Eggugul Sector
+#
+# Jump-routes
+$1416 1517 0 0
+#
+$1617 1820 1 0 2
+$1617 1414 0 0 2
+$1414 1113 0 0 2
+$1113 1009 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0914 C330575-7  S De Ni Po        B  613 Na
+F-2           1020 D475335-3    Lo Ni              104 Na
+Corpolopua    1113 E222414-9    Ni Po              921 Na
+Faxxa         1414 E5A3AB9-6    Fl Hi              815 Na
+F-5           1416 A000534-B    As Ni              700 Na
+F-6           1517 C6A3448-9  S Fl Ni              200 Na
+F-7           1615 D99A357-9    Lo Ni Wa           504 Na
+Huilafi       1617 C669589-9    Ni                 601 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ghugg SECTOR: Eggugul Sector
+#
+# Jump-routes
+#
+$1820 1923 0 1 2
+$1820 1617 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1713 C776325-6  S Lo Ni              200 Na
+Gollinorra    1820 C320300-C    De Lo Ni Po        432 Na
+G-3           1915 D855633-1    Ag Ni              603 Na
+G-4           1918 B332577-B    Ni Po           B  424 Na
+G-5           2013 C985468-7    Ni                 604 Na
+G-6           2313 C748886-4  S                    602 Na
+G-7           2320 D654266-4    Lo Ni              122 Na
+G-8           2412 X9B8679-3    Fl              R  302 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hughgu SECTOR: Eggugul Sector
+#
+# Jump-routes
+$2517 2616 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2517 B20069A-B    Na Ni Va           914 Na
+H-2           2616 B5A4963-A  N Fl Hi              414 Na
+H-3           2716 C3418BE-8    Po                 222 Na
+H-4           2718 C725544-A    Ni                 915 Na
+H-5           2812 B484212-C  2 Lo Ni              600 Na
+H-6           2813 B531266-8  N Lo Ni Po           914 Na
+H-7           2818 C442541-7  S Ni Po              802 Na
+H-8           2911 C460463-A  S De Ni              210 Na
+H-9           2916 C534541-9  S Ni                 202 Na
+H-10          3012 E130100-B    De Lo Ni Po        505 Na
+H-11          3014 C556100-6    Lo Ni              813 Na
+H-12          3019 B66A300-A    Lo Ni Wa           525 Na
+H-13          3214 C000597-B    As Ni              412 Na
+H-14          3220 C203420-A    Ic Ni Va           402 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Igulgu SECTOR: Eggugul Sector
+#
+# Jump-routes
+#
+$0121 0123 0 0 14
+$0123 0524 0 0 14
+$0524 0723 0 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Iggia         0121 A8B29AC-F  C Fl Hi           A  603 Ic
+I-2           0123 B597433-6  C Ni                 312 Ic
+I-3           0129 D2006BA-6    Na Ni Va           802 Na
+I-4           0228 B556220-8    Lo Ni              204 Na
+I-5           0422 C663566-6  C Ni                 125 Ic
+I-6           0524 B573465-7  C Ni                 610 Ic
+I-7           0623 C310656-A    Na Ni              503 Ic
+I-8           0626 C525200-7    Lo Ni              503 Ic
+I-9           0723 B354565-8  C Ag Ni              201 Ic
+I-10          0821 C460375-6    De Lo Ni        B  124 Na
+I-11          0823 C545613-7    Ag Ni              100 Ic
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Juggi SECTOR: Eggugul Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0927 B140664-C  C De Ni Po           113 Ic
+J-2           1027 C516258-B    Ic Lo Ni           500 Ic
+J-3           1130 C8C4658-5    Fl Ni           A  913 Na
+J-4           1223 C313268-B  S Ic Lo Ni           102 Na
+J-5           1326 C000330-7    As Lo Ni           415 Na
+J-6           1330 D655400-6  S Ni                 404 Na
+J-7           1421 C652367-5    Lo Ni Po           420 Na
+J-8           1429 C373887-6  S                    903 Na
+J-9           1624 E537ABB-9    Hi In              823 Na
+J-10          1627 C9E2740-6  S Fl                 910 Na
+J-11          1629 D210221-9    Lo Ni              430 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kluggul SECTOR: Eggugul Sector
+#
+# Jump-routes
+$1828 1929 0 0
+#
+$2328 2431 0 1 2
+$2328 2125 0 0 2
+$2125 1923 0 0 2
+$1923 1820 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1828 B8D4213-9  2 Fl Lo Ni           324 Na
+Illianu       1923 C563899-8  S Ri                 604 Na
+K-3           1924 C576246-7    Lo Ni              614 Na
+K-4           1929 B68357B-B  N Ni              B  213 Na
+K-6           2128 C1307AA-6  S De Na Po           120 Na
+Korrtnak      2125 A888766-9  N Ag Ri              504 Na
+Eqquiiv       2328 C5886AC-8    Ag Ni              311 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Luggass SECTOR: Eggugul Sector
+#
+# Jump-routes
+$2530 2431 -1 1
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2530 A354624-B    Ag Ni              600 Na
+L-2           2828 B351110-C    Lo Ni Po           204 Md
+L-3           2925 E403400-7    Ic Ni Va           720 Na
+L-4           3028 D000003-8    As Lo Ni           622 Md
+L-5           3222 E210544-4    Ni                 903 Na
+L-6           3223 E75A436-4    Ni Wa              314 Na
+L-7           3229 D4548CF-6  J                    500 Md
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Mulgug SECTOR: Eggugul Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0133 B758897-A  N                    202 Na
+M-2           0231 C466466-6    Ni                 124 Na
+M-3           0235 E531100-7    Lo Ni Po           902 Na
+M-4           0339 C769554-6    Ni                 403 Na
+M-5           0432 C413424-8  S Ic Ni              804 Na
+M-6           0437 C454A73-B  S Hi              B  404 Na
+M-7           0533 B572424-6  2 Ni                 610 Na
+M-8           0535 E596134-4    Lo Ni              502 Na
+M-9           0537 C666645-5    Ag Ni Ri           410 Na
+M-10          0734 C200200-C  S Lo Ni Va           412 Na
+M-11          0832 C550100-7  S De Lo Ni Po        214 Na
+M-12          0839 D130679-6    De Na Ni Po     B  123 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nuglug SECTOR: Eggugul Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0935 C885213-6    Lo Ni              703 Na
+N-2           0936 B130132-A  S De Lo Ni Po        612 Na
+N-3           0938 A767301-A  S Lo Ni              612 Na
+N-4           1040 C431201-8  S Lo Ni Po           904 Na
+N-5           1131 C434468-B    Ni                 600 Na
+N-6           1139 B495562-8  2 Ag Ni              213 Na
+N-7           1240 C555226-7    Lo Ni              620 Na
+N-8           1435 D356844-3  S                    603 Na
+N-9           1535 C48659B-8  S Ag Ni              401 Na
+N-10          1540 B120205-D  N De Lo Ni Po        223 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ogglu SECTOR: Eggugul Sector
+#
+# Jump-routes
+$2431 2530 1 -1
+#
+$2333 2536 1 0 2
+$2333 2431 0 0 2
+$2431 2328 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1733 C8968BD-7                       614 Na
+O-2           1936 B652476-A  2 Ni Po           B  102 Na
+O-3           1938 C593442-6    Ni                 704 Na
+O-4           1940 C6799EG-B  S Hi In           A  923 Na
+O-5           2238 AAA36B6-B    Fl Ni              320 Na
+Coulla        2333 E668534-3    Ag Ni              621 Na
+Odwarra       2431 B3367CD-C                       312 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Panugul SECTOR: Eggugul Sector
+#
+# Jump-routes
+#
+$3039 0239 1 0 2
+$3039 2737 0 0 2
+$2737 2536 0 0 2
+$2536 2333 -1 0 2
+$3039 0237 1 0 12
+$3132 0135 1 0 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Bredarra      2536 C10088A-8  S Na Va              103 Na
+P-2           2631 E666500-3    Ag Ni              215 Na
+Yunnunda      2737 D274120-4  K Lo Ni              424 Md
+P-4           2838 C4948CD-7  J                    710 Md
+Hillon        3039 B657ADF-8  L Hi                 312 Md
+P-6           3131 C553522-6  J Ni Po              803 Md
+P-7           3132 B658326-7    Lo Ni              604 Md
+

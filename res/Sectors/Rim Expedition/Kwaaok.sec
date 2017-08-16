@@ -1,0 +1,388 @@
+Kwaaok Sector
+
+A: Akwaa                     a.dat
+B: Baaok                     b.dat
+C: Ckwaao                    c.dat
+D: Dekwaa                    d.dat
+E: Ekwaao                    e.dat
+F: Fikwaaok                  f.dat
+G: Ghokwaao                  g.dat
+H: Hokwaaok                  h.dat
+I: Ikwaa                     i.dat
+J: Jukiwaa                   j.dat
+K: Kwaan                     k.dat
+L: Lokwa                     l.dat
+M: Milkwaa                   m.dat
+N: Neekwaao                  n.dat
+O: Okwaaok                   o.dat
+P: Plakwaa                   p.dat
+
+Bases:
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Akwaa SECTOR: Kwaaok Sector
+#
+# Jump-routes
+#
+$0104 3102 -1 0 10
+$0104 0207 0 0 10
+$0207 0311 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0102 D9A58AA-4    Fl                 903 Na
+Hammole       0104 X532978-3    Hi In Na Po     B  403 Na
+Flazaal       0207 C97A356-C    Lo Ni Wa           805 Na
+A-4           0503 D10056A-6  S Ni Va              824 Na
+A-5           0506 EAD6667-4    Fl Ni              104 Na
+A-6           0507 C443598-9  S Ni Po              403 Na
+A-7           0602 C58688A-7  S Ri                 601 Na
+A-8           0801 C343750-9    Po                 600 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Baaok SECTOR: Kwaaok Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           0904 X854532-2    Ag              R  204 Na
+B-2           1007 B775257-A  S Lo Ni              412 Na
+B-3           1302 C300540-B  S Ni Va              422 Na
+B-4           1308 C88A643-A  S Ni Ri Wa           403 Na
+B-5           1409 A1006AA-A  S Na Ni Va           102 Na
+B-6           1501 DAD3754-3    Fl                 400 Na
+B-7           1506 C223589-B    Ni Po              624 Na
+B-8           1609 B879445-C  N Ni                 214 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ckwaao SECTOR: Kwaaok Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1807 C593475-6    Ni              B  423 Na
+C-2           2005 CAC476B-8  S Fl              A  302 Na
+C-3           2006 E8A289C-4    Fl                 500 Na
+C-4           2205 C9C1655-5  S Fl Ni           A  200 Na
+C-5           2303 C9B1444-8    Fl Ni           A  614 Na
+C-6           2305 C648665-7  S Ag Ni              604 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Dekwaa SECTOR: Kwaaok Sector
+#
+# Jump-routes
+#
+$2810 2610 0 0 11
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2504 C95A578-7    Ni Wa           B  200 Na
+D-2           2507 E636367-8    Lo Ni              302 Na
+D-3           2603 C330545-7    De Ni Po           703 Na
+D-4           2610 C3517CH-4  S Po                 914 Na
+D-5           2810 A452433-E    Ni Po              710 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ekwaao SECTOR: Kwaaok Sector
+#
+# Jump-routes
+#
+$0311 0207 0 -1 10
+$0311 0313 0 0 10
+$0313 0515 0 0 10
+$0515 0815 0 0 10
+$0815 1018 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0111 C668ACE-9    Hi                 600 Na
+E-2           0113 X765886-2    Ri              R  104 Na
+E-3           0117 C955A99-C    Hi                 801 Na
+E-4           0118 C563245-8    Lo Ni              814 Na
+E-5           0218 C666022-8    Lo Ni              502 Na
+Ellannia      0311 D411134-8    Ic Lo Ni           604 Na
+Drailla       0313 B533555-B  N Ni Po              924 Na
+E-8           0411 C6A4147-7    Fl Lo Ni           605 Na
+Trenie        0515 B521963-A  N Hi In Na Po        201 Na
+E-10          0620 C445765-8    Ag                 404 Na
+Varra         0815 C995410-8    Ni                 511 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Fikwaaok SECTOR: Kwaaok Sector
+#
+# Jump-routes
+#
+$1018 0815 -1 0 10
+$1018 1020 0 0 10
+$1020 1322 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0912 C877446-9    Ni                 800 Na
+Grawli        1018 C442547-8    Ni Po              303 Na
+Harassi       1020 B897168-6    Lo Ni              312 Na
+F-4           1118 E100432-A    Ni Va              113 Na
+F-5           1219 C443510-A    Ni Po              101 Na
+F-6           1316 E140599-4    De Ni Po           904 Na
+F-7           1415 CAA2897-9    Fl                 201 Na
+F-8           1511 E9D7432-7    Fl Ni              102 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ghokwaao SECTOR: Kwaaok Sector
+#
+# Jump-routes
+$1815 1914 0 0
+$1815 1915 0 0
+$2313 2414 0 0
+$2414 2514 1 0
+$2414 2515 1 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1811 B400565-D    Ni Va              112 Na
+G-2           1815 A410589-D    Ni                 604 Na
+G-3           1914 B668568-B  S Ag Ni              304 Na
+G-4           1915 C734441-9    Ni                 902 Na
+G-5           2313 B9C4301-8    Fl Lo Ni        A  903 Na
+G-6           2414 B46548D-A  N Ni                 304 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hokwaaok SECTOR: Kwaaok Sector
+#
+# Jump-routes
+$2514 2414 -1 0
+$2515 2414 -1 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2514 C586A64-8    Hi                 915 Na
+H-2           2515 B643238-8  N Lo Ni Po           713 Na
+H-3           2714 E6B189B-2    Fl              A  704 Na
+H-4           2816 E130138-9    De Lo Ni Po        814 Na
+H-5           2911 E4758AD-6                       403 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ikwaa SECTOR: Kwaaok Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0225 C443301-8    Lo Ni Po           912 Na
+I-2           0322 B555116-6    Lo Ni              113 Na
+I-3           0722 B79A011-7  N Lo Ni Wa           704 Na
+I-4           0728 B000620-A    As Na Ni           202 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jukiwaa SECTOR: Kwaaok Sector
+#
+# Jump-routes
+$1530 1431 0 1
+#
+$1322 1020 0 -1 10
+$1322 1525 0 0 10
+$1525 1927 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           1027 D310300-7    Lo Ni              100 Na
+Murteen       1322 C311455-C  S Ic Ni              712 Na
+J-3           1428 C9A3563-A  S Fl Ni              100 Na
+Jabdal        1525 C99A9A7-7  S Hi In Wa           404 Na
+J-5           1530 A667512-8  N Ag Ni              503 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kwaan SECTOR: Kwaaok Sector
+#
+# Jump-routes
+$2425 2527 1 0
+$2425 2626 1 0
+#
+$1927 1525 -1 0 10
+$1927 2226 0 0 10
+$2226 2527 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1729 C728200-7    Lo Ni              304 Na
+K-2           1822 B569421-8  2 Ni                 302 Na
+Klorvamm      1927 C000522-C    As Ni              504 Na
+K-4           1928 A552246-C  S Lo Ni Po           424 Na
+K-5           2027 C446597-8    Ag Ni              413 Na
+K-6           2125 C544A9A-8  S Hi In              802 Na
+K-7           2221 B99987C-8  N                 B  512 Na
+Greagor       2226 C526265-5    Lo Ni              603 Na
+K-9           2422 E426944-7    Hi In              614 Na
+K-10          2425 A674511-D  N Ag Ni              412 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lokwa SECTOR: Kwaaok Sector
+#
+# Jump-routes
+$2527 2425 -1 0
+$2626 2425 -1 0
+#
+$2527 2226 -1 0 10
+$2527 2728 0 0 10
+$2728 2930 0 0 10
+$2930 3133 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Lamania       2527 B665889-6  S Ri                 334 Na
+L-2           2621 D414554-6  S Ic Ni              113 Na
+L-3           2626 B511641-9  S Ic Na Ni           904 Na
+Chlovanna     2728 D7C6421-7  S Fl Ni           A  201 Na
+Sawanna       2930 C31069B-A    Na Ni              104 Na
+L-6           3024 B98A356-D    Lo Ni Wa           202 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Milkwaa SECTOR: Kwaaok Sector
+#
+# Jump-routes
+#
+$0139 0302 0 1 2
+$0139 3039 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Moparn        0139 E754669-1    Ag Ni              815 Na
+M-2           0637 D343437-3  S Ni Po              104 Na
+M-3           0832 E511035-6    Ic Lo Ni           205 Na
+M-4           0834 C200220-B  S Lo Ni Va           413 Na
+M-5           0836 C637135-9    Lo Ni              914 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Neekwaao SECTOR: Kwaaok Sector
+#
+# Jump-routes
+$1431 1530 0 -1
+$1138 1238 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           1031 B563695-6    Ni Ri              103 Na
+N-2           1035 C210556-C    Ni                 614 Na
+N-3           1138 C4588AA-7                       114 Na
+N-4           1238 A000330-D    As Lo Ni           604 Na
+N-5           1331 D400866-5  S Na Va              202 Na
+N-6           1334 C6A5856-9    Fl                 203 Na
+N-7           1338 C110652-9    Na Ni              704 Na
+N-8           1339 D87A862-5  S Wa                 600 Na
+N-9           1431 CAA7A54-E    Fl Hi              904 Na
+N-10          1433 D463852-6  S Ri                 803 Na
+N-11          1537 E68A126-5    Lo Ni Wa           910 Na
+N-12          1540 D7A5863-5    Fl                 701 Na
+N-13          1636 C000535-B  S As Ni              521 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Okwaaok SECTOR: Kwaaok Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1740 A586543-C  N Ag Ni              113 Na
+O-2           2032 E8C3455-9    Fl Ni           A  714 Na
+O-3           2138 C499887-A                       604 Na
+O-4           2233 B5539BB-C    Hi Po              515 Na
+O-5           2240 C687759-4    Ag Ri              813 Na
+O-6           2331 C230854-6  S De Na Po           524 Na
+O-7           2337 C501525-7    Ic Ni Va           802 Na
+O-8           2434 C6A2462-8    Fl Ni              824 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Plakwaa SECTOR: Kwaaok Sector
+#
+# Jump-routes
+#
+$3133 2930 0 -1 10
+$3133 3136 0 0 10
+$3136 2937 0 0 10
+$2937 2940 0 0 10
+$2940 3102 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2538 E456544-8    Ag Ni              714 Na
+P-2           2633 B5A1555-A  N Fl Ni              403 Na
+P-3           2635 E150624-7    De Ni Po           502 Na
+P-4           2738 B426775-9                    B  722 Na
+P-5           2832 C531577-9    Ni Po           B  303 Na
+P-6           2833 C655536-9    Ag Ni              712 Na
+P-7           2837 C86A536-B  S Ni Wa              600 Na
+P-8           2838 C72A613-B  S Ni Wa              300 Na
+Zulan         2937 C431411-9  S Ni Po              624 Na
+Tripanna      2940 DA9A534-5    Ni Wa              713 Na
+P-11          3132 C5119CE-7  S Hi Ic Na           103 Na
+Husharo       3133 C200743-5  S Na Va              121 Na
+Felinure      3136 CAE8585-5  S Fl Ni              801 Na
+

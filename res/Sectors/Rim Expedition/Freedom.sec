@@ -1,0 +1,715 @@
+Freedom Sector
+
+A: Acronas                   sub_a.dat           m
+B: Butrag                    sub_b.dat           m
+C: Clesis                    sub_c.dat           m
+D: Dumatq                    sub_d.dat           m
+E: Elanda                    sub_e.dat           m
+F: Frugala                   sub_f.dat           m
+G: Gopall                    sub_g.dat           m
+H: Hilutan                   sub_h.dat           m
+I: Itopis                    sub_i.dat           m
+J: Junanda                   sub_j.dat           m
+K: Krovis                    sub_k.dat           m
+L: Lutrok                    sub_l.dat           m
+M: Moriga                    sub_m.dat           m
+N: Novaam                    sub_n.dat           m
+O: Oplifis                   sub_o.dat           m
+P: Purim                     sub_p.dat           m
+
+Bases:
+N = Navy
+S = Scout
+A = Navy & Scout
+B = Navy & Marine
+C = Scout & Marine
+M = Marine
+D = Army
+E = Army & Scout
+G = Planetary Guard
+W = Way Station
+  = None
+
+Allegiance:
+01 Im = Imperial Empire
+09 Ma = Margaret Imperial
+02 Va = Valani
+03 Zh = Zhodani
+04 Vr = Vargr
+05 As = Aslani
+05 A1 = Aslan Aata Clan
+11 So = Solomoni Alliance
+12 Kl = Klingon Empire
+13 Ro = Romulun Empire
+14 Fe = Feringi Federation
+06 Ca = Cardacian
+07 Sy = Synthetic's
+15 Na = Non Aligned
+10 Wi = Wild
+09 -- = None
+08    = Unknown
+
+
+ Special thanks to Bari Stafford Sr. for this interesting sector meshing many
+known and unknown species into one sector which normally would never happen.
+
+Special thanks to Bari Stafford Jr., Vern Robert's, Star Wars, Star Trek, V,
+Battlestar Galactica, Lost in Space, Disney, Star Trek Next Generation, Star
+Trek Deep Space 9, Babylon 5, Forbidden Planet, and all of the unnumbered host
+of sci-fi for inspiring me to continue my dreams.
+
+ Bari Stafford Sr.
+ Nov 1998
+ generalturokan@juno.com
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Acronas SECTOR: Eleutherian
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Tau Alpha Cee 0306 X576858-0                       925    160 mz
+B H           0407 *4 Black Hole                R      Na     f
+Alpha Denaru  0507 X202421-0    Ba Ic Lo Ni Va     300    010 mz
+Alpha Elgrove 0804 X5287AF-0                       500    170 mz
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Butrag SECTOR: Eleutherian
+#
+$1404 1705 1 0 11
+$1404 1506 0 0 11
+$1506 1404 0 0 11
+$1506 1608 0 0 11
+$1608 1506 0 0 11
+$1608 1708 1 0 11
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Ceti Alpha    0905 X493131-0    Lo Ni              411    340 mz
+N S           1006 *3 Neutron Star              R      --     f
+Binar         1008 X433357-0    Lo Ni Po           505    910 mz
+Feclor        1010 X88A345-0    Lo Ni Wa           700    190 mz
+Betallis      1102 X534630-0    Ni                 600    140 mz
+Beta Vorgon   1105 X767380-0    Lo Ni              303    350 mz
+Beta Stromgren1201 XAD5743-0    Fl                 803    0E0 mz
+Essibe        1210 X7728A9-0                       600    640 mz
+Betamu        1307 X784559-0    Ag Ni              405    370 mz
+Betaram       1309 X676323-0    Lo Ni              311    670 mz
+Korbet        1404 B696531-0    Ag Ni              711 So 660 mz
+GC            1410 *4 Gas Cloud                 A      --     m
+Turbet        1506 B78A021-0    Lo Ni Wa           600 So 3C0 mz
+D S           1606 *3 Dead Star                 A      --     f
+Bectalor      1608 AA88778-0    Ag Ri           B  103 So 770 mz
+Phibee        1610 C889424-0    Ni Ru              911 So 240 mz
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Clesis SECTOR: Eleutherian
+#
+$1903 2807 1 0 6
+$2010 2212 0 1 11
+$2010 2108 0 0 11
+$2108 2010 0 0 11
+$2108 2107 0 0 11
+$2107 2108 0 0 11
+$2107 1806 0 0 11
+$1806 2107 0 0 11
+$1806 1705 0 0 11
+$1705 1806 0 0 11
+$1806 1708 0 0 11
+$1708 1806 0 0 11
+$1705 1404 -1 0 11
+$1708 1608 -1 0 11
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+ROMULUS       1705 A552A9B-0    Hi Po              204 So 310 mz
+GAMMAL        1708 B635ABA-0    Hi In An           904 So 470 mz
+See Gum       1710 E546433-0    Ni                 703 So 550 mz
+Gammatu       1806 B675312-0    Lo Ni              202 So 180 mz
+Segamma       1808 E794202-0    Lo Ni              400 So 770 mz
+Forgamma      1901 X545766-0    Ag                 605    950 mz
+WH            1903 *4 Worm Hole to 2807                Na
+M C           1909 *3 Mira Ceti 250 day interm  R      --     f
+Tau Gamma     2003 X855353-0    Lo Ni              705    180 mz
+Tau Seeva     2007 D697432-0    Ni                 401 So 370 mz
+See Psigon    2010 A564875-0    Ri              B  104 So 020 mz
+Tri Gamma     2103 X895797-0    Ag                 305    960 mz
+DRILLION      2107 B120686-0    De Na Ni Po        903 So 050 mz
+Secter        2108 B8A0426-0    De Ni              712 So 090 mz
+Secrax        2201 X110030-0    Ba Lo Ni           001    010 mz
+PHIGAR        2209 C4649B9-0    Hi                 903 So 730 mz
+Gammashur     2301 X130088-0    De Lo Ni Po        104    010 mz
+Seegorlac     2310 C460720-0    De                 501 So 000 mz
+F V           2403 *3 Flare Variable            R      --     f
+Wayland       2406 X210079-0  P Lo Ni           R  905 So A20 mz
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Clesis SECTOR: Eleutherian
+#
+$2807 1903 -1 0 6
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Delta         2602 X56256A-0    Ni                 825    310 mz
+WH            2807 *4 Worm Hole to C-0303              Na  
+KITAMER       2907 X253958-0    Hi Po              204    550 mz
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Elanda SECTOR: Eleutherian
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Epsilon Indi  0111 X9A5562-0    Fl Ni Ru           801    1A0 mz
+Epsin Deli    0116 X511066-0    Ba Ic Lo Ni        004    060 mz
+Eptau Ee      0312 X236544-0    Ni                 700    500 mz
+Psi Eeto      0315 X410001-0    Ba Lo Ni           021    080 mz
+Emmaru        0316 X566149-0    Lo Ni              900    000 mz
+Delphigar     0317 X87A853-0    Wa                 100    950 mz
+Eptinaz       0319 XAF9577-0    Fl Ni           B  811    170 mz
+EMERILON      0412 X3200CC-0    De Hi In Na Po     010    000 mz
+F V           0413 *3 Flare Variable            R      --     f
+Phalon        0415 X300055-0    Ba Lo Ni Va        013    030 mz
+EPSILON GEE   0416 X777987-0    Hi In              802    370 mz
+WH            0417 *4 Worm Hole to K-0506              Na     m
+Eptog         0516 X400022-0    Ba Lo Ni Va        001    080 mz
+EPGEE LORE    0614 X799AA8-0    Hi In An           111    490 mz
+Eetog         0711 X467486-0    Ni                 825    840 mz
+Epaq          0817 CA7A495-0    Ni Wa              810 So 1A0 mz
+Egaloo        0820 X445857-0                       900    200 mz
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Frugala SECTOR: Eleutherian
+#
+$1419 1720 1 0 11
+$1516 1716 1 0 11
+$1419 1418 0 0 11
+$1418 1419 0 0 11
+$1516 1615 0 0 11
+$1615 1516 0 0 11
+$1516 1414 0 0 11
+$1414 1516 0 0 11
+$1414 1512 0 0 11
+$1512 1414 0 0 11
+$1512 1612 0 0 11
+$1612 1512 0 0 11
+$1516 1418 0 0 11
+$1418 1516 0 0 11
+$1418 1518 0 0 11
+$1518 1418 0 0 11
+$1419 1420 0 0 11
+$1420 1419 0 0 11
+$1419 1218 0 0 11
+$1218 1419 0 0 11
+$1218 0920 0 0 11
+$0920 1218 0 0 11
+$0920 1121 0 1 11
+$1218 1117 0 0 11
+$1117 1218 0 0 11
+$1117 1116 0 0 11
+$1116 1117 0 0 11
+$1414 1116 0 0 11
+$1116 1414 0 0 11
+$1116 1013 0 0 11
+$1013 1116 0 0 11
+$0917 1016 0 0 11
+$1016 0917 0 0 11
+$1016 1117 0 0 11
+$1117 1016 0 0 11
+$1420 1421 0 1 11
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Effoltu       0914 E646264-0    Lo Ni              403 So 570 mz
+Effrata       0917 B77A355-0    Lo Ni Wa           400 So 730 mz
+Zetamal       0920 A463300-0    Lo Ni Ru           200 So 810 mz
+Zetazu        1013 B796610-0    Ag Ni              423 So 770 mz
+Simeff        1014 C531200-0    Lo Ni Po           101 So 250 mz
+Zarco         1016 B120043-0    De Lo Ni Po        000 So 050 mz
+Procyon       1018 E330000-0    Ba De Lo Ni Po     013 So 240 mz
+Vega          1114 C4416AB-0    Ni Po              302 So 430 mz
+Capricorn     1116 A768200-0    Lo Ni              114 So 280 mz
+Zetagaba      1117 A988584-0    Ag Ni Ru           813 So 150 mz
+Eftamicron    1215 C9B389A-0    Fl              A  203 So 170 mz
+Petaceff      1217 D645310-0    Lo Ni              604 So 570 mz
+Effgraff      1218 A774676-0    Ag Ni Ru        B  714 So 3C0 mz
+GC            1311 *4 Gas Cloud                 A      --     f
+GC            1312 *4 Gas Cloud                 A      --     f
+Etagraze      1314 D584636-0    Ag Ni              700 So A60 mz
+Degaba        1318 C786134-0    Lo Ni              801 So 760 mz
+T-T           1411 *4 T-Tauri Variable          A      --     f
+ZETACOR       1412 E8A7988-0    Fl Hi              503 So 640 mz
+Enkedu        1414 B746657-0    Ag Ni              700 So 780 mz
+Mutara        1417 X57A39C-0    Lo Ni Wa        R  120 -- 730 mz
+Tinagra       1418 A562357-0    Lo Ni              900 So 970 mz
+Effra Tau     1419 A776779-0    Ag              B  200 So 450 mz
+Zetagra       1420 B556611-0    Ag Ni              900 So 740 mz
+Zechitau      1511 E67A543-0    Ni Wa              900 So 770 mz
+Effra Kapau   1512 BAA8889-0    Fl Ru              110 So 690 mz
+Zeta Kapa     1513 C100000-0    Ba Lo Ni Va        010 So 000 mz
+Zekabu        1516 A765463-0    Ni Ru              210 So 980 mz
+Effazagu      1518 B425230-0    Lo Ni              400 So 540 mz
+Wystar        1519 D558554-0    Ag Ni              100 So 3A0 mz
+Psizeta       1612 A869778-0    Ri              B  523 So 8A0 mz
+Chizeff       1615 B2110CA-0    Ba Ic Lo Ni Ru     003 So 230 mz
+Rho Zeta      1620 C400025-0    Ba Lo Ni Va        013 So 010 mz
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Gopall SECTOR: Eleutherian
+#
+$2114 2212 0 0 11
+$2212 2114 0 0 11
+$2114 2415 0 0 11
+$2415 2114 0 0 11
+$2114 2115 0 0 11
+$2115 2114 0 0 11
+$2114 2015 0 0 11
+$2015 2114 0 0 11
+$2114 2215 0 0 11
+$2215 2114 0 0 11
+$2114 2216 0 0 11
+$2216 2114 0 0 11
+$2115 2015 0 0 11
+$2015 2115 0 0 11
+$2115 2215 0 0 11
+$2215 2115 0 0 11
+$2015 1716 0 0 11
+$1716 2015 0 0 11
+$2212 2010 0 -1 11
+$2415 2617 1 0 11
+$2216 2119 0 0 11
+$2119 2216 0 0 11
+$2119 2221 0 1 11
+$2119 2320 0 0 11
+$2320 2119 0 0 11
+$2119 2019 0 0 11
+$2019 2119 0 0 11
+$2019 1819 0 0 11
+$1819 2019 0 0 11
+$1819 1720 0 0 11
+$1720 1819 0 0 11
+$1720 1419 -1 0 11
+$1716 1516 -1 0 11
+$1720 1721 0 1 11
+$2320 2420 0 0 11
+$2420 2320 0 0 11
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Grecoli       1712 C537578-0    Ni              B  902 So 590 mz
+Vicoroli      1714 C6627A8-0                       210 So 230 mz
+WH            1715 *4 Worm Hole Unstable        R      Na     f
+Etacoro       1716 B985872-0    Ri              B  520 So 860 mz
+Etadee        1720 A66779E-0    Ag Ri              524 So 770 mz
+Etanor        1811 E541832-0    Po                 910 So 140 mz
+Chiteta       1813 C66A589-0    Ni Wa              324 So 660 mz
+Etadool       1819 A777598-0    Ag Ni              705 So 470 mz
+Sirius        1912 C521401-0    Ni Po              403 So 350 mz
+Prolus        1918 D87A532-0    Ni Wa              304 So 2A0 mz
+Marcus        2015 B26268A-0  D Ni Ri              125 So 800 mz
+ETAMARU       2018 D200099-0    Lo Ni Va           010 So 060 mz
+ETAGRA        2019 B9A4ADD-0    Fl Hi Ru           403 So 6A0 mz
+Geeseta       2113 C200568-0  S Ba Ic Lo Ni Va     111 So 000 mz
+ETABORUK      2114 AS0098D-C  W Hi Na Va Cx        712 So 05V mz
+Greegee       2115 A545753-0  S Ag An              223 So 460 mz
+Etaphilos     2116 C469667-0  M Ni Ri              212 So 750 mz
+Etabolo       2119 A445558-1    Ag Ni Ru           511 So 010 mz
+Geetechi      2212 A543798-0  C Po                 313 So 670 mz
+Vortaq        2215 A444226-0  D Lo Ni              422 So 690 mz
+Zoan          2216 B985789-0  M Ag Ni Ri           601 So 7A0 mz
+C V           2312 *3 Cepheid Var 13 day interm R      --     f
+ETAGEE        2317 E364ABB-0  E Hi                 304 So 650 mz
+Teekayzo      2319 D443320-0    Lo Ni Po           102 So 870 mz
+Getarho       2320 B74A745-0    Wa                 613 So 2B0 mz
+Etakaru       2412 C245531-0    Ag Ni              905 So 210 mz
+M C           2414 *3 Mira Ceti 350 day interm  R      --     f
+Sanakaru      2415 B746676-0  C Ag Ni           B  914 So 970 mz
+Shakaru       2416 C763326-0  D Lo Ni              402 So 650 mz
+Etamaku       2420 B567200-0    Lo Ni              125 So 870 mz
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hilutan SECTOR: Eleutherian
+#
+$2617 2415 -1 0 11
+$2617 2718 0 0 11
+$2718 2617 0 0 11
+$2718 2816 0 0 11
+$2816 2718 0 0 11
+$2816 3014 0 0 11
+$3014 2816 0 0 11
+$3014 3215 0 0 11
+$3215 3014 0 0 11
+$3014 2913 0 0 11
+$2913 3014 0 0 11
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C V           2511 *3 Cepheid Var 10 day interm R      --     f
+THETA CHO     2513 C785976-0    Hi              B  600 So 5C0 mz
+Golandan Core 2613 C649764-0                       600 So 770 mz
+Theta Hydra   2615 C56189B-0    Ri                 703 So 210 mz
+Prontheta     2616 E665110-0    Lo Ni              800 So 440 mz
+THETA CHI     2617 B589AB8-0    Hi Ru              700 So 5A0 mz
+GC            2618 *4 Gas Clouds                A      --     f
+Chuetu        2619 CA89532-0    Ni                 423 So 9B0 mz
+Vortivor      2712 C200094-0    Lo Ni Va           014 So 020 mz
+F V           2714 *3 Flare Variable            R  001    000 f
+THETAGOR      2718 B94A989-0    Hi In Wa An        901 So 690 mz
+T-T           2719 *4 T-Tauri Variable          A      --     f
+GC            2720 *4 Gas Clouds                A      --     f
+THETAG        2814 E758958-0    Hi                 300 So 960 mz
+Feringi       2816 A586521-0    Ag Ni Ru           610 So 760 mz
+Thetinga      2817 C583447-0    Ni                 104 So 750 mz
+GC            2818 *4 Gas Clouds                A      --     f
+F V           2819 *3 Flare Variable            R      --     f
+THETABURU     2913 B2210BD-0    Lo Ni Po           413 So 120 mz
+Zorb          2914 C96A440-0    Ni Wa              311 So 6A0 mz
+S R V         2917 *3 Semi-Regular Variable     A      --     f
+THETATAMU     3014 A648A7D-0    Hi In An        B  120 So 960 mz
+Antedesto     3111 X300032-0    Lo Ni Va           014    000 mz
+Hetheta       3211 X44058C-0    De Ni Po           104    410 mz
+Chargraitch   3215 A571579-0    Ni An           B  904 So 710 mz
+Chadech       3218 X210000-0    Ba Lo Ni           013    030 mz
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Itopis SECTOR: Eleutherian
+#
+$0628 0638 0 1 6
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Eyestrol      0121 X353761-0    Po                 800    100 mz
+Eyetiota      0123 X569615-0    Ni                 902    350 mz
+Medeba        0124 X267575-0    Ag Ni           B  914    830 mz
+Sippar        0130 X242579-0    Ni Po           B  100    410 mz
+Nippur        0325 X8A6876-0    Fl              B  301    0C0 mz
+N S           0423 *3 Neutron Star              R      --     f
+IOTA MOGRA    0521 X3000BF-0    Lo Ni Va An        012    060 mz
+IOTA MORU     0528 XAA1965-0    Fl Hi              305    0A0 mz
+Chabruk       0530 A242651-8  N Ni Po An        R  204 A1 350 mz
+Zared         0621 X745562-0    Ag Ni              104    450 mz
+Jabbok        0624 X569454-0    Ni Ru              802    830 mz
+Parsa         0626 X59A334-0    Lo Ni Wa           114    630 mz
+Gaul          0627 X512086-0    Ic Lo Ni           013    060 mz
+WH            0628 *4 Worm Hole to M-0608              Na     m
+Aria          0724 X424659-0    Ni                 500    370 mz
+Ezion-geber   0728 X978887-0                       811    780 mz
+D S  W D      0823 *3 Dead Star & White Dwarf   A      --     f
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Junanda SECTOR: Eleutherian
+#
+$1121 0920 0 -1 11
+$1121 1122 0 0 11
+$1122 1121 0 0 11
+$1122 0924 0 0 11
+$0924 1122 0 0 11
+$0924 1126 0 0 11
+$1126 0924 0 0 11
+$1126 1226 0 0 11
+$1226 1126 0 0 11
+$1226 0928 0 0 11
+$0928 1226 0 0 11
+$1426 1226 0 0 11
+$1226 1426 0 0 11
+$1426 1327 0 0 11
+$1327 1426 0 0 11
+$1421 1420 0 -1 11
+$1421 1322 0 0 11
+$1322 1421 0 0 11
+$1421 1121 0 0 11
+$1121 1421 0 0 11
+$1426 1526 0 0 11
+$1526 1426 0 0 11
+$1122 1423 0 0 11
+$1423 1122 0 0 11
+$1423 1424 0 0 11
+$1424 1423 0 0 11
+$1424 1526 0 0 11
+$1526 1424 0 0 11
+$1623 1724 1 0 11
+$1624 1724 1 0 11
+$1623 1523 0 0 11
+$1523 1623 0 0 11
+$1523 1421 0 0 11
+$1421 1523 0 0 11
+$1624 1524 0 0 11
+$1524 1624 0 0 11
+$1524 1525 0 0 11
+$1525 1524 0 0 11
+$1525 1526 0 0 11
+$1526 1525 0 0 11
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M C           0921 *3 Mira Ceti 90 day interm   R      --     f
+Lambda-ni     0924 B74A254-0    Lo Ni Wa        R  501 So A30 mz
+Nabatea       0928 B8686AC-0    Ag Ni              624 So 360 mz
+Bactria       1121 B461602-0    Ni                 103 So 350 mz
+Sogdiana      1122 B200067-0    Lo Ni Va           010 So 030 mz
+Antedes       1125 D55588B-0                       600 So 580 mz
+Biceedes      1126 B533587-0    Ni Po              115 So 460 mz
+Archamedes    1127 D224547-0    Ni                 800 So 260 mz
+Sarmediac     1129 E5A0077-0    De Lo Ni        B  000 So 280 mz
+Colchis       1130 C427653-0    Ni                 113 So A70 mz
+KAPPACHIS     1221 C4A0AAA-0    De Hi An           116 So 030 mz
+GC            1224 *4 Gas Cloud                 A      --     f
+T-T           1225 *4 T-Tauri Variable          A      --     f
+Biet-Zabde    1226 B58A745-0    Ri Wa              112 So 750 mz
+Eta-el Hesi   1229 D573452-0    Ni                 704 So 180 mz
+Erech         1230 X6A068D-0    De Ni              111    080 mz
+Dune          1322 B760314-0    De Lo Ni           202 So 080 mz
+GC            1325 *4 Gas Cloud                 A      --     f
+GC            1326 *4 Gas Cloud                 A      --     f
+Amat          1327 B796521-0    Ag Ni              601 So 360 mz
+Yazd          1328 CAA5773-0    Fl              B  800 So 090 mz
+Corduba       1330 X568600-0    Ag Ni              512    230 mz
+Pattala       1421 B3000A6-0    Lo Ni Va           010 So 040 mz
+D S           1422 *3 Dead Star                 A      --     f
+Karnaruk      1423 B331433-0    Ni Po              900 So 030 mz
+Tobruk        1424 A89A575-0    Ni Wa           B  104 So 940 mz
+Vortavan      1425 D774564-0    Ag Ni              524 So 030 mz
+Basbas        1426 A342634-0    Ni Po An           402 So A70 mz
+R R L         1521 *3 R.R. Lyrae Variable       R      --     f
+Urubia        1523 B9A3763-0    Fl                 700 So 380 mz
+Crisalsa      1524 B969613-0    Ni                 110 So 3B0 mz
+Vlutan        1525 B985687-0    Ag Ni Ri           715 So 790 mz
+Sintar        1526 A410047-0    Lo Ni              023 So 010 mz
+C V           1527 *3 Cepheid Var 5 day interm  R      --     f
+Caruscant     1529 C110035-0    Lo Ni              015 So 050 mz
+Stethis       1623 B8A8758-0    Fl                 420 So 5C0 mz
+KAPPA URUK    1624 B3729AD-0    Hi In              820 So 900 mz
+Tinasta       1630 C454354-0    Lo Ni Ru           600 So 520 mz
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Krovis SECTOR: Eleutherian
+#
+$2221 2119 0 -1 11
+$2221 2322 0 0 11
+$2322 2221 0 0 11
+$2322 2421 0 0 11
+$2421 2322 0 0 11
+$2421 2621 1 0 11
+$1726 1426 -1 0 11
+$1726 1928 0 0 11
+$1928 1726 0 0 11
+$2322 2424 0 0 11
+$2424 2322 0 0 11
+$2424 2625 1 0 11
+$2424 2425 0 0 11
+$2425 2424 0 0 11
+$2425 2326 0 0 11
+$2226 2326 0 0 11
+$2226 2229 0 0 11
+$2229 2226 0 0 11
+$2229 1928 0 0 11
+$1928 2229 0 0 11
+$1721 1720 0 -1 11
+$1721 1821 0 0 11
+$1821 1721 0 0 11
+$2022 2023 0 0 11
+$2023 2022 0 0 11
+$1821 1822 0 0 11
+$1822 1821 0 0 11
+$1724 1723 0 0 11
+$1723 1724 0 0 11
+$1723 1822 0 0 11
+$1822 1723 0 0 11
+$2221 2023 0 0 11
+$2023 2221 0 0 11
+$1724 1924 0 0 11
+$1924 1724 0 0 11
+$2226 2026 0 0 11
+$2026 2226 0 0 11
+$2026 1926 0 0 11
+$1926 2026 0 0 11
+$1726 1727 0 0 11
+$1727 1726 0 0 11
+$2023 1924 0 0 11
+$1924 2023 0 0 11
+$1924 1925 0 0 11
+$1925 1926 0 0 11
+$1926 1925 0 0 11
+$1925 1924 0 0 11
+$1724 1726 0 0 11
+$1726 1724 0 0 11
+$1724 1623 -1 0 11
+$1724 1624 -1 0 11
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Promethius    1721 B300021-0    Lo Ni Va           010 So 010 mz
+C V           1722 *3 Cepheid Var 6 day interm  R      --     f
+Citeron       1723 A9A1579-0    Fl Ni           B  910 So 090 mz
+Alderon       1724 A76A569-0  E Ni Wa Ru           414 So 790 mz
+Lamberon      1726 B845744-0    Ag                 514 So 3C0 mz
+Babylon       1727 B373522-0    Ni                 822 So 430 mz
+Lugrend       1730 X462677-0    Ni Ri           B  725    120 mz
+Bovaris       1821 A445224-0    Lo Ni An           903 So 650 mz
+Avaris        1822 B78A521-0    Ni Wa              600 So 750 mz
+Kalor         1825 X6A9473-0    Fl Ni           B  103 -- 5B0 mz
+R R L         1921 *3 R.R. Lyrae Variable       R      --     f
+Orion         1924 B444591-0    Ag Ni              620 So 370 mz
+Kalimar       1925 A673766-0                       100 So 460 mz
+Dulcimer      1926 A231669-0    Na Ni Po Ru        100 So 020 mz
+Dulimar       1928 A561864-0    Ri Ru              503 So 830 mz
+Kriktac       2022 B97A6BG-0    Ni Wa Ru           904 So 640 mz
+KAYLEST       2023 B773A8B-0    Hi In              401 So 170 mz
+Licto         2025 C563311-0    Lo Ni              201 So 740 mz
+Charkay       2026 B889647-0    Ni Ri              400 So 4C0 mz
+R R L         2121 *3 R.R. Lyrae Variable       R      --     f
+Solaris       2122 C100046-0    Lo Ni Va           014 So 030 mz
+Precaris      2123 C629045-0    Lo Ni              002 So 410 mz
+Ursala        2124 C895899-0                       403 So 860 mz
+WH            2126 *4 Worm Hole to E-0407              Na     m
+Braxis        2127 C500086-0    Lo Ni Va           014 So 170 mz
+Elvee         2128 C657253-0    Lo Ni              110 So 640 mz
+AlphaStromgren2221 AAA5466-0    Fl Ni              200 So 2C0 mz
+Brondac       2222 D243766-0    Po                 321 So 400 mz
+Lukrodt       2224 C87A330-0    Lo Ni Wa           124 So 880 mz
+Zhorbet       2225 C868563-0    Ag Ni              800 So 890 mz
+Beijor        2226 B975790-0    Ag                 425 So 490 mz
+Cardacia      2229 A776533-0    Ag Ni An           802 So 7A0 mz
+Dega Kasa     2321 XA8A543-0    Ni Wa           R  902 -- 780 mz
+Vitron        2322 B875777-0    Ag              B  210 So 280 mz
+Flexis        2324 E796446-0    Ni                 100 So 540 mz
+B H           2325 *4 Black Hole                R      Na     f
+KAYVOR        2326 B528946-0    Hi In An           120 So 570 mz
+Vartok        2327 C799647-0    Ni                 401 So 750 mz
+Zhartoom      2328 CAA7400-0    Fl Ni              501 So 6D0 mz
+KAYZON        2421 A3000BB-0    Lo Ni Va           011 So 070 mz
+Nimbus        2422 C879656-0    Ni                 723 So 5C0 mz
+KAY-ETU       2424 A221655-0    Na Ni Po An        102 So 340 mz
+Kaymass       2425 B535500-0    Ni                 300 So 680 mz
+Que-etu       2426 C000076-0    As Lo Ni           014 So 010 mz
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lutrok SECTOR: Eleutherian
+#
+$2621 2421 -1 0 11
+$2621 2421 -1 0 11
+$2625 2424 -1 0 11
+$2625 2424 -1 0 11
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Victorn       2621 A427612-0    Ni Ru              713 So 770 mz
+MALCOR        2625 B7739EC-0    Hi In              321 So 150 mz
+Uralner       2727 C860433-0    De Ni              504 So 3B0 mz
+Buradiss      2821 C641569-0    Ni Po              424 So 360 mz
+Akkad         2826 X51507C-0    Ic Lo Ni        B  005    660 mz
+Chuchack      2827 X100000-0    Ba Lo Ni Va        010    000 mz
+WH            2925 *4 Worm Hole to N-0801              Na
+C V           2926 *3 Cepheid Var 6 day interm  R      --     f
+Klingon       2927 X567600-4    Ag Ni An           901    380 mz
+Silac         3022 C541259-0    Lo Ni Po           521 So 860 mz
+M C           3024 *3 Mira Ceti 350 day interm  R      --     f
+Elkron        3122 X6A4200-0    Fl Lo Ni           901    190 mz
+Khalasa       3128 X570687-0    De Ni              110    350 mz
+Ctesiphon     3225 X000000-0    As Ba Lo Ni        014    000 mz
+Chulna        3226 X432698-0    Na Ni Po           705    940 mz
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Moriga SECTOR: Eleutherian
+#
+$0638 0628 0 -1 6
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Ajjul         0334 X767203-0    Lo Ni              525    150 mz
+Narnia        0539 X9A4794-0    Fl                 105    550 mz
+WH            0638 *4 Worm Hole to I-0608              Na     m
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Novaam SECTOR: Eleutherian
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Anastris      1032 X68A200-0    Lo Ni Wa           313    D40 mz
+Gerasa        1040 X265644-0    Ag Ni Ri           403    130 mz
+F V           1134 *3 Flare Variable            R      --     f
+Opis          1137 X53659C-0    Ni                 402    240 mz
+Parthia       1231 X226600-0    Ni                 110    520 mz
+Ascalon       1233 X432724-0    Na Po              910    430 mz
+Cirta Alpha   1235 X565466-0    Ni                 901    660 mz
+Cirta Beta    1237 X674421-0    Ni                 300    570 mz
+Uratu         1238 X59549A-0    Ni                 301    350 mz
+XI-MESA       1433 X869AEE-0    Hi Ru              104    790 mz
+XI-VRON       1440 X4279BA-0    Hi In              201    270 mz
+Grisel        1540 X2605AE-0    De Ni              601    410 mz
+WH            1631 *4 Worm Hole to L-0505              Na
+GC            1632 *4 Gas Clouds                A      --     f
+Cybertron     1634 X576323-0    Lo Ni              705    750 mz
+Tron          1637 X352554-0    Ni Po              811    440 mz
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Oplifis SECTOR: Eleutherian
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+GC            1731 *4 Gas Clouds                A      --     f
+T-T           1732 *4 T-Tauri Variable          A      --     f
+GC            1733 *4 Gas Clouds                A      --     f
+Shi'ar        1734 X530530-0    De Ni Po An     R  401    450 mz
+Ursila        1739 X675233-0    Lo Ni              712    690 mz
+Cylon         1831 X67A884-0    Wa                 915    760 mz
+GC            1832 *4 Gas Clouds                A      --     f
+Zarcoff       1931 X543786-0    Po                 905    450 mz
+Xinar         1932 X410076-0    Lo Ni              022    050 mz
+Zuton         1933 X488154-0    Lo Ni              913    A70 mz
+Ohtar         1935 X41639B-0    Ic Lo Ni           121    820 mz
+F V           1936 *3 Flare Variable            R      --     f
+Grummpi       1938 X8A6346-0    Fl Lo Ni           922    160 mz
+Warlac        1940 X314131-0    Ic Lo Ni           800    130 mz
+Padue         2238 X84776B-0    Ag                 820    680 mz
+C V           2334 *3 Cepheid Var 19 day interm R      --     f
+Earthor       2337 X9A7597-0    Fl Ni              202    460 mz
+Krypton       2338 X11008A-0    Lo Ni              001    050 mz
+Siss          2431 X540658-0    De Ni Po           822    330 mz
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Purim SECTOR: Eleutherian
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B H           2536 *4 Black Hole                R      Na     f
+Borg          2636 X8A0441-0    De Ni              903    080 mz
+Pi-Grass      2640 X589965-0    Hi                 121    630 mz
+V-Ger         3134 X54A356-1    Lo Ni Wa An        803 Sy 080 mz
+

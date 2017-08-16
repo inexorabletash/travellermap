@@ -1,0 +1,333 @@
+Jaanniss Sector
+
+A: Annis                     a.dat
+B: Bajann                    b.dat
+C: Cijiss                    c.dat
+D: Danniss                   d.dat
+E: Essaj                     e.dat
+F: Fassiss                   f.dat
+G: Ganniss                   g.dat
+H: Hajan                     h.dat
+I: Ississ                    i.dat
+J: Jannaia                   j.dat
+K: Kajanna                   k.dat
+L: Lujuun                    l.dat
+M: Majanni                   m.dat
+N: Najann                    n.dat
+O: Oannaja                   o.dat
+P: Pajanni                   p.dat
+
+Bases:
+F = Fass Military
+J = Jissaia Military
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+12 Fs = Fass State
+14 Js = Jissaia State
+13 Ks = Kajan State
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Annis SECTOR: Jaanniss Sector
+#
+# Jump-routes
+$0706 0805 0 0
+#
+$0309 0511 0 1 2
+$0309 0206 0 0 2
+$0206 0304 0 0 2
+$0304 0102 0 0 2
+$0102 0238 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Lammin        0102 C54385A-6    Po                 605 Na
+Jrek          0206 C000121-9    As Lo Ni           204 Na
+A-3           0303 X449455-2                    R  323 Na
+Blimmim       0304 C255854-7                       704 Na
+Norrtaan      0309 B67A677-8    Ni Wa           B  131 Na
+A-6           0702 C795589-4  S Ag Ni              635 Na
+A-7           0706 A638101-E    Lo Ni              203 Na
+A-8           0707 D000200-6  S As Lo Ni           104 Na
+A-9           0805 C455585-8    Ag Ni              204 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Bajann SECTOR: Jaanniss Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           0910 E473561-8    Ni                 611 Na
+B-2           1007 A549554-A  N Ni                 314 Na
+B-3           1403 C546101-5  S Lo Ni              900 Na
+B-4           1505 C464241-A    Lo Ni              300 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Cijiss SECTOR: Jaanniss Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1704 B6A1325-C    Fl Lo Ni           204 Na
+C-2           1809 B201325-B    Ic Lo Ni Va        703 Na
+C-3           1810 B557965-C    Hi                 604 Na
+C-4           1908 D555540-3  S Ag Ni              114 Na
+C-5           2105 B782766-5  N Ri                 203 Na
+C-6           2108 D110110-9    Lo Ni              300 Na
+C-7           2208 C696436-9    Ni                 104 Na
+C-8           2308 E7B5745-6    Fl              A  123 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Danniss SECTOR: Jaanniss Sector
+#
+# Jump-routes
+$3009 3109 0 0
+#
+$3001 2938 0 -1 10
+$3001 3105 0 0 10
+$3105 3109 0 0 10
+$3109 0310 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2601 C876357-8    Lo Ni              903 Na
+D-2           2710 B5058B9-8    Ic Va              513 Na
+Lambbuhk      3001 C475657-A  S Ag Ni              102 Na
+D-4           3009 C201353-C    Ic Lo Ni Va        203 Na
+Jakhanna      3105 D866500-7  S Ag Ni              513 Na
+Daan          3109 B634567-8    Ni                 614 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Essaj SECTOR: Jaanniss Sector
+#
+# Jump-routes
+#
+$0819 1021 1 1 2
+$0819 0616 0 0 2
+$0616 0714 0 0 2
+$0714 0511 0 0 2
+$0511 0309 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0119 D649022-2    Lo Ni              411 Na
+E-2           0220 D486334-4  S Lo Ni              604 Na
+E-3           0316 D67799E-4  S Hi In              912 Na
+Cleema        0511 E261200-4    Lo Ni              624 Na
+Huubaun       0616 A78A79B-A  N Ri Wa              502 Na
+Arramou       0714 B453A65-B  2 Hi Po              421 Na
+Ekklaha       0819 X528740-0                    R  624 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Fassiss SECTOR: Jaanniss Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           1412 C638353-7    Lo Ni              504 Na
+F-2           1413 B432596-D  N Ni Po              602 Na
+Fass          1417 A8A1955-F  F Fl Hi              700 Fs
+F-4           1518 C483675-6    Ni Ri           B  322 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ganniss SECTOR: Jaanniss Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           2014 B460546-A    De Ni              814 Na
+G-2           2119 C4659CF-8  S Hi                 113 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hajan SECTOR: Jaanniss Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2516 C377433-6  S Ni                 700 Na
+H-2           2616 C779237-8    Lo Ni              905 Na
+H-3           2715 D848205-6    Lo Ni              101 Na
+H-4           3012 C310898-6    Na                 413 Na
+H-5           3114 C645345-9  S Lo Ni              504 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ississ SECTOR: Jaanniss Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0121 E333324-7    Lo Ni Po           405 Na
+I-2           0622 E74669A-1    Ag Ni              904 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jannaia SECTOR: Jaanniss Sector
+#
+# Jump-routes
+#
+$1524 1727 1 0 2
+$1524 1224 0 0 2
+$1224 1021 0 0 2
+$1021 0819 -1 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Zarreph       1021 C977767-6    Ag                 803 Na
+J-2           1126 D5138CE-2    Ic Na              903 Na
+Jissaia       1224 A9E8A86-G  J Fl Hi Cx           901 Js
+J-4           1428 C686355-9  S Lo Ni              420 Na
+Ja-Lal        1524 C1007AF-7    Na Va              505 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kajanna SECTOR: Jaanniss Sector
+#
+# Jump-routes
+#
+$2129 2132 0 1 2
+$2129 1727 0 0 2
+$1727 1524 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Kajan         2129 A211545-F    Ic Ni              901 Ks
+Nilsha        1727 C341479-6    Ni Po           B  902 Na
+K-3           2424 CA99454-8  S Ni                 424 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lujuun SECTOR: Jaanniss Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2725 C654353-7    Lo Ni              704 Na
+L-2           3026 C500451-A  S Ni Va              104 Na
+L-3           3129 C455674-8  S Ag Ni           B  423 Na
+L-4           3226 DAC6998-8  S Fl Hi           A  400 Na
+L-5           3230 C9D2132-6    Fl Lo Ni           820 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Majanni SECTOR: Jaanniss Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0132 C69199B-5  S Hi In              523 Na
+M-2           0336 E1408BC-3    De Po              603 Na
+M-3           0437 A352400-C    Ni Po              410 Na
+M-4           0537 X437442-2                    R  924 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Najann SECTOR: Jaanniss Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           1138 E6B5889-5    Fl              A  611 Na
+N-2           1439 C230442-7    De Ni Po           704 Na
+N-3           1638 B688243-6  2 Lo Ni              424 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Oannaja SECTOR: Jaanniss Sector
+#
+# Jump-routes
+#
+$2235 2536 1 0 2
+$2235 2132 0 0 2
+$2132 2129 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1734 B420552-C  N De Ni Po           611 Na
+Minnilla      2132 E67A623-4    Ni Wa              123 Na
+O-3           2140 C686615-4  S Ag Ni              301 Na
+Salkka        2235 B556743-5    Ag                 401 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Pajanni SECTOR: Jaanniss Sector
+#
+# Jump-routes
+#
+$3139 0102 1 1 2
+$3139 2937 0 0 2
+$2937 2536 0 0 2
+$2536 2235 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Breetra       2536 C333689-8  S Na Ni Po           902 Na
+Mishalla      3139 E100630-4    Na Ni Va           302 Na
+Joella        2937 B527989-9    Hi In              402 Na
+

@@ -1,0 +1,836 @@
+Core
+
+A: Apge                      sec_a.dat
+B: Perite                    sec_b.dat
+C: Ameros                    sec_c.dat
+D: Shinkan                   sec_d.dat
+E: Sanches                   sec_e.dat
+F: Mekee                     sec_f.dat
+G: Core                      sec_g.dat
+H: Kaskii                    sec_h.dat
+I: Bunkeria                  sec_i.dat
+J: Cemplas                   sec_j.dat
+K: Chant                     sec_k.dat
+L: Dingtra                   sec_l.dat
+M: Cadion                    sec_m.dat
+N: Ch'naar                   sec_n.dat
+O: Dunea                     sec_o.dat
+P: Saregon                   sec_p.dat
+
+Bases:
+N = Navy
+S = Scout
+A = Navy & Scout
+B = Navy & Marine
+Z = Navy & Marine
+D = Navy & Marine
+M = Planetary Guard
+  = None
+
+Allegiance:
+02 Li = Lucan's Imperium
+05 Sy = Sylean Federation
+07 Na = Non-aligned
+04 Cs = Client State
+08    = Unknown
+
+
+
+If I recall correctly, Idiot/Savant <idiot@sans.vuw.ac.nz>
+sent me this version of the Core Sector, not necessarily
+for inclusion into Galactic, but just for advice on how
+to fix some things that were going wrong with it. I went
+ahead and included it even though it's far from being in
+a finished state. -jimv
+
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Apge SECTOR: Core
+#
+# Trade routes within the subsector
+#
+$0505 0907 1 0 12
+$0505 0402 0 0 12
+$0408 0511 0 1 6
+$0408 0405 0 0 6
+$0405 0402 0 0 6
+$0505 0907 1 0 14
+$0505 0402 0 0 14
+$0402 0306 0 0 10
+$0306 0409 0 0 10
+$0409 0612 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+.             0103 C9C3733-A    Fl                 123 Li 
+.             0104 E351112-9    Lo Ni Po           903 Li 
+.             0106 B9C6886-9  N Fl              A  704 Li
+.             0202 B847427-C  N Ni                 200 Li 
+.             0203 B234314-F  N Lo Ni              600 Li 
+.             0208 D527524-7    Ni                 923 Li 
+.             0210 A797679-D    Ag Ni           B  701 Li 
+.             0302 B597488-9  N Ni                 701 Li 
+.             0304 B8B5364-B  N Lo Ni Fl        A  823 Li 
+.             0305 A1008A8-D    Na Va              601 Li 
+.             0306 C786587-B  S Ag Ni              422 Li 
+.             0307 B274663-9    Ag Ni              100 Li 
+.             0308 B688126-A  N Lo Ni              914 Li 
+.             0310 E888241-5    Lo Ni              802 Li 
+Apge          0402 A772997-F  W Hi In              710 Li 
+.             0403 B000200-D    Lo Ni As           704 Li 
+.             0405 C674467-B    Ni                 714 Li 
+.             0408 B453875-D    Po              B  402 Li 
+.             0409 B994443-C  N Ni                 402 Li 
+.             0410 B7795AF-C  N Ni                 302 Li 
+.             0502 B76A204-B  N Lo Ni Wa           820 Li 
+.             0505 B1306AE-A    Na Ni Po De        424 Li 
+.             0603 B140103-F    Lo Ni Po De        801 Li 
+.             0606 C736757-A                       211 Li
+.             0707 E6A2110-A    Lo Ni Fl           420 Li 
+.             0806 A212531-G  N Ni Ic              100 Li 
+.             0808 D575334-4  S Lo Ni              714 Li
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Perite SECTOR: Core
+#
+# Trade routes within the subsector
+$0901 1037 0 -1
+#
+$1410 1615 0 1 12
+$1410 0907 0 0 12
+$0907 0505 -1 0 12
+$0907 0911 0 1 14
+$0907 0505 -1 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+.             0903 E000300-8    Lo Ni As           613 Li
+Shazeku       0905 B553A88-F  N HI Po              100 Li
+.             0906 B77659D-D  S Ag Ni              902 Li
+.             0907 B778687-9  S Ag Ni              930 Li
+.             0910 D567125-4    Lo Ni              505 Li
+Mishaar       1002 B140AA8-F  N Hi In Po De        620 Li
+.             1008 B302301-E    Lo Ni Va Ic        404 Li
+.             1009 B536488-C  N Ni                 113 Li
+.             1101 D120233-B    Lo Ni Po De        202 Li
+.             1102 B594344-B  A Lo Ni              724 Li
+.             1104 E580859-6    Ri De              323 Li
+.             1108 B765895-B  A Ri                 414 Li
+.             1109 C987246-7    Lo Ni              114 Li
+.             1202 B569651-D    Ni Ri              305 Li
+.             1204 B447047-D  N Lo Ni              302 Li
+.             1205 B590886-B  A De                 404 Li
+.             1302 B778477-B    Ni              B  204 Li
+.             1307 C88A553-A    Ni Wa              310 Li
+.             1308 D557013-5  S Lo Ni              604 Li
+.             1309 B94A432-B  N Ni Wa              701 Li
+.             1403 E896200-6    Lo Ni              621 Li
+.             1407 B200320-B  S Lo Ni Va           520 Li
+.             1410 B21069C-9  A Na Ni              803 Li 
+.             1503 C536831-7                       304 Li 
+.             1505 B667546-8  S Ag Ni              514 Li
+.             1506 C486796-8    AG Ri              404 Li 
+.             1508 D697226-4    Lo Ni              500 Li
+.             1510 E110232-B    Lo Ni              203 Li
+.             1605 A446445-C  N Ni                 400 Li
+Sirma         1609 C22498A-E    Hi In              502 Li
+.             1610 B645623-C    Ag Ni              403 Li
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ameros SECTOR: Core
+#
+# Trade routes within the subsector
+$2101 2040 0 -1
+$2101 2240 0 -1
+$2401 2540 1 -1
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+.             1701 E99A489-8    Ni Wa              224 Li 
+.             1702 C4637B6-8                       802 Li 
+.             1703 B645367-D  N Lo Ni              700 Li 
+.             1707 B686745-9  N Ag Ri              800 Li 
+.             1708 B000868-B  S Na As              904 Li 
+.             1710 E000230-8    Lo Ni As           311 Li 
+.             1801 D451588-5  S Ni Po              725 Li 
+.             1808 B100544-D    Ni Va              223 Li 
+.             1901 B6945AB-C    Ag Ni              300 Li 
+.             1902 B88948A-B    Ni                 503 Li 
+.             1909 D433541-6  S Ni Po              800 Li 
+.             2006 B210867-9  N Na                 412 Li 
+.             2008 B110542-G  N Ni                 605 Li 
+.             2010 B8B7496-D  S Ni Fl           A  905 Li 
+.             2101 A85A69D-E    Ni Wa              503 Li 
+.             2102 B554240-8    Lo Ni              910 Li 
+.             2103 E000127-9    Lo Ni As           805 Li 
+.             2104 B884869-B    Ri                 902 Li 
+.             2105 B461542-E    Ni                 603 Li 
+.             2203 B338441-C    Ni                 800 Li 
+.             2205 B538545-C  A Ni                 923 Li 
+.             2206 B444310-E    Lo Ni           A  313 Li 
+NLiluin       2209 B476965-F  A Hi In              410 Li 
+.             2210 C562767-5  S Ri                 305 Li 
+.             2306 C645441-B  S Ni                 103 Li 
+.             2401 A52A231-C  A Lo Ni Wa           103 Li 
+.             2403 B4698C9-9                       723 Li 
+.             2404 B400442-D  W Ni Va              504 Li 
+.             2405 C576242-8    Lo Ni              113 Li 
+.             2407 E767664-5    Ag Ni Ri           810 Li 
+.             2408 A200524-F    Ni Va              413 Li
+.             2410 B000531-B  N Ni As              712 Li
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Shinkan SECTOR: Core
+#
+# Trade routes within the subsector
+$2901 3040 0 -1
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+.             2501 B000556-E  N Ni As              200 Li 
+.             2503 B000100-C  N Lo Ni As           704 Li 
+.             2507 A9867BC-D  N Ag                 810 Li 
+.             2602 B4447AA-A    Ag                 401 Li 
+.             2603 EAAA303-B    Lo Ni Fl Wa        303 Li 
+.             2606 B347431-E  N Ni                 905 Li 
+.             2608 B557899-8  A                    713 Li 
+.             2609 B599313-E  N Lo Ni              713 Li 
+.             2610 B594769-A    Ag                 205 Li 
+Derku         2703 C610989-D    Hi Na In           603 Li 
+.             2705 E356100-8    Lo Ni              301 Li 
+.             2706 B364500-D  A Ag Ni              514 Li 
+.             2707 C525340-8  S Lo Ni              800 Li 
+.             2709 B000203-F  N Lo Ni As           503 Li 
+.             2802 B678896-C                       625 Li
+.             2803 A427456-D    Ni                 504 Li 
+.             2904 D572834-6  S                    720 Li 
+.             2906 B200878-D    Na Va           B  603 Li 
+.             2910 B211112-F  N Lo Ni Ic           323 Li 
+.             3002 C344886-9                       220 Li 
+.             3003 B665355-A  N Lo Ni              410 Li 
+.             3005 B304842-B    Va Ic              422 Li 
+.             3008 A4007B9-F  N Na Va              401 Li 
+.             3101 B73A146-C  S Lo Ni Wa           104 Li 
+.             3103 B439568-E    Ni                 214 Li 
+.             3104 E200776-A    Na Va           B  931 Li 
+.             3105 B300732-E  N Na Va              210 Li 
+.             3106 B425278-A    Lo Ni           B  403 Li 
+.             3203 C668769-5  S Ag Ri              911 Li 
+.             3205 B765662-7  N Ag Ni Ri           713 Li 
+.             3206 C646444-8    Ni                 304 Li 
+.             3207 C567789-6    Ag Ri              600 Li 
+.             3208 E400102-B    Lo Ni Va           904 Li 
+.             3210 A965312-C    Lo Ni              505 Li 
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Sanches SECTOR: Core
+#
+# Trade routes within the subsector
+#
+$0714 1016 1 0 6
+$0714 0511 0 0 6
+$0511 0408 0 -1 6
+$0612 0409 0 -1 10
+$0612 0915 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+.             0112 A673310-B    Lo Ni              103 Li 
+.             0113 C7A8200-D    Lo Ni Fl           303 Li 
+.             0114 B250401-C  A Ni Po De           220 Li 
+.             0116 B485656-A    Ag Ni Ri           811 Li 
+.             0117 B664489-8  N Ni                 510 Li 
+.             0120 C244403-C    Ni                 600 Li 
+.             0212 B645437-C  N Ni                 403 Li 
+.             0216 B422369-C  N Lo Ni Po           104 Li 
+.             0218 D87877B-8  S Ag              B  914 Li 
+.             0220 D88A448-8    Ni Wa              503 Li 
+.             0313 B332454-B  A Ni Po              503 Li 
+.             0314 B8A588A-9    Fl                 314 Li 
+.             0315 B685541-C    Ag Ni              904 Li 
+Dudin         0316 D528A89-D  S Hi In              624 Li 
+.             0319 B234220-F    Lo Ni              414 Li 
+.             0411 D584300-7  S Lo Ni              403 Li 
+.             0414 D461520-5  S Ni                 413 Li 
+Sanches       0416 A6549C9-F  A Hi                 113 Li 
+Shardi        0418 E33398A-B    Hi Na Po           603 Li 
+.             0420 B6A7422-9  N Ni Fl              104 Li 
+.             0511 D486736-7  S Ag                 412 Li 
+.             0512 B513733-B  N Na Ic              202 Li 
+.             0513 D772312-5  S Lo Ni              203 Li 
+.             0516 B76A845-8  N Ri Wa              504 Li 
+.             0517 A726023-D    Lo Ni              302 Li 
+.             0519 B100103-E  N Lo Ni Va           214 Li 
+.             0612 B667898-9    Ri                 200 Li 
+.             0619 B7588A8-A  S                    715 Li 
+.             0713 B333557-C    Ni Po              203 Li 
+.             0714 B6A78BD-B    Fl                 221 Li 
+.             0718 D797114-7    Lo Ni              405 Li 
+Alekvadin     0811 B6759AB-E    Hi In              802 Li 
+.             0812 A845887-9                       814 Li 
+.             0816 B792566-C    Ni                 612 Li 
+.             0820 B776510-8    Ag Ni              900 Li 
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Mekee SECTOR: Core
+#
+# Trade routes within the subsector
+#
+$1615 2118 1 0 12
+$1615 1410 0 -1 12
+$1317 1717 1 0 12
+$1317 1016 0 0 12
+$1016 0714 -1 0 12
+$1316 1114 0 0 14
+$1114 0911 0 0 14
+$0911 0907 0 -1 14
+$0915 0612 -1 0 10
+$0915 1016 0 0 10
+$1016 1219 0 0 10
+$1219 1522 0 1 10
+$1518 2118 1 0 14
+$1518 1316 0 0 14
+$1317 1717 1 0 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+.             0911 C545448-A    Ni                 703 Li 
+.             0915 A577200-F  N Lo Ni              613 Li 
+.             0916 B95A567-B    Ni Wa              201 Li 
+.             0919 C550054-B    Lo Ni Po De     A  504 Li 
+.             1012 B424400-F  N Ni                 524 Li 
+Urshra        1016 B361966-D  W Hi                 703 Li 
+.             1019 B783200-C    Lo Ni              903 Li 
+.             1112 C310403-9    Ni                 422 Li 
+.             1114 A520834-B    Na Po De           503 Li 
+.             1116 B783511-8    Ni                 800 Li 
+.             1120 B3407A6-C  N Po De              803 Li 
+.             1214 E585555-8    Ag Ni              412 Li 
+.             1219 B2106B9-C  N Na Ni              720 Li 
+.             1220 B100122-C    Lo Ni Va           604 Li 
+.             1314 B859323-B  N Lo Ni              502 Li 
+.             1316 D85A869-6    Wa                 202 Li 
+.             1317 B203462-E  A Ni Va Ic           312 Li 
+.             1320 B222201-B  N Lo Ni Po        A  902 Li 
+.             1416 B68A430-9    Ni Wa              204 Li 
+.             1418 C64648A-8  S Ni                 803 Li 
+.             1511 E445279-7    Lo Ni           B  223 Li 
+.             1512 B8C2747-9    Fl              A  804 Li 
+Uugnii        1518 A86A422-F  D Ni Wa              420 Li
+.             1519 D9D2665-8    Ni Fl              603 Li 
+.             1611 B964442-D    Ni                 914 Li 
+.             1615 B779400-B    Ni                 404 Li 
+.             1616 E9B4683-8    Ni Fl              614 Li 
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Capital SECTOR: Core
+#
+# Trade routes within the subsector
+#
+$2118 1615 -1 0 12
+$2118 1717 0 0 12
+$2118 1717 0 0 12
+$2118 1518 -1 0 14
+$1717 1317 -1 0 12
+$2220 2222 0 1 2
+$2220 2118 0 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N'dao         1711 D1007B8-9  S Na Va              812 Li 
+Rison         1713 B9D3695-A  N Ni Fl              714 Li 
+Fornol        1715 B5819CA-A  N Hi                 712 Li 
+Curast        1717 D9B7362-A  S Lo Ni Fl           724 Li 
+Ances         1812 B383657-C  A Ni Ri              705 Li 
+Lectorsen     1813 D354655-5    Ag Ni              500 Li 
+Thass         1815 B510420-9    Ni                 713 Li
+Balpan        1819 B505345-9  A Lo Ni Va Ic        600 Li 
+Sistar        1912 B430551-F  A Ni Po De           612 Li 
+Ankod         1916 A344889-B  N                    414 Li 
+Ploiqu        1917 D222747-6  S Na Po              104 Li 
+Traak         1918 B62488C-A  S                    904 Li 
+Crompton      1919 E776002-9    Lo Ni              600 Li 
+Shion         1920 D410344-7    Lo Ni              103 Li 
+Dudaka        2011 C544010-6    Lo Ni              503 Li 
+Tiwath        2012 E651575-8    Ni Po           B  633 Li 
+Morii         2014 B62A644-9    Ni Wa              214 Li 
+Ion           2016 B877655-C  W Ag Ni              604 Li 
+Onon          2017 E576000-9    Lo Ni Ba           721 Li 
+Tertha        2020 C200342-A    Lo Ni Va           513 Li 
+Siduka        2111 B446689-C  N Ag Ni              200 Li 
+Romstand      2112 C428567-8    Ni                 820 Li 
+Knabbib       2115 A331758-F  N Na Po              804 Li 
+Capital       2118 A586A98-F  B Hi                 605 Sy 
+Shushan       2211 A655335-E    Lo Ni              924 Li 
+Nedso         2213 B541231-6    Lo Ni Po           814 Sy 
+Shudusham     2214 E849855-A                       804 Sy 
+Rhylea        2216 B8A6530-8    Ni Fl              623 Sy 
+Syroe         2218 B436854-D  A                    804 Li 
+Ase           2219 B22098B-F    Hi Na In Po De     110 Li 
+Xalm          2220 D4628CA-4  S                    113 Li 
+Seku          2312 B79A557-F    Ni Wa              403 Li 
+Rib           2314 B559667-B    Ni                 204 Sy 
+Ecan          2316 B444854-9                       902 Sy 
+Codsen        2317 E571568-2    Ni                 210 Sy
+Yirsh Poy     2318 B210577-A  S Ni              B  113 Sy 
+Crystalan     2319 C979788-B  S                    414 Li 
+Umgadin       2320 B6B5946-B    Hi Fl           A  122 Li 
+Capion        2413 B651864-6    Po                 201 Sy 
+First         2414 AA7A788-9    Wa                 200 Sy
+Sentark 4     2416 B755496-7    Ni                 404 Sy 
+Sevan         2419 A544576-A  S Ag Ni           B  500 Li 
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kaskii SECTOR: Core
+#
+# Trade routes within the subsector
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+.             2511 C477497-8    Ni                 202 Li 
+Khuir         2513 B89AACA-D    Hi In Wa           802 Sy 
+.             2517 D444033-3    Lo Ni              602 Sy 
+.             2519 D000330-A  S Lo Ni As           604 Li 
+.             2611 B201885-A    Na Va Ic           503 Li 
+Ispumer       2615 E38197B-7    Hi              B  905 Sy 
+.             2616 B5368CD-8                       903 Sy 
+.             2720 B42647C-A    Ni              B  703 Li 
+.             2814 C223669-8    Na Ni Po           504 Sy 
+.             2816 B869323-C    Lo Ni              103 Sy 
+.             2912 A7B3699-D    Ni Fl           A  725 Li 
+.             2913 C8B3763-5    Fl              A  703 Sy 
+.             2914 A668873-8    Ri              B  213 Sy 
+.             2916 BAE6362-7    Lo Ni Fl           704 Sy 
+Laudum        3011 B352986-D  N Hi Po              101 Li 
+.             3015 B783351-8    Lo Ni              200 Sy 
+.             3019 B222552-F  N Ni Po              730 Li 
+.             3113 E342647-5    Ni Po              204 Sy 
+Markasher     3115 E1009CC-6    Hi Na In Va        420 Sy 
+.             3117 B200456-B    Ni Va              214 Sy 
+Lemik         3118 C56A98B-C    Hi Wa              711 Li 
+.             3211 C427535-D    Ni                 102 Li 
+.             3216 B964443-8    Ni                 913 Sy 
+Kaskii        3218 A300A98-F  N Hi Na In Va        504 Li 
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Bunkeria SECTOR: Core
+#
+# Trade routes within the subsector
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Trevor        0125 B664000-C    Lo Ni Ba           810 Li
+Deseca        0126 B241762-B    Po                 513 Li 
+Marsus        0127 B578598-B  A Ag Ni              314 Li 
+Protalus      0128 B559463-B  N Ni                 123 Li 
+Rollabon      0129 B984331-8    Lo Ni              522 Li 
+Katock        0130 E200301-C    Lo Ni Va           102 Li 
+Randar        0221 A789567-D  N Ni                 805 Li 
+Acmed         0222 E210669-8    Na Ni              705 Li 
+Domitar       0224 E234147-6    Lo Ni              103 Li 
+Hectalus      0228 B565301-A  N Lo Ni              920 Li
+Bentax        0322 B242275-E  W Lo Ni Po        B  204 Li 
+Oorpic        0324 B413777-B  N Na Ic           B  101 Li 
+Iacus         0325 B210757-C  S Na                 203 Li 
+Bellum        0326 B340401-B  N Ni Po De           704 Li 
+Ferot         0328 B253432-D    Ni Po              311 Li 
+Gishalam      0421 A887325-D    Lo Ni              822 Li 
+Hellhole      0423 B400555-F  S Ni Va              200 Li 
+Irlu          0428 B53598C-F  N Hi                 613 Li 
+Relle         0429 C9B9665-A    Ni Fl           A  704 Li 
+Simic         0522 E362554-8    Ni                 524 Li 
+Dinhe         0523 B590444-D    Ni De              203 Li 
+Asalam        0526 B200346-D    Lo Ni Va           121 Li 
+Rax           0527 A357110-B  N Lo Ni              115 Li 
+Irdu          0529 B386521-C  N Ag Ni              512 Li 
+Tarshii       0530 D433565-7  S Ni Po              504 Li
+Sketola       0622 A647789-E  S Ag                 304 Li 
+Ontar         0624 B100213-E  A Lo Ni Va           804 Li 
+Cromind       0721 D251579-9    Ni Po           B  601 Li 
+F'rnow        0722 B361576-A    Ni              B  302 Li 
+Antar         0725 B411111-D  N Lo Ni Ic           203 Li 
+Dral          0727 B728967-F  S Hi In              912 Li 
+Lalandra      0821 A000322-F  S Lo Ni As           904 Li 
+Dunkle        0822 B140000-D  N Lo Ni Po De Ba     114 Li 
+Ess Nurr      0827 B350400-C    Ni Po De           613 Li 
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Cemplas SECTOR: Core
+#
+# Trade routes within the subsector
+#
+$1522 1219 0 -1 10
+$1522 1725 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Wastam        0921 E6A7777-8    Fl              B  310 Li
+Celetron      0922 A375000-F  N Lo Ni Ba           302 Li 
+Ur            0929 D649577-A  S Ni              B  500 Li 
+Drag          1022 D473322-6  S Lo Ni              313 Li 
+Exod          1023 B323555-B    Ni Po           A  500 Li 
+Shalam        1028 C250644-A    Ni Po De           401 Li 
+Ye-lu         1123 A100134-G  N Lo Ni Va           825 Li 
+Pixtome       1124 A8AA453-F  A Ni Fl Wa           112 Li 
+Meman         1125 D652552-9  S Ni Po              210 Li 
+Gashil        1129 C6A4511-8    Ni Fl              504 Li 
+Evad          1130 C79A468-C  S Ni Wa              501 Li 
+Ehok-ta       1221 BAD5446-9  S Ni Fl              113 Li 
+Bendo         1222 B577875-8                    B  613 Li 
+Dingus        1223 D556444-9  S Ni              A  930 Li 
+Eshon         1225 E341766-7    Po                 510 Li 
+Orguush       1226 A485334-D    Lo Ni              222 Li 
+Lishiruud     1228 B6979AA-7    Hi In              313 Li 
+Digitus       1229 D35469A-5    Ag Ni              613 Li 
+Renu          1321 B66468B-7    Ag Ni Ri           600 Li 
+Keplo         1322 B675898-B  N                    223 Li 
+Bogustin      1323 A3105AC-F  S Ni                 103 Li
+Ushtar        1328 B647554-D  N Ag Ni              302 Li 
+Calesson      1330 B685643-8    Ag Ni Ri           200 Li
+Eorvin        1421 B436868-B  S                    922 Li 
+Chok-ta       1422 C7C2048-B    Lo Ni Fl        A  911 Li 
+Khusgurlu     1424 B6529EG-D  N Hi Po              214 Li 
+Spirn         1428 A656541-C    Ag Ni              600 Li 
+Alton         1430 B100542-F  N Ni Va              403 Li 
+Suhtlam       1522 B7C0000-A    Lo Ni De Ba     A  600 Li 
+Belicose      1523 A596236-C    Lo Ni              713 Li 
+Shibashliim   1524 B626A8C-G  N Hi In              412 Li 
+Noesh         1526 E403472-8    Ni Va Ic        B  623 Li 
+Biirk         1529 D210101-9    Lo Ni              524 Li 
+Santar        1530 B563101-E  N Lo Ni              802 Li
+Heraldia      1622 C120576-D    Ni Po De           401 Li 
+Velpare       1623 A567634-9  S Ag Ni              424 Li 
+Kirkus        1625 B885640-B  N Ag Ni Ri           714 Li 
+Shirg         1628 B6337C9-B  S Na Po              204 Li 
+Rashiuon      1630 B130221-E    Lo Ni Po De        403 Li 
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Chant SECTOR: Core
+#
+# Trade routes within the subsector
+#
+$1725 1522 -1 0 10
+$1725 2027 0 0 10
+$2027 2330 0 0 10
+$2330 2433 0 1 10
+$2130 2232 0 1 2
+$2130 2226 0 0 2
+$2226 2222 0 0 2
+$2222 2220 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Temra         1721 B565786-B  N Ag Ri              404 Li 
+Akeyolarix    1724 A675446-E  N Ni                 424 Li 
+C're          1725 B445885-C  A                    803 Li 
+Roustami      1726 B0008AF-C  S Na As              504 Li 
+Braned        1727 B8B1411-C  N Ni Fl           A  505 Li 
+Waduuka       1730 BAB4435-B    Ni Fl           A  104 Li 
+Tell          1821 A78A372-F  N Lo Ni Wa        B  502 Li 
+Holex         1822 A200353-F  N Lo Ni Va           912 Li 
+Citro         1823 E8B7333-7    Lo Ni Fl        A  604 Li 
+Mandhem       1824 E554100-6    Lo Ni              804 Li 
+Prempt        1825 B5A2200-D  S Lo Ni Fl           501 Li 
+Rhydino       1829 B211779-E    Na Ic           B  713 Li 
+Sorca         1921 B245740-9    Ag                 524 Li 
+Tomaa         1924 E455335-5    Lo Ni              100 Li 
+Vvrin         1925 A485699-C  N Ag Ni Ri           300 Li 
+Wrebil        1927 B94A775-7    Wa              B  304 Li 
+Farhome       1929 E628544-6    Ni                 924 Li 
+Traa          1930 A000784-E    As Na              604 Li 
+Anther        2021 A300697-E  N Na Ni Va           615 Li 
+Prubisk       2027 B9A569A-B  N Fl Ni              100 Li 
+Basilling     2028 A443104-D  N Lo Ni Po           904 Li 
+Rorpa Din     2030 D63A566-8    Ni Wa              214 Li 
+Affinity      2121 B98A561-A    Ni Wa              213 Li 
+Elinz         2122 B476000-D  A Lo Ni Ba           900 Li 
+Eliograh      2125 A524575-C    Ni              B  703 Li 
+Kamodoo       2130 B565558-B  N Ag Ni              803 Li 
+Leystroak     2221 B998656-9  N Ag Ni              815 Li 
+Rek-shons     2222 B855746-C    Ag                 213 Li 
+Radd Caulo    2223 A866645-9    Ag Ni Ri           502 Li 
+Chant         2224 A160688-F  W Ni Ri De           903 Li 
+Meiz          2225 B512847-B  S Na Ic              111 Li 
+Skeen         2226 B49199B-F    Hi In              422 Li 
+Port Away     2227 C357747-A    Ag                 203 Li 
+Effinity      2322 A581651-F    Ni Ri              904 Li 
+Merat         2323 B423868-A  N Na Po              403 Li 
+Akin Akun     2326 D410666-7  S Na Ni              910 Li 
+Drivorea      2327 B759300-D    Lo Ni              313 Li 
+Raami         2330 B522966-F    Hi Na In Po        603 Li 
+Ro Anii       2422 A473320-E  N Lo Ni              704 Li 
+Avthaus       2425 B200879-E    Na Va           B  723 Li 
+Shurgiishulu  2429 B552625-8    Ni Po              902 Li 
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Dingtra SECTOR: Core
+#
+# Trade routes within the subsector
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+.             2521 E260463-6    Ni De              201 Li 
+.             2524 A576322-A  N Lo Ni              903 Li 
+.             2526 A7C6320-F    Lo Ni Fl        A  602 Li 
+.             2529 E5648A8-6                       914 Li 
+Gurdaan       2623 B3109DA-E  N Hi Na In           114 Li 
+Idas          2624 B4929AE-F  N Hi In              101 Li
+.             2625 B224337-D  N Lo Ni              704 Li 
+.             2628 B74A622-9  N Ni Wa              314 Li 
+.             2630 C000314-E    Lo Ni As           504 Li 
+.             2721 B551686-8    Ni Po              934 Li 
+.             2729 B360224-E    Lo Ni De           320 Li 
+.             2730 A241632-F    Ni Po              403 Li 
+.             2821 B552897-8    Po                 304 Li 
+.             2823 C553100-C    Lo Ni Po           303 Li 
+.             2825 B6838BA-7                       123 Li 
+.             2829 E100895-B    Na Va              424 Li 
+.             2830 EAC7457-8    Ni Fl           A  214 Li 
+Ekugush       2922 B652968-9    Hi Po              904 Li 
+.             2924 D564779-3  S Ag Ri           B  405 Li 
+.             2928 A494300-F    Lo Ni              214 Li 
+.             2929 B000578-B    Ni As           B  913 Li 
+.             3021 A45778C-A    Ag                 624 Li 
+Gurishi       3022 B756999-B  N Hi                 804 Li 
+.             3025 C200353-C  S Lo Ni Va           621 Li 
+.             3026 C363445-8    Ni                 102 Li 
+.             3027 B9D5769-8  N Fl              A  323 Li 
+.             3028 A37346B-F    Ni                 301 Li 
+.             3121 C5548AA-6                       502 Li
+.             3123 B4247A8-A  A                    814 Li 
+Kadushii      3125 D695973-A  S Hi In           B  713 Li 
+.             3127 B779333-D  A Lo Ni              304 Li 
+.             3128 B679885-D  S                    903 Li 
+.             3129 B867430-A  A Ni                 303 Li 
+.             3130 B557774-C    Ag              B  420 Li 
+.             3226 B686576-C  N Ag Ni           B  600 Li 
+.             3227 B758577-9    Ag Ni           B  903 Li
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Cadion SECTOR: Core
+#
+# Trade routes within the subsector
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Brygella      0132 B76A200-E  A Lo Ni Wa           521 Li 
+Holt          0133 B8D7346-C  N Lo Ni Fl           915 Li 
+Blanum        0134 B421677-B  N Na Ni Po        B  203 Li 
+Erthun        0135 B667587-C  N Ag Ni              204 Li 
+Azpun         0138 A873000-A    Lo Ni Ba           702 Li 
+Dashuu        0139 B87A120-D  N Lo Ni Wa        A  613 Li 
+Reference     0140 D100100-B  A Lo Ni Va Rs        302 Li 
+Rush          0231 E869372-6    Lo Ni           B  711 Li 
+Zorzaa        0234 B667420-C    Ni                 204 Li 
+Tuurqa        0236 D671443-9    Ni                 103 Li 
+Brekin        0240 B58748C-A    Ni                 100 Li 
+Kiis          0331 E10059C-7    Ni Va              724 Li 
+Qungwyld      0332 A655561-A    Ag Ni              203 Li 
+Singing       0334 A9A9310-C  S Lo Ni Fl           523 Li 
+Markun        0338 B887136-9  A Lo Ni              700 Li 
+Betras        0431 B634320-B  S Lo Ni              804 Li 
+Reel          0432 B150779-E  S Po De           B  805 Li
+Lytras        0437 B400643-A    Na Ni Va           405 Li 
+Xamdas        0439 B110100-C    Lo Ni              603 Li 
+Kysizi        0440 A53A777-E    Wa              B  503 Li 
+Caraban       0531 B655264-A  N Lo Ni              400 Li 
+Lia           0537 E654988-A    Hi                 702 Li 
+Double Star   0635 B642652-A  N Ni Po              902 Li 
+Patu          0637 B796676-7  S Ag Ni           B  203 Li 
+Zzugep        0731 B4539CD-C    HI Po              300 Li 
+Ferr          0734 C797778-5  S Ag              B  300 Li 
+Megatina      0735 D584475-4  S Ni              B  904 Li 
+L'rotuu       0737 B898674-8    Ag Ni           B  823 Li 
+Delta 4       0831 C549449-B    Ni                 614 Li 
+Baituu        0835 D438110-6  S Lo Ni              503 Li 
+Night         0839 A5749C9-F  N Hi In              320 Li 
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ch'naar SECTOR: Core
+#
+# Trade routes within the subsector
+$1638 1601 0 1
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+.             0931 A599367-C    Lo Ni              814 Li 
+.             0933 B88A104-B  A Lo Ni Wa           311 Li 
+.             1033 B556215-D  W Lo Ni              604 Li
+.             1034 C533762-6    Na Po              200 Li 
+.             1035 B581666-A  S Ni Ri              503 Li 
+.             1037 D542201-9  S Lo Ni Po           624 Li 
+.             1038 B358697-C    Ag Ni              914 Li 
+.             1040 B528200-E    Lo Ni              325 Li 
+Aursis        1134 A5459BD-F  A Hi In              500 Li 
+.             1140 BAF3579-A    Ni Fl           B  800 Li 
+.             1232 B130563-D    Ni Po De           722 Li 
+.             1233 A375025-B    Lo Ni              424 Li 
+.             1236 B491384-E    Lo Ni              303 Li 
+.             1237 E6A7761-7    Fl                 903 Li 
+.             1239 B547759-D  N Ag                 302 Li 
+.             1240 C223304-9  S Lo Ni Po           214 Li
+.             1334 BACA37B-C    Lo Ni Fl Wa     A  112 Li
+Umkashuu      1335 B3549C9-C    Hi                 322 Li 
+.             1336 EA97596-4    Ag Ni              503 Li
+.             1338 B695300-C  N Lo Ni              902 Li
+.             1431 C494046-9  S Lo Ni              903 Li
+.             1434 C755203-C    Lo Ni              503 Li 
+.             1436 E6B078B-9    De              A  401 Li
+.             1437 B9A8311-9  S Lo Ni Fl           913 Li 
+.             1440 A58A69C-F    Ni Ri Wa           303 Li
+.             1531 C33389C-B    Na Po              813 Li 
+.             1533 B647886-8  N                    402 Li 
+.             1534 A76A551-D  N Ni Wa              603 Li 
+Shueshlar     1536 C435998-9  S Hi                 502 Li 
+.             1538 A3437BB-A  N Po                 201 Li
+.             1539 A583220-F  N Lo Ni              104 Li
+.             1633 B300666-D    Na Ni Va           801 Li
+.             1635 C62757B-A    Ni              B  314 Li
+.             1638 E759877-5                    B  612 Li
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Dunea SECTOR: Core
+#
+# Trade routes within the subsector
+#
+$2433 2330 0 -1 10
+$2433 2636 1 0 10
+$2439 2503 1 1 2
+$2439 2336 0 0 2
+$2336 2232 0 0 2
+$2232 2130 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+.             1732 B758454-B    Ni                 504 Li 
+.             1733 B865400-B    Ni                 314 Li 
+.             1736 B420853-F  N Na Po De           600 Li 
+.             1737 B374476-A    Ni              B  600 Li
+.             1738 C8A6203-A    Lo Ni Fl           213 Li 
+.             1739 B6A6764-C    Fl                 612 Li 
+.             1831 C663410-6  S Ni                 225 Li 
+.             1833 D464874-9    Ri              B  204 Li
+Khea          1836 B340955-F    Hi In Po De        303 Li 
+.             1837 BA9A201-F  N Lo Ni Wa           700 Li
+.             1838 D989620-7  S Ni                 603 Li
+.             1839 B782455-A  S Ni                 301 Li 
+.             1840 E7437BC-5    Po                 200 Li 
+.             1933 B599775-D                    B  604 Li 
+.             1934 B886879-7  N Ri              B  300 Li 
+Keshi         1938 B5669D8-8    Hi                 314 Li 
+.             1940 B548844-C                       820 Li 
+.             2034 B324579-E    Ni              B  503 Li 
+.             2036 A410856-F  N Na                 304 Li 
+.             2037 B333211-C  A Lo Ni Po           620 Li 
+.             2038 B476450-C  N Ni              A  502 Li
+.             2040 A240745-A    Po De              202 Li 
+.             2133 E88A654-8    Ni Ri Wa           210 Li 
+.             2135 D749121-6    Lo Ni              513 Li 
+.             2136 A77A5AD-G    Ni Wa              504 Li
+.             2138 E88866A-5    Ag Ni Ri           100 Li 
+.             2139 B565200-C  W Lo Ni              502 Li
+.             2140 C20079D-A    Na Va              710 Li 
+.             2232 B538836-B                       802 Li 
+.             2237 B203212-C  N Lo Ni Va Ic        200 Li 
+.             2334 B233000-E  N Lo Ni Po Ba        603 Li 
+.             2335 B555222-D    Lo Ni              203 Li 
+.             2336 D661696-6    Ni Ri              603 Li 
+.             2338 B455620-D    Ag Ni           A  614 Li 
+.             2431 D7A8678-6  S Ni Fl           B  812 Li
+.             2433 C794798-8  S Ag                 914 Li
+.             2435 BAB4423-9  N Ni Fl           A  300 Li 
+.             2437 D636650-7  S Ni                 802 Li
+.             2439 B384000-B    Lo Ni Ba           123 Li
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Saregon SECTOR: Core
+#
+# Trade routes within the subsector                       
+#
+$2636 2433 -1 0 10
+$2636 2839 0 0 10
+$2839 3002 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+.             2532 B110320-C  A Lo Ni              803 Li
+.             2534 B648797-7  N Ag                 402 Li
+.             2536 C511637-9  S Na Ni Ic           624 Li
+.             2538 B768410-C    Ni                 702 Li
+.             2540 C553314-8    Lo Ni Po           420 Li 
+.             2631 B245525-9  A Ag Ni              513 Li 
+.             2635 E889662-6    Ni Ri              704 Li 
+.             2636 B998213-A  S Lo Ni              314 Li 
+.             2639 B100403-D  S Ni Va              203 Li 
+Dishadshii    2640 B614ACG-G  N Hi In Ic           204 Li 
+.             2731 B6315AF-A  N Ni Po              404 Li 
+.             2732 B9E7425-E    Ni Fl              802 Li 
+.             2736 B324757-B                       113 Li 
+Sinad         2832 B4589AD-D  N Hi                 402 Li 
+.             2836 B478861-D  S                    504 Li 
+Igla          2837 B414ADG-F    Hi In Ic           804 Li 
+.             2839 C783354-9    Lo Ni              703 Li
+.             2840 B8C0885-B    De              A  814 Li 
+.             2931 E332679-5    Na Ni Po        B  122 Li 
+Ganad         2933 A6569BA-F  N Hi                 504 Li 
+.             2934 A778232-D    Lo Ni              315 Li 
+.             2935 C472255-A    Lo Ni              913 Li 
+Saregon       2936 A584976-E    Hi              B  114 Li 
+.             2937 B434779-A  A                 B  703 Li 
+Shakiiga      2938 B867ACA-B    Hi                 710 Li 
+.             3033 A424588-G  N Ni                 103 Li 
+.             3034 A554755-D  W Ag                 903 Li 
+.             3037 E665655-6    Ag Ni Ri           922 Li 
+.             3039 B8B4442-D  S Ni Fl           A  601 Li 
+Unlakhar      3040 B629997-G  N Hi In              603 Li 
+.             3131 A7C3874-C    Fl              A  513 Li 
+.             3132 B4625AC-A  N Ni                 110 Li 
+.             3133 C36267B-8    Ni Ri           B  302 Li
+.             3135 B58A763-A  N Ri Wa              400 Li 
+.             3137 B493666-8  N Ni                 603 Li 
+.             3140 A562898-B  S Ri                 210 Li 
+.             3234 B433764-E    Na Po              520 Li 
+.             3235 B75A431-9    Ni Wa              613 Li 
+.             3238 E560672-6    Ni Ri De        B  503 Li 
+

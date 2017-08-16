@@ -1,0 +1,376 @@
+Freuwel Sector
+
+A: Afreuw                    a.dat
+B: Breuwel                   b.dat
+C: Chafreu                   c.dat
+D: Druwel                    d.dat
+E: Efreuwe                   e.dat
+F: Freuwam                   f.dat
+G: Gleuwa                    g.dat
+H: Hafreen                   h.dat
+I: Ifreug                    i.dat
+J: Jeuwl                     j.dat
+K: Keuwan                    k.dat
+L: Lreuw                     l.dat
+M: Mafraneu                  m.dat
+N: Noreuw                    n.dat
+O: Ofreuwn                   o.dat
+P: Pieuwa                    p.dat
+
+Bases:
+N = Navy
+O = Openheim Police
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+07 Na = Non-Aligned
+12 Os = Openheim State
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Afreuw SECTOR: Freuwel Sector
+#
+# Jump-routes
+#
+$0710 0513 0 1 10
+$0710 1112 1 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0107 B200442-A    Ni Va              904 Na
+A-2           0208 B879122-C    Lo Ni              602 Na
+A-3           0603 BAC6756-7    Fl              A  604 Na
+Amakkna       0710 C310550-A  S Ni                 203 Na
+A-5           0805 C373786-8  S                    803 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Breuwel SECTOR: Freuwel Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           1208 C332242-B    Lo Ni Po           212 Na
+B-2           1309 C3228CA-7  S Na Po              704 Na
+B-3           1605 C4269BE-B  S Hi In              800 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Chafreu SECTOR: Freuwel Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1704 B555478-9    Ni              B  911 Na
+C-2           1707 C775414-9    Ni                 600 Na
+C-3           1901 C564300-9    Lo Ni              324 Na
+C-4           1905 D550694-1    De Ni Po           211 Na
+C-5           2005 X6A3724-2    Fl              R  300 Na
+C-6           2110 D598787-1    Ag                 722 Na
+C-7           2207 C410564-A    Ni                 613 Na
+C-8           2209 C564578-4  S Ag Ni           B  414 Na
+C-9           2307 B897836-7  S                    800 Na
+C-10          2405 C626589-6    Ni                 801 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Druwel SECTOR: Freuwel Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2710 C597A89-7  S Hi In              211 Na
+D-2           2801 A8C6767-B  N Fl              A  713 Na
+D-3           2910 B746145-7    Lo Ni              900 Na
+D-4           3002 C1108CC-6  S Na                 502 Na
+D-5           3004 C574997-5  S Hi In              723 Na
+D-6           3101 B346450-B  N Ni                 420 Na
+D-7           3207 C341721-9    Po                 503 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Efreuwe SECTOR: Freuwel Sector
+#
+# Jump-routes
+#
+$0112 3012 -1 0 10
+$0112 0513 0 0 10
+$0513 0710 0 -1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Quisarea      0112 A4108CB-C  N Na                 703 Na
+E-2           0219 C538200-9    Lo Ni              102 Na
+E-3           0416 C528675-7    Ni              B  402 Na
+Iolina        0513 C676ADG-7  S Hi In              424 Na
+E-5           0520 C6B0658-A  S De Ni           A  814 Na
+E-6           0618 X476752-0    Ag              R  100 Na
+E-7           0817 C643353-5  S Lo Ni Po           104 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Freuwam SECTOR: Freuwel Sector
+#
+# Jump-routes
+#
+$1112 0710 -1 -1 10
+$1112 1113 0 0 10
+$1113 1316 0 0 10
+$1316 1417 0 0 10
+$1417 1819 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Foerrd        1112 X578321-0    Lo              R  204 Na
+Dewigh        1113 D556550-6  S Ag Ni              804 Na
+F-3           1211 C266357-9    Lo Ni              703 Na
+Maggamma      1316 C220577-9    De Ni Po        B  503 Na
+Ewellik       1417 C836599-9    Ni                 102 Na
+F-6           1419 B485469-B  S Ni                 401 Na
+F-7           1520 B9B7767-A    Fl              A  703 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Gleuwa SECTOR: Freuwel Sector
+#
+# Jump-routes
+#
+$1819 1417 -1 0 10
+$1819 2120 0 0 10
+$2120 2323 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1813 C230234-9  S De Lo Ni Po        413 Na
+Gonadda       1819 C335442-7    Ni                 502 Na
+G-3           2019 D6988BE-5  S                    413 Na
+Argasaal      2120 CA58587-6    Ag Ni              611 Na
+G-5           2217 E432512-7    Ni Po              814 Na
+G-6           2313 A799748-9  N                    903 Na
+G-7           2319 C240577-A  S De Ni Po        B  702 Na
+G-8           2418 C9CA150-A  S Fl Lo Ni Wa     A  624 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hafreen SECTOR: Freuwel Sector
+#
+# Jump-routes
+#
+$2815 2913 0 0 11
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2614 D23259D-4  S Ni Po              101 Na
+H-2           2619 B688634-9    Ag Ni              200 Na
+H-3           2815 A310316-E  N Lo Ni              612 Na
+H-4           2913 C767000-8  S Ba Lo Ni           712 Na
+H-5           2920 C120446-C    De Ni Po           510 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ifreug SECTOR: Freuwel Sector
+#
+# Jump-routes
+$0125 0325 0 0
+#
+$0125 0124 0 0 11
+$0125 0126 0 0 11
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0124 B458553-A  N Ag Ni              224 Na
+I-2           0125 A9D4300-E  N Fl Lo Ni           703 Na
+I-3           0126 B442730-B  S Po                 904 Na
+I-4           0325 C9A46BE-4    Fl Ni              401 Na
+I-5           0423 D554655-4    Ag Ni              905 Na
+I-6           0625 C5519B8-8    Hi Po              713 Na
+I-7           0722 C566543-5  S Ag Ni              500 Na
+I-8           0826 A7B5856-9  S Fl              A  724 Na
+I-9           0829 C511430-5  S Ic Ni              400 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jeuwl SECTOR: Freuwel Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0928 C470552-7    De Ni              903 Na
+J-2           1023 C553484-5    Ni Po              414 Na
+J-3           1028 B784520-7  N Ag Ni              600 Na
+J-4           1123 E898555-4    Ag Ni              510 Na
+J-5           1426 C264443-A  S Ni                 203 Na
+J-6           1429 C9A9779-9    Fl              B  912 Na
+J-7           1430 D747520-4  S Ag Ni              601 Na
+J-8           1525 C4046BD-A    Ic Ni Va           100 Na
+J-9           1528 C534033-8    Lo Ni              112 Na
+J-10          1624 C436643-A    Ni                 501 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Keuwan SECTOR: Freuwel Sector
+#
+# Jump-routes
+#
+$2323 2120 0 -1 10
+$2323 2725 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1725 C63699C-9    Hi In              325 Na
+K-2           1824 E7B2756-8    Fl              A  503 Na
+K-3           1924 A697453-9    Ni                 804 Na
+K-4           2023 E463202-6    Lo Ni              401 Na
+K-5           2025 D440265-5    De Lo Ni Po        104 Na
+K-6           2026 C965577-5  S Ag Ni           B  503 Na
+K-7           2222 D577100-6    Lo Ni              105 Na
+Khariis       2323 D557110-6    Lo Ni              604 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lreuw SECTOR: Freuwel Sector
+#
+# Jump-routes
+#
+$2725 2323 -1 0 10
+$2725 3027 0 0 10
+$3027 2931 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2625 D657521-7    Ag Ni              903 Na
+Lahaggu       2725 E655569-6    Ag Ni              802 Na
+L-3           2826 C000401-9  S As Ni              620 Na
+L-4           2829 X130688-1    De Po           R  104 Na
+Yollon        3027 C763202-A  S Lo Ni              804 Na
+L-6           3029 D311359-A    Ic Lo Ni           704 Na
+L-7           3224 C9B766A-4    Fl Ni           A  802 Na
+L-8           3226 A883778-8    Ri              B  300 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Mafraneu SECTOR: Freuwel Sector
+#
+# Jump-routes
+$0832 0934 1 0
+#
+$0635 0938 1 0 2
+$0635 0434 0 0 2
+$0434 0132 0 0 2
+$0132 3129 -1 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Racierna      0132 A837634-A  N Ni                 812 Na
+M-2           0239 C88A569-B    Ni Wa              203 Na
+M-3           0332 D679898-7  S                    123 Na
+Linnol        0434 C300643-8    Na Ni Va           703 Na
+Zacacha       0635 E768043-1    Lo Ni              805 Na
+M-6           0831 B6149EF-9  2 Hi Ic              420 Na
+M-7           0832 B533147-8  2 Lo Ni Po           203 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Noreuw SECTOR: Freuwel Sector
+#
+# Jump-routes
+$0934 0832 -1 0
+#
+$1238 1202 0 1 2
+$1238 0938 0 0 2
+$0938 0635 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0934 A140744-B  2 De Po              303 Na
+Aquinna       0938 B586243-A  N Lo Ni              622 Na
+Ferwaan       1238 CA8A444-B  S Ni Wa              712 Na
+N-4           1435 C661730-6                       623 Na
+N-5           1632 E454584-3    Ag Ni              105 Na
+N-6           1638 B265799-B  2 Ag Ri              103 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ofreuwn SECTOR: Freuwel Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1734 E200231-9    Lo Ni Va           900 Na
+O-2           1931 C210447-7    Ni                 315 Na
+O-3           1938 C89A735-A    Wa                 820 Na
+O-4           2035 C423532-A    Ni Po              522 Na
+O-5           2039 E5338CB-5    Na Po              801 Na
+O-6           2235 C666656-4    Ag Ni Ri           812 Na
+Openheim      2332 B79AABF-F  O Hi In Wa           601 Os
+O-8           2337 C647655-6    Ag Ni              934 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Pieuwa SECTOR: Freuwel Sector
+#
+# Jump-routes
+#
+$2931 3027 0 -1 10
+$2931 2934 0 0 10
+$2934 2937 0 0 10
+$2937 2901 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2735 A868975-B  N Hi              B  724 Na
+P-2           2738 C314402-9    Ic Ni              803 Na
+P-3           2837 C775349-7    Lo Ni              835 Na
+Shardra       2931 B4607A8-6  S De                 323 Na
+Jataal        2934 B683336-9    Lo Ni              801 Na
+Drijier       2937 D628685-3  S Ni                 213 Na
+P-7           3235 C425789-8                       203 Na
+

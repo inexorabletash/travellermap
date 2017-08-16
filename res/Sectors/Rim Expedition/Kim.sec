@@ -1,0 +1,286 @@
+Kim Sector
+
+A: Aki                       a.dat
+B: Bekim                     b.dat
+C: Chashik                   c.dat
+D: Dokim                     d.dat
+E: Enkir                     e.dat
+F: Fokim                     f.dat
+G: Grakom                    g.dat
+H: Hazakim                   h.dat
+I: Ikim                      i.dat
+J: Jokim                     j.dat
+K: Kimuur                    k.dat
+L: Lefik                     l.dat
+M: Mikim                     m.dat
+N: Nokuur                    n.dat
+O: Oakim                     o.dat
+P: Pazakim                   p.dat
+
+Bases:
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Aki SECTOR: Kim Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0202 C510578-8    Ni              B  702 Na
+A-2           0402 C100544-A  S Ni Va              601 Na
+A-3           0603 C341434-9  S Ni Po              134 Na
+A-4           0709 A363579-B    Ni              B  624 Na
+A-5           0804 C3005AA-8  S Ni Va              604 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Bekim SECTOR: Kim Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           1602 C7C0222-6    De Lo Ni        A  124 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Chashik SECTOR: Kim Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           2308 B341666-9    Ni Po              623 Na
+C-2           2402 B77A101-D  2 Lo Ni Wa           900 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Dokim SECTOR: Kim Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2501 D244456-9    Ni                 402 Na
+D-2           3206 C6A2668-8    Fl Ni              802 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Enkir SECTOR: Kim Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0713 C546899-8  S                    404 Na
+E-2           0811 C688654-7    Ag Ni Ri           703 Na
+E-3           0815 C10098B-8    Hi Na Va           104 Na
+E-4           0818 C5A0101-6    De Lo Ni           204 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Fokim SECTOR: Kim Sector
+#
+# Jump-routes
+$1517 1617 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           1114 C542433-8  S Ni Po              905 Na
+F-2           1517 C432157-8  S Lo Ni Po           713 Na
+F-3           1617 A200764-B  N Na Va              114 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Grakom SECTOR: Kim Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1813 C435300-8    Lo Ni              903 Na
+G-2           1814 C525510-A    Ni                 410 Na
+G-3           2113 XAC2245-3    Fl Lo           R  400 Na
+G-4           2116 D526586-4  S Ni                 520 Na
+G-5           2313 B784447-8    Ni                 112 Na
+G-6           2316 A454422-A    Ni                 724 Na
+G-7           2415 E888358-4    Lo Ni              804 Na
+G-8           2420 C682732-4  S                    814 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hazakim SECTOR: Kim Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2711 C520101-6    De Lo Ni Po        204 Na
+H-2           2716 C325559-8  S Ni                 300 Na
+H-3           3214 C000366-7    As Lo Ni           923 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ikim SECTOR: Kim Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0321 C678569-8  S Ag Ni              423 Na
+I-2           0721 C110679-6    Na Ni           B  205 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jokim SECTOR: Kim Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           1023 C796313-8    Lo Ni              401 Na
+J-2           1024 C7787CA-5  S Ag                 722 Na
+J-3           1222 B76555A-7  N Ag Ni              413 Na
+J-4           1226 B537301-9    Lo Ni              205 Na
+J-5           1228 A469474-D  S Ni              B  304 Na
+J-6           1325 D100524-A    Ni Va              420 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kimuur SECTOR: Kim Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1722 C4288BA-A                       714 Na
+K-2           1723 E00088A-5    As Na              103 Na
+K-3           1727 A363400-D    Ni                 612 Na
+K-4           1826 D858456-7    Ni                 903 Na
+K-5           2029 C777000-8  S Ba Lo Ni           103 Na
+K-6           2123 C59558C-4  S Ag Ni              514 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lefik SECTOR: Kim Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2528 B538888-8  S                    110 Na
+L-2           3024 C302521-B    Ic Ni Va           124 Na
+L-3           3227 C31068A-7  S Na Ni              602 Na
+L-4           3228 D350233-4  S De Lo Ni Po        600 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Mikim SECTOR: Kim Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0333 C314888-9  S Ic                 603 Na
+M-2           0335 E94A511-9    Ni Wa              604 Na
+M-3           0734 B350151-C  S De Lo Ni Po        725 Na
+M-4           0836 D8B5251-8  S Fl Lo Ni        A  123 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nokuur SECTOR: Kim Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0940 C0008CF-9    As Na              304 Na
+N-2           1035 EAC99B7-5    Fl Hi           A  203 Na
+N-3           1336 C370536-6    De Ni              802 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Oakim SECTOR: Kim Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1736 X542578-1    Po              R  420 Na
+O-2           1740 E665ACE-9    Hi                 602 Na
+O-3           2134 C547885-3                       702 Na
+O-4           2340 X785413-0                    R  925 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Pazakim SECTOR: Kim Sector
+#
+# Jump-routes
+$2835 2936 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2832 C84A333-9    Lo Ni Wa           204 Na
+P-2           2835 A995532-8    Ag Ni              810 Na
+P-3           2936 A21188B-C  N Ic Na              505 Na
+

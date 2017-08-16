@@ -1,0 +1,287 @@
+Winkrill Sector
+
+A: Awin                      a.dat
+B: Baween                    b.dat
+C: Cekrill                   c.dat
+D: Dewin                     d.dat
+E: Ekraw                     e.dat
+F: Finkra                    f.dat
+G: Genwa                     g.dat
+H: Hink                      h.dat
+I: Inkrall                   i.dat
+J: Jinkreen                  j.dat
+K: Krill                     k.dat
+L: Linkrin                   l.dat
+M: Mawin                     m.dat
+N: Namill                    n.dat
+O: Owiin                     o.dat
+P: Pakrin                    p.dat
+
+Bases:
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Awin SECTOR: Winkrill Sector
+#
+# Jump-routes
+#
+$0203 3001 -1 0 10
+$0203 0207 0 0 10
+$0207 0211 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Baskopa       0203 C472232-5    Lo Ni              623 Na
+Griena        0207 D4378A8-8  S                    922 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Baween SECTOR: Winkrill Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           1109 E51099E-5    Hi Na              504 Na
+B-2           1405 C244459-6    Ni                 801 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Cekrill SECTOR: Winkrill Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1910 E7C08AB-6    De              A  610 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Dewin SECTOR: Winkrill Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2507 C300202-7    Lo Ni Va           312 Na
+D-2           2609 E585961-6    Hi                 424 Na
+D-3           2707 B567521-B    Ag Ni              414 Na
+D-4           3002 C673575-6    Ni              B  413 Na
+D-5           3006 CA699BF-7    Hi                 504 Na
+D-6           3110 C6B5977-6  S Fl Hi           A  212 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ekraw SECTOR: Winkrill Sector
+#
+# Jump-routes
+#
+$0211 0207 0 -1 10
+$0211 3114 -1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Emkaan        0211 C424325-7  S Lo Ni              104 Na
+E-2           0419 B8787A8-A    Ag                 803 Na
+E-3           0516 E9D3554-5    Fl Ni              200 Na
+E-4           0520 A727514-D  2 Ni                 700 Na
+E-5           0815 CA8AA9E-9  S Hi Wa              603 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Finkra SECTOR: Winkrill Sector
+#
+# Jump-routes
+$1520 1621 0 1
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0915 C658531-5    Ag Ni              223 Na
+F-2           1013 C374022-4  S Lo Ni              603 Na
+F-3           1113 A140244-D    De Lo Ni Po        235 Na
+F-4           1412 C545476-6    Ni              B  820 Na
+F-5           1512 E8A4A9A-7    Fl Hi              601 Na
+F-6           1520 C130655-A    De Na Ni Po        921 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Genwa SECTOR: Winkrill Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           2211 B545630-9  S Ag Ni              522 Na
+G-2           2318 C663333-6    Lo Ni              603 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hink SECTOR: Winkrill Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2513 B343243-B    Lo Ni Po           411 Na
+H-2           2612 C200477-6  S Ni Va           B  803 Na
+H-3           2620 C8A3445-5  S Fl Ni              501 Na
+H-4           3219 D985525-2    Ag Ni              502 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Inkrall SECTOR: Winkrill Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0425 B300301-9  N Lo Ni Va           213 Na
+I-2           0525 C4366BC-6    Ni                 101 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jinkreen SECTOR: Winkrill Sector
+#
+# Jump-routes
+$1621 1520 0 -1
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0928 B300113-9    Lo Ni Va           812 Na
+J-2           1621 B200100-C  N Lo Ni Va           913 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Krill SECTOR: Winkrill Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1728 X649542-2                    R  911 Na
+K-2           2025 C534000-8    Ba Lo Ni           102 Na
+K-3           2129 B535654-9    Ni                 604 Na
+K-4           2325 C896412-6    Ni                 210 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Linkrin SECTOR: Winkrill Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2923 B4247A8-A                       912 Na
+L-2           3028 C300525-6  S Ni Va              105 Na
+L-3           3125 E789575-4    Ni              B  403 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Mawin SECTOR: Winkrill Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0138 B5A0557-D    De Ni              523 Na
+M-2           0139 C99A625-5    Ni Wa              713 Na
+Mawin         0636 A233456-F  N Ni Po              403 Na
+M-4           0738 C100321-A    Lo Ni Va           400 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Namill SECTOR: Winkrill Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0940 A87A666-B    Ni Wa              103 Na
+N-2           1133 B67A840-9  S Wa                 203 Na
+N-3           1333 C352500-B    Ni Po              300 Na
+N-4           1632 X696689-0    Ag              R  522 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Owiin SECTOR: Winkrill Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1734 X795530-0    Ag              R  403 Na
+O-2           1940 E566953-6    Hi                 405 Na
+O-3           2434 B200420-D    Ni Va              625 Na
+O-4           2437 C5248DF-7                       225 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Pakrin SECTOR: Winkrill Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2533 C687740-3    Ag Ri              914 Na
+P-2           2538 C342654-7  S Ni Po              903 Na
+P-3           2938 B695465-8  N Ni                 613 Na
+P-4           2939 C224751-B  S                    312 Na
+P-5           2940 E886698-4    Ag Ni Ri           414 Na
+

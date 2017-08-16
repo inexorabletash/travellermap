@@ -1,0 +1,270 @@
+Riggoff Sector
+
+A: Argoff                    a.dat
+B: Bafoff                    b.dat
+C: Cikoff                    c.dat
+D: Dardoff                   d.dat
+E: Effoff                    e.dat
+F: Fargoff                   f.dat
+G: Goffann                   g.dat
+H: Holoff                    h.dat
+I: Imomm                     i.dat
+J: Jafogg                    j.dat
+K: Karkoff                   k.dat
+L: Lagpoff                   l.dat
+M: Moffin                    m.dat
+N: Nivoff                    n.dat
+O: Offvath                   o.dat
+P: Paguff                    p.dat
+
+Bases:
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Argoff SECTOR: Riggoff Sector
+#
+# Jump-routes
+$0210 0212 0 1
+$0703 0905 1 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0210 B684204-B  N Lo Ni              810 Na
+A-2           0505 D232666-3  S Na Ni Po           224 Na
+A-3           0703 A330633-C    De Na Ni Po        204 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Bafoff SECTOR: Riggoff Sector
+#
+# Jump-routes
+$0905 0703 -1 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           0905 A40058C-C    Ni Va              124 Na
+B-2           0910 C665500-5    Ag Ni              400 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Cikoff SECTOR: Riggoff Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           2004 C000235-C    As Lo Ni           420 Na
+C-2           2104 C300444-A    Ni Va              123 Na
+C-3           2203 C636354-A    Lo Ni              900 Na
+C-4           2205 C664020-4  S Lo Ni              503 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Dardoff SECTOR: Riggoff Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2505 D776333-3  S Lo Ni              323 Na
+D-2           2601 CAA5121-5  S Fl Lo Ni           504 Na
+D-3           2707 E231779-6    Na Po           B  502 Na
+D-4           3001 A346662-B    Ag Ni              503 Na
+D-5           3108 D558985-5  S Hi                 803 Na
+D-6           3210 B66A200-9    Lo Ni Wa           803 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Effoff SECTOR: Riggoff Sector
+#
+# Jump-routes
+$0212 0210 0 -1
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0118 C594551-9  S Ag Ni              303 Na
+E-2           0212 A200111-D    Lo Ni Va           810 Na
+E-3           0612 C237652-B    Ni                 604 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Fargoff SECTOR: Riggoff Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           1019 C575554-8  S Ag Ni              304 Na
+F-2           1116 C769251-9    Lo Ni              201 Na
+F-3           1218 D100695-5  S Na Ni Va           304 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Goffann SECTOR: Riggoff Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           2115 B484534-8  2 Ag Ni              621 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Holoff SECTOR: Riggoff Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2520 X665515-0    Ag              R  705 Na
+H-2           2911 C86A98A-A  S Hi Wa              610 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Imomm SECTOR: Riggoff Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0627 D56A413-6  S Ni Wa              620 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jafogg SECTOR: Riggoff Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0928 E6588AB-2                       200 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Karkoff SECTOR: Riggoff Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           2122 C440255-B    De Lo Ni Po        504 Na
+K-2           2125 C244113-A  S Lo Ni              105 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lagpoff SECTOR: Riggoff Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2624 C200474-B    Ni Va           B  603 Na
+L-2           2824 C748424-8    Ni                 204 Na
+L-3           3226 CA78132-5  S Lo Ni              914 Na
+L-4           3230 D452778-3  S Po              B  813 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Moffin SECTOR: Riggoff Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0432 C959966-A  S Hi                 514 Na
+M-2           0835 C4647A9-8    Ag                 411 Na
+M-3           0836 C200547-A    Ni Va              902 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nivoff SECTOR: Riggoff Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0933 B234877-8  S                 B  123 Na
+N-2           1139 D200684-7  S Na Ni Va           100 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Offvath SECTOR: Riggoff Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           2231 C432774-7    Na Po           B  602 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Paguff SECTOR: Riggoff Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2735 C335254-B    Lo Ni              614 Na
+P-2           3035 C242698-8    Ni Po              201 Na
+P-3           3040 C566553-7  S Ag Ni              214 Na
+P-4           3136 C454301-B    Lo Ni              501 Na
+

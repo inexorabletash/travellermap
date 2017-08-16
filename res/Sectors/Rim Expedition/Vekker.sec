@@ -1,0 +1,348 @@
+Vekker Sector
+
+A: Avekk                     a.dat
+B: Beavva                    b.dat
+C: Civaac                    c.dat
+D: Dovove                    d.dat
+E: Evuvv                     e.dat
+F: Facav                     f.dat
+G: Gevaiere                  g.dat
+H: Hivisa                    h.dat
+I: Ivvaka                    i.dat
+J: Juvich                    j.dat
+K: Kavarnn                   k.dat
+L: Lereve                    l.dat
+M: Mivaran                   m.dat
+N: Nexava                    n.dat
+O: Oivol                     o.dat
+P: Panhava                   p.dat
+
+Bases:
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Avekk SECTOR: Vekker Sector
+#
+# Jump-routes
+#
+$0809 1110 1 0 2
+$0809 0606 0 0 2
+$0606 0306 0 0 2
+$0306 0103 0 0 2
+$0103 3240 -1 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Routa         0103 C200888-9    Na Va              702 Na
+Fattask       0306 C578300-7    Lo Ni              802 Na
+A-3           0506 C201463-7  S Ic Ni Va           800 Na
+Vlionna       0606 C446101-B  S Lo Ni              204 Na
+Aklanarra     0809 X500664-0    Va              R  223 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Beavva SECTOR: Vekker Sector
+#
+# Jump-routes
+$1110 1311 0 1
+#
+$1110 1412 0 1 2
+$1110 0809 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           0903 C877A79-A  S Hi In           B  900 Na
+B-2           0910 C5319AB-B    Hi In Na Po        813 Na
+Ca-Nakk       1110 B77949D-C  S Ni                 911 Na
+B-4           1201 C666421-9    Ni                 314 Na
+B-5           1204 E648697-4    Ag Ni              804 Na
+B-6           1206 C557858-7  S                    500 Na
+B-7           1403 C245542-7    Ag Ni              102 Na
+B-8           1509 C545747-5    Ag                 510 Na
+B-9           1602 B323753-A  N Na Po              303 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Civaac SECTOR: Vekker Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           2104 C6A499A-A    Fl Hi              403 Na
+C-2           2306 C678875-5                    B  504 Na
+C-3           2402 C364466-6    Ni                 304 Na
+C-4           2403 C220457-9  S De Ni Po           913 Na
+C-5           2405 C543357-6    Lo Ni Po           904 Na
+C-6           2410 C310556-A    Ni                 614 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Dovove SECTOR: Vekker Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2604 C549635-7    Ni                 504 Na
+D-2           2709 BAE3787-B  N Fl                 525 Na
+D-3           2805 D6A2442-6  S Fl Ni              813 Na
+D-4           3002 B559586-C  S Ni                 100 Na
+D-5           3009 E334433-7    Ni                 524 Na
+D-6           3106 A511551-D    Ic Ni              114 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Evuvv SECTOR: Vekker Sector
+#
+# Jump-routes
+$0517 0617 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0219 A78A773-E    Ri Wa           B  111 Na
+E-2           0415 C336A9E-B  S Hi In              310 Na
+E-3           0511 D583349-3    Lo Ni              705 Na
+E-4           0517 B4818DH-7                    A  314 Na
+E-5           0518 C460275-6    De Lo Ni        B  822 Na
+E-6           0617 BAE6202-B    Fl Lo Ni           305 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Facav SECTOR: Vekker Sector
+#
+# Jump-routes
+$1311 1110 0 -1
+$1119 1320 0 0
+#
+$1412 1715 1 0 2
+$1412 1110 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           1016 C659512-6  S Ni                 603 Na
+F-2           1018 E87A222-7    Lo Ni Wa           500 Na
+F-3           1117 A848100-B  S Lo Ni              804 Na
+F-4           1119 C697578-4  S Ag Ni           B  800 Na
+F-5           1311 A200420-B  N Ni Va              103 Na
+F-6           1320 A310000-D  N Ba Lo Ni           802 Na
+Frekkna       1412 C687004-6  S Lo Ni              504 Na
+F-8           1519 C000898-B    As Na              202 Na
+F-9           1612 D310403-9  S Ni                 823 Na
+F-10          1619 C300731-5    Na Va              603 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Gevaiere SECTOR: Vekker Sector
+#
+# Jump-routes
+#
+$2217 2619 1 0 2
+$2217 2017 0 0 2
+$2017 1715 0 0 2
+$1715 1412 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Ja-Laharr     1715 C332554-B    Ni Po              305 Na
+G-2           2012 E130773-5    De Na Po        B  112 Na
+G-3           2016 C160751-6    De Ri              503 Na
+Glallink      2017 C100773-9  S Na Va           B  101 Na
+G-5           2215 B985657-6    Ag Ni Ri           700 Na
+G-6           2216 D7B2522-7  S Fl Ni           A  702 Na
+Issessa       2217 C54367C-8    Ni Po           B  905 Na
+G-8           2311 C87A77B-A    Wa              B  700 Na
+G-9           2313 A410669-C    Na Ni              514 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hivisa SECTOR: Vekker Sector
+#
+# Jump-routes
+#
+$2619 2722 0 1 2
+$2619 2217 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2618 C364203-7  S Lo Ni              205 Na
+Hereeka       2619 D403776-8    Ic Na Va        B  114 Na
+H-3           2711 C100400-8    Ni Va              902 Na
+H-4           2712 D436555-6    Ni                 803 Na
+H-5           2718 D539AB9-A    Hi In              903 Na
+H-6           2914 E470301-6    De Lo Ni           814 Na
+H-7           2916 E568514-5    Ag Ni              600 Na
+H-8           3015 E5306BA-5    De Na Ni Po        104 Na
+H-9           3117 B464516-9  2 Ag Ni              514 Na
+H-10          3214 CA5AA8B-D  S Hi Wa              203 Na
+H-11          3216 D525220-5  S Lo Ni              803 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ivvaka SECTOR: Vekker Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0124 C343645-7    Ni Po              405 Na
+I-2           0223 C4489C7-6    Hi In              615 Na
+I-3           0421 C000431-9    As Ni              410 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Juvich SECTOR: Vekker Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           1330 D5769BC-3  S Hi In              413 Na
+J-2           1526 B400978-A  N Hi Na Va        B  801 Na
+J-3           1625 C998323-4    Lo Ni              403 Na
+J-4           1627 C566598-7  S Ag Ni              704 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kavarnn SECTOR: Vekker Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1730 C78A411-8    Ni Wa              404 Na
+K-2           1827 A847476-8    Ni              B  805 Na
+K-3           1830 E567377-4    Lo Ni           B  404 Na
+K-4           2030 B36389A-A  S Ri                 704 Na
+K-5           2321 C47558B-6    Ag Ni              202 Na
+K-6           2422 C6A1000-5    Ba Fl Lo Ni        303 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lereve SECTOR: Vekker Sector
+#
+# Jump-routes
+#
+$3128 0327 1 0 2
+$3128 2925 0 0 2
+$2925 2722 0 0 2
+$2722 2619 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Bekla         2722 B512531-9    Ic Ni              104 Na
+L-2           2924 D472003-8    Lo Ni              304 Na
+Lexor         2925 B55079B-9    De Po              201 Na
+L-4           3121 C200541-9  S Ni Va              814 Na
+Lavvary       3128 E446120-6    Lo Ni              804 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Mivaran SECTOR: Vekker Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0237 B530458-C  2 De Ni Po           901 Na
+M-2           0438 C6A2420-5  S Fl Ni              200 Na
+M-3           0633 X736734-3                    R  704 Na
+M-4           0732 D404641-6  S Ic Ni Va           801 Na
+M-5           0737 C66A404-C    Ni Wa              903 Na
+M-6           0831 C564645-8    Ag Ni Ri           402 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nexava SECTOR: Vekker Sector
+#
+# Jump-routes
+$1138 1140 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           1138 A610433-E  N Ni                 404 Na
+N-2           1140 C8A8261-6    Fl Lo Ni           714 Na
+N-3           1234 C590379-6    De Lo Ni        B  114 Na
+N-4           1331 B5749BE-8  N Hi In              803 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Oivol SECTOR: Vekker Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1733 B000533-D  N As Ni              903 Na
+O-2           1938 E584999-6    Hi                 902 Na
+O-3           2133 B348752-C    Ag                 604 Na
+O-4           2336 C331574-6    Ni Po           B  800 Na
+O-5           2338 C546511-6  S Ag Ni              610 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Panhava SECTOR: Vekker Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2533 C677754-6    Ag                 903 Na
+P-2           2631 E67467B-6    Ag Ni           B  411 Na
+P-3           2840 E561653-3    Ni Ri              112 Na
+P-4           3131 C945222-9    Lo Ni              803 Na
+P-5           3238 C549436-A  S Ni                 203 Na
+

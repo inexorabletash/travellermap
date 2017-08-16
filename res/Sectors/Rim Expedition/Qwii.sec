@@ -1,0 +1,909 @@
+Qwii Sector
+
+A: Aqwii                     a.dat
+B: Boqwiil                   b.dat
+C: Caqwii                    c.dat
+D: Draqwaa                   d.dat
+E: Eqwiin                    e.dat
+F: Fraqwiim                  f.dat
+G: Ghaqwiih                  g.dat
+H: Hiqwii                    h.dat
+I: Iqwiid                    i.dat
+J: Jaqwiig                   j.dat
+K: Kqwii                     k.dat
+L: Loaqwii                   l.dat
+M: Meqwiik                   m.dat
+N: Naqwaab                   n.dat
+O: Oqwiik                    o.dat
+P: Peeqwii                   p.dat
+
+Bases:
+A = Drek Federal Navy
+B = Drek Federal Scout
+C = Drek Federal Army
+D = Malawii Navy
+E = Malawii Scout
+F = Malawii Navy & Scout
+G = Malawii Army
+H = Malawii Research
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+12 Df = Drek Trade Federation
+14 Mp = Malawii Protectorate
+06 Mg = Malawii Game Preserve
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Aqwii SECTOR: Qwii Sector
+#
+# Jump-routes
+#
+$0501 0639 0 -1 12
+$0202 0340 0 -1 12
+$0202 0502 0 0 12
+$0502 0501 0 0 12
+$0704 0907 1 0 2
+$0704 0501 0 0 2
+$0501 0238 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0101 C310313-6    Lo Ni              603 Df
+A-2           0104 C589687-7    Ni Ri              114 Na
+A-3           0105 C758794-5    Ag                 403 Na
+A-4           0107 C482374-7    Lo Ni           B  704 Na
+A-5           0201 D596487-4    Ni                 903 Df
+A-6           0202 B550224-A  B De Lo Ni Po        900 Df
+A-7           0204 E523200-7    Lo Ni Po           632 Na
+A-8           0207 C567202-A    Lo Ni              102 Na
+A-9           0209 D353A86-6  S Hi Po              303 Na
+A-10          0301 C957200-7    Lo Ni              710 Df
+A-11          0304 C466243-9  S Lo Ni              604 Na
+A-12          0305 E676AEF-5    Hi In              203 Na
+A-13          0307 C4538AB-4  S Po                 703 Na
+A-14          0309 D9B277A-5  S Fl              A  224 Na
+A-15          0403 C542212-4    Lo Ni Po           100 Na
+A-16          0405 C768200-9    Lo Ni              522 Na
+A-17          0406 BAB4554-C  S Fl Ni           A  814 Na
+A-18          0408 C344545-5  S Ag Ni              104 Na
+Halakh        0501 B160689-8    De Ni Ri           703 Df
+A-20          0502 B775443-8    Ni                 900 Df
+A-21          0503 C300110-8    Lo Ni Va           404 Na
+A-22          0506 X7B0103-1    De Lo           R  404 Na
+A-23          0508 C778544-9    Ag Ni              301 Na
+A-24          0602 E333730-7    Na Po              302 Na
+A-25          0603 C496546-5    Ag Ni              404 Na
+A-26          0604 D626650-3  S Ni                 813 Na
+A-27          0605 D775867-5                       404 Na
+A-28          0701 E466251-8    Lo Ni              704 Na
+Alligraa      0704 D7B4511-7  S Fl Ni           A  803 Na
+A-30          0707 C5427CG-4    Po                 704 Na
+A-31          0802 CAC547B-A  S Fl Ni           A  115 Na
+A-32          0804 B25477B-7  S Ag              B  210 Na
+A-33          0805 D552368-3    Lo Ni Po           820 Na
+A-34          0809 C617445-A  S Ic Ni              304 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Boqwiil SECTOR: Qwii Sector
+#
+# Jump-routes
+#
+$1008 1111 0 1 14
+$1008 1307 0 0 14
+$1307 1405 0 0 14
+$1405 1604 0 0 14
+$1301 1639 0 -1 12
+$1301 1239 0 -1 12
+$0907 0911 0 1 2
+$0907 0704 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           0904 A55456A-C    Ag Ni              823 Na
+Bienok        0907 E31069A-5    Na Ni              503 Na
+B-3           0908 C485376-5    Lo Ni           B  503 Na
+B-4           0909 C898777-8    Ag              B  204 Na
+B-5           1003 C425235-7    Lo Ni              802 Na
+B-6           1004 C000676-9    As Na Ni        B  223 Na
+B-7           1005 C676884-7                       903 Na
+B-8           1006 B310678-7    Na Ni           B  500 Na
+B-9           1007 C435273-7    Lo Ni           B  102 Na
+B-10          1008 B574642-6    Ag Ni              210 Mp
+B-11          1009 C4149BC-A  G Hi Ic              933 Mp
+B-12          1110 C443735-4  D Po                 923 Mp
+B-13          1201 C578863-4  A                    104 Df
+B-14          1203 C657475-9    Ni              B  623 Na
+B-15          1207 C78A798-A    Ri Wa              104 Mp
+B-16          1209 D9C458B-7    Fl Ni           A  212 Mp
+B-17          1210 E243330-7    Lo Ni Po           713 Mp
+B-18          1301 B664488-B    Ni                 524 Df
+B-19          1302 C848433-4  B Ni                 900 Df
+B-20          1307 B231745-C  G Na Po              403 Mp
+B-21          1308 C365111-5  H Lo Ni              504 Mg
+B-22          1401 C86A751-A    Ri Wa              201 Df
+B-23          1402 E6878BC-6                       105 Na
+B-24          1403 E76A000-4    Ba Lo Ni Wa        505 Na
+B-25          1405 B130858-A    De Na Po           325 Mp
+B-26          1406 C45689B-9  D                    334 Mp
+B-27          1407 C100576-A    Ni Va           B  720 Na
+B-28          1408 C400447-B  E Ni Va              302 Mp
+B-29          1409 C211451-A    Ic Ni              614 Mp
+B-30          1502 E300688-3    Na Ni Va           402 Na
+B-31          1503 E000756-8    As Na              814 Na
+B-32          1505 B86A66B-9    Ni Ri Wa           732 Mp
+B-33          1508 B67A87B-7    Wa              B  404 Na
+B-34          1509 C899554-7  F Ni                 204 Mp
+B-35          1510 D8C2520-5  S Fl Ni           A  803 Na
+B-36          1603 E442410-3    Ni Po              113 Na
+B-37          1604 A7887BC-8    Ag                 303 Mp
+B-38          1605 C527777-4                    B  123 Na
+B-39          1606 X636733-0  H                 R  203 Mg
+B-40          1609 C426533-7    Ni                 214 Mp
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Caqwii SECTOR: Qwii Sector
+#
+# Jump-routes
+#
+$1710 1511 -1 1 14
+$1710 2009 0 0 14
+$2009 2410 0 0 14
+$2410 2411 0 1 14
+$2410 2710 1 0 14
+$2302 2703 1 0 12
+$2302 2201 0 0 12
+$2201 2240 0 -1 12
+$2201 2102 0 0 12
+$1901 1937 0 -1 12
+$1901 2102 0 0 12
+$2201 2104 0 0 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1701 E231449-5    Ni Po              504 Na
+C-2           1705 C412A67-B    Hi Ic Na           713 Mp
+C-3           1706 B59677B-9    Ag              B  703 Na
+C-4           1708 C677768-8    Ag                 505 Mp
+C-5           1709 C453434-A  E Ni Po              200 Mp
+C-6           1710 B8A8532-B    Fl Ni              702 Mp
+C-7           1803 E140633-5    De Ni Po           100 Na
+C-8           1805 E779856-8                       304 Na
+C-9           1806 C8A2421-6  E Fl Ni              104 Mp
+C-10          1807 C425669-5  D Ni                 713 Mp
+C-11          1810 C537510-A    Ni                 310 Mp
+C-12          1901 B658523-9    Ag Ni              900 Df
+C-13          1902 C6A5333-7    Fl Lo Ni           201 Df
+C-14          1904 C475565-9  S Ag Ni              834 Na
+C-15          1905 C327544-B  S Ni                 410 Na
+C-16          1908 C245530-6    Ag Ni              111 Mp
+C-17          2003 E55669A-5    Ag Ni              903 Na
+C-18          2004 E78A556-6    Ni Wa              901 Na
+C-19          2005 C210377-7    Lo Ni           B  500 Na
+C-20          2006 B666473-9    Ni              B  604 Na
+C-21          2007 C654310-7  E Lo Ni              135 Mp
+C-22          2008 E8A1695-3    Fl Ni              515 Mp
+C-23          2009 B458266-C  H Lo Ni              403 Mg
+C-24          2102 B579568-9  A Ni                 603 Df
+C-25          2103 C8D6333-6    Fl Lo Ni           110 Df
+C-26          2104 B405551-C  A Ic Ni Va           400 Df
+C-27          2106 C7787AD-7    Ag                 323 Na
+C-28          2108 E695888-4                       400 Mp
+C-29          2109 C555312-7  E Lo Ni              324 Mp
+C-30          2110 E49856A-3    Ag Ni              102 Mp
+C-31          2201 B5A5763-B  A Fl                 324 Df
+C-32          2208 C539459-C    Ni                 423 Mp
+C-33          2210 E697511-3    Ag Ni              923 Mp
+C-34          2302 B746879-5                    B  502 Df
+C-35          2304 C358484-8  S Ni                 905 Na
+C-36          2305 C20288B-5  S Ic Na Va           400 Na
+C-37          2307 C000511-8  S As Ni              404 Na
+C-38          2401 C586889-5  A Ri                 202 Df
+C-39          2408 C532410-6    Ni Po              700 Na
+C-40          2410 B6139DC-A    Hi Ic Na           101 Mp
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Draqwaa SECTOR: Qwii Sector
+#
+# Jump-routes
+#
+$2808 3011 0 1 14
+$3210 3213 0 1 14
+$3210 3007 0 0 14
+$3007 2808 0 0 14
+$2808 2710 0 0 14
+$2710 2410 -1 0 14
+$3210 0209 1 0 14
+$2802 2739 0 -1 12
+$2802 2703 0 0 12
+$2703 2302 -1 0 12
+$2703 2540 0 -1 10
+$2703 3005 0 0 10
+$3005 0207 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2505 CA8A200-8    Lo Ni Wa           721 Na
+D-2           2509 E889478-6    Ni              B  302 Na
+D-3           2601 E100425-6    Ni Va              405 Df
+D-4           2602 E34757A-6    Ag Ni           B  304 Df
+D-5           2605 C402855-8  S Ic Na Va           505 Na
+D-6           2607 D686873-3    Ri              B  321 Na
+D-7           2702 CA8A200-7    Lo Ni Wa           612 Df
+Avayan        2703 B559689-8    Ni                 614 Df
+D-9           2710 B5A36BB-6    Fl Ni              600 Mp
+D-10          2802 A454896-D                       420 Df
+D-11          2804 D465798-7  S Ag Ri              913 Na
+D-12          2808 B510254-D  E Lo Ni              600 Mp
+D-13          2809 C486678-4    Ag Ni Ri        B  413 Na
+D-14          2901 C3538BE-5    Po                 200 Na
+D-15          2904 C66549C-8  S Ni                 304 Na
+D-16          2908 C6679B7-A    Hi                 304 Mp
+D-17          2910 C120889-B  D De Na Po           405 Mp
+D-18          3002 C368500-7    Ag Ni              813 Na
+Dlorra        3005 C403320-B  S Ic Lo Ni Va        414 Na
+D-20          3007 B747425-9  E Ni                 204 Mp
+D-21          3105 C433443-7  S Ni Po              324 Na
+D-22          3106 C7558A6-5                       700 Na
+D-23          3207 CAB49CH-9  S Fl Hi           A  400 Na
+D-24          3209 D99668D-6    Ag Ni              203 Mp
+D-25          3210 B525448-A    Ni                 913 Mp
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Eqwiin SECTOR: Qwii Sector
+#
+# Jump-routes
+#
+$0419 0721 0 1 14
+$0419 0219 0 0 14
+$0219 0223 0 1 14
+$0817 1020 1 0 14
+$0518 0721 0 1 14
+$0518 0419 0 0 14
+$0518 0517 0 0 14
+$0517 0315 0 0 14
+$0315 0214 0 0 14
+$0214 0211 0 0 14
+$0211 0511 0 0 14
+$0511 0614 0 0 14
+$0614 0815 0 0 14
+$0815 0817 0 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0113 C321400-7    Ni Po              203 Mp
+E-2           0116 C595658-8    Ag Ni              903 Mp
+E-3           0211 B7B557A-8    Fl Ni           A  405 Mp
+E-4           0213 C885788-4  G Ag Ri              103 Mp
+E-5           0214 B7988CH-7  F                    504 Mp
+E-6           0215 E444489-8    Ni                 100 Mp
+E-7           0216 X541455-0  H Po              R  612 Mg
+E-8           0219 B130865-C  G De Na Po           812 Mp
+E-9           0311 C575257-A  E Lo Ni              411 Mp
+E-10          0315 B625451-B    Ni                 804 Mp
+E-11          0317 E4657BC-5    Ag                 314 Mp
+E-12          0318 D679357-9    Lo Ni              803 Mp
+E-13          0320 D6428CB-1  G Po                 805 Mp
+E-14          0411 C9C1777-4    Fl              A  624 Mp
+E-15          0416 E000335-6    As Lo Ni           102 Mp
+E-16          0419 A464512-C    Ag Ni              503 Mp
+E-17          0511 A000765-F  D As Na              210 Mp
+E-18          0515 D531048-7  H Lo Ni Po           405 Mg
+E-19          0516 C958999-7    Hi                 903 Mp
+E-20          0517 B589557-B    Ni                 602 Mp
+E-21          0518 B54A595-9    Ni Wa              210 Mp
+E-22          0520 B200544-9  D Ni Va              610 Mp
+E-23          0612 D557002-2  H Lo Ni              600 Mg
+E-24          0613 E43269A-5    Na Ni Po           104 Mp
+E-25          0614 A599203-A  E Lo Ni              504 Mp
+E-26          0619 B568133-A  H Lo Ni              502 Mg
+E-27          0715 C646ABD-8  G Hi In              305 Mp
+E-28          0718 C859444-A    Ni                 503 Mp
+E-29          0719 C899410-6  E Ni                 904 Mp
+E-30          0815 B468113-C  H Lo Ni              103 Mg
+E-31          0816 D564101-4  H Lo Ni              633 Mg
+E-32          0817 B663567-A    Ni                 404 Mp
+E-33          0818 C746676-8    Ag Ni           B  302 Na
+E-34          0819 C876300-6    Lo Ni              702 Mp
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Fraqwiim SECTOR: Qwii Sector
+#
+# Jump-routes
+#
+$1618 1719 1 0 14
+$1618 1217 0 0 14
+$1217 1020 0 0 14
+$1020 1022 0 1 14
+$1020 0721 -1 1 14
+$1020 0817 -1 0 14
+$1217 1315 0 0 14
+$1315 1211 0 0 14
+$1315 1618 0 0 14
+$1211 1111 0 0 14
+$1111 1011 0 0 14
+$1111 1008 0 -1 14
+$1211 1511 0 0 14
+$1511 1911 1 0 14
+$1511 1710 1 -1 14
+$1219 1522 0 1 2
+$1219 1215 0 0 2
+$1215 0914 0 0 2
+$0914 0911 0 0 2
+$0911 0907 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Abbaiiti      0911 D65A799-4  F Wa                 702 Mp
+Taariia       0914 C444646-6    Ag Ni              621 Mp
+F-3           0917 C000445-C    As Ni              615 Mp
+F-4           0918 E595246-2    Lo Ni              212 Mp
+F-5           0919 C400300-9    Lo Ni Va           723 Mp
+F-6           1011 B8B0AA8-C  G De Hi           A  200 Mp
+F-7           1014 E452100-8  H Lo Ni Po           304 Mg
+F-8           1017 X300331-3  H Lo Va           R  412 Mg
+F-9           1018 C638557-7    Ni                 304 Mp
+F-10          1020 A410531-B    Ni                 812 Mp
+F-11          1111 A6579AC-D    Hi                 400 Mp
+F-12          1115 CA9A473-7    Ni Wa           B  200 Na
+F-13          1211 B441620-8    Ni Po              204 Mp
+F-14          1212 C514332-6    Ic Lo Ni           914 Mp
+Caanaiia      1215 C8A7557-7    Fl Ni              502 Mp
+F-16          1217 B347658-8  D Ag Ni              800 Mp
+Faanaani      1219 D333788-6    Na Po              601 Mp
+F-18          1220 E527556-7    Ni                 612 Mp
+F-19          1315 B5778AD-7  G                    813 Mp
+F-20          1316 B353776-6    Po              B  204 Na
+F-21          1411 E210856-4    Na                 212 Mp
+F-22          1412 C4056A7-5  D Ic Ni Va           504 Mp
+F-23          1413 C75438D-6    Lo Ni              403 Mp
+F-24          1414 C528576-A    Ni              B  103 Na
+F-25          1417 C375986-B    Hi In              124 Mp
+F-26          1511 B773432-7    Ni                 503 Mp
+F-27          1513 E454138-5  H Lo Ni              103 Mg
+F-28          1514 C675488-7    Ni                 905 Mp
+F-29          1517 C47578B-7  D Ag                 914 Mp
+F-30          1519 C341A8A-A  G Hi In Po           314 Mp
+F-31          1612 D783422-6    Ni                 105 Mp
+F-32          1613 C363443-5    Ni                 215 Mp
+Fawiiam       1618 A510AAE-G  D Hi Na              300 Mp
+F-34          1619 C52779A-9                       304 Mp
+F-35          1620 C478534-6  D Ag Ni              400 Mp
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ghaqwiih SECTOR: Qwii Sector
+#
+# Jump-routes
+#
+$1719 1822 0 1 14
+$1719 1618 -1 0 14
+$1911 1511 -1 0 14
+$2411 2410 0 -1 14
+$2411 2113 0 0 14
+$2113 2012 0 0 14
+$2012 1911 0 0 14
+$2411 2513 1 0 14
+$2216 2516 1 0 14
+$2216 2113 0 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1712 C8A6657-A    Fl Ni              405 Mp
+G-2           1713 C000525-9    As Ni              205 Mp
+G-3           1716 D556324-6  E Lo Ni              903 Mp
+G-4           1719 B485337-C  E Lo Ni              624 Mp
+G-5           1812 C529267-A  E Lo Ni              714 Mp
+G-6           1816 C775666-3    Ag Ni              313 Mp
+G-7           1818 CAC1343-7    Fl Lo Ni        A  724 Mp
+G-8           1820 D3239EE-7  G Hi In Na Po        913 Mp
+G-9           1911 B428614-A    Ni                 600 Mp
+G-10          1912 C324AA9-9  D Hi In              304 Mp
+G-11          1914 C7B4356-A  E Fl Lo Ni        A  214 Mp
+G-12          1916 C582303-9    Lo Ni              712 Mp
+G-13          1919 B323677-C    Na Ni Po        B  310 Na
+G-14          1920 D7C4962-4  D Fl Hi           A  501 Mp
+G-15          2012 A452222-A  E Lo Ni Po           233 Mp
+G-16          2015 E5A0512-8    De Ni              410 Mp
+G-17          2016 D768384-4    Lo Ni              432 Mp
+G-18          2018 C201244-6  E Ic Lo Ni Va        503 Mp
+G-19          2019 E796330-7    Lo Ni              504 Mp
+G-20          2112 C110644-A  D Na Ni              404 Mp
+G-21          2113 B5768DH-6                    A  700 Mp
+G-22          2117 C24357B-7    Ni Po           B  702 Na
+G-23          2119 C200110-B  H Lo Ni Va           325 Mg
+G-24          2120 C767665-8  D Ag Ni Ri           100 Mp
+G-25          2212 C576573-9    Ag Ni           B  220 Na
+G-26          2213 C988100-8  H Lo Ni              604 Mg
+G-27          2215 A31067A-B    Na Ni           B  621 Na
+G-28          2216 B64878A-5    Ag                 303 Mp
+G-29          2217 D4719DE-4    Hi In              902 Mp
+G-30          2314 C321378-A    Lo Ni Po        B  422 Na
+G-31          2315 C4337BC-A    Na Po              403 Mp
+G-32          2316 D444747-3  G Ag                 100 Mp
+G-33          2317 C000551-A  D As Ni              804 Mp
+G-34          2318 E651783-2    Po                 320 Mp
+G-35          2319 E675633-6    Ag Ni              205 Mp
+G-36          2411 A340788-C    De Po              703 Mp
+G-37          2412 D88A8AB-8    Wa                 224 Mp
+G-38          2415 C100031-6  H Lo Ni Va           605 Mg
+G-39          2417 C7B366A-7    Fl Ni           A  202 Mp
+G-40          2418 C613642-7    Ic Na Ni           414 Mp
+G-41          2419 BAB4ACG-B    Fl Hi           A  203 Mp
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hiqwii SECTOR: Qwii Sector
+#
+# Jump-routes
+#
+$2513 2411 -1 0 14
+$2513 2516 0 0 14
+$2516 2216 -1 0 14
+$2513 2813 0 0 14
+$2813 3012 0 0 14
+$2813 2815 0 0 14
+$2815 2918 0 0 14
+$2918 3018 0 0 14
+$3018 3019 0 0 14
+$3018 3117 0 0 14
+$3117 3213 0 0 14
+$3213 3012 0 0 14
+$3019 2722 0 1 14
+$3019 3122 0 1 14
+$3011 2912 0 0 14
+$2912 2813 0 0 14
+$3011 2808 0 -1 14
+$3213 3210 0 -1 14
+$3117 0218 1 0 14
+$3213 0115 1 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Habiiq        2513 A99AABB-H  F Hi In Wa Cx        614 Mp
+H-2           2515 D000AED-8  G As Hi Na           900 Mp
+H-3           2516 B6B2963-A    Fl Hi           A  603 Mp
+H-4           2520 D3429AC-8  D Hi In Po           500 Mp
+H-5           2611 B444477-B    Ni              B  614 Na
+H-6           2612 C758242-4  E Lo Ni              523 Mp
+H-7           2613 D583521-3    Ni                 805 Mp
+H-8           2619 C794500-6    Ag Ni              601 Mp
+H-9           2711 E656369-6    Lo Ni              704 Mp
+H-10          2712 C7A48AC-8  D Fl                 424 Mp
+H-11          2714 B3106AE-A    Na Ni              714 Mp
+H-12          2715 C350485-9    De Ni Po           701 Mp
+H-13          2718 C9C8877-9  D Fl              A  914 Mp
+H-14          2719 C542331-4    Lo Ni Po           704 Mp
+H-15          2813 A597659-9    Ag Ni              613 Mp
+H-16          2814 C665200-5    Lo Ni              804 Mp
+H-17          2815 A769765-8  D Ri                 515 Mp
+H-18          2816 C673652-6  D Ni                 103 Mp
+H-19          2817 C140466-6    De Ni Po           122 Mp
+H-20          2820 E533664-4    Na Ni Po           904 Mp
+H-21          2912 B568443-8  E Ni                 422 Mp
+H-22          2913 A67A737-D    Wa                 203 Mp
+H-23          2914 C230765-7    De Na Po           703 Mp
+H-24          2915 C000987-C    As Hi Na           704 Mp
+H-25          2918 A657621-A    Ag Ni              510 Mp
+H-26          3011 B200400-C  E Ni Va              704 Mp
+H-27          3012 B454410-8  E Ni                 404 Mp
+H-28          3018 B212432-A    Ic Ni              602 Mp
+H-29          3019 B100686-8    Na Ni Va           302 Mp
+H-30          3114 D676634-5  D Ag Ni              104 Mp
+H-31          3117 A423011-E  H Lo Ni Po           804 Mg
+H-32          3118 C529696-6  D Ni                 204 Mp
+H-33          3212 C452410-7  E Ni Po              100 Mp
+H-34          3213 A533666-A  G Na Ni Po           124 Mp
+H-35          3214 E592202-6    Lo Ni              113 Mp
+H-36          3217 E6A4330-4    Fl Lo Ni           613 Mp
+H-37          3218 C611687-5    Ic Na Ni           420 Mp
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Iqwiid SECTOR: Qwii Sector
+#
+# Jump-routes
+#
+$0528 0431 0 1 14
+$0528 0727 0 0 14
+$0528 0526 0 0 14
+$0526 0223 0 0 14
+$0223 0125 0 0 14
+$0526 0727 0 0 14
+$0727 1027 1 0 14
+$0721 1020 1 -1 14
+$0721 0419 0 -1 14
+$0223 0219 0 -1 14
+$0721 0518 0 -1 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0123 C568513-9  D Ag Ni              801 Mp
+I-2           0124 C652467-8    Ni Po              104 Mp
+I-3           0125 B1009BF-B    Hi Na Va           803 Mp
+I-4           0223 A645468-9    Ni                 702 Mp
+I-5           0227 C100624-6  G Na Ni Va           214 Mp
+I-6           0228 D644866-6  D                    403 Mp
+I-7           0323 C000965-8    As Hi Na           502 Mp
+I-8           0325 C726ABE-C  G Hi In              500 Mp
+I-9           0326 D362533-3  D Ni                 213 Mp
+I-10          0327 B654479-6    Ni              B  220 Na
+I-11          0422 C333100-A  H Lo Ni Po           112 Mg
+I-12          0425 C5108BB-8    Na                 402 Mp
+I-13          0427 E795314-3    Lo Ni              600 Mp
+I-14          0428 C665565-6    Ag Ni              612 Mp
+I-15          0429 D9B6135-4  H Fl Lo Ni        A  602 Mg
+I-16          0522 C9A876A-4    Fl                 624 Mp
+I-17          0525 C276336-A    Lo Ni              704 Mp
+I-18          0526 A733762-C    Na Po              615 Mp
+I-19          0527 B370565-C  D De Ni              712 Mp
+I-20          0528 B8A8689-B    Fl Ni              700 Mp
+I-21          0530 D727348-3  E Lo Ni              414 Mp
+I-22          0622 X222444-5  H Po              R  800 Mg
+I-23          0623 C336220-9    Lo Ni              804 Mp
+I-24          0625 C511401-8    Ic Ni              604 Mp
+I-25          0627 E1409D9-8    De Hi In Po        410 Mp
+I-26          0629 D200000-7  H Ba Lo Ni Va        601 Mg
+I-27          0630 C200434-B    Ni Va              104 Mp
+I-28          0721 B5556BA-5    Ag Ni              503 Mp
+I-29          0725 XA97689-0  H Ag              R  813 Mg
+I-30          0726 C76A659-A  D Ni Ri Wa           304 Mp
+I-31          0727 B59499D-8  G Hi In              704 Mp
+I-32          0821 C235358-9    Lo Ni              903 Mp
+I-33          0823 C526857-6                       704 Mp
+I-34          0824 C695347-6    Lo Ni              810 Mp
+I-35          0828 C585531-5    Ag Ni              311 Mp
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jaqwiig SECTOR: Qwii Sector
+#
+# Jump-routes
+#
+$1027 0727 -1 0 14
+$1027 1028 0 0 14
+$1027 1326 0 0 14
+$1326 1330 0 0 14
+$1330 1232 0 1 14
+$1330 1027 0 0 14
+$1330 1529 0 0 14
+$1529 1729 1 0 14
+$1326 1524 0 0 14
+$1524 1525 0 0 14
+$1525 1625 0 0 14
+$1625 1724 1 0 14
+$1524 1724 1 0 14
+$1022 1020 0 -1 14
+$1625 1828 1 0 2
+$1625 1522 0 0 2
+$1522 1219 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0922 C448564-6    Ag Ni              824 Mp
+J-2           0925 C663200-9    Lo Ni              424 Mp
+J-3           0929 C769100-7  H Lo Ni              903 Mg
+J-4           0930 E515487-8    Ic Ni              410 Mp
+J-5           1022 B798464-6  E Ni                 803 Mp
+J-6           1023 C768AAB-A    Hi                 210 Mp
+J-7           1024 C252587-9    Ni Po              422 Mp
+J-8           1025 CAA6999-8    Fl Hi              500 Mp
+J-9           1026 C567431-8    Ni                 703 Mp
+J-10          1027 A300689-E    Na Ni Va           912 Mp
+J-11          1028 B586443-9  E Ni                 702 Mp
+J-12          1029 C7999DE-9    Hi In              513 Mp
+J-13          1030 C100725-8    Na Va              912 Mp
+J-14          1121 C332000-8  H Ba Lo Ni Po        603 Mg
+J-15          1126 C83978D-9  F                    814 Mp
+J-16          1128 C539855-9                       103 Mp
+J-17          1129 C978996-6    Hi In              812 Mp
+J-18          1222 C8D6333-6    Fl Lo Ni           314 Mp
+J-19          1226 C6A6542-8  D Fl Ni              405 Mp
+J-20          1228 C322212-A  E Lo Ni Po           212 Mp
+J-21          1321 C41066A-5  G Na Ni              403 Mp
+J-22          1322 C243899-6  D Po                 123 Mp
+J-23          1324 C574777-5    Ag              B  513 Na
+J-24          1326 AA89665-A    Ni Ri              503 Mp
+J-25          1330 AA7A58A-A    Ni Wa              603 Mp
+J-26          1423 X342874-3  H Po              R  904 Mg
+J-27          1427 C324524-A    Ni                 904 Mp
+J-28          1428 X788667-0  H Ag Ri           R  304 Mg
+J-29          1521 C665AED-B    Hi                 512 Mp
+Rehitti       1522 C446665-6    Ag Ni              713 Mp
+J-31          1524 B000142-E  H As Lo Ni           103 Mg
+J-32          1525 B6A5786-8    Fl                 900 Mp
+J-33          1528 D87757B-4    Ag Ni           B  424 Na
+J-34          1529 B120400-B    De Ni Po           520 Mp
+J-35          1530 C400423-B    Ni Va              404 Mp
+J-36          1622 C675312-6    Lo Ni              403 Mp
+J-37          1623 C867310-4    Lo Ni              120 Mp
+Jahalala      1625 B695542-A  D Ag Ni              614 Mp
+J-39          1627 C400725-A    Na Va              202 Mp
+J-40          1628 C9C7966-9  G Fl Hi           A  624 Mp
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kqwii SECTOR: Qwii Sector
+#
+# Jump-routes
+#
+$1729 1529 -1 0 14
+$1729 2029 0 0 14
+$1724 1625 -1 0 14
+$1724 1524 -1 0 14
+$1724 1822 0 0 14
+$1822 1719 0 -1 14
+$2323 2622 1 0 14
+$2323 2321 0 0 14
+$2321 2121 0 0 14
+$2121 1822 0 0 14
+$2323 2226 0 0 14
+$2226 1822 0 0 14
+$2226 2029 0 0 14
+$2226 2529 1 0 14
+$1828 1832 0 1 2
+$1828 1625 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1722 C957664-8  D Ag Ni              300 Mp
+K-2           1724 A986256-A    Lo Ni              400 Mp
+K-3           1726 C7C1444-9  E Fl Ni           A  500 Mp
+K-4           1727 B401576-B    Ic Ni Va        B  803 Na
+K-5           1729 A5A0879-A    De              B  904 Na
+K-6           1822 B2108A8-9    Na                 613 Mp
+K-7           1824 C6A0646-7  G De Ni              601 Mp
+K-8           1825 C676655-8    Ag Ni              924 Mp
+K-9           1827 E100886-5    Na Va              305 Mp
+Kilikki       1828 B241975-C    Hi In Po        B  211 Na
+K-11          1830 C140524-7  D De Ni Po           822 Mp
+K-12          1923 X9A3788-1  H Fl              R  114 Mg
+K-13          1927 C77A530-B  D Ni Wa              103 Mp
+K-14          1928 C65489E-6  F                    704 Mp
+K-15          1929 C33357A-B    Ni Po           B  503 Na
+K-16          2024 A210437-E  E Ni                 200 Mp
+K-17          2029 B356410-7  E Ni                 205 Mp
+K-18          2030 C424687-A  D Ni                 813 Mp
+K-19          2121 B549787-8  G                    223 Mp
+K-20          2124 E837342-3    Lo Ni              110 Mp
+K-21          2126 C351434-9  E Ni Po              703 Mp
+K-22          2130 C49469A-6  D Ag Ni              704 Mp
+K-23          2221 D638346-6    Lo Ni              820 Mp
+K-24          2223 E79A544-4    Ni Wa              515 Mp
+K-25          2225 C888551-6    Ag Ni              204 Mp
+K-26          2226 B400466-B  E Ni Va              303 Mp
+K-27          2228 D557667-6  D Ag Ni              711 Mp
+K-28          2321 B869102-A  H Lo Ni              702 Mg
+K-29          2323 B664954-D  G Hi                 802 Mp
+K-30          2421 D78AACH-7  F Hi Wa              920 Mp
+K-31          2423 C240301-A  E De Lo Ni Po        405 Mp
+K-32          2424 C94A500-A  D Ni Wa              320 Mp
+K-33          2425 C9A5535-7  D Fl Ni              714 Mp
+K-34          2428 B321779-C    Na Po           B  723 Na
+K-35          2429 X100523-2  H Va              R  700 Mg
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Loaqwii SECTOR: Qwii Sector
+#
+# Jump-routes
+#
+$2722 3019 0 -1 14
+$2722 2824 0 0 14
+$2722 2622 0 0 14
+$2622 2323 -1 0 14
+$2824 2927 0 0 14
+$2927 2529 0 0 14
+$2529 2226 -1 0 14
+$2529 2830 0 0 14
+$2529 2533 0 1 14
+$2830 3230 0 0 14
+$3230 3127 0 0 14
+$3127 2927 0 0 14
+$3127 3122 0 0 14
+$2927 3230 0 0 14
+$3230 0231 1 1 14
+$3122 3019 0 -1 14
+$3230 0228 1 0 14
+$3122 0123 1 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2522 B79A87B-9    Wa              B  303 Na
+L-2           2523 C460100-8  H De Lo Ni           903 Mg
+L-3           2526 E675567-4    Ag Ni              113 Mp
+L-4           2528 C8577CC-3  G Ag                 502 Mp
+L-5           2529 A859341-C    Lo Ni              210 Mp
+L-6           2530 C468589-5    Ag Ni              905 Mp
+L-7           2621 D442689-4    Ni Po              424 Mp
+L-8           2622 B000743-D  F As Na              503 Mp
+L-9           2624 C226100-8  H Lo Ni              500 Mg
+L-10          2625 C414686-6  D Ic Ni              713 Mp
+L-11          2626 C757653-9  D Ag Ni              521 Mp
+L-12          2627 C327211-B  E Lo Ni              424 Mp
+L-13          2628 B62469E-B    Ni                 121 Mp
+L-14          2721 C648478-9    Ni              B  402 Na
+L-15          2722 B443665-8    Ni Po              305 Mp
+L-16          2723 C311749-6    Ic Na              704 Mp
+L-17          2726 E160540-7    De Ni              425 Mp
+L-18          2728 C677420-4    Ni                 905 Mp
+L-19          2730 A698666-B    Ag Ni              233 Mp
+L-20          2823 B9B6775-9    Fl              A  513 Mp
+L-21          2824 A300548-C    Ni Va              610 Mp
+L-22          2827 X400356-1  H Lo Va           R  302 Mg
+L-23          2830 B775889-5  G                    200 Mp
+L-24          2923 D624342-6  E Lo Ni              215 Mp
+L-25          2924 D120A98-B  G De Hi In Na Po     403 Mp
+L-26          2925 B524568-7    Ni                 412 Mp
+L-27          2927 A501735-A  D Ic Na Va           302 Mp
+L-28          3021 E555599-2    Ag Ni              904 Mp
+L-29          3024 C674799-7  D Ag                 200 Mp
+L-30          3025 C435577-9    Ni              B  801 Na
+L-31          3026 C677512-7    Ag Ni              412 Mp
+L-32          3029 C58179A-8    Ri                 413 Mp
+L-33          3030 C200ABC-D  G Hi Na Va           902 Mp
+L-34          3122 B240323-9    De Lo Ni Po        701 Mp
+L-35          3123 A557330-8    Lo Ni              903 Mp
+L-36          3124 B76A6B8-A    Ni Wa              621 Mp
+L-37          3125 BA5A432-9  N Ni Wa              800 Mp
+L-38          3127 A563134-9  H Lo Ni              800 Mg
+L-39          3228 C320633-9    De Na Ni Po        515 Mp
+L-40          3230 B373426-B  E Ni                 604 Mp
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Meqwiik SECTOR: Qwii Sector
+#
+# Jump-routes
+#
+$0134 0137 0 0 14
+$0134 0432 0 0 14
+$0134 0132 0 0 14
+$0432 0431 0 0 14
+$0431 0531 0 0 14
+$0233 0534 0 0 14
+$0534 0732 0 0 14
+$0732 0531 0 0 14
+$0732 0932 1 0 14
+$0431 0528 0 -1 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0131 C358515-A  G Ag Ni              724 Mp
+M-2           0132 A53735A-F  E Lo Ni              205 Mp
+Malawiin      0134 A110AC8-I  F Hi Na Cx           402 Mp
+M-4           0137 B585234-6    Lo Ni              611 Mp
+M-5           0231 A66A473-F    Ni Wa           B  604 Na
+M-6           0233 A150130-C  H De Lo Ni Po        502 Mg
+M-7           0333 B354464-A    Ni                 720 Mp
+M-8           0334 B386578-7    Ag Ni           B  703 Na
+M-9           0431 A6438B8-A    Po                 704 Mp
+M-10          0432 B2208A9-8  G De Na Po           900 Mp
+M-11          0531 B685421-A    Ni                 703 Mp
+M-12          0533 C300313-7    Lo Ni Va           215 Mp
+M-13          0534 B236995-C  D Hi In              602 Mp
+M-14          0540 C130431-C    De Ni Po           904 Na
+M-15          0632 C493875-9                    B  820 Na
+M-16          0732 A510664-A  D Na Ni              105 Mp
+M-17          0733 C326534-9    Ni                 122 Mp
+M-18          0831 B221355-C  E Lo Ni Po           213 Mp
+M-19          0832 C547100-9  H Lo Ni              624 Mg
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Naqwaab SECTOR: Qwii Sector
+#
+# Jump-routes
+#
+$0932 0732 -1 0 14
+$0932 1232 0 0 14
+$1232 1330 0 -1 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0931 C595768-6  D Ag                 400 Mp
+N-2           0932 A583467-8  E Ni                 424 Mp
+N-3           1031 B532678-8    Na Ni Po        B  204 Na
+N-4           1033 C554466-9    Ni                 603 Mp
+N-5           1034 C483697-7  F Ni Ri              803 Mp
+N-6           1131 C74A532-B  D Ni Wa              800 Mp
+N-7           1132 B678899-9  D                    803 Mp
+N-8           1139 X510654-4                    R  404 Na
+N-9           1232 A6A045A-A    De Ni              700 Mp
+N-10          1233 C5648BD-8  G                    904 Mp
+N-11          1234 E728458-9    Ni                 804 Mp
+N-12          1235 C7A1100-9  H Fl Lo Ni           120 Mg
+N-13          1239 A455532-C    Ag Ni              505 Na
+N-14          1331 E798756-3    Ag                 202 Mp
+N-15          1333 A8C6558-A  F Fl Ni           A  703 Mp
+N-16          1431 B300232-A  E Lo Ni Va           202 Mp
+N-17          1631 C89A876-7    Wa              B  902 Na
+N-18          1633 DA8A612-8  E Ni Wa              422 Mp
+N-19          1635 D637022-3  H Lo Ni              114 Mg
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Oqwiik SECTOR: Qwii Sector
+#
+# Jump-routes
+#
+$2436 2737 1 0 2
+$2436 2035 0 0 2
+$2035 1832 0 0 2
+$1832 1828 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1739 E120554-9    De Ni Po           502 Na
+Arttab        1832 C683100-9  H Lo Ni              703 Mg
+O-3           1839 C58859D-9    Ag Ni              304 Na
+Driilianna    2035 D100559-9  S Ni Va              815 Na
+O-4           2231 EA9A301-7    Lo Ni Wa           904 Mp
+Oceann        2436 C446443-8    Ni                 401 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Peeqwii SECTOR: Qwii Sector
+#
+# Jump-routes
+#
+$2533 2529 0 -1 14
+$3139 0239 1 0 2
+$3139 2737 0 0 2
+$2737 2436 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2533 A500433-9    Ni Va              904 Mp
+P-2           2539 B867332-6    Lo Ni              614 Na
+P-3           2540 B856242-9    Lo Ni              310 Na
+Flowarr       2737 A232450-F    Ni Po              723 Na
+P-5           2934 C444665-9    Ag Ni              400 Na
+Gannieve      3139 C512100-6    Ic Lo Ni           704 Na
+P-7           3140 D969466-6    Ni                 312 Na
+

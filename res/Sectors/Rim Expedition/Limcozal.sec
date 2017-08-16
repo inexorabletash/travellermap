@@ -1,0 +1,502 @@
+Limcozal Sector
+
+A: Alimco                    a.dat
+B: Bimcozal                  b.dat
+C: Cozalli                   c.dat
+D: Dlimca                    d.dat
+E: Emcozz                    e.dat
+F: Fecoza                    f.dat
+G: Glimcol                   g.dat
+H: Hozalor                   h.dat
+I: Imcoza                    i.dat
+J: Jimco                     j.dat
+K: Klimcoo                   k.dat
+L: Limmaz                    l.dat
+M: Macozal                   m.dat
+N: Nozalli                   n.dat
+O: Ozalim                    o.dat
+P: Plimico                   p.dat
+
+Bases:
+A = Mlan-El Jijok Navy
+B = Mlan-El Jijok Scout
+C = Mlan-El Jijok Navy & Scout
+D = Mlan-El Jijok Army
+E = Mlan-El Jijok Research
+F = Mlan-El Jijok Preserve
+M = Nicoz Military
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+12 Mj = Mlan-El Jijok Confed.
+07 Na = Non-Aligned
+14 Nd = Nicoz Dynasty
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Alimco SECTOR: Limcozal Sector
+#
+# Jump-routes
+#
+$0403 0440 0 -1 12
+$0403 0801 0 0 12
+$0403 0505 0 0 12
+$0505 0507 0 0 12
+$0505 0604 0 0 12
+$0604 0601 0 0 12
+$0601 0538 0 -1 12
+$0801 0901 1 0 12
+$0604 0906 1 0 12
+$0108 0211 0 1 2
+$0108 0104 0 0 2
+$0104 0240 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0101 C374250-B    Lo Ni              104 Mj
+A-2           0103 C7348BG-5                       313 Mj
+Dlazza        0104 C879587-9    Ni                 422 Mj
+A-4           0105 C94A796-9    Wa                 912 Mj
+A-5           0106 C5948AA-7                       410 Mj
+Azzamiera     0108 C54599E-A  D Hi In              402 Mj
+A-7           0202 C792568-9  A Ni                 502 Mj
+A-8           0203 C639133-9  E Lo Ni              204 Mj
+A-9           0205 C585786-5    Ag Ri              923 Mj
+A-10          0206 C100442-C    Ni Va              701 Mj
+A-11          0301 D370788-7    De                 924 Mj
+A-12          0302 D210123-4  E Lo Ni              203 Mj
+A-13          0304 D487000-5  F Ba Lo Ni           503 Mj
+A-14          0307 C6A3448-9  A Fl Ni              200 Mj
+A-15          0403 A210753-A  C Na                 100 Mj
+A-16          0405 D99A357-9    Lo Ni Wa           504 Mj
+A-17          0407 C669589-9    Ni                 600 Mj
+A-18          0503 A663320-C    Lo Ni              720 Mj
+A-19          0505 A79A544-F    Ni Wa              400 Mj
+A-20          0506 A322653-F    Na Ni Po           813 Mj
+A-21          0507 B140664-C  A De Ni Po           113 Mj
+A-22          0601 A485333-A  B Lo Ni              724 Mj
+A-23          0602 A645764-A    Ag                 100 Mj
+A-24          0604 A958667-B  A Ag Ni              824 Mj
+A-25          0606 D746225-3  B Lo Ni              204 Mj
+A-26          0607 C516258-B    Ic Lo Ni           500 Mj
+A-27          0703 A772878-A                    B  513 Na
+A-28          0706 D000723-6    As Na              901 Mj
+A-29          0710 C8C4658-5    Fl Ni           A  913 Na
+A-30          0801 A400549-C  A Ni Va              400 Mj
+A-31          0803 C313268-B  B Ic Lo Ni           102 Mj
+A-32          0804 A8A6779-8    Fl              B  912 Na
+A-33          0806 D69A300-8    Lo Ni Wa           603 Mj
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Bimcozal SECTOR: Limcozal Sector
+#
+# Jump-routes
+#
+$1601 1639 0 -1 12
+$1601 1605 0 0 12
+$1605 1506 0 0 12
+$1506 1104 0 0 12
+$1104 1105 0 0 12
+$0901 0801 -1 0 12
+$0901 1303 0 0 12
+$1303 1306 0 0 12
+$1306 1105 0 0 12
+$1105 0906 0 0 12
+$0906 0604 -1 0 12
+$0906 0904 0 0 12
+$0904 1104 0 0 12
+$1303 1301 0 0 12
+$1301 1401 0 0 12
+$1401 1601 0 0 12
+$1306 1408 0 0 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           0901 B433784-8    Na Po              404 Mj
+B-2           0902 B426673-7    Ni              B  205 Na
+B-3           0904 B88A237-C  B Lo Ni Wa           802 Mj
+B-4           0906 A675003-9  F Lo Ni              604 Mj
+B-5           1001 B643565-9    Ni Po              804 Mj
+B-6           1005 B792756-7                       101 Mj
+B-7           1103 C748886-4  C                    602 Mj
+B-8           1104 B956452-C    Ni                 504 Mj
+B-9           1105 B352520-A    Ni Po              403 Mj
+B-10          1110 D654266-4    Lo Ni              122 Na
+B-11          1202 X9B8679-3    Fl              R  302 Mj
+B-12          1204 B8889BA-C    Hi                 111 Mj
+B-13          1205 C360698-8  A De Ni Ri           603 Mj
+B-14          1301 B428411-C    Ni                 502 Mj
+B-15          1303 B5439B9-8  D Hi In Po           114 Mj
+B-16          1304 B7A579A-A  A Fl                 424 Mj
+B-17          1305 B64579B-A    Ag                 603 Mj
+B-18          1306 B563412-7    Ni                 122 Mj
+B-19          1401 B300743-7  A Na Va              423 Mj
+B-20          1405 B401414-A    Ic Ni Va           304 Mj
+B-21          1408 B8D4213-9  B Fl Lo Ni           324 Mj
+B-22          1503 C563899-8  C Ri                 604 Mj
+B-23          1504 C576246-7    Lo Ni              614 Mj
+B-24          1506 B647635-8    Ag Ni              922 Mj
+B-25          1509 B68357B-B    Ni              B  213 Na
+B-26          1601 B210520-9  A Ni                 923 Mj
+B-27          1604 B320520-D  A De Ni Po           720 Mj
+B-28          1605 B77A738-A  A Wa                 420 Mj
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Cozalli SECTOR: Limcozal Sector
+#
+# Jump-routes
+#
+$2101 1940 0 -1 12
+$2101 2401 0 0 12
+$2101 2103 0 0 12
+$2102 2202 0 0 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1701 C460463-A  A De Ni              210 Mj
+C-2           1703 C3636AD-6    Ni                 430 Mj
+C-3           1705 C35777C-6    Ag              B  513 Na
+C-4           1706 C534541-9  A Ni                 202 Mj
+C-5           1802 E130100-B  E De Lo Ni Po        505 Mj
+C-6           1804 C556100-6  E Lo Ni              813 Mj
+C-7           1809 B66A300-A    Lo Ni Wa           525 Na
+C-8           1901 C778655-7    Ag Ni              202 Mj
+C-9           1902 C337486-6    Ni                 524 Mj
+C-10          1904 C1008CB-A    Na Va              803 Mj
+C-11          1905 C463663-9    Ni Ri              100 Mj
+C-12          2004 C000597-B    As Ni              412 Mj
+C-13          2010 C203420-A    Ic Ni Va           402 Na
+C-14          2101 A654430-B  A Ni                 602 Mj
+C-15          2102 A355987-E  D Hi                 201 Mj
+C-16          2103 A888879-B    Ri              B  704 Na
+C-17          2110 A354624-B    Ag Ni              600 Na
+C-18          2202 A967434-D    Ni                 402 Mj
+C-19          2204 C7A1654-9  A Fl Ni              325 Mj
+C-20          2304 C859653-8  A Ni                 103 Mj
+C-21          2401 A400205-D  B Lo Ni Va           904 Mj
+C-22          2402 A56287A-8    Ri              B  705 Na
+C-23          2404 C000889-6    As Na              703 Mj
+C-24          2408 B351110-C    Lo Ni Po           204 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Dlimca SECTOR: Limcozal Sector
+#
+# Jump-routes
+$2609 2710 0 0
+#
+$3203 3040 0 -1 10
+$3203 3207 0 0 10
+$3207 0409 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2501 E300465-5    Ni Va              110 Mj
+D-2           2503 E466343-3    Lo Ni              803 Mj
+D-3           2602 E355578-5    Ag Ni           B  303 Na
+D-4           2603 E251572-6    Ni Po           B  500 Na
+D-5           2609 B2009C8-C  N Hi Na Va           923 Na
+D-6           2701 E224351-6    Lo Ni              602 Mj
+D-7           2702 D231353-7  B Lo Ni Po           802 Mj
+D-8           2704 C56547C-7    Ni              B  513 Na
+D-9           2710 B732433-9    Ni Po              823 Na
+D-10          2802 C75A89B-A  C Wa                 313 Mj
+D-11          2808 B434544-D    Ni                 804 Na
+D-12          2901 D758138-3  E Lo Ni              103 Mj
+D-13          2904 C304400-7    Ic Ni Va           422 Mj
+D-14          3002 D357130-7  E Lo Ni              102 Mj
+D-15          3003 D4017AD-6  A Ic Na Va           813 Mj
+D-16          3101 D591368-7    Lo Ni              701 Mj
+D-17          3106 C895756-9    Ag                 314 Na
+D-18          3201 D646367-6  B Lo Ni              524 Mj
+Armok         3203 D998588-5    Ag Ni              404 Mj
+Seuraal       3207 EAE5567-3    Fl Ni              103 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Emcozz SECTOR: Limcozal Sector
+#
+# Jump-routes
+$0516 0518 0 0
+$0518 0719 0 0
+#
+$0719 1118 1 0 2
+$0719 0516 0 0 2
+$0516 0414 0 0 2
+$0414 0211 0 0 2
+$0211 0108 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0116 C000330-7    As Lo Ni           415 Na
+E-2           0120 D655400-6  S Ni                 404 Na
+Clorz         0211 C652367-5    Lo Ni Po           421 Na
+E-4           0219 C373887-6  S                    903 Na
+Bunini        0414 E537ABB-9    Hi In              823 Na
+E-6           0417 C9E2740-6  S Fl                 910 Na
+E-7           0419 D210221-9    Lo Ni              430 Na
+E-8           0515 C885213-6    Lo Ni              703 Na
+Sazzaln       0516 B130132-A  S De Lo Ni Po        612 Na
+E-10          0518 A767301-A  S Lo Ni              612 Na
+E-11          0620 C431201-8  S Lo Ni Po           904 Na
+E-12          0711 C434468-B    Ni                 600 Na
+Eglomma       0719 B495562-8  2 Ag Ni              213 Na
+E-14          0820 C555226-7    Lo Ni              620 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Fecoza SECTOR: Limcozal Sector
+#
+# Jump-routes
+#
+$1518 1818 1 0 2
+$1518 1118 0 0 2
+$1118 0719 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0918 C1307AA-6  S De Na Po           120 Na
+F-2           1013 A888766-9  N Ag Ri              504 Na
+Flowamm       1118 C5886AC-8    Ag Ni              311 Na
+F-4           1313 C8968BD-7                       614 Na
+F-5           1516 B652476-A  2 Ni Po           B  102 Na
+Trollizi      1518 C593442-6    Ni                 704 Na
+F-7           1520 C6799EG-B  S Hi In           A  923 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Glimcol SECTOR: Limcozal Sector
+#
+# Jump-routes
+#
+$2019 2322 0 1 2
+$2019 1818 0 0 2
+$1818 1518 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1715 E403400-7    Ic Ni Va           720 Na
+Gammissi      1818 D000003-8    As Lo Ni           622 Na
+G-3           2012 E210544-4    Ni                 903 Na
+G-4           2013 E75A436-4    Ni Wa              314 Na
+Varzoli       2019 D4548CF-6  S                    501 Na
+G-6           2116 C10088A-8  S Na Va              103 Na
+G-7           2211 E666500-3    Ag Ni              215 Na
+G-8           2317 D274120-4  S Lo Ni              424 Na
+G-9           2418 C4948CD-7  S                    710 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hozalor SECTOR: Limcozal Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2516 C475A52-C    Hi In              204 Na
+H-2           2519 C78A69D-8    Ni Ri Wa           700 Na
+H-3           2811 D110400-8    Ni                 812 Na
+H-4           2912 D659200-4  S Lo Ni              413 Na
+H-5           2914 C463653-8  S Ni Ri              813 Na
+H-6           2917 E571689-2    Ni                 504 Na
+H-7           2919 C566555-9    Ag Ni              304 Na
+H-8           3116 A9A9666-D    Fl Ni              110 Na
+H-9           3120 C000987-8  S As Hi Na           714 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Imcoza SECTOR: Limcozal Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0225 D356844-3  S                    603 Na
+I-2           0325 C48659B-8  S Ag Ni              401 Na
+I-3           0330 B120205-D  N De Lo Ni Po        223 Na
+I-4           0623 A435540-A  N Ni                 504 Na
+I-5           0624 C510787-7    Na                 904 Na
+I-6           0821 B585100-C  N Lo Ni              111 Na
+I-7           0826 C774201-5  S Lo Ni              803 Na
+I-8           0827 C5A279B-7    Fl                 322 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jimco SECTOR: Limcozal Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           1028 AAA36B6-B    Fl Ni              320 Na
+J-2           1123 E668534-3    Ag Ni              620 Na
+J-3           1221 B3367CD-C                       312 Na
+J-4           1324 E370465-3    De Ni              420 Na
+J-5           1427 E698510-3    Ag Ni              204 Na
+J-6           1522 C310426-6    Ni                 504 Na
+J-7           1622 C255400-9    Ni                 502 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Klimcoo SECTOR: Limcozal Sector
+#
+# Jump-routes
+#
+$2322 2524 1 0 2
+$2322 2019 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1729 B657ADF-8  2 Hi                 312 Na
+K-2           1921 C553522-6  S Ni Po              803 Na
+K-3           1922 B658326-7    Lo Ni              604 Na
+K-4           2125 D221440-4    Ni Po              910 Na
+K-5           2127 E756556-6    Ag Ni              800 Na
+Breikaal      2322 B688242-A  N Lo Ni              204 Na
+K-7           2326 C568666-6  S Ag Ni Ri           525 Na
+K-8           2329 B793300-8  N Lo Ni              813 Na
+K-9           2330 D689042-7  S Lo Ni              504 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Limmaz SECTOR: Limcozal Sector
+#
+# Jump-routes
+#
+$3028 0131 1 1 2
+$3028 2626 0 0 2
+$2626 2524 0 0 2
+$2524 2322 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Allocia       2524 D656999-5  S Hi                 303 Na
+L-2           2527 C538122-A    Lo Ni              533 Na
+Macazi        2626 D448100-4    Lo Ni              501 Na
+L-4           2628 D786636-3    Ag Ni              311 Na
+L-5           2630 E1006BC-6    Na Ni Va           704 Na
+L-6           2725 C895556-5    Ag Ni              203 Na
+Luuliian      3028 C7A6400-A  S Fl Ni              323 Na
+L-8           3126 A380663-9  N De Ni Ri           203 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Macozal SECTOR: Limcozal Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0233 X778432-0                    R  602 Na
+M-2           0533 C776325-6  M Lo Ni              200 Nd
+M-3           0640 C320300-C    De Lo Ni Po        432 Na
+M-4           0735 D855633-1    Ag Ni              603 Nd
+M-5           0738 B332577-B    Ni Po           B  424 Na
+M-6           0833 C985468-7    Ni                 604 Nd
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nozalli SECTOR: Limcozal Sector
+#
+# Jump-routes
+#
+$1034 1337 0 0 14
+$1337 1436 0 0 14
+$1436 1633 0 0 14
+$1633 1632 0 0 14
+$1337 1738 1 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0938 X100463-1    Va              R  702 Na
+Nicoz         1034 A693A9B-G  M Hi In Cx           303 Nd
+N-3           1133 C000445-A    As Ni              204 Nd
+N-4           1337 B20069A-B    Na Ni Va           914 Nd
+N-5           1436 B5A4963-A  M Fl Hi              414 Nd
+N-6           1536 C3418BE-8    Po                 222 Nd
+N-7           1538 C725544-A    Ni                 915 Nd
+N-8           1632 B484212-C  M Lo Ni              600 Nd
+N-9           1633 B531266-8  M Lo Ni Po           914 Nd
+N-10          1638 C442541-7  M Ni Po              802 Nd
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ozalim SECTOR: Limcozal Sector
+#
+# Jump-routes
+#
+$1738 1337 -1 0 14
+$1738 1938 0 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1737 E94A899-6    Wa                 112 Nd
+O-2           1738 C95A48A-B    Ni Wa              730 Nd
+O-3           1937 C100557-B  M Ni Va              812 Nd
+O-4           1938 A499425-C  M Ni                 423 Nd
+O-5           2033 C200363-9  S Lo Ni Va           703 Na
+O-6           2037 C62877B-8                    B  605 Na
+O-7           2040 D777446-2    Ni                 300 Na
+O-8           2131 B575401-8  S Ni                 304 Na
+O-9           2434 E100559-6    Ni Va              824 Na
+O-10          2437 C300300-8  S Lo Ni Va           304 Na
+O-11          2438 C100357-D    Lo Ni Va           912 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Plimico SECTOR: Limcozal Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2535 D7688BF-2                       414 Na
+P-2           2537 C423530-6    Ni Po              900 Na
+P-3           3135 C200569-B  S Ni Va              204 Na
+

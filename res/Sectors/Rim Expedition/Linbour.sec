@@ -1,0 +1,329 @@
+Linbour Sector
+
+A: Alinb                     a.dat
+B: Balbour                   b.dat
+C: Calinour                  c.dat
+D: Dalice                    d.dat
+E: Ealin                     e.dat
+F: Falind                    f.dat
+G: Glinbass                  g.dat
+H: Halinnin                  h.dat
+I: Inbassa                   i.dat
+J: Jalin                     j.dat
+K: Kasour                    k.dat
+L: Lanourre                  l.dat
+M: Malina                    m.dat
+N: Norlim                    n.dat
+O: Olpin                     o.dat
+P: Pidourre                  p.dat
+
+Bases:
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Alinb SECTOR: Linbour Sector
+#
+# Jump-routes
+#
+$0809 1211 1 1 2
+$0809 0507 0 0 2
+$0507 0403 0 0 2
+$0403 0102 0 0 2
+$0102 3139 -1 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Gooalla       0102 B511230-B  N Ic Lo Ni           901 Na
+A-2           0109 C999548-6  S Ni                 603 Na
+Ciakka        0403 B878100-C  N Lo Ni              303 Na
+Avacca        0507 C738568-9    Ni                 303 Na
+Kachaam       0809 C253400-7    Ni Po              701 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Balbour SECTOR: Linbour Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Calinour SECTOR: Linbour Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1708 C302566-6  S Ic Ni Va           400 Na
+C-2           1907 E574452-4    Ni                 524 Na
+C-3           2003 C76A8AC-8    Wa                 401 Na
+C-4           2006 E000136-6    As Lo Ni           602 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Dalice SECTOR: Linbour Sector
+#
+# Jump-routes
+#
+$2603 2440 -1 -1 10
+$2603 3005 0 0 10
+$3005 0106 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Laderd        2603 C76A120-7  S Lo Ni Wa           514 Na
+Dlellnec      3005 D4356AA-4  S Ni                 602 Na
+D-3           3202 D5417A9-6  S Po                 302 Na
+D-4           3206 C443984-B    Hi In Po           302 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ealin SECTOR: Linbour Sector
+#
+# Jump-routes
+#
+$0619 0623 0 1 2
+$0619 0716 0 0 2
+$0716 1016 1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0118 E110667-8    Na Ni              214 Na
+E-2           0313 D978542-6    Ag Ni              902 Na
+Thodd         0716 C230458-7    De Ni Po           614 Na
+Emmkiar       0619 B523965-8  2 Hi In Na Po        901 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Falind SECTOR: Linbour Sector
+#
+# Jump-routes
+#
+$1016 0716 -1 0 2
+$1016 1314 0 0 2
+$1314 1211 0 0 2
+$1211 0809 -1 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Flololloda    1016 A765656-B  N Ag Ni Ri           604 Na
+Marza         1211 C684300-7  S Lo Ni              503 Na
+F-3           1218 XAAA103-5    Fl Lo Wa        R  404 Na
+Ka-Shier      1314 B644322-7  N Lo Ni              612 Na
+F-5           1513 C89A88B-5    Wa                 430 Na
+F-6           1615 B440347-9  N De Lo Ni Po        103 Na
+F-7           1616 C657422-6    Ni                 413 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Glinbass SECTOR: Linbour Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1711 E757859-4                       500 Na
+G-2           1811 C310366-9    Lo Ni              512 Na
+G-3           2012 C692323-8    Lo Ni              312 Na
+G-4           2017 X635699-3                    R  224 Na
+G-5           2111 XAC4746-0    Fl              R  503 Na
+G-6           2218 C533732-8    Na Po              703 Na
+G-7           2311 C434346-9  S Lo Ni              410 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Halinnin SECTOR: Linbour Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2513 A541565-A  N Ni Po              814 Na
+H-2           2813 A545585-9    Ag Ni              620 Na
+H-3           2818 B120410-B    De Ni Po           104 Na
+H-4           3211 A1009DD-B  N Hi Na Va           812 Na
+H-5           3217 D855430-4    Ni                 903 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Inbassa SECTOR: Linbour Sector
+#
+# Jump-routes
+#
+$0826 1128 1 0 2
+$0826 0623 0 0 2
+$0623 0619 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Miili         0623 B543537-B  S Ni Po              302 Na
+I-2           0530 C682940-8  S Hi                 703 Na
+Innoha        0826 A866013-7  2 Lo Ni              315 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jalin SECTOR: Linbour Sector
+#
+# Jump-routes
+#
+$1128 1231 0 1 2
+$1128 0826 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Jaharha       1128 C412332-8    Ic Lo Ni           724 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kasour SECTOR: Linbour Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1724 B210523-B  S Ni                 421 Na
+K-2           1729 X537578-0                    R  211 Na
+K-3           2427 B323565-B  S Ni Po              423 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lanourre SECTOR: Linbour Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2624 C52258A-7    Ni Po              202 Na
+L-2           2922 B5A0675-9  N De Ni           B  723 Na
+L-3           2930 C4518BB-5    Po                 405 Na
+L-4           3222 C221467-8  S Ni Po              404 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Malina SECTOR: Linbour Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0237 B778401-7    Ni                 622 Na
+M-2           0239 B6346AB-A  N Ni                 911 Na
+M-3           0332 A594410-A    Ni                 104 Na
+M-4           0435 X9B5576-0    Fl              R  500 Na
+M-5           0438 C8A68A7-8  S Fl                 801 Na
+M-6           0536 A884754-C  S Ag Ri              511 Na
+M-7           0835 C235534-9    Ni                 705 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Norlim SECTOR: Linbour Sector
+#
+# Jump-routes
+#
+$1535 1937 1 0 2
+$1535 1431 0 0 2
+$1431 1231 0 0 2
+$1231 1128 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0934 B310002-B  2 Lo Ni              802 Na
+N-2           1139 C120436-A  S De Ni Po           524 Na
+Corkki        1231 B546897-9  S                    202 Na
+N-4           1338 C575455-9  S Ni                 621 Na
+Loanoan       1431 C786456-6    Ni                 623 Na
+Nianian       1535 C200112-8  S Lo Ni Va           233 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Olpin SECTOR: Linbour Sector
+#
+# Jump-routes
+#
+$2336 2737 1 0 2
+$2336 1937 0 0 2
+$1937 1535 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1731 D000400-8    As Ni              904 Na
+Dauffa        1937 C98A8CA-8    Wa                 802 Na
+O-3           2139 C3447BB-5  S Ag                 705 Na
+O-4           2233 D78A787-7  S Ri Wa              414 Na
+Ogkriia       2336 CAF6858-A  S Fl                 611 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Pidourre SECTOR: Linbour Sector
+#
+# Jump-routes
+#
+$3139 0102 1 1 2
+$3139 2737 0 0 2
+$2737 2336 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2533 B4648DE-6  S                    302 Na
+P-2           2639 BA9A658-C  N Ni Wa              604 Na
+P-3           2734 C100244-8    Lo Ni Va           311 Na
+Phfaffa       2737 C889A62-D  S Hi                 604 Na
+P-5           2833 C7A1000-7  S Ba Fl Lo Ni        213 Na
+P-6           2837 B86A247-9  N Lo Ni Wa           110 Na
+P-7           3033 E444111-5    Lo Ni              104 Na
+P-8           3034 D400369-8  S Lo Ni Va           404 Na
+P-9           3036 C6A2745-4    Fl                 503 Na
+Phanann       3139 B529561-D  S Ni                 203 Na
+

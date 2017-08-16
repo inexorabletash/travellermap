@@ -1,0 +1,427 @@
+Zlekkenn Sector
+
+A: Azlekk                    a.dat
+B: Blekken                   b.dat
+C: Chazekke                  c.dat
+D: Drekkenn                  d.dat
+E: Ezekke                    e.dat
+F: Flekkenn                  f.dat
+G: Ghazlekk                  g.dat
+H: Holozekk                  h.dat
+I: Ikkennez                  i.dat
+J: Jekklezz                  j.dat
+K: Klekke                    k.dat
+L: Lezekke                   l.dat
+M: Mizlek                    m.dat
+N: Nazakkenn                 n.dat
+O: Ozlekkenn                 o.dat
+P: Pourezekk                 p.dat
+
+Bases:
+H = Helle Police
+J = Jekke Military
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+12 Hc = Helle Cult
+12 Jl = Jekke League
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Azlekk SECTOR: Zlekkenn Sector
+#
+# Jump-routes
+#
+$0406 3205 -1 0 10
+$0406 0709 0 0 10
+$0709 0811 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0102 A696551-A    Ag Ni              213 Na
+A-2           0107 B8A5347-A  S Fl Lo Ni           322 Na
+A-3           0210 C588311-5  S Lo Ni              822 Na
+A-4           0306 D555324-6  S Lo Ni              912 Na
+Amm           0406 E437437-5    Ni                 401 Na
+A-6           0506 B679131-B  2 Lo Ni              902 Na
+A-7           0602 B323230-D    Lo Ni Po           923 Na
+Marashan      0709 C547302-5    Lo Ni              113 Na
+A-9           0804 D120244-5  S De Lo Ni Po        524 Na
+A-10          0810 C855787-4    Ag                 503 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Blekken SECTOR: Zlekkenn Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           1108 C759204-8    Lo Ni              305 Na
+B-2           1208 B674599-A    Ag Ni              603 Na
+B-3           1309 C000958-9  S As Hi Na           800 Na
+B-4           1508 B8D3889-B  N Fl                 130 Na
+B-5           1510 EAC6542-6    Fl Ni           A  104 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Chazekke SECTOR: Zlekkenn Sector
+#
+# Jump-routes
+$1907 2007 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1807 C525320-8    Lo Ni              400 Na
+C-2           1810 A783310-B    Lo Ni              834 Na
+C-3           1907 C779224-6  S Lo Ni              604 Na
+C-4           2007 B31099B-C    Hi Na              322 Na
+C-5           2201 D300447-4    Ni Va              824 Na
+C-6           2306 C8875A7-4  S Ag Ni              302 Na
+C-7           2410 D331379-4  S Lo Ni Po        B  413 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Drekkenn SECTOR: Zlekkenn Sector
+#
+# Jump-routes
+$3109 3210 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2603 C775499-4  S Ni                 424 Na
+D-2           2608 C565732-3  S Ag                 820 Na
+D-3           2701 D3259CE-7  S Hi In              321 Na
+D-4           2709 A766322-8    Lo Ni              804 Na
+D-5           2805 B595648-8    Ag Ni              604 Na
+D-6           3005 C324452-B  S Ni                 202 Na
+D-7           3008 E387663-5    Ag Ni Ri           504 Na
+D-8           3106 B424643-C  2 Ni                 902 Na
+D-9           3107 E346036-2    Lo Ni              713 Na
+D-10          3109 A44858A-A    Ag Ni              603 Na
+D-11          3210 B100951-E    Hi Na Va           803 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ezekke SECTOR: Zlekkenn Sector
+#
+# Jump-routes
+$0220 0320 0 0
+#
+$0811 0709 0 -1 10
+$0811 1013 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0116 C344777-9  S Ag              B  504 Na
+E-2           0117 C759225-5    Lo Ni              114 Na
+E-3           0212 C98A246-6  S Lo Ni Wa           112 Na
+E-4           0220 C667957-B    Hi                 403 Na
+E-5           0320 A89A867-E    Wa                 503 Na
+E-6           0414 EAE5641-6    Fl Ni              304 Na
+E-7           0417 E76A410-8    Ni Wa              703 Na
+E-8           0511 E360455-4    De Ni              200 Na
+E-9           0619 B467566-B  N Ag Ni              914 Na
+E-10          0720 B624867-9                       904 Na
+Elliama       0811 C8A2403-B  S Fl Ni              801 Na
+E-12          0817 D524353-4    Lo Ni              200 Na
+E-13          0819 C553857-9    Po                 212 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Flekkenn SECTOR: Zlekkenn Sector
+#
+# Jump-routes
+$1013 1113 0 0
+#
+$1013 0811 -1 0 10
+$1013 1117 0 0 10
+$1117 1320 0 0 10
+$1320 1324 0 1 10
+$1320 1422 0 1 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           1011 C371438-7    Ni                 601 Na
+Fallia        1013 C460520-A  S De Ni              204 Na
+F-3           1113 B9B2000-8  2 Ba Fl Lo Ni     A  904 Na
+Jaalkor       1117 D497947-4  S Hi In              314 Na
+F-5           1211 C457476-A    Ni              B  812 Na
+F-6           1313 C534500-B  S Ni                 403 Na
+F-7           1316 A11067B-C  N Na Ni           B  914 Na
+Dorran        1320 C58745A-A  J Ni                 912 Jl
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ghazlekk SECTOR: Zlekkenn Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1719 B664689-7  N Ag Ni Ri           512 Na
+G-2           1814 E664672-1    Ag Ni Ri        B  900 Na
+G-3           2012 C773864-3                       203 Na
+G-4           2016 C552787-3    Po                 302 Na
+G-5           2117 D663365-7  S Lo Ni              803 Na
+G-6           2311 D565835-4  S                    300 Na
+G-7           2318 B753203-A  N Lo Ni Po           424 Na
+G-8           2319 E224621-8    Ni                 310 Na
+G-9           2320 A336496-A    Ni                 805 Na
+G-10          2411 C636656-8  S Ni                 904 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Holozekk SECTOR: Zlekkenn Sector
+#
+# Jump-routes
+#
+$2919 3020 0 0 12
+$2919 2718 0 0 12
+$2919 2816 0 0 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2517 C6769BB-8  S Hi In              910 Na
+H-2           2617 X263203-5    Lo              R  903 Na
+H-3           2619 C87A774-7  S Wa              B  104 Na
+H-4           2718 C347001-7    Lo Ni              214 Hc
+H-5           2816 C8988DD-3  H                    501 Hc
+Helle         2919 A7A39EI-F  H Fl Hi           A  503 Hc
+H-7           3020 B5669A8-C  H Hi                 113 Hc
+H-8           3117 D796325-4    Lo Ni              723 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ikkennez SECTOR: Zlekkenn Sector
+#
+# Jump-routes
+#
+$0630 0633 0 1 2
+$0630 0528 0 0 2
+$0528 0226 0 0 2
+$0226 3025 -1 0 2
+$0728 1128 1 0 12
+$0728 0528 0 0 12
+$0728 0629 0 0 12
+$0629 0630 0 0 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0128 B88A100-B    Lo Ni Wa           702 Na
+Nameechi      0226 C665025-7  S Lo Ni              534 Na
+Minsharr      0528 C225695-A    Ni                 213 Jl
+I-4           0629 C26599A-A    Hi                 800 Jl
+Iminar        0630 C310465-9  J Ni                 501 Jl
+I-6           0727 D8A5758-8  J Fl                 305 Jl
+I-7           0728 A000335-F    As Lo Ni           502 Jl
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jekklezz SECTOR: Zlekkenn Sector
+#
+# Jump-routes
+#
+$1324 1320 0 -1 10
+$1324 1328 0 0 10
+$1328 1128 0 0 12
+$1328 1529 0 0 12
+$1328 1728 1 0 10
+$1529 1728 1 0 12
+$1128 0728 -1 0 12
+$1128 1124 0 0 12
+$1124 1123 0 0 12
+$1123 1324 0 0 12
+$1324 1422 0 0 12
+$1422 1320 0 -1 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           1028 E758566-5    Ag Ni              321 Jl
+J-2           1123 B473553-8  J Ni                 604 Jl
+J-3           1124 C24079B-5  J De Po              411 Jl
+J-4           1128 C434633-9    Ni                 503 Jl
+J-5           1130 C511777-8    Ic Na           B  312 Na
+J-6           1223 C57989D-4                       700 Jl
+Bovvair       1324 C563987-7  J Hi                 302 Jl
+J-8           1325 E8D4101-5    Fl Lo Ni           603 Jl
+Jekke         1328 A405452-G  J Ic Ni Va Cx        801 Jl
+J-10          1422 C000754-7  J As Na              903 Jl
+J-11          1529 C787244-7    Lo Ni              604 Jl
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Klekke SECTOR: Zlekkenn Sector
+#
+# Jump-routes
+$2430 2331 0 1
+#
+$1728 1328 -1 0 10
+$1728 1529 -1 0 12
+$1728 2030 0 0 10
+$2030 2133 0 1 10
+$1728 1928 0 0 12
+$1928 2029 0 0 12
+$2029 2030 0 0 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1721 C210552-9  S Ni                 404 Na
+Krosso        1728 B873205-C  J Lo Ni              501 Jl
+K-3           1928 C330220-8    De Lo Ni Po        213 Jl
+6-4           2029 C7A5722-4    Fl                 603 Jl
+Whalna        2030 C100550-A  J Ni Va              304 Jl
+K-6           2224 C632894-6    Na Po              325 Na
+K-7           2227 C524412-5  S Ni                 105 Na
+K-8           2430 A7679AC-A  S Hi                 504 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lezekke SECTOR: Zlekkenn Sector
+#
+# Jump-routes
+$2824 2926 0 0
+$2927 2929 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2727 E000A9D-8    As Hi Na           223 Na
+L-2           2824 B724510-7  N Ni                 704 Na
+L-3           2926 B510230-C    Lo Ni              603 Na
+L-4           2927 B97A537-C  2 Ni Wa              403 Na
+L-5           2929 C476353-6  S Lo Ni              413 Na
+L-6           3222 E434022-5    Lo Ni              903 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Mizlek SECTOR: Zlekkenn Sector
+#
+# Jump-routes
+#
+$0836 1138 1 0 2
+$0836 0633 0 0 2
+$0633 0630 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0337 E510301-9    Lo Ni              900 Na
+Mijanna       0633 C4007BB-5  S Na Va              712 Na
+Hagraw        0836 D739689-3    Ni                 204 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nazakkenn SECTOR: Zlekkenn Sector
+#
+# Jump-routes
+$1635 1736 1 0
+#
+$1138 1101 0 1 2
+$1138 0836 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0931 CA9A100-9    Lo Ni Wa           600 Na
+N-2           0936 E854400-8    Ni                 520 Na
+Naned         1138 X374400-2                    R  404 Na
+N-4           1235 D254211-8  S Lo Ni              114 Na
+N-5           1238 E8C18CC-3    Fl              A  700 Na
+N-6           1335 E351149-4    Lo Ni Po           913 Na
+N-7           1338 C854234-5    Lo Ni              614 Na
+N-8           1431 D100853-6  S Na Va              101 Na
+N-9           1437 C889641-5  S Ni Ri              114 Na
+N-10          1538 B120697-9  N De Na Ni Po        920 Na
+N-11          1634 CAA6325-6    Fl Lo Ni           905 Na
+N-12          1635 A779489-A    Ni                 303 Na
+N-13          1638 D200469-9  S Ni Va              503 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ozlekkenn SECTOR: Zlekkenn Sector
+#
+# Jump-routes
+$1736 1635 -1 0
+$2331 2430 0 -1
+#
+$2133 2030 0 -1 10
+$2133 2136 0 0 10
+$2136 2437 0 0 10
+$2437 2540 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1736 B570121-9  S De Lo Ni           312 Na
+O-2           2031 C313A6B-D    Hi Ic Na           315 Na
+O-3           2039 D767215-6    Lo Ni              600 Na
+Ogratta       2133 A864502-C  N Ag Ni              514 Na
+Erteen        2136 E8868C8-6                       221 Na
+O-6           2331 B435210-C  S Lo Ni              900 Na
+Namnam        2437 C341220-7    Lo Ni Po           513 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Pourezekk SECTOR: Zlekkenn Sector
+#
+# Jump-routes
+#
+$2540 2437 -1 0 10
+$2540 2703 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Ponnial       2540 C887210-8    Lo Ni              823 Na
+P-2           2732 D524AC8-9    Hi In              110 Na
+P-3           2733 B664669-5  S Ag Ni Ri           500 Na
+P-4           2933 C140466-7  S De Ni Po           904 Na
+P-5           2936 A539320-D  2 Lo Ni              104 Na
+P-6           2937 E555589-6    Ag Ni              913 Na
+P-7           3133 E2219BD-7    Hi In Na Po        413 Na
+P-8           3134 C200446-9  S Ni Va              221 Na
+P-9           3231 A77A678-C    Ni Wa           B  303 Na
+P-10          3232 X7A0341-4    De Lo           R  903 Na
+P-11          3238 B241344-7  S Lo Ni Po           510 Na
+

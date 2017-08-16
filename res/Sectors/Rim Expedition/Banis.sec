@@ -1,0 +1,316 @@
+Banis Sector
+
+A: Aaniss                    a.dat
+B: Bani                      b.dat
+C: Cannis                    c.dat
+D: Dazzis                    d.dat
+E: Evanis                    e.dat
+F: Fassasis                  f.dat
+G: Gamnis                    g.dat
+H: Huinas                    h.dat
+I: Iabas                     i.dat
+J: Jabbiss                   j.dat
+K: Kaanniss                  k.dat
+L: Lanisk                    l.dat
+M: Moanis                    m.dat
+N: Naqas                     n.dat
+O: Opaaniz                   o.dat
+P: Poaniss                   p.dat
+
+Bases:
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Aaniss SECTOR: Banis Sector
+#
+# Jump-routes
+#
+$0104 3102 -1 0 10
+$0104 0305 0 0 10
+$0305 0508 0 0 10
+$0508 0409 0 0 10
+$0409 0512 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Amrenna       0104 C330755-6  S De Na Po           413 Na
+Masssiss      0305 D8A3536-3  S Fl Ni              402 Na
+A-3           0403 C438315-8    Lo Ni              514 Na
+Kraregga      0409 D596487-4    Ni                 903 Na
+Oladis        0508 B579685-8    Ni                 403 Na
+A-6           0801 C567202-A    Lo Ni              102 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Bani SECTOR: Banis Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           0904 C79A766-9  S Wa                 615 Na
+B-2           1009 B869541-C  2 Ni                 922 Na
+B-3           1410 B25477B-7  S Ag              B  210 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Cannis SECTOR: Banis Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1703 C541033-5    Lo Ni Po           703 Na
+C-2           1706 D999430-3  S Ni                 912 Na
+C-3           1802 C958999-7    Hi                 903 Na
+C-4           1803 B589557-B    Ni                 602 Na
+C-5           1907 B210525-9    Ni                 200 Na
+C-6           2004 E250355-6    De Lo Ni Po        204 Na
+C-7           2303 C756222-8    Lo Ni              323 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Dazzis SECTOR: Banis Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           3103 C421456-A    Ni Po              512 Na
+D-2           3104 E00088C-5    As Na              401 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Evanis SECTOR: Banis Sector
+#
+# Jump-routes
+#
+$0512 0409 0 -1 10
+$0512 0913 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0118 E737759-5                       200 Na
+E-2           0120 D989231-8    Lo Ni              304 Na
+Emmieh        0512 B669454-9    Ni                 524 Na
+E-4           0614 C75A865-A  S Wa                 604 Na
+E-5           0719 B210121-8    Lo Ni              913 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Fassasis SECTOR: Banis Sector
+#
+# Jump-routes
+#
+$0913 0512 -1 0 10
+$0913 1214 0 0 10
+$1214 1118 0 0 10
+$1118 1520 0 0 10
+$1520 1622 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Fiir          0913 X9D6450-5    Fl              R  404 Na
+Strasi        1118 B120365-B  S De Lo Ni Po        213 Na
+Adssa         1214 C695458-9    Ni                 814 Na
+Rakkis        1520 D300653-9  S Na Ni Va           615 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Gamnis SECTOR: Banis Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           2318 C4449CA-8  S Hi In              103 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Huinas SECTOR: Banis Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2517 B646655-A  N Ag Ni              513 Na
+H-2           2914 C9A876A-4    Fl                 624 Na
+H-3           3214 A000132-C    As Lo Ni           224 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Iabas SECTOR: Banis Sector
+#
+# Jump-routes
+#
+$0230 0334 0 1 2
+$0230 0227 0 0 2
+$0227 3125 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0224 X646546-0    Ag              R  505 Na
+Chaohgh       0227 C999327-A    Lo Ni              811 Na
+Ittraalli     0230 C668855-5    Ri                 701 Na
+I-4           0725 D5849CD-8  S Hi                 100 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jabbiss SECTOR: Banis Sector
+#
+# Jump-routes
+#
+$1622 1520 0 -1 10
+$1622 1924 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           1123 A200774-A    Na Va           B  604 Na
+J-2           1125 C537202-8    Lo Ni              423 Na
+Juihhia       1622 A774420-C    Ni                 104 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kaanniss SECTOR: Banis Sector
+#
+# Jump-routes
+#
+$1924 1622 -1 0 10
+$1924 2027 0 0 10
+$2027 2328 0 0 10
+$2328 2332 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Kornor        2027 E542534-7    Ni Po              101 Na
+Offabba       1924 C778A97-A    Hi In              804 Na
+Vhuunass      2328 B975998-C    Hi In              102 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lanisk SECTOR: Banis Sector
+#
+# Jump-routes
+$2524 2823 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2524 A96A87A-9    Ri Wa           B  400 Na
+L-2           2823 A64A446-C    Ni Wa              913 Na
+L-3           2830 C574A65-A    Hi In              420 Na
+L-4           3126 B442564-A  S Ni Po              104 Na
+L-5           3127 E599110-3    Lo Ni              913 Na
+L-6           3130 C00047A-7    As Ni           B  804 Na
+L-7           3223 C7A1532-9  S Fl Ni              100 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Moanis SECTOR: Banis Sector
+#
+# Jump-routes
+#
+$0537 0501 0 1 2
+$0537 0334 0 0 2
+$0334 0230 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Ma-Kirn       0334 A794310-9    Lo Ni              314 Na
+M-2           0634 B362467-8    Ni                 401 Na
+Oerniil       0537 CA96799-3    Ag                 303 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Naqas SECTOR: Banis Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           1137 C8C4344-A  S Fl Lo Ni        A  604 Na
+N-2           1535 B76979E-9  2 Ri                 210 Na
+N-3           1634 C746373-4  S Lo Ni           B  702 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Opaaniz SECTOR: Banis Sector
+#
+# Jump-routes
+#
+$2332 2328 0 -1 10
+$2332 2133 0 0 10
+$2133 2236 0 0 10
+$2236 2439 0 0 10
+$2439 2502 1 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1835 D65A400-5  S Ni Wa              402 Na
+O-2           2037 C597989-6  S Hi In              221 Na
+Dervihh       2133 C322798-6    Na Po              522 Na
+Slavat        2236 C43947A-A    Ni              B  802 Na
+Ojjija        2332 C334751-6  S                    802 Na
+Rtaak         2439 C414204-C  S Ic Lo Ni           704 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Poaniss SECTOR: Banis Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           3134 D436530-6  S Ni                 714 Na
+P-2           3138 C8748BA-4  S                    923 Na
+

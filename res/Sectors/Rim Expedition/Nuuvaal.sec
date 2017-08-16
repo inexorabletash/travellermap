@@ -1,0 +1,319 @@
+Nuuvaal Sector
+
+A: Aavaal                    a.dat
+B: Buuvaan                   b.dat
+C: Cuunuuva                  c.dat
+D: Duuvaad                   d.dat
+E: Enuun                     e.dat
+F: Fuunuuva                  f.dat
+G: Gaanaave                  g.dat
+H: Huuvaal                   h.dat
+I: Inuuma                    i.dat
+J: Junnuuvaak                j.dat
+K: Kruunaav                  k.dat
+L: Luunaavi                  l.dat
+M: Muuvaal                   m.dat
+N: Naauun                    n.dat
+O: Ocvuunuu                  o.dat
+P: Puaanuu                   p.dat
+
+Bases:
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+12 El = Ertos League of Worlds
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Aavaal SECTOR: Nuuvaal Sector
+#
+# Jump-routes
+#
+$0410 0612 0 1 2
+$0410 0507 0 0 2
+$0507 0403 0 0 2
+$0403 0501 0 0 2
+$0501 0537 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0106 C995400-7  S Ni                 505 Na
+A-2           0202 C63889C-6                       200 Na
+A-3           0203 X722755-3    Po              R  203 Na
+A-4           0206 D6547A7-1  S Ag                 101 Na
+A-5           0209 BAC5ADB-B    Fl Hi           A  712 Na
+Vlandier      0403 E542000-2    Ba Lo Ni Po        224 Na
+Aloove        0410 B86A8AA-B    Wa                 813 Na
+Cahaali       0507 D7578CD-4                       801 Na
+Yahnaal       0501 C300678-7    Na Ni Va        B  501 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Buuvaan SECTOR: Nuuvaal Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           1007 D44179E-2  S Po                 804 Na
+B-2           1110 D678768-2    Ag                 123 Na
+B-3           1206 C593455-5  S Ni                 905 Na
+B-4           1210 C5629CB-7  S Hi                 113 Na
+B-5           1305 C67599A-5  S Hi In              214 Na
+B-6           1401 C665202-5    Lo Ni              504 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Cuunuuva SECTOR: Nuuvaal Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           2205 C455537-5    Ag Ni              603 Na
+C-2           2310 D673102-4  S Lo Ni              504 Na
+C-3           2407 C516446-6    Ic Ni              104 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Duuvaad SECTOR: Nuuvaal Sector
+#
+# Jump-routes
+#
+$2502 2439 -1 -1 10
+$2502 2505 0 0 10
+$2505 2707 0 0 10
+$2707 3008 0 0 10
+$3008 0108 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2501 B421426-9  S Ni Po              604 Na
+Awwanil       2502 D654476-6  S Ni              B  902 Na
+Hisshi        2505 E110AC9-B    Hi Na              203 Na
+D-4           2508 B327740-7  N                    101 Na
+D-5           2510 E744440-4    Ni                 303 Na
+D-6           2604 E8A3798-6    Fl                 304 Na
+Muakcar       2707 E87A68D-4    Ni Wa              303 Na
+Dokkra        3008 D7B5876-7  S Fl              A  203 Na
+D-9           3002 C681454-7    Ni                 600 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Enuun SECTOR: Nuuvaal Sector
+#
+# Jump-routes
+#
+$0720 1121 1 1 2
+$0720 0616 0 0 2
+$0616 0612 0 0 2
+$0612 0410 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Gahann        0612 C542420-4    Ni Po              502 Na
+Verjass       0616 E546875-6                    B  613 Na
+E-3           0620 C000663-B    As Na Ni           304 Na
+Eklikk        0720 C4605A8-5    De Ni              613 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Fuunuuva SECTOR: Nuuvaal Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           1417 E200036-4    Lo Ni Va           503 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Gaanaave SECTOR: Nuuvaal Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1912 E466789-4    Ag Ri              903 Na
+G-2           1917 C777787-4    Ag                 404 Na
+G-3           2114 E210463-8    Ni                 821 Na
+G-4           2218 D587650-5    Ag Ni Ri           504 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Huuvaal SECTOR: Nuuvaal Sector
+#
+# Jump-routes
+#
+$3017 0216 1 0 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2615 C98967A-9  S Ni Ri           B  600 Na
+H-2           2720 C77A363-8  S Lo Ni Wa           603 Na
+H-3           3017 B210445-A    Ni                 324 El
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Inuuma SECTOR: Nuuvaal Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0129 EA99445-6    Ni                 404 Na
+I-2           0523 C554204-7    Lo Ni              120 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Junnuuvaak SECTOR: Nuuvaal Sector
+#
+# Jump-routes
+#
+$1523 1825 1 0 2
+$1523 1121 0 0 2
+$1121 0720 -1 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           1024 C534477-7    Ni              B  814 Na
+J-2           1026 C300652-6    Na Ni Va           902 Na
+Arttac        1121 C447455-9    Ni                 404 Na
+J-4           1221 B667565-B  N Ag Ni              604 Na
+J-5           1321 B000433-B  S As Ni              800 Na
+J-6           1430 D7988BC-1  S                    724 Na
+Jiklaa        1523 X463668-0    Ri              R  910 Na
+J-8           1530 A672559-B    Ni                 203 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kruunaav SECTOR: Nuuvaal Sector
+#
+# Jump-routes
+#
+$2430 2534 1 1 2
+$2430 2227 0 0 2
+$2227 1825 0 0 2
+$1825 1523 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Sorrt         1825 D542215-6    Lo Ni Po           501 Na
+K-2           2024 C23259A-7  S Ni Po              704 Na
+Uhkahn        2227 D210551-5    Ni                 414 Na
+K-4           2421 B767798-7  N Ag Ri              524 Na
+Koplle        2430 C100899-6  S Na Va              612 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Luunaavi SECTOR: Nuuvaal Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2921 A748031-7    Lo Ni              104 Na
+L-2           3121 A634032-A    Lo Ni              512 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Muuvaal SECTOR: Nuuvaal Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0133 B569554-B  S Ni                 202 Na
+M-2           0136 D546752-6    Ag                 600 Na
+M-3           0337 D0009BB-6    As Hi Na           120 Na
+M-4           0538 B350494-A  S De Ni Po           500 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Naauun SECTOR: Nuuvaal Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           1531 X000305-3    As Lo           R  913 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ocvuunuu SECTOR: Nuuvaal Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Puaanuu SECTOR: Nuuvaal Sector
+#
+# Jump-routes
+#
+$3237 0435 1 0 2
+$3237 2935 0 0 2
+$2935 2534 0 0 2
+$2534 2430 -1 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Hatyss        2534 C657653-7    Ag Ni              905 Na
+P-2           2540 D84A569-8    Ni Wa              104 Na
+Rtaal         2935 D788024-2  S Lo Ni              731 Na
+P-4           2938 X456556-2    Ag              R  704 Na
+P-5           2939 B32058A-8  N De Ni Po           814 Na
+P-6           3131 B79857C-A  S Ag Ni           B  822 Na
+Qreet         3237 D553966-3  S Hi Po              905 Na
+

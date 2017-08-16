@@ -1,0 +1,427 @@
+Oikigeon Sector
+
+A: Aoikig                    a.dat
+B: Bigeon                    b.dat
+C: Cloiki                    c.dat
+D: Drikige                   d.dat
+E: Ekegeon                   e.dat
+F: Flageona                  f.dat
+G: Geon                      g.dat
+H: Hoikige                   h.dat
+I: Ikigeo                    i.dat
+J: Jegeonn                   j.dat
+K: Kigeeon                   k.dat
+L: Loiki                     l.dat
+M: Makigee                   m.dat
+N: Neegeon                   n.dat
+O: Oikig                     o.dat
+P: Plikig                    p.dat
+
+Bases:
+A = Amaaki Military
+G = Starin Military
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+12 Ac = Amaaki Conquests
+07 Na = Non-Aligned
+13 Sg = Starin Group
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Aoikig SECTOR: Oikigeon Sector
+#
+# Jump-routes
+$0209 0309 0 0
+$0309 0409 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0101 E8A2445-4    Fl Ni              313 Na
+A-2           0102 D665565-7    Ag Ni              622 Na
+A-3           0106 A45489C-D                       724 Na
+A-4           0209 C000213-B  S As Lo Ni           614 Na
+A-5           0303 B72A462-A    Ni Wa              825 Na
+A-6           0309 B140210-9  S De Lo Ni Po        303 Na
+A-7           0401 C679545-7  S Ni                 404 Na
+A-8           0408 B9B6A96-C    Fl Hi           A  804 Na
+A-9           0409 C5225AC-A  S Ni Po              301 Na
+A-10          0410 EA9A876-6    Wa              B  600 Na
+A-11          0501 B5238A9-6  N Na Po              621 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Bigeon SECTOR: Oikigeon Sector
+#
+# Jump-routes
+#
+$1207 1211 0 1 2
+$1207 0905 0 0 2
+$0905 1102 0 0 2
+$1102 1039 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Vocrill       0905 E774ABG-7    Hi In              201 Na
+B-2           1010 B576154-7    Lo Ni              103 Na
+Shorek        1102 C774557-8    Ag Ni              202 Na
+Borrni        1207 C544657-4    Ag Ni              324 Na
+B-5           1401 E68A532-6    Ni Wa              713 Na
+B-6           1408 D986565-7  S Ag Ni              702 Na
+B-7           1410 C2567AA-8  S Ag                 300 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Cloiki SECTOR: Oikigeon Sector
+#
+# Jump-routes
+#
+$1902 1839 0 -1 12
+$1902 1904 0 0 12
+$1904 1805 0 0 12
+$1805 2207 0 0 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1805 C484764-4    Ag Ri              614 Ac
+C-2           1902 C8C49DD-4  A Fl Hi           A  515 Ac
+C-3           1904 B699202-8  A Lo Ni              501 Ac
+C-4           1910 C636311-A  S Lo Ni              733 Na
+C-5           2001 D41067C-3    Na Ni           B  302 Na
+C-6           2103 E426656-6    Ni                 104 Na
+C-7           2108 D778643-3  S Ag Ni              403 Na
+C-8           2207 B77A566-A  A Ni Wa              301 Ac
+C-9           2301 D442977-7  S Hi In Po        B  602 Na
+C-10          2302 E345132-6    Lo Ni              114 Na
+C-11          2409 C67558C-5    Ag Ni              203 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Drikige SECTOR: Oikigeon Sector
+#
+# Jump-routes
+#
+$2603 2740 0 -1 10
+$2603 2906 0 0 10
+$2906 3109 0 0 10
+$3109 0209 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2502 B5367CE-6                       702 Na
+D-2           2505 B76A466-B    Ni Wa              123 Na
+D-3           2508 C1008CA-B  S Na Va              403 Na
+Didaadi       2603 C6A0656-7    De Ni              504 Na
+D-5           2605 C495775-6    Ag              B  504 Na
+D-6           2809 C411997-A    Hi Ic Na           800 Na
+Mouriti       2906 C5539EG-5    Hi Po           A  504 Na
+Drefisha      3109 C627736-8  S                    604 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ekegeon SECTOR: Oikigeon Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0219 E45555A-6    Ag Ni              715 Na
+E-2           0313 C365216-9  S Lo Ni              210 Na
+E-3           0417 A647432-A  S Ni                 204 Na
+E-4           0511 C545685-4    Ag Ni              814 Na
+E-5           0516 C563564-6    Ni                 203 Na
+E-6           0713 C584226-8  S Lo Ni              803 Na
+E-7           0715 E48879C-2    Ag Ri              403 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Flageona SECTOR: Oikigeon Sector
+#
+# Jump-routes
+#
+$1418 1521 0 1 2
+$1418 1414 0 0 2
+$1414 1211 0 0 2
+$1211 1207 0 -1 2
+$1615 1814 1 0 13
+$1615 1817 1 0 13
+$1615 1418 0 0 13
+$1418 1522 0 1 13
+$1615 1414 0 0 13
+$1615 1513 0 0 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0920 B655567-9  N Ag Ni              614 Na
+F-2           1011 A736302-A  2 Lo Ni              110 Na
+F-3           1018 C3456BA-5    Ag Ni              301 Na
+F-4           1119 D405330-8    Ic Lo Ni Va        613 Na
+Fiionn        1211 D210534-5  S Ni                 503 Na
+F-6           1219 C415559-9    Ic Ni              504 Na
+F-7           1311 C000532-8    As Ni              202 Na
+F-8           1320 C9A5653-5    Fl Ni              413 Na
+Zankleira     1414 C150584-8  G De Ni Po           701 Sg
+Stemmick      1418 B300635-9    Na Ni Va           805 Sg
+F-11          1513 C512430-9  G Ic Ni              905 Sg
+Starin        1615 A9B4451-F    Fl Ni           A  112 Sg
+F-13          1618 C94A120-7    Lo Ni Wa           402 Sg
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Geon SECTOR: Oikigeon Sector
+#
+# Jump-routes
+#
+$1814 1615 -1 0 13
+$1817 1615 -1 0 13
+$1817 2119 0 0 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1814 B301125-9  G Ic Lo Ni Va        304 Sg
+G-2           1817 B000431-C  G As Ni              704 Sg
+G-3           1919 C457464-A  G Ni                 104 Sg
+G-4           2019 X422442-2    Po              R  613 Na
+G-5           2119 B336788-C  G                    303 Sg
+G-6           2211 C784334-5    Lo Ni              904 Na
+G-7           2213 C210511-A    Ni                 103 Na
+G-8           2315 C885610-4    Ag Ni              203 Na
+G-9           2320 E869558-6    Ni                 622 Na
+G-10          2417 C555561-6    Ag Ni              500 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hoikige SECTOR: Oikigeon Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2520 A889764-B  N Ri                 500 Na
+H-2           2620 B9B69CG-8    Fl Hi           A  304 Na
+H-3           2813 C43048C-A    De Ni Po           914 Na
+H-4           2816 E69A654-7    Ni Wa              804 Na
+H-5           2913 B678765-9  N Ag                 701 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ikigeo SECTOR: Oikigeon Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0223 C271876-9  S                 B  304 Na
+I-2           0422 BACA320-D  N Fl Lo Ni Wa     A  600 Na
+I-3           0830 E566579-5    Ag Ni           B  104 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jegeonn SECTOR: Oikigeon Sector
+#
+# Jump-routes
+#
+$1624 2025 1 0 2
+$1624 1521 0 0 2
+$1521 1418 0 -1 2
+$1522 1418 0 -1 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0923 C273643-9    Ni                 714 Na
+J-2           0925 D633342-5  S Lo Ni Po           523 Na
+J-3           1225 A4427A6-A  S Po                 904 Na
+J-4           1226 E300320-6    Lo Ni Va           123 Na
+J-5           1229 C988610-8    Ag Ni              903 Na
+Mourshi       1521 X688310-0    Lo Ni           R  201 Na
+J-7           1522 B425845-7  G                    303 Sg
+J-8           1524 C447620-7    Ag Ni              510 Na
+Hooluune      1624 E100000-9    Ba Lo Ni Va        323 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kigeeon SECTOR: Oikigeon Sector
+#
+# Jump-routes
+#
+$2426 2728 1 0 2
+$2426 2025 0 0 2
+$2025 1624 -1 0 2
+$2426 2226 0 0 11
+$2226 2025 0 0 11
+$2025 1927 0 0 11
+$1927 2129 0 0 11
+$2129 2329 0 0 11
+$2329 2426 0 0 11
+$2426 2227 0 0 11
+$2227 2127 0 0 11
+$2127 2025 0 0 11
+$1927 2127 0 0 11
+$2127 2129 0 0 11
+$2329 2227 0 0 11
+$2227 2226 0 0 11
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1824 D35558D-4  S Ag Ni              200 Na
+K-2           1927 C96A550-9    Ni Wa              810 Na
+Be Carra      2025 A773444-A  S Ni                 803 Na
+K-4           2127 C55079A-3    De Po              713 Na
+K-5           2129 B210255-A  N Lo Ni              800 Na
+K-6           2226 C775564-6  S Ag Ni              204 Na
+K-7           2227 C325488-9  S Ni                 905 Na
+K-8           2324 C9A7676-8    Fl Ni           B  114 Na
+K-9           2329 C648200-6  S Lo Ni              802 Na
+Federnio      2426 A2009BC-E    Hi Na Va           113 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Loiki SECTOR: Oikigeon Sector
+#
+# Jump-routes
+#
+$3130 3232 0 1 2
+$3130 2728 0 0 2
+$2728 2426 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2522 B322642-8    Na Ni Po           813 Na
+L-2           2628 D488452-7  S Ni                 522 Na
+Dallad        2728 B000510-9    As Ni              602 Na
+L-4           2926 B8B69AA-B  N Fl Hi           A  314 Na
+L-5           2928 B335433-9    Ni                 505 Na
+Laseadia      3130 C210578-6  S Ni              B  521 Na
+L-7           3228 C324403-8    Ni                 903 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Makigee SECTOR: Oikigeon Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0133 C100272-7  S Lo Ni Va        B  603 Na
+M-2           0136 B692978-A  N Hi In           B  302 Na
+M-3           0231 E501202-7    Ic Lo Ni Va        303 Na
+M-4           0238 C526342-7    Lo Ni              403 Na
+M-5           0240 C869463-6    Ni                 404 Na
+M-6           0439 C412577-A    Ic Ni           B  803 Na
+M-7           0535 C310622-9    Na Ni              504 Na
+M-8           0538 B140773-7  S De Po           B  813 Na
+M-9           0633 E5627BA-5                       420 Na
+M-10          0737 B310000-9  N Ba Lo Ni           810 Na
+M-11          0740 B2327AB-B  S Na Po              204 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Neegeon SECTOR: Oikigeon Sector
+#
+# Jump-routes
+$0933 1134 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0933 B432778-C  S Na Po           B  303 Na
+N-2           1134 A233210-A  N Lo Ni Po           423 Na
+N-3           1140 D526241-4    Lo Ni              623 Na
+N-4           1333 C786786-5  S Ag Ri              814 Na
+N-5           1338 C797664-4    Ag Ni              410 Na
+N-6           1437 X000203-6    As Lo           R  623 Na
+N-7           1438 D222576-6    Ni Po           B  704 Na
+N-8           1532 E89A123-7    Lo Ni Wa           800 Na
+N-9           1633 E000221-7    As Lo Ni           823 Na
+N-10          1637 B436567-8  N Ni                 914 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Oikig SECTOR: Oikigeon Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1734 B000220-E    As Lo Ni           204 Na
+O-2           1738 B500867-9  S Na Va              701 Na
+O-3           1931 DABAAED-A  S Fl Hi Wa        A  512 Na
+O-4           2032 D9D2659-6    Fl Ni              504 Na
+O-5           2135 C66A656-7    Ni Ri Wa           102 Na
+O-6           2236 C461101-9    Lo Ni              100 Na
+O-7           2333 B663223-8    Lo Ni              601 Na
+O-8           2339 B500464-A    Ni Va              312 Na
+O-9           2431 E757325-4    Lo Ni              301 Na
+O-10          2432 E692675-2    Ni              B  700 Na
+O-11          2434 C797522-9    Ag Ni              300 Na
+O-12          2436 C492655-7    Ni                 715 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Plikig SECTOR: Oikigeon Sector
+#
+# Jump-routes
+$2734 2834 0 0
+#
+$3232 0434 1 0 2
+$3232 3130 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2531 B552000-A  N Ba Lo Ni Po        704 Na
+P-2           2640 C9A6344-A  S Fl Lo Ni           915 Na
+P-3           2731 C75756A-7    Ag Ni              203 Na
+P-4           2734 C8739DD-4    Hi In              912 Na
+P-5           2833 D424110-8  S Lo Ni              910 Na
+P-6           2834 A46658A-E  N Ag Ni              303 Na
+P-7           3032 B7A4676-6  N Fl Ni              110 Na
+P-8           3131 D461130-6  S Lo Ni              404 Na
+P-9           3140 E3109A9-9    Hi Na              724 Na
+Choreoa       3232 E23089A-7    De Na Po           113 Na
+P-11          3240 C66A534-8    Ni Wa              303 Na
+

@@ -1,0 +1,427 @@
+Eyolovar Sector
+
+A: Aeyolo                    a.dat
+B: Bolovar                   b.dat
+C: Cheyol                    c.dat
+D: Deeyolo                   d.dat
+E: Eyolov                    e.dat
+F: Freyo                     f.dat
+G: Glovara                   g.dat
+H: Heyolov                   h.dat
+I: Ilovar                    i.dat
+J: Jeyvar                    j.dat
+K: Kreyvar                   k.dat
+L: Lovara                    l.dat
+M: Meyolo                    m.dat
+N: Navaro                    n.dat
+O: Olovar                    o.dat
+P: Peeyacvar                 p.dat
+
+Bases:
+N = Navy
+P = Pandar Military
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+07 Na = Non-Aligned
+12 Ps = Pandar State
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Aeyolo SECTOR: Eyolovar Sector
+#
+# Jump-routes
+#
+$0608 0811 0 1 2
+$0608 0706 0 0 2
+$0706 0703 0 0 2
+$0703 0302 0 0 2
+$0302 0339 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0103 E765610-1    Ag Ni              414 Na
+A-2           0104 X310678-4                    R  202 Na
+Mosphar       0302 A9B7530-D    Fl Ni           A  502 Na
+A-4           0309 E777666-2    Ag Ni              101 Na
+A-5           0409 EA89130-4    Lo Ni              421 Na
+Einater       0608 C965848-7  S Ri                 704 Na
+Narope        0703 C000658-C    As Na Ni           804 Na
+Blaunna       0706 C443677-9  S Ni Po           B  421 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Bolovar SECTOR: Eyolovar Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           1005 D475103-4  S Lo Ni              710 Na
+B-2           1103 E333577-9    Ni Po           B  102 Na
+B-3           1106 C6A2579-8    Fl Ni           B  905 Na
+B-4           1110 C76A311-6    Lo Ni Wa           803 Na
+B-5           1201 C310899-8    Na                 402 Na
+B-6           1305 C69A541-8  S Ni Wa              124 Na
+B-7           1307 C461887-6    Ri                 413 Na
+B-8           1406 E6766AE-5    Ag Ni              822 Na
+B-9           1503 B334865-7                       513 Na
+B-10          1508 CAA5430-6  S Fl Ni              803 Na
+B-11          1606 C445530-A    Ag Ni              711 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Cheyol SECTOR: Eyolovar Sector
+#
+# Jump-routes
+$2309 2211 0 1
+$2309 2311 0 1
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1803 B667531-8  N Ag Ni              904 Na
+C-2           1904 EAF6531-5    Fl Ni              410 Na
+C-3           2107 C251535-7  S Ni Po              414 Na
+C-4           2202 B452688-7  N Ni Po              502 Na
+C-5           2301 E64598C-8    Hi In              103 Na
+C-6           2309 A7377AC-D  N                    700 Na
+C-7           2310 C763211-9    Lo Ni              403 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Deeyolo SECTOR: Eyolovar Sector
+#
+# Jump-routes
+#
+$3001 2639 0 -1 10
+$3001 0102 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2504 B89A663-8    Ni Wa              904 Na
+D-2           2602 C757567-7  S Ag Ni              324 Na
+D-3           2603 C310788-6  S Na                 704 Na
+D-4           2710 C0008B6-B  S As Na              523 Na
+D-5           2806 B8C3666-6  S Fl Ni           A  904 Na
+Marcranna     3001 B757551-9  S Ag Ni              823 Na
+D-7           3102 C312156-9    Ic Lo Ni           112 Na
+D-8           3105 B546566-9  S Ag Ni              224 Na
+D-9           3109 C2206AC-8    De Na Ni Po        300 Na
+D-10          3201 B313547-C    Ic Ni              811 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Eyolov SECTOR: Eyolovar Sector
+#
+# Jump-routes
+$0512 0612 0 0
+$0612 0716 0 0
+$0613 0716 0 0
+$0617 0716 0 0
+#
+$0811 1213 1 0 2
+$0811 0608 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0213 C336772-8                    B  402 Na
+E-2           0418 E593794-2                       605 Na
+E-3           0512 B596131-6  S Lo Ni              900 Na
+E-4           0612 A855431-B  N Ni                 912 Na
+E-5           0613 B000525-9    As Ni              910 Na
+E-6           0617 B644796-5  N Ag                 214 Na
+E-7           0620 E683484-7    Ni                 212 Na
+E-8           0711 D516541-3  S Ic Ni              703 Na
+E-9           0715 E9D4440-8    Fl Ni              314 Na
+E-10          0716 A311867-9    Ic Na              804 Na
+Bellan        0811 D7B0232-7  S De Lo Ni        A  602 Na
+E-12          0816 C34759B-8    Ag Ni              804 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Freyo SECTOR: Eyolovar Sector
+#
+# Jump-routes
+$1416 1517 0 0
+$1418 1517 0 0
+$1520 1720 1 0
+$1619 1720 1 0
+#
+$1518 1721 1 1 2
+$1518 1215 0 0 2
+$1215 1213 0 0 2
+$1213 0811 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           1020 D57689E-5                       724 Na
+Malorng       1213 C985356-9    Lo Ni              603 Na
+F-3           1214 C895255-6    Lo Ni              202 Na
+Jurattan      1215 C240433-A    De Ni Po           904 Na
+F-5           1314 C3226BA-9    Na Ni Po           204 Na
+F-6           1411 C500675-6    Na Ni Va           604 Na
+F-7           1416 B585632-A  N Ag Ni              304 Na
+F-8           1418 A53455A-D    Ni                 602 Na
+F-9           1516 E555777-3    Ag              B  600 Na
+F-10          1517 B887143-9    Lo Ni              513 Na
+Stellna       1518 D332634-8  S Na Ni Po           314 Na
+F-12          1520 B421510-D    Ni Po              510 Na
+F-13          1619 C658340-6  S Lo Ni              501 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Glovara SECTOR: Eyolovar Sector
+#
+# Jump-routes
+$1720 1520 -1 0
+$1720 1619 -1 0
+$2211 2309 0 -1
+$2311 2309 0 -1
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1713 C100167-C  S Lo Ni Va           403 Na
+G-2           1720 A567445-A  N Ni                 300 Na
+G-3           2115 C684422-4  S Ni                 724 Na
+G-4           2119 D8A178A-4  S Fl                 800 Na
+G-5           2211 B226878-C  N                 B  403 Na
+G-6           2216 D66A235-6    Lo Ni Wa           204 Na
+G-7           2311 A43587C-E  N                 B  101 Na
+G-8           2313 C867204-9    Lo Ni              802 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Heyolov SECTOR: Eyolovar Sector
+#
+# Jump-routes
+$2914 3213 0 0
+#
+$3213 0113 1 0 11
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2517 B9C2535-7  S Fl Ni           A  804 Na
+H-2           2518 A1206A6-C  S De Na Ni Po        414 Na
+H-3           2519 C476575-9  S Ag Ni           B  405 Na
+H-4           2914 A343550-D  S Ni Po              610 Na
+H-5           2918 C120556-A    De Ni Po           104 Na
+H-6           3119 C798555-7  S Ag Ni              203 Na
+H-7           3213 A66A446-E  N Ni Wa              400 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ilovar SECTOR: Eyolovar Sector
+#
+# Jump-routes
+$0329 0231 0 1
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0128 E869774-3    Ri              B  514 Na
+I-2           0230 D310447-9    Ni                 501 Na
+I-3           0324 C657000-8    Ba Lo Ni           901 Na
+I-4           0329 A363640-D  N Ni Ri              400 Na
+I-5           0527 D222559-9  S Ni Po              410 Na
+I-6           0529 E551556-7    Ni Po              904 Na
+I-7           0623 C681000-5    Ba Lo Ni           924 Na
+I-8           0721 D2258CC-5                       311 Na
+I-9           0824 C36369A-7    Ni Ri              523 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jeyvar SECTOR: Eyolovar Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           1030 C747A55-9    Hi In              912 Na
+J-2           1323 C585420-8  S Ni                 403 Na
+J-3           1422 EAA6598-8    Fl Ni              613 Na
+J-4           1428 C556256-8    Lo Ni              103 Na
+J-5           1528 C200654-A  S Na Ni Va           504 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kreyvar SECTOR: Eyolovar Sector
+#
+# Jump-routes
+#
+$2225 2528 1 0 2
+$2225 2022 0 0 2
+$2022 1721 0 0 2
+$1721 1518 -1 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Fanola        1721 B8C5553-9  N Fl Ni           A  314 Na
+K-2           1726 C110359-B  S Lo Ni              320 Na
+K-3           1729 C554688-8  S Ag Ni              514 Na
+K-4           1929 C410968-9    Hi Na              404 Na
+K-5           2021 C678642-5    Ag Ni              904 Na
+Ozold         2022 C549767-4                       523 Na
+K-7           2027 E786000-6    Ba Lo Ni           300 Na
+K-8           2029 C300321-8  S Lo Ni Va           200 Na
+K-9           2121 C543587-8    Ni Po              510 Na
+K-10          2130 D472546-6    Ni                 303 Na
+Kazolne       2225 A224566-F  N Ni                 103 Na
+K-12          2430 C7C27A9-7    Fl              A  734 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lovara SECTOR: Eyolovar Sector
+#
+# Jump-routes
+$2625 2727 0 0
+#
+$2930 3131 0 1 2
+$2930 2528 0 0 2
+$2528 2225 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Kozour        2528 C696578-5    Ag Ni           B  814 Na
+L-2           2530 C120434-C    De Ni Po           724 Na
+L-3           2624 E628655-8    Ni                 901 Na
+L-4           2625 A78578A-B  S Ag Ri              812 Na
+L-5           2626 C988257-9  S Lo Ni              400 Na
+L-6           2721 C77AAA9-C  S Hi In Wa           525 Na
+L-7           2727 B200630-B    Na Ni Va           304 Na
+L-8           2823 C2437A9-7  S Po                 604 Na
+L-9           2927 C979633-6    Ni                 124 Na
+Lavacca       2930 E463440-6    Ni                 501 Na
+L-11          3024 C6446B6-6  S Ag Ni              711 Na
+L-12          3026 E596400-4    Ni                 304 Na
+L-13          3130 CAE798B-A    Fl Hi              814 Na
+L-14          3225 C8C1522-A    Fl Ni           A  103 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Meyolo SECTOR: Eyolovar Sector
+#
+# Jump-routes
+$0231 0329 0 -1
+$0231 0432 0 0
+$0234 0434 0 0
+$0432 0434 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0231 B748624-5  2 Ag Ni              112 Na
+M-2           0234 B668101-A  N Lo Ni              311 Na
+M-3           0239 C76A665-9    Ni Ri Wa           203 Na
+M-4           0337 C340553-7  S De Ni Po           800 Na
+M-5           0432 B3426B9-6  2 Ni Po              714 Na
+M-6           0434 A756553-E  N Ag Ni              903 Na
+M-7           0440 C313787-5    Ic Na              603 Na
+M-8           0732 E000668-6    As Na Ni           913 Na
+M-9           0738 B6A189B-8  2 Fl                 301 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Navaro SECTOR: Eyolovar Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0940 C536324-6  S Lo Ni              503 Na
+N-2           1031 B324662-8    Ni                 510 Na
+N-3           1034 CA69101-7  S Lo Ni              615 Na
+N-4           1133 E110547-8    Ni                 514 Na
+N-5           1232 C200123-8    Lo Ni Va           624 Na
+N-6           1239 C200031-7  S Lo Ni Va           322 Na
+N-7           1337 C427544-A    Ni                 210 Na
+N-8           1536 C446845-8  S                    803 Na
+N-9           1539 D9A5879-4  S Fl              B  700 Na
+N-10          1634 C753588-7  S Ni Po              403 Na
+N-11          1640 C310969-B    Hi Na              225 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Olovar SECTOR: Eyolovar Sector
+#
+# Jump-routes
+$1739 1840 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1739 C332534-9  S Ni Po              602 Na
+O-2           1840 B400524-D    Ni Va              312 Na
+O-3           2034 D566012-3  S Lo Ni              314 Na
+O-4           2036 X445220-1    Lo              R  500 Na
+O-5           2431 C65A443-9    Ni Wa              303 Na
+O-6           2438 B757544-7    Ag Ni              804 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Peeyacvar SECTOR: Eyolovar Sector
+#
+# Jump-routes
+$2735 2738 0 0 12
+$2738 2838 0 0 12
+#
+$3234 0138 1 0 2
+$3234 3131 0 0 2
+$3131 2930 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2535 C000556-C  S As Ni              310 Na
+P-2           2732 D616668-7    Ic Ni              303 Na
+P-3           2735 C98569C-7    Ag Ni Ri           602 Ps
+Pandar        2738 A130400-F  P De Ni Po           400 Ps
+P-5           2838 C422877-9    Na Po           B  810 Ps
+P-6           2931 B540510-8    De Ni Po           913 Na
+Cammagg       3131 E10079B-9    Na Va              704 Na
+P-8           3134 B685799-6    Ag Ri              620 Na
+Haydaya       3234 C561413-5    Ni                 703 Na
+P-10          3238 A566530-A  N Ag Ni              614 Na
+P-11          3240 C989776-6  S Ri              B  503 Na
+

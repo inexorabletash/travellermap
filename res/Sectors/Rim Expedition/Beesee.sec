@@ -1,0 +1,377 @@
+Beesee Sector
+
+A: Abees                     a.dat
+B: Beeceen                   b.dat
+C: Ceedee                    c.dat
+D: Deefleen                  d.dat
+E: Ebbees                    e.dat
+F: Fueece                    f.dat
+G: Gheebeen                  g.dat
+H: Heebour                   h.dat
+I: Ibeecsan                  i.dat
+J: Jeebeecee                 j.dat
+K: Keeleec                   k.dat
+L: Lebeeceet                 l.dat
+M: Meebeec                   m.dat
+N: Neeceeb                   n.dat
+O: Obeec                     o.dat
+P: Peebeem                   p.dat
+
+Bases:
+N = Navy
+P = Okgarra Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+07 Na = Non-Aligned
+13 Os = Okgarra Settlements
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Abees SECTOR: Beesee Sector
+#
+# Jump-routes
+$0810 0911 1 1
+#
+$0207 3007 -1 0 10
+$0207 0609 0 0 10
+$0609 1008 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Tieer         0207 A100002-C    Lo Ni Va           604 Na
+A-2           0209 C7836AE-3  S Ni                 304 Na
+A-3           0307 D794545-5    Ag Ni              813 Na
+A-4           0501 C231647-A    Na Ni Po           415 Na
+A-5           0606 C300559-8  S Ni Va              302 Na
+Laleesa       0609 B8A7220-B  S Fl Lo Ni           212 Na
+A-7           0707 C455546-A    Ag Ni              514 Na
+A-8           0810 A100003-C  N Lo Ni Va           713 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Beeceen SECTOR: Beesee Sector
+#
+# Jump-routes
+#
+$1008 0609 -1 0 10
+$1008 1407 0 0 10
+$1407 1807 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Egreese       1008 C555433-5  S Ni                 704 Na
+B-2           1105 C84A78B-8    Wa                 611 Na
+B-3           1110 E655202-7    Lo Ni              514 Na
+B-4           1209 B473796-7  N                    714 Na
+B-5           1301 D553697-2  S Ni Po              203 Na
+Ieeska        1407 A7A2654-C    Fl Ni              212 Na
+B-7           1504 D75A343-4    Lo Ni Wa           514 Na
+B-8           1506 D240661-2    De Ni Po           603 Na
+B-9           1605 E549888-7                       613 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ceedee SECTOR: Beesee Sector
+#
+# Jump-routes
+#
+$1807 1407 -1 0 10
+$1807 2010 0 0 10
+$2010 2311 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1702 C757002-8    Lo Ni              600 Na
+C-2           1805 C150301-A    De Lo Ni Po        505 Na
+Mollees       1807 C7A3520-A    Fl Ni              804 Na
+Ckeetees      2010 B150311-D  N De Lo Ni Po        213 Na
+C-5           2110 C9A6567-7    Fl Ni              414 Na
+C-6           2305 B737532-C  S Ni                 604 Na
+C-7           2306 A5A6656-E    Fl Ni              400 Na
+C-8           2402 C97A625-8    Ni Wa              803 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Deefleen SECTOR: Beesee Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2509 C423300-8    Lo Ni Po           603 Na
+D-2           2605 D896667-6    Ag Ni              414 Na
+D-3           2701 C987868-4    Ri                 522 Na
+D-4           2902 B764545-6  2 Ag Ni              124 Na
+D-5           2904 C250424-5    De Ni Po           501 Na
+D-6           3210 E442444-7    Ni Po              503 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ebbees SECTOR: Beesee Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0111 B638898-A  N                    703 Na
+E-2           0114 A546100-A  N Lo Ni              314 Na
+E-3           0119 C67999A-A    Hi In              115 Na
+E-4           0319 C78A521-9  S Ni Wa              914 Na
+E-5           0412 D547415-5  S Ni                 124 Na
+E-6           0616 D200588-8  S Ni Va              304 Na
+E-7           0814 C233400-9    Ni Po              105 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Fueece SECTOR: Beesee Sector
+#
+# Jump-routes
+$0911 0810 -1 -1
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0911 C786300-6  S Lo Ni              404 Na
+F-2           0917 C7A1341-5    Fl Lo Ni           413 Na
+F-3           1220 C100496-8    Ni Va              101 Na
+F-4           1315 C3008BC-8    Na Va              714 Na
+F-5           1417 B98A654-D  N Ni Ri Wa           515 Na
+F-6           1616 E86A446-8    Ni Wa              114 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Gheebeen SECTOR: Beesee Sector
+#
+# Jump-routes
+#
+$2311 2010 0 -1 10
+$2311 2413 0 0 10
+$2413 2517 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1718 C536989-9  S Hi In              904 Na
+G-2           1819 D210554-9    Ni                 405 Na
+G-3           2015 C7A059A-5  S De Ni              701 Na
+G-4           2119 B555874-9  S                 B  500 Na
+Ghranran      2311 C977212-5    Lo Ni              714 Na
+Fhatluu       2413 E545102-8    Lo Ni              624 Na
+G-7           2414 E210465-8    Ni                 124 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Heebour SECTOR: Beesee Sector
+#
+# Jump-routes
+#
+$2517 2413 -1 0 10
+$2517 2520 0 0 10
+$2520 2623 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2514 E888531-7    Ag Ni              224 Na
+Jaseev        2517 E6A1101-8    Fl Lo Ni           702 Na
+Xeesee        2520 B578565-7  N Ag Ni              101 Na
+H-4           2720 D558322-2    Lo Ni              523 Na
+H-5           2813 BA6A015-9    Lo Ni Wa           414 Na
+H-6           2912 E320520-4    De Ni Po           403 Na
+H-7           2920 C74A767-8    Wa                 914 Na
+H-8           3014 D5559DE-6  S Hi                 222 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ibeecsan SECTOR: Beesee Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0429 C6749AD-9  S Hi In              704 Na
+I-2           0823 C86A486-A  S Ni Wa              823 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jeebeecee SECTOR: Beesee Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0929 D594131-3  S Lo Ni              213 Na
+J-2           1023 C62668A-9    Ni                 910 Na
+J-3           1029 C100320-C  S Lo Ni Va           902 Na
+J-4           1122 B400546-8  N Ni Va              824 Na
+J-5           1123 C374523-5    Ag Ni              304 Na
+J-6           1125 C234322-7  S Lo Ni              323 Na
+J-7           1130 D868527-2  S Ag Ni              100 Na
+J-8           1227 C53635A-7    Lo Ni              802 Na
+J-9           1321 D200998-8    Hi Na Va           602 Na
+J-10          1324 C450642-5  S De Ni Po           502 Na
+J-11          1427 D9A5445-4  S Fl Ni              211 Na
+J-12          1429 E450322-7    De Lo Ni Po        902 Na
+J-13          1622 E242363-3    Lo Ni Po           704 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Keeleec SECTOR: Beesee Sector
+#
+# Jump-routes
+#
+$2428 2626 1 0 10
+$2428 2532 1 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1927 B554862-8                       803 Na
+K-2           2021 C535556-8    Ni                 814 Na
+K-3           2025 B423265-C    Lo Ni Po           211 Na
+K-4           2029 C75A653-A  P Ni Wa              214 Os
+K-5           2128 AAE7355-B    Fl Lo Ni           804 Na
+K-6           2224 B769638-8  2 Ni                 804 Na
+Kollodees     2428 D40236B-9  S Ic Lo Ni Va        312 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lebeeceet SECTOR: Beesee Sector
+#
+# Jump-routes
+#
+$2623 2520 0 -1 10
+$2623 2626 0 0 10
+$2626 2428 -1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Loorel        2623 B476559-B  N Ag Ni              601 Na
+Annyaas       2626 C231511-8  S Ni Po              504 Na
+L-3           3025 E545697-2    Ag Ni              200 Na
+L-4           3027 B77A010-7  N Lo Ni Wa           622 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Meebeec SECTOR: Beesee Sector
+#
+# Jump-routes
+#
+$0733 1134 1 0 2
+$0733 0331 0 0 2
+$0331 3129 -1 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0135 A77A332-E  N Lo Ni Wa           823 Na
+M-2           0137 C454254-7  S Lo Ni              414 Na
+Meerita       0331 B95A365-D  N Lo Ni Wa           114 Na
+M-4           0535 E6A39AA-6    Fl Hi              500 Na
+M-5           0631 C4427AC-4    Po                 334 Na
+Kreendee      0733 CAB6768-9    Fl              A  805 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Neeceeb SECTOR: Beesee Sector
+#
+# Jump-routes
+#
+$1438 1401 0 1 2
+$1438 1536 0 0 2
+$1536 1134 0 0 2
+$1134 0733 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0940 C75367B-7    Ni Po           B  605 Na
+Sulliasa      1134 B200422-8    Ni Va              101 Na
+N-3           1332 C7A2675-8    Fl Ni           B  304 Na
+N-4           1339 A300110-E    Lo Ni Va           214 Na
+Ninnga        1438 C230520-8  S De Ni Po           503 Na
+Leieeli       1536 C566565-9  P Ag Ni              304 Os
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Obeec SECTOR: Beesee Sector
+#
+# Jump-routes
+#
+$1835 2032 0 0 13
+$2032 2233 0 0 13
+$1835 2233 0 0 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Okgarra       1835 A11099C-H  P Hi Na Cx           764 Os
+O-2           1933 E246110-3    Lo Ni              412 Os
+O-3           1939 C9B6355-B    Fl Lo Ni        A  105 Os
+O-4           2032 B65A000-D    Ba Lo Ni Wa        503 Os
+O-5           2138 C7698CA-4  P                    522 Os
+O-6           2233 A666650-8    Ag Ni Ri           105 Os
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Peebeem SECTOR: Beesee Sector
+#
+# Jump-routes
+#
+$2532 2428 -1 -1 10
+$2532 2735 0 0 10
+$2735 3036 0 0 10
+$3036 3140 0 0 10
+$3140 3104 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Feesee        2532 E764661-5    Ag Ni Ri           104 Na
+P-2           2539 C755426-8  S Ni                 300 Na
+Noreewee      2735 C687A85-C    Hi                 402 Na
+P-4           2932 A564311-D  S Lo Ni              624 Na
+P-5           3033 E592A7B-5    Hi In           B  110 Na
+Jaseenta      3036 D766765-3  S Ag Ri              204 Na
+P-7           3132 C463ACA-8  S Hi                 602 Na
+Colessa       3140 E334244-7    Lo Ni              913 Na
+P-9           3233 E647754-3    Ag                 403 Na
+P-10          3234 B86A9AA-9  N Hi Wa              403 Na
+P-11          3236 C665432-5  S Ni                 904 Na
+

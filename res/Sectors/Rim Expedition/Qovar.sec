@@ -1,0 +1,455 @@
+Qovar Sector
+
+A: Aqovar                    a.dat
+B: Baqova                    b.dat
+C: Claqov                    c.dat
+D: Draqovar                  d.dat
+E: Eqova                     e.dat
+F: Fraqov                    f.dat
+G: Glaqovar                  g.dat
+H: Haqova                    h.dat
+I: Iqov                      i.dat
+J: Jaqovar                   j.dat
+K: Klaqova                   k.dat
+L: Laqov                     l.dat
+M: Maqovar                   m.dat
+N: Naqova                    n.dat
+O: Oaqov                     o.dat
+P: Praqovar                  p.dat
+
+Bases:
+D = Drakas Navy
+E = Drakas Scout
+I = Indiari Military
+N = Navy
+O = Oloom Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+12 Dl = Drakas League
+13 Is = Indiari State
+07 Na = Non-Aligned
+14 Od = Oloom Dynasty
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Aqovar SECTOR: Qovar Sector
+#
+# Jump-routes
+$0704 0806 0 0
+$0806 1008 1 0
+#
+$0704 0907 1 0 2
+$0704 0501 0 0 2
+$0501 0239 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Gaennja       0501 B3279BE-C  S Hi In              202 Na
+A-2           0703 X886541-0    Ag              R  703 Na
+Akrall        0704 C745678-4  S Ag Ni           B  514 Na
+A-4           0806 A673103-C    Lo Ni              313 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Baqova SECTOR: Qovar Sector
+#
+# Jump-routes
+$1008 0806 -1 0
+#
+$0907 0911 0 1 2
+$0907 0704 -1 0 2
+$1509 1911 1 1 12
+$1509 1512 0 1 12
+$1602 1701 1 0 14
+$1602 1702 1 0 14
+$1509 1709 1 0 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Bibavea       0907 B12059E-9  S De Ni Po           301 Na
+B-2           1002 A75A254-D  N Lo Ni Wa           923 Na
+B-3           1007 C512336-A    Ic Lo Ni           604 Na
+B-4           1008 A855ABE-C    Hi                 302 Na
+B-5           1104 C878567-7  S Ag Ni              603 Na
+B-6           1509 B5608C7-7    De                 604 Dl
+B-7           1602 C482464-8    Ni                 403 Od
+B-8           1609 E569112-3    Lo Ni              214 Dl
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Claqov SECTOR: Qovar Sector
+#
+# Jump-routes
+#
+$2403 2540 1 -1 10
+$2403 2407 0 0 10
+$2407 2511 1 1 10
+$2407 2707 1 0 12
+$2407 2007 0 0 12
+$2007 1911 0 1 12
+$2403 2504 1 0 12
+$1701 1738 0 -1 14
+$1701 1702 0 0 14
+$1701 1602 -1 0 14
+$1702 1602 -1 0 14
+$2007 2006 0 0 12
+$2007 1709 0 0 12
+$1709 1509 -1 0 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1701 B250510-A  O De Ni Po           503 Od
+C-2           1702 C000688-7  O As Na Ni           210 Od
+C-3           1709 C797543-6  D Ag Ni              304 Dl
+Drakas Beta   1908 B551AEJ-E    Hi Po           R  701 Dl
+C-5           2006 C5836BB-8  D Ni                 713 Dl
+C-6           2007 B56579B-5    Ag Ri              912 Dl
+C-7           2208 X574665-0    Ag              R  210 Dl
+Clihanna      2403 C510626-6    Na Ni              904 Dl
+Slntiun       2407 B100633-9  D Na Ni Va           613 Dl
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Draqovar SECTOR: Qovar Sector
+#
+# Jump-routes
+#
+$2707 2907 0 0 12
+$2907 3004 0 0 12
+$2707 2504 0 0 12
+$2707 2407 -1 0 12
+$2504 2540 0 -1 12
+$2504 2403 -1 0 12
+$3004 3002 0 0 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2504 B32356A-D    Ni Po              414 Dl
+D-2           2506 E729445-5    Ni                 403 Dl
+D-3           2606 C625323-9  E Lo Ni              704 Dl
+D-4           2704 E310489-4    Ni                 704 Dl
+Drakas Alpha  2707 A100100-H  E Lo Ni Va Cx        324 Dl
+D-6           2907 A443210-B  E Lo Ni Po           415 Dl
+D-7           3002 C225400-C    Ni                 905 Dl
+D-8           3004 B7A7753-A  D Fl                 424 Dl
+D-9           3201 C441000-A  S Ba Lo Ni Po        105 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Eqova SECTOR: Qovar Sector
+#
+# Jump-routes
+#
+$0718 0721 0 1 13
+$0718 1020 1 0 2
+$0814 0718 0 0 2
+$0814 0911 1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0217 B765759-B  S Ag Ri              313 Na
+E-2           0513 B445676-7  N Ag Ni           B  422 Na
+E-3           0615 E9A39B9-8    Fl Hi              623 Na
+E-4           0717 C7A35A7-6    Fl Ni              401 Na
+Hargarat      0718 A9B6225-E  N Fl Lo Ni        A  703 Na
+Eshell        0814 C8A4420-6  S Fl Ni              824 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: FRaqov SECTOR: Qovar Sector
+#
+# Jump-routes
+#
+$0911 0907 0 -1 2
+$1512 1509 0 -1 12
+$1512 1514 0 0 12
+$1514 1415 0 0 12
+$1415 1614 0 0 12
+$1614 1514 0 0 12
+$1614 1512 0 0 12
+$1020 0721 -1 1 13
+$1020 1122 0 1 2
+$1020 0718 -1 0 2
+$0911 0814 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Flivouh       0911 C531567-A  S Ni Po              302 Na
+Mirama        1020 C437650-A    Ni                 502 Na
+F-3           1114 D554259-5  S Lo Ni              601 Na
+F-4           1319 DAA8745-7  S Fl                 124 Na
+F-5           1415 B221666-A  D Na Ni Po           704 Dl
+F-6           1512 C547125-5    Lo Ni              403 Dl
+F-7           1514 B223447-B  E Ni Po              411 Dl
+F-8           1614 A9A6365-D    Fl Lo Ni           423 Dl
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Glaqovar SECTOR: Qovar Sector
+#
+# Jump-routes
+#
+$1911 2007 0 -1 12
+$1911 1509 -1 -1 12
+$1911 2211 0 0 12
+$2211 2313 0 0 12
+$2313 2714 1 0 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1911 A250100-B  E De Lo Ni Po        224 Dl
+G-2           1916 C357755-7  S Ag                 204 Na
+G-3           1918 D360697-3  S De Ni Ri           202 Na
+G-4           1919 D879048-7    Lo Ni              504 Na
+G-5           2115 X529414-0                    R  425 Na
+G-6           2211 C632230-5    Lo Ni Po           713 Dl
+G-7           2219 C546ADI-5    Hi In           A  813 Na
+G-8           2313 C000345-9    As Lo Ni           502 Dl
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Haqova SECTOR: Qovar Sector
+#
+# Jump-routes
+#
+$2511 2407 -1 -1 10
+$2511 2714 0 0 10
+$2714 3116 0 0 10
+$3116 0318 1 0 10
+$2714 2313 -1 0 12
+$2714 2715 0 0 12
+$3116 3118 0 0 12
+$3118 3020 0 0 12
+$3020 2920 0 0 12
+$2920 2921 0 1 12
+$3020 2921 0 1 12
+$2920 2818 0 0 12
+$2818 2715 0 0 12
+$2714 3014 0 0 12
+$3014 3116 0 0 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Hinnavuun     2511 C000410-C  E As Ni              521 Dl
+H-2           2517 D300644-6  S Na Ni Va           514 Na
+H-3           2520 B21077C-7  N Na              B  100 Na
+H-4           2615 X431623-0    Po              R  604 Na
+Drakas Gamma  2714 A100535-G  D Ni Va Cx           302 Dl
+H-6           2715 C30068A-A  D Na Ni Va           604 Dl
+H-7           2719 C13047A-7    De Ni Po        B  624 Na
+H-8           2720 X896868-0                    R  101 Na
+H-9           2818 C443883-7    Po                 122 Dl
+Drakas Delta  2920 A544AAC-F    Hi In              103 Dl
+H-11          3013 E554500-3    Ag Ni              302 Dl
+H-12          3014 C868200-7    Lo Ni              413 Dl
+H-13          3020 A747162-D    Lo Ni              501 Dl
+Kalloppa      3116 B858425-7  E Ni                 112 Dl
+H-15          3118 C732525-A  D Ni Po              704 Dl
+H-16          3212 C5779AE-8    Hi In              303 Na
+H-17          3215 C579000-7  E Ba Lo Ni           924 Dl
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Iqov SECTOR: Qovar Sector
+#
+# Jump-routes
+#
+$0721 0922 1 0 13
+$0721 0718 0 -1 13
+$0721 1020 1 -1 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0226 C5575AD-5  S Ag Ni              222 Na
+I-2           0321 E160475-8    De Ni           B  113 Na
+I-3           0322 C237133-A    Lo Ni              101 Na
+I-4           0629 B474426-9  N Ni                 400 Na
+Indiari       0721 B444A63-F  S Hi In              613 Na
+I-6           0828 E10047A-5    Ni Va           B  704 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jaqovar SECTOR: Qovar Sector
+#
+# Jump-routes
+$1324 1426 0 0
+#
+$1324 1724 1 0 2
+$1324 1122 0 0 2
+$1122 1020 0 -1 2
+$0922 0721 -1 0 13
+$1122 1020 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0922 C000310-C  S As Lo Ni           920 Na
+J-2           0923 E427312-4    Lo Ni              502 Na
+J-3           0930 B765355-7    Lo Ni              303 Na
+J-4           1027 C869630-4    Ni                 503 Na
+Bajeena       1122 B9C5777-9  S Fl              A  101 Na
+J-6           1123 C381233-5    Lo Ni              500 Na
+J-7           1127 B78A644-7  N Ni Ri Wa           824 Na
+J-8           1224 X699999-0    Hi In           R  700 Na
+Jashac        1324 B544430-9    Ni                 813 Na
+J-10          1328 E665AAB-5    Hi                 300 Na
+J-11          1426 A557446-B    Ni                 504 Na
+J-12          1529 C657697-6    Ag Ni              811 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Klaqova SECTOR: Qovar Sector
+#
+# Jump-routes
+#
+$2424 2625 1 0 2
+$2424 2023 0 0 2
+$2023 1724 0 0 2
+$1724 1324 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Averga        1724 A5038BA-8    Ic Na Va           903 Na
+Gernoon       2023 B8A1666-9  N Fl Ni              401 Na
+K-3           2121 C477574-7  S Ag Ni           B  705 Na
+K-4           2227 C231434-6  S Ni Po              903 Na
+K-5           2329 B463202-C  N Lo Ni              523 Na
+Kojonn        2424 C200555-B  S Ni Va              823 Na
+K-7           2430 D432A88-9  S Hi In Na Po        803 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Laqov SECTOR: Qovar Sector
+#
+# Jump-routes
+#
+$2827 2931 0 1 2
+$2827 2625 0 0 2
+$2625 2424 -1 0 2
+$2921 2920 0 -1 12
+$2921 3020 0 -1 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2526 B87A214-D  N Lo Ni Wa           911 Na
+Silonn        2625 C330237-7    De Lo Ni Po        105 Na
+La Mara       2827 C574100-7  S Lo Ni              924 Na
+L-4           2921 B331656-D    Na Ni Po           631 Dl
+L-5           3021 EAC3120-3    Fl Lo Ni        A  920 Dl
+L-6           3127 D400301-8  S Lo Ni Va           902 Na
+L-7           3129 B240ACC-B  2 De Hi In Po        323 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Maqovar SECTOR: Qovar Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0131 C100101-8    Lo Ni Va           713 Na
+M-2           0133 C381436-7    Ni                 900 Na
+M-3           0139 CABA144-C    Fl Lo Ni Wa     A  723 Na
+M-4           0232 C000566-A    As Ni              200 Na
+M-5           0633 B42578A-9  S                    604 Na
+M-6           0637 D683110-4    Lo Ni              904 Na
+M-7           0731 C570400-5  S De Ni              323 Na
+M-8           0734 C251346-7  S Lo Ni Po           220 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Naqova SECTOR: Qovar Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0933 C766453-5    Ni                 112 Na
+N-2           0936 C325520-8    Ni                 901 Na
+N-3           0938 B7858AD-7  S                    305 Na
+N-4           0939 E555964-5    Hi                 704 Na
+N-5           1031 C425586-9  S Ni                 604 Na
+N-6           1033 D664655-7  S Ag Ni Ri           911 Na
+N-7           1138 C331556-A    Ni Po              722 Na
+N-8           1338 E786432-2    Ni                 222 Na
+N-9           1531 C386476-8    Ni              B  803 Na
+N-10          1536 E352358-4    Lo Ni Po           404 Na
+N-11          1632 E0007CB-8    As Na              305 Na
+N-12          1633 E332766-8    Na Po              705 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Oaqov SECTOR: Qovar Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1939 A321663-B    Na Ni Po           904 Na
+O-2           1940 C345445-9  S Ni                 904 Na
+O-3           2034 C223778-7    Na Po           B  132 Na
+O-4           2140 C8D6957-9    Fl Hi              514 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Praqovar SECTOR: Qovar Sector
+#
+# Jump-routes
+#
+$3237 0339 1 0 2
+$3237 3034 0 0 2
+$3034 2931 0 0 2
+$2931 2827 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2834 C646579-9    Ag Ni           B  632 Na
+P-2           2836 D000557-B    As Ni              404 Na
+P-3           2840 C7B1403-A  S Fl Ni           A  304 Na
+Pennua        2931 D654451-8    Ni                 503 Na
+Kashawn       3034 C67A567-B    Ni Wa              105 Na
+P-6           3232 C370668-7    De Ni              222 Na
+Farmalite     3237 D243123-6    Lo Ni Po           905 Na
+P-8           3240 B100656-B  S Na Ni Va           504 Na
+

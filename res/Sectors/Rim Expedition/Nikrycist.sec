@@ -1,0 +1,363 @@
+Nikrycist Sector
+
+A: Anikry                    a.dat
+B: Bikryci                   b.dat
+C: Cistikry                  c.dat
+D: Danikry                   d.dat
+E: Enikryc                   e.dat
+F: Frakry                    f.dat
+G: Ghocist                   g.dat
+H: Histanikry                h.dat
+I: Ikrycist                  i.dat
+J: Janikra                   j.dat
+K: Krycist                   k.dat
+L: Lanikran                  l.dat
+M: Macistin                  m.dat
+N: Nikrin                    n.dat
+O: Onika                     o.dat
+P: Placisty                  p.dat
+
+Bases:
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Anikry SECTOR: Nikrycist Sector
+#
+# Jump-routes
+$0601 0702 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0106 E9C5512-4    Fl Ni           A  404 Na
+A-2           0305 E79A000-5    Ba Lo Ni Wa        712 Na
+A-3           0403 D775443-2  S Ni                 305 Na
+A-4           0405 E86A332-4    Lo Ni Wa           604 Na
+A-5           0601 C6976B8-5  S Ag Ni              802 Na
+A-6           0605 C746854-9                       303 Na
+A-7           0702 A333566-E    Ni Po              410 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Bikryci SECTOR: Nikrycist Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           1201 C000544-C  S As Ni              310 Na
+B-2           1408 C798343-4    Lo Ni              913 Na
+B-3           1503 A325410-A  S Ni                 322 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Cistikry SECTOR: Nikrycist Sector
+#
+# Jump-routes
+#
+$2406 2607 1 0 2
+$2406 2104 0 0 2
+$2104 1702 0 0 2
+$1702 1540 -1 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Ciminni       1702 C8B1520-A    Fl Ni           A  511 Na
+C-2           1804 C320A64-9    De Hi In Na Po     701 Na
+Bowcarra      2104 C656146-5    Lo Ni              321 Na
+Cagnee        2406 E7B767A-4    Fl Ni           A  511 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Danikry SECTOR: Nikrycist Sector
+#
+# Jump-routes
+#
+$3203 3040 0 -1 10
+$3203 0205 1 0 10
+$2910 3113 0 1 2
+$2910 2607 0 0 2
+$2607 2406 -1 0 2
+$2910 2709 0 0 11
+$2910 2712 0 1 11
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Ritoona       2607 C463488-5    Ni                 802 Na
+D-2           2609 C332551-8    Ni Po              503 Na
+D-3           2709 C235553-A    Ni                 803 Na
+D-4           2808 C400013-7    Lo Ni Va           913 Na
+Voulupp       2910 A6A2420-E  S Fl Ni              403 Na
+D-6           3002 C779330-8    Lo Ni              213 Na
+D-7           3102 C664222-8  S Lo Ni              810 Na
+D-8           3104 B69A411-8  S Ni Wa              302 Na
+Sugarr        3203 C455736-4    Ag                 913 Na
+D-10          3205 B77A778-B    Wa              B  214 Na
+D-11          3206 C2008BF-6    Na Va              402 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Enikryc SECTOR: Nikrycist Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0114 E440485-7    De Ni Po           404 Na
+E-2           0218 X538610-3                    R  604 Na
+E-3           0311 B795269-6  2 Lo Ni              904 Na
+E-4           0313 C657AEG-A    Hi              A  303 Na
+E-5           0314 C332352-7    Lo Ni Po           422 Na
+E-6           0413 C304378-8  S Ic Lo Ni Va     B  423 Na
+E-7           0419 B243432-A    Ni Po              114 Na
+E-8           0514 C6A4542-6    Fl Ni              325 Na
+E-9           0616 E380867-7    De Ri              313 Na
+E-10          0718 C252430-5  S Ni Po              703 Na
+E-11          0816 D410301-9  S Lo Ni              322 Na
+E-12          0818 B795379-8  N Lo Ni           B  200 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Frakry SECTOR: Nikrycist Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0911 CA9A8B9-6  S Wa                 401 Na
+F-2           0915 B747467-A  N Ni                 504 Na
+F-3           0918 E386300-4    Lo Ni              403 Na
+F-4           1013 B452866-7    Po                 704 Na
+F-5           1019 C877635-8    Ag Ni              823 Na
+F-6           1118 E599100-8    Lo Ni              804 Na
+F-7           1119 C483530-7  S Ni                 604 Na
+F-8           1219 C42695A-8    Hi In              504 Na
+F-9           1312 D20048A-4    Ni Va              115 Na
+F-10          1315 B996724-7    Ag                 914 Na
+F-11          1317 C473679-8    Ni              B  703 Na
+F-12          1411 C412211-6    Ic Lo Ni           104 Na
+F-13          1416 B110521-E  S Ni                 500 Na
+F-14          1517 E8C8423-6    Fl Ni           A  303 Na
+F-15          1614 B351443-A  N Ni Po              825 Na
+F-16          1616 C7469CE-7  S Hi In              913 Na
+F-17          1617 C130654-C    De Na Ni Po        613 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ghocist SECTOR: Nikrycist Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1911 C767565-9  S Ag Ni              323 Na
+G-2           2218 D6A168B-4  S Fl Ni              504 Na
+G-3           2320 X536200-1    Lo              R  902 Na
+G-4           2411 D796977-4    Hi In           B  503 Na
+G-5           2419 C635A89-A    Hi In              102 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Histanikry SECTOR: Nikrycist Sector
+#
+# Jump-routes
+#
+$3119 3122 0 1 2
+$3119 3216 0 0 2
+$3216 3113 0 0 2
+$3113 2910 0 -1 2
+$2712 2910 0 -1 11
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2712 C775535-9  S Ag Ni              613 Na
+Jiearva       3113 C779616-4  S Ni                 423 Na
+Hiliog        3119 C525246-9    Lo Ni              604 Na
+Frotto        3216 D1008DF-4  S Na Va              804 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ikrycist SECTOR: Nikrycist Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0425 A7867CF-C  2 Ag                 824 Na
+I-2           0621 C768002-6    Lo Ni              412 Na
+I-3           0625 C20235A-B    Ic Lo Ni Va        414 Na
+I-4           0629 D6B2732-7  S Fl              A  204 Na
+I-5           0630 B120897-9  S De Na Po           903 Na
+I-6           0822 C563598-7    Ni                 511 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Janikra SECTOR: Nikrycist Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           1521 C8A7344-5  S Fl Lo Ni           414 Na
+J-2           1527 C210200-8  S Lo Ni              822 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Krycist SECTOR: Nikrycist Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1821 D4329A7-A    Hi In Na Po        500 Na
+K-2           1830 E787384-6    Lo Ni              500 Na
+K-3           2226 D332400-5  S Ni Po              800 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lanikran SECTOR: Nikrycist Sector
+#
+# Jump-routes
+#
+$3130 3033 0 1 2
+$3130 3126 0 0 2
+$3126 3122 0 0 2
+$3122 3119 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2528 C522833-8  S Na Po              504 Na
+L-2           2626 C2016AC-7    Ic Na Ni Va        914 Na
+L-3           2928 A556845-A  N                    215 Na
+Lynusa        3122 D98A331-5    Lo Ni Wa           624 Na
+Magarra       3126 C7759AB-A  S Hi In              804 Na
+Synca         3130 C400200-8    Lo Ni Va           213 Na
+L-7           3228 B255212-A    Lo Ni              823 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Macistin SECTOR: Nikrycist Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0138 A540210-9    De Lo Ni Po        302 Na
+M-2           0233 C222122-B    Lo Ni Po           925 Na
+M-3           0331 C7A2102-A  S Fl Lo Ni           903 Na
+M-4           0534 D534746-4  S                    823 Na
+M-5           0638 E753778-6    Po              B  902 Na
+M-6           0740 E510401-7    Ni                 113 Na
+M-7           0836 B666596-7    Ag Ni              404 Na
+M-8           0840 C351000-6    Ba Lo Ni Po        603 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nikrin SECTOR: Nikrycist Sector
+#
+# Jump-routes
+$1434 1533 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0937 C77A586-6    Ni Wa              604 Na
+N-2           1232 C522AB7-A    Hi In Na Po        113 Na
+N-3           1337 B774200-C  N Lo Ni              610 Na
+N-4           1434 A455566-D  2 Ag Ni              613 Na
+N-5           1439 B565310-6    Lo Ni              100 Na
+N-6           1533 B335137-B    Lo Ni              900 Na
+N-7           1635 C265232-6    Lo Ni              600 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Onika SECTOR: Nikrycist Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1939 E878A78-A    Hi In           B  202 Na
+O-2           2031 D85A77B-5  S Wa              B  620 Na
+O-3           2036 C233530-6    Ni Po              103 Na
+O-4           2136 E492300-8    Lo Ni              604 Na
+O-5           2139 C412630-8  S Ic Na Ni           714 Na
+O-6           2237 CAB9445-B    Fl Ni           A  805 Na
+O-7           2240 C120886-6    De Na Po           104 Na
+O-8           2334 D879400-5  S Ni                 613 Na
+O-9           2432 BA9A021-B    Lo Ni Wa           810 Na
+O-10          2439 C000465-A    As Ni              502 Na
+O-11          2440 X767101-2    Lo              R  904 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Placisty SECTOR: Nikrycist Sector
+#
+# Jump-routes
+#
+$3236 0239 1 0 2
+$3236 3033 0 0 2
+$3033 3130 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2533 E749754-5                       402 Na
+P-2           2735 E232521-4    Ni Po              502 Na
+P-3           2740 E300847-8    Na Va              423 Na
+P-4           2834 C4327CG-A    Na Po              502 Na
+P-5           2840 C97A757-9    Wa                 712 Na
+Plinna        3033 C586434-9    Ni                 104 Na
+Injaer        3236 B110500-B  N Ni                 703 Na
+

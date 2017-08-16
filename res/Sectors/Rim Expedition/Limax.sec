@@ -1,0 +1,371 @@
+Limax Sector
+
+A: Alima                     a.dat
+B: Blimax                    b.dat
+C: Clima                     c.dat
+D: Dolixx                    d.dat
+E: Ellimm                    e.dat
+F: Fimamax                   f.dat
+G: Gholinax                  g.dat
+H: Hilima                    h.dat
+I: Imaxaaz                   i.dat
+J: Jermix                    j.dat
+K: Kilomax                   k.dat
+L: Lawax                     l.dat
+M: Miwax                     m.dat
+N: Nokrax                    n.dat
+O: Olimarx                   o.dat
+P: Puhlax                    p.dat
+
+Bases:
+A = Allax Military
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+14 Ac = Allax Commons
+13 Bs = Balanax State
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Alima SECTOR: Limax Sector
+#
+# Jump-routes
+#
+$0802 1203 1 0 2
+$0802 0839 0 -1 2
+$0602 0839 0 -1 14
+$0602 0802 0 0 14
+$0802 0806 0 0 14
+$0806 0807 0 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0102 C210884-5    Na                 533 Na
+A-2           0208 X32579D-0                    R  134 Na
+A-3           0506 C354876-7                    B  502 Na
+A-4           0509 C352596-7  S Ni Po              103 Na
+Allax         0602 B66AAAD-G  A Hi Wa Cx           413 Ac
+Alkacsada     0802 C673334-9    Lo Ni              812 Ac
+A-7           0806 A100201-D    Lo Ni Va           605 Ac
+A-8           0807 B234544-D  A Ni                 120 Ac
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Blimax SECTOR: Limax Sector
+#
+# Jump-routes
+$1609 1808 1 0
+#
+$1406 1808 1 0 2
+$1406 1203 0 0 2
+$1203 0802 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           1009 C55598C-A    Hi                 810 Na
+B-2           1103 E44148B-4    Ni Po              923 Na
+B-3           1201 C300756-6    Na Va              700 Na
+Bhutriool     1203 C548756-8    Ag                 502 Na
+Balanax       1207 B200A77-G    Hi Na Va Cx     B  423 Bs
+B-6           1302 E328511-9    Ni                 201 Na
+B-7           1307 C63A320-8  S Lo Ni Wa           515 Na
+Bacuulia      1406 E201678-4    Ic Na Ni Va     B  404 Na
+B-9           1502 E666556-6    Ag Ni              414 Na
+B-10          1609 B310130-9    Lo Ni              920 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Clima SECTOR: Limax Sector
+#
+# Jump-routes
+$1808 1609 -1 0
+#
+$2210 2212 0 1 2
+$2210 1808 0 0 2
+$1808 1406 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Cambonia      1808 A225578-B  N Ni              B  602 Na
+C-2           2105 B343525-9    Ni Po              110 Na
+C-3           2207 B0008AF-C  2 As Na              604 Na
+Ul-Reet       2210 C694588-5    Ag Ni              401 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Dolixx SECTOR: Limax Sector
+#
+# Jump-routes
+#
+$3102 3039 0 -1 10
+$3102 0105 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2606 X444440-0                    R  710 Na
+D-2           2803 C36095A-9  S De Hi              722 Na
+D-3           2909 E775575-2    Ag Ni           B  723 Na
+Jeweel        3102 B56A321-C  N Lo Ni Wa           902 Na
+D-5           3103 C220466-9    De Ni Po           115 Na
+D-6           3110 B95A878-C  N Wa              B  704 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ellimm SECTOR: Limax Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0217 B9A4586-B    Fl Ni              824 Na
+E-2           0220 C323403-8  S Ni Po              304 Na
+E-3           0518 B342557-8    Ni Po              824 Na
+E-4           0814 C503564-5    Ic Ni Va           804 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Fimamax SECTOR: Limax Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0917 E242521-5    Ni Po              303 Na
+F-2           0919 C9B5658-6    Fl Ni           A  304 Na
+F-3           1112 C649772-9                    B  403 Na
+F-4           1214 C9C3799-8    Fl              A  503 Na
+F-5           1215 E58876A-2    Ag Ri              402 Na
+F-6           1311 B210674-7    Na Ni           B  304 Na
+F-7           1318 E578642-6    Ag Ni              304 Na
+F-8           1416 C463853-7  S Ri                 501 Na
+F-9           1513 C79589A-8                       523 Na
+F-10          1611 C2016A6-7    Ic Na Ni Va        104 Na
+F-11          1618 C7A2325-9    Fl Lo Ni           603 Na
+F-12          1619 E77A574-5    Ni Wa           B  103 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Gholinax SECTOR: Limax Sector
+#
+# Jump-routes
+#
+$2418 2522 1 1 2
+$2418 2315 0 0 2
+$2315 2212 0 0 2
+$2212 2210 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1712 D559565-5    Ni                 713 Na
+Hawertia      2212 B403455-C  2 Ic Ni Va           501 Na
+G-3           2220 C210121-9    Lo Ni              414 Na
+Gahrmore      2315 C4589B9-9    Hi                 724 Na
+G-5           2317 C335302-7    Lo Ni              403 Na
+G-6           2412 C100885-A  S Na Va              304 Na
+G-7           2413 D76A246-7  S Lo Ni Wa           101 Na
+G-8           2416 B99999A-C  N Hi In              904 Na
+Vaggahi       2418 E130211-7    De Lo Ni Po        523 Na
+G-10          2419 C66A998-A    Hi Wa              530 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hilima SECTOR: Limax Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2512 C667000-6    Ba Lo Ni           303 Na
+H-2           2514 B779040-8    Lo Ni              310 Na
+H-3           2819 C763ABE-8    Hi                 202 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Imaxaaz SECTOR: Limax Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0422 D376667-7    Ag Ni              705 Na
+I-2           0423 B67866A-A    Ag Ni              200 Na
+I-3           0424 C78768A-7    Ag Ni Ri           103 Na
+I-4           0529 C300522-7    Ni Va              103 Na
+I-5           0725 A4039CD-B    Hi Ic Na Va        910 Na
+I-6           0728 E7676AD-5    Ag Ni              115 Na
+I-7           0827 D22169E-7  S Na Ni Po           304 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jermix SECTOR: Limax Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0922 C679444-6  S Ni                 305 Na
+J-2           0925 C364578-6    Ag Ni           B  724 Na
+J-3           1129 B482588-8  2 Ni                 424 Na
+J-4           1522 A669410-B    Ni                 703 Na
+J-5           1525 C768853-4    Ri                 603 Na
+J-6           1526 A454514-D    Ag Ni              122 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kilomax SECTOR: Limax Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           2223 C692447-9    Ni                 913 Na
+K-2           2424 E653400-8    Ni Po              704 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lawax SECTOR: Limax Sector
+#
+# Jump-routes
+#
+$2828 2731 0 1 2
+$2828 2526 0 0 2
+$2526 2522 0 0 2
+$2522 2418 -1 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Arrihgua      2522 DA69300-7  S Lo Ni              901 Na
+Mierrara      2526 C633536-8    Ni Po              701 Na
+L-3           2730 B000797-8  2 As Na              104 Na
+L-4           2825 C696402-6  S Ni                 424 Na
+Lethua        2828 C8786A7-4    Ag Ni              211 Na
+L-6           2929 C754120-8  S Lo Ni              400 Na
+L-7           3027 E44377B-5    Po              B  623 Na
+L-8           3122 C554A98-9    Hi                 503 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Miwax SECTOR: Limax Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0235 D787698-4  S Ag Ni Ri           802 Na
+M-2           0334 B222665-9  N Na Ni Po           513 Na
+M-3           0540 C552635-5    Ni Po              504 Na
+M-4           0632 B000458-B  N As Ni              402 Na
+M-5           0637 C444554-9    Ag Ni              204 Na
+M-6           0638 B476658-C    Ag Ni              300 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nokrax SECTOR: Limax Sector
+#
+# Jump-routes
+$1432 1434 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0940 B692400-C    Ni                 504 Na
+N-2           1132 C333435-8  S Ni Po              804 Na
+N-3           1231 C674310-6  S Lo Ni              202 Na
+N-4           1234 B9D66AF-9  S Fl Ni              713 Na
+N-5           1334 C997431-9  S Ni                 805 Na
+N-6           1339 B584664-A  S Ag Ni Ri           522 Na
+N-7           1432 B32646A-C    Ni                 602 Na
+N-8           1434 C120779-8    De Na Po        B  413 Na
+N-9           1532 E365420-6    Ni                 224 Na
+N-10          1536 C868643-8    Ag Ni Ri           100 Na
+N-11          1632 CA8A6A9-9    Ni Wa              801 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Olimarx SECTOR: Limax Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1831 B857430-7  S Ni                 703 Na
+O-2           1832 C441000-6    Ba Lo Ni Po        602 Na
+O-3           1934 C454588-8  S Ag Ni              104 Na
+O-4           1939 C565358-8    Lo Ni              400 Na
+O-5           2140 D623AA7-6  S Hi In Na Po        305 Na
+O-6           2334 C232240-8    Lo Ni Po           502 Na
+O-7           2338 C0006AB-B    As Na Ni           903 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Puhlax SECTOR: Limax Sector
+#
+# Jump-routes
+$2838 2938 0 0
+#
+$3139 0101 1 1 2
+$3139 3235 0 0 2
+$3235 3133 0 0 2
+$3133 2731 0 0 2
+$2731 2828 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2640 C78A665-A    Ni Ri Wa           101 Na
+Ahtreen       2731 B624441-7    Ni                 703 Na
+P-3           2739 C5538A9-8    Po                 923 Na
+P-4           2838 C231314-B    Lo Ni Po           804 Na
+P-5           2938 B448524-B  S Ag Ni              904 Na
+Olabba        3133 X549623-0                    R  703 Na
+Bhuulla       3139 C664AA6-8    Hi                 704 Na
+P-8           3232 B556100-7    Lo Ni              310 Na
+Pe-Sharra     3235 D529889-3  S                    804 Na
+

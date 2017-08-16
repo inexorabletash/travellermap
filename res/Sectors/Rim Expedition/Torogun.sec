@@ -1,0 +1,433 @@
+Torogun Sector
+
+A: Atoro                     a.dat
+B: Bogun                     b.dat
+C: Ctoro                     c.dat
+D: Dogun                     d.dat
+E: Etorog                    e.dat
+F: Ftorok                    f.dat
+G: Ghtoro                    g.dat
+H: Horogun                   h.dat
+I: Itogun                    i.dat
+J: Jorog                     j.dat
+K: Korogu                    k.dat
+L: Litoro                    l.dat
+M: Mtog                      m.dat
+N: Norogun                   n.dat
+O: Orotogu                   o.dat
+P: Patogu                    p.dat
+
+Bases:
+A = Jalrik Navy
+B = Jalrik Scout
+C = Jugoro Navy
+D = Jugoro Scout
+J = Monrove Navy
+K = Monrove Scout
+L = Monrove Army
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+14 Jp = Jugoro Protectorate
+13 Js = Jalrik Police State
+12 Md = Monrove Dynasty
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Atoro SECTOR: Torogun Sector
+#
+# Jump-routes
+#
+$0609 0613 0 1 2
+$0609 0406 0 0 2
+$0406 0203 0 0 2
+$0203 0239 0 -1 2
+$0202 0439 0 -1 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0105 EABA568-5    Fl Ni Wa        A  404 Md
+A-2           0202 B100798-B    Na Va              814 Md
+Liannarr      0203 C352200-7    Lo Ni Po           203 Md
+A-4           0308 C9D5579-9    Fl Ni           B  104 Na
+A-5           0403 D300052-8  K Lo Ni Va           703 Md
+Arvuui        0406 C67A964-A    Hi In Wa           803 Md
+A-7           0506 C475653-6  J Ag Ni              803 Md
+A-8           0508 A572247-C  K Lo Ni              803 Md
+A-9           0604 D579254-7  K Lo Ni              503 Md
+Jaajeech      0609 D310256-A  K Lo Ni              302 Md
+A-11          0706 C324440-B    Ni                 103 Md
+A-12          0707 C300666-7    Na Ni Va           500 Md
+A-13          0802 D527874-4                    B  100 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Bogun SECTOR: Torogun Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           0903 E470461-4    De Ni              805 Na
+B-2           1207 C846220-5    Lo Ni              703 Na
+B-3           1301 B538404-C    Ni                 502 Na
+B-4           1604 D200002-9    Lo Ni Va           712 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ctoro SECTOR: Torogun Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1708 E989767-4    Ri                 203 Na
+C-2           1709 C699346-7    Lo Ni              324 Na
+C-3           1803 C230755-8  S De Na Po           802 Na
+C-4           2308 C84A759-A    Wa                 124 Na
+C-5           2403 C22546B-7    Ni                 704 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Dogun SECTOR: Torogun Sector
+#
+# Jump-routes
+#
+$2904 2840 0 -1 10
+$2904 3107 0 0 10
+$3107 0207 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2502 E0006BB-5    As Na Ni           103 Na
+D-2           2608 X9B67C8-0    Fl              R  403 Na
+D-3           2705 C6A4554-8    Fl Ni              313 Na
+D-4           2707 E476000-7    Ba Lo Ni           100 Na
+D-5           2806 B669443-7    Ni                 425 Na
+Dokfain       2904 E563115-7    Lo Ni              914 Na
+D-7           2906 C6A0846-5  S De                 102 Na
+D-8           2910 E7A1014-6    Fl Lo Ni           601 Na
+D-9           3101 C221131-9    Lo Ni Po           104 Na
+Tarradi       3107 CAA356B-A  S Fl Ni              411 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Etorog SECTOR: Torogun Sector
+#
+# Jump-routes
+#
+$0613 1013 1 0 2
+$0613 0609 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0118 C544565-7    Ag Ni              402 Na
+E-2           0212 C446466-7    Ni                 200 Na
+E-3           0313 C9B6556-A    Fl Ni           A  811 Na
+E-4           0517 C855342-8    Lo Ni              704 Na
+Eshuuit       0613 C457643-5  S Ag Ni              901 Na
+E-6           0617 C75A334-8    Lo Ni Wa           900 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ftorok SECTOR: Torogun Sector
+#
+# Jump-routes
+#
+$1616 1819 1 0 2
+$1616 1514 0 0 2
+$1514 1212 0 0 2
+$1212 1013 0 0 2
+$1013 0613 -1 0 2
+$1319 0921 0 1 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Caluun        1013 E00076B-4    As Na              903 Na
+F-2           1018 D736446-4  B Ni                 301 Js
+Eruukna       1212 D25066B-3  S De Ni Po           804 Na
+F-4           1218 D7A3564-4  A Fl Ni              522 Js
+.             1317 *4 DMZ                       R      Na
+F-5           1319 B544567-8  A Ag Ni              822 Js
+F-6           1320 E424340-9  B Lo Ni              202 Js
+.             1417 *4 DMZ                       R      Na
+.             1420 *4 DMZ                       R      Na
+Inhuugn       1514 E435555-6    Ni                 704 Na
+.             1518 *4 DMZ                       R      Na
+.             1519 *4 DMZ                       R      Na
+.             1520 *4 DMZ                       R      Na
+F-8           1612 C629211-B  S Lo Ni              704 Na
+Fuuvuura      1616 C425499-7  D Ni                 322 Jp
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ghtoro SECTOR: Torogun Sector
+#
+# Jump-routes
+#
+$1819 1823 0 1 2
+$1819 1616 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1713 A000046-A    As Lo Ni           300 Na
+G-2           1719 E310467-9  D Ni                 704 Jp
+G-3           1812 C647527-8    Ag Ni              911 Na
+G-4           1813 C666520-4  S Ag Ni              802 Na
+Gunnia        1819 E8A7751-6    Fl                 804 Jp
+G-6           1913 C5A1312-6  S Fl Lo Ni           900 Na
+G-7           2011 B586676-5    Ag Ni Ri        B  203 Na
+G-8           2216 C0006B9-B    As Na Ni           100 Na
+G-9           2218 C000230-9    As Lo Ni           603 Na
+G-10          2219 C858977-7  S Hi              B  804 Na
+G-11          2320 A684678-7    Ag Ni Ri        B  303 Na
+G-12          2413 E34459C-5    Ag Ni              510 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Horogun SECTOR: Torogun Sector
+#
+# Jump-routes
+$3220 3223 0 1
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2516 E776244-5    Lo Ni              815 Na
+H-2           2716 B8A1678-6    Fl Ni           B  600 Na
+H-3           2911 D336443-6  S Ni                 501 Na
+H-4           2915 C883844-6  S Ri                 904 Na
+H-5           3016 C510421-8    Ni                 415 Na
+H-6           3019 C655466-6    Ni                 535 Na
+H-7           3211 D443331-8    Lo Ni Po           505 Na
+H-8           3220 A310212-E  N Lo Ni              414 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Itogun SECTOR: Torogun Sector
+#
+# Jump-routes
+#
+$0622 0921 1 0 13
+$0622 0623 0 0 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0125 C67537B-4  S Lo Ni           B  502 Na
+I-2           0229 D625122-3  S Lo Ni              602 Na
+I-3           0330 E979530-4    Ni                 612 Na
+I-4           0424 D567678-3  S Ag Ni Ri        B  524 Na
+I-5           0622 B686220-6    Lo Ni              203 Js
+I-6           0623 B200668-8    Na Ni Va           730 Js
+I-7           0626 C432303-8    Lo Ni Po           721 Js
+I-8           0725 E677340-5    Lo Ni              304 Js
+I-9           0823 C410420-7  B Ni                 302 Js
+I-10          0824 C47279B-7                       703 Js
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jorog SECTOR: Torogun Sector
+#
+# Jump-routes
+#
+$0921 1124 0 0 13
+$0921 1319 0 -1 13
+$0921 0622 -1 0 13
+$1629 1927 1 0 14
+$1629 1532 0 1 14
+$1621 1824 1 0 14
+$1621 2022 1 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Jalrik        0921 B110ACE-H  A Hi Na Cx           302 Js
+J-2           0925 C773322-9  B Lo Ni              823 Js
+.             1027 *4 DMZ                       R      Na
+J-3           1030 C1007BB-9    Na Va              622 Na
+J-4           1124 B514735-7  A Ic                 625 Js
+.             1128 *4 DMZ                       R      Na
+J-5           1130 C221568-8  S Ni Po              402 Na
+J-6           1225 C402735-5  A Ic Na Va           702 Js
+.             1228 *4 DMZ                       R      Na
+J-7           1323 D8B7100-5  B Fl Lo Ni        A  213 Js
+.             1328 *4 DMZ                       R      Na
+.             1421 *4 DMZ                       R      Na
+.             1422 *4 DMZ                       R      Na
+.             1425 *4 DMZ                       R      Na
+.             1426 *4 DMZ                       R      Na
+.             1427 *4 DMZ                       R      Na
+.             1523 *4 DMZ                       R      Na
+.             1524 *4 DMZ                       R      Na
+.             1525 *4 DMZ                       R      Na
+J-8           1621 B87A000-D  D Ba Lo Ni Wa        300 Jp
+J-9           1627 C9A2233-6  D Fl Lo Ni           304 Jp
+J-10          1628 C537200-8  D Lo Ni              513 Jp
+Jugoro        1629 A426AB7-H  C Hi In Cx           614 Jp
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Korogu SECTOR: Torogun Sector
+#
+# Jump-routes
+#
+$2229 2630 1 0 2
+$2229 1927 0 0 2
+$1927 1823 0 0 2
+$1823 1819 0 -1 2
+$1927 1629 -1 0 14
+$1927 2126 0 0 14
+$2126 2323 0 0 14
+$1927 1824 0 0 14
+$1824 2022 0 0 14
+$2022 2323 0 0 14
+$1824 1621 -1 0 14
+$2022 1621 -1 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1723 D439543-5  C Ni                 914 Jp
+K-2           1725 C527530-7  C Ni                 703 Jp
+Drinugun      1823 C200545-9    Ni Va              114 Jp
+K-4           1824 B425623-7  C Ni                 705 Jp
+Garberra      1927 A475422-A  D Ni                 104 Jp
+K-6           1928 C330957-9  C De Hi In Na Po     813 Jp
+K-7           2022 B764758-9  C Ag Ri              112 Jp
+K-8           2126 A8A1899-C  C Fl                 203 Jp
+K-9           2129 C9B66AC-4    Fl Ni           A  503 Jp
+Kingunn       2229 D355433-8  D Ni                 904 Jp
+K-11          2323 B304221-D  D Ic Lo Ni Va        811 Jp
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Litoro SECTOR: Torogun Sector
+#
+# Jump-routes
+$3223 3220 0 -1
+#
+$2630 2931 0 1 2
+$2630 2229 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2523 C436878-9  S                 B  403 Na
+L-2           2528 C85A9CD-8  S Hi Wa              821 Na
+L-3           2621 C58359D-4    Ni                 813 Na
+L-4           2623 E433000-5    Ba Lo Ni Po        903 Na
+Lurunna       2630 A245355-D    Lo Ni              431 Na
+L-6           3223 C554400-A    Ni                 813 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Mtog SECTOR: Torogun Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0136 C8A949E-8    Fl Ni              522 Na
+M-2           0338 B461669-A  2 Ni Ri              400 Na
+M-3           0438 BAA1133-7  2 Fl Lo Ni           215 Na
+M-4           0735 C100588-9  S Ni Va              504 Na
+M-5           0833 D483612-5  S Ni                 103 Na
+M-6           0838 C455200-6  S Lo Ni              705 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Norogun SECTOR: Torogun Sector
+#
+# Jump-routes
+#
+$1532 1629 0 -1 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0936 C8A9300-C    Fl Lo Ni           703 Na
+N-2           1338 B443678-8    Ni Po           B  604 Na
+N-3           1434 C3127AA-6    Ic Na              800 Jp
+N-4           1532 A753244-B    Lo Ni Po           604 Jp
+N-5           1640 D5A3166-8    Fl Lo Ni           904 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Orotogu SECTOR: Torogun Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1732 C77669A-6    Ag Ni              424 Jp
+O-2           1736 E6A5544-6    Fl Ni              704 Na
+O-3           1738 E130497-9    De Ni Po           922 Na
+O-4           1838 E425341-5    Lo Ni              903 Na
+O-5           2134 C673588-5  C Ni                 605 Jp
+O-6           2233 C452100-7  D Lo Ni Po           600 Jp
+O-7           2331 E000133-7    As Lo Ni           703 Jp
+O-8           2334 C585777-5    Ag Ri           B  424 Na
+O-9           2335 E544675-6    Ag Ni              102 Na
+O-10          2337 C33398D-8  S Hi In Na Po        410 Na
+O-11          2340 A669200-E    Lo Ni              302 Na
+O-12          2438 X587311-1    Lo              R  703 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Patogu SECTOR: Torogun Sector
+#
+# Jump-routes
+#
+$3133 0333 1 0 2
+$3133 2931 0 0 2
+$2931 2630 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2735 D74A788-3    Wa                 910 Na
+P-2           2737 C577564-6    Ag Ni              602 Na
+Flogun        2931 B5786AC-7  S Ag Ni              704 Na
+P-4           2937 D510559-9  S Ni                 911 Na
+Caarella      3133 C525000-5    Ba Lo Ni           202 Na
+P-6           3234 B130533-A    De Ni Po           224 Na
+

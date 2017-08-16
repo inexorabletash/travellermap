@@ -1,0 +1,430 @@
+Gredoren Sector
+
+A: Agredor                   a.dat
+B: Bredoren                  b.dat
+C: Chredour                  c.dat
+D: Dledora                   d.dat
+E: Egredorn                  e.dat
+F: Frereenna                 f.dat
+G: Gredore                   g.dat
+H: Hegredon                  h.dat
+I: Igredo                    i.dat
+J: Jedoren                   j.dat
+K: Kloren                    k.dat
+L: Lagrenee                  l.dat
+M: Medoren                   m.dat
+N: Nagredor                  n.dat
+O: Orenen                    o.dat
+P: Plagredor                 p.dat
+
+Bases:
+H = Houren Navy
+M = Opali Military
+N = Navy
+O = Onen Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+14 Hc = Houren Conquests
+07 Na = Non-Aligned
+12 Oc = Onen Conquests
+13 Op = Opali Magistrate
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Agredor SECTOR: Gredoren Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0207 C44767B-4    Ag Ni           B  704 Na
+A-2           0410 C442A96-C    Hi In Po           202 Na
+A-3           0501 D576742-2    Ag                 310 Na
+A-4           0602 C686520-7    Ag Ni              812 Na
+A-5           0604 C9A8663-4    Fl Ni              722 Na
+A-6           0805 C453623-7  S Ni Po              110 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Bredoren SECTOR: Gredoren Sector
+#
+# Jump-routes
+#
+$1609 1412 0 1 2
+$1609 1806 1 0 2
+$1404 1806 1 0 2
+$1404 1202 0 0 2
+$1202 1238 0 -1 2
+$1609 1810 1 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Methanna      1202 C220211-9    De Lo Ni Po        204 Na
+B-2           1305 C2318BE-A    Na Po              700 Na
+B-3           1306 CAA7898-8  S Fl                 502 Na
+Ellaon        1404 C100635-6    Na Ni Va           303 Na
+Rogratia      1609 B542333-9  H Lo Ni Po           102 Hc
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Chredour SECTOR: Gredoren Sector
+#
+# Jump-routes
+#
+$1806 1609 -1 0 2
+$1806 1404 -1 0 2
+$2109 2411 0 1 14
+$2109 1908 0 0 14
+$1908 1810 0 0 14
+$1810 1609 -1 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1709 D676341-3  H Lo Ni              322 Hc
+Congiy        1806 E654533-3    Ag Ni              514 Hc
+C-3           1810 C400530-9    Ni Va              802 Hc
+C-4           1903 C344320-7    Lo Ni              423 Na
+C-5           1908 C655543-7    Ag Ni              100 Hc
+C-6           2002 X7A157A-4    Fl              R  223 Na
+C-7           2004 E200210-7    Lo Ni Va           700 Na
+C-8           2101 A788112-9  N Lo Ni              903 Na
+C-9           2103 E100353-B    Lo Ni Va           203 Na
+C-10          2106 D200623-8  S Na Ni Va           702 Na
+C-11          2109 C89A469-6    Ni Wa              312 Hc
+C-12          2403 D99AABA-7  S Hi In Wa           813 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Dledora SECTOR: Gredoren Sector
+#
+# Jump-routes
+#
+$2901 2937 0 -1 10
+$2901 2905 0 0 10
+$2905 0106 1 0 10
+$2610 2611 0 1 14
+$2610 2609 0 0 14
+$2609 2411 -1 1 14
+$2901 2601 0 0 13
+$2905 3106 0 0 13
+$3106 0204 1 0 13
+$2905 3007 0 0 13
+$3007 3109 0 0 13
+$3109 3112 0 1 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2601 B7A458C-7    Fl Ni              902 Op
+D-2           2605 E586697-5    Ag Ni Ri           600 Na
+D-3           2609 B97A668-7    Ni Wa              204 Hc
+D-4           2610 C300656-B    Na Ni Va           822 Hc
+Opali         2901 A95A754-F  M Wa                 901 Op
+D-6           2904 C534410-6  M Ni                 721 Op
+Drieera       2905 A431425-D  M Ni Po              314 Op
+D-8           3007 C272356-9    Lo Ni              214 Op
+D-9           3106 C589203-8  M Lo Ni              405 Op
+D-10          3109 B7227A9-A  M Na Po              100 Op
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Egredorn SECTOR: Gredoren Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0217 C420621-8  S De Na Ni Po        811 Na
+E-2           0411 C786473-4    Ni              B  910 Na
+E-3           0512 C665410-6    Ni                 710 Na
+E-4           0513 A87A354-B    Lo Ni Wa           524 Na
+E-5           0514 C47376B-7                       103 Na
+E-6           0615 D686110-6  S Lo Ni              602 Na
+E-7           0619 C544264-8    Lo Ni              924 Na
+E-8           0620 A110655-C    Na Ni              300 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Frereenna SECTOR: Gredoren Sector
+#
+# Jump-routes
+$1414 1514 0 0
+$1520 1621 0 1
+#
+$1520 1621 0 1 2
+$1520 1318 0 0 2
+$1318 1414 0 0 2
+$1414 1412 0 0 2
+$1412 1609 0 -1 2
+$1414 1514 0 0 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           1012 E528201-6    Lo Ni              204 Na
+F-2           1113 D564777-5    Ag Ri           B  510 Na
+F-3           1314 D4667BB-7    Ag                 312 Oc
+Qlassasa      1318 C140989-7    De Hi In Po        302 Oc
+Ethazole      1412 CAA3563-6    Fl Ni              233 Hc
+Vocean        1414 B226667-A  O Ni                 603 Oc
+F-7           1514 C462400-9    Ni                 801 Oc
+Fanage        1520 A995222-A    Lo Ni              604 Oc
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Gredore SECTOR: Gredoren Sector
+#
+# Jump-routes
+#
+$2411 2513 1 0 14
+$2411 2609 1 -1 14
+$2411 2213 0 0 14
+$2411 2109 0 -1 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1915 E656422-3    Ni                 202 Na
+G-2           2212 D450A76-9    De Hi Po        B  400 Na
+G-3           2213 C251388-8  H Lo Ni Po           404 Hc
+G-4           2411 B89A142-C  H Lo Ni Wa           104 Hc
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hegredon SECTOR: Gredoren Sector
+#
+# Jump-routes
+#
+$2816 2615 0 0 14
+$2816 2819 0 0 14
+$2819 3020 0 0 14
+$3020 3120 0 0 14
+$3120 3119 0 0 14
+$3119 2816 0 0 14
+$3020 3023 0 1 14
+$3119 0121 1 1 14
+$2615 2513 0 0 14
+$2513 2611 0 0 14
+$2611 2610 0 -1 14
+$2513 2411 -1 0 14
+$3112 3109 0 -1 13
+$3112 0212 1 0 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2513 C755200-A  H Lo Ni              903 Hc
+H-2           2611 C587003-6    Lo Ni              622 Hc
+H-3           2615 C56479D-8    Ag Ri              115 Hc
+Houren        2816 A000AAA-G  H As Hi Na Cx        630 Hc
+H-5           2819 C694A99-8  H Hi In              221 Hc
+H-6           3020 A201355-B    Ic Lo Ni Va        402 Hc
+H-7           3112 C576631-7  M Ag Ni              104 Op
+H-8           3119 B645A84-C  H Hi In              503 Hc
+H-9           3120 C8A078B-8    De                 824 Hc
+H-10          3211 D653696-1  M Ni Po              703 Op
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Igredo SECTOR: Gredoren Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0321 C521696-6  S Na Ni Po           823 Na
+I-2           0324 B100776-9  N Na Va           B  104 Na
+I-3           0329 B726220-9    Lo Ni              813 Na
+I-4           0526 E9A6241-7    Fl Lo Ni           113 Na
+I-5           0628 B655564-A  2 Ag Ni              324 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jedoren SECTOR: Gredoren Sector
+#
+# Jump-routes
+$1621 1520 0 -1
+#
+$1621 1824 1 0 2
+$1621 1520 0 -1 2
+$1528 1830 1 0 12
+$1528 1526 0 0 12
+$1526 1824 1 0 12
+$1621 1223 0 0 12
+$1223 1526 0 0 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0926 C955689-8    Ag Ni              703 Na
+J-2           1121 C997975-8  S Hi In           B  103 Na
+J-3           1130 BAA7002-9  N Fl Lo Ni           202 Na
+J-4           1223 C757797-3    Ag                 313 Oc
+J-5           1526 C786643-6    Ag Ni Ri           104 Oc
+J-6           1528 B11068B-C  O Na Ni              113 Oc
+Allevore      1621 B320ACB-F    De Hi In Na Po     912 Oc
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kloren SECTOR: Gredoren Sector
+#
+# Jump-routes
+#
+$2128 2132 0 1 2
+$2128 2026 0 0 2
+$2026 1824 0 0 2
+$1824 1621 -1 0 2
+$1830 1832 0 1 12
+$1830 1528 -1 0 12
+$1830 2128 0 0 12
+$1824 1526 -1 0 12
+$2128 2528 1 0 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1723 C570101-8  O De Lo Ni           403 Oc
+Erossiu       1824 C766313-5  O Lo Ni              121 Oc
+K-3           1830 B8A5658-8  O Fl Ni              104 Oc
+Zammahr       2026 C7B2300-B  O Fl Lo Ni           604 Oc
+K-5           2027 D95A315-6  O Lo Ni Wa           801 Oc
+K-6           2121 E541688-6    Ni Po              910 Na
+Dlercia       2128 B679122-A  O Lo Ni              923 Oc
+K-8           2421 C583898-8    Ri                 800 Na
+K-9           2428 D310100-5  O Lo Ni              804 Oc
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lagrenee SECTOR: Gredoren Sector
+#
+# Jump-routes
+#
+$3023 3020 0 -1 14
+$3023 3221 0 0 14
+$3221 0121 1 0 14
+$2528 2128 -1 0 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2528 B8D0223-7    De Lo Ni           104 Oc
+L-2           2724 C484675-6  S Ag Ni Ri        B  803 Na
+L-3           3023 CA8A420-6  H Ni Wa              912 Hc
+L-4           3221 C6B0550-7    De Ni           A  112 Hc
+L-5           3230 B686867-7  N Ri                 800 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Medoren SECTOR: Gredoren Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0131 E410357-5    Lo Ni              402 Na
+M-2           0138 B97A554-C  N Ni Wa              404 Na
+M-3           0433 C7A2667-4    Fl Ni              603 Na
+M-4           0438 D786335-7  S Lo Ni              605 Na
+M-5           0440 CAA28AD-7    Fl                 524 Na
+M-6           0834 E8B5558-9    Fl Ni           A  403 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nagredor SECTOR: Gredoren Sector
+#
+# Jump-routes
+#
+$1632 1832 1 0 12
+$1632 1334 0 0 12
+$1334 1335 0 0 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           1139 C300514-7    Ni Va              601 Na
+N-2           1239 B110887-8    Na                 303 Na
+N-3           1334 C879556-7    Ni                 605 Oc
+N-4           1335 C110504-C    Ni                 403 Oc
+N-5           1439 C3248BD-7                       405 Na
+N-6           1536 EACAABE-9    Fl Hi Wa        A  211 Na
+N-7           1540 E00089B-8    As Na              213 Na
+N-8           1632 A581656-D  O Ni Ri              700 Oc
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Orenen SECTOR: Gredoren Sector
+#
+# Jump-routes
+#
+$2434 2735 1 0 2
+$2434 2132 0 0 2
+$2132 2128 0 -1 2
+$1832 1632 -1 0 12
+$1832 1830 0 -1 12
+$1832 2132 0 0 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Onen          1832 A776AA9-G  O Hi In Cx           504 Oc
+Thosho        2132 B000453-C  O As Ni              323 Oc
+O-3           2140 B110300-B  N Lo Ni              403 Na
+Utahalla      2434 C43076A-5  O De Na Po           112 Oc
+O-5           2439 C98A7CC-8    Wa                 921 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Plagredor SECTOR: Gredoren Sector
+#
+# Jump-routes
+#
+$3239 0201 1 1 2
+$3239 3136 0 0 2
+$3136 2735 0 0 2
+$2735 2434 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2539 B573534-8  2 Ni                 422 Na
+P-2           2540 C68A724-5    Wa                 503 Na
+P-3           2634 B879277-B  N Lo Ni           B  104 Na
+Traparn       2735 C874775-3    Ag              B  603 Na
+P-5           2737 B361644-9    Ni Ri              202 Na
+P-6           3131 C666732-4  S Ag                 122 Na
+Ingussa       3136 E7877AC-5    Ag                 603 Na
+Povissa       3239 B748999-9    Hi In              811 Na
+

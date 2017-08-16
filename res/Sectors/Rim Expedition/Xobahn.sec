@@ -1,0 +1,375 @@
+Xobahn Sector
+
+A: Axobah                    a.dat
+B: Bahnox                    b.dat
+C: Cloxahn                   c.dat
+D: Deloxxa                   d.dat
+E: Exobahn                   e.dat
+F: Frahnna                   f.dat
+G: Ghoxann                   g.dat
+H: Hoxhahn                   h.dat
+I: Ixobah                    i.dat
+J: Jabahn                    j.dat
+K: Kloxabah                  k.dat
+L: Lanoxoba                  l.dat
+M: Mahnnah                   m.dat
+N: Naxobla                   n.dat
+O: Oxobahn                   o.dat
+P: Prabahn                   p.dat
+
+Bases:
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Axobah SECTOR: Xobahn Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0108 D7B09B6-5  S De Hi           A  404 Na
+A-2           0203 B75A678-B    Ni Wa           B  302 Na
+A-3           0301 A452614-B  N Ni Po              303 Na
+A-4           0310 B373277-C    Lo Ni           B  613 Na
+A-5           0710 D468666-4  S Ag Ni Ri           924 Na
+A-6           0803 E536876-4                    B  611 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Bahnox SECTOR: Xobahn Sector
+#
+# Jump-routes
+$1101 1201 0 0
+#
+$1108 0911 0 1 2
+$1108 0905 0 0 2
+$0905 1002 0 0 2
+$1002 1101 0 0 2
+$1101 1138 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Thumbal       0905 E787758-6    Ag Ri              304 Na
+Shakka        1002 D586631-1  S Ag Ni              601 Na
+Granzier      1101 B675AB9-C    Hi In              322 Na
+Bathina       1108 X75A630-0    Wa              R  114 Na
+B-5           1201 C200401-7    Ni Va              523 Na
+B-6           1403 C244202-B  S Lo Ni              623 Na
+B-7           1410 C100334-9  S Lo Ni Va           713 Na
+B-8           1603 D510368-6    Lo Ni              200 Na
+B-9           1605 B324676-A    Ni              B  833 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Cloxahn SECTOR: Xobahn Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1703 D69879D-2  S Ag                 101 Na
+C-2           1801 A536230-C  N Lo Ni              104 Na
+C-3           1809 A0009ED-D  N As Hi Na           200 Na
+C-4           2102 C6548BB-7                       305 Na
+C-5           2301 C515567-7    Ic Ni              920 Na
+C-6           2407 C779000-7  S Ba Lo Ni           504 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Deloxxa SECTOR: Xobahn Sector
+#
+# Jump-routes
+#
+$2703 2540 0 -1 10
+$2703 2905 0 0 10
+$2905 0105 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2510 E421669-8    Na Ni Po           704 Na
+D-2           2606 B503553-D  S Ic Ni Va           703 Na
+D-3           2610 C577154-9    Lo Ni              400 Na
+Dutuyal       2703 E4677BC-6    Ag                 102 Na
+D-5           2801 C63386A-8  S Na Po              224 Na
+Frooch        2905 D547578-4  S Ag Ni           B  604 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Exobahn SECTOR: Xobahn Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0113 C959AEG-A  S Hi              A  303 Na
+E-2           0313 C9BA648-6    Fl Ni Wa        A  920 Na
+E-3           0316 C00049C-7  S As Ni              704 Na
+E-4           0418 E512679-5    Ic Na Ni        B  900 Na
+E-5           0419 C659278-8    Lo Ni           B  114 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Frahnna SECTOR: Xobahn Sector
+#
+# Jump-routes
+#
+$1020 1422 0 1 2
+$1020 1017 0 0 2
+$1017 0914 0 0 2
+$0914 0911 0 0 2
+$0911 1108 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Trave         0911 D6358A8-3  S                    625 Na
+Hoflok        0914 C633320-9  S Lo Ni Po           401 Na
+F-3           0916 C665667-6  S Ag Ni Ri           222 Na
+Margretti     1017 D423100-A  S Lo Ni Po           804 Na
+Fluukan       1020 C300865-5  S Na Va              902 Na
+F-6           1319 B5729CB-A    Hi In              903 Na
+F-7           1412 C596648-8  S Ag Ni              804 Na
+F-8           1417 D0009DD-8  S As Hi Na           612 Na
+F-9           1513 C65A301-B    Lo Ni Wa           600 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ghoxann SECTOR: Xobahn Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1711 CA99453-6  S Ni                 400 Na
+G-2           1716 D884430-4  S Ni                 814 Na
+G-3           1915 AA9887A-9  2                 B  100 Na
+G-4           2018 CA9A488-8    Ni Wa              405 Na
+G-5           2116 C855301-8  S Lo Ni              704 Na
+G-6           2219 C000348-A    As Lo Ni           413 Na
+G-7           2319 D200102-9  S Lo Ni Va           302 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hoxhahn SECTOR: Xobahn Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2519 C332200-9    Lo Ni Po           400 Na
+H-2           2613 D737862-7  S                    903 Na
+H-3           2614 B777442-B    Ni                 113 Na
+H-4           2619 C8478BA-6                       604 Na
+H-5           2918 D451675-4  S Ni Po           B  601 Na
+H-6           3013 C8B7663-6    Fl Ni           A  214 Na
+H-7           3020 CAB6651-A    Fl Ni           A  920 Na
+H-8           3211 B222100-A  N Lo Ni Po           302 Na
+H-9           3220 E200323-6    Lo Ni Va           805 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ixobah SECTOR: Xobahn Sector
+#
+# Jump-routes
+$0621 0623 0 0
+#
+$0621 0323 0 0 11
+$0323 0623 0 0 11
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0126 D987535-5    Ag Ni              200 Na
+I-2           0229 C223002-9  S Lo Ni Po           124 Na
+I-3           0323 A763100-B    Lo Ni              802 Na
+I-4           0328 C4478DE-7                       200 Na
+I-5           0621 B110858-E  S Na                 704 Na
+I-6           0623 B543237-B  N Lo Ni Po           404 Na
+I-7           0827 C4527A8-5  S Po                 813 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jabahn SECTOR: Xobahn Sector
+#
+# Jump-routes
+#
+$1422 1722 1 0 2
+$1422 1020 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0925 C503031-8    Ic Lo Ni Va        712 Na
+J-2           1024 E57646B-7    Ni                 824 Na
+J-3           1123 C765111-4    Lo Ni              625 Na
+J-4           1124 C352762-4    Po                 300 Na
+J-5           1324 DAE7444-6  S Fl Ni              212 Na
+Jaxallia      1422 C8675A8-9  S Ag Ni              604 Na
+J-7           1530 E000668-6    As Na Ni           702 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kloxabah SECTOR: Xobahn Sector
+#
+# Jump-routes
+#
+$2325 2626 1 0 2
+$2325 1925 0 0 2
+$1925 1722 0 0 2
+$1722 1422 -1 0 2
+$2325 2323 0 0 11
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Vinox         1722 B531248-A    Lo Ni Po           224 Na
+K-2           1725 D564346-5    Lo Ni              910 Na
+Froxx         1925 C58748B-7    Ni                 604 Na
+K-4           1927 C779479-A    Ni              B  402 Na
+K-5           2026 E3806AD-3    De Ni              802 Na
+K-6           2224 E7267AC-3                       321 Na
+K-7           2323 C233423-8    Ni Po              214 Na
+Camalli       2325 A266AAB-E  N Hi                 603 Na
+K-9           2428 E322244-9    Lo Ni Po           333 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lanoxoba SECTOR: Xobahn Sector
+#
+# Jump-routes
+$2724 2824 0 0
+$2824 3124 0 0
+#
+$2729 2932 0 1 2
+$2729 2626 0 0 2
+$2626 2325 -1 0 2
+$2824 2626 0 0 11
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2523 C7B3679-4  S Fl Ni           A  110 Na
+Lixora        2626 B300300-B  N Lo Ni Va           624 Na
+L-3           2628 C686444-5  S Ni                 400 Na
+L-4           2724 C100653-B  S Na Ni Va           312 Na
+Traxai        2729 C324586-9  S Ni                 712 Na
+L-6           2824 A886320-D    Lo Ni              725 Na
+L-7           2923 C456501-9  S Ag Ni              704 Na
+L-8           3024 E54A9AB-A    Hi In Wa           520 Na
+L-9           3124 B321689-9  N Na Ni Po           615 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Mahnnah SECTOR: Xobahn Sector
+#
+# Jump-routes
+$0137 0238 0 0
+$0137 0337 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0135 D9E0253-7    De Lo Ni           800 Na
+M-2           0136 C444877-6                    B  813 Na
+M-3           0137 B7A0ACF-E  N De Hi              203 Na
+M-4           0138 C527435-A    Ni                 500 Na
+M-5           0238 C35087A-6  S De Po           B  114 Na
+M-6           0337 A1309AA-D    De Hi In Na Po     515 Na
+M-7           0338 C414123-B  S Ic Lo Ni           421 Na
+M-8           0438 B211848-9  N Ic Na              504 Na
+M-9           0439 E857274-4    Lo Ni           B  303 Na
+M-10          0539 D200264-8  S Lo Ni Va           214 Na
+M-11          0540 B78645A-7  S Ni                 200 Na
+M-12          0638 D463736-6                       110 Na
+M-13          0735 E78A100-5    Lo Ni Wa           102 Na
+M-14          0740 C645245-9    Lo Ni              904 Na
+M-15          0840 E623475-5    Ni Po           B  905 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Naxobla SECTOR: Xobahn Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           1232 A622212-B    Lo Ni Po           125 Na
+N-2           1237 B776435-8  N Ni                 223 Na
+N-3           1335 C556744-6  S Ag                 600 Na
+N-4           1633 C150587-8  S De Ni Po           700 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Oxobahn SECTOR: Xobahn Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1940 C200556-A    Ni Va              814 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Prabahn SECTOR: Xobahn Sector
+#
+# Jump-routes
+#
+$3137 0140 1 0 2
+$3137 3035 0 0 2
+$3035 2932 0 0 2
+$2932 2729 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2733 C654510-6    Ag Ni              803 Na
+P-2           2738 B557587-6    Ag Ni              803 Na
+P-3           2740 C767104-8  S Lo Ni              103 Na
+Grelox        2932 C747367-5    Lo Ni              811 Na
+Shahox        3035 C464511-7    Ag Ni              104 Na
+Palapolli     3137 C431545-A  S Ni Po              802 Na
+

@@ -1,0 +1,294 @@
+Pania Sector
+
+A: Ania                      a.dat
+B: Bapan                     b.dat
+C: Cesaria                   c.dat
+D: Dania                     d.dat
+E: Erian                     e.dat
+F: Fabbia                    f.dat
+G: Garria                    g.dat
+H: Haparr                    h.dat
+I: Ippia                     i.dat
+J: Jaria                     j.dat
+K: Kawia                     k.dat
+L: Lari                      l.dat
+M: Mapieer                   m.dat
+N: Nuhapia                   n.dat
+O: Opia                      o.dat
+P: Panee                     p.dat
+
+Bases:
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ania SECTOR: Pania Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0205 E551743-2    Po                 200 Na
+A-2           0207 E631554-8    Ni Po              404 Na
+A-3           0509 C738311-9  S Lo Ni              604 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Bapan SECTOR: Pania Sector
+#
+# Jump-routes
+$1603 1703 1 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           0903 D97A688-5  S Ni Wa              404 Na
+B-2           1603 B566485-6  S Ni                 600 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Cesaria SECTOR: Pania Sector
+#
+# Jump-routes
+$1703 1603 -1 0
+$1703 1705 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1703 A7B5776-B  N Fl              A  503 Na
+C-2           1705 C4546BA-9  S Ag Ni              614 Na
+C-3           2108 EAC6300-4    Fl Lo Ni        A  101 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Dania SECTOR: Pania Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           3009 D572463-5    Ni                 325 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Erian SECTOR: Pania Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0211 CAC6030-5  S Fl Lo Ni        A  910 Na
+E-2           0317 D486100-6  S Lo Ni              103 Na
+E-3           0513 C445553-6    Ag Ni              303 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Fabbia SECTOR: Pania Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0911 D363877-5  S Ri              B  812 Na
+F-2           0914 E686854-5    Ri                 400 Na
+F-3           1019 B6869CB-9  N Hi                 922 Na
+F-4           1118 C000368-8    As Lo Ni           103 Na
+F-5           1220 C575987-8  S Hi In              104 Na
+F-6           1511 B442558-C  N Ni Po              923 Na
+F-7           1514 C330365-A    De Lo Ni Po        414 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Garria SECTOR: Pania Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1914 E566369-4    Lo Ni              701 Na
+G-2           1920 C33468A-A  S Ni                 902 Na
+G-3           2115 A856366-A    Lo Ni              504 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Haparr SECTOR: Pania Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2512 B995330-7    Lo Ni              704 Na
+H-2           2514 E563688-6    Ni Ri              710 Na
+H-3           2815 C87A465-8    Ni Wa              710 Na
+H-4           2816 B100754-D    Na Va              203 Na
+Haniarr       3013 A1009CD-G  N Hi Na Va Cx        513 Na
+H-6           3211 C7A09AC-B  S De Hi              303 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ippia SECTOR: Pania Sector
+#
+# Jump-routes
+$0729 0732 0 1
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0223 C79A679-6    Ni Wa           B  704 Na
+I-2           0227 C669124-6  S Lo Ni              605 Na
+I-3           0628 X465223-0    Lo              R  600 Na
+I-4           0726 D300648-6  S Na Ni Va           510 Na
+I-5           0729 B536689-8  N Ni                 503 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jaria SECTOR: Pania Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0926 C97A466-B  S Ni Wa              800 Na
+J-2           1222 C8B1547-6  S Fl Ni           A  523 Na
+J-3           1228 D00036A-A    As Lo Ni           420 Na
+J-4           1330 C532468-6    Ni Po              703 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kawia SECTOR: Pania Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1824 B50159A-9  N Ic Ni Va           913 Na
+K-2           2025 A231561-C  N Ni Po              202 Na
+K-3           2227 B663263-9    Lo Ni              804 Na
+K-4           2228 C455400-6  S Ni                 902 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lari SECTOR: Pania Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2529 C512667-9    Ic Na Ni           304 Na
+L-2           2629 D456777-2  S Ag              B  313 Na
+L-3           3128 E449546-6    Ni                 313 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Mapieer SECTOR: Pania Sector
+#
+# Jump-routes
+$0732 0729 0 -1
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0539 C326442-9  S Ni                 704 Na
+M-2           0732 A453210-C    Lo Ni Po           514 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nuhapia SECTOR: Pania Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0937 C470735-5    De                 304 Na
+N-2           0938 B544441-8    Ni                 513 Na
+N-3           1132 C360632-4    De Ni              304 Na
+N-4           1234 C686105-8    Lo Ni              423 Na
+N-5           1338 C89A556-9    Ni Wa              914 Na
+N-6           1531 C797375-5  S Lo Ni           B  905 Na
+N-7           1640 C776103-7    Lo Ni              200 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Opia SECTOR: Pania Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1931 C84A476-7  S Ni Wa           B  120 Na
+O-2           2133 E464442-8    Ni                 403 Na
+O-3           2238 E327500-9    Ni                 524 Na
+O-4           2332 C43448B-6  S Ni                 704 Na
+O-5           2335 D435841-5                       803 Na
+O-6           2440 E210951-8    Hi Na              202 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Panee SECTOR: Pania Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2733 B322623-9    Na Ni Po           803 Na
+P-2           2736 C593430-8    Ni                 402 Na
+P-3           2937 E659340-5    Lo Ni              803 Na
+P-4           3132 A627423-E  N Ni                 330 Na
+P-5           3137 E5105AD-5    Ni                 222 Na
+P-6           3239 E438543-7    Ni                 204 Na
+

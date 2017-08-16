@@ -1,0 +1,1033 @@
+Ingresh Sector
+
+A: Aingre                    a.dat
+B: Bingres                   b.dat
+C: Creshin                   c.dat
+D: Dleshin                   d.dat
+E: Eingres                   e.dat
+F: Fingrese                  f.dat
+G: Glinga                    g.dat
+H: Hinesh                    h.dat
+I: Iningresh                 i.dat
+J: Jagresh                   j.dat
+K: Keninge                   k.dat
+L: Lagingi                   l.dat
+M: Mingree                   m.dat
+N: Natingee                  n.dat
+O: Ogringi                   o.dat
+P: Paresa                    p.dat
+
+Bases:
+A = Alemuurea Navy
+N = Navy
+O = Qualaran Navy
+P = Qualaran Scout
+Q = Qualaran Navy & Scout
+R = Qualaran Military
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+03 Ad = Alemuurea Dynasty
+07 Na = Non-Aligned
+13 Qf = Qualaran Federation
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Aingre SECTOR: Ingresh Sector
+#
+# Jump-routes
+#
+$0101 3203 -1 0 3
+$0204 3002 -1 0 10
+$0810 0812 0 1 13
+$0810 0408 0 0 13
+$0408 0606 0 0 13
+$0810 1010 1 0 13
+$0204 0407 0 0 10
+$0407 0710 0 0 10
+$0710 0913 1 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0101 B8A0487-9  O De Ni              415 Ad
+A-2           0102 X200565-3    Va              R  711 Ad
+Shaleer       0204 C568543-9    Ag Ni              224 Qf
+A-4           0206 X777483-1                    R  704 Qf
+A-5           0207 C463447-A  O Ni                 724 Qf
+A-6           0209 C664433-5    Ni                 221 Qf
+A-7           0210 B76667C-7    Ag Ni Ri        B  404 Na
+A-8           0301 D574330-5    Lo Ni              303 Qf
+A-9           0304 X545223-0    Lo              R  520 Qf
+A-10          0305 C899413-9  O Ni                 503 Qf
+A-11          0306 C766524-9  O Ag Ni              700 Qf
+A-12          0307 E373411-8    Ni                 404 Qf
+A-13          0309 B434875-7                    B  813 Na
+A-14          0310 C542655-5    Ni Po              104 Qf
+A-15          0401 C757520-4  O Ag Ni              304 Qf
+Janarra       0407 C482469-7    Ni                 521 Qf
+A-17          0408 B573763-6                       603 Qf
+A-18          0409 C596411-8    Ni                 610 Qf
+A-19          0501 C323205-C    Lo Ni Po           812 Qf
+A-20          0504 C000100-8    As Lo Ni           615 Qf
+A-21          0505 C200344-A  P Lo Ni Va           303 Qf
+A-22          0506 E528442-7    Ni                 714 Qf
+A-23          0601 E5289CB-4    Hi In              704 Qf
+A-24          0602 E694365-4    Lo Ni              313 Qf
+A-25          0605 C6A4321-7    Fl Lo Ni           900 Qf
+A-26          0606 A235100-D  P Lo Ni              403 Qf
+A-27          0607 E979030-3    Lo Ni              403 Qf
+A-28          0609 E748752-4    Ag                 505 Qf
+A-29          0703 E568797-6    Ag Ri              900 Qf
+A-30          0706 C32836B-7    Lo Ni              114 Qf
+A-31          0709 C662466-8  O Ni                 505 Qf
+Manatha       0710 E515453-5    Ic Ni              901 Qf
+A-33          0805 C8B157A-8  O Fl Ni           A  513 Qf
+A-34          0808 C689104-A    Lo Ni              901 Qf
+A-35          0809 C000200-B    As Lo Ni           501 Qf
+A-36          0810 B240423-A    De Ni Po           421 Qf
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Bingres SECTOR: Ingresh Sector
+#
+# Jump-routes
+#
+$1010 0810 -1 0 13
+$1010 1412 0 1 13
+$1504 1805 1 0 13
+$1504 1303 0 0 13
+$1303 1001 0 0 13
+$1303 1106 0 0 13
+$1106 1306 0 0 13
+$1306 1307 0 0 13
+$1306 1504 0 0 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           0901 E85A467-8    Ni Wa              500 Qf
+B-2           0902 C327338-9  P Lo Ni              904 Qf
+B-3           0903 D130100-A  P De Lo Ni Po        503 Qf
+B-4           0904 C000441-C    As Ni              900 Qf
+B-5           0908 C8A3688-7  O Fl Ni              320 Qf
+B-6           1001 B786887-6  Q Ri                 904 Qf
+B-7           1002 C8D6652-A  O Fl Ni              903 Qf
+B-8           1003 D100131-A    Lo Ni Va           504 Qf
+B-9           1004 C7B1545-5  O Fl Ni           A  433 Qf
+B-10          1005 C242368-5  P Lo Ni Po           601 Qf
+B-11          1009 C441500-B    Ni Po              813 Qf
+B-12          1010 A697433-D  O Ni                 710 Qf
+B-13          1102 C302967-A  Q Hi Ic Na Va        622 Qf
+B-14          1106 A454640-C    Ag Ni              500 Qf
+B-15          1107 C442575-7    Ni Po           B  824 Na
+B-16          1108 C78959A-7    Ni                 405 Qf
+B-17          1109 C350547-7  O De Ni Po           624 Qf
+B-18          1201 C443421-6  O Ni Po              320 Qf
+B-19          1202 D9C2677-4  O Fl Ni           A  900 Qf
+B-20          1203 C679444-A  O Ni                 304 Qf
+B-21          1206 D442657-7    Ni Po              704 Qf
+B-22          1207 E676888-6                       303 Qf
+B-23          1303 B100400-A  O Ni Va              914 Qf
+B-24          1306 B301ABA-C  R Hi Ic Na Va        323 Qf
+B-25          1307 B564231-7    Lo Ni              303 Qf
+B-26          1308 E557A76-7    Hi              B  400 Na
+B-27          1309 B31067B-9    Na Ni           B  503 Na
+B-28          1401 C42048A-6  O De Ni Po           404 Qf
+B-29          1402 D5966A8-1  O Ag Ni              804 Qf
+B-30          1403 C200720-A    Na Va              713 Qf
+B-31          1404 X476886-1                    R  800 Qf
+B-32          1503 C463647-8    Ni Ri              202 Qf
+B-33          1504 B889ACC-C  R Hi                 403 Qf
+B-34          1509 B693678-8    Ni              B  903 Na
+B-35          1601 E335866-7                       215 Qf
+B-36          1602 C553A77-9    Hi Po           B  313 Na
+B-37          1603 C540100-8  P De Lo Ni Po        224 Qf
+B-38          1606 D100103-7  P Lo Ni Va           105 Qf
+B-39          1609 A400879-B    Na Va           B  702 Na
+B-40          1610 C440000-5    Ba De Lo Ni Po     902 Qf
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Creshin SECTOR: Ingresh Sector
+#
+# Jump-routes
+#
+$2209 1912 0 1 13
+$2209 2309 0 0 13
+$2309 2608 1 0 13
+$2209 2206 0 0 13
+$2206 2005 0 0 13
+$2005 1805 0 0 13
+$1805 1806 0 0 13
+$1805 1504 -1 0 13
+$2005 1902 0 0 13
+$1902 1901 0 0 13
+$1902 2201 0 0 13
+$2201 2302 0 0 13
+$2302 2603 1 0 13
+$2201 2203 0 0 13
+$2203 2206 0 0 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1701 E275345-7    Lo Ni              603 Qf
+C-2           1702 D32657A-4    Ni              B  503 Na
+C-3           1704 E462110-8    Lo Ni              320 Qf
+C-4           1706 C69A344-B  P Lo Ni Wa           802 Qf
+C-5           1801 C9A7554-9    Fl Ni              911 Qf
+C-6           1804 E6879CA-5    Hi                 320 Qf
+C-7           1805 AAB667A-C    Fl Ni           A  605 Qf
+C-8           1806 B6A4411-C    Fl Ni              814 Qf
+C-9           1901 B221661-8  O Na Ni Po           522 Qf
+C-10          1902 B556100-A  P Lo Ni              503 Qf
+C-11          1904 C57587B-5                    B  702 Na
+C-12          1905 C656534-5  O Ag Ni              100 Qf
+C-13          1908 D867510-5  O Ag Ni              603 Qf
+C-14          2001 D793766-6                       824 Qf
+C-15          2002 BA96579-8    Ag Ni           B  202 Na
+C-16          2004 C4389A8-A    Hi In              104 Qf
+C-17          2005 A410230-E    Lo Ni              900 Qf
+C-18          2007 D100584-7  O Ni Va              803 Qf
+C-19          2009 C867422-5    Ni                 902 Qf
+C-20          2101 C362762-5    Ri                 611 Qf
+C-21          2102 D426420-4    Ni                 323 Qf
+C-22          2107 E595644-4    Ag Ni              304 Qf
+C-23          2109 C262000-9  P Ba Lo Ni           524 Qf
+C-24          2201 B86A301-B    Lo Ni Wa           610 Qf
+C-25          2202 C3246B7-9    Ni                 424 Qf
+C-26          2203 A597466-9    Ni                 304 Qf
+C-27          2204 A83A314-E    Lo Ni Wa           703 Qf
+C-28          2206 BAB98AC-A  Q Fl              A  200 Qf
+C-29          2207 C664523-4    Ag Ni              115 Qf
+C-30          2208 D994751-3  O Ag                 914 Qf
+C-31          2209 A888411-9    Ni                 504 Qf
+C-32          2302 B000467-A    As Ni              502 Qf
+C-33          2303 E676AAB-8    Hi In              234 Qf
+C-34          2309 B6A29AA-9    Fl Hi              812 Qf
+C-35          2403 C253354-8  P Lo Ni Po           725 Qf
+C-36          2404 D9998AB-3                       210 Qf
+C-37          2405 D427210-6    Lo Ni              813 Qf
+C-38          2406 D553000-6  P Ba Lo Ni Po        211 Qf
+C-39          2409 E876465-6    Ni                 424 Qf
+C-40          2410 X303411-5    Ic Va           R  703 Qf
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Dleshin SECTOR: Ingresh Sector
+#
+# Jump-routes
+#
+$2608 2309 -1 0 13
+$2603 2302 -1 0 13
+$2603 2905 0 0 13
+$2905 3004 0 0 13
+$2905 3006 0 0 13
+$3006 3008 0 0 13
+$3008 2912 0 1 13
+$2603 2605 0 0 13
+$2605 2608 0 0 13
+$2608 2711 0 1 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2501 D56559A-7  O Ag Ni              703 Qf
+D-2           2502 C6738AC-3  Q                    530 Qf
+D-3           2503 E775624-3    Ag Ni              904 Qf
+D-4           2504 C576676-5    Ag Ni           B  805 Na
+D-5           2507 C612676-4    Ic Na Ni        B  324 Na
+D-6           2602 C9D4142-A  P Fl Lo Ni           124 Qf
+D-7           2603 A5906A8-B  O De Ni              824 Qf
+D-8           2605 B735437-8  O Ni                 210 Qf
+D-9           2607 X10056A-5    Va              R  510 Qf
+D-10          2608 B792695-6  O Ni                 100 Qf
+D-11          2610 C443687-4  O Ni Po              703 Qf
+D-12          2701 B737777-B                    B  503 Na
+D-13          2702 E597561-3    Ag Ni              403 Qf
+D-14          2804 E150355-A    De Lo Ni Po        504 Qf
+D-15          2805 C725652-A  O Ni                 210 Qf
+D-16          2806 C675987-A    Hi In              204 Qf
+D-17          2809 E00026B-A    As Lo Ni           415 Qf
+D-18          2810 C685677-3    Ag Ni Ri        B  800 Na
+D-19          2903 C565734-6    Ag                 704 Qf
+D-20          2905 B5739DG-7  Q Hi In              602 Qf
+D-21          2907 CA79269-5  P Lo Ni              803 Qf
+D-22          2910 E514744-4    Ic                 913 Qf
+D-23          3001 E98A003-5    Lo Ni Wa           604 Qf
+D-24          3003 C884887-6    Ri                 620 Qf
+D-25          3004 B7C0664-B    De Ni           A  923 Qf
+D-26          3005 E200455-8    Ni Va              512 Qf
+D-27          3006 B000532-A  O As Ni              525 Qf
+D-28          3007 B340341-7  P De Lo Ni Po        714 Qf
+D-29          3008 B467140-7  P Lo Ni              710 Qf
+D-30          3009 C698998-5    Hi In              500 Qf
+D-31          3010 C9B8676-8  O Fl Ni           A  223 Qf
+D-32          3101 C8A3999-A    Fl Hi              903 Qf
+D-33          3104 D674783-3  O Ag                 703 Qf
+D-34          3105 C6838BB-3                       605 Qf
+D-35          3110 C34058C-7  O De Ni Po           302 Qf
+D-36          3202 C384412-9    Ni                 824 Qf
+D-37          3203 C727568-6    Ni                 903 Qf
+D-38          3205 D77AAAA-8  R Hi In Wa           903 Qf
+D-39          3209 B785679-6    Ag Ni Ri        B  603 Na
+D-40          3210 C3575AA-A    Ag Ni              120 Qf
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Eingres SECTOR: Ingresh Sector
+#
+# Jump-routes
+#
+$0116 3216 -1 0 13
+$0213 3212 -1 0 13
+$0213 0515 0 0 13
+$0515 0715 0 0 13
+$0715 0815 0 0 13
+$0815 0816 0 0 13
+$0715 0813 0 0 13
+$0813 0812 0 0 13
+$0213 0114 0 0 13
+$0114 0116 0 0 13
+$0116 0216 0 0 13
+$0216 0419 0 0 13
+$0419 0719 0 0 13
+$0719 0816 0 0 13
+$0419 0522 0 1 13
+$0812 0810 0 -1 13
+$0813 0914 1 0 13
+$0719 0919 1 0 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0112 D234456-7    Ni                 913 Qf
+E-2           0113 C463589-8    Ni                 803 Qf
+E-3           0114 B3537A9-A  O Po                 604 Qf
+E-4           0116 BA9A020-7  P Lo Ni Wa           501 Qf
+E-5           0117 C688534-5  O Ag Ni              304 Qf
+E-6           0118 C577879-6                    B  402 Na
+E-7           0119 C3325A8-A  O Ni Po              200 Qf
+E-8           0120 X7B376A-2    Fl              R  122 Qf
+E-9           0212 C230311-6    De Lo Ni Po        405 Qf
+E-10          0213 A210446-E  O Ni                 303 Qf
+E-11          0214 E574315-3    Lo Ni              700 Qf
+E-12          0215 C757003-5    Lo Ni              823 Qf
+E-13          0216 B6236A6-6  O Na Ni Po           604 Qf
+E-14          0217 D527531-7    Ni                 514 Qf
+E-15          0219 C515555-A    Ic Ni              404 Qf
+E-16          0220 E879589-4    Ni                 104 Qf
+E-17          0314 C623300-B    Lo Ni Po           500 Qf
+E-18          0316 C510484-A    Ni                 123 Qf
+E-19          0412 C220346-9    De Lo Ni Po        104 Qf
+E-20          0413 E411898-7    Ic Na              204 Qf
+E-21          0416 C246575-A    Ag Ni           B  100 Na
+E-22          0417 C95A130-9  P Lo Ni Wa           700 Qf
+E-23          0418 E301101-A    Ic Lo Ni Va        824 Qf
+E-24          0419 B200657-9    Na Ni Va           302 Qf
+E-25          0511 E341325-7    Lo Ni Po           424 Qf
+E-26          0512 C32056A-8    De Ni Po           510 Qf
+E-27          0515 B536454-D    Ni                 813 Qf
+E-28          0516 C539412-A    Ni                 511 Qf
+E-29          0518 C74A463-8    Ni Wa              203 Qf
+E-30          0519 D89A594-8  O Ni Wa              400 Qf
+E-31          0611 E430510-8    De Ni Po           201 Qf
+E-32          0612 C554424-8    Ni                 512 Qf
+E-33          0613 C747402-6  O Ni                 812 Qf
+E-34          0617 C310630-5    Na Ni              303 Qf
+E-35          0619 E120351-B    De Lo Ni Po        805 Qf
+E-36          0711 C889000-8    Ba Lo Ni           303 Qf
+E-37          0715 B7B589A-B  Q Fl              A  710 Qf
+E-38          0718 C697777-4    Ag              B  104 Na
+E-39          0719 B789567-7  O Ni                 710 Qf
+E-40          0812 B555A69-E    Hi                 300 Qf
+E-41          0813 A401122-E  P Ic Lo Ni Va        103 Qf
+E-42          0815 B547642-6  O Ag Ni              602 Qf
+E-43          0816 B400841-A    Na Va              125 Qf
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Fingrese SECTOR: Ingresh Sector
+#
+# Jump-routes
+#
+$0914 0813 -1 0 13
+$0919 0719 -1 0 13
+$1412 1010 0 -1 13
+$1412 1511 0 0 13
+$1412 1612 0 0 13
+$1412 1115 0 0 13
+$1115 0914 0 0 13
+$1115 1117 0 0 13
+$1117 0919 0 0 13
+$1612 1912 1 0 13
+$0913 0710 -1 -1 10
+$0913 1015 0 0 10
+$1015 1218 0 0 10
+$1218 1322 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0911 C210751-7    Na                 222 Qf
+Calindore     0913 C385556-8    Ag Ni              514 Qf
+F-3           0914 A110000-E  P Ba Lo Ni           925 Qf
+F-4           0915 C637675-6    Ni              B  102 Na
+F-5           0918 C878433-8    Ni                 804 Qf
+F-6           0919 B201310-B  P Ic Lo Ni Va        225 Qf
+F-7           1012 C657210-9  P Lo Ni              603 Qf
+Lanvara       1015 C94A764-7  O Wa                 203 Qf
+F-9           1016 DAA8672-5    Fl Ni           B  404 Na
+F-10          1018 C412622-6  O Ic Na Ni           812 Qf
+F-11          1111 C423762-7  O Na Po              914 Qf
+F-12          1114 C480798-8  O De Ri              703 Qf
+F-13          1115 B000430-D  O As Ni              920 Qf
+F-14          1117 B884332-8    Lo Ni              104 Qf
+F-15          1119 C474365-A    Lo Ni              103 Qf
+F-16          1217 D53787B-4                    B  700 Na
+Whanile       1218 C210431-7    Ni                 624 Qf
+F-18          1220 D8D09AA-7  Q De Hi              923 Qf
+F-19          1317 D558668-1    Ag Ni              600 Qf
+F-20          1318 E120520-9    De Ni Po           922 Qf
+F-21          1319 CA899BG-9    Hi                 123 Qf
+F-22          1412 B12069C-C  O De Na Ni Po        312 Qf
+F-23          1416 C637666-8  O Ni                 603 Qf
+F-24          1418 C878885-3  Q                    905 Qf
+F-25          1511 A663331-8    Lo Ni              600 Qf
+F-26          1512 D535320-6  P Lo Ni              500 Qf
+F-27          1514 D685775-3    Ag Ri           B  204 Na
+F-28          1515 C000595-7  O As Ni              524 Qf
+F-29          1516 C557430-6    Ni                 724 Qf
+F-30          1518 E57668C-1    Ag Ni              500 Qf
+F-31          1612 B547235-9  P Lo Ni              513 Qf
+F-32          1615 E100240-6    Lo Ni Va           704 Qf
+F-33          1616 C986000-5  P Ba Lo Ni           624 Qf
+F-34          1620 C674625-7  O Ag Ni              402 Qf
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Glinga SECTOR: Ingresh Sector
+#
+# Jump-routes
+#
+$1818 1720 0 0 13
+$1720 1621 -1 1 13
+$1912 1714 0 0 13
+$1714 2016 0 0 13
+$1912 1612 -1 0 13
+$1912 2209 0 -1 13
+$1818 2016 0 0 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1711 C610423-5    Ni                 520 Qf
+G-2           1713 C6526A9-7    Ni Po              803 Qf
+G-3           1714 B353447-B    Ni Po              204 Qf
+G-4           1716 C652556-9  O Ni Po              223 Qf
+G-5           1717 C334477-B    Ni              B  302 Na
+G-6           1718 B463474-C    Ni              B  500 Na
+G-7           1720 B362655-9  O Ni Ri              904 Qf
+G-8           1812 C858353-8    Lo Ni              102 Qf
+G-9           1818 A320895-D    De Na Po           803 Qf
+Glaoree       1912 A334200-G  P Lo Ni Cx           512 Qf
+G-11          1917 D130336-9  P De Lo Ni Po        504 Qf
+G-12          2016 A246368-A    Lo Ni              420 Qf
+G-13          2020 C24757A-A    Ag Ni           B  913 Na
+G-14          2111 C234894-7                       811 Qf
+G-15          2116 C234103-B    Lo Ni              800 Qf
+G-16          2120 C575488-4  O Ni                 104 Qf
+G-17          2212 D310200-6    Lo Ni              303 Qf
+G-18          2216 D567300-4  P Lo Ni              303 Qf
+G-19          2218 C6A0449-9  O De Ni              800 Qf
+G-20          2314 C789730-7                       204 Qf
+G-21          2318 E340546-6    De Ni Po           205 Qf
+G-22          2418 C337545-6  O Ni                 204 Qf
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hinesh SECTOR: Ingresh Sector
+#
+# Jump-routes
+#
+$2912 3008 0 -1 13
+$2711 2608 0 -1 13
+$2711 2512 0 0 13
+$2512 2614 0 0 13
+$2614 2717 0 0 13
+$2711 2912 0 0 13
+$2912 3211 0 0 13
+$2912 3013 0 0 13
+$3013 2914 0 0 13
+$2914 2815 0 0 13
+$2815 2717 0 0 13
+$2717 2919 0 0 13
+$2919 3120 0 0 13
+$3120 3218 0 0 13
+$3218 3215 0 0 13
+$3215 3013 0 0 13
+$3215 3116 0 0 13
+$3116 2717 0 0 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2512 A52A7AE-E  O Wa                 602 Qf
+H-2           2513 D689510-8  O Ni                 314 Qf
+H-3           2516 C691558-A    Ni                 801 Qf
+H-4           2518 D32348A-8    Ni Po              204 Qf
+H-5           2519 C000523-B  O As Ni              803 Qf
+H-6           2611 E649453-8    Ni                 920 Qf
+H-7           2614 B5728DE-3  Q                    424 Qf
+H-8           2615 C739476-7    Ni              B  304 Na
+H-9           2617 C7B3442-9  O Fl Ni           A  512 Qf
+H-10          2619 C556AAD-A  R Hi                 130 Qf
+H-11          2711 A000526-F  O As Ni              814 Qf
+H-12          2714 C9A7699-5    Fl Ni              610 Qf
+H-13          2715 C88A755-9    Ri Wa              503 Qf
+H-14          2716 C9C4100-6  P Fl Lo Ni        A  103 Qf
+H-15          2717 A797644-7  O Ag Ni              603 Qf
+H-16          2811 C34435A-9  P Lo Ni              100 Qf
+H-17          2813 C568100-5    Lo Ni              323 Qf
+H-18          2815 B775434-9  O Ni                 814 Qf
+H-19          2817 C252853-8    Po                 102 Qf
+H-20          2911 D8458A7-5  Q                    502 Qf
+H-21          2912 B357144-8  P Lo Ni              404 Qf
+H-22          2914 B230543-D  O De Ni Po           105 Qf
+H-23          2917 C9B6896-6    Fl              A  915 Qf
+H-24          2918 D2029CG-6  Q Hi Ic Na Va        703 Qf
+H-25          2919 B6548BB-A  Q                    804 Qf
+H-26          3011 D6A0365-6    De Lo Ni           713 Qf
+H-27          3012 C61089D-8  Q Na                 614 Qf
+H-28          3013 BAA8754-C    Fl                 713 Qf
+H-29          3016 C877542-9    Ag Ni              602 Qf
+H-30          3018 C472005-9    Lo Ni              100 Qf
+H-31          3019 B400444-9  O Ni Va              103 Qf
+H-32          3111 C2009A5-A    Hi Na Va           623 Qf
+H-33          3113 B635377-9    Lo Ni           B  212 Na
+H-34          3116 A846145-B    Lo Ni              700 Qf
+H-35          3120 B9C0778-A  O De              A  801 Qf
+H-36          3211 B9A4830-B    Fl                 125 Qf
+H-37          3213 D684311-5  P Lo Ni              624 Qf
+H-38          3215 A458436-9    Ni                 303 Qf
+H-39          3216 B848765-7  O Ag                 220 Qf
+H-40          3217 C798557-8    Ag Ni              114 Qf
+H-41          3218 B200731-7  O Na Va              303 Qf
+H-42          3219 C262967-6    Hi                 903 Qf
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Iningresh SECTOR: Ingresh Sector
+#
+# Jump-routes
+#
+$0129 3230 -1 0 13
+$0126 3127 -1 0 13
+$0323 3122 -1 0 13
+$0522 0419 0 -1 13
+$0522 0323 0 0 13
+$0522 0622 0 0 13
+$0323 0325 0 0 13
+$0126 0325 0 0 13
+$0325 0526 0 0 13
+$0526 0627 0 0 13
+$0627 0630 0 0 13
+$0627 0828 0 0 13
+$0828 1126 1 0 13
+$0129 0430 0 0 13
+$0430 0630 0 0 13
+$0430 0432 0 1 13
+$0828 0931 1 1 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0121 C120014-6  P De Lo Ni Po        700 Qf
+I-2           0123 C541130-4  P Lo Ni Po           714 Qf
+I-3           0126 B7A4441-9    Fl Ni              202 Qf
+I-4           0128 C54A856-7  Q Wa                 424 Qf
+I-5           0129 AAC589B-D  Q Fl              A  903 Qf
+I-6           0223 DABA586-9    Fl Ni Wa        A  501 Qf
+I-7           0225 E779866-5                       904 Qf
+I-8           0226 B265745-B  O Ag Ri              313 Qf
+I-9           0228 C160526-9  O De Ni              923 Qf
+I-10          0229 C223987-C    Hi In Na Po        102 Qf
+I-11          0321 D6466AC-3  O Ag Ni              401 Qf
+I-12          0322 C324200-C    Lo Ni              111 Qf
+I-13          0323 B451642-8  O Ni Po              304 Qf
+I-14          0324 B565235-A  P Lo Ni              611 Qf
+I-15          0325 B9C1431-B  O Fl Ni           A  113 Qf
+I-16          0327 D45059B-6  O De Ni Po           603 Qf
+I-17          0328 E4258AB-8                       111 Qf
+I-18          0329 C210320-B    Lo Ni              912 Qf
+I-19          0330 C696634-5    Ag Ni              623 Qf
+I-20          0424 D100878-5    Na Va           B  201 Na
+I-21          0426 D666412-5  O Ni                 501 Qf
+I-22          0427 C431001-A    Lo Ni Po           313 Qf
+I-23          0429 C658534-9    Ag Ni              323 Qf
+I-24          0430 AAD1200-F    Fl Lo Ni           603 Qf
+I-25          0522 B682555-B  O Ni                 110 Qf
+I-26          0523 E590140-6    De Lo Ni           403 Qf
+I-27          0524 C1108CG-7    Na                 302 Qf
+I-28          0526 A783541-B  O Ni                 514 Qf
+I-29          0529 E420574-4    De Ni Po        B  403 Na
+I-30          0622 B551033-7  P Lo Ni Po           213 Qf
+I-31          0623 C457635-9    Ag Ni              301 Qf
+I-32          0626 E230678-3    De Na Ni Po     B  904 Na
+I-33          0627 A471569-C    Ni                 302 Qf
+I-34          0628 C130210-8    De Lo Ni Po        903 Qf
+I-35          0630 B200788-A  O Na Va              804 Qf
+I-36          0722 E260223-8    De Lo Ni           403 Qf
+I-37          0725 E556453-6    Ni                 414 Qf
+I-38          0726 C200444-B    Ni Va              802 Qf
+I-39          0727 C300469-8    Ni Va              101 Qf
+I-40          0729 E878544-6    Ag Ni              203 Qf
+I-41          0826 E696500-8    Ag Ni              800 Qf
+I-42          0828 A666658-8    Ag Ni Ri           813 Qf
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jagresh SECTOR: Ingresh Sector
+#
+# Jump-routes
+#
+$1126 0828 -1 0 13
+$1329 1132 0 1 13
+$1126 1225 0 0 13
+$1225 1227 0 0 13
+$1227 1329 0 0 13
+$1329 1426 0 0 13
+$1225 1124 0 0 13
+$1124 1222 0 0 13
+$1222 1522 0 0 13
+$1522 1621 0 0 13
+$1621 1720 1 -1 13
+$1225 1426 0 0 13
+$1426 1728 1 0 13
+$1322 1218 0 -1 10
+$1322 1525 0 0 10
+$1525 1728 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0921 C96A8A8-A  Q Wa                 113 Qf
+J-2           0928 A210875-C    Na              B  704 Na
+J-3           0929 B331677-8    Na Ni Po        B  334 Na
+J-4           1026 E774786-3    Ag                 105 Qf
+J-5           1030 C77A849-7    Wa                 324 Qf
+J-6           1124 B678A95-B    Hi In              512 Qf
+J-7           1125 D221774-5    Na Po           B  311 Na
+J-8           1126 A665967-A    Hi                 603 Qf
+J-9           1129 C87A320-B  P Lo Ni Wa           600 Qf
+J-10          1222 A7975AC-D  O Ag Ni              504 Qf
+J-11          1225 A769300-D  P Lo Ni              923 Qf
+J-12          1226 A000300-E    As Lo Ni           701 Qf
+J-13          1227 B440132-C  P De Lo Ni Po        803 Qf
+J-14          1228 E243457-9    Ni Po              903 Qf
+Hashkaal      1322 D45268A-7  O Ni Po              521 Qf
+J-16          1324 C140A51-A    De Hi In Po        504 Qf
+J-17          1325 E412534-7    Ic Ni              314 Qf
+J-18          1329 A522146-B  P Lo Ni Po           803 Qf
+J-19          1330 C473247-9    Lo Ni              904 Qf
+J-20          1426 B74979C-A                       224 Qf
+J-21          1427 C94499D-9    Hi In              705 Qf
+J-22          1428 C638ADC-7  R Hi In              603 Qf
+J-23          1429 C98A521-7  O Ni Wa              404 Qf
+J-24          1522 B87A479-C  O Ni Wa              804 Qf
+Flansiera     1525 E547542-3    Ag Ni              401 Qf
+J-26          1527 D686866-6  Q Ri                 203 Qf
+J-27          1528 C488133-6    Lo Ni              402 Qf
+J-28          1621 A6978BE-7                       601 Qf
+J-29          1622 C210627-8  O Na Ni              820 Qf
+J-30          1623 C648301-9    Lo Ni              900 Qf
+J-31          1625 C474622-5  O Ag Ni              803 Qf
+J-32          1629 C00057A-B    As Ni           B  201 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Keninge SECTOR: Ingresh Sector
+#
+# Jump-routes
+#
+$1728 1426 -1 0 13
+$1728 1729 0 0 13
+$1729 1532 -1 1 13
+$1728 1525 -1 0 10
+$1728 2130 0 0 10
+$2130 2333 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1722 C6647AA-5    Ag                 921 Qf
+K-2           1724 C237200-C    Lo Ni              704 Qf
+Kommern       1728 B573633-6    Ni                 904 Qf
+K-4           1729 A221755-D  O Na Po              822 Qf
+K-5           1829 C7276AC-5  O Ni                 801 Qf
+K-6           1921 E669559-6    Ni                 401 Qf
+K-7           1927 C98A673-9    Ni Ri Wa        B  132 Na
+K-8           1929 C568232-7  P Lo Ni              504 Qf
+K-9           1930 D255675-5    Ag Ni           B  502 Na
+K-10          2121 E474543-4    Ag Ni              813 Qf
+K-11          2122 C8498AA-5                       524 Qf
+K-12          2124 C6A0340-8    De Lo Ni           511 Qf
+K-13          2125 D547586-3    Ag Ni              222 Qf
+K-14          2127 X588222-0    Lo              R  222 Qf
+Danna         2130 C476424-6    Ni                 613 Qf
+K-16          2221 B385562-B  O Ag Ni              204 Qf
+K-17          2325 C595667-5    Ag Ni              402 Qf
+K-18          2422 AA8A551-B  O Ni Wa              505 Qf
+K-19          2424 E9C6841-2    Fl              A  905 Qf
+K-20          2430 C221530-8  O Ni Po              804 Qf
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lagingi SECTOR: Ingresh Sector
+#
+# Jump-routes
+#
+$2529 2632 0 1 13
+$2529 2626 0 0 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2521 C6A4598-A  O Fl Ni              303 Qf
+L-2           2523 X5229B8-3    Hi In Po        R  824 Qf
+L-3           2524 C546247-9    Lo Ni              124 Qf
+L-4           2526 E322002-9    Lo Ni Po           215 Qf
+L-5           2527 E372568-5    Ni                 902 Qf
+L-6           2528 C484126-6    Lo Ni              105 Qf
+L-7           2529 B7A1557-D    Fl Ni              500 Qf
+L-8           2624 E444642-2    Ag Ni              400 Qf
+L-9           2626 B500212-B  P Lo Ni Va           204 Qf
+L-10          2628 D301200-A  P Ic Lo Ni Va        902 Qf
+L-11          2721 X463524-3                    R  103 Qf
+L-12          2722 D758965-4    Hi                 904 Qf
+L-13          2723 C550688-8    De Ni Po           110 Qf
+L-14          2727 C656225-7  P Lo Ni              634 Qf
+L-15          2730 D857232-4  P Lo Ni              912 Qf
+L-16          2827 C8C4737-9  O Fl              A  322 Qf
+L-17          2828 C130246-C    De Lo Ni Po        403 Qf
+L-18          2829 C000678-8    As Na Ni        B  614 Na
+L-19          2923 X000477-4    As              R  923 Qf
+L-20          2925 C576737-7  O Ag                 302 Qf
+L-21          2928 B462576-7    Ni              B  721 Na
+L-22          2929 C634010-9    Lo Ni              904 Qf
+L-23          2930 C595430-9  O Ni                 233 Qf
+L-24          3021 C352478-5    Ni Po           B  800 Na
+L-25          3022 C225200-9  P Lo Ni              904 Qf
+L-26          3023 C300345-6    Lo Ni Va           424 Qf
+L-27          3026 C200764-9    Na Va              504 Qf
+L-28          3029 D300989-6    Hi Na Va           503 Qf
+L-29          3030 C35359B-9  O Ni Po              401 Qf
+L-30          3123 E639779-6                    B  103 Na
+L-31          3125 C6A0610-7  O De Ni              213 Qf
+L-32          3129 B344778-7    Ag              B  321 Na
+L-33          3221 E453612-4    Ni Po              302 Qf
+L-34          3222 E474745-6    Ag                 313 Qf
+L-35          3224 C787444-8  O Ni                 604 Qf
+L-36          3226 C897553-6  O Ag Ni              911 Qf
+L-37          3227 E57768C-6    Ag Ni              202 Qf
+L-38          3228 C66A112-6  P Lo Ni Wa           610 Qf
+L-39          3230 E422689-8    Na Ni Po           320 Qf
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Mingree SECTOR: Ingresh Sector
+#
+# Jump-routes
+#
+$0432 0430 0 -1 13
+$0432 0334 0 0 13
+$0139 0135 0 0 13
+$0139 0236 0 0 13
+$0139 3038 -1 0 13
+$0139 3136 -1 0 13
+$0139 0201 0 1 13
+$0139 0540 0 0 13
+$0540 0640 0 0 13
+$0640 0702 0 1 13
+$0640 0839 0 0 13
+$0839 1237 1 0 13
+$0236 0538 0 0 13
+$0538 0640 0 0 13
+$0538 0139 0 0 13
+$0538 0636 0 0 13
+$0636 0935 1 0 13
+$0636 0634 0 0 13
+$0634 0432 0 0 13
+$0636 0536 0 0 13
+$0536 0336 0 0 13
+$0336 0236 0 0 13
+$0135 0334 0 0 13
+$0135 0134 0 0 13
+$0135 3136 -1 0 13
+$0139 0102 0 1 2
+$0139 3136 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0131 C100640-A  O Na Ni Va           414 Qf
+M-2           0132 D79A653-6  O Ni Wa              100 Qf
+M-3           0133 E47999D-8    Hi In              404 Qf
+M-4           0134 A100347-D  P Lo Ni Va           100 Qf
+M-5           0135 B74A611-B  O Ni Wa              313 Qf
+M-6           0138 C372203-9    Lo Ni              112 Qf
+Mooting       0139 B110AAA-G  R Hi Na Cx           114 Qf
+M-8           0140 E6A3410-6    Fl Ni              800 Qf
+M-9           0231 C456468-A    Ni                 803 Qf
+M-10          0233 C9A6256-6  P Fl Lo Ni           200 Qf
+M-11          0234 B6567CA-8  O Ag                 403 Qf
+M-12          0236 B64A754-8  O Wa                 102 Qf
+M-13          0237 C56678B-7    Ag Ri              423 Qf
+M-14          0239 E754558-8    Ag Ni              313 Qf
+M-15          0333 D67847B-2    Ni              B  701 Na
+M-16          0334 B455444-B  O Ni                 803 Qf
+M-17          0336 B657140-8  P Lo Ni              324 Qf
+M-18          0337 D380433-3  O De Ni              403 Qf
+M-19          0339 C648632-5  O Ag Ni              902 Qf
+M-20          0432 B727552-D    Ni                 702 Qf
+M-21          0433 C576768-8    Ag                 911 Qf
+M-22          0437 B557464-A  O Ni                 403 Qf
+M-23          0531 C250402-8    De Ni Po           824 Qf
+M-24          0532 DAA5322-5  P Fl Lo Ni           202 Qf
+M-25          0534 CAF1644-7  O Fl Ni              301 Qf
+M-26          0536 B675AA9-C  R Hi In              513 Qf
+M-27          0538 A000587-E    As Ni              520 Qf
+M-28          0540 B140555-9  O De Ni Po           903 Qf
+M-29          0631 C130100-9    De Lo Ni Po        522 Qf
+M-30          0634 A788450-A  O Ni                 203 Qf
+M-31          0636 B546636-5    Ag Ni              102 Qf
+M-32          0639 C959755-5                       821 Qf
+M-33          0640 B444889-8  Q                    603 Qf
+M-34          0732 E370101-4    De Lo Ni           512 Qf
+M-35          0733 D68A979-9    Hi Wa           B  313 Na
+M-36          0734 C566243-5    Lo Ni              603 Qf
+M-37          0735 E446103-4    Lo Ni              605 Qf
+M-38          0739 E8C4698-5    Fl Ni           A  824 Qf
+M-39          0740 C403300-B    Ic Lo Ni Va        613 Qf
+M-40          0832 D582205-5  P Lo Ni              822 Qf
+M-41          0837 X661247-0    Lo              R  203 Qf
+M-42          0838 A611774-A    Ic Na           B  304 Na
+M-43          0839 B363AA6-C  R Hi                 903 Qf
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Natingee SECTOR: Ingresh Sector
+#
+# Jump-routes
+#
+$1237 0839 -1 0 13
+$0935 0636 -1 0 13
+$0935 1132 0 0 13
+$1132 0931 0 0 13
+$0931 0828 -1 -1 13
+$0935 1035 0 0 13
+$1035 1036 0 0 13
+$0935 1036 0 0 13
+$1036 1138 0 0 13
+$1138 1339 0 0 13
+$1339 1638 0 0 13
+$1638 1939 1 0 13
+$1339 1501 0 1 13
+$1132 1532 0 0 13
+$1532 1632 0 0 13
+$1132 1329 0 -1 13
+$1532 1729 1 -1 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0931 B313268-A    Ic Lo Ni           321 Qf
+N-2           0935 A1206BF-C    De Na Ni Po        104 Qf
+N-3           1033 C260431-A    De Ni              303 Qf
+N-4           1035 B748466-7  O Ni                 304 Qf
+N-5           1036 A3207A9-B  O De Na Po           305 Qf
+N-6           1039 C613235-9    Ic Lo Ni           114 Qf
+N-7           1132 A360721-9    De                 204 Qf
+N-8           1138 A373533-E    Ni                 322 Qf
+N-9           1139 E501543-8    Ic Ni Va           224 Qf
+N-10          1233 X55866B-1    Ag              R  310 Qf
+N-11          1235 E558677-5    Ag Ni           B  400 Na
+N-12          1237 B554722-A  O Ag                 700 Qf
+N-13          1331 D442525-6  O Ni Po              404 Qf
+N-14          1332 E200131-5    Lo Ni Va           605 Qf
+N-15          1333 E9A677A-2    Fl              B  424 Na
+N-16          1334 C9A1125-5    Fl Lo Ni           402 Qf
+N-17          1335 C246777-5    Ag              B  803 Na
+N-18          1336 C222644-5  O Na Ni Po           920 Qf
+N-19          1337 D748202-5  P Lo Ni              210 Qf
+N-20          1339 A222787-A    Na Po              900 Qf
+N-21          1434 C69888B-5                       300 Qf
+N-22          1435 D73A6BC-8    Ni Wa              404 Qf
+N-23          1436 C500496-9  O Ni Va              314 Qf
+N-24          1437 C440756-7  O De Po              200 Qf
+N-25          1531 C695777-3    Ag              B  713 Na
+N-26          1532 B574324-6  P Lo Ni              703 Qf
+N-27          1632 B5279DF-6    Hi In              603 Qf
+N-28          1633 B15067B-B    De Ni Po        B  702 Na
+N-29          1636 C76A443-9    Ni Wa              522 Qf
+N-30          1638 A446430-E    Ni                 402 Qf
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ogringi SECTOR: Ingresh Sector
+#
+# Jump-routes
+#
+$1939 1638 -1 0 13
+$1939 2139 0 0 13
+$2138 2140 0 0 13
+$2140 2240 0 0 13
+$2139 2238 0 0 13
+$2238 2437 0 0 13
+$2138 2035 0 0 13
+$2035 2132 0 0 13
+$2132 2334 0 0 13
+$2334 2336 0 0 13
+$2336 2437 0 0 13
+$2336 2236 0 0 13
+$2236 2138 0 0 13
+$2437 2638 1 0 13
+$2334 2632 1 0 13
+$2240 2502 1 1 13
+$2140 2104 0 1 13
+$2333 2130 0 -1 10
+$2333 2536 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1736 C749567-6    Ni                 922 Qf
+O-2           1739 C565300-9  P Lo Ni              603 Qf
+O-3           1740 C886200-A    Lo Ni              614 Qf
+O-4           1831 C422AB9-C    Hi In Na Po        604 Qf
+O-5           1833 E330867-3    De Na Po           703 Qf
+O-6           1835 E597200-7    Lo Ni              910 Qf
+O-7           1837 D6A2465-5    Fl Ni              522 Qf
+O-8           1839 C3269A6-7    Hi In              514 Qf
+O-9           1840 X657657-0    Ag              R  603 Qf
+O-10          1932 E100312-9    Lo Ni Va           203 Qf
+O-11          1933 C355257-B    Lo Ni              304 Qf
+O-12          1934 C3037AA-6    Ic Na Va           304 Qf
+O-13          1935 D757354-6    Lo Ni              102 Qf
+O-14          1936 D565302-4    Lo Ni              721 Qf
+O-15          1938 E58988C-7    Ri                 812 Qf
+O-16          1939 A000035-A    As Lo Ni           304 Qf
+O-17          2031 C447510-8    Ag Ni              724 Qf
+O-18          2033 C425565-8    Ni                 704 Qf
+O-19          2034 B859979-B    Hi              B  423 Na
+O-20          2035 B757669-7    Ag Ni              103 Qf
+O-21          2038 E512588-5    Ic Ni              123 Qf
+O-22          2040 C565323-9  P Lo Ni              702 Qf
+O-23          2132 A626649-9  O Ni                 224 Qf
+O-24          2135 C543376-5    Lo Ni Po        B  402 Na
+O-25          2138 B363547-B  O Ni                 914 Qf
+O-26          2139 A226100-D    Lo Ni              613 Qf
+O-27          2140 B66458A-6  O Ag Ni              204 Qf
+O-28          2233 C364475-6    Ni              B  904 Na
+O-29          2234 E21079B-6    Na                 503 Qf
+O-30          2236 B463515-9    Ni                 700 Qf
+O-31          2238 B361333-7    Lo Ni              912 Qf
+O-32          2240 A210347-D  P Lo Ni              503 Qf
+O-33          2332 C9A1675-5    Fl Ni           B  412 Na
+Eannala       2333 E664588-6    Ag Ni              402 Qf
+O-35          2334 B7348CD-8                       812 Qf
+O-36          2336 B351346-8  P Lo Ni Po           404 Qf
+O-37          2339 C000521-B    As Ni              612 Qf
+O-38          2431 C310116-7  P Lo Ni              620 Qf
+O-39          2432 X747588-0    Ag              R  512 Qf
+O-40          2434 C696676-5    Ag Ni           B  801 Na
+O-41          2437 A352552-F    Ni Po              710 Qf
+O-42          2440 C532499-9  O Ni Po              114 Qf
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Paresa SECTOR: Ingresh Sector
+#
+# Jump-routes
+#
+$2638 2437 -1 0 13
+$2632 2334 -1 0 13
+$2632 2529 0 -1 13
+$2638 2501 0 1 13
+$3239 2901 0 1 13
+$3239 3236 0 0 13
+$3236 3133 0 0 13
+$3133 3131 0 0 13
+$2638 2901 0 1 13
+$2536 2333 -1 0 10
+$2536 2738 0 0 10
+$2738 3040 0 0 10
+$3040 3203 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Gripeen       2536 C352588-5  O Ni Po              911 Qf
+P-2           2537 C5649B9-7  Q Hi                 803 Qf
+P-3           2538 C53A830-B    Wa                 504 Qf
+P-4           2539 C878576-8    Ag Ni           B  502 Na
+P-5           2540 C69AADF-8    Hi In Wa           722 Qf
+P-6           2632 A96A141-C  P Lo Ni Wa           512 Qf
+P-7           2633 C677753-8    Ag                 120 Qf
+P-8           2634 C310010-7    Lo Ni              702 Qf
+P-9           2638 B755355-7    Lo Ni              413 Qf
+P-10          2639 C99AA76-D    Hi In Wa        B  804 Na
+P-11          2734 C676568-4  O Ag Ni              603 Qf
+P-12          2735 C342215-A  P Lo Ni Po           512 Qf
+Unnabba       2738 E424440-5    Ni                 221 Qf
+P-14          2832 D879220-3    Lo Ni              714 Qf
+P-15          2838 C64A478-6  O Ni Wa           B  104 Na
+P-16          2933 C798269-7    Lo Ni              312 Qf
+P-17          2935 C978778-7    Ag              B  614 Na
+P-18          2936 C579464-8  O Ni                 703 Qf
+P-19          2937 C140241-7  P De Lo Ni Po        403 Qf
+P-20          3031 C74AABB-C  R Hi In Wa           203 Qf
+P-21          3033 DAD5577-6    Fl Ni           B  422 Na
+P-22          3034 D797001-7  P Lo Ni              404 Qf
+P-23          3035 E515558-7    Ic Ni              202 Qf
+P-24          3038 E757000-5    Ba Lo Ni           203 Qf
+Anugi         3040 C200454-B    Ni Va              901 Qf
+P-26          3131 A575402-9    Ni                 924 Qf
+P-27          3133 B88A9BC-9  Q Hi Wa              800 Qf
+P-28          3135 C78977B-7    Ri              B  803 Na
+P-29          3136 C303268-6    Ic Lo Ni Va        811 Qf
+P-30          3137 D442426-6  O Ni Po              603 Qf
+P-31          3139 C626677-7    Ni              B  204 Na
+P-32          3140 CA79888-5  Q                    714 Qf
+P-33          3232 A453575-A    Ni Po           B  603 Na
+P-34          3233 D54726A-7  P Lo Ni              505 Qf
+P-35          3235 C456357-7  P Lo Ni              102 Qf
+P-36          3236 B574666-9  O Ag Ni              103 Qf
+P-37          3237 C490677-9  O De Ni           B  810 Na
+P-38          3238 D899976-8  Q Hi In           B  924 Na
+P-39          3239 B867143-B    Lo Ni              104 Qf
+P-40          3240 C427202-B  P Lo Ni              925 Qf
+

@@ -1,0 +1,1078 @@
+Vradt Sector
+
+A: Avradt                    a.dat
+B: Bhavrad                   b.dat
+C: Chravdt                   c.dat
+D: Draddde                   d.dat
+E: Edradter                  e.dat
+F: Fradtan                   f.dat
+G: Gharadde                  g.dat
+H: Horadti                   h.dat
+I: Idradt                    i.dat
+J: Juunedrad                 j.dat
+K: Kladradt                  k.dat
+L: Ladradan                  l.dat
+M: Mudrad                    m.dat
+N: Nundradat                 n.dat
+O: Odravr                    o.dat
+P: Pravrad                   p.dat
+
+Bases:
+A = Breeon Navy
+B = Breeon Scout
+C = Breeon Military
+D = Igallia Navy
+E = Igallia Scout
+F = Igallia Navy & Scout
+G = Igallia Army
+H = Igallia Research
+I = Igallia Preserve
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+13 Ic = Igallia Confederation
+14 Ub = Union of Breeon 
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Avradt SECTOR: Vradt Sector
+#
+# Jump-routes
+#
+$0804 1002 1 0 14
+$0804 0603 0 0 14
+$0603 0304 0 0 14
+$0304 0105 0 0 14
+$0105 0106 0 0 14
+$0106 0308 0 0 14
+$0308 0405 0 0 14
+$0405 0506 0 0 14
+$0506 0804 0 0 14
+$0308 0511 0 1 14
+$0707 1109 1 0 2
+$0707 0404 0 0 2
+$0404 0102 0 0 2
+$0102 3239 -1 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0101 E6777C9-3    Ag                 704 Ub
+Odlomma       0102 E7B5579-6    Fl Ni           A  322 Ub
+A-3           0103 C657697-3    Ag Ni              100 Ub
+A-4           0105 B556000-9  B Ba Lo Ni           104 Ub
+A-5           0106 B58878B-9  C Ag Ri              301 Ub
+A-6           0108 D242776-3    Po              B  112 Na
+A-7           0203 D786210-7    Lo Ni              703 Ub
+A-8           0204 C7A5342-6    Fl Lo Ni           600 Ub
+A-9           0207 E77A122-8    Lo Ni Wa           111 Ub
+A-10          0304 B436686-C    Ni                 300 Ub
+A-11          0307 D567777-1  S Ag Ri           B  620 Na
+A-12          0308 B756305-A    Lo Ni              610 Ub
+A-13          0402 E338411-4    Ni                 214 Ub
+A-14          0403 C697589-7    Ag Ni              500 Ub
+Jaeddian      0404 E72A410-5    Ni Wa              911 Ub
+A-16          0405 B3007A6-C    Na Va              603 Ub
+A-17          0406 D566967-5  A Hi                 623 Ub
+A-18          0407 D659247-7  B Lo Ni              313 Ub
+A-19          0503 C610363-9  B Lo Ni              622 Ub
+A-20          0506 B638032-A    Lo Ni              403 Ub
+A-21          0507 C350A7B-A  S De Hi Po        B  800 Na
+A-22          0508 C475767-7  C Ag                 904 Ub
+A-23          0510 D577003-3  B Lo Ni              712 Ub
+A-24          0603 B778252-A  B Lo Ni              502 Ub
+A-25          0604 C332054-7    Lo Ni Po           210 Ub
+A-26          0609 D687467-7  B Ni                 700 Ub
+A-27          0610 C646659-9    Ag Ni              813 Ub
+A-28          0702 D665677-1  S Ag Ni Ri        B  503 Na
+A-29          0703 E9B4644-4    Fl Ni           A  415 Ub
+Alklann       0707 D220675-4    De Na Ni Po     B  501 Na
+A-31          0708 C0008CB-6    As Na              414 Ub
+A-32          0710 C636230-8  B Lo Ni              504 Ub
+A-33          0801 B8C8668-6  A Fl Ni           A  302 Ub
+A-34          0804 B551115-7  B Lo Ni Po           403 Ub
+A-35          0807 C0009B8-A    As Hi Na           204 Ub
+A-36          0808 C466335-8    Lo Ni              103 Ub
+A-37          0810 CAA287B-8  S Fl              B  413 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Bhavrad SECTOR: Vradt Sector
+#
+# Jump-routes
+#
+$1202 1002 0 0 14
+$1202 1601 0 0 14
+$1202 1405 0 0 14
+$1202 1540 0 -1 14
+$1601 1540 0 -1 14
+$1601 1701 1 0 14
+$1405 1107 0 0 14
+$1107 0909 0 0 14
+$1002 0804 -1 0 14
+$0909 1010 0 0 14
+$1010 1210 0 0 14
+$1210 1107 0 0 14
+$1010 1012 0 1 14
+$1405 1607 0 0 14
+$1607 1707 1 0 14
+$1210 1512 0 1 14
+$1510 1910 1 0 2
+$1510 1109 0 0 2
+$1109 0707 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           0901 D200542-4    Ni Va              414 Ub
+B-2           0904 C645375-4    Lo Ni           B  613 Na
+B-3           0909 B471000-9    Ba Lo Ni           511 Ub
+B-4           1001 X241436-2    Po              R  805 Na
+B-5           1002 B574133-9    Lo Ni              110 Ub
+B-6           1005 E262755-7    Ri                 200 Ub
+B-7           1006 D210344-8    Lo Ni              620 Ub
+B-8           1008 D41087C-5  S Na              B  112 Na
+B-9           1009 X37359A-0                    R  504 Na
+B-10          1010 B488356-A  B Lo Ni              502 Ub
+B-11          1101 B610574-7  S Ni              B  100 Na
+B-12          1102 C689456-9    Ni                 302 Ub
+B-13          1104 C583968-5    Hi                 610 Ub
+B-14          1105 D443300-6  B Lo Ni Po           300 Ub
+B-15          1106 C262430-8  B Ni                 804 Ub
+B-16          1107 B555766-5    Ag                 104 Ub
+Ertrinn       1109 C68A533-9  A Ni Wa              303 Ub
+B-18          1201 CA9A110-A    Lo Ni Wa           902 Ub
+Bavoren       1202 A401AA7-I    Hi Ic Na Va Cx     513 Ub
+B-20          1203 C8587B8-6    Ag                 311 Ub
+B-21          1206 C9C5001-9    Fl Lo Ni        A  901 Ub
+B-22          1210 B377744-6    Ag                 400 Ub
+B-23          1301 C140657-A    De Ni Po           902 Ub
+B-24          1303 D000999-6  C As Hi Na           620 Ub
+B-25          1304 B453640-6  A Ni Po              201 Ub
+B-26          1307 A554777-7  N Ag              B  903 Na
+B-27          1401 E87A343-9    Lo Ni Wa           322 Ub
+B-28          1404 CAB3251-A  B Fl Lo Ni        A  731 Ub
+B-29          1405 B745343-7  B Lo Ni              705 Ub
+B-30          1409 D560865-6  A De Ri              613 Na
+B-31          1501 X563575-2                    R  523 Na
+B-32          1503 C69A797-8    Wa                 911 Ub
+B-33          1505 B223665-A  C Na Ni Po           814 Ub
+B-34          1507 E544322-4    Lo Ni              704 Ub
+Blinier       1510 C6B4336-9  B Fl Lo Ni        A  904 Na
+B-36          1601 A664963-A  A Hi                 211 Ub
+B-37          1602 D647675-6  S Ag Ni           B  502 Na
+B-38          1603 C79AA9A-D    Hi In Wa           431 Ub
+B-39          1607 B45368A-A    Ni Po              403 Ub
+B-40          1608 C99A465-9    Ni Wa              200 Ub
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Chravdt SECTOR: Vradt Sector
+#
+# Jump-routes
+#
+$2404 2504 1 0 14
+$2404 2406 0 0 14
+$1701 1601 -1 0 14
+$1701 1902 0 0 14
+$1902 2101 0 0 14
+$2101 2039 0 -1 14
+$2101 2304 0 0 14
+$2304 2404 0 0 14
+$2304 2104 0 0 14
+$2104 2003 0 0 14
+$2003 1902 0 0 14
+$1707 1607 -1 0 14
+$1707 1708 0 0 14
+$1708 1808 0 0 14
+$1902 1704 0 0 14
+$1704 1707 0 0 14
+$1704 1804 0 0 14
+$1804 1805 0 0 14
+$2406 2308 0 0 14
+$2308 2207 0 0 14
+$2207 1805 0 0 14
+$1808 2207 0 0 14
+$2308 2310 0 0 14
+$1910 2113 0 1 2
+$1910 1510 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1701 B100555-F  B Ni Va              422 Ub
+C-2           1702 E24446A-7    Ni                 603 Ub
+C-3           1703 E641101-7    Lo Ni Po           404 Ub
+C-4           1704 B867631-A  A Ag Ni              805 Ub
+C-5           1706 D443899-6  A Po                 622 Ub
+C-6           1707 A150261-D  B De Lo Ni Po        400 Ub
+C-7           1708 B88A538-B  B Ni Wa              604 Ub
+C-8           1709 D56A320-6    Lo Ni Wa           904 Ub
+C-9           1803 C8458DE-3                       801 Ub
+C-10          1804 B1005A8-A  B Ni Va              600 Ub
+C-11          1805 B340100-C  B De Lo Ni Po        622 Ub
+C-12          1808 A7979CD-E  A Hi In              202 Ub
+C-13          1901 C323657-7    Na Ni Po           312 Ub
+C-14          1902 B245666-9    Ag Ni              714 Ub
+C-15          1904 D433220-7    Lo Ni Po           220 Ub
+C-16          1906 B666426-9    Ni                 300 Ub
+C-17          1909 E665254-7    Lo Ni              603 Ub
+Cinnarra      1910 E777663-5    Ag Ni              403 Na
+C-19          2003 B544001-8  B Lo Ni              804 Ub
+C-20          2004 C434562-8    Ni                 810 Ub
+C-21          2006 C350ADC-9    De Hi Po           310 Ub
+C-22          2007 C34375A-9    Po                 303 Ub
+C-23          2008 C523321-6  B Lo Ni Po           512 Ub
+C-24          2101 A567200-D  B Lo Ni              214 Ub
+C-25          2103 C5A3247-A    Fl Lo Ni           315 Ub
+C-26          2104 B457455-9  B Ni                 802 Ub
+C-27          2107 C785730-8    Ag                 112 Ub
+C-28          2110 C3269B9-A  C Hi In              504 Na
+C-29          2202 C341576-8    Ni Po           B  804 Na
+C-30          2203 C767574-6    Ag Ni           B  203 Na
+C-31          2207 A160321-B  B De Lo Ni           505 Ub
+C-32          2210 C000756-C    As Na              900 Na
+C-33          2302 C76A500-A    Ni Wa              512 Ub
+C-34          2303 C997652-5  A Ag Ni              400 Ub
+C-35          2304 B447986-C    Hi In              814 Ub
+C-36          2308 B76389C-9  C Ri                 613 Ub
+C-37          2309 C79889C-8                       423 Ub
+C-38          2310 B94A430-B  B Ni Wa              510 Ub
+C-39          2404 B677201-9  B Lo Ni              903 Ub
+C-40          2406 A321434-D  B Ni Po              502 Ub
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Draddde SECTOR: Vradt Sector
+#
+# Jump-routes
+#
+$2504 2802 0 0 14
+$2802 3240 0 -1 14
+$3104 0203 1 0 14
+$3208 0209 1 0 14
+$3104 2904 0 0 14
+$2904 2802 0 0 14
+$3104 3108 0 0 14
+$3108 3110 0 0 14
+$3208 3108 0 0 14
+$2504 2404 -1 0 14
+$2703 2638 0 -1 10
+$2703 2906 0 0 10
+$2906 3109 0 0 10
+$3109 0111 1 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2504 B365454-A  A Ni                 322 Ub
+D-2           2505 C540300-8    De Lo Ni Po        504 Ub
+D-3           2506 C565230-6    Lo Ni              200 Ub
+D-4           2508 C615035-7  S Ic Lo Ni           703 Na
+D-5           2509 E8C5311-4    Fl Lo Ni        A  520 Na
+D-6           2601 C400110-9  B Lo Ni Va           602 Ub
+D-7           2605 E7A3332-8    Fl Lo Ni           204 Na
+D-8           2606 C679768-5                       214 Na
+D-9           2607 D796543-6  S Ag Ni              101 Na
+D-10          2608 C561869-8    Ri                 603 Na
+D-11          2702 C7C4554-8    Fl Ni           A  900 Ub
+Awammiel      2703 C534432-A  B Ni                 904 Ub
+D-13          2705 E454888-5                       703 Na
+D-14          2706 E97A943-8    Hi In Wa           304 Na
+D-15          2710 C53579A-5                       414 Na
+D-16          2802 B88A7AE-A    Wa                 103 Ub
+D-17          2805 B749674-7  N Ni              B  104 Na
+D-18          2806 C7C2589-9  S Fl Ni           A  301 Na
+D-19          2902 B212265-9  B Ic Lo Ni           804 Ub
+D-20          2904 B659100-B  B Lo Ni              204 Ub
+Dliffi        2906 C557500-A    Ag Ni              204 Na
+D-22          2908 E400575-8    Ni Va           B  513 Na
+D-23          2909 C793459-5    Ni                 211 Na
+D-24          3003 D200653-8  B Na Ni Va           605 Ub
+D-25          3004 E233544-9    Ni Po              103 Ub
+D-26          3005 EAB4422-4    Fl Ni           A  914 Ub
+D-27          3007 C672753-6                       402 Ub
+D-28          3101 C684576-6  B Ag Ni           B  512 Ub
+D-29          3104 B645620-8    Ag Ni              100 Ub
+D-30          3107 C6B4000-A    Ba Fl Lo Ni     A  824 Ub
+D-31          3108 B500535-9  B Ni Va              804 Ub
+Quinarra      3109 A574040-9  B Lo Ni              102 Ub
+D-33          3110 B87767C-8  A Ag Ni           B  103 Ub
+D-34          3208 B310464-D  B Ni                 700 Ub
+D-35          3209 C69658B-9    Ag Ni              902 Ub
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Edradter SECTOR: Vradt Sector
+#
+# Jump-routes
+#
+$0812 1012 1 0 14
+$0812 0511 0 0 14
+$0511 0308 0 -1 14
+$0812 0815 0 0 14
+$0812 0713 0 0 14
+$0713 0614 0 0 14
+$0614 0616 0 0 14
+$0616 0717 0 0 14
+$0717 0716 0 0 14
+$0616 0815 0 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0115 E554226-6    Lo Ni              512 Na
+E-2           0116 X636344-1    Lo              R  214 Na
+E-3           0117 C422552-9  2 Ni Po              205 Na
+E-4           0118 X78A876-2    Ri Wa           R  110 Na
+E-5           0214 C234110-8    Lo Ni              604 Na
+E-6           0215 E200000-2    Ba Lo Ni Va        704 Na
+E-7           0216 C85A200-B    Lo Ni Wa           913 Na
+E-8           0217 E72378B-7    Na Po              805 Na
+E-9           0218 D210565-8  N Ni                 124 Na
+E-10          0313 D55477C-8    Ag              B  414 Na
+E-11          0314 E696773-6    Ag              B  324 Na
+E-12          0315 C44798A-7    Hi In              503 Na
+E-13          0316 X245889-0                    R  605 Na
+E-14          0411 C9C6752-A  B Fl              A  414 Ub
+E-15          0415 C58759E-4  B Ag Ni              815 Ub
+E-16          0417 D488336-6  S Lo Ni              812 Na
+E-17          0420 E76A99D-A    Hi Wa              503 Na
+E-18          0511 A8A4411-B  B Fl Ni              714 Ub
+E-19          0512 C444655-7    Ag Ni              704 Ub
+E-20          0513 C674514-6    Ag Ni              803 Ub
+E-21          0514 C595413-7  B Ni                 711 Ub
+E-22          0515 X3109A9-5    Hi              R  802 Na
+E-23          0516 C77A413-A    Ni Wa              510 Ub
+E-24          0520 D536866-8  N                    502 Na
+E-25          0611 C0008B9-A    As Na              213 Ub
+E-26          0613 C200200-9  B Lo Ni Va           213 Ub
+E-27          0614 B7A5867-9    Fl                 523 Ub
+E-28          0615 D000565-7    As Ni              804 Ub
+E-29          0616 B7A6111-7    Fl Lo Ni           402 Ub
+E-30          0617 X778556-1    Ag              R  910 Na
+E-31          0618 D375000-5    Ba Lo Ni           305 Na
+E-32          0712 C445311-5  B Lo Ni              502 Ub
+E-33          0713 B524347-7  B Lo Ni              702 Ub
+E-34          0716 B98599C-A  C Hi                 612 Ub
+E-35          0717 A252510-9    Ni Po              401 Ub
+E-36          0718 X6236BB-3    Po              R  610 Na
+E-37          0811 C45268C-5    Ni Po              523 Ub
+E-38          0812 A247331-B    Lo Ni              600 Ub
+E-39          0813 C333735-7  B Na Po              800 Ub
+E-40          0815 B645358-7    Lo Ni              922 Ub
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Fradtan SECTOR: Vradt Sector
+#
+# Jump-routes
+#
+$1012 1010 0 -1 14
+$1012 0812 -1 0 14
+$1012 1313 0 0 14
+$1313 1512 0 0 14
+$1616 1619 0 0 13
+$1616 1417 0 0 13
+$1417 1319 0 0 13
+$1319 1320 0 0 13
+$1320 1619 0 0 13
+$1619 1519 0 0 13
+$1519 1417 0 0 13
+$1320 1321 0 1 13
+$1619 1819 1 0 13
+$1512 1210 0 -1 14
+$1616 1715 1 0 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0912 D599548-7    Ni                 100 Ub
+F-2           0913 C538210-9    Lo Ni              303 Ub
+F-3           0914 C546796-4    Ag                 523 Na
+F-4           0916 C335412-9  S Ni                 413 Na
+F-5           0918 C233578-7    Ni Po           B  401 Na
+F-6           0920 C853311-9  S Lo Ni Po           111 Na       
+F-7           1011 C9A5102-8    Fl Lo Ni           213 Ub
+F-8           1012 A3037A9-B    Ic Na Va           904 Ub
+F-9           1014 C000ABB-F    As Hi Na           315 Na
+F-10          1017 E653231-7    Lo Ni Po           203 Na
+F-11          1115 D976563-3    Ag Ni              903 Na
+F-12          1116 C628000-A    Ba Lo Ni           904 Na
+F-13          1117 C260511-5    De Ni              612 Na
+F-14          1118 E373467-5    Ni                 503 Na
+F-15          1215 C8A476A-5    Fl                 301 Na
+F-16          1216 C200446-B  S Ni Va              700 Na
+F-17          1218 E400235-6    Lo Ni Va           913 Na
+F-18          1220 X997635-2    Ag              R  303 Na
+F-19          1313 B120100-B  B De Lo Ni Po        213 Ub
+F-20          1316 E879010-2    Lo Ni              904 Na
+F-21          1319 B579314-C    Lo Ni              304 Ic
+F-22          1320 A533210-B  E Lo Ni Po           725 Ic
+F-23          1411 C3538A9-5    Po                 803 Ub
+F-24          1412 B847666-8    Ag Ni              715 Ub
+F-25          1413 E448622-8    Ag Ni              410 Ub
+F-26          1415 C776034-7  H Lo Ni              703 Ic
+F-27          1416 C999667-6  D Ni                 914 Ic
+F-28          1417 B150687-A  D De Ni Po           722 Ic
+F-29          1418 C9A5212-7    Fl Lo Ni           603 Ic
+F-30          1420 C689886-7    Ri                 602 Ic
+F-31          1511 C110965-8  C Hi Na              302 Ub
+F-32          1512 A8A5766-8  A Fl                 213 Ub
+F-33          1514 C533789-5  A Na Po              703 Ub
+F-34          1515 D300765-7    Na Va              903 Na
+F-35          1516 C3367AA-6                       303 Ic
+F-36          1517 D768246-7  E Lo Ni              903 Ic
+F-37          1519 A200543-C  D Ni Va              602 Ic
+F-38          1520 C5366A8-6  D Ni                 212 Ic
+F-39          1616 B6749EF-C  G Hi In              421 Ic
+F-40          1619 A577255-A    Lo Ni              514 Ic
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Gharadde SECTOR: Vradt Sector
+#
+# Jump-routes
+#
+$1819 1619 -1 0 13
+$1819 2018 0 0 13
+$1819 1822 0 1 13
+$2018 2320 0 0 13
+$2320 2321 0 1 13
+$2320 2419 0 0 13
+$2419 2417 0 0 13
+$2417 2216 0 0 13
+$2216 2018 0 0 13
+$2318 2417 0 0 13
+$2417 2517 1 0 13
+$2216 1814 0 0 13
+$1814 1715 0 0 13
+$1715 1616 -1 0 13
+$2113 2513 1 0 2
+$2113 1910 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1714 C65A588-A    Ni Wa              424 Ic
+G-2           1715 B423553-C  D Ni Po              125 Ic
+G-3           1717 E561101-3  H Lo Ni              304 Ic
+G-4           1718 B7A187B-B    Fl              B  422 Na
+G-5           1814 B797885-A  G                    505 Ic
+G-6           1815 E553465-6    Ni Po              904 Ic
+G-7           1817 C475410-9    Ni                 304 Ic
+G-8           1819 A210223-E    Lo Ni              402 Ic
+G-9           1911 D443333-5  S Lo Ni Po           203 Na
+G-10          1913 C87A775-8    Wa              B  710 Na
+G-11          1914 E525025-2    Lo Ni              301 Na
+G-12          1915 C46747C-8    Ni              B  813 Na
+G-13          1918 C326302-9    Lo Ni              114 Ic
+G-14          1919 B523458-B  E Ni Po              104 Ic
+G-15          1920 C410247-7  E Lo Ni              900 Ic
+G-16          2011 C58349B-9    Ni                 623 Na
+G-17          2012 C677631-8    Ag Ni              124 Na
+G-18          2013 C578643-6  S Ag Ni              405 Na
+G-19          2014 C3557AA-9    Ag                 515 Na
+G-20          2016 C527647-5    Ni                 203 Ic
+G-21          2017 E492ABC-6    Hi In              603 Ic
+G-22          2018 B230553-D    De Ni Po           505 Ic
+G-23          2020 D833798-3    Na Po              115 Ic
+Glairui       2113 C646744-7    Ag                 214 Na
+G-25          2114 C437454-B    Ni                 514 Na
+G-26          2115 E566203-4    Lo Ni              414 Na
+G-27          2117 C553630-3  D Ni Po              814 Ic
+G-28          2118 C220732-5    De Na Po           805 Ic
+G-29          2212 C553630-3    Ni Po              900 Na
+G-30          2213 X526433-3                    R  703 Na
+G-31          2214 C571758-9                       502 Na
+G-32          2216 B000147-A  H As Lo Ni           102 Ic
+G-33          2316 C5A2762-9    Fl                 224 Ic
+G-34          2318 B868332-B  E Lo Ni              910 Ic
+G-35          2320 A628420-A    Ni                 202 Ic
+G-36          2416 C581544-9    Ni                 202 Ic
+G-37          2417 A955426-C    Ni                 403 Ic
+G-38          2418 B23088C-C    De Na Po           802 Ic
+G-39          2419 B459566-9  D Ni                 822 Ic
+G-40          2420 D573379-6    Lo Ni           B  524 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Horadti SECTOR: Vradt Sector
+#
+# Jump-routes
+#
+$2517 2417 -1 0 13
+$2517 2817 0 0 13
+$2817 3215 0 0 13
+$2620 2820 0 0 13
+$2620 2517 0 0 13
+$2817 2820 0 0 13
+$2820 2922 0 1 13
+$2620 2422 -1 1 13
+$2914 0116 1 0 2
+$2914 2513 0 0 2
+$2513 2113 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Vlikosh       2513 E100674-9    Na Ni Va        B  104 Na
+H-2           2514 D242233-4  S Lo Ni Po           310 Na
+H-3           2517 B435310-D  E Lo Ni              505 Ic
+H-4           2518 D666952-5  G Hi                 802 Ic
+H-5           2519 E563655-4    Ni Ri              524 Ic
+H-6           2616 C375220-5  E Lo Ni              704 Ic
+H-7           2618 CAA39DE-4  F Fl Hi              700 Ic
+H-8           2619 C352553-7    Ni Po              903 Ic
+Horaddav      2620 A000200-G  E As Lo Ni Cx        523 Ic
+H-10          2712 C252201-8  S Lo Ni Po           100 Na
+H-11          2713 C120430-B    De Ni Po           303 Na
+H-12          2714 C410301-B    Lo Ni              102 Na
+H-13          2715 C100888-7  S Na Va              203 Na
+H-14          2718 C353684-9  D Ni Po              603 Ic
+H-15          2720 C95A745-9    Wa                 904 Ic
+H-16          2812 B886941-B  S Hi                 423 Na
+H-17          2815 D570130-5  S De Lo Ni           313 Na
+H-18          2817 A343144-9  H Lo Ni Po           805 Ic
+H-19          2819 D98A9BB-8  F Hi Wa              310 Ic
+H-20          2820 B87499A-A  G Hi In              103 Ic
+H-21          2911 C868542-9    Ag Ni              213 Na
+H-22          2913 EAA6100-5    Fl Lo Ni           903 Na
+Treadali      2914 X200200-5    Lo Va           R  524 Na
+H-24          2919 D97A9AB-9  F Hi In Wa           811 Ic
+H-25          3013 D424597-7    Ni                 223 Na
+H-26          3015 C555375-8    Lo Ni           B  312 Na
+H-27          3017 E8A4540-8    Fl Ni              824 Ic
+H-28          3018 C794444-6    Ni                 904 Ic
+H-29          3114 C697400-8    Ni                 903 Na
+H-30          3118 C220977-B    De Hi In Na Po  B  302 Na
+H-31          3119 E400230-9    Lo Ni Va           200 Ic
+H-32          3120 C223532-B  D Ni Po              724 Ic
+H-33          3211 C450667-4  S De Ni Po           322 Na
+H-34          3215 B6566A9-8    Ag Ni              313 Ic
+H-35          3219 C573472-9    Ni              B  203 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Idradt SECTOR: Vradt Sector
+#
+# Jump-routes
+#
+$0829 0732 0 1 13
+$0829 0728 0 0 13
+$0728 0629 0 0 13
+$0629 0532 0 1 13
+$0629 0327 0 0 13
+$0327 0728 0 0 13
+$0728 0724 0 0 13
+$0724 0823 0 0 13
+$0823 1121 1 0 13
+$0724 0926 1 0 13
+$0728 0927 1 0 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0121 C530631-6    De Na Ni Po        814 Na
+I-2           0122 C644310-9    Lo Ni              430 Na
+I-3           0123 C69A723-7    Wa                 803 Na
+I-4           0129 D200655-7  S Na Ni Va           611 Na
+I-5           0130 E200686-6    Na Ni Va           220 Na
+I-6           0222 E9A7567-7    Fl Ni              300 Na
+I-7           0223 C999523-9  S Ni                 604 Na
+I-8           0226 D746315-5  E Lo Ni              803 Ic
+I-9           0322 C100565-9  S Ni Va              302 Na
+I-10          0323 BA7A476-D    Ni Wa           B  723 Na
+I-11          0326 C100321-B  E Lo Ni Va           804 Ic
+I-12          0327 A437342-F  E Lo Ni              703 Ic
+I-13          0328 X591366-0    Lo              R  615 Na
+I-14          0421 C7B2637-7  S Fl Ni           A  113 Na
+I-15          0422 C557401-6    Ni                 100 Na
+I-16          0423 E765557-6    Ag Ni              404 Na
+I-17          0424 E545220-3    Lo Ni              102 Na
+I-18          0425 C655873-8                    B  613 Na
+I-19          0430 B454675-8    Ag Ni           B  714 Na
+I-20          0521 C787102-6    Lo Ni              110 Na
+I-21          0522 C775332-4    Lo Ni              904 Na
+I-22          0621 C887633-7    Ag Ni              803 Na
+I-23          0622 B480678-8    De Ni Ri        B  103 Na
+I-24          0623 C554100-6  H Lo Ni              813 Ic
+I-25          0624 D76A104-A  H Lo Ni Wa           900 Ic
+I-26          0625 C5248CF-5                       900 Ic
+I-27          0628 D250644-5  D De Ni Po           710 Ic
+I-28          0629 B98A330-A  E Lo Ni Wa           301 Ic
+I-29          0630 C453155-8  H Lo Ni Po           400 Ic
+I-30          0721 C320ACC-E    De Hi In Na Po     902 Na
+I-31          0724 B9A6885-A    Fl                 313 Ic
+I-32          0726 C7699AA-9    Hi                 214 Ic
+I-33          0727 C8B0513-9  G De Ni           A  215 Ic
+I-34          0728 A887AEE-F    Hi                 702 Ic
+I-35          0729 C589204-A    Lo Ni              714 Ic
+I-36          0730 EA86230-5    Lo Ni              220 Ic
+I-37          0821 C763988-A  S Hi                 912 Na
+I-38          0823 B335201-E  E Lo Ni              723 Ic
+I-39          0829 A665100-D  H Lo Ni              703 Ic
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Juunedrad SECTOR: Vradt Sector
+#
+# Jump-routes
+#
+$1321 1320 0 -1 13
+$1321 1121 0 0 13
+$1624 1822 1 0 13
+$1624 1927 1 0 13
+$1530 1730 1 0 13
+$1530 1428 0 0 13
+$1530 1632 0 1 13
+$1121 0823 -1 0 13
+$0926 0724 -1 0 13
+$0926 0927 0 0 13
+$0927 0728 -1 0 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0923 C41078B-8    Na                 201 Ic
+J-2           0924 D78A422-5  E Ni Wa              420 Ic
+J-3           0925 E799587-7    Ni                 524 Ic
+J-4           0926 A354047-C  H Lo Ni              505 Ic
+J-5           0927 B533686-B    Na Ni Po           222 Ic
+J-6           0928 C693488-5    Ni                 123 Ic
+J-7           1022 C654433-7    Ni                 603 Ic
+J-8           1023 E686100-5  H Lo Ni              214 Ic
+J-9           1024 D846455-4  E Ni                 904 Ic
+J-10          1025 E615400-9    Ic Ni              215 Ic
+J-11          1026 X432132-1  I Lo Po           R  302 Ic
+J-12          1028 C687222-9    Lo Ni              412 Ic
+J-13          1121 B746401-7  E Ni                 502 Ic
+J-14          1122 C310ABA-D    Hi Na              503 Ic
+J-15          1125 E433563-6    Ni Po              600 Ic
+J-16          1126 C357200-B    Lo Ni              200 Ic
+J-17          1221 X778334-3  I Lo              R  804 Ic
+J-18          1228 C724243-8    Lo Ni              211 Ic
+J-19          1229 B487676-B    Ag Ni Ri        B  201 Na
+J-20          1321 A401677-B    Ic Na Ni Va     B  410 Na
+J-21          1322 C303995-8    Hi Ic Na Va        403 Ic
+J-22          1328 E34489B-6                       404 Ic
+J-23          1423 E554667-2    Ag Ni              604 Ic
+J-24          1426 C313787-9  D Ic Na              800 Ic
+J-25          1428 B698467-9    Ni                 724 Ic
+J-26          1430 C773675-4    Ni              B  604 Na
+J-27          1521 C373432-8    Ni                 904 Ic
+J-28          1527 C2329A9-9  F Hi In Na Po        914 Ic
+J-29          1530 A474AD8-F  G Hi In              914 Ic
+J-30          1621 C866795-6  D Ag Ri              200 Ic
+J-31          1622 D694883-6  F                    414 Ic
+J-32          1624 B887665-5    Ag Ni Ri           402 Ic
+J-33          1625 B565672-9    Ag Ni Ri        B  824 Na
+J-34          1629 D896330-5  E Lo Ni              613 Ic
+J-35          1630 C6979A9-A  F Hi In              613 Ic
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kladradt SECTOR: Vradt Sector
+#
+# Jump-routes
+#
+$1822 1819 0 -1 13
+$1821 1921 0 0 13
+$1921 2321 0 0 13
+$2321 2320 0 -1 13
+$2422 2620 1 -1 13
+$2422 2321 0 0 13
+$2422 2424 0 0 13
+$2424 2325 0 0 13
+$2325 1927 0 0 13
+$1927 1928 0 0 13
+$1928 2129 0 0 13
+$2129 2428 0 0 13
+$2428 2424 0 0 13
+$1822 1624 -1 0 13
+$1927 1624 -1 0 13
+$1928 1829 0 0 13
+$1829 1730 0 0 13
+$1730 1732 0 1 13
+$2428 2331 0 1 13
+$2129 2231 0 1 13
+$1730 1530 -1 0 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1721 D245543-7    Ag Ni              703 Ic
+K-2           1723 CA9A386-B  E Lo Ni Wa           323 Ic
+K-3           1725 C874531-4  D Ag Ni              714 Ic
+K-4           1728 C559525-6    Ni                 415 Ic
+K-5           1730 B551688-7  D Ni Po              403 Ic
+K-6           1821 B445654-A    Ag Ni              403 Ic
+K-7           1822 B2419AA-B  G Hi In Po           413 Ic
+K-8           1826 C537202-7    Lo Ni              414 Ic
+K-9           1828 C777A76-9    Hi In           B  804 Na
+K-10          1829 B240533-C  D De Ni Po           121 Ic
+K-11          1830 C999784-7                       501 Ic
+K-12          1921 A120643-A    De Na Ni Po        320 Ic
+K-13          1924 C350389-A    De Lo Ni Po        805 Ic
+K-14          1927 B747337-9    Lo Ni              610 Ic
+K-15          1928 B673348-7    Lo Ni              813 Ic
+K-16          1929 C87A272-7    Lo Ni Wa        B  904 Na
+K-17          1930 C553200-6    Lo Ni Po           301 Ic
+K-18          2023 C428553-B  D Ni                 801 Ic
+K-19          2024 C95A8BC-7    Wa                 204 Ic
+K-20          2025 C584000-4  H Ba Lo Ni           620 Ic
+K-21          2027 D43567A-4    Ni              B  500 Na
+K-22          2029 D544567-2  D Ag Ni              404 Ic
+K-23          2030 E340400-4    De Ni Po           400 Ic
+K-24          2123 C1007AC-9  F Na Va              903 Ic
+K-25          2124 D300445-6  E Ni Va              413 Ic
+K-26          2125 C450779-8    De Po           B  802 Na
+K-27          2128 C799998-9    Hi In              402 Ic
+K-28          2129 A66A887-A  D Ri Wa              905 Ic
+K-29          2222 D727586-9  D Ni                 712 Ic
+K-30          2226 C697678-5    Ag Ni           B  203 Na
+K-31          2229 C429846-6                       520 Ic
+K-32          2230 C866427-5    Ni                 622 Ic
+K-33          2321 A323767-A    Na Po              903 Ic
+K-34          2325 B574661-7  D Ag Ni              520 Ic
+K-35          2327 C8A2115-6  H Fl Lo Ni           805 Ic
+K-36          2422 B7A17BA-B    Fl                 310 Ic
+K-37          2424 B577100-9  H Lo Ni              803 Ic
+K-38          2425 D877776-4    Ag              B  320 Na
+K-39          2428 B7898BF-A  F                    704 Ic
+K-40          2430 C6B1376-5    Fl Lo Ni        A  103 Ic
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ladradan SECTOR: Vradt Sector
+#
+# Jump-routes
+#
+$2922 2820 0 -1 13
+$2922 3224 0 0 13
+$3224 0225 1 0 13
+$2630 2531 0 1 13
+$2630 2732 0 1 13
+$2630 3029 0 0 13
+$3029 3230 0 0 13
+$3230 3234 0 1 13
+$3230 3128 0 0 13
+$3128 3029 0 0 13
+$3128 3224 0 0 13
+$3224 3125 0 0 13
+$3125 2925 0 0 13
+$2925 2922 0 0 13
+$2925 3128 0 0 13
+$3230 0430 1 0 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2522 C235101-B  H Lo Ni              524 Ic
+L-2           2523 C59A8BB-A  D Wa                 903 Ic
+L-3           2529 E429842-4                       222 Ic
+L-4           2623 C86789A-6    Ri                 822 Ic
+L-5           2625 C300202-C    Lo Ni Va           314 Ic
+L-6           2626 C654775-6    Ag              B  524 Na
+L-7           2630 A321620-B  G Na Ni Po           302 Ic
+L-8           2721 C250357-B  E De Lo Ni Po        824 Ic
+L-9           2726 E7B7631-4    Fl Ni           A  820 Ic
+L-10          2728 DAB8895-3    Fl              A  620 Ic
+L-11          2823 C140676-9    De Ni Po        B  714 Na
+L-12          2922 B563420-6  E Ni                 504 Ic
+L-13          2923 D96A554-6    Ni Wa              503 Ic
+L-14          2925 B00055A-B  N As Ni              710 Ic
+L-15          3023 C789679-4    Ni Ri           B  504 Na
+L-16          3029 A4349DF-D    Hi In              300 Ic
+L-17          3121 C481315-6    Lo Ni              300 Ic
+L-18          3124 E767A96-9    Hi                 113 Ic
+L-19          3125 B538241-8  E Lo Ni              910 Ic
+L-20          3128 B300213-8  E Lo Ni Va           812 Ic
+L-21          3130 C7A4876-8    Fl              B  100 Na
+L-22          3222 C68A327-7  E Lo Ni Wa           803 Ic
+L-23          3224 B8D3467-B    Fl Ni              914 Ic
+L-24          3229 C9B1200-A  E Fl Lo Ni        A  203 Ic
+L-25          3230 B654210-B    Lo Ni              313 Ic
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Mudrad SECTOR: Vradt Sector
+#
+# Jump-routes
+#
+$0732 0933 1 0 13
+$0732 0632 0 0 13
+$0632 0532 0 0 13
+$0532 0432 0 0 13
+$0432 0331 0 0 13
+$0732 0829 0 -1 13
+$0532 0629 0 -1 13
+$0532 0331 0 0 13
+$0432 0235 0 0 13
+$0235 0138 0 0 13
+$0138 0239 0 0 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0137 D67A474-9    Ni Wa           B  924 Na
+M-2           0138 B432553-A  D Ni Po              710 Ic
+M-3           0139 C1005AA-8  D Ni Va              104 Ic
+M-4           0140 C300845-6    Na Va              223 Ic
+M-5           0231 EA7A212-4    Lo Ni Wa           513 Ic
+M-6           0235 B410300-A  E Lo Ni              922 Ic
+M-7           0236 C574834-8  D                    225 Ic
+M-8           0238 C858204-7  E Lo Ni              200 Ic
+M-9           0239 B667856-9  D Ri                 705 Ic
+M-10          0240 C764457-A    Ni                 103 Ic
+M-11          0331 B432896-9  G Na Po              734 Ic
+M-12          0332 C23046A-9    De Ni Po           600 Ic
+M-13          0333 D200897-3  G Na Va              915 Ic
+M-14          0334 A345A76-D    Hi In           B  111 Na
+M-15          0336 C44467B-9    Ag Ni           B  400 Na
+M-16          0338 D656400-8    Ni                 903 Na
+M-17          0340 EAD5694-2    Fl Ni              824 Na
+M-18          0432 B5968AB-8  D                    400 Ic
+M-19          0433 C502220-5  E Ic Lo Ni Va        300 Ic
+M-20          0439 C513564-6  S Ic Ni              511 Na
+M-21          0440 C8A2389-7  S Fl Lo Ni           913 Na
+M-22          0532 A331103-E  H Lo Ni Po           805 Ic
+M-23          0535 E667557-4    Ag Ni              505 Na
+M-24          0538 CAA9562-8    Fl Ni              610 Na
+M-25          0540 C343662-8  S Ni Po              112 Na
+M-26          0631 B520578-C    De Ni Po        B  302 Na
+M-27          0632 B323410-A  E Ni Po              504 Ic
+M-28          0636 C532100-B  S Lo Ni Po           320 Na
+M-29          0639 E130555-8    De Ni Po           601 Na
+M-30          0640 C888104-7    Lo Ni              413 Na
+M-31          0731 C566788-4  D Ag Ri              203 Ic
+M-32          0732 B585549-8    Ag Ni              325 Ic
+M-33          0737 C3449AB-9    Hi In              701 Na
+M-34          0738 A310346-E  N Lo Ni              802 Na
+M-35          0831 E8558AA-6                       715 Ic
+M-36          0836 X360232-4    De Lo           R  524 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nundradat SECTOR: Vradt Sector
+#
+# Jump-routes
+#
+$1632 1530 0 -1 13
+$1632 1334 0 0 13
+$1334 1235 0 0 13
+$1235 1436 0 0 13
+$1436 1539 0 0 13
+$1235 1034 0 0 13
+$1034 0933 0 0 13
+$0933 0732 -1 0 13
+$1436 1736 1 0 13
+$1539 1837 1 0 13
+$1632 1733 1 0 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0932 C767564-6    Ag Ni              313 Ic
+N-2           0933 B588563-9  D Ag Ni              700 Ic
+N-3           0936 C541300-5    Lo Ni Po           200 Na
+N-4           1031 C7A3237-6  E Fl Lo Ni           900 Ic
+N-5           1032 E556404-4    Ni                 803 Ic
+N-6           1033 C384231-A    Lo Ni              103 Ic
+N-7           1034 B533342-7  E Lo Ni Po           803 Ic
+N-8           1037 D797314-3  S Lo Ni              505 Na
+N-9           1038 C89A78A-7    Wa                 125 Na
+N-10          1039 D46178A-4    Ri                 404 Na
+N-11          1132 D476222-4  E Lo Ni              101 Ic
+N-12          1136 E768322-2    Lo Ni              424 Ic
+N-13          1138 C65A788-A    Wa                 902 Na
+N-14          1139 E43268B-7    Na Ni Po           704 Na
+N-15          1235 B232562-8  D Ni Po              804 Ic
+N-16          1236 C545522-9  D Ag Ni              604 Ic
+N-17          1331 DA5A462-7    Ni Wa              204 Ic
+N-18          1332 C443354-7  E Lo Ni Po           800 Ic
+N-19          1333 C663502-5    Ni                 703 Ic
+N-20          1334 B58A401-9  E Ni Wa              300 Ic
+N-21          1335 E434AEG-8    Hi In           A  402 Ic
+N-22          1432 X746473-0  I                 R  101 Ic
+N-23          1434 C7B0000-6  H Ba De Lo Ni     A  204 Ic
+N-24          1435 C000888-B    As Na              401 Ic
+N-25          1436 B400651-B    Na Ni Va           604 Ic
+N-26          1437 C695644-3    Ag Ni              402 Ic
+N-27          1439 D5A4357-6  E Fl Lo Ni           704 Ic
+N-28          1532 E456410-4    Ni                 413 Ic
+N-29          1533 D87798A-3    Hi In              904 Ic
+N-30          1534 C67666A-8  D Ag Ni              513 Ic
+N-31          1535 C202015-A  H Ic Lo Ni Va        213 Ic
+N-32          1536 D99A686-3    Ni Wa              620 Ic
+N-33          1539 A2008CD-C    Na Va              912 Ic
+N-34          1632 B54A967-B    Hi In Wa           605 Ic
+N-35          1634 C537325-7    Lo Ni              902 Ic
+N-36          1638 D9C2768-4  G Fl              A  805 Ic
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Odravr SECTOR: Vradt Sector
+#
+# Jump-routes
+#
+$1732 1730 0 -1 13
+$2331 2428 0 -1 13
+$2331 2231 0 0 13
+$2231 2129 0 -1 13
+$1736 1436 -1 0 13
+$1837 1539 -1 0 13
+$2237 2234 0 0 13
+$2234 2231 0 0 13
+$2237 1938 0 0 13
+$1938 1937 0 0 13
+$1937 1837 0 0 13
+$1837 1938 0 0 13
+$1937 1736 0 0 13
+$1736 1733 0 0 13
+$1733 1732 0 0 13
+$1732 1832 0 0 13
+$1832 1733 0 0 13
+$2237 2035 0 0 13
+$2035 2034 0 0 13
+$2034 1832 0 0 13
+$2035 1937 0 0 13
+$2035 1733 0 0 13
+$1733 1632 -1 0 13
+$2331 2531 1 0 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1732 B758467-9  E Ni                 412 Ic
+O-2           1733 B300405-D    Ni Va              800 Ic
+O-3           1736 B547ABB-B    Hi In              204 Ic
+O-4           1737 C563612-4  D Ni                 403 Ic
+O-5           1740 C889546-8    Ni                 204 Na
+O-6           1832 B9B488C-6  F Fl              A  735 Ic
+O-7           1833 EAA8638-6    Fl Ni              901 Ic
+O-8           1834 C667531-5    Ag Ni              424 Ic
+O-9           1836 E658489-5    Ni                 200 Ic
+O-10          1837 A7B4357-E    Fl Lo Ni        A  602 Ic
+O-11          1839 E446456-6    Ni                 514 Na
+O-12          1932 E400861-5    Na Va              103 Ic
+O-13          1933 C445ABA-A    Hi In              300 Ic
+O-14          1934 C110248-8    Lo Ni              814 Ic
+O-15          1936 D300410-5  E Ni Va              412 Ic
+O-16          1937 B422788-9    Na Po              123 Ic
+O-17          1938 B140657-8  D De Ni Po           100 Ic
+O-18          2033 B585774-A    Ag Ri           B  620 Na
+O-19          2034 B4857BE-B  D Ag                 325 Ic
+O-20          2035 A8A3367-9  E Fl Lo Ni           605 Ic
+O-21          2040 E86A589-7    Ni Wa              924 Na
+O-22          2136 C000514-9  D As Ni              303 Ic
+O-23          2140 C430102-B  H De Lo Ni Po        224 Ic
+O-24          2231 B343310-C  E Lo Ni Po           523 Ic
+O-25          2234 B87A558-E    Ni Wa              803 Ic
+Ohadra        2237 A321103-G  H Lo Ni Po Cx        723 Ic
+O-27          2238 C674664-5    Ag Ni              813 Ic
+O-28          2239 C441313-A  E Lo Ni Po           710 Ic
+O-29          2240 E000662-6    As Na Ni           305 Na
+O-30          2331 A896786-8  D Ag                 602 Ic
+O-31          2332 C888832-4                       514 Ic
+O-32          2334 E97A65A-5    Ni Wa              222 Ic
+O-33          2336 E1406BC-8    De Ni Po           103 Ic
+O-34          2338 C310357-9  E Lo Ni              405 Ic
+O-35          2340 D47565A-3    Ag Ni              611 Ic
+O-36          2433 C33498D-7  G Hi In              202 Ic
+O-37          2434 C8C0255-7    De Lo Ni        A  403 Ic
+O-38          2437 C655637-8    Ag Ni              721 Ic
+O-39          2438 C583696-5    Ni Ri              402 Ic
+O-40          2440 C764500-7    Ag Ni              315 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Pravrad SECTOR: Vradt Sector
+#
+# Jump-routes
+#
+$2531 2331 -1 0 13
+$2531 2732 0 0 13
+$2732 2734 0 0 13
+$2734 2835 0 0 13
+$2835 2936 0 0 13
+$2936 3235 0 0 13
+$3235 3234 0 0 13
+$2531 2630 0 -1 13
+$2732 2630 0 -1 13
+$3234 3230 0 -1 13
+$2936 3038 0 0 13
+$3038 3235 0 0 13
+$2936 2838 0 0 13
+$2838 2739 0 0 13
+$2838 3038 0 0 13
+$3235 0234 1 0 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2531 A310311-A  E Lo Ni              302 Ic
+P-2           2533 C221554-8    Ni Po              204 Ic
+P-3           2535 A556574-D    Ag Ni           B  603 Na
+P-4           2538 C76A69C-8  D Ni Ri Wa           604 Ic
+P-5           2635 C44479A-9    Ag                 602 Ic
+P-6           2640 C435220-B    Lo Ni              104 Na
+P-7           2731 C414754-9  D Ic                 302 Ic
+P-8           2732 A20059D-B  D Ni Va              602 Ic
+P-9           2733 B202553-9  D Ic Ni Va           934 Ic
+P-10          2734 B533466-8    Ni Po              203 Ic
+P-11          2735 C480410-9  E De Ni              601 Ic
+P-12          2736 C336755-7  D                    312 Ic
+P-13          2737 A324678-C    Ni              B  710 Na
+P-14          2738 C110799-7    Na                 502 Ic
+P-15          2739 B534357-8  E Lo Ni              711 Ic
+P-16          2832 C14058B-9  D De Ni Po           504 Ic
+P-17          2833 C562310-7    Lo Ni              212 Ic
+P-18          2835 B463203-D    Lo Ni              614 Ic
+P-19          2837 C000523-9    As Ni              614 Ic
+P-20          2838 A545425-D  E Ni                 714 Ic
+P-21          2839 E88A7BF-4    Wa                 600 Ic
+P-22          2933 E120400-9    De Ni Po           810 Ic
+P-23          2934 E652302-8    Lo Ni Po           101 Ic
+P-24          2936 A110221-F  E Lo Ni              300 Ic
+P-25          2937 C200201-C  E Lo Ni Va           913 Ic
+P-26          2938 E410484-7    Ni                 303 Ic
+P-27          3032 D467200-9  E Lo Ni              514 Ic
+P-28          3033 C866336-4    Lo Ni              103 Ic
+P-29          3036 C681311-4    Lo Ni              314 Ic
+P-30          3037 C6B3511-8  D Fl Ni           A  313 Ic
+P-31          3038 B300511-C  D Ni Va              211 Ic
+P-32          3133 C344469-6  E Ni                 204 Ic
+P-33          3135 E310649-7    Na Ni              104 Ic
+P-34          3136 C684797-8    Ag Ri              602 Ic
+P-35          3137 C522420-9    Ni Po              914 Ic
+P-36          3139 C64576A-8    Ag                 912 Ic
+P-37          3232 D326000-6  H Ba Lo Ni           100 Ic
+P-38          3234 B74335A-9    Lo Ni Po           813 Ic
+P-39          3235 B5379DG-A  G Hi In              314 Ic
+P-40          3240 A554276-B    Lo Ni           B  703 Na
+

@@ -1,0 +1,294 @@
+Revos Sector
+
+A: Avos                      a.dat
+B: Brevol                    b.dat
+C: Cedoss                    c.dat
+D: Devier                    d.dat
+E: Evonn                     e.dat
+F: Favoss                    f.dat
+G: Gleevoce                  g.dat
+H: Hexev                     h.dat
+I: Izos                      i.dat
+J: Javo                      j.dat
+K: Keazass                   k.dat
+L: Levoos                    l.dat
+M: Mavros                    m.dat
+N: Nervrous                  n.dat
+O: Ovtrast                   o.dat
+P: Pecos                     p.dat
+
+Bases:
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Avos SECTOR: Revos Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0103 C86A788-A    Ri Wa              612 Na
+A-2           0403 C776046-7    Lo Ni              705 Na
+A-3           0606 C598351-9  S Lo Ni              203 Na
+A-4           0701 B4448A8-9  N                    804 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Brevol SECTOR: Revos Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           1104 D6428CF-3  S Po                 100 Na
+B-2           1110 C3349A9-9    Hi In              203 Na
+B-3           1409 D348456-8  S Ni                 404 Na
+B-4           1507 B654688-5    Ag Ni              303 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Cedoss SECTOR: Revos Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1701 E776630-2    Ag Ni              203 Na
+C-2           1803 D412540-9  S Ic Ni              410 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Devier SECTOR: Revos Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2902 B5827BB-7  N                    700 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Evonn SECTOR: Revos Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0219 X675230-0    Lo              R  803 Na
+E-2           0420 C786699-3    Ag Ni Ri           314 Na
+E-3           0715 C994400-8    Ni                 503 Na
+E-4           0720 D200873-6    Na Va           B  425 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Favoss SECTOR: Revos Sector
+#
+# Jump-routes
+$1019 1122 0 1
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           1016 E558200-4    Lo Ni              621 Na
+F-2           1019 A559111-C    Lo Ni              902 Na
+F-3           1314 X777555-0    Ag              R  904 Na
+F-4           1613 A89A622-D  N Ni Wa              723 Na
+F-5           1620 D300685-4  S Na Ni Va           704 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Gleevoce SECTOR: Revos Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1913 B550116-8  S De Lo Ni Po        710 Na
+G-2           1917 X87A634-3    Wa              R  324 Na
+G-3           1920 C9A1887-6    Fl                 904 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hexev SECTOR: Revos Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2914 B565696-9  S Ag Ni Ri           102 Na
+H-2           3114 C425230-9    Lo Ni              924 Na
+H-3           3115 E42699C-6    Hi In              201 Na
+H-4           3216 C332745-8    Na Po              323 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Izos SECTOR: Revos Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0124 B4549DD-9    Hi                 404 Na
+I-2           0324 E888698-6    Ag Ni Ri           602 Na
+I-3           0425 C538988-8  S Hi In              804 Na
+I-4           0523 D330573-9  S De Ni Po        B  123 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Javo SECTOR: Revos Sector
+#
+# Jump-routes
+$1122 1019 0 -1
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0929 B564652-B  N Ag Ni Ri           403 Na
+J-2           0930 A1506AB-E    De Ni Po           303 Na
+J-3           1022 B764130-B    Lo Ni              804 Na
+J-4           1122 A8899BA-D    Hi                 522 Na
+J-5           1221 C323562-9    Ni Po              913 Na
+J-6           1330 C54869C-4    Ag Ni              703 Na
+J-7           1526 C633579-5    Ni Po           B  804 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Keazass SECTOR: Revos Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1827 B130014-C  N De Lo Ni Po        504 Na
+K-2           2024 B777442-6    Ni                 900 Na
+K-3           2121 A533485-B    Ni Po              212 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Levoos SECTOR: Revos Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2629 B525210-B    Lo Ni              302 Na
+L-2           3029 B668241-9    Lo Ni              123 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Mavros SECTOR: Revos Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0134 C211A9A-E    Hi Ic Na           223 Na
+M-2           0139 D445731-6  S Ag                 401 Na
+M-3           0239 C564557-9  S Ag Ni              104 Na
+M-4           0638 A686550-D  N Ag Ni              611 Na
+M-5           0639 E8899CC-7    Hi                 501 Na
+M-6           0732 C4347AA-6                       714 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nervrous SECTOR: Revos Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           1139 D766720-4  S Ag                 122 Na
+N-2           1234 C996000-7  S Ba Lo Ni           100 Na
+N-3           1240 C7B2336-7  S Fl Lo Ni        A  500 Na
+N-4           1334 D67A664-5    Ni Wa              913 Na
+N-5           1440 E9896BB-3    Ni                 903 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ovtrast SECTOR: Revos Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1831 A7B1313-E    Fl Lo Ni        A  332 Na
+O-2           1932 D357500-9    Ag Ni              514 Na
+O-3           2034 C575855-5                       604 Na
+O-4           2132 D887579-6  S Ag Ni           B  803 Na
+O-5           2137 C427322-7  S Lo Ni              611 Na
+O-6           2232 C533454-6  S Ni Po              412 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Pecos SECTOR: Revos Sector
+#
+# Jump-routes
+$2532 2535 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2532 B467678-A  N Ag Ni Ri        B  202 Na
+P-2           2535 A77999D-D  N Hi In              923 Na
+P-3           2540 E424236-6    Lo Ni              815 Na
+P-4           2837 E300202-A    Lo Ni Va           903 Na
+P-5           3040 C9E4626-8  S Fl Ni              823 Na
+P-6           3139 X7A5873-2    Fl              R  614 Na
+P-7           3233 C644510-9    Ag Ni              204 Na
+

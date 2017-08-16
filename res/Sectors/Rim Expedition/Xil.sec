@@ -1,0 +1,331 @@
+Xil Sector
+
+A: Aaxil                     a.dat
+B: Buxil                     b.dat
+C: Covixil                   c.dat
+D: Dax                       d.dat
+E: Exax                      e.dat
+F: Faxik                     f.dat
+G: Gikxik                    g.dat
+H: Hexess                    h.dat
+I: Ixil                      i.dat
+J: Jolox                     j.dat
+K: Kuxul                     k.dat
+L: Laxil                     l.dat
+M: Monax                     m.dat
+N: Naxaan                    n.dat
+O: Oxiom                     o.dat
+P: Poxx                      p.dat
+
+Bases:
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Aaxil SECTOR: Xil Sector
+#
+# Jump-routes
+#
+$0804 1106 1 0 2
+$0804 0503 0 0 2
+$0503 0102 0 0 2
+$0102 3139 -1 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Jouknna       0102 C130302-8    De Lo Ni Po        301 Na
+A-2           0407 A674573-8  N Ag Ni           B  322 Na
+A-3           0409 C323322-6  S Lo Ni Po           410 Na
+A-4           0410 C110542-7    Ni                 602 Na
+Hokkan        0503 C461367-9  S Lo Ni              232 Na
+A-6           0604 C450466-6  S De Ni Po           804 Na
+Mraien        0804 C65189A-7  S Po                 113 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Buxil SECTOR: Xil Sector
+#
+# Jump-routes
+#
+$1409 1810 1 0 2
+$1409 1108 0 0 2
+$1108 1106 0 0 2
+$1106 0804 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           0909 C787456-A    Ni                 400 Na
+B-2           1102 D583688-5  S Ni Ri              611 Na
+Erthoss       1106 X878467-3                    R  523 Na
+Mallara       1108 A411730-D  2 Ic Na              811 Na
+Bophann       1409 C65A615-5  S Ni Wa              121 Na
+B-6           1504 D996331-4  S Lo Ni              823 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Covixil SECTOR: Xil Sector
+#
+# Jump-routes
+#
+$1810 2113 0 1 2
+$1810 1409 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Chahaal       1810 E2127AA-5    Ic Na              403 Na
+C-2           2001 C365742-6    Ag Ri              800 Na
+C-3           2008 A200857-E    Na Va              313 Na
+C-4           2010 DA99201-9    Lo Ni              522 Na
+C-5           2201 D302320-9  S Ic Lo Ni Va        704 Na
+C-6           2305 B405764-A  N Ic Va              624 Na
+C-7           2308 CAA4554-B  S Fl Ni              102 Na
+C-8           2310 C866544-6  S Ag Ni              604 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Dax SECTOR: Xil Sector
+#
+# Jump-routes
+#
+$3002 3038 0 -1 10
+$3002 0104 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Derrigh       3002 E230540-6    De Ni Po           121 Na
+D-2           3204 B84A200-B  N Lo Ni Wa           804 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Exax SECTOR: Xil Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0113 C675311-4    Lo Ni              904 Na
+E-2           0119 C6429AA-8    Hi In Po           503 Na
+E-3           0314 C313200-B    Ic Lo Ni           301 Na
+E-4           0414 B473866-9                       324 Na
+E-5           0513 D300745-3  S Na Va              903 Na
+E-6           0616 C96966B-7  S Ni Ri              104 Na
+E-7           0815 B77859B-8    Ag Ni              713 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Faxik SECTOR: Xil Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0915 C5958AB-5  S                    203 Na
+F-2           1119 D5495A8-8  S Ni                 504 Na
+F-3           1212 B85A015-9  S Lo Ni Wa           304 Na
+F-4           1514 C443784-7  S Po                 610 Na
+F-5           1516 B454666-7    Ag Ni              604 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Gikxik SECTOR: Xil Sector
+#
+# Jump-routes
+#
+$2419 2622 1 1 2
+$2419 2117 0 0 2
+$2117 2113 0 0 2
+$2113 1810 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1719 C303000-8    Ba Ic Lo Ni Va     715 Na
+Ahwaama       2113 B477565-C  S Ag Ni              422 Na
+Olliff        2117 D000234-6    As Lo Ni           405 Na
+Gorjahk       2419 C522444-6    Ni Po              604 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hexess SECTOR: Xil Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2616 C446678-7    Ag Ni           B  424 Na
+H-2           2714 X865510-2    Ag              R  314 Na
+H-3           2715 D441754-6  S Po                 702 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ixil SECTOR: Xil Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0127 C657867-6  S                    814 Na
+I-2           0327 A8A9588-E  N Fl Ni              623 Na
+I-3           0823 A767466-8    Ni                 102 Na
+I-4           0825 C648875-8                    B  714 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jolox SECTOR: Xil Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0925 D346543-3  S Ag Ni              924 Na
+J-2           1024 C200432-9  S Ni Va              324 Na
+J-3           1230 C886042-5  S Lo Ni              305 Na
+J-4           1321 CA9A37A-6  S Lo Ni Wa        B  402 Na
+J-5           1428 C2008AD-7    Na Va              703 Na
+J-6           1625 C659310-7    Lo Ni              921 Na
+J-7           1630 C886431-9  S Ni                 501 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kuxul SECTOR: Xil Sector
+#
+# Jump-routes
+#
+$2425 2628 1 0 2
+$2425 2622 1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1726 B7865AB-7    Ag Ni              804 Na
+K-2           1830 C310266-9  S Lo Ni              603 Na
+K-3           2030 C99A487-9    Ni Wa              323 Na
+K-4           2127 B300001-B    Lo Ni Va           603 Na
+K-5           2223 C656013-8    Lo Ni              604 Na
+Kouhja        2425 C360464-9  S De Ni              702 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Laxil SECTOR: Xil Sector
+#
+# Jump-routes
+#
+$2930 0130 1 0 2
+$2930 2628 0 0 2
+$2628 2425 -1 0 2
+$2622 2425 -1 0 2
+$2622 2419 -1 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Eoona         2622 C100333-A    Lo Ni Va           613 Na
+Banahsh       2628 B7A0542-B  N De Ni              311 Na
+L-3           2826 E220310-9    De Lo Ni Po        924 Na
+La-Andar      2930 B469744-9  S Ri                 203 Na
+L-5           3025 D434100-8  S Lo Ni              512 Na
+L-6           3027 B87A69A-A  S Ni Wa              603 Na
+L-7           3127 CA9A232-6  S Lo Ni Wa           810 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Monax SECTOR: Xil Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0138 C442489-9  S Ni Po              912 Na
+M-2           0236 D2229BC-5  S Hi In Na Po        903 Na
+M-3           0339 D340564-6    De Ni Po           714 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Naxaan SECTOR: Xil Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           1131 D1009A5-8    Hi Na Va           105 Na
+N-2           1237 D9998BA-2  S                    305 Na
+N-3           1238 C788669-8  S Ag Ni Ri           802 Na
+N-4           1339 C99A888-A    Wa                 310 Na
+N-5           1433 B7B2211-B    Fl Lo Ni        A  702 Na
+N-6           1534 E5106AC-6    Na Ni              223 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Oxiom SECTOR: Xil Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           2136 C202378-8    Ic Lo Ni Va     B  223 Na
+O-2           2334 B545669-A    Ag Ni              102 Na
+O-3           2438 C546975-6  S Hi In           B  412 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Poxx SECTOR: Xil Sector
+#
+# Jump-routes
+$2533 2633 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2532 B9E8768-B    Fl                 302 Na
+P-2           2533 A556995-9    Hi                 700 Na
+P-3           2539 C310210-B  S Lo Ni              924 Na
+P-4           2633 B000111-C    As Lo Ni           410 Na
+P-5           2831 E000005-6    As Lo Ni           604 Na
+

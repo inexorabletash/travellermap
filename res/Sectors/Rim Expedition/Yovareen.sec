@@ -1,0 +1,381 @@
+Yovareen Sector
+
+A: Areen                     a.dat
+B: Bovarer                   b.dat
+C: Coyova                    c.dat
+D: Draveen                   d.dat
+E: Eenoya                    e.dat
+F: Floyovree                 f.dat
+G: Gavreen                   g.dat
+H: Hovoya                    h.dat
+I: Iyovreen                  i.dat
+J: Javneer                   j.dat
+K: Klareen                   k.dat
+L: Lovreena                  l.dat
+M: Moyokavn                  m.dat
+N: Neereena                  n.dat
+O: Ovreen                    o.dat
+P: Povareer                  p.dat
+
+Bases:
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Areen SECTOR: Yovareen Sector
+#
+# Jump-routes
+#
+$0206 3107 -1 0 10
+$0206 0409 0 0 10
+$0409 0611 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Anuiwi        0206 D211536-6  S Ic Ni              804 Na
+A-2           0404 C130622-9    De Na Ni Po        702 Na
+A-3           0407 A57569B-9  2 Ag Ni              913 Na
+Mouhuula      0409 C7779AF-7  S Hi In              603 Na
+A-5           0703 B323332-A    Lo Ni Po           801 Na
+A-6           0804 C474245-A  S Lo Ni              504 Na
+A-7           0808 C77A547-9  S Ni Wa              802 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Bovarer SECTOR: Yovareen Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           1009 E100100-8    Lo Ni Va           813 Na
+B-2           1109 E6899C8-8    Hi                 303 Na
+B-3           1202 C300243-A  S Lo Ni Va           423 Na
+B-4           1203 A463200-D  2 Lo Ni              820 Na
+B-5           1602 B665522-8    Ag Ni              503 Na
+B-6           1605 C85A347-7  S Lo Ni Wa           202 Na
+B-7           1606 B8B2610-6    Fl Ni           A  304 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Coyova SECTOR: Yovareen Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1901 B86A443-B  N Ni Wa              123 Na
+C-2           1904 C683000-5    Ba Lo Ni           105 Na
+C-3           2103 C203455-A  S Ic Ni Va           812 Na
+C-4           2306 E100556-B    Ni Va              324 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Draveen SECTOR: Yovareen Sector
+#
+# Jump-routes
+$2602 2704 0 0
+$3202 3204 0 0
+#
+$2602 2802 0 0 11
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2602 A225578-E    Ni              B  202 Na
+D-2           2610 C7B149C-A    Fl Ni           A  210 Na
+D-3           2704 C333255-7  S Lo Ni Po           902 Na
+D-4           2707 D59516A-5    Lo Ni              704 Na
+D-5           2802 B656222-A  2 Lo Ni              903 Na
+D-6           3202 A9A47A7-B  S Fl                 803 Na
+D-7           3204 C945545-9    Ag Ni              303 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Eenoya SECTOR: Yovareen Sector
+#
+# Jump-routes
+$0120 0221 0 1
+$0611 0713 0 0
+#
+$0611 0409 0 -1 10
+$0611 0813 0 0 10
+$0813 0917 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0113 C9E5365-9    Fl Lo Ni           501 Na
+E-2           0114 E89A343-8    Lo Ni Wa           802 Na
+E-3           0120 C754110-6    Lo Ni              722 Na
+E-4           0214 C130621-A    De Na Ni Po        103 Na
+E-5           0216 C554002-9    Lo Ni              203 Na
+E-6           0420 E334200-9    Lo Ni              822 Na
+Chadarna      0611 A367124-9  2 Lo Ni              101 Na
+E-8           0614 C845622-3    Ag Ni              900 Na
+E-9           0615 C556355-7    Lo Ni              914 Na
+E-10          0620 E7B5201-8    Fl Lo Ni        A  102 Na
+E-11          0713 B68759A-B    Ag Ni              520 Na
+Ummax         0813 C667444-4    Ni                 804 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Floyovree SECTOR: Yovareen Sector
+#
+# Jump-routes
+#
+$0917 0813 -1 0 10
+$0917 1019 0 0 10
+$1019 1322 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0915 C436741-6  S                    302 Na
+Fulagan       0917 A436998-F    Hi In              901 Na
+F-3           1014 C340311-8  S De Lo Ni Po        512 Na
+Miccsar       1019 D768355-8  S Lo Ni              423 Na
+F-5           1114 E543999-4    Hi In Po           823 Na
+F-6           1116 D566A98-6  S Hi                 514 Na
+F-7           1213 C642512-4    Ni Po              904 Na
+F-8           1416 E323655-6    Na Ni Po           423 Na
+F-9           1420 E65A78C-6    Wa                 520 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Gavreen SECTOR: Yovareen Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1715 C324677-5  S Ni              B  405 Na
+G-2           2012 X847200-0    Lo              R  712 Na
+G-3           2019 D7A0102-8  S De Lo Ni           410 Na
+G-4           2114 A43478C-A                       301 Na
+G-5           2119 D665446-7  S Ni                 302 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hovoya SECTOR: Yovareen Sector
+#
+# Jump-routes
+#
+$3114 3117 0 0 11
+$3117 3218 0 0 11
+$3117 3016 0 0 11
+$3016 2916 0 0 11
+$2916 2915 0 0 11
+$2915 3114 0 0 11
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2514 A555100-B    Lo Ni              504 Na
+H-2           2517 C567378-7  S Lo Ni           B  302 Na
+H-3           2617 D330596-9  S De Ni Po           524 Na
+H-4           2915 C232543-9    Ni Po              204 Na
+H-5           2916 C83A302-A    Lo Ni Wa           910 Na
+H-6           3016 C98AA62-E  S Hi Wa              413 Na
+H-7           3114 B679220-9  S Lo Ni              700 Na
+H-8           3117 B100453-A    Ni Va              202 Na
+H-9           3218 B57A646-A  2 Ni Wa              810 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Iyovreen SECTOR: Yovareen Sector
+#
+# Jump-routes
+$0221 0120 0 -1
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0221 B300554-E    Ni Va              721 Na
+I-2           0323 E96A200-6    Lo Ni Wa           902 Na
+I-3           0522 C458635-5  S Ag Ni              503 Na
+I-4           0627 C591789-5                       102 Na
+I-5           0721 B200986-A    Hi Na Va           902 Na
+I-6           0725 C689110-6    Lo Ni              320 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Javneer SECTOR: Yovareen Sector
+#
+# Jump-routes
+#
+$1322 1019 0 -1 10
+$1322 1425 0 0 10
+$1425 1529 0 0 10
+$1529 1631 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0921 C775347-9  S Lo Ni              303 Na
+J-2           0929 D483367-7  S Lo Ni              313 Na
+Maliphus      1322 C4666AA-8  S Ag Ni              704 Na
+J-4           1329 C84A962-A  S Hi In Wa           404 Na
+Rinmica       1425 C583657-8    Ni Ri              203 Na
+J-6           1428 C43369B-9  S Na Ni Po           804 Na
+J-7           1523 C444720-7    Ag                 301 Na
+J-8           1524 C7B2874-6    Fl              A  704 Na
+Vrahair       1529 C667665-6  S Ag Ni Ri           602 Na
+J-10          1624 E648200-8    Lo Ni              514 Na
+J-11          1625 D673753-7  S                    722 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Klareen SECTOR: Yovareen Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1723 E655ADC-4    Hi                 704 Na
+K-2           1827 A667541-D    Ag Ni              100 Na
+K-3           2223 A896355-E    Lo Ni              531 Na
+K-4           2323 E795797-2    Ag                 303 Na
+K-5           2324 C838897-4  S                    704 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lovreena SECTOR: Yovareen Sector
+#
+# Jump-routes
+$2727 2827 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2727 B488843-B    Ri                 420 Na
+L-2           2827 C8A2364-6  S Fl Lo Ni           104 Na
+L-3           3021 C511563-A  S Ic Ni              603 Na
+L-4           3026 B959666-A  2 Ni                 504 Na
+L-5           3027 C987765-8    Ag Ri              300 Na
+L-6           3221 C528200-7  S Lo Ni              702 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Moyokavn SECTOR: Yovareen Sector
+#
+# Jump-routes
+#
+$0340 0503 0 1 2
+$0340 0236 0 0 2
+$0236 3034 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0136 C641345-7    Lo Ni Po           122 Na
+M-2           0234 E320233-4    De Lo Ni Po        103 Na
+Goreen        0236 C526687-8    Ni                 601 Na
+M-4           0238 C8D5126-5  S Fl Lo Ni           322 Na
+Marclan       0340 C856336-9    Lo Ni              314 Na
+M-6           0433 B6B0401-A    De Ni           A  323 Na
+M-7           0437 C328779-6                    B  803 Na
+M-8           0438 C44779D-6    Ag                 113 Na
+M-9           0632 C365100-7  S Lo Ni              904 Na
+M-10          0732 C427577-B  S Ni              B  802 Na
+M-11          0735 C659335-5    Lo Ni              712 Na
+M-12          0838 B56A97A-C  S Hi Wa           B  314 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Neereena SECTOR: Yovareen Sector
+#
+# Jump-routes
+#
+$1631 1529 0 -1 10
+$1631 1734 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0936 C568302-7    Lo Ni              713 Na
+N-2           1034 E435554-A    Ni                 303 Na
+N-3           1334 C89A687-6    Ni Wa              405 Na
+N-4           1537 C410454-9    Ni                 704 Na
+Nuhlan        1631 C866486-4  S Ni                 603 Na
+N-6           1636 E699236-4    Lo Ni              904 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ovreen SECTOR: Yovareen Sector
+#
+# Jump-routes
+$2435 2536 1 0
+#
+$1734 1631 -1 0 10
+$1734 1837 0 0 10
+$1837 1740 0 0 10
+$1740 1801 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1731 E688404-4    Ni                 800 Na
+Becreda       1734 C110200-D  S Lo Ni              203 Na
+Omishik       1740 D589548-3  S Ni                 302 Na
+O-4           1831 D6746AB-3  S Ag Ni              211 Na
+O-5           1832 C2315AA-8    Ni Po              903 Na
+Frediom       1837 C84A647-A  S Ni Wa              804 Na
+O-7           1935 E427661-3    Ni                 713 Na
+O-8           1938 C484500-9    Ag Ni              325 Na
+O-9           2435 B57A852-C    Wa                 502 Na
+O-10          2436 B99A400-D  S Ni Wa              224 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Povareer SECTOR: Yovareen Sector
+#
+# Jump-routes
+$2536 2435 -1 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2536 B33498A-A    Hi In              304 Na
+P-2           2938 B8A1673-9  N Fl Ni           B  425 Na
+P-3           3036 E448897-7                       815 Na
+P-4           3038 E000756-A    As Na              200 Na
+

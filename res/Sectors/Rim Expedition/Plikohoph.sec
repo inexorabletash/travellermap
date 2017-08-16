@@ -1,0 +1,388 @@
+Plikohoph Sector
+
+A: Apliko                    a.dat
+B: Bohoph                    b.dat
+C: Chaplic                   c.dat
+D: Drikoho                   d.dat
+E: Eplik                     e.dat
+F: Frahoph                   f.dat
+G: Ghophra                   g.dat
+H: Hoplik                    h.dat
+I: Ikohoph                   i.dat
+J: Japlika                   j.dat
+K: Kohoph                    k.dat
+L: Likoho                    l.dat
+M: Maplikan                  m.dat
+N: Nekohoph                  n.dat
+O: Oploho                    o.dat
+P: Pliko                     p.dat
+
+Bases:
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Apliko SECTOR: Plikohoph Sector
+#
+# Jump-routes
+#
+$0209 3109 -1 0 10
+$0209 0409 0 0 10
+$0409 0711 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0101 C4016BC-A    Ic Na Ni Va        300 Na
+A-2           0102 D331274-5    Lo Ni Po        B  414 Na
+A-3           0110 C446310-A  S Lo Ni              912 Na
+Akalanna      0209 C665AAD-9    Hi                 801 Na
+A-5           0303 D000899-9  S As Na              423 Na
+Quigaal       0409 X514555-1    Ic              R  723 Na
+A-7           0502 C472469-5    Ni                 513 Na
+A-8           0507 C000487-9  S As Ni              324 Na
+A-9           0508 C883621-4  S Ni                 902 Na
+A-10          0608 E766568-6    Ag Ni              304 Na
+A-11          0704 C52679D-4  S                    314 Na
+A-12          0707 C4437AF-7  S Po                 114 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Bohoph SECTOR: Plikohoph Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           0910 C8A4796-7    Fl                 110 Na
+B-2           1004 C86A366-9  S Lo Ni Wa           104 Na
+B-3           1209 C375301-8    Lo Ni              904 Na
+B-4           1305 C000254-D  S As Lo Ni           124 Na
+B-5           1405 C8A5A57-D  S Fl Hi              904 Na
+B-6           1408 C6A2314-7    Fl Lo Ni           323 Na
+B-7           1609 X110586-1                    R  403 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Chaplic SECTOR: Plikohoph Sector
+#
+# Jump-routes
+$2103 2203 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1705 C465777-5    Ag Ri           B  212 Na
+C-2           1706 B332834-C  S Na Po              623 Na
+C-3           2103 B000887-8  N As Na              803 Na
+C-4           2202 C5A167A-9    Fl Ni           B  402 Na
+C-5           2203 B535544-A  N Ni                 602 Na
+C-6           2208 E510A86-8    Hi Na              905 Na
+C-7           2308 E477542-4    Ag Ni              321 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Drikoho SECTOR: Plikohoph Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2505 E443300-9    Lo Ni Po           304 Na
+D-2           2705 E331102-8    Lo Ni Po           705 Na
+D-3           2710 E544469-5    Ni                 803 Na
+D-4           2908 C455368-7  S Lo Ni              102 Na
+D-5           3007 C998543-5  S Ag Ni              113 Na
+D-6           3101 C656102-6    Lo Ni              414 Na
+D-7           3102 B445758-A    Ag                 310 Na
+D-8           3105 C343985-B    Hi In Po           315 Na
+D-9           3206 B140258-9  2 De Lo Ni Po        812 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Eplik SECTOR: Plikohoph Sector
+#
+# Jump-routes
+#
+$0711 0409 0 -1 10
+$0711 0714 0 0 10
+$0714 0617 0 0 10
+$0617 0820 0 0 10
+$0820 1221 1 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Valeece       0617 B455433-A    Ni                 705 Na
+Meekapa       0711 D7A5563-5  S Fl Ni              813 Na
+Shidraha      0714 C528340-7    Lo Ni              512 Na
+E-4           0813 D000512-A    As Ni              922 Na
+Ebaadi        0820 B8579CE-8  2 Hi                 103 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Frahoph SECTOR: Plikohoph Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0911 D461412-5  S Ni                 614 Na
+F-2           0915 C210373-8    Lo Ni           B  711 Na
+F-3           1013 C7A2375-5    Fl Lo Ni        B  824 Na
+F-4           1014 B501643-7    Ic Na Ni Va        603 Na
+F-5           1111 C100466-B  S Ni Va              203 Na
+F-6           1215 E99A8BG-5    Wa                 612 Na
+F-7           1412 C535585-9  S Ni                 210 Na
+F-8           1417 C000652-9    As Na Ni           612 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ghophra SECTOR: Plikohoph Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1716 X261514-4                    R  104 Na
+G-2           2015 C7878BA-8                       503 Na
+G-3           2219 C798621-4    Ag Ni              302 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hoplik SECTOR: Plikohoph Sector
+#
+# Jump-routes
+$3012 3112 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2517 D8B3568-3  S Fl Ni           A  314 Na
+H-2           2814 B6759AC-7    Hi In              923 Na
+H-3           2917 B767457-9  S Ni                 420 Na
+H-4           2918 C562584-6    Ni                 904 Na
+H-5           3012 BAA7465-9  S Fl Ni              204 Na
+H-6           3112 A988354-A  N Lo Ni              501 Na
+H-7           3117 EA97778-5    Ag              B  624 Na
+H-8           3217 B6B0753-C  S De                 704 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ikohoph SECTOR: Plikohoph Sector
+#
+# Jump-routes
+$0127 0327 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0127 C558634-4  S Ag Ni              604 Na
+I-2           0225 C869612-4    Ni                 502 Na
+I-3           0322 E864466-2    Ni                 903 Na
+I-4           0326 C534549-8    Ni                 804 Na
+I-5           0327 A331236-B  N Lo Ni Po           904 Na
+I-6           0624 C729856-8                       102 Na
+I-7           0721 D344456-5    Ni                 405 Na
+I-8           0722 B685537-8  N Ag Ni              302 Na
+I-9           0723 E427799-4                       213 Na
+I-10          0724 C3006A7-5  S Na Ni Va           114 Na
+I-11          0725 B6B2688-8    Fl Ni           A  302 Na
+I-12          0728 D889537-5  S Ni                 720 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Japlika SECTOR: Plikohoph Sector
+#
+# Jump-routes
+#
+$1221 0820 -1 -1 10
+$1221 1622 0 0 10
+$1622 1824 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0930 C451454-9    Ni Po              701 Na
+J-2           1021 C857476-9  S Ni              B  434 Na
+Mushad        1221 D76537C-3  S Lo Ni           B  914 Na
+J-4           1230 C5456AB-7  S Ag Ni              412 Na
+J-5           1424 C5759DB-3  S Hi In              704 Na
+J-6           1528 C686323-4  S Lo Ni              200 Na
+Juioolo       1622 B461430-7    Ni                 602 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kohoph SECTOR: Plikohoph Sector
+#
+# Jump-routes
+$1826 1926 0 0
+#
+$1824 1622 -1 0 10
+$1824 2224 0 0 10
+$2224 2527 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Kallagra      1824 C53558A-A  S Ni                 324 Na
+K-2           1825 C140588-B    De Ni Po           522 Na
+K-3           1826 A200645-C  2 Na Ni Va           505 Na
+K-4           1925 C875752-9    Ag                 804 Na
+K-5           1926 B270574-9    De Ni           B  323 Na
+Wohrow        2224 C885685-4    Ag Ni Ri           504 Na
+K-7           2228 D845A68-5  S Hi In              103 Na
+K-8           2330 C200684-A    Na Ni Va           611 Na
+K-9           2423 D878335-6    Lo Ni              300 Na
+K-10          2426 C234512-7    Ni                 314 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Likoho SECTOR: Plikohoph Sector
+#
+# Jump-routes
+#
+$2527 2224 -1 0 10
+$2527 2729 0 0 10
+$2729 3131 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Lawannt       2527 C599344-6    Lo Ni              701 Na
+Hunniel       2729 C000589-A    As Ni              402 Na
+L-3           2827 C748869-8                       504 Na
+L-4           2922 C236766-8                       611 Na
+L-5           2928 B567343-8  N Lo Ni              324 Na
+L-6           3021 E9A4531-3    Fl Ni              414 Na
+L-7           3024 E458344-4    Lo Ni              314 Na
+L-8           3121 C200474-B  S Ni Va           B  505 Na
+L-9           3126 B247788-6  N Ag                 405 Na
+L-10          3229 C588444-7    Ni                 812 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Maplikan SECTOR: Plikohoph Sector
+#
+# Jump-routes
+#
+$0737 0938 1 0 2
+$0737 0434 0 0 2
+$0434 3232 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0239 C661469-5  S Ni                 523 Na
+M-2           0333 C8B4320-A    Fl Lo Ni        A  803 Na
+M-3           0338 C798676-5    Ag Ni           B  500 Na
+Roullea       0434 C100120-B    Lo Ni Va           923 Na
+M-5           0438 E361683-4    Ni Ri              711 Na
+M-6           0731 E56655A-3    Ag Ni              813 Na
+M-7           0734 D895874-5  S                 B  602 Na
+Cadrehh       0737 E978645-6    Ag Ni              202 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nekohoph SECTOR: Plikohoph Sector
+#
+# Jump-routes
+#
+$0938 0902 0 1 2
+$0938 0737 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0935 C787262-9    Lo Ni              634 Na
+Voonancse     0938 B469330-A  N Lo Ni              414 Na
+N-3           1531 D449254-9  S Lo Ni              921 Na
+N-4           1533 C6856BC-7    Ag Ni              605 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Oploho SECTOR: Plikohoph Sector
+#
+# Jump-routes
+$2438 2638 1 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1839 C575ABB-C  S Hi In              604 Na
+O-2           1936 X77A200-6    Lo Wa           R  304 Na
+O-3           2035 E100421-7    Ni Va              224 Na
+O-4           2240 E548786-5    Ag                 902 Na
+O-5           2335 C89A467-A    Ni Wa              700 Na
+O-6           2438 B7B25AC-9    Fl Ni           A  613 Na
+O-7           2439 D12058A-A  S De Ni Po           210 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Pliko SECTOR: Plikohoph Sector
+#
+# Jump-routes
+$2638 2438 -1 0
+$2638 2939 0 0
+$2837 2939 0 0
+$3235 3238 0 0
+#
+$3131 2729 0 -1 10
+$3131 3034 0 0 10
+$3034 3235 0 0 10
+$3235 3238 0 0 10
+$3238 3202 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2636 B6B2455-C  N Fl Ni           A  903 Na
+P-2           2637 C355410-6  S Ni                 500 Na
+P-3           2638 A322300-C  N Lo Ni Po           603 Na
+P-4           2837 BAD8331-A  N Fl Lo Ni           100 Na
+P-5           2838 D441845-4  S Po                 813 Na
+P-6           2939 B582320-B  2 Lo Ni              803 Na
+Naranna       3034 C647110-9    Lo Ni              301 Na
+Karroon       3131 E553103-8    Lo Ni Po           203 Na
+Visea         3235 B98A6AA-B    Ni Wa              704 Na
+P-10          3236 X564767-0    Ag Ri           R  210 Na
+Toeloa        3238 B110435-B    Ni                 722 Na
+

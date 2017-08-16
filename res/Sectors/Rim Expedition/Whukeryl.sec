@@ -1,0 +1,380 @@
+Whukeryl Sector
+
+A: Awhok                     a.dat
+B: Bukery                    b.dat
+C: Chukeryl                  c.dat
+D: Dukery                    d.dat
+E: Eryluk                    e.dat
+F: Flukern                   f.dat
+G: Ghuker                    g.dat
+H: Hukeryl                   h.dat
+I: Iwhuk                     i.dat
+J: Jawhoo                    j.dat
+K: Kuwhuk                    k.dat
+L: Luwhuker                  l.dat
+M: Mawhu                     m.dat
+N: Nerywhu                   n.dat
+O: Owhoke                    o.dat
+P: Pawhuky                   p.dat
+
+Bases:
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Awhok SECTOR: Whukeryl Sector
+#
+# Jump-routes
+$0803 1105 1 0
+#
+$0206 3105 -1 0 10
+$0206 0509 0 0 10
+$0509 0412 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0204 DAD7775-7    Fl              B  603 Na
+Klileena      0206 E525331-4    Lo Ni              414 Na
+A-3           0402 C438963-A    Hi In              510 Na
+A-4           0405 C644500-A    Ag Ni              403 Na
+Ulusha        0509 E452742-2    Po                 201 Na
+A-6           0710 B588466-A  N Ni                 320 Na
+A-7           0803 A8B099A-A  N De Hi           A  713 Na
+A-8           0806 E66889D-1    Ri                 410 Na
+A-9           0808 C99A541-6    Ni Wa              504 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Bukery SECTOR: Whukeryl Sector
+#
+# Jump-routes
+$1105 0803 -1 0
+$1105 1108 0 0
+$1105 1205 0 0
+$1205 1207 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           0903 C747774-7    Ag              B  605 Na
+B-2           1105 A599675-D  N Ni              B  124 Na
+B-3           1108 C222333-B  S Lo Ni Po           805 Na
+B-4           1109 C8798AB-5                       224 Na
+B-5           1202 B674203-9  S Lo Ni              913 Na
+B-6           1205 A64A668-C    Ni Wa              924 Na
+B-7           1207 B9C1303-8  S Fl Lo Ni        A  914 Na
+B-8           1210 C7B0576-7  S De Ni           A  123 Na
+B-9           1602 E733402-6    Ni Po              804 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Chukeryl SECTOR: Whukeryl Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1708 B220769-7  N De Na Po           505 Na
+C-2           1910 C43649A-6  S Ni                 201 Na
+C-3           2007 A100576-D  2 Ni Va           B  701 Na
+C-4           2205 C000334-8    As Lo Ni           605 Na
+C-5           2304 A320769-9    De Na Po           202 Na
+C-6           2408 C510337-A    Lo Ni              304 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Dukery SECTOR: Whukeryl Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2501 C7B7455-B  S Fl Ni           A  912 Na
+D-2           2607 E7878AA-1                       200 Na
+D-3           3001 C554566-6  S Ag Ni              302 Na
+D-4           3108 E484364-6    Lo Ni              600 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Eryluk SECTOR: Whukeryl Sector
+#
+# Jump-routes
+$0615 0715 0 0
+#
+$0412 0509 0 -1 10
+$0412 0715 0 0 10
+$0715 1115 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0113 C225540-6    Ni                 501 Na
+E-2           0218 C653345-6  S Lo Ni Po           900 Na
+Denryl        0412 D9C5769-4  S Fl              A  103 Na
+E-4           0414 B235257-E  N Lo Ni              903 Na
+E-5           0420 C130424-A    De Ni Po           205 Na
+E-6           0615 B130498-E  S De Ni Po           914 Na
+Ekleryan      0715 C878566-5  S Ag Ni              312 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Flukern SECTOR: Whukeryl Sector
+#
+# Jump-routes
+#
+$1115 0715 -1 0 10
+$1115 1218 0 0 10
+$1218 1122 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0915 B657445-A  N Ni                 403 Na
+Figerya       1115 A575663-A    Ag Ni              804 Na
+Cerery        1218 B9B4201-8  N Fl Lo Ni        A  601 Na
+F-4           1219 B876449-7  N Ni                 402 Na
+F-5           1511 C887646-3  S Ag Ni Ri           512 Na
+F-6           1518 C591304-6    Lo Ni              703 Na
+F-7           1615 C5498AC-9  S                    723 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ghuker SECTOR: Whukeryl Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1914 B452698-8  S Ni Po              322 Na
+G-2           1917 E313566-7    Ic Ni              923 Na
+G-3           2115 B85A365-C  S Lo Ni Wa           434 Na
+G-4           2220 C1009BF-8  S Hi Na Va           803 Na
+G-5           2313 B567544-A  S Ag Ni              503 Na
+G-6           2414 B64999A-9  N Hi In              704 Na
+G-7           2415 C778588-9    Ag Ni              403 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hukeryl SECTOR: Whukeryl Sector
+#
+# Jump-routes
+$2813 2914 0 0
+$2814 2914 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2811 C150345-9    De Lo Ni Po        805 Na
+H-2           2813 B2106BC-A  N Na Ni              802 Na
+H-3           2814 B654764-8    Ag                 413 Na
+H-4           2817 C8A5511-6    Fl Ni              302 Na
+H-5           2914 A764752-B  N Ag Ri              103 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Iwhuk SECTOR: Whukeryl Sector
+#
+# Jump-routes
+$0124 0224 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0124 B578300-9  N Lo Ni              404 Na
+I-2           0224 C456034-7    Lo Ni              202 Na
+I-3           0228 A654575-9  2 Ag Ni           B  101 Na
+I-4           0422 B202558-A  N Ic Ni Va           403 Na
+I-5           0430 C261558-A    Ni                 310 Na
+I-6           0621 C9B3145-7  S Fl Lo Ni        A  800 Na
+I-7           0823 E7A3222-8    Fl Lo Ni           503 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jawhoo SECTOR: Whukeryl Sector
+#
+# Jump-routes
+#
+$1122 1218 0 -1 10
+$1122 1325 0 0 10
+$1325 1528 0 0 10
+$1528 1830 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           1030 EAB3854-7    Fl              A  403 Na
+Beyrl         1122 C462353-B  S Lo Ni              402 Na
+J-3           1123 B524412-7  2 Ni                 714 Na
+J-4           1124 C8A2756-7  S Fl                 404 Na
+J-5           1223 C637455-6    Ni                 824 Na
+Arcraam       1325 B4837BC-B  N                    103 Na
+J-7           1430 C8B497A-B  S Fl Hi           A  122 Na
+Dawaasyr      1528 B35037A-B    De Lo Ni Po     B  514 Na
+J-9           1623 C697566-5    Ag Ni              303 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kuwhuk SECTOR: Whukeryl Sector
+#
+# Jump-routes
+$2022 2122 0 0
+#
+$1830 1528 -1 0 10
+$1830 2032 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1828 CAD4686-9  S Fl Ni              204 Na
+Koadde        1830 C366759-7    Ag Ri              104 Na
+K-3           2022 A200947-D    Hi Na Va           904 Na
+K-4           2122 B553369-6  N Lo Ni Po           301 Na
+K-5           2125 E455225-8    Lo Ni              412 Na
+K-6           2129 D385001-6  S Lo Ni              104 Na
+K-7           2222 C551983-6    Hi Po              802 Na
+K-8           2224 C4418CF-6  S Po                 602 Na
+K-9           2226 E353833-6    Po                 903 Na
+K-10          2325 C110145-A  S Lo Ni              610 Na
+K-11          2328 D455554-6  S Ag Ni              505 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Luwhuker SECTOR: Whukeryl Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2522 C447266-6  S Lo Ni              814 Na
+L-2           2524 E100272-7    Lo Ni Va        B  901 Na
+L-3           2527 C446455-9    Ni                 723 Na
+L-4           2722 C322404-B  S Ni Po              502 Na
+L-5           2923 D6699AD-9    Hi                 803 Na
+L-6           2925 C364348-A  S Lo Ni              504 Na
+L-7           3023 B667521-6  S Ag Ni              500 Na
+L-8           3029 E898546-6    Ag Ni              702 Na
+L-9           3125 E4108AD-6    Na                 213 Na
+L-10          3222 A554400-A    Ni                 722 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Mawhu SECTOR: Whukeryl Sector
+#
+# Jump-routes
+#
+$0340 0301 0 1 2
+$0340 3139 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0137 A533000-C    Ba Lo Ni Po        124 Na
+M-2           0233 C510521-A    Ni                 704 Na
+M-3           0237 C9898A7-9  S                    600 Na
+Mahammi       0340 A8C4244-C  N Fl Lo Ni        A  201 Na
+M-5           0436 C426468-9  S Ni                 300 Na
+M-6           0534 C325846-5                       102 Na
+M-7           0631 B6A5377-C  N Fl Lo Ni        B  710 Na
+M-8           0637 CAD4414-8    Fl Ni              722 Na
+M-9           0733 C87A549-B    Ni Wa              324 Na
+M-10          0739 C200475-A  S Ni Va           B  403 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nerywhu SECTOR: Whukeryl Sector
+#
+# Jump-routes
+$1533 1633 0 0
+$1533 1634 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0932 C000643-6  S As Na Ni           614 Na
+N-2           1131 C876166-7  S Lo Ni              714 Na
+N-3           1237 C453779-5    Po              B  304 Na
+N-4           1439 C67A243-7    Lo Ni Wa           910 Na
+N-5           1533 B224AA9-C    Hi In              503 Na
+N-6           1633 B67768C-A    Ag Ni              903 Na
+N-7           1634 A797400-9  S Ni                 701 Na
+N-8           1636 B213597-A    Ic Ni              224 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Owhoke SECTOR: Whukeryl Sector
+#
+# Jump-routes
+#
+$2032 1830 0 -1 10
+$2032 2136 0 0 10
+$2136 2537 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1736 C331623-8    Na Ni Po           212 Na
+O-2           1739 C737522-5    Ni                 502 Na
+Ottacca       2032 B233520-A  2 Ni Po              824 Na
+O-4           2131 C540133-4  S De Lo Ni Po        415 Na
+Verlok        2136 E000547-7    As Ni              401 Na
+O-6           2236 C638300-B  S Lo Ni              403 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Pawhuky SECTOR: Whukeryl Sector
+#
+# Jump-routes
+#
+$2537 2136 -1 0 10
+$2537 2739 0 0 10
+$2739 2802 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Pienie        2537 D466997-4  S Hi                 204 Na
+P-2           2633 D538743-7  S                    902 Na
+Sluhsa        2739 B561244-B  2 Lo Ni              814 Na
+P-4           2937 D625899-3                       103 Na
+P-5           3132 C8B0574-5    De Ni           A  803 Na
+P-6           3233 C99458A-9    Ag Ni              500 Na
+

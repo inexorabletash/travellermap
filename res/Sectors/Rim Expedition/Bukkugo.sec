@@ -1,0 +1,287 @@
+Bukkugo Sector
+
+A: Akku                      a.dat
+B: Banku                     b.dat
+C: Covoku                    c.dat
+D: Domaku                    d.dat
+E: Eoku                      e.dat
+F: Facaku                    f.dat
+G: Glavoku                   g.dat
+H: Huku                      h.dat
+I: Iyhakku                   i.dat
+J: Jawaku                    j.dat
+K: Kukuk                     k.dat
+L: Laxuk                     l.dat
+M: Mekub                     m.dat
+N: Nowku                     n.dat
+O: Onaku                     o.dat
+P: Placaku                   p.dat
+
+Bases:
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Akku SECTOR: Bukkugo Sector
+#
+# Jump-routes
+$0710 0511 0 1
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0706 C675768-5    Ag                 900 Na
+A-2           0710 B433AEI-B    Hi In Na Po     A  710 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Banku SECTOR: Bukkugo Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           0905 C544443-4  S Ni                 620 Na
+B-2           1009 C233787-A  S Na Po              624 Na
+B-3           1601 C748784-3    Ag                 420 Na
+B-4           1604 B666456-9  N Ni                 714 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Covoku SECTOR: Bukkugo Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1701 B546544-7  2 Ag Ni              903 Na
+C-2           2410 B400536-8  N Ni Va              624 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Domaku SECTOR: Bukkugo Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           3105 B547996-8  N Hi In              200 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Eoku SECTOR: Bukkugo Sector
+#
+# Jump-routes
+$0511 0710 0 -1
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0113 B655778-A  2 Ag              B  411 Na
+E-2           0119 C0007CD-B    As Na              403 Na
+E-3           0217 C140A52-E    De Hi In Po        403 Na
+E-4           0220 C511440-9    Ic Ni              214 Na
+E-5           0313 X100100-4    Lo Va           R  810 Na
+E-6           0511 A10066B-E  S Na Ni Va           503 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Facaku SECTOR: Bukkugo Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           1218 C658764-3    Ag                 203 Na
+F-2           1420 C220224-A    De Lo Ni Po        113 Na
+F-3           1514 B424785-8                       112 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Glavoku SECTOR: Bukkugo Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Glavoku       1818 A310546-F  N Ni                 225 Na
+G-2           2017 B67845A-C  2 Ni                 104 Na
+G-3           2115 E646387-7    Lo Ni              804 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Huku SECTOR: Bukkugo Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2718 D526233-5    Lo Ni              813 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Iyhakku SECTOR: Bukkugo Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0124 B728563-C    Ni                 814 Na
+I-2           0326 C3246BA-7    Ni                 301 Na
+I-3           0426 C6A7000-A    Ba Fl Lo Ni        303 Na
+I-4           0724 C565776-7    Ag Ri           B  104 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jawaku SECTOR: Bukkugo Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           1023 A502402-D  S Ic Ni Va           310 Na
+J-2           1224 D120656-7  S De Na Ni Po        602 Na
+J-3           1428 D50255A-8  S Ic Ni Va           622 Na
+J-4           1624 B6568AD-9  S                    403 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kukuk SECTOR: Bukkugo Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1723 E649665-5    Ni                 220 Na
+K-2           2029 C8A3686-8    Fl Ni              400 Na
+K-3           2321 C77A147-9  S Lo Ni Wa           912 Na
+K-4           2330 C385ADG-7  S Hi                 100 Na
+K-5           2429 C667754-8  S Ag Ri              723 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Laxuk SECTOR: Bukkugo Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2529 C565403-9  S Ni                 203 Na
+L-2           2628 C322855-8    Na Po              600 Na
+L-3           2825 C8B2663-5  S Fl Ni           A  905 Na
+L-4           2930 C500531-9    Ni Va              904 Na
+L-5           3124 E50558A-3    Ic Ni Va           801 Na
+L-6           3228 X665446-2                    R  504 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Mekub SECTOR: Bukkugo Sector
+#
+# Jump-routes
+$0737 0837 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0334 B375944-D  2 Hi In              903 Na
+M-2           0338 XA69656-0    Ri              R  603 Na
+M-3           0438 B457300-D  S Lo Ni              903 Na
+M-4           0439 C76A655-8    Ni Ri Wa           202 Na
+M-5           0732 C531412-9    Ni Po              805 Na
+M-6           0737 B586340-A  N Lo Ni              203 Na
+M-7           0831 C234413-B  S Ni                 704 Na
+M-8           0837 C130403-D    De Ni Po           400 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nowku SECTOR: Bukkugo Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0935 A459662-9    Ni                 823 Na
+N-2           1039 B9A5788-6  S Fl                 624 Na
+N-3           1135 C130151-9    De Lo Ni Po        712 Na
+N-4           1436 C624675-6    Ni              B  613 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Onaku SECTOR: Bukkugo Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1735 D376124-6  S Lo Ni              303 Na
+O-2           1835 C510626-4  S Na Ni              202 Na
+O-3           2231 C8A3344-5    Fl Lo Ni           724 Na
+O-4           2240 B5A0424-9  N De Ni              913 Na
+O-5           2439 C626799-9                       112 Na
+O-6           2440 B797322-6  N Lo Ni              304 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Placaku SECTOR: Bukkugo Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2640 C9C3454-B    Fl Ni           A  802 Na
+

@@ -1,0 +1,337 @@
+Muertos Sector
+
+A: Amuer                     a.dat
+B: Bertos                    b.dat
+C: Cemuer                    c.dat
+D: Duerto                    d.dat
+E: Ertos                     e.dat
+F: Famuer                    f.dat
+G: Gertox                    g.dat
+H: Huerdox                   h.dat
+I: Imuerz                    i.dat
+J: Juer                      j.dat
+K: Kertoz                    k.dat
+L: Lueran                    l.dat
+M: Muer                      m.dat
+N: Nuersos                   n.dat
+O: Ostuar                    o.dat
+P: Puioter                   p.dat
+
+Bases:
+E = Ertos Navy
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+12 El = Ertos League of Worlds
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Amuer SECTOR: Muertos Sector
+#
+# Jump-routes
+#
+$0108 3008 -1 0 10
+$0108 0509 0 0 10
+$0509 0711 0 1 10
+$0509 0312 0 1 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Basuerta      0108 BAA4141-B    Fl Lo Ni           504 El
+A-2           0502 C470400-A  S De Ni              603 Na
+A-3           0508 E551656-7    Ni Po              203 El
+Guirta        0509 A545364-8    Lo Ni              404 El
+A-5           0708 C000262-7    As Lo Ni           813 El
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Bertos SECTOR: Muertos Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           1103 D351AA7-8    Hi Po              722 Na
+B-2           1309 C79A668-5    Ni Wa              200 Na
+B-3           1405 A592447-D    Ni                 623 Na
+B-4           1510 A746365-C  N Lo Ni              402 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Cemuer SECTOR: Muertos Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1708 B777236-6  N Lo Ni              613 Na
+C-2           1906 A858552-A  N Ag Ni              704 Na
+C-3           2202 E783454-5    Ni                 100 Na
+Pine Ridge    2309 *1 Derelict Ship mis-jump           --     f
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Duerto SECTOR: Muertos Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2503 C998235-7  S Lo Ni              610 Na
+D-2           2504 C67A426-8  S Ni Wa              822 Na
+D-3           2604 C563002-4    Lo Ni              802 Na
+D-4           2702 E321664-5    Na Ni Po           614 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ertos SECTOR: Muertos Sector
+#
+# Jump-routes
+#
+$0711 0509 0 -1 10
+$0711 0715 0 0 10
+$0715 1015 1 0 10
+$0216 0215 0 0 12
+$0215 0312 0 0 12
+$0312 0711 0 0 12
+$0312 0509 0 -1 12
+$0715 1014 1 0 12
+$0216 3017 -1 0 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0215 B3669CB-D  E Hi                 603 El
+Ertos         0216 A223456-F  E Ni Po              304 El
+E-3           0312 B654996-9  E Hi                 315 El
+E-4           0315 C689343-9    Lo Ni              423 El
+E-5           0413 E8C4953-A  E Fl Hi           A  504 El
+Emmuarke      0711 B898778-A  E Ag              B  502 El
+Tanuera       0715 B7A2465-B    Fl Ni              313 El
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Famuer SECTOR: Muertos Sector
+#
+# Jump-routes
+#
+$1015 0715 -1 0 10
+$1015 1417 0 0 10
+$1417 1816 1 0 10
+$1014 0715 -1 0 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           1014 B886302-B    Lo Ni              123 El
+Bakkuer       1015 C000425-9    As Ni              204 El
+Flaurgos      1417 A666232-B  N Lo Ni              404 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Gertox SECTOR: Muertos Sector
+#
+# Jump-routes
+#
+$1816 1417 -1 0 10
+$1816 1820 0 0 10
+$1820 2219 0 0 10
+$2219 2521 1 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Gilluerm      1816 C11069B-7    Na Ni              701 Na
+Huerji        1820 A88A976-C    Hi Wa           B  734 Na
+G-3           1911 B515027-9  2 Ic Lo Ni           703 Na
+Juert         2219 C450100-9    De Lo Ni Po        413 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Huerdox SECTOR: Muertos Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2515 E340550-6    De Ni Po           700 Na
+H-2           2517 C224636-6    Ni                 300 Na
+H-3           2714 E8A3885-2    Fl                 924 Na
+H-4           2811 E5527A7-1    Po                 204 Na
+H-5           3016 C37399B-A    Hi In              904 Na
+H-6           3115 C94A410-6  S Ni Wa              213 Na
+H-7           3214 C364200-B  S Lo Ni              502 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Imuerz SECTOR: Muertos Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0221 XAB4587-2    Fl              R  813 Na
+I-2           0422 C9A855A-A  S Fl Ni              900 Na
+I-3           0428 C869444-A    Ni                 103 Na
+I-4           0823 D558545-4  S Ag Ni              301 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Juer SECTOR: Muertos Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           1023 B572474-B  S Ni              B  104 Na
+J-2           1024 A252763-D  S Po                 604 Na
+J-3           1625 C677665-4  S Ag Ni              714 Na
+J-4           1627 C75459D-6  S Ag Ni              904 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kertoz SECTOR: Muertos Sector
+#
+# Jump-routes
+#
+$2324 2521 1 0 10
+$2324 2527 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1829 C449300-A  S Lo Ni              303 Na
+Korggan       2324 D697524-3  S Ag Ni              203 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lueran SECTOR: Muertos Sector
+#
+# Jump-routes
+#
+$2521 2219 -1 -1 10
+$2521 2324 -1 0 10
+$2527 2324 -1 0 10
+$2527 2531 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Lampertiem    2521 D345300-6  S Lo Ni              324 Na
+L-2           2930 D858463-7  S Ni                 503 Na
+Sellari       2527 C576567-9    Ag Ni              504 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Muer SECTOR: Muertos Sector
+#
+# Jump-routes
+#
+$0738 0701 0 1 2
+$0738 0435 0 0 2
+$0435 3237 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0140 E321340-4    Lo Ni Po           213 Na
+M-2           0235 C8A4877-5  S Fl              B  204 Na
+M-3           0239 C200673-6    Na Ni Va        B  505 Na
+Dreen         0435 C584388-7    Lo Ni              304 Na
+Moaali        0738 E000104-B    As Lo Ni           202 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nuersos SECTOR: Muertos Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0938 C668798-6    Ag Ri              813 Na
+N-2           1039 C898679-5  S Ag Ni           B  404 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ostuar SECTOR: Muertos Sector
+#
+# Jump-routes
+$2033 2333 0 0
+#
+$2333 2531 1 0 10
+$2333 2436 0 0 10
+$2436 2737 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1940 C451462-9  S Ni Po              202 Na
+O-2           2033 A224788-C  2                    603 Na
+Hajjah        2333 A653230-8    Lo Ni Po           411 Na
+Nuevert       2436 C200443-B  S Ni Va              801 Na     f
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Puioter SECTOR: Muertos Sector
+#
+# Jump-routes
+$3134 3235 0 0
+#
+$2531 2527 0 -1 10
+$2531 2333 -1 0 10
+$2737 2436 -1 0 10
+$2737 2640 0 0 10
+$2640 3001 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Piomuer       2531 B7C0678-9    De Ni           A  715 Na
+Bammuier      2640 C584103-7    Lo Ni              903 Na
+Flaughuer     2737 B342366-7    Lo Ni Po           813 Na
+P-4           2934 D550576-3    De Ni Po        B  803 Na
+P-5           3031 C675489-9    Ni                 103 Na
+P-6           3040 C381149-A    Lo Ni              305 Na
+P-7           3134 C4469CD-A  S Hi In              420 Na
+P-8           3231 C130998-8    De Hi In Na Po     325 Na
+P-9           3235 A6799B9-D    Hi In              902 Na
+

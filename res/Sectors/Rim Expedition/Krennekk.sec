@@ -1,0 +1,320 @@
+Krennekk Sector
+
+A: Akrenn                    a.dat
+B: Bennekk                   b.dat
+C: Crenn                     c.dat
+D: Dekke                     d.dat
+E: Ennekk                    e.dat
+F: Flennenn                  f.dat
+G: Grienn                    g.dat
+H: Hennekk                   h.dat
+I: Ikrenn                    i.dat
+J: Jakkrenn                  j.dat
+K: Krenn                     k.dat
+L: Lekrenn                   l.dat
+M: Miikrenn                  m.dat
+N: Nakrekk                   n.dat
+O: Okkrekk                   o.dat
+P: Pakrikka                  p.dat
+
+Bases:
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Akrenn SECTOR: Krennekk Sector
+#
+# Jump-routes
+#
+$0310 3109 -1 0 10
+$0310 0712 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0109 X210024-3    Lo              R  904 Na
+A-2           0202 A844340-D  N Lo Ni              700 Na
+Avkhaan       0310 X495986-1    Hi In           R  204 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Bennekk SECTOR: Krennekk Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           0906 C45157A-9    Ni Po           B  214 Na
+B-2           1106 E8A4411-6    Fl Ni              310 Na
+B-3           1410 C130663-9  S De Na Ni Po        113 Na
+B-4           1506 B546899-7                       904 Na
+B-5           1508 C756520-7    Ag Ni              914 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Crenn SECTOR: Krennekk Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1904 B333558-C    Ni Po              810 Na
+C-2           1910 E695485-4    Ni                 304 Na
+C-3           2009 D241304-7  S Lo Ni Po           913 Na
+C-4           2201 B1008A9-8  2 Na Va              612 Na
+C-5           2308 CA7A755-A    Wa                 804 Na
+C-6           2401 E2028BA-6    Ic Na Va           623 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Dekke SECTOR: Krennekk Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2806 B899563-9  N Ni                 800 Na
+D-2           2903 D596130-3  S Lo Ni              603 Na
+D-3           2906 C12078A-8  S De Na Po           814 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ennekk SECTOR: Krennekk Sector
+#
+# Jump-routes
+#
+$0712 0310 0 -1 10
+$0712 1113 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0414 B789100-B    Lo Ni              224 Na
+E-2           0613 E535210-8    Lo Ni              303 Na
+Ellkattieal   0712 C7A5AA7-B    Fl Hi              213 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Flennenn SECTOR: Krennekk Sector
+#
+# Jump-routes
+#
+$1113 0712 -1 0 10
+$1113 1216 0 0 10
+$1216 1319 0 0 10
+$1319 1619 0 0 10
+$1619 1622 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Fraeejas      1113 B110622-9  N Na Ni              424 Na
+F-2           1212 C88A233-B  S Lo Ni Wa           810 Na
+Mokreenn      1216 C6A4549-7  S Fl Ni              503 Na
+Tlookrass     1319 C422696-8    Na Ni Po           824 Na
+Zasskrenn     1619 C576233-7    Lo Ni              113 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Grienn SECTOR: Krennekk Sector
+#
+# Jump-routes
+$2211 2213 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           2211 C53A230-8  S Lo Ni Wa           504 Na
+G-2           2213 A484433-D    Ni                 921 Na
+G-3           2214 C44489C-4                       211 Na
+G-4           2217 EA8A363-6    Lo Ni Wa           804 Na
+G-5           2312 C411686-9  S Ic Na Ni           514 Na
+G-6           2412 C655787-5    Ag                 713 Na
+G-7           2417 C323155-7    Lo Ni Po           703 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hennekk SECTOR: Krennekk Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2619 C230568-8    De Ni Po           304 Na
+H-2           2819 B577525-A  2 Ag Ni              514 Na
+H-3           2918 C984543-7  S Ag Ni              722 Na
+H-4           3018 D755565-5    Ag Ni              304 Na
+H-5           3118 C8B6ADD-8  S Fl Hi           A  520 Na
+H-6           3120 D75A856-7    Wa                 114 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ikrenn SECTOR: Krennekk Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0227 C734532-5  S Ni                 703 Na
+I-2           0228 C510566-7  S Ni                 614 Na
+I-3           0330 C377248-5    Lo Ni              424 Na
+I-4           0628 C346646-4    Ag Ni              314 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jakkrenn SECTOR: Krennekk Sector
+#
+# Jump-routes
+#
+$1622 1619 0 -1 10
+$1622 1526 0 0 10
+$1526 1529 0 0 10
+$1529 1731 1 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0925 C100110-8    Lo Ni Va           710 Na
+J-2           1121 DAB8599-5  S Fl Ni           A  303 Na
+J-3           1223 D9C4576-3  S Fl Ni           A  401 Na
+Jreklenn      1526 C110332-A  S Lo Ni              612 Na
+Atremm        1529 X566676-1    Ag Ri           R  411 Na
+Arranwar      1622 C612456-B    Ic Ni              704 Na
+J-7           1625 E73A440-6    Ni Wa              101 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Krenn SECTOR: Krennekk Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1726 E477100-6    Lo Ni              724 Na
+K-2           1921 C695355-8  S Lo Ni              804 Na
+K-3           2221 C627535-5  S Ni                 701 Na
+K-4           2223 C235220-B    Lo Ni              904 Na
+K-5           2321 B453665-B    Ni Po              703 Na
+K-6           2329 E551668-3    Ni Po              103 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lekrenn SECTOR: Krennekk Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2622 D220565-7    De Ni Po           105 Na
+L-2           2725 C100589-B    Ni Va              400 Na
+L-3           2930 B68A783-8  N Ri Wa              105 Na
+L-4           3024 C232005-6    Lo Ni Po           110 Na
+L-5           3124 A648743-C  N Ag                 922 Na
+L-6           3227 C410320-8  S Lo Ni              204 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Miikrenn SECTOR: Krennekk Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Miikren       0331 A77A310-F    Lo Ni Wa           100 Na
+M-2           0333 E459332-9    Lo Ni              115 Na
+M-3           0731 E222455-9    Ni Po              214 Na
+M-4           0738 D10079B-6  S Na Va              504 Na
+M-5           0835 C230120-9    De Lo Ni Po        213 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nakrekk SECTOR: Krennekk Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           1432 A384220-9  N Lo Ni              100 Na
+N-2           1532 E345642-3    Ag Ni              611 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Okkrekk SECTOR: Krennekk Sector
+#
+# Jump-routes
+#
+$1731 1529 -1 -1 10
+$1731 1735 0 0 10
+$1735 1937 0 0 10
+$1937 2238 0 0 10
+$2238 2440 0 0 10
+$2440 2603 1 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Orlaak        1731 B766798-A  N Ag Ri              604 Na
+Seekke        1735 X3388BE-4                    R  225 Na
+Gollgoth      1937 C100477-7    Ni Va           B  404 Na
+Ukruut        2238 A120331-B    De Lo Ni Po        703 Na
+O-5           2433 C568467-7  S Ni                 503 Na
+Arhgrik       2440 B9787C9-5    Ag                 724 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Pakrikka SECTOR: Krennekk Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2734 D7B3337-5    Fl Lo Ni        A  804 Na
+P-2           3034 A140562-B    De Ni Po           712 Na
+

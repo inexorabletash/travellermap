@@ -1,0 +1,385 @@
+Clilorne Sector
+
+A: Aclilo                    a.dat
+B: Blilorne                  b.dat
+C: Clilor                    c.dat
+D: Dilorn                    d.dat
+E: Eclilor                   e.dat
+F: Flornel                   f.dat
+G: Glilo                     g.dat
+H: Hilorne                   h.dat
+I: Ilornet                   i.dat
+J: Jilonre                   j.dat
+K: Klilonne                  k.dat
+L: Lilorn                    l.dat
+M: Mililor                   m.dat
+N: Nornel                    n.dat
+O: Ornne                     o.dat
+P: Plilorne                  p.dat
+
+Bases:
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Aclilo SECTOR: Clilorne Sector
+#
+# Jump-routes
+#
+$0103 3239 -1 -1 10
+$0103 0107 0 0 10
+$0107 0408 0 0 10
+$0408 0809 0 0 10
+$0809 1211 1 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Carnn         0103 X696985-0    Hi In           R  804 Na
+Alvarec       0107 C500567-6  S Ni Va              314 Na
+A-3           0109 E400223-9    Lo Ni Va           123 Na
+A-4           0208 C996411-7  S Ni                 134 Na
+A-5           0407 E400500-A    Ni Va              304 Na
+Flutec        0408 D000558-7    As Ni              813 Na
+A-7           0506 A230100-E  2 De Lo Ni Po        702 Na
+A-8           0601 E456104-8    Lo Ni              512 Na
+A-9           0705 A9D4437-A  N Fl Ni              903 Na
+A-10          0708 C561A99-A    Hi                 502 Na
+Morrenn       0809 BAD7320-A  S Fl Lo Ni           514 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Blilorne SECTOR: Clilorne Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           0904 B879100-A  N Lo Ni              724 Na
+B-2           1003 C535534-8    Ni                 900 Na
+B-3           1304 E789688-4    Ni Ri              310 Na
+B-4           1305 B988532-A    Ag Ni              404 Na
+B-5           1408 C100554-D    Ni Va              504 Na
+B-6           1410 B6489A9-C  N Hi In              902 Na
+B-7           1501 C8898CH-5  S                    200 Na
+B-8           1502 C787300-A  S Lo Ni              204 Na
+B-9           1505 C10057C-8    Ni Va           B  622 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Clilor SECTOR: Clilorne Sector
+#
+# Jump-routes
+$2005 2306 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1709 E344555-7    Ag Ni              104 Na
+C-2           1903 C210957-B    Hi Na              314 Na
+C-3           1905 E424340-9    Lo Ni              423 Na
+C-4           2005 A76A633-A  N Ni Wa              922 Na
+C-5           2101 C000412-9    As Ni              400 Na
+C-6           2109 B9A569B-A    Fl Ni              624 Na
+C-7           2110 E867534-7    Ag Ni              101 Na
+C-8           2203 C77848B-6    Ni                 604 Na
+C-9           2306 A9B2624-D  N Fl Ni           A  604 Na
+C-10          2402 A75A679-9    Ni Wa           B  702 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Dilorn SECTOR: Clilorne Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2603 X527623-0                    R  603 Na
+D-2           2804 B696532-8  2 Ag Ni              800 Na
+D-3           3009 C130441-9  S De Ni Po           801 Na
+D-4           3104 C769443-8    Ni                 603 Na
+D-5           3201 C469134-6    Lo Ni              210 Na
+D-6           3203 C662899-5    Ri                 314 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Eclilor SECTOR: Clilorne Sector
+#
+# Jump-routes
+$0111 0213 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0111 B7A7201-C    Fl Lo Ni           304 Na
+E-2           0213 B621546-7  S Ni Po              622 Na
+E-3           0320 C150964-B    De Hi Po           102 Na
+E-4           0516 B502779-9  S Ic Na Va        B  902 Na
+E-5           0814 C551430-6  S Ni Po              423 Na
+E-6           0817 B000100-C  N As Lo Ni           925 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Flornel SECTOR: Clilorne Sector
+#
+# Jump-routes
+#
+$1211 0809 -1 -1 10
+$1211 1511 0 0 10
+$1511 1813 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           1020 D773103-8  S Lo Ni              502 Na
+Varscha       1211 B785468-7  N Ni                 404 Na
+F-3           1311 E400101-5    Lo Ni Va           300 Na
+Slonnawa      1511 B000774-C    As Na           B  101 Na
+F-5           1516 B400765-C  S Na Va              814 Na
+F-6           1615 A254557-B  N Ag Ni              620 Na
+F-7           1620 B310333-8  2 Lo Ni              403 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Glilo SECTOR: Clilorne Sector
+#
+# Jump-routes
+$2318 2420 0 0
+#
+$1813 1511 -1 0 10
+$1813 2115 0 0 10
+$2115 2318 0 0 10
+$2318 2421 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Gumbaka       1813 D230321-8    De Lo Ni Po        201 Na
+G-2           2114 C160377-A    De Lo Ni        B  620 Na
+Noveare       2115 D8D3466-6    Fl Ni              623 Na
+G-4           2220 C404330-B    Ic Lo Ni Va        400 Na
+G-5           2316 C444747-8    Ag                 805 Na
+G-6           2317 C999463-A    Ni                 304 Na
+Whootoo       2318 B77A677-A    Ni Wa           B  314 Na
+G-8           2411 C33477A-9  S                 B  102 Na
+G-9           2419 B798A98-D  2 Hi In              410 Na
+G-10          2420 A453633-C    Ni Po              202 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hilorne SECTOR: Clilorne Sector
+#
+# Jump-routes
+$2819 2721 0 1
+$2819 2822 0 1
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2515 C647663-5  S Ag Ni              422 Na
+H-2           2518 C9C9ACF-C    Fl Hi           A  903 Na
+H-3           2620 C8A5355-A    Fl Lo Ni           113 Na
+H-4           2811 D665141-2  S Lo Ni              904 Na
+H-5           2813 C773343-7    Lo Ni              402 Na
+H-6           2819 A564422-C  N Ni                 410 Na
+H-7           2917 E324556-A    Ni                 823 Na
+H-8           3013 C469576-8    Ni              B  504 Na
+H-9           3015 B8C3558-9  2 Fl Ni           A  403 Na
+H-10          3212 E846761-1    Ag                 403 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ilornet SECTOR: Clilorne Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0322 B896432-8  S Ni                 514 Na
+I-2           0424 D435420-9  S Ni                 415 Na
+I-3           0427 C456521-7    Ag Ni              624 Na
+I-4           0827 E553330-5    Lo Ni Po           312 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jilonre SECTOR: Clilorne Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0925 D5537BD-1    Po                 614 Na
+J-2           1123 B100672-A  N Na Ni Va        B  704 Na
+J-3           1124 E222678-4    Na Ni Po        B  320 Na
+J-4           1426 B646238-7  S Lo Ni              213 Na
+J-5           1529 B540854-7    De Po              501 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Klilonne SECTOR: Clilorne Sector
+#
+# Jump-routes
+#
+$2421 2318 0 -1 10
+$2421 2325 0 0 10
+$2325 2126 0 0 10
+$2126 2229 0 0 10
+$2229 2231 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1721 C2559DF-8    Hi                 914 Na
+K-2           1726 C351100-B    Lo Ni Po           614 Na
+K-3           1824 E525212-3    Lo Ni              405 Na
+K-4           1921 C77A531-A  S Ni Wa              511 Na
+K-5           1926 B776795-A    Ag                 105 Na
+K-6           1929 C898656-5  S Ag Ni              704 Na
+Brannure      2126 C657887-8                       904 Na
+Artagas       2229 C373311-5    Lo Ni              111 Na
+Hamallo       2325 A120588-D    De Ni Po           223 Na
+Kongrees      2421 B899986-C    Hi In              104 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lilorn SECTOR: Clilorne Sector
+#
+# Jump-routes
+$2721 2819 0 -1
+$2822 2819 0 -1
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2522 C697244-5    Lo Ni              401 Na
+L-2           2523 D360598-7  S De Ni              504 Na
+L-3           2530 C74789B-7  S                    103 Na
+L-4           2623 CA7A6BE-9  S Ni Wa              203 Na
+L-5           2721 C200644-5    Na Ni Va           801 Na
+L-6           2822 B667269-7  S Lo Ni              403 Na
+L-7           2825 C77789C-8                       704 Na
+L-8           2923 D14096A-A    De Hi In Po        504 Na
+L-9           2927 C886400-8    Ni                 122 Na
+L-10          3121 E62A653-5    Ni Wa              913 Na
+L-11          3222 E547668-5    Ag Ni              100 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Mililor SECTOR: Clilorne Sector
+#
+# Jump-routes
+#
+$0540 0603 0 1 2
+$0540 0238 0 0 2
+$0238 3235 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0137 A738566-A  N Ni                 523 Na
+M-2           0139 C693A98-9    Hi In              304 Na
+Mallavet      0238 E589766-6    Ri                 311 Na
+M-4           0333 B510556-D  N Ni                 302 Na
+M-5           0334 E2238AB-5    Na Po              803 Na
+Carfil        0540 C8A5510-7  S Fl Ni              505 Na
+M-7           0732 E57569B-2    Ag Ni              400 Na
+M-8           0837 C300231-B    Lo Ni Va           802 Na
+M-9           0838 C100888-7  S Na Va              600 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nornel SECTOR: Clilorne Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0936 D440658-4  S De Ni Po           410 Na
+N-2           1333 B646202-C  2 Lo Ni              713 Na
+N-3           1535 C542314-5  S Lo Ni Po           510 Na
+N-4           1536 C98A59B-7    Ni Wa              323 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ornne SECTOR: Clilorne Sector
+#
+# Jump-routes
+#
+$2231 2229 0 -1 10
+$2231 2235 0 0 10
+$2235 2339 0 0 10
+$2339 2638 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1836 C536400-A    Ni                 822 Na
+O-2           1936 E796003-7    Lo Ni              103 Na
+O-3           2033 C2238BB-5    Na Po              913 Na
+O-4           2038 C432216-B    Lo Ni Po           604 Na
+Orssa         2231 C867147-5    Lo Ni              813 Na
+Ellaha        2235 B774200-8    Lo Ni              214 Na
+Miverka       2339 C665324-8  S Lo Ni              212 Na
+O-8           2433 E896376-3    Lo Ni           B  803 Na
+O-9           2440 C1008BC-6  S Na Va              404 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Plilorne SECTOR: Clilorne Sector
+#
+# Jump-routes
+#
+$2638 2339 -1 0 10
+$2638 2602 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Jebraan       2638 E552579-6    Ni Po           B  701 Na
+P-2           2733 C340898-9  S De Po              410 Na
+P-3           2939 E477876-3                    B  903 Na
+P-4           2940 C877100-7    Lo Ni              204 Na
+P-5           3031 B84888A-5                       313 Na
+P-6           3131 C3109A5-B    Hi Na              112 Na
+P-7           3239 D97A336-8    Lo Ni Wa           210 Na
+

@@ -1,0 +1,415 @@
+Togliss Sector
+
+A: Atog                      a.dat
+B: Bogliss                   b.dat
+C: Catoga                    c.dat
+D: Drogliss                  d.dat
+E: Elgiss                    e.dat
+F: Fogliss                   f.dat
+G: Golien                    g.dat
+H: Hagolott                  h.dat
+I: Itoga                     i.dat
+J: Jaatog                    j.dat
+K: Klissliss                 k.dat
+L: Lissog                    l.dat
+M: Maatooga                  m.dat
+N: Nootagol                  n.dat
+O: Oglissa                   o.dat
+P: Pontall                   p.dat
+
+Bases:
+A = Avaris Military
+K = Kliss Navy
+L = Kliss Scout
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+12 As = Avaris State
+13 Ks = Kliss Sisters
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Atog SECTOR: Togliss Sector
+#
+# Jump-routes
+#
+$0810 1013 1 1 2
+$0810 0707 0 0 2
+$0707 0703 0 0 2
+$0703 0301 0 0 2
+$0301 0138 0 -1 2
+$0507 0408 0 0 12
+$0507 0707 0 0 12
+$0507 0605 0 0 12
+$0605 0707 0 0 12
+$0707 0908 1 0 12
+$0707 0905 1 0 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Alliannca     0301 B10086B-C    Na Va              824 Na
+A-2           0306 X460463-2    De              R  503 Na
+A-3           0408 A54848A-C  A Ni                 103 As
+Avaris        0507 B110252-F  A Lo Ni              102 As
+A-5           0605 C4248BD-A  A                    911 As
+Afraniss      0703 E9A4555-8    Fl Ni              403 Na
+Draviss       0707 A896012-B    Lo Ni              814 As
+Zammanan      0810 B867753-A  S Ag Ri              912 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Bogliss SECTOR: Togliss Sector
+#
+# Jump-routes
+#
+$0908 0707 -1 0 12
+$0905 0707 -1 0 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           0905 C464348-8  A Lo Ni              405 As
+B-2           0908 B300863-B  A Na Va              332 As
+B-3           1109 C895840-7  S                    121 Na
+B-4           1301 C5136A6-9  S Ic Na Ni           103 Na
+B-5           1303 E332420-4    Ni Po              202 Na
+B-6           1401 C361665-8    Ni Ri              924 Na
+B-7           1406 C6767C8-5    Ag                 813 Na
+B-8           1604 E8C0768-6    De              A  412 Na
+B-9           1605 X9E2A77-3    Fl Hi           R  203 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Catoga SECTOR: Togliss Sector
+#
+# Jump-routes
+$2203 2304 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1710 C657679-8    Ag Ni           B  402 Na
+C-2           1808 C635643-4    Ni                 905 Na
+C-3           1904 B98A425-D    Ni Wa              102 Na
+C-4           2007 C3557B6-6    Ag                 802 Na
+C-5           2203 C633300-8  S Lo Ni Po           703 Na
+C-6           2208 B10078B-8    Na Va              213 Na
+C-7           2209 C410584-7    Ni                 803 Na
+C-8           2304 A575255-E  2 Lo Ni              712 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Drogliss SECTOR: Togliss Sector
+#
+# Jump-routes
+#
+$2904 3040 0 -1 10
+$2904 3107 0 0 10
+$3107 0206 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2507 E646562-4    Ag Ni              304 Na
+D-2           2902 C5559AB-7    Hi                 514 Na
+Naerian       2904 C327220-A    Lo Ni              405 Na
+Dehllii       3107 E100554-8    Ni Va              603 Na
+D-5           3110 D659200-6    Lo Ni              124 Na
+D-6           3209 C455240-6  S Lo Ni              403 Na
+D-7           3210 C64488B-4                       503 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Elgiss SECTOR: Togliss Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0213 E200001-4    Lo Ni Va           123 Na
+E-2           0313 C110130-C    Lo Ni              104 Na
+E-3           0514 D585544-4    Ag Ni              515 Na
+E-4           0519 C845321-9  S Lo Ni              232 Na
+E-5           0612 C360452-B  S De Ni              724 Na
+E-6           0619 D1008A7-4  S Na Va              504 Na
+E-7           0717 C7629AC-5    Hi                 504 Na
+E-8           0814 B451551-B    Ni Po              914 Na
+E-9           0819 EAF9742-4    Fl                 902 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Fogliss SECTOR: Togliss Sector
+#
+# Jump-routes
+#
+$1518 1920 1 0 2
+$1518 1315 0 0 2
+$1315 1013 0 0 2
+$1013 0810 -1 -1 2
+$1518 1816 1 0 13
+$1518 1318 0 0 13
+$1518 1421 0 1 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           1011 C310778-9  S Na              B  700 Na
+Fatatore      1013 B5556AB-A  N Ag Ni              424 Na
+Ahhlie        1315 B9B4469-9  N Fl Ni           A  402 Na
+F-4           1318 C200313-6  L Lo Ni Va           503 Ks
+F-5           1411 D354A9C-A  S Hi                 110 Na
+F-6           1413 C462533-8  S Ni                 714 Na
+Fonnabb       1518 A858356-A  L Lo Ni              903 Ks
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Golien SECTOR: Togliss Sector
+#
+# Jump-routes
+#
+$1920 2123 0 1 2
+$1920 1518 -1 0 2
+$2319 2421 0 1 13
+$2319 2619 1 0 13
+$2319 2118 0 0 13
+$2118 1816 0 0 13
+$1816 1518 -1 0 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1718 C433230-6    Lo Ni Po           515 Ks
+G-2           1811 C768445-7    Ni                 902 Na
+G-3           1816 E464435-8    Ni                 625 Ks
+G-4           1818 D787454-7  L Ni                 303 Ks
+Ghalinna      1920 X7869A7-1    Hi              R  924 Ks
+G-6           2013 C66477A-4    Ag Ri           B  204 Na
+G-7           2118 C302445-6  L Ic Ni Va           804 Ks
+G-8           2213 D454677-2  S Ag Ni           B  803 Na
+G-9           2311 C438423-A  S Ni                 500 Na
+G-10          2319 C997521-4    Ag Ni              103 Ks
+G-11          2414 C6467BG-5    Ag                 604 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hagolott SECTOR: Togliss Sector
+#
+# Jump-routes
+#
+$2619 2421 -1 1 13
+$2619 3019 0 0 13
+$2619 2319 -1 0 13
+$2619 2816 0 0 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2619 A545143-C  L Lo Ni              703 Ks
+H-2           2713 C5999CD-B  S Hi In              103 Na
+H-3           2717 D59A685-4    Ni Wa              603 Ks
+H-4           2816 C525424-9  L Ni                 804 Ks
+H-5           2916 C343447-5    Ni Po              603 Ks
+H-6           3019 CAA7843-7    Fl                 803 Ks
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Itoga SECTOR: Togliss Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0327 C68338A-9    Lo Ni              420 Na
+I-2           0530 C223845-5  S Na Po              403 Na
+I-3           0730 B674533-B    Ag Ni              413 Na
+I-4           0826 B654558-8  N Ag Ni              804 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jaatog SECTOR: Togliss Sector
+#
+# Jump-routes
+#
+$1421 1518 0 -1 13
+$1421 1222 0 0 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0929 E53A110-9    Lo Ni Wa           314 Na
+J-2           0930 B896876-6  N                 B  704 Na
+J-3           1021 D343856-8    Po                 605 Na
+J-4           1222 C74A9AC-B  K Hi In Wa           903 Ks
+Jaata         1322 A335101-G    Lo Ni Cx           122 Ks
+J-6           1326 E537779-3                    B  113 Na
+J-7           1421 C413565-7    Ic Ni              204 Ks
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Klissliss SECTOR: Togliss Sector
+#
+# Jump-routes
+#
+$2329 2431 0 1 2
+$2329 2026 0 0 2
+$2026 2123 0 0 2
+$2123 1920 0 -1 2
+$2421 2322 0 0 13
+$2322 2123 0 0 13
+$2421 2319 0 -1 13
+$2421 2619 1 -1 13
+$2026 1827 0 0 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1730 D54477C-5  S Ag              B  700 Na
+K-2           1827 C344324-9  L Lo Ni              803 Ks
+Asadann       2026 A66A434-E  L Ni Wa              901 Ks
+Chaccawa      2123 C454464-8  L Ni                 524 Ks
+K-5           2322 B351798-A  K Po                 332 Ks
+Klivva        2329 B585356-C  N Lo Ni              701 Ks
+Klissa        2421 AA7A456-G  L Ni Wa Cx           220 Ks
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lissog SECTOR: Togliss Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           3221 C50169A-8  S Ic Na Ni Va        404 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Maatooga SECTOR: Togliss Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0233 B889656-9    Ni Ri              802 Na
+M-2           0334 C3328A7-5    Na Po              314 Na
+M-3           0432 C766432-4  S Ni                 911 Na
+M-4           0531 B66A320-8  N Lo Ni Wa           205 Na
+M-5           0533 B78A58B-C    Ni Wa              903 Na
+M-6           0732 B446984-D    Hi In              224 Na
+M-7           0832 E6B3212-7    Fl Lo Ni        A  804 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nootagol SECTOR: Togliss Sector
+#
+# Jump-routes
+$1238 1337 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           1031 C3457B9-9    Ag                 402 Na
+N-2           1132 C310558-C    Ni                 214 Na
+N-3           1137 E100754-7    Na Va              805 Na
+N-4           1238 A130766-D  N De Na Po           103 Na
+N-5           1334 A210744-A    Na                 804 Na
+N-6           1337 C88689B-3  S Ri                 805 Na
+N-7           1435 D400000-9    Ba Lo Ni Va        700 Na
+N-8           1537 B536000-A  S Ba Lo Ni           403 Na
+N-9           1538 C586758-4    Ag Ri              612 Na
+N-10          1637 D210400-6  S Ni                 134 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Oglissa SECTOR: Togliss Sector
+#
+# Jump-routes
+$1733 1735 0 0
+$1735 1834 0 0
+$1735 1837 0 0
+$2138 2239 0 0
+#
+$2431 2832 1 0 2
+$2431 2329 0 -1 2
+$2431 2831 1 0 13
+$2431 2533 1 0 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1733 B302554-A  N Ic Ni Va           624 Na
+O-2           1735 A834795-B  N                    610 Na
+O-3           1834 C356653-5  S Ag Ni              601 Na
+O-4           1837 C797444-5  S Ni                 202 Na
+O-5           2036 C412302-B    Ic Lo Ni           520 Na
+O-6           2039 C344795-8  S Ag                 200 Na
+O-7           2138 C53A59A-C  S Ni Wa              124 Na
+O-8           2235 B578473-A  S Ni              B  820 Na
+O-9           2239 B358546-C    Ag Ni              504 Na
+O-10          2334 E889676-2    Ni Ri           B  603 Na
+Halail        2431 B364015-A  L Lo Ni              321 Ks
+O-12          2438 C21078C-A  S Na                 413 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Pontall SECTOR: Togliss Sector
+#
+# Jump-routes
+$2834 2934 0 0
+#
+$3034 0236 1 0 2
+$3034 2832 0 0 2
+$2832 2431 -1 0 2
+$2831 2431 -1 0 13
+$2831 2832 0 0 13
+$2832 2934 0 0 13
+$2934 2834 0 0 13
+$2834 2533 0 0 13
+$2533 2431 -1 0 13
+$2934 3034 0 0 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2533 C430686-5    De Na Ni Po        510 Ks
+P-2           2831 B120404-E    De Ni Po           704 Ks
+Opimman       2832 C697414-4    Ni                 601 Ks
+P-4           2834 C687546-9    Ag Ni              614 Ks
+P-5           2934 B86A541-D  K Ni Wa              410 Ks
+Bollien       3034 B436216-9  L Lo Ni              111 Ks
+P-7           3040 D654356-7    Lo Ni              104 Na
+

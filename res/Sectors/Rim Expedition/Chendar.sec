@@ -1,0 +1,344 @@
+Chendar Sector
+
+A: Achen                     a.dat
+B: Bendar                    b.dat
+C: Chenna                    c.dat
+D: Dleen                     d.dat
+E: Endar                     e.dat
+F: Fachen                    f.dat
+G: Greten                    g.dat
+H: Hache                     h.dat
+I: Idari                     i.dat
+J: Jende                     j.dat
+K: Kechar                    k.dat
+L: Lenchem                   l.dat
+M: Mendar                    m.dat
+N: Nechen                    n.dat
+O: Odachen                   o.dat
+P: Pachendar                 p.dat
+
+Bases:
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Achen SECTOR: Chendar Sector
+#
+# Jump-routes
+#
+$0104 3002 -1 0 10
+$0104 0106 0 0 10
+$0106 0407 0 0 10
+$0407 0708 0 0 10
+$0708 1010 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Horristh      0104 C765341-4  S Lo Ni              302 Na
+Ashonja       0106 C77A556-9    Ni Wa              203 Na
+Kiratak       0407 D669200-9  S Lo Ni              512 Na
+A-4           0707 D889454-8    Ni                 302 Na
+Vorrk         0708 B420340-A    De Lo Ni Po        602 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Bendar SECTOR: Chendar Sector
+#
+# Jump-routes
+$1208 1307 0 0
+$1208 1308 0 0
+#
+$1010 0708 -1 0 10
+$1010 1313 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           1005 EA99555-6    Ni                 303 Na
+B-2           1009 BAAA621-C    Fl Ni Wa           124 Na
+Meelker       1010 B334554-B  N Ni                 712 Na
+B-4           1208 B351055-B    Lo Ni Po           633 Na
+B-5           1307 B500655-A  N Na Ni Va           223 Na
+B-6           1308 A200257-D    Lo Ni Va           104 Na
+B-7           1403 C557167-8  S Lo Ni              105 Na
+B-8           1509 D793573-4  S Ni              B  302 Na
+B-9           1510 X766411-2                    R  402 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Chenna SECTOR: Chendar Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1708 C3348CF-7                       820 Na
+C-2           1710 C647769-6    Ag                 603 Na
+C-3           1902 B779773-9  S                 B  404 Na
+C-4           2110 C526159-9    Lo Ni              721 Na
+C-5           2301 B0008BF-D  N As Na              204 Na
+C-6           2302 E321304-5    Lo Ni Po           103 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Dleen SECTOR: Chendar Sector
+#
+# Jump-routes
+$2808 2908 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2603 C532852-9    Na Po              304 Na
+D-2           2808 A684620-B  N Ag Ni              624 Na
+D-3           2908 B552664-5  N Ni Po              610 Na
+D-4           2910 C354015-4    Lo Ni              323 Na
+D-5           3010 C88A524-6    Ni Wa              804 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Endar SECTOR: Chendar Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0116 B849410-7  N Ni                 500 Na
+E-2           0319 B57A656-A  S Ni Wa              603 Na
+E-3           0413 D565AC9-7  S Hi                 504 Na
+E-4           0417 E51099A-8    Hi Na              723 Na
+E-5           0515 B525532-9  N Ni                 823 Na
+E-6           0516 B331353-A  S Lo Ni Po           202 Na
+E-7           0520 B313001-A    Ic Lo Ni           313 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Fachen SECTOR: Chendar Sector
+#
+# Jump-routes
+$1417 1517 0 0
+#
+$1313 1010 0 -1 10
+$1313 1214 0 0 10
+$1214 1417 0 0 10
+$1417 1520 0 0 10
+$1520 1623 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           1017 E6A3774-7    Fl              B  904 Na
+Glikar        1214 D67A767-3    Wa                 223 Na
+Haugaac       1313 C98A420-9  S Ni Wa              604 Na
+Volyr         1417 B885667-A  N Ag Ni Ri           702 Na
+F-5           1511 CAB6338-9  S Fl Lo Ni        A  304 Na
+F-6           1517 AA6A745-B  2 Ri Wa              300 Na
+Tammikna      1520 C9A2475-A  S Fl Ni           B  701 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Greten SECTOR: Chendar Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1912 CAA67BF-8    Fl                 905 Na
+G-2           1916 E549667-6    Ni                 204 Na
+G-3           2112 D100865-9    Na Va              803 Na
+G-4           2415 C566553-8  S Ag Ni              213 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hache SECTOR: Chendar Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2812 B8D6462-A    Fl Ni              724 Na
+H-2           2916 D537996-8    Hi In              303 Na
+H-3           3012 E655267-5    Lo Ni              402 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Idari SECTOR: Chendar Sector
+#
+# Jump-routes
+#
+$0130 0333 0 1 2
+$0130 2930 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0126 D424657-5  S Ni                 212 Na
+Immarra       0130 B200446-9  N Ni Va              915 Na
+I-3           0423 E443541-7    Ni Po              201 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jende SECTOR: Chendar Sector
+#
+# Jump-routes
+$1026 1125 0 0
+#
+$1623 1520 0 -1 10
+$1623 1627 0 0 10
+$1627 1830 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0930 C303768-9  S Ic Na Va           123 Na
+J-2           1026 B000684-A  S As Na Ni           704 Na
+J-3           1125 A434112-E  N Lo Ni              102 Na
+Juubraca      1623 B450964-A  N De Hi Po           414 Na
+Uinnca        1627 E649867-5                       301 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kechar SECTOR: Chendar Sector
+#
+# Jump-routes
+#
+$1830 1627 -1 0 10
+$1830 2033 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1827 E210363-5    Lo Ni              422 Na
+Krinia        1830 B5267A5-7                       702 Na
+K-3           2127 E7B6987-4    Fl Hi           A  324 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lenchem SECTOR: Chendar Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2629 B535310-C    Lo Ni              611 Na
+L-2           3022 C785799-6  S Ag Ri              303 Na
+L-3           3024 E34289D-6    Po                 204 Na
+L-4           3127 CA7A567-8    Ni Wa              501 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Mendar SECTOR: Chendar Sector
+#
+# Jump-routes
+$0631 1031 1 0
+#
+$0140 0401 0 1 2
+$0140 0236 0 0 2
+$0236 0333 0 0 2
+$0333 0130 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Creada        0140 E000727-8    As Na              614 Na
+Ornaay        0236 C76476A-8    Ag Ri              414 Na
+Bryimma       0333 E537342-5    Lo Ni              802 Na
+M-4           0535 C000146-A    As Lo Ni           112 Na
+M-5           0631 A446666-9    Ag Ni              100 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nechen SECTOR: Chendar Sector
+#
+# Jump-routes
+$1031 0631 -1 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           1031 A525456-B  N Ni                 713 Na
+N-2           1039 C383565-7    Ni                 920 Na
+N-3           1140 A372777-8  2                 B  100 Na
+N-4           1539 C210476-A    Ni              B  414 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Odachen SECTOR: Chendar Sector
+#
+# Jump-routes
+#
+$2033 1830 0 -1 10
+$2033 2435 0 0 10
+$2435 2737 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Onshua        2033 B626545-A    Ni                 603 Na
+O-2           2132 C56268C-6  S Ni Ri              311 Na
+O-3           2236 C310766-8    Na                 203 Na
+O-4           2335 D98A104-5    Lo Ni Wa           900 Na
+Ershaee       2435 C455550-8  S Ag Ni              404 Na
+O-6           2440 X23276B-1    Po              R  400 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Pachendar SECTOR: Chendar Sector
+#
+# Jump-routes
+#
+$2737 2435 -1 0 10
+$2737 3038 0 0 10
+$3038 3102 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2532 C437320-7  S Lo Ni              303 Na
+P-2           2533 EA8A9AA-8    Hi Wa              101 Na
+P-3           2634 C868200-5  S Lo Ni              305 Na
+P-4           2637 D467784-2    Ag Ri              403 Na
+Klitrwa       2737 E88A799-6    Ri Wa              701 Na
+P-6           2932 C685467-5    Ni                 504 Na
+Pooli         3038 E743546-3    Ni Po              313 Na
+P-8           3233 D857542-7  S Ag Ni              703 Na
+

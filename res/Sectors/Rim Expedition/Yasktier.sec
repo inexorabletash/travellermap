@@ -1,0 +1,1110 @@
+Yasktier Sector
+
+A: Asktier                   a.dat
+B: Bayask                    b.dat
+C: Chytiera                  c.dat
+D: Druyask                   d.dat
+E: Eyaska                    e.dat
+F: Fryaskti                  f.dat
+G: Ghuyask                   g.dat
+H: Hasktier                  h.dat
+I: Isktiern                  i.dat
+J: Jayaski                   j.dat
+K: Kraskier                  k.dat
+L: Latiery                   l.dat
+M: Maskier                   m.dat
+N: Nayask                    n.dat
+O: Otieras                   o.dat
+P: Payask                    p.dat
+
+Bases:
+N = Navy
+S = Scout
+T = Astionne Mil Trng System
+U = Astionne Navy
+V = Astionne Scout
+W = Astionne Navy & Scout
+X = Astionne Army
+Y = Astionne Research
+2 = Navy & Scout
+  = None
+
+Allegiance:
+12 Ka = Kingdom of Astionne
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Asktier SECTOR: Yasktier Sector
+#
+# Jump-routes
+#
+$0807 0407 0 0 12
+$0807 0405 0 0 12
+$0807 0705 0 0 12
+$0807 0907 1 0 12
+$0807 1010 1 0 12
+$0807 1005 1 0 12
+$0705 0502 0 0 12
+$0502 0840 0 -1 12
+$0405 0305 0 0 12
+$0305 0102 0 0 12
+$0407 0106 0 0 12
+$0106 0305 0 0 12
+$0502 0102 0 0 12
+$0102 3240 -1 -1 12
+$0407 0511 0 1 12
+$0308 0511 0 1 2
+$0308 0204 0 0 2
+$0204 0101 0 0 2
+$0101 3238 -1 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Illiada       0101 C614655-5    Ic Ni              622 Ka
+A-2           0102 B5556AC-7    Ag Ni              705 Ka
+A-3           0104 E996300-3    Lo Ni              503 Ka
+A-4           0106 B758520-7  U Ag Ni              604 Ka
+A-5           0107 C590564-4  U De Ni              213 Ka
+A-6           0109 C345423-7    Ni                 400 Ka
+A-7           0201 C000100-C  V As Lo Ni           603 Ka
+Fraacion      0204 E52479B-6                       813 Ka
+A-9           0205 C67A114-6  V Lo Ni Wa           703 Ka
+A-10          0206 E476526-3    Ag Ni              300 Ka
+A-11          0208 C120222-9    De Lo Ni Po        510 Ka
+A-12          0209 C460211-6  V De Lo Ni           820 Ka
+A-13          0302 C424234-7    Lo Ni              100 Ka
+A-14          0305 BA78898-6  X                    600 Ka
+A-15          0306 C532456-8    Ni Po              303 Ka
+Ayationne     0308 C31045A-A  V Ni                 214 Ka
+A-17          0309 C382557-B  U Ni                 403 Ka
+A-18          0403 C58359B-4    Ni                 404 Ka
+A-19          0405 B472368-7  V Lo Ni              432 Ka
+A-20          0406 D8A6212-7  V Fl Lo Ni           903 Ka
+A-21          0407 A324457-C  V Ni                 603 Ka
+A-22          0410 C434500-7    Ni                 404 Ka
+A-23          0502 B763456-9  V Ni                 212 Ka
+A-24          0504 C434557-9  U Ni                 703 Ka
+A-25          0505 C978789-4  W Ag                 505 Ka
+A-26          0509 D251321-3    Lo Ni Po           901 Ka
+A-27          0601 C553855-5  W Po                 713 Ka
+A-28          0606 C946420-8    Ni                 604 Ka
+A-29          0607 CAA888B-9  X Fl                 304 Ka
+A-30          0610 C877255-A    Lo Ni              303 Ka
+A-31          0701 C787833-7                       413 Ka
+A-32          0705 BA99120-7  V Lo Ni              904 Ka
+A-33          0706 D9A4997-4    Fl Hi              621 Ka
+A-34          0709 C7A147A-A    Fl Ni           B  301 Na
+A-35          0801 C653497-6  V Ni Po              711 Ka
+A-36          0802 D541687-1    Ni Po              414 Ka
+A-37          0803 C200475-7    Ni Va           B  605 Na
+Astionne      0807 B000A89-H  X As Hi Na Cx        513 Ka
+A-39          0808 C553535-7  U Ni Po              204 Ka
+A-40          0810 C431386-7  V Lo Ni Po           704 Ka
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Bayask SECTOR: Yasktier Sector
+#
+# Jump-routes
+#
+$0907 0807 -1 0 12
+$1010 0807 -1 0 12
+$1005 0807 -1 0 12
+$1010 1112 0 1 12
+$1409 1311 0 1 12
+$1409 1210 0 0 12
+$1210 1010 0 0 12
+$1409 1206 0 0 12
+$1206 1005 0 0 12
+$1106 1101 0 0 12
+$1102 1002 0 0 12
+$1206 1605 0 0 12
+$1605 1802 1 0 12
+$1102 1040 0 -1 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           0901 B410624-8  U Na Ni              200 Ka
+B-2           0903 C565547-5    Ag Ni              111 Ka
+B-3           0904 D88A563-4    Ni Wa              202 Ka
+B-4           0905 D78A674-5    Ni Ri Wa        B  402 Na
+B-5           0907 A44589B-C  X                    210 Ka
+B-6           0909 A99A47B-C    Ni Wa           B  123 Na
+B-7           0910 C443677-9    Ni Po           B  420 Na
+B-8           1002 B6615AA-9  U Ni                 605 Ka
+B-9           1004 E8A0322-5    De Lo Ni           514 Ka
+B-10          1005 A678469-8  V Ni                 714 Ka
+B-11          1007 C1407CD-5    De Po              800 Ka
+B-12          1009 C350588-5    De Ni Po           511 Ka
+B-13          1010 A855431-B  V Ni                 912 Ka
+B-14          1101 B000525-9    As Ni              910 Ka
+B-15          1102 B100222-E    Lo Ni Va           800 Ka
+B-16          1103 C2216A8-6  U Na Ni Po           215 Ka
+B-17          1104 B757723-A    Ag                 400 Ka
+B-18          1106 B6A598C-C  X Fl Hi              302 Ka
+B-19          1109 E875986-7    Hi In              800 Ka
+B-20          1201 C689300-9    Lo Ni              432 Ka
+B-21          1202 E79A424-4    Ni Wa              805 Ka
+B-22          1204 E869774-3    Ri              B  514 Na
+B-23          1206 A250555-F    De Ni Po           604 Ka
+B-24          1207 C778310-5  V Lo Ni              100 Ka
+B-25          1210 B442523-A    Ni Po              803 Ka
+B-26          1301 C100551-C  U Ni Va              313 Ka
+B-27          1304 E3848DD-0                       914 Ka
+B-28          1307 C98A58B-7  U Ni Wa              212 Ka
+B-29          1403 C352520-9  U Ni Po              100 Ka
+B-30          1409 B130443-C  V De Ni Po           112 Ka
+B-31          1410 C525987-6  X Hi In              300 Ka
+B-32          1501 D275059-7  V Lo Ni              404 Ka
+B-33          1503 C502786-9    Ic Na Va           313 Ka
+B-34          1505 C659774-4                    B  903 Na
+B-35          1506 C57627C-6    Lo Ni           B  800 Na
+B-36          1507 D7979A9-6  X Hi In              400 Ka
+B-37          1601 D38057B-5  U De Ni              412 Ka
+B-38          1605 A252463-B    Ni Po              410 Ka
+B-39          1609 E7A0ACC-6    De Hi              404 Ka
+B-40          1610 B685975-8    Hi              B  304 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Chytiera SECTOR: Yasktier Sector
+#
+# Jump-routes
+#
+$1802 1605 -1 0 12
+$1802 2002 0 0 12
+$2002 2402 0 0 12
+$2002 2101 0 0 12
+$2002 1901 0 0 12
+$2402 2502 1 0 12
+$2207 2505 1 0 12
+$2207 2211 0 1 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1704 E696245-2    Lo Ni              614 Ka
+C-2           1705 C646843-8                       124 Ka
+C-3           1706 C87A132-6    Lo Ni Wa           503 Ka
+C-4           1708 E410100-A  V Lo Ni              103 Ka
+C-5           1801 D653544-6    Ni Po              603 Ka
+C-6           1802 A200754-F    Na Va              404 Ka
+C-7           1803 E310843-5    Na                 704 Ka
+C-8           1806 C541346-4  V Lo Ni Po           502 Ka
+C-9           1807 C886756-6    Ag Ri              212 Ka
+C-10          1810 E3109BE-8    Hi Na              204 Ka
+C-11          1901 B779569-7    Ni                 803 Ka
+C-12          1904 C79A445-6    Ni Wa              400 Ka
+C-13          1905 E598556-7    Ag Ni              412 Ka
+C-14          1909 C73A003-A    Lo Ni Wa           203 Ka
+C-15          2002 A110231-F    Lo Ni              202 Ka
+C-16          2003 B46797A-C    Hi              B  105 Na
+C-17          2005 E874896-1                       223 Ka
+C-18          2006 C566642-8  U Ag Ni Ri           813 Ka
+C-19          2101 B424895-9                       603 Ka
+C-20          2103 E7B366B-4  Y Fl Ni           A  301 Ka
+C-21          2104 C210434-9  V Ni                 313 Ka
+C-22          2107 C521875-4    Na Po           B  924 Na
+C-23          2109 E795523-6    Ag Ni              202 Ka
+C-24          2110 C656230-6    Lo Ni              804 Ka
+C-25          2204 D358343-5    Lo Ni              520 Ka
+C-26          2205 XAB6688-0  T Fl              R  603 Ka
+C-27          2207 A458384-A    Lo Ni              814 Ka
+C-28          2209 C423748-9    Na Po              714 Ka
+C-29          2301 D77698B-3  X Hi In              614 Ka
+C-30          2306 C438A83-E  X Hi In              200 Ka
+C-31          2307 E000954-B    As Hi Na           610 Ka
+C-32          2308 C350543-9  U De Ni Po           411 Ka
+C-33          2309 C2506AD-9    De Ni Po           300 Ka
+C-34          2402 A75586B-8  W                    604 Ka
+C-35          2404 C532359-9    Lo Ni Po           403 Ka
+C-36          2405 C310134-9    Lo Ni              920 Ka
+C-37          2406 C130157-9    De Lo Ni Po        600 Ka
+C-38          2407 E5107A6-3    Na                 713 Ka
+C-39          2408 E637789-5                       812 Ka
+C-40          2410 C210866-6    Na                 904 Ka
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Druyask SECTOR: Yasktier Sector
+#
+# Jump-routes
+#
+$2502 2402 -1 0 12
+$2502 2505 0 0 12
+$2504 2805 0 0 12
+$2805 3104 0 0 12
+$2805 3108 0 0 12
+$3108 3110 0 0 12
+$3110 2708 0 0 12
+$2708 2505 0 0 12
+$3110 3113 0 1 12
+$2505 2207 -1 0 12
+$3104 3140 0 -1 12
+$3110 2912 0 1 12
+$3108 0107 1 0 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2502 B5A0311-A  V De Lo Ni           810 Ka
+D-2           2504 A978624-C  U Ag Ni              420 Ka
+D-3           2505 B725642-A  U Ni                 401 Ka
+D-4           2508 C365751-9    Ag Ri              222 Ka
+D-5           2602 C575446-7  V Ni                 604 Ka
+D-6           2606 D575358-8    Lo Ni              724 Ka
+D-7           2607 D7A5845-5  X Fl                 820 Ka
+D-8           2609 C448320-5  V Lo Ni              700 Ka
+D-9           2610 C7B1100-6  Y Fl Lo Ni        A  104 Ka
+D-10          2701 C668477-4    Ni              B  301 Na
+D-11          2703 C426863-6  U                    903 Ka
+D-12          2705 E596026-6    Lo Ni              504 Ka
+D-13          2706 C657730-4    Ag                 313 Ka
+D-14          2707 C100368-C    Lo Ni Va           502 Ka
+D-15          2708 A463124-C    Lo Ni              800 Ka
+D-16          2802 C681300-8  V Lo Ni              904 Ka
+D-17          2805 B301445-C  V Ic Ni Va           810 Ka
+D-18          2808 C333132-B  V Lo Ni Po           610 Ka
+D-19          2809 C321111-A  V Lo Ni Po           801 Ka
+D-20          2810 D55168B-5  U Ni Po              323 Ka
+D-21          2905 C898763-8    Ag                 403 Ka
+D-22          2906 C362430-6  V Ni                 511 Ka
+D-23          2907 D894243-7  V Lo Ni              222 Ka
+D-24          2909 A32036A-E  V De Lo Ni Po        503 Ka
+D-25          3001 E673443-7    Ni                 702 Ka
+D-26          3002 C610133-6    Lo Ni              400 Ka
+D-27          3003 B779677-6    Ni              B  500 Na
+D-28          3004 C444489-A    Ni                 510 Ka
+D-29          3005 C411476-B    Ic Ni           B  412 Na
+D-30          3008 C343132-9    Lo Ni Po           903 Ka
+D-31          3101 D614565-3    Ic Ni              504 Ka
+D-32          3102 E461978-9    Hi              B  610 Na
+D-33          3104 B6A1102-A  V Fl Lo Ni           101 Ka
+D-34          3105 B754876-7                    B  100 Na
+D-35          3106 D236578-8    Ni              B  432 Na
+D-36          3108 B4239A9-C  X Hi In Na Po        112 Ka
+D-37          3109 C664889-3  W Ri                 212 Ka
+D-38          3110 B36488A-9  W Ri                 903 Ka
+D-39          3201 D581763-1  X Ri                 700 Ka
+D-40          3206 E354201-6    Lo Ni              904 Ka
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Eyaska SECTOR: Yasktier Sector
+#
+# Jump-routes
+#
+$0511 0407 0 -1 12
+$0511 0112 0 0 12
+$0112 0113 0 0 12
+$0511 0515 0 0 12
+$0515 0615 0 0 12
+$0615 0719 0 0 12
+$0719 0618 0 0 12
+$0618 0519 0 0 12
+$0519 0118 0 0 12
+$0615 0814 0 0 12
+$0814 0914 1 0 12
+$0719 0522 0 1 12
+$0714 0916 1 0 2
+$0714 0511 0 0 2
+$0511 0308 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0112 B343652-B  U Ni Po              101 Ka
+E-2           0113 A776556-A    Ag Ni              603 Ka
+E-3           0117 C433300-A    Lo Ni Po           403 Ka
+E-4           0118 B769201-A    Lo Ni              303 Ka
+E-5           0120 C667ABA-A  X Hi                 204 Ka
+E-6           0213 C698542-9    Ag Ni              203 Ka
+E-7           0215 E653523-3    Ni Po              302 Ka
+E-8           0216 C445577-9    Ag Ni           B  303 Na
+E-9           0217 E2109DG-7    Hi Na              920 Ka
+E-10          0218 C0009A9-C  X As Hi Na           604 Ka
+E-11          0219 C486566-6    Ag Ni              112 Ka
+E-12          0220 C83A311-C  V Lo Ni Wa           314 Ka
+E-13          0314 E74877A-2    Ag              B  804 Na
+E-14          0316 C475435-5  V Ni                 424 Ka
+E-15          0318 D678ABB-7  W Hi In              204 Ka
+E-16          0411 C272568-5    Ni                 120 Ka
+E-17          0416 C371888-4                       202 Ka
+E-18          0417 C8D289B-4    Fl                 614 Ka
+E-19          0420 C529744-6                       713 Ka
+Castiarr      0511 A7278AC-D  W                    711 Ka
+E-21          0512 C530766-6  W De Na Po           704 Ka
+E-22          0513 C300276-9    Lo Ni Va        B  420 Na
+E-23          0515 B488333-7  V Lo Ni              801 Ka
+E-24          0516 CAA325A-8  V Fl Lo Ni           403 Ka
+E-25          0518 C683542-9    Ni                 423 Ka
+E-26          0519 A783110-A  V Lo Ni              803 Ka
+E-27          0520 C724879-9                    B  504 Na
+E-28          0612 C879867-9                       913 Ka
+E-29          0614 C270259-8  V De Lo Ni           224 Ka
+E-30          0615 B589403-A    Ni                 504 Ka
+E-31          0618 A594730-8  W Ag                 422 Ka
+E-32          0619 C8A69A6-8  X Fl Hi              203 Ka
+Enhadar       0714 C789300-6  V Lo Ni              114 Ka
+E-34          0716 B679579-7    Ni              B  503 Na
+E-35          0719 A000353-C    As Lo Ni           712 Ka
+E-36          0720 C335355-7  V Lo Ni              513 Ka
+E-37          0811 D89A986-9    Hi In Wa           814 Ka
+E-38          0813 C7A0744-9    De                 404 Ka
+E-39          0814 A22378A-C    Na Po              420 Ka
+E-40          0816 D785A66-7    Hi                 113 Ka
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Fryaskti SECTOR: Yasktier Sector
+#
+# Jump-routes
+#
+$1112 1010 0 -1 12
+$1112 0914 0 0 12
+$0914 0814 -1 0 12
+$0914 1216 0 0 12
+$1216 1220 0 0 12
+$1216 1416 0 0 12
+$1416 1514 0 0 12
+$1514 1311 0 0 12
+$1311 1112 0 0 12
+$1311 1409 0 -1 12
+$1416 1717 1 0 12
+$1514 1914 1 0 12
+$1220 1121 0 1 12
+$1218 1421 0 1 2
+$1218 0916 0 0 2
+$0916 0714 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0912 C200ACD-A    Hi Na Va           502 Ka
+F-2           0913 C565787-8  W Ag Ri              603 Ka
+F-3           0914 B66769B-5    Ag Ni Ri           920 Ka
+F-4           0915 C745334-6    Lo Ni              802 Ka
+Nawasti       0916 C5699DB-6  X Hi                 204 Ka
+F-6           0917 C310697-6    Na Ni              204 Ka
+F-7           0918 C210AA9-D    Hi Na              314 Ka
+F-8           0919 C7A1898-6    Fl                 603 Ka
+F-9           0920 E541A52-7    Hi In Po           903 Ka
+F-10          1012 X200578-4  T Va              R  903 Ka
+F-11          1020 E888738-5    Ag                 405 Ka
+F-12          1111 C776756-8    Ag                 204 Ka
+F-13          1112 A755400-A  V Ni                 722 Ka
+F-14          1113 D6719EF-7    Hi In              903 Ka
+F-15          1118 C110887-9  X Na                 900 Ka
+F-16          1119 C674320-4  V Lo Ni              514 Ka
+F-17          1120 C889215-A    Lo Ni              603 Ka
+F-18          1211 C21069C-6    Na Ni              301 Ka
+F-19          1213 C87A614-9    Ni Wa              402 Ka
+F-20          1216 A693553-D  U Ni                 311 Ka
+Flayaak       1218 D332634-8  U Na Ni Po           314 Ka
+F-22          1220 B421510-D    Ni Po              510 Ka
+F-23          1311 B331454-C  V Ni Po              300 Ka
+F-24          1313 C110689-B    Na Ni              505 Ka
+F-25          1314 C747A55-9    Hi In              912 Ka
+F-26          1316 D673543-3  U Ni                 210 Ka
+F-27          1319 C300456-B    Ni Va              204 Ka
+F-28          1320 EAA6598-8    Fl Ni              613 Ka
+F-29          1411 C639124-6  V Lo Ni              503 Ka
+F-30          1414 C778134-4    Lo Ni              523 Ka
+F-31          1415 D775422-5  V Ni                 224 Ka
+F-32          1416 B500444-B    Ni Va              300 Ka
+F-33          1418 X96A797-0  T Ri Wa           R  800 Ka
+F-34          1513 E345AAB-8    Hi In              400 Ka
+F-35          1514 B120400-D  V De Ni Po           724 Ka
+F-36          1517 E401425-9    Ic Ni Va           902 Ka
+F-37          1519 A27267B-8    Ni              B  901 Na
+F-38          1613 C669745-6  W Ri                 115 Ka
+F-39          1616 C676426-5  V Ni                 104 Ka
+F-40          1619 C6569A8-5  X Hi                 404 Ka
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ghuyask SECTOR: Yasktier Sector
+#
+# Jump-routes
+#
+$2211 2207 0 -1 12
+$2314 2614 1 0 12
+$2314 2211 0 0 12
+$2211 2411 0 0 12
+$2418 2619 1 0 12
+$2314 2015 0 0 12
+$2015 1917 0 0 12
+$1917 1918 0 0 12
+$1918 1821 0 1 12
+$1917 1816 0 0 12
+$1816 1717 0 0 12
+$1717 1416 -1 0 12
+$2015 1914 0 0 12
+$1914 1514 -1 0 12
+$1914 1913 0 0 12
+$1913 2012 0 0 12
+$2012 2211 0 0 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1711 X6A0775-1  T De              R  423 Ka
+G-2           1712 C363552-B    Ni                 801 Ka
+G-3           1716 C998654-9  U Ag Ni              102 Ka
+G-4           1717 B334221-9  V Lo Ni              113 Ka
+G-5           1719 C675433-4    Ni                 213 Ka
+G-6           1720 C571201-6    Lo Ni              422 Ka
+G-7           1812 D7A08CG-7  X De                 512 Ka
+G-8           1814 CA9A331-6  V Lo Ni Wa           103 Ka
+G-9           1816 B442100-8  V Lo Ni Po           722 Ka
+G-10          1817 C6A4536-8    Fl Ni              925 Ka
+G-11          1912 C424852-8                       703 Ka
+G-12          1913 B7A0487-C  V De Ni              504 Ka
+G-13          1914 B667546-B    Ag Ni              904 Ka
+G-14          1916 D7C555A-4  Y Fl Ni           A  414 Ka
+G-15          1917 B54358B-A    Ni Po              705 Ka
+G-16          1918 B584644-A  U Ag Ni Ri           110 Ka
+G-17          1919 C8B6897-7  Y Fl              A  513 Ka
+G-18          1920 C560321-6    De Lo Ni           502 Ka
+G-19          2012 B300240-C    Lo Ni Va           804 Ka
+G-20          2013 E551885-2    Po                 214 Ka
+G-21          2015 B465888-6    Ri                 304 Ka
+G-22          2018 C638853-5                       604 Ka
+G-23          2019 E342410-7    Ni Po              802 Ka
+G-24          2113 D2306A6-4    De Na Ni Po        112 Ka
+G-25          2115 A575576-B    Ag Ni           B  504 Na
+G-26          2120 X678142-0  T Lo              R  102 Ka
+G-27          2211 B8A2557-B    Fl Ni              722 Ka
+G-28          2214 C302363-A    Ic Lo Ni Va        903 Ka
+G-29          2216 C9B2737-6  Y Fl              A  821 Ka
+G-30          2218 C666AAA-A  X Hi                 603 Ka
+G-31          2311 A67497A-C    Hi In           B  410 Na
+G-32          2314 B679552-D  U Ni                 510 Ka
+G-33          2317 X9D5400-1  T Fl              R  713 Ka
+G-34          2318 D310446-4  V Ni                 503 Ka
+G-35          2411 A5528AE-7    Po                 705 Ka
+G-36          2412 C100537-A    Ni Va              704 Ka
+G-37          2414 C623144-5    Lo Ni Po           322 Ka
+G-38          2415 C435498-9  V Ni                 103 Ka
+G-39          2418 A1007CA-D    Na Va              203 Ka
+G-40          2419 C230334-6    De Lo Ni Po        705 Ka
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hasktier SECTOR: Yasktier Sector
+#
+# Jump-routes
+#
+$3113 3110 0 -1 12
+$3113 3117 0 0 12
+$2912 3110 0 -1 12
+$2912 2813 0 0 12
+$2813 2614 0 0 12
+$2813 2814 0 0 12
+$2814 2715 0 0 12
+$2715 2614 0 0 12
+$2715 2716 0 0 12
+$2716 2618 0 0 12
+$2618 2619 0 0 12
+$3117 3118 0 0 12
+$3118 3122 0 1 12
+$3117 2716 0 0 12
+$2614 2314 -1 0 12
+$2619 2418 -1 0 12
+$3117 0317 1 0 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2512 E98A658-8    Ni Ri Wa           412 Ka
+H-2           2516 C310302-A    Lo Ni              512 Ka
+H-3           2517 C595885-6  X                    512 Ka
+H-4           2614 B87948B-7    Ni                 122 Ka
+H-5           2615 C120020-7    De Lo Ni Po        511 Ka
+H-6           2617 C8B3678-4  Y Fl Ni           A  904 Ka
+H-7           2618 B311247-8  V Ic Lo Ni           512 Ka
+H-8           2619 A531466-D    Ni Po              414 Ka
+H-9           2620 C697686-5    Ag Ni              924 Ka
+H-10          2711 C480689-9    De Ni Ri           804 Ka
+H-11          2714 E755754-4    Ag                 122 Ka
+H-12          2715 B6477AA-5  W Ag                 123 Ka
+H-13          2716 B340557-A  U De Ni Po           915 Ka
+H-14          2719 D9B2277-6  Y Fl Lo Ni        A  513 Ka
+H-15          2720 C150622-6    De Ni Po           100 Ka
+H-16          2811 D73A795-8  U Wa                 202 Ka
+H-17          2813 A420210-B    De Lo Ni Po        510 Ka
+H-18          2814 B325442-B  V Ni                 604 Ka
+H-19          2816 B555778-A    Ag              B  322 Na
+H-20          2817 C13035A-C    De Lo Ni Po        523 Ka
+H-21          2818 E866666-2    Ag Ni Ri           620 Ka
+H-22          2912 B7697AA-8  W                    624 Ka
+H-23          2916 C9A7414-8    Fl Ni              105 Ka
+H-24          2920 D746433-4  V Ni                 823 Ka
+H-25          3013 D678530-7  U Ag Ni              212 Ka
+H-26          3016 E758677-3    Ag Ni           B  900 Na
+H-27          3018 C67A867-8    Wa                 704 Ka
+H-28          3019 C666749-8  W Ag Ri              712 Ka
+H-29          3020 C56A300-B  V Lo Ni Wa           304 Ka
+H-30          3112 C43079E-7    De Na Po           811 Ka
+H-31          3113 A879331-9  V Lo Ni              314 Ka
+H-32          3116 C000765-A    As Na              803 Ka
+H-33          3117 A503200-E    Ic Lo Ni Va        813 Ka
+H-34          3118 B554646-5    Ag Ni              503 Ka
+H-35          3119 C551415-5    Ni Po              723 Ka
+H-36          3120 C00059C-C    As Ni              600 Ka
+H-37          3211 CA98974-A    Hi In           B  813 Na
+H-38          3213 C676477-7    Ni              B  705 Na
+H-39          3217 E647320-3    Lo Ni              904 Ka
+H-40          3218 C86A333-B  V Lo Ni Wa           904 Ka
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Isktiern SECTOR: Yasktier Sector
+#
+# Jump-routes
+#
+$0824 0924 1 0 12
+$0727 0925 1 0 12
+$0727 0529 0 0 12
+$0529 0630 0 0 12
+$0630 0830 0 0 12
+$0830 1129 1 0 12
+$0727 0726 0 0 12
+$0622 0925 1 0 12
+$0622 0522 0 0 12
+$0522 0422 0 0 12
+$0422 0224 0 0 12
+$0224 0327 0 0 12
+$0327 0529 0 0 12
+$0529 0329 0 0 12
+$0329 0229 0 0 12
+$0229 0129 0 0 12
+$0129 0327 0 0 12
+$0522 0719 0 -1 12
+$0129 0131 0 1 12
+$0630 0532 0 1 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0121 X454200-2  T Lo              R  624 Ka
+I-2           0122 C979346-6    Lo Ni              813 Ka
+I-3           0127 X553235-0  T Lo Po           R  322 Ka
+I-4           0129 B575655-B    Ag Ni              202 Ka
+I-5           0130 C65546A-8  V Ni                 303 Ka
+I-6           0221 B57859A-9    Ag Ni              104 Ka
+I-7           0222 C562794-5    Ri                 722 Ka
+I-8           0224 B655100-A  V Lo Ni              514 Ka
+I-9           0225 C230265-6    De Lo Ni Po        714 Ka
+I-10          0228 C120ABC-E  X De Hi In Na Po     704 Ka
+I-11          0229 B95A666-9  U Ni Wa              401 Ka
+I-12          0230 D76A225-9    Lo Ni Wa           210 Ka
+I-13          0322 E675872-5                    B  610 Na
+I-14          0327 A895451-E  V Ni                 122 Ka
+I-15          0329 B988153-B    Lo Ni              702 Ka
+I-16          0330 D274320-5  V Lo Ni              124 Ka
+I-17          0422 A301697-9  U Ic Na Ni Va        620 Ka
+I-18          0423 E344100-6    Lo Ni              814 Ka
+I-19          0425 E635563-3    Ni                 413 Ka
+I-20          0426 C9B6400-6  Y Fl Ni           A  214 Ka
+I-21          0428 C546325-7  V Lo Ni              923 Ka
+I-22          0521 D313797-4  U Ic Na              403 Ka
+I-23          0522 B536135-7    Lo Ni              502 Ka
+I-24          0525 C442144-8    Lo Ni Po           400 Ka
+I-25          0526 C310330-B  V Lo Ni              300 Ka
+I-26          0529 A636200-D  V Lo Ni              104 Ka
+I-27          0622 A757689-B    Ag Ni              100 Ka
+I-28          0625 D86A420-7  V Ni Wa              804 Ka
+I-29          0626 C865753-7    Ag Ri              602 Ka
+I-30          0630 A4308AA-C    De Na Po           100 Ka
+I-31          0721 A64867A-C    Ag Ni           B  601 Na
+I-32          0722 D455447-6    Ni                 402 Ka
+I-33          0726 BAC688B-7  Y Fl              A  900 Ka
+I-34          0727 B260233-7    De Lo Ni           614 Ka
+I-35          0728 B253575-A    Ni Po           B  920 Na
+I-36          0730 C344767-5    Ag                 610 Ka
+I-37          0824 B587487-6  V Ni                 222 Ka
+I-38          0827 E67678C-1    Ag                 601 Ka
+I-39          0829 D555859-3                       611 Ka
+I-40          0830 A449300-F    Lo Ni              923 Ka
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jayaski SECTOR: Yasktier Sector
+#
+# Jump-routes
+#
+$1522 1722 1 0 12
+$1626 1725 1 0 12
+$1524 1725 1 0 12
+$1524 1322 0 0 12
+$1322 1522 0 0 12
+$1322 1121 0 0 12
+$1121 1220 0 -1 12
+$1121 0924 0 0 12
+$0924 0925 0 0 12
+$0925 1126 0 0 12
+$1126 1426 0 0 12
+$1426 1626 0 0 12
+$1426 1228 0 0 12
+$1228 1129 0 0 12
+$1129 1126 0 0 12
+$1126 1227 0 0 12
+$1227 1228 0 0 12
+$0924 0824 -1 0 12
+$0925 0727 -1 0 12
+$1129 0830 -1 0 12
+$0925 0622 -1 0 12
+$1624 1827 1 0 2
+$1624 1421 0 0 2
+$1421 1218 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0923 E200566-5    Ni Va              723 Ka
+J-2           0924 B786787-A  U Ag Ri              903 Ka
+J-3           0925 A300403-F    Ni Va              504 Ka
+J-4           0930 C100447-9  V Ni Va              425 Ka
+J-5           1021 C532645-6    Na Ni Po           311 Ka
+J-6           1022 C365555-A    Ag Ni              605 Ka
+J-7           1024 D100668-6    Na Ni Va           202 Ka
+J-8           1025 E797966-7    Hi In              803 Ka
+J-9           1026 C673431-9  V Ni                 822 Ka
+J-10          1027 C100167-C  V Lo Ni Va           403 Ka
+J-11          1029 C500658-6  U Na Ni Va           503 Ka
+J-12          1030 C66A968-9    Hi Wa              303 Ka
+J-13          1121 A330568-A  U De Ni Po           301 Ka
+J-14          1122 C7C097B-9  Y De Hi           A  824 Ka
+J-15          1126 B461002-C  V Lo Ni              604 Ka
+J-16          1127 C233103-8  V Lo Ni Po           204 Ka
+J-17          1129 A78A842-A    Ri Wa              604 Ka
+J-18          1221 C561562-6    Ni                 502 Ka
+J-19          1223 C481534-6    Ni                 320 Ka
+J-20          1227 B8C5553-9  Y Fl Ni           A  314 Ka
+J-21          1228 B220553-D  U De Ni Po           502 Ka
+J-22          1322 A95A689-A  U Ni Wa              413 Ka
+J-23          1323 C845346-5  V Lo Ni              103 Ka
+J-24          1326 D422799-5    Na Po              710 Ka
+J-25          1328 C22048A-7  V De Ni Po           103 Ka
+J-26          1329 C445253-8  V Lo Ni              121 Ka
+J-27          1330 C302441-7    Ic Ni Va           302 Ka
+Niyeena       1421 C322200-9    Lo Ni Po           804 Ka
+J-29          1422 C788220-5    Lo Ni              903 Ka
+J-30          1423 C7A0488-6    De Ni              402 Ka
+J-31          1426 A224566-F  U Ni                 103 Ka
+J-32          1521 D86A87B-5    Ri Wa           B  913 Na
+J-33          1522 A656542-B  U Ag Ni              904 Ka
+J-34          1523 C474302-6    Lo Ni              920 Ka
+J-35          1524 B664884-8    Ri                 101 Ka
+J-36          1525 C969246-A    Lo Ni              605 Ka
+J-37          1527 D641546-6    Ni Po              404 Ka
+Jaaryyl       1624 E7936A9-2    Ni                 114 Ka
+J-39          1626 B757544-7    Ag Ni              804 Ka
+J-40          1630 CAA6102-8  V Fl Lo Ni           604 Ka
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kraskier SECTOR: Yasktier Sector
+#
+# Jump-routes
+#
+$2424 2527 1 0 12
+$2228 2527 1 0 12
+$1821 1918 0 -1 12
+$1821 1722 0 0 12
+$1722 1726 0 0 12
+$1726 1730 0 0 12
+$1725 1825 0 0 12
+$1825 1922 0 0 12
+$1922 1821 0 0 12
+$1722 1522 -1 0 12
+$1725 1626 -1 0 12
+$1725 1524 -1 0 12
+$1730 1831 0 1 12
+$2228 2132 0 1 12
+$2130 2333 0 1 2
+$2130 1827 0 0 2
+$1827 1624 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1721 C658278-7    Lo Ni           B  903 Na
+K-2           1722 B324337-9    Lo Ni              113 Ka
+K-3           1723 C723640-9  U Na Ni Po           501 Ka
+K-4           1725 A341110-C    Lo Ni Po           714 Ka
+K-5           1726 B645864-9                       323 Ka
+K-6           1729 B685494-B  V Ni                 323 Ka
+K-7           1730 B324322-9  V Lo Ni              104 Ka
+K-8           1821 A342346-9  V Lo Ni Po           910 Ka
+K-9           1825 B6457AD-9  X Ag                 404 Ka
+K-10          1826 C372775-4                    B  402 Na
+Akkya         1827 D665123-6  V Lo Ni              303 Ka
+K-12          1829 CA5A854-B    Wa                 904 Ka
+K-13          1921 C596457-A  V Ni                 705 Ka
+K-14          1922 B6A069A-9  U De Ni              213 Ka
+K-15          1925 C434235-8  V Lo Ni              703 Ka
+K-16          1929 E54A400-5    Ni Wa              604 Ka
+K-17          2022 C683523-9  U Ni                 134 Ka
+K-18          2024 E6577A7-3    Ag                 304 Ka
+K-19          2025 B99A675-A    Ni Wa           B  804 Na
+K-20          2028 C736543-6  U Ni                 910 Ka
+K-21          2029 E9A77AB-3    Fl                 614 Ka
+K-22          2122 C231976-8    Hi In Na Po     B  405 Na
+K-23          2123 E6B0765-5  Y De              A  303 Ka
+K-24          2128 D799320-3    Lo Ni              514 Ka
+Kachyyic      2130 C57A005-B    Lo Ni Wa           813 Ka
+K-26          2222 C577779-5    Ag              B  204 Na
+K-27          2223 C878555-6    Ag Ni              503 Ka
+K-28          2224 C350405-9  V De Ni Po           704 Ka
+K-29          2227 C557301-6    Lo Ni              103 Ka
+K-30          2228 B594213-6  V Lo Ni              504 Ka
+K-31          2321 E576575-6    Ag Ni           B  500 Na
+K-32          2322 D556445-7  V Ni                 814 Ka
+K-33          2325 C360544-8  U De Ni              613 Ka
+K-34          2326 C85A673-5    Ni Wa           B  813 Na
+K-35          2328 C576114-9    Lo Ni              514 Ka
+K-36          2329 C896520-6  U Ag Ni              100 Ka
+K-37          2424 A442435-A  V Ni Po              104 Ka
+K-38          2425 C674357-A    Lo Ni              203 Ka
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Latiery SECTOR: Yasktier Sector
+#
+# Jump-routes
+#
+$3122 3118 0 -1 12
+$3122 3222 0 0 12
+$3122 2925 0 0 12
+$2925 2926 0 0 12
+$2926 3126 0 0 12
+$3126 3222 0 0 12
+$2925 2527 0 0 12
+$2527 2424 -1 0 12
+$2527 2228 -1 0 12
+$3126 0224 1 0 12
+$3222 0323 1 0 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2524 C423100-7    Lo Ni Po           904 Ka
+L-2           2526 C000354-9    As Lo Ni           113 Ka
+L-3           2527 B326749-A                       802 Ka
+L-4           2528 C434010-6    Lo Ni              923 Ka
+L-5           2530 E544674-5    Ag Ni           B  204 Na
+L-6           2623 C110555-8    Ni                 220 Ka
+L-7           2624 B84447B-7    Ni              B  703 Na
+L-8           2626 C343335-6    Lo Ni Po           403 Ka
+L-9           2629 C200200-8    Lo Ni Va           701 Ka
+L-10          2727 C22489C-9                       912 Ka
+L-11          2728 C520453-8    De Ni Po           210 Ka
+L-12          2729 C887100-6    Lo Ni              500 Ka
+L-13          2823 X100540-3  T Va              R  234 Ka
+L-14          2824 E544349-2    Lo Ni              902 Ka
+L-15          2825 D899300-7    Lo Ni              423 Ka
+L-16          2826 C69955A-A  U Ni                 513 Ka
+L-17          2829 D413898-6  X Ic Na              804 Ka
+L-18          2923 C325573-9    Ni              B  620 Na
+L-19          2925 AAA7564-D  U Fl Ni              904 Ka
+L-20          2926 B330110-A  V De Lo Ni Po        701 Ka
+L-21          3021 C759A89-D    Hi                 203 Ka
+L-22          3026 C737000-5  V Ba Lo Ni           404 Ka
+L-23          3122 B86A659-A  U Ni Ri Wa           100 Ka
+L-24          3123 C65A343-B  V Lo Ni Wa           803 Ka
+L-25          3124 C8B3111-9  Y Fl Lo Ni        A  923 Ka
+L-26          3125 E237357-8    Lo Ni              101 Ka
+L-27          3126 B628511-A    Ni                 423 Ka
+L-28          3127 C634422-5  V Ni                 424 Ka
+L-29          3128 C558656-5  U Ag Ni              805 Ka
+L-30          3222 B514747-7    Ic                 320 Ka
+L-31          3224 C333998-C    Hi In Na Po        115 Ka
+L-32          3229 C6B0235-9  Y De Lo Ni        A  602 Ka
+L-33          3230 C87A867-9  U Wa                 823 Ka
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Maskier SECTOR: Yasktier Sector
+#
+# Jump-routes
+#
+$0131 0129 0 -1 12
+$0131 0135 0 0 12
+$0135 0137 0 0 12
+$0137 0140 0 0 12
+$0140 0239 0 0 12
+$0239 0340 0 0 12
+$0340 0640 0 0 12
+$0640 0840 0 0 12
+$0640 0639 0 0 12
+$0639 0536 0 0 12
+$0536 0438 0 0 12
+$0438 0239 0 0 12
+$0137 0236 0 0 12
+$0236 0536 0 0 12
+$0536 0834 0 0 12
+$0834 0833 0 0 12
+$0833 0532 0 0 12
+$0532 0131 0 0 12
+$0532 0630 0 -1 12
+$0834 1136 1 0 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0131 B363766-6    Ri                 124 Ka
+M-2           0135 A567643-B    Ag Ni Ri           302 Ka
+M-3           0137 B564146-7  V Lo Ni              114 Ka
+M-4           0140 B1008A8-8    Na Va              912 Ka
+M-5           0232 C426410-6  V Ni                 403 Ka
+M-6           0234 D593537-5    Ni                 810 Ka
+M-7           0236 A613104-E  V Ic Lo Ni           314 Ka
+M-8           0237 C1008DB-8    Na Va              111 Ka
+M-9           0239 B69699A-7  U Hi In              900 Ka
+M-10          0334 D587100-4  V Lo Ni              123 Ka
+M-11          0336 C613364-A  V Ic Lo Ni           103 Ka
+M-12          0337 C767112-6  V Lo Ni              704 Ka
+M-13          0340 B451530-B  U Ni Po              505 Ka
+M-14          0431 E33245A-6    Ni Po              205 Ka
+M-15          0432 C356520-7  U Ag Ni              823 Ka
+M-16          0437 C887444-7  V Ni                 525 Ka
+M-17          0438 B000553-B  U As Ni              822 Ka
+M-18          0440 E51169A-7    Ic Na Ni           604 Ka
+M-19          0532 A242644-8    Ni Po              813 Ka
+M-20          0536 B410AAE-E  X Hi Na              903 Ka
+M-21          0631 E120762-6    De Na Po           320 Ka
+M-22          0635 C557662-6  U Ag Ni              604 Ka
+M-23          0639 B410365-B    Lo Ni              314 Ka
+M-24          0640 B100633-B  U Na Ni Va           602 Ka
+M-25          0731 E321749-4    Na Po              603 Ka
+M-26          0734 E33097B-A    De Hi In Na Po  B  214 Na
+M-27          0737 E361231-3    Lo Ni              912 Ka
+M-28          0831 C11069B-B  U Na Ni              903 Ka
+M-29          0832 B160378-9    De Lo Ni        B  403 Na
+M-30          0833 B746400-B  V Ni                 504 Ka
+M-31          0834 A77A320-F    Lo Ni Wa           104 Ka
+M-32          0839 C855675-7    Ag Ni           B  102 Na
+M-33          0840 B44459A-C  U Ag Ni              114 Ka
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nayask SECTOR: Yasktier Sector
+#
+# Jump-routes
+#
+$1136 0834 -1 0 12
+$1136 1236 0 0 12
+$1236 1438 0 0 12
+$1438 1538 0 0 12
+$1538 1634 0 0 12
+$1634 1433 0 0 12
+$1433 1236 0 0 12
+$1634 1732 1 0 12
+$1538 1739 1 0 12
+$1634 1935 1 0 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0932 C677001-4  V Lo Ni              323 Ka
+N-2           0936 C663568-8  U Ni                 700 Ka
+N-3           0938 C8B0ACB-A  Y De Hi           A  514 Ka
+N-4           0939 D7B0874-6  Y De              A  704 Ka
+N-5           1032 C9C8400-B  Y Fl Ni           A  502 Ka
+N-6           1038 E77858D-6    Ag Ni              304 Ka
+N-7           1039 C424655-8    Ni                 313 Ka
+N-8           1040 E426102-A    Lo Ni              711 Ka
+N-9           1131 C9B7520-8  Y Fl Ni           A  102 Ka
+N-10          1133 C897561-8    Ag Ni              104 Ka
+N-11          1134 X645898-0  T                 R  105 Ka
+N-12          1136 B510645-B    Na Ni              104 Ka
+N-13          1139 A437779-C                    B  413 Na
+N-14          1140 D7A1214-6  V Fl Lo Ni           902 Ka
+N-15          1232 E320344-4    De Lo Ni Po        114 Ka
+N-16          1235 C986543-7  U Ag Ni              403 Ka
+N-17          1236 B363767-A    Ri                 704 Ka
+N-18          1238 C583627-4    Ni                 313 Ka
+N-19          1239 C5A057A-7    De Ni           B  313 Na
+N-20          1240 D576545-5    Ag Ni              604 Ka
+N-21          1331 E578210-3    Lo Ni              700 Ka
+N-22          1334 C799796-9                       304 Ka
+N-23          1337 C773630-8    Ni                 614 Ka
+N-24          1432 C2406A9-5  U De Ni Po           524 Ka
+N-25          1433 B656546-7  U Ag Ni              923 Ka
+N-26          1435 E9B6530-3  Y Fl Ni           A  204 Ka
+N-27          1438 B659654-C    Ni                 125 Ka
+N-28          1440 C120534-7    De Ni Po           920 Ka
+N-29          1531 B6A0563-9    De Ni              500 Ka
+N-30          1533 E434898-3                       600 Ka
+N-31          1534 B231564-9  U Ni Po              810 Ka
+N-32          1538 AA8688C-8  X Ri                 214 Ka
+N-33          1634 A8996BE-9    Ni                 914 Ka
+N-34          1638 E46677A-5    Ag Ri           B  704 Na
+N-35          1639 CA95763-6  W Ag                 404 Ka
+N-36          1640 C686683-8    Ag Ni Ri           810 Ka
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Otieras SECTOR: Yasktier Sector
+#
+# Jump-routes
+#
+$1732 1634 -1 0 12
+$1732 1831 0 0 12
+$1831 2132 0 0 12
+$2132 2433 0 0 12
+$1831 1730 0 -1 12
+$2132 2228 0 -1 12
+$1739 1538 -1 0 12
+$1739 1840 0 0 12
+$1840 2040 0 0 12
+$2040 2239 0 0 12
+$2239 2440 0 0 12
+$1935 1634 -1 0 12
+$1935 2235 0 0 12
+$2235 2435 0 0 12
+$1935 2036 0 0 12
+$2036 2239 0 0 12
+$2435 2433 0 0 12
+$2435 2635 1 0 12
+$2435 2537 1 0 12
+$2333 2634 1 0 2
+$2333 2130 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1732 B110836-8  X Na                 201 Ka
+O-2           1736 X77726A-1  T Lo              R  802 Ka
+O-3           1737 D300721-3  W Na Va              823 Ka
+O-4           1739 B525785-B  W                    923 Ka
+O-5           1831 B200000-C    Ba Lo Ni Va        404 Ka
+O-6           1832 D864675-5    Ag Ni Ri        B  404 Na
+O-7           1834 C130775-7    De Na Po        B  913 Na
+O-8           1837 E575300-5    Lo Ni              424 Ka
+O-9           1840 B236000-C    Ba Lo Ni           813 Ka
+O-10          1933 D8C2577-8  Y Fl Ni           A  802 Ka
+O-11          1934 C69A300-8  W Lo Ni Wa           913 Ka
+O-12          1935 B323423-D    Ni Po              233 Ka
+O-13          1936 C656203-9  W Lo Ni              504 Ka
+O-14          1937 B537879-9                    B  424 Na
+O-15          1938 D547412-2  W Ni                 801 Ka
+O-16          1939 C98A865-9  U Ri Wa              813 Ka
+O-17          2031 E300320-4    Lo Ni Va           610 Ka
+O-18          2035 C232510-6    Ni Po              210 Ka
+O-19          2036 B687566-B  U Ag Ni              710 Ka
+O-20          2040 A578355-B    Lo Ni              324 Ka
+O-21          2132 B726666-A    Ni                 604 Ka
+O-22          2134 C9CA576-C  Y Fl Ni Wa        A  100 Ka
+O-23          2137 C9B5478-5  Y Fl Ni           A  700 Ka
+O-24          2139 CA8A485-6  W Ni Wa              613 Ka
+O-25          2140 E000724-9    As Na              132 Ka
+O-26          2235 B87479A-A  W Ag                 202 Ka
+O-27          2236 C554AB9-7    Hi                 913 Ka
+O-28          2238 C436114-A    Lo Ni              313 Ka
+O-29          2239 B98A894-9  U Ri Wa              902 Ka
+O-30          2331 XA8A556-3  T Wa              R  613 Ka
+Omuuli        2333 C362450-8    Ni                 502 Ka
+O-32          2334 C466544-5    Ag Ni              423 Ka
+O-33          2336 E7B4346-6  Y Fl Lo Ni        A  123 Ka
+O-34          2337 D434578-5    Ni              B  910 Na
+O-35          2339 D552330-4    Lo Ni Po           205 Ka
+O-36          2340 A747534-A    Ag Ni              504 Ka
+O-37          2433 B9D9243-8    Fl Lo Ni           803 Ka
+O-38          2435 A220203-F  W De Lo Ni Po        302 Ka
+O-39          2437 E679569-6    Ni                 401 Ka
+O-40          2440 B465740-B  W Ag Ri              424 Ka
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Payask SECTOR: Yasktier Sector
+#
+# Jump-routes
+#
+$2635 2435 -1 0 12
+$2635 2933 0 0 12
+$2933 2931 0 0 12
+$2933 3234 0 0 12
+$3234 3137 0 0 12
+$2537 2435 -1 0 12
+$2537 2740 0 0 12
+$2740 2940 0 0 12
+$2940 3040 0 0 12
+$3040 3140 0 0 12
+$3140 3137 0 0 12
+$3137 2940 0 0 12
+$3140 0238 1 0 12
+$3137 0136 1 0 12
+$3234 0233 1 0 12
+$2931 0130 1 -1 12
+$2937 0138 1 0 2
+$2937 2634 0 0 2
+$2634 2333 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2534 C100644-A    Na Ni Va           204 Ka
+P-2           2537 A688210-C  V Lo Ni              102 Ka
+P-3           2538 C000300-A  V As Lo Ni           400 Ka
+P-4           2539 C9A3556-8    Fl Ni              424 Ka
+P-5           2631 X654626-2  T Ag              R  811 Ka
+Innyan        2634 C130588-B  U De Ni Po           811 Ka
+P-7           2635 B86A552-D  U Ni Wa              804 Ka
+P-8           2639 X541465-3  T Po              R  605 Ka
+P-9           2734 X400645-2  T Va              R  102 Ka
+P-10          2737 C262000-6  V Ba Lo Ni           820 Ka
+P-11          2738 C77A405-7    Ni Wa              904 Ka
+P-12          2740 B221787-C    Na Po              601 Ka
+P-13          2831 C778446-8    Ni                 702 Ka
+P-14          2833 C527437-7    Ni                 222 Ka
+P-15          2837 C421310-6    Lo Ni Po           703 Ka
+P-16          2931 A444357-A    Lo Ni              935 Ka
+P-17          2932 B574120-9  V Lo Ni              601 Ka
+P-18          2933 A638869-A  X                    112 Ka
+P-19          2935 C54A653-A  U Ni Wa              910 Ka
+Rewaala       2937 E677026-2    Lo Ni              803 Ka
+P-21          2938 E300579-6    Ni Va           B  200 Na
+P-22          2940 B457340-8  V Lo Ni              411 Ka
+P-23          3034 X626576-3  T                 R  102 Ka
+P-24          3037 C55389A-8    Po                 824 Ka
+P-25          3038 B47256A-9  U Ni                 522 Ka
+P-26          3039 C524252-6  V Lo Ni              704 Ka
+P-27          3040 B370300-D    De Lo Ni           223 Ka
+P-28          3132 C86A68C-A  U Ni Ri Wa           212 Ka
+P-29          3134 C732464-8    Ni Po              302 Ka
+P-30          3137 A381585-D    Ni                 712 Ka
+P-31          3138 E5666AB-3    Ag Ni              701 Ka
+P-32          3140 A200400-F  V Ni Va              602 Ka
+P-33          3231 E12089B-8    De Na Po           302 Ka
+P-34          3232 C300455-8    Ni Va              814 Ka
+P-35          3234 A271852-E                       713 Ka
+P-36          3236 C876773-7    Ag              B  710 Na
+P-37          3237 B443776-9    Po              B  404 Na
+P-38          3239 D5379AA-9    Hi In              220 Ka
+

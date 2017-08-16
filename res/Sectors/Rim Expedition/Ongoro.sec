@@ -1,0 +1,287 @@
+Ongoro Sector
+
+A: Agoro                     a.dat
+B: Bog                       b.dat
+C: Cagor                     c.dat
+D: Doggar                    d.dat
+E: Eggorr                    e.dat
+F: Fologgo                   f.dat
+G: Guoro                     g.dat
+H: Hottore                   h.dat
+I: Ingoor                    i.dat
+J: Jagoro                    j.dat
+K: Kambor                    k.dat
+L: Loporgo                   l.dat
+M: Modorro                   m.dat
+N: Nagaroo                   n.dat
+O: Ogoro                     o.dat
+P: Plamogo                   p.dat
+
+Bases:
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Agoro SECTOR: Ongoro Sector
+#
+# Jump-routes
+$0503 0506 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0104 A443632-B    Ni Po              802 Na
+A-2           0503 A311331-E  S Ic Lo Ni           814 Na
+A-3           0506 A769513-B    Ni                 521 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Bog SECTOR: Ongoro Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           1102 C54378B-5  S Po                 233 Na
+B-2           1208 C679000-6    Ba Lo Ni           404 Na
+B-3           1404 C662646-4    Ni Ri              100 Na
+B-4           1506 CAD557A-6  S Fl Ni           B  322 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Cagor SECTOR: Ongoro Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1802 C000747-A    As Na              803 Na
+C-2           1810 C241435-A  S Ni Po              313 Na
+C-3           1909 B120834-8  2 De Na Po           803 Na
+C-4           2007 C572489-8    Ni                 322 Na
+C-5           2304 B200463-B  N Ni Va              503 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Doggar SECTOR: Ongoro Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2501 B333542-8  N Ni Po              202 Na
+D-2           2504 C554848-5                       605 Na
+D-3           2807 B373542-A  2 Ni                 512 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Eggorr SECTOR: Ongoro Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0115 A898510-A  N Ag Ni              113 Na
+E-2           0317 A87A888-B  S Wa                 613 Na
+E-3           0515 C110656-C    Na Ni              310 Na
+E-4           0818 B9A3785-8    Fl                 803 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Fologgo SECTOR: Ongoro Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0916 C525122-6  S Lo Ni              304 Na
+F-2           1218 B423102-D    Lo Ni Po           201 Na
+F-3           1220 C320500-8    De Ni Po           102 Na
+F-4           1312 E000000-7    As Ba Lo Ni        405 Na
+F-5           1316 X7A6566-0    Fl              R  903 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Guoro SECTOR: Ongoro Sector
+#
+# Jump-routes
+$2113 2216 0 0
+$2216 2219 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1820 C300436-7    Ni Va              214 Na
+G-2           2013 X546435-0                    R  504 Na
+G-3           2113 A546568-8  N Ag Ni              200 Na
+G-4           2216 A332427-B  N Ni Po              103 Na
+G-5           2219 AAA9778-D  2 Fl              B  210 Na
+G-6           2319 C735666-7  S Ni                 120 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hottore SECTOR: Ongoro Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Hottore       2914 A332753-F  2 Na Po              313 Na
+H-2           3118 A20079C-E  N Na Va              413 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ingoor SECTOR: Ongoro Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0125 C150351-9  S De Lo Ni Po        722 Na
+I-2           0126 B210504-C  N Ni                 601 Na
+I-3           0128 C777354-8    Lo Ni              114 Na
+I-4           0223 B865798-6  2 Ag Ri              833 Na
+I-5           0425 D457536-5  S Ag Ni              323 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jagoro SECTOR: Ongoro Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           1221 D31168D-3  S Ic Na Ni           114 Na
+J-2           1423 C65A368-A  S Lo Ni Wa           203 Na
+J-3           1621 C7A5000-7    Ba Fl Lo Ni        904 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kambor SECTOR: Ongoro Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           2027 C555778-6    Ag              B  904 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Loporgo SECTOR: Ongoro Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2625 X241553-4    Po              R  214 Na
+L-2           2628 B200204-E  2 Lo Ni Va           311 Na
+L-3           2828 C726565-5    Ni                 912 Na
+L-4           2830 B688332-A  S Lo Ni              324 Na
+L-5           2924 C466000-7    Ba Lo Ni           104 Na
+L-6           3021 C443526-6    Ni Po              100 Na
+L-7           3228 D767644-1    Ag Ni Ri           323 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Modorro SECTOR: Ongoro Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0440 D477546-3  S Ag Ni              803 Na
+M-2           0738 B000998-C  2 As Hi Na           900 Na
+M-3           0838 EAD3204-7    Fl Lo Ni           814 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nagaroo SECTOR: Ongoro Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           1139 C899242-9    Lo Ni              302 Na
+N-2           1637 X000778-1    As              R  210 Na
+N-3           1639 EAC7553-8    Fl Ni           A  821 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ogoro SECTOR: Ongoro Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1935 C586201-6  S Lo Ni              223 Na
+O-2           2134 C96A685-A    Ni Ri Wa           101 Na
+O-3           2235 E53A865-4    Wa                 923 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Plamogo SECTOR: Ongoro Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2638 D548634-3  S Ag Ni              503 Na
+P-2           2738 B220400-C    De Ni Po           800 Na
+P-3           2834 B340311-C    De Lo Ni Po        624 Na
+

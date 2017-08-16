@@ -1,0 +1,284 @@
+Ematal Sector
+
+A: Attat                     a.dat
+B: Bemita                    b.dat
+C: Cetal                     c.dat
+D: Demmati                   d.dat
+E: Emat                      e.dat
+F: Fedatal                   f.dat
+G: Gurtival                  g.dat
+H: Hitall                    h.dat
+I: Immitak                   i.dat
+J: Jemita                    j.dat
+K: Kimmasal                  k.dat
+L: Lenit                     l.dat
+M: Matalla                   m.dat
+N: Nettat                    n.dat
+O: Omagal                    o.dat
+P: Pligall                   p.dat
+
+Bases:
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Attat SECTOR: Ematal Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0101 C4259AE-9    Hi In              104 Na
+A-2           0203 CA69745-4    Ri                 410 Na
+A-3           0408 C556640-3  S Ag Ni              903 Na
+A-4           0410 C6A4452-7    Fl Ni              201 Na
+A-5           0603 D21089D-5  S Na                 202 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Bemita SECTOR: Ematal Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           1206 A867653-B  2 Ag Ni Ri           920 Na
+B-2           1210 A6659DF-B    Hi                 314 Na
+B-3           1308 C543586-6  S Ni Po              213 Na
+B-4           1504 E433467-4    Ni Po              602 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Cetal SECTOR: Ematal Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1909 C795001-4  S Lo Ni              615 Na
+C-2           1910 C562879-7    Ri              B  513 Na
+C-3           2203 D69A865-4  S Wa                 500 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Demmati SECTOR: Ematal Sector
+#
+# Jump-routes
+$2503 2605 0 0
+$2504 2605 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2503 B582453-8    Ni                 404 Na
+D-2           2504 B84A8D9-8    Wa                 904 Na
+D-3           2509 C73A587-C    Ni Wa              600 Na
+D-4           2605 A7A0562-B  N De Ni              120 Na
+D-5           3006 BAC4358-A  N Fl Lo Ni        A  314 Na
+D-6           3203 B522569-9    Ni Po              104 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Emat SECTOR: Ematal Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Fedatal SECTOR: Ematal Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           1014 B5A0430-C  N De Ni              903 Na
+F-2           1219 BAD8556-A    Fl Ni              205 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Gurtival SECTOR: Ematal Sector
+#
+# Jump-routes
+$2014 2114 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           2014 C200445-9    Ni Va              612 Na
+G-2           2018 B323323-9  S Lo Ni Po           803 Na
+G-3           2020 C400796-8    Na Va              224 Na
+G-4           2114 B23259B-D  N Ni Po              605 Na
+G-5           2314 B334575-C  S Ni              B  222 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hitall SECTOR: Ematal Sector
+#
+# Jump-routes
+$3112 3212 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2813 E8C7532-8    Fl Ni           A  521 Na
+H-2           2818 C323986-C    Hi In Na Po        710 Na
+H-3           3112 C43559A-8  S Ni                 720 Na
+H-4           3212 B765535-A    Ag Ni              914 Na
+H-5           3217 E9A9001-8    Fl Lo Ni           235 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Immitak SECTOR: Ematal Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0126 C510732-8    Na                 404 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jemita SECTOR: Ematal Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           1024 E265ABA-6    Hi                 512 Na
+J-2           1423 C674752-4    Ag                 104 Na
+J-3           1424 C300633-A  S Na Ni Va           800 Na
+J-4           1625 E646677-4    Ag Ni           B  110 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kimmasal SECTOR: Ematal Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1826 D300333-8  S Lo Ni Va           804 Na
+K-2           2030 EAA4432-4    Fl Ni              903 Na
+K-3           2325 B310526-A  N Ni                 123 Na
+K-4           2425 C342303-8  S Lo Ni Po           805 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lenit SECTOR: Ematal Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2722 C569635-4  S Ni                 523 Na
+L-2           2728 B875347-7  2 Lo Ni              500 Na
+L-3           3030 C548202-6  S Lo Ni              204 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Matalla SECTOR: Ematal Sector
+#
+# Jump-routes
+$0131 0133 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0131 A512365-E    Ic Lo Ni           304 Na
+M-2           0133 B99A8B9-B    Wa                 604 Na
+M-3           0236 C667610-3  S Ag Ni              702 Na
+M-4           0536 C4566BA-9  S Ag Ni              722 Na
+M-5           0735 C4819CB-8    Hi                 603 Na
+M-6           0737 D659855-6                       811 Na
+M-7           0739 E302414-5    Ic Ni Va           514 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nettat SECTOR: Ematal Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           1635 A448675-A    Ag Ni           B  103 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Omagal SECTOR: Ematal Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1935 B23268C-9    Na Ni Po           610 Na
+O-2           2235 D575543-7    Ag Ni              614 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Pligall SECTOR: Ematal Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2638 C120785-7  S De Na Po           603 Na
+P-2           2639 E548436-5    Ni                 814 Na
+P-3           2731 E797641-3    Ag Ni              104 Na
+

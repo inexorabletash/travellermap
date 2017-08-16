@@ -1,0 +1,403 @@
+Iknor Sector
+
+A: Aikno                     a.dat
+B: Beiknor                   b.dat
+C: Cikno                     c.dat
+D: Doikno                    d.dat
+E: Eknow                     e.dat
+F: Frokno                    f.dat
+G: Guiknor                   g.dat
+H: Huikna                    h.dat
+I: Ikno                      i.dat
+J: Jokokno                   j.dat
+K: Kaiknor                   k.dat
+L: Laniknok                  l.dat
+M: Moknom                    m.dat
+N: Nuplakno                  n.dat
+O: Owekiknar                 o.dat
+P: Plokniss                  p.dat
+
+Bases:
+D = Daknora Military
+F = Froic Military
+M = Mlako Guardians
+N = Navy
+S = Scout
+Z = Ziknooa Military
+2 = Navy & Scout
+  = None
+
+Allegiance:
+15 Dr = Daknora Realm
+13 Fs = Froic State
+12 Ms = Mlako Sanctuary
+07 Na = Non-Aligned
+14 Zs = Ziknooa State
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Aikno SECTOR: Iknor Sector
+#
+# Jump-routes
+$0410 0509 0 0
+$0410 0610 0 0
+#
+$0107 3104 -1 0 10
+$0107 0509 0 0 10
+$0509 0712 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Saedior       0107 A666556-E    Ag Ni              901 Na
+A-2           0303 E8A4585-3    Fl Ni              924 Na
+A-3           0410 A6689A8-B  N Hi                 905 Na
+A-4           0503 C888584-6    Ag Ni              101 Na
+A-5           0504 C425344-A    Lo Ni              725 Na
+Chagaul       0509 C989762-7    Ri                 213 Na
+A-7           0604 C423666-6    Na Ni Po           103 Na
+A-8           0605 C76A888-9  S Ri Wa              103 Na
+A-9           0610 C573377-8  S Lo Ni           B  703 Na
+A-10          0707 B331200-9  N Lo Ni Po           503 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Beiknor SECTOR: Iknor Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           0905 D414420-4    Ic Ni              404 Na
+B-2           1009 A949548-B  2 Ni                 404 Na
+B-3           1101 D424527-6    Ni                 124 Na
+B-4           1309 C8A3500-B    Fl Ni              821 Na
+B-5           1403 B31058A-D  2 Ni                 402 Na
+B-6           1504 B323741-9  S Na Po              224 Na
+B-7           1604 B79A599-D  S Ni Wa              200 Na
+B-8           1608 C666532-7  S Ag Ni              203 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Cikno SECTOR: Iknor Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1709 X43546A-5                    R  720 Na
+C-2           1803 E460653-5    De Ni Ri           300 Na
+C-3           1905 X334556-2                    R  610 Na
+C-4           2108 C130663-7    De Na Ni Po        805 Na
+C-5           2202 A4416AC-A    Ni Po              115 Na
+C-6           2208 E7C5511-4    Fl Ni           A  322 Na
+C-7           2401 C4369AE-7  S Hi In              310 Na
+C-8           2402 C5316A8-4  S Na Ni Po           403 Na
+C-9           2404 C4008A8-8    Na Va              104 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Doikno SECTOR: Iknor Sector
+#
+# Jump-routes
+#
+$3109 3211 0 1 15
+$3109 2808 0 0 15
+$2808 2811 0 1 15
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2604 C300134-A  S Lo Ni Va           400 Na
+D-2           2701 C357510-A  S Ag Ni              112 Na
+D-3           2808 B8657AF-9  D Ag                 602 Dr
+Daknora       3109 A231958-H  D Hi In Na Po Cx     225 Dr
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Eknow SECTOR: Iknor Sector
+#
+# Jump-routes
+#
+$0712 0509 0 -1 10
+$0712 1114 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0314 A150557-C  S De Ni Po           513 Na
+E-2           0320 C353954-8    Hi Po              301 Na
+E-3           0517 D749776-5                    B  604 Na
+E-4           0614 E000336-8    As Lo Ni           822 Na
+E-5           0618 C567337-4  S Lo Ni              604 Na
+E-6           0619 B222675-8    Na Ni Po        B  413 Na
+E-7           0711 D545326-3    Lo Ni              500 Na
+Mordrez       0712 C100013-A    Lo Ni Va           621 Na
+E-9           0811 A434102-C    Lo Ni              100 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Frokno SECTOR: Iknor Sector
+#
+# Jump-routes
+#
+$1114 0712 -1 0 10
+$1114 1315 0 0 10
+$1315 1518 0 0 10
+$1518 1919 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           1017 E513000-5    Ba Ic Lo Ni        303 Na
+F-2           1112 C56345A-5    Ni                 902 Na
+Fentawa       1114 C796375-4  S Lo Ni           B  903 Na
+F-4           1215 C463645-5  S Ni Ri              304 Na
+F-5           1218 C271346-8  S Lo Ni              302 Na
+Moikna        1315 C85A162-6    Lo Ni Wa           705 Na
+Avaikna       1518 C227998-A    Hi In              524 Na
+Froic         1615 A454A75-G  F Hi Cx           B  410 Fs
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Guiknor SECTOR: Iknor Sector
+#
+# Jump-routes
+$2016 2118 0 0
+#
+$1919 1518 -1 0 10
+$1919 2122 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1714 C326310-6  S Lo Ni              421 Na
+G-2           1814 C36467C-8    Ag Ni Ri        B  400 Na
+Goknodo       1919 C888221-4    Lo Ni              422 Na
+G-4           2011 C140566-A  S De Ni Po           621 Na
+G-5           2013 C99A333-A  S Lo Ni Wa           113 Na
+G-6           2016 C587789-6    Ag Ri              613 Na
+G-7           2118 A421448-B  N Ni Po              402 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Huikna SECTOR: Iknor Sector
+#
+# Jump-routes
+#
+$3211 3109 0 -1 15
+$2811 2808 0 -1 15
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2711 E637866-2                       104 Dr
+H-2           2714 C240368-6  D De Lo Ni Po        102 Dr
+H-3           2811 B697465-6    Ni                 404 Dr
+H-4           2812 E566644-6    Ag Ni Ri           713 Dr
+H-5           2918 B5639CE-8    Hi                 805 Na
+H-6           3019 C223979-7    Hi In Na Po     B  214 Na
+H-7           3119 D484533-7    Ag Ni              821 Na
+H-8           3211 C410500-C    Ni                 814 Dr
+H-9           3216 C9C58AB-9  S Fl              A  804 Na
+H-10          3217 C835453-9  S Ni                 504 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ikno SECTOR: Iknor Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0121 C200225-8    Lo Ni Va           510 Na
+I-2           0324 B858530-A    Ag Ni              404 Na
+I-3           0428 C346221-8    Lo Ni              923 Na
+I-4           0824 E402133-6    Ic Lo Ni Va        623 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jokokno SECTOR: Iknor Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0925 D8D867A-5    Fl Ni           B  704 Na
+J-2           0927 D83A224-8    Lo Ni Wa           900 Na
+J-3           0929 C243269-9    Lo Ni Po           700 Na
+J-4           1025 B30057A-B  N Ni Va           B  724 Na
+J-5           1229 C246466-7  S Ni                 304 Na
+J-6           1321 C300120-9    Lo Ni Va           802 Na
+J-7           1322 C445424-6    Ni                 422 Na
+J-8           1329 E7A0654-8    De Ni              914 Na
+J-9           1528 D729477-4    Ni              B  703 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kaiknor SECTOR: Iknor Sector
+#
+# Jump-routes
+#
+$2122 1919 0 -1 10
+$2122 2125 0 0 10
+$2125 1827 0 0 10
+$1827 1831 0 1 10
+$1827 1729 0 0 14
+$1827 1926 0 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1729 D99A622-8  Z Ni Wa              831 Zs
+Ziknooa       1827 A789A87-F  Z Hi                 603 Zs
+K-3           1921 D100385-8    Lo Ni Va           904 Na
+K-4           1926 C9A4001-A    Fl Lo Ni           904 Zs
+Knorri        2122 B200537-B    Ni Va              102 Na
+Peashan       2125 E8B3400-9    Fl Ni           A  604 Na
+K-7           2422 E785846-3    Ri                 602 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Laniknok SECTOR: Iknor Sector
+#
+# Jump-routes
+$3128 3228 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2624 B585110-8  2 Lo Ni              124 Na
+L-2           2826 C667534-6    Ag Ni              301 Na
+L-3           2827 B59546A-7  S Ni                 703 Na
+L-4           3023 E674434-5    Ni                 904 Na
+L-5           3124 C869433-8  S Ni                 410 Na
+L-6           3128 C9D3841-4    Fl                 213 Na
+L-7           3130 C000632-9    As Na Ni           103 Na
+L-8           3224 C232984-7  S Hi In Na Po        803 Na
+L-9           3228 A410620-9    Na Ni              310 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Moknom SECTOR: Iknor Sector
+#
+# Jump-routes
+#
+$0239 0303 0 1 2
+$0239 3237 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0235 E767545-2    Ag Ni              703 Na
+Kachalla      0239 E452400-9    Ni Po              504 Na
+M-3           0334 X694332-0    Lo              R  104 Na
+M-4           0438 D83A267-6  S Lo Ni Wa           704 Na
+M-5           0537 B9A4ACF-C    Fl Hi              800 Na
+M-6           0737 E220426-9    De Ni Po           200 Na
+M-7           0839 A537412-B    Ni                 714 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nuplakno SECTOR: Iknor Sector
+#
+# Jump-routes
+$1431 1531 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           1032 E65965A-7    Ni                 604 Na
+N-2           1235 C44589D-8                       620 Na
+N-3           1332 C000102-A  S As Lo Ni           404 Na
+N-4           1335 X978468-0                    R  824 Na
+Mlako         1337 B1009ED-F  M Hi Na Va           502 Ms
+N-6           1339 C000556-9    As Ni              511 Na
+N-7           1431 B361544-A  2 Ni                 604 Na
+N-8           1434 E510548-6    Ni                 500 Na
+N-9           1531 B68359B-8    Ni                 113 Na
+N-10          1632 C7A3777-6  S Fl              B  304 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Owekiknar SECTOR: Iknor Sector
+#
+# Jump-routes
+#
+$1831 1827 0 -1 10
+$1831 2231 0 0 10
+$2231 2234 0 0 10
+$2234 2636 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Okinarrh      1831 E555323-6    Lo Ni              501 Na
+O-2           1835 B69A896-C  N Wa                 213 Na
+O-3           1838 D445553-4  S Ag Ni              813 Na
+O-4           2135 C646564-6    Ag Ni              710 Na
+O-5           2139 C7B0885-6    De              A  413 Na
+Drorka        2231 D3538A6-2    Po                 403 Na
+Jagassa       2234 BAC5863-9  S Fl              A  613 Na
+O-8           2337 B678AA6-D  N Hi In              614 Na
+O-9           2431 B696253-A  N Lo Ni              400 Na
+O-10          2433 C412353-8    Ic Lo Ni           102 Na
+O-11          2435 CA7A447-6    Ni Wa              115 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Plokniss SECTOR: Iknor Sector
+#
+# Jump-routes
+#
+$2636 2234 -1 0 10
+$2636 2936 0 0 10
+$2936 3237 0 0 10
+$3237 3240 0 0 10
+$3240 0103 1 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2536 C210455-B    Ni                 800 Na
+P-2           2538 X573210-0    Lo              R  804 Na
+Frimishok     2636 C698ADF-8    Hi In              203 Na
+P-4           2737 C677540-7  S Ag Ni              910 Na
+P-5           2831 C695575-4    Ag Ni           B  430 Na
+P-6           2837 C867557-7    Ag Ni              202 Na
+Asokonn       2936 D696989-6    Hi In              514 Na
+P-8           3131 C79A459-9    Ni Wa              724 Na
+P-9           3232 X673376-0    Lo              R  724 Na
+Whoknere      3237 E878AEC-7    Hi In              824 Na
+Hollonka      3240 C997656-9  S Ag Ni              124 Na
+

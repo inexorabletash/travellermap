@@ -1,0 +1,333 @@
+Guttlo Sector
+
+A: Agut                      a.dat
+B: Butlo                     b.dat
+C: Cagutl                    c.dat
+D: Dulo                      d.dat
+E: Eguut                     e.dat
+F: Fegutlo                   f.dat
+G: Guuntal                   g.dat
+H: Hutlor                    h.dat
+I: Iguutlo                   i.dat
+J: Jagalut                   j.dat
+K: Kloyut                    k.dat
+L: Loguut                    l.dat
+M: Magull                    m.dat
+N: Neguuh                    n.dat
+O: Ogglunn                   o.dat
+P: Paguutlo                  p.dat
+
+Bases:
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Agut SECTOR: Guttlo Sector
+#
+# Jump-routes
+#
+$0704 0904 1 0 2
+$0704 0502 0 0 2
+$0502 0439 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0107 E6A2862-6    Fl                 612 Na
+A-2           0303 C898642-8  S Ag Ni              304 Na
+Hummunum      0502 C7678BB-3  S                    121 Na
+A-4           0508 C9B849C-6    Fl Ni           A  612 Na
+Moolangg      0704 A759766-8                       401 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Butlo SECTOR: Guttlo Sector
+#
+# Jump-routes
+#
+$1409 1312 0 1 2
+$1409 1306 0 0 2
+$1306 0904 0 0 2
+$0904 0704 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Khrrt         0904 C44359C-8    Ni Po              302 Na
+B-2           1001 B474544-7  2 Ag Ni              714 Na
+B-3           1004 B668797-8    Ag Ri              203 Na
+B-4           1105 C479313-A  S Lo Ni              623 Na
+B-5           1109 C000410-A    As Ni              312 Na
+B-6           1304 C24556B-7  S Ag Ni              103 Na
+Siugga        1306 DA9A6A9-8    Ni Wa              911 Na
+Bhuundar      1409 C6A46B7-9    Fl Ni              502 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Cagutl SECTOR: Guttlo Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           2007 C411649-8    Ic Na Ni           134 Na
+C-2           2105 E453414-3    Ni Po              113 Na
+C-3           2308 C545321-7    Lo Ni              413 Na
+C-4           2401 D563A89-8    Hi                 312 Na
+C-5           2406 C957445-5    Ni                 803 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Dulo SECTOR: Guttlo Sector
+#
+# Jump-routes
+#
+$2603 2540 0 -1 10
+$2603 2806 0 0 10
+$2806 3007 0 0 10
+$3007 3209 0 0 10
+$3209 0310 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Dvark         2603 X677230-3    Lo              R  401 Na
+D-2           2609 C433654-8  S Na Ni Po           204 Na
+D-3           2707 C24089B-9    De Po              203 Na
+Urthaal       2806 B8C5621-7  S Fl Ni           A  503 Na
+Amgraam       3007 C73746B-7    Ni                 203 Na
+Diianii       3209 B649457-A    Ni                 902 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Eguut SECTOR: Guttlo Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0417 C341424-7  S Ni Po              900 Na
+E-2           0612 A98A86A-A    Ri Wa              503 Na
+E-3           0617 C3338AB-7  S Na Po              711 Na
+E-4           0714 X779300-5    Lo              R  401 Na
+E-5           0717 C452003-A  S Lo Ni Po           823 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Fegutlo SECTOR: Guttlo Sector
+#
+# Jump-routes
+#
+$1519 1722 1 1 2
+$1519 1415 0 0 2
+$1415 1312 0 0 2
+$1312 1409 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           1116 C41069E-5  S Na Ni              710 Na
+F-2           1119 C5357AC-8  S                    922 Na
+Niassna       1312 C9A559A-9  S Fl Ni              523 Na
+Fliummk       1415 B210103-9  N Lo Ni              904 Na
+F-5           1512 C99A697-7    Ni Wa              400 Na
+Harrassc      1519 E547666-1    Ag Ni              514 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Guuntal SECTOR: Guttlo Sector
+#
+# Jump-routes
+$1712 1813 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1712 B130200-A    De Lo Ni Po        900 Na
+G-2           1813 A4638DD-B  S                    105 Na
+G-3           1919 E54689A-4                       310 Na
+G-4           2112 C456568-9    Ag Ni              513 Na
+G-5           2220 X794121-2    Lo              R  500 Na
+G-6           2413 C64A484-6    Ni Wa              913 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hutlor SECTOR: Guttlo Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           3017 D77338A-3  S Lo Ni              303 Na
+H-2           3119 E615444-5    Ic Ni              212 Na
+H-3           3217 X684005-0    Lo              R  203 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Iguutlo SECTOR: Guttlo Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0330 C100510-C  S Ni Va              205 Na
+I-2           0730 C6B0357-A    De Lo Ni        A  314 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jagalut SECTOR: Guttlo Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0924 B55A563-8    Ni Wa              623 Na
+J-2           1422 C644645-6    Ag Ni              223 Na
+J-3           1527 E5A478C-6    Fl                 323 Na
+J-4           1530 C886776-8  S Ag Ri           B  905 Na
+J-5           1626 C575894-3                       904 Na
+J-6           1629 C434545-7  S Ni                 204 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kloyut SECTOR: Guttlo Sector
+#
+# Jump-routes
+#
+$2430 2431 0 1 2
+$2430 2028 0 0 2
+$2028 2026 0 0 2
+$2026 2022 0 0 2
+$2022 1722 0 0 2
+$1722 1519 -1 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Ittratra      1722 A532534-A    Ni Po              811 Na
+K-2           1723 BA99587-C  N Ni                 104 Na
+Grioomla      2022 B7A4365-7    Fl Lo Ni           814 Na
+Bhuaaja       2026 C646875-4                    B  702 Na
+Cassacsa      2028 X658634-0    Ag              R  712 Na
+K-6           2128 D5A2245-7  S Fl Lo Ni           624 Na
+K-7           2226 E988852-4    Ri                 114 Na
+Kieesa        2430 X779551-2                    R  704 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Loguut SECTOR: Guttlo Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2724 DA58844-5  S                    104 Na
+L-2           2727 A361402-B    Ni                 504 Na
+L-3           2821 C346778-5    Ag              B  121 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Magull SECTOR: Guttlo Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0438 C747447-9  S Ni                 112 Na
+M-2           0534 B584447-6  S Ni                 910 Na
+M-3           0740 C473575-7  S Ni              B  515 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Neguuh SECTOR: Guttlo Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0934 B785220-6  S Lo Ni              201 Na
+N-2           0937 A335520-E    Ni                 202 Na
+N-3           1231 C866020-3    Lo Ni              105 Na
+N-4           1631 A240678-C    De Ni Po           105 Na
+N-5           1634 C357557-7  S Ag Ni              424 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ogglunn SECTOR: Guttlo Sector
+#
+# Jump-routes
+#
+$2431 2634 1 0 2
+$2431 2430 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1731 E644579-6    Ag Ni           B  222 Na
+O-2           1935 E467561-7    Ag Ni              704 Na
+O-3           1938 C2425AD-A    Ni Po              324 Na
+Juaabl        2431 C5A1001-A    Fl Lo Ni           303 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Paguutlo SECTOR: Guttlo Sector
+#
+# Jump-routes
+$3136 3236 0 0
+#
+$2932 0131 1 0 2
+$2932 2634 0 0 2
+$2634 2431 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Neetaalla     2634 C55379C-6    Po                 704 Na
+Hushmu        2932 D565869-3    Ri                 602 Na
+P-2           2839 E232686-4    Na Ni Po           814 Na
+P-4           3136 B140337-D    De Lo Ni Po        912 Na
+Paguut        3236 C100AA8-F    Hi Na Va           801 Na
+

@@ -1,0 +1,363 @@
+Viopol Sector
+
+A: Aviopo                    a.dat
+B: Bepoli                    b.dat
+C: Civiopi                   c.dat
+D: Depolo                    d.dat
+E: Eviopolo                  e.dat
+F: Floviol                   f.dat
+G: Grazziol                  g.dat
+H: Hovione                   h.dat
+I: Iopoloni                  i.dat
+J: Javioli                   j.dat
+K: Kovolone                  k.dat
+L: Liviol                    l.dat
+M: Maviol                    m.dat
+N: Nioviolo                  n.dat
+O: Ovilone                   o.dat
+P: Paviol                    p.dat
+
+Bases:
+M = Falavva Military
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+09 Fo = Falavva Oceanus
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Aviopo SECTOR: Viopol Sector
+#
+# Jump-routes
+#
+$0607 0907 1 0 2
+$0607 0603 0 0 2
+$0603 0540 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0104 E899765-4                       400 Na
+A-2           0108 B434951-E  N Hi In              604 Na
+A-3           0202 C100100-B    Lo Ni Va           614 Na
+A-4           0209 C9B6377-6    Fl Lo Ni        A  203 Na
+A-5           0305 C9B5321-A  S Fl Lo Ni        A  401 Na
+A-6           0404 B6869CD-9  N Hi                 902 Na
+Wioioin       0603 B247100-9  S Lo Ni              401 Na
+Allioh        0607 D332675-3  S Na Ni Po        B  101 Na
+A-9           0610 C649884-7  S                    604 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Bepoli SECTOR: Viopol Sector
+#
+# Jump-routes
+#
+$1208 1411 0 1 2
+$1208 0907 0 0 2
+$0907 0607 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           0902 C7629CD-7    Hi                 903 Na
+Hievamaal     0907 X250699-0    De Po           R  501 Na
+B-3           1202 C643489-4    Ni Po              410 Na
+B-4           1207 A748562-C  2 Ag Ni              200 Na
+Bharnni       1208 C242A66-D    Hi In Po           202 Na
+B-6           1507 E260542-3    De Ni              325 Na
+B-7           1609 B500563-C  S Ni Va              204 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Civiopi SECTOR: Viopol Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1706 D776657-6    Ag Ni              224 Na
+C-2           1803 C438886-9                       204 Na
+C-3           1809 D88A8BB-7    Wa                 610 Na
+C-4           1905 B764500-A  2 Ag Ni              100 Na
+C-5           2101 C455334-8    Lo Ni              514 Na
+C-6           2407 B647669-8    Ag Ni              703 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Depolo SECTOR: Viopol Sector
+#
+# Jump-routes
+#
+$2602 2638 0 -1 10
+$2602 2804 0 0 10
+$2804 3007 0 0 10
+$3007 0207 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Dorrtiss      2602 E483610-2    Ni                 914 Na
+D-2           2605 C263354-9    Lo Ni              620 Na
+D-3           2706 A576530-A  2 Ag Ni              203 Na
+Amjomma       2804 B476888-A                       802 Na
+D-5           2806 C326220-B    Lo Ni              405 Na
+D-6           2810 A201237-E  2 Ic Lo Ni Va        820 Na
+D-7           2907 B000110-A  N As Lo Ni           310 Na
+Moliontu      3007 C7A1333-7  S Fl Lo Ni           101 Na
+D-9           3009 C433130-8    Lo Ni Po           303 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Eviopolo SECTOR: Viopol Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0411 C631756-A    Na Po              504 Na
+E-2           0815 B000320-E  2 As Lo Ni           112 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Floviol SECTOR: Viopol Sector
+#
+# Jump-routes
+#
+$1614 1816 1 0 2
+$1614 1411 0 0 2
+$1411 1208 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0920 C777658-5    Ag Ni              805 Na
+F-2           1016 B639302-D  S Lo Ni              405 Na
+F-3           1115 E9D9865-7    Fl                 203 Na
+F-4           1117 C97A623-8    Ni Wa              405 Na
+F-5           1211 C251354-6  S Lo Ni Po           620 Na
+Falavva       1316 A84A300-G  M Lo Ni Wa Cx        624 Fo
+F-7           1319 D86A783-7    Ri Wa              802 Na
+Difiolli      1411 C573688-6  S Ni                 404 Na
+F-9           1516 C6B5220-7  S Fl Lo Ni        A  223 Na
+Jailliana     1614 C357744-9    Ag                 405 Na
+F-11          1619 B877575-7  S Ag Ni           B  724 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Grazziol SECTOR: Viopol Sector
+#
+# Jump-routes
+#
+$2418 2520 1 0 2
+$2418 2017 0 0 2
+$2017 1816 0 0 2
+$1816 1614 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Vhialla       1816 C6269CC-7    Hi In              901 Na
+G-2           2014 C764AAA-9  S Hi                 921 Na
+G-3           2015 D565232-3    Lo Ni              912 Na
+Grionn        2017 E477547-6    Ag Ni              102 Na
+G-5           2114 E77499B-7    Hi In              323 Na
+G-6           2214 C436422-6    Ni                 800 Na
+G-7           2312 A345646-D    Ag Ni              824 Na
+Ationna       2418 D544530-6    Ag Ni              304 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hovione SECTOR: Viopol Sector
+#
+# Jump-routes
+#
+$2520 2922 0 1 2
+$2520 2418 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Hikiona       2520 C576552-9  S Ag Ni              813 Na
+H-2           2616 B355426-A  N Ni                 904 Na
+H-3           3013 C463543-8  S Ni                 513 Na
+H-4           3114 C9C9348-9    Fl Lo Ni        A  210 Na
+H-5           3217 C549745-4                       413 Na
+H-6           3219 B200204-A  2 Lo Ni Va           724 Na
+H-7           3220 C233357-A  S Lo Ni Po           414 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Iopoloni SECTOR: Viopol Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0123 C9779BB-9  S Hi In              812 Na
+I-2           0125 C986210-9    Lo Ni              605 Na
+I-3           0330 B365855-B    Ri                 702 Na
+I-4           0621 B21035A-D    Lo Ni              820 Na
+I-5           0629 E654952-7    Hi                 424 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Javioli SECTOR: Viopol Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           1129 C686377-6    Lo Ni           B  103 Na
+J-2           1130 A20077A-9  S Na Va           B  401 Na
+J-3           1521 C583468-8  S Ni                 412 Na
+J-4           1523 B9C3ACA-B  N Fl Hi           A  401 Na
+J-5           1627 B9C8145-B  2 Fl Lo Ni        A  403 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kovolone SECTOR: Viopol Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1723 E5A0875-4    De              B  902 Na
+K-2           1830 C546A9A-7    Hi In              114 Na
+K-3           2023 C526957-7    Hi In              100 Na
+K-4           2325 E4645A7-6    Ag Ni              915 Na
+K-5           2422 E5889A8-4    Hi                 404 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Liviol SECTOR: Viopol Sector
+#
+# Jump-routes
+#
+$3129 0331 1 1 2
+$3129 3125 0 0 2
+$3125 2922 0 0 2
+$2922 2520 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2524 D75676A-6  S Ag                 203 Na
+L-2           2529 C664475-5  S Ni              B  324 Na
+L-3           2622 B792327-6  N Lo Ni              405 Na
+L-4           2627 C210315-6    Lo Ni              414 Na
+L-5           2730 E56A458-7    Ni Wa              513 Na
+Tiolla        2922 B86A47B-D    Ni Wa           B  703 Na
+L-7           3122 E698146-2    Lo Ni              903 Na
+Kriopo        3125 B65959B-C  N Ni                 204 Na
+L-9           3126 C86AAFI-9    Hi Wa           R  313 Na
+Lollkan       3129 C548ACD-C    Hi In              203 Na
+L-11          3224 C85A400-C  S Ni Wa              114 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Maviol SECTOR: Viopol Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0139 C85877C-5  S Ag              B  703 Na
+M-2           0240 C787331-4  S Lo Ni              625 Na
+M-3           0434 C120220-C  S De Lo Ni Po        600 Na
+M-4           0734 E100544-6    Ni Va              314 Na
+M-5           0736 D677442-5    Ni                 103 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nioviolo SECTOR: Viopol Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0931 C452AEG-9  S Hi Po           A  820 Na
+N-2           1031 C548401-A    Ni                 813 Na
+N-3           1038 C481277-9  S Lo Ni           B  514 Na
+N-4           1040 C330854-B    De Na Po           805 Na
+N-5           1338 D510545-6  S Ni                 202 Na
+N-6           1433 C8A5748-4    Fl                 102 Na
+N-7           1535 C400412-7  S Ni Va              304 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ovilone SECTOR: Viopol Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1831 B410330-A  2 Lo Ni              602 Na
+O-2           1836 E878303-3    Lo Ni              501 Na
+O-3           2035 C657976-8  S Hi              B  924 Na
+O-4           2133 D300888-7  S Na Va              820 Na
+O-5           2139 E679965-6    Hi In              720 Na
+O-6           2140 B332634-C  2 Na Ni Po           802 Na
+O-7           2231 C4345AB-8    Ni                 214 Na
+O-8           2237 C676342-8  S Lo Ni              104 Na
+O-9           2339 B425446-8  N Ni                 104 Na
+O-10          2340 B130345-B  N De Lo Ni Po        723 Na
+O-11          2440 B684555-B    Ag Ni              820 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Paviol SECTOR: Viopol Sector
+#
+# Jump-routes
+$2831 2931 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2538 D323487-9  S Ni Po              624 Na
+P-2           2831 B222433-C  N Ni Po              200 Na
+P-3           2835 E264748-5    Ag Ri              903 Na
+P-4           2931 C8388DG-5                       101 Na
+P-5           3038 C556400-9  S Ni                 412 Na
+

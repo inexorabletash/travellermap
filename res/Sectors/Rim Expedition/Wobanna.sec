@@ -1,0 +1,1095 @@
+Wobanna Sector
+
+A: Awoba                     a.dat
+B: Bannaw                    b.dat
+C: Ckobawan                  c.dat
+D: Drebanna                  d.dat
+E: Ewoban                    e.dat
+F: Fawobann                  f.dat
+G: Gloawa                    g.dat
+H: Howoba                    h.dat
+I: Iwokobann                 i.dat
+J: Jawo                      j.dat
+K: Krowoban                  k.dat
+L: Lobana                    l.dat
+M: Mawoda                    m.dat
+N: Nobano                    n.dat
+O: Owobanna                  o.dat
+P: Pewolba                   p.dat
+
+Bases:
+C = Pooina Civ Research
+D = Five Sisters Navy
+E = Five Sisters Scout
+F = Five Sisters Navy & Scout
+G = Five Sisters Army
+H = Five Sisters Research
+I = Five Sisters Preserve
+M = Pooina Mil Research
+P = Pooina Navy
+Q = Pooina Army
+R = Pooina Scout
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+13 Fs = Five Sisters Union
+14 Pm = Pooina Maag Bureau
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Awoba SECTOR: Wobanna Sector
+#
+# Jump-routes
+#
+$0301 3203 -1 0 14
+$0301 0201 0 0 14
+$0301 0601 0 0 14
+$0601 0804 0 0 14
+$0207 3107 -1 0 14
+$0206 0208 0 0 14
+$0207 0408 0 0 14
+$0408 0810 0 0 14
+$0408 0606 0 0 14
+$0606 0706 0 0 14
+$0706 0804 0 0 14
+$0208 0211 0 1 14
+$0706 0708 0 0 14
+$0708 0810 0 0 14
+$0208 0110 0 0 14
+$0810 1008 1 0 14
+$0804 1105 1 0 14
+$0110 3107 -1 0 10
+$0110 0412 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0101 C496337-A    Lo Ni              303 Pm
+A-2           0105 E7A4664-2    Fl Ni              902 Pm
+A-3           0106 D686200-7  M Lo Ni              922 Pm
+A-4           0108 C878778-5    Ag              B  403 Na
+Treelier      0110 B769421-9    Ni                 235 Pm
+A-6           0201 B83A230-9  R Lo Ni Wa           623 Pm
+A-7           0205 C8B1253-6    Fl Lo Ni        A  923 Pm
+A-8           0206 B00078C-9  Q As Na              523 Pm
+A-9           0207 A412345-E    Ic Lo Ni           605 Pm
+A-10          0208 B988356-8  R Lo Ni              724 Pm
+A-11          0301 B411685-C    Ic Na Ni           901 Pm
+A-12          0305 C310420-7  R Ni                 503 Pm
+A-13          0310 C40479A-A    Ic Va              903 Pm
+A-14          0402 C30089B-5    Na Va              720 Pm
+A-15          0404 C12057A-9    De Ni Po        B  303 Na
+A-16          0405 CAD6000-6  C Ba Fl Lo Ni        803 Pm
+A-17          0406 C7897AB-6  P                    312 Pm
+A-18          0408 B341489-C  R Ni Po              402 Pm
+A-19          0409 C8C2546-9  S Fl Ni              202 Pm
+A-20          0410 CA7A245-8    Lo Ni Wa           633 Pm
+A-21          0503 C635622-6    Ni                 704 Pm
+A-22          0504 C785442-7    Ni                 812 Pm
+A-23          0601 A6B1AAD-E  Q Fl Hi           A  101 Pm
+A-24          0603 C313668-6  P Ic Na Ni           822 Pm
+A-25          0605 C56637A-8    Lo Ni           B  822 Na
+A-26          0606 B625330-B    Lo Ni              513 Pm
+A-27          0608 C96A303-8    Lo Ni Wa           203 Pm
+A-28          0609 E567124-6    Lo Ni              814 Pm
+A-29          0703 B87A763-8  P Wa                 713 Pm
+A-30          0705 E400120-7    Lo Ni Va           804 Pm
+A-31          0706 A331001-E  R Lo Ni Po           620 Pm
+A-32          0708 A52A331-D  R Lo Ni Wa           404 Pm
+A-33          0710 C110532-B    Ni                 120 Pm
+A-34          0804 B100555-E  R Ni Va              714 Pm
+A-35          0805 C62A654-8  P Ni Wa              220 Pm
+A-36          0809 D9698CA-5  Q                    103 Pm
+A-37          0810 A240540-E  R De Ni Po           203 Pm
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Bannaw SECTOR: Wobanna Sector
+#
+# Jump-routes
+#
+$1008 0810 -1 0 14
+$1008 1006 0 0 14
+$1105 0804 -1 0 14
+$1105 1006 0 0 14
+$1105 1206 0 0 14
+$1206 1407 0 0 14
+$1407 1507 0 0 14
+$1507 1607 0 0 14
+$1008 1108 0 0 14
+$1008 1310 0 0 14
+$1310 1609 0 0 14
+$1609 1607 0 0 14
+$1310 1314 0 1 14
+$1609 1513 0 1 14
+$1609 1708 1 0 14
+$1607 1804 1 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           0901 C2349AB-7    Hi In              600 Na
+B-2           0903 E566445-4  R Ni                 322 Pm
+B-3           0904 C691368-4    Lo Ni              524 Pm
+B-4           0905 C541210-8    Lo Ni Po           304 Pm
+B-5           0906 E210778-6    Na              B  103 Na
+B-6           0907 C512588-A    Ic Ni              724 Pm
+B-7           0908 D88A221-7  R Lo Ni Wa           504 Pm
+B-8           0909 E252789-6    Po                 102 Pm
+B-9           0910 E527520-8    Ni                 603 Pm
+B-10          1001 C5217A9-7    Na Po              713 Na
+B-11          1006 B3026B7-A    Ic Na Ni Va        403 Pm
+B-12          1008 B000310-A    As Lo Ni           320 Pm
+B-13          1010 D200214-5  R Lo Ni Va           703 Pm
+B-14          1103 E887000-6    Ba Lo Ni           904 Pm
+B-15          1104 D7A1257-9    Fl Lo Ni           125 Pm
+B-16          1105 B746988-B  Q Hi In              402 Pm
+B-17          1107 C857201-5    Lo Ni              904 Pm
+B-18          1108 B4367A6-7  P                    103 Pm
+B-19          1204 D777488-2  R Ni                 824 Pm
+B-20          1206 A585402-E    Ni                 303 Pm
+B-21          1208 C351433-7  R Ni Po              402 Pm
+B-22          1209 B747678-6    Ag Ni           B  623 Na
+B-23          1303 X272100-4    Lo              R  714 Na
+B-24          1305 D647646-1  Q Ag Ni              520 Pm
+B-25          1310 B592955-A    Hi In              724 Pm
+B-26          1401 CA7A100-7    Lo Ni Wa           124 Na
+B-27          1403 C626665-4    Ni                 404 Na
+B-28          1407 B470400-9  R De Ni              903 Pm
+B-29          1408 E540656-4  P De Ni Po           902 Pm
+B-30          1506 C847455-7    Ni                 410 Pm
+B-31          1507 A511210-9    Ic Lo Ni           110 Pm
+B-32          1508 EAA587B-2    Fl              B  105 Na
+B-33          1510 C57A896-5    Wa                 301 Pm
+B-34          1603 B532540-C    Ni Po              521 Na
+B-35          1604 E68658A-2    Ag Ni              403 Na
+B-36          1605 C423344-9    Lo Ni Po           525 Na
+B-37          1606 D75A233-8  R Lo Ni Wa           304 Pm
+B-38          1607 B210684-B  P Na Ni              210 Pm
+B-39          1609 B688330-A  R Lo Ni              624 Pm
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ckobawan SECTOR: Wobanna Sector
+#
+# Jump-routes
+#
+$1708 1609 -1 0 14
+$1708 1806 0 0 14
+$1806 2106 0 0 14
+$2106 2207 0 0 14
+$1804 1607 -1 0 14
+$1804 1802 0 0 14
+$1802 1903 0 0 14
+$1903 2202 0 0 14
+$2202 2106 0 0 14
+$2207 2608 1 0 14
+$2202 2503 1 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1702 C554769-3  Q Ag                 505 Pm
+C-2           1705 C757444-9    Ni                 303 Pm
+C-3           1707 C3355AA-A  P Ni                 111 Pm
+C-4           1708 A985100-C  R Lo Ni              422 Pm
+C-5           1710 C537344-9  R Lo Ni              704 Pm
+C-6           1802 A889A68-D    Hi                 600 Pm
+C-7           1804 B000022-C  R As Lo Ni           614 Pm
+C-8           1805 D558554-5    Ag Ni              704 Pm
+C-9           1806 B6A17AC-6    Fl                 521 Pm
+C-10          1809 E6557AA-6    Ag                 804 Pm
+C-11          1901 C98A342-7    Lo Ni Wa           310 Pm
+C-12          1903 B423796-7  P Na Po              420 Pm
+C-13          1905 C899365-6    Lo Ni              904 Pm
+C-14          1906 C9C2567-9    Fl Ni           A  804 Pm
+C-15          1910 E653533-5    Ni Po              904 Pm
+C-16          2001 D684674-5    Ag Ni Ri        B  113 Na
+C-17          2003 C300874-9    Na Va           B  110 Na
+C-18          2006 C374987-9    Hi In              420 Pm
+C-19          2007 C565ABC-A    Hi                 102 Pm
+C-20          2008 C465433-9  R Ni                 415 Pm
+C-21          2009 D534443-8    Ni                 903 Pm
+C-22          2010 C9A66AA-7    Fl Ni              803 Pm
+C-23          2102 C242415-7    Ni Po              704 Pm
+C-24          2104 E775032-3    Lo Ni              303 Pm
+C-25          2106 B561747-6    Ri                 601 Pm
+C-26          2109 C482777-8    Ri              B  603 Na
+C-27          2110 D200654-8  Q Na Ni Va           804 Pm
+C-28          2202 B265164-C  R Lo Ni              214 Pm
+C-29          2203 E83A766-7    Wa                 913 Pm
+C-30          2204 D236311-9  R Lo Ni              623 Pm
+C-31          2205 C150ACB-B    De Hi Po           204 Pm
+C-32          2206 B85A779-7    Wa              B  902 Na
+C-33          2207 A68A201-B  R Lo Ni Wa           422 Pm
+C-34          2208 D434688-4    Ni                 724 Pm
+C-35          2302 C4447AA-5  P Ag                 102 Pm
+C-36          2304 C310659-7    Na Ni              405 Pm
+C-37          2309 B484A77-C    Hi              B  201 Na
+C-38          2310 E444878-2                    B  613 Na
+C-39          2401 C579252-7    Lo Ni              903 Pm
+C-40          2403 C10077A-A    Na Va           B  804 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Drebanna SECTOR: Wobanna Sector
+#
+# Jump-routes
+#
+$2608 2207 -1 0 14
+$2503 2202 -1 0 14
+$2503 2704 0 0 14
+$2704 2902 0 0 14
+$2902 3102 0 0 14
+$3102 3201 0 0 14
+$3201 3205 0 0 14
+$3205 3207 0 0 14
+$3207 3109 0 0 14
+$3109 3007 0 0 14
+$3007 2907 0 0 14
+$2907 2704 0 0 14
+$2907 2608 0 0 14
+$2608 2607 0 0 14
+$3109 3111 0 1 14
+$2608 2511 0 1 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2501 D202000-8  R Ba Ic Lo Ni Va     421 Pm
+D-2           2502 C000463-7  R As Ni              601 Pm
+D-3           2503 B662624-6    Ni                 713 Pm
+D-4           2505 C462997-9    Hi                 613 Pm
+D-5           2509 C441764-8  P Po                 212 Pm
+D-6           2603 B577655-A    Ag Ni              804 Pm
+D-7           2604 C324899-A                       313 Pm
+D-8           2607 B6747CB-6  Q Ag                 200 Pm
+D-9           2608 B324346-C    Lo Ni              603 Pm
+D-10          2704 B578546-6  P Ag Ni              702 Pm
+D-11          2707 X677610-0    Ag              R  520 Na
+D-12          2709 D99A230-4    Lo Ni Wa           310 Pm
+D-13          2710 C88A513-9    Ni Wa              510 Pm
+D-14          2802 X474303-5    Lo              R  303 Na
+D-15          2804 C61488A-6  P Ic                 825 Pm
+D-16          2805 A745AA8-D  P Hi In              410 Pm
+D-17          2808 C86A568-7  P Ni Wa              202 Pm
+D-18          2810 C200778-A    Na Va           B  404 Na
+D-19          2901 C758347-6    Lo Ni              700 Pm
+D-20          2902 A120316-D    De Lo Ni Po        523 Pm
+D-21          2903 C454110-7  R Lo Ni              504 Pm
+D-22          2907 B447563-B  P Ag Ni              623 Pm
+D-23          2908 E575456-3    Ni                 404 Pm
+D-24          3001 D400577-6    Ni Va           B  504 Na
+D-25          3002 D427424-9    Ni                 713 Pm
+D-26          3007 B685783-7  P Ag Ri              203 Pm
+D-27          3008 A21087A-B    Na              B  413 Na
+D-28          3010 C000054-9    As Lo Ni           500 Pm
+D-29          3102 B87A211-D    Lo Ni Wa           220 Pm
+D-30          3103 C658445-4    Ni                 913 Pm
+D-31          3105 C36658A-A  R Ag Ni              323 Pm
+D-32          3109 A353500-C    Ni Po              601 Pm
+D-33          3110 D595334-4  R Lo Ni              400 Pm
+D-34          3201 B674640-8  N Ag Ni              313 Pm
+D-35          3202 C696887-5  P                    325 Pm
+D-36          3203 B000784-C  Q As Na              520 Pm
+D-37          3204 A886214-D    Lo Ni              624 Pm
+D-38          3205 A888202-E  R Lo Ni              114 Pm
+D-39          3207 B543353-A  R Lo Ni Po           904 Pm
+D-40          3208 B738573-C    Ni              B  411 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ewoban SECTOR: Wobanna Sector
+#
+# Jump-routes
+#
+$0211 0208 0 -1 14
+$0211 0312 0 0 14
+$0211 0115 0 0 14
+$0116 0114 0 0 14
+$0211 3213 -1 0 14
+$0115 3216 -1 0 14
+$0115 0217 0 0 14
+$0217 0219 0 0 14
+$0217 0417 0 0 14
+$0417 0618 0 0 14
+$0417 0517 0 0 14
+$0517 0414 0 0 14
+$0414 0312 0 0 14
+$0219 0222 0 1 14
+$0618 0721 0 1 14
+$0412 0110 0 -1 10
+$0412 0615 0 0 10
+$0615 0719 0 0 10
+$0719 0922 1 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0111 C766672-8    Ag Ni Ri        B  800 Na
+E-2           0114 B000220-9    As Lo Ni           900 Pm
+E-3           0115 B475497-B  R Ni                 903 Pm
+E-4           0116 A480300-A    De Lo Ni           404 Pm
+E-5           0211 A7A0376-C    De Lo Ni        B  601 Na
+E-6           0212 D561473-7    Ni              B  400 Na
+E-7           0214 A8B7341-E  R Fl Lo Ni        A  205 Pm
+E-8           0215 C1209BB-9  Q De Hi In Na Po     101 Pm
+E-9           0216 C894631-5    Ag Ni              300 Pm
+E-10          0217 B671300-B  R Lo Ni              301 Pm
+E-11          0219 A57759D-9    Ag Ni              103 Pm
+E-12          0312 B400889-8  P Na Va              323 Pm
+E-13          0314 C6A3853-9  P Fl                 114 Pm
+E-14          0315 E55567A-3    Ag Ni           B  820 Na
+E-15          0316 E344555-4    Ag Ni              414 Pm
+E-16          0318 X544947-2    Hi In           R  702 Na
+E-17          0319 C274353-9    Lo Ni              703 Pm
+E-18          0320 D422633-6  P Na Ni Po           224 Pm
+E-19          0411 C7679BA-A    Hi                 601 Pm
+Jamin         0412 D662668-4  P Ni Ri              201 Pm
+E-21          0414 B150662-8  P De Ni Po           713 Pm
+E-22          0417 B323546-D  R Ni Po              100 Pm
+E-23          0419 C5288BC-8                       224 Pm
+E-24          0511 C55789D-7                       500 Na
+E-25          0517 A524655-A    Ni                 402 Pm
+E-26          0518 C768235-8  R Lo Ni              421 Pm
+E-27          0519 C737244-7    Lo Ni              100 Pm
+E-28          0611 D100510-5    Ni Va              501 Na
+E-29          0614 C351443-9    Ni Po              712 Na
+Areeva        0615 D000303-9  S As Lo Ni           503 Na
+E-31          0616 C528620-7  P Ni                 613 Pm
+E-32          0617 C8A4201-6    Fl Lo Ni           102 Pm
+E-33          0618 B1008AA-B    Na Va              414 Pm
+E-34          0712 E847210-4    Lo Ni              914 Na
+Malli         0719 D244743-6  Q Ag                 701 Pm
+E-36          0812 D2445A6-7  S Ag Ni              520 Na
+E-37          0814 C573988-5    Hi In              303 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Fawobann SECTOR: Wobanna Sector
+#
+# Jump-routes
+#
+$1314 1310 0 -1 14
+$1314 1513 0 0 14
+$1513 1609 0 -1 14
+$1513 1714 1 0 14
+$1620 1323 0 1 13
+$1620 1819 1 0 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0911 E333245-6    Lo Ni Po           303 Na
+F-2           0913 E36197C-7    Hi              B  313 Na
+F-3           0914 A598575-8    Ag Ni           B  610 Na
+F-4           0918 D896430-5  S Ni                 712 Na
+F-5           0920 C682666-5  S Ni Ri              805 Na
+F-6           1013 D57488B-2  S                    734 Na
+F-7           1016 C566411-9    Ni                 502 Na
+F-8           1017 E7848AB-3                       800 Na
+F-9           1019 C8D648C-A    Fl Ni              700 Na
+F-10          1020 D110310-5    Lo Ni              100 Na
+F-11          1114 E335852-5                       412 Na
+F-12          1115 C9E6124-9    Fl Lo Ni           203 Na
+F-13          1117 C443777-5    Po              B  620 Na
+F-14          1120 D739669-8    Ni                 125 Na
+F-15          1211 C202511-A    Ic Ni Va           102 Pm
+F-16          1212 E501366-7    Ic Lo Ni Va        503 Pm
+F-17          1215 C531746-8  S Na Po              224 Na
+F-18          1218 C364551-7    Ag Ni              204 Na
+F-19          1220 C543354-6    Lo Ni Po           810 Na
+F-20          1311 C4477AA-8    Ag                 403 Pm
+F-21          1312 C7A0767-9  P De                 704 Pm
+F-22          1313 C480637-9    De Ni              210 Pm
+F-23          1314 B532440-A  R Ni Po              113 Pm
+F-24          1316 C558533-6    Ag Ni              904 Na
+F-25          1318 E335798-4                       700 Na
+F-26          1320 E537120-8    Lo Ni              103 Na
+F-27          1412 D698523-3    Ag Ni              812 Pm
+F-28          1413 D537845-3                       925 Pm
+F-29          1418 A447876-A                    B  100 Na
+F-30          1419 C7847A5-6  F Ag                 825 Fs
+F-31          1512 C6779AB-5  P Hi In              520 Pm
+F-32          1513 B410952-C  Q Hi Na              303 Pm
+F-33          1515 C510351-6    Lo Ni              123 Pm
+F-34          1517 E768775-1    Ag Ri           B  913 Na
+F-35          1519 C522534-6    Ni Po              424 Fs
+F-36          1520 C9C6779-9    Fl              A  902 Fs
+F-37          1612 C563224-4  R Lo Ni              311 Pm
+F-38          1614 D7656BB-5    Ag Ni              103 Pm
+F-39          1620 B659410-7  E Ni                 913 Fs
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Gloawa SECTOR: Wobanna Sector
+#
+# Jump-routes
+#
+$2415 2515 1 0 14
+$2415 2115 0 0 14
+$2115 1915 0 0 14
+$1915 1714 0 0 14
+$1714 1513 -1 0 14
+$2120 2023 0 1 13
+$2120 1819 0 0 13
+$1819 1717 0 0 13
+$1819 1620 -1 0 13
+$2120 2519 1 0 13
+$2418 2519 1 0 13
+$2418 2120 0 0 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1713 C77A67A-8    Ni Wa           B  304 Na
+G-2           1714 B9A5440-9  R Fl Ni              903 Pm
+G-3           1717 A150646-A    De Ni Po           604 Fs
+G-4           1720 E544878-6                    B  501 Na
+G-5           1811 C00069A-7    As Na Ni           703 Pm
+G-6           1813 C7A7548-9    Fl Ni              203 Pm
+G-7           1814 C323611-6    Na Ni Po           404 Pm
+G-8           1816 D4269CF-6  G Hi In              312 Fs
+G-9           1818 CA7889E-8  F                    410 Fs
+G-10          1819 B745723-8  F Ag                 222 Fs
+G-11          1820 C999340-6    Lo Ni              703 Fs
+G-12          1911 C3016A8-7  P Ic Na Ni Va        212 Pm
+G-13          1915 B443538-8  P Ni Po              900 Pm
+G-14          1916 C644872-3                    B  524 Na
+G-15          1919 E68496A-6    Hi                 500 Fs
+G-16          2015 X460797-0    De Ri           R  304 Na
+G-17          2018 C5A0AAC-D  F De Hi              822 Fs
+G-18          2019 E98A69C-6    Ni Ri Wa           903 Fs
+G-19          2020 C000322-B  E As Lo Ni           500 Fs
+G-20          2112 C300235-6  R Lo Ni Va           600 Pm
+G-21          2114 C4617CD-8  Q                    402 Pm
+G-22          2115 A410766-E  Q Na                 703 Pm
+G-23          2116 C637513-A    Ni                 103 Pm
+G-24          2120 B886453-B  E Ni                 404 Fs
+G-25          2214 C527457-6    Ni                 904 Pm
+G-26          2215 B76A7AD-7  P Wa                 605 Pm
+G-27          2216 C553340-9  R Lo Ni Po           104 Pm
+G-28          2218 C445340-A    Lo Ni              515 Fs
+G-29          2219 C838530-7  D Ni                 824 Fs
+G-30          2220 C56A8B9-5    Wa                 414 Fs
+G-31          2312 C637335-8    Lo Ni              212 Pm
+G-32          2313 C591300-7    Lo Ni              600 Pm
+G-33          2314 C52358D-6    Ni Po              704 Pm
+G-34          2317 E000AB9-B    As Hi Na           503 Na
+G-35          2320 C355611-8    Ag Ni              900 Fs
+G-36          2415 B447564-8  P Ag Ni              512 Pm
+G-37          2417 C6647BE-3    Ag                 805 Na
+G-38          2418 A6B6466-B    Fl Ni           A  505 Fs
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Howoba SECTOR: Wobanna Sector
+#
+# Jump-routes
+#
+$3111 3109 0 -1 14
+$3111 3114 0 0 14
+$3114 3013 0 0 14
+$3114 2814 0 0 14
+$2814 2515 0 0 14
+$2511 2608 0 -1 14
+$2511 2515 0 0 14
+$2515 2415 -1 0 14
+$2519 2120 -1 0 13
+$2519 2920 0 0 13
+$2920 2919 0 0 13
+$2920 3220 0 0 13
+$3220 3022 0 1 13
+$2920 2924 0 1 13
+$2519 2418 -1 0 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2511 B325656-C    Ni                 403 Pm
+H-2           2513 C8B848A-7    Fl Ni           A  610 Pm
+H-3           2514 C1108BA-8    Na                 800 Pm
+H-4           2515 B5646A7-5  P Ag Ni              504 Pm
+H-5           2516 C8B8113-5    Fl Lo Ni        A  120 Pm
+H-6           2517 E794644-5    Ag Ni              400 Pm
+H-7           2518 X22186B-0    Po              R  513 Na
+H-8           2519 B527527-C  D Ni                 421 Fs
+H-9           2520 C505438-9  E Ic Ni Va           113 Fs
+H-10          2612 E4149BC-8    Hi Ic              404 Pm
+H-11          2616 B423675-B    Na Ni Po        B  404 Na
+H-12          2617 C410316-9    Lo Ni              104 Na
+H-13          2618 C733633-6  D Na Ni Po           904 Fs
+H-14          2619 X7A6643-2  I Fl              R  902 Fs
+H-15          2712 C558310-5    Lo Ni              103 Pm
+H-16          2714 C612225-8    Ic Lo Ni           910 Pm
+H-17          2715 C666762-6    Ag Ri              624 Pm
+H-18          2719 DA79532-7    Ni                 305 Fs
+H-19          2811 E8A689C-5    Fl                 800 Pm
+H-20          2813 C000534-A    As Ni              333 Pm
+H-21          2814 B400533-B    Ni Va              200 Pm
+H-22          2819 C356610-8  D Ag Ni              300 Fs
+H-23          2911 C737234-A  R Lo Ni              223 Pm
+H-24          2915 C759632-8  Q Ni                 203 Pm
+H-25          2916 E160442-6    De Ni              922 Pm
+H-26          2919 B75A587-B    Ni Wa              104 Fs
+H-27          2920 A6A5310-C  E Fl Lo Ni           803 Fs
+H-28          3012 C350996-9    De Hi Po           614 Pm
+H-29          3013 B875523-6  P Ag Ni              413 Pm
+H-30          3014 E342453-6    Ni Po              302 Pm
+H-31          3018 C367694-4  D Ag Ni Ri           705 Fs
+H-32          3111 A77A435-C    Ni Wa              103 Pm
+H-33          3114 A000454-F    As Ni              400 Pm
+H-34          3119 C6989A6-7    Hi In              215 Fs
+H-35          3211 E63648A-8    Ni                 702 Pm
+H-36          3212 C9E5311-9  R Fl Lo Ni           704 Pm
+H-37          3213 C6A2130-8    Fl Lo Ni           504 Pm
+H-38          3218 C100865-A    Na Va              300 Fs
+H-39          3219 C212456-A    Ic Ni              201 Fs
+H-40          3220 B6646A8-A    Ag Ni              824 Fs
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Iwokobann SECTOR: Wobanna Sector
+#
+# Jump-routes
+#
+$0530 0533 0 1 14
+$0530 0329 0 0 14
+$0329 3227 -1 0 14
+$0530 0730 0 0 14
+$0730 0727 0 0 14
+$0727 0626 0 0 14
+$0329 0325 0 0 14
+$0225 0524 0 0 14
+$0325 0222 0 0 14
+$0222 0219 0 -1 14
+$0222 3223 -1 0 14
+$0524 0721 0 0 14
+$0721 0618 0 -1 14
+$0524 0727 0 0 14
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0121 E400244-4    Lo Ni Va           324 Pm
+I-2           0122 C521797-4    Na Po              904 Pm
+I-3           0124 X747675-0    Ag              R  304 Na
+I-4           0126 D63A566-6    Ni Wa              904 Pm
+I-5           0128 A64687C-8                    B  823 Na
+I-6           0130 C65A637-8    Ni Wa              712 Pm
+I-7           0222 B78A535-C  P Ni Wa              800 Pm
+I-8           0223 E549653-3    Ni                 600 Pm
+I-9           0224 C463034-5    Lo Ni              415 Pm
+I-10          0225 B234521-9  Q Ni                 502 Pm
+I-11          0227 D574233-7    Lo Ni              623 Pm
+I-12          0228 C661310-6    Lo Ni              103 Pm
+I-13          0229 C9A5874-5    Fl              B  900 Na
+I-14          0321 D200101-6    Lo Ni Va           904 Pm
+I-15          0325 B777400-C    Ni                 524 Pm
+I-16          0327 E679A99-9    Hi In              704 Pm
+I-17          0328 D343100-8    Lo Ni Po           904 Pm
+I-18          0329 A120555-F  P De Ni Po           204 Pm
+I-19          0421 C694310-6  R Lo Ni              200 Pm
+I-20          0422 B565683-7  P Ag Ni Ri           711 Pm
+I-21          0423 D789553-9    Ni                 303 Pm
+I-22          0424 C79A331-8  R Lo Ni Wa           604 Pm
+I-23          0521 D428443-4  R Ni                 310 Pm
+I-24          0524 B678342-A  R Lo Ni              805 Pm
+I-25          0525 C260AEF-C    De Hi              414 Pm
+I-26          0527 C99A7CC-8    Wa                 804 Pm
+I-27          0529 C795225-7    Lo Ni              824 Pm
+I-28          0530 A220353-F    De Lo Ni Po        813 Pm
+I-29          0622 B58A7AB-9    Wa                 912 Pm
+I-30          0626 A547873-7                    B  404 Na
+I-31          0630 C7A2143-9  R Fl Lo Ni           903 Pm
+I-32          0721 B0007AA-D  P As Na              102 Pm
+I-33          0723 C6A2588-6    Fl Ni              900 Pm
+I-34          0724 B5639DD-6  S Hi                 405 Na
+I-35          0727 B464500-9  P Ag Ni              503 Pm
+I-36          0728 B443869-9  Q Po                 910 Pm
+I-37          0730 B866210-7    Lo Ni              902 Pm
+I-38          0823 C130977-C    De Hi In Na Po  B  203 Na
+I-39          0825 C44489A-5  S                    900 Na
+I-40          0828 C89A954-9    Hi In Wa           404 Pm
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jawo SECTOR: Wobanna Sector
+#
+# Jump-routes
+#
+$1130 1231 0 1 13
+$1130 0928 0 0 13
+$0928 0927 0 0 13
+$0927 0923 0 0 13
+$0923 1023 0 0 13
+$1023 1123 0 0 13
+$1123 1223 0 0 13
+$1223 1323 0 0 13
+$1323 1620 0 -1 13
+$1130 1228 0 0 13
+$1228 1527 0 0 13
+$1228 0927 0 0 13
+$0922 0719 -1 -1 10
+$0922 1125 0 0 10
+$1125 1527 0 0 10
+$1527 1828 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0921 C693568-9    Ni                 504 Fs
+Franien       0922 C94A854-A  D Wa                 804 Fs
+J-3           0923 B547A9A-9  G Hi In              114 Fs
+J-4           0925 E578667-4    Ag Ni              620 Fs
+J-5           0927 B20079D-A    Na Va              923 Fs
+J-6           0928 A86A724-A  D Wa                 201 Fs
+J-7           1023 B461322-B  E Lo Ni              703 Fs
+J-8           1024 B644478-8    Ni              B  100 Na
+J-9           1025 E4368AA-4                       424 Fs
+J-10          1027 E20088C-3    Na Va              204 Fs
+J-11          1029 C403655-7    Ic Na Ni Va        802 Fs
+J-12          1030 E4979AB-9    Hi In              122 Fs
+J-13          1123 B323645-8    Na Ni Po           902 Fs
+Inoppa        1125 E897321-4    Lo Ni              402 Fs
+J-15          1128 D442756-3    Po                 303 Fs
+J-16          1130 A8C6953-B  F Fl Hi           A  603 Fs
+J-17          1223 B8975A6-9  D Ag Ni              215 Fs
+J-18          1224 C466446-6  E Ni                 601 Fs
+J-19          1227 C421611-8  D Na Ni Po           904 Fs
+J-20          1228 B54A753-B    Wa                 623 Fs
+J-21          1230 E65A458-9    Ni Wa              202 Fs
+J-22          1323 B452332-9  E Lo Ni Po           104 Fs
+J-23          1325 C795536-5    Ag Ni              604 Fs
+J-24          1326 C1008AD-6    Na Va              603 Fs
+J-25          1327 E4239A7-9    Hi In Na Po        804 Fs
+J-26          1329 C40078C-5    Na Va              704 Fs
+J-27          1422 D556789-6  D Ag                 524 Fs
+J-28          1423 C557597-5    Ag Ni              700 Fs
+J-29          1425 D865699-5  D Ag Ni Ri           802 Fs
+J-30          1428 D775641-6  D Ag Ni              403 Fs
+J-31          1429 C100368-B  E Lo Ni Va           634 Fs
+Bawaal        1527 A100532-E  D Ni Va              503 Fs
+J-33          1530 C351457-A  E Ni Po              812 Fs
+J-34          1621 CAB8773-8  D Fl              A  904 Fs
+J-35          1623 C794440-9    Ni                 904 Fs
+J-36          1625 C783532-6  D Ni                 221 Fs
+J-37          1626 D200388-5  E Lo Ni Va           902 Fs
+J-38          1628 C84A210-9  E Lo Ni Wa           203 Fs
+J-39          1630 C224744-7                       221 Fs
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Krowoban SECTOR: Wobanna Sector
+#
+# Jump-routes
+#
+$2327 2528 1 0 13
+$2327 2125 0 0 13
+$2125 2023 0 0 13
+$2023 2120 0 -1 13
+$1828 1527 -1 0 10
+$1828 2230 0 0 10
+$2230 2532 1 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1722 D8B7884-5  G Fl              A  203 Fs
+K-2           1723 C772669-6  D Ni                 823 Fs
+K-3           1724 C667677-5    Ag Ni Ri        B  502 Na
+K-4           1725 C566156-9  H Lo Ni              404 Fs
+K-5           1726 E878222-4    Lo Ni              114 Fs
+K-6           1823 C433588-7    Ni Po              914 Fs
+K-7           1824 E234231-7    Lo Ni              211 Fs
+Wacace        1828 C667332-7  E Lo Ni              602 Fs
+K-9           1926 E673200-6    Lo Ni              203 Fs
+K-10          1929 X8A4257-4  I Fl Lo           R  302 Fs
+K-11          1930 C3518DE-6    Po                 422 Fs
+K-12          2022 C898876-6                    B  224 Na
+K-13          2023 A879320-E  E Lo Ni              303 Fs
+K-14          2024 C4547AA-7    Ag                 525 Fs
+K-15          2025 X333446-2  I Po              R  303 Fs
+K-16          2029 C67A788-6    Wa                 114 Fs
+K-17          2125 A4917B8-B                       703 Fs
+K-18          2126 E44169D-2    Ni Po              302 Fs
+K-19          2128 E130663-5    De Na Ni Po        113 Fs
+K-20          2130 C849666-7  D Ni                 202 Fs
+K-21          2221 C797986-8    Hi In              904 Fs
+K-22          2222 C130861-6    De Na Po           205 Fs
+K-23          2224 C536345-9  E Lo Ni              105 Fs
+K-24          2227 C695103-9  H Lo Ni              823 Fs
+Choho         2230 C767613-6    Ag Ni              503 Fs
+K-26          2323 D7666BB-6  D Ag Ni              701 Fs
+K-27          2324 C552455-9    Ni Po              413 Fs
+K-28          2327 A96A468-C    Ni Wa              114 Fs
+K-29          2328 E582847-6    Ri                 212 Fs
+K-30          2421 C7B6221-7  E Fl Lo Ni        A  313 Fs
+K-31          2426 C673589-9    Ni                 712 Fs
+K-32          2430 D489244-6  E Lo Ni              414 Fs
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lobana SECTOR: Wobanna Sector
+#
+# Jump-routes
+#
+$2930 3031 0 1 13
+$2930 2631 0 1 13
+$2528 2532 0 1 13
+$2528 2327 -1 0 13
+$3022 3220 0 -1 13
+$2924 2920 0 -1 13
+$3022 2923 0 0 13
+$2924 2824 0 0 13
+$2824 2727 0 0 13
+$2727 2528 0 0 13
+$2528 2930 0 0 13
+$2930 2727 0 0 13
+$2727 3126 0 0 13
+$3126 3025 0 0 13
+$3025 2924 0 0 13
+$3022 3126 0 0 13
+$2924 2727 0 0 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2522 D558566-2  D Ag Ni              704 Fs
+L-2           2523 E788AB8-5    Hi                 603 Fs
+L-3           2526 C455556-6    Ag Ni              803 Fs
+L-4           2527 E9A4620-3    Fl Ni              803 Fs
+L-5           2528 A2006A5-C    Na Ni Va           500 Fs
+L-6           2621 D4469EC-5    Hi In              415 Fs
+L-7           2622 E54589A-6                       422 Fs
+L-8           2623 D5546BC-1    Ag Ni              614 Fs
+L-9           2627 D546426-5  E Ni                 301 Fs
+L-10          2629 C210A88-E    Hi Na              600 Fs
+L-11          2722 C86A8A9-5  D Wa                 314 Fs
+L-12          2723 C300962-7    Hi Na Va           725 Fs
+L-13          2724 C380000-5  H Ba De Lo Ni        120 Fs
+L-14          2725 C587687-6    Ag Ni Ri           304 Fs
+L-15          2726 C6667CB-7    Ag                 823 Fs
+L-16          2727 B584AA9-A  G Hi                 604 Fs
+L-17          2822 C223445-8    Ni Po              305 Fs
+L-18          2824 B755358-7  E Lo Ni              604 Fs
+L-19          2828 B310362-A    Lo Ni              701 Fs
+L-20          2830 D968645-5  D Ag Ni Ri           903 Fs
+L-21          2923 B330221-9    De Lo Ni Po        812 Fs
+L-22          2924 B621204-D  E Lo Ni Po           613 Fs
+L-23          2927 C795578-6    Ag Ni           B  503 Na
+L-24          2929 C20066A-6    Na Ni Va           104 Fs
+L-25          2930 B88A6AC-9  D Ni Wa              700 Fs
+L-26          3022 B302898-8    Ic Na Va           914 Fs
+L-27          3025 B344363-7    Lo Ni              404 Fs
+L-28          3026 D9E6663-3  D Fl Ni              110 Fs
+L-29          3027 C757587-7    Ag Ni              912 Fs
+L-30          3029 E777743-6    Ag                 703 Fs
+L-31          3030 C797340-6    Lo Ni              721 Fs
+L-32          3122 C300454-A    Ni Va              404 Fs
+L-33          3123 D662220-4    Lo Ni              823 Fs
+L-34          3126 B35479A-8  D Ag                 213 Fs
+L-35          3127 C56AABD-C  F Hi Wa              520 Fs
+L-36          3128 X767152-0  I Lo              R  913 Fs
+L-37          3130 C729321-8    Lo Ni              204 Fs
+L-38          3228 C200200-7    Lo Ni Va           100 Fs
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Mawoda SECTOR: Wobanna Sector
+#
+# Jump-routes
+#
+$0238 3139 -1 0 14
+$0238 0338 0 0 14
+$0338 0336 0 0 14
+$0336 0234 0 0 14
+$0234 3235 -1 0 14
+$0234 0432 0 0 14
+$0432 0533 0 0 14
+$0533 0736 0 0 14
+$0736 0336 0 0 14
+$0533 0530 0 -1 14
+$0439 0702 0 1 2
+$0439 0236 0 0 2
+$0236 3034 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0131 B13057A-C    De Ni Po        B  104 Na
+M-2           0134 C9B9799-9    Fl              A  621 Pm
+M-3           0135 C251AD9-9    Hi Po              900 Pm
+M-4           0138 C89A98A-9    Hi In Wa           503 Pm
+M-5           0232 X130002-6    De Lo Po        R  501 Na
+M-6           0234 B447104-C  R Lo Ni              503 Pm
+M-7           0235 X563232-0    Lo              R  200 Na
+Sammaag       0236 D693753-7                       321 Pm
+M-9           0238 B576763-A  P Ag                 613 Pm
+M-10          0240 B556A76-C    Hi              B  722 Na
+M-11          0336 A79568B-8    Ag Ni              814 Pm
+M-12          0337 C442144-9  R Lo Ni Po           604 Pm
+M-13          0338 B797354-9  R Lo Ni              710 Pm
+M-14          0339 C565144-9  R Lo Ni              724 Pm
+M-15          0432 B327633-A  P Ni                 522 Pm
+M-16          0437 DAB2443-5  R Fl Ni           A  913 Pm
+Maaghan       0439 C767421-5    Ni                 811 Pm
+M-18          0533 B462987-C  P Hi                 103 Pm
+M-19          0535 E340402-5    De Ni Po           315 Pm
+M-20          0537 D797877-3                    B  614 Na
+M-21          0631 C20088A-5  Q Na Va              815 Pm
+M-22          0632 C528434-5    Ni                 213 Pm
+M-23          0633 C473455-B    Ni                 900 Pm
+M-24          0635 D400864-4    Na Va              901 Pm
+M-25          0636 C547400-6  R Ni                 400 Pm
+M-26          0639 A896775-B    Ag              B  700 Na
+M-27          0640 C899540-6  S Ni                 702 Na
+M-28          0731 C231641-7  P Na Ni Po           114 Pm
+M-29          0732 C313100-A    Ic Lo Ni           502 Pm
+M-30          0734 C77A598-8    Ni Wa              804 Pm
+M-31          0736 B9D6622-B  Q Fl Ni              423 Pm
+M-32          0737 C857521-8  R Ag Ni              504 Pm
+M-33          0738 E987697-2    Ag Ni Ri           802 Na
+M-34          0739 EA6A554-7    Ni Wa              623 Na
+M-35          0831 C423477-8    Ni Po           B  510 Na
+M-36          0833 E430778-3    De Na Po        B  412 Na
+M-37          0835 D78A330-4  R Lo Ni Wa           203 Pm
+M-38          0839 C681679-5    Ni Ri           B  604 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nobano SECTOR: Wobanna Sector
+#
+# Jump-routes
+#
+$1240 1203 0 1 13
+$1640 1702 1 1 13
+$1240 1340 0 0 13
+$1340 1640 0 0 13
+$1640 1940 1 0 13
+$1534 1736 1 0 13
+$1637 1737 1 0 13
+$1637 1437 0 0 13
+$1437 1640 0 0 13
+$1640 1637 0 0 13
+$1637 1534 0 0 13
+$1534 1431 0 0 13
+$1431 1231 0 0 13
+$1231 1333 0 0 13
+$1333 1534 0 0 13
+$1437 1337 0 0 13
+$1337 1034 0 0 13
+$1034 1033 0 0 13
+$1033 1231 0 0 13
+$1333 1034 0 0 13
+$1437 1534 0 0 13
+$1231 1130 0 -1 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0931 B569575-8    Ni              B  103 Na
+N-2           0932 C310389-9  E Lo Ni              602 Fs
+N-3           0934 D300887-3  D Na Va              912 Fs
+N-4           0935 E749879-6                    B  612 Na
+N-5           1031 E552435-5    Ni Po              625 Fs
+N-6           1033 B252334-B  E Lo Ni Po           212 Fs
+N-7           1034 B565525-B    Ag Ni              600 Fs
+N-8           1036 C443478-5    Ni Po           B  802 Na
+N-9           1037 C537855-6                       503 Fs
+N-10          1039 C9A4585-A  D Fl Ni              204 Fs
+N-11          1131 C583462-5    Ni                 702 Fs
+N-12          1132 C000333-9    As Lo Ni           203 Fs
+N-13          1136 E345540-3    Ag Ni              601 Fs
+N-14          1137 C474102-9  H Lo Ni              102 Fs
+N-15          1139 E0007C9-6    As Na              804 Fs
+N-16          1231 A644443-B  E Ni                 111 Fs
+N-17          1234 D875333-3  E Lo Ni              302 Fs
+N-18          1235 C667731-6  D Ag                 201 Fs
+N-19          1236 C150434-9    De Ni Po           713 Fs
+N-20          1239 D535254-9  E Lo Ni              312 Fs
+N-21          1240 B130844-C  D De Na Po           104 Fs
+N-22          1331 C100134-A  H Lo Ni Va           434 Fs
+N-23          1333 B301AB6-F  G Hi Ic Na Va        903 Fs
+N-24          1335 C968342-7  E Lo Ni              612 Fs
+N-25          1336 C210776-A    Na              B  821 Na
+N-26          1337 B76A453-D  E Ni Wa              805 Fs
+N-27          1339 E555420-2    Ni                 700 Fs
+N-28          1340 B556524-7    Ag Ni              903 Fs
+N-29          1431 A687455-D  E Ni                 210 Fs
+N-30          1436 C866741-5  D Ag Ri              500 Fs
+N-31          1437 A666445-D    Ni                 503 Fs
+N-32          1438 C450662-5    De Ni Po           114 Fs
+N-33          1534 B44968C-7    Ni                 500 Fs
+N-34          1535 C240474-7    De Ni Po        B  303 Na
+N-35          1538 C66A610-5  D Ni Wa              104 Fs
+N-36          1539 B1407CC-8    De Po              704 Fs
+N-37          1631 C9B5779-9  F Fl              A  904 Fs
+N-38          1634 C552588-5    Ni Po              724 Fs
+N-39          1637 B97A8BB-8    Wa                 205 Fs
+N-40          1640 B5159A9-B  F Hi Ic              621 Fs
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Owobanna SECTOR: Wobanna Sector
+#
+# Jump-routes
+#
+$2338 2301 0 1 13
+$2338 2040 0 0 13
+$2040 1901 0 1 13
+$1940 1640 -1 0 13
+$1940 2040 0 0 13
+$2338 2740 1 0 13
+$2338 2336 0 0 13
+$2338 2035 0 0 13
+$2338 2636 1 0 13
+$2232 2532 1 0 13
+$2232 2336 0 0 13
+$2035 2232 0 0 13
+$2035 1736 0 0 13
+$1736 1737 0 0 13
+$1737 1940 0 0 13
+$2232 2031 0 0 13
+$1736 1534 -1 0 13
+$1737 1637 -1 0 13
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1731 C638156-6    Lo Ni              402 Fs
+O-2           1735 E355685-2    Ag Ni              905 Fs
+O-3           1736 B410312-A  E Lo Ni              324 Fs
+O-4           1737 B581102-7  H Lo Ni              604 Fs
+O-5           1739 C452777-6    Po              B  104 Na
+O-6           1831 C274678-4    Ag Ni           B  215 Na
+O-7           1836 A457679-8    Ag Ni           B  410 Na
+O-8           1931 C513645-8    Ic Na Ni           714 Fs
+O-9           1932 C244200-9    Lo Ni              802 Fs
+O-10          1936 C323563-A  D Ni Po              904 Fs
+O-11          1937 C100156-D  H Lo Ni Va           313 Fs
+O-12          1940 B000587-C  D As Ni              801 Fs
+O-13          2031 B230567-A    De Ni Po           215 Fs
+O-14          2035 A656688-C  D Ag Ni              803 Fs
+O-15          2036 C838546-6  D Ni                 303 Fs
+O-16          2038 E564774-5    Ag Ri           B  604 Na
+O-17          2039 X446210-2  I Lo              R  403 Fs
+O-18          2040 B683402-8    Ni                 501 Fs
+O-19          2131 C200783-6    Na Va              703 Fs
+O-20          2132 C665A77-A    Hi              B  703 Na
+O-21          2133 D350377-5    De Lo Ni Po     B  900 Na
+O-22          2134 C548AB6-9    Hi In              800 Fs
+O-23          2135 C6B7578-8    Fl Ni           A  803 Fs
+O-24          2138 C457267-8    Lo Ni              103 Fs
+O-25          2231 C444742-8    Ag                 404 Fs
+O-26          2232 B447589-A  D Ag Ni              504 Fs
+O-27          2239 C400544-B  D Ni Va              604 Fs
+O-28          2331 C231569-A  D Ni Po              403 Fs
+O-29          2335 B200377-8    Lo Ni Va        B  201 Na
+O-30          2336 B000654-D  G As Na Ni           803 Fs
+O-31          2337 C591000-9  H Ba Lo Ni           111 Fs
+Obawabban     2338 A100430-G  E Ni Va Cx           100 Fs
+O-33          2339 D150142-9  H De Lo Ni Po        905 Fs
+O-34          2434 C5595A9-5    Ni                 220 Fs
+O-35          2435 C897540-5    Ag Ni              305 Fs
+O-36          2436 B636658-A  D Ni                 603 Fs
+O-37          2440 C423200-9    Lo Ni Po           712 Fs
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Pewolba SECTOR: Wobanna Sector
+#
+# Jump-routes
+#
+$3040 3001 0 1 13
+$2740 2602 0 1 13
+$3040 2740 0 0 13
+$2740 2338 -1 0 13
+$2636 2338 -1 0 13
+$2636 2736 0 0 13
+$2736 3037 0 0 13
+$3037 3040 0 0 13
+$3037 2938 0 0 13
+$2938 2740 0 0 13
+$2938 2636 0 0 13
+$3037 3033 0 0 13
+$3033 3031 0 0 13
+$3031 2930 0 -1 13
+$2631 2930 0 -1 13
+$2631 2532 0 0 13
+$2532 2232 -1 0 13
+$2736 3033 0 0 13
+$2532 2528 0 -1 13
+$2532 2230 -1 -1 10
+$2532 2735 0 0 10
+$2735 2938 0 0 10
+$2938 3001 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Praan         2532 B89A531-B    Ni Wa              402 Fs
+P-2           2533 B31097B-D    Hi Na           B  523 Na
+P-3           2534 C9B4647-4    Fl Ni           A  224 Fs
+P-4           2538 C898863-6                       923 Fs
+P-5           2539 D328666-6    Ni                 421 Fs
+P-6           2540 E14069A-4    De Ni Po           600 Fs
+P-7           2631 B66A7A5-9  D Wa                 911 Fs
+P-8           2634 B68677A-9    Ag Ri           B  802 Na
+P-9           2636 A110330-C    Lo Ni              602 Fs
+P-10          2637 C523768-4  D Na Po              904 Fs
+P-11          2639 C598121-7  H Lo Ni              710 Fs
+P-12          2733 C514554-8  D Ic Ni              213 Fs
+Etreed        2735 E88A637-4    Ni Wa              804 Fs
+P-14          2736 A577565-A  D Ag Ni              300 Fs
+P-15          2737 E633111-3  H Lo Ni Po           800 Fs
+P-16          2740 B362A9B-E  G Hi                 801 Fs
+P-17          2831 C646447-6    Ni                 200 Fs
+P-18          2832 C584623-7    Ag Ni              803 Fs
+P-19          2833 E222555-9    Ni Po              122 Fs
+P-20          2836 D574778-1    Ag              B  420 Na
+P-21          2837 A665568-C    Ag Ni              303 Fs
+P-22          2838 D6669BD-5  F Hi                 903 Fs
+P-23          2839 C557624-5    Ag Ni              204 Fs
+P-24          2840 C99A164-B  H Lo Ni Wa           300 Fs
+P-25          2931 C588367-8  E Lo Ni              901 Fs
+P-26          2935 D110AA5-8  G Hi Na              614 Fs
+P-27          2937 C364686-4  D Ag Ni Ri           700 Fs
+Lanacca       2938 A41078A-D    Na                 514 Fs
+P-29          3031 B7C0896-6  D De              A  304 Fs
+P-30          3032 A5458B8-8                       113 Fs
+P-31          3033 B7388CF-B                       804 Fs
+P-32          3034 C140205-8    De Lo Ni Po        924 Fs
+P-33          3037 B8877A9-5  D Ag                 400 Fs
+P-34          3038 C8658BB-4  D                    802 Fs
+P-35          3040 A244200-F  E Lo Ni              602 Fs
+P-36          3132 C232355-7    Lo Ni Po           504 Fs
+P-37          3136 C774479-7    Ni              B  923 Na
+P-38          3139 C591383-9  E Lo Ni              203 Fs
+P-39          3231 X467210-2  I Lo              R  800 Fs
+P-40          3237 D75A88B-6  D Wa                 200 Fs
+

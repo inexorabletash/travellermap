@@ -1,0 +1,371 @@
+Monicruull Sector
+
+A: Amonic                    a.dat
+B: Bonicr                    b.dat
+C: Cruull                    c.dat
+D: Donica                    d.dat
+E: Emonicru                  e.dat
+F: Fuullic                   f.dat
+G: Gonicc                    g.dat
+H: Hamonic                   h.dat
+I: Imonnicce                 i.dat
+J: Juullic                   j.dat
+K: Konicru                   k.dat
+L: Lamonik                   l.dat
+M: Monicra                   m.dat
+N: Nartronic                 n.dat
+O: Onicru                    o.dat
+P: Panolica                  p.dat
+
+Bases:
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Amonic SECTOR: Monicruull Sector
+#
+# Jump-routes
+#
+$0204 3004 -1 0 10
+$0204 0507 0 0 10
+$0507 0708 0 0 10
+$0708 1010 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0107 C000885-7  S As Na              604 Na
+Avleena       0204 E536211-3    Lo Ni              904 Na
+Reekadu       0507 D000000-9  S As Ba Lo Ni        514 Na
+Sarrienn      0708 C547468-9  S Ni                 903 Na
+A-5           0806 E000A77-A    As Hi Na        B  113 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Bonicr SECTOR: Monicruull Sector
+#
+# Jump-routes
+$1010 0911 0 1
+#
+$1010 0708 -1 0 10
+$1010 1212 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Billfalaal    1010 CAB6437-9  S Fl Ni           A  604 Na
+B-2           1209 E260447-6    De Ni              200 Na
+B-3           1402 C365405-6    Ni                 705 Na
+B-4           1507 C87AACF-A  S Hi In Wa           103 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Cruull SECTOR: Monicruull Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1909 E403545-6    Ic Ni Va           123 Na
+C-2           2103 C333374-8    Lo Ni Po        B  114 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Donica SECTOR: Monicruull Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2603 E341AFI-A    Hi In Po        R  824 Na
+D-2           2710 C200401-C  S Ni Va              712 Na
+D-3           2801 E255742-5    Ag                 303 Na
+D-4           2805 B679775-8  N                 B  503 Na
+D-5           2908 B402663-9  N Ic Na Ni Va        713 Na
+D-6           3207 B335665-7  N Ni                 215 Na
+D-7           3208 C100144-C  S Lo Ni Va           213 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Emonicru SECTOR: Monicruull Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0213 C110621-A  S Na Ni              103 Na
+E-2           0316 A211001-E    Ic Lo Ni           301 Na
+E-3           0413 B4337BC-A  N Na Po              115 Na
+E-4           0416 C326444-8  S Ni                 202 Na
+E-5           0720 X000101-2    As Lo           R  901 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Fuullic SECTOR: Monicruull Sector
+#
+# Jump-routes
+$0911 1010 0 -1
+#
+$1212 1010 0 -1 10
+$1212 1415 0 0 10
+$1415 1519 0 0 10
+$1519 1622 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0911 A797798-B  N Ag                 504 Na
+F-2           0918 C967514-8    Ag Ni              502 Na
+F-3           1117 D786451-4    Ni                 524 Na
+F-4           1118 D321644-7    Na Ni Po           800 Na
+Foghagh       1212 D243500-7  S Ni Po              101 Na
+F-6           1220 D79A401-9    Ni Wa              113 Na
+F-7           1412 B589586-9    Ni                 313 Na
+Agklioon      1415 C415740-5    Ic                 902 Na
+F-9           1512 C685321-5  S Lo Ni              704 Na
+Jashkahad     1519 C365320-5    Lo Ni              301 Na
+F-11          1616 A400641-A  N Na Ni Va           410 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Gonicc SECTOR: Monicruull Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1811 D434000-6    Ba Lo Ni           134 Na
+G-2           1813 C100475-8  S Ni Va           B  700 Na
+G-3           1913 E550320-2    De Lo Ni Po        901 Na
+G-4           2116 C555654-8    Ag Ni              604 Na
+G-5           2315 B200311-D    Lo Ni Va           103 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hamonic SECTOR: Monicruull Sector
+#
+# Jump-routes
+$2911 3011 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2511 B200525-8  N Ni Va              302 Na
+H-2           2512 E787899-6    Ri                 900 Na
+H-3           2513 EA68511-4    Ag Ni              602 Na
+H-4           2514 E4457AB-6    Ag                 204 Na
+H-5           2620 B558321-6    Lo Ni              503 Na
+H-6           2711 C10068A-A    Na Ni Va           702 Na
+H-7           2720 E85A776-6    Wa              B  300 Na
+H-8           2811 D457242-5  S Lo Ni              804 Na
+H-9           2911 B574966-7  S Hi In              210 Na
+H-10          3011 A574788-9    Ag                 223 Na
+H-11          3018 C635442-5  S Ni                 404 Na
+H-12          3111 C627576-8    Ni              B  803 Na
+H-13          3215 C88A987-9  S Hi Wa              724 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Imonnicce SECTOR: Monicruull Sector
+#
+# Jump-routes
+$0521 0622 0 0
+#
+$0128 0131 0 1 2
+$0128 3028 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Iaccazan      0128 E79A885-7    Wa                 103 Na
+I-2           0423 D110300-B  S Lo Ni              514 Na
+I-3           0424 C85A776-A  S Wa              B  203 Na
+I-4           0426 C000144-C  S As Lo Ni           600 Na
+I-5           0521 C000558-B    As Ni              314 Na
+I-6           0524 E533333-8    Lo Ni Po           914 Na
+I-7           0622 B9B7264-8  S Fl Lo Ni        A  600 Na
+I-8           0821 D310556-A  S Ni                 414 Na
+I-9           0826 E64A222-6    Lo Ni Wa           503 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Juullic SECTOR: Monicruull Sector
+#
+# Jump-routes
+#
+$1622 1519 0 -1 10
+$1622 1626 0 0 10
+$1626 1727 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0924 CA97987-A    Hi In              211 Na
+J-2           0929 C793320-4    Lo Ni              222 Na
+J-3           1030 D675330-6  S Lo Ni              824 Na
+J-4           1130 C8548BB-8                       524 Na
+J-5           1321 B432999-E  S Hi In Na Po        133 Na
+J-6           1425 E32476B-3                       624 Na
+J-7           1426 B110488-9    Ni                 103 Na
+Maeooloo      1622 C212120-A    Ic Lo Ni           411 Na
+Earghth       1626 D573A56-8  S Hi In              522 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Konicru SECTOR: Monicruull Sector
+#
+# Jump-routes
+$2029 2131 0 1
+$2230 2131 0 1
+$2230 2431 0 1
+#
+$1727 1626 -1 0 10
+$1727 2029 0 0 10
+$2029 2431 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Drannii       1727 B325630-A    Ni                 824 Na
+Vloraanna     2029 C55357A-5  S Ni Po           B  601 Na
+K-3           2124 C450435-7  S De Ni Po           513 Na
+K-4           2230 A6229AB-B  N Hi In Na Po        114 Na
+K-5           2326 E454637-6    Ag Ni              100 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lamonik SECTOR: Monicruull Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2727 B556135-6  N Lo Ni              200 Na
+L-2           2924 C452637-4    Ni Po              814 Na
+L-3           3030 B512694-6  2 Ic Na Ni           804 Na
+L-4           3228 B4127AA-7    Ic Na              512 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Monicra SECTOR: Monicruull Sector
+#
+# Jump-routes
+#
+$0739 0703 0 1 2
+$0739 0437 0 0 2
+$0437 0334 0 0 2
+$0334 0131 0 0 2
+$0131 0128 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Capluuna      0131 E224768-6                       303 Na
+M-2           0235 C569501-7    Ni                 103 Na
+Otiotara      0334 C657510-4  S Ag Ni              424 Na
+Veeggaag      0437 B322242-A    Lo Ni Po           803 Na
+Monassyt      0739 E989641-5    Ni Ri              713 Na
+M-6           0835 A997778-7  N Ag              B  704 Na
+M-7           0838 D5746B6-3  S Ag Ni              114 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nartronic SECTOR: Monicruull Sector
+#
+# Jump-routes
+$1331 1431 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0933 C77A755-9  S Wa                 901 Na
+N-2           1139 XAB4321-2    Fl Lo           R  400 Na
+N-3           1232 B558445-B    Ni                 403 Na
+N-4           1331 BAC6303-8    Fl Lo Ni        A  504 Na
+N-5           1338 C647A55-D    Hi In              304 Na
+N-6           1431 B100047-C  2 Lo Ni Va           824 Na
+N-7           1433 C654365-4  S Lo Ni              524 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Onicru SECTOR: Monicruull Sector
+#
+# Jump-routes
+$2131 2029 0 -1
+$2131 2230 0 -1
+$2431 2230 0 -1
+#
+$2431 2029 0 -1 10
+$2431 2534 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1732 B543001-B    Lo Ni Po           802 Na
+O-2           1938 B000420-B    As Ni              613 Na
+O-3           2036 X231722-3    Po              R  714 Na
+O-4           2040 C64A8A7-8    Wa                 403 Na
+O-5           2131 AAB699B-D  N Fl Hi           A  424 Na
+O-6           2135 C312488-B  S Ic Ni              813 Na
+O-7           2238 C21079C-5    Na                 802 Na
+Ovuulaer      2431 B6547BA-A    Ag                 313 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Panolica SECTOR: Monicruull Sector
+#
+# Jump-routes
+#
+$2534 2431 -1 0 10
+$2534 2636 0 0 10
+$2636 2640 0 0 10
+$2640 2701 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Pauahga       2534 B687994-9  2 Hi                 403 Na
+Jaucraa       2636 C774831-7                       901 Na
+Laeicrau      2640 C746411-5    Ni                 702 Na
+P-4           2840 D728559-5  S Ni                 502 Na
+P-5           3039 C795635-5  S Ag Ni              910 Na
+P-6           3138 E876478-6    Ni              B  404 Na
+

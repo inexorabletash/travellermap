@@ -1,0 +1,410 @@
+Yabrill Sector
+
+A: Ayabri                    a.dat
+B: Briyab                    b.dat
+C: Chabrill                  c.dat
+D: Dryaba                    d.dat
+E: Ekyaba                    e.dat
+F: Fyabril                   f.dat
+G: Graybr                    g.dat
+H: Habriy                    h.dat
+I: Iyabray                   i.dat
+J: Joyab                     j.dat
+K: Koyabri                   k.dat
+L: Lillyab                   l.dat
+M: Mobray                    m.dat
+N: Naybray                   n.dat
+O: Oyabri                    o.dat
+P: Prillan                   p.dat
+
+Bases:
+L = Lillan Military
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+11 Lg = Lillan Security Group
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ayabri SECTOR: Yabrill Sector
+#
+# Jump-routes
+#
+$0104 3004 -1 0 10
+$0104 0405 0 0 10
+$0405 0409 0 0 10
+$0409 0411 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Venowii       0104 C200877-5    Na Va           B  422 Na
+A-2           0209 B110757-A    Na                 113 Na
+A-3           0210 D767659-2    Ag Ni Ri           334 Na
+Vinveen       0405 B89A346-C    Lo Ni Wa           621 Na
+Haresh        0409 DA876BB-2    Ag Ni              701 Na
+A-6           0508 C595222-8    Lo Ni              320 Na
+A-7           0601 X88A123-4    Lo Wa           R  413 Na
+A-8           0705 E894853-3                       302 Na
+A-9           0708 C86A874-9  S Ri Wa           B  603 Na
+A-10          0709 C310200-9  S Lo Ni              320 Na
+A-11          0806 C651488-5    Ni Po              422 Na
+A-12          0807 B9D5101-9    Fl Lo Ni           804 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Briyab SECTOR: Yabrill Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           1010 X548210-0    Lo              R  925 Na
+B-2           1110 C543247-5    Lo Ni Po           104 Na
+B-3           1201 D4007CE-5  S Na Va              112 Na
+B-4           1204 C674326-6    Lo Ni              913 Na
+B-5           1403 C555446-9    Ni                 422 Na
+B-6           1504 B130226-A  S De Lo Ni Po        711 Na
+B-7           1604 E645652-5    Ag Ni              103 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Chabrill SECTOR: Yabrill Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1701 C495567-9  S Ag Ni              623 Na
+C-2           1703 C884538-4    Ag Ni              304 Na
+C-3           1704 C84A664-7  S Ni Wa              800 Na
+C-4           1706 C543368-7    Lo Ni Po           504 Na
+C-5           1708 E777777-1    Ag              B  702 Na
+C-6           1804 D9CA440-A    Fl Ni Wa        A  412 Na
+C-7           2102 C756633-3  S Ag Ni              204 Na
+C-8           2105 B542374-9    Lo Ni Po        B  503 Na
+C-9           2310 C000559-D    As Ni              920 Na
+C-10          2401 C98A66A-8    Ni Ri Wa           423 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Dryaba SECTOR: Yabrill Sector
+#
+# Jump-routes
+$3006 3105 0 0
+$3006 3206 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2501 E0008A7-6    As Na              903 Na
+D-2           2503 D426002-5    Lo Ni              310 Na
+D-3           2504 C684744-7  S Ag Ri              111 Na
+D-4           2604 D561763-4    Ri                 320 Na
+D-5           2606 C9B6564-A    Fl Ni           A  410 Na
+D-6           2607 D330222-8    De Lo Ni Po        202 Na
+D-7           2708 C548210-6    Lo Ni              320 Na
+D-8           2806 C461552-7  S Ni                 312 Na
+D-9           2907 C570464-8  S De Ni              112 Na
+D-10          2909 C240213-9    De Lo Ni Po        902 Na
+D-11          3006 B434225-C  S Lo Ni              821 Na
+D-12          3007 C324589-B  S Ni                 125 Na
+D-13          3101 B564566-8    Ag Ni              114 Na
+D-14          3105 B684221-B    Lo Ni              510 Na
+D-15          3206 B666461-9  N Ni                 413 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ekyaba SECTOR: Yabrill Sector
+#
+# Jump-routes
+#
+$0411 0409 0 -1 10
+$0411 0514 0 0 10
+$0514 0717 0 0 10
+$0717 0920 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0111 D231444-5  S Ni Po              904 Na
+E-2           0115 C616200-9    Ic Lo Ni           304 Na
+E-3           0213 C46378A-5    Ri                 504 Na
+E-4           0215 C495301-A    Lo Ni              214 Na
+E-5           0314 C343464-6  S Ni Po              711 Na
+Eklika        0411 B486510-A  2 Ag Ni              901 Na
+E-7           0412 C454533-9    Ag Ni              810 Na
+Olikar        0514 D201302-7    Ic Lo Ni Va        514 Na
+E-9           0620 B668479-7  2 Ni              B  804 Na
+Cindrall      0717 B333479-C  N Ni Po           B  911 Na
+E-11          0817 E40058A-5    Ni Va              614 Na
+E-12          0820 C300366-6  S Lo Ni Va           600 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Fyabril SECTOR: Yabrill Sector
+#
+# Jump-routes
+$1611 1811 1 0
+#
+$0920 0717 -1 0 10
+$0920 1221 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0918 C480769-8  S De Ri              503 Na
+Hiebane       0920 E130356-8    De Lo Ni Po        212 Na
+F-3           1011 B97A586-C    Ni Wa              503 Na
+F-4           1314 D503513-7  S Ic Ni Va           415 Na
+F-5           1415 E344676-3    Ag Ni           B  412 Na
+F-6           1511 C763656-6    Ni Ri              214 Na
+F-7           1611 B334100-C  N Lo Ni              113 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Graybr SECTOR: Yabrill Sector
+#
+# Jump-routes
+$1811 1611 -1 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1720 C89A7B9-7    Wa                 312 Na
+G-2           1811 B7B2222-7  N Fl Lo Ni        A  313 Na
+G-3           2019 E551589-5    Ni Po              603 Na
+G-4           2112 B35057A-B  2 De Ni Po        B  402 Na
+G-5           2115 D233874-8    Na Po           B  113 Na
+G-6           2215 E243334-3    Lo Ni Po           724 Na
+G-7           2220 C63A522-8  S Ni Wa              702 Na
+G-8           2311 B555265-B  N Lo Ni              912 Na
+G-9           2312 C224866-7  S                    810 Na
+G-10          2414 A338000-D    Ba Lo Ni           313 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Habriy SECTOR: Yabrill Sector
+#
+# Jump-routes
+#
+$2720 2721 0 1 11
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2611 C64567A-8    Ag Ni           B  114 Na
+H-2           2720 B729445-C  L Ni                 700 Lg
+H-3           3015 C747444-7  S Ni                 202 Na
+H-4           3214 C543256-7    Lo Ni Po           523 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Iyabray SECTOR: Yabrill Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0225 A437436-A  N Ni                 104 Na
+I-2           0226 C140685-8    De Ni Po           403 Na
+I-3           0227 D6B2487-5  S Fl Ni           A  203 Na
+I-4           0325 A563200-B    Lo Ni              834 Na
+I-5           0329 D769521-4    Ni                 320 Na
+I-6           0330 B400986-9  N Hi Na Va           423 Na
+I-7           0523 D224358-8  S Lo Ni              924 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Joyab SECTOR: Yabrill Sector
+#
+# Jump-routes
+#
+$1221 0920 0 -1 10
+$1221 1422 0 0 10
+$1422 1425 0 0 10
+$1425 1626 0 0 10
+$1626 1928 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Bradi         1221 A7869CH-E    Hi                 602 Na
+Zoreff        1422 D400544-7    Ni Va              823 Na
+Nityss        1425 E9A7646-5    Fl Ni              314 Na
+Jadassa       1626 D323523-6  S Ni Po              604 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Koyabri SECTOR: Yabrill Sector
+#
+# Jump-routes
+#
+$1928 1626 -1 0 10
+$1928 2131 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+K-1           1722 E472588-4    Ni                 823 Na
+K-2           1822 C327337-6    Lo Ni              620 Na
+K-3           1926 E110A8A-A    Hi Na              510 Na
+Klonoa        1928 B250630-B    De Ni Po           115 Na
+K-5           2124 B896554-9  S Ag Ni              302 Na
+K-6           2430 A965454-A  N Ni                 814 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lillyab SECTOR: Yabrill Sector
+#
+# Jump-routes
+$2721 2723 0 0
+#
+$3023 2723 0 0 11
+$2721 2720 0 -1 11
+$3023 3223 0 0 11
+$2723 2526 0 0 11
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2526 C77A635-9    Ni Wa              624 Lg
+L-2           2529 EAA577C-2    Fl              B  200 Na
+L-3           2721 B678586-B    Ag Ni              523 Lg
+L-4           2722 D5567B8-2    Ag                 705 Lg
+L-5           2723 B200100-B    Lo Ni Va           901 Lg
+L-6           2730 C368764-8  S Ag Ri              704 Na
+Lillan        3023 A120201-G  L De Lo Ni Po Cx     602 Lg
+L-8           3028 X45656B-0    Ag              R  213 Na
+L-9           3029 B665697-6    Ag Ni Ri           204 Na
+L-10          3128 C465698-6  S Ag Ni Ri           714 Na
+L-11          3223 E4119A9-8    Hi Ic Na           103 Lg
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Mobray SECTOR: Yabrill Sector
+#
+# Jump-routes
+$0437 0440 0 0
+$0538 0540 0 0
+#
+$0540 0503 0 1 2
+$0540 0437 0 0 2
+$0437 0234 0 0 2
+$0234 3132 -1 0 2
+$0831 0933 1 0 11
+$0831 0531 0 0 11
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Chunieta      0234 C666798-6    Ag Ri              314 Na
+M-2           0240 C565230-9    Lo Ni              104 Na
+Mopinn        0437 B476463-8    Ni                 402 Na
+M-4           0440 A596754-C    Ag                 900 Na
+M-5           0531 A554334-8    Lo Ni              203 Na
+M-6           0538 C591322-7    Lo Ni              205 Na
+Irradee       0540 B446655-B  N Ag Ni              514 Na
+M-8           0639 E400986-5    Hi Na Va           902 Na
+M-9           0831 C856998-9    Hi                 110 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Naybray SECTOR: Yabrill Sector
+#
+# Jump-routes
+#
+$0933 1033 0 0 11
+$0933 1132 0 0 11
+$1132 1333 0 0 11
+$1333 1434 0 0 11
+$0933 0831 -1 0 11
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0933 A8B4556-E    Fl Ni           A  914 Na
+N-2           0936 C341100-6    Lo Ni Po           104 Na
+N-3           0937 E98879A-5    Ag Ri              304 Na
+N-4           0940 C69936B-5    Lo Ni              103 Na
+N-5           1033 A677578-B  N Ag Ni           B  801 Na
+N-6           1132 C587469-7    Ni                 404 Na
+N-7           1333 B655232-7  2 Lo Ni              403 Na
+N-8           1433 D100996-A  S Hi Na Va           315 Na
+N-9           1434 C693869-5                       725 Na
+N-10          1538 C366477-A    Ni              B  505 Na
+N-11          1540 C535311-6    Lo Ni              303 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Oyabri SECTOR: Yabrill Sector
+#
+# Jump-routes
+#
+$2131 1928 0 -1 10
+$2131 2333 0 0 10
+$2333 2436 0 0 10
+$2436 2439 0 0 10
+$2439 2403 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1831 C677620-3    Ag Ni              713 Na
+O-2           1833 C524533-6    Ni                 614 Na
+O-3           1932 D8D5536-3  S Fl Ni              903 Na
+O-4           2038 C777220-7    Lo Ni              502 Na
+Bacharna      2131 C340334-9  S De Lo Ni Po        724 Na
+Oshazza       2333 C40047B-8  S Ni Va           B  203 Na
+O-7           2340 E553554-3    Ni Po              114 Na
+Olianara      2436 D211789-3    Ic Na              501 Na
+Shemanda      2439 E343656-4    Ni Po              213 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Prillan SECTOR: Yabrill Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+P-1           2837 C635545-8  S Ni                 915 Na
+P-2           2940 B437586-A  2 Ni                 403 Na
+P-3           3033 C625358-7    Lo Ni              102 Na
+P-4           3132 C572157-9  S Lo Ni              405 Na
+P-5           3235 C330435-A  S De Ni Po           902 Na
+

@@ -1,0 +1,331 @@
+Flumlann Sector
+
+A: Aflum                     a.dat
+B: Balann                    b.dat
+C: Cann                      c.dat
+D: Deflumm                   d.dat
+E: Elumlan                   e.dat
+F: Flumme                    f.dat
+G: Glumflan                  g.dat
+H: Humklan                   h.dat
+I: Iflumla                   i.dat
+J: Jumlann                   j.dat
+K: Kaflumm                   k.dat
+L: Lannal                    l.dat
+M: Moflumm                   m.dat
+N: Narfla                    n.dat
+O: Olanna                    o.dat
+P: Paflunn                   p.dat
+
+Bases:
+J = Jaadlan Military
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+12 Ja = Jaadlan Association
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Aflum SECTOR: Flumlann Sector
+#
+# Jump-routes
+#
+$0405 3206 -1 0 10
+$0405 0608 0 0 10
+$0608 0810 0 0 10
+$0810 1112 1 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0103 E1509A9-7    De Hi Po           801 Na
+A-2           0302 C100776-8    Na Va           B  523 Na
+Cammammiom    0405 D76A984-7    Hi Wa              413 Na
+Arrluun       0608 C66A897-6    Ri Wa              603 Na
+Kahtauu       0810 C674656-8    Ag Ni              804 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Balann SECTOR: Flumlann Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           0904 E300666-4    Na Ni Va           904 Na
+B-2           1010 A684338-D    Lo Ni              413 Na
+B-3           1406 D443763-6  S Po                 203 Na
+B-4           1409 E7B4867-6    Fl              A  103 Na
+B-5           1505 B859985-C  S Hi                 504 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Cann SECTOR: Flumlann Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1803 C312324-8    Ic Lo Ni           904 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Deflumm SECTOR: Flumlann Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2506 C310465-6  S Ni                 112 Na
+D-2           2610 E326386-7    Lo Ni              202 Na
+D-3           2701 B88A78C-7  S Ri Wa              305 Na
+D-4           3104 B678776-5    Ag              B  404 Na
+D-5           3106 E8B4685-6    Fl Ni           A  810 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Elumlan SECTOR: Flumlann Sector
+#
+# Jump-routes
+$0415 0516 0 0
+$0617 0619 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0117 D696689-6    Ag Ni              104 Na
+E-2           0317 C371330-A    Lo Ni              805 Na
+E-3           0320 B586210-8  N Lo Ni              803 Na
+E-4           0415 A33469B-B    Ni                 205 Na
+E-5           0516 B340643-8  N De Ni Po           504 Na
+E-6           0617 B420222-8  S De Lo Ni Po        130 Na
+E-7           0619 C9A3ABE-B    Fl Hi              324 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Flumme SECTOR: Flumlann Sector
+#
+# Jump-routes
+#
+$1112 0810 -1 -1 10
+$1112 1414 0 0 10
+$1414 1617 0 0 10
+$1617 1721 1 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Jhuucluu      1112 C410723-9    Na                 902 Na
+Fophasu       1414 E232556-5    Ni Po              514 Na
+Maniu         1617 C130012-8  S De Lo Ni Po        615 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Glumflan SECTOR: Flumlann Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           2219 B547878-8                    B  903 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Humklan SECTOR: Flumlann Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2511 D759366-6    Lo Ni              320 Na
+H-2           2513 B120596-9  N De Ni Po           200 Na
+H-3           2520 E635643-6    Ni                 400 Na
+H-4           2812 C538377-7  S Lo Ni           B  912 Na
+H-5           3214 C657735-5    Ag                 204 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Iflumla SECTOR: Flumlann Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0223 C766266-8    Lo Ni              102 Na
+I-2           0422 B482767-B    Ri                 520 Na
+I-3           0624 E792201-4    Lo Ni              623 Na
+I-4           0723 C414363-7    Ic Lo Ni           603 Na
+I-5           0727 C535200-B    Lo Ni              303 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jumlann SECTOR: Flumlann Sector
+#
+# Jump-routes
+#
+$1222 1323 0 0 12
+$1323 1721 1 0 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0926 B2128CF-B  2 Ic Na              403 Na
+J-2           1026 C560637-6  S De Ni              600 Na
+J-3           1130 B542798-9    Po                 323 Na
+Jaadlan       1222 A422989-G  J Hi In Na Po Cx     903 Ja
+J-5           1323 B754001-9    Lo Ni              313 Ja
+J-6           1623 X687113-0    Lo              R  814 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kaflumm SECTOR: Flumlann Sector
+#
+# Jump-routes
+#
+$1721 1617 -1 -1 10
+$1721 1823 0 0 10
+$1823 1927 0 0 10
+$1927 1830 0 0 10
+$1830 1933 0 1 10
+$1721 1323 -1 0 12
+$1721 2123 0 0 12
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Buuyanad      1721 A251222-C    Lo Ni Po           421 Ja
+K-2           1729 D346261-3  S Lo Ni              802 Na
+Issassia      1823 E647620-5    Ag Ni              812 Na
+Kkaroch       1830 A979634-9    Ni                 425 Na
+Vlohssaas     1927 CA8A453-8  S Ni Wa              215 Na
+K-6           2027 B110756-B    Na                 103 Na
+K-7           2123 B585736-9  J Ag                 724 Ja
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lannal SECTOR: Flumlann Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2722 C787444-6    Ni                 223 Na
+L-2           3025 C557021-4    Lo Ni              205 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Moflumm SECTOR: Flumlann Sector
+#
+# Jump-routes
+#
+$0439 0502 0 1 2
+$0439 0139 0 0 2
+$0139 2938 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0135 C332447-9  S Ni Po              101 Na
+Agghuun       0139 D439475-A  S Ni              B  213 Na
+M-3           0140 C400544-9    Ni Va              113 Na
+M-4           0432 B621201-D  N Lo Ni Po           613 Na
+Maathriin     0439 C54A665-A    Ni Wa              905 Na
+M-6           0634 B0008CE-D  S As Na              102 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Narfla SECTOR: Flumlann Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0935 C513556-6    Ic Ni              803 Na
+N-2           0940 B454453-8  2 Ni                 120 Na
+N-3           1131 C9868AE-5                       103 Na
+N-4           1132 E9A1653-3    Fl Ni              200 Na
+N-5           1235 B787523-7    Ag Ni              522 Na
+N-6           1636 C686586-8    Ag Ni              700 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Olanna SECTOR: Flumlann Sector
+#
+# Jump-routes
+#
+$1933 1830 0 -1 10
+$1933 2233 0 0 10
+$2233 2337 0 0 10
+$2337 2540 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Hallvuug      1933 BA89968-9  S Hi                 403 Na
+Olkuuabba     2233 C468423-A  S Ni                 904 Na
+Salleaun      2337 B585667-9  N Ag Ni Ri           103 Na
+O-4           2434 X644321-0    Lo              R  414 Na
+O-5           2436 C74A58A-9    Ni Wa              600 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Paflunn SECTOR: Flumlann Sector
+#
+# Jump-routes
+$2934 3034 0 0
+$3034 3131 0 0
+#
+$2540 2337 -1 0 10
+$2540 2603 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Chuffa        2540 C85A577-9    Ni Wa           B  624 Na
+P-2           2932 C330747-6  S De Na Po           500 Na
+P-3           2934 C7559CB-7    Hi                 425 Na
+P-4           3034 A330632-A    De Na Ni Po        402 Na
+P-5           3131 A555542-B  N Ag Ni              700 Na
+P-6           3238 B360785-B  S De Ri              213 Na
+

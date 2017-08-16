@@ -1,0 +1,395 @@
+Sedat Sector
+
+A: Aseda                     a.dat
+B: Bedata                    b.dat
+C: Choedat                   c.dat
+D: Dresad                    d.dat
+E: Edatan                    e.dat
+F: Fresade                   f.dat
+G: Ghesad                    g.dat
+H: Hasada                    h.dat
+I: Isadanna                  i.dat
+J: Jasadat                   j.dat
+K: Klisamma                  k.dat
+L: Lidat                     l.dat
+M: Masada                    m.dat
+N: Nesedasa                  n.dat
+O: Osaadett                  o.dat
+P: Pasede                    p.dat
+
+Bases:
+N = Navy
+S = Scout
+Z = Zanezia Military
+2 = Navy & Scout
+  = None
+
+Allegiance:
+07 Na = Non-Aligned
+12 Zp = Zanezia Proper
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Aseda SECTOR: Sedat Sector
+#
+# Jump-routes
+#
+$0408 3206 -1 0 10
+$0408 0611 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0103 C794873-7  S                 B  700 Na
+Zanezia       0201 B130554-F  Z De Ni Po           402 Zp
+Baerrih       0408 C86A466-6    Ni Wa              102 Na
+A-4           0605 A86A325-C  N Lo Ni Wa           603 Na
+A-5           0609 C65789A-6  S                    903 Na
+A-6           0709 B546755-6  S Ag                 114 Na
+A-7           0804 C65A89A-9  S Wa                 803 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Bedata SECTOR: Sedat Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           0901 B585000-9    Ba Lo Ni           103 Na
+B-2           0907 C550ABC-7    De Hi Po           824 Na
+B-3           1202 D6107CC-3    Na                 813 Na
+B-4           1308 E362214-8    Lo Ni              824 Na
+B-5           1401 A475344-A    Lo Ni              503 Na
+B-6           1402 E465433-7    Ni                 403 Na
+B-7           1405 E785312-6    Lo Ni              503 Na
+B-8           1603 C73A552-C    Ni Wa              812 Na
+B-9           1605 X6B0978-3    De Hi           R  502 Na
+B-10          1606 C433349-B  S Lo Ni Po           800 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Choedat SECTOR: Sedat Sector
+#
+# Jump-routes
+$2402 2504 1 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1705 C120657-B  S De Na Ni Po        424 Na
+C-2           1808 C636555-7    Ni                 422 Na
+C-3           1901 C78A857-B    Ri Wa              403 Na
+C-4           1907 C484689-7  S Ag Ni Ri           610 Na
+C-5           1910 X525010-0    Lo              R  404 Na
+C-6           2008 C222476-B    Ni Po           B  303 Na
+C-7           2109 B577776-7    Ag              B  214 Na
+C-8           2205 B747322-6  N Lo Ni              900 Na
+C-9           2209 E226104-5    Lo Ni              704 Na
+C-10          2308 B654400-B  S Ni                 324 Na
+C-11          2402 B100754-D  2 Na Va              900 Na
+C-12          2404 CAE4346-8  S Fl Lo Ni           313 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Dresad SECTOR: Sedat Sector
+#
+# Jump-routes
+$2504 2402 -1 0
+$2504 2601 0 0
+$2601 2802 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+D-1           2501 D342454-9  S Ni Po              403 Na
+D-2           2504 A9D6858-D  N Fl                 102 Na
+D-3           2601 A431666-C    Na Ni Po           921 Na
+D-4           2602 B623968-8  2 Hi In Na Po        704 Na
+D-5           2607 C334101-9  S Lo Ni              410 Na
+D-6           2706 C86A323-9    Lo Ni Wa           712 Na
+D-7           2802 B955200-B    Lo Ni              314 Na
+D-8           2803 E100578-7    Ni Va           B  125 Na
+D-9           2905 B687744-7  N Ag Ri              124 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Edatan SECTOR: Sedat Sector
+#
+# Jump-routes
+#
+$0611 0408 0 -1 10
+$0611 0514 0 0 10
+$0514 0616 0 0 10
+$0616 0718 0 0 10
+$0718 1019 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0119 B526749-B                       903 Na
+E-2           0213 E695653-6    Ag Ni              705 Na
+E-3           0215 D9A9420-9    Fl Ni              622 Na
+Desulla       0514 E645544-4    Ag Ni              801 Na
+Maweina       0611 C511616-4  S Ic Na Ni           203 Na
+Faietti       0616 C000787-9  S As Na              612 Na
+Ramalk        0718 X515789-3    Ic              R  713 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Fresade SECTOR: Sedat Sector
+#
+# Jump-routes
+#
+$1019 0718 -1 0 10
+$1019 1321 0 1 10
+$1520 1321 0 1 10
+$1520 1723 1 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           0914 D322311-9    Lo Ni Po           904 Na
+Flamien       1019 C4569BF-8    Hi                 305 Na
+F-3           1119 D5557BA-4    Ag                 904 Na
+F-4           1211 C749886-8                       413 Na
+F-5           1318 C473487-6    Ni                 303 Na
+F-6           1514 C8B5200-9    Fl Lo Ni        A  405 Na
+Chunuun       1520 C461774-5    Ri              B  914 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ghesad SECTOR: Sedat Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1914 A61257C-E    Ic Ni           B  903 Na
+G-2           2017 C474210-7  S Lo Ni              811 Na
+G-3           2216 D583555-6  S Ni                 132 Na
+G-4           2420 B725466-C    Ni                 723 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Hasada SECTOR: Sedat Sector
+#
+# Jump-routes
+$2913 3013 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2514 E224872-3                    B  515 Na
+H-2           2814 C956558-5    Ag Ni              200 Na
+H-3           2913 C6A257A-A  S Fl Ni           B  101 Na
+H-4           3013 B745645-9  N Ag Ni              801 Na
+H-5           3016 C571ACE-A  S Hi In              301 Na
+H-6           3117 C678200-8  S Lo Ni              304 Na
+H-7           3120 B79A9D8-C    Hi In Wa           402 Na
+H-8           3218 E74A967-7    Hi In Wa           103 Na
+H-9           3220 E889377-4    Lo Ni           B  823 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Isadanna SECTOR: Sedat Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0121 E560798-6    De Ri              302 Na
+I-2           0124 E68A430-8    Ni Wa              831 Na
+I-3           0229 C403100-A  S Ic Lo Ni Va        900 Na
+I-4           0329 CAB6350-7  S Fl Lo Ni        A  924 Na
+I-5           0426 EAC8540-5    Fl Ni           A  703 Na
+I-6           0521 C264886-9  S Ri                 404 Na
+I-7           0622 D568556-3  S Ag Ni              804 Na
+I-8           0725 C100843-7  S Na Va              910 Na
+I-9           0730 C564533-8    Ag Ni              101 Na
+I-10          0823 B334102-D  2 Lo Ni              800 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jasadat SECTOR: Sedat Sector
+#
+# Jump-routes
+#
+$1321 1019 0 -1 10
+$1321 1520 0 -1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0922 C500120-A    Lo Ni Va           600 Na
+J-2           1027 E345899-4                       204 Na
+J-3           1121 E774526-6    Ag Ni              622 Na
+J-4           1126 A59758A-D  S Ag Ni              914 Na
+J-5           1227 C231A66-D    Hi In Na Po        804 Na
+Ghonoch       1321 C120256-8    De Lo Ni Po        502 Na
+J-7           1424 E462222-3    Lo Ni              600 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Klisamma SECTOR: Sedat Sector
+#
+# Jump-routes
+#
+$1723 1520 -1 -1 10
+$1723 2125 0 0 10
+$2125 2129 0 0 10
+$2129 2431 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Itimarr       1723 A563522-8    Ni                 113 Na
+K-2           1827 A654335-9  N Lo Ni              300 Na
+K-3           2022 X673830-0                    R  802 Na
+Labbian       2125 C672144-6  S Lo Ni              604 Na
+Noerull       2129 B55785A-7  N                    421 Na
+K-6           2226 C7B1345-7    Fl Lo Ni        A  414 Na
+K-7           2325 E300743-3    Na Va              302 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Lidat SECTOR: Sedat Sector
+#
+# Jump-routes
+$3129 3230 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2522 C666410-8    Ni                 210 Na
+L-2           2625 C33497C-B    Hi In           B  423 Na
+L-3           2725 D475332-8  S Lo Ni              724 Na
+L-4           2824 E8A3541-4    Fl Ni              722 Na
+L-5           3025 C54479A-4    Ag                 800 Na
+L-6           3127 E100688-5    Na Ni Va           804 Na
+L-7           3129 A4239DE-E    Hi In Na Po        810 Na
+L-8           3221 C310763-8  S Na                 904 Na
+L-9           3226 C679766-7                       113 Na
+L-10          3230 C250100-7    De Lo Ni Po        714 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Masada SECTOR: Sedat Sector
+#
+# Jump-routes
+#
+$0440 0603 0 1 2
+$0440 0138 0 0 2
+$0138 2936 -1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Marlionna     0138 X9C1541-3    Fl              R  901 Na
+M-2           0235 B866546-A    Ag Ni              205 Na
+M-3           0331 B884475-8  2 Ni              B  400 Na
+M-4           0332 D657559-6    Ag Ni              912 Na
+M-5           0334 D78A210-7    Lo Ni Wa           403 Na
+M-6           0438 CAA2967-6  S Fl Hi              413 Na
+Veebear       0440 C627133-6  S Lo Ni              501 Na
+M-8           0633 B556789-6  N Ag                 803 Na
+M-9           0636 B643522-A  N Ni Po              514 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nesedasa SECTOR: Sedat Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           0934 D120666-4  S De Na Ni Po        805 Na
+N-2           0935 X684979-0    Hi              R  704 Na
+N-3           1135 C000756-9    As Na              100 Na
+N-4           1140 B776789-8  2 Ag                 802 Na
+N-5           1238 C612432-6    Ic Ni              701 Na
+N-6           1333 C7B2AFF-A    Fl Hi           A  810 Na
+N-7           1334 C340035-6    De Lo Ni Po        514 Na
+N-8           1433 C896333-8    Lo Ni              404 Na
+N-9           1434 D88A040-4    Lo Ni Wa           212 Na
+N-10          1540 C75A555-9  S Ni Wa              423 Na
+N-11          1631 D330987-7  S De Hi In Na Po     812 Na
+N-12          1637 A61258B-A  N Ic Ni              615 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Osaadett SECTOR: Sedat Sector
+#
+# Jump-routes
+#
+$2431 2129 0 -1 10
+$2431 2534 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1732 B736775-6  2                 B  424 Na
+O-2           1735 C58458D-7  S Ag Ni              703 Na
+O-3           1833 C83A774-8  S Wa              B  301 Na
+O-4           1938 C5959B9-5    Hi In              501 Na
+O-5           2035 C8B6323-6    Fl Lo Ni        A  621 Na
+O-6           2135 E664343-7    Lo Ni              503 Na
+Oldumm        2431 C200200-C  S Lo Ni Va           803 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Pasede SECTOR: Sedat Sector
+#
+# Jump-routes
+#
+$2534 2431 -1 0 10
+$2534 2735 0 0 10
+$2735 2837 0 0 10
+$2837 3040 0 0 10
+$3040 3002 0 1 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Hirumma       2534 C400794-9    Na Va              602 Na
+Deallan       2735 B556620-7  N Ag Ni              404 Na
+Fratann       2837 B2318AA-A  N Na Po              601 Na
+P-4           2932 C353513-6    Ni Po              604 Na
+P-5           2939 B544764-7  S Ag                 502 Na
+P-6           2940 C8A4469-5  S Fl Ni              204 Na
+Awalka        3040 B556538-A  S Ag Ni              511 Na
+P-8           3138 C443411-7    Ni Po              304 Na
+P-9           3140 X452585-3    Po              R  124 Na
+

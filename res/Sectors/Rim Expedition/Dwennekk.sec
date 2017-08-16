@@ -1,0 +1,352 @@
+Dwennekk Sector
+
+A: Adwenn                    a.dat
+B: Badwenn                   b.dat
+C: Cennenn                   c.dat
+D: Dwenne                    d.dat
+E: Ennekk                    e.dat
+F: Fadweer                   f.dat
+G: Gwenna                    g.dat
+H: Haween                    h.dat
+I: Iwenner                   i.dat
+J: Jadweer                   j.dat
+K: Kadwakk                   k.dat
+L: Ladweeb                   l.dat
+M: Mawawee                   m.dat
+N: Nennes                    n.dat
+O: Odweer                    o.dat
+P: Padtrew                   p.dat
+
+Bases:
+N = Navy
+S = Scout
+2 = Navy & Scout
+  = None
+
+Allegiance:
+07 Na = Non-Aligned
+08    = Unknown
+
+
+Credits
+-------
+
+This sector was created by Bari Z. Stafford Sr. aka: Turokan
+<generalturokan@juno.com> Nov 2001.
+
+Special thanks go to the following people:
+
+Marc Miller.................................Stellar density approval.
+Marc Miller................................For not disallowing route.
+Clifford Linehan.........................Plotting of Stellar density.
+Clifford Linehan......................Plotting of route to my sector.
+Clifford Linehan & Jim Vassilakos............Testing in Galactic 2.4.
+Clifford Linehan.....................Hosting project on his web site.
+
+Thanks guys, I couldn't have done it without you :~)
+
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Adwenn SECTOR: Dwennekk Sector
+#
+# Jump-routes
+$0504 0605 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+A-1           0101 E200553-A    Ni Va              123 Na
+A-2           0504 C400536-9    Ni Va              104 Na
+A-3           0506 C110243-7  S Lo Ni              220 Na
+A-4           0601 C140547-9  S De Ni Po           400 Na
+A-5           0605 AAA5444-A  N Fl Ni              403 Na
+A-6           0610 B5575A8-6  S Ag Ni              403 Na
+A-7           0710 C75A213-6  S Lo Ni Wa           202 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Badwenn SECTOR: Dwennekk Sector
+#
+# Jump-routes
+#
+$1510 1413 0 1 2
+$1510 1508 0 0 2
+$1508 1107 0 0 2
+$1107 1104 0 0 2
+$1104 1240 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+B-1           0903 E110520-A    Ni                 914 Na
+Cachaali      1104 A000567-D    As Ni              811 Na
+Ehnankk       1107 B675352-A  S Lo Ni              224 Na
+B-4           1204 D99A316-4  S Lo Ni Wa           604 Na
+Nakkarra      1508 E110412-6    Ni                 703 Na
+Bojak         1510 E000979-6    As Hi Na        B  824 Na
+B-7           1610 CAC88BC-7  S Fl                 900 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Cennenn SECTOR: Dwennekk Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+C-1           1705 C768AAA-C  S Hi                 122 Na
+C-2           1707 C567243-9    Lo Ni              204 Na
+C-3           1806 C524323-6    Lo Ni              304 Na
+C-4           1909 A100859-E  2 Na Va              323 Na
+C-5           2105 E120244-A    De Lo Ni Po        404 Na
+C-6           2206 C3229B9-A    Hi In Na Po        204 Na
+C-7           2305 X62968D-0                    R  601 Na
+C-8           2409 C585574-5  S Ag Ni           B  312 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Dwenne SECTOR: Dwennekk Sector
+#
+# Jump-routes
+#
+$2504 2440 -1 -1 10
+$2504 2605 0 0 10
+$2605 2907 0 0 10
+$2907 3206 0 0 10
+$3206 0405 1 0 10
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Gahrnen       2504 AAA47A9-D  2 Fl                 924 Na
+Fueall        2605 X755855-0                    R  802 Na
+D-3           2606 B583464-8  S Ni                 603 Na
+Riihnan       2907 E234558-A    Ni                 722 Na
+D-5           3108 B223223-C  N Lo Ni Po           204 Na
+Meeinjah      3206 B445402-B  S Ni                 703 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ennekk SECTOR: Dwennekk Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+E-1           0414 A689347-9  S Lo Ni              800 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Fadweer SECTOR: Dwennekk Sector
+#
+# Jump-routes
+#
+$1217 1221 0 1 2
+$1217 1517 0 0 2
+$1517 1413 0 0 2
+$1413 1510 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+F-1           1120 C615243-9    Ic Lo Ni           224 Na
+Tierrma       1217 E464534-3    Ag Ni              313 Na
+Ghrekk        1413 E58666B-1    Ag Ni Ri           301 Na
+Fhasslak      1517 B793984-A    Hi In              904 Na
+F-5           1615 A310555-C  N Ni                 201 Na
+F-6           1618 D9C2322-3  S Fl Lo Ni        A  805 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Gwenna SECTOR: Dwennekk Sector
+#
+# Jump-routes
+$2014 2114 0 0
+$2114 2115 0 0
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+G-1           1713 E5A0651-3    De Ni              802 Na
+G-2           2014 B440765-6  2 De Po              913 Na
+G-3           2019 E237564-9    Ni                 603 Na
+G-4           2114 B350888-A    De Po              105 Na
+G-5           2115 C5448AB-3  S                    904 Na
+G-6           2312 E556873-4                    B  523 Na
+G-7           2318 C673169-9  S Lo Ni              903 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Haween SECTOR: Dwennekk Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+H-1           2814 C87967B-9    Ni              B  503 Na
+H-2           3017 C693400-5    Ni                 504 Na
+H-3           3216 E345888-4                       302 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Iwenner SECTOR: Dwennekk Sector
+#
+# Jump-routes
+#
+$0826 1029 1 0 2
+$0826 1125 1 0 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+I-1           0330 B581355-8  2 Lo Ni              701 Na
+I-2           0425 C537433-9    Ni                 223 Na
+I-3           0525 E756520-7    Ag Ni              114 Na
+I-4           0621 B997777-7  2 Ag              B  102 Na
+I-5           0626 B130646-A    De Na Ni Po        614 Na
+Iccicica      0826 C51647B-6    Ic Ni           B  413 Na
+I-7           0827 X000548-3    As              R  213 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Jadweer SECTOR: Dwennekk Sector
+#
+# Jump-routes
+#
+$1029 1331 0 1 2
+$1029 0826 -1 0 2
+$1125 0826 -1 0 2
+$1125 1221 0 0 2
+$1221 1217 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+J-1           0925 C100652-8  S Na Ni Va           202 Na
+J-2           1022 C233442-6    Ni Po              813 Na
+Lammierk      1029 B875A96-C  N Hi In              624 Na
+J-4           1122 D757676-1  S Ag Ni           B  923 Na
+Flilliak      1125 E130522-9    De Ni Po           401 Na
+J-6           1130 D300977-6    Hi Na Va        B  903 Na
+Dhekkna       1221 D343865-2  S Po                 922 Na
+J-8           1623 E685568-4    Ag Ni              704 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Kadwakk SECTOR: Dwennekk Sector
+#
+# Jump-routes
+#
+$2428 2631 1 1 2
+$2428 2127 0 0 2
+$2127 1928 0 0 2
+$1928 1730 0 0 2
+$1730 1331 -1 1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Akkrahk       1730 C574115-5    Lo Ni              814 Na
+Jajekk        1928 C160486-9    De Ni              202 Na
+Ayaqua        2127 E859484-6    Ni                 104 Na
+Krammik       2428 C567476-9  S Ni              B  215 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Ladweeb SECTOR: Dwennekk Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+L-1           2630 C9A4400-8  S Fl Ni              100 Na
+L-2           2723 X5A0155-5    De Lo           R  304 Na
+L-3           2823 C87A777-A    Wa              B  603 Na
+L-4           2923 C310576-7    Ni              B  313 Na
+L-5           2930 C6768AD-6                       701 Na
+L-6           3025 B99A213-8  S Lo Ni Wa           411 Na
+L-7           3121 C674635-6  S Ag Ni              102 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Mawawee SECTOR: Dwennekk Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+M-1           0134 A485759-D  N Ag Ri              904 Na
+M-2           0137 C644454-A  S Ni                 922 Na
+M-3           0634 C666872-6    Ri              B  702 Na
+M-4           0635 D300200-5  S Lo Ni Va           504 Na
+M-5           0734 DAD6332-5    Fl Lo Ni           904 Na
+M-6           0735 C9B2433-6  S Fl Ni           A  302 Na
+M-7           0831 E000630-9    As Na Ni           113 Na
+M-8           0835 C200899-7    Na Va              800 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Nennes SECTOR: Dwennekk Sector
+#
+# Jump-routes
+#
+$1331 1730 1 -1 2
+$1331 1029 0 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+N-1           1040 B575559-8    Ag Ni              104 Na
+N-2           1133 E448679-3    Ag Ni           B  324 Na
+N-3           1139 B633465-8  N Ni Po              802 Na
+N-4           1234 C365798-9  S Ag Ri              421 Na
+Vilkar        1331 C766333-4  S Lo Ni              304 Na
+N-6           1634 C524974-9  S Hi In              114 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Odweer SECTOR: Dwennekk Sector
+#
+# Jump-routes
+#
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+O-1           1734 E120767-9    De Na Po           604 Na
+O-2           2137 E553237-2    Lo Ni Po           502 Na
+O-3           2232 C140A88-C    De Hi In Po        904 Na
+O-4           2333 DAA6132-4    Fl Lo Ni           205 Na
+O-5           2439 A628658-9  N Ni                 204 Na
+
+
+----------------------------------------------------------------------
+
+@SUB-SECTOR: Padtrew SECTOR: Dwennekk Sector
+#
+# Jump-routes
+#
+$2938 0139 1 0 2
+$2938 2735 0 0 2
+$2735 2631 0 0 2
+$2631 2428 -1 -1 2
+#--------1---------2---------3---------4---------5---------6---
+#PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
+#----------   ---- ---------  - --------------- -  --- -- --- -
+Dhoeeria      2631 D442456-5  S Ni Po              101 Na
+Tehraska      2735 C586748-6  S Ag Ri              701 Na
+Huwaam        2938 C400442-8    Ni Va              823 Na
+
