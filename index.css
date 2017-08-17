@@ -133,7 +133,8 @@ input[type=text] {
 
 #bottom-pane {
   position: absolute;
-  left: 0; right: 0; bottom: 0; height: 95px;
+  box-sizing: border-box;
+  left: 0; right: 0; bottom: 0; height: 105px;
   padding: 10px; padding-top: 0;
   overflow: hidden;
   background-color: rgba(0,0,0,0.65);
@@ -402,7 +403,6 @@ button:hover {
   background-color: inherit;
   border: 1px solid gray;
   box-shadow: 2px 2px 4px #404040;
-  padding: 20px;
   z-index: 30;
 }
 
@@ -421,26 +421,30 @@ button:hover {
   display: block;
   position: relative;
   float: left;
+  width: 230px;
+  transition: width 0.1s ease-in-out;
 }
 #searchBox {
-  height: 30px; width: 240px;
+  box-sizing: border-box;
+  height: 40px; width: 100%;
   font-size: 12pt;
   padding: 5px 10px; margin: 0; border: none;
   border-radius: 2px;
   box-shadow: 2px 2px 4px #404040;
 }
 
-.style-terminal #searchBox {
+.style-terminal #searchForm {
   border: 1px solid gray;
 }
 
 /* -- Results */
 
 #resultsBox {
-  min-width: 200px;
-  width: 230px;
+  box-sizing: border-box;
+  width: 275px;
   min-height: 50px;
   max-height: 250px;
+  padding: 20px;
 }
 .search-results #resultsBox { display: block; }
 #resultsBox .tip a { text-decoration: none; }
@@ -464,7 +468,7 @@ button:hover {
 
 #routeBox {
   left: 0; top: 0; width: 300px;
-  padding: 10px;
+  padding: 9px; /* +1px border to align box with search form at 10px */
   min-height: 115px;
   max-height: 350px;
 }
@@ -474,10 +478,11 @@ body:not(.route-shown) #routeDisplay { display: none; }
 body:not(.route-shown) #routeBox { min-height: 130px; max-height: 130px; }
 
 #routeBox input[type=text] {
-  height: 30px; width: 100%;
+  box-sizing: border-box;
+  height: 40px; width: 100%;
 
   font-size: 12pt;
-  padding: 5px 10px; margin: 0 -11px 10px; border: none;
+  padding: 5px 10px; margin: 0 0 10px; border: none;
   border-radius: 2px;
 }
 #routeBox form {
@@ -508,11 +513,6 @@ body:not(.route-shown) #routeBox { min-height: 130px; max-height: 130px; }
 
 #routeBox #closeRouteBtn { top: 5px; }
 #routeBox #swapRouteBtn { top: 57px; }
-
-#routeInputWrapper {
-  /* So that INPUT elements can be width: 100% */
-  padding: 0px 10px;
-}
 
 #routeBox { overflow: hidden; }
 #routeDisplay {
@@ -919,6 +919,7 @@ body:not(.search-results) #closeSearchBtn { display: none; }
   position: absolute;
   left: 10px; right: 10px;
   height: 40px;
+  overflow: hidden;
 }
 
 #scaleIndicator {
@@ -954,7 +955,7 @@ body:not(.search-results) #closeSearchBtn { display: none; }
 }
 .ui.bar .bar-right > *:last-child { margin-right: 0; }
 
-@media only screen and (max-width: 850px), only screen and (max-height: 460px) {
+@media only screen and (max-width: 850px), only screen and (max-height: 425px) {
   #LogoImage { width: 210px; height: 71px; background-image: url("res/ui/logo-stacked.png"); }
   .style-fasa #LogoImage,
   .style-draft #LogoImage,
@@ -962,7 +963,7 @@ body:not(.search-results) #closeSearchBtn { display: none; }
   .style-atlas #LogoImage {  background-image: url("res/ui/logo-stacked-gray.png"); }
 }
 
-@media only screen and (max-width: 640px), only screen and (max-height: 460px) {
+@media only screen and (max-width: 640px), only screen and (max-height: 425px) {
   #bottom-pane { font-size: 75%; height: 45px; padding: 2px;}
   #stripe { height: 4px; margin: 2px 0; }
   #LogoImage { width: 105px; height: 35.5px; }
@@ -1038,7 +1039,7 @@ body:not(.search-results) #closeSearchBtn { display: none; }
   #navBar .bar-button { display: none; }
 }
 
-@media only screen and (max-width: 460px), only screen and (max-height: 460px) {
+@media only screen and (max-width: 425px), only screen and (max-height: 425px) {
   /* Mobile (portrait or landscape) */
 
   /* Simplify/merge footer/navigation bar */
@@ -1071,10 +1072,10 @@ body:not(.search-results) #closeSearchBtn { display: none; }
   #topBar #homeBtn { position: fixed; left: 10px; bottom: 10px; float: none; margin: 0; }
 }
 
-@media only screen and (max-width: 460px) {
+@media only screen and (max-width: 425px) {
   /* Mobile/Portrait - Dock Route UI to top */
 
-  #searchBox { width: 180px; }
+  #searchForm { width: 180px; }
 
   .route-ui #routeBox {
     left: 0; top: 0; right: 0; width: auto;
@@ -1089,10 +1090,16 @@ body:not(.search-results) #closeSearchBtn { display: none; }
 
   .route-ui #moreBox,
   .route-ui #legendBox { display: none !important; }
+
+  /* Resize search box */
+  .search-results #topBar .bar-button { display: none; }
+  .search-results #searchForm { width: 100%; }
+  #resultsBox { right: 10px; width: auto; }
 }
 
-@media only screen and (max-width: 360px) {
-  #searchBox { width: 140px; }
+@media only screen and (max-width: 375px) {
+  /* Mobile Medium */
+  #searchForm { width: 140px; }
   #searchBtn { display: none !important; }
 }
 

@@ -35,13 +35,13 @@
 <meta property="fb:admins" content="617166358">
 
 <link rel="stylesheet" href="world.css?update=2017-08-16T15:42:20">
-<link rel="stylesheet" href="index.css?update=2017-08-17T10:27:07">
+<link rel="stylesheet" href="index.css?update=2017-08-17T13:40:24">
 
 <!--[if lt IE 10]><script>alert("IE9 is no longer supported.");</script><![endif]-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
 <script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.29/polyfill.min.js"></script>
 <script src="map.js?update=2017-08-16T15:42:19"></script>
-<script src="index.js?update=2017-08-16T15:42:19"></script>
+<script src="index.js?update=2017-08-17T13:49:56"></script>
 <script src="world_util.js?update=2017-08-16T15:42:20"></script>
 
 <body class="hide-ui hide-footer ds-mini show-settings">
@@ -161,33 +161,31 @@
   <div id="routeBox"
        class="ui hoverbox hoverbox-left">
     <form id="routeForm">
-      <div id="routeInputWrapper">
-        <input type="text"
-               name="start"
-               id="routeStart"
-               placeholder="Start (type or click map)"
-               title="Route start location - world name, or &quot;Sector Hex&quot; e.g. &quot;Spinward Marches 1910&quot;"
-               autocomplete="off"
-               autocorrect="off"
-               autocapitalize="none"
-               spellcheck="false">
-        <br>
-        <input type="text"
-               name="end"
-               id="routeEnd"
-               placeholder="Destination (type or click map)"
-               title="Route end location - world name, or &quot;Sector Hex&quot; e.g. &quot;Solomani Rim 1827&quot;"
-               autocomplete="off"
-               autocorrect="off"
-               autocapitalize="none"
-               spellcheck="false">
-        <button id="closeRouteBtn" class=dim
-                title="Close route">
-        </button>
-        <button id="swapRouteBtn" class=dim
-                title="Swap start/end">
-        </button>
-      </div>
+      <input type="text"
+             name="start"
+             id="routeStart"
+             placeholder="Start (type or click map)"
+             title="Route start location - world name, or &quot;Sector Hex&quot; e.g. &quot;Spinward Marches 1910&quot;"
+             autocomplete="off"
+             autocorrect="off"
+             autocapitalize="none"
+             spellcheck="false">
+      <br>
+      <input type="text"
+             name="end"
+             id="routeEnd"
+             placeholder="Destination (type or click map)"
+             title="Route end location - world name, or &quot;Sector Hex&quot; e.g. &quot;Solomani Rim 1827&quot;"
+             autocomplete="off"
+             autocorrect="off"
+             autocapitalize="none"
+             spellcheck="false">
+      <button id="closeRouteBtn" class=dim
+              title="Close route">
+      </button>
+      <button id="swapRouteBtn" class=dim
+              title="Swap start/end">
+      </button>
 
       <!--
       --><button id="J-1" class=jump-button name=jump title="Calculate a Jump-1 route">J-1</button><!--
@@ -312,8 +310,9 @@
         <p><label title="Show sector and subsector grid lines"><input type="checkbox" name="grid" value="true" id="ShowSectorGrid"> Sector Grid</label></p>
         <p><label title="Show or hide sector and subsector names"><input type="checkbox" id="ShowSectorNames"> Sector Names</label></p>
         <div class="indent">
-          <p><label title="Show only the names of selected sectors when zoomed out"><input type="radio" name="sector_names" id="ShowSelectedSectorNames" value="ShowSelectedSectorNames"> Selected</label></p>
-          <p><label title="Show the names of all sectors when zoomed out"><input type="radio" name="sector_names" id="ShowAllSectorNames" value="ShowAllSectorNames"> All</label></p>
+          <p><label title="Show only the names of selected sectors when zoomed out"><input type="radio" name="sector_names" id="ShowSelectedSectorNames" value="ShowSelectedSectorNames"> Selected</label>
+            &nbsp; &nbsp;
+            <label title="Show the names of all sectors when zoomed out"><input type="radio" name="sector_names" id="ShowAllSectorNames" value="ShowAllSectorNames"> All</label></p>
         </div>
         <p><label title="Display political borders"><input type="checkbox" id="ShowGovernmentBorders"> Borders</label>
         <p><label title="Display routes"><input type="checkbox" id="ShowRoutes"> Routes</label>

@@ -1,5 +1,4 @@
 /*global Traveller,Util,Handlebars */ // for lint and IDEs
-
 window.addEventListener('DOMContentLoaded', function() {
   'use strict';
 
@@ -308,6 +307,9 @@ window.addEventListener('DOMContentLoaded', function() {
 
   document.body.addEventListener('keyup', function(e) {
     if (e.key === 'Escape' || e.keyCode === VK_ESCAPE) {
+      e.preventDefault();
+      e.stopPropagation();
+
       hidePanels();
       hideSearch();
       hideCards();
@@ -318,7 +320,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
       mapElement.focus();
     }
-  });
+  }, {capture: true});
 
   // Options Bar
 
@@ -1036,6 +1038,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
     closeRoute();
     hideCards();
+    showSearchPane('search-results');
 
     selectedWorld = selectedSector = null;
     map.SetRoute(null);
@@ -1051,15 +1054,9 @@ window.addEventListener('DOMContentLoaded', function() {
           return;
         }
       }
-
-      if (!searchRequest && !options.typed)
-        showSearchPane('search-results');
       return;
     }
     lastQuery = query;
-
-    if (!options.typed)
-      document.body.classList.remove('search-results');
 
     if (searchRequest)
       searchRequest.ignore();
@@ -1075,7 +1072,6 @@ window.addEventListener('DOMContentLoaded', function() {
       })
       .then(function() {
         searchRequest = null;
-        showSearchPane('search-results');
         if (options.navigate) {
           var first = $('#resultsContainer a');
           if (first)
