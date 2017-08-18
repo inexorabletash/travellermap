@@ -730,7 +730,8 @@ body:not(.enable-experiments) #labBtn { display: none; }
 .settings section:first-of-type { margin-top: 0; }
 
 /* checkbox/radio buttons are larger on iOS */
-.settings  p { min-height: 24px; }
+.settings h3 { font-size: 10pt; font-weight: bold; margin: 0; }
+.settings-item { line-height: 25px; margin-left: 20px; }
 
 #settingsBtn-poster { background-image: url('res/ui/style-poster.png'); }
 #settingsBtn-atlas  { background-image: url('res/ui/style-atlas.png'); }
@@ -984,6 +985,45 @@ body:not(.search-results) #closeSearchBtn { display: none; }
   #moreBox,
   .ds-frame {
     bottom: 10px;
+  }
+
+
+  /* Mobile-styled form controls */
+  .settings .settings-item {
+    line-height: 30px;
+    margin-left: 0;
+    border-bottom: 1px solid lightgray;
+  }
+  .settings .settings-item:last-child { border-bottom: none; }
+
+  .settings input:checked + label { color: red; }
+  .settings input:disabled + label { opacity: 0.5; }
+
+  .settings input[type=checkbox],
+  .settings input[type=radio] { width: 0; height: 0; margin: 0; opacity: 0; }
+
+  .settings input[type=checkbox] + label:before,
+  .settings input[type=radio] + label:before {
+    display: inline-block;
+    vertical-align: bottom;
+    content: '';
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .settings input[type=checkbox] + label:before {
+    width: 40px; height: 30px;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAAAUCAMAAABLXLayAAAAZlBMVEUAAACAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDhQQ+TAAAAIXRSTlMA2X/R6bKbalFEJRYSDd7FvqWeh2U4MzAo8vHLqpJuWyoqBw1lAAAAlUlEQVQoz32S2RKDMAhFIUs1se5Vu7f8/0+K6DiaB+4DZHIgwxJYVRhbITZt171bE+CgaOnph9HU5Idp6pFuO8rIXbfjhX5s/ygXgr6w6845EiMwUgZwhFGgXax1cJJpxLnAFVIJZ1Gx2LzisAck+hhxnGN9ysJLXJ0DjikrUVyvMu1NrRalB613ZWbarLUd6bvV/sQMqhcKr/O0iIcAAAAASUVORK5CYII=);
+  }
+  .settings input[type=checkbox]:checked + label:before {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAAAUCAMAAABLXLayAAAAmVBMVEUAAACAf3+AgICbZGSAf3+AgICMc3OAgICAgICAgICAgICEe3uAgICAgICAgICAgICAgICAgICAgICAgIChXl6LdHSNcnKAf3+Af3+DfHyHeHiAgICDfHyGeXmAgICGeXmEe3uAgICAgICAgICAgICAgID/AACAgIDFOTmnWFjgHh7xDQ32CQnEOjrTLCztEhL3CAj6BAT7AwPFsNmwAAAAJnRSTlMA+wz94dax9MWwppp4c09KPCUTCv76+fjv6uXHwaaem5eGYVtHHPPHlPYAAACeSURBVCjPfZLXEoIwEEVvQu8i9l6zIPb//zgNjCI4s+chL2eyHTUyCWx7ufLmlmm6UYaG/oaM/FZehxN/d4jdMflf1aPioZQaiD1qYkHpR53UG8NEg0XHKmCt8inwKx39BoVWZ5JoQSEg6Vl9W6DNVgCJoTSjtOMyklhftLoLdHEi2GWVbvbnvJBzXEyuFqYHrndmZtysuR3xu+Vu4gW/PBnX2yG2/wAAAABJRU5ErkJggg==);
+  }
+
+  .settings input[type=radio] + label:before {
+    width: 30px; height: 30px;
+  }
+  .settings input[type=radio]:checked + label:before {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAMAgMAAADALA93AAAADFBMVEUAAAD/AAD/AAD/AAAm+qT8AAAAA3RSTlMAfwEl1pFxAAAAN0lEQVQI12MAAgcgZrwAJNi/AAn5CwwsDPUODLKMfxkY6t2BQvL3gZLs/4HKgEJAUAIiZjAwAABMvguyR1y6JwAAAABJRU5ErkJggg==);
   }
 }
 
