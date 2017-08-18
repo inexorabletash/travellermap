@@ -301,20 +301,13 @@ namespace Maps.Rendering
                             using (graphics.Save())
                             {
                                 graphics.TranslateTransform(h, 0);
-                                graphics.ScaleTransform(1/Astrometrics.ParsecScaleX, 1/Astrometrics.ParsecScaleY);
+                                graphics.ScaleTransform(1 / Astrometrics.ParsecScaleX, 1 / Astrometrics.ParsecScaleY);
                                 graphics.DrawLine(pen, 0, tileRect.Top - gridSlop, 0, tileRect.Bottom + gridSlop);
                             }
                         }
 
                         for (float v = ((float)(Math.Floor((tileRect.Top) / Astrometrics.SectorHeight) - 1) - Astrometrics.ReferenceSector.Y) * Astrometrics.SectorHeight - Astrometrics.ReferenceHex.Y; v <= tileRect.Bottom + Astrometrics.SectorHeight; v += Astrometrics.SectorHeight)
-                        {
-                            using (graphics.Save())
-                            {
-                                graphics.TranslateTransform(0, v);
-                                graphics.ScaleTransform(1 / Astrometrics.ParsecScaleX, 1 / Astrometrics.ParsecScaleY);
-                                graphics.DrawLine(pen, tileRect.Left - gridSlop, 0, tileRect.Right + gridSlop, 0);
-                            }
-                        }
+                            graphics.DrawLine(pen, tileRect.Left - gridSlop, v, tileRect.Right + gridSlop, v);
                     }
                     timers.Add(new Timer("sector grid"));
                     #endregion
@@ -351,12 +344,6 @@ namespace Maps.Rendering
                             if (vi % 4 == 0) continue;
                             float v = vi * Astrometrics.SubsectorHeight - Astrometrics.ReferenceHex.Y;
                             graphics.DrawLine(pen, tileRect.Left - gridSlop, v, tileRect.Right + gridSlop, v);
-                            using (graphics.Save())
-                            {
-                                graphics.TranslateTransform(0, v);
-                                graphics.ScaleTransform(1 / Astrometrics.ParsecScaleX, 1 / Astrometrics.ParsecScaleY);
-                                graphics.DrawLine(pen, tileRect.Left - gridSlop, 0, tileRect.Right + gridSlop, 0);
-                            }
                         }
                     }
                     timers.Add(new Timer("subsector grid"));
