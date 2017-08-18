@@ -919,7 +919,11 @@ body:not(.search-results) #closeSearchBtn { display: none; }
   position: absolute;
   left: 10px; right: 10px;
   height: 40px;
-  overflow: hidden;
+  white-space: nowrap;
+  pointer-events: none;
+}
+.ui.bar > * {
+  pointer-events: auto;
 }
 
 #scaleIndicator {
@@ -927,7 +931,12 @@ body:not(.search-results) #closeSearchBtn { display: none; }
   pointer-events: none;
 }
 
-#topBar { top: 10px; }
+#topBar, #topBarRight { top: 10px; }
+#topBar {
+  overflow: hidden;
+  z-index: 21; /* So search box overlaps right buttons */
+}
+
 
 #navBar { bottom: 110px; }
 .hide-footer #navBar { bottom: 15px; }
@@ -947,11 +956,13 @@ body:not(.search-results) #closeSearchBtn { display: none; }
 .ui.bar .bar-right {
   float: right;
   margin: 0;
+  pointer-events: none;
 }
 
 .ui.bar .bar-right > * {
   float: left;
   margin-right: 4px;
+  pointer-events: auto;
 }
 .ui.bar .bar-right > *:last-child { margin-right: 0; }
 
@@ -1069,7 +1080,7 @@ body:not(.search-results) #closeSearchBtn { display: none; }
 
   /* Move Home button to lower right */
 
-  #topBar #homeBtn { position: fixed; left: 10px; bottom: 10px; float: none; margin: 0; }
+  #homeBtn { position: fixed; left: 10px; bottom: 10px; float: none; margin: 0; }
 }
 
 @media only screen and (max-width: 425px) {
@@ -1092,7 +1103,6 @@ body:not(.search-results) #closeSearchBtn { display: none; }
   .route-ui #legendBox { display: none !important; }
 
   /* Resize search box */
-  .search-results #topBar .bar-button { display: none; }
   .search-results #searchForm { width: 100%; }
   #resultsBox { right: 10px; width: auto; }
 }
