@@ -1150,7 +1150,6 @@ body:not(.search-results) #closeSearchBtn { display: none; }
 @media only screen and (max-width: 375px) {
   /* Mobile Medium */
   #searchForm { width: 140px; }
-  #searchBtn { display: none !important; }
 }
 
 .style-terminal button { background-color: lightgray; }
