@@ -270,7 +270,9 @@ var Util = {
     var base = {
       overlay_color: '#8080ff',
       route_color: 'green',
-      main_color: 'cyan',
+      main_s_color: 'pink',
+      main_m_color: 'yellow',
+      main_l_color: 'cyan',
       main_opacity: 0.25,
       ew_color: 'yellow',
       you_are_here_url: 'res/ui/youarehere.png'
@@ -1321,7 +1323,9 @@ var Util = {
     ctx.translate(-this.canvas.offset_x, -this.canvas.offset_y);
     ctx.globalCompositeOperation = 'source-over';
     ctx.globalAlpha = styleLookup(this.style, 'main_opacity');
-    ctx.fillStyle = styleLookup(this.style, 'main_color');
+    ctx.fillStyle = styleLookup(this.style,
+                                main.length <= 10 ? 'main_s_color' :
+                                main.length <= 50 ? 'main_m_color' : 'main_l_color');
     ctx.beginPath();
     var radius = 1.15 * this.scale / 2;
     main.forEach(function(world) {
