@@ -27,17 +27,17 @@
   <Borders>
     <Border Allegiance="Ci" LabelPosition="3113" ShowLabel="true" WrapLabel="true">2713 2812 2912 2913 2914 3014 2914 2813 2713 </Border>
     <Border Allegiance="Fw" LabelPosition="0813" ShowLabel="true" WrapLabel="false">0611 0712 0811 0911 0910 1009 1008 1109 1110 1111 1211 1112 1012 0912 0812 0712 0611 </Border>
-    <Border Allegiance="Hw" LabelPosition="2531" ShowLabel="true" WrapLabel="false">2230 2330 2329 2330 2331 2332 2331 2230 </Border>
+    <Border Allegiance="Hw" LabelPosition="2429" ShowLabel="true" WrapLabel="true">2230 2330 2329 2330 2331 2332 2331 2230 </Border>
     <Border Allegiance="Ot" LabelPosition="1915" ShowLabel="true" WrapLabel="true">2013 2113 2114 2013 </Border>
     <Border Allegiance="Pr" LabelPosition="3010" ShowLabel="true" WrapLabel="false">2511 2610 2609 2608 2709 2809 2909 2809 2810 2811 2712 2612 2512 2511 </Border>
     <Border Allegiance="Rf" LabelPosition="1426" ShowLabel="true" WrapLabel="true">1229 1329 1428 1427 1528 1627 1728 1628 1629 1529 1428 1329 1229 </Border>
-    <Border Allegiance="Sa" LabelPosition="2435" ShowLabel="true" WrapLabel="false">2136 2235 2234 2233 2333 2433 2533 2633 2733 2734 2735 2835 2936 2836 2837 2737 2636 2537 2436 2337 2236 2136 </Border>
+    <Border Allegiance="Sa" LabelPosition="2634" ShowLabel="true" WrapLabel="true">2136 2235 2234 2233 2333 2433 2533 2633 2733 2734 2735 2835 2936 2836 2837 2737 2636 2537 2436 2337 2236 2136 </Border>
     <Border Allegiance="Wl" LabelPosition="2010" ShowLabel="true" WrapLabel="true">2210 2310 2309 2409 2310 2311 2312 2212 2211 2210 </Border>
   </Borders>
   <Allegiances>
     <Allegiance Code="Ci">Client States</Allegiance>
     <Allegiance Code="Fw">Firstworlds</Allegiance>
-    <Allegiance Code="Hw">Hellworlds</Allegiance>
+    <Allegiance Code="Hw">Hell Worlds</Allegiance>
     <Allegiance Code="Ot">Occupied Territories</Allegiance>
     <Allegiance Code="Pr">Protectorate</Allegiance>
     <Allegiance Code="Rf">Rimward Federation</Allegiance>
@@ -73,6 +73,8 @@
     <Route Start="2819" End="2821"/>
     <Route Start="2821" End="3022"/>
     <Route Start="3022" End="3222"/>
+    <Route Start="3222" End="3423"/>
+    <Route Start="3423" End="3623"/>
     <!-- Scybrian Run -->
     <Route Start="0910" End="0911"/>
     <Route Start="0911" End="0811"/>
@@ -111,7 +113,16 @@
     <Route Start="0330" End="0328"/>
     <Route Start="0328" End="0127"/>
     <Route Start="0127" End="0027"/>
+    <!-- Spurs -->
+    <Route Start="2417" End="2319"/>
+    <Route Start="2025" End="1826"/>
+    <Route Start="1826" End="1728"/>
   </Routes>
+  <Regions>
+    <!-- Demon's Eye Nebula -->
+    <Region Color="Red" LabelPosition="1723" Label="Demon's Eye&#x0a;Nebula">1521 1620 1720 1721 1821 1822 1723 1622 1522 1521 </Region>
+    <Region Color="Red">1621 </Region>
+  </Regions>
   <Labels>
     <!-- Sath Waypoints -->
     <Label Hex="2435" Color="Olive" Size="small">Sch'ikaa&#x0a;Waypoint</Label>
@@ -127,7 +138,7 @@
     <Label Hex="2322" Color="white">Void Edge</Label>
     <Label Hex="0327" Color="white">Wolfs Tail</Label>
     <!-- Rift Names -->
-    <Label Hex="1720" Color="gray">Demon's Eye Rift</Label>
+    <Label Hex="1719" Color="gray">Demon's Eye Rift</Label>
     <Label Hex="1604" Color="gray" Size="large">Moat Rifts</Label>
     <Label Hex="0209" Color="gray">Rissa&#x0a;Void</Label>
     <Label Hex="0219" Color="gray">Harmal&#x0a;Deep</Label>
