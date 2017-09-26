@@ -281,7 +281,11 @@ namespace Maps.Graphics
                 "<svg version=\"1.1\" baseProfile=\"full\" " + 
                 "xmlns=\"http://www.w3.org/2000/svg\" " +
                 "xmlns:xlink=\"http://www.w3.org/1999/xlink\" " +
-                $"width=\"{width}\" height=\"{height}\">");
+                $"width=\"{width}\" height=\"{height}\" " +
+                "clip-path=\"url(#vbclip)\">" +
+                "<clipPath id=\"vbclip\">"+
+                "<rect x=\"0\" y=\"0\" width=\"100%\" height=\"100%\"/>"+
+                "</clipPath>");
             if (defs.children.Count > 0)
                 defs.Serialize(writer);
             root.Serialize(writer);
