@@ -746,12 +746,13 @@ window.addEventListener('DOMContentLoaded', function() {
     }
 
     var HOME_WAIT_MS = 5e3;
-    var TARGET_WAIT_MS = 10e3;
+    var TARGET_WAIT_MS = 20e3;
 
     goHome();
     pickTarget().then(function(world) {
       var target = Traveller.Astrometrics.sectorHexToMap(
         world.SectorX, world.SectorY, world.HexX, world.HexY);
+      hideCards();
       setTimeout(function() {
         map.animateTo(128, target.x, target.y, 10).then(function() {
           updateContext(map.worldX, map.worldY, {directAction: true});

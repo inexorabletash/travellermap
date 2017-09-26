@@ -14,9 +14,16 @@
   <Allegiances>
     <Allegiance Code="Sx">Sath Exploration</Allegiance>
   </Allegiances>
+  <Routes>
+    <!-- Outland Run -->
+    <Route Start="0022" End="0223"/>
+  </Routes>
   <Labels>
     <!-- Rift Names -->
     <Label Hex="1316" Color="gray" Size="large">Moat Rifts</Label>
     <Label Hex="1636" Color="gray" Size="large">Great Void</Label>
   </Labels>
+  <Stylesheet>
+    route { style: dashed }
+  </Stylesheet>
 </Sector>

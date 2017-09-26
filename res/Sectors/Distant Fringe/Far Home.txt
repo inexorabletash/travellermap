@@ -63,7 +63,7 @@ Hex  Name                 UWP       Remarks              {Ix} (Ex)    [Cx]   N B
 0811 Ka Min               C767676-5 Ag Ga Ni Ri          {+0} (453+3) [6655] - - - 324 12 Fw G0 V M5 VI       
 0812 Vuruna               C574413-7 Pa Ni                {-2} (931+0) [5254] - - - 911 12 Fw K2 V M4 VI M8 V  
 0815 Thras                C857554-6 Ag Ga Ni             {-1} (A42+0) [7425] - - - 301 8  Na F7 V             
-0911 Tal Varisa           A877A9A-B Hi In                {+4} (D9D+4) [CE8D] - M - 113 10 Fw G1 V D           
+0911 Tal Varisa           A87799A-B Hi In                {+4} (D8D+4) [CD8D] - M - 613 10 Fw G1 V D           
 0912 Adik                 C552452-6 Ni Po                {-2} (531-3) [4277] - - - 500 6  Fw K3 V             
 0915 Omiote               E96A742-5 Ri Wa                {-1} (968+1) [A652] - - - 702 8  Na F4 V             
 0917 Maujen               A433789-A Na Po                {+2} (A68+3) [696B] - M - 413 10 Na M0 V             
@@ -98,7 +98,7 @@ Hex  Name                 UWP       Remarks              {Ix} (Ex)    [Cx]   N B
 2317 Tarkan               B201634-8 Ic Na Ni Va          {-1} (C53-1) [4577] - - - 224 10 Na M0 V D           
 2319 Inas                 C586799-3 Ag Ri                {+1} (768+1) [8846] - - - 813 9  Na G3 V BD          
 2417 Wissan               C44268A-7 He Ni Po             {-2} (651+3) [4436] - - - 410 5  Na M1 V             
-2511 Leset                A46778A-9 Ag Ri                {+3} (A6B-1) [7A8B] - M - 213 9  Pr M0 V             
+2511 Leset                A46788A-9 Pa Ph Ri             {+2} (A7B-1) [7A8B] - M - 713 9  Pr M0 V             
 2512 Viller               C796754-6 Ag Pi                {+0} (667+2) [9778] - - - 723 12 Pr F1 V M6 VI       
 2617 Barruc               D754347-3 Lo                   {-3} (521+1) [3163] - - - 100 4  Na G3 V             
 2711 Ritos                D88789B-5 Ga Pa Ph Ri          {-1} (B7A-1) [B792] - - - 522 10 Pr G7 IV            
@@ -165,7 +165,7 @@ Hex  Name                 UWP       Remarks              {Ix} (Ex)    [Cx]   N B
 2525 Xenus                D79468A-4 Ag Ni                {-2} (551+2) [5443] - - - 124 11 Na G2 V             
 2624 Verial               D450313-6 De Lo Po             {-3} (521+3) [6174] - - - 323 9  Na K3 V             
 2625 Aredian              E584433-4 Ni Pa                {-3} (632+1) [1158] - - - 513 8  Na F5 IV            
-2730                      ???????-?                                          - - - ??2    -- G3 V BD          
+2730 Ha'ath               ???????-?                                          - - - ??2    -- G3 V BD          
 2821 Cephet               D6A0201-9 He Lo                {-2} (A11-1) [416A] - - - 204 9  Na A8 V G4 VI       
 2823 Erena                BA85745-9 Ag Ri                {+3} (A68+4) [6A97] - - - 813 10 Na F4 V             
 2924 Oora                 C200658-B Na Ni Va             {+0} (D56+2) [961A] - - - 425 11 Na M6 V             
@@ -207,8 +207,8 @@ Hex  Name                 UWP       Remarks              {Ix} (Ex)    [Cx]   N B
 2233 Aik'sha              C859435-5 Ni                   {-2} (431-2) [3234] - - - 712 9  Sa G0 V D           
 2234 Kaatha               D201343-8 Ic Lo Va             {-3} (A21+0) [1198] - - - 703 10 Sa M7 V BD          
 2331 Jacent               B465665-A Ag Ni Ri O:Sa        {+3} (A59+1) [795C] - M - 822 11 Hw G3 IV            
-2333 Ik'sath              A302778-B Ic Na Pi Va          {+2} (569+1) [A94A] - M - 401 4  Sa M2 V             
-2339                      ???????-?                                          - - - ??2    -- K1 V             
+2333 Ik'sath              A302878-B Ic Na Pi Ph Va       {+2} (579+1) [AA4A] - M - 801 4  Sa M2 V             
+2339 Thi'aa               ???????-?                                          - - - ??2    -- K1 V             
 2433 Kaashik              C76597A-8 Ga Hi Pr             {+0} (787-1) [C958] - - - 823 16 Sa G3 V M3 VI M4 VI 
 2434 Ka'sch               D100200-9 Lo Va                {-2} (C11-2) [31AB] - - - 210 6  Sa M8 VI            
 2436 Chaiik               B552678-7 Ni Po                {-1} (655+0) [9566] - - - 501 9  Sa F9 V             
@@ -219,7 +219,7 @@ Hex  Name                 UWP       Remarks              {Ix} (Ex)    [Cx]   N B
 2737 K'shek               D796876-4 Pa Ph Pi             {-2} (876-2) [B651] - - - 830 11 Sa A1 V M6 VI BD    
 2835 Kach'k               C98A569-7 Ni Pr Wa O:2836      {-2} (643+0) [4375] - - - 132 12 Sa F3 V             
 2836 Ch'kaahi             B684975-B Hi Pr                {+3} (68B+5) [DC4F] - M - 800 10 Sa F0 V M8 V M9 VI  
-2837 Sshkih               A422778-B He Na Pi Po          {+2} (868+3) [7918] - M - 401 6  Sa M6 V             
+2837 Sshkih               A422878-B He Na Ph Pi Po       {+2} (878+3) [7A18] - M - 401 6  Sa M6 V             
 2936 Sii'kh Shi           B44056A-8 De He Ni Po O:2836   {-1} (B41-1) [6449] - M - 631 7  Sa G5 V             
 3040 Tha'ki               E411000-0 Ba Ic                {-3} (700+0) [0000] - - - 001 8  Sx M3 V M1 VI       
 3133                      ???????-?                                          - - - ??1    -- K7 V M4 VI       

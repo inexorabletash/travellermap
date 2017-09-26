@@ -1229,11 +1229,142 @@
     <X>70</X>
     <Y>60</Y>
     <Name>Precipice</Name>
+    <Credits>
+      <![CDATA[
+               <p>
+               Precipice Subsector from <cite>Disappearance on Aramat</cite>,
+               Grenadier Models, 1984
+               </p>
+
+               <p>
+               Pesek Subsector and Cyris, John M. Ford, "Geria Transfer",
+               <cite>Journal of the Travellers Aid Society</cite>, issue 10.
+               </p>
+
+               <p>
+               Sturray, Marcus L. Rowland, "The Thing In the Depths",
+               <cite>Journal of the Travellers Aid Society</cite>, issue 22.
+               </p>
+
+               <p>
+               Other worlds by Marcus L. Rowland, William H. Keith, Jeff May,
+               Ian Delaney, Frank Chadwick, Anders Blixt, Tim Brown, Marc W. Miller,
+               John Harshman, based on <cite>Supplement 6: 76 Patrons</cite> and
+               <cite>Journal of the Travellers Aid Society</cite>,
+               published by Game Designers Workshop.
+               </p>
+
+               <p>
+               Data transcribed and edited by Joshua Bell and Graham Donald.
+               </p>
+      ]]>
+    </Credits>
     <Subsectors>
       <Subsector Index="A">Precipice</Subsector>
+      <Subsector Index="B">Orphans</Subsector>
       <Subsector Index="E">Pesek</Subsector>
     </Subsectors>
     <DataFile Source="Disappearance on Aramat" Author="Gary Pilkington" Publisher="Grenadier Models Inc." Type="SecondSurvey">Precipice.txt</DataFile>
+  </Sector>
+
+  <Sector Tags="Apocryphal">
+    <Name>Foreven (Imperial Staple)</Name>
+    <X>70</X>
+    <Y>69</Y>
+    <![CDATA[
+
+             <p>
+             The Reidan, Urnian and Piah subsectors of this version of
+             Foreven Sector were designed by Herb Petro and appeared in
+             <cite>Imperium Staple</cite>, issues 6, 7 & 11,
+             published by Gamesmasters Publications Association.
+             </p>
+
+             <p>
+             The Barbarian subsector of this version of
+             Foreven Sector was designed by Martin Owen and appeared in
+             <cite>Continuum</cite>, issue 2,
+             published by Continuum Galactic Unlimited.
+             </p>
+
+             <p>
+             Data transcribed and edited by Graham Donald.
+             </p>
+    ]]>
+    <DataFile Type="SecondSurvey">Foreven-ImperiumStaple.txt</DataFile>
+    <Subsectors>
+      <Subsector Index="A"></Subsector>
+      <Subsector Index="B"></Subsector>
+      <Subsector Index="C"></Subsector>
+      <Subsector Index="D"></Subsector>
+      <Subsector Index="E"> </Subsector>
+      <Subsector Index="F"></Subsector>
+      <Subsector Index="G"></Subsector>
+      <Subsector Index="H"></Subsector>
+      <Subsector Index="I">Gnolent</Subsector>
+      <Subsector Index="J">Heiligen</Subsector>
+      <Subsector Index="K">Barbarian</Subsector>
+      <Subsector Index="L">Reidan</Subsector>
+      <Subsector Index="M">Rull</Subsector>
+      <Subsector Index="N">Harem</Subsector>
+      <Subsector Index="O">Piah</Subsector>
+      <Subsector Index="P">Urnian</Subsector>
+  </Subsectors>
+  <Allegiances>
+    <Allegiance Code="AN">Alliance of Noimad</Allegiance>
+    <Allegiance Code="BD">Barbarian Dominion</Allegiance>
+    <Allegiance Code="ZA">Zen Alliance</Allegiance>
+  </Allegiances>
+  </Sector>
+
+  <Sector Tags="Apocryphal">
+    <Name>Tagret</Name>
+    <X>163</X>
+    <Y>0</Y>
+    <Credits>
+      <![CDATA[
+               <p>
+               Tagret Sector was designed by Edward Kuns and appeared in
+               <cite>Pegasus IX</cite>, Judges Guild.
+               </p>
+
+               <p>
+               Data transcribed and edited by Graham Donald.
+               </p>
+
+      ]]>
+    </Credits>
+    <DataFile Type="SecondSurvey">Tagret.txt</DataFile>
+    <Subsectors>
+      <Subsector Index="A">Void Reaches</Subsector>
+      <Subsector Index="B">Ahrus</Subsector>
+      <Subsector Index="C">Phoena</Subsector>
+      <Subsector Index="D">Mandal</Subsector>
+      <Subsector Index="E">Centurian</Subsector>
+      <Subsector Index="F">Remlak</Subsector>
+      <Subsector Index="G">Star Path</Subsector>
+      <Subsector Index="H">Tisman</Subsector>
+      <Subsector Index="I">Rimward Extents</Subsector>
+      <Subsector Index="J">Arium</Subsector>
+      <Subsector Index="K">Jarnell</Subsector>
+      <Subsector Index="L">Vrop*ni</Subsector>
+      <Subsector Index="M">Knifepoint</Subsector>
+      <Subsector Index="N">Zaffra</Subsector>
+      <Subsector Index="O">Argic</Subsector>
+      <Subsector Index="P">Istda</Subsector>
+    </Subsectors>
+    <Allegiances>
+      <Allegiance Code="Ah">Ahrus Domain</Allegiance>
+      <Allegiance Code="Ac">Ahphrae Coalition</Allegiance>
+      <Allegiance Code="Ad">Alonagra Directorate</Allegiance>
+      <Allegiance Code="Cc">Combined Free Worlds Safety Commitee</Allegiance>
+      <Allegiance Code="Pr">Psalmea Republic</Allegiance>
+      <Allegiance Code="Rm">Rammando Monarchy</Allegiance>
+      <Allegiance Code="Rc">Remlik Confederation</Allegiance>
+      <Allegiance Code="Ta">Tagret Ascendance</Allegiance>
+      <Allegiance Code="Tr">Tisman Realm</Allegiance>
+      <Allegiance Code="Tu">The UNIT</Allegiance>
+    </Allegiances>
   </Sector>
 
   <Sector Tags="Official" Abbreviation="Cali">

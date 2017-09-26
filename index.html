@@ -35,13 +35,13 @@
 <meta property="fb:admins" content="617166358">
 
 <link rel="stylesheet" href="world.css?update=2017-08-16T15:42:20">
-<link rel="stylesheet" href="index.css?update=2017-08-17T20:25:10">
+<link rel="stylesheet" href="index.css?update=2017-09-22T20:36:30">
 
 <!--[if lt IE 10]><script>alert("IE9 is no longer supported.");</script><![endif]-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
-<script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.29/polyfill.min.js"></script>
-<script src="map.js?update=2017-08-16T15:42:19"></script>
-<script src="index.js?update=2017-08-17T13:49:56"></script>
+<script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.36/polyfill.min.js"></script>
+<script src="map.js?update=2017-08-26T21:58:10"></script>
+<script src="index.js?update=2017-08-19T13:19:53"></script>
 <script src="world_util.js?update=2017-08-16T15:42:20"></script>
 
 <body class="hide-ui hide-footer ds-mini show-settings">
@@ -306,36 +306,39 @@
     </section>
 
     <section id="settings-show">
-      <p><strong>Show:</strong></p>
-      <div class="indent">
-        <p><label title="Show or hide the direction labels around the edge of the map"><input type="checkbox" id="cbGalDir"> Galactic Direction</label></p>
-        <p><label title="Show sector and subsector grid lines"><input type="checkbox" name="grid" value="true" id="ShowSectorGrid"> Sector Grid</label></p>
-        <p><label title="Show or hide sector and subsector names"><input type="checkbox" id="ShowSectorNames"> Sector Names</label></p>
-        <div class="indent">
-          <p><label title="Show only the names of selected sectors when zoomed out"><input type="radio" name="sector_names" id="ShowSelectedSectorNames" value="ShowSelectedSectorNames"> Selected</label>
+      <h3>Features</h3>
+      <div>
+        <div class=settings-item><input type="checkbox" id=cbGalDir><label for=cbGalDir title="Show or hide the direction labels around the edge of the map"> Galactic Direction</label></div>
+        <div class=settings-item><input type="checkbox" name="grid" value="true" id=ShowSectorGrid><label for=ShowSectorGrid title="Show sector and subsector grid lines"> Sector Grid</label></div>
+        <div class=settings-item><input type="checkbox" id=ShowSectorNames><label for=ShowSectorNames title="Show or hide sector and subsector names"> Sector Names</label>
+          <div class="indent">
+            <input type="radio" name="sector_names" id=ShowSelectedSectorNames value="ShowSelectedSectorNames"><label for=ShowSelectedSectorNames title="Show only the names of selected sectors when zoomed out"> Selected</label>
             &nbsp; &nbsp;
-            <label title="Show the names of all sectors when zoomed out"><input type="radio" name="sector_names" id="ShowAllSectorNames" value="ShowAllSectorNames"> All</label></p>
+            <input type="radio" name="sector_names" id=ShowAllSectorNames value="ShowAllSectorNames"><label for=ShowAllSectorNames title="Show the names of all sectors when zoomed out"> All</label>
+          </div>
         </div>
-        <p><label title="Display political borders"><input type="checkbox" id="ShowGovernmentBorders"> Borders</label>
-        <p><label title="Display routes"><input type="checkbox" id="ShowRoutes"> Routes</label>
-        <p><label title="Display government and region names"><input type="checkbox" id="ShowGovernmentNames"> Region Names</label>
-        <p><label title="Show important worlds when zoomed out"><input type="checkbox" id="ShowImportantWorlds"> Important Worlds</label>
+        <div class=settings-item><input type="checkbox" id=ShowGovernmentBorders><label for=ShowGovernmentBorders title="Display political borders"> Borders</label></div>
+        <div class=settings-item><input type="checkbox" id=ShowRoutes><label for=ShowRoutes title="Display routes"> Routes</label></div>
+        <div class=settings-item><input type="checkbox" id=ShowGovernmentNames><label for=ShowGovernmentNames title="Display government and region names"> Region Names</label></div>
+        <div class=settings-item><input type="checkbox" id=ShowImportantWorlds><label for=ShowImportantWorlds title="Show important worlds when zoomed out"> Important Worlds</label></div>
       </div>
     </section>
 
     <section>
-      <p><strong>Appearance:</strong></p>
-      <div class="indent">
-        <p><label title="Use more colors for world features"><input type="checkbox" id="cbWorldColors"> More World Colors</label>
-        <p><label title="Fill borders to make regions more visible"><input type="checkbox" id="cbFilledBorders"> Filled Borders</label>
-        <p><label title="Dim sectors that are not official Traveller 5 Sector Survey data"><input type="checkbox" id="cbDimUnofficial"> Dim Unofficial Data</label>
+      <h3>Appearance</h3>
+      <div>
+        <div class=settings-item><input type="checkbox" id=cbWorldColors><label for=cbWorldColors title="Use more colors for world features"> More World Colors</label></div>
+        <div class=settings-item><input type="checkbox" id=cbFilledBorders><label for=cbFilledBorders title="Fill borders to make regions more visible"> Filled Borders</label></div>
+        <div class=settings-item><input type="checkbox" id=cbDimUnofficial><label for=cbDimUnofficial title="Dim sectors that are not official Traveller 5 Sector Survey data"> Dim Unofficial Data</label></div>
       </div>
     </section>
 
     <section>
-      <p><strong>Options:</strong></p>
-      <div class="indent">
-        <p><label title="Enable experimental features"><input type="checkbox" id="cbExperiments"> Enable Experiments</label></p>
+      <h3>Options</h3>
+      <div>
+        <div class=settings-item><input type="checkbox" id=cbExperiments><label for=cbExperiments title="Enable experimental features"> Enable Experiments</label></div>
+      </div>
+      <div>
         <br>
         <p><a id=btnResetPrefs href="#" title="Reset all preferences to their initial value">Reset Preferences</a></p>
       </div>
@@ -350,16 +353,16 @@
   <div id="milieu-tab"
        class="more-tab settings">
     <section>
-      <p><strong>Milieu:</strong></p>
-      <div class="indent">
-        <p><label><input type="radio" name="milieu" value="IW"   > The Interstellar Wars</label></p>
-        <p><label><input type="radio" name="milieu" value="M0"   > Milieu 0 &ndash; Early Imperium</label></p>
-        <p><label><input type="radio" name="milieu" value="M990" > 990 &ndash; Solomani Rim War</label></p>
-        <p><label><input type="radio" name="milieu" value="M1105"> 1105 &ndash; The Golden Age <b>(default)</b></label></p>
-        <p><label><input type="radio" name="milieu" value="M1120"> 1120 &ndash; The Rebellion</label></p>
-        <p><label><input type="radio" name="milieu" value="M1201"> 1201 &ndash; The New Era</label></p>
-        <p><label><input type="radio" name="milieu" value="M1248"> 1248 &ndash; The New, New Era</label></p>
-        <p><label><input type="radio" name="milieu" value="M1900"> 1900 &ndash; The Far Far Future</label></p>
+      <h3>Milieu</h3>
+      <div id=milieu-choices>
+        <div class=settings-item><input type="radio" name="milieu" value="IW"    id=mil-1><label for=mil-1> The Interstellar Wars</label></div>
+        <div class=settings-item><input type="radio" name="milieu" value="M0"    id=mil-2><label for=mil-2> Milieu 0 &ndash; Early Imperium</label></div>
+        <div class=settings-item><input type="radio" name="milieu" value="M990"  id=mil-3><label for=mil-3> 990 &ndash; Solomani Rim War</label></div>
+        <div class=settings-item><input type="radio" name="milieu" value="M1105" id=mil-4><label for=mil-4> 1105 &ndash; The Golden Age <b>(default)</b></label></div>
+        <div class=settings-item><input type="radio" name="milieu" value="M1120" id=mil-5><label for=mil-5> 1120 &ndash; The Rebellion</label></div>
+        <div class=settings-item><input type="radio" name="milieu" value="M1201" id=mil-6><label for=mil-6> 1201 &ndash; The New Era</label></div>
+        <div class=settings-item><input type="radio" name="milieu" value="M1248" id=mil-7><label for=mil-7> 1248 &ndash; The New, New Era</label></div>
+        <div class=settings-item><input type="radio" name="milieu" value="M1900" id=mil-8><label for=mil-8> 1900 &ndash; The Far Far Future</label></div>
       </div>
     </section>
   </div>
@@ -367,18 +370,18 @@
   <div id="lab-tab"
        class="more-tab settings">
     <section>
-      <p><strong>Overlays:</strong></p>
-      <div class="indent">
-        <p><label title="Highlight world importance"><input type="checkbox" id="cbImpOverlay"> Importance</label>
-        <p><label title="Highlight world population"><input type="checkbox" id="cbPopOverlay"> Population</label>
-        <p><label title="Highlight capitals/candidates"><input type="checkbox" id="cbCapitalOverlay"> Capitals/Candidates</label>
-        <p><label title="Highlight homeworlds of minor races"><input type="checkbox" id="cbMinorHomeworlds"> Minor Race Homeworlds</label>
-        <p><label title="Highlight worlds with Droyne (and Chirper) populations"><input type="checkbox" id="cbDroyneWorlds"> Droyne Worlds</label>
-        <p><label title="Highlight known Ancient sites"><input type="checkbox" id="cbAncientWorlds"> Ancient Sites</label>
-        <p><label title="Render stars rather than world details"><input type="checkbox" id="cbStellar"> Stellar</label>
-        <p><label title="Show position of the Empress Wave"><input type="checkbox" id="cbWave"> Empress Wave</label>
-        <p><label title="Show position of the Qrekrsha Zone"><input type="checkbox" id="cbQZ"> Qrekrsha Zone</label>
-        <p><label title="Highlight Jump-1 Mains"><input type="checkbox" id="cbMains"> Mains</label>
+      <h3>Overlays</h3>
+      <div id=overlays>
+        <div class=settings-item><input type="checkbox" id=cbImpOverlay><label for=cbImpOverlay title="Highlight world importance"> Importance</label></div>
+        <div class=settings-item><input type="checkbox" id=cbPopOverlay><label for=cbPopOverlay title="Highlight world population"> Population</label></div>
+        <div class=settings-item><input type="checkbox" id=cbCapitalOverlay><label for=cbCapitalOverlay title="Highlight capitals/candidates"> Capitals/Candidates</label></div>
+        <div class=settings-item><input type="checkbox" id=cbMinorHomeworlds><label for=cbMinorHomeworlds title="Highlight homeworlds of minor races"> Minor Race Homeworlds</label></div>
+        <div class=settings-item><input type="checkbox" id=cbDroyneWorlds><label for=cbDroyneWorlds title="Highlight worlds with Droyne (and Chirper) populations"> Droyne Worlds</label></div>
+        <div class=settings-item><input type="checkbox" id=cbAncientWorlds><label for=cbAncientWorlds title="Highlight known Ancient sites"> Ancient Sites</label></div>
+        <div class=settings-item><input type="checkbox" id=cbStellar><label for=cbStellar title="Render stars rather than world details"> Stellar</label></div>
+        <div class=settings-item><input type="checkbox" id=cbWave><label for=cbWave title="Show position of the Empress Wave"> Empress Wave</label></div>
+        <div class=settings-item><input type="checkbox" id=cbQZ><label for=cbQZ title="Show position of the Qrekrsha Zone"> Qrekrsha Zone</label></div>
+        <div class=settings-item><input type="checkbox" id=cbMains><label for=cbMains title="Highlight Jump-1 Mains"> Mains</label></div>
       </div>
     </section>
   </div>
@@ -691,7 +694,7 @@
 
       <div class=ds-mini-hidden>
 
-      <div>
+      <div class="ds-credits">
       {{#if Credits}}
         {{{Credits}}}
       {{else}}
