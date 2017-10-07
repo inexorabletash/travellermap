@@ -24,7 +24,7 @@ namespace Maps
         //   value            := IDENT | NUMBER | COLOR
         //   IDENT            := [A-Za-z_]([A-Za-z0-9_] | '\' ANY)* 
         //   NUMBER           := '-'? [0-9]* ('.' [0-9]+) ([eE] [-+]? [0-9]+)?
-        //   COLOR            := '#' [0-9A-F]{6}
+        //   COLOR            := '#' [0-9A-Fa-f]{6}
         //   WS               := ( U+0009 | U+000A | U+000D | U+0020 | '/' '*' ... '*' '/')*
 
         class Rule {
@@ -231,7 +231,7 @@ namespace Maps
                 for (int i = 0; i < 6; ++i)
                 {
                     c = reader.Peek();
-                    if (!('0' <= c && c <= '9') && !('A' <= c && c <= 'F'))
+                    if (!('0' <= c && c <= '9') && !('A' <= c && c <= 'F') && !('a' <= c && c <= 'f'))
                         throw new ParseException("Expected hex, saw: " + reader.ReadLine());
                     s += (char)reader.Read();
                 }
