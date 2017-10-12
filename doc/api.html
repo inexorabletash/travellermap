@@ -108,7 +108,7 @@ table#features, #features th, #features td { border: solid 1px black; }
           <li><a href="#poster">http://travellermap.com/data/<var>sector</var>/image</a> &ndash; map
           <li><a href="#coordinates">http://travellermap.com/data/<var>sector</var>/coordinates</a> &ndash; coordinates
           <li><a href="#credits">http://travellermap.com/data/<var>sector</var>/credits</a> &ndash; credits
-          <li>http://travellermap.com/data/<var>sector</var>/booklet &ndash; alias for <a target="_blank" href="../booklet">booklet</a>
+          <li>http://travellermap.com/data/<var>sector</var>/booklet &ndash; alias for <a target=_blank rel=noopener href="../booklet">booklet</a>
           <li><var>sector</var> is name e.g. <code>Spinward Marches</code> or T5SS abbreviation e.g. <code>spin</code>
 
         </ul>
@@ -141,7 +141,7 @@ table#features, #features th, #features td { border: solid 1px black; }
 
           <li><a href="#jumpworlds">http://travellermap.com/data/<var>sector</var>/<var>hex</var>/jump/<var>jump</var></a> &ndash; worlds in jump range
           <li><a href="#jumpmap">http://travellermap.com/data/<var>sector</var>/<var>hex</var>/jump/<var>jump</var>/image</a> &ndash; jump map
-          <li>http://travellermap.com/data/<var>sector</var>/<var>hex</var>/sheet &ndash; alias for <a target="_blank" href="../world">world</a>
+          <li>http://travellermap.com/data/<var>sector</var>/<var>hex</var>/sheet &ndash; alias for <a target=_blank rel=noopener href="../world">world</a>
           <li><var>sector</var> is name e.g. <code>Spinward Marches</code> or T5SS abbreviation e.g. <code>spin</code>
           <li><var>hex</var> is <code>XXYY</code> e.g. <code>1910</code>
           <li><var>jump</var> is a number in the range <code>0</code> &mdash; <code>12</code>
@@ -209,7 +209,7 @@ table#features, #features th, #features td { border: solid 1px black; }
           <td>Background colors for bordered regions.
     </table>
     <p>
-      Computed options value: <code>options=<span id="computed_options"></span></code> (<a target="_blank" id="test_options" href="#">try it</a>)
+      Computed options value: <code>options=<span id="computed_options"></span></code> (<a target=_blank rel=noopener id="test_options" href="#">try it</a>)
     </p>
     <p class="aside">
       Some flag values (not listed in the above table) have been
@@ -283,9 +283,9 @@ table#features, #features th, #features td { border: solid 1px black; }
     <dt style="clear: both;"><img style="float: right; width: 48px; height: 48px; margin: 10px;" src="../res/ui/style-poster.png" alt="poster example">
       style=poster</dt>
     <dd>A color-on-black style that matches the "Spinward Marches" poster included with the
-    <a href="http://travellerbibliography.org/gdw-ct/Deluxe.html" target="_blank">Deluxe Traveller</a>
+    <a href="http://travellerbibliography.org/gdw-ct/Deluxe.html" target=_blank rel=noopener>Deluxe Traveller</a>
     boxed set and the
-    <a href="http://travellerbibliography.org/gdw-ct/knownspace.html" target="_blank">Imperium Map</a> poster.
+    <a href="http://travellerbibliography.org/gdw-ct/knownspace.html" target=_blank rel=noopener>Imperium Map</a> poster.
     This is the default.</dd>
 
     <dt style="clear: both;"><img style="float: right; width: 48px; height: 48px; margin: 10px;" src="../res/ui/style-print.png" alt="print example">
@@ -308,7 +308,7 @@ table#features, #features th, #features td { border: solid 1px black; }
       style=draft</dt>
     <dd>A style reminiscent of GDW's original hand drawn draft of the Spinward Marches sector map.
       (A high resolution scan of the original is available on
-      <a target="_blank"
+      <a target=_blank rel=noopener
          title="GDW's original hand drawn draft of the Spinward Marches sector map"
          href="http://rpg.drivethrustuff.com/product/64319/The-Spinward-Marches">DriveThruRPG</a>.)</dd>
 
@@ -401,7 +401,7 @@ table#features, #features th, #features td { border: solid 1px black; }
         a value and + (field is <var>N</var> or higher),
         or a value and - and another value (field in the range <var>N</var> to <var>M</var>).
         Note that values are decimal integers (possibly negative), not eHex.
-        (<a target="_blank" href="../?hw=Ix4+">example</a>)
+        (<a target=_blank rel=noopener href="../?hw=Ix4+">example</a>)
       </dd>
 
     </dl>
@@ -414,14 +414,14 @@ table#features, #features th, #features td { border: solid 1px black; }
     <dl class="params">
       <dt>dpr=<var>number</var></dt>
       <dd>The image is rendered for the specified
-        <a target="_blank" href="http://www.quirksmode.org/blog/archives/2012/07/more_about_devi.html">device pixel ratio</a>.
+        <a target=_blank rel=noopener href="http://www.quirksmode.org/blog/archives/2012/07/more_about_devi.html">device pixel ratio</a>.
         For example, specifying <code>dpr=2</code> would produce an image at double the
         resolution, providing better quality for iOS "retina" and other high-density
         displays.
 
       <dt>datauri=1</dt>
       <dd>The image is returned as a base64-encoded
-        <a target="_blank" href="http://en.wikipedia.org/wiki/Data_URI_scheme">Data URI</a>
+        <a target=_blank rel=noopener href="http://en.wikipedia.org/wiki/Data_URI_scheme">Data URI</a>
         rather than as binary data. This is useful when requesting images via POST via XHR
         to insert into HTML.</dd>
     </dl>
@@ -461,10 +461,10 @@ table#features, #features th, #features td { border: solid 1px black; }
 
       <dt>q
       <dd>perform a search for the given query
-        (<a target="_blank" href="../?q=regina">example</a>)
+        (<a target=_blank rel=noopener href="../?q=regina">example</a>)
       <dt>qn
       <dd>perform a search for the given query, and navigate to the first result
-        (<a target="_blank" href="../?qn=regina">example</a>)
+        (<a target=_blank rel=noopener href="../?qn=regina">example</a>)
     </dl>
 
 
@@ -477,25 +477,25 @@ table#features, #features th, #features td { border: solid 1px black; }
       <dt>marker_sector
       <dt>marker_hex
         <dd>Show a marker at <a href="#system_location">named coordinates</a>
-          (<a target="_blank" href="../?marker_sector=spin&amp;marker_hex=1910&amp;marker_url=res/markers/beowulf.png">example</a>)
+          (<a target=_blank rel=noopener href="../?marker_sector=spin&amp;marker_hex=1910&amp;marker_url=res/markers/beowulf.png">example</a>)
 
       <dt>marker_sx
       <dt>marker_sy
       <dt>marker_hx
       <dt>marker_hy
         <dd>Show a marker at <a href="#system_sectorhex">Sector/Hex coordinates</a>
-            (<a target="_blank" href="../?marker_sx=-4&amp;marker_sy=-1&amp;marker_hx=19&amp;marker_hy=10&amp;marker_url=res/markers/beowulf.png">example</a>)
+            (<a target=_blank rel=noopener href="../?marker_sx=-4&amp;marker_sy=-1&amp;marker_hx=19&amp;marker_hy=10&amp;marker_url=res/markers/beowulf.png">example</a>)
 
       <dt>marker_x
       <dt>marker_y
         <dd>Show a marker at <a href="#system_map">Map-space coordinates</a>
-          (<a target="_blank" href="../?marker_x=-95.914&amp;marker_y=70.5&amp;marker_url=res/markers/beowulf.png">example</a>)
+          (<a target=_blank rel=noopener href="../?marker_x=-95.914&amp;marker_y=70.5&amp;marker_url=res/markers/beowulf.png">example</a>)
 
       <dt>marker=<var>URL</var>
         <dd>Shortcut: The marker will be placed at the initial map location if the
           <code>sector</code> and <code>hex</code> options or a <code>/go/</code>
           link are used.
-          (<a target="_blank" href="../?sector=VLAN&amp;hex=1717&amp;marker=res/markers/submerchant.png">example</a>)
+          (<a target=_blank rel=noopener href="../?sector=VLAN&amp;hex=1717&amp;marker=res/markers/submerchant.png">example</a>)
     </dl>
 
 
@@ -542,25 +542,25 @@ table#features, #features th, #features td { border: solid 1px black; }
       <dt>yah_sector
       <dt>yah_hex
         <dd>Show a marker at <a href="#system_location">named coordinates</a>
-            (<a target="_blank" href="../?yah_sector=spin&amp;yah_hex=1910">example</a>)
+            (<a target=_blank rel=noopener href="../?yah_sector=spin&amp;yah_hex=1910">example</a>)
 
       <dt>yah_sx
       <dt>yah_sy
       <dt>yah_hx
       <dt>yah_hy
         <dd>Show a marker at <a href="#system_sectorhex">Sector/Hex coordinates</a>
-            (<a target="_blank" href="../?yah_sx=-4&amp;yah_sy=-1&amp;yah_hx=19&amp;yah_hy=10">example</a>)
+            (<a target=_blank rel=noopener href="../?yah_sx=-4&amp;yah_sy=-1&amp;yah_hx=19&amp;yah_hy=10">example</a>)
 
       <dt>yah_x
       <dt>yah_y
         <dd>Show a marker at <a href="#system_map">Map-space coordinates</a>
-            (<a target="_blank" href="../?yah_x=-95.914&amp;yah_y=70.5">example</a>)
+            (<a target=_blank rel=noopener href="../?yah_x=-95.914&amp;yah_y=70.5">example</a>)
 
       <dt>yah
         <dd>Shortcut: The marker will be placed at the initial map location if the
           <code>sector</code> and <code>hex</code> options or a <code>/go/</code>
           link are used.
-          (<a target="_blank" href="../?sector=VLAN&amp;hex=1717&amp;yah">example</a>)
+          (<a target=_blank rel=noopener href="../?sector=VLAN&amp;hex=1717&amp;yah">example</a>)
     </dl>
 
     <h4>Overlays:</h4>
@@ -591,7 +591,7 @@ table#features, #features th, #features td { border: solid 1px black; }
             for the first additional overlay
             <code>ox2</code>/<code>oy2</code>/<code>ow2</code>/<code>oh2</code>
             for the second additional overlay, and so on. For example, here's the
-            <a target="_blank" href="../?ox=-111.95&amp;oy=80&amp;ow=194.2&amp;oh=200">Atlas of the Imperium coverage area</a>.
+            <a target=_blank rel=noopener href="../?ox=-111.95&amp;oy=80&amp;ow=194.2&amp;oh=200">Atlas of the Imperium coverage area</a>.
 
       <dt>ocx
       <dt>ocy
@@ -601,7 +601,7 @@ table#features, #features th, #features td { border: solid 1px black; }
             for the first additional overlay
             <code>ocx2</code>/<code>ocy2</code>/<code>ocr2</code>
             for the second additional overlay, and so on. For example, here's
-            <a target="_blank" href="../?ocx=-67.983&amp;ocy=55.5&amp;ocr=89">
+            <a target=_blank rel=noopener href="../?ocx=-67.983&amp;ocy=55.5&amp;ocr=89">
               the region of space where the bright star Deneb is visible during daylight hours</a>.
     </dl>
 
@@ -667,7 +667,7 @@ table#features, #features th, #features td { border: solid 1px black; }
    <h4>Beta Features:</h4>
     <ul>
         <li>When the user clicks or double-clicks on the map, a
-          <a target="_blank" href="https://html.spec.whatwg.org/multipage/comms.html#the-messageevent-interfaces">message event</a>
+          <a target=_blank rel=noopener href="https://html.spec.whatwg.org/multipage/comms.html#the-messageevent-interfaces">message event</a>
           will posted to the containing page. The <code>data</code> element of the
           event will have the form:
           <pre class="code">
@@ -1319,7 +1319,7 @@ table#features, #features th, #features td { border: solid 1px black; }
         <dt>sector <dd>sector name
         <dt>quadrant <dd>one of <code>Alpha</code>, <code>Beta</code>, <code>Gamma</code> or <code>Delta</code>
         <dt>subsector <dd>subsector (<code>A</code> &ndash; <code>P</code> or name)
-        <dt>domain <dd>one of the <a target="_blank" href="http://wiki.travellerrpg.com/Domain">domains of the Third Imperium</a> (Sylea, Vland, Gateway, Ilelish, Antares, Sol, Deneb)
+        <dt>domain <dd>one of the <a target=_blank rel=noopener href="http://wiki.travellerrpg.com/Domain">domains of the Third Imperium</a> (Sylea, Vland, Gateway, Ilelish, Antares, Sol, Deneb)
         <dt>x1
         <dt>y1 <dd>top-left hex (inclusive) of the rectangle in <a href="#system_world">World-Space Coordinates</a>
         <dt>x2
@@ -1698,7 +1698,7 @@ y = ( -map_center_y * scale - ( height / 2 ) ) / height;
     APIs on this site
     output <a href="http://www.w3.org/TR/cors/">CORS</a> headers so if
     you know your users will be accessing your site using reasonably
-    <a target="_blank" href="http://caniuse.com/#search=cors">up-to-date browsers</a>
+    <a target=_blank rel=noopener href="http://caniuse.com/#search=cors">up-to-date browsers</a>
     you can call the APIs directly via
     <a href="https://fetch.spec.whatwg.org">fetch</a> or
     <a href="https://xhr.spec.whatwg.org">XMLHttpRequest</a>
