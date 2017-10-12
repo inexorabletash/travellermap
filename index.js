@@ -1379,7 +1379,7 @@ window.addEventListener('DOMContentLoaded', function() {
   $('#searchBox').disabled = false;
 
   // iOS WebKit workarounds
-  (function(){
+  if (navigator.userAgent.match(/iPad|iPhone/)) (function(){
     // Prevent inadvertant touch-scroll.
     $$('button, input').forEach(function(e) {
       e.addEventListener('touchmove', function(e) { e.preventDefault();  });
