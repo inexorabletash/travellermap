@@ -83,6 +83,10 @@ namespace Maps
             }
         }
 
+        // For API data
+        public int WorldX => Coordinates.X;
+        public int WorldY => Coordinates.Y;
+
         internal char Starport => UWP[0];
         internal int Size => Char.ToUpperInvariant(UWP[1]) == 'S' ? -1 : SecondSurvey.FromHex(UWP[1], valueIfUnknown: -1);
         internal int Atmosphere => SecondSurvey.FromHex(UWP[2], valueIfUnknown: -1);
