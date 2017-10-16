@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Sector Tags="Apocryphal">
+  <Name>Foreven (Imperial Staple)</Name>
+  <X>70</X>
+  <Y>69</Y>
+  <![CDATA[
+             <p>
+             The Reidan, Urnian and Piah subsectors of this version of
+             Foreven Sector were designed by Herb Petro and appeared in
+             <cite>Imperium Staple</cite>, issues 6, 7 & 11,
+             published by Gamesmasters Publications Association.
+             </p>
+
+             <p>
+             The Barbarian subsector of this version of
+             Foreven Sector was designed by Martin Owen and appeared in
+             <cite>Continuum</cite>, issue 2,
+             published by Continuum Galactic Unlimited.
+             </p>
+
+             <p>
+             Data transcribed and edited by Graham Donald.
+             </p>
+  ]]>
+  <DataFile Type="SecondSurvey">Foreven-ImperiumStaple.txt</DataFile>
+  <Subsectors>
+    <Subsector Index="I">Gnolent</Subsector>
+    <Subsector Index="J">Heiligen</Subsector>
+    <Subsector Index="K">Barbarian</Subsector>
+    <Subsector Index="L">Reidan</Subsector>
+    <Subsector Index="M">Rull</Subsector>
+    <Subsector Index="N">Harem</Subsector>
+    <Subsector Index="O">Piah</Subsector>
+    <Subsector Index="P">Urnian</Subsector>
+  </Subsectors>
+  <Allegiances>
+    <Allegiance Code="AN">Alliance of Noimad</Allegiance>
+    <Allegiance Code="BD">Barbarian Dominion</Allegiance>
+    <Allegiance Code="ZA">Zen Alliance</Allegiance>
+  </Allegiances>
+  <Borders>
+    <Border Allegiance="AN" Color="red">1832 1833 1834 1935 1834 1833 1832 </Border>
+    <Border Allegiance="BD" Color="yellow">2226 2326 2327 2227 2226 </Border>
+    <Border Allegiance="DiWb" Color="indigo">1727 1827 1928 2028 2129 2228 2328 2427 2527 2528 2529 2530 2531 2631 2632 2633 2534 2434 2334 2233 2134 2033 2133 2132 2131 2130 2029 1930 1830 1731 1730 1729 1728 1727 </Border>
+    <Border Allegiance="ZA" Color="white">1724 1823 1822 1823 1724 </Border>
+  </Borders>
+</Sector>

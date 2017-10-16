@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Sector Tags="Apocryphal">
+  <X>70</X>
+  <Y>60</Y>
+  <Name>Precipice</Name>
+  <Credits>
+    <![CDATA[
+               <p>
+               Precipice Subsector from <cite>Disappearance on Aramat</cite>,
+               Grenadier Models, 1984
+               </p>
+
+               <p>
+               Pesek Subsector and Cyris, John M. Ford, "Geria Transfer",
+               <cite>Journal of the Travellers Aid Society</cite>, issue 10.
+               </p>
+
+               <p>
+               Sturray, Marcus L. Rowland, "The Thing In the Depths",
+               <cite>Journal of the Travellers Aid Society</cite>, issue 22.
+               </p>
+
+               <p>
+               Other worlds by Marcus L. Rowland, William H. Keith, Jeff May,
+               Ian Delaney, Frank Chadwick, Anders Blixt, Tim Brown, Marc W. Miller,
+               John Harshman, based on <cite>Supplement 6: 76 Patrons</cite> and
+               <cite>Journal of the Travellers Aid Society</cite>,
+               published by Game Designers Workshop.
+               </p>
+
+               <p>
+               Data transcribed and edited by Joshua Bell and Graham Donald.
+               </p>
+    ]]>
+  </Credits>
+  <Subsectors>
+    <Subsector Index="A">Precipice</Subsector>
+    <Subsector Index="B">Orphans</Subsector>
+    <Subsector Index="E">Pesek</Subsector>
+  </Subsectors>
+  <Routes>
+    <Route Start="0103" End="0505" Type="Trade1"/>
+    <Route Start="0505" End="0508" Type="Trade1"/>
+    <Route Start="0508" End="0408" Type="Trade1"/>
+    <Route Start="0408" End="0308" Type="Trade1"/>
+    <Route Start="0308" End="0108" Type="Trade1"/>
+    <Route Start="0507" End="0805" Type="Trade1"/>
+    <Route Start="0805" End="1005" Type="Trade1"/>
+    <Route Start="1005" End="1306" Type="Trade1"/>
+    <Route Start="1306" End="1507" Type="Trade1"/>
+    <Route Start="1507" End="1706" Type="Trade1"/>
+    <Route Start="0606" End="0707" Type="Trade2"/>
+    <Route Start="0404" End="0305" Type="Trade2"/>
+  </Routes>
+  <Stylesheet>
+    route.Trade1 { Color: gray; width: 0.5}
+    route.Trade2 { Color: gray; style: dashed; width: 0.5 }
+  </Stylesheet>
+</Sector>
