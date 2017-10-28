@@ -41,7 +41,22 @@
   <Borders>
     <Border Allegiance="AN" Color="red">1832 1833 1834 1935 1834 1833 1832 </Border>
     <Border Allegiance="BD" Color="yellow">2226 2326 2327 2227 2226 </Border>
-    <Border Allegiance="DiWb" Color="indigo">1727 1827 1928 2028 2129 2228 2328 2427 2527 2528 2529 2530 2531 2631 2632 2633 2534 2434 2334 2233 2134 2033 2133 2132 2131 2130 2029 1930 1830 1731 1730 1729 1728 1727 </Border>
+    <Border Allegiance="DiWb" Color="indigo">1727 1827 1928 2028 2128 2228 2328 2427 2527 2528 2529 2629 2630 2631 2632 2633 2534 2434 2334 2233 2134 2033 2032 2132 2131 2130 2029 1930 1830 1730 1729 1728 1727 </Border>
     <Border Allegiance="ZA" Color="white">1724 1823 1822 1823 1724 </Border>
   </Borders>
+  <Routes>
+    <Route Start="3032" End="3232"/>
+    <Route Start="3032" End="3128"/>
+    <Route Start="3128" End="2728"/>
+    <Route Start="2728" End="2824"/>
+    <Route Start="2824" End="2822"/>
+    <Route Start="2434" End="2631" Color="gray"/>
+    <Route Start="2631" End="2529" Color="gray"/>
+    <Route Start="2332" End="2529" Color="gray"/>
+    <Route Start="2529" End="2028" Color="gray"/>
+    <Route Start="2028" End="1828" Color="gray"/>
+    <Route Start="1828" End="1628" Color="gray"/>
+    <Route Start="1828" End="1733" Color="gray"/>
+    <Route Start="1733" End="1633" Color="gray"/>
+  </Routes>
 </Sector>
