@@ -74,7 +74,7 @@ namespace Maps.Search
             "x int NOT NULL",
             "y int NOT NULL",
             "radius int NOT NULL",
-            "name nvarchar(50) NULL"
+            "name nvarchar(100) NULL"
         };
 
         public static void PopulateDatabase(ResourceManager resourceManager, Action<string> statusCallback)
