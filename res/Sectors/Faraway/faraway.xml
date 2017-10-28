@@ -87,6 +87,22 @@
     <MetadataFile>Foreven-ImperiumStaple.xml</MetadataFile>
   </Sector>
 
+  <Sector Abbreviation="FTTT" Tags="Apocryphal">
+    <Name>Fulani (Terra Traveller Times)</Name>
+    <X>68</X>
+    <Y>70</Y>
+    <DataFile Type="SecondSurvey">Fulani-TTT.txt</DataFile>
+    <MetadataFile>Fulani-TTT.xml</MetadataFile>
+  </Sector>
+
+  <Sector Abbreviation="MNCR" Tags="Apocryphal">
+    <Name>Meshan (North Coast Roleplaying)</Name>
+    <X>75</X>
+    <Y>68</Y>
+    <DataFile Type="SecondSurvey">Meshan-NCR.txt</DataFile>
+    <MetadataFile>Meshan-NCR.xml</MetadataFile>
+  </Sector>
+
   <Sector Tags="Apocryphal">
     <Name>Morning Star</Name>
     <X>72</X>
@@ -101,14 +117,6 @@
     <Y>61</Y>
     <DataFile Type="SecondSurvey">Anniversary.txt</DataFile>
     <MetadataFile>Anniversary.xml</MetadataFile>
-  </Sector>
-
-  <Sector Abbreviation="MNCR" Tags="Apocryphal">
-    <Name>Meshan (North Coast Roleplaying)</Name>
-    <X>71</X>
-    <Y>60</Y>
-    <DataFile Type="SecondSurvey">Meshan-NCR.txt</DataFile>
-    <MetadataFile>Meshan-NCR.xml</MetadataFile>
   </Sector>
 
   <Sector Tags="Apocryphal">
