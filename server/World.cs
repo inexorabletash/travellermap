@@ -298,13 +298,16 @@ namespace Maps
             };
 
             // UWP
-            ErrorIf(Atmosphere > 15, $"UWP: Atm>F: {Atmosphere}");
-            ErrorIf(Hydrographics > 10, $"UWP: Hyd>A: {Hydrographics}");
-            ErrorIf(PopulationExponent > 15, $"UWP: Pop>F: {PopulationExponent}");
+            ErrorIf(Atmosphere > 15, 
+                $"UWP: Atm={Atmosphere} out of range; should be: 0...F");
+            ErrorIf(Hydrographics > 10, 
+                $"UWP: Hyd={Hydrographics} out of range; should be: 0...A");
+            ErrorIf(PopulationExponent > 15, 
+                $"UWP: Pop={PopulationExponent} out of range; should be: 0...F");
             ErrorUnless(Government.InRange(PopulationExponent - 5, Math.Max(15, PopulationExponent + 5)),
-                $"UWP: Gov={Government} out of range (Pop={PopulationExponent} + Flux)");
+                $"UWP: Gov={Government} out of range; should be: Pop=({PopulationExponent}) + Flux");
             ErrorUnless(Law.InRange(Government - 5, Math.Max(18, Government + 5)),
-                $"UWP: Law={Law} out of range (Gov={Government} + Flux)");
+                $"UWP: Law={Law} out of range; should be: Gov(={Government}) + Flux");
             int tlmod = 
                 (Starport == 'A' ? 6 : 0) + (Starport == 'B' ? 4 : 0) + (Starport == 'C' ? 2 : 0) + (Starport == 'X' ? -4 : 0) +
                 (Size == 0 || Size == 1 ? 2 : 0) + (Size == 2 || Size == 3 || Size == 4 ? 1 : 0) +
@@ -314,7 +317,7 @@ namespace Maps
                 (Government == 0 || Government == 5 ? 1 : 0) + (Government == 13 ? -2 : 0);
             ErrorUnless(TechLevel.InRange(tlmod + 1, tlmod + 6) || 
                 (PopulationExponent == 0 && TechLevel == 0),
-                $"UWP: TL={TechLevel} out of range (mods={tlmod} + 1D)");
+                $"UWP: TL={TechLevel} out of range; should be: mods(={tlmod}) + 1D");
 
             // Planetary
             bool As = CC("As", Check(Size, "0") /*&& Check(Atmosphere, "0") && Check(Hydrographics, "0")*/);
@@ -329,7 +332,7 @@ namespace Maps
             
             // Population
             bool Di = (PopulationExponent == 0 /*&& Government == 0 && Law == 0*/ && TechLevel > 0);
-            ErrorIf(Di && !HasCodePrefix("Di"), "Missing code: Di or Di(sophont)");
+            ErrorIf(Di && !HasCodePrefix("Di"), "Missing code: Di or Di(sophont) is required if Pop=0 and TL>0");
             bool Ba = CC("Ba", PopulationExponent == 0 /*&& Government == 0 && Law == 0*/ && TechLevel == 0);
             bool Lo = CC("Lo", Check(PopulationExponent, "123"));
             bool Ni = CC("Ni", Check(PopulationExponent, "456"));
@@ -365,7 +368,7 @@ namespace Maps
                 if (Bases == "NS" || Bases == "NW" || Bases == "W" || Bases == "X" || Bases == "D" || Bases == "RT" || Bases == "CK" || Bases == "KM") ++imp;
 
                 ErrorUnless(Int32.Parse(ix) == imp,
-                    $"{{Ix}}={Importance} does not match calculated Importance={imp}");
+                    $"{{Ix}} Importance={ix} incorrect; should be: {imp}");
             }
 
             // (Ex)
@@ -379,27 +382,29 @@ namespace Maps
 
                 if (TechLevel < 8)
                     ErrorUnless(resources.InRange(2, 12),
-                        $"(Ex) Resources={resources} out of range for TL<8={TechLevel} (2D)");
+                        $"(Ex) Resources={resources} out of range; should be: 2D if TL(={TechLevel})<8");
                 else 
                     ErrorUnless(resources.InRange(2 + GasGiants + Belts, 12 + GasGiants + Belts),
-                        $"(Ex) Resources={resources} out of range for TL8+={TechLevel} (2D + GG={GasGiants} + Belts={Belts})");
+                        $"(Ex) Resources={resources} out of range; should be: 2D + GG(={GasGiants}) + Belts(={Belts}) if TL(={TechLevel})=8+");
                     
                 ErrorUnless(labor == Math.Max(0, PopulationExponent - 1),
-                    $"(Ex) Labor={labor} does not match Pop={PopulationExponent} - 1");
+                    $"(Ex) Labor={labor} incorrect; should be: Pop(={PopulationExponent}) - 1");
                     
                 if (Ba)
-                    ErrorUnless(infrastructure == 0, $"(Ex) Infrastructure={infrastructure} should be 0 if Ba");
+                    ErrorUnless(infrastructure == 0,
+                        $"(Ex) Infrastructure={infrastructure} incorrect; should be: 0 if Ba");
                 else if (Lo)
-                    ErrorUnless(infrastructure == 1, $"(Ex) Infrastructure={infrastructure} should be 1 if Lo");
+                    ErrorUnless(infrastructure == 1,
+                        $"(Ex) Infrastructure={infrastructure} incorrect; should be: 1 if Lo");
                 else if (Ni)
                     ErrorUnless(infrastructure.InRange(Math.Max(0, imp + 1), Math.Max(0, imp + 6)),
-                        $"(Ex) Infrastructure={infrastructure} out of range for Ni (Imp={imp} + 1D)");
+                        $"(Ex) Infrastructure={infrastructure} out of range for Ni; should be: Imp(={imp}) + 1D");
                 else
                     ErrorUnless(infrastructure.InRange(Math.Max(0, imp + 2), Math.Max(0, imp + 12)),
-                        $"(Ex) Infrastructure={infrastructure} out of range (Imp={imp} + 2D)");
+                        $"(Ex) Infrastructure={infrastructure} out of range; should be: Imp(={imp}) + 2D");
 
                 ErrorUnless(efficiency.InRange(-5, 5),
-                    $"(Ex) Efficiency={efficiency} out of range (Flux)");
+                    $"(Ex) Efficiency={efficiency} out of range; should be: Flux");
             }
 
             // [Cx]
@@ -413,27 +418,31 @@ namespace Maps
 
                 if (PopulationExponent == 0)
                 {
-                    if (homogeneity != 0) Error($"[Cx] Homogeneity={homogeneity} - expected 0 for Pop 0");
-                    if (acceptance != 0) Error($"[Cx] Acceptance={acceptance} - expected 0 for Pop 0");
-                    if (strangeness != 0) Error($"[Cx] Strangeness={strangeness} - expected 0 for Pop 0");
-                    if (symbols != 0) Error($"[Cx] Symbols={symbols} - expected 0 for Pop 0");
+                    ErrorUnless(homogeneity == 0, 
+                        $"[Cx] Homogeneity={homogeneity} incorrect; should be: 0 if Pop=0");
+                    ErrorUnless(acceptance == 0,
+                        $"[Cx] Acceptance={acceptance} incorrect; should be: 0 if Pop=0");
+                    ErrorUnless(strangeness == 0,
+                        $"[Cx] Strangeness={strangeness} incorrect; should be: 0 if Pop=0");
+                    ErrorUnless(symbols == 0,
+                        $"[Cx] Symbols={symbols} incorrect; should be: 0 if Pop=0");
                 }
                 else
                 {
                     ErrorUnless(homogeneity.InRange(Math.Max(1, PopulationExponent - 5), Math.Max(1, PopulationExponent + 5)),
-                        $"[Cx] Homogeneity={homogeneity} out of range (Pop={PopulationExponent} + Flux)");
+                        $"[Cx] Homogeneity={homogeneity} out of range; should be: Pop(={PopulationExponent}) + Flux");
                     ErrorUnless(acceptance == Math.Max(1, PopulationExponent + imp),
-                        $"[Cx] Acceptance={acceptance} not equal Pop={PopulationExponent} + Imp={imp}");
+                        $"[Cx] Acceptance={acceptance} incorrect; should be: Pop(={PopulationExponent}) + Imp(={imp})");
                     ErrorUnless(strangeness.InRange(Math.Max(1, 5 - 5), Math.Max(1, 5 + 5)),
-                        $"[Cx] Strangeness={strangeness} out of range (Flux + 5)");
+                        $"[Cx] Strangeness={strangeness} out of range; should be: Flux + 5");
                     ErrorUnless(symbols.InRange(Math.Max(1, TechLevel - 5), Math.Max(1, TechLevel + 5)),
-                        $"[Cx] Symbols={symbols} out of range (TL={TechLevel} + Flux)");
+                        $"[Cx] Symbols={symbols} out of range; should be: TL(={TechLevel}) + Flux");
                 }
             }
 
             // Ownership
             if (Government == 6 && !(HasCodePrefix("O:") || HasCodePrefix("Mr") || HasCode("Re") || HasCode("Px")))
-                errors.Warning("Gov 6 missing O:/Mr/Re/Px", lineNumber, line);
+                errors.Warning("Gov 6 (captive/colony) missing one of: O:/Mr/Re/Px", lineNumber, line);
 
             // TODO: Nobility
         }
