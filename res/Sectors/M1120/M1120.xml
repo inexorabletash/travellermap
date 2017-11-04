@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<?xml-stylesheet type="text/xsl" href="../../credits.xslt"?>
+<Sectors>
+  <Sector Abbreviation="Spin" Tags="Unreviewed" Selected="true" Milieu="M1120">
+    <Y>-1</Y>
+    <X>-4</X>
+    <Name>Spinward Marches</Name>
+    <Name Lang="zh">Tloql</Name>
+    <DataFile Type="SecondSurvey">1120_Spin.sec</DataFile>
+    <MetadataFile>1120_Spin.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Mass" Tags="Unreviewed" Selected="true" Milieu="M1120">
+    <Y>1</Y>
+    <X>0</X>
+    <Name Source="DGP">Massilia</Name>
+    <Name Source="GDW">Massila</Name>
+    <Name Lang="vi">Masilaa</Name>
+    <DataFile Type="SecondSurvey">1120_Mass.sec</DataFile>
+    <MetadataFile>1120_Mass.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Dias" Tags="Unreviewed" Selected="true" Milieu="M1120">
+    <Y>2</Y>
+    <X>0</X>
+    <Name>Diaspora</Name>
+    <Name Lang="vi">Nakulakak</Name>
+    <DataFile Type="SecondSurvey">1124_Dias.sec</DataFile>
+    <MetadataFile>1124_Dias.xml</MetadataFile>
+  </Sector>
+
+  <Sector Abbreviation="Fore" Tags="Preserve" Selected="true" Milieu="M1120">
+    <Y>-1</Y>
+    <X>-5</X>
+  <Name>Foreven</Name>
+  <Name Lang="zh">Iakr</Name>
+    <DataFile Type="SecondSurvey">1120_Fore.sec</DataFile>
+    <MetadataFile>1120_Fore.xml</MetadataFile>
+  </Sector>
+
+  <Sector Abbreviation="Hint" Tags="Unreviewed" Selected="true" Milieu="M1120">
+    <Y>2</Y>
+    <X>2</X>
+    <Name>Hinterworlds</Name>
+    <DataFile Type="SecondSurvey">1120_Hint.sec</DataFile>
+    <MetadataFile>1120_Hint.xml</MetadataFile>
+  </Sector>
+
+   <Sector Abbreviation="Corr" Tags="Unreviewed" Selected="true" Milieu="M1120">
+    <Y>-1</Y>
+    <X>-2</X>
+    <Name>Corridor</Name>
+    <Name Lang="vi">Amshagi</Name>
+    <Name Lang="vi">Eneri</Name>
+    <Name Lang="va">Roughantz</Name>
+    <Name Lang="va">Llananae Tourz</Name>
+    <DataFile Author="James Holden, Philip Athans, Mike Mikesh, and David Riddell" Type="SecondSurvey">1120_Corr.sec</DataFile>
+    <MetadataFile>1120_Corr.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Eali" Tags="Unreviewed" Selected="true" Milieu="M1120">
+    <Y>2</Y>
+    <X>-3</X>
+    <Name Lang="as">Ealiyasiyw</Name>
+    <DataFile Author="James Holden" Type="SecondSurvey">1120_Eali.sec</DataFile>
+    <MetadataFile>1120_Eali.xml</MetadataFile>
+  </Sector>
+
+   <Sector Abbreviation="Rift" Tags="Unreviewed" Selected="true" Milieu="M1120">
+    <Y>1</Y>
+    <X>-4</X>
+    <Name>Riftspan Reaches</Name>
+    <Name Lang="as">Iiyoihakh</Name>
+    <DataFile Author="James Holden" Type="SecondSurvey">1120_Rift.sec</DataFile>
+    <MetadataFile>1120_Rift.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Dene" Tags="Unreviewed" Selected="true" Milieu="M1120">
+    <Y>-1</Y>
+    <X>-3</X>
+    <Name>Deneb</Name>
+    <Name Lang="zh">Nieklsdia</Name>
+    <DataFile Author="James Holden, Mike Mikesh and Nancy Parker" Type="SecondSurvey">1120_Dene.sec</DataFile>
+    <MetadataFile>1120_Dene.xml</MetadataFile>
+  </Sector>
+
+  <!-- Vilani & Vargr -->
+  <Sector Abbreviation="Vlan" Tags="Unreviewed" Selected="true" Milieu="M1120">
+    <Y>-1</Y>
+    <X>-1</X>
+    <Name>Vland</Name>
+    <DataFile Author="James Holden, Joe D. Fugate Jr. and Terry McInnes" Type="SecondSurvey">1120_Vlan.sec</DataFile>
+    <MetadataFile>1120_Vlan.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Gush" Tags="Unreviewed" Selected="true" Milieu="M1120">
+    <Y>0</Y>
+    <X>-2</X>
+    <Name>Gushemege</Name>
+    <DataFile Author="James Holden, Joe D. Fugate Jr. and Terry McInnes" Type="SecondSurvey">1120_Gush.sec</DataFile>
+    <MetadataFile>1120_Gush.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Dagu" Tags="Unreviewed" Selected="true" Milieu="M1120">
+    <Y>0</Y>
+    <X>-1</X>
+    <Name>Dagudashaag</Name>
+    <Name>Dagudashag</Name>
+    <DataFile Author="James Holden, Joe D. Fugate Jr. and Terry McInnes" Type="SecondSurvey">1120_Dagu.sec</DataFile>
+    <MetadataFile>1120_Dagu.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Core" Tags="Unreviewed" Selected="true" Milieu="M1120">
+    <Y>0</Y>
+    <X>0</X>
+    <Name>Core</Name>
+    <Name Lang="vi">Ukan</Name>
+    <DataFile Author="James Holden, Joe D. Fugate Jr. and Terry McInnes" Type="SecondSurvey">1120_Core.sec</DataFile>
+    <MetadataFile>1120_Core.xml</MetadataFile>
+  </Sector>
+ 
+</Sectors>

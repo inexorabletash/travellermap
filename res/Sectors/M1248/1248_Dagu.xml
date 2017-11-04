@@ -16,6 +16,7 @@
              (ComStar Media/Avenger Enterprises, 2006).
 
     </Credits>
+  <Product Author="Martin J. Dougherty" Title="1248 Sourcebook 2: Bearers of the Flame" Publisher="Avenger Enterprises in association with Comstar Media, LLC." Ref="http://www.farfuture.net/Contents%20CDROM%20TNE-2.pdf" />
   <Subsectors>
     <Subsector Index="A"></Subsector>
     <Subsector Index="B"></Subsector>
@@ -60,6 +61,10 @@
     <Border ShowLabel="false" WrapLabel="false" Color="#00a651" Allegiance="Na" LabelPosition="0138">0138</Border>
     <Border ShowLabel="false" WrapLabel="false" Color="#00a651" Allegiance="Na" LabelPosition="0635">0635</Border>
   </Borders>
+  <Labels>
+    <Label Hex="0727" Color="Yellow" Size="small">County of Ukse</Label>
+    <Label Hex="2805" Color="Yellow" Size="small">Naasirka Bureau</Label>
+  </Labels>
   <Routes>
     <Route Start="0110" End="3211" EndOffsetX="-1" Type="Xboat" />
     <Route Start="0123" End="0320" Type="Xboat" />
@@ -76,8 +81,8 @@
     <Route Start="0531" End="0833" Type="Xboat" />
     <Route Start="0539" End="0736" Type="Xboat" />
     <Route Start="0736" End="0833" Type="Xboat" />
-    <Route Start="2402" End="2437" EndOffsetY="-1" Type="Xboat" />
     <Route Start="2402" End="2405" Type="Xboat" />
+    <Route Start="2402" End="2440" EndOffsetY="-1" Type="Xboat" />
     <Route Start="2402" End="2803" Type="Xboat" />
     <Route Start="2706" End="2803" Type="Xboat" />
   </Routes>

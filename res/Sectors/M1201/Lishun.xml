@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<Sector Abbreviation="Lish" Tags="Unreviewed">
+  <Y>-1</Y>
+  <X>0</X>
+  <Name>Lishun</Name>
+  <Credits>
+    <![CDATA[
+
+             <b>Lishun</b> sector was designed by Marc W. Miller and
+             appears in <cite>Atlas of the Imperium</cite> (GDW,
+             1984).
+
+             It was refined by Joe D. Fugate Sr., and portions appear
+             in <cite>The Travellers Digest</cite>, <cite>The Flaming
+             Eye</cite> (DGP, 1991) and <cite>Challenge
+             Magazine</cite>.
+
+    ]]>
+  </Credits>
+  <DataFile Milieu="M1201" Type="TabDelimited">Lishun.tab</DataFile>
+  <Subsectors>
+    <Subsector Index="A">?</Subsector>
+    <Subsector Index="B">?</Subsector>
+    <Subsector Index="C">?</Subsector>
+    <Subsector Index="D">?</Subsector>
+    <Subsector Index="E">?</Subsector>
+    <Subsector Index="F">?</Subsector>
+    <Subsector Index="G">?</Subsector>
+    <Subsector Index="H">?</Subsector>
+    <Subsector Index="I">?</Subsector>
+    <Subsector Index="J">?</Subsector>
+    <Subsector Index="K">?</Subsector>
+    <Subsector Index="L">Ot Zell</Subsector>
+    <Subsector Index="M">?</Subsector>
+    <Subsector Index="N">?</Subsector>
+    <Subsector Index="O">?</Subsector>
+    <Subsector Index="P">?</Subsector>
+  </Subsectors>
+
+  <Allegiances>
+    <Allegiance Code="Bi">Black Imperium Holocaust Zone</Allegiance>
+    <Allegiance Code="Ca">Conderation of Antares</Allegiance>
+  </Allegiances>
+
+  <Stylesheet>
+    border.Ca { color: lightblue; }
+    route.Ca { color: lightgreen; }
+  </Stylesheet>
+
+  <Borders>
+    <Border WrapLabel="false" Color="#949599" Allegiance="Bi" LabelPosition="2537">0541 0640 0639 0739 0838 0837 0937 1036 1136 1135 1134 1233 1333 1433 1534 1634 1735 1834 1934 2033 2133 2232 2333 2432 2532 2632 2733 2833 2934 2934 3034 3135 3235 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2041 1941 1841 1741 1641 1541 1441 1341 1241 1141 1041 0941 0841 0741 0641 0541 </Border>
+    <Border Allegiance="Ca" Label="Conderation of Antares" WrapLabel="true">
+      2823 2924 2824 2825 2824 2823
+    </Border>
+  </Borders>
+  <Routes>
+  </Routes>
+</Sector>

@@ -1,4 +1,6 @@
-﻿using Maps.Rendering;
+﻿using Maps.Graphics;
+using Maps.Rendering;
+using Maps.Utilities;
 using System;
 using System.Drawing;
 using System.Web;
@@ -7,26 +9,17 @@ namespace Maps.API
 {
     internal class PosterHandler : ImageHandlerBase
     {
-        protected override string ServiceName { get { return "poster"; } }
+        protected override DataResponder GetResponder(HttpContext context) => new Responder(context);
 
-        protected override DataResponder GetResponder(HttpContext context)
-        {
-            return new Responder(context);
-        }
         private class Responder : ImageResponder
         {
             public Responder(HttpContext context) : base(context) { }
-            public override void Process()
+            public override void Process(ResourceManager resourceManager)
             {
-                // NOTE: This (re)initializes a static data structure used for
-                // resolving names into sector locations, so needs to be run
-                // before any other objects (e.g. Worlds) are loaded.
-                ResourceManager resourceManager = new ResourceManager(context.Server);
-
                 Selector selector;
-                RectangleF tileRect = new RectangleF();
+                RectangleF tileRect;
                 MapOptions options = MapOptions.SectorGrid | MapOptions.SubsectorGrid | MapOptions.BordersMajor | MapOptions.BordersMinor | MapOptions.NamesMajor | MapOptions.NamesMinor | MapOptions.WorldsCapitals | MapOptions.WorldsHomeworlds;
-                Stylesheet.Style style = Stylesheet.Style.Poster;
+                Style style = Style.Poster;
                 ParseOptions(ref options, ref style);
                 string title;
                 bool clipOutsectorBorders;
@@ -41,19 +34,26 @@ namespace Maps.API
                     int y1 = GetIntOption("y1", 0);
                     int y2 = GetIntOption("y2", 0);
 
-                    tileRect.X = Math.Min(x1, x2);
-                    tileRect.Y = Math.Min(y1, y2);
+                    tileRect = new RectangleF()
+                    {
+                        X = Math.Min(x1, x2),
+                        Y = Math.Min(y1, y2)
+                    };
                     tileRect.Width = Math.Max(x1, x2) - tileRect.X;
                     tileRect.Height = Math.Max(y1, y2) - tileRect.Y;
 
+                    // NOTE: This (re)initializes a static data structure used for
+                    // resolving names into sector locations, so needs to be run
+                    // before any other objects (e.g. Worlds) are loaded.
                     SectorMap.Milieu map = SectorMap.ForMilieu(resourceManager, GetStringOption("milieu"));
                     selector = new RectSelector(map, resourceManager, tileRect, slop: false);
 
+                    // Include specified hexes
                     tileRect.Offset(-1, -1);
                     tileRect.Width += 1;
                     tileRect.Height += 1;
 
-                    title = string.Format("Poster ({0},{1}) - ({2},{3})", x1, y1, x2, y2);
+                    title = $"Poster ({x1},{y1}) - ({x2},{y2})";
                     clipOutsectorBorders = true;
                 }
                 else if (HasOption("domain"))
@@ -76,7 +76,7 @@ namespace Maps.API
                         case "solomani": x = -1.5; y = 2.75; w = 4; h = 2.25; title = "Solomani Confederacy"; break;
                         case "zhodani": x = -8; y = -3; w = 5; h = 3; title = "Zhodani Consulate"; break;
                         case "hive":
-                        case "hiver": x = 2; y = 1; w = 6; h = 4; title = "Hiver Federation"; break;
+                        case "hiver": x = 2; y = 1; w = 6; h = 4; title = "Hive Federation"; break;
                         case "aslan": x = -8; y = 1; w = 7; h = 4; title = "Aslan Hierate"; break;
                         case "vargr": x = -4; y = -4; w = 8; h = 3; title = "Vargr Extents"; break;
                         case "kkree": x = 4; y = -2; w = 4; h = 4; title = "Two Thousand Worlds"; break;
@@ -87,7 +87,7 @@ namespace Maps.API
                         case "jg": x = 160; y = 0; w = 2; h = 2; title = "Judges Guild"; break;
 
                         default:
-                            throw new HttpError(404, "Not Found", string.Format("Unknown domain: {0}", domain));
+                            throw new HttpError(404, "Not Found", $"Unknown domain: {domain}");
                     }
 
                     int x1 = (int)Math.Round(x * Astrometrics.SectorWidth - Astrometrics.ReferenceHex.X + 1);
@@ -95,14 +95,21 @@ namespace Maps.API
                     int x2 = (int)Math.Round(x1 + w * Astrometrics.SectorWidth - 1);
                     int y2 = (int)Math.Round(y1 + h * Astrometrics.SectorHeight - 1);
 
-                    tileRect.X = Math.Min(x1, x2);
-                    tileRect.Y = Math.Min(y1, y2);
+                    tileRect = new RectangleF()
+                    {
+                        X = Math.Min(x1, x2),
+                        Y = Math.Min(y1, y2)
+                    };
                     tileRect.Width = Math.Max(x1, x2) - tileRect.X;
                     tileRect.Height = Math.Max(y1, y2) - tileRect.Y;
 
+                    // NOTE: This (re)initializes a static data structure used for
+                    // resolving names into sector locations, so needs to be run
+                    // before any other objects (e.g. Worlds) are loaded.
                     SectorMap.Milieu map = SectorMap.ForMilieu(resourceManager, GetStringOption("milieu"));
                     selector = new RectSelector(map, resourceManager, tileRect, slop: false);
 
+                    // Include selected hexes
                     tileRect.Offset(-1, -1);
                     tileRect.Width += 1;
                     tileRect.Height += 1;
@@ -110,7 +117,7 @@ namespace Maps.API
                     // Account for jagged hexes
                     tileRect.Height += 0.5f;
                     tileRect.Inflate(0.25f, 0.10f);
-                    if (style == Stylesheet.Style.Candy)
+                    if (style == Style.Candy)
                         tileRect.Width += 0.75f;
 
                     clipOutsectorBorders = true;
@@ -119,46 +126,55 @@ namespace Maps.API
                 {
                     // Sector - either POSTed or specified by name
                     Sector sector = null;
-                    options = options & ~MapOptions.SectorGrid;
+                    options &= ~MapOptions.SectorGrid;
 
-                    if (context.Request.HttpMethod == "POST")
+                    if (Context.Request.HttpMethod == "POST")
                     {
                         bool lint = GetBoolOption("lint", defaultValue: false);
-                        ErrorLogger errors = new ErrorLogger();
-                        sector = GetPostedSector(context.Request, errors);
+                        Func<ErrorLogger.Record, bool> filter = null;
+                        if (lint)
+                        {
+                            bool hide_uwp = GetBoolOption("hide-uwp", defaultValue: false);
+                            bool hide_tl = GetBoolOption("hide-tl", defaultValue: false);
+                            filter = (ErrorLogger.Record record) =>
+                            {
+                                if (hide_uwp && record.message.StartsWith("UWP")) return false;
+                                if (hide_tl && record.message.StartsWith("UWP: TL")) return false;
+                                return true;
+                            };
+                        }
+                        ErrorLogger errors = new ErrorLogger(filter);
+
+                        sector = GetPostedSector(Context.Request, errors) ??
+                            throw new HttpError(400, "Bad Request", "Either file or data must be supplied in the POST data.");
                         if (lint && !errors.Empty)
                             throw new HttpError(400, "Bad Request", errors.ToString());
 
-                        if (sector == null)
-                            throw new HttpError(400, "Bad Request", "Either file or data must be supplied in the POST data.");
 
                         title = "User Data";
 
                         // TODO: Suppress all OTU rendering.
-                        options = options & ~MapOptions.WorldsHomeworlds & ~MapOptions.WorldsCapitals;
+                        options &= ~(MapOptions.WorldsHomeworlds | MapOptions.WorldsCapitals);
                     }
                     else
                     {
-                        string sectorName = GetStringOption("sector");
-                        if (sectorName == null)
+                        string sectorName = GetStringOption("sector") ??
                             throw new HttpError(400, "Bad Request", "No sector specified.");
 
                         SectorMap.Milieu map = SectorMap.ForMilieu(resourceManager, GetStringOption("milieu"));
 
-                        sector = map.FromName(sectorName);
-                        if (sector == null)
-                            throw new HttpError(404, "Not Found", string.Format("The specified sector '{0}' was not found.", sectorName));
+                        sector = map.FromName(sectorName) ??
+                            throw new HttpError(404, "Not Found", $"The specified sector '{sectorName}' was not found.");
 
                         title = sector.Names[0].Text;
                     }
 
                     if (sector != null && HasOption("subsector") && GetStringOption("subsector").Length > 0)
                     {
-                        options = options & ~MapOptions.SubsectorGrid;
                         string subsector = GetStringOption("subsector");
                         int index = sector.SubsectorIndexFor(subsector);
                         if (index == -1)
-                            throw new HttpError(404, "Not Found", string.Format("The specified subsector '{0}' was not found.", subsector));
+                            throw new HttpError(404, "Not Found", $"The specified subsector '{subsector}' was not found.");
 
                         selector = new SubsectorSelector(resourceManager, sector, index);
 
@@ -166,7 +182,7 @@ namespace Maps.API
 
                         options &= ~(MapOptions.SectorGrid | MapOptions.SubsectorGrid);
 
-                        title = string.Format("{0} - Subsector {1}", title, 'A' + index);
+                        title = $"{title} - Subsector {'A' + index}";
                     }
                     else if (sector != null && HasOption("quadrant") && GetStringOption("quadrant").Length > 0)
                     {
@@ -179,7 +195,7 @@ namespace Maps.API
                             case "gamma": index = 2; quadrant = "Gamma"; break;
                             case "delta": index = 3; quadrant = "Delta"; break;
                             default:
-                                throw new HttpError(400, "Bad Request", string.Format("The specified quadrant '{0}' is invalid.", quadrant));
+                                throw new HttpError(400, "Bad Request", $"The specified quadrant '{quadrant}' is invalid.");
                         }
 
                         selector = new QuadrantSelector(resourceManager, sector, index);
@@ -187,7 +203,7 @@ namespace Maps.API
 
                         options &= ~(MapOptions.SectorGrid | MapOptions.SubsectorGrid | MapOptions.SectorsMask);
 
-                        title = string.Format("{0} - {1} Quadrant", title, quadrant);
+                        title = $"{title} - {quadrant} Quadrant";
                     }
                     else
                     {
@@ -200,15 +216,16 @@ namespace Maps.API
                     // Account for jagged hexes
                     tileRect.Height += 0.5f;
                     tileRect.Inflate(0.25f, 0.10f);
-                    if (style == Stylesheet.Style.Candy)
+                    if (style == Style.Candy)
                         tileRect.Width += 0.75f;
                     clipOutsectorBorders = false;
                 }
 
                 const double NormalScale = 64; // pixels/parsec - standard subsector-rendering scale
-                double scale = Util.Clamp(GetDoubleOption("scale", NormalScale), MinScale, MaxScale);
+                double scale = GetDoubleOption("scale", NormalScale).Clamp(MinScale, MaxScale);
 
                 int rot = GetIntOption("rotation", 0) % 4;
+                int hrot = GetIntOption("hrotation", 0);
                 bool thumb = GetBoolOption("thumb", false);
 
                 Stylesheet stylesheet = new Stylesheet(scale, options, style);
@@ -223,25 +240,61 @@ namespace Maps.API
                 }
 
                 int bitmapWidth = tileSize.Width, bitmapHeight = tileSize.Height;
-                float translateX = 0, translateY = 0;
+                AbstractMatrix transform = AbstractMatrix.Identity;
+
                 switch (rot)
                 {
                     case 1: // 90 degrees clockwise
+                        transform.RotatePrepend(90);
+                        transform.TranslatePrepend(0, -bitmapHeight);
                         Util.Swap(ref bitmapWidth, ref bitmapHeight);
-                        translateX = bitmapWidth;
                         break;
                     case 2: // 180 degrees
-                        translateX = bitmapWidth; translateY = bitmapHeight;
+                        transform.RotatePrepend(180);
+                        transform.TranslatePrepend(-bitmapWidth, -bitmapHeight);
                         break;
                     case 3: // 270 degrees clockwise
+                        transform.RotatePrepend(270);
+                        transform.TranslatePrepend(-bitmapWidth, 0);
                         Util.Swap(ref bitmapWidth, ref bitmapHeight);
-                        translateY = bitmapHeight;
                         break;
                 }
 
-                RenderContext ctx = new RenderContext(resourceManager, selector, tileRect, scale, options, stylesheet, tileSize);
-                ctx.ClipOutsectorBorders = clipOutsectorBorders;
-                ProduceResponse(context, title, ctx, new Size(bitmapWidth, bitmapHeight), rot, translateX, translateY);
+                // TODO: Figure out how to compose rot and hrot properly.
+                Size bitmapSize = new Size(bitmapWidth, bitmapHeight);
+                if (hrot != 0)
+                    ApplyHexRotation(hrot, stylesheet, ref bitmapSize, ref transform);
+
+                if (GetBoolOption("clampar", defaultValue: false))
+                {
+                    // Landscape: 1.91:1 (1.91)
+                    // Portrait: 4:5 (0.8)
+                    const double MIN_ASPECT_RATIO = 0.8;
+                    const double MAX_ASPECT_RATIO = 1.91;
+                    double aspectRatio = (double)bitmapSize.Width / (double)bitmapSize.Height;
+                    Size newSize = bitmapSize;
+                    if (aspectRatio < MIN_ASPECT_RATIO)
+                    {
+                        newSize.Width = (int)Math.Floor(bitmapSize.Height * MIN_ASPECT_RATIO);
+                    }
+                    else if (aspectRatio > MAX_ASPECT_RATIO)
+                    {
+                        newSize.Height = (int)Math.Floor(bitmapSize.Width / MAX_ASPECT_RATIO);
+                    }
+                    if (newSize != bitmapSize)
+                    {
+                        transform.TranslatePrepend(
+                            (newSize.Width - bitmapSize.Width) / 2f,
+                            (newSize.Height - bitmapSize.Height) / 2f);
+                        bitmapSize = newSize;
+                    }
+                }
+
+                RenderContext ctx = new RenderContext(resourceManager, selector, tileRect, scale, options, stylesheet, tileSize)
+                {
+                    ClipOutsectorBorders = clipOutsectorBorders
+                };
+                ProduceResponse(Context, title, ctx, bitmapSize, transform);
             }
         }
     }

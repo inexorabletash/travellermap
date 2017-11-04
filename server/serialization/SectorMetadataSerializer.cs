@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.IO;
-using System.Xml.Serialization;
+﻿using System.IO;
 
 namespace Maps.Serialization
 {
@@ -16,18 +12,17 @@ namespace Maps.Serialization
             {
                 case "MSEC": return new MSECSerializer();
                 case "XML":
-                default: return new XMLSectorMetadataSerializer();
+                default: return new XmlSectorMetadataSerializer();
             }
         }
     }
 
     // NOTE: This is unused; see SectorMetaDataHandler
-    internal class XMLSectorMetadataSerializer : SectorMetadataSerializer
+    internal class XmlSectorMetadataSerializer : SectorMetadataSerializer
     {
         public override void Serialize(TextWriter writer, Sector sector)
         {
-            XmlSerializer xs = new XmlSerializer(typeof(Sector));
-            xs.Serialize(writer, sector);
+            throw new System.ApplicationException("Not Implemented");
         }
     }
 

@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<Sector Abbreviation="Dias" Tags="Unreviewed">
+  <Y>2</Y>
+  <X>0</X>
+  <Name>Diaspora</Name>
+  <Name Lang="vi">Nakulakak</Name>
+  <!-- <Product Publisher="GDW" Author="Mark &quot;Geo&quot; Gelinas Sr." Title="Astrogator's Guide to Diaspora Sector" /> -->
+  <Credits>
+    <![CDATA[
+
+             <b>Diaspora</b> sector was designed by Marc
+             W. Miller and appears in <cite>Atlas of the
+             Imperium</cite> (GDW, 1984).
+
+             It was refined by Mark Gelinas Sr. and appears in
+             <cite>Astrogators' Guide to Diaspora Sector</cite> (GDW,
+             1992).
+
+    ]]>
+  </Credits>
+  <DataFile Source="TNE Rules" Milieu="M1201" Type="TabDelimited">Diaspora.tab</DataFile>
+  <Subsectors>
+    <Subsector Index="A">Narquel</Subsector>
+    <Subsector Index="B">Libert</Subsector>
+    <Subsector Index="C">Sufren</Subsector>
+    <Subsector Index="D">Khavle</Subsector>
+    <Subsector Index="E">Shadigi</Subsector>
+    <Subsector Index="F">Kushga</Subsector>
+    <Subsector Index="G">Alurza</Subsector>
+    <Subsector Index="H">Pasdaruu</Subsector>
+    <Subsector Index="I">Ebasha</Subsector>
+    <Subsector Index="J">Iusea</Subsector>
+    <Subsector Index="K">The Blight</Subsector>
+    <Subsector Index="L">Promise</Subsector>
+    <Subsector Index="M">Hijiri</Subsector>
+    <Subsector Index="N">Shumisdi</Subsector>
+    <Subsector Index="O">Madoc</Subsector>
+    <Subsector Index="P">Khulam</Subsector>
+  </Subsectors>
+
+  <Stylesheet>
+    border.Su { color: lightblue; }
+    route.Su { color: lightgreen; }
+  </Stylesheet>
+
+  <Allegiances>
+    <Allegiance Code="Su">Covenant of Sufren</Allegiance>
+    <Allegiance Code="Wi">Wilds</Allegiance>
+    <Allegiance Code="Ao">Reformation Coalition Area of Operation</Allegiance>
+    <Allegiance Code="Wi">Wilds</Allegiance>
+    <Allegiance Code="">Barren</Allegiance>    
+  </Allegiances>
+  
+  <Borders>
+    <Border Allegiance="Su" Label="Covenant of Sufren" WrapLabel="true">
+      1905 2004 2003 2002 1902 1901 1902 2002 2003 2004 1905
+    </Border>
+  
+    <Border Allegiance="Ao" Label="Area of Operations" WrapLabel="true">
+      2840 2839 2838 2837 2836 2835 2834 2833 2832 2831 2931 3030
+      3029 3129 3228 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337
+      3338 3339 3340 3341 3241 3141 3041 2941 2841
+    </Border>
+  </Borders>
+  
+  <Routes>
+ 
+  </Routes>
+</Sector>

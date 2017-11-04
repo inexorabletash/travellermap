@@ -9,8 +9,7 @@ namespace Maps.Serialization
 {
     internal class MSECParser : SectorMetadataFileParser 
     {
-        public override Encoding Encoding { get { return Encoding.GetEncoding(1252); } }
-
+        public override Encoding Encoding => Encoding.GetEncoding(1252);
         private static void Apply(string line, Sector sector)
         {
             string[] kv = line.Split(null, 2);
@@ -23,10 +22,11 @@ namespace Maps.Serialization
             }
 
             if (Regex.IsMatch(key, @"^[A-P]$")) {
-                Subsector ss = new Subsector();
-                ss.Index = key;
-                ss.Name = value;
-                sector.Subsectors.Add(ss);
+                sector.Subsectors.Add(new Subsector()
+                {
+                    Index = key,
+                    Name = value
+                });
                 return;
             }
 
@@ -82,7 +82,11 @@ namespace Maps.Serialization
                     }
                 case "REGION":
                     {
-                        // TODO: Support regions - like borders, but filled rather than stroked 
+                        string[] tokens = value.Split((char[])null, StringSplitOptions.RemoveEmptyEntries);
+                        if (!Regex.IsMatch(tokens.Last(), @"^\d{4}$"))
+                            sector.Regions.Add(new Region(string.Join(" ", tokens.Take(tokens.Count() - 1)), tokens.Last()));
+                        else
+                            sector.Regions.Add(new Region(string.Join(" ", tokens)));
                         return;
                     }
 
@@ -138,8 +142,7 @@ namespace Maps.Serialization
                                 }
                                 if (Regex.IsMatch(option, @"[-+](\d+)$"))
                                 {
-                                    int offset = 0;
-                                    if (int.TryParse(option, out offset))
+                                    if (int.TryParse(option, out int offset))
                                         label.OffsetY = offset / 100f;
                                     continue;
                                 }

@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <link rel="shortcut icon" href="favicon.ico">
 <link rel="stylesheet" href="site.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
-<script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.25/polyfill.min.js"></script>
-<script src="map.js?update=2016-09-10"></script>
-<script src="world_util.js?update=2016-09-10"></script>
-<script src="world.js?update=2016-09-14"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
+<script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.29/polyfill.min.js"></script>
+<script src="map.js?update=2017-06-29T21:36:37"></script>
+<script src="world_util.js?update=2017-07-16T11:57:44"></script>
+<script src="world.js?update=2017-06-16T09:12:38"></script>
 
 <style>
 @import url(https://fonts.googleapis.com/css?family=PT+Sans+Narrow);
@@ -46,7 +46,16 @@ h1 small { font-size: 75%; }
 }
 
 td { vertical-align: top; }
-.nowrap { white-space: nowrap; }
+.nowrap { white-space: nowrap; display: inline-block; }
+
+/* Names */
+
+.wds-names {
+  min-height: 104px;
+  max-height: 110px;
+  margin: 10px 10px 5px;
+  overflow: hidden;
+}
 
 /* World Image */
 
@@ -119,10 +128,10 @@ td { vertical-align: top; }
 <script id=wds-world-template type="text/x-handlebars-template">
 
 <h1>
-{{#if Name}} <a target=wiki href="{{world_url}}">{{Name}}</a> {{else}} (Unnamed) {{/if}}
+{{#if Name}} <a target=_blank rel=noopener href="{{world_url}}">{{Name}}</a> {{else}} (Unnamed) {{/if}}
 <small>
-{{#if SubsectorName}} / <a target=wiki href="{{ss_url}}">{{SubsectorName}}</a> {{/if}}
-<a target=wiki href="{{sector_url}}">({{Sector}}</a> {{Hex}})
+{{#if SubsectorName}} / <a target=_blank rel=noopener href="{{ss_url}}">{{SubsectorName}}</a> {{/if}}
+<a target=_blank rel=noopener href="{{sector_url}}">({{Sector}}</a> {{Hex}})
 </small>
 </h1>
 
@@ -246,8 +255,8 @@ td { vertical-align: top; }
 
 <div id=footer style="text-align: center; font-size: 8pt;">
   The <em class=product>Traveller</em> game in all forms is owned by Far
-  Future Enterprises. Copyright &copy; 1977 &ndash; 2016 Far Future
-  Enterprises.
+  Future Enterprises. Copyright <span class=copyright>&copy;</span> 1977 &ndash; 2017
+  Far Future Enterprises.
   <a href="http://farfuture.net/FFEFairUsePolicy2008.pdf">Fair Use Policy</a>
 </div>
 </div>

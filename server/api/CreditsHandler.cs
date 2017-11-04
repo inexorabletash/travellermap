@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using Maps.Utilities;
+using System.Linq;
 using System.Web;
 using System.Xml.Serialization;
 
@@ -6,21 +7,15 @@ namespace Maps.API
 {
     internal class CreditsHandler : DataHandlerBase
     {
-        protected override string ServiceName { get { return "credits"; } }
-
-        protected override DataResponder GetResponder(HttpContext context)
-        {
-            return new Responder(context);
-        }
+        protected override DataResponder GetResponder(HttpContext context) => new Responder(context);
 
         private class Responder : DataResponder
         {
             public Responder(HttpContext context) : base(context) { }
-            public override string DefaultContentType { get { return System.Net.Mime.MediaTypeNames.Text.Xml; } }
-            public override void Process()
-            {
-                ResourceManager resourceManager = new ResourceManager(context.Server);
+            public override string DefaultContentType => ContentTypes.Text.Xml;
 
+            public override void Process(ResourceManager resourceManager)
+            {
                 // NOTE: This (re)initializes a static data structure used for 
                 // resolving names into sector locations, so needs to be run
                 // before any other objects (e.g. Worlds) are loaded.
@@ -30,9 +25,8 @@ namespace Maps.API
                 if (HasOption("sector"))
                 {
                     string sectorName = GetStringOption("sector");
-                    Sector sec = map.FromName(sectorName);
-                    if (sec == null)
-                        throw new HttpError(404, "Not Found", string.Format("The specified sector '{0}' was not found.", sectorName));
+                    Sector sec = map.FromName(sectorName) ??
+                        throw new HttpError(404, "Not Found", $"The specified sector '{sectorName}' was not found.");
 
                     int hex = GetIntOption("hex", Astrometrics.SectorCentralHex);
                     loc = new Location(sec.Location, hex);
@@ -51,6 +45,9 @@ namespace Maps.API
 
                 if (sector != null)
                 {
+                    data.SectorX = sector.X;
+                    data.SectorY = sector.Y;
+
                     // TODO: Multiple names
                     foreach (var name in sector.Names.Take(1))
                         data.SectorName = name.Text;
@@ -125,12 +122,12 @@ namespace Maps.API
                             data.WorldEx = world.Economic;
                             data.WorldCx = world.Cultural;
                             data.WorldPbg = world.PBG;
-                            data.WorldAllegiance = sector.GetAllegianceFromCode(world.Allegiance).T5Code;
+                            data.WorldAllegiance = sector.GetAllegianceFromCode(world.Allegiance)?.T5Code ?? "";
                         }
                     }
                 }
 
-                SendResult(context, data);
+                SendResult(data);
             }
         }
     }
@@ -144,6 +141,8 @@ namespace Maps.API.Results
     {
         public string Credits { get; set; }
 
+        public int SectorX { get; set; }
+        public int SectorY { get; set; }
         public string SectorName { get; set; }
         public string SectorAuthor { get; set; }
         public string SectorSource { get; set; }

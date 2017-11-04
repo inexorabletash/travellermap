@@ -7,7 +7,7 @@
 var SERVICE_BASE = (function(l) {
   'use strict';
   if (l.hostname === 'localhost' && l.pathname.indexOf('~') !== -1)
-    return 'http://travellermap.com';
+    return 'https://travellermap.com';
   return '';
 }(window.location));
 

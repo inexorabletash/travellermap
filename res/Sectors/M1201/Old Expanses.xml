@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<Sector Abbreviation="Olde" Tags="Unreviewed">
+  <Y>2</Y>
+  <X>1</X>
+  <Name>Old Expanses</Name>
+  <Name Lang="vi">Mikadira</Name>
+  <Credits>
+    <![CDATA[
+
+             <b>Old Expanses</b> sector was designed by Jim Cunningham
+             and Gordon Sheridan. Portions of Old Expanses sector
+             appear in <cite>High Passage Magazine</cite>.
+             
+             Details of Voskl Trade Alliance from http://www.downport.com/bard/bard/peri/peri0007.html
+
+    ]]>
+  </Credits>
+  <DataFile Source="TNE Rules" Milieu="M1201" Type="TabDelimited">Old Expanses.tab</DataFile>
+  <Subsectors>
+    <Subsector Index="A">Dethenes</Subsector>
+    <Subsector Index="B">Quinoid</Subsector>
+    <Subsector Index="C">?</Subsector>
+    <Subsector Index="D">Voskl</Subsector>
+    <Subsector Index="E">Srys</Subsector>
+    <Subsector Index="F">Jayna</Subsector>
+    <Subsector Index="G">?</Subsector>
+    <Subsector Index="H">?</Subsector>
+    <Subsector Index="I">Thoezennt</Subsector>
+    <Subsector Index="J">Shenk</Subsector>
+    <Subsector Index="K">?</Subsector>
+    <Subsector Index="L">?</Subsector>
+    <Subsector Index="M">Aubaine</Subsector>
+    <Subsector Index="N">Oriflamme</Subsector>
+    <Subsector Index="O">So Skire</Subsector>
+    <Subsector Index="P">Sitah</Subsector>
+  </Subsectors>
+    <Stylesheet>
+      border.Rc { color: lightblue; }
+      route.Rc { color: lightgreen; }
+
+      border.Sc { color: yellow; }
+      route.Sc { color: yellow; }
+
+      border.Vt { color: yellow; }
+      route.Vt { color: yellow; }
+
+      border.So { color: blue; }
+    </Stylesheet>
+
+  <Allegiances>
+    <Allegiance Code="So">Solee Empire</Allegiance>
+    <Allegiance Code="Rc">Reformation Coalition</Allegiance>
+    <Allegiance Code="Tv">Voskl Trade Alliance</Allegiance>
+    <Allegiance Code="Ao">Reformation Coalition Area of Operation</Allegiance>
+    <Allegiance Code="Sc">Sitah Hiver Client State</Allegiance>
+    <Allegiance Code="Mt">Monteran Theocracy</Allegiance>
+    <Allegiance Code="Wi">Wilds</Allegiance>
+    <Allegiance Code="">Barren</Allegiance>
+  </Allegiances>
+  
+  <Borders>
+    <Border Allegiance="Rc" Label="Reformation Coalition" WrapLabel="true">
+      0337 0336 0435 0434 0534 0633 0632 0732 0831 0931 0932 1032 1033 1134 1234 1235 1236 1337
+      1338 1238 1139 1039 0939 0839 0739 0638 0538 0437 0336
+    </Border>
+
+    <Border Allegiance="Ao" Label="Area of Operations" WrapLabel="true" LabelPosition="0927">
+      0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028
+      0128 0227 0327 0426 0526 0625 0725 0824 0924 1024 1125 1225 1326 1426 1527 1627
+      1728 1828 1929 2029 2130 2230 2231 2232 2233 2234 2235 2236 2237 2238 2239 2240 2241
+      2141 2041 1941 1841 1741 1641 1541
+      1441 1341 1241 1141 1041 0941 0841 0741 0641 0541 0441 0341 0241 0141 0041
+    </Border>
+
+    <Border Allegiance="Sc" Label="Sitah Hiver Client State" WrapLabel="false">
+      2736 2835 2935 2934 2833 2733 2832 2932 3031 3032 3133 3233 3134 3135 3136 3036 2936 2835 2736
+    </Border>
+    
+  <Border Allegiance="So" Label="Solee Empire">
+    1322 1321 1322 1422 1423 1424 1423 1422 1322 
+  </Border>
+    
+    <Border Allegiance="Mt" Label="Monteran Theocracy">
+      1011 1010 1111 1011
+    </Border>
+
+    <Border Allegiance="Tv" Label="Voskl Trade Alliance" WrapLabel="true" LabelPosition="2804">
+      2707 2706 2705 2706 2806 2907 3006 2907 2806 2707
+    </Border>
+
+  </Borders>
+  <Routes>
+
+  </Routes>
+</Sector>

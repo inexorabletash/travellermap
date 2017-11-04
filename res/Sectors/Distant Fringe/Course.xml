@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Sector>
+  <Name>Course</Name>
+  <Credits>
+    <![CDATA[
+      <b>Course</b> sector was designed by Ade Stewart as part of the Distant Fringe.
+    ]]>
+  </Credits>
+  <Subsectors>
+    <Subsector Index="A">Ragol</Subsector>
+    <Subsector Index="I">Sandazar</Subsector>
+    <Subsector Index="M">As'Kaa</Subsector>
+  </Subsectors>
+  <Allegiances>
+    <Allegiance Code="Sx">Sath Exploration</Allegiance>
+  </Allegiances>
+  <Routes>
+    <!-- Outland Run -->
+    <Route Start="0022" End="0223"/>
+  </Routes>
+  <Labels>
+    <!-- Rift Names -->
+    <Label Hex="1316" Color="gray" Size="large">Moat Rifts</Label>
+    <Label Hex="1636" Color="gray" Size="large">Great Void</Label>
+  </Labels>
+  <Stylesheet>
+    route { style: dashed }
+  </Stylesheet>
+</Sector>

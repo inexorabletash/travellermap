@@ -2,12 +2,62 @@
 
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
+using System.Text.RegularExpressions;
 
 namespace Maps
 {
+    // TODO: Expand to handle non-T5SS data
+    internal static class StellarData
+    {
+        internal struct Star
+        {
+            public string classification; // Full string for star, e.g. "G2 V", "D", "BD", "BH", etc
+
+            public char type; // OBAFGKM 
+            public int fraction; // 0-9
+            public string luminosity; // Ia, Ib, II, III, IV, V, VI, VII
+        }
+
+        private static readonly Regex STELLAR_REGEX = new Regex(@"([OBAFGKM][0-9] ?(?:Ia|Ib|II|III|IV|V|VI|VII|D)|D|BD|BH)",
+            RegexOptions.Compiled | RegexOptions.CultureInvariant);
+
+        private static Regex STAR_REGEX = new Regex(@"^([OBAFGKM])([0-9]) ?(Ia|Ib|II|III|IV|V|VI)$",
+                RegexOptions.Compiled | RegexOptions.CultureInvariant);
+
+        internal static IEnumerable<Star> Parse(string stellar)
+        {
+            foreach (Match m in STELLAR_REGEX.Matches(stellar))
+            {
+                if (m.Value == "D" || m.Value == "BD" || m.Value == "BH")
+                {
+                    yield return new Star() { classification = m.Value };
+                }
+                else
+                {
+                    Match sm = STAR_REGEX.Match(m.Value);
+                    if (sm.Success)
+                    {
+                        yield return new Star()
+                        {
+                            classification = m.Value,
+                            type = sm.Groups[1].Value[0],
+                            fraction = sm.Groups[2].Value[0] - '0',
+                            luminosity = sm?.Groups[3].Value
+                        };
+                    }
+                    else
+                    {
+                        // Assume anything else is a white dwarf. 
+                        yield return new Star() { classification = "D" };
+                    }
+                }
+            }
+        }
+    }
+
+    // TODO: Remove this
     internal static class StellarDataParser
     {
         // Grammar:
@@ -48,7 +98,7 @@ namespace Maps
         //   w          ::= " "
         //
         // Notes:
-        //   * "Un" is from Mendan 0221 (verified in Challenge #46)
+        //   * "Un" is from Mendan 0221 (verified in Challenge #46) [Replaced in T5SS]
         //   * "BH" is for Far Frontiers 2526 Shadowsand (per "Rescue on Galatea")
         //
         // Future: 
@@ -75,15 +125,13 @@ namespace Maps
             public static bool Parse(SeekableReader r, out Unit unit)
             {
 #if EXTENDED_SYSTEM_PARSING
-                Pair p;
-                if( Pair.Parse( r, out p ) )
+                if( Pair.Parse( r, out Pair p ) )
                 {
                     unit = p;
                     return true;
                 }
 #endif
-                Star s;
-                if (Star.Parse(r, out s))
+                if (Star.Parse(r, out Star s))
                 {
                     unit = s;
                     return true;
@@ -149,15 +197,13 @@ namespace Maps
         {
             public static bool Parse(SeekableReader r, out Companion companion)
             {
-                NearCompanion nc;
-                if (NearCompanion.Parse(r, out nc))
+                if (NearCompanion.Parse(r, out NearCompanion nc))
                 {
                     companion = nc;
                     return true;
                 }
 #if EXTENDED_SYSTEM_PARSING
-                FarCompanion fc;
-                if( FarCompanion.Parse( r, out fc ) )
+                if( FarCompanion.Parse( r, out FarCompanion fc ) )
                 {
                     companion = fc;
                     return true;
@@ -173,17 +219,17 @@ namespace Maps
         private class NearCompanion : Companion
         {
             public Unit Companion;
-            public override string ToString(OutputFormat format)
-            {
-                return Companion.ToString(format);
-            }
+
+            public override string ToString(OutputFormat format) => Companion.ToString(format);
+
             public static bool Parse(SeekableReader r, out NearCompanion near)
             {
-                Unit u;
-                if (Unit.Parse(r, out u))
+                if (Unit.Parse(r, out Unit u))
                 {
-                    near = new NearCompanion();
-                    near.Companion = u;
+                    near = new NearCompanion()
+                    {
+                        Companion = u
+                    };
                     return true;
                 }
 
@@ -245,21 +291,19 @@ namespace Maps
 
             public static bool Parse(SeekableReader r, out System system)
             {
-
-                Unit u;
-                if (!Unit.Parse(r, out u))
+                if (!Unit.Parse(r, out Unit u))
                     throw new InvalidSystemException("No core star");
 
-                system = new System();
-                system.Core = u;
-
+                system = new System()
+                {
+                    Core = u
+                };
                 while (r.Peek() == ' ')
                 {
                     while (r.Peek() == ' ') // w+
                         r.Read();
 
-                    Companion companion;
-                    if (!Companion.Parse(r, out companion))
+                    if (!Companion.Parse(r, out Companion companion))
                         throw new InvalidSystemException("Expected companion");
                     system.Companions.Add(companion);
                 }
@@ -304,8 +348,10 @@ namespace Maps
                 if (m != null)
                 {
                     // Brown Dwarf, Black Hole, Unknown
-                    star = new Star();
-                    star.Type = m;
+                    star = new Star()
+                    {
+                        Type = m
+                    };
                     return true;
                 }
 
@@ -313,9 +359,10 @@ namespace Maps
                 if (m != null)
                 {
                     // Regular
-                    star = new Star();
-                    star.Type = m;
-
+                    star = new Star()
+                    {
+                        Type = m
+                    };
                     if (r.Peek() == ' ')
                     {
                         while (r.Peek() == ' ') // w*
@@ -332,16 +379,14 @@ namespace Maps
                     }
                     else
                     {
-                        m = Match(r, STAR_TENTHS);
-                        if (m == null)
+                        m = Match(r, STAR_TENTHS) ??
                             throw new InvalidSystemException("Invalid stellar type");
                         star.Tenths = (int)m[0] - (int)'0';
 
                         while (r.Peek() == ' ') // w*
                             r.Read();
 
-                        m = Match(r, STAR_SIZES);
-                        if (m == null)
+                        m = Match(r, STAR_SIZES) ??
                             throw new InvalidSystemException("Invalid stellar size");
                         star.Size = m;
                     }
@@ -360,8 +405,10 @@ namespace Maps
                 if (m != null)
                 {
                     // Dwarf
-                    star = new Star();
-                    star.Type = m;
+                    star = new Star()
+                    {
+                        Type = m
+                    };
                     return true;
                 }
 
@@ -370,10 +417,7 @@ namespace Maps
             }
         }
 
-        private static bool IsPrefixIn(string prefix, string[] options)
-        {
-            return options.Any(s => s.StartsWith(prefix));
-        }
+        private static bool IsPrefixIn(string prefix, string[] options) => options.Any(s => s.StartsWith(prefix));
 
         /// <summary>
         /// Match one of a set of string options. Will return one of the options or null
@@ -411,14 +455,13 @@ namespace Maps
         public static string Parse(string rest, OutputFormat format)
         {
             SeekableReader reader = new SeekableStringReader(rest);
-            System system;
-            bool success = System.Parse(reader, out system);
+            bool success = System.Parse(reader, out System system);
 
             if (!success)
                 throw new InvalidSystemException("Could not parse as a system");
 
             if (reader.Peek() != -1)
-                throw new InvalidSystemException(string.Format("Saw unexpected character: {0}", (char)reader.Read()));
+                throw new InvalidSystemException($"Saw unexpected character: {(char)reader.Read()}");
 
             return system.ToString(format);
         }
@@ -437,20 +480,13 @@ namespace Maps
             public SeekableStringReader(string s)
             {
                 this.s = s;
-                Position = 0;
             }
 
-            public override int Peek()
-            {
-                return (0 <= Position && Position < s.Length) ? s[Position] : -1;
-            }
+            public override int Peek() => (0 <= Position && Position < s.Length) ? s[Position] : -1;
 
-            public override int Read()
-            {
-                return (0 <= Position && Position < s.Length) ? s[Position++] : -1;
-            }
+            public override int Read() => (0 <= Position && Position < s.Length) ? s[Position++] : -1;
 
-            public override int Position { get; set; }
+            public override int Position { get; set; } = 0;
         }
     }
 }

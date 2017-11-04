@@ -197,6 +197,18 @@ var Util = {
       };
     },
 
+    worldToSectorHex: function(x, y) {
+      x += Astrometrics.ReferenceHexX - 1;
+      y += Astrometrics.ReferenceHexY - 1;
+
+      var sx = Math.floor(x / Astrometrics.SectorWidth);
+      var sy = Math.floor(y / Astrometrics.SectorHeight);
+      var hx = (x - (sx * Astrometrics.SectorWidth) + 1);
+      var hy = (y - (sy * Astrometrics.SectorHeight) + 1);
+
+      return {sx:sx, sy:sy, hx:hx, hy:hy};
+    },
+
     // Map-space: Cartesian coordinates, centered on Reference
     sectorHexToMap: function(sx, sy, hx, hy) {
       var world = Astrometrics.sectorHexToWorld(sx, sy, hx, hy);
@@ -258,6 +270,10 @@ var Util = {
     var base = {
       overlay_color: '#8080ff',
       route_color: 'green',
+      main_s_color: 'pink',
+      main_m_color: 'yellow',
+      main_l_color: 'cyan',
+      main_opacity: 0.25,
       ew_color: 'yellow',
       you_are_here_url: 'res/ui/youarehere.png'
     };
@@ -285,8 +301,9 @@ var Util = {
   // ======================================================================
 
   var MapService = (function() {
-    function service(url, contentType) {
-      return fetch(url, {headers: {Accept: contentType}})
+    function service(url, contentType, method) {
+      return fetch(url, {method: method || 'GET',
+                         headers: {Accept: contentType}})
         .then(function(response) {
           if (!response.ok)
             throw Error(response.statusText);
@@ -316,10 +333,10 @@ var Util = {
                        options.accept || 'application/json');
       },
 
-      search: function(query, options) {
+      search: function(query, options, method) {
         options = Object.assign({}, options, {q: query});
         return service(url('/api/search', options),
-                       options.accept || 'application/json');
+                       options.accept || 'application/json', method);
       },
 
       sectorData: function(sector, options) {
@@ -452,7 +469,7 @@ var Util = {
       var tickFunc = function() {
         var f = (Date.now() - start) / 1000 / dur;
         if (f < 1.0)
-          requestAnimationFrame(tickFunc);
+          this.timerid = requestAnimationFrame(tickFunc);
 
         var p = f;
         if (isCallable(smooth))
@@ -522,8 +539,8 @@ var Util = {
   NamedOptions.prototype = {
     keys: function() { return Object.keys(this._options); },
     get: function(key) { return this._options[key]; },
-    set: function(key, value) { this._options[key] = value; this._notify(); },
-    delete: function(key) { delete this._options[key]; this._notify(); },
+    set: function(key, value) { this._options[key] = value; this._notify(key); },
+    delete: function(key) { delete this._options[key]; this._notify(key); },
     forEach: function(fn, thisArg) {
       var keys = Object.keys(this._options);
       for (var i = 0; i < keys.length; ++i) {
@@ -576,7 +593,8 @@ var Util = {
   //
   //   map.SetRoute()
   //   map.AddMarker(id, x, y, opt_url); // should have CSS style for .marker#<id>
-  //   map.AddOverlay(x, y, w, h); // should have CSS style for .overlay
+  //   map.AddOverlay({type:'rectangle', x, y, w, h}); // should have CSS style for .overlay
+  //   map.AddOverlay({type:'circle', x, y, r}); // should have CSS style for .overlay
   //
   //----------------------------------------------------------------------
 
@@ -594,6 +612,15 @@ var Util = {
   function dist(x, y) { return Math.sqrt(x*x + y*y); }
 
   var SINK_OFFSET = 1000;
+
+  var INT_OPTIONS = [
+    'routes', 'rifts', 'dimunofficial',
+    'sscoords', 'allhexes',
+    'dw', 'an', 'mh', 'po', 'im', 'cp', 'stellar'
+  ];
+  var STRING_OPTIONS = [
+    'ew', 'qz', 'hw', 'milieu'
+  ];
 
   function TravellerMap(container, boundingElement) {
     this.container = container;
@@ -614,15 +641,15 @@ var Util = {
 
     this.cache = new LRUCache(64);
 
-    this.namedOptions = new NamedOptions(function() {
-      this.cache.clear();
+    this.namedOptions = new NamedOptions(Util.debounce(function(key) {
       this.invalidate();
       fireEvent(this, 'OptionsChanged', this.options);
-    }.bind(this));
+    }.bind(this), 1));
+    this.namedOptions.NAMES = INT_OPTIONS.concat(STRING_OPTIONS);
 
-    this.loading = {};
+    this.loading = new Set();
 
-    this.defer_loading = false;
+    this.defer_loading = true;
 
     var CLICK_SCALE_DELTA = -0.5;
     var SCROLL_SCALE_DELTA = -0.15;
@@ -647,14 +674,16 @@ var Util = {
     this.markers = [];
     this.overlays = [];
     this.route = null;
+    this.main = null;
 
     // ======================================================================
     // Event Handlers
     // ======================================================================
 
-    var dragging, drag_coords, was_dragged;
+    var dragging, drag_coords, was_dragged, previous_focus;
     container.addEventListener('mousedown', function(e) {
       this.cancelAnimation();
+      previous_focus = document.activeElement;
       container.focus();
       dragging = true;
       was_dragged = false;
@@ -667,10 +696,15 @@ var Util = {
 
     var hover_coords;
     container.addEventListener('mousemove', function(e) {
+      var coords = this.eventCoords(e);
+
+      // Ignore mousemove immediately following mousedown with same coords.
+      if (dragging && coords.x === drag_coords.x && coords.y === drag_coords.y)
+        return;
+
       if (dragging) {
         was_dragged = true;
 
-        var coords = this.eventCoords(e);
         this._offset(drag_coords.x - coords.x, drag_coords.y - coords.y);
         drag_coords = coords;
         e.preventDefault();
@@ -700,8 +734,10 @@ var Util = {
       e.preventDefault();
       e.stopPropagation();
 
-      if (!was_dragged)
-        fireEvent(this, 'Click', this.eventToWorldCoords(e));
+      if (!was_dragged) {
+        fireEvent(this, 'Click',
+                  Object.assign({}, this.eventToWorldCoords(e), {activeElement: previous_focus}));
+      }
     }.bind(this));
 
     container.addEventListener('dblclick', function(e) {
@@ -788,15 +824,17 @@ var Util = {
       if (e.touches.length === 1)
         touch_coords = this.eventCoords(e.touches[0]);
 
-      if (e.touches.length === 0 && !was_touch_dragged)
-        fireEvent(this, 'Click', touch_wc);
-
+      if (e.touches.length === 0 && !was_touch_dragged) {
+        fireEvent(this, 'Click',
+                  Object.assign({}, touch_wc, {activeElement: previous_focus}));
+      }
       e.preventDefault();
       e.stopPropagation();
     }.bind(this), true);
 
     container.addEventListener('touchstart', function(e) {
       was_touch_dragged = false;
+      previous_focus = document.activeElement;
 
       if (e.touches.length === 1) {
         touch_coords = this.eventCoords(e.touches[0]);
@@ -846,6 +884,8 @@ var Util = {
     }.bind(this));
 
     this.resetCanvas();
+    this.defer_loading = false;
+    this.invalidate();
 
     if (window == window.top) // == for IE
       container.focus();
@@ -953,7 +993,10 @@ var Util = {
 
     // Tile URL (apart from x/y/scale)
     var params = {options: this.options, style: this.style};
-    this.namedOptions.forEach(function(value, key) { params[key] = value; });
+    this.namedOptions.forEach(function(value, key) {
+      if (key === 'ew' || key === 'qz') return;
+      params[key] = value;
+    });
     if ('devicePixelRatio' in window && window.devicePixelRatio > 1)
       params.dpr = window.devicePixelRatio;
     this._tile_url_base = Util.makeURL(SERVICE_BASE + '/api/tile', params);
@@ -1005,11 +1048,16 @@ var Util = {
     this.markers.forEach(this.drawMarker, this);
     this.overlays.forEach(this.drawOverlay, this);
 
+    if (this.main)
+      this.drawMain(this.main);
     if (this.route)
       this.drawRoute(this.route);
 
     if (this.namedOptions.get('ew'))
-      this.drawEmpressWave(this.namedOptions.get('ew'));
+      this.drawWave(this.namedOptions.get('ew'));
+
+    if (this.namedOptions.get('qz'))
+      this.drawQZ();
   };
 
   // Draw a rectangle (x1, y1) to (x2, y2)
@@ -1146,7 +1194,7 @@ var Util = {
       return undefined;
 
     // In progress?
-    if (this.loading[url])
+    if (this.loading.has(url))
       return undefined;
 
     if (this.defer_loading)
@@ -1156,15 +1204,15 @@ var Util = {
       return undefined;
 
     // Nope, better try loading it
-    this.loading[url] = true;
+    this.loading.add(url);
 
     Util.fetchImage(url)
       .then(function(img) {
-        delete this.loading[url];
+        this.loading.delete(url);
         this.cache.insert(url, img);
         callback(img);
       }.bind(this), function() {
-        delete this.loading[url];
+        this.loading.delete(url);
       }.bind(this));
 
     return undefined;
@@ -1175,7 +1223,7 @@ var Util = {
     if (scale !== this.scale)
       return false;
 
-    var threshold = 2 * Astrometrics.SectorHeight * 64 / this.scale;
+    var threshold = Astrometrics.SectorHeight * 64 / this.scale;
     return dist(x - this.x, y - this.y) < threshold;
   };
 
@@ -1186,44 +1234,56 @@ var Util = {
     }
   };
 
-  TravellerMap.prototype.animateTo = function(scale, x, y) {
-    this.cancelAnimation();
-    var os = this.scale,
-        ox = this.x,
-        oy = this.y;
-    if (ox === x && oy === y && os === scale)
-      return;
+  TravellerMap.prototype.animateTo = function(scale, x, y, sec) {
+    return new Promise(function(resolve, reject) {
+      this.cancelAnimation();
+      sec = sec || 2.0;
+      var os = this.scale,
+          ox = this.x,
+          oy = this.y;
+      if (ox === x && oy === y && os === scale) {
+        resolve();
+        return;
+      }
 
-    this.animation = new Animation(2.0, function(p) {
-      return Animation.smooth(p, 1.0, 0.1, 0.25);
-    });
+      this.animation = new Animation(sec, function(p) {
+        return Animation.smooth(p, 1.0, 0.1, 0.25);
+      });
 
-    this.animation.onanimate = function(p) {
-      // Interpolate scale in log space.
-      this.scale = pow2(Animation.interpolate(log2(os), log2(scale), p));
-      // TODO: If animating scale, this should follow an arc (parabola?) through 3space treating
-      // scale as Z and computing a height such that the target is in view at the turnaround.
-      this.position = [Animation.interpolate(ox, x, p), Animation.interpolate(oy, y, p)];
-      this.redraw();
-    }.bind(this);
+      this.animation.onanimate = function(p) {
+        // Interpolate scale in log space.
+        this.scale = pow2(Animation.interpolate(log2(os), log2(scale), p));
+        // TODO: If animating scale, this should follow an arc (parabola?) through 3space treating
+        // scale as Z and computing a height such that the target is in view at the turnaround.
+        var p2 = 1 - ((1-p) * (1-p));
+        this.position = [Animation.interpolate(ox, x, p2), Animation.interpolate(oy, y, p2)];
+        this.redraw();
+      }.bind(this);
+
+      this.animation.oncomplete = resolve;
+      this.animation.oncancel = reject;
+    }.bind(this));
   };
 
   TravellerMap.prototype.drawOverlay = function(overlay) {
-    // Compute physical location
-    var pt1 = this.mapToPixel(overlay.x, overlay.y);
-    var pt2 = this.mapToPixel(overlay.x + overlay.w, overlay.y + overlay.h);
-
-    var scale = this.scale;
-    var x = -164, y = 7000, r = 6820;
-    var w = 20;
-
     var ctx = this.ctx;
     ctx.save();
     ctx.translate(-this.canvas.offset_x, -this.canvas.offset_y);
     ctx.globalCompositeOperation = 'source-over';
     ctx.globalAlpha = 0.5;
     ctx.fillStyle = styleLookup(this.style, 'overlay_color');
-    ctx.fillRect(pt1.x, pt1.y, pt2.x - pt1.x, pt1.y - pt2.y);
+    if (overlay.type === 'rectangle') {
+      // Compute physical location
+      var pt1 = this.mapToPixel(overlay.x, overlay.y);
+      var pt2 = this.mapToPixel(overlay.x + overlay.w, overlay.y + overlay.h);
+      ctx.fillRect(pt1.x, pt1.y, pt2.x - pt1.x, pt1.y - pt2.y);
+    } else if (overlay.type === 'circle') {
+      var pt = this.mapToPixel(overlay.x, overlay.y);
+      var r = Math.abs(this.mapToPixel(overlay.x, overlay.y + overlay.r).y - pt.y);
+      ctx.beginPath();
+      ctx.ellipse(pt.x, pt.y, r, r, 0, 0, Math.PI*2);
+      ctx.fill();
+    }
     ctx.restore();
   };
 
@@ -1254,6 +1314,27 @@ var Util = {
     }, this);
 
     ctx.stroke();
+    ctx.restore();
+  };
+
+  TravellerMap.prototype.drawMain = function(main) {
+    var ctx = this.ctx;
+    ctx.save();
+    ctx.translate(-this.canvas.offset_x, -this.canvas.offset_y);
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.globalAlpha = styleLookup(this.style, 'main_opacity');
+    ctx.fillStyle = styleLookup(this.style,
+                                main.length <= 10 ? 'main_s_color' :
+                                main.length <= 50 ? 'main_m_color' : 'main_l_color');
+    ctx.beginPath();
+    var radius = 1.15 * this.scale / 2;
+    main.forEach(function(world) {
+      var pt = Astrometrics.sectorHexToMap(world.sx, world.sy, world.hx, world.hy);
+      pt = this.mapToPixel(pt.x, pt.y);
+      ctx.moveTo(pt.x + radius, pt.y);
+      ctx.arc(pt.x, pt.y, radius, 0, Math.PI*2);
+    }, this);
+    ctx.fill();
     ctx.restore();
   };
 
@@ -1291,18 +1372,22 @@ var Util = {
     }
   };
 
-  TravellerMap.prototype.drawEmpressWave = function(date) {
+  TravellerMap.prototype.drawWave = function(date) {
     var year = 1105;
     var w = 1; /*pc*/
-    if (/^(\d+)-(\d+)$/.exec(date)) {
+    var m;
+    if (date === 'milieu') {
+      var milieu = this.namedOptions.get('milieu') || 'M1105';
+      year = (milieu === 'IW') ? -2404 : Number(milieu.replace('M', ''));
+    } else if ((m = /^(-?\d+)-(\d+)$/.exec(date))) {
       // day-year, e.g. 001-1105
-      year = Number(RegExp.$2) + (Number(RegExp.$1) - 1) / 365;
+      year = Number(m[2]) + (Number(m[1]) - 1) / 365;
       w = 0.1;
-    } else if (/^(\d+)\.(\d*)$/.exec(date)) {
+    } else if (/^(-?\d+)\.(\d*)$/.test(date)) {
       // decimal year, e.g. 1105.5
       year = Number(date);
       w = 0.1;
-    } else if (/^\d+$/.exec(date)) {
+    } else if (/^-?\d+$/.test(date)) {
       // year
       year = Number(date) + 0.5;
       w = 1;
@@ -1311,11 +1396,13 @@ var Util = {
     // Per MWM: Velocity of wave is PI * c
     var vel /*pc/y*/ = Math.PI /*ly/y*/ / 3.26 /*ly/pc*/;
 
-    // Assumption: center is 7000pc coreward
-    var x = 0, y = 7000;
+    // Per MWM: center is 10000pc coreward
+    var x = 0, y = 10000;
 
     // Per MWM: Wave crosses Ring 10,000 [Reference] on 045-1281
-    var radius = (year - (1281 + (45-1) / 365)) * vel + y;
+    var radius = (year - (1281 + (45 - 1) / 365)) * vel + y;
+    if (radius < 0)
+      return;
 
     var ctx = this.ctx;
     ctx.save();
@@ -1328,10 +1415,29 @@ var Util = {
     var px_offset = 0.5; // offset from corner to center of hex
     var pt = this.mapToPixel(x + px_offset, y + px_offset);
     ctx.arc(pt.x,
-            pt.y,
-            this.scale * radius,
-            Math.PI/2 - Math.PI/12,
-            Math.PI/2 + Math.PI/12);
+      pt.y,
+      this.scale * radius,
+      Math.PI / 2 - Math.PI / 12,
+      Math.PI / 2 + Math.PI / 12);
+    ctx.stroke();
+    ctx.restore();
+  };
+
+  TravellerMap.prototype.drawQZ = function() {
+    var x = -179.4, y = 131, radius = 30 * Traveller.Astrometrics.ParsecScaleX, w = 1;
+    var ctx = this.ctx;
+    ctx.save();
+    ctx.translate(-this.canvas.offset_x, -this.canvas.offset_y);
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.globalAlpha = 0.3;
+    ctx.lineWidth = Math.max(w * this.scale, 5);
+    ctx.strokeStyle = styleLookup(this.style, 'ew_color');
+    ctx.beginPath();
+    var px_offset = 0.5; // offset from corner to center of hex
+    var pt = this.mapToPixel(x + px_offset, y + px_offset);
+    ctx.arc(pt.x,
+        pt.y,
+        this.scale * radius, 0, Math.PI * 2);
     ctx.stroke();
     ctx.restore();
   };
@@ -1370,7 +1476,7 @@ var Util = {
 
   TravellerMap.prototype.eventToWorldCoords = function(event) {
     var coords = this.eventCoords(event);
-    var map = this.pixelToMap(coords.x + this.rect.left, coords.y + this.rect.top);
+    var map = this.pixelToMap(coords.x, coords.y);
     return Astrometrics.mapToWorld(map.x, map.y);
   };
 
@@ -1403,9 +1509,10 @@ var Util = {
           value = value & ~MapOptions.StyleMaskDeprecated;
         }
 
+        value = value & MapOptions.Mask;
         if (value === this._options) return;
 
-        this._options = value & MapOptions.Mask;
+        this._options = value;
         this.cache.clear();
         this.invalidate();
         fireEvent(this, 'OptionsChanged', this._options);
@@ -1474,7 +1581,8 @@ var Util = {
     if (!options.immediate &&
         'scale' in options &&
         this.shouldAnimateTo(options.scale, target.x, target.y)) {
-      this.animateTo(options.scale, target.x, target.y);
+      this.animateTo(options.scale, target.x, target.y)
+        .catch(function(){});
       return;
     }
 
@@ -1537,17 +1645,12 @@ var Util = {
   };
 
 
-  TravellerMap.prototype.AddOverlay = function(x, y, w, h) {
+  TravellerMap.prototype.AddOverlay = function(o) {
     // TODO: Take id, like AddMarker
-    var overlay = {
-      x: x,
-      y: y,
-      w: w,
-      h: h,
-
+    var overlay = Object.assign({
       id: 'overlay',
       z: 910
-    };
+    }, o);
 
     this.overlays.push(overlay);
     this.invalidate();
@@ -1555,6 +1658,11 @@ var Util = {
 
   TravellerMap.prototype.SetRoute = function(route) {
     this.route = route;
+    this.invalidate();
+  };
+
+  TravellerMap.prototype.SetMain = function(main) {
+    this.main = main;
     this.invalidate();
   };
 
@@ -1593,8 +1701,8 @@ var Util = {
 
     var pt;
 
-   if (has(params, ['yah_sx', 'yah_sy', 'yah_hx', 'yah_hx'])) {
-     pt = Astrometrics.sectorHexToMap(int('yah_sx'), int('yah_sy'), int('yah_hx'), int('yah_hy'));
+    if (has(params, ['yah_sx', 'yah_sy', 'yah_hx', 'yah_hx'])) {
+      pt = Astrometrics.sectorHexToMap(int('yah_sx'), int('yah_sy'), int('yah_hx'), int('yah_hy'));
       this.AddMarker('you_are_here', pt.x, pt.y);
     } else if (has(params, ['yah_x', 'yah_y'])) {
       this.AddMarker('you_are_here', float('yah_x'), float('yah_y'));
@@ -1634,7 +1742,19 @@ var Util = {
         var y = float(oys);
         var w = float(ows);
         var h = float(ohs);
-        this.AddOverlay(x, y, w, h);
+        this.AddOverlay({type: 'rectangle', x:x, y:y, w:w, h:h});
+      } else {
+        break;
+      }
+    }
+    for ( i = 0; ; ++i) {
+      n = (i === 0) ? '' : i;
+      var ocxs = 'ocx' + n, ocys = 'ocy' + n, ocrs = 'ocr' + n;
+      if (has(params, [ocxs, ocys, ocrs])) {
+        var cx = float(ocxs);
+        var cy = float(ocys);
+        var cr = float(ocrs);
+        this.AddOverlay({type: 'circle', x:cx, y:cy, r:cr});
       } else {
         break;
       }
@@ -1679,16 +1799,12 @@ var Util = {
     }
 
     // Int/Boolean options
-    [
-      'silly', 'routes', 'rifts', 'dimunofficial',
-      'sscoords', 'allhexes',
-      'dw', 'an', 'mh', 'po', 'im', 'stellar'
-    ].forEach(function(name) {
+    INT_OPTIONS.forEach(function(name) {
       if (name in params)
         this.namedOptions.set(name, int(name));
     }, this);
     // String options
-    ['ew', 'hw', 'milieu'].forEach(function(name) {
+    STRING_OPTIONS.forEach(function(name) {
       if (name in params)
         this.namedOptions.set(name, params[name]);
     }, this);

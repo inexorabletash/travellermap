@@ -1,33 +1,56 @@
 <?xml version="1.0" encoding="utf-8" ?>
+<?xml-stylesheet type="text/xsl" href="../../credits.xslt"?>
 <Sectors>
-	<Sector Selected="true" Milieu="M990">
-		<Y>0</Y>
-		<X>2</X>
-		<Name>Ley Sector</Name>
-		<Name>Ley</Name>
-		<Name Lang="vi">Makhuniim</Name>
-		<DataFile Publisher="QLI" Source="Gateway to Destiny" Ref="http://dotclue.org/t20/">Ley.sec</DataFile>
-                <MetadataFile>Ley.xml</MetadataFile>
-	</Sector>
-	<Sector Selected="true" Milieu="M990">
-		<Y>0</Y>
-		<X>3</X>
-		<Name>Gateway</Name>
-		<DataFile Publisher="QLI" Source="Gateway to Destiny" Ref="http://dotclue.org/t20/">Gateway.sec</DataFile>
-                <MetadataFile>Gateway.xml</MetadataFile>
-	</Sector>
-	<Sector Selected="true" Milieu="M990">
-		<Y>1</Y>
-		<X>2</X>
-		<Name>Glimmerdrift Reaches</Name>
-		<DataFile Publisher="QLI" Source="Gateway to Destiny" Ref="http://dotclue.org/t20/">GlimmerdriftReaches.sec</DataFile>
-                <MetadataFile>GlimmerdriftReaches.xml</MetadataFile>
-	</Sector>
-	<Sector Selected="true" Milieu="M990">
-		<Y>1</Y>
-		<X>3</X>
-		<Name>Crucis Margin</Name>
-		<DataFile Publisher="QLI" Source="Gateway to Destiny" Ref="http://dotclue.org/t20/">CrucisMargin.sec</DataFile>
-                <MetadataFile>CrucisMargin.xml</MetadataFile>
-	</Sector>
+  <Sector Selected="true" Milieu="M990" Tags="Unreviewed">
+    <Y>0</Y>
+    <X>2</X>
+    <Name>Ley</Name>
+    <Name>Ley Sector</Name>
+    <Name Lang="vi">Makhuniim</Name>
+    <DataFile Publisher="QLI" Source="Gateway to Destiny" Ref="http://dotclue.org/t20/">Ley.sec</DataFile>
+    <MetadataFile>Ley.xml</MetadataFile>
+  </Sector>
+  <Sector Selected="true" Milieu="M990" Tags="Unreviewed">
+    <Y>0</Y>
+    <X>3</X>
+    <Name>Gateway</Name>
+    <DataFile Publisher="QLI" Source="Gateway to Destiny" Ref="http://dotclue.org/t20/">Gateway.sec</DataFile>
+    <MetadataFile>Gateway.xml</MetadataFile>
+  </Sector>
+  <Sector Selected="true" Milieu="M990" Tags="Unreviewed">
+    <Y>1</Y>
+    <X>2</X>
+    <Name>Glimmerdrift Reaches</Name>
+    <DataFile Publisher="QLI" Source="Gateway to Destiny" Ref="http://dotclue.org/t20/">GlimmerdriftReaches.sec</DataFile>
+    <MetadataFile>GlimmerdriftReaches.xml</MetadataFile>
+  </Sector>
+  <Sector Selected="true" Milieu="M990" Tags="Unreviewed">
+    <Y>1</Y>
+    <X>3</X>
+    <Name>Crucis Margin</Name>
+    <DataFile Publisher="QLI" Source="Gateway to Destiny" Ref="http://dotclue.org/t20/">CrucisMargin.sec</DataFile>
+    <MetadataFile>CrucisMargin.xml</MetadataFile>
+  </Sector>
+
+  <Sector Selected="true" Milieu="M990" Tags="Unofficial">
+    <Y>3</Y>
+    <X>-1</X>
+    <Name>Magyar</Name>
+    <DataFile Author="Randy Dorman" Type="TabDelimited">Magyar.tab</DataFile>
+    <MetadataFile>Magyar.xml</MetadataFile>
+  </Sector>
+  <Sector Selected="true" Milieu="M990" Tags="Unofficial">
+    <Y>2</Y>
+    <X>-1</X>
+    <Name>Daibei</Name>
+    <DataFile Author="Randy Dorman" Type="TabDelimited">Daibei.tab</DataFile>
+    <MetadataFile>Daibei.xml</MetadataFile>
+  </Sector>
+  <Sector Selected="true" Milieu="M990" Tags="Unofficial">
+    <Y>2</Y>
+    <X>0</X>
+    <Name>Diaspora</Name>
+    <DataFile Author="Randy Dorman" Type="TabDelimited">Diaspora.tab</DataFile>
+    <MetadataFile>Diaspora.xml</MetadataFile>
+  </Sector>
 </Sectors>

@@ -1,4 +1,5 @@
-﻿using PdfSharp.Drawing;
+﻿using Maps.Graphics;
+using Maps.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -41,7 +42,7 @@ namespace Maps.Rendering
         // because the glyphs are much higher quality.
         // See http://www.alanwood.net/demos/wingdings.html for a good mapping
 
-        private static Dictionary<char, char> DING_MAP = new Dictionary<char, char>
+        private static IReadOnlyDictionary<char, char> DING_MAP = new EasyInitConcurrentDictionary<char, char>
         {
             { '\x2666', '\x74' }, // U+2666 (BLACK DIAMOND SUIT)
             { '\x2756', '\x76' }, // U+2756 (BLACK DIAMOND MINUS WHITE X)
@@ -64,7 +65,7 @@ namespace Maps.Rendering
                 font = styleRes.GlyphFont;
             }
 
-            g.DrawString(s, font, brush, x, y, StringAlignment.Centered);
+            g.DrawString(s, font, brush, x, y, Maps.Graphics.StringAlignment.Centered);
         }
 
         //               |          |
@@ -103,12 +104,12 @@ namespace Maps.Rendering
             float fontUnitsToWorldUnits = font.Size / font.FontFamily.GetEmHeight(font.Style);
             float lineSpacing = font.FontFamily.GetLineSpacing(font.Style) * fontUnitsToWorldUnits;
             float ascent = font.FontFamily.GetCellAscent(font.Style) * fontUnitsToWorldUnits;
-            float descent = font.FontFamily.GetCellDescent(font.Style) * fontUnitsToWorldUnits;
+            //float descent = font.FontFamily.GetCellDescent(font.Style) * fontUnitsToWorldUnits;
 
             SizeF boundingSize = new SizeF(sizes.Max(s => s.Width), lineSpacing * sizes.Count());
 
             // Offset from baseline to top-left.
-            y += ascent;
+            y += lineSpacing / 2;
 
             float widthFactor = 0;
             switch (format)
@@ -124,6 +125,7 @@ namespace Maps.Rendering
                     y -= boundingSize.Height;
                     break;
             }
+
             switch (format)
             {
                 case TextFormat.TopCenter:
@@ -138,9 +140,9 @@ namespace Maps.Rendering
                     break;
             }
 
-            Util.ForEachZip(lines, sizes, (line, sz) =>
+            lines.ForEachZip(sizes, (line, sz) =>
             {
-                g.DrawString(line, font, brush, x + widthFactor * sz.Width, y, StringAlignment.Baseline);                
+                g.DrawString(line, font, brush, x + widthFactor * sz.Width + sz.Width / 2, y, Graphics.StringAlignment.Centered);
                 y += lineSpacing;
             });
         }
@@ -158,6 +160,7 @@ namespace Maps.Rendering
 
                 g.TranslateTransform(center.X, center.Y);
                 g.ScaleTransform(1.0f / Astrometrics.ParsecScaleX, 1.0f / Astrometrics.ParsecScaleY);
+
                 g.TranslateTransform(labelStyle.Translation.X, labelStyle.Translation.Y);
                 g.RotateTransform(labelStyle.Rotation);
                 g.ScaleTransform(labelStyle.Scale.Width, labelStyle.Scale.Height);
@@ -178,9 +181,9 @@ namespace Maps.Rendering
             Top,
             Bottom
         }
-        public string Characters { get; set; }
-        public GlyphBias Bias { get; set; }
-        public bool IsHighlighted { get; set; }
+        public string Characters { get; }
+        public GlyphBias Bias { get; }
+        public bool IsHighlighted { get; }
 
         public Glyph(string chars, bool highlight = false)
         {
@@ -190,16 +193,12 @@ namespace Maps.Rendering
         }
         public Glyph(Glyph other, bool highlight = false, GlyphBias bias = GlyphBias.None)
         {
-            this.Characters = other.Characters;
-            this.IsHighlighted = highlight;
-            this.Bias = bias;
+            Characters = other.Characters;
+            IsHighlighted = highlight;
+            Bias = bias;
         }
 
-        public bool IsPrintable
-        {
-            get { return Characters.Length > 0; }
-        }
-
+        public bool IsPrintable => Characters.Length > 0;
         public static readonly Glyph None = new Glyph("");
         public static readonly Glyph Diamond = new Glyph("\x2666"); // U+2666 (BLACK DIAMOND SUIT)
         public static readonly Glyph DiamondX = new Glyph("\x2756"); // U+2756 (BLACK DIAMOND MINUS WHITE X)
@@ -225,6 +224,10 @@ namespace Maps.Rendering
         public static readonly Glyph Reserve = new Glyph("R");
         public static readonly Glyph ExileCamp = new Glyph("X");
 
+        // TNE 
+        public static readonly Glyph HiverSupplyBase = new Glyph("\x2297");
+        public static readonly Glyph Terminus = new Glyph("\x2297");
+        public static readonly Glyph Interface = new Glyph("\x2297");
 
         public static Glyph FromResearchCode(string rs)
         {
@@ -248,7 +251,7 @@ namespace Maps.Rendering
             return glyph;
         }
 
-        private static readonly RegexDictionary<Glyph> s_baseGlyphTable = new GlobDictionary<Glyph> {
+        private static readonly RegexMap<Glyph> s_baseGlyphTable = new GlobMap<Glyph> {
             { "*.C", new Glyph(Glyph.StarStar, bias:GlyphBias.Bottom) }, // Vargr Corsair Base
             { "Im.D", new Glyph(Glyph.Square, bias:GlyphBias.Bottom) }, // Imperial Depot
             { "*.D", new Glyph(Glyph.Square, highlight:true)}, // Depot
@@ -265,12 +268,13 @@ namespace Maps.Rendering
             { "*.W", new Glyph(Glyph.Triangle, highlight:true, bias:GlyphBias.Bottom) }, // Imperial Scout Waystation
             { "Zh.Z", Glyph.Diamond }, // Zhodani Base (Special case for "Zh.KM")
             { "*.*", Glyph.Circle }, // Independent Base
+            // For TNE
+            { "Sc.H", Glyph.HiverSupplyBase }, // Hiver Supply Base  
+            { "*.I", Glyph.Interface }, // Interface 
+            { "*.T", Glyph.Terminus }, // Terminus 
         };
 
-        public static Glyph FromBaseCode(string allegiance, char code)
-        {
-            return s_baseGlyphTable.Match(allegiance + "." + code);
-        }
+        public static Glyph FromBaseCode(string allegiance, char code) =>  s_baseGlyphTable.Match(allegiance + "." + code);
     }
 
     // BorderPath is a render-ready representation of a Border.
@@ -300,8 +304,7 @@ namespace Maps.Rendering
 
         public BorderPath(Border border, Sector sector, PathUtil.PathType type)
         {
-            float[] edgeX, edgeY;
-            RenderUtil.HexEdges(type, out edgeX, out edgeY);
+            RenderUtil.HexEdges(type, out float[] edgeX, out float[] edgeY);
 
             int lengthEstimate = border.Path.Count() * 3;
 
@@ -410,7 +413,7 @@ namespace Maps.Rendering
                     last.AddLast(point);
             }
 
-            this.curves = segments.Select(c =>
+            curves = segments.Select(c =>
             {
                 if (c.First() == c.Last())
                 {
@@ -425,60 +428,6 @@ namespace Maps.Rendering
         }
     }
 
-    internal static class ColorUtil
-    {
-        public static void RGBtoXYZ(int r, int g, int b, out double x, out double y, out double z)
-        {
-            double rl = (double)r / 255.0;
-            double gl = (double)g / 255.0;
-            double bl = (double)b / 255.0;
-
-            double sr = (rl > 0.04045) ? Math.Pow((rl + 0.055) / (1 + 0.055), 2.2) : (rl / 12.92);
-            double sg = (gl > 0.04045) ? Math.Pow((gl + 0.055) / (1 + 0.055), 2.2) : (gl / 12.92);
-            double sb = (bl > 0.04045) ? Math.Pow((bl + 0.055) / (1 + 0.055), 2.2) : (bl / 12.92);
-
-            x = sr * 0.4124 + sg * 0.3576 + sb * 0.1805;
-            y = sr * 0.2126 + sg * 0.7152 + sb * 0.0722;
-            z = sr * 0.0193 + sg * 0.1192 + sb * 0.9505;
-        }
-
-        private static double Fxyz(double t)
-        {
-            return ((t > 0.008856) ? Math.Pow(t, (1.0 / 3.0)) : (7.787 * t + 16.0 / 116.0));
-        }
-
-        public static void XYZtoLab(double x, double y, double z, out double l, out double a, out double b)
-        {
-            const double D65X = 0.9505, D65Y = 1.0, D65Z = 1.0890;
-            l = 116.0 * Fxyz(y / D65Y) - 16;
-            a = 500.0 * (Fxyz(x / D65X) - Fxyz(y / D65Y));
-            b = 200.0 * (Fxyz(y / D65Y) - Fxyz(z / D65Z));
-        }
-
-        public static double DeltaE76(double l1, double a1, double b1, double l2, double a2, double b2)
-        {
-            double c1 = l1 - l2, c2 = a1 - a2, c3 = b1 - b2;
-            return Math.Sqrt(c1 * c1 + c2 * c2 + c3 * c3);
-        }
-
-        public static bool NoticeableDifference(Color a, Color b)
-        {
-            const double JND = 2.3;
-
-            double ax, ay, az;
-            double bx, by, bz;
-            RGBtoXYZ(a.R, a.G, a.B, out ax, out ay, out az);
-            RGBtoXYZ(b.R, b.G, b.B, out bx, out by, out bz);
-
-            double al, aa, ab;
-            double bl, ba, bb;
-            XYZtoLab(ax, ay, az, out al, out aa, out ab);
-            XYZtoLab(bx, by, bz, out bl, out ba, out bb);
-
-            return DeltaE76(al, aa, ab, bl, ba, bb) > JND;
-        }
-
-    }
     internal static class PathUtil
     {
         public enum PathType : int
@@ -601,7 +550,7 @@ namespace Maps.Rendering
     #region Stellar Rendering
     internal struct StarProps
     {
-        public StarProps(Color color, Color border, float radius) { this.color = color; this.borderColor = border;  this.radius = radius; }
+        public StarProps(Color color, Color border, float radius) { this.color = color; borderColor = border; this.radius = radius; }
         public Color color;
         public Color borderColor;
         public float radius;
@@ -614,7 +563,7 @@ namespace Maps.Rendering
                 RegexOptions.Compiled | RegexOptions.CultureInvariant);
 
         // Additions to radius based on luminosity.
-        private static Dictionary<string, float> LUM = new Dictionary<string, float>
+        private static IReadOnlyDictionary<string, float> LUM = new EasyInitConcurrentDictionary<string, float>
             {
                 { "Ia", 7 },
                 { "Ib", 5 },
@@ -625,53 +574,47 @@ namespace Maps.Rendering
             };
 
         // Base radius for spectral class.
-        private static Dictionary<string, float> RAD = new Dictionary<string, float>
-            { { "O", 4 }, { "B", 3 }, { "A", 2 }, { "F", 1.5f }, { "G", 1 }, { "K", 0.7f }, { "M", 0.5f } };
+        private static IReadOnlyDictionary<char, float> RAD = new EasyInitConcurrentDictionary<char, float>
+            { { 'O', 4 }, { 'B', 3 }, { 'A', 2 }, { 'F', 1.5f }, { 'G', 1 }, { 'K', 0.7f }, { 'M', 0.5f } };
 
         // Maps spectral class to color.
-        private static Dictionary<string, Color> COLOR = new Dictionary<string, Color> {
-                { "O", Color.FromArgb(0x9d, 0xb4, 0xff) },
-                { "B", Color.FromArgb(0xbb, 0xcc, 0xff) },
-                { "A", Color.FromArgb(0xfb, 0xf8, 0xff) },
-                { "F", Color.FromArgb(0xff, 0xff, 0xed) },
-                { "G", Color.FromArgb(0xff, 0xff, 0x00) },
-                { "K", Color.FromArgb(0xff, 0x98, 0x33) },
-                { "M", Color.FromArgb(0xff, 0x00, 0x00) },
+        private static IReadOnlyDictionary<char, Color> COLOR = new EasyInitConcurrentDictionary<char, Color> {
+                { 'O', Color.FromArgb(0x9d, 0xb4, 0xff) },
+                { 'B', Color.FromArgb(0xbb, 0xcc, 0xff) },
+                { 'A', Color.FromArgb(0xfb, 0xf8, 0xff) },
+                { 'F', Color.FromArgb(0xff, 0xff, 0xed) },
+                { 'G', Color.FromArgb(0xff, 0xff, 0x00) },
+                { 'K', Color.FromArgb(0xff, 0x98, 0x33) },
+                { 'M', Color.FromArgb(0xff, 0x00, 0x00) },
             };
 
-        public static StarProps star2props(string star)
+        public static StarProps StarToProps(StellarData.Star star)
         {
-            Match m = STAR_REGEX.Match(star);
-            if (m.Success)
-            {
-                string c = m.Groups[1].Value, f = m.Groups[2].Value, l = m.Groups[3].Value;
-                return new StarProps(COLOR[c], Color.Black, RAD[c] + LUM[l]);
-            }
-            else if (star == "BH")
-            {
+            if (star.classification == "BH")
                 return new StarProps(Color.Black, Color.White, 0.8f);
-            }
-            else if (star == "BD")
-            {
+
+            if (star.classification == "BD")
                 return new StarProps(Color.Brown, Color.Black, 0.3f);
-            }
-            else
-            {
-                // Assume white dwarf
+
+            if (star.classification == "D")
                 return new StarProps(Color.White, Color.Black, 0.3f);
-            }
+
+            return new StarProps(COLOR[star.type], Color.Black, RAD[star.type] + LUM[star.luminosity]);
         }
 
-        private static float sinf(double r) { return (float)Math.Sin(r); }
-        private static float cosf(double r) { return (float)Math.Cos(r); }
+        private static float SinF(double r) => (float)Math.Sin(r);
+        private static float CosF(double r) => (float)Math.Cos(r);
+
         private static float[] dx = new float[] {
                     0.0f,
-                    cosf(Math.PI * 1 / 3),cosf(Math.PI * 2 / 3),cosf(Math.PI * 3 / 3),
-                    cosf(Math.PI * 4 / 3),cosf(Math.PI * 5 / 3),cosf(Math.PI * 6 / 3) };
+                    CosF(Math.PI * 1 / 3), CosF(Math.PI * 2 / 3), CosF(Math.PI * 3 / 3),
+                    CosF(Math.PI * 4 / 3), CosF(Math.PI * 5 / 3), CosF(Math.PI * 6 / 3)
+        };
         private static float[] dy = new float[] {
                     0.0f,
-                    sinf(Math.PI * 1 / 3),sinf(Math.PI * 2 / 3),sinf(Math.PI * 3 / 3),
-                    sinf(Math.PI * 4 / 3),sinf(Math.PI * 5 / 3),sinf(Math.PI * 6 / 3) };
+                    SinF(Math.PI * 1 / 3), SinF(Math.PI * 2 / 3), SinF(Math.PI * 3 / 3),
+                    SinF(Math.PI * 4 / 3), SinF(Math.PI * 5 / 3), SinF(Math.PI * 6 / 3)
+        };
         public static PointF Offset(int index)
         {
             if (index >= dx.Length)

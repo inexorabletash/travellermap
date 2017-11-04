@@ -1,4 +1,4 @@
-using PdfSharp.Drawing;
+using Maps.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -14,7 +14,6 @@ namespace Maps.Rendering
 
     public class VectorObject : MapObject
     {
-        private PointF[] pathDataPoints;
         private Byte[] pathDataTypes;
 
         public VectorObject()
@@ -34,30 +33,30 @@ namespace Maps.Rendering
         public float NameX { get; set; }
         public float NameY { get; set; }
 
-        private RectangleF bounds;
+        private RectangleF cachedBounds;
         public RectangleF Bounds
         {
             get
             {
                 // Compute bounds if not already set
-                if (bounds.IsEmpty && pathDataPoints != null && pathDataPoints.Length > 0)
+                if (cachedBounds.IsEmpty && PathDataPoints?.Length > 0)
                 {
-                    bounds.Location = pathDataPoints[0];
+                    cachedBounds.Location = PathDataPoints[0];
 
-                    for (int i = 1; i < pathDataPoints.Length; ++i)
+                    for (int i = 1; i < PathDataPoints.Length; ++i)
                     {
-                        PointF pt = pathDataPoints[i];
-                        if (pt.X < bounds.X) { float d = bounds.X - pt.X; bounds.X = pt.X; bounds.Width += d; }
-                        if (pt.Y < bounds.Y) { float d = bounds.Y - pt.Y; bounds.Y = pt.Y; bounds.Height += d; }
+                        PointF pt = PathDataPoints[i];
+                        if (pt.X < cachedBounds.X) { float d = cachedBounds.X - pt.X; cachedBounds.X = pt.X; cachedBounds.Width += d; }
+                        if (pt.Y < cachedBounds.Y) { float d = cachedBounds.Y - pt.Y; cachedBounds.Y = pt.Y; cachedBounds.Height += d; }
 
-                        if (pt.X > bounds.Right) { bounds.Width = pt.X - bounds.X; }
-                        if (pt.Y > bounds.Bottom) { bounds.Height = pt.Y - bounds.Y; }
+                        if (pt.X > cachedBounds.Right) { cachedBounds.Width = pt.X - cachedBounds.X; }
+                        if (pt.Y > cachedBounds.Bottom) { cachedBounds.Height = pt.Y - cachedBounds.Y; }
                     }
                 }
-                return bounds;
+                return cachedBounds;
             }
 
-            set { bounds = value; }
+            set { cachedBounds = value; }
         }
 
         internal RectangleF TransformedBounds
@@ -106,16 +105,18 @@ namespace Maps.Rendering
 
         public MapOptions MapOptions { get; set; }
 
-        public PointF[] PathDataPoints { get { return pathDataPoints; } set { pathDataPoints = value; } }
+        public PointF[] PathDataPoints { get; set; }
         public Byte[] PathDataTypes
         {
             get
             {
                 if (pathDataTypes == null)
                 {
-                    List<byte> types = new List<byte>(pathDataPoints.Length);
-                    types.Add((byte)PathPointType.Start);
-                    for (int i = 1; i < pathDataPoints.Length; ++i)
+                    List<byte> types = new List<byte>(PathDataPoints.Length)
+                    {
+                        (byte)PathPointType.Start
+                    };
+                    for (int i = 1; i < PathDataPoints.Length; ++i)
                         types.Add((byte)PathPointType.Line);
                     pathDataTypes = types.ToArray();
                 }
@@ -139,7 +140,7 @@ namespace Maps.Rendering
         internal void Draw(AbstractGraphics graphics, RectangleF rect, AbstractPen pen)
         {
             if (graphics == null)
-                throw new ArgumentNullException("graphics");
+                throw new ArgumentNullException(nameof(graphics));
 
             RectangleF bounds = TransformedBounds;
             if (bounds.IntersectsWith(rect))
@@ -147,10 +148,8 @@ namespace Maps.Rendering
                 var path = Path;
                 using (graphics.Save())
                 {
-                    XMatrix matrix = new XMatrix();
-                    matrix.ScalePrepend(ScaleX, ScaleY);
-                    matrix.TranslatePrepend(-OriginX, -OriginY);
-                    graphics.MultiplyTransform(matrix);
+                    graphics.ScaleTransform(ScaleX, ScaleY);
+                    graphics.TranslateTransform(-OriginX, -OriginY);
                     graphics.DrawPath(pen, path);
                 }
             }
@@ -160,7 +159,7 @@ namespace Maps.Rendering
         internal void DrawName(AbstractGraphics graphics, RectangleF rect, Font font, AbstractBrush textBrush, LabelStyle labelStyle)
         {
             if (graphics == null)
-                throw new ArgumentNullException("graphics");
+                throw new ArgumentNullException(nameof(graphics));
 
             RectangleF bounds = TransformedBounds;
 
@@ -176,36 +175,12 @@ namespace Maps.Rendering
 
                     using (graphics.Save())
                     {
-                        XMatrix matrix = new XMatrix();
-                        matrix.TranslatePrepend(pos.X, pos.Y);
-                        matrix.ScalePrepend(1.0f / Astrometrics.ParsecScaleX, 1.0f / Astrometrics.ParsecScaleY);
-                        matrix.RotatePrepend(-labelStyle.Rotation); // Rotate it
-                        graphics.MultiplyTransform(matrix);
+                        graphics.TranslateTransform(pos.X, pos.Y);
+                        graphics.ScaleTransform(1.0f / Astrometrics.ParsecScaleX, 1.0f / Astrometrics.ParsecScaleY);
+                        graphics.RotateTransform(-labelStyle.Rotation); // Rotate it
 
                         RenderUtil.DrawString(graphics, str, font, textBrush, 0, 0);
                     }
-                }
-            }
-        }
-
-        internal void Fill(AbstractGraphics graphics, RectangleF rect, AbstractBrush fillBrush)
-        {
-            if (graphics == null)
-                throw new ArgumentNullException("graphics");
-
-            RectangleF bounds = TransformedBounds;
-
-            if (bounds.IntersectsWith(rect))
-            {
-                var path = Path;
-
-                using (graphics.Save())
-                {
-                    XMatrix matrix = new XMatrix();
-                    matrix.ScalePrepend(ScaleX, ScaleY);
-                    matrix.TranslatePrepend(-OriginX, -OriginY);
-                    graphics.MultiplyTransform(matrix);
-                    graphics.DrawPath(fillBrush, path);
                 }
             }
         }
@@ -215,24 +190,12 @@ namespace Maps.Rendering
     [XmlRoot(ElementName = "Worlds")]
     public class WorldObjectCollection
     {
-        public WorldObjectCollection()
-        {
-            Worlds = new List<WorldObject>();
-        }
-
         [XmlElement("World")]
-        public List<WorldObject> Worlds { get; }
+        public List<WorldObject> Worlds { get; } = new List<WorldObject>();
     }
-
 
     public class WorldObject : MapObject
     {
-        public WorldObject()
-        {
-            LabelBiasX = 1;
-            LabelBiasY = 1;
-        }
-
         public string Name { get; set; }
 
         internal float MinScale { get; set; }
@@ -242,14 +205,14 @@ namespace Maps.Rendering
 
         public Location Location { get; set; }
 
-        public int LabelBiasX { get; set; }
-        public int LabelBiasY { get; set; }
+        public int LabelBiasX { get; set; } = 1;
+        public int LabelBiasY { get; set; } = 1;
 
 
         internal void Paint(AbstractGraphics graphics, Color dotColor, AbstractBrush labelBrush, Font labelFont)
         {
             if (graphics == null)
-                throw new ArgumentNullException("graphics");
+                throw new ArgumentNullException(nameof(graphics));
 
             Point pt = Astrometrics.LocationToCoordinates(Location);
 

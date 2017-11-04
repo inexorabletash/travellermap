@@ -1,14 +1,16 @@
+using Maps.Graphics;
 using Maps.Rendering;
 using Maps.Serialization;
+using Maps.Utilities;
 using PdfSharp.Drawing;
 using PdfSharp.Pdf;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Net.Mime;
 using System.Web;
 
@@ -22,18 +24,17 @@ namespace Maps.API
         protected abstract class ImageResponder : DataResponder
         {
             protected ImageResponder(HttpContext context) : base(context) { }
-            public override string DefaultContentType { get { return Util.MediaTypeName_Image_Png; } }
-
+            public override string DefaultContentType => ContentTypes.Image.Png;
             protected void ProduceResponse(HttpContext context, string title, RenderContext ctx, Size tileSize,
-                int rot = 0, float translateX = 0, float translateY = 0,
+                AbstractMatrix transform,
                 bool transparent = false)
             {
-                ProduceResponse(context, this, title, ctx, tileSize, rot, translateX, translateY, transparent,
+                ProduceResponse(context, this, title, ctx, tileSize, transform, transparent,
                     (context.Items["RouteData"] as System.Web.Routing.RouteData).Values);
             }
 
             protected void ProduceResponse(HttpContext context, ITypeAccepter accepter, string title, RenderContext ctx, Size tileSize,
-                int rot = 0, float translateX = 0, float translateY = 0,
+                AbstractMatrix transform,
                 bool transparent = false, IDictionary<string, object> queryDefaults = null)
             {
                 // New-style Options
@@ -41,10 +42,13 @@ namespace Maps.API
                 #region URL Parameters
                 // TODO: move to ParseOptions (maybe - requires options to be parsed after stylesheet creation?)
                 if (GetBoolOption("sscoords", queryDefaults: queryDefaults, defaultValue: false))
-                    ctx.Styles.hexCoordinateStyle = Stylesheet.HexCoordinateStyle.Subsector;
+                    ctx.Styles.hexCoordinateStyle = HexCoordinateStyle.Subsector;
 
                 if (GetBoolOption("allhexes", queryDefaults: queryDefaults, defaultValue: false))
                     ctx.Styles.numberAllHexes = true;
+
+                if (GetBoolOption("nogrid", queryDefaults: queryDefaults, defaultValue: false))
+                    ctx.Styles.parsecGrid.visible = false;
 
                 if (!GetBoolOption("routes", queryDefaults: queryDefaults, defaultValue: true))
                 {
@@ -61,10 +65,14 @@ namespace Maps.API
                 if (GetBoolOption("im", queryDefaults: queryDefaults, defaultValue: false))
                     ctx.Styles.importanceOverlay.visible = true;
 
+                if (GetBoolOption("cp", queryDefaults: queryDefaults, defaultValue: false))
+                    ctx.Styles.capitalOverlay.visible = true;
+
                 if (GetBoolOption("stellar", queryDefaults: queryDefaults, defaultValue: false))
                     ctx.Styles.showStellarOverlay = true;
 
                 ctx.Styles.dimUnofficialSectors = GetBoolOption("dimunofficial", queryDefaults: queryDefaults, defaultValue: false);
+                ctx.Styles.colorCodeSectorStatus = GetBoolOption("review", queryDefaults: queryDefaults, defaultValue: false);
                 ctx.Styles.droyneWorlds.visible = GetBoolOption("dw", queryDefaults: queryDefaults, defaultValue: false);
                 ctx.Styles.minorHomeWorlds.visible = GetBoolOption("mh", queryDefaults: queryDefaults, defaultValue: false);
                 ctx.Styles.ancientsWorlds.visible = GetBoolOption("an", queryDefaults: queryDefaults, defaultValue: false);
@@ -75,28 +83,43 @@ namespace Maps.API
                 ctx.Styles.highlightWorlds.visible = ctx.Styles.highlightWorldsPattern != null;
 
                 double devicePixelRatio = GetDoubleOption("dpr", defaultValue: 1, queryDefaults: queryDefaults);
+                devicePixelRatio = Math.Round(devicePixelRatio, 1);
                 if (devicePixelRatio <= 0)
                     devicePixelRatio = 1;
+                if (devicePixelRatio > 2)
+                    devicePixelRatio = 2;
 
                 bool dataURI = GetBoolOption("datauri", queryDefaults: queryDefaults, defaultValue: false);
+
+                if (GetStringOption("milieu", SectorMap.DEFAULT_MILIEU) != SectorMap.DEFAULT_MILIEU)
+                {
+                    // TODO: Make this declarative in resource files.
+                    if (ctx.Styles.macroBorders.visible)
+                    {
+                        ctx.Styles.macroBorders.visible = false;
+                        ctx.Styles.microBorders.visible = true;
+                    }
+                    ctx.Styles.macroNames.visible = false;
+                    ctx.Styles.macroRoutes.visible = false;
+                }
                 #endregion
 
                 MemoryStream ms = null;
                 if (dataURI)
                     ms = new MemoryStream();
-                Stream outputStream = dataURI ? ms : Context.Response.OutputStream;
+                Stream outputStream = ms ?? Context.Response.OutputStream;
 
-                if (accepter.Accepts(context, Util.MediaTypeName_Image_Svg, ignoreHeaderFallbacks: true))
+                if (accepter.Accepts(context, ContentTypes.Image.Svg, ignoreHeaderFallbacks: true))
                 {
                     #region SVG Generation
                     using (var svg = new SVGGraphics(tileSize.Width, tileSize.Height))
                     {
-                        RenderToGraphics(ctx, rot, translateX, translateY, svg);
+                        RenderToGraphics(ctx, transform, svg);
 
                         using (var stream = new MemoryStream())
                         {
                             svg.Serialize(new StreamWriter(stream));
-                            context.Response.ContentType = Util.MediaTypeName_Image_Svg;
+                            context.Response.ContentType = ContentTypes.Image.Svg;
                             if (!dataURI)
                             {
                                 context.Response.AddHeader("content-length", stream.Length.ToString());
@@ -108,7 +131,7 @@ namespace Maps.API
                     #endregion
                 }
 
-                else if (accepter.Accepts(context, MediaTypeNames.Application.Pdf, ignoreHeaderFallbacks: true))
+                else if (accepter.Accepts(context, ContentTypes.Application.Pdf, ignoreHeaderFallbacks: true))
                 {
                     #region PDF Generation
                     using (var document = new PdfDocument())
@@ -118,7 +141,7 @@ namespace Maps.API
                         document.Info.Author = "Joshua Bell";
                         document.Info.Creator = "TravellerMap.com";
                         document.Info.Subject = DateTime.Now.ToString("F", CultureInfo.InvariantCulture);
-                        document.Info.Keywords = "The Traveller game in all forms is owned by Far Future Enterprises. Copyright (C) 1977 - 2016 Far Future Enterprises. Traveller is a registered trademark of Far Future Enterprises.";
+                        document.Info.Keywords = "The Traveller game in all forms is owned by Far Future Enterprises. Copyright (C) 1977 - 2017 Far Future Enterprises. Traveller is a registered trademark of Far Future Enterprises.";
 
                         // TODO: Credits/Copyright
                         // This is close, but doesn't define the namespace correctly:
@@ -132,12 +155,12 @@ namespace Maps.API
 
                         using (var gfx = new PdfSharpGraphics(XGraphics.FromPdfPage(page)))
                         {
-                            RenderToGraphics(ctx, rot, translateX, translateY, gfx);
+                            RenderToGraphics(ctx, transform, gfx);
 
                             using (var stream = new MemoryStream())
                             {
                                 document.Save(stream, closeStream: false);
-                                context.Response.ContentType = MediaTypeNames.Application.Pdf;
+                                context.Response.ContentType = ContentTypes.Application.Pdf;
                                 if (!dataURI)
                                 {
                                     context.Response.AddHeader("content-length", stream.Length.ToString());
@@ -157,24 +180,26 @@ namespace Maps.API
                     using (var bitmap = TryConstructBitmap(width, height, PixelFormat.Format32bppArgb))
                     {
                         if (bitmap == null)
+                        {
                             throw new HttpError(500, "Internal Server Error",
-                                string.Format("Failed to allocate bitmap ({0}x{1}). Insufficient memory?", width, height));
+                                $"Failed to allocate bitmap ({width}x{height}). Insufficient memory?");
+                        }
 
                         if (transparent)
                             bitmap.MakeTransparent();
 
-                        using (var g = Graphics.FromImage(bitmap))
+                        using (var g = System.Drawing.Graphics.FromImage(bitmap))
                         {
                             g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
 
                             using (var graphics = new BitmapGraphics(g))
                             {
                                 graphics.ScaleTransform((float)devicePixelRatio);
-                                RenderToGraphics(ctx, rot, translateX, translateY, graphics);
+                                RenderToGraphics(ctx, transform, graphics);
                             }
                         }
 
-                        BitmapResponse(context.Response, outputStream, ctx.Styles, bitmap, transparent ? Util.MediaTypeName_Image_Png : null);
+                        BitmapResponse(context.Response, outputStream, ctx.Styles, bitmap, transparent ? ContentTypes.Image.Png : null);
 
                     }
                     #endregion
@@ -183,7 +208,7 @@ namespace Maps.API
                 if (dataURI)
                 {
                     string contentType = context.Response.ContentType;
-                    context.Response.ContentType = System.Net.Mime.MediaTypeNames.Text.Plain;
+                    context.Response.ContentType = ContentTypes.Text.Plain;
                     ms.Seek(0, SeekOrigin.Begin);
 
                     context.Response.Output.Write("data:");
@@ -191,9 +216,8 @@ namespace Maps.API
                     context.Response.Output.Write(";base64,");
                     context.Response.Output.Flush();
 
-                    byte[] buffer = new byte[4096];
-                    System.Security.Cryptography.ICryptoTransform transform = new System.Security.Cryptography.ToBase64Transform();
-                    using (System.Security.Cryptography.CryptoStream cs = new System.Security.Cryptography.CryptoStream(context.Response.OutputStream, transform, System.Security.Cryptography.CryptoStreamMode.Write))
+                    System.Security.Cryptography.ICryptoTransform encoder = new System.Security.Cryptography.ToBase64Transform();
+                    using (System.Security.Cryptography.CryptoStream cs = new System.Security.Cryptography.CryptoStream(context.Response.OutputStream, encoder, System.Security.Cryptography.CryptoStreamMode.Write))
                     {
                         ms.WriteTo(cs);
                         cs.FlushFinalBlock();
@@ -218,17 +242,16 @@ namespace Maps.API
                 }
             }
 
-            private static void RenderToGraphics(RenderContext ctx, int rot, float translateX, float translateY, AbstractGraphics graphics)
+            private static void RenderToGraphics(RenderContext ctx, AbstractMatrix transform, AbstractGraphics graphics)
             {
-                graphics.TranslateTransform(translateX, translateY);
-                graphics.RotateTransform(rot * 90);
+                graphics.MultiplyTransform(transform);
 
                 if (ctx.DrawBorder && ctx.ClipPath != null)
                 {
                     using (graphics.Save())
                     {
                         // Render border in world space
-                        XMatrix m = ctx.ImageSpaceToWorldSpace;
+                        AbstractMatrix m = ctx.ImageSpaceToWorldSpace;
                         graphics.MultiplyTransform(m);
                         AbstractPen pen = new AbstractPen(ctx.Styles.imageBorderColor, 0.2f);
 
@@ -271,26 +294,18 @@ namespace Maps.API
                     response.ContentType = mimeType;
 
                     // Searching for a matching encoder
-                    ImageCodecInfo encoder = null;
-                    ImageCodecInfo[] encoders = ImageCodecInfo.GetImageEncoders();
-                    for (int i = 0; i < encoders.Length; ++i)
-                    {
-                        if (encoders[i].MimeType == response.ContentType)
-                        {
-                            encoder = encoders[i];
-                            break;
-                        }
-                    }
+                    ImageCodecInfo encoder = ImageCodecInfo.GetImageEncoders()
+                        .FirstOrDefault(e => e.MimeType == response.ContentType);
 
                     if (encoder != null)
                     {
                         EncoderParameters encoderParams;
-                        if (mimeType == MediaTypeNames.Image.Jpeg)
+                        if (mimeType == ContentTypes.Image.Jpeg)
                         {
                             encoderParams = new EncoderParameters(1);
                             encoderParams.Param[0] = new EncoderParameter(Encoder.Quality, (long)95);
                         }
-                        else if (mimeType == Util.MediaTypeName_Image_Png)
+                        else if (mimeType == ContentTypes.Image.Png)
                         {
                             encoderParams = new EncoderParameters(1);
                             encoderParams.Param[0] = new EncoderParameter(Encoder.ColorDepth, 8);
@@ -300,7 +315,7 @@ namespace Maps.API
                             encoderParams = new EncoderParameters(0);
                         }
 
-                        if (mimeType == Util.MediaTypeName_Image_Png)
+                        if (mimeType == ContentTypes.Image.Png)
                         {
                             // PNG encoder is picky about streams - need to do an indirection
                             // http://www.west-wind.com/WebLog/posts/8230.aspx
@@ -320,7 +335,7 @@ namespace Maps.API
                     else
                     {
                         // Default to GIF if we can't find anything
-                        response.ContentType = MediaTypeNames.Image.Gif;
+                        response.ContentType = ContentTypes.Image.Gif;
                         bitmap.Save(outputStream, ImageFormat.Gif);
                     }
                 }
@@ -328,7 +343,7 @@ namespace Maps.API
                 {
                     // Saving seems to throw "A generic error occurred in GDI+." on low memory.
                     throw new HttpError(500, "Internal Server Error",
-                        string.Format("Unknown GDI error encoding bitmap ({0}x{1}). Insufficient memory?", bitmap.Width, bitmap.Height));
+                        $"Unknown GDI error encoding bitmap ({bitmap.Width}x{bitmap.Height}). Insufficient memory?");
                 }
             }
 
@@ -344,11 +359,11 @@ namespace Maps.API
                 else if (!string.IsNullOrEmpty(request.Form["data"]))
                 {
                     string data = request.Form["data"];
-                    sector = new Sector(data.ToStream(), MediaTypeNames.Text.Plain, errors);
+                    sector = new Sector(data.ToStream(), ContentTypes.Text.Plain, errors);
                 }
-                else if (new ContentType(request.ContentType).MediaType == MediaTypeNames.Text.Plain)
+                else if (new ContentType(request.ContentType).MediaType == ContentTypes.Text.Plain)
                 {
-                    sector = new Sector(request.InputStream, MediaTypeNames.Text.Plain, errors);
+                    sector = new Sector(request.InputStream, ContentTypes.Text.Plain, errors);
                 }
                 else
                 {
@@ -377,6 +392,23 @@ namespace Maps.API
 
                 return sector;
             }
+        }
+
+        protected static void ApplyHexRotation(int hrot, Stylesheet stylesheet, ref Size bitmapSize, ref AbstractMatrix transform)
+        {
+            float degrees = -hrot;
+            double radians = degrees * Math.PI / 180f;
+            double newWidth = Math.Abs(Math.Sin(radians)) * bitmapSize.Height + Math.Abs(Math.Cos(radians)) * bitmapSize.Width;
+            double newHeight = Math.Abs(Math.Sin(radians)) * bitmapSize.Width + Math.Abs(Math.Cos(radians)) * bitmapSize.Height;
+
+            transform.TranslatePrepend((float)newWidth / 2, (float)newHeight / 2);
+            transform.RotatePrepend(-degrees);
+            transform.TranslatePrepend(-bitmapSize.Width / 2, -bitmapSize.Height / 2);
+            bitmapSize.Width = (int)Math.Ceiling(newWidth);
+            bitmapSize.Height = (int)Math.Ceiling(newHeight);
+
+            stylesheet.hexRotation = (float)degrees;
+            stylesheet.microBorders.textStyle.Rotation = degrees;
         }
     }
 }

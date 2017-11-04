@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<Sector Abbreviation="Troj" Tags="Unreviewed">
+  <Y>0</Y>
+  <X>-4</X>
+  <Name>Trojan Reach</Name>
+  <Name>Trojan Reaches</Name>
+  <Name Lang="as">Hlaoirloahaurl</Name>
+  <Name Lang="zh">Idrflanta</Name>
+  <Credits>
+    <![CDATA[
+
+             Egyrn and Pax Rulin subsectors of <b>Trojan Reach</b>
+             sector were designed by Bob McWilliams and appear in
+             <cite>Traveller Adventure 4: Leviathan</cite> (GDW,
+             1980).
+
+             The rest of Trojan Reach sector was designed by Marc W.
+             Miller and appears in <cite>Atlas of the Imperium</cite>
+             (GDW, 1984).
+
+             The remaining subsectors were refined by Mike Jackson and
+             appear in <cite>Third Imperium Magazine</cite>
+             (1986-1988) and <cite>The MegaTraveller Journal #3</cite>
+             (Digest Group Publications, 1992).
+             
+             M1201 data comes from the "The Regency Sourcebook: Keepers of the Flame", and http://www.mu.org/~joe/traveller/archive/HIWG/trojan/TROJ1200.NSC.txt
+             
+            ]]>
+  </Credits>
+  <DataFile Source="The Regency Sourcebook: Keepers of the Flame" Mileau="M1201" Type="TabDelimited">Trojan Reach.tab</DataFile>
+  <Subsectors>
+    <Subsector Index="A">Menorial</Subsector>
+    <Subsector Index="B">Egyrn</Subsector>
+    <Subsector Index="C">Pax Rulin</Subsector>
+    <Subsector Index="D">Gazulin</Subsector>
+    <Subsector Index="E">?</Subsector>
+    <Subsector Index="F">Dpres</Subsector>
+    <Subsector Index="G">Sindal</Subsector>
+    <Subsector Index="H">Tobia</Subsector>
+    <Subsector Index="I">?</Subsector>
+    <Subsector Index="J">?</Subsector>
+    <Subsector Index="K">Tlaiowaha</Subsector>
+    <Subsector Index="L">The Borderland</Subsector>
+    <Subsector Index="M">?</Subsector>
+    <Subsector Index="N">?</Subsector>
+    <Subsector Index="O">?</Subsector>
+    <Subsector Index="P">?</Subsector>
+  </Subsectors>
+
+  <Stylesheet>
+    border.Re { color: lightblue; }
+    route.Re { color: lightgreen; }
+
+    border.Rf { color: lightgreen; }
+
+    border.Fl { color: green; }
+  </Stylesheet>
+
+  <Allegiances>
+    <Allegiance Code="Rf">Regency Frontier</Allegiance>
+    <Allegiance Code="Re">Regency</Allegiance>
+    <Allegiance Code="Fl">Florian League</Allegiance>
+    <Allegiance Code="Wi">Wilds</Allegiance>
+    <Allegiance Code="">Barren</Allegiance>
+  </Allegiances>
+
+  <Routes>
+    <Route Start="2102" End="2140" EndOffsetY="-1" />
+    <Route Start="2102" End="2204" />
+    <Route Start="2804" End="2805" />
+    <Route Start="2804" End="2902" />
+    <Route Start="2902" End="2739" EndOffsetY="-1" />
+    <Route Start="2708" End="2805" />
+    <Route Start="2204" End="2405" />
+    <Route Start="2405" End="2708" />
+    <Route Start="2708" End="2909" />
+    <Route Start="2711" End="2909" />
+    <Route Start="2711" End="2714" />
+    <Route Start="2714" End="2715" />
+    <Route Start="2714" End="2513" />
+    <Route Start="2513" End="2211" />
+    <Route Start="2715" End="2515" />
+    <Route Start="2715" End="2815" />
+    <Route Start="2815" End="2916" />
+    <Route Start="2916" End="2918" />
+    <Route Start="2916" End="3215" />
+    <Route Start="3215" End="3013" />
+    <Route Start="3013" End="2813" />
+    <Route Start="2813" End="2714" />
+    <Route Start="3013" End="3012" />
+    <Route Start="3012" End="3212" />
+    <Route Start="3212" EndOffsetX="1" End="0210" />
+  </Routes>
+  <Borders>
+    <Border Allegiance="Re" Label="Regency">
+      1800 1900 2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 3000 3100 3200 3300 3301
+      3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3215 3216 3117
+      3017 2918 2817 2717 2616 2615 2515 2414 2314 2213 2113 2112 2211 2312 2411 2511 2510 2509 2508
+      2507 2406 2306 2205 2105 2104 2103 2002 1902 1801 1800
+    </Border>
+    <Border Allegiance="Rf" Label="Regency Frontier">
+      3018 3118 3217 3317 3318 3319 3320 3321 3221 3121
+      3020 3019 3018
+    </Border>
+
+    <Border Allegiance="Fl">0010 0110 0210 0310 0410 0510 0511 0512 0612 0713 0714 0715 0716 0616 0517 0417 0418 0319 0218 0119 0118 0017 0016 0015 0014 0013 0012 0011 0010 </Border>
+
+    <Border Allegiance="As" Label="Aslan Hierate">
+      0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027 0026
+      0025 0024 0023 0022 0122 0221 0220 0320 0419 0519 0518 0617 0717 0816 0916 1015 
+      1115 1114 1113 1112 1111 1210 1209 1309 1308 1307 1206 1106 1005 1106 1205 1305 
+      1304 1303 1402 1403 1404 1505 1605 1706 1806 1906 1907 2007 2108 2208 2309 2209 
+      2109 2009 1910 1810 1811 1812 1813 1914 2014 2115 2116 2216 2317 2417 2517 2518 
+      2618 2719 2819 2920 2921 2922 2923 2823 2824 2725 2625 2526 2527 2427 2428 2329 
+      2229 2230 2231 2332 2232 2233 2234 2134 2033 1934 1935 1835 1736 1636 1637 1538 
+      1438 1339 1239 1240 1241 1141 1041 0941 0841 0741 0641 0541 0441 0341 0241 0141
+    </Border>
+
+
+
+
+
+  </Borders>
+
+</Sector>

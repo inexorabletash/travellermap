@@ -1,8 +1,8 @@
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.IO;
 using System.Runtime.Serialization;
 using System.Xml.Serialization;
 
@@ -38,73 +38,73 @@ namespace Maps
         private static SectorMap s_instance;
 
         /// <summary>
-        /// Holds all known sectors across all milieux. Callers should generally not use this, since it
+        /// Holds all known sectors across all milieux.
+        /// </summary>
+        private readonly SectorCollection sectors = new SectorCollection();
+
+        /// <summary>
+        /// Enumerate all known sectors across all milieux. Callers should generally not use this, since it
         /// will contain duplicate sectors across milieux.
         /// </summary>
-        private SectorCollection sectors = new SectorCollection();
-        public IList<Sector> Sectors { get { return sectors.Sectors; } }
+        public IEnumerable<Sector> Sectors => sectors.Sectors;
 
         /// <summary>
         /// Represents a single milieu. Contains maps from name to Sector and coordinates to Sector.
         /// </summary>
-        private class MilieuMap
+        internal class MilieuMap
         {
-            public Dictionary<string, Sector> nameMap = new Dictionary<string, Sector>(StringComparer.InvariantCultureIgnoreCase);
-            public Dictionary<Point, Sector> locationMap = new Dictionary<Point, Sector>();
+            public MilieuMap(string name) { Name = name; }
+            public string Name { get; }
+
+            private ConcurrentDictionary<string, Sector> nameMap = new ConcurrentDictionary<string, Sector>(StringComparer.InvariantCultureIgnoreCase);
+            private ConcurrentDictionary<Point, Sector> locationMap = new ConcurrentDictionary<Point, Sector>();
 
             public Sector FromName(string name)
             {
-                Sector sector;
-                nameMap.TryGetValue(name, out sector);
+                nameMap.TryGetValue(name, out Sector sector);
                 return sector;
             }
 
             public Sector FromLocation(Point coords)
             {
-                Sector sector;
-                locationMap.TryGetValue(coords, out sector);
+                locationMap.TryGetValue(coords, out Sector sector);
                 return sector;
             }
 
-            public void Add(Sector sector)
+            public void TryAdd(Sector sector)
             {
-                locationMap.Add(sector.Location, sector);
-
-                foreach (var name in sector.Names)
+                lock (this)
                 {
-                    if (!nameMap.ContainsKey(name.Text))
-                        nameMap.Add(name.Text, sector);
+                    if (!locationMap.TryAdd(sector.Location, sector))
+                        return;
 
-                    // Automatically alias "SpinwardMarches"
-                    string spaceless = name.Text.Replace(" ", "");
-                    if (spaceless != name.Text && !nameMap.ContainsKey(spaceless))
-                        nameMap.Add(spaceless, sector);
+                    sector.MilieuMap = this;
+
+                    foreach (var name in sector.Names)
+                    {
+                        nameMap.TryAdd(name.Text, sector);
+
+                        // Automatically alias "SpinwardMarches"
+                        nameMap.TryAdd(name.Text.Replace(" ", ""), sector);
+                    }
+
+                    if (!string.IsNullOrEmpty(sector.Abbreviation))
+                        nameMap.TryAdd(sector.Abbreviation, sector);
                 }
-
-                if (!string.IsNullOrEmpty(sector.Abbreviation) && !nameMap.ContainsKey(sector.Abbreviation))
-                    nameMap.Add(sector.Abbreviation, sector);
             }
         }
 
-        public const string DEFAULT_MILIEU = "1105";
-        private static readonly IEnumerable<string> FALLBACK_MILIEUX = new List<string> { "1100", "1120", "1200" };
-
-        public static bool IsDefaultMilieu(string m)
-        {
-            return string.IsNullOrWhiteSpace(m) || m == DEFAULT_MILIEU || FALLBACK_MILIEUX.Contains(m);
-        }
+        public const string DEFAULT_MILIEU = "M1105";
 
         /// <summary>
         /// Holds all milieu, keyed by name (e.g. "M0").
         /// </summary>
-        private Dictionary<string, MilieuMap> milieux = new Dictionary<string, MilieuMap>(StringComparer.InvariantCultureIgnoreCase);
-        private MilieuMap GetMilieuMap(string name)
-        {
-            if (!milieux.ContainsKey(name))
-                milieux.Add(name, new MilieuMap());
-            return milieux[name];
-        }
+        private ConcurrentDictionary<string, MilieuMap> milieux 
+            = new ConcurrentDictionary<string, MilieuMap>(StringComparer.InvariantCultureIgnoreCase);
 
+        private MilieuMap GetMilieuMap(string name) => milieux.GetOrAdd(name, n => new MilieuMap(n));
+
+        // Singleton initialization
         private SectorMap(IEnumerable<SectorMetafileEntry> metafiles, ResourceManager resourceManager)
         {
             // Load all sectors from all metafiles.
@@ -129,10 +129,11 @@ namespace Maps
                     sector.Merge(metadata);
                 }
 
-                GetMilieuMap(sector.CanonicalMilieu).Add(sector);
+                GetMilieuMap(sector.CanonicalMilieu).TryAdd(sector);
             }
         }
 
+        // Singleton accessor
         public static SectorMap GetInstance(ResourceManager resourceManager)
         {
             lock (SectorMap.s_lock)
@@ -142,16 +143,23 @@ namespace Maps
                     List<SectorMetafileEntry> files = new List<SectorMetafileEntry>
                     {
                         // Meta
-                        new SectorMetafileEntry(@"~/res/legend.xml", new List<string> { "meta" } ),
+                        new SectorMetafileEntry(@"~/res/Sectors/Meta/legend.xml", new List<string> { "meta" } ),
 
                         // OTU - Default Milieu
-                        new SectorMetafileEntry(@"~/res/sectors.xml", new List<string> { "OTU" } ),
+                        new SectorMetafileEntry(@"~/res/Sectors/M1105/M1105.xml", new List<string> { "OTU" } ),
                         new SectorMetafileEntry(@"~/res/Sectors/Zhodani Core Route/ZhodaniCoreRoute.xml", new List<string> { "ZCR" } ),
                         new SectorMetafileEntry(@"~/res/Sectors/Orion OB1/orion.xml", new List<string> { "OrionOB1" } ),
 
+                        new SectorMetafileEntry(@"~/res/Sectors/Distant Fringe/distantfringe.xml", new List<string> { "DistantFringe" } ),
+                        new SectorMetafileEntry(@"~/res/Sectors/Distant Fringe/Infinitys Shore/infinitysshore.xml", new List<string> { "DistantFringe" } ),
+                        new SectorMetafileEntry(@"~/res/Sectors/Distant Fringe/Where The Stars End/wherethestarsend.xml", new List<string> { "DistantFringe" } ),
+
                         // OTU - Other Milieu
                         new SectorMetafileEntry(@"~/res/Sectors/IW/iw.xml", new List<string> { "OTU" } ),
+                        new SectorMetafileEntry(@"~/res/Sectors/M0/M0.xml", new List<string> { "OTU" } ),
                         new SectorMetafileEntry(@"~/res/Sectors/M990/M990.xml", new List<string> { "OTU" } ),
+                        new SectorMetafileEntry(@"~/res/Sectors/M1120/M1120.xml", new List<string> { "OTU" } ),
+                        new SectorMetafileEntry(@"~/res/Sectors/M1201/M1201.xml", new List<string> { "OTU" } ),
                         new SectorMetafileEntry(@"~/res/Sectors/M1248/M1248.xml", new List<string> { "OTU" } ),
                         new SectorMetafileEntry(@"~/res/Sectors/M1900/M1900.xml", new List<string> { "OTU" } ),
 
@@ -201,27 +209,25 @@ namespace Maps
                 this.map = map;
                 this.milieu = milieu;
             }
-            public Sector FromLocation(int x, int y, bool useMilieuFallbacks=false) { return map.FromLocation(new Point(x, y), milieu, useMilieuFallbacks); }
-            public Sector FromLocation(Point pt, bool useMilieuFallbacks=false) { return map.FromLocation(pt, milieu, useMilieuFallbacks); }
-            public Sector FromName(string name) { return map.FromName(name, milieu); }
+            public Sector FromLocation(int x, int y, bool useMilieuFallbacks = false)
+                => map.FromLocation(new Point(x, y), milieu, useMilieuFallbacks);
+            public Sector FromLocation(Point pt, bool useMilieuFallbacks = false)
+                => map.FromLocation(pt, milieu, useMilieuFallbacks);
+            public Sector FromName(string name)
+                => map.FromName(name, milieu);
         }
 
         public static Milieu ForMilieu(ResourceManager resourceManager, string milieu)
-        {
-            return new Milieu(SectorMap.GetInstance(resourceManager), milieu);
-        }
+            => new Milieu(SectorMap.GetInstance(resourceManager), milieu);
 
         /// <summary>
-        /// Helper to find MilieuMaps by name (considering fallbacks).
+        /// Helper to find MilieuMaps by name.
         /// </summary>
         /// <param name="m">Specific milieu. If specified, at most one milieu will be returned.
         /// If null, default/fallback milieu will be returned</param>
         /// <returns>Enumerable yielding all matching MilieuMap instances.</returns>
         private IEnumerable<MilieuMap> SelectMilieux(string m)
         {
-            if (milieux == null)
-                throw new MapNotInitializedException();
-
             if (m != null)
             {
                 // If milieu name is specified, return matching MilieuMap if found.
@@ -230,13 +236,7 @@ namespace Maps
             }
             else
             {
-                // Return default and fallback MilieuMaps (if they exist).
                 yield return milieux[DEFAULT_MILIEU];
-                foreach (string milieu in FALLBACK_MILIEUX)
-                {
-                    if (milieux.ContainsKey(milieu))
-                        yield return milieux[milieu];
-                }
             }
         }
 
@@ -246,40 +246,38 @@ namespace Maps
         /// <param name="name">Sector name</param>
         /// <param name="milieu">Milieu name, null for default/fallbacks</param>
         /// <returns>Sector if found, or null</returns>
-        private Sector FromName(string name, string milieu)
-        {
-            if (sectors == null)
-                throw new MapNotInitializedException();
-            return SelectMilieux(milieu)
-                .Select(m => m.FromName(name))
-                .Where(s => s != null)
-                .FirstOrDefault();
-        }
+        private Sector FromName(string name, string milieu) => SelectMilieux(milieu)
+                    .Select(m => m.FromName(name))
+                    .Where(s => s != null)
+                    .FirstOrDefault();
 
         /// <summary>
         /// Finds sector by location in the named milieu (using default/fallbacks if null)
         /// </summary>
         /// <param name="x">Sector x coordinate</param>
         /// <param name="y">Sector y coordinate</param>
-        /// <param name="milieu">Milieu name, null for default/fallbacks</param>
+        /// <param name="milieu">Milieu name, null for default</param>
         /// <returns>Sector if found, or null</returns>
-        private Sector FromLocation(Point pt, string milieu, bool useMilieuFallbacks=false)
+        private Sector FromLocation(Point pt, string milieu, bool useMilieuFallbacks = false)
         {
-            if (sectors == null)
-                throw new MapNotInitializedException();
             Sector sector = SelectMilieux(milieu)
-                .Select(m => m.FromLocation(pt))
-                .Where(s => s != null && (useMilieuFallbacks || !(s is Dotmap)))
+                .Select(map => map.FromLocation(pt))
+                .Where(sec => sec != null && (useMilieuFallbacks || !(sec is Dotmap)))
                 .FirstOrDefault();
 
             if (sector != null || milieu == null || !useMilieuFallbacks)
                 return sector;
+
+            // Fall back to default milieu and produce a dotmap
             sector = FromLocation(pt, null);
             if (sector == null)
                 return null;
             sector = new Dotmap(sector);
+
+            // Remember it, if milieu is known.
             if (milieux.ContainsKey(milieu))
-                milieux[milieu].Add(sector);
+                milieux[milieu].TryAdd(sector);
+
             return sector;
         }
     }
@@ -287,18 +285,13 @@ namespace Maps
     [XmlRoot(ElementName = "Sectors")]
     public class SectorCollection
     {
-        public SectorCollection()
-        {
-            Sectors = new List<Sector>();
-        }
-
         [XmlElement("Sector")]
-        public List<Sector> Sectors { get; }
+        public List<Sector> Sectors { get; } = new List<Sector>();
 
         public void Merge(SectorCollection otherCollection)
         {
             if (otherCollection == null)
-                throw new ArgumentNullException("otherCollection");
+                throw new ArgumentNullException(nameof(otherCollection));
 
             if (otherCollection.Sectors != null)
                 Sectors.AddRange(otherCollection.Sectors);

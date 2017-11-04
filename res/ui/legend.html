@@ -1,18 +1,23 @@
 <!DOCTYPE html>
 <title>Legend Images</title>
-<base href="http://travellermap.com">
+<base href="https://travellermap.com">
 <script>
-['poster', 'atlas', 'print', 'candy', 'draft', 'fasa'].forEach(function(style) {
+['poster', 'atlas', 'print', 'candy', 'draft', 'fasa', 'terminal'].forEach(style => {
   var div = document.createElement('div');
   document.documentElement.appendChild(div);
-  var img;
 
-  img = document.createElement('img');
-  img.src = '/api/jumpmap?jump=1&sector=Legend&hex=1003&options=884&border=0&style='+style;
-  div.appendChild(img);
+  const contentType = 'image/svg+xml', extension = 'svg';
 
-  img = document.createElement('img');
-  img.src = '/api/jumpmap?jump=1&sector=Legend&hex=1006&options=884&border=0&style='+style;
-  div.appendChild(img);
+  ['1003', '1006'].forEach(hex => {
+
+    var img, a;
+    a = document.createElement('a');
+    img = document.createElement('img');
+    img.src = `/api/jumpmap?accept=${contentType}&jump=1&sector=Legend&hex=${hex}&options=884&border=0&style=${style}`;
+    a.href = img.src;
+    a.download = ''; // Ignored for cross-origin requests, alas: `Legend_${hex}_${style}.${extension}`;
+    a.appendChild(img);
+    div.appendChild(a);
+  });
 });
 </script>

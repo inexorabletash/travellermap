@@ -2,49 +2,55 @@
 <title>Route Maker - Traveller Map</title>
 <meta charset="utf-8">
 <link rel="shortcut icon" href="../favicon.ico">
-<link rel="stylesheet" href="../site.css?update=2016-07-23">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
-<script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.25/polyfill.min.js"></script>
-<script src="../map.js?update=2016-07-29"></script>
-<script src="post.js?update=2016-03-24"></script>
+<link rel="stylesheet" href="../site.css?update=2017-03-18">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
+<script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.29/polyfill.min.js"></script>
+<script src="../map.js?update=2017-03-14"></script>
+<script src="post.js?update=2016-10-15"></script>
 
 <h1>Route Maker &mdash; The Traveller Map</h1>
 <p style="font-size: 120%; width: 600px;">
   This tool lets you create route entries for custom sectors,
-  part of the <a target=_blank href="../doc/metadata">metadata</a> needed
+  part of the <a target=_blank rel=noopener href="../doc/metadata">metadata</a> needed
   to create <a href="poster">posters</a> or <a href="booklet">booklets</a>.
 </p>
 
 <ol class="steps">
   <li>
   <select id="sector">
-    <option disabled>Select...</option>
+    <option selected disabled>Select...</option>
   </select>
   a sector, or enter custom sector data/metadata:
 
 <div>Sector Data:
-  (<a target="_blank" href="../doc/fileformats">file formats</a>)
+  (<a target=_blank rel=noopener href="../doc/fileformats">file formats</a>)
   &mdash;
-  <em>tip: <a target="_blank" href="../tools/lintsec.html">check your data</a> first</em>
+  <em>tip: <a target=_blank rel=noopener href="../tools/lintsec.html">check your data</a> first</em>
 </div>
 <textarea id="data" name="data" class="drag-n-drop"
           spellcheck="false" wrap="off" cols="80" rows="10"></textarea>
 
 <div>Existing Metadata:
-  (<a target="_blank" href="../doc/metadata">XML</a> or
-  <a target="_blank" href="http://dotclue.org/t20/">MSEC</a>)</div>
+  (<a target=_blank rel=noopener href="../doc/metadata">XML</a> or
+  <a target=_blank rel=noopener href="http://dotclue.org/t20/">MSEC</a>)</div>
 <textarea id="metadata" name="metadata" class="drag-n-drop"
           spellcheck="false" wrap="off" cols="80" rows="10"></textarea>
 
   <li>Click <button id="parsesec">Generate Map</button> (may take a few seconds)
+    <div>
+      Highlight:
+       &nbsp; <label><input type=checkbox id="highlight-im"> Importance</label>
+       &nbsp; <label><input type=checkbox id="highlight-po"> Population</label>
+    </div>
+
   <li>Click on the map to set a route start point, then again to set a route end point
   <li>If needed, click <button id="undo">Undo</button> to undo the last click,
     or <button id="clear">Clear</button> to start over
   <li>
     <form id="form">
 Pick a file type:
-<label><input id="xml" type="radio" name="metatype" value="xml" checked><a target="_blank" href="../doc/api#metadata">XML</a></label> or
-    <label><input id="msec" type="radio" name="metatype" value="msec"><a target="_blank" href="../doc/api#msec">MSEC</a></label>
+<label><input id="xml" type="radio" name="metatype" value="xml" checked><a target=_blank rel=noopener href="../doc/api#metadata">XML</a></label> or
+    <label><input id="msec" type="radio" name="metatype" value="msec"><a target=_blank rel=noopener href="../doc/api#msec">MSEC</a></label>
     </form>
   <li>Copy the routes from the box below into your metadata file:<br>
 <textarea id="metadata_generated"
@@ -82,8 +88,8 @@ Pick a file type:
 
 <div style="margin-top: 10px; font-size: 80%">
   The <em class="product">Traveller</em> game in all forms is owned by Far
-  Future Enterprises. Copyright &copy; 1977 &ndash; 2016 Far Future
-  Enterprises.
+  Future Enterprises. Copyright <span class=copyright>&copy;</span> 1977 &ndash; 2017
+  Far Future Enterprises.
   <a href="http://farfuture.net/FFEFairUsePolicy2008.pdf">Fair Use Policy</a>
 </div>
 
@@ -125,7 +131,9 @@ function parse() {
         style: 'print',
         options: 41975,
         scale: 64,
-        datauri: 1
+        datauri: 1,
+        im: $('#highlight-im').checked ? 1 : 0,
+        po: $('#highlight-po').checked ? 1 : 0
       };
       return getTextViaPOST(Traveller.MapService.makeURL('/api/poster'), params);
     })
@@ -135,7 +143,7 @@ function parse() {
       refresh();
     })
     .catch(function(reason) {
-      alert(reason);
+      alert('Server error: ' + reason);
     });
 }
 

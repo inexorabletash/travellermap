@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Sector Abbreviation="Prov">
+  <Y>-2</Y>
+  <X>-2</X>
+  <Name>Provence</Name>
+  <Name Lang="va">Orraenang</Name>
+  <Name Lang="vi">Amshagi</Name>
+  <Credits>
+    <![CDATA[
+
+             <b>Provence</b> sector was designed by David Drazul.
+
+             M1201 data from http://zho.berka.com/data/TNE/sector.pl?sector=PROVENCE
+
+    ]]>
+  </Credits>
+  <DataFile Author="David Drazul" Source="Traveller 5 Sector Survey" Milieu="M1201" Type="TabDelimited">Provence.tab</DataFile>
+  <Subsectors>
+    <Subsector Index="A">Llaezgaen</Subsector>
+    <Subsector Index="B">Vorvoun</Subsector>
+    <Subsector Index="C" Source="MegaTraveller Imperial Encyclopedia">Grnouf</Subsector>
+    <Subsector Index="D">Tsaegag</Subsector>
+    <Subsector Index="E">Anghikh</Subsector>
+    <Subsector Index="F">Kaegrogz</Subsector>
+    <Subsector Index="G">Gveghz</Subsector>
+    <Subsector Index="H">Thon</Subsector>
+    <Subsector Index="I">Dzarrvaer</Subsector>
+    <Subsector Index="J">Aenkuk</Subsector>
+    <Subsector Index="K">Karrdzae</Subsector>
+    <Subsector Index="L">Kaerfoz</Subsector>
+    <Subsector Index="M">Lighoz</Subsector>
+    <Subsector Index="N">Voudzeur</Subsector>
+    <Subsector Index="O">Uekhourg</Subsector>
+    <Subsector Index="P">Daekvagul</Subsector>
+  </Subsectors>
+
+  <Stylesheet>
+    border.Kv { color: olivedrab; }
+    border.Vl { color: olivedrab; }
+  </Stylesheet>
+  <Allegiances>
+    <Allegiance Code="Kv">Knokseng Confederation</Allegiance>
+    <Allegiance Code="Vl">Lair Protectorate</Allegiance>
+  </Allegiances>
+
+    <Borders>
+      <Border Allegiance="Kv">
+        0325 0424 0423 0422 0421 0422 0523 0524 0624 0625 0626 0627 0728 0828 0728 0628 0529 0530 0430 0530 0529 0528 0527 0526 0425 0325
+      </Border>
+
+      <Border Allegiance="Vl">
+        2001 2101 2201 2301 2302 2402 2302 2201 2102 2001
+      </Border>
+    </Borders>
+</Sector>

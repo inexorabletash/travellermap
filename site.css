@@ -26,13 +26,27 @@ h1 {
   padding-bottom: 4pt;
   border-bottom: 4pt solid black;
   margin-bottom: 4pt;
-
-  padding-left: 45px;
-  background-image: url(https://s3.amazonaws.com/travellermap/images/ImperialStarburst.png);
-  background-size: 40px 40px;
-  background-repeat: no-repeat;
-
 }
+
+@media only screen and (max-width: 425px)  {
+  h1 .sitename {
+    display: none;
+  }
+}
+@media only screen and (min-width: 768px)  {
+  h1 {
+    padding-left: 45px;
+    background-image: url(https://s3.amazonaws.com/travellermap/images/ImperialStarburst.png);
+    background-size: 40px 40px;
+    background-repeat: no-repeat;
+  }
+  h1.sitename::after {
+    content: "\2014 The Traveller Map";
+  }
+}
+
+
+
 h2 {
   border-bottom: 2pt solid black;
 }
@@ -62,10 +76,12 @@ p, li, dd {
 ol.steps > li {
   margin-top: 4px;
   margin-bottom: 4px;
-  font-size: 120%;
+  font-size: 12pt;
 }
-ol.steps > li select {
-  font-size: 120%;
+ol.steps > li select,
+ol.steps > li button,
+ol.steps > li input[type=submit] {
+  font-size: 12pt;
 }
 
 div.aside, p.aside {
@@ -85,6 +101,13 @@ a.reference {
   font-size: smaller;
   text-decoration: none;
 }
+a.stealth {
+  text-decoration: none;
+}
+a:hover.stealth {
+  text-decoration: underline;
+}
+
 
 dfn, cite {
   font-style: italic;
@@ -103,7 +126,9 @@ td.number, th.number {
   padding-right: 10pt;
 }
 
-
+.copyright {
+  font-family: 'Arial';
+}
 
 /* Code Samples and Parameter Definitions */
 
@@ -155,12 +180,12 @@ textarea {
 
 /* Responsive Layout */
 
-@media only screen and (max-width: 7.5in)  {
-  .content { margin-left: 0; }
+@media only screen and (max-width: 768px)  {
+  .content { width: auto; margin-left: 0.5in; margin-right: 0.5in; }
 }
-@media only screen and (max-width: 6.5in)  {
-  h1 { font-size: 18pt; line-height: 30pt; }
-  .content { width: auto; }
+@media only screen and (max-width: 425px)  {
+  h1 { font-size: 18pt; }
+  .content { width: auto; margin: 0; }
   .forkme { display: none; }
   pre.code {
     white-space: pre-wrap;
@@ -174,7 +199,7 @@ textarea {
 
 /* Table of Contents */
 
-@media only screen and (min-width: 1000px) {
+@media only screen and (min-width: 1024px) {
   nav.toc { display: block !important; }
 }
 nav.toc {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Maps.Utilities;
+using System;
 using System.Web;
 
 namespace Maps.HTTP
@@ -11,8 +12,7 @@ namespace Maps.HTTP
     // </appSettings>
     public class PageFooter : IHttpModule
     {
-        public String ModuleName { get { return "PageFooter"; } }
-
+        public String ModuleName => "PageFooter";
         public void Init(HttpApplication application)
         {
             string footer = System.Configuration.ConfigurationManager.AppSettings["PageFooter"];
@@ -23,7 +23,7 @@ namespace Maps.HTTP
                 HttpContext context = application.Context;
                 if (context.Request.IsLocal)
                     return;
-                if (context.Response.ContentType != System.Net.Mime.MediaTypeNames.Text.Html)
+                if (context.Response.ContentType != ContentTypes.Text.Html)
                     return;
                 if (context.Request.Url.AbsolutePath.StartsWith("/admin/"))
                     return;

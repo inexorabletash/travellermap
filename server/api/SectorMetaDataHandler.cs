@@ -1,4 +1,5 @@
-﻿using Maps.Serialization;
+using Maps.Serialization;
+using Maps.Utilities;
 using System.Collections.Generic;
 using System.Web;
 using System.Xml.Serialization;
@@ -10,58 +11,52 @@ namespace Maps.API
     /// </summary>
     internal class SectorMetaDataHandler : DataHandlerBase
     {
-        protected override string ServiceName { get { return "sectormetadata"; } }
+        protected override DataResponder GetResponder(HttpContext context) => new Responder(context);
 
-        protected override DataResponder GetResponder(HttpContext context)
-        {
-            return new Responder(context);
-        }
         private class Responder : DataResponder
         {
             public Responder(HttpContext context) : base(context) { }
-            public override string DefaultContentType { get { return System.Net.Mime.MediaTypeNames.Text.Xml; } }
-            public override void Process()
+            public override string DefaultContentType => ContentTypes.Text.Xml;
+
+            public override void Process(ResourceManager resourceManager)
             {
                 // NOTE: This (re)initializes a static data structure used for 
                 // resolving names into sector locations, so needs to be run
                 // before any other objects (e.g. Worlds) are loaded.
-                ResourceManager resourceManager = new ResourceManager(context.Server);
                 SectorMap.Milieu map = SectorMap.ForMilieu(resourceManager, GetStringOption("milieu"));
                 Sector sector;
 
-                if (context.Request.HttpMethod == "POST")
+                if (Context.Request.HttpMethod == "POST")
                 {
-                    var type = SectorMetadataFileParser.SniffType(context.Request.InputStream);
+                    var type = SectorMetadataFileParser.SniffType(Context.Request.InputStream);
                     var parser = SectorMetadataFileParser.ForType(type);
-                    using (var reader = new System.IO.StreamReader(context.Request.InputStream, context.Request.ContentEncoding))
+                    using (var reader = new System.IO.StreamReader(Context.Request.InputStream, Context.Request.ContentEncoding))
                     {
                         sector = parser.Parse(reader);
                     }
+                    sector.MetadataFile = null;
+                    sector.DataFile = null;
                 }
                 else if (HasOption("sx") && HasOption("sy"))
                 {
                     int sx = GetIntOption("sx", 0);
                     int sy = GetIntOption("sy", 0);
 
-                    sector = map.FromLocation(sx, sy);
-
-                    if (sector == null)
-                        throw new HttpError(404, "Not Found", string.Format("The sector at {0},{1} was not found.", sx, sy));
+                    sector = map.FromLocation(sx, sy) ??
+                        throw new HttpError(404, "Not Found", $"The sector at {sx},{sy} was not found.");
                 }
                 else if (HasOption("sector"))
                 {
                     string sectorName = GetStringOption("sector");
-                    sector = map.FromName(sectorName);
-
-                    if (sector == null)
-                        throw new HttpError(404, "Not Found", string.Format("The specified sector '{0}' was not found.", sectorName));
+                    sector = map.FromName(sectorName) ??
+                        throw new HttpError(404, "Not Found", $"The specified sector '{sectorName}' was not found.");
                 }
                 else
                 {
                     throw new HttpError(400, "Bad Request", "No sector specified.");
                 }
 
-                SendResult(context, new Results.SectorMetadata(sector, sector.GetWorlds(resourceManager, cacheResults: true)));
+                SendResult(new Results.SectorMetadata(sector, sector.GetWorlds(resourceManager, cacheResults: true)));
             }
         }
     }
@@ -86,28 +81,24 @@ namespace Maps.API.Results
 
         [XmlAttribute]
         [System.ComponentModel.DefaultValue(false)]
-        public bool Selected { get { return sector.Selected; } }
-
+        public bool Selected { get => sector.Selected; set { } }
         [XmlAttribute]
-        public string Tags { get { return sector.TagString; } }
-
+        public string Tags { get => sector.TagString; set { } }
         [XmlAttribute]
-        public string Abbreviation { get { return sector.Abbreviation; } }
-
+        public string Abbreviation { get => sector.Abbreviation; set { } }
         [XmlElement("Name")]
-        public List<Name> Names { get { return sector.Names; } }
+        public List<Name> Names => sector.Names;
+        public string Credits { get => sector.Credits; set { } }
 
-        public string Credits { get { return sector.Credits; } set { } }
-        public DataFileMetadata DataFile { get { return dataFile; } }
-
-        public int X { get { return sector.X; } }
-        public int Y { get { return sector.Y; } }
+        public int X { get => sector.X; set { } }
+        public int Y { get => sector.Y; set { } }
 
         [XmlElement("Product")]
-        public MetadataCollection<Product> Products { get { return sector.Products; } }
+        public MetadataCollection<Product> Products => sector.Products;
 
-        public MetadataCollection<Subsector> Subsectors { get { return sector.Subsectors; } }
+        public DataFileMetadata DataFile { get => dataFile; set { } }
 
+        public MetadataCollection<Subsector> Subsectors => sector.Subsectors;
         public List<Allegiance> Allegiances
         {
             get
@@ -122,22 +113,25 @@ namespace Maps.API.Results
                     var alleg = sector.GetAllegianceFromCode(code);
                     if (alleg == null)
                         continue;
-                    list.Add(new Allegiance(code, alleg.Name));
+                    list.Add(new Allegiance(code, alleg.Name, alleg.LegacyCode, alleg.Base));
                 }
                 return list;
             }
         }
 
-        public string Stylesheet { get { return sector.StylesheetText; } set { } }
+        public string Stylesheet { get => sector.StylesheetText; set { } }
 
-        public MetadataCollection<Label> Labels { get { return sector.Labels; } }
-        public bool ShouldSerializeLabels() { return sector.Labels.Count > 0; }
+        public MetadataCollection<Label> Labels => sector.Labels;
+        public bool ShouldSerializeLabels() => sector.Labels.Count > 0;
 
-        public MetadataCollection<Border> Borders { get { return sector.Borders; } }
-        public bool ShouldSerializeBorders() { return sector.Borders.Count > 0; }
-        
-        public MetadataCollection<Route> Routes { get { return sector.Routes; } }
-        public bool ShouldSerializeRoutes() { return sector.Routes.Count > 0; }
+        public MetadataCollection<Border> Borders => sector.Borders;
+        public bool ShouldSerializeBorders() => sector.Borders.Count > 0;
+
+        public MetadataCollection<Region> Regions => sector.Regions;
+        public bool ShouldSerializeRegions() => sector.Regions.Count > 0;
+
+        public MetadataCollection<Route> Routes => sector.Routes;
+        public bool ShouldSerializeRoutes() => sector.Routes.Count > 0;
 
         [XmlRoot("DataFile")]
         public class DataFileMetadata
@@ -151,25 +145,19 @@ namespace Maps.API.Results
             private Sector sector;
 
             [XmlAttribute]
-            public string Title { get { return sector.DataFile?.Title ?? sector.Title; } }
-
+            public string Title { get => sector.DataFile?.Title ?? sector.Title; set { } }
             [XmlAttribute]
-            public string Author { get { return sector.DataFile?.Author ?? sector.Author; } }
-
+            public string Author { get => sector.DataFile?.Author ?? sector.Author; set { } }
             [XmlAttribute]
-            public string Source { get { return sector.DataFile?.Source ?? sector.Source; } }
-
+            public string Source { get => sector.DataFile?.Source ?? sector.Source; set { } }
             [XmlAttribute]
-            public string Publisher { get { return sector.DataFile?.Publisher ?? sector.Publisher; } }
-
+            public string Publisher { get => sector.DataFile?.Publisher ?? sector.Publisher; set { } }
             [XmlAttribute]
-            public string Copyright { get { return sector.DataFile?.Copyright ?? sector.Copyright; } }
-
+            public string Copyright { get => sector.DataFile?.Copyright ?? sector.Copyright; set { } }
             [XmlAttribute]
-            public string Milieu { get { return sector.CanonicalMilieu; } }
-
+            public string Milieu { get => sector.CanonicalMilieu; set { } }
             [XmlAttribute]
-            public string Ref { get { return sector.DataFile?.Ref ?? sector.Ref; } }
+            public string Ref { get => sector.DataFile?.Ref ?? sector.Ref; set { } }
         }
     }
 

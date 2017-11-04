@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Maps.Utilities;
+using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
+using System.IO;
 using System.Linq;
-using System.Globalization;
 
 namespace Maps
 {
@@ -21,7 +21,7 @@ namespace Maps
             if (0 <= c && c < HEX.Length)
                 return HEX[c];
 
-            throw new ArgumentOutOfRangeException("c", string.Format(CultureInfo.InvariantCulture, "Value out of range: '{0}'", c));
+            throw new ArgumentOutOfRangeException(nameof(c), c, "Expected value in eHex range");
         }
 
         public static int FromHex(char c, int? valueIfUnknown = null)
@@ -39,7 +39,7 @@ namespace Maps
                 case 'O': return 0; // Typo found in some data files
                 case 'I': return 1; // Typo found in some data files
             }
-            throw new ArgumentOutOfRangeException("c", string.Format(CultureInfo.InvariantCulture, "Character out of range: '{0}'", c));
+            throw new ArgumentOutOfRangeException(nameof(c), c, "Expected eHex value");
         }
         #endregion // eHex
 
@@ -61,7 +61,7 @@ namespace Maps
         // V     Any        Exploration base
         // W     Any        Way station
 
-        private static readonly RegexDictionary<string> s_legacyBaseDecodeTable = new GlobDictionary<string> {
+        private static readonly RegexMap<string> s_legacyBaseDecodeTable = new GlobMap<string> {
             { "*.2", "NS" },  // Imperial Naval base + Scout base
             { "*.A", "NS" },  // Imperial Naval base + Scout base
             { "*.B", "NW" },  // Imperial Naval base + Scout Way station
@@ -90,6 +90,9 @@ namespace Maps
             { "*.X", "W" },   // Zhodani Relay Station
             { "*.Y", "D" },   // Zhodani Depot
             { "*.Z", "KM" },  // Zhodani Naval/Military Base
+            { "Sc.H", "H" },  // Hiver Supply Base
+            { "*.I", "I" },  // Interface
+            { "*.T", "T" },  // Terminus
         };
 
         public static string DecodeLegacyBases(string allegiance, string code)
@@ -99,7 +102,7 @@ namespace Maps
             return (match != default(string)) ? match : code;
         }
 
-        private static RegexDictionary<string> s_legacyBaseEncodeTable = new GlobDictionary<string> {
+        private static RegexMap<string> s_legacyBaseEncodeTable = new GlobMap<string> {
             { "*.NS", "A" },  // Imperial Naval base + Scout base
             { "*.NW", "B" },  // Imperial Naval base + Scout Way station
             { "*.C", "C" },   // Vargr Corsair base
@@ -127,8 +130,12 @@ namespace Maps
             { "Zh.W", "X" },  // Zhodani Relay Station
             { "*.W", "W" },   // Imperial Scout Way Station
             { "Zh.KM", "Z" }, // Zhodani Naval/Military Base
+            // TNE
+            { "Sc.H", "H" },  // Hiver Supply Base
+            { "*.I", "I" },  // Interface
+            { "*.T", "T" },  // Terminus
         };
-        
+
         public static string EncodeLegacyBases(string allegiance, string bases)
         {
             allegiance = AllegianceCodeToBaseAllegianceCode(allegiance);
@@ -139,21 +146,50 @@ namespace Maps
 
         #region Allegiance
 
-        private class AllegianceDictionary : Dictionary<string, Allegiance>
+        private class AllegianceDictionary : EasyInitConcurrentDictionary<string, Allegiance>
         {
+            public AllegianceDictionary() { }
+            public AllegianceDictionary(IEnumerable<KeyValuePair<string, Allegiance>> e) : base(e) { }
+
             public void Add(string code, string name)
             {
                 Add(code, new Allegiance(code, name));
             }
 
-            public void Add(string code, string legacy, string baseCode, string name)
+            public void Add(string code, string legacy, string baseCode, string name, string location = null)
             {
-                Add(code, new Allegiance(code, legacy, baseCode, name));
+                Add(code, new Allegiance(code, name, legacy, baseCode, location));
+            }
+
+            public AllegianceDictionary Merge(AllegianceDictionary other)
+            {
+                foreach (var pair in other)
+                    TryAdd(pair.Key, pair.Value);
+                return this;
+            }
+
+            public static AllegianceDictionary FromFile(string path)
+            {
+                using (var reader = File.OpenText(path)) { return Parse(reader); }
+            }
+
+            private static AllegianceDictionary Parse(StreamReader reader)
+            {
+                Func<string, string> nullIfEmpty = (s) => string.IsNullOrWhiteSpace(s) ? null : s;
+                var dict = new AllegianceDictionary();
+                var parser = new Serialization.TSVParser(reader);
+                foreach (var row in parser.Data)
+                {
+                    dict.Add(
+                        row.dict["Code"], row.dict["Legacy"], nullIfEmpty(row.dict["BaseCode"]),
+                        row.dict["Name"], nullIfEmpty(row.dict["Location"]));
+                }
+                return dict;
             }
         }
 
         // Overrides or additions where Legacy -> T5SS code mapping is ambiguous.
-        private static readonly IReadOnlyDictionary<string, string> s_legacyAllegianceToT5Overrides = new Dictionary<string, string> {
+        private static readonly IReadOnlyDictionary<string, string> s_legacyAllegianceToT5Overrides = new EasyInitConcurrentDictionary<string, string> {
             { "J-", "JuPr" },
             { "Jp", "JuPr" },
             { "Ju", "JuPr" },
@@ -214,207 +250,44 @@ namespace Maps
         }
 
         // TODO: Parse this from data file
-        private static readonly AllegianceDictionary s_t5Allegiances = new AllegianceDictionary {
+
+        private static readonly AllegianceDictionary s_t5Allegiances = AllegianceDictionary
+            .FromFile(System.Web.Hosting.HostingEnvironment.MapPath("~/res/t5ss/allegiance_codes.tab"))
+            .Merge(new AllegianceDictionary {
             // T5Code, LegacyCode, BaseCode, Name
-            // Allegiance Table Begin
-            { "3EoG", "Ga", "Ga", "Third Empire of Gashikan" },
-            { "4Wor", "Fw", "FW", "Four Worlds" },
-            { "AkUn", "Ak", null, "Akeena Union" },
-            { "AlCo", "Al", null, "Altarean Confederation" },
-            { "AnTC", "Ac", null, "Anubian Trade Coalition" },
-            { "AsIf", "As", "As", "Iyeaao'fte" }, // (Tlaukhu client state)
-            { "AsMw", "As", "As", "Aslan Hierate, single multiple-world clan dominates" },
-            { "AsOf", "As", "As", "Oleaiy'fte" }, // (Tlaukhu client state)
-            { "AsSF", "As", "As", "Aslan Hierate, small facility" }, // (temporary)
-            { "AsSc", "As", "As", "Aslan Hierate, multiple clans split control" },
-            { "AsT0", "A0", "As", "Aslan Hierate, Tlaukhu control, Yerlyaruiwo (1), Hrawoao (13), Eisohiyw (14), Ferekhearl (19)" },
-            { "AsT1", "A1", "As", "Aslan Hierate, Tlaukhu control, Khauleairl (2), Estoieie' (16), Toaseilwi (22)" },
-            { "AsT2", "A2", "As", "Aslan Hierate, Tlaukhu control, Syoisuis (3)" },
-            { "AsT3", "A3", "As", "Aslan Hierate, Tlaukhu control, Tralyeaeawi (4), Yulraleh (12), Aiheilar (25), Riyhalaei (28)" },
-            { "AsT4", "A4", "As", "Aslan Hierate, Tlaukhu control, Eakhtiyho (5), Eteawyolei' (11), Fteweyeakh (23)" },
-            { "AsT5", "A5", "As", "Aslan Hierate, Tlaukhu control, Hlyueawi (6), Isoitiyro (15)" },
-            { "AsT6", "A6", "As", "Aslan Hierate, Tlaukhu control, Uiktawa (7), Iykyasea (17), Faowaou (27)" },
-            { "AsT7", "A7", "As", "Aslan Hierate, Tlaukhu control, Ikhtealyo (8), Tlerfearlyo (20), Yehtahikh (24)" },
-            { "AsT8", "A8", "As", "Aslan Hierate, Tlaukhu control, Seieakh (9), Akatoiloh (18), We'okunir (29)" },
-            { "AsT9", "A9", "As", "Aslan Hierate, Tlaukhu control, Aokhalte (10), Sahao' (21), Ouokhoi (26)" },
-            { "AsTA", "Ta", "As", "Tealou Arlaoh" }, // (Aslan independent clan, non-outcast)
-            { "AsTv", "As", "As", "Aslan Hierate, Tlaukhu vassal clan dominates" },
-            { "AsTz", "As", "As", "Aslan Hierate, Zodia clan" }, // (Tralyeaeawi vassal)
-            { "AsVc", "As", "As", "Aslan Hierate, vassal clan dominates" },
-            { "AsWc", "As", "As", "Aslan Hierate, single one-world clan dominates" },
-            { "AsXX", "As", "As", "Aslan Hierate, unknown" },
-            { "Bium", "Bi", "B", "The Biumvirate" },
-            { "BlSo", "Bs", null, "Belgardian Sojurnate" },
-            { "CAEM", "Es", null, "Comsentient Alliance, Eslyat Magistracy" },
-            { "CAKT", "Kt", null, "Comsentient Alliance, Kajaani Triumverate" },
-            { "CAin", "Co", null, "Comsentient Alliance" }, // independent
-            { "CaAs", "Cb", null, "Carrillian Assembly" },
-            { "CaPr", "Ca", null, "Principality of Caledon" },
-            { "CaTe", "Ct", null, "Carter Technocracy" },
-            { "CoBa", "Ba", "Ba", "Confederation of Bammesuka" },
-            { "CoLp", "Lp", null, "Council of Leh Perash" },
-            { "CsCa", "Ca", null, "Client state, Principality of Caledon" },
-            { "CsHv", "Hc", null, "Client state, Hiver Federation" },
-            { "CsIm", "Cs", null, "Client state, Third Imperium" },
-            { "CsMP", "Ms", null, "Client state, Ma'Gnar Primarchic" },
-            { "CsZh", "Cz", null, "Client state, Zhodani Consulate" },
-            { "CyUn", "Cu", null, "Cytralin Unity" },
-            { "DaCf", "Da", null, "Darrian Confederation" },
-            { "DeHg", "Dh", "D", "Descarothe Hegemony" },
-            { "DiWb", "Dw", null, "Die Weltbund" },
-            { "DoAl", "Az", "A", "Domain of Alntzar" },
-            { "DuCf", "Cd", null, "Confederation of Duncinae" },
-            { "FCSA", "Fc", null, "Four Corners Sovereign Array" },
-            { "FeAl", "Fa", "F", "Federation of Alsas" },
-            { "FeAm", "FA", null, "Federation of Amil" },
-            { "FeHe", "Fh", null, "Federation of Heron" },
-            { "FlLe", "Fl", null, "Florian League" },
-            { "GaFd", "Ga", null, "Galian Federation" },
-            { "GaRp", "Gr", null, "Gamma Republic" },
-            { "GdKa", "Rm", null, "Grand Duchy of Kalradin" },
-            { "GdMh", "Ma", null, "Grand Duchy of Marlheim" },
-            { "GdSt", "Gs", null, "Grand Duchy of Stoner" },
-            { "GeOr", "Go", null, "Gerontocracy of Ormine" },
-            { "GlEm", "Gl", "As", "Glorious Empire" }, // (Aslan independent clan, outcast)
-            { "GlFe", "Gf", null, "Glimmerdrift Federation" },
-            { "GnCl", "Gi", null, "Gniivi Collective" },
-            { "GrCo", "Gr", null, "Grossdeutchland Confederation" },
-            { "HaCo", "Hc", "H", "Haladon Cooperative" },
-            { "HoPA", "Ho", null, "Hochiken People's Assembly" },
-            { "HvFd", "Hv", "Hv", "Hiver Federation" },
-            { "HyLe", "Hy", null, "Hyperion League" },
-            { "IHPr", "IS", null, "I'Sred*Ni Protectorate" },
-            { "ImAp", "Im", "Im", "Third Imperium, Amec Protectorate" },
-            { "ImDa", "Im", "Im", "Third Imperium, Domain of Antares" },
-            { "ImDc", "Im", "Im", "Third Imperium, Domain of Sylea" },
-            { "ImDd", "Im", "Im", "Third Imperium, Domain of Deneb" },
-            { "ImDg", "Im", "Im", "Third Imperium, Domain of Gateway" },
-            { "ImDi", "Im", "Im", "Third Imperium, Domain of Ilelish" },
-            { "ImDs", "Im", "Im", "Third Imperium, Domain of Sol" },
-            { "ImDv", "Im", "Im", "Third Imperium, Domain of Vland" },
-            { "ImLa", "Im", "Im", "Third Imperium, League of Antares" },
-            { "ImLc", "Im", "Im", "Third Imperium, Lancian Cultural Region" },
-            { "ImLu", "Im", "Im", "Third Imperium, Luriani Cultural Association" },
-            { "ImSy", "Im", "Im", "Third Imperium, Sylean Worlds" },
-            { "ImVd", "Ve", "Im", "Third Imperium, Vegan Autonomous District" },
-            { "IsDo", "Id", null, "Islaiat Dominate" },
-            { "JAOz", "Jo", "Jp", "Julian Protectorate, Alliance of Ozuvon" },
-            { "JAsi", "Ja", "Jp", "Julian Protectorate, Asimikigir Confederation" },
-            { "JCoK", "Jc", "Jp", "Julian Protectorate, Constitution of Koekhon" },
-            { "JHhk", "Jh", "Jp", "Julian Protectorate, Hhkar Sphere" },
-            { "JLum", "Jd", "Jp", "Julian Protectorate, Lumda Dower" },
-            { "JMen", "Jm", "Jp", "Julian Protectorate, Commonwealth of Mendan" },
-            { "JPSt", "Jp", "Jp", "Julian Protectorate, Pirbarish Starlane" },
-            { "JRar", "Vw", "Jp", "Julian Protectorate, Rar Errall/Wolves Warren" },
-            { "JUkh", "Ju", "Jp", "Julian Protectorate, Ukhanzi Coordinate" },
-            { "JVug", "Jv", "Jp", "Julian Protectorate, Vugurar Dominion" },
-            { "JaPa", "Ja", null, "Jarnac Pashalic" },
-            { "JuHl", "Hl", "Jp", "Julian Protectorate, Hegemony of Lorean" },
-            { "JuPr", "Jp", "Jp", "Julian Protectorate" }, // independent
-            { "JuRu", "Jr", "Jp", "Julian Protectorate, Rukadukaz Republic" },
-            { "KPel", "Pe", "Pe", "Kingdom of Peladon" },
-            { "KaCo", "KC", null, "Katowice Conquest" },
-            { "KaWo", "KW", null, "Karhyri Worlds" },
-            { "KhLe", "Kl", null, "Khuur League" },
-            { "KoEm", "Ko", "Ko", "Korsumug Empire" },
-            { "KoPm", "Pm", "Pm", "Percavid Marches" },
-            { "KrBu", "Kr", null, "Kranzbund" },
-            { "LaCo", "Lc", null, "Langemarck Coalition" },
-            { "LeSu", "Ls", "L", "League of Suns" },
-            { "LnRp", "Ln", null, "Loyal Nineworlds Republic" },
-            { "LyCo", "Ly", null, "Lanyard Colonies" },
-            { "MaCl", "Ma", null, "Mapepire Cluster" },
-            { "MaEm", "Mk", null, "Maskai Empire" },
-            { "MaPr", "MF", null, "Ma'Gnar Primarchic" },
-            { "MeCo", "Me", null, "Megusard Corporate" },
-            { "MiCo", "Mi", null, "Mische Conglomerate" },
-            { "MnPr", "Mn", "N", "Mnemosyne Principality" },
-            { "MrCo", "MC", null, "Mercantile Concord" },
-            { "NaAs", "As", "As", "Non-Aligned, Aslan-dominated" }, // (outside Hierate)
-            { "NaHu", "Na", "Na", "Non-Aligned, Human-dominated" },
-            { "NaVa", "Va", "Va", "Non-Aligned, Vargr-dominated" },
-            { "NaXX", "Na", "Na", "Non-Aligned, unclaimed" },
-            { "OcWs", "Ow", null, "Outcasts of the Whispering Sky" },
-            { "OlWo", "Ow", null, "Old Worlds" },
-            { "PiFe", "Pi", null, "Pionier Fellowship" },
-            { "PlLe", "Pl", null, "Plavian League" },
-            { "Prot", "Pt", "P", "The Protectorate" },
-            { "RaRa", "Ra", null, "Ral Ranta" },
-            { "ReUn", "Re", null, "Renkard Union" },
-            { "Reac", "Rh", null, "The Reach" },
-            { "SaCo", "Sc", "S", "Salinaikin Concordance" },
-            { "Sark", "Sc", "Sc", "Sarkan Constellation" },
-            { "SeFo", "Sf", null, "Senlis Foederate" },
-            { "SlLg", "Sl", null, "Shukikikar League" },
-            { "SoBF", "So", "So", "Solomani Confederation, Bootean Federation" },
-            { "SoCf", "So", "So", "Solomani Confederation" },
-            { "SoCT", "So", "So", "Solomani Confederation, Consolidation of Turin" },
-            { "SoNS", "So", "So", "Solomani Confederation, New Slavic Solidarity" },
-            { "SoRD", "So", "So", "Solomani Confederation, Reformed Dootchen Estates" },
-            { "SoWu", "So", "So", "Solomani Confederation, Wuan Technology Association" },
-            { "StCl", "Sc", null, "Strend Cluster" },
-            { "SwCf", "Sw", null, "Sword Worlds Confederation" },
-            { "SwFW", "Sw", null, "Swanfei Free Worlds" },
-            { "SyRe", "Sy", null, "Syzlin Republic" },
-            { "TeCl", "Tc", null, "Tellerian Cluster" },
-            { "TrCo", "Tr", null, "Trindel Confederacy" },
-            { "TrDo", "Td", null, "Trelyn Domain" },
-            { "TroC", "Tr", "Tr", "Trooles Confederation" },
-            { "UnGa", "Ug", "U", "Union of Garth" },
-            { "UnHa", "Uh", null, "Union of Harmony" },
-            { "V17D", "V7", null, "17th Disjucture" },
-            { "V40S", "Ve", null, "40th Squadron" }, // (Ekhelle Ksafi)
-            { "VARC", "Vr", null, "Anti-Rukh Coalition" }, // (Gnoerrgh Rukh Lloell)
-            { "VAnP", "Vx", null, "Antares Pact" },
-            { "VAug", "Vu", null, "United Followers of Augurgh" },
-            { "VBkA", "Vb", null, "Bakne Alliance" },
-            { "VCKd", "Vk", null, "Commonality of Kedzudh" }, // (Kedzudh Aeng)
-            { "VDzF", "Vf", null, "Dzarrgh Federate" },
-            { "VFFD", "V1", null, "First Fleet of Dzo" },
-            { "VGoT", "Vg", null, "Glory of Taarskoerzn" },
-            { "VIrM", "Vh", null, "Irrgh Manifest" },
-            { "VJoF", "Vj", null, "Jihad of Faarzgaen" },
-            { "VLIn", "Vi", null, "Llaeghskath Interacterate" },
-            { "VLPr", "Vl", null, "Lair Protectorate" },
-            { "VNgC", "Vn", null, "Ngath Confederation" },
-            { "VOpp", "Vo", null, "Opposition Alliance" },
-            { "VPGa", "Vg", null, "Pact of Gaerr" }, // (Gaerr Thue)
-            { "VRo5", "V5", null, "Ruler of Five" },
-            { "VRrS", "VW", null, "Rranglloez Stronghold" },
-            { "VRuk", "Vn", null, "Worlds of Leader Rukh" }, // (Rukh Aegz)
-            { "VSDp", "Vs", null, "Saeknouth Dependency" }, // (Saeknouth Igz)
-            { "VSEq", "Vd", null, "Society of Equals" }, // (Dzen Aeng Kho)
-            { "VThE", "Vt", null, "Thoengling Empire" }, // (Thoengling Raghz)
-            { "VTzE", "Vp", null, "Thirz Empire" }, // (Thirz Uerra)
-            { "VUru", "Vu", null, "Urukhu" },
-            { "VVar", "Ve", null, "Empire of Varroerth" },
-            { "VVoS", "Vv", null, "Voekhaeb Society" },
-            { "VWP2", "V2", null, "Windhorn Pact of Two" },
-            { "VWan", "Vw", null, "People of Wanz" },
-            { "ViCo", "Vi", null, "Viyard Concourse" },
-            { "XXXX", "Xx", null, "Unknown" },
-            { "ZePr", "Zp", "Z", "Zelphic Primacy" },
-            { "ZhCa", "Ca", "Zh", "Zhodani Consulate, Colonnade Province" },
-            { "ZhCh", "Zh", "Zh", "Zhodani Consulate, Chtierabl Province" },
-            { "ZhCo", "Zh", "Zh", "Zhodani Consulate" }, // undetermined
-            { "ZhIN", "Zh", "Zh", "Zhodani Consulate, Iadr Nsobl Province" },
-            { "ZhIa", "Zh", "Zh", "Zhodani Consulate, Iabrensh Province" },
-            { "ZhJp", "Zh", "Zh", "Zhodani Consulate, Jadlapriants Province" },
-            { "ZhMe", "Zh", "Zh", "Zhodani Consulate, Meqlemianz Province" },
-            { "ZhOb", "Zh", "Zh", "Zhodani Consulate, Obrefripl Province" },
-            { "ZhSh", "Zh", "Zh", "Zhodani Consulate, Shtochiadr Province" },
-            { "ZhVQ", "Zh", "Zh", "Zhodani Consulate, Vlanchiets Qlom Province" },
-            { "Zuug", "Zu", "Zu", "Zuugabish Tripartite" },
-            { "ZyCo", "Zc", null, "Zydarian Codominion" },
-            // Allegiance Table End
-        };
-        public static IEnumerable<string> AllegianceCodes { get { return s_t5Allegiances.Keys; } }
 
+            // -----------------------
+            // Unofficial/Unreviewed
+            // -----------------------
+
+            // M1120
+            { "FdAr", "Fa", null, "Federation of Arden" },
+            { "BoWo", "Bw", null, "Border Worlds" },
+            { "LuIm", "Li", "Im", "Lucan's Imperium" },
+            { "MaSt", "Ma", "Im", "Maragaret's Domain" },
+            { "BaCl", "Bc", null, "Backman Cluster" },
+            { "FdDa", "Fd", "Im", "Federation of Daibei" },
+            { "FdIl", "Fi", "Im", "Federation of Ilelish" },
+            { "AvCn", "Ac", null, "Avalar Consulate" },
+            { "CoAl", "Ca", null, "Corsair Alliance" },
+            { "StIm", "St", "Im", "Strephon's Worlds" },
+            { "ZiSi", "Rv", "Im", "Restored Vilani Imperium" }, // Ziru Sirka
+            { "VA16", "V6", null, "Assemblage of 1116" },
+            { "CRVi", "CV", null, "Vilani Cultural Region" },
+            { "CRGe", "CG", null, "Geonee Cultural Region" },
+            { "CRSu", "CS", null, "Suerrat Cultural Region" },
+            { "CRAk", "CA", null, "Anakudnu Cultural Region" },
+        });
+        public static IEnumerable<string> AllegianceCodes => s_t5Allegiances.Keys;
         // May need GroupBy to handle duplicates
-        private static readonly IReadOnlyDictionary<string, Allegiance> s_legacyToT5Allegiance = s_t5Allegiances.Values
-            .GroupBy(a => a.LegacyCode).Select(g => g.First()).ToDictionary(a => a.LegacyCode);
+        private static readonly IReadOnlyDictionary<string, Allegiance> s_legacyToT5Allegiance =
+            new AllegianceDictionary(
+                s_t5Allegiances.Values
+                .GroupBy(a => a.LegacyCode)
+                .Select(g => g.First())
+                .Select(a => new KeyValuePair<string, Allegiance>(a.LegacyCode, a)));
 
-        private static readonly HashSet<string> s_defaultAllegiances = new HashSet<string> {
+        private static readonly ConcurrentSet<string> s_defaultAllegiances = new ConcurrentSet<string> {
             "Im", // Classic Imperium
             "ImAp", // Third Imperium, Amec Protectorate (Dagu)
             "ImDa", // Third Imperium, Domain of Antares (Anta/Empt/Lish)
@@ -434,95 +307,63 @@ namespace Maps
             "--", // Placeholder - show as blank
         };
 
-        public static bool IsDefaultAllegiance(string code)
-        {
-            return s_defaultAllegiances.Contains(code);
-        }
-
-        public static bool IsKnownT5Allegiance(string code)
-        {
-            return s_t5Allegiances.ContainsKey(code);
-        }
+        public static bool IsDefaultAllegiance(string code) => s_defaultAllegiances.Contains(code);
+        public static bool IsKnownT5Allegiance(string code) => s_t5Allegiances.ContainsKey(code);
 
         #endregion Allegiance
 
         #region Sophonts
-        private static readonly IReadOnlyDictionary<string, string> s_sophontCodes = new Dictionary<string,string> {
-            // Sophont Table Begin
-            { "Adda", "Addaxur" },
-            { "Akee", "Akeed" },
-            { "Aqua", "Aquans (Daga)/Aquamorphs (Alph)" },
-            { "Asla", "Aslan" },
-            { "Bhun", "Brunj" },
-            { "Bruh", "Bruhre" },
-            { "Buru", "Burugdi" },
-            { "Bwap", "Bwaps" },
-            { "Chir", "Chirpers" },
-            { "Darm", "Darmine" },
-            { "Dary", "Daryen" },
-            { "Dolp", "Dolphins" },
-            { "Droy", "Droyne" },
-            { "Esly", "Eslyat" },
-            { "Flor", "Floriani" },
-            { "Geon", "Geonee" },
-            { "Gnii", "Gniivi" },
-            { "Gray", "Graytch" },
-            { "Guru", "Gurungan" },
-            { "Gurv", "Gurvin" },
-            { "Hama", "Hamaran" },
-            { "Hive", "Hiver" },
-            { "Huma", "Human" }, // (Vilani/Solomani-mixed)
-            { "Ithk", "Ithklur" },
-            { "Jaib", "Jaibok" },
-            { "Jala", "Jala'lak" },
-            { "Jend", "Jenda" },
-            { "Jonk", "Jonkeereen" },
-            { "Kafo", "Kafoe" },
-            { "Kagg", "Kaggushus" },
-            { "Karh", "Karhyri" },
-            { "Kiak", "Kiakh'iee" },
-            { "Lamu", "Lamura Gav/Teg" },
-            { "Lanc", "Lancians" },
-            { "Libe", "Liberts" },
-            { "Luri", "Luriani" },
-            { "Mal'", "Mal'Gnar" },
-            { "Mask", "Maskai" },
-            { "Mitz", "Mitzene" },
-            { "Muri", "Murians" },
-            { "Orca", "Orca" },
-            { "Ormi", "Ormine" },
-            { "S'mr", "S'mrii" },
-            { "Scan", "Scanians" },
-            { "Sele", "Selenites" },
-            { "Sred", "Sred*Ni" },
-            { "Stal", "Stalkers" },
-            { "Suer", "Suerrat" },
-            { "Sull", "Sulliji" },
-            { "Swan", "Swanfei" },
-            { "Sydi", "Sydites" },
-            { "Syle", "Syleans" },
-            { "Tapa", "Tapazmal" },
-            { "Taur", "Taureans" },
-            { "Tent", "Tentrassi" },
-            { "Tlye", "Tlyetrai" },
-            { "UApe", "Uplifted Apes" },
-            { "Ulan", "Ulane" },
-            { "Ursa", "Ursa" },
-            { "Urun", "Urunishani" },
-            { "Varg", "Vargr" },
-            { "Vega", "Vegans" },
-            { "Za't", "Za'tachk" },
-            { "Zhod", "Zhodani" },
-            { "Ziad", "Ziadd" },
-            // Sophont Table End
-        };
+        internal class Sophont
+        {
+            public Sophont(string code, string name, string location)
+            {
+                Code = code; Name = name; Location = location;
+            }
+            public string Code { get; }
+            public string Name { get; }
+            public string Location { get; }
+        }
+
+        private class SophontDictionary : Dictionary<string, Sophont>
+        {
+            public void Add(string code, string name, string location)
+            {
+                Add(code, new Sophont(code, name, location));
+            }
+            public static SophontDictionary FromFile(string path)
+            {
+                using (var reader = File.OpenText(path))
+                {
+                    return Parse(reader);
+                }
+            }
+
+            private static SophontDictionary Parse(StreamReader reader)
+            {
+                var dict = new SophontDictionary();
+                var parser = new Serialization.TSVParser(reader);
+                foreach (var row in parser.Data)
+                    dict.Add(row.dict["Code"], row.dict["Name"], row.dict["Location"]);
+                return dict;
+            }
+        }
+
+        private static readonly SophontDictionary s_sophontCodes = SophontDictionary
+            .FromFile(System.Web.Hosting.HostingEnvironment.MapPath("~/res/t5ss/sophont_codes.tab"));
+
         public static string SophontCodeToName(string code)
+        {
+            if (s_sophontCodes.ContainsKey(code))
+                return s_sophontCodes[code].Name;
+            return null;
+        }
+        public static Sophont SophontForCode(string code)
         {
             if (s_sophontCodes.ContainsKey(code))
                 return s_sophontCodes[code];
             return null;
         }
-        public static IEnumerable<string> SophontCodes { get { return s_sophontCodes.Keys; } }
+        public static IEnumerable<string> SophontCodes => s_sophontCodes.Keys;
         #endregion // Sophonts
 
         #region World Details

@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<Sector Abbreviation="Gush" Tags="Unreviewed">
+  <Y>0</Y>
+  <X>-2</X>
+  <Name>Gushemege</Name>
+  <Credits>
+    <![CDATA[
+
+             <b>Gushemege</b> sector was designed by Marc W. Miller
+             and appears in <cite>Atlas of the Imperium</cite> (GDW,
+             1984).
+
+             It was refined by Martin J. Dougherty and appears in
+             <cite>1248 Sourcebook 2: Bearers of the Flame</cite>
+             (ComStar Media/Avenger Enterprises, 2006).
+
+             TNE data modified from http://zho.berka.com/data/TNE/sector.pl?sector=GUSH
+
+    ]]>
+  </Credits>
+  <DataFile Milieu="M1201" Type="TabDelimited">Gushemege.tab</DataFile>
+  <Subsectors>
+    <Subsector Index="A">Riften</Subsector>
+    <Subsector Index="B">Khiira</Subsector>
+    <Subsector Index="C">Taapvaia</Subsector>
+    <Subsector Index="D">Tansa</Subsector>
+    <Subsector Index="E">Gandonen</Subsector>
+    <Subsector Index="F">Rure</Subsector>
+    <Subsector Index="G">Ankhsusgar</Subsector>
+    <Subsector Index="H">Isi Ahto</Subsector>
+    <Subsector Index="I">Balech</Subsector>
+    <Subsector Index="J">Sallounn</Subsector>
+    <Subsector Index="K">Dashinshaii</Subsector>
+    <Subsector Index="L">Shire</Subsector>
+    <Subsector Index="M">Vipach</Subsector>
+    <Subsector Index="N">Laeth</Subsector>
+    <Subsector Index="O">Truax</Subsector>
+    <Subsector Index="P">Lagan</Subsector>
+  </Subsectors>
+
+  <Stylesheet>
+    border.Ut { color: green; }
+  </Stylesheet>
+
+  <Allegiances>
+    <Allegiance Code="Wi">Wilds</Allegiance>
+    <Allegiance Code="">Barren</Allegiance>
+    <Allegiance Code="Ut">Usdiki Trade Alliance</Allegiance>
+  </Allegiances>
+
+  <Borders>
+    <Border Allegiance="Ut" Label="Usdiki Trade Alliance" WrapLabel="true" LabelPosition="1215">
+      0820 0920 1019 1018 1118 1117 1116 1015 1014 1013 1012 0912 1012 1113 1213 1313 1412 1512
+      1412 1313 1314 1315 
+      1415 1516 1616 1517 1518 1618 1619 1620 1521 1520 1419 1319 1219 1119 1019 1020 1021
+      0921 0820
+    </Border>
+  </Borders>
+  <Routes>
+  </Routes>
+</Sector>

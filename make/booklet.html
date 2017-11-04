@@ -3,12 +3,12 @@
 <title>Sector Booklet - Traveller Map</title>
 <meta charset="utf-8">
 <link rel="shortcut icon" href="../favicon.ico">
-<link rel="stylesheet" href="../site.css?update=2016-07-23">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
-<script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.25/polyfill.min.js"></script>
-<script src="../map.js?update=2016-09-10"></script>
-<script src="post.js?update=2016-09-10"></script>
-<script src="booklet.js?update=2016-09-14"></script>
+<link rel="stylesheet" href="../site.css?update=2017-03-18T13:11:23">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
+<script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.29/polyfill.min.js"></script>
+<script src="../map.js?update=2017-08-06T20:31:52"></script>
+<script src="post.js?update=2016-10-15T12:45:46"></script>
+<script src="booklet.js?update=2017-08-07T10:32:41"></script>
 <style>
 @import url(https://fonts.googleapis.com/css?family=Marcellus|PT+Sans+Narrow);
 
@@ -17,6 +17,9 @@
 #input { margin: 8px; }
 
 body.render #input { display: none; }
+
+#option_columns > tbody> tr > td { padding: 0 20px; }
+#label_grid { font-size: 10pt; }
 
 /* Booklet ============================== */
 
@@ -196,6 +199,7 @@ th, td {
   padding: 0.25in 0.5in;
 }
 .sector-image {
+  display: block;
   border: solid 4px black;
   width: 9.5in;
 }
@@ -231,12 +235,6 @@ th, td {
   height: 8.25in;
   float: left;
 }
-.subsector-image {
-  padding: 4px;
-}
-.subsector-image > img {
-  border: solid 4px black;
-}
 .subsector-body {
   text-align: left;
   white-space: normal;
@@ -246,7 +244,7 @@ th, td {
   font-size: 9pt;
 }
 .dense table.uwp-data {
-  font-size: 8pt;
+  font-size: 7pt;
 }
 
 table.uwp-data {
@@ -271,47 +269,49 @@ table.uwp-data {
 
 .uwp-data .world-name.hipop { text-transform: uppercase; }
 
-td.neighbor {
-  text-align: center;
-  font-weight: bold;
-  text-transform: uppercase;
-  padding: 0;
-  white-space: nowrap;
-  line-height: 9pt;
-  font-size: 11pt;
-}
-td.vertical {
-  width: 1.25em;
-  max-width: 1.25em;
-}
-.rotate90 {
-  display: inline-block;
-  padding: 0;
-  margin: 0;
-  transform: translateX(-50%) rotate(90deg) translateY(-4pt);
-  -webkit-transform: translateX(-50%) rotate(90deg) translateY(-4pt);
-  -moz-transform: translateX(-50%) rotate(90deg) translateX(-4pt);
-  -o-transform: translateX(-50%) rotate(90deg) translateX(-4pt);
-}
-.rotate180 {
-  display: inline-block;
-  padding: 0;
-  margin: 0;
-  transform: rotate(180deg);
-  -webkit-transform: rotate(180deg);
-  -moz-transform: rotate(180deg);
-  -o-transform: rotate(180deg);
-}
-.rotate270 {
-  display: inline-block;
-  padding: 0;
-  margin: 0;
-  transform: translateX(-50%) rotate(270deg) translateY(10pt);
-  -webkit-transform: translateX(-50%) rotate(270deg) translateY(10pt);
-  -moz-transform: translateX(-50%) rotate(270deg) translateY(10pt);
-  -o-transform: translateX(-50%) rotate(270deg) translateY(10pt);
+
+.style-classic .world-ix,
+.style-classic .world-ex,
+.style-classic .world-cx,
+.style-classic .world-nobility,
+.style-classic .world-worlds { display: none; }
+
+.subsector-image,
+.subsector-image-border {
+  position: absolute;
+  border: solid 6px black;
+  width: 471px;
+  height: 684px;
 }
 
+.subsector-image {
+  display: block;
+  left: 20px;
+  top: 20px;
+  padding: 0;
+}
+.subsector-image-border {
+  left: 5px;
+  top: 5px;
+  padding: 15px;
+}
+.neighbor {
+  position: absolute;
+  width: 280px;
+  height: 15px;
+  padding: 2px;
+  background-color: white;
+  text-align: center;
+  text-transform: uppercase;
+  white-space: nowrap;
+  font-size: 12pt;
+  line-height: 9pt;
+  font-weight: bold;
+}
+.neighbor-c { left:  109px; top:    -14px; transform: rotate(180deg); }
+.neighbor-r { left:  109px; bottom: -14px; }
+.neighbor-t { right: -14px; top: 347px; transform: translateX(50%) rotate(270deg) translateY(-50%); }
+.neighbor-s { left:  -14px; top: 347px; transform: translateX(-50%) rotate(90deg) translateY(-50%); }
 
 .subsector_title {
   white-space: nowrap;
@@ -495,40 +495,75 @@ table.subsector-list tr td:first-of-type {
   <div id="input">
     <h1>Booklet Maker &mdash; The Traveller Map</h1>
 
+    <form id="form" action="api/poster" method="post" enctype="application/x-www-form-urlencoded">
+
     <ol class="steps">
       <li>
         <select id="sector">
-          <option disabled>Select...</option>
+          <option selected disabled>Select...</option>
         </select>
         a sector, or enter custom sector data/metadata:
 
-    <form id="form" action="api/poster" method="post" enctype="application/x-www-form-urlencoded">
       <div>Sector Data:
-        (<a target="_blank" href="../doc/fileformats">file formats</a>)
+        (<a target=_blank rel=noopener href="../doc/fileformats">file formats</a>)
         &mdash;
-        <em>tip: <a target="_blank" href="../tools/lintsec.html">check your data</a> first</em>
+        <em>tip: <a target=_blank rel=noopener href="../tools/lintsec.html">check your data</a> first</em>
       </div>
       <textarea id="data" name="data" class="drag-n-drop"
                 spellcheck="false" wrap="off" cols="80" rows="10"></textarea>
 
       <div>Metadata:
-        (<a target="_blank" href="../doc/metadata">XML</a> or
-        <a target="_blank" href="http://dotclue.org/t20/">MSEC</a>)</div>
+        (<a target=_blank rel=noopener href="../doc/metadata">XML</a> or
+        <a target=_blank rel=noopener href="http://dotclue.org/t20/">MSEC</a>)</div>
       <textarea id="metadata" name="metadata" class="drag-n-drop"
             spellcheck="false" wrap="off" cols="80" rows="10"></textarea>
-    </form>
 
       </li>
       <li>
+        Select Options:
+
+        <table id="option_columns">
+          <tr>
+            <td>
+              <table id="label_grid">
+                <tr>
+                  <td style="text-align: right">Data Style:</td>
+                  <td>
+                    <select id="data-style" name="data-style">
+                      <option selected value="t5">Traveller 5 (with Ix/Ex/Cx/etc)</option>
+                      <option value="classic">Classic Traveller (fewer fields)</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="text-align: right">Map Style:</td>
+                  <td>
+                    <select name="map-style">
+                      <option value="poster">Black background (Color)</option>
+                      <option value="print" selected>White background (Color)</option>
+                      <option value="atlas">White background (B&amp;W)</option>
+                      <option value="candy">Eye candy</option>
+                      <option value="draft">Draft</option>
+                      <option value="fasa">FASA (experimental)</option>
+                    </select>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </li>
+      <li>
         Click
-    <!-- TODO: Add preview? -->
-    <button id="compose">Compose Booklet</button>
+        <!-- TODO: Add preview? -->
+        <button id="compose">Compose Booklet</button>
       </li>
     </ol>
+    </form>
     <div style="margin-top: 10px; font-size: 80%">
       The <em class="product">Traveller</em> game in all forms is owned by Far
-      Future Enterprises. Copyright &copy; 1977 &ndash; 2016 Far Future
-      Enterprises.
+      Future Enterprises. Copyright <span class=copyright>&copy;</span> 1977 &ndash; 2017
+      Far Future Enterprises.
       <a href="http://farfuture.net/FFEFairUsePolicy2008.pdf">Fair Use Policy</a>
     </div>
   </div>
@@ -561,7 +596,8 @@ table.subsector-list tr td:first-of-type {
         <div class="align-bottom credits">
           <p>
             The <b><i>TRAVELLER</i></b> game in all forms is owned
-            by Far Future Enterprises. Copyright &copy; 1977 - 2016
+            by Far Future Enterprises. Copyright
+            <span class=copyright>&copy;</span> 1977 &ndash; 2017
             Far Future Enterprises. <b><i>TRAVELLER</i></b> is a
             registered trademark of Far Future Enterprises. Far
             Future permits web sites and fanzines for this game,
@@ -689,21 +725,15 @@ table.subsector-list tr td:first-of-type {
       <!-- Right: Image -->
       <div class="page-half ss-page-right">
         <div class="content">
-
-          <table>
-            <tr>
-              <td>
-              <td class="neighbor" colspan="1">{{neighbor.[0]}}
-              <td>
-            <tr>
-              <td class="neighbor vertical"><div class="rotate270">{{neighbor.[3]}}</div>
-              <td class="subsector-image"><img src="{{img_src}}" alt="" class="subsector-image">
-              <td class="neighbor vertical"><div class="rotate90">{{neighbor.[1]}}</div>
-            <tr>
-              <td>
-              <td class="neighbor" colspan="1"><div class="rotate180">{{neighbor.[2]}}</div>
-              <td>
-          </table>
+          <div style="position: relative; margin: 2px;">
+            <img class="subsector-image" src="{{img_src}}" alt="">
+            <div class="subsector-image-border">
+            <div class="neighbor neighbor-c">{{neighbor.[0]}}</div>
+            <div class="neighbor neighbor-t">{{neighbor.[1]}}</div>
+            <div class="neighbor neighbor-r">{{neighbor.[2]}}</div>
+            <div class="neighbor neighbor-s">{{neighbor.[3]}}</div>
+</div>
+          </div>
         </div>
       </div>
 
@@ -726,8 +756,8 @@ table.subsector-list tr td:first-of-type {
             <tr>
               <td>
                 <h4>Map Legend</h4>
-                <img src="../res/ui/Legend_1003_print.png"><br>
-                <img src="../res/ui/Legend_1006_print.png">
+                <img src="../res/ui/Legend_1003_print.svg"><br>
+                <img src="../res/ui/Legend_1006_print.svg">
               </td>
               <td>
                 <h4>World Characteristics</h4>

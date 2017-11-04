@@ -1,4 +1,6 @@
-﻿using Maps.Rendering;
+﻿using Maps.API;
+using Maps.Graphics;
+using Maps.Rendering;
 using System.Drawing;
 using System.Web;
 
@@ -8,28 +10,23 @@ namespace Maps.Admin
     {
         IHttpHandler impl = new OverviewImpl();
 
-        protected override void Process(System.Web.HttpContext context)
+        // TODO: Passed resourceManager is discarded. Avoid creating it.
+        protected override void Process(HttpContext context, ResourceManager resourceManager)
         {
             impl.ProcessRequest(context);
         }
 
-        class OverviewImpl : Maps.API.ImageHandlerBase
+        class OverviewImpl : ImageHandlerBase
         {
-            protected override string ServiceName { get { return "overview"; } }
+            protected override DataResponder GetResponder(HttpContext context) => new Responder(context);
 
-            protected override DataResponder GetResponder(HttpContext context)
-            {
-                return new Responder(context);
-            }
             private class Responder : ImageResponder
             {
                 public Responder(HttpContext context) : base(context) { }
-                public override void Process()
+                public override void Process(ResourceManager resourceManager)
                 {
-                    ResourceManager resourceManager = new ResourceManager(context.Server);
-
                     MapOptions options = MapOptions.SectorGrid | MapOptions.FilledBorders;
-                    Stylesheet.Style style = Stylesheet.Style.Poster;
+                    Style style = Style.Poster;
                     ParseOptions(ref options, ref style);
 
                     float x = -0.5f;
@@ -37,12 +34,13 @@ namespace Maps.Admin
                     float scale = 2;
                     Size tileSize = new Size(1000, 1000);
 
-                    RectangleF tileRect = new RectangleF();
-                    tileRect.X = x * tileSize.Width / (scale * Astrometrics.ParsecScaleX);
-                    tileRect.Y = y * tileSize.Height / (scale * Astrometrics.ParsecScaleY);
-                    tileRect.Width = tileSize.Width / (scale * Astrometrics.ParsecScaleX);
-                    tileRect.Height = tileSize.Height / (scale * Astrometrics.ParsecScaleY);
-
+                    RectangleF tileRect = new RectangleF()
+                    {
+                        X = x * tileSize.Width / (scale * Astrometrics.ParsecScaleX),
+                        Y = y * tileSize.Height / (scale * Astrometrics.ParsecScaleY),
+                        Width = tileSize.Width / (scale * Astrometrics.ParsecScaleX),
+                        Height = tileSize.Height / (scale * Astrometrics.ParsecScaleY)
+                    };
                     Selector selector = new RectSelector(
                         SectorMap.ForMilieu(resourceManager, GetStringOption("milieu")),
                         resourceManager,
@@ -61,10 +59,11 @@ namespace Maps.Admin
                     styles.pseudoRandomStars.visible = false;
                     styles.fillMicroBorders = true;
 
-                    RenderContext ctx = new RenderContext(resourceManager, selector, tileRect, scale, options, styles, tileSize);
-                    ctx.ClipOutsectorBorders = true;
-
-                    ProduceResponse(context, "Overview", ctx, tileSize);
+                    RenderContext ctx = new RenderContext(resourceManager, selector, tileRect, scale, options, styles, tileSize)
+                    {
+                        ClipOutsectorBorders = true
+                    };
+                    ProduceResponse(Context, "Overview", ctx, tileSize, AbstractMatrix.Identity);
                 }
             }
         }

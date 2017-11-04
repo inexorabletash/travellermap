@@ -22,7 +22,7 @@ namespace Maps.HTTP
         public override RouteData GetRouteData(HttpContextBase context)
         {
             if (context == null)
-                throw new ArgumentNullException("context");
+                throw new ArgumentNullException(nameof(context));
 
             Match match = regex.Match(context.Request.Path);
             if (!match.Success)
@@ -55,7 +55,7 @@ namespace Maps.HTTP
         IHttpHandler IRouteHandler.GetHttpHandler(RequestContext context)
         {
             if (context == null)
-                throw new ArgumentNullException("context");
+                throw new ArgumentNullException(nameof(context));
 
             IHttpHandler handler = Activator.CreateInstance(type) as IHttpHandler;
 
@@ -86,7 +86,7 @@ namespace Maps.HTTP
         IHttpHandler IRouteHandler.GetHttpHandler(RequestContext context)
         {
             if (context == null)
-                throw new ArgumentNullException("context");
+                throw new ArgumentNullException(nameof(context));
 
             RouteValueDictionary dict = context.RouteData.Values;
             var url = replacer.Replace(pattern, new MatchEvaluator(m => dict[m.Groups[1].Value].ToString()));
@@ -103,16 +103,11 @@ namespace Maps.HTTP
                 this.statusCode = statusCode;
             }
 
-            bool IHttpHandler.IsReusable
-            {
-                // TODO: Why false here?
-                get { return false; }
-            }
-
+            bool IHttpHandler.IsReusable => false;
             void IHttpHandler.ProcessRequest(HttpContext context)
             {
                 if (context == null)
-                    throw new ArgumentNullException("context");
+                    throw new ArgumentNullException(nameof(context));
 
                 string target = url;
                 if (context.Request.QueryString.Count > 0)

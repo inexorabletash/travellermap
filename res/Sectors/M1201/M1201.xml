@@ -1,0 +1,253 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Sectors>
+  <Sector Abbreviation="Spin" Tags="Unreviewed" Selected="true" Milieu="M1201">
+    <Y>-1</Y>
+    <X>-4</X>
+    <Name>Spinward Marches</Name>
+    <Name Lang="zh">Tloql</Name>
+    <DataFile Author="Numerous" Source="The Regency Sourcebook: Keepers of the Flame" Type="TabDelimited">Spinward Marches.tab</DataFile>
+    <MetadataFile>Spinward Marches.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Dene" Tags="Unreviewed" Milieu="M1201">
+    <Y>-1</Y>
+    <X>-3</X>
+    <Name>Deneb</Name>
+    <Name Lang="zh">Nieklsdia</Name>
+    <DataFile Author="Numerous" Source="The Regency Sourcebook: Keepers of the Flame" Type="TabDelimited">Deneb.tab</DataFile>
+    <MetadataFile>Deneb.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Lish" Tags="Unreviewed" Milieu="M1201">
+    <Y>-1</Y>
+    <X>0</X>
+    <Name>Lishun</Name>
+    <DataFile Author="Greg Videll"  Source="Challenge 71" Type="TabDelimited">Lishun.tab</DataFile>
+    <MetadataFile>Lishun.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Zarushagar" Tags="Unreviewed" Milieu="M1201">
+    <Y>1</Y>
+    <X>-1</X>
+    <Name>Zarushagar</Name>
+    <DataFile Author="Greg Videll" Source="Challenge 75" Type="TabDelimited">Zarushagar.tab</DataFile>
+    <MetadataFile>Zarushagar.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Mass" Tags="Unreviewed" Milieu="M1201">
+    <Y>1</Y>
+    <X>0</X>
+    <Name Source="DGP">Massilia</Name>
+    <Name Lang="vi">Masilaa</Name>
+    <DataFile Source="TNE Rulebook" Type="TabDelimited">Massilia.tab</DataFile>
+    <MetadataFile>Massilia.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Dias" Tags="Unreviewed" Milieu="M1201">
+    <Y>2</Y>
+    <X>0</X>
+    <Name>Diaspora</Name>
+    <Name Lang="vi">Nakulakak</Name>
+    <DataFile  Source="TNE Rulebook" Type="TabDelimited">Diaspora.tab</DataFile>
+    <MetadataFile>Diaspora.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Solo" Tags="Unreviewed" Milieu="M1201">
+    <Y>3</Y>
+    <X>0</X>
+    <Name>Solomani Rim</Name>
+    <Name Lang="vi">Kushuggi</Name>
+    <DataFile Source="Traveller Chronicle 10" Milieu="M1201" Type="TabDelimited">Solomani Rim.tab</DataFile>
+    <MetadataFile>Solomani Rim.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Old Expanses" Tags="Unreviewed" Milieu="M1201">
+    <Y>2</Y>
+    <X>1</X>
+    <Name Source="DGP">Old Expanses</Name>
+    <DataFile Source="TNE Rulebook" Type="TabDelimited">Old Expanses.tab</DataFile>
+    <MetadataFile>Old Expanses.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Reft" Tags="Unreviewed" Milieu="M1201">
+    <Y>0</Y>
+    <X>-3</X>
+    <Name>Reft</Name>
+    <Name Lang="zh">Bransakral</Name>
+    <Name Lang="vi">Sushinar</Name>
+    <DataFile Source="The Regency Sourcebook: Keepers of the Flame" Milieu="M1201" Type="TabDelimited">Reft.tab</DataFile>
+    <MetadataFile>Reft.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Troj" Tags="Unreviewed" Milieu="M1201">
+    <Y>0</Y>
+    <X>-4</X>
+    <Name>Trojan Reach</Name>
+    <Name Lang="as">Hlaoirloahaurl</Name>
+    <Name Lang="zh">Idrflanta</Name>
+    <DataFile Source="The Regency Sourcebook: Keepers of the Flame" Milieu="M1201" Type="TabDelimited">Trojan Reach.tab</DataFile>
+    <MetadataFile>Trojan Reach.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Vlan" Tags="Unreviewed" Milieu="M1201">
+    <Y>-1</Y>
+    <X>-1</X>
+    <Name>Vland</Name>
+    <DataFile Source="Zhodani Base - http://zho.berka.com/data/TNE/sector.pl?sector=VLAND" Milieu="M1201" Type="TabDelimited">Vland.tab</DataFile>
+    <MetadataFile>Vland.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Alph" Tags="Unreviewed" Milieu="M1201">
+    <Y>3</Y>
+    <X>1</X>
+    <Name>Alpha Crucis</Name>
+    <Name>Alpha Leonis</Name>
+    <Name Lang="vi">Amkarim</Name>
+    <DataFile Milieu="M1201" Source="Opal - http://www.downport.com/bard/bard/opal/opal10016.html" Type="TabDelimited">Alpha Crucis.tab</DataFile>
+    <MetadataFile>Alpha Crucis.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Anta" Tags="Unreviewed" Milieu="M1201">
+    <Y>-1</Y>
+    <X>1</X>
+    <Name>Antares</Name>
+    <Name Lang="vi">Mikasirka</Name>
+    <DataFile Milieu="M1201" Source="CARI - http://www.downport.com/bard/bard/cari/cari9009.html" Type="TabDelimited">Antares.tab</DataFile>
+    <MetadataFile>Antares.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Empt" Tags="Unreviewed">
+    <Y>-1</Y>
+    <X>2</X>
+    <Name>Empty Quarter</Name>
+    <Name Lang="vi">Gushgus</Name>
+    <DataFile Milieu="M1201" Source="CARI - http://www.downport.com/bard/bard/cari/cari9009.html" Type="TabDelimited">Empty Quarter.tab</DataFile>
+    <MetadataFile>Empty Quarter.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Hint" Tags="Unreviewed">
+    <Y>2</Y>
+    <X>2</X>
+    <Name>Hinterworlds</Name>
+    <DataFile Author="Rob Caswell and Karl Johnson" Source="OPAL - http://www.downport.com/bard/bard/opal/opal10416.html" Milieu="M1201" Type="TabDelimited">Hinterworlds.tab</DataFile>
+    <MetadataFile>Hinterworlds.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Reav" Tags="Unreviewed">
+    <Y>2</Y>
+    <X>-2</X>
+    <Name>Reaver's Deep</Name>
+    <Name>Reavers' Deep</Name>
+    <Name>Reavers Deep</Name>
+    <Name Lang="as">Aeitle Sakh</Name>
+    <DataFile Author="J. Andrew Keith" Milieu="M1201" Type="TabDelimited">Reavers Deep.tab</DataFile>
+    <MetadataFile>Reavers Deep.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Corr" Tags="Unreviewed">
+    <Y>-1</Y>
+    <X>-2</X>
+    <Name>Corridor</Name>
+    <Name Lang="vi">Amshagi</Name>
+    <Name Lang="vi">Eneri</Name>
+    <Name Lang="va">Roughantz</Name>
+    <Name Lang="va">Llananae Tourz</Name>
+    <DataFile Source="Traveller 5 Second Survey" Milieu="M1201" Type="TabDelimited">Corridor.tab</DataFile>
+    <MetadataFile>Corridor.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Gush" Tags="Unreviewed">
+    <Y>0</Y>
+    <X>-2</X>
+    <Name>Gushemege</Name>
+    <DataFile Milieu="M1201" Type="TabDelimited">Gushemege.tab</DataFile>
+    <MetadataFile>Gushemege.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Spic" Tags="Unreviewed" Selected="false" Milieu="M1201">
+    <Y>3</Y>
+    <X>2</X>
+    <Name>Spica</Name>
+    <DataFile Author="Martin J. Dougherty" Type="TabDelimited">Spica.tab</DataFile>
+    <MetadataFile>Spica.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Phla" Tags="Unreviewed" Selected="false" Milieu="M1201">
+    <Y>3</Y>
+    <X>3</X>
+    <Name Lang="Hv">Phlask</Name>
+    <DataFile Author="Martin J. Dougherty" Source="1248 Sourcebook 1: Out of Darkness">Phlask.sec</DataFile>
+    <MetadataFile>Phlask.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Core" Tags="Unreviewed" Selected="false" Milieu="M1201">
+    <Y>0</Y>
+    <X>0</X>
+    <Name>Core</Name>
+    <Name Lang="vi">Ukan</Name>
+    <DataFile Author="Martin J. Dougherty" Source="1248 Sourcebook 1: Out of Darkness">Core.sec</DataFile>
+    <MetadataFile>Core.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Forn" Tags="Unreviewed" Selected="false" Milieu="M1201">
+    <Y>0</Y>
+    <X>1</X>
+    <Name>Fornast</Name>
+    <Name Lang="vi">Rishurir</Name>
+    <DataFile Author="Martin J. Dougherty" Source="1248 Sourcebook 1: Out of Darkness">Fornast.sec</DataFile>
+    <MetadataFile>Fornast.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Lang" Tags="Unreviewed" Selected="false" Milieu="M1201">
+    <Y>4</Y>
+    <X>2</X>
+    <Name Lang="hv">Langere</Name>
+    <Name Lang="hv">Langer</Name>
+    <DataFile Author="Martin J. Dougherty" Source="1248 Sourcebook 1: Out of Darkness">Langere.sec</DataFile>
+    <MetadataFile>Langere.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Rift" Tags="Unreviewed" Selected="false" Milieu="M1201">
+    <Y>1</Y>
+    <X>-4</X>
+    <Name>Riftspan Reaches</Name>
+    <Name Lang="as">Iiyoihakh</Name>
+    <DataFile Author="Martin J. Dougherty" Source="1248 Sourcebook 1: Out of Darkness">Riftspan Reaches.sec</DataFile>
+    <MetadataFile>Riftspan Reaches.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Leon" Tags="Unreviewed" Selected="false" Milieu="M1201">
+    <Y>2</Y>
+    <X>3</X>
+    <Name>Leonidae</Name>
+    <DataFile Author="Martin J. Dougherty" Source="1248 Sourcebook 1: Out of Darkness">Leonidae.sec</DataFile>
+    <MetadataFile>Leonidae.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Beyo" Tags="Unreviewed">
+    <Y>0</Y>
+    <X>-5</X>
+    <Name>The Beyond</Name>
+    <Name>Beyond</Name>
+    <Name Lang="as">Lerlairlaii</Name>
+    <Name Lang="zh">Zhdiakltlatl</Name>
+    <DataFile Author="Donald P. Rapp and Chuck Kallenbach II" Source="Traveller 5 Second Survey" Milieu="M1201" Type="TabDelimited">Beyond.tab</DataFile>
+    <MetadataFile Author="Donald P. Rapp and Chuck Kallenbach II">Beyond.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Gvur" Tags="Unreviewed" Selected="false" Milieu="M1201">
+    <Y>-2</Y>
+    <X>-4</X>
+    <Name Lang="va">Gvurrdon</Name>
+    <Name Lang="zh">Briakqra'</Name>
+    <DataFile Type="TabDelimited">Gvurrdon.tab</DataFile>
+    <MetadataFile>Gvurrdon.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Tugl" Tags="Unreviewed">
+    <Y>-2</Y>
+    <X>-3</X>
+    <Name Lang="va">Tuglikki</Name>
+    <Name Lang="zh">Dravr</Name>
+    <DataFile Author="David Drazul"  Source="Traveller 5 Sector Survey" Milieu="M1201" Type="TabDelimited">Tuglikki.tab</DataFile>
+    <MetadataFile>Tuglikki.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Prov" Tags="Unreviewed">
+    <Y>-2</Y>
+    <X>-2</X>
+    <Name>Provence</Name>
+    <Name Lang="va">Orraenang</Name>
+    <Name Lang="vi">Amshagi</Name>
+    <DataFile Author="David Drazul" Source="Traveller 5 Sector Survey" Milieu="M1201" Type="TabDelimited">Provence.tab</DataFile>
+    <MetadataFile>Provence.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Wind" Tags="Unreviewed" Milieu="M1201">
+    <Y>-2</Y>
+    <X>-1</X>
+    <Name>Windhorn</Name>
+    <Name Lang="va">Gotzdzo</Name>
+    <Name Lang="vi">Kishadikhu</Name>
+    <DataFile Milieu="M1201" Type="TabDelimited">Windhorn.tab</DataFile>
+    <MetadataFile>Windhorn.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Mesh" Tags="Unreviewed" Milieu="M1201">
+    <Y>-2</Y>
+    <X>0</X>
+    <Name>Meshan</Name>
+    <DataFile Author="Michael R. Mikesh" Source="Traveller 5 Sector Survey" Milieu="M1201" Type="TabDelimited">Meshan.tab</DataFile>
+    <MetadataFile>Meshan.xml</MetadataFile>
+  </Sector>
+</Sectors>

@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<Sector xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>Riftspan Reaches</Name>
+  <Name Lang="as">Iiyoihakh</Name>
+  <Credits>
+
+             &lt;b&gt;Riftspan Reaches&lt;/b&gt; sector was designed by Marc W.
+             Miller and appears in &lt;cite&gt;Atlas of the Imperium&lt;/cite&gt;
+             (GDW, 1984).
+
+             It was refined by James Holden and appears in &lt;cite&gt;The
+             Travellers Digest&lt;/cite&gt;.
+
+             It was extracted based on information derived from
+             &lt;cite&gt;1248 Sourcebook 3: The Spinward States&lt;/cite&gt;
+             (ComStar Media/Avenger Enterprises, 2008).
+    </Credits>
+  <Product Author="Mike West" Title="1248 Sourcebook 3: The Spinward States" Publisher="Avenger Enterprises in association with Comstar Media, LLC." Ref="http://www.farfuture.net/Contents%20CDROM%20TNE-2.pdf"/>
+  <Subsectors>
+    <Subsector Index="A"></Subsector>
+    <Subsector Index="B"></Subsector>
+    <Subsector Index="C"></Subsector>
+    <Subsector Index="D"></Subsector>
+    <Subsector Index="E"></Subsector>
+    <Subsector Index="F"></Subsector>
+    <Subsector Index="G"></Subsector>
+    <Subsector Index="H"></Subsector>
+    <Subsector Index="I"></Subsector>
+    <Subsector Index="J"></Subsector>
+    <Subsector Index="K"></Subsector>
+    <Subsector Index="L"></Subsector>
+    <Subsector Index="M"></Subsector>
+    <Subsector Index="N"></Subsector>
+    <Subsector Index="O"></Subsector>
+    <Subsector Index="P"></Subsector>
+  </Subsectors>
+  <Allegiances>
+    <Allegiance Code="A4">Aslan Aorlakht, Aorekhohuiha control, Wahtoi clan</Allegiance>
+    <Allegiance Code="Aa">Aslan Aorlakht</Allegiance>
+    <Allegiance Code="As">Aslan Hierate</Allegiance>
+  </Allegiances>
+  <Labels>
+    <Label Hex="0709" Color="White" OffsetY="0">J-5 Route</Label>
+    <Label Hex="0915" Color="White" OffsetY="0">J-5 Route</Label>
+    <Label Hex="2121" Color="White" OffsetY="0">J-5 Route</Label>
+    <Label Hex="2831" Color="White" OffsetY="0">J-5 Route</Label>
+  </Labels>
+  <Borders>
+    <Border WrapLabel="true" Color="Tan" Allegiance="A4" LabelPosition="0606" Label="Wahtoi">0507</Border>
+    <Border Color="Yellow" WrapLabel="false" Allegiance="Aa" LabelPosition="0604">0000 0100 0200 0300 0400 0500 0600 0700 0800 0900 1000 1100 1200 1201 1202 1103 1003 0904 0905 0805 0706 0606 0507 0407 0308 0208 0109 0008 0007 0006 0005 0004 0003 0002 0001 0000</Border>
+    <Border WrapLabel="false" Allegiance="As" LabelPosition="2436">1741 1840 1940 2039 2139 2238 2338 2437 2538 2637 2738 2837 2937 2936 2937 3037 3138 3237 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2041 1941 1841 1741</Border>
+  </Borders>
+  <Routes>
+    <Route Start="0507" End="0711" Style="Dashed" Color="White" Type="J-5"/>
+    <Route Start="0711" End="0913" Style="Dashed" Color="White" Type="J-5"/>
+    <Route Start="0913" End="1115" Style="Dashed" Color="White" Type="J-5"/>
+    <Route Start="1115" End="1415" Style="Dashed" Color="White" Type="J-5"/>
+    <Route Start="1415" End="1615" Style="Dashed" Color="White" Type="J-5"/>
+    <Route Start="1615" End="1816" Style="Dashed" Color="White" Type="J-5"/>
+    <Route Start="1816" End="2219" Style="Dashed" Color="White" Type="J-5"/>
+    <Route Start="2219" End="2521" Style="Dashed" Color="White" Type="J-5"/>
+    <Route Start="2521" End="2423" Style="Dashed" Color="White" Type="J-5"/>
+    <Route Start="2423" End="2726" Style="Dashed" Color="White" Type="J-5"/>
+    <Route Start="2726" End="2729" Style="Dashed" Color="White" Type="J-5"/>
+    <Route Start="2729" End="3030" Style="Dashed" Color="White" Type="J-5"/>
+    <Route Start="3030" End="2933" Style="Dashed" Color="White" Type="J-5"/>
+    <Route Start="2933" End="2936" Style="Dashed" Color="White" Type="J-5"/>
+  </Routes>
+</Sector>

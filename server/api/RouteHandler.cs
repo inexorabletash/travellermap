@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Maps.Search;
+using Maps.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -8,17 +10,13 @@ namespace Maps.API
 {
     internal class RouteHandler : DataHandlerBase
     {
-        protected override string ServiceName { get { return "route"; } }
-        protected override DataResponder GetResponder(HttpContext context)
-        {
-            return new Responder(context);
-        }
+        protected override DataResponder GetResponder(HttpContext context) => new Responder(context);
+
         private class Responder : DataResponder
         {
             public Responder(HttpContext context) : base(context) { }
-            public override string DefaultContentType { get { return System.Net.Mime.MediaTypeNames.Text.Xml; } }
-
-            private class TravellerPathFinder : PathFinder.Map<World>
+            public override string DefaultContentType => ContentTypes.Text.Xml;
+            private class TravellerPathFinder : PathFinder.IMap<World>
             {
                 ResourceManager manager;
                 SectorMap.Milieu map;
@@ -44,9 +42,9 @@ namespace Maps.API
                     return PathFinder.FindPath<World>(this, start, end);
                 }
 
-                IEnumerable<World> PathFinder.Map<World>.Adjacent(World world)
+                IEnumerable<World> PathFinder.IMap<World>.Adjacent(World world)
                 {
-                    if (world == null) throw new ArgumentNullException("world");
+                    if (world == null) throw new ArgumentNullException(nameof(world));
                     foreach (World w in new HexSelector(map, manager, Astrometrics.CoordinatesToLocation(world.Coordinates), Jump).Worlds)
                     {
                         // Exclude destination from filters.
@@ -61,10 +59,10 @@ namespace Maps.API
                     }
                 }
 
-                int PathFinder.Map<World>.Distance(World a, World b)
+                int PathFinder.IMap<World>.Distance(World a, World b)
                 {
-                    if (a == null) throw new ArgumentNullException("a");
-                    if (b == null) throw new ArgumentNullException("b");
+                    if (a == null) throw new ArgumentNullException(nameof(a));
+                    if (b == null) throw new ArgumentNullException(nameof(b));
                     return Astrometrics.HexDistance(a.Coordinates, b.Coordinates);
                 }
             }
@@ -73,7 +71,7 @@ namespace Maps.API
             {
                 string query = context.Request.QueryString[field];
                 if (string.IsNullOrWhiteSpace(query))
-                    throw new HttpError(400, "Bad Request", string.Format("Missing {0} location", field));
+                    throw new HttpError(400, "Bad Request", $"Missing {field} location");
 
                 query = query.Trim();
 
@@ -82,58 +80,52 @@ namespace Maps.API
                 {
                     int x = GetIntOption("x", 0);
                     int y = GetIntOption("y", 0);
-                    WorldLocation loc = SearchEngine.FindNearestWorldMatch(query, GetStringOption("milieu"), x, y);
-                    if (loc == null)
-                        throw new HttpError(404, "Not Found", string.Format("Location not found: {0}", query));
+                    WorldResult loc = SearchEngine.FindNearestWorldMatch(query, GetStringOption("milieu"), x, y) ??
+                        throw new HttpError(404, "Not Found", $"Location not found: {query}");
 
-                    Sector loc_sector;
-                    World loc_world;
-                    loc.Resolve(map, manager, out loc_sector, out loc_world);
+                    loc.Resolve(map, manager, out Sector loc_sector, out World loc_world);
                     return loc_world;
                 }
 
-                Sector sector = map.FromName(match.Groups["sector"].Value);
-                if (sector == null)
-                    throw new HttpError(404, "Not Found", string.Format("Sector not found: {0}", sector));
+                string name = match.Groups["sector"].Value;
+                Sector sector = map.FromName(name) ??
+                    throw new HttpError(404, "Not Found", $"Sector not found: {name}");
 
                 string hexString = match.Groups["hex"].Value;
                 Hex hex = new Hex(hexString);
                 if (!hex.IsValid)
-                    throw new HttpError(400, "Not Found", string.Format("Invalid hex: {0}", hexString));
+                    throw new HttpError(400, "Not Found", $"Invalid hex: {hexString}");
 
-                World world = sector.GetWorlds(manager)[hex.ToInt()];
-                if (world == null)
-                    throw new HttpError(404, "Not Found", string.Format("No such world: {0} {1}", sector.Names[0].Text, hexString));
+                World world = sector.GetWorlds(manager)[hex.ToInt()] ??
+                    throw new HttpError(404, "Not Found", $"No such world: {sector.Names[0].Text} {hexString}");
 
                 return world;
             }
 
-            public override void Process()
+            public override void Process(ResourceManager resourceManager)
             {
-                ResourceManager resourceManager = new ResourceManager(context.Server);
                 SectorMap.Milieu map = SectorMap.ForMilieu(resourceManager, GetStringOption("milieu"));
 
-                World startWorld = ResolveLocation(context, "start", resourceManager, map);
+                World startWorld = ResolveLocation(Context, "start", resourceManager, map);
                 if (startWorld == null)
                     return;
 
-                World endWorld = ResolveLocation(context, "end", resourceManager, map);
+                World endWorld = ResolveLocation(Context, "end", resourceManager, map);
                 if (endWorld == null)
                     return;
 
-                int jump = Util.Clamp(GetIntOption("jump", 2), 0, 12);
+                int jump = GetIntOption("jump", 2).Clamp(0, 12);
 
-                var finder = new TravellerPathFinder(resourceManager, map, jump);
-
-                finder.RequireWildernessRefuelling = GetBoolOption("wild", false);
-                finder.ImperialWorldsOnly = GetBoolOption("im", false);
-                finder.AvoidRedZones = GetBoolOption("nored", false);
-
-                List<World> route = finder.FindPath(startWorld, endWorld);
-                if (route == null)
+                var finder = new TravellerPathFinder(resourceManager, map, jump)
+                {
+                    RequireWildernessRefuelling = GetBoolOption("wild", false),
+                    ImperialWorldsOnly = GetBoolOption("im", false),
+                    AvoidRedZones = GetBoolOption("nored", false)
+                };
+                List<World> route = finder.FindPath(startWorld, endWorld) ??
                     throw new HttpError(404, "Not Found", "No route found");
 
-                SendResult(context, route.Select(w => new Results.RouteStop(w)).ToList());
+                SendResult(route.Select(w => new Results.RouteStop(w)).ToList());
             }
         }
     }
@@ -146,7 +138,7 @@ namespace Maps.API.Results
         public RouteStop() { }
         public RouteStop(World w)
         {
-            if (w == null) throw new ArgumentNullException("w");
+            if (w == null) throw new ArgumentNullException(nameof(w));
 
             Sector = w.SectorName;
             SectorX = w.Sector.X;
@@ -158,6 +150,12 @@ namespace Maps.API.Results
             Hex = w.Hex;
             HexX = w.X;
             HexY = w.Y;
+
+            UWP = w.UWP;
+            PBG = w.PBG;            
+            Zone = w.Zone;
+            AllegianceName = w.AllegianceName;
+
         }
 
         public string Sector { get; set; }
@@ -170,5 +168,10 @@ namespace Maps.API.Results
         public string Hex { get; set; }
         public int HexX { get; set; }
         public int HexY { get; set; }
+
+        public string UWP { get; set; }
+        public string PBG { get; set; }
+        public string Zone { get; set; }
+        public string AllegianceName { get; set; }
     }
 }

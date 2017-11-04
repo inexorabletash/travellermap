@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<Sector Abbreviation="Cano" Tags="InReview">
+  <Name>Canopus</Name>
+  <Credits>
+    <![CDATA[
+
+             <b>Canopus</b> sector was designed by Randy Dorman.
+
+             Stellar positions were developed by Joe D. Fugate Sr. and
+             appear in <cite>The MegaTraveller Alien, Volume 2:
+             Solomani &amp; Aslan</cite> (Digest Group Publications,
+             1991).
+
+    ]]>
+  </Credits>
+  <Subsectors>
+    <Subsector Index="A">Hyades</Subsector>
+    <Subsector Index="B">Yanos</Subsector>
+    <Subsector Index="C">Castine</Subsector>
+    <Subsector Index="D">Megrez</Subsector>
+    <Subsector Index="E">Hulda</Subsector>
+    <Subsector Index="F">Nyssa</Subsector>
+    <Subsector Index="G">Rangiriri</Subsector>
+    <Subsector Index="H">Zarn</Subsector>
+    <Subsector Index="I">Aglaea</Subsector>
+    <Subsector Index="J">Nanfeng</Subsector>
+    <Subsector Index="K">Lustre</Subsector>
+    <Subsector Index="L">Suhayl</Subsector>
+    <Subsector Index="M">Khtaoh</Subsector>
+    <Subsector Index="N">Trita</Subsector>
+    <Subsector Index="O">Salient</Subsector>
+    <Subsector Index="P">Marrakesh</Subsector>
+  </Subsectors>
+  <Borders>
+    <Border WrapLabel="false" Allegiance="SoCf" LabelPosition="1718">0000 0100 0200 0300 0400 0500 0600 0700 0800 0900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 3000 3100 3200 3300 3301 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3331 3231 3132 3032 2932 2831 2732 2631 2532 2432 2333 2233 2234 2235 2135 2034 1934 1834 1734 1633 1533 1432 1332 1231 1132 1031 0931 0830 0730 0629 0529 0429 0428 0427 0327 0227 0226 0126 0225 0224 0124 0123 0022 0021 0020 0019 0018 0017 0016 0015 0014 0013 0012 0011 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001 0000</Border>
+    <Border WrapLabel="false" Color="Khaki" Allegiance="AsOf" LabelPosition="0134">0032 0033 0134 0034 0035 0034 0033 0032</Border>
+    <Border WrapLabel="false" Color="OliveDrab" Allegiance="TrBr" LabelPosition="1037">0938 1037 1036 1037 0938</Border>
+    <Border WrapLabel="false" Color="Pink" Allegiance="JuNa" LabelPosition="1640">1440 1540 1639 1640 1741 1641 1541 1441 1440</Border>
+    <Border WrapLabel="false" Color="White" Allegiance="MaUn" LabelPosition="3140">2839 2940 3039 3139 3238 3338 3339 3340 3341 3241 3141 3041 2941 2940 2839</Border>
+  </Borders>
+  <Routes>
+    <Route Start="0107" End="0507" />
+    <Route Start="0107" End="2909" EndOffsetX="-1" />
+    <Route Start="0118" End="0518" />
+    <Route Start="0222" End="0320" />
+    <Route Start="0320" End="0518" />
+    <Route Start="0404" End="0507" />
+    <Route Start="0507" End="0909" />
+    <Route Start="0518" End="0615" />
+    <Route Start="0615" End="0913" />
+    <Route Start="0909" End="1210" />
+    <Route Start="0913" End="1210" />
+    <Route Start="1020" End="1023" />
+    <Route Start="1020" End="1217" />
+    <Route Start="1023" End="1225" />
+    <Route Start="1203" End="1440" EndOffsetY="-1" />
+    <Route Start="1203" End="1605" />
+    <Route Start="1210" End="1609" />
+    <Route Start="1217" End="1516" />
+    <Route Start="1225" End="1627" />
+    <Route Start="1512" End="1516" />
+    <Route Start="1512" End="1609" />
+    <Route Start="1516" End="1918" />
+    <Route Start="1605" End="2007" />
+    <Route Start="1609" End="2007" />
+    <Route Start="1627" End="2025" />
+    <Route Start="1918" End="2019" />
+    <Route Start="1918" End="2116" />
+    <Route Start="2007" End="2407" />
+    <Route Start="2019" End="2321" />
+    <Route Start="2025" End="2129" />
+    <Route Start="2025" End="2425" />
+    <Route Start="2116" End="2313" />
+    <Route Start="2210" End="2313" />
+    <Route Start="2210" End="2407" />
+    <Route Start="2313" End="2715" />
+    <Route Start="2321" End="2722" />
+    <Route Start="2407" End="2808" />
+    <Route Start="2425" End="2725" />
+    <Route Start="2702" End="2539" EndOffsetY="-1" />
+    <Route Start="2702" End="3003" />
+    <Route Start="2715" End="2817" />
+    <Route Start="2715" End="3113" />
+    <Route Start="2722" End="2725" />
+    <Route Start="2722" End="3020" />
+    <Route Start="2725" End="3026" />
+    <Route Start="2808" End="3207" />
+    <Route Start="2817" End="3020" />
+    <Route Start="3003" End="0203" EndOffsetX="1" />
+    <Route Start="3026" End="3229" />
+    <Route Start="3113" End="0111" EndOffsetX="1" />
+    <Route Start="3207" End="0309" EndOffsetX="1" />
+  </Routes>
+</Sector>

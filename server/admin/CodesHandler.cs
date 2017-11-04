@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using Maps.Utilities;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Net.Mime;
 using System.Text.RegularExpressions;
 
 namespace Maps.Admin
@@ -11,7 +11,6 @@ namespace Maps.Admin
     /// </summary>
     internal class CodesHandler : AdminHandler
     {
-
         static readonly IReadOnlyList<string> s_legacySophontCodes = new List<string>
         {
             "A", // Aslan
@@ -26,12 +25,14 @@ namespace Maps.Admin
             "Z", // Zhodani
         };
 
-        static readonly RegexDictionary<string> s_knownCodes = new RegexDictionary<string>
+        static readonly RegexMap<string> s_knownCodes = new RegexMap<string>
         {
             // General
             { @"^Rs[ABGDEZHT]$", "Rs" },
             { @"^O:[0-9]{4}(-\w+)?$", "O:nnnn" },
             { @"^O:[A-Za-z]{3,4}-[0-9]{4}$", "O:nnnn (outsector)" },
+            { @"^C:[0-9]{4}(-\w+)?$", "C:nnnn" },
+            { @"^C:[A-Za-z]{3,4}-[0-9]{4}$", "C:nnnn (outsector)" },
 
             // Legacy
             "Ag", "As", "Ba", "De",
@@ -54,7 +55,7 @@ namespace Maps.Admin
             // Other Common
             "Xb", // X-boat stop
 
-            { @"^Rw:[0-9]$", "Rw#" }, // TNE: Refugee World
+            { @"^Rw:?[0-9VZ]$", "Rw#" }, // TNE: Refugee World
 
             // LWLG
             "Hp", "Hn", // Hiver-prime, Hiver-norm
@@ -85,16 +86,15 @@ namespace Maps.Admin
             { @"^{.*}$", "(comment)" }
         };
             
-        protected override void Process(System.Web.HttpContext context)
+        protected override void Process(System.Web.HttpContext context, ResourceManager resourceManager)
         {
-            context.Response.ContentType = MediaTypeNames.Text.Plain;
+            context.Response.ContentType = ContentTypes.Text.Plain;
             context.Response.StatusCode = 200;
-
-            ResourceManager resourceManager = new ResourceManager(context.Server);
 
             string sectorName = GetStringOption(context, "sector");
             string type = GetStringOption(context, "type");
             string regex = GetStringOption(context, "regex");
+            string milieu = GetStringOption(context, "milieu");
 
             // NOTE: This (re)initializes a static data structure used for 
             // resolving names into sector locations, so needs to be run
@@ -108,12 +108,13 @@ namespace Maps.Admin
                               && (type == null || sector.DataFile.Type == type)
                               && (!sector.Tags.Contains("ZCR"))
                               && (!sector.Tags.Contains("meta"))
+                              && (milieu == null || sector.CanonicalMilieu == milieu) 
                               orderby sector.Names[0].Text
                               select sector;
 
             Dictionary<string, HashSet<string>> codes = new Dictionary<string, HashSet<string>>();
 
-            Regex filter = (regex == null) ? new Regex(".*") : new Regex(regex);
+            Regex filter = new Regex(regex ?? ".*");
 
             foreach (var sector in sectorQuery)
             {
@@ -127,14 +128,9 @@ namespace Maps.Admin
                 {
                     if (!codes.ContainsKey(code))
                     {
-                        HashSet<string> hash = new HashSet<string>();
-                        hash.Add(sector.Names[0].Text);
-                        codes.Add(code, hash);
+                        codes.Add(code, new HashSet<string>());
                     }
-                    else
-                    {
-                        codes[code].Add(sector.Names[0].Text);
-                    }
+                    codes[code].Add($"{sector.Names[0].Text} [{sector.CanonicalMilieu}]");
                 }
             }
 

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Sector>
+  <Name>Halcyon</Name>
+  <Credits>
+    <![CDATA[
+      <b>Halcyon</b> sector was designed by Ade Stewart as part of the Distant Fringe.
+    ]]>
+  </Credits>
+  <Subsectors>
+    <Subsector Index="A">Murada</Subsector>
+    <Subsector Index="B">Cradle</Subsector>
+    <Subsector Index="C">Stanter</Subsector>
+    <Subsector Index="D">Frell</Subsector>
+    <Subsector Index="E">Farin</Subsector>
+    <Subsector Index="F">Tsorva</Subsector>
+    <Subsector Index="G">Loran</Subsector>
+    <Subsector Index="H">Abidal</Subsector>
+    <Subsector Index="I">Jerik</Subsector>
+    <Subsector Index="J">Sena</Subsector>
+    <Subsector Index="K">Veesene</Subsector>
+    <Subsector Index="L">Paradise</Subsector>
+    <Subsector Index="M">Alasim</Subsector>
+    <Subsector Index="N">Utt</Subsector>
+    <Subsector Index="O">Orowan</Subsector>
+    <Subsector Index="P">Baradis</Subsector>
+  </Subsectors>
+  <Borders>
+    <Border Allegiance="Bc" LabelPosition="0434" ShowLabel="true" WrapLabel="false">0337 0436 0435 0536 0635 0536 0436 0437 0337 </Border>
+    <Border Allegiance="Dw" LabelPosition="1404" ShowLabel="true" WrapLabel="true">1003 1104 1203 1204 1205 1206 1107 1106 1005 1004 1003 </Border>
+    <Border Allegiance="Ec" LabelPosition="1018" ShowLabel="true" WrapLabel="true">0718 0818 0819 0920 1020 1121 1122 1123 1223 1124 1023 1022 1021 0921 0820 0819 0818 0718 </Border>
+    <Border Allegiance="En" LabelPosition="1335" ShowLabel="true" WrapLabel="false">1131 1230 1231 1332 1333 1334 1233 1232 1231 1131 </Border>
+    <Border Allegiance="Hg" LabelPosition="2015" ShowLabel="true" WrapLabel="true">1914 2013 2012 2112 2111 2112 2212 2313 2314 2213 2114 2014 1914 </Border>
+    <Border Allegiance="Li" LabelPosition="0709" ShowLabel="true" WrapLabel="true">0611 0711 0810 0809 0808 0809 0810 0811 0912 0811 0711 0611 </Border>
+    <Border Allegiance="Ls" LabelPosition="1507" ShowLabel="true" WrapLabel="true">1307 1407 1508 1408 1409 1410 1411 1512 1411 1410 1310 1309 1308 1307 </Border>
+    <Border Allegiance="Rt" LabelPosition="2735" ShowLabel="true" WrapLabel="false">2532 2632 2733 2734 2633 2533 2532 </Border>
+    <Border Allegiance="Us" LabelPosition="1112" ShowLabel="true" WrapLabel="true">1008 1108 1207 1208 1209 1110 1111 1010 1009 1008 </Border>
+    <Border Allegiance="Yj" LabelPosition="2125" ShowLabel="true" WrapLabel="true">2223 2323 2324 2424 2325 2225 2224 2223 </Border>
+  </Borders>
+  <Allegiances>
+    <Allegiance Code="Bc">Bright Conclave</Allegiance>
+    <Allegiance Code="Dw">Dependent Worlds</Allegiance>
+    <Allegiance Code="Ec">Esaran Cultural Area</Allegiance>
+    <Allegiance Code="En">Enlightened</Allegiance>
+    <Allegiance Code="Hg">High Senate</Allegiance>
+    <Allegiance Code="Li">The Last Line</Allegiance>
+    <Allegiance Code="Ls">Liberated Stars</Allegiance>
+    <Allegiance Code="Rt">The Retreat</Allegiance>
+    <Allegiance Code="Us">Unity of Sed</Allegiance>
+    <Allegiance Code="Yj">Yimin Jiti</Allegiance>
+  </Allegiances>
+  <Routes>
+    <!-- Barabek Loop -->
+    <Route Start="2526" End="2427"/>
+    <Route Start="2427" End="2228"/>
+    <Route Start="2228" End="2330"/>
+    <Route Start="2330" End="2131"/>
+    <Route Start="2131" End="2030"/>
+    <Route Start="2030" End="1929"/>
+    <Route Start="1929" End="1828"/>
+    <Route Start="1828" End="1727"/>
+    <Route Start="1727" End="1526"/>
+    <!-- Elemid Trace -->
+    <Route Start="1526" End="1424"/>
+    <Route Start="1424" End="1422"/>
+    <Route Start="1422" End="1421"/>
+    <Route Start="1421" End="1521"/>
+    <Route Start="1521" End="1619"/>
+    <!-- Long Line -->
+    <Route Start="1526" End="1327"/>
+    <Route Start="1327" End="1128"/>
+    <Route Start="1128" End="1029"/>
+    <Route Start="1029" End="0830"/>
+    <Route Start="0830" End="0731"/>
+    <Route Start="0731" End="0733"/>
+    <Route Start="0733" End="0734"/>
+    <Route Start="0635" End="0734"/>
+    <!-- Rasand Link -->
+    <Route Start="1424" End="1223"/>
+    <Route Start="1223" End="1022"/>
+    <Route Start="1022" End="0921"/>
+    <Route Start="0921" End="0819"/>
+    <Route Start="0819" End="0818"/>
+    <Route Start="0818" End="0718"/>
+    <!-- Runners Bane -->
+    <Route Start="2012" End="1812"/>
+    <Route Start="1812" End="1711"/>
+    <Route Start="1711" End="1512"/>
+    <Route Start="1512" End="1411"/>
+    <Route Start="1411" End="1409"/>
+    <Route Start="1409" End="1209"/>
+    <Route Start="1209" End="1008"/>
+    <!-- Scybrian Run -->
+    <Route Start="2012" End="2212"/>
+    <Route Start="2212" End="2314"/>
+    <Route Start="2314" End="2513"/>
+    <Route Start="2513" End="2611"/>
+    <Route Start="2611" End="2811"/>
+    <Route Start="2811" End="2911"/>
+    <Route Start="2911" End="3010"/>
+    <Route Start="3010" End="3211"/>
+    <Route Start="3211" End="3411"/>
+    <!-- Wolfs Tail -->
+    <Route Start="2526" End="2726"/>
+    <Route Start="2726" End="2826"/>
+    <Route Start="2826" End="3027"/>
+    <Route Start="3027" End="3227"/>
+    <Route Start="3227" End="3327"/>
+    <!-- Spurs -->
+    <Route Start="1029" End="1230"/>
+    <Route Start="2424" End="2526"/>
+    <Route Start="2330" End="2431"/>
+  </Routes>
+  <Labels>
+    <!-- Deep Space -->
+    <Label Hex="1937" Color="gray" Size="small">fuel&#x0a;cache</Label>
+    <!-- Route Names -->
+    <Label Hex="2132" Color="white">Barabek Loop</Label>
+    <Label Hex="1622" Color="white">Elemid Trace</Label>
+    <Label Hex="0829" Color="white">Long Line</Label>
+    <Label Hex="0822" Color="white">Rasand Link</Label>
+    <Label Hex="1710" Color="white">Runners Bane</Label>
+    <Label Hex="2713" Color="white">Scybrian Run</Label>
+    <Label Hex="3129" Color="white">Wolfs Tail</Label>
+    <!-- Rift Names -->
+    <Label Hex="1201" Color="gray" Size="large">Moat Rifts</Label>
+    <Label Hex="1437" Color="gray" Size="large">Great Void</Label>
+    <Label Hex="3109" Color="gray">Rissa&#x0a;Void</Label>
+    <Label Hex="3122" Color="gray">Harmal&#x0a;Deep</Label>
+    <Label Hex="3135" Color="gray">Baradine&#x0a;Divide</Label>
+  </Labels>
+  <Stylesheet>
+    border.Bc { color: magenta }
+    border.Dw { color: cyan; style: dotted }
+    border.Ec { color: pink; style: dotted }
+    border.En { color: olive }
+    border.Hg { color: blue }
+    border.Li { color: red }
+    border.Ls { color: cyan; style: dotted }
+    border.Rt { color: orange; style: dotted }
+    border.Us { color: cyan }
+    border.Yj { color: violet }
+    route { style: dashed }
+  </Stylesheet>
+</Sector>

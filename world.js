@@ -51,8 +51,8 @@
               if (!world) return;
 
               $('#wds-world-image').classList.add('wds-ready');
-              Traveller.renderWorld(
-                world, $('#wds-world-template').innerHTML, $('#wds-world-data'));
+              $('#wds-world-data').innerHTML =
+                Handlebars.compile($('#wds-world-template').innerHTML)(world);
 
               // Document title
               document.title = Handlebars.compile(
@@ -96,6 +96,7 @@
                 x: coords.x,
                 y: coords.y,
                 milieu: searchParams.get('milieu'),
+                style: searchParams.get('style'),
                 jump: JUMP,
                 scale: SCALE,
                 border: 0};
@@ -117,7 +118,12 @@
             }));
         }
         return Promise.all(promises);
-      }, function(reason) {
+      })
+      .then(function() {
+        if (searchParams.has('print'))
+          window.print();
+      })
+      .catch(function(reason) {
         console.error(reason);
       });
   });

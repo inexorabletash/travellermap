@@ -1,0 +1,186 @@
+<?xml version="1.0"?>
+<Sector Abbreviation="Dias" Tags="Official">
+  <Y>2</Y>
+  <X>0</X>
+  <Name>Diaspora</Name>
+  <Name Lang="vi">Nakulakak</Name>
+  <!-- <Product Publisher="GDW" Author="Mark &quot;Geo&quot; Gelinas Sr." Title="Astrogator's Guide to Diaspora Sector" /> -->
+  <Credits>
+    <![CDATA[
+
+             <b>Diaspora</b> sector was designed by Marc
+             W. Miller and appears in <cite>Atlas of the
+             Imperium</cite> (GDW, 1984).
+
+             It was refined by Mark Gelinas Sr. and appears in
+             <cite>Astrogators' Guide to Diaspora Sector</cite> (GDW,
+             1992).
+
+    ]]>
+  </Credits>
+  <DataFile Source="Traveller 5 Second Survey" Milieu="M1105" Type="TabDelimited">Diaspora.tab</DataFile>
+  <Borders>
+    <Border Allegiance="ImDs" Label="Third Imperium" ShowLabel="false">0000 0100 0200 0300 0400 0500 0600 0700 0800 0900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 3000 3100 3200 3300 3301 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2041 1941 1841 1741 1641 1541 1441 1341 1241 1141 1041 0941 0841 0741 0641 0541 0441 0341 0241 0141 0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014 0013 0012 0011 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001 0000</Border>
+  </Borders>
+  <Subsectors Source="Astrogators' Guide to the Diaspora Sector">
+    <Subsector Index="A">Narquel</Subsector>
+    <Subsector Index="B">Libert</Subsector>
+    <Subsector Index="C">Sufren</Subsector>
+    <Subsector Index="D">Khavle</Subsector>
+    <Subsector Index="E">Shadigi</Subsector>
+    <Subsector Index="F">Kushga</Subsector>
+    <Subsector Index="G">Alurza</Subsector>
+    <Subsector Index="H">Pasdaruu</Subsector>
+    <Subsector Index="I">Ebasha</Subsector>
+    <Subsector Index="J">Iusea</Subsector>
+    <Subsector Index="K">The Blight</Subsector>
+    <Subsector Index="L">Promise</Subsector>
+    <Subsector Index="M">Hijiri</Subsector>
+    <Subsector Index="N">Shumisdi</Subsector>
+    <Subsector Index="O">Madoc</Subsector>
+    <Subsector Index="P">Khulam</Subsector>
+  </Subsectors>
+  <Routes Source="Terra Traveller Times #27" Author="Mark &quot;Geo&quot; Gelinas">
+    <Route Start="0401" End="0202" />
+    <Route Start="0401" End="0504" />
+    <Route Start="0504" End="0306" />
+    <Route Start="0306" End="0207" />
+    <Route Start="0207" End="0209" />
+    <Route Start="0209" End="0512" />
+    <Route Start="0512" End="0709" />
+    <Route Start="0709" End="0605" />
+    <Route Start="0605" End="0504" />
+    <Route Start="0709" End="1111" />
+    <Route Start="1111" End="1109" />
+    <Route Start="1109" End="1307" />
+    <Route Start="1307" End="1404" />
+    <Route Start="1404" End="1104" />
+    <Route Start="1404" End="1503" />
+    <Route Start="1503" End="1701" />
+    <Route Start="1404" End="1805" />
+    <Route Start="1805" End="2004" />
+    <Route Start="2004" End="2405" />
+    <Route Start="2405" End="2605" />
+    <Route Start="2605" End="2604" />
+    <Route Start="2604" End="2501" />
+    <Route Start="2605" End="3005" />
+    <Route Start="3005" End="3204" />
+    <Route Start="3005" End="2908" />
+    <Route Start="2908" End="2911" />
+    <Route Start="2911" End="2914" />
+    <Route Start="2914" End="3016" />
+    <Route Start="3016" End="3020" />
+    <Route Start="3020" End="2922" />
+    <Route Start="2914" End="2615" />
+    <Route Start="2615" End="2414" />
+    <Route Start="2414" End="2116" />
+    <Route Start="2116" End="2012" />
+    <Route Start="2012" End="2209" />
+    <Route Start="2209" End="2207" />
+    <Route Start="2207" End="2405" />
+    <Route Start="1805" End="1807" />
+    <Route Start="1807" End="1911" />
+    <Route Start="1911" End="2012" />
+    <Route Start="2012" End="1614" />
+    <Route Start="1614" End="1415" />
+    <Route Start="1415" End="1411" />
+    <Route Start="1411" End="1111" />
+    <Route Start="0512" End="0813" />
+    <Route Start="0813" End="0616" />
+    <Route Start="0616" End="0918" />
+    <Route Start="0918" End="0519" />
+    <Route Start="0519" End="0418" />
+    <Route Start="0418" End="0117" />
+    <Route Start="0519" End="0722" />
+    <Route Start="0722" End="0821" />
+    <Route Start="0821" End="0918" />
+    <Route Start="0918" End="1118" />
+    <Route Start="1118" End="1415" />
+    <Route Start="1415" End="1417" />
+    <Route Start="1417" End="1419" />
+    <Route Start="1419" End="1522" />
+    <Route Start="1522" End="1621" />
+    <Route Start="1621" End="1820" />
+    <Route Start="1820" End="2019" />
+    <Route Start="2019" End="2116" />
+    <Route Start="2019" End="2321" />
+    <Route Start="2321" End="2417" />
+    <Route Start="2417" End="2615" />
+    <Route Start="2321" End="2224" />
+    <Route Start="2224" End="2022" />
+    <Route Start="2022" End="2019" />
+    <Route Start="1522" End="1325" />
+    <Route Start="1325" End="1124" />
+    <Route Start="1124" End="1123" />
+    <Route Start="1123" End="0821" />
+    <Route Start="0722" End="0524" />
+    <Route Start="0524" End="0425" />
+    <Route Start="0425" End="0327" />
+    <Route Start="0327" End="0228" />
+    <Route Start="1124" End="1128" />
+    <Route Start="1325" End="1426" />
+    <Route Start="1426" End="1628" />
+    <Route Start="1628" End="1826" />
+    <Route Start="1826" End="2125" />
+    <Route Start="2125" End="2224" />
+    <Route Start="2224" End="2225" />
+    <Route Start="2224" End="2426" />
+    <Route Start="2426" End="2827" />
+    <Route Start="2827" End="2925" />
+    <Route Start="2925" End="2922" />
+    <Route Start="2827" End="3228" />
+    <Route Start="2827" End="2731" />
+    <Route Start="2225" End="2129" />
+    <Route Start="2129" End="2130" />
+    <Route Start="1628" End="1630" />
+    <Route Start="1630" End="1733" />
+    <Route Start="1733" End="2031" />
+    <Route Start="2031" End="1630" />
+    <Route Start="2031" End="2130" />
+    <Route Start="2130" End="2333" />
+    <Route Start="2333" End="2031" />
+    <Route Start="2333" End="2434" />
+    <Route Start="2434" End="2236" />
+    <Route Start="2236" End="2333" />
+    <Route Start="2434" End="2834" />
+    <Route Start="2834" End="2731" />
+    <Route Start="3034" End="2834" />
+    <Route Start="3034" End="3138" />
+    <Route Start="3138" End="2838" />
+    <Route Start="2838" End="2834" />
+    <Route Start="2236" End="2340" />
+    <Route Start="2236" End="2037" />
+    <Route Start="2037" End="1838" />
+    <Route Start="1838" End="1740" />
+    <Route Start="1740" End="1340" />
+    <Route Start="1340" End="1236" />
+    <Route Start="1236" End="1133" />
+    <Route Start="1133" End="1435" />
+    <Route Start="1435" End="1733" />
+    <Route Start="1133" End="1031" />
+    <Route Start="1031" End="1128" />
+    <Route Start="0228" End="0431" />
+    <Route Start="0431" End="0233" />
+    <Route Start="0233" End="0336" />
+    <Route Start="0336" End="0139" />
+    <Route Start="0139" End="0440" />
+    <Route Start="0440" End="0839" />
+    <Route Start="0839" End="0936" />
+    <Route Start="0936" End="1133" />
+    <Route Start="1031" End="0831" />
+    <Route Start="0831" End="0431" />
+    <Route Start="1109" End="0709" />
+
+    <!-- Routes off the edge of the sector -->
+    <Route Start="0401" End="0239" EndOffsetX="0"  EndOffsetY="-1"/>
+    <Route Start="0401" End="0740" EndOffsetX="0"  EndOffsetY="-1"/>
+    <Route Start="1701" End="1540" EndOffsetX="0"  EndOffsetY="-1"/>
+    <Route Start="1701" End="1940" EndOffsetX="0"  EndOffsetY="-1"/>
+    <Route Start="2501" End="2540" EndOffsetX="0"  EndOffsetY="-1"/>
+    <Route Start="3204" End="0204" EndOffsetX="1"  EndOffsetY="0" />
+    <Route Start="3005" End="0108" EndOffsetX="1"  EndOffsetY="0" />
+    <Route Start="2340" End="2303" EndOffsetX="0"  EndOffsetY="1" />
+    <Route Start="0228" End="3228" EndOffsetX="-1" EndOffsetY="0" />
+    <Route Start="0228" End="3226" EndOffsetX="-1" EndOffsetY="0" />
+  </Routes>
+</Sector>

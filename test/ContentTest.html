@@ -2,8 +2,8 @@
 <title>Content Tests</title>
 <meta charset="utf-8">
 <link rel="shortcut icon" href="../favicon.ico">
-<link rel="stylesheet" href="../site.css?update=2015-07-19">
-<script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.25/polyfill.min.js"></script>
+<link rel="stylesheet" href="../site.css?update=2017-03-18">
+<script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.29/polyfill.min.js"></script>
 
 <style>
 tbody#results td,
@@ -69,7 +69,7 @@ body.hide_fail .fail { display: none; }
 var SERVICE_BASE = (function(l) {
   'use strict';
   if (l.hostname === 'localhost' && l.pathname.indexOf('~') !== -1)
-    return 'http://travellermap.com';
+    return 'https://travellermap.com';
   return '';
 }(window.location));
 

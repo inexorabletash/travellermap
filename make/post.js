@@ -23,7 +23,7 @@ window.addEventListener('DOMContentLoaded', function() {
         .map(function(sector) {
           var name = sector.Names[0].Text;
           if (seen.has(name))
-            name += ' (M' + sector.Milieu + ')';
+            name += ' (' + sector.Milieu + ')';
           seen.add(name);
           return {display: name,
                   name: sector.Names[0].Text,

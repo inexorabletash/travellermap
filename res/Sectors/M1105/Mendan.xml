@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Sector Abbreviation="Mend" Tags="InReview">
+  <Y>-2</Y>
+  <X>1</X>
+  <Name>Mendan</Name>
+  <Name Lang="va">Gotzdzo</Name>
+  <Credits>
+    <![CDATA[
+
+             <b>Mendan</b> sector was designed by Michael R. Mikesh
+             and appears in Challenge Magazine.
+
+             Stellar positions were developed by Joe D. Fugate Sr. and
+             appear in <cite>The MegaTraveller Alien, Volume 1: Vilani
+             &amp; Vargr</cite> (Digest Group Publications, 1990).
+
+    ]]>
+  </Credits>
+  <DataFile Author="Michael R. Mikesh" Source="Traveller 5 Sector Survey" Milieu="M1105" Type="TabDelimited">Mendan.tab</DataFile>
+  <Subsectors Source="Challenge #49">
+    <Subsector Index="A">Zuugabish</Subsector>
+    <Subsector Index="B">Gainla</Subsector>
+    <Subsector Index="C">Armi</Subsector>
+    <Subsector Index="D">Mendan</Subsector>
+    <Subsector Index="E">Bammesuka</Subsector>
+    <Subsector Index="F">Kupid</Subsector>
+    <Subsector Index="G">Udinidir</Subsector>
+    <Subsector Index="H">Tozus Ganok</Subsector>
+    <Subsector Index="I">Sarkan</Subsector>
+    <Subsector Index="J">Lumda</Subsector>
+    <Subsector Index="K">Valosak</Subsector>
+    <Subsector Index="L">Kaasam</Subsector>
+    <Subsector Index="M">Ikdalon</Subsector>
+    <Subsector Index="N">Lasla</Subsector>
+    <Subsector Index="O">Maidza</Subsector>
+    <Subsector Index="P">Naem</Subsector>
+  </Subsectors>
+  <Borders Source="Challenge #49" Author="Mike Mikesh" Milieu="1120">
+    <Border Allegiance="CoBa" Color="darkred" LabelPosition="0513" WrapLabel="true">0314 0413 0412 0411 0511 0510 0609 0610 0711 0811 0812 0713 0613 0614 0515 0516 0517 0518 0418 0319 0318 0317 0316 0315 0314</Border>
+    <Border Allegiance="3EoG" Color="yellow" LabelPosition="0501">0000 0100 0200 0300 0400 0500 0600 0700 0600 0501 0401 0302 0202 0201 0101 0000</Border>
+    <Border Allegiance="3EoG" Color="yellow" ShowLabel="false">2900 3000 3100 3200 3300 3200 3101 3000 2900</Border>
+    <Border Allegiance="Sark" Color="purple" LabelPosition="0627" WrapLabel="true">0326 0425 0525 0524 0523 0522 0421 0521 0621 0722 0822 0923 0823 0824 0825 0826 0827 0928 0929 0930 0829 0729 0628 0528 0427 0328 0327 0326</Border>
+    <Border Allegiance="VAnP" Color="olivedrab" LabelPosition="0233">0026 0027 0028 0129 0229 0230 0331 0332 0333 0433 0434 0435 0436 0437 0538 0438 0439 0440 0340 0240 0140 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027 0026</Border>
+    <Border Allegiance="Zuug" LabelPosition="0804" WrapLabel="true" Color="orange">0402 0502 0602 0702 0802 0903 0803 0804 0805 0806 0707 0607 0508 0507 0506 0505 0504 0403 0402</Border>
+
+    <Border Allegiance="JAsi" LabelPosition="3020" WrapLabel="true" Label="Asimikigir Confederation">1728 1827 1928 2027 2127 2226 2326 2325 2324 2323 2422 2421 2420 2520 2619 2719 2818 2919 3018 3119 3219 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3331 3230 3130 3029 2929 2828 2729 2629 2530 2430 2331 2230 2131 2030 1930 1829 1729 1728</Border>
+    <Border Allegiance="JLum" LabelPosition="1429" WrapLabel="true" Label="Lumda Dower">1329 1429 1430 1431 1430 1429 1329</Border>
+    <Border Allegiance="JMen" LabelPosition="2514" WrapLabel="true" Label="Commonwealth of Mendan">1315 1414 1514 1513 1612 1712 1711 1710 1709 1708 1707 1706 1605 1705 1804 1803 1802 1801 1901 2000 2101 2201 2302 2402 2502 2601 2701 2801 2902 3001 3002 3003 3004 3005 3006 3007 3108 3109 3009 3010 3011 3012 3013 2914 2814 2815 2716 2616 2617 2517 2416 2317 2216 2116 2016 1917 1816 1717 1617 1517 1417 1317 1316 1315</Border>
+    <Border Allegiance="JuRu" WrapLabel="true" LabelPosition="3037" Label="Rukadukaz Republic">2940 3039 3038 3138 3137 3136 3235 3234 3233 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2940</Border>
+    <Border Allegiance="JUkh" WrapLabel="true" Label="Ukhanzi Coordinate">2233 2334 2433 2533 2632 2733 2833 2933 2833 2834 2835 2836 2837 2738 2638 2639 2539 2438 2339 2438 2437 2436 2435 2335 2234 2233</Border>
+    <Border Allegiance="JVug" WrapLabel="true" LabelPosition="1622" Label="Vugurar Dominion">1621 1721 1820 1821 1822 1823 1924 1823 1822 1722 1621</Border>
+    <Border Allegiance="JPSt" LabelPosition="1834" WrapLabel="true" Label="Pirbarish Starlane">1335 1434 1534 1633 1632 1732 1832 1933 1934 1935 1936 2036 1937 1837 1738 1638 1539 1438 1338 1337 1336 1335 1335</Border>
+
+    <Border Allegiance="JuPr" LabelPosition="2118">1024 1124 1123 1122 1121 1120 1119 1218 1318 1317 1316 1315 1414 1514 1513 1612 1712 1711 1710 1709 1708 1707 1706 1605 1705 1804 1803 1802 1801 1901 2000 2101 2201 2302 2402 2502 2601 2701 2801 2902 3001 3102 3202 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2640 2540 2439 2340 2239 2139 2038 1939 1839 1740 1640 1540 1439 1340 1239 1140 1040 1140 1139 1238 1237 1337 1336 1335 1434 1433 1432 1431 1430 1429 1329 1328 1227 1127 1126 1125 1024</Border>
+  </Borders>
+  <Routes Source="Fan Created" Author="Mike Kuehn">
+    <Route Allegiance="JuPr" End="1320" Start="1520"/>
+    <Route Allegiance="JuPr" End="1520" Start="1221"/>
+    <Route Allegiance="JuPr" End="1520" Start="1822"/>
+    <Route Allegiance="JuPr" End="1417" Start="1520"/>
+    <Route Allegiance="JuPr" End="2123" Start="2424"/>
+    <Route Allegiance="JuPr" End="1224" Start="1527"/>
+    <Route Allegiance="JuPr" End="1527" Start="1827"/>
+    <Route Allegiance="JuPr" End="1430" Start="1732"/>
+    <Route Allegiance="JuPr" End="1732" Start="2029"/>
+    <Route Allegiance="JuPr" End="1732" Start="2031"/>
+    <Route Allegiance="JuPr" End="2435" Start="2237"/>
+    <Route Allegiance="JuPr" End="1337" Start="1238"/>
+    <Route Allegiance="JuPr" End="1238" Start="1040"/>
+    <Route Allegiance="JuPr" End="1539" Start="1640"/>
+    <Route Allegiance="JuPr" End="1539" Start="1938"/>
+    <Route Allegiance="JuPr" End="1938" Start="2237"/>
+    <Route Allegiance="JuPr" End="2237" Start="2340"/>
+    <Route Allegiance="JuPr" End="2340" Start="2639"/>
+    <Route Allegiance="JuPr" End="3005" Start="3204"/>
+    <Route Allegiance="JuPr" End="2615" Start="2918"/>
+    <Route Allegiance="JuPr" End="2918" Start="3216"/>
+    <Route Allegiance="JuPr" End="2918" Start="2922"/>
+    <Route Allegiance="JuPr" End="3230" Start="3233"/>
+    <Route Allegiance="JuPr" End="2835" Start="3236"/>
+    <Route Allegiance="JuPr" End="2639" Start="3040"/>
+    <Route Allegiance="JuPr" End="1640" StartOffsetX="0" StartOffsetY="1"  Start="1502"/>
+    <Route Allegiance="JuPr" End="3204" Start="3307"/>
+    <Route Allegiance="JuPr" End="3216" Start="3316"/>
+    <Route Allegiance="JuPr" End="1822" Start="2123"/>
+
+    <Route Allegiance="JAsi" End="2719" Start="2922"/>
+    <Route Allegiance="JAsi" End="3119" Start="3221"/>
+    <Route Allegiance="JAsi" End="2922" Start="3221"/>
+    <Route Allegiance="JAsi" End="3221" Start="3320"/>
+    <Route Allegiance="JAsi" End="2922" Start="2723"/>
+    <Route Allegiance="JAsi" End="2922" Start="3124"/>
+    <Route Allegiance="JAsi" End="3124" Start="3025"/>
+    <Route Allegiance="JAsi" End="2723" Start="2624"/>
+    <Route Allegiance="JAsi" End="2624" Start="2726"/>
+    <Route Allegiance="JAsi" End="3025" Start="3029"/>
+    <Route Allegiance="JAsi" End="2627" Start="3029"/>
+    <Route Allegiance="JAsi" End="3029" Start="3230"/>
+    <Route Allegiance="JAsi" End="2420" Start="2422"/>
+    <Route Allegiance="JAsi" End="2422" Start="2424"/>
+    <Route Allegiance="JAsi" End="2424" Start="2624"/>
+    <Route Allegiance="JAsi" End="2424" Start="2226"/>
+    <Route Allegiance="JAsi" End="1827" Start="2029"/>
+    <Route Allegiance="JAsi" End="2226" Start="2029"/>
+    <Route Allegiance="JAsi" End="2329" Start="2627"/>
+    <Route Allegiance="JAsi" End="2329" Start="2230"/>
+    <Route Allegiance="JAsi" End="2029" Start="2230"/>
+    <Route Allegiance="JAsi" End="2726" Start="2627"/>
+    <Route Allegiance="JAsi" End="3230" Start="3331"/>
+
+    <Route Allegiance="JLum" End="1329" Start="1430"/>
+
+    <Route Allegiance="JMen" End="1901" Start="2103"/>
+    <Route Allegiance="JMen" End="2103" Start="1804"/>
+    <Route Allegiance="JMen" End="2103" Start="2405"/>
+    <Route Allegiance="JMen" End="1804" Start="1605"/>
+    <Route Allegiance="JMen" End="1804" Start="2005"/>
+    <Route Allegiance="JMen" End="1605" Start="1708"/>
+    <Route Allegiance="JMen" End="2405" Start="2408"/>
+    <Route Allegiance="JMen" End="2405" Start="2705"/>
+    <Route Allegiance="JMen" End="1708" Start="1710"/>
+    <Route Allegiance="JMen" End="2008" Start="2210"/>
+    <Route Allegiance="JMen" End="2408" Start="2510"/>
+    <Route Allegiance="JMen" End="1710" Start="1911"/>
+    <Route Allegiance="JMen" End="1911" Start="2210"/>
+    <Route Allegiance="JMen" End="1911" Start="1613"/>
+    <Route Allegiance="JMen" End="2210" Start="2312"/>
+    <Route Allegiance="JMen" End="2210" Start="2510"/>
+    <Route Allegiance="JMen" End="1613" Start="1315"/>
+    <Route Allegiance="JMen" End="1613" Start="1915"/>
+    <Route Allegiance="JMen" End="1315" Start="1417"/>
+    <Route Allegiance="JMen" End="1915" Start="1917"/>
+    <Route Allegiance="JMen" End="1915" Start="2216"/>
+    <Route Allegiance="JMen" End="2216" Start="2615"/>
+    <Route Allegiance="JMen" End="2902" Start="2803"/>
+    <Route Allegiance="JMen" End="2803" Start="2705"/>
+    <Route Allegiance="JMen" End="2705" Start="3005"/>
+    <Route Allegiance="JMen" End="2510" Start="2909"/>
+    <Route Allegiance="JMen" End="2909" Start="3010"/>
+    <Route Allegiance="JMen" End="2510" Start="2612"/>
+    <Route Allegiance="JMen" End="2612" Start="2814"/>
+    <Route Allegiance="JMen" End="2814" Start="2615"/>
+
+    <Route Allegiance="JPSt" End="1732" Start="1634"/>
+    <Route Allegiance="JPSt" End="1634" Start="1337"/>
+    <Route Allegiance="JPSt" End="1634" Start="1836"/>
+    <Route Allegiance="JPSt" End="1337" Start="1539"/>
+
+    <Route Allegiance="JuRu" End="3236" Start="3337"/>
+    <Route Allegiance="JuRu" End="3233" Start="3334"/>
+    <Route Allegiance="JuRu" End="3239" Start="3241"/>
+    <Route Allegiance="JuRu" End="3233" Start="3236"/>
+    <Route Allegiance="JuRu" End="3236" Start="3239"/>
+    <Route Allegiance="JuRu" End="3040" Start="3239"/>
+
+    <Route Allegiance="JUkh" End="2334" Start="2435"/>
+    <Route Allegiance="JUkh" End="2435" Start="2634"/>
+    <Route Allegiance="JUkh" End="2435" Start="2539"/>
+    <Route Allegiance="JUkh" End="2539" Start="2639"/>
+    <Route Allegiance="JUkh" End="2634" Start="2734"/>
+    <Route Allegiance="JUkh" End="2634" Start="2835"/>
+  </Routes>
+</Sector>

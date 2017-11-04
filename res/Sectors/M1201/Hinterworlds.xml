@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<Sector Abbreviation="Hint" Tags="Unreviewed">
+  <Y>2</Y>
+  <X>2</X>
+  <Name>Hinterworlds</Name>
+  <Credits>
+    <![CDATA[
+
+             <b>Hinterworlds</b> sector was designed by Marc W. Miller
+             and appears in <cite>Atlas of the Imperium</cite> (GDW,
+             1984).
+
+             It was refined by Rob Caswell and Karl Johnson and
+             appears in <cite>Challenge Magazine</cite>.
+             
+             TNE data from http://www.downport.com/bard/bard/opal/opal10412.html and 
+             http://www.downport.com/bard/bard/opal/opal10413.html by Eamon Watters
+
+    ]]>
+  </Credits>
+  <DataFile Author="Rob Caswell and Karl Johnson" Source="http://www.downport.com/bard/bard/opal/opal10416.html" Milieu="M1201" Type="TabDelimited">Hinterworlds.tab</DataFile>
+  <Subsectors Source="Challenge #39">
+    <Subsector Index="A">Adar</Subsector>
+    <Subsector Index="B">Tlianke</Subsector>
+    <Subsector Index="C">Anubis</Subsector>
+    <Subsector Index="D">Pendiash Ginshar</Subsector>
+    <Subsector Index="E">Cimeon</Subsector>
+    <Subsector Index="F">Darvis</Subsector>
+    <Subsector Index="G">Cromar</Subsector>
+    <Subsector Index="H">Menere's Reach</Subsector>
+    <Subsector Index="I">Nullia</Subsector>
+    <Subsector Index="J">Bruia</Subsector>
+    <Subsector Index="K">Silver Laurel</Subsector>
+    <Subsector Index="L">Sontra</Subsector>
+    <Subsector Index="M">Hashi</Subsector>
+    <Subsector Index="N">Kandra</Subsector>
+    <Subsector Index="O">Tempri</Subsector>
+    <Subsector Index="P">Aquila</Subsector>
+  </Subsectors>
+  <Stylesheet>
+    border.Rp { color: purple; }
+    route.Rp { color: lightyellow; }
+  </Stylesheet>
+
+  <Allegiances>
+    <Allegiance Code="Wi">Wilds</Allegiance>
+    <Allegiance Code="">Barren</Allegiance>
+    <Allegiance Code="Rp">Ring Pact</Allegiance>
+  </Allegiances>
+
+  <Borders>
+    <Border Allegiance="Rp" Label="Ring Pact" WrapLabel="true">
+      1134 1133 1132 1231 1332 1432 1532 1531 1532 1632 1733 1633 1634 1635 
+      1536 1537 1538 1539 1538 1537 1436 1336 1235 1234 1134
+    </Border>
+  </Borders>
+  <Routes>
+
+  </Routes>
+</Sector>

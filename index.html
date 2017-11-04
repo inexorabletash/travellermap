@@ -1,12 +1,12 @@
 <!DOCTYPE html>
+<html lang="en">
 <title>Traveller Map</title>
 <meta charset="utf-8">
 <meta name="description"
-      content="The Traveller Map is a interactive map of the universe of the
-               Traveller role playing game, incorporating official data and fan
-               submissions. The site also provides services for generating custom
-               maps and Web APIs for incorporating maps into other sites.">
-
+      content="An interactive map of the universe of the Traveller role playing game,
+               incorporating official data and fan submissions. The site also provides
+               services for generating custom maps and APIs for incorporating maps
+               into other sites.">
 
 <link rel="shortcut icon" href="favicon.ico">
 <link rel="manifest" href="res/app/manifest.json">
@@ -25,28 +25,27 @@
 
 <link rel="alternate" type="application/atom+xml" title="Traveller Map News - Atom" href="https://travellermap.blogspot.com/feeds/posts/default">
 <link rel="alternate" type="application/rss+xml" title="Traveller Map News - RSS" href="https://travellermap.blogspot.com/feeds/posts/default?alt=rss">
-<link rel="canonical" href="http://travellermap.com">
+<link rel="canonical" href="https://travellermap.com">
 
 <!-- Facebook Open Graph -->
 <meta property="og:title" content="The Traveller Map">
 <meta property="og:type" content="website">
-<meta property="og:url" content="http://travellermap.com">
-<meta property="og:image" content="http://travellermap.com/res/app/fb.png">
+<meta property="og:url" content="https://travellermap.com">
+<meta property="og:image" content="https://travellermap.com/res/app/fb.png">
 <meta property="og:site_name" content="The Traveller Map">
 <meta property="fb:admins" content="617166358">
 
-<link rel="stylesheet" href="index.css?update=2016-09-16">
-<link rel="stylesheet" href="world.css?update=2016-09-09">
-<link rel="stylesheet" href="lib/add-to-home-screen/addtohomescreen.css">
+<link rel="stylesheet" href="world.css?update=2017-08-16T15:42:20">
+<link rel="stylesheet" href="index.css?update=2017-10-10T21:11:40">
 
-<!--[if lt IE 9]><script>alert("IE8 is no longer supported.");location = 'http://google.com/chrome';</script><![endif]-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
-<script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.25/polyfill.min.js"></script>
-<script src="map.js?update=2016-09-10"></script>
-<script src="index.js?update=2016-09-17"></script>
-<script src="world_util.js?update=2016-09-10"></script>
+<!--[if lt IE 10]><script>alert("IE9 is no longer supported.");</script><![endif]-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
+<script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.36/polyfill.min.js"></script>
+<script src="map.js?update=2017-10-10T21:32:43"></script>
+<script src="index.js?update=2017-10-11T19:57:42"></script>
+<script src="world_util.js?update=2017-08-16T15:42:20"></script>
 
-<body class="hide-ui hide-footer">
+<body class="hide-ui hide-footer ds-mini show-settings">
   <div id="mapContainer">
     <div id="dragContainer"
          tabindex="0"
@@ -58,41 +57,55 @@
   <div id="direction-spinward" class="direction">Spinward</div>
   <div id="direction-trailing" class="direction">Trailing</div>
 
-  <div id="searchBar" class="ui">
-    <form id="searchForm" action="get">
+  <div id="topBar" class="ui bar">
+    <form id="searchForm" action=".">
+      <input type="submit" style="visibility: hidden; position: absolute;">
       <input type="text"
              id="searchBox"
-             placeholder="Search for..."
+             placeholder="Search..."
              title="Search by world, subsector, sector or region name.&#x0A; &bull; * and ? as wildcards&#x0A; &bull; Use uwp: pbg: zone: alleg: or remark: to search data (e.g. uwp:A*)&#x0A; &bull; Use in: to search in a sector (e.g. uwp:*-F in:Deneb)&#x0A; &bull; Use like: for sounds-like matches&#x0A; &bull; Use exact: or &quot;quotes&quot; to find exact matches"
+
              disabled
              autocomplete="off"
              autocorrect="off"
              autocapitalize="none"
              spellcheck="false"
              >
-      <button id="searchBtn"
+      <button id="searchBtn" class=dim
               title="Search">
+      </button>
+      <button id="closeSearchBtn" class=dim
+              title="Close search">
       </button>
     </form>
 
-    <button id="closeResultsBtn"
-            title="Close search">
-    </button>
-
-    <button id="starBtn"
-            title="Points of interest">
-    </button>
-
     <button id="routeBtn"
+            class=bar-button
             title="Calculate a jump route between worlds">
     </button>
 
+  </div>
+  <div id=topBarRight class="ui bar">
+    <div class="bar-right">
+      <button id="homeBtn"
+              class=bar-button
+              title="Return to the default view&#x0A;Keyboard: H">
+      </button>
+      <button id="legendBtn"
+              class=bar-button
+              title="Map legend and symbols">
+      </button>
+      <button id="moreBtn"
+              class=bar-button
+              title="show options">
+      </button>
+    </div>
   </div>
 
   <div id="resultsBox"
        class="ui hoverbox hoverbox-left">
     <div id="resultsContainer"></div>
-    <p class="tip"><br><a target="_blank" href="doc/about#search">Search tips...</a></p>
+    <p class="tip"><br><a target=_blank rel=noopener href="doc/about#search">Search tips...</a></p>
     <script id="SearchResultsTemplate" type="text/x-handlebars-template">
       {{#Results.Items}}
       <div class="item">
@@ -150,37 +163,41 @@
 
   <div id="routeBox"
        class="ui hoverbox hoverbox-left">
-    <button id="closeRouteBtn"
-            title="Close route">
-    </button>
-    <form id="routeForm" action="get">
-      <div id="routeInputWrapper">
-        <input type="text"
-               name="start"
-               id="routeStart"
-               placeholder="Start (e.g. Regina)"
-               title="Route start location - world name, or &quot;Sector Hex&quot; e.g. &quot;Spinward Marches 1910&quot;"
-               autocomplete="off"
-               autocorrect="off"
-               autocapitalize="none"
-               spellcheck="false">
-        <br>
-        <input type="text"
-               name="end"
-               id="routeEnd"
-               placeholder="Destination (e.g. Capital)"
-               title="Route end location - world name, or &quot;Sector Hex&quot; e.g. &quot;Solomani Rim 1827&quot;"
-               autocomplete="off"
-               autocorrect="off"
-               autocapitalize="none"
-               spellcheck="false">
-      </div>
-      <button id="J-1" name="jump" title="Calculate a Jump-1 route">J-1</button>
-      <button id="J-2" name="jump" title="Calculate a Jump-2 route">J-2</button>
-      <button id="J-3" name="jump" title="Calculate a Jump-3 route">J-3</button>
-      <button id="J-4" name="jump" title="Calculate a Jump-4 route">J-4</button>
-      <button id="J-5" name="jump" title="Calculate a Jump-5 route">J-5</button>
-      <button id="J-6" name="jump" title="Calculate a Jump-6 route">J-6</button>
+    <form id="routeForm">
+      <input type="text"
+             name="start"
+             id="routeStart"
+             placeholder="Start (type or click map)"
+             title="Route start location - world name, or &quot;Sector Hex&quot; e.g. &quot;Spinward Marches 1910&quot;"
+             autocomplete="off"
+             autocorrect="off"
+             autocapitalize="none"
+             spellcheck="false">
+      <br>
+      <input type="text"
+             name="end"
+             id="routeEnd"
+             placeholder="Destination (type or click map)"
+             title="Route end location - world name, or &quot;Sector Hex&quot; e.g. &quot;Solomani Rim 1827&quot;"
+             autocomplete="off"
+             autocorrect="off"
+             autocapitalize="none"
+             spellcheck="false">
+      <button id="closeRouteBtn" class=dim
+              title="Close route">
+      </button>
+      <button id="swapRouteBtn" class=dim
+              title="Swap start/end">
+      </button>
+
+      <!--
+      --><button id="J-1" class=jump-button name=jump title="Calculate a Jump-1 route">J-1</button><!--
+      --><button id="J-2" class=jump-button name=jump title="Calculate a Jump-2 route">J-2</button><!--
+      --><button id="J-3" class=jump-button name=jump title="Calculate a Jump-3 route">J-3</button><!--
+      --><button id="J-4" class=jump-button name=jump title="Calculate a Jump-4 route">J-4</button><!--
+      --><button id="J-5" class=jump-button name=jump title="Calculate a Jump-5 route">J-5</button><!--
+      --><button id="J-6" class=jump-button name=jump title="Calculate a Jump-6 route">J-6</button>
+
       <div id="routeDisplay">
         <div id="routePath"></div>
         <div id="routeOptions">
@@ -198,6 +215,9 @@
     </form>
 
     <script id="RouteResultsTemplate" type="text/x-handlebars-template">
+      <span class="route-summary">
+        {{Distance}} parsecs &mdash; {{Jumps}} jumps
+      </span>
       {{#Route}}
       <div class="item">
         {{#Distance}}
@@ -209,96 +229,119 @@
         </div>
       </div>
       {{/Route}}
-      <span class="summary">{{Distance}} parsecs &mdash; {{Jumps}} jumps</span>
+      <span class="route-links">
+        <a target=_blank rel=noopener href="{{PrintURL}}">Print</a>
+      </span>
+
     </script>
     <script id="RouteErrorTemplate" type="text/x-handlebars-template">
       <div><i>{{Message}}</i></div>
     </script>
   </div>
 
-  <div id="optionsBar" class="ui">
-    <button id="homeBtn"
-            title="Return to the default view&#x0A;Keyboard: H">
-    </button>
-    <button id="shareBtn"
-            title="Share links to the map">
-    </button>
-    <button id="downloadBtn"
-            title="Download maps, data, and more">
-    </button>
-    <button id="legendBtn"
-            title="Map legend and symbols">
-    </button>
-    <button id="labBtn"
-            title="Experimental features">
-    </button>
-    <button id="settingsBtn"
-            title="Change the map appearance">
-    </button>
-    <button id="helpBtn"
-            title="Help, feedback, and more">
-    </button>
-  </div>
+  <div id=panel-shade></div>
+  <div id="moreBox"
+       class="ui"
+  >
+    <div id="more-tabs">
+      <button id="settingsBtn"
+              class=tab-button
+              title="Change the map appearance">
+      </button>
+      <button id="labBtn"
+              class=tab-button
+              title="Experimental features">
+      </button>
+      <button id="milieuBtn"
+              class=tab-button
+              title="Milieu">
+      </button>
+      <button id="shareBtn"
+              class=tab-button
+              title="Share links to the map">
+      </button>
+      <button id="helpBtn"
+              class=tab-button
+              title="Help, feedback, and more">
+      </button>
+    </div>
+    <button id=more-closebtn class="dim" title="Close"></button>
+    <div id="moreScroll">
 
-  <div id="settingsBox"
-       class="ui hoverbox hoverbox-right">
-    <section id="styles">
-      <button id="settingsBtn-poster"
-              title="Classic black background"
-              ></button>
-      <button id="settingsBtn-atlas"
-              title="Black on white"
-              ></button>
-      <button id="settingsBtn-print"
-              title="Printer friendly"
-              ></button>
-      <button id="settingsBtn-candy"
-              title="Eye candy"
-              ></button>
 
-      <button id="settingsBtn-draft"
-              style="display: none;"
-              title="Draft"
-              ></button>
-      <button id="settingsBtn-fasa"
-              style="display: none;"
-              title="FASA"
-              ></button>
+  <div id="settings-tab"
+       class="more-tab settings">
+    <section id="styles"><!--
+      --><button id="settingsBtn-poster"
+                 class="style-choice styles-p1"
+                 title="Classic black background"
+         ></button><!--
+      --><button id="settingsBtn-atlas"
+                 class="style-choice styles-p1"
+                 title="Black on white"
+         ></button><!--
+      --><button id="settingsBtn-print"
+                 class="style-choice styles-p1"
+                 title="Printer friendly"
+         ></button><!--
+      --><button id="settingsBtn-candy"
+                 class="style-choice styles-p1"
+                 title="Eye candy"
+         ></button><!--
+
+      --><button id="styles-p2" class="styles-p1 styles-pager dim chevron-right" title="More styles"></button><!--
+      --><button id="styles-p1" class="styles-p2 styles-pager dim chevron-left" title="More styles"></button><!--
+
+      --><button id="settingsBtn-draft"
+                 class="style-choice styles-p2"
+                 title="Draft"
+         ></button><!--
+      --><button id="settingsBtn-fasa"
+                 class="style-choice styles-p2"
+                 title="FASA"
+         ></button><!--
+      --><button id="settingsBtn-terminal"
+                 class="style-choice styles-p2"
+                 title="Terminal"
+         ></button>
     </section>
 
-    <section>
-      <p><strong>Show:</strong></p>
-      <div class="indent">
-        <p><label title="Show or hide the direction labels around the edge of the map"><input type="checkbox" id="cbGalDir"> Galactic Direction</label></p>
-        <p><label title="Show sector and subsector grid lines"><input type="checkbox" name="grid" value="true" id="ShowSectorGrid"> Sector Grid</label></p>
-        <p><label title="Show or hide sector and subsector names"><input type="checkbox" id="ShowSectorNames"> Sector Names</label></p>
-        <div class="indent">
-          <p><label title="Show only the names of selected sectors when zoomed out"><input type="radio" name="sector_names" id="ShowSelectedSectorNames" value="ShowSelectedSectorNames"> Selected</label></p>
-          <p><label title="Show the names of all sectors when zoomed out"><input type="radio" name="sector_names" id="ShowAllSectorNames" value="ShowAllSectorNames"> All</label></p>
+    <section id="settings-show">
+      <h3>Features</h3>
+      <div>
+        <div class=settings-item><input type="checkbox" id=cbGalDir><label for=cbGalDir title="Show or hide the direction labels around the edge of the map"> Galactic Direction</label></div>
+        <div class=settings-item><input type="checkbox" name="grid" value="true" id=ShowSectorGrid><label for=ShowSectorGrid title="Show sector and subsector grid lines"> Sector Grid</label></div>
+        <div class=settings-item><input type="checkbox" id=ShowSectorNames><label for=ShowSectorNames title="Show or hide sector and subsector names"> Sector Names</label>
+          <div class="indent">
+            <input type="radio" name="sector_names" id=ShowSelectedSectorNames value="ShowSelectedSectorNames"><label for=ShowSelectedSectorNames title="Show only the names of selected sectors when zoomed out"> Selected</label>
+            &nbsp; &nbsp;
+            <input type="radio" name="sector_names" id=ShowAllSectorNames value="ShowAllSectorNames"><label for=ShowAllSectorNames title="Show the names of all sectors when zoomed out"> All</label>
+          </div>
         </div>
-        <p><label title="Display political borders"><input type="checkbox" id="ShowGovernmentBorders"> Borders</label>
-        <p><label title="Display routes"><input type="checkbox" id="ShowRoutes"> Routes</label>
-        <p><label title="Display government and region names"><input type="checkbox" id="ShowGovernmentNames"> Region Names</label>
-        <p><label title="Show important worlds when zoomed out"><input type="checkbox" id="ShowImportantWorlds"> Important Worlds</label>
+        <div class=settings-item><input type="checkbox" id=ShowGovernmentBorders><label for=ShowGovernmentBorders title="Display political borders"> Borders</label></div>
+        <div class=settings-item><input type="checkbox" id=ShowRoutes><label for=ShowRoutes title="Display routes"> Routes</label></div>
+        <div class=settings-item><input type="checkbox" id=ShowGovernmentNames><label for=ShowGovernmentNames title="Display government and region names"> Region Names</label></div>
+        <div class=settings-item><input type="checkbox" id=ShowImportantWorlds><label for=ShowImportantWorlds title="Show important worlds when zoomed out"> Important Worlds</label></div>
       </div>
     </section>
 
     <section>
-      <p><strong>Appearance:</strong></p>
-      <div class="indent">
-        <p><label title="Always use hexagonal parsecs"><input type="checkbox" id="cbForceHexes"> Always Use Hexes</label>
-        <p><label title="Use more colors for world features"><input type="checkbox" id="cbWorldColors"> More World Colors</label>
-        <p><label title="Fill borders to make regions more visible"><input type="checkbox" id="cbFilledBorders"> Filled Borders</label>
-        <p><label title="Dim sectors that are not official Traveller 5 Sector Survey data"><input type="checkbox" id="cbDimUnofficial"> Dim Unofficial Data</label>
+      <h3>Appearance</h3>
+      <div>
+        <div class=settings-item><input type="checkbox" id=cbWorldColors><label for=cbWorldColors title="Use more colors for world features"> More World Colors</label></div>
+        <div class=settings-item><input type="checkbox" id=cbFilledBorders><label for=cbFilledBorders title="Fill borders to make regions more visible"> Filled Borders</label></div>
+        <div class=settings-item><input type="checkbox" id=cbDimUnofficial><label for=cbDimUnofficial title="Dim sectors that are not official Traveller 5 Sector Survey data"> Dim Unofficial Data</label></div>
       </div>
     </section>
 
     <section>
-      <p><strong>Options:</strong></p>
-      <div class="indent">
-        <p><label title="Remember your style and appearance settings for your next visit"><input type="checkbox" id="cbSavePreferences"> Save Preferences</label>
-        <p><label title="Remember your location for your next visit"><input type="checkbox" id="cbSaveLocation"> Save Location</label>
-        <p><label title="Enable experimental features"><input type="checkbox" id="cbExperiments"> Enable Experiments</label>
+      <h3>Options</h3>
+      <div>
+        <div class=settings-item><input type="checkbox" id=cbExperiments><label for=cbExperiments title="Enable experimental features"> Enable Experiments</label></div>
+      </div>
+      <div>
+        <br>
+        <p><a id=btnResetPrefs href="#" title="Reset all preferences to their initial value">Reset Preferences</a></p>
       </div>
     </section>
 
@@ -308,35 +351,130 @@
     </div>
   </div>
 
-  <div id="labBox"
-       class="ui hoverbox hoverbox-right">
+  <div id="milieu-tab"
+       class="more-tab settings">
     <section>
-      <p><strong>Milieu:</strong></p>
-      <div class="indent">
-        <p><label><input type="radio" name="milieu" value="IW"   > The Interstellar Wars</label></p>
-        <!--<p><label><input type="radio" name="milieu" value="M0"   > Milieu 0 - Early Imperium</label></p>-->
-        <p><label><input type="radio" name="milieu" value="M990" > 990 - Solomani Rim War</label></p>
-        <p><label><input type="radio" name="milieu" value=""     > 1105 - The Golden Age (default)</label></p>
-        <p><label><input type="radio" name="milieu" value="M1248"> 1248 - The New, New Era</label></p>
-        <p><label><input type="radio" name="milieu" value="M1900"> 1900 - The Far Far Future</label></p>
-      </div>
-    </section>
-
-    <section>
-      <p><strong>Overlays:</strong></p>
-      <div class="indent">
-        <p><label title="Highlight world importance"><input type="checkbox" id="cbImpOverlay"> Importance</label>
-        <p><label title="Highlight world population"><input type="checkbox" id="cbPopOverlay"> Population</label>
-        <p><label title="Highlight homeworlds of minor races"><input type="checkbox" id="cbMinorHomeworlds"> Minor Race Homeworlds</label>
-        <p><label title="Highlight worlds with Droyne (and Chirper) populations"><input type="checkbox" id="cbDroyneWorlds"> Droyne Worlds</label>
-        <p><label title="Highlight known Ancient sites"><input type="checkbox" id="cbAncientWorlds"> Ancient Sites</label>
-        <p><label title="Render stars rather than world details"><input type="checkbox" id="cbStellar"> Stellar</label>
+      <h3>Milieu</h3>
+      <div id=milieu-choices>
+        <div class=settings-item><input type="radio" name="milieu" value="IW"    id=mil-1><label for=mil-1> The Interstellar Wars</label></div>
+        <div class=settings-item><input type="radio" name="milieu" value="M0"    id=mil-2><label for=mil-2> Milieu 0 &ndash; Early Imperium</label></div>
+        <div class=settings-item><input type="radio" name="milieu" value="M990"  id=mil-3><label for=mil-3> 990 &ndash; Solomani Rim War</label></div>
+        <div class=settings-item><input type="radio" name="milieu" value="M1105" id=mil-4><label for=mil-4> 1105 &ndash; The Golden Age <b>(default)</b></label></div>
+        <div class=settings-item><input type="radio" name="milieu" value="M1120" id=mil-5><label for=mil-5> 1120 &ndash; The Rebellion</label></div>
+        <div class=settings-item><input type="radio" name="milieu" value="M1201" id=mil-6><label for=mil-6> 1201 &ndash; The New Era</label></div>
+        <div class=settings-item><input type="radio" name="milieu" value="M1248" id=mil-7><label for=mil-7> 1248 &ndash; The New, New Era</label></div>
+        <div class=settings-item><input type="radio" name="milieu" value="M1900" id=mil-8><label for=mil-8> 1900 &ndash; The Far Far Future</label></div>
       </div>
     </section>
   </div>
 
+  <div id="lab-tab"
+       class="more-tab settings">
+    <section>
+      <h3>Overlays</h3>
+      <div id=overlays>
+        <div class=settings-item><input type="checkbox" id=cbImpOverlay><label for=cbImpOverlay title="Highlight world importance"> Importance</label></div>
+        <div class=settings-item><input type="checkbox" id=cbPopOverlay><label for=cbPopOverlay title="Highlight world population"> Population</label></div>
+        <div class=settings-item><input type="checkbox" id=cbCapitalOverlay><label for=cbCapitalOverlay title="Highlight capitals/candidates"> Capitals/Candidates</label></div>
+        <div class=settings-item><input type="checkbox" id=cbMinorHomeworlds><label for=cbMinorHomeworlds title="Highlight homeworlds of minor races"> Minor Race Homeworlds</label></div>
+        <div class=settings-item><input type="checkbox" id=cbDroyneWorlds><label for=cbDroyneWorlds title="Highlight worlds with Droyne (and Chirper) populations"> Droyne Worlds</label></div>
+        <div class=settings-item><input type="checkbox" id=cbAncientWorlds><label for=cbAncientWorlds title="Highlight known Ancient sites"> Ancient Sites</label></div>
+        <div class=settings-item><input type="checkbox" id=cbStellar><label for=cbStellar title="Render stars rather than world details"> Stellar</label></div>
+        <div class=settings-item><input type="checkbox" id=cbWave><label for=cbWave title="Show position of the Empress Wave"> Empress Wave</label></div>
+        <div class=settings-item><input type="checkbox" id=cbQZ><label for=cbQZ title="Show position of the Qrekrsha Zone"> Qrekrsha Zone</label></div>
+        <div class=settings-item><input type="checkbox" id=cbMains><label for=cbMains title="Highlight Jump-1 Mains"> Mains</label></div>
+      </div>
+    </section>
+  </div>
+
+  <div id="help-tab"
+       class="more-tab">
+
+   <section>
+      <h3>Traveller</h3>
+      <p><a target=_blank rel=noopener href="http://traveller5.net">Traveller &amp; Far Future Enterprises</a></p>
+      <p><a target=_blank rel=noopener href="http://travellerrpg.com/">Citizens of the Imperium Forum</a></p>
+      <p><a target=_blank rel=noopener href="http://wiki.travellerrpg.com/">The Traveller Wiki</a></p>
+      <p><a target=_blank rel=noopener href="http://www.mongoosepublishing.com/rpgs/traveller-1.html">Mongoose Publishing</a>
+        &bull; <a target=_blank rel=noopener href="http://forum.mongoosepublishing.com/viewforum.php?f=89">Forum</a></p>
+    </section>
+
+    <section>
+      <h3>The Traveller Map</h3>
+      <p><a target=_blank rel=noopener href="doc/about">About the Traveller Map</a></p>
+      <p><a target=_blank rel=noopener href="doc/credits">Credits and Data Sources</a></p>
+      <p>
+        <a target=_blank rel=noopener href="https://travellermap.blogspot.com/">News &amp; Feedback</a>
+        &bull;
+        <a target=_blank rel=noopener href="https://trello.com/b/y61wmEKJ/travellermap-com-wish-list">Wish List</a>
+      </p>
+
+    </section>
+
+    <section id="help-tools">
+      <h3>Players &amp; Referees</h3>
+      <p><a target=_blank rel=noopener href="doc/secondsurvey">About Second Survey Data</a></p>
+      <p>
+        <a target=_blank rel=noopener href="make/booklet">Booklet Maker</a> &bull;
+        <a target=_blank rel=noopener href="make/poster">Poster Maker</a>
+      </p>
+      <p>
+        <a target=_blank rel=noopener href="doc/custom">Custom Data</a> &bull;
+        <a target=_blank rel=noopener href="doc/submit">Submissions</a>
+      </p>
+    </section>
+
+    <section id="help-developers">
+      <h3>Developers</h3>
+      <p><a target=_blank rel=noopener href="doc/api">Explore the API</a></p>
+      <p><a target=_blank rel=noopener href="https://github.com/inexorabletash/travellermap">Get the source code</a></p>
+    </section>
+
+  </div>
+
+  <div id="share-tab"
+       class="more-tab">
+
+    <section>
+      <a id="download-snapshot" target=_blank rel=noopener href="#" download="TravellerMapSnapshot">Save Snapshot</a>
+      (<a id="download-snapshot-pdf" target=_blank rel=noopener href="#">or PDF</a>)
+    </section>
+
+    <section>
+      <a href="https://twitter.com/share" class="twitter-share-button" data-via="inexorabletash" data-size="large">Tweet</a>
+    </section>
+
+    <section>
+      <div class="g-plusone" data-size="tall" data-annotation="inline" data-width="260"></div>
+    </section>
+
+    <section class="fb">
+      <div class="fb-like" data-href="https://travellermap.com" data-width="260" data-layout="standard" data-action="like" data-size="small" data-show-faces="false" data-share="true"></div>
+    </section>
+
+    <section>
+      <a target=_blank rel=noopener href="//www.tumblr.com/share" title="Share on Tumblr" style="display:inline-block; text-indent:-9999px; overflow:hidden; width:129px; height:20px; background:url('//platform.tumblr.com/v1/share_3.png') top left no-repeat transparent;">Share on Tumblr</a>
+    </section>
+
+    <section>
+      Share this link:
+      <input readonly id="share-url" title="Copy and paste">
+    </section>
+
+    <section id="share-embed">
+      Embed this HTML:
+      <input readonly id="share-code" title="Copy and paste">
+    </section>
+  </div>
+
+
+  </div>
+  </div>
+
   <div id="legendBox"
        class="ui hoverbox hoverbox-right">
+    <button id=legend-closebtn class="dim" title="Close"></button>
+    <div id="legendBoxContent">
     <section>
       <h2>Map Legend</h2><br>
       <div id="image1"></div>
@@ -344,22 +482,19 @@
     </section>
     <section id="world_colors">
       <h2>World<br>Characteristics</h2><br>
-      <ul class="basic_world_colors">
-        <li><span class="glyph nowater">&#x25CF;</span> No Water Present
+      <ul>
+        <li class=extended-only><span class="glyph RiAg">&#x25CF;</span> Rich &amp; Agricultural
+        <li class=extended-only><span class="glyph Ag">&#x25CF;</span> Agricultural
+        <li class=extended-only><span class="glyph Ri">&#x25CF;</span> Rich
+        <li class=extended-only><span class="glyph In">&#x25CF;</span> Industrial
+        <li class=extended-only><span class="glyph corrosive">&#x25CF;</span> Corrosive/Insidious
+        <li class=extended-only><span class="glyph Va">&#x25CF;</span> Vacuum
+
         <li><span class="glyph water">&#x25CF;</span> Water Present
+        <li><span class="glyph nowater">&#x25CF;</span> No Water Present
         <li><span class="glyph g12">:::</span> Asteroid Belt
         <li><span class="glyph">&#x2217;</span> Unknown
-      </ul>
-      <ul class="extended_world_colors">
-        <li><span class="glyph RiAg">&#x25CF;</span> Rich &amp; Agricultural
-        <li><span class="glyph Ag">&#x25CF;</span> Agricultural
-        <li><span class="glyph Ri">&#x25CF;</span> Rich
-        <li><span class="glyph In">&#x25CF;</span> Industrial
-        <li><span class="glyph corrosive">&#x25CF;</span> Corrosive/Insidious
-        <li><span class="glyph Va">&#x25CF;</span> Vacuum
-        <li><span class="glyph water">&#x25CF;</span> Water Present
-        <li><span class="glyph nowater">&#x25CF;</span> No Water Present
-        <li><span class="glyph g12">:::</span> Asteroid Belt
+        <li><span class="glyph highlight">&#x2316;</span> Anomaly
       </ul>
     </section>
     <section id="bases">
@@ -401,165 +536,57 @@
         <li><span class="highlight">Highlighted</span> world names<br>are subsector capitals.
       </ul>
     </section>
+    </div>
   </div>
 
-  <div id="helpBox"
-       class="ui hoverbox hoverbox-right">
-
-   <section>
-      <h3>Traveller</h3>
-      <p><a target="_blank" href="http://farfuture.net">Far Future Enterprises</a></p>
-      <p><a target="_blank" href="http://travellerrpg.com/">Citizens of the Imperium Forum</a></p>
-      <p><a target="_blank" href="http://www.mongoosepublishing.com/rpgs/traveller.html">Mongoose Publishing</a>
-        &bull; <a target="_blank" href="http://forum.mongoosepublishing.com/viewforum.php?f=89">Forum</a></p>
-    </section>
-
-    <section>
-      <h3>The Traveller Map</h3>
-      <p><a target="_blank" href="doc/about">About the Traveller Map</a></p>
-      <p><a target="_blank" href="doc/credits">Credits and Data Sources</a></p>
-      <p>
-        <a target="_blank" href="https://travellermap.blogspot.com/">News &amp; Feedback</a>
-        &bull;
-        <a target="_blank" href="https://trello.com/b/y61wmEKJ/travellermap-com-wish-list">Wish List</a>
-      </p>
-
-    </section>
-
-    <section>
-      <h3>Players &amp; Referees</h3>
-      <p><a target="_blank" href="doc/secondsurvey">About Second Survey Data</a></p>
-      <p>
-        <a target="_blank" href="make/booklet">Booklet Maker</a> &bull;
-        <a target="_blank" href="make/poster">Poster Maker</a>
-      </p>
-      <p>
-        <a target="_blank" href="doc/custom">Custom Data</a> &bull;
-        <a target="_blank" href="doc/submit">Submissions</a>
-      </p>
-    </section>
-
-    <section>
-      <h3>Developers</h3>
-      <p><a target="_blank" href="doc/api">Explore the API</a></p>
-      <p><a target="_blank" href="https://github.com/inexorabletash/travellermap">Get the source code</a></p>
-    </section>
-
-  </div>
-
-  <div id="shareBox"
-       class="ui hoverbox hoverbox-right">
-    <section>
-      <a href="https://twitter.com/share" class="twitter-share-button" data-via="inexorabletash" data-size="large">Tweet</a>
-    </section>
-
-    <section>
-      <div class="g-plusone" data-size="tall" data-annotation="inline" data-width="240">+1</div>
-    </section>
-
-    <section class="fb">
-      <div class="fb-like" data-href="http://travellermap.com" data-width="200" data-colorscheme="dark" data-layout="standard" data-action="like" data-show-faces="false">Like</div>
-    </section>
-
-    <section>
-      <a target="_blank" href="//www.tumblr.com/share" title="Share on Tumblr" style="display:inline-block; text-indent:-9999px; overflow:hidden; width:129px; height:20px; background:url('//platform.tumblr.com/v1/share_3.png') top left no-repeat transparent;">Share on Tumblr</a>
-    </section>
-
-    <section>
-      Share this link:
-      <input readonly id="share-url" title="Copy and paste">
-    </section>
-
-    <section>
-      Embed this HTML:
-      <input readonly id="share-embed" title="Copy and paste">
-    </section>
-
-  </div>
-
-  <div id="downloadBox"
-       class="ui hoverbox hoverbox-right">
-    <section>
-      <a id="download-snapshot" target="_blank" href="#" download="TravellerMapSnapshot">Save Snapshot</a>
-      (<a id="download-snapshot-pdf" target="_blank" href="#">or PDF</a>)
-    </section>
-
-    <section class="inactive-content">
-      Click on the map to select a sector for more options.
-    </section>
-
-    <section class="active-content">
-      <h3 id="sector-name"></h3>
-      <ul>
-        <li>
-          <a id="download-booklet" target="_blank" href="#">Printable Booklet</a>
-        </li>
-        <li>
-          <a id="download-poster" target="_blank" href="#">Sector Poster</a>
-        </li>
-        <li>
-          <a id="download-data" target="_blank" href="#">Raw Sector Data</a>
-        </li>
-
-        <li class="world-content">
-          <a id="world-data-sheet" target="world-data-sheet" href="#">World Data Sheet</a>
-        </li>
-
-        <li class="world-content">
-          <a id="world-jump-map-1" target="_blank" href="#">J-1</a> &bull;
-          <a id="world-jump-map-2" target="_blank" href="#">J-2</a> &bull;
-          <a id="world-jump-map-3" target="_blank" href="#">J-3</a> &bull;
-          <a id="world-jump-map-4" target="_blank" href="#">J-4</a> &bull;
-          <a id="world-jump-map-5" target="_blank" href="#">J-5</a> &bull;
-          <a id="world-jump-map-6" target="_blank" href="#">J-6</a>
-        </li>
-
-      </ul>
-    </section>
-
-  </div>
 
   <div id="navBar"
-       class="ui">
-    <canvas id="scaleIndicator" width="120" height="30">
-    </canvas>
-    <button id="zoomInBtn"
-            title="Zoom in&#x0A;Keyboard: +">
-    </button>
-    <button id="zoomOutBtn"
+       class="ui bar">
+    <div class="bar-right">
+      <canvas id="scaleIndicator"
+              title="Scale"
+              width="120" height="30">
+      </canvas>
+      <button id="zoomInBtn"
+              class=bar-button
+              title="Zoom in&#x0A;Keyboard: +">
+      </button>
+      <button id="zoomOutBtn"
+              class=bar-button
             title="Zoom out&#x0A;Keyboard: -">
-    </button>
-    <button id="tiltBtn"
-            title="Tilt&#x0A;Keyboard: T">
-    </button>
+      </button>
+      <button id="tiltBtn"
+              class=bar-button
+              title="Tilt&#x0A;Keyboard: T">
+      </button>
+    </div>
   </div>
 
   <div id="bottom-pane"
        class="ui">
-    <hr id="stripe">
+    <div id="stripe"></div>
     <div id="LogoImage" title="Traveller&reg; - Science Fiction Adventure in the Far Future">&nbsp;</div>
 
     <div id="MetadataDisplay">
       <div class="credits">
         The Traveller game in all forms is owned by
-        <a target="_blank" href="http://farfuture.net">Far Future Enterprises</a>.
-        Copyright &copy; 1977 &ndash; 2016 Far Future Enterprises.
+        <a target=_blank rel=noopener href="http://farfuture.net">Far Future Enterprises</a>.
+        Copyright <span class=copyright>&copy;</span> 1977 &ndash; 2017 Far Future Enterprises.
       </div>
       <div id="promo"><br>
-        In memoriam: Donald McKinney, 1967 - 2015
+        Celebrate Traveller's 40th Anniversary: 1977 &ndash; 2017
       </div>
     </div>
     <script id="MetadataTemplate" type="text/x-handlebars-template">
       <div>
         {{SectorName}}
-        {{#SectorEra}}(circa {{.}}){{/SectorEra}}
       </div>
       <div class="credits">
         {{Attribution}}
 
-        {{#SectorRef}}&mdash; <a target="_blank" href="{{.}}">Source</a>{{/SectorRef}}
+        {{#SectorRef}}&mdash; <a target=_blank rel=noopener href="{{.}}">Source</a>{{/SectorRef}}
         {{#ProductRef}}
-          &mdash; <a title="Publisher's Catalog" target="_blank" href="{{.}}">
+          &mdash; <a title="Publisher's Catalog" target=_blank rel=noopener href="{{.}}">
           {{../ProductTitle}}
           {{#../ProductAuthor}} by {{.}}{{/../ProductAuthor}}
           ({{../ProductPublisher}})</a>
@@ -567,32 +594,32 @@
       </div>
       <div class="metadata-status">
         {{#Official}}
-          <a class="official" target="_blank"
+          <a class="official" target=_blank rel=noopener
             title="Sector data has been approved by the Traveller 5 Second Survey"
             href="doc/credits#official"><span class="bar">&#x25AC;</span> Official <span class="bar">&#x25AC;</span></a>
         {{/Official}}
         {{#InReview}}
-          <a class="inreview" target="_blank"
+          <a class="inreview" target=_blank rel=noopener
             title="Sector data is being reviewed by the Traveller 5 Second Survey"
             href="doc/credits#inreview"><span class="bar">&#x25AC;</span> In Review <span class="bar">&#x25AC;</span></a>
         {{/InReview}}
         {{#Unreviewed}}
-          <a class="unreviewed" target="_blank"
+          <a class="unreviewed" target=_blank rel=noopener
             title="Sector data has not yet been reviewed by the Traveller 5 Second Survey"
             href="doc/credits#unreviewed"><span class="bar">&#x25AC;</span> Unreviewed <span class="bar">&#x25AC;</span></a>
         {{/Unreviewed}}
         {{#Preserve}}
-          <a class="preserve" target="_blank"
+          <a class="preserve" target=_blank rel=noopener
             title="This sector is set aside as a Referee's Preserve - the presented data is an example"
             href="doc/credits#preserve"><span class="bar">&#x25AC;</span> Preserve <span class="bar">&#x25AC;</span></a>
         {{/Preserve}}
         {{#Apocryphal}}
-          <a class="apocryphal" target="_blank"
+          <a class="apocryphal" target=_blank rel=noopener
             title="Sector data is apocryphal - no longer considered official"
             href="doc/credits#apocryphal"><span class="bar">&#x25AC;</span> Apocryphal <span class="bar">&#x25AC;</span></a>
         {{/Apocryphal}}
         {{#Unofficial}}
-          <a class="unofficial" target="_blank"
+          <a class="unofficial" target=_blank rel=noopener
             title="Sector data is unofficial"
             href="doc/credits#unofficial"><span class="bar">&#x25AC;</span> Unofficial <span class="bar">&#x25AC;</span></a>
         {{/Unofficial}}
@@ -603,44 +630,137 @@
     </script>
   </div>
 
-  <div id=wds-frame class=wds-mini>
-    <canvas id=wds-world-image width=200 height=200></canvas>
-    <button id=wds-closebtn></button>
-    <div id=wds-world-data></div>
+  <div id=sds-frame class=ds-frame>
+    <div id=sds-scroll class=ds-scroll>
+      <div id=sds-data></div>
+    </div>
+    <button id=sds-closebtn class="ds-closebtn dim" title="Close"></button>
   </div>
 
-<script id=wds-world-template type="text/x-handlebars-template">
+  <script id=sds-template type="text/x-handlebars-template">
+      <div class=sds-sectorname>
+        {{SectorName}}
+        <small>({{SectorX}},{{SectorY}})</small>
+      </div>
+
+      <div class="ds-wiki-link sds-wiki-link">
+        <a target=_blank rel=noopener href="{{SectorWikiURL}}">{{SectorWikiURLNoScheme}}</a>
+      </div>
+
+      <div id=sds-print-links class=ds-print-links>
+        <a id=sds-booklet target=_blank rel=noopener href="{{BookletURL}}">Booklet</a>
+        &bull;
+        <a id=sds-poster target=_blank rel=noopener href="{{PosterURL}}">Poster</a>
+        &bull;
+        <a id=sds-data target=_blank rel=noopener href="{{DataURL}}">Raw Data</a>
+      </div>
+
+      <div class=sds-status>
+        {{#Official}}
+          <a class="official" target=_blank rel=noopener
+            title="Sector data has been approved by the Traveller 5 Second Survey"
+            href="doc/credits#official"><span class="bar">&#x25AC;</span> Official <span class="bar">&#x25AC;</span></a>
+        {{/Official}}
+        {{#InReview}}
+          <a class="inreview" target=_blank rel=noopener
+            title="Sector data is being reviewed by the Traveller 5 Second Survey"
+            href="doc/credits#inreview"><span class="bar">&#x25AC;</span> In Review <span class="bar">&#x25AC;</span></a>
+        {{/InReview}}
+        {{#Unreviewed}}
+          <a class="unreviewed" target=_blank rel=noopener
+            title="Sector data has not yet been reviewed by the Traveller 5 Second Survey"
+            href="doc/credits#unreviewed"><span class="bar">&#x25AC;</span> Unreviewed <span class="bar">&#x25AC;</span></a>
+        {{/Unreviewed}}
+        {{#Preserve}}
+          <a class="preserve" target=_blank rel=noopener
+            title="This sector is set aside as a Referee's Preserve - the presented data is an example"
+            href="doc/credits#preserve"><span class="bar">&#x25AC;</span> Preserve <span class="bar">&#x25AC;</span></a>
+        {{/Preserve}}
+        {{#Apocryphal}}
+          <a class="apocryphal" target=_blank rel=noopener
+            title="Sector data is apocryphal - no longer considered official"
+            href="doc/credits#apocryphal"><span class="bar">&#x25AC;</span> Apocryphal <span class="bar">&#x25AC;</span></a>
+        {{/Apocryphal}}
+        {{#Unofficial}}
+          <a class="unofficial" target=_blank rel=noopener
+            title="Sector data is unofficial"
+            href="doc/credits#unofficial"><span class="bar">&#x25AC;</span> Unofficial <span class="bar">&#x25AC;</span></a>
+        {{/Unofficial}}
+        {{#Unmapped}}
+          &nbsp;
+        {{/Unmapped}}
+      </div>
+
+      <div class="ds-mini-toggle dim"></div>
+
+      <div class=ds-mini-hidden>
+
+      <div class="ds-credits">
+      {{#if Credits}}
+        {{{Credits}}}
+      {{else}}
+        {{Attribution}}
+      {{/if}}
+      </div>
+
+      {{#SectorRef}}
+      <div>
+        <a target=_blank rel=noopener href="{{.}}">{{.}}</a>
+      </div>
+      {{/SectorRef}}
+
+      {{#ProductRef}}
+      <div>
+        <p>
+          <a target=_blank rel=noopener href="{{.}}"><cite>{{../ProductTitle}}</cite></a>
+        </p>
+        {{#../ProductAuthor}} <p>{{.}}</p> {{/../ProductAuthor}}
+        <p>{{../ProductPublisher}}</p>
+      </div>
+      {{/ProductRef}}
+
+  </script>
+
+  <div id=ds-shade></div>
+  <div id=wds-frame class=ds-frame>
+    <div id=wds-scroll class=ds-scroll>
+      <canvas id=wds-world-image width=200 height=200></canvas>
+      <div id=wds-data></div>
+    </div>
+    <div id=wds-spinner></div>
+    <button id=wds-closebtn class="ds-closebtn dim" title="Close"></button>
+  </div>
+
+<script id=wds-template type="text/x-handlebars-template">
 
 <div class=wds-names>
-<div class=wds-worldname>
+  <div class=wds-worldname>{{#if Name}}{{Name}}{{else}}(Unnamed){{/if}}</div>
+  {{#if SubsectorName}}
+    <div class=wds-ssname>{{SubsectorName}} Subsector</div>
+  {{/if}}
+  <div class=wds-sectorhex>{{Sector}} {{Hex}}</div>
+</div>
+
+<div class="ds-wiki-link wds-wiki-link">
 {{#if Name}}
-  <a target=wiki href="{{world_url}}">{{Name}}</a>
-{{else}}
-  (Unnamed)
+  <a style="text-decoration: underline;" target=_blank rel=noopener href="{{world_url}}">{{world_url_noscheme}}</a>
 {{/if}}
 </div>
 
-{{#if SubsectorName}}
-<div class=wds-ssname><a target=wiki href="{{ss_url}}">{{SubsectorName}} Subsector</a></div>
-{{/if}}
+<div class="ds-mini-toggle dim"></div>
 
-<div class=wds-sectorhex><a target=wiki href="{{sector_url}}">{{Sector}}</a> {{Hex}}</div>
-
-<div style="font-size: 10px; margin-top: 8px">Wiki:
-{{#if Name}}
-  <a target=wiki href="{{world_url}}">World</a> &ndash;
-{{/if}}
-{{#if SubsectorName}}
-  <a target=wiki href="{{ss_url}}">Subsector</a> &ndash;
-{{/if}}
-  <a target=wiki href="{{sector_url}}">Sector</a>
-</div>
-
-</div>
-
-<div id=wds-mini-toggle></div>
-
+<div class=ds-mini-hidden>
 <table class=wds-properties>
+{{#if map_thumb}}
+<tbody>
+<tr>
+<td colspan=3 style="text-align: center;">
+<img id=wds-map src="{{map_thumb}}" style="width: 272px; height: auto; border: 2px solid black;">
+</td>
+</tr>
+</tbody>
+{{/if}}
+
 {{#if AllegianceName}}
 <tbody>
 <tr class=wds-deets>
@@ -759,7 +879,18 @@
 {{/Zone}}
 </table>
 
-<a id="wds-print-link" target="world-data-sheet" href="#">Printable Data Sheet</a>
+<div id="wds-print-links" class=ds-print-links>
+  <a target=_blank rel=noopener href="{{DataSheetURL}}">Print</a>
+  <br><br>
+  <a target=_blank rel=noopener href="{{JumpMapURL}}&jump=1">J-1</a> &bull;
+  <a target=_blank rel=noopener href="{{JumpMapURL}}&jump=2">J-2</a> &bull;
+  <a target=_blank rel=noopener href="{{JumpMapURL}}&jump=3">J-3</a> &bull;
+  <a target=_blank rel=noopener href="{{JumpMapURL}}&jump=4">J-4</a> &bull;
+  <a target=_blank rel=noopener href="{{JumpMapURL}}&jump=5">J-5</a> &bull;
+  <a target=_blank rel=noopener href="{{JumpMapURL}}&jump=6">J-6</a>
+</div>
+
+</div>
 
 </script>
 
@@ -772,30 +903,38 @@
   <script>
   window.initSharingLinks = Util.once(function() {
     // Twitter
-    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+    window.twttr = (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0],
+          t = window.twttr || {};
+      if (d.getElementById(id)) return t;
+      js = d.createElement(s);
+      js.id = id;
+      js.src = "https://platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js, fjs);
+
+      t._e = [];
+      t.ready = function(f) {
+        t._e.push(f);
+      };
+
+      return t;
+    }(document, "script", "twitter-wjs"));
 
     // Google+
-    (function() {
-      var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-      po.src = 'https://apis.google.com/js/plusone.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-    })();
+    gapi.plusone.go();
 
     // Facebook
     (function(d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) return;
       js = d.createElement(s); js.id = id;
-      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=259977877486558&version=v2.0";
+      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10&appId=259977877486558";
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
   });
   </script>
 
-  <script src="lib/add-to-home-screen/addtohomescreen.min.js"></script>
-  <script>
-    if (window == window.top && 'addToHomeScreen' in window) // Skip if in iframe, == for IE
-      addToHomescreen({skipFirstVisit: true, maxDisplayCount: 1});
-  </script>
+  <script src="https://apis.google.com/js/platform.js" async defer>{parsetags: 'explicit'}</script>
 
 </body>
+</html>

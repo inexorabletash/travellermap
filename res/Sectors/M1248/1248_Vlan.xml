@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<Sector xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>Vland</Name>
+  <Credits>
+
+             &lt;b&gt;Vland&lt;/b&gt; sector was designed by Marc W. Miller and
+             appears in &lt;cite&gt;Atlas of the Imperium&lt;/cite&gt; (GDW,
+             1984).
+
+             It was refined by Joe D. Fugate Sr. and appears in
+             &lt;cite&gt;The Travellers Digest&lt;/cite&gt; and &lt;cite&gt;The
+             MegaTraveller Alien, Volume 1: Vilani &amp;amp; Vargr&lt;/cite&gt;
+             (DGP, 1990)
+
+             &lt;b&gt;Vland&lt;/b&gt; sector 1248 borders designed by Shane MacLean,
+             Eric O’Dell and Michael Taylor and appears in  &lt;cite&gt;1248 Sourcebook 1: Out of
+             Darkness&lt;/cite&gt;(ComStar Media/Avenger Enterprises, 2006).
+
+  </Credits>
+  <Product Author="Martin J. Dougherty" Title="1248 Sourcebook 1: Out of Darkness" Publisher="Avenger Enterprises in association with Comstar Media, LLC." Ref="http://www.farfuture.net/Contents%20CDROM%20TNE-2.pdf"/>
+  <Subsectors>
+    <Subsector Index="A"></Subsector>
+    <Subsector Index="B"></Subsector>
+    <Subsector Index="C"></Subsector>
+    <Subsector Index="D"></Subsector>
+    <Subsector Index="E"></Subsector>
+    <Subsector Index="F"></Subsector>
+    <Subsector Index="G"></Subsector>
+    <Subsector Index="H"></Subsector>
+    <Subsector Index="I"></Subsector>
+    <Subsector Index="J"></Subsector>
+    <Subsector Index="K"></Subsector>
+    <Subsector Index="L"></Subsector>
+    <Subsector Index="M"></Subsector>
+    <Subsector Index="N"></Subsector>
+    <Subsector Index="O"></Subsector>
+    <Subsector Index="P"></Subsector>
+  </Subsectors>
+  <Allegiances>
+    <Allegiance Code="Zs">New Ziru Sirka</Allegiance>
+  </Allegiances>
+  <Stylesheet>
+    route.Xboat { color: green; }
+  </Stylesheet>
+  <Borders>
+    <Border Color="#FFF100" Allegiance="Zs" LabelPosition="1823">0002 0103 0203 0304 0404 0505 0605 0706 0806 0906 1006 1107 1206 1306 1405 1505 1604 1704 1803 1903 1904 2004 2105 2205 2306 2406 2507 2607 2707 2806 2906 3005 3105 3204 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3222 3122 3022 2922 2822 2723 2622 2523 2423 2424 2425 2526 2527 2627 2728 2729 2829 2930 3030 3131 3231 3332 3333 3334 3335 3336 3337 3338 3339 3340 3239 3139 3039 3040 3141 3041 2941 2840 2741 2641 2541 2441 2341 2241 2141 2041 2040 1940 1840 1841 1840 1839 1739 1639 1539 1438 1338 1237 1137 1036 0936 0835 0735 0635 0535 0435 0434 0433 0333 0232 0132 0031 0131 0231 0332 0431 0531 0631 0732 0831 0932 1031 1131 1231 1331 1430 1530 1629 1628 1627 1626 1625 1624 1524 1423 1323 1422 1522 1621 1620 1619 1618 1518 1418 1319 1219 1119 1118 1117 1116 1115 1114 1113 1012 0912 0811 0711 0610 0510 0410 0311 0211 0210 0110 0009 0008 0007 0006 0005 0004 0003</Border>
+  </Borders>
+  <Routes>
+    <Route Start="2440" End="2442" Type="Xboat"/>
+  </Routes>
+</Sector>

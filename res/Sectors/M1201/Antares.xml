@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<Sector Abbreviation="Anta" Tags="Unreviewed">
+  <Y>-1</Y>
+  <X>1</X>
+  <Name>Antares</Name>
+  <Name Lang="vi">Mikasirka</Name>
+  <Credits>
+    <![CDATA[
+
+             <b>Antares</b> sector was designed by Marc W. Miller and
+             appears in <cite>Atlas of the Imperium</cite> (GDW,
+             1984).
+             
+             Adapted from details CARI (http://www.downport.com/bard/bard/cari/cari9009.html) 
+             and collapsed by Mark Humphreys
+
+    ]]>
+  </Credits>
+  <DataFile Milieu="M1201" Type="TabDelimited">Antares.tab</DataFile>
+  <Subsectors>
+    <Subsector Index="A" Source="Challenge #49">Pelusium</Subsector>
+    <Subsector Index="B" Source="Challenge #49">Ninik</Subsector>
+    <Subsector Index="C" Source="Challenge #49">Dartho</Subsector>
+    <Subsector Index="D" Source="Challenge #49">Oulduktak</Subsector>
+    <Subsector Index="E" Source="Challenge #69">Shurlarlem</Subsector>
+    <Subsector Index="F" Source="The Zhodani Base">Sarar</Subsector>
+    <Subsector Index="G" Source="The Zhodani Base">Gimgir</Subsector>
+    <Subsector Index="H" Source="The Zhodani Base">Kiirkandin</Subsector>
+    <Subsector Index="I" Source="The Zhodani Base">Urunishu</Subsector>
+    <Subsector Index="J" Source="The Zhodani Base">Uradnim</Subsector>
+    <Subsector Index="K" Source="The Zhodani Base">Antares</Subsector>
+    <Subsector Index="L" Source="The Zhodani Base">Mukusi</Subsector>
+    <Subsector Index="M" Source="The Zhodani Base">Urgusap</Subsector>
+    <Subsector Index="N" Source="The Zhodani Base">Gaakish</Subsector>
+    <Subsector Index="O" Source="The Zhodani Base">Sakhag</Subsector>
+    <Subsector Index="P" Source="The Zhodani Base">Celebes</Subsector>
+  </Subsectors>
+
+  <Allegiances>
+    <Allegiance Code="Bi">Black Imperium Holocaust Zone</Allegiance>
+  </Allegiances>
+
+  <Borders>
+    <Border WrapLabel="false" Color="#949599" Allegiance="Bi" LabelPosition="0538">0035 0136 0236 0237 0238 0339 0340 0440 0441 0341 0241 0141 0041 0040 0039 0038 0037 0036 0035 </Border>`
+  </Borders>
+  <Routes>
+  </Routes>
+</Sector>

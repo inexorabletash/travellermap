@@ -3,19 +3,19 @@ using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 
-namespace Maps.Rendering
+namespace Maps.Graphics
 {
     internal interface AbstractGraphics : IDisposable
     {
         SmoothingMode SmoothingMode { get; set; }
-        Graphics Graphics { get; }
+        System.Drawing.Graphics Graphics { get; }
         bool SupportsWingdings { get; }
 
         void ScaleTransform(float scaleXY);
         void ScaleTransform(float scaleX, float scaleY);
         void TranslateTransform(float dx, float dy);
         void RotateTransform(float angle);
-        void MultiplyTransform(XMatrix m);
+        void MultiplyTransform(AbstractMatrix m);
 
         void IntersectClip(AbstractPath path);
         void IntersectClip(RectangleF rect);
@@ -29,6 +29,7 @@ namespace Maps.Rendering
         void DrawClosedCurve(AbstractPen pen, PointF[] points, float tension = 0.5f);
         void DrawClosedCurve(AbstractBrush brush, PointF[] points, float tension = 0.5f);
         void DrawRectangle(AbstractPen pen, float x, float y, float width, float height);
+        void DrawRectangle(AbstractPen pen, RectangleF rect);
         void DrawRectangle(AbstractBrush brush, float x, float y, float width, float height);
         void DrawRectangle(AbstractBrush brush, RectangleF rect);
         void DrawEllipse(AbstractPen pen, float x, float y, float width, float height);
@@ -49,7 +50,6 @@ namespace Maps.Rendering
     internal abstract class AbstractGraphicsState : IDisposable {
 
         private AbstractGraphics g;
-        private bool restored = false;
 
         protected AbstractGraphicsState(AbstractGraphics graphics)
         {
@@ -66,15 +66,42 @@ namespace Maps.Rendering
 
         public void Dispose()
         {
-            if (g != null)
-            {
-                g.Restore(this);
-                g = null;
-            }
+            g?.Restore(this);
+            g = null;
         }
 
         #endregion
     }
+
+
+    // This is a concrete class (despite the name) since we want instances without a factory
+    internal struct AbstractMatrix
+    {
+        public XMatrix matrix;
+
+        public AbstractMatrix(float m11, float m12, float m21, float m22, float dx, float dy)
+        {
+            matrix = new XMatrix(m11, m12, m21, m22, dx, dy);
+        }
+
+        public float M11 => (float)matrix.M11;
+        public float M12 => (float)matrix.M12;
+        public float M21 => (float)matrix.M21;
+        public float M22 => (float)matrix.M22;
+        public float OffsetX => (float)matrix.OffsetX;
+        public float OffsetY => (float)matrix.OffsetY;
+
+        public void Invert() { matrix.Invert(); }
+        public void RotatePrepend(float angle) { matrix.RotatePrepend(angle); }
+        public void ScalePrepend(float sx, float sy) { matrix.ScalePrepend(sx, sy); }
+        public void TranslatePrepend(float dx, float dy) { matrix.TranslatePrepend(dx, dy); }
+
+        public XMatrix XMatrix => matrix;
+        public Matrix Matrix => matrix.ToGdiMatrix();
+
+        public static readonly AbstractMatrix Identity = new AbstractMatrix(1, 0, 0, 1, 0, 0);
+    }
+
 
     // This is a concrete class (despite the name) since we want static instances held by the server which
     // span different concrete instances.
@@ -85,16 +112,30 @@ namespace Maps.Rendering
         private Image image;
         private XImage ximage;
 
-        public string Url { get { return url; } }
+        public string Url => url;
+
+        private string dataUrl;
+        public string DataUrl
+        {
+            get
+            {
+                if (dataUrl == null)
+                {
+                    string contentType = Utilities.ContentTypes.TypeForPath(path);
+                    byte[] bytes = System.IO.File.ReadAllBytes(path);
+                    dataUrl = "data:" + contentType + ";base64," + Convert.ToBase64String(bytes, Base64FormattingOptions.None);
+                }
+                return dataUrl;
+            }
+        }
+
         public XImage XImage
         {
             get
             {
                 lock (this)
                 {
-                    if (ximage == null)
-                        ximage = XImage.FromGdiPlusImage(Image);
-                    return ximage;
+                    return ximage ?? (ximage = XImage.FromGdiPlusImage(Image));
                 }
             }
         }
@@ -104,9 +145,7 @@ namespace Maps.Rendering
             {
                 lock (this)
                 {
-                    if (image == null)
-                        image = Image.FromFile(path);
-                    return image;
+                    return image ?? (image = Image.FromFile(path));
                 }
             }
         }
@@ -122,7 +161,7 @@ namespace Maps.Rendering
     {
         public Color Color { get; set; }
         public float Width { get; set; }
-        public DashStyle DashStyle { get; set; }
+        public DashStyle DashStyle { get; set; } = DashStyle.Solid;
         public float[] CustomDashPattern { get; set; }
 
         public AbstractPen() { }
@@ -130,7 +169,6 @@ namespace Maps.Rendering
         {
             Color = color;
             Width = width;
-            DashStyle = DashStyle.Solid;
         }
     }
 
@@ -175,6 +213,4 @@ namespace Maps.Rendering
         DashDotDot,
         Custom,
     }
-
-    // TODO: Abstract out XMatrix
 }

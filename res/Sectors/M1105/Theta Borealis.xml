@@ -1,0 +1,137 @@
+<?xml version="1.0"?>
+<Sector Abbreviation="Thet" Tags="InReview">
+  <Y>1</Y>
+  <X>-8</X>
+  <Name>Theta Borealis</Name>
+  <Credits>
+    <![CDATA[
+
+             <b>Theta Borealis</b> sector was designed by Bill
+             Bledsaw, Pixie Bledsaw, Mark Holmer, Jeff Johnson, Debi
+             Summerlott and Marc Summerlott, and appears in
+             <cite>Theta Borealis Sector</cite> (Group One, 1981).
+
+    ]]>
+  </Credits>
+  <Subsectors Source="Theta Borealis Sector" Publisher="Group One">
+    <Subsector Index="A">Alpha</Subsector>
+    <Subsector Index="B">Festab</Subsector>
+    <Subsector Index="C">Monway</Subsector>
+    <Subsector Index="D">Banderhue</Subsector>
+    <Subsector Index="E">Evalren</Subsector>
+    <Subsector Index="F">Corelian</Subsector>
+    <Subsector Index="G">Phoenix</Subsector>
+    <Subsector Index="H">Sibigil</Subsector>
+    <Subsector Index="I">Anguilla</Subsector>
+    <Subsector Index="J">Persiphus</Subsector>
+    <Subsector Index="K">Ventura</Subsector>
+    <Subsector Index="L">Duhamel</Subsector>
+    <Subsector Index="M">Trasfalca</Subsector>
+    <Subsector Index="N">Borealis Kantel</Subsector>
+    <Subsector Index="O">Jauhaux</Subsector>
+    <Subsector Index="P">Bengalaz</Subsector>
+  </Subsectors>
+  <Allegiances Source="Theta Borealis Sector" Publisher="Group One">
+    <!-- Transport Companies -->
+    <Allegiance Code="Ps">Polygraham Shipping</Allegiance>
+    <Allegiance Code="Bl">Baylor-Ator Lines</Allegiance>
+    <Allegiance Code="Cl">Continental Lines Limited</Allegiance>
+  </Allegiances>
+  <Stylesheet>
+    route.KoEm { color: red; }
+    route.Cl { color: red; style: dotted; }
+    route.Ps { color: white; }
+    route.Bl { color: white; style: dotted; }
+  </Stylesheet>
+  <Borders>
+    <Border Allegiance="KPel" LabelPosition="0310" Color="White">0110 0209 0309 0408 0509 0609 0610 0511 0512 0411 0312 0212 0113 0112 0111 0110</Border>
+    <Border Allegiance="KoEm" LabelPosition="0215" WrapLabel="true" Color="White">0014 0114 0214 0315 0415 0416 0517 0518 0519 0520 0521 0522 0523 0623 0624 0625 0526 0527 0427 0428 0329 0229 0230 0130 0030 0029 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014</Border>
+    <Border Allegiance="TroC" LabelPosition="1704" WrapLabel="true" Color="White">1101 1201 1302 1402 1502 1602 1702 1802 1903 1904 1804 1705 1706 1606 1506 1406 1405 1305 1204 1203 1202 1102 1101</Border>
+    <Border Allegiance="KoPm" LabelPosition="1224" WrapLabel="true" Color="White">0724 0823 0923 0922 1021 1020 1120 1220 1221 1222 1323 1324 1224 1225 1126 1026 0926 0826 0726 0725 0724</Border>
+  </Borders>
+  <Routes>
+    <Route Start="0317" End="0319" Type="Trade" Allegiance="KoEm"/>
+    <Route Start="0319" End="0320" Type="Trade" Allegiance="KoEm"/>
+    <Route Start="0320" End="0321" Type="Trade" Allegiance="KoEm"/>
+    <Route Start="0321" End="0322" Type="Trade" Allegiance="KoEm"/>
+    <Route Start="0322" End="0326" Type="Trade" Allegiance="KoEm"/>
+    <Route Start="0320" End="0119" Type="Trade" Allegiance="KoEm"/>
+    <Route Start="0119" End="0018" Type="Trade" Allegiance="KoEm"/>
+    <Route Start="0326" End="0127" Type="Trade" Allegiance="KoEm"/>
+    <Route Start="0127" End="0027" Type="Trade" Allegiance="KoEm"/>
+    <Route Start="0326" End="0425" Type="Trade" Allegiance="KoEm"/>
+    <Route Start="0425" End="0525" Type="Trade" Allegiance="KoEm"/>
+    <Route Start="0525" End="0624" Type="Trade" Allegiance="KoEm"/>
+    <Route Start="0624" End="0724" Type="Trade" Allegiance="KoEm"/>
+    <Route Start="0724" End="0823" Type="Trade" Allegiance="KoEm"/>
+    <Route Start="0823" End="0923" Type="Trade" Allegiance="KoEm"/>
+    <Route Start="0923" End="1022" Type="Trade" Allegiance="KoEm"/>
+    <Route Start="1022" End="1122" Type="Trade" Allegiance="KoEm"/>
+
+    <Route Start="1101" End="1102" Type="Shipping" Allegiance="Cl"/>
+    <Route Start="1102" End="1201" Type="Shipping" Allegiance="Cl"/>
+    <Route Start="1201" End="1202" Type="Shipping" Allegiance="Cl"/>
+    <Route Start="1202" End="1203" Type="Shipping" Allegiance="Cl"/>
+    <Route Start="1203" End="1204" Type="Shipping" Allegiance="Cl"/>
+    <Route Start="1201" End="1302" Type="Shipping" Allegiance="Cl"/>
+    <Route Start="1203" End="1304" Type="Shipping" Allegiance="Cl"/>
+    <Route Start="1304" End="1404" Type="Shipping" Allegiance="Cl"/>
+    <Route Start="1404" End="1504" Type="Shipping" Allegiance="Cl"/>
+    <Route Start="1504" End="1503" Type="Shipping" Allegiance="Cl"/>
+    <Route Start="1503" End="1502" Type="Shipping" Allegiance="Cl"/>
+    <Route Start="1503" End="1602" Type="Shipping" Allegiance="Cl"/>
+    <Route Start="1602" End="1703" Type="Shipping" Allegiance="Cl"/>
+    <Route Start="1703" End="1802" Type="Shipping" Allegiance="Cl"/>
+    <Route Start="1802" End="1903" Type="Shipping" Allegiance="Cl"/>
+    <Route Start="1903" End="1904" Type="Shipping" Allegiance="Cl"/>
+    <Route Start="1504" End="1505" Type="Shipping" Allegiance="Cl"/>
+    <Route Start="1505" End="1506" Type="Shipping" Allegiance="Cl"/>
+    <Route Start="1506" End="1406" Type="Shipping" Allegiance="Cl"/>
+    <Route Start="1406" End="1407" Type="Shipping" Allegiance="Cl"/>
+    <Route Start="1407" End="1508" Type="Shipping" Allegiance="Cl"/>
+    <Route Start="1508" End="1608" Type="Shipping" Allegiance="Cl"/>
+    <Route Start="1608" End="1709" Type="Shipping" Allegiance="Cl"/>
+    <Route Start="1709" End="1809" Type="Shipping" Allegiance="Cl"/>
+    <Route Start="1809" End="1910" Type="Shipping" Allegiance="Cl"/>
+    <Route Start="1910" End="1911" Type="Shipping" Allegiance="Cl"/>
+    <Route Start="1608" End="1609" Type="Shipping" Allegiance="Cl"/>
+    <Route Start="1609" End="1610" Type="Shipping" Allegiance="Cl"/>
+    <Route Start="1610" End="1511" Type="Shipping" Allegiance="Cl"/>
+    <Route Start="1511" End="1512" Type="Shipping" Allegiance="Cl"/>
+    <Route Start="1512" End="1612" Type="Shipping" Allegiance="Cl"/>
+    <Route Start="1512" End="1313" Type="Shipping" Allegiance="Cl"/>
+    <Route Start="1313" End="1314" Type="Shipping" Allegiance="Cl"/>
+    <Route Start="1314" End="1414" Type="Shipping" Allegiance="Cl"/>
+    <Route Start="1314" End="1214" Type="Shipping" Allegiance="Cl"/>
+
+    <Route Start="1911" End="1715" Type="Shipping" Allegiance="Ps"/>
+    <Route Start="1715" End="2016" Type="Shipping" Allegiance="Ps"/>
+    <Route Start="2016" End="2115" Type="Shipping" Allegiance="Ps"/>
+    <Route Start="2016" End="2619" Type="Shipping" Allegiance="Ps"/>
+    <Route Start="2016" End="2017" Type="Shipping" Allegiance="Ps"/>
+    <Route Start="2017" End="2118" Type="Shipping" Allegiance="Ps"/>
+    <Route Start="2118" End="2019" Type="Shipping" Allegiance="Ps"/>
+    <Route Start="2019" End="1920" Type="Shipping" Allegiance="Ps"/>
+    <Route Start="1920" End="1820" Type="Shipping" Allegiance="Ps"/>
+    <Route Start="1820" End="1821" Type="Shipping" Allegiance="Ps"/>
+    <Route Start="1820" End="1720" Type="Shipping" Allegiance="Ps"/>
+    <Route Start="1720" End="1719" Type="Shipping" Allegiance="Ps"/>
+    <Route Start="1719" End="1718" Type="Shipping" Allegiance="Ps"/>
+    <Route Start="1718" End="1617" Type="Shipping" Allegiance="Ps"/>
+    <Route Start="1617" End="1517" Type="Shipping" Allegiance="Ps"/>
+
+    <Route Start="2520" End="2619" Type="Shipping" Allegiance="Bl"/>
+    <Route Start="2619" End="2620" Type="Shipping" Allegiance="Bl"/>
+    <Route Start="2619" End="2719" Type="Shipping" Allegiance="Bl"/>
+    <Route Start="2719" End="2720" Type="Shipping" Allegiance="Bl"/>
+    <Route Start="2720" End="2820" Type="Shipping" Allegiance="Bl"/>
+    <Route Start="2719" End="2818" Type="Shipping" Allegiance="Bl"/>
+    <Route Start="2818" End="2817" Type="Shipping" Allegiance="Bl"/>
+    <Route Start="2817" End="2717" Type="Shipping" Allegiance="Bl"/>
+    <Route Start="2818" End="2919" Type="Shipping" Allegiance="Bl"/>
+    <Route Start="2919" End="3019" Type="Shipping" Allegiance="Bl"/>
+    <Route Start="3019" End="3020" Type="Shipping" Allegiance="Bl"/>
+    <Route Start="2818" End="3316" Type="Shipping" Allegiance="Bl"/>
+
+  </Routes>
+</Sector>

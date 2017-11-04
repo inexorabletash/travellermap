@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<Sector Abbreviation="Star" Tags="InReview">
+  <Y>-1</Y>
+  <X>3</X>
+  <Name>Star's End</Name>
+  <Credits>
+    <![CDATA[
+
+             <b>Star's End</b> sector was designed by Jeff Zeitlin.
+
+             Stellar positions were developed by Joe D. Fugate Sr. and
+             appear in <cite>The MegaTraveller Alien, Volume 1: Vilani
+             &amp; Vargr</cite> (Digest Group Publications, 1990).
+
+    ]]>
+  </Credits>
+  <DataFile Author="Jeff Zeitlin" Source="Traveller 5 Second Survey" Type="TabDelimited">Star's End.tab</DataFile>
+  <Subsectors Source="CORE">
+    <Subsector Index="A">The Sandworlds</Subsector>
+    <Subsector Index="B">Kedepar</Subsector>
+    <Subsector Index="C">Two Sparks</Subsector>
+    <Subsector Index="D">Rift Center</Subsector>
+    <Subsector Index="E">Al Mayadin</Subsector>
+    <Subsector Index="F">Five Systems</Subsector>
+    <Subsector Index="G">Lesser Depths</Subsector>
+    <Subsector Index="H">Greater Depths</Subsector>
+    <Subsector Index="I">Nyridea</Subsector>
+    <Subsector Index="J">Empty Void</Subsector>
+    <Subsector Index="K">Empty Depths</Subsector>
+    <Subsector Index="L">Gnaxkra</Subsector>
+    <Subsector Index="M">Tamnai</Subsector>
+    <Subsector Index="N">Krukurragzal</Subsector>
+    <Subsector Index="O">Ekoop</Subsector>
+    <Subsector Index="P">Hkur!</Subsector>
+  </Subsectors>
+  <Borders>
+    <Border Allegiance="JuHl" Label="Hegemony of Lorean" LabelPosition="0804" WrapLabel="true">0000 0100 0200 0300 0400 0500 0600 0700 0800 0900 1000 1100 1200 1201 1302 1402 1503 1504 1505 1506 1406 1307 1308 1309 1310 1410 1311 1211 1212 1113 1013 0914 0814 0815 0715 0615 0515 0415 0316 0216 0116 0016 0015 0014 0013 0012 0011 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001 0000</Border>
+    <Border Allegiance="CsTw">1137 1236 1235 1234 1233 1333 1433 1533 1633 1733 1832 1932 2032 2132 2231 2332 2333 2233 2234 2235 2236 2137 2138 2139 2140 2039 1940 1840 1740 1640 1540 1439 1339 1238 1139 1138 1137</Border>
+    <Border Allegiance="JuPr" ShowLabel="false">0000 0100 0200 0300 0400 0500 0600 0700 0800 0900 1000 1100 1200 1201 1302 1402 1503 1504 1505 1506 1406 1307 1308 1309 1310 1410 1311 1211 1212 1113 1013 0914 0814 0815 0715 0615 0515 0415 0316 0216 0116 0016 0015 0014 0013 0012 0011 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001 0000</Border>
+  </Borders>
+  <Stylesheet>
+    border.CsTw { color: yellowgreen; }
+    route.Trade { color: lightblue; }
+  </Stylesheet>
+  <Routes Source="Fan Created" Author="Mike Kuehn">
+    <Route Allegiance="JuHl" End="0100" Start="0101"/>
+    <Route Allegiance="JuHl" End="0001" Start="0101"/>
+    <Route Allegiance="JuHl" End="0101" Start="0201"/>
+    <Route Allegiance="JuHl" End="0201" Start="0404"/>
+    <Route Allegiance="JuHl" End="1103" Start="1005"/>
+    <Route Allegiance="JuHl" End="0006" Start="0404"/>
+    <Route Allegiance="JuHl" End="0404" Start="0408"/>
+    <Route Allegiance="JuHl" End="0404" Start="0806"/>
+    <Route Allegiance="JuHl" End="0806" Start="1005"/>
+    <Route Allegiance="JuHl" End="1005" Start="1306"/>
+    <Route Allegiance="JuHl" End="1005" Start="1109"/>
+    <Route Allegiance="JuHl" End="0408" Start="0311"/>
+    <Route Allegiance="JuHl" End="0408" Start="0710"/>
+    <Route Allegiance="JuHl" End="0710" Start="1109"/>
+    <Route Allegiance="JuHl" End="1109" Start="1111"/>
+    <Route Allegiance="JuHl" End="0112" Start="0311"/>
+    <Route Allegiance="JuHl" End="0112" Start="0315"/>
+    <Route Allegiance="JuHl" End="0315" Start="0613"/>
+    <Route Allegiance="JuHl" End="0613" Start="0814"/>
+    <Route Allegiance="JuHl" End="1103" Start="1100"/>
+  </Routes>
+</Sector>

@@ -2,9 +2,9 @@
 <title>Re-Stellarator - Traveller Map</title>
 <meta charset="utf-8">
 <link rel="shortcut icon" href="../favicon.ico">
-<script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.25/polyfill.min.js"></script>
+<script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.29/polyfill.min.js"></script>
 <script src="serialize.js"></script>
-<link rel="stylesheet" href="../site.css?update=2015-08-30">
+<link rel="stylesheet" href="../site.css?update=2017-03-18">
 <style>
   #in, #out {
     width: 1000px; height: 300px;
@@ -13,59 +13,28 @@
   }
 </style>
 <h1>Re-Stellarator &mdash; The Traveller Map</h1>
+Conversions:
+<ul>
+<li> <code>VII</code> &rarr; <code>D</code>
+<li> <code>D</code> &rarr; <code>V</code> if it's not the last star (unless it's the only star)
+<li> Convert all remaining white dwarf stars to <code>D</code>
+<li> TODO: Forbid size IV for K5-K9 and M0-M9, size VI for A0-A9 and F0-F4
+</ul>
+
 <textarea id=in>
 </textarea>
 <br><label><input type=checkbox id=expand> Expand fields </label>
 <br><button id=go>Go</button><br>
 <textarea id=out>
 </textarea>
-
+<script src="restellarator.js"></script>
 <script>
 function $(s) { return document.querySelector(s); }
 
 function fix(world) {
   // Stellar
   var key = ['Stellar', 'Stars'].filter(function(key) { return key in world; })[0];
-  world[key] = fixStellar(world[key]);
-}
-
-function fixStellar(s) {
-  var stars = [], m;
-  while (m = /^([OBAFGKM][0-9] ?(?:Ia|Ib|II|III|IV|V|VI|VII|D)|[OAFGKML] ?D|D|BD|BH)\b\s*/.exec(s)) {
-    stars.push(m[1]);
-    s = s.substring(m[0].length);
-  }
-  stars = stars.map(function(star, index) {
-    if (m = (/^([OBAFGKM][0-9]) ?(Ia|Ib|II|III|IV|V|VI|VII|D)\b/.exec(star) || /^([OAFGKML]) ?(D)/.exec(star))) {
-      var spec = m[1], lum = m[2];
-
-      // VI -> V
-      if (lum === 'VI')
-        lum = 'V';
-
-      // VII -> D
-      if (lum === 'VII')
-        lum = 'D';
-
-      // D -> V, if not the last star (unless only star)
-      if (lum === 'D' && (index < stars.length - 1 || stars.length === 1)) {
-        lum = 'V';
-      }
-
-      // LD -> MD
-      if (spec === 'L')
-        spec = 'M';
-
-      // Random fraction (for MD, etc)
-      if (spec.length === 1)
-        spec += String(Math.floor(Math.random() * 10));
-
-      star = lum === 'D' ? lum : spec + ' ' + lum;
-    }
-
-    return star;
-  });
-  return stars.join(' ');
+  world[key] = Restellarator.fix(world[key]);
 }
 
 $('#go').addEventListener('click', function() {

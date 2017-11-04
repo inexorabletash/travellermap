@@ -2,10 +2,10 @@
 <title>Poster Maker - Traveller Map</title>
 <meta charset="utf-8">
 <link rel="shortcut icon" href="../favicon.ico">
-<link rel="stylesheet" href="../site.css?update=2016-07-23">
-<script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.25/polyfill.min.js"></script>
-<script src="../map.js?update=2016-07-29"></script>
-<script src="post.js?update=2016-03-24"></script>
+<link rel="stylesheet" href="../site.css?update=2017-03-18">
+<script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.29/polyfill.min.js"></script>
+<script src="../map.js?update=2017-03-14"></script>
+<script src="post.js?update=2016-10-15"></script>
 
 <style>
 #option_columns > tbody> tr > td { padding: 0 20px; }
@@ -21,25 +21,25 @@
 </style>
 
 <h1>Poster Maker &mdash; The Traveller Map</h1>
-<form id="form" target="_blank" method="POST">
+<form id="form" target=_blank rel=noopener method="POST">
 <ol class="steps">
   <li>
     <select id="sector">
-      <option disabled>Select...</option>
+      <option selected disabled>Select...</option>
     </select>
     a sector, or enter custom sector data/metadata:
 
   <div>Sector Data:
-    (<a target="_blank" href="../doc/fileformats">file formats</a>)
+    (<a target=_blank rel=noopener href="../doc/fileformats">file formats</a>)
     &mdash;
-    <em>tip: <a target="_blank" href="../tools/lintsec.html">check your data</a> first</em>
+    <em>tip: <a target=_blank rel=noopener href="../tools/lintsec.html">check your data</a> first</em>
   </div>
   <textarea id="data" name="data" class="drag-n-drop"
             spellcheck="false" wrap="off" cols="80" rows="10"></textarea>
 
   <div>Metadata:
-    (<a target="_blank" href="../doc/metadata">XML</a> or
-    <a target="_blank" href="http://dotclue.org/t20/">MSEC</a>)</div>
+    (<a target=_blank rel=noopener href="../doc/metadata">XML</a> or
+    <a target=_blank rel=noopener href="http://dotclue.org/t20/">MSEC</a>)</div>
   <textarea id="metadata" name="metadata" class="drag-n-drop"
             spellcheck="false" wrap="off" cols="80" rows="10"></textarea>
 
@@ -107,13 +107,25 @@
               </select>
           </tr>
           <tr>
-            <td style="text-align: right">Rotation:
+            <td style="text-align: right">Image Rotation:
             <td>
               <select name="rotation">
                 <option value="">None</option>
                 <option value="1">90&deg; CW</option>
                 <option value="2">180&deg;</option>
                 <option value="3">90&deg; CCW</option>
+              </select>
+          </tr>
+          <tr>
+            <td style="text-align: right">Map Rotation:
+            <td>
+              <select name="hrotation">
+                <option value="">None</option>
+                <option value="60">60&deg; CW</option>
+                <option value="120">120&deg; CW</option>
+                <option value="-60">60&deg; CCW</option>
+                <option value="-120">120&deg; CCW</option>
+                <option value="180">180&deg;</option>
               </select>
           </tr>
           <tr>
@@ -133,6 +145,10 @@
                 <option selected>Sector (3240)</option>
                 <option value="1">Subsector (0810)</option>
               </select>
+          </tr>
+          <tr>
+            <td></td>
+            <td><label><input type=checkbox name=clampar value=1> Instagram Aspect Ratio</label></td>
           </tr>
         </table>
       </td>
@@ -203,7 +219,7 @@
     <br>
 
     For a Jump Map, select:
-    J-<input type="number" name="jump" min="0" max="6" value="3">
+    J-<input type="number" name="jump" min="0" max="20" value="3">
     Hex: <input type="text" name="hex" size=4  value="" placeholder="XXYY">
     and click:
     <input id="jumpBtn" type="submit" value="Render Jump Map">
@@ -217,8 +233,8 @@
 
 <div style="margin-top: 10px; font-size: 80%">
   The <em class="product">Traveller</em> game in all forms is owned by Far
-  Future Enterprises. Copyright &copy; 1977 &ndash; 2016 Far Future
-  Enterprises.
+  Future Enterprises. Copyright <span class=copyright>&copy;</span> 1977 &ndash; 2017
+  Far Future Enterprises.
   <a href="http://farfuture.net/FFEFairUsePolicy2008.pdf">Fair Use Policy</a>
 </div>
 
@@ -244,6 +260,7 @@
         var response = results[0], text = results[1];
         if (response.ok) {
           $('#preview').src = text;
+          $('#preview').style.height = 'auto';
         } else {
           console.warn(text);
           alert(text);

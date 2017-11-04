@@ -1,4 +1,5 @@
-﻿using PdfSharp.Drawing;
+﻿using Maps.Utilities;
+using PdfSharp.Drawing;
 using PdfSharp.Pdf;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Linq;
 
-namespace Maps.Rendering
+namespace Maps.Graphics
 {
     internal class PdfSharpGraphics : AbstractGraphics
     {
@@ -16,8 +17,8 @@ namespace Maps.Rendering
         private XPen pen;
 
         public PdfSharpGraphics(XGraphics g) { this.g = g;
-            this.brush = new XSolidBrush();
-            this.pen = new XPen(Color.Empty);
+            brush = new XSolidBrush();
+            pen = new XPen(Color.Empty);
         }
 
         private void Apply(AbstractBrush brush)
@@ -52,16 +53,14 @@ namespace Maps.Rendering
             return xfont;
         }
 
-        public bool SupportsWingdings { get { return true; } }
-
-        public SmoothingMode SmoothingMode { get { return (SmoothingMode)g.SmoothingMode; } set { g.SmoothingMode = (XSmoothingMode)value; } }
-        public Graphics Graphics { get { return g.Graphics; } }
-
+        public bool SupportsWingdings => true;
+        public SmoothingMode SmoothingMode { get => (SmoothingMode)g.SmoothingMode; set => g.SmoothingMode = (XSmoothingMode)value; }
+        public System.Drawing.Graphics Graphics => g.Graphics;
         public void ScaleTransform(float scaleXY) { g.ScaleTransform(scaleXY); }
         public void ScaleTransform(float scaleX, float scaleY) { g.ScaleTransform(scaleX, scaleY); }
         public void TranslateTransform(float dx, float dy) { g.TranslateTransform(dx, dy); }
         public void RotateTransform(float angle) { g.RotateTransform(angle); }
-        public void MultiplyTransform(XMatrix m) { g.MultiplyTransform(m); }
+        public void MultiplyTransform(AbstractMatrix m) { g.MultiplyTransform(m.XMatrix); }
 
         public void IntersectClip(AbstractPath path) { g.IntersectClip(new XGraphicsPath(path.Points, path.Types, XFillMode.Winding)); }
         public void IntersectClip(RectangleF rect) { g.IntersectClip(rect); }
@@ -75,6 +74,7 @@ namespace Maps.Rendering
         public void DrawClosedCurve(AbstractPen pen, PointF[] points, float tension) { Apply(pen); g.DrawClosedCurve(this.pen, points, tension); }
         public void DrawClosedCurve(AbstractBrush brush, PointF[] points, float tension) { Apply(brush); g.DrawClosedCurve(this.brush, points, XFillMode.Alternate, tension); }
         public void DrawRectangle(AbstractPen pen, float x, float y, float width, float height) { Apply(pen); g.DrawRectangle(this.pen, x, y, width, height); }
+        public void DrawRectangle(AbstractPen pen, RectangleF rect) { Apply(pen); g.DrawRectangle(this.pen, rect); }
         public void DrawRectangle(AbstractBrush brush, float x, float y, float width, float height) { Apply(brush); g.DrawRectangle(this.brush, x, y, width, height); }
         public void DrawRectangle(AbstractBrush brush, RectangleF rect) { Apply(brush); g.DrawRectangle(this.brush, rect); }
         public void DrawEllipse(AbstractPen pen, float x, float y, float width, float height) { Apply(pen); g.DrawEllipse(this.pen, x, y, width, height); }
@@ -82,30 +82,43 @@ namespace Maps.Rendering
         public void DrawEllipse(AbstractPen pen, AbstractBrush brush, float x, float y, float width, float height) { Apply(pen, brush); g.DrawEllipse(this.pen, this.brush, x, y, width, height); }
         public void DrawArc(AbstractPen pen, float x, float y, float width, float height, float startAngle, float sweepAngle) { Apply(pen); g.DrawArc(this.pen, x, y, width, height, startAngle, sweepAngle); }
 
-        public void DrawImage(AbstractImage image, float x, float y, float width, float height) { g.DrawImage(image.XImage, x, y, width, height); }
+        public void DrawImage(AbstractImage image, float x, float y, float width, float height) {
+            XImage ximage = image.XImage;
+            lock (ximage)
+            {
+                g.DrawImage(ximage, x, y, width, height);
+            }
+        }
+
+        const int ALPHA_STEPS = 16;
+
         public void DrawImageAlpha(float alpha, AbstractImage mimage, RectangleF targetRect)
         {
+            XImage ximage;
+
             // Clamp and Quantize
-            alpha = Util.Clamp(alpha, 0f, 1f);
-            alpha = (float)Math.Round(alpha * 16f) / 16f;
+            alpha = alpha.Clamp(0f, 1f);
+            alpha = (float)Math.Round(alpha * ALPHA_STEPS) / ALPHA_STEPS;
             if (alpha <= 0f)
                 return;
-            if (alpha >= 1f)
+            
+            ximage = (alpha >= 1f) ? mimage.XImage : GetAlphaVariant(alpha, mimage);
+            lock (ximage)
             {
-                g.DrawImage(mimage.XImage, targetRect);
-                return;
+                g.DrawImage(ximage, targetRect);
             }
+        }
 
-            int key = (int)Math.Round(alpha * 16);
-
+        private static XImage GetAlphaVariant(float alpha, AbstractImage mimage)
+        {
             Image image = mimage.Image;
-            XImage ximage;
-            int w, h;
-
             lock (image)
             {
-                w = image.Width;
-                h = image.Height;
+                XImage ximage;
+
+                int w = image.Width;
+                int h = image.Height;
+                int key = (int)Math.Round(alpha * ALPHA_STEPS);
 
                 if (image.Tag == null || !(image.Tag is Dictionary<int, XImage>))
                     image.Tag = new Dictionary<int, XImage>();
@@ -122,14 +135,16 @@ namespace Maps.Rendering
                     // a small set
 
                     Bitmap scratchBitmap = new Bitmap(w, h, PixelFormat.Format32bppArgb);
-                    using (var scratchGraphics = Graphics.FromImage(scratchBitmap))
+                    using (var scratchGraphics = System.Drawing.Graphics.FromImage(scratchBitmap))
                     {
-                        ColorMatrix matrix = new ColorMatrix();
-                        matrix.Matrix00 = matrix.Matrix11 = matrix.Matrix22 = 1;
-                        matrix.Matrix33 = alpha;
-
                         ImageAttributes attr = new ImageAttributes();
-                        attr.SetColorMatrix(matrix);
+                        attr.SetColorMatrix(new ColorMatrix()
+                        {
+                            Matrix00 = 1,
+                            Matrix11 = 1,
+                            Matrix22 = 1,
+                            Matrix33 = alpha
+                        });
 
                         scratchGraphics.DrawImage(image, new Rectangle(0, 0, w, h), 0, 0, w, h, GraphicsUnit.Pixel, attr);
                     }
@@ -137,28 +152,29 @@ namespace Maps.Rendering
                     ximage = XImage.FromGdiPlusImage(scratchBitmap);
                     dict[key] = ximage;
                 }
-            }
-
-            lock (ximage)
-            {
-                g.DrawImage(ximage, targetRect);
+                return ximage;
             }
         }
 
-        public SizeF MeasureString(string text, Font font) {
-            return g.MeasureString(text, font).ToSizeF();
+        public SizeF MeasureString(string text, Font font) => g.MeasureString(text, font).ToSizeF();
+ 
+        public void DrawString(string s, Font font, AbstractBrush brush, float x, float y, StringAlignment format)
+        {
+            Apply(brush);
+            g.DrawString(s, Convert(font), this.brush, x, y, Format(format));
         }
-        public void DrawString(string s, Font font, AbstractBrush brush, float x, float y, StringAlignment format) { Apply(brush); g.DrawString(s, font, this.brush, x, y, Format(format)); }
 
-        public AbstractGraphicsState Save() { return new State(this, g.Save()); }
+        public AbstractGraphicsState Save() => new State(this, g.Save());
         public void Restore(AbstractGraphicsState state) { g.Restore(((State)state).state); }
 
         #region StringFormats
         private static XStringFormat CreateStringFormat(XStringAlignment alignment, XLineAlignment lineAlignment)
         {
-            XStringFormat format = new XStringFormat();
-            format.Alignment = alignment;
-            format.LineAlignment = lineAlignment;
+            XStringFormat format = new XStringFormat()
+            {
+                Alignment = alignment,
+                LineAlignment = lineAlignment
+            };
             return format;
         }
 
@@ -185,24 +201,23 @@ namespace Maps.Rendering
         #endregion
 
         #region IDisposable Support
-        private bool disposedValue = false; // To detect redundant calls
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!disposedValue)
-            {
-                if (disposing)
-                {
-                    g.Dispose();
-                    g = null;
-                }
-                disposedValue = true;
-            }
-        }
+        private bool disposed = false;
 
         void IDisposable.Dispose()
         {
             Dispose(true);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposed)
+                return;
+            if (disposing)
+            {
+                g.Dispose();
+                g = null;
+            }
+            disposed = true;
         }
         #endregion
 
@@ -211,6 +226,5 @@ namespace Maps.Rendering
             public XGraphicsState state;
             public State(AbstractGraphics g, XGraphicsState state) : base(g) { this.state = state; }
         }
-
     }
 }

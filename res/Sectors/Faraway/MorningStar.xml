@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Sector>
+  <Credits>
+    <![CDATA[
+      <b>Morning Star Sector</b> is based on the "Morning Star Region"
+      from the Swedish fanzine <i>Morgonstjärnen</i>.
+
+      <b>Utge</b> subsector was created by Kell Regmer and
+      Mikael Börjesson and appears in issue #4.
+
+      Transcribed by Graham Donald.
+    ]]>
+  </Credits>
+  <Stylesheet>
+    route.Trade { Color: gray; style: dashed; width: 0.5 }
+  </Stylesheet>
+  <Subsectors>
+    <Subsector Index="B">Hrigli</Subsector>
+    <Subsector Index="E">Dennash</Subsector>
+    <Subsector Index="F">Utge</Subsector>
+    <Subsector Index="G">Zhikela</Subsector>
+    <Subsector Index="J">Bastion</Subsector>
+  </Subsectors>
+  <Routes>
+    <Route Start="1410" End="1712" Type="Trade"/>
+    <Route Start="1210" End="1112" Type="Trade"/>
+    <Route Start="1112" End="0913" Type="Trade"/>
+    <Route Start="0913" End="0812" Type="Trade"/>
+    <Route Start="0921" End="0920" Type="Trade"/>
+    <Route Start="0920" End="1019" Type="Trade"/>
+  </Routes>
+</Sector>

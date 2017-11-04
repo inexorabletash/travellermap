@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Sector>
+  <Name>Coro</Name>
+  <Credits>
+    <![CDATA[
+      <b>Coro</b> sector was designed by Ade Stewart as part of Infinitys Shore.
+    ]]>
+  </Credits>
+  <Labels>
+    <!-- Features Names -->
+    <Label Hex="1116" Color="gray" Size="large">Nebula Void</Label>
+    <Label Hex="2428" Color="gray" Size="large">Grand Arc</Label>
+  </Labels>
+  <Regions>
+    <Region Color="Red" LabelPosition="0808" Label="Greater Shell Nebula">0509 0608 0607 0707 0706 0805 0905 1005 1106 1206 1107 1108 1109 1009 1010 0910 0810 0811 0912 0913 1013 0913 0813 0812 0811 0711 0610 0609 0509 </Region>
+    <Region Color="Red">0710 0809 0710 </Region>
+    <Region Color="Red">0806 0906 1006 1007 0907 0806 </Region>
+    <Region Color="Red" LabelPosition="1312" Label="Lesser Shell Nebula">1211 1311 1410 1411 1312 1313 1312 1211 </Region>
+    <Region Color="red" LabelPosition="0427" Label="Curtain Nebula">0227 0328 0427 0426 0425 0424 0324 0424 0425 0426 0527 0528 0427 0328 0228 0227 </Region>
+    <Region Color="red">0523 </Region>
+    <Region Color="red">0122 0123 0122 </Region>
+  </Regions>
+</Sector>

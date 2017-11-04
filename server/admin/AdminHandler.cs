@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Maps.Search;
+using Maps.Utilities;
+using System;
 using System.Data.SqlClient;
 using System.IO;
 using System.Text;
@@ -23,12 +25,11 @@ namespace Maps.Admin
             return false;
         }
 
-        public bool IsReusable { get { return true; } }
-
+        public bool IsReusable => true;
         public void ProcessRequest(HttpContext context)
         {
             if (context == null)
-                throw new ArgumentNullException("context");
+                throw new ArgumentNullException(nameof(context));
 
             context.Response.Cache.SetCacheability(HttpCacheability.NoCache);
             if (!AdminAuthorized(context))
@@ -36,15 +37,15 @@ namespace Maps.Admin
                 context.Response.TrySkipIisCustomErrors = true;
                 context.Response.StatusCode = 403;
                 context.Response.StatusDescription = "Forbidden";
-                context.Response.ContentType = System.Net.Mime.MediaTypeNames.Text.Plain;
+                context.Response.ContentType = ContentTypes.Text.Plain;
                 context.Response.Output.WriteLine("Incorrect secret or connection not secure.");
                 context.Response.Flush();
                 return;
             }
-            Process(context);
+            Process(context, new ResourceManager(context.Server));
         }
 
-        protected abstract void Process(HttpContext context);
+        protected abstract void Process(HttpContext context, ResourceManager resourceManager);
 
         // TODO: Dedupe w/ DataResponder
         protected static string GetStringOption(HttpContext context, string name)
@@ -60,10 +61,10 @@ namespace Maps.Admin
 
     internal class AdminHandler : AdminHandlerBase
     {
-        protected override void Process(HttpContext context)
+        protected override void Process(HttpContext context, ResourceManager resourceManager)
         {
             context.Server.ScriptTimeout = 3600; // An hour should be plenty
-            context.Response.ContentType = System.Net.Mime.MediaTypeNames.Text.Html;
+            context.Response.ContentType = ContentTypes.Text.Html;
             context.Response.BufferOutput = false;
 
             Action<string> WriteLine = (string s) => { context.Response.Write(s); context.Response.Write("\n"); };
@@ -120,7 +121,7 @@ namespace Maps.Admin
             Write(response, name + ": " + value.ToString());
         }
 
-        private void Profile(HttpContext context)
+        private static void Profile(HttpContext context)
         {
             WriteStat(context.Response, "Cache.Count", context.Cache.Count);
             WriteStat(context.Response, "Cache.EffectivePercentagePhysicalMemoryLimit", context.Cache.EffectivePercentagePhysicalMemoryLimit);
@@ -137,10 +138,8 @@ namespace Maps.Admin
             Write(context.Response, "<b>&Omega;</b>");
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Security", "CA2100:Review SQL queries for security vulnerabilities")]
         private static void Reindex(HttpContext context)
         {
-
             Write(context.Response, "Initializing resource manager...");
             ResourceManager resourceManager = new ResourceManager(context.Server);
 
@@ -152,22 +151,33 @@ namespace Maps.Admin
             {
                 foreach (string table in new string[] { "sectors", "subsectors", "worlds", "labels" })
                 {
-                    string sql = string.Format("SELECT COUNT(*) FROM {0}", table);
+                    string sql = $"SELECT COUNT(*) FROM {table}";
                     using (var command = new SqlCommand(sql, connection))
+                    using (var reader = command.ExecuteReader())
                     {
-                        using (var reader = command.ExecuteReader())
+                        while (reader.Read())
                         {
-                            while (reader.Read())
-                            {
-                                Write(context.Response, string.Format("{0}: {1}", table, reader.GetInt32(0)));
-                            }
+                            Write(context.Response, $"{table}: {reader.GetInt32(0)}");
+                        }
+                    }
+                }
+
+                {
+                    Write(context.Response, "&nbsp;");
+                    Write(context.Response, "Worlds by Milieu:");
+                    string sql = $"SELECT milieu, COUNT(*) FROM worlds GROUP BY milieu ORDER BY milieu";
+                    using (var command = new SqlCommand(sql, connection))
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Write(context.Response, $"{reader.GetString(0)} &mdash; {reader.GetInt32(1)}");
                         }
                     }
                 }
             }
 
             Write(context.Response, "<b>&Omega;</b>");
-
         }
     }
 

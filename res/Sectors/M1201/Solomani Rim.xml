@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<Sector Abbreviation="Solo" Tags="Unreviewed">
+  <Y>3</Y>
+  <X>0</X>
+  <Name>Solomani Rim</Name>
+  <Name Lang="vi">Kushuggi</Name>
+  <Credits>
+    <![CDATA[
+
+             <b>Solomani Rim</b> sector was designed by John Harshman
+             and appears in <cite>Traveller Supplement 10: The
+             Solomani Rim</cite> (GDW, 1982).
+
+    ]]>
+  </Credits>
+  <DataFile Source="Traveller Chronicle 10" Milieu="M1201" Type="TabDelimited">Solomani Rim.tab</DataFile>
+  <Subsectors Source="Supplement 10 - The Solomani Rim">
+    <Subsector Index="A">Ultima</Subsector>
+    <Subsector Index="B">Suleiman</Subsector>
+    <Subsector Index="C">Charuth</Subsector>
+    <Subsector Index="D">Gashurzid</Subsector>
+    <Subsector Index="E">Alderamin</Subsector>
+    <Subsector Index="F">Cuchulain</Subsector>
+    <Subsector Index="G">Vega</Subsector>
+    <Subsector Index="H">Atria</Subsector>
+    <Subsector Index="I">Spinward Reach</Subsector>
+    <Subsector Index="J">Dingir</Subsector>
+    <Subsector Index="K">Sol</Subsector>
+    <Subsector Index="L">Arcturus</Subsector>
+    <Subsector Index="M">Thakassa</Subsector>
+    <Subsector Index="N">Capella</Subsector>
+    <Subsector Index="O">Gemini</Subsector>
+    <Subsector Index="P">Kukulkan</Subsector>
+  </Subsectors>
+
+
+  <Stylesheet>
+    border.Tr { color: lightgreen; }
+    route.Tr { color: lightgreen; }
+
+    border.Dl { color: lightblue; }
+    route.Dl { color: lightblue; }
+  </Stylesheet>
+
+  <Allegiances>
+    <Allegiance Code="Ao">Reformation Coalition Area of Operation</Allegiance>
+    <Allegiance Code="Dl">Dingir League</Allegiance>
+    <Allegiance Code="Vc">Virus Controlled</Allegiance>
+    <Allegiance Code="Tr">Terran Republic</Allegiance>
+  </Allegiances>
+
+  <Routes>  
+  </Routes>
+  <Borders>
+    <Border Allegiance="Dl" Label="Dingir League" WrapLabel="true">
+      0721 0821 0921 0922 1022 1123 1222 1323 1422 1522 1622 1523 1423 1424 1324 1224 1125 1126 1127 1026 0926 0826 0825 0824 0823 0723 0722 0721
+    </Border>
+    <Border Allegiance="Tr" Label="Terran Republic" WrapLabel="true">
+      1332 1431 1430 1429 1529 1628 1728 1827 1826 1825 1824 1823 1822 1922 2021 2121 2122 2222 2323 2324 2325
+      2225 2226 2227 2228 2229 2330 2230 2131 2132 2031 1932 1832 1833 1832 1732 1632 1533 1432 1431 
+    </Border>
+    <Border Allegiance="Ao" Label="Area of Operations" WrapLabel="true">
+      2800 2900 3000 3100 3200 3300 3301 3302 3303 3304 
+      3203 3103 3002 2902 2801 2800
+    </Border>
+  </Borders>
+  
+ 
+</Sector>

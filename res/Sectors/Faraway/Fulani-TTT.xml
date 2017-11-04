@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Sector Tags="Apocryphal">
+  <Name>Fulani (Terra Traveller Times)</Name>
+  <![CDATA[
+             <p>
+             The Alea, Aquaria, Bilahew, Lythgoe, Rosorky, Cormorant's Rift, Kasaku and Vanguard subsectors of this version of Fulani were designed by Mark Gelinas and appeared in <cite>Terra Traveller Times</cite> issues 25, 26, 27, 29, 30, 31, 32, 33  with an overview map of the published area appearing in issue 36.
+             </p>
+
+             <p>
+             Data transcribed and edited by Graham Donald.
+             </p>
+  ]]>
+  <Subsectors>
+    <Subsector Index="A">Alea</Subsector>
+    <Subsector Index="B">Aquaria</Subsector>
+    <Subsector Index="C">Bilahew</Subsector>
+    <Subsector Index="D">Lythgoe</Subsector>
+    <Subsector Index="E">Rosorky</Subsector>
+    <Subsector Index="F">Cormorant's Rift</Subsector>
+    <Subsector Index="G">Kasaku</Subsector>
+    <Subsector Index="H">Vanguard</Subsector>
+    <Subsector Index="I">Segena</Subsector>
+    <Subsector Index="J">Prate</Subsector>
+    <Subsector Index="K">Cycasi</Subsector>
+    <Subsector Index="L">Zachrisson</Subsector>
+  </Subsectors>
+  <Allegiances>
+    <Allegiance Code="AQ" LabelPosition="">Imperial Association of Aquarian Free Worlds</Allegiance>
+    <Allegiance Code="KS" LabelPosition="">Kasakan State</Allegiance>
+    <Allegiance Code="PE" LabelPosition="">Praterean Empire</Allegiance>
+    <Allegiance Code="ShCs" LabelPosition="">Shadlsanti Consulate</Allegiance>
+  </Allegiances>
+  <Borders>
+    <Border Allegiance="AQ" Color="blue">0114 0213 0313 0412 0512 0611 0610 0609 0608 0607 0606 0706 0805 0804 0904 1004 1105 1205 1305 1404 1505 1604 1705 1804 1904 2003 2103 2202 2302 2401 2502 2602 2703 2802 2703 2603 2604 2605 2506 2406 2307 2308 2309 2209 2110 2010 1911 1810 1711 1611 1512 1412 1313 1213 1214 1115 1116 1016 0916 0815 0716 0615 0515 0415 0315 0214 0115 0114 </Border>
+    <Border Allegiance="KS" Color="green">2311 2410 2311 </Border>
+    <Border Allegiance="PE" Color="white">0818 0819 0820 0819 0818 </Border>
+    <Border Allegiance="PE" Color="white">1420 1520 1519 1518 1519 1520 1420 </Border>
+    <Border Allegiance="PE" Color="white">2719 2818 2817 2816 2815 2916 3016 3116 3215 3116 3117 3118 3119 3120 3020 2920 2820 2720 2719 </Border>
+    <Border Allegiance="ShCs" Color="indigo">0101 0201 0301 0401 0501 0601 0701 0801 0901 0801 0702 0602 0503 0402 0303 0202 0103 0102 0101 </Border>
+  </Borders>
+<Routes>
+    <Route Start="0503" End="0502" Color="gray"/>
+    <Route Start="0502" End="0800" Color="gray"/>
+    <Route Start="2719" End="2721" Color="gray"/>
+    <Route Start="2719" End="2815" Color="gray"/>
+    <Route Start="2719" End="3117" Color="gray"/>
+    <Route Start="2202" End="2602" Color="gray"/>
+    <Route Start="2202" End="2505" Color="gray"/>
+    <Route Start="1904" End="2202" Color="gray"/>
+    <Route Start="1904" End="1604" Color="gray"/>
+    <Route Start="1604" End="1806" Color="gray"/>
+    <Route Start="1604" End="1407" Color="gray"/>
+    <Route Start="1407" End="1709" Color="gray"/>
+    <Route Start="1709" End="2108" Color="gray"/>
+    <Route Start="1709" End="1911" Color="gray"/>
+    <Route Start="1911" End="2110" Color="gray"/>
+    <Route Start="1407" End="1210" Color="gray"/>
+    <Route Start="1407" End="1205" Color="gray"/>
+    <Route Start="1205" End="0804" Color="gray"/>
+    <Route Start="0804" End="0606" Color="gray"/>
+    <Route Start="0606" End="0709" Color="gray"/>
+    <Route Start="0709" End="0911" Color="gray"/>
+    <Route Start="0911" End="1210" Color="gray"/>
+    <Route Start="0911" End="0610" Color="gray"/>
+    <Route Start="0610" End="0412" Color="gray"/>
+    <Route Start="0412" End="0214" Color="gray"/>
+    <Route Start="0214" End="0415" Color="gray"/>
+    <Route Start="0415" End="0716" Color="gray"/>
+    <Route Start="0716" End="0914" Color="gray"/>
+    <Route Start="0914" End="1214" Color="gray"/>
+    <Route Start="1214" End="1016" Color="gray"/>
+    <Route Start="1214" End="1211" Color="gray"/>
+    <Route Start="1211" End="1210" Color="gray"/>
+  </Routes>
+  <Regions>
+    <Region Label="Inferno Nebula" LabelPosition="2612" Color="Purple">2612</Region>
+  </Regions>
+</Sector>

@@ -3,10 +3,10 @@
 <title>Atlas - Traveller Map</title>
 <meta charset="utf-8">
 <link rel="shortcut icon" href="../favicon.ico">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
-<script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.25/polyfill.min.js"></script>
-<script src="../map.js?update=2016-07-29"></script>
-<script src="atlas.js?update=2016-07-16"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.min.js"></script>
+<script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.29/polyfill.min.js"></script>
+<script src="../map.js?update=2017-06-17T13:36:30"></script>
+<script src="atlas.js?update=2017-06-17T20:45:19"></script>
 <style>
 @import url(https://fonts.googleapis.com/css?family=Marcellus|Roboto+Condensed);
 
@@ -73,6 +73,10 @@ body { counter-reset: page 1; }
 body, table {
   font-size: 9.5pt;
   font-family: Univers, Helvetica, Arial, sans-serif;
+}
+
+.copyright {
+  font-family: Arial;
 }
 
 .content {
@@ -250,13 +254,16 @@ h1.underline {
   margin: 0;
   padding: 0;
   left: 0.5in;
-  bottom: 0.5in;
+  bottom: 0.75in;
+  height: 1.25in;
 
   font-style: normal;
   font-size: 24pt;
   font-family: Optima, Marcellus, serif;
   font-weight: bold;
 }
+
+.title_publisher img { display: inline-block; height: 100%; }
 
 /* Credits ============================== */
 
@@ -425,7 +432,7 @@ table.uwp-data {
 /* Index ============================== */
 
 .index {
-  font-size: 9.5pt;
+  font-size: 16pt;
   font-family: Optima, Marcellus, serif;
 }
 .dot-leaders { overflow-x: hidden; }
@@ -447,7 +454,7 @@ table.uwp-data {
 </style>
 
 <body>
-<img style="position: absolute; margin: auto; left: 0; right: 0; bottom: 0; top: 0;" src="../res/ui/spin.gif">
+<img style="position: absolute; margin: auto; left: 0; right: 0; bottom: 0; top: 0;" src="../res/ui/atlas-spinner.gif">
 </body>
 
   <!-- Document Template -->
@@ -465,7 +472,7 @@ table.uwp-data {
       </div>
       <div class="title_publisher">
         <!--Far Future Enterprises-->
-        <img src="../res/atlas/ffe.svg" alt="Far Future Enterprises" style="width: 1.5in">
+        <img src="../res/atlas/ffe2.svg" alt="Far Future Enterprises">
       </div>
     </div>
 
@@ -481,7 +488,8 @@ table.uwp-data {
       </div>
       <div class="title_publisher">
         <!--Far Future Enterprises-->
-        <img src="../res/atlas/ffe.svg" alt="Far Future Enterprises" style="width: 1.5in">
+        <img src="../res/atlas/ffe2.svg" alt="Far Future Enterprises"
+             style="filter: grayscale() contrast(200%)">
       </div>
     </div>
 
@@ -493,8 +501,8 @@ table.uwp-data {
         <h1>Atlas of the Imperium: Second Survey</h1>
 
         <p>
-          The <b>Traveller</b> game in all forms is owned
-          by Far Future Enterprises. Copyright &copy; 1977 &ndash; 2016
+          The <b>Traveller</b> game in all forms is owned by Far Future Enterprises.
+          Copyright <span class=copyright>&copy;</span> 1977 &ndash; 2017
           Far Future Enterprises. <b>Traveller</b> is a
           registered trademark of Far Future Enterprises.
         </p>
@@ -502,7 +510,6 @@ table.uwp-data {
         <p>
           Sector data revised and reviewed by:
 
-          Andrea Vallance,
           Bob Toy,
           Craig A. Glesner,
           David Smart,
@@ -511,7 +518,9 @@ table.uwp-data {
           Jim Fetters,
           Jim Kundert,
           Marc W. Miller,
+          Nicole Susans,
           Robert Eaglestone,
+          Thomas Jones-Low,
           Tom Osborne,
 
           and
@@ -521,7 +530,7 @@ table.uwp-data {
 
         <p>
           Includes text from <i>The Atlas of the Imperium</i>
-          by Marc. W. Miller (Game Designers' Workshop, 1984.)
+          by Marc W. Miller (Game Designers' Workshop, 1984.)
         </p>
 
         <p>
@@ -721,7 +730,7 @@ table.uwp-data {
               </p>
               <p><b>Remarks:</b> Trade codes and other attributes.</p>
               <p><b>{Ix}:</b> Importance.</p>
-              <p><b>(Ex):</b> Economics: Resources, Labor, Infrastructure.</p>
+              <p><b>(Ex):</b> Economics: Resources, Labor, Infrastructure, Efficiency.</p>
               <p><b>[Cx]:</b> Culture: Homogeneity, Acceptance, Strangness, Symbols.</p>
               <p><b>N:</b> Nobility (Imperium).</p>
               <p><b>B:</b> Bases: N=Naval, S=Scout, D=Depot, W=Way, etc.</p>
@@ -787,26 +796,26 @@ table.uwp-data {
     <div class="page">
       <div class="sector_data">
         <h2>{{../name}} &mdash; Page {{index}} of {{../page_count}}</h2>
-        <table>
+        <table style="table-layout: fixed; width: 0">
           <tr>
             {{#columns}}
-            <td class="column">
-              <table class="uwp-data">
+            <td class="column" style="width: 3.8in">
+              <table class="uwp-data" style="table-layout: fixed; width: 0">
                 <tr>
-                  <th>Hex</th>
-                  <th>Name</th>
-                  <th>UWP</th>
-                  <th>Remarks</th>
-                  <th>{Ix}</th>
-                  <th>(Ex)</th>
-                  <th>[Cx]</th>
-                  <th>N</th>
-                  <th>B</th>
-                  <th>Z</th>
-                  <th>PBG</th>
-                  <th>W</th>
-                  <th>A</th>
-                  <th>Stellar</th>
+                  <th style="width: 0.18in">Hex</th>
+                  <th style="width: 0.49in">Name</th>
+                  <th style="width: 0.34in">UWP</th>
+                  <th style="width: 0.67in">Remarks</th>
+                  <th style="width: 0.19in">{Ix}</th>
+                  <th style="width: 0.25in">(Ex)</th>
+                  <th style="width: 0.2in">[Cx]</th>
+                  <th style="width: 0.16in">N</th>
+                  <th style="width: 0.1in">B</th>
+                  <th style="width: 0.06in">Z</th>
+                  <th style="width: 0.13in">PBG</th>
+                  <th style="width: 0.09in">W</th>
+                  <th style="width: 0.175in">A</th>
+                  <th style="width: 0.4in">Stellar</th>
                 </tr>
                 {{#worlds}}
                 <tr>
@@ -814,9 +823,9 @@ table.uwp-data {
                   <td {{#hipop}}class=hipop{{/hipop}}>{{name}}</td>
                   <td>{{uwp}}</td>
                   <td>{{remarks}}</td>
-                  <td>{{ix}}</td>
-                  <td>{{ex}}</td>
-                  <td>{{cx}}</td>
+                  <td><small>{</small> <span style="display: inline-block; width: 8px; text-align: right;">{{ix}}</span> <small>}</small></td>
+                  <td>({{ex}})</td>
+                  <td>[{{cx}}]</td>
                   <td>{{nobility}}</td>
                   <td>{{bases}}</td>
                   <td>{{zone}}</td>
@@ -858,13 +867,14 @@ table.uwp-data {
     <div class="page">
       <div class="content index">
         <h1 class="underline">Sector Index</h1>
-        {{#index}}
-        <div class="dot-leaders">
-          <span>{{name}}</span>
-          <span>{{page}}</span>
+        <div style="column-count: 2">
+          {{#index}}
+          <div class="dot-leaders">
+            <span>{{name}}</span>
+            <span>{{page}}</span>
+          </div>
+          {{/index}}
         </div>
-        {{/index}}
-        </ol>
       </div>
       <div class=pagenum></div>
     </div>
@@ -883,7 +893,7 @@ table.uwp-data {
                     display: block;"></div>
         <p>
           The Imperial Interstellar Scout Service's famed Second
-          Survey of the Imperium (originally published in 1065) now is available
+          Survey of the Imperium (originally published in 1065) is now available
           in an updated commercial edition mapping {{sectors.length}} sectors
           in and around the Third Imperium. All pertinent astrographic data is
           presented on full page (8 1/2 by 11 inch) maps showing every Imperial
@@ -943,7 +953,7 @@ table.uwp-data {
 
       <div class="title_publisher">
         <!--Far Future Enterprises-->
-        <img src="../res/atlas/ffe.svg" alt="Far Future Enterprises" style="width: 1.5in">
+        <img src="../res/atlas/ffe2.svg" alt="Far Future Enterprises">
       </div>
     </div>
 

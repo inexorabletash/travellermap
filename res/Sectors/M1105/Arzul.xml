@@ -1,0 +1,104 @@
+<?xml version="1.0"?>
+<Sector>
+  <Y>-2</Y>
+  <X>3</X>
+  <Name Lang="va">Arzul</Name>
+  <Name Lang="kk">Ingukrax</Name>
+  <Credits>
+    <![CDATA[
+
+             <b>Arzul</b> sector was designed by Jeff Zeitlin.
+
+             Stellar positions were developed by Joe D. Fugate Sr. and
+             appear in <cite>The MegaTraveller Alien, Volume 1: Vilani
+             &amp; Vargr</cite> (Digest Group Publications, 1990).
+
+    ]]>
+  </Credits>
+  <DataFile Author="Jeff Zeitlin" Source="Traveller 5 Second Survey" Type="TabDelimited">Arzul.tab</DataFile>
+  <Subsectors Source="CORE">
+    <Subsector Index="A">Rraz</Subsector>
+    <Subsector Index="B">Kikhu</Subsector>
+    <Subsector Index="C">Voeraghz</Subsector>
+    <Subsector Index="D">Khefs Dzo</Subsector>
+    <Subsector Index="E">Gakhir</Subsector>
+    <Subsector Index="F">Kotsfa</Subsector>
+    <Subsector Index="G">Lekorma</Subsector>
+    <Subsector Index="H">Ghap Dall</Subsector>
+    <Subsector Index="I">Nishamidu</Subsector>
+    <Subsector Index="J">Gorzadi</Subsector>
+    <Subsector Index="K">Veldt</Subsector>
+    <Subsector Index="L">Prairie</Subsector>
+    <Subsector Index="M">Mycocona</Subsector>
+    <Subsector Index="N">Ambro</Subsector>
+    <Subsector Index="O">Plains</Subsector>
+    <Subsector Index="P">Desert</Subsector>
+  </Subsectors>
+  <Allegiances Publisher="HIWG">
+    <Allegiance Code="Hl">Hegemony of Lorean</Allegiance>
+    <Allegiance Code="Jh">Hhkar Sphere</Allegiance>
+    <Allegiance Code="JP">Julian Protectorate</Allegiance>
+  </Allegiances>
+  <Borders>
+    <Border Allegiance="JuHl" Label="Hegemony of Lorean" LabelPosition="0730" WrapLabel="true">0017 0117 0116 0216 0317 0416 0417 0518 0519 0619 0720 0820 0821 0922 0923 1023 1124 1125 1225 1226 1227 1328 1329 1330 1331 1332 1432 1333 1233 1234 1235 1236 1237 1238 1239 1240 1241 1141 1041 0941 0841 0741 0641 0541 0441 0341 0241 0141 0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017</Border>
+    <Border Allegiance="JHhk" Label="Hhkar Sphere" LabelPosition="0217">0116 0117 0118 0119 0118 0117 0116</Border>
+    <Border Allegiance="JuPr" LabelPosition="0609">0000 0100 0200 0201 0302 0402 0502 0601 0702 0802 0902 1001 1101 1200 1300 1301 1302 1303 1403 1504 1604 1705 1605 1506 1406 1407 1408 1309 1209 1210 1111 1011 0912 0811 0711 0611 0512 0412 0413 0414 0415 0416 0417 0518 0519 0619 0720 0820 0821 0922 0923 1023 1124 1125 1225 1226 1227 1328 1329 1330 1331 1332 1432 1333 1233 1234 1235 1236 1237 1238 1239 1240 1241 1141 1041 0941 0841 0741 0641 0541 0441 0341 0241 0141 0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014 0013 0012 0011 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001 0000</Border>
+  </Borders>
+  <Routes Source="Fan Created" Author="Mike Kuehn">
+    <Route Allegiance="JuPr" End="0303" Start="0405"/>
+    <Route Allegiance="JuPr" End="0303" Start="0402"/>
+    <Route Allegiance="JuPr" End="0402" Start="0802"/>
+    <Route Allegiance="JuPr" End="0802" Start="1203"/>
+    <Route Allegiance="JuPr" End="1203" Start="1604"/>
+    <Route Allegiance="JuPr" End="1604" Start="1307"/>
+    <Route Allegiance="JuPr" End="0006" Start="0206"/>
+    <Route Allegiance="JuPr" End="0206" Start="0310"/>
+    <Route Allegiance="JuPr" End="0206" Start="0405"/>
+    <Route Allegiance="JuPr" End="0405" Start="0805"/>
+    <Route Allegiance="JuPr" End="0805" Start="1007"/>
+    <Route Allegiance="JuPr" End="1007" Start="1307"/>
+    <Route Allegiance="JuPr" End="1007" Start="1109"/>
+    <Route Allegiance="JuPr" End="1109" Start="1309"/>
+    <Route Allegiance="JuPr" End="1109" Start="1210"/>
+    <Route Allegiance="JuPr" End="0310" Start="0211"/>
+    <Route Allegiance="JuPr" End="0414" Start="0518"/>
+    <Route Allegiance="JuPr" End="0012" Start="0211"/>
+    <Route Allegiance="JuPr" End="1210" Start="0912"/>
+    <Route Allegiance="JuPr" End="0912" Start="0611"/>
+    <Route Allegiance="JuPr" End="0611" Start="0310"/>
+    <Route Allegiance="JuPr" End="0414" Start="0211"/>
+    <Route Allegiance="JuHl" End="0024" Start="0123"/>
+    <Route Allegiance="JuHl" End="0123" Start="0522"/>
+    <Route Allegiance="JuHl" End="0522" Start="0722"/>
+    <Route Allegiance="JuHl" End="0722" Start="0724"/>
+    <Route Allegiance="JuHl" End="0518" Start="0519"/>
+    <Route Allegiance="JuHl" End="0519" Start="0522"/>
+    <Route Allegiance="JuHl" End="0724" Start="1026"/>
+    <Route Allegiance="JuHl" End="1026" Start="1225"/>
+    <Route Allegiance="JuHl" End="0724" Start="0627"/>
+    <Route Allegiance="JuHl" End="0627" Start="0527"/>
+    <Route Allegiance="JuHl" End="0627" Start="0928"/>
+    <Route Allegiance="JuHl" End="0928" Start="1228"/>
+    <Route Allegiance="JuHl" End="0331" Start="0633"/>
+    <Route Allegiance="JuHl" End="0633" Start="0832"/>
+    <Route Allegiance="JuHl" End="0832" Start="1033"/>
+    <Route Allegiance="JuHl" End="1033" Start="1232"/>
+    <Route Allegiance="JuHl" End="0633" Start="0434"/>
+    <Route Allegiance="JuHl" End="0633" Start="0834"/>
+    <Route Allegiance="JuHl" End="0834" Start="0935"/>
+    <Route Allegiance="JuHl" End="0935" Start="1235"/>
+    <Route Allegiance="JuHl" End="0834" Start="0738"/>
+    <Route Allegiance="JuHl" End="0136" StartOffsetX="-1" StartOffsetY="0"  Start="3233"/>
+    <Route Allegiance="JuHl" End="0136" StartOffsetX="-1" StartOffsetY="0"  Start="3138"/>
+    <Route Allegiance="JuHl" End="0136" Start="0434"/>
+    <Route Allegiance="JuHl" End="0434" Start="0637"/>
+    <Route Allegiance="JuHl" End="0637" Start="0338"/>
+    <Route Allegiance="JuHl" End="0637" Start="0738"/>
+    <Route Allegiance="JuHl" End="0738" Start="0839"/>
+    <Route Allegiance="JuHl" End="0839" Start="1140"/>
+    <Route Allegiance="JuHl" End="1140" Start="1141"/>
+    <Route Allegiance="JuHl" End="0140" Start="0338"/>
+    <Route Allegiance="JuHl" End="0140" Start="0141"/>
+    <Route Allegiance="JuHl" End="1228" Start="1232"/>
+  </Routes>
+</Sector>

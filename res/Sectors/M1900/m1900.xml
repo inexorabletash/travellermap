@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
+<?xml-stylesheet type="text/xsl" href="../../credits.xslt"?>
 <Sectors>
-  <Sector Abbreviation="Gvur" Tags="Apocryphal" Selected="true" Milieu="M1900">
+  <Sector Abbreviation="Gvur" Selected="true" Milieu="M1900">
     <Y>-2</Y>
     <X>-4</X>
     <Name Lang="va">Gvurrdon</Name>
@@ -8,7 +9,7 @@
     <DataFile Author="Robert Eaglestone" Type="SecondSurvey">Gvur.txt</DataFile>
     <MetadataFile>Gvur.xml</MetadataFile>
   </Sector>
-  <Sector Abbreviation="Spin" Tags="Apocryphal" Selected="true" Milieu="M1900">
+  <Sector Abbreviation="Spin" Selected="true" Milieu="M1900">
     <Y>-1</Y>
     <X>-4</X>
     <Name>Spinward Marches</Name>

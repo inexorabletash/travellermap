@@ -1,0 +1,231 @@
+<?xml version="1.0"?>
+<Sector>
+  <Name>Spinward Marches</Name>
+  <Credits>
+    <![CDATA[
+
+             <b>The Spinward Marches</b> were designed by Marc W.
+             Miller and appear in <cite>Traveller Supplement 3: The
+             Spinward Marches</cite> (GDW, 1979).
+             
+             M1201 data comes from the "The Regency Sourcebook: Keepers of the Flame"
+
+    ]]>
+  </Credits>
+  <DataFile Source="TNE Rulebook" Milieu="M1201" Type="TabDelimited">Spinward Marches.tab</DataFile>
+  <Subsectors>
+    <Subsector Index="A">Cronor</Subsector>
+    <Subsector Index="B">Jewell</Subsector>
+    <Subsector Index="C">Regina</Subsector>
+    <Subsector Index="D">Aramis</Subsector>
+    <Subsector Index="E">Querion</Subsector>
+    <Subsector Index="F">Vilis</Subsector>
+    <Subsector Index="G">Lanth</Subsector>
+    <Subsector Index="H">Rhylanor</Subsector>
+    <Subsector Index="I">Daryen</Subsector>
+    <Subsector Index="J">Sword Worlds</Subsector>
+    <Subsector Index="K">Lunion</Subsector>
+    <Subsector Index="L">Mora</Subsector>
+    <Subsector Index="M">Five Sisters</Subsector>
+    <Subsector Index="N">Plankwell</Subsector>
+    <Subsector Index="O">Glisten</Subsector>
+    <Subsector Index="P">Trin's Shroud</Subsector>
+  </Subsectors>
+  <Routes>
+    <Route Start="1106" End="1006" />
+    <Route Start="1106" End="1005" />
+    <Route Start="1106" End="1204" />
+    <Route Start="1106" End="1307" />
+    <Route Start="1307" End="1705" />
+    <Route Start="1826" End="2228" />
+    <Route Start="1705" End="1904" />
+    <Route Start="1904" End="1903" />
+    <Route Start="1903" End="2202" />
+    <Route Start="1904" End="2005" />
+    <Route Start="2005" End="2007" />
+    <Route Start="2007" End="1910" />
+    <Route Start="1910" End="1810" />
+    <Route Start="1810" End="1711" />
+    <Route Start="1711" End="1413" />
+    <Route Start="1413" End="1116" />
+    <Route Start="1116" End="1118" />
+    <Route Start="1910" End="1912" />
+    <Route Start="1912" End="1815" />
+    <Route Start="1815" End="1719" />
+    <Route Start="1719" End="1920" />
+    <Route Start="1920" End="2319" />
+    <Route Start="2319" End="2417" />
+    <Route Start="2417" End="2716" />
+    <Route Start="2716" End="2814" />
+    <Route Start="2814" End="2712" />
+    <Route Start="2712" End="2510" />
+    <Route Start="2510" End="2410" />
+    <Route Start="2814" End="2913" />
+    <Route Start="2913" End="3010" />
+    <Route Start="3010" End="3110" />
+    <Route Start="3110" End="3209" />
+    <Route Start="3209" End="3309" />
+    <Route Start="2913" End="3212" />
+    <Route Start="3212" End="3312" />
+    <Route Start="2319" End="2418" />
+    <Route Start="2418" End="2621" />
+    <Route Start="2621" End="2323" />
+    <Route Start="2323" End="2124" />
+    <Route Start="2124" End="1824" />
+    <Route Start="1824" End="1526" />
+
+    <Route Start="1526" End="1525" Allegiance="SwCf" />
+    <Route Start="1525" End="1524" Allegiance="SwCf" />
+    <Route Start="1524" End="1523" Allegiance="SwCf" />
+    <Route Start="1523" End="1522" Allegiance="SwCf" />
+    <Route Start="1524" End="1424" Allegiance="SwCf" />
+    <Route Start="1424" End="1324" Allegiance="SwCf" />
+    <Route Start="1324" End="1223" Allegiance="SwCf" />
+    <Route Start="1223" End="1123" Allegiance="SwCf" />
+    <Route Start="1123" End="1022" Allegiance="SwCf" />
+    <Route Start="1022" End="0922" Allegiance="SwCf" />
+    <Route Start="0922" End="0921" Allegiance="SwCf" />
+
+    <Route Start="1424" End="1325" Allegiance="SwCf" />
+    <Route Start="1325" End="1225" Allegiance="SwCf" />
+    <Route Start="1225" End="1126" Allegiance="SwCf" />
+    <Route Start="1126" End="1026" Allegiance="SwCf" />
+    <Route Start="1026" End="0927" Allegiance="SwCf" />
+
+    <Route Start="1526" End="1329" />
+    <Route Start="1329" End="0930" />
+    <Route Start="0930" End="0732" />
+    <Route Start="0732" End="0534" />
+    <Route Start="0534" End="0433" />
+    <Route Start="0433" End="0333" />
+    <Route Start="0333" End="0133" />
+    <Route Start="0534" End="0538" />
+    <Route Start="0538" End="0139" />
+    <Route Start="2124" End="2125" />
+    <Route Start="2125" End="1826" />
+    <Route Start="2125" End="2327" />
+    <Route Start="2327" End="2228" />
+    <Route Start="2228" End="2231" />
+    <Route Start="2231" End="2334" />
+    <Route Start="2334" End="2336" />
+    <Route Start="2336" End="2036" />
+    <Route Start="2036" End="1937" />
+    <Route Start="1937" End="1737" />
+    <Route Start="1737" End="1537" />
+    <Route Start="2036" End="1938" />
+    <Route Start="2036" End="2138" />
+    <Route Start="2138" End="2140" />
+    <Route Start="2140" EndOffsetY="1" End="2102" />
+    <Route Start="2336" End="2536" />
+    <Route Start="2536" End="2537" />
+    <Route Start="2537" End="2637" />
+    <Route Start="2637" End="2739" />
+    <Route Start="2739" End="2839" />
+    <Route Start="2839" End="2940" />
+    <Route Start="2839" End="3139" />
+    <Route Start="2637" End="2936" />
+    <Route Start="2936" End="3235" />
+    <Route Start="3235" End="3032" />
+    <Route Start="3032" End="2733" />
+    <Route Start="2733" End="2536" />
+    <Route Start="2733" End="2334" />
+    <Route Start="3032" End="3030" />
+    <Route Start="3030" End="3029" />
+    <Route Start="3029" End="2927" />
+    <Route Start="2927" End="2828" />
+    <Route Start="2927" End="3025" />
+    <Route Start="3025" End="2726" />
+    <Route Start="2726" End="2324" />
+    <Route Start="2323" End="2324" />
+    <Route Start="3025" End="3124" />
+    <Route Start="3124" End="3324" />
+    <Route Start="3003" End="3103" />
+    <Route Start="3103" End="3202" />
+
+    <Route Start="2701" End="3002" />
+    <Route Start="3103" End="3002" />
+
+    <Route Start="2202" End="2402" />
+    <Route Start="2402" End="2701" />
+    <Route Start="2110" End="1910" />
+    <Route Start="2110" End="2410" />
+
+    <Route Start="0001" End="0103" Allegiance="ZhCo" />
+    <Route Start="0103" End="0304" Allegiance="ZhCo" />
+    <Route Start="0304" End="0307" Allegiance="ZhCo" />
+    <Route Start="0307" End="0608" Allegiance="ZhCo" />
+    <Route Start="0608" End="0610" Allegiance="ZhCo" />
+    <Route Start="0610" End="0712" Allegiance="ZhCo" />
+    <Route Start="0712" End="0614" Allegiance="ZhCo" />
+    <Route Start="0614" End="0412" Allegiance="ZhCo" />
+    <Route Start="0303" End="0304" Allegiance="ZhCo" />
+    <Route Start="0304" End="0705" Allegiance="ZhCo" />
+    <Route Start="0705" End="0904" Allegiance="ZhCo" />
+    <Route Start="0904" End="1103" Allegiance="ZhCo" />
+    <Route Start="1103" End="1402" Allegiance="ZhCo" />
+
+
+    <Route Start="0421" End="0223" Allegiance="DaCf" />
+    <Route Start="0223" End="0325" Allegiance="DaCf" />
+    <Route Start="0325" End="0426" Allegiance="DaCf" />
+    <Route Start="0426" End="0527" Allegiance="DaCf" />
+    <Route Start="0527" End="0727" Allegiance="DaCf" />
+    <Route Start="0325" End="0624" Allegiance="DaCf" />
+    <Route Start="0624" End="0724" Allegiance="DaCf" />
+  </Routes>
+  <Stylesheet>
+    border.Re { color: lightblue; }
+    route.Re { color: lightgreen; }
+
+    border.DaCf { color: lime; }
+    route.DaCf { color: lime; }
+
+    border.SwCf { color: blue; }
+    route.SwCf { color: #006600; }
+  </Stylesheet>
+  <Borders>
+    <Border Allegiance="DaCf" LabelPosition="0423" WrapLabel="true">
+      0223 0323 0322 0321 0421 0522 0621 0620 0720 0820 0821 0822 0723 0724 0725 0726 0727
+      0728 0729 0628 0528 0427 0426 0326 0325 0224 0223
+    </Border>
+
+    <Border Allegiance="ZhIN" Label="Zhodani Consulate" LabelPosition="0205" WrapLabel="true">
+      0000 0100 0200 0300 0301 0401 0502 0601 0602 0703 0803 0904 1003 1103 1102 1201 1302 1401 1402 1303 1202 1103 1003 0904 0804 0805 0706 0606 0607 0608 0609 0610 0611 0712 0612 0613 0614 0514 0413 0412 0411 0311 0310 0309 0308 0307 0206 0106 0005 0004 0003 0002 0001 0000
+    </Border>
+
+    <Border Allegiance="SwCf" LabelPosition="1128" WrapLabel="true">
+      0927 1026 1126 1225 1126 1127 1128 1129 1130 1129 1128 1027 0927
+    </Border>
+
+    <Border Allegiance="Re" Label="Regency" LabelPosition="2021">
+      0909 0808 0807 0907 1006 1005 1105 1204 1305 1405 1505 1604 1704 1803 1802 1903 2002 2102 2201
+      2302 2402 2502 2601 2701 2801 2902 3001 3102 3202 3303 3304 3305
+      3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319
+      3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3331 3332 3333
+      3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741
+      2641 2541 2441 2341 2241 2141 2041 1941 1841 1840 1740 1739 1738 1637
+      1537 1436 1337 1237 1337 1436 1435 1535 1534 1533 1532 1531 1430
+      1330 1329 1328 1327 1326 1325 1324 1223 1123 1022 0922 0921 0920 0919 1018 1118 1117 1116 1215
+      1214 1213 1212 1312 1311 1410 1510 1509 1408 1407 1307 1207 1108 1008 0909
+    </Border>
+
+    <Border Allegiance="Re" Label="Regency" LabelPosition="0335">
+      0133 0232 0332 0432 0533 0632 0732 0731 0732 0733 0734 0834 0835 0836 0837 0838
+      0739 0638 0539 0438 0339 0238 0139 0138 0137 0136 0135 0134 0133
+    </Border>
+    <Border Allegiance="Re" Label="Regency" ShowLabel="false">
+      0930
+    </Border>
+
+    <Border Allegiance="Fd" label="Federation of Arden" LabelPosition="1012" WrapLabel="true">
+      0911 1010 1110 1209 1210 1111 1011 0912 0913 0914 0915 0914 0913 0912 0911
+    </Border>
+
+  </Borders>
+
+  <Allegiances>
+    <Allegiance Code="Re">Regency</Allegiance>
+    <Allegiance Code="Fd">Federation of Arden</Allegiance>
+    <Allegiance Code="Rf">Regency Frontier</Allegiance>
+  </Allegiances>
+</Sector>

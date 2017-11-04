@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Sector Abbreviation="Gvur" Tags="Unreviewed">
+  <Y>-2</Y>
+  <X>-4</X>
+  <Name Lang="va">Gvurrdon</Name>
+  <Name Lang="zh">Briakqra'</Name>
+  <Credits>
+    <![CDATA[
+
+             <b>Gvurrdon</b> sector was designed by J. Andrew Keith,
+             Marc W. Miller and John Harshman and appears in
+             <cite>Alien Module 3: Vargr</cite> (GDW, 1984).
+             
+             M1200 data from Gvurrdon Sector Campaign Book by Roger Malmstein
+
+    ]]>
+  </Credits>
+  <Product Publisher="Mongoose Publishing" Author="Simon Beal" Title="Alien Module 2: Vargr" Ref="http://www.mongoosepublishing.com/alien-module-2-vargr.html"/>
+  <DataFile Source="Traveller 5 Second Survey" Author="J. Andrew Keith, Marc Miller and John Harshman" Milieu="M1201" Type="TabDelimited">Gvurrdon.tab</DataFile>
+  <Subsectors>
+    <Subsector Index="A" Author="Roger Myhre" Publisher="HIWG" Ref="http://traveller.mu.org/archive/HIWG/Gvurdon/6F01.TXT">Ongvos</Subsector>
+    <Subsector Index="B" Author="Roger Myhre" Publisher="HIWG" Ref="http://traveller.mu.org/archive/HIWG/Gvurdon/6F01.TXT">Zoghz</Subsector>
+    <Subsector Index="C" Author="Roger Myhre" Publisher="HIWG" Ref="http://traveller.mu.org/archive/HIWG/Gvurdon/6F01.TXT">Adhsakh</Subsector>
+    <Subsector Index="D" Author="Roger Myhre" Publisher="HIWG" Ref="http://traveller.mu.org/archive/HIWG/Gvurdon/6F01.TXT">Fanganger</Subsector>
+    <Subsector Index="E" Author="Roger Myhre" Publisher="HIWG" Ref="http://traveller.mu.org/archive/HIWG/Gvurdon/6F01.TXT">Uerra Rueshken</Subsector>
+    <Subsector Index="F" Author="Roger Myhre" Publisher="HIWG" Ref="http://traveller.mu.org/archive/HIWG/Gvurdon/6F01.TXT">Dzen</Subsector>
+    <Subsector Index="G" Author="Roger Myhre" Publisher="HIWG" Ref="http://traveller.mu.org/archive/HIWG/Gvurdon/6F01.TXT">Lla Iz Therrg</Subsector>
+    <Subsector Index="H" Author="Roger Myhre" Publisher="HIWG" Ref="http://traveller.mu.org/archive/HIWG/Gvurdon/6F01.TXT">Thoengling</Subsector>
+    <Subsector Index="I" Author="Roger Myhre" Publisher="HIWG" Ref="http://traveller.mu.org/archive/HIWG/Gvurdon/6F01.TXT">Kfan Uzangou</Subsector>
+    <Subsector Index="J" Author="Roger Myhre" Publisher="HIWG" Ref="http://traveller.mu.org/archive/HIWG/Gvurdon/6F01.TXT">Ruhk Odzuetarug</Subsector>
+    <Subsector Index="K" Author="Roger Myhre" Publisher="HIWG" Ref="http://traveller.mu.org/archive/HIWG/Gvurdon/6F01.TXT">Ksits Usathu Odzuetarug</Subsector>
+    <Subsector Index="L" Author="Roger Myhre" Publisher="HIWG" Ref="http://traveller.mu.org/archive/HIWG/Gvurdon/6F01.TXT">Aelluekh</Subsector>
+    <Subsector Index="M" Source="Supplement 3 - The Spinward Marches">Lianic</Subsector>
+    <Subsector Index="N" Source="Supplement 3 - The Spinward Marches">Spurl</Subsector>
+    <Subsector Index="O" Source="Supplement 3 - The Spinward Marches">Uthe</Subsector>
+    <Subsector Index="P" Source="Supplement 3 - The Spinward Marches">Firgr</Subsector>
+  </Subsectors>
+
+  <Allegiances>
+    <Allegiance Code="Dr">Droyne World</Allegiance>
+    <Allegiance Code="Vh">Gvaeknoks Trade Union</Allegiance>
+    <Allegiance Code="Vl">Rroerz Uerra</Allegiance>
+    <Allegiance Code="Vm">Rueks Legacy</Allegiance>
+    <Allegiance Code="Vn">Ve Ekhlle Ksafi</Allegiance>
+    <Allegiance Code="Vp">Kedzudh Aeng</Allegiance>
+    <Allegiance Code="Vq">The Freedom League</Allegiance>
+    <Allegiance Code="Vb">Thirz Uerra</Allegiance>
+    <Allegiance Code="Vc">Dzen Aeng Kho</Allegiance>
+    <Allegiance Code="Vd">Noerrgh Confederate</Allegiance>
+    <Allegiance Code="Ve">Thoengling Raghz</Allegiance>
+    <Allegiance Code="Vf">Ongue Republic</Allegiance>
+    <Allegiance Code="Vg">Allez</Allegiance>
+    <Allegiance Code="Wi">Wilds</Allegiance>
+    <Allegiance Code="">Barren</Allegiance>
+  </Allegiances>
+
+
+  <Stylesheet>
+    border.Vh, border.Vl, border.Vm, border.Vn, border.Vp, border.Vq,
+    border.Vb,
+    border.Vc,
+    border.Vd,
+    border.Ve,
+    border.Vf,
+    border.Vg { color: olivedrab; }
+  </Stylesheet>
+
+  <Borders>
+    <Border Allegiance="Vb">
+      0008 0109 0208 0308 0407 0408 0409 0410 0511
+      0611 0711 0811 0911 1010 1009 1109 1209 1310 1410 1511 1512
+      1411 1312 1211 1112 1012 1013 1014 1115 1215 1315 1415 1316 1317 1217 1218
+      1219 1120 1120 1020
+      0921 0821 0721 0621 0522 0422 0323 0223 0123
+      0023 0022 0021 0020 0019 0018 0017 0016 0015
+      0014 0013 0012 0011 0010 0009 0008
+    </Border>
+    <Border Allegiance="Vc">
+      1318 1417 1517 1616 1615 1614 1514 1413 1514 1613 1713 1812 1912 1913 1914 1915 2015 2016 2117 2118 2119 2219 2120 2121 2122 2123 2023 1924 1823 1724 1623 1524 1523 1522 1521 1420 1320 1319 1318
+    </Border>
+    <Border Allegiance="Vd">
+      0709 0808 0807 0908 0808 0809 0709
+    </Border>
+    <Border Allegiance="Ve">
+      2323 2422 2522 2523 2524 2525 2526 2626 2727 2827 2828 2829 2830 2731 2630 2530 2529 2528 2527 2526 2425 2424 2423 2323
+    </Border>
+    <Border Allegiance="Vf">
+      1125 1225 1226 1327 1226 1126 1125
+    </Border>
+    <Border Allegiance="Vg">
+      0929 1028 1027 1128 1129 1029 0930 0929
+    </Border>
+    <Border Allegiance="Vh">
+      1428 1528 1428 1429 1430 1429 1428
+    </Border>
+    <Border Allegiance="Vl">
+      0937 1036 1037 1038 1039 0939 0938 0937
+    </Border>
+    <Border Allegiance="Vm">
+      1434 1535 1634 1734 1634 1535 1434
+    </Border>
+    <Border Allegiance="Vn">
+      1838 1738 1837 1937 1936 2036 2137 2037 1938 1838
+      1839 1838
+    </Border>
+    <Border Allegiance="Vp">
+      2240 2340 2339 2338 2437 2537 2637 2737 2836
+      2936 3035 3034 3134 3133 3233
+      3134 3135 3136 3137 3138 3238
+      3139 3039 3040 2940 2840 2740
+      2640 2540 2440 2340 2340
+    </Border>
+    <Border Allegiance="Vq">
+      1830 1930 2029 2030 1930 1830
+    </Border>
+    <Border Allegiance="ZhCo">
+      0000 0100 0200 0201 0202 0203 0204 0205 0105 0005 0004 0003 0002 0001 0000
+    </Border>
+    <Border Allegiance="ZhCo">
+      0026 0127 0226 0327 0328 0428 0429 0430 0431
+      0432 0433 0534 0634 0535 0435 0436 0437 0438
+      0339 0239 0240 0341 0241 0141 0041 0040 0039
+      0038 0037 0036 0035 0034 0033 0032 0031 0030
+      0029 0028 0027 0026
+    </Border>
+  </Borders>
+  <Routes>
+  </Routes>
+</Sector>

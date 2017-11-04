@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<Sector Abbreviation="Empt" Tags="Unreviewed">
+  <Y>-1</Y>
+  <X>2</X>
+  <Name>Empty Quarter</Name>
+  <Name Lang="vi">Gushgus</Name>
+  <Credits>
+    <![CDATA[
+
+             <b>Empty Quarter</b> sector was designed by Marc W.
+             Miller and appears in <cite>Atlas of the Imperium</cite>
+             (GDW, 1984).
+
+             It was refined by Jason "Flynn" Kemp and Alvin Plummer
+             and appears in <cite>Stellar Reaches Magazine</cite>.
+             
+             Adapted from details CARI (http://www.downport.com/bard/bard/cari/cari9009.html) 
+             and collapsed by Mark Humphreys
+
+    ]]>
+  </Credits>
+  <DataFile Milieu="M1201" Type="TabDelimited">Empty Quarter.tab</DataFile>
+  <Subsectors>
+    <Subsector Index="A">Tsahrroek</Subsector>
+    <Subsector Index="B">Kourae</Subsector>
+    <Subsector Index="C">Flange</Subsector>
+    <Subsector Index="D">Tsosoe</Subsector>
+    <Subsector Index="E">Kakhasaek</Subsector>
+    <Subsector Index="F">Tokitre</Subsector>
+    <Subsector Index="G">Cotan</Subsector>
+    <Subsector Index="H">Nisaga</Subsector>
+    <Subsector Index="I">Lentuli</Subsector>
+    <Subsector Index="J">Yogesh</Subsector>
+    <Subsector Index="K">Hebrin</Subsector>
+    <Subsector Index="L">Turley</Subsector>
+    <Subsector Index="M">Nulinad</Subsector>
+    <Subsector Index="N">Gimushi</Subsector>
+    <Subsector Index="O">Udusis</Subsector>
+    <Subsector Index="P">Yashodhan</Subsector>
+  </Subsectors>
+  
+      <Allegiances>
+    <Allegiance Code="Cc">Grand Council of Creches</Allegiance>
+    <Allegiance Code="Wi">Wilds</Allegiance>
+    <Allegiance Code="">Barren</Allegiance>    
+  </Allegiances>
+
+    <Stylesheet>
+    border.Cc { color: lightgreen; }
+  </Stylesheet>
+
+  
+  <Borders>
+  <Border Allegiance="Cc" Label="Grand Council of Creches">
+    0128 0127 0227 0327 0326 0325 0326 0426 0327 0328 0329 0229 0228 0128
+  </Border>  
+  
+  </Borders>
+  <Routes>
+  </Routes>
+</Sector>

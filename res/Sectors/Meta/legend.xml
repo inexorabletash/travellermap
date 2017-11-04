@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Sectors>
+  <Sector>
+    <Y>-8</Y>
+    <X>32</X>
+    <Name>Legend</Name>
+    <DataFile>legend.sec</DataFile>
+    <Labels>
+      <Label Hex="0601">World&#x0A;Characteristics</Label>
+      <Label Hex="0605">Population</Label>
+
+      <Label Hex="1401">Travel Zones</Label>
+      <Label Hex="1405">Bases</Label>
+
+      <Label Hex="1001">Map Legend</Label>
+      <Label Hex="1002" Color="white" Size="small">Starport&#x0A;Type</Label>
+      <Label Hex="1103" Color="white" Size="small">Gas Giant</Label>
+      <Label Hex="1104" Color="white" Size="small">&#x0A;Allegiance</Label>
+      <Label Hex="1004" Color="white" Size="small">World&#x0A;Name</Label>
+      <Label Hex="0904" Color="white" Size="small">X-Boat&#x0A;Route</Label>
+      <Label Hex="0903" Color="white" Size="small">Bases</Label>
+
+      <Label Hex="1106" Color="white" Size="small">No&#x0A;Gas Giant</Label>
+      <Label Hex="0906" Color="white" Size="small">Travel&#x0A;Zone</Label>
+      <Label Hex="0907" Color="white" Size="small">Border</Label>
+    </Labels>
+    <Routes>
+      <Route Start="1003" End="0904" />
+    </Routes>
+    <Borders>
+      <Border Allegiance="Im" ShowLabel="false">0908 1007 1107 1206 1207 1208 1109 1009 0910 0909 0908</Border>
+    </Borders>
+  </Sector>
+</Sectors>

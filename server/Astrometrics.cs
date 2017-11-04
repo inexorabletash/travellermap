@@ -23,15 +23,13 @@ namespace Maps
         // Reference (Core 0140)
         // Origin of the coordinate system, relative to the containing sector
         // ("Reference, Center of the Imperium" The Travellers' Digest 10)
-        public static readonly Point ReferenceSector = new Point(0, 0);
-        public static readonly Hex ReferenceHex = new Hex(01, 40);
+        public static Point ReferenceSector => new Point(0, 0);
+        public static Hex ReferenceHex => new Hex(01, 40);
 
-        public static readonly Hex SectorCenter = new Hex(SectorWidth / 2, SectorHeight / 2);
+        public static Hex SectorCenter => new Hex(SectorWidth / 2, SectorHeight / 2);
 
-        public static Point LocationToCoordinates(Location location)
-        {
-            return LocationToCoordinates(location.Sector, location.Hex);
-        }
+        public static Point LocationToCoordinates(Location location) => LocationToCoordinates(location.Sector, location.Hex);
+
         public static Point LocationToCoordinates(Point sector, Hex hex)
         {
             int x = (sector.X - ReferenceSector.X) * SectorWidth + (hex.X - ReferenceHex.X);
@@ -39,10 +37,9 @@ namespace Maps
 
             return new Point(x, y);
         }
-        public static Location CoordinatesToLocation(Point coordinates)
-        {
-            return CoordinatesToLocation(coordinates.X, coordinates.Y);
-        }
+
+        public static Location CoordinatesToLocation(Point coordinates) => CoordinatesToLocation(coordinates.X, coordinates.Y);
+
         public static Location CoordinatesToLocation(int x, int y)
         {
             x += Astrometrics.ReferenceHex.X - 1;
@@ -132,54 +129,43 @@ namespace Maps
         public Hex(Hex other) { X = other.X; Y = other.Y; }
         public Hex(string s)
         {
-            byte x, y;
-            if (s.Length == 4 && byte.TryParse(s.Substring(0, 2), out x) && byte.TryParse(s.Substring(2, 2), out y))
+            if (string.IsNullOrEmpty(s))
+            {
+                X = Y = 0;
+            }
+            else if (s.Length == 4 && byte.TryParse(s.Substring(0, 2), out byte x) && byte.TryParse(s.Substring(2, 2), out byte y))
             {
                 X = x; Y = y;
             }
             else
             {
-                X = 0; Y = 0;
+                throw new Exception($"'{s}' is not a valid hex");
             }
         }
 
         public byte X { get; set; }
         public byte Y { get; set; }
 
-        public bool IsEmpty { get { return X == 0 && Y == 0; } }
-        public bool IsValid { get { return 1 <= X && X <= Astrometrics.SectorWidth && 1 <= Y && Y <= Astrometrics.SectorHeight; } }
+        public bool IsEmpty => (X == 0 && Y == 0);
+        public bool IsValid => (1 <= X && X <= Astrometrics.SectorWidth && 1 <= Y && Y <= Astrometrics.SectorHeight);
+        public static bool operator <(Hex a, Hex b) => (a.X < b.X) || (a.X == b.X && a.Y < b.Y);
+        public static bool operator >(Hex a, Hex b) => (a.X > b.X) || (a.X == b.X && a.Y > b.Y);
 
-        public int ToInt()
-        {
-            return X * 100 + Y;
-        }
+        public int ToInt() => X * 100 + Y;
 
-        public override string ToString()
-        {
-            return ToInt().ToString("0000", CultureInfo.InvariantCulture);
-        }
+        public override string ToString() => ToInt().ToString("0000", CultureInfo.InvariantCulture);
 
-        public string ToSubsectorString()
-        {
-            return (
+        public string ToSubsectorString() => (
                 ((X - 1) % Astrometrics.SubsectorWidth + 1) * 100 +
-                ((Y - 1) % Astrometrics.SubsectorHeight + 1)).ToString("0000", CultureInfo.InvariantCulture);
-        }
+                ((Y - 1) % Astrometrics.SubsectorHeight + 1)
+            ).ToString("0000", CultureInfo.InvariantCulture);
 
-        public override bool Equals(object other)
-        {
-            return other is Hex && Equals((Hex)other);
-        }
-        public bool Equals(Hex other)
-        {
-            return other.X == X && other.Y == Y;
-        }
-        public static bool operator ==(Hex a, Hex b) { return a.Equals(b); }
-        public static bool operator !=(Hex a, Hex b) { return !a.Equals(b); }
-        public override int GetHashCode()
-        {
-            return ToInt();
-        }
+        public override bool Equals(object other) => other is Hex hex && Equals(hex);
+        public bool Equals(Hex other) => other.X == X && other.Y == Y;
+
+        public static bool operator ==(Hex a, Hex b) => a.Equals(b);
+        public static bool operator !=(Hex a, Hex b) => !a.Equals(b);
+        public override int GetHashCode() => ToInt();
 
         public static readonly Hex Empty = new Hex();
     }

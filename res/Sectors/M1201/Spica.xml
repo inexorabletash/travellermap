@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<Sector xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Name>Spica</Name>
+  <Credits>
+    <![CDATA[
+      <b>Spica</b> sector was designed by Marc W. Miller and
+      appears in <cite>Atlas of the Imperium</cite> (GDW,
+      1984).
+
+      It was refined by Clay Bush.
+
+      TNE data from <cite>H is for Hiver</cite>, by Leroy W.L. Guatney - https://web.archive.org/web/20071126022750/http://home.earthlink.net/~ngc5139/FDA/His4Hiver.html
+      Borders from <cite>Survival Margin</cite> (GDW, 1993). 
+    ]]>
+  </Credits>
+  <Subsectors>
+    <Subsector Index="A"></Subsector>
+    <Subsector Index="B"></Subsector>
+    <Subsector Index="C"></Subsector>
+    <Subsector Index="D"></Subsector>
+    <Subsector Index="E"></Subsector>
+    <Subsector Index="F"></Subsector>
+    <Subsector Index="G"></Subsector>
+    <Subsector Index="H"></Subsector>
+    <Subsector Index="I"></Subsector>
+    <Subsector Index="J"></Subsector>
+    <Subsector Index="K"></Subsector>
+    <Subsector Index="L"></Subsector>
+    <Subsector Index="M"></Subsector>
+    <Subsector Index="N"></Subsector>
+    <Subsector Index="O"></Subsector>
+    <Subsector Index="P">Syzygy</Subsector>
+  </Subsectors>
+  <Allegiances>
+    <Allegiance Code="Bz">Hive Federation Buffer Zone</Allegiance>
+  </Allegiances>
+  <Borders>
+    <Border WrapLabel="false" Allegiance="HvFd">
+      1541 1640 1740 1739 1838 1938 1937 1936 2035 2034 2033 
+      2133 2232 2231 2230 2330 2329 2329 2428 2529 2628 2728 
+      2827 2927 3026 3126 3225 3326 3327 3328 3329 3330 3331 
+      3332 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 
+      3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141
+      2041 1941 1841 1741 1641 1541
+    </Border>
+
+    <Border Allegiance="Bz" Label="Hive Federation Buffer Zone" WrapLabel="true">
+      1029 1130 1229 1228 1227 1226 1326 1425 1424 1324 1224 1324
+      1423 1422 1322 1321 1320 1319 1419 1519 1619 1719 1718 1717
+      1616 1717 1817 1918 2017 2117 2217 2318 2417 2517 2616 2716
+      2816 2917 3016 3116 3117 3217 3317 3316 3317 3318 3319 3320
+      3321 3322 3323 3324 3325 3224 3125 3025 2926 2826 2727 2627 
+      2528 2427 2328 2228 2229 2130 2131 2132 2032 1933 1934 1935 
+      1835 1836 1837 1738 1638 1639 1540 1440 1341 1241 1141 1040 
+      1039 1038 1139 1140 1240 1340 1339 1338 1437 1436 1536 1535 
+      1534 1533 1532 1431 1332 1333 1232 1231 1230 1130 1029
+    </Border>
+      
+  </Borders>
+</Sector>

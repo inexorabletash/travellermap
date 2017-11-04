@@ -1,4 +1,6 @@
-﻿using System.Drawing;
+﻿using Json;
+using Maps.Utilities;
+using System.Drawing;
 using System.Web;
 using System.Xml.Serialization;
 
@@ -6,48 +8,37 @@ namespace Maps.API
 {
     internal class CoordinatesHandler : DataHandlerBase
     {
-        protected override string ServiceName { get { return "coordinates"; } }
-
-        protected override DataResponder GetResponder(HttpContext context)
-        {
-            return new Responder(context);
-        }
+        protected override DataResponder GetResponder(HttpContext context) => new Responder(context);
 
         private class Responder : DataResponder
         {
             public Responder(HttpContext context) : base(context) { }
-            public override string DefaultContentType { get { return System.Net.Mime.MediaTypeNames.Text.Xml; } }
-
-            public override void Process()
+            public override string DefaultContentType => ContentTypes.Text.Xml;
+            public override void Process(ResourceManager resourceManager)
             {
                 // NOTE: This (re)initializes a static data structure used for 
                 // resolving names into sector locations, so needs to be run
                 // before any other objects (e.g. Worlds) are loaded.
-                ResourceManager resourceManager = new ResourceManager(Context.Server);
                 SectorMap.Milieu map = SectorMap.ForMilieu(resourceManager, GetStringOption("milieu"));
 
-                Location loc = Location.Empty;
+                Location loc;
 
                 // Accept either sector [& hex] or sx,sy [& hx,hy] or x,y
                 if (HasOption("sector"))
                 {
                     string sectorName = GetStringOption("sector");
-                    Sector sector = map.FromName(sectorName);
-                    if (sector == null)
-                        throw new HttpError(404, "Not Found", string.Format("The specified sector '{0}' was not found.", sectorName));
+                    Sector sector = map.FromName(sectorName) ??
+                        throw new HttpError(404, "Not Found", $"The specified sector '{sectorName}' was not found.");
 
                     if (HasOption("subsector"))
                     {
                         string subsector = GetStringOption("subsector");
                         int index = sector.SubsectorIndexFor(subsector);
                         if (index == -1)
-                            throw new HttpError(404, "Not Found", string.Format("The specified subsector '{0}' was not found.", subsector));
-                        int ssx = index % 4;
-                        int ssy = index / 4;
-                        Hex hex = new Hex(
-                            (byte)(ssx * Astrometrics.SubsectorWidth + Astrometrics.SubsectorWidth / 2),
-                            (byte)(ssy * Astrometrics.SubsectorHeight + Astrometrics.SubsectorHeight / 2));
-                        loc = new Location(sector.Location, hex);
+                            throw new HttpError(404, "Not Found", $"The specified subsector '{subsector}' was not found.");
+                        loc = new Location(sector.Location, new Hex(
+                            (byte)(index % 4 * Astrometrics.SubsectorWidth + Astrometrics.SubsectorWidth / 2),
+                            (byte)(index / 4 * Astrometrics.SubsectorHeight + Astrometrics.SubsectorHeight / 2)));
                     }
                     else
                     {
@@ -66,14 +57,15 @@ namespace Maps.API
 
                 Point coords = Astrometrics.LocationToCoordinates(loc);
 
-                var result = new Results.CoordinatesResult();
-                result.sx = loc.Sector.X;
-                result.sy = loc.Sector.Y;
-                result.hx = loc.Hex.X;
-                result.hy = loc.Hex.Y;
-                result.x = coords.X;
-                result.y = coords.Y;
-                SendResult(context, result);
+                SendResult(new Results.CoordinatesResult()
+                {
+                    SectorX = loc.Sector.X,
+                    SectorY = loc.Sector.Y,
+                    HexX = loc.Hex.X,
+                    HexY = loc.Hex.Y,
+                    X = coords.X,
+                    Y = coords.Y
+                });
             }
         }
     }
@@ -86,13 +78,19 @@ namespace Maps.API.Results
     public class CoordinatesResult
     {
         // Sector/Hex
-        public int sx { get; set; }
-        public int sy { get; set; }
-        public int hx { get; set; }
-        public int hy { get; set; }
+        [XmlElement("sx"), JsonName("sx")]
+        public int SectorX { get; set; }
+        [XmlElement("sy"), JsonName("sy")]
+        public int SectorY { get; set; }
+        [XmlElement("hx"), JsonName("hx")]
+        public int HexX { get; set; }
+        [XmlElement("hy"), JsonName("hy")]
+        public int HexY { get; set; }
 
         // World-space X/Y
-        public int x { get; set; }
-        public int y { get; set; }
+        [XmlElement("x"), JsonName("x")]
+        public int X { get; set; }
+        [XmlElement("y"), JsonName("y")]
+        public int Y { get; set; }
     }
 }

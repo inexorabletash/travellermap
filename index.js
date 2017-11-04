@@ -1,5 +1,4 @@
 /*global Traveller,Util,Handlebars */ // for lint and IDEs
-
 window.addEventListener('DOMContentLoaded', function() {
   'use strict';
 
@@ -11,13 +10,22 @@ window.addEventListener('DOMContentLoaded', function() {
 
   // IE8: document.querySelector can't use bind()
   var $ = function(s) { return document.querySelector(s); };
-  var $$ = function(s) { return document.querySelectorAll(s); };
+  var $$ = function(s) { return Array.from(document.querySelectorAll(s)); };
 
   //////////////////////////////////////////////////////////////////////
   //
   // Main Page Logic
   //
   //////////////////////////////////////////////////////////////////////
+
+  // Account for adjustments to innerHeight (dynamic browser UI)
+  // (Repro: Safari on iPhone, enter landscape, make url bar appear)
+  window.addEventListener('resize', function(e) {
+    if (window.innerHeight !== window.outerHeight) {
+      document.body.style.height = window.innerHeight + 'px';
+      window.scrollTo(0, 0);
+    }
+  });
 
   var mapElement = $('#dragContainer'), sizeElement = mapElement.parentNode;
   var map = new Traveller.Map(mapElement, sizeElement);
@@ -45,7 +53,7 @@ window.addEventListener('DOMContentLoaded', function() {
     options: map.options,
     routes: 1,
     dimunofficial: 0,
-    milieu: '',
+    milieu: 'M1105',
     style: map.style
   };
   var home = {
@@ -56,29 +64,25 @@ window.addEventListener('DOMContentLoaded', function() {
 
   var SAVE_PREFERENCES_DELAY_MS = 500;
   var savePreferences = isIframe ? function() {} : Util.debounce(function() {
-    function maybeSave(test, key, data) {
-      if (test)
-        localStorage.setItem(key, JSON.stringify(data));
-      else
-        localStorage.removeItem(key);
-    }
-
-    var prefs = {
+    var preferences = {
       style: map.style,
       options: map.options
     };
-    NAMED_OPTIONS.forEach(function(name) {
-      prefs[name] = map.namedOptions.get(name);
+    map.namedOptions.NAMES.forEach(function(name) {
+      preferences[name] = map.namedOptions.get(name);
     });
     PARAM_OPTIONS.forEach(function(option) {
-      prefs[option.param] = document.body.classList.contains(option.className);
+      preferences[option.param] = document.body.classList.contains(option.className);
     });
-    maybeSave($('#cbSavePreferences').checked, 'preferences', prefs);
-    maybeSave($('#cbSaveLocation').checked, 'location', {
+    localStorage.setItem('preferences', JSON.stringify(preferences));
+    localStorage.setItem('location', JSON.stringify({
       position: { x: map.x, y: map.y },
       scale: map.scale
-    });
-    maybeSave($('#cbExperiments').checked, 'experiments', {});
+    }));
+    if ($('#cbExperiments').checked)
+      localStorage.setItem('experiments', JSON.stringify({}));
+    else
+      localStorage.removeItem('experiments');
   }, SAVE_PREFERENCES_DELAY_MS);
 
   var template = Util.memoize(function(sel) {
@@ -110,7 +114,9 @@ window.addEventListener('DOMContentLoaded', function() {
     urlParams.style = map.style;
 
     var namedOptions = map.namedOptions.keys();
-    map.namedOptions.forEach(function(value, key) { urlParams[key] = value; });
+    map.namedOptions.forEach(function(value, key) {
+      urlParams[key] = value;
+    });
 
     Object.keys(defaults).forEach(function(p) {
       if (urlParams[p] === defaults[p]) delete urlParams[p];
@@ -132,7 +138,7 @@ window.addEventListener('DOMContentLoaded', function() {
       window.history.replaceState(null, document.title, pageURL);
 
     $('#share-url').value = pageURL;
-    $('#share-embed').value = '<iframe width=400 height=300 src="' + pageURL + '">';
+    $('#share-code').value = '<iframe width=400 height=300 src="' + pageURL + '">';
 
     var snapshotParams = (function() {
       var map_center_x = map.x,
@@ -144,7 +150,7 @@ window.addEventListener('DOMContentLoaded', function() {
           x = ( map_center_x * scale - ( width / 2 ) ) / width,
           y = ( -map_center_y * scale - ( height / 2 ) ) / height;
       return { x: x, y: y, w: width, h: height, scale: scale };
-    }());
+    })();
     snapshotParams.x = round(snapshotParams.x, 1/1000);
     snapshotParams.y = round(snapshotParams.y, 1/1000);
     snapshotParams.scale = round(snapshotParams.scale, 1/128);
@@ -168,36 +174,46 @@ window.addEventListener('DOMContentLoaded', function() {
 
   // Search Bar
 
+  // Mutually exclusive panes:
+  var SEARCH_PANES = ['search-results', 'route-ui', 'wds-visible', 'sds-visible'];
+  function showSearchPane(pane) {
+    if (!['wds-visible', 'sds-visible'].includes(pane))
+      document.body.classList.add('ds-mini');
+    SEARCH_PANES.forEach(function(c) { document.body.classList.toggle(c, c === pane);  });
+  }
+
+  function hideSearch() {
+    document.body.classList.remove('search-results');
+  }
+
+  function hideCards() {
+    document.body.classList.remove('wds-visible');
+    document.body.classList.remove('sds-visible');
+    document.body.classList.add('ds-mini');
+  }
+
+
   $("#searchForm").addEventListener('submit', function(e) {
-    document.body.classList.remove('route-ui');
-    map.SetRoute(null);
-    search($('#searchBox').value);
+    search($('#searchBox').value, {onsubmit: true});
     e.preventDefault();
   });
-  var searchTimer = null;
-  var SEARCH_TIMER_DELAY = 250; // ms
-  $("#searchBox").addEventListener('keyup', function(e) {
-    if (searchTimer)
-      clearTimeout(searchTimer);
-    searchTimer = setTimeout(function() {
-      document.body.classList.remove('route-ui');
-      map.SetRoute(null);
-      search($('#searchBox').value, {typed: true});
-    }, SEARCH_TIMER_DELAY);
+
+  $("#searchBox").addEventListener('focus', function(e) {
+    search($('#searchBox').value, {onfocus: true});
   });
 
-  $('#closeResultsBtn').addEventListener('click', function() {
+  var SEARCH_TIMER_DELAY = 100; // ms
+  $("#searchBox").addEventListener('keyup', Util.debounce(function(e) {
+    if (e.key !== 'Enter') // Ignore double-submit on iOS
+      search($('#searchBox').value, {typed: true});
+  }, SEARCH_TIMER_DELAY));
+
+  $('#closeSearchBtn').addEventListener('click', function(e) {
+    e.preventDefault();
     $('#searchBox').value = '';
     lastQuery = null;
     document.body.classList.remove('search-results');
-  });
-
-  $('#starBtn').addEventListener('click', function() {
-    // TODO: Make these mutually exclusive in a less hacky way.
-    document.body.classList.remove('wds-visible');
-    document.body.classList.remove('route-ui');
-    map.SetRoute(null);
-    search("(default)");
+    mapElement.focus();
   });
 
   function resizeMap() {
@@ -211,28 +227,54 @@ window.addEventListener('DOMContentLoaded', function() {
   }
 
   $("#routeBtn").addEventListener('click', function(e) {
-    // TODO: Make these mutually exclusive in a less hacky way.
-    document.body.classList.remove('search-results');
-    document.body.classList.remove('wds-visible');
-    document.body.classList.add('route-ui');
-    resizeMap();
-    $('#routeStart').focus();
+    if (selectedWorld) {
+      $('#routeStart').value = selectedWorld.name;
+      if (!isSmallScreen) $('#routeEnd').focus();
+    } else {
+      if (!isSmallScreen) $('#routeStart').focus();
+    }
+    showRoute();
   });
 
-  $('#closeRouteBtn').addEventListener('click', function(e) {
+  function showRoute() {
+    hidePanels();
+    hideCards();
+    showSearchPane('route-ui');
+    resizeMap();
+  }
+
+  function closeRoute() {
+    document.body.classList.remove('route-ui');
+    resizeMap();
+    document.body.classList.remove('route-shown');
     $('#routeStart').value = '';
     $('#routeEnd').value = '';
     $('#routePath').innerHTML = '';
     ['J-1','J-2','J-3','J-4','J-5','J-6'].forEach(function(n) {
       $('#routeForm').classList.remove(n);
     });
-    document.body.classList.remove('route-ui');
     map.SetRoute(null);
     lastRoute = null;
-    resizeMap();
+  }
+
+  $('#closeRouteBtn').addEventListener('click', function(e) {
+    e.preventDefault();
+    closeRoute();
   });
 
-  Array.from($$("#routeForm button")).forEach(function(button) {
+  $('#swapRouteBtn').addEventListener('click', function(e) {
+    e.preventDefault();
+    var tmp = $('#routeStart').value;
+    $('#routeStart').value = $('#routeEnd').value;
+    $('#routeEnd').value = tmp;
+    $('#routePath').innerHTML = '';
+    ['J-1','J-2','J-3','J-4','J-5','J-6'].forEach(function(n) {
+      if ($('#routeForm').classList.contains(n))
+        $('#'+n).click();
+    });
+  });
+
+  $$('#routeForm button[name="jump"]').forEach(function(button) {
     button.addEventListener('click', function(e) {
       e.preventDefault();
 
@@ -249,7 +291,7 @@ window.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  Array.from($$('#routeForm input[type="checkbox"]')).forEach(function(input) {
+  $$('#routeForm input[type="checkbox"]').forEach(function(input) {
     input.addEventListener('click', function(e) {
       if ($('#routePath').innerHTML !== '')
         reroute();
@@ -259,39 +301,76 @@ window.addEventListener('DOMContentLoaded', function() {
   var VK_ESCAPE = KeyboardEvent.DOM_VK_ESCAPE || 0x1B,
       VK_C = KeyboardEvent.DOM_VK_C || 0x43,
       VK_H = KeyboardEvent.DOM_VK_H || 0x48,
-      VK_T = KeyboardEvent.DOM_VK_T || 0x54;
+      VK_L = KeyboardEvent.DOM_VK_L || 0x4C,
+      VK_T = KeyboardEvent.DOM_VK_T || 0x54,
+      VK_QUESTION_MARK = KeyboardEvent.DOM_VK_QUESTION_MARK || 0x63;
 
   document.body.addEventListener('keyup', function(e) {
-    if (e.keyCode === VK_ESCAPE) {
-      document.body.classList.remove('search-results');
-      document.body.classList.remove('route-ui');
-      document.body.classList.remove('wds-visible');
-      $('#dragContainer').focus();
+    if (e.key === 'Escape' || e.keyCode === VK_ESCAPE) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      hidePanels();
+      hideSearch();
+      hideCards();
+      selectedWorld = selectedSector = null;
+      closeRoute();
+
+      map.SetMain(null);
+
+      mapElement.focus();
     }
-  });
+  }, {capture: true});
 
   // Options Bar
 
-  var PANELS = ['legend', 'lab', 'settings', 'share', 'download', 'help'];
-  PANELS.forEach(function(b) {
-    $('#'+b+'Btn').addEventListener('click', function() {
-      PANELS.forEach(function(p) {
-        document.body.classList[b === p ? 'toggle' : 'remove']('show-' + p);
-      });
+  var PANELS = ['legend', 'more'];
+  var TABS = ['lab', 'milieu', 'settings', 'share', 'help'];
+
+  function showPanel(shown) {
+    PANELS.forEach(function(p) {
+      document.body.classList[p === shown ? 'add' : 'remove']('show-' + p);
+    });
+  }
+
+  function togglePanel(shown) {
+    PANELS.forEach(function(p) {
+      document.body.classList[p === shown ? 'toggle' : 'remove']('show-' + p);
+    });
+  }
+
+  function hidePanels() {
+    PANELS.forEach(function(p) {
+      document.body.classList.remove('show-' + p);
+    });
+  }
+
+  PANELS.forEach(function(p) {
+    $('#'+p+'Btn').addEventListener('click', function() {
+      togglePanel(p);
     });
   });
-  document.body.addEventListener('keyup', function(e) {
-    if (e.keyCode === VK_ESCAPE) {
-      PANELS.forEach(function(p) {
-        document.body.classList.remove('show-' + p);
-      });
-    }
+
+  function showTab(shown) {
+    TABS.forEach(function(p) {
+      document.body.classList[shown === p ? 'add' : 'remove']('show-' + p);
+    });
+  }
+
+  TABS.forEach(function(p) {
+    $('#'+p+'Btn').addEventListener('click', function() {
+      showTab(p);
+    });
   });
 
-  var STYLES = ['poster', 'atlas', 'print', 'candy', 'draft', 'fasa'];
+  var STYLES = ['poster', 'atlas', 'print', 'candy', 'draft', 'fasa', 'terminal'];
   STYLES.forEach(function(s) {
     $('#settingsBtn-'+s).addEventListener('click', function() { map.style = s; });
   });
+  $$('.styles-pager').forEach(function(e) {
+    e.addEventListener('click', function() { $('#styles').classList.toggle('p2'); });
+  });
+
 
   $('#homeBtn').addEventListener('click', goHome);
 
@@ -303,16 +382,21 @@ window.addEventListener('DOMContentLoaded', function() {
         {scale: 64});
       return;
     }
+    map.cancelAnimation();
     map.scale = home.scale;
     map.x = home.x;
     map.y = home.y;
   }
 
-  Array.from($$('#share-url,#share-embed')).forEach(function(input) {
+  $$('#share-url,#share-code').forEach(function(input) {
     input.addEventListener('click', function(e) {
       e.preventDefault();
       input.focus();
+      input.select();
       input.setSelectionRange(0, input.value.length); // .select() fails on iOS
+    });
+    input.addEventListener('mouseup', function(e) {
+      e.preventDefault();
     });
   });
 
@@ -320,11 +404,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
   $('#zoomInBtn').addEventListener('click', map.ZoomIn.bind(map));
   $('#zoomOutBtn').addEventListener('click', map.ZoomOut.bind(map));
-  $('#tiltBtn').addEventListener('click', toggleTilt);
-
-  function toggleTilt() {
-    $('#cbTilt').click();
-  };
+  $('#tiltBtn').addEventListener('click', function() { $('#cbTilt').click(); });
 
   // Bottom Panel
 
@@ -337,22 +417,36 @@ window.addEventListener('DOMContentLoaded', function() {
   mapElement.addEventListener('keydown', function(e) {
     if (e.ctrlKey || e.altKey || e.metaKey)
       return;
-    if (e.keyCode === VK_C) {
+    if (e.key === 'c' || e.keyCode === VK_C) {
       e.preventDefault();
       e.stopPropagation();
-      showCredits(map.worldX, map.worldY, {directAction: true});
+      updateContext(map.worldX, map.worldY, {directAction: true});
+      showMain(map.worldX, map.worldY);
       return;
     }
-    if (e.keyCode === VK_H) {
+    if (e.key === 'h' || e.keyCode === VK_H) {
       e.preventDefault();
       e.stopPropagation();
       goHome();
       return;
     }
-    if (e.keyCode === VK_T) {
+    if (e.key === 't' || e.keyCode === VK_T) {
       e.preventDefault();
       e.stopPropagation();
-      toggleTilt();
+      $('#tiltBtn').click();
+      return;
+    }
+    if (e.key === 'l' || e.keyCode === VK_L) {
+      e.preventDefault();
+      e.stopPropagation();
+      showPanel('legend');
+      return;
+    }
+    if (e.key === '?' || e.keyCode === VK_QUESTION_MARK) {
+      e.preventDefault();
+      e.stopPropagation();
+      showPanel('more');
+      showTab('help');
       return;
     }
   });
@@ -383,7 +477,6 @@ window.addEventListener('DOMContentLoaded', function() {
   bindCheckedToNamedOption('#ShowRoutes', 'routes');
   bindCheckedToOption('#ShowGovernmentNames', Traveller.MapOptions.NamesMask);
   bindCheckedToOption('#ShowImportantWorlds', Traveller.MapOptions.WorldsMask);
-  bindCheckedToOption('#cbForceHexes', Traveller.MapOptions.ForceHexes);
   bindCheckedToOption('#cbWorldColors', Traveller.MapOptions.WorldColors);
   bindCheckedToOption('#cbFilledBorders',Traveller.MapOptions.FilledBorders);
   bindCheckedToNamedOption('#cbDimUnofficial', 'dimunofficial');
@@ -392,10 +485,22 @@ window.addEventListener('DOMContentLoaded', function() {
 
   bindCheckedToNamedOption('#cbImpOverlay', 'im');
   bindCheckedToNamedOption('#cbPopOverlay', 'po');
+  bindCheckedToNamedOption('#cbCapitalOverlay', 'cp');
   bindCheckedToNamedOption('#cbDroyneWorlds', 'dw');
   bindCheckedToNamedOption('#cbAncientWorlds', 'an');
   bindCheckedToNamedOption('#cbMinorHomeworlds', 'mh');
   bindCheckedToNamedOption('#cbStellar', 'stellar');
+  bindCheckedToNamedOption('#cbQZ', 'qz');
+  bindChecked('#cbWave',
+    function(o) { return map.namedOptions.get('ew'); },
+    function(c) {
+      if (c) {
+        map.namedOptions.set('ew', 'milieu');
+      } else {
+        map.namedOptions.delete('ew');
+        delete urlParams['ew'];
+      }
+    });
 
   function bindControl(selector, property, onChange, event, onEvent) {
     var element = $(selector);
@@ -431,7 +536,7 @@ window.addEventListener('DOMContentLoaded', function() {
       var e = $(selector + '[value="' +  v + '"]');
       if (e) e.checked = true;
     });
-    Array.from($$(selector)).forEach(function(elem) {
+    $$(selector).forEach(function(elem) {
       elem.addEventListener('click', function(event) {
         if (elem.value === defaults[name]) {
           delete urlParams[name];
@@ -443,36 +548,38 @@ window.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  map.OnOptionsChanged = function(options) {
+  var EVENT_DEBOUNCE_MS = 10;
+
+  map.OnOptionsChanged = Util.debounce(function(options) {
     optionObservers.forEach(function(o) { o(options); });
     $('#legendBox').classList.toggle('world_colors', options & Traveller.MapOptions.WorldColors);
-    showCredits(lastX || map.worldX, lastY || map.worldY, {refresh: true});
+    updateContext(lastX || map.worldX, lastY || map.worldY, {refresh: true});
     updatePermalink();
     savePreferences();
-  };
+  }, EVENT_DEBOUNCE_MS);
 
-  map.OnStyleChanged = function(style) {
+  map.OnStyleChanged = Util.debounce(function(style) {
     STYLES.forEach(function(s) {
       document.body.classList.toggle('style-' + s, s === style);
     });
+    updateContext(lastX || map.worldX, lastY || map.worldY, {refresh: true});
     updatePermalink();
-    updateSectorLinks();
     updateScaleIndicator();
     savePreferences();
-  };
+  }, EVENT_DEBOUNCE_MS);
 
-  map.OnScaleChanged = function() {
+  map.OnScaleChanged = Util.debounce(function() {
+    updateContext(lastX || map.worldX, lastY || map.worldY);
     updatePermalink();
-    updateSectorLinks();
     updateScaleIndicator();
     savePreferences();
-  };
+  }, EVENT_DEBOUNCE_MS);
 
-  map.OnPositionChanged = function() {
-    showCredits(map.worldX, map.worldY);
+  map.OnPositionChanged = Util.debounce(function() {
+    updateContext(map.worldX, map.worldY);
     updatePermalink();
     savePreferences();
-  };
+  }, EVENT_DEBOUNCE_MS);
 
   function post(message) {
     if (window.parent !== window && 'postMessage' in window.parent) {
@@ -481,28 +588,29 @@ window.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  map.OnClick = function(world) {
-    showCredits(world.x, world.y, {directAction: true});
-    post({source: 'travellermap', type: 'click', location: world});
+  map.OnClick = function(data) {
+    hidePanels();
+    updateContext(data.x, data.y, {directAction: true, activeElement: data.activeElement});
+    showMain(data.x, data.y);
+    post({source: 'travellermap', type: 'click', location: {x: data.x, y: data.y}});
   };
 
   map.OnDoubleClick = function(world) {
-    showCredits(world.x, world.y, {directAction: true});
+    hidePanels();
+    updateContext(world.x, world.y, {directAction: true});
+    showMain(world.x, world.y);
     post({source: 'travellermap', type: 'doubleclick', location: world});
   };
 
-
-  var NAMED_OPTIONS = [
-    'routes', 'dimunofficial',
-    'milieu',
-    'im', 'po', 'dw', 'an', 'mh', 'stellar'
-  ];
 
   // TODO: Generalize URLParam<->Control and URLParam<->Style binding
   var PARAM_OPTIONS = [
     {param: 'galdir', selector: '#cbGalDir', className: 'show-directions', 'default': true},
     {param: 'tilt', selector: '#cbTilt', className: 'tilt', 'default': false,
      onchange: function(flag) { if (flag) map.EnableTilt(); }
+    },
+    {param: 'mains', selector: '#cbMains', className: 'show-mains', 'default': false,
+     onchange: function(flag) { if (!flag) map.SetMain(null); }
     }
   ];
   PARAM_OPTIONS.forEach(function(option) {
@@ -517,16 +625,34 @@ window.addEventListener('DOMContentLoaded', function() {
     });
   });
 
+  function resetOptionsToDefaults() {
+    map.namedOptions.NAMES.forEach(function(name) {
+      delete urlParams[name];
+      if (!(name in defaults))
+        map.namedOptions.delete(name);
+      else
+        map.namedOptions.set(name, defaults[name]);
+    });
+    PARAM_OPTIONS.forEach(function(option) {
+      $(option.selector).checked = option['default'];
+      document.body.classList.toggle(option.className, option['default']);
+      if (option.onchange) option.onchange(option.default);
+    });
+    map.options = defaults.options;
+    updatePermalink();
+    savePreferences();
+  }
+  $('#btnResetPrefs').addEventListener('click', resetOptionsToDefaults);
+
   (function() {
     if (isIframe) return;
     var preferences = JSON.parse(localStorage.getItem('preferences'));
     var location = JSON.parse(localStorage.getItem('location'));
     var experiments = JSON.parse(localStorage.getItem('experiments'));
     if (preferences) {
-      $('#cbSavePreferences').checked = true;
       if ('style' in preferences) map.style = preferences.style;
       if ('options' in preferences) map.options = preferences.options;
-      NAMED_OPTIONS.forEach(function(name) {
+      map.namedOptions.NAMES.forEach(function(name) {
         if (name in preferences) map.namedOptions.set(name, preferences[name]);
       });
 
@@ -540,7 +666,6 @@ window.addEventListener('DOMContentLoaded', function() {
     }
 
     if (location) {
-      $('#cbSaveLocation').checked = true;
       if ('scale' in location) map.scale = location.scale;
       if ('position' in location) { map.x = location.position.x; map.y = location.position.y; }
     }
@@ -549,10 +674,8 @@ window.addEventListener('DOMContentLoaded', function() {
       $('#cbExperiments').checked = true;
       document.body.classList.add('enable-experiments');
     }
-  }());
+  })();
 
-  $('#cbSavePreferences').addEventListener('click', savePreferences);
-  $('#cbSaveLocation').addEventListener('click', savePreferences);
   $('#cbExperiments').addEventListener('click', function() {
     savePreferences();
     document.body.classList.toggle('enable-experiments', this.checked);
@@ -593,9 +716,51 @@ window.addEventListener('DOMContentLoaded', function() {
   ['q', 'qn'].forEach(function(key) {
     if (key in urlParams) {
       $('#searchBox').value = urlParams[key];
-    search(urlParams[key], {navigate: key === 'qn'});
+      search(urlParams[key], {navigate: key === 'qn'});
     }
   });
+
+  if ('attract' in urlParams) {
+    // TODO: Disable UI, or make any UI interaction cancel
+    doAttract();
+  }
+
+  //////////////////////////////////////////////////////////////////////
+  //
+  // Attract Mode
+  //
+  //////////////////////////////////////////////////////////////////////
+
+  function doAttract() {
+    function pickTarget() {
+      return Traveller.MapService.search('(random world)', {
+        milieu: map.namedOptions.get('milieu')
+      }, 'POST').then(function(data) {
+        var items = data.Results.Items;
+        if (items.length < 1)
+          throw new Error('random world search failed');
+        var world = items[0].World;
+        var tags = world.SectorTags.split(/\s+/);
+        return tags.includes('OTU') ? world : pickTarget();
+      });
+    }
+
+    var HOME_WAIT_MS = 5e3;
+    var TARGET_WAIT_MS = 20e3;
+
+    goHome();
+    pickTarget().then(function(world) {
+      var target = Traveller.Astrometrics.sectorHexToMap(
+        world.SectorX, world.SectorY, world.HexX, world.HexY);
+      hideCards();
+      setTimeout(function() {
+        map.animateTo(128, target.x, target.y, 10).then(function() {
+          updateContext(map.worldX, map.worldY, {directAction: true});
+          setTimeout(doAttract, TARGET_WAIT_MS);
+        }, function() {});
+      }, HOME_WAIT_MS);
+    });
+  }
 
   //////////////////////////////////////////////////////////////////////
   //
@@ -608,15 +773,30 @@ window.addEventListener('DOMContentLoaded', function() {
   var lastX, lastY, lastMilieu;
   var selectedSector = null;
   var selectedWorld = null;
+  var ignoreIndirect = false;
+  var enableContext;
 
-  function showCredits(worldX, worldY, options) {
-    options = options || {};
+  function makeWikiURL(suffix) {
+    return 'http://wiki.travellerrpg.com/' + encodeURIComponent(suffix.replace(/ /g, '_'));
+  }
 
-    var DATA_REQUEST_DELAY_MS = 500;
+  function updateContext(worldX, worldY, options) {
+    if (!enableContext || document.body.classList.contains('hide-ui'))
+      return;
+
+    options = Object.assign({}, options);
+
+    if (ignoreIndirect && !options.directAction)
+      return;
+    ignoreIndirect = options.ignoreIndirect;
+
+    var DATA_REQUEST_DELAY_MS = 100;
     var milieu = map.namedOptions.get('milieu');
 
-    if (!options.directAction && lastX === worldX && lastY === worldY && lastMilieu === milieu)
+    if (!(options.directAction || options.refresh)
+        && lastX === worldX && lastY === worldY && lastMilieu === milieu)
       return;
+
     lastX = worldX;
     lastY = worldY;
     lastMilieu = milieu;
@@ -629,16 +809,19 @@ window.addEventListener('DOMContentLoaded', function() {
     if (dataTimeout)
       window.clearTimeout(dataTimeout);
 
-    dataTimeout = setTimeout(function() {
-      dataRequest = Util.ignorable(Traveller.MapService.credits(worldX, worldY, {
-        milieu: milieu
-      }));
-      dataRequest.then(function(data) {
+    if (map.scale < 1) {
+      displayResults({});
+    } else {
+      dataTimeout = setTimeout(function() {
+        dataRequest = Util.ignorable(Traveller.MapService.credits(worldX, worldY, {
+          milieu: milieu
+        }));
+        dataRequest.then(function(data) {
           dataRequest = null;
           displayResults(data);
         });
-
-    }, options.directAction || options.refresh ? 0 : DATA_REQUEST_DELAY_MS);
+      }, options.directAction || options.refresh ? 0 : DATA_REQUEST_DELAY_MS);
+    }
 
     function displayResults(data) {
       if ('SectorTags' in data) {
@@ -659,137 +842,188 @@ window.addEventListener('DOMContentLoaded', function() {
         .map(function(p) { return data[p]; })
         .join(', ');
 
-      // Other UI
-      if ('SectorName' in data && 'SectorTags' in data) {
-        selectedSector = data.SectorName.replace(/ Sector$/, '');
+      if (data.SectorName) {
+        data.SectorWikiURL = makeWikiURL(data.SectorName + ' Sector');
+        data.SectorWikiURLNoScheme = data.SectorWikiURL.replace(/^\w+:\/\//, '');
+        data.BookletURL = Traveller.MapService.makeURL(
+          '/data/' + encodeURIComponent(data.SectorName) + '/booklet', {
+            milieu: milieu
+          });
 
-        // Treat world as "selected" if (1) in the data, (2) scale is appropriate,
-        // and (3) either this is a direct action (e.g. click) or a refresh
-        selectedWorld =
-          'WorldHex' in data &&
-          map.scale > 16 &&
-          (options.directAction || selectedWorld)
+        data.PosterURL = Traveller.MapService.makeURL('/api/poster', {
+          sector: data.SectorName,
+          accept: 'application/pdf',
+          style: map.style,
+          options: map.options,
+          milieu: milieu
+        });
+        data.DataURL = Traveller.MapService.makeURL('/api/sec', {
+          sector: data.SectorName, type: 'SecondSurvey',
+          milieu: milieu
+        });
+      }
+
+      if (data.SectorY)
+        data.SectorY = -data.SectorY;
+
+      // Credits
+      $('#MetadataDisplay').innerHTML = template('#MetadataTemplate')(data);
+
+      // Sector/World Data Sheets
+      if (options.directAction && document.body.classList.contains('route-ui')) {
+        selectedSector = null;
+        selectedWorld = null;
+        if (options.activeElement === $('#routeStart')) {
+          if (data.WorldName) {
+            $('#routeStart').value = data.WorldName;
+            $('#routeEnd').focus();
+          } else {
+            $('#routeStart').focus();
+          }
+        } else if (options.activeElement === $('#routeEnd')) {
+          if (data.WorldName) {
+            $('#routeEnd').value = data.WorldName;
+            $('#J-2').click();
+          } else {
+            $('#routeEnd').focus();
+          }
+        } else if ($('#routeStart').value === '' && data.WorldName) {
+          $('#routeStart').value = data.WorldName;
+          if (!isSmallScreen) $('#routeEnd').focus();
+        } else if ($('#routeEnd').value === '' && data.WorldName) {
+          $('#routeEnd').value = data.WorldName;
+          $('#J-2').click();
+        }
+        return;
+      } else if (options.directAction && !document.body.classList.contains('route-ui')) {
+        mapElement.focus();
+        selectedSector = ('SectorName' in data && 'SectorTags' in data) ? data.SectorName : null;
+        selectedWorld = map.scale > 16 && 'WorldHex' in data
           ? { name: data.WorldName, hex: data.WorldHex } : null;
-        updateSectorLinks();
+      } else if (options.refresh) {
+        // Keep as-is
       } else {
         selectedSector = null;
         selectedWorld = null;
       }
 
-      document.body.classList.toggle('sector-selected', selectedSector);
-      document.body.classList.toggle('world-selected', selectedWorld);
-      if (selectedWorld) {
-        // TODO: Make these mutually exclusive in a less hacky way.
-        document.body.classList.remove('search-results');
-        document.body.classList.remove('route-ui');
-      } else {
-        document.body.classList.remove('wds-visible');
+      if (selectedSector && (options.refresh || options.directAction)) {
+        $('#sds-data').innerHTML = template('#sds-template')(data);
+        // Hook up toggle
+        $$('#sds-data .ds-mini-toggle, .sds-sectorname').forEach(function(e) {
+          e.addEventListener('click', function(event) {
+            document.body.classList.toggle('ds-mini');
+          });
+        });
       }
 
-      $('#MetadataDisplay').innerHTML = template('#MetadataTemplate')(data);
+      if (options.directAction) {
+        document.body.classList.toggle('sector-selected', selectedSector);
+        document.body.classList.toggle('world-selected', selectedWorld);
+
+        if (selectedWorld) {
+          showSearchPane('wds-visible');
+          showWorldData();
+        } else if (selectedSector && map.scale <= 16) {
+          showSearchPane('sds-visible');
+        } else {
+          hideCards();
+        }
+      }
     }
   }
 
-  function updateSectorLinks() {
-    if (!selectedSector)
+  function showWorldData() {
+    if (!selectedWorld)
       return;
+    var context = {
+      sector: selectedSector,
+      hex: selectedWorld.hex
+    };
+    $('#wds-spinner').style.display = 'block';
     var milieu = map.namedOptions.get('milieu');
+    // World Data Sheet ("Info Card")
+    fetch(Traveller.MapService.makeURL(
+      '/api/jumpworlds?', {
+        sector: context.sector, hex: context.hex,
+        milieu: milieu,
+        jump: 0
+      }))
+      .then(function(response) {
+        if (!response.ok) throw Error(response.statusText);
+        return response.json();
+      })
+      .then(function(data) {
+        return Traveller.prepareWorld(data.Worlds[0]);
+      })
+      .then(function(world) {
+        if (!world) return undefined;
+        return Traveller.renderWorldImage(world, $('#wds-world-image'));
+      })
+      .then(function(world) {
+        if (!world) return;
 
-    var bookletURL = Traveller.MapService.makeURL(
-      '/data/' + encodeURIComponent(selectedSector) + '/booklet', {
-        milieu: milieu
-      });
-    var posterURL = Traveller.MapService.makeURL('/api/poster', {
-      sector: selectedSector, accept: 'application/pdf', style: map.style,
-      milieu: milieu
-    });
-    var dataURL = Traveller.MapService.makeURL('/api/sec', {
-      sector: selectedSector, type: 'SecondSurvey',
-      milieu: milieu
-    });
-
-    $('#downloadBox #sector-name').innerHTML = Util.escapeHTML(selectedSector + ' Sector');
-    $('#downloadBox a#download-booklet').href = bookletURL;
-    $('#downloadBox a#download-poster').href = posterURL;
-    $('#downloadBox a#download-data').href = dataURL;
-
-    if (selectedWorld) {
-
-      // Downloads > Data Sheet
-      var dataSheetURL = Util.makeURL('world', {
-        sector: selectedSector,
-        hex: selectedWorld.hex,
-        milieu: milieu
-      });
-      $('#world-data-sheet').href = dataSheetURL;
-      $('#world-data-sheet').innerHTML = Util.escapeHTML(
-        'Data Sheet: ' + selectedWorld.name + ' (' + selectedWorld.hex + ')');
-
-      // Downloads > Jump Maps
-      var options = map.options & (
-        Traveller.MapOptions.BordersMask | Traveller.MapOptions.NamesMask |
-          Traveller.MapOptions.WorldColors | Traveller.MapOptions.FilledBorders);
-      for (var j = 1; j <= 6; ++j) {
-        var jumpMapURL = Traveller.MapService.makeURL('/api/jumpmap', {
-          sector: selectedSector,
-          hex: selectedWorld.hex,
+        // Data Sheet
+        world.DataSheetURL = Util.makeURL('world', {
+          sector: context.sector,
+          hex: context.hex,
           milieu: milieu,
-          jump: j,
           style: map.style,
-          options: options
+          print: true
         });
-        $('#downloadBox a#world-jump-map-' + j).href = jumpMapURL;
-      }
 
-      // World Data Sheet ("Info Card")
-      fetch(Traveller.MapService.makeURL(
-        '/api/jumpworlds?', {
-          sector: selectedSector, hex: selectedWorld.hex,
+        // Jump Maps
+        world.JumpMapURL = Traveller.MapService.makeURL('/api/jumpmap', {
+          sector: context.sector,
+          hex: context.hex,
           milieu: milieu,
-          jump: 0
-        }))
-        .then(function(response) {
-          if (!response.ok) throw Error(response.statusText);
-          return response.json();
-        })
-        .then(function(data) {
-          return Traveller.prepareWorld(data.Worlds[0]);
-        })
-        .then(function(world) {
-          if (!world) return undefined;
-          return Traveller.renderWorldImage(world, $('#wds-world-image'));
-        })
-        .then(function(world) {
-          if (!world) return;
-          Traveller.renderWorld(
-            world, $('#wds-world-template').innerHTML, $('#wds-world-data'));
-
-          // Hook up any generated "expandy" fields
-          Array.from($$('.wds-expandy')).forEach(function(elem) {
-            elem.addEventListener('click', function(event) {
-              var c = elem.getAttribute('data-wds-expand');
-              $('#wds-frame').classList.toggle(c);
-            });
-          });
-
-          // Hook up toggle
-          $('#wds-mini-toggle').addEventListener('click', function(event) {
-            $('#wds-frame').classList.toggle('wds-mini');
-          });
-
-          $('#wds-print-link').href = dataSheetURL;
-          document.body.classList.add('wds-visible');
-        })
-        .catch(function(error) {
-          console.warn('WDS error: ' + error.message);
+          style: map.style,
+          options: map.options &
+            (Traveller.MapOptions.BordersMask | Traveller.MapOptions.NamesMask |
+             Traveller.MapOptions.WorldColors | Traveller.MapOptions.FilledBorders)
         });
-    }
+
+       $('#wds-data').innerHTML = template('#wds-template')(world);
+
+        // Hook up any generated "expandy" fields
+        $$('.wds-expandy').forEach(function(elem) {
+          elem.addEventListener('click', function(event) {
+            var c = elem.getAttribute('data-wds-expand');
+            $('#wds-frame').classList.toggle(c);
+          });
+        });
+
+        // Hook up toggle
+        $$('#wds-data .ds-mini-toggle, #wds-data .wds-names').forEach(function(e) {
+            e.addEventListener('click', function(event) {
+              document.body.classList.toggle('ds-mini');
+            });
+        });
+      })
+      .catch(function(error) {
+        console.warn(error);
+      })
+      .then(function() {
+        $('#wds-spinner').style.display = 'none';
+      });
   }
 
-  $('#wds-closebtn').addEventListener('click', function(event) {
-    document.body.classList.remove('wds-visible');
+  $('#wds-world-image').addEventListener('click', function(event) {
+    document.body.classList.toggle('ds-mini');
   });
 
+  $$('.ds-closebtn,#ds-shade').forEach(function(element) {
+    element.addEventListener('click', function(event) {
+      hideCards();
+      selectedWorld = selectedSector = null;
+    });
+  });
+
+  $$('#legend-closebtn,#more-closebtn,#panel-shade').forEach(function(element) {
+    element.addEventListener('click', function(event) {
+      hidePanels();
+    });
+  });
 
   //////////////////////////////////////////////////////////////////////
   //
@@ -801,24 +1035,29 @@ window.addEventListener('DOMContentLoaded', function() {
   var lastQuery = null;
 
   function search(query, options) {
-    options = Object(options);
+    options = Object.assign({}, options);
+
+    closeRoute();
+    hideCards();
+    showSearchPane('search-results');
+
+    selectedWorld = selectedSector = null;
+    map.SetRoute(null);
 
     if (query === '')
-      return;
+      query = '(default)';
 
     if (query === lastQuery) {
-      if (!searchRequest && !options.typed) {
-        // TODO: Make these mutually exclusive in a less hacky way.
-        document.body.classList.add('search-results');
-        document.body.classList.remove('route-ui');
-        document.body.classList.remove('wds-visible');
+      if (!searchRequest && options.onsubmit) {
+        var links = $$('#resultsContainer a');
+        if (links.length > 0) {
+          links[0].click();
+          return;
+        }
       }
       return;
     }
     lastQuery = query;
-
-    if (!options.typed)
-      document.body.classList.remove('search-results');
 
     if (searchRequest)
       searchRequest.ignore();
@@ -834,12 +1073,6 @@ window.addEventListener('DOMContentLoaded', function() {
       })
       .then(function() {
         searchRequest = null;
-
-        // TODO: Make these mutually exclusive in a less hacky way.
-        document.body.classList.add('search-results');
-        document.body.classList.remove('route-ui');
-        document.body.classList.remove('wds-visible');
-
         if (options.navigate) {
           var first = $('#resultsContainer a');
           if (first)
@@ -892,7 +1125,10 @@ window.addEventListener('DOMContentLoaded', function() {
           hx = (Traveller.Astrometrics.SectorWidth / 2);
           hy = (Traveller.Astrometrics.SectorHeight / 2);
           scale = sector.Scale || 8;
-          sector.href = Util.makeURL(base_url, {scale: scale, sx: sx, sy: sy, hx: hx, hy: hy});
+          sector.href = Util.makeURL(base_url, {
+            scale: scale, sx: sx, sy: sy, hx: hx, hy: hy,
+            sector: sector.Name
+          });
           applyTags(sector);
         } else if (item.World) {
           var world = item.World;
@@ -903,7 +1139,12 @@ window.addEventListener('DOMContentLoaded', function() {
           hy = world.HexY|0;
           world.Hex = pad2(hx) + pad2(hy);
           scale = world.Scale || 64;
-          world.href = Util.makeURL(base_url, {scale: scale, sx: sx, sy: sy, hx: hx, hy: hy});
+          var params = {scale: scale, sx: sx, sy: sy, hx: hx, hy: hy};
+          if (!data.Tour) {
+            params = Object.assign(params,
+                                   {sector: world.Sector, world: world.Name, hex: world.Hex});
+          }
+          world.href = Util.makeURL(base_url, params);
           applyTags(world);
         } else if (item.Label) {
           var label = item.Label;
@@ -919,18 +1160,32 @@ window.addEventListener('DOMContentLoaded', function() {
 
       $('#resultsContainer').innerHTML = template('#SearchResultsTemplate')(data);
 
-      Array.from(document.querySelectorAll('#resultsContainer a')).forEach(function(a) {
+      $$('#resultsContainer a').forEach(function(a) {
         a.addEventListener('click', function(e) {
           e.preventDefault();
+          selectedWorld = null;
+
           var params = Util.parseURLQuery(e.target);
           map.CenterAtSectorHex(params.sx|0, params.sy|0, params.hx|0, params.hy|0, {scale: params.scale|0});
           if (mapElement.offsetWidth < 640)
             document.body.classList.remove('search-results');
+
+          var coords = Traveller.Astrometrics.sectorHexToWorld(
+            params.sx|0, params.sy|0, params.hx|0, params.hy|0);
+
+          if (params.world && params.sector) {
+            selectedSector = params.sector;
+            selectedWorld = { name: params.name, hex: params.hex };
+            updateContext(coords.x, coords.y, {directAction: true, ignoreIndirect: true});
+          } else if (params.sector) {
+            selectedSector = params.sector;
+            updateContext(coords.x, coords.y, {directAction: true, ignoreIndirect: true});
+          }
         });
       });
 
       var first = $('#resultsContainer a');
-      if (first && !options.typed)
+      if (first && !options.typed && !options.onfocus)
         setTimeout(function() { first.focus(); }, 0);
     }
   }
@@ -950,14 +1205,15 @@ window.addEventListener('DOMContentLoaded', function() {
     $('#routePath').innerHTML = '';
     lastRoute = {start:start, end:end, jump:jump};
 
-    fetch(Traveller.MapService.makeURL('/api/route', {
+    var options = {
       start: start, end: end, jump: jump,
       x: map.worldX, y: map.worldY,
       milieu: map.namedOptions.get('milieu'),
       wild: $('#route-wild').checked?1:0,
       im: $('#route-im').checked?1:0,
       nored: $('#route-nored').checked?1:0
-    }))
+    };
+    fetch(Traveller.MapService.makeURL('/api/route', options))
       .then(function(response) {
         if (!response.ok) return response.text();
         return response.json();
@@ -994,12 +1250,17 @@ window.addEventListener('DOMContentLoaded', function() {
         $('#routePath').innerHTML = template('#RouteResultsTemplate')({
           Route: data,
           Distance: total,
-          Jumps: data.length - 1
+          Jumps: data.length - 1,
+          PrintURL: Util.makeURL('./print/route', options)
         });
+        document.body.classList.add('route-shown');
+        resizeMap();
 
-        Array.from(document.querySelectorAll('#routePath a')).forEach(function(a) {
+        $$('#routePath .item a').forEach(function(a) {
           a.addEventListener('click', function(e) {
             e.preventDefault();
+            selectedWorld = null;
+
             var params = Util.parseURLQuery(e.target);
             map.CenterAtSectorHex(params.sx|0, params.sy|0, params.hx|0, params.hy|0, {scale: params.scale|0});
           });
@@ -1009,6 +1270,8 @@ window.addEventListener('DOMContentLoaded', function() {
       .catch(function(reason) {
         $('#routePath').innerHTML = template('#RouteErrorTemplate')({Message: reason.message});
         map.SetRoute(null);
+        document.body.classList.add('route-shown');
+        resizeMap();
       });
   }
 
@@ -1062,19 +1325,87 @@ window.addEventListener('DOMContentLoaded', function() {
 
   //////////////////////////////////////////////////////////////////////
   //
+  // Mains
+  //
+  //////////////////////////////////////////////////////////////////////
+
+  var worldToMainMap;
+  function showMain(worldX, worldY) {
+    if (!$('#cbMains').checked) return;
+    findMain(worldX, worldY)
+      .then(function(main) { map.SetMain(main); });
+  }
+  function findMain(worldX, worldY) {
+    function sectorHexToSig(sx, sy, hx, hy) {
+      return sx + '/' + sy + '/' + ('0000' + ( hx * 100 + hy )).slice(-4);
+    }
+    function sigToSectorHex(sig) {
+      var parts = sig.split('/');
+      return {sx: parts[0]|0, sy: parts[1]|0, hx: (parts[2] / 100) | 0, hy: parts[2] % 100};
+    }
+
+    function getMainsMapping() {
+      if (worldToMainMap)
+        return Promise.resolve(worldToMainMap);
+      worldToMainMap = new Map();
+      return fetch('./res/mains.json')
+        .then(function(r) { return r.json(); })
+        .then(function(mains) {
+          mains.forEach(function(main) {
+            main.forEach(function(sig, index) {
+              worldToMainMap.set(sig, main);
+              main[index] = sigToSectorHex(sig);
+            });
+          });
+          return worldToMainMap;
+        });
+    }
+    return getMainsMapping().then(function(map) {
+      var sectorHex = Traveller.Astrometrics.worldToSectorHex(worldX, worldY);
+      var sig = sectorHexToSig(sectorHex.sx, sectorHex.sy, sectorHex.hx, sectorHex.hy);
+      return map.get(sig);
+    });
+  }
+
+  //////////////////////////////////////////////////////////////////////
+  //
   // Final setup
   //
   //////////////////////////////////////////////////////////////////////
 
-  if (!isIframe) // == for IE
+  if (!isIframe)
     mapElement.focus();
 
   $('#searchBox').disabled = false;
 
+  // iOS WebKit workarounds
+  if (navigator.userAgent.match(/iPad|iPhone/)) (function(){
+    // Prevent inadvertant touch-scroll.
+    $$('button, input').forEach(function(e) {
+      e.addEventListener('touchmove', function(e) { e.preventDefault();  });
+    });
+    // Prevent inadvertant touch-zoom.
+    document.addEventListener('touchmove', function(e) {
+      if (e.scale !== 1) { e.preventDefault(); }
+    }, false);
+    // Prevent double-tap-to-zoom.
+    var last_time = Date.now();
+    document.addEventListener('touchend', function(e) {
+      var now = Date.now();
+      if (now - last_time <= 500) {
+        e.preventDefault();
+        e.target.click();
+      }
+      last_time = now;
+    }, false);
+  })();
+
   // Init all of the "social" UI asynchronously.
-  setTimeout(window.initSharingLinks, 1000);
+  setTimeout(window.initSharingLinks, 5000);
   $('#shareBtn').addEventListener('click', function() {
     window.initSharingLinks();
   });
 
+  // After all async events from the map have fired...
+  setTimeout(function() { enableContext = true; }, 0);
 });

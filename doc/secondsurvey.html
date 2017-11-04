@@ -1,10 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <title>Second Survey Data - Traveller Map</title>
 <meta charset="utf-8">
 <link rel="shortcut icon" href="../favicon.ico">
 <link rel="stylesheet" href="../site.css">
 <meta name="viewport" content="initial-scale=1, width=device-width">
-<script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.25/polyfill.min.js"></script>
+<script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.29/polyfill.min.js"></script>
 
 <style>
   table {
@@ -34,6 +34,7 @@
   td, th {
     border: none;
   }
+  .twocode th:nth-child(2), .twocode td:nth-child(2),
   td:first-child, th:first-child {
     border: 1pt solid black;
   }
@@ -76,7 +77,7 @@
 
 </style>
 
-<h1>Second Survey Data &mdash; The Traveller Map</h1>
+<h1 class=sitename>Second Survey Data</h1>
 
 <div class="content">
 
@@ -137,8 +138,9 @@
     <h2>Hex Location</h2>
     <div class="example"><code><span class="highlight">1910</span> Regina A788899-C Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF NS - 703 8 ImDd F7 V BD M3 V</code></div>
     <p>
-      The hexagon location of the world within a sector, given as a
-      four digit number. The first two digits are the distance from
+      The location of the world within a sector, given as a
+      four digit number identifying a position on a hexagonal grid.
+      The first two digits are the distance from
       the spinward edge in parsecs ranging from <code>01</code>
       through <code>32</code>. The second two digits are the distance
       from the coreward edge in parsecs ranging from <code>01</code>
@@ -161,7 +163,7 @@
     <div class="example"><code>1910 Regina <span class="highlight">A788899-C</span> Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF NS - 703 8 ImDd F7 V BD M3 V</code></div>
     <p>
       The UWP gives a compact description of the physical and cultural
-      aspects of the main world, as well the starport facilities and
+      aspects of the Main World, as well the starport facilities and
       available technology. The fields are respectively:
     </p>
     <table>
@@ -208,7 +210,7 @@
       <div class="example"><code>1910 Regina <span class="highlight">A</span>788899-C Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF NS - 703 8 ImDd F7 V BD M3 V</code></div>
       <p>
         Starport indicates the best quality starport in the star
-        system.
+        system available to travellers.
       </p>
       <table>
         <tr>
@@ -850,6 +852,78 @@
   <td>
 
       </table>
+
+
+    <h4>
+      <cite>Traveller: The New Era</cite>
+    </h4>
+
+    <p>
+      Worlds in the Wilds (<a href="#allegiance">allegiance</a> code: <code>Wi</code>) use a different set of
+      government codes.
+    </p>
+
+    <table>
+        <tr>
+          <th>Code
+          <th>Description
+        </tr>
+        <tr>
+          <td><code>0</code>
+          <td>No Government Structure.
+        </tr>
+        <tr>
+          <td><code>1</code>
+          <td>Tribal Government.
+        </tr>
+        <tr>
+          <td><code>2</code>
+          <td>Participating Democracy.
+        </tr>
+        <tr>
+          <td><code>3</code>
+          <td>Representative Democracy.
+        </tr>
+        <tr>
+          <td><code>4</code>
+          <td>Charismatic Dictator.
+        </tr>
+        <tr>
+          <td><code>5</code>
+          <td>Charismatic Oligarchy.
+        </tr>
+        <tr>
+          <td><code>6</code>
+          <td>Technologically Elevated Dictator (TED).
+        </tr>
+        <tr>
+          <td><code>7</code>
+          <td>Mystic Dictatorship.
+        </tr>
+        <tr>
+          <td><code>8</code>
+          <td>Totalitarian Oligarchy.
+        </tr>
+        <tr>
+          <td><code>9</code>
+          <td>Mystic Autocracy.
+        </tr>
+        <tr>
+          <td><code>A</code>
+          <td>Civil Service Bureaucracy.
+        </tr>
+        <tr>
+          <td><code>B</code>
+          <td>Self-Perpetuating Oligarchy.
+        </tr>
+        <tr>
+          <td><code>C</code>
+          <td>Impersonal Bureaucracy.
+        </tr>
+    </table>
+
+
+
     </section>
     <section id="law_level">
       <h3>Law Level</h3>
@@ -1081,7 +1155,7 @@
     <div class="example"><code>1910 Regina A788899-C <span class="highlight">Ri Pa Ph An Cp (Amindii)2</span>   { 4 }  (D7E+4) [9C6D] BcCeF NS - 703 8 ImDd F7 V BD M3 V</code></div>
     <p>
       Remarks and trade classifications indicate obvious or important
-      characteristics for the main world in the system. They serve to
+      characteristics for the Main World in the system. They serve to
       show the potential for a world based on its capacity as a source
       of trade goods, a market for trade goods, or both.
     </p>
@@ -1099,7 +1173,7 @@
       <tr><td><code>Ic</code><td>Ice Capped.<span>Atm 0-1, Hyd 1+</span>
       <tr><td><code>Oc</code><td>Ocean World.<span>Siz A+, Hyd A</span>
       <tr><td><code>Va</code><td>Vacuum World.<span>Atm 0</span>
-      <tr><td><code>Wa</code><td>Water World.<span>Siz 3-A, Atm 3-9, Hyd A</span>
+      <tr><td><code>Wa</code><td>Water World.<span>Siz 3-9, Atm 3-9, Hyd A</span>
 
       <tr><th colspan="2" class="section">Population
 
@@ -1150,7 +1224,7 @@
 
       <tr><th colspan="2" class="section">Special
 
-      <tr><td><code>Sa</code><td>Satellite.
+      <tr><td><code>Sa</code><td>Satellite (Main World is a moon of a Gas Giant).
       <tr><td><code>Fo</code><td>Forbidden (Red Zone).
       <tr><td><code>Pz</code><td>Puzzle (Amber Zone).<span>Pop 7+</span>
       <tr><td><code>Da</code><td>Danger (Amber Zone).<span>Pop 6-</span>
@@ -1220,75 +1294,9 @@
       uniquely identify a sophont species in Charted Space.
     </p>
 
-    <table>
+    <!-- Populated via code -->
+    <table id=sophont-table>
       <tr><th>Code<th>Sophont<th>Location
-        <!-- Sophont Table Begin -->
-      <tr><td><code>Adda</code><td>Addaxur<td>Zhodani space
-      <tr><td><code>Akee</code><td>Akeed<td>Gate
-      <tr><td><code>Aqua</code><td>Aquans (Daga)/&#x200B;Aquamorphs (Alph)<td>Daga (Aquans)/&#x200B;Alph (Aquamorphs)
-      <tr><td><code>Asla</code><td>Aslan<td>major
-      <tr><td><code>Bhun</code><td>Brunj<td>Forn
-      <tr><td><code>Bruh</code><td>Bruhre<td>Daib/&#x200B;Reav
-      <tr><td><code>Buru</code><td>Burugdi<td>Dagu/&#x200B;Thet
-      <tr><td><code>Bwap</code><td>Bwaps<td>Imperial/&#x200B;Vilani space
-      <tr><td><code>Chir</code><td>Chirpers<td>major
-      <tr><td><code>Darm</code><td>Darmine<td>Zaru
-      <tr><td><code>Dary</code><td>Daryen<td>Spin
-      <tr><td><code>Dolp</code><td>Dolphins<td>Imperial/&#x200B;Solomani space
-      <tr><td><code>Droy</code><td>Droyne<td>major
-      <tr><td><code>Esly</code><td>Eslyat<td>Beyo/&#x200B;Vang
-      <tr><td><code>Flor</code><td>Floriani<td>Beyo/&#x200B;Troj
-      <tr><td><code>Geon</code><td>Geonee<td>Mass
-      <tr><td><code>Gnii</code><td>Gniivi<td>Hint
-      <tr><td><code>Gray</code><td>Graytch<td>Dagu/&#x200B;Gush/&#x200B;Ilel
-      <tr><td><code>Guru</code><td>Gurungan<td>Solo
-      <tr><td><code>Gurv</code><td>Gurvin<td>Hiver space
-      <tr><td><code>Hama</code><td>Hamaran<td>Dagu
-      <tr><td><code>Hive</code><td>Hiver<td>Hiver space
-      <tr><td><code>Huma</code><td>Human (Vilani/&#x200B;Solomani-mixed)<td>Imperial/&#x200B;Solomani space
-      <tr><td><code>Ithk</code><td>Ithklur<td>Hiver space
-      <tr><td><code>Jaib</code><td>Jaibok<td>Thet
-      <tr><td><code>Jala</code><td>Jala'lak<td>Dagu
-      <tr><td><code>Jend</code><td>Jenda<td>Hint
-      <tr><td><code>Jonk</code><td>Jonkeereen<td>Dene/&#x200B;Spin
-      <tr><td><code>Kafo</code><td>Kafoe<td>Cruc
-      <tr><td><code>Kagg</code><td>Kaggushus<td>Mass
-      <tr><td><code>Karh</code><td>Karhyri<td>Cruc
-      <tr><td><code>Kiak</code><td>Kiakh'iee<td>Dagu
-      <tr><td><code>Lamu</code><td>Lamura Gav/&#x200B;Teg<td>Hint
-      <tr><td><code>Lanc</code><td>Lancians<td>Dagu/&#x200B;Gush
-      <tr><td><code>Libe</code><td>Liberts<td>Daib/&#x200B;Dias
-      <tr><td><code>Luri</code><td>Luriani<td>Forn/&#x200B;Ley
-      <tr><td><code>Mal'</code><td>Mal'Gnar<td>Beyo
-      <tr><td><code>Mask</code><td>Maskai<td>Glim
-      <tr><td><code>Mitz</code><td>Mitzene<td>Thet
-      <tr><td><code>Muri</code><td>Murians<td>Vang
-      <tr><td><code>Orca</code><td>Orca<td>Imperial/&#x200B;Solomani space
-      <tr><td><code>Ormi</code><td>Ormine<td>Dark
-      <tr><td><code>S'mr</code><td>S'mrii<td>Dagu
-      <tr><td><code>Scan</code><td>Scanians<td>Dagu
-      <tr><td><code>Sele</code><td>Selenites<td>Alph
-      <tr><td><code>Sred</code><td>Sred*Ni<td>Beyo
-      <tr><td><code>Stal</code><td>Stalkers<td>Hint
-      <tr><td><code>Suer</code><td>Suerrat<td>Ilel
-      <tr><td><code>Sull</code><td>Sulliji<td>Dene
-      <tr><td><code>Swan</code><td>Swanfei<td>Gate
-      <tr><td><code>Sydi</code><td>Sydites<td>Ley
-      <tr><td><code>Syle</code><td>Syleans<td>Core
-      <tr><td><code>Tapa</code><td>Tapazmal<td>Reft
-      <tr><td><code>Taur</code><td>Taureans<td>Alde
-      <tr><td><code>Tent</code><td>Tentrassi<td>Zaru
-      <tr><td><code>Tlye</code><td>Tlyetrai<td>Reav
-      <tr><td><code>UApe</code><td>Uplifted Apes<td>Imperial/&#x200B;Solomani space
-      <tr><td><code>Ulan</code><td>Ulane<td>Dark
-      <tr><td><code>Ursa</code><td>Ursa<td>Forn/&#x200B;Ley
-      <tr><td><code>Urun</code><td>Urunishani<td>Anta
-      <tr><td><code>Varg</code><td>Vargr<td>Anta/&#x200B;Corr/&#x200B;Dagu/&#x200B;Dene/&#x200B;Empt/&#x200B;Ley/&#x200B;Lish/&#x200B;Spin/&#x200B;Vargr space
-      <tr><td><code>Vega</code><td>Vegans<td>Solo
-      <tr><td><code>Za't</code><td>Za'tachk<td>Wren
-      <tr><td><code>Zhod</code><td>Zhodani<td>Zhodani space
-      <tr><td><code>Ziad</code><td>Ziadd<td>Dagu
-        <!-- Sophont Table End -->
     </table>
 
     <h3>
@@ -1626,8 +1634,8 @@
 
       <tr>
         <td><code>B</code>
-        <td>Blue. Technologically Elevated Dicatorship
-        <span style="float: right">TNE (circa 1202).</span>
+        <td>Blue. Balkanized &mdash; <a href="#government">code</a> is dominant government.
+        <span style="float: right">TNE (circa 1201).</span>
 
       <tr>
         <td><code>F</code>
@@ -1674,7 +1682,7 @@
     <div class="example"><code>1910 Regina A788899-C Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF NS - 7<span class="highlight">0</span>3 8 ImDd F7 V BD M3 V</code></div>
     <p>
       The second <a href="#ehex">eHex</a> digit is the number of
-      planetoid belts in the system. A main world of
+      planetoid belts in the system. A Main World of
       size <code>0</code> is termed an asteriod belt, and is not
       counted here.
     </p>
@@ -1692,11 +1700,17 @@
     <div class="example"><code>1910 Regina A788899-C Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF NS - 703 <span class="highlight">8</span> ImDd F7 V BD M3 V</code></div>
     <p>
       The number of "worlds" in the system. This is given as a decimal
-      integer, and will always be at least 1 (the main world) plus the
+      integer, and will always be at least 1 (the Main World) plus the
       number of planetoid belts (see <a href="#pbg">PBG</a>) plus the
       number of gas giants (see <a href="#pbg">PBG</a>) but will
       include other planets orbiting the star(s) in the system.
     </p>
+    <p>
+      Note that gas giant satellites are <em>not</em> counted, unless
+      the satellite is the Main World itself - identified with
+      <a href="#remark">remark</a> <code>Sa</code>.
+    </p>
+
   </section>
 
   <section id="allegiance">
@@ -1711,202 +1725,13 @@
 
     <p>
       The allegiance code is a 4-character code which is selected to
-      uniquely identify a polity in Charted Space.
+      uniquely identify a polity in Charted Space. Previous editions
+      used a 2-character code (see below).
     </p>
 
-    <table>
-      <tr><th>Code<th>Description<th>Location
-        <!-- Allegiance Table Begin -->
-      <tr><td><code>3EoG</code><td>Third Empire of Gashikan<td>Mend
-      <tr><td><code>4Wor</code><td>Four Worlds<td>Farf
-      <tr><td><code>AkUn</code><td>Akeena Union<td>Gate
-      <tr><td><code>AlCo</code><td>Altarean Confederation<td>Vang
-      <tr><td><code>AnTC</code><td>Anubian Trade Coalition<td>Hint
-      <tr><td><code>AsIf</code><td>Iyeaao'fte (Tlaukhu client state)<td>Ustr
-      <tr><td><code>AsMw</code><td>Aslan Hierate, single multiple-world clan dominates<td>Akti/&#x200B;Dark/&#x200B;Eali/&#x200B;Hlak/&#x200B;Iwah/&#x200B;Reav/&#x200B;Rift/&#x200B;Stai/&#x200B;Troj/&#x200B;Uist/&#x200B;Ustr/&#x200B;Verg
-      <tr><td><code>AsOf</code><td>Oleaiy'fte (Tlaukhu client state)<td>Ustr
-      <tr><td><code>AsSF</code><td>Aslan Hierate, small facility (temporary)<td>
-      <tr><td><code>AsSc</code><td>Aslan Hierate, multiple clans split control<td>Akti/&#x200B;Dark/&#x200B;Eali/&#x200B;Hlak/&#x200B;Iwah/&#x200B;Reav/&#x200B;Rift/&#x200B;Stai/&#x200B;Troj/&#x200B;Uist/&#x200B;Ustr
-      <tr><td><code>AsT0</code><td>Aslan Hierate, Tlaukhu control, Yerlyaruiwo (1), Hrawoao (13), Eisohiyw (14), Ferekhearl (19)<td>Akti/&#x200B;Dark/&#x200B;Eali/&#x200B;Hlak/&#x200B;Iwah/&#x200B;Reav/&#x200B;Rift/&#x200B;Stai/&#x200B;Troj/&#x200B;Uist/&#x200B;Ustr
-      <tr><td><code>AsT1</code><td>Aslan Hierate, Tlaukhu control, Khauleairl (2), Estoieie' (16), Toaseilwi (22)<td>Akti/&#x200B;Dark/&#x200B;Eali/&#x200B;Hlak/&#x200B;Iwah/&#x200B;Reav/&#x200B;Rift/&#x200B;Stai/&#x200B;Troj/&#x200B;Uist/&#x200B;Ustr
-      <tr><td><code>AsT2</code><td>Aslan Hierate, Tlaukhu control, Syoisuis (3)<td>Akti/&#x200B;Dark/&#x200B;Eali/&#x200B;Hlak/&#x200B;Iwah/&#x200B;Reav/&#x200B;Rift/&#x200B;Stai/&#x200B;Troj/&#x200B;Uist/&#x200B;Ustr
-      <tr><td><code>AsT3</code><td>Aslan Hierate, Tlaukhu control, Tralyeaeawi (4), Yulraleh (12), Aiheilar (25), Riyhalaei (28)<td>Akti/&#x200B;Dark/&#x200B;Eali/&#x200B;Hlak/&#x200B;Iwah/&#x200B;Reav/&#x200B;Rift/&#x200B;Stai/&#x200B;Troj/&#x200B;Uist/&#x200B;Ustr
-      <tr><td><code>AsT4</code><td>Aslan Hierate, Tlaukhu control, Eakhtiyho (5), Eteawyolei' (11), Fteweyeakh (23)<td>Akti/&#x200B;Dark/&#x200B;Eali/&#x200B;Hlak/&#x200B;Iwah/&#x200B;Reav/&#x200B;Rift/&#x200B;Stai/&#x200B;Troj/&#x200B;Uist/&#x200B;Ustr
-      <tr><td><code>AsT5</code><td>Aslan Hierate, Tlaukhu control, Hlyueawi (6), Isoitiyro (15)<td>Akti/&#x200B;Dark/&#x200B;Eali/&#x200B;Hlak/&#x200B;Iwah/&#x200B;Reav/&#x200B;Rift/&#x200B;Stai/&#x200B;Troj/&#x200B;Uist/&#x200B;Ustr
-      <tr><td><code>AsT6</code><td>Aslan Hierate, Tlaukhu control, Uiktawa (7), Iykyasea (17), Faowaou (27)<td>Akti/&#x200B;Dark/&#x200B;Eali/&#x200B;Hlak/&#x200B;Iwah/&#x200B;Reav/&#x200B;Rift/&#x200B;Stai/&#x200B;Troj/&#x200B;Uist/&#x200B;Ustr
-      <tr><td><code>AsT7</code><td>Aslan Hierate, Tlaukhu control, Ikhtealyo (8), Tlerfearlyo (20), Yehtahikh (24)<td>Akti/&#x200B;Dark/&#x200B;Eali/&#x200B;Hlak/&#x200B;Iwah/&#x200B;Reav/&#x200B;Rift/&#x200B;Stai/&#x200B;Troj/&#x200B;Uist/&#x200B;Ustr
-      <tr><td><code>AsT8</code><td>Aslan Hierate, Tlaukhu control, Seieakh (9), Akatoiloh (18), We'okunir (29)<td>Akti/&#x200B;Dark/&#x200B;Eali/&#x200B;Hlak/&#x200B;Iwah/&#x200B;Reav/&#x200B;Rift/&#x200B;Stai/&#x200B;Troj/&#x200B;Uist/&#x200B;Ustr
-      <tr><td><code>AsT9</code><td>Aslan Hierate, Tlaukhu control, Aokhalte (10), Sahao' (21), Ouokhoi (26)<td>Akti/&#x200B;Dark/&#x200B;Eali/&#x200B;Hlak/&#x200B;Iwah/&#x200B;Reav/&#x200B;Rift/&#x200B;Stai/&#x200B;Troj/&#x200B;Uist/&#x200B;Ustr
-      <tr><td><code>AsTA</code><td>Tealou Arlaoh (Aslan independent clan, non-outcast)<td>Uist/&#x200B;Ustr
-      <tr><td><code>AsTv</code><td>Aslan Hierate, Tlaukhu vassal clan dominates<td>Akti/&#x200B;Dark/&#x200B;Eali/&#x200B;Hlak/&#x200B;Iwah/&#x200B;Reav/&#x200B;Rift/&#x200B;Stai/&#x200B;Troj/&#x200B;Uist/&#x200B;Ustr
-      <tr><td><code>AsTz</code><td>Aslan Hierate, Zodia clan (Tralyeaeawi vassal)<td>Iwah
-      <tr><td><code>AsVc</code><td>Aslan Hierate, vassal clan dominates<td>Akti/&#x200B;Dark/&#x200B;Eali/&#x200B;Hlak/&#x200B;Iwah/&#x200B;Reav/&#x200B;Rift/&#x200B;Stai/&#x200B;Troj/&#x200B;Uist/&#x200B;Ustr
-      <tr><td><code>AsWc</code><td>Aslan Hierate, single one-world clan dominates<td>Akti/&#x200B;Dark/&#x200B;Eali/&#x200B;Hlak/&#x200B;Iwah/&#x200B;Reav/&#x200B;Rift/&#x200B;Stai/&#x200B;Troj/&#x200B;Uist/&#x200B;Ustr
-      <tr><td><code>AsXX</code><td>Aslan Hierate, unknown<td>Akti/&#x200B;Dark/&#x200B;Eali/&#x200B;Hlak/&#x200B;Iwah/&#x200B;Reav/&#x200B;Rift/&#x200B;Stai/&#x200B;Troj/&#x200B;Uist/&#x200B;Ustr
-      <tr><td><code>Bium</code><td>The Biumvirate<td>Farf
-      <tr><td><code>BlSo</code><td>Belgardian Sojurnate<td>Troj
-      <tr><td><code>CAEM</code><td>Comsentient Alliance, Eslyat Magistracy<td>Beyo/&#x200B;Vang
-      <tr><td><code>CAKT</code><td>Comsentient Alliance, Kajaani Triumverate<td>Vang
-      <tr><td><code>CAin</code><td>Comsentient Alliance, independent<td>Vang
-      <tr><td><code>CaAs</code><td>Carrillian Assembly<td>Reav
-      <tr><td><code>CaPr</code><td>Principality of Caledon<td>Reav
-      <tr><td><code>CaTe</code><td>Carter Technocracy<td>Reav
-      <tr><td><code>CoBa</code><td>Confederation of Bammesuka<td>Mend
-      <tr><td><code>CoLp</code><td>Council of Leh Perash<td>Hint
-      <tr><td><code>CsCa</code><td>Client state, Principality of Caledon<td>Reav
-      <tr><td><code>CsHv</code><td>Client state, Hiver Federation<td>Cruc/&#x200B;Spic
-      <tr><td><code>CsIm</code><td>Client state, Third Imperium<td>various
-      <tr><td><code>CsMP</code><td>Client state, Ma'Gnar Primarchic<td>Beyo
-      <tr><td><code>CsZh</code><td>Client state, Zhodani Consulate<td>Spin/&#x200B;Troj
-      <tr><td><code>CyUn</code><td>Cytralin Unity<td>Hint
-      <tr><td><code>DaCf</code><td>Darrian Confederation<td>Spin
-      <tr><td><code>DeHg</code><td>Descarothe Hegemony<td>Farf
-      <tr><td><code>DiWb</code><td>Die Weltbund<td>Beyo
-      <tr><td><code>DoAl</code><td>Domain of Alntzar<td>Farf
-      <tr><td><code>DuCf</code><td>Confederation of Duncinae<td>Reav
-      <tr><td><code>FCSA</code><td>Four Corners Sovereign Array<td>Vang
-      <tr><td><code>FeAl</code><td>Federation of Alsas<td>Farf
-      <tr><td><code>FeAm</code><td>Federation of Amil<td>Cruc
-      <tr><td><code>FeHe</code><td>Federation of Heron<td>Glim
-      <tr><td><code>FlLe</code><td>Florian League<td>Troj
-      <tr><td><code>GaFd</code><td>Galian Federation<td>Gate
-      <tr><td><code>GaRp</code><td>Gamma Republic<td>Glim
-      <tr><td><code>GdKa</code><td>Grand Duchy of Kalradin<td>Cruc
-      <tr><td><code>GdMh</code><td>Grand Duchy of Marlheim<td>Reav
-      <tr><td><code>GdSt</code><td>Grand Duchy of Stoner<td>Glim
-      <tr><td><code>GeOr</code><td>Gerontocracy of Ormine<td>Dark
-      <tr><td><code>GlEm</code><td>Glorious Empire (Aslan independent clan, outcast)<td>Troj
-      <tr><td><code>GlFe</code><td>Glimmerdrift Federation<td>Cruc/&#x200B;Glim
-      <tr><td><code>GnCl</code><td>Gniivi Collective<td>Hint
-      <tr><td><code>GrCo</code><td>Grossdeutchland Confederation<td>Vang
-      <tr><td><code>HaCo</code><td>Haladon Cooperative<td>Farf
-      <tr><td><code>HoPA</code><td>Hochiken People's Assembly<td>Gate
-      <tr><td><code>HvFd</code><td>Hiver Federation<td>Spic
-      <tr><td><code>HyLe</code><td>Hyperion League<td>Vang
-      <tr><td><code>IHPr</code><td>I'Sred*Ni Protectorate<td>Beyo
-      <tr><td><code>ImAp</code><td>Third Imperium, Amec Protectorate<td>Dagu
-      <tr><td><code>ImDa</code><td>Third Imperium, Domain of Antares<td>Anta/&#x200B;Empt/&#x200B;Lish
-      <tr><td><code>ImDc</code><td>Third Imperium, Domain of Sylea<td>Core/&#x200B;Delp/&#x200B;Forn/&#x200B;Mass
-      <tr><td><code>ImDd</code><td>Third Imperium, Domain of Deneb<td>Dene/&#x200B;Reft/&#x200B;Spin/&#x200B;Troj
-      <tr><td><code>ImDg</code><td>Third Imperium, Domain of Gateway<td>Glim/&#x200B;Hint/&#x200B;Ley
-      <tr><td><code>ImDi</code><td>Third Imperium, Domain of Ilelish<td>Daib/&#x200B;Ilel/&#x200B;Reav/&#x200B;Verg/&#x200B;Zaru
-      <tr><td><code>ImDs</code><td>Third Imperium, Domain of Sol<td>Alph/&#x200B;Dias/&#x200B;Magy/&#x200B;Olde/&#x200B;Solo
-      <tr><td><code>ImDv</code><td>Third Imperium, Domain of Vland<td>Corr/&#x200B;Dagu/&#x200B;Gush/&#x200B;Reft/&#x200B;Vlan
-      <tr><td><code>ImLa</code><td>Third Imperium, League of Antares<td>Anta
-      <tr><td><code>ImLc</code><td>Third Imperium, Lancian Cultural Region<td>Corr/&#x200B;Dagu/&#x200B;Gush
-      <tr><td><code>ImLu</code><td>Third Imperium, Luriani Cultural Association<td>Ley/&#x200B;Forn
-      <tr><td><code>ImSy</code><td>Third Imperium, Sylean Worlds<td>Core
-      <tr><td><code>ImVd</code><td>Third Imperium, Vegan Autonomous District<td>Solo
-      <tr><td><code>IsDo</code><td>Islaiat Dominate<td>Eali
-      <tr><td><code>JAOz</code><td>Julian Protectorate, Alliance of Ozuvon<td>Mend
-      <tr><td><code>JAsi</code><td>Julian Protectorate, Asimikigir Confederation<td>Amdu/&#x200B;Mend
-      <tr><td><code>JCoK</code><td>Julian Protectorate, Constitution of Koekhon<td>Amdu/&#x200B;Mend
-      <tr><td><code>JHhk</code><td>Julian Protectorate, Hhkar Sphere<td>Amdu/&#x200B;Mend
-      <tr><td><code>JLum</code><td>Julian Protectorate, Lumda Dower<td>Mend
-      <tr><td><code>JMen</code><td>Julian Protectorate, Commonwealth of Mendan<td>Mend
-      <tr><td><code>JPSt</code><td>Julian Protectorate, Pirbarish Starlane<td>Mend
-      <tr><td><code>JRar</code><td>Julian Protectorate, Rar Errall/Wolves Warren<td>Mend
-      <tr><td><code>JUkh</code><td>Julian Protectorate, Ukhanzi Coordinate<td>Mend
-      <tr><td><code>JVug</code><td>Julian Protectorate, Vugurar Dominion<td>Mend
-      <tr><td><code>JaPa</code><td>Jarnac Pashalic<td>Beyo/&#x200B;Vang
-      <tr><td><code>JuHl</code><td>Julian Protectorate, Hegemony of Lorean<td>Amdu/&#x200B;Empt/&#x200B;Mend
-      <tr><td><code>JuPr</code><td>Julian Protectorate, independent<td>Amdu/&#x200B;Empt/&#x200B;Mend
-      <tr><td><code>JuRu</code><td>Julian Protectorate, Rukadukaz Republic<td>Empt/&#x200B;Mend
-      <tr><td><code>KPel</code><td>Kingdom of Peladon<td>Thet
-      <tr><td><code>KaCo</code><td>Katowice Conquest<td>Cruc
-      <tr><td><code>KaWo</code><td>Karhyri Worlds<td>Cruc
-      <tr><td><code>KhLe</code><td>Khuur League<td>Ley
-      <tr><td><code>KoEm</code><td>Korsumug Empire<td>Thet
-      <tr><td><code>KoPm</code><td>Percavid Marches<td>Thet
-      <tr><td><code>KrBu</code><td>Kranzbund<td>Vang
-      <tr><td><code>LaCo</code><td>Langemarck Coalition<td>Vang
-      <tr><td><code>LeSu</code><td>League of Suns<td>Farf
-      <tr><td><code>LnRp</code><td>Loyal Nineworlds Republic<td>Glim
-      <tr><td><code>LyCo</code><td>Lanyard Colonies<td>Reav
-      <tr><td><code>MaCl</code><td>Mapepire Cluster<td>Beyo
-      <tr><td><code>MaEm</code><td>Maskai Empire<td>Glim
-      <tr><td><code>MaPr</code><td>Ma'Gnar Primarchic<td>Beyo
-      <tr><td><code>MeCo</code><td>Megusard Corporate<td>Gate
-      <tr><td><code>MiCo</code><td>Mische Conglomerate<td>Cruc
-      <tr><td><code>MnPr</code><td>Mnemosyne Principality<td>Farf
-      <tr><td><code>MrCo</code><td>Mercantile Concord<td>Cruc
-      <tr><td><code>NaAs</code><td>Non-Aligned, Aslan-dominated (outside Hierate)<td>Akti/&#x200B;Dark/&#x200B;Eali/&#x200B;Rift/&#x200B;Uist/&#x200B;Ustr
-      <tr><td><code>NaHu</code><td>Non-Aligned, Human-dominated<td>various
-      <tr><td><code>NaVa</code><td>Non-Aligned, Vargr-dominated<td>various
-      <tr><td><code>NaXX</code><td>Non-Aligned, unclaimed<td>various
-      <tr><td><code>OcWs</code><td>Outcasts of the Whispering Sky<td>Hint
-      <tr><td><code>OlWo</code><td>Old Worlds<td>Cruc
-      <tr><td><code>PiFe</code><td>Pionier Fellowship<td>Vang
-      <tr><td><code>PlLe</code><td>Plavian League<td>Gate
-      <tr><td><code>Prot</code><td>The Protectorate<td>Farf
-      <tr><td><code>RaRa</code><td>Ral Ranta<td>Hint
-      <tr><td><code>ReUn</code><td>Renkard Union<td>Gate
-      <tr><td><code>Reac</code><td>The Reach<td>Cruc
-      <tr><td><code>SaCo</code><td>Salinaikin Concordance<td>Farf
-      <tr><td><code>Sark</code><td>Sarkan Constellation<td>Mend
-      <tr><td><code>SeFo</code><td>Senlis Foederate<td>Troj
-      <tr><td><code>SlLg</code><td>Shukikikar League<td>Glim
-      <tr><td><code>SoBF</code><td>Solomani Confederation, Bootean Federation<td>Solo
-      <tr><td><code>SoCf</code><td>Solomani Confederation<td>Alph/&#x200B;Diab/&#x200B;Dark/&#x200B;Hint/&#x200B;Magy/&#x200B;Olde/&#x200B;Reav/&#x200B;Solo/&#x200B;Spic/&#x200B;Ustr
-      <tr><td><code>SoCT</code><td>Solomani Confederation, Consolidation of Turin<td>Alph
-      <tr><td><code>SoNS</code><td>Solomani Confederation, New Slavic Solidarity<td>Magy
-      <tr><td><code>SoRD</code><td>Solomani Confederation, Reformed Dootchen Estates<td>Magy
-      <tr><td><code>SoWu</code><td>Solomani Confederation, Wuan Technology Association<td>Diab/&#x200B;Magy
-      <tr><td><code>StCl</code><td>Strend Cluster<td>Troj
-      <tr><td><code>SwCf</code><td>Sword Worlds Confederation<td>Spin
-      <tr><td><code>SwFW</code><td>Swanfei Free Worlds<td>Gate
-      <tr><td><code>SyRe</code><td>Syzlin Republic<td>Cruc
-      <tr><td><code>TeCl</code><td>Tellerian Cluster<td>Vang
-      <tr><td><code>TrCo</code><td>Trindel Confederacy<td>Gate
-      <tr><td><code>TrDo</code><td>Trelyn Domain<td>Vang/&#x200B;Farf
-      <tr><td><code>TroC</code><td>Trooles Confederation<td>Thet
-      <tr><td><code>UnGa</code><td>Union of Garth<td>Farf
-      <tr><td><code>UnHa</code><td>Union of Harmony<td>Dark/&#x200B;Reav
-      <tr><td><code>V17D</code><td>17th Disjucture<td>Mesh/&#x200B;Wind
-      <tr><td><code>V40S</code><td>40th Squadron (Ekhelle Ksafi)<td>Gvur
-      <tr><td><code>VARC</code><td>Anti-Rukh Coalition (Gnoerrgh Rukh Lloell)<td>Gvur
-      <tr><td><code>VAnP</code><td>Antares Pact<td>Mesh/&#x200B;Mend
-      <tr><td><code>VAug</code><td>United Followers of Augurgh<td>Dene/&#x200B;Tugl
-      <tr><td><code>VBkA</code><td>Bakne Alliance<td>Tugl
-      <tr><td><code>VCKd</code><td>Commonality of Kedzudh (Kedzudh Aeng)<td>Gvur
-      <tr><td><code>VDzF</code><td>Dzarrgh Federate<td>Dene/&#x200B;Prov/&#x200B;Tugl
-      <tr><td><code>VFFD</code><td>First Fleet of Dzo<td>Mesh
-      <tr><td><code>VGoT</code><td>Glory of Taarskoerzn<td>Prov
-      <tr><td><code>VIrM</code><td>Irrgh Manifest<td>Prov
-      <tr><td><code>VJoF</code><td>Jihad of Faarzgaen<td>Prov
-      <tr><td><code>VLIn</code><td>Llaeghskath Interacterate<td>Prov/&#x200B;Tugl
-      <tr><td><code>VLPr</code><td>Lair Protectorate<td>Prov
-      <tr><td><code>VNgC</code><td>Ngath Confederation<td>Wind
-      <tr><td><code>VOpp</code><td>Opposition Alliance<td>Mesh
-      <tr><td><code>VPGa</code><td>Pact of Gaerr (Gaerr Thue)<td>Gvur
-      <tr><td><code>VRo5</code><td>Ruler of Five<td>Mesh
-      <tr><td><code>VRrS</code><td>Rranglloez Stronghold<td>Tugl
-      <tr><td><code>VRuk</code><td>Worlds of Leader Rukh (Rukh Aegz)<td>Gvur
-      <tr><td><code>VSDp</code><td>Saeknouth Dependency (Saeknouth Igz)<td>Gvur
-      <tr><td><code>VSEq</code><td>Society of Equals (Dzen Aeng Kho)<td>Gvur/&#x200B;Tugl
-      <tr><td><code>VThE</code><td>Thoengling Empire (Thoengling Raghz)<td>Gvur/&#x200B;Tugl
-      <tr><td><code>VTzE</code><td>Thirz Empire (Thirz Uerra)<td>Gvur/&#x200B;Ziaf
-      <tr><td><code>VUru</code><td>Urukhu<td>Gvur
-      <tr><td><code>VVar</code><td>Empire of Varroerth<td>Prov/&#x200B;Tugl/&#x200B;Wind
-      <tr><td><code>VVoS</code><td>Voekhaeb Society<td>Mesh
-      <tr><td><code>VWP2</code><td>Windhorn Pact of Two<td>Tugl
-      <tr><td><code>VWan</code><td>People of Wanz<td>Tugl
-      <tr><td><code>ViCo</code><td>Viyard Concourse<td>Gate
-      <tr><td><code>XXXX</code><td>Unknown<td>various
-      <tr><td><code>ZePr</code><td>Zelphic Primacy<td>Farf
-      <tr><td><code>ZhCa</code><td>Zhodani Consulate, Colonnade Province<td>Vang/&#x200B;Farf
-      <tr><td><code>ZhCh</code><td>Zhodani Consulate, Chtierabl Province<td>Chti
-      <tr><td><code>ZhCo</code><td>Zhodani Consulate, undetermined<td>various
-      <tr><td><code>ZhIN</code><td>Zhodani Consulate, Iadr Nsobl Province<td>Farf/&#x200B;Fore/&#x200B;Gvur/&#x200B;Spin/&#x200B;Yikl/&#x200B;Ziaf
-      <tr><td><code>ZhIa</code><td>Zhodani Consulate, Iabrensh Province<td>Stia/&#x200B;Zdie
-      <tr><td><code>ZhJp</code><td>Zhodani Consulate, Jadlapriants Province<td>Tien/&#x200B;Zhda
-      <tr><td><code>ZhMe</code><td>Zhodani Consulate, Meqlemianz Province<td>Eiap/&#x200B;Sidi/&#x200B;Eiap
-      <tr><td><code>ZhOb</code><td>Zhodani Consulate, Obrefripl Province<td>various
-      <tr><td><code>ZhSh</code><td>Zhodani Consulate, Shtochiadr Province<td>Itvi/&#x200B;Tlab
-      <tr><td><code>ZhVQ</code><td>Zhodani Consulate, Vlanchiets Qlom Province<td>various
-      <tr><td><code>Zuug</code><td>Zuugabish Tripartite<td>Mend
-      <tr><td><code>ZyCo</code><td>Zydarian Codominion<td>Beyo
-        <!-- Allegiance Table End -->
+    <!-- Populated via code -->
+    <table class=twocode id=allegiance-table>
+      <tr><th>Code<th>Pre-T5<th>Description<th>Location
     </table>
 
     <h3>
@@ -1916,52 +1741,59 @@
     <p>
       Older versions of Traveller use a 2-character code. Due to the
       limited number of useful 2-character codes, these are not unique
-      across Charted Space.
+      across Charted Space. In addition to the secondary entries in
+      the above table, the following codes are seen:
     </p>
 
     <table>
       <tr>
         <th>Code
         <th>Description
-      <tr>
-        <td><code>As</code>
-        <td>Aslan (general designation).
-      <tr>
-        <td><code>A0</code>
-        <td>Aslan Tlauku Clan (numbers <code>0</code>-<code>9</code> indicate Tlauku clan).
-      <tr>
-        <td><code>Cs</code>
-        <td>Client State (usually of the Imperium).
+        <th>Edition
       <tr>
         <td><code>Dr</code>
-        <td>Droyne.
+        <td>Droyne world.
+        <td>
       <tr>
-        <td><code>Hv</code>
-        <td>Hive Federation.
+        <td><code>Dd</code>
+        <td>Domain of Deneb
+        <td>MegaTraveller.
       <tr>
-        <td><code>Im</code>
-        <td>Imperium.
+        <td><code>Fd</code>
+        <td>Federation of Daibei
+        <td>MegaTraveller.
       <tr>
-        <td><code>Kk</code>
-        <td>The Two Thousand Worlds (K’kree).
+        <td><code>Fi</code>
+        <td>Federation of Ilelish
+        <td>MegaTraveller.
       <tr>
-        <td><code>Na</code>
-        <td>Non-Aligned (independent neutral world without affiliation).
+        <td><code>La</code>
+        <td>League of Antares
+        <td>MegaTraveller.
       <tr>
-        <td><code>So</code>
-        <td>Solomani Confederation.
+        <td><code>Li</code>
+        <td>Lucan's Imperium
+        <td>MegaTraveller.
       <tr>
-        <td><code>Va</code>
-        <td>Vargr (general designation).
+        <td><code>Ma</code>
+        <td>Margaret's Stronghold
+        <td>MegaTraveller.
       <tr>
-        <td><code>Vx</code>
-        <td>Vargr (2<sup>nd</sup> digit <code>0</code>-<code>9</code> or letter <code>a</code>-<code>z</code> indicates specific allegiance)
+        <td><code>Rv</code>
+        <td>Restored Vilani Empire/Ziru Sirka
+        <td>MegaTraveller.
       <tr>
-        <td><code>Zh</code>
-        <td>Zhodani Consulate.
+        <td><code>St</code>
+        <td>Strephon's Imperium
+        <td>MegaTraveller.
+      <tr>
+        <td><code>Wi</code>
+        <td>Wilds
+        <td>Traveller: The New Era.
       <tr>
         <td><code>--</code>
         <td>Empty, unclaimed system.
+        <td>
     </table>
 
   </section>
@@ -1970,9 +1802,24 @@
     <h2>Stellar Data</h2>
     <div class="example"><code>1910 Regina A788899-C Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF NS - 703 8 ImDd <span class="highlight">F7 V BD M3 V</span></code></div>
     <p>
-      Stellar Data indicates the spectral and luminosity class of each
-      star in the system. This uses a subset of the
-      <a target="_blank" href="http://en.wikipedia.org/wiki/Stellar_classification">Morgan–Keenan classification system</a>
+      Stellar data lists the stars in the system.
+    </p>
+
+    <p class=aside>
+      Normal stars fuse hydrogen, and occur in a variety of colors
+      (due to temperature) and sizes (sub-dwarfs to super-giants).
+      After a dwarf star exhausts its fuel it will briefly become a
+      cool red giant then leave behind its core as an incredibly dense
+      and bright white dwarf. A giant star will explode and leave
+      behind an even denser neutron star or black hole. An object too
+      small to fuse hydrogen but large enough to fuse deuterium is
+      known as a brown dwarf.
+    </p>
+
+    <p>
+      Normal stars are described by their
+      spectral class and luminosity. This uses a subset of the
+      <a target=_blank rel=noopener href="http://en.wikipedia.org/wiki/Stellar_classification">Morgan–Keenan classification system</a>
       (also known as Yerkes or MKK), such as <code>G2 V</code> where <code>G2</code>
       is the color/temperature (<sup>2</sup>&frasl;<sub>10</sub><sup>th</sup> of the way
       from yellow <code>G</code> to orange <code>K</code> on the spectrum) and
@@ -2080,12 +1927,14 @@
 
     </table>
 
+
+
     <h3>
       <cite>Classic Traveller</cite>, <cite>MegaTraveller</cite>, <cite>Traveller: The New Era</cite>, <cite>Traveller: 4th Edition</cite>
     </h3>
 
     <p>
-      White dwarf stars are represented by the size
+      White dwarfs (the cores of dead stars) are represented by the size
       code <code>D</code>, optionally followed by a spectral code,
       e.g.
 
@@ -2095,13 +1944,13 @@
       <code>DG</code>,
       <code>DK</code>,
       <code>DM</code>.
-      <em>(Note: This differs significantly from real-world
-      classification of white dwarf stars.)</em>
+      <em>(Note: This differs significantly from the real-world
+      classification of white dwarfs.)</em>
     </p>
 
     <p>
       Some files may use luminosity code <code>VII</code> for white
-      dwarf stars instead.
+      dwarfs instead.
     </p>
 
     <p>
@@ -2111,13 +1960,17 @@
     <h3><cite>Traveller<sup>5</sup></cite></h3>
 
    <p>
-      White dwarf stars are represented by the size
+      White dwarfs are represented by the size
       code <code>D</code> with no spectral code.
    </p>
 
     <p>
       The special code <code>BD</code> may be used for brown dwarf,
       sub-stellar objects.
+    </p>
+
+    <p>
+      The special code <code>BH</code> may be used for black holes.
     </p>
 
   </section>
@@ -2263,8 +2116,56 @@
 
 <div class="editorial">
   <p>
-    The <em class="product">Traveller</em> game in all forms is owned
-    by Far Future Enterprises. Copyright &copy; 1977 &ndash; 2016 Far
-    Future Enterprises.
+    The <em class="product">Traveller</em> game in all forms is owned by Far
+    Future Enterprises. Copyright <span class=copyright>&copy;</span> 1977
+    &ndash; 2017 Far Future Enterprises.
     <a href="http://farfuture.net/FFEFairUsePolicy2008.pdf">Fair Use Policy</a>
 </div>
+
+<script>
+(function() {
+  function populateTable(query, table, cols) {
+    fetch(query)
+      .then(function(response) {
+        if (!response.ok) throw new Error(response.statusText);
+        return response.json();
+      })
+      .then(function(data) {
+        data.forEach(function(item) {
+          var tr = table.appendChild(document.createElement('tr'));
+          cols.forEach(function(col) {
+            var td = tr.appendChild(document.createElement('td'));
+            var content = item[col.property];
+            if (col.className) td.className = col.className;
+            if (col.func) content = col.func(content);
+            td.innerHTML = content;
+          });
+        });
+      })
+      .catch(function(error) {
+        console.warn('Error processing ' + query + ': ' + error.message);
+      });
+  }
+
+  function processLocation(text) {
+    if (!text) return '';
+    return text
+      .replace(/\//g, '/&#x200B;')
+      .replace(/various/g, '<i>various</i>')
+      .replace(/\b(\w{3,4})\b/g, '<a class=stealth href="https://travellermap.com/go/$1">$1</a>')
+      .replace(/&#x200B;/g, '<wbr>');
+  }
+
+  populateTable('https://travellermap.com/t5ss/sophonts',
+                document.querySelector('#sophont-table'),
+                [{property: 'Code', className: 'code'},
+                 {property: 'Name'},
+                 {property: 'Location', func: processLocation}]);
+  populateTable('https://travellermap.com/t5ss/allegiances',
+                document.querySelector('#allegiance-table'),
+                [{property: 'Code', className: 'code'},
+                 {property: 'LegacyCode', className: 'code'},
+                 {property: 'Name'},
+                 {property: 'Location', func: processLocation}]);
+}());
+</script>

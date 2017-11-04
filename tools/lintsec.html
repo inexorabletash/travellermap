@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <title>Sector Data Checker - Traveller Map</title>
 <meta charset="utf-8">
 <link rel="shortcut icon" href="../favicon.ico">
-<link rel="stylesheet" href="../site.css?update=2015-08-30">
-<script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.25/polyfill.min.js"></script>
-<script src="../map.js?update=2015-08-29"></script>
+<link rel="stylesheet" href="../site.css?update=2017-03-18">
+<script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.29/polyfill.min.js"></script>
+<script src="../map.js?update=2017-03-14"></script>
 <style>
   #input, #output {
     width: 1000px; height: 300px;
@@ -23,7 +23,9 @@
 <div><textarea id="input" wrap="off" placeholder="Copy and paste data or drag and drop a file here - (SEC, T5 tab delimited, or T5 column delimited)"></textarea></div>
 <div><button id="go">Check</button>
 
-&nbsp; &nbsp; &nbsp; &nbsp; <label><input type=checkbox id=tab> Tab Delimited Output</label>
+  &nbsp; &nbsp; &nbsp; &nbsp; <label><input type=checkbox id=tab> Tab Delimited Output</label>
+
+  &nbsp; &nbsp; &nbsp; &nbsp; <label><input type=checkbox id=hide-tl checked> Hide TL Errors</label>
 
 </div>
 <div id="results">
@@ -71,7 +73,11 @@
     $('#go').addEventListener('click', function () {
       var input = $('#input').value;
       fetch(Traveller.MapService.makeURL(
-        '/api/sec', {lint: 1, type: $('#tab').checked ? 'TabDelimited' : 'SecondSurvey',}), {
+        '/api/sec', {
+          lint: 1,
+          type: $('#tab').checked ? 'TabDelimited' : 'SecondSurvey',
+          'hide-tl': $('#hide-tl').checked ? 1 : 0
+        }), {
         method: 'POST',
         body: input,
         headers: {'Content-Type': 'text/plain'}
@@ -101,7 +107,7 @@
 <div class="editorial">
   <p>
     The <em class="product">Traveller</em> game in all forms is owned by Far
-    Future Enterprises. Copyright &copy; 1977 &ndash; 2016 Far Future
-    Enterprises.
+    Future Enterprises. Copyright <span class=copyright>&copy;</span> 1977 &ndash; 2017
+    Far Future Enterprises.
     <a href="http://farfuture.net/FFEFairUsePolicy2008.pdf">Fair Use Policy</a>
 </div>

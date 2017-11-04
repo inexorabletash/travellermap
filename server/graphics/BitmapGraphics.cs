@@ -1,25 +1,21 @@
-﻿using PdfSharp.Drawing;
-using PdfSharp.Pdf;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
-using System.Linq;
 
-namespace Maps.Rendering
+namespace Maps.Graphics
 {
     internal class BitmapGraphics : AbstractGraphics
     {
-        private Graphics g;
+        private System.Drawing.Graphics g;
         private SolidBrush brush;
         private Pen pen;
 
-        public BitmapGraphics(Graphics g)
+        public BitmapGraphics(System.Drawing.Graphics graphics)
         {
-            this.g = g;
-            this.brush = new SolidBrush(Color.Empty);
-            this.pen = new Pen(Color.Empty);
+            g = graphics;
+            brush = new SolidBrush(Color.Empty);
+            pen = new Pen(Color.Empty);
         }
 
         private void Apply(AbstractBrush brush)
@@ -44,18 +40,16 @@ namespace Maps.Rendering
         }
         private void Apply(AbstractPen pen, AbstractBrush brush) { Apply(pen); Apply(brush); }
 
-        public bool SupportsWingdings { get { return true; } }
-
-        public SmoothingMode SmoothingMode { get { return g.SmoothingMode; } set { g.SmoothingMode = value; } }
-        public Graphics Graphics { get { return g; } }
-
+        public bool SupportsWingdings => true;
+        public SmoothingMode SmoothingMode { get => g.SmoothingMode; set => g.SmoothingMode = value; }
+        public System.Drawing.Graphics Graphics => g;
         public void ScaleTransform(float scaleXY) { g.ScaleTransform(scaleXY, scaleXY); }
         public void ScaleTransform(float scaleX, float scaleY) { g.ScaleTransform(scaleX, scaleY); }
         public void TranslateTransform(float dx, float dy) { g.TranslateTransform(dx, dy); }
         public void RotateTransform(float angle) { g.RotateTransform(angle); }
-        public void MultiplyTransform(XMatrix m) { g.MultiplyTransform(m.ToGdiMatrix()); }
+        public void MultiplyTransform(AbstractMatrix m) { g.MultiplyTransform(m.Matrix); }
 
-        public void IntersectClip(AbstractPath path) { g.IntersectClip(new Region(new GraphicsPath(path.Points, path.Types, FillMode.Winding))); }
+        public void IntersectClip(AbstractPath path) { g.IntersectClip(new System.Drawing.Region(new GraphicsPath(path.Points, path.Types, FillMode.Winding))); }
         public void IntersectClip(RectangleF rect) { g.IntersectClip(rect); }
 
         public void DrawLine(AbstractPen pen, float x1, float y1, float x2, float y2) { Apply(pen); g.DrawLine(this.pen, x1, y1, x2, y2); }
@@ -67,6 +61,7 @@ namespace Maps.Rendering
         public void DrawClosedCurve(AbstractPen pen, PointF[] points, float tension) { Apply(pen); g.DrawClosedCurve(this.pen, points, tension, FillMode.Winding); }
         public void DrawClosedCurve(AbstractBrush brush, PointF[] points, float tension) { Apply(brush); g.FillClosedCurve(this.brush, points, FillMode.Winding, tension); }
         public void DrawRectangle(AbstractPen pen, float x, float y, float width, float height) { Apply(pen); g.DrawRectangle(this.pen, x, y, width, height); }
+        public void DrawRectangle(AbstractPen pen, RectangleF rect) { Apply(pen); g.DrawRectangle(this.pen, rect.X, rect.Y, rect.Width, rect.Height); }
         public void DrawRectangle(AbstractBrush brush, float x, float y, float width, float height) { Apply(brush); g.FillRectangle(this.brush, x, y, width, height); }
         public void DrawRectangle(AbstractBrush brush, RectangleF rect) { Apply(brush); g.FillRectangle(this.brush, rect); }
         public void DrawEllipse(AbstractPen pen, float x, float y, float width, float height) { Apply(pen); g.DrawEllipse(this.pen, x, y, width, height); }
@@ -74,26 +69,35 @@ namespace Maps.Rendering
         public void DrawEllipse(AbstractPen pen, AbstractBrush brush, float x, float y, float width, float height) { Apply(pen, brush); g.FillEllipse(this.brush, x, y, width, height); g.DrawEllipse(this.pen, x, y, width, height); }
         public void DrawArc(AbstractPen pen, float x, float y, float width, float height, float startAngle, float sweepAngle) { Apply(pen); g.DrawArc(this.pen, x, y, width, height, startAngle, sweepAngle); }
 
-        public void DrawImage(AbstractImage image, float x, float y, float width, float height) { g.DrawImage(image.Image, x, y, width, height); }
+        public void DrawImage(AbstractImage image, float x, float y, float width, float height)
+        {
+            Image gdiImage = image.Image;
+            lock (gdiImage)
+            {
+                g.DrawImage(gdiImage, x, y, width, height);
+            }
+        }
         public void DrawImageAlpha(float alpha, AbstractImage image, RectangleF targetRect)
         {
             if (alpha <= 0)
                 return;
-            if (alpha >= 1)
-            {
-                DrawImage(image, targetRect.X, targetRect.Y, targetRect.Width, targetRect.Height);
-                return;
-            }
-
             Image gdiImage = image.Image;
-            lock(gdiImage)
+            lock (gdiImage)
             {
-                ColorMatrix matrix = new ColorMatrix();
-                matrix.Matrix00 = matrix.Matrix11 = matrix.Matrix22 = 1;
-                matrix.Matrix33 = alpha;
+                if (alpha >= 1)
+                {
+                    g.DrawImage(gdiImage, targetRect.X, targetRect.Y, targetRect.Width, targetRect.Height);
+                    return;
+                }
 
                 ImageAttributes attr = new ImageAttributes();
-                attr.SetColorMatrix(matrix);
+                attr.SetColorMatrix(new ColorMatrix()
+                {
+                    Matrix00 = 1,
+                    Matrix11 = 1,
+                    Matrix22 = 1,
+                    Matrix33 = alpha
+                });
 
                 PointF[] dest = new PointF[]
                 {
@@ -106,10 +110,7 @@ namespace Maps.Rendering
             }
         }
 
-        public SizeF MeasureString(string text, Font font)
-        {
-            return g.MeasureString(text, font);
-        }
+        public SizeF MeasureString(string text, Font font)=> g.MeasureString(text, font);
 
         public void DrawString(string s, Font font, AbstractBrush brush, float x, float y, StringAlignment format)
         {
@@ -126,15 +127,17 @@ namespace Maps.Rendering
             }
         }
 
-        public AbstractGraphicsState Save() { return new State(this, g.Save()); }
+        public AbstractGraphicsState Save() => new State(this, g.Save());
         public void Restore(AbstractGraphicsState state) { g.Restore(((State)state).state); }
 
         #region StringFormats
         private static StringFormat CreateStringFormat(System.Drawing.StringAlignment alignment, System.Drawing.StringAlignment lineAlignment)
         {
-            StringFormat format = new StringFormat();
-            format.Alignment = alignment;
-            format.LineAlignment = lineAlignment;
+            StringFormat format = new StringFormat()
+            {
+                Alignment = alignment,
+                LineAlignment = lineAlignment
+            };
             return format;
         }
 
@@ -161,26 +164,27 @@ namespace Maps.Rendering
         #endregion
 
         #region IDisposable Support
-        private bool disposedValue = false; // To detect redundant calls
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!disposedValue)
-            {
-                if (disposing)
-                {
-                    g.Dispose();
-                    g = null;
-                }
-                brush = null;
-                pen = null;
-                disposedValue = true;
-            }
-        }
+        private bool disposed = false;
 
         void IDisposable.Dispose()
         {
             Dispose(true);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposed)
+                return;
+            if (disposing)
+            {
+                g?.Dispose();
+                g = null;
+                brush?.Dispose();
+                brush = null;
+                pen?.Dispose();
+                pen = null;
+            }
+            disposed = true;
         }
         #endregion
 
@@ -189,6 +193,5 @@ namespace Maps.Rendering
             public GraphicsState state;
             public State(AbstractGraphics g, GraphicsState state) : base(g) { this.state = state; }
         }
-
     }
 }

@@ -75,11 +75,7 @@
     <httpRuntime requestValidationMode="2.0"/>
   </system.web>
   <system.webServer>
-    <!--
-      Compression overwrites Vary header with Vary: Content-Encoding (so Content-Type isn't respected)
-      https://connect.microsoft.com/VisualStudio/feedback/details/758474/iis-gzip-compression-filter-removes-pre-existing-vary-header
-    -->
-    <urlCompression doStaticCompression="true" doDynamicCompression="false"/>
+    <urlCompression doStaticCompression="true" doDynamicCompression="true"/>
 
     <!-- Disable WebDAV so ASP.NET can handle OPTIONS header for CORS requests. -->
     <modules runAllManagedModulesForAllRequests="true">
@@ -87,11 +83,17 @@
       <!-- <add name="PageFooter" type="Maps.HTTP.PageFooter" /> -->
     </modules>
 
+    <!-- Enable CORS -->
     <httpProtocol>
       <customHeaders>
         <add name="Access-Control-Allow-Origin" value="*" />
       </customHeaders>
     </httpProtocol>
+
+    <!-- Pass URLs with things like + along to routing. -->
+    <security>
+      <requestFiltering allowDoubleEscaping="true" />
+    </security>
 
     <rewrite>
       <rules>
@@ -113,7 +115,7 @@
         </rule>
 
         <rule name="Extensionless Pages" stopProcessing="true">
-          <match url="^(world|(doc|make|tools)/\w+)$"/>
+          <match url="^(world|(doc|make|print|tools)/\w+)$"/>
           <action type="Rewrite" url="{R:0}.html"/>
         </rule>
       </rules>
@@ -137,7 +139,7 @@
       <mimeMap fileExtension=".t5tab" mimeType="text/plain"/>
       <mimeMap fileExtension=".tab" mimeType="text/plain"/>
     </staticContent>
-    
+
     <!-- Custom HTTP error pages -->
     <httpErrors existingResponse="Auto" errorMode="Custom">
       <remove statusCode="404" subStatusCode="-1"/>
@@ -149,7 +151,7 @@
     <add name="SqlDev" connectionString="DEVELOPMENT_CONNECTION_STRING" providerName="System.Data.SqlClient"/>
     <add name="SqlProd" connectionString="PRODUCTION_CONNECTION_STRING" providerName="System.Data.SqlClient"/>
   </connectionStrings>
-  
+
   <appSettings>
     <add key="AdminKey" value="YOUR_KEY_HERE"/>
     <!-- <add key="PageFooter" value="PAGE_FOOTER_HERE"/> -->

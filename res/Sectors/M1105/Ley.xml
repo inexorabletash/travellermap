@@ -1,0 +1,132 @@
+<?xml version="1.0"?>
+<Sector Abbreviation="Ley" Tags="Official">
+  <Y>0</Y>
+  <X>2</X>
+  <Name>Ley</Name>
+  <Name>Ley Sector</Name>
+  <Name Lang="vi">Makhuniim</Name>
+  <Credits>
+    <![CDATA[
+
+             <b>Ley</b> sector was designed by Marc W. Miller and
+             appears in <cite>Atlas of the Imperium</cite> (GDW,
+             1984).
+
+             It was refined by Martin J. Dougherty and Hunter Gordon
+             and appears in <cite>Gateway to Destiny</cite> (QuickLink
+             Interactive, 2006).
+
+    ]]>
+  </Credits>
+  <DataFile Author="Martin J. Dougherty and Hunter Gordon" Source="Traveller 5 Second Survey" Milieu="M1105" Type="TabDelimited">Ley.tab</DataFile>
+  <Borders Source="J Greely" Ref="http://dotclue.org/t20">
+    <Border Allegiance="ImDg" Label="Third Imperium" LabelPosition="0831">
+      0000 0100 0200 0300 0400 0500 0600 0700 0800 0900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 1800 1701 1702 1703 1704 1804 1705 1706 1707 1708 1808 1909 2009 2010 2011 2012 2113 2213 2313 2413 2513 2514 2614 2515 2415 2316 2317 2318 2319 2320 2321 2421 2521 2522 2523 2623 2724 2624 2525 2425 2326 2327 2227 2128 2129 2130 2131 2132 2133 2134 2135 2136 2236 2336 2435 2336 2236 2137 2138 2139 2239 2139 2038 1939 1839 1740 1741 1641 1541 1441 1341 1241 1141 1041 1040 1039 1038 0938 0937 0936 0835 0735 0634 0534 0434 0335 0336 0236 0237 0138 0139 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014 0013 0012 0011 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001 0000
+    </Border>
+    <Border Allegiance="ImLu" WrapLabel="true" LabelPosition="0610" Label="Luriani Cultural Association">0213 0313 0312 0311 0310 0409 0408 0508 0608 0709 0809 0910 1010 1110 1209 1210 1311 1312 1313 1413 1414 1415 1416 1417 1318 1218 1217 1117 1016 0916 0816 0817 0816 0716 0615 0515 0415 0316 0315 0214 0213</Border>
+    <Border Allegiance="KhLe" Color="yellow" LabelPosition="3028">
+      2530 2629 2729 2728 2727 2827 2927 3026 3127 3226 3127 3027 2928 2828 2829 2730 2630 2530
+    </Border>
+  </Borders>
+  <Subsectors Source="Gateway to Destiny">
+    <Subsector Index="A">Ikhnaton</Subsector>
+    <Subsector Index="B">Nightmare</Subsector>
+    <Subsector Index="C">Noir Deep</Subsector>
+    <Subsector Index="D">Zagrathian</Subsector>
+    <Subsector Index="E">Spearhead</Subsector>
+    <Subsector Index="F">Guadix Drift</Subsector>
+    <Subsector Index="G">Titanstorm</Subsector>
+    <Subsector Index="H">Osiris Deep</Subsector>
+    <Subsector Index="I">Highlord</Subsector>
+    <Subsector Index="J">Matarishan</Subsector>
+    <Subsector Index="K">Frontier Worlds</Subsector>
+    <Subsector Index="L">Sydymic</Subsector>
+    <Subsector Index="M">Satyressia</Subsector>
+    <Subsector Index="N">Outreaumer</Subsector>
+    <Subsector Index="O">Diamond-Prince</Subsector>
+    <Subsector Index="P">Outworld</Subsector>
+  </Subsectors>
+  <Routes Source="Gateway to Destiny">
+    <Route StartOffsetX="-1" StartOffsetY="0" Start="3103" End="0201" />
+    <Route StartOffsetX="-1" StartOffsetY="0" Start="3229" End="0231" />
+    <Route StartOffsetX="0" StartOffsetY="-1" Start="0338" End="0201" />
+    <Route Start="0201" End="0504" />
+    <Route Start="0504" End="0606" />
+    <Route Start="0606" End="0408" />
+    <Route Start="0408" End="0109" />
+    <Route Start="0606" End="0609" />
+    <Route Start="0609" End="0512" />
+    <Route Start="0609" End="0810" />
+    <Route Start="0512" End="0111" />
+    <Route Start="0512" End="0214" />
+    <Route Start="0512" End="0812" />
+    <Route Start="0812" End="0815" />
+    <Route Start="0815" End="0817" />
+    <Route Start="0817" End="0618" />
+    <Route Start="0618" End="0318" />
+
+    <Route Start="0817" End="1217" />
+    <Route Start="1217" End="1315" Source="Added in Mgt Luriani"/>
+    <Route Start="1217" End="1420" />
+    <Route Start="1217" End="1520" />
+    <Route Start="0812" End="1113" />
+    <Route Start="1113" End="1315" />
+    <Route Start="1113" End="1313" />
+    <Route Start="1313" End="1413" />
+    <Route Start="1413" End="1714" />
+    <!-- <Route Start="1313" End="1613" /> Explicitly removed in Mgt -->
+    <Route Start="0606" End="0905" />
+    <Route Start="0905" End="1002" />
+    <Route Start="0905" End="1107" />
+    <Route Start="1107" End="1210" />
+    <Route Start="1210" End="1313" />
+    <Route Start="1107" End="1406" />
+    <Route Start="1406" End="1304" />
+    <Route Start="1304" End="1202" />
+    <!-- <Route Start="1613" End="1814" /> Implicitly rerouted in Mgt -->
+    <Route Start="1714" End="1814" />
+    <Route Start="0618" End="0921" />
+    <Route Start="1814" End="1911" />
+    <Route Start="1814" End="1816" />
+    <Route Start="1816" End="2117" />
+    <Route Start="2117" End="1919" />
+    <Route Start="1919" End="2221" />
+    <Route Start="0122" End="0224" />
+    <Route Start="0224" End="0322" />
+    <Route Start="0224" End="0226" />
+    <Route Start="0226" End="0328" />
+    <Route Start="0328" End="0530" />
+    <Route Start="0530" End="0231" />
+    <Route Start="0231" End="0533" />
+    <Route Start="0533" End="0933" />
+    <Route Start="0933" End="1334" />
+    <Route Start="1334" End="1435" />
+    <Route Start="1435" End="1339" />
+    <Route Start="1435" End="1437" />
+    <Route Start="1437" End="1540" />
+    <Route Start="1437" End="1637" />
+
+    <Route Start="1334" End="1230" />
+    <Route Start="1230" End="1528" />
+    <Route Start="1528" End="1228" />
+    <Route Start="1528" End="1425" />
+    <Route Start="1425" End="1623" />
+    <Route Start="1425" End="1023" />
+    <Route Start="1023" End="0921" />
+    <Route Start="1637" End="1936" />
+    <Route Start="1528" End="1728" />
+    <Route Start="1528" End="1730" />
+    <Route Start="1540" EndOffsetY="1" End="1601" />
+    <Route Start="2221" End="2422" />
+    <Route Start="2422" End="2724" />
+
+    <Route Start="1730" End="2129" />
+    <Route Start="2129" End="2227" />
+
+    <Route Start="1730" End="2032" />
+    <Route Start="2032" End="2133" />
+    <Route Start="2133" End="2435" />
+
+    <Route Start="2032" End="1936" />
+  </Routes>
+</Sector>

@@ -5,6 +5,27 @@
   var $ = function(s) { return document.querySelector(s); };
   var $$ = function(s) { return document.querySelectorAll(s); };
 
+  function worldImageURL(world, type) {
+    var S3_PREFIX = 'https://s3.amazonaws.com/travellermap/images/';
+    switch (type) {
+    case 'map':
+      return S3_PREFIX + 'maps/'
+        + encodeURIComponent(world.SectorAbbreviation) + ' '
+        + encodeURIComponent(world.Hex) + '.png';
+    case 'map_thumb':
+      return S3_PREFIX + 'maps/thumbs/'
+        + encodeURIComponent(world.SectorAbbreviation) + ' '
+        + encodeURIComponent(world.Hex) + '.jpg';
+    case 'render':
+      return S3_PREFIX + 'worlds/'
+        + encodeURIComponent(world.SectorAbbreviation) + ' '
+        + encodeURIComponent(world.Hex) + '.png';
+    case 'generic':
+      return S3_PREFIX + 'generic_worlds/'
+        + (world.UWP.Siz === '0' ? 'Belt' : 'Hyd' + world.UWP.Hyd) + '.png';
+    }
+  }
+
   var STARPORT_TABLE = {
     // Starports
     A: 'Excellent',
@@ -412,7 +433,8 @@
 
   var REMARKS_PATTERNS = [
     // Special
-    [ /^Rs\w$/, 'Research Station'],
+    [/^Rs\w$/, 'Research Station'],
+    [/^Rw:?\w$/, 'Refugee World'],
 
     // Ownership
     [ /^O:\d\d\d\d$/, 'Controlled'],
@@ -433,21 +455,24 @@
   ];
 
   var BASE_TABLE = {
-    C: 'Corsair Base',
-    D: 'Naval Depot',
-    E: 'Embassy',
-    K: 'Naval Base',
-    L: 'Naval Base', // Obsolete
-    M: 'Military Base',
-    N: 'Naval Base',
-    O: 'Naval Outpost', // Obsolete
-    R: 'Clan Base',
-    S: 'Scout Base',
-    T: 'Tlauku Base',
-    V: 'Exploration Base',
-    W: 'Way Station',
-    X: 'Relay Station', // Obsolete
-    Z: 'Naval/Military Base' // Obsolete
+      C: 'Corsair Base',
+      D: 'Naval Depot',
+      E: 'Embassy',
+      H: 'Hiver Supply Base', // For TNE
+      I: 'Interface', // For TNE
+      K: 'Naval Base',
+      L: 'Naval Base', // Obsolete
+      M: 'Military Base',
+      N: 'Naval Base',
+      O: 'Naval Outpost', // Obsolete
+      R: 'Clan Base',
+      S: 'Scout Base',
+      //    T: 'Terminus',   // For TNE - name Collision
+      T: 'Tlauku Base',
+      V: 'Exploration Base',
+      W: 'Way Station',
+      X: 'Relay Station', // Obsolete
+      Z: 'Naval/Military Base' // Obsolete
   };
 
   var SOPHONT_TABLE = {
@@ -476,6 +501,16 @@
             SOPHONT_TABLE[sophont.Code] = sophont.Name;
           });
         });
+
+  var fetch_status = new Map();
+
+  function fetchImage(url) {
+    if (fetch_status.has(url) && !fetch_status.get(url))
+      return Promise.reject(new Error('Image not available'));
+    return Util.fetchImage(url)
+      .then(function(img) { fetch_status.set(url, true); return img; })
+      .catch(function(err) { fetch_status.set(url, false); throw err; });
+  }
 
   function decodeSophontPopulation(match, code, pop) {
     var name = SOPHONT_TABLE[code] || 'Sophont';
@@ -508,12 +543,13 @@
   };
 
   Traveller.splitPBG = function splitPBG(pbg) {
-    if (pbg === 'XXX' || pbg === '???')
-      return { Pop: -1, Belts: '???', GG: '???' };
+    function fix(value, replacement) {
+      return value === -1 ? replacement : value;
+    }
     return {
       Pop: Traveller.fromHex(pbg.substring(0, 1)),
-      Belts: Traveller.fromHex(pbg.substring(1, 2)),
-      GG: Traveller.fromHex(pbg.substring(2, 3))
+      Belts: fix(Traveller.fromHex(pbg.substring(1, 2)), '???'),
+      GG: fix(Traveller.fromHex(pbg.substring(2, 3)), '???')
     };
   };
 
@@ -648,17 +684,24 @@
         return 'http://wiki.travellerrpg.com/' + encodeURIComponent(suffix.replace(/ /g, '_'));
       }
       world.world_url = makeWikiURL(world.Name + ' (world)');
+      world.world_url_noscheme = world.world_url.replace(/^\w+:\/\//, '');
       world.ss_url = makeWikiURL(world.SubsectorName + ' Subsector');
+      world.ss_url_noscheme = world.ss_url.replace(/^\w+:\/\//, '');
       world.sector_url = makeWikiURL(world.Sector + ' Sector');
+      world.sector_url_noscheme = world.sector_url.replace(/^\w+:\/\//, '');
 
       return world;
+    }).then(function(world) {
+      var map_thumb = worldImageURL(world, 'map_thumb');
+      if (fetch_status.has(map_thumb)) {
+        if (fetch_status.get(map_thumb)) world.map_thumb = map_thumb;
+        return world;
+      }
+      showConsoleNotice();
+      return fetchImage(map_thumb)
+        .then(function(response) { world.map_thumb = map_thumb; }, function() {})
+        .then(function() { return world; });
     });
-  };
-
-  Traveller.renderWorld = function(world, template, container) {
-    if (!world) return undefined;
-    container.innerHTML = Handlebars.compile(template)(world);
-    return world;
   };
 
   function supportsCompositeMode(ctx, mode) {
@@ -668,6 +711,11 @@
     ctx.globalCompositeOperation = orig;
     return result;
   }
+
+  var showConsoleNotice = Util.once(function() {
+    if (!console || !console.log) return;
+    console.log('The "404 (Not Found)" error images is expected, and is not a bug.');
+  });
 
   var renderWorldImageFirstTime = true;
   Traveller.renderWorldImage = function(world, canvas) {
@@ -697,27 +745,20 @@
       { width: 0.95, height: 0.95 }
     ];
 
-    var render = 'res/Candy/worlds/'
-          + encodeURIComponent(world.Sector + ' ' + world.Hex) + '.png';
-    var generic = 'res/Candy/'
-          + (world.UWP.Siz === '0' ? 'Belt' : 'Hyd' + world.UWP.Hyd) + '.png';
+    var render = worldImageURL(world, 'render');
+    var generic = worldImageURL(world, 'generic');
     var isRender = true;
 
     var size = SIZES[world.UWP.Siz] || {width: 0.5, height: 0.5};
 
-    var showConsoleNotice = Util.once(function() {
-      if (!console || !console.log) return;
-      console.log('The "404 (Not Found)" for res/Candy/worlds/*.png is expected, and is not a bug.');
-    });
-
     return Promise.all([
       // Background
-      Util.fetchImage(bg),
+      fetchImage(bg),
 
       // Foreground
       world.isPlaceholder
         ? null
-        : Util.fetchImage(render).then(
+        : fetchImage(render).then(
           function(image) {
             size.height = size.width * image.naturalHeight / image.naturalWidth;
             return image;
@@ -725,7 +766,7 @@
           function() {
             showConsoleNotice();
             isRender = false;
-            return Util.fetchImage(generic);
+            return fetchImage(generic);
           })
     ])
       .then(function(images) {
@@ -752,13 +793,14 @@
           var iw = w * size.width, ih = h * size.height;
           var ix = (w - iw) / 2, iy = (h - ih) / 2;
 
+          var m;
           if (!isRender &&
               supportsCompositeMode(ctx, 'destination-in') &&
               supportsCompositeMode(ctx, 'destination-over') &&
               supportsCompositeMode(ctx, 'multiply') &&
-              world.Stars && /^([OBAFGKM])([0-9])/.test(world.Stars[0])) {
+              world.Stars && (m = /^([OBAFGKM])([0-9])/.exec(world.Stars[0]))) {
             // Advanced - color blend image.
-            var t = class2temp(RegExp.$1, RegExp.$2);
+            var t = class2temp(m[1], m[2]);
             var c = temp2color(t);
             ctx.fillStyle = 'rgb(' + c.r + ',' + c.g + ',' + c.b + ')';
 

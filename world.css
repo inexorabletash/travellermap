@@ -1,13 +1,6 @@
-
+@import url(https://fonts.googleapis.com/css?family=Marcellus);
 
 /* Title */
-
-.wds-names {
-  min-height: 104px;
-  max-height: 110px;
-  margin: 10px 10px 5px;
-  overflow: hidden;
-}
 
 .wds-worldname {
   font-family: Optima, Marcellus, "Times New Roman", serif;
@@ -20,14 +13,12 @@
 }
 .wds-ssname {
   font-family: Optima, Marcellus, "Times New Roman", serif;
-  x-font-family: Univers, Arial, Helvetica, sans-serif;
   font-size: 14px;
   font-weight: bold;
   font-style: italic;
 }
 .wds-sectorhex {
   font-family: Optima, Marcellus, "Times New Roman", serif;
-  x-font-family: Univers, Arial, Helvetica, sans-serif;
   font-size: 14px;
   font-weight: bold;
   font-style: italic;

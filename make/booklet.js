@@ -198,21 +198,26 @@
       document.body.classList.add('render');
       render({
         sector: searchParams.get('sector'),
-        milieu: searchParams.get('milieu')
+        milieu: searchParams.get('milieu'),
+        style: searchParams.get('style'),
+        options: searchParams.get('options')
       });
       return;
     }
 
-    $('#compose').addEventListener('click', function() {
+    $('#compose').addEventListener('click', function(e) {
+      e.preventDefault();
       var form = $('#form');
       if (!form['data'].value.length) {
         alert('Sector data must be specified.');
         return;
       }
       document.body.classList.add('render');
+      document.body.classList.add('style-' + $('#data-style').value);
       render({
         data: form['data'].value,
-        metadata: form['metadata'].value
+        metadata: form['metadata'].value,
+        style: form['map-style'].value
       });
     });
 
@@ -223,7 +228,8 @@
     var hash = window.location.hash;
     window.location.hash = '';
 
-    var options = params.options !== (void 0) ? Number(params.options) : Traveller.MapOptions.BordersMask,
+    var options = (params.options !== undefined && params.options !== null)
+          ? Number(params.options) : Traveller.MapOptions.BordersMask,
         style = params.style || 'print';
 
     status('Fetching data...', true);
@@ -251,8 +257,13 @@
       } else {
         sector.name = sector.title = 'Unnamed Sector';
       }
+      if (sector.metadata.DataFile.Milieu) {
+        var m = /^M(\d+)$/.exec(sector.metadata.DataFile.Milieu);
+        if (m) sector.metadata.DataFile.Era = m[1];
+      }
       document.title = sector.title;
       var imageURL, url_params = {
+          accept: 'image/svg+xml',
           rotation: 3,
           scale: 64,
           options: options | Traveller.MapOptions.SubsectorGrid | Traveller.MapOptions.NamesMask,
@@ -350,6 +361,8 @@
           subsector.blurb.push(capitalize(subsector.article) + ' contains one world, ' +
                                subsector.maxpop.name + ', with a population of ' +
                                friendlyNumber(subsector.maxpop.population) + '.');
+        } else if (subsector.worlds.length === 1) {
+          subsector.blurb.push(capitalize(subsector.article) + ' contains one barren world.');
         } else if (subsector.worlds.length === 0) {
           subsector.blurb.push(capitalize(subsector.article) + ' contains no charted worlds.');
         }
@@ -371,6 +384,7 @@
 
         subsector.blurb = subsector.blurb.join(' ');
         var imageURL, url_params = {
+            accept: 'image/svg+xml',
             subsector: subsector.index,
             scale: 64,
             options: options,

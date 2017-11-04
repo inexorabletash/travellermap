@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Sector Abbreviation="Dene" Tags="Unreviewed">
+  <Y>-1</Y>
+  <X>-3</X>
+  <Name>Deneb</Name>
+  <Name Lang="zh">Nieklsdia</Name>
+  <Credits>
+    <![CDATA[
+
+             <b>Deneb</b> sector was designed by Marc W. Miller and
+             appears in <cite>Atlas of the Imperium</cite> (GDW,
+             1984).
+
+             It was refined by James Holden. Portions appear in
+             <cite>The Travellers Digest</cite> and <cite>The
+             MegaTraveller Journal #3</cite> (Digest Group
+             Publications, 1992).
+             
+             M1201 data comes from the "The Regency Sourcebook: Keepers of the Flame"
+
+    ]]>
+  </Credits>
+  <DataFile Source="The Regency Sourcebook: Keepers of the Flame" Milieu="M1201" Type="TabDelimited">Deneb.tab</DataFile>
+  <Subsectors>
+    <Subsector Index="A">Pretoria</Subsector>
+    <Subsector Index="B">Lamas</Subsector>
+    <Subsector Index="C">Antra</Subsector>
+    <Subsector Index="D">Million</Subsector>
+    <Subsector Index="E">Sabine</Subsector>
+    <Subsector Index="F">Inar</Subsector>
+    <Subsector Index="G">Dunmag</Subsector>
+    <Subsector Index="H">Atsah</Subsector>
+    <Subsector Index="I">Star Lane</Subsector>
+    <Subsector Index="J">Vincennes</Subsector>
+    <Subsector Index="K">Usani</Subsector>
+    <Subsector Index="L">Geniishir</Subsector>
+    <Subsector Index="M">Gulf</Subsector>
+    <Subsector Index="N">Zeng</Subsector>
+    <Subsector Index="O">Kamlar</Subsector>
+    <Subsector Index="P">Vast Heavens</Subsector>
+  </Subsectors>
+
+  <Allegiances>
+    <Allegiance Code="Re">Regency</Allegiance>
+    <Allegiance Code="Rf">Regency Frontier</Allegiance>
+    <Allegiance Code="Wi">Wilds</Allegiance>
+  </Allegiances>
+
+  <Stylesheet>
+    border.Re { color: lightblue; }
+    route.Re { color: lightgreen; }
+
+    border.Rf { color: lightgreen; }
+  </Stylesheet>
+
+  <Routes Source="MegaTraveller Journal #1; T5 Cleanup">
+    <Route Start="0124" End="0524" />
+    <Route Start="0208" End="0406" />
+    <Route Start="0208" End="3209" EndOffsetX="-1" />
+    <Route Start="0233" End="0332" />
+    <Route Start="0233" End="3235" EndOffsetX="-1" />
+    <Route Start="0311" End="0514" />
+    <Route Start="0311" End="3212" EndOffsetX="-1" />
+    <Route Start="0316" End="0514" />
+    <Route Start="0316" End="0518" Source="Update from 0517 to 0518 per Rob Eaglestone, T5 cleanup"/>
+    <Route Start="0316" End="0715" />
+    <Route Start="0332" End="0731" />
+
+    <Route Start="0514" End="0715" />
+    <Route Start="0518" End="0715" Source="Update from 0517 to 0518 per Rob Eaglestone, T5 cleanup" />
+    <Route Start="0524" End="0826" />
+    <Route Start="0715" End="0917" />
+    <Route Start="0715" End="1016" />
+    <Route Start="0729" End="0731" />
+    <Route Start="0729" End="0826" />
+    <Route Start="0730" End="0731" />
+    <Route Start="0826" End="0925" />
+    <Route Start="0917" End="1018" />
+    <Route Start="0925" End="1122" />
+    <Route Start="1016" End="1213" />
+    <Route Start="1018" End="1122" />
+    <Route Start="1122" End="1522" />
+
+    <Route Start="1336" End="1339" />
+    <Route Start="1336" End="1432" />
+    <Route Start="1339" End="1102" EndOffsetY="1" />
+
+    <Route Start="1339" End="1340" />
+    <!-- Added per Rob Eaglestone, T5 cleanup -->
+    <Route Start="1417" End="1520" />
+    <Route Start="1417" End="1615" />
+    <Route Start="1432" End="1532" />
+    <Route Start="1432" End="1633" />
+    <Route Start="1520" End="1522" />
+    <Route Start="1522" End="1623" />
+    <Route Start="1532" End="1829" />
+    <Route Start="1613" End="1615" />
+    <Route Start="1623" End="1925" />
+
+    <Route Start="1826" End="1829" />
+    <Route Start="1826" End="1925" />
+
+  </Routes>
+
+  <Borders>
+    <Border Allegiance="Re" Label="Regency">
+      0001 0002 0103 0203 0304 0404 0505 0605 0706 0806 0907 1006 1107 1206 1307 1407
+      1408 1409 1510 1610 1711 1811 1912 1913 1914 2014 2015 2116 2117 2017 2018 2019 2120 2220 2121
+      2021 2022 2023 2024 1925 1926 1927 1928 1929 1930 1830 1831 1832 1733 1633 1634 1535 1536 1537 1538
+      1539 1540 1440 1441 1341 1241 1141 1041 0941 0841 0741 0641 0541 0441 0341 0241 0141 0041
+      0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017
+      0016 0015 0014 0013 0012 0011 0010 0009 0008 0007 0006 0005 0004 0003 0002
+    </Border>
+
+    <Border Allegiance="Rf" Label="Regency Frontier" LabelPosition="2319">
+      0303 0402 0502 0602 0703 0803 0904 1004 1105 1204 1304 1404 1505 1605 1706 1707 1708 1808 1909 2009 2110 2210 2211 2212
+      2213 2314 2414 2415 2416 2417 2418 2519 2520 2521 2522 2422 2323 2324 2325 2326 2326 2226 2227 2228 2229 2230 2231 2232
+      2233 2234 2135 2035 1936 1836 1837 1838 1839 1840
+      1841 1741 1641 1640 1639 1638 1637 1636 1635 1735 1734 1833 1933 1932 1931 2030 2029 2028 2027 2026 2025 2125 2124 2123
+      2122 2221 2321 2320 2219 2119 2118 2217 2216 2215 2115 2114 2013 2012 2011 1911 1810 1710 1609 1509 1508 1507 1406 1306
+      1205 1106 1005 0906 0805 0705 0604 0504 0403 0303
+    </Border>
+
+  </Borders>
+</Sector>
