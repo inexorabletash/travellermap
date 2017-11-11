@@ -1155,7 +1155,7 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <DataFile Source="Traveller 5 Second Survey" Milieu="M1105" Type="TabDelimited">Deneb.tab</DataFile>
     <MetadataFile>Deneb.xml</MetadataFile>
   </Sector>
-  <Sector Abbreviation="Corr" Tags="Official">
+  <Sector Abbreviation="Corr" Tags="Official" Selected="true">
     <Y>-1</Y>
     <X>-2</X>
     <Name>Corridor</Name>
@@ -1526,7 +1526,7 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
       <Allegiance Code="Rm">Regency of Muirimi</Allegiance>
     </Allegiances>
   </Sector>
-  <Sector Abbreviation="Touc" Tags="InReview">
+  <Sector Abbreviation="Touc" Tags="InReview" Selected="true">
     <Y>1</Y>
     <X>-5</X>
     <Name>Touchstone</Name>
@@ -1534,7 +1534,7 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <DataFile Source="CORE" Ref="http://www.ocean-of-storms.com/core/astrogat/gB.htm" Type="TabDelimited">Touchstone.tab</DataFile>
     <MetadataFile>Touchstone.xml</MetadataFile>
   </Sector>
-  <Sector Abbreviation="Rift" Tags="Official">
+  <Sector Abbreviation="Rift" Tags="Official" Selected="true">
     <Y>1</Y>
     <X>-4</X>
     <Name>Riftspan Reaches</Name>
@@ -1738,7 +1738,7 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
       <Border Allegiance="As">1341 1440 1439 1539 1638 1738 1838 1938 2037 2138 2237 2337 2436 2536 2535 2635 2736 2835 2935 3034 3134 3233 3232 3231 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2041 1941 1841 1741 1641 1541 1441 1341</Border>
     </Borders>
   </Sector>
-  <Sector Abbreviation="Afaw" Tags="InReview">
+  <Sector Abbreviation="Afaw" Tags="InReview" Selected="true">
     <Y>2</Y>
     <X>-5</X>
     <Name Lang="as">Afawahisa</Name>
