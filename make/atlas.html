@@ -80,7 +80,7 @@ body, table {
 }
 
 .content {
-  margin: 0.5in;
+  padding: 0.5in;
 }
 
 p {
@@ -306,7 +306,6 @@ table.glyphs td { padding: 2px; }
 /* Charted Space  ============================== */
 
 .charted-space {
-  margin: 0.5in;
 }
 
 .charted-space-image {
@@ -337,7 +336,6 @@ table.glyphs td { padding: 2px; }
 /* Sector Map ============================== */
 
 .sector-map {
-  margin: 0.5in;
 }
 
 .sector-image {
@@ -393,9 +391,10 @@ table.glyphs td { padding: 2px; }
 
 /* Sector Data ============================== */
 
-.sector_data { margin: 0.5in; }
+.sector-data {
+}
 
-.sector_data h2 { margin-top: 0; }
+.sector-data h2 { margin-top: 0; }
 
 .column { }
 .column:nth-last-child(2) { padding-right: 4pt; border-right: 1pt solid black; }
@@ -462,7 +461,6 @@ table.uwp-data {
 
     <!-- Cover Page -->
     <div id="cover_page" class="page">
-
       <div class="title">
         <div class="title_title">The Atlas of the Imperium<br>Second Survey</div>
         <div class="title_logo">
@@ -478,7 +476,6 @@ table.uwp-data {
 
     <!-- Title Page -->
     <div id="title_page" class="page">
-
       <div class="title">
         <div class="title_title">The Atlas of the Imperium<br>Second Survey</div>
         <div class="title_logo">
@@ -495,7 +492,6 @@ table.uwp-data {
 
     <!-- Colophon Page -->
     <div id="colophon_page" class="page">
-
       <div class="content colophon">
 
         <h1>Atlas of the Imperium: Second Survey</h1>
@@ -553,7 +549,7 @@ table.uwp-data {
 
     <!-- Charted Space -->
     <div class="page">
-      <div class="charted-space">
+      <div class="content charted-space">
         <img src="{{charted_space_src}}" alt="" class="charted-space-image">
         <h1>Charted Space: Sectors of the Imperium and Surrounds</h1>
       </div>
@@ -753,7 +749,7 @@ table.uwp-data {
 
     <!-- Sector Map -->
     <div class="page">
-      <div class="sector-map">
+      <div class="content sector-map">
         <h1>
           {{name}}
           <small>({{metadata.X}}, {{metadata.Y}})</small>
@@ -794,7 +790,7 @@ table.uwp-data {
     {{#pages}}
     <!-- Data Page -->
     <div class="page">
-      <div class="sector_data">
+      <div class="content sector-data">
         <h2>{{../name}} &mdash; Page {{index}} of {{../page_count}}</h2>
         <table style="table-layout: fixed; width: 0">
           <tr>
@@ -881,7 +877,6 @@ table.uwp-data {
 
     <!-- Back Cover Page -->
     <div id="backcover_page" class="page">
-
       <div class=blurb>
         <h1>The Atlas of the Imperium:<br>
           &nbsp; Second Survey</h1>
