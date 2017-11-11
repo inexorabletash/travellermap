@@ -89,10 +89,10 @@
     sectors = [
       /*                                                         */ 'gash','tren',
       /*               */ 'ziaf','gvur','tugl','prov','wind','mesh','mend','amdu','arzu',
-      /*         */'farf','fore','spin','dene','corr','vlan','lish','anta','empt','star',
-      /*         */'vang','beyo','troj','reft','gush','dagu','core','forn','ley', 'gate',
-      'thet',/*        */,'touc','rift','verg','ilel','zaru','mass','delp','glim','cruc',
-      /*               */,'afaw','hlak','eali','reav','daib','dias','olde','hint',
+      /*        */ 'farf','fore','spin','dene','corr','vlan','lish','anta','empt','star',
+      /*        */ 'vang','beyo','troj','reft','gush','dagu','core','forn','ley', 'gate',
+      'thet', /*       */ 'touc','rift','verg','ilel','zaru','mass','delp','glim','cruc',
+      /*               */ 'afaw','hlak','eali','reav','daib','dias','olde','hint',
       /*                      */ 'stai','iwah','dark','magy','solo','alph','spic',
       /*                      */ 'akti','uist','ustr','cano','alde','newo','lang',
     ];
@@ -148,7 +148,7 @@
       credits
         .sort(function(a, b) { return cmp(a.name, b.name); })
         .map(function(o) { return o.credits; })
-      , 30);
+      , 26);
 
     data.date = (new Date).toLocaleDateString(
       'en-US', {year: 'numeric', month:'long', day: 'numeric'});
