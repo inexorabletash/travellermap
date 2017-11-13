@@ -1079,7 +1079,7 @@ table#features, #features th, #features td { border: solid 1px black; }
         <li>Wildcards:
           <code>*</code> and <code>%</code> can be used as a "zero or more of any character";
           <code>?</code> and <code>_</code> can be used as "exactly one character".
-          <code>[]</code> can be used for ranges, e.g. <code>[0-5]</code> or <code>[8-C]</code>.
+          <code>[]</code> can be used for character ranges, e.g. <code>[0-5]</code> or <code>[m-z]</code> or <code>[89ABC]</code>.
           For example, "<code>r*a</code>" will match Regina.
         <li>Specifying a wildcard within a word turns <em>off</em> the "start of word" match. So "<code>re*in</code>" will <em>not</em> match "Regina" (but "<code>re*in*</code>" will).
         <li>Add <code>exact:</code> as a prefix to force an exact match, e.g. "<code>exact:sol</code>" will not match "Solomani Rim"
