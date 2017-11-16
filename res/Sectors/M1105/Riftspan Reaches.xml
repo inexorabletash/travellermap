@@ -16,6 +16,7 @@
 
     ]]>
   </Credits>
+  <Product Publisher="Mongoose Publishing" Author="Martin J. Dougherty" Title="The Great Rift Book 1" Ref="https://kickstarter.com/projects/1990654819/traveller-rpg-the-great-rift-and-deep-space-explor" />
   <DataFile Source="Traveller 5 Second Survey" Milieu="M1105" Author="Joe Fugate" Type="TabDelimited">Riftspan Reaches.tab</DataFile>
   <Subsectors Publisher="DGP" Source="The Travellers' Digest #19" Milieu="1120">
     <Subsector Index="A">Aulryakh</Subsector>
@@ -115,9 +116,12 @@
     <Route Start="1840" End="1941" Allegiance="As" />
   </Routes>
   <Regions>
-    <Region Label="Fisher Trench" WrapLabel="true" Color="turquoise">1507</Region>
+    <Region Label="Fisher Trench" WrapLabel="true" Color="seagreen">1507</Region>
     <Region Label="The Emadi Deep" WrapLabel="true" Color="purple">
       2638 2738 2838 2839 2740 2639 2638
+    </Region>
+    <Region Label="Anellet Cloud" Color="darkgreen">
+      2806 2907 2908 2907 2806
     </Region>
   </Regions>
 </Sector>
