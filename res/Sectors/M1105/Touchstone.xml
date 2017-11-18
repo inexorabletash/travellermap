@@ -75,7 +75,7 @@
   </Routes>
   <Regions>
     <Region Label="The Great Reef" LabelPosition="1419" Color="mediumpurple">
-      1120 1219 1218 1217 1318 1417 1416 1517 1617 1716 1717 1817 1917 1918 2018 2119 2120 2121 2021 2022 2023 1924 1823 1724 1624 1524 1424 1423 1323 1222 1122 1121 1120
+      1119 1218 1217 1318 1417 1416 1516 1616 1716 1717 1817 1917 2017 2018 2119 2120 2121 2021 2022 2023 1924 1824 1725 1625 1624 1524 1424 1423 1323 1223 1222 1122 1121 1120 1119
     </Region>
     <Region Label="Dark Cloud" WrapLabel="true" Color="navy">
       0722 0821 0822 0823 0924 0925 0926 1026 1027 1028 1029 0930 0829 0828 0827 0826 0825 0824 0724 0723 0722
@@ -83,8 +83,8 @@
   </Regions>
   <Labels>
     <Label Hex="1911">Aosola Gulf</Label>
-    <Label Hex="0237">Victein's Arm</Label>
-    <Label Hex="0534">Victein's Hand</Label>
-    <Label Hex="1334">Victein's Fingertips</Label>
+    <Label Hex="0237" Wrap="true">Victein's Arm</Label>
+    <Label Hex="0536" Wrap="true">Victein's Hand</Label>
+    <Label Hex="1334" Wrap="true">Victein's Fingertips</Label>
   </Labels>
 </Sector>
