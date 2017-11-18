@@ -196,6 +196,7 @@ namespace Maps.Serialization
                     Hex = new Hex(ParseString(label.GetAttribute("Hex"))),
                     OffsetY = ParseFloat(label.GetAttribute("OffsetY")) ?? 0,
                     Size = ParseString(label.GetAttribute("Size")),
+                    Wrap = ParseBool(label.GetAttribute("Wrap")) ?? false,
                     Text = label.InnerText,
                 }));
             }

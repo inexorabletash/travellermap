@@ -980,6 +980,9 @@ namespace Maps
         public string Size { get; set; }
 
         [XmlAttribute]
+        public bool Wrap { get; set; }
+
+        [XmlAttribute]
         [DefaultValue(0f)]
         public float OffsetY { get; set; }
 
