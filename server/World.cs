@@ -87,20 +87,33 @@ namespace Maps
         public int WorldX => Coordinates.X;
         public int WorldY => Coordinates.Y;
 
-        internal char Starport => UWP[0];
-        internal int Size => Char.ToUpperInvariant(UWP[1]) == 'S' ? -1 : SecondSurvey.FromHex(UWP[1], valueIfUnknown: -1);
-        internal int Atmosphere => SecondSurvey.FromHex(UWP[2], valueIfUnknown: -1);
-        internal int Hydrographics => SecondSurvey.FromHex(UWP[3], valueIfUnknown: -1);
-        internal int PopulationExponent => SecondSurvey.FromHex(UWP[4], valueIfUnknown: 0);
-        internal int Government => SecondSurvey.FromHex(UWP[5], valueIfUnknown: 0);
-        internal int Law => SecondSurvey.FromHex(UWP[6], valueIfUnknown: 0);
-        internal int TechLevel => SecondSurvey.FromHex(UWP[8], valueIfUnknown: 0);
+        public const int PBG_P = 0;
+        public const int PBG_B = 1;
+        public const int PBG_G = 2;
+
+        public const int UWP_St = 0;
+        public const int UWP_S = 1;
+        public const int UWP_A = 2;
+        public const int UWP_H = 3;
+        public const int UWP_P = 4;
+        public const int UWP_G = 5;
+        public const int UWP_L = 6;
+        public const int UWP_TL = 8;
+
+        internal char Starport => UWP[UWP_St];
+        internal int Size => Char.ToUpperInvariant(UWP[UWP_S]) == 'S' ? -1 : SecondSurvey.FromHex(UWP[UWP_S], valueIfUnknown: -1);
+        internal int Atmosphere => SecondSurvey.FromHex(UWP[UWP_A], valueIfUnknown: -1);
+        internal int Hydrographics => SecondSurvey.FromHex(UWP[UWP_H], valueIfUnknown: -1);
+        internal int PopulationExponent => SecondSurvey.FromHex(UWP[UWP_P], valueIfUnknown: 0);
+        internal int Government => SecondSurvey.FromHex(UWP[UWP_G], valueIfUnknown: 0);
+        internal int Law => SecondSurvey.FromHex(UWP[UWP_L], valueIfUnknown: 0);
+        internal int TechLevel => SecondSurvey.FromHex(UWP[UWP_TL], valueIfUnknown: 0);
 
         internal int PopulationMantissa
         {
             get
             {
-                int mantissa = SecondSurvey.FromHex(PBG[0], valueIfUnknown: 0);
+                int mantissa = SecondSurvey.FromHex(PBG[PBG_P], valueIfUnknown: 0);
                 // Hack for legacy data w/o PBG
                 if (mantissa == 0 && PopulationExponent > 0)
                     return 1;
@@ -108,8 +121,8 @@ namespace Maps
             }
         }
 
-        internal int Belts => SecondSurvey.FromHex(PBG[1], valueIfUnknown: 0);
-        internal int GasGiants => SecondSurvey.FromHex(PBG[2], valueIfUnknown: 0);
+        internal int Belts => SecondSurvey.FromHex(PBG[PBG_B], valueIfUnknown: 0);
+        internal int GasGiants => SecondSurvey.FromHex(PBG[PBG_G], valueIfUnknown: 0);
         internal double Population => Math.Pow(10, PopulationExponent) * PopulationMantissa;
         internal bool WaterPresent => (Hydrographics > 0) && (Atmosphere.InRange(2, 9) || Atmosphere.InRange(0xD, 0xF));
 
@@ -305,7 +318,7 @@ namespace Maps
             ErrorIf(PopulationExponent > 15, 
                 $"UWP: Pop={PopulationExponent} out of range; should be: 0...F");
             ErrorUnless(Government.InRange(PopulationExponent - 5, Math.Max(15, PopulationExponent + 5)),
-                $"UWP: Gov={Government} out of range; should be: Pop=({PopulationExponent}) + Flux");
+                $"UWP: Gov={Government} out of range; should be: Pop(={PopulationExponent}) + Flux");
             ErrorUnless(Law.InRange(Government - 5, Math.Max(18, Government + 5)),
                 $"UWP: Law={Law} out of range; should be: Gov(={Government}) + Flux");
             int tlmod = 
@@ -443,6 +456,10 @@ namespace Maps
             // Ownership
             if (Government == 6 && !(HasCodePrefix("O:") || HasCodePrefix("Mr") || HasCode("Re") || HasCode("Px")))
                 errors.Warning("Gov 6 (captive/colony) missing one of: O:/Mr/Re/Px", lineNumber, line);
+
+            // PBG
+            ErrorIf(SecondSurvey.FromHex(PBG[PBG_P]) == 0 && PopulationExponent > 0,
+                $"PBG: Pop Multiplier = 0 but Population Exponent (={PopulationExponent}) > 0");
 
             // TODO: Nobility
         }
