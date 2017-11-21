@@ -102,7 +102,7 @@ input[type=text] {
 
 .direction {
   font-weight: bold; text-transform: uppercase; font-size: 120%;
-  color: red;
+  color: #E32736;
   pointer-events: none;
   position: absolute;
   text-align: center;
@@ -162,7 +162,7 @@ input[type=text] {
 #stripe {
   margin: 6.5px 0;
   height: 7px;
-  background-color: red;
+  background-color: #E32736;
  }
 .style-print #stripe,
 .style-atlas #stripe { background-color: black; }
@@ -180,9 +180,9 @@ input[type=text] {
 .metadata-status .official { visibility: hidden; }
 .metadata-status .preserve { color: green; }
 .metadata-status .inreview,
-.metadata-status .unreviewed { color: gold; }
+.metadata-status .unreviewed { color: #FFCC00; }
 .metadata-status .apocryphal { color: magenta; }
-.metadata-status .unofficial { color: red; }
+.metadata-status .unofficial { color: #E32736; }
 .metadata-status .bar { font-size: 120%; }
 .style-print .metadata-status .preserve,
 .style-print .metadata-status .apocryphal,
@@ -366,7 +366,7 @@ body:not(.wds-visible) #wds-frame { display: none; }
 #sds-frame .sds-status a.inreview,
 #sds-frame .sds-status a.unreviewed { color: orange; }
 #sds-frame .sds-status a.apocryphal { color: magenta; }
-#sds-frame .sds-status a.unofficial { color: red; }
+#sds-frame .sds-status a.unofficial { color: #E32736; }
 #sds-frame .sds-status a.bar { font-size: 120%; }
 
 .style-terminal .ds-frame,
@@ -396,7 +396,7 @@ button {
   border-radius: 2px;
 }
 button:hover {
-  background-color: red;
+  background-color: #E32736;
 }
 
 .hoverbox {
@@ -501,7 +501,7 @@ body:not(.route-shown) #routeBox { min-height: 130px; max-height: 130px; }
 #routeForm.J-3 #J-3,
 #routeForm.J-4 #J-4,
 #routeForm.J-5 #J-5,
-#routeForm.J-6 #J-6 { background-color: red; }
+#routeForm.J-6 #J-6 { background-color: #E32736; }
 
 #routeForm #closeRouteBtn,
 #routeForm #swapRouteBtn {
@@ -561,7 +561,7 @@ body:not(.route-shown) #routeBox { min-height: 130px; max-height: 130px; }
 .show-legend #legendBox { display: block; }
 
 .show-more #moreBtn,
-.show-legend #legendBtn { background-color: red; }
+.show-legend #legendBtn { background-color: #E32736; }
 
 /* Tabs */
 .show-settings #settings-tab,
@@ -575,7 +575,7 @@ body:not(.route-shown) #routeBox { min-height: 130px; max-height: 130px; }
 .show-settings #settingsBtn,
 .show-share #shareBtn,
 .show-help #helpBtn {
-  border-bottom: 2px solid red;
+  border-bottom: 2px solid #5C4033;
   filter: none;
 }
 
@@ -634,7 +634,7 @@ body:not(.enable-experiments) #labBtn { display: none; }
 }
 
 #legendBox .glyph { display: inline-block; width: 20px; text-align: center; }
-#legendBox .highlight { color: red; }
+#legendBox .highlight { color: #E32736; }
 .style-draft #legendBox .highlight,
 .style-atlas #legendBox .highlight { color: gray; }
 #legendBox .glyph.water { color: #00bfff; }
@@ -644,9 +644,9 @@ body:not(.enable-experiments) #labBtn { display: none; }
   color: #f0f0f0;
   text-shadow: -1px -1px 0 #000, -1px 1px 0 #000, 1px -1px 0 #000, 1px 1px 0 #000;
 }
-#legendBox .amberzone { color: yellow; }
+#legendBox .amberzone { color: #FFCC00; }
 .style-atlas #legendBox .amberzone { color: #c0c0c0; }
-#legendBox .redzone { color: red; }
+#legendBox .redzone { color: #E32736; }
 .style-atlas #legendBox .redzone { color: black; }
 
 #legendBox .popname { display: inline-block; width: 70px; }
@@ -765,8 +765,8 @@ body:not(.enable-experiments) #labBtn { display: none; }
 
 #help-tab h3:first-of-type { margin-top: 0; }
 #help-tab h3 { x-font-style: italic; x-font-weight: normal;
-              color: red;
-              border-bottom: 2px solid red;
+              color: #E32736;
+              border-bottom: 2px solid #5C4033;
               margin-bottom: 10px; }
 #help-tab a { text-decoration: none; }
 #help-tab a:hover { text-decoration: underline; }
@@ -830,7 +830,7 @@ body:not(.search-results) #closeSearchBtn { display: none; }
 }
 #more-tabs button:hover {
   background-color: transparent;
-  border-bottom: 2px solid red;
+  border-bottom: 2px solid #5C4033;
   filter: none;
 }
 #moreScroll {
@@ -1000,7 +1000,7 @@ body:not(.search-results) #closeSearchBtn { display: none; }
   }
   .settings .settings-item:last-child { border-bottom: none; }
 
-  .settings input:checked + label { color: red; }
+  .settings input:checked + label { color: #E32736; }
   .settings input:disabled + label { opacity: 0.5; }
 
   .settings input[type=checkbox],
@@ -1157,7 +1157,7 @@ body:not(.search-results) #closeSearchBtn { display: none; }
 }
 
 .style-terminal button { background-color: lightgray; }
-.style-terminal button:hover { background-color: red; }
+.style-terminal button:hover { background-color: #E32736; }
 .style-terminal #moreBox,
 .style-terminal .bar-button,
 .style-terminal .jump-button,
