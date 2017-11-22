@@ -269,12 +269,12 @@ var Util = {
     var sheets = {};
     var base = {
       overlay_color: '#8080ff',
-      route_color: 'green',
+      route_color: '#048104',
       main_s_color: 'pink',
-      main_m_color: 'yellow',
+      main_m_color: '#FFCC00',
       main_l_color: 'cyan',
       main_opacity: 0.25,
-      ew_color: 'yellow',
+      ew_color: '#FFCC00',
       you_are_here_url: 'res/ui/youarehere.png'
     };
     sheets[Styles.Poster] = base;

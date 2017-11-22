@@ -178,7 +178,7 @@ input[type=text] {
 
 .metadata-status a { text-decoration: none; font-weight: bold; }
 .metadata-status .official { visibility: hidden; }
-.metadata-status .preserve { color: green; }
+.metadata-status .preserve { color: #048104; }
 .metadata-status .inreview,
 .metadata-status .unreviewed { color: #FFCC00; }
 .metadata-status .apocryphal { color: magenta; }
@@ -362,7 +362,7 @@ body:not(.wds-visible) #wds-frame { display: none; }
 
 #sds-frame .sds-status a { text-decoration: none; font-weight: bold; }
 #sds-frame .sds-status a.official,
-#sds-frame .sds-status a.preserve { color: green; }
+#sds-frame .sds-status a.preserve { color: #048104; }
 #sds-frame .sds-status a.inreview,
 #sds-frame .sds-status a.unreviewed { color: orange; }
 #sds-frame .sds-status a.apocryphal { color: magenta; }
