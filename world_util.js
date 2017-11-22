@@ -23,6 +23,8 @@
     case 'generic':
       return S3_PREFIX + 'generic_worlds/'
         + (world.UWP.Siz === '0' ? 'Belt' : 'Hyd' + world.UWP.Hyd) + '.png';
+    case 'background':
+      return S3_PREFIX + 'world_backgrounds/' + world;
     }
   }
 
@@ -723,8 +725,9 @@
 
     var w = canvas.width, h = canvas.height;
 
-    var bg = (!world.isPlaceholder && hasCode(world, 'Sa'))
-          ? 'res/world/gg.jpg' : 'res/world/stars.png';
+    var bg = worldImageURL(
+      (!world.isPlaceholder && hasCode(world, 'Sa')) ? 'gg.jpg' : 'stars.png',
+      'background');
 
     var SIZES = [
       { width: 0.80, height: 0.45 },

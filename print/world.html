@@ -2,12 +2,12 @@
 <html mozNoMarginBoxes>
 <title>World Data Sheet - Traveller Map</title>
 <meta charset="utf-8">
-<link rel="shortcut icon" href="favicon.ico">
-<link rel="stylesheet" href="site.css">
+<link rel="shortcut icon" href="../favicon.ico">
+<link rel="stylesheet" href="../site.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
 <script src="https://cdn.rawgit.com/inexorabletash/polyfill/v0.1.41/polyfill.min.js"></script>
-<script src="map.js?update=2017-11-22T11:38:08"></script>
-<script src="world_util.js?update=2017-11-22T14:40:31"></script>
+<script src="../map.js?update=2017-11-22T11:38:08"></script>
+<script src="../world_util.js?update=2017-11-22T14:53:33"></script>
 <script src="world.js?update=2017-08-16T15:42:20"></script>
 
 <style>
@@ -166,7 +166,7 @@ td { vertical-align: top; }
 {{#UWP}}
 <table class=wds-decode>
 <tr><td>Universal World Profile:<td>{{Starport}}<td>{{Siz}}<td>{{Atm}}<td>{{Hyd}}<td>{{Pop}}<td>{{Gov}}<td>{{Law}}<td>&ndash;<td>{{Tech}}<td>
-    <tr><td>Starport ({{StarportBlurb}})<td colspan=9 rowspan=4><img width="144" height="49" src="res/world/uwp.svg" alt=""><td>Technology Level ({{TechBlurb}})
+    <tr><td>Starport ({{StarportBlurb}})<td colspan=9 rowspan=4><img width="144" height="49" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNDQgNDkiIGhlaWdodD0iNDkiIHdpZHRoPSIxNDQiPjxwYXRoIGQ9Ik0wIDQ4di0xaDU2VjBoMnY0OUgwdi0xem03Mi0yMy41VjBoMnY0N2g3MHYySDcyVjI0LjV6TTAgMzR2LTFoNDBWMGgydjM1SDB2LTF6bTg4LTE2LjVWMGgydjMzaDU0djJIODhWMTcuNXpNMCAyMHYtMWgyNFYwaDJ2MjFIMHYtMXptMTA0LTkuNVYwaDJ2MTloMzh2MmgtNDBWMTAuNXpNMCA2VjVoOFYwaDJ2N0gwVjZ6bTEzNi0yLjVWMGgydjVoNnYyaC04VjMuNXoiLz48L3N2Zz4=" alt=""><td>Technology Level ({{TechBlurb}})
 <tr><td>Size ({{SizBlurb}})<td>Law Level ({{LawBlurb}})
 <tr><td>Atmosphere ({{AtmBlurb}})<td>Government Type ({{GovBlurb}})
     <tr><td>Hydrosphere ({{HydBlurb}})<td>Population ({{PopBlurb}})
@@ -182,7 +182,7 @@ td { vertical-align: top; }
 {{#Ex}}
 <table class=wds-decode>
 <tr><td>Economics (Ex):<td>(<td>{{Res}}<td>{{Lab}}<td>{{Inf}}<td>{{Eff}}<td>)<td>
-<tr><td>Resources ({{ResBlurb}})<td colspan=6 rowspan=2><img width="96" height="21" src="res/world/ex.svg" alt=""><td>Efficiency ({{EffBlurb}})
+<tr><td>Resources ({{ResBlurb}})<td colspan=6 rowspan=2><img width="96" height="21" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA5NiAyMSIgaGVpZ2h0PSIyMSIgd2lkdGg9Ijk2Ij48cGF0aCBkPSJNMCAyMHYtMWg0MFYwaDJ2MjFIMHYtMXptNTYtOS41VjBoMnYxOWgzOHYySDU2VjEwLjV6TTAgNlY1aDI0VjBoMnY3SDBWNnptNzItMi41VjBoMnY1aDIydjJINzJWMy41eiIvPjwvc3ZnPg==" alt=""><td>Efficiency ({{EffBlurb}})
 <tr><td>Labor ({{LabBlurb}})<td>Infrastructure ({{InfBlurb}})
 </table>
 {{/Ex}}
@@ -190,7 +190,7 @@ td { vertical-align: top; }
 {{#Cx}}
 <table class=wds-decode>
 <tr><td>Culture [Cx]:<td>[<td>{{Hom}}<td>{{Acc}}<td>{{Str}}<td>{{Sym}}<td>]<td>
-<tr><td>Homogeneity ({{HomBlurb}})<td colspan=6 rowspan=2><img width="96" height="21" src="res/world/cx.svg" alt=""><td>Symbols ({{SymBlurb}})
+<tr><td>Homogeneity ({{HomBlurb}})<td colspan=6 rowspan=2><img width="96" height="21" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA5NiAyMSIgaGVpZ2h0PSIyMSIgd2lkdGg9Ijk2Ij48cGF0aCBkPSJNMCAyMHYtMWg0MFYwaDJ2MjFIMHYtMXptNTYtOS41VjBoMnYxOWgzOHYySDU2VjEwLjV6TTAgNlY1aDI0VjBoMnY3SDBWNnptNzItMi41VjBoMnY1aDIydjJINzJWMy41eiIvPjwvc3ZnPg==" alt=""><td>Symbols ({{SymBlurb}})
 <tr><td>Acceptance ({{AccBlurb}})<td>Strangeness ({{StrBlurb}})
 </table>
 {{/Cx}}
