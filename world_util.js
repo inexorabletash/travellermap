@@ -714,7 +714,7 @@
 
   var showConsoleNotice = Util.once(function() {
     if (!console || !console.log) return;
-    console.log('The "404 (Not Found)" error images is expected, and is not a bug.');
+    console.log('The "404 (Not Found)" error for world images is expected, and is not a bug.');
   });
 
   var renderWorldImageFirstTime = true;
