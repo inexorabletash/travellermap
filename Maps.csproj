@@ -191,6 +191,9 @@
     <Content Include="make\post.js" />
     <Content Include="make\poster.html" />
     <Content Include="make\routes.html" />
+    <Content Include="print\route.html" />
+    <Content Include="print\world.html" />
+    <Content Include="print\world.js" />
     <Content Include="res\app\browserconfig.xml" />
     <Content Include="res\app\fb.png" />
     <Content Include="res\app\mstile-150x150.png" />
@@ -223,6 +226,13 @@
     <Content Include="res\markers\README.txt" />
     <Content Include="res\markers\scout.png" />
     <Content Include="res\markers\submerchant.png" />
+    <Content Include="res\print\cx.svg" />
+    <Content Include="res\print\ex.svg" />
+    <Content Include="res\print\gg.jpg" />
+    <Content Include="res\print\route-end.svg" />
+    <Content Include="res\print\route.svg" />
+    <Content Include="res\print\stars.png" />
+    <Content Include="res\print\uwp.svg" />
     <Content Include="res\Sectors\Distant Fringe\Abyss.txt" />
     <Content Include="res\Sectors\Distant Fringe\Abyss.xml" />
     <Content Include="res\Sectors\Distant Fringe\Bourne.txt" />
@@ -743,9 +753,10 @@
     <Content Include="res\ui\Legend_1006_print.svg" />
     <Content Include="res\ui\route-end.svg" />
     <Content Include="res\ui\route.svg" />
-    <Content Include="world_util.js" />
     <Content Include="res\Sectors\M1105\Touchstone.tab" />
     <Content Include="res\Sectors\M1105\Afawahisa.tab" />
+    <Content Include="print\README.md" />
+    <Content Include="world_util.js" />
     <None Include="res\styles\otu.css" />
     <Content Include="res\ui\background.png" />
     <Content Include="res\ui\background_light.png" />
@@ -790,11 +801,6 @@
     <Content Include="res\Vectors\CoreRoute.xml" />
     <Content Include="res\Vectors\J4Route.xml" />
     <Content Include="res\Vectors\J5Route.xml" />
-    <Content Include="res\world\cx.png" />
-    <Content Include="res\world\ex.png" />
-    <Content Include="res\world\gg.jpg" />
-    <Content Include="res\world\stars.png" />
-    <Content Include="res\world\uwp.png" />
     <Content Include="test\APITest.html" />
     <Content Include="test\APITest.js" />
     <Content Include="test\ContentTest.html" />
@@ -932,8 +938,6 @@
     <Compile Include="server\Stylesheet.cs" />
     <Compile Include="server\VectorObject.cs" />
     <Compile Include="server\World.cs" />
-    <Content Include="world.html" />
-    <Content Include="world.js" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="borders\bd_images\Thumbs.db" />

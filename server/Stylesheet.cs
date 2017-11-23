@@ -6,6 +6,13 @@ using System.Text.RegularExpressions;
 
 namespace Maps.Rendering
 {
+    public static class TravellerColors
+    {
+        public static readonly Color Red = Color.FromArgb(0xE3, 0x27, 0x36);
+        public static readonly Color Amber = Color.FromArgb(0xFF, 0xCC, 0x00);
+        public static readonly Color Green = Color.FromArgb(0x04, 0x81, 0x04);
+    }
+
     [Flags]
     public enum MapOptions : int
     {
@@ -350,10 +357,10 @@ namespace Maps.Rendering
             megaNames.smallFontInfo = new FontInfo(DEFAULT_FONT, 18f * megaNameScaleFactor, FontStyle.Italic);
 
             capitals.fillColor = Color.Wheat;
-            capitals.textColor = Color.Red;
-            amberZone.pen.color = Color.Gold;
-            redZone.pen.color = Color.Red;
-            macroBorders.pen.color = Color.Red;
+            capitals.textColor = TravellerColors.Red;
+            amberZone.pen.color = TravellerColors.Amber;
+            redZone.pen.color = TravellerColors.Red;
+            macroBorders.pen.color = TravellerColors.Red;
             macroRoutes.pen.color = Color.White;
             microBorders.pen.color = Color.Gray;
             Color gridColor = Color.FromArgb(ScaleInterpolate(0, 255, scale, SectorGridMinScale, SectorGridFullScale), Color.Gray);
@@ -364,8 +371,8 @@ namespace Maps.Rendering
             Color lightColor = Color.LightGray;
             Color darkColor = Color.DarkGray;
             Color dimColor = Color.DimGray;
-            Color highlightColor = Color.Red;
-            microBorders.textColor = Color.Gold;
+            Color highlightColor = TravellerColors.Red;
+            microBorders.textColor = TravellerColors.Amber;
             worldWater.fillColor = Color.DeepSkyBlue;
             worldNoWater.fillColor = Color.White;
             worldNoWater.pen.color = Color.Empty;
@@ -426,9 +433,9 @@ namespace Maps.Rendering
             importanceOverlay.pen = new PenInfo(Color.Empty, 0.03f * penScale, DashStyle.Dot);
             highlightWorlds.pen = new PenInfo(Color.Empty, 0.03f * penScale, DashStyle.DashDot);
 
-            capitalOverlay.fillColor = Color.FromArgb(0x80, Color.Green);
+            capitalOverlay.fillColor = Color.FromArgb(0x80, TravellerColors.Green);
             capitalOverlayAltA.fillColor = Color.FromArgb(0x80, Color.Blue);
-            capitalOverlayAltB.fillColor = Color.FromArgb(0x80, Color.Yellow);
+            capitalOverlayAltB.fillColor = Color.FromArgb(0x80, TravellerColors.Amber);
 
             bool fadeSectorSubsectorNames = true;
 
@@ -568,7 +575,7 @@ namespace Maps.Rendering
 
                         microBorders.textColor = Color.Brown;
 
-                        amberZone.pen.color = Color.Gold;
+                        amberZone.pen.color = TravellerColors.Amber;
                         worldNoWater.fillColor = Color.White;
                         worldNoWater.pen = new PenInfo(Color.Black, onePixel);
 
@@ -596,7 +603,7 @@ namespace Maps.Rendering
 
                         backgroundColor = Color.AntiqueWhite;
                         foregroundColor = Color.FromArgb(inkOpacity, Color.Black);
-                        highlightColor = Color.FromArgb(inkOpacity, Color.Red);
+                        highlightColor = Color.FromArgb(inkOpacity, TravellerColors.Red);
 
                         lightColor = Color.FromArgb(inkOpacity, Color.DarkCyan);
                         darkColor = Color.FromArgb(inkOpacity, Color.Black);
@@ -728,7 +735,7 @@ namespace Maps.Rendering
                         microBorders.textStyle.Scale = new SizeF(1.0f, 0.5f); // Expand
                         microBorders.textStyle.Uppercase = true;
 
-                        microBorders.pen.color = Color.FromArgb(128, Color.Red);
+                        microBorders.pen.color = Color.FromArgb(128, TravellerColors.Red);
 
                         worlds.textStyle.Rotation = 0;
                         worlds.textStyle.Scale = new SizeF(1f, 0.5f); // Expand
@@ -1017,11 +1024,11 @@ namespace Maps.Rendering
             {
                 if (world.IsAg && world.IsRi)
                 {
-                    penColor = brushColor = Color.Gold;
+                    penColor = brushColor = TravellerColors.Amber;
                 }
                 else if (world.IsAg)
                 {
-                    penColor = brushColor = Color.Green;
+                    penColor = brushColor = TravellerColors.Green;
                 }
                 else if (world.IsRi)
                 {

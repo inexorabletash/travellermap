@@ -28,7 +28,7 @@ namespace Maps
 
             routes.Add(new RegexRoute(@"/booklet/(?<sector>[^/]+)", new RedirectRouteHandler("/make/booklet?sector={sector}", statusCode: 302)));
             routes.Add(new RegexRoute(@"/sheet/(?<sector>[^/]+)/(?<hex>[0-9]{4})", new RedirectRouteHandler("/print/world?sector={sector}&hex={hex}", statusCode: 302)));
-
+            
             // Administration -----------------------------------------------
 
             routes.Add(new RegexRoute(@"/admin/admin", new GenericRouteHandler(typeof(AdminHandler))));

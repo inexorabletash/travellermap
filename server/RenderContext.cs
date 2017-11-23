@@ -585,15 +585,15 @@ namespace Maps.Rendering
                     foreach (Sector sector in selector.Sectors)
                     {
                         if (sector.Tags.Contains("Official"))
-                            solidBrush.Color = Color.FromArgb(128, Color.Red);
+                            solidBrush.Color = Color.FromArgb(128, TravellerColors.Red);
                         else if (sector.Tags.Contains("InReview"))
                             solidBrush.Color = Color.FromArgb(128, Color.Orange);
                         else if (sector.Tags.Contains("Unreviewed"))
-                            solidBrush.Color = Color.FromArgb(128, Color.Yellow);
+                            solidBrush.Color = Color.FromArgb(128, TravellerColors.Amber);
                         else if (sector.Tags.Contains("Apocryphal"))
                             solidBrush.Color = Color.FromArgb(128, Color.Magenta);
                         else if (sector.Tags.Contains("Preserve"))
-                            solidBrush.Color = Color.FromArgb(128, Color.Green);
+                            solidBrush.Color = Color.FromArgb(128, TravellerColors.Green);
                         else
                             continue;
                         graphics.DrawRectangle(solidBrush, sector.Bounds);
@@ -627,7 +627,7 @@ namespace Maps.Rendering
                                 graphics.DrawString(str, font, solidBrush, cursorX + dx, cursorY + dy, StringAlignment.TopLeft);
                             }
                         }
-                        solidBrush.Color = Color.Yellow;
+                        solidBrush.Color = TravellerColors.Amber;
                         graphics.DrawString(str, font, solidBrush, cursorX, cursorY, StringAlignment.TopLeft);
                         cursorY += 14;
                     }

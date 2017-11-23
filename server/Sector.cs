@@ -960,7 +960,7 @@ namespace Maps
             Text = text;
         }
 
-        public static Color DefaultColor => Color.Yellow;
+        public static Color DefaultColor => TravellerColors.Amber;
 
         internal Hex Hex { get; set; }
         [XmlAttribute("Hex"),JsonName("Hex")]
