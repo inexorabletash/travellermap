@@ -510,7 +510,7 @@ button:hover {
   display: block;
   position: relative;
   float: left;
-  width: 230px;
+  width: 275px;
   transition: width 0.1s ease-in-out;
 }
 #searchBox {
@@ -530,7 +530,7 @@ button:hover {
 
 #resultsBox {
   box-sizing: border-box;
-  width: 275px;
+  width: 320px;
   min-height: 50px;
   max-height: 250px;
   padding: 20px;
@@ -1179,7 +1179,7 @@ body:not(.search-results) #closeSearchBtn { display: none; }
   #navBar .bar-button { display: none; }
 }
 
-@media only screen and (max-width: 425px), only screen and (max-height: 425px) {
+@media only screen and (max-width: 480px), only screen and (max-height: 480px) {
   /* Mobile (portrait or landscape) */
 
   /* Simplify/merge footer/navigation bar */
