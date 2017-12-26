@@ -1211,7 +1211,8 @@ window.addEventListener('DOMContentLoaded', function() {
       milieu: map.namedOptions.get('milieu'),
       wild: $('#route-wild').checked?1:0,
       im: $('#route-im').checked?1:0,
-      nored: $('#route-nored').checked?1:0
+      nored: $('#route-nored').checked?1:0,
+      aok: $('#route-aok').checked?1:0
     };
     fetch(Traveller.MapService.makeURL('/api/route', options))
       .then(function(response) {
