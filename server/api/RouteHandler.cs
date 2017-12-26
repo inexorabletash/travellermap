@@ -25,6 +25,7 @@ namespace Maps.API
                 public bool RequireWildernessRefuelling { get; set; }
                 public bool AvoidRedZones { get; set; }
                 public bool ImperialWorldsOnly { get; set; }
+                public bool AllowAnomalies { get; set; }
 
                 public TravellerPathFinder(ResourceManager manager, SectorMap.Milieu map, int jump)
                 {
@@ -50,6 +51,7 @@ namespace Maps.API
                         // Exclude destination from filters.
                         if (w != end)
                         {
+                            if (!AllowAnomalies && w.IsAnomaly) continue;
                             if (RequireWildernessRefuelling && (w.GasGiants == 0 && !w.WaterPresent)) continue;
                             if (AvoidRedZones && w.IsRed) continue;
                             if (ImperialWorldsOnly && !SecondSurvey.IsDefaultAllegiance(w.Allegiance)) continue;
@@ -120,7 +122,8 @@ namespace Maps.API
                 {
                     RequireWildernessRefuelling = GetBoolOption("wild", false),
                     ImperialWorldsOnly = GetBoolOption("im", false),
-                    AvoidRedZones = GetBoolOption("nored", false)
+                    AvoidRedZones = GetBoolOption("nored", false),
+                    AllowAnomalies = GetBoolOption("aok", false)
                 };
                 List<World> route = finder.FindPath(startWorld, endWorld) ??
                     throw new HttpError(404, "Not Found", "No route found");
