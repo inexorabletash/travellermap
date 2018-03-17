@@ -25,19 +25,22 @@
     <Subsector Index="P">Baradis</Subsector>
   </Subsectors>
   <Borders>
-    <Border Allegiance="Bc" LabelPosition="0434" ShowLabel="true" WrapLabel="false">0337 0436 0435 0536 0635 0536 0436 0437 0337 </Border>
+    <Border Allegiance="Bc" LabelPosition="0439" ShowLabel="true" WrapLabel="false">0236 0336 0335 0434 0535 0635 0636 0537 0538 0438 0338 0237 0236 </Border>
     <Border Allegiance="Dw" LabelPosition="1404" ShowLabel="true" WrapLabel="true">1003 1104 1203 1204 1205 1206 1107 1106 1005 1004 1003 </Border>
-    <Border Allegiance="Ec" LabelPosition="1018" ShowLabel="true" WrapLabel="true">0718 0818 0819 0920 1020 1121 1122 1123 1223 1124 1023 1022 1021 0921 0820 0819 0818 0718 </Border>
+    <Border Allegiance="Ec" LabelPosition="0721" ShowLabel="true" WrapLabel="true">0718 0818 0819 0920 1020 1121 1122 1123 1223 1124 1023 1022 1021 0921 0820 0819 0818 0718 </Border>
     <Border Allegiance="En" LabelPosition="1335" ShowLabel="true" WrapLabel="false">1131 1230 1231 1332 1333 1334 1233 1232 1231 1131 </Border>
-    <Border Allegiance="Hg" LabelPosition="2015" ShowLabel="true" WrapLabel="true">1914 2013 2012 2112 2111 2112 2212 2313 2314 2213 2114 2014 1914 </Border>
-    <Border Allegiance="Li" LabelPosition="0709" ShowLabel="true" WrapLabel="true">0611 0711 0810 0809 0808 0809 0810 0811 0912 0811 0711 0611 </Border>
+    <Border Allegiance="Hg" LabelPosition="2116" ShowLabel="true" WrapLabel="true">1913 2012 2011 2111 2211 2212 2313 2314 2214 2115 2014 1914 1913 </Border>
+    <Border Allegiance="Li" LabelPosition="0511" ShowLabel="true" WrapLabel="true">0610 0710 0709 0808 0809 0810 0911 0912 0812 0712 0611 0610 </Border>
     <Border Allegiance="Ls" LabelPosition="1507" ShowLabel="true" WrapLabel="true">1307 1407 1508 1408 1409 1410 1411 1512 1411 1410 1310 1309 1308 1307 </Border>
     <Border Allegiance="Rt" LabelPosition="2735" ShowLabel="true" WrapLabel="false">2532 2632 2733 2734 2633 2533 2532 </Border>
-    <Border Allegiance="Us" LabelPosition="1112" ShowLabel="true" WrapLabel="true">1008 1108 1207 1208 1209 1110 1111 1010 1009 1008 </Border>
+    <Border Allegiance="Us" LabelPosition="0907" ShowLabel="true" WrapLabel="true">0908 1007 1108 1207 1208 1209 1210 1211 1112 1011 1010 0910 0909 0908 </Border>
     <Border Allegiance="Yj" LabelPosition="2125" ShowLabel="true" WrapLabel="true">2223 2323 2324 2424 2325 2225 2224 2223 </Border>
   </Borders>
+  <Regions>
+    <Region Color="Darkviolet" LabelPosition="3120" Label="Unstable Space">2615 2715 2815 2816 2917 3016 3117 3216 3217 3218 3219 3220 3120 3020 2920 3019 3018 2918 2917 2816 2717 2616 2615 </Region>
+  </Regions>
   <Allegiances>
-    <Allegiance Code="Bc">Bright Conclave</Allegiance>
+    <Allegiance Code="Bc">Bright&#x0a;Conclave</Allegiance>
     <Allegiance Code="Dw">Dependent Worlds</Allegiance>
     <Allegiance Code="Ec">Esaran Cultural Area</Allegiance>
     <Allegiance Code="En">Enlightened</Allegiance>
@@ -112,7 +115,8 @@
   </Routes>
   <Labels>
     <!-- Deep Space -->
-    <Label Hex="1937" Color="gray" Size="small">fuel&#x0a;cache</Label>
+    <Label Hex="1714" Color="red" Size="small">Scybria&#x0a;Jump Hub</Label>
+    <Label Hex="1937" Color="red" Size="small">fuel&#x0a;cache</Label>
     <!-- Route Names -->
     <Label Hex="2132" Color="white">Barabek Loop</Label>
     <Label Hex="1622" Color="white">Elemid Trace</Label>
@@ -125,7 +129,7 @@
     <Label Hex="1201" Color="gray" Size="large">Moat Rifts</Label>
     <Label Hex="1437" Color="gray" Size="large">Great Void</Label>
     <Label Hex="3109" Color="gray">Rissa&#x0a;Void</Label>
-    <Label Hex="3122" Color="gray">Harmal&#x0a;Deep</Label>
+    <Label Hex="3124" Color="gray">Harmal&#x0a;Deep</Label>
     <Label Hex="3135" Color="gray">Baradine&#x0a;Divide</Label>
   </Labels>
   <Stylesheet>

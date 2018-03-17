@@ -9,9 +9,12 @@
   <Subsectors>
     <Subsector Index="N">Nabile</Subsector>
   </Subsectors>
+  <Regions>
+    <Region Color="Darkblue" LabelPosition="1513" Label="Bourne Cloud">1310 1409 1510 1610 1710 1810 1711 1611 1612 1513 1514 1414 1413 1412 1512 1511 1410 1310</Region>
+  </Regions>
   <Labels>
     <!-- Fuel Cache -->
-    <Label Hex="1536" Color="gray" Size="small">Fuel&#x0a;cache</Label>
+    <Label Hex="1536" Color="red" Size="small">Fuel&#x0a;cache</Label>
     <!-- Rift Names -->
     <Label Hex="1221" Color="gray" Size="large">Moat Rifts</Label>
   </Labels>
