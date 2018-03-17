@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Sector>
+  <Name>Marischal</Name>
+  <Credits>
+    <![CDATA[
+      <p>
+        <b>Marischal</b> subsector is detailed in <cite>The Wanderer</cite> fanzine,
+        issue 2 and <cite>A Travellers Guide to the Marischal Subsector</cite> and
+        was created by Martyn J. Henderson.
+      </p>
+      <p>
+        Data was transcribed and edited by Graham Donald.
+      </p>
+    ]]>
+  </Credits>
+  <Allegiances>
+    <Allegiance Code="JD">Jimoi Democracies</Allegiance>
+  </Allegiances>
+  <Subsectors>
+    <Subsector Index="A">Marischal</Subsector>
+  </Subsectors>
+  <Stylesheet>
+    route.TradeMinor { Color: gray; style: dashed; width: 0.5 }
+  </Stylesheet>
+  <Routes>
+    <Route Start="0301" End="0402" Type="Trade"/>
+    <Route Start="0403" End="0203" Type="Trade"/>
+    <Route Start="0402" End="0403" Type="Trade"/>
+    <Route Start="0203" End="0106" Type="TradeMinor"/>
+    <Route Start="0107" End="0106" Type="TradeMinor"/>
+    <Route Start="0301" End="0602" Type="Trade"/>
+    <Route Start="0602" End="0608" Type="Trade"/>
+    <Route Start="0605" End="0705" Type="TradeMinor"/>
+    <Route Start="0705" End="0604" Type="TradeMinor"/>
+    <Route Start="0605" End="0807" Type="Trade"/>
+    <Route Start="0807" End="0608" Type="Trade"/>
+    <Route Start="0606" End="0708" Type="Trade"/>
+    <Route Start="0606" End="0407" Type="Trade"/>
+    <Route Start="0309" End="0306" Type="Trade"/>
+    <Route Start="0208" End="0309" Type="Trade"/>
+    <Route Start="0208" End="0307" Type="Trade"/>
+    <Route Start="0407" End="0506" Type="Trade"/>
+    <Route Start="0506" End="0505" Type="Trade"/>
+    <Route Start="0505" End="0604" Type="Trade"/>
+    <Route Start="0407" End="0608" Type="Trade"/>
+    <Route Start="0407" End="0309" Type="Trade"/>
+    <Route Start="0604" End="0404" Type="Trade"/>
+    <Route Start="0306" End="0404" Type="Trade"/>
+    <Route Start="0403" End="0404" Type="Trade"/>
+  </Routes>
+</Sector>
