@@ -964,7 +964,7 @@ window.addEventListener('DOMContentLoaded', function() {
         if (!world) return;
 
         // Data Sheet
-        world.DataSheetURL = Util.makeURL('world', {
+        world.DataSheetURL = Util.makeURL('print/world', {
           sector: context.sector,
           hex: context.hex,
           milieu: milieu,

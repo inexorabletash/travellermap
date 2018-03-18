@@ -5,7 +5,7 @@
   var $ = function(s) { return document.querySelector(s); };
   var $$ = function(s) { return document.querySelectorAll(s); };
 
-  window.addEventListener('DOMContentLoaded', function() {
+  window.addEventListener('load', function() {
     var searchParams = new URL(document.location).searchParams;
 
     if (searchParams.has('nopage'))

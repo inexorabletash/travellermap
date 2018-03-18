@@ -277,6 +277,21 @@ body:not(.wds-visible) #wds-frame { display: none; }
 .ds-print-links {
   text-align: center;
 }
+
+.print-icon {
+  padding-left: 24px;
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiI+PHBhdGggZD0iTTIgMHY1QzEgNSAwIDYgMCA3djRoMnY0aDEydi00aDJWN2MwLTEtMS0yLTItMlYwSDJ6bTEgMWgxMHY0SDNWMXptMTEgNWExIDEgMCAwIDEgMSAxIDEgMSAwIDAgMS0xIDEgMSAxIDAgMCAxLTEtMSAxIDEgMCAwIDEgMS0xek0zIDloMTB2NUgzVjl6bTEgMXYxaDh2LTFINHptMCAydjFoOHYtMUg0eiIvPjwvc3ZnPgo=);
+}
+
+.print-icon-white {
+  padding-left: 24px;
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiI+PHBhdGggZmlsbD0id2hpdGUiIGQ9Ik0yIDB2NUMxIDUgMCA2IDAgN3Y0aDJ2NGgxMnYtNGgyVjdjMC0xLTEtMi0yLTJWMEgyem0xIDFoMTB2NEgzVjF6bTExIDVhMSAxIDAgMCAxIDEgMSAxIDEgMCAwIDEtMSAxIDEgMSAwIDAgMS0xLTEgMSAxIDAgMCAxIDEtMXpNMyA5aDEwdjVIM1Y5em0xIDF2MWg4di0xSDR6bTAgMnYxaDh2LTFINHoiLz48L3N2Zz4K);
+}
+
 /* Mini Mode */
 
 .ds-mini-toggle {
