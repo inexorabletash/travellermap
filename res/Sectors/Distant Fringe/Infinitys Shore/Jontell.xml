@@ -9,10 +9,18 @@
   <Labels>
     <!-- Features Names -->
     <Label Hex="2308" Color="gray" Size="large">Jewelled Void</Label>
-    <Label Hex="2338" Color="gray">RSS&#x0a;Jo2337</Label>
+    <Label Hex="2338" Color="gray" Size="small">RSS&#x0a;Jo2337</Label>
   </Labels>
+  <Borders>
+    <Border Allegiance="Et" LabelPosition="2140" ShowLabel="false" WrapLabel="true">1940 2039 2038 2037 2137 2236 2336 2436 2437 2338 2238 2239 2340 2341 2241 2141 2041 1941 1940 </Border>
+  </Borders>
   <Regions>
     <Region Color="Darkviolet" LabelPosition="0427" Label="Claw of Jontell">0126 0225 0224 0225 0226 0327 0427 0527 0626 0625 0624 0524 0624 0725 0726 0727 0627 0628 0529 0429 0430 0331 0230 0330 0329 0328 0227 0127 0126</Region>
-    <Region Color="Blue">1940 2039 2038 2037 2137 2236 2336 2436 2437 2338 2238 2239 2240 2140 2040 1941 1940 </Region>
   </Regions>
+  <Allegiances>
+    <Allegiance Code="Et">Empire of Thrax</Allegiance>
+  </Allegiances>
+  <Stylesheet>
+    border.Et { color: blue }
+  </Stylesheet>
 </Sector>

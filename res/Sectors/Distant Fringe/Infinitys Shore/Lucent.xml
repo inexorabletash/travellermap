@@ -9,10 +9,19 @@
   <Labels>
     <!-- Features Names -->
     <Label Hex="2514" Color="gray" Size="large">Grand Arc</Label>
-    <Label Hex="1016" Color="gray">RSS&#x0a;Lu1015</Label>
+    <Label Hex="1016" Color="gray" Size="small">RSS&#x0a;Lu1015</Label>
   </Labels>
   <Regions>
     <Region Color="Darkviolet" LabelPosition="1340" Label="Lesion Shoal">1138 1237 1338 1339 1439 1539 1638 1637 1737 1738 1638 1639 1540 1440 1340 1240 1239 1139 1138</Region>
     <Region Color="Darkviolet" LabelPosition="2136" Label="Hope Lost">1937 2036 2035 2135 2235 2335 2434 2433 2533 2532 2531 2430 2531 2532 2533 2433 2434 2335 2235 2236 2137 2037 1937</Region>
   </Regions>
+  <Allegiances>
+    <Allegiance Code="Rw">Rann's Worlds</Allegiance>
+  </Allegiances>
+  <Borders>
+    <Border Allegiance="Rw" LabelPosition="0325" ShowLabel="true" WrapLabel="true">0122 0221 0321 0320 0419 0519 0618 0719 0720 0721 0821 0822 0723 0622 0523 0423 0324 0223 0123 0122 </Border>
+  </Borders>
+  <Stylesheet>
+    border.Rw { color: darkred }
+  </Stylesheet>
 </Sector>

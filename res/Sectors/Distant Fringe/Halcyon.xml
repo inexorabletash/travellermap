@@ -26,15 +26,15 @@
   </Subsectors>
   <Borders>
     <Border Allegiance="Bc" LabelPosition="0439" ShowLabel="true" WrapLabel="false">0236 0336 0335 0434 0535 0635 0636 0537 0538 0438 0338 0237 0236 </Border>
-    <Border Allegiance="Dw" LabelPosition="1404" ShowLabel="true" WrapLabel="true">1003 1104 1203 1204 1205 1206 1107 1106 1005 1004 1003 </Border>
-    <Border Allegiance="Ec" LabelPosition="0721" ShowLabel="true" WrapLabel="true">0718 0818 0819 0920 1020 1121 1122 1123 1223 1124 1023 1022 1021 0921 0820 0819 0818 0718 </Border>
-    <Border Allegiance="En" LabelPosition="1335" ShowLabel="true" WrapLabel="false">1131 1230 1231 1332 1333 1334 1233 1232 1231 1131 </Border>
-    <Border Allegiance="Hg" LabelPosition="2116" ShowLabel="true" WrapLabel="true">1913 2012 2011 2111 2211 2212 2313 2314 2214 2115 2014 1914 1913 </Border>
-    <Border Allegiance="Li" LabelPosition="0511" ShowLabel="true" WrapLabel="true">0610 0710 0709 0808 0809 0810 0911 0912 0812 0712 0611 0610 </Border>
-    <Border Allegiance="Ls" LabelPosition="1507" ShowLabel="true" WrapLabel="true">1307 1407 1508 1408 1409 1410 1411 1512 1411 1410 1310 1309 1308 1307 </Border>
+    <Border Allegiance="Dw" LabelPosition="1205" ShowLabel="true" WrapLabel="true">1003 1103 1203 1204 1305 1306 1307 1206 1106 1006 1005 1004 1003 </Border>
+    <Border Allegiance="Ec" LabelPosition="0723" ShowLabel="true" WrapLabel="true">0617 0717 0817 0918 0919 0920 1020 1120 1220 1221 1222 1323 1324 1224 1125 1024 0924 0923 0922 0821 0820 0720 0719 0618 0617 </Border>
+    <Border Allegiance="En" LabelPosition="1335" ShowLabel="true" WrapLabel="false">1131 1230 1331 1332 1333 1334 1233 1232 1132 1131 </Border>
+    <Border Allegiance="Hs" LabelPosition="2116" ShowLabel="true" WrapLabel="true">1813 1913 1912 2011 2010 2110 2210 2211 2312 2313 2413 2414 2315 2214 2115 2015 1915 1814 1813 </Border>
+    <Border Allegiance="Li" LabelPosition="0709" ShowLabel="true" WrapLabel="true">0511 0610 0710 0709 0708 0807 0808 0809 0810 0811 0912 1012 0913 0812 0712 0612 0512 0511 </Border>
+    <Border Allegiance="Ls" LabelPosition="1509" ShowLabel="true" WrapLabel="true">1308 1407 1507 1607 1608 1509 1510 1511 1611 1612 1513 1412 1312 1311 1410 1409 1408 1308 </Border>
     <Border Allegiance="Rt" LabelPosition="2735" ShowLabel="true" WrapLabel="false">2532 2632 2733 2734 2633 2533 2532 </Border>
-    <Border Allegiance="Us" LabelPosition="0907" ShowLabel="true" WrapLabel="true">0908 1007 1108 1207 1208 1209 1210 1211 1112 1011 1010 0910 0909 0908 </Border>
-    <Border Allegiance="Yj" LabelPosition="2125" ShowLabel="true" WrapLabel="true">2223 2323 2324 2424 2325 2225 2224 2223 </Border>
+    <Border Allegiance="Us" LabelPosition="1208" ShowLabel="true" WrapLabel="true">0908 1007 1107 1207 1208 1309 1310 1210 1211 1112 1011 0911 0910 0909 0908 </Border>
+    <Border Allegiance="Yj" LabelPosition="2125" ShowLabel="true" WrapLabel="true">2223 2323 2423 2424 2325 2225 2224 2223 </Border>
   </Borders>
   <Regions>
     <Region Color="Darkviolet" LabelPosition="3120" Label="Unstable Space">2615 2715 2815 2816 2917 3016 3117 3216 3217 3218 3219 3220 3120 3020 2920 3019 3018 2918 2917 2816 2717 2616 2615 </Region>
@@ -44,11 +44,12 @@
     <Allegiance Code="Dw">Dependent Worlds</Allegiance>
     <Allegiance Code="Ec">Esaran Cultural Area</Allegiance>
     <Allegiance Code="En">Enlightened</Allegiance>
-    <Allegiance Code="Hg">High Senate</Allegiance>
+    <Allegiance Code="Hs">High Senate</Allegiance>
     <Allegiance Code="Li">The Last Line</Allegiance>
     <Allegiance Code="Ls">Liberated Stars</Allegiance>
+    <Allegiance Code="Ns">Non-aligned Sophonts</Allegiance>
     <Allegiance Code="Rt">The Retreat</Allegiance>
-    <Allegiance Code="Us">Unity of Sed</Allegiance>
+    <Allegiance Code="Us">Unity&#x0a;of Sed</Allegiance>
     <Allegiance Code="Yj">Yimin Jiti</Allegiance>
   </Allegiances>
   <Routes>
@@ -84,7 +85,7 @@
     <Route Start="0921" End="0819"/>
     <Route Start="0819" End="0818"/>
     <Route Start="0818" End="0718"/>
-    <!-- Runners Bane -->
+    <!-- Runners Edge -->
     <Route Start="2012" End="1812"/>
     <Route Start="1812" End="1711"/>
     <Route Start="1711" End="1512"/>
@@ -110,25 +111,36 @@
     <Route Start="3227" End="3327"/>
     <!-- Spurs -->
     <Route Start="1029" End="1230"/>
+    <Route Start="1512" End="1514"/>
+    <Route Start="1514" End="1615"/>
     <Route Start="2424" End="2526"/>
     <Route Start="2330" End="2431"/>
   </Routes>
   <Labels>
     <!-- Deep Space -->
+    <Label Hex="0404" Color="red" Size="small">fuel&#x0a;cache</Label>
+    <Label Hex="0607" Color="red" Size="small">fuel&#x0a;cache</Label>
     <Label Hex="1714" Color="red" Size="small">Scybria&#x0a;Jump Hub</Label>
     <Label Hex="1937" Color="red" Size="small">fuel&#x0a;cache</Label>
+    <!-- Anomaly -->
+    <Label Hex="2717" Color="gold">Cleistra Bubble</Label>
     <!-- Route Names -->
-    <Label Hex="2132" Color="white">Barabek Loop</Label>
-    <Label Hex="1622" Color="white">Elemid Trace</Label>
-    <Label Hex="0829" Color="white">Long Line</Label>
-    <Label Hex="0822" Color="white">Rasand Link</Label>
-    <Label Hex="1710" Color="white">Runners Bane</Label>
-    <Label Hex="2713" Color="white">Scybrian Run</Label>
-    <Label Hex="3129" Color="white">Wolfs Tail</Label>
+    <Label Hex="2130" Color="green" Size="small">Barabek&#x0a;Loop</Label>
+    <Label Hex="1520" Color="green" Size="small">Elemid&#x0a;Trace</Label>
+    <Label Hex="0831" Color="green" Size="small">Long&#x0a;Line</Label>
+    <Label Hex="1228" Color="green" Size="small">Long&#x0a;Line</Label>
+    <Label Hex="1413" Color="green" Size="small">Nist&#x0a;Spur</Label>
+    <Label Hex="0719" Color="green" Size="small">Rasand&#x0a;Link</Label>
+    <Label Hex="1122" Color="green" Size="small">Rasand&#x0a;Link</Label>
+    <Label Hex="1310" Color="green" Size="small">Runners&#x0a;Edge</Label>
+    <Label Hex="1811" Color="green" Size="small">Runners&#x0a;Edge</Label>
+    <Label Hex="2213" Color="green" Size="small">Scybrian&#x0a;Run</Label>
+    <Label Hex="3011" Color="green" Size="small">Scybrian&#x0a;Run</Label>
+    <Label Hex="3128" Color="green" Size="small">Wolfs&#x0a;Tail</Label>
     <!-- Rift Names -->
     <Label Hex="1201" Color="gray" Size="large">Moat Rifts</Label>
     <Label Hex="1437" Color="gray" Size="large">Great Void</Label>
-    <Label Hex="3109" Color="gray">Rissa&#x0a;Void</Label>
+    <Label Hex="3113" Color="gray">Rissa&#x0a;Void</Label>
     <Label Hex="3124" Color="gray">Harmal&#x0a;Deep</Label>
     <Label Hex="3135" Color="gray">Baradine&#x0a;Divide</Label>
   </Labels>
@@ -137,7 +149,7 @@
     border.Dw { color: cyan; style: dotted }
     border.Ec { color: pink; style: dotted }
     border.En { color: olive }
-    border.Hg { color: blue }
+    border.Hs { color: blue }
     border.Li { color: red }
     border.Ls { color: cyan; style: dotted }
     border.Rt { color: orange; style: dotted }

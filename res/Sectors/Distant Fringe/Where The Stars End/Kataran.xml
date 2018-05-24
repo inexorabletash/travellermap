@@ -6,4 +6,18 @@
       <b>Kataran</b> sector was designed by Ade Stewart as part of Where The Stars End.
     ]]>
   </Credits>
+  <Subsectors>
+    <Subsector Index="I">Frontier</Subsector>
+    <Subsector Index="L">Excalisor</Subsector>
+    <Subsector Index="M">Skirt</Subsector>
+  </Subsectors>
+  <Borders>
+    <Border Allegiance="Lh" LabelPosition="3127" ShowLabel="false" WrapLabel="true">3024 3124 3123 3222 3322 3323 3324 3325 3225 3126 3025 3024 </Border>
+  </Borders>
+  <Allegiances>
+    <Allegiance Code="Lh">Lords of the High Realm</Allegiance>
+  </Allegiances>
+  <Stylesheet>
+    border.Lh { color: green; style: dotted }
+  </Stylesheet>
 </Sector>

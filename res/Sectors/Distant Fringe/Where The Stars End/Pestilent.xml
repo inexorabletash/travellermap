@@ -6,11 +6,20 @@
       <b>Pestilent</b> sector was designed by Ade Stewart as part of Where the Stars End.
     ]]>
   </Credits>
+  <Borders>
+    <Border Allegiance="La" LabelPosition="1515" ShowLabel="true" WrapLabel="true">1118 1217 1317 1416 1516 1616 1617 1518 1519 1419 1320 1219 1119 1118 </Border>
+  </Borders>
+  <Allegiances>
+    <Allegiance Code="La">League of Asclepius</Allegiance>
+  </Allegiances>
   <Labels>
     <!-- Rift Names -->
     <Label Hex="1633" Color="gray" Size="large">Great Void</Label>
     <Label Hex="2018" Color="gray" Size="large">Ion Gate</Label>
     <!-- Features Names -->
-    <Label Hex="1518" Color="gray">RSS&#x0a;Pe1517</Label>
+    <Label Hex="1518" Color="gray" Size="small">RSS&#x0a;Pe1517</Label>
   </Labels>
+  <Stylesheet>
+    border.La { color: green; style: dotted }
+  </Stylesheet>
 </Sector>

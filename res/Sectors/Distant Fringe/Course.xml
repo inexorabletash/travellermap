@@ -14,14 +14,19 @@
   <Allegiances>
     <Allegiance Code="Sx">Sath Exploration</Allegiance>
   </Allegiances>
+  <Regions>
+    <Region Color="Darkblue" LabelPosition="1319" Label="Shadow Cloud">1119 1218 1217 1317 1316 1315 1214 1213 1313 1312 1313 1413 1513 1413 1414 1515 1516 1416 1317 1318 1418 1518 1617 1718 1719 1619 1520 1419 1320 1321 1421 1422 1322 1221 1220 1120 1119</Region>
+  </Regions>
   <Routes>
     <!-- Outland Run -->
-    <Route Start="0022" End="0223"/>
+    <Route Start="0223" End="0022"/>
   </Routes>
   <Labels>
     <!-- Rift Names -->
     <Label Hex="1316" Color="gray" Size="large">Moat Rifts</Label>
     <Label Hex="1636" Color="gray" Size="large">Great Void</Label>
+    <!-- Route Names -->
+    <Label Hex="0124" Color="green" Size="small">Outland&#x0a;Run</Label>
   </Labels>
   <Stylesheet>
     route { style: dashed }

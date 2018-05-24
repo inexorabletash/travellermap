@@ -25,24 +25,30 @@
     <Subsector Index="P">Sath</Subsector>
   </Subsectors>
   <Borders>
-    <Border Allegiance="Ci" LabelPosition="3113" ShowLabel="true" WrapLabel="true">2713 2812 2912 2913 2914 3014 2914 2813 2713 </Border>
+    <Border Allegiance="Cs" LabelPosition="2715" ShowLabel="true" WrapLabel="true">2613 2713 2812 2912 3011 3012 3013 3114 3115 3015 2915 2814 2714 2613 </Border>
     <Border Allegiance="Fw" LabelPosition="1007" ShowLabel="true" WrapLabel="false">0611 0711 0810 0809 0909 1008 1109 1110 1210 1211 1112 1012 0913 0812 0712 0611 </Border>
-    <Border Allegiance="Hw" LabelPosition="2429" ShowLabel="true" WrapLabel="true">2229 2329 2330 2331 2230 2229 </Border>
-    <Border Allegiance="Ot" LabelPosition="1915" ShowLabel="true" WrapLabel="true">2013 2113 2114 2013 </Border>
+    <Border Allegiance="He" LabelPosition="2429" ShowLabel="true" WrapLabel="true">2229 2329 2330 2331 2230 2229 </Border>
+    <Border Allegiance="Ot" LabelPosition="1915" ShowLabel="true" WrapLabel="true">1913 2012 2113 2114 2214 2115 2014 1914 1913 </Border>
     <Border Allegiance="Pr" LabelPosition="3010" ShowLabel="true" WrapLabel="false">2508 2607 2708 2808 2908 3008 3009 2910 2911 2811 2712 2612 2513 2512 2511 2610 2609 2608 2508 </Border>
     <Border Allegiance="Rf" LabelPosition="1425" ShowLabel="true" WrapLabel="true">1129 1228 1328 1327 1426 1527 1626 1727 1827 1828 1729 1730 1630 1530 1429 1330 1230 1130 1129 </Border>
-    <Border Allegiance="Sa" LabelPosition="2634" ShowLabel="true" WrapLabel="true">2035 2135 2134 2133 2232 2332 2432 2533 2632 2732 2832 2833 2834 2935 3035 3036 2937 2938 3038 2938 2838 2738 2637 2537 2437 2337 2236 2137 2036 2035 </Border>
+    <Border Allegiance="Sa" LabelPosition="2634" ShowLabel="true" WrapLabel="true">2035 2135 2134 2133 2232 2332 2431 2532 2632 2732 2832 2833 2834 2935 3035 3036 2937 2938 3038 2938 2838 2738 2637 2537 2437 2337 2236 2137 2036 2035 </Border>
     <Border Allegiance="Wl" LabelPosition="2010" ShowLabel="true" WrapLabel="true">2110 2209 2208 2308 2408 2509 2510 2410 2411 2412 2313 2213 2212 2112 2111 2110 </Border>
   </Borders>
   <Regions>
+    <!-- Anomalies -->
     <Region Color="Darkviolet">0116 0216 0217 0218 0119 0120 0119 0118 0117 0116</Region>
     <Region Color="Darkviolet" LabelPosition="0323" Label="Harmal&#x0a;Strange">0223 0323 0322 0422 0323 0223</Region>
+    <Region Color="Darkviolet" LabelPosition="0425" Label="Taranil&#x0a;Singularity">0424</Region>
+    <!-- Demon's Eye Nebula -->
+    <Region Color="Red" LabelPosition="1723" Label="Demon's Eye&#x0a;Nebula">1521 1620 1720 1721 1821 1822 1723 1622 1522 1521 </Region>
+    <Region Color="Red">1621 </Region>
   </Regions>
   <Allegiances>
-    <Allegiance Code="Ci">Client States</Allegiance>
+    <Allegiance Code="Cs">Client States</Allegiance>
     <Allegiance Code="Fw">Firstworlds</Allegiance>
-    <Allegiance Code="Hw">Hell Worlds</Allegiance>
-    <Allegiance Code="Ot">Occupied Territories</Allegiance>
+    <Allegiance Code="He">Hell Worlds</Allegiance>
+    <Allegiance Code="Ns">Non-aligned Sophonts</Allegiance>
+    <Allegiance Code="Oc">Occupied Territories</Allegiance>
     <Allegiance Code="Pr">Protectorate&#x0a;of Leset</Allegiance>
     <Allegiance Code="Rf">Rimward Federation</Allegiance>
     <Allegiance Code="Sa">Sath Alliance</Allegiance>
@@ -78,7 +84,6 @@
     <Route Start="2821" End="3022"/>
     <Route Start="3022" End="3222"/>
     <Route Start="3222" End="3423"/>
-    <Route Start="3423" End="3623"/>
     <!-- Scybrian Run -->
     <Route Start="0910" End="0911"/>
     <Route Start="0911" End="0811"/>
@@ -122,27 +127,26 @@
     <Route Start="2025" End="1826"/>
     <Route Start="1826" End="1728"/>
   </Routes>
-  <Regions>
-    <!-- Demon's Eye Nebula -->
-    <Region Color="Red" LabelPosition="1723" Label="Demon's Eye&#x0a;Nebula">1521 1620 1720 1721 1821 1822 1723 1622 1522 1521 </Region>
-    <Region Color="Red">1621 </Region>
-  </Regions>
   <Labels>
     <!-- Sath Waypoints -->
     <Label Hex="2435" Color="Red" Size="small">Sch'ikaa&#x0a;Waypoint</Label>
     <Label Hex="2536" Color="Red" Size="small">Tiik'sch&#x0a;Waypoint</Label>
     <Label Hex="3038" Color="Red" Size="small">Ith-Saa-Ka&#x0a;Waypoint</Label>
     <!-- Route Names -->
-    <Label Hex="1024" Color="white">Kuyt Chain</Label>
-    <Label Hex="2413" Color="white">New Border</Label>
-    <Label Hex="2917" Color="white">Outland Run</Label>
-    <Label Hex="0212" Color="white">Scybrian Run</Label>
-    <Label Hex="0934" Color="white">Spinward&#x0a;Drift</Label>
-    <Label Hex="1632" Color="white">The Descent</Label>
-    <Label Hex="2322" Color="white">Void Edge</Label>
-    <Label Hex="0327" Color="white">Wolfs Tail</Label>
+    <Label Hex="0725" Color="green" Size="small">Kuyt&#x0a;Chain</Label>
+    <Label Hex="1018" Color="green" Size="small">Kuyt&#x0a;Chain</Label>
+    <Label Hex="1122" Color="green" Size="small">Kuyt&#x0a;Chain</Label>
+    <Label Hex="2213" Color="green" Size="small">New&#x0a;Border</Label>
+    <Label Hex="2721" Color="green" Size="small">Outland&#x0a;Run</Label>
+    <Label Hex="2816" Color="green" Size="small">Outland&#x0a;Run</Label>
+    <Label Hex="0411" Color="green" Size="small">Scybrian&#x0a;Run</Label>
+    <Label Hex="1434" Color="green" Size="small">Spinward&#x0a;Drift</Label>
+    <Label Hex="1931" Color="green" Size="small">The&#x0a;Descent</Label>
+    <Label Hex="2121" Color="green" Size="small">Void&#x0a;Edge</Label>
+    <Label Hex="0228" Color="green" Size="small">Wolfs&#x0a;Tail</Label>
+    <Label Hex="0632" Color="green" Size="small">Wolfs&#x0a;Tail</Label>
     <!-- Rift Names -->
-    <Label Hex="1719" Color="gray">Demon's Eye Rift</Label>
+    <Label Hex="1718" Color="gray">Demon's Eye Rift</Label>
     <Label Hex="1604" Color="gray" Size="large">Moat Rifts</Label>
     <Label Hex="0209" Color="gray">Rissa&#x0a;Void</Label>
     <Label Hex="0419" Color="gray">Harmal&#x0a;Deep</Label>
@@ -150,9 +154,9 @@
     <Label Hex="1238" Color="gray" Size="large">Great Void</Label>
   </Labels>
   <Stylesheet>
-    border.Ci { color: cyan; style: dotted }
+    border.Cs { color: cyan; style: dotted }
     border.Fw { color: red }
-    border.Hw { color: olive; style: dotted }
+    border.He { color: olive; style: dotted }
     border.Pr { color: cyan }
     border.Ot { color: magenta; style: dotted }
     border.Rf { color: blue }
