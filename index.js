@@ -1306,16 +1306,20 @@ window.addEventListener('DOMContentLoaded', function() {
       var label = dist + ' pc';
       var bar = dist * scale;
 
+      ctx.save();
+      ctx.lineCap = 'square';
+      ctx.lineWidth = 2;
       ctx.strokeStyle = color;
       ctx.beginPath();
-      ctx.moveTo(w - bar + 1, h / 2);
-      ctx.lineTo(w - bar + 1, h * 3 / 4);
-      ctx.lineTo(w - 1, h * 3 / 4);
-      ctx.lineTo(w - 1, h / 2);
+      ctx.moveTo(Math.round(w - bar + 1), Math.round(h / 2));
+      ctx.lineTo(Math.round(w - bar + 1), Math.round(h * 3 / 4));
+      ctx.lineTo(Math.round(w - 1), Math.round(h * 3 / 4));
+      ctx.lineTo(Math.round(w - 1), Math.round(h / 2));
       ctx.stroke();
+      ctx.restore();
 
       ctx.fillStyle = color;
-      ctx.font = '10px Univers, Arial, sans-serif';
+      ctx.font = '12px Univers, Arial, sans-serif';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       ctx.fillText(label, w - bar / 2, h / 2);

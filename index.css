@@ -152,13 +152,13 @@ input[type=text] {
   background-repeat: no-repeat;
   background-position: top right;
   width: 416px; height: 71px;
-  background-image: url("res/ui/logo-flat.png");
+  background-image: url("res/ui/logo-flat.svg");
 }
 .style-fasa #LogoImage,
 .style-draft #LogoImage,
 .style-print #LogoImage,
 .style-atlas #LogoImage {
-  background-image: url("res/ui/logo-flat-gray.png");
+  background-image: url("res/ui/logo-flat-gray.svg");
 }
 
 #stripe {
@@ -1072,11 +1072,11 @@ body:not(.search-results) #closeSearchBtn { display: none; }
 .ui.bar .bar-right > *:last-child { margin-right: 0; }
 
 @media only screen and (max-width: 850px), only screen and (max-height: 425px) {
-  #LogoImage { width: 210px; height: 71px; background-image: url("res/ui/logo-stacked.png"); }
+  #LogoImage { width: 210px; height: 71px; background-image: url("res/ui/logo-stacked.svg"); }
   .style-fasa #LogoImage,
   .style-draft #LogoImage,
   .style-print #LogoImage,
-  .style-atlas #LogoImage {  background-image: url("res/ui/logo-stacked-gray.png"); }
+  .style-atlas #LogoImage {  background-image: url("res/ui/logo-stacked-gray.svg"); }
 }
 
 @media only screen and (max-width: 640px), only screen and (max-height: 425px) {
