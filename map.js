@@ -275,18 +275,18 @@ var Util = {
       main_l_color: 'cyan',
       main_opacity: 0.25,
       ew_color: '#FFCC00',
-      you_are_here_url: 'res/ui/youarehere.png'
+      you_are_here_url: 'res/ui/youarehere.svg'
     };
     sheets[Styles.Poster] = base;
     sheets[Styles.Candy] = base;
     sheets[Styles.Draft] = base;
     sheets[Styles.Atlas] = Object.assign({}, base, {
       overlay_color: '#808080',
-      you_are_here_url: 'res/ui/youarehere_gray.png'
+      you_are_here_url: 'res/ui/youarehere-gray.svg'
     });
     sheets[Styles.FASA] = sheets[Styles.Print] =
       Object.assign({}, base, {
-        you_are_here_url: 'res/ui/youarehere_gray.png'
+        you_are_here_url: 'res/ui/youarehere-gray.svg'
       });
 
     return function(style, property) {
