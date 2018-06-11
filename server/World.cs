@@ -454,7 +454,8 @@ namespace Maps
             }
 
             // Ownership
-            if (Government == 6 && !(HasCodePrefix("O:") || HasCodePrefix("Mr") || HasCode("Re") || HasCode("Px")))
+            if (Government == 6 && !(HasCodePrefix("O:") || HasCodePrefix("Mr") ||
+                HasCode("Re") || HasCode("Px") || HasCode("Pe") || HasCode("Cy")))
                 errors.Warning("Gov 6 (captive/colony) missing one of: O:/Mr/Re/Px", lineNumber, line);
 
             // PBG
