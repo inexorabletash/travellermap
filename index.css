@@ -1201,7 +1201,7 @@ body:not(.search-results) #closeSearchBtn { display: none; }
 
   #navBar .bar-button { display: none; }
   #navBar { bottom: 5px; right: 115px; pointer-events: none; }
-  #bottom-pane { background-color: transparent; pointer-events: none; }
+  #bottom-pane { background-color: transparent !important; pointer-events: none; }
   #stripe, #MetadataDisplay { display: none; }
   #LogoImage { position: absolute; right: 5px; bottom: 5px; }
 
