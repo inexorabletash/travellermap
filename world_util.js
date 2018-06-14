@@ -330,8 +330,45 @@
     '?': 'Unknown'
   };
 
-  // TODO: Cx: Strangeness
-  // TODO: Cx: Symbols
+  var CX_STRANGENESS_TABLE = {
+    0: 'N/A',
+    1: 'Very typical',
+    2: 'Typical',
+    3: 'Somewhat typical',
+    4: 'Somewhat distinct',
+    5: 'Distinct',
+    6: 'Very distinct',
+    7: 'Confusing',
+    8: 'Very confusing',
+    9: 'Extremely confusing',
+    A: 'Incomprehensible',
+    '?': 'Unknown'
+  };
+
+ var CX_SYMBOLS_TABLE = {
+    0: 'Extremely concrete',
+    1: 'Extremely concrete',
+    2: 'Very concrete',
+    3: 'Very concrete',
+    4: 'Concrete',
+    5: 'Concrete',
+    6: 'Somewhat concrete',
+    7: 'Somewhat concrete',
+    8: 'Somewhat abstract',
+    9: 'Somewhat abstract',
+    A: 'Abstract',
+    B: 'Abstract',
+    C: 'Very abstract',
+    D: 'Very abstract',
+    E: 'Extremely abstract',
+    F: 'Extremely abstract',
+    G: 'Extremely abstract',
+    H: 'Incomprehensibly abstract',
+    J: 'Incomprehensibly abstract',
+    K: 'Incomprehensibly abstract',
+    L: 'Incomprehensibly abstract',
+    '?': 'Unknown'
+  };
 
   var NOBILITY_TABLE = {
     B: 'Knight',
@@ -629,8 +666,8 @@
 
         world.Cx.HomBlurb = CX_HOMOGENEITY_TABLE[world.Cx.Hom];
         world.Cx.AccBlurb = CX_ACCEPTANCE_TABLE[world.Cx.Acc];
-        world.Cx.StrBlurb = Traveller.fromHex(world.Cx.Str);
-        world.Cx.SymBlurb = Traveller.fromHex(world.Cx.Sym);
+        world.Cx.StrBlurb = CX_STRANGENESS_TABLE[world.Cx.Str];
+        world.Cx.SymBlurb = CX_SYMBOLS_TABLE[world.Cx.Sym];
       }
 
       // Nobility
