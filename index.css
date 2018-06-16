@@ -80,13 +80,13 @@ input[type=text] {
   width: 100%; height: 100%;
   transform: translateZ(500px) perspective(1000px);
   transition: 1s ease-in-out;
-  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" height="32" width="32"><path d="M0 0h32v32H0z"/><path fill="#404040" d="M0 0h16v16H0zM16 16h16v16H16z"/></svg>');
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" height="32" width="32"><path d="M0 0h32v32H0z"/><path fill="%23404040" d="M0 0h16v16H0zM16 16h16v16H16z"/></svg>');
   cursor: crosshair;
 }
 /* TODO: draft, fasa */
 .style-print #dragContainer,
 .style-atlas #dragContainer {
-  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" height="32" width="32"><path fill="white" d="M0 0h32v32H0z"/><path fill="#D0D0D0" d="M0 0h16v16H0zM16 16h16v16H16z"/></svg>');
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" height="32" width="32"><path fill="white" d="M0 0h32v32H0z"/><path fill="%23D0D0D0" d="M0 0h16v16H0zM16 16h16v16H16z"/></svg>');
 }
 
 .tilt #dragContainer {
@@ -1117,10 +1117,10 @@ body:not(.search-results) #closeSearchBtn { display: none; }
 
   .settings input[type=checkbox] + label:before {
     width: 40px; height: 30px;
-    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8.73 5.29" height="20" width="33"><g transform="translate(163.1 -206.83)"><circle r="2.34" transform="scale(1 -1)" cx="-160.38" cy="-209.48" fill="#b3b3b3"/><path d="M-160.39 207.83c-1-.04-1.8 1.06-1.47 2 .2.69.9 1.15 1.6 1.1l4.02-.01c.98 0 1.75-1.08 1.43-2-.2-.69-.9-1.14-1.6-1.1h-3.98z" fill="#b3b3b3"/><circle r="2.23" cy="209.4" cx="-160.38" fill="#fafafa"/></g></svg>');
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8.73 5.29" height="20" width="33"><g transform="translate(163.1 -206.83)"><circle r="2.34" transform="scale(1 -1)" cx="-160.38" cy="-209.48" fill="%23b3b3b3"/><path d="M-160.39 207.83c-1-.04-1.8 1.06-1.47 2 .2.69.9 1.15 1.6 1.1l4.02-.01c.98 0 1.75-1.08 1.43-2-.2-.69-.9-1.14-1.6-1.1h-3.98z" fill="%23b3b3b3"/><circle r="2.23" cy="209.4" cx="-160.38" fill="%23fafafa"/></g></svg>');
   }
   .settings input[type=checkbox]:checked + label:before {
-    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="33" height="20" viewBox="0 0 8.73 5.29"><g transform="translate(163.1 -206.83)"><circle cy="-209.48" cx="157.08" transform="scale(-1)" r="2.34" fill="#b3b3b3"/><path d="M-157.08 207.83c1-.04 1.81 1.06 1.48 2-.2.69-.9 1.15-1.6 1.1l-4.02-.01c-.99 0-1.75-1.08-1.43-2 .2-.69.9-1.14 1.6-1.1h3.97z" fill="#ffa9a9"/><circle cx="157.08" cy="209.4" r="2.23" transform="scale(-1 1)" fill="red"/></g></svg>');
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="33" height="20" viewBox="0 0 8.73 5.29"><g transform="translate(163.1 -206.83)"><circle cy="-209.48" cx="157.08" transform="scale(-1)" r="2.34" fill="%23b3b3b3"/><path d="M-157.08 207.83c1-.04 1.81 1.06 1.48 2-.2.69-.9 1.15-1.6 1.1l-4.02-.01c-.99 0-1.75-1.08-1.43-2 .2-.69.9-1.14 1.6-1.1h3.97z" fill="%23ffa9a9"/><circle cx="157.08" cy="209.4" r="2.23" transform="scale(-1 1)" fill="red"/></g></svg>');
   }
 
   .settings input[type=radio] + label:before {
