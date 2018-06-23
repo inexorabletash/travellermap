@@ -99,7 +99,7 @@ Vang	I	0626	Syndet	C889352-6	V	Lo		916	NaHu	M2 V M3 V M8 V	{ -2 }	(521-5)	[1112]
 Vang	I	0628	Phyliome	C773256-A	V	Lo		504	NaHu	F4 V M9 V	{ 0 }	(811-1)	[1249]		13	-8
 Vang	M	0632	Parp Nod	B0007C9-D		As Na Va Pi Pz	A	301	NaHu	K7 V	{ 2 }	(A6D+3)	[896E]		9	2,340
 Vang	M	0633	Claudet	A314836-B	V	Ic Ph Pi		305	NaHu	M2 V	{ 2 }	(F7C+1)	[7A4A]		16	1,260
-Vang	M	0640	Shurgourb	B645889-A	KV	Pa Ph Pi		907	NaHu	F6 V	{ 2 }	(H7B+3)	[9A6B]		13	3,927
+Vang	M	0640	Shurgourb	B645889-A	KV	Pa Ph Pi		907	NaHu	F6 V	{ 3 }	(H7B+3)	[9B6B]		13	3,927
 Vang	A	0701	Chyia Nedlkel	A301AB9-D		Hi Ic In Na Va Cp Pz	A	101	ZhCa	F4 V	{ 4 }	(D9G+5)	[BE6E]		4	9,360
 Vang	A	0703	Validius	D564544-2		Ag Ni Pr		904	ZhCa	K4 V	{ -2 }	(742-4)	[3331]		9	-224
 Vang	A	0704	Kolshedjielib	B545864-8		Pa Ph Pi O:0701		710	ZhCa	K7 V M5 V	{ 0 }	(B78-2)	[6836]		6	-1,232
@@ -110,7 +110,7 @@ Vang	E	0712	Besesi	C570321-5		De He Lo		100	ZhCa	G8 V M4 V	{ -2 }	(521-5)	[1111]
 Vang	E	0713	Brencorit	C9A4864-8	V	Fl Ph O:0813		835	ZhCa	K2 V M6 V	{ -1 }	(J77-3)	[6736]		16	-2,646
 Vang	E	0714	Feij	X888000-0		Ba Fo	R	016	ZhCa	G2 V	{ -3 }	(200-5)	[0000]		14	0
 Vang	E	0716	Etrinae	C000477-7		As Ni Va Da	A	810	ZhCa	M0 V	{ -2 }	(631-2)	[4257]		7	-36
-Vang	I	0721	Maklarre	B314777-8	KV	Ic Pi		202	NaHu	M0 V M1 V	{ 0 }	(B68+1)	[7758]		9	528
+Vang	I	0721	Maklarre	B314777-8	KV	Ic Pi		202	NaHu	M0 V M1 V	{ 1 }	(B68+1)	[7858]		9	528
 Vang	I	0722	Scog Rockoon	C9A7738-8		Fl		800	NaHu	K5 V M2 V	{ -1 }	(967-1)	[7658]		7	-378
 Vang	I	0727	Kristikung	B73A412-A		Ni Wa		711	NaHu	M1 V	{ 1 }	(834-3)	[1516]		9	-288
 Vang	I	0728	Trubetzkoyan	B421404-C		He Ni Po		911	NaHu	M2 V	{ 1 }	(834-1)	[253A]		11	-96
@@ -208,7 +208,7 @@ Vang	J	1227	A Bouche Ouverte	A5718A8-8		He Ph Pi		605	CsZh	F8 V M2 V	{ 0 }	(F78+
 Vang	J	1228	Lost Sogamoso	E664403-5		Ni Pa		103	NaHu	M2 V	{ -3 }	(631-5)	[1122]		7	-90
 Vang	J	1229	Jyvaskyla	C5607B9-7		De Ri Pz	A	210	NaHu	F1 V	{ 0 }	(968+1)	[8768]		8	432
 Vang	J	1230	Temnikov	C868200-9		Lo Da	A	505	NaHu	F8 V	{ -1 }	(911-5)	[1114]		12	-45
-Vang	N	1231	Anhinga	B9B7248-8	KV	Fl Lo		803	NaHu	F1 V	{ -1 }	(711-1)	[2158]		9	-7
+Vang	N	1231	Anhinga	B9B7248-8	KV	Fl Lo		803	NaHu	F1 V	{ 0 }	(711-1)	[2258]		9	-7
 Vang	N	1238	Pulque	C778352-6		Lo		103	NaHu	F3 V M0 V	{ -2 }	(521-5)	[1112]		11	-50
 Vang	B	1302	Marvinious	BA51669-A	K	Ni Po MuriW Mr		802	AlCo	M0 V	{ 1 }	(A55+2)	[776B]		10	500
 Vang	B	1303	Xtus	A765727-C		Ag Ga Ri MuriW		106	AlCo	G9 V	{ 4 }	(F6E+4)	[7B5C]		15	5,040
@@ -274,8 +274,8 @@ Vang	N	1538	Arthus	C423367-A	V	Lo Po O:1635		322	NaHu	M1 III D	{ 0 }	(921+1)	[33
 Vang	N	1539	Bursk	B4336B9-8		Na Ni Po Da	A	807	NaHu	M1 V	{ -1 }	(F53+1)	[7569]		13	225
 Vang	B	1601	Melroh's World	D863666-6	V	Ni Ri MuriW O:1504		501	AlCo	M5 III	{ -2 }	(852-3)	[5445]		12	-240
 Vang	B	1603	Perus	C666883-8	V	Ga Ri Pa Ph MuriW		935	AlCo	K4 V M6 V	{ 0 }	(J78-3)	[5825]		16	-3,024
-Vang	B	1604	Admiral's World	A742516-D	KV	He Ni Po MuriW		102	AlCo	F1 V	{ 1 }	(945+1)	[464C]		8	180
-Vang	B	1606	Semkarr	B657886-A	KV	Ga Pa Ph MuriW Rs		631	AlCo	M3 V	{ 2 }	(E7B+1)	[7A49]		9	1,078
+Vang	B	1604	Admiral's World	A742516-D	KV	He Ni Po MuriW		102	AlCo	F1 V	{ 2 }	(945+1)	[474C]		8	180
+Vang	B	1606	Semkarr	B657886-A	KV	Ga Pa Ph MuriW Rs		631	AlCo	M3 V	{ 3 }	(E7B+1)	[7B49]		9	1,078
 Vang	B	1609	Telleria	A877944-A		Hi In Cx		814	TeCl	F9 V M1 V M6 V	{ 4 }	(G8E+2)	[7D38]		13	3,584
 Vang	B	1610	Ralnn	A987855-A	K	Ri Pa Ph		322	TeCl	G5 V M7 V	{ 3 }	(E7C+1)	[6B38]		10	1,176
 Vang	F	1611	Finzi's Niche	A583857-A		Ri Ph Chir6		904	NaHu	M1 V	{ 3 }	(E7C+3)	[8B5A]		12	3,528
@@ -284,7 +284,7 @@ Vang	F	1614	Traxler	B5549B8-A	K	Hi		104	NaHu	M0 V	{ 3 }	(F8D+3)	[9C5A]		13	4,680
 Vang	F	1615	Patina Marie	C869699-7		Ni Ri		102	NaHu	K2 V M3 V	{ -1 }	(853+1)	[7568]		7	120
 Vang	F	1617	Skordahl	E87A545-8		Ni Wa		306	NaHu	K9 V M3 V	{ -3 }	(D41-5)	[3236]		15	-260
 Vang	F	1618	Pyker	C545520-6		Ag Ni		834	NaHu	M1 V	{ -1 }	(743-5)	[1411]		16	-420
-Vang	F	1619	Memora	B551122-7	KV	Lo Po		614	NaHu	M1 V M6 V	{ -1 }	(301-5)	[1113]		13	0
+Vang	F	1619	Memora	B551122-7	KV	Lo Po		614	NaHu	M1 V M6 V	{ 0 }	(301-5)	[1113]		13	0
 Vang	F	1620	Breland	D426367-7		Lo O:2021		715	NaHu	F4 V M0 V	{ -3 }	(521-3)	[3157]		13	-30
 Vang	J	1622	Haapamaki	A75A621-D		Ni Wa		937	NaHu	F3 V	{ 1 }	(J55-3)	[2719]		17	-1,350
 Vang	J	1624	Toungoo	C000630-9	V	As Na Ni Va		712	NaHu	M1 V M9 V	{ -1 }	(B53-5)	[1514]		11	-825
@@ -293,7 +293,7 @@ Vang	J	1626	Claiborne's Planet	E200769-7		Na Va Pi O:1726		111	NaHu	K7 V M1 V	{ 
 Vang	J	1628	Tongtapu Silistra	A546426-9		Ni Pa		712	FCSA	K7 V M7 V	{ 0 }	(933-1)	[3448]		14	-81
 Vang	J	1630	Hoganas	A734783-D		Cx		306	FCSA	K4 V M6 V	{ 2 }	(F6D-1)	[492A]		18	-1,170
 Vang	N	1631	Casort's World	B5348A9-7		Ph		623	FCSA	M1 V M1 V	{ 0 }	(A78+1)	[9868]		17	560
-Vang	N	1632	Phalanx	B633134-C	KV	Lo Po		606	FCSA	M2 V	{ 1 }	(901-1)	[123A]		11	0
+Vang	N	1632	Phalanx	B633134-C	KV	Lo Po		606	FCSA	M2 V	{ 2 }	(901-1)	[133A]		11	0
 Vang	N	1633	Soft Landing	B310425-B	V	Ni		301	FCSA	M2 V	{ 1 }	(734-1)	[2539]		6	-84
 Vang	N	1634	Naiad	A6A2696-9	K	Fl He Ni		536	NaHu	G7 V	{ 0 }	(H54-1)	[5648]		22	-340
 Vang	N	1635	Buckner	A986899-C	V	Ri Pa Ph		903	NaHu	M2 V	{ 3 }	(D7D+4)	[9B6D]		8	4,732
@@ -446,7 +446,7 @@ Vang	K	2426	Bombere	B565699-9	V	Ag Ni Ri		623	NaHu	F8 V	{ 2 }	(D56+3)	[786A]		9	
 Vang	K	2427	Lubalin	A200646-A		Na Ni Va		204	NaHu	K1 V M0 V	{ 1 }	(C55+1)	[5749]		13	300
 Vang	K	2429	Piggott Ovink	B200463-B	V	Ni Va O:2430		601	NaHu	M0 V M9 V	{ 1 }	(734-2)	[1528]		9	-168
 Vang	K	2430	Shuford	A500788-C		Na Va Pi		220	NaHu	K3 V	{ 2 }	(B6C+2)	[795C]		11	1,584
-Vang	O	2438	Zacharya	B566997-C	KV	Hi Pr		600	NaHu	G3 V	{ 3 }	(B8E+3)	[9C5C]		12	3,696
+Vang	O	2438	Zacharya	B566997-C	KV	Hi Pr		600	NaHu	G3 V	{ 4 }	(B8E+3)	[9D5C]		12	3,696
 Vang	D	2503	Joandrose	C5677A8-8	V	Ag Ri		404	TrDo	F4 V	{ 1 }	(D69+1)	[7858]		8	702
 Vang	D	2504	Quillon	X205653-7		Ic Ni Va Fo	R	100	TrDo	M1 V	{ -3 }	(851-5)	[3324]		8	-200
 Vang	D	2506	Nadsat	D726441-7		Ni Da	A	823	TrDo	K4 V	{ -3 }	(631-5)	[1113]		15	-90
@@ -481,7 +481,7 @@ Vang	L	2623	Chiac Cocies	C570302-6		De He Lo		421	NaHu	K1 V M1 V	{ -2 }	(521-5)	
 Vang	L	2627	Quathlamba	A633474-D	K	Ni Po Da	A	523	NaHu	M3 V	{ 1 }	(B34-1)	[253B]		15	-132
 Vang	L	2628	Spadix 358	E8C8100-9		Fl Lo		902	NaHu	G0 V M2 V	{ -2 }	(501-5)	[1114]		14	0
 Vang	P	2631	Haber's Planet	C545520-6		Ag Ni		807	NaHu	M1 V	{ -1 }	(743-5)	[1411]		18	-420
-Vang	P	2632	Porbeagle	B551122-7	KV	Lo Po		913	NaHu	M2 V M3 V M9 V	{ -1 }	(301-5)	[1113]		11	0
+Vang	P	2632	Porbeagle	B551122-7	KV	Lo Po		913	NaHu	M2 V M3 V M9 V	{ 0 }	(301-5)	[1113]		11	0
 Vang	P	2633	Descamisados	D426367-7		Lo O:2534		134	NaHu	K4 V	{ -3 }	(521-3)	[3157]		13	-30
 Vang	P	2635	Taral	B765554-A	K	Ag Ni Ga Pr		901	NaHu	K4 V M3 V	{ 2 }	(846+1)	[3738]		11	192
 Vang	D	2701	Trelyn Vrra	A510678-C	K	Na Ni Cx		812	TrDo	F6 V M0 V	{ 1 }	(B55+1)	[675C]		8	275
@@ -531,7 +531,7 @@ Vang	D	2908	Inchusela	C000967-A		As Hi In Na Va EslyW O:3110		822	CAEM	F7 V M9 V
 Vang	D	2909	Chutelion	A657567-D		Ag Ni Ga EslyW O:3110		903	CAEM	M6 III M8 V	{ 2 }	(A46+2)	[575D]		11	480
 Vang	D	2910	Panse Ato	C679359-9		Lo EslyW		533	CAEM	M1 V M0 V	{ -1 }	(B21+1)	[426A]		18	22
 Vang	H	2911	Actalion	C310843-A		Na Ph Pi EslyW		200	CAEM	F0 V	{ 1 }	(A7A-2)	[5927]		5	-1,400
-Vang	H	2912	Bagatrion	B668110-8	KV	Lo EslyW		531	CAEM	G6 V M4 V	{ -1 }	(701-5)	[1113]		10	0
+Vang	H	2912	Bagatrion	B668110-8	KV	Lo EslyW		531	CAEM	G6 V M4 V	{ 0 }	(701-5)	[1113]		10	0
 Vang	H	2918	Tura Chusela	A313479-A	K	Ic Ni EslyW		802	CAEM	F5 V	{ 1 }	(834+2)	[556B]		12	192
 Vang	H	2919	Kilmorion	B401551-D		Ic Ni Va EslyW		816	CAEM	K6 V	{ 1 }	(E45-3)	[1619]		14	-840
 Vang	H	2920	Torinela	C758488-8	V	Ni Pa EslyW		803	CAEM	F5 V	{ -2 }	(931-2)	[4258]		13	-54
@@ -539,14 +539,14 @@ Vang	L	2922	Karcag	C434688-6		Ni		310	CAKT	K2 V M8 V	{ -2 }	(852-2)	[6456]		12	-
 Vang	L	2923	Gzhatsk	B6589B9-7	V	Hi Pz	A	205	CAKT	F7 V	{ 1 }	(B8A+2)	[AA68]		10	1,760
 Vang	L	2924	Blagodarnoye	B553679-9		Ni Po		800	CAKT	K2 V	{ 0 }	(854+1)	[766A]		6	160
 Vang	L	2926	Cruta	E686334-5		Lo Ga		122	NaHu	K3 V	{ -3 }	(521-5)	[1133]		10	-50
-Vang	L	2927	Corymb	A7A3968-D	KV	Fl Hi In Mr		514	NaHu	F0 V	{ 4 }	(G8G+4)	[9D5D]		12	8,192
+Vang	L	2927	Corymb	A7A3968-D	KV	Fl Hi In Mr		514	NaHu	F0 V	{ 5 }	(G8G+4)	[9E5D]		12	8,192
 Vang	P	2931	Nivram	D6749B9-A		Hi In Pz	A	314	NaHu	F3 V M4 V	{ 2 }	(G8C+3)	[AB6B]		15	4,608
 Vang	P	2934	Iulia Alba	B4349A9-9		Hi		700	NaHu	G6 V	{ 2 }	(B8C+3)	[AB6A]		5	3,168
 Vang	P	2935	Tetby	B664796-6		Ag Ri		607	NaHu	M1 V	{ 2 }	(969+1)	[6945]		14	486
-Vang	P	2936	Rashon	B546764-A	KV	Ag Pi Mr		935	NaHu	K1 V M1 V	{ 3 }	(H6C+1)	[5A38]		17	1,224
+Vang	P	2936	Rashon	B546764-A	KV	Ag Pi Mr		935	NaHu	K1 V M1 V	{ 4 }	(H6C+1)	[5B38]		17	1,224
 Vang	P	2938	Hyssop	C532365-A		Lo Po O:2837		424	NaHu	K0 V M4 V	{ 0 }	(B21-2)	[1338]		11	-44
 Vang	P	2939	Myoneme	C300233-B		Lo Va		220	NaHu	K4 V	{ 0 }	(611-3)	[1228]		13	-18
-Vang	P	2940	Belackhaln	B5A5474-8	KV	Fl Ni		113	NaHu	K6 V M4 V	{ -1 }	(A32-3)	[2336]		7	-180
+Vang	P	2940	Belackhaln	B5A5474-8	KV	Fl Ni		113	NaHu	K6 V M4 V	{ 0 }	(A32-3)	[2436]		7	-180
 Vang	D	3002	Dikwa	X570201-5		De He Lo Fo	R	804	NaHu	G6 V	{ -3 }	(411-5)	[1111]		8	-20
 Vang	D	3004	Loomis 92	C585449-6		Ni Pa An Da Chir3	A	341	NaHu	M2 V M1 V	{ -2 }	(631-1)	[5267]		15	-18
 Vang	D	3008	Erdsanal	A400544-B		Ni Va EslyW		900	CAEM	G2 V	{ 1 }	(745-1)	[3639]		7	-140
