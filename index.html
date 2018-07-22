@@ -35,14 +35,14 @@
 <meta property="og:site_name" content="The Traveller Map">
 <meta property="fb:admins" content="617166358">
 
-<link rel="stylesheet" href="index.css?update=2018-06-15T20:25:48">
+<link rel="stylesheet" href="index.css?update=2018-07-22T10:35:40">
 
 <!--[if lt IE 11]><script>alert("IE10 is no longer supported.");</script><![endif]-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
 <script src="https://cdn.rawgit.com/inexorabletash/poly2/v2.0.1/polyfill.min.js"></script>
-<script src="map.js?update=2018-06-10T22:18:11"></script>
+<script src="map.js?update=2018-07-22T09:39:46"></script>
 <script src="index.js?update=2018-06-10T19:35:14"></script>
-<script src="world_util.js?update=2018-06-13T21:11:06"></script>
+<script src="world_util.js?update=2018-07-22T10:12:26"></script>
 
 <body class="hide-ui hide-footer ds-mini show-settings">
   <div id="mapContainer">
@@ -893,6 +893,20 @@
   <a target=_blank rel=noopener href="{{JumpMapURL}}&jump=5">J-5</a> &bull;
   <a target=_blank rel=noopener href="{{JumpMapURL}}&jump=6">J-6</a>
 </div>
+
+{{#if map_link}}
+<div id="wds-map-links" class="ds-map-links">
+  <a target=_blank rel=noopener href="{{map_link}}">
+    Generate World Map
+  </a>
+  <small>
+    <br> c/o
+    <a target=_blank rel=noopener href="http://members.ozemail.com.au/~jonoreita/T5%20World%20Map%20Generator/t5_world_builder.html">
+      Traveller5 World Builder
+    </a>
+  </small>
+</div>
+{{/if}}
 
 </div>
 

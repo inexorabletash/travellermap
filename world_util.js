@@ -551,6 +551,14 @@
       .catch(function(err) { fetch_status.set(url, false); throw err; });
   }
 
+  function checkImage(url) {
+    if (fetch_status.has(url))
+      return Promise.resolve(fetch_status.get(url));
+    return fetchImage(url).then(
+      function() { return true; },
+      function() { showConsoleNotice(); return false; });
+  }
+
   function decodeSophontPopulation(match, code, pop) {
     var name = SOPHONT_TABLE[code] || 'Sophont';
     if (pop === '0')
@@ -592,6 +600,15 @@
     };
   };
 
+  Traveller.splitRemarks = function splitRemarks(remarks) {
+    if (!remarks) return [];
+    return remarks.match(/(Di)?\([^)]*\)[0-9?]?|\[[^\]]*\][0-9?]?|{[^}]*}|\S+/g);
+  };
+
+  Traveller.parseIx = function parseIx(ix) {
+    return parseFloat((ix || '').replace(/^{\s*|\s*}$/g, ''));
+  };
+
   function hasCode(world, c) {
     return world.Remarks && world.Remarks.some(function(r) { return r.code === c; });
   }
@@ -599,6 +616,9 @@
   Traveller.prepareWorld = function(world) {
     if (!world) return undefined;
     return SOPHONTS_FETCHED.then(function() {
+
+      world.raw = Object.assign({}, world);
+
       world.isPlaceholder = (world.UWP === 'XXXXXXX-X' || world.UWP === '???????-?');
 
       // UWP - StSAHPGL-T
@@ -626,9 +646,9 @@
       // Importance {Ix}
       if (!world.Ix) delete world.Ix;
       if (world.Ix) {
-        var ix = (world.Ix || '').replace(/^{\s*|\s*}$/g, '');
+        var ix = Traveller.parseIx(world.Ix);
         world.Ix = {
-          Imp: ix
+          Imp: String(ix)
         };
         world.Ix.ImpBlurb = IX_IMP_TABLE[world.Ix.Imp];
 
@@ -679,7 +699,7 @@
 
       // Remarks
       if (world.Remarks) {
-        world.Remarks = world.Remarks.match(/(Di)?\([^)]*\)[0-9?]?|\[[^\]]*\][0-9?]?|{[^}]*}|\S+/g).map(function(s){
+        world.Remarks = Traveller.splitRemarks(world.Remarks).map(function(s){
           if (s in REMARKS_TABLE) return {code: s, detail: REMARKS_TABLE[s]};
           for (var i = 0; i < REMARKS_PATTERNS.length; ++i) {
             var pattern = REMARKS_PATTERNS[i][0], replacement = REMARKS_PATTERNS[i][1];
@@ -729,17 +749,43 @@
       world.sector_url = makeWikiURL(world.Sector + ' Sector');
       world.sector_url_noscheme = world.sector_url.replace(/^\w+:\/\//, '');
 
+      // Map Generator
+      // http://members.ozemail.com.au/~jonoreita/T5%20World%20Map%20Generator/api_documentation.html
+      var GENERATOR = 'http://members.ozemail.com.au/~jonoreita/T5%20World%20Map%20Generator/t5_map.html';
+      world.map_link = Util.makeURL(GENERATOR, {
+        hex: world.Hex,
+        sector: world.Sector,
+        name: world.Name,
+        uwp: world.raw.UWP,
+        tc: Traveller.splitRemarks(world.raw.Remarks),
+        iX: Traveller.parseIx(world.raw.Ix),
+        eX: world.raw.Ex,
+        cX: world.raw.Cx,
+        popMulti: world.raw.PBG[0],
+        belts: world.raw.PBG[1],
+        gas_giants: world.raw.PBG[2],
+        worlds: world.raw.Worlds,
+        bases: world.raw.Bases,
+        travelZone: world.raw.Zone,
+        nobz: world.raw.Nobility,
+        allegiance: world.raw.Allegiance,
+        stellar: world.raw.stellar,
+        seed: world.Hex + world.Hex,
+
+          // Undocumented
+        system: world.Name + ' (' + world.Hex + ' ' + world.Sector + ')',
+        place_nobz: 1
+      });
+
       return world;
     }).then(function(world) {
       var map_thumb = worldImageURL(world, 'map_thumb');
-      if (fetch_status.has(map_thumb)) {
-        if (fetch_status.get(map_thumb)) world.map_thumb = map_thumb;
-        return world;
-      }
-      showConsoleNotice();
-      return fetchImage(map_thumb)
-        .then(function(response) { world.map_thumb = map_thumb; }, function() {})
-        .then(function() { return world; });
+      return checkImage(map_thumb)
+        .then(function(exists) {
+          if (exists)
+            world.map_thumb = map_thumb;
+          return world;
+        });
     });
   };
 

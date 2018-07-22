@@ -274,8 +274,10 @@ body:not(.wds-visible) #wds-frame { display: none; }
   filter: invert(100%);
 }
 
+.ds-map-links,
 .ds-print-links {
   text-align: center;
+  margin-top: 15px;
 }
 
 .print-icon {
@@ -394,7 +396,7 @@ body:not(.wds-visible) #wds-frame { display: none; }
 /* Data Blocks */
 
 .wds-properties {
-  margin: 5px 0 5px;
+  margin: 5px 0;
   width: 100%;
   clear: both;
   border-collapse: collapse;

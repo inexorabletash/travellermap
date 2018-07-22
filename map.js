@@ -12,7 +12,11 @@ var Util = {
     for (var i = 0; i < keys.length; ++i) {
       var key = keys[i], value = params[key];
       if (value === undefined || value === null) continue;
-      args += (args ? '&' : '') + encodeURIComponent(key) + '=' + encodeURIComponent(value);
+      if (!Array.isArray(value))
+        value = [value];
+      value.forEach(function(value) {
+        args += (args ? '&' : '') + encodeURIComponent(key) + '=' + encodeURIComponent(value);
+      });
     }
     return args ? base + '?' + args : base;
   },
