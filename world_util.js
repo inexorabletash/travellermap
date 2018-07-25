@@ -751,8 +751,8 @@
 
       // Map Generator
       // http://members.ozemail.com.au/~jonoreita/T5%20World%20Map%20Generator/api_documentation.html
-      var GENERATOR = 'http://members.ozemail.com.au/~jonoreita/T5%20World%20Map%20Generator/t5_map.html';
-      world.map_link = Util.makeURL(GENERATOR, {
+      var GENERATOR_BASE = 'http://members.ozemail.com.au/~jonoreita/T5%20World%20Map%20Generator/';
+      var map_generator_options = {
         hex: world.Hex,
         sector: world.Sector,
         name: world.Name,
@@ -761,9 +761,7 @@
         iX: Traveller.parseIx(world.raw.Ix),
         eX: world.raw.Ex,
         cX: world.raw.Cx,
-        popMulti: world.raw.PBG[0],
-        belts: world.raw.PBG[1],
-        gas_giants: world.raw.PBG[2],
+        pbg: world.raw.PBG,
         worlds: world.raw.Worlds,
         bases: world.raw.Bases,
         travelZone: world.raw.Zone,
@@ -771,11 +769,10 @@
         allegiance: world.raw.Allegiance,
         stellar: world.raw.stellar,
         seed: world.Hex + world.Hex,
-
-          // Undocumented
-        system: world.Name + ' (' + world.Hex + ' ' + world.Sector + ')',
         place_nobz: 1
-      });
+      };
+      world.map_link = Util.makeURL(GENERATOR_BASE + 't5_map.html', map_generator_options);
+      world.map_source_link = Util.makeURL(GENERATOR_BASE + 't5_world_builder.html', map_generator_options);
 
       return world;
     }).then(function(world) {
