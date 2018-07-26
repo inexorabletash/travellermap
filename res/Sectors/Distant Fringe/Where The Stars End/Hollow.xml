@@ -6,8 +6,22 @@
       <b>Hollow</b> sector was designed by Ade Stewart as part of Where The Stars End.
     ]]>
   </Credits>
+  <Subsectors>
+    <Subsector Index="I">Closure</Subsector>
+    <Subsector Index="M">Despoil</Subsector>
+    <Subsector Index="N">Hinterwild</Subsector>
+  </Subsectors>
   <Labels>
     <!-- Rift Names -->
     <Label Hex="2325" Color="gray" Size="large">Basilisk Rift</Label>
   </Labels>
+  <Borders>
+    <Border Allegiance="Dr" LabelPosition="0240" ShowLabel="true" WrapLabel="false">0036 0136 0236 0336 0436 0537 0636 0737 0738 0838 0939 0940 0840 0741 0641 0541 0441 0341 0241 0141 0041 0040 0039 0038 0037 0036 </Border>
+  </Borders>
+  <Allegiances>
+    <Allegiance Code="Dr">Dominion of Ruins</Allegiance>
+  </Allegiances>
+  <Stylesheet>
+    border.Dr { color: blue; style: dotted }
+  </Stylesheet>
 </Sector>

@@ -7,10 +7,25 @@
     ]]>
   </Credits>
   <Subsectors>
+    <Subsector Index="C">Wastes</Subsector>
+    <Subsector Index="D">Abandon</Subsector>
+    <Subsector Index="H">Forsaken</Subsector>
     <Subsector Index="P">Brink</Subsector>
   </Subsectors>
   <Labels>
     <!-- Rift Names -->
     <Label Hex="2119" Color="gray" Size="large">Moat Rifts</Label>
   </Labels>
+  <Borders>
+    <Border Allegiance="Bw" LabelPosition="2201" ShowLabel="false" WrapLabel="false">2001 2101 2100 2200 2300 2400 2500 2501 2502 2503 2403 2304 2204 2104 2003 2002 2001 </Border>
+    <Border Allegiance="Dr" LabelPosition="0439" ShowLabel="false" WrapLabel="false">2801 2901 2900 3000 3100 3200 3300 3301 3302 3303 3304 3305 3205 3206 3107 3007 2907 2806 2805 2804 2904 2903 2802 2801 </Border>
+  </Borders>
+  <Allegiances>
+    <Allegiance Code="Bw">Bone Worlds</Allegiance>
+    <Allegiance Code="Dr">Dominion of Ruins</Allegiance>
+  </Allegiances>
+  <Stylesheet>
+    border.Bw { color: green; style: dotted }
+    border.Dr { color: blue; style: dotted }
+  </Stylesheet>
 </Sector>
