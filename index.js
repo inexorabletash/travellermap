@@ -677,6 +677,16 @@ window.addEventListener('DOMContentLoaded', function() {
   })();
 
   $('#cbExperiments').addEventListener('click', function() {
+    if (!this.checked) {
+      ['dw', 'an', 'mh', 'po', 'im', 'cp', 'stellar',
+       'ew', 'qz', 'hw', 'milieu'].forEach(function(name) {
+         delete urlParams[name];
+         map.namedOptions.delete(name);
+       });
+      $('#cbMains').checked = false;
+      document.body.classList.remove('show-mains');
+    }
+
     savePreferences();
     document.body.classList.toggle('enable-experiments', this.checked);
   });
