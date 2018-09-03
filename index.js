@@ -1421,6 +1421,18 @@ window.addEventListener('DOMContentLoaded', function() {
     window.initSharingLinks();
   });
 
+  // Show cookie accept prompt, if necessary.
+  setTimeout(function() {
+    var cookies = Util.parseCookies();
+    if (!cookies.tm_accept) {
+      document.body.classList.add('cookies-not-accepted');
+      $('#cookies button').addEventListener('click', function(e) {
+        document.body.classList.remove('cookies-not-accepted');
+        document.cookie = 'tm_accept=1';
+      });
+    }
+  }, 1000);
+
   // After all async events from the map have fired...
   setTimeout(function() { enableContext = true; }, 0);
 });

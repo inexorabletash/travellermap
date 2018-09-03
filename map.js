@@ -114,6 +114,16 @@ var Util = {
       img.onload = function() { resolve(img); };
       img.onerror = function(e) { reject(Error('Image failed to load')); };
     });
+  },
+
+  parseCookies: function() {
+    var cookies = {};
+    document.cookie.split(/; +/g).forEach(function(pair) {
+      var i = pair.indexOf('=');
+      if (i === -1) cookies[''] = pair;
+      else cookies[pair.substring(0, i)] = pair.substring(i+1);
+    });
+    return cookies;
   }
 };
 

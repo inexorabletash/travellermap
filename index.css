@@ -1273,6 +1273,33 @@ body:not(.search-results) #closeSearchBtn { display: none; }
 .style-terminal #wds-world-image,
 .style-terminal #wds-map { filter: invert(100%); }
 
+/* ============================================================ */
+/* Cookies */
+
+#cookies {
+  color: #e0e0e0;
+  background-color: #202020;
+  z-index: 9999;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+}
+body:not(.cookies-not-accepted) #cookies {
+  display: none;
+}
+
+#cookies a {
+  color: #e02020;
+  font-weight: bold;
+  text-decoration: none;
+}
+#cookies a:hover {
+  text-decoration: underline;
+}
 
 /* ============================================================ */
 /* Scripting Disabled */
