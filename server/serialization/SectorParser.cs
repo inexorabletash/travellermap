@@ -212,6 +212,7 @@ namespace Maps.Serialization
         [Flags]
         private enum CheckOptions
         {
+            Default = 0,
             EmptyIfDash = 1 << 0,
             Warning = 1 << 1,
             Optional = 1 << 2
@@ -234,7 +235,7 @@ namespace Maps.Serialization
                 this.lineNumber = lineNumber;
                 this.line = line;
             }
-            public string Check(string key, Regex regex = null, CheckOptions options = 0)
+            public string Check(string key, Regex regex = null, CheckOptions options = 0, string message = null)
             {
                 if (!dict.ContainsKey(key))
                 {
@@ -250,12 +251,12 @@ namespace Maps.Serialization
                 {
                     if (!options.HasFlag(CheckOptions.Warning))
                     {
-                        errors?.Error($"Unexpected value for {key}: '{dict[key]}'", lineNumber, line);
+                        errors?.Error($"Unexpected value for {key}: '{dict[key]}'{message??""}", lineNumber, line);
                         hadError = true;
                     }
                     else
                     {
-                        errors?.Warning($"Unexpected value for {key}: '{dict[key]}'", lineNumber, line);
+                        errors?.Warning($"Unexpected value for {key}: '{dict[key]}'{message??""}", lineNumber, line);
                     }
                 }
 
@@ -267,10 +268,10 @@ namespace Maps.Serialization
                 return value;
             }
 
-            public string Check(ICollection<string> keys, Regex regex = null, CheckOptions options = 0)
-                => Check(keys, value => regex?.IsMatch(value) ?? true, options);
+            public string Check(ICollection<string> keys, Regex regex = null, CheckOptions options = 0, string message = null)
+                => Check(keys, value => regex?.IsMatch(value) ?? true, options, message);
 
-            public string Check(ICollection<string> keys, Func<string, bool> validate, CheckOptions options = 0)
+            public string Check(ICollection<string> keys, Func<string, bool> validate, CheckOptions options = 0, string message = null)
             {
                 foreach (var key in keys)
                 {
@@ -285,12 +286,12 @@ namespace Maps.Serialization
                     {
                         if (!options.HasFlag(CheckOptions.Warning))
                         {
-                            errors?.Error($"Unexpected value for {key}: '{value}'", lineNumber, line);
+                            errors?.Error($"Unexpected value for {key}: '{value}'{message??""}", lineNumber, line);
                             hadError = true;
                         }
                         else
                         {
-                            errors?.Warning($"Unexpected value for {key}: '{value}'", lineNumber, line);
+                            errors?.Warning($"Unexpected value for {key}: '{value}'{message ?? ""}", lineNumber, line);
                         }
                     }
 
@@ -326,7 +327,9 @@ namespace Maps.Serialization
                     Zone = checker.Check(new string[] { "Z", "Zone" }, ZONE_REGEX, CheckOptions.EmptyIfDash),
                     PBG = checker.Check("PBG", PBG_REGEX),
                     Allegiance = checker.Check(new string[] { "A", "Al", "Allegiance" },
-                        a => worlds.IsUserData || a.Length != 4 || SecondSurvey.IsKnownT5Allegiance(a)),
+                        a => a.Length != 4 || SecondSurvey.IsKnownT5Allegiance(a),
+                        worlds.IsUserData ? CheckOptions.Warning : CheckOptions.Default,
+                        " - 4-character codes are allowed in custom data but not submitted data"),
                     Stellar = checker.Check(new string[] { "Stellar", "Stars", "Stellar Data" }, STARS_REGEX, CheckOptions.Warning)
                 };
                 if (byte.TryParse(checker.Check(new string[] { "W", "Worlds" }, options: CheckOptions.Optional), NumberStyles.Integer, CultureInfo.InvariantCulture, out byte w))
