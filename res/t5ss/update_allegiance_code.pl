@@ -8,7 +8,7 @@ use lib $FindBin::Bin;
 
 use parseutil;
 
-my $INPUT_LINE_ENDINGS = "\r";
+my $INPUT_LINE_ENDINGS = "\n";
 my $INPUT_ENCODING = "UTF-8";
 
 my $input_path = File::Spec->catfile($FindBin::Bin, 'allegiance_codes.tsv');
