@@ -378,7 +378,7 @@ namespace Maps
                 if (Ag) ++imp;
                 if (Ri) ++imp;
                 if (In) ++imp;
-                if (Bases == "NS" || Bases == "NW" || Bases == "W" || Bases == "X" || Bases == "D" || Bases == "RT" || Bases == "CK" || Bases == "KM") ++imp;
+                if (Bases == "NS" || Bases == "NW" || Bases == "W" || Bases == "X" || Bases == "D" || Bases == "RT" || Bases == "CK" || Bases == "KM" || Bases == "KV") ++imp;
 
                 ErrorUnless(Int32.Parse(ix) == imp,
                     $"{{Ix}} Importance={ix} incorrect; should be: {imp}");
