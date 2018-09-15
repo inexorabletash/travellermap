@@ -18,6 +18,7 @@ namespace Maps.Admin
             string type = GetStringOption(context, "type");
             string milieu = GetStringOption(context, "milieu");
             string tag = GetStringOption(context, "tag");
+            ErrorLogger.Severity severity = GetBoolOption(context, "warnings", true) ? 0 : ErrorLogger.Severity.Error;
 
             // NOTE: This (re)initializes a static data structure used for 
             // resolving names into sector locations, so needs to be run
@@ -37,7 +38,7 @@ namespace Maps.Admin
 
             foreach (var sector in sectorQuery)
             {
-                context.Response.Output.WriteLine(sector.Names[0].Text);
+                context.Response.Output.WriteLine($"{sector.Names[0].Text} - {sector.Milieu}");
 #if DEBUG
                 int error_count = 0;
                 int warning_count = 0;
@@ -51,7 +52,7 @@ namespace Maps.Admin
                         context.Response.Output.WriteLine($"{worlds.Count()} world(s) - population: {pop / 1e9:#,###.##} billion");
                     else
                         context.Response.Output.WriteLine($"{worlds.Count()} world(s) - population: N/A");
-                    worlds.ErrorList.Report(context.Response.Output);
+                    worlds.ErrorList.Report(context.Response.Output, severity);
                     error_count += worlds.ErrorList.CountOf(ErrorLogger.Severity.Error);
                     warning_count += worlds.ErrorList.CountOf(ErrorLogger.Severity.Warning);
                 }
@@ -86,7 +87,8 @@ namespace Maps.Admin
                     }
                     else if (distance > 4)
                     {
-                        context.Response.Output.WriteLine($"Warning: Route length {distance}: {route.ToString()}");
+                        if (severity <= ErrorLogger.Severity.Warning)
+                            context.Response.Output.WriteLine($"Warning: Route length {distance}: {route.ToString()}");
                         ++warning_count;
                     }
                     /*

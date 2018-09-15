@@ -63,12 +63,7 @@ namespace Maps.Utilities
         }
 
         public static bool InRange<T>(this IComparable<T> item, T a, T b) => item.CompareTo(a) >= 0 && item.CompareTo(b) <= 0;
-
-        public static bool InList<T>(this T item, T o1, T o2) => item.Equals(o1) || item.Equals(o2);
-        public static bool InList<T>(this T item, T o1, T o2, T o3) => item.Equals(o1) || item.Equals(o2) || item.Equals(o3);
-        public static bool InList<T>(this T item, T o1, T o2, T o3, T o4) => item.Equals(o1) || item.Equals(o2) || item.Equals(o3) || item.Equals(o4);
-        public static bool InList<T>(this T item, T o1, T o2, T o3, T o4, T o5) => item.Equals(o1) || item.Equals(o2) || item.Equals(o3) || item.Equals(o4) || item.Equals(o5);
-        public static bool InList<T>(this T item, T o1, T o2, T o3, T o4, T o5, T o6) => item.Equals(o1) || item.Equals(o2) || item.Equals(o3) || item.Equals(o4) || item.Equals(o5) || item.Equals(o6);
+        public static bool InList<T>(this T item, params T[] options) => options.Contains(item);
         #endregion
 
         #region String Methods
@@ -327,11 +322,12 @@ namespace Maps.Utilities
 
     internal class ErrorLogger
     {
+        // In increasing order, for filtering
         public enum Severity {
-            Fatal,
-            Error,
+            Hint,
             Warning,
-            Hint
+            Error,
+            Fatal
         }
 
         public struct Record
@@ -381,11 +377,12 @@ namespace Maps.Utilities
 
         public int CountOf(Severity sev) => log.Where(r => r.severity == sev).Count();
 
-        public void Report(TextWriter writer)
+        public void Report(TextWriter writer, Severity minSeverity)
         {
             foreach (var record in log)
             {
-                writer.WriteLine($"{record.severity.ToString()}: {record.message}");
+                if (record.severity >= minSeverity)
+                    writer.WriteLine($"{record.severity.ToString()}: {record.message}");
             }
         }
 
@@ -393,7 +390,7 @@ namespace Maps.Utilities
         {
             using (StringWriter writer = new StringWriter())
             {
-                Report(writer);
+                Report(writer, Severity.Hint);
                 writer.WriteLine($"{CountOf(Severity.Error)} errors, {CountOf(Severity.Warning)} warnings.");
                 return writer.ToString();
             }

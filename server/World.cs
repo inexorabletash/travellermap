@@ -126,26 +126,20 @@ namespace Maps
         internal double Population => Math.Pow(10, PopulationExponent) * PopulationMantissa;
         internal bool WaterPresent => (Hydrographics > 0) && (Atmosphere.InRange(2, 9) || Atmosphere.InRange(0xD, 0xF));
 
+        // Only define what is needed.
+        // TODO: Unify with validation checks.
+
         // Planetary
         internal bool IsAs => Size == 0;
-        internal bool IsDe => Atmosphere.InRange(2, 10) && Hydrographics == 0;
-        internal bool IsFl => Atmosphere >= 10 && Hydrographics > 0;
-        internal bool IsIc => Atmosphere.InList(0, 1) && Hydrographics > 0;
         internal bool IsVa => Atmosphere == 0;
-        internal bool IsWa => Hydrographics == 10;
 
         // Population
-        internal bool IsBa => PopulationExponent == 0;
-        internal bool IsLo => PopulationExponent < 4;
-        internal bool IsNi => PopulationExponent.InRange(1, 6);
         internal bool IsHi => PopulationExponent >= 9;
 
         // Economic
         internal bool IsAg => Atmosphere.InRange(4, 9) && Hydrographics.InRange(4, 8) && PopulationExponent.InRange(5, 7);
-        internal bool IsNa => Atmosphere.InRange(0, 3) && Hydrographics.InRange(0, 3) && PopulationExponent.InRange(6, 10);
-        internal bool IsIn => Atmosphere.InList(0, 1, 2, 4, 7, 9) && PopulationExponent.InList(9, 10);
-        internal bool IsPo => Atmosphere.InList(2, 3, 4, 5) && Hydrographics.InList(0, 1, 2, 3) && PopulationExponent > 0;
-        internal bool IsRi => Atmosphere.InList(6, 7, 8) && PopulationExponent.InList(6, 7, 8) && Government.InList(4, 5, 6, 7, 8, 9);
+        internal bool IsIn => Atmosphere.InList(0, 1, 2, 4, 7, 9, 10, 11, 12) && PopulationExponent >= 9;
+        internal bool IsRi => Atmosphere.InList(6, 8) && PopulationExponent.InList(6, 7, 8);
 
         internal bool IsCp => HasCode("Cp");
         internal bool IsCs => HasCode("Cs");
@@ -288,6 +282,7 @@ namespace Maps
             // TODO: Validate partial UWPs
             if (UWP.Contains('?') || UWP == "XXXXXXX-X") return;
 
+            #region Helpers
             Action<string> Error = (string message) => { errors.Warning(message, lineNumber, line); };
             Action<bool, string> ErrorIf = (bool test, string message) => { if (test) Error(message); };
             Action<bool, string> ErrorUnless = (bool test, string message) => { if (!test) Error(message); };
@@ -309,7 +304,9 @@ namespace Maps
                     ErrorUnless(!HasCode(code), $"Extraneous code: {code}");
                 return calc;
             };
+            #endregion
 
+            #region UWP
             // UWP
             ErrorIf(Atmosphere > 15, 
                 $"UWP: Atm={Atmosphere} out of range; should be: 0...F");
@@ -331,7 +328,9 @@ namespace Maps
             ErrorUnless(TechLevel.InRange(tlmod + 1, tlmod + 6) || 
                 (PopulationExponent == 0 && TechLevel == 0),
                 $"UWP: TL={TechLevel} out of range; should be: mods(={tlmod}) + 1D");
+            #endregion
 
+            #region Codes
             // Planetary
             bool As = CC("As", Check(Size, "0") /*&& Check(Atmosphere, "0") && Check(Hydrographics, "0")*/);
             bool De = CC("De", Check(Atmosphere, "23456789") && Check(Hydrographics, "0"));
@@ -362,94 +361,110 @@ namespace Maps
             bool Pr = CC("Pr", Check(Atmosphere, "68") && Check(PopulationExponent, "59"));
             bool Ri = CC("Ri", Check(Atmosphere, "68") && Check(PopulationExponent, "678"));
 
+            ErrorUnless(As == IsAs, "Internal code failure: As/IsAs definitions");
+            ErrorUnless(Va == IsVa, "Internal code failure: Va/IsVa definitions");
+            ErrorUnless(Ag == IsAg, "Internal code failure: Ag/IsAg definitions");
+            ErrorUnless(In == IsIn, "Internal code failure: In/IsIn definitions");
+            ErrorUnless(Ri == IsRi, "Internal code failure: Ri/IsRi definitions");
+            #endregion
+
             // {Ix}
             int imp = 0;
             if (!string.IsNullOrWhiteSpace(Importance))
             {
                 string ix = Importance.Replace('{', ' ').Replace('}', ' ').Trim();
+                if (ix != "")
+                {
 
-                if ("AB".Contains(Starport)) ++imp;
-                if ("DEX".Contains(Starport)) --imp;
-                if (TechLevel >= 10) ++imp;
-                if (TechLevel >= 16) ++imp;
-                if (TechLevel <= 8) --imp;
-                if (PopulationExponent <= 6) --imp;
-                if (PopulationExponent >= 9) ++imp;
-                if (Ag) ++imp;
-                if (Ri) ++imp;
-                if (In) ++imp;
-                if (Bases == "NS" || Bases == "NW" || Bases == "W" || Bases == "X" || Bases == "D" || Bases == "RT" || Bases == "CK" || Bases == "KM" || Bases == "KV") ++imp;
+                    if ("AB".Contains(Starport)) ++imp;
+                    if ("DEX".Contains(Starport)) --imp;
+                    if (TechLevel >= 10) ++imp;
+                    if (TechLevel >= 16) ++imp;
+                    if (TechLevel <= 8) --imp;
+                    if (PopulationExponent <= 6) --imp;
+                    if (PopulationExponent >= 9) ++imp;
+                    if (Ag) ++imp;
+                    if (Ri) ++imp;
+                    if (In) ++imp;
+                    if (Bases == "NS" || Bases == "NW" || Bases == "W" || Bases == "X" || Bases == "D" || Bases == "RT" || Bases == "CK" || Bases == "KM" || Bases == "KV") ++imp;
 
-                ErrorUnless(Int32.Parse(ix) == imp,
-                    $"{{Ix}} Importance={ix} incorrect; should be: {imp}");
+                    ErrorUnless(Int32.Parse(ix) == imp,
+                        $"{{Ix}} Importance={ix} incorrect; should be: {imp}");
+                }
             }
 
             // (Ex)
             if (!string.IsNullOrWhiteSpace(Economic))
             {
                 string ex = Economic.Replace('(', ' ').Replace(')', ' ').Trim();
-                int resources = SecondSurvey.FromHex(ex[0]);
-                int labor = SecondSurvey.FromHex(ex[1]);
-                int infrastructure = SecondSurvey.FromHex(ex[2]);
-                int efficiency = Int32.Parse(ex.Substring(3));
+                if (ex != "")
+                {
+                    int resources = SecondSurvey.FromHex(ex[0]);
+                    int labor = SecondSurvey.FromHex(ex[1]);
+                    int infrastructure = SecondSurvey.FromHex(ex[2]);
+                    int efficiency = Int32.Parse(ex.Substring(3));
 
-                if (TechLevel < 8)
-                    ErrorUnless(resources.InRange(2, 12),
-                        $"(Ex) Resources={resources} out of range; should be: 2D if TL(={TechLevel})<8");
-                else 
-                    ErrorUnless(resources.InRange(2 + GasGiants + Belts, 12 + GasGiants + Belts),
-                        $"(Ex) Resources={resources} out of range; should be: 2D + GG(={GasGiants}) + Belts(={Belts}) if TL(={TechLevel})=8+");
-                    
-                ErrorUnless(labor == Math.Max(0, PopulationExponent - 1),
-                    $"(Ex) Labor={labor} incorrect; should be: Pop(={PopulationExponent}) - 1");
-                    
-                if (Ba)
-                    ErrorUnless(infrastructure == 0,
-                        $"(Ex) Infrastructure={infrastructure} incorrect; should be: 0 if Ba");
-                else if (Lo)
-                    ErrorUnless(infrastructure == 1,
-                        $"(Ex) Infrastructure={infrastructure} incorrect; should be: 1 if Lo");
-                else if (Ni)
-                    ErrorUnless(infrastructure.InRange(Math.Max(0, imp + 1), Math.Max(0, imp + 6)),
-                        $"(Ex) Infrastructure={infrastructure} out of range for Ni; should be: Imp(={imp}) + 1D");
-                else
-                    ErrorUnless(infrastructure.InRange(Math.Max(0, imp + 2), Math.Max(0, imp + 12)),
-                        $"(Ex) Infrastructure={infrastructure} out of range; should be: Imp(={imp}) + 2D");
+                    if (TechLevel < 8)
+                        ErrorUnless(resources.InRange(2, 12),
+                            $"(Ex) Resources={resources} out of range; should be: 2D if TL(={TechLevel})<8");
+                    else
+                        ErrorUnless(resources.InRange(2 + GasGiants + Belts, 12 + GasGiants + Belts),
+                            $"(Ex) Resources={resources} out of range; should be: 2D + GG(={GasGiants}) + Belts(={Belts}) if TL(={TechLevel})=8+");
 
-                ErrorUnless(efficiency.InRange(-5, 5),
-                    $"(Ex) Efficiency={efficiency} out of range; should be: Flux");
+                    ErrorUnless(labor == Math.Max(0, PopulationExponent - 1),
+                        $"(Ex) Labor={labor} incorrect; should be: Pop(={PopulationExponent}) - 1");
+
+                    if (Ba)
+                        ErrorUnless(infrastructure == 0,
+                            $"(Ex) Infrastructure={infrastructure} incorrect; should be: 0 if Ba");
+                    else if (Lo)
+                        ErrorUnless(infrastructure == 1,
+                            $"(Ex) Infrastructure={infrastructure} incorrect; should be: 1 if Lo");
+                    else if (Ni)
+                        ErrorUnless(infrastructure.InRange(Math.Max(0, imp + 1), Math.Max(0, imp + 6)),
+                            $"(Ex) Infrastructure={infrastructure} out of range for Ni; should be: Imp(={imp}) + 1D");
+                    else
+                        ErrorUnless(infrastructure.InRange(Math.Max(0, imp + 2), Math.Max(0, imp + 12)),
+                            $"(Ex) Infrastructure={infrastructure} out of range; should be: Imp(={imp}) + 2D");
+
+                    ErrorUnless(efficiency.InRange(-5, 5),
+                        $"(Ex) Efficiency={efficiency} out of range; should be: Flux");
+                }
             }
 
             // [Cx]
             if (!string.IsNullOrWhiteSpace(Cultural))
             {
                 string cx = Cultural.Replace('[', ' ').Replace(']', ' ').Trim();
-                int homogeneity = SecondSurvey.FromHex(cx[0]);
-                int acceptance = SecondSurvey.FromHex(cx[1]);
-                int strangeness = SecondSurvey.FromHex(cx[2]);
-                int symbols = SecondSurvey.FromHex(cx[3]);
+                if (cx != "")
+                {
+                    int homogeneity = SecondSurvey.FromHex(cx[0]);
+                    int acceptance = SecondSurvey.FromHex(cx[1]);
+                    int strangeness = SecondSurvey.FromHex(cx[2]);
+                    int symbols = SecondSurvey.FromHex(cx[3]);
 
-                if (PopulationExponent == 0)
-                {
-                    ErrorUnless(homogeneity == 0, 
-                        $"[Cx] Homogeneity={homogeneity} incorrect; should be: 0 if Pop=0");
-                    ErrorUnless(acceptance == 0,
-                        $"[Cx] Acceptance={acceptance} incorrect; should be: 0 if Pop=0");
-                    ErrorUnless(strangeness == 0,
-                        $"[Cx] Strangeness={strangeness} incorrect; should be: 0 if Pop=0");
-                    ErrorUnless(symbols == 0,
-                        $"[Cx] Symbols={symbols} incorrect; should be: 0 if Pop=0");
-                }
-                else
-                {
-                    ErrorUnless(homogeneity.InRange(Math.Max(1, PopulationExponent - 5), Math.Max(1, PopulationExponent + 5)),
-                        $"[Cx] Homogeneity={homogeneity} out of range; should be: Pop(={PopulationExponent}) + Flux");
-                    ErrorUnless(acceptance == Math.Max(1, PopulationExponent + imp),
-                        $"[Cx] Acceptance={acceptance} incorrect; should be: Pop(={PopulationExponent}) + Imp(={imp})");
-                    ErrorUnless(strangeness.InRange(Math.Max(1, 5 - 5), Math.Max(1, 5 + 5)),
-                        $"[Cx] Strangeness={strangeness} out of range; should be: Flux + 5");
-                    ErrorUnless(symbols.InRange(Math.Max(1, TechLevel - 5), Math.Max(1, TechLevel + 5)),
-                        $"[Cx] Symbols={symbols} out of range; should be: TL(={TechLevel}) + Flux");
+                    if (PopulationExponent == 0)
+                    {
+                        ErrorUnless(homogeneity == 0,
+                            $"[Cx] Homogeneity={homogeneity} incorrect; should be: 0 if Pop=0");
+                        ErrorUnless(acceptance == 0,
+                            $"[Cx] Acceptance={acceptance} incorrect; should be: 0 if Pop=0");
+                        ErrorUnless(strangeness == 0,
+                            $"[Cx] Strangeness={strangeness} incorrect; should be: 0 if Pop=0");
+                        ErrorUnless(symbols == 0,
+                            $"[Cx] Symbols={symbols} incorrect; should be: 0 if Pop=0");
+                    }
+                    else
+                    {
+                        ErrorUnless(homogeneity.InRange(Math.Max(1, PopulationExponent - 5), Math.Max(1, PopulationExponent + 5)),
+                            $"[Cx] Homogeneity={homogeneity} out of range; should be: Pop(={PopulationExponent}) + Flux");
+                        ErrorUnless(acceptance == Math.Max(1, PopulationExponent + imp),
+                            $"[Cx] Acceptance={acceptance} incorrect; should be: Pop(={PopulationExponent}) + Imp(={imp})");
+                        ErrorUnless(strangeness.InRange(Math.Max(1, 5 - 5), Math.Max(1, 5 + 5)),
+                            $"[Cx] Strangeness={strangeness} out of range; should be: Flux + 5");
+                        ErrorUnless(symbols.InRange(Math.Max(1, TechLevel - 5), Math.Max(1, TechLevel + 5)),
+                            $"[Cx] Symbols={symbols} out of range; should be: TL(={TechLevel}) + Flux");
+                    }
                 }
             }
 

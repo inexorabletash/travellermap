@@ -57,6 +57,16 @@ namespace Maps.Admin
                 return queryDefaults[name].ToString();
             return null;
         }
+
+        protected static bool GetBoolOption(HttpContext context, string name, bool defaultValue = false)
+        {
+            if (context.Request[name] != null)
+                return context.Request[name] == "1";
+            var queryDefaults = Defaults(context);
+            if (queryDefaults != null && queryDefaults.ContainsKey(name))
+                return queryDefaults[name].ToString() == "1";
+            return defaultValue;
+        }
     }
 
     internal class AdminHandler : AdminHandlerBase
