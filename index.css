@@ -854,7 +854,22 @@ body:not(.enable-experiments) #labBtn { display: none; }
 #share-tab section { margin-top: 1em; }
 #share-tab section:first-of-type { margin-top: 0; }
 #share-tab input { width: 240px; padding: 5px; border: 1px solid #404040; }
-#share-tab a.share img { width: 40px; height: 40px; padding: 5px; }
+#share-tab a.share {
+  display: inline-block;
+  font-size: 0;
+  width: 40px; height: 40px; margin: 5px;
+  background-size: cover;
+  background-repeat: no-repeat;;
+  background-image: url('res/ui/share.png');
+}
+#share-email     { background-position:      0 0; }
+#share-facebook  { background-position:  -40px 0; }
+#share-google    { background-position:  -80px 0; }
+#share-pinterest { background-position: -120px 0; }
+#share-reddit    { background-position: -160px 0; }
+#share-su        { background-position: -200px 0; }
+#share-tumblr    { background-position: -240px 0; }
+#share-twitter   { background-position: -280px 0; }
 
 /* ============================================================ */
 /* Help Tab */
