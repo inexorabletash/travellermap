@@ -140,6 +140,16 @@ window.addEventListener('DOMContentLoaded', function() {
     $('#share-url').value = pageURL;
     $('#share-code').value = '<iframe width=400 height=300 src="' + pageURL + '">';
 
+    $$('a.share').forEach(function(anchor) {
+      var data = {
+        url: encodeURIComponent(pageURL),
+        text: encodeURIComponent('The Traveller Map')
+      };
+      anchor.__func = anchor.__func || Handlebars.compile(anchor.getAttribute('data-template'));
+      anchor.href = anchor.__func(data);
+    });
+
+
     var snapshotParams = (function() {
       var map_center_x = map.x,
           map_center_y = map.y,
@@ -1414,12 +1424,6 @@ window.addEventListener('DOMContentLoaded', function() {
       last_time = now;
     }, false);
   })();
-
-  // Init all of the "social" UI asynchronously.
-  setTimeout(window.initSharingLinks, 5000);
-  $('#shareBtn').addEventListener('click', function() {
-    window.initSharingLinks();
-  });
 
   // Show cookie accept prompt, if necessary.
   setTimeout(function() {

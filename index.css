@@ -854,7 +854,7 @@ body:not(.enable-experiments) #labBtn { display: none; }
 #share-tab section { margin-top: 1em; }
 #share-tab section:first-of-type { margin-top: 0; }
 #share-tab input { width: 240px; padding: 5px; border: 1px solid #404040; }
-#share-tab section.fb { height: 33px; }
+#share-tab a.share img { width: 40px; height: 40px; padding: 5px; }
 
 /* ============================================================ */
 /* Help Tab */

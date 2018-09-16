@@ -35,13 +35,13 @@
 <meta property="og:site_name" content="The Traveller Map">
 <meta property="fb:admins" content="617166358">
 
-<link rel="stylesheet" href="index.css?update=2018-09-03T13:26:10">
+<link rel="stylesheet" href="index.css?update=2018-09-15T21:26:06">
 
 <!--[if lt IE 11]><script>alert("IE10 is no longer supported.");</script><![endif]-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
 <script src="https://cdn.rawgit.com/inexorabletash/poly2/v2.0.1/polyfill.min.js"></script>
 <script src="map.js?update=2018-09-03T13:28:18"></script>
-<script src="index.js?update=2018-09-03T16:21:50"></script>
+<script src="index.js?update=2018-09-15T21:15:28"></script>
 <script src="world_util.js?update=2018-07-24T18:53:45"></script>
 
 <body class="hide-ui hide-footer ds-mini show-settings">
@@ -443,19 +443,37 @@
     </section>
 
     <section>
-      <a href="https://twitter.com/share" class="twitter-share-button" data-via="inexorabletash" data-size="large">Tweet</a>
-    </section>
+      <!-- Facebook -->
+      <a class=share target=_blank data-template="http://www.facebook.com/sharer.php?u={{url}}">
+        <img src="res/ui/share/facebook.png" alt="Facebook"></a>
 
-    <section>
-      <div class="g-plusone" data-size="tall" data-annotation="inline" data-width="260"></div>
-    </section>
+      <!-- Pinterest -->
+      <a class=share target=_blank data-template="http://pinterest.com/pin/create/button/?url={{url}}&amp;description={{text}}">
+        <img src="res/ui/share/pinterest.png" alt="Pinterest"></a>
 
-    <section class="fb">
-      <div class="fb-like" data-href="https://travellermap.com" data-width="260" data-layout="standard" data-action="like" data-size="small" data-show-faces="false" data-share="true"></div>
-    </section>
+      <!-- Reddit -->
+      <a class=share target=_blank data-template="http://reddit.com/submit?url={{url}}&amp;title={{text}}">
+        <img src="res/ui/share/reddit.png" alt="Reddit"></a>
 
-    <section>
-      <a target=_blank rel=noopener href="//www.tumblr.com/share" title="Share on Tumblr" style="display:inline-block; text-indent:-9999px; overflow:hidden; width:129px; height:20px; background:url('//platform.tumblr.com/v1/share_3.png') top left no-repeat transparent;">Share on Tumblr</a>
+      <!-- Twitter -->
+      <a class=share target=_blank data-template="https://twitter.com/share?url={{url}}&amp;text={{text}}&amp;hashtags={{hashtags}}">
+        <img src="res/ui/share/twitter.png" alt="Twitter"></a>
+
+      <!-- Google+ -->
+      <a class=share target=_blank data-template="https://plus.google.com/share?url={{url}}">
+        <img src="res/ui/share/google.png" alt="Google"></a>
+
+      <!-- Tumblr-->
+      <a class=share target=_blank data-template="http://www.tumblr.com/share/link?url={{url}}&amp;title={{text}}">
+        <img src="res/ui/share/tumblr.png" alt="Tumblr"></a>
+
+      <!-- StumbleUpon-->
+      <a class=share target=_blank data-template="http://www.stumbleupon.com/submit?url={{url}}&amp;title={{text}}">
+        <img src="res/ui/share/stumbleupon.png" alt="StumbleUpon"></a>
+
+      <!-- Email -->
+      <a class=share target=_blank data-template="mailto:?Subject={{text}}&amp;Body={{url}}">
+        <img src="res/ui/share/email.png" alt="Email"></a>
     </section>
 
     <section>
@@ -912,47 +930,9 @@
 
 </script>
 
-
   <noscript><div>
     This site requires JavaScript.
   </div></noscript>
-
-  <div id="fb-root"></div>
-  <script>
-  window.initSharingLinks = Util.once(function() {
-    // Twitter
-    window.twttr = (function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0],
-          t = window.twttr || {};
-      if (d.getElementById(id)) return t;
-      js = d.createElement(s);
-      js.id = id;
-      js.src = "https://platform.twitter.com/widgets.js";
-      fjs.parentNode.insertBefore(js, fjs);
-
-      t._e = [];
-      t.ready = function(f) {
-        t._e.push(f);
-      };
-
-      return t;
-    }(document, "script", "twitter-wjs"));
-
-    // Google+
-    gapi.plusone.go();
-
-    // Facebook
-    (function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.12&appId=259977877486558&autoLogAppEvents=1';
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-  });
-  </script>
-
-  <script src="https://apis.google.com/js/platform.js" async defer>{parsetags: 'explicit'}</script>
 
   <div id="cookies">
     This site uses cookies. &nbsp;
