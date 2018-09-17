@@ -15,14 +15,14 @@
     <Subsector Index="A">Inapar</Subsector>
     <Subsector Index="B"></Subsector>
     <Subsector Index="C"></Subsector>
-    <Subsector Index="D"></Subsector>
+    <Subsector Index="D">Vuam</Subsector>
     <Subsector Index="E">Rulyass</Subsector>
-    <Subsector Index="F"></Subsector>
-    <Subsector Index="G">Kidunal</Subsector>
+    <Subsector Index="F">Kidunal</Subsector>
+    <Subsector Index="G"></Subsector>
     <Subsector Index="H"></Subsector>
-    <Subsector Index="I"></Subsector>
-    <Subsector Index="J"></Subsector>
-    <Subsector Index="K"></Subsector>
+    <Subsector Index="I">Yoceklool</Subsector>
+    <Subsector Index="J">Rrartaga</Subsector>
+    <Subsector Index="K">Moq</Subsector>
     <Subsector Index="L"></Subsector>
     <Subsector Index="M"></Subsector>
     <Subsector Index="N"></Subsector>
@@ -31,37 +31,19 @@
   </Subsectors>
   <Allegiances>
     <Allegiance Code="HvFd">Hive Federation</Allegiance>
-    <Allegiance Code="Ka">Kidunal Abeyance</Allegiance>
     <Allegiance Code="Hc">Hiver Client</Allegiance>
-    <Allegiance Code="Kc">Abeyance Client</Allegiance>
     <Allegiance Code="Sp">Splinters</Allegiance>
   </Allegiances>
   <Borders>
     <Border WrapLabel="true" Allegiance="HvFd" LabelPosition="0305">
-      0000 0100 0200 0300 0400 0500 0600 0700 0800 0801 0802 0702 0602 0603
+      0000 0100 0200 0300 0400 0500 0600 0601 0602 0603
       0604 0605 0606 0507 0508 0608 0609 0510 0410 0311 0211 0212
-      0213 0214 0215 0115 0015
+      0213 0214 0215 0116 0016 0015
       0014 0013 0012 0011 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001
-    </Border>
-    <Border WrapLabel="true" Allegiance="Ka" Color="Green" LabelPosition="2010">
-      2610 2511 2411 2312 2313 2314 2414 2515 2614 2715 2815 2816 2717 2617 2618 2619 2620 2721 2722 2822 2923 2924 2824 2724 2624 2524 2423
-      2422 2322 2222 2123 2023 1923 1823 1822 1722 1622 1522 1421 1321 1221 1121 1021 0921 0820 0819 0818 0718 0618 0617 0717 0716
-      0715 0714 0713 0712 0711 0810 0809 0909 0908 0907
-      0806 0805 0905 1004 1003 1002 1102 1202 1302 1402 1502 1602
-      1703 1803 1904 2003 2104 2204 2304 2403 2504 2604 2605 2606 2707 2807 2908
-      2808 2709 2609 2610
     </Border>
 
     <Border Wraplabel="true" Color="Blue" Allegiance="Hc">
       0223 0323 0423 0523 0524 0624 0625 0525 0424 0325 0225 0224 0223
-    </Border>
-
-    <Border Wraplabel="true" Color="Blue" Allegiance="Kc">
-      2527 2528 2628 2728 2729 2829 2730 2629 2628 2528 2527
-    </Border>
-
-    <Border Wraplabel="true" Color="Blue" Allegiance="Kc">
-      2926 2927 3027 2927 2926
     </Border>
 
     <Border Wraplabel="true" Color="Green" Allegiance="Sp" LabelPosition="1937">
@@ -76,35 +58,5 @@
     <Route Start="0404" End="0207" Type="Trade"/>
     <Route Start="0404" End="0502" Type="Trade"/>
     <Route Start="0404" End="0304" Type="Trade"/>
-    <Route Start="1814" End="1915" Color="Green" />
-    <Route Start="2215" End="1915" Color="Green" />
-    <Route Start="2215" End="2515" Color="Green" />
-    <Route Start="2816" End="2515" Color="Green" />
-    <Route Start="1814" End="1515" Color="Green" />
-    <Route Start="1316" End="1515" Color="Green" />
-    <Route Start="1316" End="1016" Color="Green" />
-    <Route Start="0917" End="1016" Color="Green" />
-    <Route Start="0917" End="0919" Color="Green" />
-    <Route Start="1021" End="0919" Color="Green" />
-    <Route Start="0917" End="0617" Color="Green" />
-    <Route Start="2215" End="2318" Color="Green" />
-    <Route Start="2318" End="2419" Color="Green" />
-    <Route Start="1814" End="1612" Color="Green" />
-    <Route Start="1612" End="1410" Color="Green" />
-    <Route Start="1410" End="1009" Color="Green" />
-    <Route Start="1009" End="0908" Color="Green" />
-    <Route Start="0908" End="0905" Color="Green" />
-    <Route Start="2215" End="2312" Color="Green" />
-    <Route Start="2312" End="2408" Color="Green" />
-    <Route Start="2408" End="2609" Color="Green" />
-    <Route Start="2408" End="2506" Color="Green" />
-    <Route Start="2506" End="2304" Color="Green" />
-    <Route Start="2304" End="2204" Color="Green" />
-    <Route Start="2204" End="2005" Color="Green" />
-    <Route Start="2005" End="1604" Color="Green" />
-    <Route Start="1604" End="1703" Color="Green" />
-    <Route Start="1604" End="1202" Color="Green" />
-    <Route Start="1202" End="1002" Color="Green" />
-    <Route Start="1907" End="2005" Color="Green" />
   </Routes>
 </Sector>
