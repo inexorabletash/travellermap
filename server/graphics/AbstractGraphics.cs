@@ -2,6 +2,7 @@
 using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.IO;
 
 namespace Maps.Graphics
 {
@@ -122,7 +123,7 @@ namespace Maps.Graphics
                 if (dataUrl == null)
                 {
                     string contentType = Utilities.ContentTypes.TypeForPath(path);
-                    byte[] bytes = System.IO.File.ReadAllBytes(path);
+                    byte[] bytes = File.ReadAllBytes(path);
                     dataUrl = "data:" + contentType + ";base64," + Convert.ToBase64String(bytes, Base64FormattingOptions.None);
                 }
                 return dataUrl;
@@ -145,7 +146,14 @@ namespace Maps.Graphics
             {
                 lock (this)
                 {
-                    return image ?? (image = Image.FromFile(path));
+                    if (image == null) {
+                        // Use a stream since Image.FromFile(path) locks the file on disk.
+                        using (var stream = new FileStream(path, FileMode.Open, FileAccess.Read))
+                        {
+                            image = Image.FromStream(stream);
+                        }
+                    }
+                    return image;
                 }
             }
         }
