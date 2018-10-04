@@ -10,34 +10,35 @@
     <Subsector Index="A">Bride</Subsector>
     <Subsector Index="B">Galaxa</Subsector>
     <Subsector Index="C">Cho Vari</Subsector>
-    <Subsector Index="D">Tenjada</Subsector>
+    <Subsector Index="D">Tangal</Subsector>
     <Subsector Index="E">Coldedge</Subsector>
     <Subsector Index="F">Siridor</Subsector>
     <Subsector Index="G">Shimmerskip</Subsector>
-    <Subsector Index="H">Jansazar</Subsector>
+    <Subsector Index="H">Pyruvat</Subsector>
     <Subsector Index="I">Mavuzo</Subsector>
     <Subsector Index="J">Riftspin</Subsector>
     <Subsector Index="K">Mainsend</Subsector>
-    <Subsector Index="L">Spine</Subsector>
+    <Subsector Index="L">Taltan</Subsector>
     <Subsector Index="M">Darkshade</Subsector>
     <Subsector Index="N">Talokan Void</Subsector>
     <Subsector Index="O">Oscuro</Subsector>
-    <Subsector Index="P">Ion</Subsector>
+    <Subsector Index="P">Trichal</Subsector>
   </Subsectors>
   <Borders>
     <Border Allegiance="Ko" LabelPosition="2219" ShowLabel="true" WrapLabel="false">1318 1417 1517 1516 1515 1514 1413 1412 1411 1410 1510 1610 1611 1712 1812 1912 2011 2112 2212 2313 2412 2512 2612 2613 2714 2814 2915 3015 3115 3214 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3230 3131 3130 3029 2929 2828 2729 2629 2529 2428 2328 2228 2129 2028 1928 1827 1826 1726 1725 1824 1924 1923 1922 1921 1820 1720 1619 1519 1419 1319 1318 </Border>
-    <Border Allegiance="Pm" LabelPosition="0720" ShowLabel="true" WrapLabel="false">0417 0518 0618 0719 0818 0919 1019 1020 1021 1122 1123 1023 0924 0823 0724 0624 0524 0523 0422 0421 0420 0419 0418 0417 </Border>
+    <Border Allegiance="Pm" LabelPosition="0920" ShowLabel="true" WrapLabel="false">0417 0518 0618 0719 0818 0919 1019 1020 1021 1122 1123 1023 0924 0823 0724 0624 0524 0523 0422 0421 0420 0419 0418 0417 </Border>
     <Border Allegiance="Sh" LabelPosition="0710" ShowLabel="true" WrapLabel="false">0408 0508 0607 0707 0807 0908 1008 1109 1110 1010 1011 0912 0812 0712 0611 0511 0410 0409 0408 </Border>
     <Border Allegiance="Tm" LabelPosition="2705" ShowLabel="true" WrapLabel="false">2502 2601 2701 2801 2902 3002 3103 3203 3204 3105 3005 2906 2805 2706 2605 2604 2504 2503 2502 </Border>
   </Borders>
   <Allegiances>
-    <Allegiance Code="Ko">Korsumug&#x0a;Empire</Allegiance>
-    <Allegiance Code="Pm">Principality&#x0a;of Mavuzo</Allegiance>
+    <Allegiance Code="Ko">Korsumug Empire</Allegiance>
+    <Allegiance Code="Pm">Principality of Mavuzo</Allegiance>
     <Allegiance Code="Sh">Sorority of Hygiea</Allegiance>
-    <Allegiance Code="Tm">Tenjada&#x0a;Moralitate</Allegiance>
+    <Allegiance Code="Tm">Tenjada Moralitate</Allegiance>
     <Allegiance Code="as">Non-aligned Aslan dominated</Allegiance>
     <Allegiance Code="na">Non-aligned Human dominated</Allegiance>
     <Allegiance Code="nm">Non-aligned Mavuzo dominated</Allegiance>
+    <Allegiance Code="ns">Non-aligned Sophont dominated</Allegiance>
     <Allegiance Code="nx">Non-aligned unclaimed</Allegiance>
   </Allegiances>
   <Routes>
@@ -49,6 +50,7 @@
     <Route Start="2917" End="3118" Color="red"/>
     <Route Start="3118" End="3319" Color="red"/>
     <Route Start="3118" End="3120" Color="red"/>
+    <Route Start="3120" End="2922" Color="red"/>
     <!-- Korsumug Heartland Route -->
     <Route Start="2022" End="2221" Color="red"/>
     <Route Start="2221" End="2521" Color="red"/>
