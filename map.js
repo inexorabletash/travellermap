@@ -667,7 +667,7 @@ var Util = {
 
     var CLICK_SCALE_DELTA = -0.5;
     var SCROLL_SCALE_DELTA = -0.15;
-    var KEY_SCROLL_DELTA = 25;
+    var KEY_SCROLL_DELTA = 15;
 
     container.style.position = 'relative';
 
@@ -693,6 +693,10 @@ var Util = {
     // ======================================================================
     // Event Handlers
     // ======================================================================
+
+    // ----------------------------------------------------------------------
+    // Mouse
+    // ----------------------------------------------------------------------
 
     var dragging, drag_coords, was_dragged, previous_focus;
     container.addEventListener('mousedown', function(e) {
@@ -783,6 +787,11 @@ var Util = {
       e.stopPropagation();
     }.bind(this));
 
+
+    // ----------------------------------------------------------------------
+    // Resize
+    // ----------------------------------------------------------------------
+
     window.addEventListener('resize', function() {
       var rect = boundingElement.getBoundingClientRect();
       if (rect.left === this.rect.left &&
@@ -793,6 +802,10 @@ var Util = {
       this.resetCanvas();
     }.bind(this));
 
+
+    // ----------------------------------------------------------------------
+    // Touch
+    // ----------------------------------------------------------------------
 
     var pinch1, pinch2;
     var touch_coords, touch_wx, touch_wc, was_touch_dragged;
@@ -863,31 +876,63 @@ var Util = {
       e.stopPropagation();
     }.bind(this), true);
 
+
+    // ----------------------------------------------------------------------
+    // Keyboard
+    // ----------------------------------------------------------------------
+
+    // TODO: Use KeyboardEvent.prototype.key if available
+    var VK_I = KeyboardEvent.DOM_VK_I || 0x49,
+        VK_J = KeyboardEvent.DOM_VK_J || 0x4A,
+        VK_K = KeyboardEvent.DOM_VK_K || 0x4B,
+        VK_L = KeyboardEvent.DOM_VK_L || 0x4C,
+        VK_LEFT = KeyboardEvent.DOM_VK_LEFT || 0x25,
+        VK_UP = KeyboardEvent.DOM_VK_UP || 0x26,
+        VK_RIGHT = KeyboardEvent.DOM_VK_RIGHT || 0x27,
+        VK_DOWN = KeyboardEvent.DOM_VK_DOWN || 0x28,
+        VK_SUBTRACT = KeyboardEvent.DOM_VK_HYPHEN_MINUS || 0xBD,
+        VK_EQUALS = KeyboardEvent.DOM_VK_EQUALS || 0xBB;
+
+    // Scrolling - track key down/up state and scroll with RAF.
+    var key_state = {};
+    var keyscroll_timerid;
+    container.addEventListener('keydown', function(e) {
+      if (e.ctrlKey || e.altKey || e.metaKey)
+        return;
+      key_state[e.keyCode] = true;
+      if (!keyscroll_timerid)
+        keyscroll_timerid = requestAnimationFrame(keyScroll);
+    });
+    container.addEventListener('keyup', function(e) {
+      key_state[e.keyCode] = false;
+      if (!keyscroll_timerid)
+        keyscroll_timerid = requestAnimationFrame(keyScroll);
+    });
+    var keyScroll = function() {
+      var dx = 0, dy = 0;
+
+      if (key_state[VK_UP] || key_state[VK_I])
+        dy -= KEY_SCROLL_DELTA;
+      if (key_state[VK_DOWN] || key_state[VK_K])
+        dy += KEY_SCROLL_DELTA;
+      if (key_state[VK_LEFT] || key_state[VK_J])
+        dx -= KEY_SCROLL_DELTA;
+      if (key_state[VK_RIGHT] || key_state[VK_L])
+        dx += KEY_SCROLL_DELTA;
+
+      if (dx || dy) {
+        this.Scroll(dx, dy);
+        requestAnimationFrame(keyScroll);
+      } else {
+        keyscroll_timerid = 0;
+      }
+    }.bind(this);
+
     container.addEventListener('keydown', function(e) {
       if (e.ctrlKey || e.altKey || e.metaKey)
         return;
 
-      // TODO: Use KeyboardEvent.prototype.key if available
-      var VK_I = KeyboardEvent.DOM_VK_I || 0x49,
-          VK_J = KeyboardEvent.DOM_VK_J || 0x4A,
-          VK_K = KeyboardEvent.DOM_VK_K || 0x4B,
-          VK_L = KeyboardEvent.DOM_VK_L || 0x4C,
-          VK_LEFT = KeyboardEvent.DOM_VK_LEFT || 0x25,
-          VK_UP = KeyboardEvent.DOM_VK_UP || 0x26,
-          VK_RIGHT = KeyboardEvent.DOM_VK_RIGHT || 0x27,
-          VK_DOWN = KeyboardEvent.DOM_VK_DOWN || 0x28,
-          VK_SUBTRACT = KeyboardEvent.DOM_VK_HYPHEN_MINUS || 0xBD,
-          VK_EQUALS = KeyboardEvent.DOM_VK_EQUALS || 0xBB;
-
       switch (e.keyCode) {
-        case VK_UP:
-        case VK_I: this.Scroll(0, -KEY_SCROLL_DELTA); break;
-        case VK_LEFT:
-        case VK_J: this.Scroll(-KEY_SCROLL_DELTA, 0); break;
-        case VK_DOWN:
-        case VK_K: this.Scroll(0, KEY_SCROLL_DELTA); break;
-        case VK_RIGHT:
-        case VK_L: this.Scroll(KEY_SCROLL_DELTA, 0); break;
         case VK_SUBTRACT: this.ZoomOut(); break;
         case VK_EQUALS: this.ZoomIn(); break;
         default: return;
@@ -897,6 +942,7 @@ var Util = {
       e.stopPropagation();
     }.bind(this));
 
+    // Final initialization.
     this.resetCanvas();
     this.defer_loading = false;
     this.invalidate();

@@ -311,7 +311,7 @@ window.addEventListener('DOMContentLoaded', function() {
   var VK_ESCAPE = KeyboardEvent.DOM_VK_ESCAPE || 0x1B,
       VK_C = KeyboardEvent.DOM_VK_C || 0x43,
       VK_H = KeyboardEvent.DOM_VK_H || 0x48,
-      VK_L = KeyboardEvent.DOM_VK_L || 0x4C,
+      VK_M = KeyboardEvent.DOM_VK_M || 0x4D,
       VK_T = KeyboardEvent.DOM_VK_T || 0x54,
       VK_QUESTION_MARK = KeyboardEvent.DOM_VK_QUESTION_MARK || 0x63;
 
@@ -446,7 +446,7 @@ window.addEventListener('DOMContentLoaded', function() {
       $('#tiltBtn').click();
       return;
     }
-    if (e.key === 'l' || e.keyCode === VK_L) {
+    if (e.key === 'm' || e.keyCode === VK_M) {
       e.preventDefault();
       e.stopPropagation();
       showPanel('legend');
