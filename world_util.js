@@ -735,7 +735,7 @@
       // Worlds
       if (world.Worlds) {
         world.Worlds = Number(world.Worlds);
-        world.OtherWorlds = world.Worlds - 1 - world.PBG.Belts - world.PBG.GG;
+        world.OtherWorlds = Math.max(world.Worlds - 1 - world.PBG.Belts - world.PBG.GG, 0);
       }
 
       // Wiki Links
