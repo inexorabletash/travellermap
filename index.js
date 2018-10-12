@@ -701,6 +701,17 @@ window.addEventListener('DOMContentLoaded', function() {
     document.body.classList.toggle('enable-experiments', this.checked);
   });
 
+  // Overlay to allow quick return to default milieu.
+  optionObservers.push(function(o) {
+    var milieu = map.namedOptions.get('milieu') || defaults.milieu;
+    $('#milieu-field').innerText = milieu;
+    $('#milieu-field-default').innerText = defaults.milieu;
+    document.body.classList.toggle(
+      'milieu-not-default', milieu !== defaults.milieu);
+  });
+  $('#milieu-escape').addEventListener('click', function(e) {
+    map.namedOptions.set('milieu', defaults.milieu);
+  });
 
   //
   // Pull in options from URL - from permalinks
