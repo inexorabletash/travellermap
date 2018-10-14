@@ -35,13 +35,13 @@
 <meta property="og:site_name" content="The Traveller Map">
 <meta property="fb:admins" content="617166358">
 
-<link rel="stylesheet" href="index.css?update=2018-10-11T17:44:57">
+<link rel="stylesheet" href="index.css?update=2018-10-13T18:04:28">
 
 <!--[if lt IE 11]><script>alert("IE10 is no longer supported.");</script><![endif]-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
 <script src="https://cdn.rawgit.com/inexorabletash/poly2/v2.0.1/polyfill.min.js"></script>
 <script src="map.js?update=2018-10-07T13:10:50"></script>
-<script src="index.js?update=2018-10-11T17:49:21"></script>
+<script src="index.js?update=2018-10-13T18:30:55"></script>
 <script src="world_util.js?update=2018-10-11T13:23:56"></script>
 
 <body class="hide-ui hide-footer ds-mini show-settings">
@@ -233,8 +233,22 @@
       {{/Route}}
       <span class="route-links">
         <a target=_blank rel=noopener href="{{PrintURL}}" class="print-icon-white">Print</a>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <a id=copy-route href="#" class="copy-icon-white">Copy to Clipboard</a>
       </span>
 
+    </script>
+    <script id="RouteResultsTextTemplate" type="text/x-handlebars-template">
+{{Distance}} parsecs -- {{Jumps}} jumps
+
+{{#Route}}
+* {{Name}} ({{Sector}} {{Hex}})
+{{#Distance}}
+
+    Jump {{.}} to
+
+{{/Distance}}
+{{/Route}}
     </script>
     <script id="RouteErrorTemplate" type="text/x-handlebars-template">
       <div><i>{{Message}}</i></div>

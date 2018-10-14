@@ -1298,6 +1298,21 @@ window.addEventListener('DOMContentLoaded', function() {
           });
         });
 
+        $('#copy-route').addEventListener('click', function(e) {
+          e.preventDefault();
+
+          var ta = document.createElement('textarea');
+          ta.value = template('#RouteResultsTextTemplate')({
+            Route: data,
+            Distance: total,
+            Jumps: data.length - 1
+          });
+          document.body.append(ta);
+          ta.select();
+          document.execCommand('copy');
+          ta.remove();
+        });
+
       })
       .catch(function(reason) {
         $('#routePath').innerHTML = template('#RouteErrorTemplate')({Message: reason.message});
