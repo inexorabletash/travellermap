@@ -140,6 +140,12 @@ window.addEventListener('DOMContentLoaded', function() {
     $('#share-url').value = pageURL;
     $('#share-code').value = '<iframe width=400 height=300 src="' + pageURL + '">';
 
+    ['share-url', 'share-code'].forEach(function(share) {
+      $('#copy-' + share).addEventListener('click', function(e) {
+        Util.copyTextToClipboard($('#' + share).value);
+      });
+    });
+
     $$('a.share').forEach(function(anchor) {
       var data = {
         url: encodeURIComponent(pageURL),
@@ -1300,17 +1306,11 @@ window.addEventListener('DOMContentLoaded', function() {
 
         $('#copy-route').addEventListener('click', function(e) {
           e.preventDefault();
-
-          var ta = document.createElement('textarea');
-          ta.value = template('#RouteResultsTextTemplate')({
+          Util.copyTextToClipboard(template('#RouteResultsTextTemplate')({
             Route: data,
             Distance: total,
             Jumps: data.length - 1
-          });
-          document.body.append(ta);
-          ta.select();
-          document.execCommand('copy');
-          ta.remove();
+          }));
         });
 
       })
