@@ -142,6 +142,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
     ['share-url', 'share-code'].forEach(function(share) {
       $('#copy-' + share).addEventListener('click', function(e) {
+        e.preventDefault();
         Util.copyTextToClipboard($('#' + share).value);
       });
     });
