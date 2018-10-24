@@ -88,7 +88,7 @@
     var sectors;
     sectors = [
       /*                                                         */ 'gash','tren',
-      /*               */ 'ziaf','gvur','tugl','prov','wind','mesh','mend','amdu','arzu',
+      /*        */ 'tien','ziaf','gvur','tugl','prov','wind','mesh','mend','amdu','arzu',
       /*        */ 'farf','fore','spin','dene','corr','vlan','lish','anta','empt','star',
       /*        */ 'vang','beyo','troj','reft','gush','dagu','core','forn','ley', 'gate',
       'thet', /*       */ 'touc','rift','verg','ilel','zaru','mass','delp','glim','cruc',
