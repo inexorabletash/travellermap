@@ -97,6 +97,9 @@
       /*                      */ 'akti','uist','ustr','cano','alde','newo','lang',
     ];
 
+    // Uncomment for for testing:
+    //sectors=['spin', 'dene', 'troj', 'reft', 'solo'];
+
     Promise.all(sectors.map(function(name) {
       return Promise.all([
         name,
