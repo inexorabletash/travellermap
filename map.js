@@ -124,6 +124,27 @@ var Util = {
       else cookies[pair.substring(0, i)] = pair.substring(i+1);
     });
     return cookies;
+  },
+
+  copyTextToClipboard: function(text) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    document.body.append(ta);
+    if (navigator.userAgent.match(/iPad|iPhone|iPod/)) {
+      ta.contentEditable = true;
+      ta.readOnly = true;
+      var range = document.createRange();
+      range.selectNodeContents(ta);
+      var sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+      ta.setSelectionRange(0, text.length);
+
+    } else {
+      ta.select();
+    }
+    document.execCommand('copy');
+    ta.remove();
   }
 };
 

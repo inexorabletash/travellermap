@@ -58,6 +58,18 @@ namespace Maps
             }
         }
 
+        private int? calculatedImportance; // cache
+        public int CalculatedImportance
+        {
+            get
+            {
+                if (!calculatedImportance.HasValue)
+                    calculatedImportance = CalculateImportance();
+                return calculatedImportance.Value;
+            }
+        }
+
+
         [XmlElement("Ex"), JsonName("Ex")]
         public string Economic { get; set; }
         [XmlElement("Cx"), JsonName("Cx")]
@@ -375,18 +387,7 @@ namespace Maps
                 string ix = Importance.Replace('{', ' ').Replace('}', ' ').Trim();
                 if (ix != "")
                 {
-
-                    if ("AB".Contains(Starport)) ++imp;
-                    if ("DEX".Contains(Starport)) --imp;
-                    if (TechLevel >= 10) ++imp;
-                    if (TechLevel >= 16) ++imp;
-                    if (TechLevel <= 8) --imp;
-                    if (PopulationExponent <= 6) --imp;
-                    if (PopulationExponent >= 9) ++imp;
-                    if (Ag) ++imp;
-                    if (Ri) ++imp;
-                    if (In) ++imp;
-                    if (Bases == "NS" || Bases == "NW" || Bases == "W" || Bases == "X" || Bases == "D" || Bases == "RT" || Bases == "CK" || Bases == "KM" || Bases == "KV") ++imp;
+                    imp = CalculateImportance();
 
                     ErrorUnless(Int32.Parse(ix) == imp,
                         $"{{Ix}} Importance={ix} incorrect; should be: {imp}");
@@ -477,7 +478,29 @@ namespace Maps
             ErrorIf(SecondSurvey.FromHex(PBG[PBG_P]) == 0 && PopulationExponent > 0,
                 $"PBG: Pop Multiplier = 0 but Population Exponent (={PopulationExponent}) > 0");
 
+            // Worlds
+            int min_worlds = 1 + GasGiants + Belts;
+            ErrorIf(Worlds != 0 && !((int)Worlds).InRange(min_worlds + 2, min_worlds + 12),
+                $"Worlds: W={Worlds} out of range, should be MW (1) + GasGiants ({GasGiants}) + Belts ({Belts}) + 2D");
+
             // TODO: Nobility
+        }
+
+        private int CalculateImportance()
+        {
+            int imp = 0;
+            if ("AB".Contains(Starport)) ++imp;
+            if ("DEX".Contains(Starport)) --imp;
+            if (TechLevel >= 10) ++imp;
+            if (TechLevel >= 16) ++imp;
+            if (TechLevel <= 8) --imp;
+            if (PopulationExponent <= 6) --imp;
+            if (PopulationExponent >= 9) ++imp;
+            if (IsAg) ++imp;
+            if (IsRi) ++imp;
+            if (IsIn) ++imp;
+            if (Bases == "NS" || Bases == "NW" || Bases == "W" || Bases == "X" || Bases == "D" || Bases == "RT" || Bases == "CK" || Bases == "KM" || Bases == "KV") ++imp;
+            return imp;
         }
 
         private string routes = null;

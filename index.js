@@ -140,6 +140,13 @@ window.addEventListener('DOMContentLoaded', function() {
     $('#share-url').value = pageURL;
     $('#share-code').value = '<iframe width=400 height=300 src="' + pageURL + '">';
 
+    ['share-url', 'share-code'].forEach(function(share) {
+      $('#copy-' + share).addEventListener('click', function(e) {
+        e.preventDefault();
+        Util.copyTextToClipboard($('#' + share).value);
+      });
+    });
+
     $$('a.share').forEach(function(anchor) {
       var data = {
         url: encodeURIComponent(pageURL),
@@ -1296,6 +1303,15 @@ window.addEventListener('DOMContentLoaded', function() {
             var params = Util.parseURLQuery(e.target);
             map.CenterAtSectorHex(params.sx|0, params.sy|0, params.hx|0, params.hy|0, {scale: params.scale|0});
           });
+        });
+
+        $('#copy-route').addEventListener('click', function(e) {
+          e.preventDefault();
+          Util.copyTextToClipboard(template('#RouteResultsTextTemplate')({
+            Route: data,
+            Distance: total,
+            Jumps: data.length - 1
+          }));
         });
 
       })
