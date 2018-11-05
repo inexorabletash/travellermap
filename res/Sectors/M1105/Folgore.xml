@@ -12,11 +12,11 @@
   </Credits>
   <Subsectors>
 
-    <Subsector Index="A">Fotracuwu</Subsector>
+    <Subsector Index="A">Aghan</Subsector>
     <Subsector Index="B">Eloqim</Subsector>
     <Subsector Index="C">Pirno</Subsector>
     <Subsector Index="D">Gortol</Subsector>
-    <Subsector Index="E">Aaalyc</Subsector>
+    <Subsector Index="E">Kamuke</Subsector>
     <Subsector Index="F">Ornepoonog</Subsector>
     <Subsector Index="G">Uxathoqil</Subsector>
     <Subsector Index="H">Pocaanir</Subsector>
@@ -33,6 +33,28 @@
     <Allegiance Code="HvFd">Hive Federation</Allegiance>
     <Allegiance Code="Hc">Hiver Client</Allegiance>
   </Allegiances>
+
+  <Regions>
+    <Region Color="Aquamarine" Label="Gurvin Interstellar Democratic Republic">
+      0102 0202 0302 0401 0502 0601 0701 0801 0901 1001 1102 1201 1302 1402
+      1502 1402 1403 1404 1505 1506 1406 1307 1207 1108 1008 0909 0808 0709
+      0708 0607 0606 0506 0406 0306 0205 0204 0104 0103
+    </Region>
+
+    <Region Color="Aquamarine" Label="Kamuke People's Collective">
+      0118 0117 0116 0115 0215 0216 0317 0416 0516 0515 0615 0616
+      0717 0817 0818 0719 0618 0518 0417 0318 0218 0118 
+    </Region>
+
+    <Region Color="Aquamarine" Label="Pocaanir Cultural Reserve">
+      2318 2417 2416 2516 2615 2616 2617 2518 2519 2418 2318
+    </Region>
+
+    <Region Color="Aquamarine" Label="Dagaut Cultural Locality">
+      0632 0732 0832 0733 0632
+    </Region>    
+  
+  </Regions>
 
   <Borders>
     <Border WrapLabel="true" Allegiance="HvFd" LabelPosition="1322">
@@ -51,16 +73,10 @@
       3131 3031 2931 2831 2731 2630 2531 2431 2332 2232
       2132 2031 1931 1831 1732 1631 1531 1431 1331 1231 1132 1133
     </Border>
-
-    <Border Color="Aquamarine" WrapLabel="true" Label="Gurvin Interstellar Democratic Republic">
-      0102 0202 0302 0401 0502 0601 0701 0801 0901 1001 1102 1201 1302 1402
-      1502 1402 1403 1404 1505 1506 1406 1307 1207 1108 1008 0909 0808 0709
-      0708 0607 0606 0506 0406 0306 0205 0204 0104 0103
-    </Border>
-
   </Borders>
 
   <Routes>
+    <Route Start="2202" End="2202" Type="Trade"/>
     <Route Start="0112" End="0011" Type="Trade"/>
     <Route Start="0112" End="0012" Type="Trade"/>
     <Route Start="0125" End="0024" Type="Trade"/>
@@ -78,6 +94,9 @@
     <Route Start="0406" End="0605" Type="Trade"/>
     <Route Start="0605" End="0703" Type="Trade"/>
     <Route Start="0703" End="0901" Type="Trade"/>
+
+    <Route Start="2615" End="2617" Type="Trade"/>
+    <Route Start="2417" End="2617" Type="Trade"/>
 
     <Route Start="0425" End="0428" Type="Trade"/>
     <Route Start="0428" End="0430" Type="Trade"/>

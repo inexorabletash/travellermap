@@ -13,10 +13,10 @@
   <Subsectors>
 
     <Subsector Index="A">Aqaroo</Subsector>
-    <Subsector Index="B"></Subsector>
+    <Subsector Index="B">Uafost</Subsector>
     <Subsector Index="C"></Subsector>
     <Subsector Index="D"></Subsector>
-    <Subsector Index="E"></Subsector>
+    <Subsector Index="E">Lonylua</Subsector>
     <Subsector Index="F">Avereguar</Subsector>
     <Subsector Index="G"></Subsector>
     <Subsector Index="H"></Subsector>
@@ -35,8 +35,12 @@
     <Allegiance Code="H1">Hive Federation Member</Allegiance>
     <Allegiance Code="H2">Hive Federation Member</Allegiance>
     <Allegiance Code="H3">Hive Federation Member</Allegiance>
+    <Allegiance Code="Iu">Iyuok Hegemony</Allegiance>
   </Allegiances>
   <Borders>
+    <Border Allegiance="Iu">
+      2133 2132 2232 2133
+    </Border>
     <Border Allegiance="HvFd">
       0329 0228 0128 0028 0027 0026 0025 0024 0023 0022 0021 0020 0018 0019 0018
       0017 0016 0015 0014 0013 0012 0011 0010 0009 0008 0007 0006 0005
@@ -48,6 +52,13 @@
       0629 0529 0429 0329
     </Border>
   </Borders>
+
+  <Regions>
+    <Region Color="Aquamarine" Label="Aqaroo Demarcation">
+      0106 0205 0204 0305 0404 0305 0205 0106
+    </Region>
+  </Regions>  
+  
   <Routes>
     <Route Start="0207" End="0210" Type="Trade"/>
     <Route Start="0207" End="0307" Type="Trade"/>
