@@ -1670,32 +1670,8 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <Y>2</Y>
     <X>-9</X>
     <Name Lang="as" Publisher="HIWG">Harea</Name>
-    <Credits>
-      <![CDATA[
-
-               <b>Harea</b> sector was designed by WG Zeist.
-
-      ]]>
-    </Credits>
-    <DataFile Author="WG Zeist" Source="explorerbase" Ref="https://explorerbase.wordpress.com/harea-sector-data/">Harea.sec</DataFile>
-    <Subsectors Author="WG Zeist" Ref="https://explorerbase.wordpress.com/harea-sector-data/">
-      <Subsector Index="A">Hkoullourou</Subsector>
-      <Subsector Index="B">Aokhatea</Subsector>
-      <Subsector Index="C">Ealisyw</Subsector>
-      <Subsector Index="D">Satakheya</Subsector>
-      <Subsector Index="E">Seatheya</Subsector>
-      <Subsector Index="F">Tealiaia</Subsector>
-      <Subsector Index="G">Eal</Subsector>
-      <Subsector Index="H">Rlalrrou</Subsector>
-      <Subsector Index="I">Oialesthlya</Subsector>
-      <Subsector Index="J">Yelseawah</Subsector>
-      <Subsector Index="K">Ktaahkyo</Subsector>
-      <Subsector Index="L">Thealouh</Subsector>
-      <Subsector Index="M">Fteiyou</Subsector>
-      <Subsector Index="N">Hatriy</Subsector>
-      <Subsector Index="O">Ekthkawa</Subsector>
-      <Subsector Index="P">Fiyraoi</Subsector>
-    </Subsectors>
+    <DataFile Author="WG Zeist, Ade Stewart" Source="explorerbase" Ref="https://explorerbase.wordpress.com/harea-sector-data/">Harea.txt</DataFile>
+    <MetadataFile>Harea.xml</Metadatafile>
   </Sector>
   <Sector>
     <Y>2</Y>
