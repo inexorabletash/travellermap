@@ -37,6 +37,7 @@
     <IISExpressUseClassicPipelineMode />
     <TargetFrameworkProfile />
     <UseGlobalApplicationHostFile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>bin\</OutputPath>
@@ -90,9 +91,11 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="PdfSharp, Version=1.32.2608.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\PDFsharp\code\PdfSharp\bin\Release\PdfSharp.dll</HintPath>
+    <Reference Include="PdfSharp, Version=1.32.3057.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>packages\PDFsharp.1.32.3057.0\lib\net20\PdfSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp.Charting, Version=1.32.3057.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>packages\PDFsharp.1.32.3057.0\lib\net20\PdfSharp.Charting.dll</HintPath>
     </Reference>
     <Reference Include="System">
       <Name>System</Name>
@@ -411,17 +414,17 @@
     <Content Include="res\Sectors\M1105\Arzul.xml" />
     <Content Include="res\Sectors\M1105\astron.sec" />
     <Content Include="res\Sectors\M1105\ataurre.sec" />
-    <Content Include="res\Sectors\M1105\Avereguar.sec" />
+    <Content Include="res\Sectors\M1105\Avereguar.txt" />
     <Content Include="res\Sectors\M1105\Avereguar.xml" />
     <Content Include="res\Sectors\M1105\banners.sec" />
     <Content Include="res\Sectors\M1105\Bar%27kakr.txt" />
     <Content Include="res\Sectors\M1105\Bar%27kakr.xml" />
     <Content Include="res\Sectors\M1105\Beyond.xml" />
-    <Content Include="res\Sectors\M1105\blaskon.sec" />
+    <Content Include="res\Sectors\M1105\blaskon.txt" />
     <Content Include="res\Sectors\M1105\blaskon.xml" />
     <Content Include="res\Sectors\M1105\Caesillian.txt" />
     <Content Include="res\Sectors\M1105\Canopus.xml" />
-    <Content Include="res\Sectors\M1105\centrax.sec" />
+    <Content Include="res\Sectors\M1105\centrax.txt" />
     <Content Include="res\Sectors\M1105\Centrax.xml" />
     <Content Include="res\Sectors\M1105\Chit Botshti.txt" />
     <Content Include="res\Sectors\M1105\Chit Botshti.xml" />
@@ -449,7 +452,6 @@
     <Content Include="res\Sectors\M1105\Empty Quarter.xml" />
     <Content Include="res\Sectors\M1105\esai-yo.sec" />
     <Content Include="res\Sectors\M1105\Etakhasoa.sec" />
-    <Content Include="res\Sectors\M1105\Extolian.sec" />
     <Content Include="res\Sectors\M1105\Extolian.txt" />
     <Content Include="res\Sectors\M1105\extolian.xml" />
     <Content Include="res\Sectors\M1105\Fa Dzaets.sec" />
@@ -458,7 +460,7 @@
     <Content Include="res\Sectors\M1105\Far Frontiers.sec" />
     <Content Include="res\Sectors\M1105\Far Frontiers.xml" />
     <Content Include="res\Sectors\M1105\Finggvakhou.sec" />
-    <Content Include="res\Sectors\M1105\Folgore.sec" />
+    <Content Include="res\Sectors\M1105\Folgore.txt" />
     <Content Include="res\Sectors\M1105\Folgore.xml" />
     <Content Include="res\Sectors\M1105\Foreven.xml" />
     <Content Include="res\Sectors\M1105\Fornast.xml" />
@@ -476,7 +478,7 @@
     <Content Include="res\Sectors\M1105\Gushemege.xml" />
     <Content Include="res\Sectors\M1105\Gvurrdon.xml" />
     <Content Include="res\Sectors\M1105\Gzaekfueg.sec" />
-    <Content Include="res\Sectors\M1105\Gzirr!k%27l.sec" />
+    <Content Include="res\Sectors\M1105\Gzirr!k%27l.txt" />
     <Content Include="res\Sectors\M1105\Gzirr!k%27l.xml" />
     <Content Include="res\Sectors\M1105\hadji.sec" />
     <Content Include="res\Sectors\M1105\hanstone.sec" />
@@ -493,16 +495,16 @@
     <Content Include="res\Sectors\M1105\Irlaftalea.sec" />
     <Content Include="res\Sectors\M1105\Irugangong.sec" />
     <Content Include="res\Sectors\M1105\Itvikiastaf.xml" />
-    <Content Include="res\Sectors\M1105\K%27trekreer.sec" />
+    <Content Include="res\Sectors\M1105\K%27trekreer.txt" />
     <Content Include="res\Sectors\M1105\K%27trekreer.xml" />
-    <Content Include="res\Sectors\M1105\Kaa G!%27kul.xml" />
     <Content Include="res\Sectors\M1105\Kaa G!kul.sec" />
+    <Content Include="res\Sectors\M1105\Kaa G!'kul.xml" />
     <Content Include="res\Sectors\M1105\karleaya.sec" />
     <Content Include="res\Sectors\M1105\Katoonah.sec" />
     <Content Include="res\Sectors\M1105\Kefiykhta.sec" />
     <Content Include="res\Sectors\M1105\khaeaw.sec" />
     <Content Include="res\Sectors\M1105\Kharrthon.sec" />
-    <Content Include="res\Sectors\M1105\kidunal.sec" />
+    <Content Include="res\Sectors\M1105\kidunal.txt" />
     <Content Include="res\Sectors\M1105\kidunal.xml" />
     <Content Include="res\Sectors\M1105\Knaeleng.sec" />
     <Content Include="res\Sectors\M1105\Knoellighz.txt" />
@@ -535,7 +537,7 @@
     <Content Include="res\Sectors\M1105\Nadir.txt" />
     <Content Include="res\Sectors\M1105\Neworld.xml" />
     <Content Include="res\Sectors\M1105\Ngathksirz.sec" />
-    <Content Include="res\Sectors\M1105\Nooq.sec" />
+    <Content Include="res\Sectors\M1105\Nooq.txt" />
     <Content Include="res\Sectors\M1105\Nooq.xml" />
     <Content Include="res\Sectors\M1105\Nuughe.xml" />
     <Content Include="res\Sectors\M1105\OeghzVaerrghr.sec" />
@@ -545,14 +547,14 @@
     <Content Include="res\Sectors\M1105\Phlask.txt" />
     <Content Include="res\Sectors\M1105\Phlask.xml" />
     <Content Include="res\Sectors\M1105\Pliabriebl.sec" />
-    <Content Include="res\Sectors\M1105\Porlock.sec" />
+    <Content Include="res\Sectors\M1105\Porlock.txt" />
     <Content Include="res\Sectors\M1105\Porlock.xml" />
     <Content Include="res\Sectors\M1105\Provence.xml" />
     <Content Include="res\Sectors\M1105\Raakaan.xml" />
     <Content Include="res\Sectors\M1105\Reavers Deep.xml" />
     <Content Include="res\Sectors\M1105\Reft.xml" />
     <Content Include="res\Sectors\M1105\Rfigh.sec" />
-    <Content Include="res\Sectors\M1105\Ricenden.sec" />
+    <Content Include="res\Sectors\M1105\Ricenden.txt" />
     <Content Include="res\Sectors\M1105\Ricenden.xml" />
     <Content Include="res\Sectors\M1105\Riftspan Reaches.xml" />
     <Content Include="res\Sectors\M1105\Rzakki.sec" />
@@ -592,7 +594,7 @@
     <Content Include="res\Sectors\M1105\Vland.xml" />
     <Content Include="res\Sectors\M1105\waroatah.sec" />
     <Content Include="res\Sectors\M1105\Windhorn.xml" />
-    <Content Include="res\Sectors\M1105\Wrenton.sec" />
+    <Content Include="res\Sectors\M1105\Wrenton.txt" />
     <Content Include="res\Sectors\M1105\Wrenton.xml" />
     <Content Include="res\Sectors\M1105\Xaagr.txt" />
     <Content Include="res\Sectors\M1105\Xaagr.xml" />
@@ -757,6 +759,7 @@
     <Content Include="res\Sectors\M1105\Afawahisa.tab" />
     <Content Include="print\README.md" />
     <Content Include="world_util.js" />
+    <None Include="packages.config" />
     <None Include="res\styles\otu.css" />
     <Content Include="res\ui\background.png" />
     <Content Include="res\ui\background_light.png" />
@@ -887,9 +890,6 @@
     <Content Include="tools\lintsec.html" />
     <Content Include="tools\restellarator.html" />
     <Content Include="tools\serialize.js" />
-    <Content Include="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
     <Compile Include="AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -1343,7 +1343,7 @@
     <Content Include="test\refs\sec_legend_noheader.sec" />
     <Content Include="test\refs\sec_legend_nometa.sec" />
     <Content Include="test\refs\sec_legend_sscoords.sec" />
-    <None Include="Web.config.sample">
+    <None Include="Web.config">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
