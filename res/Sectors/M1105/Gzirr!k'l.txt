@@ -42,9 +42,9 @@
 
 Hex  Name                 UWP       Remarks                {Ix} (Ex) [Cx] N B Z PBG W A  Stellar         
 ---- -------------------- --------- ---------------------- ---- ---- ---- - - - --- - -- ----------------
-0102 Robrark              C7C3648-3 Ni Po                                 - - - 802   Na K5 V            
-0104 Adurka               X4434QK-4 Lo Ni Po                              - - R 323   Kk F6 IV M8 V      
-0106 Kaishshii            X76A4QK-5 Lo Ni Wa                              - - R 202   Kk M6 V            
+0102 Robrark              C7C3648-3 Fl Ni                                 - - - 802   Na K5 V            
+0104 Adurka               X4434QK-4 Ni Po                                 - - R 323   Kk F6 IV M8 V      
+0106 Kaishshii            X76A4QK-5 Ni Wa                                 - - R 202   Kk M6 V            
 0110 Kr!rmb'ne            C666ARK-9 Hi Ga                                 - K - 500   Kk M0 V            
 0201 Naslickia            E530000-0 Ba De Ni Po                           - - - 002   Na M0 V            
 0202 Bluhinia             B100343-C Lo Ni Po Va                           - - - 614   Na M3 III K1 V     
@@ -57,7 +57,7 @@ Hex  Name                 UWP       Remarks                {Ix} (Ex) [Cx] N B Z 
 0404 Perrare              B7473QK-5 Lo Ni Ga                              - K - 603   Kk M5 V            
 0407 Kiiagh'              A4716RK-5 Ni Po                                 - - - 924   Kk G4 III          
 0408 Tuughatnixk          E310000-0 Ba Ni Po                              - O - 004   Kk M6 V            
-0409 Ni'rrii              A3001PK-7 Lo Ni Po Va                           - K - 002   Kk G4 II           
+0409 Ni'rrii              A3001PK-7 Lo Ni Po Va                           - K - 202   Kk G4 II           
 0501 Greengr'luk          C4646RK-C Ag Ni Ri                              - - - 824   Kk G6 IV M2 V      
 0508 Kax!!rkr!r           D3243QK-7 Lo Ni                                 - K - 913   Kk M9 V            
 0509 Ragka!'rr            E311000-0 Ba Ic Ni Po                           - - - 013   Kk G5 V M4 V M2 V  
@@ -106,7 +106,7 @@ Hex  Name                 UWP       Remarks                {Ix} (Ex) [Cx] N B Z 
 1906 Krakuuragn!'g        CA893QK-A Lo Ni                                 - K - 202   Kk M8 V            
 1908 Rakakkoor!'k         B2342PK-6 Lo Ni                                 - K - 502   Kk M0 V            
 2001 Roongrree            C78A8RK-B Ri Wa Ph                              - - - 904   Kk G6 V M0 V       
-2006 Xtigheaa             B8971PK-5 Lo Ni                                 - K - 013   Kk M7 V K2 V       
+2006 Xtigheaa             B8971PK-5 Lo Ni                                 - K - 713   Kk M7 V K2 V       
 2008 Iiiokrarr            B1201PK-7 De Lo Ni Po                           - K - 823   Kk K0 IV M7 V      
 2101 Kallakr              E7235QK-7 Ni Po                                 - K - 204   Kk M6 V G2 V       
 2106 Rokalegz'            E99A000-0 Ba Ni Wa                              - O - 002   Kk M6 V            
@@ -189,8 +189,8 @@ Hex  Name                 UWP       Remarks                {Ix} (Ex) [Cx] N B Z 
 0813 Kuuxxi               C3467RK-5 Ag Pi                                 - K - 503   Kk M1 V            
 0815 Kr'kr'r              E427000-0 Ba Ni                                 - K - 013   Kk M8 V            
 0816 K!!tghoptra          E8A8000-0 Ba Ni                                 - - - 002   Kk M3 V            
-0817 Ixkktarteek'         E7892PK-8 Lo Ni                                 - O - 822   Kk M3 V M2 V       
-0818 Kaxkiieenar          C7577RK-9 Ag Ga                                 - K - 011   Kk M2 V            
+0817 Ixkktarteek'         E7892PK-8 Lo Ni                                 - O - 422   Kk M3 V M2 V       
+0818 Kaxkiieenar          C7577RK-9 Ag Ga                                 - K - 311   Kk M2 V            
 0820 Ignengragax          C6595QK-A Ni                                    - K - 912   Kk K2 V            
 0912 Ee'ee                B4637RK-C Po Ri                                 - K - 514   Kk F0 IV           
 0915 Ragamar              X1254QK-8 Lo Ni (Ragamar)                       - - R 704   Kk G9 V M0 V       
@@ -233,7 +233,7 @@ Hex  Name                 UWP       Remarks                {Ix} (Ex) [Cx] N B Z 
 1912 Ra!rr'               AA897RK-D Ri                                    - K R 914   Kk M2 V M7 V       
 1916 Gnaa Xarr'rr         B5765QK-5 Ag Ni                                 - - - 604   Kk M2 V            
 1917 R!'lkamun            B98A5QK-C Ni Pr Wa                              - K - 504   Kk G3 V            
-1919 Katr!rr'             A3427RK-5 Pi Po                                 - K - 002   Kk M6 V            
+1919 Katr!rr'             A3427RK-5 Pi Po                                 - K - 802   Kk M6 V            
 1920 Xarrmaxkix           CAC53QK-9 Lo Ni                                 - - - 923   Kk F3 V M2 V       
 2013 Kralekrar            A551ARK-D Cp Hi Po                              - K - 800   Kk M3 II           
 2014 Xuuookkree           C1001PK-7 Lo Ni Po Va                           - K - 833   Kk M0 V            
@@ -319,7 +319,7 @@ Hex  Name                 UWP       Remarks                {Ix} (Ex) [Cx] N B Z 
 0826 Bismahl              D320559-4 De Ni Po                              - - - 802   Na M9 V M8 V       
 0829 Etraplom             E858677-6 Ag Ni                                 - - - 100   Hs M4 V            
 0921 Gakr!rlee            C66A6RK-B Ni Ri Wa                              - K - 621   Kk M7 V            
-0922 Meextingka           A98A8RK-2 Ri Wa Ph                              - K - 004   Kk G6 V M2 V       
+0922 Meextingka           A98A8RK-2 Ri Wa Ph                              - K - 304   Kk G6 V M2 V       
 0925 Maglortos            E859556-8 Ni                                    - - - 602   Na M8 V M1 V       
 0926 Vlares               E120000-0 Ba De Ni Po                           - - - 004   Na M7 V M2 V       
 0928 Chotaslett           E794000-0 Ba Ni                                 - - - 004   Na G0 IV           
@@ -339,15 +339,15 @@ Hex  Name                 UWP       Remarks                {Ix} (Ex) [Cx] N B Z 
 1324 Gnogragna            C522418-7 Lo Ni Po                              - N - 800   Kx F9 V M1 V       
 1327 Inengus              C78A954-6 Hi Pr Wa                              - - - 803   Na K9 V            
 1328 Ecad                 C4277AB-7 Pi                                    - - - 403   Hs G5 V            
-1329 Tusvebb              B4729BE-9 Hi In Po                              - N - 003   Hs M6 V            
+1329 Tusvebb              B4729BE-9 Hi In Po                              - N - 703   Hs M6 V            
 1421 Xiikraaab            E5547RK-9 Ag                                    - O - 503   Kk G0 V M2 V       
 1422 Kileekkreek          E7C6000-0 Ba Ni Ga                              - O - 014   Kk G8 III M3 V M3 V
 1424 Kr!ghuugna           C66869A-A Ag Ni Ri Ga                           - N - 704   Kx G7 V M5 V       
 1428 Iflagh               E646586-2 Ag Ni Ga                              - - - 604   Hs F4 V            
-1429 Weclah               C779588-7 Ni                                    - - - 025   Hs M0 V M4 V       
+1429 Weclah               C779588-7 Ni                                    - - - 125   Hs M0 V M4 V       
 1521 T!'arrkt'            D5755QK-5 Ag Ni                                 - K - 714   Kk M7 V            
 1522 Nikeet               C5958RK-5 Pi Ph Pa                              - - - 435   Kk M8 V            
-1623 Akkatgheer           E000000-0 As Ba Ni Po                           - K - 024   Kk M3 V            
+1623 Akkatgheer           E000000-0 As Ba                                 - K - 024   Kk M3 V            
 1624 Qrukewyr             E583988-6 Hi Po Pr                              - - - 704   Kc M0 V M9 V       
 1625 Sposex               D000696-9 As Na Ni Po                           - - - 310   Na G5 V M2 V       
 1626 Bynav                E3269B9-6 Hi In                                 - - - 810   Na G8 V            
@@ -477,7 +477,7 @@ Hex  Name                 UWP       Remarks                {Ix} (Ex) [Cx] N B Z 
 1135 622-747              E9B9000-0 Ba Ni                                 - - - 004   Na G5 II           
 1136 Frobvoxus            D5A0554-8 De Ni Po                              - N - 305   Kr K1 IV           
 1137 Bjaredd              C301535-8 Ic Ni Po Va                           - - - 500   Kr G9 V M5 V       
-1231 Solack               A868ABE-B Hi                                    - - - 000   Hs G9 V            
+1231 Solack               A868ABE-B Hi                                    - - - 700   Hs G9 V            
 1233 Tesaure              C353AC9-7 Hi Po                                 - - - 700   Cs M0 V M2 V       
 1236 Drazleng             A786677-D Ag Ni Ri Ga                           - N - 804   Kr G0 V M3 V       
 1237 Saflitsyngi          C75A518-B Ni Wa                                 - - - 822   Kr F2 V            
@@ -490,7 +490,7 @@ Hex  Name                 UWP       Remarks                {Ix} (Ex) [Cx] N B Z 
 1435 Mibwost              D8C4A97-8 Hi                                    - N - 513   Kr M1 V            
 1440 Gnasvant             A22269C-C Na Ni Po                              - N - 805   Kr G9 V M2 V       
 1535 Treblol              E342688-A Ni Po                                 - - - 724   Kr M2 V            
-1538 Gozrirtus            A566AB6-E Hi                                    - - - 002   Kr M7 V            
+1538 Gozrirtus            A566AB6-E Hi                                    - - - 402   Kr M7 V            
 1632 Zadrojydu'us         B582553-D Ni Po Pr                              - N - 804   Kr M4 V M5 V       
 1633 Opred                B545535-B Ag Ni                                 - - - 510   Kr M4 V            
 1636 Blecaj               B130156-F De Lo Ni Po                           - N - 110   Kr F0 V            
@@ -527,12 +527,12 @@ Hex  Name                 UWP       Remarks                {Ix} (Ex) [Cx] N B Z 
 2340 Gnufrorte            C453442-7 Lo Ni Po                              - - - 702   Na M2 III          
 2431 Hezlymus             B040AA9-B As De Hi In Po                        - - - 814   Na M1 V M9 V       
 2436 Prevnepvuxus         A200343-A Lo Ni Po Va                           - - - 504   Hc F4 IV M4 V      
-2437 Sezusortos           C9B2413-7 Lo Ni Po                              - - - 000   Hc K7 V M2 V       
+2437 Sezusortos           C9B2413-7 Lo Ni Po                              - - - 100   Hc K7 V M2 V       
 2440 Niantha              E699000-0 Ba Ni                                 - - - 003   Hv M7 V M5 V       
 2532 Gaqucfun             C788410-A Lo Ni Ga Pa                           - M - 510   H1 M8 V            
 2533 Vunenoq              B666550-A Ag Ni Pr Ga                           - K - 300   Hv F0 V            
 2534 Poonaskti            C985652-B Ag Ni Ri                              - - - 503   Hv M0 V            
-2537 Xyyzzizi             B8A4486-8 Lo Ni IthkW                           - K A 810   Hv K7 V M2 V       
+2537 Xyyzzizi             B8A4486-8 Fl Ni IthkW                           - K A 810   Hv K7 V M2 V       
 2538 Kucmuskic            E273312-5 Lo Ni Po                              - - - 812   Hv K7 V M2 V       
 2631 Thawesonroroo        E539396-6 Lo Ni (Sonroroo)                      - - A 802   Hv M9 V M2 V       
 2634 Ocnuxa               A674936-C Hi In                                 - - - 514   Hv G8 V            
@@ -556,5 +556,5 @@ Hex  Name                 UWP       Remarks                {Ix} (Ex) [Cx] N B Z 
 3137 Dalyexenakac         C6675S3-8 Ag Ni Pr Ga                           - - - 702   Hv M9 V            
 3231 Qoexlaldask          E100000-0 Ba Ni Po Va                           - - - 002   Hv M8 V            
 3232 Phliwre              E100000-0 Ba Ni Po Va                           - - - 004   Hv M6 V M2 V       
-3237 Yfadra               B562650-9 Ni Po Ri                              - K - 813   Hv K4 V            
+3237 Yfadra               B562650-9 Ni Ri                                 - K - 813   Hv K4 V            
 3239 Ec                   A5848S1-E Ri Ph Pa                              - E - 803   H1 M5 V M7 V       
