@@ -91,11 +91,9 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="PdfSharp, Version=1.32.3057.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
-      <HintPath>packages\PDFsharp.1.32.3057.0\lib\net20\PdfSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="PdfSharp.Charting, Version=1.32.3057.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
-      <HintPath>packages\PDFsharp.1.32.3057.0\lib\net20\PdfSharp.Charting.dll</HintPath>
+    <Reference Include="PdfSharp, Version=1.32.2608.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\PDFsharp\code\PdfSharp\bin\Release\PdfSharp.dll</HintPath>
     </Reference>
     <Reference Include="System">
       <Name>System</Name>
@@ -759,7 +757,6 @@
     <Content Include="res\Sectors\M1105\Afawahisa.tab" />
     <Content Include="print\README.md" />
     <Content Include="world_util.js" />
-    <None Include="packages.config" />
     <None Include="res\styles\otu.css" />
     <Content Include="res\ui\background.png" />
     <Content Include="res\ui\background_light.png" />
@@ -890,6 +887,9 @@
     <Content Include="tools\lintsec.html" />
     <Content Include="tools\restellarator.html" />
     <Content Include="tools\serialize.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Compile Include="AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -1343,7 +1343,7 @@
     <Content Include="test\refs\sec_legend_noheader.sec" />
     <Content Include="test\refs\sec_legend_nometa.sec" />
     <Content Include="test\refs\sec_legend_sscoords.sec" />
-    <None Include="Web.config">
+    <None Include="Web.config.sample">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
