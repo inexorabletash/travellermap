@@ -324,6 +324,8 @@ namespace Maps
                 $"UWP: Atm={Atmosphere} out of range; should be: 0...F");
             ErrorIf(Hydrographics > 10, 
                 $"UWP: Hyd={Hydrographics} out of range; should be: 0...A");
+            ErrorUnless(Hydrographics.InRange(Atmosphere - 5, Atmosphere + 5),
+                $"UWP: Hyd={Hydrographics} out of range; should be: Atm={Atmosphere} + Flux");
             ErrorIf(PopulationExponent > 15, 
                 $"UWP: Pop={PopulationExponent} out of range; should be: 0...F");
             ErrorUnless(Government.InRange(PopulationExponent - 5, Math.Max(15, PopulationExponent + 5)),
