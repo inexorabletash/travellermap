@@ -320,16 +320,28 @@ namespace Maps
 
             #region UWP
             // UWP
+            ErrorIf(Size > 15, 
+                $"UWP: Siz={Size} out of range; should be: 0...F");
             ErrorIf(Atmosphere > 15, 
                 $"UWP: Atm={Atmosphere} out of range; should be: 0...F");
+            ErrorIf(Size == 0 && Atmosphere > 0, 
+                $"UWP: Atm={Atmosphere} out of range; should be: 0 when Siz(={Size}) = 0");
+            ErrorUnless(Atmosphere.InRange(Size - 5, Size + 5),
+                $"UWP: Atm={Atmosphere} out of range; should be: Siz(={Size}) + Flux");
             ErrorIf(Hydrographics > 10, 
                 $"UWP: Hyd={Hydrographics} out of range; should be: 0...A");
+            ErrorIf(Size < 2 && Hydrographics > 0, 
+                $"UWP: Hyd={Hydrographics} out of range; should be: 0 when Siz(={Size}) < 2");
+            ErrorIf(Atmosphere >= 2 && Atmosphere <= 9 && (Hydrographics < Atmosphere - 5 || Hydrographics > Atmosphere + 5)),
+                $"UWP: Hyd={Hydrographics} out of range; should be: Atm(={Atmosphere}) + Flux when 2 <= Atm <= 9");
+            ErrorIf((Atmosphere < 2 || Atmosphere > 9) && (Hydrographics < Atmosphere - 9 || Hydrographics > Atmosphere + 1)),
+                $"UWP: Hyd={Hydrographics} out of range; should be: Atm(={Atmosphere}) - 4 + Flux when Atm < 2 or Atm > 9");
             ErrorIf(PopulationExponent > 15, 
                 $"UWP: Pop={PopulationExponent} out of range; should be: 0...F");
             ErrorUnless(Government.InRange(PopulationExponent - 5, Math.Max(15, PopulationExponent + 5)),
-                $"UWP: Gov={Government} out of range; should be: Pop(={PopulationExponent}) + Flux");
+                $"UWP: Gov={Government} out of range; should be: Pop(={PopulationExponent}) + Flux, maximum F");
             ErrorUnless(Law.InRange(Government - 5, Math.Max(18, Government + 5)),
-                $"UWP: Law={Law} out of range; should be: Gov(={Government}) + Flux");
+                $"UWP: Law={Law} out of range; should be: Gov(={Government}) + Flux, maximum J");
             int tlmod = 
                 (Starport == 'A' ? 6 : 0) + (Starport == 'B' ? 4 : 0) + (Starport == 'C' ? 2 : 0) + (Starport == 'X' ? -4 : 0) +
                 (Size == 0 || Size == 1 ? 2 : 0) + (Size == 2 || Size == 3 || Size == 4 ? 1 : 0) +
