@@ -37,6 +37,7 @@
     <IISExpressUseClassicPipelineMode />
     <TargetFrameworkProfile />
     <UseGlobalApplicationHostFile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>bin\</OutputPath>
@@ -530,6 +531,7 @@
     <Content Include="res\Sectors\M1105\Massilia.xml" />
     <Content Include="res\Sectors\M1105\Mendan.xml" />
     <Content Include="res\Sectors\M1105\Meshan.xml" />
+    <Content Include="res\Sectors\M1105\Mikhail.txt" />
     <Content Include="res\Sectors\M1105\muarne.sec" />
     <Content Include="res\Sectors\M1105\Nadir.txt" />
     <Content Include="res\Sectors\M1105\Neworld.xml" />
