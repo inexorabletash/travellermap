@@ -525,7 +525,9 @@
     <Content Include="res\Sectors\M1105\Lorspane.xml" />
     <Content Include="res\Sectors\M1105\Luretiir!girr.txt" />
     <Content Include="res\Sectors\M1105\Luretiir!girr.xml" />
-    <Content Include="res\Sectors\M1105\M1105.xml" />
+    <Content Include="res\Sectors\M1105\M1105.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="res\Sectors\M1105\Magyar.xml" />
     <Content Include="res\Sectors\M1105\malorn.sec" />
     <Content Include="res\Sectors\M1105\Massilia.xml" />
