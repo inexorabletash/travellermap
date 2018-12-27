@@ -13,21 +13,21 @@
 # Author:    Mark Humphreys
 
 # Subsector A: Kallilku
-# Subsector B: 
-# Subsector C: 
-# Subsector D: 
-# Subsector E: 
-# Subsector F: 
+# Subsector B: Kuxktunuk
+# Subsector C: Timan!
+# Subsector D: Iikrkakra
+# Subsector E: Eo
+# Subsector F: Orarnak
 # Subsector G: 
 # Subsector H: 
-# Subsector I: 
-# Subsector J: 
-# Subsector K: 
+# Subsector I: Sisketha
+# Subsector J: Ot Qeoon
+# Subsector K: Pololor 
 # Subsector L: 
-# Subsector M: 
-# Subsector N: 
-# Subsector O: 
-# Subsector P: 
+# Subsector M: Liiliirra
+# Subsector N: Danaska
+# Subsector O: Onoxyl
+# Subsector P: Uakmotra Irkan
 
 # Alleg: H1: "Hive Federation Member"
 # Alleg: H2: "Hive Federation Member"
@@ -42,7 +42,7 @@
 # Alleg: Na: "Non-aligned"
 
 Hex  Name                 UWP       Remarks                      {Ix}   (Ex)    [Cx]   N B  Z PBG W  A   Stellar   
----- -------------------- --------- ---------------------------- ------ ------- ------ - -- - --- -- --  --------------
+---- -------------------- --------- ---------------------------- ------ ------- ------ - -- - --- -- --  ------------------
 0102 Kallilku             C6365QK-6 Ni (Kallilku)                { -2 } (640-2) [5338] - M  R 703 14 Kk  M9 V           
 0104                      C3353QK-7 Lo                           { -2 } (A21+0) [5156] - M  - 800  7 Kk  M9 V M2 V      
 0108                      B3302PK-8 De Lo Po                     { -1 } (C11+3) [112D] - M  - 710  7 Kk  G9 V M9 V      
@@ -117,6 +117,7 @@ Hex  Name                 UWP       Remarks                      {Ix}   (Ex)    
 2309                      B87A2PK-8 Lo Wa                        { -1 } (A11+5) [1125] - K  - 810 13 Kk  M0 V M2 V M4 V 
 2310                      C4646RK-5 Ag Ni Ri                     {  0 } (754+5) [3666] - -  - 614  9 Kk  F9 V           
 2407                      E478000-0 Ba                           { -3 } (800+0) [0000] - -  - 010 10 Kk  G0 V M2 V      
+2408                      E441000-0 Ba He Po                     { -3 } (700-2) [0000] - -  - 004 16 Kk  M1 V K6 V      
 2408                      E441000-0 Ba He Po                     { -3 } (700-2) [0000] - -  - 004 16 Kk  M1 V K6 V      
 2409                      B6A12PK-8 Fl He Lo                     { -1 } (711+3) [1167] - K  A 612 12 Kk  M3 V M5 V      
 2502                      B0002PK-C As Va Lo                     {  1 } (F11+0) [137D] - K  - 904  8 Kk  K1 V M2 V      
@@ -287,7 +288,7 @@ Hex  Name                 UWP       Remarks                      {Ix}   (Ex)    
 0424                      B130340-B De Lo Po                     {  1 } (C21-2) [146C] - K  - 504  8 Hv  M1 V           
 0425                      C9C9240-9 Fl Lo                        { -1 } (A11+3) [1129] - -  - 903 13 Hv  G7 V           
 0430                      C699420-6 Ni                           { -2 } (732+0) [3265] - M  - 800  4 Hv  G9 IV          
-0521                      B160723-A De Ri                        {  3 } (C6B+2) [9A4B] - N  - 304 17 Hv  M6 II M1 V     
+0521 Sisketha             B160723-A De Ri                        {  3 } (C6B+2) [9A4B] - N  - 304 17 Hv  M6 II M1 V     
 0524                      E5827S5-5 Ri                           { -1 } (565+1) [6616] - -  - 822 10 Hv  A0 V G8 V      
 0527                      C477560-5 Ag Ni Cy O:0628              { -1 } (A41-3) [4466] - M  - 310 11 Hv  A6 II K5 V     
 0528                      E200000-0 Ba Va                        { -3 } (400+0) [0000] - -  - 034 16 Hv  M4 III         
@@ -479,14 +480,14 @@ Hex  Name                 UWP       Remarks                      {Ix}   (Ex)    
 2236 Troicka              X544130-2 Lo Fo (Troicka)              { -3 } (901-3) [3142] - M  R 304 13 Hf  K7 V           
 2332                      CAB9210-8 Fl Lo TroiW                  { -2 } (A11+1) [1166] - M  A 500  9 H1  K4 V M2 V      
 2337                      E86A340-7 Lo Wa                        { -3 } (621-1) [7148] - -  - 200  5 Hv  K0 III         
-2338                      B567756-A Ag Ri                        {  4 } (96D+0) [7B58] - K  - 900  4 Hv  A0 V           
+2338 Onoxyl               B567756-A Ag Ri                        {  4 } (96D+0) [7B58] - K  - 900  4 Hv  A0 V           
 2432                      X543110-2 Lo Po Fo TroiW               { -3 } (501+3) [2144] - -  R 703  8 Hf  M2 V           
 2433                      C310176-A Lo Troi4                     {  0 } (801-5) [417E] - M  A 903 11 Hv  G5 V           
 2435                      E220000-0 Ba De Po                     { -3 } (700+0) [0000] - -  - 030 12 Hv  M3 V K2 V      
 2437                      C332421-9 Ni Po                        { -1 } (930-2) [135A] - N  - 522 12 H1  M1 V           
 2439                      E596662-6 Ag Ni Cy O:2338              { -2 } (651+3) [9444] - -  - 102  7 Hv  M7 V           
 2535                      D110130-7 Lo                           { -3 } (301+3) [4182] - -  - 710  8 Hv  G4 V M3 V      
-2540                      B466863-A Ri Ph Pa Cy O:2638           {  3 } (A7A+0) [9B3A] - N  - 504 16 Na  G4 IV          
+2540                      B466863-A Ri Ph Pa Cy O:2338           {  3 } (A7A+0) [9B3A] - N  - 504 16 Hv  G4 IV          
 2632 Anukarn              A665A24-E Hi Ga                        {  3 } (696+2) [7D4F] - N  - 900  7 Na  M3 V           
 2638 Woondin              B363A31-E Hi                           {  3 } (A9A-1) [9D4E] - N  - 104  8 Na  M7 V           
 2639                      B725341-C Lo                           {  1 } (621+1) [545C] - N  - 500 12 Na  M7 III         
@@ -501,7 +502,7 @@ Hex  Name                 UWP       Remarks                      {Ix}   (Ex)    
 2840                      C434416-6 Ni                           { -2 } (733-3) [4282] - -  - 620 11 Na  M2 III M5 V    
 2935                      C437403-8 Ni                           { -2 } (B33-3) [3249] - N  - 603 11 Na  M0 V           
 3031                      E8A6201-8 Fl Lo                        { -3 } (A11-4) [3166] - -  - 903 13 Na  G3 V M4 V      
-3034                      B484733-B Ag Ri                        {  4 } (B6A-1) [3B89] - N  - 910  8 Na  G5 V           
+3034 Irkan                B484733-B Ag Ri (Irkan)                {  4 } (B6A-1) [3B89] - N  A 910  8 Na  G5 V           
 3036                      C434405-A Ni                           {  0 } (934+0) [445B] - N  - 813 15 Na  G5 V           
 3038                      E230000-0 Ba De Po                     { -3 } (C00-1) [0000] - -  - 011  6 Na  K5 V           
 3138                      C588305-A Lo                           {  0 } (A21-1) [3336] - N  - 700 10 Na  M2 V M0 V      
