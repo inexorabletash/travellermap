@@ -43,7 +43,7 @@
 # Alleg: Na: "Non-Aligned"
 
 Hex  Name                 UWP       Remarks                      {Ix}   (Ex)    [Cx]   N B  Z PBG W  A  Stellar   
----- -------------------- --------- ---------------------------- ------ ------- ------ - -- - --- -- -- -------------
+---- -------------------- --------- ---------------------------- ------ ------- ------ - -- - --- -- -- ---------------------
 0101 Dujj't'kzo           E331000-0 Ba Po                        { -3 } (900-4) [0000] - -  - 003  8 Ia M3 III M4 V    
 0105 Hastitan             E460343-4 De Lo                        { -3 } (621+1) [6146] - -  - 103 10 Na M2 V M4 V      
 0108 Gesklilja            E894000-0 Ba                           { -3 } (700-4) [0000] - -  - 003 15 Na M7 V           
@@ -58,7 +58,7 @@ Hex  Name                 UWP       Remarks                      {Ix}   (Ex)    
 0403 Spapahest            B463651-A Ni Ri                        {  2 } (756+0) [486B] - N  - 504  8 Hc G2 V M2 V      
 0407 Cequnehoia           C31061A-5 Na Ni                        { -2 } (453-2) [4421] - -  - 213 15 Na G2 V           
 0408 Ceteszedon           C421596-B Ni Po He                     {  0 } (741+0) [154A] - -  - 210  9 Na G2 V           
-0501 Zzuexxiiklii         B000667-B As Na Ni Va Re Ithk6         {  1 } (B57+2) [274C] - N  A 514 18 Ia M2 V M2 V      
+0501 Zzuexxiiklii         B000667-B As Na Ni Va Ithk6 O:0302 Pz  {  1 } (B57+2) [274C] - N  A 514 18 Ia M2 V M2 V      
 0503 Droomaskith          B647311-A Lo                           {  1 } (A21+3) [143A] - -  - 804  8 Na M7 V M3 III    
 0604 Erbaes               D678435-5 Ni Pa                        { -3 } (931+2) [4138] - -  - 224 14 Hc M3 V           
 0701 Minrixmor            D424430-7 Ni                           { -3 } (B30+1) [2165] - -  - 612 10 Na K4 IV M5 V     
@@ -92,7 +92,7 @@ Hex  Name                 UWP       Remarks                      {Ix}   (Ex)    
 1510 Kaataphl             C677501-9 Ag Ni                        {  0 } (D41-3) [5588] - M  - 912 14 Hv G8 V           
 1606 Daom                 E527100-5 Lo                           { -3 } (801-1) [1178] - -  - 104 10 Hv F9 IV M4 V     
 1607 Phlaxphlerkest       B611205-B Ic Lo                        {  1 } (711-1) [335C] - K  - 102  9 Hv M5 V           
-1610 Attranax             A241505-E Ni Po Ithk7                  {  1 } (947-1) [165F] - M  A 912 13 Hv M2 V K7 V      
+1610 Attranax             A241505-E Ni Po Ithk7 Pz               {  1 } (947-1) [165F] - M  A 912 13 Hv M2 V K7 V      
 1706 Kliskumak            C4659W5-7 Hi Pr                        {  0 } (784-1) [8989] - M  - 321 11 Hv G8 III         
 1707 Drantrel             B5885S2-A Ag Ni Pr                     {  2 } (848+4) [373B] - -  - 622  9 Hv M4 V M9 V      
 1802 Ririad               E220000-0 Ba De Po                     { -3 } (300+0) [0000] - -  - 013  8 Hv G8 V           
@@ -101,7 +101,7 @@ Hex  Name                 UWP       Remarks                      {Ix}   (Ex)    
 1807 Faxneaq              B7C1104-B Lo Fl He                     {  1 } (F01+4) [124A] - -  - 914  9 Hv M5 V K7 V      
 1809 Iqondool             E655603-5 Ag Ni Ga                     { -2 } (A52-2) [1462] - -  - 800  8 Hv G0 II M7 V     
 1810 Wranomack            C310201-7 Lo                           { -2 } (711+2) [4185] - M  - 301  9 Hv K9 V           
-1902 Ooqsexnus            A8A7517-B Ni Fl IthkW                  {  1 } (746+0) [1659] - E  A 814 14 H2 K3 V M9 V      
+1902 Ooqsexnus            A8A7517-B Ni Fl IthkW Pz               {  1 } (746+0) [1659] - E  A 814 14 H2 K3 V M9 V      
 1907 Elerlyud             D344863-5 Pi Ph Pa Cy O:2007           { -2 } (777+2) [8698] - -  - 603 15 Hv M9 V M3 V      
 1909 Lanelu               C266725-6 Ag Ri                        {  1 } (56B-1) [68A7] - M  - 703 16 Hv K2 V M2 V      
 1910 Qaoothu              C565763-8 Ag Ri Cy O:2007              {  1 } (F69+0) [5865] - M  - 522 16 Hv M3 III         
@@ -111,9 +111,9 @@ Hex  Name                 UWP       Remarks                      {Ix}   (Ex)    
 2107 Esnome               E200000-0 Ba Va                        { -3 } (600+0) [0000] - -  - 015 10 Hv M3 V           
 2110 Ldouno               A000211-E As Lo Va                     {  1 } (D11-2) [136F] - -  - 920  8 H1 M0 V           
 2201 Lelyrspunsk          A8659U1-B Hi Pr Ga                     {  3 } (A8B-1) [CC48] - K  - 304 12 Hv M8 V M7 V      
-2202 Fupiqisk             A3344A9-D Ni IthkW                     {  1 } (532-3) [6539] - -  A 801 10 Hv G6 V M5 V M8 V 
+2202 Fupiqisk             A3344A9-D Ni IthkW Pz                  {  1 } (532-3) [6539] - -  A 801 10 Hv G6 V M5 V M8 V 
 2203 Katuasy              C322523-9 He Ni Po                     { -1 } (942+3) [4417] - M  - 802 11 Hv M3 III         
-2206 Aroonmar             C435319-6 Lo (Aroonmar)                { -2 } (221+3) [3166] - M  A 812  8 H4 M3 V           
+2206 Aroonmar             C435319-6 Lo (Aroonmar) Pz             { -2 } (221+3) [3166] - M  A 812  8 H4 M3 V           
 2208 Lyonskfomox          A562AT3-C Cp Hi                        {  3 } (F9B+1) [8D5F] - -  - 604 16 Hv M2 V           
 2304 Semranniphl          A997663-A Ag Ni Cy O:2605              {  2 } (856-2) [985A] - E  - 810 12 Hv M7 V M9 V      
 2307 Refaxtren            E4658S4-5 Ri Ph Pa                     { -1 } (875-2) [9794] - -  - 423 15 Hv M2 V           
@@ -129,7 +129,7 @@ Hex  Name                 UWP       Remarks                      {Ix}   (Ex)    
 2604 Amaoox               C6967S5-7 Ag Pi                        {  0 } (867+1) [B73A] - M  - 504 10 Hv M0 V G4 V      
 2605 Ninsponu             B553AS5-E Hi Po                        {  3 } (F98-2) [8D9F] - -  - 624 14 Hv G5 V M0 V      
 2607 Qacirgin             A7859T4-E Hi Pr Ga                     {  3 } (C87-3) [9C5B] - M  - 625 12 Hv M7 V           
-2608 Nortiloq             A453375-E Lo Po IthkW                  {  1 } (A21-1) [745F] - -  A 713  9 Hv G0 V M5 V      
+2608 Nortiloq             A453375-E Lo Po IthkW Pz               {  1 } (A21-1) [745F] - -  A 713  9 Hv G0 V M5 V      
 2609 Glea                 A667800-F Ri Ga Ph Pa Cx               {  3 } (577-5) [5BAF] - E  - 701  9 Hv G0 V           
 2610 Inskeiphl            B677101-C Lo                           {  1 } (D01-5) [227D] - K  - 804 16 Hv M4 V M5 V      
 2706 Hupyrax              B200104-9 Lo Va                        {  0 } (801+0) [3118] - M  - 522  9 Hv M1 V K0 V M7 V 
@@ -197,8 +197,8 @@ Hex  Name                 UWP       Remarks                      {Ix}   (Ex)    
 0916 Ackalan              E200000-0 Ba Va                        { -3 } (A00-1) [0000] - M  - 022 14 Hv M1 V           
 0917 Onuqkuck             E210000-0 Ba                           { -3 } (600-5) [0000] - -  - 014 14 Hv G2 V           
 1011 Slekenoc             E000000-0 As Ba Va                     { -3 } (A00+0) [0000] - -  - 002 13 Hv M8 V K7 V      
-1020 Zzifiirsira          B653625-7 Ni Po Ithk7                  { -1 } (653-1) [758C] - -  R 803 12 Hv M7 V M6 V      
-1112 Digqarnac            D332598-6 Ni Po Ithk8                  { -3 } (542-2) [4227] - K  A 104 15 Hv G2 V           
+1020 Zzifiirsira          B653625-7 Ni Po Ithk7 Fo               {  0 } (653-1) [768C] - KM R 803 12 Hv M7 V M6 V      
+1112 Digqarnac            D332598-6 Ni Po Ithk8 Pz               { -3 } (542-2) [4227] - K  A 104 15 Hv G2 V           
 1113 Nixkoptest           B877202-B Lo                           {  1 } (F11+1) [6398] - K  - 624 17 Hv M4 II          
 1119 Nalfungack           A595203-E Lo                           {  1 } (911+2) [2329] - M  - 600  5 Hv M9 V           
 1212 Tecoofo              D558814-5 Ph Pa                        { -2 } (676-1) [6636] - -  - 524 14 H1 M9 V           
@@ -210,7 +210,7 @@ Hex  Name                 UWP       Remarks                      {Ix}   (Ex)    
 1319 Lonafel              A400A06-F Cp In Hi Na Va               {  4 } (C9B-4) [9E1F] - M  - 623 13 Hv M2 V           
 1320 Aqadi                C4748T5-9 Pi Ph Pa                     {  0 } (F7A+3) [583C] - M  - 705 13 Hv M7 V           
 1411 Toorikaft            A535406-B Ni IthkW                     {  1 } (D37+5) [455C] - -  - 504 12 Hv M0 V           
-1418 Pefoonor             B400207-D Lo Va Ithk8                  {  1 } (D11+3) [134A] - -  A 404 12 Hv M3 V           
+1418 Pefoonor             B400207-D Lo Va Ithk8 Pz               {  1 } (D11+3) [134A] - -  A 404 12 Hv M3 V           
 1419 Gonacurglan          A6859U4-E Hi Pr Ga                     {  3 } (48A-4) [CC6B] - -  - 220  6 Hv M7 V G0 V D    
 1512 Gamhurkua            B535201-B Lo                           {  1 } (C11+1) [134C] - K  - 213 11 Hv M3 V           
 1513 Enangeq              B233416-8 Ni Po                        { -1 } (E34+2) [532A] - -  - 903  8 H5 G6 V           
@@ -221,7 +221,7 @@ Hex  Name                 UWP       Remarks                      {Ix}   (Ex)    
 1617 Ithiftool            C454AT5-B Hi                           {  2 } (C99+0) [AC3B] - M  - 120 13 Hv M8 V M6 V      
 1619 Aqaxa                B446616-9 Ag Ni                        {  1 } (755-1) [4758] - K  - 803  8 H2 M3 V M2 V      
 1711 Phlooqysk            A5748S2-C Pi Ph Pa                     {  2 } (978-3) [9A58] - K  - 620  9 Hv G8 V           
-1714 Thotrazef            A8A8317-D Lo Fl (Thotrazef)            {  1 } (B21+2) [145E] - E  A 802 10 H4 M4 V M2 V      
+1714 Thotrazef            A8A8317-D Lo Fl (Thotrazef) Pz         {  1 } (B21+2) [145E] - E  A 802 10 H4 M4 V M2 V      
 1716 Eraeck               C450663-9 De Ni Po Cy O:1717           { -1 } (A51-2) [7517] - -  - 600  7 Hv M2 V G6 V      
 1717 Zoonkinkut           C88A914-A Hi Pr Wa                     {  2 } (C88+0) [CB1B] - M  - 404 11 H1 G5 V           
 1816 Blagein              E446102-6 Lo                           { -3 } (601+2) [1186] - -  - 835 18 Hv M2 V M6 V      
@@ -233,7 +233,7 @@ Hex  Name                 UWP       Remarks                      {Ix}   (Ex)    
 2114 Elacgephl            D646416-6 Ni Pa                        { -3 } (730-2) [4138] - -  - 801 11 H3 M1 V M7 V      
 2117 Phloonaor            E110000-0 Ba                           { -3 } (600-1) [0000] - -  - 023 14 Hv M9 V           
 2120 Lilosel              E642514-5 He Ni Po                     { -3 } (340-2) [9288] - -  - 822 14 H4 M6 V M2 V      
-2220 Puackaroo            C9A4313-8 Lo Fl (Puackaroo)            { -2 } (921+3) [4193] - M  A 825 18 H4 F9 IV          
+2220 Puackaroo            C9A4313-8 Lo Fl (Puackaroo) Pz         { -2 } (921+3) [4193] - M  A 825 18 H4 F9 IV          
 2313 Kuanildnun           B578211-B Lo                           {  1 } (811-1) [1316] - -  - 500 10 H2 M7 V M3 V      
 2316 Eqdiur               B567641-9 Ag Ni Ri                     {  2 } (B55+1) [685A] - M  - 200  7 Hv M7 V           
 2319 Urkarcert            A7599T3-B Hi                           {  3 } (88D-2) [7C1B] - E  - 303 10 Hv M3 V K5 V      
@@ -247,11 +247,11 @@ Hex  Name                 UWP       Remarks                      {Ix}   (Ex)    
 2711 Anruno               B67851A-A Ag Ni                        {  2 } (546+3) [477B] - K  - 702 11 H6 M5 V           
 2714 Keruqon              A573815-C Pi Ph                        {  2 } (F7A+0) [CA59] - -  - 924 18 H4 F0 V           
 2718 Axtrafta             A483825-D Ri Ph                        {  3 } (B79+1) [6B5D] - -  - 520 13 Hv M6 V           
-2719 Qadartte             C234696-7 Ni Ithk8                     { -2 } (551+0) [3498] - M  A 603 14 Hv M6 V           
+2719 Qadartte             C234696-7 Ni Ithk8 Pz                  { -2 } (551+0) [3498] - M  A 603 14 Hv M6 V           
 2813 Paennat              E450000-0 Ba De Po                     { -3 } (500+1) [0000] - -  - 001 12 Hv G0 V           
 2815 Kaxauar              B5557S4-A Ag                           {  3 } (F69+0) [6A26] - K  - 704 10 Hv M4 V           
 2914 Peftfoxax            C6458S5-7 Pi Ph Pa                     { -1 } (274-2) [A74A] - -  - 622  7 Hv K8 V           
-2915 Hestaar              C6A2274-8 Lo He Fl Ithk8               { -2 } (311+0) [6148] - M  A 900  4 Hv M4 V           
+2915 Hestaar              C6A2274-8 Lo He Fl Ithk8 Pz            { -2 } (311+0) [6148] - M  A 900  4 Hv M4 V           
 2920 Ssifiixe             A120204-F De Lo Po IthkW               {  1 } (811+3) [635D] - -  - 111 10 Hv G6 V           
 3012 Laaqvir              A555AS5-F Hi                           {  3 } (499-1) [ED3F] - E  - 400  4 Hv M8 V M2 V      
 3017 Koquaskip            C577106-5 Lo                           { -2 } (801+3) [1123] - M  - 820  8 Hv M2 V           
@@ -264,7 +264,7 @@ Hex  Name                 UWP       Remarks                      {Ix}   (Ex)    
 3120 Acklewa              A6539S4-D Hi Po                        {  3 } (B8B-2) [8C6B] - -  - 520 10 Hv F8 V           
 3212 Goocnexi             A5548S3-C Ph Pa                        {  2 } (B7A-2) [5A89] - -  - 304 13 Hv M5 V           
 3218 Thitivoo             A5116S2-B Ic Na Ni                     {  2 } (857+2) [186C] - KM - 603 12 Hv M4 V           
-3220 Gilanox              E430119-6 De Lo Po (Gilanox)           { -3 } (401-1) [1147] - -  A 314 14 H3 K8 V M3 V      
+3220 Gilanox              E430119-6 De Lo Po (Gilanox) Pz        { -3 } (401-1) [1147] - -  A 314 14 H3 K8 V M3 V      
 0123 Ppooarn              C798663-7 Ag Ni Cy O:0124              { -1 } (653+4) [3546] - -  - 503 10 Hv F0 V           
 0124 Zirnul               A5456S2-C Ag Ni                        {  2 } (853-1) [786B] - M  - 305 17 Hv G6 V           
 0128 Exatdrirn            A6476S1-C Ag Ni                        {  2 } (953+0) [783F] - K  - 201  8 Hv M9 V M4 V      
@@ -287,7 +287,7 @@ Hex  Name                 UWP       Remarks                      {Ix}   (Ex)    
 0728 Dacconuag            C7567S2-7 Ag Ga                        {  0 } (A67+5) [671A] - M  - 600  8 Hv M3 V           
 0729 Paguwri              B412206-C Ic Lo                        {  1 } (C11+2) [435D] - M  - 614 10 Hv G1 V M2 V      
 0921 Utsoqa               D7579T2-7 Hi Ga                        { -1 } (882+1) [E878] - -  - 215 16 Hv M4 V M3 V      
-0922 Uremoq               B435616-C Ni GurvW                     {  1 } (856-3) [871F] - K  A 300  8 H4 K2 V M1 V      
+0922 Uremoq               B435616-C Ni GurvW Pz                  {  1 } (856-3) [871F] - K  A 300  8 H4 K2 V M1 V      
 0924 Euynsloot            A201203-B Ic Lo Va                     {  1 } (E11+1) [135D] - -  - 604 12 Hv M9 V           
 1022 Tiarta               CAD5202-6 Lo                           { -2 } (211+0) [1173] - M  - 710  5 Hv M1 V           
 1023 Moacki               B94A516-8 Ni Wa                        { -1 } (F41-2) [742B] - K  - 415 10 H4 K5 V           
@@ -296,16 +296,16 @@ Hex  Name                 UWP       Remarks                      {Ix}   (Ex)    
 1027 Asdranwren           A8668T6-C Ga Ri Ph Pa MedrW            {  3 } (A7D+1) [5B6E] - -  - 600 10 Hv M4 V M1 V      
 1121 Mukeftyn             B674723-9 Ag Pi                        {  2 } (C67-2) [497A] - K  - 524 13 Hv K2 III         
 1126 Dequesk              E426000-0 Ba                           { -3 } (C00+3) [0000] - -  - 004  9 Hv M4 V M4 V      
-1128 Medrarust            E241444-3 Ni Po (Medrarust)            { -3 } (731-5) [6133] - -  A 802  7 Hv M7 V           
+1128 Medrarust            E241444-3 Ni Po (Medrarust) Pz         { -3 } (731-5) [6133] - -  A 802  7 Hv M7 V           
 1223 Slifeor              E500000-0 Ba Va                        { -3 } (900+1) [0000] - K  - 010 11 Hv M1 V M1 V      
 1225 Kergina              A257711-A Ag                           {  3 } (A6C+0) [4A1B] - -  - 703  8 H3 M3 V M0 V      
 1227 Aransluq             B9C4402-9 Fl Ni MedrW                  {  0 } (A35+0) [4429] - K  - 513 10 Hv K5 V           
-1228 Rinicu               BAC6265-B Lo Fl MedrW O:1427           {  1 } (A11-2) [131A] - M  - 802 11 Hv M3 V M6 V      
+1228 Rinicu               BAC6265-B Lo Fl MedrW Re O:14          {  1 } (A11-2) [131A] - M  - 802 11 Hv M3 V M6 V      
 1321 Daspaglo             E676602-6 Ag Ni                        { -2 } (852+3) [846B] - -  - 204 17 Hv F2 V M3 V      
 1327 Okerldan             E310000-0 Ba                           { -3 } (600+2) [0000] - -  - 003 11 Hv M1 V M2 V      
-1328 Kixivos              A446618-8 Ag Ni Medr8                  {  0 } (D51-4) [5658] - -  A 502 10 H3 G4 V           
+1328 Kixivos              A446618-8 Ag Ni Medr8 Pz               {  0 } (D51-4) [5658] - -  A 502 10 H3 G4 V           
 1330 Blaaxor              A7A6451-B Ni Fl                        {  1 } (B33+1) [353F] - -  - 800  8 Hv M9 V           
-1421 Naldatlan            A573412-D Ni (Naldatlan)               {  1 } (635+1) [854C] - M  A 801  9 H3 G0 V           
+1421 Naldatlan            A573412-D Ni (Naldatlan) Pz            {  1 } (635+1) [854C] - M  A 801  9 H3 G0 V           
 1422 Motrulimvep          D685721-4 Ag Ri Ga Nald7               {  0 } (569+1) [6796] - M  - 804 14 Hv M7 V           
 1423 Danacophl            A87A812-D Pi Wa Ph Medr5               {  3 } (87A-5) [8BA9] - KM - 824 12 H2 M6 V M4 V G0 V 
 1426 Ipkepoor             A682841-C Ri Ph Medr9                  {  3 } (A78+3) [9B6F] - -  - 903 11 Hv G3 V           
@@ -313,7 +313,7 @@ Hex  Name                 UWP       Remarks                      {Ix}   (Ex)    
 1522 Qalgiviqisk          A510105-D Lo Nald4                     {  1 } (A01-1) [3249] - -  - 802  5 Hv K6 V           
 1528 Annooro              B270305-A De Lo Medr5                  {  1 } (F21+3) [341B] - M  - 933 16 Hv K0 V M9 V      
 1530 Glanalnur            A867621-C Ga Ag Ni Ri                  {  3 } (E55-2) [2939] - E  - 714 16 Hv M7 V M5 V      
-1622 Piga Cepap           C643614-5 Ni Po NaldW                  { -2 } (652-2) [7426] - M  A 803 13 H5 M0 V M6 V      
+1622 Piga Cepap           C643614-5 Ni Po NaldW Pz               { -2 } (652-2) [7426] - M  A 803 13 H5 M0 V M6 V      
 1623 Irnafal              B686814-A Ri Ga Ph Pa                  {  3 } (F78+2) [CB5E] - K  - 804  7 H4 M6 V           
 1625 Lablaca              E540000-0 Ba De He Po                  { -3 } (500-1) [0000] - -  - 014 14 Hv M0 V M6 VI     
 1626 Heuren               A9B4521-9 Fl Ni                        {  0 } (843+1) [553C] - -  - 600  5 Hv M6 V           
@@ -329,10 +329,10 @@ Hex  Name                 UWP       Remarks                      {Ix}   (Ex)    
 1923 Ithilkat             EAD3304-8 Lo                           { -3 } (D21-2) [1168] - -  - 523 15 Hv G5 V M8 V      
 1925 Ataan                B637526-A Ni                           {  1 } (F43-2) [464D] - -  - 824 16 Hv M4 II M8 V     
 1927 Ooxkuanto            A978105-D Lo                           {  1 } (801-4) [222F] - -  - 903 14 Hv M3 V           
-1928 Ropadran             E337319-6 Lo (Ropadran)                { -3 } (A21-5) [4165] - -  A 614 16 H4 M3 V           
+1928 Ropadran             E337319-6 Lo (Ropadran) Pz             { -3 } (A21-5) [4165] - -  A 614 16 H4 M3 V           
 1930 Notriir              A887AT6-B Hi Ga                        {  3 } (49D+2) [9D1C] - K  - 502  9 Hv K7 III         
 2023 Gerexlyum            A3755S6-D Ag Ni                        {  2 } (F45+3) [479A] - E  - 822 14 Hv G9 V           
-2025 Lyanawro             E677206-5 Lo (Lyanawro)                { -3 } (811+2) [113A] - M  A 610  9 Hv F4 V           
+2025 Lyanawro             E677206-5 Lo (Lyanawro) Pz             { -3 } (811+2) [113A] - M  A 610  9 Hv F4 V           
 2026 Ooskenoo             C211524-9 Ic Ni                        { -1 } (A44-2) [2455] - M  - 800  4 Hv M4 V M5 V      
 2030 Eldiwral             C2416S6-8 Ni Po                        { -2 } (850+1) [8436] - M  - 805 16 Hv K7 V           
 2121 Slawuniv             B4748T1-B Pi Ph Pa                     {  2 } (A7D+0) [7A7F] - K  - 510  8 Hv G8 V           
@@ -341,7 +341,7 @@ Hex  Name                 UWP       Remarks                      {Ix}   (Ex)    
 2129 Sludinent            E99A000-0 Ba Wa                        { -3 } (800+1) [0000] - -  - 021 13 Hv G1 V           
 2221 Sohtipuas            E4537S1-6 Po                           { -2 } (960+4) [6556] - -  - 723 13 Hv M6 V           
 2230 Doofacmuark          C410201-8 Lo                           { -2 } (B11+3) [311A] - M  - 813 12 Hv M1 V G7 V      
-2322 Dacipon              D979464-5 Ni WeqbW O:2320              { -3 } (830+4) [6167] - -  - 711 12 Hv M2 V           
+2322 Dacipon              D979464-5 Ni WeqbW Re O:2320           { -3 } (830+4) [6167] - -  - 711 12 Hv M2 V           
 2323 Weqbleftden          AAC2528-9 Ni Fl He (Weqbleftden)       {  0 } (842+2) [3588] - E  - 603  7 Hv K7 V M5 V      
 2324 Ordraarn             E557405-8 Ni Pa Weqb9                  { -3 } (B31-1) [816A] - -  - 503  9 Hv M3 V           
 2325 Gladldandax          A596504-B Ag Ni                        {  2 } (A44-4) [976D] - -  - 703 10 Hv G0 V M1 V      
@@ -375,11 +375,11 @@ Hex  Name                 UWP       Remarks                      {Ix}   (Ex)    
 3124 Napuxuas             A5368T1-A Ph                           {  2 } (A74+3) [BA3E] - K  - 900  6 Hv K1 IV          
 3126 Namogoni             C533205-6 Lo Po                        { -1 } (411+2) [5162] - KM - 710 12 Hv M8 II          
 3127 Klemixaphlen         A434426-D Ni                           {  1 } (735-1) [655F] - E  - 101 10 Hv M3 V           
-3129 Pacawri              D422407-7 He Ni Po (Pacawri)           { -3 } (730-1) [8138] - S  A 800  5 Hv M5 V K6 V      
+3129 Pacawri              D422407-7 He Ni Po (Pacawri) Pz        { -3 } (730-1) [8138] - S  A 800  5 Hv M5 V K6 V      
 3221 Spickoat             A2108S3-E Pi Na Ph                     {  3 } (879+3) [6B7F] - KM - 804 15 Hv K4 V           
 3224 Fiiler               A455823-A Ph Pa                        {  2 } (57D+0) [8A4B] - E  - 600  6 Hv K3 V           
 3225 Daaxden              A737231-D Lo                           {  1 } (911+0) [138D] - -  - 814 14 Hv F3 V           
-3226 Faskoska             B335506-C Ni PacaW                     {  1 } (643-3) [166E] - M  A 200  5 Hv G0 III         
+3226 Faskoska             B335506-C Ni PacaW Pz                  {  1 } (643-3) [166E] - M  A 200  5 Hv G0 III         
 3227 Leponir              B6A1604-9 Fl He Ni                     {  0 } (652+1) [469B] - K  - 700  5 Hv M0 V           
 3230 Ogsletsla            B384AT3-B Hi                           {  3 } (898+3) [CD8B] - K  - 603 11 Hv M4 V F3 V      
 0234 Isktrufat            A757404-D Ni Ga Pa                     {  1 } (A37+0) [458B] - -  - 301 14 Hv M8 V           
@@ -390,14 +390,14 @@ Hex  Name                 UWP       Remarks                      {Ix}   (Ex)    
 0436 Aqnustko             C000101-9 As Lo Va                     { -1 } (901-5) [3168] - M  - 903 11 Hv F7 V           
 0437 Blutkiqe             E698103-7 Lo                           { -3 } (701-2) [1149] - -  - 620  8 Hv K5 V           
 0439 Noluroorn            A7723T3-D He Lo                        {  1 } (C21-2) [248F] - -  - 613 13 Hv M3 V M2 V      
-0440 Ateskmosk            A544876-7 Pi Ph Pa (Ateskmosk)         {  0 } (373+4) [8817] - N  A 805 15 Hv F6 V           
+0440 Ateskmosk            A544876-7 Pi Ph Pa (Ateskmosk) Da      {  0 } (373+4) [8817] - N  A 805 15 Hv F6 V           
 0535 Ulacguq              B495304-8 Lo                           { -1 } (921+3) [3225] - K  - 603  7 Hv M2 V           
 0537 Kakporel             A8A25S5-D He Fl Ni                     {  1 } (547+4) [467D] - E  - 800  6 Hv M5 V G9 V      
 0538 Usiskgork            A310106-F Lo                           {  1 } (A01-2) [121F] - -  - 502 11 Hv G5 V           
-0636 Waclanyf             D000221-9 As Lo Va                     { -2 } (811-1) [1168] - S  A 700  7 Hv M8 III M8 III  
+0636 Waclanyf             D000221-9 As Lo Va Pz                  { -2 } (811-1) [1168] - S  A 700  7 Hv M8 III M8 III  
 0732 Blixonlan            B341426-C He Ni Po (Blixonlan)         {  1 } (635+0) [254C] - K  - 900 12 Hv F8 V           
 0931 Phleskear            C366774-8 Ag Ri                        {  1 } (A6C-3) [C833] - M  - 903 13 Hv M6 V           
-0933 Niodoox              B898465-B Ni Pa O:1134                 {  1 } (B35-2) [2558] - M  - 804 11 Hv M2 V M0 V M9 V 
+0933 Niodoox              B898465-B Ni Pa Re O:1134              {  1 } (B35-2) [2558] - M  - 804 11 Hv M2 V M0 V M9 V 
 0940 Zzapiirniff          A500587-E Ni Va Ithk9                  {  1 } (D47+3) [562F] - M  - 613 13 Hv F1 V           
 1040 Uasothlan            C657621-7 Ag Ni Ga                     { -1 } (C53+2) [8522] - -  - 802 13 Hv M3 V M0 V      
 1133 Liroroo              D883AT3-8 Hi                           { -1 } (A95-1) [D92C] - -  - 202 10 Hv M2 V M0 V      
@@ -431,7 +431,7 @@ Hex  Name                 UWP       Remarks                      {Ix}   (Ex)    
 2133 Dooaroft             B300202-B Lo Va                        {  1 } (F11+1) [1389] - -  - 214 13 Hv G0 V M4 V      
 2134 Warkexres            AA965S5-C Ag Ni                        {  2 } (944+0) [779D] - M  - 920 11 Hv K0 V M9 V      
 2136 Lioolslon            A765AW2-E Cp Hi Ga                     {  3 } (A9A+1) [6D8C] - -  - 304 13 Hv F3 IV M5 V     
-2140 Slooaqrer            C978696-5 Ag Ni (Fupiqisk)             { -1 } (454+3) [6523] - M  A 603 13 Hv G6 V M4 V      
+2140 Slooaqrer            C978696-5 Ag Ni (Fupiqisk) Pz          { -1 } (454+3) [6523] - M  A 603 13 Hv G6 V M4 V      
 2233 Phlopenef            E300104-7 Lo Va                        { -3 } (601+0) [1167] - -  - 704 10 Hv M6 V           
 2239 Kliemsaq             B7677S1-8 Ag Ri Ga                     {  2 } (D6B-1) [892A] - K  - 805 17 Hv M5 V           
 2335 Rokope               D2026S5-7 Ic Na Ni Va                  { -3 } (A50-1) [8347] - -  - 603 15 Hv M1 V           
@@ -440,7 +440,7 @@ Hex  Name                 UWP       Remarks                      {Ix}   (Ex)    
 2431 Lyeecux              C7958S4-8 Pi Ph Pa                     { -1 } (577-3) [6735] - M  - 800  5 Hv G8 V M9 V M6 V 
 2433 Spualde              E511000-0 Ba Ic                        { -3 } (500-4) [0000] - -  - 022 14 Hv K6 V M3 V      
 2436 Galoostmur           A626615-B Ni                           {  1 } (D53+1) [774E] - E  - 904 15 H3 F1 III         
-2437 Efacen               B85A333-B Lo Wa (Efacen)               {  1 } (C21-2) [744D] - M  A 614 11 Hv F3 V M6 V      
+2437 Efacen               B85A333-B Lo Wa (Efacen) Pz            {  1 } (C21-2) [744D] - M  A 614 11 Hv F3 V M6 V      
 2440 Weaxe                A512323-C Ic Lo                        {  1 } (C21+1) [743B] - -  - 704 10 Hv M9 V           
 2533 Phlakefi             A1505S4-A De Ni Po                     {  1 } (C46-2) [1658] - K  - 503 13 Hv M8 V K9 V      
 2534 Fyikti               C435306-7 Lo                           { -2 } (721+0) [412B] - M  - 510  4 Hv M8 V K2 V      
@@ -453,12 +453,12 @@ Hex  Name                 UWP       Remarks                      {Ix}   (Ex)    
 2737 Ecedor               D658411-5 Ni Pa                        { -3 } (630+0) [4161] - -  - 315 13 H1 M4 V           
 2838 Initnoq              B8A6204-9 Lo Fl                        {  0 } (811+0) [121C] - K  - 302 13 Hv A6 V           
 2933 Ldenandax            A6948S2-C Pi Ph Pa                     {  2 } (C7B+2) [AA4D] - M  - 502 10 Hv K5 V M6 V      
-3031 Ooqinna              A443631-D Po Ni (Ooqin)                {  1 } (857+3) [174F] - K  A 503  9 Hv G7 V M7 V      
+3031 Ooqinna              A443631-D Po Ni (Ooqin) Pz             {  1 } (857+3) [174F] - K  A 503  9 Hv G7 V M7 V      
 3034 Atonaniq             B535205-8 Lo                           { -1 } (A11+1) [316B] - M  - 924 16 Hv G2 V M4 V      
 3131 Qutucket             A666AS1-B Hi Ga                        {  3 } (B9A+5) [8D5E] - K  - 102  5 Hv M3 V M7 V      
 3132 Trolucirn            D236421-8 Ni                           { -3 } (F31-5) [5179] - M  - 805 10 Hv M9 V K4 V      
 3135 Gooniwrun            A987431-C Ni Pa                        {  1 } (B33+1) [253D] - -  - 805 16 Hv F6 V           
-3137 Uostoor              D222506-7 Ni Po (Uostoor)              { -3 } (443-1) [6246] - -  A 503 12 Hv M7 V M1 V      
+3137 Uostoor              D222506-7 Ni Po (Uostoor) Pz           { -3 } (443-1) [6246] - -  A 503 12 Hv M7 V M1 V      
 3232 Wrarocar             E637000-0 Ba                           { -3 } (600+2) [0000] - -  - 004  9 Hv F2 IV          
 3235 Qamkafve             B8A66S3-B Ni Fl                        {  1 } (F57+1) [672A] - K  - 824 10 Hv M0 V M1 VI     
 3236 Upkasten             A100716-E Na Va Pi                     {  2 } (A69+0) [893D] - -  - 614 13 Hv F2 V M3 V      
