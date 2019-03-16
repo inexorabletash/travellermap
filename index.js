@@ -1467,6 +1467,10 @@ window.addEventListener('DOMContentLoaded', function() {
     }, 1000);
   }
 
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js');
+  }
+
   // After all async events from the map have fired...
   setTimeout(function() { enableContext = true; }, 0);
 });
