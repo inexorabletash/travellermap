@@ -151,7 +151,7 @@ namespace Maps.API
                             throw new HttpError(400, "Bad Request", errors.ToString());
 
 
-                        title = "User Data";
+                        title = sector.Names.Count > 0 ? sector.Names[0].Text : "User Data";
 
                         // TODO: Suppress all OTU rendering.
                         options &= ~(MapOptions.WorldsHomeworlds | MapOptions.WorldsCapitals);

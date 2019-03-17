@@ -123,7 +123,7 @@ namespace Maps.API
                             if (!dataURI)
                             {
                                 context.Response.AddHeader("content-length", stream.Length.ToString());
-                                context.Response.AddHeader("content-disposition", "inline;filename=\"map.svg\"");
+                                context.Response.AddHeader("content-disposition", $"inline;filename=\"{Util.SanitizeFilename(title)}.svg\"");
                             }
                             stream.WriteTo(outputStream);
                         }
@@ -164,7 +164,7 @@ namespace Maps.API
                                 if (!dataURI)
                                 {
                                     context.Response.AddHeader("content-length", stream.Length.ToString());
-                                    context.Response.AddHeader("content-disposition", "inline;filename=\"map.pdf\"");
+                                    context.Response.AddHeader("content-disposition", $"inline;filename=\"{Util.SanitizeFilename(title)}.pdf\"");
                                 }
                                 stream.WriteTo(outputStream);
                             }
