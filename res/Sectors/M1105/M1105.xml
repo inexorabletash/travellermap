@@ -2971,6 +2971,15 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
       <Allegiance Code="De">Draconian Empire</Allegiance>
       <Allegiance Code="Rv">Reavers</Allegiance>
     </Allegiances>
+    <Borders>
+      <Border Allegiance="Aa" Color="orange">0211 0312 0211 </Border>
+      <Border Allegiance="De" Color="blue">1426 1527 1626 1727 1826 1927 2027 2127 2227 2328 2428 2429 2430 2431 2331 2330 2329 2328 2227 2128 2028 1929 1828 1728 1628 1529 1528 1427 1426 </Border>
+      <Border Allegiance="Gr" Color="green">0201 0302 0402 0502 0602 0603 0604 0705 0805 0705 0604 0505 0405 0306 0305 0304 0303 0302 0201 </Border>
+      <Border Allegiance="Hl" Color="cyan">1314 1413 1514 1613 1714 1814 1915 2015 2116 2216 2316 2416 2517 2518 2519 2520 2419 2320 2220 2219 2119 2118 2017 1917 1816 1716 1616 1517 1416 1316 1315 1314 </Border>
+      <Border Allegiance="Rv" Color="red">2031 2032 2033 2034 2135 2034 2033 2032 2031 </Border>
+      <Border Allegiance="Rv" Color="red" ShowLabel="false">2437 </Border>
+      <Border Allegiance="Sa" Color="yellow">1320 1420 1520 1619 1719 1818 1817 1818 1819 1920 2020 1921 1922 1923 1823 1724 1624 1525 1424 1325 1324 1323 1322 1321 1320 </Border>
+    </Borders>
   </Sector>
   <Sector>
     <Y>5</Y>
