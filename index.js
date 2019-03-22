@@ -21,10 +21,17 @@ window.addEventListener('DOMContentLoaded', function() {
   // Account for adjustments to innerHeight (dynamic browser UI)
   // (Repro: Safari on iPhone, enter landscape, make url bar appear)
   window.addEventListener('resize', function(e) {
-    if (window.innerHeight !== window.outerHeight) {
-      document.body.style.height = window.innerHeight + 'px';
-      window.scrollTo(0, 0);
-    }
+    // Timeout to work around iOS Safari giving incorrect sizes while 'resize'
+    // dispatched.
+    setTimeout(function() {
+      if (window.innerHeight !== window.outerHeight) {
+        document.body.style.height = window.innerHeight + 'px';
+        window.scrollTo(0, 0);
+      } else {
+        document.body.style.height = '';
+        window.scrollTo(0, 0);
+      }
+    }, 100);
   });
 
   var mapElement = $('#dragContainer'), sizeElement = mapElement.parentNode;
