@@ -818,7 +818,7 @@ window.addEventListener('DOMContentLoaded', function() {
   var lastX, lastY, lastMilieu;
   var selectedSector = null;
   var selectedWorld = null;
-  var ignoreIndirect = false;
+  var ignoreIndirect = true;;
   var enableContext;
 
   function makeWikiURL(suffix) {
@@ -1463,12 +1463,31 @@ window.addEventListener('DOMContentLoaded', function() {
   if (!isIframe) {
     setTimeout(function() {
       var cookies = Util.parseCookies();
-      if (!(cookies.tm_accept || localStorage.getItem('tm_accept'))) {
+      var cookies_key = 'tm_accept';
+      if (!(cookies.tm_accept || localStorage.getItem(cookies_key))) {
         document.body.classList.add('cookies-not-accepted');
         $('#cookies button').addEventListener('click', function(e) {
           document.body.classList.remove('cookies-not-accepted');
           document.cookie = 'tm_accept=1';
-          localStorage.setItem('tm_accept', 1);
+          localStorage.setItem(cookies_key, 1);
+        });
+      }
+    }, 1000);
+  }
+
+  // Show promo, if not dismissed.
+  if (!isIframe) {
+    setTimeout(function() {
+      var promo_key = 'tm_promo1';
+      if (!localStorage.getItem(promo_key)) {
+        document.body.classList.add('show-promo');
+        $('#promo-closebtn').addEventListener('click', function(e) {
+          document.body.classList.remove('show-promo');
+          localStorage.setItem(promo_key, 1);
+        });
+        $('#promo-hover a').addEventListener('click', function(e) {
+          document.body.classList.remove('show-promo');
+          localStorage.setItem(promo_key, 1);
         });
       }
     }, 1000);
