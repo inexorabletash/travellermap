@@ -194,6 +194,9 @@ namespace Maps.Utilities
                 yield return current;
             }
         }
+
+        private static Regex alphanumeric = new Regex(@"\W+");
+        public static string SanitizeFilename(string input) => alphanumeric.Replace(input, "_");
     }
 
     // Like Regex, but takes shell-style globs:

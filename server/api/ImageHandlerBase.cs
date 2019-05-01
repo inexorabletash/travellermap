@@ -123,7 +123,7 @@ namespace Maps.API
                             if (!dataURI)
                             {
                                 context.Response.AddHeader("content-length", stream.Length.ToString());
-                                context.Response.AddHeader("content-disposition", "inline;filename=\"map.svg\"");
+                                context.Response.AddHeader("content-disposition", $"inline;filename=\"{Util.SanitizeFilename(title)}.svg\"");
                             }
                             stream.WriteTo(outputStream);
                         }
@@ -141,7 +141,7 @@ namespace Maps.API
                         document.Info.Author = "Joshua Bell";
                         document.Info.Creator = "TravellerMap.com";
                         document.Info.Subject = DateTime.Now.ToString("F", CultureInfo.InvariantCulture);
-                        document.Info.Keywords = "The Traveller game in all forms is owned by Far Future Enterprises. Copyright (C) 1977 - 2018 Far Future Enterprises. Traveller is a registered trademark of Far Future Enterprises.";
+                        document.Info.Keywords = "The Traveller game in all forms is owned by Far Future Enterprises. Copyright (C) 1977 - 2019 Far Future Enterprises. Traveller is a registered trademark of Far Future Enterprises.";
 
                         // TODO: Credits/Copyright
                         // This is close, but doesn't define the namespace correctly:
@@ -164,7 +164,7 @@ namespace Maps.API
                                 if (!dataURI)
                                 {
                                     context.Response.AddHeader("content-length", stream.Length.ToString());
-                                    context.Response.AddHeader("content-disposition", "inline;filename=\"map.pdf\"");
+                                    context.Response.AddHeader("content-disposition", $"inline;filename=\"{Util.SanitizeFilename(title)}.pdf\"");
                                 }
                                 stream.WriteTo(outputStream);
                             }

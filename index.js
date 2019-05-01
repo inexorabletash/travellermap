@@ -21,10 +21,17 @@ window.addEventListener('DOMContentLoaded', function() {
   // Account for adjustments to innerHeight (dynamic browser UI)
   // (Repro: Safari on iPhone, enter landscape, make url bar appear)
   window.addEventListener('resize', function(e) {
-    if (window.innerHeight !== window.outerHeight) {
-      document.body.style.height = window.innerHeight + 'px';
-      window.scrollTo(0, 0);
-    }
+    // Timeout to work around iOS Safari giving incorrect sizes while 'resize'
+    // dispatched.
+    setTimeout(function() {
+      if (window.innerHeight !== window.outerHeight) {
+        document.body.style.height = window.innerHeight + 'px';
+        window.scrollTo(0, 0);
+      } else {
+        document.body.style.height = '';
+        window.scrollTo(0, 0);
+      }
+    }, 100);
   });
 
   var mapElement = $('#dragContainer'), sizeElement = mapElement.parentNode;
@@ -811,7 +818,7 @@ window.addEventListener('DOMContentLoaded', function() {
   var lastX, lastY, lastMilieu;
   var selectedSector = null;
   var selectedWorld = null;
-  var ignoreIndirect = false;
+  var ignoreIndirect = true;;
   var enableContext;
 
   function makeWikiURL(suffix) {
@@ -1456,15 +1463,38 @@ window.addEventListener('DOMContentLoaded', function() {
   if (!isIframe) {
     setTimeout(function() {
       var cookies = Util.parseCookies();
-      if (!(cookies.tm_accept || localStorage.getItem('tm_accept'))) {
+      var cookies_key = 'tm_accept';
+      if (!(cookies.tm_accept || localStorage.getItem(cookies_key))) {
         document.body.classList.add('cookies-not-accepted');
         $('#cookies button').addEventListener('click', function(e) {
           document.body.classList.remove('cookies-not-accepted');
           document.cookie = 'tm_accept=1';
-          localStorage.setItem('tm_accept', 1);
+          localStorage.setItem(cookies_key, 1);
         });
       }
     }, 1000);
+  }
+
+  // Show promo, if not dismissed.
+  if (!isIframe) {
+    setTimeout(function() {
+      var promo_key = 'tm_promo1';
+      if (!localStorage.getItem(promo_key)) {
+        document.body.classList.add('show-promo');
+        $('#promo-closebtn').addEventListener('click', function(e) {
+          document.body.classList.remove('show-promo');
+          localStorage.setItem(promo_key, 1);
+        });
+        $('#promo-hover a').addEventListener('click', function(e) {
+          document.body.classList.remove('show-promo');
+          localStorage.setItem(promo_key, 1);
+        });
+      }
+    }, 1000);
+  }
+
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js');
   }
 
   // After all async events from the map have fired...

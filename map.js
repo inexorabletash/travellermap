@@ -814,13 +814,17 @@ var Util = {
     // ----------------------------------------------------------------------
 
     window.addEventListener('resize', function() {
-      var rect = boundingElement.getBoundingClientRect();
-      if (rect.left === this.rect.left &&
-          rect.top === this.rect.top &&
-          rect.width === this.rect.width &&
-          rect.height === this.rect.height) return;
-      this.rect = rect;
-      this.resetCanvas();
+      // Timeout to work around iOS Safari giving incorrect sizes while 'resize'
+      // dispatched.
+      setTimeout(function() {
+        var rect = boundingElement.getBoundingClientRect();
+        if (rect.left === this.rect.left &&
+            rect.top === this.rect.top &&
+            rect.width === this.rect.width &&
+            rect.height === this.rect.height) return;
+        this.rect = rect;
+        this.resetCanvas();
+      }.bind(this), 100);
     }.bind(this));
 
 
