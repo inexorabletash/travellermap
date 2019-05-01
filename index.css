@@ -1348,12 +1348,15 @@ body:not(.milieu-not-default) #milieu-escape {
   border-radius: 10px;
   text-align: center;
 
-  font-size: 15px;
+  font-size: 16px;
+  font-family: Optima, Marcellus, "Times New Roman", serif;
   line-height: 20px;
   cursor: pointer;
 
   animation: fadein 1s linear 1 forwards;
 }
+#promo-hover a { text-decoration: none; }
+#promo-hover a:hover { text-decoration: underline; }
 
 #promo-closebtn { filter: invert(100%); }
 
