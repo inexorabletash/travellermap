@@ -177,9 +177,10 @@
     <Route Start="0933" End="0732" Type="Trade"/>
     <Route Start="0732" End="0729" Type="Trade"/>
 
-    <Route Start="2036" End="1938" Type="Trade"/>
-    <Route Start="2036" End="2134" Type="Trade"/>
-    <Route Start="2036" End="1635" Type="Trade"/>
+    <Route Start="1737" End="1437" Type="Trade"/>
+    <Route Start="2136" End="2134" Type="Trade"/>
+    <Route Start="1737" End="1635" Type="Trade"/>
+    <Route Start="1737" End="2136" Type="Trade"/>
 
     <Route Start="2424" End="2326" Type="Trade"/>
     <Route Start="2424" End="2323" Type="Trade"/>
@@ -218,7 +219,7 @@
     <Route Start="2431" End="2533" Type="Trade"/>
     <Route Start="2533" End="2933" Type="Trade"/>
     <Route Start="2933" End="3135" Type="Trade"/>
-    <Route Start="2036" End="2436" Type="Trade"/>
+    <Route Start="2136" End="2436" Type="Trade"/>
     <Route Start="2536" End="2637" Type="Trade"/>
     <Route Start="2637" End="2838" Type="Trade"/>
 
@@ -257,6 +258,6 @@
     <Route Start="1240" End="1241" Type="Trade"/>
   </Routes>
   <Labels>
-    <Label Hex="2808" Color="Red">Glean Cluster</Label>
+    <Label Hex="2808" Size="small" Color="Red">Glean Cluster</Label>    
   </Labels>
 </Sector>
