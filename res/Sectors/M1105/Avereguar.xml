@@ -31,10 +31,10 @@
   </Subsectors>
   <Allegiances>
     <Allegiance Code="HvFd">Hive Federation</Allegiance>
-    <Allegiance Code="Iu">Iyuok Hegemony</Allegiance>
+    <Allegiance Code="IyHe">Iyuok Hegemony</Allegiance>
   </Allegiances>
   <Borders>
-    <Border Allegiance="Iu">
+    <Border Allegiance="IyHe">
       2133 2132 2232 2133
     </Border>
     <Border Allegiance="HvFd">
@@ -43,8 +43,8 @@
       0004 0003 0002 0001 0000 0100 0200 0300 0400 0500 0600 0700 0800
       0900 1000 1100 1101 1102 1103 1104 1204 1305 1405 1506 1606 1706 1806 1906
       2006 2106 2206 2307 2407 2507 2607 2608 2609 2610 2611 2512 2513 2514 2515
-      2615 2716 2717 2718 2719 2619 2519 2418 2319 2218 2119 2120 2020 2021 1922
-      1822 1723 1623 1524 1424 1425 1426 1427 1328 1228 1129 1028 0928 0828 0729
+      2615 2716 2717 2718 2719 2619 2520 2420 2321 2221 2122 2022 2023 1924
+      1824 1725 1726 1626 1527 1427 1328 1228 1129 1028 0928 0828 0729
       0628 0529 0429 0330 0329
     </Border>
   </Borders>
@@ -98,6 +98,11 @@
     <Route Start="2020" End="2018" Type="Trade"/>
     <Route Start="1618" End="1614" Type="Trade"/>
     <Route Start="0101" End="0001" Type="Trade"/>
+
+    <Route Start="2518" End="2719" Type="Trade"/>
+    <Route Start="2518" End="2217" Type="Trade"/>
+    <Route Start="2217" End="1916" Type="Trade"/>
+    
   </Routes>
   <Labels/>
 </Sector>

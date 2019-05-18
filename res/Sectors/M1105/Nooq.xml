@@ -31,14 +31,10 @@
   </Subsectors>
   <Allegiances>
     <Allegiance Code="HvFd">Hive Federation</Allegiance>
-    <Allegiance Code="Hf">Hive FDA Uplift/Observation Site</Allegiance>
-    <Allegiance Code="Xh">Hive FDA extra-Federation operation</Allegiance>
-    <Allegiance Code="Kk">The Two Thousand Worlds</Allegiance>
-    <Allegiance Code="Na">Non-aligned</Allegiance>
-    <Allegiance Code="Kc">K'kree Client State</Allegiance>
-    <Allegiance Code="Ha">Axanatglar Free State</Allegiance>
-    <Allegiance Code="Hb">Uxiteck Trading Alliance</Allegiance>
-    <Allegiance Code="Hc">Hiver Client State</Allegiance>
+    <Allegiance Code="HvHf">Hive FDA Uplift/Observation Site</Allegiance>
+    <Allegiance Code="Ax">Axanatglar Free State</Allegiance>
+    <Allegiance Code="Ux">Uxiteck Trading Alliance</Allegiance>
+    <Allegiance Code="CsHv">Hiver Client State</Allegiance>
   </Allegiances>
   <Borders>
     <Border Allegiance="HvFd" ShowLabel="true" LabelPosition="0433" WrapLabel="true">
@@ -50,10 +46,10 @@
       0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017 0016
       0015 0014 0013
     </Border>
-    <Border Allegiance="Ha" Color="green" ShowLabel="true">
+    <Border Allegiance="Ax" Color="green" ShowLabel="true">
       1227 1328 1427 1528 1627 1528 1428 1329 1229 1228 1227
     </Border>
-    <Border Allegiance="Hb" Color="green" ShowLabel="true">
+    <Border Allegiance="Ux" Color="green" ShowLabel="true">
       0714 0713 0813 0914 1014 0915 0814 0714
     </Border>
   </Borders>
