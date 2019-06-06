@@ -110,13 +110,15 @@ window.addEventListener('DOMContentLoaded', function() {
       return Math.round(n * d) / d;
     }
 
+    delete urlParams.x;
+    delete urlParams.y;
+    delete urlParams.scale;
     delete urlParams.sector;
     delete urlParams.subsector;
     delete urlParams.hex;
 
-    urlParams.x = round(map.x, 1/1000);
-    urlParams.y = round(map.y, 1/1000);
-    urlParams.scale = round(map.scale, 1/128);
+    urlParams.p = round(map.x, 1/1000) + '!' + round(map.y, 1/1000) + '!' +
+      round(map.logScale, 1/100);
     urlParams.options = map.options;
     urlParams.style = map.style;
 

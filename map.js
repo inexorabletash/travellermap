@@ -1582,6 +1582,16 @@ var Util = {
       enumerable: true, configurable: true
     },
 
+    logScale: {
+      get: function() { return this._logScale; },
+      set: function(value) {
+        if (value === this._logScale)
+          return;
+        this._setScale(value);
+      },
+      enumerable: true, configurable: true
+    },
+
     options: {
       get: function() { return this._options; },
       set: function(value) {
@@ -1846,7 +1856,11 @@ var Util = {
     }
 
     // Various coordinate schemes - ordered by priority
-    if (has(params, ['x', 'y'])) {
+    if ('p' in params) {
+      var parts = params.p.split('!');
+      this.logScale = parseFloat(parts[2]) || 0;
+      this.position = [parseFloat(parts[0]) || 0, parseFloat(parts[1]) || 0];
+    } else if (has(params, ['x', 'y'])) {
       this.position = [float('x'), float('y')];
     } else if (has(params, ['sx', 'sy', 'hx', 'hy', 'scale'])) {
       this.CenterAtSectorHex(
