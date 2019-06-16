@@ -48,14 +48,14 @@
     <Border Allegiance="ImDs" Label="Third Imperium" LabelPosition="2721">1400 1500 1600 1700 1800 1900 2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 3000 3100 3200 3300 3301 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3227 3228 3229 3230 3231 3131 3030 2931 2831 2732 2631 2732 2831 2830 2829 2828 2728 2628 2728 2727 2826 2825 2725 2624 2524 2423 2422 2322 2321 2420 2520 2519 2418 2319 2418 2417 2416 2316 2215 2214 2315 2414 2413 2313 2312 2411 2511 2610 2609 2509 2409 2310 2209 2109 2009 1909 1908 1907 1806 1805 1804 1803 1802 1702 1601 1501 1400</Border>
   </Borders>
   <Routes Publisher="DGP" Source="The Travellers' Digest #14">
-    <Route Start="0205" End="0605" />
-    <Route Start="0605" End="0601" />
-    <Route Start="0605" End="1003" />
-    <Route Start="1003" End="1103" />
-    <Route Start="1103" End="1403" />
-    <Route Start="1403" End="1407" />
-    <Route Start="1407" End="1208" />
-    <Route Start="1407" End="1708" />
+    <Route Start="0205" End="0605" Allegiance="SoCf" />
+    <Route Start="0605" End="0601" Allegiance="SoCf" />
+    <Route Start="0605" End="1003" Allegiance="SoCf" />
+    <Route Start="1003" End="1103" Allegiance="SoCf" />
+    <Route Start="1103" End="1403" Allegiance="SoCf" />
+    <Route Start="1403" End="1407" Allegiance="SoCf" />
+    <Route Start="1407" End="1208" Allegiance="SoCf" />
+    <Route Start="1407" End="1708" Allegiance="SoCf" />
     <!-- <Route Start="1708" End="1907" /> SoCf/ImDs link -->
     <Route Start="1907" End="2106" />
     <Route Start="2106" End="2505" />
@@ -81,91 +81,91 @@
     <Route Start="2923" End="2523" />
     <Route Start="2523" End="2423" />
     <!-- <Route Start="2423" End="2223" /> SoCf/ImDs link -->
-    <Route Start="2223" End="2122" />
-    <Route Start="2122" End="2019" />
-    <Route Start="2019" End="2118" />
-    <Route Start="2019" End="1918" />
-    <Route Start="1918" End="1916" />
-    <Route Start="1916" End="1915" />
-    <Route Start="1916" End="1815" />
-    <Route Start="1815" End="1713" />
-    <Route Start="1713" End="1511" />
-    <Route Start="1511" End="1407" />
-    <Route Start="1713" End="1415" />
-    <Route Start="1415" End="1815" />
-    <Route Start="1415" End="1213" />
-    <Route Start="1213" End="0814" />
-    <Route Start="0814" End="0413" />
-    <Route Start="0413" End="0409" />
-    <Route Start="0413" End="0115" />
-    <Route Start="0814" End="1016" />
-    <Route Start="1016" End="0918" />
-    <Route Start="0918" End="0921" />
-    <Route Start="0921" End="0723" />
-    <Route Start="0723" End="0523" />
-    <Route Start="0523" End="0223" />
-    <Route Start="0223" End="0227" />
-    <Route Start="0227" End="0428" />
-    <Route Start="0428" End="0829" />
-    <Route Start="0829" End="1029" />
-    <Route Start="1029" End="1329" />
-    <Route Start="1329" End="1326" />
-    <Route Start="1326" End="1324" />
-    <Route Start="1324" End="1022" />
-    <Route Start="1022" End="0723" />
-    <Route Start="0723" End="0624" />
-    <Route Start="0624" End="0223" />
-    <Route Start="1415" End="1418" />
-    <Route Start="1418" End="1521" />
-    <Route Start="1521" End="1524" />
-    <Route Start="1524" End="1324" />
-    <Route Start="1524" End="1824" />
-    <Route Start="1824" End="2124" />
-    <Route Start="2124" End="2223" />
-    <Route Start="2223" End="2126" />
-    <Route Start="2126" End="1927" />
-    <Route Start="1927" End="1627" />
-    <Route Start="1627" End="1529" />
-    <Route Start="1529" End="1329" />
-    <Route Start="1529" End="1830" />
-    <Route Start="1830" End="2032" />
-    <Route Start="2032" End="1833" />
-    <Route Start="1833" End="1534" />
-    <Route Start="1534" End="1134" />
-    <Route Start="1134" End="1030" />
-    <Route Start="1030" End="1029" />
-    <Route Start="1134" End="0836" />
-    <Route Start="0836" End="0536" />
-    <Route Start="0536" End="0233" />
-    <Route Start="0536" End="0337" />
-    <Route Start="0337" End="0139" />
-    <Route Start="0139" End="0239" />
-    <Route Start="0239" End="0340" />
-    <Route Start="0340" End="0540" />
-    <Route Start="1534" End="1537" />
-    <Route Start="1537" End="1438" />
-    <Route Start="1438" End="1440" />
-    <Route Start="2032" End="2334" />
-    <Route Start="2334" End="2338" />
-    <Route Start="2338" End="2439" />
-    <Route Start="2439" End="2539" />
-    <Route Start="2334" End="2736" />
-    <Route Start="2736" End="2837" />
-    <Route Start="2837" End="3237" />
-    <Route Start="3237" End="3040" />
+    <Route Start="2223" End="2122" Allegiance="SoCf" />
+    <Route Start="2122" End="2019" Allegiance="SoCf" />
+    <Route Start="2019" End="2118" Allegiance="SoCf" />
+    <Route Start="2019" End="1918" Allegiance="SoCf" />
+    <Route Start="1918" End="1916" Allegiance="SoCf" />
+    <Route Start="1916" End="1915" Allegiance="SoCf" />
+    <Route Start="1916" End="1815" Allegiance="SoCf" />
+    <Route Start="1815" End="1713" Allegiance="SoCf" />
+    <Route Start="1713" End="1511" Allegiance="SoCf" />
+    <Route Start="1511" End="1407" Allegiance="SoCf" />
+    <Route Start="1713" End="1415" Allegiance="SoCf" />
+    <Route Start="1415" End="1815" Allegiance="SoCf" />
+    <Route Start="1415" End="1213" Allegiance="SoCf" />
+    <Route Start="1213" End="0814" Allegiance="SoCf" />
+    <Route Start="0814" End="0413" Allegiance="SoCf" />
+    <Route Start="0413" End="0409" Allegiance="SoCf" />
+    <Route Start="0413" End="0115" Allegiance="SoCf" />
+    <Route Start="0814" End="1016" Allegiance="SoCf" />
+    <Route Start="1016" End="0918" Allegiance="SoCf" />
+    <Route Start="0918" End="0921" Allegiance="SoCf" />
+    <Route Start="0921" End="0723" Allegiance="SoCf" />
+    <Route Start="0723" End="0523" Allegiance="SoCf" />
+    <Route Start="0523" End="0223" Allegiance="SoCf" />
+    <Route Start="0223" End="0227" Allegiance="SoCf" />
+    <Route Start="0227" End="0428" Allegiance="SoCf" />
+    <Route Start="0428" End="0829" Allegiance="SoCf" />
+    <Route Start="0829" End="1029" Allegiance="SoCf" />
+    <Route Start="1029" End="1329" Allegiance="SoCf" />
+    <Route Start="1329" End="1326" Allegiance="SoCf" />
+    <Route Start="1326" End="1324" Allegiance="SoCf" />
+    <Route Start="1324" End="1022" Allegiance="SoCf" />
+    <Route Start="1022" End="0723" Allegiance="SoCf" />
+    <Route Start="0723" End="0624" Allegiance="SoCf" />
+    <Route Start="0624" End="0223" Allegiance="SoCf" />
+    <Route Start="1415" End="1418" Allegiance="SoCf" />
+    <Route Start="1418" End="1521" Allegiance="SoCf" />
+    <Route Start="1521" End="1524" Allegiance="SoCf" />
+    <Route Start="1524" End="1324" Allegiance="SoCf" />
+    <Route Start="1524" End="1824" Allegiance="SoCf" />
+    <Route Start="1824" End="2124" Allegiance="SoCf" />
+    <Route Start="2124" End="2223" Allegiance="SoCf" />
+    <Route Start="2223" End="2126" Allegiance="SoCf" />
+    <Route Start="2126" End="1927" Allegiance="SoCf" />
+    <Route Start="1927" End="1627" Allegiance="SoCf" />
+    <Route Start="1627" End="1529" Allegiance="SoCf" />
+    <Route Start="1529" End="1329" Allegiance="SoCf" />
+    <Route Start="1529" End="1830" Allegiance="SoCf" />
+    <Route Start="1830" End="2032" Allegiance="SoCf" />
+    <Route Start="2032" End="1833" Allegiance="SoCf" />
+    <Route Start="1833" End="1534" Allegiance="SoCf" />
+    <Route Start="1534" End="1134" Allegiance="SoCf" />
+    <Route Start="1134" End="1030" Allegiance="SoCf" />
+    <Route Start="1030" End="1029" Allegiance="SoCf" />
+    <Route Start="1134" End="0836" Allegiance="SoCf" />
+    <Route Start="0836" End="0536" Allegiance="SoCf" />
+    <Route Start="0536" End="0233" Allegiance="SoCf" />
+    <Route Start="0536" End="0337" Allegiance="SoCf" />
+    <Route Start="0337" End="0139" Allegiance="SoCf" />
+    <Route Start="0139" End="0239" Allegiance="SoCf" />
+    <Route Start="0239" End="0340" Allegiance="SoCf" />
+    <Route Start="0340" End="0540" Allegiance="SoCf" />
+    <Route Start="1534" End="1537" Allegiance="SoCf" />
+    <Route Start="1537" End="1438" Allegiance="SoCf" />
+    <Route Start="1438" End="1440" Allegiance="SoCf" />
+    <Route Start="2032" End="2334" Allegiance="SoCf" />
+    <Route Start="2334" End="2338" Allegiance="SoCf" />
+    <Route Start="2338" End="2439" Allegiance="SoCf" />
+    <Route Start="2439" End="2539" Allegiance="SoCf" />
+    <Route Start="2334" End="2736" Allegiance="SoCf" />
+    <Route Start="2736" End="2837" Allegiance="SoCf" />
+    <Route Start="2837" End="3237" Allegiance="SoCf" />
+    <Route Start="3237" End="3040" Allegiance="SoCf" />
     <Route Start="2728" End="3128" />
-    <Route Start="0205" End="0004" />
-    <Route Start="0115" End="3218" EndOffsetX="-1" />
-    <Route Start="0223" End="3125" EndOffsetX="-1" />
-    <Route Start="0227" End="0028" />
+    <Route Start="0205" End="0004" Allegiance="SoCf" />
+    <Route Start="0115" End="3218" EndOffsetX="-1" Allegiance="SoCf" />
+    <Route Start="0223" End="3125" EndOffsetX="-1" Allegiance="SoCf" />
+    <Route Start="0227" End="0028" Allegiance="SoCf" />
     <!--<Route Start="0239" End="0141" /> No good end hexes in Ustral. -->
-    <Route Start="1440" End="1342" />
-    <Route Start="2539" End="2702" EndOffsetY="1" />
+    <Route Start="1440" End="1342" Allegiance="SoCf" />
+    <Route Start="2539" End="2702" EndOffsetY="1" Allegiance="SoCf" />
     <!-- <Route Start="3128" End="3430" /> SoCf/ImDs link -->
     <Route Start="3222" End="0123" EndOffsetX="1" />
     <Route Start="3214" End="3414" />
     <Route Start="2701" End="2737" EndOffsetY="-1" />
-    <Route Start="1103" End="1100" />
-    <Route Start="0601" End="0639" EndOffsetY="-1" />
+    <Route Start="1103" End="1100" Allegiance="SoCf" />
+    <Route Start="0601" End="0639" EndOffsetY="-1" Allegiance="SoCf" />
   </Routes>
 </Sector>

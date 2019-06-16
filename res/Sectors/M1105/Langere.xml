@@ -37,10 +37,10 @@
     <Border WrapLabel="true" Color="Blue" Allegiance="SoHn" LabelPosition="0311" Label="Hanuman Systems">0308 0408 0509 0510 0610 0710 0809 0710 0711 0610 0510 0409 0408 0308</Border>
   </Borders>
   <Routes>
-    <Route Start="0109" End="0509"/>
-    <Route Start="0509" End="0711"/>
-    <Route Start="0509" End="0907"/>
-    <Route Start="0214" End="3013" EndOffsetX="-1"/>
-    <Route Start="0109" End="3211" EndOffsetX="-1"/>
+    <Route Allegiance="SoCf" Start="0109" End="0509"/>
+    <Route Allegiance="SoCf" Start="0509" End="0711"/>
+    <Route Allegiance="SoCf" Start="0509" End="0907"/>
+    <Route Allegiance="SoCf" Start="0214" End="3013" EndOffsetX="-1"/>
+    <Route Allegiance="SoCf" Start="0109" End="3211" EndOffsetX="-1"/>
   </Routes>
 </Sector>
