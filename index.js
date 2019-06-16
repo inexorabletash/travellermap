@@ -1478,7 +1478,7 @@ window.addEventListener('DOMContentLoaded', function() {
   }
 
   // Show promo, if not dismissed.
-  if (!isIframe) {
+  if (false && !isIframe) {
     setTimeout(function() {
       var promo_key = 'tm_promo1';
       if (!localStorage.getItem(promo_key)) {

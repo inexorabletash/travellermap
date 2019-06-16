@@ -47,66 +47,78 @@
     <Border Color="olivedrab" Allegiance="VWan" LabelPosition="1521">0921 1021 1121 1220 1219 1319 1418 1519 1520 1620 1721 1722 1622 1523 1524 1424 1325 1225 1226 1126 1025 1024 1023 1022 0922 0921</Border>
   </Borders>
   <Routes>
-    <Route Start="0239" End="0040" Color="Blue"/>
-    <Route Start="0239" End="0437"/>
-    <Route Start="0437" End="0737" Color="Blue"/>
-    <Route Start="0737" End="0734"/>
-    <Route Start="0734" End="0933"/>
-    <Route Start="0933" End="1232" Color="Blue"/>
-    <Route Start="1232" End="1430" Color="Blue"/>
-    <Route Start="1430" End="1629"/>
-    <Route Start="0737" End="0938" Color="Blue"/>
-    <Route Start="1232" End="1534" Color="Blue"/>
-    <Route Start="1534" End="1836" Color="Blue"/>
-    <Route Start="1836" End="2234" Color="Blue"/>
-    <Route Start="1629" End="1428"/>
-    <Route Start="1629" End="1431" Color="Blue"/>
-    <Route Start="1428" End="1226" Color="Blue"/>
-    <Route Start="1226" End="1225" Color="Blue"/>
-    <Route Start="1225" End="1223"/>
-    <Route Start="1223" End="1220"/>
-    <Route Start="1220" End="0921"/>
-    <Route Start="1223" End="1522"/>
-    <Route Start="1223" End="1325"/>
-    <Route Start="1522" End="1721"/>
-    <Route Start="1721" End="2018" Color="Blue"/>
-    <Route Start="2018" End="1917" Color="Blue"/>
-    <Route Start="1917" End="2015" Color="Blue"/>
-    <Route Start="0115" End="0314"/>
-    <Route Start="0314" End="0512"/>
-    <Route Start="0314" End="0714"/>
-    <Route Start="0115" End="0317"/>
-    <Route Start="1012" End="0714" Color="Blue"/>
-    <Route Start="1012" End="1312"/>
-    <Route Start="1312" End="1712" Color="Blue"/>
-    <Route Start="0607" End="0408" Color="Blue"/>
-    <Route Start="0607" End="0804"/>
-    <Route Start="0804" End="1105"/>
-    <Route Start="1312" End="1208"/>
-    <Route Start="1506" End="1105"/>
-    <Route Start="1208" End="1107"/>
-    <Route Start="1107" End="1105"/>
-    <Route Start="1105" End="0902"/>
-    <Route Start="0902" End="0900"/>
-    <Route Start="1506" End="1905" Color="Blue"/>
-    <Route Start="1905" End="2204" Color="Blue"/>
-    <Route Start="1604" End="1905" Color="Blue"/>
-    <Route Start="3126" End="2827"/>
-    <Route Start="3126" End="3326"/>
-    <Route Start="2827" End="2930"/>
-    <Route Start="2827" End="2428" Color="Blue"/>
-    <Route Start="3201" End="2902" Color="Blue"/>
-    <Route Start="2902" End="2700"/>
-    <Route Start="2902" End="2705"/>
-    <Route Start="2705" End="2707"/>
-    <Route Start="2707" End="3109"/>
-    <Route Start="3109" End="3212"/>
-    <Route Start="3216" End="3316"/>
-    <Route Start="3216" End="3218"/>
-    <Route Start="3216" End="2816" Color="Blue"/>
-    <Route Start="3218" End="2919" Color="Blue"/>
-    <Route Start="3212" End="3314"/>
-    <Route Start="2421" End="2224"/>
-    <Route Start="2224" End="2128"/>
+    <Route Start="0239" End="0040" Allegiance="NaVa"/>
+    <Route Start="0239" End="0437" Allegiance="VAkh"/>
+    <Route Start="0437" End="0737" Allegiance="NaVa"/>
+    <Route Start="0737" End="0734" Allegiance="VOuz"/>
+    <Route Start="0734" End="0933" Allegiance="VOuz"/>
+    <Route Start="0933" End="1232" Allegiance="NaVa"/>
+    <Route Start="1232" End="1430" Allegiance="NaVa"/>
+    <Route Start="1430" End="1629" Allegiance="VNoe"/>
+    <Route Start="0737" End="0938" Allegiance="NaVa"/>
+    <Route Start="1232" End="1534" Allegiance="NaVa"/>
+    <Route Start="1534" End="1836" Allegiance="NaVa"/>
+    <Route Start="1836" End="2234" Allegiance="NaVa"/>
+    <Route Start="1629" End="1428" Allegiance="VNoe"/>
+    <Route Start="1629" End="1431" Allegiance="NaVa"/>
+    <Route Start="1428" End="1226" Allegiance="NaVa"/>
+    <Route Start="1226" End="1225" Allegiance="NaVa"/>
+    <Route Start="1225" End="1223" Allegiance="VWan"/>
+    <Route Start="1223" End="1220" Allegiance="VWan"/>
+    <Route Start="1220" End="0921" Allegiance="VWan"/>
+    <Route Start="1223" End="1522" Allegiance="VWan"/>
+    <Route Start="1223" End="1325" Allegiance="VWan"/>
+    <Route Start="1522" End="1721" Allegiance="VWan"/>
+    <Route Start="1721" End="2018" Allegiance="NaVa"/>
+    <Route Start="2018" End="1917" Allegiance="NaVa"/>
+    <Route Start="1917" End="2015" Allegiance="NaVa"/>
+    <Route Start="0115" End="0314" Allegiance="VThE"/>
+    <Route Start="0314" End="0512" Allegiance="VThE"/>
+    <Route Start="0314" End="0714" Allegiance="VThE"/>
+    <Route Start="0115" End="0317" Allegiance="VThE"/>
+    <Route Start="1012" End="0714" Allegiance="NaVa"/>
+    <Route Start="1012" End="1312" Allegiance="VBkA"/>
+    <Route Start="1312" End="1712" Allegiance="NaVa"/>
+    <Route Start="0607" End="0408" Allegiance="NaVa"/>
+    <Route Start="0607" End="0804" Allegiance="VBkA"/>
+    <Route Start="0804" End="1105" Allegiance="VBkA"/>
+    <Route Start="1312" End="1208" Allegiance="VBkA"/>
+    <Route Start="1506" End="1105" Allegiance="VBkA"/>
+    <Route Start="1208" End="1107" Allegiance="VBkA"/>
+    <Route Start="1107" End="1105" Allegiance="VBkA"/>
+    <Route Start="1105" End="0902" Allegiance="VBkA"/>
+    <Route Start="0902" End="0900" Allegiance="VBkA"/>
+    <Route Start="1506" End="1905" Allegiance="NaVa"/>
+    <Route Start="1905" End="2204" Allegiance="NaVa"/>
+    <Route Start="1604" End="1905" Allegiance="NaVa"/>
+    <Route Start="3126" End="2827" Allegiance="VDzF"/>
+    <Route Start="3126" End="3326" Allegiance="VDzF"/>
+    <Route Start="2827" End="2930" Allegiance="VDzF"/>
+    <Route Start="2827" End="2428" Allegiance="NaVa"/>
+    <Route Start="3201" End="2902" Allegiance="NaVa"/>
+    <Route Start="2902" End="2700" Allegiance="VVar"/>
+    <Route Start="2902" End="2705" Allegiance="VVar"/>
+    <Route Start="2705" End="2707" Allegiance="VVar"/>
+    <Route Start="2707" End="3109" Allegiance="VVar"/>
+    <Route Start="3109" End="3212" Allegiance="VVar"/>
+    <Route Start="3216" End="3316" Allegiance="VVar"/>
+    <Route Start="3216" End="3218" Allegiance="VVar"/>
+    <Route Start="3216" End="2816" Allegiance="NaVa"/>
+    <Route Start="3218" End="2919" Allegiance="NaVa"/>
+    <Route Start="3212" End="3314" Allegiance="VVar"/>
+    <Route Start="2421" End="2224" Allegiance="VWP2"/>
+    <Route Start="2224" End="2128" Allegiance="VWP2"/>
   </Routes>
+  <Stylesheet>
+    route.NaVa { color: Blue; }
+    route.VAkh,
+    route.VBkA,
+    route.VDzF,
+    route.VNoe,
+    route.VOuz,
+    route.VThE,
+    route.VVar,
+    route.VWP2,
+    route.VWan { color: Green; }
+  </Stylesheet>
 </Sector>

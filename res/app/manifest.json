@@ -2,6 +2,8 @@
   "lang": "en",
   "name": "The Traveller Map",
   "short_name": "TravellerMap",
+  "description": "An interactive map of the universe of the Traveller role playing game, incorporating official data and fan submissions.",
+  "scope": "/",
   "icons": [
     {
       "src": "/res/app/regina192.png",
@@ -14,9 +16,13 @@
       "type": "image/png"
     }
   ],
-  "scope": "/",
-  "start_url": "/",
   "display": "standalone",
+  "start_url": "/",
+  "serviceworker": {
+    "src": "../../sw.js",
+    "scope": "../../"
+  },
   "theme_color": "black",
-  "background_color": "black"
+  "background_color": "black",
+  "categories": ["entertainment"]
 }
