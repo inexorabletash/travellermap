@@ -63,7 +63,14 @@
     <Route Start="0213" End="0311" Type="Trade" />
     <Route Start="0213" End="0514" Type="Trade" />
     <Route Start="0915" End="0514" Type="Trade" />
-    <Route Start="0221" End="3220" Type="Trade" EndOffsetX="-1" EndOffsetY="0"/>   
+    <Route Start="0221" End="3220" Type="Trade" EndOffsetX="-1" EndOffsetY="0"/>
+
+    <Route Start="1617" End="1519" Type="Trade"/>
+    <Route Start="1620" End="1519" Type="Trade"/>
+    <Route Start="0915" End="1016" Type="Trade"/>
+
+    <Route Start="1016" End="1317" Type="Trade"/>
+    <Route Start="1317" End="1617" Type="Trade"/>
   </Routes>
 
 </Sector>
