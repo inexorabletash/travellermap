@@ -32,8 +32,9 @@
 # Alleg: Hf  : "Hive FDA Uplift/Observation Site"
 # Alleg: HvFd: "Hive Federation"
 # Alleg: CsHv: "Hive Client State"
-# Alleg: Iy: "Iyuok Hegemony"
+# Alleg: Iy  : "Iyuok Hegemony"
 # Alleg: Na  : "Non-Aligned, Hiver-dominated"
+# Alleg: NaXX: "Non-Aligned, unclaimed"
 
 Hex  Name                 UWP       Remarks                      {Ix}   (Ex)    [Cx]   N B  Z PBG W  A    Stellar   
 ---- -------------------- --------- ---------------------------- ------ ------- ------ - -- - --- -- ---- ------------------
@@ -136,12 +137,12 @@ Hex  Name                 UWP       Remarks                      {Ix}   (Ex)    
 3006                      D79A102-7 Lo Wa                        { -3 } (601+0) [3185] - -  - 303 12 Na   K1 V M5 V      
 3008                      E120000-0 Ba De Po                     { -3 } (400+1) [0000] - -  - 004 11 Na   G5 V           
 3009                      E999106-9 Lo                           { -2 } (B01+3) [316A] - N  - 504 14 Na   M7 V           
-3101                      E779000-0 Ba                           { -3 } (600+0) [0000] - -  - 024 16 Na   K1 V M3 V      
-3102                      D425235-7 Lo                           { -3 } (911+0) [3146] - N  - 510  4 Na   M0 V M1 V      
+3101                      E779000-0 Ba                           { -3 } (600+0) [0000] - -  - 024 16 NaXX K1 V M3 V      
+3102                      D425235-7 Lo                           { -3 } (911+0) [3146] - N  - 510  4 NaXX M0 V M1 V      
 3106                      D562755-5 Ri                           { -1 } (565+2) [7693] - N  - 100  8 Na   M3 V M1 V      
-3201                      E120000-0 Ba De Po                     { -3 } (400-1) [0000] - -  - 003 12 Na   A5 V           
-3203                      C786722-7 Ag Ri Ga                     {  1 } (B6A-1) [9887] - N  - 704 12 Na   G1 V G0 V      
-3209                      B553723-9 Po                           {  1 } (A67-2) [585B] - N  - 614 13 Na   M9 V M1 V      
+3201                      E120000-0 Ba De Po                     { -3 } (400-1) [0000] - -  - 003 12 NaXX A5 V           
+3203                      C786722-7 Ag Ri Ga                     {  1 } (B6A-1) [9887] - N  - 704 12 NaXX G1 V G0 V      
+3209                      B553723-9 Po                           {  1 } (A67-2) [585B] - N  - 614 13 NaXX M9 V M1 V      
 0111                      A100320-E Lo Va                        {  1 } (721+0) [245F] - -  - 802 10 HvFd M8 V           
 0117 Tunarork             A253AU5-D Hi Po                        {  3 } (E99+0) [5D19] - K  - 813 10 HvFd M9 V           
 0120                      A6956S6-C Ag Ni                        {  2 } (954+3) [3868] - -  - 920  9 HvFd G4 V M5 V      
@@ -254,10 +255,10 @@ Hex  Name                 UWP       Remarks                      {Ix}   (Ex)    
 2918                      E100000-0 Ba Va                        { -3 } (A00-4) [0000] - -  - 004 15 Na   M1 V M5 V      
 3017                      D587834-5 Ri Ph Pa                     { -1 } (475+2) [B787] - -  - 820 12 Na   M0 V           
 3111                      C401404-A Ic Ni Va                     {  0 } (331-1) [5485] - N  - 900  3 Na   K9 V           
-3115                      D989301-7 Lo                           { -3 } (921-1) [1186] - N  - 820 11 Na   M0 V M3 V      
+3115                      D989301-7 Lo                           { -3 } (921-1) [1186] - N  - 820 11 NaXX M0 V M3 V      
 3117                      D555854-6 Ph Pa                        { -2 } (478+1) [D656] - -  - 811  9 Na   F7 V M1 V      
-3213                      E223000-0 Ba Po                        { -3 } (700-3) [0000] - -  - 023 12 Na   M2 V M9 V      
-3214                      D330304-6 De Lo Po                     { -3 } (421-2) [1144] - -  - 304 11 Na   M9 V           
+3213                      E223000-0 Ba Po                        { -3 } (700-3) [0000] - -  - 023 12 NaXX M2 V M9 V      
+3214                      D330304-6 De Lo Po                     { -3 } (421-2) [1144] - -  - 304 11 NaXX M9 V           
 0121                      E223120-7 Lo Po                        { -3 } (A01+2) [1152] - -  - 523 13 HvFd G5 V           
 0122 Kiakan               A665AW1-E Hi Ga                        {  3 } (B9D-4) [DD5F] - E  - 624 10 HvFd M3 V           
 0124 Aaika                E321713-9 Lo Po He (Aaika) Pz          { -2 } (901+0) [514D] - -  A 803 11 HvFd M0 V           
@@ -322,18 +323,18 @@ Hex  Name                 UWP       Remarks                      {Ix}   (Ex)    
 2128                      D563754-4 Ri                           { -1 } (B64+3) [8621] - K  - 805 15 CsHv M3 V G9 V      
 2423                      D989796-3 Ri                           { -1 } (A69-3) [8654] - -  - 702  7 CsHv M6 V M8 V      
 2424                      C896303-9 Lo                           { -1 } (B21+2) [1239] - -  - 612  9 Na   M2 V           
-2728                      X6A621A-3 Lo Fl Pz                     { -3 } (311-1) [1146] - -  A 303 12 Na   M6 V M4 V      
-3122                      D363721-3 Ri                           { -1 } (A65+1) [8666] - -  - 700  9 Na   M3 V           
+2728                      X6A621A-3 Lo Fl Pz                     { -3 } (311-1) [1146] - -  A 303 12 NaXX M6 V M4 V      
+3122                      D363721-3 Ri                           { -1 } (A65+1) [8666] - -  - 700  9 NaXX M3 V           
 0131                      C254534-A Ni Ag                        {  1 } (742-1) [9638] - N  - 410  6 Na   K7 V M1 V      
-0335                      X578223-1 Lo                           { -3 } (711+0) [4151] - -  - 322  9 Na   M2 V           
-0537 Geekku               D666986-5 Hi Pr Ga                     { -1 } (985+0) [7866] - N  - 724 12 Na   G8 V           
-0538                      D572425-5 He Ni                        { -3 } (931-3) [9113] - -  - 312  9 Na   G2 V M1 V      
-0640                      D529116-7 Lo Pz                        { -3 } (A01-3) [1119] - N  A 703  9 Na   M1 II M5 V     
-2036                      E439341-6 Lo                           { -3 } (421+0) [4138] - -  - 532 12 Na   G7 II          
-2037                      E402517-7 Ic Ni Va                     { -3 } (740-2) [5274] - N  - 715 13 Na   G7 III         
+0335                      X578223-1 Lo Fo                        { -3 } (711+0) [4151] - -  R 322  9 NaXX M2 V           
+0537 Geekku               D666986-5 Hi Pr Ga                     { -1 } (985+0) [7866] - N  - 724 12 NaXX G8 V           
+0538                      D572425-5 He Ni                        { -3 } (931-3) [9113] - -  - 312  9 NaXX G2 V M1 V      
+0640                      D529116-7 Lo Pz                        { -3 } (A01-3) [1119] - N  A 703  9 NaXX M1 II M5 V     
+2036                      E439341-6 Lo                           { -3 } (421+0) [4138] - -  - 532 12 NaXX G7 II          
+2037                      E402517-7 Ic Ni Va                     { -3 } (740-2) [5274] - N  - 715 13 NaXX G7 III         
 2132 Iyuok                C776951-A Hi In (Iyuok) Da Cx          {  3 } (98B+2) [CC1D] - N  A 500  5 Iy   F9 V M1 V      
 2133                      C631563-6 Ni Po Cy O:2132 IyuokW Pz    { -2 } (640+1) [4386] - N  A 515 14 Iy   K2 V           
 2232                      D140565-6 De Ni Po O:2132 IyuokW       { -3 } (742-4) [2217] - N  - 412 15 Iy   M8 V           
-2531                      E200000-0 Ba Va                        { -3 } (600-5) [0000] - -  - 014 10 Na   K0 V     
-2539                      E883611-3 Ni Ri                        { -2 } (651-1) [3441] - -  - 902 13 Na   M1 V  
-2838                      EAAA000-0 Ba Fl                        { -3 } (600-4) [0000] - -  - 000  7 Na   M6 V  
+2531                      E200000-0 Ba Va                        { -3 } (600-5) [0000] - -  - 014 10 NaXX K0 V     
+2539                      E883611-3 Ni Ri                        { -2 } (651-1) [3441] - -  - 902 13 NaXX M1 V  
+2838                      EAAA000-0 Ba Fl                        { -3 } (600-4) [0000] - -  - 000  7 NaXX M6 V  
