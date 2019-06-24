@@ -48,7 +48,16 @@ namespace Maps.API
                         errors = new ErrorLogger(filter);
                     }
 
-                    sector = new Sector(Context.Request.InputStream, new ContentType(Context.Request.ContentType).MediaType, errors);
+                    try
+                    {
+                        sector = new Sector(Context.Request.InputStream, new ContentType(Context.Request.ContentType).MediaType, errors);
+                    }
+                    catch (ParseException ex)
+                    {
+                        if (!lint)
+                            throw;
+                        throw new HttpError(400, "Bad Request", $"Bad data file: {ex.Message}");
+                    }
                     if (lint && !errors.Empty)
                         throw new HttpError(400, "Bad Request", errors.ToString());
                     options.includeMetadata = false;

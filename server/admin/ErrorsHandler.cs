@@ -45,27 +45,33 @@ namespace Maps.Admin
                 int error_count = 0;
                 int warning_count = 0;
 
-                WorldCollection worlds = sector.GetWorlds(resourceManager, cacheResults: false);
-
-                if (worlds != null)
+                try
                 {
-                    double pop = worlds.Select(w => w.Population).Sum();
-                    if (pop > 0)
-                        context.Response.Output.WriteLine($"{worlds.Count()} world(s) - population: {pop / 1e9:#,###.##} billion");
-                    else
-                        context.Response.Output.WriteLine($"{worlds.Count()} world(s) - population: N/A");
-                    worlds.ErrorList.Report(context.Response.Output, severity, (ErrorLogger.Record record) =>
+                    WorldCollection worlds = sector.GetWorlds(resourceManager, cacheResults: false);
+                    if (worlds != null)
                     {
-                        if (hide_gov && (record.message.StartsWith("UWP: Gov") || record.message.StartsWith("Gov"))) return false;
-                        if (hide_tl && record.message.StartsWith("UWP: TL")) return false;
-                        return true;
-                    });
-                    error_count += worlds.ErrorList.CountOf(ErrorLogger.Severity.Error);
-                    warning_count += worlds.ErrorList.CountOf(ErrorLogger.Severity.Warning);
+                        double pop = worlds.Select(w => w.Population).Sum();
+                        if (pop > 0)
+                            context.Response.Output.WriteLine($"{worlds.Count()} world(s) - population: {pop / 1e9:#,###.##} billion");
+                        else
+                            context.Response.Output.WriteLine($"{worlds.Count()} world(s) - population: N/A");
+                        worlds.ErrorList.Report(context.Response.Output, severity, (ErrorLogger.Record record) =>
+                        {
+                            if (hide_gov && (record.message.StartsWith("UWP: Gov") || record.message.StartsWith("Gov"))) return false;
+                            if (hide_tl && record.message.StartsWith("UWP: TL")) return false;
+                            return true;
+                        });
+                        error_count += worlds.ErrorList.CountOf(ErrorLogger.Severity.Error);
+                        warning_count += worlds.ErrorList.CountOf(ErrorLogger.Severity.Warning);
+                    }
+                    else
+                    {
+                        context.Response.Output.WriteLine("0 world(s)");
+                    }
                 }
-                else
+                catch (ParseException ex)
                 {
-                    context.Response.Output.WriteLine("0 world(s)");
+                    context.Response.Output.WriteLine($"Bad data file: {ex.Message}");
                 }
 
                 foreach (IAllegiance item in sector.Borders.AsEnumerable<IAllegiance>()

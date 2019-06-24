@@ -87,8 +87,21 @@ namespace Maps.Serialization
         private void ParseLine(string line, int lineNumber)
         {
             Dictionary<string, string> dict = new Dictionary<string, string>();
-            foreach (var column in columns)
+            for (int i = 0; i < columns.Count; ++i)
+            {
+                var column = columns[i];
                 dict[column.name] = line.SafeSubstring(column.start, column.length).TrimEnd();
+
+                // Check gaps for data where only whitespace is expected.
+                if (i > 0)
+                {
+                    var prev = columns[i - 1];
+                    int end = prev.start + prev.length;
+                    string gap = line.SafeSubstring(end, column.start - end);
+                    if (!string.IsNullOrWhiteSpace(gap))
+                        throw new ParseException($"Unexpected data between columns, line {lineNumber}: {line}");
+                }
+            }
             Data.Add(new Row { dict = dict, line = line, lineNumber = lineNumber });
         }
     }
