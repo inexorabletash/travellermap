@@ -380,12 +380,15 @@ namespace Maps.Utilities
 
         public int CountOf(Severity sev) => log.Where(r => r.severity == sev).Count();
 
-        public void Report(TextWriter writer, Severity minSeverity)
+        public void Report(TextWriter writer, Severity minSeverity, Func<ErrorLogger.Record, bool> filter = null)
         {
             foreach (var record in log)
             {
-                if (record.severity >= minSeverity)
-                    writer.WriteLine($"{record.severity.ToString()}: {record.message}");
+                if (record.severity < minSeverity)
+                    continue;
+                if (filter != null && !filter(record))
+                    continue;
+                writer.WriteLine($"{record.severity.ToString()}: {record.message}");
             }
         }
 

@@ -18,6 +18,8 @@ namespace Maps.Admin
             string type = GetStringOption(context, "type");
             string milieu = GetStringOption(context, "milieu");
             string tag = GetStringOption(context, "tag");
+            bool hide_tl = GetBoolOption(context, "hide-tl");
+            bool hide_gov = GetBoolOption(context, "hide-gov");
             ErrorLogger.Severity severity = GetBoolOption(context, "warnings", true) ? 0 : ErrorLogger.Severity.Error;
 
             // NOTE: This (re)initializes a static data structure used for 
@@ -52,7 +54,12 @@ namespace Maps.Admin
                         context.Response.Output.WriteLine($"{worlds.Count()} world(s) - population: {pop / 1e9:#,###.##} billion");
                     else
                         context.Response.Output.WriteLine($"{worlds.Count()} world(s) - population: N/A");
-                    worlds.ErrorList.Report(context.Response.Output, severity);
+                    worlds.ErrorList.Report(context.Response.Output, severity, (ErrorLogger.Record record) =>
+                    {
+                        if (hide_gov && (record.message.StartsWith("UWP: Gov") || record.message.StartsWith("Gov"))) return false;
+                        if (hide_tl && record.message.StartsWith("UWP: TL")) return false;
+                        return true;
+                    });
                     error_count += worlds.ErrorList.CountOf(ErrorLogger.Severity.Error);
                     warning_count += worlds.ErrorList.CountOf(ErrorLogger.Severity.Warning);
                 }
