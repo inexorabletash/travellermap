@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Serialization;
 
@@ -288,6 +289,9 @@ namespace Maps
         internal string LegacyAllegiance => SecondSurvey.T5AllegianceCodeToLegacyCode(Allegiance);
 
 
+        private static Regex SOPHPOP_CODE_REGEX = new Regex(@"^(....)([0-9W])$", RegexOptions.Compiled);
+        private static Regex SOPHPOP_MINOR_CODE_REGEX = new Regex(@"^\((.*)\)([0-9])?$", RegexOptions.Compiled);
+        private static Regex SOPHPOP_MAJOR_CODE_REGEX = new Regex(@"^\[(.*)\]([0-9])?$", RegexOptions.Compiled);
 
         internal void Validate(ErrorLogger errors, int lineNumber, string line)
         {
@@ -379,6 +383,38 @@ namespace Maps
             ErrorUnless(In == IsIn, "Internal code failure: In/IsIn definitions");
             ErrorUnless(Ri == IsRi, "Internal code failure: Ri/IsRi definitions");
             #endregion
+
+            #region Sophonts
+            int sophpop = 0;
+            List<string> sophpops = new List<string>();
+            foreach (var code in Codes)
+            {
+                Match m;
+                string soph;
+                char pop;
+                if ((m = SOPHPOP_CODE_REGEX.Match(code)).Success)
+                {
+                    soph = m.Groups[1].Value;
+                    pop = m.Groups[2].Value[0];
+                    ErrorUnless(SecondSurvey.SophontCodes.Contains(soph), $"Codes: Nonstandard sophont code: {soph}");
+                }
+                else if ((m = SOPHPOP_MINOR_CODE_REGEX.Match(code)).Success ||
+                    (m = SOPHPOP_MAJOR_CODE_REGEX.Match(code)).Success)
+                {
+                    soph = m.Groups[1].Value;
+                    pop = m.Groups[2].Success ? m.Groups[2].Value[0] : 'W';
+                    // TODO: Check species name against T5SS table?
+                }
+                else
+                {
+                    continue;
+                }
+                sophpops.Add(code);
+                sophpop += (pop == 'W') ? 10 : ((int)pop - (int)'0');
+            }
+            ErrorIf(sophpop > 10, $"Codes: Sophont pop codes > 100%: {string.Join(" ", sophpops)}");
+            #endregion
+
 
             // {Ix}
             int imp = 0;
@@ -472,7 +508,7 @@ namespace Maps
             // Ownership
             if (Government == 6 && !(HasCodePrefix("O:") || HasCodePrefix("Mr") ||
                 HasCode("Re") || HasCode("Px") || HasCode("Pe") || HasCode("Cy")))
-                errors.Warning("Gov 6 (captive/colony) missing one of: O:/Mr/Re/Px", lineNumber, line);
+                Error("Gov 6 (captive/colony) missing one of: O:/Mr/Re/Px");
 
             // PBG
             ErrorIf(SecondSurvey.FromHex(PBG[PBG_P]) == 0 && PopulationExponent > 0,
