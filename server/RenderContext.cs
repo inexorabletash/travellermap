@@ -86,14 +86,15 @@ namespace Maps.Rendering
         // TODO: Move this to data file
         private static readonly MapLabel[] megaLabels =
         {
-            new MapLabel("Charted Space", 0, 400, true),
-            new MapLabel("Zhodani\nCore\nExpeditions", 0, -3500, true),
+            new MapLabel("Charted Space", 0, 400, minor:true),
+            new MapLabel("Zhodani\nCore\nExpeditions", 0, -3500, minor:true),
             new MapLabel("Core Sophonts", 0, -12500),
-            new MapLabel("Abyssals", -15000, -10000),
-            new MapLabel("Denizens", -8660, -7500),
-            new MapLabel("Essaray", 6900, -16000),
-            new MapLabel("Dushis Khurisi", 0, -22000, true),
-            new MapLabel("The\nBarren\nArm", 9240, -4500, true),
+            new MapLabel("Abyssals", -15000, -7500),
+            new MapLabel("Denizens", -8660, -10000),
+            new MapLabel("Essaray", 11000, -16000),
+            new MapLabel("Anomaly One", 0, -22000, minor:true),
+            new MapLabel("Dushis Khurisi", 15000, -8500, minor:true),
+            new MapLabel("The\nBarren\nArm", 9240, -4500, minor:true),
         };
 
         private static readonly string[] borderFiles = {
