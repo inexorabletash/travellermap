@@ -1,6 +1,7 @@
 using Maps.Graphics;
 using Maps.Utilities;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Text.RegularExpressions;
 
@@ -74,7 +75,59 @@ namespace Maps.Rendering
         None,
         Rectangle,
         Shadow,
-        Outline
+        Outline,
+        Filled
+    }
+
+    public enum LayerId
+    {
+        //------------------------------------------------------------
+        // Background
+        //------------------------------------------------------------
+
+        Background_Solid,
+        Background_NebulaTexture,
+        Background_Galaxy,
+
+        Background_PseudoRandomStars,
+        Background_Rifts,
+
+        //------------------------------------------------------------
+        // Foreground
+        //------------------------------------------------------------
+
+        Macro_Borders,
+        Macro_Routes,
+
+        Grid_Sector,
+        Grid_Subsector,
+        Grid_Parsec,
+
+        Names_Subsector,
+
+        Micro_BordersFill,
+        Micro_BordersStroke,
+        Micro_Routes,
+        Micro_BorderExplicitLabels,
+
+        Names_Sector,
+
+        Macro_GovernmentRiftRouteNames,
+        Macro_CapitalsAndHomeWorlds,
+        Mega_GalaxyScaleLabels,
+
+        Worlds_Background,
+        Worlds_Foreground,
+        Worlds_Overlays,
+
+        //------------------------------------------------------------
+        // Overlays
+        //------------------------------------------------------------
+
+        Overlay_DroyneChirperWorlds,
+        Overlay_MinorHomeworlds,
+        Overlay_AncientsWorlds,
+        Overlay_ReviewStatus,
     }
 
     internal struct FontInfo
@@ -166,7 +219,7 @@ namespace Maps.Rendering
         Subsector
     };
 
-    public enum Style { Poster, Atlas, Candy, Print, Draft, FASA, Terminal };
+    public enum Style { Poster, Atlas, Candy, Print, Draft, FASA, Terminal, Mongoose };
 
     internal class Stylesheet
     {
@@ -253,6 +306,8 @@ namespace Maps.Rendering
                 (scale < WorldFullMinScale) ? WorldDetails.Atlas :
                 WorldDetails.Poster;
 
+            discRadius = worldDetails.HasFlag(WorldDetails.Type) ? 0.1f : 0.2f;
+
             showWorldDetailColors = worldDetails == WorldDetails.Poster && options.HasFlag(MapOptions.WorldColors);
 
             lowerCaseAllegiance = (scale < WorldFullMinScale);
@@ -270,21 +325,15 @@ namespace Maps.Rendering
                 const float x = 0.225f;
                 const float y = 0.125f;
 
-                BaseTopPosition.X = -x;
-                BaseTopPosition.Y = -y;
-                BaseBottomPosition.X = -x;
-                BaseBottomPosition.Y = y;
-                GasGiantPosition.X = x;
-                GasGiantPosition.Y = -y;
-                AllegiancePosition.X = x;
-                AllegiancePosition.Y = y;
+                BaseTopPosition = new PointF(-x, -y);
+                BaseBottomPosition = new PointF(-x, y);
+                GasGiantPosition = new PointF(x, -y);
+                AllegiancePosition = new PointF(x, y);
 
-                BaseMiddlePosition.X = options.HasFlag(MapOptions.ForceHexes) ? -0.35f : -0.2f;
-                BaseMiddlePosition.Y = 0;
-                StarportPosition.X = 0.0f;
-                StarportPosition.Y = -0.24f;
-                worlds.position.X = 0.0f;
-                worlds.position.Y = 0.4f;
+                BaseMiddlePosition = new PointF(options.HasFlag(MapOptions.ForceHexes) ? -0.35f : -0.2f, 0);
+                starport.position = new PointF(0, -0.24f);
+                uwp.position = new PointF(0, 0.24f);
+                worlds.position = new PointF(0, 0.4f);
             }
             else
             {
@@ -293,21 +342,15 @@ namespace Maps.Rendering
                 const float x = 0.25f;
                 const float y = 0.18f;
 
-                BaseTopPosition.X = -x;
-                BaseTopPosition.Y = -y;
-                BaseBottomPosition.X = -x;
-                BaseBottomPosition.Y = y;
-                GasGiantPosition.X = x;
-                GasGiantPosition.Y = -y;
-                AllegiancePosition.X = x;
-                AllegiancePosition.Y = y;
+                BaseTopPosition = new PointF(-x, -y);
+                BaseBottomPosition = new PointF(-x, y);
+                GasGiantPosition = new PointF(x, -y);
+                AllegiancePosition = new PointF(x, y);
 
-                BaseMiddlePosition.X = -0.35f;
-                BaseMiddlePosition.Y = 0f;
-                StarportPosition.X = 0f;
-                StarportPosition.Y = -0.225f;
-                worlds.position.X = 0.0f;
-                worlds.position.Y = 0.37f; // Don't hide hex bottom, leave room for UWP
+                BaseMiddlePosition = new PointF(-0.35f, 0);
+                starport.position = new PointF(0, -0.225f);
+                uwp.position = new PointF(0, 0.225f);
+                worlds.position = new PointF(0, 0.37f); // Don't hide hex bottom, leave room for UWP
             }
 
             if (scale >= WorldUwpMinScale)
@@ -325,10 +368,10 @@ namespace Maps.Rendering
                 worlds.fontInfo = new FontInfo(DEFAULT_FONT, scale < WorldFullMinScale ? 0.2f : 0.15f * fontScale, FontStyle.Bold);
                 wingdingFont = new FontInfo("Wingdings", scale < WorldFullMinScale ? 0.2f : 0.175f * fontScale);
                 glyphFont = new FontInfo(DEFAULT_FONT, scale < WorldFullMinScale ? 0.175f : 0.15f * fontScale, FontStyle.Bold);
-                hexNumber.fontInfo = new FontInfo(DEFAULT_FONT, 0.1f * fontScale);
+                uwp.fontInfo = hexNumber.fontInfo = new FontInfo(DEFAULT_FONT, 0.1f * fontScale);
                 worlds.smallFontInfo = new FontInfo(DEFAULT_FONT, scale < WorldFullMinScale ? 0.2f : 0.1f * fontScale, FontStyle.Regular);
                 worlds.largeFontInfo = worlds.fontInfo;
-                starportFont = (scale < WorldFullMinScale) ? worlds.smallFontInfo : worlds.fontInfo;
+                starport.fontInfo = (scale < WorldFullMinScale) ? worlds.smallFontInfo : worlds.fontInfo;
             }
 
             sectorName.fontInfo = new FontInfo(DEFAULT_FONT, 5.5f);
@@ -358,25 +401,22 @@ namespace Maps.Rendering
 
             capitals.fillColor = Color.Wheat;
             capitals.textColor = TravellerColors.Red;
+            amberZone.visible = redZone.visible = true;
             amberZone.pen.color = TravellerColors.Amber;
             redZone.pen.color = TravellerColors.Red;
             macroBorders.pen.color = TravellerColors.Red;
             macroRoutes.pen.color = Color.White;
             microBorders.pen.color = Color.Gray;
-            Color gridColor = Color.FromArgb(ScaleInterpolate(0, 255, scale, SectorGridMinScale, SectorGridFullScale), Color.Gray);
             microRoutes.pen.color = Color.Gray;
 
-            Color foregroundColor = Color.White;
             backgroundColor = Color.Black;
-            Color lightColor = Color.LightGray;
-            Color darkColor = Color.DarkGray;
-            Color dimColor = Color.DimGray;
-            Color highlightColor = TravellerColors.Red;
+
             microBorders.textColor = TravellerColors.Amber;
             worldWater.fillColor = Color.DeepSkyBlue;
             worldNoWater.fillColor = Color.White;
             worldNoWater.pen.color = Color.Empty;
 
+            Color gridColor = Color.FromArgb(ScaleInterpolate(0, 255, scale, SectorGridMinScale, SectorGridFullScale), Color.Gray);
             parsecGrid.pen = new PenInfo(gridColor, onePixel);
             subsectorGrid.pen = new PenInfo(gridColor, onePixel * 2);
             sectorGrid.pen = new PenInfo(gridColor, (subsectorGrid.visible ? 4 : 2) * onePixel);
@@ -400,6 +440,8 @@ namespace Maps.Rendering
             worlds.textStyle.Translation = worlds.position;
             worlds.textStyle.Uppercase = false;
 
+            hexNumber.position = new PointF(0, -0.5f);
+    
             showNebulaBackground = false;
             showGalaxyBackground = deepBackgroundOpacity > 0.0f;
             useWorldImages = false;
@@ -438,6 +480,73 @@ namespace Maps.Rendering
             capitalOverlayAltB.fillColor = Color.FromArgb(0x80, TravellerColors.Amber);
 
             bool fadeSectorSubsectorNames = true;
+
+            placeholder.content = "*";
+            placeholder.fontInfo = new FontInfo("Georgia", 0.6f);
+            placeholder.position = new PointF(0, 0.17f);
+
+            anomaly.content = "\u2316"; // POSITION INDICATOR
+            anomaly.fontInfo = new FontInfo("Segoe UI Symbol", 0.6f);
+
+            var layers = new List<LayerId> 
+            {
+                //------------------------------------------------------------
+                // Background
+                //------------------------------------------------------------
+
+                LayerId.Background_Solid,
+                LayerId.Background_NebulaTexture,
+                LayerId.Background_Galaxy,
+                LayerId.Background_PseudoRandomStars,
+                LayerId.Background_Rifts,
+
+                //------------------------------------------------------------
+                // Foreground
+                //------------------------------------------------------------
+
+                LayerId.Macro_Borders,
+                LayerId.Macro_Routes,
+
+                LayerId.Grid_Sector,
+                LayerId.Grid_Subsector,
+                LayerId.Grid_Parsec,
+
+                LayerId.Names_Subsector,
+
+                LayerId.Micro_BordersFill,
+                LayerId.Micro_BordersStroke,
+                LayerId.Micro_Routes,
+                LayerId.Micro_BorderExplicitLabels,
+
+                LayerId.Names_Sector,
+
+                LayerId.Macro_GovernmentRiftRouteNames,
+                LayerId.Macro_CapitalsAndHomeWorlds,
+                LayerId.Mega_GalaxyScaleLabels,
+
+                LayerId.Worlds_Background,
+                LayerId.Worlds_Foreground,
+                LayerId.Worlds_Overlays,
+
+                //------------------------------------------------------------
+                // Overlays
+                //------------------------------------------------------------
+
+                LayerId.Overlay_DroyneChirperWorlds,
+                LayerId.Overlay_MinorHomeworlds,
+                LayerId.Overlay_AncientsWorlds,
+                LayerId.Overlay_ReviewStatus,
+            };
+
+            // Generic colors; applied to various elements by default (see end of this method).
+            // May be overridden by specific styles
+            Color foregroundColor = Color.White;
+            Color lightColor = Color.LightGray;
+            Color darkColor = Color.DarkGray;
+            Color dimColor = Color.DimGray;
+            Color highlightColor = TravellerColors.Red;
+
+            preferredMimeType = ContentTypes.Image.Png;
 
             switch (style)
             {
@@ -615,7 +724,7 @@ namespace Maps.Rendering
                         const string FONT_NAME = "Comic Sans MS";
                         worlds.fontInfo.name = FONT_NAME;
                         worlds.smallFontInfo.name = FONT_NAME;
-                        starportFont.name = FONT_NAME;
+                        starport.fontInfo.name = FONT_NAME;
                         worlds.largeFontInfo.name = FONT_NAME;
                         worlds.largeFontInfo.size = worlds.fontInfo.size * 1.25f;
                         worlds.fontInfo.size *= 0.8f;
@@ -688,8 +797,11 @@ namespace Maps.Rendering
                     }
                 case Style.Candy:
                     {
+                        preferredMimeType = ContentTypes.Image.Jpeg;
+
                         useWorldImages = true;
                         pseudoRandomStars.visible = false;
+                        fadeSectorSubsectorNames = false;
 
                         showNebulaBackground = deepBackgroundOpacity < 0.5f;
 
@@ -719,6 +831,7 @@ namespace Maps.Rendering
                             worldDetails = worldDetails & ~WorldDetails.Uwp;
 
                         amberZone.pen.color = Color.Goldenrod;
+                        amberZone.pen.width = redZone.pen.width = 0.035f;
 
                         sectorName.textStyle.Rotation = 0;
                         sectorName.textStyle.Translation = new PointF(0, -0.25f);
@@ -730,12 +843,17 @@ namespace Maps.Rendering
                         subsectorNames.textStyle.Scale = new SizeF(0.3f, 0.15f); // Expand
                         subsectorNames.textStyle.Uppercase = true;
 
+                        subsectorNames.textColor = sectorName.textColor = Color.FromArgb(128, Color.Goldenrod);
+
                         microBorders.textStyle.Rotation = 0;
                         microBorders.textStyle.Translation = new PointF(0, 0.25f);
                         microBorders.textStyle.Scale = new SizeF(1.0f, 0.5f); // Expand
                         microBorders.textStyle.Uppercase = true;
 
                         microBorders.pen.color = Color.FromArgb(128, TravellerColors.Red);
+                        microRoutes.pen.width = scale < CandyMaxRouteRelativeScale ? routePenWidth : routePenWidth / 2;
+                        macroBorders.pen.width = scale < CandyMaxBorderRelativeScale ? borderPenWidth : borderPenWidth / 4;
+                        microBorders.pen.width = scale < CandyMaxBorderRelativeScale ? borderPenWidth : borderPenWidth / 4;
 
                         worlds.textStyle.Rotation = 0;
                         worlds.textStyle.Scale = new SizeF(1f, 0.5f); // Expand
@@ -766,7 +884,7 @@ namespace Maps.Rendering
                         const string FONT_NAME = "Courier New";
                         worlds.fontInfo.name = FONT_NAME;
                         worlds.smallFontInfo.name = FONT_NAME;
-                        starportFont.name = FONT_NAME;
+                        starport.fontInfo.name = FONT_NAME;
                         worlds.largeFontInfo.name = FONT_NAME;
                         worlds.largeFontInfo.size = worlds.fontInfo.size * 1.25f;
                         worlds.fontInfo.size *= 0.8f;
@@ -837,8 +955,116 @@ namespace Maps.Rendering
 
                         break;
                     }
+                case Style.Mongoose:
+                    {
+                        showGalaxyBackground = false;
+                        lightBackground = true;
+                        showGasGiantRing = true;
+                        showTL = true;
+                        ignoreBaseBias = true;
+
+                        // Re-order these elements
+                        layers.MoveAfter(LayerId.Worlds_Background, LayerId.Micro_BordersStroke);
+                        layers.MoveAfter(LayerId.Worlds_Foreground, LayerId.Micro_Routes);
+
+                        imageBorderWidth = 0.1f;
+                        deepBackgroundOpacity = 0f;
+
+                        backgroundColor = Color.FromArgb(0xe6, 0xe7, 0xe8);
+                        foregroundColor = Color.Black;
+                        highlightColor = Color.Red;
+
+                        lightColor = Color.Black;
+                        darkColor = Color.Black;
+                        dimColor = Color.Gray;
+
+                        sectorGrid.pen.color = subsectorGrid.pen.color = parsecGrid.pen.color = foregroundColor;
+
+                        microBorders.textColor = Color.DarkSlateGray;
+
+                        const string FONT_NAME = "Calibri";
+                        worlds.fontInfo.name = FONT_NAME;
+                        worlds.smallFontInfo.name = FONT_NAME;
+                        starport.fontInfo.name = FONT_NAME;
+                        starport.fontInfo.style = FontStyle.Regular;
+                        worlds.largeFontInfo.name = FONT_NAME;
+
+                        worlds.fontInfo.style = FontStyle.Regular;
+                        worlds.largeFontInfo.style = FontStyle.Bold;
+
+                        hexNumber.fontInfo = worlds.fontInfo;
+                        hexNumber.position.Y = -0.49f;
+                        starport.fontInfo.style = FontStyle.Italic;
+
+                        macroNames.fontInfo.name = FONT_NAME;
+                        macroNames.mediumFontInfo.name = FONT_NAME;
+                        macroNames.smallFontInfo.name = FONT_NAME;
+                        megaNames.fontInfo.name = FONT_NAME;
+                        megaNames.mediumFontInfo.name = FONT_NAME;
+                        megaNames.smallFontInfo.name = FONT_NAME;
+                        microBorders.smallFontInfo.name = FONT_NAME;
+                        microBorders.largeFontInfo.name = FONT_NAME;
+                        microBorders.fontInfo.name = FONT_NAME;
+                        macroBorders.fontInfo.name = FONT_NAME;
+                        macroRoutes.fontInfo.name = FONT_NAME;
+                        capitals.fontInfo.name = FONT_NAME;
+                        macroBorders.smallFontInfo.name = FONT_NAME;
+
+                        microBorders.textStyle.Uppercase = true;
+
+                        sectorName.textStyle.Uppercase = true;
+                        subsectorNames.textStyle.Uppercase = true;
+
+                        subsectorNames.visible = false;
+
+                        worlds.textStyle.Uppercase = true;
+
+                        worldDetails = worldDetails & ~WorldDetails.Allegiance;
+
+                        subsectorNames.fontInfo.name = FONT_NAME;
+                        sectorName.fontInfo.name = FONT_NAME;
+
+                        microBorders.pen.width = 0.11f;
+                        microBorders.pen.dashStyle = DashStyle.Dot;
+
+                        worldWater.fillColor = Color.MediumBlue;
+                        worldNoWater.fillColor = Color.DarkKhaki;
+                        worldWater.pen = worldNoWater.pen = new PenInfo(Color.DarkGray, onePixel * 2);
+
+                        showZonesAsPerimeters = true;
+                        greenZone.visible = true;
+                        greenZone.pen.width = amberZone.pen.width = redZone.pen.width = 0.05f;
+
+                        greenZone.pen.color = Color.FromArgb(0x80, 0xc6, 0x76);
+                        amberZone.pen.color = Color.FromArgb(0xfb, 0xb0, 0x40);
+                        redZone.pen.color = Color.FromArgb(0xff, 0x00, 0x00);
+
+                        microBorders.textColor = Color.DarkSlateGray;
+
+                        riftOpacity = Math.Min(riftOpacity, 0.30f);
+
+                        discRadius = 0.11f;
+                        GasGiantPosition = new PointF(0, -0.23f);
+                        BaseTopPosition = new PointF(-0.22f, -0.21f);
+                        BaseMiddlePosition = new PointF(-0.32f, 0.17f);
+                        BaseBottomPosition = new PointF(0.22f, -0.21f);
+                        starport.position = new PointF(0.175f, 0.17f);
+                        uwp.position = new PointF(0, 0.40f);
+                        DiscPosition = new PointF(-discRadius, 0.16f);
+                        worlds.textStyle.Translation = new PointF(0, -0.04f);
+
+                        worlds.textBackgroundStyle = TextBackgroundStyle.None;
+
+                        uwp.fontInfo = hexNumber.fontInfo;
+                        uwp.fillColor = Color.Black;
+                        uwp.textColor = Color.White;
+                        uwp.textBackgroundStyle = TextBackgroundStyle.Filled;
+
+                        break;
+                    }
             }
 
+            // TODO: Do this with opacity.
             if (fadeSectorSubsectorNames)
             {
                 sectorName.textColor = scale < 16 ? foregroundColor :
@@ -847,48 +1073,38 @@ namespace Maps.Rendering
                     scale < 48 ? darkColor : dimColor;
             }
 
-            if (style == Style.Candy)
-            {
-                subsectorNames.textColor = sectorName.textColor = Color.FromArgb(128, Color.Goldenrod);
+            // Base element colors on foreground/light/dim/dark/highlight, if not specified by style.
 
-                amberZone.pen.width = redZone.pen.width = 0.035f;
+            if (pseudoRandomStars.fillColor.IsEmpty) pseudoRandomStars.fillColor = foregroundColor;
 
-                microRoutes.pen.width = scale < CandyMaxRouteRelativeScale ? routePenWidth : routePenWidth / 2;
-                macroBorders.pen.width = scale < CandyMaxBorderRelativeScale ? borderPenWidth : borderPenWidth / 4;
-                microBorders.pen.width = scale < CandyMaxBorderRelativeScale ? borderPenWidth : borderPenWidth / 4;
-            }
+            if (droyneWorlds.textColor.IsEmpty) droyneWorlds.textColor = microBorders.textColor;
+            if (minorHomeWorlds.textColor.IsEmpty) droyneWorlds.textColor = microBorders.textColor;
+            if (ancientsWorlds.textColor.IsEmpty) droyneWorlds.textColor = microBorders.textColor;
 
-            preferredMimeType = (style == Style.Candy)
-                ? ContentTypes.Image.Jpeg
-                : ContentTypes.Image.Png;
+            if (megaNames.textColor.IsEmpty) megaNames.textColor = foregroundColor;
+            if (megaNames.textHighlightColor.IsEmpty) megaNames.textHighlightColor = highlightColor;
 
-            pseudoRandomStars.fillColor = foregroundColor;
-            droyneWorlds.textColor = minorHomeWorlds.textColor = ancientsWorlds.textColor = 
-                microBorders.textColor;
+            if (macroNames.textHighlightColor.IsEmpty) macroNames.textColor = foregroundColor;
+            if (macroNames.textHighlightColor.IsEmpty) macroNames.textHighlightColor = highlightColor;
 
-            megaNames.textColor = foregroundColor;
-            megaNames.textHighlightColor = highlightColor;
+            if (macroRoutes.textColor.IsEmpty) macroRoutes.textColor = foregroundColor;
+            if (macroRoutes.textHighlightColor.IsEmpty) macroRoutes.textHighlightColor = highlightColor;
 
-            macroNames.textColor = foregroundColor;
-            macroNames.textHighlightColor = highlightColor;
+            if (worlds.textColor.IsEmpty) worlds.textColor = foregroundColor;
+            if (worlds.textHighlightColor.IsEmpty) worlds.textHighlightColor = highlightColor;
 
-            macroRoutes.textColor = foregroundColor;
-            macroRoutes.textHighlightColor = highlightColor;
+            if (hexNumber.textColor.IsEmpty) hexNumber.textColor = lightColor;
+            if (uwp.textColor.IsEmpty) uwp.textColor = foregroundColor;
 
-            worlds.textColor = foregroundColor;
-            worlds.textHighlightColor = highlightColor;
+            if (placeholder.textColor.IsEmpty) placeholder.textColor = foregroundColor;
+            if (anomaly.textColor.IsEmpty) anomaly.textColor = highlightColor;
 
-            hexNumber.textColor = lightColor;
-            imageBorderColor = lightColor;
+            if (imageBorderColor.IsEmpty) imageBorderColor = lightColor;
 
-            placeholder.content = "*";
-            placeholder.fontInfo = new FontInfo("Georgia", 0.6f);
-            placeholder.textColor = foregroundColor;
-            placeholder.position = new PointF(0, 0.17f);
-
-            anomaly.content = "\u2316"; // POSITION INDICATOR
-            anomaly.fontInfo = new FontInfo("Segoe UI Symbol", 0.6f);
-            anomaly.textColor = highlightColor;
+            // Convert list into a id -> index mapping.
+            layerOrder = new Dictionary<LayerId, int>();
+            for (var i = 0; i < layers.Count; ++i)
+                layerOrder[layers[i]] = i;
         }
 
         internal struct StyleElement
@@ -925,7 +1141,9 @@ namespace Maps.Rendering
         // Options
 
         public Color backgroundColor;
+
         public Color imageBorderColor;
+        public float imageBorderWidth = 0.2f;
 
         public bool showNebulaBackground;
         public bool showGalaxyBackground;
@@ -965,20 +1183,26 @@ namespace Maps.Rendering
         public bool showStellarOverlay;
 
         public bool HasWorldOverlays => populationOverlay.visible || importanceOverlay.visible || highlightWorlds.visible || showStellarOverlay || capitalOverlay.visible;
-        public PointF StarportPosition;
+        public PointF DiscPosition;
+        public float discRadius = 0.1f;
         public PointF GasGiantPosition;
         public PointF AllegiancePosition;
         public PointF BaseTopPosition;
         public PointF BaseBottomPosition;
         public PointF BaseMiddlePosition;
 
+        public StyleElement uwp;
+        public StyleElement starport;
 
         public FontInfo glyphFont;
-        public FontInfo starportFont;
         public WorldDetails worldDetails;
         public bool lowerCaseAllegiance;
         public FontInfo wingdingFont;
         public bool showGasGiantRing;
+
+        public bool showTL;
+        public bool ignoreBaseBias;
+        public bool showZonesAsPerimeters;
 
         // Hex Coordinates
         public StyleElement hexNumber;
@@ -992,6 +1216,7 @@ namespace Maps.Rendering
 
         public StyleElement capitals;
         public StyleElement subsectorNames;
+        public StyleElement greenZone;
         public StyleElement amberZone;
         public StyleElement redZone;
         public StyleElement sectorGrid;
@@ -1014,6 +1239,8 @@ namespace Maps.Rendering
         public MicroBorderStyle microBorderStyle;
         public HexStyle hexStyle;
         public LineStyle? overrideLineStyle;
+
+        public Dictionary<LayerId, int> layerOrder;
 
         public void WorldColors(World world, out Color penColorOut, out Color brushColorOut)
         {
@@ -1223,8 +1450,6 @@ namespace Maps.Rendering
         public Font WingdingFont => wingdingFont ?? (wingdingFont = sheet.wingdingFont.MakeFont());
         private Font glyphFont;
         public Font GlyphFont => glyphFont ?? (glyphFont = sheet.glyphFont.MakeFont());
-        private Font starportFont;
-        public Font StarportFont => starportFont ?? (starportFont = sheet.starportFont.MakeFont());
 
         #region IDisposable Support
         private bool disposed = false;

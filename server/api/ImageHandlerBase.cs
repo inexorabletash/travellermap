@@ -253,7 +253,7 @@ namespace Maps.API
                         // Render border in world space
                         AbstractMatrix m = ctx.ImageSpaceToWorldSpace;
                         graphics.MultiplyTransform(m);
-                        AbstractPen pen = new AbstractPen(ctx.Styles.imageBorderColor, 0.2f);
+                        AbstractPen pen = new AbstractPen(ctx.Styles.imageBorderColor, ctx.Styles.imageBorderWidth);
 
                         // SVG/PdfSharp can't ExcludeClip so we take advantage of the fact that we know
                         // the path starts on the left edge and proceeds clockwise. We extend the

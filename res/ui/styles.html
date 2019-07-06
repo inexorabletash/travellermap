@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <title>Style Images</title>
-<base href="https://travellermap.com">
 <script>
+var SERVICE_BASE = (function(l) {
+  if (l.hostname === 'localhost' && l.pathname.indexOf('~') !== -1)
+    return 'https://travellermap.com';
+  return '';
+}(window.location));
+
 var REFERENCE_SECTOR_X = 0;
 var REFERENCE_SECTOR_Y = 0;
 var REFERENCE_HEX_X = 1;
@@ -37,12 +42,12 @@ var height = 48;
 var x = ( mapXY.x * scale - ( width / 2 ) ) / width;
 var y = ( -mapXY.y * scale - ( height / 2 ) ) / height;
 
-['poster', 'atlas', 'print', 'candy', 'draft', 'fasa', 'terminal'].forEach(function(style) {
+['poster', 'atlas', 'print', 'candy', 'draft', 'fasa', 'terminal', 'mongoose'].forEach(function(style) {
   var div = document.createElement('div');
   document.documentElement.appendChild(div);
 
   var img = document.createElement('img');
-  img.src = '/api/tile?dpr=2&style='+style+'&scale='+scale+'&w='+width+'&h='+height+'&x='+x+'&y='+y;
+  img.src = SERVICE_BASE + '/api/tile?dpr=2&style='+style+'&scale='+scale+'&w='+width+'&h='+height+'&x='+x+'&y='+y;
   div.appendChild(img);
 });
 </script>

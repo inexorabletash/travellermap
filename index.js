@@ -389,7 +389,7 @@ window.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  var STYLES = ['poster', 'atlas', 'print', 'candy', 'draft', 'fasa', 'terminal'];
+  var STYLES = ['poster', 'atlas', 'print', 'candy', 'draft', 'fasa', 'terminal', 'mongoose'];
   STYLES.forEach(function(s) {
     $('#settingsBtn-'+s).addEventListener('click', function() { map.style = s; });
   });

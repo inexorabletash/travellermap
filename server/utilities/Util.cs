@@ -170,6 +170,20 @@ namespace Maps.Utilities
             }
         }
         #endregion
+
+        #region List<> Methods
+        public static void InsertAfter<T>(this List<T> list, T target, T item)
+        {
+            int index = list.IndexOf(target);
+            list.Insert(index < 0 ? list.Count : index + 1, item);
+        }
+        public static void MoveAfter<T>(this List<T> list, T target, T item)
+        {
+            list.Remove(item);
+            int index = list.IndexOf(target);
+            list.Insert(index < 0 ? list.Count : index + 1, item);
+        }
+        #endregion
     }
 
     internal static class Util

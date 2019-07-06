@@ -38,6 +38,26 @@ namespace Maps.Rendering
             edgeY = (type == PathUtil.PathType.Hex) ? RenderUtil.HexEdgesY : RenderUtil.SquareEdgesY;
         }
 
+        public static readonly AbstractPath HexPath = new AbstractPath(
+            new PointF[] {
+                new PointF(-0.5f + RenderUtil.HEX_EDGE, -0.5f),
+                new PointF( 0.5f - RenderUtil.HEX_EDGE, -0.5f),
+                new PointF( 0.5f + RenderUtil.HEX_EDGE, 0),
+                new PointF( 0.5f - RenderUtil.HEX_EDGE, 0.5f),
+                new PointF(-0.5f + RenderUtil.HEX_EDGE, 0.5f),
+                new PointF(-0.5f - RenderUtil.HEX_EDGE, 0),
+                new PointF(-0.5f + RenderUtil.HEX_EDGE, -0.5f),
+            },
+            new byte[] {
+                (byte)PathPointType.Start,
+                (byte)PathPointType.Line,
+                (byte)PathPointType.Line,
+                (byte)PathPointType.Line,
+                (byte)PathPointType.Line,
+                (byte)PathPointType.Line,
+                (byte)(PathPointType.Line | PathPointType.CloseSubpath),
+            });
+
         // NOTE: Windings are often used instead of UNICODE equivalents in a common font 
         // because the glyphs are much higher quality.
         // See http://www.alanwood.net/demos/wingdings.html for a good mapping
@@ -51,7 +71,7 @@ namespace Maps.Rendering
             { '\x2736', '\xAC' }, // U+2736 (BLACK SIX POINTED STAR)
         };
 
-        public static void DrawGlyph(AbstractGraphics g, Glyph glyph, FontCache styleRes, AbstractBrush brush, float x, float y)
+        public static void DrawGlyph(AbstractGraphics g, Glyph glyph, FontCache styleRes, AbstractBrush brush, PointF pt)
         {
             Font font;
             string s = glyph.Characters;
@@ -65,7 +85,7 @@ namespace Maps.Rendering
                 font = styleRes.GlyphFont;
             }
 
-            g.DrawString(s, font, brush, x, y, Maps.Graphics.StringAlignment.Centered);
+            g.DrawString(s, font, brush, pt.X, pt.Y, Maps.Graphics.StringAlignment.Centered);
         }
 
         //               |          |

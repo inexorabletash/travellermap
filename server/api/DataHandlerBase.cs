@@ -278,7 +278,8 @@ namespace Maps.API
                 { "candy" , Style.Candy },
                 { "draft" , Style.Draft },
                 { "fasa"  , Style.FASA },
-                { "terminal", Style.Terminal }
+                { "terminal", Style.Terminal },
+                { "mongoose", Style.Mongoose },
             };
 
             public void ParseOptions(HttpRequest request, IDictionary<string, object> queryDefaults, ref MapOptions options, ref Style style)

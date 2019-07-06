@@ -50,9 +50,10 @@ namespace Maps.Rendering
         public bool ClipOutsectorBorders { get; set; }
 
         // Assigned during Render()
-        private AbstractGraphics graphics = null;
+        private AbstractGraphics graphics;
         private AbstractBrush solidBrush;
         private AbstractPen pen;
+        private FontCache fonts;
 
         public Stylesheet Styles => styles;
         private readonly AbstractMatrix worldSpaceToImageSpace;
@@ -137,6 +138,7 @@ namespace Maps.Rendering
         private static ConcurrentDictionary<string, AbstractImage> s_worldImages;
         #endregion
 
+        #region Timers
         /// <summary>
         /// Performance timer record
         /// </summary>
@@ -153,457 +155,140 @@ namespace Maps.Rendering
             public Timer(string label) { }
 #endif
         }
+        #endregion
 
-        public void Render(AbstractGraphics graphics)
+        // Individual rendering step; used in the Render() call to order
+        // each of the layers.
+        private class LayerAction
+        {
+            public LayerAction(LayerId id, Action<RenderContext> action, bool clip)
+            {
+                this.id = id;
+                this.action = action;
+                this.clip = clip;
+            }
+
+            public void Run(RenderContext context)
+            {
+                action.Invoke(context);
+            }
+
+            public readonly LayerId id;
+            private readonly Action<RenderContext> action;
+            public readonly bool clip;
+        }
+
+        public void Render(AbstractGraphics g)
         {
 #if SHOW_TIMING
             DateTime dtStart = DateTime.Now;
 #endif
 
-            this.graphics = graphics;
+            graphics = g;
             solidBrush = new AbstractBrush();
             pen = new AbstractPen(Color.Empty);
+            fonts = new FontCache(styles);
+
             InitializeImages();
 
-            List<Timer> timers = new List<Timer>();
-
-            using (var fonts = new FontCache(styles))
+            List<Timer> timers = new List<Timer>
             {
-                timers.Add(new Timer("preload"));
+                new Timer("preload")
+            };
 
-                //////////////////////////////////////////////////////////////
-                //
-                // World-Space Rendering
-                //
-                //////////////////////////////////////////////////////////////
+            // Overall, rendering is all in world-space; individual steps may transform back
+            // to image-space as needed.
+            graphics.MultiplyTransform(ImageSpaceToWorldSpace);
 
-                graphics.MultiplyTransform(ImageSpaceToWorldSpace);
-
-                using (graphics.Save())
-                {
-                    if (ClipPath != null)
-                        graphics.IntersectClip(ClipPath);
-                    else
-                        graphics.IntersectClip(tileRect);
-
-                    timers.Add(new Timer("prep"));
-
-                    //------------------------------------------------------------
-                    // Background
-                    //------------------------------------------------------------
-
-                    #region background
-                    {
-                        graphics.SmoothingMode = SmoothingMode.HighSpeed;
-                        solidBrush.Color = styles.backgroundColor;
-                        graphics.DrawRectangle(solidBrush, tileRect);
-                        timers.Add(new Timer("background (solid)"));
-                    }
-                    #endregion
-
-                    #region nebula-background
-                    //------------------------------------------------------------
-                    // Local background (Nebula)
-                    //------------------------------------------------------------
-                    // NOTE: Since alpha texture brushes aren't supported without
-                    // creating a new image (slow!) we render the local background
-                    // first, then overlay the deep background over it, for
-                    // basically the same effect since the alphas sum to 1.
-
-                    if (styles.showNebulaBackground)
-                        DrawNebulaBackground();
-                    timers.Add(new Timer("background (nebula)"));
-                    #endregion
-
-                    #region galaxy-background
-                    //------------------------------------------------------------
-                    // Deep background (Galaxy)
-                    //------------------------------------------------------------
-                    if (styles.showGalaxyBackground && styles.deepBackgroundOpacity > 0f && galaxyImageRect.IntersectsWith(tileRect))
-                    {
-                        AbstractImage galaxyImage = styles.lightBackground ? s_galaxyImageGray : s_galaxyImage;
-                        graphics.DrawImageAlpha(styles.deepBackgroundOpacity, galaxyImage, galaxyImageRect);
-                    }
-                    timers.Add(new Timer("background (galaxy)"));
-                    #endregion
-
-                    #region pseudorandom-stars
-                    //------------------------------------------------------------
-                    // Pseudo-Random Stars
-                    //------------------------------------------------------------
-                    if (styles.pseudoRandomStars.visible)
-                        DrawPseudoRandomStars();
-                    timers.Add(new Timer("pseudorandom"));
-                    #endregion
-
-                    #region rifts
-                    //------------------------------------------------------------
-                    // Rifts in Charted Space
-                    //------------------------------------------------------------
-                    if (styles.showRiftOverlay && styles.riftOpacity > 0f)
-                        graphics.DrawImageAlpha(styles.riftOpacity, s_riftImage, riftImageRect);
-                    timers.Add(new Timer("rifts"));
-                    #endregion
-
-                    //------------------------------------------------------------
-                    // Foreground
-                    //------------------------------------------------------------
-
-                    #region macro-borders
-                    //------------------------------------------------------------
-                    // Macro: Borders object
-                    //------------------------------------------------------------
-                    if (styles.macroBorders.visible)
-                    {
-                        styles.macroBorders.pen.Apply(ref pen);
-                        graphics.SmoothingMode = SmoothingMode.AntiAlias;
-                        foreach (var vec in borderFiles
-                            .Select(file => resourceManager.GetXmlFileObject(file, typeof(VectorObject)))
-                            .OfType<VectorObject>()
-                            .Where(vec => (vec.MapOptions & options & MapOptions.BordersMask) != 0))
-                        {
-                            vec.Draw(graphics, tileRect, pen);
-                        }
-                    }
-                    timers.Add(new Timer("macro-borders"));
-                    #endregion
-
-                    #region macro-routes
-                    //------------------------------------------------------------
-                    // Macro: Route object
-                    //------------------------------------------------------------
-                    if (styles.macroRoutes.visible)
-                    {
-                        styles.macroRoutes.pen.Apply(ref pen);
-                        graphics.SmoothingMode = SmoothingMode.AntiAlias;
-                        foreach (var vec in routeFiles
-                            .Select(file => resourceManager.GetXmlFileObject(file, typeof(VectorObject)))
-                            .OfType<VectorObject>()
-                            .Where(vec => (vec.MapOptions & options & MapOptions.BordersMask) != 0))
-                        {
-                            vec.Draw(graphics, tileRect, pen);
-                        }
-                    }
-                    timers.Add(new Timer("macro-routes"));
-                    #endregion
-
-                    #region sector-grid
-                    //------------------------------------------------------------
-                    // Sector Grid
-                    //------------------------------------------------------------
-                    graphics.SmoothingMode = SmoothingMode.HighSpeed;
-                    if (styles.sectorGrid.visible)
-                    {
-                        const int gridSlop = 10;
-                        styles.sectorGrid.pen.Apply(ref pen);
-
-                        for (float h = ((float)(Math.Floor((tileRect.Left) / Astrometrics.SectorWidth) - 1) - Astrometrics.ReferenceSector.X) * Astrometrics.SectorWidth - Astrometrics.ReferenceHex.X; h <= tileRect.Right + Astrometrics.SectorWidth; h += Astrometrics.SectorWidth)
-                        {
-                            using (graphics.Save())
-                            {
-                                graphics.TranslateTransform(h, 0);
-                                graphics.ScaleTransform(1 / Astrometrics.ParsecScaleX, 1 / Astrometrics.ParsecScaleY);
-                                graphics.DrawLine(pen, 0, tileRect.Top - gridSlop, 0, tileRect.Bottom + gridSlop);
-                            }
-                        }
-
-                        for (float v = ((float)(Math.Floor((tileRect.Top) / Astrometrics.SectorHeight) - 1) - Astrometrics.ReferenceSector.Y) * Astrometrics.SectorHeight - Astrometrics.ReferenceHex.Y; v <= tileRect.Bottom + Astrometrics.SectorHeight; v += Astrometrics.SectorHeight)
-                            graphics.DrawLine(pen, tileRect.Left - gridSlop, v, tileRect.Right + gridSlop, v);
-                    }
-                    timers.Add(new Timer("sector grid"));
-                    #endregion
-
-                    #region subsector-grid
-                    //------------------------------------------------------------
-                    // Subsector Grid
-                    //------------------------------------------------------------
-                    graphics.SmoothingMode = SmoothingMode.HighSpeed;
-                    if (styles.subsectorGrid.visible)
-                    {
-                        const int gridSlop = 10;
-                        styles.subsectorGrid.pen.Apply(ref pen);
-
-                        int hmin = (int)Math.Floor(tileRect.Left / Astrometrics.SubsectorWidth) - 1 - Astrometrics.ReferenceSector.X,
-                            hmax = (int)Math.Ceiling((tileRect.Right + Astrometrics.SubsectorWidth + Astrometrics.ReferenceHex.X) / Astrometrics.SubsectorWidth);
-                        for (int hi = hmin; hi <= hmax; ++hi)
-                        {
-                            if (hi % 4 == 0) continue;
-                            float h = hi * Astrometrics.SubsectorWidth - Astrometrics.ReferenceHex.X;
-                            graphics.DrawLine(pen, h, tileRect.Top - gridSlop, h, tileRect.Bottom + gridSlop);
-                            using (graphics.Save())
-                            {
-                                graphics.TranslateTransform(h, 0);
-                                graphics.ScaleTransform(1 / Astrometrics.ParsecScaleX, 1 / Astrometrics.ParsecScaleY);
-                                graphics.DrawLine(pen, 0, tileRect.Top - gridSlop, 0, tileRect.Bottom + gridSlop);
-                            }
-                        }
-
-                        int vmin = (int)Math.Floor(tileRect.Top / Astrometrics.SubsectorHeight) - 1 - Astrometrics.ReferenceSector.Y,
-                            vmax = (int)Math.Ceiling((tileRect.Bottom + Astrometrics.SubsectorHeight + Astrometrics.ReferenceHex.Y) / Astrometrics.SubsectorHeight);
-                        for (int vi = vmin; vi <= vmax; ++vi)
-                        {
-                            if (vi % 4 == 0) continue;
-                            float v = vi * Astrometrics.SubsectorHeight - Astrometrics.ReferenceHex.Y;
-                            graphics.DrawLine(pen, tileRect.Left - gridSlop, v, tileRect.Right + gridSlop, v);
-                        }
-                    }
-                    timers.Add(new Timer("subsector grid"));
-                    #endregion
-
-                    #region parsec-grid
-                    //------------------------------------------------------------
-                    // Parsec Grid
-                    //------------------------------------------------------------
-                    // TODO: Optimize - timers indicate this is slow
-                    graphics.SmoothingMode = SmoothingMode.HighQuality;
-                    if (styles.parsecGrid.visible)
-                        DrawParsecGrid();
-                    timers.Add(new Timer("parsec grid"));
-                    #endregion
-
-                    #region subsector-names
-                    //------------------------------------------------------------
-                    // Subsector Names
-                    //------------------------------------------------------------
-                    if (styles.subsectorNames.visible)
-                    {
-                        solidBrush.Color = styles.subsectorNames.textColor;
-                        foreach (Sector sector in selector.Sectors)
-                        {
-                            for (int i = 0; i < 16; i++)
-                            {
-                                Subsector ss = sector.Subsector(i);
-                                if (ss == null || string.IsNullOrEmpty(ss.Name))
-                                    continue;
-
-                                Point center = sector.SubsectorCenter(i);
-                                RenderUtil.DrawLabel(graphics, ss.Name, center, styles.subsectorNames.Font, solidBrush, styles.subsectorNames.textStyle);
-                            }
-                        }
-                    }
-                    timers.Add(new Timer("subsector names"));
-                    #endregion
-
-                    #region micro-borders
-                    //------------------------------------------------------------
-                    // Micro: Borders
-                    //------------------------------------------------------------
-                    if (styles.microBorders.visible)
-                    {
-                        DrawMicroBorders(BorderLayer.Regions);
-
-                        if (styles.fillMicroBorders)
-                            DrawMicroBorders(BorderLayer.Fill);
-
-                        DrawMicroBorders(BorderLayer.Stroke);
-                    }
-                    timers.Add(new Timer("micro-borders"));
-                    #endregion
-
-                    #region micro-routes
-                    //------------------------------------------------------------
-                    // Micro: Routes
-                    //------------------------------------------------------------
-                    if (styles.microRoutes.visible)
-                        DrawRoutes();
-                    timers.Add(new Timer("micro-routes"));
-                    #endregion
-
-                    #region micro-border-labels
-                    //------------------------------------------------------------
-                    // Micro: Border Labels & Explicit Labels
-                    //------------------------------------------------------------
-                    if (styles.showMicroNames)
-                        DrawLabels();
-                    timers.Add(new Timer("micro-border labels"));
-                    #endregion
-
-                    #region sector-names
-                    //------------------------------------------------------------
-                    // Sector Names
-                    //------------------------------------------------------------
-                    if (styles.showSomeSectorNames || styles.showAllSectorNames)
-                    {
-                        foreach (Sector sector in selector.Sectors
-                            .Where(sector => styles.showAllSectorNames || (styles.showSomeSectorNames && sector.Selected))
-                            .Where(sector => sector.Names.Any() || sector.Label != null))
-                        {
-                            solidBrush.Color = styles.sectorName.textColor;
-                            string name = sector.Label ?? sector.Names[0].Text;
-
-                            RenderUtil.DrawLabel(graphics, name, sector.Center, styles.sectorName.Font, solidBrush, styles.sectorName.textStyle);
-                        }
-                    }
-                    timers.Add(new Timer("sector names"));
-                    #endregion
-
-                    #region government-rift-names
-                    //------------------------------------------------------------
-                    // Macro: Government / Rift / Route Names
-                    //------------------------------------------------------------
-                    if (styles.macroNames.visible)
-                        DrawMacroNames();
-                    timers.Add(new Timer("macro names"));
-                    #endregion
-
-                    #region capitals-homeworlds
-                    //------------------------------------------------------------
-                    // Macro: Capitals & Home Worlds
-                    //------------------------------------------------------------
-                    if (styles.capitals.visible && (options & MapOptions.WorldsMask) != 0)
-                    {
-                        if (resourceManager.GetXmlFileObject(@"~/res/Worlds.xml", typeof(WorldObjectCollection)) is WorldObjectCollection worlds && worlds.Worlds != null)
-                        {
-                            solidBrush.Color = styles.capitals.textColor;
-                            foreach (WorldObject world in worlds.Worlds.Where(world => (world.MapOptions & options) != 0))
-                            {
-                                world.Paint(graphics, styles.capitals.fillColor, solidBrush, styles.macroNames.SmallFont);
-                            }
-                        }
-                    }
-                    timers.Add(new Timer("macro worlds"));
-                    #endregion  
-
-                    #region mega-names
-                    //------------------------------------------------------------
-                    // Mega: Galaxy-Scale Labels
-                    //------------------------------------------------------------
-                    if (styles.megaNames.visible)
-                    {
-                        solidBrush.Color = styles.megaNames.textColor;
-                        foreach (var label in megaLabels)
-                        {
-                            using (graphics.Save())
-                            {
-                                Font font = label.minor ? styles.megaNames.SmallFont : styles.megaNames.Font;
-                                graphics.TranslateTransform(label.position.X, label.position.Y);
-                                graphics.ScaleTransform(1.0f / Astrometrics.ParsecScaleX, 1.0f / Astrometrics.ParsecScaleY);
-                                RenderUtil.DrawString(graphics, label.text, font, solidBrush, 0, 0);
-                            }
-                        }
-                    }
-                    timers.Add(new Timer("mega names"));
-                    #endregion
-                }
-
-                // End of clipping, so world names are not clipped in jumpmaps.
-
-                #region worlds
+            // Order here doesn't matter, as these will be sorted according to |styles.layerOrder|
+            var layers = new List<LayerAction>
+            {
                 //------------------------------------------------------------
-                // Worlds
+                // Background
                 //------------------------------------------------------------
-                if (styles.worlds.visible)
-                {
-                    if (styles.showStellarOverlay)
-                    {
-                        foreach (World world in selector.Worlds) { DrawStars(world); }
-                    }
-                    else {
-                        foreach (World world in selector.Worlds) { DrawWorld(fonts, world, WorldLayer.Background); }
-                        foreach (World world in selector.Worlds) { DrawWorld(fonts, world, WorldLayer.Foreground); }
 
-                        if (styles.HasWorldOverlays)
-                        {
-                            float slop = selector.SlopFactor;
-                            selector.SlopFactor = (float)Math.Max(slop, Math.Log(scale, 2.0) - 4);
-                            foreach (World world in selector.Worlds) { DrawWorld(fonts, world, WorldLayer.Overlay); }
-                            selector.SlopFactor = slop;
-                        }
-                    }
-                }
-                timers.Add(new Timer("worlds"));
-                #endregion
+                new LayerAction(LayerId.Background_Solid, ctx => ctx.DrawBackground(), clip:true),
+
+                // NOTE: Since alpha texture brushes aren't supported without
+                // creating a new image (slow!) we render the local background
+                // first, then overlay the deep background over it, for
+                // basically the same effect since the alphas sum to 1.
+                new LayerAction(LayerId.Background_NebulaTexture, ctx => ctx.DrawNebulaBackground(), clip:true),
+                new LayerAction(LayerId.Background_Galaxy, ctx => ctx.DrawGalaxyBackground(), clip:true),
+
+                new LayerAction(LayerId.Background_PseudoRandomStars, ctx => ctx.DrawPseudoRandomStars(), clip:true),
+                new LayerAction(LayerId.Background_Rifts, ctx => ctx.DrawRifts(), clip:true),
+
+                //------------------------------------------------------------
+                // Foreground
+                //------------------------------------------------------------
+                
+                new LayerAction(LayerId.Macro_Borders, ctx => ctx.DrawMacroBorders(), clip:true),
+                new LayerAction(LayerId.Macro_Routes, ctx => ctx.DrawMacroRoutes(), clip:true),
+
+                new LayerAction(LayerId.Grid_Sector, ctx => ctx.DrawSectorGrid(), clip:true),
+                new LayerAction(LayerId.Grid_Subsector, ctx => ctx.DrawSubsectorGrid(), clip:true),
+                new LayerAction(LayerId.Grid_Parsec, ctx => ctx.DrawParsecGrid(), clip:true),
+
+                new LayerAction(LayerId.Names_Subsector, ctx => ctx.DrawSubsectorNames(), clip:true),
+
+                new LayerAction(LayerId.Micro_BordersFill, ctx => ctx.DrawMicroBordersFill(), clip:true),
+                new LayerAction(LayerId.Micro_BordersStroke, ctx => ctx.DrawMicroBordersStroke(), clip:true),
+                new LayerAction(LayerId.Micro_Routes, ctx => ctx.DrawMicroRoutes(), clip:true),
+                new LayerAction(LayerId.Micro_BorderExplicitLabels, ctx => ctx.DrawMicroLabels(), clip:true),
+
+                new LayerAction(LayerId.Names_Sector, ctx => ctx.DrawSectorNames(), clip:true),
+                new LayerAction(LayerId.Macro_GovernmentRiftRouteNames, ctx => ctx.DrawMacroNames(), clip:true),
+                new LayerAction(LayerId.Macro_CapitalsAndHomeWorlds, ctx => ctx.DrawCapitalsAndHomeWorlds(), clip:true),
+                new LayerAction(LayerId.Mega_GalaxyScaleLabels, ctx => ctx.DrawMegaLabels(), clip:true),
+
+                new LayerAction(LayerId.Worlds_Background, ctx => ctx.DrawWorldsBackground(), clip:true),
+
+                // Not clipped, so names are not clipped in jumpmaps.
+                new LayerAction(LayerId.Worlds_Foreground, ctx => ctx.DrawWorldsForeground(), clip:false),
+
+                new LayerAction(LayerId.Worlds_Overlays, ctx => ctx.DrawWorldsOverlay(), clip:true),
 
                 //------------------------------------------------------------
                 // Overlays
                 //------------------------------------------------------------
+                
+                new LayerAction(LayerId.Overlay_DroyneChirperWorlds, ctx => ctx.DrawDroyneOverlay(), clip:true),
+                new LayerAction(LayerId.Overlay_MinorHomeworlds, ctx => ctx.DrawMinorHomeworldOverlay(), clip:true),
+                new LayerAction(LayerId.Overlay_AncientsWorlds, ctx => ctx.DrawAncientWorldsOverlay(), clip:true),
+                new LayerAction(LayerId.Overlay_ReviewStatus, ctx => ctx.DrawSectorReviewStatusOverlay(), clip:true),
+            };
 
-                #region droyne
-                //------------------------------------------------------------
-                // Droyne/Chirper Worlds
-                //------------------------------------------------------------
-                if (styles.droyneWorlds.visible)
+            // Order per stylesheet
+            layers.Sort((a, b) => styles.layerOrder[a.id] - styles.layerOrder[b.id]);
+
+            //
+            // Run the steps, imposing clipping region as needed.
+            //
+
+            AbstractGraphicsState state = null;
+            foreach (var layer in layers)
+            {
+                // Impose a clipping region if desired, or remove it if not.
+                if (layer.clip && state == null)
                 {
-                    solidBrush.Color = styles.droyneWorlds.textColor;
-                    foreach (World world in selector.Worlds)
-                    {
-                        bool droyne = world.HasCodePrefix("Droy");
-                        bool chirpers = world.HasCodePrefix("Chir");
-
-                        if (droyne || chirpers)
-                        {
-                            string glyph = droyne ? styles.droyneWorlds.content.Substring(0, 1) : styles.droyneWorlds.content.Substring(1, 1);
-                            OverlayGlyph(glyph, styles.droyneWorlds.Font, world.Coordinates);
-                        }
-                    }
+                    state = graphics.Save();
+                    if (ClipPath != null) graphics.IntersectClip(ClipPath);
+                    else graphics.IntersectClip(tileRect);
                 }
-                timers.Add(new Timer("droyne"));
-                #endregion
-
-                #region minorHomeWorlds
-                //------------------------------------------------------------
-                // Minor Homeworlds 
-                //------------------------------------------------------------
-                if (styles.minorHomeWorlds.visible)
+                else if (!layer.clip && state != null)
                 {
-                    solidBrush.Color = styles.minorHomeWorlds.textColor;
-                    foreach (World world in selector.Worlds.Where(w => w.HasCodePrefix("(")))
-                    {
-                        OverlayGlyph(styles.minorHomeWorlds.content, styles.minorHomeWorlds.Font, world.Coordinates);
-                    }
+                    state.Dispose();
+                    state = null;
                 }
-                timers.Add(new Timer("minor"));
-                #endregion
 
-                #region ancients
-                //------------------------------------------------------------
-                // Ancients Worlds
-                //------------------------------------------------------------
-                if (styles.ancientsWorlds.visible)
-                {
-                    solidBrush.Color = styles.ancientsWorlds.textColor;
-                    foreach (World world in selector.Worlds.Where(w => w.HasCode("An")))
-                    {
-                        OverlayGlyph(styles.ancientsWorlds.content, styles.ancientsWorlds.Font, world.Coordinates);
-                    }
-                }
-                timers.Add(new Timer("ancients"));
-                #endregion
+                layer.Run(this);
+                timers.Add(new Timer(layer.id.ToString()));
+            }
+            state?.Dispose();
 
-                #region review-status
-                //------------------------------------------------------------
-                // Review Status
-                //------------------------------------------------------------
-                if (styles.dimUnofficialSectors && styles.worlds.visible)
-                {
-                    solidBrush.Color = Color.FromArgb(128, styles.backgroundColor);
-                    foreach (Sector sector in selector.Sectors
-                        .Where(sector => !sector.Tags.Contains("Official") && !sector.Tags.Contains("Preserve") && !sector.Tags.Contains("InReview")))
-                        graphics.DrawRectangle(solidBrush, sector.Bounds);
-                }
-                if (styles.colorCodeSectorStatus && styles.worlds.visible)
-                {
-                    foreach (Sector sector in selector.Sectors)
-                    {
-                        if (sector.Tags.Contains("Official"))
-                            solidBrush.Color = Color.FromArgb(128, TravellerColors.Red);
-                        else if (sector.Tags.Contains("InReview"))
-                            solidBrush.Color = Color.FromArgb(128, Color.Orange);
-                        else if (sector.Tags.Contains("Unreviewed"))
-                            solidBrush.Color = Color.FromArgb(128, TravellerColors.Amber);
-                        else if (sector.Tags.Contains("Apocryphal"))
-                            solidBrush.Color = Color.FromArgb(128, Color.Magenta);
-                        else if (sector.Tags.Contains("Preserve"))
-                            solidBrush.Color = Color.FromArgb(128, TravellerColors.Green);
-                        else
-                            continue;
-                        graphics.DrawRectangle(solidBrush, sector.Bounds);
-                    }
-                }
-                timers.Add(new Timer("unofficial"));
-                #endregion
 
-                #region timing
+            #region timing
 #if SHOW_TIMING
                 using( graphics.Save() )
                 {
@@ -634,8 +319,336 @@ namespace Maps.Rendering
                     }
                 }
 #endif
-                #endregion
+            #endregion
+
+            fonts.Dispose();
+        }
+
+        private void DrawSectorReviewStatusOverlay()
+        {
+            if (styles.dimUnofficialSectors && styles.worlds.visible)
+            {
+                solidBrush.Color = Color.FromArgb(128, styles.backgroundColor);
+                foreach (Sector sector in selector.Sectors
+                    .Where(sector => !sector.Tags.Contains("Official") && !sector.Tags.Contains("Preserve") && !sector.Tags.Contains("InReview")))
+                    graphics.DrawRectangle(solidBrush, sector.Bounds);
             }
+            if (styles.colorCodeSectorStatus && styles.worlds.visible)
+            {
+                foreach (Sector sector in selector.Sectors)
+                {
+                    if (sector.Tags.Contains("Official"))
+                        solidBrush.Color = Color.FromArgb(128, TravellerColors.Red);
+                    else if (sector.Tags.Contains("InReview"))
+                        solidBrush.Color = Color.FromArgb(128, Color.Orange);
+                    else if (sector.Tags.Contains("Unreviewed"))
+                        solidBrush.Color = Color.FromArgb(128, TravellerColors.Amber);
+                    else if (sector.Tags.Contains("Apocryphal"))
+                        solidBrush.Color = Color.FromArgb(128, Color.Magenta);
+                    else if (sector.Tags.Contains("Preserve"))
+                        solidBrush.Color = Color.FromArgb(128, TravellerColors.Green);
+                    else
+                        continue;
+                    graphics.DrawRectangle(solidBrush, sector.Bounds);
+                }
+            }
+        }
+
+        private void DrawAncientWorldsOverlay()
+        {
+            if (!styles.ancientsWorlds.visible)
+                return;
+
+            graphics.SmoothingMode = SmoothingMode.HighQuality;
+            solidBrush.Color = styles.ancientsWorlds.textColor;
+            foreach (World world in selector.Worlds.Where(w => w.HasCode("An")))
+            {
+                OverlayGlyph(styles.ancientsWorlds.content, styles.ancientsWorlds.Font, world.Coordinates);
+            }
+        }
+
+        private void DrawMinorHomeworldOverlay()
+        {
+            if (!styles.minorHomeWorlds.visible)
+                return;
+
+            graphics.SmoothingMode = SmoothingMode.HighQuality;
+            solidBrush.Color = styles.minorHomeWorlds.textColor;
+            foreach (World world in selector.Worlds.Where(w => w.HasCodePrefix("(")))
+            {
+                OverlayGlyph(styles.minorHomeWorlds.content, styles.minorHomeWorlds.Font, world.Coordinates);
+            }
+        }
+
+        private void DrawDroyneOverlay()
+        {
+            if (!styles.droyneWorlds.visible)
+                return;
+
+            graphics.SmoothingMode = SmoothingMode.HighQuality;
+            solidBrush.Color = styles.droyneWorlds.textColor;
+            foreach (World world in selector.Worlds)
+            {
+                bool droyne = world.HasCodePrefix("Droy");
+                bool chirpers = world.HasCodePrefix("Chir");
+
+                if (droyne || chirpers)
+                {
+                    string glyph = droyne ? styles.droyneWorlds.content.Substring(0, 1) : styles.droyneWorlds.content.Substring(1, 1);
+                    OverlayGlyph(glyph, styles.droyneWorlds.Font, world.Coordinates);
+                }
+            }
+        }
+
+        private void DrawWorldsBackground()
+        {
+            if (!styles.worlds.visible || styles.showStellarOverlay)
+                return;
+
+            graphics.SmoothingMode = SmoothingMode.HighQuality;
+            foreach (World world in selector.Worlds)
+                DrawWorld(world, WorldLayer.Background);
+        }
+
+        private void DrawWorldsForeground()
+        {
+            if (!styles.worlds.visible || styles.showStellarOverlay)
+                return;
+
+            graphics.SmoothingMode = SmoothingMode.HighQuality;
+            foreach (World world in selector.Worlds)
+                DrawWorld(world, WorldLayer.Foreground);
+        }
+
+        private void DrawWorldsOverlay()
+        {
+            if (!styles.worlds.visible)
+                return;
+
+            graphics.SmoothingMode = SmoothingMode.HighQuality;
+            if (styles.showStellarOverlay)
+            {
+                foreach (World world in selector.Worlds)
+                    DrawStars(world);
+            }
+            else if (styles.HasWorldOverlays)
+            {
+                float slop = selector.SlopFactor;
+                selector.SlopFactor = (float)Math.Max(slop, Math.Log(scale, 2.0) - 4);
+                foreach (World world in selector.Worlds)
+                    DrawWorld(world, WorldLayer.Overlay);
+                selector.SlopFactor = slop;
+            }
+        }
+
+        private void DrawMegaLabels()
+        {
+            if (!styles.megaNames.visible)
+                return;
+
+            graphics.SmoothingMode = SmoothingMode.HighQuality;
+            solidBrush.Color = styles.megaNames.textColor;
+            foreach (var label in megaLabels)
+            {
+                using (graphics.Save())
+                {
+                    Font font = label.minor ? styles.megaNames.SmallFont : styles.megaNames.Font;
+                    graphics.TranslateTransform(label.position.X, label.position.Y);
+                    graphics.ScaleTransform(1.0f / Astrometrics.ParsecScaleX, 1.0f / Astrometrics.ParsecScaleY);
+                    RenderUtil.DrawString(graphics, label.text, font, solidBrush, 0, 0);
+                }
+            }
+        }
+
+        private void DrawCapitalsAndHomeWorlds()
+        {
+            if (!styles.capitals.visible || (options & MapOptions.WorldsMask) == 0)
+                return;
+            if (resourceManager.GetXmlFileObject(@"~/res/Worlds.xml", typeof(WorldObjectCollection)) is WorldObjectCollection worlds && worlds.Worlds != null)
+            {
+                graphics.SmoothingMode = SmoothingMode.HighQuality;
+                solidBrush.Color = styles.capitals.textColor;
+                foreach (WorldObject world in worlds.Worlds.Where(world => (world.MapOptions & options) != 0))
+                {
+                    world.Paint(graphics, styles.capitals.fillColor, solidBrush, styles.macroNames.SmallFont);
+                }
+            }
+        }
+
+        private void DrawSectorNames()
+        {
+            if (!(styles.showSomeSectorNames || styles.showAllSectorNames))
+                return;
+
+            graphics.SmoothingMode = SmoothingMode.HighQuality;
+            foreach (Sector sector in selector.Sectors
+                .Where(sector => styles.showAllSectorNames || (styles.showSomeSectorNames && sector.Selected))
+                .Where(sector => sector.Names.Any() || sector.Label != null))
+            {
+                solidBrush.Color = styles.sectorName.textColor;
+                string name = sector.Label ?? sector.Names[0].Text;
+
+                RenderUtil.DrawLabel(graphics, name, sector.Center, styles.sectorName.Font, solidBrush, styles.sectorName.textStyle);
+            }
+        }
+
+        private void DrawMicroBordersFill()
+        {
+            if (!styles.microBorders.visible)
+                return;
+
+            graphics.SmoothingMode = SmoothingMode.HighQuality;
+
+            DrawMicroBorders(BorderLayer.Regions);
+
+            if (styles.fillMicroBorders)
+                DrawMicroBorders(BorderLayer.Fill);
+        }
+
+        private void DrawMicroBordersStroke()
+        {
+            if (!styles.microBorders.visible)
+                return;
+
+            graphics.SmoothingMode = SmoothingMode.HighQuality;
+
+            DrawMicroBorders(BorderLayer.Stroke);
+        }
+
+        private void DrawSubsectorNames()
+        {
+            if (!styles.subsectorNames.visible)
+                return;
+
+            graphics.SmoothingMode = SmoothingMode.HighQuality;
+            solidBrush.Color = styles.subsectorNames.textColor;
+            foreach (Sector sector in selector.Sectors)
+            {
+                for (int i = 0; i < 16; i++)
+                {
+                    Subsector ss = sector.Subsector(i);
+                    if (ss == null || string.IsNullOrEmpty(ss.Name))
+                        continue;
+
+                    Point center = sector.SubsectorCenter(i);
+                    RenderUtil.DrawLabel(graphics, ss.Name, center, styles.subsectorNames.Font, solidBrush, styles.subsectorNames.textStyle);
+                }
+            }
+        }
+
+        private void DrawSubsectorGrid()
+        {
+            if (!styles.subsectorGrid.visible)
+                return;
+
+            graphics.SmoothingMode = SmoothingMode.HighSpeed;
+            const int gridSlop = 10;
+            styles.subsectorGrid.pen.Apply(ref pen);
+
+            int hmin = (int)Math.Floor(tileRect.Left / Astrometrics.SubsectorWidth) - 1 - Astrometrics.ReferenceSector.X, hmax = (int)Math.Ceiling((tileRect.Right + Astrometrics.SubsectorWidth + Astrometrics.ReferenceHex.X) / Astrometrics.SubsectorWidth);
+            for (int hi = hmin; hi <= hmax; ++hi)
+            {
+                if (hi % 4 == 0) continue;
+                float h = hi * Astrometrics.SubsectorWidth - Astrometrics.ReferenceHex.X;
+                graphics.DrawLine(pen, h, tileRect.Top - gridSlop, h, tileRect.Bottom + gridSlop);
+                using (graphics.Save())
+                {
+                    graphics.TranslateTransform(h, 0);
+                    graphics.ScaleTransform(1 / Astrometrics.ParsecScaleX, 1 / Astrometrics.ParsecScaleY);
+                    graphics.DrawLine(pen, 0, tileRect.Top - gridSlop, 0, tileRect.Bottom + gridSlop);
+                }
+            }
+
+            int vmin = (int)Math.Floor(tileRect.Top / Astrometrics.SubsectorHeight) - 1 - Astrometrics.ReferenceSector.Y, vmax = (int)Math.Ceiling((tileRect.Bottom + Astrometrics.SubsectorHeight + Astrometrics.ReferenceHex.Y) / Astrometrics.SubsectorHeight);
+            for (int vi = vmin; vi <= vmax; ++vi)
+            {
+                if (vi % 4 == 0) continue;
+                float v = vi * Astrometrics.SubsectorHeight - Astrometrics.ReferenceHex.Y;
+                graphics.DrawLine(pen, tileRect.Left - gridSlop, v, tileRect.Right + gridSlop, v);
+            }
+        }
+
+        private void DrawSectorGrid()
+        {
+            if (!styles.sectorGrid.visible)
+                return;
+
+            graphics.SmoothingMode = SmoothingMode.HighSpeed;
+            const int gridSlop = 10;
+            styles.sectorGrid.pen.Apply(ref pen);
+
+            for (float h = ((float)(Math.Floor((tileRect.Left) / Astrometrics.SectorWidth) - 1) - Astrometrics.ReferenceSector.X) * Astrometrics.SectorWidth - Astrometrics.ReferenceHex.X; h <= tileRect.Right + Astrometrics.SectorWidth; h += Astrometrics.SectorWidth)
+            {
+                using (graphics.Save())
+                {
+                    graphics.TranslateTransform(h, 0);
+                    graphics.ScaleTransform(1 / Astrometrics.ParsecScaleX, 1 / Astrometrics.ParsecScaleY);
+                    graphics.DrawLine(pen, 0, tileRect.Top - gridSlop, 0, tileRect.Bottom + gridSlop);
+                }
+            }
+
+            for (float v = ((float)(Math.Floor((tileRect.Top) / Astrometrics.SectorHeight) - 1) - Astrometrics.ReferenceSector.Y) * Astrometrics.SectorHeight - Astrometrics.ReferenceHex.Y; v <= tileRect.Bottom + Astrometrics.SectorHeight; v += Astrometrics.SectorHeight)
+                graphics.DrawLine(pen, tileRect.Left - gridSlop, v, tileRect.Right + gridSlop, v);
+        }
+
+        private void DrawMacroRoutes()
+        {
+            if (!styles.macroRoutes.visible)
+                return;
+
+            styles.macroRoutes.pen.Apply(ref pen);
+            graphics.SmoothingMode = SmoothingMode.AntiAlias;
+            foreach (var vec in routeFiles
+                .Select(file => resourceManager.GetXmlFileObject(file, typeof(VectorObject)))
+                .OfType<VectorObject>()
+                .Where(vec => (vec.MapOptions & options & MapOptions.BordersMask) != 0))
+            {
+                vec.Draw(graphics, tileRect, pen);
+            }
+        }
+
+        private void DrawMacroBorders()
+        {
+            if (!styles.macroBorders.visible)
+                return;
+
+            styles.macroBorders.pen.Apply(ref pen);
+            graphics.SmoothingMode = SmoothingMode.AntiAlias;
+            foreach (var vec in borderFiles
+                .Select(file => resourceManager.GetXmlFileObject(file, typeof(VectorObject)))
+                .OfType<VectorObject>()
+                .Where(vec => (vec.MapOptions & options & MapOptions.BordersMask) != 0))
+            {
+                vec.Draw(graphics, tileRect, pen);
+            }
+        }
+
+        private void DrawRifts()
+        {
+            if (!styles.showRiftOverlay)
+                return;
+
+            if (styles.riftOpacity > 0f)
+                graphics.DrawImageAlpha(styles.riftOpacity, s_riftImage, riftImageRect);
+        }
+
+        private void DrawGalaxyBackground()
+        {
+            if (!styles.showGalaxyBackground)
+                return;
+
+            if (styles.deepBackgroundOpacity > 0f && galaxyImageRect.IntersectsWith(tileRect))
+            {
+                AbstractImage galaxyImage = styles.lightBackground ? s_galaxyImageGray : s_galaxyImage;
+                graphics.DrawImageAlpha(styles.deepBackgroundOpacity, galaxyImage, galaxyImageRect);
+            }
+        }
+
+        private void DrawBackground()
+        {
+            graphics.SmoothingMode = SmoothingMode.HighSpeed;
+            solidBrush.Color = styles.backgroundColor;
+            graphics.DrawRectangle(solidBrush, tileRect);
         }
 
         private void InitializeImages()
@@ -684,10 +697,15 @@ namespace Maps.Rendering
 
         private void DrawMacroNames()
         {
+            if (!styles.macroNames.visible)
+                return;
+
+            graphics.SmoothingMode = SmoothingMode.HighQuality;
+
             foreach (var vec in borderFiles
-                .Select(file => resourceManager.GetXmlFileObject(file, typeof(VectorObject)))
-                .OfType<VectorObject>()
-                .Where(vec => (vec.MapOptions & options & MapOptions.NamesMask) != 0))
+            .Select(file => resourceManager.GetXmlFileObject(file, typeof(VectorObject)))
+            .OfType<VectorObject>()
+            .Where(vec => (vec.MapOptions & options & MapOptions.NamesMask) != 0))
             {
                 bool major = vec.MapOptions.HasFlag(MapOptions.NamesMajor);
                 LabelStyle labelStyle = new LabelStyle()
@@ -751,6 +769,11 @@ namespace Maps.Rendering
         
         private void DrawParsecGrid()
         {
+            if (!styles.parsecGrid.visible)
+                return;
+
+            graphics.SmoothingMode = SmoothingMode.HighQuality;
+
             const int parsecSlop = 1;
 
             int hx = (int)Math.Floor(tileRect.Left);
@@ -825,6 +848,9 @@ namespace Maps.Rendering
 
         private void DrawPseudoRandomStars()
         {
+            if (!styles.pseudoRandomStars.visible)
+                return;
+
             // Render pseudorandom stars based on the tile # and
             // scale factor. Note that these are positioned in
             // screen space, not world space.
@@ -859,6 +885,9 @@ namespace Maps.Rendering
 
         private void DrawNebulaBackground()
         {
+            if (!styles.showNebulaBackground)
+                return;
+
             // Render in image-space so it scales/tiles nicely
             using (graphics.Save())
             {
@@ -893,7 +922,7 @@ namespace Maps.Rendering
         }
 
         private enum WorldLayer { Background, Foreground, Overlay };
-        private void DrawWorld(FontCache styleRes, World world, WorldLayer layer)
+        private void DrawWorld(World world, WorldLayer layer)
         {
             bool isPlaceholder = world.IsPlaceholder;
             bool isCapital = world.IsCapital;
@@ -968,31 +997,44 @@ namespace Maps.Rendering
                         if (styles.worldDetails.HasFlag(WorldDetails.Zone))
                         {
                             Stylesheet.StyleElement? maybeElem = ZoneStyle(world);
-                            if (maybeElem.HasValue)
+                            if (maybeElem?.visible ?? false)
                             {
                                 Stylesheet.StyleElement elem = maybeElem.Value;
-                                if (!elem.fillColor.IsEmpty)
+                                if (styles.showZonesAsPerimeters)
                                 {
-                                    solidBrush.Color = elem.fillColor;
-                                    graphics.DrawEllipse(solidBrush, -0.4f, -0.4f, 0.8f, 0.8f);
-                                }
-
-                                PenInfo pi = elem.pen;
-                                if (!pi.color.IsEmpty)
-                                {
-                                    pi.Apply(ref pen);
-
-                                    if (renderName && styles.fillMicroBorders)
+                                    using (graphics.Save())
                                     {
-                                        using (graphics.Save())
+                                        graphics.ScaleTransform(Astrometrics.ParsecScaleX, Astrometrics.ParsecScaleY);
+                                        graphics.ScaleTransform(0.95f, 0.95f);
+                                        elem.pen.Apply(ref pen);
+                                        graphics.DrawPath(pen, RenderUtil.HexPath);
+                                    }
+                                }
+                                else
+                                {
+                                    if (!elem.fillColor.IsEmpty)
+                                    {
+                                        solidBrush.Color = elem.fillColor;
+                                        graphics.DrawEllipse(solidBrush, -0.4f, -0.4f, 0.8f, 0.8f);
+                                    }
+
+                                    PenInfo pi = elem.pen;
+                                    if (!pi.color.IsEmpty)
+                                    {
+                                        pi.Apply(ref pen);
+
+                                        if (renderName && styles.fillMicroBorders)
                                         {
-                                            graphics.IntersectClip(new RectangleF(-.5f, -.5f, 1f, renderUWP ? 0.65f : 0.75f));
+                                            using (graphics.Save())
+                                            {
+                                                graphics.IntersectClip(new RectangleF(-.5f, -.5f, 1f, renderUWP ? 0.65f : 0.75f));
+                                                graphics.DrawEllipse(pen, -0.4f, -0.4f, 0.8f, 0.8f);
+                                            }
+                                        }
+                                        else
+                                        {
                                             graphics.DrawEllipse(pen, -0.4f, -0.4f, 0.8f, 0.8f);
                                         }
-                                    }
-                                    else
-                                    {
-                                        graphics.DrawEllipse(pen, -0.4f, -0.4f, 0.8f, 0.8f);
                                     }
                                 }
                             }
@@ -1011,7 +1053,9 @@ namespace Maps.Rendering
                                 case HexCoordinateStyle.Subsector: hex = world.SubsectorHex; break;
                             }
                             solidBrush.Color = styles.hexNumber.textColor;
-                            graphics.DrawString(hex, styles.hexNumber.Font, solidBrush, 0.0f, -0.5f, Graphics.StringAlignment.TopCenter);
+                            graphics.DrawString(hex, styles.hexNumber.Font, solidBrush, 
+                                styles.hexNumber.position.X, 
+                                styles.hexNumber.position.Y, Graphics.StringAlignment.TopCenter);
                         }
                         #endregion
                     }
@@ -1019,7 +1063,7 @@ namespace Maps.Rendering
                     if (layer == WorldLayer.Foreground)
                     {
                         Stylesheet.StyleElement? elem = ZoneStyle(world);
-                        TextBackgroundStyle worldTextBackgroundStyle = (elem.HasValue && !elem.Value.fillColor.IsEmpty)
+                        TextBackgroundStyle worldTextBackgroundStyle = (!elem?.fillColor.IsEmpty ?? false)
                             ? TextBackgroundStyle.None : styles.worlds.textBackgroundStyle;
 
                         if (!isPlaceholder)
@@ -1039,17 +1083,17 @@ namespace Maps.Rendering
                             if (styles.worldDetails.HasFlag(WorldDetails.Starport))
                             {
                                 string starport = world.Starport.ToString();
-                                DrawWorldLabel(worldTextBackgroundStyle, solidBrush, styles.worlds.textColor, styles.StarportPosition, styleRes.StarportFont, starport);
+                                if (styles.showTL)
+                                    starport += "-" + SecondSurvey.ToHex(world.TechLevel);
+                                DrawWorldLabel(worldTextBackgroundStyle, solidBrush, styles.worlds.textColor, styles.starport.position, styles.starport.Font, starport);
                             }
                             #endregion
 
                             #region UWP
                             if (renderUWP)
                             {
-                                string uwp = world.UWP;
-                                solidBrush.Color = styles.worlds.textColor;
-
-                                graphics.DrawString(uwp, styles.hexNumber.Font, solidBrush, styles.StarportPosition.X, -styles.StarportPosition.Y, Graphics.StringAlignment.Centered);
+                                solidBrush.Color = styles.uwp.fillColor;
+                                DrawWorldLabel(styles.uwp.textBackgroundStyle, solidBrush, styles.uwp.textColor, styles.uwp.position, styles.hexNumber.Font, world.UWP);
                             }
                             #endregion
 
@@ -1071,14 +1115,14 @@ namespace Maps.Rendering
                                     if (glyph.IsPrintable)
                                     {
                                         PointF pt = styles.BaseTopPosition;
-                                        if (glyph.Bias == Glyph.GlyphBias.Bottom)
+                                        if (glyph.Bias == Glyph.GlyphBias.Bottom && !styles.ignoreBaseBias)
                                         {
                                             pt = styles.BaseBottomPosition;
                                             bottomUsed = true;
                                         }
 
                                         solidBrush.Color = glyph.IsHighlighted ? styles.worlds.textHighlightColor : styles.worlds.textColor;
-                                        RenderUtil.DrawGlyph(graphics, glyph, styleRes, solidBrush, pt.X, pt.Y);
+                                        RenderUtil.DrawGlyph(graphics, glyph, fonts, solidBrush, pt);
                                     }
                                 }
 
@@ -1090,35 +1134,35 @@ namespace Maps.Rendering
                                     {
                                         PointF pt = bottomUsed ? styles.BaseTopPosition : styles.BaseBottomPosition;
                                         solidBrush.Color = glyph.IsHighlighted ? styles.worlds.textHighlightColor : styles.worlds.textColor;
-                                        RenderUtil.DrawGlyph(graphics, glyph, styleRes, solidBrush, pt.X, pt.Y);
+                                        RenderUtil.DrawGlyph(graphics, glyph, fonts, solidBrush, pt);
                                     }
                                 }
 
                                 // Research Stations
-                                string rs;
-                                if ((rs = world.ResearchStation) != null)
                                 {
-                                    Glyph glyph = Glyph.FromResearchCode(rs);
-                                    solidBrush.Color = glyph.IsHighlighted ? styles.worlds.textHighlightColor : styles.worlds.textColor;
-                                    RenderUtil.DrawGlyph(graphics, glyph, styleRes, solidBrush, styles.BaseMiddlePosition.X, styles.BaseMiddlePosition.Y);
-                                }
-                                else if (world.IsReserve)
-                                {
-                                    Glyph glyph = Glyph.Reserve;
-                                    solidBrush.Color = glyph.IsHighlighted ? styles.worlds.textHighlightColor : styles.worlds.textColor;
-                                    RenderUtil.DrawGlyph(graphics, glyph, styleRes, solidBrush, styles.BaseMiddlePosition.X, 0);
-                                }
-                                else if (world.IsPenalColony)
-                                {
-                                    Glyph glyph = Glyph.Prison;
-                                    solidBrush.Color = glyph.IsHighlighted ? styles.worlds.textHighlightColor : styles.worlds.textColor;
-                                    RenderUtil.DrawGlyph(graphics, glyph, styleRes, solidBrush, styles.BaseMiddlePosition.X, 0);
-                                }
-                                else if (world.IsPrisonExileCamp)
-                                {
-                                    Glyph glyph = Glyph.ExileCamp;
-                                    solidBrush.Color = glyph.IsHighlighted ? styles.worlds.textHighlightColor : styles.worlds.textColor;
-                                    RenderUtil.DrawGlyph(graphics, glyph, styleRes, solidBrush, styles.BaseMiddlePosition.X, 0);
+                                    string rs;
+                                    Glyph? glyph = null;
+                                    if ((rs = world.ResearchStation) != null)
+                                    {
+                                        glyph = Glyph.FromResearchCode(rs);
+                                    }
+                                    else if (world.IsReserve)
+                                    {
+                                        glyph = Glyph.Reserve;
+                                    }
+                                    else if (world.IsPenalColony)
+                                    {
+                                        glyph = Glyph.Prison;
+                                    }
+                                    else if (world.IsPrisonExileCamp)
+                                    {
+                                        glyph = Glyph.ExileCamp;
+                                    }
+                                    if (glyph.HasValue)
+                                    {
+                                        solidBrush.Color = glyph.Value.IsHighlighted ? styles.worlds.textHighlightColor : styles.worlds.textColor;
+                                        RenderUtil.DrawGlyph(graphics, glyph.Value, fonts, solidBrush, styles.BaseMiddlePosition);
+                                    }
                                 }
                             }
                             #endregion
@@ -1134,71 +1178,75 @@ namespace Maps.Rendering
                             }
                             else
                             {
-                                if (world.Size <= 0)
+                                using (graphics.Save())
                                 {
-#region Asteroid-Belt
-                                    if (styles.worldDetails.HasFlag(WorldDetails.Asteroids))
+                                    graphics.TranslateTransform(styles.DiscPosition.X, styles.DiscPosition.Y);
+                                    if (world.Size <= 0)
                                     {
-                                        // Basic pattern, with probability varying per position:
-                                        //   o o o
-                                        //  o o o o
-                                        //   o o o
-
-                                        int[] lpx = { -2, 0, 2, -3, -1, 1, 3, -2, 0, 2 };
-                                        int[] lpy = { -2, -2, -2, 0, 0, 0, 0, 2, 2, 2 };
-                                        float[] lpr = { 0.5f, 0.9f, 0.5f, 0.6f, 0.9f, 0.9f, 0.6f, 0.5f, 0.9f, 0.5f };
-
-                                        solidBrush.Color = styles.worlds.textColor;
-
-                                        // Random generator is seeded with world location so it is always the same
-                                        Random rand = new Random(world.Coordinates.X ^ world.Coordinates.Y);
-                                        for (int i = 0; i < lpx.Length; ++i)
+                                        #region Asteroid-Belt
+                                        if (styles.worldDetails.HasFlag(WorldDetails.Asteroids))
                                         {
-                                            if (rand.NextDouble() < lpr[i])
+                                            // Basic pattern, with probability varying per position:
+                                            //   o o o
+                                            //  o o o o
+                                            //   o o o
+
+                                            int[] lpx = { -2, 0, 2, -3, -1, 1, 3, -2, 0, 2 };
+                                            int[] lpy = { -2, -2, -2, 0, 0, 0, 0, 2, 2, 2 };
+                                            float[] lpr = { 0.5f, 0.9f, 0.5f, 0.6f, 0.9f, 0.9f, 0.6f, 0.5f, 0.9f, 0.5f };
+
+                                            solidBrush.Color = styles.worlds.textColor;
+
+                                            // Random generator is seeded with world location so it is always the same
+                                            Random rand = new Random(world.Coordinates.X ^ world.Coordinates.Y);
+                                            for (int i = 0; i < lpx.Length; ++i)
                                             {
-                                                float px = lpx[i] * 0.035f;
-                                                float py = lpy[i] * 0.035f;
+                                                if (rand.NextDouble() < lpr[i])
+                                                {
+                                                    float px = lpx[i] * 0.035f;
+                                                    float py = lpy[i] * 0.035f;
 
-                                                float w = 0.04f + (float)rand.NextDouble() * 0.03f;
-                                                float h = 0.04f + (float)rand.NextDouble() * 0.03f;
+                                                    float w = 0.04f + (float)rand.NextDouble() * 0.03f;
+                                                    float h = 0.04f + (float)rand.NextDouble() * 0.03f;
 
-                                                // If necessary, add jitter here
-                                                float dx = 0, dy = 0;
+                                                    // If necessary, add jitter here
+                                                    float dx = 0, dy = 0;
 
-                                                graphics.DrawEllipse(solidBrush,
-                                                    px + dx - w / 2, py + dy - h / 2, w, h);
+                                                    graphics.DrawEllipse(solidBrush,
+                                                        px + dx - w / 2, py + dy - h / 2, w, h);
+                                                }
                                             }
                                         }
+                                        else
+                                        {
+                                            // Just a glyph
+                                            solidBrush.Color = styles.worlds.textColor;
+                                            RenderUtil.DrawGlyph(graphics, Glyph.DiamondX, fonts, solidBrush, new PointF(0,0));
+                                        }
+                                        #endregion
                                     }
                                     else
                                     {
-                                        // Just a glyph
-                                        solidBrush.Color = styles.worlds.textColor;
-                                        RenderUtil.DrawGlyph(graphics, Glyph.DiamondX, styleRes, solidBrush, 0.0f, 0.0f);
-                                    }
-#endregion
-                                }
-                                else
-                                {
-                                    styles.WorldColors(world, out Color penColor, out Color brushColor);
+                                        styles.WorldColors(world, out Color penColor, out Color brushColor);
 
-                                    if (!brushColor.IsEmpty && !penColor.IsEmpty)
-                                    {
-                                        solidBrush.Color = brushColor;
-                                        styles.worldWater.pen.Apply(ref pen);
-                                        pen.Color = penColor;
-                                        graphics.DrawEllipse(pen, solidBrush, -0.1f, -0.1f, 0.2f, 0.2f);
-                                    } 
-                                    else if (!brushColor.IsEmpty)
-                                    {
-                                        solidBrush.Color = brushColor;
-                                        graphics.DrawEllipse(solidBrush, -0.1f, -0.1f, 0.2f, 0.2f);
-                                    }
-                                    else if (!penColor.IsEmpty)
-                                    {
-                                        styles.worldWater.pen.Apply(ref pen);
-                                        pen.Color = penColor;
-                                        graphics.DrawEllipse(pen, -0.1f, -0.1f, 0.2f, 0.2f);
+                                        if (!brushColor.IsEmpty && !penColor.IsEmpty)
+                                        {
+                                            solidBrush.Color = brushColor;
+                                            styles.worldWater.pen.Apply(ref pen);
+                                            pen.Color = penColor;
+                                            graphics.DrawEllipse(pen, solidBrush, -styles.discRadius, -styles.discRadius, 2 * styles.discRadius, 2 * styles.discRadius);
+                                        }
+                                        else if (!brushColor.IsEmpty)
+                                        {
+                                            solidBrush.Color = brushColor;
+                                            graphics.DrawEllipse(solidBrush, -styles.discRadius, -styles.discRadius, 2 * styles.discRadius, 2 * styles.discRadius);
+                                        }
+                                        else if (!penColor.IsEmpty)
+                                        {
+                                            styles.worldWater.pen.Apply(ref pen);
+                                            pen.Color = penColor;
+                                            graphics.DrawEllipse(pen, -styles.discRadius, -styles.discRadius, 2 * styles.discRadius, 2 * styles.discRadius);
+                                        }
                                     }
                                 }
                             }
@@ -1209,7 +1257,7 @@ namespace Maps.Rendering
                             if (!world.IsAnomaly)
                             {
                                 solidBrush.Color = styles.worlds.textColor;
-                                graphics.DrawEllipse(solidBrush, -0.2f, -0.2f, 0.4f, 0.4f);
+                                graphics.DrawEllipse(solidBrush, -styles.discRadius, -styles.discRadius, 2 * styles.discRadius, 2 * styles.discRadius);
                             }
                         }
                         #endregion
@@ -1306,7 +1354,7 @@ namespace Maps.Rendering
                             if (!world.IsAnomaly)
                             {
                                 solidBrush.Color = styles.worlds.textColor;
-                                graphics.DrawEllipse(solidBrush, -0.2f, -0.2f, 0.4f, 0.4f);
+                                graphics.DrawEllipse(solidBrush, -styles.discRadius, -styles.discRadius, 2 * styles.discRadius, 2 * styles.discRadius);
                             }
                         }
                         #endregion
@@ -1355,7 +1403,7 @@ namespace Maps.Rendering
                         {
                             solidBrush.Color = styles.worlds.textColor;
                             // TODO: Scale, like the name text.
-                            graphics.DrawString(world.UWP, styles.hexNumber.Font, solidBrush, decorationRadius, -styles.StarportPosition.Y, Graphics.StringAlignment.CenterLeft);
+                            graphics.DrawString(world.UWP, styles.hexNumber.Font, solidBrush, decorationRadius, styles.uwp.position.Y, Graphics.StringAlignment.CenterLeft);
                         }
                         #endregion
 
@@ -1442,12 +1490,12 @@ namespace Maps.Rendering
 
         private Stylesheet.StyleElement? ZoneStyle(World world)
         {
-            if (world.IsAmber || world.IsRed)
-            {
-                Stylesheet.StyleElement elem =
-                    world.IsAmber ? styles.amberZone : styles.redZone;
-                return elem;
-            }
+            if (world.IsAmber)
+                return styles.amberZone;
+            if (world.IsRed)
+                return styles.redZone;
+            if (styles.greenZone.visible)
+                return styles.greenZone;
             return null;
         }
 
@@ -1468,6 +1516,10 @@ namespace Maps.Rendering
                         brush.Color = styles.backgroundColor;
                         graphics.DrawRectangle(brush, position.X - size.Width / 2, position.Y - size.Height / 2, size.Width, size.Height);
                     }
+                    break;
+
+                case TextBackgroundStyle.Filled:
+                    graphics.DrawRectangle(brush, position.X - size.Width / 2, position.Y - size.Height / 2, size.Width, size.Height);
                     break;
 
                 case TextBackgroundStyle.Outline:
@@ -1509,8 +1561,11 @@ namespace Maps.Rendering
 
         private static readonly Regex WRAP_REGEX = new Regex(@"\s+(?![a-z])");
 
-        private void DrawLabels()
+        private void DrawMicroLabels()
         {
+            if (!styles.showMicroNames)
+                return;
+
             using (graphics.Save())
             {
                 AbstractBrush solidBrush = new AbstractBrush();
@@ -1567,8 +1622,11 @@ namespace Maps.Rendering
             }
         }
         
-        private void DrawRoutes()
+        private void DrawMicroRoutes()
         {
+            if (!styles.microRoutes.visible)
+                return;
+
             using (graphics.Save())
             {
                 graphics.SmoothingMode = SmoothingMode.AntiAlias;
@@ -1734,6 +1792,10 @@ namespace Maps.Rendering
 
                         pen.Color = borderColor.Value;
                         pen.DashStyle = LineStyleToDashStyle(borderStyle.Value);
+
+                        // Allow style to override
+                        if (styles.microBorders.pen.dashStyle != Graphics.DashStyle.Solid)
+                            pen.DashStyle = styles.microBorders.pen.dashStyle;
 
                         if (styles.microBorderStyle != MicroBorderStyle.Curve)
                         {

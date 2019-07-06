@@ -708,6 +708,9 @@ body:not(.enable-experiments) #labBtn { display: none; }
   text-align: center;
   padding: 0;
 }
+
+.style-mongoose #legendBox { background-color: #e6e7e8; color: black; }
+
 #legendBoxContent {
   margin: 20px;
 }
@@ -725,7 +728,8 @@ body:not(.enable-experiments) #labBtn { display: none; }
 .style-fasa #legendBox section h2,
 .style-draft #legendBox section h2,
 .style-atlas #legendBox section h2,
-.style-print #legendBox section h2 {
+.style-print #legendBox section h2,
+.style-mongoose #legendBox section h2 {
   border-bottom-color: black;
 }
 .style-terminal #legendBox section h2 {
@@ -758,12 +762,22 @@ body:not(.enable-experiments) #labBtn { display: none; }
   color: #f0f0f0;
   text-shadow: -1px -1px 0 #000, -1px 1px 0 #000, 1px -1px 0 #000, 1px 1px 0 #000;
 }
+
+#greenzone-item { display: none; }
+.style-mongoose #greenzone-item { display: block; }
+
 #legendBox .amberzone { color: #FFCC00; }
 .style-atlas #legendBox .amberzone { color: #c0c0c0; }
+.style-mongoose #legendBox .amberzone { color: #fbb040; }
+.style-mongoose #legendBox .greenzone { color: #80c676; }
 #legendBox .redzone { color: #E32736; }
 .style-atlas #legendBox .redzone { color: black; }
 
 #legendBox .popname { display: inline-block; width: 70px; }
+
+.style-mongoose #legendBox .pop-few { text-transform: uppercase; }
+.style-mongoose #legendBox .pop-many { text-transform: uppercase; font-weight: bold; }
+.style-mongoose #legendBox .pop-capital { text-transform: uppercase; }
 
 #legendBox .glyph { font-size: 140%; }
 #legendBox .glyph.g8 { font-size: 80%; }
@@ -815,6 +829,8 @@ body:not(.enable-experiments) #labBtn { display: none; }
 .style-fasa #legendBox #image2 { background-image: url("res/ui/Legend_1006_fasa.svg"); }
 .style-terminal #legendBox #image1 { background-image: url("res/ui/Legend_1003_terminal.svg"); }
 .style-terminal #legendBox #image2 { background-image: url("res/ui/Legend_1006_terminal.svg"); }
+.style-mongoose #legendBox #image1 { background-image: url("res/ui/Legend_1003_mongoose.svg"); }
+.style-mongoose #legendBox #image2 { background-image: url("res/ui/Legend_1006_mongoose.svg"); }
 
 
 /* ============================================================ */
@@ -857,7 +873,8 @@ body:not(.enable-experiments) #labBtn { display: none; }
 #settingsBtn-candy  { background-image: url('res/ui/style-candy.png'); }
 #settingsBtn-fasa  { background-image: url('res/ui/style-fasa.png'); }
 #settingsBtn-draft  { background-image: url('res/ui/style-draft.png'); }
-#settingsBtn-terminal  { background-image: url('res/ui/style-terminal.png'); }
+#settingsBtn-terminal { background-image: url('res/ui/style-terminal.png'); }
+#settingsBtn-mongoose { background-image: url('res/ui/style-mongoose.png'); }
 
 
 /* ============================================================ */

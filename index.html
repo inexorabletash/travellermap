@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <title>Traveller Map</title>
 <meta charset="utf-8">
@@ -317,8 +317,12 @@
                  title="FASA"
          ></button><!--
       --><button id="settingsBtn-terminal"
-                 class="style-choice styles-p2"
-                 title="Terminal"
+                class="style-choice styles-p2"
+                title="Terminal"
+         ></button><!--
+      --><button id="settingsBtn-mongoose"
+                class="style-choice styles-p2"
+                title="Mongoose"
          ></button>
     </section>
 
@@ -537,6 +541,7 @@
     <section>
       <h2>Travel Zones</h2><br>
       <ul>
+        <li id="greenzone-item"><span class="glyph greenzone g12">&#x25AC;</span> Green Zone
         <li><span class="glyph amberzone g12">&#x25AC;</span> Amber Zone
         <li><span class="glyph redzone g12">&#x25AC;</span> Red Zone
       </ul>
@@ -544,9 +549,9 @@
     <section>
       <h2>Population</h2><br>
       <ul>
-        <li><span class="popname">Wef</span> under 1 billion
-        <li><span class="popname">YNAM</span> over 1 billion
-        <li><span class="highlight">Highlighted</span> world names<br>are subsector capitals.
+        <li><span class="popname pop-few">Wef</span> under 1 billion
+        <li><span class="popname pop-many">YNAM</span> over 1 billion
+        <li><span class="highlight pop-capital">Highlighted</span> world names<br>are subsector capitals.
       </ul>
     </section>
     </div>

@@ -36,9 +36,10 @@ namespace Maps.Utilities
             return Math.Sqrt(c1 * c1 + c2 * c2 + c3 * c3);
         }
 
+        // TODO: Replace this with a "sufficient contrast?" test.
         public static bool NoticeableDifference(Color a, Color b)
         {
-            const double JND = 2.3;
+            const double JND = 8;// 2.3;
 
             RGBtoXYZ(a.R, a.G, a.B, out double ax, out double ay, out double az);
             RGBtoXYZ(b.R, b.G, b.B, out double bx, out double by, out double bz);
