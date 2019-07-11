@@ -240,31 +240,33 @@ namespace Maps.API
                 }
 
                 int bitmapWidth = tileSize.Width, bitmapHeight = tileSize.Height;
-                AbstractMatrix transform = AbstractMatrix.Identity;
 
+                AbstractMatrix rotTransform = AbstractMatrix.Identity;
                 switch (rot)
                 {
                     case 1: // 90 degrees clockwise
-                        transform.RotatePrepend(90);
-                        transform.TranslatePrepend(0, -bitmapHeight);
+                        rotTransform.RotatePrepend(90);
+                        rotTransform.TranslatePrepend(0, -bitmapHeight);
                         Util.Swap(ref bitmapWidth, ref bitmapHeight);
                         break;
                     case 2: // 180 degrees
-                        transform.RotatePrepend(180);
-                        transform.TranslatePrepend(-bitmapWidth, -bitmapHeight);
+                        rotTransform.RotatePrepend(180);
+                        rotTransform.TranslatePrepend(-bitmapWidth, -bitmapHeight);
                         break;
                     case 3: // 270 degrees clockwise
-                        transform.RotatePrepend(270);
-                        transform.TranslatePrepend(-bitmapWidth, 0);
+                        rotTransform.RotatePrepend(270);
+                        rotTransform.TranslatePrepend(-bitmapWidth, 0);
                         Util.Swap(ref bitmapWidth, ref bitmapHeight);
                         break;
                 }
 
                 // TODO: Figure out how to compose rot and hrot properly.
+                AbstractMatrix hexTransform = AbstractMatrix.Identity;
                 Size bitmapSize = new Size(bitmapWidth, bitmapHeight);
                 if (hrot != 0)
-                    ApplyHexRotation(hrot, stylesheet, ref bitmapSize, ref transform);
+                    ApplyHexRotation(hrot, stylesheet, ref bitmapSize, ref hexTransform);
 
+                AbstractMatrix clampTransform = AbstractMatrix.Identity;
                 if (GetBoolOption("clampar", defaultValue: false))
                 {
                     // Landscape: 1.91:1 (1.91)
@@ -283,12 +285,19 @@ namespace Maps.API
                     }
                     if (newSize != bitmapSize)
                     {
-                        transform.TranslatePrepend(
+                        clampTransform.TranslatePrepend(
                             (newSize.Width - bitmapSize.Width) / 2f,
                             (newSize.Height - bitmapSize.Height) / 2f);
                         bitmapSize = newSize;
                     }
                 }
+
+                // Compose in this order so aspect ratio adjustments to image size (computed last)
+                // are applied first.
+                AbstractMatrix transform = AbstractMatrix.Identity;
+                transform.Prepend(clampTransform);
+                transform.Prepend(hexTransform);
+                transform.Prepend(rotTransform);
 
                 RenderContext ctx = new RenderContext(resourceManager, selector, tileRect, scale, options, stylesheet, tileSize)
                 {

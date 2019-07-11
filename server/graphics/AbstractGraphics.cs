@@ -96,6 +96,7 @@ namespace Maps.Graphics
         public void RotatePrepend(float angle) { matrix.RotatePrepend(angle); }
         public void ScalePrepend(float sx, float sy) { matrix.ScalePrepend(sx, sy); }
         public void TranslatePrepend(float dx, float dy) { matrix.TranslatePrepend(dx, dy); }
+        public void Prepend(AbstractMatrix m) { matrix.Prepend(m.matrix); }
 
         public XMatrix XMatrix => matrix;
         public Matrix Matrix => matrix.ToGdiMatrix();
