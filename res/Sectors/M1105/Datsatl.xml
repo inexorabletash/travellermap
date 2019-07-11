@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Sector>
+  <Name>Datsatl</Name>
+  <Credits>
+    <![CDATA[
+             <b>Datsatl</b> sector was designed by John G. Wood and
+             refined by Adrian Tymes. 
+             
+             Stellar positions were developed by Joe D. Fugate Sr.
+             and appear in <cite>The MegaTraveller Alien, Volume 1:
+             Vilani &amp; Vargr</cite> (Digest Group Publications,
+             1990).
+    ]]>
+  </Credits>
+  <Subsectors>
+    <Subsector Index="A">Aykrusk</Subsector>
+    <Subsector Index="B">Yaskoy</Subsector>
+    <Subsector Index="C">Astoa</Subsector>
+    <Subsector Index="D">Oldsafa</Subsector>
+    <Subsector Index="E">Ayssath</Subsector>
+    <Subsector Index="F">Praytsirv</Subsector>
+    <Subsector Index="G">Void Border</Subsector>
+    <Subsector Index="H">Tijia</Subsector>
+    <Subsector Index="I">Aydin</Subsector>
+    <Subsector Index="J">Ognar</Subsector>
+    <Subsector Index="K">Onae Snae</Subsector>
+    <Subsector Index="L">Otwe</Subsector>
+    <Subsector Index="M">Aydirsoth</Subsector>
+    <Subsector Index="N">Aydih</Subsector>
+    <Subsector Index="O">Wauto</Subsector>
+    <Subsector Index="P">Hollows</Subsector>
+  </Subsectors>
+  <Borders>
+    <Border Allegiance="Og" Color="#C0FFC0" LabelPosition="0920">0822 0922 0921 1021 1022 0923 0924 0824 0823 0822 </Border>
+    <Border Allegiance="Pd" Color="#8000FF" LabelPosition="2626">1921 2020 2120 2119 2120 2121 2122 2222 2323 2422 2522 2621 2722 2822 2923 2924 3024 3125 3225 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3337 3336 3335 3234 3134 3033 2934 2833 2733 2632 2532 2431 2331 2231 2230 2229 2228 2227 2226 2225 2125 2024 1924 1923 1922 1921 </Border>
+    <Border Allegiance="Te" Color="#FFC080" LabelPosition="1425">0926 1025 1125 1124 1224 1324 1424 1525 1625 1626 1727 1827 1928 1929 1930 1931 1932 1933 1832 1733 1633 1533 1432 1431 1430 1429 1329 1328 1227 1127 1026 0926 </Border>
+    <Border Allegiance="Tk" Color="#FF8040" LabelPosition="2719">2518 2617 2616 2615 2614 2615 2616 2717 2817 2918 3018 3118 3119 3120 3220 3120 3020 2920 2819 2720 2619 2520 2519 2518 </Border>
+    <Border Allegiance="Yt" Color="#00FFFF" LabelPosition="2108">0908 1007 1107 1106 1206 1306 1405 1505 1504 1503 1502 1501 1500 1600 1700 1800 1900 2000 2100 2200 2300 2400 2500 2600 2700 2800 2801 2902 3002 3103 3203 3204 3205 3306 3206 3207 3108 3008 2909 2910 2809 2709 2609 2510 2410 2311 2312 2313 2314 2214 2213 2113 2012 1912 1811 1711 1610 1511 1411 1312 1313 1212 1112 1012 0913 0912 0911 0910 0909 0908 </Border>
+  </Borders>
+  <Routes>
+    <Route Start="0401" End="0201" Type="Migration" Allegiance="Wc" Color="#0080FF"/>
+    <Route Start="0201" End="0202" Type="Migration" Allegiance="Wc" Color="#0080FF"/>
+    <Route Start="0202" End="0502" Type="Migration" Allegiance="Wc" Color="#0080FF"/>
+    <Route Start="0502" End="0303" Type="Migration" Allegiance="Wc" Color="#0080FF"/>
+    <Route Start="0303" End="0504" Type="Migration" Allegiance="Wc" Color="#0080FF"/>
+    <Route Start="0504" End="0405" Type="Migration" Allegiance="Wc" Color="#0080FF"/>
+    <Route Start="0405" End="0207" Type="Migration" Allegiance="Wc" Color="#0080FF"/>
+    <Route Start="0207" End="0409" Type="Migration" Allegiance="Wc" Color="#0080FF"/>
+    <Route Start="0409" End="0410" Type="Migration" Allegiance="Wc" Color="#0080FF"/>
+    <Route Start="0410" End="0312" Type="Migration" Allegiance="Wc" Color="#0080FF"/>
+    <Route Start="0312" End="0414" Type="Migration" Allegiance="Wc" Color="#0080FF"/>
+    <Route Start="0414" End="0316" Type="Migration" Allegiance="Wc" Color="#0080FF"/>
+    <Route Start="0316" End="0117" Type="Migration" Allegiance="Wc" Color="#0080FF"/>
+    <Route Start="0117" End="0319" Type="Migration" Allegiance="Wc" Color="#0080FF"/>
+    <Route Start="0319" End="0520" Type="Migration" Allegiance="Wc" Color="#0080FF"/>
+    <Route Start="0520" End="0521" Type="Migration" Allegiance="Wc" Color="#0080FF"/>
+    <Route Start="0521" End="0523" Type="Migration" Allegiance="Wc" Color="#0080FF"/>
+    <Route Start="0523" End="0623" Type="Migration" Allegiance="Wc" Color="#0080FF"/>
+    <Route Start="0623" End="0425" Type="Migration" Allegiance="Wc" Color="#0080FF"/>
+    <Route Start="0425" End="0427" Type="Migration" Allegiance="Wc" Color="#0080FF"/>
+    <Route Start="0427" End="0228" Type="Migration" Allegiance="Wc" Color="#0080FF"/>
+    <Route Start="0228" End="0330" Type="Migration" Allegiance="Wc" Color="#0080FF"/>
+    <Route Start="0330" End="0332" Type="Migration" Allegiance="Wc" Color="#0080FF"/>
+    <Route Start="0332" End="0133" Type="Migration" Allegiance="Wc" Color="#0080FF"/>
+    <Route Start="0133" End="0335" Type="Migration" Allegiance="Wc" Color="#0080FF"/>
+    <Route Start="0335" End="0635" Type="Migration" Allegiance="Wc" Color="#0080FF"/>
+    <Route Start="0635" End="0837" Type="Migration" Allegiance="Wc" Color="#0080FF"/>
+    <Route Start="0837" End="0939" Type="Migration" Allegiance="Wc" Color="#0080FF"/>
+    <Route Start="0939" End="0640" Type="Migration" Allegiance="Wc" Color="#0080FF"/>
+    <Route Start="0640" End="0641" Type="Migration" Allegiance="Wc" Color="#0080FF"/>
+  </Routes>
+  <Labels>
+    <Label Hex="0309" Color="#FFCC00" Wrap="true" Allegiance="Wc">Wave Chaser Migration</Label>
+    <Label Hex="0737" Color="#FFCC00" Wrap="true" Allegiance="Wc">Wave Chaser Migration</Label>
+  </Labels>
+  <Allegiances>
+    <Allegiance Code="--">Unclaimed</Allegiance>
+    <Allegiance Code="Na">Non-aligned, human-dominated</Allegiance>
+    <Allegiance Code="Pd">Pirian Domain</Allegiance>
+    <Allegiance Code="Og">Ognar Worlds</Allegiance>
+    <Allegiance Code="Te">Tijian Expanse</Allegiance>
+    <Allegiance Code="Tk">Tijian Khaganate</Allegiance>
+    <Allegiance Code="Wc">Wave Chasers</Allegiance>
+    <Allegiance Code="Yt">Yaskoydri Technocracy</Allegiance>
+  </Allegiances>
+</Sector>
