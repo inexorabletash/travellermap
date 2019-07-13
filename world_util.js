@@ -740,7 +740,7 @@
 
       // Wiki Links
       function makeWikiURL(suffix) {
-        return 'http://wiki.travellerrpg.com/' + encodeURIComponent(suffix.replace(/ /g, '_'));
+        return 'https://wiki.travellerrpg.com/' + encodeURIComponent(suffix.replace(/ /g, '_'));
       }
       world.world_url = makeWikiURL(world.Name + ' (world)');
       world.world_url_noscheme = world.world_url.replace(/^\w+:\/\//, '');

@@ -824,7 +824,7 @@ window.addEventListener('DOMContentLoaded', function() {
   var enableContext;
 
   function makeWikiURL(suffix) {
-    return 'http://wiki.travellerrpg.com/' + encodeURIComponent(suffix.replace(/ /g, '_'));
+    return 'https://wiki.travellerrpg.com/' + encodeURIComponent(suffix.replace(/ /g, '_'));
   }
 
   function updateContext(worldX, worldY, options) {
