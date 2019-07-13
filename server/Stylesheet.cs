@@ -1075,36 +1075,42 @@ namespace Maps.Rendering
 
             // Base element colors on foreground/light/dim/dark/highlight, if not specified by style.
 
-            if (pseudoRandomStars.fillColor.IsEmpty) pseudoRandomStars.fillColor = foregroundColor;
+            DefaultTo(ref pseudoRandomStars.fillColor, foregroundColor);
 
-            if (droyneWorlds.textColor.IsEmpty) droyneWorlds.textColor = microBorders.textColor;
-            if (minorHomeWorlds.textColor.IsEmpty) droyneWorlds.textColor = microBorders.textColor;
-            if (ancientsWorlds.textColor.IsEmpty) droyneWorlds.textColor = microBorders.textColor;
+            DefaultTo(ref droyneWorlds.textColor, microBorders.textColor);
+            DefaultTo(ref minorHomeWorlds.textColor, microBorders.textColor);
+            DefaultTo(ref ancientsWorlds.textColor, microBorders.textColor);
 
-            if (megaNames.textColor.IsEmpty) megaNames.textColor = foregroundColor;
-            if (megaNames.textHighlightColor.IsEmpty) megaNames.textHighlightColor = highlightColor;
+            DefaultTo(ref megaNames.textColor, foregroundColor);
+            DefaultTo(ref megaNames.textHighlightColor, highlightColor);
 
-            if (macroNames.textHighlightColor.IsEmpty) macroNames.textColor = foregroundColor;
-            if (macroNames.textHighlightColor.IsEmpty) macroNames.textHighlightColor = highlightColor;
+            DefaultTo(ref macroNames.textColor, foregroundColor);
+            DefaultTo(ref macroNames.textHighlightColor, highlightColor);
 
-            if (macroRoutes.textColor.IsEmpty) macroRoutes.textColor = foregroundColor;
-            if (macroRoutes.textHighlightColor.IsEmpty) macroRoutes.textHighlightColor = highlightColor;
+            DefaultTo(ref macroRoutes.textColor, foregroundColor);
+            DefaultTo(ref macroRoutes.textHighlightColor, highlightColor);
 
-            if (worlds.textColor.IsEmpty) worlds.textColor = foregroundColor;
-            if (worlds.textHighlightColor.IsEmpty) worlds.textHighlightColor = highlightColor;
+            DefaultTo(ref worlds.textColor, foregroundColor);
+            DefaultTo(ref worlds.textHighlightColor, highlightColor);
 
-            if (hexNumber.textColor.IsEmpty) hexNumber.textColor = lightColor;
-            if (uwp.textColor.IsEmpty) uwp.textColor = foregroundColor;
+            DefaultTo(ref hexNumber.textColor, lightColor);
+            DefaultTo(ref uwp.textColor, foregroundColor);
 
-            if (placeholder.textColor.IsEmpty) placeholder.textColor = foregroundColor;
-            if (anomaly.textColor.IsEmpty) anomaly.textColor = highlightColor;
+            DefaultTo(ref placeholder.textColor, foregroundColor);
+            DefaultTo(ref anomaly.textColor, highlightColor);
 
-            if (imageBorderColor.IsEmpty) imageBorderColor = lightColor;
+            DefaultTo(ref imageBorderColor, lightColor);
 
             // Convert list into a id -> index mapping.
             layerOrder = new Dictionary<LayerId, int>();
             for (var i = 0; i < layers.Count; ++i)
                 layerOrder[layers[i]] = i;
+        }
+
+        private static void DefaultTo(ref Color property, Color defaultValue)
+        {
+            if (property.IsEmpty)
+                property = defaultValue;
         }
 
         internal struct StyleElement
