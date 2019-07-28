@@ -12,15 +12,15 @@
   </Credits>
   <Subsectors>
 
-    <Subsector Index="A"></Subsector>
-    <Subsector Index="B"></Subsector>
+    <Subsector Index="A">Taxcolask</Subsector>
+    <Subsector Index="B">Aawrul</Subsector>
     <Subsector Index="C">Lotrutan</Subsector>
     <Subsector Index="D"></Subsector>
     <Subsector Index="E">Valaar</Subsector>
     <Subsector Index="F">Inasko</Subsector>
     <Subsector Index="G">Ldoocox</Subsector>
-    <Subsector Index="H"></Subsector>
-    <Subsector Index="I"></Subsector>
+    <Subsector Index="H">Anix Nuno</Subsector>
+    <Subsector Index="I">Orkanax</Subsector>
     <Subsector Index="J">Laxsetker</Subsector>
     <Subsector Index="K">Guuqal</Subsector>
     <Subsector Index="L"></Subsector>
@@ -33,18 +33,28 @@
     <Allegiance Code="HvFd">Hive Federation</Allegiance>
     <Allegiance Code="Hf">Hive FDA Uplift/Observation Site</Allegiance>
     <Allegiance Code="Xh">Hive FDA extra-Federation operation</Allegiance>
-    <Allegiance Code="Na">Non-aligned</Allegiance>
-    <Allegiance Code="Hc">Hiver Client State</Allegiance>
-    <Allegiance Code="Hl">Ldoocox Enclave</Allegiance>
-    <Allegiance Code="H0">Hive Federation Member</Allegiance>
-    <Allegiance Code="H1">Hive Federation Member</Allegiance>
-    <Allegiance Code="H2">Hive Federation Member</Allegiance>
-    <Allegiance Code="H3">Hive Federation Member</Allegiance>
+    <Allegiance Code="Na  ">Non-aligned</Allegiance>
+    <Allegiance Code="CsHv">Client State, Hive Federation</Allegiance>  
   </Allegiances>
-  <Borders>
-    <Border Allegiance="Hl" Color="green" LabelPosition="1914">
+
+  <Regions>
+    <Region Color="Aquamarine" Label="Dradrip Syndicate" WrapLabel="true">
+      2836 2936 2935 3035 3135 3136 3137 3237 3338 3339 3239 3238
+      3237 3137 3036 2936 2836
+    </Region>
+    <Region Label="Ldoocox Enclave" Color="Aquamarine" LabelPosition="1914" WrapLabel="true">
       1811 1812 1913 1813 1812
-    </Border>
+    </Region>
+    <Region Label="Inasko Guidance" Color="Aquamarine" WrapLabel="true">
+      1017 1117 1116 1216 1316 1317 1417 1518 1519 1418 1318
+      1217 1118 1119 1018 1017
+    </Region>
+    <Region Label="Valaar Association" Color="Aquamarine" WrapLabel="true">
+      0120 0219 0320 0321 0220 0120 
+    </Region>
+  </Regions>
+  
+  <Borders>
     <Border Allegiance="HvFd" ShowLabel="true">
       0000 0100 0200 0300 0400 0500 0600 0700 0800 0900
       1000 1100 1200 1300 1400 1500 1600 1700 1800 1900
@@ -65,6 +75,19 @@
 
   </Borders>
   <Routes>
+    
+    <Route Start="2016" End="2314" Type="Trade"/> 
+    <Route Start="2314" End="2412" Type="Trade"/>  
+   <Route Start="2412" End="2411" Type="Trade"/> 
+   <Route Start="2411" End="2110" Type="Trade"/> 
+   <Route Start="2016" End="1818" Type="Trade"/> 
+   <Route Start="2314" End="2113" Type="Trade"/> 
+   <Route Start="2125" End="2027" Type="Trade"/>  
+   <Route Start="1227" End="1327" Type="Trade"/>  
+   <Route Start="1324" End="1327" Type="Trade"/> 
+    
+   <Route Start="2125" End="1923" Type="Trade"/> 
+    <Route Start="2240" End="2242" Type="Trade"/> 
     <Route Start="0327" End="0525" Type="Trade"/>
     <Route Start="0327" End="0024" Type="Trade"/>
     <Route Start="0327" End="0428" Type="Trade"/>
@@ -96,7 +119,14 @@
     <Route Start="1716" End="1818" Type="Trade"/>
     <Route Start="1818" End="1920" Type="Trade"/>
     <Route Start="1920" End="2219" Type="Trade"/>
-    <Route Start="1920" End="2022" Type="Trade"/>
+    <Route Start="1818" End="1519" Type="Trade"/>
+    <Route Start="1119" End="1519" Type="Trade"/>
+    <Route Start="1119" End="0819" Type="Trade"/>
+    <Route Start="0419" End="0819" Type="Trade"/>
+    <Route Start="0419" End="0219" Type="Trade"/>
+    <Route Start="0122" End="0219" Type="Trade"/>
+    <Route Start="0122" End="0024" Type="Trade"/>
+    <Route Start="1920" End="1923" Type="Trade"/>
     <Route Start="2740" End="2641" Type="Trade"/>
     <Route Start="2740" End="2838" Type="Trade"/>
     <Route Start="3237" End="2838" Type="Trade"/>
@@ -117,6 +147,17 @@
     <Route Start="2235" End="2036" Type="Trade"/>
     <Route Start="1911" End="2110" Type="Trade"/>
     <Route Start="1911" End="1811" Type="Trade"/>
+    
+    <Route Start="0525" End="0823" Type="Trade"/>
+    <Route Start="0922" End="0823" Type="Trade"/>
+    <Route Start="0922" End="1119" Type="Trade"/>
+
+    <Route Start="0540" End="0837" Type="Trade"/>
+    <Route Start="0743" End="0540" Type="Trade"/>
+
+    <Route Start="1534" End="1636" Type="Trade"/>
+    <Route Start="2036" End="1636" Type="Trade"/>
+    
   </Routes>
   <Labels/>
 </Sector>

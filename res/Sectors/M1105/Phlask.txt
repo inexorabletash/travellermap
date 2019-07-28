@@ -14,7 +14,7 @@
 # Subsector A: Aphlaz
 # Subsector B: Biphas
 # Subsector C: Cophlan
-# Subsector D: Delask
+# Subsector D: Delaska
 # Subsector E: Elaska
 # Subsector F: Flaphla
 # Subsector G: Glosk
@@ -28,448 +28,449 @@
 # Subsector O: Ophlan
 # Subsector P: Plaphan
 
-# Alleg: Hv: "Hive Federation"
+# Alleg: HvFd: "Hive Federation"
 # Alleg: Ia: "Ithklur Aexzz"
-# Alleg: Na: "Non-Aligned, Human-dominated"
+# Alleg: Na  : "Non-Aligned, Hiver-dominated"
+# Alleg: NaHu: "Non-Aligned, Human-dominated"
+# Alleg: NaXX: "Non-Aligned, unclaimed"
 
-Hex  Name                 UWP       Remarks              {Ix} (Ex) [Cx] N B  Z PBG W A  Stellar
----- -------------------- --------- -------------------- ---- ---- ---- - -- - --- - -- -------
-0205 Moundeson            X686459-0 Ni                                  - -  R 800   Na        
-0210 Thirle               C4749A9-B Hi In                               - S  - 204   Na        
-0304 Darkmage             A766696-9 Ag Ni Ri                            - -  - 414   Na        
-0306 Tiberus              D100876-7 Na Va                               - S  B 111   Na        
-0308 McNaughton           B234474-A Ni                                  - N  B 303   Na        
-0310 Teria                C15099A-9 De Hi Po                            - S  - 214   Na        
-0403 Lahbro               D6577A8-4 Ag                                  - S  - 600   Na        
-0406 Vicarii              X553345-0 Lo Ni Po (minor)                    - -  R 422   Na        
-0502 Hollerith            A8C7ADC-E Fl Hi                               - S  A 714   Na        
-0506 Rickettsia           C659776-6                                     - -  B 515   Na        
-0508 Zachary              E330256-5 De Lo Ni Po                         - -  - 801   Na        
-0510 Pole                 C411667-7 Ic Na Ni                            - -  - 103   Na        
-0601 Hewlett              A4108AD-A Na                                  - -  - 223   Na        
-0708 Spark                E00046A-A As Ni                               - -  - 404   Na        
-0808 Vicenzi              C555642-6 Ag Ni                               - S  - 204   Na        
-0810 Hodlow               E7C3573-8 Fl Ni                               - -  A 803   Na        
-0903 Zachariah            D110832-9 Na                                  - S  - 323   Na        
-1003 Hathar               E8D28BB-6 Fl                                  - -  - 312   Na        
-1005 Accra                E774484-2 Ni                                  - -  - 713   Na        
-1006 Soliel               E55859D-5 Ag Ni                               - -  - 210   Na        
-1010 Corcurachan          C310400-B Ni                                  - -  - 803   Na        
-1102 Opel                 B87A201-A Lo Ni Wa                            - -  - 812   Na        
-1107 Cushing              C345677-4 Ag Ni                               - S  B 511   Na        
-1202 Chevrolet            A340672-B De Ni Po                            - N  B 113   Na        
-1206 Fugentun             C327349-9 Lo Ni                               - -  - 401   Na        
-1208 Heathleah            C876ABC-C Hi In                               - -  - 802   Na        
-1209 Gibbons              E355279-5 Lo Ni                               - -  B 110   Na        
-1210 Sourte               E31249A-8 Ic Ni                               - -  - 901   Na        
-1301 Negro                A97A468-C Ni Wa                               - N  - 413   Na        
-1302 Africa               B100543-9 Ni Va                               - N  - 704   Na        
-1308 Stephanie            A737221-D Lo Ni                               - -  - 904   Na        
-1310 Thoud                B77A7CC-A Wa                                  - N  - 804   Na        
-1405 Balkok               A422457-E Ni Po                               - -  - 820   Na        
-1406 Sabine               A346236-9 Lo Ni                               - N  - 923   Na        
-1407 Clemson              A699887-D                                     - -  - 200   Na        
-1501 Fagter               A76357B-C Ni                                  - NS B 803   Na        
-1502 Thekar               B414436-9 Ic Ni                               - N  - 414   Na        
-1506 Gengong              C87A598-6 Ni Wa                               - S  - 203   Na        
-1508 Gradule              C662ACA-8 Hi                                  - -  - 812   Na        
-1509 Nome                 B370211-8 De Lo Ni                            - S  - 104   Na        
-1510 Dubhlachan           C69979D-7                                     - -  - 713   Na        
-1601 Walterson            B557656-8 Ag Ni                               - -  - 223   Na        
-1603 Erin                 B41059C-B Ni                                  - N  - 204   Na        
-1604 Patter               B4548CA-6                                     - -  - 304   Na        
-1605 Cambrian             A31156A-E Ic Ni                               - NS - 110   Na        
-1608 Diamanta             C976685-8 Ag Ni                               - S  - 502   Na        
-1610 Chusuk               B455437-9 Ni                                  - S  - 703   Na        
-1704 Santiago             D303412-5 Ic Ni Va                            - S  - 504   Na        
-1705 Poynting             D485745-5 Ag Ri                               - -  - 404   Na        
-1707 Frances              D466411-3 Ni                                  - -  - 324   Na        
-1709 Guilomar             B8B0557-B De Ni                               - -  A 601   Na        
-1710 Wolfgang             B678454-C Ni                                  - -  - 414   Na        
-1801 Dumpty               D758420-6 Ni                                  - S  - 500   Na        
-1902 Vaughn               D886698-5 Ag Ni Ri                            - S  - 904   Na        
-1903 Day                  D8549CC-5 Hi                                  - -  - 103   Na        
-1906 Jean                 E537245-7 Lo Ni                               - -  - 803   Na        
-1907 Sarma                C452549-6 Ni Po                               - S  - 721   Na        
-1910 Karden               E221240-5 Lo Ni Po                            - -  - 913   Na        
-2009 Org                  E255684-7 Ag Ni                               - -  - 123   Na        
-2103 Alva                 A856AAC-E Hi                                  - -  - 900   Na        
-2104 Trece                C12079A-6 De Na Po                            - -  - 823   Na        
-2108 Hapsburg             B75A344-C Lo Ni Wa                            - N  - 410   Na        
-2205 Ansel                B497431-7 Ni                                  - -  - 802   Na        
-2206 Reginald             A576231-A Lo Ni                               - -  - 104   Na        
-2208 Cinderella           A889755-A Ri                                  - NS - 612   Na        
-2209 Stephenson           A8B8422-C Fl Ni                               - -  A 503   Na        
-2302 Arise                C335200-C Lo Ni                               - -  - 200   Ia        
-2304 Isaiah               C300520-8 Ni Va                               - -  - 100   Na        
-2306 Ordred               A221ABA-F Hi In Na Po                         - N  - 902   Na        
-2310 Frater               A3618CA-9                                     - NS - 124   Na        
-2403 Brenda               A654777-9 Ag                                  - -  B 804   Ia        
-2405 Runnik               B545314-A Lo Ni                               - N  - 603   Na        
-2408 Kreed                A36167B-B Ni Ri                               - N  B 614   Na        
-2410 Louisa               A325542-E Ni                                  - -  - 201   Na        
-2503 Aabe                 C89A5AC-7 Ni Wa                               - S  - 705   Ia        
-2504 Aabidunuur           D400321-7 Lo Ni Va                            - S  - 103   Ia        
-2603 Aa                   C221887-8 Na Po                               - -  - 622   Ia        
-2707 Cindy                E411413-8 Ic Ni                               - -  - 600   Na        
-2908 Dee                  E685204-4 Lo Ni                               - -  - 900   Na        
-3102 Aabirzudii           B898305-B Lo Ni                               - NS - 903   Ia        
-3103 Aadanmiirer          C100A87-C Hi Na Va                            - -  - 804   Ia        
-3209 Pynyngg              B75A99C-9 Hi Wa                               - N  - 314   Na        
-0115 Manchester           C69A699-7 Ni Wa                               - S  - 402   Na        
-0116 Gerbrantius          C89A766-7 Wa                                  - S  - 700   Na        
-0117                      B260764-7 De Ri                               - K  - 713   Hv        
-0118                      CAA3211-5 Fl Lo Ni                            - -  - 915   Hv        
-0213 Fagtor               E662773-4 Ri                                  - -  - 734   Na        
-0215 Elizabeth            C3549D8-7 Hi                                  - -  - 514   Na        
-0217                      A669201-D Lo Ni                               - -  - 105   Hv        
-0311 Seg                  X486436-3 Ni                                  - -  R 214   Na        
-0314 Pravda               E211667-4 Ic Na Ni                            - -  - 303   Na        
-0315 Derig                E79799A-8 Hi In                               - -  - 413   Na        
-0317                      A581202-D Lo Ni                               - -  - 104   Hv        
-0318                      A6955S5-9 Ag Ni                               - -  - 905   Hv        
-0413 Dunkirk              E5898DE-5                                     - -  - 900   Na        
-0415 Krossbyr             E000499-7 As Ni                               - -  - 803   Na        
-0416 Eregdor              C739798-8                                     - -  - 800   Na        
-0418                      B160212-B De Lo Ni                            - M  - 204   Hv        
-0512 Sirma                C7A6105-B Fl Lo Ni                            - -  - 324   Na        
-0514 Hardon               X523314-1 Lo Ni Po                            - -  R 912   Na        
-0519                      B1305S6-9 De Ni Po                            - M  - 104   Hv        
-0614 Angie                A633110-9 Lo Ni Po                            - -  - 213   Na        
-0615 Betraytor            A87488A-B                                     - N  - 400   Na        
-0617                      A383101-C Lo Ni                               - K  - 210   Hv        
-0619                      B100213-B Lo Ni Va                            - K  - 924   Hv        
-0716                      E7696S4-4 Ni Ri                               - -  - 323   Hv        
-0720                      A5549S6-9 Hi                                  - K  - 301   Hv        
-0813 Bielform             C000249-B As Lo Ni                            - S  - 114   Na        
-0817                      B683002-8 Ba Lo Ni                            - KM - 503   Hv        
-0818                      B6669W5-C Hi                                  - -  - 413   Hv        
-0819                      B1006S4-9 Na Ni Va                            - KM - 314   Hv        
-0820                      A5759T3-D Hi In                               - K  - 213   Hv        
-0912 Lestrigge            X888774-2 Ag Ri                               - -  R 203   Na        
-0913 Coseecer             X746441-0 Ni                                  - -  R 312   Na        
-0914 Lucienne             X78A230-0 Lo Ni Wa                            - -  R 412   Na        
-0917                      C8B7201-7 Fl Lo Ni (minor)                    - -  A 912   Hv        
-0920                      A775302-B Lo Ni                               - -  - 804   Hv        
-1011 Rudolph              D95A747-6 Wa                                  - S  - 210   Na        
-1012 Woods                D334A7B-8 Hi In                               - S  B 224   Na        
-1014                      C4369T4-7 Hi In                               - M  - 225   Hv        
-1017                      A110405-F Ni                                  - -  - 500   Hv        
-1020                      A7798T5-8                                     - K  - 604   Hv        
-1114                      A999203-9 Lo Ni                               - -  - 814   Hv        
-1115                      C4606S6-8 De Ni Ri                            - M  - 320   Hv        
-1117                      A5637S4-B Ri                                  - -  - 603   Hv        
-1119                      A324664-D Ni                                  - -  - 204   Hv        
-1120                      A401201-F Ic Lo Ni Va                         - K  - 822   Hv        
-1211 Swanne               C222443-8 Ni Po                               - -  - 215   Na        
-1212 Dominga              C201664-9 Ic Na Ni Va                         - S  - 100   Na        
-1215                      C6A37S2-7 Fl                                  - M  - 502   Hv        
-1220                      A332562-D Ni Po                               - -  - 902   Hv        
-1311 Vescy                AA9A302-F Lo Ni Wa                            - NS - 803   Na        
-1315                      B6789T4-7 Hi In                               - -  - 403   Hv        
-1316                      B538663-8 Ni                                  - -  - 304   Hv        
-1317                      B5A1002-A Ba Fl Lo Ni                         - -  - 523   Hv        
-1318                      B510421-8 Ni                                  - K  - 602   Hv        
-1413                      B326413-B Ni                                  - K  - 724   Hv        
-1418                      B321521-C Ni Po                               - KM - 102   Hv        
-1420                      D7785S6-2 Ag Ni                               - M  - 205   Hv        
-1512                      B545563-8 Ag Ni                               - K  - 212   Hv        
-1513                      B6A0521-8 De Ni                               - K  - 903   Hv        
-1515                      C67A9T4-C Hi In Wa                            - -  - 310   Hv        
-1516                      D646521-3 Ag Ni                               - M  - 224   Hv        
-1519                      B3009S4-A Hi Na Va                            - KM - 214   Hv        
-1520                      D753201-5 Lo Ni Po                            - M  - 103   Hv        
-1613                      C5105U6-8 Ni                                  - -  - 201   Hv        
-1617                      C439202-7 Lo Ni                               - -  - 111   Hv        
-1618                      D8B3721-4 Fl (minor)                          - M  A 804   Hv        
-1619                      B8886S5-B Ag Ni Ri                            - -  - 304   Hv        
-1711 Waldburga            B34457A-7 Ag Ni                               - -  - 122   Na        
-1719                      C536101-8 Lo Ni                               - -  - 203   Hv        
-1811 Rollins              C4837BC-6                                     - -  - 624   Na        
-1813                      D485102-6 Lo Ni                               - M  - 513   Hv        
-1818                      B2446S1-C Ag Ni                               - K  - 804   Hv        
-1819                      C558AW6-C Hi                                  - -  - 101   Hv        
-1912 Eastwood             B68667C-9 Ag Ni Ri                            - N  B 304   Na        
-1916                      X659211-0 Lo Ni (minor)                       - -  R 101   Hv        
-1919                      C6357S5-6                                     - M  - 902   Hv        
-2015                      X4788T4-0 (minor)                             - -  R 804   Hv        
-2019                      C795402-7 Ni                                  - M  - 601   Hv        
-2112                      D876303-3 Lo Ni                               - -  - 223   Hv        
-2114                      X237101-4 Lo Ni (minor)                       - -  R 611   Hv        
-2115                      D666522-5 Ag Ni                               - M  - 813   Hv        
-2116                      D8A3515-5 Fl Ni                               - -  - 100   Hv        
-2118                      B000521-E As Ni                               - -  - 402   Hv        
-2213                      D5848S6-3 Ri                                  - M  - 923   Hv        
-2215                      A524502-E Ni                                  - M  - 812   Hv        
-2219                      C523663-5 Na Ni Po                            - -  - 524   Hv        
-2220                      C554301-8 Lo Ni                               - M  - 404   Hv        
-2311 Birmingham           D557254-5 Lo Ni                               - -  - 105   Na        
-2312                      D100664-8 Na Ni Va                            - -  - 413   Hv        
-2313                      CAA8662-5 Fl Ni                               - -  - 434   Hv        
-2316                      C300202-B Lo Ni Va                            - M  - 102   Hv        
-2317                      C584311-7 Lo Ni                               - M  - 304   Hv        
-2320                      C536623-4 Ni                                  - -  - 324   Hv        
-2412                      E659562-8 Ni                                  - -  - 110   Hv        
-2414                      C639204-8 Lo Ni                               - -  - 123   Hv        
-2415                      C654561-8 Ag Ni                               - -  - 903   Hv        
-2418                      A8A17S5-C Fl                                  - K  - 704   Hv        
-2419                      B4108S1-A Na                                  - -  - 920   Hv        
-2511                      D646562-7 Ag Ni                               - M  - 924   Hv        
-2512                      B300201-E Lo Ni Va                            - K  - 214   Hv        
-2516                      A4507S6-C De Po                               - K  - 214   Hv        
-2611                      D5638T5-3 Ri                                  - M  - 100   Hv        
-2612                      D6677S6-2 Ag Ri                               - M  - 804   Hv        
-2614                      X100623-0 Na Ni Va (minor)                    - -  R 713   Hv        
-2616                      A543411-8 Ni Po                               - -  - 100   Hv        
-2619                      A8A4002-D Fl Lo Ni                            - K  - 704   Hv        
-2713                      E5358S4-5                                     - -  - 414   Hv        
-2714                      X100304-4 Lo Ni Va (minor)                    - -  R 604   Hv        
-2716                      X666763-0 Ag Ri (minor)                       - -  R 101   Hv        
-2718                      X679101-2 Lo Ni (minor)                       - -  R 200   Hv        
-2811                      D591523-2 Ni                                  - M  - 203   Hv        
-2817                      C876521-9 Ag Ni                               - -  - 414   Hv        
-2818                      C9B4105-5 Fl Lo Ni (minor)                    - -  A 314   Hv        
-2913                      D77A202-7 Lo Ni Wa                            - M  - 300   Hv        
-2914                      D697561-7 Ag Ni                               - M  - 402   Hv        
-3011                      D455362-7 Lo Ni                               - -  - 312   Hv        
-3012                      D5487S4-4 Ag                                  - M  - 102   Hv        
-3016                      C4916S2-8 Ni                                  - -  - 613   Hv        
-3020                      C6957S3-5 Ag                                  - -  - 123   Hv        
-3116                      C5698T4-9 Ri                                  - -  - 500   Hv        
-3120                      C213211-7 Ic Lo Ni                            - M  - 313   Hv        
-3211                      D0009U5-8 As Hi Na                            - -  - 502   Hv        
-3218                      B5347S3-9                                     - KM - 904   Hv        
-3220                      B566301-7 Lo Ni                               - K  - 824   Hv        
-0123                      C635101-A Lo Ni                               - -  - 500   Hv        
-0125                      C877864-7                                     - M  - 823   Hv        
-0127                      C856521-6 Ag Ni                               - -  - 905   Hv        
-0130                      C778212-9 Lo Ni                               - -  - 105   Hv        
-0221                      E4267S4-5                                     - -  - 700   Hv        
-0223                      E0008S3-4 As Na                               - -  - 913   Hv        
-0323                      E150512-8 De Ni Po                            - -  - 100   Hv        
-0330                      C744313-5 Lo Ni                               - M  - 303   Hv        
-0423                      C985105-8 Lo Ni                               - -  - 604   Hv        
-0424                      E110764-9 Na                                  - -  - 720   Hv        
-0426                      E000514-8 As Ni                               - -  - 824   Hv        
-0430                      EA9A503-5 Ni Wa                               - -  - 801   Hv        
-0530                      E967864-5                                     - -  - 914   Hv        
-0622                      E7578S6-2                                     - -  - 925   Hv        
-0625                      C784303-7 Lo Ni                               - -  - 302   Hv        
-0722                      E668562-5 Ag Ni                               - -  - 802   Hv        
-0725                      C6426S2-8 Ni Po                               - M  - 400   Hv        
-0821                      C4006S4-6 Na Ni Va                            - -  - 202   Hv        
-0825                      C675421-7 Ni                                  - -  - 510   Hv        
-0826                      E200525-6 Ni Va                               - -  - 103   Hv        
-0827                      E460423-8 De Ni                               - -  - 620   Hv        
-0922                      B100421-B Ni Va                               - -  - 704   Hv        
-0923                      C4546S5-5 Ag Ni                               - -  - 303   Hv        
-0929                      D000564-7 As Ni                               - -  - 905   Hv        
-0930                      A845521-9 Ag Ni                               - -  - 801   Hv        
-1021                      C4339T5-B Hi In Na Po                         - -  - 413   Hv        
-1025                      A84A461-B Ni Wa                               - -  - 703   Hv        
-1026                      A55A463-C Ni Wa                               - K  - 500   Hv        
-1029                      D1108S4-9 Na                                  - -  - 812   Hv        
-1030                      A778202-D Lo Ni                               - K  - 911   Hv        
-1122                      C6387S1-4                                     - -  - 702   Hv        
-1127                      A210421-A Ni                                  - KM - 604   Hv        
-1128                      C588203-7 Lo Ni                               - M  - 103   Hv        
-1129                      C674526-8 Ag Ni                               - -  - 900   Hv        
-1130                      A464312-C Lo Ni                               - K  - 204   Hv        
-1221                      B693665-7 Ni                                  - -  - 702   Hv        
-1222                      A9877S4-8 Ag Ri                               - -  - 303   Hv        
-1224                      C6378S1-5                                     - M  - 814   Hv        
-1226                      A487216-C Lo Ni                               - K  - 904   Hv        
-1227                      C5359T2-9 Hi In                               - -  - 300   Hv        
-1229                      A553103-D Lo Ni Po                            - K  - 504   Hv        
-1323                      AAC4301-B Fl Lo Ni (minor)                    - K  A 904   Hv        
-1325                      B210302-E Lo Ni                               - -  - 204   Hv        
-1326                      B8B8663-9 Fl Ni (minor)                       - -  A 323   Hv        
-1330                      A3029S6-F Hi Ic Na Va                         - K  - 403   Hv        
-1422                      AA8A7T4-9 Ri Wa                               - -  - 104   Hv        
-1427                      C533513-A Ni Po                               - M  - 115   Hv        
-1430                      A527424-C Ni                                  - -  - 603   Hv        
-1526                      C000401-A As Ni                               - -  - 604   Hv        
-1529                      A9876S5-9 Ag Ni Ri                            - -  - 401   Hv        
-1530                      A100562-E Ni Va                               - -  - 800   Hv        
-1623                      B777565-9 Ag Ni                               - -  - 901   Hv        
-1624                      A7A8203-B Fl Lo Ni                            - K  - 104   Hv        
-1627                      C552301-7 Lo Ni Po                            - M  - 204   Hv        
-1722                      E655321-5 Lo Ni                               - -  - 303   Hv        
-1723                      C5507S2-6 De Po                               - M  - 914   Hv        
-1724                      C574AW6-7 Hi In                               - M  - 104   Hv        
-1725                      C432101-A Lo Ni Po                            - -  - 224   Hv        
-1726                      E787321-5 Lo Ni                               - -  - 712   Hv        
-1728                      E755724-1 Ag                                  - -  - 811   Hv        
-1729                      C686303-9 Lo Ni                               - M  - 613   Hv        
-1821                      E547562-3 Ag Ni                               - -  - 414   Hv        
-1823                      E4658S4-7 Ri                                  - -  - 514   Hv        
-1824                      E100312-8 Lo Ni Va                            - -  - 724   Hv        
-1828                      E4456S5-7 Ag Ni                               - -  - 832   Hv        
-1928                      E363464-4 Ni                                  - -  - 905   Hv        
-1929                      E655421-2 Ni                                  - -  - 202   Hv        
-2023                      E120001-5 De Lo Ni Po                         - -  - 610   Hv        
-2024                      C6B08S3-7 De (minor)                          - -  A 510   Hv        
-2026                      C544364-8 Lo Ni                               - -  - 702   Hv        
-2027                      C89A9T3-7 Hi In Wa                            - -  - 424   Hv        
-2030                      B444202-A Lo Ni                               - -  - 103   Hv        
-2121                      C310524-7 Ni                                  - M  - 810   Hv        
-2123                      C556562-9 Ag Ni                               - -  - 200   Hv        
-2127                      B120201-A De Lo Ni Po                         - K  - 103   Hv        
-2130                      B5428S6-6 Po                                  - K  - 823   Hv        
-2221                      C622202-6 Lo Ni Po                            - -  - 112   Hv        
-2223                      D200314-9 Lo Ni Va                            - -  - 304   Hv        
-2224                      D2326S5-7 Na Ni Po                            - -  - 424   Hv        
-2226                      D150463-5 De Ni Po                            - -  - 504   Hv        
-2227                      D100101-A Lo Ni Va                            - -  - 603   Hv        
-2228                      D301861-6 Ic Na Va                            - -  - 803   Hv        
-2325                      D330464-9 De Ni Po                            - -  - 701   Hv        
-2421                      C410513-6 Ni                                  - M  - 114   Hv        
-2422                      B453306-C Lo Ni Po                            - K  - 213   Hv        
-2424                      B365612-8 Ag Ni                               - M  - 303   Hv        
-2427                      B3349S4-E Hi In                               - -  - 402   Hv        
-2429                      E8C76S3-5 Fl Ni (minor)                       - -  A 211   Hv        
-2430                      E849315-3 Lo Ni                               - -  - 314   Hv        
-2530                      B88A201-C Lo Ni Wa                            - K  - 903   Hv        
-2624                      B3537S4-7 Po                                  - K  - 300   Hv        
-2626                      E405102-5 Ic Lo Ni Va                         - -  - 522   Hv        
-2629                      B787325-6 Lo Ni                               - -  - 200   Hv        
-2724                      B331564-C Ni Po                               - -  - 412   Hv        
-2727                      E64A723-3 Wa                                  - -  - 713   Hv        
-2728                      E673506-6 Ni                                  - -  - 815   Hv        
-2730                      B8B0562-A De Ni (minor)                       - -  A 100   Hv        
-2824                      D7A28S1-6 Fl                                  - M  - 602   Hv        
-2825                      C110204-C Lo Ni                               - -  - 100   Hv        
-2828                      A4358T2-C                                     - K  - 803   Hv        
-2923                      D5129U5-7 Hi Ic Na                            - M  - 404   Hv        
-2926                      B8B2413-C Fl Ni (minor)                       - M  A 514   Hv        
-2927                      B88A7S6-A Wa                                  - K  - 624   Hv        
-2930                      B463411-B Ni                                  - -  - 510   Hv        
-3022                      E883321-7 Lo Ni                               - -  - 200   Hv        
-3024                      D565204-2 Lo Ni                               - M  - 404   Hv        
-3121                      B6797S2-9                                     - K  - 304   Hv        
-3125                      E8586U4-3 Ag Ni                               - -  - 201   Hv        
-3221                      B759563-9 Ni                                  - -  - 414   Hv        
-3223                      B223525-8 Ni Po                               - M  - 601   Hv        
-3224                      B8B49T3-B Fl Hi (minor)                       - K  A 734   Hv        
-3227                      B798106-C Lo Ni                               - M  - 603   Hv        
-3229                      A150512-C De Ni Po                            - KM - 801   Hv        
-0139                      B8B4463-A Fl Ni                               - KM A 223   Hv        
-0232                      C7798T1-6                                     - M  - 515   Hv        
-0235                      C7B3004-5 Fl Lo Ni (minor)                    - M  A 604   Hv        
-0238                      A6818S2-A Ri                                  - KM - 403   Hv        
-0239                      B202421-A Ic Ni Va                            - KM - 901   Hv        
-0240                      B2247S5-8                                     - K  - 104   Hv        
-0332                      A776662-C Ag Ni                               - -  - 700   Hv        
-0334                      B7387S3-8                                     - -  - 105   Hv        
-0336                      C888763-4 Ag Ri                               - -  - 214   Hv        
-0431                      A744306-B Lo Ni                               - K  - 800   Hv        
-0434                      B64AAW1-B Hi In Wa                            - -  - 215   Hv        
-0437                      B7836S4-5 Ni Ri                               - M  - 604   Hv        
-0440                      B746322-9 Lo Ni                               - K  - 710   Hv        
-0531                      A326AW5-F Hi In                               - -  - 210   Hv        
-0539                      B99AAU6-E Hi In Wa                            - -  - 200   Hv        
-0632                      C1008S3-A Na Va                               - -  - 624   Hv        
-0731                      A444364-9 Lo Ni                               - K  - 903   Hv        
-0732                      A4637S1-C Ri                                  - -  - 105   Hv        
-0734                      D659001-5 Lo Ni                               - -  - 813   Hv        
-0737                      B120322-C De Lo Ni Po                         - KM - 704   Hv        
-0832                      C999313-7 Lo Ni                               - M  - 804   Hv        
-0833                      A615561-9 Ic Ni                               - K  - 402   Hv        
-0834                      A5468T4-B                                     - -  - 502   Hv        
-0835                      A7527S6-8 Po                                  - M  - 104   Hv        
-0838                      B2208S4-8 De Na Po                            - K  - 513   Hv        
-0931                      A230202-E De Lo Ni Po                         - -  - 100   Hv        
-0934                      B659531-9 Ni                                  - -  - 904   Hv        
-0935                      B6888T4-A Ri                                  - -  - 114   Hv        
-0940                      A8B6422-E Fl Ni (minor)                       - -  A 720   Hv        
-1031                      C510425-8 Ni                                  - M  - 601   Hv        
-1033                      A544103-C Lo Ni                               - KM - 704   Hv        
-1036                      C89A562-6 Ni Wa                               - M  - 302   Hv        
-1039                      C150411-7 De Ni Po                            - M  - 602   Hv        
-1040                      C544665-7 Ag Ni                               - -  - 305   Hv        
-1131                      C4387S6-6                                     - -  - 604   Hv        
-1132                      A1209T4-C De Hi In Na Po                      - -  - 204   Hv        
-1134                      A687421-8 Ni                                  - -  - 624   Hv        
-1135                      C665625-5 Ag Ni Ri                            - M  - 204   Hv        
-1136                      B767462-6 Ni                                  - K  - 712   Hv        
-1138                      D364301-5 Lo Ni                               - M  - 403   Hv        
-1140                      C5789S3-7 Hi In                               - -  - 404   Hv        
-1231                      A1007S6-D Na Va                               - K  - 320   Hv        
-1234                      A6537T4-9 Po                                  - K  - 514   Hv        
-1236                      E130565-7 De Ni Po                            - -  - 402   Hv        
-1237                      C342464-9 Ni Po                               - M  - 110   Hv        
-1335                      A736362-E Lo Ni                               - K  - 403   Hv        
-1337                      C584523-7 Ag Ni                               - M  - 303   Hv        
-1339                      A471611-C Ni                                  - -  - 312   Hv        
-1432                      C688562-9 Ag Ni                               - -  - 112   Hv        
-1433                      A2007S5-C Na Va                               - -  - 613   Hv        
-1434                      A224413-A Ni                                  - M  - 713   Hv        
-1435                      A7C5312-C Fl Lo Ni (minor)                    - K  A 204   Hv        
-1436                      B448404-A Ni                                  - K  - 700   Hv        
-1438                      B445521-A Ag Ni                               - M  - 904   Hv        
-1440                      A1307S1-D De Na Po                            - K  - 500   Hv        
-1532                      C659213-5 Lo Ni                               - -  - 913   Hv        
-1534                      C5419U6-8 Hi In Po                            - M  - 424   Hv        
-1631                      B642424-8 Ni Po                               - M  - 503   Hv        
-1632                      B6867S5-A Ag                                  - K  - 602   Hv        
-1634                      A3748S2-C                                     - K  - 812   Hv        
-1638                      B689521-7 Ni                                  - KM - 905   Hv        
-1731                      B5966S2-8 Ag Ni                               - K  - 204   Hv        
-1735                      C451206-B Lo Ni Po                            - M  - 923   Hv        
-1736                      C374623-7 Ag Ni                               - -  - 123   Hv        
-1740                      C678104-7 Lo Ni                               - -  - 521   Hv        
-1836                      C5648S1-7 Ri                                  - -  - 714   Hv        
-1838                      C422512-7 Ni Po                               - -  - 813   Hv        
-1839                      C000664-6 As Na Ni                            - -  - 101   Hv        
-1932                      D200423-7 Ni Va                               - -  - 502   Hv        
-1934                      C403561-8 Ic Ni Va                            - -  - 902   Hv        
-1935                      C9E4305-6 Fl Lo Ni                            - -  - 314   Hv        
-1936                      C140204-8 De Lo Ni Po                         - M  - 934   Hv        
-2035                      C4828T5-8 Ri                                  - -  - 800   Hv        
-2132                      D747563-8 Ag Ni                               - M  - 903   Hv        
-2134                      B452AT1-B Hi Po                               - M  - 400   Hv        
-2136                      B663421-B Ni                                  - -  - 613   Hv        
-2235                      D537103-6 Lo Ni                               - M  - 603   Hv        
-2237                      D424521-6 Ni                                  - M  - 704   Hv        
-2238                      D4528T5-7 Po                                  - M  - 804   Hv        
-2239                      D380564-7 De Ni                               - M  - 904   Hv        
-2337                      E598465-2 Ni                                  - -  - 513   Hv        
-2338                      E5647S2-4 Ag Ri                               - -  - 413   Hv        
-2433                      E74A101-6 Lo Ni Wa                            - -  - 601   Hv        
-2434                      E767462-6 Ni                                  - -  - 524   Hv        
-2438                      E110564-B Ni                                  - -  - 713   Hv        
-2439                      E1408S3-6 De Po                               - -  - 812   Hv        
-2440                      E000521-5 As Ni                               - -  - 912   Hv        
-2534                      B3547S2-8 Ag                                  - -  - 103   Hv        
-2536                      B210AW6-B Hi Na                               - K  - 223   Hv        
-2537                      A225AU4-F Hi In                               - -  - 300   Hv        
-2631                      A466421-A Ni                                  - -  - 604   Hv        
-2633                      A4358S3-E                                     - -  - 720   Hv        
-2634                      A358563-B Ag Ni                               - K  - 824   Hv        
-2637                      A64A661-A Ni Wa                               - -  - 120   Hv        
-2639                      A562312-D Lo Ni                               - -  - 203   Hv        
-2640                      A5316S4-A Na Ni Po                            - KM - 303   Hv        
-2735                      C7A08T5-6 De                                  - -  - 803   Hv        
-2740                      B3217S3-C Na Po                               - M  - 403   Hv        
-2833                      C100321-A Lo Ni Va                            - -  - 105   Hv        
-2834                      A462103-D Lo Ni                               - K  - 501   Hv        
-2836                      A4248S5-D                                     - -  - 402   Hv        
-2839                      A858304-B Lo Ni                               - -  - 204   Hv        
-2931                      B56A8S6-C Ri Wa                               - -  - 100   Hv        
-2937                      A150101-C De Lo Ni Po                         - K  - 502   Hv        
-2940                      C597564-6 Ag Ni                               - M  - 702   Hv        
-3031                      B8B8311-A Fl Lo Ni (minor)                    - K  A 324   Hv        
-3032                      A7746S3-8 Ag Ni                               - -  - 400   Hv        
-3033                      C4628S5-4 Ri                                  - -  - 903   Hv        
-3035                      B85A8T2-9 Wa                                  - K  - 103   Hv        
-3132                      B887663-5 Ag Ni Ri                            - -  - 205   Hv        
-3133                      B464624-A Ag Ni Ri                            - K  - 403   Hv        
-3135                      B333421-B Ni Po                               - -  - 704   Hv        
-3138                      C322413-A Ni Po                               - -  - 924   Hv        
-3140                      C645505-6 Ag Ni                               - -  - 100   Hv        
-3233                      C7A1106-7 Fl Lo Ni                            - M  - 704   Hv        
-3235                      C9C2521-9 Fl Ni (minor)                       - M  A 101   Hv        
-3236                      B335102-8 Lo Ni                               - K  - 610   Hv        
-3239                      A110AU5-G Hi Na                               - E  - 900   Hv        
-3240                      C78A6S4-8 Ni Ri Wa                            - -  - 820   Hv        
-
+Hex  Name                 UWP       Remarks                      {Ix}   (Ex)    [Cx]   N B  Z PBG W  A    Stellar   
+---- -------------------- --------- ---------------------------- ------ ------- ------ - -- - --- -- ---- ---------------------
+0205 Moundeson            X686459-0 Ni Ga Pa Fo                  { -3 } (830+0) [9133] - -  R 800 10 NaHu K8 V M3 V
+0210 Thirle               C4749A9-B Hi In                        {  3 } (B8C+5) [8C47] - S  - 204 16 NaHu M6 V
+0304 Darkmage             A766696-9 Ag Ni Ri Ga                  {  2 } (953-2) [3818] - -  - 414 13 NaHu M8 V K9 V
+0306 Tiberus              D100876-7 Na Va Ph Pi                  { -2 } (779-1) [B617] - S  B 111  9 NaHu M6 V K5 V
+0308 McNaughton           B234474-A Ni                           {  1 } (E37+1) [1529] - N  B 303  9 NaHu M0 V
+0310 Teria                C15099A-9 De Hi Po                     {  1 } (F8D-2) [6A59] - S  - 214 11 NaXX K9 V
+0403 Lahbro               D6577A8-4 Ag Ga                        { -1 } (866-1) [5648] - S  - 600  4 NaHu M8 V
+0406 Vicarii              X553745-0 Po (Vicarii) Fo              { -2 } (761-1) [5511] - -  R 422 13 NaHu M8 V
+0502 Hollerith            A8C7ADC-E Fl Hi In Da                  {  4 } (A9C+1) [EE4E] - S  A 714 14 NaHu G4 V
+0506 Rickettsia           C659776-6                              { -1 } (963-2) [4686] - -  B 515 14 NaHu M7 V
+0508 Zachary              E330256-5 De Lo Po                     { -3 } (611-1) [6135] - -  - 801  9 NaHu M4 V
+0510 Pole                 C411667-7 Ic Na Ni O:0310              { -2 } (952-1) [4465] - -  - 103 15 NaHu M4 V M6 V
+0601 Hewlett              A4108AD-A Na Ph Pi                     {  2 } (C79+1) [7A78] - -  - 223 12 NaHu M5 V M2 V
+0708 Spark                E00046A-A As Va Ni O:1208              { -1 } (B34+3) [4319] - -  - 404  7 NaHu G4 V
+0808 Vicenzi              C555642-6 Ag Ni                        { -1 } (251-1) [657A] - S  - 204 12 NaXX K4 V
+0810 Hodlow               E7C3573-8 Fl Ni Pz                     { -3 } (943+4) [22AB] - -  A 803  6 NaXX G5 V
+0903 Zachariah            D110832-9 Na Ph Pi                     { -1 } (E79-1) [9795] - S  - 323 12 NaHu M7 V
+1003 Hathar               E8D28BB-6 Ph                           { -2 } (979+0) [6636] - -  - 312 10 NaXX M4 V
+1005 Accra                E774484-2 Ni Pa                        { -3 } (732-1) [6153] - -  - 713 10 NaHu M6 V M4 V
+1006 Soliel               E55859D-5 Ag Ni                        { -2 } (741+4) [7334] - -  - 210  7 NaHu M4 V
+1010 Corcurachan          C310400-B Ni                           {  0 } (D35+0) [444D] - -  - 803 10 NaHu F5 III M1 V
+1102 Opel                 B87A201-A Lo Wa                        {  1 } (611+3) [1317] - -  - 812 15 NaHu M1 V
+1107 Cushing              C345677-4 Ag Ni                        { -1 } (354+0) [7512] - S  B 511 13 NaHu M8 V M9 V
+1202 Chevrolet            A340672-B He De Ni Po                  {  1 } (B55-1) [2767] - N  B 113  9 NaHu F3 V M8 V
+1206 Fugentun             C327349-9 Lo                           { -1 } (B21+1) [8259] - -  - 401  6 NaHu G6 V
+1208 Heathleah            C876ABC-C Hi In                        {  3 } (799-4) [CD4D] - -  - 802 14 NaHu M0 V
+1209 Gibbons              E355279-5 Lo                           { -3 } (911+0) [2154] - -  B 110  9 NaHu G9 V
+1210 Sourte               E31249A-8 Ic Ni                        { -3 } (A30+0) [1135] - -  - 901 13 NaHu G6 V M5 V
+1301 Negro                A97A468-C Ni Wa O:1202                 {  1 } (937-1) [254D] - N  - 413 10 NaHu M9 V
+1302 Africa               B100543-9 Ni Va                        {  0 } (944+4) [9517] - N  - 704 12 NaHu M4 II
+1308 Stephanie            A737221-D Lo                           {  1 } (C11-3) [333F] - -  - 904 10 NaHu G0 V M0 V
+1310 Thoud                B77A7CC-A Wa Pi                        {  2 } (E66-1) [A99C] - N  - 804 13 NaXX K9 V M1 V
+1405 Balkok               A422457-E He Ni Po                     {  1 } (932+2) [458F] - -  - 820  8 NaXX M7 V
+1406 Sabine               A346236-9 Lo                           {  0 } (A11+0) [3276] - N  - 923 12 NaHu A8 V F8 V
+1407 Clemson              A699887-D Ph Pi                        {  2 } (776+3) [4A6B] - -  - 200 11 NaXX M3 V M2 V
+1501 Fagter               A76357B-C Ni Pr                        {  2 } (843-4) [A75F] - NS B 803 14 NaXX G9 V M8 V
+1502 Thekar               B414436-9 Ic Ni                        {  0 } (E32+3) [147B] - N  - 414 16 NaXX G2 V M1 V
+1506 Gengong              C87A598-6 Ni Wa                        { -2 } (740+1) [3327] - S  - 203 12 NaXX M1 V
+1508 Gradule              C662ACA-8 Hi                           {  0 } (99C+4) [BA5B] - -  - 812 11 NaHu M7 V
+1509 Nome                 B370211-8 He De Lo                     { -1 } (B11+2) [111B] - S  - 104 14 NaHu M7 V
+1510 Dubhlachan           C69979D-7 Pi                           { -1 } (966+3) [A61B] - -  - 713 13 NaXX M2 V M5 V
+1601 Walterson            B557656-8 Ag Ni                        {  0 } (A54-1) [3635] - -  - 223 11 NaHu M6 V
+1603 Erin                 B41059C-B Ni                           {  1 } (D42-3) [4698] - N  - 204 12 NaXX M3 V M2 V
+1604 Patter               B4548CA-6 Ph Pa                        {  0 } (975-5) [B856] - -  - 304 12 NaHu M7 V M2 V
+1605 Cambrian             A31156A-E Ic Ni O:1407                 {  2 } (948+2) [576F] - NS - 110 10 NaHu M3 V
+1608 Diamanta             C976685-8 Ag Ni                        { -1 } (C51+1) [3528] - S  - 502 10 NaXX M4 III M7 V
+1610 Chusuk               B455437-9 Ni Pa                        {  0 } (731-4) [144C] - S  - 703 11 NaXX G8 V M8 V
+1704 Santiago             D303412-5 Ic Ni Va                     { -3 } (B31-3) [7192] - S  - 504  9 NaHu M3 V
+1705 Poynting             D485745-5 Ag Ri                        {  0 } (966+0) [7794] - -  - 404 14 NaHu K8 II M5 V
+1707 Frances              D466411-3 Ni Pa                        { -3 } (930-2) [4162] - -  - 324 18 NaXX M9 V M1 V
+1709 Guilomar             B8B0557-B He Ni Pz                     {  1 } (847+4) [468C] - -  A 601  4 NaXX M5 V
+1710 Wolfgang             B678454-C Ni Pa                        {  1 } (A33+0) [754B] - -  - 414 16 NaXX K8 V
+1801 Dumpty               D758420-6 Ni Pa                        { -3 } (732-2) [2186] - S  - 500  7 NaXX G9 V
+1902 Vaughn               D886698-5 Ag Ri Ga Ni                  { -1 } (752-1) [4532] - S  - 904  8 NaXX K5 V
+1903 Day                  D8549CC-5 Hi                           { -1 } (685-2) [E863] - -  - 103 14 NaXX F6 V M2 V M4 V
+1906 Jean                 E537245-7 Lo                           { -3 } (611+1) [111B] - -  - 803  9 NaXX M7 V
+1907 Sarma                C452549-6 Ni Po                        { -2 } (743+1) [8322] - S  - 721 15 NaXX G1 V
+1910 Karden               E221240-5 Lo Po                        { -3 } (511+1) [2113] - -  - 913 10 Na   M6 V M9 V
+2009 Org                  E255684-7 Ag Ni                        { -2 } (252-1) [3475] - -  - 123 13 Na   M6 V G3 V
+2103 Alva                 A856AAC-E Hi Ga                        {  3 } (49E+2) [7D9F] - -  - 900  6 NaXX G2 V
+2104 Trece                C12079A-6 De Na Po Pi                  { -1 } (B67+0) [9654] - -  - 823 12 NaXX M5 V
+2108 Hapsburg             B75A344-C Lo Wa                        {  1 } (921+0) [645E] - N  - 410 12 NaXX M0 V
+2205 Ansel                B497431-7 Ni Pa                        { -1 } (930+2) [1319] - -  - 802 10 NaXX G5 V
+2206 Reginald             A576231-A Lo                           {  1 } (E11+3) [3348] - -  - 104 14 NaXX M7 V M5 V
+2208 Cinderella           A889755-A Ri                           {  4 } (C6B+0) [2B5B] - NS - 612 10 NaXX M9 V M2 V
+2209 Stephenson           A8B8422-C Fl Ni Pz                     {  1 } (B34+4) [654B] - -  A 503 11 NaHu M8 V M9 V
+2302 Arise                C335200-C Lo                           {  0 } (511+1) [128B] - -  - 200 10 Ia   F8 V
+2304 Isaiah               C300520-8 Ni Va                        { -2 } (842+3) [1327] - -  - 100 12 NaXX M2 V
+2306 Ordred               A221ABA-F Hi In Na Po                  {  4 } (99B+2) [BE3C] - N  - 902  6 NaXX M2 V K6 V M3 V
+2310 Frater               A3618CA-9 Ph Ri                        {  3 } (F78-1) [DB6A] - NS - 124 15 Na   G1 V M8 V
+2403 Brenda               A654777-9 Ag                           {  2 } (76C+1) [693D] - -  B 804 11 Ia   M4 III M9 V
+2405 Runnik               B545314-A Lo                           {  1 } (821+4) [5487] - N  - 603  9 NaXX K5 V
+2408 Kreed                A36167B-B Ni Ri                        {  2 } (A53-2) [6888] - N  B 614 16 NaXX K1 V M7 V
+2410 Louisa               A325542-E Ni                           {  1 } (447+1) [461F] - -  - 201  9 Na   M3 V K6 V
+2503 Aabe                 C89A5AC-7 Ni Wa                        { -2 } (841-2) [7387] - S  - 705 11 Ia   F0 V M3 V
+2504 Aabidunuur           D400321-7 Lo Va                        { -3 } (A21+2) [1146] - S  - 103 11 Ia   G3 V
+2603 Aa                   C221887-8 Na Po Ph Pi                  { -1 } (875-3) [877B] - -  - 622 16 Ia   M0 V
+2707 Cindy                E411413-8 Ic Ni                        { -3 } (830+1) [518A] - -  - 600  9 NaXX M7 V M8 V
+2908 Dee                  E685204-4 Lo Ga                        { -3 } (711-2) [4164] - -  - 900  8 Na   M1 V K0 V
+3102 Aabirzudii           B898305-B Lo                           {  2 } (F21-3) [5537] - NS - 903 13 Ia   K1 V
+3103 Aadanmiirer          C100A87-C Hi Na Va In                  {  3 } (B98-2) [AD79] - -  - 804 16 Ia   M0 V
+3209 Pynyngg              B75A99C-9 Hi Wa                        {  2 } (B8A+0) [6B99] - N  - 314 12 Na   M4 V
+0115 Manchester           C69A699-7 Ni Wa                        { -2 } (853+0) [649B] - S  - 402  9 Na   G2 V
+0116 Gerbrantius          C89A766-7 Wa Pi O:0615                 { -1 } (566-4) [6633] - S  - 700  9 Na   M8 V G6 V
+0117                      B260764-7 De Ri O:0217                 {  1 } (666-1) [7897] - K  - 713  9 HvFd F9 V
+0118                      CAA3211-5 Fl Lo                        { -2 } (A11+1) [1147] - -  - 915 16 HvFd F6 V M5 V
+0213 Fagtor               E662773-4 Ri                           { -1 } (665+0) [B644] - -  - 734 13 NaXX M9 V G9 V
+0215 Elizabeth            C3549D8-7 Hi                           {  0 } (882-1) [A975] - -  - 514 10 Na   M3 V M5 V M9 V
+0217                      A669201-D Lo                           {  1 } (E11-1) [332A] - -  - 105 13 HvFd M9 V
+0311 Seg                  X486436-3 Ni Pa Fo                     { -3 } (730-1) [2161] - -  R 214 13 NaXX M2 V
+0314 Pravda               E211667-4 Ic Na Ni O:0210              { -3 } (651-2) [8366] - -  - 303 10 Na   F3 V
+0315 Derig                E79799A-8 Hi In                        {  0 } (A87+0) [6983] - -  - 413  9 Na   M1 V
+0317                      A581202-D Lo                           {  1 } (A11-1) [134B] - -  - 104 12 HvFd F4 V M9 V
+0318                      A6955S5-9 Ag Ni                        {  1 } (847-4) [764A] - -  - 905 17 HvFd G4 V
+0413 Dunkirk              E5898DE-5 Ri Ph                        { -1 } (B74+2) [5768] - -  - 900  8 NaXX M1 V K7 V
+0415 Krossbyr             E000499-7 As Va Ni                     { -3 } (331-3) [3115] - -  - 803 16 Na   G8 IV M3 V
+0416 Eregdor              C739798-8                              { -1 } (B65+2) [866B] - -  - 800 10 Na   M5 V
+0418                      B160212-B De Lo                        {  1 } (A11+3) [436A] - M  - 204 12 HvFd M7 V
+0512 Sirma                C7A6105-B Fl Lo                        {  0 } (F01+2) [1146] - -  - 324 19 NaXX K2 IV M9 V
+0514 Hardon               X523314-1 Lo Po Fo                     { -3 } (221+2) [1126] - -  R 912  6 NaXX M2 V
+0519                      B1305S6-9 De Ni Po                     {  0 } (844+3) [5534] - M  - 104 14 HvFd M0 V M5 V
+0614 Angie                A633110-9 Lo Po                        {  0 } (B01-1) [213E] - -  - 213 15 Na   K2 III M2 V
+0615 Betraytor            A87488A-B Ph Pa Pi                     {  2 } (97A+1) [8A7F] - N  - 400  6 Na   M7 V M4 V
+0617                      A383101-C Lo                           {  1 } (801-5) [125E] - K  - 210  8 HvFd G9 V
+0619                      B100213-B Lo Va                        {  1 } (B11-1) [3349] - K  - 924 16 HvFd M9 V
+0716                      E7696S4-4 Ni Ri                        { -2 } (452-5) [3447] - -  - 323 13 HvFd G8 IV M0 V
+0720 Uapul                A5549S6-9 Hi                           {  2 } (786+2) [9B46] - K  - 301  6 HvFd M8 III M9 V
+0813 Bielform             C000249-B As Va Lo                     {  0 } (E11-2) [22AC] - S  - 114 15 Na   M8 V K6 V
+0817                      B683002-8 Di                           {  0 } (607+5) [0000] - KM - 003  8 HvFd M5 V
+0818 Panio                B6669W5-C Hi Ga Pr                     {  3 } (B8B-3) [9CAD] - -  - 413 15 HvFd M6 V
+0819                      B1006S4-9 Na Ni Va                     {  1 } (955+4) [477D] - KM - 314  9 HvFd M9 V
+0820 Cigenan              A5759T3-D Hi In Cs                     {  4 } (C88+3) [ED1E] - K  - 213 13 HvFd F9 V
+0912 Lestrigge            X888774-2 Ag Ri Fo                     {  0 } (767+1) [4712] - -  R 203 10 Na   M1 V M0 V
+0913 Coseecer             X746441-0 Ni Pa Fo                     { -3 } (730+4) [3175] - -  R 312 15 Na   G9 V
+0914 Lucienne             X78A230-0 Lo Wa Fo                     { -3 } (611-4) [2161] - -  R 412 11 Na   G0 IV M7 V
+0917 Cenoogo              C8B7701-7 Fl (Cenoogo) Pz              { -1 } (661+1) [365B] - -  A 912 14 HvFd M1 V G6 V
+0920                      A775302-B Lo                           {  1 } (B21+1) [2497] - -  - 804  9 HvFd M6 V
+1011 Rudolph              D95A747-6 Wa                           { -2 } (865+0) [B575] - S  - 210  6 Na   M6 V M6 V
+1012 Woods                D334A7B-8 Hi                           { -1 } (A99+3) [C955] - S  B 224 16 Na   M6 V
+1014 Gomotgul             C4369T4-7 Hi                           {  0 } (584+1) [9977] - M  - 225 14 HvFd M3 V M6 V
+1017                      A110405-F Ni                           {  1 } (736-4) [251F] - -  - 500  6 HvFd M6 V
+1020                      A7798T5-8 Ph Pi                        {  0 } (977+1) [7849] - K  - 604 10 HvFd M6 V
+1114                      A999203-B Lo                           {  1 } (D11+2) [236A] - -  - 814  8 HvFd M5 V M8 V
+1115                      C4606S6-8 De Ni Ri                     { -1 } (D51+2) [5524] - M  - 320 13 HvFd M7 V
+1117                      A5637S4-B Ri                           {  3 } (C67+2) [6AAC] - -  - 603 12 HvFd F2 V M8 V
+1119                      A324664-D Ni O:0820                    {  1 } (753-2) [374E] - -  - 204 10 HvFd M2 V
+1120                      A401201-F Ic Lo Va                     {  1 } (611-4) [335B] - K  - 822 14 HvFd F2 V
+1211 Swanne               C222443-8 Ni Po                        { -2 } (C30-2) [2258] - -  - 215 14 Na   K1 III M4 V
+1212 Dominga              C201664-9 Ic Na Ni Va O:1208           { -1 } (754-1) [5558] - S  - 100  8 Na   M7 V M1 V
+1215                      C6A37S2-7 Fl                           { -1 } (569+2) [6645] - M  - 502 10 HvFd M4 V F2 V
+1220                      A332562-D Ni Po Cy O:1021              {  1 } (846+0) [764E] - -  - 902  9 HvFd M7 III
+1311 Vescy                AA9A302-F Lo Oc                        {  2 } (A21-5) [656D] - NS - 803  6 Na   M8 V
+1315 Daootuac             B6789T4-7 Hi In                        {  2 } (986+2) [8B85] - -  - 403 10 HvFd F1 V
+1316                      B538663-8 Ni Cy O:1515                 { -1 } (D52-2) [95A9] - -  - 304  7 HvFd M9 V
+1317                      B5A1002-A Fl He Di                     {  1 } (D06+0) [0000] - -  - 023 15 HvFd M0 V K4 V
+1318                      B510421-8 Ni                           { -1 } (934-3) [533B] - K  - 602 14 HvFd M8 V
+1413                      B326413-B Ni                           {  1 } (A37+0) [455C] - K  - 724 14 HvFd M9 V M3 V
+1418                      B321521-C He Ni Po                     {  2 } (943+3) [772C] - KM - 102  9 HvFd M4 V M0 V
+1420                      D7785S6-2 Ag Ni                        { -2 } (740+1) [8321] - M  - 205 11 HvFd G2 V M4 V
+1512                      B545563-8 Ag Ni Cy O:1515              {  0 } (A45+1) [A564] - K  - 212 11 HvFd G9 V
+1513                      B6A0521-8 He Ni                        { -1 } (841+2) [7439] - K  - 903  8 HvFd G4 V
+1515 Klenimam             C67A9T4-C Hi In Wa                     {  3 } (B8C+1) [DC78] - -  - 310 10 HvFd M4 V
+1516                      D646521-3 Ag Ni                        { -2 } (B41-2) [1384] - M  - 224 12 HvFd M5 V M2 V
+1519 Zanfaho              B3007S4-A Va Na Pi Cp                  {  3 } (C6E-3) [9A6B] - KM - 214 15 HvFd M2 V
+1520                      D753201-5 Lo Po                        { -3 } (811+4) [2188] - M  - 103 14 HvFd M1 V
+1613                      C5105U6-8 Ni                           { -2 } (543+0) [2378] - -  - 201  6 HvFd A8 V K9 V
+1617                      C439202-9 Lo                           { -1 } (D11+0) [112A] - -  - 111 11 HvFd M9 V
+1618 Oxdrildax            D8B3721-4 Fl (Oxdrildax) Da            { -2 } (364+0) [7534] - M  A 804 12 HvFd M8 III
+1619                      B8886S5-A Ag Ni Ri                     {  3 } (F59+3) [6965] - -  - 304 11 HvFd M4 V
+1711 Waldburga            B34457A-7 Ag Ni                        {  0 } (C42+2) [2585] - -  - 122  8 Na   M2 V
+1719                      C536101-8 Lo                           { -2 } (901-1) [1197] - -  - 203  8 HvFd M5 V
+1811 Rollins              C4837BC-6 Ri                           {  0 } (968+1) [9717] - -  - 624 10 Na   G6 V
+1813                      D485102-6 Lo                           { -3 } (401+0) [1169] - M  - 513 11 HvFd K2 V M3 V
+1818                      B2446S1-A Ag Ni                        {  2 } (D58+3) [185C] - K  - 804 13 HvFd G8 V
+1819 Tafkanu              C558AW6-C Hi                           {  2 } (C95+3) [7C4E] - -  - 101 12 HvFd M1 V
+1912 Eastwood             B68667C-9 Ag Ni Ri Ga                  {  2 } (654+1) [6858] - N  B 304  8 Na   M4 V M7 V
+1916 Renidas              B659211-8 Lo Da NainW Fo               { -1 } (611-5) [5139] - -  A 101  7 HvFd F7 V
+1919                      C6357S5-6                              { -1 } (764-2) [8697] - M  - 902 10 HvFd M2 III
+2015 Nainur               B478829-A Ph Pa Pi (Nainur) Pz         {  2 } (674+3) [5A78] - -  A 804 14 HvFd M3 V
+2019                      C795402-7 Ni Pa                        { -2 } (630+2) [1267] - M  - 601 10 HvFd G9 III
+2112                      D876303-3 Lo                           { -3 } (621+5) [2175] - -  - 223 14 HvFd M9 V K4 V
+2114 Dooaca               B237101-9 Lo Pz NainW                  {  0 } (701-4) [1137] - -  A 611  9 HvFd G7 V
+2115                      D666522-5 Ag Ni Ga Pr Nain7            { -2 } (741+1) [6384] - M  - 813 11 HvFd F0 IV
+2116                      D8A3515-5 Fl Ni Nain8                  { -3 } (343-1) [3267] - -  - 100  7 HvFd K7 V
+2118                      B000521-E As Va Ni                     {  1 } (A43-4) [164F] - -  - 402  8 HvFd K3 V M8 V
+2213                      D5848S6-3 Ri Ph Pa                     { -1 } (777+2) [C736] - M  - 923 15 HvFd F0 V
+2215                      A524502-E Ni Nain9                     {  1 } (946-1) [867E] - M  - 812  9 HvFd M3 V 
+2219                      C523663-5 Na Ni Po Cy O:2419           { -2 } (A52+0) [6446] - -  - 524 18 HvFd M3 V M7 V
+2220                      C554301-8 Lo                           { -2 } (C21+2) [6188] - M  - 404 13 HvFd K6 V M7 V
+2311 Birmingham           D557254-5 Lo                           { -3 } (611+1) [5127] - -  - 105 14 NaHu M0 V
+2312                      D100664-8 Na Ni Va O:2516              { -3 } (B50+4) [23A5] - -  - 413 12 HvFd F8 V
+2313                      CAA8662-5 Fl Ni Cy O:2516              { -2 } (553-5) [3428] - -  - 434 15 HvFd A8 V
+2316                      C300202-B Lo Va                        {  0 } (811+0) [121F] - M  - 102  9 HvFd G4 V
+2317                      C584311-7 Lo                           { -2 } (821+3) [4158] - M  - 304 13 HvFd F9 V
+2320                      C536623-4 Ni                           { -2 } (550-1) [8437] - -  - 324 18 HvFd M4 V
+2412                      E659562-8 Ni Cy O:2516                 { -3 } (443+0) [8249] - -  - 110  8 HvFd M9 V M9 V
+2414                      C639204-8 Lo                           { -2 } (D11+2) [1177] - -  - 123 13 HvFd G5 V M9 V
+2415                      C654561-8 Ag Ni Cy O:2516              { -1 } (A41+1) [1419] - -  - 903 13 HvFd M0 V
+2418                      A8A17S5-C Fl He Cp                     {  2 } (C6A+1) [A99C] - K  - 704 10 HvFd M2 V
+2419                      B4108S1-A Na Pi Ph                     {  2 } (A7A-1) [BA7D] - -  - 920 14 HvFd A3 V
+2511                      D646562-7 Ag Ni Cy O:2516              { -2 } (644+3) [3317] - M  - 924 15 HvFd G7 V
+2512                      B300201-E Lo Va                        {  1 } (D11-1) [437E] - K  - 214 14 HvFd F0 V
+2516                      A4507S6-C De Po Cp                     {  2 } (F68-2) [7947] - K  - 214 15 HvFd G2 V
+2611                      D5638T5-3 Ri Ph                        { -1 } (A73+1) [77A5] - M  - 100 11 HvFd M2 V M4 V
+2612                      D6677S6-2 Ag Ri Ga                     {  0 } (96B+0) [3772] - M  - 804 11 HvFd M9 V
+2614                      X100623-0 Na Ni Va Aoao9 Fo            { -3 } (853+0) [4333] - -  R 713 12 HvFd M9 V
+2616                      A543411-8 Ni Po                        { -1 } (533-4) [1338] - -  - 100 10 HvFd M1 V M6 V
+2619                      A8A4002-D Fl Di                        {  1 } (E03+0) [0000] - K  - 004 16 HvFd G7 V M9 V
+2713                      E5358S4-5 Ph                           { -2 } (A74-1) [665A] - -  - 414 18 HvFd M5 V M2 V
+2714                      C100304-8 Lo Va AoaoW Pz               { -2 } (721+0) [2178] - -  A 604 10 HvFd M2 V K5 V
+2716 Ao                   C666763-8 Ag Ri Ga (Aoao) Cy O:2619 Da {  1 } (A69+3) [485C] - -  A 101 12 HvFd M3 V K0 V
+2718                      C679101-7 Lo AoaoW Pz                  { -2 } (401+4) [2194] - -  A 200 10 HvFd M0 V
+2811                      D591523-2 Ni He                        { -3 } (A40+0) [4221] - M  - 203 12 HvFd G9 V M7 V
+2817                      C876521-9 Ag Ni                        {  0 } (B45-3) [5568] - -  - 414 14 HvFd M8 V
+2818                      C9B4105-7 Fl Lo AoaoW Pz               { -2 } (701+0) [1196] - -  A 314 13 HvFd M4 V M9 V
+2913                      D77A202-7 Lo Wa                        { -3 } (A11+2) [11A2] - M  - 300  7 HvFd F5 V M5 V
+2914                      D697561-7 Ag Ni Cy O:3116              { -2 } (C40-4) [2377] - M  - 402 12 HvFd M2 V K7 V
+3011                      D455362-7 Lo O:3116                    { -3 } (C21+5) [111C] - -  - 312 12 HvFd G6 V
+3012                      D5487S4-4 Ag Pi                        { -1 } (862+3) [9634] - M  - 102 14 HvFd M1 V K9 V
+3016                      C4916S2-8 Ni He                        { -2 } (C50-4) [1456] - -  - 613 11 HvFd M3 V
+3020                      C6957S3-5 Ag Pi                        {  0 } (767-4) [7753] - -  - 123 12 HvFd F7 V
+3116                      C5698T4-9 Ri Ph                        {  1 } (577+1) [995C] - -  - 500  6 HvFd K3 IV
+3120                      C213211-7 Ic Lo                        { -2 } (811+1) [5177] - M  - 313  8 HvFd F6 V
+3211 Koraa                D0009U5-8 As Va Hi Na In               {  0 } (A87-4) [497C] - -  - 502 12 HvFd K5 V
+3218                      B5347S3-9                              {  2 } (A65+2) [7955] - KM - 904  9 HvFd F5 V
+3220                      B566301-7 Lo                           { -1 } (221-4) [52A8] - K  - 824 14 HvFd M1 V
+0123                      C635101-A Lo                           {  0 } (601+2) [316A] - -  - 500  5 HvFd G7 V M4 V
+0125                      C877864-7 Ph Pa Pi O:0123              { -1 } (B79+2) [5757] - M  - 823 11 HvFd K7 V M2 V
+0127                      C856521-6 Ag Ni Ga                     { -1 } (943+0) [1463] - -  - 905 15 HvFd M6 V M2 V
+0130                      C778212-9 Lo                           { -1 } (E11-1) [3156] - -  - 105 12 HvFd M3 V
+0221                      E4267S4-5 Pi                           { -2 } (664+1) [3543] - -  - 700 10 HvFd G8 V
+0223                      E0008S3-4 As Va Na Ph Pi               { -2 } (479-2) [7616] - -  - 913 15 HvFd M9 V M2 V
+0323                      E150512-8 De Ni Po                     { -3 } (A40+4) [4259] - -  - 100  4 HvFd M9 V
+0330                      C744313-5 Lo                           { -2 } (C21+2) [3153] - M  - 303 10 HvFd M1 III M8 V
+0423                      C985105-8 Lo                           { -2 } (D01-3) [114B] - -  - 604 14 HvFd G6 V
+0424                      E110764-9 Na Pi O:0123                 { -1 } (A6B+3) [6655] - -  - 720 13 HvFd A5 V M8 V
+0426                      E000514-8 As Va Ni                     { -3 } (E40-1) [2297] - -  - 824 14 HvFd K5 V
+0430                      EA9A503-5 Ni Oc                        { -3 } (C41-2) [8255] - -  - 801 10 HvFd G7 V M5 V
+0530                      E967864-5 Ph Pa Ri O:0531              { -1 } (871+4) [4766] - -  - 914 17 HvFd G5 III
+0622                      E7578S6-2 Ga Ph Pa                     { -2 } (473+1) [7612] - -  - 925 17 HvFd M3 V
+0625 Ikask                A784823-C Ph Pa Ri Cp                  { 3 }  (575+1) [AB38] - -  - 302 15 HvFd M3 V M7 V
+0722                      E668562-5 Ag Ni Pr Cy O:0820           { -2 } (B40+1) [7367] - -  - 802 11 HvFd A1 V G0 V
+0725                      C6426S2-8 He Ni Po                     { -2 } (951+1) [5438] - M  - 400  7 HvFd M5 V M7 V
+0821                      C4006S4-6 Na Ni Va                     { -2 } (A52-5) [1416] - -  - 202 12 HvFd K3 V
+0825                      C675421-7 Ni Pa                        { -2 } (734+1) [1247] - -  - 510  7 HvFd K4 IV
+0826                      E200525-6 Ni Va                        { -3 } (640-4) [8256] - -  - 103 11 HvFd M3 V M3 V
+0827                      E460423-8 De Ni                        { -3 } (C32-2) [3187] - -  - 620 11 HvFd M7 V G4 V
+0922                      B100421-B Ni Va                        {  1 } (736-2) [656B] - -  - 704  8 HvFd M2 V M2 V
+0923                      C4546S5-5 Ag Ni                        { -1 } (950-3) [6556] - -  - 303 10 HvFd G5 V M3 V
+0929                      D000564-7 Va As Ni O:0531              { -3 } (841+1) [5289] - -  - 905  9 HvFd M9 III
+0930                      A845521-9 Ag Ni                        {  1 } (944-3) [2658] - -  - 801 10 HvFd M8 II
+1021 Oao Iei              C4339T5-B Hi Na Po                     {  2 } (E89-2) [BB5E] - -  - 413  8 HvFd M1 V
+1025                      A84A461-B Ni Wa O:1227                 {  1 } (B37-3) [655B] - -  - 703 15 HvFd K4 V M4 V
+1026                      A55A463-C Ni Wa O:1227                 {  1 } (A34+1) [755D] - K  - 500  7 HvFd M2 V K1 V
+1029                      D1108S4-9 Na Ph Pi                     { -1 } (E7A-1) [6759] - -  - 812  6 HvFd K3 V M9 V
+1030                      A778202-D Lo                           {  1 } (711+4) [435D] - K  - 911 11 HvFd A8 V
+1122                      C6387S1-4                              { -1 } (767+3) [7651] - -  - 702  6 HvFd G5 V
+1127                      A210421-A Ni                           {  2 } (936+0) [566D] - KM - 604 10 HvFd M2 V
+1128                      C588203-7 Lo                           { -2 } (511-3) [4156] - M  - 103 11 HvFd M0 V M3 V
+1129                      C674526-8 Ag Ni                        { -1 } (842-2) [7417] - -  - 900 11 HvFd G8 V
+1130                      A464312-C Lo                           {  1 } (F21-3) [242C] - K  - 204 12 HvFd G1 V
+1221                      B693665-7 Ni O:1519                    { -1 } (351+0) [2569] - -  - 702  9 HvFd K3 IV
+1222                      A9877S4-8 Ag Ri                        {  2 } (A6B+1) [7969] - -  - 303 11 HvFd F3 V
+1224                      C6378S1-5 Ph                           { -1 } (778+1) [8736] - M  - 814  8 HvFd M4 V M3 V M4 V
+1226                      A487216-C Lo                           {  1 } (C11+2) [433D] - K  - 904  9 HvFd M0 V M5 V
+1227 Koia                 C5359T2-9 Hi                           {  1 } (985-2) [CA66] - -  - 300  5 HvFd M3 V M8 V
+1229                      A553103-D Lo Po                        {  1 } (901+1) [425F] - K  - 504 10 HvFd G7 III
+1323 Guuaron              AAC4301-B Fl Lo (Guuaron) Pz           {  1 } (D21-1) [146C] - K  A 904 10 HvFd M9 V M1 V
+1325                      B210302-E Lo                           {  1 } (921-3) [445E] - -  - 204 12 HvFd K8 V
+1326                      B8B8663-9 Fl Ni Guua9 Cy O:1227 Pz     {  0 } (753+0) [269D] - -  A 323 18 HvFd F5 V
+1330 Ivankil              A3029S6-F Hi Ic Na Va In Cp            {  4 } (B8F-2) [6D6F] - K  - 403 13 HvFd K4 V M2 V
+1422                      AA8A7T4-9 Ri Oc                        {  2 } (F65+0) [492B] - -  - 104 10 HvFd M1 III
+1427                      C533513-A Ni Po                        {  0 } (D43+0) [8536] - M  - 115 17 HvFd M1 V K6 V
+1430                      A527424-C Ni                           {  1 } (D34-1) [253F] - -  - 603 14 HvFd M0 V
+1526                      C000401-A As Va Ni                     {  0 } (934+0) [5429] - -  - 604 11 HvFd M9 V
+1529                      A9876S5-9 Ag Ni Ri                     {  2 } (C53-2) [1874] - -  - 401  8 HvFd M2 V
+1530                      A100562-E Ni Va Cy O:1330              {  1 } (744+2) [663D] - -  - 800  3 HvFd G3 V M8 V
+1623                      B777565-9 Ag Ni O:1422                 {  1 } (445+1) [961E] - -  - 901 10 HvFd G5 V M2 V
+1624                      A7A8203-B Fl Lo                        {  1 } (B11+1) [135A] - K  - 104 11 HvFd M0 V M1 V
+1627                      C552301-7 Lo Po                        { -2 } (821+0) [7195] - M  - 204 11 HvFd M4 V M5 V
+1722                      E655321-5 Lo Ga                        { -3 } (721+3) [8173] - -  - 303 11 HvFd M1 V
+1723                      C5507S2-6 De Po                        { -1 } (96B-5) [A627] - M  - 914  9 HvFd M9 V K5 V
+1724 Peea                 C574AW6-7 Hi In                        {  1 } (C99-1) [7B16] - M  - 104  8 HvFd K7 V
+1725                      C432101-A Lo Po                        {  0 } (901-3) [1169] - -  - 224 11 HvFd G1 III
+1726                      E787321-5 Lo Ga                        { -3 } (721-4) [4159] - -  - 712 10 HvFd M4 V
+1728                      E755724-1 Ag Ga                        { -1 } (A63-3) [3661] - -  - 811  8 HvFd G9 V
+1729                      C686303-9 Lo Ga                        { -1 } (A21+4) [2239] - M  - 613 14 HvFd M9 III M3 V
+1821                      E547562-3 Ag Ni Cy O:1819              { -2 } (444+3) [7341] - -  - 414 13 HvFd M4 V
+1823                      E4658S4-7 Ri Ph Pa                     { -1 } (671+1) [D786] - -  - 514 12 HvFd M8 III M8 V
+1824                      E100312-8 Lo Va                        { -3 } (F21-2) [8129] - -  - 724 14 HvFd G3 V
+1828                      E4456S5-7 Ag Ni                        { -2 } (650+1) [2456] - -  - 832 14 HvFd G2 V M0 V
+1928                      E363464-4 Ni Re O:2427                 { -3 } (730+1) [1184] - -  - 905 15 HvFd M9 V
+1929                      E655421-2 Ni Ga Pa                     { -3 } (430-2) [8176] - -  - 202 15 HvFd M1 V
+2023                      E120001-5 Di De Po                     { -3 } (500-1) [0000] - -  - 010  9 HvFd A7 V
+2024 Uqqapin              C6B0825-7 He Ph (Uqqapin) Da           { -1 } (972+4) [5756] - -  A 510 12 HvFd G3 V M0 V
+2026                      C544364-8 Lo Re O:2427                 { -2 } (B21-1) [4198] - -  - 702  9 HvFd M0 V M7 V
+2027 Ninooo               C89A9T3-7 Hi In Wa                     {  1 } (38A+0) [6A97] - -  - 424 13 HvFd M5 V
+2030                      B444202-A Lo                           {  1 } (D11+1) [1387] - -  - 103 13 HvFd K4 V
+2121                      C310524-7 Ni                           { -2 } (A44+3) [4388] - M  - 810 10 HvFd M9 V
+2123                      C556562-9 Ag Ni Cy O:1819              {  0 } (545+2) [755B] - -  - 200 11 HvFd M2 V
+2127                      B120201-A De Lo Po                     {  1 } (F11+0) [1347] - K  - 103 16 HvFd G7 V
+2130                      B5428S6-6 Po He Ph Pi                  {  0 } (A72+1) [B835] - K  - 823 15 HvFd F6 III
+2221                      C622202-6 Lo He Po                     { -2 } (711-1) [1195] - -  - 112  8 HvFd K1 IV
+2223                      D200314-9 Lo Va                        { -2 } (E21-3) [11A6] - -  - 304 10 HvFd G7 IV M0 V
+2224                      D2326S5-7 Na Ni Po                     { -3 } (850+3) [833B] - -  - 424 17 HvFd K1 V M5 V
+2226                      D150463-5 De Ni Po O:2427              { -3 } (631-2) [5159] - -  - 504 13 HvFd M1 II
+2227                      D100101-A Lo Va                        { -1 } (D01-5) [5167] - -  - 603 14 HvFd G8 V
+2228                      D301861-6 Ic Na Va Ph Pi Cy O:2427     { -2 } (774+1) [B645] - -  - 803  6 HvFd M7 V
+2325                      D330464-9 De Ni Po Re O:2427           { -2 } (B33+1) [524D] - -  - 701  9 HvFd F6 V
+2421                      C410513-6 Ni                           { -2 } (440-2) [538A] - M  - 114 16 HvFd M1 V
+2422                      B453306-C Lo Po                        {  1 } (921+0) [342D] - K  - 213 11 HvFd M0 V
+2424                      B365612-8 Ag Ni Ri                     {  1 } (A54-3) [5738] - M  - 303 10 HvFd M4 V
+2427 Eooa                 B3349S4-E Hi Cp                        {  3 } (78A+3) [CC4D] - -  - 402 12 HvFd F0 V
+2429 Naeaoo               E8C7623-5 Fl Ni (Naeaoo) Pz            { -3 } (753-3) [5353] - -  A 211 10 HvFd F5 V
+2430                      E849315-3 Lo                           { -3 } (821+4) [3121] - -  - 314  8 HvFd A7 V
+2530                      B88A201-C Lo Wa                        {  1 } (911+0) [135D] - K  - 903 11 HvFd M9 V
+2624                      B3537S4-7 Po                           {  0 } (76A-2) [4737] - K  - 300  5 HvFd K5 V
+2626                      E405102-5 Ic Lo Va                     { -3 } (C01+2) [1195] - -  - 522 16 HvFd M4 V
+2629                      B787325-6 Lo Ga                        { -1 } (A21+1) [5247] - -  - 200 10 HvFd M8 V
+2724                      B331564-C Ni Po O:2427                 {  1 } (746+4) [467A] - -  - 412  8 HvFd M3 V M4 V
+2727                      E64A723-3 Wa Pi                        { -2 } (662-2) [9553] - -  - 713 13 HvFd G5 V M0 V M1 V
+2728                      E673506-6 Ni                           { -3 } (942+3) [429A] - -  - 815 12 HvFd M1 V
+2730 Hak Hak              B8B0862-A He Ph (Hak) Cy O:2931 Pz     {  2 } (975+1) [5A8C] - -  A 100  8 HvFd M0 V
+2824                      D7A28S1-6 He Ph Fl                     { -2 } (579-5) [A648] - M  - 602 10 HvFd G8 V M6 V
+2825                      C110204-C Lo                           {  0 } (711-3) [326D] - -  - 100  9 HvFd G9 V
+2828                      A4358T2-C Ph                           {  2 } (A7A+2) [8A6E] - K  - 803 12 HvFd K1 V
+2923 Nudrana              D5129U5-7 Hi Ic Na In                  {  0 } (386+1) [A9A7] - M  - 404 14 HvFd M1 III
+2926                      B8B2413-C He Fl Ni HakW Pz             {  1 } (735+3) [458B] - M  A 514 16 HvFd G4 V M1 V
+2927                      B88A7S6-A Wa Ri                        {  3 } (C6C+1) [4A5A] - K  - 624 12 HvFd G1 V M4 V
+2930                      B463411-B Ni                           {  1 } (835+4) [657B] - -  - 510  6 HvFd M9 III
+3022                      E883321-7 Lo                           { -3 } (921+0) [1142] - -  - 200  9 HvFd M8 V G2 V
+3024                      D565204-5 Lo                           { -3 } (211-3) [1141] - M  - 404 14 HvFd K0 V
+3121                      B6797S2-9 Pi                           {  1 } (B6C+2) [684A] - K  - 304 10 HvFd K7 V
+3125                      E8586U4-3 Ag Ni                        { -2 } (754+2) [8466] - -  - 201  4 HvFd M6 V
+3221                      B759563-9 Ni Cy O:3224                 {  0 } (B44+0) [4599] - -  - 414  9 HvFd M0 III M1 V
+3223                      B223525-8 Ni Po                        { -1 } (841-1) [4449] - M  - 601  7 HvFd G5 V
+3224 Iooua                B8B4923-B Fl Hi In (Iooua) Cp          {  4 } (F8D+4) [7D9B] - K  - 734 17 HvFd M7 V
+3227                      B798106-C Lo                           {  1 } (801-3) [129A] - M  - 603 12 HvFd G2 V
+3229                      A150512-C De Ni Po                     {  2 } (946+3) [673B] - KM - 801 13 HvFd M1 V M6 V
+0139                      B8B4463-A Fl Ni O:0238 Pz              {  2 } (D37+1) [4657] - KM A 223 14 HvFd M6 V
+0232                      C7798T1-6 Ph Pi                        { -1 } (878+3) [A769] - M  - 515 15 HvFd M7 V
+0235 Oduart               C7B3004-5 Fl Di(Oduart) Da             { -2 } (800+2) [0000] - M  A 004 10 HvFd M3 V M7 V G4 V
+0238                      A6818S2-A Ri Ph                        {  4 } (87B+2) [BC65] - KM - 403 12 HvFd K5 V M9 V
+0239                      B202421-A Ic Ni Va                     {  2 } (433-3) [463A] - KM - 901  9 HvFd K8 V M3 V
+0240                      B2247S5-8 Pi                           {  0 } (D68+4) [B74B] - K  - 104 14 HvFd M0 V
+0332                      A776662-C Ag Ni Cy O:0531              {  2 } (857+5) [686A] - -  - 700 10 HvFd G1 V M4 V
+0334                      B7387S3-8                              {  0 } (F69+1) [A737] - -  - 105 14 HvFd M4 V M9 V
+0336                      C888763-4 Ag Ri Cy O:0238              {  1 } (86C+1) [6857] - -  - 214 10 HvFd M2 V
+0431                      A744306-B Lo                           {  1 } (621-4) [145C] - K  - 800 10 HvFd M4 V
+0434 Ioou                 B64AAW1-B Hi In Wa                     {  4 } (F97+1) [AE1B] - -  - 215 18 HvFd A5 V
+0437                      B7836S4-5 Ni Ri                        {  0 } (656+1) [A643] - M  - 604 13 HvFd G3 IV M5 V
+0440                      B746322-9 Lo                           {  0 } (521-1) [4357] - K  - 710 10 HvFd M9 V M4 V
+0531 Lufeku               A326AW5-F Hi In Cp                     {  4 } (69B+4) [FE6F] - -  - 210  6 HvFd M2 V
+0539 Lorufit              B99AAU6-E Hi In Wa                     {  4 } (69F-1) [AE5B] - -  - 200  8 HvFd M2 V
+0632                      C1008S3-A Na Va Ph Pi                  {  1 } (D76-2) [898F] - -  - 624 14 HvFd M1 V K7 V
+0731                      A444364-9 Lo Re O:0531                 {  0 } (821+1) [134A] - K  - 903 11 HvFd G6 V M5 V M2 V
+0732                      A4637S1-C Ri                           {  3 } (B6A-5) [CA3D] - -  - 105 15 HvFd M5 V
+0734                      D659001-5 Di                           { -3 } (200-5) [0000] - -  - 013 12 HvFd M7 V
+0737                      B120322-C De Lo Po                     {  2 } (C21+0) [859F] - KM - 704 14 HvFd K4 V M2 V
+0832                      C999313-7 Lo                           { -2 } (621+1) [3137] - M  - 804 11 HvFd M2 V
+0833                      A615561-9 Ic Ni Cy O:1132              {  0 } (844-1) [8549] - K  - 402 10 HvFd M7 V
+0834                      A5468T4-B Ph Pa Pi                     {  2 } (A75-5) [5A7A] - -  - 502  7 HvFd M6 V M8 V
+0835                      A7527S6-8 Po                           {  0 } (D67-3) [C754] - M  - 104 15 HvFd G0 V
+0838                      B2208S4-8 De Na Po Ph Pi               {  0 } (876+2) [A829] - K  - 513 10 HvFd M1 V K7 V
+0931                      A230202-E De Lo Po                     {  1 } (811+3) [23AC] - -  - 100  6 HvFd K6 V M9 V
+0934                      B659521-9 Ni                           {  0 } (941-2) [6544] - -  - 904 17 HvFd M5 V M9 V
+0935                      B6888T4-A Ri Ph Pa                     {  3 } (D7B+4) [3B48] - -  - 114 15 HvFd G1 V
+0940 Wrur                 A8B6722-E Fl (Wrur) Pz                 {  2 } (866+0) [794E] - -  A 720  9 HvFd F7 V
+1031                      C510425-8 Ni                           { -2 } (931+2) [7248] - M  - 601 14 HvFd G5 V
+1033                      A544103-C Lo                           {  2 } (E01+2) [236E] - KM - 704 14 HvFd M4 V
+1036                      C89A562-6 Ni Wa Cy O:0935              { -2 } (340-3) [A366] - M  - 302 10 HvFd A7 V
+1039                      C150411-7 De Ni Po                     { -2 } (430-3) [7268] - M  - 602  9 HvFd M3 V
+1040                      C544665-7 Ag Ni O:0539                 { -1 } (850-3) [556C] - -  - 305  9 HvFd M3 V
+1131                      C4387S6-6                              { -1 } (563+4) [46A4] - -  - 604 11 HvFd M7 V M7 V
+1132 Ooanu                A1209T4-C De Hi In Na Po Cp            {  4 } (A8F-1) [8D6F] - -  - 204 14 HvFd F9 IV
+1134                      A687421-8 Ni Ga Pa                     { -1 } (935+0) [5356] - -  - 624 15 HvFd M1 V M0 V
+1135                      C665625-5 Ag Ni Ri Ga                  {  0 } (756+1) [7649] - M  - 204 15 HvFd M0 V
+1136                      B767462-6 Ni Ga Pa O:0925              { -1 } (A35-4) [4347] - K  - 712  6 HvFd M2 V
+1138                      D364301-5 Lo                           { -3 } (421+0) [1183] - M  - 403 12 HvFd M0 V
+1140 Zaonec               C5789S3-7 Hi In                        {  1 } (B88+3) [AA17] - -  - 404 14 HvFd M6 V M6 V
+1231                      A1007S6-D Na Va Pi                     {  2 } (769+2) [996F] - K  - 320 11 HvFd K9 V M5 V
+1234                      A6537T4-9 Po                           {  1 } (967-4) [5888] - K  - 514 13 HvFd M2 III M6 V K2 V
+1236                      E130565-7 De Ni Po O:0935              { -3 } (643-2) [8292] - -  - 402 13 HvFd K3 II M7 V
+1237                      C342464-9 He Ni Po Re O:0935           { -1 } (B31+1) [2318] - M  - 110  4 HvFd M3 V
+1335                      A736362-E Lo O:1132                    {  1 } (A21+3) [242F] - K  - 403 16 HvFd M7 V M6 V
+1337                      C584523-7 Ag Pr Ni                     { -1 } (A43+1) [748C] - M  - 303 10 HvFd G7 II
+1339                      A471611-C He Ni                        {  1 } (C52-1) [378E] - -  - 312 15 HvFd M5 V
+1432                      C688562-9 Ag Ni Pr Cy O:1132           {  0 } (641-3) [5589] - -  - 112  9 HvFd M8 V
+1433                      A2007S5-C Na Va Pi                     {  2 } (D67+0) [B97F] - -  - 613 16 HvFd M0 V
+1434                      A224413-A Ni                           {  1 } (E34+3) [552B] - M  - 713 11 HvFd G4 V
+1435 Oophlare             A7C5712-C Fl (Oophlare) Pz             {  2 } (C65+3) [293E] - K  A 204 16 HvFd G7 V M9 V M4 V
+1436                      B448404-A Ni Pa                        {  1 } (735-3) [5517] - K  - 700 11 HvFd M9 V
+1438                      B445521-A Ag Ni                        {  2 } (D43-4) [4739] - M  - 904 15 HvFd M1 V M6 V
+1440                      A1307S1-D De Na Po                     {  2 } (965+3) [693E] - K  - 500  5 HvFd M5 V
+1532                      C659213-5 Lo                           { -2 } (711+3) [1141] - -  - 913 11 HvFd M0 III
+1534 Olaposk              C5419U6-8 He Hi In Po                  {  1 } (F88-1) [BA67] - M  - 424 15 HvFd G6 V
+1631                      B642424-8 He Ni Po                     { -1 } (833+3) [2367] - M  - 503 11 HvFd M8 V M7 V
+1632                      B6867S5-A Ag Ga Ri                     {  4 } (66E-2) [7B9C] - K  - 602  8 HvFd M2 V
+1634                      A3748S2-C Ph Pa Pi                     {  2 } (775-3) [5A9E] - K  - 812 11 HvFd M5 V
+1638                      B689521-7 Ni Pr                        {  0 } (846-1) [7586] - KM - 905 12 HvFd M8 V
+1731                      B5966S2-8 Ag Ni                        {  0 } (E55-2) [5678] - K  - 204 14 HvFd M5 V M9 V M2 V
+1735                      C451206-B Lo Po                        {  0 } (D11+0) [6268] - M  - 923 11 HvFd G9 V
+1736                      C374623-7 Ag Ni                        { -1 } (655+2) [9556] - -  - 123 13 HvFd M0 V
+1740                      C678104-7 Lo                           { -2 } (901-2) [213B] - -  - 521 15 HvFd M6 V
+1836                      C5648S1-7 Ri Ph Pa                     {  0 } (676+2) [7829] - -  - 714 11 HvFd G4 V M8 V
+1838                      C422512-7 He Ni Po                     { -2 } (743+3) [5325] - -  - 813  9 HvFd F9 IV
+1839                      C000664-6 As Va Na Ni O:1440           { -2 } (650+1) [5422] - -  - 101 10 HvFd M7 V M3 V
+1932                      D200423-7 Ni Va                        { -3 } (530-2) [2186] - -  - 502 13 HvFd M8 V M9 V
+1934                      C403561-8 Ic Ni Va Cy O:2134           { -2 } (542-2) [638D] - -  - 902  7 HvFd F1 IV M3 V
+1935                      C9E4305-6 Lo                           { -2 } (721+0) [8185] - -  - 314 12 HvFd M9 V
+1936                      C140204-8 De Lo Po                     { -2 } (F11+1) [213A] - M  - 934 10 HvFd M0 V
+2035                      C4828T5-8 Ri Ph                        {  0 } (477+4) [48AC] - -  - 800 13 HvFd M7 V
+2132                      D747563-6 Ag Ni Cy O:2134              { -2 } (642+3) [5317] - M  - 903  8 HvFd M2 V
+2134 Pulnosa              B452AT1-B Hi Po Cp                     {  3 } (39E+0) [8D4F] - M  - 400 12 HvFd M3 V M1 V
+2136                      B663421-B Ni                           {  1 } (A37+2) [154D] - -  - 613 13 HvFd G4 V
+2235                      D537103-6 Lo                           { -3 } (B01+3) [1177] - M  - 603  8 HvFd M0 II
+2237                      D424521-6 Ni                           { -3 } (343+0) [1258] - M  - 704 13 HvFd G1 V
+2238                      D4528T5-7 Po Ph                        { -2 } (A76-4) [9669] - M  - 804  8 HvFd K4 V
+2239                      D380564-7 De Ni Pr O:2537              { -3 } (740-4) [4228] - M  - 904 13 HvFd M2 V M6 V
+2337                      E598465-2 Ni Pa Re O:2537              { -3 } (430-1) [4163] - -  - 513 11 HvFd M5 V M8 V M7 V
+2338                      E5647S2-4 Ag Ri                        {  0 } (769+0) [8773] - -  - 413 16 HvFd G0 V
+2433                      E74A101-6 Lo Wa                        { -3 } (A01-1) [1156] - -  - 601 12 HvFd M3 V
+2434                      E767462-6 Ni Ga Pa O:2537              { -3 } (530+1) [5142] - -  - 524 15 HvFd M0 V
+2438                      E110564-A Ni O:2537                    { -1 } (C41-2) [A438] - -  - 713  9 HvFd M6 V M9 V
+2439                      E1408S3-6 De Po Ph Pi                  { -2 } (273-3) [5686] - -  - 812  9 HvFd M1 V M3 V
+2440                      E000521-5 As Va Ni                     { -3 } (240-3) [7225] - -  - 912  8 HvFd A0 V M2 V
+2534                      B3547S2-8 Ag                           {  1 } (766-5) [7848] - -  - 103  7 HvFd M6 V
+2536 Slanoe               A225AU4-F Hi In Cp                     {  4 } (59B+0) [FE7F] - -  - 300  7 HvFd A7 V G1 V
+2537 Slaskea              B210AW6-B Hi In Na                     {  4 } (99C-1) [8E7D] - K  - 223 11 HvFd M7 V
+2631                      A466421-A Ni Pa                        {  1 } (632-4) [556B] - -  - 604 11 HvFd M8 V M0 V
+2633                      A4358S3-E Ph                           {  2 } (878+0) [8A4F] - -  - 720  9 HvFd M7 V
+2634                      A358563-B Ag Ni Cy O:2536              {  2 } (F43-1) [579C] - K  - 824 13 HvFd G3 IV
+2637                      A64A661-A Ni Wa Cy O:2537              {  1 } (B52+2) [573C] - -  - 120 11 HvFd K7 V M5 V
+2639                      A562312-D Lo                           {  1 } (B21-2) [342F] - -  - 203 11 HvFd M8 V
+2640                      A5316S4-A Na Ni Po                     {  2 } (A57+4) [38A8] - KM - 303 14 HvFd M5 V
+2735                      C7A08T5-6 He Ph                        { -1 } (978-4) [7712] - -  - 803 12 HvFd M6 V
+2740                      B3217S3-C He Pi Na Po                  {  2 } (66A+0) [8989] - M  - 403  8 HvFd M5 V G1 V
+2833                      C100321-A Lo Va                        {  0 } (721+0) [338D] - -  - 105 15 HvFd M6 V M4 V
+2834                      A462103-D Lo                           {  1 } (A01-3) [125B] - K  - 501  6 HvFd F3 III M1 V
+2836                      A4248S5-D Ph Pi                        {  2 } (877+0) [5A7F] - -  - 402  6 HvFd M4 V M9 V
+2839                      A858304-B Lo                           {  1 } (A21+3) [248B] - -  - 204 13 HvFd K5 V
+2931                      B56A8S6-C Ri Wa Ph                     {  3 } (67D+0) [6B5F] - -  - 100  9 HvFd M3 V
+2937                      A150101-C De Lo Po                     {  1 } (B01+0) [3268] - K  - 502 13 HvFd K4 V M1 V
+2940                      C597564-6 Ag Ni O:3239                 { -1 } (740-1) [341B] - M  - 702 13 HvFd M5 V
+3031 Koos                 B8B8611-A Fl Ni (Koos) Pz              {  1 } (C55-1) [1729] - K  A 324 12 HvFd A8 V M9 V
+3032                      A7746S3-8 Ag Ni                        {  0 } (C53+0) [866C] - -  - 400  6 HvFd M3 V M8 V
+3033                      C4628S5-4 Ri Ph                        {  0 } (877-3) [A871] - -  - 903 15 HvFd G7 V
+3035                      B85A8T2-9 Wa Ph                        {  1 } (F77+3) [7928] - K  - 103 10 HvFd M6 V M8 V
+3132                      B887663-5 Ag Ni Ri Ga Cy O:3133        {  1 } (654+0) [A751] - -  - 205 18 HvFd K5 V
+3133                      B464624-A Ag Ni Ri                     {  3 } (857+2) [5969] - K  - 403 13 HvFd G5 V
+3135                      B333421-B Ni Po                        {  1 } (932+0) [65AD] - -  - 704 13 HvFd F3 V
+3138                      C322413-A He Ni Po                     {  0 } (B31-1) [845C] - -  - 924 14 HvFd M8 V M5 V
+3140                      C645505-6 Ag Ni                        { -1 } (741-1) [6426] - -  - 100  9 HvFd K0 V M3 V
+3233                      C7A1106-7 He Fl Lo                     { -2 } (801+3) [1127] - M  - 704 11 HvFd G4 V
+3235 Daee                 C9C2821-9 He Fl Ph (Daee) Pz           {  0 } (575+0) [4857] - M  A 101  7 HvFd M0 V M8 V M2 V
+3236                      B335102-A Lo                           {  1 } (A01+1) [222A] - K  - 610  9 HvFd K7 V M6 V
+3239 Guamola              B1109U5-B Hi Na In                     {  4 } (A88+1) [CD8E] - E  - 900  7 HvFd M4 V
+3240                      C78A6S4-8 Ni Ri Wa                     { -1 } (653+2) [7526] - -  - 820 12 HvFd M7 V M8 V     

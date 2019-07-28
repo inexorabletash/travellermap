@@ -1656,14 +1656,14 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <Y>1</Y>
     <X>5</X>
     <Name Lang="kk">Gzirr!k'l</Name>
-    <DataFile Author="Mark Humphreys">Gzirr!k'l.sec</DataFile>
+    <DataFile Author="Mark Humphreys" Type="SecondSurvey">Gzirr!k'l.txt</DataFile>
     <MetadataFile Author="Mark Humphreys">Gzirr!k'l.xml</MetadataFile>
   </Sector>
   <Sector>
     <Y>1</Y>
     <X>6</X>
     <Name Lang="kk">K'trekreer</Name>
-    <DataFile Author="Mark Humphreys">K'trekreer.sec</DataFile>
+    <DataFile Author="Mark Humphreys" Type="SecondSurvey">K'trekreer.txt</DataFile>
     <MetadataFile Author="Mark Humphreys">K'trekreer.xml</MetadataFile>
   </Sector>
   <Sector>
@@ -2008,7 +2008,7 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <X>4</X>
     <Name>Extolian</Name>
     <Name Lang="kk">Krurrihkugr</Name>
-    <DataFile Source="Federation Development Agency" Author="Leroy W. L. Guatney" Ref="https://web.archive.org/web/20071029174129/http://home.earthlink.net/~ngc5139/FDA/">extolian.sec</DataFile>
+    <DataFile Source="Federation Development Agency" Type="SecondSurvey" Author="Leroy W. L. Guatney" Ref="https://web.archive.org/web/20071029174129/http://home.earthlink.net/~ngc5139/FDA/">extolian.txt</DataFile>
     <MetadataFile Author="Mark Humphreys">Extolian.xml</MetadataFile>
   </Sector>
   <Sector>
@@ -2017,20 +2017,15 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <Name Lang="hv">Ricenden</Name>
     <Name Lang="hv">Guaran</Name>
     <Name Lang="kk">Gnoghikt!</Name>
-    <DataFile Author="Mark Humphreys">Ricenden.sec</DataFile>
+    <DataFile Author="Mark Humphreys" Type="SecondSurvey">Ricenden.txt</DataFile>
     <MetadataFile Author="Mark Humphreys">Ricenden.xml</MetadataFile>
-    <!--
-    <Subsectors>
-      <Subsector Index="I" Source="Supplement 8 - Library Data A-M">Hive</Subsector>
-    </Subsectors>
--->
   </Sector>
   <Sector>
     <Y>2</Y>
     <X>6</X>
     <Name Lang="hv">Blaskon</Name>
     <Name Lang="kk">Okteekrul</Name>
-    <DataFile Author="Mark Humphreys">Blaskon.sec</DataFile>
+    <DataFile Author="Mark Humphreys" Type="SecondSurvey">Blaskon.txt</DataFile>
     <MetadataFile Author="Mark Humphreys">Blaskon.xml</MetadataFile>
   </Sector>
   <Sector>
@@ -2038,7 +2033,7 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <X>7</X>
     <Name Lang="hv">Nooq</Name>
     <Name Lang="kk">Hkimbiipam</Name>
-    <DataFile Author="Mark Humphreys">Nooq.sec</DataFile>
+    <DataFile Author="Mark Humphreys" Type="SecondSurvey">Nooq.txt</DataFile>
     <MetadataFile Author="Mark Humphreys">Nooq.xml</MetadataFile>
   </Sector>
   <Sector>
@@ -2319,42 +2314,53 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <X>4</X>
     <Name Lang="hv">Centrax</Name>
     <Name Lang="hv">Glea</Name>
-    <DataFile Author="Mark Humphreys">Centrax.sec</DataFile>
+    <DataFile Author="Mark Humphreys" Type="SecondSurvey">Centrax.txt</DataFile>
     <MetadataFile Author="Mark Humphreys">Centrax.xml</MetadataFile>
-    <!--
-    <Subsectors>
-      <Subsector Index="H" Source="Supplement 8 - Library Data A-M">Liana</Subsector>
-    </Subsectors>
-    <Borders>
-      <Border Allegiance="HvFd" ShowLabel="false">0000 0100 0200 0300 0400 0500 0600 0700 0800 0900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 3000 3100 3200 3300 3301 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2041 1941 1841 1741 1641 1541 1441 1341 1241 1141 1041 0941 0841 0741 0641 0541 0441 0341 0241 0141 0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014 0013 0012 0011 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001 0000</Border>
-    </Borders>
--->
   </Sector>
   <Sector>
     <Y>3</Y>
     <X>5</X>
     <Name Lang="hv">Wrenton</Name>
-    <DataFile Author="Mark Humphreys">Wrenton.sec</DataFile>
+    <DataFile Author="Mark Humphreys" Type="SecondSurvey">Wrenton.txt</DataFile>
     <MetadataFile Author="Mark Humphreys">Wrenton.xml</MetadataFile>
   </Sector>
   <Sector>
     <Y>3</Y>
     <X>6</X>
     <Name Lang="hv">Folgore</Name>
-    <DataFile Author="Mark Humphreys">Folgore.sec</DataFile>
+    <DataFile Author="Mark Humphreys" Type="SecondSurvey">Folgore.txt</DataFile>
     <MetadataFile Author="Mark Humphreys">Folgore.xml</MetadataFile>
   </Sector>
   <Sector>
     <Y>3</Y>
     <X>7</X>
     <Name Lang="hv">Avereguar</Name>
-    <DataFile Author="Mark Humphreys">Avereguar.sec</DataFile>
+    <DataFile Author="Mark Humphreys" Type="SecondSurvey">Avereguar.txt</DataFile>
     <MetadataFile Author="Mark Humphreys">Avereguar.xml</MetadataFile>
   </Sector>
   <Sector>
     <Y>3</Y>
     <X>8</X>
     <Name Lang="hv" Publisher="HIWG">Kolire</Name>
+    <DataFile Author="Mark Humphreys" Type="SecondSurvey">Kolire.txt</DataFile>
+    <Subsectors>
+      <Subsector Index="A">Biggum</Subsector>
+      <Subsector Index="B">Kolier</Subsector>
+      <Subsector Index="C">Corial</Subsector>
+      <Subsector Index="D">Forial</Subsector>
+      <Subsector Index="E">Erokoal</Subsector>
+      <Subsector Index="F">Flooria</Subsector>
+      <Subsector Index="G">(Void)</Subsector>
+      <Subsector Index="H">Keir</Subsector>
+      <Subsector Index="I">Lonesome</Subsector>
+      <Subsector Index="J">Jolira</Subsector>
+      <Subsector Index="K">Gloriah</Subsector>
+      <Subsector Index="L">Lyre</Subsector>
+      <Subsector Index="M">Reial</Subsector>
+      <Subsector Index="N">Nollire</Subsector>
+      <Subsector Index="O">Kolire</Subsector>
+      <Subsector Index="P">Polire</Subsector>
+    </Subsectors>
   </Sector>
   <Sector>
     <Y>3</Y>
@@ -2561,14 +2567,14 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <Y>4</Y>
     <X>5</X>
     <Name Lang="hv">Porlock</Name>
-    <DataFile Author="Mark Humphreys">Porlock.sec</DataFile>
+    <DataFile Author="Mark Humphreys" Type="SecondSurvey">Porlock.txt</DataFile>
     <MetadataFile Author="Mark Humphreys">Porlock.xml</MetadataFile>
   </Sector>
   <Sector>
     <Y>4</Y>
     <X>6</X>
     <Name>Kidunal</Name>
-    <DataFile Author="Mark Humphreys">Kidunal.sec</DataFile>
+    <DataFile Author="Mark Humphreys" Type="SecondSurvey">Kidunal.txt</DataFile>
     <MetadataFile Author="Mark Humphreys">Kidunal.xml</MetadataFile>
   </Sector>
   <Sector>
@@ -2582,6 +2588,25 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <Y>4</Y>
     <X>8</X>
     <Name Lang="hv" Publisher="HIWG">Genfert</Name>
+    <DataFile Author="Mark Humphreys" Type="SecondSurvey">Genfert.txt</DataFile>
+    <Subsectors>
+      <Subsector Index="A">A</Subsector>
+      <Subsector Index="B">B</Subsector>
+      <Subsector Index="C">C</Subsector>
+      <Subsector Index="D">D</Subsector>
+      <Subsector Index="E">E</Subsector>
+      <Subsector Index="F">F</Subsector>
+      <Subsector Index="G">Genfert</Subsector>
+      <Subsector Index="H">H</Subsector>
+      <Subsector Index="I">I</Subsector>
+      <Subsector Index="J">J</Subsector>
+      <Subsector Index="K">K</Subsector>
+      <Subsector Index="L">L</Subsector>
+      <Subsector Index="M">M</Subsector>
+      <Subsector Index="N">N</Subsector>
+      <Subsector Index="O">O</Subsector>
+      <Subsector Index="P">P</Subsector>
+    </Subsectors>    
   </Sector>
   <Sector>
     <Y>4</Y>
@@ -2886,18 +2911,37 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
       <Subsector Index="O">Orwell</Subsector>
       <Subsector Index="P">Herbert</Subsector>
     </Subsectors>
-
   </Sector>
   <Sector>
     <Y>5</Y>
     <X>3</X>
     <Name>Mikhail</Name>
+    <DataFile Type="SecondSurvey" Author="Mark Humphreys">Mikhail.txt</DataFile>
+    <Name>Gamesh Nandroze</Name>
+    <Subsectors>
+      <Subsector Index="A">Androze</Subsector>
+      <Subsector Index="B">Bandroze</Subsector>
+      <Subsector Index="C">Candroze</Subsector>
+      <Subsector Index="D">Dandroze</Subsector>
+      <Subsector Index="E">Eendroze</Subsector>
+      <Subsector Index="F">Fandroze</Subsector>
+      <Subsector Index="G">Gandroze</Subsector>
+      <Subsector Index="H">Handroze</Subsector>
+      <Subsector Index="I">Iindroze</Subsector>
+      <Subsector Index="J">Jamdross</Subsector>
+      <Subsector Index="K">Kandrose</Subsector>
+      <Subsector Index="L">Landross</Subsector>
+      <Subsector Index="M">Mandroze</Subsector>
+      <Subsector Index="N">Nandroze</Subsector>
+      <Subsector Index="O">Oinkhail</Subsector>
+      <Subsector Index="P">Phikhail</Subsector>
+    </Subsectors>       
   </Sector>
   <Sector>
     <Y>5</Y>
     <X>4</X>
     <Name>Darret</Name>
-    <DataFile Source="The Core Route Project" Author="Bari Z. Stafford Sr." Ref="https://web.archive.org/web/20030406042613/http://www.geocities.com/traveller_core_route/proj004/proj004.html">darret.sec</DataFile>
+    <DataFile Source="The Core Route Project" Type="SecondSurvey" Author="Bari Z. Stafford Sr." Ref="https://web.archive.org/web/20030406042613/http://www.geocities.com/traveller_core_route/proj004/proj004.html">darret.txt</DataFile>
     <Subsectors>
       <Subsector Index="A">Arret</Subsector>
       <Subsector Index="B">Barrec</Subsector>
@@ -2921,7 +2965,7 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <Y>5</Y>
     <X>5</X>
     <Name>Ataurre</Name>
-    <DataFile Source="The Core Route Project" Author="Bari Z. Stafford Sr." Ref="https://web.archive.org/web/20030406042613/http://www.geocities.com/traveller_core_route/proj004/proj004.html">ataurre.sec</DataFile>
+    <DataFile Source="The Core Route Project" Type="SecondSurvey" Author="Bari Z. Stafford Sr." Ref="https://web.archive.org/web/20030406042613/http://www.geocities.com/traveller_core_route/proj004/proj004.html">ataurre.txt</DataFile>
     <Subsectors>
       <Subsector Index="A">Ataur</Subsector>
       <Subsector Index="B">Baurre</Subsector>
@@ -3211,6 +3255,72 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <Name Lang="hv" Publisher="HIWG">Ultret</Name>
   </Sector>
 
+  <!-- Names of the Rim Route -->
+  <Sector>
+    <Y>9</Y>
+    <X>8</X>
+    <Name Source="The Core Route Project" Author="Bari Z. Stafford Sr." Ref="https://web.archive.org/web/20030406042613/http://www.geocities.com/traveller_core_route/proj004/proj004.html">Binaurie</Name>
+  </Sector>
+  <Sector>
+    <Y>9</Y>
+    <X>9</X>
+    <Name Source="The Core Route Project" Author="Bari Z. Stafford Sr." Ref="https://web.archive.org/web/20030406042613/http://www.geocities.com/traveller_core_route/proj004/proj004.html">Grevanne</Name>
+  </Sector>
+
+  <Sector>
+    <Y>10</Y>
+    <X>9</X>
+    <Name Source="The Core Route Project" Author="Bari Z. Stafford Sr." Ref="https://web.archive.org/web/20030406042613/http://www.geocities.com/traveller_core_route/proj004/proj004.html">Femengaal</Name>
+  </Sector>
+  <Sector>
+    <Y>10</Y>
+    <X>10</X>
+    <Name Source="The Core Route Project" Author="Bari Z. Stafford Sr." Ref="https://web.archive.org/web/20030406042613/http://www.geocities.com/traveller_core_route/proj004/proj004.html">Wobanna</Name>
+  </Sector>
+
+  <Sector>
+    <Y>11</Y>
+    <X>10</X>
+    <Name Source="The Core Route Project" Author="Bari Z. Stafford Sr." Ref="https://web.archive.org/web/20030406042613/http://www.geocities.com/traveller_core_route/proj004/proj004.html">Poinmaali</Name>
+  </Sector>
+  <Sector>
+    <Y>11</Y>
+    <X>11</X>
+    <Name Source="The Core Route Project" Author="Bari Z. Stafford Sr." Ref="https://web.archive.org/web/20030406042613/http://www.geocities.com/traveller_core_route/proj004/proj004.html">Hintrab</Name>
+  </Sector>
+
+  <Sector>
+    <Y>12</Y>
+    <X>11</X>
+    <Name Source="The Core Route Project" Author="Bari Z. Stafford Sr." Ref="https://web.archive.org/web/20030406042613/http://www.geocities.com/traveller_core_route/proj004/proj004.html">Ebollam</Name>
+  </Sector>
+  <Sector>
+    <Y>12</Y>
+    <X>12</X>
+    <Name Source="The Core Route Project" Author="Bari Z. Stafford Sr." Ref="https://web.archive.org/web/20030406042613/http://www.geocities.com/traveller_core_route/proj004/proj004.html">Tumluun</Name>
+  </Sector>
+
+  <Sector>
+    <Y>13</Y>
+    <X>12</X>
+    <Name Source="The Core Route Project" Author="Bari Z. Stafford Sr." Ref="https://web.archive.org/web/20030406042613/http://www.geocities.com/traveller_core_route/proj004/proj004.html">Yasktier</Name>
+  </Sector>
+  <Sector>
+    <Y>13</Y>
+    <X>13</X>
+    <Name Source="The Core Route Project" Author="Bari Z. Stafford Sr." Ref="https://web.archive.org/web/20030406042613/http://www.geocities.com/traveller_core_route/proj004/proj004.html">Uumpallu</Name>
+  </Sector>
+
+  <Sector>
+    <Y>14</Y>
+    <X>13</X>
+    <Name Source="The Core Route Project" Author="Bari Z. Stafford Sr." Ref="https://web.archive.org/web/20030406042613/http://www.geocities.com/traveller_core_route/proj004/proj004.html">Quavas</Name>
+  </Sector>
+  <Sector>
+    <Y>14</Y>
+    <X>14</X>
+    <Name Source="The Core Route Project" Author="Bari Z. Stafford Sr." Ref="https://web.archive.org/web/20030406042613/http://www.geocities.com/traveller_core_route/proj004/proj004.html">Indierri</Name>
+  </Sector>
 </Sectors>
 
 <!--

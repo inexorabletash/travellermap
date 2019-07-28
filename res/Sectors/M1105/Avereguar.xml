@@ -13,10 +13,10 @@
   <Subsectors>
 
     <Subsector Index="A">Aqaroo</Subsector>
-    <Subsector Index="B"></Subsector>
+    <Subsector Index="B">Uafost</Subsector>
     <Subsector Index="C"></Subsector>
     <Subsector Index="D"></Subsector>
-    <Subsector Index="E"></Subsector>
+    <Subsector Index="E">Lonylua</Subsector>
     <Subsector Index="F">Avereguar</Subsector>
     <Subsector Index="G"></Subsector>
     <Subsector Index="H"></Subsector>
@@ -31,23 +31,30 @@
   </Subsectors>
   <Allegiances>
     <Allegiance Code="HvFd">Hive Federation</Allegiance>
-    <Allegiance Code="H0">Hive Federation Member</Allegiance>
-    <Allegiance Code="H1">Hive Federation Member</Allegiance>
-    <Allegiance Code="H2">Hive Federation Member</Allegiance>
-    <Allegiance Code="H3">Hive Federation Member</Allegiance>
+    <Allegiance Code="Iy">Iyuok Hegemony</Allegiance>
   </Allegiances>
   <Borders>
+    <Border Allegiance="Iy">
+      2133 2132 2232 2133
+    </Border>
     <Border Allegiance="HvFd">
-      0329 0228 0128 0028 0027 0026 0025 0024 0023 0022 0021 0020 0018 0019 0018
+      0329 0228 0129 0029 0028 0027 0026 0025 0024 0023 0022 0021 0020 0018 0019 0018
       0017 0016 0015 0014 0013 0012 0011 0010 0009 0008 0007 0006 0005
       0004 0003 0002 0001 0000 0100 0200 0300 0400 0500 0600 0700 0800
       0900 1000 1100 1101 1102 1103 1104 1204 1305 1405 1506 1606 1706 1806 1906
       2006 2106 2206 2307 2407 2507 2607 2608 2609 2610 2611 2512 2513 2514 2515
-      2615 2716 2717 2718 2719 2619 2519 2419 2319 2219 2119 2019 2020 2021 1922
-      1822 1723 1623 1524 1424 1425 1426 1427 1328 1228 1129 1029 0929 0829 0729
-      0629 0529 0429 0329
+      2615 2716 2717 2718 2719 2619 2520 2420 2321 2221 2122 2022 2023 1924
+      1824 1725 1726 1626 1527 1427 1328 1228 1129 1028 0928 0828 0729
+      0628 0529 0429 0330 0329
     </Border>
   </Borders>
+
+  <Regions>
+    <Region Color="Aquamarine" Label="Aqaroo Demarcation" WrapLabel="true">
+      0106 0205 0204 0305 0404 0305 0205 0106
+    </Region>
+  </Regions>  
+  
   <Routes>
     <Route Start="0207" End="0210" Type="Trade"/>
     <Route Start="0207" End="0307" Type="Trade"/>
@@ -91,6 +98,15 @@
     <Route Start="2020" End="2018" Type="Trade"/>
     <Route Start="1618" End="1614" Type="Trade"/>
     <Route Start="0101" End="0001" Type="Trade"/>
+
+    <Route Start="2518" End="2719" Type="Trade"/>
+    <Route Start="2518" End="2217" Type="Trade"/>
+    <Route Start="2217" End="1916" Type="Trade"/>
+
+
+    <Route Start="1008" End="1308" Type="Trade"/>
+    <Route Start="1507" End="1308" Type="Trade"/>
+    
   </Routes>
   <Labels/>
 </Sector>

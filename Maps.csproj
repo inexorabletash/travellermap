@@ -37,6 +37,7 @@
     <IISExpressUseClassicPipelineMode />
     <TargetFrameworkProfile />
     <UseGlobalApplicationHostFile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <OutputPath>bin\</OutputPath>
@@ -403,18 +404,18 @@
     <Content Include="res\Sectors\M1105\Antares.xml" />
     <Content Include="res\Sectors\M1105\Arzul.xml" />
     <Content Include="res\Sectors\M1105\astron.sec" />
-    <Content Include="res\Sectors\M1105\ataurre.sec" />
-    <Content Include="res\Sectors\M1105\Avereguar.sec" />
+    <Content Include="res\Sectors\M1105\ataurre.txt" />
+    <Content Include="res\Sectors\M1105\Avereguar.txt" />
     <Content Include="res\Sectors\M1105\Avereguar.xml" />
     <Content Include="res\Sectors\M1105\banners.sec" />
     <Content Include="res\Sectors\M1105\Bar%27kakr.txt" />
     <Content Include="res\Sectors\M1105\Bar%27kakr.xml" />
     <Content Include="res\Sectors\M1105\Beyond.xml" />
-    <Content Include="res\Sectors\M1105\blaskon.sec" />
+    <Content Include="res\Sectors\M1105\blaskon.txt" />
     <Content Include="res\Sectors\M1105\blaskon.xml" />
     <Content Include="res\Sectors\M1105\Caesillian.txt" />
     <Content Include="res\Sectors\M1105\Canopus.xml" />
-    <Content Include="res\Sectors\M1105\centrax.sec" />
+    <Content Include="res\Sectors\M1105\centrax.txt" />
     <Content Include="res\Sectors\M1105\Centrax.xml" />
     <Content Include="res\Sectors\M1105\Chit Botshti.txt" />
     <Content Include="res\Sectors\M1105\Chit Botshti.xml" />
@@ -426,7 +427,7 @@
     <Content Include="res\Sectors\M1105\Dagudashaag.xml" />
     <Content Include="res\Sectors\M1105\Daibei.xml" />
     <Content Include="res\Sectors\M1105\Dark Nebula.xml" />
-    <Content Include="res\Sectors\M1105\Darret.sec" />
+    <Content Include="res\Sectors\M1105\Darret.txt" />
     <Content Include="res\Sectors\M1105\Datsatl.txt" />
     <Content Include="res\Sectors\M1105\Datsatl.xml" />
     <Content Include="res\Sectors\M1105\Delphi.xml" />
@@ -443,7 +444,6 @@
     <Content Include="res\Sectors\M1105\Empty Quarter.xml" />
     <Content Include="res\Sectors\M1105\esai-yo.sec" />
     <Content Include="res\Sectors\M1105\Etakhasoa.sec" />
-    <Content Include="res\Sectors\M1105\Extolian.sec" />
     <Content Include="res\Sectors\M1105\Extolian.txt" />
     <Content Include="res\Sectors\M1105\extolian.xml" />
     <Content Include="res\Sectors\M1105\Fa Dzaets.sec" />
@@ -452,7 +452,7 @@
     <Content Include="res\Sectors\M1105\Far Frontiers.sec" />
     <Content Include="res\Sectors\M1105\Far Frontiers.xml" />
     <Content Include="res\Sectors\M1105\Finggvakhou.sec" />
-    <Content Include="res\Sectors\M1105\Folgore.sec" />
+    <Content Include="res\Sectors\M1105\Folgore.txt" />
     <Content Include="res\Sectors\M1105\Folgore.xml" />
     <Content Include="res\Sectors\M1105\Foreven.xml" />
     <Content Include="res\Sectors\M1105\Fornast.xml" />
@@ -461,6 +461,7 @@
     <Content Include="res\Sectors\M1105\Gakghang.sec" />
     <Content Include="res\Sectors\M1105\Gateway.xml" />
     <Content Include="res\Sectors\M1105\Gelath.sec" />
+    <Content Include="res\Sectors\M1105\Genfert.txt" />
     <Content Include="res\Sectors\M1105\Gh1hken.sec" />
     <Content Include="res\Sectors\M1105\Ghoekhnael.xml" />
     <Content Include="res\Sectors\M1105\Glimmerdrift.xml" />
@@ -470,7 +471,7 @@
     <Content Include="res\Sectors\M1105\Gushemege.xml" />
     <Content Include="res\Sectors\M1105\Gvurrdon.xml" />
     <Content Include="res\Sectors\M1105\Gzaekfueg.sec" />
-    <Content Include="res\Sectors\M1105\Gzirr!k%27l.sec" />
+    <Content Include="res\Sectors\M1105\Gzirr!k%27l.txt" />
     <Content Include="res\Sectors\M1105\Gzirr!k%27l.xml" />
     <Content Include="res\Sectors\M1105\hadji.sec" />
     <Content Include="res\Sectors\M1105\hanstone.sec" />
@@ -488,20 +489,21 @@
     <Content Include="res\Sectors\M1105\Irlaftalea.sec" />
     <Content Include="res\Sectors\M1105\Irugangong.sec" />
     <Content Include="res\Sectors\M1105\Itvikiastaf.xml" />
-    <Content Include="res\Sectors\M1105\K%27trekreer.sec" />
+    <Content Include="res\Sectors\M1105\K%27trekreer.txt" />
     <Content Include="res\Sectors\M1105\K%27trekreer.xml" />
-    <Content Include="res\Sectors\M1105\Kaa G!%27kul.xml" />
     <Content Include="res\Sectors\M1105\Kaa G!kul.sec" />
+    <Content Include="res\Sectors\M1105\Kaa G!'kul.xml" />
     <Content Include="res\Sectors\M1105\karleaya.sec" />
     <Content Include="res\Sectors\M1105\Katoonah.sec" />
     <Content Include="res\Sectors\M1105\Kefiykhta.sec" />
     <Content Include="res\Sectors\M1105\khaeaw.sec" />
     <Content Include="res\Sectors\M1105\Kharrthon.sec" />
-    <Content Include="res\Sectors\M1105\kidunal.sec" />
+    <Content Include="res\Sectors\M1105\kidunal.txt" />
     <Content Include="res\Sectors\M1105\kidunal.xml" />
     <Content Include="res\Sectors\M1105\Knaeleng.sec" />
     <Content Include="res\Sectors\M1105\Knoellighz.txt" />
     <Content Include="res\Sectors\M1105\Knoellighz.xml" />
+    <Content Include="res\Sectors\M1105\kolire.txt" />
     <Content Include="res\Sectors\M1105\Koog.txt" />
     <Content Include="res\Sectors\M1105\Koog.xml" />
     <Content Include="res\Sectors\M1105\Kring Noor.txt" />
@@ -520,7 +522,9 @@
     <Content Include="res\Sectors\M1105\Lorspane.xml" />
     <Content Include="res\Sectors\M1105\Luretiir!girr.txt" />
     <Content Include="res\Sectors\M1105\Luretiir!girr.xml" />
-    <Content Include="res\Sectors\M1105\M1105.xml" />
+    <Content Include="res\Sectors\M1105\M1105.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="res\Sectors\M1105\Magyar.xml" />
     <Content Include="res\Sectors\M1105\malorn.sec" />
     <Content Include="res\Sectors\M1105\Massilia.xml" />
@@ -528,11 +532,12 @@
     <Content Include="res\Sectors\M1105\Mavuzog.xml" />
     <Content Include="res\Sectors\M1105\Mendan.xml" />
     <Content Include="res\Sectors\M1105\Meshan.xml" />
+    <Content Include="res\Sectors\M1105\Mikhail.txt" />
     <Content Include="res\Sectors\M1105\muarne.sec" />
     <Content Include="res\Sectors\M1105\Nadir.txt" />
     <Content Include="res\Sectors\M1105\Neworld.xml" />
     <Content Include="res\Sectors\M1105\Ngathksirz.sec" />
-    <Content Include="res\Sectors\M1105\Nooq.sec" />
+    <Content Include="res\Sectors\M1105\Nooq.txt" />
     <Content Include="res\Sectors\M1105\Nooq.xml" />
     <Content Include="res\Sectors\M1105\Nuughe.xml" />
     <Content Include="res\Sectors\M1105\OeghzVaerrghr.sec" />
@@ -542,14 +547,14 @@
     <Content Include="res\Sectors\M1105\Phlask.txt" />
     <Content Include="res\Sectors\M1105\Phlask.xml" />
     <Content Include="res\Sectors\M1105\Pliabriebl.sec" />
-    <Content Include="res\Sectors\M1105\Porlock.sec" />
+    <Content Include="res\Sectors\M1105\Porlock.txt" />
     <Content Include="res\Sectors\M1105\Porlock.xml" />
     <Content Include="res\Sectors\M1105\Provence.xml" />
     <Content Include="res\Sectors\M1105\Raakaan.xml" />
     <Content Include="res\Sectors\M1105\Reavers Deep.xml" />
     <Content Include="res\Sectors\M1105\Reft.xml" />
     <Content Include="res\Sectors\M1105\Rfigh.sec" />
-    <Content Include="res\Sectors\M1105\Ricenden.sec" />
+    <Content Include="res\Sectors\M1105\Ricenden.txt" />
     <Content Include="res\Sectors\M1105\Ricenden.xml" />
     <Content Include="res\Sectors\M1105\Riftspan Reaches.xml" />
     <Content Include="res\Sectors\M1105\Rzakki.sec" />
@@ -588,7 +593,7 @@
     <Content Include="res\Sectors\M1105\Vland.xml" />
     <Content Include="res\Sectors\M1105\waroatah.sec" />
     <Content Include="res\Sectors\M1105\Windhorn.xml" />
-    <Content Include="res\Sectors\M1105\Wrenton.sec" />
+    <Content Include="res\Sectors\M1105\Wrenton.txt" />
     <Content Include="res\Sectors\M1105\Wrenton.xml" />
     <Content Include="res\Sectors\M1105\Xaagr.txt" />
     <Content Include="res\Sectors\M1105\Xaagr.xml" />

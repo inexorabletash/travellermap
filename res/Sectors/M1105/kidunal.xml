@@ -31,18 +31,18 @@
   </Subsectors>
   <Allegiances>
     <Allegiance Code="HvFd">Hive Federation</Allegiance>
-    <Allegiance Code="Hc">Hiver Client</Allegiance>
+    <Allegiance Code="Hg">Gaiage Alliance</Allegiance>
     <Allegiance Code="Sp">Splinters</Allegiance>
   </Allegiances>
   <Borders>
     <Border WrapLabel="true" Allegiance="HvFd" LabelPosition="0305">
       0000 0100 0200 0300 0400 0500 0600 0601 0602 0603
-      0604 0605 0606 0507 0508 0608 0609 0510 0410 0311 0211 0212
+      0604 0605 0606 0507 0508 0509 0510 0410 0311 0211 0212
       0213 0214 0215 0116 0016 0015
       0014 0013 0012 0011 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001
     </Border>
 
-    <Border Wraplabel="true" Color="Blue" Allegiance="Hc">
+    <Border Wraplabel="true" Color="Blue" Allegiance="Hg">
       0223 0323 0423 0523 0524 0624 0625 0525 0424 0325 0225 0224 0223
     </Border>
 
@@ -54,9 +54,10 @@
   <Routes>
     <Route Start="0008" End="0207" Type="Trade"/>
     <Route Start="0508" End="0207" Type="Trade"/>
-    <Route Start="0508" End="0609" Type="Trade"/>
+    <Route Start="0508" End="0510" Type="Trade"/>
     <Route Start="0404" End="0207" Type="Trade"/>
     <Route Start="0404" End="0502" Type="Trade"/>
     <Route Start="0404" End="0304" Type="Trade"/>
+    <Route Start="0004" End="0304" Type="Trade" />
   </Routes>
 </Sector>
