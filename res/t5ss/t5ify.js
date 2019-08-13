@@ -169,9 +169,12 @@ function process(world) {
     console.warn(`Unmatched codes (${world.Hex}): ` + Array.from(codeSet).map(s=>JSON.stringify(s)).join(' '));
 
 
-  world.Remarks = (PLANETARY_CODES.concat(POPULATION_CODES).concat(ECONOMIC_CODES).
-                   map(code => world[code] ? code : '').join(' ')
-                   + world.Sophonts + world.Details).trim().replace(/\s{2,}/g, ' ');
+  world.Remarks = ([]
+                   .concat(PLANETARY_CODES,POPULATION_CODES,ECONOMIC_CODES)
+                   .map(code => world[code] ? code : '')
+                   .join(' ')
+                   + ' ' + world.Sophonts
+                   + ' ' + world.Details).trim().replace(/\s{2,}/g, ' ');
 }
 
 function t5ify(world) {
