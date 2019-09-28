@@ -68,7 +68,7 @@ namespace Maps
 
         public override IEnumerable<Sector> Sectors { get { yield return sector; } }
 
-        public override IEnumerable<World> Worlds => sector.GetWorlds(resourceManager, cacheResults: true);
+        public override IEnumerable<World> Worlds => sector.GetWorlds(resourceManager, cacheResults: true) ?? Enumerable.Empty<World>();
         public override IEnumerable<Tuple<Sector, Route>> Routes => FilteredRoutes(sector.Bounds);
     }
 
