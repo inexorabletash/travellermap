@@ -1470,7 +1470,7 @@ window.addEventListener('DOMContentLoaded', function() {
         document.body.classList.add('cookies-not-accepted');
         $('#cookies button').addEventListener('click', function(e) {
           document.body.classList.remove('cookies-not-accepted');
-          document.cookie = 'tm_accept=1';
+          document.cookie = 'tm_accept=1;SameSite=Strict';
           localStorage.setItem(cookies_key, 1);
         });
       }

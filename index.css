@@ -364,6 +364,12 @@ body:not(.wds-visible) #wds-frame { display: none; }
   overflow: hidden; /* So stripe does not extend under floated image. */
 }
 
+.ds-frame #sds-data > div,
+.ds-frame .wds-names > div {
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+}
+
 .wds-wiki-link { margin-top: 6px; margin-left: 10px; }
 
 /* Title */
@@ -1211,12 +1217,10 @@ body:not(.search-results) #closeSearchBtn { display: none; }
     height: 155px;
   }
 
-  /* Elipsify when mini so height can be fixed and transitioned. */
+  /* Don't wrap when mini so height is fixed and can be transitioned. */
   .ds-mini .ds-frame #sds-data > div,
   .ds-mini .ds-frame .wds-names > div {
-    overflow-x: hidden;
     white-space: nowrap;
-    text-overflow: ellipsis;
   }
 
   .sds-visible #bottom-pane,
