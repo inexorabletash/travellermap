@@ -156,7 +156,7 @@ namespace Maps.Rendering
         }
 
         // Used for names from vector files (macro borders, rifts)
-        internal void DrawName(AbstractGraphics graphics, RectangleF rect, Font font, AbstractBrush textBrush, LabelStyle labelStyle)
+        internal void DrawName(AbstractGraphics graphics, RectangleF rect, AbstractFont font, AbstractBrush textBrush, LabelStyle labelStyle)
         {
             if (graphics == null)
                 throw new ArgumentNullException(nameof(graphics));
@@ -209,7 +209,7 @@ namespace Maps.Rendering
         public int LabelBiasY { get; set; } = 1;
 
 
-        internal void Paint(AbstractGraphics graphics, Color dotColor, AbstractBrush labelBrush, Font labelFont)
+        internal void Paint(AbstractGraphics graphics, Color dotColor, AbstractBrush labelBrush, AbstractFont labelFont)
         {
             if (graphics == null)
                 throw new ArgumentNullException(nameof(graphics));

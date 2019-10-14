@@ -494,18 +494,18 @@ namespace Maps.Graphics
 
 #region Text
         private System.Drawing.Graphics scratch;
-        public SizeF MeasureString(string text, Font font)
+        public SizeF MeasureString(string text, AbstractFont font)
         {
             if (scratch == null) scratch = System.Drawing.Graphics.FromImage(new Bitmap(1, 1));
-            return scratch.MeasureString(text, font);
+            return scratch.MeasureString(text, font.Font);
         }
 
-        public void DrawString(string s, Font font, AbstractBrush brush, float x, float y, StringAlignment alignment)
+        public void DrawString(string s, AbstractFont font, AbstractBrush brush, float x, float y, StringAlignment alignment)
         {
             var e = Append(new Element(ElementNames.TEXT));
             e.content = s;
 
-            e.Set("font-family", font.Name);
+            e.Set("font-family", font.Families);
             e.Set("font-size", font.Size);
             if (font.Italic)
                 e.Set("font-style", "italic");

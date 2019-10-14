@@ -41,8 +41,8 @@ namespace Maps.Graphics
         void DrawImage(AbstractImage image, float x, float y, float width, float height);
         void DrawImageAlpha(float alpha, AbstractImage image, RectangleF targetRect);
 
-        SizeF MeasureString(string text, Font font);
-        void DrawString(string s, Font font, AbstractBrush brush, float x, float y, StringAlignment format);
+        SizeF MeasureString(string text, AbstractFont font);
+        void DrawString(string s, AbstractFont font, AbstractBrush brush, float x, float y, StringAlignment format);
 
         AbstractGraphicsState Save();
         void Restore(AbstractGraphicsState state);
@@ -189,6 +189,35 @@ namespace Maps.Graphics
         {
             Color = color;
         }
+    }
+
+    internal class AbstractFont
+    {
+        // Returns the families list passed to the constructor.
+        public string Families { get; }
+
+        // Create a font, using comma-separated fallbacks, e.g. "Calibri,Arial"; for local rendering
+        // each is tried in turn and an internal Font is created. The original string can be used for
+        // remote rendering, e.g. in SVG output.
+        public AbstractFont(string families, float emSize, FontStyle style, GraphicsUnit units)
+        {
+            Families = families;
+            foreach (var family in families.Split(new char[] { ',' })) {
+                Font = new Font(family, emSize, style, units);
+                if (Font.Name == family)
+                    return;
+            }
+        }
+
+        // Access to the underlying System.Drawing.Font, and properties.
+        public Font Font { get; set; }
+        public FontStyle Style { get => Font.Style; }
+        public float Size { get => Font.Size; }
+        public bool Italic { get => Font.Italic; }
+        public bool Bold { get => Font.Bold; }
+        public bool Underline { get => Font.Underline; }
+        public bool Strikeout { get => Font.Strikeout; }
+        public FontFamily FontFamily { get => Font.FontFamily; }
     }
 
     internal enum StringAlignment

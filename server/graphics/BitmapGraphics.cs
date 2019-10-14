@@ -110,20 +110,20 @@ namespace Maps.Graphics
             }
         }
 
-        public SizeF MeasureString(string text, Font font)=> g.MeasureString(text, font);
+        public SizeF MeasureString(string text, AbstractFont font)=> g.MeasureString(text, font.Font);
 
-        public void DrawString(string s, Font font, AbstractBrush brush, float x, float y, StringAlignment format)
+        public void DrawString(string s, AbstractFont font, AbstractBrush brush, float x, float y, StringAlignment format)
         {
             Apply(brush);
             if (format == StringAlignment.Baseline)
             {
                 float fontUnitsToWorldUnits = font.Size / font.FontFamily.GetEmHeight(font.Style);
                 float ascent = font.FontFamily.GetCellAscent(font.Style) * fontUnitsToWorldUnits;
-                g.DrawString(s, font, this.brush, x, y - ascent);
+                g.DrawString(s, font.Font, this.brush, x, y - ascent);
             }
             else
             {
-                g.DrawString(s, font, this.brush, x, y, Format(format));
+                g.DrawString(s, font.Font, this.brush, x, y, Format(format));
             }
         }
 

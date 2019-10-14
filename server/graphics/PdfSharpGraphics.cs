@@ -156,12 +156,12 @@ namespace Maps.Graphics
             }
         }
 
-        public SizeF MeasureString(string text, Font font) => g.MeasureString(text, font).ToSizeF();
+        public SizeF MeasureString(string text, AbstractFont font) => g.MeasureString(text, font.Font).ToSizeF();
  
-        public void DrawString(string s, Font font, AbstractBrush brush, float x, float y, StringAlignment format)
+        public void DrawString(string s, AbstractFont font, AbstractBrush brush, float x, float y, StringAlignment format)
         {
             Apply(brush);
-            g.DrawString(s, Convert(font), this.brush, x, y, Format(format));
+            g.DrawString(s, Convert(font.Font), this.brush, x, y, Format(format));
         }
 
         public AbstractGraphicsState Save() => new State(this, g.Save());

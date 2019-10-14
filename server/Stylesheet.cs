@@ -132,33 +132,21 @@ namespace Maps.Rendering
 
     internal struct FontInfo
     {
-        public FontFamily family;
         public string name;
         public float size;
         public FontStyle style;
 
         public FontInfo(string name, float size, FontStyle style = FontStyle.Regular)
         {
-            family = null;
             this.name = name;
             this.size = size;
             this.style = style;
         }
 
-        public FontInfo(FontFamily family, float size, FontStyle style = FontStyle.Regular)
+        public AbstractFont MakeFont()
         {
-            this.family = family;
-            name = null;
-            this.size = size;
-            this.style = style;
-        }
-
-        public Font MakeFont()
-        {
-            if (family != null)
-                return new Font(family, size * 1.4f, style, GraphicsUnit.World);
             if (name != null)
-                return new Font(name, size * 1.4f, style, GraphicsUnit.World);
+                return new AbstractFont(name, size * 1.4f, style, GraphicsUnit.World);
             return null;
         }
     }
@@ -982,7 +970,7 @@ namespace Maps.Rendering
 
                         microBorders.textColor = Color.DarkSlateGray;
 
-                        const string FONT_NAME = "Calibri";
+                        const string FONT_NAME = "Calibri,Arial";
                         worlds.fontInfo.name = FONT_NAME;
                         worlds.smallFontInfo.name = FONT_NAME;
                         starport.fontInfo.name = FONT_NAME;
@@ -1133,14 +1121,14 @@ namespace Maps.Rendering
 
             public PointF position;
 
-            private Font font;
-            public Font Font => font ?? (font = fontInfo.MakeFont());
-            private Font smallFont;
-            public Font SmallFont => smallFont ?? (smallFont = smallFontInfo.MakeFont());
-            private Font mediumFont;
-            public Font MediumFont => mediumFont ?? (mediumFont = mediumFontInfo.MakeFont());
-            private Font largeFont;
-            public Font LargeFont => largeFont ?? (largeFont = largeFontInfo.MakeFont());
+            private AbstractFont font;
+            public AbstractFont Font => font ?? (font = fontInfo.MakeFont());
+            private AbstractFont smallFont;
+            public AbstractFont SmallFont => smallFont ?? (smallFont = smallFontInfo.MakeFont());
+            private AbstractFont mediumFont;
+            public AbstractFont MediumFont => mediumFont ?? (mediumFont = mediumFontInfo.MakeFont());
+            private AbstractFont largeFont;
+            public AbstractFont LargeFont => largeFont ?? (largeFont = largeFontInfo.MakeFont());
         }
 
 
@@ -1452,10 +1440,10 @@ namespace Maps.Rendering
         }
         private Stylesheet sheet;
 
-        private Font wingdingFont;
-        public Font WingdingFont => wingdingFont ?? (wingdingFont = sheet.wingdingFont.MakeFont());
-        private Font glyphFont;
-        public Font GlyphFont => glyphFont ?? (glyphFont = sheet.glyphFont.MakeFont());
+        private AbstractFont wingdingFont;
+        public AbstractFont WingdingFont => wingdingFont ?? (wingdingFont = sheet.wingdingFont.MakeFont());
+        private AbstractFont glyphFont;
+        public AbstractFont GlyphFont => glyphFont ?? (glyphFont = sheet.glyphFont.MakeFont());
 
         #region IDisposable Support
         private bool disposed = false;

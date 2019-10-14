@@ -452,7 +452,7 @@ namespace Maps.Rendering
             {
                 using (graphics.Save())
                 {
-                    Font font = label.minor ? styles.megaNames.SmallFont : styles.megaNames.Font;
+                    AbstractFont font = label.minor ? styles.megaNames.SmallFont : styles.megaNames.Font;
                     graphics.TranslateTransform(label.position.X, label.position.Y);
                     graphics.ScaleTransform(1.0f / Astrometrics.ParsecScaleX, 1.0f / Astrometrics.ParsecScaleY);
                     RenderUtil.DrawString(graphics, label.text, font, solidBrush, 0, 0);
@@ -684,7 +684,7 @@ namespace Maps.Rendering
             }
         }
 
-        private void OverlayGlyph(string glyph, Font font, Point coordinates)
+        private void OverlayGlyph(string glyph, AbstractFont font, Point coordinates)
         {
             PointF center = Astrometrics.HexToCenter(coordinates);
             using (graphics.Save())
@@ -712,7 +712,7 @@ namespace Maps.Rendering
                 {
                     Uppercase = major
                 };
-                Font font = major ? styles.macroNames.Font : styles.macroNames.SmallFont;
+                AbstractFont font = major ? styles.macroNames.Font : styles.macroNames.SmallFont;
                 solidBrush.Color = major ? styles.macroNames.textColor : styles.macroNames.textHighlightColor;
                 vec.DrawName(graphics, tileRect, font, solidBrush, labelStyle);
             }
@@ -728,7 +728,7 @@ namespace Maps.Rendering
                     Rotation = 35,
                     Uppercase = major
                 };
-                Font font = major ? styles.macroNames.Font : styles.macroNames.SmallFont;
+                AbstractFont font = major ? styles.macroNames.Font : styles.macroNames.SmallFont;
                 solidBrush.Color = major ? styles.macroNames.textColor : styles.macroNames.textHighlightColor;
                 vec.DrawName(graphics, tileRect, font, solidBrush, labelStyle);
             }
@@ -745,7 +745,7 @@ namespace Maps.Rendering
                     {
                         Uppercase = major
                     };
-                    Font font = major ? styles.macroNames.Font : styles.macroNames.SmallFont;
+                    AbstractFont font = major ? styles.macroNames.Font : styles.macroNames.SmallFont;
                     solidBrush.Color = major ? styles.macroRoutes.textColor : styles.macroRoutes.textHighlightColor;
                     vec.DrawName(graphics, tileRect, font, solidBrush, labelStyle);
                 }
@@ -753,7 +753,7 @@ namespace Maps.Rendering
 
             if (options.HasFlag(MapOptions.NamesMinor))
             {
-                Font font = styles.macroNames.MediumFont;
+                AbstractFont font = styles.macroNames.MediumFont;
                 solidBrush.Color = styles.macroRoutes.textHighlightColor;
                 foreach (var label in minorLabels)
                 {
@@ -1271,7 +1271,7 @@ namespace Maps.Rendering
 
                             Color textColor = (isCapital && styles.worldDetails.HasFlag(WorldDetails.Highlight))
                                 ? styles.worlds.textHighlightColor : styles.worlds.textColor;
-                            Font font = ((isHiPop || isCapital) && styles.worldDetails.HasFlag(WorldDetails.Highlight))
+                            AbstractFont font = ((isHiPop || isCapital) && styles.worldDetails.HasFlag(WorldDetails.Highlight))
                                 ? styles.worlds.LargeFont : styles.worlds.Font;
 
                             DrawWorldLabel(worldTextBackgroundStyle, solidBrush, textColor, styles.worlds.textStyle.Translation, font, name);
@@ -1499,7 +1499,7 @@ namespace Maps.Rendering
             return null;
         }
 
-        private void DrawWorldLabel(TextBackgroundStyle backgroundStyle, AbstractBrush brush, Color color, PointF position, Font font, string text)
+        private void DrawWorldLabel(TextBackgroundStyle backgroundStyle, AbstractBrush brush, Color color, PointF position, AbstractFont font, string text)
         {
             var size = graphics.MeasureString(text, font);
 
@@ -1602,7 +1602,7 @@ namespace Maps.Rendering
                         // TODO: Adopt some of the tweaks from .MSEC
                         labelPos.Y -= label.OffsetY * 0.7f;
 
-                        Font font;
+                        AbstractFont font;
                         switch (label.Size)
                         {
                             case "small": font = styles.microBorders.SmallFont; break;

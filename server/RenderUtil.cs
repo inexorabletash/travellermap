@@ -73,7 +73,7 @@ namespace Maps.Rendering
 
         public static void DrawGlyph(AbstractGraphics g, Glyph glyph, FontCache styleRes, AbstractBrush brush, PointF pt)
         {
-            Font font;
+            AbstractFont font;
             string s = glyph.Characters;
             if (g.SupportsWingdings && s.All(c => DING_MAP.ContainsKey(c)))
             {
@@ -113,7 +113,7 @@ namespace Maps.Rendering
         // String is positioned relative to x,y according to TextFormat.
         // TextFormat also controls text alignment (left, center, right).
         // Handles embedded newlines.
-        public static void DrawString(AbstractGraphics g, string text, Font font, AbstractBrush brush, float x, float y, TextFormat format = TextFormat.Center)
+        public static void DrawString(AbstractGraphics g, string text, AbstractFont font, AbstractBrush brush, float x, float y, TextFormat format = TextFormat.Center)
         {
             if (string.IsNullOrWhiteSpace(text))
                 return;
@@ -169,7 +169,7 @@ namespace Maps.Rendering
 
         // Used for Sector/Subsector names and labels (borders and explicit).
         // Always centered on given coordinates.
-        public static void DrawLabel(AbstractGraphics g, string text, PointF center, Font font, AbstractBrush brush, LabelStyle labelStyle)
+        public static void DrawLabel(AbstractGraphics g, string text, PointF center, AbstractFont font, AbstractBrush brush, LabelStyle labelStyle)
         {
             using (g.Save())
             {
