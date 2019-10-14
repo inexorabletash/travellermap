@@ -228,46 +228,48 @@ namespace Maps.Graphics
         private void Optimize(Element e)
         {
             // Simplify subtrees first
-            foreach (var child in e.children)
-                Optimize(child);
+            foreach (var ch in e.children)
+                Optimize(ch);
 
             // Remove <g>s with no children
-            e.children.RemoveAll(child => child.name == ElementNames.G && child.children.Count == 0);
+            e.children.RemoveAll(ch => ch.name == ElementNames.G && ch.children.Count == 0);
 
             // Flatten <g> with no properties
             List<Element> c = new List<Element>();
-            foreach (var child in e.children)
+            foreach (var ch in e.children)
             {
-                if (child.name == ElementNames.G && child.attributes.Count == 0)
-                    c.AddRange(child.children);
+                if (ch.name == ElementNames.G && ch.attributes.Count == 0)
+                    c.AddRange(ch.children);
                 else
-                    c.Add(child);
+                    c.Add(ch);
             }
             e.children = c;
-            
+
             // If a <g> has only a single child, merge
-            if (e.name == ElementNames.G && e.children.Count == 1)
+            if (e.name != ElementNames.G || e.children.Count != 1)
+                return;
+
+            var child = e.children.First();
+
+            // Can't merge clip-paths, and clip needs to come before child transform.
+            // TODO: Other exclusive elements?
+            if (e.Has("clip-path") && (child.Has("clip-path") || child.Has("transform")))
+                return;
+
+            e.name = child.name;
+            e.children = child.children;
+            e.content = child.content;
+            foreach (var entry in child.attributes)
             {
-                var child = e.children.First();
-                // TODO: Other exclusive elements?
-                if (!(e.Has("clip-path") && child.Has("clip-path")))
+                if (e.attributes.ContainsKey(entry.Key))
                 {
-                    e.name = child.name;
-                    e.children = child.children;
-                    e.content = child.content;
-                    foreach (var entry in child.attributes)
-                    {
-                        if (e.attributes.ContainsKey(entry.Key))
-                        {
-                            if (entry.Key != "transform")
-                                throw new ApplicationException("Only know how to combine 'transform' attributes");
-                            e.attributes[entry.Key] += " " + entry.Value;
-                        }
-                        else
-                        {
-                            e.attributes[entry.Key] = entry.Value;
-                        }
-                    }
+                    if (entry.Key != "transform")
+                        throw new ApplicationException("Only know how to combine 'transform' attributes");
+                    e.attributes[entry.Key] += " " + entry.Value;
+                }
+                else
+                {
+                    e.attributes[entry.Key] = entry.Value;
                 }
             }
         }
@@ -488,9 +490,9 @@ namespace Maps.Graphics
             var e = Open(new Element(ElementNames.G));
             e.Set("clip-path", $"url(#{clipPath.Id})");
         }
-        #endregion
+#endregion
 
-        #region Text
+#region Text
         private System.Drawing.Graphics scratch;
         public SizeF MeasureString(string text, Font font)
         {
@@ -529,9 +531,9 @@ namespace Maps.Graphics
             e.Set("y", y);
             e.Apply(brush);
         }
-        #endregion
+#endregion
 
-        #region Transforms
+#region Transforms
         public void ScaleTransform(float scaleX, float scaleY)
         {
             if (scaleX == 1 && scaleY == 1)
@@ -558,9 +560,9 @@ namespace Maps.Graphics
             var e = Open(new Element(ElementNames.G));
             e.Set("transform", $"matrix({F(m.M11)},{F(m.M12)},{F(m.M21)},{F(m.M22)},{F(m.OffsetX)},{F(m.OffsetY)})");
         }
-        #endregion
+#endregion
 
-        #region State
+#region State
         public AbstractGraphicsState Save()
         {
             var state = new State(this, new Element(ElementNames.G));
@@ -580,9 +582,9 @@ namespace Maps.Graphics
             public Element element;
             public State(AbstractGraphics g, Element e) : base(g) { element = e; }
         }
-        #endregion
+#endregion
 
-        #region Relay Methods
+#region Relay Methods
         public void DrawLine(AbstractPen pen, PointF pt1, PointF pt2)
         {
             DrawLine(pen, pt1.X, pt1.Y, pt2.X, pt2.Y);
@@ -632,9 +634,9 @@ namespace Maps.Graphics
         {
             ScaleTransform(scaleXY, scaleXY);
         }
-        #endregion
+#endregion
 
-        #region Utilities
+#region Utilities
         private static string ToSVG(AbstractPath ap)
         {
             PathBuilder path = new PathBuilder();
@@ -720,9 +722,9 @@ namespace Maps.Graphics
 
             return path.ToString();
         }
-        #endregion
+#endregion
 
-        #region IDisposable Support
+#region IDisposable Support
         private bool disposed = false;
 
         void IDisposable.Dispose()
@@ -741,6 +743,6 @@ namespace Maps.Graphics
             }
             disposed = true;
         }
-        #endregion
+#endregion
     }
 }
