@@ -13,21 +13,28 @@ var SERVICE_BASE = (function(l) {
 }(window.location));
 
 ['poster', 'atlas', 'print', 'candy', 'draft', 'fasa', 'terminal', 'mongoose'].forEach(style => {
-  var div = document.createElement('div');
-  document.documentElement.appendChild(div);
+  const div = document.documentElement.appendChild(document.createElement('div'));
+  const script = document.documentElement.appendChild(document.createElement('pre'));
 
   const contentType = 'image/svg+xml', extension = 'svg';
 
   ['1003', '1006'].forEach(hex => {
+    const url = `${SERVICE_BASE}/api/jumpmap?accept=${contentType}&jump=1&sector=Legend&hex=${hex}&options=884&border=0&style=${style}`;
 
-    var img, a;
-    a = document.createElement('a');
-    img = document.createElement('img');
-    img.src = `${SERVICE_BASE}/api/jumpmap?accept=${contentType}&jump=1&sector=Legend&hex=${hex}&options=884&border=0&style=${style}`;
-    a.href = img.src;
-    a.download = ''; // Ignored for cross-origin requests, alas: `Legend_${hex}_${style}.${extension}`;
+    const img = Object.assign(document.createElement('img'), {
+      src: url
+    });
+
+    const a = Object.assign(document.createElement('a'), {
+      href: img.src,
+      download: '', // Ignored for cross-origin requests, alas: `Legend_${hex}_${style}.${extension}`
+    });
+
     a.appendChild(img);
     div.appendChild(a);
+
+    script.append(`curl -o Legend_${hex}_${style}.svg '${url}'\n`);
+
   });
 });
 </script>
