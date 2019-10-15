@@ -20,16 +20,9 @@ namespace Maps.API
         {
             public Responder(HttpContext context) : base(context) { }
             public override string DefaultContentType => ContentTypes.Text.Xml;
-            private static readonly IReadOnlyDictionary<string, string> SpecialSearches = 
-                new EasyInitConcurrentDictionary<string, string>(StringComparer.InvariantCultureIgnoreCase) {
-                { @"(default)", @"~/res/search/Default.json"},
-                { @"(grand tour)", @"~/res/search/GrandTour.json"},
-                { @"(arrival vengeance)", @"~/res/search/ArrivalVengeance.json"},
-                { @"(far frontiers)", @"~/res/search/FarFrontiers.json"},
-                { @"(cirque)", @"~/res/search/Cirque.json"}
-            };
 
-            private static readonly Regex UWP_REGEXP = new Regex(@"^\w{7}-\w$");
+            private static readonly Regex SPECIAL_REGEXP = new Regex(@"\(([A-Za-z0-9 ]+)\)", RegexOptions.Compiled);
+            private static readonly Regex UWP_REGEXP = new Regex(@"^\w{7}-\w$", RegexOptions.Compiled);
 
             public override void Process(ResourceManager resourceManager)
             {
@@ -38,23 +31,15 @@ namespace Maps.API
                     return;
 
                 // Look for special searches
-                if (SpecialSearches.ContainsKey(query))
+                var match = SPECIAL_REGEXP.Match(query);
+                if (match != null)
                 {
-                    string path = SpecialSearches[query];
-
-                    if (Context.Request.QueryString["jsonp"] != null)
-                    {
-                        // TODO: Does this include the JSONP headers?
-                        SendFile(JsonConstants.MediaType, path);
-                        return;
-                    }
-
-                    if (Accepts(Context, JsonConstants.MediaType))
+                    string path = $"~/res/search/{match.Groups[1].Value.Replace(" ", String.Empty)}.json";
+                    if (CheckFile(path) && ((Context.Request.QueryString["jsonp"] != null) || Accepts(Context, JsonConstants.MediaType)))
                     {
                         SendFile(JsonConstants.MediaType, path);
                         return;
                     }
-                    return;
                 }
 
                 //

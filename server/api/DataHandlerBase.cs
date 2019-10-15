@@ -160,6 +160,11 @@ namespace Maps.API
                 SendPostamble(contentType);
             }
 
+            public bool CheckFile(string filename)
+            {
+                return File.Exists(Context.Server.MapPath(filename));
+            }
+
             public void SendJson(object o)
             {
                 Context.Response.ContentType = JsonConstants.MediaType;
