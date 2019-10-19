@@ -695,7 +695,7 @@ body:not(.route-shown) #routeBox { min-height: 130px; max-height: 130px; }
 .show-settings #settingsBtn,
 .show-share #shareBtn,
 .show-help #helpBtn {
-  border-bottom: 2px solid #5C4033;
+  border-bottom: 2px solid #E32736;
   filter: none;
 }
 
@@ -925,7 +925,7 @@ body:not(.enable-experiments) #labBtn { display: none; }
 #help-tab h3:first-of-type { margin-top: 0; }
 #help-tab h3 { x-font-style: italic; x-font-weight: normal;
               color: #E32736;
-              border-bottom: 2px solid #5C4033;
+              border-bottom: 2px solid #E32736;
               margin-bottom: 10px; }
 #help-tab a { text-decoration: none; }
 #help-tab a:hover { text-decoration: underline; }
@@ -990,7 +990,7 @@ body:not(.search-results) #closeSearchBtn { display: none; }
 }
 #more-tabs button:hover {
   background-color: transparent;
-  border-bottom: 2px solid #5C4033;
+  border-bottom: 2px solid #E32736;
   filter: none;
 }
 #moreScroll {
