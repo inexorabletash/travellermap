@@ -38,6 +38,7 @@ body.style-print,
 body.style-fasa,
 body.style-atlas { color: black; background-color: white; }
 body.style-draft { color: black; background-color: antiquewhite; }
+body.style-mongoose { color: black; background-color: #e6e7e8; }
 
 body.style-terminal {
   font-family: "Courier New", "Courier", monospace;
@@ -55,12 +56,14 @@ input[type=text] {
   color: black;
   background-color: white;
 }
-.style-print input[type=text],
-.style-fasa input[type=text],
-.style-draft input[type=text],
-.style-atlas input[type=text] {
+
+.style-print #searchBox,
+.style-fasa #searchBox,
+.style-draft #searchBox,
+.style-atlas #searchBox {
   background-color: #e0e0e0;
 }
+
 .style-terminal input[type=text] {
   font-family: "Courier New", "Courier", monospace;
   font-weight: bold;
@@ -524,12 +527,14 @@ button:hover {
   position: absolute;
   overflow-x: hidden;
   overflow-y: auto;
-  background-color: inherit;
-  border: 1px solid gray;
-  box-shadow: 2px 2px 4px #404040;
+  color: black;
+  background-color: white;
+  border: 1px solid black;
   z-index: 30;
 }
-
+.hoverbox a {
+  color: black;
+}
 .hoverbox-right {
   right: 10px; top: 55px; bottom: 160px;
 }
@@ -591,7 +596,7 @@ button:hover {
 /* -- Route */
 
 #routeBox {
-  left: 0; top: 0; width: 300px;
+  left: 5px; top: 5px; width: 300px;
   padding: 9px; /* +1px border to align box with search form at 10px */
   min-height: 115px;
   max-height: 350px;
@@ -606,8 +611,10 @@ body:not(.route-shown) #routeBox { min-height: 130px; max-height: 130px; }
   height: 40px; width: 100%;
 
   font-size: 12pt;
-  padding: 5px 10px; margin: 0 0 10px; border: none;
-  border-radius: 2px;
+  padding: 5px 10px;
+  margin: 0 0 10px;
+  border: none;
+  border-bottom: 1px solid darkgray;
 }
 #routeBox form {
   text-align: center;
@@ -713,9 +720,12 @@ body:not(.enable-experiments) #labBtn { display: none; }
 
   text-align: center;
   padding: 0;
-}
 
-.style-mongoose #legendBox { background-color: #e6e7e8; color: black; }
+  color: inherit;
+  background-color: inherit;
+  border: 1px solid gray;
+  box-shadow: 2px 2px 4px #404040;
+}
 
 #legendBoxContent {
   margin: 20px;
@@ -1316,16 +1326,16 @@ body:not(.search-results) #closeSearchBtn { display: none; }
 
 .style-terminal button { background-color: lightgray; }
 .style-terminal button:hover { background-color: #E32736; }
+.style-terminal #routeBox,
+.style-terminal #resultsBox,
 .style-terminal #moreBox,
 .style-terminal .bar-button,
 .style-terminal .jump-button,
 .style-terminal .style-choice,
-.style-terminal input[type=text],
+.style-terminal #searchForm,
 .style-terminal .ds-frame,
 .style-terminal #stripe,
-.style-terminal #searchBtn,
-.style-terminal #closeSearchBtn,
-.style-terminal #closeRouteBtn { filter: invert(100%); }
+.style-terminal #searchBtn { filter: invert(100%); }
 .style-terminal #wds-world-image,
 .style-terminal #wds-map { filter: invert(100%); }
 

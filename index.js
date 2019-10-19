@@ -1136,7 +1136,7 @@ window.addEventListener('DOMContentLoaded', function() {
           var tags = String(item.SectorTags).split(/\s+/);
           item.Unofficial = true;
           ['Official', 'InReview', 'Unreviewed', 'Apocryphal', 'Preserve'].forEach(function(tag) {
-            if (tags.indexOf(tag) !== -1) {
+            if (tags.includes(tag)) {
               delete item.Unofficial;
               item[tag] = true;
             }
@@ -1351,7 +1351,7 @@ window.addEventListener('DOMContentLoaded', function() {
           w = parseFloat(canvas.width),
           h = parseFloat(canvas.height),
           style = map.style,
-          color = ['atlas', 'print', 'draft', 'fasa'].indexOf(style) !== -1 ? 'black' : 'white';
+          color = ['atlas', 'print', 'draft', 'fasa', 'mongoose'].includes(style) ? 'black' : 'white';
 
       ctx.clearRect(0, 0, w, h);
 
