@@ -612,6 +612,7 @@ body:not(.route-shown) #routeBox { min-height: 130px; max-height: 130px; }
   margin: 0 0 10px;
   border: none;
   border-bottom: 1px solid darkgray;
+  border-radius: 0;
 }
 #routeBox form {
   text-align: center;
