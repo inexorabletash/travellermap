@@ -714,10 +714,12 @@
         return (code || '').split('').map(function(code) { return BASE_TABLE[code]; });
       }(world.Bases));
 
-      world.Remarks.forEach(function(remark) {
-        if (['Re','Px','Ex'].includes(remark.code) || remark.code.startsWith('Rs'))
-          world.Bases.push(remark.detail);
-      });
+      if (world.Remarks) {
+        world.Remarks.forEach(function(remark) {
+          if (['Re','Px','Ex'].includes(remark.code) || remark.code.startsWith('Rs'))
+            world.Bases.push(remark.detail);
+        });
+      }
 
 
       // Stars
