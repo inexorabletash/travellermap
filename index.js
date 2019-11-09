@@ -651,7 +651,10 @@ window.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  function resetOptionsToDefaults() {
+
+  $('#btnResetPrefs').addEventListener('click', function(e) {
+    e.preventDefault();
+
     map.namedOptions.NAMES.forEach(function(name) {
       delete urlParams[name];
       if (!(name in defaults))
@@ -667,8 +670,7 @@ window.addEventListener('DOMContentLoaded', function() {
     map.options = defaults.options;
     updatePermalink();
     savePreferences();
-  }
-  $('#btnResetPrefs').addEventListener('click', resetOptionsToDefaults);
+  });
 
   (function() {
     if (isIframe) return;
@@ -1046,6 +1048,19 @@ window.addEventListener('DOMContentLoaded', function() {
               document.body.classList.toggle('ds-mini');
             });
         });
+
+        // Hook up buttons
+        $('#ds-route-link').addEventListener('click', function(e) {
+          e.preventDefault();
+          $('#routeStart').value = world.Name;
+          if (!isSmallScreen) $('#routeEnd').focus();
+          showRoute();
+        });
+
+        $('#wds-print-ds-link').addEventListener('click', function(e) {
+          e.preventDefault();
+          window.open(world.DataSheetURL);
+        });
       })
       .catch(function(error) {
         console.warn(error);
@@ -1295,12 +1310,13 @@ window.addEventListener('DOMContentLoaded', function() {
         });
 
         map.SetRoute(route);
-        $('#routePath').innerHTML = template('#RouteResultsTemplate')({
+        var routeData = {
           Route: data,
           Distance: total,
           Jumps: data.length - 1,
           PrintURL: Util.makeURL('./print/route', options)
-        });
+        };
+        $('#routePath').innerHTML = template('#RouteResultsTemplate')(routeData);
         document.body.classList.add('route-shown');
         resizeMap();
 
@@ -1321,6 +1337,11 @@ window.addEventListener('DOMContentLoaded', function() {
             Distance: total,
             Jumps: data.length - 1
           }));
+        });
+
+        $('#print-route').addEventListener('click', function(e) {
+          e.preventDefault();
+          window.open(routeData.PrintURL);
         });
 
       })

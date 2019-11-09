@@ -35,13 +35,13 @@
 <meta property="og:site_name" content="The Traveller Map">
 <meta property="fb:admins" content="617166358">
 
-<link rel="stylesheet" href="index.css?update=2019-10-22T19:14:56">
+<link rel="stylesheet" href="index.css?update=2019-11-08T21:50:29">
 
 <!--[if lt IE 11]><script>alert("IE10 is no longer supported.");</script><![endif]-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
 <script src="https://cdn.rawgit.com/inexorabletash/poly2/v2.0.1/polyfill.min.js"></script>
 <script src="map.js?update=2019-06-05T21:18:21"></script>
-<script src="index.js?update=2019-10-22T19:05:15"></script>
+<script src="index.js?update=2019-11-08T21:54:01"></script>
 <script src="world_util.js?update=2019-10-28T08:32:52"></script>
 
 <body class="hide-ui hide-footer ds-mini show-settings">
@@ -200,18 +200,10 @@
       <div id="routeDisplay">
         <div id="routePath"></div>
         <div id="routeOptions">
-          <p><label title="Stops must have gas giant or liquid water present">
-            <input type="checkbox" id="route-wild" name="wild">
-            Require Wilderness Fueling</label></p>
-          <p><label title="Stops must be member worlds of the Third Imperium">
-            <input type="checkbox" id="route-im" name="im">
-            Only Imperial Worlds</label></p>
-          <p><label title="Stops must not be restricted (TAS Red Zone)">
-            <input type="checkbox" id="route-nored" name="nored">
-            Avoid Red Zones</label></p>
-          <p><label title="Allow stops at calibration points, deep space stations, and other anomalies">
-            <input type="checkbox" id="route-aok" name="aok">
-            Allow Anomalies/Calibration Points</label></p>
+          <div class=routeOptions-item><input type="checkbox" id="route-wild" name="wild"><label for=route-wild title="Stops must have gas giant or liquid water present"> Require Wilderness Fueling</label></div>
+          <div class=routeOptions-item><input type="checkbox" id="route-im" name="im"><label for=route-im title="Stops must be member worlds of the Third Imperium"> Only Imperial Worlds</label></div>
+          <div class=routeOptions-item><input type="checkbox" id="route-nored" name="nored"><label for=route-nored title="Stops must not be restricted (TAS Red Zone)"> Avoid Red Zones</label></div>
+          <div class=routeOptions-item><input type="checkbox" id="route-aok" name="aok"><label for=route-aok title="Allow stops at calibration points, deep space stations, and other anomalies"> Allow Anomalies/Calibration Points</label></div>
         </div>
       </div>
     </form>
@@ -232,9 +224,8 @@
       </div>
       {{/Route}}
       <span class="route-links">
-        <a target=_blank rel=noopener href="{{PrintURL}}" class="print-icon">Print</a>
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        <a id=copy-route href="#" class="copy-icon">Copy to Clipboard</a>
+        <span id=print-route class=link-button-inline><a href="#" class=print-icon>Print</a></span>
+        <span id=copy-route class=link-button-inline><a href="#" class=copy-icon>Copy to Clipboard</a></span>
       </span>
 
     </script>
@@ -360,8 +351,9 @@
         <div class=settings-item><input type="checkbox" id=cbExperiments><label for=cbExperiments title="Enable experimental features"> Enable Experiments</label></div>
       </div>
       <div>
-        <br>
-        <p><a id=btnResetPrefs href="#" title="Reset all preferences to their initial value">Reset Preferences</a></p>
+        <p id=btnResetPrefs class=link-button>
+          <a href="#" title="Reset all preferences to their initial value">Reset Preferences</a>
+        </p>
       </div>
     </section>
 
@@ -479,7 +471,7 @@
 
     <section id="share-embed">
       Embed this HTML:
-      <a style="display: inline-block; float: right; margin-right: 20px;" href="#" id=copy-share-code class=copy-icon>Copy</a>
+      <a href="#" id=copy-share-code class=copy-icon>Copy</a>
       <input readonly id="share-code" title="Copy and paste">
     </section>
   </div>
@@ -762,6 +754,11 @@
 {{/if}}
 </div>
 
+<div id=ds-route-link class=link-button>
+  <a href="#" class=route-icon>Jump Route</a>
+</div>
+
+
 <div class="ds-mini-toggle dim"></div>
 
 <div class=ds-mini-hidden>
@@ -895,14 +892,17 @@
 </table>
 
 <div id="wds-print-links" class=ds-print-links>
-  <a target=_blank rel=noopener href="{{DataSheetURL}}" class=print-icon>Print</a>
-  <br><br>
-  <a target=_blank rel=noopener href="{{JumpMapURL}}&jump=1">J-1</a> &bull;
-  <a target=_blank rel=noopener href="{{JumpMapURL}}&jump=2">J-2</a> &bull;
-  <a target=_blank rel=noopener href="{{JumpMapURL}}&jump=3">J-3</a> &bull;
-  <a target=_blank rel=noopener href="{{JumpMapURL}}&jump=4">J-4</a> &bull;
-  <a target=_blank rel=noopener href="{{JumpMapURL}}&jump=5">J-5</a> &bull;
-  <a target=_blank rel=noopener href="{{JumpMapURL}}&jump=6">J-6</a>
+  <div id=wds-print-ds-link class=link-button>
+    <a href="#" class=print-icon>Print</a>
+  </div>
+  <div id=wds-print-jump-links>
+    <a target=_blank rel=noopener href="{{JumpMapURL}}&jump=1">J-1</a> &bull;
+    <a target=_blank rel=noopener href="{{JumpMapURL}}&jump=2">J-2</a> &bull;
+    <a target=_blank rel=noopener href="{{JumpMapURL}}&jump=3">J-3</a> &bull;
+    <a target=_blank rel=noopener href="{{JumpMapURL}}&jump=4">J-4</a> &bull;
+    <a target=_blank rel=noopener href="{{JumpMapURL}}&jump=5">J-5</a> &bull;
+    <a target=_blank rel=noopener href="{{JumpMapURL}}&jump=6">J-6</a>
+  </div>
 </div>
 
 {{#if map_link}}
