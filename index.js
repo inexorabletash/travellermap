@@ -86,10 +86,6 @@ window.addEventListener('DOMContentLoaded', function() {
       position: { x: map.x, y: map.y },
       scale: map.scale
     }));
-    if ($('#cbExperiments').checked)
-      localStorage.setItem('experiments', JSON.stringify({}));
-    else
-      localStorage.removeItem('experiments');
   }, SAVE_PREFERENCES_DELAY_MS);
 
   var template = Util.memoize(function(sel) {
@@ -676,7 +672,6 @@ window.addEventListener('DOMContentLoaded', function() {
     if (isIframe) return;
     var preferences = JSON.parse(localStorage.getItem('preferences'));
     var location = JSON.parse(localStorage.getItem('location'));
-    var experiments = JSON.parse(localStorage.getItem('experiments'));
     if (preferences) {
       if ('style' in preferences) map.style = preferences.style;
       if ('options' in preferences) map.options = preferences.options;
@@ -697,27 +692,7 @@ window.addEventListener('DOMContentLoaded', function() {
       if ('scale' in location) map.scale = location.scale;
       if ('position' in location) { map.x = location.position.x; map.y = location.position.y; }
     }
-
-    if (experiments) {
-      $('#cbExperiments').checked = true;
-      document.body.classList.add('enable-experiments');
-    }
   })();
-
-  $('#cbExperiments').addEventListener('click', function() {
-    if (!this.checked) {
-      ['dw', 'an', 'mh', 'po', 'im', 'cp', 'stellar',
-       'ew', 'qz', 'hw', 'milieu'].forEach(function(name) {
-         delete urlParams[name];
-         map.namedOptions.delete(name);
-       });
-      $('#cbMains').checked = false;
-      document.body.classList.remove('show-mains');
-    }
-
-    savePreferences();
-    document.body.classList.toggle('enable-experiments', this.checked);
-  });
 
   // Overlay to allow quick return to default milieu.
   optionObservers.push(function(o) {
