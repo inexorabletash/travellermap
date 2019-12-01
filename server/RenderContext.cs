@@ -70,33 +70,29 @@ namespace Maps.Rendering
             public readonly string text;
             public readonly PointF position;
             public readonly bool minor;
+
+            public static IList<MapLabel> FromFile(string path)
+            {
+                List<MapLabel> list = new List<MapLabel>();
+                using (var reader = System.IO.File.OpenText(path))
+                {
+                    Func<string, string> nullIfEmpty = (s) => string.IsNullOrWhiteSpace(s) ? null : s;
+                    var parser = new Serialization.TSVParser(reader);
+                    foreach (var row in parser.Data)
+                    {
+                        list.Add(new MapLabel(row.dict["Text"].Replace("\\n", "\n"), float.Parse(row.dict["X"]), float.Parse(row.dict["Y"]), bool.Parse(row.dict["Minor"])));
+                    }
+                }
+                return list;
+            }
+
         }
 
-        // TODO: Move this to data file
-        private static readonly MapLabel[] minorLabels =
-        {
-            new MapLabel("Human Client States", -184, -50),
-            new MapLabel("Aslan Client States", -69, 155),
-            new MapLabel("Aslan Colonies", -133, -5),
-            new MapLabel("Mixed Client States", 127, 5),
-            new MapLabel("Scattered\nClient States", 98, 65),
-            new MapLabel("Vargr Enclaves", 110, -135),
-            new MapLabel("Hive Young Worlds", 115, 128)
-        };
+        private static readonly IList<MapLabel> minorLabels = MapLabel.FromFile(
+            System.Web.Hosting.HostingEnvironment.MapPath("~/res/labels/minor_labels.tab"));
 
-        // TODO: Move this to data file
-        private static readonly MapLabel[] megaLabels =
-        {
-            new MapLabel("Charted Space", 0, 400, minor:true),
-            new MapLabel("Zhodani\nCore\nExpeditions", 0, -3500, minor:true),
-            new MapLabel("Core Sophonts", 0, -12500),
-            new MapLabel("Abyssals", -15000, -7500),
-            new MapLabel("Denizens", -8660, -10000),
-            new MapLabel("Essaray", 11000, -16000),
-            new MapLabel("Anomaly One", 0, -22000, minor:true),
-            new MapLabel("Dushis Khurisi", 12000, -8500, minor:true),
-            new MapLabel("The\nBarren\nArm", 9240, -4500, minor:true),
-        };
+        private static readonly IList<MapLabel> megaLabels = MapLabel.FromFile(
+            System.Web.Hosting.HostingEnvironment.MapPath("~/res/labels/mega_labels.tab"));
 
         private static readonly string[] borderFiles = {
             @"~/res/Vectors/Imperium.xml",
@@ -464,7 +460,7 @@ namespace Maps.Rendering
         {
             if (!styles.capitals.visible || (options & MapOptions.WorldsMask) == 0)
                 return;
-            if (resourceManager.GetXmlFileObject(@"~/res/Worlds.xml", typeof(WorldObjectCollection)) is WorldObjectCollection worlds && worlds.Worlds != null)
+            if (resourceManager.GetXmlFileObject(@"~/res/labels/Worlds.xml", typeof(WorldObjectCollection)) is WorldObjectCollection worlds && worlds.Worlds != null)
             {
                 graphics.SmoothingMode = SmoothingMode.HighQuality;
                 solidBrush.Color = styles.capitals.textColor;
