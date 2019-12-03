@@ -393,10 +393,9 @@ namespace Maps
                 i += 1;
             if (world.PopulationExponent <= 6)
                 i -= 1;
-            if ((world.Bases.Contains('N') || world.Bases.Contains('K')) &&
-                (world.Bases.Contains('S') || world.Bases.Contains('V')))
-                i += 1;
-            if (world.Bases.Contains('W'))
+            if ((world.Bases.Contains('D') || world.Bases.Contains('W') || world.Bases.Contains('X')) ||
+                ((world.Bases.Contains('K') || world.Bases.Contains('N') || world.Bases.Contains('T')) &&
+                (world.Bases.Contains('C') || world.Bases.Contains('R') || world.Bases.Contains('S') || world.Bases.Contains('V'))))
                 i += 1;
             return i;
         }
