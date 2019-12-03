@@ -535,7 +535,10 @@ namespace Maps
             if (IsAg) ++imp;
             if (IsRi) ++imp;
             if (IsIn) ++imp;
-            if (Bases == "NS" || Bases == "NW" || Bases == "W" || Bases == "X" || Bases == "D" || Bases == "RT" || Bases == "CK" || Bases == "KM" || Bases == "KV") ++imp;
+            if ((Bases.Contains('D') || Bases.Contains('W') || Bases.Contains('X')) ||
+                ((Bases.Contains('K') || Bases.Contains('N') || Bases.Contains('T')) &&
+                (Bases.Contains('C') || Bases.Contains('R') || Bases.Contains('S') || Bases.Contains('V'))))
+                ++imp;
             return imp;
         }
 
