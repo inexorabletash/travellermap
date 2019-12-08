@@ -899,6 +899,7 @@ body:not(.route-shown) #routeBox { min-height: 130px; max-height: 130px; }
 .style-draft #styles button.styles-pager,
 .style-fasa #styles button.styles-pager { filter: none; }
 
+#styles { font-size: 0; } /* eliminate whitespace */
 #styles:not(.p2) .styles-p2 { display: none; }
 #styles.p2 .styles-p1 { display: none; }
 
