@@ -6,7 +6,7 @@
   var $$ = function(s) { return document.querySelectorAll(s); };
 
   function worldImageURL(world, type) {
-    var S3_PREFIX = 'https://s3.amazonaws.com/travellermap/images/';
+    var S3_PREFIX = 'https://travellermap.s3.amazonaws.com/images/';
     switch (type) {
     case 'map':
       return S3_PREFIX + 'maps/'
