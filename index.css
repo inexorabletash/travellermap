@@ -1140,7 +1140,8 @@ body:not(.search-results) #closeSearchBtn { display: none; }
   overflow: hidden;
   z-index: 21; /* So search box overlaps right buttons */
 }
-@supports (top: max(10px, env(safe-area-inset-top))) {
+
+@supports (top: max(0px)) and (top: env(safe-area-inset-top)) {
   #topBar,#topBarRight { top: max(10px, env(safe-area-inset-top)); }
 }
 
@@ -1456,9 +1457,9 @@ body:not(.show-promo) #promo-hover {
 body:not(.cookies-not-accepted) #cookies {
   display: none;
 }
-@supports (height: calc(40px + env(safe-area-inset-bottom))) {
+@supports (padding: env(safe-area-inset-bottom)) {
   #cookies {
-    height: calc(40px + env(safe-area-inset-bottom));
+    padding-bottom: env(safe-area-inset-bottom);
   }
 }
 
