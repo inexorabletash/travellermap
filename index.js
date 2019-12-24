@@ -24,11 +24,14 @@ window.addEventListener('DOMContentLoaded', function() {
     // Timeout to work around iOS Safari giving incorrect sizes while 'resize'
     // dispatched.
     setTimeout(function() {
+      // TODO: Test if this is still needed.
       if (window.innerHeight !== window.outerHeight) {
         document.body.style.height = window.innerHeight + 'px';
+        document.body.style.height = '100vh';
         window.scrollTo(0, 0);
       } else {
         document.body.style.height = '';
+        document.body.style.height = '100vh';
         window.scrollTo(0, 0);
       }
     }, 100);

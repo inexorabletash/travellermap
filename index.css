@@ -1,7 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Marcellus);
 
 html, body { overflow: hidden; }
-html { margin: 0; padding: 0; width: 100%; height: 100%; }
+html { margin: 0; padding: 0; width: 100vw; height: 100vh; }
 
 form { margin: 0; padding: 0; }
 p { margin: 0; }
@@ -14,7 +14,7 @@ body {
   position: absolute; /* size may be changed by script */
   margin: 0; padding: 0;
   border: none; overflow: hidden;
-  width: 100%; height: 100%; max-height: 100%;
+  width: 100vw; height: 100vh; max-height: 100vh;
 
   font-size: 10pt;
   color: white; background-color: black;
@@ -79,7 +79,7 @@ input[type=text] {
 }
 #dragContainer {
   position: absolute;
-  width: 100%; height: 100%;
+  width: 100vw; height: 100vh;
   transform: translateZ(500px) perspective(1000px);
   transition: 1s ease-in-out;
   background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" height="32" width="32"><path d="M0 0h32v32H0z"/><path fill="%23404040" d="M0 0h16v16H0zM16 16h16v16H16z"/></svg>');
@@ -641,7 +641,7 @@ body:not(.route-shown) #routeBox { min-height: 130px; max-height: 130px; }
 
 #routeBox input[type=text] {
   box-sizing: border-box;
-  height: 40px; width: 100%;
+  height: 40px; width: 100vw;
 
   font-size: 12pt;
   padding: 5px 10px;
@@ -1140,6 +1140,9 @@ body:not(.search-results) #closeSearchBtn { display: none; }
   overflow: hidden;
   z-index: 21; /* So search box overlaps right buttons */
 }
+@supports (top: max(10px, env(safe-area-inset-top))) {
+  #topBar,#topBarRight { top: max(10px, env(safe-area-inset-top)); }
+}
 
 
 #navBar { bottom: 110px; }
@@ -1299,6 +1302,10 @@ body:not(.search-results) #closeSearchBtn { display: none; }
 
   #navBar .bar-button { display: none; }
   #navBar { bottom: 5px; right: 115px; pointer-events: none; }
+  @supports (bottom: env(safe-area-inset-bottom)) {
+    #navBar { bottom: env(safe-area-inset-bottom); }
+  }
+
   #bottom-pane { background-color: transparent !important; pointer-events: none; }
   #stripe, #MetadataDisplay { display: none; }
   #LogoImage { position: absolute; right: 5px; bottom: 5px; }
@@ -1449,6 +1456,12 @@ body:not(.show-promo) #promo-hover {
 body:not(.cookies-not-accepted) #cookies {
   display: none;
 }
+@supports (height: calc(40px + env(safe-area-inset-bottom))) {
+  #cookies {
+    height: calc(40px + env(safe-area-inset-bottom));
+  }
+}
+
 
 #cookies a {
   color: #e02020;
