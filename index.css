@@ -224,6 +224,10 @@ body:not(.wds-visible) #wds-frame { display: none; }
   overflow-y: scroll;
   overflow-x: hidden;
 }
+@supports (left: max(0px)) and (left: env(safe-area-inset-left)) {
+  .ds-frame { left: max(10px, env(safe-area-inset-left)); }
+}
+
 .ds-scroll { margin: 10px; }
 .ds-mini .ds-scroll { margin-bottom: 0; }
 
@@ -573,8 +577,19 @@ button:hover {
 .hoverbox-right {
   right: 10px; top: 55px; bottom: 160px;
 }
+@supports (right: max(0px)) and (right: env(safe-area-inset-right)) {
+  .hoverbox-right {
+    right: max(10px, env(safe-area-inset-right));
+  }
+}
 .hoverbox-left {
   left: 10px; top: 55px; bottom: 110px;
+}
+@supports (left: max(0px)) and (left: env(safe-area-inset-left)) {
+  .hoverbox-left {
+    left: max(10px, env(safe-area-inset-left));
+    top: calc(45px + max(10px, env(safe-area-inset-top)));
+  }
 }
 
 /* ============================================================ */
@@ -633,6 +648,12 @@ button:hover {
   padding: 9px; /* +1px border to align box with search form at 10px */
   min-height: 115px;
   max-height: 350px;
+}
+@supports (left: max(0px)) and (left: env(safe-area-inset-left)) {
+  #routeBox {
+    left: max(5px, env(safe-area-inset-left));
+    top: max(5px, env(safe-area-inset-top));
+  }
 }
 .route-ui #routeBox { display: block; }
 
@@ -1015,6 +1036,11 @@ body:not(.search-results) #closeSearchBtn { display: none; }
 
   overflow: hidden;
 }
+@supports (right: max(0px)) and (right: env(safe-area-inset-right)) {
+  #moreBox {
+    right: max(10px, env(safe-area-inset-right));
+  }
+}
 #more-tabs {
   position: absolute;
   left: 20px; right: 20px; top: 5px; height: 40px;
@@ -1126,6 +1152,13 @@ body:not(.search-results) #closeSearchBtn { display: none; }
   white-space: nowrap;
   pointer-events: none;
 }
+@supports (left: max(0px)) and (left: env(safe-area-inset-left)) {
+  .ui.bar {
+    left: max(10px, env(safe-area-inset-left));
+    right: max(10px, env(safe-area-inset-right));
+  }
+}
+
 .ui.bar > * {
   pointer-events: auto;
 }
@@ -1192,6 +1225,13 @@ body:not(.search-results) #closeSearchBtn { display: none; }
   #moreBox,
   .ds-frame {
     bottom: 10px;
+  }
+
+  @supports (bottom: max(0px)) and (bottom: env(safe-area-inset-bottom)) {
+    .hoverbox-right,
+    .hoverbox-left,
+    #moreBox,
+    .ds-frame { bottom: max(10px, env(safe-area-inset-bottom)); }
   }
 }
 
@@ -1331,6 +1371,13 @@ body:not(.search-results) #closeSearchBtn { display: none; }
   /* Move Home button to lower right */
 
   #homeBtn { position: fixed; left: 10px; bottom: 10px; float: none; margin: 0; }
+  @supports (left: max(0px)) and (left: env(safe-area-inset-left)) {
+    #homeBtn {
+      left: max(10px, env(safe-area-inset-left));
+      bottom: max(10px, env(safe-area-inset-bottom));
+    }
+  }
+
 }
 
 @media only screen and (max-width: 425px) {
@@ -1342,6 +1389,14 @@ body:not(.search-results) #closeSearchBtn { display: none; }
     left: 0; top: 0; right: 0; width: auto;
     height: 300px;
   }
+  @supports (left: env(safe-area-inset-left)) {
+    .route-ui #routeBox {
+      left: env(safe-area-inset-left);
+      right: env(safe-area-inset-right);
+      top: env(safe-area-inset-top);
+    }
+  }
+
   .route-ui.route-shown #mapContainer {
     top: 320px;
   }
