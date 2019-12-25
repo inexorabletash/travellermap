@@ -1300,6 +1300,9 @@ body:not(.search-results) #closeSearchBtn { display: none; }
     bottom: -1px; /* Chrome rendering bug with bottom border */
     height: 179px;
   }
+  @supports (bottom: env(safe-area-inset-bottom)) {
+    .ds-mini .ds-frame { height: calc(179px + env(safe-area-inset-bottom)); }
+  }
 
   /* Don't wrap when mini so height is fixed and can be transitioned. */
   .ds-mini .ds-frame #sds-data > div,
@@ -1325,6 +1328,12 @@ body:not(.search-results) #closeSearchBtn { display: none; }
     border-radius: 5px 5px 0 0;
   }
   #moreBox { height: 330px; }
+  @supports (height: env(safe-area-inset-bottom)) {
+    #moreBox { height: calc(330px + env(safe-area-inset-bottom)); }
+  }
+
+
+
   #legendBox { height: 90%; }
   body:not(.show-more) #moreBox,
   body:not(.show-legend) #legendBox { height: 0; display: block; }
