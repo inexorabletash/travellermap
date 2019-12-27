@@ -824,7 +824,7 @@ var Util = {
             rect.height === this.rect.height) return;
         this.rect = rect;
         this.resetCanvas();
-      }.bind(this), 100);
+      }.bind(this), 150);
     }.bind(this));
 
 

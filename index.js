@@ -24,18 +24,21 @@ window.addEventListener('DOMContentLoaded', function() {
     // Timeout to work around iOS Safari giving incorrect sizes while 'resize'
     // dispatched.
     setTimeout(function() {
-      // TODO: Test if this is still needed.
       if (window.innerHeight !== window.outerHeight) {
         document.body.style.height = window.innerHeight + 'px';
-        document.body.style.height = '100vh';
         window.scrollTo(0, 0);
       } else {
         document.body.style.height = '';
-        document.body.style.height = '100vh';
         window.scrollTo(0, 0);
       }
     }, 100);
   });
+  setTimeout(function() {
+    if (window.innerHeight !== window.outerHeight) {
+      document.body.style.height = window.innerHeight + 'px';
+      window.scrollTo(0, 0);
+    }
+  }, 200); // Needs this long to settle, otherwise standalone on iPhone X+ has mismatch.
 
   var mapElement = $('#dragContainer'), sizeElement = mapElement.parentNode;
   var map = new Traveller.Map(mapElement, sizeElement);
@@ -1442,7 +1445,7 @@ window.addEventListener('DOMContentLoaded', function() {
   if (navigator.userAgent.match(/iPad|iPhone/)) (function(){
     // Prevent inadvertant touch-scroll.
     $$('button, input').forEach(function(e) {
-      e.addEventListener('touchmove', function(e) { e.preventDefault();  });
+      e.addEventListener('touchmove', function(e) { e.preventDefault();  }, {passive:false});
     });
     // Prevent inadvertant touch-zoom.
     document.addEventListener('touchmove', function(e) {
