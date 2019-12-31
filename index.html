@@ -35,13 +35,13 @@
 <meta property="og:site_name" content="The Traveller Map">
 <meta property="fb:admins" content="617166358">
 
-<link rel="stylesheet" href="index.css?update=2019-12-25T09:44:35">
+<link rel="stylesheet" href="index.css?update=2019-12-30T19:47:10">
 
 <!--[if lt IE 11]><script>alert("IE10 is no longer supported.");</script><![endif]-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
 <script src="https://cdn.rawgit.com/inexorabletash/poly2/v2.0.1/polyfill.min.js"></script>
 <script src="map.js?update=2019-12-27T09:35:35"></script>
-<script src="index.js?update=2019-12-27T09:36:02"></script>
+<script src="index.js?update=2019-12-30T19:35:53"></script>
 <script src="world_util.js?update=2019-12-24T15:49:50"></script>
 
 <body class="hide-ui hide-footer ds-mini show-settings">
@@ -553,8 +553,15 @@
     </div>
   </div>
 
-
   <div id="navBar"
+       class="ui bar">
+    <button id="homeBtn2"
+            class=bar-button
+            title="Return to the default view&#x0A;Keyboard: H">
+    </button>
+  </div>
+
+  <div id="navBarRight"
        class="ui bar">
     <div class="bar-right">
       <canvas id="scaleIndicator"

@@ -20,25 +20,26 @@ window.addEventListener('DOMContentLoaded', function() {
 
   // Account for adjustments to innerHeight (dynamic browser UI)
   // (Repro: Safari on iPhone, enter landscape, make url bar appear)
+  function resizeWindow() {
+    if (window.innerHeight !== window.outerHeight) {
+      document.body.style.height = window.innerHeight + 'px';
+      document.documentElement.style.height = window.innerHeight + 'px';
+      window.scrollTo(0, 0);
+    } else if (document.body.style.height !== '') {
+      document.body.style.height = '';
+      document.documentElement.style.height = '';
+      window.scrollTo(0, 0);
+    }
+  }
   window.addEventListener('resize', function(e) {
     // Timeout to work around iOS Safari giving incorrect sizes while 'resize'
     // dispatched.
-    setTimeout(function() {
-      if (window.innerHeight !== window.outerHeight) {
-        document.body.style.height = window.innerHeight + 'px';
-        window.scrollTo(0, 0);
-      } else {
-        document.body.style.height = '';
-        window.scrollTo(0, 0);
-      }
-    }, 100);
+    setTimeout(resizeWindow, 100);
   });
-  setTimeout(function() {
-    if (window.innerHeight !== window.outerHeight) {
-      document.body.style.height = window.innerHeight + 'px';
-      window.scrollTo(0, 0);
-    }
-  }, 200); // Needs this long to settle, otherwise standalone on iPhone X+ has mismatch.
+  // Issues on load on iOS in standalone; just leave this running.
+  if (navigator.userAgent.match(/iPad|iPhone|iPod/)) {
+    setInterval(resizeWindow, 500);
+  }
 
   var mapElement = $('#dragContainer'), sizeElement = mapElement.parentNode;
   var map = new Traveller.Map(mapElement, sizeElement);
@@ -401,6 +402,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
 
   $('#homeBtn').addEventListener('click', goHome);
+  $('#homeBtn2').addEventListener('click', goHome);
 
   function goHome() {
     if (['sx', 'sy', 'hx', 'hy'].every(function(p) { return ('yah_' + p) in urlParams; })) {

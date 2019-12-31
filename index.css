@@ -1084,7 +1084,7 @@ body:not(.search-results) #closeSearchBtn { display: none; }
   background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMyIgaGVpZ2h0PSIxNSI+PHJlY3Qgd2lkdGg9IjEzIiBoZWlnaHQ9IjMiIHk9IjYiIHJ5PSIwIi8+PHJlY3Qgd2lkdGg9IjEzIiBoZWlnaHQ9IjMiIHk9IjEyIiByeT0iMCIvPjxyZWN0IHdpZHRoPSIxMyIgaGVpZ2h0PSIzIiByeT0iMCIvPjwvc3ZnPg==);
 }
 
-#homeBtn {
+#homeBtn, #homeBtn2 {
   background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiI+PHBhdGggZD0iTTcuMjkgOC45MnY1LjQ2aC01LjVWOC4wOUguMjNMOC4xIDEuNjJsMy4yOCAyLjgxVjIuNTdoMS4zNXYyLjg3bDMuMDQgMi42NWgtMS41NXY2LjI5aC0zLjg1VjguOTJ6Ii8+PC9zdmc+Cg==);
 }
 
@@ -1179,8 +1179,11 @@ body:not(.search-results) #closeSearchBtn { display: none; }
 }
 
 
-#navBar { bottom: 110px; }
-.hide-footer #navBar { bottom: 15px; }
+#navBar, #navBarRight { bottom: 110px; }
+.hide-footer #navBar,
+.hide-footer #navBarRight { bottom: 15px; }
+
+#homeBtn2 { display: none; } /* only shown in mobile layout */
 
 .bar-button {
   height: 40px; width: 40px;
@@ -1219,7 +1222,7 @@ body:not(.search-results) #closeSearchBtn { display: none; }
   #bottom-pane { font-size: 75%; height: 45px; padding: 2px;}
   #stripe { height: 4px; margin: 2px 0; }
   #LogoImage { width: 105px; height: 35.5px; }
-  #navBar { bottom: 55px; }
+  #navBar, #navBarRight { bottom: 55px; }
   .hoverbox-right,
   .hoverbox-left,
   #moreBox,
@@ -1342,7 +1345,7 @@ body:not(.search-results) #closeSearchBtn { display: none; }
 }
 
 @media only screen and (max-width: 640px) {
-  #navBar .bar-button { display: none; }
+  #navBarRight .bar-button { display: none; }
 }
 
 @media only screen and (max-width: 480px), only screen and (max-height: 480px) {
@@ -1350,10 +1353,10 @@ body:not(.search-results) #closeSearchBtn { display: none; }
 
   /* Simplify/merge footer/navigation bar */
 
-  #navBar .bar-button { display: none; }
-  #navBar { bottom: 5px; right: 115px; pointer-events: none; }
-  @supports (bottom: env(safe-area-inset-bottom)) {
-    #navBar { bottom: env(safe-area-inset-bottom); }
+  #navBarRight .bar-button { display: none; }
+  #navBar, #navBarRight { bottom: 5px; right: 115px; pointer-events: none; }
+  @supports (bottom: max(0px)) and (bottom: env(safe-area-inset-bottom)) {
+    #navBar, #navBarRight { bottom: max(10px, env(safe-area-inset-bottom)); }
   }
 
   #bottom-pane { background-color: transparent !important; pointer-events: none; }
@@ -1377,16 +1380,10 @@ body:not(.search-results) #closeSearchBtn { display: none; }
 
   #searchBox, #routeBox input[type=text] { box-shadow: none; }
 
-  /* Move Home button to lower right */
+  /* Show alternate Home button in lower right */
 
-  #homeBtn { position: fixed; left: 10px; bottom: 10px; float: none; margin: 0; }
-  @supports (left: max(0px)) and (left: env(safe-area-inset-left)) {
-    #homeBtn {
-      left: max(10px, env(safe-area-inset-left));
-      bottom: max(10px, env(safe-area-inset-bottom));
-    }
-  }
-
+  #homeBtn { display: none; }
+  #homeBtn2 { display: block; }
 }
 
 @media only screen and (max-width: 425px) {
