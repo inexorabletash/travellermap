@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Sector>
+  <Name>Rigel</Name>
+  <Credits>
+    <![CDATA[
+      <p>
+        <b>Rigel</b> subsector appears in Queskania, Issue 3 and was created by Douglas Webb.
+      </p>
+      <p>
+        Data was transcribed and edited by Graham Donald.
+      </p>
+    ]]>
+  </Credits>
+  <Allegiances>
+    <Allegiance Code="SP">Skania Pact</Allegiance>
+  </Allegiances>
+  <Subsectors>
+    <Subsector Index="D">Rigel</Subsector>
+  </Subsectors>
+  <Stylesheet>
+    border { color: gray }
+    route.TradeMinor { Color: gray; style: dashed; width: 0.5 }
+  </Stylesheet>
+  <Borders>
+    <Border Allegiance="SP">2507 2606 2706 2707 2807 2908 3007 3006 3007 3108 3208 3108 3008 2909 2910 2809 2709 2609 2510 2509 2508 2507 </Border>
+  </Borders>
+  <Routes>
+    <Route Start="3208" End="3108" Type="TradeMinor"/>
+    <Route Start="3008" End="3108" Type="TradeMinor"/>
+    <Route Start="3008" End="3009" Type="TradeMinor"/>
+    <Route Start="2910" End="3009" Type="TradeMinor"/>
+    <Route Start="2910" End="2808" Type="TradeMinor"/>
+    <Route Start="2910" End="3006" Type="TradeMinor"/>
+    <Route Start="2808" End="2807" Type="TradeMinor"/>
+    <Route Start="2807" End="2907" Type="TradeMinor"/>
+    <Route Start="2907" End="3006" Type="TradeMinor"/>
+    <Route Start="2907" End="2706" Type="TradeMinor"/>
+    <Route Start="2806" End="2805" Type="TradeMinor"/>
+    <Route Start="2805" End="2507" Type="TradeMinor"/>
+    <Route Start="2507" End="2808" Type="TradeMinor"/>
+    <Route Start="2607" End="2509" Type="TradeMinor"/>
+    <Route Start="2507" End="2509" Type="TradeMinor"/>
+    <Route Start="2509" End="2510" Type="TradeMinor"/>
+    <Route Start="2604" End="2802" Type="TradeMinor"/>
+    <Route Start="2703" End="2802" Type="TradeMinor"/>
+    <Route Start="2802" End="2801" Type="TradeMinor"/>
+    <Route Start="2801" End="2901" Type="TradeMinor"/>
+    <Route Start="2901" End="2802" Type="TradeMinor"/>
+    <Route Start="2901" End="3002" Type="TradeMinor"/>
+    <Route Start="3002" End="3203" Type="TradeMinor"/>
+    <Route Start="3203" End="3104" Type="TradeMinor"/>
+    <Route Start="3104" End="3105" Type="TradeMinor"/>
+    <Route Start="3104" End="3101" Type="TradeMinor"/>
+    <Route Start="3101" End="3002" Type="TradeMinor"/>
+    <Route Start="3101" End="2901" Type="TradeMinor"/>
+  </Routes>
+</Sector>
