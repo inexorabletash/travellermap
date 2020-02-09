@@ -21,7 +21,7 @@ window.addEventListener('DOMContentLoaded', function() {
   // Account for adjustments to innerHeight (dynamic browser UI)
   // (Repro: Safari on iPhone, enter landscape, make url bar appear)
   function resizeWindow() {
-    if (window.innerHeight !== window.outerHeight) {
+    if (window.innerHeight !== window.outerHeight && !navigator.standalone) {
       document.body.style.height = window.innerHeight + 'px';
       document.documentElement.style.height = window.innerHeight + 'px';
       window.scrollTo(0, 0);
@@ -36,9 +36,13 @@ window.addEventListener('DOMContentLoaded', function() {
     // dispatched.
     setTimeout(resizeWindow, 100);
   });
-  // Issues on load on iOS in standalone; just leave this running.
+  // Issues on load on iOS (non-standalone); just leave this running.
   if (navigator.userAgent.match(/iPad|iPhone|iPod/)) {
-    setInterval(resizeWindow, 500);
+    if (navigator.standalone) {
+      setTimeout(resizeMap, 500);
+    } else {
+      setInterval(resizeWindow, 500);
+    }
   }
 
   var mapElement = $('#dragContainer'), sizeElement = mapElement.parentNode;
