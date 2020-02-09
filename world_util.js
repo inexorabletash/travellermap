@@ -785,10 +785,13 @@
       return world;
     }).then(function(world) {
       var map_thumb = worldImageURL(world, 'map_thumb');
+      var map = worldImageURL(world, 'map');
       return checkImage(map_thumb)
         .then(function(exists) {
-          if (exists)
+          if (exists) {
             world.map_thumb = map_thumb;
+            world.map = map;
+          }
           return world;
         });
     });

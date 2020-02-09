@@ -338,7 +338,12 @@ window.addEventListener('DOMContentLoaded', function() {
       VK_T = KeyboardEvent.DOM_VK_T || 0x54,
       VK_QUESTION_MARK = KeyboardEvent.DOM_VK_QUESTION_MARK || 0x63;
 
+  var ignoreNextKeyUp = false;
   document.body.addEventListener('keyup', function(e) {
+    if (ignoreNextKeyUp) {
+      ignoreNextKeyUp = false;
+      return;
+    }
     if (e.key === 'Escape' || e.keyCode === VK_ESCAPE) {
       e.preventDefault();
       e.stopPropagation();
@@ -1048,6 +1053,12 @@ window.addEventListener('DOMContentLoaded', function() {
           e.preventDefault();
           window.open(world.DataSheetURL);
         });
+
+        $('#wds-map').addEventListener('click', function(e) {
+          e.preventDefault();
+          showLightboxImage(e.target.getAttribute('data-map'));
+        });
+
       })
       .catch(function(error) {
         console.warn(error);
@@ -1434,6 +1445,34 @@ window.addEventListener('DOMContentLoaded', function() {
       var sig = sectorHexToSig(sectorHex.sx, sectorHex.sy, sectorHex.hx, sectorHex.hy);
       return map.get(sig);
     });
+  }
+
+  //////////////////////////////////////////////////////////////////////
+  //
+  // Utilities
+  //
+  //////////////////////////////////////////////////////////////////////
+
+  function showLightboxImage(url) {
+    var lightbox = document.body.appendChild(document.createElement('div'));
+    var inner = lightbox.appendChild(document.createElement('div'));
+    lightbox.className = 'lightbox';
+    lightbox.tabIndex = 0;
+    inner.style.backgroundImage = 'url("' + url + '")';
+
+    lightbox.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      lightbox.remove();
+    });
+    lightbox.addEventListener('keydown', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      ignoreNextKeyUp = true;
+      lightbox.remove();
+    });
+
+    lightbox.focus();
   }
 
   //////////////////////////////////////////////////////////////////////

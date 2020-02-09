@@ -467,6 +467,13 @@ body:not(.wds-visible) #wds-frame { display: none; }
   text-align: center;
 }
 
+#wds-map {
+  width: 272px;
+  height: auto;
+  border: 2px solid black;
+  cursor: zoom-in;
+}
+
 /* Specific Data Fields */
 
 .wds-stars .wds-star:after,
@@ -1459,6 +1466,31 @@ body:not(.search-results) #closeSearchBtn { display: none; }
 }
 body:not(.milieu-not-default) #milieu-escape {
   display: none;
+}
+@supports (top: env(safe-area-inset-top)) {
+  #milieu-escape {
+    top: calc(60px + env(safe-area-inset-top));
+  }
+}
+
+
+/* ============================================================ */
+/* Lightbox */
+
+.lightbox {
+  display: block;
+  position: fixed;
+  left: 0; top: 0; right: 0; bottom: 0;
+  background-color: rgba(0,0,0,0.9);
+  cursor: zoom-out;
+  z-index: 9999;
+}
+.lightbox > * {
+  position: absolute;;
+  left: 10%; top: 10%; right: 10%; bottom: 10%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 /* ============================================================ */
