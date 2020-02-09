@@ -749,10 +749,10 @@ namespace Maps.Rendering
 
             if (options.HasFlag(MapOptions.NamesMinor))
             {
-                AbstractFont font = styles.macroNames.MediumFont;
-                solidBrush.Color = styles.macroRoutes.textHighlightColor;
                 foreach (var label in minorLabels)
                 {
+                    AbstractFont font = label.minor ? styles.macroNames.SmallFont : styles.macroNames.MediumFont;
+                    solidBrush.Color = label.minor ? styles.macroRoutes.textColor : styles.macroRoutes.textHighlightColor; 
                     using (graphics.Save())
                     {
                         graphics.TranslateTransform(label.position.X, label.position.Y);
