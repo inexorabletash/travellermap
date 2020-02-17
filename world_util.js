@@ -11,7 +11,7 @@
     case 'map':
       return S3_PREFIX + 'maps/'
         + encodeURIComponent(world.SectorAbbreviation) + ' '
-        + encodeURIComponent(world.Hex) + '.png';
+        + encodeURIComponent(world.Hex) + '.jpg';
     case 'map_thumb':
       return S3_PREFIX + 'maps/thumbs/'
         + encodeURIComponent(world.SectorAbbreviation) + ' '
