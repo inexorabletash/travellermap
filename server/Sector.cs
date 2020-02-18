@@ -93,7 +93,7 @@ namespace Maps
         public MetadataCollection<Route> Routes { get; private set; } = new MetadataCollection<Route>();
         public MetadataCollection<Allegiance> Allegiances { get; private set; } = new MetadataCollection<Allegiance>();
 
-        public IEnumerable<Border> BordersAndRegions { get => Borders.Concat(Regions); }
+        public IEnumerable<Border> BordersAndRegions => Borders.Concat(Regions);
 
         public string Credits { get; set; }
 

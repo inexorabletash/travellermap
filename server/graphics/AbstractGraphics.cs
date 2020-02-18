@@ -211,13 +211,13 @@ namespace Maps.Graphics
 
         // Access to the underlying System.Drawing.Font, and properties.
         public Font Font { get; set; }
-        public FontStyle Style { get => Font.Style; }
-        public float Size { get => Font.Size; }
-        public bool Italic { get => Font.Italic; }
-        public bool Bold { get => Font.Bold; }
-        public bool Underline { get => Font.Underline; }
-        public bool Strikeout { get => Font.Strikeout; }
-        public FontFamily FontFamily { get => Font.FontFamily; }
+        public FontStyle Style => Font.Style;
+        public float Size => Font.Size;
+        public bool Italic => Font.Italic;
+        public bool Bold => Font.Bold;
+        public bool Underline => Font.Underline;
+        public bool Strikeout => Font.Strikeout;
+        public FontFamily FontFamily => Font.FontFamily;
     }
 
     internal enum StringAlignment

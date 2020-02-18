@@ -489,4 +489,75 @@ namespace Maps
             public override int Position { get; set; } = 0;
         }
     }
+
+    internal class T5StellarData
+    {
+        public static bool IsValid(string stellar)
+        {
+            return new T5StellarData(stellar).IsValid();
+        }
+
+        private static readonly string[] SIZES = { "Ia", "Ib", "II", "III", "IV", "V", "VI", "D", "BH", "BD" };
+        private static readonly char[] SPECTRALS = { 'O', 'B', 'A', 'F', 'G', 'K', 'M' };
+        private struct Star
+        {
+            public string size;
+            public char? spectral;
+            public int? digit;
+
+            internal bool IsBiggerThanOrSame(Star rhs)
+            {
+                if (size != rhs.size)
+                    return Array.IndexOf(SIZES, size) < Array.IndexOf(SIZES, rhs.size);
+
+                if (!spectral.HasValue && !rhs.spectral.HasValue)
+                    return true;
+
+                if (spectral != rhs.spectral)
+                    return Array.IndexOf(SPECTRALS, spectral) < Array.IndexOf(SPECTRALS, rhs.spectral);
+
+                if (!digit.HasValue && !rhs.digit.HasValue)
+                    return true;
+
+                if (digit != rhs.digit)
+                    return digit < rhs.digit;
+
+                return true;
+            }
+        }
+
+        private static readonly Regex STAR_REGEX = new Regex(@"\b(D|BD|BH|[OBAFGKM][0-9]\x20(?:Ia|Ib|II|III|IV|V|VI))\b");
+        public T5StellarData(string stellar)
+        {
+            string orig = stellar;
+            foreach (Match match in STAR_REGEX.Matches(stellar))
+            {
+                string s = match.Value;
+
+                if (s == "D" || s == "BD" || s == "BH")
+                {
+                    stars.Add(new Star { size = s });
+                }
+                else
+                {
+                    stars.Add(new Star { spectral = s[0], digit = s[1] - '0', size = s.Substring(3) });
+                }
+            }
+        }
+
+        private List<Star> stars = new List<Star>();
+
+        public bool IsValid()
+        {
+            for (int i = 1; i < stars.Count(); ++i)
+            {
+                if (!stars[0].IsBiggerThanOrSame(stars[i])) {
+                    return false;
+                }
+            }
+            return true;
+
+        }
+
+    }
 }

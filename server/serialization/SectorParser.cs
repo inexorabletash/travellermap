@@ -351,7 +351,12 @@ namespace Maps.Serialization
                 }
 
                 if (errors != null)
+                {
                     world.Validate(errors, lineNumber, line);
+
+                    if (!T5StellarData.IsValid(world.Stellar))
+                        errors.Warning("Invalid stellar data: " + world.Stellar, lineNumber, line);
+                }
             }
             catch (Exception e) when (errors != null)
             {
