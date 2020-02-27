@@ -1310,8 +1310,12 @@ body:not(.search-results) #closeSearchBtn { display: none; }
     bottom: -1px; /* Chrome rendering bug with bottom border */
     height: 179px;
   }
-  @supports (bottom: env(safe-area-inset-bottom)) {
+  .ds-mini #sds-frame {
+    height: 149px;
+  }
+  @supports (height: env(safe-area-inset-bottom)) {
     .ds-mini .ds-frame { height: calc(179px + env(safe-area-inset-bottom)); }
+    .ds-mini #sds-frame { height: calc(149px + env(safe-area-inset-bottom)); }
   }
 
   /* Don't wrap when mini so height is fixed and can be transitioned. */

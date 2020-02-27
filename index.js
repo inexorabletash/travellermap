@@ -1056,7 +1056,11 @@ window.addEventListener('DOMContentLoaded', function() {
 
         $('#wds-map').addEventListener('click', function(e) {
           e.preventDefault();
-          showLightboxImage(e.target.getAttribute('data-map'));
+          var url = e.target.getAttribute('data-map');
+          if (isSmallScreen)
+            window.open(url);
+          else
+            showLightboxImage(url);
         });
 
       })
@@ -1227,7 +1231,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
           var params = Util.parseURLQuery(e.target);
           map.CenterAtSectorHex(params.sx|0, params.sy|0, params.hx|0, params.hy|0, {scale: params.scale|0});
-          if (mapElement.offsetWidth < 640)
+          if (isSmallScreen)
             document.body.classList.remove('search-results');
 
           var coords = Traveller.Astrometrics.sectorHexToWorld(
