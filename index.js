@@ -54,6 +54,10 @@ window.addEventListener('DOMContentLoaded', function() {
   var isIframe = (window != window.top); // != for IE
   var isSmallScreen = mapElement.offsetWidth <= 640; // Arbitrary
 
+  function setTitle(name) {
+    document.title = name + ' - Traveller Map';
+  }
+
   //////////////////////////////////////////////////////////////////////
   //
   // Parameters and Style
@@ -949,7 +953,9 @@ window.addEventListener('DOMContentLoaded', function() {
       }
 
       if (selectedSector && (options.refresh || options.directAction)) {
+        // BUG: This is being applied even if world is going to be shown.
         $('#sds-data').innerHTML = template('#sds-template')(data);
+
         // Hook up toggle
         $$('#sds-data .ds-mini-toggle, .sds-sectorname').forEach(function(e) {
           e.addEventListener('click', function(event) {
@@ -967,6 +973,7 @@ window.addEventListener('DOMContentLoaded', function() {
           showWorldData();
         } else if (selectedSector && map.scale <= 16) {
           showSearchPane('sds-visible');
+          setTitle(data.SectorName);
         } else {
           hideCards();
         }
@@ -1024,7 +1031,8 @@ window.addEventListener('DOMContentLoaded', function() {
              Traveller.MapOptions.WorldColors | Traveller.MapOptions.FilledBorders)
         });
 
-       $('#wds-data').innerHTML = template('#wds-template')(world);
+        $('#wds-data').innerHTML = template('#wds-template')(world);
+        setTitle(world.Name);
 
         // Hook up any generated "expandy" fields
         $$('.wds-expandy').forEach(function(elem) {
@@ -1054,15 +1062,16 @@ window.addEventListener('DOMContentLoaded', function() {
           window.open(world.DataSheetURL);
         });
 
-        $('#wds-map').addEventListener('click', function(e) {
-          e.preventDefault();
-          var url = e.target.getAttribute('data-map');
-          if (isSmallScreen)
-            window.open(url);
-          else
-            showLightboxImage(url);
-        });
-
+        if ($('#wds-map')) {
+          $('#wds-map').addEventListener('click', function(e) {
+            e.preventDefault();
+            var url = e.target.getAttribute('data-map');
+            if (isSmallScreen)
+              window.open(url);
+            else
+              showLightboxImage(url);
+          });
+        }
       })
       .catch(function(error) {
         console.warn(error);
