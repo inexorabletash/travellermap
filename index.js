@@ -54,10 +54,6 @@ window.addEventListener('DOMContentLoaded', function() {
   var isIframe = (window != window.top); // != for IE
   var isSmallScreen = mapElement.offsetWidth <= 640; // Arbitrary
 
-  function setTitle(name) {
-    document.title = name + ' - Traveller Map';
-  }
-
   //////////////////////////////////////////////////////////////////////
   //
   // Parameters and Style
@@ -209,14 +205,18 @@ window.addEventListener('DOMContentLoaded', function() {
   //
   //////////////////////////////////////////////////////////////////////
 
+  var original_title = document.title;
+
   // Search Bar
 
   // Mutually exclusive panes:
   var SEARCH_PANES = ['search-results', 'route-ui', 'wds-visible', 'sds-visible'];
-  function showSearchPane(pane) {
+  function showSearchPane(pane, title) {
     if (!['wds-visible', 'sds-visible'].includes(pane))
       document.body.classList.add('ds-mini');
     SEARCH_PANES.forEach(function(c) { document.body.classList.toggle(c, c === pane);  });
+
+    document.title = title ? title + ' - ' + original_title : original_title;
   }
 
   function hideSearch() {
@@ -227,6 +227,7 @@ window.addEventListener('DOMContentLoaded', function() {
     document.body.classList.remove('wds-visible');
     document.body.classList.remove('sds-visible');
     document.body.classList.add('ds-mini');
+    document.title = original_title;
   }
 
 
@@ -969,11 +970,9 @@ window.addEventListener('DOMContentLoaded', function() {
         document.body.classList.toggle('world-selected', selectedWorld);
 
         if (selectedWorld) {
-          showSearchPane('wds-visible');
           showWorldData();
         } else if (selectedSector && map.scale <= 16) {
-          showSearchPane('sds-visible');
-          setTitle(data.SectorName);
+          showSearchPane('sds-visible', data.SectorName);
         } else {
           hideCards();
         }
@@ -1032,7 +1031,6 @@ window.addEventListener('DOMContentLoaded', function() {
         });
 
         $('#wds-data').innerHTML = template('#wds-template')(world);
-        setTitle(world.Name);
 
         // Hook up any generated "expandy" fields
         $$('.wds-expandy').forEach(function(elem) {
@@ -1072,6 +1070,9 @@ window.addEventListener('DOMContentLoaded', function() {
               showLightboxImage(url);
           });
         }
+
+        // Make it visible
+        showSearchPane('wds-visible', world.Name);
       })
       .catch(function(error) {
         console.warn(error);
