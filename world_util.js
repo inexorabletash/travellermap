@@ -550,7 +550,9 @@
     V: 'Dwarf',
     D: 'White Dwarf',
     BD: 'Brown Dwarf',
-    BH: 'Black Hole'
+    BH: 'Black Hole',
+    PSR: 'Pulsar',
+    NS: 'Neutron Star'
   };
 
   var fetch_status = new Map();
