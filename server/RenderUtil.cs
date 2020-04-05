@@ -610,14 +610,15 @@ namespace Maps.Rendering
 
         public static StarProps StarToProps(StellarData.Star star)
         {
-            if (star.classification == "BH")
+            if (star.classification == "D")
+                return new StarProps(Color.White, Color.Black, 0.3f);
+
+            // TODO: Distinct rendering for black holes, neutron stars, pulsars
+            if (star.classification == "NS" || star.classification == "PSR" || star.classification == "BH")
                 return new StarProps(Color.Black, Color.White, 0.8f);
 
             if (star.classification == "BD")
                 return new StarProps(Color.Brown, Color.Black, 0.3f);
-
-            if (star.classification == "D")
-                return new StarProps(Color.White, Color.Black, 0.3f);
 
             return new StarProps(COLOR[star.type], Color.Black, RAD[star.type] + LUM[star.luminosity]);
         }

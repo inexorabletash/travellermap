@@ -20,7 +20,7 @@ namespace Maps
             public string luminosity; // Ia, Ib, II, III, IV, V, VI, VII
         }
 
-        private static readonly Regex STELLAR_REGEX = new Regex(@"([OBAFGKM][0-9] ?(?:Ia|Ib|II|III|IV|V|VI|VII|D)|D|BD|BH)",
+        private static readonly Regex STELLAR_REGEX = new Regex(@"([OBAFGKM][0-9] ?(?:Ia|Ib|II|III|IV|V|VI|VII|D)|D|NS|PSR|BH|BD)",
             RegexOptions.Compiled | RegexOptions.CultureInvariant);
 
         private static Regex STAR_REGEX = new Regex(@"^([OBAFGKM])([0-9]) ?(Ia|Ib|II|III|IV|V|VI)$",
@@ -30,7 +30,7 @@ namespace Maps
         {
             foreach (Match m in STELLAR_REGEX.Matches(stellar))
             {
-                if (m.Value == "D" || m.Value == "BD" || m.Value == "BH")
+                if (m.Value == "D" || m.Value == "NS" || m.Value == "PSR" || m.Value == "BH" || m.Value == "BD" )
                 {
                     yield return new Star() { classification = m.Value };
                 }
@@ -69,7 +69,7 @@ namespace Maps
         //   companion  ::= near
         //   near       ::= unit
         //   unit       ::= star
-        
+
         // Extended: (Malenfant's Revised Stellar Generation Rules)
         //
         //   system     ::= unit ( w+ companion )*
@@ -81,16 +81,20 @@ namespace Maps
 
         // Common:
         //   star       ::= type ( tenths w* size | w* "D" ) main?
-        //                | dwarf
-        //                | browndwarf
+        //                | whitedwarf
+        //                | neutronstar
+        //                | pulsar
         //                | blackhole
+        //                | browndwarf
         //                | unknown
         //   type       ::= "O" | "B" | "A" | "F" | "G" | "K" | "M"
         //   tenths     ::= "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
         //   size       ::= "D" | "Ia" | "Ib" | "II" | "III" | "IV" | "V" | "VI" | "VII"
-        //   dwarf      ::= "DB" | "DA" | "DF" | "DG" | "DK" | "DM" | "D"
-        //   browndwarf ::= "BD"
+        //   whitedwarf ::= "DB" | "DA" | "DF" | "DG" | "DK" | "DM" | "D"
+        //   neutronstar::= "NS"
+        //   pulsar     ::= "PSR"
         //   blackhole  ::= "BH"
+        //   browndwarf ::= "BD"
         //   unknown    ::= "Un"
         //
         //   main       ::= "*"
@@ -336,9 +340,9 @@ namespace Maps
             private static readonly string[] STAR_TYPES = { "O", "B", "A", "F", "G", "K", "M" };
             private static readonly string[] STAR_TENTHS = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" };
             private static readonly string[] STAR_SIZES = { "D", "Ia", "Ib", "II", "III", "IV", "V", "VI", "VII" };
-            private static readonly string[] DWARF_SIZE = { "D" };
-            private static readonly string[] DWARF_TYPES = { "DB", "DA", "DF", "DG", "DK", "DM", "D" };
-            private static readonly string[] OTHER_TYPES = { "BD", "BH", "Un" };
+            private static readonly string[] WHITEDWARF_SIZE = { "D" };
+            private static readonly string[] WHITEDWARF_TYPES = { "DB", "DA", "DF", "DG", "DK", "DM", "D" };
+            private static readonly string[] OTHER_TYPES = { "NS", "PSR", "BH", "BD", "Un" };
 
             public static bool Parse(SeekableReader r, out Star star)
             {
@@ -347,7 +351,7 @@ namespace Maps
                 m = Match(r, OTHER_TYPES);
                 if (m != null)
                 {
-                    // Brown Dwarf, Black Hole, Unknown
+                    // Brown Dwarf, Neutron Star, Pulsar, Black Hole, Unknown
                     star = new Star()
                     {
                         Type = m
@@ -367,12 +371,12 @@ namespace Maps
                     {
                         while (r.Peek() == ' ') // w*
                             r.Read();
-                        if (Match(r, DWARF_SIZE) == null)
+                        if (Match(r, WHITEDWARF_SIZE) == null)
                             throw new InvalidSystemException("Invalid stellar type");
                         star.Tenths = 0;
                         star.Size = "D";
                     }
-                    else if (Match(r, DWARF_SIZE) != null)
+                    else if (Match(r, WHITEDWARF_SIZE) != null)
                     {
                         star.Tenths = 0;
                         star.Size = "D";
@@ -401,10 +405,10 @@ namespace Maps
                     return true;
                 }
 
-                m = Match(r, DWARF_TYPES);
+                m = Match(r, WHITEDWARF_TYPES);
                 if (m != null)
                 {
-                    // Dwarf
+                    // White Dwarf
                     star = new Star()
                     {
                         Type = m
@@ -497,7 +501,7 @@ namespace Maps
             return new T5StellarData(stellar).IsValid();
         }
 
-        private static readonly string[] SIZES = { "Ia", "Ib", "II", "III", "IV", "V", "VI", "D", "BH", "BD" };
+        private static readonly string[] SIZES = { "Ia", "Ib", "II", "III", "IV", "V", "VI", "D", "NS", "PSR", "BH", "BD" };
         private static readonly char[] SPECTRALS = { 'O', 'B', 'A', 'F', 'G', 'K', 'M' };
         private struct Star
         {
@@ -526,7 +530,7 @@ namespace Maps
             }
         }
 
-        private static readonly Regex STAR_REGEX = new Regex(@"\b(D|BD|BH|[OBAFGKM][0-9]\x20(?:Ia|Ib|II|III|IV|V|VI))\b");
+        private static readonly Regex STAR_REGEX = new Regex(@"\b(D|NS|PSR|BH|BD|[OBAFGKM][0-9]\x20(?:Ia|Ib|II|III|IV|V|VI))\b");
         public T5StellarData(string stellar)
         {
             string orig = stellar;
@@ -534,7 +538,7 @@ namespace Maps
             {
                 string s = match.Value;
 
-                if (s == "D" || s == "BD" || s == "BH")
+                if (s == "D" || s == "NS" || s == "PSR" || s == "BH" || s == "BD")
                 {
                     stars.Add(new Star { size = s });
                 }

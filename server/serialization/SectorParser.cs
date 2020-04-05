@@ -206,7 +206,7 @@ namespace Maps.Serialization
         private static readonly Regex ZONE_REGEX = new Regex(@"^(|A|R|F|U|B)$");
         private static readonly Regex NOBILITY_REGEX = new Regex(@"^[BcCDeEfFGH]*$");
 
-        private const string STAR = @"(D|BD|BH|[OBAFGKM][0-9]\x20(?:Ia|Ib|II|III|IV|V|VI))";
+        private const string STAR = @"(D|NS|PSR|BH|BD|[OBAFGKM][0-9]\x20(?:Ia|Ib|II|III|IV|V|VI))";
         private static readonly Regex STARS_REGEX = new Regex("^(|" + STAR + @"(?:\x20" + STAR + @")*)$");
 
         [Flags]
