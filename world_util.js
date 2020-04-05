@@ -741,7 +741,6 @@
         .replace(/[OBAFGKM][0-9] D/g, 'D')
         .split(/\s+(?!Ia|Ib|II|III|IV|V|VI|VII)/)
         .map(function(code) {
-          console.log(code);
           var last = code.split(/\s+/).pop();
           return {code: code, detail: STELLAR_TABLE[last]};
         });
@@ -913,7 +912,7 @@
               supportsCompositeMode(ctx, 'destination-in') &&
               supportsCompositeMode(ctx, 'destination-over') &&
               supportsCompositeMode(ctx, 'multiply') &&
-              world.Stars && (m = /^([OBAFGKM])([0-9])/.exec(world.Stars[0]))) {
+              world.Stars && (m = /^([OBAFGKM])([0-9])/.exec(world.Stars[0].code))) {
             // Advanced - color blend image.
             var t = class2temp(m[1], m[2]);
             var c = temp2color(t);
