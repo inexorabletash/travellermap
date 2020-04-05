@@ -484,6 +484,8 @@ body:not(.wds-visible) #wds-frame { display: none; }
 .wds-bases .wds-base:last-child:after,
 .wds-nobility .wds-noble:last-child:after { content: ''; }
 
+.wds-star { white-space: nowrap; display: inline-block; }
+
 .wds-imp-blurb { font-weight: normal; padding-left: 10px; }
 
 .wds-zone-amber { background-color: #FFCC00; padding: 2px 20px; display: inline-block; }

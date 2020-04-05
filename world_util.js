@@ -541,6 +541,18 @@
           });
         });
 
+  var STELLAR_TABLE = {
+    Ia: 'Supergiant',
+    Ib: 'Supergiant',
+    II: 'Giant',
+    III: 'Giant',
+    IV: 'Subgiant',
+    V: 'Dwarf',
+    D: 'White Dwarf',
+    BD: 'Brown Dwarf',
+    BH: 'Black Hole'
+  };
+
   var fetch_status = new Map();
 
   function fetchImage(url) {
@@ -723,7 +735,14 @@
 
 
       // Stars
-      world.Stars = world.Stellar.split(/\s+(?!Ia|Ib|II|III|IV|V|VI|VII|D)/);
+      world.Stars = world.Stellar
+        .replace(/[OBAFGKM][0-9] D/g, 'D')
+        .split(/\s+(?!Ia|Ib|II|III|IV|V|VI|VII)/)
+        .map(function(code) {
+          console.log(code);
+          var last = code.split(/\s+/).pop();
+          return {code: code, detail: STELLAR_TABLE[last]};
+        });
 
       // Zone
       world.Zone = (function(zone) {
