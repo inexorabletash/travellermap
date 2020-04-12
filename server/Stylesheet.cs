@@ -106,6 +106,7 @@ namespace Maps.Rendering
         Names_Subsector,
 
         Micro_BordersFill,
+        Micro_BordersShade,
         Micro_BordersStroke,
         Micro_Routes,
         Micro_BorderExplicitLabels,
@@ -502,6 +503,7 @@ namespace Maps.Rendering
                 LayerId.Names_Subsector,
 
                 LayerId.Micro_BordersFill,
+                LayerId.Micro_BordersShade,
                 LayerId.Micro_BordersStroke,
                 LayerId.Micro_Routes,
                 LayerId.Micro_BorderExplicitLabels,
@@ -950,6 +952,7 @@ namespace Maps.Rendering
                         showGasGiantRing = true;
                         showTL = true;
                         ignoreBaseBias = true;
+                        shadeMicroBorders = true;
 
                         // Re-order these elements
                         layers.MoveAfter(LayerId.Worlds_Background, LayerId.Micro_BordersStroke);
@@ -1229,6 +1232,7 @@ namespace Maps.Rendering
 
         public StyleElement microBorders;
         public bool fillMicroBorders;
+        public bool shadeMicroBorders;
         public bool showMicroNames;
         public MicroBorderStyle microBorderStyle;
         public HexStyle hexStyle;
