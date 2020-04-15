@@ -18,7 +18,7 @@ Hex  Name                 UWP       Remarks                      {Ix}   (Ex)    
 0502                      B448422-8 Ni Pa                        { -1 } (F32-1) [8358] - K  - 923 15 HvFd M0 V
 0506 Ackwacpo             B551A84-E Hi Po                        {  3 } (995-2) [9D6A] - K  - 810  7 HvFd A6 IV G2 V
 0507                      E616320-7 Ic Lo                        { -3 } (621-2) [4156] - -  - 112 13 HvFd M2 V
-0602                      C570320-6 De Lo He                     { -2 } (921-1) [1184] - M  - 714  8 HvFd M6 III K0 V
+0602                      C570320-6 De Lo He                     { -2 } (921-1) [1184] - M  - 714  8 HvFd M6 IV K0 V
 0603                      E896120-7 Lo                           { -3 } (401-2) [1148] - -  - 803 15 HvFd M5 V M7 V
 0701                      C310110-7 Lo                           { -2 } (B01+2) [2114] - -  - 802 12 HvFd M1 V M6 V
 0702                      A9A9322-A Lo Fl                        {  1 } (721+2) [746A] - E  - 713 12 HvFd M9 V
@@ -26,7 +26,7 @@ Hex  Name                 UWP       Remarks                      {Ix}   (Ex)    
 0802                      C110220-9 Lo                           { -1 } (B11+3) [2137] - M  - 510  8 HvFd F3 V
 0808                      B558885-A Ph Pa                        {  2 } (C79-1) [8A48] - K  - 523  9 HvFd K9 V
 0902                      D673350-7 Lo                           { -3 } (421-5) [3143] - -  - 520 13 HvFd M7 V
-0903                      C532756-6 Na Po GurvW                  { -1 } (466+0) [B666] - M  - 301 12 HvFd M8 III
+0903                      C532756-6 Na Po GurvW                  { -1 } (466+0) [B666] - M  - 301 12 HvFd M8 IV
 0905                      C494516-8 Ag Ni                        {  0 } (546+1) [6559] - KM - 510 10 HvFd K7 V
 0906                      B435526-8 Ni Gurv8                     { -1 } (E45-3) [4447] - M  - 903  8 HvFd K1 IV M7 V
 0908                      B542416-A He Ni Po                     {  1 } (E34-2) [55A7] - K  - 713 10 HvFd M1 V
@@ -35,7 +35,7 @@ Hex  Name                 UWP       Remarks                      {Ix}   (Ex)    
 1005                      C95A411-6 Ni Wa                        { -2 } (931+3) [1246] - M  - 523 15 HvFd G6 V
 1008 Uafost               A362A86-C Hi Cp                        {  3 } (79C+0) [8D88] - -  - 920  9 HvFd M2 V
 1009                      B562855-A Ri Ph                        {  3 } (B7D+2) [9B4B] - K  - 604 16 HvFd F4 V M6 V
-1101                      B000220-B As Lo Va                     {  1 } (F11-2) [134B] - M  - 535 16 HvFd K8 II
+1101                      B000220-B As Lo Va                     {  1 } (F11-2) [134B] - M  - 535 16 HvFd K8 IV
 1103                      E576322-5 Lo                           { -3 } (421+1) [414A] - -  - 903 13 HvFd K0 V M6 V
 1106                      E310000-0 Ba                           { -3 } (600+1) [0000] - -  - 004 15 HvFd K0 V M3 V
 1107                      B765752-8 Ag Ri Ga                     {  2 } (D6B+1) [A99D] - K  - 304  8 HvFd G4 V
@@ -43,7 +43,7 @@ Hex  Name                 UWP       Remarks                      {Ix}   (Ex)    
 1207                      E684742-5 Ag Ri                        {  0 } (668+0) [2736] - -  - 803  9 HvFd M8 V
 1303                      C79A416-8 Ni Wa                        { -2 } (930-1) [524A] - N  - 510 13 Na   K9 V M3 V
 1308                      A300110-C Lo Va                        {  1 } (E01+3) [4248] - -  - 703 14 HvFd M8 V
-1309                      C8A5310-A Lo Fl                        {  1 } (721-5) [1468] - KM - 500 11 HvFd M8 III K4 V
+1309                      C8A5310-A Lo Fl                        {  1 } (721-5) [1468] - KM - 500 11 HvFd M8 V K4 V
 1401                      B432614-7 Na Ni Po                     { -1 } (355+1) [75A7] - N  - 523 11 Na   G1 IV
 1402 Akaga                A356A73-D Hi                           {  3 } (698-1) [BD5E] - N  - 703 14 Na   F4 V M3 V
 1405                      B347246-9 Lo IthkW Pz                  {  0 } (E11+0) [229B] - K  A 703  8 HvFd G4 IV
@@ -95,7 +95,7 @@ Hex  Name                 UWP       Remarks                      {Ix}   (Ex)    
 2808                      E88A000-0 Ba Wa                        { -3 } (300-1) [0000] - -  - 013 13 CsHv M1 V
 2903                      E782641-5 Ni Ri                        { -2 } (952-1) [6471] - N  - 304 14 Na   M6 V
 2905                      E537105-6 Lo                           { -3 } (501+1) [1149] - -  - 702 10 Na   M9 V
-2910                      E330205-6 De Lo Po                     { -3 } (911+1) [1172] - -  - 213 14 Na   G0 III M4 V 
+2910                      E330205-6 De Lo Po                     { -3 } (911+1) [1172] - -  - 213 14 Na   G0 IV M4 V 
 3006                      D79A102-7 Lo Wa                        { -3 } (601+0) [3185] - -  - 303 12 Na   K1 V M5 V
 3008                      E120000-0 Ba De Po                     { -3 } (400+1) [0000] - -  - 004 11 Na   G5 V
 3009                      E999106-9 Lo                           { -2 } (B01+3) [316A] - N  - 504 14 Na   M7 V
@@ -109,20 +109,20 @@ Hex  Name                 UWP       Remarks                      {Ix}   (Ex)    
 0117 Tunarork             A253A85-D Hi Po                        {  3 } (E99+0) [5D19] - K  - 813 10 HvFd M9 V
 0120                      A695656-C Ag Ni                        {  2 } (954+3) [3868] - -  - 920  9 HvFd G4 V M5 V
 0212                      D99A426-5 Ni Wa                        { -3 } (430+1) [11A9] - -  - 803 13 HvFd F5 V M1 V
-0213 Slewrafphlic         A8A4986-E Hi Fl In                     {  4 } (D88-1) [8D39] - -  - 520  7 HvFd K8 III
+0213 Slewrafphlic         A8A4986-E Hi Fl In                     {  4 } (D88-1) [8D39] - -  - 520  7 HvFd K8 IV
 0216 Lonylua              A575A96-E Hi In Cp                     {  4 } (A97+5) [EE2C] - -  - 614 11 HvFd M5 V
-0218                      E200000-0 Ba Va                        { -3 } (500+0) [0000] - -  - 004 13 HvFd G1 III
+0218                      E200000-0 Ba Va                        { -3 } (500+0) [0000] - -  - 004 13 HvFd G1 V
 0313                      B412310-8 Ic Lo                        { -1 } (921-5) [624D] - K  - 803 15 HvFd M8 V
 0315                      C120200-8 De Lo Po                     { -2 } (911+4) [3137] - M  - 121  9 HvFd F8 V M7 V
 0317                      C878120-5 Lo                           { -2 } (B01-1) [6169] - M  - 102  7 HvFd M7 V
 0319                      E110000-0 Ba                           { -3 } (500-2) [0000] - -  - 001  9 HvFd M9 V
 0413                      C544515-7 Ag Ni                        { -1 } (340+2) [8466] - M  - 903 10 HvFd G8 V
 0414                      B539342-9 Lo                           {  0 } (B21+5) [7339] - K  - 414 18 HvFd M7 V
-0415                      E300000-0 Ba Va                        { -3 } (600-1) [0000] - -  - 014 10 HvFd M4 III
+0415                      E300000-0 Ba Va                        { -3 } (600-1) [0000] - -  - 014 10 HvFd M4 IV
 0418                      E748000-0 Ba                           { -3 } (900-2) [0000] - -  - 000  4 HvFd M0 V
 0420                      E410000-0 Ba                           { -3 } (700-4) [0000] - -  - 000  9 HvFd M6 V
 0513                      D434651-6 Ni                           { -3 } (650+0) [8327] - -  - 805 12 HvFd M3 V M6 V
-0516                      C467430-A Ni Pa                        {  0 } (934+5) [4469] - M  - 914 15 HvFd M1 III G9 V 
+0516                      C467430-A Ni Pa                        {  0 } (934+5) [4469] - M  - 914 15 HvFd M1 IV G9 V 
 0517                      E878410-6 Ni Pa                        { -3 } (732-3) [5145] - -  - 503 12 HvFd M0 V
 0611 Oxiteck              E686985-7 Hi Pr Ga                     { -1 } (783+1) [A887] - -  - 202  8 HvFd M4 V M6 V
 0612                      A878785-8 Ag Pi                        {  1 } (B67+3) [6876] - K  - 804 11 HvFd K2 IV
@@ -134,18 +134,18 @@ Hex  Name                 UWP       Remarks                      {Ix}   (Ex)    
 0817                      A7A3436-B Ni Fl GurvW Pz               {  1 } (D33+1) [4567] - -  A 830  8 HvFd M6 V
 0912                      B245563-8 Ag Ni Cy O:1011              {  0 } (A46+1) [5546] - K  - 704  9 HvFd F9 V
 0913                      B78A210-B Lo Wa                        {  1 } (B11-3) [135F] - -  - 815 12 HvFd G6 V
-0914                      A303721-C Ic Na Pi Va                  {  2 } (F66+0) [796D] - -  - 814 12 HvFd M9 II G9 V
-0916                      E553885-5 Po Ph                        { -2 } (B74-2) [B628] - -  - 603  9 HvFd F1 III M7 V
+0914                      A303721-C Ic Na Pi Va                  {  2 } (F66+0) [796D] - -  - 814 12 HvFd G9 V M9 V 
+0916                      E553885-5 Po Ph                        { -2 } (B74-2) [B628] - -  - 603  9 HvFd F1 IV M7 V
 0918                      B8A7561-A Ni Fl Cy O:0816 Gurv7        {  1 } (546-3) [363A] - K  - 802 11 HvFd K4 V
 0920                      E230000-0 Ba De Po                     { -3 } (900+0) [0000] - -  - 023 13 HvFd G3 IV
 1011 Kaxxixii             B553985-B Hi Po Ithk6                  {  3 } (78B-4) [8C68] - -  - 704 15 HvFd G4 V M7 V
 1016                      B773726-9 Pi                           {  1 } (966-2) [887B] - K  - 404  7 HvFd A8 IV
 1018                      C344731-7 Ag Pi                        {  0 } (B69+1) [6799] - M  - 502  5 HvFd G0 V M4 V 
-1019                      E000000-0 As Ba Va                     { -3 } (B00-2) [0000] - -  - 003  6 HvFd K3 III
+1019                      E000000-0 As Ba Va                     { -3 } (B00-2) [0000] - -  - 003  6 HvFd K3 IV
 1020                      E62A000-0 Ba                           { -3 } (A00-1) [0000] - -  - 023  8 HvFd K7 V
 1111                      C549110-5 Lo                           { -2 } (701+5) [4165] - M  - 810 12 HvFd G5 V M1 V 
 1116                      C448110-7 Lo                           { -2 } (B01-1) [1139] - -  - 904 10 HvFd G8 V M4 V
-1117                      B529220-B Lo                           {  1 } (D11+5) [1369] - K  - 713 14 HvFd G9 III
+1117                      B529220-B Lo                           {  1 } (D11+5) [1369] - K  - 713 14 HvFd G9 IV
 1118                      B541320-8 Lo Po He                     { -1 } (F21+2) [2218] - K  - 703 13 HvFd M1 V M4 V 
 1119 Onaqav               E310616-7 Ni Na (Onaqav)               { -3 } (652-3) [3349] - -  A 803 13 HvFd M3 V M8 V 
 1212                      C428126-7 Lo Ithk8 Pz                  { -2 } (601-2) [1177] - M  A 705 13 HvFd K3 V
@@ -155,7 +155,7 @@ Hex  Name                 UWP       Remarks                      {Ix}   (Ex)    
 1314                      C685785-7 Ag Ri Ga                     {  1 } (967-1) [A826] - M  - 802  8 HvFd G9 V
 1315                      E000000-0 As Ba Va                     { -3 } (600+4) [0000] - -  - 012  7 HvFd F2 V M1 V
 1317                      A120420-E De Ni Po                     {  1 } (337-2) [453F] - E  - 701  6 HvFd G5 V M2 V
-1411                      B8C6326-9 Lo Fl Ithk8 Pz               {  0 } (C21+0) [336B] - K  A 622 14 HvFd M4 III M5 V
+1411                      B8C6326-9 Lo Fl Ithk8 Pz               {  0 } (C21+0) [336B] - K  A 622 14 HvFd M4 V M5 V
 1413                      E8B1516-8 Ni Fl He Ithk7 Pz            { -3 } (E43+0) [4269] - K  A 114 17 HvFd M2 V
 1511                      C676322-7 Lo                           { -2 } (921+3) [1186] - M  - 813 12 HvFd M6 V
 1512                      B695726-7 Ag Pi                        {  1 } (86A+2) [A8A4] - K  - 602  9 HvFd M7 V M8 V 
@@ -181,20 +181,20 @@ Hex  Name                 UWP       Remarks                      {Ix}   (Ex)    
 1917                      E200110-7 Lo Va                        { -3 } (B01+1) [6196] - -  - 802 10 HvFd M7 V
 2011                      E300000-0 Ba Va                        { -3 } (800-2) [0000] - -  - 013 15 HvFd M1 V M3 V
 2013                      B302310-8 Ic Lo Va                     { -1 } (A21-3) [1248] - K  - 704 11 HvFd G5 V M4 V
-2014                      C512626-8 Ic Na Ni                     { -2 } (950+1) [4477] - -  - 502  6 HvFd G9 II M9 V M3 V
+2014                      C512626-8 Ic Na Ni                     { -2 } (950+1) [4477] - -  - 502  6 HvFd G9 V M9 V M3 V
 2016                      C425510-7 Ni                           { -2 } (940-2) [6367] - M  - 602 13 HvFd M2 V M3 V M3 V
 2018 Nunuxut              B661A97-E Hi Cp                        {  3 } (59C-4) [7D4C] - K  - 900  4 HvFd G2 V
-2019                      E100000-0 Ba Va                        { -3 } (400-1) [0000] - -  - 000  9 HvFd M8 III
+2019                      E100000-0 Ba Va                        { -3 } (400-1) [0000] - -  - 000  9 HvFd M8 V
 2020                      A878785-B Ag Pi                        {  3 } (F6A+3) [9A28] - E  - 812 10 HvFd M7 V
 2116 Oooponoo             D225626-7 Ni (Oooponoo) Pz             { -3 } (750+4) [337A] - -  A 704 15 HvFd M4 V
 2117                      D788731-4 Ag Ri                        {  0 } (B65+3) [5762] - -  - 923 11 HvFd K5 V
 2119                      E300000-0 Ba Va                        { -3 } (A00-1) [0000] - -  - 024 11 HvFd K3 V
-2122                      C97A322-9 Lo Wa                        { -1 } (821+0) [1259] - M  - 220  8 HvFd M2 II
+2122                      C97A322-9 Lo Wa                        { -1 } (821+0) [1259] - M  - 220  8 HvFd M2 IV
 2212                      A000265-D As Lo Va O:2312 Pz           {  1 } (711+1) [132A] - -  A 703  9 HvFd M8 V
 2217                      A638320-C Lo                           {  1 } (C21+0) [5438] - K  - 503 11 HvFd M3 V M3 V
 2312 Fentisy              C666A87-9 Hi Ga                        {  1 } (D96-1) [7B6C] - M  - 520  8 HvFd G5 V
 2316                      E300000-0 Ba Va                        { -3 } (700+2) [0000] - -  - 003 13 HvFd M5 V
-2320                      E210000-0 Ba                           { -3 } (C00-1) [0000] - -  - 015 13 HvFd G2 III M4 V
+2320                      E210000-0 Ba                           { -3 } (C00-1) [0000] - -  - 015 13 HvFd G2 IV M4 V
 2321                      E000000-0 As Ba Va                     { -3 } (600-1) [0000] - -  - 013 12 HvFd M1 V M1 V
 2412                      B737420-C Ni                           {  1 } (B34+1) [454B] - -  - 813 12 HvFd M8 V M9 V 
 2415                      E86A561-8 Ni Pr Wa O:2312              { -3 } (943+4) [6269] - -  - 404 13 HvFd M3 V
@@ -203,7 +203,7 @@ Hex  Name                 UWP       Remarks                      {Ix}   (Ex)    
 2512                      B676410-8 Ni Pa                        { -1 } (A33+5) [3343] - -  - 720 11 HvFd M3 V
 2514                      EAA2110-8 Lo Fl He                     { -3 } (B01-1) [3148] - -  - 612  7 HvFd M7 V
 2516 Kecphlalda           C484A86-9 Hi                           {  1 } (B96+3) [CB76] - M  - 603 11 HvFd M2 V M5 V
-2517                      C412120-9 Ic Lo                        { -1 } (D01-2) [415B] - M  - 221 12 HvFd G3 III
+2517                      C412120-9 Ic Lo                        { -1 } (D01-2) [415B] - M  - 221 12 HvFd G3 IV
 2518                      A57A220-E Lo Wa                        {  1 } (A11+4) [631E] - E  - 604  9 HvFd M4 V M6 V
 2611                      E000411-7 As Va Ni                     { -3 } (831+1) [1195] - -  - 202  5 HvFd G4 V M5 V
 2615                      B628120-A Lo                           {  1 } (D01-1) [2249] - -  - 123 17 HvFd G1 IV
@@ -247,7 +247,7 @@ Hex  Name                 UWP       Remarks                      {Ix}   (Ex)    
 0626                      C644410-7 Ni Pa                        { -2 } (B31+1) [4259] - -  - 814 13 HvFd G9 V
 0628                      A342616-A Ni Po He IthkW Pz            {  1 } (756+1) [572C] - E  A 800  6 HvFd K6 V
 0630                      C000105-B As Lo Va                     {  0 } (B01-2) [112E] - -  - 803 10 Na   G8 V
-0722 Kontora              D754A53-9 Hi                           {  0 } (998-1) [9A49] - -  - 802 14 HvFd G7 II
+0722 Kontora              D754A53-9 Hi                           {  0 } (998-1) [9A49] - -  - 802 14 HvFd G7 V
 0725                      C697552-7 Ag Ni                        { -1 } (742+0) [4487] - M  - 823 13 HvFd K1 V
 0729                      C250675-5 De Ni Po                     { -2 } (551-2) [9433] - M  - 713 12 HvFd M4 V
 0822                      C561875-8 Ri Ph                        {  0 } (C7B-4) [8827] - M  - 923 12 HvFd M8 V
@@ -256,10 +256,10 @@ Hex  Name                 UWP       Remarks                      {Ix}   (Ex)    
 0826                      C324218-7 Lo GurvW Pz                  { -2 } (511+3) [3165] - -  A 723 14 Na   M3 V
 0828                      E439000-0 Ba                           { -3 } (600+0) [0000] - -  - 003 14 HvFd G3 V M7 V 
 0927                      B576315-7 Lo                           { -1 } (321-1) [2273] - K  - 804 12 HvFd G3 V M3 V
-1021                      D644322-5 Lo                           { -3 } (621-3) [4173] - -  - 224 13 HvFd M1 III
+1021                      D644322-5 Lo                           { -3 } (621-3) [4173] - -  - 224 13 HvFd M1 IV
 1024                      C262626-7 Ni Ri                        { -1 } (953-2) [5537] - -  - 421 13 HvFd M7 V
 1025                      A446626-9 Ag Ni                        {  1 } (653+1) [676A] - -  - 604 13 HvFd M0 V
-1027                      C441614-8 Ni Po He                     { -2 } (A52+0) [647D] - M  - 904 16 HvFd M6 II
+1027                      C441614-8 Ni Po He                     { -2 } (A52+0) [647D] - M  - 904 16 HvFd M6 V
 1121                      E544514-6 Ag Ni                        { -2 } (640-1) [4373] - -  - 500 13 HvFd M0 V
 1124                      E531546-6 Ni Po Gurv8 Pz               { -3 } (342+2) [6252] - -  A 802 11 HvFd M0 V
 1125                      C653855-7 Po Ph                        {  0 } (679-1) [B883] - KM - 811  8 HvFd K5 V
@@ -272,9 +272,9 @@ Hex  Name                 UWP       Remarks                      {Ix}   (Ex)    
 1328 Caanor               B362A97-C Hi Cp                        {  3 } (A97-1) [BD5F] - -  - 601  8 HvFd A6 V
 1330                      E66A736-8 Ri Wa                        { -1 } (C6A+4) [9665] - -  - 820 12 Na   G5 V
 1423                      AAA7784-9 Fl                           {  1 } (D66-1) [9845] - -  - 323 13 HvFd G4 V
-1425                      C574536-8 Ag Ni                        { -1 } (D45+4) [2417] - N  - 622 12 HvFd G9 III
+1425                      C574536-8 Ag Ni                        { -1 } (D45+4) [2417] - N  - 622 12 HvFd G9 V
 1521                      D580412-2 De Ni                        { -3 } (431+0) [5133] - M  - 913 14 HvFd M5 V M8 V 
-1524                      E110000-0 Ba                           { -3 } (A00+5) [0000] - -  - 005 10 HvFd M8 III M1 V
+1524                      E110000-0 Ba                           { -3 } (A00+5) [0000] - -  - 005 10 HvFd M8 IV M1 V
 1527                      A547686-9 Ag Ni Gurv3 Ithk4 Pz         {  1 } (757+3) [9759] - -  A 503 12 HvFd K8 V
 1621                      C426526-8 Ni                           { -2 } (F40-2) [4315] - M  - 814 10 HvFd G4 V
 1726                      C447314-5 Lo                           { -2 } (721+0) [4184] - N  - 300  7 HvFd M4 V
@@ -291,8 +291,8 @@ Hex  Name                 UWP       Remarks                      {Ix}   (Ex)    
 0335                      X578223-1 Lo Fo                        { -3 } (711+0) [4151] - -  R 322  9 NaXX M2 V
 0537 Geekku               D666986-5 Hi Pr Ga                     { -1 } (985+0) [7866] - N  - 724 12 NaXX G8 V
 0538                      D572425-5 He Ni                        { -3 } (931-3) [9113] - -  - 312  9 NaXX G2 V M1 V
-0640                      D529116-7 Lo Pz                        { -3 } (A01-3) [1119] - N  A 703  9 NaXX M1 II M5 V
-2036                      E439341-6 Lo                           { -3 } (421+0) [4138] - -  - 532 12 NaXX G7 II
+0640                      D529116-7 Lo Pz                        { -3 } (A01-3) [1119] - N  A 703  9 NaXX M1 V M5 V
+2036                      E439341-6 Lo                           { -3 } (421+0) [4138] - -  - 532 12 NaXX G7 IV
 2037                      E402517-7 Ic Ni Va                     { -3 } (740-2) [5274] - N  - 715 13 NaXX G7 III
 2132 Iyuok                C776951-A Hi In (Iyuok) Da Cx          {  3 } (98B+2) [CC1D] - N  A 500  5 Iy   F9 V M1 V
 2133                      C631563-6 Ni Po Cy O:2132 IyuokW Pz    { -2 } (640+1) [4386] - N  A 515 14 Iy   K2 V
