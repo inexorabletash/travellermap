@@ -298,10 +298,12 @@ h1.underline {
   margin-bottom: 6pt;
 }
 
-table.glyphs td:nth-child(1) { text-align: center; }
-table.glyphs td { padding: 2px; }
 .introduction .red { color: #E32736; }
 .introduction .blue { color: #00bfff; }
+
+#glyphs { column-count: 2; }
+#glyphs dt { float: left; clear: left; width: 15px; line-height: 18px; text-align: center; font-weight: bold; }
+#glyphs dd { margin-left: 20px; line-height: 18px; }
 
 /* Charted Space  ============================== */
 
@@ -620,125 +622,119 @@ table.uwp-data {
           Information is current as of that date.
         </p>
 
-        <table>
-          <tr>
-            <td style="width: 50%; padding-right: 6pt;">
-              <h2>Using the Atlas</h2>
+        <div style="column-count: 2">
+          <h2>Using the Atlas</h2>
 
-              <p>
-                The map on the preceding page presents an overview of
-                Charted Space, showing the positions of the sectors of
-                the Imperium and adjacent regions. Dimmed sectors are
-                not covered by the <cite>Atlas</cite>.
-              </p>
+          <p>
+            The map on the preceding page presents an overview of
+            Charted Space, showing the positions of the sectors of
+            the Imperium and adjacent regions. Dimmed sectors are
+            not covered by the <cite>Atlas</cite>.
+          </p>
 
-              <p>
-                <b>Map Symbols:</b>
-                Each hex on the sector map represents one parsec (3.27
-                light-years). Hexes containing star systems are
-                numbered to assist in specifying locations within a
-                sector.
-              </p>
+          <p>
+            <b>Map Symbols:</b>
+            Each hex on the sector map represents one parsec (3.27
+            light-years). Hexes containing star systems are
+            numbered to assist in specifying locations within a
+            sector.
+          </p>
 
-              <p>
-                The central symbol in a hex shows the type of world:
-                solid dots (<span class="blue">&#x25CF;</span>)
-                indicate worlds with water present; open circles
-                (&#x25CB;) represent desert worlds (with a
-                hydrographic percentage of zero, or without easily
-                accessible water); a group of dots (:::) indicates an
-                asteroid belt.
-              </p>
+          <p>
+            The central symbol in a hex shows the type of world:
+            solid dots (<span class="blue">&#x25CF;</span>)
+            indicate worlds with water present; open circles
+            (&#x25CB;) represent desert worlds (with a
+            hydrographic percentage of zero, or without easily
+            accessible water); a group of dots (:::) indicates an
+            asteroid belt.
+          </p>
 
-              <p>
-                The upper right of the hex is reserved for the
-                gas giant symbol: if a dot (&bull;) is present in the
-                upper right, then the system has one or more gas giants
-                suitable for starship refuelling.
-              </p>
+          <p>
+            The upper right of the hex is reserved for the
+            gas giant symbol: if a dot (&bull;) is present in the
+            upper right, then the system has one or more gas giants
+            suitable for starship refuelling.
+          </p>
 
-              <p>
-                The left side of the hex is reserved for base
-                and related symbols:
-              </p>
+          <p>
+            The left side of the hex is reserved for base
+            and related symbols:
+          </p>
 
-              <table class="glyphs">
-                <tr><td>&#x2605;</td><td>Imperial Naval Base</td>
-                  <td class="red"><b>&Gamma;</b></td><td>Research Station</td></tr>
-                <tr><td>&#x25B2;</td><td>Scout Base</td>
-                  <td><b>R</b></td><td>Imperial Reserve</td></tr>
-                <tr><td class="red">&#x25B2;</td><td>Scout Way Station</td>
-                  <td class="red"><b>P</b></td><td>Penal Colony</td></tr>
-                <tr><td>&#x25A0;</td><td>Naval Depot</td>
-                  <td><b>X</b></td><td>Prison, Exile Camp</td></tr>
+          <dl id=glyphs>
+            <dt>&#x2605;</dt><dd>Imperial Naval Base</dd>
+            <dt>&#x25B2;</dt><dd>Scout Base</dd>
+            <dt class=red>&#x25B2;</dt><dd>Scout Way Station</dd>
+            <dt>&#x25A0;</dt><dd>Naval Depot</dd>
 
-                <tr><td>&diams;</td><td>Zhodani Base</td></tr>
-                <tr><td class="red">&diams;</td><td>Zhodani Relay Station</td></tr>
+            <dt>&diams;</dt><dd>Zhodani Base</dd>
+            <dt class=red>&diams;</dt><dd>Zhodani Relay Station</dd>
 
-                <tr><td class="red">&#x2605;</td><td>Other Naval / Tlauku Base</td></tr>
-                <tr><td class="red">&#x25A0;</td><td>Other Outpost / Depot</td></tr>
-                <tr><td>&#x2217;&#x2217;</td><td>Corsair / Clan / Embassy</td></tr>
+            <dt class=red>&#x2605;</dt><dd><span>Other Naval / Tlauku Base</span></dd>
+            <dt class=red>&#x25A0;</dt><dd>Other Outpost / Depot</dd>
+            <dt>&lowast;&lowast;</dt><dd>Corsair / Clan / Embassy</dd>
 
-                <tr><td>&#x2726;</td><td>Military Base / Garrison</td></tr>
-                <tr><td>&bull;</td><td>Independent Base</td></tr>
-              </table>
+            <dt>&#x2726;</dt><dd>Military Base / Garrison</dd>
+            <dt>&bull;</dt><dd>Independent Base</dd>
 
-            </td>
-            <td style="width: 50%; padding-left: 6pt;">
-              <p>
-                The top center of the hex is reserved for the
-                starport type: starport letter codes from A to E plus X.
-              </p>
-              <p>
-                The bottom of the hex contains the world name.
-                If the world shown has a population factor of 9+
-                (at least one billion) the name of the world is
-                shown in UPPERCASE.
-              </p>
-              <p>
-                The lower right corner of the hex is reserved for
-                allegiance &ndash; the government of the system.
-                If there is no indication present then the system
-                is within the Imperium. Other four letter groups
-                indicate non-Imperial interstellar governments, or
-                Imperial cultural regions. Labels on the map
-                identify the full name of the region.
-              </p>
-              <p>
-                A ring within the hex indicates a travel advisory:
-                amber (caution) or red (forbidden).
-              </p>
-              <p>
-                <b>Data Format:</b> A full explanation of the
-                <cite>Second Survey</cite> data
-                format can be found in the <b>Traveller 5 Core Rules</b> or
-                online at: <a>https://travellermap.com/doc/secondsurvey</a>.
-                The fields are:
-              </p>
-              <p><b>Hex:</b> Position within the sector (XXYY).</p>
-              <p><b>Name:</b> Name of the MainWorld in the system.</p>
-              <p><b>UWP:</b> Universal World Profile:
-                Starport,
-                Size, Atmosphere, Hydrographics,
-                Population (exponent), Government, Law level,
-                Tech level.
-              </p>
-              <p><b>Remarks:</b> Trade codes and other attributes.</p>
-              <p><b>{Ix}:</b> Importance.</p>
-              <p><b>(Ex):</b> Economics: Resources, Labor, Infrastructure, Efficiency.</p>
-              <p><b>[Cx]:</b> Culture: Homogeneity, Acceptance, Strangness, Symbols.</p>
-              <p><b>N:</b> Nobility (Imperium).</p>
-              <p><b>B:</b> Bases: N=Naval, S=Scout, D=Depot, W=Way, etc.</p>
-              <p><b>Z:</b> Travel zone: A=Amber (caution), R=Red (forbidden).</p>
-              <p><b>PBG:</b> Population (multiplier), Belts, Gas giants.</p>
-              <p><b>W:</b> Total world count in system.</p>
-              <p><b>A:</b> Allegiance: government, province, or region.</p>
-              <p><b>Stellar:</b> Stars in the system.</p>
+            <dt class=red>&Gamma;</dt><dd>Research Station</dd>
+            <dt>R</dt><dd>Imperial Reserve</dd>
+            <dt class=red>P</dt><dd>Penal Colony</dd>
+            <dt>X</dt><dd>Prison, Exile Camp</dd>
+          </dl>
 
+          <p>
+            The top center of the hex is reserved for the
+            starport type: starport letter codes from A to E plus X.
+          </p>
+          <p>
+            The bottom of the hex contains the world name.
+            If the world shown has a population factor of 9+
+            (at least one billion) the name of the world is
+            shown in UPPERCASE.
+          </p>
+          <p>
+            The lower right corner of the hex is reserved for
+            allegiance &ndash; the government of the system.
+            If there is no indication present then the system
+            is within the Imperium. Other four letter groups
+            indicate non-Imperial interstellar governments, or
+            Imperial cultural regions. Labels on the map
+            identify the full name of the region.
+          </p>
+          <p>
+            A ring within the hex indicates a travel advisory:
+            amber (caution) or red (forbidden).
+          </p>
+          <p>
+            <b>Data Format:</b> A full explanation of the
+            <cite>Second Survey</cite> data
+            format can be found in the <b>Traveller 5 Core Rules</b> or
+            online at: <a>https://travellermap.com/doc/secondsurvey</a>.
+            The fields are:
+          </p>
+          <p><b>Hex:</b> Position within the sector (XXYY).</p>
+          <p><b>Name:</b> Name of the MainWorld in the system.</p>
+          <p><b>UWP:</b> Universal World Profile:
+            Starport,
+            Size, Atmosphere, Hydrographics,
+            Population (exponent), Government, Law level,
+            Tech level.
+          </p>
+          <p><b>Remarks:</b> Trade codes and other attributes.</p>
+          <p><b>{Ix}:</b> Importance.</p>
+          <p><b>(Ex):</b> Economics: Resources, Labor, Infrastructure, Efficiency.</p>
+          <p><b>[Cx]:</b> Culture: Homogeneity, Acceptance, Strangness, Symbols.</p>
+          <p><b>N:</b> Nobility (Imperium).</p>
+          <p><b>B:</b> Bases: N=Naval, S=Scout, D=Depot, W=Way, etc.</p>
+          <p><b>Z:</b> Travel zone: A=Amber (caution), R=Red (forbidden).</p>
+          <p><b>PBG:</b> Population (multiplier), Belts, Gas giants.</p>
+          <p><b>W:</b> Total world count in system.</p>
+          <p><b>A:</b> Allegiance: government, province, or region.</p>
+          <p><b>Stellar:</b> Stars in the system.</p>
 
-            </td>
-          </tr>
-        </table>
+        </div>
 
       </div>
       <div class=pagenum></div>
