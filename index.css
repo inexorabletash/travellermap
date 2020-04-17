@@ -209,6 +209,8 @@ input[type=text] {
 body:not(.sds-visible) #sds-frame,
 body:not(.wds-visible) #wds-frame { display: none; }
 
+:-webkit-full-screen .ds-frame { bottom: 15px; }
+:fullscreen .ds-frame { bottom: 15px; }
 .hide-footer .ds-frame { bottom: 15px; }
 
 .ds-frame {
@@ -553,6 +555,8 @@ body:not(.wds-visible) #wds-frame { display: none; }
 }
 
 .hide-ui .ui { display: none; }
+:-webkit-full-screen #bottom-pane { display: none; }
+:fullscreen #bottom-pane { display: none; }
 .hide-footer #bottom-pane { display: none; }
 
 button {
@@ -1136,6 +1140,17 @@ body:not(.search-results) #closeSearchBtn { display: none; }
   background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiI+PHBhdGggZD0iTTIuODMgMi41NmwtLjY5IDQuMjhINy4xVjIuNTZIMi44M3ptNi4wOCAwdjQuMjhoNC45NWwtLjY4LTQuMjhIOC45em0tNyA1Ljc0bC0uODIgNS4xNGg2VjguM0gxLjkxem03IDB2NS4xNGg2TDE0LjEgOC4zSDguOTF6Ii8+PC9zdmc+);
 }
 
+#fsBtn {
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiI+PHBhdGggZD0iTTAgMGg2LjV2Mi41aC00djRIMHptMTYgMEg5LjV2Mi41aDR2NEgxNnpNMCAxNmg2LjV2LTIuNWgtNHYtNEgwem0xNiAwSDkuNXYtMi41aDRWOUgxNnoiLz48L3N2Zz4=);
+}
+
+:-webkit-full-screen #fsBtn {
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiI+PHBhdGggZD0iTTYuNSA2LjVIMFY0aDRWMGgyLjV6bTMgMEgxNlY0aC00VjBIOS41em0tMyAzSDBWMTJoNHY0aDIuNXptMyAwSDE2VjEyaC00djRIOS41eiIvPjwvc3ZnPg==);
+}
+:fullscreen #fsBtn {
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiI+PHBhdGggZD0iTTYuNSA2LjVIMFY0aDRWMGgyLjV6bTMgMEgxNlY0aC00VjBIOS41em0tMyAzSDBWMTJoNHY0aDIuNXptMyAwSDE2VjEyaC00djRIOS41eiIvPjwvc3ZnPg==);
+}
+
 /* ============================================================ */
 /* Generic Icons */
 
@@ -1189,6 +1204,10 @@ body:not(.search-results) #closeSearchBtn { display: none; }
 
 
 #navBar, #navBarRight { bottom: 110px; }
+:-webkit-full-screen #navBar,
+:-webkit-full-screen #navBarRight { bottom: 15px; }
+:fullscreen #navBar,
+:fullscreen #navBarRight { bottom: 15px; }
 .hide-footer #navBar,
 .hide-footer #navBarRight { bottom: 15px; }
 
@@ -1528,6 +1547,8 @@ body:not(.milieu-not-default) #milieu-escape {
 #promo-closebtn { filter: invert(100%); }
 
 @media only screen and (max-width: 640px) { #promo-hover { bottom: 60px; } }
+:-webkit-full-screen #promo-hover { bottom: 15px; }
+:fullscreen #promo-hover { bottom: 15px; }
 .hide-footer #promo-hover { bottom: 15px; }
 body:not(.show-promo) #promo-hover {
   display: none;
