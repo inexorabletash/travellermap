@@ -17,6 +17,13 @@
 
   function cmp(a, b) { return a < b ? -1 : a > b ? 1 : 0; }
 
+  function smartquote(s) {
+    return s ? s
+      .replace("'", "\u2019")
+      .replace(' "', " \u201C")
+      .replace('" ', "\u201D ") : s;
+  }
+
   function parseSector(tabDelimitedData, metadata) {
     var i, sector = {
       metadata: metadata,
@@ -49,6 +56,8 @@
       world.ex = world.ex.replace(/[() ]/g, '');
       world.cx = world.cx.replace(/[\[\] ]/g, '');
 
+      world.name = smartquote(world.name);
+
       sector.worlds.push(world);
     });
 
@@ -65,9 +74,9 @@
     });
     sector.page_count = sector.pages.length;
 
-    sector.name = metadata.Names[0].Text;
+    sector.name = smartquote(metadata.Names[0].Text);
 
-    sector.credits = metadata.Credits;
+    sector.credits = smartquote(metadata.Credits);
 
     // TM's Y coordinates are inverted relative to FFE publications.
     metadata.Y = -metadata.Y;
