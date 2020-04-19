@@ -191,9 +191,9 @@ textarea {
     white-space: pre-wrap;
     width: auto;
   }
-  ul { -webkit-padding-start: 20px; }
+  ul { padding-inline-start: 20px; }
   dl.params { margin-left: 0; }
-  dl.params > dd { -webkit-margin-start: 10px; }
+  dl.params > dd { margin-inline-start: 10px; }
   p.code { white-space: normal; }
 }
 
