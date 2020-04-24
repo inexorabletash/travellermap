@@ -35,13 +35,13 @@
 <meta property="og:site_name" content="The Traveller Map">
 <meta property="fb:admins" content="617166358">
 
-<link rel="stylesheet" href="index.css?update=2020-04-16T17:47:44">
+<link rel="stylesheet" href="index.css?update=2020-04-23T20:58:54">
 
 <!--[if lt IE 11]><script>alert("IE10 is no longer supported.");</script><![endif]-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
 <script src="https://cdn.rawgit.com/inexorabletash/poly2/v2.0.1/polyfill.min.js"></script>
 <script src="map.js?update=2020-01-01T14:47:00"></script>
-<script src="index.js?update=2020-04-16T17:57:18"></script>
+<script src="index.js?update=2020-04-23T20:29:19"></script>
 <script src="world_util.js?update=2020-04-05T08:25:42"></script>
 
 <body class="hide-ui hide-footer ds-mini show-settings">
@@ -272,7 +272,7 @@
               title="Help, feedback, and more">
       </button>
     </div>
-    <button id=more-closebtn class="dim" title="Close"></button>
+    <button id=more-closebtn class="closebtn dim" title="Close"></button>
     <div id="moreScroll">
 
 
@@ -486,7 +486,7 @@
 
   <div id="legendBox"
        class="ui hoverbox hoverbox-right">
-    <button id=legend-closebtn class="dim" title="Close"></button>
+    <button id=legend-closebtn class="closebtn dim" title="Close"></button>
     <div id="legendBoxContent">
     <section>
       <h2>Map Legend</h2><br>
@@ -656,11 +656,11 @@
     <div id=sds-scroll class=ds-scroll>
       <div id=sds-data></div>
     </div>
-    <button id=sds-closebtn class="ds-closebtn dim" title="Close"></button>
+    <button id=sds-closebtn class="closebtn dim" title="Close"></button>
   </div>
 
   <script id=sds-template type="text/x-handlebars-template">
-      <div class=sds-sectorname>
+      <div class=ds-title>
         {{SectorName}}
         <small>({{SectorX}},{{SectorY}})</small>
       </div>
@@ -750,13 +750,13 @@
       <div id=wds-data></div>
     </div>
     <div id=wds-spinner></div>
-    <button id=wds-closebtn class="ds-closebtn dim" title="Close"></button>
+    <button id=wds-closebtn class="closebtn dim" title="Close"></button>
   </div>
 
 <script id=wds-template type="text/x-handlebars-template">
 
 <div class=wds-names>
-  <div title="{{Name}}" class=wds-worldname>{{#if Name}}{{Name}}{{else}}(Unnamed){{/if}}</div>
+  <div title="{{Name}}" class=ds-title>{{#if Name}}{{Name}}{{else}}(Unnamed){{/if}}</div>
   {{#if SubsectorName}}
     <div class=wds-ssname>{{SubsectorName}} Subsector</div>
   {{/if}}
@@ -944,7 +944,7 @@
   </div>
 
   <div id="promo-hover">
-    <button id=promo-closebtn class="dim" title="Close"></button>
+    <button id=promo-closebtn class="closebtn dim" title="Close"></button>
     <!--
     <a target=_blank rel=noopener href="https://www.kickstarter.com/projects/traveller5/traveller-fifth-edition">
       Traveller Fifth Edition 5.10 Update<br>

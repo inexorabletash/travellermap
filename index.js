@@ -1109,7 +1109,7 @@ window.addEventListener('DOMContentLoaded', function() {
     document.body.classList.toggle('ds-mini');
   });
 
-  $$('.ds-closebtn,#ds-shade').forEach(function(element) {
+  $$('#sds-closebtn,#wds-closebtn,#ds-shade').forEach(function(element) {
     element.addEventListener('click', function(event) {
       hideCards();
       selectedWorld = selectedSector = null;
