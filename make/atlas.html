@@ -3,8 +3,7 @@
 <title>Atlas - Traveller Map</title>
 <meta charset="utf-8">
 <link rel="shortcut icon" href="../favicon.ico">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
-<script src="https://cdn.rawgit.com/inexorabletash/poly2/v2.0.1/polyfill.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
 <script src="../map.js?update=2020-01-01T14:47:00"></script>
 <script src="atlas.js?update=2020-04-16T12:52:34"></script>
 <style>
@@ -272,20 +271,8 @@ h1.underline {
 .title_publisher img { display: inline-block; height: 100%; }
 
 
-/* World Data ============================== */
 
-#example { margin-top: 10px; margin-bottom: 10px; }
-#example th { font-style: italic; font-weight: normal; }
-#example th, #example td { padding-right: 10px; }
-
-.codetable { float: right; break-inside: avoid-column; margin: 10px 0 10px 10px; clear: both; }
-.codetable .codetitle { text-transform: uppercase; font-weight: bold; text-align: center; }
-.codetable th { font-weight: normal; font-style: italic; }
-.codetable tr td:nth-child(1) { text-align: right; }
-.codetable tr td:nth-child(n+1) { padding-right: 10px; }
-.codetable, .codetable table { font-size: 9pt; }
-
-/* Credits ============================== */
+/* Colophon ============================== */
 
 .colophon {
   padding-top: 4.5in;
@@ -304,22 +291,18 @@ h1.underline {
   margin-bottom: 1em;
 }
 
-/* Credits ============================== */
-
-.credits h1 { visibility: hidden; }
-.credits.instance0 h1 { visibility: visible; }
-
 /* Introduction ============================== */
 
-.introduction h2 {
+.page.introduction .content h2 {
   text-transform: uppercase;
   font-size: 10pt;
   font-weight: bold;
   margin-bottom: 6pt;
 }
 
-.introduction .red { color: #E32736; }
-.introduction .blue { color: #00bfff; }
+.page.introduction .content .amber { color: #FFCC00; }
+.page.introduction .content .red { color: #E32736; }
+.page.introduction .content .blue { color: #00bfff; }
 
 #glyphs { column-count: 2; }
 #glyphs dt { float: left; clear: left; width: 15px; line-height: 18px; text-align: center; font-weight: bold; }
@@ -413,10 +396,7 @@ h1.underline {
 
 /* Sector Data ============================== */
 
-.sector-data {
-}
-
-.sector-data h2 { margin-top: 0; }
+page.sector-data h2 { margin-top: 0; }
 
 .column { }
 .column:nth-last-child(2) { padding-right: 4pt; border-right: 1pt solid black; }
@@ -450,9 +430,28 @@ table.uwp-data {
 
 .uwp-data .hipop { text-transform: uppercase; }
 
+/* World Data ============================== */
+
+.page.world-data:not(.instance0) .content h1 { display: none; }
+
+#example { margin-top: 10px; margin-bottom: 10px; }
+#example th { font-style: italic; font-weight: normal; }
+#example th, #example td { padding-right: 10px; }
+
+.codetable { float: right; break-inside: avoid-column; margin: 10px 0 10px 10px; clear: both; }
+.codetable .codetitle { text-transform: uppercase; font-weight: bold; text-align: center; }
+.codetable th { font-weight: normal; font-style: italic; }
+.codetable tr td:nth-child(1) { text-align: right; }
+.codetable tr td:nth-child(n+1) { padding-right: 10px; }
+.codetable, .codetable table { font-size: 9pt; }
+
+/* Credits ============================== */
+
+.page.credits:not(.instance0) .content h1 { display: none; }
+
 /* Index ============================== */
 
-.index {
+.page.index .content {
   font-size: 16pt;
   font-family: Optima, Marcellus, serif;
 }
@@ -738,10 +737,12 @@ table.uwp-data {
           identify the full name of the region.
         </p>
         <p>
-          A ring within the hex indicates a travel advisory: amber
-          (caution) or red (forbidden). Travel codes are provided by
-          the <i>Journal of the Travellers’ Aid Society</i>, and used
-          with permission of that publication.
+          A ring within the hex indicates a travel zone: amber for
+          caution (<span class=amber>&#x25EF;</span>), or red for
+          forbidden (<span class=red>&#x25EF;</span>). Travel
+          advisories are provided by the <i>Journal of the Travellers’
+          Aid Society</i>, and used with permission of that
+          publication.
         </p>
 
         <p><b>World Data:</b>
@@ -802,8 +803,8 @@ table.uwp-data {
 
     {{#pages}}
     <!-- Data Page -->
-    <div class=page>
-      <div class="content sector-data">
+    <div class="page sector-data">
+      <div class="content">
         <h2>{{../name}} &mdash; Page {{index}} of {{../page_count}}</h2>
         <table style="table-layout: fixed; width: 0">
           <tr>
@@ -856,10 +857,11 @@ table.uwp-data {
 
     {{/sectors}}
 
-    <!-- World Data -->
-    <div class=page>
+    <!-- World Data pp1 -->
+    <div class="page world-data instance0">
       <div class="content twocol">
         <h1 class="underline">World Data</h1>
+
         <div style="column-span: all">
           <p>
             World listings are presented in the format described
@@ -1049,16 +1051,12 @@ table.uwp-data {
           No Starport. No provision is made for any ship landings.
         </p>
 
-
-
         <p><b>Planetary Size:</b>
           The planetary size digit gives the diameter of the world
           in thousands of miles (a size A world has a diameter of
           10,000 miles, or 16,000km). A size code of 0 indicates an
           asteroid belt.
         </p>
-
-
 
         <p><b>Atmosphere Type:</b>
           This digit describes the world’s atmosphere, as shown on
@@ -1082,13 +1080,10 @@ table.uwp-data {
           on.
         </p>
 
-
         <p><b>Government:</b>
           This digit describes the world’s government, as shown on
           the government table.
         </p>
-
-
 
         <p><b>Law Level:</b>
           This digit describes the degree to which the government
@@ -1096,7 +1091,6 @@ table.uwp-data {
           particular interest to adventurers is the nature of local
           arms control law, as shown on the law level table.
         </p>
-
 
         <p><b>Tech Level:</b>
           This digit gives the general level of technological
@@ -1109,8 +1103,9 @@ table.uwp-data {
     </div>
 
     <!-- World Data pp2 -->
-    <div class=page>
+    <div class="page world-data instance1">
       <div class="content twocol">
+        <h1 class="underline">World Data</h1>
 
         <div class=codetable>
           <div class=codetitle>Trade Classifications</div>
@@ -1316,7 +1311,6 @@ table.uwp-data {
           multiplier is 7, the population is approximately 70,000.
         </p>
 
-
         <p>
           <b>Planetoid Belts:</b>
           The second digit gives the number of planetoid belts in the
@@ -1365,14 +1359,16 @@ table.uwp-data {
 
     <!-- Credits -->
     {{#credits}}
-    <div class=page>
-      <div class="content twocol credits instance{{@index}}">
+    <div class="page credits instance{{@index}}">
+      <div class="content twocol">
         <h1 class="underline">Credits</h1>
+
         {{#each this}}
         <p>
           {{{.}}}
         </p>
         {{/each}}
+
         </ol>
       </div>
       <div class=pagenum></div>
@@ -1380,15 +1376,17 @@ table.uwp-data {
     {{/credits}}
 
     <!-- Index -->
-    <div class=page>
-      <div class="content twocol index">
+    <div class="page index">
+      <div class="content twocol">
         <h1 class="underline">Sector Index</h1>
+
         {{#index}}
         <div class="dot-leaders">
           <span>{{name}}</span>
           <span>{{page}}</span>
         </div>
         {{/index}}
+
       </div>
       <div class=pagenum></div>
     </div>
