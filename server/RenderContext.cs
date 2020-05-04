@@ -229,6 +229,7 @@ namespace Maps.Rendering
                 new LayerAction(LayerId.Names_Subsector, ctx => ctx.DrawSubsectorNames(), clip:true),
 
                 new LayerAction(LayerId.Micro_BordersFill, ctx => ctx.DrawMicroBordersFill(), clip:true),
+                new LayerAction(LayerId.Micro_BordersShade, ctx => ctx.DrawMicroBordersShade(), clip:true),
                 new LayerAction(LayerId.Micro_BordersStroke, ctx => ctx.DrawMicroBordersStroke(), clip:true),
                 new LayerAction(LayerId.Micro_Routes, ctx => ctx.DrawMicroRoutes(), clip:true),
                 new LayerAction(LayerId.Micro_BorderExplicitLabels, ctx => ctx.DrawMicroLabels(), clip:false),
@@ -493,20 +494,24 @@ namespace Maps.Rendering
             if (!styles.microBorders.visible)
                 return;
 
-            graphics.SmoothingMode = SmoothingMode.HighQuality;
-
             DrawMicroBorders(BorderLayer.Regions);
 
             if (styles.fillMicroBorders)
                 DrawMicroBorders(BorderLayer.Fill);
         }
 
+        private void DrawMicroBordersShade()
+        {
+            if (!styles.microBorders.visible || !styles.shadeMicroBorders)
+                return;
+
+            DrawMicroBorders(BorderLayer.Shade);
+        }
+
         private void DrawMicroBordersStroke()
         {
             if (!styles.microBorders.visible)
                 return;
-
-            graphics.SmoothingMode = SmoothingMode.HighQuality;
 
             DrawMicroBorders(BorderLayer.Stroke);
         }
@@ -1730,10 +1735,13 @@ namespace Maps.Rendering
             }
         }
         
-        private enum BorderLayer { Fill, Stroke, Regions };
+        private enum BorderLayer { Fill, Shade, Stroke, Regions };
         private void DrawMicroBorders(BorderLayer layer)
         {
             const byte FILL_ALPHA = 64;
+            const byte SHADE_ALPHA = 128;
+
+            graphics.SmoothingMode = SmoothingMode.HighQuality;
 
             PathUtil.PathType borderPathType = styles.microBorderStyle == MicroBorderStyle.Square ?
                 PathUtil.PathType.Square : PathUtil.PathType.Hex;
@@ -1742,6 +1750,7 @@ namespace Maps.Rendering
             AbstractBrush solidBrush = new AbstractBrush();
             AbstractPen pen = new AbstractPen(Color.Empty);
             styles.microBorders.pen.Apply(ref pen);
+            float penWidth = pen.Width;
 
             foreach (Sector sector in selector.Sectors)
             {
@@ -1793,6 +1802,14 @@ namespace Maps.Rendering
                         if (styles.microBorders.pen.dashStyle != Graphics.DashStyle.Solid)
                             pen.DashStyle = styles.microBorders.pen.dashStyle;
 
+                        // Shade is a wide/solid outline under the main outline.
+                        if (layer == BorderLayer.Shade)
+                        {
+                            pen.Width = penWidth * 2.5f;
+                            pen.DashStyle = Graphics.DashStyle.Solid;
+                            pen.Color = Color.FromArgb(SHADE_ALPHA, pen.Color);
+                        }
+
                         if (styles.microBorderStyle != MicroBorderStyle.Curve)
                         {
                             // Clip to the path itself - this means adjacent borders don't clash
@@ -1806,6 +1823,7 @@ namespace Maps.Rendering
                                         solidBrush.Color = Color.FromArgb(FILL_ALPHA, borderColor.Value);
                                         graphics.DrawPath(solidBrush, drawPath);
                                         break;
+                                    case BorderLayer.Shade:
                                     case BorderLayer.Stroke:
                                         graphics.DrawPath(pen, drawPath);
                                         break;
@@ -1822,6 +1840,7 @@ namespace Maps.Rendering
                                     graphics.DrawClosedCurve(solidBrush, borderPath.points);
                                     break;
 
+                                case BorderLayer.Shade:
                                 case BorderLayer.Stroke:
                                     foreach (var segment in borderPath.curves)
                                     {

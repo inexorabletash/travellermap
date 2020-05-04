@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html mozNoMarginBoxes>
+<html>
 <title>Atlas - Traveller Map</title>
 <meta charset="utf-8">
 <link rel="shortcut icon" href="../favicon.ico">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
-<script src="https://cdn.rawgit.com/inexorabletash/poly2/v2.0.1/polyfill.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
 <script src="../map.js?update=2020-01-01T14:47:00"></script>
-<script src="atlas.js?update=2019-03-16T14:43:23"></script>
+<script src="atlas.js?update=2020-04-16T12:52:34"></script>
 <style>
 @import url(https://fonts.googleapis.com/css?family=Marcellus|Roboto+Condensed);
 
@@ -83,6 +82,10 @@ body, table {
   padding: 0.5in;
 }
 
+.twocol {
+  column-count: 2;
+}
+
 p {
   text-align: justify;
   text-indent: 0.1in;
@@ -105,6 +108,8 @@ h1.underline {
   border-bottom: 6pt solid black;
   margin-left: -0.5in;
   padding-left: 0.5in;
+
+  column-span: all;
 }
 
 /* Cover, Back Cover & Title Page ============================== */
@@ -265,7 +270,9 @@ h1.underline {
 
 .title_publisher img { display: inline-block; height: 100%; }
 
-/* Credits ============================== */
+
+
+/* Colophon ============================== */
 
 .colophon {
   padding-top: 4.5in;
@@ -284,24 +291,22 @@ h1.underline {
   margin-bottom: 1em;
 }
 
-/* Credits ============================== */
-
-.credits h1 { visibility: hidden; }
-.credits.instance0 h1 { visibility: visible; }
-
 /* Introduction ============================== */
 
-.introduction h2 {
+.page.introduction .content h2 {
   text-transform: uppercase;
   font-size: 10pt;
   font-weight: bold;
   margin-bottom: 6pt;
 }
 
-table.glyphs td:nth-child(1) { text-align: center; }
-table.glyphs td { padding: 2px; }
-.introduction .red { color: #E32736; }
-.introduction .blue { color: #00bfff; }
+.page.introduction .content .amber { color: #FFCC00; }
+.page.introduction .content .red { color: #E32736; }
+.page.introduction .content .blue { color: #00bfff; }
+
+#glyphs { column-count: 2; }
+#glyphs dt { float: left; clear: left; width: 15px; line-height: 18px; text-align: center; font-weight: bold; }
+#glyphs dd { margin-left: 20px; line-height: 18px; }
 
 /* Charted Space  ============================== */
 
@@ -391,10 +396,7 @@ table.glyphs td { padding: 2px; }
 
 /* Sector Data ============================== */
 
-.sector-data {
-}
-
-.sector-data h2 { margin-top: 0; }
+page.sector-data h2 { margin-top: 0; }
 
 .column { }
 .column:nth-last-child(2) { padding-right: 4pt; border-right: 1pt solid black; }
@@ -428,9 +430,28 @@ table.uwp-data {
 
 .uwp-data .hipop { text-transform: uppercase; }
 
+/* World Data ============================== */
+
+.page.world-data:not(.instance0) .content h1 { display: none; }
+
+#example { margin-top: 10px; margin-bottom: 10px; }
+#example th { font-style: italic; font-weight: normal; }
+#example th, #example td { padding-right: 10px; }
+
+.codetable { float: right; break-inside: avoid-column; margin: 10px 0 10px 10px; clear: both; }
+.codetable .codetitle { text-transform: uppercase; font-weight: bold; text-align: center; }
+.codetable th { font-weight: normal; font-style: italic; }
+.codetable tr td:nth-child(1) { text-align: right; }
+.codetable tr td:nth-child(n+1) { padding-right: 10px; }
+.codetable, .codetable table { font-size: 9pt; }
+
+/* Credits ============================== */
+
+.page.credits:not(.instance0) .content h1 { display: none; }
+
 /* Index ============================== */
 
-.index {
+.page.index .content {
   font-size: 16pt;
   font-family: Optima, Marcellus, serif;
 }
@@ -459,8 +480,9 @@ table.uwp-data {
   <!-- Document Template -->
   <script id="template" type="text/x-handlebars-template">
 
+
     <!-- Cover Page -->
-    <div id="cover_page" class="page">
+    <div id="cover_page" class=page>
       <div class="title">
         <div class="title_title">The Atlas of the Imperium<br>Second Survey</div>
         <div class="title_logo">
@@ -475,7 +497,7 @@ table.uwp-data {
     </div>
 
     <!-- Title Page -->
-    <div id="title_page" class="page">
+    <div id="title_page" class=page>
       <div class="title">
         <div class="title_title">The Atlas of the Imperium<br>Second Survey</div>
         <div class="title_logo">
@@ -490,7 +512,7 @@ table.uwp-data {
     </div>
 
     <!-- Colophon Page -->
-    <div id="colophon_page" class="page">
+    <div id="colophon_page" class=page>
       <div class="content colophon">
 
         <h1>Atlas of the Imperium: Second Survey</h1>
@@ -524,8 +546,10 @@ table.uwp-data {
         </p>
 
         <p>
-          Includes text from <i>The Atlas of the Imperium</i>
-          by Marc W. Miller (Game Designers' Workshop, 1984.)
+          Includes text from <cite>The Atlas of the Imperium</cite>
+          by Marc W. Miller (Game Designers’ Workshop, 1984),
+          and <cite>Traveller 5 Core Rules</cite> by Marc W. Miller
+          (Far Future Enterprises, 2019).
         </p>
 
         <p>
@@ -547,7 +571,7 @@ table.uwp-data {
     </div>
 
     <!-- Charted Space -->
-    <div class="page">
+    <div class=page>
       <div class="content charted-space">
         <img src="{{charted_space_src}}" alt="" class="charted-space-image">
         <h1>Charted Space: Sectors of the Imperium and Surrounds</h1>
@@ -556,189 +580,180 @@ table.uwp-data {
     </div>
 
     <!-- Introduction Page -->
-    <div class="page">
-      <div class="content introduction">
+    <div class=page>
+      <div class="content twocol introduction">
         <h1 class="underline">Mapping The Imperium</h1>
-        <p>
-          Early in the history of the Third Imperium, it became clear
-          to the Imperial bureaucracy that detailed maps of its
-          interstellar territories would be necessary. Indeed, one
-          whole service was created just to oversee the creation and
-          maintenance of these maps. Inherent in the Imperial
-          Interstellar Scout Service mission of recontact of settled
-          worlds and exploration of new worlds was the maintenance of
-          records of those worlds. As an office within the Scout
-          Service, the Imperial Grand Survey handles navigational
-          charts for the Imperium &mdash; and beyond.
-        </p>
-        <p>
-          The first comprehensive survey of the Imperium brought many
-          of the fragmented charts and maps under one authority and
-          made them available to government and commercial agencies.
-          Published in 420, the First Survey represented more than one
-          hundred years of work.
-        </p>
-        <p>
-          By 990, the First Survey was long obsolete, and as an
-          observance of the millennium of the Imperium, a Second Survey
-          was commissioned by the Emperor. Over seventy years in
-          compilation, the Second Survey expanded and refined the data
-          of the First Survey and was finally published in 1065.
-        </p>
-        <p>
-          In the following years, the survey data has been refined and
-          expanded upon. Trade of navigational data with neighboring
-          polities and the inclusion of reports from far-flung
-          explorations has pushed the boundaries of the published data
-          many sectors beyond the Imperial frontier, and updated
-          editions of the Second Survey data are regularly published.
-          It should be noted that data beyond the Imperial border is
-          provided as a best effort, and may include errors and
-          omissions.
-        </p>
-        <p>
-          <b>For Use With Traveller:</b>
-          <cite>The Atlas of the Imperium: Second Survey</cite>
-          is a compilation of starmaps showing the broad expanse of
-          the Imperium and nearby sectors in Charted Space. More than
-          50 sectors (of 16 subsectors each) show the star systems of
-          the empire and many star systems which border it as well.
-        </p>
-        <p>
-          The maps of the <cite>Atlas</cite> are intended as a
-          navigational guide. Data on star systems shows the
-          information necessary to allow interstellar navigation: fuel
-          sources, starport types, bases, and allegiance. Following
-          each map are the full details of each system, presented
-          according to the <b>Traveller 5 Core Rules</b> but applicable
-          to any edition.
-        </p>
+        <div style="column-span: all">
+          <p>
+            Early in the history of the Third Imperium, it became clear
+            to the Imperial bureaucracy that detailed maps of its
+            interstellar territories would be necessary. Indeed, one
+            whole service was created just to oversee the creation and
+            maintenance of these maps. Inherent in the Imperial
+            Interstellar Scout Service mission of recontact of settled
+            worlds and exploration of new worlds was the maintenance of
+            records of those worlds. As an office within the Scout
+            Service, the Imperial Grand Survey handles navigational
+            charts for the Imperium &mdash; and beyond.
+          </p>
+          <p>
+            The first comprehensive survey of the Imperium brought many
+            of the fragmented charts and maps under one authority and
+            made them available to government and commercial agencies.
+            Published in 420, the First Survey represented more than one
+            hundred years of work.
+          </p>
+          <p>
+            By 990, the First Survey was long obsolete, and as an
+            observance of the millennium of the Imperium, a Second Survey
+            was commissioned by the Emperor. Over seventy years in
+            compilation, the Second Survey expanded and refined the data
+            of the First Survey and was finally published in 1065.
+          </p>
+          <p>
+            In the following years, the survey data has been refined and
+            expanded upon. Trade of navigational data with neighboring
+            polities and the inclusion of reports from far-flung
+            explorations has pushed the boundaries of the published data
+            many sectors beyond the Imperial frontier, and updated
+            editions of the Second Survey data are regularly published.
+            It should be noted that data beyond the Imperial border is
+            provided as a best effort, and may include errors and
+            omissions.
+          </p>
+          <p>
+            <b>For Use With Traveller:</b>
+            <cite>The Atlas of the Imperium: Second Survey</cite>
+            is a compilation of starmaps showing the broad expanse of
+            the Imperium and nearby sectors in Charted Space. More than
+            50 sectors (of 16 subsectors each) show the star systems of
+            the empire and many star systems which border it as well.
+          </p>
+          <p>
+            The maps of the <cite>Atlas</cite> are intended as a
+            navigational guide. Data on star systems shows the
+            information necessary to allow interstellar navigation:
+            fuel sources, starport types, bases, and allegiance.
+            Following each sector map are the full details of each
+            system, presented according to the <b>Traveller 5 Core
+            Rules</b> but applicable to any edition.
+          </p>
+
+          <p>
+            <b>Dates:</b> The assumed date of publication of the <cite>Second Survey</cite>
+            data is 1105: the 1105th year since the founding of the Imperium.
+            Information is current as of that date.
+          </p>
+        </div><!-- column-span -->
+
+        <h2>Using the Atlas</h2>
 
         <p>
-          <b>Dates:</b> The assumed date of publication of the <cite>Second Survey</cite>
-          data is 1105: the 1105th year since the founding of the Imperium.
-          Information is current as of that date.
+          The map on the preceding page presents an overview of
+          Charted Space, showing the positions of the sectors of
+          the Imperium and adjacent regions. Dimmed sectors are
+          not covered by this atlas. An index to the sectors
+          is given at the end of the <cite>Atlas<cite>.
         </p>
 
-        <table>
-          <tr>
-            <td style="width: 50%; padding-right: 6pt;">
-              <h2>Using the Atlas</h2>
+        <p><b>Map Symbols:</b>
+          Each hex on the sector map represents one parsec (3.27
+          light-years). Hexes containing star systems are
+          numbered to assist in specifying locations within a
+          sector. Hexes with symbols within them contain star
+          systems.
+        </p>
 
-              <p>
-                The map on the preceding page presents an overview of
-                Charted Space, showing the positions of the sectors of
-                the Imperium and adjacent regions. Dimmed sectors are
-                not covered by the <cite>Atlas</cite>.
-              </p>
+        <p>
+          The central symbol in a hex shows the type of world:
+          solid dots (<span class="blue">&#x25CF;</span>)
+          indicate worlds with water present; open circles
+          (&#x25CB;) represent desert worlds (with a
+          hydrographic percentage of zero, or without easily
+          accessible water); a group of dots (:::) indicates an
+          asteroid belt.
+        </p>
 
-              <p>
-                <b>Map Symbols:</b>
-                Each hex on the sector map represents one parsec (3.27
-                light-years). Hexes containing star systems are
-                numbered to assist in specifying locations within a
-                sector.
-              </p>
+        <p>
+          Worlds where no details have been charted show a placeholder
+          symbol (&#x2217;). A crosshair symbol
+          (<span class=red>&#x2316;</span>) is used for charted items
+          outside star systems, such as calibration points, rogue
+          planets, refuelling stations, and other anomalies.
+        </p>
 
-              <p>
-                The central symbol in a hex shows the type of world:
-                solid dots (<span class="blue">&#x25CF;</span>)
-                indicate worlds with water present; open circles
-                (&#x25CB;) represent desert worlds (with a
-                hydrographic percentage of zero, or without easily
-                accessible water); a group of dots (:::) indicates an
-                asteroid belt.
-              </p>
+        <p>
+          The upper right of the hex is reserved for the
+          gas giant symbol: if a dot (&bull;) is present in the
+          upper right, then the system has one or more gas giants
+          or ice giants suitable for starship refuelling.
+        </p>
 
-              <p>
-                The upper right of the hex is reserved for the
-                gas giant symbol: if a dot (&bull;) is present in the
-                upper right, then the system has one or more gas giants
-                suitable for starship refuelling.
-              </p>
+        <p>
+          The top center of the hex is reserved for the
+          starport type: starport letter codes from A to E plus X.
+        </p>
 
-              <p>
-                The left side of the hex is reserved for base
-                and related symbols:
-              </p>
+        <p>
+          The left side of the hex is reserved for naval base,
+         cout base, and related symbols:
+        </p>
 
-              <table class="glyphs">
-                <tr><td>&#x2605;</td><td>Imperial Naval Base</td>
-                  <td class="red"><b>&Gamma;</b></td><td>Research Station</td></tr>
-                <tr><td>&#x25B2;</td><td>Scout Base</td>
-                  <td><b>R</b></td><td>Imperial Reserve</td></tr>
-                <tr><td class="red">&#x25B2;</td><td>Scout Way Station</td>
-                  <td class="red"><b>P</b></td><td>Penal Colony</td></tr>
-                <tr><td>&#x25A0;</td><td>Naval Depot</td>
-                  <td><b>X</b></td><td>Prison, Exile Camp</td></tr>
+        <dl id=glyphs style="break-inside: avoid">
+          <dt>&#x2605;</dt><dd>Imperial Naval Base</dd>
+          <dt>&#x25B2;</dt><dd>Scout Base</dd>
+          <dt class=red>&#x25B2;</dt><dd>Scout Way Station</dd>
+          <dt>&#x25A0;</dt><dd>Naval Depot</dd>
 
-                <tr><td>&diams;</td><td>Zhodani Base</td></tr>
-                <tr><td class="red">&diams;</td><td>Zhodani Relay Station</td></tr>
+          <dt>&diams;</dt><dd>Zhodani Base</dd>
+          <dt class=red>&diams;</dt><dd>Zhodani Relay Station</dd>
 
-                <tr><td class="red">&#x2605;</td><td>Other Naval / Tlauku Base</td></tr>
-                <tr><td class="red">&#x25A0;</td><td>Other Outpost / Depot</td></tr>
-                <tr><td>&#x2217;&#x2217;</td><td>Corsair / Clan / Embassy</td></tr>
+          <dt class=red>&#x2605;</dt><dd><span>Other Naval / Tlauku Base</span></dd>
+          <dt class=red>&#x25A0;</dt><dd>Other Outpost / Depot</dd>
+          <dt>&lowast;&lowast;</dt><dd>Corsair / Clan / Embassy</dd>
 
-                <tr><td>&#x2726;</td><td>Military Base / Garrison</td></tr>
-                <tr><td>&bull;</td><td>Independent Base</td></tr>
-              </table>
+          <dt>&#x2726;</dt><dd>Military Base / Garrison</dd>
+          <dt>&bull;</dt><dd>Independent Base</dd>
 
-            </td>
-            <td style="width: 50%; padding-left: 6pt;">
-              <p>
-                The top center of the hex is reserved for the
-                starport type: starport letter codes from A to E plus X.
-              </p>
-              <p>
-                The bottom of the hex contains the world name.
-                If the world shown has a population factor of 9+
-                (at least one billion) the name of the world is
-                shown in UPPERCASE.
-              </p>
-              <p>
-                The lower right corner of the hex is reserved for
-                allegiance &ndash; the government of the system.
-                If there is no indication present then the system
-                is within the Imperium. Other four letter groups
-                indicate non-Imperial interstellar governments, or
-                Imperial cultural regions. Labels on the map
-                identify the full name of the region.
-              </p>
-              <p>
-                A ring within the hex indicates a travel advisory:
-                amber (caution) or red (forbidden).
-              </p>
-              <p>
-                <b>Data Format:</b> A full explanation of the
-                <cite>Second Survey</cite> data
-                format can be found in the <b>Traveller 5 Core Rules</b> or
-                online at: <a>https://travellermap.com/doc/secondsurvey</a>.
-                The fields are:
-              </p>
-              <p><b>Hex:</b> Position within the sector (XXYY).</p>
-              <p><b>Name:</b> Name of the MainWorld in the system.</p>
-              <p><b>UWP:</b> Universal World Profile:
-                Starport,
-                Size, Atmosphere, Hydrographics,
-                Population (exponent), Government, Law level,
-                Tech level.
-              </p>
-              <p><b>Remarks:</b> Trade codes and other attributes.</p>
-              <p><b>{Ix}:</b> Importance.</p>
-              <p><b>(Ex):</b> Economics: Resources, Labor, Infrastructure, Efficiency.</p>
-              <p><b>[Cx]:</b> Culture: Homogeneity, Acceptance, Strangness, Symbols.</p>
-              <p><b>N:</b> Nobility (Imperium).</p>
-              <p><b>B:</b> Bases: N=Naval, S=Scout, D=Depot, W=Way, etc.</p>
-              <p><b>Z:</b> Travel zone: A=Amber (caution), R=Red (forbidden).</p>
-              <p><b>PBG:</b> Population (multiplier), Belts, Gas giants.</p>
-              <p><b>W:</b> Total world count in system.</p>
-              <p><b>A:</b> Allegiance: government, province, or region.</p>
-              <p><b>Stellar:</b> Stars in the system.</p>
+          <dt class=red>&Gamma;</dt><dd>Research Station</dd>
+          <dt>R</dt><dd>Imperial Reserve</dd>
+          <dt class=red>P</dt><dd>Penal Colony</dd>
+          <dt>X</dt><dd>Prison, Exile Camp</dd>
+        </dl>
 
+        <p>
+          The bottom of the hex contains the world name.
+          If the world shown has a population factor of 9+
+          (at least one billion) the name of the world is
+          shown in UPPERCASE.
+        </p>
+        <p>
+          The lower right corner of the hex is reserved for
+          allegiance &ndash; the government of the system.
+          If there is no indication present then the system
+          is within the Imperium. Other four letter groups
+          indicate non-Imperial interstellar governments, or
+          Imperial cultural regions. Labels on the map
+          identify the full name of the region.
+        </p>
+        <p>
+          A ring within the hex indicates a travel zone: amber for
+          caution (<span class=amber>&#x25EF;</span>), or red for
+          forbidden (<span class=red>&#x25EF;</span>). Travel
+          advisories are provided by the <i>Journal of the Travellers’
+          Aid Society</i>, and used with permission of that
+          publication.
+        </p>
 
-            </td>
-          </tr>
-        </table>
+        <p><b>World Data:</b>
+          Data for every charted world is provided in the <cite>Second
+          Survey</cite> format, including the Universal World Profile
+          (UWP) for each world, trade codes and other remarks, world
+          importance, economics, and cultural details, and further
+          details about the star system including number of belts, gas
+          giants, and the system’s stars. A full explanation of the
+          data format is present at the end of the <cite>Atlas</cite>.
+        </p>
 
       </div>
       <div class=pagenum></div>
@@ -747,7 +762,7 @@ table.uwp-data {
     {{#sectors}}
 
     <!-- Sector Map -->
-    <div class="page">
+    <div class=page>
       <div class="content sector-map">
         <h1>
           {{name}}
@@ -755,29 +770,29 @@ table.uwp-data {
         </h1>
         <div class="subsectors">
           <table class="ss-grid">
-            <tr><td>A</td><td>B</td><td>C</td><td>D</td></tr>
-            <tr><td>E</td><td>F</td><td>G</td><td>H</td></tr>
-            <tr><td>I</td><td>J</td><td>K</td><td>L</td></tr>
-            <tr><td>M</td><td>N</td><td>O</td><td>P</td></tr>
+            <tr><td>A<td>B<td>C<td>D</tr>
+            <tr><td>E<td>F<td>G<td>H</tr>
+            <tr><td>I<td>J<td>K<td>L</tr>
+            <tr><td>M<td>N<td>O<td>P</tr>
           </table>
           <br>
           <table class="ss-names">
-            <tr><td>A</td><td>{{metadata.Subsectors.0.Name}}</td></tr>
-            <tr><td>B</td><td>{{metadata.Subsectors.1.Name}}</td></tr>
-            <tr><td>C</td><td>{{metadata.Subsectors.2.Name}}</td></tr>
-            <tr><td>D</td><td>{{metadata.Subsectors.3.Name}}</td></tr>
-            <tr><td>E</td><td>{{metadata.Subsectors.4.Name}}</td></tr>
-            <tr><td>F</td><td>{{metadata.Subsectors.5.Name}}</td></tr>
-            <tr><td>G</td><td>{{metadata.Subsectors.6.Name}}</td></tr>
-            <tr><td>H</td><td>{{metadata.Subsectors.7.Name}}</td></tr>
-            <tr><td>I</td><td>{{metadata.Subsectors.8.Name}}</td></tr>
-            <tr><td>J</td><td>{{metadata.Subsectors.9.Name}}</td></tr>
-            <tr><td>K</td><td>{{metadata.Subsectors.10.Name}}</td></tr>
-            <tr><td>L</td><td>{{metadata.Subsectors.11.Name}}</td></tr>
-            <tr><td>M</td><td>{{metadata.Subsectors.12.Name}}</td></tr>
-            <tr><td>N</td><td>{{metadata.Subsectors.13.Name}}</td></tr>
-            <tr><td>O</td><td>{{metadata.Subsectors.14.Name}}</td></tr>
-            <tr><td>P</td><td>{{metadata.Subsectors.15.Name}}</td></tr>
+            <tr><td>A<td>{{metadata.Subsectors.0.Name}}</tr>
+            <tr><td>B<td>{{metadata.Subsectors.1.Name}}</tr>
+            <tr><td>C<td>{{metadata.Subsectors.2.Name}}</tr>
+            <tr><td>D<td>{{metadata.Subsectors.3.Name}}</tr>
+            <tr><td>E<td>{{metadata.Subsectors.4.Name}}</tr>
+            <tr><td>F<td>{{metadata.Subsectors.5.Name}}</tr>
+            <tr><td>G<td>{{metadata.Subsectors.6.Name}}</tr>
+            <tr><td>H<td>{{metadata.Subsectors.7.Name}}</tr>
+            <tr><td>I<td>{{metadata.Subsectors.8.Name}}</tr>
+            <tr><td>J<td>{{metadata.Subsectors.9.Name}}</tr>
+            <tr><td>K<td>{{metadata.Subsectors.10.Name}}</tr>
+            <tr><td>L<td>{{metadata.Subsectors.11.Name}}</tr>
+            <tr><td>M<td>{{metadata.Subsectors.12.Name}}</tr>
+            <tr><td>N<td>{{metadata.Subsectors.13.Name}}</tr>
+            <tr><td>O<td>{{metadata.Subsectors.14.Name}}</tr>
+            <tr><td>P<td>{{metadata.Subsectors.15.Name}}</tr>
           </table>
         </div>
 
@@ -788,8 +803,8 @@ table.uwp-data {
 
     {{#pages}}
     <!-- Data Page -->
-    <div class="page">
-      <div class="content sector-data">
+    <div class="page sector-data">
+      <div class="content">
         <h2>{{../name}} &mdash; Page {{index}} of {{../page_count}}</h2>
         <table style="table-layout: fixed; width: 0">
           <tr>
@@ -842,16 +857,518 @@ table.uwp-data {
 
     {{/sectors}}
 
+    <!-- World Data pp1 -->
+    <div class="page world-data instance0">
+      <div class="content twocol">
+        <h1 class="underline">World Data</h1>
+
+        <div style="column-span: all">
+          <p>
+            World listings are presented in the format described
+            in <b>Traveller 5 Core Rules</b> or online at:
+            <a>https://travellermap.com/doc/secondsurvey</a>. For
+            convenience, the format and explanations are given below.
+          </p>
+
+          <table id=example>
+            <tr>
+              <th>Hex</th>
+              <th>Name</th>
+              <th>UWP</th>
+              <th>Remarks</th>
+              <th>{Ix}</th>
+              <th>(Ex)</th>
+              <th>[Cx]</th>
+              <th>N</th>
+              <th>B</th>
+              <th>Z</th>
+              <th>PBG</th>
+              <th>W</th>
+              <th>A</th>
+              <th>Stellar</th>
+            </tr>
+            <tr>
+              <td>0101</td>
+              <td>Lacipyt</td>
+              <td>A123456-7</td>
+              <td>Ag Ni</td>
+              <td>{1}</td>
+              <td>(987-6)</td>
+              <td>[5678]</td>
+              <td>BC</td>
+              <td>NS</td>
+              <td>R</td>
+              <td>345</td>
+              <td>8</td>
+              <td>ImDd</td>
+              <td>F8 V M3 V</td>
+            </tr>
+          </table>
+        </div><!-- column-span -->
+
+        <div class=codetable>
+          <div class=codetitle>Atmospheres</div>
+          <table>
+            <tr><th>Code<th>Description</tr>
+            <tr><td>0<td>No atmosphere.</tr>
+            <tr><td>1<td>Trace.</tr>
+            <tr><td>2<td>Very thin, tainted</tr>
+            <tr><td>3<td>Very thin.</tr>
+            <tr><td>4<td>Thin, tainted</tr>
+            <tr><td>5<td>Thin.</tr>
+            <tr><td>6<td>Standard.</tr>
+            <tr><td>7<td>Standard, tainted.</tr>
+            <tr><td>8<td>Dense.</tr>
+            <tr><td>9<td>Dense, tainted.</tr>
+            <tr><td>A<td>Exotic.</tr>
+            <tr><td>B<td>Corrosive.</tr>
+            <tr><td>C<td>Insidious.</tr>
+            <tr><td>D<td>Dense, high.</tr>
+            <tr><td>E<td>Thin, low.</tr>
+            <tr><td>F<td>Unusual.</tr>
+          </table>
+        </div>
+
+        <div class=codetable>
+          <div class=codetitle>Government</div>
+          <table>
+            <tr><th>Code<th>Description</tr>
+            <tr><td>0<td>No Government Structure.</tr>
+            <tr><td>1<td>Company/Corporation.</tr>
+            <tr><td>2<td>Participating Democracy.</tr>
+            <tr><td>3<td>Self-Perpetuating Oligarchy.</tr>
+            <tr><td>4<td>Representative Democracy.</tr>
+            <tr><td>5<td>Feudal Technocracy.</tr>
+            <tr><td>6<td>Captive Government / Colony.</tr>
+            <tr><td>7<td>Balkanization.</tr>
+            <tr><td>8<td>Civil Service Bureaucracy.</tr>
+            <tr><td>9<td>Impersonal Bureaucracy.</tr>
+            <tr><td>A<td>Charismatic Dictator.</tr>
+            <tr><td>B<td>Non-Charismatic Dictator.</tr>
+            <tr><td>C<td>Charismatic Oligarchy.</tr>
+            <tr><td>D<td>Religious Dictatorship.</tr>
+            <tr><td>E<td>Religious Autocracy.</tr>
+            <tr><td>F<td>Totalitarian Oligarchy.</tr>
+          </table>
+        </div>
+
+        <div class=codetable>
+          <div class=codetitle>Law Level</div>
+          <table>
+            <tr><th>Code<th>Description</tr>
+            <tr><td>0<td>No prohibitions.</tr>
+            <tr><td>1<td>Prohibition of WMD, Psi weapons.</tr>
+            <tr><td>2<td>Prohibtion of “Portable” weapons.</tr>
+            <tr><td>3<td>Prohibition of Acid, Fire, Gas.</tr>
+            <tr><td>4<td>Prohibition of Laser, Beam.</tr>
+            <tr><td>5<td>No Shock, EMP, Rad, Mag, Grav.</tr>
+            <tr><td>6<td>Prohibition of MachineGuns.</tr>
+            <tr><td>7<td>Prohibition of Pistols.</tr>
+            <tr><td>8<td>Open display of weapons prohibited.</tr>
+            <tr><td>9<td>No weapons outside the home.</tr>
+            <tr><td>A<td>All weapons prohibited.</tr>
+            <tr><td>B<td>Continental passports required.</tr>
+            <tr><td>C<td>Unrestricted invasion of privacy.</tr>
+            <tr><td>D<td>Paramilitary law enforcement.</tr>
+            <tr><td>E<td>Full-fledged police state.</tr>
+            <tr><td>F<td>Daily life rigidly controlled.</tr>
+            <tr><td>G<td>Disproportionate punishment.</tr>
+            <tr><td>H<td>Legalized oppressive practices.</tr>
+            <tr><td>J<td>Routine oppression.</tr>
+          </table>
+        </div>
+
+        <div class=codetable>
+          <div class=codetitle>Tech Levels</div>
+          <table>
+            <tr><th>Code<th>Description</tr>
+            <tr><td>0<td>Stone Age.</tr>
+            <tr><td>1<td>Bronze, Iron.</tr>
+            <tr><td>2<td>Printing Press.</tr>
+            <tr><td>3<td>Basic Science.</tr>
+            <tr><td>4<td>External Combustion.</tr>
+            <tr><td>5<td>Mass Production.</tr>
+            <tr><td>6<td>Nuclear Power.</tr>
+            <tr><td>7<td>Miniaturized Electronics.</tr>
+            <tr><td>8<td>Quality Computers.</tr>
+            <tr><td>9<td>Anti-Gravity.</tr>
+            <tr><td>A<td>Interstellar community.</tr>
+            <tr><td>B<td>Lower Average Imperial.</tr>
+            <tr><td>C<td>Average Imperial.</tr>
+            <tr><td>D<td>Above Average Imperial.</tr>
+            <tr><td>E<td>Above Average Imperial.</tr>
+            <tr><td>F<td>Technical Imperial Maximum.</tr>
+            <tr><td>G<td>Robots.</tr>
+            <tr><td>H<td>Artificial Intelligence.</tr>
+            <tr><td>J<td>Personal Disintegrators.</tr>
+          </table>
+        </div>
+
+        <p><b>Hex:</b>
+          The hex location identifier for the location of the system
+          within the sector.
+        </p>
+
+        <p><b>Name:</b>
+          The generally accepted name of the MainWorld of the system.
+        </p>
+
+        <!-- UWP ================================================== -->
+
+        <p><b>UWP:</b>
+          The Universal World Profile provides the following digits:
+          A is its starport type, 1 is its size code, 2 is its
+          atmosphere type, 3 is its hydrograhic percentage, 4 is its
+          population exponent, 5 is its government type, 6 is its
+          law level, and 7 is the world’s tech level.
+        </p>
+
+        <p><b>Starports:</b> The various starport codes are described below.</p>
+
+        <p><span>A:</span>
+          Excellent Quality. Refined fuel available. Annual
+          maintenance overhaul available. Shipyard capable of
+          constructing starships and non-starships present.
+        </p>
+        <p><span>B:</span>
+          Good Quality. Refined fuel available. Annual maintenance
+          overhaul available. Shipyard capable of constructing
+          non-starships present.
+        </p>
+        <p><span>C:</span>
+          Routine Quality. Only unrefined fuel available. Reasonable
+          repair facilities present.
+        </p>
+        <p><span>D:</span>
+          Poor Quality. Only unrefined fuel available. No repair
+          facilities present.
+        </p>
+        <p><span>E:</span>
+          Frontier Installation. Essentially a marked spot of
+          bedrock with no fuel, facilities, or bases present.
+        </p>
+        <p><span>X:</span>
+          No Starport. No provision is made for any ship landings.
+        </p>
+
+        <p><b>Planetary Size:</b>
+          The planetary size digit gives the diameter of the world
+          in thousands of miles (a size A world has a diameter of
+          10,000 miles, or 16,000km). A size code of 0 indicates an
+          asteroid belt.
+        </p>
+
+        <p><b>Atmosphere Type:</b>
+          This digit describes the world’s atmosphere, as shown on
+          the atmosphere table. Atmospheres of types 5, 6 and 8 are
+          breathable by humans without artificial aid.
+        </p>
+
+        <p><b>Hydrographic Percentage:</b>
+          This code describes the portion of the world’s surface
+          covered by seas or oceans, given in increments of 10%. A
+          code of 0 means there is no liquid, and a code of A means
+          the entier surface is covered by liquid. If atmosphere
+          type is A or above, fluid may be present in place of
+          water.
+        </p>
+
+        <p><b>Population:</b>
+          This code gives the exponent of the world’s population
+          level. A code of 0 means the world is uninhabited. A code
+          of 1 means tens of inhabitants, 2 means hundreds, and so
+          on.
+        </p>
+
+        <p><b>Government:</b>
+          This digit describes the world’s government, as shown on
+          the government table.
+        </p>
+
+        <p><b>Law Level:</b>
+          This digit describes the degree to which the government
+          restricts the actions of individuals. One aspect of
+          particular interest to adventurers is the nature of local
+          arms control law, as shown on the law level table.
+        </p>
+
+        <p><b>Tech Level:</b>
+          This digit gives the general level of technological
+          sophistication of the world. The tech level table gives a
+          rough equivalence between tech levels and periods in
+          Terran history.
+        </p>
+      </div>
+      <div class=pagenum></div>
+    </div>
+
+    <!-- World Data pp2 -->
+    <div class="page world-data instance1">
+      <div class="content twocol">
+        <h1 class="underline">World Data</h1>
+
+        <div class=codetable>
+          <div class=codetitle>Trade Classifications</div>
+          <table>
+            <tr><th>Code<th>Description</tr>
+            <tr><td>Ag<td>Agricultural.</tr>
+            <tr><td>As<td>Asteroid Belt.</tr>
+            <tr><td>Ba<td>Barren.</tr>
+            <tr><td>De<td>Desert.</tr>
+            <tr><td>Di<td>Dieback.</tr>
+            <tr><td>Fl<td>Fluid Hydrographics.</tr>
+            <tr><td>Ga<td>Garden World.</tr>
+            <tr><td>He<td>Hellworld.</tr>
+            <tr><td>Hi<td>High Population.</tr>
+            <tr><td>Ic<td>Ice Capped.</tr>
+            <tr><td>In<td>Industrialized.</tr>
+            <tr><td>Lo<td>Low Population.</tr>
+            <tr><td>Na<td>Non-Agricultural.</tr>
+            <tr><td>Ni<td>Non-Industrial.</tr>
+            <tr><td>Oc<td>Ocean World.</tr>
+            <tr><td>Pa<td>Pre-Agricultural.</tr>
+            <tr><td>Ph<td>Pre-High Population.</tr>
+            <tr><td>Pi<td>Pre-Industrial.</tr>
+            <tr><td>Po<td>Poor.</tr>
+            <tr><td>Pr<td>Pre-Rich.</tr>
+            <tr><td>Px<td>Prison, Exile Camp.</tr>
+            <tr><td>Ri<td>Rich.</tr>
+            <tr><td>Va<td>Vacuum World.</tr>
+            <tr><td>Wa<td>Water World.</tr>
+          </table>
+        </div>
+
+        <div class=codetable>
+          <div class=codetitle>Remarks</div>
+          <table>
+            <tr><th>Code<th>Description</tr>
+            <tr><td>Ab<td>Data Repository.</tr>
+            <tr><td>An<td>Ancient Site.</tr>
+            <tr><td>Cp<td>Subsector Capital.</tr>
+            <tr><td>Cs<td>Sector Capital.</tr>
+            <tr><td>Cx<td>Capital.</tr>
+            <tr><td>Cy<td>Colony.</tr>
+            <tr><td>Da<td>Danger.</tr>
+            <tr><td>Fo<td>Forbidden.</tr>
+            <tr><td>Mr<td>Military Rule.</tr>
+            <tr><td>O:<td>Owned world.</tr>
+            <tr><td>Pe<td>Penal Colony.</tr>
+            <tr><td>Pz<td>Puzzle.</tr>
+            <tr><td>Re<td>Reserve.</tr>
+            <tr><td>Rs<td>Research Station.</tr>
+            <tr><td>Sa<td>Satellite.</tr>
+            <tr><td>Tz<td>Twilight Zone.</tr>
+          </table>
+        </div>
+
+        <div class=codetable>
+          <div class=codetitle>Nobility</div>
+          <table>
+            <tr><th>Code<th>Description</tr>
+            <tr><td>B<td>Knight.</tr>
+            <tr><td>c<td>Baronet.</tr>
+            <tr><td>C<td>Baron.</tr>
+            <tr><td>D<td>Marquis.</tr>
+            <tr><td>e<td>Viscount.</tr>
+            <tr><td>E<td>Count.</tr>
+            <tr><td>f<td>Duke.</tr>
+            <tr><td>F<td>Subsector Duke.</tr>
+            <tr><td>G<td>Archduke.</tr>
+            <tr><td>H<td>Emperor.</tr>
+          </table>
+        </div>
+
+        <div class=codetable>
+          <div class=codetitle>Bases</div>
+          <table>
+            <tr><th>Code<th>Description</tr>
+            <tr><td>C<td>Corsair Base (Vargr).</tr>
+            <tr><td>D<td>Naval Depot.</tr>
+            <tr><td>E<td>Embassy (Hiver).</tr>
+            <tr><td>K<td>Naval Base.</tr>
+            <tr><td>M<td>Military Base.</tr>
+            <tr><td>N<td>Naval Base (Imperial).</tr>
+            <tr><td>R<td>Clan Base (Aslan).</tr>
+            <tr><td>S<td>Scout Base (Imperial).</tr>
+            <tr><td>T<td>Tlaukhu Base (Aslan).</tr>
+            <tr><td>V<td>Exploration Base.</tr>
+            <tr><td>W<td>Way Station.</tr>
+          </table>
+        </div>
+
+        <div class=codetable>
+          <div class=codetitle>Allegiance</div>
+          <table>
+            <tr><th>Code<th>Description</tr>
+            <tr><td>As*<td>Aslan.</tr>
+            <tr><td>Cs*<td>Client state.</tr>
+            <tr><td>Hv*<td>Hivers.</tr>
+            <tr><td>Im*<td>Imperium.</tr>
+            <tr><td>Kk*<td>K’kree.</tr>
+            <tr><td>Na*<td>Non-aligned.</tr>
+            <tr><td>So*<td>Solomani.</tr>
+            <tr><td>V*<td>Vargr.</tr>
+            <tr><td>Zh*<td>Zhodani.</tr>
+            <tr><td>Xxxx<td>Unknown</tr>
+          </table>
+        </div>
+
+        <div class=codetable>
+          <div class=codetitle>Stellar Type</div>
+          <table>
+            <tr><th>Code<th>Description</tr>
+            <tr><td>Ia<td>Supergiant.</tr>
+            <tr><td>Ib<td>Supergiant.</tr>
+            <tr><td>II<td>Giant.</tr>
+            <tr><td>III<td>Giant.</tr>
+            <tr><td>IV<td>Subgiant.</tr>
+            <tr><td>V<td>Dwarf.</tr>
+            <tr><td>D<td>White Dwarf.</tr>
+            <tr><td>NS<td>Neutron Star.</tr>
+            <tr><td>PSR<td>Pulsar.</tr>
+            <tr><td>BH<td>Black Hole.</tr>
+            <tr><td>BD<td>Brown Dwarf.</tr>
+          </table>
+        </div>
+
+
+        <!-- Remarks and Extensions ================================================== -->
+
+        <p><b>Remarks:</b>
+          The Trade Classifications and other attributes for the mainworld.
+          Other codes include homeworlds and sophont population.
+        </p>
+
+        <p><b>{Ix} Importance Extension:</b>
+          Ranks worlds within a region. It can generally range from
+          +5 to -3. A world with +4 or +5 is Important; a world with
+          0 or less is Unimportant.
+        </p>
+
+        <p><b>(Ex) Economic Extension:</b>
+          A measure of the strength of a world economy and provides
+          basic insights into the economy’s structure and
+          capabilities.
+
+          The first three components
+          are <b>Resources</b>, <b>Labor</b>,
+          and <b>Infrastructure</b>, which give a general picture of
+          the economic strength of the world. In the final
+          component, <b>Efficiencies</b> address legal, cultural,
+          and social norms which may increase or reduce overall
+          economic strength.
+        </p>
+
+        <p><b>[Cx] Cultural Extension:</b>
+          An insight into the social behaviors of the citizens of
+          the world. Its four components are each a value in a range
+          that addresses elements of local culture across a spectrum
+          of possibilities.
+        </p>
+
+        <p><b>Heterogeneity</b> measures social diversity. It is generally a measure of social customs and behaviors; higher values indicate greater diversity within society.</p>
+        <p><b>Acceptance</b> is the degree of xenophobia (or xenophilia) in the culture. Higher values represent greater tolerance for outsiders or offworlders.</p>
+        <p><b>Heterogeneity</b> measures the actual differences which exist in groups or factions of society. Acceptance measures the degree to which these groups accept or tolerate or coop- erate with differences.</p>
+        <p><b>Strangeness</b> is the degree of difference from the norms and standards of social structure and behavior of interstellar society. High Strangeness is greater deviation from interstel- lar norms. The interstellar norm is generally 7: values less than 7 indicate a lack of local input into culture and behavior.</p>
+
+        <!-- Misc ================================================== -->
+
+        <p><b>N Nobility:</b>
+          Within the Imperium, the noble rank of the individual
+          assigned by the Empire as representative to the MainWorld.
+          More than one is possible.
+        </p>
+
+        <p><b>B Bases:</b>
+          The nature of Military, Naval, and Scout bases on the
+          world. More than one is possible.
+        </p>
+
+        <p>
+          <b>Z Travel Zone:</b>
+          Guidance about potential dangers on the world. Worlds are
+          coded red (R), amber (A) or green (blank). Most red zones
+          are interdicted or dangerous to life and limb. Amber zones
+          are potential dangerous, and caution is advised. Travel
+          codes are provided by the <i>Journal of the Travellers’
+            Aid Society</i>, and used with permission of that
+          publication.
+        </p>
+
+        <!-- PBG ================================================== -->
+
+        <p>
+          <b>PBG Population, Belts, Giants:</b>
+          These three digits give the world’s population multiplier,
+          number of planetoid belts, and number of gas giants.
+        </p>
+
+        <p>
+          <b>Population Multiplier:</b>
+          The first digit in the field gives the first digit of the
+          world’s population. For example, if the population
+          exponent is 4 (tens of thousands) and the population
+          multiplier is 7, the population is approximately 70,000.
+        </p>
+
+        <p>
+          <b>Planetoid Belts:</b>
+          The second digit gives the number of planetoid belts in the
+          system. If the MainWorld is an asteroid belt (size 0) then
+          the number of planetoid belts is in addition to the
+          asteroid belt.
+        </p>
+
+        <p>
+          <b>Gas Giants:</b>
+          The third digit gives the number of gas giants (like
+          Jupiter or Saturn) and ice giants (like Uranus or Neptune)
+          in the system, which can be used for fuel skimming.
+        </p>
+
+        <!-- Rest ================================================== -->
+
+        <p><b>W Worlds:</b>
+          The world count, which gives the total number of worlds
+          in the system. This includes the MainWorld, any planetoid
+          belts, any gas giants, and any other terrestial worlds.
+          This number does not include Worldlets and Satellites
+          (other than the Mainworld if it is a Satellite).
+        </p>
+
+        <p><b>A Allegiance:</b>
+          The allegiance code indicates the larger government to
+          which the system owes allegiance (if any). Some example codes
+          or code prefixes are given in the allegiance table.
+        </p>
+
+        <p><b>Stellar:</b>
+          Stellar data indicates the type of stars in the system.
+          Regular stars types (Ia supergiant through V dwarf) are
+          preceded by their spectral class (O, B, A, F, G, K, M) and
+          decimal (0 through 9) indicating temperature/color (from blue to
+          red). Degenerate stars (white dwarfs, neutron stars,
+          pulsars, and black holes) and substellar objects (brown
+          dwarfs) are not qualified. For example, the code M3 II D
+          indicates a red giant with a white dwarf companion.
+        </p>
+
+      </div>
+      <div class=pagenum></div>
+    </div>
+
     <!-- Credits -->
     {{#credits}}
-    <div class="page">
-      <div class="content credits instance{{@index}}">
+    <div class="page credits instance{{@index}}">
+      <div class="content twocol">
         <h1 class="underline">Credits</h1>
+
         {{#each this}}
         <p>
           {{{.}}}
         </p>
         {{/each}}
+
         </ol>
       </div>
       <div class=pagenum></div>
@@ -859,23 +1376,23 @@ table.uwp-data {
     {{/credits}}
 
     <!-- Index -->
-    <div class="page">
-      <div class="content index">
+    <div class="page index">
+      <div class="content twocol">
         <h1 class="underline">Sector Index</h1>
-        <div style="column-count: 2">
-          {{#index}}
-          <div class="dot-leaders">
-            <span>{{name}}</span>
-            <span>{{page}}</span>
-          </div>
-          {{/index}}
+
+        {{#index}}
+        <div class="dot-leaders">
+          <span>{{name}}</span>
+          <span>{{page}}</span>
         </div>
+        {{/index}}
+
       </div>
       <div class=pagenum></div>
     </div>
 
     <!-- Back Cover Page -->
-    <div id="backcover_page" class="page">
+    <div id="backcover_page" class=page>
       <div class=blurb>
         <h1>The Atlas of the Imperium:<br>
           &nbsp; Second Survey</h1>
@@ -886,7 +1403,7 @@ table.uwp-data {
                     shape-margin: 1em;
                     display: block;"></div>
         <p>
-          The Imperial Interstellar Scout Service's famed Second
+          The Imperial Interstellar Scout Service’s famed Second
           Survey of the Imperium (originally published in 1065) is now available
           in an updated commercial edition mapping {{sectors.length}} sectors
           in and around the Third Imperium. All pertinent astrographic data is

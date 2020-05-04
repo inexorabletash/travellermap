@@ -54,6 +54,21 @@ window.addEventListener('DOMContentLoaded', function() {
   var isIframe = (window != window.top); // != for IE
   var isSmallScreen = mapElement.offsetWidth <= 640; // Arbitrary
 
+  function toggleFullscreen() {
+    if (document.fullscreen || document.webkitIsFullScreen) {
+      if ('exitFullscreen' in document)
+        document.exitFullscreen();
+      else if ('webkitExitFullscreen' in document)
+        document.webkitExitFullscreen();
+    } else {
+      var elem = document.documentElement;
+      if ('requestFullscreen' in elem)
+        elem.requestFullscreen();
+      else if ('webkitRequestFullscreen' in elem)
+        elem.webkitRequestFullscreen();
+    }
+  }
+
   //////////////////////////////////////////////////////////////////////
   //
   // Parameters and Style
@@ -338,6 +353,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
   var VK_ESCAPE = KeyboardEvent.DOM_VK_ESCAPE || 0x1B,
       VK_C = KeyboardEvent.DOM_VK_C || 0x43,
+      VK_F = KeyboardEvent.DOM_VK_F || 0x46,
       VK_H = KeyboardEvent.DOM_VK_H || 0x48,
       VK_M = KeyboardEvent.DOM_VK_M || 0x4D,
       VK_T = KeyboardEvent.DOM_VK_T || 0x54,
@@ -449,6 +465,7 @@ window.addEventListener('DOMContentLoaded', function() {
   $('#zoomInBtn').addEventListener('click', map.ZoomIn.bind(map));
   $('#zoomOutBtn').addEventListener('click', map.ZoomOut.bind(map));
   $('#tiltBtn').addEventListener('click', function() { $('#cbTilt').click(); });
+  $('#fsBtn').addEventListener('click', toggleFullscreen);
 
   // Bottom Panel
 
@@ -484,6 +501,12 @@ window.addEventListener('DOMContentLoaded', function() {
       e.preventDefault();
       e.stopPropagation();
       showPanel('legend');
+      return;
+    }
+    if (e.key === 'f' || e.keyCode === VK_F) {
+      e.preventDefault();
+      e.stopPropagation();
+      toggleFullscreen();
       return;
     }
     if (e.key === '?' || e.keyCode === VK_QUESTION_MARK) {
@@ -1086,7 +1109,7 @@ window.addEventListener('DOMContentLoaded', function() {
     document.body.classList.toggle('ds-mini');
   });
 
-  $$('.ds-closebtn,#ds-shade').forEach(function(element) {
+  $$('#sds-closebtn,#wds-closebtn,#ds-shade').forEach(function(element) {
     element.addEventListener('click', function(event) {
       hideCards();
       selectedWorld = selectedSector = null;
