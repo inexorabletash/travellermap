@@ -230,12 +230,14 @@ window.addEventListener('DOMContentLoaded', function() {
     if (!['wds-visible', 'sds-visible'].includes(pane))
       document.body.classList.add('ds-mini');
     SEARCH_PANES.forEach(function(c) { document.body.classList.toggle(c, c === pane);  });
+    map.SetRoute(null);
 
     document.title = title ? title + ' - ' + original_title : original_title;
   }
 
   function hideSearch() {
     document.body.classList.remove('search-results');
+    map.SetRoute(null);
   }
 
   function hideCards() {
@@ -265,7 +267,7 @@ window.addEventListener('DOMContentLoaded', function() {
     e.preventDefault();
     $('#searchBox').value = '';
     lastQuery = null;
-    document.body.classList.remove('search-results');
+    hideSearch();
     mapElement.focus();
   });
 
@@ -376,6 +378,7 @@ window.addEventListener('DOMContentLoaded', function() {
       closeRoute();
 
       map.SetMain(null);
+      map.SetRoute(null);
 
       mapElement.focus();
     }
@@ -1129,7 +1132,7 @@ window.addEventListener('DOMContentLoaded', function() {
   //////////////////////////////////////////////////////////////////////
 
   var searchRequest = null;
-  var lastQuery = null;
+  var lastQuery = null, lastQueryRoute = null;
 
   function search(query, options) {
     options = Object.assign({}, options);
@@ -1145,6 +1148,7 @@ window.addEventListener('DOMContentLoaded', function() {
       query = '(default)';
 
     if (query === lastQuery) {
+      console.log('reshowing');
       if (!searchRequest && options.onsubmit) {
         var links = $$('#resultsContainer a');
         if (links.length > 0) {
@@ -1152,9 +1156,9 @@ window.addEventListener('DOMContentLoaded', function() {
           return;
         }
       }
+      map.SetRoute(lastQueryRoute);
       return;
     }
-    lastQuery = query;
 
     if (searchRequest)
       searchRequest.ignore();
@@ -1197,6 +1201,8 @@ window.addEventListener('DOMContentLoaded', function() {
       function pad2(n) {
         return ('00' + n).slice(-2);
       }
+
+      var route = [];
 
       // Pre-process the data
       for (var i = 0; i < data.Results.Items.length; ++i) {
@@ -1241,6 +1247,9 @@ window.addEventListener('DOMContentLoaded', function() {
             params = Object.assign(params,
                                    {sector: world.Sector, world: world.Name, hex: world.Hex});
           }
+          if (data.Route) {
+            route.push({sx:sx, sy:sy, hx:hx, hy:hy});
+          }
           world.href = Util.makeURL(base_url, params);
           applyTags(world);
         } else if (item.Label) {
@@ -1284,6 +1293,13 @@ window.addEventListener('DOMContentLoaded', function() {
       var first = $('#resultsContainer a');
       if (first && !options.typed && !options.onfocus)
         setTimeout(function() { first.focus(); }, 0);
+
+      if (route.length) {
+        map.SetRoute(route);
+      }
+
+      lastQuery = query;
+      lastQueryRoute = route;
     }
   }
 
