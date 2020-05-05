@@ -7,7 +7,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
 <script src="https://cdn.rawgit.com/inexorabletash/poly2/v2.0.1/polyfill.min.js"></script>
 <script src="../map.js?update=2020-01-01T14:47:00"></script>
-<script src="../world_util.js?update=2019-12-24T15:49:50"></script>
+<script src="../world_util.js?update=2020-04-05T08:25:42"></script>
 <script src="world.js?update=2019-07-28T21:33:23"></script>
 
 <style>
@@ -94,7 +94,6 @@ td { vertical-align: top; }
 
 .wds-imp-blurb { font-weight: normal; }
 
-.wds-stars { font-size: 117%; }
 .wds-stars .wds-star:after,
 .wds-bases .wds-base:after,
 .wds-nobility .wds-noble:after { content: ' \2014 '; } /* U+2014 EM DASH */
@@ -146,7 +145,7 @@ td { vertical-align: top; }
 <td>System:
 <td>
     <div class=wds-stars>
-    {{#Stars}} <span class=wds-star>{{.}}</span> {{/Stars}}
+    {{#Stars}} <span class=wds-star><big>{{code}}</big> <small>{{detail}}</small></span> {{/Stars}}
     </div>
     <div>
       <big>{{PBG.GG}}</big> <small>Gas Giants</small>
