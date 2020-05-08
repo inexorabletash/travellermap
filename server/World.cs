@@ -466,6 +466,9 @@ namespace Maps
 
                     ErrorUnless(efficiency.InRange(-5, 5),
                         $"(Ex) Efficiency={efficiency} out of range; should be: Flux");
+
+                    ErrorIf(efficiency == 0,
+                        $"(Ex) Efficiency=0 should be coded as +1 (T5SS, implied by T5.10 Book 3 pp.18)");
                 }
             }
 
