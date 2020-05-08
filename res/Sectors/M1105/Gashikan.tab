@@ -25,7 +25,7 @@ Gash	E	0212	Igiluumune	E436463-8		Ni O:0512		125	VDrN	F6 II	{ -3 }	(B31-4)	[311B
 Gash	E	0213	Kamkhiir	B9A2301-B		Fl He Lo		610	VDrN	F9 III G1 V	{ 1 }	(921+2)	[247A]		8	36
 Gash	E	0218	Shamushu	B697620-7	S	Ag Ni		124	3EoG	G2 IV	{ 0 }	(B51-3)	[9647]		15	-165
 Gash	E	0219	Uguurge	C66A654-7	S	Ni Ri Wa		302	3EoG	G0 V M4 VI	{ -1 }	(554-3)	[659B]		5	-300
-Gash	E	0220	Gami	C66A57B-8	S	Ni Wa Pr		720	3EoG	M5 V M1 V	{ -2 }	(A41-2)	[4359]		9	-80
+Gash	E	0220	Gami	C66A57B-8	S	Ni Wa Pr		720	3EoG	M1 V M5 V	{ -2 }	(A41-2)	[4359]		9	-80
 Gash	I	0221	Lagudishur	C2616AB-6		Ni Ri		203	3EoG	M2 V BD	{ -1 }	(B54-2)	[3563]		12	-440
 Gash	I	0222	Iisilish	B564787-7		Ag Ri		211	3EoG	K6 V K0 VI	{ 2 }	(B67-1)	[7965]		11	-462
 Gash	I	0223	Mikhu	D350831-5	S	De Po Ph		904	3EoG	F2 V	{ -2 }	(778-1)	[C665]		14	-392
@@ -56,7 +56,7 @@ Gash	A	0406	Urduduk	A575533-A	S	Ag Ni		213	NaHu	K5 V	{ 2 }	(844-4)	[378D]		9	-51
 Gash	A	0407	Imkarga	X6A1352-1		Fl He Lo		602	NaHu	K2 V	{ -3 }	(521+1)	[5183]		9	10
 Gash	E	0411	Kigigiika	E336476-8		Ni		403	VDrN	K3 V K4 VI	{ -3 }	(931+1)	[1126]		13	27
 Gash	E	0412	Dakhari	B665546-6	NS	Ag Ni Ga Pr		220	VDrN	M5 II	{ 1 }	(544+1)	[4618]		14	80
-Gash	E	0413	Shigarasida	X99468A-0		Ag Ni		800	VDrN	F5 V F3 V G0 V	{ -2 }	(654+2)	[4481]		11	240
+Gash	E	0413	Shigarasida	X99468A-0		Ag Ni		800	VDrN	F3 V F5 V G0 V	{ -2 }	(654+2)	[4481]		11	240
 Gash	E	0419	Ibamumenara	C4409C9-7	S	De He Hi In Po		502	3EoG	F3 V M5 VI	{ 1 }	(A8B-1)	[6A63]		8	-880
 Gash	I	0421	Aala	E4419B8-8		He Hi In Po		203	VYoe	K6 V D	{ 0 }	(984+3)	[B99B]		10	864
 Gash	I	0422	Umimasiir	D210838-5		Na Ph Pi		504	VYoe	K2 V	{ -2 }	(974-1)	[6659]		10	-252
@@ -145,7 +145,7 @@ Gash	B	0908	Suliirap	C773430-6		Ni		303	VDrN	K2 VI	{ -2 }	(431-1)	[6218]		14	-12
 Gash	B	0909	Khukar	C9C2143-A		Fl He Lo		713	VDrN	M9 V BD BD	{ 0 }	(C01-1)	[116D]		17	0
 Gash	B	0910	Dergasguu	C342610-7		He Ni Po		112	VDrN	M1 V BD BD BD	{ -2 }	(751+1)	[8443]		12	35
 Gash	F	0911	Udishi	C333566-7		Ni Po O:0512		704	VDrN	G3 IV K7 V	{ -2 }	(A40+5)	[4343]		12	0
-Gash	F	0913	Zulishamar	C452AFH-A		Hi Po Pz	A	924	NaHu	F8 V F4 V G1 VI	{ 2 }	(D98-2)	[DC35]		14	-1,872
+Gash	F	0913	Zulishamar	C452AFH-A		Hi Po Pz	A	924	NaHu	F4 V F8 V G1 VI	{ 2 }	(D98-2)	[DC35]		14	-1,872
 Gash	F	0919	Akhagegdag	C330433-6		De Ni Po		823	3EoG	K6 V K6 VI	{ -2 }	(730+1)	[1225]		14	0
 Gash	F	0920	Akaagi	C464203-6		Lo		803	3EoG	G8 V	{ -2 }	(411+2)	[4155]		10	8
 Gash	J	0921	Kuurnaka	C528300-B	S	Lo		810	3EoG	F8 IV	{ 0 }	(921+1)	[5329]		9	18
@@ -312,7 +312,7 @@ Gash	G	2020	Ukgikimkhu	E310532-5		Ni		803	3EoG	G0 V M2 VI	{ -3 }	(940+1)	[A255]	
 Gash	K	2021	Kedushikhir	C4445AA-8	S	Ag Ni		710	3EoG	M3 V BD	{ -1 }	(845+2)	[448A]		11	320
 Gash	K	2022	Armar	B5316BE-8		Na Ni Po		602	3EoG	M2 II	{ -1 }	(655+1)	[8569]		12	150
 Gash	K	2024	Araamaamkur	E787A99-5		Hi Ga		402	3EoG	G1 V M0 VI	{ -1 }	(B92-1)	[8984]		7	-198
-Gash	K	2027	Amki	C758651-4		Ag Ni		224	3EoG	M8 V BD BD BD M6 V	{ -1 }	(355+1)	[8555]		18	75
+Gash	K	2027	Amki	C758651-4		Ag Ni		224	3EoG	M6 V BD BD BD M8 V	{ -1 }	(355+1)	[8555]		18	75
 Gash	K	2029	Dikmu	A8B0631-8	NS	He Ni		804	3EoG	K5 V	{ 0 }	(G56-2)	[2654]		15	-960
 Gash	K	2030	Kish	C847469-9		Ni Pa O:2333		604	3EoG	A7 III D D	{ -1 }	(C33-4)	[6338]		14	-432
 Gash	O	2032	Lakamlii	A260400-A		De Ni		500	3EoG	M2 V	{ 1 }	(634-3)	[8598]		7	-216
@@ -370,7 +370,7 @@ Gash	K	2422	Idkanmukida	E546653-6		Ag Ni		422	3EoG	G4 V	{ -2 }	(553-1)	[7438]		1
 Gash	K	2423	Iikugagi	E577447-4		Ni Pa		905	3EoG	A4 V	{ -3 }	(831+1)	[5112]		9	24
 Gash	K	2425	Esheru	A100837-A		Na Va Ph Pi		304	3EoG	F5 V K3 V G7 VI	{ 2 }	(C7C+1)	[7A6C]		15	1,008
 Gash	K	2427	Laarudushuk	D759200-4	S	Lo		512	3EoG	K4 V	{ -3 }	(911-1)	[2194]		6	-9
-Gash	K	2428	Khuu	C535668-5	S	Ni O:2425		801	3EoG	A9 V A3 V	{ -2 }	(C50-3)	[8458]		9	0
+Gash	K	2428	Khuu	C535668-5	S	Ni O:2425		801	3EoG	A3 V A9 V	{ -2 }	(C50-3)	[8458]		9	0
 Gash	K	2429	Lurura	A64A264-9	S	Lo Wa		923	3EoG	G7 V	{ 0 }	(G11+1)	[2259]		13	16
 Gash	O	2436	Ikhuki	C23616B-6	S	Lo O:2535		903	3EoG	G4 V M2 VI M7 VI	{ -2 }	(901-2)	[2165]		10	0
 Gash	O	2437	Nadinuru	C58948A-A	S	Ni		700	3EoG	F5 V G6 VI	{ 0 }	(933+1)	[14AB]		10	81
@@ -443,7 +443,7 @@ Gash	D	2901	Kasaamupu	C515885-6		Ic Ph Pi		803	NaHu	K5 V	{ -1 }	(673-1)	[7745]		
 Gash	D	2903	Shirgilam	X755200-4		Lo Ga		424	NaHu	K2 IV	{ -3 }	(A11+1)	[3161]		13	10
 Gash	D	2905	Apige	B402575-B	N	Ic Ni Va		810	NaHu	F3 V	{ 1 }	(946+1)	[6669]		9	216
 Gash	D	2906	Giledudkemi	BAA6596-B		Fl Ni		303	NaHu	F7 V	{ 1 }	(E47+1)	[863B]		13	392
-Gash	H	2912	Khaseki	C2108A5-8		Na Ph Pi		702	NaHu	K8 VI BD K4 VI	{ -1 }	(C71+3)	[C77A]		11	252
+Gash	H	2912	Khaseki	C2108A5-8		Na Ph Pi		702	NaHu	K4 VI BD K8 VI	{ -1 }	(C71+3)	[C77A]		11	252
 Gash	H	2915	Nukunme	A374514-9		Ag Ni		514	3EoG	K5 V	{ 1 }	(C47+5)	[7625]		11	1,680
 Gash	H	2919	Udamiish	BA6979A-9		Ri		223	3EoG	F8 V	{ 2 }	(C6C+3)	[8958]		14	2,592
 Gash	L	2924	Iniishasir	D455497-7		Ni Pa		903	3EoG	F1 V K4 VI	{ -3 }	(430-3)	[7157]		10	0
@@ -486,7 +486,7 @@ Gash	H	3119	Kulu	C798562-6		Ag Ni O:3019		904	3EoG	K6 III	{ -1 }	(C43-1)	[5458]	
 Gash	H	3120	Imka	D97A788-5	S	Wa Pi		524	3EoG	F7 V G9 VI	{ -2 }	(865+2)	[B527]		14	480
 Gash	L	3122	Khagka	B657679-6		Ag Ni Ga		501	3EoG	A4 III	{ 0 }	(852+2)	[8616]		13	160
 Gash	L	3123	Ikhazudshi	C310200-8		Lo		614	3EoG	F3 V	{ -2 }	(711+2)	[1138]		12	14
-Gash	L	3124	Edinipu	A898044-9		Di		505	3EoG	G8 VI G2 VI	{ 0 }	(C06-2)	[0000]		12	0
+Gash	L	3124	Edinipu	A898044-9		Di		505	3EoG	G2 VI G8 VI	{ 0 }	(C06-2)	[0000]		12	0
 Gash	L	3125	Kashzas	D7C6665-6	S	Fl Ni O:2823		904	3EoG	F3 V	{ -3 }	(750+1)	[6374]		11	0
 Gash	L	3129	Arnimam	B536450-B		Ni		303	3EoG	F9 V	{ 1 }	(834-2)	[5549]		12	-192
 Gash	L	3130	Ishi	C9B7478-8	S	Fl Ni		702	3EoG	G1 V	{ -2 }	(B33+1)	[4257]		12	99
@@ -515,5 +515,5 @@ Gash	L	3230	Ukaganmi	D7B18AE-5	S	Fl He Ph		105	3EoG	G3 V	{ -2 }	(376-1)	[7654]		
 Gash	P	3233	Kukaa	C568413-4	S	Ni Pa		602	3EoG	G7 IV M8 VI	{ -2 }	(B31+1)	[3272]		7	33
 Gash	P	3237	Shidima	C2005AE-9		Ni Va		823	3EoG	M8 III BD	{ -1 }	(D43-1)	[446A]		16	-156
 Gash	P	3238	Lukhuugu	B538625-8	S	Ni		204	3EoG	M5 VI	{ -1 }	(G55+3)	[6556]		8	1,200
-Gash	P	3239	Lasudinigii	B89A784-8		Wa Pi		903	3EoG	A2 V A0 V	{ 0 }	(D63-2)	[A779]		12	-468
+Gash	P	3239	Lasudinigii	B89A784-8		Wa Pi		903	3EoG	A0 V A2 V	{ 0 }	(D63-2)	[A779]		12	-468
 Gash	P	3240	Kuru	B230223-C	S	De Lo Po		400	3EoG	G7 V M2 VI K2 VI	{ 1 }	(C11-2)	[236B]		8	-24

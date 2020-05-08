@@ -19,20 +19,20 @@ Alph	M	0133	Potose	E546200-8		Lo Da	A	905	SoCf	G5 V M2 V	{ -3 }	(911-5)	[1113]		
 Alph	M	0135	Sucre	C686687-8		Ag Ni Ga Ri		902	NaHu	M1 V	{ 0 }	(A54+1)	[6658]		6	200
 Alph	M	0136	Ica	C865588-9		Ag Ni Ga Pr		804	SoCf	K0 V	{ 0 }	(B44+1)	[5559]		14	176
 Alph	M	0137	Luebo	A643566-D	KM	Ni Po Mr		101	SoCf	M1 V M4 V	{ 2 }	(846+1)	[474C]		11	192
-Alph	M	0139	Lusaka	B98A658-D		Ni Ri Wa		904	SoCf	M2 V M0 V M7 V	{ 2 }	(C56+2)	[685D]		16	720
-Alph	A	0201	Carbuncle	A100204-D		Lo Va		301	ImDs	M2 V K0 V	{ 1 }	(511-1)	[133B]	B	11	-5
+Alph	M	0139	Lusaka	B98A658-D		Ni Ri Wa		904	SoCf	M0 V M2 V M7 V	{ 2 }	(C56+2)	[685D]		16	720
+Alph	A	0201	Carbuncle	A100204-D		Lo Va		301	ImDs	K0 V M2 V	{ 1 }	(511-1)	[133B]	B	11	-5
 Alph	A	0203	Graff	B545657-B		Ag Ni		704	ImDs	M3 V	{ 2 }	(C56+2)	[685B]	BC	9	720
 Alph	A	0204	Kedin	E553300-8		Lo Po		622	ImDs	K5 V	{ -3 }	(921-5)	[1113]	B	8	-90
-Alph	A	0208	Iamir	C100AAB-F	S	Hi In Na Va Pz SeleW	A	304	ImDs	M2 V M0 V	{ 3 }	(G9F+5)	[CD7H]	BE	11	10,800
+Alph	A	0208	Iamir	C100AAB-F	S	Hi In Na Va Pz SeleW	A	304	ImDs	M0 V M2 V	{ 3 }	(G9F+5)	[CD7H]	BE	11	10,800
 Alph	A	0210	Keats	C545575-9		Ag Ni		401	ImDs	M0 V M1 V	{ 0 }	(844-2)	[3537]	BC	12	-256
-Alph	E	0216	Toonge	B100333-E	S	Lo Va Da	A	904	ImDs	M2 V M0 V	{ 1 }	(921-2)	[142B]	B	7	-36
+Alph	E	0216	Toonge	B100333-E	S	Lo Va Da	A	904	ImDs	M0 V M2 V	{ 1 }	(921-2)	[142B]	B	7	-36
 Alph	E	0217	Nefertiti	C673879-8		Ph Pi Pz	A	602	ImDs	M0 V M4 V M9 V	{ -1 }	(C77+1)	[9769]	BDe	12	588
 Alph	E	0220	Quetzlcoatl	A310443-F		Ni		700	ImDs	M0 V M6 V	{ 1 }	(634-2)	[152C]	B	13	-144
 Alph	I	0221	Phoenix	C565ACH-C		Hi Pz	A	814	ImDs	M2 V	{ 2 }	(H9D+5)	[FCAH]	BE	13	9,945
-Alph	I	0230	Koz	D786787-6		Ag Ga Ri Pz	A	423	ImDs	M3 V K0 V	{ 0 }	(967+1)	[7756]	BC	10	378
+Alph	I	0230	Koz	D786787-6		Ag Ga Ri Pz	A	423	ImDs	K0 V M3 V	{ 0 }	(967+1)	[7756]	BC	10	378
 Alph	M	0231	Scathe	A000A99-E		As Hi In Na Va Cp		701	SoCf	M2 V M2 V	{ 4 }	(D9G+5)	[BE6F]		12	9,360
 Alph	M	0232	Walvis	A572779-C		He Pi		433	SoCf	M3 V	{ 2 }	(F6C+3)	[896D]		10	3,240
-Alph	M	0233	Fogo	B100659-E	KM	Na Ni Va		304	SoCf	M2 V K6 V	{ 2 }	(C56+3)	[786F]		12	1,080
+Alph	M	0233	Fogo	B100659-E	KM	Na Ni Va		304	SoCf	K6 V M2 V	{ 2 }	(C56+3)	[786F]		12	1,080
 Alph	M	0234	Ziusudra	B555797-A	KM	Ag Pz	A	413	SoCf	K0 IV	{ 4 }	(D6D+4)	[7B5A]		13	4,056
 Alph	M	0236	Tomsk	D9C4325-9		Fl Lo		902	NaHu	M2 V	{ -2 }	(721-4)	[1137]		14	-56
 Alph	M	0240	Balboa	B573987-C	KM	Hi In		904	SoCf	M1 V	{ 5 }	(F8G+5)	[9E5C]		12	9,600
@@ -52,7 +52,7 @@ Alph	M	0339	Nin	E9E4546-8		Ni		223	SoCf	K0 V M2 V	{ -3 }	(C41-4)	[4247]		14	-192
 Alph	M	0340	Dashpot	D557584-7		Ag Ni		704	SoCf	M2 V M7 V	{ -2 }	(742-4)	[3335]		11	-224
 Alph	A	0402	Leng	C84A866-A		Wa Ph Pi Mr		403	ImDs	G1 V	{ 1 }	(D7A+1)	[7949]	BDe	13	910
 Alph	A	0405	Imka	D423474-9		Ni Po		813	ImDs	M2 V	{ -2 }	(A31-4)	[2237]	B	13	-120
-Alph	A	0407	Merel	E310433-9		Ni		802	ImDs	M2 V K1 V	{ -2 }	(831-5)	[1226]	B	11	-120
+Alph	A	0407	Merel	E310433-9		Ni		802	ImDs	K1 V M2 V	{ -2 }	(831-5)	[1226]	B	11	-120
 Alph	A	0409	Ninmah	D100867-9		Na Va Ph Pi Mr		913	ImDs	M1 V	{ -1 }	(E78-1)	[8759]	BDe	9	-784
 Alph	E	0411	Cameo	C799488-A		Ni		320	NaHu	M1 V	{ 0 }	(833+1)	[445A]		9	72
 Alph	E	0413	Epona	B8A7497-C		Fl Ni		324	SoCf	M1 V	{ 1 }	(C34+1)	[455C]		14	144
@@ -63,7 +63,7 @@ Alph	E	0418	Gautama	E775257-8		Lo		803	NaHu	M3 V M6 V	{ -3 }	(711-3)	[2158]		16	
 Alph	E	0420	Gilad	E554533-7		Ag Ni		922	SoCf	M2 V	{ -2 }	(742-5)	[2324]		17	-280
 Alph	I	0421	Herbig	E100245-A		Lo Va		824	SoCf	M3 III D	{ -1 }	(A11-3)	[1138]		14	-30
 Alph	I	0424	Muhoberac	CA99120-A		Lo		413	NaHu	M1 V	{ 0 }	(701-4)	[1115]		14	0
-Alph	I	0425	Tennen	E52A422-A		Ni		314	SoCf	M2 V M1 V	{ -1 }	(B32-5)	[1316]		15	-330
+Alph	I	0425	Tennen	E52A422-A		Ni		314	SoCf	M1 V M2 V	{ -1 }	(B32-5)	[1316]		15	-330
 Alph	I	0427	Salcedo	A100596-E		Ni Va		613	SoCf	M2 V	{ 1 }	(B45+1)	[464D]		12	220
 Alph	I	0430	Haimrl	D89A411-9		Ni Wa		200	NaHu	K9 V M8 V	{ -2 }	(631-5)	[1215]		8	-90
 Alph	M	0435	Rartonga	D422431-9		He Ni Po		802	SoCf	G8 V M9 V	{ -2 }	(831-5)	[1215]		8	-120
@@ -78,7 +78,7 @@ Alph	E	0514	Kinschenck	E543366-7		Lo Po O:0515		703	SoCf	F5 IV	{ -3 }	(521-4)	[2
 Alph	E	0515	Cthonia	A555ACB-E		Hi Pz	A	701	SoCf	M0 V	{ 3 }	(D9F+5)	[CD7G]		7	8,775
 Alph	E	0517	New Bremen	C552210-9		Lo Po		803	SoCf	K9 V M6 V	{ -1 }	(711-5)	[1114]		7	-35
 Alph	I	0524	Bali	A988788-C		Ag Ri		210	NaHu	M2 V	{ 4 }	(A6E+4)	[7B5C]		11	3,360
-Alph	I	0526	Geetus	E535321-8		Lo Da	A	523	NaHu	M3 V M2 V M3 V	{ -3 }	(A21-5)	[1114]		14	-100
+Alph	I	0526	Geetus	E535321-8		Lo Da	A	523	NaHu	M2 V M3 V M3 V	{ -3 }	(A21-5)	[1114]		14	-100
 Alph	I	0527	Baughba	E434457-A		Ni		525	SoCf	M2 V	{ -1 }	(D32-1)	[435A]		16	-78
 Alph	I	0528	Sikken	C554200-A		Lo		802	SoCf	M0 V M1 V M1 V	{ 0 }	(611-4)	[1215]		11	-24
 Alph	I	0529	Dassano	C633523-A		Ni Po		820	SoCf	K3 V M2 V	{ 0 }	(944-3)	[2527]		10	-432
@@ -99,7 +99,7 @@ Alph	M	0634	Sala	C310664-A		Na Ni O:0630		824	SoCT	G7 IV	{ 0 }	(E54-2)	[4638]		1
 Alph	M	0636	Kirchkoff	A7B4461-E		Fl Ni O:0638		113	NaHu	F4 V M5 V	{ 1 }	(A34-3)	[151A]		13	-360
 Alph	M	0638	Garabel	B79A678-C		Ni Wa		100	NaHu	K1 V M6 V	{ 1 }	(855+1)	[675C]		9	200
 Alph	M	0639	Torrens	A679798-D	K	Pi		523	NaHu	G2 V M5 V	{ 2 }	(E6D+2)	[795D]		10	2,184
-Alph	A	0701	Kazan	C541748-8		He Po Pi		104	ImDs	M3 V M2 V	{ -1 }	(D67-1)	[7658]	BD	10	-546
+Alph	A	0701	Kazan	C541748-8		He Po Pi		104	ImDs	M2 V M3 V	{ -1 }	(D67-1)	[7658]	BD	10	-546
 Alph	A	0707	Lilburn	C423412-B		Ni Po		402	ImDs	G4 V	{ 0 }	(833-4)	[1417]	B	9	-288
 Alph	E	0711	Phoummathep	A6787AB-C	K	Ag Pi Pz	A	105	NaHu	K4 V M0 V	{ 3 }	(E6D+5)	[9A7E]		11	5,460
 Alph	E	0712	Brighton	C510345-A		Lo		204	SoCf	K6 V	{ 0 }	(921-2)	[1338]		13	-36
@@ -118,7 +118,7 @@ Alph	M	0731	Amiens	D6888DE-4		Ri Pa Ph Pz (Ladybugs)5	A	910	SoCT	K0 V M5 V	{ -1 
 Alph	M	0734	Kermadec	C100577-C		Ni Va		410	SoCT	K0 V M5 V	{ 0 }	(844+1)	[555C]		5	128
 Alph	A	0801	Gethsemane	B565379-B		Lo		302	ImDs	F5 V	{ 1 }	(721+2)	[446C]	B	13	28
 Alph	A	0804	Marathon	B310850-D	N	Na Ph Pi		803	ImDs	K2 V	{ 2 }	(D7D-2)	[3A18]	BDe	16	-2,366
-Alph	A	0805	Uriel	B7C2743-B	S	Fl He		314	ImDs	M1 V K7 V	{ 2 }	(E6C-1)	[4928]	B	11	-1,008
+Alph	A	0805	Uriel	B7C2743-B	S	Fl He		314	ImDs	K7 V M1 V	{ 2 }	(E6C-1)	[4928]	B	11	-1,008
 Alph	A	0806	Willis	E554167-7		Lo O:0805		502	ImDs	K2 V	{ -3 }	(301-3)	[1157]	B	14	0
 Alph	A	0808	Estrella	D858557-8		Ag Ni		302	ImDs	K2 V M0 V M3 V	{ -2 }	(942-2)	[5358]	BC	11	-144
 Alph	A	0809	Hale	A574754-D		Ag Pi		615	ImDs	M2 V	{ 3 }	(F6E+1)	[5A3B]	BCD	10	1,260
@@ -133,7 +133,7 @@ Alph	M	0840	Xiamen	A766336-D		Lo Ga		813	NaHu	G8 V	{ 1 }	(921+1)	[244C]		14	18
 Alph	B	0903	Endyf	B7A7986-D		Fl Hi In		603	ImDs	K2 V M2 V	{ 4 }	(E8G+3)	[8D4C]	BEf	12	5,376
 Alph	F	0912	Water	B000ADE-E		As Hi In Na Va Cp Pz	A	605	SoCf	M0 V D	{ 4 }	(H9G+5)	[EE9J]		16	12,240
 Alph	F	0913	Castanak	E549AA7-B		Hi In		712	SoCf	M0 V M6 V	{ 2 }	(F9D+2)	[AC5B]		9	3,510
-Alph	F	0916	Eden	E558785-6		Ag		600	SoCf	M2 V M1 V	{ -1 }	(966-3)	[5634]		11	-972
+Alph	F	0916	Eden	E558785-6		Ag		600	SoCf	M1 V M2 V	{ -1 }	(966-3)	[5634]		11	-972
 Alph	F	0917	Karnak	C559676-9		Ni		804	SoCf	K3 V M0 V	{ -1 }	(C53-2)	[5548]		12	-360
 Alph	J	0921	Dennison	D656342-7		Lo Ga		702	SoCf	F7 V	{ -3 }	(521-5)	[1113]		14	-50
 Alph	J	0925	Gifford	D310261-9		Lo O:0725		904	NaHu	M1 V M7 V	{ -2 }	(811-5)	[1115]		11	-40
@@ -151,7 +151,7 @@ Alph	J	1023	Minot	A100776-E		Na Va Pi		400	SoCf	M1 V M3 V	{ 2 }	(96D+1)	[694D]		
 Alph	J	1024	Olympia	C7668AC-8		Ga Ri Pa Ph Pz	A	703	SoCf	M1 V M8 V	{ 0 }	(D78+3)	[B88B]		16	2,184
 Alph	J	1029	Montserrat	C5586BB-8		Ag Ni Da	A	400	SoCT	K6 V M9 V	{ -1 }	(853+1)	[857A]		7	120
 Alph	J	1030	Cluny	D410458-A		Ni		310	SoCT	K1 V	{ -1 }	(732-1)	[435A]		12	-42
-Alph	N	1032	Melk	A5477BB-C		Ag Pi Pz	A	604	SoCf	M1 V F0 V	{ 3 }	(D6D+5)	[9A7E]		10	5,070
+Alph	N	1032	Melk	A5477BB-C		Ag Pi Pz	A	604	SoCf	F0 V M1 V	{ 3 }	(D6D+5)	[9A7E]		10	5,070
 Alph	N	1033	Rindschleiden	B431898-C	KM	Na Po Ph		305	SoCf	M0 V M6 V	{ 3 }	(F7D+3)	[8B5C]		14	4,095
 Alph	N	1038	Merlin	C310404-C		Ni		420	SoCf	M2 V M7 V	{ 0 }	(833-2)	[243A]		12	-144
 Alph	N	1039	Daboyel	B432752-D	KM	Na Po		111	SoCf	M1 V	{ 3 }	(B6E-1)	[3A19]		12	-924
@@ -193,15 +193,15 @@ Alph	B	1303	Fairday	E100A98-D		Hi In Na Va		823	ImDs	M3 V	{ 2 }	(H9E+2)	[AC5D]	B
 Alph	B	1304	Seward	D5458AA-6		Pa Ph Pi Pz	A	104	ImDs	K2 V	{ -2 }	(A75+1)	[A678]	BcDe	15	350
 Alph	B	1305	New Paris	E785662-6		Ag Ni Ga Ri Mr		800	ImDs	M3 V	{ -1 }	(853-5)	[2512]	BC	13	-600
 Alph	F	1314	Verdant	C410720-A		Na Pi		122	NaHu	K0 V	{ 1 }	(D6A-3)	[2815]		12	-2,340
-Alph	F	1316	Garnadon	B3108BD-C		Na Ph Pi Pz	A	500	NaHu	M3 V G6 V	{ 2 }	(A7C+5)	[CA9G]		9	4,200
+Alph	F	1316	Garnadon	B3108BD-C		Na Ph Pi Pz	A	500	NaHu	G6 V M3 V	{ 2 }	(A7C+5)	[CA9G]		9	4,200
 Alph	F	1319	Peltier	C8A5420-A		Fl Ni		502	SoCf	M2 V	{ 0 }	(833-4)	[1415]		11	-288
 Alph	F	1320	Clerkson	CA99424-A		Ni Da	A	204	SoCf	M2 V	{ 0 }	(A33-2)	[2438]		12	-180
 Alph	J	1322	Ashern	B9B4720-B		Fl		912	SoCf	M0 V	{ 2 }	(C6C-2)	[2916]		13	-1,728
-Alph	J	1325	Boissevain	B100554-E		Ni Va		820	SoCf	M2 V K9 V	{ 1 }	(945-1)	[363C]		12	-180
+Alph	J	1325	Boissevain	B100554-E		Ni Va		820	SoCf	K9 V M2 V	{ 1 }	(945-1)	[363C]		12	-180
 Alph	J	1327	Tuxpan	A100120-E	KM	Lo Va		424	SoCf	M1 V M6 V	{ 2 }	(901-2)	[1319]		15	0
 Alph	N	1331	Waz	C200512-B		Ni Va		902	SoCf	M2 V M6 V	{ 0 }	(944-4)	[1517]		9	-576
 Alph	N	1334	Berlin	E8C3200-9		Fl Lo Da	A	910	NaHu	M0 V	{ -2 }	(511-5)	[1114]		11	-25
-Alph	N	1336	Denver	C9BA535-C		Fl Ni		200	SoCf	M2 V M0 V	{ 0 }	(744-2)	[353A]		12	-224
+Alph	N	1336	Denver	C9BA535-C		Fl Ni		200	SoCf	M0 V M2 V	{ 0 }	(744-2)	[353A]		12	-224
 Alph	N	1337	Silver Oil	B63A852-E		Wa Ph		200	NaHu	M3 V M5 V	{ 2 }	(A7D-2)	[4A1A]		3	-1,820
 Alph	N	1339	NoRig	C422310-B		He Lo Po		900	NaHu	M2 V	{ 0 }	(521-4)	[1316]		8	-40
 Alph	B	1401	Chaptoye	C31037A-B		Lo		805	ImDs	G8 V M0 V	{ 0 }	(A21+2)	[537D]	B	9	40
@@ -238,7 +238,7 @@ Alph	B	1602	Eby	E31069B-8		Na Ni Da	A	512	ImDs	K3 V M4 V	{ -3 }	(B51-1)	[837A]	B
 Alph	B	1603	Hartford	C676687-8		Ag Ni		900	ImDs	G3 V	{ -1 }	(853-1)	[6558]	BC	10	-120
 Alph	B	1605	Colfax	D654104-8	S	Lo Di(Mockmoles)		711	ImDs	G2 V	{ -3 }	(501-5)	[1136]	B	10	0
 Alph	B	1606	Surrey	B300303-E	N	Lo Va		212	ImDs	M1 V M3 V	{ 1 }	(821-2)	[142B]	B	7	-32
-Alph	B	1608	Morningside	C792533-8		He Ni		713	ImDs	F3 V K5 V F1 V	{ -2 }	(B42-5)	[2325]	B	10	-440
+Alph	B	1608	Morningside	C792533-8		He Ni		713	ImDs	F1 V K5 V F3 V	{ -2 }	(B42-5)	[2325]	B	10	-440
 Alph	F	1615	Chiang	B310750-D		Na Pi		802	SoCf	M3 V	{ 2 }	(B6D-2)	[2918]		7	-1,716
 Alph	F	1616	Newton	A426353-E		Lo		110	SoCf	K5 V M5 V	{ 1 }	(621-2)	[142B]		12	-24
 Alph	F	1618	Garner's World	D310133-9		Lo		604	SoCf	M0 V	{ -2 }	(701-5)	[1126]		9	0
@@ -253,7 +253,7 @@ Alph	N	1640	Algieba	C000100-D		As Lo Va		801	NaHu	M2 V	{ 0 }	(401-4)	[1118]		14	
 Alph	C	1701	Occam	B87A999-E		Hi In Wa (Aquamorphs)3 Dolp4		313	ImDs	G4 V	{ 4 }	(F8G+5)	[AD6F]	BEf	17	9,600
 Alph	C	1703	Isdirra	C10078A-B		Na Va Pi		300	ImDs	M2 V	{ 1 }	(96B+3)	[987D]	BD	7	1,782
 Alph	C	1710	Berasberg	C100644-B		Na Ni Va Da	A	600	ImDs	M2 V M6 V	{ 0 }	(854-2)	[4639]	B	6	-320
-Alph	G	1711	Corosso	B542875-A	K	He Po Ph Pi		403	NaHu	M2 V M0 V	{ 2 }	(D7B+1)	[6A38]		11	1,001
+Alph	G	1711	Corosso	B542875-A	K	He Po Ph Pi		403	NaHu	M0 V M2 V	{ 2 }	(D7B+1)	[6A38]		11	1,001
 Alph	G	1713	Ilana	C55757A-9		Ag Ni		425	NaHu	M1 V	{ 0 }	(E44+2)	[757B]		10	448
 Alph	G	1714	Yasselin	E564354-8		Lo		533	SoCf	K4 V M8 V	{ -3 }	(B21-5)	[1136]		11	-110
 Alph	G	1717	Roseva	D427631-8		Ni		403	SoCf	K3 V	{ -3 }	(B51-5)	[2314]		11	-275
@@ -268,7 +268,7 @@ Alph	K	1728	Xiphias Delta	D300558-A		Ni Va		403	SoCf	G2 V	{ -1 }	(A43-1)	[545A]	
 Alph	O	1732	Ameland	B200442-D		Ni Va		804	SoCf	M1 V M9 V	{ 1 }	(A34-3)	[1519]		13	-360
 Alph	O	1733	Hoorn	E556102-8		Lo		603	SoCf	G6 V	{ -3 }	(601-5)	[1114]		13	0
 Alph	O	1737	Tilburg	B6747BB-A		Ag Pi Pz	A	302	SoCf	M1 V	{ 3 }	(B6C+5)	[9A7C]		9	3,960
-Alph	O	1738	Neubund	C6939ED-A		Hi In Cp Pz	A	203	SoCf	M3 V M1 V	{ 3 }	(E8D+5)	[DC9E]		14	7,280
+Alph	O	1738	Neubund	C6939ED-A		Hi In Cp Pz	A	203	SoCf	M1 V M3 V	{ 3 }	(E8D+5)	[DC9E]		14	7,280
 Alph	C	1801	Zephir	C591651-9		He Ni		204	SoCf	K1 V M1 V	{ -1 }	(C53-5)	[2515]		13	-900
 Alph	C	1803	Yellowknife	B775887-A		Pa Ph Pi		910	SoCf	G3 V	{ 2 }	(B7B+2)	[8A5A]		8	1,694
 Alph	C	1804	Arcadia	C567478-9		Ni Pa		300	NaHu	K3 V M1 V	{ -1 }	(632-1)	[4359]		6	-36
@@ -277,12 +277,12 @@ Alph	G	1811	Darlany	C524553-B		Ni		805	NaHu	K2 V	{ 0 }	(C44-3)	[2528]		11	-576
 Alph	G	1812	Weeven	E310A9A-C		Hi In Na (Sundowners)		901	SoCf	M4 III D	{ 2 }	(D9D+4)	[CC7E]		9	6,084
 Alph	G	1817	Etrez	B7398AF-C		Ph Pz	A	914	NaHu	M1 V	{ 2 }	(F7C+5)	[DAAH]		15	6,300
 Alph	O	1832	Ijsselmeer	C85A673-A		Ni Wa Dolp5		110	SoCf	K0 V M3 V	{ 0 }	(954-3)	[3627]		13	-540
-Alph	O	1834	Waal	A1008A5-E		Na Va Ph Pi		200	SoCf	M2 V M0 V	{ 2 }	(A7D+1)	[6A3C]		10	910
-Alph	O	1836	Terschelling	B100436-E	KM	Ni Va		803	SoCf	M3 V M0 V	{ 2 }	(935+1)	[364D]		8	135
+Alph	O	1834	Waal	A1008A5-E		Na Va Ph Pi		200	SoCf	M0 V M2 V	{ 2 }	(A7D+1)	[6A3C]		10	910
+Alph	O	1836	Terschelling	B100436-E	KM	Ni Va		803	SoCf	M0 V M3 V	{ 2 }	(935+1)	[364D]		8	135
 Alph	C	1901	Weiwai	C73767A-9		Ni		300	SoCf	G4 V	{ -1 }	(853+1)	[857B]		5	120
 Alph	C	1903	Waypoint	C000322-C		As Lo Va		202	SoCf	M3 V	{ 0 }	(721-4)	[1318]		14	-56
 Alph	C	1904	Heaven's Belt	C000201-D		As Lo Va		824	SoCf	K4 V	{ 0 }	(A11-4)	[1219]		15	-40
-Alph	C	1907	Killbrouha	B423965-E		Hi In Na Po Cp Pz O:1803	A	813	SoCf	K3 V K0 V	{ 4 }	(F8G+2)	[7D3C]		14	3,840
+Alph	C	1907	Killbrouha	B423965-E		Hi In Na Po Cp Pz O:1803	A	813	SoCf	K0 V K3 V	{ 4 }	(F8G+2)	[7D3C]		14	3,840
 Alph	C	1909	Hallom	D5749A7-8		Hi In		100	SoCf	K4 V M9 V	{ 0 }	(B89+1)	[9958]		11	792
 Alph	G	1914	Dry Body	D300875-8		Na Va Ph Pi		104	SoCf	M2 V	{ -2 }	(E76-4)	[6636]		14	-2,352
 Alph	G	1915	Rogrovil	C100453-D		Ni Va		414	SoCf	G0 IV	{ 0 }	(B33-3)	[142A]		10	-297
@@ -301,9 +301,9 @@ Alph	G	2019	Underhill	B100426-E	K	Ni Va		604	NaHu	K1 V	{ 1 }	(A34+1)	[354D]		14	
 Alph	K	2021	Porens	B565424-B		Ni Pa		403	SoCf	M1 V	{ 1 }	(934-1)	[2539]		13	-108
 Alph	K	2027	Dalos	C8A5779-9		Fl		425	NaHu	K3 V M1 V	{ 0 }	(G69+1)	[876A]		18	864
 Alph	K	2029	Shen	B7A2531-C		Fl He Ni		823	NaHu	M3 V	{ 1 }	(C45-3)	[1618]		11	-720
-Alph	O	2034	Zealand	C678699-8		Ag Ni		204	NaHu	M1 V K9 V	{ -1 }	(C53+1)	[7569]		13	180
+Alph	O	2034	Zealand	C678699-8		Ag Ni		204	NaHu	K9 V M1 V	{ -1 }	(C53+1)	[7569]		13	180
 Alph	O	2037	Abelard	C554430-9		Ni Pa		800	NaHu	K7 V	{ -1 }	(632-5)	[1314]		8	-180
-Alph	O	2039	Cyclades	A799332-E		Lo		200	SoCf	M3 V M1 V	{ 1 }	(521-3)	[141A]		7	-30
+Alph	O	2039	Cyclades	A799332-E		Lo		200	SoCf	M1 V M3 V	{ 1 }	(521-3)	[141A]		7	-30
 Alph	C	2101	Churchill	B000883-D		As Na Va Ph Pi		400	SoCf	G4 V M0 V	{ 2 }	(A7D-1)	[5A2A]		9	-910
 Alph	C	2103	Peodein	C100355-D		Lo Va		522	NaHu	K7 V M0 V	{ 0 }	(921-2)	[133B]		13	-36
 Alph	C	2106	Bootrosi	C555113-9		Lo Da	A	403	SoCf	K3 V	{ -1 }	(601-4)	[1126]		13	0
@@ -314,7 +314,7 @@ Alph	K	2121	Zanig	E527100-9		Lo		612	SoCf	M1 V	{ -2 }	(601-5)	[1114]		14	0
 Alph	K	2122	Flora	B100442-E		Ni Va		611	SoCf	A3 V M4 V	{ 1 }	(834-3)	[151A]		7	-288
 Alph	K	2127	Teta Lise	B658877-A	K	Pa Ph		503	NaHu	K2 V	{ 2 }	(D7B+2)	[8A5A]		9	2,002
 Alph	K	2129	Pesacce	B578721-A	KM	Ag Cp Pi		514	SoCf	K4 V	{ 4 }	(E6D+1)	[3B16]		11	1,092
-Alph	O	2132	Keine	B100450-E		Ni Va		624	SoCf	M1 V K0 V K5 V	{ 1 }	(C34-3)	[1519]		15	-432
+Alph	O	2132	Keine	B100450-E		Ni Va		624	SoCf	K0 V M1 V K5 V	{ 1 }	(C34-3)	[1519]		15	-432
 Alph	O	2138	Thales	D200443-9		Ni Va		402	SoCf	F3 V M1 V	{ -2 }	(831-5)	[1226]		10	-120
 Alph	O	2139	Lough Ree	B97A511-D		Ni Wa		904	NaHu	K4 V	{ 1 }	(B45-3)	[1619]		10	-660
 Alph	C	2201	Dagir	C56498B-A		Hi Pr		701	NaHu	K4 V	{ 2 }	(C8C+4)	[BB7C]		9	4,608
@@ -339,7 +339,7 @@ Alph	G	2318	Sevror	C9B8434-A		Fl Ni		514	SoCf	K6 V M8 V	{ 0 }	(B33-2)	[2438]		14
 Alph	K	2324	Haven	B000454-E		As Ni Va		102	SoCf	M2 V M4 V	{ 1 }	(834-1)	[253C]		11	-96
 Alph	K	2325	Lonug	C553410-9		Ni Po		914	SoCf	K2 V	{ -1 }	(B32-5)	[1314]		15	-330
 Alph	K	2328	Olina	C7A2641-9		Fl He Ni Da	A	624	NaHu	G4 V	{ -1 }	(E53-5)	[2515]		12	-1,050
-Alph	O	2333	Dawkins	C310641-A		Na Ni		820	SoCf	M3 V K5 V	{ 0 }	(A54-4)	[2616]		14	-800
+Alph	O	2333	Dawkins	C310641-A		Na Ni		820	SoCf	K5 V M3 V	{ 0 }	(A54-4)	[2616]		14	-800
 Alph	O	2334	Kalahari	E561353-8		Lo		804	SoCf	M0 V	{ -3 }	(921-5)	[1125]		11	-90
 Alph	O	2335	Caldron	E0009BE-B		As Hi In Na Va Pz	A	403	SoCf	M2 V M2 V	{ 2 }	(E8D+5)	[DB9F]		10	7,280
 Alph	O	2339	Elton	B545788-A		Ag Pi		300	NaHu	M0 V M7 V	{ 3 }	(96C+3)	[7A5A]		8	1,944
@@ -354,7 +354,7 @@ Alph	G	2416	Orbdir	A585785-C		Ag Ri		903	SoCf	M2 V	{ 4 }	(C6E+2)	[5B3A]		12	2,01
 Alph	G	2417	Giledian	B738300-D		Lo		224	NaHu	M2 V M8 V	{ 1 }	(B21-3)	[1418]		17	-66
 Alph	G	2418	Sylinea	D584200-8		Lo		223	SoCf	K1 V	{ -3 }	(911-5)	[1113]		17	-45
 Alph	G	2419	Oriah	B0009A6-E	K	As Hi In Na Va		513	NaHu	M0 V	{ 4 }	(F8G+3)	[8D4D]		7	5,760
-Alph	K	2423	EAM 321	C200400-C		Ni Va		113	SoCf	M2 V M1 V	{ 0 }	(A33-4)	[1417]		12	-360
+Alph	K	2423	EAM 321	C200400-C		Ni Va		113	SoCf	M1 V M2 V	{ 0 }	(A33-4)	[1417]		12	-360
 Alph	K	2425	Delin	X778635-5		Ag Ni Fo	R	100	SoCf	M0 V M9 V	{ -2 }	(852-4)	[4433]		5	-320
 Alph	K	2426	Ben's Oath	C745874-8		Pa Ph Pi		103	SoCf	M0 V M6 V	{ -1 }	(D77-3)	[6736]		8	-1,911
 Alph	O	2431	Luigi	B435666-C		Ni O:2433		310	SoCf	K3 V M8 V	{ 1 }	(955+1)	[574B]		7	225
@@ -403,7 +403,7 @@ Alph	H	2715	Pinnafore	E100100-B		Lo Va		113	SoCf	M0 V M8 V	{ -1 }	(701-5)	[1116]
 Alph	H	2718	Talmen	E696389-7		Lo		113	NaHu	M1 V M6 V	{ -3 }	(521-2)	[4168]		8	-20
 Alph	H	2720	Uvareck	C66879A-8		Ag Ri Pz	A	600	NaHu	K2 V	{ 1 }	(969+3)	[987A]		7	1,458
 Alph	L	2727	Varax	C3008DC-8		Na Va Ph Pi Pz	A	420	SoCf	F0 V M9 V	{ -1 }	(C77+2)	[B78B]		8	1,176
-Alph	P	2735	Domingo	D64A626-8		Ni Wa Da	A	711	SoCf	M1 V M6 V K9 V	{ -3 }	(A51-4)	[5347]		7	-200
+Alph	P	2735	Domingo	D64A626-8		Ni Wa Da	A	711	SoCf	K9 V M6 V M1 V	{ -3 }	(A51-4)	[5347]		7	-200
 Alph	P	2738	Ekrit	B6A1651-C	KM	Fl He Ni		201	SoCf	M3 V	{ 2 }	(956-2)	[2818]		10	-540
 Alph	P	2740	Shockley	B10056A-E	KM	Ni Va Mr		905	SoCf	M2 V	{ 2 }	(C46+4)	[777G]		16	1,152
 Alph	D	2801	Gardon	D596430-7		Ni Pa		103	SoCf	G8 V M3 V	{ -3 }	(631-5)	[1112]		10	-90
@@ -430,7 +430,7 @@ Alph	H	2916	Toleto	D879554-9		Ni		900	SoCf	M2 V	{ -2 }	(742-4)	[3337]		12	-224
 Alph	H	2918	Bolime	C561431-9		Ni		700	NaHu	M0 V M6 V	{ -1 }	(632-5)	[1315]		5	-180
 Alph	L	2921	Quel	E41025A-A		Lo Da	A	400	SoCf	M3 V M6 V	{ -1 }	(411+1)	[417C]		12	4
 Alph	L	2923	Zawinj	B562262-B		Lo O:3225		320	SoCf	G9 V	{ 1 }	(611-3)	[1317]		13	-18
-Alph	L	2925	Vanee	B310213-D		Lo		603	NaHu	M3 V K6 V	{ 1 }	(711-2)	[132A]		13	-14
+Alph	L	2925	Vanee	B310213-D		Lo		603	NaHu	K6 V M3 V	{ 1 }	(711-2)	[132A]		13	-14
 Alph	L	2926	Shac	C6A2422-A		Fl He Ni		914	SoCf	K6 V	{ 0 }	(B33-4)	[1416]		18	-396
 Alph	L	2928	Werom	C758442-9		Ni Pa		923	SoCf	M1 V M2 V	{ -1 }	(B32-5)	[1315]		9	-330
 Alph	L	2929	Teglron	C552530-9		Ni Po		510	SoCf	M2 V	{ -1 }	(843-5)	[1414]		6	-480
@@ -443,10 +443,10 @@ Alph	D	3004	Zilon	B666554-C		Ag Ni Ga Pr Da	A	100	NaHu	K4 V	{ 2 }	(746+1)	[373A]
 Alph	D	3007	Ribble	C310676-A		Na Ni		212	SoCf	M3 V M5 V	{ 0 }	(B54-1)	[5649]		14	-220
 Alph	D	3008	Rapier	C693645-8		Ni		501	NaHu	G3 V	{ -2 }	(952-4)	[4436]		14	-360
 Alph	D	3010	Sumax	B43278A-C	K	Na Po		702	NaHu	M2 V	{ 2 }	(B6C+4)	[997E]		12	3,168
-Alph	H	3013	Cirnam	E85A8B7-8		Wa Ph		202	SoCf	M3 V G2 V	{ -2 }	(C76-2)	[8658]		12	-1,008
+Alph	H	3013	Cirnam	E85A8B7-8		Wa Ph		202	SoCf	G2 V M3 V	{ -2 }	(C76-2)	[8658]		12	-1,008
 Alph	H	3019	Wiseman	B10099B-E		Hi In Na Va Pz SeleW	A	704	NaHu	K4 IV	{ 4 }	(F8G+5)	[BD7G]		14	9,600
 Alph	H	3020	Picus Moon	A40038B-E		Lo Va		720	SoCf	M0 V M2 V	{ 1 }	(721+3)	[547G]		9	42
-Alph	L	3021	Tezra	C563238-9		Lo		813	NaHu	M3 V M2 V	{ -1 }	(811-1)	[2159]		12	-8
+Alph	L	3021	Tezra	C563238-9		Lo		813	NaHu	M2 V M3 V	{ -1 }	(811-1)	[2159]		12	-8
 Alph	L	3027	Lomin	B98A400-E	KM	Ni Wa		103	SoCf	G0 V G0 V	{ 2 }	(935-2)	[1619]		12	-270
 Alph	L	3029	Serpa	D31079B-8		Na Pi Pz	A	204	NaHu	M3 V	{ -2 }	(D66+1)	[957A]		14	468
 Alph	P	3032	Eden	E669375-8		Lo Da	A	703	NaHu	M0 V	{ -3 }	(821-5)	[1136]		8	-80
@@ -454,7 +454,7 @@ Alph	P	3034	Marchant	C566743-8		Ag Ri		200	SoCf	M2 V M9 V	{ 1 }	(969-2)	[4825]		
 Alph	P	3036	Billowight	B423424-D		Ni Po Da	A	402	SoCf	K2 V M5 V	{ 1 }	(834-1)	[253B]		10	-96
 Alph	P	3038	Hadj	D56977B-7		Ri		303	NaHu	K2 V M0 V	{ -1 }	(967+1)	[9679]		8	378
 Alph	D	3102	Glassend	D726742-7		Pi		615	SoCf	K0 V M1 V	{ -2 }	(966-5)	[3513]		13	-1,620
-Alph	D	3103	Cirion	C788220-8		Lo		300	SoCf	K8 V K0 V	{ -2 }	(411-5)	[1113]		8	-20
+Alph	D	3103	Cirion	C788220-8		Lo		300	SoCf	K0 V K8 V	{ -2 }	(411-5)	[1113]		8	-20
 Alph	D	3105	Arwen	C10088C-B		Na Va Ph Pi Pz	A	204	NaHu	M0 V M2 V	{ 1 }	(E7B+4)	[B98E]		14	4,312
 Alph	D	3110	Brego	E62A445-A		Ni		224	SoCf	K2 V M8 V	{ -1 }	(C32-3)	[2338]		10	-216
 Alph	H	3112	Yatta	A523555-E	KM	Ni Po		913	SoCf	M3 V M4 V M4 V	{ 2 }	(B46+1)	[373C]		11	264
@@ -465,12 +465,12 @@ Alph	H	3117	Boneva	C76A400-C		Ni Wa		303	SoCf	G3 V M0 V	{ 0 }	(933-4)	[1417]		11
 Alph	H	3118	Daeba	C565424-9		Ni Pa		724	SoCf	M1 V	{ -1 }	(C32-3)	[2337]		15	-216
 Alph	H	3119	Kilowog	A10079B-E		Na Va Pi Pz	A	804	SoCf	K4 V M9 V	{ 2 }	(D6D+4)	[997G]		11	4,056
 Alph	H	3120	Junction	E665564-7		Ag Ni Ga Pr O:3019		303	NaHu	G2 V	{ -2 }	(742-4)	[3335]		11	-224
-Alph	L	3123	Konu	E100223-A		Lo Va		603	SoCf	M2 V M0 V	{ -1 }	(711-4)	[1127]		7	-28
+Alph	L	3123	Konu	E100223-A		Lo Va		603	SoCf	M0 V M2 V	{ -1 }	(711-4)	[1127]		7	-28
 Alph	L	3124	Wettin	A87A788-E	K	Wa Pi		323	NaHu	G2 V	{ 2 }	(E6D+2)	[795E]		8	2,184
 Alph	L	3128	Razein	D588646-6		Ag Ni Ri		623	NaHu	M0 V	{ -1 }	(853-2)	[5545]		13	-240
 Alph	L	3129	Potena	B100532-E		Ni Va		923	NaHu	M1 V	{ 1 }	(C45-3)	[161A]		9	-720
 Alph	L	3130	Duni	B200653-D	KM	Na Ni Va Cp		803	SoCf	M2 V M9 V	{ 2 }	(B56-1)	[382A]		7	-330
-Alph	P	3133	Gadgick	B6848BB-A	K	Ri Pa Ph Pz	A	722	NaHu	M2 V M0 V	{ 3 }	(E7C+5)	[AB7C]		13	5,880
+Alph	P	3133	Gadgick	B6848BB-A	K	Ri Pa Ph Pz	A	722	NaHu	M0 V M2 V	{ 3 }	(E7C+5)	[AB7C]		13	5,880
 Alph	P	3135	New Jakarta	BA8A633-C	KM	Ni Oc Ri Cp		403	SoCf	K4 V M1 V M4 V	{ 3 }	(B57+1)	[3929]		11	385
 Alph	P	3137	Puertovalez	A561500-E	KM	Ni Pr		903	SoCf	M2 V	{ 2 }	(A46-2)	[1719]		11	-480
 Alph	P	3140	Bismalia	E100875-9		Na Va Ph Pi		402	SoCf	K1 V	{ -1 }	(C78-3)	[6737]		9	-2,016

@@ -1,6 +1,6 @@
 Sector	SS	Hex	Name	UWP	Bases	Remarks	Zone	PBG	Allegiance	Stars	{Ix}	(Ex)	[Cx]	Nobility	W	RU
 Newo	A	0101	Losa	A41077A-D		Na Pi		234	SoCf	F7 V	{ 2 }	(D65+1)	[694H]		16	390
-Newo	A	0102	Rinat	C412442-9		Ic Ni Co Lk		303	SoCf	G6 V G0 V	{ -1 }	(D32-4)	[2365]		13	-312
+Newo	A	0102	Rinat	C412442-9		Ic Ni Co Lk		303	SoCf	G0 V G6 V	{ -1 }	(D32-4)	[2365]		13	-312
 Newo	A	0106	Strelwell	B5A1335-B	KM	Fl He Lo Co Tz		103	SoCf	M3 V	{ 2 }	(822+1)	[556D]		8	32
 Newo	E	0115	Burgoyne	A653979-E		Hi Po Pz	A	411	SoCf	F7 V	{ 3 }	(78D+1)	[7C8E]		9	728
 Newo	E	0116	Henricus	C5A1213-9		Fl He Lo Tz		302	NaHu	M1 V	{ -1 }	(510-3)	[617A]		10	0
@@ -9,7 +9,7 @@ Newo	I	0122	0122	B54646A-B	KM	Ni Pa Fo Mr	R	102	SoRz	G6 V	{ 2 }	(D33-4)	[26A7]		
 Newo	I	0123	0123	C41046A-B	M	Ni Fo Co Tz Mr	R	600	SoRz	M7 V	{ 0 }	(731+1)	[7468]		3	21
 Newo	M	0138	Lyndon	X100000-0		Ba Va Fo Tz	R	001	WiDe	M5 V	{ -3 }	(900-5)	[0000]		11	0
 Newo	M	0140	Cathedral	D878956-8		Hi In		501	WiDe	F0 V M8 V	{ 0 }	(88C-4)	[49A8]		5	-3,072
-Newo	A	0202	Priskorbie	D9AA759-8		Fl Co Tz		131	SoCf	M1 V K1 V	{ -2 }	(665+1)	[9519]		10	180
+Newo	A	0202	Priskorbie	D9AA759-8		Fl Co Tz		131	SoCf	K1 V M1 V	{ -2 }	(665+1)	[9519]		10	180
 Newo	A	0203	Guunda	A8869B9-A		Hi Ga Pr Pz (Tadonga)	A	122	SoCf	G3 V	{ 3 }	(D89+2)	[8C8E]		7	1,872
 Newo	A	0210	Setback	E310100-7		Lo Lk		233	NaHu	M3 V	{ -3 }	(400-5)	[1119]		15	0
 Newo	E	0212	Penninger	X5A2157-9		Fl He Lo Fo Tz	R	204	NaHu	M3 V	{ -2 }	(B00-5)	[1166]		13	0
@@ -20,7 +20,7 @@ Newo	A	0302	Whelk	B579344-9		Lo		610	SoCf	K3 V	{ 0 }	(920-3)	[1338]		9	0
 Newo	A	0304	Nazariy	C410126-7		Lo Lk		521	SoCf	M2 V M3 V	{ -2 }	(600+2)	[3127]		14	0
 Newo	A	0310	Karla Secundus	B410211-C		Lo Co Tz		422	NaHu	M3 V	{ 1 }	(C11+3)	[137C]		10	36
 Newo	E	0311	Galenos	E623000-0		Ba Po		002	SoCf	K8 V	{ -3 }	(700-5)	[0000]		8	0
-Newo	E	0312	Mikhailov	B410202-C		Lo		600	SoCf	K2 V G2 V M0 V	{ 1 }	(611+1)	[135D]		6	6
+Newo	E	0312	Mikhailov	B410202-C		Lo		600	SoCf	G2 V K2 V M0 V	{ 1 }	(611+1)	[135D]		6	6
 Newo	E	0313	Resfriado	A778889-9		Pa Ph Pi Co		930	SoCf	G8 V	{ 1 }	(E77+2)	[796E]		7	1,372
 Newo	E	0314	Cypress	B7869CD-C		Hi Ga Pr		421	SoCf	K6 V	{ 3 }	(D88+1)	[5C5B]		12	832
 Newo	I	0321	Kliment	D554325-4		Lo Co		610	NaHu	G2 V M1 V	{ -3 }	(820-2)	[6172]		11	0
@@ -29,18 +29,18 @@ Newo	I	0327	Asphodel	AAD6A9D-E	KM	Hi Cp Co		132	SoCf	F3 V	{ 4 }	(E9C-1)	[9E4J]		
 Newo	I	0329	Cecilio	D100102-B		Lo Va Sa		102	SoCf	F9 V K9 V	{ -1 }	(700-1)	[316D]		7	0
 Newo	M	0332	Bursk	E200214-7		Lo Va Tz		203	NaHu	M0 V	{ -3 }	(410+1)	[319A]		15	0
 Newo	M	0333	5A4-620	X5A4000-0		Ba Fl Fo Co Tz	R	011	NaXX	M0 V	{ -3 }	(A00-5)	[0000]		6	0
-Newo	M	0334	Shepherd One	B865851-A		Ga Ri Pa Ph Tz		621	NaHu	M2 V A6 V	{ 3 }	(B77-5)	[4B4A]		10	-2,695
+Newo	M	0334	Shepherd One	B865851-A		Ga Ri Pa Ph Tz		621	NaHu	A6 V M2 V	{ 3 }	(B77-5)	[4B4A]		10	-2,695
 Newo	M	0335	Glittering	C100331-A		Lo Va Lk		131	NaHu	A2 V	{ 0 }	(A20-3)	[2319]		11	0
 Newo	A	0403	Coronal	A566AAA-D		Hi Pz Co	A	301	SoCf	F1 V	{ 3 }	(69A-2)	[AD5C]		6	-1,080
-Newo	A	0404	Darnina	D410685-7		Na Ni Co Tz		303	SoCf	M0 V K9 V	{ -3 }	(850-5)	[731B]		7	0
+Newo	A	0404	Darnina	D410685-7		Na Ni Co Tz		303	SoCf	K9 V M0 V	{ -3 }	(850-5)	[731B]		7	0
 Newo	A	0406	Nittikaa	A59A576-C		Ni Wa DolpW		202	SoCf	K9 V	{ 1 }	(842+2)	[7659]		10	128
-Newo	A	0409	Rime	B64888A-9		Pa Ph Pi Co Tz		102	NaHu	M1 V G1 V	{ 1 }	(579+1)	[9988]		12	315
+Newo	A	0409	Rime	B64888A-9		Pa Ph Pi Co Tz		102	NaHu	G1 V M1 V	{ 1 }	(579+1)	[9988]		12	315
 Newo	E	0411	Borethane	A747A98-E	KM	Hi In Cp		102	SoCf	F1 V M7 V	{ 5 }	(998+1)	[BF7H]		13	648
 Newo	E	0412	Thedus IV	D56499B-8		Hi Pr Pz	A	523	SoCf	G1 V K7 V	{ -1 }	(F87+1)	[8834]		17	840
 Newo	E	0417	Heartbreak	C7B8251-A		Fl Lo Tz		224	SoCf	M1 V	{ 0 }	(D10-2)	[325F]		10	0
 Newo	E	0419	Sophos	E410000-0		Ba Tz		002	NaXX	M3 V	{ -3 }	(200-5)	[0000]		10	0
 Newo	E	0420	Requiem	C522200-9		He Lo Po Tz		530	SoCf	M0 V	{ -1 }	(910+3)	[5128]		16	0
-Newo	I	0422	Siddur	B5679DC-7		Hi Pr Fo	R	301	SoCf	K5 V K3 V	{ 1 }	(C88+1)	[6A28]		5	768
+Newo	I	0422	Siddur	B5679DC-7		Hi Pr Fo	R	301	SoCf	K3 V K5 V	{ 1 }	(C88+1)	[6A28]		5	768
 Newo	I	0426	Felix	A411211-B		Ic Lo Co Tz		101	SoCf	M2 V M2 V	{ 1 }	(711+5)	[137C]		11	35
 Newo	M	0435	Malvarma	D686211-3		Lo Ga Tu		501	NaHu	F9 V K8 V	{ -3 }	(B10-2)	[7134]		9	0
 Newo	M	0437	Cradle	B669640-6		Ni Ri		200	NaHu	G2 V	{ 0 }	(755-1)	[4637]		10	-175
@@ -57,7 +57,7 @@ Newo	E	0517	Hanleng	A5678A7-9		Ri Pa Ph Co		811	SoCf	G1 V	{ 2 }	(97A+4)	[CA6A]		
 Newo	E	0518	Delphine	C400577-9		Ni Va Tz		100	SoCf	M2 V	{ -1 }	(C43+2)	[A43A]		10	288
 Newo	E	0520	Xabula	D778651-7		Ag Ni Da (Xabulamanti)8 Dolp2	A	401	SoCf	G3 V	{ -2 }	(A50+1)	[7474]		7	0
 Newo	I	0522	Torin	C7879DG-5		Hi Ga Pr Fo	R	602	SoCf	F3 V M6 V	{ 0 }	(587+3)	[9953]		11	840
-Newo	A	0601	Braxen	B777101-A		Lo Tr		910	SoCf	G8 V A8 V	{ 1 }	(701+5)	[628A]		8	0
+Newo	A	0601	Braxen	B777101-A		Lo Tr		910	SoCf	A8 V G8 V	{ 1 }	(701+5)	[628A]		8	0
 Newo	A	0602	Phracent	C300351-9		Lo Va Lk		500	SoCf	A8 V	{ -1 }	(320+1)	[3265]		6	0
 Newo	A	0603	Prospero	A662755-B	KM	Ri Cp		520	SoCf	F9 V K5 V	{ 4 }	(766-1)	[7B86]		9	-252
 Newo	A	0610	Triniti	E400100-9		Lo Va Ho Tz		112	SoCf	K7 V M5 V M8 V	{ -2 }	(E00-5)	[1115]		10	0
@@ -75,10 +75,10 @@ Newo	E	0715	Monument	C547886-8		Pa Ph Pi UApe2 Sa		403	NaHu	G2 V	{ -1 }	(D76-5)	
 Newo	E	0717	Rocoso	C400889-9		Na Va Ph Pi Lk		123	NaHu	G8 V	{ 0 }	(E79-1)	[687B]		13	-882
 Newo	E	0719	Abel	D9659BB-8	M	Hi Pr Fo	R	734	NaHu	M0 V	{ -1 }	(F88+1)	[D87A]		15	960
 Newo	E	0720	Seguranca	A588A86-E	KM	Hi		121	SoCf	F4 V	{ 4 }	(A9D+1)	[CE6G]		7	1,170
-Newo	I	0721	Garnet	C647565-5		Ag Ni O:0720		130	SoCf	K9 V G1 V	{ -1 }	(A40+1)	[6431]		10	0
+Newo	I	0721	Garnet	C647565-5		Ag Ni O:0720		130	SoCf	G1 V K9 V	{ -1 }	(A40+1)	[6431]		10	0
 Newo	I	0728	Mote	C000654-C		As Na Ni Va		330	SoCf	D	{ 0 }	(F53+4)	[665D]		6	900
-Newo	M	0734	Solemniti	E400211-7		Lo Va Lk		202	NaHu	M3 V G9 V	{ -3 }	(210-4)	[2113]		6	0
-Newo	M	0737	Quatuor	B595998-B	KM	Hi In Sa		123	NaHu	G3 V G0 V K7 V M8 V	{ 5 }	(E88+2)	[4EA8]		11	1,792
+Newo	M	0734	Solemniti	E400211-7		Lo Va Lk		202	NaHu	G9 V M3 V	{ -3 }	(210-4)	[2113]		6	0
+Newo	M	0737	Quatuor	B595998-B	KM	Hi In Sa		123	NaHu	G0 V G3 V K7 V M8 V	{ 5 }	(E88+2)	[4EA8]		11	1,792
 Newo	M	0739	Xoriguer	E548146-7		Lo		302	NaHu	G9 V	{ -3 }	(A00+1)	[1127]		15	0
 Newo	A	0808	Plamen 3	B764942-C		Hi Pr		630	SoKv	F3 V K0 V	{ 3 }	(A87+3)	[BC7F]		9	1,680
 Newo	A	0809	Tsveta	C583845-8		Ri Ph		103	SoKv	K8 V M3 V	{ 0 }	(974+1)	[8837]		13	252
@@ -89,7 +89,7 @@ Newo	I	0822	Majestic	C7889DH-5		Hi Pr Fo	R	431	NaHu	F6 V G4 V	{ 0 }	(B83+2)	[998
 Newo	I	0828	Socotra	C64836A-7		Lo O:0327 Ho		411	SoCf	G2 V	{ -2 }	(620-1)	[6147]		8	0
 Newo	M	0831	Wither	X530000-0		Ba De Po Fo Tz	R	010	SoCf	M2 V	{ -3 }	(500-5)	[0000]		5	0
 Newo	B	0908	Marin	E200101-8		Lo Va Lk		834	SoKv	A5 V M3 V	{ -3 }	(E00-3)	[1188]		19	0
-Newo	B	0909	Vasil	C530666-7		De Na Ni Po O:0910 Tz		232	SoKv	M1 V G4 V G8 V	{ -2 }	(650-5)	[7416]		8	0
+Newo	B	0909	Vasil	C530666-7		De Na Ni Po O:0910 Tz		232	SoKv	G4 V M1 V G8 V	{ -2 }	(650-5)	[7416]		8	0
 Newo	B	0910	Kostov	A675A56-E		Hi In Cp		103	SoKv	M3 V M6 V	{ 4 }	(89A-1)	[9E5G]		12	-720
 Newo	F	0912	Bram	E310000-0		Ba Sa		014	SoCf	K0 IV M6 V	{ -3 }	(800-5)	[0000]		13	0
 Newo	F	0914	Frostigitaj	D9AA578-9		Fl Ni Fr		813	SoCf	M0 V M7 V	{ -2 }	(640-1)	[8386]		12	0
@@ -98,7 +98,7 @@ Newo	F	0918	Rew	E722133-7		He Lo Po Tz		413	SoCf	M2 V M8 V	{ -3 }	(700-2)	[1146]
 Newo	F	0920	Eta Hazen	B200200-B		Lo Va Co Tz		403	SoCf	M0 V	{ 1 }	(B11+1)	[1349]		10	11
 Newo	J	0925	Holmberg	A310310-C	K	Lo Tz		104	NaHu	M1 V M3 V	{ 1 }	(B21+5)	[144D]		10	110
 Newo	J	0930	Berns	C630225-7		De Lo Po Ho Tz		232	SoCf	K3 V	{ -2 }	(910+4)	[1137]		17	0
-Newo	N	0933	Rubaiyat	C410424-8		Ni Co Tz		102	NaHu	M1 V M0 V	{ -2 }	(630+2)	[5218]		12	0
+Newo	N	0933	Rubaiyat	C410424-8		Ni Co Tz		102	NaHu	M0 V M1 V	{ -2 }	(630+2)	[5218]		12	0
 Newo	B	1003	Pustinya	E540134-7		De He Lo Po Co Tz		422	NaHu	M2 V	{ -3 }	(500-2)	[1194]		13	0
 Newo	B	1007	Nadjeda	C5A1100-A		Fl He Lo Tz		221	SoKv	M0 V	{ 0 }	(C00-1)	[112A]		12	0
 Newo	F	1011	Etajn	C310374-B		Lo Tz		232	NaHu	M1 V M2 V	{ 0 }	(G20-2)	[6376]		16	0
@@ -117,7 +117,7 @@ Newo	F	1111	Iscariot	D6A2664-9		Fl He Ni O:0910 Co		623	SoKv	K4 V	{ -2 }	(E52+1)
 Newo	F	1117	Gloom	B310200-B		Lo Tz		101	SoCf	M6 V M9 V	{ 1 }	(B11+3)	[136A]		10	33
 Newo	F	1118	Meir	D510424-7		Ni Sa		101	SoCf	M3 V M4 V	{ -3 }	(332+4)	[4166]		14	72
 Newo	F	1120	Paramount	B978679-9		Ag Ni		210	SoCf	M0 V	{ 1 }	(852+2)	[575B]		9	160
-Newo	J	1124	Chudan	B55A321-9		Lo Wa Co Tz		601	SoCf	M3 V M2 V	{ 0 }	(620-2)	[7399]		8	0
+Newo	J	1124	Chudan	B55A321-9		Lo Wa Co Tz		601	SoCf	M2 V M3 V	{ 0 }	(620-2)	[7399]		8	0
 Newo	J	1125	Laodice	A655357-B		Lo Ga Tr		300	SoCf	G6 V	{ 1 }	(A21+1)	[244G]		8	20
 Newo	N	1133	Klimt	E200100-7		Lo Va Lk		101	NaHu	M1 V M1 V	{ -3 }	(800+1)	[116B]		13	0
 Newo	N	1137	Cythera	A666A9B-D		Hi Ga Pz	A	304	DeNo	M1 V	{ 3 }	(B9D+5)	[CD3A]		11	6,435
@@ -125,30 +125,30 @@ Newo	N	1138	Ionia	A6658A6-C	KM	Ga Ri Pa Ph Cx		132	DeNo	F3 V	{ 4 }	(777+3)	[8C4A
 Newo	B	1209	Stafida	B555864-9	KM	Pa Ph Mr		222	SoKv	F8 V	{ 2 }	(A77+2)	[7A44]		16	980
 Newo	F	1212	Omaha	B777787-9	KM	Ag Pi		103	SoCf	G0 V	{ 3 }	(D67-3)	[7A67]		16	-1,638
 Newo	F	1218	Maha	B58A688-C		Ni Ri Wa		803	SoCf	K1 V	{ 2 }	(B54+2)	[486G]		14	440
-Newo	F	1219	Sycamore	B7689BE-C	M	Hi Pr Fo	R	531	NaHu	G3 V F1 V	{ 3 }	(886+1)	[CC8C]		10	384
+Newo	F	1219	Sycamore	B7689BE-C	M	Hi Pr Fo	R	531	NaHu	F1 V G3 V	{ 3 }	(886+1)	[CC8C]		10	384
 Newo	J	1221	NW633	E310000-0		Ba		032	SoCf	K6 V	{ -3 }	(600-5)	[0000]		15	0
 Newo	N	1231	Malrica	D631224-6		Lo Po Tz		111	NaHu	M1 V M6 V	{ -3 }	(910+1)	[4122]		9	0
-Newo	N	1240	Contrary	D542223-6		He Lo Po		731	NaHu	G1 V F0 V	{ -3 }	(910+4)	[2121]		12	0
+Newo	N	1240	Contrary	D542223-6		He Lo Po		731	NaHu	F0 V G1 V	{ -3 }	(910+4)	[2121]		12	0
 Newo	B	1303	Ling	B200200-E		Lo Va Tz		513	SoCf	M3 V	{ 1 }	(B11-4)	[336H]		13	-44
 Newo	B	1307	Khladen	B61259A-C		Ic Ni Tz		213	SoCf	M3 V	{ 1 }	(B45-1)	[6639]		13	-220
 Newo	F	1311	Vodamir	D96797A-8		Hi Pr		602	NaHu	G7 V	{ -1 }	(582-1)	[7857]		11	-80
 Newo	F	1317	Algieba	C200330-A		Lo Va Sa		102	SoCf	G7 III K0 III	{ 0 }	(B20+2)	[536C]		6	0
 Newo	F	1319	Ricaj	DA696A8-7		Ni Ri Tz		602	SoCf	M2 V	{ -2 }	(B50+3)	[4466]		12	0
-Newo	J	1322	Hippias	E000337-A		As Lo Va		104	SoCf	M0 V K3 V M9 V	{ -1 }	(B20+1)	[125D]		12	0
+Newo	J	1322	Hippias	E000337-A		As Lo Va		104	SoCf	K3 V M0 V M9 V	{ -1 }	(B20+1)	[125D]		12	0
 Newo	J	1323	Sanctified	D747585-5		Ag Ni (minor)		800	SoCf	G9 V	{ -2 }	(740+2)	[7336]		6	0
-Newo	J	1325	Antiochus	A410583-E	KM	Ni		421	SoCf	K0 V G8 V	{ 2 }	(C44+2)	[577C]		8	384
+Newo	J	1325	Antiochus	A410583-E	KM	Ni		421	SoCf	G8 V K0 V	{ 2 }	(C44+2)	[577C]		8	384
 Newo	N	1331	Tygart	C8A6230-9		Fl Lo Co		320	NaHu	K8 V	{ -1 }	(810+1)	[2169]		9	0
 Newo	N	1335	Calores	C5639AD-9		Hi Pr Fo Ho	R	502	NaHu	G1 V	{ 1 }	(886+2)	[4A17]		12	768
 Newo	N	1339	Abeline	C5A7336-9		Fl Lo Co Tz		231	NaHu	M9 V	{ -1 }	(820-4)	[127E]		13	0
 Newo	N	1340	Harmonius	B634420-B		Ni Tz		112	NaHu	M1 V	{ 1 }	(932-2)	[154D]		10	-108
-Newo	B	1401	SenPetor	E5A1100-9		Fl He Lo Tz		501	SoCf	M2 V K8 V	{ -2 }	(900-1)	[417A]		12	0
-Newo	B	1405	SenWenclus	A675246-A		Lo		430	SoCf	K2 V F5 V M0 V	{ 1 }	(711-1)	[2386]		12	-7
+Newo	B	1401	SenPetor	E5A1100-9		Fl He Lo Tz		501	SoCf	K8 V M2 V	{ -2 }	(900-1)	[417A]		12	0
+Newo	B	1405	SenWenclus	A675246-A		Lo		430	SoCf	F5 V K2 V M0 V	{ 1 }	(711-1)	[2386]		12	-7
 Newo	B	1408	Radev	B410313-A		Lo Co Tz		120	SoCf	M0 V	{ 1 }	(821-1)	[148B]		8	-16
 Newo	B	1409	Mulciber	BABA454-E		Fl Ni Co Tz		132	SoCf	M2 V	{ 1 }	(B33-2)	[656G]		16	-198
 Newo	B	1410	Mihov	E9B2330-9		Fl He Lo Tz		632	SoCf	M0 V M7 V	{ -2 }	(A20-5)	[511A]		13	0
 Newo	F	1414	Amaranta	A753677-9		Ni Po		303	NaHu	F0 V M1 V	{ 0 }	(C51+1)	[766A]		10	60
 Newo	F	1415	Yuyami	C88989A-8		Ri Ph Co Tz		204	SoCf	M0 V	{ 0 }	(97C-2)	[A865]		7	-1,512
-Newo	F	1416	Ilari	C410447-8		Ni Tz		113	SoCf	M3 V G5 V	{ -2 }	(E30-2)	[526D]		12	0
+Newo	F	1416	Ilari	C410447-8		Ni Tz		113	SoCf	G5 V M3 V	{ -2 }	(E30-2)	[526D]		12	0
 Newo	F	1417	Ezra IX	X5A1133-8		Fl He Lo Fo Co Tz	R	202	NaHu	M3 V	{ -3 }	(700+1)	[3114]		9	0
 Newo	J	1423	NW331	X200000-0		Ba Va Fo Co Tz	R	011	SoCf	M2 V	{ -3 }	(700-5)	[0000]		14	0
 Newo	N	1433	300-689	X300000-0		Ba Va Fo Tz	R	000	NaXX	M0 V M9 V	{ -3 }	(A00-5)	[0000]		11	0
@@ -161,7 +161,7 @@ Newo	F	1514	Belicheki	ABAA8A9-E	KM	Fl Ph		534	SoCf	G0 V M8 V	{ 3 }	(D79-3)	[BB1A
 Newo	F	1518	Chemos	E7A8342-8		Fl Lo Tz		100	NaHu	M1 V	{ -3 }	(720+4)	[6198]		10	0
 Newo	F	1520	Riding	A988A76-E		Hi		202	SoCf	G7 V M2 V	{ 3 }	(899-3)	[BD2H]		8	-1,944
 Newo	J	1521	Ides	X5A1000-0		Ba Fl He Fo	R	002	NaXX	G5 V	{ -3 }	(800-5)	[0000]		13	0
-Newo	J	1527	Nuala	C978444-9		Ni Pa		532	NaHu	M3 V M0 V	{ -1 }	(C35-3)	[237B]		16	-540
+Newo	J	1527	Nuala	C978444-9		Ni Pa		532	NaHu	M0 V M3 V	{ -1 }	(C35-3)	[237B]		16	-540
 Newo	N	1531	899-456	E899000-0		Ba		004	NaXX	G8 V	{ -3 }	(900-5)	[0000]		12	0
 Newo	N	1532	Gomeisa	X000000-0		As Ba Va Fo	R	001	NaXX	B8 V	{ -3 }	(A00-5)	[0000]		6	0
 Newo	B	1608	Baudin	D9AA755-8		Fl		601	NaHu	G1 V	{ -2 }	(C66-3)	[C55A]		12	-1,296
@@ -171,29 +171,29 @@ Newo	F	1619	Kanazawa	X6599EE-9		Hi Fo UApe0	R	301	SoCf	F2 V G9 V	{ 0 }	(A86+1)	[
 Newo	F	1620	Ate	A5A1642-D		Fl He Ni		503	NaHu	K5 V M6 V	{ 1 }	(B54-1)	[477B]		9	-220
 Newo	J	1622	Delos	A546995-E		Hi In Cp		700	SoCf	K4 V	{ 4 }	(A8A+1)	[AD3C]		10	800
 Newo	J	1623	Genial	B410651-9		Na Ni		121	SoCf	G1 V	{ 0 }	(756+1)	[6659]		11	210
-Newo	J	1625	Wrack	CFC8655-A		Fl Ni Tz		702	SoCf	M3 V M1 V	{ 0 }	(851+1)	[6639]		9	40
+Newo	J	1625	Wrack	CFC8655-A		Fl Ni Tz		702	SoCf	M1 V M3 V	{ 0 }	(851+1)	[6639]		9	40
 Newo	J	1628	Gloriana	A755840-B	KM	Ga Pa Ph Tr		803	NaHu	G1 V M5 V	{ 3 }	(A79+2)	[DB4B]		7	1,260
-Newo	J	1629	Lucinda Station	E100344-9		Lo Va Tz		101	NaHu	M1 V M0 V M3 V	{ -2 }	(920-3)	[214C]		9	0
-Newo	N	1637	Verill	B769A87-C		Hi		301	NaHu	G9 V G6 V M0 V M5 V	{ 3 }	(A9D-3)	[AD1C]		9	-3,510
-Newo	C	1706	Vakuo	B400434-B		Ni Va Tz		131	SoCf	M3 V K0 V M7 V	{ 1 }	(E34+2)	[455B]		16	336
+Newo	J	1629	Lucinda Station	E100344-9		Lo Va Tz		101	NaHu	M0 V M1 V M3 V	{ -2 }	(920-3)	[214C]		9	0
+Newo	N	1637	Verill	B769A87-C		Hi		301	NaHu	G6 V G9 V M0 V M5 V	{ 3 }	(A9D-3)	[AD1C]		9	-3,510
+Newo	C	1706	Vakuo	B400434-B		Ni Va Tz		131	SoCf	K0 V M3 V M7 V	{ 1 }	(E34+2)	[455B]		16	336
 Newo	C	1709	Thaumas	B55A533-A		Ni Wa Co Tz		132	SoCf	M0 V	{ 1 }	(C44-1)	[2655]		13	-192
 Newo	G	1711	Maxim	D662994-6		Hi Pr		314	NaHu	G2 V M0 V	{ -1 }	(984-2)	[6862]		13	-576
 Newo	G	1712	Perdition	E8C8202-9		Fl Lo Ho		102	SoCf	G9 V M7 V	{ -2 }	(710+1)	[411A]		11	0
-Newo	G	1718	Minazal	B400755-9		Na Va Pi		610	SoCf	F7 V G5 III A8 V	{ 1 }	(666-1)	[B88B]		11	-216
+Newo	G	1718	Minazal	B400755-9		Na Va Pi		610	SoCf	G5 III F7 V A8 V	{ 1 }	(666-1)	[B88B]		11	-216
 Newo	G	1719	Panquin	C410476-A		Ni Co Sa		301	NaHu	M9 V	{ 0 }	(733+5)	[249A]		4	315
 Newo	G	1720	Idaho	C7549EF-9		Hi Fo	R	502	SoCf	G5 V	{ 1 }	(985+1)	[9A7A]		8	360
 Newo	K	1725	NW815	E310000-0		Ba Fo Ho	R	002	SoCf	G4 V	{ -3 }	(800-5)	[0000]		10	0
 Newo	O	1735	8B2-147	X8B2000-0		Ba Fl He Fo Tz	R	023	NaXX	M3 V	{ -3 }	(500-5)	[0000]		10	0
 Newo	C	1808	Fidget	C100324-B		Lo Va Tz		103	NaHu	M1 V	{ 0 }	(B20+1)	[8398]		11	0
-Newo	C	1809	Miseri	D7A9101-9		Fl Lo Co Tz		102	SoCf	M3 V M1 V	{ -2 }	(700-2)	[315A]		9	0
-Newo	G	1813	Invictus III	B555666-8	KM	Ag Ni Ho Mr		202	SoCf	K8 V K2 V	{ 1 }	(753-2)	[976A]		11	-210
-Newo	G	1815	Talus	B6A1464-C		Fl He Ni O:1612 Tz		503	SoCf	M0 V F7 V	{ 1 }	(836+3)	[1539]		9	432
+Newo	C	1809	Miseri	D7A9101-9		Fl Lo Co Tz		102	SoCf	M1 V M3 V	{ -2 }	(700-2)	[315A]		9	0
+Newo	G	1813	Invictus III	B555666-8	KM	Ag Ni Ho Mr		202	SoCf	K2 V K8 V	{ 1 }	(753-2)	[976A]		11	-210
+Newo	G	1815	Talus	B6A1464-C		Fl He Ni O:1612 Tz		503	SoCf	F7 V M0 V	{ 1 }	(836+3)	[1539]		9	432
 Newo	G	1818	Neo-Uehara	A534466-9		Ni O:1520 Px		903	SoCf	G9 V	{ 0 }	(A36+1)	[1428]		13	180
 Newo	O	1839	Meigo	B410764-A	K	Na Pi O:2138		511	NaHu	F8 V	{ 2 }	(968+4)	[9969]		7	1,728
 Newo	O	1840	Posul	A777354-B	KM	Lo		402	NaHu	K0 V M3 V	{ 2 }	(822+5)	[1568]		10	160
 Newo	C	1907	Algarroba	C967832-8		Ri Pa Ph		434	NaHu	G4 V M4 V	{ 0 }	(E7C-4)	[688C]		16	-4,704
 Newo	G	1911	Zelazny	E663AA8-8		Hi		212	SoCf	G5 V	{ -1 }	(A9B+1)	[9917]		15	990
-Newo	G	1917	Subra	E400112-7		Lo Va Ho Lk		123	SoCf	A7 V F9 III	{ -3 }	(200+4)	[3157]		9	0
+Newo	G	1917	Subra	E400112-7		Lo Va Ho Lk		123	SoCf	F9 III A7 V	{ -3 }	(200+4)	[3157]		9	0
 Newo	G	1919	Suoding	B555500-B		Ag Ni Co Lk		621	SoCf	K2 V	{ 2 }	(A45-4)	[1727]		8	-800
 Newo	G	1920	Qing	B200541-B		Ni Va Tz		132	SoCf	M2 V	{ 1 }	(D47-3)	[3659]		9	-1,092
 Newo	K	1923	Matins	D7589BA-5		Hi Pz	A	411	SoCf	M0 V	{ -1 }	(581+4)	[A856]		10	160
@@ -205,11 +205,11 @@ Newo	O	2038	Nasser	X412000-0		Ba Ic Fo	R	002	NaXX	G2 V M1 V	{ -3 }	(300-5)	[0000
 Newo	O	2040	Petrov	C310242-A		Lo		803	NaHu	F1 V K6 V	{ 0 }	(B10+1)	[3236]		10	0
 Newo	C	2106	Februari	A763765-C	KM	Ri Cp Tu Mr		524	SoCf	G9 V M7 V	{ 4 }	(E68+3)	[6B9G]		15	2,016
 Newo	G	2117	Nhyl	A543656-B		Ni Po		201	SoCf	G2 V	{ 1 }	(B57+4)	[4746]		12	1,540
-Newo	K	2121	Scepter	C564552-A		Ag Ni Pr Sa		501	SoCf	G9 V M0 III	{ 1 }	(342+3)	[462A]		11	72
+Newo	K	2121	Scepter	C564552-A		Ag Ni Pr Sa		501	SoCf	M0 III G9 V	{ 1 }	(342+3)	[462A]		11	72
 Newo	K	2127	Takenaka	C583698-6		Ni Ri		112	NaHu	K0 V M2 V	{ -1 }	(553+4)	[5532]		9	300
 Newo	O	2137	Alzenau	X874211-5		Lo Fo	R	104	NaHu	G4 V	{ -3 }	(710-2)	[2185]		8	0
 Newo	O	2138	Oppenheimer	A5709A9-E		De He Hi In Co		501	NaHu	G4 V	{ 4 }	(B89+4)	[8D4F]		14	3,168
-Newo	C	2202	Chanter	B410434-C		Ni Tz		212	SoCf	M2 V G7 V	{ 1 }	(534-1)	[555A]		7	-60
+Newo	C	2202	Chanter	B410434-C		Ni Tz		212	SoCf	G7 V M2 V	{ 1 }	(534-1)	[555A]		7	-60
 Newo	C	2205	Nome	D863887-6		Ri Ph Tu		612	SoCf	G9 V	{ -1 }	(67A-5)	[9734]		13	-2,100
 Newo	C	2208	Twining	C1008CB-B		Na Va Ph Pi SeleW Co Lk		213	SoCf	K2 V M2 V	{ 1 }	(A73-5)	[698A]		8	-1,050
 Newo	C	2209	Lycus	X5A1000-0		Ba Fl He Co Tz		022	SoCf	M2 V	{ -3 }	(B00-5)	[0000]		11	0
@@ -227,7 +227,7 @@ Newo	C	2310	Varmega	E100200-B		Lo Va Ho Sa		631	SoCf	G6 V	{ -1 }	(710-1)	[1189]	
 Newo	G	2314	Transfer	A5648EB-C		Ri Pa Ph Cp Pz	A	720	SoCf	G3 V	{ 3 }	(B7E-3)	[5B4D]		9	-3,234
 Newo	G	2316	Ghibish	C5A1223-9		Fl He Lo Tz		134	NaHu	M3 V	{ -1 }	(G10+1)	[1148]		15	0
 Newo	G	2317	Ladh	B6A1776-A		Fl He		100	NaHu	G0 V M3 V	{ 2 }	(665+1)	[B91C]		8	180
-Newo	O	2339	100-224	X100000-0		Ba Va Fo Tz	R	002	NaXX	M2 V F0 V	{ -3 }	(600-5)	[0000]		11	0
+Newo	O	2339	100-224	X100000-0		Ba Va Fo Tz	R	002	NaXX	F0 V M2 V	{ -3 }	(600-5)	[0000]		11	0
 Newo	O	2340	Abrasador	B576421-A	KM	Ni Pa Ho Lk		203	NaHu	F9 V	{ 2 }	(B34+1)	[669A]		13	132
 Newo	C	2405	Silvestre	C400101-A		Lo Va Tz		101	SoCf	M0 V M1 V	{ 0 }	(C00+2)	[4158]		9	0
 Newo	G	2418	Salamander	X6B3131-8		Fl Lo Fo Co Tz	R	201	NaHu	M3 V	{ -3 }	(300-1)	[115B]		8	0
@@ -239,7 +239,7 @@ Newo	O	2437	Spindrift	B88A9B6-D		Hi Wa Pr		103	NaHu	K9 V M7 V	{ 3 }	(B89+3)	[6C5
 Newo	D	2502	Cerealia	A757834-C	KM	Ga Pa Ph Cp		132	SoCf	K3 V M5 V	{ 3 }	(B7B+2)	[6B5D]		15	1,694
 Newo	D	2503	Delta Decatur	C410723-A		Na Pi Tz		532	SoCf	M2 V	{ 1 }	(E68-5)	[5858]		15	-3,360
 Newo	D	2508	Passmore	C594400-9		Ni Pa Co		304	NaHu	F8 V	{ -1 }	(832-5)	[437C]		10	-240
-Newo	H	2517	Uris Prime	C200102-A		Lo Va Tz		201	SoCf	M1 V K7 V	{ 0 }	(900+4)	[114D]		7	0
+Newo	H	2517	Uris Prime	C200102-A		Lo Va Tz		201	SoCf	K7 V M1 V	{ 0 }	(900+4)	[114D]		7	0
 Newo	L	2526	Nihal	E200453-A		Ni Va		330	NaHu	G5 II	{ -1 }	(932+4)	[733B]		7	216
 Newo	P	2539	310-387	X310000-0		Ba Fo Co Tz	R	001	NaXX	M1 V	{ -3 }	(800-5)	[0000]		9	0
 Newo	D	2601	Balm	C654552-9		Ag Ni		132	SoCf	K7 V M2 V	{ 0 }	(B43+1)	[7558]		16	132
@@ -247,17 +247,17 @@ Newo	H	2617	Yue	C410156-C		Lo Tz		532	NaHu	M3 V	{ 0 }	(800-1)	[117B]		17	0
 Newo	P	2636	Shirax	C899894-9		Ph Pi Tz		303	NaHu	M1 V	{ 0 }	(D7B+1)	[383A]		8	1,001
 Newo	P	2638	Ceto	A89A469-C		Ni Wa O:2138		524	NaHu	G2 V	{ 1 }	(C37+1)	[851F]		10	252
 Newo	H	2714	Alcairo	A620210-D	KM	De He Lo Po Tz		102	SoCf	M2 V	{ 2 }	(B12+1)	[247F]		10	22
-Newo	L	2722	Dmitar	X5A5000-0		Ba Fl Fo Tz	R	003	SoCf	M2 V M0 V	{ -3 }	(200-5)	[0000]		13	0
+Newo	L	2722	Dmitar	X5A5000-0		Ba Fl Fo Tz	R	003	SoCf	M0 V M2 V	{ -3 }	(200-5)	[0000]		13	0
 Newo	L	2730	Hugel	C6A2547-9		Fl He Ni Fr Px		201	DiGr	M1 V	{ -1 }	(640+1)	[3454]		6	0
 Newo	P	2739	Nanavut	C79A400-8		Ni Wa Co		111	NaHu	G7 V M8 V	{ -2 }	(930-4)	[52A4]		9	0
-Newo	H	2811	Oboe 4	A410353-B		Lo Tz		602	NaHu	M2 V M0 V	{ 1 }	(621+2)	[141D]		14	24
+Newo	H	2811	Oboe 4	A410353-B		Lo Tz		602	NaHu	M0 V M2 V	{ 1 }	(621+2)	[141D]		14	24
 Newo	H	2812	Cocytus	D9A8122-8		Fl Lo Co Tz		204	NaHu	M2 V	{ -3 }	(A00-2)	[11AB]		11	0
 Newo	H	2813	Bootless	A542433-9		He Ni Po Sa		104	NaHu	F5 V	{ 0 }	(931+2)	[447E]		10	54
 Newo	H	2815	Despin	A669ADF-E	KM	Hi Cp		102	SoCf	F0 V	{ 4 }	(69B+3)	[BE6H]		10	1,782
 Newo	H	2816	Parch	C310363-B		Lo O:2815 Lk		234	SoCf	F7 V	{ 0 }	(H20-4)	[135A]		19	0
 Newo	H	2819	Fortuna	B8579B9-C	KM	Hi Ga Pz	A	924	SoCf	K7 V	{ 4 }	(C8B+1)	[9D1B]		18	1,056
 Newo	P	2831	Dienbach	B56598B-C	KM	Hi Pr		603	DiGr	M2 V	{ 4 }	(A86+3)	[8D7E]		10	1,440
-Newo	P	2832	Broucken	B654A67-C		Hi O:2831		323	DiGr	K5 V K4 V	{ 3 }	(A97+1)	[9D6A]		16	630
+Newo	P	2832	Broucken	B654A67-C		Hi O:2831		323	DiGr	K4 V K5 V	{ 3 }	(A97+1)	[9D6A]		16	630
 Newo	P	2834	200-368	X200000-0		Ba Va Fo Co Sa	R	033	NaXX	B9 IV	{ -3 }	(B00-5)	[0000]		18	0
 Newo	H	2914	Error	C520400-9		De He Ni Po Tz		700	SoCf	M3 V	{ -1 }	(634+1)	[5368]		8	72
 Newo	L	2921	Dulcet	B866A75-D		Hi Ga		202	SoCf	G9 V	{ 3 }	(E97+1)	[8D4H]		10	882
@@ -269,13 +269,13 @@ Newo	P	2940	Tyre	E655842-4		Ga Pa Ph		100	NaHu	K1 V M7 V	{ -2 }	(379+3)	[B631]		
 Newo	D	3003	Riverend	E546100-8		Lo		110	NaHu	K5 V	{ -3 }	(500+1)	[1188]		6	0
 Newo	D	3009	Indus	B656878-9		Ga Pa Ph Sa		201	SoCf	F4 V K6 V	{ 1 }	(974-1)	[8949]		8	-252
 Newo	H	3013	Zera	A554953-D	KM	Hi Ho		130	SoCf	K1 V	{ 4 }	(58C+1)	[8D9D]		13	480
-Newo	L	3021	Drexel Secundus	E200100-9		Lo Va Co Tz		223	SoCf	M3 V G6 V	{ -2 }	(A00-3)	[317A]		13	0
+Newo	L	3021	Drexel Secundus	E200100-9		Lo Va Co Tz		223	SoCf	G6 V M3 V	{ -2 }	(A00-3)	[317A]		13	0
 Newo	L	3029	Gurring	B200311-A		Lo Va Tz		501	DiGr	M0 V M6 V	{ 1 }	(A21+4)	[647B]		6	80
 Newo	P	3033	Klemn	C300310-A		Lo Va Tz		132	DiGr	M1 V	{ 0 }	(D20+3)	[234C]		13	0
 Newo	P	3036	Opis	A687776-C	KM	Ag Ga Ri		101	NaHu	M2 V M3 V	{ 5 }	(96D+1)	[7C7C]		11	702
-Newo	P	3038	Suzu	C999400-6		Ni Co Tz		804	NaHu	M0 V G6 V	{ -2 }	(731+4)	[5273]		13	84
-Newo	P	3040	Erinyes	X530475-7		De Ni Po Fo Tz	R	112	NaHu	M0 V K6 V	{ -3 }	(833-3)	[1185]		11	-216
-Newo	D	3104	Acamar	X200000-0		Ba Va Fo Co Sa	R	031	NaXX	A1 V A4 III	{ -3 }	(800-5)	[0000]		11	0
+Newo	P	3038	Suzu	C999400-6		Ni Co Tz		804	NaHu	G6 V M0 V	{ -2 }	(731+4)	[5273]		13	84
+Newo	P	3040	Erinyes	X530475-7		De Ni Po Fo Tz	R	112	NaHu	K6 V M0 V	{ -3 }	(833-3)	[1185]		11	-216
+Newo	D	3104	Acamar	X200000-0		Ba Va Fo Co Sa	R	031	NaXX	A4 III A1 V	{ -3 }	(800-5)	[0000]		11	0
 Newo	H	3119	Chase	X000000-0		As Ba Va Fo	R	002	NaXX	M0 V	{ -3 }	(800-5)	[0000]		8	0
 Newo	L	3122	Vigour	C757776-8		Ag Ga		111	SoCf	G6 V	{ 0 }	(B64-1)	[5788]		11	-264
 Newo	L	3125	Sieghard	A778333-A		Lo Ho		103	NaHu	F1 V	{ 1 }	(E21-1)	[142A]		8	-28
