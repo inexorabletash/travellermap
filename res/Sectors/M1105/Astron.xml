@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<Sector>
+  <Name>Astron</Name>
+  <Name Lang="zh">Shiants</Name>
+  <Credits>
+    <![CDATA[
+
+      The <b>Astron</b> sector was refined by Geir Lanesskog based on
+      initial system data by Jo Grant.
+
+      The Armory Cluster worlds were designed by Hans Rancke-Madsen
+      and appear in <cite>GURPS Traveller: Sword Worlds</cite> (Steve
+      Jackson Games, 2004).
+
+    ]]>
+  </Credits>
+  <!--
+    Armory Cluster worlds names from GURPS Traveller: Sword Worlds
+    2015-01-12 - Joshua Bell - Added Armory Cluster worlds
+    2015-10-20 - Joshua Bell - Named 0838 in honor of Hans Rancke-Madsen
+    2020-05-08 - Geir Lanesskog - Other additions, including NIL
+  -->
+  <Subsectors>
+    <Subsector Index="A">Yrgonomi</Subsector>
+    <Subsector Index="B">Ratatta</Subsector>
+    <Subsector Index="C">Obunemias</Subsector>
+    <Subsector Index="D">Gembolia</Subsector>
+    <Subsector Index="E">Klantor</Subsector>
+    <Subsector Index="F">Plutting</Subsector>
+    <Subsector Index="G">Vantor</Subsector>
+    <Subsector Index="H">Haddox</Subsector>
+    <Subsector Index="I">Ingo</Subsector>
+    <Subsector Index="J">Fiqorino</Subsector>
+    <Subsector Index="K">Vyfura</Subsector>
+    <Subsector Index="L">Blahonga</Subsector>
+    <Subsector Index="M">Stane</Subsector>
+    <Subsector Index="N">Vilian</Subsector>
+    <Subsector Index="O">Surgian</Subsector>
+    <Subsector Index="P">Fundibul</Subsector>
+  </Subsectors>
+
+  <Allegiances>
+    <Allegiance Code="Ha" Base="Aa">Haddox Association</Allegiance>
+  </Allegiances>
+
+  <Stylesheet>
+    border.Ha { color: purple; }
+    route.Trade { color: tomato; style: dotted; width: 1.0 }
+  </Stylesheet>
+
+  <Borders>
+    <Border WrapLabel="false" Allegiance="Ha"  ShowLabel="false">2214 2315 2414 2515 2414 2315 2316 2416 2517 2616 2717 2816 2817 2717 2617 2517 2416 2316 2315 2214</Border>
+  </Borders>
+
+  <Labels>
+    <Label Hex="1035">Armory Cluster</Label>
+    <Label Hex="2716" OffsetY="0.4">Haddox Association</Label>
+  </Labels>
+
+  <Routes>
+  </Routes>
+</Sector>

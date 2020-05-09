@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<Sector>
+  <Name>Fulani</Name>
+  <Name Lang="zh">Chtedria</Name>
+  <Credits>
+    <![CDATA[
+
+      The <b>Fulani</b> sector was refined by Geir Lanesskog based on initial system data by Jo Grant.
+
+    ]]>
+  </Credits>
+
+  <Subsectors>
+    <Subsector Index="A">Pieshivl</Subsector>
+    <Subsector Index="B">Aquaria</Subsector>
+    <Subsector Index="C">Bilahew</Subsector>
+    <Subsector Index="D">Lythgoe</Subsector>
+    <Subsector Index="E">Rosorky</Subsector>
+    <Subsector Index="F">Zhdierqr</Subsector>
+    <Subsector Index="G">Tiachtiebria</Subsector>
+    <Subsector Index="H">Vanguard</Subsector>
+    <Subsector Index="I">Encha</Subsector>
+    <Subsector Index="J">Rdrefrn-40</Subsector>
+    <Subsector Index="K">Janzya'jopr</Subsector>
+    <Subsector Index="L">Zachrisson</Subsector>
+    <Subsector Index="M">Eiebl</Subsector>
+    <Subsector Index="N">Jdinchpipr</Subsector>
+    <Subsector Index="O">Ozhev</Subsector>
+    <Subsector Index="P">Idella</Subsector>
+  </Subsectors>
+
+  <Allegiances>
+    <Allegiance Code="Iz" Base="Iz">Izrats Kriezhlas Unity</Allegiance>
+  </Allegiances>
+
+  <Stylesheet>
+    border.Iz { color: green; }
+    route.Iz { color: skyblue; }
+    route.Trade { color: tomato; style: dotted; width: 1.0 }
+  </Stylesheet>
+
+  <Borders>
+    <Border Allegiance="Iz" WrapLabel="true" LabelPosition="2004"> 1600 1700 1800 1900 2000 2100 2200 2300 2400 2401 2402 2403 2304 2204 2105 2005 1906 1805 1804 1704 1603 1602 1601 1600</Border>
+    <Border Allegiance="ZhCa" ShowLabel="false">2611 2712 2611 </Border>
+    <Border Allegiance="ZhCa" WrapLabel="true" LabelPosition="2909">2918 3018 3119 3018 2918 </Border>
+    <Border Allegiance="ZhCa" ShowLabel="false">3104 3105 3104 </Border>
+  </Borders>
+
+  <Labels>
+    <Label Hex="2939" Color="White">Idella Rift</Label>
+  </Labels>
+
+  <Routes>
+    <Route Start="2100" End="2201" Allegiance="Iz"/>
+  </Routes>
+</Sector>
