@@ -1428,6 +1428,28 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <X>9</X>
     <Name>Sing</Name>
   </Sector>
+
+  <Sector>
+    <Y>1</Y>
+    <X>-13</X>
+    <Name Author="Martin J. Dougherty" Source="Riftsedge Transit" Publisher="Mongoose Publishing">Alila</Name>
+  </Sector>
+  <Sector>
+    <Y>1</Y>
+    <X>-12</X>
+    <Name Author="Martin J. Dougherty" Source="Riftsedge Transit" Publisher="Mongoose Publishing">Gudala</Name>
+  </Sector>
+  <Sector>
+    <Y>1</Y>
+    <X>-11</X>
+    <Name Author="Martin J. Dougherty" Source="Riftsedge Transit" Publisher="Mongoose Publishing">Giskakii</Name>
+  </Sector>
+  <Sector>
+    <Y>1</Y>
+    <X>-10</X>
+    <Name Author="Martin J. Dougherty" Source="Riftsedge Transit" Publisher="Mongoose Publishing">Incognita Ulterior</Name>
+  </Sector>
+
   <Sector>
     <Y>1</Y>
     <X>-9</X>
@@ -1622,50 +1644,60 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
   <Sector>
     <Y>2</Y>
     <X>-21</X>
-    <Name Source="Near Side of Yonder" Publisher="Mongoose Publishing">Coreward Shore</Name>
+    <Name Author="Martin J. Dougherty" Source="Near Side of Yonder" Publisher="Mongoose Publishing">Coreward Shore</Name>
   </Sector>
   <Sector>
     <Y>2</Y>
     <X>-20</X>
-    <Name Source="Near Side of Yonder" Publisher="Mongoose Publishing">Greenwald's Beach</Name>
+    <Name Author="Martin J. Dougherty" Source="Near Side of Yonder" Publisher="Mongoose Publishing">Greenwald's Beach</Name>
   </Sector>
   <Sector>
     <Y>2</Y>
     <X>-19</X>
-    <Name Source="Near Side of Yonder" Publisher="Mongoose Publishing">Narrow Transit</Name>
+    <Name Author="Martin J. Dougherty" Source="Near Side of Yonder" Publisher="Mongoose Publishing">Narrow Transit</Name>
   </Sector>
   <Sector>
     <Y>2</Y>
     <X>-18</X>
-    <Name Source="Near Side of Yonder" Publisher="Mongoose Publishing">Sisyhus Ulterior</Name>
+    <Name Author="Martin J. Dougherty" Source="Near Side of Yonder" Publisher="Mongoose Publishing">Sisyhus Ulterior</Name>
   </Sector>
   <Sector>
     <Y>2</Y>
     <X>-17</X>
-    <Name Source="Near Side of Yonder" Publisher="Mongoose Publishing">Pytheus Interior</Name>
+    <Name Author="Martin J. Dougherty" Source="Near Side of Yonder" Publisher="Mongoose Publishing">Pytheus Interior</Name>
   </Sector>
   <Sector>
     <Y>2</Y>
     <X>-16</X>
-    <Name Source="Near Side of Yonder" Publisher="Mongoose Publishing">Idirda</Name>
+    <Name Author="Martin J. Dougherty" Source="Near Side of Yonder" Publisher="Mongoose Publishing">Idirda</Name>
   </Sector>
   <Sector>
     <Y>2</Y>
     <X>-15</X>
-    <Name Source="Near Side of Yonder" Publisher="Mongoose Publishing">Kaalin Ulterior</Name>
+    <Name Author="Martin J. Dougherty" Source="Near Side of Yonder" Publisher="Mongoose Publishing">Kaalin Ulterior</Name>
   </Sector>
   <Sector>
     <Y>2</Y>
     <X>-13</X>
-    <Name Source="Near Side of Yonder" Publisher="Mongoose Publishing">Near Side of Yonder</Name>
+    <Name Author="Martin J. Dougherty" Source="Near Side of Yonder" Publisher="Mongoose Publishing">Near Side of Yonder</Name>
   </Sector>
-
+  <Sector>
+    <Y>2</Y>
+    <X>-12</X>
+    <Name Author="Martin J. Dougherty" Source="Riftsedge Transit" Publisher="Mongoose Publishing">Deepnight</Name>
+  </Sector>
+  <Sector>
+    <Y>2</Y>
+    <X>-11</X>
+    <Name Author="Martin J. Dougherty" Source="Riftsedge Transit" Publisher="Mongoose Publishing">Vilaakasii</Name>
+  </Sector>
   <Sector Tags="Unreviewed">
     <Y>2</Y>
     <X>-10</X>
-    <Name Publisher="Mongoose">Demnan</Name>
+    <Name Author="Martin J. Dougherty" Source="Riftsedge Transit" Publisher="Mongoose Publishing">Incognita Citerior</Name>
     <DataFile Author="Martin J. Dougherty" Type="SecondSurvey">Demnan.txt</DataFile>
   </Sector>
+
   <Sector>
     <Y>2</Y>
     <X>-9</X>
@@ -2034,42 +2066,57 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
   <Sector>
     <Y>3</Y>
     <X>-21</X>
-    <Name Source="Near Side of Yonder" Publisher="Mongoose Publishing">Central Bay</Name>
+    <Name Author="Martin J. Dougherty" Source="Near Side of Yonder" Publisher="Mongoose Publishing">Central Bay</Name>
   </Sector>
   <Sector>
     <Y>3</Y>
     <X>-20</X>
-    <Name Source="Near Side of Yonder" Publisher="Mongoose Publishing">Far Shore of Yonder</Name>
+    <Name Author="Martin J. Dougherty" Source="Near Side of Yonder" Publisher="Mongoose Publishing">Far Shore of Yonder</Name>
   </Sector>
   <Sector>
     <Y>3</Y>
     <X>-19</X>
-    <Name Source="Near Side of Yonder" Publisher="Mongoose Publishing">Colaeus</Name>
+    <Name Author="Martin J. Dougherty" Source="Near Side of Yonder" Publisher="Mongoose Publishing">Colaeus</Name>
   </Sector>
   <Sector>
     <Y>3</Y>
     <X>-18</X>
-    <Name Source="Near Side of Yonder" Publisher="Mongoose Publishing">Sisyphus Citerior</Name>
+    <Name Author="Martin J. Dougherty" Source="Near Side of Yonder" Publisher="Mongoose Publishing">Sisyphus Citerior</Name>
   </Sector>
   <Sector>
     <Y>3</Y>
     <X>-17</X>
-    <Name Source="Near Side of Yonder" Publisher="Mongoose Publishing">Pytheas</Name>
+    <Name Author="Martin J. Dougherty" Source="Near Side of Yonder" Publisher="Mongoose Publishing">Pytheas</Name>
   </Sector>
   <Sector>
     <Y>3</Y>
     <X>-16</X>
-    <Name Source="Near Side of Yonder" Publisher="Mongoose Publishing">Diamond Scatter</Name>
+    <Name Author="Martin J. Dougherty" Source="Near Side of Yonder" Publisher="Mongoose Publishing">Diamond Scatter</Name>
   </Sector>
   <Sector>
     <Y>3</Y>
     <X>-15</X>
-    <Name Source="Near Side of Yonder" Publisher="Mongoose Publishing">Kaalin Citerior</Name>
+    <Name Author="Martin J. Dougherty" Source="Near Side of Yonder" Publisher="Mongoose Publishing">Kaalin Citerior</Name>
   </Sector>
   <Sector>
     <Y>3</Y>
     <X>-13</X>
-    <Name Source="Near Side of Yonder" Publisher="Mongoose Publishing">First Prospect</Name>
+    <Name Author="Martin J. Dougherty" Source="Near Side of Yonder" Publisher="Mongoose Publishing">First Prospect</Name>
+  </Sector>
+  <Sector>
+    <Y>3</Y>
+    <X>-12</X>
+    <Name Author="Martin J. Dougherty" Source="Riftsedge Transit" Publisher="Mongoose Publishing">Few Stars</Name>
+  </Sector>
+  <Sector>
+    <Y>3</Y>
+    <X>-11</X>
+    <Name Author="Martin J. Dougherty" Source="Riftsedge Transit" Publisher="Mongoose Publishing">No Shore</Name>
+  </Sector>
+  <Sector>
+    <Y>3</Y>
+    <X>-10</X>
+    <Name Author="Martin J. Dougherty" Source="Riftsedge Transit" Publisher="Mongoose Publishing">Big Empty</Name>
   </Sector>
 
   <Sector>
@@ -2395,38 +2442,39 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
   <Sector>
     <Y>4</Y>
     <X>-21</X>
-    <Name Source="Near Side of Yonder" Publisher="Mongoose Publishing">Open Rift</Name>
+    <Name Author="Martin J. Dougherty" Source="Near Side of Yonder" Publisher="Mongoose Publishing">Open Rift</Name>
   </Sector>
   <Sector>
     <Y>4</Y>
     <X>-20</X>
-    <Name Source="Near Side of Yonder" Publisher="Mongoose Publishing">Last Prospect</Name>
+    <Name Author="Martin J. Dougherty" Source="Near Side of Yonder" Publisher="Mongoose Publishing">Last Prospect</Name>
   </Sector>
   <Sector>
     <Y>4</Y>
     <X>-19</X>
-    <Name Source="Near Side of Yonder" Publisher="Mongoose Publishing">Best Prospect</Name>
+    <Name Author="Martin J. Dougherty" Source="Near Side of Yonder" Publisher="Mongoose Publishing">Best Prospect</Name>
   </Sector>
   <Sector>
     <Y>4</Y>
     <X>-18</X>
-    <Name Source="Near Side of Yonder" Publisher="Mongoose Publishing">No Prospect</Name>
+    <Name Author="Martin J. Dougherty" Source="Near Side of Yonder" Publisher="Mongoose Publishing">No Prospect</Name>
   </Sector>
   <Sector>
     <Y>4</Y>
     <X>-17</X>
-    <Name Source="Near Side of Yonder" Publisher="Mongoose Publishing">Black Night</Name>
+    <Name Author="Martin J. Dougherty" Source="Near Side of Yonder" Publisher="Mongoose Publishing">Black Night</Name>
   </Sector>
   <Sector>
     <Y>4</Y>
     <X>-16</X>
-    <Name Source="Near Side of Yonder" Publisher="Mongoose Publishing">Few Glimmers</Name>
+    <Name Author="Martin J. Dougherty" Source="Near Side of Yonder" Publisher="Mongoose Publishing">Few Glimmers</Name>
   </Sector>
   <Sector>
     <Y>4</Y>
     <X>-15</X>
-    <Name Source="Near Side of Yonder" Publisher="Mongoose Publishing">Just Empty</Name>
+    <Name Author="Martin J. Dougherty" Source="Near Side of Yonder" Publisher="Mongoose Publishing">Just Empty</Name>
   </Sector>
+
   <Sector>
     <Y>4</Y>
     <X>-9</X>
