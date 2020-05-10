@@ -1148,7 +1148,6 @@ window.addEventListener('DOMContentLoaded', function() {
       query = '(default)';
 
     if (query === lastQuery) {
-      console.log('reshowing');
       if (!searchRequest && options.onsubmit) {
         var links = $$('#resultsContainer a');
         if (links.length > 0) {
@@ -1299,7 +1298,7 @@ window.addEventListener('DOMContentLoaded', function() {
       }
 
       lastQuery = query;
-      lastQueryRoute = route;
+      lastQueryRoute = route.length ? route : null;
     }
   }
 
