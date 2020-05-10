@@ -44,13 +44,13 @@ var Restellarator = {
     function flux() { return roll1D() - roll1D(); }
     function inRange(a, min, max) { return min <= a && a <= max; }
 
-    let primarySpectralFlux = flux();
+    const primarySpectralFlux = flux();
     let primarySizeFlux = flux();
 
     function generateStar(primary) {
       function clamp(a, min, max) { return a < min ? min : a > max ? max : a; }
 
-      const table = {
+      const T510_TABLE = {
         Sp: { '-6': 'OB', '-5': 'A', '-4': 'A', '-3': 'F', '-2': 'F', '-1': 'G',
               0: 'G', 1: 'K', 2: 'K', 3: 'M', 4: 'M', 5: 'M', 6: 'BD', 7: 'BD', 8: 'BD' },
         O: { '-6': 'Ia', '-5': 'Ia', '-4': 'Ib', '-3': 'II', '-2': 'III', '-1': 'III',
@@ -69,16 +69,40 @@ var Restellarator = {
              0: 'V', 1: 'V', 2: 'V', 3: 'V', 4: 'VI', 5: 'D', 6: 'VI', 7: 'VI', 8: 'VI' }
       };
 
+      const T5SS_TABLE = {
+        Sp: { '-6': 'OB', '-5': 'A', '-4': 'F', '-3': 'G', '-2': 'G', '-1': 'K',
+              0: 'K', 1: 'M', 2: 'M', 3: 'M', 4: 'M', 5: 'M', 6: 'M', 7: 'BD', 8: 'BD' },
+        O: { '-6': 'Ia', '-5': 'Ia', '-4': 'Ib', '-3': 'II', '-2': 'III', '-1': 'III',
+             0: 'III', 1: 'V', 2: 'V', 3: 'V', 4: 'IV', 5: 'D', 6: 'IV', 7: 'IV', 8: 'IV' },
+        B: { '-6': 'Ia', '-5': 'Ia', '-4': 'Ib', '-3': 'II', '-2': 'III', '-1': 'III',
+             0: 'III', 1: 'III', 2: 'V', 3: 'V', 4: 'IV', 5: 'D', 6: 'IV', 7: 'IV', 8: 'IV' },
+        A: { '-6': 'Ib', '-5': 'II', '-4': 'III', '-3': 'IV', '-2': 'V', '-1': 'V',
+             0: 'V', 1: 'V', 2: 'V', 3: 'V', 4: 'V', 5: 'D', 6: 'V', 7: 'V', 8: 'V' },
+        F: { '-6': 'II', '-5': 'III', '-4': 'IV', '-3': 'V', '-2': 'V', '-1': 'V',
+             0: 'V', 1: 'V', 2: 'V', 3: 'V', 4: 'V', 5: 'D', 6: 'IV', 7: 'V', 8: 'V' },
+        G: { '-6': 'II', '-5': 'III', '-4': 'IV', '-3': 'V', '-2': 'V', '-1': 'V',
+             0: 'V', 1: 'V', 2: 'V', 3: 'V', 4: 'V', 5: 'D', 6: 'IV', 7: 'V', 8: 'V' },
+        K: { '-6': 'II', '-5': 'II', '-4': 'III', '-3': 'IV', '-2': 'V', '-1': 'V',
+             0: 'V', 1: 'V', 2: 'V', 3: 'V', 4: 'V', 5: 'D', 6: 'V', 7: 'V', 8: 'V' },
+        M: { '-6': 'II', '-5': 'II', '-4': 'III', '-3': 'V', '-2': 'V', '-1': 'V',
+             0: 'V', 1: 'V', 2: 'V', 3: 'V', 4: 'V', 5: 'V', 6: 'V', 7: 'V', 8: 'V' }
+      };
+
+      const table = T5SS_TABLE;
+
+      // "Spectral Type: Roll Flux for Primary. For all others, Primary Flux + (1D-1)."
+      let spectral = table.Sp[clamp(
+        primary ? primarySpectralFlux : primarySpectralFlux + roll1D() - 1, -6, 8)];
+
+      // "Select further between O or B."
+      if (spectral === 'OB') spectral = roll1D() <= 3 ? 'O' : 'B';
+
+      // "If Spectral= BD ignore remaining rolls."
+      if (spectral === 'BD') return spectral;
+
+      let iter = 0;
       while (true) {
-        // "Spectral Type: Roll Flux for Primary. For all others, Primary Flux + (1D-1)."
-        let spectral = table.Sp[clamp(
-          primary ? primarySpectralFlux : primarySpectralFlux + roll1D() - 1, -6, 8)];
-
-        // "Select further between O or B."
-        if (spectral === 'OB') spectral = roll1D() <= 3 ? 'O' : 'B';
-
-        // "If Spectral= BD ignore remaining rolls."
-        if (spectral === 'BD') return spectral;
+        if (++iter > 1000) { alert('too many iterations'); throw new Error('iterations'); }
 
         // "Spectral Decimal. Roll decimal 0 to 9."
         let spectralDecimal = roll1D10() - 1;
