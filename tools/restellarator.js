@@ -1,17 +1,19 @@
-var Restellarator = {
+const Restellarator = {
+
+  // Apply heuristics to "fix" legacy stellar line.
   fix: function(s) {
-    var stars = [], m;
+    let stars = [], m;
     while ((m = /^([OBAFGKM][0-9] ?(?:Ia|Ib|II|III|IV|V|VI|VII|D)|[OAFGKML] ?D|D|BD|BH|D[OBAFGKM])\b\s*/.exec(s))) {
       stars.push(m[1]);
       s = s.substring(m[0].length);
     }
     if (s) console.log('leftover: ' + s);
-    stars = stars.map(function(star, index) {
+    stars = stars.map((star, index) => {
       if ((m = /^(D)([OBAFGKM])$/.exec(star)))
         star = m[2] + m[1];
 
       if ((m = (/^([OBAFGKM][0-9]) ?(Ia|Ib|II|III|IV|V|VI|VII|D)\b/.exec(star) || /^([OAFGKML]) ?(D)/.exec(star)))) {
-        var spec = m[1], lum = m[2];
+        let spec = m[1], lum = m[2];
 
         // VII -> D
         if (lum === 'VII')
@@ -38,6 +40,7 @@ var Restellarator = {
     return stars.join(' ');
   },
 
+  // Generate a new stellar line, using (modified) T5.10 rules.
   generate: function() {
     function roll1D() { return Math.floor(Math.random() * 6) + 1; }
     function roll1D10() { return Math.floor(Math.random() * 10) + 1; }
@@ -137,31 +140,85 @@ var Restellarator = {
 
     const stars = [];
 
+    const T510_SYSTEM = { close: 3, near: 3, far: 3, companion: 3 };
+    const T5SS_SYSTEM = { close: 4, near: 3, far: 3, companion: 4 };
+    const system = T5SS_SYSTEM;
+
     // Primary
     stars.push(generateStar(true));
 
     // Companion
-    if (flux() >= 3) stars.push(generateStar());
+    if (flux() >= system.companion) stars.push(generateStar());
 
     // Close
-    if (flux() >= 3) {
+    if (flux() >= system.close) {
       stars.push(generateStar());
       // Companion
-      if (flux() >= 3) stars.push(generateStar());
+      if (flux() >= system.companion) stars.push(generateStar());
     }
 
     // Near
-    if (flux() >= 3) {
+    if (flux() >= system.near) {
       stars.push(generateStar());
       // Companion
-      if (flux() >= 3) stars.push(generateStar());
+      if (flux() >= system.companion) stars.push(generateStar());
     }
 
     // Far
-    if (flux() >= 3) {
+    if (flux() >= system.far) {
       stars.push(generateStar());
       // Companion
-      if (flux() >= 3) stars.push(generateStar());
+      if (flux() >= system.companion) stars.push(generateStar());
+    }
+
+    return stars.join(' ');
+  },
+
+  // Given a stellar description line, ensure the biggest/brightest star is first.
+  reorder: function(line) {
+    const SPECTRALS = ['O', 'B', 'A', 'F', 'G', 'K', 'M'];
+    const TYPES = ['Ia', 'Ib', 'II', 'III', 'IV', 'V', 'VI', 'VII'];
+
+    function parse(star) {
+      if (star.match(/^([OBAFGKM])(\d) (Ia|Ib|II|III|IV|V|VI|VII)$/)) {
+        return {spectral: RegExp.$1, decimal: RegExp.$2, type: RegExp.$3};
+      } else {
+        return {type:star};
+      }
+    }
+
+
+    function order(a, b) {
+      if (!a.spectral && !b.spectral)
+        return 0;
+
+      if (a.spectral && !b.spectral)
+        return -1;
+
+      if (!a.spectral && b.spectral)
+        return 1;
+
+      let order = TYPES.indexOf(a.type) - TYPES.indexOf(b.type);
+      if (order) return order;
+
+      order = SPECTRALS.indexOf(a.spectral) - SPECTRALS.indexOf(b.spectral);
+      if (order) return order;
+
+      return Number(a.decimal) - Number(b.decimal);
+    }
+
+
+    let stars = line.split(/\s+(?!Ia|Ib|II|III|IV|V|VI|VII)/);
+
+    if (stars.length > 1) {
+      for (let i = 1; i < stars.length; ++i) {
+        if (order(parse(stars[0]), parse(stars[i])) > 0) {
+          const tmp = stars[0];
+          stars[0] = stars[i];
+          stars[i] = tmp;
+          i = 0; // restart
+        }
+      }
     }
 
     return stars.join(' ');

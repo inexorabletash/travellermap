@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<title>Starstats - Traveller Map</title>
+<meta charset="utf-8">
+<script src="restellarator.js"></script>
+
+<button>gen</button>
+<textarea rows=60 cols=20 style="float: left"></textarea>
+<pre id=results style="float: left; padding: 20px;"></pre>
+
+<script>
+const $ = document.querySelector.bind(document);
+
+function pad(s, n) {
+  return String(s).padEnd(n);
+}
+
+function padl(s, n) {
+  return String(s).padStart(n);
+}
+
+$('textarea').addEventListener('keyup', e => { runStats(e.target.value); });
+
+$('button').addEventListener('click', e => {
+  const stars = [];
+  for (let i = 0; i < 50000; ++i) {
+    stars.push(Restellarator.reorder(Restellarator.generate()));
+  }
+  const text = stars.join('\n');
+  $('textarea').value = text;
+  runStats(text);
+});
+
+
+
+function runStats(text) {
+  const TYPES = ['Ia', 'Ib', 'II', 'III', 'IV', 'V', 'VI', 'D', 'BD'];
+  const SPECS = ['O', 'B', 'A', 'F', 'G', 'K', 'M'];
+
+  const sizes = Object.fromEntries([1,2,3,4,5,6,7,8].map(n => [n, 0]));
+  const types = Object.fromEntries(TYPES.map(t => [t, 0]));
+  const specs = Object.fromEntries(SPECS.map(s => [s, 0]));
+  const spec_type = Object.fromEntries(SPECS.map(s => [
+    s,
+    Object.fromEntries(TYPES.map(t => [t, 0]))
+  ]));
+
+  text.split(/\n+/).forEach(line => {
+    if (line === 'Stars' || !line) return;
+
+    const stars = line.split(/\s(?!Ia|Ib|II|III|IV|V|VI)/);
+    ++sizes[stars.length];
+
+    //const star = stars[0]; // Only look at primary
+    stars.shift();
+    for (const star of stars)
+    {
+      if (star.match(/^([OBAFGKM])(\d) (Ia|Ib|II|III|IV|V|VI)$/)) {
+        const spec = RegExp.$1, dec = RegExp.$2, type = RegExp.$3;
+
+        ++types[type];
+        ++specs[spec];
+        ++spec_type[spec][type];
+      } else {
+        ++types[star];
+      }
+    }
+  });
+
+  let out = '';
+
+  out += 'Types:\n';
+  const type_count = Object.values(types).reduce((a,b) => a+b, 0);
+  TYPES.forEach(type => {
+    out += `${pad(type,5)}  ${pad(types[type], 6)}  ${padl((100 * types[type] / type_count).toFixed(1), 4)}%\n`;
+  });
+
+  out += '\n';
+
+  out += 'Specs:\n';
+  const spec_count = Object.values(specs).reduce((a,b) => a+b, 0);
+  SPECS.forEach(spec => {
+    out += `${pad(spec, 5)}  ${pad(specs[spec], 6)}  ${padl((100 * specs[spec] / spec_count).toFixed(1), 4)}%\n`;
+  });
+
+  out += '\n';
+
+  out += 'Table:\n';
+  out += '       ' + TYPES.map(t => pad(t, 7)).join('') + '\n';
+  SPECS.forEach(spec => {
+    out += pad(spec, 5);
+
+    const count = Object.values(spec_type[spec]).reduce((a,b) => a+b, 0);
+    TYPES.forEach(type => {
+      out += `${padl((100 * spec_type[spec][type] / count).toFixed(1), 5)}% `;
+    });
+
+    out += '\n';
+  });
+
+  out += '\n';
+
+  out += 'System sizes:\n';
+  const size_count = Object.values(sizes).reduce((a,b) => a+b, 0);
+  [1, 2, 3, 4, 5, 6, 7, 8].forEach(size => {
+    out += `${pad(size,5)}  ${pad(sizes[size], 6)}  ${padl((100 * sizes[size] / size_count).toFixed(1), 4)}%\n`;
+  });
+
+  out += '\n';
+
+
+  $('#results').innerText = out;
+}
+</script>
