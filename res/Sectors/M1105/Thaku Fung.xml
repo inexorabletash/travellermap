@@ -41,10 +41,12 @@
     <Route Start="2412" End="2510" Type="Trade" Allegiance="Sp" Color="#805000"/>
   </Routes>
   <Borders>
+    <Border Allegiance="Rc" Color="#FF80FF">0002 0102 0201 0301 0302 0303 0304 0305 0306 0307 0207 0208 0207 0206 0106 0105 0004 0003 0002 </Border>
     <Border Allegiance="Sp" Color="#FFA000">1408 1508 1507 1506 1505 1504 1603 1703 1802 1902 2001 2102 2202 2103 2104 2105 2106 2107 2207 2308 2408 2508 2607 2707 2807 2808 2809 2710 2610 2511 2411 2412 2413 2414 2315 2316 2317 2318 2317 2316 2315 2414 2413 2412 2411 2410 2310 2209 2109 2008 1908 1808 1709 1609 1509 1408 </Border>
   </Borders>
   <Allegiances>
     <Allegiance Code="Cs">Client State, Third Imperium</Allegiance>
+    <Allegiance Code="Rc">Rho Cluster</Allegiance>
     <Allegiance Code="Sp">Solomani Preserve</Allegiance>
   </Allegiances>
 </Sector>

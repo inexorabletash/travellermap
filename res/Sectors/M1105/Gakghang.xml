@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Sector>
+  <Name Lang="va">Gakghang</Name>
+  <Name Lang="zh">Ianshaplzdier</Name>
+  <Credits>
+    <![CDATA[
+      <b>Gakghang</b> sector was designed by John G. Wood, with additional data from Adrian Tymes.
+    ]]>
+  </Credits>
+  <Subsectors>
+    <Subsector Index="A">Spike</Subsector>
+    <Subsector Index="B">Corain</Subsector>
+    <Subsector Index="C">Thessue</Subsector>
+    <Subsector Index="D">Rho</Subsector>
+    <Subsector Index="E">Foggrub</Subsector>
+    <Subsector Index="F">Rimain</Subsector>
+    <Subsector Index="G">Factorium</Subsector>
+    <Subsector Index="H">Lyceal</Subsector>
+    <Subsector Index="I">Tides</Subsector>
+    <Subsector Index="J">Piriga</Subsector>
+    <Subsector Index="K">Skyfarm</Subsector>
+    <Subsector Index="L">Ottoto</Subsector>
+    <Subsector Index="M">Varu</Subsector>
+    <Subsector Index="N">Maka</Subsector>
+    <Subsector Index="O">Jools</Subsector>
+    <Subsector Index="P">Nulls</Subsector>
+  </Subsectors>
+  <Routes>
+    <Route Start="0401" End="0402" Type="Trade" Allegiance="Ff" Color="#008040"/>
+    <Route Start="0402" End="0704" Type="Trade" Allegiance="Ff" Color="#008040"/>
+    <Route Start="0704" End="0707" Type="Trade" Allegiance="Ff" Color="#008040"/>
+    <Route Start="0707" End="0907" Type="Trade" Allegiance="Ff" Color="#008040"/>
+    <Route Start="0907" End="1207" Type="Trade" Allegiance="Ff" Color="#008040"/>
+    <Route Start="1207" End="1309" Type="Trade" Allegiance="Ff" Color="#008040"/>
+    <Route Start="1309" End="1510" Type="Trade" Allegiance="Ff" Color="#008040"/>
+    <Route Start="1510" End="1809" Type="Trade" Allegiance="Ff" Color="#008040"/>
+    <Route Start="1809" End="2009" Type="Trade" Allegiance="Ff" Color="#008040"/>
+    <Route Start="2009" End="2309" Type="Trade" Allegiance="Ff" Color="#008040"/>
+    <Route Start="2309" End="2608" Type="Trade" Allegiance="Ff" Color="#008040"/>
+    <Route Start="2608" End="2908" Type="Trade" Allegiance="Ff" Color="#008040"/>
+    <Route Start="2908" End="3107" Type="Trade" Allegiance="Ff" Color="#008040"/>
+    <Route Start="3107" End="3104" Type="Trade" Allegiance="Ff" Color="#008040"/>
+  </Routes>
+  <Labels>
+    <Label Hex="0603" Color="#FFCC00" Wrap="true">Spike-Rho Route</Label>
+    <Label Hex="2708" Color="#FFCC00" Wrap="true">Spike-Rho Route</Label>
+  </Labels>
+  <Borders>
+    <Border Allegiance="Cl" Color="#C0FF00">2117 2216 2316 2315 2314 2413 2412 2411 2512 2612 2712 2811 2911 2910 2909 3008 3108 3109 3110 3210 3211 3112 3012 3013 2914 2814 2815 2816 2817 2818 2819 2720 2721 2620 2521 2421 2322 2222 2221 2121 2120 2119 2118 2117 </Border>
+    <Border Allegiance="Ff" Color="#00FF80">0809 0909 0908 0907 1007 1107 1206 1306 1307 1407 1508 1608 1709 1808 1809 1710 1610 1511 1512 1412 1313 1213 1214 1115 1116 1015 0916 0816 0815 0814 0813 0812 0811 0810 0809 </Border>
+    <Border Allegiance="Pd" Color="#8000FF">0025 0126 0225 0325 0324 0323 0422 0522 0621 0620 0619 0519 0418 0318 0417 0416 0415 0515 0514 0515 0516 0517 0617 0718 0818 0919 1019 1119 1218 1318 1417 1518 1618 1718 1817 1818 1819 1820 1821 1822 1823 1824 1925 1825 1726 1727 1728 1729 1730 1830 1831 1732 1632 1533 1534 1433 1334 1234 1135 1035 0936 0836 0837 0737 0637 0537 0436 0337 0237 0138 0137 0136 0135 0034 0033 0032 0031 0030 0029 0028 0027 0026 0025 </Border>
+    <Border Allegiance="Rc" Color="#FF80FF">3003 3103 3202 3302 3303 3304 3305 3306 3305 3204 3104 3003 </Border>
+    <Border Allegiance="Ss" Color="#FF0000">0300 0400 0500 0501 0401 0402 0401 0301 0300 </Border>
+    <Border Allegiance="Yt" Color="#00FFFF">0005 0106 0006 0005 </Border>
+  </Borders>
+  <Allegiances>
+    <Allegiance Code="--">Unclaimed</Allegiance>
+    <Allegiance Code="Cl">Corsair Lyceum</Allegiance>
+    <Allegiance Code="Na">Non-aligned, human-dominated</Allegiance>
+    <Allegiance Code="Ff">Federation of the Fused Mains</Allegiance>
+    <Allegiance Code="Pd">Pirian Domain</Allegiance>
+    <Allegiance Code="Rc">Rho Cluster</Allegiance>
+    <Allegiance Code="Ss">Spike Society</Allegiance>
+    <Allegiance Code="Yt">Yaskoydri Technocracy</Allegiance>
+  </Allegiances>
+</Sector>
