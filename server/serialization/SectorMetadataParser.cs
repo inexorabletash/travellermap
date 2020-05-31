@@ -206,6 +206,16 @@ namespace Maps.Serialization
             if (xd.SelectSingleNode("/Sector/Credits") is XmlElement credits)
                 ParseErrorAppender(credits, e => sector.Credits = e.InnerText);
 
+            if (xd.SelectSingleNode("/Sector/DataFile") is XmlElement dataFile)
+            {
+                ParseErrorAppender(dataFile, elem => {
+                    sector.DataFile = new DataFile()
+                    {
+                        Milieu = ParseString(elem.GetAttribute("Milieu"))
+                    };
+                });
+            }
+
             return sector;
         }
 

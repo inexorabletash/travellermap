@@ -25,6 +25,7 @@ namespace Maps.API
                 // before any other objects (e.g. Worlds) are loaded.
                 SectorMap.Milieu map = SectorMap.ForMilieu(resourceManager, GetStringOption("milieu"));
                 Sector sector;
+                string postedMilieu = null;
 
                 if (Context.Request.HttpMethod == "POST")
                 {
@@ -34,6 +35,7 @@ namespace Maps.API
                     {
                         sector = parser.Parse(reader);
                     }
+                    postedMilieu = sector.DataFile?.Milieu;
                     sector.MetadataFile = null;
                     sector.DataFile = null;
                 }
@@ -56,7 +58,7 @@ namespace Maps.API
                     throw new HttpError(400, "Bad Request", "No sector specified.");
                 }
 
-                SendResult(new Results.SectorMetadata(sector, sector.GetWorlds(resourceManager, cacheResults: true)));
+                SendResult(new Results.SectorMetadata(sector, sector.GetWorlds(resourceManager, cacheResults: true), postedMilieu));
             }
         }
     }
@@ -69,11 +71,11 @@ namespace Maps.API.Results
     {
         private SectorMetadata() { }
 
-        internal SectorMetadata(Sector sector, WorldCollection worlds)
+        internal SectorMetadata(Sector sector, WorldCollection worlds, string milieu)
         {
             this.sector = sector;
             this.worlds = worlds;
-            dataFile = new DataFileMetadata(sector);
+            dataFile = new DataFileMetadata(sector, milieu);
         }
         private Sector sector;
         private WorldCollection worlds;
@@ -138,9 +140,10 @@ namespace Maps.API.Results
         {
             private DataFileMetadata() { }
 
-            public DataFileMetadata(Sector sector)
+            public DataFileMetadata(Sector sector, string milieu)
             {
                 this.sector = sector;
+                Milieu = milieu ?? sector.CanonicalMilieu;
             }
             private Sector sector;
 
@@ -155,7 +158,7 @@ namespace Maps.API.Results
             [XmlAttribute]
             public string Copyright { get => sector.DataFile?.Copyright ?? sector.Copyright; set { } }
             [XmlAttribute]
-            public string Milieu { get => sector.CanonicalMilieu; set { } }
+            public string Milieu { get; set; }
             [XmlAttribute]
             public string Ref { get => sector.DataFile?.Ref ?? sector.Ref; set { } }
         }
