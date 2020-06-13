@@ -61,8 +61,10 @@
               // Prettify URL
               if ('history' in window && 'replaceState' in window.history) {
                 var url = window.location.href.replace(/\?.*$/, '') + '?sector=' + world.Sector + '&hex=' + world.Hex;
-                if (searchParams.has('milieu'))
-                  url += '&milieu=' + encodeURIComponent(searchParams.get('milieu'));
+                ['milieu', 'style'].forEach(function(param) {
+                  if (searchParams.has(param))
+                    url += '&' + param + '=' + encodeURIComponent(searchParams.get(param));
+                });
                 window.history.replaceState(null, document.title, url);
               }
             })
