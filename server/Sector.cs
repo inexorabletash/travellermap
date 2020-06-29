@@ -275,7 +275,7 @@ namespace Maps
                 writer.WriteLine();
 
                 writer.WriteLine($"# {Names[0]}");
-                writer.WriteLine($"# {X},{Y}");
+                writer.WriteLine($"# {X},{-Y}");
 
                 writer.WriteLine();
                 foreach (var name in Names)
