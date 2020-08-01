@@ -266,22 +266,22 @@ function t5ify(world) {
   // Cultural Extension
   if (world['[Cx]']) {
     var cx = world['[Cx]'];
-    world.Homogeneity = fromEHex(cx.substr(1, 1));
+    world.Heterogeneity = fromEHex(cx.substr(1, 1));
     world.Acceptance = fromEHex(cx.substr(2, 1));
     world.Strangeness = fromEHex(cx.substr(3, 1));
     world.Symbols = fromEHex(cx.substr(4, 1));
   } else if (world.Pop === 0) {
-    world.Homogeneity = 0;
+    world.Heterogeneity = 0;
     world.Acceptance = 0;
     world.Strangeness = 0;
     world.Symbols = 0;
   } else {
-    world.Homogeneity = world.Pop === 0 ? 0 : Math.max(1, world.Pop + flux());
+    world.Heterogeneity = world.Pop === 0 ? 0 : Math.max(1, world.Pop + flux());
     world.Acceptance = world.Pop === 0 ? 0 : Math.max(1, world.Pop + world.Importance);
     world.Strangeness = world.Pop === 0 ? 0 : Math.max(1, flux() + 5);
     world.Symbols = world.Pop === 0 ? 0 : Math.max(1, world.TL + flux());
   }
-  world._Cx_ = `[${toEHex(world.Homogeneity)}${toEHex(world.Acceptance)}${toEHex(world.Strangeness)}${toEHex(world.Symbols)}]`;
+  world._Cx_ = `[${toEHex(world.Heterogeneity)}${toEHex(world.Acceptance)}${toEHex(world.Strangeness)}${toEHex(world.Symbols)}]`;
 
   // Worlds
   world.Worlds = world.Worlds || world.W || (1/*MW*/ + world.GG + world.Belts + roll2D());
@@ -395,7 +395,7 @@ function format(world) {
     '', // Eff
     world.Efficiency,
     '', // Importance
-    toEHex(world.Homogeneity),
+    toEHex(world.Heterogeneity),
     '', // Acceptance
     toEHex(world.Strangeness),
     toEHex(world.Symbols),

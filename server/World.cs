@@ -214,7 +214,7 @@ namespace Maps
 
             public IEnumerator<string> GetEnumerator()
             {
-                int pos = 0;                
+                int pos = 0;
                 while (pos < codes.Length)
                 {
                     if (codes[pos] == ' ')
@@ -324,24 +324,24 @@ namespace Maps
 
             #region UWP
             // UWP
-            ErrorIf(Atmosphere > 15, 
+            ErrorIf(Atmosphere > 15,
                 $"UWP: Atm={Atmosphere} out of range; should be: 0...F");
-            ErrorIf(Hydrographics > 10, 
+            ErrorIf(Hydrographics > 10,
                 $"UWP: Hyd={Hydrographics} out of range; should be: 0...A");
-            ErrorIf(PopulationExponent > 15, 
+            ErrorIf(PopulationExponent > 15,
                 $"UWP: Pop={PopulationExponent} out of range; should be: 0...F");
             ErrorUnless(Government.InRange(PopulationExponent - 5, Math.Max(15, PopulationExponent + 5)),
                 $"UWP: Gov={Government} out of range; should be: Pop(={PopulationExponent}) + Flux");
             ErrorUnless(Law.InRange(Government - 5, Math.Max(18, Government + 5)),
                 $"UWP: Law={Law} out of range; should be: Gov(={Government}) + Flux");
-            int tlmod = 
+            int tlmod =
                 (Starport == 'A' ? 6 : 0) + (Starport == 'B' ? 4 : 0) + (Starport == 'C' ? 2 : 0) + (Starport == 'X' ? -4 : 0) +
                 (Size == 0 || Size == 1 ? 2 : 0) + (Size == 2 || Size == 3 || Size == 4 ? 1 : 0) +
                 (Atmosphere <= 3 ? 1 : 0) + (Atmosphere >= 10 ? 1 : 0) +
-                (Hydrographics == 9 ? 1 : 0) + (Hydrographics == 10 ? 2 : 0) + 
+                (Hydrographics == 9 ? 1 : 0) + (Hydrographics == 10 ? 2 : 0) +
                 (PopulationExponent.InRange(1, 5) ? 1 : 0) + (PopulationExponent == 9 ? 2 : 0) + (PopulationExponent >= 10 ? 4 : 0) +
                 (Government == 0 || Government == 5 ? 1 : 0) + (Government == 13 ? -2 : 0);
-            ErrorUnless(TechLevel.InRange(tlmod + 1, tlmod + 6) || 
+            ErrorUnless(TechLevel.InRange(tlmod + 1, tlmod + 6) ||
                 (PopulationExponent == 0 && TechLevel == 0),
                 $"UWP: TL={TechLevel} out of range; should be: mods(={tlmod}) + 1D");
             #endregion
@@ -357,7 +357,7 @@ namespace Maps
             bool Oc = CC("Oc", Check(Size, "ABCDEF") && Check(Atmosphere, "3456789DEF") && Check(Hydrographics, "A"));
             bool Va = CC("Va", Check(Atmosphere, "0"));
             bool Wa = CC("Wa", Check(Size, "3456789") && Check(Atmosphere, "3456789DEF") && Check(Hydrographics, "A"));
-            
+
             // Population
             bool Di = (PopulationExponent == 0 /*&& Government == 0 && Law == 0*/ && TechLevel > 0);
             ErrorIf(Di && !HasCodePrefix("Di"), "Missing code: Di or Di(sophont) is required if Pop=0 and TL>0");
@@ -478,15 +478,15 @@ namespace Maps
                 string cx = Cultural.Replace('[', ' ').Replace(']', ' ').Trim();
                 if (cx != "")
                 {
-                    int homogeneity = SecondSurvey.FromHex(cx[0]);
+                    int heterogeneity = SecondSurvey.FromHex(cx[0]);
                     int acceptance = SecondSurvey.FromHex(cx[1]);
                     int strangeness = SecondSurvey.FromHex(cx[2]);
                     int symbols = SecondSurvey.FromHex(cx[3]);
 
                     if (PopulationExponent == 0)
                     {
-                        ErrorUnless(homogeneity == 0,
-                            $"[Cx] Homogeneity={homogeneity} incorrect; should be: 0 if Pop=0");
+                        ErrorUnless(heterogeneity == 0,
+                            $"[Cx] Heterogeneity={heterogeneity} incorrect; should be: 0 if Pop=0");
                         ErrorUnless(acceptance == 0,
                             $"[Cx] Acceptance={acceptance} incorrect; should be: 0 if Pop=0");
                         ErrorUnless(strangeness == 0,
@@ -496,8 +496,8 @@ namespace Maps
                     }
                     else
                     {
-                        ErrorUnless(homogeneity.InRange(Math.Max(1, PopulationExponent - 5), Math.Max(1, PopulationExponent + 5)),
-                            $"[Cx] Homogeneity={homogeneity} out of range; should be: Pop(={PopulationExponent}) + Flux");
+                        ErrorUnless(heterogeneity.InRange(Math.Max(1, PopulationExponent - 5), Math.Max(1, PopulationExponent + 5)),
+                            $"[Cx] Heterogeneity={heterogeneity} out of range; should be: Pop(={PopulationExponent}) + Flux");
                         ErrorUnless(acceptance == Math.Max(1, PopulationExponent + imp),
                             $"[Cx] Acceptance={acceptance} incorrect; should be: Pop(={PopulationExponent}) + Imp(={imp})");
                         ErrorUnless(strangeness.InRange(Math.Max(1, 5 - 5), Math.Max(1, 5 + 5)),

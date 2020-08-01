@@ -289,7 +289,7 @@
     '?': 'Unknown'
   };
 
-  var CX_HOMOGENEITY_TABLE = {
+  var CX_HETEROGENEITY_TABLE = {
     0: 'N/A',
     1: 'Monolithic',
     2: 'Monolithic',
@@ -692,13 +692,13 @@
       if (world.Cx) {
         var cx = world.Cx.replace(/^\[\s*|\s*\]$/g, '');
         world.Cx = {
-          Hom: cx.substring(0, 1),
+          Het: cx.substring(0, 1),
           Acc: cx.substring(1, 2),
           Str: cx.substring(2, 3),
           Sym: cx.substring(3, 4)
         };
 
-        world.Cx.HomBlurb = CX_HOMOGENEITY_TABLE[world.Cx.Hom];
+        world.Cx.HetBlurb = CX_HETEROGENEITY_TABLE[world.Cx.Het];
         world.Cx.AccBlurb = CX_ACCEPTANCE_TABLE[world.Cx.Acc];
         world.Cx.StrBlurb = CX_STRANGENESS_TABLE[world.Cx.Str];
         world.Cx.SymBlurb = CX_SYMBOLS_TABLE[world.Cx.Sym];
