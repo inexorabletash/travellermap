@@ -72,7 +72,7 @@
     <pages controlRenderingCompatibilityVersion="3.5" clientIDMode="AutoID"/>
 
     <!-- Disable most ASP.NET request validation -->
-    <httpRuntime requestValidationMode="2.0"/>
+    <httpRuntime requestValidationMode="2.0" requestPathInvalidCharacters="&lt;,&gt;,%,&amp;,:,\,?"/>
   </system.web>
   <system.webServer>
     <urlCompression doStaticCompression="true" doDynamicCompression="true"/>
