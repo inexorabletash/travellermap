@@ -236,12 +236,32 @@ namespace Maps
                 if (worlds != null)
                     return worlds;
 
-                // Can't look it up; failure case
-                if (DataFile == null)
-                    return null;
+                WorldCollection data;
 
-                // Otherwise, look it up
-                WorldCollection data = resourceManager.GetDeserializableFileObject(DataFile.FileName, typeof(WorldCollection), cacheResults: false, mediaType: DataFile.Type) as WorldCollection;
+                // Do we have data?
+                if (DataFile != null)
+                {
+                    // Yes, load/parse it.
+                    data = resourceManager.GetDeserializableFileObject(DataFile.FileName, typeof(WorldCollection), cacheResults: false, mediaType: DataFile.Type) as WorldCollection;
+                }
+                else if (Milieu != null && Milieu != SectorMap.DEFAULT_MILIEU)
+                {
+                    // Nope... maybe we can construct a dotmap from the default milieu?
+                    SectorMap.Milieu map = SectorMap.ForMilieu(resourceManager, SectorMap.DEFAULT_MILIEU);
+                    Sector basis = map.FromLocation(this.Location);
+                    if (basis == null)
+                        return null;
+
+                    WorldCollection worlds = basis.GetWorlds(resourceManager, cacheResults);
+                    if (worlds == null)
+                        return null;
+
+                    data = worlds.MakeDotmap();
+                }
+                else
+                {
+                    return null;
+                }
 
                 foreach (World world in data)
                     world.Sector = this;
@@ -551,20 +571,10 @@ namespace Maps
                 if (worlds == null)
                     return null;
 
-                WorldCollection dots = new WorldCollection();
-                foreach (var world in worlds)
-                {
-                    var dot = new World()
-                    {
-                        Hex = world.Hex,
-                        UWP = "???????-?",
-                        PBG = "???",
-                        Allegiance = "??",
-                        Sector = this
-                    };
-                    dots[dot.X, dot.Y] = dot;
-                }
-
+                WorldCollection dots = worlds.MakeDotmap();
+                foreach (World world in dots)
+                    world.Sector = this;
+                
                 if (cacheResults)
                     this.worlds = dots;
 

@@ -90,5 +90,25 @@ namespace Maps
         }
 
         public ISet<string> AllegianceCodes() => new HashSet<string>(this.Select(world => world.Allegiance));
+
+        // Make a copy of this collection with all the worlds replaced by placeholders.
+        // The World objects will have null Sectors
+        public WorldCollection MakeDotmap()
+        {
+            WorldCollection dots = new WorldCollection();
+            foreach (var world in this)
+            {
+                var dot = new World()
+                {
+                    Hex = world.Hex,
+                    UWP = "???????-?",
+                    PBG = "???",
+                    Allegiance = "??",
+                    Sector = null
+                };
+                dots[dot.X, dot.Y] = dot;
+            }
+            return dots;
+        }
     }
 }
