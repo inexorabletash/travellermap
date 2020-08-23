@@ -829,13 +829,11 @@ namespace Maps.Rendering
                     for (int py = hy - parsecSlop; py < hy + hh + parsecSlop; py++)
                     {
                         Location loc = Astrometrics.CoordinatesToLocation(px + 1, py + 1);
-                        string hex;
-                        switch (styles.hexCoordinateStyle)
-                        {
-                            default:
-                            case HexCoordinateStyle.Sector: hex = loc.HexString; break;
-                            case HexCoordinateStyle.Subsector: hex = loc.SubsectorHexString; break;
-                        }
+                        string hex = styles.hexCoordinateStyle switch { 
+                            HexCoordinateStyle.Sector => loc.HexString,
+                            HexCoordinateStyle.Subsector => loc.SubsectorHexString,
+                            _ => loc.HexString,
+                        };
                         using (graphics.Save())
                         {
                             graphics.TranslateTransform(px + 0.5f, py + yOffset);
@@ -1046,13 +1044,12 @@ namespace Maps.Rendering
                         if (!styles.numberAllHexes &&
                             styles.worldDetails.HasFlag(WorldDetails.Hex))
                         {
-                            string hex;
-                            switch (styles.hexCoordinateStyle)
+                            string hex = styles.hexCoordinateStyle switch
                             {
-                                default:
-                                case HexCoordinateStyle.Sector: hex = world.Hex; break;
-                                case HexCoordinateStyle.Subsector: hex = world.SubsectorHex; break;
-                            }
+                                HexCoordinateStyle.Sector => world.Hex,
+                                HexCoordinateStyle.Subsector => world.SubsectorHex,
+                                _ => world.Hex
+                            };
                             solidBrush.Color = styles.hexNumber.textColor;
                             graphics.DrawString(hex, styles.hexNumber.Font, solidBrush, 
                                 styles.hexNumber.position.X, 
@@ -1603,13 +1600,12 @@ namespace Maps.Rendering
                         // TODO: Adopt some of the tweaks from .MSEC
                         labelPos.Y -= label.OffsetY * 0.7f;
 
-                        AbstractFont font;
-                        switch (label.Size)
+                        AbstractFont font = label.Size switch
                         {
-                            case "small": font = styles.microBorders.SmallFont; break;
-                            case "large": font = styles.microBorders.LargeFont; break;
-                            default: font = styles.microBorders.Font; break;
-                        }
+                            "small" => styles.microBorders.SmallFont,
+                            "large" => styles.microBorders.LargeFont,
+                            _ => styles.microBorders.Font,
+                        };
 
                         if (!styles.grayscale &&
                             ColorUtil.NoticeableDifference(label.Color, styles.backgroundColor) &&
@@ -1723,17 +1719,15 @@ namespace Maps.Rendering
             }
         }
 
-        private static Graphics.DashStyle LineStyleToDashStyle(LineStyle style)
-        {
-            switch (style)
+        private static Graphics.DashStyle LineStyleToDashStyle(LineStyle style) =>
+            style switch
             {
-                default:
-                case LineStyle.Solid: return Graphics.DashStyle.Solid;
-                case LineStyle.Dashed: return Graphics.DashStyle.Dash;
-                case LineStyle.Dotted: return Graphics.DashStyle.Dot;
-                case LineStyle.None: throw new ApplicationException("LineStyle.None should be detected earlier");
-            }
-        }
+                LineStyle.Solid => Graphics.DashStyle.Solid,
+                LineStyle.Dashed => Graphics.DashStyle.Dash,
+                LineStyle.Dotted => Graphics.DashStyle.Dot,
+                LineStyle.None => throw new ApplicationException("LineStyle.None should be detected earlier"),
+                _ => throw new NotImplementedException(),
+            };
         
         private enum BorderLayer { Fill, Shade, Stroke, Regions };
         private void DrawMicroBorders(BorderLayer layer)

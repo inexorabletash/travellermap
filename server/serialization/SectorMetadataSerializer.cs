@@ -6,16 +6,14 @@ namespace Maps.Serialization
     {
         public abstract void Serialize(TextWriter writer, Sector sector);
 
-        public static SectorMetadataSerializer ForType(string mediaType)
-        {
-            switch (mediaType)
+        public static SectorMetadataSerializer ForType(string mediaType) =>
+            mediaType switch
             {
-                case "MSEC": return new MSECSerializer();
-                case "XML":
-                default: return new XmlSectorMetadataSerializer();
-            }
-        }
-    }
+                "MSEC" => new MSECSerializer(),
+                "XML" => new XmlSectorMetadataSerializer(),
+                _ => new XmlSectorMetadataSerializer(),
+            };
+}
 
     // NOTE: This is unused; see SectorMetaDataHandler
     internal class XmlSectorMetadataSerializer : SectorMetadataSerializer

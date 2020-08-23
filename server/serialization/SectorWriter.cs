@@ -31,16 +31,14 @@ namespace Maps.Serialization
 
         public abstract void Serialize(TextWriter writer, IEnumerable<World> worlds, SectorSerializeOptions options);
 
-        public static SectorFileSerializer ForType(string mediaType)
-        {
-            switch (mediaType)
+        public static SectorFileSerializer ForType(string mediaType) =>
+            mediaType switch
             {
-                case "SecondSurvey": return new SecondSurveySerializer();
-                case "TabDelimited": return new TabDelimitedSerializer();
-                case "SEC":
-                default: return new SecSerializer();
-            }
-        }
+                "SecondSurvey" => new SecondSurveySerializer(),
+                "TabDelimited" => new TabDelimitedSerializer(),
+                "SEC" => new SecSerializer(),
+                _ => new SecSerializer(),
+            };
     }
 
     internal class SecSerializer : SectorFileSerializer

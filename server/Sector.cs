@@ -217,14 +217,14 @@ namespace Maps
         {
             if (label == null) throw new ArgumentNullException(nameof(label));
 
-            switch (label.ToLowerInvariant())
+            return label.ToLowerInvariant() switch
             {
-                case "alpha": return 0;
-                case "beta": return 1;
-                case "gamma": return 2;
-                case "delta": return 3;
-            }
-            return -1;
+                "alpha" => 0,
+                "beta" => 1,
+                "gamma" => 2,
+                "delta" => 3,
+                _ => -1,
+            };
         }
 
         private WorldCollection worlds;

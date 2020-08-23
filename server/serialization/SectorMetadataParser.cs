@@ -23,15 +23,13 @@ namespace Maps.Serialization
         }
         public abstract Sector Parse(TextReader reader);
 
-        public static SectorMetadataFileParser ForType(string mediaType)
-        {
-            switch (mediaType)
+        public static SectorMetadataFileParser ForType(string mediaType) =>
+            mediaType switch
             {
-                case "MSEC": return new MSECParser();
-                case "XML":
-                default: return new XmlSectorMetadataParser();
-            }
-        }
+                "MSEC" => new MSECParser(),
+                "XML" => new XmlSectorMetadataParser(),
+                _ => new XmlSectorMetadataParser(),
+            };
 
         private static readonly Regex SNIFF_XML_REGEX = new Regex(@"<\?xml", RegexOptions.Compiled | RegexOptions.CultureInvariant);
 

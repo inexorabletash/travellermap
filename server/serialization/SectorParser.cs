@@ -24,16 +24,14 @@ namespace Maps.Serialization
 
         public abstract void Parse(TextReader reader, WorldCollection worlds, ErrorLogger errors);
 
-        public static SectorFileParser ForType(string mediaType)
-        {
-            switch (mediaType)
+        public static SectorFileParser ForType(string mediaType) =>
+            mediaType switch
             {
-                case "SecondSurvey": return new SecondSurveyParser();
-                case "TabDelimited": return new TabDelimitedParser();
-                case "SEC":
-                default: return new SecParser();
-            }
-        }
+                "SecondSurvey" => new SecondSurveyParser(),
+                "TabDelimited" => new TabDelimitedParser(),
+                "SEC" => new SecParser(),
+                _ => new SecParser(),
+            };
 
         private static readonly Regex COMMENT_REGEX = new Regex(@"^[#$@]", RegexOptions.Compiled | RegexOptions.CultureInvariant);
         private static readonly Regex SNIFF_TAB_DELIMITED_REGEX = new Regex(@"^[^\t]*(\t[^\t]*){9,}$", RegexOptions.Compiled | RegexOptions.CultureInvariant);

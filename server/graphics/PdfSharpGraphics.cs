@@ -178,19 +178,17 @@ namespace Maps.Graphics
             return format;
         }
 
-        private XStringFormat Format(StringAlignment alignment)
-        {
-            switch (alignment)
+        private XStringFormat Format(StringAlignment alignment) =>
+            alignment switch
             {
-                case StringAlignment.Centered: return centeredFormat;
-                case StringAlignment.TopLeft: return topLeftFormat;
-                case StringAlignment.TopCenter: return topCenterFormat;
-                case StringAlignment.TopRight: return topRightFormat;
-                case StringAlignment.CenterLeft: return centerLeftFormat;
-                case StringAlignment.Baseline: return defaultFormat;
-                default: throw new ApplicationException("Unhandled string alignment");
-            }
-        }
+                StringAlignment.Centered => centeredFormat,
+                StringAlignment.TopLeft => topLeftFormat,
+                StringAlignment.TopCenter => topCenterFormat,
+                StringAlignment.TopRight => topRightFormat,
+                StringAlignment.CenterLeft => centerLeftFormat,
+                StringAlignment.Baseline => defaultFormat,
+                _ => throw new ApplicationException("Unhandled string alignment"),
+            };
 
         private readonly XStringFormat defaultFormat = CreateStringFormat(XStringAlignment.Near, XLineAlignment.BaseLine);
         private readonly XStringFormat centeredFormat = CreateStringFormat(XStringAlignment.Center, XLineAlignment.Center);

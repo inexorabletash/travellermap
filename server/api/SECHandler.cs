@@ -99,17 +99,12 @@ namespace Maps.API
                 }
 
                 string mediaType = GetStringOption("type");
-                Encoding encoding;
-                switch (mediaType)
+                Encoding encoding = mediaType switch
                 {
-                    case "SecondSurvey":
-                    case "TabDelimited":
-                        encoding = Util.UTF8_NO_BOM;
-                        break;
-                    default:
-                        encoding = Encoding.GetEncoding(1252);
-                        break;
-                }
+                    "SecondSurvey" => Util.UTF8_NO_BOM,
+                    "TabDelimited" => Util.UTF8_NO_BOM,
+                    _ => Encoding.GetEncoding(1252),
+                };
 
                 string data;
                 using (var writer = new StringWriter())

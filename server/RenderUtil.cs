@@ -256,17 +256,18 @@ namespace Maps.Rendering
             if (rs.Length == 3)
             {
                 char c = rs[2];
-                switch (c)
+                glyph = c switch
                 {
-                    case 'A': glyph = Glyph.Alpha; break;
-                    case 'B': glyph = Glyph.Beta; break;
-                    case 'G': glyph = Glyph.Gamma; break;
-                    case 'D': glyph = Glyph.Delta; break;
-                    case 'E': glyph = Glyph.Epsilon; break;
-                    case 'Z': glyph = Glyph.Zeta; break;
-                    case 'H': glyph = Glyph.Eta; break;
-                    case 'T': glyph = Glyph.Theta; break;
-                }
+                    'A' => Glyph.Alpha,
+                    'B' => Glyph.Beta,
+                    'G' => Glyph.Gamma,
+                    'D' => Glyph.Delta,
+                    'E' => Glyph.Epsilon,
+                    'Z' => Glyph.Zeta,
+                    'H' => Glyph.Eta,
+                    'T' => Glyph.Theta,
+                    _ => glyph
+                };
             }
             return glyph;
         }
