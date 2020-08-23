@@ -8,6 +8,7 @@ using System.Linq;
 
 namespace Maps
 {
+#nullable enable
     /// <summary>
     /// Summary description for SectorData.
     /// </summary>
@@ -69,15 +70,15 @@ namespace Maps
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
-        private ErrorLogger errors = null;
-        public ErrorLogger ErrorList => errors;
+        private ErrorLogger? errors = null;
+        public ErrorLogger? ErrorList => errors;
         public void Serialize(TextWriter writer, string mediaType, SectorSerializeOptions options)
         {
             SectorFileSerializer.ForType(mediaType).Serialize(writer,
                 options.filter == null ? this : this.Where(world => options.filter(world)), options);
         }
 
-        public void Deserialize(Stream stream, string mediaType, ErrorLogger log = null)
+        public void Deserialize(Stream stream, string mediaType, ErrorLogger? log = null)
         {
             if (mediaType == null || mediaType == ContentTypes.Text.Plain || mediaType == ContentTypes.Application.Octet)
                 mediaType = SectorFileParser.SniffType(stream);
@@ -111,4 +112,5 @@ namespace Maps
             return dots;
         }
     }
+#nullable restore
 }

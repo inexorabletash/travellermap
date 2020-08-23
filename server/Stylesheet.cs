@@ -7,6 +7,7 @@ using System.Text.RegularExpressions;
 
 namespace Maps.Rendering
 {
+#nullable enable
     public static class TravellerColors
     {
         public static readonly Color Red = Color.FromArgb(0xE3, 0x27, 0x36);
@@ -146,9 +147,9 @@ namespace Maps.Rendering
 
         public AbstractFont MakeFont()
         {
-            if (name != null)
-                return new AbstractFont(name, size * 1.4f, style, GraphicsUnit.World);
-            return null;
+            if (name == null)
+                throw new ApplicationException("AbstractFont has null name");
+            return new AbstractFont(name, size * 1.4f, style, GraphicsUnit.World);
         }
     }
 
@@ -157,7 +158,7 @@ namespace Maps.Rendering
         public Color color;
         public float width;
         public DashStyle dashStyle;
-        public float[] dashPattern;
+        public float[]? dashPattern;
 
         public PenInfo(Color color, float width, DashStyle style = DashStyle.Solid)
         {
@@ -1124,13 +1125,13 @@ namespace Maps.Rendering
 
             public PointF position;
 
-            private AbstractFont font;
+            private AbstractFont? font;
             public AbstractFont Font => font ?? (font = fontInfo.MakeFont());
-            private AbstractFont smallFont;
-            public AbstractFont SmallFont => smallFont ?? (smallFont = smallFontInfo.MakeFont());
+            private AbstractFont? smallFont;
+            public AbstractFont? SmallFont => smallFont ?? (smallFont = smallFontInfo.MakeFont());
             private AbstractFont mediumFont;
             public AbstractFont MediumFont => mediumFont ?? (mediumFont = mediumFontInfo.MakeFont());
-            private AbstractFont largeFont;
+            private AbstractFont? largeFont;
             public AbstractFont LargeFont => largeFont ?? (largeFont = largeFontInfo.MakeFont());
         }
 
@@ -1163,7 +1164,7 @@ namespace Maps.Rendering
         public bool t5AllegianceCodes;
 
         public StyleElement highlightWorlds;
-        public HighlightWorldPattern highlightWorldsPattern;
+        public HighlightWorldPattern? highlightWorldsPattern;
 
         public StyleElement droyneWorlds;
         public StyleElement ancientsWorlds;
@@ -1394,7 +1395,7 @@ namespace Maps.Rendering
             }
         }
 
-        public static HighlightWorldPattern Parse(string s)
+        public static HighlightWorldPattern? Parse(string s)
         {
             if (string.IsNullOrWhiteSpace(s)) return null;
 
@@ -1444,9 +1445,9 @@ namespace Maps.Rendering
         }
         private Stylesheet sheet;
 
-        private AbstractFont wingdingFont;
+        private AbstractFont? wingdingFont;
         public AbstractFont WingdingFont => wingdingFont ?? (wingdingFont = sheet.wingdingFont.MakeFont());
-        private AbstractFont glyphFont;
+        private AbstractFont? glyphFont;
         public AbstractFont GlyphFont => glyphFont ?? (glyphFont = sheet.glyphFont.MakeFont());
 
         #region IDisposable Support
@@ -1494,4 +1495,5 @@ namespace Maps.Rendering
         }
         #endregion
     }
+#nullable restore
 }

@@ -3,60 +3,62 @@ using System.Xml.Serialization;
 
 namespace Maps
 {
+#nullable enable
     public interface IMetadata
     {
         [XmlAttribute]
-        string Title { get; set; }
+        string? Title { get; set; }
 
         [XmlAttribute]
-        string Author { get; set; }
+        string? Author { get; set; }
 
         [XmlAttribute]
-        string Source { get; set; }
+        string? Source { get; set; }
 
         [XmlAttribute]
-        string Publisher { get; set; }
+        string? Publisher { get; set; }
 
         [XmlAttribute]
-        string Copyright { get; set; }
+        string? Copyright { get; set; }
 
         [XmlAttribute]
-        string Milieu { get; set; }
+        string? Milieu { get; set; }
 
         [XmlAttribute]
-        string Ref { get; set; }
+        string? Ref { get; set; }
     }
 
     public abstract class MetadataItem : IMetadata
     {
-        private Dictionary<string, string> metaData = new Dictionary<string, string>();
-        private string TryGet(string key)
+        private Dictionary<string, string?> metaData = new Dictionary<string, string?>();
+        private string? TryGet(string key)
         {
-            metaData.TryGetValue(key, out string s);
+            metaData.TryGetValue(key, out string? s);
             return s;
         }
 
         [XmlAttribute]
-        public string Author { get => TryGet("author"); set => metaData["author"] = value; }
+        public string? Author { get => TryGet("author"); set => metaData["author"] = value; }
 
         [XmlAttribute]
-        public string Source { get => TryGet("source"); set => metaData["source"] = value; }
+        public string? Source { get => TryGet("source"); set => metaData["source"] = value; }
 
         [XmlAttribute]
-        public string Title{ get => TryGet("title"); set => metaData["title"] = value; }
+        public string? Title{ get => TryGet("title"); set => metaData["title"] = value; }
 
         [XmlAttribute]
-        public string Publisher { get => TryGet("publisher"); set => metaData["publisher"] = value; }
+        public string? Publisher { get => TryGet("publisher"); set => metaData["publisher"] = value; }
 
         [XmlAttribute]
-        public string Copyright { get => TryGet("copyright"); set => metaData["copyright"] = value; }
+        public string? Copyright { get => TryGet("copyright"); set => metaData["copyright"] = value; }
 
         [XmlAttribute]
-        public string Milieu { get => TryGet("era"); set => metaData["era"] = value; }
+        public string? Milieu { get => TryGet("era"); set => metaData["era"] = value; }
 
         [XmlAttribute]
-        public string Ref { get => TryGet("ref"); set => metaData["ref"] = value; }
+        public string? Ref { get => TryGet("ref"); set => metaData["ref"] = value; }
     }
+#nullable restore
 
     public class MetadataCollection<T> : List<T>, IMetadata
     {

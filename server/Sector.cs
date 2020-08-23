@@ -15,6 +15,7 @@ using System.Xml.Serialization;
 
 namespace Maps
 {
+#nullable enable
     public class Sector : MetadataItem
     {
         public Sector()
@@ -39,7 +40,7 @@ namespace Maps
         public string CanonicalMilieu => DataFile?.Milieu ?? Milieu ?? SectorMap.DEFAULT_MILIEU;
 
         [XmlAttribute]
-        public string Abbreviation {
+        public string? Abbreviation {
             get
             {
                 lock (this)
@@ -50,7 +51,7 @@ namespace Maps
                         return null;
 
                     // For OTU sectors, synthesize an abbreviation if not specified.
-                    string name = Names[0].Text;
+                    string name = Names[0].Text ?? "";
                     name = name.Replace(" ", "");
                     name = Regex.Replace(name, @"[^A-Z]", "x", RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
                     if (name.Length == 0)
@@ -63,20 +64,20 @@ namespace Maps
             }
             set => abbreviation = value;
         }
-        private string abbreviation;
+        private string? abbreviation;
 
         [XmlAttribute]
-        public string Label { get; set; }
+        public string? Label { get; set; }
 
         [XmlElement("Name")]
         public List<Name> Names { get; } = new List<Name>();
 
-        public string Domain { get; set; }
+        public string? Domain { get; set; }
 
-        public string AlphaQuadrant { get; set; }
-        public string BetaQuadrant { get; set; }
-        public string GammaQuadrant { get; set; }
-        public string DeltaQuadrant { get; set; }
+        public string? AlphaQuadrant { get; set; }
+        public string? BetaQuadrant { get; set; }
+        public string? GammaQuadrant { get; set; }
+        public string? DeltaQuadrant { get; set; }
 
 
         [XmlAttribute]
@@ -95,7 +96,7 @@ namespace Maps
 
         public IEnumerable<Border> BordersAndRegions => Borders.Concat(Regions);
 
-        public string Credits { get; set; }
+        public string? Credits { get; set; }
 
         public void Merge(Sector metadataSource)
         {
@@ -144,7 +145,7 @@ namespace Maps
 
         internal OrderedHashSet<string> Tags { get; } = new OrderedHashSet<string>();
 
-        public Allegiance GetAllegianceFromCode(string code)
+        public Allegiance? GetAllegianceFromCode(string code)
         {
             // TODO: Consider hashtable
             Allegiance alleg = Allegiances.Where(a => a.T5Code == code).FirstOrDefault();
@@ -156,15 +157,15 @@ namespace Maps
         /// </summary>
         /// <param name="code">The allegiance code to map, e.g. "Sy"</param>
         /// <returns>The base allegiance code, e.g. "Im", or the original code if none.</returns>
-        public string AllegianceCodeToBaseAllegianceCode(string code)
+        public string? AllegianceCodeToBaseAllegianceCode(string code)
         {
             var alleg = GetAllegianceFromCode(code)?.Base;
             return !string.IsNullOrEmpty(alleg) ? alleg : code;
         }
 
-        public DataFile DataFile { get; set; }
+        public DataFile? DataFile { get; set; }
 
-        public string MetadataFile { get; set; }
+        public string? MetadataFile { get; set; }
 
         public void AdjustRelativePaths(string baseFileName)
         {
@@ -227,8 +228,8 @@ namespace Maps
             };
         }
 
-        private WorldCollection worlds;
-        internal virtual WorldCollection GetWorlds(ResourceManager resourceManager, bool cacheResults = true)
+        private WorldCollection? worlds;
+        internal virtual WorldCollection? GetWorlds(ResourceManager resourceManager, bool cacheResults = true)
         {
             lock (this)
             {
@@ -236,7 +237,7 @@ namespace Maps
                 if (worlds != null)
                     return worlds;
 
-                WorldCollection data;
+                WorldCollection? data = null;
 
                 // Do we have data?
                 if (DataFile != null)
@@ -248,20 +249,19 @@ namespace Maps
                 {
                     // Nope... maybe we can construct a dotmap from the default milieu?
                     SectorMap.Milieu map = SectorMap.ForMilieu(resourceManager, SectorMap.DEFAULT_MILIEU);
-                    Sector basis = map.FromLocation(this.Location);
+                    Sector? basis = map.FromLocation(this.Location);
                     if (basis == null)
                         return null;
 
-                    WorldCollection worlds = basis.GetWorlds(resourceManager, cacheResults);
+                    WorldCollection? worlds = basis.GetWorlds(resourceManager, cacheResults);
                     if (worlds == null)
                         return null;
 
                     data = worlds.MakeDotmap();
                 }
-                else
-                {
+
+                if (data == null)
                     return null;
-                }
 
                 foreach (World world in data)
                     world.Sector = this;
@@ -275,7 +275,7 @@ namespace Maps
 
         internal void Serialize(ResourceManager resourceManager, TextWriter writer, string mediaType, SectorSerializeOptions options)
         {
-            WorldCollection worlds = GetWorlds(resourceManager);
+            WorldCollection? worlds = GetWorlds(resourceManager);
 
             // TODO: less hacky T5 support
             bool isT5 = (mediaType == "TabDelimited" || mediaType == "SecondSurvey");
@@ -446,13 +446,13 @@ namespace Maps
             s_defaultStyleSheet = SectorStylesheet.Parse(
                 File.OpenText(System.Web.Hosting.HostingEnvironment.MapPath("~/res/styles/otu.css")));
 
-        internal SectorStylesheet Stylesheet { get; set; }
+        internal SectorStylesheet? Stylesheet { get; set; }
 
         internal SectorStylesheet.StyleResult ApplyStylesheet(string element, string code)
             => (Stylesheet ?? s_defaultStyleSheet).Apply(element, code);
 
         [XmlElement("Stylesheet"), JsonName("Stylesheet")]
-        public string StylesheetText
+        public string? StylesheetText
         {
             get => stylesheetText;
             set
@@ -460,14 +460,14 @@ namespace Maps
                 stylesheetText = value;
                 if (value != null)
                 {
-                    Stylesheet = SectorStylesheet.Parse(stylesheetText);
+                    Stylesheet = SectorStylesheet.Parse(value);
                     Stylesheet.Parent = s_defaultStyleSheet;
                 }
             }
         }
-        private string stylesheetText;
+        private string? stylesheetText;
 
-        internal SectorMap.MilieuMap MilieuMap { get; set; }
+        internal SectorMap.MilieuMap? MilieuMap { get; set; }
 
         public IEnumerable<string> RoutesForWorld(World world)
         {
@@ -514,7 +514,7 @@ namespace Maps
                         continue;
 
                     string prefix =
-                        (string.IsNullOrWhiteSpace(route.Type) || route.Type.ToLowerInvariant() == "xboat") ? "Xb" : "Tr";
+                        (string.IsNullOrWhiteSpace(route.Type) || (route.Type!.ToLowerInvariant()) == "xboat") ? "Xb" : "Tr";
 
                     string s;
                     if (end.Sector == Location)
@@ -523,7 +523,7 @@ namespace Maps
                     }
                     else
                     {
-                        Sector endSector = MilieuMap.FromLocation(end.Sector);
+                        Sector? endSector = MilieuMap?.FromLocation(end.Sector);
                         // Dangling route into non-detailed sector.
                         if (endSector == null)
                             continue;
@@ -552,7 +552,7 @@ namespace Maps
     internal class Dotmap : Sector
     {
         private Sector basis;
-        private WorldCollection worlds = null;
+        private WorldCollection? worlds = null;
 
         public Dotmap(Sector basis) {
             X = basis.X;
@@ -560,14 +560,14 @@ namespace Maps
             this.basis = basis;
         }
 
-        internal override WorldCollection GetWorlds(ResourceManager resourceManager, bool cacheResults = true)
+        internal override WorldCollection? GetWorlds(ResourceManager resourceManager, bool cacheResults = true)
         {
             lock (this)
             {
                 if (this.worlds != null)
                     return this.worlds;
 
-                WorldCollection worlds = basis.GetWorlds(resourceManager, cacheResults);
+                WorldCollection? worlds = basis.GetWorlds(resourceManager, cacheResults);
                 if (worlds == null)
                     return null;
 
@@ -590,23 +590,23 @@ namespace Maps
     public class Name
     {
         public Name() { }
-        internal Name(string text = "", string lang = null)
+        internal Name(string text = "", string? lang = null)
         {
             Text = text;
             Lang = lang;
         }
 
         [XmlText]
-        public string Text { get; set; }
+        public string? Text { get; set; }
 
         [XmlAttribute]
         [DefaultValue("")]
-        public string Lang { get; set; }
+        public string? Lang { get; set; }
 
         [XmlAttribute]
-        public string Source { get; set; }
+        public string? Source { get; set; }
 
-        public override string ToString() => Text;
+        public override string ToString() => Text ?? "";
     }
 
     public class DataFile : MetadataItem
@@ -649,7 +649,7 @@ namespace Maps
             Name = name;
             LegacyCode = t5code;
         }
-        public Allegiance(string t5code, string name, string legacyCode, string baseCode = null, string location = null)
+        public Allegiance(string t5code, string name, string legacyCode, string? baseCode = null, string? location = null)
         {
             T5Code = t5code;
             Name = name;
@@ -659,17 +659,17 @@ namespace Maps
         }
 
         [XmlText]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         /// <summary>
         /// The four letter (or, in legacy data, two) code for the allegiance, e.g. "As" for Aslan, "Va" for Vargr,
         /// "Im" for Imperium, and so on.
         /// </summary>
         [XmlAttribute("Code"), JsonName("Code")]
-        public string T5Code { get; set; }
+        public string? T5Code { get; set; }
 
-        internal string LegacyCode { get => string.IsNullOrEmpty(legacyCode) ? T5Code : legacyCode; set => legacyCode = value; }
-        private string legacyCode;
+        internal string? LegacyCode { get => string.IsNullOrEmpty(legacyCode) ? T5Code : legacyCode; set => legacyCode = value; }
+        private string? legacyCode;
 
         /// <summary>
         /// The code for the fundamental allegiance type. For example, the various MT-era Rebellion
@@ -682,21 +682,21 @@ namespace Maps
         //  e.g. Imperial naval bases from Vargr naval bases (e.g. "Im"+"N" vs. "Va"+"N")
         /// </summary>
         [XmlAttribute]
-        public string Base { get; set; }
+        public string? Base { get; set; }
 
         /// <summary>
         /// A textual summary of sectors or regions in which the allegiance occurs,
         /// from the T5SS master spreadsheets.
         /// </summary>
         [XmlAttribute]
-        public string Location { get; set; }
+        public string? Location { get; set; }
 
-        string IAllegiance.Allegiance => T5Code;
+        string? IAllegiance.Allegiance => T5Code;
     }
 
     public interface IAllegiance
     {
-        string Allegiance { get; }
+        string? Allegiance { get; }
     }
 
 
@@ -706,7 +706,7 @@ namespace Maps
         {
         }
 
-        internal Border(string path, string color = null) : this()
+        internal Border(string path, string? color = null) : this()
         {
             PathString = path;
             if (color != null)
@@ -723,13 +723,13 @@ namespace Maps
 
         internal Color? Color { get; set; }
         [XmlAttribute("Color"), JsonName("Color")]
-        public string ColorHtml {
+        public string? ColorHtml {
             get => Color.HasValue ? ColorTranslator.ToHtml(Color.Value) : null;
             set { if (value != null) Color = ColorUtil.ParseColor(value); }
         }
 
         [XmlAttribute]
-        public string Allegiance { get; set; }
+        public string? Allegiance { get; set; }
 
         internal IEnumerable<Hex> Path => path;
         private List<Hex> path = new List<Hex>();
@@ -743,11 +743,11 @@ namespace Maps
         }
 
         [XmlAttribute]
-        public string Label { get; set; }
+        public string? Label { get; set; }
 
         internal LineStyle? Style { get; set; }
         [XmlAttribute("Style"), JsonIgnore]
-        public LineStyle _Style { get => Style.Value; set => Style = value; }
+        public LineStyle _Style { get => Style ?? LineStyle.Solid; set => Style = value; }
         public bool ShouldSerialize_Style() => Style.HasValue;
 
 
@@ -759,7 +759,7 @@ namespace Maps
             {
                 if (value == null) throw new ArgumentNullException(nameof(value));
 
-                string[] hexes = value.Split((char[])null, StringSplitOptions.RemoveEmptyEntries);
+                string[] hexes = value.Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries);
                 path = (from hex in hexes select new Hex(hex)).ToList();
 
                 // Compute the "bounding box" (in hex space)
@@ -787,13 +787,15 @@ namespace Maps
             }
         }
 
-        internal string GetLabel(Sector sector)
+        internal string? GetLabel(Sector sector)
         {
             if (!ShowLabel)
                 return null;
             if (!string.IsNullOrEmpty(Label))
                 return Label;
-            Allegiance alleg = sector.GetAllegianceFromCode(Allegiance);
+            if (Allegiance == null)
+                return null;
+            Allegiance? alleg = sector.GetAllegianceFromCode(Allegiance);
             return alleg?.Name;
         }
     }
@@ -801,7 +803,7 @@ namespace Maps
     public class Region : Border
     {
         public Region() { }
-        internal Region(string path, string color = null) : base(path, color) { }
+        internal Region(string path, string? color = null) : base(path, color) { }
     }
 
     public enum LineStyle
@@ -818,7 +820,7 @@ namespace Maps
         {
         }
 
-        internal Route(Point? startOffset = null, int start = 0, Point? endOffset = null, int end = 0, string color = null)
+        internal Route(Point? startOffset = null, int start = 0, Point? endOffset = null, int end = 0, string? color = null)
             : this()
         {
             StartOffset = startOffset ?? Point.Empty;
@@ -922,26 +924,26 @@ namespace Maps
 
         internal LineStyle? Style { get; set; }
         [XmlAttribute("Style"), JsonIgnore]
-        public LineStyle _Style { get => Style.Value; set => Style = value; }
+        public LineStyle _Style { get => Style ?? LineStyle.Solid; set => Style = value; }
         public bool ShouldSerialize_Style() => Style.HasValue;
 
         internal float? Width { get; set; }
         [XmlAttribute("Width"), JsonIgnore]
-        public float _Width { get => Width.Value; set => Width = value; }
+        public float _Width { get => Width ?? 0; set => Width = value; }
         public bool ShouldSerialize_Width() => Width.HasValue;
 
         internal Color? Color { get; set; }
         [XmlAttribute("Color"), JsonName("Color")]
-        public string ColorHtml {
+        public string? ColorHtml {
             get => Color.HasValue ? ColorTranslator.ToHtml(Color.Value) : null;
             set { if (value != null) Color = ColorUtil.ParseColor(value); }
         }
 
         [XmlAttribute]
-        public string Allegiance { get; set; }
+        public string? Allegiance { get; set; }
 
         [XmlAttribute]
-        public string Type { get; set; }
+        public string? Type { get; set; }
 
         public override string ToString()
         {
@@ -974,20 +976,20 @@ namespace Maps
 
         internal Hex Hex { get; set; }
         [XmlAttribute("Hex"),JsonName("Hex")]
-        public string HexString { get => Hex.ToString(); set { Hex = new Hex(value); } }
+        public string? HexString { get => Hex.ToString(); set { if (value != null) Hex = new Hex(value); } }
 
         [XmlAttribute]
-        public string Allegiance { get; set; }
+        public string? Allegiance { get; set; }
 
-        internal Color Color { get; set; }
+        internal Color? Color { get; set; }
         [XmlAttribute("Color"), JsonName("Color")]
-        public string ColorHtml {
-            get => ColorTranslator.ToHtml(Color);
+        public string? ColorHtml {
+            get => Color == null ? null : ColorTranslator.ToHtml(Color.Value);
             set { if (value != null) Color = ColorUtil.ParseColor(value); }
         }
 
         [XmlAttribute]
-        public string Size { get; set; }
+        public string? Size { get; set; }
 
         [XmlAttribute]
         public bool Wrap { get; set; }
@@ -998,9 +1000,10 @@ namespace Maps
 
         [XmlAttribute]
         // TODO: Unused
-        public string RenderType { get; set; }
+        public string? RenderType { get; set; }
 
         [XmlText]
-        public string Text { get; set; }
+        public string? Text { get; set; }
     }
+#nullable restore
 }

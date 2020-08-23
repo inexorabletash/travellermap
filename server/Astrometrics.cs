@@ -4,6 +4,7 @@ using System.Globalization;
 
 namespace Maps
 {
+#nullable enable
     internal static class Astrometrics
     {
         public const int SectorWidth = 32; // parsecs
@@ -169,4 +170,6 @@ namespace Maps
 
         public static readonly Hex Empty = new Hex();
     }
+#nullable restore
+
 }

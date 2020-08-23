@@ -8,6 +8,7 @@ using System.Text;
 
 namespace Maps
 {
+#nullable enable
     internal class SectorStylesheet
     {
         // Grammar: 
@@ -33,9 +34,9 @@ namespace Maps
             public List<Declaration> declarations;
         };
         class Selector {
-            public Selector(string element, string code) { this.element = element; this.code = code; }
+            public Selector(string element, string? code) { this.element = element; this.code = code; }
             public string element;
-            public string code;
+            public string? code;
 
             public override string ToString()
             {
@@ -74,22 +75,22 @@ namespace Maps
                 List<Rule> rules = new List<Rule>();
                 while (true) 
                 {
-                    Rule rule = ParseRule();
+                    Rule? rule = ParseRule();
                     if (rule == null) break;
                     rules.Add(rule);
                 }
                 return rules;
             }
-            public Rule ParseRule()
+            public Rule? ParseRule()
             {
-                List<Selector> selectors = ParseSelectorList();
+                List<Selector>? selectors = ParseSelectorList();
                 if (selectors == null) return null;
                 List<Declaration> declarations = ParseDeclarationList();
                 return new Rule(selectors, declarations);
             }
-            public List<Selector> ParseSelectorList()
+            public List<Selector>? ParseSelectorList()
             {
-                Selector selector = ParseSelector();
+                Selector? selector = ParseSelector();
                 if (selector == null) return null;
                 List<Selector> selectors = new List<Selector>
                 {
@@ -106,11 +107,11 @@ namespace Maps
                 WS();
                 return selectors;
             }
-            public Selector ParseSelector()
+            public Selector? ParseSelector()
             {
-                string element = IDENT();
+                string? element = IDENT();
                 if (element == null) return null;
-                string code = null;
+                string? code = null;
                 if (reader.Peek() == '.')
                 {
                     Expect('.');
@@ -123,7 +124,7 @@ namespace Maps
                 Expect('{');
                 WS();
                 List<Declaration> declarations = new List<Declaration>();
-                Declaration declaration = ParseDeclaration();
+                Declaration? declaration = ParseDeclaration();
                 if (declaration != null)
                     declarations.Add(declaration);
                 while (reader.Peek() == ';')
@@ -138,9 +139,9 @@ namespace Maps
                 WS();
                 return declarations;
             }
-            public Declaration ParseDeclaration()
+            public Declaration? ParseDeclaration()
             {
-                string property = IDENT();
+                string? property = IDENT();
                 if (property == null) return null;
                 WS();
                 Expect(':');
@@ -150,9 +151,9 @@ namespace Maps
                 return new Declaration(property, value);
             }
 
-            public string ParseValue() => IDENT() ?? NUMBER() ?? COLOR();
+            public string? ParseValue() => IDENT() ?? NUMBER() ?? COLOR();
 
-            public string IDENT()
+            public string? IDENT()
             {
                 int c = reader.Peek();
                 if (!(('A' <= c && c <= 'Z') || ('a' <= c && c <= 'z') || c == '_'))
@@ -177,7 +178,7 @@ namespace Maps
                 }
                 return ident;
             }
-            public string NUMBER()
+            public string? NUMBER()
             {
                 int c = reader.Peek();
                 if (!(c == '-' || ('0' <= c && c <= '9')))
@@ -221,7 +222,7 @@ namespace Maps
 
                 return s;
             }
-            public string COLOR()
+            public string? COLOR()
             {
                 int c = reader.Peek();
                 if (c != '#')
@@ -285,7 +286,7 @@ namespace Maps
 
         #endregion // Parser
 
-        public SectorStylesheet Parent { get; set; }
+        public SectorStylesheet? Parent { get; set; }
 
         SectorStylesheet(List<Rule> rules)
         {
@@ -333,7 +334,7 @@ namespace Maps
             
             private bool GetValue(string property, out string value) => dict.TryGetValue(property, out value) && !string.IsNullOrEmpty(value);
 
-            public string GetString(string property) => GetValue(property, out string value) ? value : null;
+            public string? GetString(string property) => GetValue(property, out string value) ? value : null;
 
             public Color? GetColor(string property)
             {
@@ -428,4 +429,5 @@ namespace Maps
 
         private readonly IList<Rule> rules;
     }
+#nullable restore
 }

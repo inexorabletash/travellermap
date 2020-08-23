@@ -1608,9 +1608,10 @@ namespace Maps.Rendering
                         };
 
                         if (!styles.grayscale &&
-                            ColorUtil.NoticeableDifference(label.Color, styles.backgroundColor) &&
+                            label.Color != null &&
+                            ColorUtil.NoticeableDifference(label.Color.Value, styles.backgroundColor) &&
                             (label.Color != Label.DefaultColor))
-                            solidBrush.Color = label.Color;
+                            solidBrush.Color = label.Color.Value;
                         else
                             solidBrush.Color = styles.microBorders.textColor;
                         RenderUtil.DrawLabel(graphics, text, labelPos, font, solidBrush, styles.microBorders.textStyle);

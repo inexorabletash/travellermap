@@ -8,6 +8,7 @@ using System.Text.RegularExpressions;
 
 namespace Maps
 {
+#nullable enable
     // TODO: Expand to handle non-T5SS data
     internal static class StellarData
     {
@@ -17,7 +18,7 @@ namespace Maps
 
             public char type; // OBAFGKM 
             public int fraction; // 0-9
-            public string luminosity; // Ia, Ib, II, III, IV, V, VI, VII
+            public string? luminosity; // Ia, Ib, II, III, IV, V, VI, VII
         }
 
         private static readonly Regex STELLAR_REGEX = new Regex(@"([OBAFGKM][0-9] ?(?:Ia|Ib|II|III|IV|V|VI|VII|D)|D|NS|PSR|BH|BD)",
@@ -126,7 +127,7 @@ namespace Maps
 
         private abstract class Unit
         {
-            public static bool Parse(SeekableReader r, out Unit unit)
+            public static bool Parse(SeekableReader r, out Unit? unit)
             {
 #if EXTENDED_SYSTEM_PARSING
                 if( Pair.Parse( r, out Pair p ) )
@@ -135,7 +136,7 @@ namespace Maps
                     return true;
                 }
 #endif
-                if (Star.Parse(r, out Star s))
+                if (Star.Parse(r, out Star? s))
                 {
                     unit = s;
                     return true;
@@ -199,9 +200,9 @@ namespace Maps
 
         private abstract class Companion
         {
-            public static bool Parse(SeekableReader r, out Companion companion)
+            public static bool Parse(SeekableReader r, out Companion? companion)
             {
-                if (NearCompanion.Parse(r, out NearCompanion nc))
+                if (NearCompanion.Parse(r, out NearCompanion? nc))
                 {
                     companion = nc;
                     return true;
@@ -222,13 +223,13 @@ namespace Maps
 
         private class NearCompanion : Companion
         {
-            public Unit Companion;
+            public Unit? Companion;
 
-            public override string ToString(OutputFormat format) => Companion.ToString(format);
+            public override string ToString(OutputFormat format) => Companion?.ToString(format) ?? "";
 
-            public static bool Parse(SeekableReader r, out NearCompanion near)
+            public static bool Parse(SeekableReader r, out NearCompanion? near)
             {
-                if (Unit.Parse(r, out Unit u))
+                if (Unit.Parse(r, out Unit? u))
                 {
                     near = new NearCompanion()
                     {
@@ -283,11 +284,11 @@ namespace Maps
 
         private class System
         {
-            public Unit Core;
+            public Unit? Core;
             public List<Companion> Companions = new List<Companion>();
             public string ToString(OutputFormat format)
             {
-                string s = Core.ToString(format);
+                string s = Core?.ToString(format) ?? "";
                 foreach (Companion c in Companions)                
                     s += " " + c.ToString(format);
                 return s;
@@ -295,7 +296,7 @@ namespace Maps
 
             public static bool Parse(SeekableReader r, out System system)
             {
-                if (!Unit.Parse(r, out Unit u))
+                if (!Unit.Parse(r, out Unit? u))
                     throw new InvalidSystemException("No core star");
 
                 system = new System()
@@ -307,7 +308,7 @@ namespace Maps
                     while (r.Peek() == ' ') // w+
                         r.Read();
 
-                    if (!Companion.Parse(r, out Companion companion))
+                    if (!Companion.Parse(r, out Companion? companion) || companion == null)
                         throw new InvalidSystemException("Expected companion");
                     system.Companions.Add(companion);
                 }
@@ -318,13 +319,16 @@ namespace Maps
 
         private class Star : Unit
         {
-            public string Type;
-            public int Tenths;
-            public string Size;
+            public string? Type;
+            public int? Tenths;
+            public string? Size;
             public bool Main = false;
 
             public override string ToString(OutputFormat format)
             {
+                if (Type == null)
+                    return "";
+
                 string res;
                 if (Type.Length > 1 || Type == "D")
                     res = Type;
@@ -343,10 +347,10 @@ namespace Maps
             private static readonly string[] WHITEDWARF_SIZE = { "D" };
             private static readonly string[] WHITEDWARF_TYPES = { "DB", "DA", "DF", "DG", "DK", "DM", "D" };
             private static readonly string[] OTHER_TYPES = { "NS", "PSR", "BH", "BD", "Un" };
-
-            public static bool Parse(SeekableReader r, out Star star)
+            
+            public static bool Parse(SeekableReader r, out Star? star)
             {
-                string m;
+                string? m;
 
                 m = Match(r, OTHER_TYPES);
                 if (m != null)
@@ -430,7 +434,7 @@ namespace Maps
         /// <param name="r">Text to parse</param>
         /// <param name="options">List of accepted options</param>
         /// <returns>Matched string, or null</returns>
-        private static string Match(SeekableReader r, string[] options)
+        private static string? Match(SeekableReader r, string[] options)
         {
             string found = "";
 
@@ -564,4 +568,5 @@ namespace Maps
         }
 
     }
+#nullable restore
 }

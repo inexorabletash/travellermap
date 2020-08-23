@@ -6,6 +6,7 @@ using System.Linq;
 
 namespace Maps
 {
+#nullable enable
     internal static class SecondSurvey
     {
         #region eHex
@@ -156,7 +157,7 @@ namespace Maps
                 Add(code, new Allegiance(code, name));
             }
 
-            public void Add(string code, string legacy, string baseCode, string name, string location = null)
+            public void Add(string code, string legacy, string? baseCode, string name, string? location = null)
             {
                 Add(code, new Allegiance(code, name, legacy, baseCode, location));
             }
@@ -175,7 +176,7 @@ namespace Maps
 
             private static AllegianceDictionary Parse(StreamReader reader)
             {
-                Func<string, string> nullIfEmpty = (s) => string.IsNullOrWhiteSpace(s) ? null : s;
+                Func<string, string?> nullIfEmpty = (s) => string.IsNullOrWhiteSpace(s) ? null : s;
                 var dict = new AllegianceDictionary();
                 var parser = new Serialization.TSVParser(reader);
                 foreach (var row in parser.Data)
@@ -214,7 +215,7 @@ namespace Maps
         // * Legacy -> T5 overrides
         // * Legacy stock codes
         // * Legacy -> T5 (T5SS)
-        public static Allegiance GetStockAllegianceFromCode(string code)
+        public static Allegiance? GetStockAllegianceFromCode(string code)
         {
             if (code == null)
                 return null;
@@ -234,15 +235,15 @@ namespace Maps
         // TODO: This discounts the Sector's allegiance/base definitions, if any.
         public static string AllegianceCodeToBaseAllegianceCode(string code)
         {
-            Allegiance alleg = GetStockAllegianceFromCode(code);
+            Allegiance? alleg = GetStockAllegianceFromCode(code);
             if (alleg == null)
                 return code;
             if (string.IsNullOrEmpty(alleg.Base))
                 return code;
-            return alleg.Base;
+            return alleg.Base!;
         }
 
-        public static string T5AllegianceCodeToLegacyCode(string t5code)
+        public static string? T5AllegianceCodeToLegacyCode(string t5code)
         {
             if (!s_t5Allegiances.ContainsKey(t5code))
                 return t5code;
@@ -283,9 +284,10 @@ namespace Maps
         private static readonly IReadOnlyDictionary<string, Allegiance> s_legacyToT5Allegiance =
             new AllegianceDictionary(
                 s_t5Allegiances.Values
+                .Where(a => a.LegacyCode != null)
                 .GroupBy(a => a.LegacyCode)
                 .Select(g => g.First())
-                .Select(a => new KeyValuePair<string, Allegiance>(a.LegacyCode, a)));
+                .Select(a => new KeyValuePair<string, Allegiance>(a.LegacyCode!, a)));
 
         private static readonly ConcurrentSet<string> s_defaultAllegiances = new ConcurrentSet<string> {
             "Im", // Classic Imperium
@@ -351,13 +353,13 @@ namespace Maps
         private static readonly SophontDictionary s_sophontCodes = SophontDictionary
             .FromFile(System.Web.Hosting.HostingEnvironment.MapPath("~/res/t5ss/sophont_codes.tab"));
 
-        public static string SophontCodeToName(string code)
+        public static string? SophontCodeToName(string code)
         {
             if (s_sophontCodes.ContainsKey(code))
                 return s_sophontCodes[code].Name;
             return null;
         }
-        public static Sophont SophontForCode(string code)
+        public static Sophont? SophontForCode(string code)
         {
             if (s_sophontCodes.ContainsKey(code))
                 return s_sophontCodes[code];
@@ -402,4 +404,5 @@ namespace Maps
         }
         #endregion
     }
+#nullable restore
 }

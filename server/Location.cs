@@ -4,6 +4,7 @@ using System.Xml.Serialization;
 
 namespace Maps
 {
+#nullable enable
     public struct Location : IEquatable<Location>
     {
         internal Location(Point sectorLocation, int hex)
@@ -23,9 +24,9 @@ namespace Maps
 
         // For XML Deserialization:
         [XmlAttribute("Sector")]
-        public string SectorName { get => null; set => Sector = SectorMap.GetSectorCoordinatesByName(value); }
+        public string? SectorName { get => null; set { if (value != null) Sector = SectorMap.GetSectorCoordinatesByName(value); } }
         [XmlAttribute("Hex")]
-        public string HexName { get => null; set => Hex = new Hex(value); }
+        public string? HexName { get => null; set { if (value != null) Hex = new Hex(value); } }
 
         public bool IsEmpty => Sector.IsEmpty && Hex.IsEmpty;
         public bool IsValid => Hex.IsValid;
@@ -48,4 +49,5 @@ namespace Maps
         public string SubsectorHexString => Hex.ToSubsectorString();
         public static readonly Location Empty = new Location();
     }
+#nullable restore
 }

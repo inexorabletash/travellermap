@@ -8,6 +8,7 @@ using System.Xml.Serialization;
 
 namespace Maps
 {
+#nullable enable
     [Serializable]
     public class MapNotInitializedException : Exception
     {
@@ -35,7 +36,7 @@ namespace Maps
         /// <summary>
         /// Singleton - initialized once and retained for the life of the application.
         /// </summary>
-        private static SectorMap s_instance;
+        private static SectorMap? s_instance;
 
         /// <summary>
         /// Holds all known sectors across all milieux.
@@ -82,14 +83,17 @@ namespace Maps
 
                     foreach (var name in sector.Names)
                     {
-                        nameMap.TryAdd(name.Text, sector);
+                        if (name.Text != null)
+                        {
+                            nameMap.TryAdd(name.Text, sector);
 
-                        // Automatically alias "SpinwardMarches"
-                        nameMap.TryAdd(name.Text.Replace(" ", ""), sector);
+                            // Automatically alias "SpinwardMarches"
+                            nameMap.TryAdd(name.Text.Replace(" ", ""), sector);
+                        }
                     }
 
                     if (!string.IsNullOrEmpty(sector.Abbreviation))
-                        nameMap.TryAdd(sector.Abbreviation, sector);
+                        nameMap.TryAdd(sector.Abbreviation ?? "", sector);
                 }
             }
         }
@@ -110,7 +114,10 @@ namespace Maps
             // Load all sectors from all metafiles.
             foreach (var metafile in metafiles)
             {
-                SectorCollection collection = resourceManager.GetXmlFileObject(metafile.filename, typeof(SectorCollection), cache: false) as SectorCollection;
+                SectorCollection? collection = resourceManager.GetXmlFileObject(metafile.filename, typeof(SectorCollection), cache: false) as SectorCollection;
+                if (collection == null)
+                    throw new ApplicationException($"Invalid file: {metafile.filename}");
+
                 foreach (var sector in collection.Sectors)
                 {
                     sector.Tags.AddRange(metafile.tags);
@@ -124,7 +131,10 @@ namespace Maps
             {
                 if (sector.MetadataFile != null)
                 {
-                    Sector metadata = resourceManager.GetXmlFileObject(sector.MetadataFile, typeof(Sector), cache: false) as Sector;
+                    Sector? metadata = resourceManager.GetXmlFileObject(sector.MetadataFile, typeof(Sector), cache: false) as Sector;
+                    if (metadata == null)
+                        throw new ApplicationException($"Invalid file: {sector.MetadataFile}");
+
                     metadata.AdjustRelativePaths(sector.MetadataFile);
                     sector.Merge(metadata);
                 }
@@ -187,14 +197,17 @@ namespace Maps
         // Throws if the map is not initialized.
         public static Point GetSectorCoordinatesByName(string name)
         {
-            SectorMap instance;
+            SectorMap? instance;
             lock (SectorMap.s_lock)
             {
                 instance = s_instance;
             }
             if (instance == null)
                 throw new MapNotInitializedException();
-            return instance.FromName(name, null).Location;
+            Sector? sector = instance.FromName(name, null);
+            if (sector == null)
+                throw new ApplicationException($"Sector not found: {name}");
+            return sector.Location;
         }
 
         /// <summary>
@@ -210,11 +223,11 @@ namespace Maps
                 this.map = map;
                 this.milieu = milieu;
             }
-            public Sector FromLocation(int x, int y, bool useMilieuFallbacks = false)
+            public Sector? FromLocation(int x, int y, bool useMilieuFallbacks = false)
                 => map.FromLocation(new Point(x, y), milieu, useMilieuFallbacks);
-            public Sector FromLocation(Point pt, bool useMilieuFallbacks = false)
+            public Sector? FromLocation(Point pt, bool useMilieuFallbacks = false)
                 => map.FromLocation(pt, milieu, useMilieuFallbacks);
-            public Sector FromName(string name)
+            public Sector? FromName(string name)
                 => map.FromName(name, milieu);
         }
 
@@ -227,7 +240,7 @@ namespace Maps
         /// <param name="m">Specific milieu. If specified, at most one milieu will be returned.
         /// If null, default/fallback milieu will be returned</param>
         /// <returns>Enumerable yielding all matching MilieuMap instances.</returns>
-        private IEnumerable<MilieuMap> SelectMilieux(string m)
+        private IEnumerable<MilieuMap> SelectMilieux(string? m)
         {
             if (m != null)
             {
@@ -247,7 +260,7 @@ namespace Maps
         /// <param name="name">Sector name</param>
         /// <param name="milieu">Milieu name, null for default/fallbacks</param>
         /// <returns>Sector if found, or null</returns>
-        private Sector FromName(string name, string milieu) => SelectMilieux(milieu)
+        private Sector? FromName(string name, string? milieu) => SelectMilieux(milieu)
                     .Select(m => m.FromName(name))
                     .Where(s => s != null)
                     .FirstOrDefault();
@@ -259,9 +272,9 @@ namespace Maps
         /// <param name="y">Sector y coordinate</param>
         /// <param name="milieu">Milieu name, null for default</param>
         /// <returns>Sector if found, or null</returns>
-        private Sector FromLocation(Point pt, string milieu, bool useMilieuFallbacks = false)
+        private Sector? FromLocation(Point pt, string? milieu, bool useMilieuFallbacks = false)
         {
-            Sector sector = SelectMilieux(milieu)
+            Sector? sector = SelectMilieux(milieu)
                 .Select(map => map.FromLocation(pt))
                 .Where(sec => sec != null && (useMilieuFallbacks || !(sec is Dotmap)))
                 .FirstOrDefault();
@@ -298,4 +311,5 @@ namespace Maps
                 Sectors.AddRange(otherCollection.Sectors);
         }
     }
+#nullable restore
 }

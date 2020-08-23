@@ -13,6 +13,7 @@ using System.Linq;
 
 namespace Maps
 {
+#nullable enable
     internal abstract class Selector
     {
         protected Selector()
@@ -98,12 +99,14 @@ namespace Maps
                 int ssx = index % 4;
                 int ssy = index / 4;
 
-                WorldCollection worlds = sector.GetWorlds(resourceManager);
+                WorldCollection? worlds = sector.GetWorlds(resourceManager);
+                if (worlds == null)
+                    yield break;
                 for (int x = 0; x < Astrometrics.SubsectorWidth; ++x)
                 {
                     for (int y = 0; y < Astrometrics.SubsectorHeight; ++y)
                     {
-                        World world = worlds[1 + x + Astrometrics.SubsectorWidth * ssx, 1 + y + Astrometrics.SubsectorHeight * ssy];
+                        World? world = worlds[1 + x + Astrometrics.SubsectorWidth * ssx, 1 + y + Astrometrics.SubsectorHeight * ssy];
                         if (world == null)
                             continue;
 
@@ -141,12 +144,14 @@ namespace Maps
                 int qx = index % 2;
                 int qy = index / 2;
 
-                WorldCollection worlds = sector.GetWorlds(resourceManager);
+                WorldCollection? worlds = sector.GetWorlds(resourceManager);
+                if (worlds == null)
+                    yield break;
                 for (int x = 0; x < Astrometrics.SubsectorWidth * 2; ++x)
                 {
                     for (int y = 0; y < Astrometrics.SubsectorHeight * 2; ++y)
                     {
-                        World world = worlds[1 + x + Astrometrics.SubsectorWidth * 2 * qx, 1 + y + Astrometrics.SubsectorHeight * 2 * qy];
+                        World? world = worlds[1 + x + Astrometrics.SubsectorWidth * 2 * qx, 1 + y + Astrometrics.SubsectorHeight * 2 * qy];
                         if (world == null)
                             continue;
 
@@ -195,7 +200,7 @@ namespace Maps
                 {
                     for (int cy = sy1; cy <= sy2; cy++)
                     {
-                        Sector sector = map.FromLocation(cx, cy, UseMilieuFallbacks);
+                        Sector? sector = map.FromLocation(cx, cy, UseMilieuFallbacks);
                         if (sector == null)
                             continue;
 
@@ -222,7 +227,7 @@ namespace Maps
                 int hy2 = (int)Math.Ceiling(rect.Bottom);
 
                 Point? cachedLoc = null;
-                Sector cachedSector = null;
+                Sector? cachedSector = null;
 
                 Point coords = Point.Empty;
                 for (coords.X = hx1; coords.X <= hx2; coords.X++)
@@ -242,7 +247,7 @@ namespace Maps
                             continue;
                         }
 
-                        WorldCollection worlds = cachedSector.GetWorlds(resourceManager);
+                        WorldCollection? worlds = cachedSector.GetWorlds(resourceManager);
                         if (worlds == null)
                         {
                             continue;
@@ -295,7 +300,7 @@ namespace Maps
                 {
                     for (int x = locTL.Sector.X; x <= locBR.Sector.X; ++x)
                     {
-                        Sector sector = map.FromLocation(x, y, UseMilieuFallbacks);
+                        Sector? sector = map.FromLocation(x, y, UseMilieuFallbacks);
                         if (sector == null)
                             continue;
 
@@ -319,7 +324,7 @@ namespace Maps
 
                 bool cached = false;
                 Point cachedLoc = Point.Empty;
-                Sector cachedSector = null;
+                Sector? cachedSector = null;
 
                 for (int y = topLeft.Y; y <= bottomRight.Y; ++y)
                 {
@@ -339,17 +344,13 @@ namespace Maps
 
                             if (cachedSector != null)
                             {
-                                WorldCollection worlds = cachedSector.GetWorlds(resourceManager);
+                                WorldCollection? worlds = cachedSector.GetWorlds(resourceManager);
                                 if (worlds == null)
-                                {
                                     continue;
-                                }
 
                                 World world = worlds[loc.Hex];
                                 if (world == null)
-                                {
                                     continue;
-                                }
 
                                 yield return world;
                             }
@@ -396,4 +397,5 @@ namespace Maps
             }
         }
     }
+#nullable restore
 }

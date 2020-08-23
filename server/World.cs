@@ -12,9 +12,10 @@ using System.Xml.Serialization;
 
 namespace Maps
 {
+#nullable enable
     public class World
     {
-        internal Sector Sector { get; set; }
+        internal Sector? Sector { get; set; }
 
         public string Name { get; set; } = string.Empty;
 
@@ -41,15 +42,15 @@ namespace Maps
         public string SS => "" + (char)('A' + Subsector);
 
         [XmlElement("Ix"), JsonName("Ix")]
-        public string Importance { get; set; }
+        public string? Importance { get; set; }
 
         internal int? ImportanceValue
         {
             get
             {
                 int? value = null;
-                string ix = Importance;
-                if (!string.IsNullOrWhiteSpace(ix) && int.TryParse(ix.Replace('{', ' ').Replace('}', ' '),
+                string? ix = Importance;
+                if (!string.IsNullOrWhiteSpace(ix) && int.TryParse(ix?.Replace('{', ' ')?.Replace('}', ' ') ?? "",
                     NumberStyles.AllowLeadingWhite | NumberStyles.AllowTrailingWhite | NumberStyles.Integer,
                     CultureInfo.InvariantCulture, out int tmp))
                 {
@@ -72,10 +73,10 @@ namespace Maps
 
 
         [XmlElement("Ex"), JsonName("Ex")]
-        public string Economic { get; set; }
+        public string? Economic { get; set; }
         [XmlElement("Cx"), JsonName("Cx")]
-        public string Cultural { get; set; }
-        public string Nobility { get; set; }
+        public string? Cultural { get; set; }
+        public string? Nobility { get; set; }
         public byte Worlds { get; set; }
         public int ResourceUnits { get; set; }
 
@@ -277,16 +278,16 @@ namespace Maps
         internal bool IsTNEBalkanized => Zone == "B";
 
         [XmlAttribute("Sector"), JsonName("Sector")]
-        public string SectorName => Sector.Names[0].Text;
-        public string SubsectorName => Sector.Subsector(Subsector)?.Name ?? "";
+        public string SectorName => Sector?.Names[0].Text ?? "";
+        public string SubsectorName => Sector?.Subsector(Subsector)?.Name ?? "";
 
-        public string SectorAbbreviation => Sector.Abbreviation;
+        public string? SectorAbbreviation => Sector?.Abbreviation;
 
         public string AllegianceName => Sector?.GetAllegianceFromCode(Allegiance)?.Name ?? "";
 
         internal string BaseAllegiance => Sector?.AllegianceCodeToBaseAllegianceCode(Allegiance) ?? Allegiance;
 
-        internal string LegacyAllegiance => SecondSurvey.T5AllegianceCodeToLegacyCode(Allegiance);
+        internal string? LegacyAllegiance => SecondSurvey.T5AllegianceCodeToLegacyCode(Allegiance);
 
 
         private static Regex SOPHPOP_CODE_REGEX = new Regex(@"^(....)([0-9W])$", RegexOptions.Compiled);
@@ -424,7 +425,7 @@ namespace Maps
             int imp = 0;
             if (!string.IsNullOrWhiteSpace(Importance))
             {
-                string ix = Importance.Replace('{', ' ').Replace('}', ' ').Trim();
+                string ix = Importance?.Replace('{', ' ').Replace('}', ' ').Trim() ?? "";
                 if (ix != "")
                 {
                     imp = CalculateImportance();
@@ -437,7 +438,7 @@ namespace Maps
             // (Ex)
             if (!string.IsNullOrWhiteSpace(Economic))
             {
-                string ex = Economic.Replace('(', ' ').Replace(')', ' ').Trim();
+                string ex = Economic?.Replace('(', ' ').Replace(')', ' ').Trim() ?? "";
                 if (ex != "")
                 {
                     int resources = SecondSurvey.FromHex(ex[0]);
@@ -479,7 +480,7 @@ namespace Maps
             // [Cx]
             if (!string.IsNullOrWhiteSpace(Cultural))
             {
-                string cx = Cultural.Replace('[', ' ').Replace(']', ' ').Trim();
+                string cx = Cultural?.Replace('[', ' ').Replace(']', ' ').Trim() ?? "";
                 if (cx != "")
                 {
                     int heterogeneity = SecondSurvey.FromHex(cx[0]);
@@ -546,16 +547,17 @@ namespace Maps
             return imp;
         }
 
-        private string routes = null;
+        private string? routes = null;
         [XmlIgnore,JsonIgnore]
-        public string Routes
+        public string? Routes
         {
             get
             {
-                if (routes == null)
+                if (routes == null && Sector != null)
                     routes = string.Join(" ", Sector.RoutesForWorld(this).OrderBy(s => s));
                 return routes;
             }
         }
     }
+#nullable restore
 }

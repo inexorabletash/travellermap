@@ -7,6 +7,7 @@ using System.Xml.Serialization;
 
 namespace Maps.Rendering
 {
+#nullable enable
     public class MapObject
     {
 
@@ -14,13 +15,13 @@ namespace Maps.Rendering
 
     public class VectorObject : MapObject
     {
-        private Byte[] pathDataTypes;
+        private Byte[]? pathDataTypes;
 
         public VectorObject()
         {
         }
 
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
 
         internal float MinScale { get; set; }
@@ -105,11 +106,14 @@ namespace Maps.Rendering
 
         public MapOptions MapOptions { get; set; }
 
-        public PointF[] PathDataPoints { get; set; }
+        public PointF[]? PathDataPoints { get; set; }
         public Byte[] PathDataTypes
         {
             get
             {
+                if (PathDataPoints == null)
+                    throw new ApplicationException("Invalid VectorObject - PathDataPoints required");
+
                 if (pathDataTypes == null)
                 {
                     List<byte> types = new List<byte>(PathDataPoints.Length)
@@ -126,7 +130,7 @@ namespace Maps.Rendering
             set { pathDataTypes = value; }
         }
 
-        internal AbstractPath Path
+        internal AbstractPath? Path
         {
             get
             {
@@ -196,7 +200,7 @@ namespace Maps.Rendering
 
     public class WorldObject : MapObject
     {
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         internal float MinScale { get; set; }
         internal float MaxScale { get; set; }
@@ -244,5 +248,5 @@ namespace Maps.Rendering
         }
 
     }
-
+#nullable restore
 }
