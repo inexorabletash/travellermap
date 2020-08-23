@@ -130,12 +130,12 @@ namespace Maps.Rendering
             set { pathDataTypes = value; }
         }
 
-        internal AbstractPath? Path
+        internal AbstractPath Path
         {
             get
             {
                 if (PathDataPoints == null)
-                    return null;
+                    throw new ApplicationException("Invalid VectorObject - PathDataPoints required");
 
                 return new AbstractPath(PathDataPoints, PathDataTypes);
             }

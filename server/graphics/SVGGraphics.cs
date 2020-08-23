@@ -9,6 +9,7 @@ using System.Text;
 
 namespace Maps.Graphics
 {
+#nullable enable
     internal class SVGGraphics : AbstractGraphics
     {
         // G6 precision is needed for rendering far away from Charted Space, e.g. Legend
@@ -17,8 +18,8 @@ namespace Maps.Graphics
 
         private class Element
         {
-            public string name;
-            public string content;
+            public string name { get; set; }
+            public string? content;
             public Dictionary<string, string> attributes = new Dictionary<string, string>();
             public List<Element> children = new List<Element>();
 
@@ -72,7 +73,7 @@ namespace Maps.Graphics
             // Helpers for common attributes
             public string Id { get => Get("id"); set => Set("id", value); }
 
-            public void Apply(AbstractPen pen)
+            public void Apply(AbstractPen? pen)
             {
                 if (pen == null)
                 {
@@ -109,11 +110,11 @@ namespace Maps.Graphics
                     }
                 }
             }
-            public void Apply(AbstractBrush brush)
+            public void Apply(AbstractBrush? brush)
             {
                 Set("fill", brush?.Color ?? Color.Empty);
             }
-            public void Apply(AbstractPen pen, AbstractBrush brush)
+            public void Apply(AbstractPen? pen, AbstractBrush? brush)
             {
                 Apply(pen);
                 Apply(brush);
@@ -327,7 +328,7 @@ namespace Maps.Graphics
             stack.Push(root);
         }
 
-        System.Drawing.Graphics AbstractGraphics.Graphics => null;
+        System.Drawing.Graphics? AbstractGraphics.Graphics => null;
         SmoothingMode AbstractGraphics.SmoothingMode { get; set; }
         public bool SupportsWingdings => false;
         #region Drawing
@@ -386,7 +387,7 @@ namespace Maps.Graphics
             e.Apply(pen, null);
         }
 
-        public void DrawPath(AbstractPen pen, AbstractBrush brush, AbstractPath path)
+        public void DrawPath(AbstractPen? pen, AbstractBrush? brush, AbstractPath path)
         {
             var e = Append(new Element(ElementNames.PATH));
             e.Set("d", ToSVG(path));
@@ -400,14 +401,14 @@ namespace Maps.Graphics
             e.Apply(pen, null);
         }
 
-        public void DrawClosedCurve(AbstractPen pen, AbstractBrush brush, PointF[] points, float tension)
+        public void DrawClosedCurve(AbstractPen? pen, AbstractBrush? brush, PointF[] points, float tension)
         {
             var e = Append(new Element(ElementNames.PATH));
             e.Set("d", ToSVG(points, tension, true));
             e.Apply(pen, brush);
         }
 
-        public void DrawRectangle(AbstractPen pen, AbstractBrush brush, float x, float y, float width, float height)
+        public void DrawRectangle(AbstractPen? pen, AbstractBrush? brush, float x, float y, float width, float height)
         {
             var e = Append(new Element(ElementNames.RECT));
             e.Set("x", x);
@@ -417,7 +418,7 @@ namespace Maps.Graphics
             e.Apply(pen, brush);
         }
 
-        public void DrawEllipse(AbstractPen pen, AbstractBrush brush, float x, float y, float width, float height)
+        public void DrawEllipse(AbstractPen? pen, AbstractBrush? brush, float x, float y, float width, float height)
         {
             Element e;
             if (width == height)
@@ -493,7 +494,7 @@ namespace Maps.Graphics
 #endregion
 
 #region Text
-        private System.Drawing.Graphics scratch;
+        private System.Drawing.Graphics? scratch;
         public SizeF MeasureString(string text, AbstractFont font)
         {
             if (scratch == null) scratch = System.Drawing.Graphics.FromImage(new Bitmap(1, 1));
@@ -745,4 +746,5 @@ namespace Maps.Graphics
         }
 #endregion
     }
+#nullable restore
 }

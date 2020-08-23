@@ -6,10 +6,11 @@ using System.IO;
 
 namespace Maps.Graphics
 {
+#nullable enable
     internal interface AbstractGraphics : IDisposable
     {
         SmoothingMode SmoothingMode { get; set; }
-        System.Drawing.Graphics Graphics { get; }
+        System.Drawing.Graphics? Graphics { get; }
         bool SupportsWingdings { get; }
 
         void ScaleTransform(float scaleXY);
@@ -50,7 +51,7 @@ namespace Maps.Graphics
 
     internal abstract class AbstractGraphicsState : IDisposable {
 
-        private AbstractGraphics g;
+        private AbstractGraphics? g;
 
         protected AbstractGraphicsState(AbstractGraphics graphics)
         {
@@ -59,7 +60,7 @@ namespace Maps.Graphics
 
         public void Restore()
         {
-            g.Restore(this);
+            g!.Restore(this);
             g = null;
         }
 
@@ -110,13 +111,12 @@ namespace Maps.Graphics
     internal class AbstractImage
     {
         private string path;
-        private string url;
-        private Image image;
-        private XImage ximage;
+        private Image? image;
+        private XImage? ximage;
 
-        public string Url => url;
+        public string Url { get; }
 
-        private string dataUrl;
+        private string? dataUrl;
         public string DataUrl
         {
             get
@@ -162,7 +162,7 @@ namespace Maps.Graphics
         public AbstractImage(string path, string url)
         {
             this.path = path;
-            this.url = url;
+            this.Url = url;
         }
     }
 
@@ -171,7 +171,7 @@ namespace Maps.Graphics
         public Color Color { get; set; }
         public float Width { get; set; }
         public DashStyle DashStyle { get; set; } = DashStyle.Solid;
-        public float[] CustomDashPattern { get; set; }
+        public float[]? CustomDashPattern { get; set; }
 
         public AbstractPen() { }
         public AbstractPen(Color color, float width = 1)
@@ -207,6 +207,7 @@ namespace Maps.Graphics
                 if (Font.Name == family)
                     return;
             }
+            throw new ApplicationException("No matching font family");
         }
 
         // Access to the underlying System.Drawing.Font, and properties.
@@ -251,4 +252,5 @@ namespace Maps.Graphics
         DashDotDot,
         Custom,
     }
+#nullable restore
 }

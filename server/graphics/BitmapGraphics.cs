@@ -5,11 +5,12 @@ using System.Drawing.Imaging;
 
 namespace Maps.Graphics
 {
+#nullable enable
     internal class BitmapGraphics : AbstractGraphics
     {
-        private System.Drawing.Graphics g;
-        private SolidBrush brush;
-        private Pen pen;
+        private System.Drawing.Graphics g { get; }
+        private SolidBrush brush { get; }
+        private Pen pen { get; }
 
         public BitmapGraphics(System.Drawing.Graphics graphics)
         {
@@ -26,15 +27,16 @@ namespace Maps.Graphics
         {
             this.pen.Color = pen.Color;
             this.pen.Width = pen.Width;
-            switch (pen.DashStyle)
-            {                
-                case DashStyle.Solid: this.pen.DashStyle = System.Drawing.Drawing2D.DashStyle.Solid; break;
-                case DashStyle.Dot: this.pen.DashStyle = System.Drawing.Drawing2D.DashStyle.Dot; break;
-                case DashStyle.Dash: this.pen.DashStyle = System.Drawing.Drawing2D.DashStyle.Dash; break;
-                case DashStyle.DashDot: this.pen.DashStyle = System.Drawing.Drawing2D.DashStyle.DashDot; break;
-                case DashStyle.DashDotDot: this.pen.DashStyle = System.Drawing.Drawing2D.DashStyle.DashDotDot; break;
-                case DashStyle.Custom: this.pen.DashStyle = System.Drawing.Drawing2D.DashStyle.Custom; break;
-            }
+            this.pen.DashStyle = pen.DashStyle switch
+            {
+                DashStyle.Solid => System.Drawing.Drawing2D.DashStyle.Solid,
+                DashStyle.Dot => System.Drawing.Drawing2D.DashStyle.Dot,
+                DashStyle.Dash => System.Drawing.Drawing2D.DashStyle.Dash,
+                DashStyle.DashDot => System.Drawing.Drawing2D.DashStyle.DashDot,
+                DashStyle.DashDotDot => System.Drawing.Drawing2D.DashStyle.DashDotDot,
+                DashStyle.Custom => System.Drawing.Drawing2D.DashStyle.Custom,
+            _ => System.Drawing.Drawing2D.DashStyle.Solid,
+            };
             if (pen.CustomDashPattern != null)
                 this.pen.DashPattern = pen.CustomDashPattern;
         }
@@ -42,7 +44,7 @@ namespace Maps.Graphics
 
         public bool SupportsWingdings => true;
         public SmoothingMode SmoothingMode { get => g.SmoothingMode; set => g.SmoothingMode = value; }
-        public System.Drawing.Graphics Graphics => g;
+        public System.Drawing.Graphics? Graphics => g;
         public void ScaleTransform(float scaleXY) { g.ScaleTransform(scaleXY, scaleXY); }
         public void ScaleTransform(float scaleX, float scaleY) { g.ScaleTransform(scaleX, scaleY); }
         public void TranslateTransform(float dx, float dy) { g.TranslateTransform(dx, dy); }
@@ -175,12 +177,9 @@ namespace Maps.Graphics
                 return;
             if (disposing)
             {
-                g?.Dispose();
-                g = null;
-                brush?.Dispose();
-                brush = null;
-                pen?.Dispose();
-                pen = null;
+                g.Dispose();
+                brush.Dispose();
+                pen.Dispose();
             }
             disposed = true;
         }
@@ -192,4 +191,5 @@ namespace Maps.Graphics
             public State(AbstractGraphics g, GraphicsState state) : base(g) { this.state = state; }
         }
     }
+#nullable restore
 }

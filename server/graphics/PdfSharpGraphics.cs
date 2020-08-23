@@ -10,6 +10,7 @@ using System.Linq;
 
 namespace Maps.Graphics
 {
+#nullable enable
     internal class PdfSharpGraphics : AbstractGraphics
     {
         private XGraphics g;
@@ -55,7 +56,7 @@ namespace Maps.Graphics
 
         public bool SupportsWingdings => true;
         public SmoothingMode SmoothingMode { get => (SmoothingMode)g.SmoothingMode; set => g.SmoothingMode = (XSmoothingMode)value; }
-        public System.Drawing.Graphics Graphics => g.Graphics;
+        public System.Drawing.Graphics? Graphics => g.Graphics;
         public void ScaleTransform(float scaleXY) { g.ScaleTransform(scaleXY); }
         public void ScaleTransform(float scaleX, float scaleY) { g.ScaleTransform(scaleX, scaleY); }
         public void TranslateTransform(float dx, float dy) { g.TranslateTransform(dx, dy); }
@@ -111,7 +112,7 @@ namespace Maps.Graphics
 
         private static XImage GetAlphaVariant(float alpha, AbstractImage mimage)
         {
-            Image image = mimage.Image;
+            Image image = mimage.Image!;
             lock (image)
             {
                 XImage ximage;
@@ -120,10 +121,11 @@ namespace Maps.Graphics
                 int h = image.Height;
                 int key = (int)Math.Round(alpha * ALPHA_STEPS);
 
-                if (image.Tag == null || !(image.Tag is Dictionary<int, XImage>))
-                    image.Tag = new Dictionary<int, XImage>();
 
-                Dictionary<int, XImage> dict = image.Tag as Dictionary<int, XImage>;
+                Dictionary<int, XImage>? dict = image.Tag as Dictionary<int, XImage>;
+                if (dict == null)
+                    image.Tag = dict = new Dictionary<int, XImage>();
+
                 if (dict.ContainsKey(key))
                 {
                     ximage = dict[key];
@@ -213,7 +215,6 @@ namespace Maps.Graphics
             if (disposing)
             {
                 g.Dispose();
-                g = null;
             }
             disposed = true;
         }
@@ -225,4 +226,5 @@ namespace Maps.Graphics
             public State(AbstractGraphics g, XGraphicsState state) : base(g) { this.state = state; }
         }
     }
+#nullable restore
 }
