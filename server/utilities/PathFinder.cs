@@ -3,15 +3,16 @@ using System.Collections.Generic;
 
 namespace Maps.Utilities
 {
+#nullable enable
     internal static class PathFinder
     {
         // A* Algorithm
         //
         // Based on notes in _AI for Game Developers_, Bourg & Seemann,
         //     O'Reilly Media, Inc., July 2004.
-        private class Node<T> : IComparable<Node<T>>
+        private class Node<T> : IComparable<Node<T>> where T : notnull
         {
-            public Node(T entity, double cost = 0, Node<T> parent = null)
+            public Node(T entity, double cost = 0, Node<T>? parent = null)
             {
                 this.entity = entity;
                 this.cost = cost;
@@ -19,7 +20,7 @@ namespace Maps.Utilities
             }
             public T entity;
             public double cost;
-            public Node<T> parent;
+            public Node<T>? parent;
 
             public int CompareTo(Node<T> other)
             {
@@ -34,7 +35,7 @@ namespace Maps.Utilities
             int Distance(T a, T b);
         }
 
-        public static List<T> FindPath<T>(IMap<T> map, T start, T end)
+        public static List<T>? FindPath<T>(IMap<T> map, T start, T end) where T : notnull
         {
             var open = new PriorityQueue<Node<T>>();
             var openSet = new HashSet<T>();
@@ -101,4 +102,5 @@ namespace Maps.Utilities
             return null;
         }
     }
+#nullable restore
 }

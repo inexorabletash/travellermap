@@ -4,6 +4,7 @@ using System.Web;
 
 namespace Maps.HTTP
 {
+#nullable enable
     // <modules>
     //   <add name="PageFooter" type="Maps.HttpModules.PageFooter" />
     // </modules>
@@ -33,4 +34,5 @@ namespace Maps.HTTP
 
         public void Dispose() { }
     }
+#nullable restore
 }

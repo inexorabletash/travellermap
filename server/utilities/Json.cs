@@ -9,6 +9,7 @@ using System.Text;
 
 namespace Json
 {
+#nullable enable
     [AttributeUsage( AttributeTargets.All )]
     internal sealed class JsonNameAttribute : Attribute
     {
@@ -225,4 +226,5 @@ namespace Json
             return sb.ToString();
         }
     }
+#nullable restore
 }

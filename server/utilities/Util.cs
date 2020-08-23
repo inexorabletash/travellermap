@@ -10,6 +10,7 @@ using System.Text.RegularExpressions;
 
 namespace Maps.Utilities
 {
+#nullable enable
     internal static class ContentTypes
     {
         internal static class Application
@@ -95,7 +96,7 @@ namespace Maps.Utilities
             return true;
         }
 
-        public static Stream ToStream(this string str, Encoding encoding = null)
+        public static Stream ToStream(this string str, Encoding? encoding = null)
         {
             encoding = encoding ?? Encoding.UTF8;
             MemoryStream stream = new MemoryStream();
@@ -248,7 +249,7 @@ namespace Maps.Utilities
 
         public void Add(Regex r, T v) { list.Enqueue(new KeyValuePair<Regex, T>(r, v)); }
         public virtual void Add(string r, T v) { Add(new Regex(r), v); }
-        public virtual void Add(T v) { Add(new Regex("^" + Regex.Escape(v.ToString()) + "$"), v); }
+        public virtual void Add(T v) { Add(new Regex("^" + Regex.Escape(v!.ToString()) + "$"), v); }
 
         public T Match(string s) => list.FirstOrDefault(pair => pair.Key.IsMatch(s)).Value;
         public bool IsMatch(string s) => list.Any(pair => pair.Key.IsMatch(s));
@@ -262,7 +263,7 @@ namespace Maps.Utilities
         public GlobMap() { }
 
         public override void Add(string r, T v) { Add(new Glob(r), v); }
-        public override void Add(T v) { Add(new Glob(v.ToString()), v); }
+        public override void Add(T v) { Add(new Glob(v!.ToString()), v); }
     }
 
     // Don't close the underlying stream when disposed; must be disposed
@@ -358,7 +359,7 @@ namespace Maps.Utilities
             public string message;
         }
 
-        public ErrorLogger(Func<ErrorLogger.Record, bool> filter = null)
+        public ErrorLogger(Func<ErrorLogger.Record, bool>? filter = null)
         {
             this.filter = filter;
         }
@@ -387,14 +388,14 @@ namespace Maps.Utilities
         public void Hint(string message, int lineNumber, string line) { Log(Severity.Hint, message, lineNumber, line); }
 
         private List<Record> log = new List<Record>();
-        private Func<ErrorLogger.Record, bool> filter = null;
+        private Func<ErrorLogger.Record, bool>? filter = null;
 
         public bool Empty => log.Count == 0;
         public int Count => log.Count;
 
         public int CountOf(Severity sev) => log.Where(r => r.severity == sev).Count();
 
-        public void Report(TextWriter writer, Severity minSeverity, Func<ErrorLogger.Record, bool> filter = null)
+        public void Report(TextWriter writer, Severity minSeverity, Func<ErrorLogger.Record, bool>? filter = null)
         {
             foreach (var record in log)
             {
@@ -491,7 +492,7 @@ namespace Maps.Utilities
             this.size = size;
         }
 
-        public object this[string key]
+        public object? this[string key]
         {
             get
             {
@@ -503,7 +504,7 @@ namespace Maps.Utilities
                     return values[0];
 
                 string k = keys[index];
-                object v = values[index];
+                object? v = values[index];
                 keys.RemoveAt(index);
                 values.RemoveAt(index);
                 keys.Insert(0, k);
@@ -529,7 +530,7 @@ namespace Maps.Utilities
         public void Clear()
         {
             keys = new List<string>();
-            values = new List<object>();
+            values = new List<object?>();
         }
 
         public int Count => keys.Count;
@@ -537,6 +538,7 @@ namespace Maps.Utilities
 
         private int size;
         private List<string> keys = new List<string>();
-        private List<object> values = new List<object>();
+        private List<object?> values = new List<object?>();
     }
+#nullable restore
 }
