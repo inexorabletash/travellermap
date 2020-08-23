@@ -39,7 +39,7 @@ namespace Maps
                 case 'O': return 0; // Typo found in some data files
                 case 'I': return 1; // Typo found in some data files
             }
-            throw new ArgumentOutOfRangeException(nameof(c), c, "Expected eHex value");
+            throw new ParseException($"Invalid eHex digit: '{c}'");
         }
         #endregion // eHex
 

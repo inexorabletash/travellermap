@@ -323,6 +323,10 @@ namespace Maps
             #endregion
 
             #region UWP
+
+            bool customGov = BaseAllegiance == "Kk";
+            bool customLaw = BaseAllegiance == "Kk";
+
             // UWP
             ErrorIf(Atmosphere > 15,
                 $"UWP: Atm={Atmosphere} out of range; should be: 0...F");
@@ -330,9 +334,9 @@ namespace Maps
                 $"UWP: Hyd={Hydrographics} out of range; should be: 0...A");
             ErrorIf(PopulationExponent > 15,
                 $"UWP: Pop={PopulationExponent} out of range; should be: 0...F");
-            ErrorUnless(Government.InRange(PopulationExponent - 5, Math.Max(15, PopulationExponent + 5)),
+            ErrorUnless(customGov || Government.InRange(PopulationExponent - 5, Math.Max(15, PopulationExponent + 5)),
                 $"UWP: Gov={Government} out of range; should be: Pop(={PopulationExponent}) + Flux");
-            ErrorUnless(Law.InRange(Government - 5, Math.Max(18, Government + 5)),
+            ErrorUnless(customLaw || Law.InRange(Government - 5, Math.Max(18, Government + 5)),
                 $"UWP: Law={Law} out of range; should be: Gov(={Government}) + Flux");
             int tlmod =
                 (Starport == 'A' ? 6 : 0) + (Starport == 'B' ? 4 : 0) + (Starport == 'C' ? 2 : 0) + (Starport == 'X' ? -4 : 0) +
