@@ -163,13 +163,11 @@ namespace Maps.Admin
                 foreach (string table in new string[] { "sectors", "subsectors", "worlds", "labels" })
                 {
                     string sql = $"SELECT COUNT(*) FROM {table}";
-                    using (var command = new SqlCommand(sql, connection))
-                    using (var reader = command.ExecuteReader())
+                    using var command = new SqlCommand(sql, connection);
+                    using var reader = command.ExecuteReader();
+                    while (reader.Read())
                     {
-                        while (reader.Read())
-                        {
-                            Write(context.Response, $"{table}: {reader.GetInt32(0)}");
-                        }
+                        Write(context.Response, $"{table}: {reader.GetInt32(0)}");
                     }
                 }
 
@@ -177,13 +175,11 @@ namespace Maps.Admin
                     Write(context.Response, "&nbsp;");
                     Write(context.Response, "Worlds by Milieu:");
                     string sql = $"SELECT milieu, COUNT(*) FROM worlds GROUP BY milieu ORDER BY milieu";
-                    using (var command = new SqlCommand(sql, connection))
-                    using (var reader = command.ExecuteReader())
+                    using var command = new SqlCommand(sql, connection);
+                    using var reader = command.ExecuteReader();
+                    while (reader.Read())
                     {
-                        while (reader.Read())
-                        {
-                            Write(context.Response, $"{reader.GetString(0)} &mdash; {reader.GetInt32(1)}");
-                        }
+                        Write(context.Response, $"{reader.GetString(0)} &mdash; {reader.GetInt32(1)}");
                     }
                 }
             }

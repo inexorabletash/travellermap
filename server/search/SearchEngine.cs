@@ -277,13 +277,11 @@ namespace Maps.Search
                     // And shovel the data into the database en masse
                     //
                     Action<string, DataTable, int> BulkInsert = (string name, DataTable table, int batchSize) => {
-                        using (var bulk = new SqlBulkCopy(connection, SqlBulkCopyOptions.TableLock, null))
-                        {
-                            statusCallback($"Writing {table.Rows.Count} {name}...");
-                            bulk.BatchSize = batchSize;
-                            bulk.DestinationTableName = name;
-                            bulk.WriteToServer(table);
-                        }
+                        using var bulk = new SqlBulkCopy(connection, SqlBulkCopyOptions.TableLock, null);
+                        statusCallback($"Writing {table.Rows.Count} {name}...");
+                        bulk.BatchSize = batchSize;
+                        bulk.DestinationTableName = name;
+                        bulk.WriteToServer(table);
                     };
 
                     BulkInsert("sectors", dt_sectors, dt_sectors.Rows.Count);
@@ -338,18 +336,14 @@ namespace Maps.Search
                 {
                     // Note duplicated field names so the results of both queries can come out right.
                     string sql = string.Format(query_format, "TT.x, TT.y", "x, y", "sectors", where, orderBy, maxResultsPerType);
-                    using (var sqlCommand = new SqlCommand(sql, connection))
-                    {
-                        for (int i = 0; i < terms.Count; ++i)
-                            sqlCommand.Parameters.AddWithValue($"@term{i}", terms[i]);
+                    using var sqlCommand = new SqlCommand(sql, connection);
+                    for (int i = 0; i < terms.Count; ++i)
+                        sqlCommand.Parameters.AddWithValue($"@term{i}", terms[i]);
 
-                        using (var row = sqlCommand.ExecuteReader())
-                        {
-                            while (row.Read())
-                            {
-                                results.Add(new SectorResult(row.GetInt32(0), row.GetInt32(1)));
-                            }
-                        }
+                    using var row = sqlCommand.ExecuteReader();
+                    while (row.Read())
+                    {
+                        results.Add(new SectorResult(row.GetInt32(0), row.GetInt32(1)));
                     }
                 }
 
@@ -358,21 +352,17 @@ namespace Maps.Search
                 {
                     // Note duplicated field names so the results of both queries can come out right.
                     string sql = string.Format(query_format, "TT.sector_x, TT.sector_y, TT.subsector_index", "sector_x, sector_y, subsector_index", "subsectors", where, orderBy, maxResultsPerType);
-                    using (var sqlCommand = new SqlCommand(sql, connection))
+                    using var sqlCommand = new SqlCommand(sql, connection);
+                    for (int i = 0; i < terms.Count; ++i)
+                        sqlCommand.Parameters.AddWithValue($"@term{i}", terms[i]);
+
+                    using var row = sqlCommand.ExecuteReader();
+                    while (row.Read())
                     {
-                        for (int i = 0; i < terms.Count; ++i)
-                            sqlCommand.Parameters.AddWithValue($"@term{i}", terms[i]);
+                        char[] chars = new char[1];
+                        row.GetChars(2, 0, chars, 0, chars.Length);
 
-                        using (var row = sqlCommand.ExecuteReader())
-                        {
-                            while (row.Read())
-                            {
-                                char[] chars = new char[1];
-                                row.GetChars(2, 0, chars, 0, chars.Length);
-
-                                results.Add(new SubsectorResult(row.GetInt32(0), row.GetInt32(1), chars[0]));
-                            }
-                        }
+                        results.Add(new SubsectorResult(row.GetInt32(0), row.GetInt32(1), chars[0]));
                     }
                 }
 
@@ -381,17 +371,13 @@ namespace Maps.Search
                 {
                     // Note duplicated field names so the results of both queries can come out right.
                     string sql = string.Format(query_format, "TT.sector_x, TT.sector_y, TT.hex_x, TT.hex_y", "sector_x, sector_y, hex_x, hex_y", "worlds", where, orderBy, maxResultsPerType);
-                    using (var sqlCommand = new SqlCommand(sql, connection))
-                    {
-                        for (int i = 0; i < terms.Count; ++i)
-                            sqlCommand.Parameters.AddWithValue($"@term{i}", terms[i]);
+                    using var sqlCommand = new SqlCommand(sql, connection);
+                    for (int i = 0; i < terms.Count; ++i)
+                        sqlCommand.Parameters.AddWithValue($"@term{i}", terms[i]);
 
-                        using (var row = sqlCommand.ExecuteReader())
-                        {
-                            while (row.Read())
-                                results.Add(new WorldResult(row.GetInt32(0), row.GetInt32(1), (byte)row.GetInt32(2), (byte)row.GetInt32(3)));
-                        }
-                    }
+                    using var row = sqlCommand.ExecuteReader();
+                    while (row.Read())
+                        results.Add(new WorldResult(row.GetInt32(0), row.GetInt32(1), (byte)row.GetInt32(2), (byte)row.GetInt32(3)));
                 }
 
                 // Labels
@@ -399,18 +385,14 @@ namespace Maps.Search
                 {
                     // Note duplicated field names so the results of both queries can come out right.
                     string sql = string.Format(query_format, "TT.x, TT.y, TT.radius, TT.name", "x, y, radius, name", "labels", where, orderBy, maxResultsPerType);
-                    using (var sqlCommand = new SqlCommand(sql, connection))
-                    {
-                        for (int i = 0; i < terms.Count; ++i)
-                            sqlCommand.Parameters.AddWithValue($"@term{i}", terms[i]);
+                    using var sqlCommand = new SqlCommand(sql, connection);
+                    for (int i = 0; i < terms.Count; ++i)
+                        sqlCommand.Parameters.AddWithValue($"@term{i}", terms[i]);
 
-                        using (var row = sqlCommand.ExecuteReader())
-                        {
-                            while (row.Read())
-                            {
-                                results.Add(new LabelResult(row.GetString(3), new Point(row.GetInt32(0), row.GetInt32(1)), row.GetInt32(2)));
-                            }
-                        }
+                    using var row = sqlCommand.ExecuteReader();
+                    while (row.Read())
+                    {
+                        results.Add(new LabelResult(row.GetString(3), new Point(row.GetInt32(0), row.GetInt32(1)), row.GetInt32(2)));
                     }
                 }
             }
@@ -444,20 +426,16 @@ namespace Maps.Search
             if (milieu == null)
                 milieu = SectorMap.DEFAULT_MILIEU;
 
-            using (var connection = DBUtil.MakeConnection())
-            using (var sqlCommand = new SqlCommand(sql, connection))
-            {
-                sqlCommand.Parameters.AddWithValue("@x", x);
-                sqlCommand.Parameters.AddWithValue("@y", y);
-                sqlCommand.Parameters.AddWithValue("@milieu", milieu);
-                sqlCommand.Parameters.AddWithValue("@name", name);
-                using (var row = sqlCommand.ExecuteReader())
-                {
-                    if (!row.Read())
-                        return null;
-                    return new WorldResult(row.GetInt32(0), row.GetInt32(1), (byte)row.GetInt32(2), (byte)row.GetInt32(3));
-                }
-            }
+            using var connection = DBUtil.MakeConnection();
+            using var sqlCommand = new SqlCommand(sql, connection);
+            sqlCommand.Parameters.AddWithValue("@x", x);
+            sqlCommand.Parameters.AddWithValue("@y", y);
+            sqlCommand.Parameters.AddWithValue("@milieu", milieu);
+            sqlCommand.Parameters.AddWithValue("@name", name);
+            using var row = sqlCommand.ExecuteReader();
+            if (!row.Read())
+                return null;
+            return new WorldResult(row.GetInt32(0), row.GetInt32(1), (byte)row.GetInt32(2), (byte)row.GetInt32(3));
         }
 
         private static Regex SECTOR_HEX_REGEX = new Regex(@"^(?<sector>[A-Za-z0-9!' ]{3,}) (?<hex>\d{4})$",

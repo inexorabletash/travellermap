@@ -27,19 +27,17 @@ namespace Maps
         {
             if (!cache)
             {
-                using (var stream = new FileStream(Server.MapPath(name), FileMode.Open, FileAccess.Read, FileShare.Read))
+                using var stream = new FileStream(Server.MapPath(name), FileMode.Open, FileAccess.Read, FileShare.Read);
+                try
                 {
-                    try
-                    {
-                        object o = new XmlSerializer(type).Deserialize(stream);
-                        if (o.GetType() != type)
-                            throw new InvalidOperationException();
-                        return o;
-                    }
-                    catch (InvalidOperationException ex) when (ex.InnerException is System.Xml.XmlException)
-                    {
-                        throw ex.InnerException;
-                    }
+                    object o = new XmlSerializer(type).Deserialize(stream);
+                    if (o.GetType() != type)
+                        throw new InvalidOperationException();
+                    return o;
+                }
+                catch (InvalidOperationException ex) when (ex.InnerException is System.Xml.XmlException)
+                {
+                    throw ex.InnerException;
                 }
             }
 

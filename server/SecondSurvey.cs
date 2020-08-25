@@ -100,7 +100,7 @@ namespace Maps
         {
             allegiance = AllegianceCodeToBaseAllegianceCode(allegiance);
             string match = s_legacyBaseDecodeTable.Match(allegiance + "." + code);
-            return (match != default(string)) ? match : code;
+            return (match != default) ? match : code;
         }
 
         private static RegexMap<string> s_legacyBaseEncodeTable = new GlobMap<string> {
@@ -141,7 +141,7 @@ namespace Maps
         {
             allegiance = AllegianceCodeToBaseAllegianceCode(allegiance);
             string match = s_legacyBaseEncodeTable.Match(allegiance + "." + bases);
-            return (match != default(string)) ? match : bases;
+            return (match != default) ? match : bases;
         }
         #endregion // Bases
 
@@ -171,7 +171,8 @@ namespace Maps
 
             public static AllegianceDictionary FromFile(string path)
             {
-                using (var reader = File.OpenText(path)) { return Parse(reader); }
+                using var reader = File.OpenText(path);
+                return Parse(reader);
             }
 
             private static AllegianceDictionary Parse(StreamReader reader)
@@ -334,10 +335,8 @@ namespace Maps
             }
             public static SophontDictionary FromFile(string path)
             {
-                using (var reader = File.OpenText(path))
-                {
-                    return Parse(reader);
-                }
+                using var reader = File.OpenText(path);
+                return Parse(reader);
             }
 
             private static SophontDictionary Parse(StreamReader reader)
