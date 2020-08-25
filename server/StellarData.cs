@@ -537,7 +537,6 @@ namespace Maps
         private static readonly Regex STAR_REGEX = new Regex(@"\b(D|NS|PSR|BH|BD|[OBAFGKM][0-9]\x20(?:Ia|Ib|II|III|IV|V|VI))\b");
         public T5StellarData(string stellar)
         {
-            string orig = stellar;
             foreach (Match match in STAR_REGEX.Matches(stellar))
             {
                 string s = match.Value;

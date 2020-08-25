@@ -1694,16 +1694,16 @@ namespace Maps.Rendering
                         LineStyle? routeStyle = styles.overrideLineStyle ?? route.Style;
 
                         SectorStylesheet.StyleResult ssr = sector.ApplyStylesheet("route", route.Allegiance ?? route.Type ?? "Im");
-                        routeStyle = routeStyle ?? ssr.GetEnum<LineStyle>("style");
-                        routeColor = routeColor ?? ssr.GetColor("color");
-                        routeWidth = routeWidth ?? (float?)ssr.GetNumber("width") ?? 1.0f;
+                        routeStyle ??= ssr.GetEnum<LineStyle>("style");
+                        routeColor ??= ssr.GetColor("color");
+                        routeWidth ??= (float?)ssr.GetNumber("width") ?? 1.0f;
 
                         // In grayscale, convert default color and style to non-default style
                         if (styles.grayscale && !routeColor.HasValue && !routeStyle.HasValue)
                             routeStyle = LineStyle.Dashed;
 
-                        routeColor = routeColor ?? styles.microRoutes.pen.color;
-                        routeStyle = routeStyle ?? LineStyle.Solid;
+                        routeColor ??= styles.microRoutes.pen.color;
+                        routeStyle ??= LineStyle.Solid;
 
                         // Ensure color is visible
                         if (styles.grayscale || !ColorUtil.NoticeableDifference(routeColor.Value, styles.backgroundColor))
@@ -1815,8 +1815,8 @@ namespace Maps.Rendering
                             LineStyle? borderStyle = border.Style;
 
                             SectorStylesheet.StyleResult ssr = sector.ApplyStylesheet("border", border.Allegiance);
-                            borderStyle = borderStyle ?? ssr.GetEnum<LineStyle>("style") ?? LineStyle.Solid;
-                            borderColor = borderColor ?? ssr.GetColor("color") ?? styles.microBorders.pen.color;
+                            borderStyle ??= ssr.GetEnum<LineStyle>("style") ?? LineStyle.Solid;
+                            borderColor ??= ssr.GetColor("color") ?? styles.microBorders.pen.color;
 
                             if (layer == BorderLayer.Stroke && borderStyle.Value == LineStyle.None)
                                 continue;

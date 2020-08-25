@@ -54,7 +54,6 @@ namespace Maps.API
                     Width = (float)(tileSize.Width / (scale * Astrometrics.ParsecScaleX)),
                     Height = (float)(tileSize.Height / (scale * Astrometrics.ParsecScaleY))
                 };
-                DateTime dt = DateTime.Now;
 
                 Selector selector = new RectSelector(SectorMap.ForMilieu(resourceManager, GetStringOption("milieu")), resourceManager, tileRect);
                 Stylesheet styles = new Stylesheet(scale, options, style);

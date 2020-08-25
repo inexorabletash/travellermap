@@ -15,7 +15,7 @@ namespace Maps.HTTP
             : base(null, defaults, handler)
         {
             RegexOptions options = RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.ExplicitCapture;
-            if (caseInsensitive) options = options | RegexOptions.IgnoreCase;
+            if (caseInsensitive) options |= RegexOptions.IgnoreCase;
 
             regex = new Regex("^" + pattern + "$", options);
         }

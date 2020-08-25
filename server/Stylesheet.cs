@@ -638,12 +638,12 @@ namespace Maps.Rendering
 
                         showWorldDetailColors = false;
 
-                        worldDetails = worldDetails & ~WorldDetails.Starport;
-                        worldDetails = worldDetails & ~WorldDetails.Allegiance;
-                        worldDetails = worldDetails & ~WorldDetails.Bases;
-                        worldDetails = worldDetails & ~WorldDetails.GasGiant;
-                        worldDetails = worldDetails & ~WorldDetails.Highlight;
-                        worldDetails = worldDetails & ~WorldDetails.Uwp;
+                        worldDetails &= ~WorldDetails.Starport;
+                        worldDetails &= ~WorldDetails.Allegiance;
+                        worldDetails &= ~WorldDetails.Bases;
+                        worldDetails &= ~WorldDetails.GasGiant;
+                        worldDetails &= ~WorldDetails.Highlight;
+                        worldDetails &= ~WorldDetails.Uwp;
                         worlds.fontInfo.size *= 0.85f;
                         worlds.textStyle.Translation = new PointF(0, 0.25f);
 
@@ -748,7 +748,7 @@ namespace Maps.Rendering
                         // it looks very cluttered, especially amber/red zones.
                         worlds.textBackgroundStyle = TextBackgroundStyle.None;
 
-                        worldDetails = worldDetails & ~WorldDetails.Allegiance;
+                        worldDetails &= ~WorldDetails.Allegiance;
 
                         subsectorNames.fontInfo.name = FONT_NAME;
                         sectorName.fontInfo.name = FONT_NAME;
@@ -819,7 +819,7 @@ namespace Maps.Rendering
                         if (scale < CandyMinWorldNameScale)
                             worldDetails = worldDetails & ~WorldDetails.KeyNames & ~WorldDetails.AllNames;
                         if (scale < CandyMinUwpScale)
-                            worldDetails = worldDetails & ~WorldDetails.Uwp;
+                            worldDetails &= ~WorldDetails.Uwp;
 
                         amberZone.pen.color = Color.Goldenrod;
                         amberZone.pen.width = redZone.pen.width = 0.035f;
@@ -1011,7 +1011,7 @@ namespace Maps.Rendering
 
                         worlds.textStyle.Uppercase = true;
 
-                        worldDetails = worldDetails & ~WorldDetails.Allegiance;
+                        worldDetails &= ~WorldDetails.Allegiance;
 
                         subsectorNames.fontInfo.name = FONT_NAME;
                         sectorName.fontInfo.name = FONT_NAME;
@@ -1126,13 +1126,13 @@ namespace Maps.Rendering
             public PointF position;
 
             private AbstractFont? font;
-            public AbstractFont Font => font ?? (font = fontInfo.MakeFont());
+            public AbstractFont Font => font ??= fontInfo.MakeFont();
             private AbstractFont? smallFont;
-            public AbstractFont SmallFont => smallFont ?? (smallFont = smallFontInfo.MakeFont());
+            public AbstractFont SmallFont => smallFont ??= smallFontInfo.MakeFont();
             private AbstractFont mediumFont;
-            public AbstractFont MediumFont => mediumFont ?? (mediumFont = mediumFontInfo.MakeFont());
+            public AbstractFont MediumFont => mediumFont ??= mediumFontInfo.MakeFont();
             private AbstractFont? largeFont;
-            public AbstractFont LargeFont => largeFont ?? (largeFont = largeFontInfo.MakeFont());
+            public AbstractFont LargeFont => largeFont ??= largeFontInfo.MakeFont();
         }
 
 
@@ -1243,8 +1243,8 @@ namespace Maps.Rendering
 
         public void WorldColors(World world, out Color penColorOut, out Color brushColorOut)
         {
-            Color penColor = Color.Empty;
-            Color brushColor = Color.Empty;
+            Color penColor;
+            Color brushColor;
 
             if (showWorldDetailColors)
             {
@@ -1445,9 +1445,9 @@ namespace Maps.Rendering
         private Stylesheet sheet;
 
         private AbstractFont? wingdingFont;
-        public AbstractFont WingdingFont => wingdingFont ?? (wingdingFont = sheet.wingdingFont.MakeFont());
+        public AbstractFont WingdingFont => wingdingFont ??= sheet.wingdingFont.MakeFont();
         private AbstractFont? glyphFont;
-        public AbstractFont GlyphFont => glyphFont ?? (glyphFont = sheet.glyphFont.MakeFont());
+        public AbstractFont GlyphFont => glyphFont ??= sheet.glyphFont.MakeFont();
 
         #region IDisposable Support
         private bool disposed = false;

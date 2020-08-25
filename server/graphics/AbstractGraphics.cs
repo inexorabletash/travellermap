@@ -139,7 +139,7 @@ namespace Maps.Graphics
             {
                 lock (this)
                 {
-                    return ximage ?? (ximage = XImage.FromGdiPlusImage(Image));
+                    return ximage ??= XImage.FromGdiPlusImage(Image);
                 }
             }
         }

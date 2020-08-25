@@ -408,7 +408,7 @@ namespace Maps.Rendering
                     }
 
                 }
-                i = i % 6;
+                i %= 6;
                 // i is the direction to the next border hex,
                 // and when we get there, we'll have come from
                 // i + 3, so we start checking with i + 4.
@@ -555,7 +555,7 @@ namespace Maps.Rendering
                     clipPathPoints.Add(newPoint);
                     clipPathTypes.Add((byte)PathPointType.Line);
                 }
-                i = i % 6;
+                i %= 6;
 
                 // i is the direction to the next border hex,
                 // and when we get there, we'll have come from
@@ -580,10 +580,6 @@ namespace Maps.Rendering
 
     internal static class StellarRendering
     {
-        // Match a single non-degenerate star.
-        private static Regex STAR_REGEX = new Regex(@"^([OBAFGKM])([0-9]) ?(Ia|Ib|II|III|IV|V)$",
-                RegexOptions.Compiled | RegexOptions.CultureInvariant);
-
         // Additions to radius based on luminosity.
         private static IReadOnlyDictionary<string, float> LUM = new EasyInitConcurrentDictionary<string, float>
             {

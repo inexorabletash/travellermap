@@ -275,7 +275,7 @@ namespace Maps.API
                 try
                 {
                     // JPEG or PNG if not specified, based on style
-                    mimeType = mimeType ?? styles.preferredMimeType;
+                    mimeType ??= styles.preferredMimeType;
 
                     response.ContentType = mimeType;
 
@@ -333,7 +333,7 @@ namespace Maps.API
 
             protected static Sector? GetPostedSector(HttpRequest request, ErrorLogger errors)
             {
-                Sector? sector = null;
+                Sector? sector;
 
                 if (request.Files["file"] != null && request.Files["file"].ContentLength > 0)
                 {

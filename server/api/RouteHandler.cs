@@ -35,11 +35,10 @@ namespace Maps.API
                     Jump = jump;
                 }
 
-                private World? start, end;
+                private World? end;
 
                 public List<World>? FindPath(World start, World end)
                 {
-                    this.start = start;
                     this.end = end;
                     return PathFinder.FindPath<World>(this, start, end);
                 }
@@ -85,8 +84,7 @@ namespace Maps.API
                     int y = GetIntOption("y", 0);
                     WorldResult loc = SearchEngine.FindNearestWorldMatch(query, GetStringOption("milieu", SectorMap.DEFAULT_MILIEU)!, x, y) ??
                         throw new HttpError(404, "Not Found", $"Location not found: {query}");
-
-                    loc.Resolve(map, manager, out Sector? loc_sector, out World? loc_world);
+                    loc.Resolve(map, manager, out _, out World? loc_world);
                     return loc_world;
                 }
 
