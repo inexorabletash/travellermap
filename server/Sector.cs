@@ -403,7 +403,7 @@ namespace Maps
             }
         }
 
-        private ClipPath[] clipPathsCache = new ClipPath[(int)PathUtil.PathType.TypeCount];
+        private readonly ClipPath[] clipPathsCache = new ClipPath[(int)PathUtil.PathType.TypeCount];
         internal ClipPath ComputeClipPath(PathUtil.PathType type)
         {
             lock (this)
@@ -551,7 +551,7 @@ namespace Maps
 
     internal class Dotmap : Sector
     {
-        private Sector basis;
+        private readonly Sector basis;
         private WorldCollection? worlds = null;
 
         public Dotmap(Sector basis) {
@@ -747,7 +747,9 @@ namespace Maps
 
         internal LineStyle? Style { get; set; }
         [XmlAttribute("Style"), JsonIgnore]
+#pragma warning disable IDE1006 // Naming Styles
         public LineStyle _Style { get => Style ?? LineStyle.Solid; set => Style = value; }
+#pragma warning restore IDE1006 // Naming Styles
         public bool ShouldSerialize_Style() => Style.HasValue;
 
 
@@ -776,7 +778,7 @@ namespace Maps
             }
         }
 
-        private BorderPath[] borderPathsCache = new BorderPath[(int)PathUtil.PathType.TypeCount];
+        private readonly BorderPath[] borderPathsCache = new BorderPath[(int)PathUtil.PathType.TypeCount];
         internal BorderPath ComputeGraphicsPath(Sector sector, PathUtil.PathType type)
         {
             lock (this)
@@ -924,12 +926,16 @@ namespace Maps
 
         internal LineStyle? Style { get; set; }
         [XmlAttribute("Style"), JsonIgnore]
+#pragma warning disable IDE1006 // Naming Styles
         public LineStyle _Style { get => Style ?? LineStyle.Solid; set => Style = value; }
+#pragma warning restore IDE1006 // Naming Styles
         public bool ShouldSerialize_Style() => Style.HasValue;
 
         internal float? Width { get; set; }
         [XmlAttribute("Width"), JsonIgnore]
+#pragma warning disable IDE1006 // Naming Styles
         public float _Width { get => Width ?? 0; set => Width = value; }
+#pragma warning restore IDE1006 // Naming Styles
         public bool ShouldSerialize_Width() => Width.HasValue;
 
         internal Color? Color { get; set; }

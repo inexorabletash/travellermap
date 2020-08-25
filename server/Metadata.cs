@@ -30,7 +30,7 @@ namespace Maps
 
     public abstract class MetadataItem : IMetadata
     {
-        private Dictionary<string, string?> metaData = new Dictionary<string, string?>();
+        private readonly Dictionary<string, string?> metaData = new Dictionary<string, string?>();
         private string? TryGet(string key)
         {
             metaData.TryGetValue(key, out string? s);
@@ -63,7 +63,7 @@ namespace Maps
     {
         #region IMetadata Members
 
-        private Dictionary<string, string> metaData = new Dictionary<string, string>();
+        private readonly Dictionary<string, string> metaData = new Dictionary<string, string>();
         private string TryGet(string key)
         {
             metaData.TryGetValue(key, out string s);

@@ -7,7 +7,9 @@ using System.IO;
 
 namespace Maps.Graphics
 {
+#pragma warning disable IDE1006 // Naming Styles
     internal interface AbstractGraphics : IDisposable
+#pragma warning restore IDE1006 // Naming Styles
     {
         SmoothingMode SmoothingMode { get; set; }
         System.Drawing.Graphics? Graphics { get; }

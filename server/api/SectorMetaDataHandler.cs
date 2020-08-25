@@ -79,9 +79,9 @@ namespace Maps.API.Results
             this.worlds = worlds;
             dataFile = new DataFileMetadata(sector, milieu);
         }
-        private Sector sector;
-        private WorldCollection worlds;
-        private DataFileMetadata dataFile;
+        readonly private Sector sector;
+        readonly private WorldCollection worlds;
+        readonly private DataFileMetadata dataFile;
 
         [XmlAttribute]
         [System.ComponentModel.DefaultValue(false)]
@@ -147,7 +147,7 @@ namespace Maps.API.Results
                 this.sector = sector;
                 Milieu = milieu ?? sector.CanonicalMilieu;
             }
-            private Sector sector;
+            private readonly Sector sector;
 
             [XmlAttribute]
             public string Title { get => sector.DataFile?.Title ?? sector.Title; set { } }

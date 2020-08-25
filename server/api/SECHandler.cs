@@ -40,12 +40,12 @@ namespace Maps.API
                     {
                         bool hide_uwp = GetBoolOption("hide-uwp", defaultValue: false);
                         bool hide_tl = GetBoolOption("hide-tl", defaultValue: false);
-                        Func<ErrorLogger.Record, bool> filter = (ErrorLogger.Record record) =>
+                        bool filter(ErrorLogger.Record record)
                         {
                             if (hide_uwp && record.message.StartsWith("UWP")) return false;
                             if (hide_tl && record.message.StartsWith("UWP: TL")) return false;
                             return true;
-                        };
+                        }
                         errors = new ErrorLogger(filter);
                     }
 

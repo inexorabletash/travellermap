@@ -211,7 +211,7 @@ namespace Maps
         private class CodeList : IEnumerable<string>
         {
             public CodeList(string codes = "") { this.codes = codes; }
-            private string codes;
+            private readonly string codes;
 
             public IEnumerator<string> GetEnumerator()
             {
@@ -290,9 +290,9 @@ namespace Maps
         internal string LegacyAllegiance => SecondSurvey.T5AllegianceCodeToLegacyCode(Allegiance);
 
 
-        private static Regex SOPHPOP_CODE_REGEX = new Regex(@"^(....)([0-9W])$", RegexOptions.Compiled);
-        private static Regex SOPHPOP_MINOR_CODE_REGEX = new Regex(@"^\((.*)\)([0-9])?$", RegexOptions.Compiled);
-        private static Regex SOPHPOP_MAJOR_CODE_REGEX = new Regex(@"^\[(.*)\]([0-9])?$", RegexOptions.Compiled);
+        private static readonly Regex SOPHPOP_CODE_REGEX = new Regex(@"^(....)([0-9W])$", RegexOptions.Compiled);
+        private static readonly Regex SOPHPOP_MINOR_CODE_REGEX = new Regex(@"^\((.*)\)([0-9])?$", RegexOptions.Compiled);
+        private static readonly Regex SOPHPOP_MAJOR_CODE_REGEX = new Regex(@"^\[(.*)\]([0-9])?$", RegexOptions.Compiled);
 
         internal void Validate(ErrorLogger errors, int lineNumber, string line)
         {
@@ -300,10 +300,11 @@ namespace Maps
             if (UWP.Contains('?') || UWP == "XXXXXXX-X") return;
 
             #region Helpers
-            Action<string> Error = (string message) => { errors.Warning(message, lineNumber, line); };
-            Action<bool, string> ErrorIf = (bool test, string message) => { if (test) Error(message); };
-            Action<bool, string> ErrorUnless = (bool test, string message) => { if (!test) Error(message); };
-            Func<int, string, bool> Check = (int value, string hex) =>
+            void Error(string message) { errors.Warning(message, lineNumber, line); }
+            void ErrorIf(bool test, string message) { if (test) Error(message); }
+            void ErrorUnless(bool test, string message) { if (!test) Error(message); }
+
+            static bool Check(int value, string hex)
             {
                 foreach (char c in hex)
                 {
@@ -311,16 +312,16 @@ namespace Maps
                         return true;
                 }
                 return false;
-            };
+            }
 
-            Func<string, bool, bool> CC = (string code, bool calc) =>
+            bool CC(string code, bool calc)
             {
                 if (calc)
                     ErrorUnless(HasCode(code), $"Missing code: {code}");
                 else
                     ErrorUnless(!HasCode(code), $"Extraneous code: {code}");
                 return calc;
-            };
+            }
             #endregion
 
             #region UWP
@@ -352,6 +353,7 @@ namespace Maps
             #endregion
 
             #region Codes
+#pragma warning disable IDE0059 // Unnecessary assignment of a value
             // Planetary
             bool As = CC("As", Check(Size, "0") /*&& Check(Atmosphere, "0") && Check(Hydrographics, "0")*/);
             bool De = CC("De", Check(Atmosphere, "23456789") && Check(Hydrographics, "0"));
@@ -381,6 +383,7 @@ namespace Maps
             bool Po = CC("Po", Check(Atmosphere, "2345") && Check(Hydrographics, "0123"));
             bool Pr = CC("Pr", Check(Atmosphere, "68") && Check(PopulationExponent, "59"));
             bool Ri = CC("Ri", Check(Atmosphere, "68") && Check(PopulationExponent, "678"));
+#pragma warning restore IDE0059 // Unnecessary assignment of a value
 
             ErrorUnless(As == IsAs, "Internal code failure: As/IsAs definitions");
             ErrorUnless(Va == IsVa, "Internal code failure: Va/IsVa definitions");

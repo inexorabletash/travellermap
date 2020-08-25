@@ -18,10 +18,12 @@ namespace Maps.Graphics
 
         private class Element
         {
+#pragma warning disable IDE1006 // Naming Styles
             public string name { get; set; }
             public string? content;
             public Dictionary<string, string> attributes = new Dictionary<string, string>();
             public List<Element> children = new List<Element>();
+#pragma warning restore IDE1006 // Naming Styles
 
             public Element(string name) { this.name = name; }
 
@@ -145,7 +147,7 @@ namespace Maps.Graphics
         // Builds paths, using relative coordinates to reduce space.
         private class PathBuilder
         {
-            private StringBuilder b = new StringBuilder();
+            private readonly StringBuilder b = new StringBuilder();
             private float lastX = 0;
             private float lastY = 0;
             private bool used = false;
@@ -294,11 +296,11 @@ namespace Maps.Graphics
             writer.Flush();
         }
 
-        private float width;
-        private float height;
-        private Element root = new Element(ElementNames.G);
-        private Element defs = new Element(ElementNames.DEFS);
-        private Dictionary<AbstractImage, string> images = new Dictionary<AbstractImage, string>();
+        private readonly float width;
+        private readonly float height;
+        private readonly Element root = new Element(ElementNames.G);
+        private readonly Element defs = new Element(ElementNames.DEFS);
+        private readonly Dictionary<AbstractImage, string> images = new Dictionary<AbstractImage, string>();
 
         private int def_id = 0;
         private Element AddDefinition(Element element)
@@ -308,7 +310,7 @@ namespace Maps.Graphics
             return element;
         }
 
-        private Stack<Element> stack = new Stack<Element>();
+        private readonly Stack<Element> stack = new Stack<Element>();
 
         private Element Current => stack.Peek();
         private Element Open(Element element)
@@ -671,7 +673,7 @@ namespace Maps.Graphics
             PointF last = PointF.Empty;
             PointF lastd = PointF.Empty;
 
-            Func<int, PointF> deriv = (int i) =>
+            PointF deriv(int i)
             {
                 if (closed)
                 {
@@ -686,8 +688,8 @@ namespace Maps.Graphics
                     return new PointF((points[i].X - points[i - 1].X) / a, (points[i].Y - points[i - 1].Y) / a);
                 else
                     return new PointF((points[i + 1].X - points[i - 1].X) / a, (points[i + 1].Y - points[i - 1].Y) / a);
-            };
-               
+            }
+
             for (int i = 0; i < points.Length; ++i)
             {
                 PointF point = points[i];

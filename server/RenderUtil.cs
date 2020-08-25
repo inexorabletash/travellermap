@@ -63,7 +63,7 @@ namespace Maps.Rendering
         // because the glyphs are much higher quality.
         // See http://www.alanwood.net/demos/wingdings.html for a good mapping
 
-        private static IReadOnlyDictionary<char, char> DING_MAP = new EasyInitConcurrentDictionary<char, char>
+        private static readonly IReadOnlyDictionary<char, char> DING_MAP = new EasyInitConcurrentDictionary<char, char>
         {
             { '\x2666', '\x74' }, // U+2666 (BLACK DIAMOND SUIT)
             { '\x2756', '\x76' }, // U+2756 (BLACK DIAMOND MINUS WHITE X)
@@ -408,7 +408,7 @@ namespace Maps.Rendering
                     }
 
                 }
-                i = i % 6;
+                i %= 6;
                 // i is the direction to the next border hex,
                 // and when we get there, we'll have come from
                 // i + 3, so we start checking with i + 4.
@@ -503,7 +503,7 @@ namespace Maps.Rendering
             // Algorithm based on http://dotclue.org/t20/sec2pdf - J Greely rocks my world.
 
             int checkFirst = 0;
-            int checkLast = 5;
+            int checkLast;
 
             Point startHex = Point.Empty; ;
             bool startHexVisited = false;
@@ -555,7 +555,7 @@ namespace Maps.Rendering
                     clipPathPoints.Add(newPoint);
                     clipPathTypes.Add((byte)PathPointType.Line);
                 }
-                i = i % 6;
+                i %= 6;
 
                 // i is the direction to the next border hex,
                 // and when we get there, we'll have come from
@@ -580,12 +580,8 @@ namespace Maps.Rendering
 
     internal static class StellarRendering
     {
-        // Match a single non-degenerate star.
-        private static Regex STAR_REGEX = new Regex(@"^([OBAFGKM])([0-9]) ?(Ia|Ib|II|III|IV|V)$",
-                RegexOptions.Compiled | RegexOptions.CultureInvariant);
-
         // Additions to radius based on luminosity.
-        private static IReadOnlyDictionary<string, float> LUM = new EasyInitConcurrentDictionary<string, float>
+        private static readonly IReadOnlyDictionary<string, float> LUM = new EasyInitConcurrentDictionary<string, float>
             {
                 { "Ia", 7 },
                 { "Ib", 5 },
@@ -596,11 +592,11 @@ namespace Maps.Rendering
             };
 
         // Base radius for spectral class.
-        private static IReadOnlyDictionary<char, float> RAD = new EasyInitConcurrentDictionary<char, float>
+        private static readonly IReadOnlyDictionary<char, float> RAD = new EasyInitConcurrentDictionary<char, float>
             { { 'O', 4 }, { 'B', 3 }, { 'A', 2 }, { 'F', 1.5f }, { 'G', 1 }, { 'K', 0.7f }, { 'M', 0.5f } };
 
         // Maps spectral class to color.
-        private static IReadOnlyDictionary<char, Color> COLOR = new EasyInitConcurrentDictionary<char, Color> {
+        private static readonly IReadOnlyDictionary<char, Color> COLOR = new EasyInitConcurrentDictionary<char, Color> {
                 { 'O', Color.FromArgb(0x9d, 0xb4, 0xff) },
                 { 'B', Color.FromArgb(0xbb, 0xcc, 0xff) },
                 { 'A', Color.FromArgb(0xfb, 0xf8, 0xff) },
@@ -628,12 +624,12 @@ namespace Maps.Rendering
         private static float SinF(double r) => (float)Math.Sin(r);
         private static float CosF(double r) => (float)Math.Cos(r);
 
-        private static float[] dx = new float[] {
+        private static readonly float[] dx = new float[] {
                     0.0f,
                     CosF(Math.PI * 1 / 3), CosF(Math.PI * 2 / 3), CosF(Math.PI * 3 / 3),
                     CosF(Math.PI * 4 / 3), CosF(Math.PI * 5 / 3), CosF(Math.PI * 6 / 3)
         };
-        private static float[] dy = new float[] {
+        private static readonly float[] dy = new float[] {
                     0.0f,
                     SinF(Math.PI * 1 / 3), SinF(Math.PI * 2 / 3), SinF(Math.PI * 3 / 3),
                     SinF(Math.PI * 4 / 3), SinF(Math.PI * 5 / 3), SinF(Math.PI * 6 / 3)

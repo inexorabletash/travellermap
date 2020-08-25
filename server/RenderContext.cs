@@ -72,7 +72,6 @@ namespace Maps.Rendering
                 List<MapLabel> list = new List<MapLabel>();
                 using (var reader = System.IO.File.OpenText(path))
                 {
-                    Func<string, string?> nullIfEmpty = (s) => string.IsNullOrWhiteSpace(s) ? null : s;
                     var parser = new Serialization.TSVParser(reader);
                     foreach (var row in parser.Data)
                     {
@@ -128,12 +127,12 @@ namespace Maps.Rendering
             public AbstractImage riftImage;
             public ConcurrentDictionary<string, AbstractImage> worldImages;
 
-            private static object s_lock = new object();
+            private static readonly object s_lock = new object();
             private static StaticImageCache? s_instance = null;
 
             public StaticImageCache(ResourceManager resourceManager)
-            {   
-                Func<string, AbstractImage> prepare = (string urlPath) =>
+            {
+                AbstractImage prepare(string urlPath) =>
                     new AbstractImage(resourceManager.Server.MapPath("~" + urlPath), urlPath);
 
                 // Actual images are loaded lazily.
@@ -183,7 +182,9 @@ namespace Maps.Rendering
                 this.label = label;
             }
 #else
+#pragma warning disable IDE0060 // Remove unused parameter
             public Timer(string label) { }
+#pragma warning restore IDE0060 // Remove unused parameter
 #endif
         }
         #endregion
@@ -219,14 +220,15 @@ namespace Maps.Rendering
 
         private class Renderer
         {
-            private RenderContext ctx;
-            private AbstractGraphics graphics;
-            private AbstractBrush solidBrush;
+            private readonly RenderContext ctx;
+            private readonly AbstractGraphics graphics;
+            private readonly AbstractBrush solidBrush;
             private AbstractPen pen;
-            private FontCache fonts;
-            private StaticImageCache images;
+            private readonly FontCache fonts;
+            private readonly StaticImageCache images;
 
             #region Proxies
+#pragma warning disable IDE1006 // Naming Styles
             private Stylesheet styles => ctx.styles;
             private AbstractPath? ClipPath => ctx.ClipPath;
             private RectangleF tileRect => ctx.tileRect;
@@ -237,6 +239,7 @@ namespace Maps.Rendering
             private Size tileSize => ctx.tileSize;
             private AbstractMatrix worldSpaceToImageSpace => ctx.worldSpaceToImageSpace;
             private bool ClipOutsectorBorders => ctx.ClipOutsectorBorders;
+#pragma warning restore IDE1006 // Naming Styles
             #endregion
 
             public Renderer(RenderContext ctx, AbstractGraphics g, StaticImageCache images)
@@ -1362,22 +1365,20 @@ namespace Maps.Rendering
                                 }
                                 else
                                 {
-                                    AbstractImage img;
-                                    switch (world.Hydrographics)
+                                    AbstractImage img = world.Hydrographics switch
                                     {
-                                        default:
-                                        case 0x0: img = images.worldImages["Hyd0"]; break;
-                                        case 0x1: img = images.worldImages["Hyd1"]; break;
-                                        case 0x2: img = images.worldImages["Hyd2"]; break;
-                                        case 0x3: img = images.worldImages["Hyd3"]; break;
-                                        case 0x4: img = images.worldImages["Hyd4"]; break;
-                                        case 0x5: img = images.worldImages["Hyd5"]; break;
-                                        case 0x6: img = images.worldImages["Hyd6"]; break;
-                                        case 0x7: img = images.worldImages["Hyd7"]; break;
-                                        case 0x8: img = images.worldImages["Hyd8"]; break;
-                                        case 0x9: img = images.worldImages["Hyd9"]; break;
-                                        case 0xA: img = images.worldImages["HydA"]; break;
-                                    }
+                                        0x1 => images.worldImages["Hyd1"],
+                                        0x2 => images.worldImages["Hyd2"],
+                                        0x3 => images.worldImages["Hyd3"],
+                                        0x4 => images.worldImages["Hyd4"],
+                                        0x5 => images.worldImages["Hyd5"],
+                                        0x6 => images.worldImages["Hyd6"],
+                                        0x7 => images.worldImages["Hyd7"],
+                                        0x8 => images.worldImages["Hyd8"],
+                                        0x9 => images.worldImages["Hyd9"],
+                                        0xA => images.worldImages["HydA"],
+                                        _ => images.worldImages["Hyd0"],
+                                    };
                                     graphics.DrawImage(img, -imageRadius, -imageRadius, imageRadius * 2, imageRadius * 2);
                                 }
                             }
@@ -1693,16 +1694,16 @@ namespace Maps.Rendering
                         LineStyle? routeStyle = styles.overrideLineStyle ?? route.Style;
 
                         SectorStylesheet.StyleResult ssr = sector.ApplyStylesheet("route", route.Allegiance ?? route.Type ?? "Im");
-                        routeStyle = routeStyle ?? ssr.GetEnum<LineStyle>("style");
-                        routeColor = routeColor ?? ssr.GetColor("color");
-                        routeWidth = routeWidth ?? (float?)ssr.GetNumber("width") ?? 1.0f;
+                        routeStyle ??= ssr.GetEnum<LineStyle>("style");
+                        routeColor ??= ssr.GetColor("color");
+                        routeWidth ??= (float?)ssr.GetNumber("width") ?? 1.0f;
 
                         // In grayscale, convert default color and style to non-default style
                         if (styles.grayscale && !routeColor.HasValue && !routeStyle.HasValue)
                             routeStyle = LineStyle.Dashed;
 
-                        routeColor = routeColor ?? styles.microRoutes.pen.color;
-                        routeStyle = routeStyle ?? LineStyle.Solid;
+                        routeColor ??= styles.microRoutes.pen.color;
+                        routeStyle ??= LineStyle.Solid;
 
                         // Ensure color is visible
                         if (styles.grayscale || !ColorUtil.NoticeableDifference(routeColor.Value, styles.backgroundColor))
@@ -1776,7 +1777,6 @@ namespace Maps.Rendering
 
                 PathUtil.PathType borderPathType = styles.microBorderStyle == MicroBorderStyle.Square ?
                     PathUtil.PathType.Square : PathUtil.PathType.Hex;
-                RenderUtil.HexEdges(borderPathType, out float[] edgex, out float[] edgey);
 
                 AbstractBrush solidBrush = new AbstractBrush();
                 AbstractPen pen = new AbstractPen(Color.Empty);
@@ -1814,8 +1814,8 @@ namespace Maps.Rendering
                             LineStyle? borderStyle = border.Style;
 
                             SectorStylesheet.StyleResult ssr = sector.ApplyStylesheet("border", border.Allegiance);
-                            borderStyle = borderStyle ?? ssr.GetEnum<LineStyle>("style") ?? LineStyle.Solid;
-                            borderColor = borderColor ?? ssr.GetColor("color") ?? styles.microBorders.pen.color;
+                            borderStyle ??= ssr.GetEnum<LineStyle>("style") ?? LineStyle.Solid;
+                            borderColor ??= ssr.GetColor("color") ?? styles.microBorders.pen.color;
 
                             if (layer == BorderLayer.Stroke && borderStyle.Value == LineStyle.None)
                                 continue;

@@ -638,12 +638,12 @@ namespace Maps.Rendering
 
                         showWorldDetailColors = false;
 
-                        worldDetails = worldDetails & ~WorldDetails.Starport;
-                        worldDetails = worldDetails & ~WorldDetails.Allegiance;
-                        worldDetails = worldDetails & ~WorldDetails.Bases;
-                        worldDetails = worldDetails & ~WorldDetails.GasGiant;
-                        worldDetails = worldDetails & ~WorldDetails.Highlight;
-                        worldDetails = worldDetails & ~WorldDetails.Uwp;
+                        worldDetails &= ~WorldDetails.Starport;
+                        worldDetails &= ~WorldDetails.Allegiance;
+                        worldDetails &= ~WorldDetails.Bases;
+                        worldDetails &= ~WorldDetails.GasGiant;
+                        worldDetails &= ~WorldDetails.Highlight;
+                        worldDetails &= ~WorldDetails.Uwp;
                         worlds.fontInfo.size *= 0.85f;
                         worlds.textStyle.Translation = new PointF(0, 0.25f);
 
@@ -748,7 +748,7 @@ namespace Maps.Rendering
                         // it looks very cluttered, especially amber/red zones.
                         worlds.textBackgroundStyle = TextBackgroundStyle.None;
 
-                        worldDetails = worldDetails & ~WorldDetails.Allegiance;
+                        worldDetails &= ~WorldDetails.Allegiance;
 
                         subsectorNames.fontInfo.name = FONT_NAME;
                         sectorName.fontInfo.name = FONT_NAME;
@@ -819,7 +819,7 @@ namespace Maps.Rendering
                         if (scale < CandyMinWorldNameScale)
                             worldDetails = worldDetails & ~WorldDetails.KeyNames & ~WorldDetails.AllNames;
                         if (scale < CandyMinUwpScale)
-                            worldDetails = worldDetails & ~WorldDetails.Uwp;
+                            worldDetails &= ~WorldDetails.Uwp;
 
                         amberZone.pen.color = Color.Goldenrod;
                         amberZone.pen.width = redZone.pen.width = 0.035f;
@@ -1011,7 +1011,7 @@ namespace Maps.Rendering
 
                         worlds.textStyle.Uppercase = true;
 
-                        worldDetails = worldDetails & ~WorldDetails.Allegiance;
+                        worldDetails &= ~WorldDetails.Allegiance;
 
                         subsectorNames.fontInfo.name = FONT_NAME;
                         sectorName.fontInfo.name = FONT_NAME;
@@ -1126,13 +1126,13 @@ namespace Maps.Rendering
             public PointF position;
 
             private AbstractFont? font;
-            public AbstractFont Font => font ?? (font = fontInfo.MakeFont());
+            public AbstractFont Font => font ??= fontInfo.MakeFont();
             private AbstractFont? smallFont;
-            public AbstractFont SmallFont => smallFont ?? (smallFont = smallFontInfo.MakeFont());
+            public AbstractFont SmallFont => smallFont ??= smallFontInfo.MakeFont();
             private AbstractFont mediumFont;
-            public AbstractFont MediumFont => mediumFont ?? (mediumFont = mediumFontInfo.MakeFont());
+            public AbstractFont MediumFont => mediumFont ??= mediumFontInfo.MakeFont();
             private AbstractFont? largeFont;
-            public AbstractFont LargeFont => largeFont ?? (largeFont = largeFontInfo.MakeFont());
+            public AbstractFont LargeFont => largeFont ??= largeFontInfo.MakeFont();
         }
 
 
@@ -1243,9 +1243,8 @@ namespace Maps.Rendering
 
         public void WorldColors(World world, out Color penColorOut, out Color brushColorOut)
         {
-            Color penColor = Color.Empty;
-            Color brushColor = Color.Empty;
-
+            Color brushColor;
+            Color penColor;
             if (showWorldDetailColors)
             {
                 if (world.IsAg && world.IsRi)
@@ -1356,27 +1355,26 @@ namespace Maps.Rendering
         }
         public bool Matches(World world)
         {
-            int v;
-            switch (field)
+            var v = field switch
             {
-                case Field.Starport: v = "XEDCBA".IndexOf(world.Starport); break;
-                case Field.Size: v = world.Size; break;
-                case Field.Atmosphere: v = world.Atmosphere; break;
-                case Field.Hydrosphere: v = world.Hydrographics; break;
-                case Field.Population: v = world.PopulationExponent; break;
-                case Field.Government: v = world.Government; break;
-                case Field.Law: v = world.Law; break;
-                case Field.Tech: v = world.TechLevel; break;
-                case Field.Importance: v = SecondSurvey.Importance(world); break;
-                default: throw new ApplicationException("Invalid pattern");
-            }
+                Field.Starport => "XEDCBA".IndexOf(world.Starport),
+                Field.Size => world.Size,
+                Field.Atmosphere => world.Atmosphere,
+                Field.Hydrosphere => world.Hydrographics,
+                Field.Population => world.PopulationExponent,
+                Field.Government => world.Government,
+                Field.Law => world.Law,
+                Field.Tech => world.TechLevel,
+                Field.Importance => SecondSurvey.Importance(world),
+                _ => throw new ApplicationException("Invalid pattern"),
+            };
             return InRange(v);
         }
 
-        private static Regex HIGHLIGHT_BASIC_REGEX = new Regex(@"^([A-Za-z]+)(-?\d+)$", RegexOptions.Compiled);
-        private static Regex HIGHLIGHT_MIN_REGEX = new Regex(@"^([A-Za-z]+)(-?\d+)\+$", RegexOptions.Compiled);
-        private static Regex HIGHLIGHT_MAX_REGEX = new Regex(@"^([A-Za-z]+)(-?\d+)\-$", RegexOptions.Compiled);
-        private static Regex HIGHLIGHT_RANGE_REGEX = new Regex(@"^([A-Za-z]+)(-?\d+)\-(-?\d+)$", RegexOptions.Compiled);
+        private static readonly Regex HIGHLIGHT_BASIC_REGEX = new Regex(@"^([A-Za-z]+)(-?\d+)$", RegexOptions.Compiled);
+        private static readonly Regex HIGHLIGHT_MIN_REGEX = new Regex(@"^([A-Za-z]+)(-?\d+)\+$", RegexOptions.Compiled);
+        private static readonly Regex HIGHLIGHT_MAX_REGEX = new Regex(@"^([A-Za-z]+)(-?\d+)\-$", RegexOptions.Compiled);
+        private static readonly Regex HIGHLIGHT_RANGE_REGEX = new Regex(@"^([A-Za-z]+)(-?\d+)\-(-?\d+)$", RegexOptions.Compiled);
 
         private static bool ParseField(string s, ref Field f)
         {
@@ -1443,12 +1441,12 @@ namespace Maps.Rendering
         {
             this.sheet = sheet;
         }
-        private Stylesheet sheet;
+        private readonly Stylesheet sheet;
 
         private AbstractFont? wingdingFont;
-        public AbstractFont WingdingFont => wingdingFont ?? (wingdingFont = sheet.wingdingFont.MakeFont());
+        public AbstractFont WingdingFont => wingdingFont ??= sheet.wingdingFont.MakeFont();
         private AbstractFont? glyphFont;
-        public AbstractFont GlyphFont => glyphFont ?? (glyphFont = sheet.glyphFont.MakeFont());
+        public AbstractFont GlyphFont => glyphFont ??= sheet.glyphFont.MakeFont();
 
         #region IDisposable Support
         private bool disposed = false;
