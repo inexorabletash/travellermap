@@ -1,3 +1,4 @@
+#nullable enable
 using Maps.Utilities;
 using System;
 using System.IO;
@@ -9,7 +10,7 @@ namespace Maps
 {
     internal interface IDeserializable
     {
-        void Deserialize(Stream stream, string mediaType, ErrorLogger errors = null);
+        void Deserialize(Stream stream, string mediaType, ErrorLogger? errors = null);
     }
 
     internal class ResourceManager
@@ -44,7 +45,7 @@ namespace Maps
 
             lock (Cache)
             {
-                object o = Cache[name];
+                object? o = Cache[name];
 
                 if (o == null)
                 {
@@ -59,7 +60,7 @@ namespace Maps
 
         public object GetDeserializableFileObject(string name, Type type, bool cacheResults, string mediaType)
         {
-            object obj = null;
+            object? obj = null;
 
             // PERF: Whole cache is locked while loading a single item. Should use finer granularity
             lock (Cache)
