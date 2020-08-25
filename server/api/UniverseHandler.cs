@@ -74,7 +74,7 @@ namespace Maps.API.Results
             private SectorResult() { }
 
             public SectorResult(Sector sector) { this.sector = sector; }
-            private readonly Sector sector;
+            private Sector sector;
 
             public int X { get => sector.X; set { } }
             public int Y { get => sector.Y; set { } }

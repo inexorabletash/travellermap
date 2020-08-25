@@ -24,7 +24,7 @@ namespace Maps
         private static readonly Regex STELLAR_REGEX = new Regex(@"([OBAFGKM][0-9] ?(?:Ia|Ib|II|III|IV|V|VI|VII|D)|D|NS|PSR|BH|BD)",
             RegexOptions.Compiled | RegexOptions.CultureInvariant);
 
-        private static readonly Regex STAR_REGEX = new Regex(@"^([OBAFGKM])([0-9]) ?(Ia|Ib|II|III|IV|V|VI)$",
+        private static Regex STAR_REGEX = new Regex(@"^([OBAFGKM])([0-9]) ?(Ia|Ib|II|III|IV|V|VI)$",
                 RegexOptions.Compiled | RegexOptions.CultureInvariant);
 
         internal static IEnumerable<Star> Parse(string stellar)
@@ -483,7 +483,7 @@ namespace Maps
 
         private class SeekableStringReader : SeekableReader
         {
-            private readonly string s;
+            private string s;
 
             public SeekableStringReader(string s)
             {
@@ -537,6 +537,7 @@ namespace Maps
         private static readonly Regex STAR_REGEX = new Regex(@"\b(D|NS|PSR|BH|BD|[OBAFGKM][0-9]\x20(?:Ia|Ib|II|III|IV|V|VI))\b");
         public T5StellarData(string stellar)
         {
+            string orig = stellar;
             foreach (Match match in STAR_REGEX.Matches(stellar))
             {
                 string s = match.Value;
@@ -552,7 +553,7 @@ namespace Maps
             }
         }
 
-        private readonly List<Star> stars = new List<Star>();
+        private List<Star> stars = new List<Star>();
 
         public bool IsValid()
         {

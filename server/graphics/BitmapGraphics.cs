@@ -8,11 +8,9 @@ namespace Maps.Graphics
 {
     internal class BitmapGraphics : AbstractGraphics
     {
-#pragma warning disable IDE1006 // Naming Styles
         private System.Drawing.Graphics g { get; }
         private SolidBrush brush { get; }
         private Pen pen { get; }
-#pragma warning restore IDE1006 // Naming Styles
 
         public BitmapGraphics(System.Drawing.Graphics graphics)
         {

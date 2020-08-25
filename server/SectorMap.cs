@@ -31,7 +31,7 @@ namespace Maps
 
     internal class SectorMap
     {
-        private static readonly object s_lock = new object();
+        private static object s_lock = new object();
 
         /// <summary>
         /// Singleton - initialized once and retained for the life of the application.
@@ -57,8 +57,8 @@ namespace Maps
             public MilieuMap(string name) { Name = name; }
             public string Name { get; }
 
-            private readonly ConcurrentDictionary<string, Sector> nameMap = new ConcurrentDictionary<string, Sector>(StringComparer.InvariantCultureIgnoreCase);
-            private readonly ConcurrentDictionary<Point, Sector> locationMap = new ConcurrentDictionary<Point, Sector>();
+            private ConcurrentDictionary<string, Sector> nameMap = new ConcurrentDictionary<string, Sector>(StringComparer.InvariantCultureIgnoreCase);
+            private ConcurrentDictionary<Point, Sector> locationMap = new ConcurrentDictionary<Point, Sector>();
 
             public Sector FromName(string name)
             {
@@ -103,7 +103,7 @@ namespace Maps
         /// <summary>
         /// Holds all milieu, keyed by name (e.g. "M0").
         /// </summary>
-        private readonly ConcurrentDictionary<string, MilieuMap> milieux 
+        private ConcurrentDictionary<string, MilieuMap> milieux 
             = new ConcurrentDictionary<string, MilieuMap>(StringComparer.InvariantCultureIgnoreCase);
 
         private MilieuMap GetMilieuMap(string name) => milieux.GetOrAdd(name, n => new MilieuMap(n));
@@ -114,7 +114,8 @@ namespace Maps
             // Load all sectors from all metafiles.
             foreach (var metafile in metafiles)
             {
-                if (!(resourceManager.GetXmlFileObject(metafile.filename, typeof(SectorCollection), cache: false) is SectorCollection collection))
+                SectorCollection? collection = resourceManager.GetXmlFileObject(metafile.filename, typeof(SectorCollection), cache: false) as SectorCollection;
+                if (collection == null)
                     throw new ApplicationException($"Invalid file: {metafile.filename}");
 
                 foreach (var sector in collection.Sectors)
@@ -130,7 +131,8 @@ namespace Maps
             {
                 if (sector.MetadataFile != null)
                 {
-                    if (!(resourceManager.GetXmlFileObject(sector.MetadataFile, typeof(Sector), cache: false) is Sector metadata))
+                    Sector? metadata = resourceManager.GetXmlFileObject(sector.MetadataFile, typeof(Sector), cache: false) as Sector;
+                    if (metadata == null)
                         throw new ApplicationException($"Invalid file: {sector.MetadataFile}");
 
                     metadata.AdjustRelativePaths(sector.MetadataFile);
@@ -214,8 +216,8 @@ namespace Maps
         /// </summary>
         public class Milieu
         {
-            private readonly SectorMap map;
-            private readonly string? milieu;
+            private SectorMap map;
+            private string? milieu;
             public Milieu(SectorMap map, string? milieu)
             {
                 this.map = map;

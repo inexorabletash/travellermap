@@ -29,7 +29,7 @@ namespace Maps
 
         public bool IsUserData { get; }
 
-        private readonly World[,] worlds = new World[Astrometrics.SectorWidth, Astrometrics.SectorHeight];
+        private World[,] worlds = new World[Astrometrics.SectorWidth, Astrometrics.SectorHeight];
         public World this[int x, int y]
         {
             get
@@ -70,7 +70,7 @@ namespace Maps
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
-        private readonly ErrorLogger? errors = null;
+        private ErrorLogger? errors = null;
         public ErrorLogger? ErrorList => errors;
         public void Serialize(TextWriter writer, string? mediaType, SectorSerializeOptions options)
         {

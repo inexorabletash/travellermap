@@ -13,9 +13,9 @@ namespace Maps.Graphics
 {
     internal class PdfSharpGraphics : AbstractGraphics
     {
-        private readonly XGraphics g;
-        private readonly XSolidBrush brush;
-        private readonly XPen pen;
+        private XGraphics g;
+        private XSolidBrush brush;
+        private XPen pen;
 
         public PdfSharpGraphics(XGraphics g) { this.g = g;
             brush = new XSolidBrush();
@@ -44,7 +44,7 @@ namespace Maps.Graphics
         }
         private void Apply(AbstractPen pen, AbstractBrush brush) { Apply(pen); Apply(brush); }
 
-        private readonly Dictionary<Font, XFont> fontMap = new Dictionary<Font, XFont>();
+        private Dictionary<Font, XFont> fontMap = new Dictionary<Font, XFont>();
         private XFont Convert(Font font)
         {
             if (fontMap.ContainsKey(font))
@@ -122,7 +122,8 @@ namespace Maps.Graphics
                 int key = (int)Math.Round(alpha * ALPHA_STEPS);
 
 
-                if (!(image.Tag is Dictionary<int, XImage> dict))
+                Dictionary<int, XImage>? dict = image.Tag as Dictionary<int, XImage>;
+                if (dict == null)
                     image.Tag = dict = new Dictionary<int, XImage>();
 
                 if (dict.ContainsKey(key))

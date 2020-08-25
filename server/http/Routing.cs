@@ -15,7 +15,7 @@ namespace Maps.HTTP
             : base(null, defaults, handler)
         {
             RegexOptions options = RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.ExplicitCapture;
-            if (caseInsensitive) options |= RegexOptions.IgnoreCase;
+            if (caseInsensitive) options = options | RegexOptions.IgnoreCase;
 
             regex = new Regex("^" + pattern + "$", options);
         }
@@ -73,7 +73,7 @@ namespace Maps.HTTP
 
     internal class RedirectRouteHandler : IRouteHandler
     {
-        private readonly Regex replacer = new Regex(@"{(.*?)}", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        private Regex replacer = new Regex(@"{(.*?)}", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
         private readonly string pattern;
         private readonly int statusCode;

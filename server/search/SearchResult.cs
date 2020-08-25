@@ -37,6 +37,7 @@ namespace Maps.Search
             if (sectorMap == null)
                 throw new ArgumentNullException(nameof(sectorMap));
 
+            sector = null;
             world = null;
 
             sector = sectorMap.FromLocation(Sector.X, Sector.Y);
@@ -78,6 +79,7 @@ namespace Maps.Search
             if (sectorMap == null)
                 throw new ArgumentNullException(nameof(sectorMap));
 
+            sector = null;
             subsector = null;
 
             sector = sectorMap.FromLocation(SectorLocation.X, SectorLocation.Y);

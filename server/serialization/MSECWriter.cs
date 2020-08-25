@@ -21,8 +21,8 @@ namespace Maps.Serialization
 
         private class Serializer
         {
-            private readonly Sector sector;
-            private readonly TextWriter writer;
+            private Sector sector;
+            private TextWriter writer;
 
             public Serializer(Sector sector, TextWriter writer)
             {

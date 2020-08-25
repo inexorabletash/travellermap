@@ -58,8 +58,8 @@ namespace Maps
 
     internal class SectorSelector : Selector
     {
-        readonly Sector sector;
-        readonly ResourceManager resourceManager;
+        Sector sector;
+        ResourceManager resourceManager;
 
         public SectorSelector(ResourceManager resourceManager, Sector sector)
         {
@@ -76,9 +76,9 @@ namespace Maps
 
     internal class SubsectorSelector : Selector
     {
-        readonly Sector sector;
-        readonly int index;
-        readonly ResourceManager resourceManager;
+        Sector sector;
+        int index;
+        ResourceManager resourceManager;
 
         public SubsectorSelector(ResourceManager resourceManager, Sector sector, int index)
         {
@@ -121,9 +121,9 @@ namespace Maps
 
     internal class QuadrantSelector : Selector
     {
-        readonly Sector sector;
-        readonly int index;
-        readonly ResourceManager resourceManager;
+        Sector sector;
+        int index;
+        ResourceManager resourceManager;
 
         public QuadrantSelector(ResourceManager resourceManager, Sector sector, int index)
         {
@@ -166,9 +166,9 @@ namespace Maps
 
     internal class RectSelector : Selector
     {
-        readonly SectorMap.Milieu map;
-        readonly ResourceManager resourceManager;
-        readonly private RectangleF rect;
+        SectorMap.Milieu map;
+        ResourceManager resourceManager;
+        private RectangleF rect = RectangleF.Empty;
 
         public RectSelector(SectorMap.Milieu map, ResourceManager resourceManager, RectangleF rect, bool slop = true)
         {
@@ -268,10 +268,10 @@ namespace Maps
 
     internal class HexSelector : Selector
     {
-        readonly SectorMap.Milieu map;
-        readonly ResourceManager resourceManager;
-        readonly private Location location;
-        readonly private int jump;
+        SectorMap.Milieu map;
+        ResourceManager resourceManager;
+        private Location location;
+        private int jump;
 
         public HexSelector(SectorMap.Milieu map, ResourceManager resourceManager, Location location, int jump)
         {
@@ -364,10 +364,10 @@ namespace Maps
 
     internal class HexSectorSelector : Selector
     {
-        readonly Sector sector;
-        readonly ResourceManager resourceManager;
-        readonly Hex coords;
-        readonly int jump;
+        Sector sector;
+        ResourceManager resourceManager;
+        Hex coords;
+        int jump;
 
         public HexSectorSelector(ResourceManager resourceManager, Sector sector, Hex coords, int jump)
         {
