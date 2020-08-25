@@ -10,18 +10,18 @@ using System.Text;
 
 namespace Json
 {
-    [AttributeUsage( AttributeTargets.All )]
+    [AttributeUsage(AttributeTargets.All)]
     internal sealed class JsonNameAttribute : Attribute
     {
         public string Name { get; }
 
-        public JsonNameAttribute( string name )
+        public JsonNameAttribute(string name)
         {
             Name = name;
         }
     }
 
-    [AttributeUsage( AttributeTargets.All )]
+    [AttributeUsage(AttributeTargets.All)]
     internal sealed class JsonIgnoreAttribute : Attribute
     {
     }
@@ -40,23 +40,23 @@ namespace Json
     internal class JsonSerializer
     {
         public bool SerializeCollectionsAsArrays { get; set; }
-        
-        public void Serialize( Stream stream, object item )
+
+        public void Serialize(Stream stream, object item)
         {
             using var sw = new StreamWriter(stream, new UTF8Encoding(encoderShouldEmitUTF8Identifier: false));
             Serialize(sw, item);
             sw.Flush();
         }
 
-        public void Serialize( TextWriter writer, object item )
+        public void Serialize(TextWriter writer, object item)
         {
             if (SerializeCollectionsAsArrays && item is IEnumerable enumerable)
-                SerializeArray( writer, enumerable );
+                SerializeArray(writer, enumerable);
             else
-                SerializeValue( writer, item );
+                SerializeValue(writer, item);
         }
 
-        private static string GetName( object item ) => item.GetType().GetCustomAttributes(typeof(JsonNameAttribute), inherit: true)
+        private static string GetName(object item) => item.GetType().GetCustomAttributes(typeof(JsonNameAttribute), inherit: true)
             .OfType<JsonNameAttribute>().Select(jn => jn.Name).FirstOrDefault();
 
         private static string GetName(PropertyInfo pi)
@@ -70,17 +70,17 @@ namespace Json
 
         private static bool Ignore(PropertyInfo info) => info.GetCustomAttributes(typeof(JsonIgnoreAttribute), inherit: true).Any();
 
-        private void SerializeObject( TextWriter writer, object item )
+        private void SerializeObject(TextWriter writer, object item)
         {
-            string name = GetName( item );
-            if( name != null )
+            string name = GetName(item);
+            if (name != null)
             {
-                writer.Write( JsonConstants.StartObject );
-                writer.Write( Enquote( name ) );
-                writer.Write( JsonConstants.NameSeparator );
+                writer.Write(JsonConstants.StartObject);
+                writer.Write(Enquote(name));
+                writer.Write(JsonConstants.NameSeparator);
             }
 
-            writer.Write( JsonConstants.StartObject );
+            writer.Write(JsonConstants.StartObject);
             bool first = true;
 
             foreach (PropertyInfo pi in item.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public)
@@ -103,37 +103,37 @@ namespace Json
                 }
 
             }
-            writer.Write( JsonConstants.EndObject );
+            writer.Write(JsonConstants.EndObject);
 
-            if( name != null )
-                writer.Write( JsonConstants.EndObject );
+            if (name != null)
+                writer.Write(JsonConstants.EndObject);
         }
 
-        private void SerializeArray( TextWriter writer, IEnumerable enumerable )
+        private void SerializeArray(TextWriter writer, IEnumerable enumerable)
         {
-            string name = GetName( enumerable );
-            if( name != null )
+            string name = GetName(enumerable);
+            if (name != null)
             {
-                writer.Write( JsonConstants.StartObject );
-                writer.Write( Enquote( name ) );
-                writer.Write( JsonConstants.NameSeparator );
+                writer.Write(JsonConstants.StartObject);
+                writer.Write(Enquote(name));
+                writer.Write(JsonConstants.NameSeparator);
             }
 
-            writer.Write( JsonConstants.StartArray );
+            writer.Write(JsonConstants.StartArray);
             bool first = true;
-            foreach( object o in enumerable )
+            foreach (object o in enumerable)
             {
-                if( !first )
-                    writer.Write( JsonConstants.FieldDelimiter );
+                if (!first)
+                    writer.Write(JsonConstants.FieldDelimiter);
                 else
                     first = false;
 
-                SerializeValue( writer, o );
+                SerializeValue(writer, o);
             }
-            writer.Write( JsonConstants.EndArray );
+            writer.Write(JsonConstants.EndArray);
 
-            if( name != null )
-                writer.Write( JsonConstants.EndObject );
+            if (name != null)
+                writer.Write(JsonConstants.EndObject);
         }
 
         private void SerializeValue(TextWriter writer, object o)

@@ -551,7 +551,7 @@ namespace Maps
         }
 
         private string? routes = null;
-        [XmlIgnore,JsonIgnore]
+        [XmlIgnore, JsonIgnore]
         public string? Routes
         {
             get

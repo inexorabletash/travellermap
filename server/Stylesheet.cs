@@ -215,7 +215,7 @@ namespace Maps.Rendering
     {
         public const string DEFAULT_FONT = "Arial";
 
-        private const float SectorGridMinScale = 1/2f; // Below this, no sector grid is shown
+        private const float SectorGridMinScale = 1 / 2f; // Below this, no sector grid is shown
         private const float SectorGridFullScale = 4; // Above this, sector grid opaque
         private const float SectorNameMinScale = 1;
         private const float SectorNameAllSelectedScale = 4; // At this point, "Selected" == "All"
@@ -271,9 +271,9 @@ namespace Maps.Rendering
 
             t5AllegianceCodes = scale >= T5AllegianceCodeMinScale;
 
-            riftOpacity = ScaleInterpolate(0f, 0.85f, scale, 1/4f, 4f);
+            riftOpacity = ScaleInterpolate(0f, 0.85f, scale, 1 / 4f, 4f);
 
-            deepBackgroundOpacity = ScaleInterpolate(1f, 0f, scale, 1/8f, 2f);
+            deepBackgroundOpacity = ScaleInterpolate(1f, 0f, scale, 1 / 8f, 2f);
 
             macroRoutes.visible = (scale >= MacroRouteMinScale) && (scale <= MacroRouteMaxScale);
             macroNames.visible = (scale >= MacroLabelMinScale) && (scale <= MacroLabelMaxScale);
@@ -285,7 +285,7 @@ namespace Maps.Rendering
                 ? HexStyle.Square
                 : HexStyle.Hex;
             microBorderStyle = hexStyle == HexStyle.Square ? MicroBorderStyle.Square : MicroBorderStyle.Hex;
-            
+
             macroBorders.visible = (scale >= MacroBorderMinScale) && (scale < MicroBorderMinScale) && ((options & MapOptions.BordersMask) != 0);
             microBorders.visible = (scale >= MicroBorderMinScale) && ((options & MapOptions.BordersMask) != 0);
             fillMicroBorders = microBorders.visible && options.HasFlag(MapOptions.FilledBorders);
@@ -431,7 +431,7 @@ namespace Maps.Rendering
             worlds.textStyle.Uppercase = false;
 
             hexNumber.position = new PointF(0, -0.5f);
-    
+
             showNebulaBackground = false;
             showGalaxyBackground = deepBackgroundOpacity > 0.0f;
             useWorldImages = false;
@@ -478,7 +478,7 @@ namespace Maps.Rendering
             anomaly.content = "\u2316"; // POSITION INDICATOR
             anomaly.fontInfo = new FontInfo("Segoe UI Symbol", 0.6f);
 
-            var layers = new List<LayerId> 
+            var layers = new List<LayerId>
             {
                 //------------------------------------------------------------
                 // Background
@@ -608,10 +608,10 @@ namespace Maps.Rendering
                         amberZone.pen.width = onePixel * 2;
                         redZone.pen.color = Color.Empty;
                         redZone.fillColor = Color.FromArgb(0x80, inkColor);
-                        
+
                         macroBorders.pen.color = inkColor;
                         macroRoutes.pen.color = inkColor;
-                        
+
                         microBorders.pen.color = inkColor;
                         microBorders.pen.width = onePixel * 2;
                         microBorders.fontInfo.size *= 0.6f;
@@ -1379,7 +1379,7 @@ namespace Maps.Rendering
 
         private static bool ParseField(string s, ref Field f)
         {
-            switch(s.ToLowerInvariant())
+            switch (s.ToLowerInvariant())
             {
                 case "st": f = Field.Starport; return true;
                 case "s": f = Field.Size; return true;

@@ -39,7 +39,7 @@ namespace Maps.Search
 
         private static readonly object s_lock = new object();
 
-        private static string SanifyLabel(string s)=> Regex.Replace(s.Trim(), @"\s+", " ");
+        private static string SanifyLabel(string s) => Regex.Replace(s.Trim(), @"\s+", " ");
 
         private static readonly string[] SECTORS_COLUMNS = {
             "milieu nvarchar(12) NULL",
@@ -133,7 +133,7 @@ namespace Maps.Search
                             continue;
 
                         // Apply suffix to borders/labels so that alternate versions are not merged.
-                        string suffix = sector.Tags.Contains("Apocryphal") ? " (Apocryphal)" : 
+                        string suffix = sector.Tags.Contains("Apocryphal") ? " (Apocryphal)" :
                             sector.Tags.Contains("Alternate") ? " (Alternate)" : "";
 
                         foreach (Name name in sector.Names)
@@ -191,10 +191,10 @@ namespace Maps.Search
                                     sector.CanonicalMilieu,
                                     world.Coordinates.X,
                                     world.Coordinates.Y,
-                                    sector.X, 
-                                    sector.Y, 
-                                    world.X, 
-                                    world.Y, 
+                                    sector.X,
+                                    sector.Y,
+                                    world.X,
+                                    world.Y,
                                     string.IsNullOrEmpty(world.Name) ? (object)DBNull.Value : (object)world.Name,
                                     world.UWP,
                                     world.Remarks,
@@ -401,14 +401,14 @@ namespace Maps.Search
             return results;
         }
 
-        private static readonly string[] OPS = { 
-                                                   "uwp:", 
-                                                   "pbg:", 
-                                                   "zone:", 
-                                                   "alleg:", 
+        private static readonly string[] OPS = {
+                                                   "uwp:",
+                                                   "pbg:",
+                                                   "zone:",
+                                                   "alleg:",
                                                    "remark:",
-                                                   "exact:", 
-                                                   "like:", 
+                                                   "exact:",
+                                                   "like:",
                                                    "in:"
                                                };
         private static readonly Regex RE_TERMS = new Regex("(" + string.Join("|", OPS) + ")?(\"[^\"]+\"|\\S+)",

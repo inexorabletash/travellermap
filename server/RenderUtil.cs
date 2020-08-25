@@ -7,7 +7,6 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Text;
 using System.Linq;
-using System.Text.RegularExpressions;
 
 namespace Maps.Rendering
 {
@@ -296,7 +295,7 @@ namespace Maps.Rendering
             { "*.T", Glyph.Terminus }, // Terminus 
         };
 
-        public static Glyph FromBaseCode(string allegiance, char code) =>  s_baseGlyphTable.Match(allegiance + "." + code);
+        public static Glyph FromBaseCode(string allegiance, char code) => s_baseGlyphTable.Match(allegiance + "." + code);
     }
 
     // BorderPath is a render-ready representation of a Border.

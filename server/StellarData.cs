@@ -31,7 +31,7 @@ namespace Maps
         {
             foreach (Match m in STELLAR_REGEX.Matches(stellar))
             {
-                if (m.Value == "D" || m.Value == "NS" || m.Value == "PSR" || m.Value == "BH" || m.Value == "BD" )
+                if (m.Value == "D" || m.Value == "NS" || m.Value == "PSR" || m.Value == "BH" || m.Value == "BD")
                 {
                     yield return new Star() { classification = m.Value };
                 }
@@ -289,7 +289,7 @@ namespace Maps
             public string ToString(OutputFormat format)
             {
                 string s = Core?.ToString(format) ?? "";
-                foreach (Companion c in Companions)                
+                foreach (Companion c in Companions)
                     s += " " + c.ToString(format);
                 return s;
             }
@@ -347,7 +347,7 @@ namespace Maps
             private static readonly string[] WHITEDWARF_SIZE = { "D" };
             private static readonly string[] WHITEDWARF_TYPES = { "DB", "DA", "DF", "DG", "DK", "DM", "D" };
             private static readonly string[] OTHER_TYPES = { "NS", "PSR", "BH", "BD", "Un" };
-            
+
             public static bool Parse(SeekableReader r, out Star? star)
             {
                 string? m;
@@ -558,7 +558,8 @@ namespace Maps
         {
             for (int i = 1; i < stars.Count(); ++i)
             {
-                if (!stars[0].IsBiggerThanOrSame(stars[i])) {
+                if (!stars[0].IsBiggerThanOrSame(stars[i]))
+                {
                     return false;
                 }
             }

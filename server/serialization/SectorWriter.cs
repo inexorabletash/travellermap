@@ -136,7 +136,7 @@ namespace Maps.Serialization
                 };
                 if (options.includeRoutes)
                     row.Add(world.Routes ?? "");
-                formatter.AddRow(row); 
+                formatter.AddRow(row);
             }
             formatter.Serialize(writer, options.includeHeader);
         }

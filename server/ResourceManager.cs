@@ -89,7 +89,7 @@ namespace Maps
 
             if (obj.GetType() != type)
                 throw new InvalidOperationException("Object is of the wrong type.");
-            
+
             return obj;
         }
     }

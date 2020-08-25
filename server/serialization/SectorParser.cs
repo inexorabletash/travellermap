@@ -246,12 +246,12 @@ namespace Maps.Serialization
                 {
                     if (!options.HasFlag(CheckOptions.Warning))
                     {
-                        errors?.Error($"Unexpected value for {key}: '{dict[key]}'{message??""}", lineNumber, line);
+                        errors?.Error($"Unexpected value for {key}: '{dict[key]}'{message ?? ""}", lineNumber, line);
                         hadError = true;
                     }
                     else
                     {
-                        errors?.Warning($"Unexpected value for {key}: '{dict[key]}'{message??""}", lineNumber, line);
+                        errors?.Warning($"Unexpected value for {key}: '{dict[key]}'{message ?? ""}", lineNumber, line);
                     }
                 }
 
@@ -281,7 +281,7 @@ namespace Maps.Serialization
                     {
                         if (!options.HasFlag(CheckOptions.Warning))
                         {
-                            errors?.Error($"Unexpected value for {key}: '{value}'{message??""}", lineNumber, line);
+                            errors?.Error($"Unexpected value for {key}: '{value}'{message ?? ""}", lineNumber, line);
                             hadError = true;
                         }
                         else
@@ -313,7 +313,7 @@ namespace Maps.Serialization
                     Hex = checker.Check("Hex", HEX_REGEX) ?? "",
                     Name = checker.Check("Name") ?? "",
                     UWP = checker.Check("UWP", UWP_REGEX) ?? "",
-                    Remarks = checker.Check(new string[] { "Remarks", "Trade Codes", "Comments" },options: CheckOptions.EmptyIfDash) ?? "",
+                    Remarks = checker.Check(new string[] { "Remarks", "Trade Codes", "Comments" }, options: CheckOptions.EmptyIfDash) ?? "",
                     Importance = checker.Check(new string[] { "{Ix}", "{ Ix }", "Ix" }, options: CheckOptions.Optional),
                     Economic = checker.Check(new string[] { "(Ex)", "( Ex )", "Ex" }, options: CheckOptions.Optional),
                     Cultural = checker.Check(new string[] { "[Cx]", "[ Cx ]", "Cx" }, options: CheckOptions.Optional),

@@ -103,7 +103,7 @@ namespace Maps
         /// <summary>
         /// Holds all milieu, keyed by name (e.g. "M0").
         /// </summary>
-        private ConcurrentDictionary<string, MilieuMap> milieux 
+        private ConcurrentDictionary<string, MilieuMap> milieux
             = new ConcurrentDictionary<string, MilieuMap>(StringComparer.InvariantCultureIgnoreCase);
 
         private MilieuMap GetMilieuMap(string name) => milieux.GetOrAdd(name, n => new MilieuMap(n));
@@ -158,7 +158,7 @@ namespace Maps
                         new SectorMetafileEntry(@"~/res/Sectors/M1105/DeepnightRevelation.xml", new List<string> { "OTU" } ),
                         new SectorMetafileEntry(@"~/res/Sectors/Zhodani Core Route/ZhodaniCoreRoute.xml", new List<string> { "ZCR" } ),
                         new SectorMetafileEntry(@"~/res/Sectors/Orion OB1/orion.xml", new List<string> { "OrionOB1" } ),
-                        
+
                         new SectorMetafileEntry(@"~/res/Sectors/Distant Fringe/distantfringe.xml", new List<string> { "DistantFringe" } ),
                         new SectorMetafileEntry(@"~/res/Sectors/Distant Fringe/Infinitys Shore/infinitysshore.xml", new List<string> { "DistantFringe" } ),
                         new SectorMetafileEntry(@"~/res/Sectors/Distant Fringe/Where The Stars End/wherethestarsend.xml", new List<string> { "DistantFringe" } ),

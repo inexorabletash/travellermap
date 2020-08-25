@@ -67,7 +67,7 @@ namespace Maps.Serialization
             public int lineNumber;
             public string line;
         }
- 
+
         private List<Column> columns = new List<Column>();
         public List<Row> Data { get; } = new List<Row>();
 
@@ -76,7 +76,8 @@ namespace Maps.Serialization
         {
             string[] chunks = Regex.Split(separator, @"( +)");
             int c = 0;
-            for (int i = 0; i < chunks.Length; i += 2) {
+            for (int i = 0; i < chunks.Length; i += 2)
+            {
                 int len = chunks[i].Length;
                 columns.Add(new Column { start = c, length = len, name = header.SafeSubstring(c, len).TrimEnd() });
                 c += len;

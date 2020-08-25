@@ -28,12 +28,14 @@ namespace Maps
         //   COLOR            := '#' [0-9A-Fa-f]{6}
         //   WS               := ( U+0009 | U+000A | U+000D | U+0020 | '/' '*' ... '*' '/')*
 
-        class Rule {
+        class Rule
+        {
             public Rule(List<Selector> selectors, List<Declaration> declarations) { this.selectors = selectors; this.declarations = declarations; }
             public List<Selector> selectors;
             public List<Declaration> declarations;
         };
-        class Selector {
+        class Selector
+        {
             public Selector(string element, string? code) { this.element = element; this.code = code; }
             public string element;
             public string? code;
@@ -44,7 +46,8 @@ namespace Maps
                 return element;
             }
         }
-        class Declaration {
+        class Declaration
+        {
             public Declaration(string property, string value) { this.property = property; this.value = value; }
             public string property;
             public string value;
@@ -73,7 +76,7 @@ namespace Maps
             public List<Rule> ParseRuleList()
             {
                 List<Rule> rules = new List<Rule>();
-                while (true) 
+                while (true)
                 {
                     Rule? rule = ParseRule();
                     if (rule == null) break;
@@ -273,7 +276,7 @@ namespace Maps
             }
             private void Expect(char c)
             {
-                if (reader.Peek() != c) throw new ParseException("Expected '"+c+"', saw: " + reader.ReadLine());
+                if (reader.Peek() != c) throw new ParseException("Expected '" + c + "', saw: " + reader.ReadLine());
                 reader.Read();
             }
         }
@@ -332,7 +335,7 @@ namespace Maps
                 this.code = code;
                 this.dict = dict;
             }
-            
+
             private bool GetValue(string property, out string value) => dict.TryGetValue(property, out value) && !string.IsNullOrEmpty(value);
 
             public string? GetString(string property) => GetValue(property, out string value) ? value : null;

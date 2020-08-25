@@ -39,7 +39,8 @@ namespace Maps
         public string CanonicalMilieu => DataFile?.Milieu ?? Milieu ?? SectorMap.DEFAULT_MILIEU;
 
         [XmlAttribute]
-        public string? Abbreviation {
+        public string? Abbreviation
+        {
             get
             {
                 lock (this)
@@ -112,7 +113,7 @@ namespace Maps
                     throw new Exception($"Mismatching DataFile.Name entries for {Names[0].Text}: {metadataSource.DataFile.FileName} vs. {DataFile.FileName}");
 
                 if (metadataSource.DataFile.Type != DataFile.Type)
-                    throw new Exception($"Mismatching DataFile.Type entries for {Names[0].Text}: {metadataSource.DataFile.Type} vs. {DataFile.Type}"); 
+                    throw new Exception($"Mismatching DataFile.Type entries for {Names[0].Text}: {metadataSource.DataFile.Type} vs. {DataFile.Type}");
             }
 
             if (metadataSource.DataFile != null) DataFile = metadataSource.DataFile;
@@ -351,7 +352,8 @@ namespace Maps
                 foreach (string code in worlds.AllegianceCodes().OrderBy(s => s))
                 {
                     var alleg = GetAllegianceFromCode(code);
-                    if (alleg != null) {
+                    if (alleg != null)
+                    {
                         var a = isT5 ? code : SecondSurvey.T5AllegianceCodeToLegacyCode(code);
                         writer.WriteLine($"# Alleg: {a}: \"{alleg.Name}\"");
                     }
@@ -424,7 +426,7 @@ namespace Maps
                 (Location.Y * Astrometrics.SectorHeight) - Astrometrics.ReferenceHex.Y + (Astrometrics.SubsectorHeight * (index / 4)),
                 Astrometrics.SubsectorWidth,
                 Astrometrics.SubsectorHeight);
- 
+
         public Rectangle QuadrantBounds(int index) => new Rectangle(
                 (Location.X * Astrometrics.SectorWidth) - Astrometrics.ReferenceHex.X + (Astrometrics.SubsectorWidth * 2 * (index % 2)),
                 (Location.Y * Astrometrics.SectorHeight) - Astrometrics.ReferenceHex.Y + (Astrometrics.SubsectorHeight * 2 * (index / 2)),
@@ -553,7 +555,8 @@ namespace Maps
         private Sector basis;
         private WorldCollection? worlds = null;
 
-        public Dotmap(Sector basis) {
+        public Dotmap(Sector basis)
+        {
             X = basis.X;
             Y = basis.Y;
             this.basis = basis;
@@ -573,7 +576,7 @@ namespace Maps
                 WorldCollection dots = worlds.MakeDotmap();
                 foreach (World world in dots)
                     world.Sector = this;
-                
+
                 if (cacheResults)
                     this.worlds = dots;
 
@@ -722,7 +725,8 @@ namespace Maps
 
         internal Color? Color { get; set; }
         [XmlAttribute("Color"), JsonName("Color")]
-        public string? ColorHtml {
+        public string? ColorHtml
+        {
             get => Color.HasValue ? ColorTranslator.ToHtml(Color.Value) : null;
             set { if (value != null) Color = ColorUtil.ParseColor(value); }
         }
@@ -895,7 +899,8 @@ namespace Maps
         private sbyte endOffsetX;
         private sbyte endOffsetY;
 
-        internal Point StartOffset {
+        internal Point StartOffset
+        {
             get => new Point(startOffsetX, startOffsetY);
             set { startOffsetX = (sbyte)value.X; startOffsetY = (sbyte)value.Y; }
         }
@@ -939,7 +944,8 @@ namespace Maps
 
         internal Color? Color { get; set; }
         [XmlAttribute("Color"), JsonName("Color")]
-        public string? ColorHtml {
+        public string? ColorHtml
+        {
             get => Color.HasValue ? ColorTranslator.ToHtml(Color.Value) : null;
             set { if (value != null) Color = ColorUtil.ParseColor(value); }
         }
@@ -980,7 +986,7 @@ namespace Maps
         public static Color DefaultColor => TravellerColors.Amber;
 
         internal Hex Hex { get; set; }
-        [XmlAttribute("Hex"),JsonName("Hex")]
+        [XmlAttribute("Hex"), JsonName("Hex")]
         public string? HexString { get => Hex.ToString(); set { if (value != null) Hex = new Hex(value); } }
 
         [XmlAttribute]
@@ -988,7 +994,8 @@ namespace Maps
 
         internal Color? Color { get; set; }
         [XmlAttribute("Color"), JsonName("Color")]
-        public string? ColorHtml {
+        public string? ColorHtml
+        {
             get => Color == null ? null : ColorTranslator.ToHtml(Color.Value);
             set { if (value != null) Color = ColorUtil.ParseColor(value); }
         }

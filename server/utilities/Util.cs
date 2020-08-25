@@ -33,7 +33,7 @@ namespace Maps.Utilities
         }
         internal static string TypeForPath(string path)
         {
-            switch(Path.GetExtension(path).ToLowerInvariant())
+            switch (Path.GetExtension(path).ToLowerInvariant())
             {
                 case ".pdf": return Application.Pdf;
                 case ".txt": return Text.Plain;
@@ -339,7 +339,8 @@ namespace Maps.Utilities
     internal class ErrorLogger
     {
         // In increasing order, for filtering
-        public enum Severity {
+        public enum Severity
+        {
             Hint,
             Warning,
             Error,
