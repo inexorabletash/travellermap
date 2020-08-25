@@ -177,7 +177,7 @@ namespace Maps
 
             private static AllegianceDictionary Parse(StreamReader reader)
             {
-                Func<string, string?> nullIfEmpty = (s) => string.IsNullOrWhiteSpace(s) ? null : s;
+                static string? nullIfEmpty(string s) => string.IsNullOrWhiteSpace(s) ? null : s;
                 var dict = new AllegianceDictionary();
                 var parser = new Serialization.TSVParser(reader);
                 foreach (var row in parser.Data)

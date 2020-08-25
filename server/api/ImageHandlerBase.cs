@@ -131,7 +131,9 @@ namespace Maps.API
                 else if (accepter.Accepts(context, ContentTypes.Application.Pdf, ignoreHeaderFallbacks: true))
                 {
                     #region PDF Generation
+#pragma warning disable IDE0017 // Simplify object initialization
                     using var document = new PdfDocument();
+#pragma warning restore IDE0017 // Simplify object initialization
                     document.Version = 14; // 1.4 for opacity
                     document.Info.Title = title;
                     document.Info.Author = "Joshua Bell";

@@ -115,14 +115,15 @@ namespace Maps.Search
 
                     // Map of (milieu, string) => [ points ... ]
                     Dictionary<Tuple<string, string>, List<Point>> labels = new Dictionary<Tuple<string, string>, List<Point>>();
-                    Action<string, string, Point> AddLabel = (string milieu, string text, Point coords) => {
+                    void AddLabel(string milieu, string text, Point coords)
+                    {
                         if (text == null) return;
                         text = SanifyLabel(text);
                         var key = Tuple.Create(milieu, text);
                         if (!labels.ContainsKey(key))
                             labels.Add(key, new List<Point>());
                         labels[key].Add(coords);
-                    };
+                    }
 
                     statusCallback("Parsing data...");
                     foreach (Sector sector in map.Sectors)
@@ -276,13 +277,14 @@ namespace Maps.Search
                     //
                     // And shovel the data into the database en masse
                     //
-                    Action<string, DataTable, int> BulkInsert = (string name, DataTable table, int batchSize) => {
+                    void BulkInsert(string name, DataTable table, int batchSize)
+                    {
                         using var bulk = new SqlBulkCopy(connection, SqlBulkCopyOptions.TableLock, null);
                         statusCallback($"Writing {table.Rows.Count} {name}...");
                         bulk.BatchSize = batchSize;
                         bulk.DestinationTableName = name;
                         bulk.WriteToServer(table);
-                    };
+                    }
 
                     BulkInsert("sectors", dt_sectors, dt_sectors.Rows.Count);
                     BulkInsert("subsectors", dt_subsectors, dt_subsectors.Rows.Count);

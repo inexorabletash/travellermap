@@ -72,7 +72,6 @@ namespace Maps.Rendering
                 List<MapLabel> list = new List<MapLabel>();
                 using (var reader = System.IO.File.OpenText(path))
                 {
-                    Func<string, string?> nullIfEmpty = (s) => string.IsNullOrWhiteSpace(s) ? null : s;
                     var parser = new Serialization.TSVParser(reader);
                     foreach (var row in parser.Data)
                     {
@@ -132,8 +131,8 @@ namespace Maps.Rendering
             private static StaticImageCache? s_instance = null;
 
             public StaticImageCache(ResourceManager resourceManager)
-            {   
-                Func<string, AbstractImage> prepare = (string urlPath) =>
+            {
+                AbstractImage prepare(string urlPath) =>
                     new AbstractImage(resourceManager.Server.MapPath("~" + urlPath), urlPath);
 
                 // Actual images are loaded lazily.
@@ -227,6 +226,7 @@ namespace Maps.Rendering
             private StaticImageCache images;
 
             #region Proxies
+#pragma warning disable IDE1006 // Naming Styles
             private Stylesheet styles => ctx.styles;
             private AbstractPath? ClipPath => ctx.ClipPath;
             private RectangleF tileRect => ctx.tileRect;
@@ -237,6 +237,7 @@ namespace Maps.Rendering
             private Size tileSize => ctx.tileSize;
             private AbstractMatrix worldSpaceToImageSpace => ctx.worldSpaceToImageSpace;
             private bool ClipOutsectorBorders => ctx.ClipOutsectorBorders;
+#pragma warning restore IDE1006 // Naming Styles
             #endregion
 
             public Renderer(RenderContext ctx, AbstractGraphics g, StaticImageCache images)

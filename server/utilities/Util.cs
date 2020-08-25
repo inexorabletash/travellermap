@@ -401,7 +401,7 @@ namespace Maps.Utilities
                     continue;
                 if (filter != null && !filter(record))
                     continue;
-                writer.WriteLine($"{record.severity.ToString()}: {record.message}");
+                writer.WriteLine($"{record.severity}: {record.message}");
             }
         }
 

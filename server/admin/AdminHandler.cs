@@ -78,7 +78,7 @@ namespace Maps.Admin
             context.Response.ContentType = ContentTypes.Text.Html;
             context.Response.BufferOutput = false;
 
-            Action<string> WriteLine = (string s) => { context.Response.Write(s); context.Response.Write("\n"); };
+            void WriteLine(string s) { context.Response.Write(s); context.Response.Write("\n"); }
 
             WriteLine("<!DOCTYPE html>");
             WriteLine("<title>Admin Page</title>");

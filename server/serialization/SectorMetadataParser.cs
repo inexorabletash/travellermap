@@ -75,7 +75,9 @@ namespace Maps.Serialization
         private static bool? ParseBool(string s)
         {
             if (string.IsNullOrEmpty(s)) return null;
+#pragma warning disable IDE0075 // Simplify conditional expression
             return s == "true" ? true : s == "false" ? false : throw new Exception($"'{s}' is not a valid boolean");
+#pragma warning restore IDE0075 // Simplify conditional expression
         }
         private static int? ParseInt(string s)
         {

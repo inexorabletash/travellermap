@@ -184,12 +184,12 @@ namespace Maps
                 if (!(c == '-' || ('0' <= c && c <= '9')))
                     return null;
                 string s = "";
-                Action consume = () =>
+                void consume()
                 {
                     s += (char)c;
                     reader.Read();
                     c = reader.Peek();
-                };
+                }
 
                 if (c == '-')
                     consume();

@@ -300,10 +300,11 @@ namespace Maps
             if (UWP.Contains('?') || UWP == "XXXXXXX-X") return;
 
             #region Helpers
-            Action<string> Error = (string message) => { errors.Warning(message, lineNumber, line); };
-            Action<bool, string> ErrorIf = (bool test, string message) => { if (test) Error(message); };
-            Action<bool, string> ErrorUnless = (bool test, string message) => { if (!test) Error(message); };
-            Func<int, string, bool> Check = (int value, string hex) =>
+            void Error(string message) { errors.Warning(message, lineNumber, line); }
+            void ErrorIf(bool test, string message) { if (test) Error(message); }
+            void ErrorUnless(bool test, string message) { if (!test) Error(message); }
+
+            static bool Check(int value, string hex)
             {
                 foreach (char c in hex)
                 {
@@ -311,16 +312,16 @@ namespace Maps
                         return true;
                 }
                 return false;
-            };
+            }
 
-            Func<string, bool, bool> CC = (string code, bool calc) =>
+            bool CC(string code, bool calc)
             {
                 if (calc)
                     ErrorUnless(HasCode(code), $"Missing code: {code}");
                 else
                     ErrorUnless(!HasCode(code), $"Extraneous code: {code}");
                 return calc;
-            };
+            }
             #endregion
 
             #region UWP

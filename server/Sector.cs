@@ -747,7 +747,9 @@ namespace Maps
 
         internal LineStyle? Style { get; set; }
         [XmlAttribute("Style"), JsonIgnore]
+#pragma warning disable IDE1006 // Naming Styles
         public LineStyle _Style { get => Style ?? LineStyle.Solid; set => Style = value; }
+#pragma warning restore IDE1006 // Naming Styles
         public bool ShouldSerialize_Style() => Style.HasValue;
 
 
@@ -924,12 +926,16 @@ namespace Maps
 
         internal LineStyle? Style { get; set; }
         [XmlAttribute("Style"), JsonIgnore]
+#pragma warning disable IDE1006 // Naming Styles
         public LineStyle _Style { get => Style ?? LineStyle.Solid; set => Style = value; }
+#pragma warning restore IDE1006 // Naming Styles
         public bool ShouldSerialize_Style() => Style.HasValue;
 
         internal float? Width { get; set; }
         [XmlAttribute("Width"), JsonIgnore]
+#pragma warning disable IDE1006 // Naming Styles
         public float _Width { get => Width ?? 0; set => Width = value; }
+#pragma warning restore IDE1006 // Naming Styles
         public bool ShouldSerialize_Width() => Width.HasValue;
 
         internal Color? Color { get; set; }
