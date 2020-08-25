@@ -1128,7 +1128,7 @@ namespace Maps.Rendering
             private AbstractFont? font;
             public AbstractFont Font => font ?? (font = fontInfo.MakeFont());
             private AbstractFont? smallFont;
-            public AbstractFont? SmallFont => smallFont ?? (smallFont = smallFontInfo.MakeFont());
+            public AbstractFont SmallFont => smallFont ?? (smallFont = smallFontInfo.MakeFont());
             private AbstractFont mediumFont;
             public AbstractFont MediumFont => mediumFont ?? (mediumFont = mediumFontInfo.MakeFont());
             private AbstractFont? largeFont;

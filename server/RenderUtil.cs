@@ -1,4 +1,5 @@
-﻿using Maps.Graphics;
+﻿#nullable enable
+using Maps.Graphics;
 using Maps.Utilities;
 using System;
 using System.Collections.Generic;
@@ -621,7 +622,7 @@ namespace Maps.Rendering
             if (star.classification == "BD")
                 return new StarProps(Color.Brown, Color.Black, 0.3f);
 
-            return new StarProps(COLOR[star.type], Color.Black, RAD[star.type] + LUM[star.luminosity]);
+            return new StarProps(COLOR[star.type], Color.Black, RAD[star.type] + LUM[star.luminosity ?? "V"]);
         }
 
         private static float SinF(double r) => (float)Math.Sin(r);

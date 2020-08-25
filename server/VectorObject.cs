@@ -200,7 +200,7 @@ namespace Maps.Rendering
 
     public class WorldObject : MapObject
     {
-        public string? Name { get; set; }
+        public string Name { get; set; } = "";
 
         internal float MinScale { get; set; }
         internal float MaxScale { get; set; }
