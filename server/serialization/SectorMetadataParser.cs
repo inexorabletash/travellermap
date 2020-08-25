@@ -18,10 +18,8 @@ namespace Maps.Serialization
 
         public virtual Sector Parse(Stream stream)
         {
-            using (var reader = new StreamReader(stream, Encoding, detectEncodingFromByteOrderMarks: true, bufferSize: BUFFER_SIZE))
-            {
-                return Parse(reader);
-            }
+            using var reader = new StreamReader(stream, Encoding, detectEncodingFromByteOrderMarks: true, bufferSize: BUFFER_SIZE);
+            return Parse(reader);
         }
         public abstract Sector Parse(TextReader reader);
 
@@ -77,7 +75,7 @@ namespace Maps.Serialization
         private static bool? ParseBool(string s)
         {
             if (string.IsNullOrEmpty(s)) return null;
-            return s == "true" ? true : s == "false" ? false : throw new Exception($"'{s}' is not a valid boolean");
+            return s == "true" || (s == "false" ? false : throw new Exception($"'{s}' is not a valid boolean"));
         }
         private static int? ParseInt(string s)
         {

@@ -59,7 +59,7 @@ namespace Maps
             {
                 this.reader = reader;
             }
-            private TextReader reader;
+            private readonly TextReader reader;
 
             public List<Rule> ParseStylesheet()
             {
@@ -184,12 +184,12 @@ namespace Maps
                 if (!(c == '-' || ('0' <= c && c <= '9')))
                     return null;
                 string s = "";
-                Action consume = () =>
+                void consume()
                 {
                     s += (char)c;
                     reader.Read();
                     c = reader.Peek();
-                };
+                }
 
                 if (c == '-')
                     consume();
@@ -281,7 +281,8 @@ namespace Maps
         public static SectorStylesheet Parse(TextReader reader) => new SectorStylesheet(new Parser(reader).ParseStylesheet());
         public static SectorStylesheet FromFile(string path)
         {
-            using (var reader = File.OpenText(path)) { return Parse(reader); }
+            using var reader = File.OpenText(path);
+            return Parse(reader);
         }
 
         #endregion // Parser
@@ -369,7 +370,7 @@ namespace Maps
         }
 
         // Concurrent to allow static instance in Sector
-        private ConcurrentDictionary<Tuple<string, string?>, StyleResult> memo = new ConcurrentDictionary<Tuple<string, string?>, StyleResult>();
+        private readonly ConcurrentDictionary<Tuple<string, string?>, StyleResult> memo = new ConcurrentDictionary<Tuple<string, string?>, StyleResult>();
 
         private List<SectorStylesheet> Chain()
         {

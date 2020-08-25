@@ -68,7 +68,7 @@ namespace Maps.Serialization
             public string line;
         }
  
-        private List<Column> columns = new List<Column>();
+        private readonly List<Column> columns = new List<Column>();
         public List<Row> Data { get; } = new List<Row>();
 
         public IEnumerable<string> Fields => (from col in columns select col.name);
@@ -155,10 +155,8 @@ namespace Maps.Serialization
 
         public void Serialize(Stream stream, Encoding? encoding = null)
         {
-            using (var writer = new StreamWriter(stream, encoding))
-            {
-                Serialize(writer);
-            }
+            using var writer = new StreamWriter(stream, encoding);
+            Serialize(writer);
         }
 
         public void Serialize(TextWriter writer, bool includeHeader = true)
@@ -199,8 +197,8 @@ namespace Maps.Serialization
         public char Padding { get; set; } = ' ';
         public string Delimiter { get; set; } = " ";
         public char Separator { get; set; } = '-';
-        private Dictionary<string, int> columns = new Dictionary<string, int>();
-        private Dictionary<int, int> minimums = new Dictionary<int, int>();
-        private List<string[]> rows = new List<string[]>();
+        private readonly Dictionary<string, int> columns = new Dictionary<string, int>();
+        private readonly Dictionary<int, int> minimums = new Dictionary<int, int>();
+        private readonly List<string[]> rows = new List<string[]>();
     }
 }

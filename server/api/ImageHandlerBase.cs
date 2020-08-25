@@ -113,64 +113,56 @@ namespace Maps.API
                 if (accepter.Accepts(context, ContentTypes.Image.Svg, ignoreHeaderFallbacks: true))
                 {
                     #region SVG Generation
-                    using (var svg = new SVGGraphics(tileSize.Width, tileSize.Height))
-                    {
-                        RenderToGraphics(ctx, transform, svg);
+                    using var svg = new SVGGraphics(tileSize.Width, tileSize.Height);
+                    RenderToGraphics(ctx, transform, svg);
 
-                        using (var stream = new MemoryStream())
-                        {
-                            svg.Serialize(new StreamWriter(stream));
-                            context.Response.ContentType = ContentTypes.Image.Svg;
-                            if (!dataURI)
-                            {
-                                context.Response.AddHeader("content-length", stream.Length.ToString());
-                                context.Response.AddHeader("content-disposition", $"inline;filename=\"{Util.SanitizeFilename(title)}.svg\"");
-                            }
-                            stream.WriteTo(outputStream);
-                        }
+                    using MemoryStream? stream = new MemoryStream();
+                    svg.Serialize(new StreamWriter(stream));
+                    context.Response.ContentType = ContentTypes.Image.Svg;
+                    if (!dataURI)
+                    {
+                        context.Response.AddHeader("content-length", stream.Length.ToString());
+                        context.Response.AddHeader("content-disposition", $"inline;filename=\"{Util.SanitizeFilename(title)}.svg\"");
                     }
+                    stream.WriteTo(outputStream);
                     #endregion
                 }
 
                 else if (accepter.Accepts(context, ContentTypes.Application.Pdf, ignoreHeaderFallbacks: true))
                 {
                     #region PDF Generation
-                    using (var document = new PdfDocument())
+                    using var document = new PdfDocument
                     {
-                        document.Version = 14; // 1.4 for opacity
-                        document.Info.Title = title;
-                        document.Info.Author = "Joshua Bell";
-                        document.Info.Creator = "TravellerMap.com";
-                        document.Info.Subject = DateTime.Now.ToString("F", CultureInfo.InvariantCulture);
-                        document.Info.Keywords = "The Traveller game in all forms is owned by Far Future Enterprises. Copyright (C) 1977 - 2020 Far Future Enterprises. Traveller is a registered trademark of Far Future Enterprises.";
+                        Version = 14 // 1.4 for opacity
+                    };
+                    document.Info.Title = title;
+                    document.Info.Author = "Joshua Bell";
+                    document.Info.Creator = "TravellerMap.com";
+                    document.Info.Subject = DateTime.Now.ToString("F", CultureInfo.InvariantCulture);
+                    document.Info.Keywords = "The Traveller game in all forms is owned by Far Future Enterprises. Copyright (C) 1977 - 2020 Far Future Enterprises. Traveller is a registered trademark of Far Future Enterprises.";
 
-                        // TODO: Credits/Copyright
-                        // This is close, but doesn't define the namespace correctly:
-                        // document.Info.Elements.Add( new KeyValuePair<string, PdfItem>( "/photoshop/Copyright", new PdfString( "HelloWorld" ) ) );
+                    // TODO: Credits/Copyright
+                    // This is close, but doesn't define the namespace correctly:
+                    // document.Info.Elements.Add( new KeyValuePair<string, PdfItem>( "/photoshop/Copyright", new PdfString( "HelloWorld" ) ) );
 
-                        PdfPage page = document.AddPage();
+                    PdfPage page = document.AddPage();
 
-                        // NOTE: only PageUnit currently supported in MGraphics is Points
-                        page.Width = XUnit.FromPoint(tileSize.Width);
-                        page.Height = XUnit.FromPoint(tileSize.Height);
+                    // NOTE: only PageUnit currently supported in MGraphics is Points
+                    page.Width = XUnit.FromPoint(tileSize.Width);
+                    page.Height = XUnit.FromPoint(tileSize.Height);
 
-                        using (var gfx = new PdfSharpGraphics(XGraphics.FromPdfPage(page)))
-                        {
-                            RenderToGraphics(ctx, transform, gfx);
+                    using var gfx = new PdfSharpGraphics(XGraphics.FromPdfPage(page));
+                    RenderToGraphics(ctx, transform, gfx);
 
-                            using (var stream = new MemoryStream())
-                            {
-                                document.Save(stream, closeStream: false);
-                                context.Response.ContentType = ContentTypes.Application.Pdf;
-                                if (!dataURI)
-                                {
-                                    context.Response.AddHeader("content-length", stream.Length.ToString());
-                                    context.Response.AddHeader("content-disposition", $"inline;filename=\"{Util.SanitizeFilename(title)}.pdf\"");
-                                }
-                                stream.WriteTo(outputStream);
-                            }
-                        }
+                    using var stream = new MemoryStream();
+                    document.Save(stream, closeStream: false);
+                    context.Response.ContentType = ContentTypes.Application.Pdf;
+                    if (!dataURI)
+                    {
+                        context.Response.AddHeader("content-length", stream.Length.ToString());
+                        context.Response.AddHeader("content-disposition", $"inline;filename=\"{Util.SanitizeFilename(title)}.pdf\"");
                     }
+                    stream.WriteTo(outputStream);
                     #endregion
                 }
                 else
@@ -178,31 +170,26 @@ namespace Maps.API
                     #region Bitmap Generation
                     int width = (int)Math.Floor(tileSize.Width * devicePixelRatio);
                     int height = (int)Math.Floor(tileSize.Height * devicePixelRatio);
-                    using (var bitmap = TryConstructBitmap(width, height, PixelFormat.Format32bppArgb))
+                    using var bitmap = TryConstructBitmap(width, height, PixelFormat.Format32bppArgb);
+                    if (bitmap == null)
                     {
-                        if (bitmap == null)
-                        {
-                            throw new HttpError(500, "Internal Server Error",
-                                $"Failed to allocate bitmap ({width}x{height}). Insufficient memory?");
-                        }
-
-                        if (transparent)
-                            bitmap.MakeTransparent();
-
-                        using (var g = System.Drawing.Graphics.FromImage(bitmap))
-                        {
-                            g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-
-                            using (var graphics = new BitmapGraphics(g))
-                            {
-                                graphics.ScaleTransform((float)devicePixelRatio);
-                                RenderToGraphics(ctx, transform, graphics);
-                            }
-                        }
-
-                        BitmapResponse(context.Response, outputStream, ctx.Styles, bitmap, transparent ? ContentTypes.Image.Png : null);
-
+                        throw new HttpError(500, "Internal Server Error",
+                            $"Failed to allocate bitmap ({width}x{height}). Insufficient memory?");
                     }
+
+                    if (transparent)
+                        bitmap.MakeTransparent();
+
+                    using (var g = System.Drawing.Graphics.FromImage(bitmap))
+                    {
+                        g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+
+                        using var graphics = new BitmapGraphics(g);
+                        graphics.ScaleTransform((float)devicePixelRatio);
+                        RenderToGraphics(ctx, transform, graphics);
+                    }
+
+                    BitmapResponse(context.Response, outputStream, ctx.Styles, bitmap, transparent ? ContentTypes.Image.Png : null);
                     #endregion
                 }
 
@@ -217,12 +204,10 @@ namespace Maps.API
                     context.Response.Output.Write(";base64,");
                     context.Response.Output.Flush();
 
-                    System.Security.Cryptography.ICryptoTransform encoder = new System.Security.Cryptography.ToBase64Transform();
-                    using (System.Security.Cryptography.CryptoStream cs = new System.Security.Cryptography.CryptoStream(context.Response.OutputStream, encoder, System.Security.Cryptography.CryptoStreamMode.Write))
-                    {
-                        ms!.WriteTo(cs);
-                        cs.FlushFinalBlock();
-                    }
+                    using System.Security.Cryptography.ICryptoTransform encoder = new System.Security.Cryptography.ToBase64Transform();
+                    using System.Security.Cryptography.CryptoStream cs = new System.Security.Cryptography.CryptoStream(context.Response.OutputStream, encoder, System.Security.Cryptography.CryptoStreamMode.Write);
+                    ms!.WriteTo(cs);
+                    cs.FlushFinalBlock();
                 }
 
                 context.Response.Flush();
@@ -290,7 +275,7 @@ namespace Maps.API
                 try
                 {
                     // JPEG or PNG if not specified, based on style
-                    mimeType = mimeType ?? styles.preferredMimeType;
+                    mimeType ??= styles.preferredMimeType;
 
                     response.ContentType = mimeType;
 
@@ -320,11 +305,9 @@ namespace Maps.API
                         {
                             // PNG encoder is picky about streams - need to do an indirection
                             // http://www.west-wind.com/WebLog/posts/8230.aspx
-                            using (var ms = new MemoryStream())
-                            {
-                                bitmap.Save(ms, encoder, encoderParams);
-                                ms.WriteTo(outputStream);
-                            }
+                            using var ms = new MemoryStream();
+                            bitmap.Save(ms, encoder, encoderParams);
+                            ms.WriteTo(outputStream);
                         }
                         else
                         {
@@ -350,8 +333,7 @@ namespace Maps.API
 
             protected static Sector? GetPostedSector(HttpRequest request, ErrorLogger errors)
             {
-                Sector? sector = null;
-
+                Sector? sector;
                 if (request.Files["file"] != null && request.Files["file"].ContentLength > 0)
                 {
                     HttpPostedFile hpf = request.Files["file"];
@@ -384,11 +366,9 @@ namespace Maps.API
                     string metadata = request.Form["metadata"];
                     string type = SectorMetadataFileParser.SniffType(metadata.ToStream());
                     var parser = SectorMetadataFileParser.ForType(type);
-                    using (var reader = new StringReader(metadata))
-                    {
-                        Sector meta = parser.Parse(reader);
-                        sector.Merge(meta);
-                    }
+                    using var reader = new StringReader(metadata);
+                    Sector meta = parser.Parse(reader);
+                    sector.Merge(meta);
                 }
 
                 return sector;

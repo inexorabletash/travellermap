@@ -35,12 +35,12 @@ namespace Maps
             int value = HEX.IndexOf(c);
             if (value != -1)
                 return value;
-            switch (c)
+            return c switch
             {
-                case 'O': return 0; // Typo found in some data files
-                case 'I': return 1; // Typo found in some data files
-            }
-            throw new ParseException($"Invalid eHex digit: '{c}'");
+                'O' => 0,// Typo found in some data files
+                'I' => 1,// Typo found in some data files
+                _ => throw new ParseException($"Invalid eHex digit: '{c}'"),
+            };
         }
         #endregion // eHex
 
@@ -100,10 +100,10 @@ namespace Maps
         {
             allegiance = AllegianceCodeToBaseAllegianceCode(allegiance);
             string match = s_legacyBaseDecodeTable.Match(allegiance + "." + code);
-            return (match != default(string)) ? match : code;
+            return (match != default) ? match : code;
         }
 
-        private static RegexMap<string> s_legacyBaseEncodeTable = new GlobMap<string> {
+        private static readonly RegexMap<string> s_legacyBaseEncodeTable = new GlobMap<string> {
             { "*.NS", "A" },  // Imperial Naval base + Scout base
             { "*.NW", "B" },  // Imperial Naval base + Scout Way station
             { "*.C", "C" },   // Vargr Corsair base
@@ -141,7 +141,7 @@ namespace Maps
         {
             allegiance = AllegianceCodeToBaseAllegianceCode(allegiance);
             string match = s_legacyBaseEncodeTable.Match(allegiance + "." + bases);
-            return (match != default(string)) ? match : bases;
+            return (match != default) ? match : bases;
         }
         #endregion // Bases
 
@@ -171,12 +171,13 @@ namespace Maps
 
             public static AllegianceDictionary FromFile(string path)
             {
-                using (var reader = File.OpenText(path)) { return Parse(reader); }
+                using var reader = File.OpenText(path);
+                return Parse(reader);
             }
 
             private static AllegianceDictionary Parse(StreamReader reader)
             {
-                Func<string, string?> nullIfEmpty = (s) => string.IsNullOrWhiteSpace(s) ? null : s;
+                static string? nullIfEmpty(string s) => string.IsNullOrWhiteSpace(s) ? null : s;
                 var dict = new AllegianceDictionary();
                 var parser = new Serialization.TSVParser(reader);
                 foreach (var row in parser.Data)
@@ -334,10 +335,8 @@ namespace Maps
             }
             public static SophontDictionary FromFile(string path)
             {
-                using (var reader = File.OpenText(path))
-                {
-                    return Parse(reader);
-                }
+                using var reader = File.OpenText(path);
+                return Parse(reader);
             }
 
             private static SophontDictionary Parse(StreamReader reader)

@@ -98,7 +98,7 @@ namespace Maps.Utilities
 
         public static Stream ToStream(this string str, Encoding? encoding = null)
         {
-            encoding = encoding ?? Encoding.UTF8;
+            encoding ??= Encoding.UTF8;
             MemoryStream stream = new MemoryStream();
             using (StreamWriter writer = new NoCloseStreamWriter(stream, encoding))
             {
@@ -161,13 +161,11 @@ namespace Maps.Utilities
         // http://stackoverflow.com/questions/18395943/using-foreach-to-iterate-simultaneously-through-multiple-lists-syntax-sugar
         public static void ForEachZip<T1, T2>(this IEnumerable<T1> first, IEnumerable<T2> second, Action<T1, T2> action)
         {
-            using (var e1 = first.GetEnumerator())
-            using (var e2 = second.GetEnumerator())
+            using var e1 = first.GetEnumerator();
+            using var e2 = second.GetEnumerator();
+            while (e1.MoveNext() && e2.MoveNext())
             {
-                while (e1.MoveNext() && e2.MoveNext())
-                {
-                    action(e1.Current, e2.Current);
-                }
+                action(e1.Current, e2.Current);
             }
         }
         #endregion
@@ -210,7 +208,7 @@ namespace Maps.Utilities
             }
         }
 
-        private static Regex alphanumeric = new Regex(@"\W+");
+        private static readonly Regex alphanumeric = new Regex(@"\W+");
         public static string SanitizeFilename(string input) => alphanumeric.Replace(input, "_");
     }
 
@@ -226,7 +224,7 @@ namespace Maps.Utilities
 
     internal class ConcurrentSet<T> : IEnumerable<T>
     {
-        private ConcurrentDictionary<T, bool> dict = new ConcurrentDictionary<T, bool>();
+        private readonly ConcurrentDictionary<T, bool> dict = new ConcurrentDictionary<T, bool>();
         public void Add(T e) { if (!dict.TryAdd(e, true)) throw new ApplicationException("Unexpected initialization failure"); }
         public bool Contains(T e) => dict.ContainsKey(e);
 
@@ -244,7 +242,7 @@ namespace Maps.Utilities
 
     internal class RegexMap<T> : IEnumerable<KeyValuePair<Regex, T>>
     {
-        private ConcurrentQueue<KeyValuePair<Regex, T>> list = new ConcurrentQueue<KeyValuePair<Regex, T>>();
+        private readonly ConcurrentQueue<KeyValuePair<Regex, T>> list = new ConcurrentQueue<KeyValuePair<Regex, T>>();
         public RegexMap() { }
 
         public void Add(Regex r, T v) { list.Enqueue(new KeyValuePair<Regex, T>(r, v)); }
@@ -298,8 +296,8 @@ namespace Maps.Utilities
 
     internal sealed class OrderedHashSet<T> : IEnumerable<T>
     {
-        private List<T> list = new List<T>();
-        private HashSet<T> set = new HashSet<T>();
+        private readonly List<T> list = new List<T>();
+        private readonly HashSet<T> set = new HashSet<T>();
 
         public void Add(T item)
         {
@@ -387,8 +385,8 @@ namespace Maps.Utilities
         public void Hint(string message) { Log(Severity.Hint, message); }
         public void Hint(string message, int lineNumber, string line) { Log(Severity.Hint, message, lineNumber, line); }
 
-        private List<Record> log = new List<Record>();
-        private Func<ErrorLogger.Record, bool>? filter = null;
+        private readonly List<Record> log = new List<Record>();
+        private readonly Func<ErrorLogger.Record, bool>? filter = null;
 
         public bool Empty => log.Count == 0;
         public int Count => log.Count;
@@ -403,18 +401,16 @@ namespace Maps.Utilities
                     continue;
                 if (filter != null && !filter(record))
                     continue;
-                writer.WriteLine($"{record.severity.ToString()}: {record.message}");
+                writer.WriteLine($"{record.severity}: {record.message}");
             }
         }
 
         public override string ToString()
         {
-            using (StringWriter writer = new StringWriter())
-            {
-                Report(writer, Severity.Hint);
-                writer.WriteLine($"{CountOf(Severity.Error)} errors, {CountOf(Severity.Warning)} warnings.");
-                return writer.ToString();
-            }
+            using StringWriter writer = new StringWriter();
+            Report(writer, Severity.Hint);
+            writer.WriteLine($"{CountOf(Severity.Error)} errors, {CountOf(Severity.Warning)} warnings.");
+            return writer.ToString();
         }
 
         public void Prepend(Severity severity, string message)
@@ -428,7 +424,7 @@ namespace Maps.Utilities
     // https://visualstudiomagazine.com/Articles/2012/11/01/Priority-Queues-with-C.aspx
     internal class PriorityQueue<T> where T : IComparable<T>
     {
-        private List<T> data = new List<T>();
+        private readonly List<T> data = new List<T>();
 
         public PriorityQueue() { }
 
@@ -536,8 +532,9 @@ namespace Maps.Utilities
         public int Count => keys.Count;
         public List<string>.Enumerator GetEnumerator() => keys.GetEnumerator();
 
-        private int size;
-        private List<string> keys = new List<string>();
+        private readonly int size;
+        private static readonly List<string> lists = new List<string>();
+        private List<string> keys = lists;
         private List<object?> values = new List<object?>();
     }
 }
