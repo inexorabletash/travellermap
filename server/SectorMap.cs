@@ -114,8 +114,7 @@ namespace Maps
             // Load all sectors from all metafiles.
             foreach (var metafile in metafiles)
             {
-                SectorCollection? collection = resourceManager.GetXmlFileObject(metafile.filename, typeof(SectorCollection), cache: false) as SectorCollection;
-                if (collection == null)
+                if (!(resourceManager.GetXmlFileObject(metafile.filename, typeof(SectorCollection), cache: false) is SectorCollection collection))
                     throw new ApplicationException($"Invalid file: {metafile.filename}");
 
                 foreach (var sector in collection.Sectors)
@@ -131,8 +130,7 @@ namespace Maps
             {
                 if (sector.MetadataFile != null)
                 {
-                    Sector? metadata = resourceManager.GetXmlFileObject(sector.MetadataFile, typeof(Sector), cache: false) as Sector;
-                    if (metadata == null)
+                    if (!(resourceManager.GetXmlFileObject(sector.MetadataFile, typeof(Sector), cache: false) is Sector metadata))
                         throw new ApplicationException($"Invalid file: {sector.MetadataFile}");
 
                     metadata.AdjustRelativePaths(sector.MetadataFile);

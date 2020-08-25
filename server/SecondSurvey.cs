@@ -35,12 +35,12 @@ namespace Maps
             int value = HEX.IndexOf(c);
             if (value != -1)
                 return value;
-            switch (c)
+            return c switch
             {
-                case 'O': return 0; // Typo found in some data files
-                case 'I': return 1; // Typo found in some data files
-            }
-            throw new ParseException($"Invalid eHex digit: '{c}'");
+                'O' => 0,// Typo found in some data files
+                'I' => 1,// Typo found in some data files
+                _ => throw new ParseException($"Invalid eHex digit: '{c}'"),
+            };
         }
         #endregion // eHex
 

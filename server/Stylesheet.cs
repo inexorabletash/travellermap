@@ -1356,20 +1356,19 @@ namespace Maps.Rendering
         }
         public bool Matches(World world)
         {
-            int v;
-            switch (field)
+            var v = field switch
             {
-                case Field.Starport: v = "XEDCBA".IndexOf(world.Starport); break;
-                case Field.Size: v = world.Size; break;
-                case Field.Atmosphere: v = world.Atmosphere; break;
-                case Field.Hydrosphere: v = world.Hydrographics; break;
-                case Field.Population: v = world.PopulationExponent; break;
-                case Field.Government: v = world.Government; break;
-                case Field.Law: v = world.Law; break;
-                case Field.Tech: v = world.TechLevel; break;
-                case Field.Importance: v = SecondSurvey.Importance(world); break;
-                default: throw new ApplicationException("Invalid pattern");
-            }
+                Field.Starport => "XEDCBA".IndexOf(world.Starport),
+                Field.Size => world.Size,
+                Field.Atmosphere => world.Atmosphere,
+                Field.Hydrosphere => world.Hydrographics,
+                Field.Population => world.PopulationExponent,
+                Field.Government => world.Government,
+                Field.Law => world.Law,
+                Field.Tech => world.TechLevel,
+                Field.Importance => SecondSurvey.Importance(world),
+                _ => throw new ApplicationException("Invalid pattern"),
+            };
             return InRange(v);
         }
 

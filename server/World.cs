@@ -353,6 +353,7 @@ namespace Maps
             #endregion
 
             #region Codes
+#pragma warning disable IDE0059 // Unnecessary assignment of a value
             // Planetary
             bool As = CC("As", Check(Size, "0") /*&& Check(Atmosphere, "0") && Check(Hydrographics, "0")*/);
             bool De = CC("De", Check(Atmosphere, "23456789") && Check(Hydrographics, "0"));
@@ -382,6 +383,7 @@ namespace Maps
             bool Po = CC("Po", Check(Atmosphere, "2345") && Check(Hydrographics, "0123"));
             bool Pr = CC("Pr", Check(Atmosphere, "68") && Check(PopulationExponent, "59"));
             bool Ri = CC("Ri", Check(Atmosphere, "68") && Check(PopulationExponent, "678"));
+#pragma warning restore IDE0059 // Unnecessary assignment of a value
 
             ErrorUnless(As == IsAs, "Internal code failure: As/IsAs definitions");
             ErrorUnless(Va == IsVa, "Internal code failure: Va/IsVa definitions");

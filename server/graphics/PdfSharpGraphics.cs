@@ -122,8 +122,7 @@ namespace Maps.Graphics
                 int key = (int)Math.Round(alpha * ALPHA_STEPS);
 
 
-                Dictionary<int, XImage>? dict = image.Tag as Dictionary<int, XImage>;
-                if (dict == null)
+                if (!(image.Tag is Dictionary<int, XImage> dict))
                     image.Tag = dict = new Dictionary<int, XImage>();
 
                 if (dict.ContainsKey(key))

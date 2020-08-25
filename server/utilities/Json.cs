@@ -50,8 +50,8 @@ namespace Json
 
         public void Serialize( TextWriter writer, object item )
         {
-            if(SerializeCollectionsAsArrays && item is IEnumerable )
-                SerializeArray( writer, (IEnumerable)item );
+            if (SerializeCollectionsAsArrays && item is IEnumerable enumerable)
+                SerializeArray( writer, enumerable );
             else
                 SerializeValue( writer, item );
         }
