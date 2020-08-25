@@ -20,7 +20,8 @@ namespace Maps.HTTP
             if (string.IsNullOrWhiteSpace(footer))
                 return;
 
-            application.EndRequest += (Object source, EventArgs e) => {
+            application.EndRequest += (Object source, EventArgs e) =>
+            {
                 HttpContext context = application.Context;
                 if (context.Request.IsLocal)
                     return;

@@ -14,7 +14,7 @@ namespace Maps.Serialization
                 "XML" => new XmlSectorMetadataSerializer(),
                 _ => new XmlSectorMetadataSerializer(),
             };
-}
+    }
 
     // NOTE: This is unused; see SectorMetaDataHandler
     internal class XmlSectorMetadataSerializer : SectorMetadataSerializer

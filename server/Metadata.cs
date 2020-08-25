@@ -44,7 +44,7 @@ namespace Maps
         public string? Source { get => TryGet("source"); set => metaData["source"] = value; }
 
         [XmlAttribute]
-        public string? Title{ get => TryGet("title"); set => metaData["title"] = value; }
+        public string? Title { get => TryGet("title"); set => metaData["title"] = value; }
 
         [XmlAttribute]
         public string? Publisher { get => TryGet("publisher"); set => metaData["publisher"] = value; }

@@ -8,7 +8,7 @@ using System.Text.RegularExpressions;
 
 namespace Maps.Serialization
 {
-    internal class MSECParser : SectorMetadataFileParser 
+    internal class MSECParser : SectorMetadataFileParser
     {
         public override Encoding Encoding => Encoding.GetEncoding(1252);
         private static void Apply(string line, Sector sector)
@@ -17,12 +17,14 @@ namespace Maps.Serialization
             string key = kv[0].Trim().ToUpperInvariant();
             string value = kv[1].Trim();
 
-            if (Regex.IsMatch(key, @"^\d{4}$")) {
+            if (Regex.IsMatch(key, @"^\d{4}$"))
+            {
                 // Value is full name for world in hex
                 return;
             }
 
-            if (Regex.IsMatch(key, @"^[A-P]$")) {
+            if (Regex.IsMatch(key, @"^[A-P]$"))
+            {
                 sector.Subsectors.Add(new Subsector()
                 {
                     Index = key,

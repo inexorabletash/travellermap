@@ -174,7 +174,7 @@ namespace Maps.Rendering
                     string str = Name;
                     if (labelStyle.Uppercase)
                         str = str.ToUpperInvariant();
-            
+
                     PointF pos = NamePosition;// PointF( bounds.Left + bounds.Width / 2, bounds.Top + bounds.Height / 2 );
 
                     using (graphics.Save())
