@@ -9,7 +9,7 @@ namespace Maps.Admin
 {
     internal class OverviewHandler : AdminHandler
     {
-        readonly IHttpHandler impl = new OverviewImpl();
+        IHttpHandler impl = new OverviewImpl();
 
         // TODO: Passed resourceManager is discarded. Avoid creating it.
         protected override void Process(HttpContext context, ResourceManager resourceManager)

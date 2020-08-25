@@ -25,8 +25,10 @@ namespace Maps.Serialization
 
         public virtual void Serialize(Stream stream, IEnumerable<World> worlds, SectorSerializeOptions options)
         {
-            using var writer = new StreamWriter(stream, Encoding);
-            Serialize(writer, worlds, options);
+            using (var writer = new StreamWriter(stream, Encoding))
+            {
+                Serialize(writer, worlds, options);
+            }
         }
 
         public abstract void Serialize(TextWriter writer, IEnumerable<World> worlds, SectorSerializeOptions options);

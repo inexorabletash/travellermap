@@ -43,15 +43,17 @@ namespace Json
         
         public void Serialize( Stream stream, object item )
         {
-            using var sw = new StreamWriter(stream, new UTF8Encoding(encoderShouldEmitUTF8Identifier: false));
-            Serialize(sw, item);
-            sw.Flush();
+            using (var sw = new StreamWriter(stream, new UTF8Encoding(encoderShouldEmitUTF8Identifier: false)))
+            {
+                Serialize(sw, item);
+                sw.Flush();
+            }
         }
 
         public void Serialize( TextWriter writer, object item )
         {
-            if (SerializeCollectionsAsArrays && item is IEnumerable enumerable)
-                SerializeArray( writer, enumerable );
+            if(SerializeCollectionsAsArrays && item is IEnumerable )
+                SerializeArray( writer, (IEnumerable)item );
             else
                 SerializeValue( writer, item );
         }

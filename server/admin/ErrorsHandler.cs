@@ -100,13 +100,13 @@ namespace Maps.Admin
                         Astrometrics.LocationToCoordinates(new Location(endSector, route.End)));
                     if (distance == 0)
                     {
-                        context.Response.Output.WriteLine($"Error: Route length {distance}: {route}");
+                        context.Response.Output.WriteLine($"Error: Route length {distance}: {route.ToString()}");
                         ++error_count;
                     }
                     else if (distance > 4)
                     {
                         if (severity <= ErrorLogger.Severity.Warning)
-                            context.Response.Output.WriteLine($"Warning: Route length {distance}: {route}");
+                            context.Response.Output.WriteLine($"Warning: Route length {distance}: {route.ToString()}");
                         ++warning_count;
                     }
                     /*

@@ -110,7 +110,7 @@ namespace Maps.Graphics
     // span different concrete instances.
     internal class AbstractImage
     {
-        private readonly string path;
+        private string path;
         private Image? image;
         private XImage? ximage;
 
@@ -137,7 +137,7 @@ namespace Maps.Graphics
             {
                 lock (this)
                 {
-                    return ximage ??= XImage.FromGdiPlusImage(Image);
+                    return ximage ?? (ximage = XImage.FromGdiPlusImage(Image));
                 }
             }
         }
@@ -149,8 +149,10 @@ namespace Maps.Graphics
                 {
                     if (image == null) {
                         // Use a stream since Image.FromFile(path) locks the file on disk.
-                        using var stream = new FileStream(path, FileMode.Open, FileAccess.Read);
-                        image = Image.FromStream(stream);
+                        using (var stream = new FileStream(path, FileMode.Open, FileAccess.Read))
+                        {
+                            image = Image.FromStream(stream);
+                        }
                     }
                     return image;
                 }

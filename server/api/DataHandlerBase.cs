@@ -183,9 +183,11 @@ namespace Maps.API
                     if (!IsSimpleJSIdentifier(Context.Request.QueryString["jsonp"]))
                         throw new HttpError(400, "Bad Request", "The jsonp parameter must be a simple script identifier.");
 
-                    using var w = new StreamWriter(Context.Response.OutputStream);
-                    w.Write(Context.Request.QueryString["jsonp"]);
-                    w.Write("(");
+                    using (var w = new StreamWriter(Context.Response.OutputStream))
+                    {
+                        w.Write(Context.Request.QueryString["jsonp"]);
+                        w.Write("(");
+                    }
                 }
             }
 
@@ -193,8 +195,10 @@ namespace Maps.API
             {
                 if (contentType == JsonConstants.MediaType && Context.Request.QueryString["jsonp"] != null)
                 {
-                    using var w = new StreamWriter(Context.Response.OutputStream);
-                    w.Write(");");
+                    using (var w = new StreamWriter(Context.Response.OutputStream))
+                    {
+                        w.Write(");");
+                    }
                 }
             }
             #endregion
