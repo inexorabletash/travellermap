@@ -1,4 +1,5 @@
-﻿using Maps.Utilities;
+﻿#nullable enable
+using Maps.Utilities;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -12,8 +13,8 @@ namespace Maps.Serialization
     {
         public ColumnParser(TextReader reader)
         {
-            string header = null;
-            string separator = null;
+            string? header = null;
+            string? separator = null;
             string line;
             int lineNumber = 0;
 
@@ -152,7 +153,7 @@ namespace Maps.Serialization
             minimums[columns[col]] = width;
         }
 
-        public void Serialize(Stream stream, Encoding encoding = null)
+        public void Serialize(Stream stream, Encoding? encoding = null)
         {
             using (var writer = new StreamWriter(stream, encoding))
             {

@@ -1,4 +1,5 @@
-﻿using Maps.Utilities;
+﻿#nullable enable
+using Maps.Utilities;
 using System.Collections.Generic;
 using System.Web;
 using System.Xml.Serialization;
@@ -33,7 +34,7 @@ namespace Maps.API
 
                 if (HasOption("sector") && HasOption("hex"))
                 {
-                    string sectorName = GetStringOption("sector");
+                    string sectorName = GetStringOption("sector")!;
                     int hex = GetIntOption("hex", 0);
                     Sector sector = map.FromName(sectorName) ??
                         throw new HttpError(404, "Not Found", $"The specified sector '{sectorName}' was not found.");
@@ -57,6 +58,7 @@ namespace Maps.API
 
 namespace Maps.API.Results
 {
+#nullable disable
     [XmlRoot(ElementName = "JumpWorlds")]
     // public for XML serialization
     public class JumpWorldsResult
@@ -64,4 +66,5 @@ namespace Maps.API.Results
         [XmlElement("World")]
         public List<World> Worlds { get; } = new List<World>();
     }
+#nullable restore
 }

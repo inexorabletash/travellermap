@@ -1,4 +1,5 @@
-﻿using Maps.Search;
+﻿#nullable enable
+using Maps.Search;
 using Maps.Utilities;
 using System;
 using System.Collections.Generic;
@@ -34,9 +35,9 @@ namespace Maps.API
                     Jump = jump;
                 }
 
-                private World start, end;
+                private World? start, end;
 
-                public List<World> FindPath(World start, World end)
+                public List<World>? FindPath(World start, World end)
                 {
                     this.start = start;
                     this.end = end;
@@ -69,7 +70,7 @@ namespace Maps.API
                 }
             }
 
-            private World ResolveLocation(HttpContext context, string field, ResourceManager manager, SectorMap.Milieu map)
+            private World? ResolveLocation(HttpContext context, string field, ResourceManager manager, SectorMap.Milieu map)
             {
                 string query = context.Request.QueryString[field];
                 if (string.IsNullOrWhiteSpace(query))
@@ -82,10 +83,10 @@ namespace Maps.API
                 {
                     int x = GetIntOption("x", 0);
                     int y = GetIntOption("y", 0);
-                    WorldResult loc = SearchEngine.FindNearestWorldMatch(query, GetStringOption("milieu"), x, y) ??
+                    WorldResult loc = SearchEngine.FindNearestWorldMatch(query, GetStringOption("milieu", SectorMap.DEFAULT_MILIEU)!, x, y) ??
                         throw new HttpError(404, "Not Found", $"Location not found: {query}");
 
-                    loc.Resolve(map, manager, out Sector loc_sector, out World loc_world);
+                    loc.Resolve(map, manager, out Sector? loc_sector, out World? loc_world);
                     return loc_world;
                 }
 
@@ -98,7 +99,7 @@ namespace Maps.API
                 if (!hex.IsValid)
                     throw new HttpError(400, "Not Found", $"Invalid hex: {hexString}");
 
-                World world = sector.GetWorlds(manager)[hex.ToInt()] ??
+                World world = sector.GetWorlds(manager)?[hex.ToInt()] ??
                     throw new HttpError(404, "Not Found", $"No such world: {sector.Names[0].Text} {hexString}");
 
                 return world;
@@ -108,11 +109,11 @@ namespace Maps.API
             {
                 SectorMap.Milieu map = SectorMap.ForMilieu(resourceManager, GetStringOption("milieu"));
 
-                World startWorld = ResolveLocation(Context, "start", resourceManager, map);
+                World? startWorld = ResolveLocation(Context, "start", resourceManager, map);
                 if (startWorld == null)
                     return;
 
-                World endWorld = ResolveLocation(Context, "end", resourceManager, map);
+                World? endWorld = ResolveLocation(Context, "end", resourceManager, map);
                 if (endWorld == null)
                     return;
 
@@ -136,6 +137,7 @@ namespace Maps.API
 
 namespace Maps.API.Results
 {
+#nullable disable
     public class RouteStop
     {
         public RouteStop() { }
@@ -177,4 +179,5 @@ namespace Maps.API.Results
         public string Zone { get; set; }
         public string AllegianceName { get; set; }
     }
+#nullable restore
 }

@@ -1,4 +1,5 @@
-﻿using Maps.Serialization;
+﻿#nullable enable
+using Maps.Serialization;
 using Maps.Utilities;
 using System.IO;
 using System.Web;
@@ -32,7 +33,7 @@ namespace Maps.API
                 }
                 else if (HasOption("sector"))
                 {
-                    string sectorName = GetStringOption("sector");
+                    string sectorName = GetStringOption("sector")!;
                     sector = map.FromName(sectorName) ??
                         throw new HttpError(404, "Not Found", $"The specified sector '{sectorName}' was not found.");
                 }

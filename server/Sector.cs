@@ -1,3 +1,4 @@
+#nullable enable
 using Json;
 using Maps.Rendering;
 using Maps.Serialization;
@@ -15,14 +16,13 @@ using System.Xml.Serialization;
 
 namespace Maps
 {
-#nullable enable
     public class Sector : MetadataItem
     {
         public Sector()
         {
         }
 
-        internal Sector(Stream stream, string mediaType, ErrorLogger errors)
+        internal Sector(Stream stream, string mediaType, ErrorLogger? errors)
             : this()
         {
             WorldCollection wc = new WorldCollection(isUserData: true);
@@ -273,7 +273,7 @@ namespace Maps
             }
         }
 
-        internal void Serialize(ResourceManager resourceManager, TextWriter writer, string mediaType, SectorSerializeOptions options)
+        internal void Serialize(ResourceManager resourceManager, TextWriter writer, string? mediaType, SectorSerializeOptions options)
         {
             WorldCollection? worlds = GetWorlds(resourceManager);
 
@@ -448,7 +448,7 @@ namespace Maps
 
         internal SectorStylesheet? Stylesheet { get; set; }
 
-        internal SectorStylesheet.StyleResult ApplyStylesheet(string element, string code)
+        internal SectorStylesheet.StyleResult ApplyStylesheet(string element, string? code)
             => (Stylesheet ?? s_defaultStyleSheet).Apply(element, code);
 
         [XmlElement("Stylesheet"), JsonName("Stylesheet")]
@@ -597,7 +597,7 @@ namespace Maps
         }
 
         [XmlText]
-        public string? Text { get; set; }
+        public string Text { get; set; } = "";
 
         [XmlAttribute]
         [DefaultValue("")]
@@ -659,16 +659,16 @@ namespace Maps
         }
 
         [XmlText]
-        public string? Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
         /// <summary>
         /// The four letter (or, in legacy data, two) code for the allegiance, e.g. "As" for Aslan, "Va" for Vargr,
         /// "Im" for Imperium, and so on.
         /// </summary>
         [XmlAttribute("Code"), JsonName("Code")]
-        public string? T5Code { get; set; }
+        public string T5Code { get; set; } = string.Empty;
 
-        internal string? LegacyCode { get => string.IsNullOrEmpty(legacyCode) ? T5Code : legacyCode; set => legacyCode = value; }
+        internal string LegacyCode { get => string.IsNullOrEmpty(legacyCode) ? T5Code : legacyCode!; set => legacyCode = value; }
         private string? legacyCode;
 
         /// <summary>
@@ -1003,7 +1003,6 @@ namespace Maps
         public string? RenderType { get; set; }
 
         [XmlText]
-        public string? Text { get; set; }
+        public string Text { get; set; } = string.Empty;
     }
-#nullable restore
 }

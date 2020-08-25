@@ -1,9 +1,9 @@
-﻿using System;
+﻿#nullable enable
+using System;
 using System.Collections.Generic;
 
 namespace Maps.Utilities
 {
-#nullable enable
     internal static class PathFinder
     {
         // A* Algorithm
@@ -102,5 +102,4 @@ namespace Maps.Utilities
             return null;
         }
     }
-#nullable restore
 }

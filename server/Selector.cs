@@ -1,3 +1,4 @@
+#nullable enable
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -13,7 +14,6 @@ using System.Linq;
 
 namespace Maps
 {
-#nullable enable
     internal abstract class Selector
     {
         protected Selector()
@@ -397,5 +397,4 @@ namespace Maps
             }
         }
     }
-#nullable restore
 }

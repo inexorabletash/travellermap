@@ -1,3 +1,4 @@
+#nullable enable
 using Maps.Graphics;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,6 @@ using System.Xml.Serialization;
 
 namespace Maps.Rendering
 {
-#nullable enable
     public class MapObject
     {
 
@@ -248,5 +248,4 @@ namespace Maps.Rendering
         }
 
     }
-#nullable restore
 }

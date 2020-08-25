@@ -1,4 +1,5 @@
-﻿using Maps.Serialization;
+﻿#nullable enable
+using Maps.Serialization;
 using Maps.Utilities;
 using System;
 using System.IO;
@@ -34,7 +35,7 @@ namespace Maps.API
                 if (Context.Request.HttpMethod == "POST")
                 {
                     bool lint = GetBoolOption("lint", defaultValue: false);
-                    ErrorLogger errors = null;
+                    ErrorLogger? errors = null;
                     if (lint)
                     {
                         bool hide_uwp = GetBoolOption("hide-uwp", defaultValue: false);
@@ -58,7 +59,7 @@ namespace Maps.API
                             throw;
                         throw new HttpError(400, "Bad Request", $"Bad data file: {ex.Message}");
                     }
-                    if (lint && !errors.Empty)
+                    if (lint && errors != null && !errors.Empty)
                         throw new HttpError(400, "Bad Request", errors.ToString());
                     options.includeMetadata = false;
                 }
@@ -72,7 +73,7 @@ namespace Maps.API
                 }
                 else if (HasOption("sector"))
                 {
-                    string sectorName = GetStringOption("sector");
+                    string sectorName = GetStringOption("sector")!;
                     sector = map.FromName(sectorName) ??
                         throw new HttpError(404, "Not Found", $"The specified sector '{sectorName}' was not found.");
                 }
@@ -83,7 +84,7 @@ namespace Maps.API
 
                 if (HasOption("subsector"))
                 {
-                    string subsector = GetStringOption("subsector");
+                    string subsector = GetStringOption("subsector")!;
                     int index = sector.SubsectorIndexFor(subsector);
                     if (index == -1)
                         throw new HttpError(404, "Not Found", $"The specified subsector '{subsector}' was not found.");
@@ -91,14 +92,14 @@ namespace Maps.API
                 }
                 else if (HasOption("quadrant"))
                 {
-                    string quadrant = GetStringOption("quadrant");
+                    string quadrant = GetStringOption("quadrant")!;
                     int index = Sector.QuadrantIndexFor(quadrant);
                     if (index == -1)
                         throw new HttpError(400, "Bad Request", $"The specified quadrant '{quadrant}' is invalid.");
                     options.filter = (World world) => (world.Quadrant == index);
                 }
 
-                string mediaType = GetStringOption("type");
+                string? mediaType = GetStringOption("type");
                 Encoding encoding = mediaType switch
                 {
                     "SecondSurvey" => Util.UTF8_NO_BOM,

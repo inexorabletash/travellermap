@@ -1,4 +1,6 @@
-﻿using Maps.Utilities;
+﻿#nullable enable
+
+using Maps.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -14,7 +16,7 @@ namespace Maps.Serialization
         public bool includeHeader = true;
         public bool includeRoutes = false;
         public bool sscoords = false;
-        public Func<World, bool> filter = null;
+        public Func<World, bool>? filter = null;
     }
 
     internal abstract class SectorFileSerializer
@@ -31,7 +33,7 @@ namespace Maps.Serialization
 
         public abstract void Serialize(TextWriter writer, IEnumerable<World> worlds, SectorSerializeOptions options);
 
-        public static SectorFileSerializer ForType(string mediaType) =>
+        public static SectorFileSerializer ForType(string? mediaType) =>
             mediaType switch
             {
                 "SecondSurvey" => new SecondSurveySerializer(),
@@ -123,10 +125,10 @@ namespace Maps.Serialization
                     world.Name,
                     world.UWP,
                     world.Remarks,
-                    world.Importance,
-                    world.Economic,
-                    world.Cultural,
-                    DashIfEmpty(world.Nobility),
+                    world.Importance ?? "",
+                    world.Economic ?? "",
+                    world.Cultural ?? "",
+                    DashIfEmpty(world.Nobility ?? ""),
                     DashIfEmpty(world.Bases),
                     DashIfEmpty(world.Zone),
                     world.PBG,
@@ -135,7 +137,7 @@ namespace Maps.Serialization
                     world.Stellar
                 };
                 if (options.includeRoutes)
-                    row.Add(world.Routes);
+                    row.Add(world.Routes ?? "");
                 formatter.AddRow(row); 
             }
             formatter.Serialize(writer, options.includeHeader);
@@ -163,7 +165,7 @@ namespace Maps.Serialization
             foreach (World world in worlds.OrderBy(world => world.Subsector))
             {
                 writer.WriteLine(string.Join("\t", new string[] {
-                    world.Sector.Abbreviation,
+                    world.Sector?.Abbreviation ?? "",
                     world.SS,
                     options.sscoords ? world.SubsectorHex : world.Hex,
                     world.Name,
@@ -174,10 +176,10 @@ namespace Maps.Serialization
                     world.PBG,
                     world.Allegiance,
                     world.Stellar,
-                    world.Importance,
-                    world.Economic,
-                    world.Cultural,
-                    world.Nobility,
+                    world.Importance ?? "",
+                    world.Economic ?? "",
+                    world.Cultural ?? "",
+                    world.Nobility ?? "",
                     world.Worlds > 0 ? world.Worlds.ToString(CultureInfo.InvariantCulture) : "",
                     world.ResourceUnits.ToString(CultureInfo.InvariantCulture)
                 }));

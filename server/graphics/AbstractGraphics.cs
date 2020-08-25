@@ -1,4 +1,5 @@
-﻿using PdfSharp.Drawing;
+﻿#nullable enable
+using PdfSharp.Drawing;
 using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -6,7 +7,6 @@ using System.IO;
 
 namespace Maps.Graphics
 {
-#nullable enable
     internal interface AbstractGraphics : IDisposable
     {
         SmoothingMode SmoothingMode { get; set; }
@@ -252,5 +252,4 @@ namespace Maps.Graphics
         DashDotDot,
         Custom,
     }
-#nullable restore
 }

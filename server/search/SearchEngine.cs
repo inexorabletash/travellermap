@@ -1,3 +1,4 @@
+#nullable enable
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -143,7 +144,7 @@ namespace Maps.Search
                         if (!string.IsNullOrEmpty(sector.Abbreviation))
                         {
                             DataRow row = dt_sectors.NewRow();
-                            row.ItemArray = new object[] { sector.CanonicalMilieu, sector.X, sector.Y, sector.Abbreviation };
+                            row.ItemArray = new object[] { sector.CanonicalMilieu, sector.X, sector.Y, sector.Abbreviation! };
                             dt_sectors.Rows.Add(row);
                         }
 
@@ -175,7 +176,7 @@ namespace Maps.Search
                             continue;
 #endif
                         // NOTE: May need to page this at some point
-                        WorldCollection worlds = sector.GetWorlds(resourceManager, cacheResults: false);
+                        WorldCollection? worlds = sector.GetWorlds(resourceManager, cacheResults: false);
                         if (worlds == null)
                             continue;
 
@@ -294,7 +295,7 @@ namespace Maps.Search
             }
         }
 
-        public static IEnumerable<SearchResult> PerformSearch(string milieu, string query, SearchResultsType types, int maxResultsPerType, bool random = false)
+        public static IEnumerable<SearchResult> PerformSearch(string? milieu, string? query, SearchResultsType types, int maxResultsPerType, bool random = false)
         {
             List<SearchResult> results = new List<SearchResult>();
 
@@ -432,7 +433,7 @@ namespace Maps.Search
         private static IEnumerable<string> ParseTerms(string q) =>
             RE_TERMS.Matches(q).Cast<Match>().Select(m => m.Value).Where(s => !string.IsNullOrWhiteSpace(s));
 
-        public static WorldResult FindNearestWorldMatch(string name, string milieu, int x, int y)
+        public static WorldResult? FindNearestWorldMatch(string name, string milieu, int x, int y)
         {
             const string sql = "SELECT sector_x, sector_y, hex_x, hex_y, " +
                 "((@x - x) * (@x - x) + (@y - y) * (@y - y)) AS distance " +
@@ -462,13 +463,13 @@ namespace Maps.Search
         private static Regex SECTOR_HEX_REGEX = new Regex(@"^(?<sector>[A-Za-z0-9!' ]{3,}) (?<hex>\d{4})$",
             RegexOptions.Compiled | RegexOptions.CultureInvariant);
 
-        private static SearchResultsType ParseQuery(string query, SearchResultsType types, out List<string> clauses, out List<string> terms)
+        private static SearchResultsType ParseQuery(string? query, SearchResultsType types, out List<string> clauses, out List<string> terms)
         {
             clauses = new List<string>();
             terms = new List<string>();
             if (string.IsNullOrWhiteSpace(query))
                 return types;
-            query = query.Trim().ToLowerInvariant();
+            query = query!.Trim().ToLowerInvariant();
 
             Match m = SECTOR_HEX_REGEX.Match(query);
             if (m.Success)
@@ -486,7 +487,7 @@ namespace Maps.Search
             foreach (string t in ParseTerms(query))
             {
                 string term = t;
-                string op = null;
+                string? op = null;
                 bool quoted = false;
 
                 foreach (var o in OPS)

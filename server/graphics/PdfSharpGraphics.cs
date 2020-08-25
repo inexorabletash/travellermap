@@ -1,4 +1,5 @@
-﻿using Maps.Utilities;
+﻿#nullable enable
+using Maps.Utilities;
 using PdfSharp.Drawing;
 using PdfSharp.Pdf;
 using System;
@@ -10,7 +11,6 @@ using System.Linq;
 
 namespace Maps.Graphics
 {
-#nullable enable
     internal class PdfSharpGraphics : AbstractGraphics
     {
         private XGraphics g;
@@ -226,5 +226,4 @@ namespace Maps.Graphics
             public State(AbstractGraphics g, XGraphicsState state) : base(g) { this.state = state; }
         }
     }
-#nullable restore
 }

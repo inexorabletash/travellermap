@@ -1,4 +1,5 @@
-﻿using Maps.Utilities;
+﻿#nullable enable
+using Maps.Utilities;
 using System.Linq;
 using System.Web;
 using System.Xml.Serialization;
@@ -24,7 +25,7 @@ namespace Maps.API
 
                 if (HasOption("sector"))
                 {
-                    string sectorName = GetStringOption("sector");
+                    string sectorName = GetStringOption("sector")!;
                     Sector sec = map.FromName(sectorName) ??
                         throw new HttpError(404, "Not Found", $"The specified sector '{sectorName}' was not found.");
 
@@ -39,7 +40,7 @@ namespace Maps.API
                 if (loc.Hex.IsEmpty)
                     loc.Hex = Astrometrics.SectorCenter;
 
-                Sector sector = map.FromLocation(loc.Sector.X, loc.Sector.Y);
+                Sector? sector = map.FromLocation(loc.Sector.X, loc.Sector.Y);
 
                 var data = new Results.CreditsResult();
 
@@ -108,7 +109,7 @@ namespace Maps.API
                     //
                     // World Data
                     // 
-                    WorldCollection worlds = sector.GetWorlds(resourceManager);
+                    WorldCollection? worlds = sector.GetWorlds(resourceManager);
                     if (worlds != null)
                     {
                         World world = worlds[loc.Hex];
@@ -135,6 +136,7 @@ namespace Maps.API
 
 namespace Maps.API.Results
 {
+#nullable disable
     [XmlRoot(ElementName = "Data")]
     // public for XML serialization
     public class CreditsResult
@@ -175,4 +177,5 @@ namespace Maps.API.Results
         public string ProductAuthor { get; set; }
         public string ProductRef { get; set; }
     }
+#nullable restore
 }

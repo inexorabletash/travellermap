@@ -1,3 +1,4 @@
+#nullable enable
 using System;
 using System.Drawing;
 
@@ -31,7 +32,7 @@ namespace Maps.Search
         public Point Sector { get; set; }
         public Hex Hex { get; set; }
 
-        public void Resolve(SectorMap.Milieu sectorMap, ResourceManager resourceManager, out Sector sector, out World world)
+        public void Resolve(SectorMap.Milieu sectorMap, ResourceManager resourceManager, out Sector? sector, out World? world)
         {
             if (sectorMap == null)
                 throw new ArgumentNullException(nameof(sectorMap));
@@ -43,7 +44,7 @@ namespace Maps.Search
             if (sector == null)
                 return;
 
-            WorldCollection worlds = sector.GetWorlds(resourceManager, cacheResults: true);
+            WorldCollection? worlds = sector.GetWorlds(resourceManager, cacheResults: true);
             if (worlds != null)
                 world = worlds[Hex];
         }
@@ -73,7 +74,7 @@ namespace Maps.Search
         public Point SectorLocation { get; set; }
         public char Index { get; set; }
 
-        public void Resolve(SectorMap.Milieu sectorMap, out Sector sector, out Subsector subsector)
+        public void Resolve(SectorMap.Milieu sectorMap, out Sector? sector, out Subsector? subsector)
         {
             if (sectorMap == null)
                 throw new ArgumentNullException(nameof(sectorMap));
@@ -105,7 +106,7 @@ namespace Maps.Search
 
         public Point SectorCoords { get; set; }
 
-        public Sector Resolve(SectorMap.Milieu sectorMap)
+        public Sector? Resolve(SectorMap.Milieu sectorMap)
         {
             if (sectorMap == null)
                 throw new ArgumentNullException(nameof(sectorMap));
@@ -125,11 +126,11 @@ namespace Maps.Search
             Radius = radius;
         }
 
-        public string Label { get; set; }
+        public string Label { get; set; } = "";
         public Point Coords { get; set; }
         public int Radius { get; set; }
 
-        public Sector Resolve(SectorMap.Milieu sectorMap)
+        public Sector? Resolve(SectorMap.Milieu sectorMap)
         {
             if (sectorMap == null)
                 throw new ArgumentNullException(nameof(sectorMap));

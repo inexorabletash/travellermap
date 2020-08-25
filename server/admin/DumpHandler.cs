@@ -1,4 +1,5 @@
-﻿using Maps.Utilities;
+﻿#nullable enable
+using Maps.Utilities;
 using System.Collections.Generic;
 
 namespace Maps.Admin
@@ -20,7 +21,7 @@ namespace Maps.Admin
 
             foreach (Sector sector in map.Sectors)
             {
-                WorldCollection worlds = sector.GetWorlds(resourceManager);
+                WorldCollection? worlds = sector.GetWorlds(resourceManager);
                 if (worlds == null)
                     continue;
                 foreach (World world in worlds)

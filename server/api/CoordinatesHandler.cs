@@ -1,4 +1,5 @@
-﻿using Json;
+﻿#nullable enable
+using Json;
 using Maps.Utilities;
 using System.Drawing;
 using System.Web;
@@ -26,13 +27,13 @@ namespace Maps.API
                 // Accept either sector [& hex] or sx,sy [& hx,hy] or x,y
                 if (HasOption("sector"))
                 {
-                    string sectorName = GetStringOption("sector");
+                    string sectorName = GetStringOption("sector")!;
                     Sector sector = map.FromName(sectorName) ??
                         throw new HttpError(404, "Not Found", $"The specified sector '{sectorName}' was not found.");
 
                     if (HasOption("subsector"))
                     {
-                        string subsector = GetStringOption("subsector");
+                        string subsector = GetStringOption("subsector")!;
                         int index = sector.SubsectorIndexFor(subsector);
                         if (index == -1)
                             throw new HttpError(404, "Not Found", $"The specified subsector '{subsector}' was not found.");
@@ -73,6 +74,7 @@ namespace Maps.API
 
 namespace Maps.API.Results
 {
+#nullable disable
     [XmlRoot(ElementName = "Coordinates")]
     // public for XML serialization
     public class CoordinatesResult
@@ -93,4 +95,5 @@ namespace Maps.API.Results
         [XmlElement("y"), JsonName("y")]
         public int Y { get; set; }
     }
+#nullable restore
 }

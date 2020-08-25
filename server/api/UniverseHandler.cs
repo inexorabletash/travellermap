@@ -1,4 +1,5 @@
-﻿using Maps.API.Results;
+﻿#nullable enable
+using Maps.API.Results;
 using Maps.Utilities;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,9 +29,9 @@ namespace Maps.API
                 SectorMap map = SectorMap.GetInstance(resourceManager);
 
                 // Filter parameters
-                string milieu = GetStringOption("milieu") ?? GetStringOption("era");
+                string? milieu = GetStringOption("milieu") ?? GetStringOption("era");
                 bool requireData = GetBoolOption("requireData", defaultValue: false);
-                string[] tags = GetStringsOption("tag");
+                string[]? tags = GetStringsOption("tag");
 
                 UniverseResult data = new UniverseResult();
                 foreach (Sector sector in map.Sectors)
@@ -57,6 +58,7 @@ namespace Maps.API
 
 namespace Maps.API.Results
 {
+#nullable disable
     [XmlRoot(ElementName = "Universe")]
     // public for XML serialization
     public class UniverseResult
@@ -88,4 +90,5 @@ namespace Maps.API.Results
             public List<Name> Names { get => sector.Names; set { } }
         }
     }
+#nullable restore
 }

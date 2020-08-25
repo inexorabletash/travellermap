@@ -1,4 +1,5 @@
-﻿using Maps.Graphics;
+﻿#nullable enable
+using Maps.Graphics;
 using Maps.Rendering;
 using Maps.Utilities;
 using System;

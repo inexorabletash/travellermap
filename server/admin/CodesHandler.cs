@@ -1,4 +1,5 @@
-﻿using Maps.Utilities;
+﻿#nullable enable
+using Maps.Utilities;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -91,10 +92,10 @@ namespace Maps.Admin
             context.Response.ContentType = ContentTypes.Text.Plain;
             context.Response.StatusCode = 200;
 
-            string sectorName = GetStringOption(context, "sector");
-            string type = GetStringOption(context, "type");
-            string regex = GetStringOption(context, "regex");
-            string milieu = GetStringOption(context, "milieu");
+            string? sectorName = GetStringOption(context, "sector");
+            string? type = GetStringOption(context, "type");
+            string? regex = GetStringOption(context, "regex");
+            string? milieu = GetStringOption(context, "milieu");
 
             // NOTE: This (re)initializes a static data structure used for 
             // resolving names into sector locations, so needs to be run
@@ -118,7 +119,7 @@ namespace Maps.Admin
 
             foreach (var sector in sectorQuery)
             {
-                WorldCollection worlds = sector.GetWorlds(resourceManager, cacheResults: false);
+                WorldCollection? worlds = sector.GetWorlds(resourceManager, cacheResults: false);
                 if (worlds == null)
                     continue;
 

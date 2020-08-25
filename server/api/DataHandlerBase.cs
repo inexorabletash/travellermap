@@ -1,4 +1,5 @@
-﻿#define LEGACY_STYLES
+﻿#nullable enable
+#define LEGACY_STYLES
 
 using Json;
 using Maps.Rendering;
@@ -93,7 +94,7 @@ namespace Maps.API
             public abstract void Process(ResourceManager resourceManager);
 
             #region Response Methods
-            protected void SendResult(object o, Encoding encoding = null)
+            protected void SendResult(object o, Encoding? encoding = null)
             {
                 SendResult(this, o, encoding);
             }
@@ -101,7 +102,7 @@ namespace Maps.API
             private static readonly Regex SIMPLE_JS_IDENTIFIER_REGEX = new Regex(@"^[A-Za-z_][A-Za-z0-9_]*$", RegexOptions.Compiled);
             public static bool IsSimpleJSIdentifier(string s) => SIMPLE_JS_IDENTIFIER_REGEX.IsMatch(s);
 
-            public void SendResult(ITypeAccepter accepter, object o, Encoding encoding = null)
+            public void SendResult(ITypeAccepter accepter, object o, Encoding? encoding = null)
             {
                 // Vary: * is basically ignored by browsers
                 Context.Response.Cache.SetOmitVaryStar(true);
@@ -138,7 +139,7 @@ namespace Maps.API
                 new XmlSerializer(o.GetType()).Serialize(Context.Response.OutputStream, o);
             }
 
-            public void SendText(object o, Encoding encoding = null)
+            public void SendText(object o, Encoding? encoding = null)
             {
                 Context.Response.ContentType = ContentTypes.Text.Plain;
                 if (encoding == null)
@@ -208,10 +209,10 @@ namespace Maps.API
             public bool HasOption(string name, IDictionary<string, object> queryDefaults)
                 => Context.Request[name] != null || (queryDefaults != null && queryDefaults.ContainsKey(name));
 
-            protected string GetStringOption(string name, string defaultValue = null)
+            protected string? GetStringOption(string name, string? defaultValue = null)
                 => GetStringOption(name, Defaults(Context), defaultValue);
 
-            public string GetStringOption(string name, IDictionary<string, object> queryDefaults, string defaultValue = null)
+            public string? GetStringOption(string name, IDictionary<string, object> queryDefaults, string? defaultValue = null)
             {
                 if (Context.Request[name] != null)
                     return Context.Request[name];
@@ -220,12 +221,12 @@ namespace Maps.API
                 return defaultValue;
             }
 
-            protected string[] GetStringsOption(string name, string[] defaultValue = null)
+            protected string[]? GetStringsOption(string name, string[]? defaultValue = null)
             {
-                string s = GetStringOption(name);
+                string? s = GetStringOption(name);
                 if (string.IsNullOrWhiteSpace(s))
                     return defaultValue;
-                return s.Split('|');
+                return s!.Split('|');
             }
 
             protected int GetIntOption(string name, int defaultValue) => GetIntOption(name, Defaults(Context), defaultValue);
@@ -301,7 +302,7 @@ namespace Maps.API
 
                 if (HasOption("style", queryDefaults))
                 {
-                    string opt = GetStringOption("style", queryDefaults).ToLowerInvariant();
+                    string opt = GetStringOption("style", queryDefaults)!.ToLowerInvariant();
                     if (!s_nameToStyle.ContainsKey(opt))
                         throw new HttpError(400, "Bad Request", $"Invalid style option: {opt}");
                     style = s_nameToStyle[opt];
@@ -318,9 +319,9 @@ namespace Maps.API
             // ITypeAccepter
             public IEnumerable<string> AcceptTypes(HttpContext context, bool ignoreHeaderFallbacks = false)
             {
-                IDictionary<string, object> queryDefaults = null;
+                IDictionary<string, object>? queryDefaults = null;
                 if (context.Items.Contains("RouteData"))
-                    queryDefaults = (context.Items["RouteData"] as RouteData).Values;
+                    queryDefaults = (context.Items["RouteData"] as RouteData)!.Values;
 
                 if (context.Request["accept"] != null)
                     yield return context.Request["accept"].Replace(' ', '+'); // Hack to allow "image/svg+xml" w/o escaping

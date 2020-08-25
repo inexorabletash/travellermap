@@ -1,4 +1,5 @@
-﻿using System;
+﻿#nullable enable
+using System;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -82,7 +83,7 @@ namespace Maps.Serialization
                     }
                 case "REGION":
                     {
-                        string[] tokens = value.Split((char[])null, StringSplitOptions.RemoveEmptyEntries);
+                        string[] tokens = value.Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries);
                         if (!Regex.IsMatch(tokens.Last(), @"^\d{4}$"))
                             sector.Regions.Add(new Region(string.Join(" ", tokens.Take(tokens.Count() - 1)), tokens.Last()));
                         else
@@ -92,7 +93,7 @@ namespace Maps.Serialization
 
                 case "BORDER":
                     {
-                        string[] tokens = value.Split((char[])null, StringSplitOptions.RemoveEmptyEntries);
+                        string[] tokens = value.Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries);
                         if (!Regex.IsMatch(tokens.Last(), @"^\d{4}$"))
                             sector.Borders.Add(new Border(string.Join(" ", tokens.Take(tokens.Count() - 1)), tokens.Last()));
                         else
@@ -102,7 +103,7 @@ namespace Maps.Serialization
 
                 case "ROUTE":
                     {
-                        var tokens = value.Split((char[])null, StringSplitOptions.RemoveEmptyEntries);
+                        var tokens = value.Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries);
                         int cur = 0;
                         Route route = new Route();
 

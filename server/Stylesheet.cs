@@ -1,3 +1,4 @@
+#nullable enable
 using Maps.Graphics;
 using Maps.Utilities;
 using System;
@@ -7,7 +8,6 @@ using System.Text.RegularExpressions;
 
 namespace Maps.Rendering
 {
-#nullable enable
     public static class TravellerColors
     {
         public static readonly Color Red = Color.FromArgb(0xE3, 0x27, 0x36);
@@ -1495,5 +1495,4 @@ namespace Maps.Rendering
         }
         #endregion
     }
-#nullable restore
 }

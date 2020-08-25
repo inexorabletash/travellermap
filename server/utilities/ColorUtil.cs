@@ -1,9 +1,9 @@
-﻿using System;
+﻿#nullable enable
+using System;
 using System.Drawing;
 
 namespace Maps.Utilities
 {
-#nullable enable
     internal static class ColorUtil
     {
         public static void RGBtoXYZ(int r, int g, int b, out double x, out double y, out double z)
@@ -63,5 +63,4 @@ namespace Maps.Utilities
             }
         }
     }
-#nullable restore
 }

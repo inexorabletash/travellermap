@@ -1,3 +1,4 @@
+#nullable enable
 using Maps.Serialization;
 using Maps.Utilities;
 using System.Collections.Generic;
@@ -25,7 +26,7 @@ namespace Maps.API
                 // before any other objects (e.g. Worlds) are loaded.
                 SectorMap.Milieu map = SectorMap.ForMilieu(resourceManager, GetStringOption("milieu"));
                 Sector sector;
-                string postedMilieu = null;
+                string? postedMilieu = null;
 
                 if (Context.Request.HttpMethod == "POST")
                 {
@@ -49,7 +50,7 @@ namespace Maps.API
                 }
                 else if (HasOption("sector"))
                 {
-                    string sectorName = GetStringOption("sector");
+                    string sectorName = GetStringOption("sector")!;
                     sector = map.FromName(sectorName) ??
                         throw new HttpError(404, "Not Found", $"The specified sector '{sectorName}' was not found.");
                 }
@@ -66,6 +67,7 @@ namespace Maps.API
 
 namespace Maps.API.Results
 {
+#nullable disable 
     [XmlRoot("Sector")]
     public class SectorMetadata
     {
@@ -163,5 +165,5 @@ namespace Maps.API.Results
             public string Ref { get => sector.DataFile?.Ref ?? sector.Ref; set { } }
         }
     }
-
+#nullable restore
 }

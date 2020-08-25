@@ -1,4 +1,5 @@
-﻿using Maps.Utilities;
+﻿#nullable enable
+using Maps.Utilities;
 using System.Globalization;
 using System.Linq;
 
@@ -14,10 +15,10 @@ namespace Maps.Admin
             context.Response.ContentType = ContentTypes.Text.Plain;
             context.Response.BufferOutput = false;
 
-            string sectorName = GetStringOption(context, "sector");
-            string type = GetStringOption(context, "type");
-            string milieu = GetStringOption(context, "milieu");
-            string tag = GetStringOption(context, "tag");
+            string? sectorName = GetStringOption(context, "sector");
+            string? type = GetStringOption(context, "type");
+            string? milieu = GetStringOption(context, "milieu");
+            string? tag = GetStringOption(context, "tag");
             bool hide_tl = GetBoolOption(context, "hide-tl");
             bool hide_gov = GetBoolOption(context, "hide-gov");
             bool hide_stellar = GetBoolOption(context, "hide-stellar");
@@ -48,7 +49,7 @@ namespace Maps.Admin
 
                 try
                 {
-                    WorldCollection worlds = sector.GetWorlds(resourceManager, cacheResults: false);
+                    WorldCollection? worlds = sector.GetWorlds(resourceManager, cacheResults: false);
                     if (worlds != null)
                     {
                         double pop = worlds.Select(w => w.Population).Sum();
@@ -56,15 +57,17 @@ namespace Maps.Admin
                             context.Response.Output.WriteLine($"{worlds.Count()} world(s) - population: {pop / 1e9:#,###.##} billion");
                         else
                             context.Response.Output.WriteLine($"{worlds.Count()} world(s) - population: N/A");
-                        worlds.ErrorList.Report(context.Response.Output, severity, (ErrorLogger.Record record) =>
+#if DEBUG
+                        worlds.ErrorList!.Report(context.Response.Output, severity, (ErrorLogger.Record record) =>
                         {
                             if (hide_gov && (record.message.StartsWith("UWP: Gov") || record.message.StartsWith("Gov"))) return false;
                             if (hide_tl && record.message.StartsWith("UWP: TL")) return false;
                             if (hide_stellar && record.message.StartsWith("Invalid stellar data:")) return false;
                             return true;
                         });
-                        error_count += worlds.ErrorList.CountOf(ErrorLogger.Severity.Error);
-                        warning_count += worlds.ErrorList.CountOf(ErrorLogger.Severity.Warning);
+                        error_count += worlds!.ErrorList.CountOf(ErrorLogger.Severity.Error);
+                        warning_count += worlds!.ErrorList.CountOf(ErrorLogger.Severity.Warning);
+#endif
                     }
                     else
                     {
@@ -82,7 +85,7 @@ namespace Maps.Admin
                 {
                     if (string.IsNullOrWhiteSpace(item.Allegiance))
                         continue;
-                    if (sector.GetAllegianceFromCode(item.Allegiance) == null)
+                    if (sector.GetAllegianceFromCode(item.Allegiance!) == null)
                         context.Response.Output.WriteLine($"Undefined allegiance code: {item.Allegiance} (on {item.GetType().Name})");
                 }
 

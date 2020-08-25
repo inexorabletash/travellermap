@@ -1,4 +1,5 @@
-﻿using Json;
+﻿#nullable enable
+using Json;
 using Maps.API.Results;
 using Maps.Search;
 using Maps.Utilities;
@@ -45,7 +46,7 @@ namespace Maps.API
                 //
                 // Do the search
                 //
-                string milieu = GetStringOption("milieu", SectorMap.DEFAULT_MILIEU);
+                string? milieu = GetStringOption("milieu", SectorMap.DEFAULT_MILIEU);
                 SectorMap.Milieu map = SectorMap.ForMilieu(resourceManager, milieu);
 
                 int NUM_RESULTS;
@@ -58,7 +59,7 @@ namespace Maps.API
                 else
                 {
                     SearchEngine.SearchResultsType types = 0;
-                    foreach (var type in GetStringsOption("types", new string[] { "default" }))
+                    foreach (var type in GetStringsOption("types", new string[] { "default" })!)
                     {
                         switch (type) {
                             case "worlds": types |= SearchEngine.SearchResultsType.Worlds; break;
@@ -98,6 +99,7 @@ namespace Maps.API
 
 namespace Maps.API.Results
 {
+#nullable disable
     [JsonName("Results")]
     [XmlRoot(ElementName = "results")]
     public class SearchResults
@@ -267,4 +269,5 @@ namespace Maps.API.Results
             throw new ArgumentException($"Unexpected result type: {result.GetType().Name}", nameof(result));
         }
     }
+#nullable restore
 }

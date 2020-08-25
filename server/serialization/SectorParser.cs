@@ -1,4 +1,5 @@
-﻿using Maps.Utilities;
+﻿#nullable enable
+using Maps.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -14,7 +15,7 @@ namespace Maps.Serialization
 
         public abstract string Name { get; }
         public abstract Encoding Encoding { get; }
-        public void Parse(Stream stream, WorldCollection worlds, ErrorLogger errors)
+        public void Parse(Stream stream, WorldCollection worlds, ErrorLogger? errors)
         {
             using (var reader = new StreamReader(stream, Encoding, detectEncodingFromByteOrderMarks: true, bufferSize: BUFFER_SIZE))
             {
@@ -22,9 +23,9 @@ namespace Maps.Serialization
             }
         }
 
-        public abstract void Parse(TextReader reader, WorldCollection worlds, ErrorLogger errors);
+        public abstract void Parse(TextReader reader, WorldCollection worlds, ErrorLogger? errors);
 
-        public static SectorFileParser ForType(string mediaType) =>
+        public static SectorFileParser ForType(string? mediaType) =>
             mediaType switch
             {
                 "SecondSurvey" => new SecondSurveyParser(),
@@ -37,7 +38,7 @@ namespace Maps.Serialization
         private static readonly Regex SNIFF_TAB_DELIMITED_REGEX = new Regex(@"^[^\t]*(\t[^\t]*){9,}$", RegexOptions.Compiled | RegexOptions.CultureInvariant);
         private static readonly Regex SNIFF_SECONDSURVEY_REGEX = new Regex(@"\{.*\} +\(.*\) +\[.*\]", RegexOptions.Compiled | RegexOptions.CultureInvariant);
 
-        public static string SniffType(Stream stream)
+        public static string? SniffType(Stream stream)
         {
             long pos = stream.Position;
             try
@@ -77,7 +78,7 @@ namespace Maps.Serialization
         public override string Name => "SEC (Legacy)";
         public override Encoding Encoding => Encoding.UTF8;
 
-        public override void Parse(TextReader reader, WorldCollection worlds, ErrorLogger errors)
+        public override void Parse(TextReader reader, WorldCollection worlds, ErrorLogger? errors)
         {
             int lineNumber = 0;
             for (string line = reader.ReadLine(); line != null; line = reader.ReadLine())
@@ -121,7 +122,7 @@ namespace Maps.Serialization
             @"^[A-P]-[0-9]{1,2}$",
             RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.Singleline | RegexOptions.ExplicitCapture | RegexOptions.IgnorePatternWhitespace);
 
-        private static void ParseWorld(WorldCollection worlds, string line, int lineNumber, ErrorLogger errors)
+        private static void ParseWorld(WorldCollection worlds, string line, int lineNumber, ErrorLogger? errors)
         {
             if (!UWP_REGEX.IsMatch(line))
             {
@@ -174,7 +175,7 @@ namespace Maps.Serialization
             }
         }
 
-        private static void ParseRest(string rest, int lineNumber, string line, World world, ErrorLogger errors)
+        private static void ParseRest(string rest, int lineNumber, string line, World world, ErrorLogger? errors)
         {
             // Assume stellar data, try to parse it
             try
@@ -219,21 +220,21 @@ namespace Maps.Serialization
         private class FieldChecker
         {
             private Dictionary<string, string> dict;
-            private ErrorLogger errors;
+            private ErrorLogger? errors;
             private int lineNumber;
             private string line;
             bool hadError = false;
 
             public bool HadError => hadError;
 
-            public FieldChecker(Dictionary<string, string> dict, ErrorLogger errors, int lineNumber, string line)
+            public FieldChecker(Dictionary<string, string> dict, ErrorLogger? errors, int lineNumber, string line)
             {
                 this.dict = dict;
                 this.errors = errors;
                 this.lineNumber = lineNumber;
                 this.line = line;
             }
-            public string Check(string key, Regex regex = null, CheckOptions options = 0, string message = null)
+            public string? Check(string key, Regex? regex = null, CheckOptions options = 0, string? message = null)
             {
                 if (!dict.ContainsKey(key))
                 {
@@ -266,10 +267,10 @@ namespace Maps.Serialization
                 return value;
             }
 
-            public string Check(ICollection<string> keys, Regex regex = null, CheckOptions options = 0, string message = null)
+            public string? Check(ICollection<string> keys, Regex? regex = null, CheckOptions options = 0, string? message = null)
                 => Check(keys, value => regex?.IsMatch(value) ?? true, options, message);
 
-            public string Check(ICollection<string> keys, Func<string, bool> validate, CheckOptions options = 0, string message = null)
+            public string? Check(ICollection<string> keys, Func<string, bool> validate, CheckOptions options = 0, string? message = null)
             {
                 foreach (var key in keys)
                 {
@@ -306,29 +307,29 @@ namespace Maps.Serialization
             }
         }
 
-        protected static void ParseWorld(WorldCollection worlds, Dictionary<string, string> dict, string line, int lineNumber, ErrorLogger errors)
+        protected static void ParseWorld(WorldCollection worlds, Dictionary<string, string> dict, string line, int lineNumber, ErrorLogger? errors)
         {
             try
             {
                 FieldChecker checker = new FieldChecker(dict, errors, lineNumber, line);
                 World world = new World()
                 {
-                    Hex = checker.Check("Hex", HEX_REGEX),
-                    Name = checker.Check("Name"),
-                    UWP = checker.Check("UWP", UWP_REGEX),
-                    Remarks = checker.Check(new string[] { "Remarks", "Trade Codes", "Comments" },options: CheckOptions.EmptyIfDash),
+                    Hex = checker.Check("Hex", HEX_REGEX) ?? "",
+                    Name = checker.Check("Name") ?? "",
+                    UWP = checker.Check("UWP", UWP_REGEX) ?? "",
+                    Remarks = checker.Check(new string[] { "Remarks", "Trade Codes", "Comments" },options: CheckOptions.EmptyIfDash) ?? "",
                     Importance = checker.Check(new string[] { "{Ix}", "{ Ix }", "Ix" }, options: CheckOptions.Optional),
                     Economic = checker.Check(new string[] { "(Ex)", "( Ex )", "Ex" }, options: CheckOptions.Optional),
                     Cultural = checker.Check(new string[] { "[Cx]", "[ Cx ]", "Cx" }, options: CheckOptions.Optional),
                     Nobility = checker.Check(new string[] { "N", "Nobility" }, NOBILITY_REGEX, CheckOptions.EmptyIfDash | CheckOptions.Optional),
-                    Bases = checker.Check(new string[] { "B", "Bases" }, BASES_REGEX, CheckOptions.EmptyIfDash),
-                    Zone = checker.Check(new string[] { "Z", "Zone" }, ZONE_REGEX, CheckOptions.EmptyIfDash),
-                    PBG = checker.Check("PBG", PBG_REGEX),
+                    Bases = checker.Check(new string[] { "B", "Bases" }, BASES_REGEX, CheckOptions.EmptyIfDash) ?? "",
+                    Zone = checker.Check(new string[] { "Z", "Zone" }, ZONE_REGEX, CheckOptions.EmptyIfDash) ?? "",
+                    PBG = checker.Check("PBG", PBG_REGEX) ?? "",
                     Allegiance = checker.Check(new string[] { "A", "Al", "Allegiance" },
                         a => a.Length != 4 || SecondSurvey.IsKnownT5Allegiance(a),
                         worlds.IsUserData ? CheckOptions.Warning : CheckOptions.Default,
-                        " - 4-character codes are allowed in custom data but not submitted data"),
-                    Stellar = checker.Check(new string[] { "Stellar", "Stars", "Stellar Data" }, STARS_REGEX, CheckOptions.Warning)
+                        " - 4-character codes are allowed in custom data but not submitted data") ?? "",
+                    Stellar = checker.Check(new string[] { "Stellar", "Stars", "Stellar Data" }, STARS_REGEX, CheckOptions.Warning) ?? ""
                 };
                 if (byte.TryParse(checker.Check(new string[] { "W", "Worlds" }, options: CheckOptions.Optional), NumberStyles.Integer, CultureInfo.InvariantCulture, out byte w))
                     world.Worlds = w;
@@ -368,7 +369,7 @@ namespace Maps.Serialization
     {
         public override string Name => "T5 Second Survey - Column Delimited";
         public override Encoding Encoding => Encoding.UTF8;
-        public override void Parse(TextReader reader, WorldCollection worlds, ErrorLogger errors)
+        public override void Parse(TextReader reader, WorldCollection worlds, ErrorLogger? errors)
         {
             foreach (var row in new ColumnParser(reader).Data)
                 ParseWorld(worlds, row.dict, row.line, row.lineNumber, errors);
@@ -379,7 +380,7 @@ namespace Maps.Serialization
     {
         public override string Name => "T5 Second Survey - Tab Delimited";
         public override Encoding Encoding => Encoding.UTF8;
-        public override void Parse(TextReader reader, WorldCollection worlds, ErrorLogger errors)
+        public override void Parse(TextReader reader, WorldCollection worlds, ErrorLogger? errors)
         {
             TSVParser parser = new TSVParser(reader);
             foreach (var row in parser.Data)
@@ -418,7 +419,7 @@ namespace Maps.Serialization
         private void ParseLine(string line, int lineNumber)
         {
             string[] cols = line.Split('\t');
-            if (cols.Length != header.Length)
+            if (cols.Length != header!.Length)
                 throw new ParseException($"ERROR (Tab Parse) ({lineNumber}): {line}");
 
             Dictionary<string, string> dict = new Dictionary<string, string>();
@@ -435,7 +436,7 @@ namespace Maps.Serialization
             public string line;
         }
 
-        private string[] header;
+        private string[]? header;
         private List<Row> data = new List<Row>();
         public List<Row> Data => data;
     }

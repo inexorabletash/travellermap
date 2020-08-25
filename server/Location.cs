@@ -1,10 +1,10 @@
-﻿using System;
+﻿#nullable enable
+using System;
 using System.Drawing;
 using System.Xml.Serialization;
 
 namespace Maps
 {
-#nullable enable
     public struct Location : IEquatable<Location>
     {
         internal Location(Point sectorLocation, int hex)
@@ -49,5 +49,4 @@ namespace Maps
         public string SubsectorHexString => Hex.ToSubsectorString();
         public static readonly Location Empty = new Location();
     }
-#nullable restore
 }

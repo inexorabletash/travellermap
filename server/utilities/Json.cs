@@ -1,3 +1,4 @@
+#nullable enable
 using System;
 using System.Collections;
 using System.ComponentModel;
@@ -9,7 +10,6 @@ using System.Text;
 
 namespace Json
 {
-#nullable enable
     [AttributeUsage( AttributeTargets.All )]
     internal sealed class JsonNameAttribute : Attribute
     {
@@ -226,5 +226,4 @@ namespace Json
             return sb.ToString();
         }
     }
-#nullable restore
 }

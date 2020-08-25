@@ -1,4 +1,5 @@
-﻿using Maps.Graphics;
+﻿#nullable enable
+using Maps.Graphics;
 using Maps.Rendering;
 using Maps.Utilities;
 using System;
@@ -58,7 +59,7 @@ namespace Maps.API
                 }
                 else if (HasOption("domain"))
                 {
-                    string domain = GetStringOption("domain");
+                    string domain = GetStringOption("domain")!;
                     double x, y, w = 2, h = 2;
                     switch (domain.ToLowerInvariant())
                     {
@@ -125,13 +126,13 @@ namespace Maps.API
                 else
                 {
                     // Sector - either POSTed or specified by name
-                    Sector sector = null;
+                    Sector? sector = null;
                     options &= ~MapOptions.SectorGrid;
 
                     if (Context.Request.HttpMethod == "POST")
                     {
                         bool lint = GetBoolOption("lint", defaultValue: false);
-                        Func<ErrorLogger.Record, bool> filter = null;
+                        Func<ErrorLogger.Record, bool>? filter = null;
                         if (lint)
                         {
                             bool hide_uwp = GetBoolOption("hide-uwp", defaultValue: false);
@@ -169,9 +170,9 @@ namespace Maps.API
                         title = sector.Names[0].Text;
                     }
 
-                    if (sector != null && HasOption("subsector") && GetStringOption("subsector").Length > 0)
+                    if (sector != null && HasOption("subsector") && GetStringOption("subsector")!.Length > 0)
                     {
-                        string subsector = GetStringOption("subsector");
+                        string subsector = GetStringOption("subsector")!;
                         int index = sector.SubsectorIndexFor(subsector);
                         if (index == -1)
                             throw new HttpError(404, "Not Found", $"The specified subsector '{subsector}' was not found.");
@@ -184,9 +185,9 @@ namespace Maps.API
 
                         title = $"{title} - Subsector {'A' + index}";
                     }
-                    else if (sector != null && HasOption("quadrant") && GetStringOption("quadrant").Length > 0)
+                    else if (sector != null && HasOption("quadrant") && GetStringOption("quadrant")!.Length > 0)
                     {
-                        string quadrant = GetStringOption("quadrant");
+                        string quadrant = GetStringOption("quadrant")!;
                         int index;
                         switch (quadrant.ToLowerInvariant())
                         {
@@ -204,6 +205,10 @@ namespace Maps.API
                         options &= ~(MapOptions.SectorGrid | MapOptions.SubsectorGrid | MapOptions.SectorsMask);
 
                         title = $"{title} - {quadrant} Quadrant";
+                    }
+                    else if (sector == null)
+                    {
+                        throw new HttpError(400, "Bad Request", "No sector specified.");
                     }
                     else
                     {

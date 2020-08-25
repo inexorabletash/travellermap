@@ -1,4 +1,5 @@
-﻿using Maps.Utilities;
+﻿#nullable enable
+using Maps.Utilities;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -6,7 +7,6 @@ using System.Linq;
 
 namespace Maps
 {
-#nullable enable
     internal static class SecondSurvey
     {
         #region eHex
@@ -243,7 +243,7 @@ namespace Maps
             return alleg.Base!;
         }
 
-        public static string? T5AllegianceCodeToLegacyCode(string t5code)
+        public static string T5AllegianceCodeToLegacyCode(string t5code)
         {
             if (!s_t5Allegiances.ContainsKey(t5code))
                 return t5code;
@@ -404,5 +404,4 @@ namespace Maps
         }
         #endregion
     }
-#nullable restore
 }

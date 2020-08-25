@@ -1,3 +1,4 @@
+#nullable enable
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -8,7 +9,6 @@ using System.Xml.Serialization;
 
 namespace Maps
 {
-#nullable enable
     [Serializable]
     public class MapNotInitializedException : Exception
     {
@@ -217,8 +217,8 @@ namespace Maps
         public class Milieu
         {
             private SectorMap map;
-            private string milieu;
-            public Milieu(SectorMap map, string milieu)
+            private string? milieu;
+            public Milieu(SectorMap map, string? milieu)
             {
                 this.map = map;
                 this.milieu = milieu;
@@ -231,7 +231,7 @@ namespace Maps
                 => map.FromName(name, milieu);
         }
 
-        public static Milieu ForMilieu(ResourceManager resourceManager, string milieu)
+        public static Milieu ForMilieu(ResourceManager resourceManager, string? milieu)
             => new Milieu(SectorMap.GetInstance(resourceManager), milieu);
 
         /// <summary>
@@ -311,5 +311,4 @@ namespace Maps
                 Sectors.AddRange(otherCollection.Sectors);
         }
     }
-#nullable restore
 }

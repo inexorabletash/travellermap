@@ -1,4 +1,5 @@
 //#define EXTENDED_SYSTEM_PARSING
+#nullable enable
 
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,6 @@ using System.Text.RegularExpressions;
 
 namespace Maps
 {
-#nullable enable
     // TODO: Expand to handle non-T5SS data
     internal static class StellarData
     {
@@ -568,5 +568,4 @@ namespace Maps
         }
 
     }
-#nullable restore
 }

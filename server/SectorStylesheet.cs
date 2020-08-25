@@ -1,4 +1,5 @@
-﻿using Maps.Utilities;
+﻿#nullable enable
+using Maps.Utilities;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -8,7 +9,6 @@ using System.Text;
 
 namespace Maps
 {
-#nullable enable
     internal class SectorStylesheet
     {
         // Grammar: 
@@ -322,10 +322,10 @@ namespace Maps
         internal class StyleResult
         {
             public readonly string element;
-            public readonly string code;
+            public readonly string? code;
             public readonly IReadOnlyDictionary<string, string> dict;
 
-            public StyleResult(string element, string code, IReadOnlyDictionary<string, string> dict)
+            public StyleResult(string element, string? code, IReadOnlyDictionary<string, string> dict)
             {
                 this.element = element;
                 this.code = code;
@@ -369,7 +369,7 @@ namespace Maps
         }
 
         // Concurrent to allow static instance in Sector
-        private ConcurrentDictionary<Tuple<string, string>, StyleResult> memo = new ConcurrentDictionary<Tuple<string, string>, StyleResult>();
+        private ConcurrentDictionary<Tuple<string, string?>, StyleResult> memo = new ConcurrentDictionary<Tuple<string, string?>, StyleResult>();
 
         private List<SectorStylesheet> Chain()
         {
@@ -383,7 +383,7 @@ namespace Maps
             return list;
         }
 
-        public StyleResult Apply(string element, string code)
+        public StyleResult Apply(string element, string? code)
         {
             var key = Tuple.Create(element, code);
             if (memo.TryGetValue(key, out StyleResult result))
@@ -416,7 +416,7 @@ namespace Maps
             return result;
         }
 
-        private static int Match(string element, string code, Selector selector)
+        private static int Match(string element, string? code, Selector selector)
         {
             if (element != selector.element)
                 return 0;
@@ -429,5 +429,4 @@ namespace Maps
 
         private readonly IList<Rule> rules;
     }
-#nullable restore
 }

@@ -1,4 +1,5 @@
-﻿using Maps.Search;
+﻿#nullable enable
+using Maps.Search;
 using Maps.Utilities;
 using System;
 using System.Data.SqlClient;
@@ -48,7 +49,7 @@ namespace Maps.Admin
         protected abstract void Process(HttpContext context, ResourceManager resourceManager);
 
         // TODO: Dedupe w/ DataResponder
-        protected static string GetStringOption(HttpContext context, string name)
+        protected static string? GetStringOption(HttpContext context, string name)
         {
             if (context.Request[name] != null)
                 return context.Request[name];
@@ -93,7 +94,7 @@ namespace Maps.Admin
             WriteLine("<h1>Traveller Map - Administration</h1>");
             context.Response.Flush();
 
-            string action = GetStringOption(context, "action");
+            string? action = GetStringOption(context, "action");
             switch (action)
             {
                 case "reindex": Reindex(context); return;
@@ -126,7 +127,7 @@ namespace Maps.Admin
             Write(context.Response, "<b>&Omega;</b>");
         }
 
-        private static void WriteStat<T>(HttpResponse response, string name, T value)
+        private static void WriteStat<T>(HttpResponse response, string name, T value) where T : notnull
         {
             Write(response, name + ": " + value.ToString());
         }

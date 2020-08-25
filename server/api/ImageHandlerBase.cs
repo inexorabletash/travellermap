@@ -1,3 +1,4 @@
+#nullable enable
 using Maps.Graphics;
 using Maps.Rendering;
 using Maps.Serialization;
@@ -30,12 +31,12 @@ namespace Maps.API
                 bool transparent = false)
             {
                 ProduceResponse(context, this, title, ctx, tileSize, transform, transparent,
-                    (context.Items["RouteData"] as System.Web.Routing.RouteData).Values);
+                    (context.Items["RouteData"] as System.Web.Routing.RouteData)!.Values);
             }
 
             protected void ProduceResponse(HttpContext context, ITypeAccepter accepter, string title, RenderContext ctx, Size tileSize,
                 AbstractMatrix transform,
-                bool transparent = false, IDictionary<string, object> queryDefaults = null)
+                bool transparent, IDictionary<string, object> queryDefaults)
             {
                 // New-style Options
 
@@ -79,7 +80,7 @@ namespace Maps.API
 
                 // TODO: Return an error if pattern is invalid?
                 ctx.Styles.highlightWorldsPattern = HighlightWorldPattern.Parse(
-                    GetStringOption("hw", queryDefaults: queryDefaults, defaultValue: String.Empty).Replace(' ', '+'));
+                    GetStringOption("hw", queryDefaults: queryDefaults, defaultValue: String.Empty)!.Replace(' ', '+'));
                 ctx.Styles.highlightWorlds.visible = ctx.Styles.highlightWorldsPattern != null;
 
                 double devicePixelRatio = GetDoubleOption("dpr", defaultValue: 1, queryDefaults: queryDefaults);
@@ -104,7 +105,7 @@ namespace Maps.API
                 }
                 #endregion
 
-                MemoryStream ms = null;
+                MemoryStream? ms = null;
                 if (dataURI)
                     ms = new MemoryStream();
                 Stream outputStream = ms ?? Context.Response.OutputStream;
@@ -209,7 +210,7 @@ namespace Maps.API
                 {
                     string contentType = context.Response.ContentType;
                     context.Response.ContentType = ContentTypes.Text.Plain;
-                    ms.Seek(0, SeekOrigin.Begin);
+                    ms!.Seek(0, SeekOrigin.Begin);
 
                     context.Response.Output.Write("data:");
                     context.Response.Output.Write(contentType);
@@ -219,7 +220,7 @@ namespace Maps.API
                     System.Security.Cryptography.ICryptoTransform encoder = new System.Security.Cryptography.ToBase64Transform();
                     using (System.Security.Cryptography.CryptoStream cs = new System.Security.Cryptography.CryptoStream(context.Response.OutputStream, encoder, System.Security.Cryptography.CryptoStreamMode.Write))
                     {
-                        ms.WriteTo(cs);
+                        ms!.WriteTo(cs);
                         cs.FlushFinalBlock();
                     }
                 }
@@ -229,7 +230,7 @@ namespace Maps.API
                 return;
             }
 
-            private static Bitmap TryConstructBitmap(int width, int height, PixelFormat pixelFormat)
+            private static Bitmap? TryConstructBitmap(int width, int height, PixelFormat pixelFormat)
             {
                 try
                 {
@@ -284,7 +285,7 @@ namespace Maps.API
                 }
             }
 
-            private static void BitmapResponse(HttpResponse response, Stream outputStream, Stylesheet styles, Bitmap bitmap, string mimeType)
+            private static void BitmapResponse(HttpResponse response, Stream outputStream, Stylesheet styles, Bitmap bitmap, string? mimeType)
             {
                 try
                 {
@@ -347,9 +348,9 @@ namespace Maps.API
                 }
             }
 
-            protected static Sector GetPostedSector(HttpRequest request, ErrorLogger errors)
+            protected static Sector? GetPostedSector(HttpRequest request, ErrorLogger errors)
             {
-                Sector sector = null;
+                Sector? sector = null;
 
                 if (request.Files["file"] != null && request.Files["file"].ContentLength > 0)
                 {

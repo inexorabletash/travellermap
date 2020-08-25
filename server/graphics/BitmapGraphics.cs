@@ -1,11 +1,11 @@
-﻿using System;
+﻿#nullable enable
+using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 
 namespace Maps.Graphics
 {
-#nullable enable
     internal class BitmapGraphics : AbstractGraphics
     {
         private System.Drawing.Graphics g { get; }
@@ -191,5 +191,4 @@ namespace Maps.Graphics
             public State(AbstractGraphics g, GraphicsState state) : base(g) { this.state = state; }
         }
     }
-#nullable restore
 }

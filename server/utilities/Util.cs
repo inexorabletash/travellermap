@@ -1,4 +1,5 @@
-﻿using System;
+﻿#nullable enable
+using System;
 using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -10,7 +11,6 @@ using System.Text.RegularExpressions;
 
 namespace Maps.Utilities
 {
-#nullable enable
     internal static class ContentTypes
     {
         internal static class Application
@@ -540,5 +540,4 @@ namespace Maps.Utilities
         private List<string> keys = new List<string>();
         private List<object?> values = new List<object?>();
     }
-#nullable restore
 }

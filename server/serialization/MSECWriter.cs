@@ -1,4 +1,5 @@
-﻿using System;
+﻿#nullable enable
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
@@ -84,8 +85,8 @@ namespace Maps.Serialization
                 //
                 list.Sort(CompareAllegiances);
                 bool isFirst = true;
-                string code = null;
-                Allegiance alleg = null;
+                string? code = null;
+                Allegiance? alleg = null;
                 foreach (IAllegiance item in list)
                 {
                     // Determine allegiance
@@ -192,14 +193,14 @@ namespace Maps.Serialization
                 // TODO: Other properties
             }
 
-            private void WriteBorder(Border border, Allegiance alleg)
+            private void WriteBorder(Border border, Allegiance? alleg)
             {
                 if (border.ShowLabel && (border.Label != null || alleg != null))
                 {
                     writer.Write("label ");
                     writer.Write(border.LabelPositionHex);
                     writer.Write(" ");
-                    writer.Write(border.Label ?? alleg.Name);
+                    writer.Write(border.Label ?? alleg?.Name ?? "");
                     writer.WriteLine();
                 }
 

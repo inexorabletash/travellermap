@@ -1,4 +1,5 @@
-﻿using System;
+﻿#nullable enable
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -9,7 +10,6 @@ using System.Text;
 
 namespace Maps.Graphics
 {
-#nullable enable
     internal class SVGGraphics : AbstractGraphics
     {
         // G6 precision is needed for rendering far away from Charted Space, e.g. Legend
@@ -746,5 +746,4 @@ namespace Maps.Graphics
         }
 #endregion
     }
-#nullable restore
 }

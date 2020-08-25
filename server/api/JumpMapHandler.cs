@@ -1,4 +1,5 @@
-﻿using Maps.Graphics;
+﻿#nullable enable
+using Maps.Graphics;
 using Maps.Rendering;
 using Maps.Utilities;
 using System;
@@ -31,7 +32,7 @@ namespace Maps.API
                 {
                     Sector sector;
                     bool lint = GetBoolOption("lint", defaultValue: false);
-                    Func<ErrorLogger.Record, bool> filter = null;
+                    Func<ErrorLogger.Record, bool>? filter = null;
                     if (lint)
                     {
                         bool hide_uwp = GetBoolOption("hide-uwp", defaultValue: false);
@@ -63,7 +64,7 @@ namespace Maps.API
 
                     if (HasOption("sector") && HasOption("hex"))
                     {
-                        string sectorName = GetStringOption("sector");
+                        string sectorName = GetStringOption("sector")!;
                         int hex = GetIntOption("hex", 0);
                         Sector sector = map.FromName(sectorName) ??
                             throw new HttpError(404, "Not Found", $"The specified sector '{sectorName}' was not found.");

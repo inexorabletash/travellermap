@@ -1,11 +1,11 @@
-﻿using System;
+﻿#nullable enable
+using System;
 using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Routing;
 
 namespace Maps.HTTP
 {
-#nullable enable
     // From https://web.archive.org/web/20080401025712/http://www.iridescence.no/Posts/Defining-Routes-using-Regular-Expressions-in-ASPNET-MVC.aspx
     internal class RegexRoute : System.Web.Routing.Route
     {
@@ -118,5 +118,4 @@ namespace Maps.HTTP
             }
         }
     }
-#nullable restore
 }

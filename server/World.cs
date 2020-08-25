@@ -1,4 +1,5 @@
-﻿using Json;
+﻿#nullable enable
+using Json;
 using Maps.Utilities;
 using System;
 using System.Collections;
@@ -12,7 +13,6 @@ using System.Xml.Serialization;
 
 namespace Maps
 {
-#nullable enable
     public class World
     {
         internal Sector? Sector { get; set; }
@@ -287,7 +287,7 @@ namespace Maps
 
         internal string BaseAllegiance => Sector?.AllegianceCodeToBaseAllegianceCode(Allegiance) ?? Allegiance;
 
-        internal string? LegacyAllegiance => SecondSurvey.T5AllegianceCodeToLegacyCode(Allegiance);
+        internal string LegacyAllegiance => SecondSurvey.T5AllegianceCodeToLegacyCode(Allegiance);
 
 
         private static Regex SOPHPOP_CODE_REGEX = new Regex(@"^(....)([0-9W])$", RegexOptions.Compiled);
@@ -559,5 +559,4 @@ namespace Maps
             }
         }
     }
-#nullable restore
 }

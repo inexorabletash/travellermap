@@ -1,10 +1,12 @@
-﻿using Maps.Utilities;
+﻿#nullable enable 
+using Maps.Utilities;
 using System;
 using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
 using System.Linq;
+using System.Web;
 
 namespace Maps.Serialization
 {
@@ -70,7 +72,7 @@ namespace Maps.Serialization
             }
         }
 
-        private static string ParseString(string s) => string.IsNullOrEmpty(s) ? null : s;
+        private static string? ParseString(string s) => string.IsNullOrEmpty(s) ? null : s;
 
         private static bool? ParseBool(string s)
         {
@@ -142,8 +144,8 @@ namespace Maps.Serialization
                         EndOffsetX = ParseInt(route.GetAttribute("EndOffsetX")) ?? 0,
                         EndOffsetY = ParseInt(route.GetAttribute("EndOffsetY")) ?? 0,
 
-                        StartHex = ParseString(route.GetAttribute("Start")),
-                        EndHex = ParseString(route.GetAttribute("End")),
+                        StartHex = ParseString(route.GetAttribute("Start")) ?? throw new ParseException("Route missing Start"),
+                        EndHex = ParseString(route.GetAttribute("End")) ?? throw new ParseException("Route missing Start"),
                     };
                     sector.Routes.Add(r);
                 });
@@ -155,7 +157,7 @@ namespace Maps.Serialization
                     Allegiance = ParseString(border.GetAttribute("Allegiance")),
                     ColorHtml = ParseString(border.GetAttribute("Color")),
                     Label = ParseString(border.GetAttribute("Label")),
-                    LabelPositionHex = ParseString(border.GetAttribute("LabelPosition")),
+                    LabelPositionHex = ParseString(border.GetAttribute("LabelPosition")) ?? string.Empty,
                     PathString = border.InnerText,
                     ShowLabel = ParseBool(border.GetAttribute("ShowLabel")) ?? true,
                     Style = ParseEnum<LineStyle>(border.GetAttribute("Style")),
@@ -169,7 +171,7 @@ namespace Maps.Serialization
                     Allegiance = ParseString(region.GetAttribute("Allegiance")),
                     ColorHtml = ParseString(region.GetAttribute("Color")),
                     Label = ParseString(region.GetAttribute("Label")),
-                    LabelPositionHex = ParseString(region.GetAttribute("LabelPosition")),
+                    LabelPositionHex = ParseString(region.GetAttribute("LabelPosition")) ?? string.Empty,
                     PathString = region.InnerText,
                     ShowLabel = ParseBool(region.GetAttribute("ShowLabel")) ?? true,
                     Style = ParseEnum<LineStyle>(region.GetAttribute("Style")),
@@ -181,7 +183,7 @@ namespace Maps.Serialization
                 ParseErrorAppender(e, alleg => sector.Allegiances.Add(new Allegiance()
                 {
                     Base = ParseString(alleg.GetAttribute("Base")),
-                    T5Code = ParseString(alleg.GetAttribute("Code")),
+                    T5Code = ParseString(alleg.GetAttribute("Code")) ?? string.Empty,
                     Name = alleg.InnerText,
                 }));
             }
@@ -191,7 +193,7 @@ namespace Maps.Serialization
                 {
                     Allegiance = ParseString(label.GetAttribute("Allegiance")),
                     ColorHtml = ParseString(label.GetAttribute("Color")),
-                    Hex = new Hex(ParseString(label.GetAttribute("Hex"))),
+                    Hex = new Hex(ParseString(label.GetAttribute("Hex")) ?? string.Empty),
                     OffsetY = ParseFloat(label.GetAttribute("OffsetY")) ?? 0,
                     Size = ParseString(label.GetAttribute("Size")),
                     Wrap = ParseBool(label.GetAttribute("Wrap")) ?? false,
