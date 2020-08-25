@@ -161,13 +161,11 @@ namespace Maps.Utilities
         // http://stackoverflow.com/questions/18395943/using-foreach-to-iterate-simultaneously-through-multiple-lists-syntax-sugar
         public static void ForEachZip<T1, T2>(this IEnumerable<T1> first, IEnumerable<T2> second, Action<T1, T2> action)
         {
-            using (var e1 = first.GetEnumerator())
-            using (var e2 = second.GetEnumerator())
+            using var e1 = first.GetEnumerator();
+            using var e2 = second.GetEnumerator();
+            while (e1.MoveNext() && e2.MoveNext())
             {
-                while (e1.MoveNext() && e2.MoveNext())
-                {
-                    action(e1.Current, e2.Current);
-                }
+                action(e1.Current, e2.Current);
             }
         }
         #endregion
@@ -409,12 +407,10 @@ namespace Maps.Utilities
 
         public override string ToString()
         {
-            using (StringWriter writer = new StringWriter())
-            {
-                Report(writer, Severity.Hint);
-                writer.WriteLine($"{CountOf(Severity.Error)} errors, {CountOf(Severity.Warning)} warnings.");
-                return writer.ToString();
-            }
+            using StringWriter writer = new StringWriter();
+            Report(writer, Severity.Hint);
+            writer.WriteLine($"{CountOf(Severity.Error)} errors, {CountOf(Severity.Warning)} warnings.");
+            return writer.ToString();
         }
 
         public void Prepend(Severity severity, string message)

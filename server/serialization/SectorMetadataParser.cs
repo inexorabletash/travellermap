@@ -18,10 +18,8 @@ namespace Maps.Serialization
 
         public virtual Sector Parse(Stream stream)
         {
-            using (var reader = new StreamReader(stream, Encoding, detectEncodingFromByteOrderMarks: true, bufferSize: BUFFER_SIZE))
-            {
-                return Parse(reader);
-            }
+            using var reader = new StreamReader(stream, Encoding, detectEncodingFromByteOrderMarks: true, bufferSize: BUFFER_SIZE);
+            return Parse(reader);
         }
         public abstract Sector Parse(TextReader reader);
 

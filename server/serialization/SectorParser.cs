@@ -17,10 +17,8 @@ namespace Maps.Serialization
         public abstract Encoding Encoding { get; }
         public void Parse(Stream stream, WorldCollection worlds, ErrorLogger? errors)
         {
-            using (var reader = new StreamReader(stream, Encoding, detectEncodingFromByteOrderMarks: true, bufferSize: BUFFER_SIZE))
-            {
-                Parse(reader, worlds, errors ?? worlds.ErrorList);
-            }
+            using var reader = new StreamReader(stream, Encoding, detectEncodingFromByteOrderMarks: true, bufferSize: BUFFER_SIZE);
+            Parse(reader, worlds, errors ?? worlds.ErrorList);
         }
 
         public abstract void Parse(TextReader reader, WorldCollection worlds, ErrorLogger? errors);
@@ -43,21 +41,19 @@ namespace Maps.Serialization
             long pos = stream.Position;
             try
             {
-                using (var reader = new NoCloseStreamReader(stream, Encoding.GetEncoding(1252), detectEncodingFromByteOrderMarks: true, bufferSize: BUFFER_SIZE))
+                using var reader = new NoCloseStreamReader(stream, Encoding.GetEncoding(1252), detectEncodingFromByteOrderMarks: true, bufferSize: BUFFER_SIZE);
+                for (string line = reader.ReadLine(); line != null; line = reader.ReadLine())
                 {
-                    for (string line = reader.ReadLine(); line != null; line = reader.ReadLine())
-                    {
-                        if (line.Length == 0 || COMMENT_REGEX.IsMatch(line))
-                            continue;
+                    if (line.Length == 0 || COMMENT_REGEX.IsMatch(line))
+                        continue;
 
-                        if (SNIFF_TAB_DELIMITED_REGEX.IsMatch(line))
-                            return "TabDelimited";
+                    if (SNIFF_TAB_DELIMITED_REGEX.IsMatch(line))
+                        return "TabDelimited";
 
-                        if (SNIFF_SECONDSURVEY_REGEX.IsMatch(line))
-                            return "SecondSurvey";
-                    }
-                    return null;
+                    if (SNIFF_SECONDSURVEY_REGEX.IsMatch(line))
+                        return "SecondSurvey";
                 }
+                return null;
             }
             finally
             {

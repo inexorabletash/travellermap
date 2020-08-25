@@ -155,10 +155,8 @@ namespace Maps.Serialization
 
         public void Serialize(Stream stream, Encoding? encoding = null)
         {
-            using (var writer = new StreamWriter(stream, encoding))
-            {
-                Serialize(writer);
-            }
+            using var writer = new StreamWriter(stream, encoding);
+            Serialize(writer);
         }
 
         public void Serialize(TextWriter writer, bool includeHeader = true)
