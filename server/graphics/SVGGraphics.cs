@@ -63,7 +63,8 @@ namespace Maps.Graphics
             public string Get(string name) => attributes[name];
             public void Set(string name, string value) { attributes[name] = value; }
             public void Set(string name, float value) { attributes[name] = F(value); }
-            public void Set(string name, Color color) {
+            public void Set(string name, Color color)
+            {
                 if (color.IsEmpty || color.A == 0)
                     return; // Inherits "None" from root
                 else if (color.A < 255)
@@ -124,7 +125,7 @@ namespace Maps.Graphics
 
             public int NodeCount => 1 + children.Sum(c => c.NodeCount);
         }
-        
+
         private class ElementNames
         {
             private ElementNames() { }
@@ -283,11 +284,11 @@ namespace Maps.Graphics
 
             writer.WriteLine("<?xml version = \"1.0\" encoding=\"utf-8\"?>");
             writer.Write(
-                "<svg version=\"1.1\" baseProfile=\"full\" " + 
+                "<svg version=\"1.1\" baseProfile=\"full\" " +
                 "xmlns=\"http://www.w3.org/2000/svg\" " +
                 "xmlns:xlink=\"http://www.w3.org/1999/xlink\" " +
                 $"width=\"{width}\" height=\"{height}\" " +
-                $"viewBox=\"0 0 {width} {height}\" "+
+                $"viewBox=\"0 0 {width} {height}\" " +
                 $"clip=\"0 {width} 0 {height}\">");
             if (defs.children.Count > 0)
                 defs.Serialize(writer);
@@ -351,7 +352,7 @@ namespace Maps.Graphics
             var path = new PathBuilder();
             path.MoveTo(points[0].X, points[0].Y);
             for (var i = 0; i < points.Length; ++i)
-                    path.LineTo(points[i].X, points[i].Y);
+                path.LineTo(points[i].X, points[i].Y);
             e.Set("d", path.ToString());
             e.Apply(pen, null);
         }
@@ -493,9 +494,9 @@ namespace Maps.Graphics
             var e = Open(new Element(ElementNames.G));
             e.Set("clip-path", $"url(#{clipPath.Id})");
         }
-#endregion
+        #endregion
 
-#region Text
+        #region Text
         private System.Drawing.Graphics? scratch;
         public SizeF MeasureString(string text, AbstractFont font)
         {
@@ -534,9 +535,9 @@ namespace Maps.Graphics
             e.Set("y", y);
             e.Apply(brush);
         }
-#endregion
+        #endregion
 
-#region Transforms
+        #region Transforms
         public void ScaleTransform(float scaleX, float scaleY)
         {
             if (scaleX == 1 && scaleY == 1)
@@ -563,9 +564,9 @@ namespace Maps.Graphics
             var e = Open(new Element(ElementNames.G));
             e.Set("transform", $"matrix({F(m.M11)},{F(m.M12)},{F(m.M21)},{F(m.M22)},{F(m.OffsetX)},{F(m.OffsetY)})");
         }
-#endregion
+        #endregion
 
-#region State
+        #region State
         public AbstractGraphicsState Save()
         {
             var state = new State(this, new Element(ElementNames.G));
@@ -585,9 +586,9 @@ namespace Maps.Graphics
             public Element element;
             public State(AbstractGraphics g, Element e) : base(g) { element = e; }
         }
-#endregion
+        #endregion
 
-#region Relay Methods
+        #region Relay Methods
         public void DrawLine(AbstractPen pen, PointF pt1, PointF pt2)
         {
             DrawLine(pen, pt1.X, pt1.Y, pt2.X, pt2.Y);
@@ -637,9 +638,9 @@ namespace Maps.Graphics
         {
             ScaleTransform(scaleXY, scaleXY);
         }
-#endregion
+        #endregion
 
-#region Utilities
+        #region Utilities
         private static string ToSVG(AbstractPath ap)
         {
             PathBuilder path = new PathBuilder();
@@ -717,7 +718,7 @@ namespace Maps.Graphics
                 PointF pointd = deriv(0);
 
                 path.CurveTo(
-                    last.X + lastd.X / 3, last.Y + lastd.Y / 3, 
+                    last.X + lastd.X / 3, last.Y + lastd.Y / 3,
                     point.X - pointd.X / 3, point.Y - pointd.Y / 3,
                     point.X, point.Y);
                 path.Close();
@@ -725,9 +726,9 @@ namespace Maps.Graphics
 
             return path.ToString();
         }
-#endregion
+        #endregion
 
-#region IDisposable Support
+        #region IDisposable Support
         private bool disposed = false;
 
         void IDisposable.Dispose()
@@ -746,6 +747,6 @@ namespace Maps.Graphics
             }
             disposed = true;
         }
-#endregion
+        #endregion
     }
 }

@@ -8,9 +8,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
-using System.Runtime.InteropServices.ComTypes;
 using System.Text.RegularExpressions;
-using System.Web.UI.HtmlControls;
 
 namespace Maps.Rendering
 {

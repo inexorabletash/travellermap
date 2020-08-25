@@ -17,7 +17,9 @@ namespace Maps.Graphics
         private XSolidBrush brush;
         private XPen pen;
 
-        public PdfSharpGraphics(XGraphics g) { this.g = g;
+        public PdfSharpGraphics(XGraphics g)
+        {
+            this.g = g;
             brush = new XSolidBrush();
             pen = new XPen(Color.Empty);
         }
@@ -69,7 +71,7 @@ namespace Maps.Graphics
         public void DrawLine(AbstractPen pen, float x1, float y1, float x2, float y2) { Apply(pen); g.DrawLine(this.pen, x1, y1, x2, y2); }
         public void DrawLine(AbstractPen pen, PointF pt1, PointF pt2) { Apply(pen); g.DrawLine(this.pen, pt1, pt2); }
         public void DrawLines(AbstractPen pen, PointF[] points) { Apply(pen); g.DrawLines(this.pen, points); }
-        public void DrawPath(AbstractPen pen, AbstractPath path) { Apply(pen);  g.DrawPath(this.pen, new XGraphicsPath(path.Points, path.Types, XFillMode.Winding)); }
+        public void DrawPath(AbstractPen pen, AbstractPath path) { Apply(pen); g.DrawPath(this.pen, new XGraphicsPath(path.Points, path.Types, XFillMode.Winding)); }
         public void DrawPath(AbstractBrush brush, AbstractPath path) { Apply(brush); g.DrawPath(this.brush, new XGraphicsPath(path.Points, path.Types, XFillMode.Winding)); }
         public void DrawCurve(AbstractPen pen, PointF[] points, float tension) { Apply(pen); g.DrawCurve(this.pen, points, tension); }
         public void DrawClosedCurve(AbstractPen pen, PointF[] points, float tension) { Apply(pen); g.DrawClosedCurve(this.pen, points, tension); }
@@ -83,7 +85,8 @@ namespace Maps.Graphics
         public void DrawEllipse(AbstractPen pen, AbstractBrush brush, float x, float y, float width, float height) { Apply(pen, brush); g.DrawEllipse(this.pen, this.brush, x, y, width, height); }
         public void DrawArc(AbstractPen pen, float x, float y, float width, float height, float startAngle, float sweepAngle) { Apply(pen); g.DrawArc(this.pen, x, y, width, height, startAngle, sweepAngle); }
 
-        public void DrawImage(AbstractImage image, float x, float y, float width, float height) {
+        public void DrawImage(AbstractImage image, float x, float y, float width, float height)
+        {
             XImage ximage = image.XImage;
             lock (ximage)
             {
@@ -102,7 +105,7 @@ namespace Maps.Graphics
             alpha = (float)Math.Round(alpha * ALPHA_STEPS) / ALPHA_STEPS;
             if (alpha <= 0f)
                 return;
-            
+
             ximage = (alpha >= 1f) ? mimage.XImage : GetAlphaVariant(alpha, mimage);
             lock (ximage)
             {
@@ -158,7 +161,7 @@ namespace Maps.Graphics
         }
 
         public SizeF MeasureString(string text, AbstractFont font) => g.MeasureString(text, font.Font).ToSizeF();
- 
+
         public void DrawString(string s, AbstractFont font, AbstractBrush brush, float x, float y, StringAlignment format)
         {
             Apply(brush);

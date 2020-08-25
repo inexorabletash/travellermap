@@ -54,14 +54,15 @@ namespace Maps.API
                 if (query == "(random world)")
                 {
                     NUM_RESULTS = 1;
-                    searchResults = SearchEngine.PerformSearch(milieu, null, SearchEngine.SearchResultsType.Worlds, NUM_RESULTS, random:true);
+                    searchResults = SearchEngine.PerformSearch(milieu, null, SearchEngine.SearchResultsType.Worlds, NUM_RESULTS, random: true);
                 }
                 else
                 {
                     SearchEngine.SearchResultsType types = 0;
                     foreach (var type in GetStringsOption("types", new string[] { "default" })!)
                     {
-                        switch (type) {
+                        switch (type)
+                        {
                             case "worlds": types |= SearchEngine.SearchResultsType.Worlds; break;
                             case "subsectors": types |= SearchEngine.SearchResultsType.Subsectors; break;
                             case "sectors": types |= SearchEngine.SearchResultsType.Sectors; break;

@@ -2,7 +2,6 @@
 using Maps.Graphics;
 using Maps.Rendering;
 using Maps.Utilities;
-using System;
 using System.Drawing;
 using System.Web;
 

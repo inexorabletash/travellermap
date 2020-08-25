@@ -37,7 +37,7 @@ namespace Maps.Graphics
                 DashStyle.DashDot => System.Drawing.Drawing2D.DashStyle.DashDot,
                 DashStyle.DashDotDot => System.Drawing.Drawing2D.DashStyle.DashDotDot,
                 DashStyle.Custom => System.Drawing.Drawing2D.DashStyle.Custom,
-            _ => System.Drawing.Drawing2D.DashStyle.Solid,
+                _ => System.Drawing.Drawing2D.DashStyle.Solid,
             };
             if (pen.CustomDashPattern != null)
                 this.pen.DashPattern = pen.CustomDashPattern;
@@ -61,7 +61,7 @@ namespace Maps.Graphics
         public void DrawLines(AbstractPen pen, PointF[] points) { Apply(pen); g.DrawLines(this.pen, points); }
         public void DrawPath(AbstractPen pen, AbstractPath path) { Apply(pen); g.DrawPath(this.pen, new GraphicsPath(path.Points, path.Types, FillMode.Winding)); }
         public void DrawPath(AbstractBrush brush, AbstractPath path) { Apply(brush); g.FillPath(this.brush, new GraphicsPath(path.Points, path.Types, FillMode.Winding)); }
-        public void DrawCurve(AbstractPen pen, PointF[] points, float tension) { Apply(pen); g.DrawCurve(this.pen, points,tension); }
+        public void DrawCurve(AbstractPen pen, PointF[] points, float tension) { Apply(pen); g.DrawCurve(this.pen, points, tension); }
         public void DrawClosedCurve(AbstractPen pen, PointF[] points, float tension) { Apply(pen); g.DrawClosedCurve(this.pen, points, tension, FillMode.Winding); }
         public void DrawClosedCurve(AbstractBrush brush, PointF[] points, float tension) { Apply(brush); g.FillClosedCurve(this.brush, points, FillMode.Winding, tension); }
         public void DrawRectangle(AbstractPen pen, float x, float y, float width, float height) { Apply(pen); g.DrawRectangle(this.pen, x, y, width, height); }
@@ -114,7 +114,7 @@ namespace Maps.Graphics
             }
         }
 
-        public SizeF MeasureString(string text, AbstractFont font)=> g.MeasureString(text, font.Font);
+        public SizeF MeasureString(string text, AbstractFont font) => g.MeasureString(text, font.Font);
 
         public void DrawString(string s, AbstractFont font, AbstractBrush brush, float x, float y, StringAlignment format)
         {

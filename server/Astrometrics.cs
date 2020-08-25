@@ -66,7 +66,7 @@ namespace Maps
             int adx = Math.Abs(dx);
             int ody = dy + (adx / 2);
 
-            if ((hex1.X % 2 == 0) && (hex2.X % 2 != 0)) 
+            if ((hex1.X % 2 == 0) && (hex2.X % 2 != 0))
                 ody += 1;
 
             return Math.Max(adx - ody, Math.Max(ody, adx));

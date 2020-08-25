@@ -17,7 +17,8 @@ namespace Maps.API
             {
                 SendResult(SecondSurvey.SophontCodes
                     .OrderBy(code => code)
-                    .Select(code => {
+                    .Select(code =>
+                    {
                         var sophont = SecondSurvey.SophontForCode(code)!;
                         return new Results.SophontCode(code, sophont.Name, sophont.Location);
                     }).ToList());
@@ -38,7 +39,8 @@ namespace Maps.API
             {
                 SendResult(SecondSurvey.AllegianceCodes
                     .OrderBy(code => code)
-                    .Select(code => {
+                    .Select(code =>
+                    {
                         var alleg = SecondSurvey.GetStockAllegianceFromCode(code)!;
                         return new Results.AllegianceCode(code, alleg.LegacyCode, alleg.Name, alleg.Location);
                     }).ToList());
@@ -70,7 +72,7 @@ namespace Maps.API.Results
             Code = code;
             LegacyCode = legacy;
             Name = name;
-           Location = location;
+            Location = location;
         }
 
         public string Code { get; set; }

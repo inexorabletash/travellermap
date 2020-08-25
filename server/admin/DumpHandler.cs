@@ -54,7 +54,7 @@ namespace Maps.Admin
                     output.Write(',');
                 else
                     first = false;
-                
+
                 if (value.IndexOf(',') == -1 && value.IndexOf('"') == -1)
                 {
                     // plain

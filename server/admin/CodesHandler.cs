@@ -41,7 +41,7 @@ namespace Maps.Admin
             "In", "Lo", "Na", "Nh",
             "Ni", "Nk", "Po", "Ri",
             "St", "Va", "Wa",
-            "An", "Cf", "Cm", "Cp", 
+            "An", "Cf", "Cm", "Cp",
             "Cs", "Cx", "Ex", "Mr",
             "Pr", "Rs",
 
@@ -65,7 +65,7 @@ namespace Maps.Admin
             { @"^S[0-9A-F]{1,2}$", "S##" }, // Companion star orbits
 
             // Yiklerzdanzh
-            "Rn",  
+            "Rn",
             "Rv",
 
             // Traveller 5
@@ -86,7 +86,7 @@ namespace Maps.Admin
 
             { @"^{.*}$", "(comment)" }
         };
-            
+
         protected override void Process(System.Web.HttpContext context, ResourceManager resourceManager)
         {
             context.Response.ContentType = ContentTypes.Text.Plain;
@@ -109,7 +109,7 @@ namespace Maps.Admin
                               && (type == null || sector.DataFile.Type == type)
                               && (!sector.Tags.Contains("ZCR"))
                               && (!sector.Tags.Contains("meta"))
-                              && (milieu == null || sector.CanonicalMilieu == milieu) 
+                              && (milieu == null || sector.CanonicalMilieu == milieu)
                               orderby sector.Names[0].Text
                               select sector;
 

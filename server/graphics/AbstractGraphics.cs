@@ -51,7 +51,8 @@ namespace Maps.Graphics
         void Restore(AbstractGraphicsState state);
     }
 
-    internal abstract class AbstractGraphicsState : IDisposable {
+    internal abstract class AbstractGraphicsState : IDisposable
+    {
 
         private AbstractGraphics? g;
 
@@ -149,7 +150,8 @@ namespace Maps.Graphics
             {
                 lock (this)
                 {
-                    if (image == null) {
+                    if (image == null)
+                    {
                         // Use a stream since Image.FromFile(path) locks the file on disk.
                         using var stream = new FileStream(path, FileMode.Open, FileAccess.Read);
                         image = Image.FromStream(stream);
@@ -202,7 +204,8 @@ namespace Maps.Graphics
         public AbstractFont(string families, float emSize, FontStyle style, GraphicsUnit units)
         {
             Families = families;
-            foreach (var family in families.Split(new char[] { ',' })) {
+            foreach (var family in families.Split(new char[] { ',' }))
+            {
                 Font = new Font(family, emSize, style, units);
                 if (Font.Name == family)
                     return;

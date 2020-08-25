@@ -289,8 +289,8 @@ namespace Maps.API
                 options = (MapOptions)GetIntOption("options", queryDefaults, (int)options);
 
 #if LEGACY_STYLES
-            // Handle deprecated/legacy options bits for selecting style
-            style =
+                // Handle deprecated/legacy options bits for selecting style
+                style =
                 (options & MapOptions.StyleMaskDeprecated) == MapOptions.PrintStyleDeprecated ? Style.Atlas :
                 (options & MapOptions.StyleMaskDeprecated) == MapOptions.CandyStyleDeprecated ? Style.Candy :
                 Style.Poster;

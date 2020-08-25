@@ -155,7 +155,7 @@ namespace Maps.API.Results
             HexY = w.Y;
 
             UWP = w.UWP;
-            PBG = w.PBG;            
+            PBG = w.PBG;
             Zone = w.Zone;
             AllegianceName = w.AllegianceName;
 
