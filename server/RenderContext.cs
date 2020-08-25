@@ -1777,7 +1777,6 @@ namespace Maps.Rendering
 
                 PathUtil.PathType borderPathType = styles.microBorderStyle == MicroBorderStyle.Square ?
                     PathUtil.PathType.Square : PathUtil.PathType.Hex;
-                RenderUtil.HexEdges(borderPathType, out float[] edgex, out float[] edgey);
 
                 AbstractBrush solidBrush = new AbstractBrush();
                 AbstractPen pen = new AbstractPen(Color.Empty);

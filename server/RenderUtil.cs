@@ -503,15 +503,12 @@ namespace Maps.Rendering
             // Algorithm based on http://dotclue.org/t20/sec2pdf - J Greely rocks my world.
 
             int checkFirst = 0;
-            int checkLast = 5;
-
-            Point startHex = Point.Empty; ;
+            Point startHex = Point.Empty;
             bool startHexVisited = false;
 
             foreach (Point hex in clip)
             {
-                checkLast = checkFirst + 5;
-
+                int checkLast = checkFirst + 5;
                 if (startHexVisited && hex == startHex)
                 {
                     // I'm in the starting hex, and I've been
