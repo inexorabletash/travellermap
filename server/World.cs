@@ -390,6 +390,10 @@ namespace Maps
             ErrorUnless(Ag == IsAg, "Internal code failure: Ag/IsAg definitions");
             ErrorUnless(In == IsIn, "Internal code failure: In/IsIn definitions");
             ErrorUnless(Ri == IsRi, "Internal code failure: Ri/IsRi definitions");
+
+            ErrorIf(HasCode("Da") && Zone != "A", "Zone: Da (Danger) requires Amber Zone");
+            ErrorIf(HasCode("Pz") && Zone != "A", "Zone: Da (Danger) requires Amber Zone");
+            ErrorIf(HasCode("Fo") && Zone != "R", "Zone: Fo (Forbidden) requires Red Zone");
             #endregion
 
             #region Sophonts
