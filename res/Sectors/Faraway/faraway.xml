@@ -33,6 +33,59 @@
     <MetadataFile>JG-CrucisMargin.xml</MetadataFile>
   </Sector>
 
+
+  <Sector Tags="Apocryphal">
+    <Name>Tagret</Name>
+    <X>163</X>
+    <Y>0</Y>
+    <Credits>
+      <![CDATA[
+               <p>
+               Tagret Sector was designed by Edward Kuns and appeared in
+               <cite>Pegasus IX</cite>, Judges Guild.
+               </p>
+
+               <p>
+               Data transcribed and edited by Graham Donald.
+               </p>
+
+      ]]>
+    </Credits>
+    <DataFile Type="SecondSurvey">Tagret.txt</DataFile>
+    <Subsectors>
+      <Subsector Index="A">Void Reaches</Subsector>
+      <Subsector Index="B">Ahrus</Subsector>
+      <Subsector Index="C">Phoena</Subsector>
+      <Subsector Index="D">Mandal</Subsector>
+      <Subsector Index="E">Centurian</Subsector>
+      <Subsector Index="F">Remlak</Subsector>
+      <Subsector Index="G">Star Path</Subsector>
+      <Subsector Index="H">Tisman</Subsector>
+      <Subsector Index="I">Rimward Extents</Subsector>
+      <Subsector Index="J">Arium</Subsector>
+      <Subsector Index="K">Jarnell</Subsector>
+      <Subsector Index="L">Vrop*ni</Subsector>
+      <Subsector Index="M">Knifepoint</Subsector>
+      <Subsector Index="N">Zaffra</Subsector>
+      <Subsector Index="O">Argic</Subsector>
+      <Subsector Index="P">Istda</Subsector>
+    </Subsectors>
+    <Allegiances>
+      <Allegiance Code="Ah">Ahrus Domain</Allegiance>
+      <Allegiance Code="Ac">Ahphrae Coalition</Allegiance>
+      <Allegiance Code="Ad">Alonagra Directorate</Allegiance>
+      <Allegiance Code="Cc">Combined Free Worlds Safety Commitee</Allegiance>
+      <Allegiance Code="Pr">Psalmea Republic</Allegiance>
+      <Allegiance Code="Rm">Rammando Monarchy</Allegiance>
+      <Allegiance Code="Rc">Remlik Confederation</Allegiance>
+      <Allegiance Code="Ta">Tagret Ascendance</Allegiance>
+      <Allegiance Code="Tr">Tisman Realm</Allegiance>
+      <Allegiance Code="Tu">The UNIT</Allegiance>
+    </Allegiances>
+  </Sector>
+
+  <!-- Paranoia Press Sectors -->
+
   <Sector Abbreviation="VR91" Label="Vanguard Reaches" Tags="Apocryphal">
     <X>152</X>
     <Y>0</Y>
@@ -145,56 +198,6 @@
     <MetadataFile>Marischal.xml</MetadataFile>
   </Sector>
 
-  <Sector Tags="Apocryphal">
-    <Name>Tagret</Name>
-    <X>163</X>
-    <Y>0</Y>
-    <Credits>
-      <![CDATA[
-               <p>
-               Tagret Sector was designed by Edward Kuns and appeared in
-               <cite>Pegasus IX</cite>, Judges Guild.
-               </p>
-
-               <p>
-               Data transcribed and edited by Graham Donald.
-               </p>
-
-      ]]>
-    </Credits>
-    <DataFile Type="SecondSurvey">Tagret.txt</DataFile>
-    <Subsectors>
-      <Subsector Index="A">Void Reaches</Subsector>
-      <Subsector Index="B">Ahrus</Subsector>
-      <Subsector Index="C">Phoena</Subsector>
-      <Subsector Index="D">Mandal</Subsector>
-      <Subsector Index="E">Centurian</Subsector>
-      <Subsector Index="F">Remlak</Subsector>
-      <Subsector Index="G">Star Path</Subsector>
-      <Subsector Index="H">Tisman</Subsector>
-      <Subsector Index="I">Rimward Extents</Subsector>
-      <Subsector Index="J">Arium</Subsector>
-      <Subsector Index="K">Jarnell</Subsector>
-      <Subsector Index="L">Vrop*ni</Subsector>
-      <Subsector Index="M">Knifepoint</Subsector>
-      <Subsector Index="N">Zaffra</Subsector>
-      <Subsector Index="O">Argic</Subsector>
-      <Subsector Index="P">Istda</Subsector>
-    </Subsectors>
-    <Allegiances>
-      <Allegiance Code="Ah">Ahrus Domain</Allegiance>
-      <Allegiance Code="Ac">Ahphrae Coalition</Allegiance>
-      <Allegiance Code="Ad">Alonagra Directorate</Allegiance>
-      <Allegiance Code="Cc">Combined Free Worlds Safety Commitee</Allegiance>
-      <Allegiance Code="Pr">Psalmea Republic</Allegiance>
-      <Allegiance Code="Rm">Rammando Monarchy</Allegiance>
-      <Allegiance Code="Rc">Remlik Confederation</Allegiance>
-      <Allegiance Code="Ta">Tagret Ascendance</Allegiance>
-      <Allegiance Code="Tr">Tisman Realm</Allegiance>
-      <Allegiance Code="Tu">The UNIT</Allegiance>
-    </Allegiances>
-  </Sector>
-
   <!-- From Mongoose Publishing's "Fall of Tinath" -->
 
   <Sector Tags="Unreviewed" Abbreviation="Cali">
@@ -203,6 +206,16 @@
     <Name></Name>
     <DataFile Type="TabDelimited">Calidan.tab</DataFile>
     <MetadataFile>Calidan.xml</MetadataFile>
+  </Sector>
+
+  <!-- CE Cluster -->
+
+  <Sector Tags="Faraway">
+    <X>-200</X>
+    <Y>-200</Y>
+    <Name>Rosalis Cluster</Name>
+    <DataFile>Rosalis Cluster.sec</DataFile>
+    <MetadataFile>Rosalis Cluster.xml</MetadataFile>
   </Sector>
 
 </Sectors>

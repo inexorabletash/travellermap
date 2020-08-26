@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Sector>
+  <Stylesheet>
+    border.Kd { color: #993399; }
+    route.Kd{ color: #00CC00; }    
+    border.Rw{ color: #CC3333; }
+    route.Rw{ color: #00CC00; }
+    border.Sk { color: #3333CC; }
+    route.Sk{ color: #00CC00; }
+    border.Vb{ color: #999933; }
+    route.Vb{ color: #00CC00; }    
+  </Stylesheet>
+  <Name>Rosalis Cluster</Name>  
+  <Subsectors>
+    <Subsector Index="A">Halaba Void</Subsector>
+    <Subsector Index="B">Yrsavida</Subsector>
+    <Subsector Index="C">Termary</Subsector>
+    <Subsector Index="D">Clorrice Solitude</Subsector>
+    <Subsector Index="E">Kleonta</Subsector>
+    <Subsector Index="F">Aspannah</Subsector>
+    <Subsector Index="G">Raniera</Subsector>
+    <Subsector Index="H">Thippe</Subsector>
+    <Subsector Index="I">Felle</Subsector>
+    <Subsector Index="J">Sapier</Subsector>
+    <Subsector Index="K">Sumerlina</Subsector>
+    <Subsector Index="L">The Two Sheep</Subsector>
+    <Subsector Index="M">Tammoniser</Subsector>
+    <Subsector Index="N">Hestphaela</Subsector>
+    <Subsector Index="O">Leannia</Subsector>
+    <Subsector Index="P">Per Brann Nova</Subsector>
+  </Subsectors>  
+  <Borders>
+    <Border Allegiance="Kd" LabelPosition="0613">0313 0412 0513 0612 0513 0514 0413 0314 0313 </Border>
+    <Border Allegiance="Rw" LabelPosition="2517">0716 0815 0814 0914 0913 1012 1112 1211 1311 1310 1410 1511 1611 1711 1810 1809 1909 1908 1907 2007 2008 2009 2010 2011 2112 2212 2313 2413 2513 2612 2713 2813 2913 3013 3114 3214 3314 3315 3316 3317 3318 3319 3320 3219 3119 3019 2920 2820 2721 2621 2522 2422 2423 2323 2322 2321 2220 2120 2019 1919 1819 1719 1618 1518 1617 1616 1615 1614 1514 1413 1313 1213 1114 1014 0915 0815 0716 </Border>
+    <Border Allegiance="Sk" LabelPosition="1431">0326 0425 0424 0423 0422 0523 0622 0722 0723 0724 0824 0925 1024 1124 1223 1323 1423 1524 1624 1724 1824 1924 2024 2125 2225 2326 2426 2526 2527 2528 2628 2729 2629 2530 2430 2331 2230 2131 2031 1932 1832 1733 1633 1534 1535 1536 1537 1538 1539 1540 1541 1441 1341 1241 1141 1041 0941 0841 0840 0839 0838 0738 0637 0537 0436 0336 0335 0334 0433 0432 0431 0331 0430 0429 0428 0427 0426 0326 </Border>
+    <Border Allegiance="Vb" LabelPosition="1820">1020 1120 1219 1320 1419 1520 1620 1721 1821 1922 1822 1722 1622 1522 1421 1321 1220 1121 1020 </Border>
+  </Borders>
+  <Routes>
+    <Route Start="0412" End="0314"/>
+    <Route Start="1212" End="1114"/>
+    <Route Start="0814" End="1114"/>
+    <Route Start="1212" End="1312"/>
+    <Route Start="1312" End="1411"/>
+    <Route Start="1411" End="1310"/>
+    <Route Start="1411" End="1612"/>
+    <Route Start="1612" End="1913"/>
+    <Route Start="1913" End="2115"/>
+    <Route Start="1913" End="1811"/>
+    <Route Start="0814" End="0815"/>
+    <Route Start="1811" End="2009"/>
+    <Route Start="2009" End="2008"/>
+    <Route Start="2008" End="1907"/>
+    <Route Start="2115" End="2212"/>
+    <Route Start="2115" End="2214"/>
+    <Route Start="2115" End="2215"/>
+    <Route Start="2215" End="2318"/>
+    <Route Start="2318" End="2119"/>
+    <Route Start="1817" End="2119"/>
+    <Route Start="1817" End="1518"/>
+    <Route Start="2119" End="2420"/>
+    <Route Start="2420" End="2421"/>
+    <Route Start="2421" End="2423"/>
+    <Route Start="2318" End="2518"/>
+    <Route Start="2518" End="2718"/>
+    <Route Start="2718" End="2816"/>
+    <Route Start="2816" End="2715"/>
+    <Route Start="2715" End="2714"/>
+    <Route Start="2816" End="3016"/>
+    <Route Start="3016" End="3017"/>
+    <Route Start="3016" End="3015"/>
+    <Route Start="3015" End="3013"/>
+    <Route Start="3016" End="3315"/>
+    <Route Start="1722" End="1922"/>
+    <Route Start="1722" End="1622"/>
+    <Route Start="1722" End="1620"/>
+    <Route Start="1420" End="1620"/>
+    <Route Start="1120" End="1420"/>
+    <Route Start="0326" End="0625"/>
+    <Route Start="0625" End="0622"/>
+    <Route Start="0625" End="0925"/>
+    <Route Start="1026" End="0925"/>
+    <Route Start="1026" End="0929"/>
+    <Route Start="1026" End="1127"/>
+    <Route Start="1127" End="1328"/>
+    <Route Start="1328" End="1427"/>
+    <Route Start="1328" End="1429"/>
+    <Route Start="1427" End="1728"/>
+    <Route Start="1429" End="1730"/>
+    <Route Start="1730" End="1928"/>
+    <Route Start="1728" End="1928"/>
+    <Route Start="1928" End="2128"/>
+    <Route Start="2128" End="2530"/>
+    <Route Start="2530" End="2729"/>
+    <Route Start="0532" End="0434"/>
+    <Route Start="0434" End="0335"/>
+    <Route Start="1233" End="1436"/>
+    <Route Start="1436" End="1138"/>
+    <Route Start="1436" End="1540"/>
+    <Route Start="1540" End="1241"/>
+    <Route Start="1233" End="1131"/>
+    <Route Start="1131" End="0929"/>
+    <Route Start="0929" End="0629"/>
+    <Route Start="0629" End="0532"/>
+    <Route Start="2420" End="2718"/>
+    <Route Start="1131" End="1429"/>
+  </Routes>  
+  <Allegiances>
+    <Allegiance Code="Kd">Kleonta Dominion</Allegiance>
+    <Allegiance Code="Rw">Raniera Worlds</Allegiance>
+    <Allegiance Code="Sk">Sapier Kingdom</Allegiance>
+    <Allegiance Code="Vb">Verama Biocracy</Allegiance>
+  </Allegiances>  
+</Sector>
+
+
+
+
+
