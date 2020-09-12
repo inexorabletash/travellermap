@@ -1633,6 +1633,7 @@ namespace Maps.Rendering
 
                             PointF labelPos = Astrometrics.HexToCenter(Astrometrics.LocationToCoordinates(new Location(sector.Location, label.Hex)));
                             // TODO: Adopt some of the tweaks from .MSEC
+                            labelPos.X += label.OffsetX * 0.7f;
                             labelPos.Y -= label.OffsetY * 0.7f;
 
                             AbstractFont font = label.Size switch

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <title>Sector Metadata - Traveller Map</title>
 <meta charset="utf-8">
 <link rel="shortcut icon" href="../favicon.ico">
@@ -334,25 +334,35 @@ pre.example { font-family: 'Share Tech Mono', monospace; }
     </p>
     <h4>Attributes</h4>
     <dl class="params">
-      <dt>Hex</dt>
-      <dd>label position as <code><var>XXYY</var></code></dd>
+        <dt>Hex</dt>
+        <dd>label position as <code><var>XXYY</var></code></dd>
 
-      <dt>Color</dt>
-      <dd>an HTML color name or code <code>#<var>RRGGBB</var></code></dd>
+        <dt>Color</dt>
+        <dd>an HTML color name or code <code>#<var>RRGGBB</var></code></dd>
 
-      <dt>Size</dt>
-      <dd>(optional) one of <code>small</code> or <code>large</code></dd>
+        <dt>Size</dt>
+        <dd>(optional) one of <code>small</code> or <code>large</code></dd>
 
-      <dt>Wrap</dt>
-      <dd>(optional) Must be <code>false</code> (default) or <code>true</code>
-        (to wrap the label text onto multiple lines)</dd>
+        <dt>Wrap</dt>
+        <dd>
+            (optional) Must be <code>false</code> (default) or <code>true</code>
+            (to wrap the label text onto multiple lines)
+        </dd>
 
-      <dt>OffsetY</dt>
-      <dd>(optional) a positive or negative floating point value,
-        adjusts the vertical alignment of the label (default is <code>0</code>)</dd>
+        <dt>OffsetX</dt>
+        <dd>
+            (optional) a positive or negative floating point value,
+            adjusts the horizontal alignment of the label (default is <code>0</code>)
+        </dd>
 
-      <dt>Allegiance</dt>
-      <dd>Currently unused</dd>
+        <dt>OffsetY</dt>
+        <dd>
+            (optional) a positive or negative floating point value,
+            adjusts the vertical alignment of the label (default is <code>0</code>)
+        </dd>
+
+        <dt>Allegiance</dt>
+        <dd>Currently unused</dd>
     </dl>
     <h4>Examples</h4>
 <script class="example" type="text/xml">

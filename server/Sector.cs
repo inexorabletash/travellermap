@@ -1008,6 +1008,10 @@ namespace Maps
 
         [XmlAttribute]
         [DefaultValue(0f)]
+        public float OffsetX { get; set; }
+
+        [XmlAttribute]
+        [DefaultValue(0f)]
         public float OffsetY { get; set; }
 
         [XmlAttribute]
