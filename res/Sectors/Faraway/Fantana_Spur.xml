@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Sector>
+  <Stylesheet>
+    border.Ah { color: #996666; }
+    route.Ah{ color: #00CC00; }
+    border.Ff { color: #66EE11; }
+    route.Ff{ color: #00CC00; }
+    border.Fp { color: #00BBAA; }
+    route.Fp{ color: #00CC00; }
+    border.Lh { color: #4466BB; }
+    route.Lh{ color: #00CC00; }
+    border.Ne { color: #BBAA00; }
+    route.Ne{ color: #00CC00; }
+    border.Rw{ color: #CC3333; }
+    route.Rw{ color: #00CC00; }
+  </Stylesheet>
+  <Name>Fantana Spur</Name>
+  <Subsectors>
+    <Subsector Index="A">Losina</Subsector>
+    <Subsector Index="B">Ruthia Zone</Subsector>
+    <Subsector Index="C">Luperion Void</Subsector>
+    <Subsector Index="D">Admiral Genosov</Subsector>
+    <Subsector Index="E">Bronda</Subsector>
+    <Subsector Index="F">Angelink</Subsector>
+    <Subsector Index="G">Abathaea</Subsector>
+    <Subsector Index="H">Willegia</Subsector>
+    <Subsector Index="I">The Wolf</Subsector>
+    <Subsector Index="J">Broemisa Bridge</Subsector>
+    <Subsector Index="K">Finson</Subsector>
+    <Subsector Index="L">Volontian Veil</Subsector>
+    <Subsector Index="M">Ang Herita</Subsector>
+    <Subsector Index="N">Nicanne</Subsector>
+    <Subsector Index="O">Osterine</Subsector>
+    <Subsector Index="P">Angondsena</Subsector>
+  </Subsectors>
+  <Borders>
+    <Border Allegiance="Ah" LabelPosition="0436">0237 0337 0336 0335 0336 0436 0536 0635 0735 0734 0735 0635 0636 0637 0638 0639 0640 0641 0541 0441 0341 0340 0239 0238 0237 </Border>
+    <Border Allegiance="Ff" LabelPosition="1420">1014 1114 1113 1212 1313 1413 1514 1613 1713 1813 1913 2013 2114 2214 2315 2415 2516 2517 2617 2718 2818 2919 3019 2919 2819 2720 2620 2520 2420 2321 2220 2120 2020 1921 1820 1721 1621 1521 1421 1321 1221 1121 1020 1019 1119 1118 1117 1116 1015 1014 </Border>
+    <Border Allegiance="Fp" LabelPosition="2329">1927 2026 2127 2227 2328 2228 2229 2129 2028 1928 1927 </Border>
+    <Border Allegiance="Lh" LabelPosition="0306">0307 0406 0506 0505 0605 0706 0606 0507 0407 0307 </Border>
+    <Border Allegiance="Ne" LabelPosition="2435">0938 1037 1036 1035 1135 1134 1133 1232 1332 1431 1531 1631 1732 1832 1932 2032 2133 2233 2334 2434 2534 2633 2733 2832 2933 3032 3133 3233 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2041 1941 1841 1741 1641 1541 1441 1341 1241 1141 1041 0941 0940 0939 0938 </Border>
+    <Border Allegiance="Rw" LabelPosition="0419">0014 0114 0213 0313 0312 0311 0411 0512 0612 0613 0714 0715 0815 0816 0917 0817 0718 0719 0619 0520 0420 0320 0220 0120 0019 0018 0017 0016 0015 0014 </Border>
+  </Borders>
+  <Routes>
+    <Route Start="0214" End="0015"/>
+    <Route Start="0214" End="0216"/>
+    <Route Start="0216" End="0118"/>
+    <Route Start="0118" End="0220"/>
+    <Route Start="0214" End="0313"/>
+    <Route Start="0313" End="0411"/>
+    <Route Start="0214" End="0515"/>
+    <Route Start="0515" End="0615"/>
+    <Route Start="0615" End="0617"/>
+    <Route Start="0615" End="0717"/>
+    <Route Start="0617" End="0717"/>
+    <Route Start="0717" End="0817"/>
+    <Route Start="0817" End="0917"/>
+    <Route Start="0307" End="0507"/>
+    <Route Start="0606" End="0507"/>
+    <Route Start="0606" End="0706"/>
+    <Route Start="0706" End="0505"/>
+    <Route Start="0505" End="0507"/>
+    <Route Start="1317" End="1217"/>
+    <Route Start="1317" End="1116"/>
+    <Route Start="1317" End="1316"/>
+    <Route Start="1316" End="1315"/>
+    <Route Start="1315" End="1214"/>
+    <Route Start="1116" End="1014"/>
+    <Route Start="1014" End="1214"/>
+    <Route Start="1317" End="1419"/>
+    <Route Start="1419" End="1421"/>
+    <Route Start="1419" End="1618"/>
+    <Route Start="1618" End="1918"/>
+    <Route Start="1918" End="1819"/>
+    <Route Start="1819" End="1921"/>
+    <Route Start="1918" End="1916"/>
+    <Route Start="1916" End="1714"/>
+    <Route Start="1918" End="2119"/>
+    <Route Start="2119" End="2019"/>
+    <Route Start="2019" End="1921"/>
+    <Route Start="2119" End="2320"/>
+    <Route Start="2320" End="2321"/>
+    <Route Start="2320" End="2619"/>
+    <Route Start="2320" End="2417"/>
+    <Route Start="2619" End="2719"/>
+    <Route Start="2719" End="2518"/>
+    <Route Start="2518" End="2417"/>
+    <Route Start="2417" End="2516"/>
+    <Route Start="2719" End="2919"/>
+    <Route Start="2013" End="1714"/>
+    <Route Start="2128" End="1927"/>
+    <Route Start="0539" End="0538"/>
+    <Route Start="0538" End="0537"/>
+    <Route Start="0537" End="0636"/>
+    <Route Start="0539" End="0540"/>
+    <Route Start="0540" End="0640"/>
+    <Route Start="0640" End="0641"/>
+    <Route Start="0539" End="0239"/>
+    <Route Start="0239" End="0238"/>
+    <Route Start="1436" End="1236"/>
+    <Route Start="1236" End="1035"/>
+    <Route Start="1236" End="1237"/>
+    <Route Start="1237" End="1037"/>
+    <Route Start="1237" End="1139"/>
+    <Route Start="1037" End="0939"/>
+    <Route Start="0939" End="1139"/>
+    <Route Start="1139" End="1140"/>
+    <Route Start="1140" End="1142"/>
+    <Route Start="1133" End="1333"/>
+    <Route Start="1333" End="1431"/>
+    <Route Start="1431" End="1631"/>
+    <Route Start="1631" End="1732"/>
+    <Route Start="1732" End="1733"/>
+    <Route Start="1733" End="1734"/>
+    <Route Start="1734" End="1933"/>
+    <Route Start="1933" End="1932"/>
+    <Route Start="1734" End="1835"/>
+    <Route Start="1835" End="1737"/>
+    <Route Start="1737" End="1436"/>
+    <Route Start="2136" End="1835"/>
+    <Route Start="2136" End="2138"/>
+    <Route Start="2138" End="2038"/>
+    <Route Start="2038" End="1940"/>
+    <Route Start="1940" End="1942"/>
+    <Route Start="2038" End="2240"/>
+    <Route Start="2240" End="2441"/>
+    <Route Start="2138" End="2338"/>
+    <Route Start="2338" End="2438"/>
+    <Route Start="2438" End="2639"/>
+    <Route Start="2639" End="2837"/>
+    <Route Start="2837" End="2838"/>
+    <Route Start="2837" End="2836"/>
+    <Route Start="2836" End="2835"/>
+    <Route Start="2936" End="3035"/>
+    <Route Start="3035" End="3234"/>
+    <Route Start="3234" End="3334"/>
+    <Route Start="3035" End="3236"/>
+    <Route Start="3236" End="3337"/>
+    <Route Start="3236" End="3238"/>
+    <Route Start="3238" End="3039"/>
+    <Route Start="3039" End="3037"/>
+    <Route Start="3037" End="2837"/>
+    <Route Start="3037" End="3137"/>
+    <Route Start="3137" End="3236"/>
+    <Route Start="2835" End="2634"/>
+    <Route Start="2634" End="2434"/>
+    <Route Start="2434" End="2233"/>
+    <Route Start="2233" End="2135"/>
+    <Route Start="2135" End="2136"/>
+    <Route Start="1737" End="2138"/>
+    <Route Start="3039" End="3241"/>
+  </Routes>
+  <Allegiances>
+    <Allegiance Code="Rw">Raniera Worlds</Allegiance>
+    <Allegiance Code="Ah">Ang Herita</Allegiance>
+    <Allegiance Code="Ff">Fantana Federation</Allegiance>
+    <Allegiance Code="Fp">Finson Planets</Allegiance>
+    <Allegiance Code="Lh">Losina Herzostars</Allegiance>
+    <Allegiance Code="Ne">Neo Empire</Allegiance>
+  </Allegiances>
+  <Regions>
+    <Region Color="Yellow" LabelPosition="0424" Label="Wolf's Eye">0325</Region>
+    <Region Color="Yellow">0424</Region>
+    <Region Color="Yellow">0525</Region>
+    <Region Color="Yellow">0526</Region>
+    <Region Color="Yellow">0426</Region>
+    <Region Color="Yellow">0326</Region>
+  </Regions>
+</Sector>
