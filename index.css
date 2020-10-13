@@ -544,6 +544,7 @@ button {
   font-weight: bold;
   padding: 0 10px; margin: 0; border: none;
   min-width: 37px;
+  color: black;
   background-color: #606060;
   background-position: center;
   background-repeat: no-repeat;
@@ -1558,9 +1559,10 @@ body:not(.show-promo) #promo-hover {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 40px;
+  height: 45px;
   text-align: center;
-  line-height: 40px;
+  line-height: 45px;
+  font-size: 14pt;
 }
 body:not(.cookies-not-accepted) #cookies {
   display: none;
@@ -1571,7 +1573,10 @@ body:not(.cookies-not-accepted) #cookies {
   }
 }
 
-
+#cookies button {
+  font-size: 14pt;
+  font-weight: bold;
+}
 #cookies a {
   color: #e02020;
   font-weight: bold;
