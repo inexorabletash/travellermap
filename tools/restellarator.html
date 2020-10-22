@@ -34,7 +34,8 @@ function $(s) { return document.querySelector(s); }
 function fix(world) {
   // Stellar
   var key = ['Stellar', 'Stars'].filter(function(key) { return key in world; })[0];
-  world[key] = Restellarator.fix(world[key]);
+  var current = world[key];
+  world[key] = current ? Restellarator.fix(current) : Restellarator.generate();
 }
 
 $('#go').addEventListener('click', function() {
