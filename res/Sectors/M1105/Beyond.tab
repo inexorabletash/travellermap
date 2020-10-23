@@ -1,5 +1,5 @@
 Sector	SS	Hex	Name	UWP	Bases	Remarks	Zone	PBG	Allegiance	Stars	{Ix}	(Ex)	[Cx]	Nobility	W	RU
-Beyo	A	0102	Station One	E552100-7		Lo Po Da	A	700	MaCl	F5 V	{ -3 }	(301-5)	[1112]		6	0
+Beyo	A	0102	Station One	E552100-7		Lo Po Da	A	700	MaCl	F5 V	{ -3 }	(300-5)	[1112]		6	0
 Beyo	A	0103	Hunyadi	A687799-C	K	Ag Ga Ri		511	MaCl	G0 V M5 V	{ 4 }	(B6E+5)	[8B6D]		10	4,620
 Beyo	A	0104	Barba Amarilla	C540445-8		De He Ni Po		613	MaCl	G6 V	{ -2 }	(A31-4)	[2236]		13	-120
 Beyo	A	0105	Shalimar	B867649-7	KV	Ag Ni Ga Ri		310	MaCl	F6 V	{ 2 }	(855+2)	[7868]		9	400
@@ -7,13 +7,13 @@ Beyo	A	0108	Lanthesandra	D945576-6		Ag Ni		300	CAin	F7 V M3 V M1 V	{ -2 }	(742-3
 Beyo	A	0110	La Luz Negra	B833683-8		Na Ni Po		720	CAin	G8 V M4 V	{ -1 }	(A53-4)	[3525]		8	-600
 Beyo	E	0111	Quiatenon	D67A6B8-6		Ni Wa EslyW		410	CAEM	G4 V	{ -3 }	(851-3)	[6356]		12	-120
 Beyo	E	0112	G'Henna	B5487C7-A		Ag Pi EslyW		310	CAEM	F2 V	{ 3 }	(A6C+3)	[7A5A]		8	2,160
-Beyo	E	0114	Al Mushtar	B869363-8		Lo EslyW O:0112		200	CAEM	F5 V M2 V	{ -1 }	(521-4)	[1225]		7	-40
+Beyo	E	0114	Al Mushtar	B869363-8		Lo EslyW O:0112		200	CAEM	F5 V M2 V	{ -1 }	(520-4)	[1225]		7	0
 Beyo	E	0119	Sha'anoe	B8637C8-A		Ri Pz	A	130	CAin	F1 V	{ 3 }	(C6C+3)	[7A5A]		13	2,592
 Beyo	I	0122	Rabanitas	A869346-B		Lo Cx		720	CAin	G6 V	{ 1 }	(721+1)	[244A]		11	14
 Beyo	I	0124	Lyrehc	E425944-8		Hi In		700	CAin	F9 V	{ 0 }	(B89-2)	[7936]		9	-1,584
 Beyo	I	0126	George Heap	B558621-7		Ag Ni		600	CAin	F5 V	{ 0 }	(854-4)	[2613]		12	-640
-Beyo	M	0134	Yetinal	E878100-5		Lo		131	JaPa	F3 V	{ -3 }	(301-5)	[1111]		10	0
-Beyo	M	0137	Nuit Rouge	A548200-9		Lo		703	JaPa	F1 V	{ 0 }	(711-4)	[1214]		9	-28
+Beyo	M	0134	Yetinal	E878100-5		Lo		131	JaPa	F3 V	{ -3 }	(300-5)	[1111]		10	0
+Beyo	M	0137	Nuit Rouge	A548200-9		Lo		703	JaPa	F1 V	{ 0 }	(710-4)	[1214]		9	0
 Beyo	A	0202	Trocadentilius 19	C540431-9	KV	De He Ni Po		121	MaCl	F7 V	{ 0 }	(932-5)	[1415]		8	-270
 Beyo	A	0203	Figaro's	C563655-5		Ni Ri		700	MaCl	F3 V M1 V	{ -1 }	(853-3)	[4533]		10	-360
 Beyo	A	0204	Borgne	C99A6A7-8	K	Ni Wa		830	MaCl	F6 V M3 V	{ -2 }	(B52-2)	[6458]		14	-220
@@ -30,7 +30,7 @@ Beyo	I	0222	Station Two	C534420-6		Ni Rs		831	CAin	M1 V M6 V	{ -2 }	(631-5)	[121
 Beyo	I	0224	Demimonde	E405000-0		Ba Ic Va		000	CAin	G8 V M1 V	{ -3 }	(200-5)	[0000]		11	0
 Beyo	I	0225	Phoenix	C666559-A	V	Ag Ni Ga Pr DroyW		230	CAin	F7 V M4 V	{ 1 }	(A45+2)	[666B]		7	400
 Beyo	I	0228	Dizurgo	B000227-B		As Lo Va		800	NaHu	G1 V	{ 1 }	(411+1)	[235B]		10	4
-Beyo	M	0235	Hostel	A584110-8	V	Lo		813	JaPa	G2 V M9 V	{ -1 }	(701-5)	[1113]		16	0
+Beyo	M	0235	Hostel	A584110-8	V	Lo		813	JaPa	G2 V M9 V	{ -1 }	(700-5)	[1113]		16	0
 Beyo	M	0236	Trend	B562489-9	K	Ni		300	JaPa	F8 V	{ 0 }	(633+1)	[546A]		10	54
 Beyo	M	0238	11 Gamma Chi	B844886-6		Pa Ph Pi		731	NaHu	F8 V M4 V	{ 0 }	(A77-1)	[7845]		12	-490
 Beyo	A	0302	Trayfowen	BA65649-9		Ag Ni Ri Da	A	800	CsIm	F7 V	{ 2 }	(856+3)	[786A]		9	720
@@ -38,74 +38,74 @@ Beyo	A	0303	Jararaca	E575465-5		Ni Pa O:0304		400	MaCl	F7 V M2 V	{ -3 }	(631-5)	
 Beyo	A	0304	Omega Sextans	A767853-9	K	Ga Ri Pa Ph		910	MaCl	F9 V	{ 2 }	(B7B-1)	[5A26]		12	-847
 Beyo	A	0305	Thorn	E552779-2	V	Po		820	MaCl	F1 V M1 V	{ -2 }	(963-1)	[8563]		9	-162
 Beyo	A	0309	Araaraga	E546610-6		Ag Ni		103	CAin	F5 V M7 V	{ -2 }	(852-5)	[1411]		6	-400
-Beyo	E	0312	Chicomecoatl	D433322-9		Lo Po		730	CAin	M2 V M3 V	{ -2 }	(821-5)	[1115]		7	-80
+Beyo	E	0312	Chicomecoatl	D433322-9		Lo Po		730	CAin	M2 V M3 V	{ -2 }	(820-5)	[1115]		7	0
 Beyo	E	0315	Intercourse	A864996-A	V	Hi Pr		501	CAin	F5 V	{ 3 }	(C8D+2)	[8C49]		8	2,496
 Beyo	E	0316	The Dunes	B5408B9-9	K	De He Po Ph Pi Pz	A	400	CAin	F2 V M8 V	{ 1 }	(A7A+2)	[996A]		6	1,400
-Beyo	E	0319	Enigma	E664212-7	V	Lo		220	CAin	K1 V	{ -3 }	(411-5)	[1113]		9	-20
+Beyo	E	0319	Enigma	E664212-7	V	Lo		220	CAin	K1 V	{ -3 }	(410-5)	[1113]		9	0
 Beyo	I	0324	J'preall	D6A4656-8		Fl Ni		230	CAin	M0 V	{ -3 }	(B51-4)	[5347]		9	-220
 Beyo	I	0325	D'Escrime	E968000-0		Ba		020	CAin	F2 V M0 V	{ -3 }	(200-5)	[0000]		10	0
 Beyo	I	0326	Aros	D8467AB-5	W	Ag Pi Pz	A	900	CAin	G4 V	{ 0 }	(967+2)	[9777]		9	756
-Beyo	I	0327	Ufhlug	C645214-6		Lo		100	CAin	G2 V M1 V	{ -2 }	(411-4)	[1134]		10	-16
+Beyo	I	0327	Ufhlug	C645214-6		Lo		100	CAin	G2 V M1 V	{ -2 }	(410-4)	[1134]		10	0
 Beyo	I	0329	Six Mile Run	B57A257-B		Lo Wa		110	NaHu	F2 V	{ 1 }	(511+1)	[235B]		8	5
-Beyo	I	0330	Nur Jehan	B432200-9		Lo Po		810	NaHu	K4 V	{ 0 }	(511-4)	[1214]		8	-20
+Beyo	I	0330	Nur Jehan	B432200-9		Lo Po		810	NaHu	K4 V	{ 0 }	(510-4)	[1214]		8	0
 Beyo	M	0332	Albazar	AAA995A-E	K	Fl Hi In Rs		431	CsIm	F4 V M1 V	{ 4 }	(F8G+5)	[BD7G]		15	9,600
 Beyo	M	0335	Novak's Drift	A967435-9	KV	Ni Pa		800	NaHu	F3 V M6 V	{ 1 }	(633-2)	[2537]		11	-108
 Beyo	M	0337	Gonzo	XB66000-0	V	Ba Fo	R	003	NaHu	F1 V	{ -3 }	(200-5)	[0000]		10	0
 Beyo	M	0338	Eromnek	B4025A9-8		Ic Ni Va		700	JaPa	M0 V M3 V	{ -1 }	(743+1)	[6469]		7	84
 Beyo	A	0402	Beaumonde	CA99974-B		Hi In		920	MaCl	F7 V M4 V	{ 3 }	(D8E+1)	[7C39]		10	1,456
 Beyo	A	0403	Vlad	D663659-2		Ni Ri Da	A	430	MaCl	F9 V	{ -2 }	(852-1)	[7463]		15	-80
-Beyo	A	0404	Anastasia's Mate	C786376-7		Lo Ga		500	MaCl	F6 V	{ -2 }	(521-3)	[2146]		8	-30
+Beyo	A	0404	Anastasia's Mate	C786376-7		Lo Ga		500	MaCl	F6 V	{ -2 }	(520-3)	[2146]		8	0
 Beyo	A	0405	Lilith	D7665A7-3		Ag Ni Ga Pr Da	A	700	MaCl	F7 V M3 V	{ -2 }	(742-2)	[5353]		8	-112
 Beyo	A	0409	Between	A996721-A		Ag Pi		130	CAin	F3 V	{ 3 }	(C6C-1)	[3A16]		9	-864
 Beyo	A	0410	Niquithah	A566798-8		Ag Ri		612	CAin	F7 V	{ 2 }	(C6A+2)	[7958]		13	1,440
-Beyo	E	0411	Xochiquetzal	C742300-5		He Lo Po Da	A	700	CAin	F3 V M1 V	{ -2 }	(521-5)	[1111]		7	-50
-Beyo	E	0413	Paradise	C66427C-9	V	Lo		920	CAin	G2 V	{ -1 }	(611+2)	[518C]		10	12
-Beyo	E	0416	Do'or Noobt	B679210-9		Lo		510	CAin	K1 V	{ 0 }	(511-4)	[1214]		12	-20
+Beyo	E	0411	Xochiquetzal	C742300-5		He Lo Po Da	A	700	CAin	F3 V M1 V	{ -2 }	(520-5)	[1111]		7	0
+Beyo	E	0413	Paradise	C66427C-9	V	Lo		920	CAin	G2 V	{ -1 }	(610+2)	[518C]		10	0
+Beyo	E	0416	Do'or Noobt	B679210-9		Lo		510	CAin	K1 V	{ 0 }	(510-4)	[1214]		12	0
 Beyo	E	0417	Aytch Pe'el	A688463-9		Ni Pa O:0617		122	CAin	F4 V M9 V	{ 0 }	(A33-3)	[1426]		12	-270
 Beyo	E	0418	Rama	X000555-7		As Ni Va Fo Rs	R	721	CAin	M1 V	{ -3 }	(741-5)	[3235]		12	-140
 Beyo	I	0421	Farhaven	B437762-7		O:0619		412	CAin	G3 V M3 V	{ 0 }	(968-4)	[3713]		8	-1,728
-Beyo	I	0422	Za'Kass-K'Narr	D552315-3	KV	Lo Po		513	CAin	F3 V	{ -2 }	(521-5)	[1131]		10	-50
+Beyo	I	0422	Za'Kass-K'Narr	D552315-3	KV	Lo Po		513	CAin	F3 V	{ -2 }	(520-5)	[1131]		10	0
 Beyo	I	0425	Vale	AAA8887-A	V	Fl Ph Pz	A	210	CAin	F7 V	{ 2 }	(B7B+2)	[8A5A]		7	1,694
 Beyo	I	0430	Battelle	A9779B9-D		Hi In Pz Rs	A	230	CsIm	G2 V	{ 4 }	(E8G+5)	[AD6E]		13	8,960
-Beyo	M	0432	T'Mek 4.987	B540305-7		De He Lo Po		600	ZyCo	F8 V	{ -1 }	(521-3)	[1235]		6	-30
+Beyo	M	0432	T'Mek 4.987	B540305-7		De He Lo Po		600	ZyCo	F8 V	{ -1 }	(520-3)	[1235]		6	0
 Beyo	M	0435	New Luna	B866855-7		Ga Ri Pa Ph		100	JaPa	K2 V	{ 1 }	(A79-1)	[6935]		6	-630
 Beyo	A	0502	Opar Navis 16	C867872-6		Ga Ri Pa Ph		500	MaCl	G4 V	{ 0 }	(A77-4)	[4812]		4	-1,960
 Beyo	A	0503	Kawstee Chiluhvehk	B564595-6		Ag Ni Pr		310	MaCl	F4 V	{ 0 }	(744-2)	[3534]		8	-224
-Beyo	A	0504	Jheszes	B423250-9		Lo Po		610	MaCl	F4 V	{ 0 }	(511-4)	[1214]		11	-20
-Beyo	E	0512	Tezcatlipoca	D548220-7		Lo Da	A	400	CAin	G4 V	{ -3 }	(411-5)	[1112]		8	-20
+Beyo	A	0504	Jheszes	B423250-9		Lo Po		610	MaCl	F4 V	{ 0 }	(510-4)	[1214]		11	0
+Beyo	E	0512	Tezcatlipoca	D548220-7		Lo Da	A	400	CAin	G4 V	{ -3 }	(410-5)	[1112]		8	0
 Beyo	E	0515	Cthulhu	B310655-B		Na Ni		510	CAin	M0 V	{ 1 }	(955-1)	[4739]		12	-225
 Beyo	E	0516	Nacirema	C876972-5		Hi In		530	CAin	G8 V	{ 1 }	(B89-3)	[5A11]		12	-2,376
 Beyo	E	0517	Nyarlathotep	C425578-8		Ni		200	CAin	M1 V	{ -2 }	(742-2)	[5358]		7	-112
 Beyo	E	0518	Corrigan's Revenge	A101686-D		Ic Na Ni Va		330	CAin	G2 IV	{ 1 }	(B55+1)	[574C]		15	275
 Beyo	E	0519	Xanadu	A767461-C		Ni Ga Pa O:0619		100	CAin	K8 V	{ 1 }	(634-3)	[1518]		4	-216
 Beyo	E	0520	Eire	B554777-9		Ag Pz	A	600	CAin	F3 V	{ 2 }	(96B+2)	[7959]		4	1,188
-Beyo	I	0524	Indian Catalan	X845200-5		Lo		210	CAin	F9 V	{ -3 }	(411-5)	[1111]		10	-20
+Beyo	I	0524	Indian Catalan	X845200-5		Lo		210	CAin	F9 V	{ -3 }	(410-5)	[1111]		10	0
 Beyo	I	0525	Nennemki Alagwa	C647867-8		Pa Ph Pi O:0425		100	CAin	F7 V	{ -1 }	(A77-1)	[8758]		8	-490
-Beyo	I	0526	Fairweather	CACA367-C		Fl Lo Da O:0425	A	720	CAin	M3 V M9 V	{ 0 }	(721+1)	[335C]		11	14
+Beyo	I	0526	Fairweather	CACA367-C		Fl Lo Da O:0425	A	720	CAin	M3 V M9 V	{ 0 }	(720+1)	[335C]		11	0
 Beyo	I	0528	Ouisahed	B576643-9		Ag Ni		503	CAin	F0 V	{ 1 }	(B55-2)	[3726]		9	-550
-Beyo	I	0530	Zydhnali	B577348-8		Lo		600	ZyCo	F4 V	{ -1 }	(521-1)	[3258]		5	-10
+Beyo	I	0530	Zydhnali	B577348-8		Lo		600	ZyCo	F4 V	{ -1 }	(520-1)	[3258]		5	0
 Beyo	M	0531	Zydoqir	C8737A7-6		Pi		410	ZyCo	F2 V	{ -1 }	(966-1)	[7656]		13	-324
-Beyo	M	0538	Masada	A544205-9	V	Lo		412	NaHu	G3 V	{ 0 }	(711-2)	[1237]		12	-14
+Beyo	M	0538	Masada	A544205-9	V	Lo		412	NaHu	G3 V	{ 0 }	(710-2)	[1237]		12	0
 Beyo	M	0539	Refuge	A9668C7-A	KV	Ri Pa Ph		711	NaHu	F5 V	{ 4 }	(C7C+3)	[8C5A]		10	3,024
 Beyo	A	0602	Mapepire Balsayn	A000689-C		As Na Ni Va Cx		600	MaCl	G0 V	{ 1 }	(855+2)	[776D]		5	400
 Beyo	A	0603	Sinkiang-Uighur	C99A522-8		Ni Wa		323	MaCl	G1 V M5 V	{ -2 }	(C42-5)	[1314]		10	-480
-Beyo	A	0604	Friedland	B533310-7	V	Lo Po Da	A	300	MaCl	M1 V M3 V	{ -1 }	(521-5)	[1212]		9	-50
+Beyo	A	0604	Friedland	B533310-7	V	Lo Po Da	A	300	MaCl	M1 V M3 V	{ -1 }	(520-5)	[1212]		9	0
 Beyo	A	0605	Virgin's Delight	B769748-8		Ri		820	MaCl	F3 V	{ 1 }	(B69+1)	[7858]		11	594
 Beyo	E	0612	Huitzlpochtli	A7689C7-D		Hi Pr		210	CAin	F5 V M7 V	{ 3 }	(C8F+3)	[9C5D]		5	4,320
-Beyo	E	0613	Merde	E9C5161-9		Fl Lo O:0612		900	CAin	M1 V	{ -2 }	(301-5)	[1115]		8	0
+Beyo	E	0613	Merde	E9C5161-9		Fl Lo O:0612		900	CAin	M1 V	{ -2 }	(300-5)	[1115]		8	0
 Beyo	E	0615	Tindalos	A86698C-B	V	Hi Ga Pr Pz	A	100	CAin	G9 V	{ 3 }	(B8E+5)	[CC8E]		8	6,160
 Beyo	E	0616	K'melot	B5679BA-7	V	Hi Pr Pz	A	400	CAin	G7 V	{ 1 }	(B8A+3)	[BA79]		7	2,640
 Beyo	E	0617	Valhalla	B964838-A		Ri Pa Ph		300	CAin	F3 V	{ 3 }	(A7C+3)	[8B5A]		10	2,520
 Beyo	E	0619	Norstrilia	A863943-D		Hi Pr		800	CAin	F5 V	{ 3 }	(B8F+1)	[6C2A]		10	1,320
-Beyo	I	0621	Baile Atha Cliath	E571345-7		He Lo		202	CAin	F5 V M7 V	{ -3 }	(521-5)	[1135]		7	-50
-Beyo	I	0624	Fortuitous	D596201-5		Lo		511	CAin	F1 V M2 V	{ -3 }	(411-5)	[1111]		9	-20
+Beyo	I	0621	Baile Atha Cliath	E571345-7		He Lo		202	CAin	F5 V M7 V	{ -3 }	(520-5)	[1135]		7	0
+Beyo	I	0624	Fortuitous	D596201-5		Lo		511	CAin	F1 V M2 V	{ -3 }	(410-5)	[1111]		9	0
 Beyo	I	0629	Zydanar	E7A3543-8		Fl Ni		700	ZyCo	K7 IV M0 V	{ -3 }	(741-5)	[2225]		8	-140
 Beyo	I	0630	Zydtompir	A876677-A		Ag Ni		730	ZyCo	F5 V M5 V	{ 2 }	(B56+2)	[685A]		7	660
 Beyo	M	0631	Zydexnar	D987727-6	W	Ag Ri		301	ZyCo	G1 V M8 V	{ 1 }	(968+1)	[7856]		9	432
 Beyo	M	0640	Warwick	B776774-7		Ag Pi Pz	A	820	NaHu	F5 V	{ 1 }	(969-1)	[5835]		9	-486
 Beyo	E	0712	Calmecac	B876414-B		Ni Pa		700	CAin	F8 V	{ 1 }	(634-1)	[2539]		12	-72
 Beyo	E	0714	Gor	E8679E9-3		Hi Ga Pr Pz	A	300	CAin	F8 V	{ -1 }	(B86+1)	[A864]		6	528
-Beyo	E	0715	Lesser Enigma	E554212-7		Lo		700	CAin	K0 V M6 V	{ -3 }	(411-5)	[1113]		5	-20
+Beyo	E	0715	Lesser Enigma	E554212-7		Lo		700	CAin	K0 V M6 V	{ -3 }	(410-5)	[1113]		5	0
 Beyo	E	0719	Kadath	A420866-B		De He Na Po Ph Pi O:0619		330	CAin	M0 V	{ 2 }	(D7C+1)	[7A4A]		8	1,092
 Beyo	I	0721	Xeres	B564687-6		Ag Ni Ri		410	CAin	G9 V	{ 1 }	(855+1)	[6756]		11	200
 Beyo	I	0723	Cthonia	B86A667-C		Ni Ri Wa O:0619		920	CAin	F1 V	{ 2 }	(A56+2)	[685C]		11	600
@@ -122,7 +122,7 @@ Beyo	E	0815	Azathoth	B544304-A		Lo		100	CAin	F5 V	{ 1 }	(521-1)	[1438]		7	-10
 Beyo	E	0816	Siva	C965521-9		Ag Ni Pr Da	A	300	CAin	F8 V	{ 0 }	(744-4)	[1515]		7	-448
 Beyo	E	0818	Pleiades 2	A00266B-D		As Ic Na Ni Va O:0619		800	CAin	K8 V M3 V M6 V	{ 1 }	(855+3)	[877F]		12	600
 Beyo	I	0821	Nether Farquahr	X967641-1		Ag Ni Ri Fo	R	730	CAin	G0 V M6 V	{ -1 }	(853-5)	[2511]		9	-600
-Beyo	I	0822	Shrine	E564161-2		Lo O:0619		400	CAin	G9 V	{ -3 }	(301-5)	[1111]		10	0
+Beyo	I	0822	Shrine	E564161-2		Lo O:0619		400	CAin	G9 V	{ -3 }	(300-5)	[1111]		10	0
 Beyo	I	0824	Disengage	A675423-B		Ni Pa		430	CAin	F6 V M2 V	{ 1 }	(934-2)	[1528]		14	-216
 Beyo	I	0825	Abchandler	A556522-D		Ag Ni		401	CAin	F0 V M4 V	{ 2 }	(846-2)	[1719]		6	-384
 Beyo	I	0828	Zydia Atropene	C538689-9	KV	Ni		300	ZyCo	G0 III	{ 0 }	(853+1)	[766A]		12	120
@@ -136,21 +136,21 @@ Beyo	M	0838	Journey's End	EC73000-0		Ba		023	NaHu	G2 V M0 V	{ -3 }	(200-5)	[0000
 Beyo	B	0902	Thieves' World	X865657-2		Ag Ni Ga Ri Fo	R	900	NaHu	G8 V	{ -1 }	(853-1)	[6552]		9	-120
 Beyo	B	0906	Fraldanhylla	A100234-B	K	Lo Va		900	NaHu	M1 V	{ 1 }	(411-1)	[1339]		7	-4
 Beyo	B	0907	Dragonrest	B686484-7	MV	Ni Ga Pa		302	NaHu	F0 V M7 V	{ -1 }	(632-3)	[2335]		12	-108
-Beyo	B	0910	579-939	C767389-9		Lo Ga		700	NaHu	F4 V M0 V	{ -1 }	(521+1)	[426A]		7	10
+Beyo	B	0910	579-939	C767389-9		Lo Ga		700	NaHu	F4 V M0 V	{ -1 }	(520+1)	[426A]		7	0
 Beyo	F	0915	Ashiski'	B6A2865-A	V	Fl He Ph O:0916		312	CAin	G4 V	{ 2 }	(D7B+1)	[6A38]		10	1,001
 Beyo	F	0916	Epsilon Centre	B5639C9-9		Hi Pr Pz	A	320	CAin	F6 V	{ 2 }	(D8C+3)	[AB6A]		12	3,744
-Beyo	F	0918	Kitenithwa	B555134-6	V	Lo		512	CAin	G0 V M5 V	{ -1 }	(301-3)	[1134]		8	0
+Beyo	F	0918	Kitenithwa	B555134-6	V	Lo		512	CAin	G0 V M5 V	{ -1 }	(300-3)	[1134]		8	0
 Beyo	F	0920	Angkor Wat	E312775-7		Ic Na Pi		300	CAin	M0 V	{ -2 }	(966-4)	[5535]		10	-1,296
-Beyo	J	0921	Xerxes	C526375-9		Lo		700	CAin	G4 V	{ -1 }	(521-3)	[1237]		8	-30
+Beyo	J	0921	Xerxes	C526375-9		Lo		700	CAin	G4 V	{ -1 }	(520-3)	[1237]		8	0
 Beyo	J	0923	Caveat	D553546-7	S	Ni Po		400	CsIm	F5 V M0 V	{ -3 }	(741-4)	[4246]		9	-112
 Beyo	J	0925	Godulas Shrelac	C876976-7		Hi In		730	CAin	K0 V	{ 1 }	(B8A+1)	[8A46]		10	880
 Beyo	J	0926	Calliope	E554651-4		Ag Ni		400	CAin	G4 V	{ -2 }	(852-5)	[2411]		6	-400
 Beyo	J	0929	Zydanayl	B677524-7	V	Ag Ni		400	ZyCo	G1 V	{ 0 }	(744-2)	[3535]		9	-224
 Beyo	N	0931	Zydpharn	B764720-7		Ag Ri		621	ZyCo	F1 V	{ 2 }	(96A-2)	[2912]		13	-1,080
 Beyo	N	0932	Zydpedallion	B869720-8		Ri		601	ZyCo	F0 V	{ 1 }	(A69-3)	[2813]		7	-1,620
-Beyo	B	1005	Bethoom	B200100-9		Lo Va		931	NaHu	F1 V M9 V	{ 0 }	(701-4)	[1114]		13	0
+Beyo	B	1005	Bethoom	B200100-9		Lo Va		931	NaHu	F1 V M9 V	{ 0 }	(700-4)	[1114]		13	0
 Beyo	B	1007	Kalturia	CB669A9-7	KV	Hi Pr Pz	A	330	NaHu	F7 V M9 V	{ 1 }	(B89+1)	[AA68]		12	792
-Beyo	F	1011	Tinzhy	C310200-C		Lo		410	CAin	M1 V	{ 0 }	(511-4)	[1217]		9	-20
+Beyo	F	1011	Tinzhy	C310200-C		Lo		410	CAin	M1 V	{ 0 }	(510-4)	[1217]		9	0
 Beyo	F	1013	Shadows	E8A38C9-8	V	Fl Ph Pz	A	120	CAin	G1 V	{ -2 }	(C76-1)	[9669]		12	-504
 Beyo	F	1014	Fleche	D5438A9-5		Po Ph Pi Pz	A	500	CAin	F9 V	{ -2 }	(A75-1)	[9666]		7	-350
 Beyo	F	1016	Fischer	X400679-7	V	Na Ni Va Fo	R	231	CAin	F8 V	{ -3 }	(851-2)	[7368]		8	-80
@@ -160,17 +160,17 @@ Beyo	J	1026	Miller's Paradox	E566787-1		Ag Ri (Marcsists)		920	CAin	F8 V	{ 0 }	(
 Beyo	J	1029	Zydeterranal	B554634-9		Ag Ni		200	ZyCo	F7 V M3 V	{ 1 }	(855-1)	[4737]		10	-200
 Beyo	N	1034	Reading Gaol	E945000-0		Ba Px		033	NaHu	M2 V	{ -3 }	(200-5)	[0000]		13	0
 Beyo	N	1039	Clanheim	B550561-9		De Ni Po O:1140		930	NaHu	K6 V M3 V	{ 0 }	(A44-4)	[1515]		12	-640
-Beyo	B	1104	Arbellatra's Tiara	D000389-7		As Lo Va		511	CsIm	M1 V	{ -3 }	(521-2)	[4168]		11	-20
+Beyo	B	1104	Arbellatra's Tiara	D000389-7		As Lo Va		511	CsIm	M1 V	{ -3 }	(520-2)	[4168]		11	0
 Beyo	B	1105	Ixchel	A524200-A		Lo		120	NaHu	K1 V M4 V	{ 1 }	(611-3)	[1315]		12	-18
-Beyo	B	1108	Hardass	C878200-5		Lo		921	NaHu	F8 V M0 V	{ -2 }	(411-5)	[1111]		11	-20
-Beyo	B	1110	Castle Keep	E859264-6		Lo O:0810		700	NaHu	F2 V M3 V	{ -3 }	(411-5)	[1134]		11	-20
+Beyo	B	1108	Hardass	C878200-5		Lo		921	NaHu	F8 V M0 V	{ -2 }	(410-5)	[1111]		11	0
+Beyo	B	1110	Castle Keep	E859264-6		Lo O:0810		700	NaHu	F2 V M3 V	{ -3 }	(410-5)	[1134]		11	0
 Beyo	F	1112	Wasichu	B434754-A				602	CAin	M3 V M6 V	{ 2 }	(B6B+1)	[5938]		14	726
 Beyo	F	1113	Nialinwe	AA7A8A9-9	V	Oc Ph Pi Pz	A	700	CAin	F7 V M2 V	{ 1 }	(A7A+2)	[996A]		7	1,400
 Beyo	F	1115	Pointe d'Arret	C200873-7	V	Na Va Ph Pi		901	CAin	F3 V	{ -1 }	(A77-4)	[5724]		13	-1,960
 Beyo	F	1116	Flare	C541658-7		He Ni Po		300	CAin	F5 V	{ -2 }	(852-2)	[6457]		8	-160
-Beyo	F	1118	De'ne'tah	E400336-7		Lo Va Fr		503	CAin	M1 V	{ -3 }	(521-4)	[2146]		12	-40
+Beyo	F	1118	De'ne'tah	E400336-7		Lo Va Fr		503	CAin	M1 V	{ -3 }	(520-4)	[2146]		12	0
 Beyo	F	1119	La Rochefoucauld	E423555-8		Ni Po		130	CAin	K3 V	{ -3 }	(A41-5)	[3236]		11	-200
-Beyo	J	1124	Yearning	C573100-A	V	Lo		600	CAin	F0 V M7 V	{ 0 }	(301-4)	[1115]		6	0
+Beyo	J	1124	Yearning	C573100-A	V	Lo		600	CAin	F0 V M7 V	{ 0 }	(300-4)	[1115]		6	0
 Beyo	J	1130	Zydjabr	C6296BF-A		Ni Da	A	430	ZyCo	G3 V M2 V	{ 0 }	(B54+5)	[B6AF]		10	1,100
 Beyo	N	1131	Zydmnar	A89A410-A	N	Ni Wa		600	ZyCo	F3 V M7 V	{ 1 }	(634-3)	[1515]		10	-216
 Beyo	N	1134	Rock	C62698D-9		Hi In Pz Px	A	301	NaHu	F0 V	{ 2 }	(C8C+5)	[DB9D]		7	5,760
@@ -181,7 +181,7 @@ Beyo	B	1203	Jeldemnar	E523000-0		Ba Po		012	NaHu	M2 V	{ -3 }	(200-5)	[0000]		10	
 Beyo	B	1207	Liberty Hall	A856327-D		Lo Ga		600	NaHu	F1 V	{ 1 }	(521+1)	[345D]		11	10
 Beyo	F	1215	Shekerleb	A200798-B		Na Va Pi		630	CAin	G5 V M2 V	{ 2 }	(C6C+2)	[795B]		10	1,728
 Beyo	J	1221	Refinnej	C4269B9-7	V	Hi In Pz	A	123	CAin	F0 V	{ 1 }	(B8A+2)	[AA68]		14	1,760
-Beyo	J	1222	Salle d'Armes	E686334-5		Lo Ga		230	CAin	F4 V	{ -3 }	(521-5)	[1133]		12	-50
+Beyo	J	1222	Salle d'Armes	E686334-5		Lo Ga		230	CAin	F4 V	{ -3 }	(520-5)	[1133]		12	0
 Beyo	J	1223	Iainthell	D200657-9	W	Na Ni Va		120	CAin	M3 III	{ -1 }	(A53-1)	[6559]		15	-150
 Beyo	J	1224	Aerhy	X200000-0		Ba Va Fo	R	000	CAin	K9 III	{ -3 }	(200-5)	[0000]		7	0
 Beyo	J	1225	Ktashisnif	D965879-4		Ri Pa Ph		431	CAin	F8 V	{ -1 }	(A75+1)	[9765]		12	350
@@ -194,11 +194,11 @@ Beyo	F	1316	Delta Centre	A964627-C		Ag Ni Ri Rs		900	CAin	F2 V M5 V	{ 3 }	(857+3
 Beyo	F	1318	Kittet'thoui	B9C3376-A		Fl Lo		201	CAin	F5 V M4 V	{ 1 }	(621+1)	[2449]		13	12
 Beyo	J	1321	Dawn	E583889-2		Ri Ph Pz	A	930	CAin	F6 V	{ -1 }	(A74+1)	[9763]		11	280
 Beyo	J	1324	Paldoran	C763789-3		Ri Pz	A	520	CAin	F9 V M5 V	{ 0 }	(966+1)	[8764]		8	324
-Beyo	J	1325	Ouiqawah	C20027C-9		Lo Va		500	CAin	M2 V	{ -1 }	(411+2)	[518C]		6	8
+Beyo	J	1325	Ouiqawah	C20027C-9		Lo Va		500	CAin	M2 V	{ -1 }	(410+2)	[518C]		6	0
 Beyo	N	1332	Zhawlty Nawsh	X89A416-5		Ni Wa Fo	R	100	ZyCo	F1 V	{ -3 }	(631-4)	[3144]		7	-72
-Beyo	N	1335	Hichmakani	A876320-A	KV	Lo		720	NaHu	F3 V	{ 2 }	(721-3)	[1515]		6	-42
-Beyo	N	1340	Thessalae	C000161-8		As Lo Va O:1438		300	NaHu	M2 V	{ -2 }	(301-5)	[1114]		6	0
-Beyo	B	1401	Etaoin Shrdlu	D631300-6		Lo Po		130	NaHu	F8 V	{ -3 }	(521-5)	[1111]		12	-50
+Beyo	N	1335	Hichmakani	A876320-A	KV	Lo		720	NaHu	F3 V	{ 2 }	(722-3)	[1515]		6	-84
+Beyo	N	1340	Thessalae	C000161-8		As Lo Va O:1438		300	NaHu	M2 V	{ -2 }	(300-5)	[1114]		6	0
+Beyo	B	1401	Etaoin Shrdlu	D631300-6		Lo Po		130	NaHu	F8 V	{ -3 }	(520-5)	[1111]		12	0
 Beyo	B	1402	Abeitlung Drei	E000675-7		As Na Ni Va		300	DiWb	G3 V	{ -3 }	(851-5)	[4335]		7	-200
 Beyo	F	1414	Mesawmi	CAA3623-9		Fl Ni		900	CAin	K8 IV	{ -1 }	(853-4)	[3526]		4	-480
 Beyo	F	1415	Miskahmiqui	A9779B9-D		Hi In Pz	A	621	CAin	F2 V	{ 4 }	(E8G+5)	[AD6E]		11	8,960
@@ -209,9 +209,9 @@ Beyo	F	1420	Le Havre	B795436-7	V	Ni Pa		200	CAin	G0 V M9 V M3 V	{ -1 }	(632-2)	[
 Beyo	J	1421	No Hope	E9A7597-8		Fl Ni		900	CAin	G1 V M9 V	{ -3 }	(741-3)	[5258]		4	-84
 Beyo	J	1423	La Belle	A867540-8		Ag Ni Ga Pr		200	CAin	F8 V	{ 0 }	(744-4)	[1513]		3	-448
 Beyo	J	1425	Wahl's Academy	A86A597-A		Ni Wa Pr		400	NaHu	G3 V	{ 1 }	(745+1)	[565A]		8	140
-Beyo	N	1433	Greater Enigma	E884212-7	W	Lo		520	NaHu	F9 V M6 V	{ -2 }	(411-5)	[1113]		14	-20
+Beyo	N	1433	Greater Enigma	E884212-7	W	Lo		520	NaHu	F9 V M6 V	{ -2 }	(410-5)	[1113]		14	0
 Beyo	N	1436	Amnesty	C987759-7		Ag Ri		420	NaHu	F6 V	{ 1 }	(969+2)	[8868]		10	972
-Beyo	N	1437	Harpe	E863383-7		Lo Da	A	400	NaHu	F0 V K2 V M0 V G0 V M5 V	{ -3 }	(521-5)	[1124]		8	-50
+Beyo	N	1437	Harpe	E863383-7		Lo Da	A	400	NaHu	F0 V K2 V M0 V G0 V M5 V	{ -3 }	(520-5)	[1124]		8	0
 Beyo	N	1438	Cahokia	A7638DF-A		Ri Ph Pz	A	600	NaHu	F6 V	{ 3 }	(A7C+5)	[DBAF]		11	4,200
 Beyo	B	1501	Platz	D873500-5	K	Ni		430	DiWb	F6 V M6 V	{ -3 }	(741-5)	[1211]		8	-140
 Beyo	B	1502	Schloss Adler	C8637C7-8		Ri Pz	A	310	DiWb	F7 V	{ 0 }	(A68+1)	[7758]		7	480
@@ -220,14 +220,14 @@ Beyo	B	1505	Drei Farben	A000320-D		As Lo Va		900	DiWb	M2 V	{ 1 }	(521-3)	[1418]	
 Beyo	B	1507	Nervenheilanstalt	E554410-3		Ni Pa		430	DiWb	F7 V M1 V	{ -3 }	(631-5)	[1111]		12	-90
 Beyo	B	1508	Staatsbibliothek	ABC7838-A		Fl Ph Cp		300	DiWb	F4 V M6 V	{ 2 }	(A7B+2)	[8A5A]		9	1,540
 Beyo	F	1511	Starved Rock	B300300-B		Lo Va Da Px	A	901	CAin	K8 II	{ 1 }	(621-3)	[1416]		9	-36
-Beyo	F	1515	Modoc	D500122-7		Lo Va		200	CAin	K7 V M9 V	{ -3 }	(301-5)	[1113]		7	0
+Beyo	F	1515	Modoc	D500122-7		Lo Va		200	CAin	K7 V M9 V	{ -3 }	(300-5)	[1113]		7	0
 Beyo	F	1516	Zterpyll	D675789-5		Ag Pi		130	CAin	F8 V	{ -1 }	(966+1)	[8666]		8	324
 Beyo	F	1517	Chichen Itza	B534556-A		Ni		400	CAin	M2 V	{ 1 }	(745+1)	[4649]		8	140
 Beyo	F	1518	Opawaka	A000550-C		As Ni Va		530	CAin	A6 V	{ 1 }	(A45-3)	[1617]		11	-600
 Beyo	F	1520	Alwameke	CA7A445-9	KV	Ni Oc		910	CAin	F4 V	{ 0 }	(732-3)	[2437]		6	-126
 Beyo	J	1521	Nueva Espana	X00079B-7		As Na Va Pi Fo	R	400	CAin	M2 V	{ -2 }	(966+1)	[9579]		10	324
 Beyo	J	1522	San Souci	B727879-9	V	Ph Pi		301	CAin	F2 V	{ 1 }	(B7A+2)	[996A]		4	1,540
-Beyo	J	1523	Zebulon	B664212-7		Lo		500	CAin	F7 V	{ -1 }	(411-5)	[1113]		12	-20
+Beyo	J	1523	Zebulon	B664212-7		Lo		500	CAin	F7 V	{ -1 }	(410-5)	[1113]		12	0
 Beyo	N	1533	Bloodgard	A9A5642-A		Fl Ni Da	A	230	NaHu	M2 V	{ 1 }	(B55-3)	[2716]		13	-825
 Beyo	N	1535	Cziltang Brone	B767400-9		Ni Ga Pa Droy8		110	NaXX	G9 V	{ 0 }	(733-4)	[1414]		9	-252
 Beyo	N	1539	Shaft	A844495-9	NW	Ni Pa		910	NaHu	G4 V M1 V	{ 1 }	(734-1)	[2537]		5	-84
@@ -236,35 +236,35 @@ Beyo	B	1602	Pearl of Zandvoort	C584756-6		Ag Ri		230	NaHu	F7 V	{ 1 }	(968+1)	[68
 Beyo	B	1604	Guildheim	A535300-B	KW	Lo		620	NaHu	M3 V	{ 1 }	(721-3)	[1416]		10	-42
 Beyo	B	1609	Baden em Zee	E420676-8		De He Na Ni Po		301	DiWb	M1 V	{ -3 }	(951-4)	[5347]		6	-180
 Beyo	F	1612	Te'pe'wa	A100372-D		Lo Va		501	CAin	G1 V	{ 1 }	(621-3)	[1419]		8	-36
-Beyo	F	1613	Idiot's Delight	B658303-8		Lo		412	CAin	F3 V	{ -1 }	(821-4)	[1225]		14	-64
+Beyo	F	1613	Idiot's Delight	B658303-8		Lo		412	CAin	F3 V	{ -1 }	(820-4)	[1225]		14	0
 Beyo	F	1617	Hana	E560486-3	KV	De Ni Da	A	810	CAin	F9 V	{ -2 }	(631-4)	[3242]		14	-72
 Beyo	F	1618	Rosebud	D657677-1	N	Ag Ni Ga Px		810	CAin	F9 V M9 V	{ -2 }	(852-2)	[6451]		6	-160
 Beyo	J	1624	I'Sred*Nihil	A767687-C		Ag Ni Ga Ri Da (Sred*Ni)	A	201	IHPr	F9 V M2 V	{ 3 }	(957+3)	[695C]		5	945
-Beyo	J	1625	Gustavius	D522169-8		He Lo Po SredW O:1624		510	IHPr	M2 V	{ -3 }	(401-2)	[2169]		9	0
-Beyo	J	1626	D'Jean	C987300-7		Lo		900	NaHu	F5 V M7 V	{ -2 }	(521-5)	[1112]		8	-50
+Beyo	J	1625	Gustavius	D522169-8		He Lo Po SredW O:1624		510	IHPr	M2 V	{ -3 }	(400-2)	[2169]		9	0
+Beyo	J	1626	D'Jean	C987300-7		Lo		900	NaHu	F5 V M7 V	{ -2 }	(520-5)	[1112]		8	0
 Beyo	J	1627	Mystere	D98A669-7	W	Ni Ri Wa SredW O:1624		600	IHPr	K6 V	{ -1 }	(853+1)	[7568]		8	120
 Beyo	J	1628	I'Sred*Ni Cluster	A000497-C		As Ni Va Da SredW	A	931	IHPr	G4 III	{ 1 }	(A34+1)	[455C]		12	120
 Beyo	N	1632	Codominium-B 4	B5605A9-9		De Ni Pr		100	ZyCo	F3 V M5 V	{ 0 }	(744+1)	[656A]		10	112
-Beyo	N	1635	Thule	C876272-5	KV	Lo		630	NaHu	G4 V M3 V	{ -1 }	(411-5)	[1111]		10	-20
+Beyo	N	1635	Thule	C876272-5	KV	Lo		630	NaHu	G4 V M3 V	{ -1 }	(410-5)	[1111]		10	0
 Beyo	C	1701	Zaroq Nova 9	B8C1987-9	S	Fl He Hi In		400	NaHu	G3 V	{ 3 }	(B8D+3)	[9C59]		6	3,432
 Beyo	C	1705	Liebeskinder	B000520-C	W	As Ni Va Da	A	700	DiWb	M1 V M1 V	{ 2 }	(746-2)	[1717]		10	-336
 Beyo	C	1707	Feldherrnhalle	A573667-9		Ni O:1508		300	DiWb	K7 V M2 V	{ 0 }	(854+1)	[6659]		6	160
 Beyo	C	1708	Quatsch	A636435-A		Ni		600	DiWb	G9 IV	{ 1 }	(634-1)	[2538]		10	-72
 Beyo	C	1709	Abwehr	A540575-9		De He Ni Po		220	DiWb	F0 V M0 V	{ 0 }	(944-2)	[3537]		14	-288
 Beyo	G	1715	Dianalee	E868495-3		Ni Pa		722	CAin	F5 V	{ -3 }	(631-5)	[2131]		15	-90
-Beyo	G	1716	Sigma 7	C874330-7		Lo		713	CAin	K4 V M4 V	{ -2 }	(521-5)	[1112]		7	-50
+Beyo	G	1716	Sigma 7	C874330-7		Lo		713	CAin	K4 V M4 V	{ -2 }	(520-5)	[1112]		7	0
 Beyo	G	1718	Port Royal	D863789-6		Ri		930	CAin	F6 V M5 V	{ -1 }	(966+1)	[8667]		14	324
-Beyo	G	1719	Dorothyellen	B865261-9	N	Lo Ga Mr		411	CsIm	F2 V	{ 0 }	(611-4)	[1215]		12	-24
+Beyo	G	1719	Dorothyellen	B865261-9	N	Lo Ga Mr		411	CsIm	F2 V	{ 0 }	(610-4)	[1215]		12	0
 Beyo	K	1724	Miramon Luagor	D686430-5	W	Ni Ga Pa SredW		600	IHPr	F2 V M5 V	{ -2 }	(631-5)	[1211]		11	-90
-Beyo	K	1725	Fueris	C301335-7	K	Ic Lo Va SredW		420	IHPr	G3 V	{ -2 }	(521-4)	[1135]		11	-40
+Beyo	K	1725	Fueris	C301335-7	K	Ic Lo Va SredW		420	IHPr	G3 V	{ -2 }	(520-4)	[1135]		11	0
 Beyo	K	1728	Quintana Roo	C5A0520-8	W	He Ni SredW		730	IHPr	M5 III M1 V	{ -1 }	(A43-5)	[1413]		10	-600
 Beyo	K	1729	Quatal	D5515A9-5		Ni Po SredW		100	IHPr	F6 V	{ -3 }	(741-2)	[6266]		10	-56
 Beyo	O	1738	The Fifth Horseman	D675789-6		Ag Pi		930	NaHu	F5 V M8 V	{ -1 }	(966+1)	[8667]		11	324
 Beyo	O	1739	The Four Horsemen	A000550-C		As Ni Va		320	NaHu	M2 V	{ 1 }	(945-3)	[1617]		12	-540
-Beyo	C	1802	Beinbruch	C675204-6		Lo		230	DiWb	F3 V	{ -2 }	(411-4)	[1134]		16	-16
+Beyo	C	1802	Beinbruch	C675204-6		Lo		230	DiWb	F3 V	{ -2 }	(410-4)	[1134]		16	0
 Beyo	C	1805	Alamo Ismat	B795400-7		Ni Pa		602	NaHu	F2 V M2 V	{ -1 }	(632-5)	[1312]		8	-180
 Beyo	C	1806	Bundestag	A943166-D	V	Lo Po O:1508		120	DiWb	G7 V M9 V	{ 1 }	(501+1)	[124C]		8	0
-Beyo	C	1808	Bierstube	D897200-6		Lo		500	DiWb	F6 V	{ -3 }	(411-5)	[1111]		8	-20
+Beyo	C	1808	Bierstube	D897200-6		Lo		500	DiWb	F6 V	{ -3 }	(410-5)	[1111]		8	0
 Beyo	C	1810	Tartakover	A560895-B		De Ri Ph Pz	A	900	CsIm	F2 V	{ 3 }	(A7D+1)	[6B39]		12	910
 Beyo	G	1812	Norn	D83598D-9		Hi Pz	A	500	CAin	F6 V	{ 0 }	(B8A+4)	[D99D]		8	3,520
 Beyo	G	1814	Rusty	C83A88B-8		Wa Ph		400	NaHu	F9 V	{ -1 }	(A77+1)	[A77A]		8	490
@@ -280,7 +280,7 @@ Beyo	O	1836	Station Five	E887401-3		Ni Ga Pa		911	NaHu	F3 V	{ -3 }	(631-5)	[1111
 Beyo	O	1837	Stormhaven	A986364-C		Lo O:1438		800	NaHu	G2 V	{ 1 }	(521-1)	[143A]		6	-10
 Beyo	O	1839	Salus	B788400-8		Ni Pa Da	A	400	NaHu	F5 V M2 V	{ -1 }	(632-5)	[1313]		6	-180
 Beyo	C	1903	Gasthof	D403776-7		Ic Na Va Pi		330	DiWb	M1 V M8 V	{ -2 }	(966-3)	[6546]		10	-972
-Beyo	C	1904	Mansagt	C674100-9		Lo		800	DiWb	F7 V	{ -1 }	(301-5)	[1114]		6	0
+Beyo	C	1904	Mansagt	C674100-9		Lo		800	DiWb	F7 V	{ -1 }	(300-5)	[1114]		6	0
 Beyo	C	1905	Ilse	E420433-8	KV	De He Ni Po		400	DiWb	M1 V	{ -2 }	(631-5)	[1225]		10	-90
 Beyo	C	1908	Oberprasidenten	A573113-B	K	Lo Da	A	300	DiWb	F0 V	{ 1 }	(301-2)	[1228]		10	0
 Beyo	C	1909	Nietszche	C548668-6		Ag Ni O:1508		900	DiWb	F8 V	{ -1 }	(853-1)	[6556]		7	-120
@@ -288,25 +288,25 @@ Beyo	G	1914	Pascal Base	E873000-0	N	Ba		020	NaHu	K4 V M3 V	{ -3 }	(200-5)	[0000]
 Beyo	G	1915	Botany Bay	C868683-3	V	Ag Ni Ri		510	NaHu	F0 V	{ 0 }	(854-3)	[3621]		8	-480
 Beyo	K	1923	I'sred*ni Nest	D68398D-7		Hi Pr Pz SredW	A	333	IHPr	K8 V	{ -1 }	(B88+3)	[D89B]		14	2,112
 Beyo	K	1925	Septime	E573689-6		Ni SredW		820	IHPr	F1 V	{ -3 }	(851-2)	[7367]		11	-80
-Beyo	K	1926	Kroks	X000379-7		As Lo Va Fo	R	130	NaHu	M3 V M8 V	{ -3 }	(521-2)	[4168]		11	-20
+Beyo	K	1926	Kroks	X000379-7		As Lo Va Fo	R	130	NaHu	M3 V M8 V	{ -3 }	(520-2)	[4168]		11	0
 Beyo	K	1927	Dust	X000789-7	V	As Na Va Pi Fo	R	500	NaHu	K0 V	{ -2 }	(966-1)	[8568]		8	-324
 Beyo	K	1928	Octave	E774497-6		Ni Pa SredW		730	IHPr	F5 V	{ -3 }	(631-3)	[4156]		12	-54
-Beyo	K	1930	Splendide Mendax	D964168-7		Lo SredW O:2026		800	IHPr	F8 V	{ -3 }	(301-3)	[1157]		12	0
-Beyo	O	1931	Gryphon	B658303-8		Lo		520	NaHu	F5 V M7 V	{ -1 }	(721-4)	[1225]		12	-56
+Beyo	K	1930	Splendide Mendax	D964168-7		Lo SredW O:2026		800	IHPr	F8 V	{ -3 }	(300-3)	[1157]		12	0
+Beyo	O	1931	Gryphon	B658303-8		Lo		520	NaHu	F5 V M7 V	{ -1 }	(720-4)	[1225]		12	0
 Beyo	O	1936	Stormpressed	C581879-4		Ri Ph		700	NaHu	F0 V	{ 0 }	(A76+1)	[9865]		6	420
 Beyo	O	1937	Storm Centre	A762150-D	K	Lo Rs		811	NaHu	F2 V	{ 1 }	(501-3)	[1218]		13	0
 Beyo	O	1938	Stormcrag	D876438-5		Ni Pa		420	NaHu	M0 V M5 V	{ -3 }	(631-3)	[4155]		11	-54
-Beyo	C	2001	Ewig Weibliche	EB67383-7		Lo		600	DiWb	F2 V	{ -3 }	(521-5)	[1124]		8	-50
-Beyo	C	2003	Vierjahreszeiten	B545327-8		Lo		600	DiWb	K8 V	{ -1 }	(521-1)	[3258]		11	-10
+Beyo	C	2001	Ewig Weibliche	EB67383-7		Lo		600	DiWb	F2 V	{ -3 }	(520-5)	[1124]		8	0
+Beyo	C	2003	Vierjahreszeiten	B545327-8		Lo		600	DiWb	K8 V	{ -1 }	(520-1)	[3258]		11	0
 Beyo	C	2006	Liebeslied	A987383-B		Lo Da	A	420	DiWb	G0 V	{ 1 }	(721-2)	[1428]		7	-28
 Beyo	G	2017	Phyllis's Surrender	E863550-6		Ni Pr Da	A	800	NaHu	F6 V	{ -3 }	(741-5)	[1211]		5	-140
 Beyo	G	2018	Steinmetz	D8468AF-5		Pa Ph Pi Pz	A	510	NaHu	F5 V	{ -2 }	(A75+3)	[D6AA]		7	1,050
 Beyo	G	2019	Ultima	B838361-B		Lo SredW O:2022		400	IHPr	M0 V M5 V	{ 1 }	(521-3)	[1417]		6	-30
 Beyo	G	2020	Caribbea Nueva	C84788B-7	W	Pa Ph Pi		531	NaHu	F5 V M7 V	{ 0 }	(A78+2)	[A879]		11	1,120
 Beyo	K	2022	I'sred*nixtu	A00098D-C		As Hi In Na Va Pz SredW	A	302	IHPr	G5 V	{ 4 }	(D8F+5)	[DD9G]		11	7,800
-Beyo	K	2023	Revoc Knarr	C738340-7	KW	Lo SredW		930	IHPr	F1 V M0 V	{ -2 }	(521-5)	[1112]		8	-50
-Beyo	K	2024	Konichiwa	B576100-8	K	Lo SredW		800	IHPr	F5 V	{ -1 }	(301-5)	[1113]		4	0
-Beyo	K	2025	Pittler Pidofat	X000100-7	V	As Lo Va Fo	R	720	NaHu	M1 V M9 V	{ -3 }	(301-5)	[1112]		9	0
+Beyo	K	2023	Revoc Knarr	C738340-7	KW	Lo SredW		930	IHPr	F1 V M0 V	{ -2 }	(520-5)	[1112]		8	0
+Beyo	K	2024	Konichiwa	B576100-8	K	Lo SredW		800	IHPr	F5 V	{ -1 }	(300-5)	[1113]		4	0
+Beyo	K	2025	Pittler Pidofat	X000100-7	V	As Lo Va Fo	R	720	NaHu	M1 V M9 V	{ -3 }	(300-5)	[1112]		9	0
 Beyo	K	2026	I'Sred*Nispr	A675879-C		Pa Ph Cx Pi Pz SredW	A	932	IHPr	F1 V M0 V M0 V	{ 2 }	(F7C+3)	[9A6D]		9	3,780
 Beyo	K	2027	Aichi Ban	X050000-0		As Ba De Po Fo	R	030	NaHu	M3 V	{ -3 }	(200-5)	[0000]		14	0
 Beyo	K	2028	Seconde	B413413-8		Ic Ni SredW		820	IHPr	K2 V M1 V	{ -1 }	(832-4)	[1325]		15	-192
@@ -316,37 +316,37 @@ Beyo	O	2031	Wilde	D657677-1		Ag Ni Ga		200	NaHu	F8 V	{ -2 }	(852-2)	[6451]		4	-1
 Beyo	O	2036	Stormhold	C54587A-8		Pa Ph Pi Pz Px	A	330	NaHu	F7 V M3 V M8 V	{ -1 }	(D77+1)	[A77A]		10	637
 Beyo	O	2037	Stormcast	C300497-9		Ni Va		432	CsIm	M2 V M8 V	{ -1 }	(B32-1)	[4359]		13	-66
 Beyo	O	2040	Bete Noire	B795436-7		Ni Pa		221	AsSc	F2 V M6 V	{ -1 }	(632-2)	[3346]		7	-72
-Beyo	C	2101	Zeben	E100250-9		Lo Va		120	DiWb	G1 V	{ -2 }	(611-5)	[1114]		9	-30
+Beyo	C	2101	Zeben	E100250-9		Lo Va		120	DiWb	G1 V	{ -2 }	(610-5)	[1114]		9	0
 Beyo	G	2116	Revelation	A859120-D	N	Lo		300	NaHu	F4 V M2 V	{ 1 }	(301-3)	[1218]		6	0
 Beyo	G	2117	Tanasi	C96685A-4		Ri Pa Ph		600	NaHu	G6 V	{ 0 }	(A76+2)	[A876]		5	840
 Beyo	G	2118	Quandary	E83A597-A		Ni Wa		710	NaHu	F0 V	{ -1 }	(843-1)	[545A]		12	-96
 Beyo	G	2119	Beriel	B837879-A		Ph Pz SredW	A	513	IHPr	F1 V	{ 2 }	(E7B+3)	[9A6B]		13	3,234
 Beyo	K	2123	Jiird	D988678-3		Ag Ni Ri SredW		900	IHPr	F0 V	{ -1 }	(853-1)	[6553]		8	-120
 Beyo	K	2125	Nead Lelan	E695000-0		Ba		010	IHPr	F9 V	{ -3 }	(200-5)	[0000]		8	0
-Beyo	K	2126	Station Three	E050150-7		As De Lo Po		810	NaHu	F4 V	{ -3 }	(301-5)	[1112]		8	0
+Beyo	K	2126	Station Three	E050150-7		As De Lo Po		810	NaHu	F4 V	{ -3 }	(300-5)	[1112]		8	0
 Beyo	K	2127	Omiatenieu	X000573-7	V	As Ni Va Fo	R	710	NaHu	M2 V M3 V	{ -3 }	(741-5)	[2224]		9	-140
 Beyo	K	2128	Nuit Alanche	E767AA6-7		Hi Ga SredW		430	IHPr	F0 V	{ -1 }	(C98-2)	[9946]		13	-1,728
 Beyo	K	2130	Miskekopke	E869000-0	M	Ba		000	NaHu	G2 V M4 V	{ -3 }	(200-5)	[0000]		7	0
 Beyo	O	2131	Stormedge	A432272-A		Lo Po SredW		520	IHPr	M5 II	{ 1 }	(611-3)	[1316]		8	-18
-Beyo	O	2137	Yafjha	B566100-A	NW	Lo		110	AsSc	F0 V M0 V	{ 2 }	(401-2)	[1315]		10	0
+Beyo	O	2137	Yafjha	B566100-A	NW	Lo		110	AsSc	F0 V M0 V	{ 2 }	(402-2)	[1315]		10	0
 Beyo	O	2139	Compagnon Noire	B9C3376-A	V	Fl Lo		210	AsSc	G1 V	{ 1 }	(621+1)	[2449]		7	12
 Beyo	C	2204	Inverted Hanham	C51059D-7	K	Ni Da	A	631	NaHu	F8 V	{ -2 }	(742+2)	[939B]		10	112
-Beyo	C	2205	Beta Centre	A987100-9		Lo		702	CsIm	F0 V	{ 0 }	(501-4)	[1114]		12	0
-Beyo	C	2206	Alpha Mare	D9C3232-9		Fl Lo		900	NaHu	G8 V	{ -2 }	(411-5)	[1115]		6	-20
+Beyo	C	2205	Beta Centre	A987100-9		Lo		702	CsIm	F0 V	{ 0 }	(500-4)	[1114]		12	0
+Beyo	C	2206	Alpha Mare	D9C3232-9		Fl Lo		900	NaHu	G8 V	{ -2 }	(410-5)	[1115]		6	0
 Beyo	K	2221	Rolk	B85997B-A		Hi SredW		110	IHPr	F9 V	{ 3 }	(C8D+5)	[BC7C]		9	6,240
 Beyo	K	2223	Tryllandianne	C553430-8		Ni Po		220	NaHu	F5 V	{ -2 }	(831-5)	[1213]		15	-120
-Beyo	K	2225	Qwertyuiop	B8B1346-9		Fl He Lo SredW		200	IHPr	M1 V	{ 0 }	(521-1)	[2348]		7	-10
-Beyo	K	2226	Wurger	E410300-9		Lo		520	DiWb	M0 III	{ -2 }	(721-5)	[1114]		13	-70
-Beyo	K	2227	Cibola	B777320-A	KV	Lo SredW		410	IHPr	F7 V	{ 2 }	(621-3)	[1515]		9	-36
+Beyo	K	2225	Qwertyuiop	B8B1346-9		Fl He Lo SredW		200	IHPr	M1 V	{ 0 }	(520-1)	[2348]		7	0
+Beyo	K	2226	Wurger	E410300-9		Lo		520	DiWb	M0 III	{ -2 }	(720-5)	[1114]		13	0
+Beyo	K	2227	Cibola	B777320-A	KV	Lo SredW		410	IHPr	F7 V	{ 2 }	(622-3)	[1515]		9	-72
 Beyo	K	2229	Stagatz	C62698D-A		Hi In Pz	A	122	NaHu	F7 V	{ 3 }	(F8D+5)	[DC9E]		9	7,800
 Beyo	O	2235	New Groton	A8798B9-D		Ph Pi Pz	A	734	NaHu	F8 V M0 V	{ 2 }	(H7D+3)	[9A6E]		14	4,641
 Beyo	C	2303	511.Delta.9	C652764-3		Po O:2403		800	NaHu	G0 V	{ -1 }	(965-3)	[5631]		5	-810
-Beyo	C	2304	Morphy	B543232-9		Lo Po		100	NaHu	F3 V	{ 0 }	(411-4)	[1215]		7	-16
+Beyo	C	2304	Morphy	B543232-9		Lo Po		100	NaHu	F3 V	{ 0 }	(410-4)	[1215]		7	0
 Beyo	C	2305	Queen Maud's Land	B316499-A	V	Ic Ni		500	NaHu	M3 V M6 V	{ 1 }	(634+2)	[556B]		11	144
-Beyo	C	2310	Hel	B777300-9		Lo Da	A	900	CsMP	F2 V M3 V	{ 0 }	(521-4)	[1314]		4	-40
+Beyo	C	2310	Hel	B777300-9		Lo Da	A	900	CsMP	F2 V M3 V	{ 0 }	(520-4)	[1314]		4	0
 Beyo	G	2311	Shangri-La	A86779B-9		Ag Ga Ri Pz	A	832	CsMP	F3 V M7 V	{ 3 }	(E6C+5)	[9A7B]		10	5,040
-Beyo	K	2324	Citadel	D410383-7		Lo SredW		332	IHPr	M1 V	{ -3 }	(521-5)	[1124]		12	-50
-Beyo	K	2325	I'Sred*Nitlal	C436361-6		Lo SredW O:2022		610	IHPr	G3 V	{ -2 }	(521-5)	[1112]		7	-50
+Beyo	K	2324	Citadel	D410383-7		Lo SredW		332	IHPr	M1 V	{ -3 }	(520-5)	[1124]		12	0
+Beyo	K	2325	I'Sred*Nitlal	C436361-6		Lo SredW O:2022		610	IHPr	G3 V	{ -2 }	(520-5)	[1112]		7	0
 Beyo	K	2328	Cral	E658000-0		Ba		010	IHPr	F6 V M3 V	{ -3 }	(200-5)	[0000]		6	0
 Beyo	K	2329	Sundance	D432461-6		Ni Po O:2229		810	NaHu	M0 V M1 V	{ -3 }	(631-5)	[1112]		6	-90
 Beyo	O	2331	Streel	A869346-A	N	Lo		600	NaHu	F6 V M5 V	{ 1 }	(521+1)	[2449]		10	10
@@ -354,14 +354,14 @@ Beyo	O	2338	Directory	D988478-6		Ni Pa		210	AsSc	G6 V	{ -3 }	(631-3)	[4156]		10	
 Beyo	C	2403	Alekhine	B9BA786-A		Fl		420	NaHu	M1 V	{ 2 }	(B6B+1)	[6949]		7	726
 Beyo	C	2405	Macchu Picchu	D732851-6	W	Na Po Ph		720	NaHu	F1 V M4 V	{ -1 }	(A76-5)	[4712]		11	-2,100
 Beyo	C	2409	Shequonur	B753461-A		Ni Po Da O:2311	A	530	CsMP	F4 V	{ 1 }	(934-3)	[1516]		7	-324
-Beyo	C	2410	Dernier Cri	D766348-7		Lo Ga Da	A	500	CsMP	F6 V	{ -3 }	(521-3)	[3157]		9	-30
+Beyo	C	2410	Dernier Cri	D766348-7		Lo Ga Da	A	500	CsMP	F6 V	{ -3 }	(520-3)	[3157]		9	0
 Beyo	K	2424	I'Sred*Nilun	A67A361-C		Lo Wa SredW O:2022		501	IHPr	F3 V M5 V	{ 1 }	(621-3)	[1418]		7	-36
 Beyo	K	2425	Seredak	D635720-6		SredW		200	IHPr	K2 V M4 V	{ -2 }	(965-5)	[2511]		4	-1,350
 Beyo	K	2426	Lost Enigma	C598843-5		Pa Ph Pi		910	NaHu	F0 V M9 V	{ -1 }	(A76-4)	[5722]		9	-1,680
-Beyo	K	2427	Omega 18	D552340-7		Lo Po SredW		410	IHPr	F8 V M5 V	{ -3 }	(521-5)	[1112]		12	-50
+Beyo	K	2427	Omega 18	D552340-7		Lo Po SredW		410	IHPr	F8 V M5 V	{ -3 }	(520-5)	[1112]		12	0
 Beyo	K	2428	I'Sred*Nillol	A7755A9-C		Ag Ni SredW		311	IHPr	G4 V	{ 2 }	(946+3)	[676D]		8	648
 Beyo	O	2434	Armory	A411120-D		Ic Lo		921	NaHu	M3 V	{ 1 }	(601-3)	[1218]		8	0
-Beyo	O	2435	Pournelle's Trace	C752327-8		Lo Po		500	NaHu	G7 V M2 V	{ -2 }	(521-2)	[3158]		10	-20
+Beyo	O	2435	Pournelle's Trace	C752327-8		Lo Po		500	NaHu	G7 V M2 V	{ -2 }	(520-2)	[3158]		10	0
 Beyo	D	2502	Ljubljulianna	B3107C9-C		Na Pi Pz	A	500	CsIm	M0 V	{ 2 }	(96C+3)	[896D]		8	1,944
 Beyo	D	2503	Damn It All	E405000-0		Ba Ic Va		010	NaHu	M3 V M4 V	{ -3 }	(200-5)	[0000]		5	0
 Beyo	D	2505	El Uqsor	C200667-7		Na Ni Va O:2403		410	NaHu	G2 V M2 V	{ -2 }	(852-2)	[6457]		12	-160
@@ -377,13 +377,13 @@ Beyo	P	2538	Pais D'muerte	D543969-8	KV	Hi In Po Mr		700	AsSc	F2 V	{ 1 }	(B89+1)	
 Beyo	D	2603	Djorun	E562421-4		Ni		300	NaHu	F1 V	{ -3 }	(631-5)	[1111]		10	-90
 Beyo	D	2608	Mal'Kask	C886420-5		Ni Ga Pa Da Mal'W	A	120	MaPr	F6 V	{ -2 }	(631-5)	[1211]		8	-90
 Beyo	D	2609	Mal'Tranx	D858721-3		Ag Pz Mal'W	A	300	MaPr	F9 V	{ -1 }	(965-5)	[3611]		8	-1,350
-Beyo	D	2610	Hradec Kralove	E425200-7		Lo		900	CsMP	F1 V	{ -3 }	(411-5)	[1112]		8	-20
+Beyo	D	2610	Hradec Kralove	E425200-7		Lo		900	CsMP	F1 V	{ -3 }	(410-5)	[1112]		8	0
 Beyo	H	2617	D Cirith Ungol	B586988-9		Hi Pr		310	NaHu	F6 V M7 V	{ 2 }	(C8C+2)	[9B59]		6	2,304
 Beyo	H	2619	Lesser Dismal	A5A7597-9		Fl Ni		200	NaHu	A9 IV K1 V	{ 0 }	(744+1)	[5559]		7	112
 Beyo	L	2621	Wyrm	C400657-8		Na Ni Va Da SredW	A	510	IHPr	G6 V	{ -2 }	(952-2)	[6458]		9	-180
-Beyo	L	2622	Firemoor	C100100-8	V	Lo Va Da SredW	A	300	IHPr	G9 IV M7 V	{ -2 }	(301-5)	[1113]		6	0
+Beyo	L	2622	Firemoor	C100100-8	V	Lo Va Da SredW	A	300	IHPr	G9 IV M7 V	{ -2 }	(300-5)	[1113]		6	0
 Beyo	L	2624	D'mahl	B88338D-9	KV	Lo Da Droy4	A	800	NaHu	F3 V M9 V	{ 1 }	(521+4)	[749D]		12	40
-Beyo	P	2635	Grenour Omega 9	B898322-9		Lo		901	AsSc	K6 V	{ 0 }	(621-4)	[1315]		11	-48
+Beyo	P	2635	Grenour Omega 9	B898322-9		Lo		901	AsSc	K6 V	{ 0 }	(620-4)	[1315]		11	0
 Beyo	P	2636	Simba	CA9A777-6		Oc Pi		800	AsSc	F5 V	{ -1 }	(966-1)	[7656]		8	-324
 Beyo	P	2638	Garfield Station	E556896-9	V	Pa Ph		200	AsSc	F3 V	{ -1 }	(A78-2)	[7748]		3	-1,120
 Beyo	D	2702	Nangat Parban	B558621-7		Ag Ni		110	NaHu	F9 V	{ 0 }	(854-4)	[2613]		10	-640
@@ -392,11 +392,11 @@ Beyo	D	2708	Dias 18	C534420-6		Ni		420	CsMP	K3 V	{ -2 }	(631-5)	[1211]		12	-90
 Beyo	D	2710	Mal'Phlo	X956420-1	V	Ni Pa Fo Mal'W	R	503	MaPr	G0 V	{ -3 }	(631-5)	[1111]		12	-90
 Beyo	H	2712	Mal'Zlim	E516578-8	KV	Ic Ni Da Mal'W	A	530	MaPr	M0 V M0 V	{ -2 }	(A41-3)	[5358]		9	-120
 Beyo	H	2717	Testrous	B533434-B		Ni Po FlorW		513	FlLe	A1 III	{ 1 }	(A34-1)	[2539]		10	-120
-Beyo	H	2719	Normal	C86516B-9		Lo Ga Da O:2819	A	310	NaHu	F7 V M6 V	{ -1 }	(401+1)	[317B]		8	0
+Beyo	H	2719	Normal	C86516B-9		Lo Ga Da O:2819	A	310	NaHu	F7 V M6 V	{ -1 }	(400+1)	[317B]		8	0
 Beyo	L	2728	997.Beta.2	B863674-7	K	Ni Ri		600	NaHu	F4 V M6 V	{ 0 }	(854-2)	[4635]		8	-320
 Beyo	L	2730	Areth	A74A333-A		Lo Wa		401	NaHu	F9 V M2 V	{ 1 }	(621-2)	[1427]		8	-24
 Beyo	P	2732	Th'X #1138	X633838-6		Na Po Ph Px		200	NaHu	F2 V	{ -2 }	(A75-2)	[8656]		7	-700
-Beyo	P	2735	Murv	C976321-5		Lo		100	AsSc	F0 V	{ -2 }	(521-5)	[1111]		4	-50
+Beyo	P	2735	Murv	C976321-5		Lo		100	AsSc	F0 V	{ -2 }	(520-5)	[1111]		4	0
 Beyo	D	2807	Mal'Gnar-Tranx	X577000-0		Ba Fo Mal'W	R	031	MaPr	F1 V	{ -3 }	(200-5)	[0000]		9	0
 Beyo	D	2809	Mal'Gnar-Krusk	E967749-6	M	Ag Ri Pz Mal'W	A	210	MaPr	F6 V M1 V	{ 0 }	(967+1)	[8767]		6	378
 Beyo	D	2810	Castillo la Vieja	C610687-7		Na Ni An		520	CsMP	K7 V	{ -2 }	(852-2)	[6457]		12	-160
@@ -408,34 +408,34 @@ Beyo	P	2832	Hoelle 7	A99A744-A	V	Wa Pi Pz	A	200	CsIm	F3 V M0 V	{ 2 }	(96B+1)	[59
 Beyo	P	2834	Miracle	B94A5A9-9		Ni Wa		400	NaHu	M0 V M7 V	{ 0 }	(744+1)	[656A]		9	112
 Beyo	P	2835	Sdravstoycha	C654520-8	K	Ag Ni		210	NaHu	G7 V M3 V	{ -1 }	(843-5)	[1413]		7	-480
 Beyo	P	2837	0.5 Phast	E562000-0		Ba An		000	AsSc	F9 V	{ -3 }	(200-5)	[0000]		6	0
-Beyo	D	2903	Llandrindod	B540110-7		De He Lo Po		300	CsMP	F8 V	{ -1 }	(301-5)	[1112]		10	0
+Beyo	D	2903	Llandrindod	B540110-7		De He Lo Po		300	CsMP	F8 V	{ -1 }	(300-5)	[1112]		10	0
 Beyo	D	2905	Castillo la Nueva	B3107C9-7		Na An Pi Pz	A	600	CsMP	M0 V M2 V	{ 0 }	(968+1)	[8768]		9	432
 Beyo	D	2908	Nine Hells	E588512-3		Ag Ni Pr		520	CsMP	F8 V	{ -2 }	(742-5)	[1311]		14	-280
-Beyo	H	2912	Mal'Tlan	C834340-7		Lo Da Mal'W	A	810	MaPr	M0 V	{ -2 }	(521-5)	[1112]		9	-50
+Beyo	H	2912	Mal'Tlan	C834340-7		Lo Da Mal'W	A	810	MaPr	M0 V	{ -2 }	(520-5)	[1112]		9	0
 Beyo	H	2913	Eptid	B675654-B		Ag Ni FlorW		612	FlLe	M2 V	{ 2 }	(B56+1)	[4839]		11	330
 Beyo	H	2915	Sarlon	C532313-A	KV	Lo Po FlorW		321	FlLe	M0 V M9 V	{ 1 }	(821-3)	[1427]		11	-48
 Beyo	L	2922	Delta Base	B000327-A		As Lo Va Rs		432	CsIm	G1 Ib B8 IV	{ 1 }	(A21+1)	[345A]		16	20
 Beyo	L	2924	Korakin	X300000-0	V	Ba Va Fo	R	021	NaHu	M2 V	{ -3 }	(200-5)	[0000]		10	0
-Beyo	L	2929	Farquhar	C566113-6		Lo		921	AsSc	F9 V	{ -2 }	(301-5)	[1123]		12	0
+Beyo	L	2929	Farquhar	C566113-6		Lo		921	AsSc	F9 V	{ -2 }	(300-5)	[1123]		12	0
 Beyo	P	2933	Tessla	E6B4000-0		Ba Fl		000	NaHu	G4 V	{ -3 }	(200-5)	[0000]		12	0
 Beyo	P	2934	Darabghird	E643561-5		Ni Po O:3035		900	AsSc	G4 V M2 V	{ -3 }	(741-5)	[1211]		8	-140
 Beyo	P	2935	Barton	B7655AF-9	K	Ag Ni Ga Pr Da	A	820	AsSc	F3 V	{ 1 }	(945+5)	[A6AE]		11	900
-Beyo	P	2938	Ralf	X422300-7	W	He Lo Po Fo	R	611	AsSc	F1 V	{ -2 }	(521-5)	[1112]		10	-50
+Beyo	P	2938	Ralf	X422300-7	W	He Lo Po Fo	R	611	AsSc	F1 V	{ -2 }	(520-5)	[1112]		10	0
 Beyo	D	3001	Kazar	D674656-5		Ag Ni		220	NaVa	F3 V M4 V	{ -2 }	(852-3)	[5444]		9	-240
 Beyo	D	3002	Mal'Gnar El	A864727-C		Ag Ri Cx Pz (Mal'Gnar)	A	900	MaPr	M2 V	{ 4 }	(96E+4)	[7B5C]		12	3,024
 Beyo	D	3004	Mal'Krusk	B654420-6		Ni Pa Da Mal'W	A	630	MaPr	G2 V M6 V	{ -1 }	(632-5)	[1311]		16	-180
 Beyo	D	3007	Mal'Phulk	D956524-6		Ag Ni Da Mal'W	A	500	MaPr	F4 V M0 V	{ -2 }	(742-4)	[3334]		9	-224
 Beyo	D	3009	Mal'Phon	X865625-2		Ag Ni Ga Ri Fo Mal'W	R	403	MaPr	F8 V M8 V	{ -1 }	(853-3)	[4531]		12	-360
 Beyo	H	3011	Radion	C432536-A		Ni Po FlorW		431	FlLe	F2 V K8 V F5 V M1 V	{ 0 }	(B44-1)	[4549]		9	-176
-Beyo	H	3012	Mal'Thys	E87727A-5		Lo Da Mal'W	A	230	MaPr	F6 V	{ -3 }	(411-1)	[4177]		12	-4
+Beyo	H	3012	Mal'Thys	E87727A-5		Lo Da Mal'W	A	230	MaPr	F6 V	{ -3 }	(410-1)	[4177]		12	0
 Beyo	H	3015	Indarin	B521336-B		He Lo Po FlorW		512	FlLe	M0 V M2 V	{ 1 }	(821+1)	[244A]		9	16
 Beyo	H	3016	Micruss	A641538-C		He Ni Po FlorW		331	FlLe	G4 V M2 V	{ 1 }	(B45+1)	[565C]		12	220
 Beyo	L	3028	Sieve	AA657AA-B		Ag Ri Pz	A	500	AsSc	F0 V M5 V	{ 4 }	(96E+5)	[9B7D]		7	3,780
-Beyo	L	3030	Near Farquhar	B300100-9		Lo Va		300	AsSc	M2 V M6 V	{ 0 }	(301-4)	[1114]		3	0
+Beyo	L	3030	Near Farquhar	B300100-9		Lo Va		300	AsSc	M2 V M6 V	{ 0 }	(300-4)	[1114]		3	0
 Beyo	P	3032	Hezar Mun	D42389B-7	KV	Na Po Ph Pi Pz	A	731	AsSc	F3 V M7 V	{ -1 }	(A76+1)	[A779]		14	420
 Beyo	P	3033	Alhazred	A996721-9		Ag Pi Pz	A	200	AsSc	F3 V	{ 2 }	(96B-2)	[3915]		3	-1,188
 Beyo	P	3035	Aslani'i	B867872-A	W	Ga Ri Pa Ph		302	AsSc	K8 V	{ 4 }	(C7D+1)	[4C16]		9	1,092
-Beyo	P	3038	Khur be Teshdeed	D846330-5	KV	Lo		100	AsSc	G4 V	{ -2 }	(521-5)	[1111]		7	-50
+Beyo	P	3038	Khur be Teshdeed	D846330-5	KV	Lo		100	AsSc	G4 V	{ -2 }	(520-5)	[1111]		7	0
 Beyo	D	3103	El Maghred al Aqsa	X894579-5		Ag Ni Fo	R	110	CsMP	F0 V	{ -2 }	(742-1)	[6366]		6	-56
 Beyo	D	3105	Quintet	D6A4656-8	V	Fl Ni		801	CsMP	M0 V	{ -3 }	(951-4)	[5347]		4	-180
 Beyo	D	3106	Zhuvastou	E856532-3		Ag Ni Ga Da	A	530	CsMP	F0 V	{ -2 }	(742-5)	[1311]		12	-280
@@ -447,12 +447,12 @@ Beyo	L	3123	Far Farquhar	X635400-6		Ni Fo	R	802	NaHu	K0 V	{ -3 }	(631-5)	[1111]	
 Beyo	L	3129	Here	B523520-9		Ni Po		300	AsSc	A3 V	{ 0 }	(744-4)	[1514]		8	-448
 Beyo	P	3137	Boeing	AAAA8BE-C		Fl Ph Pz	A	821	NaHu	G9 V	{ 2 }	(D7C+5)	[CA9G]		10	5,460
 Beyo	P	3138	Khatai	C100400-9		Ni Va		820	AsSc	G9 V	{ -1 }	(832-5)	[1314]		9	-240
-Beyo	D	3201	Vrel	C766120-8	KV	Lo Ga		820	NaVa	F4 V M7 V	{ -1 }	(501-5)	[1113]		11	0
+Beyo	D	3201	Vrel	C766120-8	KV	Lo Ga		820	NaVa	F4 V M7 V	{ -1 }	(500-5)	[1113]		11	0
 Beyo	D	3207	Mal'Den	C687558-6		Ag Ni Ga Pr Da Mal'W	A	100	MaPr	F8 V M1 V	{ -1 }	(743-1)	[5456]		9	-84
 Beyo	D	3208	Refnar's Monument	B888787-5		Ag Ri		200	CsMP	F4 V	{ 2 }	(969+2)	[7955]		11	972
 Beyo	D	3209	Mal'Quun	B765720-8		Ag Ga Ri Pz Mal'W	A	110	MaPr	F2 V	{ 2 }	(A6A-2)	[2913]		10	-1,200
-Beyo	L	3223	Sentalmonte	X000120-7		As Lo Va Fo	R	311	NaHu	M0 V	{ -3 }	(301-5)	[1112]		12	0
-Beyo	L	3226	Nether Towley	A946337-8		Lo		200	AsSc	G6 V	{ -1 }	(521-1)	[3258]		7	-10
+Beyo	L	3223	Sentalmonte	X000120-7		As Lo Va Fo	R	311	NaHu	M0 V	{ -3 }	(300-5)	[1112]		12	0
+Beyo	L	3226	Nether Towley	A946337-8		Lo		200	AsSc	G6 V	{ -1 }	(520-1)	[3258]		7	0
 Beyo	L	3228	Graffin	A6357AB-8		Pz	A	401	AsSc	G6 V M5 V	{ 0 }	(A68+2)	[977A]		5	960
 Beyo	P	3233	Caravanserai	A987440-A	K	Ni Pa		820	NaHu	F3 V M1 V	{ 1 }	(834-3)	[1515]		12	-288
 Beyo	P	3235	Sevenohfurr	B724942-8	W	Hi In		300	AsSc	G4 V	{ 3 }	(B8C-1)	[5C14]		11	-1,056
