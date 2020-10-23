@@ -429,14 +429,12 @@ namespace Maps
 
 
             // {Ix}
-            int imp = 0;
+            int imp = CalculateImportance();
             if (!string.IsNullOrWhiteSpace(Importance))
             {
                 string ix = Importance?.Replace('{', ' ').Replace('}', ' ').Trim() ?? "";
                 if (ix != "")
                 {
-                    imp = CalculateImportance();
-
                     ErrorUnless(Int32.Parse(ix) == imp,
                         $"{{Ix}} Importance={ix} incorrect; should be: {imp}");
                 }
@@ -453,6 +451,8 @@ namespace Maps
                     int infrastructure = SecondSurvey.FromHex(ex[2]);
                     int efficiency = Int32.Parse(ex.Substring(3));
 
+                    // Resources=2D; if TL8+, +GG +Belts (min 0)
+                    // per T5.10 Book 3 pp.27
                     if (TechLevel < 8)
                         ErrorUnless(resources.InRange(2, 12),
                             $"(Ex) Resources={resources} out of range; should be: 2D if TL(={TechLevel})<8");
@@ -460,22 +460,33 @@ namespace Maps
                         ErrorUnless(resources.InRange(2 + GasGiants + Belts, 12 + GasGiants + Belts),
                             $"(Ex) Resources={resources} out of range; should be: 2D + GG(={GasGiants}) + Belts(={Belts}) if TL(={TechLevel})=8+");
 
+                    // Labor=Pop-1 (min 0)
+                    // per T5.10 Book 3 `pp.27
                     ErrorUnless(labor == Math.Max(0, PopulationExponent - 1),
                         $"(Ex) Labor={labor} incorrect; should be: Pop(={PopulationExponent}) - 1");
 
-                    if (Ba)
+                    // Infrastructure=
+                    //   If Pop=0 then 0
+                    //   If Pop=123 then Ix
+                    //   If Pop=456 then 1D+Ix
+                    //   If Pop=7+ then 2D+Ix
+                    // per T5.10 Book 3 pp.27
+                    int pop = PopulationExponent;
+                    if (pop == 0)
                         ErrorUnless(infrastructure == 0,
-                            $"(Ex) Infrastructure={infrastructure} incorrect; should be: 0 if Ba");
-                    else if (Lo)
-                        ErrorUnless(infrastructure == 1,
-                            $"(Ex) Infrastructure={infrastructure} incorrect; should be: 1 if Lo");
-                    else if (Ni)
+                            $"(Ex) Infrastructure={infrastructure} incorrect; should be: 0 if Pop=0");
+                    else if (pop.InRange(1, 3))
+                        ErrorUnless(infrastructure == Math.Max(0, imp),
+                            $"(Ex) Infrastructure={infrastructure} incorrect; should be: Imp(={imp}) if Pop=123");
+                    else if (pop.InRange(4, 6))
                         ErrorUnless(infrastructure.InRange(Math.Max(0, imp + 1), Math.Max(0, imp + 6)),
-                            $"(Ex) Infrastructure={infrastructure} out of range for Ni; should be: Imp(={imp}) + 1D");
-                    else
+                            $"(Ex) Infrastructure={infrastructure} out of range; should be: Imp(={imp}) + 1D for Pop=456");
+                    else // pop >= 7
                         ErrorUnless(infrastructure.InRange(Math.Max(0, imp + 2), Math.Max(0, imp + 12)),
-                            $"(Ex) Infrastructure={infrastructure} out of range; should be: Imp(={imp}) + 2D");
+                            $"(Ex) Infrastructure={infrastructure} out of range; should be: Imp(={imp}) + 2D for Pop=7+");
 
+                    // Efficiency=Flux
+                    // per T5.10 Book 3 pp.27
                     ErrorUnless(efficiency.InRange(-5, 5),
                         $"(Ex) Efficiency={efficiency} out of range; should be: Flux");
 
