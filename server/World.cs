@@ -461,15 +461,15 @@ namespace Maps
                             $"(Ex) Resources={resources} out of range; should be: 2D + GG(={GasGiants}) + Belts(={Belts}) if TL(={TechLevel})=8+");
 
                     // Labor=Pop-1 (min 0)
-                    // per T5.10 Book 3 `pp.27
+                    // per T5.10 Book 3 pp.27
                     ErrorUnless(labor == Math.Max(0, PopulationExponent - 1),
                         $"(Ex) Labor={labor} incorrect; should be: Pop(={PopulationExponent}) - 1");
 
                     // Infrastructure=
                     //   If Pop=0 then 0
-                    //   If Pop=123 then Ix
-                    //   If Pop=456 then 1D+Ix
-                    //   If Pop=7+ then 2D+Ix
+                    //   If Pop=123 then Ix (min 0)
+                    //   If Pop=456 then 1D+Ix (min 0)
+                    //   If Pop=7+ then 2D+Ix (min 0)
                     // per T5.10 Book 3 pp.27
                     int pop = PopulationExponent;
                     if (pop == 0)
@@ -477,13 +477,13 @@ namespace Maps
                             $"(Ex) Infrastructure={infrastructure} incorrect; should be: 0 if Pop=0");
                     else if (pop.InRange(1, 3))
                         ErrorUnless(infrastructure == Math.Max(0, imp),
-                            $"(Ex) Infrastructure={infrastructure} incorrect; should be: Imp(={imp}) if Pop=123");
+                            $"(Ex) Infrastructure={infrastructure} incorrect; should be: Imp(={imp}), min 0, if Pop=123");
                     else if (pop.InRange(4, 6))
                         ErrorUnless(infrastructure.InRange(Math.Max(0, imp + 1), Math.Max(0, imp + 6)),
-                            $"(Ex) Infrastructure={infrastructure} out of range; should be: Imp(={imp}) + 1D for Pop=456");
+                            $"(Ex) Infrastructure={infrastructure} out of range; should be: Imp(={imp}) + 1D, min 0, for Pop=456");
                     else // pop >= 7
                         ErrorUnless(infrastructure.InRange(Math.Max(0, imp + 2), Math.Max(0, imp + 12)),
-                            $"(Ex) Infrastructure={infrastructure} out of range; should be: Imp(={imp}) + 2D for Pop=7+");
+                            $"(Ex) Infrastructure={infrastructure} out of range; should be: Imp(={imp}) + 2D, min 0, for Pop=7+");
 
                     // Efficiency=Flux
                     // per T5.10 Book 3 pp.27
