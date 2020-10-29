@@ -66,11 +66,19 @@ namespace Maps.Graphics
             public void Set(string name, Color color)
             {
                 if (color.IsEmpty || color.A == 0)
+                {
                     attributes[name] = "none";
+                }
                 else if (color.A < 255)
-                    attributes[name] = $"rgba({color.R},{color.G},{color.B},{F(color.A / 255f)})";
+                {
+                    attributes[name] = ColorTranslator.ToHtml(color);
+                    attributes[name + "-opacity"] = (color.A / 255f).ToString("G2");
+                }
                 else
-                    attributes[name] = $"rgb({color.R},{color.G},{color.B})";
+                {
+                    attributes[name] = ColorTranslator.ToHtml(color);
+                    attributes.Remove(name + "-opacity");
+                }
             }
 
             // Helpers for common attributes
