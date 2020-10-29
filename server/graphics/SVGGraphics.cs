@@ -66,7 +66,7 @@ namespace Maps.Graphics
             public void Set(string name, Color color)
             {
                 if (color.IsEmpty || color.A == 0)
-                    return; // Inherits "None" from root
+                    attributes[name] = "none";
                 else if (color.A < 255)
                     attributes[name] = $"rgba({color.R},{color.G},{color.B},{F(color.A / 255f)})";
                 else
