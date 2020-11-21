@@ -5,11 +5,11 @@
   <Credits>
     <![CDATA[
 
-      The <b>Fulani</b> sector was refined by Geir Lanesskog based on initial system data by Jo Grant.
+      The <b>Fulani</b> sector was refined by Geir Lanesskog based on
+      initial system data by Jo Grant.
 
     ]]>
   </Credits>
-
   <Subsectors>
     <Subsector Index="A">Pieshivl</Subsector>
     <Subsector Index="B">Aquaria</Subsector>
@@ -44,10 +44,12 @@
     <Border Allegiance="ZhCa" ShowLabel="false">2611 2712 2611 </Border>
     <Border Allegiance="ZhCa" WrapLabel="true" LabelPosition="2909">2918 3018 3119 3018 2918 </Border>
     <Border Allegiance="ZhCa" ShowLabel="false">3104 3105 3104 </Border>
+    <Border Allegiance="ZhCa" ShowLabel="false">2710</Border>
+    <Border Allegiance="ZhCa" ShowLabel="false">2815</Border>
   </Borders>
 
   <Labels>
-    <Label Hex="2939" Color="White">Idella Rift</Label>
+    <Label Hex="2939" Color="firebrick">Idella Rift</Label>
   </Labels>
 
   <Routes>
