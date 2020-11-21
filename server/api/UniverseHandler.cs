@@ -54,6 +54,26 @@ namespace Maps.API
             }
         }
     }
+    internal class MilieuxCodesHandler : DataHandlerBase
+    {
+        protected override DataResponder GetResponder(HttpContext context) => new Responder(context);
+
+        private class Responder : DataResponder
+        {
+            public Responder(HttpContext context) : base(context) { }
+            public override string DefaultContentType => ContentTypes.Text.Xml;
+
+            public override void Process(ResourceManager resourceManager)
+            {
+                // NOTE: This (re)initializes a static data structure used for 
+                // resolving names into sector locations, so needs to be run
+                // before any other objects (e.g. Worlds) are loaded.
+                SectorMap map = SectorMap.GetInstance(resourceManager);
+
+                SendResult(map.GetMilieux().Select(code => new Results.Milieu(code)).ToList());
+            }
+        }
+    }
 }
 
 namespace Maps.API.Results
@@ -90,5 +110,20 @@ namespace Maps.API.Results
             public List<Name> Names { get => sector.Names; set { } }
         }
     }
+
+    public class Milieu
+    {
+        public Milieu() { }
+        public Milieu(string code)
+        {
+            Code = code;
+            IsDefault = code == SectorMap.DEFAULT_MILIEU;
+        }
+
+        public string Code { get; set; }
+        public bool IsDefault { get; set; }
+    }
+
+
 #nullable restore
 }

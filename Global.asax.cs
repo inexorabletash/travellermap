@@ -66,6 +66,7 @@ namespace Maps
             // Data Retrieval - API-centric ---------------------------------
 
             routes.Add(new RegexRoute(@"/api/universe", new GenericRouteHandler(typeof(UniverseHandler)), DEFAULT_JSON));
+            routes.Add(new RegexRoute(@"/api/milieux", new GenericRouteHandler(typeof(MilieuxCodesHandler)), DEFAULT_JSON));
             routes.Add(new RegexRoute(@"/api/sec", new GenericRouteHandler(typeof(SECHandler)), new RouteValueDictionary { { "type", "SecondSurvey" } }));
             routes.Add(new RegexRoute(@"/api/sec/(?<sector>[^/]+)", new GenericRouteHandler(typeof(SECHandler)), new RouteValueDictionary { { "type", "SecondSurvey" } }));
             routes.Add(new RegexRoute(@"/api/sec/(?<sector>[^/]+)/(?<quadrant>alpha|beta|gamma|delta)", new GenericRouteHandler(typeof(SECHandler)), new RouteValueDictionary { { "type", "SecondSurvey" }, { "metadata", 0 } }));

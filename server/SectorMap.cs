@@ -108,6 +108,8 @@ namespace Maps
 
         private MilieuMap GetMilieuMap(string name) => milieux.GetOrAdd(name, n => new MilieuMap(n));
 
+        public IEnumerable<string> GetMilieux() => milieux.Keys;
+
         // Singleton initialization
         private SectorMap(IEnumerable<SectorMetafileEntry> metafiles, ResourceManager resourceManager)
         {
