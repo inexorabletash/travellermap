@@ -1251,6 +1251,33 @@ table#features, #features th, #features td { border: solid 1px black; }
     </p>
   </section>
 
+  <section id="milieux">
+    <h3>Milieux &ndash; return a list of all milieux</h3>
+    <h4>API URLs:</h4>
+    <p class="code">
+        https://travellermap.com/api/milieux
+    </p>
+
+    <h4>Notes:</h4>
+    <ul>
+        <li>Returns a list of milieux.
+          Each record (milieu) has a <code>Code</code> property with the abbreviation
+          (e.g. <code>M1105</code>, <code>IW</code>, etc), and an
+          <code>IsDefault</code> property (<code>true</code> or <code>false</code>).
+        <li>
+          The default output format is <a href="https://json.org/">JSON</a>. To retrieve results in XML form, specify
+          the HTTP header <code>Accept: text/xml</code> or include <code>accept=text/xml</code>
+          in the query string.
+
+    </ul>
+
+    <h4>Example:</h4>
+    <p>
+        <a class="example" href="/api/milieux"></a>
+    </p>
+  </section>
+
+
   <section id="t5ss">
     <h3>T5SS &ndash; return stock data</h3>
     <h4>Data URLs:</h4>
