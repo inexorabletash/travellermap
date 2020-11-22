@@ -746,6 +746,16 @@ namespace Maps
         }
 
         [XmlAttribute]
+        [DefaultValue(0f)]
+        public float LabelOffsetX { get; set; }
+
+        [XmlAttribute]
+        [DefaultValue(0f)]
+        public float LabelOffsetY { get; set; }
+
+
+
+        [XmlAttribute]
         public string? Label { get; set; }
 
         internal LineStyle? Style { get; set; }

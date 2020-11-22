@@ -1613,14 +1613,12 @@ namespace Maps.Rendering
                             string? label = border.GetLabel(sector);
                             if (label == null)
                                 continue;
-                            Hex labelHex = border.LabelPosition;
-                            PointF labelPos = Astrometrics.HexToCenter(Astrometrics.LocationToCoordinates(new Location(sector.Location, labelHex)));
-                            // TODO: Replace these with, well, positions!
-                            //labelPos.X -= 0.5f;
-                            //labelPos.Y -= 0.5f;
-
                             if (border.WrapLabel)
                                 label = WRAP_REGEX.Replace(label, "\n");
+
+                            PointF labelPos = Astrometrics.HexToCenter(Astrometrics.LocationToCoordinates(new Location(sector.Location, border.LabelPosition)));
+                            labelPos.X += border.LabelOffsetX * 0.7f;
+                            labelPos.Y -= border.LabelOffsetY * 0.7f;
 
                             RenderUtil.DrawLabel(graphics, label, labelPos, styles.microBorders.Font, solidBrush, styles.microBorders.textStyle);
                         }
