@@ -626,6 +626,13 @@ table#features, #features th, #features td { border: solid 1px black; }
             for the second additional overlay, and so on. For example, here's the
             <a target=_blank rel=noopener href="../?ox=-111.95&amp;oy=80&amp;ow=194.2&amp;oh=200">Atlas of the Imperium coverage area</a>.
 
+      <dt>or
+        <dd>A compact form of the above <code>ox</code>, <code>oy</code>, etc.
+          Each rectangle is specified with x/y/width/height separated
+          by <code>!</code> and additional rectangles separated
+          by <code>~</code>. For
+          example, <code>or=-111.95!80!194.2!200~0!0!10!20</code>
+
       <dt>ocx
       <dt>ocy
       <dt>ocr
@@ -636,9 +643,15 @@ table#features, #features th, #features td { border: solid 1px black; }
             for the second additional overlay, and so on. For example, here's
             <a target=_blank rel=noopener href="../?ocx=-67.983&amp;ocy=55.5&amp;ocr=89">
               the region of space where the bright star Deneb is visible during daylight hours</a>.
+
+      <dt>oc
+        <dd>A compact form of the above <code>ocx</code>, <code>ocy</code>, <code>ocr</code>.
+          Each circle is specified with x/y/radius separated
+          by <code>!</code> and additional circle separated
+          by <code>~</code>. For
+          example, <code>oc=0!0!50~50!50!25~-50!50!25</code>
+
     </dl>
-
-
 
   </section>
 

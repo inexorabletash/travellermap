@@ -1830,6 +1830,7 @@ var Util = {
         });
     }
 
+    // Rectangle overlays
     for (var i = 0; ; ++i) {
       var n = (i === 0) ? '' : i, oxs = 'ox' + n, oys = 'oy' + n, ows = 'ow' + n, ohs = 'oh' + n;
       if (has(params, [oxs, oys, ows, ohs])) {
@@ -1842,7 +1843,20 @@ var Util = {
         break;
       }
     }
-    for ( i = 0; ; ++i) {
+    // Compact form
+    if ('or' in params) {
+      params.or.split('~').forEach(function(or) {
+        function float(s) { var n = parseFloat(s); return isNaN(n) ? 0 : n; }
+        var a = or.split('!');
+        this.AddOverlay({
+          type: 'rectangle',
+          x:float(a[0]), y:float(a[1]), w:float(a[2]), h:float(a[3])
+        });
+      }.bind(this));
+    }
+
+    // Circle overlays
+    for (i = 0; ; ++i) {
       n = (i === 0) ? '' : i;
       var ocxs = 'ocx' + n, ocys = 'ocy' + n, ocrs = 'ocr' + n;
       if (has(params, [ocxs, ocys, ocrs])) {
@@ -1853,6 +1867,14 @@ var Util = {
       } else {
         break;
       }
+    }
+    // Compact form
+    if ('oc' in params) {
+      params.oc.split('~').forEach(function(oc) {
+        function float(s) { var n = parseFloat(s); return isNaN(n) ? 0 : n; }
+        var a = oc.split('!');
+        this.AddOverlay({type: 'circle', x:float(a[0]), y:float(a[1]), r:float(a[2])});
+      }.bind(this));
     }
 
     // Various coordinate schemes - ordered by priority
