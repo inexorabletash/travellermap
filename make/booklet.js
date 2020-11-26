@@ -258,8 +258,15 @@
         sector.name = sector.title = 'Unnamed Sector';
       }
       if (sector.metadata.DataFile.Milieu) {
-        var m = /^M(\d+)$/.exec(sector.metadata.DataFile.Milieu);
-        if (m) sector.metadata.DataFile.Era = m[1];
+        var milieu = sector.metadata.DataFile.Milieu;
+        if (milieu === 'IW') {
+          // Special case for IW era. The default year of the setting
+          // in GT:IW is 2170 CE.
+          sector.metadata.DataFile.Era = '-2349';
+        } else {
+          var m = /^M(\d+)$/.exec(milieu);
+          if (m) sector.metadata.DataFile.Era = m[1];
+        }
       }
       document.title = sector.title;
       var imageURL, url_params = {
