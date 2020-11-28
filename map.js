@@ -1356,7 +1356,7 @@ var Util = {
     ctx.translate(-this.canvas.offset_x, -this.canvas.offset_y);
     ctx.globalCompositeOperation = 'source-over';
     ctx.globalAlpha = 0.5;
-    ctx.fillStyle = styleLookup(this.style, 'overlay_color');
+    ctx.fillStyle = overlay.style || styleLookup(this.style, 'overlay_color');
     if (overlay.type === 'rectangle') {
       // Compute physical location
       var pt1 = this.mapToPixel(overlay.x, overlay.y);
@@ -1832,13 +1832,15 @@ var Util = {
 
     // Rectangle overlays
     for (var i = 0; ; ++i) {
-      var n = (i === 0) ? '' : i, oxs = 'ox' + n, oys = 'oy' + n, ows = 'ow' + n, ohs = 'oh' + n;
+      var n = (i === 0) ? '' : i,
+          oxs = 'ox' + n, oys = 'oy' + n, ows = 'ow' + n, ohs = 'oh' + n,
+          oss = 'os' + n;
       if (has(params, [oxs, oys, ows, ohs])) {
         var x = float(oxs);
         var y = float(oys);
         var w = float(ows);
         var h = float(ohs);
-        this.AddOverlay({type: 'rectangle', x:x, y:y, w:w, h:h});
+        this.AddOverlay({type: 'rectangle', x:x, y:y, w:w, h:h, style: params[oss]});
       } else {
         break;
       }
@@ -1850,7 +1852,8 @@ var Util = {
         var a = or.split('!');
         this.AddOverlay({
           type: 'rectangle',
-          x:float(a[0]), y:float(a[1]), w:float(a[2]), h:float(a[3])
+          x:float(a[0]), y:float(a[1]), w:float(a[2]), h:float(a[3]),
+          style:a[4]
         });
       }.bind(this));
     }
@@ -1858,12 +1861,12 @@ var Util = {
     // Circle overlays
     for (i = 0; ; ++i) {
       n = (i === 0) ? '' : i;
-      var ocxs = 'ocx' + n, ocys = 'ocy' + n, ocrs = 'ocr' + n;
+      var ocxs = 'ocx' + n, ocys = 'ocy' + n, ocrs = 'ocr' + n, ocss = 'ocs' + n;
       if (has(params, [ocxs, ocys, ocrs])) {
         var cx = float(ocxs);
         var cy = float(ocys);
         var cr = float(ocrs);
-        this.AddOverlay({type: 'circle', x:cx, y:cy, r:cr});
+        this.AddOverlay({type: 'circle', x:cx, y:cy, r:cr, style:params[ocss]});
       } else {
         break;
       }
@@ -1873,7 +1876,8 @@ var Util = {
       params.oc.split('~').forEach(function(oc) {
         function float(s) { var n = parseFloat(s); return isNaN(n) ? 0 : n; }
         var a = oc.split('!');
-        this.AddOverlay({type: 'circle', x:float(a[0]), y:float(a[1]), r:float(a[2])});
+        this.AddOverlay({
+          type: 'circle', x:float(a[0]), y:float(a[1]), r:float(a[2]), style: a[3]});
       }.bind(this));
     }
 
