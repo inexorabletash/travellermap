@@ -44,15 +44,14 @@ function runStats(text) {
     Object.fromEntries(TYPES.map(t => [t, 0]))
   ]));
 
-  text.split(/\n+/).forEach(line => {
-    if (line === 'Stars' || !line) return;
+  text.split(/\r?\n+/).map(s => s.trim()).forEach(line => {
+    if (!line || line === 'Stars' || line === 'Stellar' || /^-+$/.test(line)) return;
 
     const stars = line.split(/\s(?!Ia|Ib|II|III|IV|V|VI)/);
     ++sizes[stars.length];
 
-    //const star = stars[0]; // Only look at primary
-    stars.shift();
-    for (const star of stars)
+    const star = stars[0]; // Only look at primary
+    //for (const star of stars)
     {
       if (star.match(/^([OBAFGKM])(\d) (Ia|Ib|II|III|IV|V|VI)$/)) {
         const spec = RegExp.$1, dec = RegExp.$2, type = RegExp.$3;
