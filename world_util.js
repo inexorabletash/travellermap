@@ -779,7 +779,8 @@
 
       // Map Generator
       // http://members.ozemail.com.au/~jonoreita/T5%20World%20Map%20Generator/api_documentation.html
-      var GENERATOR_BASE = 'http://members.ozemail.com.au/~jonoreita/T5%20World%20Map%20Generator/';
+      var GENERATOR_BASE = 'http://members.ozemail.com.au/~jonoreita/TravellerWorlds/';
+
       var map_generator_options = {
         hex: world.Hex,
         sector: world.Sector,
@@ -799,8 +800,8 @@
         seed: world.Hex + world.Hex,
         place_nobz: 1
       };
-      world.map_link = Util.makeURL(GENERATOR_BASE + 't5_map.html', map_generator_options);
-      world.map_source_link = Util.makeURL(GENERATOR_BASE + 't5_world_builder.html', map_generator_options);
+      world.map_link = Util.makeURL(GENERATOR_BASE + '', map_generator_options);
+      world.map_source_link = Util.makeURL(GENERATOR_BASE + '', map_generator_options);
 
       return world;
     }).then(function(world) {
