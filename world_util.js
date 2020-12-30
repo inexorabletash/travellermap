@@ -796,7 +796,7 @@
         travelZone: world.raw.Zone,
         nobz: world.raw.Nobility,
         allegiance: world.raw.Allegiance,
-        stellar: world.raw.stellar,
+        stellar: world.raw.Stellar,
         seed: world.Hex + world.Hex,
         place_nobz: 1
       };
