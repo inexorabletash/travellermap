@@ -66,7 +66,7 @@ Core	A	0409	Gin	B994443-B	N	Ni Pa		402	ImDc	M3 V	{ 1 }	(834-2)	[1528]	Bc	13	-192
 Core	A	0410	Castell	B7795AF-C	N	Ni Da	A	302	ImDc	G4 V M6 V	{ 1 }	(945+5)	[A6AH]	B	10	900
 Core	E	0411	Kash	D584400-8	S	Ni Pa		403	ImDc	M0 V	{ -3 }	(931-5)	[1113]	Bc	9	-135
 Core	E	0414	Shiinaua	D561520-6	S	Ni Pr		413	ImDc	M1 V	{ -3 }	(741-5)	[1211]	Bc	7	-140
-Core	E	0416	Sanches	A654AC9-F	NS	Hi Cp Pz	A	113	ImDc	M0 V	{ 4 }	(G9G+5)	[BE6G]	BEF	11	11,520
+Core	E	0416	Sanches	A654AC9-F	NS	Hi Cp Pz Sa	A	113	ImDc	M0 V	{ 4 }	(G9G+5)	[BE6G]	BEF	11	11,520
 Core	E	0418	Shardi	E43398A-A		Hi Na Po		603	ImDc	M2 V	{ 1 }	(E8B+3)	[BA7C]	BE	9	3,696
 Core	E	0420	Nirgem	B6A7422-A	N	Fl Ni		104	ImDc	K3 V M5 V	{ 1 }	(A34-3)	[1516]	B	9	-360
 Core	I	0421	Gishalem	A887425-D		Ni Ga Pa		822	ImDc	G8 V	{ 1 }	(A34-1)	[253B]	Bc	14	-120
@@ -215,7 +215,7 @@ Core	F	1416	Imdi Mi	B68A530-A		Ni Wa Pr		204	ImDc	M2 V M8 V	{ 1 }	(B45-3)	[1615]
 Core	F	1418	Kishdush	C64648A-9	S	Ni Pa		803	ImDc	M1 V M3 V	{ -1 }	(932+1)	[637B]	Bc	13	54
 Core	J	1421	Eorvin	B436868-C	S	Ph O:1322		922	ImDc	M0 V M0 V	{ 2 }	(E7C+2)	[8A5C]	Be	16	2,352
 Core	J	1422	Chokta	C7C2248-A		Fl He Lo		911	ImDc	G7 V M1 V M8 V	{ 0 }	(610+1)	[225A]	B	12	0
-Core	J	1424	Khusgurlu	B652AEG-E	N	Hi Po Pz	A	214	ImDc	M1 V	{ 3 }	(H9F+5)	[FDAK]	BE	10	11,475
+Core	J	1424	Khusgurlu	B652AEG-E	N	Hi Po Pz Sa	A	214	ImDc	M1 V	{ 3 }	(H9F+5)	[FDAK]	BE	10	11,475
 Core	J	1428	Spirn	A656641-C		Ag Ni Ga		600	ImDc	K6 V M9 V M2 V	{ 2 }	(856-2)	[2818]	BC	7	-480
 Core	J	1430	Alton	B100542-E	N	Ni Va		403	ImDc	F1 V M1 V	{ 1 }	(A45-3)	[161A]	B	14	-600
 Core	N	1431	Saar	C594446-9	S	Ni Pa		903	ImDc	M1 V	{ -1 }	(932-2)	[3348]	Bc	6	-108
@@ -230,8 +230,8 @@ Core	B	1508	Asmi	D697226-5		Lo		500	ImDc	G5 V	{ -3 }	(410-4)	[1144]	B	10	0
 Core	B	1510	Kinuu	E310232-9		Lo		203	ImDc	M2 II	{ -2 }	(710-5)	[1115]	B	11	0
 Core	F	1511	Aman Urk	E545279-7		Lo		223	ImDc	M2 V M6 V	{ -3 }	(410-2)	[3168]	B	13	0
 Core	F	1512	Ansham	B8C3747-A		Fl		804	ImDc	M1 V	{ 2 }	(D6B+2)	[795A]	B	15	1,716
-Core	F	1518	Depot	A86A56A-F	D	Ni Wa Pr Da Mr	A	420	ImDc	M4 V	{ 2 }	(946+4)	[777H]	Bc	11	864
-Core	F	1519	Sher	D9D4665-7		Ni O:1721		603	ImDc	M2 V M7 V	{ -3 }	(851-5)	[4335]	B	14	-200
+Core	F	1518	Depot	A86A56A-F	D	Ni Wa An Pr Da Mr	A	420	ImDc	M4 V	{ 2 }	(946+4)	[777H]	Bc	11	864
+Core	F	1519	Sher	D9D4665-7		Ni O:1721 Px		603	ImDc	M2 V M7 V	{ -3 }	(851-5)	[4335]	B	14	-200
 Core	J	1522	Suhtlam	B7C2100-B		Fl He Lo		600	ImDc	M0 V M1 V	{ 1 }	(301-3)	[1216]	B	12	0
 Core	J	1523	Belicose	A596236-D		Lo		713	ImDc	M3 V M4 V	{ 1 }	(811+1)	[134C]	B	11	8
 Core	J	1524	Shibashliim	B626A8C-F	N	Hi In Pz	A	412	ImDc	K4 V	{ 4 }	(F9G+5)	[DE8J]	BEf	11	10,800
@@ -303,7 +303,7 @@ Core	C	1901	Zaniin	B6945AB-B		Ag Ni Da	A	300	ImDc	A3 V M7 V	{ 2 }	(746+4)	[777D]
 Core	C	1902	Irbi	B88958A-C		Ni Pr		503	ImDc	M2 V M9 V	{ 1 }	(A45+3)	[767E]	Bc	9	600
 Core	C	1909	Iiska Ashgi	D433541-7	S	Ni Po		800	ImDc	K5 V M4 V M3 V	{ -3 }	(741-5)	[1213]	B	7	-140
 Core	G	1912	Sistar	B430551-E	NS	De Ni Po		612	ImDc	M0 V	{ 2 }	(A46-2)	[171A]	B	14	-480
-Core	G	1916	Ankod	A544889-C	N	Pa Ph Pi		414	ImDc	M3 V	{ 2 }	(F7C+3)	[9A6D]	BcDe	9	3,780
+Core	G	1916	Ankod	A544889-C	N	Pa Ph Pi Sa		414	ImDc	M3 V	{ 2 }	(F7C+3)	[9A6D]	BcDe	9	3,780
 Core	G	1917	Ploiqu	D422747-7	S	He Na Po Pi		104	ImDc	K4 V	{ -2 }	(966-2)	[7557]	BD	7	-648
 Core	G	1918	Traak	B62488C-B	S	Ph Pi Pz	A	904	ImDc	K1 V M4 V	{ 2 }	(E7C+5)	[BA8E]	BDe	16	5,880
 Core	G	1919	Crompton	E776564-8		Ag Ni Re		600	ImDc	G2 V	{ -2 }	(742-4)	[3336]	BC	12	-224
@@ -479,7 +479,7 @@ Core	D	2910	Shusa Liishli	B311112-D	N	Ic Lo		323	ImDc	K2 V M0 V	{ 1 }	(801-3)	[1
 Core	H	2912	Leer	A7B3699-D		Fl Ni		725	ImDc	G2 V	{ 1 }	(F55+2)	[776E]	B	10	750
 Core	H	2913	Khiuur La	C8B3763-8		Fl Syle7 O:2914		703	ImSy	M2 V M3 V	{ -1 }	(C67-4)	[4625]	B	11	-2,016
 Core	H	2914	Mikhag Kuu	A668973-A		Hi Pr Syle6		213	ImSy	G0 V	{ 3 }	(F8D+1)	[6C27]	BcE	9	1,560
-Core	H	2916	Khiinra Ash	BAE6362-8		Lo SyleW O:2914		704	ImSy	M1 V M2 V	{ -1 }	(920-5)	[1214]	B	7	0
+Core	H	2916	Khiinra Ash	BAE6362-8		Lo SyleW O:2914 Sa		704	ImSy	M1 V M2 V	{ -1 }	(920-5)	[1214]	B	7	0
 Core	L	2922	Ekugush	B652A68-A		Hi Po O:3021		904	ImDc	M1 V M9 V	{ 3 }	(G9D+3)	[AD5A]	BE	11	5,616
 Core	L	2924	Ushba Sind	D564879-4	S	Ri Pa Ph Pz	A	405	ImDc	F4 V M0 V	{ -1 }	(A75+1)	[9765]	BcCe	16	350
 Core	L	2928	Vilakhu	A594300-E		Lo		214	ImDc	M2 V	{ 1 }	(A21-3)	[1419]	B	14	-60
