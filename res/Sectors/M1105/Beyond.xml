@@ -90,7 +90,6 @@ work and ideas, names and locations borrowed from Zeitlin.
     <Route Start="2305" End="2402"/>
     <Route Start="2402" End="2601"/>
     <Route Start="2601" End="3001"/>
-    <Route Start="3001" End="3201" EndOffsetX="2" EndOffsetY="-1"/>
     <Route Start="2305" End="2507"/>
     <Route Start="2507" End="2709"/>
     <Route Start="2709" End="2512"/>
@@ -134,7 +133,6 @@ work and ideas, names and locations borrowed from Zeitlin.
 
     <Route Start="1214" End="1314" Allegiance="CoLg"/>
     <Route Start="0013" End="0314" Allegiance="CoLg"/>
-    <Route Start="0110" End="0110" EndOffsetX="-2" EndOffsetY="2" Allegiance="CoLg"/>
     <Route Start="0017" End="0216" Allegiance="CoLg"/>
 
     <Route Start="1812" End="2113" Allegiance="IhPr"/>
@@ -327,9 +325,7 @@ work and ideas, names and locations borrowed from Zeitlin.
     <Route Start="2602" End="2402" Type="Trade"/>
     <Route Start="2604" End="2706" Type="Trade"/>
 
-    <Route Start="0122" End="0122" EndOffsetX="-2" EndOffsetY="-1" Type="Trade"/>
     <Route Start="0130" End="0033" Type="Trade"/>
-    <Route Start="0119" End="0119" EndOffsetX="-2" EndOffsetY="2" Type="Trade"/>
 
   </Routes>
 </Sector>
