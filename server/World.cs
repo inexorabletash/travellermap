@@ -392,7 +392,7 @@ namespace Maps
             ErrorUnless(Ri == IsRi, "Internal code failure: Ri/IsRi definitions");
 
             ErrorIf(HasCode("Da") && Zone != "A", "Zone: Da (Danger) requires Amber Zone");
-            ErrorIf(HasCode("Pz") && Zone != "A", "Zone: Da (Danger) requires Amber Zone");
+            ErrorIf(HasCode("Pz") && Zone != "A", "Zone: Pz (Puzzle) requires Amber Zone");
             ErrorIf(HasCode("Fo") && Zone != "R", "Zone: Fo (Forbidden) requires Red Zone");
             #endregion
 
