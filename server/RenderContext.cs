@@ -1666,10 +1666,8 @@ namespace Maps.Rendering
                     styles.microRoutes.pen.Apply(ref pen);
                     float baseWidth = styles.microRoutes.pen.width;
 
-                    foreach (var tuple in selector.Routes)
+                    foreach (var (sector, route) in selector.Routes)
                     {
-                        Sector sector = tuple.Item1;
-                        Route route = tuple.Item2;
                         // Compute source/target sectors (may be offset)
                         sector.RouteToStartEnd(route, out Location startLocation, out Location endLocation);
                         if (startLocation == endLocation)

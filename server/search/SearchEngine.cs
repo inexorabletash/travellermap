@@ -210,8 +210,7 @@ namespace Maps.Search
 
                     foreach (KeyValuePair<Tuple<string, string>, List<Point>> entry in labels)
                     {
-                        string milieu = entry.Key.Item1;
-                        string name = entry.Key.Item2;
+                        var (milieu, name) = entry.Key;
                         List<Point> points = entry.Value;
 
                         Point avg = new Point(

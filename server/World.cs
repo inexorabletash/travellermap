@@ -227,11 +227,8 @@ namespace Maps
                     int begin = pos;
                     bool found = false;
 
-                    foreach (var tuple in MARKERS)
+                    foreach (var (start, endchar) in MARKERS)
                     {
-                        string start = tuple.Item1;
-                        char endchar = tuple.Item2;
-
                         if (codes.MatchAt(start, pos))
                         {
                             pos += start.Length;
