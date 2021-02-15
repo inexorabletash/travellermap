@@ -177,7 +177,7 @@ namespace Maps
             this.rect = rect;
 
             Slop = slop;
-            SlopFactor = 0.25f;
+            SlopFactor = 0.3f; // Arbitrary, but 0.25 not enough for some routes.
         }
 
         public override IEnumerable<Sector> Sectors
