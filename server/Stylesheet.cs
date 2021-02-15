@@ -1160,6 +1160,8 @@ namespace Maps.Rendering
         public float hexContentScale = 1.0f;
         public float hexRotation = 0f;
 
+        public float routeEndAdjust = 0.25f;
+
         public string preferredMimeType;
         public bool t5AllegianceCodes;
 

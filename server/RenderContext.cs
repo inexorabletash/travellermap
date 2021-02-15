@@ -1682,7 +1682,7 @@ namespace Maps.Rendering
                         PointF endPoint = Astrometrics.HexToCenter(Astrometrics.LocationToCoordinates(endLocation));
 
                         // Shorten line to leave room for world glyph
-                        OffsetSegment(ref startPoint, ref endPoint, 0.25f);
+                        OffsetSegment(ref startPoint, ref endPoint, styles.routeEndAdjust);
 
                         float? routeWidth = route.Width;
                         Color? routeColor = route.Color;
@@ -1718,11 +1718,11 @@ namespace Maps.Rendering
 
             private static void OffsetSegment(ref PointF startPoint, ref PointF endPoint, float offset)
             {
-                float dx = endPoint.X - startPoint.X;
-                float dy = endPoint.Y - startPoint.Y;
+                float dx = (endPoint.X - startPoint.X) * Astrometrics.ParsecScaleX;
+                float dy = (endPoint.Y - startPoint.Y) * Astrometrics.ParsecScaleY;
                 float length = (float)Math.Sqrt(dx * dx + dy * dy);
-                float ddx = dx * offset / length;
-                float ddy = dy * offset / length;
+                float ddx = (dx * offset / length) / Astrometrics.ParsecScaleX;
+                float ddy = (dy * offset / length) / Astrometrics.ParsecScaleY;
                 startPoint.X += ddx;
                 startPoint.Y += ddy;
                 endPoint.X -= ddx;
