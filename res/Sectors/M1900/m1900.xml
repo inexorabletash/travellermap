@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Sectors>
+  <Sector Abbreviation="Ziaf" Selected="true" Milieu="M1900">
+    <Y>-2</Y>
+    <X>-5</X>
+    <Name Lang="zh">Ziafrplians</Name>
+    <Name Lang="va">Usingou</Name>
+    <DataFile Author="Robert Eaglestone" Type="TabDelimited">Ziafrplians.tab</DataFile>
+    <MetadataFile>Ziafrplians.xml</MetadataFile>
+  </Sector>
   <Sector Abbreviation="Gvur" Selected="true" Milieu="M1900">
     <Y>-2</Y>
     <X>-4</X>
@@ -15,5 +23,13 @@
     <Name Lang="zh">Tloql</Name>
     <DataFile Author="Robert Eaglestone" Type="SecondSurvey">Spin.txt</DataFile>
     <MetadataFile>Spin.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Dene" Selected="true" Milieu="M1900">
+    <Y>-1</Y>
+    <X>-3</X>
+    <Name>Deneb</Name>
+    <Name Lang="zh">Nieklsdia</Name>
+    <DataFile Author="Robert Eaglestone" Type="TabDelimited">Deneb.tab</DataFile>
+    <MetadataFile>Deneb.xml</MetadataFile>
   </Sector>
 </Sectors>
