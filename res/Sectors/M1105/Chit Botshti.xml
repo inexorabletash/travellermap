@@ -6,7 +6,8 @@
     <![CDATA[
 
              <b>Chit Botshti</b> sector was designed by John G.
-             Wood and WG Zeist, with updates by Michael Gonzalez.
+             Wood and WG Zeist, with updates by Michael Gonzalez
+             and Adrian Tymes.
 
              Stellar positions were developed by Joe D. Fugate Sr.
              and appear in <cite>The MegaTraveller Alien, Volume 1:
@@ -15,10 +16,40 @@
 
     ]]>
   </Credits>
+  <Subsectors>
+    <Subsector Index="A">Otrapl</Subsector>
+    <Subsector Index="B">Zhanzhaieb</Subsector>
+    <Subsector Index="C">Tsezats</Subsector>
+    <Subsector Index="D">Airoch</Subsector>
+    <Subsector Index="E">Itla</Subsector>
+    <Subsector Index="F">Izhdiazapent</Subsector>
+    <Subsector Index="G">Peqleav</Subsector>
+    <Subsector Index="H">Taakasiev</Subsector>
+    <Subsector Index="I">Anje</Subsector>
+    <Subsector Index="J">Betszdiefla</Subsector>
+    <Subsector Index="K">Pleriae</Subsector>
+    <Subsector Index="L">Mie</Subsector>
+    <Subsector Index="M">Vlitlchad</Subsector>
+    <Subsector Index="N">Dlinzievie</Subsector>
+    <Subsector Index="O">Zdieitlinzh</Subsector>
+    <Subsector Index="P">Zhipliaoql</Subsector>
+  </Subsectors>
   <Allegiances>
     <Allegiance Code="TY">Taakas Yh'Drak</Allegiance>
+    <Allegiance Code="Wc">Wave Chasers</Allegiance>
   </Allegiances>
   <Borders>
     <Border WrapLabel="false" Color="Purple" Allegiance="TY" LabelPosition="3024">2722 2821 2922 3022 3122 3221 3321 3322 3323 3324 3325 3326 3226 3127 3027 3026 3025 3024 3023 2923 2822 2722</Border>
   </Borders>
+  <Routes>
+    <Route Start="0600" End="0603" Type="Migration" Allegiance="Wc" Color="#0080FF"/>
+    <Route Start="0603" End="0606" Type="Migration" Allegiance="Wc" Color="#0080FF"/>
+    <Route Start="0606" End="0508" Type="Migration" Allegiance="Wc" Color="#0080FF"/>
+    <Route Start="0508" End="0511" Type="Migration" Allegiance="Wc" Color="#0080FF"/>
+    <Route Start="0511" End="0513" Type="Migration" Allegiance="Wc" Color="#0080FF"/>
+    <Route Start="0513" End="0516" Type="Migration" Allegiance="Wc" Color="#0080FF"/>
+  </Routes>
+  <Labels>
+    <Label Hex="0510" Color="#FFCC00" Wrap="true" Allegiance="Wc">Wave Chaser Migration</Label>
+  </Labels>
 </Sector>
