@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Sector>
+  <Credits>
+    <![CDATA[
+
+             <b>RimReach</b> sector was designed by Sam Crowley.
+
+    ]]>
+  </Credits>
+
+  <Subsectors>
+    <Subsector Index="A">Loliath</Subsector>
+    <Subsector Index="B">Jelanim</Subsector>
+    <Subsector Index="C">Gorxran</Subsector>
+    <Subsector Index="D">Oskral</Subsector>
+    <Subsector Index="E">Keille</Subsector>
+    <Subsector Index="F">Ma'Jokil</Subsector>
+    <Subsector Index="G">Dwennakon</Subsector>
+    <Subsector Index="H">Ia</Subsector>
+    <Subsector Index="I">Hyolium</Subsector>
+    <Subsector Index="J">Quisa'lom</Subsector>
+    <Subsector Index="K">Wastelands</Subsector>
+    <Subsector Index="L">Udieke</Subsector>
+    <Subsector Index="M">Stargrave</Subsector>
+    <Subsector Index="N">Asteria</Subsector>
+    <Subsector Index="O">Desolation</Subsector>
+    <Subsector Index="P">Wilted Rose</Subsector>
+  </Subsectors>
+
+  <Allegiances>
+    <Allegiance Code="Oc">Omeer Sun Combine</Allegiance>
+    <Allegiance Code="Ir">Iskrokian Remnant</Allegiance>
+    <Allegiance Code="Gd">Grand Dominion</Allegiance>
+    <Allegiance Code="Sa">Stardust Alliance</Allegiance>
+    <Allegiance Code="He">Hyolian Empire</Allegiance>
+    <Allegiance Code="Rb">Republic of Bujal</Allegiance>
+    <Allegiance Code="Pf">Firebreak Protectorate</Allegiance>
+    <Allegiance Code="Rf">Riftling Federation</Allegiance>
+    <Allegiance Code="Iv">Visionaries of Istar</Allegiance>
+  </Allegiances>
+
+  <Borders>
+    <Border Allegiance="Gd" LabelPosition="1720">1016 1116 1215 1315 1314 1413 1412 1513 1612 1712 1811 1911 2010 2110 2209 2309 2408 2508 2608 2708 2709 2710 2610 2611 2512 2412 2313 2314 2214 2115 2116 2117 2118 2119 2219 2320 2321 2421 2522 2523 2524 2624 2524 2423 2323 2223 2124 2024 1924 1823 1724 1624 1525 1526 1425 1325 1225 1224 1223 1123 1122 1221 1220 1219 1218 1217 1117 1016 </Border>
+    <Border Allegiance="He" LabelPosition="0726">0227 0327 0326 0325 0324 0424 0524 0525 0526 0527 0427 0328 0329 0228 0227 </Border>
+    <Border Allegiance="Ir" LabelPosition="1602">1502 1601 1602 1703 1603 1504 1503 1502 </Border>
+    <Border Allegiance="Iv" LabelPosition="2937">2936 3035 3036 3137 3036 2936 </Border>
+    <Border Allegiance="Oc" LabelPosition="0707">0108 0207 0206 0205 0305 0304 0303 0302 0303 0403 0404 0405 0506 0507 0508 0509 0409 0410 0411 0412 0413 0314 0313 0212 0211 0210 0110 0109 0108 </Border>
+    <Border Allegiance="Pf" LabelPosition="2829">2029 2129 2228 2328 2427 2528 2628 2728 2827 2927 3026 2927 2928 2828 2729 2629 2530 2429 2329 2229 2130 2029 </Border>
+    <Border Allegiance="Rb" LabelPosition="1129">0628 0729 0829 0929 1029 1130 1131 1231 1132 1032 0932 0831 0731 0730 0729 0628 </Border>
+    <Border Allegiance="Rf" LabelPosition="1438">0741 0840 0940 1039 1139 1239 1340 1440 1540 1639 1739 1839 1939 2038 2138 2038 1939 1839 1840 1941 1841 1741 1641 1541 1441 1341 1340 1239 1140 1141 1140 1039 0940 0941 0841 0741 </Border>
+    <Border Allegiance="Sa" LabelPosition="2617">2318 2417 2416 2415 2515 2614 2613 2612 2713 2812 2912 3011 3012 3013 3114 3115 3116 3117 3118 3018 3019 2919 2818 2718 2618 2518 2417 2318 </Border>
+  </Borders>
+
+  <Labels>
+    <Label Hex="1335">Asterian Abyss</Label>
+  </Labels>
+
+  <Regions>
+    <Region Label="Valkyrie Assimilated Zone" Color="gray">
+      2030 2131 2230 2330 2430 2531 2532 2632 2633 2534 2434 2335 2235 2135 2034 2033 2032 2031 2030
+    </Region>
+  </Regions>
+
+  <Routes>
+    <Route Start="0830" End="0731"/>
+    <Route Start="0731" End="0532"/>
+    <Route Start="0532" End="0333"/>
+    <Route Start="0333" End="0434"/>
+    <Route Start="0434" End="0536"/>
+    <Route Start="0536" End="0638"/>
+    <Route Start="0638" End="0839"/>
+    <Route Start="0839" End="0840"/>
+    <Route Start="0839" End="0940"/>
+    <Route Start="0940" End="1140"/>
+    <Route Start="1140" End="1340"/>
+    <Route Start="1340" End="1639"/>
+    <Route Start="1639" End="1340"/>
+    <Route Start="1340" End="1640"/>
+    <Route Start="1639" End="1839"/>
+    <Route Start="1640" End="1840"/>
+    <Route Start="1839" End="2038"/>
+    <Route Start="1839" End="1840"/>
+    <Route Start="0235" End="0434"/>
+    <Route Start="1418" End="1521"/>
+    <Route Start="1521" End="1424"/>
+    <Route Start="1424" End="1225"/>
+    <Route Start="1424" End="1526"/>
+    <Route Start="0628" End="0830"/>
+    <Route Start="1225" End="1127"/>
+    <Route Start="1127" End="1130"/>
+    <Route Start="1130" End="0830"/>
+    <Route Start="1418" End="1718"/>
+    <Route Start="2710" End="2612"/>
+    <Route Start="2416" End="2015"/>
+    <Route Start="2311" End="2312"/>
+    <Route Start="2312" End="2314"/>
+    <Route Start="2314" End="2015"/>
+    <Route Start="2311" End="2110"/>
+    <Route Start="2311" End="2710"/>
+    <Route Start="2015" End="1815"/>
+    <Route Start="0407" End="0208" />
+    <Route Start="0407" End="0205" />
+    <Route Start="0205" End="0302" />
+    <Route Start="0208" End="0211" />
+    <Route Start="0211" End="0314" />
+    <Route Start="1815" End="1615"/>
+    <Route Start="1514" End="1615"/>
+    <Route Start="1615" End="1317"/>
+    <Route Start="1514" End="1412"/>
+    <Route Start="1317" End="1418"/>
+    <Route Start="1815" End="1718"/>
+    <Route Start="0407" End="0509"/>
+    <Route Start="0509" End="0909"/>
+    <Route Start="2814" End="3015"/>
+    <Route Start="3015" End="3017"/>
+    <Route Start="2814" End="2612"/>
+    <Route Start="2814" End="2515"/>
+    <Route Start="2515" End="2416"/>
+    <Route Start="0227" End="0527"/>
+    <Route Start="0527" End="0525"/>
+    <Route Start="0527" End="0628"/>
+    <Route Start="0227" End="0128"/>
+    <Route Start="0525" End="0622"/>
+    <Route Start="0622" End="0822"/>
+    <Route Start="0822" End="1019"/>
+    <Route Start="1019" End="1317"/>
+    <Route Start="0324" End="0525"/>
+    <Route Start="2229" End="2228"/>
+    <Route Start="2228" End="2126"/>
+    <Route Start="0511" End="0509"/>
+    <Route Start="2126" End="1927"/>
+    <Route Start="1927" End="1526"/>
+  </Routes>
+
+  <Stylesheet>
+    route.Communications { color: green; style: solid; width: 1.5 }
+    border.Sa {color:gray; style: solid}
+    border.Gd {color:red; style: solid}
+    border.Oc {color:purple; style: solid}
+    border.Iv {color:lime; style: solid}
+    border.He {color:blue; style: solid}
+    border.Ir {color:green; style: solid}
+    border.Rb {color:brown; style: solid}
+    border.Pf {color:red; style: solid}
+    border.Rf {color:white; style: solid}
+  </Stylesheet>
+</Sector>
