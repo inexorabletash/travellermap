@@ -336,14 +336,19 @@ namespace Maps.Rendering
                 AbstractGraphicsState? state = null;
                 foreach (var layer in layers)
                 {
+                    // HACK: Clipping to tileRect rapidly becomes inaccurate away from
+                    // the origin due to float precision. Only do it if really necessary.
+                    bool clip = layer.clip &&
+                        !((ClipPath == null) && (graphics is BitmapGraphics));
+
                     // Impose a clipping region if desired, or remove it if not.
-                    if (layer.clip && state == null)
+                    if (clip && state == null)
                     {
                         state = graphics.Save();
                         if (ClipPath != null) graphics.IntersectClip(ClipPath);
                         else graphics.IntersectClip(tileRect);
                     }
-                    else if (!layer.clip && state != null)
+                    else if (!clip && state != null)
                     {
                         state.Dispose();
                         state = null;
@@ -719,7 +724,12 @@ namespace Maps.Rendering
             {
                 graphics.SmoothingMode = SmoothingMode.HighSpeed;
                 solidBrush.Color = styles.backgroundColor;
-                graphics.DrawRectangle(solidBrush, tileRect);
+
+                // HACK: Due to limited precisions of floats, tileRect can end up not covering
+                // the full bitmap when far from the origin.
+                var rect = tileRect;
+                rect.Inflate(rect.Width * 0.1f, rect.Height * 0.1f);
+                graphics.DrawRectangle(solidBrush, rect);
             }
 
             private void OverlayGlyph(string glyph, AbstractFont font, Point coordinates)
