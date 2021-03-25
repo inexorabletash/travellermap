@@ -4,6 +4,7 @@ using Maps.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace Maps.Rendering
@@ -1338,13 +1339,15 @@ namespace Maps.Rendering
             Government,
             Law,
             Tech,
-            Importance
+            Importance,
+            Bases
         }
 
 
         public Field field = Field.Starport;
         public int? min = null;
         public int? max = null;
+        public char[]? matches = null;
 
         public HighlightWorldPattern() { }
 
@@ -1358,26 +1361,40 @@ namespace Maps.Rendering
         }
         public bool Matches(World world)
         {
-            var v = field switch
+            if (matches != null)
             {
-                Field.Starport => "XEDCBA".IndexOf(world.Starport),
-                Field.Size => world.Size,
-                Field.Atmosphere => world.Atmosphere,
-                Field.Hydrosphere => world.Hydrographics,
-                Field.Population => world.PopulationExponent,
-                Field.Government => world.Government,
-                Field.Law => world.Law,
-                Field.Tech => world.TechLevel,
-                Field.Importance => SecondSurvey.Importance(world),
-                _ => throw new ApplicationException("Invalid pattern"),
-            };
-            return InRange(v);
+                var v = field switch
+                {
+                    Field.Starport => world.Starport.ToString(),
+                    Field.Bases => world.Bases,
+                    _ => throw new ApplicationException("Invalid pattern"),
+                };
+                return matches.Intersect(v.ToCharArray()).Count() > 0;
+            }
+            else
+            {
+                var v = field switch
+                {
+                    Field.Starport => "XEDCBA".IndexOf(world.Starport),
+                    Field.Size => world.Size,
+                    Field.Atmosphere => world.Atmosphere,
+                    Field.Hydrosphere => world.Hydrographics,
+                    Field.Population => world.PopulationExponent,
+                    Field.Government => world.Government,
+                    Field.Law => world.Law,
+                    Field.Tech => world.TechLevel,
+                    Field.Importance => SecondSurvey.Importance(world),
+                    _ => throw new ApplicationException("Invalid pattern"),
+                };
+                return InRange(v);
+            }
         }
 
-        private static Regex HIGHLIGHT_BASIC_REGEX = new Regex(@"^([A-Za-z]+)(-?\d+)$", RegexOptions.Compiled);
-        private static Regex HIGHLIGHT_MIN_REGEX = new Regex(@"^([A-Za-z]+)(-?\d+)\+$", RegexOptions.Compiled);
-        private static Regex HIGHLIGHT_MAX_REGEX = new Regex(@"^([A-Za-z]+)(-?\d+)\-$", RegexOptions.Compiled);
-        private static Regex HIGHLIGHT_RANGE_REGEX = new Regex(@"^([A-Za-z]+)(-?\d+)\-(-?\d+)$", RegexOptions.Compiled);
+        private static Regex HIGHLIGHT_BASIC_REGEX = new Regex(@"^([A-Z]+)(-?\d+|[0-9A-Z])$", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        private static Regex HIGHLIGHT_MIN_REGEX = new Regex(@"^([A-Z]+)(-?\d+|[0-9A-Z])\+$", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        private static Regex HIGHLIGHT_MAX_REGEX = new Regex(@"^([A-Z]+)(-?\d+|[0-9A-Z])\-$", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        private static Regex HIGHLIGHT_RANGE_REGEX = new Regex(@"^([A-Z]+)(-?\d+|[0-9A-Z])\-(-?\d+|[0-9A-Z])$", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        private static Regex HIGHLIGHT_CHARS_REGEX = new Regex(@"^([A-Z]+):([A-Z]+)$", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
         private static bool ParseField(string s, ref Field f)
         {
@@ -1392,8 +1409,25 @@ namespace Maps.Rendering
                 case "l": f = Field.Law; return true;
                 case "t": f = Field.Tech; return true;
                 case "ix": f = Field.Importance; return true;
+                case "b": f = Field.Bases; return true;
                 default: return false;
             }
+        }
+
+        private static bool ParseNumber(string s, out int n)
+        {
+            const string HEX = "0123456789ABCDEFGHJKLMNPQRSTUVWXYZ";
+            if (s.Length == 1)
+            {
+                int i = HEX.IndexOf(s[0]);
+                if (i > 0)
+                {
+                    n = i;
+                    return true;
+                }
+            }
+            if (Int32.TryParse(s, out n)) return true;
+            return false;
         }
 
         public static HighlightWorldPattern? Parse(string s)
@@ -1406,31 +1440,37 @@ namespace Maps.Rendering
             if ((m = HIGHLIGHT_BASIC_REGEX.Match(s)).Success)
             {
                 if (!ParseField(m.Groups[1].Value, ref p.field)) return null;
-                if (!Int32.TryParse(m.Groups[2].Value, out int min)) return null;
+                if (!ParseNumber(m.Groups[2].Value, out int min)) return null;
                 p.min = p.max = min;
                 return p;
             }
             if ((m = HIGHLIGHT_MIN_REGEX.Match(s)).Success)
             {
                 if (!ParseField(m.Groups[1].Value, ref p.field)) return null;
-                if (!Int32.TryParse(m.Groups[2].Value, out int min)) return null;
+                if (!ParseNumber(m.Groups[2].Value, out int min)) return null;
                 p.min = min;
                 return p;
             }
             if ((m = HIGHLIGHT_MAX_REGEX.Match(s)).Success)
             {
                 if (!ParseField(m.Groups[1].Value, ref p.field)) return null;
-                if (!Int32.TryParse(m.Groups[2].Value, out int max)) return null;
+                if (!ParseNumber(m.Groups[2].Value, out int max)) return null;
                 p.max = max;
                 return p;
             }
             if ((m = HIGHLIGHT_RANGE_REGEX.Match(s)).Success)
             {
                 if (!ParseField(m.Groups[1].Value, ref p.field)) return null;
-                if (!Int32.TryParse(m.Groups[2].Value, out int min)) return null;
-                if (!Int32.TryParse(m.Groups[3].Value, out int max)) return null;
+                if (!ParseNumber(m.Groups[2].Value, out int min)) return null;
+                if (!ParseNumber(m.Groups[3].Value, out int max)) return null;
                 p.min = min;
                 p.max = max;
+                return p;
+            }
+            if ((m = HIGHLIGHT_CHARS_REGEX.Match(s)).Success)
+            {
+                if (!ParseField(m.Groups[1].Value, ref p.field)) return null;
+                p.matches = m.Groups[2].Value.ToUpperInvariant().ToCharArray();
                 return p;
             }
             return null;
