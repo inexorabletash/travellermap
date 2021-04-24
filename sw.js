@@ -1,4 +1,4 @@
-// version 2
+// version 3
 
 const CACHE_NAME = 'offline-resources';
 const urlsToCache = [
@@ -12,24 +12,44 @@ const urlsToCache = [
 
 self.addEventListener('install', event => {
   event.waitUntil(
-    self.caches.open(CACHE_NAME)
-      .then(cache => cache.addAll(urlsToCache))
+    (async () => {
+      const cache = await self.caches.open(CACHE_NAME);
+      await cache.addAll(
+        urlsToCache.map(url => new Request(url, {cache:'reload'}))
+      );
+    })()
   );
+  self.skipWaiting();
+});
+
+self.addEventListener('activate', event => {
+ event.waitUntil(
+    (async () => {
+      if ("navigationPreload" in self.registration) {
+        await self.registration.navigationPreload.enable();
+      }
+    })()
+  );
+  self.clients.claim();
 });
 
 self.addEventListener('fetch', event => {
-  if (navigator.onLine) return;
+  if (event.request.mode !== 'navigate')
+    return;
 
-  const path = new URL(event.request.url).pathname;
-  if (path.endsWith('.html') || path.match(/\/\w*$/)) {
-    event.respondWith(
-      self.caches.open(CACHE_NAME)
-        .then(cache => cache.match('offline.html'))
-    );
-  } else {
-    event.respondWith(
-      self.caches.open(CACHE_NAME)
-        .then(cache => cache.match(event.request))
-    );
-  }
+  event.respondWith(
+    (async () => {
+      try {
+          const preloadResponse = await event.preloadResponse;
+          if (preloadResponse)
+            return preloadResponse;
+          const networkResponse = await fetch(event.request);
+          return networkResponse;
+        } catch (error) {
+          const cache = await self.caches.open(CACHE_NAME);
+          const cachedResponse = await cache.match('offline.html');
+          return cachedResponse;
+        }
+    })()
+  );
 });
