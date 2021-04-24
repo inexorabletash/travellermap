@@ -258,7 +258,7 @@ window.addEventListener('DOMContentLoaded', function() {
   });
 
   var SEARCH_TIMER_DELAY = 100; // ms
-  $("#searchBox").addEventListener('keyup', Util.debounce(function(e) {
+  $("#searchBox").addEventListener('input', Util.debounce(function(e) {
     if (e.key !== 'Enter') // Ignore double-submit on iOS
       search($('#searchBox').value, {typed: true});
   }, SEARCH_TIMER_DELAY));
