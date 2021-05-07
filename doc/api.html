@@ -448,15 +448,15 @@ table#features, #features th, #features td { border: solid 1px black; }
         This is followed by either:
           <ul>
             <li>
-              a value (field is <var>N</var>),
+              a value (field is <var>N</var>) (e.g. <code>hw=T5</code> - TL 5)
             <li>
-              a value and <code>-</code> (field is <var>N</var> or lower),
+              a value and <code>-</code> (field is <var>N</var> or lower; e.g. <code>hw=S5-</code> - Size 5 or lower)
             <li>
-              a value and <code>+</code> (field is <var>N</var> or higher),
+              a value and <code>+</code> (field is <var>N</var> or higher; e.g. <code>hw=T12+</code> - TL 12 or higher)
             <li>
-              a value and <code>-</code> and another value (field in the range <var>N</var> to <var>M</var>),
+              a value and <code>-</code> and another value (field in the range <var>N</var> to <var>M</var>; e.g. <code>hw=A4-9</code> - Atmosphere 4-9)
             <li>
-              <code>:</code> and a list of characters (starport and bases only; e.g. <code>St:AB</code> or <code>B:NW</code>, etc).
+              <code>:</code> and a list of characters (starport and bases only; e.g. <code>hw=B:ND</code> - naval base or depot)
           </ul>
 
         <p>
