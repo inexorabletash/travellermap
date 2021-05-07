@@ -102,7 +102,8 @@ window.addEventListener('DOMContentLoaded', function() {
       options: map.options
     };
     map.namedOptions.NAMES.forEach(function(name) {
-      preferences[name] = map.namedOptions.get(name);
+      var value = map.namedOptions.get(name);
+      preferences[name] = value === '' ? undefined : value;
     });
     PARAM_OPTIONS.forEach(function(option) {
       preferences[option.param] = document.body.classList.contains(option.className);
@@ -724,7 +725,11 @@ window.addEventListener('DOMContentLoaded', function() {
       if ('style' in preferences) map.style = preferences.style;
       if ('options' in preferences) map.options = preferences.options;
       map.namedOptions.NAMES.forEach(function(name) {
-        if (name in preferences) map.namedOptions.set(name, preferences[name]);
+        if (name in preferences) {
+          var value = preferences[name];
+          if (value !== '')
+            map.namedOptions.set(name, value);
+        }
       });
 
       PARAM_OPTIONS.forEach(function(option) {
