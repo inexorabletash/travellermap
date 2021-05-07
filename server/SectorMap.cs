@@ -92,8 +92,39 @@ namespace Maps
                         }
                     }
 
-                    if (!string.IsNullOrEmpty(sector.Abbreviation))
-                        nameMap.TryAdd(sector.Abbreviation ?? "", sector);
+                    lock (sector)
+                    {
+                        if (!string.IsNullOrEmpty(sector.Abbreviation))
+                        {
+                            nameMap.TryAdd(sector.Abbreviation ?? "", sector);
+                        }
+                        else
+                        {
+                            // Synthesize an abbreviation, e.g. "Cent"
+                            string? abbrev = sector.SynthesizeAbbreviation();
+                            if (abbrev != null)
+                            {
+                                if (nameMap.TryAdd(abbrev, sector))
+                                {
+                                    sector.Abbreviation = abbrev;
+                                }
+                                else
+                                {
+                                    // But if that's used, try "Cen2", etc.
+                                    for (int i = 2; i <= 99; ++i)
+                                    {
+                                        string suffix = i.ToString();
+                                        string prefix = abbrev.Substring(0, 4 - suffix.Length);
+                                        if (nameMap.TryAdd(prefix + suffix, sector))
+                                        {
+                                            sector.Abbreviation = prefix + suffix;
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }

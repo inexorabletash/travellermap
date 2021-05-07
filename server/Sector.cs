@@ -39,32 +39,23 @@ namespace Maps
         public string CanonicalMilieu => DataFile?.Milieu ?? Milieu ?? SectorMap.DEFAULT_MILIEU;
 
         [XmlAttribute]
-        public string? Abbreviation
-        {
-            get
-            {
-                lock (this)
-                {
-                    if (!string.IsNullOrEmpty(abbreviation))
-                        return abbreviation;
-                    if (!Tags.Contains("OTU") || Names.Count == 0)
-                        return null;
+        public string? Abbreviation { get; set; }
 
-                    // For OTU sectors, synthesize an abbreviation if not specified.
-                    string name = Names[0].Text ?? "";
-                    name = name.Replace(" ", "");
-                    name = Regex.Replace(name, @"[^A-Z]", "x", RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
-                    if (name.Length == 0)
-                        return null;
-                    name = name.SafeSubstring(0, 4);
-                    name = name.Substring(0, 1).ToString().ToUpperInvariant() + name.Substring(1).ToLowerInvariant();
-                    abbreviation = name;
-                    return abbreviation;
-                }
-            }
-            set => abbreviation = value;
+        // For OTU sectors, synthesize an abbreviation if not specified.
+        public string? SynthesizeAbbreviation()
+        {
+            if (!Tags.Contains("OTU") || Names.Count == 0)
+                return null;
+
+            string name = Names[0].Text ?? "";
+            name = name.Replace(" ", "");
+            name = Regex.Replace(name, @"[^A-Z]", "x", RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
+            if (name.Length == 0)
+                return null;
+            name = name.SafeSubstring(0, 4);
+            name = name.Substring(0, 1).ToString().ToUpperInvariant() + name.Substring(1).ToLowerInvariant();
+            return name;
         }
-        private string? abbreviation;
 
         [XmlAttribute]
         public string? Label { get; set; }
@@ -304,6 +295,12 @@ namespace Maps
                         writer.WriteLine($"# Name: {name.Text} ({name.Lang})");
                     else
                         writer.WriteLine($"# Name: {name}");
+                }
+
+                if (Abbreviation != null)
+                {
+                    writer.WriteLine();
+                    writer.WriteLine($"# Abbreviation: {Abbreviation}");
                 }
 
                 writer.WriteLine();
