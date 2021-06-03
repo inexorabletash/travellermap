@@ -76,7 +76,7 @@ window.addEventListener('DOMContentLoaded', function() {
   //////////////////////////////////////////////////////////////////////
 
   // Tweak defaults
-  map.options = map.options | Traveller.MapOptions.NamesMinor | Traveller.MapOptions.ForceHexes;
+  map.options = map.options | Traveller.MapOptions.NamesMinor | Traveller.MapOptions.ForceHexes | Traveller.MapOptions.FilledBorders;
   map.scale = isSmallScreen ? 1 : 2;
   map.CenterAtSectorHex(0, 0, Traveller.Astrometrics.ReferenceHexX, Traveller.Astrometrics.ReferenceHexY);
   var defaults = {
