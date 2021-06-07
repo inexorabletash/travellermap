@@ -8,6 +8,7 @@
     <DataFile Type="SecondSurvey">1120_Spin.sec</DataFile>
     <MetadataFile>1120_Spin.xml</MetadataFile>
   </Sector>
+
   <Sector Abbreviation="Mass" Tags="Unreviewed" Selected="true" Milieu="M1120">
     <Y>1</Y>
     <X>0</X>
@@ -16,6 +17,12 @@
     <Name Lang="vi">Masilaa</Name>
     <DataFile Type="SecondSurvey">1120_Mass.sec</DataFile>
     <MetadataFile>1120_Mass.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Delp" Tags="Unreviewed" Milieu="M1120">
+    <Y>1</Y>
+    <X>1</X>
+    <Name>Delphi</Name>
+    <MetadataFile>Delp.xml</MetadataFile>
   </Sector>
   <Sector Abbreviation="Dias" Tags="Unreviewed" Selected="true" Milieu="M1120">
     <Y>2</Y>
@@ -132,8 +139,8 @@
     <DataFile Author="James Holden, Joe D. Fugate Jr. and Terry McInnes" Type="SecondSurvey">1120_Core.sec</DataFile>
     <MetadataFile>1120_Core.xml</MetadataFile>
   </Sector>
- 
-  
+
+
   <!-- Solomani and Aslan -->
   <Sector Abbreviation="Dark" Tags="Unreviewed" Milieu="M1120">
     <Y>3</Y>
@@ -186,7 +193,5 @@
     <Name>Langere</Name>
     <MetadataFile>Lang.xml</MetadataFile>
   </Sector>
-
-
 
 </Sectors>
