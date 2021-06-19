@@ -193,7 +193,7 @@ namespace Maps.API
                         RenderToGraphics(ctx, transform, graphics);
                     }
 
-                    BitmapResponse(context.Response, outputStream, ctx.Styles, bitmap, transparent ? ContentTypes.Image.Png : null);
+                    BitmapResponse(context.Response, outputStream, ctx.Styles, bitmap, transparent ? ContentTypes.Image.Png : null, title);
                     #endregion
                 }
 
@@ -274,7 +274,7 @@ namespace Maps.API
                 }
             }
 
-            private static void BitmapResponse(HttpResponse response, Stream outputStream, Stylesheet styles, Bitmap bitmap, string? mimeType)
+            private static void BitmapResponse(HttpResponse response, Stream outputStream, Stylesheet styles, Bitmap bitmap, string? mimeType, string? title)
             {
                 try
                 {
@@ -282,6 +282,14 @@ namespace Maps.API
                     mimeType ??= styles.preferredMimeType;
 
                     response.ContentType = mimeType;
+                    string? suffix = mimeType switch
+                    {
+                        ContentTypes.Image.Jpeg => ".jpg",
+                        ContentTypes.Image.Gif => ".gif",
+                        ContentTypes.Image.Png => ".png",
+                        _ => null
+                    };
+
 
                     // Searching for a matching encoder
                     ImageCodecInfo encoder = ImageCodecInfo.GetImageEncoders()
@@ -326,6 +334,14 @@ namespace Maps.API
                         response.ContentType = ContentTypes.Image.Gif;
                         bitmap.Save(outputStream, ImageFormat.Gif);
                     }
+
+                    if (title != null && suffix != null)
+                    {
+                        // "content-disposition: inline" is not used as Chrome opens that in a tab, then
+                        // (sometimes?) fails to allow it to be saved due to being served via POST. 
+                        response.AddHeader("content-disposition", $"attachment;filename=\"{Util.SanitizeFilename(title)}.{suffix}\"");
+                    }
+
                 }
                 catch (System.Runtime.InteropServices.ExternalException)
                 {
