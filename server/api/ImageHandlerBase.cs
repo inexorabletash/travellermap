@@ -162,7 +162,9 @@ namespace Maps.API
                     if (!dataURI)
                     {
                         context.Response.AddHeader("content-length", stream.Length.ToString());
-                        context.Response.AddHeader("content-disposition", $"inline;filename=\"{Util.SanitizeFilename(title)}.pdf\"");
+                        // "content-disposition: inline" is not used as Chrome opens that in a tab, then
+                        // (sometimes?) fails to allow it to be saved due to being served via POST. 
+                        context.Response.AddHeader("content-disposition", $"attachment;filename=\"{Util.SanitizeFilename(title)}.pdf\"");
                     }
                     stream.WriteTo(outputStream);
                     #endregion
