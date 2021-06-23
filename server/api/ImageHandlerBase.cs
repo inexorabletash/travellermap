@@ -107,6 +107,12 @@ namespace Maps.API
                 }
                 #endregion
 
+                // "content-disposition: inline" is not used as Chrome opens that in a tab, then
+                // (sometimes?) fails to allow it to be saved due to being served via POST. 
+                string disposition = context.Request.HttpMethod == "POST" 
+                    && context.Request.UserAgent.Contains("Chrome")                    
+                    ? "attachment" : "inline";
+
                 MemoryStream? ms = null;
                 if (dataURI)
                     ms = new MemoryStream();
@@ -124,7 +130,7 @@ namespace Maps.API
                     if (!dataURI)
                     {
                         context.Response.AddHeader("content-length", stream.Length.ToString());
-                        context.Response.AddHeader("content-disposition", $"inline;filename=\"{Util.SanitizeFilename(title)}.svg\"");
+                        context.Response.AddHeader("content-disposition", $"{disposition};filename=\"{Util.SanitizeFilename(title)}.svg\"");
                     }
                     stream.WriteTo(outputStream);
                     #endregion
@@ -162,9 +168,7 @@ namespace Maps.API
                     if (!dataURI)
                     {
                         context.Response.AddHeader("content-length", stream.Length.ToString());
-                        // "content-disposition: inline" is not used as Chrome opens that in a tab, then
-                        // (sometimes?) fails to allow it to be saved due to being served via POST. 
-                        context.Response.AddHeader("content-disposition", $"attachment;filename=\"{Util.SanitizeFilename(title)}.pdf\"");
+                        context.Response.AddHeader("content-disposition", $"{disposition};filename=\"{Util.SanitizeFilename(title)}.pdf\"");
                     }
                     stream.WriteTo(outputStream);
                     #endregion
@@ -193,7 +197,7 @@ namespace Maps.API
                         RenderToGraphics(ctx, transform, graphics);
                     }
 
-                    BitmapResponse(context.Response, outputStream, ctx.Styles, bitmap, transparent ? ContentTypes.Image.Png : null, title);
+                    BitmapResponse(context.Response, disposition, outputStream, ctx.Styles, bitmap, transparent ? ContentTypes.Image.Png : null, title);
                     #endregion
                 }
 
@@ -274,7 +278,7 @@ namespace Maps.API
                 }
             }
 
-            private static void BitmapResponse(HttpResponse response, Stream outputStream, Stylesheet styles, Bitmap bitmap, string? mimeType, string? title)
+            private static void BitmapResponse(HttpResponse response, string disposition, Stream outputStream, Stylesheet styles, Bitmap bitmap, string? mimeType, string? title)
             {
                 try
                 {
@@ -282,11 +286,11 @@ namespace Maps.API
                     mimeType ??= styles.preferredMimeType;
 
                     response.ContentType = mimeType;
-                    string? suffix = mimeType switch
+                    string? extension = mimeType switch
                     {
-                        ContentTypes.Image.Jpeg => ".jpg",
-                        ContentTypes.Image.Gif => ".gif",
-                        ContentTypes.Image.Png => ".png",
+                        ContentTypes.Image.Jpeg => "jpg",
+                        ContentTypes.Image.Gif => "gif",
+                        ContentTypes.Image.Png => "png",
                         _ => null
                     };
 
@@ -335,11 +339,9 @@ namespace Maps.API
                         bitmap.Save(outputStream, ImageFormat.Gif);
                     }
 
-                    if (title != null && suffix != null)
+                    if (title != null && extension != null)
                     {
-                        // "content-disposition: inline" is not used as Chrome opens that in a tab, then
-                        // (sometimes?) fails to allow it to be saved due to being served via POST. 
-                        response.AddHeader("content-disposition", $"attachment;filename=\"{Util.SanitizeFilename(title)}.{suffix}\"");
+                        response.AddHeader("content-disposition", $"{disposition};filename=\"{Util.SanitizeFilename(title)}.{extension}\"");
                     }
 
                 }
