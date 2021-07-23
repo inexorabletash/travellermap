@@ -3,7 +3,9 @@
   <Name>Dark Sea</Name>
   <Credits>
     <![CDATA[
-      <b>Dark Sea</b> sector was created by Graham Donald..
+      <p>
+        <b>Dark Sea</b> sector was created by Graham Donald.
+      </p>
     ]]>
   </Credits>
   <Subsectors>
@@ -28,25 +30,28 @@
     border { color: gray }
     route.TradeMinor { Color: gray; style: dashed; width: 0.5 }
   </Stylesheet>
+  <Allegiances>
+    <Allegiance Code="BI">Republic of the Bright Islands</Allegiance>
+  </Allegiances>
 <Borders>
-    <Border Allegiance="BI">0019 0020 0121 0220 0320 0420 0521 0621 0721 0821 0921 1021 1121 1120 1220 1321 1421 1422 1423 1324 1325 1225 1226 1126 1026 0927 0826 0727 0627 0528 0428 0429 0330 0331 0330 0229 0228 0128 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 </Border>
+    <Border LabelPosition="0924" Allegiance="BI">0019 0020 0121 0220 0320 0420 0521 0621 0721 0821 0921 1021 1121 1120 1220 1321 1421 1422 1423 1324 1325 1225 1226 1126 1026 0927 0826 0727 0627 0528 0428 0429 0330 0331 0330 0229 0228 0128 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 </Border>
   </Borders>
   <Routes>
-    <Route Start="1422" End="1325" Type="Trade"/>
-    <Route Start="1226" End="1325" Type="Trade"/>
-    <Route Start="1026" End="1226" Type="Trade"/>
-    <Route Start="1026" End="0826" Type="Trade"/>
-    <Route Start="0624" End="0826" Type="Trade"/>
-    <Route Start="0624" End="0723" Type="Trade"/>
-    <Route Start="0821" End="0723" Type="Trade"/>
-    <Route Start="0821" End="1021" Type="Trade"/>
-    <Route Start="1021" End="1120" Type="Trade"/>
-    <Route Start="0826" End="0627" Type="Trade"/>
-    <Route Start="0428" End="0227" Type="Trade"/>
-    <Route Start="0627" End="0428" Type="Trade"/>
-    <Route Start="0723" End="0621" Type="Trade"/>
-    <Route Start="0420" End="0621" Type="Trade"/>
-    <Route Start="0420" End="0121" Type="Trade"/>
-    <Route Start="0428" End="0330" Type="Trade"/>
+    <Route Start="1422" End="1325" Type="TradeMinor"/>
+    <Route Start="1226" End="1325" Type="TradeMinor"/>
+    <Route Start="1026" End="1226" Type="TradeMinor"/>
+    <Route Start="1026" End="0826" Type="TradeMinor"/>
+    <Route Start="0624" End="0826" Type="TradeMinor"/>
+    <Route Start="0624" End="0723" Type="TradeMinor"/>
+    <Route Start="0821" End="0723" Type="TradeMinor"/>
+    <Route Start="0821" End="1021" Type="TradeMinor"/>
+    <Route Start="1021" End="1120" Type="TradeMinor"/>
+    <Route Start="0826" End="0627" Type="TradeMinor"/>
+    <Route Start="0428" End="0227" Type="TradeMinor"/>
+    <Route Start="0627" End="0428" Type="TradeMinor"/>
+    <Route Start="0723" End="0621" Type="TradeMinor"/>
+    <Route Start="0420" End="0621" Type="TradeMinor"/>
+    <Route Start="0420" End="0121" Type="TradeMinor"/>
+    <Route Start="0428" End="0330" Type="TradeMinor"/>
   </Routes>
 </Sector>
