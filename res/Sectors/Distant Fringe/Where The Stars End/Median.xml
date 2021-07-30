@@ -4,13 +4,24 @@
   <Credits>
     <![CDATA[
       <b>Median</b> sector was designed by Ade Stewart as part of Where The Stars End.
+
+      The data provided for the sector includes no social details: the region has been remotely surveyed, which has provided extensive physical information about the stars, features, and worlds that lie within it.
     ]]>
   </Credits>
   <Labels>
     <!-- Rift Names -->
-    <Label Hex="1227" Color="gray" Size="large">Ribbon Rift</Label>
+    <Label Hex="1533" Color="gray" Size="large">Ribbon</Label>
+    <Label Hex="1938" Color="gray" Size="large">Rift</Label>
     <!-- Features Names -->
-    <Label Hex="1936" Color="gray">Sutter's Bridge</Label>
-    <Label Hex="2713" Color="gray" Size="small">RSS&#x0a;Me2712</Label>
+    <Label Hex="2105" Color="gray">Dry Stars</Label>
+    <Label Hex="1718" Color="gray">The Disjoin</Label>
+    <Label Hex="0428" Color="gray">Lacuna Reach</Label>
+    <Label Hex="1936" Color="gray">Sutters Bridge</Label>
+    <Label Hex="2713" Color="gray">RSS&#x0a;Me2712</Label>
   </Labels>
+  <Regions>
+    <Region Color="Darkblue" LabelPosition="0506" Label="Outer Veil">0306 0405 0506 0605 0705 0804 0803 0903 0904 0804 0705 0605 0606 0607 0708 0709 0809 0910 0810 0710 0709 0608 0607 0507 0407 0406 0306 </Region>
+    <Region Color="Darkblue">0708 0709 0708 </Region>
+    <Region Color="Darkblue" LabelPosition="1107" Label="Inner Veil">0906 1005 1006 1107 1207 1208 1109 1110 1109 1108 1107 1006 0906 </Region>
+  </Regions>
 </Sector>

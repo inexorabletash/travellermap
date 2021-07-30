@@ -16,18 +16,24 @@
     <Allegiance Code="Sx">Sath Exploration</Allegiance>
   </Allegiances>
   <Regions>
-    <Region Color="Darkblue" LabelPosition="1319" Label="Shadow Cloud">1119 1218 1217 1317 1316 1315 1214 1213 1313 1312 1313 1413 1513 1413 1414 1515 1516 1416 1317 1318 1418 1518 1617 1718 1719 1619 1520 1419 1320 1321 1421 1422 1322 1221 1220 1120 1119</Region>
+    <Region Color="Darkblue" LabelPosition="0722" Label="Shadow Cloud">0421 0521 0620 0619 0618 0518 0517 0616 0615 0616 0717 0816 0717 0718 0818 0819 0720 0721 0821 0921 1021 1022 0923 0823 0824 0825 0726 0727 0627 0727 0726 0725 0624 0623 0523 0422 0421 </Region>
   </Regions>
   <Routes>
     <!-- Outland Run -->
-    <Route Start="0223" End="0022"/>
+    <Route Start="0022" End="0223"/>
+    <Route Start="0223" End="0325"/>
   </Routes>
   <Labels>
     <!-- Rift Names -->
-    <Label Hex="1316" Color="gray" Size="large">Moat Rifts</Label>
+    <Label Hex="1517" Color="gray" Size="large">Moat Rifts</Label>
     <Label Hex="1636" Color="gray" Size="large">Great Void</Label>
     <!-- Route Names -->
-    <Label Hex="0124" Color="green" Size="small">Outland&#x0a;Run</Label>
+    <Label Hex="0323" Color="green" Size="small">Outland&#x0a;Run</Label>
+    <!-- Fuel Caches -->
+    <Label Hex="1530" Color="red" Size="small">Fuel&#x0a;cache</Label>
+    <Label Hex="0234" Color="red" Size="small">Fuel&#x0a;cache</Label>
+    <Label Hex="0434" Color="red" Size="small">Fuel&#x0a;cache</Label>
+    <Label Hex="1431" Color="red" Size="small">Fuel&#x0a;cache</Label>
   </Labels>
   <Stylesheet>
     route { style: dashed }

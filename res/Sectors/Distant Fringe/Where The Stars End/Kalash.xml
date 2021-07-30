@@ -4,13 +4,21 @@
   <Credits>
     <![CDATA[
       <b>Kalash</b> sector was designed by Ade Stewart as part of Where The Stars End.
+
+      The data provided for the sector includes no social details: the region has been remotely surveyed, which has provided extensive physical information about the stars, features, and worlds that lie within it.
     ]]>
   </Credits>
   <Labels>
     <!-- Rift Names -->
-    <Label Hex="2419" Color="gray" Size="large">Empty Reach</Label>
+    <Label Hex="1806" Color="gray">Stiletto Void</Label>
+    <Label Hex="1219" Color="gray">Kalash Basin</Label>
+    <Label Hex="2514" Color="gray" Size="large">Empty Reach</Label>
+    <Label Hex="1227" Color="gray">Langeflach Rift</Label>
+    <Label Hex="2237" Color="gray">The Straights</Label>
   </Labels>
   <Regions>
-    <Region Color="Plum" LabelPosition="2427" Label="Laurent's Reef">2128 2227 2327 2426 2425 2424 2423 2523 2522 2521 2620 2521 2522 2523 2623 2624 2725 2625 2626 2627 2528 2529 2530 2630 2631 2531 2431 2332 2331 2330 2229 2129 2128</Region>
+    <!-- Anomalies -->
+    <Region Color="Plum" LabelPosition="2221" Label="Laurent's Reef">2927 3026 3126 3225 3224 3223 3222 3322 3321 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3230 3131 3130 3129 3028 2928 2927 </Region>
+    <Region Color="Plum" LabelPosition="3128" Label="Long Reef">1920 2019 2120 2219 2319 2320 2420 2421 2422 2323 2223 2124 2123 2122 2021 1921 1920 </Region>
   </Regions>
 </Sector>

@@ -12,29 +12,73 @@
     <Subsector Index="C">Gatehold</Subsector>
     <Subsector Index="D">Long</Subsector>
     <Subsector Index="E">Absen</Subsector>
+    <Subsector Index="G">Outlier</Subsector>
     <Subsector Index="H">Chance</Subsector>
+    <Subsector Index="K">Fornever</Subsector>
     <Subsector Index="L">Mendoka</Subsector>
     <Subsector Index="N">Nabile</Subsector>
     <Subsector Index="O">Erven</Subsector>
     <Subsector Index="P">Goss</Subsector>
   </Subsectors>
   <Regions>
-    <Region Color="Darkblue" LabelPosition="1513" Label="Bourne Cloud">1310 1409 1510 1610 1710 1810 1711 1611 1612 1513 1514 1414 1413 1412 1512 1511 1410 1310</Region>
+    <Region Color="Darkblue" LabelPosition="0712" Label="Bourne Cloud">0510 0609 0710 0810 0910 1010 0911 0811 0812 0713 0714 0614 0613 0612 0712 0711 0610 0510 </Region>
   </Regions>
+  <Routes>
+    <!-- Jannasta's Expedition Rimward-->
+    <Route Start="1634" End="1835" Color="darkred"/>
+    <Route Start="1835" End="2035" Color="darkred"/>
+    <Route Start="2035" End="2235" Color="darkred"/>
+    <Route Start="2235" End="2434" Color="darkred"/>
+    <Route Start="2434" End="2634" Color="darkred"/>
+    <Route Start="2634" End="2833" Color="darkred"/>
+    <Route Start="2833" End="2933" Color="darkred"/>
+    <Route Start="2933" End="3033" Color="darkred"/>
+    <Route Start="3033" End="3132" Color="darkred"/>
+    <Route Start="3132" End="3230" Color="darkred"/>
+    <Route Start="3132" End="3130" Color="darkred"/>
+    <Route Start="3230" End="3228" Color="darkred"/>
+    <Route Start="3130" End="3228" Color="darkred"/>
+    <Route Start="3228" End="3227" Color="darkred"/>
+    <Route Start="3227" End="3126" Color="darkred"/>
+    <Route Start="3126" End="3124" Color="darkred"/>
+    <Route Start="3124" End="3022" Color="darkred"/>
+    <Route Start="3022" End="3221" Color="darkred"/>
+    <Route Start="3221" End="3219" Color="darkred"/>
+    <Route Start="3219" End="3217" Color="darkred"/>
+    <Route Start="3217" End="3417" Color="darkred"/>
+    <!-- Jannasta's Expedition Coreward-->
+    <Route Start="1803" End="2004" Color="darkred"/>
+    <Route Start="2004" End="2204" Color="darkred"/>
+    <Route Start="2204" End="2405" Color="darkred"/>
+    <Route Start="2405" End="2507" Color="darkred"/>
+    <Route Start="2405" End="2605" Color="darkred"/>
+    <Route Start="2507" End="2707" Color="darkred"/>
+    <Route Start="2605" End="2707" Color="darkred"/>
+    <Route Start="2707" End="2807" Color="darkred"/>
+    <Route Start="2807" End="2909" Color="darkred"/>
+    <Route Start="2909" End="2910" Color="darkred"/>
+    <Route Start="2910" End="3111" Color="darkred"/>
+    <Route Start="3111" End="3210" Color="darkred"/>
+    <Route Start="3210" End="3311" Color="darkred"/>
+  </Routes>
   <Labels>
     <!-- Fuel Caches -->
     <Label Hex="1603" Color="red" Size="small">Fuel&#x0a;cache</Label>
     <Label Hex="1536" Color="red" Size="small">Fuel&#x0a;cache</Label>
     <!-- Rift Names -->
     <Label Hex="1221" Color="gray" Size="large">Moat Rifts</Label>
+    <!-- Route Names -->
+    <Label Hex="2505" Color="darkred" Size="small">Jannasta's&#x0a;Path</Label>
+    <Label Hex="2834" Color="darkred" Size="small">Jannasta's&#x0a;Path</Label>
   </Labels>
   <Borders>
     <Border Allegiance="Dr" LabelPosition="0303" ShowLabel="false" WrapLabel="false">0000 0100 0200 0300 0400 0500 0600 0700 0800 0701 0601 0502 0503 0504 0404 0304 0204 0105 0005 0006 0005 0004 0003 0002 0001 0000 </Border>
   </Borders>
   <Allegiances>
-    <Allegiance Code="Dr">Dominion of Ruins</Allegiance>
+    <Allegiance Code="Dr">Dominion&#x0a;of Ruins</Allegiance>
   </Allegiances>
   <Stylesheet>
     border.Dr { color: blue; style: dotted }
+    route { style: dashed }
   </Stylesheet>
 </Sector>

@@ -4,22 +4,45 @@
   <Credits>
     <![CDATA[
       <b>Pestilent</b> sector was designed by Ade Stewart as part of Where the Stars End.
+
+      The data provided for the sector includes no social details: the region has been remotely surveyed, which has provided extensive physical information about the stars, features, and worlds that lie within it.
     ]]>
   </Credits>
+  <Subsectors>
+    <Subsector Index="F">Ward</Subsector>
+    <Subsector Index="G">Damned</Subsector>
+    <Subsector Index="H">Scourge</Subsector>
+    <Subsector Index="K">Blighted</Subsector>
+    <Subsector Index="L">Spur</Subsector>
+  </Subsectors>
+  <Routes>
+    <!-- Path of The Cursed -->
+    <Route Start="1517" End="1716" Color="Darkred" Style="Dashed"/>
+    <Route Start="1716" End="1814" Color="Darkred" Style="Dashed"/>
+    <Route Start="1814" End="1914" Color="Darkred" Style="Dashed"/>
+    <Route Start="1914" End="2215" Color="Darkred" Style="Dashed"/>
+  </Routes>
+  <Labels>
+    <!-- Routes -->
+    <Label Hex="1815" Color="Darkred" Size="small">Path of&#x0a;The Cursed</Label>
+    <!-- Rift Names -->
+    <Label Hex="1308" Color="gray">Black Reach</Label>
+    <Label Hex="2105" Color="gray">Empty Space</Label>
+    <Label Hex="1633" Color="gray" Size="large">Great Void</Label>
+    <Label Hex="1821" Color="gray">Ion Gate</Label>
+    <!-- Features Names -->
+    <Label Hex="1518" Color="gray">RSS&#x0a;Pe1517</Label>
+  </Labels>
   <Borders>
-    <Border Allegiance="La" LabelPosition="1515" ShowLabel="true" WrapLabel="true">1118 1217 1317 1416 1516 1616 1617 1518 1519 1419 1320 1219 1119 1118 </Border>
+    <Border Allegiance="La" LabelPosition="1320" ShowLabel="true" WrapLabel="true">1118 1217 1317 1416 1516 1616 1617 1518 1519 1419 1320 1219 1119 1118 </Border>
+    <Border Allegiance="Cu" LabelPosition="2418" ShowLabel="true" WrapLabel="false">2115 2214 2314 2414 2415 2516 2517 2617 2718 2719 2720 2620 2521 2522 2523 2423 2323 2222 2221 2220 2219 2119 2118 2117 2116 2115 </Border>
   </Borders>
   <Allegiances>
+    <Allegiance Code="Cu">The Cursed</Allegiance>
     <Allegiance Code="La">League of Asclepius</Allegiance>
   </Allegiances>
-  <Labels>
-    <!-- Rift Names -->
-    <Label Hex="1633" Color="gray" Size="large">Great Void</Label>
-    <Label Hex="2018" Color="gray" Size="large">Ion Gate</Label>
-    <!-- Features Names -->
-    <Label Hex="1518" Color="gray" Size="small">RSS&#x0a;Pe1517</Label>
-  </Labels>
   <Stylesheet>
+    border.Cu { color: Darkred; style: dotted }
     border.La { color: green; style: dotted }
   </Stylesheet>
 </Sector>

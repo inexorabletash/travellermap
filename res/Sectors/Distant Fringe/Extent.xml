@@ -9,10 +9,13 @@
   <Subsectors>
     <Subsector Index="I">Juluti</Subsector>
     <Subsector Index="M">Parsalax</Subsector>
-    <Subsector Index="N">Oregus</Subsector>
   </Subsectors>
   <Labels>
     <!-- Rift Names -->
-    <Label Hex="1228" Color="gray" Size="large">Moat Rifts</Label>
+    <Label Hex="2036" Color="gray" Size="large">Moat Rifts</Label>
   </Labels>
+  <Regions>
+    <!-- Gas Cloud -->
+    <Region Color="Darkblue" LabelPosition="1615" WrapLabel="true" Label="Shade Cloud">1314 1413 1412 1512 1612 1713 1714 1715 1615 1515 1414 1314 </Region>
+  </Regions>
 </Sector>

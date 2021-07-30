@@ -25,30 +25,20 @@
     <Subsector Index="P">Sath</Subsector>
   </Subsectors>
   <Borders>
-    <Border Allegiance="Cs" LabelPosition="2715" ShowLabel="true" WrapLabel="true">2613 2713 2812 2912 3011 3012 3013 3114 3115 3015 2915 2814 2714 2613 </Border>
-    <Border Allegiance="Fw" LabelPosition="1007" ShowLabel="true" WrapLabel="false">0611 0711 0810 0809 0909 1008 1109 1110 1210 1211 1112 1012 0913 0812 0712 0611 </Border>
-    <Border Allegiance="He" LabelPosition="2429" ShowLabel="true" WrapLabel="true">2229 2329 2330 2331 2230 2229 </Border>
-    <Border Allegiance="Ot" LabelPosition="1915" ShowLabel="true" WrapLabel="true">1913 2012 2113 2114 2214 2115 2014 1914 1913 </Border>
-    <Border Allegiance="Pr" LabelPosition="3010" ShowLabel="true" WrapLabel="false">2508 2607 2708 2808 2908 3008 3009 2910 2911 2811 2712 2612 2513 2512 2511 2610 2609 2608 2508 </Border>
-    <Border Allegiance="Rf" LabelPosition="1425" ShowLabel="true" WrapLabel="true">1129 1228 1328 1327 1426 1527 1626 1727 1827 1828 1729 1730 1630 1530 1429 1330 1230 1130 1129 </Border>
-    <Border Allegiance="Sa" LabelPosition="2634" ShowLabel="true" WrapLabel="true">2035 2135 2134 2133 2232 2332 2431 2532 2632 2732 2832 2833 2834 2935 3035 3036 2937 2938 3038 2938 2838 2738 2637 2537 2437 2337 2236 2137 2036 2035 </Border>
-    <Border Allegiance="Wl" LabelPosition="2010" ShowLabel="true" WrapLabel="true">2110 2209 2208 2308 2408 2509 2510 2410 2411 2412 2313 2213 2212 2112 2111 2110 </Border>
+    <Border Allegiance="Ci" LabelPosition="3013" ShowLabel="true" WrapLabel="true">2713 2812 2912 2911 3011 3012 3013 3114 3115 3015 2915 2814 2714 2713 </Border>
+    <Border Allegiance="Fw" LabelPosition="1013" ShowLabel="true" WrapLabel="false">0611 0711 0810 0809 0909 0908 1007 1108 1208 1209 1210 1311 1312 1212 1113 1013 0913 0813 0713 0612 0611 </Border>
+    <Border Allegiance="Hw" LabelPosition="2429" ShowLabel="true" WrapLabel="true">2130 2229 2228 2328 2428 2429 2430 2431 2332 2231 2131 2130 </Border>
+    <Border Allegiance="Ot" LabelPosition="1915" ShowLabel="true" WrapLabel="true">1913 2012 2113 2213 2214 2115 2014 1914 1913 </Border>
+    <Border Allegiance="Pr" LabelPosition="2808" ShowLabel="true" WrapLabel="true">2511 2610 2609 2608 2607 2708 2808 2908 3008 3009 2910 2810 2811 2712 2612 2613 2513 2512 2511 </Border>
+    <Border Allegiance="Rf" LabelPosition="1331" ShowLabel="true" WrapLabel="true">1129 1228 1328 1427 1527 1627 1728 1729 1730 1630 1531 1430 1330 1230 1130 1129 </Border>
+    <Border Allegiance="Sa" LabelPosition="2634" ShowLabel="true" WrapLabel="true">2035 2135 2134 2133 2232 2333 2432 2532 2632 2732 2832 2833 2834 2935 3035 3036 3037 3038 2938 2838 2738 2637 2537 2437 2337 2236 2137 2036 2035 </Border>
+    <Border Allegiance="Wl" LabelPosition="2010" ShowLabel="true" WrapLabel="true">2110 2209 2208 2308 2408 2409 2310 2311 2312 2313 2212 2112 2111 2110 </Border>
   </Borders>
-  <Regions>
-    <!-- Anomalies -->
-    <Region Color="Darkviolet">0116 0216 0217 0218 0119 0120 0119 0118 0117 0116</Region>
-    <Region Color="Darkviolet" LabelPosition="0323" Label="Harmal&#x0a;Strange">0223 0323 0322 0422 0323 0223</Region>
-    <Region Color="Darkviolet" LabelPosition="0425" Label="Taranil&#x0a;Singularity">0424</Region>
-    <!-- Demon's Eye Nebula -->
-    <Region Color="Red" LabelPosition="1723" Label="Demon's Eye&#x0a;Nebula">1521 1620 1720 1721 1821 1822 1723 1622 1522 1521 </Region>
-    <Region Color="Red">1621 </Region>
-  </Regions>
   <Allegiances>
-    <Allegiance Code="Cs">Client States</Allegiance>
+    <Allegiance Code="Ci">Client States</Allegiance>
     <Allegiance Code="Fw">Firstworlds</Allegiance>
-    <Allegiance Code="He">Hell Worlds</Allegiance>
-    <Allegiance Code="Ns">Non-aligned Sophonts</Allegiance>
-    <Allegiance Code="Oc">Occupied Territories</Allegiance>
+    <Allegiance Code="Hw">Hell Worlds</Allegiance>
+    <Allegiance Code="Ot">Occupied Territories</Allegiance>
     <Allegiance Code="Pr">Protectorate of Leset</Allegiance>
     <Allegiance Code="Rf">Rimward Federation</Allegiance>
     <Allegiance Code="Sa">Sath Alliance</Allegiance>
@@ -127,36 +117,45 @@
     <Route Start="2025" End="1826"/>
     <Route Start="1826" End="1728"/>
   </Routes>
+  <Regions>
+    <!-- Demon's Eye Nebula -->
+    <Region Color="Red" LabelPosition="1723" Label="Demon's Eye&#x0a;Nebula">1521 1620 1720 1721 1821 1822 1723 1622 1522 1521 </Region>
+    <Region Color="Red">1621 </Region>
+    <!-- Anomalies -->
+    <Region Color="Purple" LabelPosition="0323" WrapLabel="true" Label="Harmal Strange">0223 0323 0322 0422 0323 0223 </Region>
+    <Region Color="Purple" LabelPosition="0425" WrapLabel="true" Label="Taranil Singularity">0424 </Region>
+    <Region Color="Purple">0016 0116 0216 0217 0218 0119 0120 0020 0019 0018 0017 0016 </Region>
+  </Regions>
   <Labels>
     <!-- Sath Waypoints -->
     <Label Hex="2435" Color="Red" Size="small">Sch'ikaa&#x0a;Waypoint</Label>
     <Label Hex="2536" Color="Red" Size="small">Tiik'sch&#x0a;Waypoint</Label>
     <Label Hex="3038" Color="Red" Size="small">Ith-Saa-Ka&#x0a;Waypoint</Label>
+    <Label Hex="3034" Color="Red" Size="small">Fuel&#x0a;Cache</Label>
     <!-- Route Names -->
-    <Label Hex="0725" Color="green" Size="small">Kuyt&#x0a;Chain</Label>
-    <Label Hex="1018" Color="green" Size="small">Kuyt&#x0a;Chain</Label>
-    <Label Hex="1122" Color="green" Size="small">Kuyt&#x0a;Chain</Label>
-    <Label Hex="2213" Color="green" Size="small">New&#x0a;Border</Label>
-    <Label Hex="2721" Color="green" Size="small">Outland&#x0a;Run</Label>
-    <Label Hex="2816" Color="green" Size="small">Outland&#x0a;Run</Label>
-    <Label Hex="0411" Color="green" Size="small">Scybrian&#x0a;Run</Label>
-    <Label Hex="1434" Color="green" Size="small">Spinward&#x0a;Drift</Label>
-    <Label Hex="1931" Color="green" Size="small">The&#x0a;Descent</Label>
-    <Label Hex="2121" Color="green" Size="small">Void&#x0a;Edge</Label>
-    <Label Hex="0228" Color="green" Size="small">Wolfs&#x0a;Tail</Label>
-    <Label Hex="0632" Color="green" Size="small">Wolfs&#x0a;Tail</Label>
+    <Label Hex="1018" Color="Green" Size="small">Kuyt&#x0a;Chain</Label>
+    <Label Hex="0725" Color="Green" Size="small">Kuyt&#x0a;Chain</Label>
+    <Label Hex="2213" Color="Green" Size="small">New&#x0a;Border</Label>
+    <Label Hex="2817" Color="Green" Size="small">Outland&#x0a;Run</Label>
+    <Label Hex="2721" Color="Green" Size="small">Outland&#x0a;Run</Label>
+    <Label Hex="0212" Color="Green" Size="small">Scybrian Run</Label>
+    <Label Hex="1634" Color="Green" Size="small">Spinward&#x0a;Drift</Label>
+    <Label Hex="1931" Color="Green" Size="small">The&#x0a;Descent</Label>
+    <Label Hex="2121" Color="Green" Size="small">Void&#x0a;Edge</Label>
+    <Label Hex="0228" Color="Green" Size="small">Wolfs&#x0a;Tail</Label>
+    <Label Hex="0632" Color="Green" Size="small">Wolfs&#x0a;Tail</Label>
     <!-- Rift Names -->
-    <Label Hex="1718" Color="gray">Demon's Eye Rift</Label>
+    <Label Hex="1719" Color="gray">Demon's Eye Rift</Label>
     <Label Hex="1604" Color="gray" Size="large">Moat Rifts</Label>
     <Label Hex="0209" Color="gray">Rissa&#x0a;Void</Label>
     <Label Hex="0419" Color="gray">Harmal&#x0a;Deep</Label>
-    <Label Hex="0333" Color="gray">Baradine&#x0a;Divide</Label>
+    <Label Hex="0231" Color="gray">Baradine&#x0a;Divide</Label>
     <Label Hex="1238" Color="gray" Size="large">Great Void</Label>
   </Labels>
   <Stylesheet>
-    border.Cs { color: cyan; style: dotted }
+    border.Ci { color: cyan; style: dotted }
     border.Fw { color: red }
-    border.He { color: olive; style: dotted }
+    border.Hw { color: olive; style: dotted }
     border.Pr { color: cyan }
     border.Ot { color: magenta; style: dotted }
     border.Rf { color: blue }

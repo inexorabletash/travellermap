@@ -4,10 +4,29 @@
   <Credits>
     <![CDATA[
       <b>Toller</b> sector was designed by Ade Stewart as part of Where The Stars End.
+
+      The data provided for the sector includes no social details: the region has been remotely surveyed, which has provided extensive physical information about the stars, features, and worlds that lie within it.
     ]]>
   </Credits>
   <Labels>
+    <!-- Fuel Caches -->
+    <Label Hex="1325" Color="red" Size="small">Fuel&#x0a;cache</Label>
     <!-- Rift Names -->
-    <Label Hex="2325" Color="gray" Size="large">Fools Rift</Label>
+    <Label Hex="2907" Color="gray">Edge of Nowhere</Label>
+    <Label Hex="1414" Color="gray">False Rift</Label>
+    <Label Hex="2126" Color="gray" Size="large">Fools Rift</Label>
+    <Label Hex="1016" Color="gray">RSS&#x0a;To1015</Label>
   </Labels>
+  <Borders>
+    <Border Allegiance="De" LabelPosition="1114" ShowLabel="true" WrapLabel="true">0714 0813 0812 0912 1012 1013 1014 1115 1116 1016 0916 0815 0715 0714 </Border>
+    <Border Allegiance="Fp" LabelPosition="1338" ShowLabel="true" WrapLabel="true">1134 1233 1334 1433 1534 1535 1536 1636 1637 1538 1437 1337 1236 1136 1135 1134 </Border>
+  </Borders>
+  <Allegiances>
+    <Allegiance Code="De">The Deceived</Allegiance>
+    <Allegiance Code="Fp">Fools Paradise</Allegiance>
+  </Allegiances>
+  <Stylesheet>
+    border.De { color: blue; style: dotted }
+    border.Fp { color: darkred; style: dotted }
+  </Stylesheet>
 </Sector>
