@@ -41,7 +41,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
 <script src="https://cdn.rawgit.com/inexorabletash/poly2/v2.0.1/polyfill.min.js"></script>
 <script src="map.js?update=2021-03-13T16:21:48"></script>
-<script src="index.js?update=2021-06-02T19:55:34"></script>
+<script src="index.js?update=2021-09-01T21:22:22"></script>
 <script src="world_util.js?update=2020-12-29T19:50:37"></script>
 
 <body class="hide-ui hide-footer ds-mini show-settings">
@@ -670,11 +670,12 @@
       </div>
 
       <div id=sds-print-links class=ds-print-links>
-        <a id=sds-booklet target=_blank rel=noopener href="{{BookletURL}}">Booklet</a>
+        <a title="Printable booklet" id=sds-booklet target=_blank rel=noopener href="{{BookletURL}}">Booklet</a>
         &bull;
-        <a id=sds-poster target=_blank rel=noopener href="{{PosterURL}}">Poster</a>
+        <a title="PDF map" id=sds-poster target=_blank rel=noopener href="{{PosterURL}}">Poster</a>
         &bull;
-        <a id=sds-data target=_blank rel=noopener href="{{DataURL}}">Raw Data</a>
+        <a title="Data as a text file" id=sds-data target=_blank rel=noopener href="{{DataURL}}">Raw Data</a>
+        (or <a title="Data for spreadsheets" id=sds-data target=_blank rel=noopener href="{{TSVDataURL}}">TSV</a>)
       </div>
 
       <div class=sds-status>

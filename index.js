@@ -938,6 +938,10 @@ window.addEventListener('DOMContentLoaded', function() {
           sector: data.SectorName, type: 'SecondSurvey',
           milieu: milieu
         });
+        data.TSVDataURL = Traveller.MapService.makeURL('/api/sec', {
+          sector: data.SectorName, type: 'TabDelimited',
+          milieu: milieu
+        });
       }
 
       if (data.SectorY)
