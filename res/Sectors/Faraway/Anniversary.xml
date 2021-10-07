@@ -3,46 +3,113 @@
   <Name>Anniversary</Name>
   <Credits>
     <![CDATA[
-
-      <b>Anniversary</b> and <b>Orion</b> subsectors appear in
-      <cite>Alien Realms</cite> fanzine, issues 2 and 5, and were created
-      by Robert McMahon and John Roberts.
-
-      Data transcribed and edited by Graham Donald.
-
+             <b>Anniversary</b> and <b>Orion</b> subsectors appear in <cite>Alien Realms</cite> fanzine, issues 2 and 5, and were created by Robert McMahon and John Roberts. Data transcribed and edited by Graham Donald.
+             Diz appears in <cite>Alien Realms</cite> fanzine issue 7 in an article entitled 'Data Bank: Pleasure Worlds' and was created by A. O. Marsden. The UWP was extrapolated from the article by Graham Donald.
+             <b>Dal Riada</b>, <b>Kalven</b>, <b>Iigirir</b>, <b>Adagio</b>, <b>Agur</b> and <b>Khambul</b> subsectors were created by Graham Donald. Grosserfelsen's UWP was extrapolated by Graham Donald from information contained in the Robert Chilson short story 'The Big Rock' published in the October 1969 issue of Analog Magazine.
     ]]>
   </Credits>
-
   <Allegiances>
-    <Allegiance Code="Tl">Turian League</Allegiance>
+    <Allegiance Code="Tl">Turan League</Allegiance>
   </Allegiances>
-
   <Subsectors>
     <Subsector Index="A">Anniversary</Subsector>
+    <Subsector Index="B">Dal Riada</Subsector>
     <Subsector Index="E">Orion</Subsector>
+    <Subsector Index="F">Kalven</Subsector>
+    <Subsector Index="I">Iigirir</Subsector>
+    <Subsector Index="J">Agur</Subsector>
+    <Subsector Index="M">Adagio</Subsector>
+    <Subsector Index="N">Khambul</Subsector>
   </Subsectors>
-
+  <Stylesheet>
+    border.Im { Color: red }
+    border.Tl { Color: orange }
+    route.Im, route.SoCf { Color: green }
+    route.Trade { Color: gray; style: dashed; width: 0.5 }
+    border.Hazard { Color: #C02020; style: dotted }
+    region.Nebula { Color: purple }
+  </Stylesheet>
   <Borders>
-    <Border Allegiance="Im">0000 0100 0200 0300 0400 0500 0600 0700 0800 0801 0802 0803 0804 0805 0806 0807 0808 0809 0810 0811 0812 0813 0814 0815 0816 0817 0818 0819 0820 0819 0818 0718 0617 0517 0416 0516 0615 0715 0714 0713 0612 0611 0610 0510 0409 0309 0208 0207 0107 0006 0005 0004 0003 0002 0001 0000 </Border>
+    <Border Allegiance="Im">0101 0201 0301 0401 0501 0601 0701 0801 0901 1001 1101 1201 1301 1401 1501 1601 1602 1603 1604 1605 1606 1607 1608 1609 1610 1611 1612 1613 1614 1615 1616 1617 1618 1619 1620 1621 1622 1623 1624 1625 1626 1627 1628 1629 1630 1631 1632 1633 1634 1635 1636 1637 1638 1639 1640 1540 1440 1340 1240 1140 1139 1038 0938 0838 0739 0639 0540 0440 0341 0340 0439 0539 0538 0637 0636 0635 0634 0633 0632 0631 0531 0530 0529 0528 0527 0626 0726 0725 0724 0723 0622 0722 0721 0720 0719 0718 0617 0717 0716 0715 0714 0713 0612 0611 0610 0510 0409 0309 0208 0207 0107 0106 0105 0104 0103 0102 0101 </Border>
     <Border Allegiance="Tl">0113 0212 0313 0314 0214 0114 0113 </Border>
   </Borders>
   <Routes>
-    <Route Start="0314" End="0715"/>
-    <Route Start="0716" End="0715"/>
-    <Route Start="0917" End="0716"/>
-    <Route Start="0715" End="0812"/>
-    <Route Start="0912" End="0812"/>
-    <Route Start="0812" End="0709"/>
-    <Route Start="0709" End="0609"/>
-    <Route Start="0709" End="0506"/>
-    <Route Start="0506" End="0206"/>
-    <Route Start="0006" End="0206"/>
-    <Route Start="0506" End="0706"/>
-    <Route Start="0906" End="0706"/>
+    <Route Start="0102" End="0001"/>
+    <Route Start="0206" End="0006"/>
     <Route Start="0402" End="0506"/>
-    <Route Start="0402" End="0702"/>
-    <Route Start="0702" End="0903"/>
     <Route Start="0402" End="0102"/>
-    <Route Start="0001" End="0102"/>
+    <Route Start="0402" End="0702"/>
+    <Route Start="0506" End="0706"/>
+    <Route Start="0506" End="0206"/>
+    <Route Start="0506" End="0709"/>
+    <Route Start="0702" End="0903"/>
+    <Route Start="0706" End="0905"/>
+    <Route Start="0709" End="0609"/>
+    <Route Start="0709" End="0812"/>
+    <Route Start="0715" End="0716"/>
+    <Route Start="0715" End="0314"/>
+    <Route Start="0716" End="0917"/>
+    <Route Start="0812" End="0715"/>
+    <Route Start="0716" End="1017"/>
+    <Route Start="1017" End="1319"/>
+    <Route Start="1319" End="1320"/>
+    <Route Start="1319" End="1321"/>
+    <Route Start="1017" End="1315"/>
+    <Route Start="1315" End="1715"/>
+    <Route Start="1315" End="1512"/>
+    <Route Start="1512" End="1510"/>
+    <Route Start="1510" End="1110"/>
+    <Route Start="0812" End="1110"/>
+    <Route Start="1110" End="1208"/>
+    <Route Start="1208" End="1206"/>
+    <Route Start="1206" End="1506"/>
+    <Route Start="1506" End="1706"/>
+    <Route Start="1206" End="1104"/>
+    <Route Start="0805" End="1104"/>
+    <Route Start="0903" End="1104"/>
+    <Route Start="1104" End="1201"/>
+    <Route Start="1201" End="1502"/>
+    <Route Start="1502" End="1702"/>
+    <Route Start="0538" End="0636"/>
+    <Route Start="0636" End="0833"/>
+    <Route Start="0933" End="0833"/>
+    <Route Start="0833" End="0631"/>
+    <Route Start="0214" End="0114" Type="Trade"/>
+    <Route Start="0114" End="0113" Type="Trade"/>
+    <Route Start="0113" End="0212" Type="Trade"/>
+    <Route Start="0212" End="0313" Type="Trade"/>
+    <Route Start="0313" End="0314" Type="Trade"/>
+    <Route Start="0314" End="0214" Type="Trade"/>
+    <Route Start="1017" End="0820"/>
+    <Route Start="0820" End="0723"/>
+    <Route Start="0723" End="0825"/>
+    <Route Start="0825" End="0728"/>
+    <Route Start="0728" End="0629"/>
+    <Route Start="0629" End="0631"/>
+    <Route Start="0825" End="0926"/>
+    <Route Start="0538" End="0341"/>
+    <Route Start="0833" End="0935"/>
+    <Route Start="0926" End="1225"/>
+    <Route Start="1225" End="1425"/>
+    <Route Start="1225" End="1528"/>
+    <Route Start="1225" End="1228"/>
+    <Route Start="1624" End="1425"/>
+    <Route Start="1624" End="1322"/>
+    <Route Start="1322" End="1319"/>
+    <Route Start="1228" End="1231"/>
+    <Route Start="1231" End="0933"/>
+    <Route Start="1231" End="1334"/>
+    <Route Start="1334" End="1237"/>
+    <Route Start="1237" End="1539"/>
+    <Route Start="1638" End="1539"/>
+    <Route Start="1638" End="1738"/>
+    <Route Start="1237" End="1240"/>
+    <Route Start="1237" End="0935"/>
+    <Route Start="1334" End="1633"/>
+    <Route Start="1733" End="1633"/>
   </Routes>
+  <Labels>
+    <Label Hex="0839">Martyn's Rift</Label>
+    <Label Hex="1531">Chilson's Abyss</Label>
+  </Labels>
 </Sector>
