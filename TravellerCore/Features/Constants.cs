@@ -17,5 +17,13 @@ public class Constants
         public const int SectorWidth = QuadrantWidth * 2;
         /// <summary>Coreward-Rimward /Up-Down</summary>
         public const int SectorHeight = QuadrantHeight * 2;
+
+        /// <summary>Spinward-Trailing / Left-Right</summary>
+        public const int GalacticCenterX = 1;
+        /// <summary>Coreward-Rimward /Up-Down</summary>
+        public const int GalacticCenterY = 1;
+
+        /// <summary>Center of the Galaxy</summary>
+        public static readonly Position Center = new(GalacticCenterX, GalacticCenterY);
     }
 }
