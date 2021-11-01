@@ -12,12 +12,13 @@ public class Position
         Y = y;
     }
 
+    // Should either always convert to sector, or handle padding better.
     public override string ToString()
     {
         return X.ToString().PadLeft(2) + Y.ToString().PadLeft(2);
     }
 
-    public Position Tosector() => new(
+    public Position ToSector() => new(
             X % Constants.Dimensions.SectorWidth,
             Y % Constants.Dimensions.SectorHeight);
 
@@ -25,7 +26,7 @@ public class Position
             X % Constants.Dimensions.QuadrantWidth,
             Y % Constants.Dimensions.QuadrantHeight);
     
-    public Position ToSubsector() => new(
+    public Position ToSubSector() => new(
             X % Constants.Dimensions.SubSectorWidth,
             Y % Constants.Dimensions.SubSectorHeight);
 
@@ -57,5 +58,12 @@ public class Position
 
         return false;
     }
+
+    public bool IsInSector(Position sector) => (sector + ToSector()) == this;
+    public bool IsInQuadrant(Position quadrant) => (quadrant + ToQuadrant()) == this;
+    public bool IsInSubSector(Position subSector) => (subSector + ToSubSector()) == this;
+
+    public static Position operator +(Position a, Position B) => new(a.X + B.X, a.Y + B.Y);
+    public virtual bool Equals(Position a, Position b) => a.X == b.X &&  a.Y == b.Y;
 }
 
