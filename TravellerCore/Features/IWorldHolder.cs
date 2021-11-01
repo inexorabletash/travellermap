@@ -1,8 +1,7 @@
 ﻿namespace TravellerCore.Features;
-public class Galaxy : IWorldHolder
+public interface IWorldHolder
 {
     public Metadata Metadata { get; init; }
     public List<World> Worlds { get; init; }
     public Position Position { get; init; }
-    public List<Sector> Sectors { get; init; }
 }
