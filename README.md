@@ -29,3 +29,10 @@ Dependencies
 * The site is built using ASP.NET and requires IIS8 and .NET 4.6.1.
 * PDF rendering is done using PDFsharp http://www.pdfsharp.net/ (MIT License)
 * HTML templating uses Handlebars.js https://handlebarsjs.com/ (MIT License)
+
+
+Traveller Core
+------------
+
+Traveller Core is an attempted Rewrite/Refactor in more modern C#.  
+The hope is that it will be easier to work with,  simpler to host, containerizable, and have better seperation of concerns.
