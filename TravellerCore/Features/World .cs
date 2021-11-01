@@ -15,6 +15,12 @@ public class World
         Position = position;
         TravelCode = travelCode;
     }
+
+    public virtual bool Equals(World world) => 
+        Name == world.Name && 
+        Uwp == world.Uwp &&  
+        Position == world.Position && 
+        TravelCode == world.TravelCode;
 }
 
 public enum TravelCode
@@ -61,23 +67,23 @@ public class UWP
 
 public struct HexValue
 {
-    private int value { get; init; }
+    private int RawValue { get; init; }
 
-    public HexValue(int v) => value = v;
+    public HexValue(int v) => RawValue = v;
     public HexValue(char v) => this = new HexValue(v.ToString());
     public HexValue(string v) 
     {
         if (int.TryParse(v, out var number) &&
             number >= 0 &&
-            number <= 9) value = number;
-        else if (Enum.TryParse<HexCodes>(v, out var code)) value = (int)code;
-        else value = 0;
+            number <= 9) RawValue = number;
+        else if (Enum.TryParse<HexCodes>(v, out var code)) RawValue = (int)code;
+        else RawValue = 0;
     }
 
     public string GetValue()
     {
-        if (value <= 9) return value.ToString();
-        else return ((HexCodes)value).ToString();
+        if (RawValue <= 9) return RawValue.ToString();
+        else return ((HexCodes)RawValue).ToString();
     }
 
     private enum HexCodes
