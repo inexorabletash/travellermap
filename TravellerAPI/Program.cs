@@ -5,7 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-// builder.Services.AddSingleton<IParser>( PARSER HERE); 
+builder.Services.AddSingleton<IParser>(new JsonParser()); 
 builder.Services.AddControllers();
 builder.Services.AddSwaggerGen(c =>
 {
