@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravellerAPI", "TravellerAP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravellerCoreTests", "TravellerCoreTests\TravellerCoreTests.csproj", "{F63CD1A5-C454-4F7C-9F4F-68099B4A634D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravellerRenderer", "TravellerRenderer\TravellerRenderer.csproj", "{4D7C0D8F-5910-4FE1-8620-EB0F84716C48}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{F63CD1A5-C454-4F7C-9F4F-68099B4A634D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F63CD1A5-C454-4F7C-9F4F-68099B4A634D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F63CD1A5-C454-4F7C-9F4F-68099B4A634D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D7C0D8F-5910-4FE1-8620-EB0F84716C48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D7C0D8F-5910-4FE1-8620-EB0F84716C48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D7C0D8F-5910-4FE1-8620-EB0F84716C48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D7C0D8F-5910-4FE1-8620-EB0F84716C48}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

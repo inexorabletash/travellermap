@@ -8,6 +8,8 @@ public class World
     public Position Position {  get; init; }
     public TravelCode TravelCode { get; init; }
 
+    public int GasGiants { get; init; }
+
     public World(string name, UWP uwp, Position position, TravelCode travelCode)
     {
         Name = name;
@@ -85,6 +87,8 @@ public struct HexValue
         if (RawValue <= 9) return RawValue.ToString();
         else return ((HexCodes)RawValue).ToString();
     }
+
+    public int GetRawValue() => RawValue;
 
     private enum HexCodes
     {

@@ -15,7 +15,7 @@ public class Position
     // Should either always convert to sector, or handle padding better.
     public override string ToString()
     {
-        return X.ToString().PadLeft(2) + Y.ToString().PadLeft(2);
+        return X.ToString().PadLeft(2, '0') + Y.ToString().PadLeft(2, '0');
     }
 
     public Position ToSector() => new(
