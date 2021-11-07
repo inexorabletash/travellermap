@@ -1,4 +1,6 @@
-﻿namespace TravellerRenderer;
+﻿using System.Text;
+
+namespace TravellerRenderer;
 public class TextRenderer
 {
     public static string Name = "Text Grid Renderer";
@@ -32,11 +34,11 @@ public class TextRenderer
             var offset = 1 + i % 2;
             for (int j = 0; j < rows; i++)
             {
-                var world = worlds[0]; // Replace with LINQ query that gets world with matching position.
-                world ??= {"    ", "____"};
-                var parts = WorldToTwoStrings(world);
-                parts[i*2+offset].Append(parts[0]+@"\")
-                parts[i*2+offset+1].Append(parts[1]+"/")
+                var world = (from entry in worlds where (entry.Position == new Position(X1 + i, Y1 + j)) select entry).FirstOrDefault();
+
+                var worldParts = WorldToTwoStrings(world);
+                parts[i * 2 + offset].Append(worldParts[0] + @"\");
+                parts[i * 2 + offset + 1].Append(worldParts[1] + "/");
             }
         }
 
@@ -63,7 +65,15 @@ public class TextRenderer
 
     public static List<string> WorldToTwoStrings(World world)
     {
-        var strings = new List<string>(4);
+        var strings = new List<string>(2);
+        
+        if (world == null)
+        {
+            strings.Add("    ");
+            strings.Add("____");
+            return strings;
+        }
+
         // Lines are 4 characters each. For the lowest line, if they're used the underlines disappear.
 
         var gasGiant = world.GasGiants > 0 ? 'G' : ' ';
