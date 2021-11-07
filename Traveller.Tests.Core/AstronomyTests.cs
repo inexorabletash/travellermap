@@ -1,6 +1,6 @@
 using NUnit.Framework;
-using TravellerCore.Features;
-using TravellerCore.Util;
+using Traveller.Core.Features;
+using Traveller.Core.Util;
 
 namespace TravellerCoreTests;
 public class AstronomyTests

@@ -1,4 +1,4 @@
-﻿namespace TravellerParser;
+﻿namespace Traveller.Parser;
 public interface IParser
 {
     public bool CanParse(string extension);

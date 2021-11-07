@@ -1,6 +1,6 @@
-﻿using TravellerCore.Features;
+﻿using Traveller.Core.Features;
 
-namespace TravellerCore.Util;
+namespace Traveller.Core.Util;
 
 
     /* Traveller uses a “odd-q” vertical layout, which shoves odd columns down

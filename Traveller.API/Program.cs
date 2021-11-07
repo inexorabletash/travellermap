@@ -1,5 +1,5 @@
 using Microsoft.OpenApi.Models;
-using TravellerParser;
+using Traveller.Parser;
 
 var builder = WebApplication.CreateBuilder(args);
 

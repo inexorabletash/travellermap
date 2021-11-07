@@ -1,6 +1,6 @@
 ﻿using System.Text.Json;
 
-namespace TravellerParser;
+namespace Traveller.Parser;
 public class JsonParser: IParser
 {
     public const string JsonExtension = "json";

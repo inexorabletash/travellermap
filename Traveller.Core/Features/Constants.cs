@@ -1,4 +1,4 @@
-﻿namespace TravellerCore.Features;
+﻿namespace Traveller.Core.Features;
 public class Constants
 {
     public class Dimensions

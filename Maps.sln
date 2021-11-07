@@ -5,15 +5,15 @@ VisualStudioVersion = 17.0.31612.314
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maps", "Maps.csproj", "{02AE6284-5044-4A23-B5D6-A86EE9C7DFA1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TravellerCore", "TravellerCore\TravellerCore.csproj", "{1A696030-E073-4053-818D-E8EB72C71A52}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Traveller.Core", "Traveller.Core\Traveller.Core.csproj", "{1A696030-E073-4053-818D-E8EB72C71A52}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TravellerParser", "TravellerParser\TravellerParser.csproj", "{83D4E6B0-9905-4AFE-8D39-674889B56280}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Traveller.Parser", "Traveller.Parser\Traveller.Parser.csproj", "{83D4E6B0-9905-4AFE-8D39-674889B56280}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravellerAPI", "TravellerAPI\TravellerAPI.csproj", "{6DFF70C4-5DE4-44CC-8CF1-B7F145CDF89E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Traveller.API", "Traveller.API\Traveller.API.csproj", "{6DFF70C4-5DE4-44CC-8CF1-B7F145CDF89E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravellerCoreTests", "TravellerCoreTests\TravellerCoreTests.csproj", "{F63CD1A5-C454-4F7C-9F4F-68099B4A634D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Traveller.Tests.Core", "Traveller.Tests.Core\Traveller.Tests.Core.csproj", "{F63CD1A5-C454-4F7C-9F4F-68099B4A634D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravellerRenderer", "TravellerRenderer\TravellerRenderer.csproj", "{4D7C0D8F-5910-4FE1-8620-EB0F84716C48}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Traveller.Renderer", "Traveller.Renderer\Traveller.Renderer.csproj", "{4D7C0D8F-5910-4FE1-8620-EB0F84716C48}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

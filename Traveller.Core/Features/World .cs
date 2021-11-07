@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace TravellerCore.Features;
+namespace Traveller.Core.Features;
 public class World
 {
     public string Name { get; init; }
