@@ -1,5 +1,5 @@
 ﻿namespace Traveller.Core.Features;
-public class Position
+public record struct Position
 {
     /// <summary>Trailing / Right</summary>
     public int X { get; init; }
@@ -64,6 +64,6 @@ public class Position
     public bool IsInSubSector(Position subSector) => (subSector + ToSubSector()) == this;
 
     public static Position operator +(Position a, Position B) => new(a.X + B.X, a.Y + B.Y);
-    public virtual bool Equals(Position a, Position b) => a.X == b.X &&  a.Y == b.Y;
+    public bool Equals(Position a, Position b) => a.X == b.X &&  a.Y == b.Y;
 }
 
