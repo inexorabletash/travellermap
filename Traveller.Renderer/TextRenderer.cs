@@ -81,7 +81,7 @@ public class TextRenderer
         var worldSymbol = (world.Uwp.Hydrology.GetRawValue(), world.Uwp.Size.GetRawValue()) switch
         {
             (_, 0) => "X",
-            (0, _) => "O";
+            (0, _) => "O",
             var (w, _) when w >0 && w < 11 => "@",
             var (w, _) when w > 10 => "H",
 
@@ -104,7 +104,7 @@ public class TextRenderer
         var worldSymbol = (world.Uwp.Hydrology.GetRawValue(), world.Uwp.Size.GetRawValue()) switch
         {
             (_, 0) => "X",
-            (0, _) => "O";
+            (0, _) => "O",
             var (w, _) when w >0 && w < 11 => "@",
             var (w, _) when w > 10 => "H",
 
