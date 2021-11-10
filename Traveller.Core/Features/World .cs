@@ -3,26 +3,19 @@
 namespace Traveller.Core.Features;
 public class World
 {
-    public string Name { get; init; }
-    public UWP Uwp { get; init; }
-    public Position Position {  get; init; }
-    public TravelCode TravelCode { get; init; }
+    public string? Name { get; init; }
+    public UWP? Uwp { get; init; }
+    public Position? Position {  get; init; }
+    public TravelCode? TravelCode { get; init; }
 
-    public int GasGiants { get; init; }
+    public int? GasGiants { get; init; }
 
-    public World(string name, UWP uwp, Position position, TravelCode travelCode)
-    {
-        Name = name;
-        Uwp = uwp;
-        Position = position;
-        TravelCode = travelCode;
-    }
-
-    public virtual bool Equals(World world) => 
-        Name == world.Name && 
-        Uwp == world.Uwp &&  
-        Position == world.Position && 
-        TravelCode == world.TravelCode;
+    public virtual bool Equals(World world) =>
+        Name == world.Name &&
+        Uwp == world.Uwp &&
+        Position == world.Position &&
+        TravelCode == world.TravelCode &&
+        GasGiants == world.GasGiants;
 }
 
 public enum TravelCode

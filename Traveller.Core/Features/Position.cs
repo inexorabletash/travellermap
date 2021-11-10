@@ -11,9 +11,16 @@ public record struct Position
         X = x;
         Y = y;
     }
+
     public Position((int, int) xy)
     {
         (X, Y) = xy;
+    }
+
+    public Position(string hex)
+    {
+        X = int.Parse(hex.Substring(0, 2));
+        Y = int.Parse(hex.Substring(2, 2));
     }
 
     // Should either always convert to sector, or handle padding better.

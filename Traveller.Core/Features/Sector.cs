@@ -14,4 +14,12 @@ public class Sector : IWorldHolder
             return subSectors;
         }
     }
+
+    public void AddWorld(World world)
+    {
+        // Ensure Position is inside Sector
+        // Add to Worlds
+        // Add to appropriate Quadrant.Worlds
+        // Add to appropriate Subsector.Worlds
+    }
 }
