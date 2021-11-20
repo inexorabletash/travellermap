@@ -58,7 +58,7 @@ namespace Maps.Rendering
                 (byte)(PathPointType.Line | PathPointType.CloseSubpath),
             });
 
-        // NOTE: Windings are often used instead of UNICODE equivalents in a common font 
+        // NOTE: Windings are often used instead of UNICODE equivalents in a common font
         // because the glyphs are much higher quality.
         // See http://www.alanwood.net/demos/wingdings.html for a good mapping
 
@@ -238,13 +238,14 @@ namespace Maps.Rendering
         public static readonly Glyph Zeta = new Glyph("\x0396", highlight: true);
         public static readonly Glyph Eta = new Glyph("\x0397", highlight: true);
         public static readonly Glyph Theta = new Glyph("\x0398", highlight: true);
+        public static readonly Glyph Omicron = new Glyph("\x039F", highlight: true);
 
         // Other Textual
         public static readonly Glyph Prison = new Glyph("P", highlight: true);
         public static readonly Glyph Reserve = new Glyph("R");
         public static readonly Glyph ExileCamp = new Glyph("X");
 
-        // TNE 
+        // TNE
         public static readonly Glyph HiverSupplyBase = new Glyph("\x2297");
         public static readonly Glyph Terminus = new Glyph("\x2297");
         public static readonly Glyph Interface = new Glyph("\x2297");
@@ -266,6 +267,7 @@ namespace Maps.Rendering
                     'Z' => Glyph.Zeta,
                     'H' => Glyph.Eta,
                     'T' => Glyph.Theta,
+                    'O' => Glyph.Omicron,
                     _ => glyph
                 };
             }
@@ -290,9 +292,9 @@ namespace Maps.Rendering
             { "Zh.Z", Glyph.Diamond }, // Zhodani Base (Special case for "Zh.KM")
             { "*.*", Glyph.Circle }, // Independent Base
             // For TNE
-            { "Sc.H", Glyph.HiverSupplyBase }, // Hiver Supply Base  
-            { "*.I", Glyph.Interface }, // Interface 
-            { "*.T", Glyph.Terminus }, // Terminus 
+            { "Sc.H", Glyph.HiverSupplyBase }, // Hiver Supply Base
+            { "*.I", Glyph.Interface }, // Interface
+            { "*.T", Glyph.Terminus }, // Terminus
         };
 
         public static Glyph FromBaseCode(string allegiance, char code) => s_baseGlyphTable.Match(allegiance + "." + code);
