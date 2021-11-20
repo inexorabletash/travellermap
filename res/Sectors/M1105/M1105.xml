@@ -1451,32 +1451,8 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <X>-7</X>
     <Name>Theron</Name>
     <Name Lang="as">Iykhaiser</Name>
-    <DataFile Author="Jo Grant" Source="CORE, The Zhodani Base" Ref="http://zho.berka.com/data/CLASSIC/sector.pl?sector=THERON">theron.sec</DataFile>
-    <Subsectors Source="CORE">
-      <Subsector Index="A">Terrelay</Subsector>
-      <Subsector Index="B">Ronodik</Subsector>
-      <Subsector Index="C">Babs</Subsector>
-      <Subsector Index="D">Mirdika</Subsector>
-      <Subsector Index="E">Chang-Tu</Subsector>
-      <Subsector Index="F">Olpinures</Subsector>
-      <Subsector Index="G">Plok</Subsector>
-      <Subsector Index="H">Lisqitama</Subsector>
-      <Subsector Index="I">Ubagil</Subsector>
-      <Subsector Index="J">Babadur</Subsector>
-      <Subsector Index="K">Tynvegi</Subsector>
-      <Subsector Index="L">Joseph</Subsector>
-      <Subsector Index="M">Quadrant 01-569</Subsector>
-      <Subsector Index="N">Pozzy</Subsector>
-      <Subsector Index="O">Virtanen</Subsector>
-      <Subsector Index="P">Willwlmo</Subsector>
-    </Subsectors>
-
-    <Borders>
-      <Border Allegiance="Rm" Color="green">2734 2833 2832 2831 2830 2829 2828 2827 2927 3026 3126 3125 3225 3325 3326 3327 3328 3329 3330 3331 3332 3333 3232 3132 3032 2933 2934 2935 2936 2937 2836 2737 2736 2735 2734</Border>
-    </Borders>
-    <Allegiances>
-      <Allegiance Code="Rm">Regency of Muirimi</Allegiance>
-    </Allegiances>
+    <DataFile Author="Jo Grant" Source="CORE, The Zhodani Base" Ref="http://zho.berka.com/data/CLASSIC/sector.pl?sector=THERON" Type="SecondSurvey">Theron.txt</DataFile>
+    <MetadataFile Author="Ade Stewart">Theron.xml</MetadataFile>
   </Sector>
   <Sector>
     <Y>1</Y>
