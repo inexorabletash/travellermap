@@ -416,6 +416,13 @@ namespace Maps.Rendering
                 checkFirst = (i + 4) % 6;
             }
 
+            if (points.First() == points.Last())
+            {
+                int c = points.Count;
+                points.RemoveAt(c - 1);
+                types.RemoveAt(c - 1);
+            }
+
             types[types.Count - 1] |= (byte)PathPointType.CloseSubpath;
 
             if (currentSegment.Count > 1)
