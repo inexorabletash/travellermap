@@ -1305,14 +1305,14 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <DataFile Author="Geir Lanesskog" Type="SecondSurvey">Fulani.txt</DataFile>
     <MetadataFile Author="Geir Lanesskog">Fulani.xml</MetadataFile>
   </Sector>
-  <Sector Abbreviation="Vang" Tags="InReview">
+  <Sector Abbreviation="Vang" Tags="InReview" Selected="true">
     <Y>0</Y>
     <X>-6</X>
     <Name>Vanguard Reaches</Name>
-    <DataFile Author="Geir Lanesskog"  Source="Traveller 5 Second Survey" Milieu="M1105" Type="TabDelimited">Vanguard Reaches.tab</DataFile>
+    <DataFile Author="Geir Lanesskog" Source="Traveller 5 Second Survey" Milieu="M1105" Type="TabDelimited">Vanguard Reaches.tab</DataFile>
     <MetadataFile Author="Geir Lanesskog">Vanguard Reaches.xml</MetadataFile>
   </Sector>
-  <Sector Abbreviation="Beyo" Tags="InReview">
+  <Sector Abbreviation="Beyo" Tags="InReview" Selected="true">
     <Y>0</Y>
     <X>-5</X>
     <Name>The Beyond</Name>
