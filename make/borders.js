@@ -100,6 +100,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (/J./i.test(alleg)) return ALLEGIANCE_COLORS['jp'];
     if (/A\d/i.test(alleg)) return ALLEGIANCE_COLORS['as'];
     if (/XXXX/i.test(alleg)) return ALLEGIANCE_COLORS['na'];
+    if (/----/i.test(alleg)) return ALLEGIANCE_COLORS['na'];
     return ALLEGIANCE_COLORS[alleg];
   }
 
@@ -236,6 +237,8 @@ document.addEventListener('DOMContentLoaded', function() {
       if (/^Cs..$/.test(a)) return 'Na';
       if (/^Na..$/.test(a)) return 'Na';
       if (/^XXXX$/.test(a)) return 'Na';
+      if (/^---$/.test(a)) return 'Na';
+      if (/^ *$/.test(a)) return 'Na';
 
       switch (a) {
         case 'Cs': // Imperial Client
