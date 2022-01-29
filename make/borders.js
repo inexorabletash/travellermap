@@ -202,6 +202,10 @@ document.addEventListener('DOMContentLoaded', function() {
     return pad2(x) + pad2(y);
   }
 
+  function clamp(n, min, max) {
+    return Math.max(Math.min(n, max), min);
+  }
+
   function hexContents(x, y, map) {
     var hexNumber = hexLabel(x, y);
     var occupied = map.isOccupied(x, y);
@@ -210,7 +214,8 @@ document.addEventListener('DOMContentLoaded', function() {
     if (color === (void 0)) {
       color = 'gray';
       try {
-        var channel = ('00' + (parseInt(alleg, 36) & 0xFF).toString(16)).slice(-2);
+        var channel = ('00' + clamp(parseInt(alleg, 36) & 0xFF, 0x60, 0xC0).toString(16))
+              .slice(-2);
         color = '#' + channel + channel + channel;
       } catch (_) {}
 
