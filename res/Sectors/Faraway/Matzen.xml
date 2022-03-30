@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Sector>
+  <Name>Matzen</Name>
+  <Credits>
+    <![CDATA[
+      <b>Matzen</b> sector was designed by Roger Nicholls (2021).
+    ]]>
+  </Credits>
+  <Subsectors>
+    <Subsector Index="A">Clatt</Subsector>
+    <Subsector Index="B">Hedreunides</Subsector>
+    <Subsector Index="C">Brevelea</Subsector>
+    <Subsector Index="D">Tonaa</Subsector>
+    <Subsector Index="E">Alaamga</Subsector>
+    <Subsector Index="F">Gushkarshu</Subsector>
+    <Subsector Index="G">Darsesh</Subsector>
+    <Subsector Index="H">Nojen</Subsector>
+    <Subsector Index="I">Dradus</Subsector>
+    <Subsector Index="J">Eii</Subsector>
+    <Subsector Index="K">Khtilrai</Subsector>
+    <Subsector Index="L">Thepo</Subsector>
+    <Subsector Index="M">Uayae</Subsector>
+    <Subsector Index="N">Iauuieaai</Subsector>
+    <Subsector Index="O">Auaiyiya</Subsector>
+    <Subsector Index="P">Youneshe</Subsector>
+  </Subsectors>
+  <Borders>
+    <Border Allegiance="Am" LabelPosition="2016" ShowLabel="true" WrapLabel="true">1920 2019 2018 2017 2118 2217 2318 2418 2419 2320 2220 2120 2020 1921 1920 </Border>
+    <Border Allegiance="Eh" LabelPosition="1335" ShowLabel="true" WrapLabel="true">1137 1236 1235 1336 1435 1434 1433 1534 1634 1735 1835 1836 1737 1637 1538 1539 1639 1739 1639 1540 1440 1340 1240 1239 1238 1138 1137 </Border>
+    <Border Allegiance="Fe" LabelPosition="2926" ShowLabel="true" WrapLabel="true">2829 2929 2928 3027 3127 3126 3125 3126 3226 3127 3027 3028 3129 3229 3130 3131 3030 2930 2829 </Border>
+    <Border Allegiance="Ke" LabelPosition="1129" ShowLabel="true" WrapLabel="true">1026 1126 1226 1326 1425 1525 1625 1626 1627 1628 1529 1530 1430 1330 1329 1328 1227 1128 1127 1026 </Border>
+    <Border Allegiance="Ss" LabelPosition="0337" ShowLabel="true" WrapLabel="true">0137 0236 0235 0336 0236 0237 0338 0438 0539 0639 0540 0440 0340 0239 0140 0239 0238 0237 0137 </Border>
+    <Border Allegiance="Tt" LabelPosition="0407" ShowLabel="true" WrapLabel="true">0301 0401 0501 0601 0702 0801 0902 1001 1002 1003 0904 0804 0705 0605 0505 0405 0406 0307 0306 0305 0404 0403 0402 0401 0301 </Border>
+    <Border Allegiance="Vi" LabelPosition="1412" ShowLabel="true" WrapLabel="true">0110 0210 0310 0409 0509 0609 0709 0808 0807 0908 0909 1009 1110 1209 1210 1211 1112 1113 1213 1314 1414 1515 1615 1715 1815 1816 1717 1616 1517 1417 1318 1217 1118 1018 0918 0818 0817 0816 0716 0615 0516 0415 0316 0415 0515 0514 0413 0314 0214 0314 0313 0212 0211 0111 0110 </Border>
+  </Borders>
+  <Allegiances>
+    <Allegiance Code="Vi">Vilani Protectorate</Allegiance>
+    <Allegiance Code="Tt">Tomon Trade Federation</Allegiance>
+    <Allegiance Code="Am">Amiimii League</Allegiance>
+    <Allegiance Code="Eh">Earoi Hkail</Allegiance>
+    <Allegiance Code="Fe">Fedaesh Sovereignty</Allegiance>
+    <Allegiance Code="Ke">Keeyaei Hekhiao</Allegiance>
+    <Allegiance Code="Ss">Soistsea</Allegiance>
+  </Allegiances>
+  <Routes>
+    <!-- Tomon Vilani Spine -->
+    <Route Start="0803" End="0603"/>
+    <Route Start="0603" End="0504"/>
+    <Route Start="0305" End="0504"/>
+    <Route Start="0603" End="0501"/>
+    <Route Start="0305" End="0208"/>
+    <Route Start="0208" End="0312"/>
+    <Route Start="0803" End="1003"/>
+    <Route Start="1003" End="1303"/>
+    <Route Start="1303" End="1605"/>
+    <Route Start="1706" End="1605"/>
+    <Route Start="1706" End="1906"/>
+    <Route Start="1303" End="1402"/>
+    <Route Start="1402" End="1801"/>
+    <Route Start="0312" End="0214"/>
+    <Route Start="0312" End="0614"/>
+    <Route Start="1706" End="1708"/>
+    <Route Start="1708" End="1609"/>
+    <Route Start="1610" End="1609"/>
+    <Route Start="1708" End="1809"/>
+    <Route Start="0614" End="0816"/>
+    <Route Start="0816" End="1116"/>
+    <Route Start="1314" End="1114"/>
+    <Route Start="1116" End="1114"/>
+    <Route Start="1114" End="1110"/>
+    <Route Start="0816" End="0619"/>
+    <Route Start="0619" End="0321"/>
+    <Route Start="0321" End="0325"/>
+    <!-- Surdiac Main -->
+    <Route Start="1220" End="1222"/>
+    <Route Start="1222" End="0923"/>
+    <Route Start="0923" End="1026"/>
+    <Route Start="1026" End="1428"/>
+    <Route Start="1529" End="1428"/>
+    <Route Start="1529" End="1430"/>
+    <Route Start="1430" End="1433"/>
+    <Route Start="1836" End="1737"/>
+    <Route Start="1537" End="1737"/>
+    <Route Start="1433" End="1434"/>
+    <Route Start="1434" End="1537"/>
+    <!-- The Loop -->
+    <Route Start="2638" End="2740"/>
+    <Route Start="2740" End="3038"/>
+    <Route Start="3038" End="3136"/>
+    <Route Start="3136" End="2935"/>
+    <Route Start="2935" End="2834"/>
+    <Route Start="2834" End="2535"/>
+    <Route Start="2535" End="2638"/>
+    <!-- Rostinos Way -->
+    <Route Start="2901" End="3003"/>
+    <Route Start="3003" End="2704"/>
+    <Route Start="2704" End="2605"/>
+    <Route Start="2605" End="2808"/>
+    <Route Start="2605" End="2508"/>
+    <Route Start="2508" End="2411"/>
+    <Route Start="3101" End="2901"/>
+    <Route Start="2411" End="2413"/>
+    <!-- Nobles Ruin -->
+    <Route Start="2323" End="2623"/>
+    <Route Start="2623" End="3024"/>
+    <Route Start="3024" End="3127"/>
+    <Route Start="3127" End="2928"/>
+    <Route Start="2928" End="2829"/>
+    <Route Start="2829" End="3030"/>
+    <Route Start="3030" End="3131"/>
+    <Route Start="2928" End="2626"/>
+    <Route Start="2626" End="2227"/>
+  </Routes>
+  <Stylesheet>
+    border.Am { color: green }
+    border.Eh { color: blue }
+    border.Fe { color: pink }
+    border.Ke { color: olive }
+    border.Ss { color: orange }
+    border.Tt { color: red }
+    border.Vi { color: violet }
+    route { style: dashed }
+  </Stylesheet>
+</Sector>

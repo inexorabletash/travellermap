@@ -656,7 +656,7 @@ body:not(.route-shown) #routeBox { min-height: 130px; max-height: 130px; }
 
 #routeBox input[type=text] {
   box-sizing: border-box;
-  height: 40px; width: 100vw;
+  height: 40px; width: 100%;
 
   font-size: 12pt;
   padding: 5px 10px;
