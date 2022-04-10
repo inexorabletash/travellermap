@@ -1,17 +1,10 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <Sector>
   <Name>Astron</Name>
   <Name Lang="zh">Shiants</Name>
   <Credits>
     <![CDATA[
-
-      The <b>Astron</b> sector was refined by Geir Lanesskog based on
-      initial system data by Jo Grant.
-
-      The Armory Cluster worlds were designed by Hans Rancke-Madsen
-      and appear in <cite>GURPS Traveller: Sword Worlds</cite> (Steve
-      Jackson Games, 2004).
-
+      The <b>Astron</b> sector was refined by Geir Lanesskog based on initial system data by Jo Grant. The Armory Cluster worlds were designed by Hans Rancke-Madsen and appear in <cite>GURPS Traveller: Sword Worlds</cite> (Steve Jackson Games, 2004). Basic data updated by Ade Stewart.
     ]]>
   </Credits>
   <!--
@@ -38,25 +31,22 @@
     <Subsector Index="O">Surgian</Subsector>
     <Subsector Index="P">Fundibul</Subsector>
   </Subsectors>
-
-  <Allegiances>
-    <Allegiance Code="Ha" Base="Aa">Haddox Association</Allegiance>
-  </Allegiances>
-
-  <Stylesheet>
-    border.Ha { color: purple; }
-    route.Trade { color: tomato; style: dotted; width: 1.0 }
-  </Stylesheet>
-
   <Borders>
-    <Border WrapLabel="false" Allegiance="Ha"  ShowLabel="false">2214 2315 2414 2515 2414 2315 2316 2416 2517 2616 2717 2816 2817 2717 2617 2517 2416 2316 2315 2214</Border>
+    <Border Allegiance="Ha" LabelPosition="2716" ShowLabel="true" WrapLabel="false">2214 2315 2414 2515 2516 2616 2717 2816 2817 2717 2617 2517 2416 2316 2315 2214 </Border>
   </Borders>
-
+  <Allegiances>
+    <Allegiance Code="Ha">Haddox Association</Allegiance>
+  </Allegiances>
   <Labels>
-    <Label Hex="1035">Armory Cluster</Label>
-    <Label Hex="2716" OffsetY="0.4">Haddox Association</Label>
+    <!-- Rift Names -->
+    <Label Hex="0919" Color="darkred" WrapLabel="false">Longer Void</Label>
+    <Label Hex="2208" Color="darkred" WrapLabel="false">Hudson Expanse</Label>
+    <Label Hex="2729" Color="darkred" WrapLabel="false">Astron Voids</Label>
+    <!-- Cluster Names -->
+    <Label Hex="0637" Color="gold">Armory&#x0a;Cluster</Label>
+    <Label Hex="1436" Color="gold">Vilian&#x0a;Cluster</Label>
   </Labels>
-
-  <Routes>
-  </Routes>
+  <Stylesheet>
+    border.Ha { color: magenta }
+  </Stylesheet>
 </Sector>
