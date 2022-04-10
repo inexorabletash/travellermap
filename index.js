@@ -313,6 +313,36 @@ window.addEventListener('DOMContentLoaded', function() {
     lastRoute = null;
   }
 
+  $('#routeStart').addEventListener('keydown', function(e) {
+    if (e.ctrlKey || e.altKey || e.metaKey)
+      return;
+    if (e.key === 'Enter' || e.keyCode === VK_RETURN) {
+      e.preventDefault();
+      e.stopPropagation();
+      $('#routeEnd').focus();
+    }
+  });
+
+  $('#routeEnd').addEventListener('keydown', function(e) {
+    if (e.ctrlKey || e.altKey || e.metaKey)
+      return;
+    if (e.key === 'Enter' || e.keyCode === VK_RETURN) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      $('#routePath').innerHTML = '';
+      var found = false;
+      ['J-1','J-2','J-3','J-4','J-5','J-6'].forEach(function(n) {
+        if ($('#routeForm').classList.contains(n)) {
+          found = true;
+          $('#'+n).click();
+        }
+      });
+      if (!found)
+        $('#J-2').click();
+    }
+  });
+
   $('#closeRouteBtn').addEventListener('click', function(e) {
     e.preventDefault();
     closeRoute();
@@ -355,6 +385,7 @@ window.addEventListener('DOMContentLoaded', function() {
   });
 
   var VK_ESCAPE = KeyboardEvent.DOM_VK_ESCAPE || 0x1B,
+      VK_RETURN = KeyboardEvent.DOM_VK_RETURN || 0x0D,
       VK_C = KeyboardEvent.DOM_VK_C || 0x43,
       VK_F = KeyboardEvent.DOM_VK_F || 0x46,
       VK_H = KeyboardEvent.DOM_VK_H || 0x48,

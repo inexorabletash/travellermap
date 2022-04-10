@@ -68,6 +68,9 @@ namespace Maps.Search
             "pbg nchar(3) NULL",
             "zone nchar(1) NULL",
             "alleg nchar(4) NULL",
+            "ix int NOT NULL",
+            "ex nchar(5) NULL",
+            "cx nchar(4) NULL",
             "sector_name nvarchar(50) NULL"
         };
         private static readonly string[] LABELS_COLUMNS = {
@@ -201,6 +204,9 @@ namespace Maps.Search
                                     world.PBG,
                                     string.IsNullOrEmpty(world.Zone) ? "G" : world.Zone,
                                     world.Allegiance,
+                                    world.CalculatedImportance,
+                                    StripBrackets(world.Economic) ?? (object)DBNull.Value,
+                                    StripBrackets(world.Cultural) ?? (object)DBNull.Value,
                                     sector.Names.Count > 0 ? (object)sector.Names[0] : (object)DBNull.Value
                             };
 
@@ -408,7 +414,8 @@ namespace Maps.Search
                                                    "remark:",
                                                    "exact:",
                                                    "like:",
-                                                   "in:"
+                                                   "in:",
+                                                   "ix:", "ex:", "cx:"
                                                };
         private static readonly Regex RE_TERMS = new Regex("(" + string.Join("|", OPS) + ")?(\"[^\"]+\"|\\S+)",
             RegexOptions.Compiled | RegexOptions.CultureInvariant);
@@ -501,6 +508,21 @@ namespace Maps.Search
                     clause = "pbg LIKE @term";
                     types = SearchResultsType.Worlds;
                 }
+                else if (op == "ix:")
+                {
+                    clause = "ix = @term";
+                    types = SearchResultsType.Worlds;
+                }
+                else if (op == "ex:")
+                {
+                    clause = "ex LIKE @term";
+                    types = SearchResultsType.Worlds;
+                }
+                else if (op == "cx:")
+                {
+                    clause = "cx LIKE @term";
+                    types = SearchResultsType.Worlds;
+                }
                 else if (op == "zone:")
                 {
                     clause = "zone LIKE @term";
@@ -561,6 +583,13 @@ namespace Maps.Search
                 terms.Add(term);
             }
             return types;
+        }
+
+        static string? StripBrackets(string? input)
+        {
+            if (input == null)
+                return null;
+            return String.Join("", input.Split('(', ')', '[', ']', '{', '}'));
         }
     }
 }

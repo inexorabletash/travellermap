@@ -773,6 +773,8 @@ namespace Maps
 
                 string[] hexes = value.Split((char[]?)null, StringSplitOptions.RemoveEmptyEntries);
                 path = (from hex in hexes select new Hex(hex)).ToList();
+                if (path.First() != path.Last())
+                    path.Append(new Hex(path.First()));
 
                 // Compute the "bounding box" (in hex space)
                 Hex min = new Hex(
