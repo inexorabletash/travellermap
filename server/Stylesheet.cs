@@ -135,22 +135,22 @@ namespace Maps.Rendering
 
     internal struct FontInfo
     {
-        public string name;
+        public string families;
         public float size;
         public FontStyle style;
 
-        public FontInfo(string name, float size, FontStyle style = FontStyle.Regular)
+        public FontInfo(string families, float size, FontStyle style = FontStyle.Regular)
         {
-            this.name = name;
+            this.families = families;
             this.size = size;
             this.style = style;
         }
 
         public AbstractFont MakeFont()
         {
-            if (name == null)
+            if (families == null)
                 throw new ApplicationException("AbstractFont has null name");
-            return new AbstractFont(name, size * 1.4f, style, GraphicsUnit.World);
+            return new AbstractFont(families, size * 1.4f, style, GraphicsUnit.World);
         }
     }
 
@@ -358,7 +358,7 @@ namespace Maps.Rendering
 
                 worlds.fontInfo = new FontInfo(DEFAULT_FONT, scale < WorldFullMinScale ? 0.2f : 0.15f * fontScale, FontStyle.Bold);
                 wingdingFont = new FontInfo("Wingdings", scale < WorldFullMinScale ? 0.2f : 0.175f * fontScale);
-                glyphFont = new FontInfo(DEFAULT_FONT, scale < WorldFullMinScale ? 0.175f : 0.15f * fontScale, FontStyle.Bold);
+                glyphFont = new FontInfo("Arial Unicode MS,Segoe UI Symbol,Arial", scale < WorldFullMinScale ? 0.175f : 0.15f * fontScale, FontStyle.Bold);
                 uwp.fontInfo = hexNumber.fontInfo = new FontInfo(DEFAULT_FONT, 0.1f * fontScale);
                 worlds.smallFontInfo = new FontInfo(DEFAULT_FONT, scale < WorldFullMinScale ? 0.2f : 0.1f * fontScale, FontStyle.Regular);
                 worlds.largeFontInfo = worlds.fontInfo;
@@ -477,7 +477,7 @@ namespace Maps.Rendering
             placeholder.position = new PointF(0, 0.17f);
 
             anomaly.content = "\u2316"; // POSITION INDICATOR
-            anomaly.fontInfo = new FontInfo("Segoe UI Symbol", 0.6f);
+            anomaly.fontInfo = new FontInfo("Arial Unicode MS,Segoe UI Symbol", 0.6f);
 
             var layers = new List<LayerId>
             {
@@ -714,26 +714,26 @@ namespace Maps.Rendering
                         subsectorGrid.pen.color = Color.FromArgb(inkOpacity, Color.Firebrick);
 
                         const string FONT_NAME = "Comic Sans MS";
-                        worlds.fontInfo.name = FONT_NAME;
-                        worlds.smallFontInfo.name = FONT_NAME;
-                        starport.fontInfo.name = FONT_NAME;
-                        worlds.largeFontInfo.name = FONT_NAME;
+                        worlds.fontInfo.families = FONT_NAME;
+                        worlds.smallFontInfo.families = FONT_NAME;
+                        starport.fontInfo.families = FONT_NAME;
+                        worlds.largeFontInfo.families = FONT_NAME;
                         worlds.largeFontInfo.size = worlds.fontInfo.size * 1.25f;
                         worlds.fontInfo.size *= 0.8f;
 
-                        macroNames.fontInfo.name = FONT_NAME;
-                        macroNames.mediumFontInfo.name = FONT_NAME;
-                        macroNames.smallFontInfo.name = FONT_NAME;
-                        megaNames.fontInfo.name = FONT_NAME;
-                        megaNames.mediumFontInfo.name = FONT_NAME;
-                        megaNames.smallFontInfo.name = FONT_NAME;
-                        microBorders.smallFontInfo.name = FONT_NAME;
-                        microBorders.largeFontInfo.name = FONT_NAME;
-                        microBorders.fontInfo.name = FONT_NAME;
-                        macroBorders.fontInfo.name = FONT_NAME;
-                        macroRoutes.fontInfo.name = FONT_NAME;
-                        capitals.fontInfo.name = FONT_NAME;
-                        macroBorders.smallFontInfo.name = FONT_NAME;
+                        macroNames.fontInfo.families = FONT_NAME;
+                        macroNames.mediumFontInfo.families = FONT_NAME;
+                        macroNames.smallFontInfo.families = FONT_NAME;
+                        megaNames.fontInfo.families = FONT_NAME;
+                        megaNames.mediumFontInfo.families = FONT_NAME;
+                        megaNames.smallFontInfo.families = FONT_NAME;
+                        microBorders.smallFontInfo.families = FONT_NAME;
+                        microBorders.largeFontInfo.families = FONT_NAME;
+                        microBorders.fontInfo.families = FONT_NAME;
+                        macroBorders.fontInfo.families = FONT_NAME;
+                        macroRoutes.fontInfo.families = FONT_NAME;
+                        capitals.fontInfo.families = FONT_NAME;
+                        macroBorders.smallFontInfo.families = FONT_NAME;
 
                         microBorders.textStyle.Uppercase = true;
 
@@ -751,8 +751,8 @@ namespace Maps.Rendering
 
                         worldDetails &= ~WorldDetails.Allegiance;
 
-                        subsectorNames.fontInfo.name = FONT_NAME;
-                        sectorName.fontInfo.name = FONT_NAME;
+                        subsectorNames.fontInfo.families = FONT_NAME;
+                        sectorName.fontInfo.families = FONT_NAME;
 
                         worlds.largeFontInfo.style |= FontStyle.Underline;
 
@@ -874,26 +874,26 @@ namespace Maps.Rendering
                         subsectorGrid.pen.color = Color.Cyan;
 
                         const string FONT_NAME = "Courier New";
-                        worlds.fontInfo.name = FONT_NAME;
-                        worlds.smallFontInfo.name = FONT_NAME;
-                        starport.fontInfo.name = FONT_NAME;
-                        worlds.largeFontInfo.name = FONT_NAME;
+                        worlds.fontInfo.families = FONT_NAME;
+                        worlds.smallFontInfo.families = FONT_NAME;
+                        starport.fontInfo.families = FONT_NAME;
+                        worlds.largeFontInfo.families = FONT_NAME;
                         worlds.largeFontInfo.size = worlds.fontInfo.size * 1.25f;
                         worlds.fontInfo.size *= 0.8f;
 
-                        macroNames.fontInfo.name = FONT_NAME;
-                        macroNames.mediumFontInfo.name = FONT_NAME;
-                        macroNames.smallFontInfo.name = FONT_NAME;
-                        megaNames.fontInfo.name = FONT_NAME;
-                        megaNames.mediumFontInfo.name = FONT_NAME;
-                        megaNames.smallFontInfo.name = FONT_NAME;
-                        microBorders.smallFontInfo.name = FONT_NAME;
-                        microBorders.largeFontInfo.name = FONT_NAME;
-                        microBorders.fontInfo.name = FONT_NAME;
-                        macroBorders.fontInfo.name = FONT_NAME;
-                        macroRoutes.fontInfo.name = FONT_NAME;
-                        capitals.fontInfo.name = FONT_NAME;
-                        macroBorders.smallFontInfo.name = FONT_NAME;
+                        macroNames.fontInfo.families = FONT_NAME;
+                        macroNames.mediumFontInfo.families = FONT_NAME;
+                        macroNames.smallFontInfo.families = FONT_NAME;
+                        megaNames.fontInfo.families = FONT_NAME;
+                        megaNames.mediumFontInfo.families = FONT_NAME;
+                        megaNames.smallFontInfo.families = FONT_NAME;
+                        microBorders.smallFontInfo.families = FONT_NAME;
+                        microBorders.largeFontInfo.families = FONT_NAME;
+                        microBorders.fontInfo.families = FONT_NAME;
+                        macroBorders.fontInfo.families = FONT_NAME;
+                        macroRoutes.fontInfo.families = FONT_NAME;
+                        capitals.fontInfo.families = FONT_NAME;
+                        macroBorders.smallFontInfo.families = FONT_NAME;
 
                         worlds.textStyle.Uppercase = true;
                         microBorders.textStyle.Uppercase = true;
@@ -917,8 +917,8 @@ namespace Maps.Rendering
 
                         worlds.textBackgroundStyle = TextBackgroundStyle.None;
 
-                        subsectorNames.fontInfo.name = FONT_NAME;
-                        sectorName.fontInfo.name = FONT_NAME;
+                        subsectorNames.fontInfo.families = FONT_NAME;
+                        sectorName.fontInfo.families = FONT_NAME;
 
                         worlds.largeFontInfo.style |= FontStyle.Underline;
 
@@ -976,11 +976,11 @@ namespace Maps.Rendering
                         microBorders.textColor = Color.DarkSlateGray;
 
                         const string FONT_NAME = "Calibri,Arial";
-                        worlds.fontInfo.name = FONT_NAME;
-                        worlds.smallFontInfo.name = FONT_NAME;
-                        starport.fontInfo.name = FONT_NAME;
+                        worlds.fontInfo.families = FONT_NAME;
+                        worlds.smallFontInfo.families = FONT_NAME;
+                        starport.fontInfo.families = FONT_NAME;
                         starport.fontInfo.style = FontStyle.Regular;
-                        worlds.largeFontInfo.name = FONT_NAME;
+                        worlds.largeFontInfo.families = FONT_NAME;
 
                         worlds.fontInfo.style = FontStyle.Regular;
                         worlds.largeFontInfo.style = FontStyle.Bold;
@@ -989,19 +989,19 @@ namespace Maps.Rendering
                         hexNumber.position.Y = -0.49f;
                         starport.fontInfo.style = FontStyle.Italic;
 
-                        macroNames.fontInfo.name = FONT_NAME;
-                        macroNames.mediumFontInfo.name = FONT_NAME;
-                        macroNames.smallFontInfo.name = FONT_NAME;
-                        megaNames.fontInfo.name = FONT_NAME;
-                        megaNames.mediumFontInfo.name = FONT_NAME;
-                        megaNames.smallFontInfo.name = FONT_NAME;
-                        microBorders.smallFontInfo.name = FONT_NAME;
-                        microBorders.largeFontInfo.name = FONT_NAME;
-                        microBorders.fontInfo.name = FONT_NAME;
-                        macroBorders.fontInfo.name = FONT_NAME;
-                        macroRoutes.fontInfo.name = FONT_NAME;
-                        capitals.fontInfo.name = FONT_NAME;
-                        macroBorders.smallFontInfo.name = FONT_NAME;
+                        macroNames.fontInfo.families = FONT_NAME;
+                        macroNames.mediumFontInfo.families = FONT_NAME;
+                        macroNames.smallFontInfo.families = FONT_NAME;
+                        megaNames.fontInfo.families = FONT_NAME;
+                        megaNames.mediumFontInfo.families = FONT_NAME;
+                        megaNames.smallFontInfo.families = FONT_NAME;
+                        microBorders.smallFontInfo.families = FONT_NAME;
+                        microBorders.largeFontInfo.families = FONT_NAME;
+                        microBorders.fontInfo.families = FONT_NAME;
+                        macroBorders.fontInfo.families = FONT_NAME;
+                        macroRoutes.fontInfo.families = FONT_NAME;
+                        capitals.fontInfo.families = FONT_NAME;
+                        macroBorders.smallFontInfo.families = FONT_NAME;
 
                         microBorders.textStyle.Uppercase = true;
 
@@ -1014,8 +1014,8 @@ namespace Maps.Rendering
 
                         worldDetails &= ~WorldDetails.Allegiance;
 
-                        subsectorNames.fontInfo.name = FONT_NAME;
-                        sectorName.fontInfo.name = FONT_NAME;
+                        subsectorNames.fontInfo.families = FONT_NAME;
+                        sectorName.fontInfo.families = FONT_NAME;
 
                         microBorders.pen.width = 0.11f;
                         microBorders.pen.dashStyle = DashStyle.Dot;
