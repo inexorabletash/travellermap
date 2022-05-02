@@ -58,7 +58,7 @@ namespace Maps.Rendering
                 (byte)(PathPointType.Line | PathPointType.CloseSubpath),
             });
 
-        // NOTE: Windings are often used instead of UNICODE equivalents in a common font
+        // NOTE: Wingdings are often used instead of UNICODE equivalents in a common font
         // because the glyphs are much higher quality.
         // See http://www.alanwood.net/demos/wingdings.html for a good mapping
 
