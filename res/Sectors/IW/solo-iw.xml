@@ -33,11 +33,12 @@
     <Subsector Index="P">Uncharted</Subsector>
   </Subsectors>
   <Stylesheet>
-    route.VilaniMajor    { color: lightgreen; width: 1.5; }
+    route.VilaniMajor    { color: lightskyblue; width: 1.5; }
     route.VilaniMinor    { color: lightgreen; }
-    route.VilaniFrontier { color: red; style: dotted; }
-    route.TerranMinor    { color: lightblue; }
-    route.TerranFrontier { color: blue; style: dotted; }
+    route.VilaniFrontier { color: pink; style: dotted; }
+    route.TerranMajor    { color: deepskyblue; width: 1.5; }
+    route.TerranMinor    { color: darkgreen; }
+    route.TerranFrontier { color: hotpink; style: dotted; }
   </Stylesheet>
   <Routes>
 
@@ -66,18 +67,20 @@
     <Route Start="2114" End="2012" Type="VilaniMajor"/>
     <Route Start="2012" End="1911" Type="VilaniMajor"/>
     <Route Start="1911" End="2010" Type="VilaniMajor"/>
+    <Route Start="2010" End="2109" Type="VilaniMajor"/>
 
     <Route Start="1917" End="2017" Type="VilaniMajor"/>
     <Route Start="2017" End="2118" Type="VilaniMajor"/>
     <Route Start="2118" End="2218" Type="VilaniMajor"/>
     <Route Start="2218" End="2319" Type="VilaniMajor"/>
     <Route Start="2319" End="2418" Type="VilaniMajor"/>
+    <Route Start="2418" End="2518" Type="VilaniMajor"/>
 
     <!-- Major Trade routes (Terran) -->
 
-    <Route Start="1822" End="1824" Type="TerranMinor"/>
-    <Route Start="1824" End="1926" Type="TerranMinor"/>
-    <Route Start="1926" End="1827" Type="TerranMinor"/>
+    <Route Start="1822" End="1824" Type="TerranMajor"/>
+    <Route Start="1824" End="1926" Type="TerranMajor"/>
+    <Route Start="1926" End="1827" Type="TerranMajor"/>
 
     <!-- Minor Trade routes (Vilani) -->
 
@@ -109,6 +112,7 @@
     <Route Start="0618" End="0617" Type="VilaniFrontier"/>
 
     <Route Start="0618" End="0717" Type="VilaniFrontier"/>
+    <Route Start="0618" End="0718" Type="VilaniFrontier"/>
 
     <Route Start="0720" End="0919" Type="VilaniFrontier"/>
 
@@ -181,7 +185,7 @@
 
     <Route Start="2312" End="2513" Type="VilaniFrontier"/>
 
-    <Route Start="2414" End="2513" Type="VilaniFrontier"/>
+    <Route Start="2414" End="2514" Type="VilaniFrontier"/>
 
     <Route Start="2419" End="2319" Type="VilaniFrontier"/>
     <Route Start="2319" End="2420" Type="VilaniFrontier"/>
