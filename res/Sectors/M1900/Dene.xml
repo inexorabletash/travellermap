@@ -19,7 +19,7 @@
     ]]>
   </Credits>
   <Product Publisher="Mongoose Publishing" Author="Rob Eaglestone" Title="Deneb Sector" Ref="https://www.mongoosepublishing.com/products/behind-the-claw-2" />
-  <DataFile Source="Traveller 5 Second Survey" Milieu="M1900" Type="TabDelimited">Deneb.tab</DataFile>
+  <DataFile Source="Traveller 5 Second Survey" Milieu="M1900" Type="TabDelimited">Dene.tab</DataFile>
   <Subsectors Source="MegaTraveller Journal #1">
     <Subsector Index="A">Pretoria</Subsector>
     <Subsector Index="B">Lamas</Subsector>
@@ -40,12 +40,9 @@
   </Subsectors>
 
   <Routes Source="Rob Eaglestone">
-    <Route Start="0316" End="0715" />
-    <Route Start="0316" End="0518" />
-    <Route Start="0316" End="0419" />
+    <Route Start="0406" End="0007" />
   </Routes>
   <Borders>
-    <Border Color="Blue" Allegiance="Rr">0006 0106 0107 0207 0308 0408 0508 0608 0709 0809 0910 0810 0811 0812 0913 0813 0814 0815 0816 0716 0616 0517 0518 0519 0619 0519 0419 0319 0219 0120 0121 0021 0020 0019 0018 0118 0218 0318 0317 0316 0315 0314 0213 0113 0013 0012 0011 0010 0009 0008 0007 0006 </Border>
-    <Border Color="Blue" Allegiance="Rr">0921</Border>
+    <Border Color="Blue" Allegiance="CsRr">0406</Border>
   </Borders>
 </Sector>
