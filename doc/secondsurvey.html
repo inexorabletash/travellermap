@@ -256,6 +256,11 @@
           <td>
             No Starport. No provision is made for any ship landings.
 
+        <tr>
+          <td><code>?</code>
+          <td>
+            Unknown.
+
       </table>
 
       <h3>Spaceports</h3>
@@ -430,6 +435,11 @@
           <td>1.875
           <td>20.92
 
+        <tr>
+          <td><code>?</code>
+          <td colspan=5>
+            Unknown.
+
       </table>
       <p>
         The above table assumes a density similar to Earth (5.5 grams per cubic centimeter).
@@ -513,6 +523,11 @@
           <td><code>F</code>
           <td>Unusual.
 
+        <tr>
+          <td><code>?</code>
+          <td>
+            Unknown.
+
       </table>
     </section>
     <section id="hydrographics">
@@ -572,6 +587,11 @@
         <tr>
           <td><code>A</code>
           <td>100% water. Water World.
+
+        <tr>
+          <td><code>?</code>
+          <td>
+            Unknown.
 
       </table>
     </section>
@@ -660,6 +680,11 @@
  <tr>
    <td><code>F</code>
   <td>Quadrillions of inhabitants.
+
+        <tr>
+          <td><code>?</code>
+          <td>
+            Unknown.
 
       </table>
     </section>
@@ -851,6 +876,11 @@
   <td>
   <td>
 
+        <tr>
+          <td><code>?</code>
+          <td colspan=2>
+            Unknown.
+
       </table>
 
 
@@ -1037,6 +1067,11 @@
    <td><code>S</code>
   <td>Special/Variable situation.
 
+        <tr>
+          <td><code>?</code>
+          <td>
+            Unknown.
+
       </table>
     </section>
     <section id="tech_level">
@@ -1144,6 +1179,11 @@
  <tr>
    <td><code>L</code>
   <td>Comprehensible only as technological magic.
+
+        <tr>
+          <td><code>?</code>
+          <td>
+            Unknown.
 
       </table>
     </section>
@@ -1678,6 +1718,10 @@
       population multiplier but non-zero for the population exponent.
       Treat the multiplier as <code>1</code> in these cases.
     </p>
+
+    <p>If unknown, <code>?</code> can be specified.</p>
+
+
     <h3>Planetoid Belts</h3>
     <div class="example"><code>1910 Regina A788899-C Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF NS - 7<span class="highlight">0</span>3 8 ImDd F7 V BD M3 V</code></div>
     <p>
@@ -1686,6 +1730,7 @@
       size <code>0</code> is termed an asteriod belt, and is not
       counted here.
     </p>
+    <p>If unknown, <code>?</code> can be specified.</p>
 
     <h3>Gas Giants</h3>
     <div class="example"><code>1910 Regina A788899-C Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF NS - 70<span class="highlight">3</span> 8 ImDd F7 V BD M3 V</code></div>
@@ -1693,6 +1738,8 @@
       The third <a href="#ehex">eHex</a> digit is the number of gas
       giants in the system, suitable for fuel skimming.
     </p>
+    <p>If unknown, <code>?</code> can be specified.</p>
+
   </section>
 
   <section id="worlds" class="t5">
@@ -2002,6 +2049,10 @@
       unexplored systems. Codes <code>I</code> and <code>O</code> are
       unused to avoid confusion with
       <code>1</code> and <code>0</code>.
+    </p>
+    <p>
+      In fields such as <a href="#uwp">UWP</a> and <a href="#pbg">PBG</a>
+      you can use <code>?</code> to represent unknown values.
     </p>
     <table>
       <thead>
