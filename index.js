@@ -828,6 +828,19 @@ window.addEventListener('DOMContentLoaded', function() {
     }
   });
 
+  if ('qr' in urlParams) {
+    console.log('qr');
+    try {
+      var results = JSON.parse(urlParams['qr']);
+      console.log('results: ', results);
+      var term = urlParams['search'] || '';
+      $('#searchBox').value = term;
+      search(term, {navigate: true, results: results});
+    } catch (ex) {
+      console.warn('Error parsing "qr" data: ', ex);
+    }
+  }
+
   if ('attract' in urlParams) {
     // TODO: Disable UI, or make any UI interaction cancel
     doAttract();
@@ -1202,9 +1215,11 @@ window.addEventListener('DOMContentLoaded', function() {
     if (searchRequest)
       searchRequest.ignore();
 
-    searchRequest = Util.ignorable(Traveller.MapService.search(query, {
-      milieu: map.namedOptions.get('milieu')
-    }));
+    searchRequest = options.results
+      ? Promise.resolve(options.results)
+      : Util.ignorable(Traveller.MapService.search(query, {
+        milieu: map.namedOptions.get('milieu')
+      }));
     searchRequest
       .then(function(data) {
         displayResults(data);
