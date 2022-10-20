@@ -2,13 +2,13 @@ Sector	SS	Hex	Name	UWP	Bases	Remarks	Zone	PBG	Allegiance	Stars	{Ix}	(Ex)	[Cx]	No
 Farf	A	0101	Vrialmanj	E573533-7		Ni		804	ZhIN	K0 V	{ -3 }	(741-5)	[2224]		17	-140
 Farf	A	0105	Jdinz	B4278A8-9		Ph Pi		420	ZhIN	M3 III M1 V	{ 1 }	(C7A+1)	[8959]		9	840
 Farf	A	0108	Chtanshar	A95A451-E		Ni Wa		301	ZhIN	F1 V	{ 1 }	(734-3)	[151A]		12	-252
-Farf	A	0109	Ishashiel	C774410-8	M	Ni Pa		403	ZhIN	K1 V	{ -2 }	(931-5)	[1213]		15	-135
-Farf	A	0110	Tsief	C200578-A		Ni Va		902	ZhIN	M0 V	{ 0 }	(944+1)	[555A]		14	144
+Farf	A	0109	Ishashiel	C774410-8	KM	Ni Pa		403	ZhIN	K1 V	{ -1 }	(931-5)	[1313]		15	-135
+Farf	A	0110	Tsief	C200578-A	W	Ni Va		902	ZhIN	M0 V	{ 1 }	(944+1)	[565A]		14	144
 Farf	E	0111	Zhiafefezh	E200000-0		Ba Va		824	ZhIN	G4 IV	{ -3 }	(B00-1)	[0000]		14	0
 Farf	E	0115	Blieplitl	B6639A7-A		Hi Pr		104	ZhIN	M0 V	{ 3 }	(F8D+3)	[9C5A]		11	4,680
-Farf	E	0116	Zhans	E564000-0	M	Ba Da	A	424	ZhIN	G6 V	{ -3 }	(B00-3)	[0000]		14	0
-Farf	E	0117	Ievrchipr	C431575-8	M	Ni Po		804	ZhIN	M1 V	{ -2 }	(B42-4)	[3336]		16	-352
-Farf	E	0119	Kitl	E000453-9		As Ni Va Da	A	302	ZhIN	M1 V	{ -2 }	(731-5)	[1226]		12	-105
+Farf	E	0116	Zhans	E564000-0	KM	Ba Da	A	424	ZhIN	G6 V	{ -2 }	(B00-3)	[0000]		14	0
+Farf	E	0117	Ievrchipr	C431575-8	KM	Ni Po		804	ZhIN	M1 V	{ -1 }	(B42-4)	[3436]		16	-352
+Farf	E	0119	Kitl	E000453-9	W	As Ni Va Da	A	302	ZhIN	M1 V	{ -1 }	(731-5)	[1326]		12	-105
 Farf	I	0123	Acropolis	A887556-9	KV	Ag Ni Ga Pr		822	SaCo	G6 V	{ 2 }	(845+1)	[4748]		9	160
 Farf	I	0124	Belekz	A553413-A		Ni Po		300	SaCo	F8 V	{ 1 }	(634-2)	[1527]		5	-144
 Farf	I	0125	Drawmij	E569955-7		Hi Pr		903	SaCo	G9 V	{ -1 }	(B88-3)	[7835]		9	-2,112
@@ -27,7 +27,7 @@ Farf	M	0236	Reseca	C565997-A		Hi Pr		603	ZhCa	G7 V D	{ 2 }	(E8C+2)	[9B5A]		11	2,
 Farf	M	0237	Ort	D66A669-7		Ni Ri Wa O:0236		920	ZhCa	F4 V D	{ -2 }	(852-1)	[7468]		9	-80
 Farf	M	0240	Velpore	EA99422-8		Ni		700	NaHu	F8 V D	{ -3 }	(631-5)	[1114]		9	-90
 Farf	A	0301	Iajerekl	C548645-6		Ag Ni		204	ZhIN	M0 V M6 V D	{ -1 }	(853-3)	[4534]		8	-360
-Farf	A	0308	Drprent	E534000-0	M	Ba Da	A	413	ZhIN	G7 III M2 V	{ -3 }	(900-2)	[0000]		10	0
+Farf	A	0308	Drprent	E534000-0	KM	Ba Da	A	413	ZhIN	G7 III M2 V	{ -2 }	(900-2)	[0000]		10	0
 Farf	A	0310	Pie'a	C20069A-9		Na Ni Va		100	ZhIN	M4 II M0 V	{ -1 }	(853+1)	[857B]		7	120
 Farf	E	0311	Tlabratl	E683422-2		Ni		502	ZhIN	M2 V M5 V	{ -3 }	(631-5)	[1111]		7	-90
 Farf	E	0312	Shaapl	D6A0867-8		He Ph O:0115		214	ZhIN	K4 IV M3 V	{ -2 }	(F76-2)	[8658]		12	-1,260
@@ -45,27 +45,27 @@ Farf	A	0406	Vibrie	B42478B-C		Pi		404	ZhIN	K6 V	{ 2 }	(D6C+4)	[997E]		12	3,744
 Farf	A	0409	Olabl	C000578-9		As Ni Va		302	ZhIN	G6 V	{ -1 }	(943-1)	[5459]		6	-108
 Farf	A	0410	Petszdeneh	B654438-8		Ni Pa		822	ZhIN	M2 V M5 V	{ -1 }	(A32-1)	[4358]		7	-60
 Farf	E	0411	Chiafchti	C430400-7	V	De Ni Po		614	ZhIN	M0 V	{ -2 }	(631-5)	[1212]		10	-90
-Farf	E	0412	Iatsoprrel	E591000-0	M	Ba He		810	ZhIN	M0 V	{ -3 }	(500-5)	[0000]		12	0
+Farf	E	0412	Iatsoprrel	E591000-0	KM	Ba He		810	ZhIN	M0 V	{ -2 }	(500-5)	[0000]		12	0
 Farf	E	0414	Drrshapl	EA7A000-0		Ba Oc		114	ZhIN	F2 IV	{ -3 }	(400-5)	[0000]		13	0
 Farf	E	0415	Lochtiakr	E696000-0		Ba		302	ZhIN	M1 V	{ -3 }	(500-5)	[0000]		12	0
 Farf	E	0416	Zdichiaeshda	E310000-0	V	Ba		605	ZhIN	G4 V M7 V	{ -3 }	(800-4)	[0000]		13	0
-Farf	E	0419	Mei	B422833-B	K	He Na Po Ph Pi		205	ZhIN	M1 V	{ 2 }	(F7C-1)	[5A28]		12	-1,260
+Farf	E	0419	Mei	B422833-B	KM	He Na Po Ph Pi		205	ZhIN	M1 V	{ 3 }	(F7C-1)	[5B28]		12	-1,260
 Farf	E	0420	Encheishe	E433699-6		Na Ni Po		912	ZhIN	K8 V M6 V	{ -3 }	(851-2)	[7367]		7	-80
 Farf	I	0425	Manchu	B000100-D	K	As Lo Va		311	SaCo	K8 V M6 V D	{ 1 }	(401-3)	[1218]		6	0
 Farf	I	0426	Kretakios	C998423-6	V	Ni Pa		711	SaCo	M8 III	{ -2 }	(631-5)	[1223]		11	-90
 Farf	I	0428	Maried	C656650-8		Ag Ni Ga		201	SaCo	G0 V	{ -1 }	(953-5)	[1513]		9	-675
 Farf	I	0430	Atlantis	E768955-7		Hi Pr Pz	A	911	NaHu	F0 V	{ -1 }	(B88-3)	[7835]		8	-2,112
-Farf	M	0434	Zherlicka	A866949-E	K	Hi Ga Pr		124	ZhCa	F9 V D	{ 3 }	(H8F+4)	[AC6F]		17	8,160
+Farf	M	0434	Zherlicka	A866949-E	KM	Hi Ga Pr		124	ZhCa	F9 V D	{ 4 }	(H8F+4)	[AD6F]		17	8,160
 Farf	M	0435	Zephron	B651949-C		Hi Po		314	ZhCa	G9 V	{ 3 }	(G8E+4)	[AC6D]		12	7,168
 Farf	M	0436	Mamnon	B583898-A		Ri Ph		420	ZhCa	F3 V D	{ 3 }	(C7C+3)	[8B5A]		13	3,024
 Farf	M	0439	Thara	A678773-A		Ag Pi		624	ZhCa	G7 V	{ 3 }	(F6C+1)	[4A27]		13	1,080
 Farf	M	0440	Endomin	B765899-A	V	Ga Ri Pa Ph		825	ZhCa	F3 V	{ 3 }	(H7C+4)	[9B6B]		18	5,712
 Farf	A	0506	Dinotlbrrmsh	A636626-C	V	Ni		923	ZhIN	K4 V	{ 1 }	(D55+1)	[574B]		15	325
 Farf	A	0507	Yiantsiensh	A7A3AFG-D		Fl Hi In Pz	A	214	ZhIN	G7 V M9 V	{ 4 }	(H9G+5)	[FEAJ]		14	12,240
-Farf	A	0508	Driar	E886000-0	K	Ba Ga		703	ZhIN	M2 V	{ -3 }	(800-2)	[0000]		12	0
-Farf	A	0509	Nezhiezh	B668521-9	K	Ag Ni Pr		203	ZhIN	M2 V M9 V	{ 1 }	(A45-3)	[1615]		12	-600
+Farf	A	0508	Driar	E886000-0	KM	Ba Ga		703	ZhIN	M2 V	{ -2 }	(800-2)	[0000]		12	0
+Farf	A	0509	Nezhiezh	B668521-9	KM	Ag Ni Pr		203	ZhIN	M2 V M9 V	{ 2 }	(A45-3)	[1715]		12	-600
 Farf	A	0510	Iblents	X000757-7		As Na Va Pi Fo	R	821	ZhIN	M0 V	{ -2 }	(966-2)	[7557]		11	-648
-Farf	E	0519	Zdetsiz	C68859A-9	M	Ag Ni Pr Da	A	612	ZhIN	G0 V M6 V	{ 0 }	(A44+2)	[757B]		10	320
+Farf	E	0519	Zdetsiz	C68859A-9	KM	Ag Ni Pr Da	A	612	ZhIN	G0 V M6 V	{ 1 }	(A44+2)	[767B]		10	320
 Farf	E	0520	Shtichnebsta	E523000-0		Ba Po		003	ZhIN	M3 V	{ -3 }	(200-5)	[0000]		10	0
 Farf	I	0523	Sere	E6315A8-8		Ni Po		101	SaCo	G1 V	{ -3 }	(841-3)	[5258]		9	-96
 Farf	I	0524	Servaas	AA979B9-B	K	Hi In Pz	A	911	SaCo	M3 III M2 V	{ 4 }	(C8F+5)	[AD6C]		7	7,200
@@ -78,12 +78,12 @@ Farf	M	0537	Aemelius	C311543-9		Ic Ni		404	ZhCa	G4 IV	{ -1 }	(B43-4)	[2426]		14	
 Farf	A	0602	Jianehzdeneh	D313675-7	V	Ic Na Ni		700	ZhIN	G3 V	{ -3 }	(851-5)	[4335]		5	-200
 Farf	A	0603	Zho'prer	XAD6789-2		Fo	R	803	ZhIN	M2 III	{ -2 }	(963-1)	[8563]		9	-162
 Farf	A	0606	Raplel	E552431-5		Ni Po Chir0		911	ZhIN	M3 V M8 V	{ -3 }	(631-5)	[1111]		8	-90
-Farf	A	0609	Detsia	A99A433-E	K	Ni Wa		400	ZhIN	M2 V	{ 1 }	(437-2)	[152B]		6	-168
+Farf	A	0609	Detsia	A99A433-E	KM	Ni Wa		400	ZhIN	M2 V	{ 2 }	(437-2)	[162B]		6	-168
 Farf	A	0610	Aehkeiqr	B544457-9		Ni Pa		904	ZhIN	G9 V	{ 0 }	(A33+1)	[4459]		11	90
 Farf	E	0611	Stonziats	D62AABG-9		Hi In Pz	A	103	ZhIN	M1 V M7 V	{ 1 }	(F9B+5)	[FBAE]		11	7,425
-Farf	E	0613	Yachblitlianj	B786840-8		Ga Ri Pa Ph		203	ZhIN	M0 V M2 V	{ 1 }	(D79-3)	[3913]		7	-2,457
+Farf	E	0613	Yachblitlianj	B786840-8	W	Ga Ri Pa Ph		203	ZhIN	M0 V M2 V	{ 2 }	(D79-3)	[3A13]		7	-2,457
 Farf	E	0614	Jdezhsidlaj	E9D4463-7		Ni O:0714		814	ZhIN	G4 II	{ -3 }	(631-5)	[1124]		12	-90
-Farf	E	0616	Pridrda	B426773-A	K	Cp Pi		314	ZhIN	G2 V	{ 2 }	(E6B-1)	[4927]		13	-924
+Farf	E	0616	Pridrda	B426773-A	KM	Cp Pi		314	ZhIN	G2 V	{ 3 }	(E6B-1)	[4A27]		13	-924
 Farf	E	0617	Chtarpiv	A4247A9-A		Pi		912	ZhIN	F6 V	{ 2 }	(C6B+3)	[896B]		16	2,376
 Farf	E	0620	Zimbir	B400334-8		Lo Va		501	NaHu	M1 V	{ -1 }	(620-3)	[1236]		8	0
 Farf	I	0623	Dreamland	C431631-9		Na Ni Po		512	SaCo	M2 V	{ -1 }	(953-5)	[2515]		8	-675
@@ -97,7 +97,7 @@ Farf	M	0640	Balin	B000300-B		As Lo Va RsG		600	ZhCa	A7 V G7 V	{ 1 }	(521-3)	[141
 Farf	A	0702	Oviedavla	A787685-7		Ag Ni Ga Ri		924	ZhIN	M0 V M1 V M7 V	{ 1 }	(855-1)	[4735]		11	-200
 Farf	A	0707	Bintie	EA8A000-0		Ba Oc		622	ZhIN	M4 II M7 V	{ -3 }	(900-5)	[0000]		13	0
 Farf	E	0712	Yopliabr	E779866-5		Ph Pi O:0714		200	ZhIN	M1 V	{ -2 }	(A75-3)	[7644]		11	-1,050
-Farf	E	0714	Ieantsoz	B7B0885-A		He Ph		505	ZhIN	G5 V M4 V	{ 2 }	(F7B+1)	[6A38]		10	1,155
+Farf	E	0714	Ieantsoz	B7B0885-A	W	He Ph		505	ZhIN	G5 V M4 V	{ 3 }	(F7B+1)	[6B38]		10	1,155
 Farf	E	0716	Adlshtadl	A411583-E		Ic Ni		704	ZhIN	K1 V	{ 1 }	(B45-2)	[262B]		11	-440
 Farf	I	0722	Drako	B865AC9-A	K	Hi Ga Pz	A	112	NaHu	M2 V	{ 3 }	(D9D+4)	[BD6B]		8	6,084
 Farf	I	0727	Nehagen	A677A99-B	K	Hi In		121	NaHu	G7 V	{ 4 }	(D9F+5)	[BE6C]		8	8,775
@@ -107,7 +107,7 @@ Farf	M	0734	Ichita	C582799-8		Ri		923	ZhCa	F7 V D	{ 0 }	(E68+1)	[8769]		17	672
 Farf	M	0736	Hectalus	D424555-8		Ni		713	ZhCa	M1 V M4 V	{ -3 }	(B41-5)	[3236]		9	-220
 Farf	M	0738	Dunkel	C866496-9		Ni Ga Pa		400	ZhCa	F4 V D	{ -1 }	(632-2)	[3348]		10	-72
 Farf	M	0740	Osmice	B432885-B		Na Po Ph		705	ZhCa	M3 V	{ 2 }	(F7C+1)	[6A39]		15	1,260
-Farf	A	0805	Odrkliapr	C9A6420-8		Fl Ni		223	ZhIN	M2 V	{ -2 }	(B31-5)	[1213]		12	-165
+Farf	A	0805	Odrkliapr	C9A6420-8	W	Fl Ni		223	ZhIN	M2 V	{ -1 }	(B31-5)	[1313]		12	-165
 Farf	A	0809	Ku Pryuld	D566645-5		Ag Ni Ri An Da ChirW	A	214	ZhIN	M2 V	{ -1 }	(853-3)	[4533]		17	-360
 Farf	E	0815	N'dalambihn	C726333-8		Lo		704	NaHu	G9 V	{ -2 }	(920-5)	[1125]		16	0
 Farf	E	0818	Danodild	C10067A-7		Na Ni Va		720	NaHu	K6 V	{ -2 }	(852+1)	[8479]		8	80
@@ -149,7 +149,7 @@ Farf	J	1027	Odugama	C651564-9		Ni Po O:1026		600	FeAl	F7 V	{ -1 }	(743-3)	[3437]
 Farf	J	1029	Freemantle	X380000-0		Ba De An		000	NaHu	G4 V	{ -3 }	(200-5)	[0000]		8	0
 Farf	N	1032	Secundus	B540669-A		De He Ni Po O:1231		730	ZePr	M0 III	{ 1 }	(B55+2)	[776B]		11	550
 Farf	B	1101	Ienji	A423899-D		Na Po Ph Pi		203	ZhIN	M1 V M6 V	{ 2 }	(D7D+3)	[9A6E]		11	3,549
-Farf	B	1104	Vestilrnz	B777569-7		Ag Ni O:1101		302	ZhIN	F2 V M6 V	{ 0 }	(744+1)	[6568]		14	112
+Farf	B	1104	Vestilrnz	B777569-7	W	Ag Ni O:1101		302	ZhIN	F2 V M6 V	{ 1 }	(744+1)	[6668]		14	112
 Farf	B	1106	Piadopr	D9A65AA-8		Fl Ni Da	A	714	ZhIN	M1 V	{ -3 }	(C41-1)	[727A]		10	-48
 Farf	B	1108	Irihdira	C582430-9	V	Ni		913	NaHu	G6 V M5 V	{ -1 }	(A32-5)	[1314]		7	-300
 Farf	F	1118	Barini	EAA656A-8		Fl Ni O:1218		112	CsPt	M0 V M1 V	{ -3 }	(A41-1)	[727A]		13	-40
@@ -187,7 +187,7 @@ Farf	J	1324	Kaosiung	X6A0510-8		He Ni Fo	R	801	NaHu	K4 V	{ -3 }	(841-5)	[1213]		
 Farf	J	1326	Elyptiya	A664885-B		Ri Pa Ph		601	FeAl	F7 V	{ 3 }	(B7D+1)	[6B39]		9	1,001
 Farf	J	1329	Lachute	C767764-7		Ag Ga Ri O:1227		200	FeAl	M1 V	{ 1 }	(969-1)	[5835]		6	-486
 Farf	N	1335	Gosspach	B311427-8		Ic Ni		203	NaHu	M3 V M7 V	{ -1 }	(932-1)	[4358]		11	-54
-Farf	B	1404	Insviblienzh	B552445-A	K	Ni Po		803	ZhIN	M2 V M9 V	{ 1 }	(934-1)	[2538]		10	-108
+Farf	B	1404	Insviblienzh	B552445-A	KM	Ni Po		803	ZhIN	M2 V M9 V	{ 2 }	(934-1)	[2638]		10	-108
 Farf	B	1407	Yanelomehkagh	C5508A8-5		De Po Ph		804	NaHu	M0 V M6 V	{ -1 }	(A76-1)	[8755]		17	-420
 Farf	B	1408	Rehnuna	E633775-6		Na Po		200	NaHu	M1 V	{ -2 }	(965-4)	[5534]		10	-1,080
 Farf	B	1410	Nehrilzas	E633000-0		Ba Po		004	NaHu	M2 V	{ -3 }	(200-5)	[0000]		11	0
@@ -222,8 +222,8 @@ Farf	N	1632	DeBeers	D553369-5		Lo Po Da O:1734	A	624	DeHg	K3 IV M7 V	{ -3 }	(520
 Farf	N	1636	Locat	X541300-5		He Lo Po RsA		700	NaHu	M6 II K2 V	{ -3 }	(520-5)	[1111]		8	0
 Farf	N	1638	Protalus	B734534-A		Ni		803	Bium	M3 V	{ 1 }	(A45-1)	[3638]		12	-200
 Farf	N	1639	Forbus	C546483-9		Ni Pa		903	Bium	M1 V M6 V	{ -1 }	(932-4)	[1326]		10	-216
-Farf	C	1702	Flievl Al	C435650-B	M	Ni		402	ZhIN	M2 V	{ 0 }	(A54-4)	[1616]		5	-800
-Farf	C	1706	Iavnobrplel	B200640-C		Na Ni Va		100	ZhIN	M7 III D	{ 1 }	(855-3)	[1717]		7	-600
+Farf	C	1702	Flievl Al	C435650-B	KM	Ni		402	ZhIN	M2 V	{ 1 }	(A54-4)	[1716]		5	-800
+Farf	C	1706	Iavnobrplel	B200640-C	W	Na Ni Va		100	ZhIN	M7 III D	{ 2 }	(855-3)	[1817]		7	-600
 Farf	C	1707	Raprtsinsh	C532988-A		Hi Na Po		304	ZhIN	M5 III	{ 2 }	(F8C+2)	[9B5A]		14	2,880
 Farf	C	1710	Lilzen	D534148-6		Lo		403	NaHu	M1 V	{ -3 }	(300-3)	[1156]		13	0
 Farf	G	1712	Nesara	C420676-8		De He Na Ni Po		125	NaHu	G3 III	{ -2 }	(F52-3)	[5447]		20	-450
@@ -258,7 +258,7 @@ Farf	O	1835	Gniadek	B661AB9-B		Hi Pz	A	210	LeSu	G7 V	{ 3 }	(D9E+4)	[BD6C]		11	6,
 Farf	O	1836	Lazthar	B7A7566-A	K	Fl Ni Mr		523	DoAl	M0 V	{ 1 }	(C45+1)	[4649]		15	240
 Farf	O	1838	Harantz	A8859CA-B		Hi Ga Cx Pr Pz	A	320	DoAl	M0 V M0 V	{ 3 }	(D8E+5)	[BC7D]		12	7,280
 Farf	C	1901	Driezakl	B54469B-5		Ag Ni Da	A	103	ZhIN	M2 V	{ 0 }	(854+2)	[8677]		12	320
-Farf	C	1902	Stiedr	A667556-9	K	Ag Ni Ga Pr		413	ZhIN	G3 IV M6 V	{ 1 }	(B45+1)	[4648]		14	220
+Farf	C	1902	Stiedr	A667556-9	KM	Ag Ni Ga Pr		413	ZhIN	G3 IV M6 V	{ 2 }	(B45+1)	[4748]		14	220
 Farf	C	1907	Chtedestaz	E668000-0		Ba		614	ZhIN	G2 V	{ -3 }	(800-5)	[0000]		9	0
 Farf	G	1911	Dib Helimon	E572000-0		Ba He		024	NaHu	K6 V M5 V	{ -3 }	(200-5)	[0000]		14	0
 Farf	G	1914	Gishuhura	B54459A-8		Ag Ni		704	NaHu	M9 III	{ 0 }	(B44+2)	[757A]		11	352
@@ -270,9 +270,9 @@ Farf	O	1932	Nomael	C767886-8		Ga Ri Pa Ph		600	LeSu	K4 IV M6 V	{ 0 }	(A78-1)	[78
 Farf	O	1934	Alzenei	A768895-C	S	Ri Pa Ph Cx		800	LeSu	G8 V M4 V	{ 3 }	(A7D+1)	[6B3A]		12	910
 Farf	O	1937	Zylanth	E100233-9		Lo Va		803	DoAl	M0 V	{ -2 }	(710-5)	[1126]		12	0
 Farf	O	1938	Claveer	B55098C-B	K	De Hi Po Pz	A	233	DoAl	K4 V M8 V M0 V	{ 3 }	(H8E+5)	[CC8E]		12	9,520
-Farf	C	2002	Chtaiebr	E430000-0	M	Ba De Po Mr		404	ZhIN	M1 V	{ -3 }	(900-5)	[0000]		8	0
+Farf	C	2002	Chtaiebr	E430000-0	KM	Ba De Po Mr		404	ZhIN	M1 V	{ -2 }	(900-5)	[0000]		8	0
 Farf	C	2003	Iekled	B551544-B		Ni Po Cx		200	ZhIN	M1 V M2 V	{ 1 }	(745-1)	[3639]		10	-140
-Farf	C	2004	Niaqi Iats	A6B4665-C	K	Fl Ni Mr		203	ZhIN	M0 V	{ 1 }	(B55-1)	[473A]		13	-275
+Farf	C	2004	Niaqi Iats	A6B4665-C	KM	Fl Ni Mr		203	ZhIN	M0 V	{ 2 }	(B55-1)	[483A]		13	-275
 Farf	C	2005	Eenchtlibr	A422730-D		He Na Po Pi		203	ZhIN	M3 V	{ 2 }	(C6D-2)	[2918]		9	-1,872
 Farf	C	2008	Khai Zlin	C4376A5-7		Ni		123	NaHu	M2 V M2 V	{ -2 }	(852-4)	[4435]		13	-320
 Farf	C	2009	Dehpihrin	E533464-6		Ni Po O:2010		504	NaHu	M0 V	{ -3 }	(631-5)	[2134]		11	-90
@@ -310,7 +310,7 @@ Farf	O	2136	Kokkelen	B88987A-B	K	Ri Ph		924	LeSu	K7 V	{ 3 }	(G7D+5)	[AB7D]		14	7
 Farf	O	2137	Kalebru	X667404-0		Ni Ga Pa Fo	R	424	NaHu	G4 V	{ -3 }	(631-5)	[2131]		17	-90
 Farf	O	2139	Fomor	E68A78A-7		Ri Wa		924	DoAl	M3 V	{ -1 }	(967+1)	[9679]		10	378
 Farf	O	2140	Amaoka	D585523-3		Ag Ni Pr		503	TrDo	M0 V	{ -2 }	(742-5)	[2321]		8	-280
-Farf	C	2204	Piad	B410430-9		Ni		500	ZhIN	M0 V M2 V	{ 0 }	(531-4)	[1414]		7	-60
+Farf	C	2204	Piad	B410430-9	W	Ni		500	ZhIN	M0 V M2 V	{ 1 }	(531-4)	[1514]		7	-60
 Farf	C	2205	Tsu	X5647AC-0		Ag Ri An Fo Chir4	R	710	ZhIN	K8 V	{ 0 }	(964+3)	[A783]		12	648
 Farf	C	2208	S'bumbar	C000845-9		As Na Va Ph Pi		615	NaHu	F4 V	{ 0 }	(G79-2)	[6837]		14	-2,016
 Farf	C	2209	Bareri	C642ABA-8		He Hi In Po Pz	A	613	NaHu	M1 V M2 V	{ 1 }	(G9A+3)	[CB7A]		12	4,320
@@ -326,8 +326,8 @@ Farf	O	2231	Shattur	C877687-6		Ag Ni		325	LeSu	K3 V	{ -1 }	(853-1)	[6556]		15	-1
 Farf	O	2235	Jaer	C3109BC-9	V	Hi In Na Pz	A	310	LeSu	M2 V M8 V	{ 2 }	(C8C+5)	[CB8C]		9	5,760
 Farf	O	2240	Shadrai	B55799A-A		Hi		100	TrDo	K0 IV	{ 3 }	(B8D+5)	[BC7C]		11	5,720
 Farf	C	2301	Zhdebro	B76A425-A		Ni Wa		224	ZhIN	K8 V	{ 1 }	(C34-1)	[2538]		16	-144
-Farf	C	2302	Anschtets	A579979-C		Hi In		801	ZhIN	M3 V M8 V	{ 4 }	(C8F+5)	[AD6D]		5	7,200
-Farf	C	2303	Dezshe'zdanj	C6567CE-7	M	Ag Ga Pz	A	304	ZhIN	M1 V	{ 0 }	(968+4)	[B79B]		8	1,728
+Farf	C	2302	Anschtets	A579979-C	W	Hi In		801	ZhIN	M3 V M8 V	{ 5 }	(C8F+5)	[AE6D]		5	7,200
+Farf	C	2303	Dezshe'zdanj	C6567CE-7	KM	Ag Ga Pz	A	304	ZhIN	M1 V	{ 1 }	(968+4)	[B89B]		8	1,728
 Farf	G	2312	Gesonegh	C54659B-9		Ag Ni Da	A	302	NaHu	K2 V M0 V	{ 0 }	(944+2)	[757B]		10	288
 Farf	G	2314	D'rehlz	B5706AD-7		De He Ni Da	A	801	NaHu	M1 V	{ -1 }	(853+3)	[A59B]		11	360
 Farf	G	2315	Thapek	B577573-B	K	Ag Ni		202	NaHu	F9 V M8 V	{ 2 }	(946-1)	[2728]		10	-216
@@ -355,8 +355,8 @@ Farf	O	2433	Welles	E642642-5		He Ni Po		401	NaHu	M2 V	{ -3 }	(851-5)	[2311]		8	-
 Farf	O	2435	Assair	C554333-6	V	Lo		200	NaHu	F4 V M4 V	{ -2 }	(520-5)	[1123]		6	0
 Farf	O	2436	Sorens	B59998B-9		Hi In		100	TrDo	G5 V	{ 3 }	(B8D+5)	[BC7B]		7	5,720
 Farf	O	2439	Thars	B64298A-B		He Hi In Po		624	TrDo	M3 V	{ 4 }	(H8F+5)	[BD7D]		11	10,200
-Farf	D	2503	Vrezhdafi	C541676-5	M	He Ni Po		211	ZhIN	M3 V	{ -2 }	(852-3)	[5444]		9	-240
-Farf	D	2504	Ientspifl	A555773-C	K	Ag		502	ZhIN	M1 V M1 V	{ 3 }	(B6D+1)	[4A29]		10	858
+Farf	D	2503	Vrezhdafi	C541676-5	KM	He Ni Po		211	ZhIN	M3 V	{ -1 }	(852-3)	[5544]		9	-240
+Farf	D	2504	Ientspifl	A555773-C	KM	Ag		502	ZhIN	M1 V M1 V	{ 4 }	(B6D+1)	[4B29]		10	858
 Farf	D	2506	Tlezh A'	E5486A5-5		Ag Ni		804	ZhIN	K6 V M0 V	{ -2 }	(852-4)	[4433]		10	-320
 Farf	H	2512	Afne	E652468-6		Ni Po O:2609		703	ZhIN	M2 V	{ -3 }	(631-3)	[4156]		13	-54
 Farf	H	2515	Zdihl	B311640-8		Ic Na Ni		403	NaHu	F2 V M6 V	{ -1 }	(B53-5)	[1513]		15	-825
@@ -371,8 +371,8 @@ Farf	P	2532	Welton	D642541-5		He Ni Po		502	NaHu	M1 II D M4 V	{ -3 }	(741-5)	[12
 Farf	P	2537	Thursus	C955873-8		Pa Ph		320	TrDo	G3 V M5 V	{ -1 }	(C77-4)	[5725]		8	-2,352
 Farf	P	2540	Forst	D694899-6		Pa Ph Pi		810	TrDo	M2 V M2 V	{ -2 }	(A75-1)	[9667]		11	-350
 Farf	D	2603	Tats Evl	A899899-B		Ph Pi		203	ZhIN	K1 V M3 V	{ 2 }	(D7C+3)	[9A6C]		16	3,276
-Farf	D	2606	Shianzqrie'	A896421-8		Ni Pa		204	ZhIN	G2 V	{ -1 }	(A32-5)	[1314]		9	-300
-Farf	D	2609	Iajnif	B100695-B		Na Ni Va		404	ZhIN	M2 V M9 V	{ 1 }	(C55-1)	[4739]		14	-300
+Farf	D	2606	Shianzqrie'	A896421-8	W	Ni Pa		204	ZhIN	G2 V	{ 0 }	(A32-5)	[1414]		9	-300
+Farf	D	2609	Iajnif	B100695-B	W	Na Ni Va		404	ZhIN	M2 V M9 V	{ 2 }	(C55-1)	[4839]		14	-300
 Farf	H	2611	Potldrepiefr	D436416-6		Ni		600	ZhIN	M0 V	{ -3 }	(331-4)	[1145]		10	-36
 Farf	H	2613	Dred	C2006A8-7		Na Ni Va		301	ZhIN	M1 V	{ -2 }	(852-2)	[6457]		5	-160
 Farf	H	2615	Nebhan	C57A895-6		Wa Ph Pi		704	NaHu	G9 V M9 V	{ -1 }	(A76-3)	[6734]		12	-1,260
@@ -393,7 +393,7 @@ Farf	D	2710	Prevrfri	D7C6765-9		Fl O:2609		503	ZhIN	G7 V M9 V	{ -1 }	(C68-3)	[56
 Farf	H	2711	Zhebrtladr	E100652-9		Na Ni Va		724	ZhIN	M0 V M1 V	{ -2 }	(E52-5)	[2415]		13	-700
 Farf	H	2713	Krrl	E8B0527-8		He Ni		903	ZhIN	K0 V M5 V	{ -3 }	(A41-3)	[5258]		9	-120
 Farf	H	2715	Tlodadltse	E555588-3		Ag Ni		502	ZhIN	A8 V K9 V	{ -2 }	(742-2)	[5353]		12	-112
-Farf	H	2716	Meikadobask	B54678C-9	K	Ag Pi Pz	A	503	ZhIN	M6 II M3 V	{ 2 }	(C6B+5)	[A98C]		10	3,960
+Farf	H	2716	Meikadobask	B54678C-9	KM	Ag Pi Pz	A	503	ZhIN	M6 II M3 V	{ 3 }	(C6B+5)	[AA8C]		10	3,960
 Farf	L	2721	Malthus	B423501-9	V	Ni Po		420	Prot	G2 V	{ 0 }	(944-4)	[1515]		12	-576
 Farf	L	2723	Trebberhorn	C6587C9-8		Ag Pz	A	103	Prot	G3 V	{ 0 }	(C68+1)	[8769]		6	576
 Farf	L	2725	Bestus	A685621-B		Ag Ni Ga Ri		125	Prot	F9 V	{ 3 }	(F57-1)	[2917]		20	-525
@@ -404,12 +404,12 @@ Farf	P	2737	Zylov	A964798-B	K	Ag Ri		204	TrDo	G4 V M6 V	{ 4 }	(D6E+4)	[7B5B]		16
 Farf	P	2738	Bozel	B948695-A		Ag Ni		501	TrDo	M1 V M2 V	{ 2 }	(956+1)	[4838]		10	270
 Farf	P	2740	Xava	C624730-8		Pi		223	TrDo	M1 V	{ -1 }	(E67-5)	[2613]		13	-2,940
 Farf	D	2803	Jdotsesh	D421546-8		He Ni Po Da	A	605	ZhIN	G6 V	{ -3 }	(C41-4)	[4247]		12	-192
-Farf	D	2805	Yodro	A96A79B-A	K	Ri Wa Pz Droy1	A	122	ZhIN	M0 V	{ 3 }	(D6C+5)	[9A7C]		16	4,680
+Farf	D	2805	Yodro	A96A79B-A	KM	Ri Wa Pz Droy1	A	122	ZhIN	M0 V	{ 4 }	(D6C+5)	[9B7C]		16	4,680
 Farf	D	2806	Iadlkresh	X000533-7		As Ni Va Fo	R	413	ZhIN	F1 V	{ -3 }	(741-5)	[2224]		15	-140
 Farf	D	2809	Pienzhplanshe	C837667-6		Ni Da O:2805	A	321	ZhIN	G2 II M0 V	{ -2 }	(852-2)	[6456]		11	-160
 Farf	H	2812	Entsezzi	E569000-0		Ba		414	ZhIN	K0 V M9 V	{ -3 }	(900-3)	[0000]		14	0
 Farf	H	2814	Fiezhtezhde	A634438-D		Ni		400	ZhIN	M1 V M9 V	{ 1 }	(634+1)	[455D]		11	72
-Farf	H	2816	Leneh	D545786-6	M	Ag Pi Pz	A	114	ZhIN	M2 V	{ -1 }	(966-2)	[6645]		10	-648
+Farf	H	2816	Leneh	D545786-6	KM	Ag Pi Pz	A	114	ZhIN	M2 V	{ 0 }	(966-2)	[6745]		10	-648
 Farf	L	2822	Bosslwck	A7958A9-B	K	Pa Ph Pi		903	Prot	G3 V	{ 2 }	(D7C+3)	[9A6C]		8	3,276
 Farf	L	2825	Dobbyn	B976775-8		Ag Pi Pz	A	600	Prot	F5 V D	{ 1 }	(969-1)	[5836]		9	-486
 Farf	L	2827	Mwari	B544411-A		Ni Pa		702	NaHu	G7 V	{ 1 }	(834-3)	[1516]		10	-288
@@ -421,8 +421,8 @@ Farf	D	2902	Briad	B84A464-A		Ni Wa O:2903		703	ZhIN	K9 V M1 V	{ 1 }	(934-1)	[253
 Farf	D	2903	Dledl I'	A300879-D		Na Va Ph Pi		600	ZhIN	F7 V	{ 2 }	(A7D+3)	[9A6E]		11	2,730
 Farf	D	2904	Zdiietltsia	E100000-0		Ba Va		120	ZhIN	M1 V	{ -3 }	(700-5)	[0000]		9	0
 Farf	D	2905	Flatlkrrsh	B000410-9		As Ni Va		803	ZhIN	G2 V	{ 0 }	(731-4)	[1414]		9	-84
-Farf	D	2908	Blenzhrakiavr	C553487-4	M	Ni Po		103	ZhIN	M0 V M3 V M5 V	{ -2 }	(631-2)	[4254]		14	-36
-Farf	D	2910	Tsenchoz Ia	B535446-8	M	Ni		310	ZhIN	M2 V M7 V	{ -1 }	(732-2)	[3347]		10	-84
+Farf	D	2908	Blenzhrakiavr	C553487-4	KM	Ni Po		103	ZhIN	M0 V M3 V M5 V	{ -1 }	(631-2)	[4354]		14	-36
+Farf	D	2910	Tsenchoz Ia	B535446-8	KM	Ni		310	ZhIN	M2 V M7 V	{ 0 }	(732-2)	[3447]		10	-84
 Farf	H	2912	Vezdinz	EAC6455-9		Fl Ni		402	ZhIN	G2 V	{ -2 }	(831-4)	[2237]		10	-96
 Farf	L	2921	Kendus	D500889-7		Na Va Ph Pi		400	Prot	F4 V D	{ -2 }	(A76-1)	[9668]		6	-420
 Farf	L	2923	Tallamatrix	A593853-A	K	Ph Pi		402	Prot	G2 V	{ 2 }	(C7B-1)	[5A27]		7	-924
@@ -436,10 +436,10 @@ Farf	P	2938	Shadmara	E8C1200-9		Fl He Lo		500	TrDo	M1 V	{ -2 }	(410-5)	[1114]		9
 Farf	P	2939	Kulikov	C722587-A		He Ni Po		104	TrDo	M0 V	{ 0 }	(B44+1)	[555A]		10	176
 Farf	D	3002	Zhar Yens	B687469-7	V	Ni Ga Pa O:2903		202	ZhIN	F5 V	{ -1 }	(632+1)	[5368]		5	36
 Farf	D	3003	Zhar	E433632-8		Na Ni Po		301	ZhIN	M1 V	{ -3 }	(951-5)	[2314]		9	-225
-Farf	D	3005	Dlentsiviepl	A74A402-E	K	Ni Wa Cp		702	ZhIN	G9 IV	{ 1 }	(537-3)	[1519]		13	-315
-Farf	D	3008	Shinch Anz	C546688-7	M	Ag Ni Da	A	504	ZhIN	K3 IV M0 V	{ -1 }	(853-1)	[6557]		8	-120
+Farf	D	3005	Dlentsiviepl	A74A402-E	KM	Ni Wa Cp		702	ZhIN	G9 IV	{ 2 }	(537-3)	[1619]		13	-315
+Farf	D	3008	Shinch Anz	C546688-7	KM	Ag Ni Da	A	504	ZhIN	K3 IV M0 V	{ 0 }	(853-1)	[6657]		8	-120
 Farf	D	3009	Flam	C635758-8				304	ZhIN	M0 V	{ -1 }	(D67-1)	[7658]		12	-546
-Farf	H	3013	She' I'	C427744-A	M	Pi		804	ZhIN	M0 V	{ 1 }	(D6A-1)	[5838]		11	-780
+Farf	H	3013	She' I'	C427744-A	KM	Pi		804	ZhIN	M0 V	{ 2 }	(D6A-1)	[5938]		11	-780
 Farf	H	3017	Ongihlil	B7935A8-A		Ni		423	NaHu	F1 V M7 V	{ 1 }	(C45+1)	[565A]		9	240
 Farf	H	3019	Therop	A5119BD-B		Hi Ic In Na Pz	A	910	Prot	F9 V M4 V M4 V	{ 4 }	(C8F+5)	[DD9F]		11	7,200
 Farf	L	3021	Goggic	A694610-B	V	Ag Ni		301	Prot	K7 V	{ 2 }	(956-2)	[1816]		6	-540
@@ -460,10 +460,10 @@ Farf	P	3134	Lalandra	B742726-A	V	He Po Pi		602	MnPr	M1 V	{ 2 }	(B6B+1)	[6949]		5
 Farf	P	3136	Pentalus	C957694-8		Ag Ni		904	MnPr	G8 IV	{ -1 }	(C53-3)	[4536]		13	-540
 Farf	P	3137	Piat	D431531-6		Ni Po		400	NaHu	M2 V	{ -3 }	(741-5)	[1212]		8	-140
 Farf	D	3204	Josh Sotl	E000000-0		As Ba Va O:2903		902	ZhIN	G2 V M1 V M8 V	{ -3 }	(600+2)	[0000]		13	0
-Farf	D	3209	Chivlja	E200000-0	M	Ba Va		404	ZhIN	K0 V	{ -3 }	(500-5)	[0000]		8	0
+Farf	D	3209	Chivlja	E200000-0	KM	Ba Va		404	ZhIN	K0 V	{ -2 }	(500-5)	[0000]		8	0
 Farf	H	3213	Dliareq	C435652-8		Ni		511	ZhIN	M1 V	{ -2 }	(A52-5)	[2414]		6	-500
-Farf	H	3214	Iesheqr	B544400-A		Ni Pa		600	ZhIN	M2 V	{ 1 }	(634-3)	[1515]		6	-216
-Farf	H	3218	Kiat	CAA65A8-9	K	Fl Ni		703	ZhIN	G0 V M7 V	{ -1 }	(A43-1)	[5459]		10	-120
+Farf	H	3214	Iesheqr	B544400-A	W	Ni Pa		600	ZhIN	M2 V	{ 2 }	(634-3)	[1615]		6	-216
+Farf	H	3218	Kiat	CAA65A8-9	KM	Fl Ni		703	ZhIN	G0 V M7 V	{ 0 }	(A43-1)	[5559]		10	-120
 Farf	H	3219	Deyil	C744654-5		Ag Ni		413	NaHu	G6 V M3 V	{ -1 }	(853-3)	[4533]		12	-360
 Farf	L	3221	Regalia	D521200-7		He Lo Po Da	A	902	Prot	F0 IV G3 V	{ -3 }	(410-5)	[1112]		11	0
 Farf	L	3228	Galatea	E685610-5		Ag Ni Ga Ri (Jessa)7 (Satha)3		502	NaHu	F3 V D	{ -1 }	(853-5)	[1511]		14	-600
