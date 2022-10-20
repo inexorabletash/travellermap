@@ -724,9 +724,13 @@
       }
 
       // Bases
-      world.Bases = (function(code) {
-        return (code || '').split('').map(function(code) { return BASE_TABLE[code]; });
-      }(world.Bases));
+      world.Bases = (function(code, allegiance) {
+        if (allegiance.match(/^Zh/)) {
+          if (code == 'KM') return 'Zhodani Base';
+          if (code == 'W') return 'Zhodani Relay Station';
+        }
+        return code.split('').map(function(code) { return BASE_TABLE[code]; });
+      }(world.Bases || '', world.Allegiance || ''));
 
       if (world.Remarks) {
         world.Remarks.forEach(function(remark) {
