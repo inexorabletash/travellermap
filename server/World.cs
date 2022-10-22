@@ -518,8 +518,8 @@ namespace Maps
                     {
                         ErrorUnless(heterogeneity.InRange(Math.Max(1, PopulationExponent - 5), Math.Max(1, PopulationExponent + 5)),
                             $"[Cx] Heterogeneity={heterogeneity} out of range; should be: Pop(={PopulationExponent}) + Flux");
-                        ErrorUnless(acceptance == Math.Max(1, PopulationExponent + imp),
-                            $"[Cx] Acceptance={acceptance} incorrect; should be: Pop(={PopulationExponent}) + Imp(={imp})");
+                        ErrorUnless(acceptance.InRange(Math.Max(1, PopulationExponent + imp - 5), Math.Max(1, PopulationExponent + imp + 5)),
+                            $"[Cx] Acceptance={acceptance} incorrect; should be: Pop(={PopulationExponent}) + Imp(={imp}) + Flux");
                         ErrorUnless(strangeness.InRange(Math.Max(1, 5 - 5), Math.Max(1, 5 + 5)),
                             $"[Cx] Strangeness={strangeness} out of range; should be: Flux + 5");
                         ErrorUnless(symbols.InRange(Math.Max(1, TechLevel - 5), Math.Max(1, TechLevel + 5)),
