@@ -559,7 +559,6 @@ namespace Maps
             // TODO: Nobility
         }
 
-        private static readonly string[] BasesThatBoostImportance = { "NS", "NW", "W", "X", "D", "RT", "CK", "KM", "KV", "MN" };
         private int CalculateImportance()
         {
             int imp = 0;
@@ -573,8 +572,8 @@ namespace Maps
             if (IsAg) ++imp;
             if (IsRi) ++imp;
             if (IsIn) ++imp;
-            string bases = String.Concat(Bases.OrderBy(c => c));
-            if (BasesThatBoostImportance.Contains(bases)) ++imp;
+            string bases = String.Concat(Bases.OrderBy(c => c).Distinct());
+            if (SecondSurvey.BasesThatBoostImportance.Contains(bases)) ++imp;
             return imp;
         }
 

@@ -394,13 +394,13 @@ namespace Maps
                 i += 1;
             if (world.PopulationExponent <= 6)
                 i -= 1;
-            if ((world.Bases.Contains('N') || world.Bases.Contains('K')) &&
-                (world.Bases.Contains('S') || world.Bases.Contains('V')))
-                i += 1;
-            if (world.Bases.Contains('W'))
+            string bases = String.Concat(world.Bases.OrderBy(c => c).Distinct());
+            if (BasesThatBoostImportance.Contains(bases))
                 i += 1;
             return i;
         }
         #endregion
+
+        public static readonly string[] BasesThatBoostImportance = { "NS", "NW", "W", "X", "D", "RT", "CK", "KM", "KV", "MN" };
     }
 }

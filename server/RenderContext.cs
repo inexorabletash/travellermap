@@ -1185,6 +1185,17 @@ namespace Maps.Rendering
                                         }
                                     }
 
+                                    // Base 3 (!)
+                                    if (bases.Length > 2)
+                                    {
+                                        Glyph glyph = Glyph.FromBaseCode(world.LegacyAllegiance, bases[2]);
+                                        if (glyph.IsPrintable)
+                                        {
+                                            solidBrush.Color = glyph.IsHighlighted ? styles.worlds.textHighlightColor : styles.worlds.textColor;
+                                            RenderUtil.DrawGlyph(graphics, glyph, fonts, solidBrush, styles.BaseMiddlePosition);
+                                        }
+                                    }
+
                                     // Research Stations
                                     {
                                         string rs;
