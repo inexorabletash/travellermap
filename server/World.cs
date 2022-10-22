@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Serialization;
@@ -424,6 +425,10 @@ namespace Maps
             ErrorIf(sophpop > 10, $"Codes: Sophont pop codes > 100%: {string.Join(" ", sophpops)}");
             #endregion
 
+            #region Bases
+            ErrorUnless(Bases == String.Concat(Bases.OrderBy(c => c)),
+                $"Bases: Must appear in alphabetical order: {Bases}");
+            #endregion
 
             // {Ix}
             int imp = CalculateImportance();
@@ -545,6 +550,7 @@ namespace Maps
             // TODO: Nobility
         }
 
+        private static readonly string[] BasesThatBoostImportance = { "NS", "NW", "W", "X", "D", "RT", "CK", "KM", "KV" };
         private int CalculateImportance()
         {
             int imp = 0;
@@ -558,7 +564,8 @@ namespace Maps
             if (IsAg) ++imp;
             if (IsRi) ++imp;
             if (IsIn) ++imp;
-            if (Bases == "NS" || Bases == "NW" || Bases == "W" || Bases == "X" || Bases == "D" || Bases == "RT" || Bases == "CK" || Bases == "KM" || Bases == "KV") ++imp;
+            string bases = String.Concat(Bases.OrderBy(c => c));
+            if (BasesThatBoostImportance.Contains(bases)) ++imp;
             return imp;
         }
 
