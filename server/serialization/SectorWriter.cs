@@ -179,7 +179,7 @@ namespace Maps.Serialization
                     world.Cultural ?? "",
                     world.Nobility ?? "",
                     world.Worlds > 0 ? world.Worlds.ToString(CultureInfo.InvariantCulture) : "",
-                    world.ResourceUnits.ToString(CultureInfo.InvariantCulture)
+                    world.ResourceUnits?.ToString(CultureInfo.InvariantCulture) ?? ""
                 }));
             }
         }

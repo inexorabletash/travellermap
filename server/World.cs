@@ -79,7 +79,7 @@ namespace Maps
         public string? Cultural { get; set; }
         public string? Nobility { get; set; }
         public byte Worlds { get; set; }
-        public int ResourceUnits { get; set; }
+        public int? ResourceUnits { get; set; }
 
         private Hex hex;
         internal byte X => hex.X;
@@ -494,6 +494,15 @@ namespace Maps
 
                     ErrorIf(efficiency == 0,
                         $"(Ex) Efficiency=0 should be coded as +1 (T5SS, implied by T5.10 Book 3 pp.18)");
+
+                    // Resource Units
+                    if (ResourceUnits != null)
+                    {
+                        // TODO: Update data (and this check) to conform to T5.10 which eschews 0.
+                        int ru = resources * labor * infrastructure * efficiency;
+                        ErrorUnless(ResourceUnits == ru,
+                            $"Resource Units={ResourceUnits} incorrect, should be R(={resources}) * L(={labor}) * I(={infrastructure}) * E(={efficiency}) = {ru}");
+                    }
                 }
             }
 

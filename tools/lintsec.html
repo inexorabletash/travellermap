@@ -16,7 +16,7 @@
   .fail #summary { color: #800000; }
 
   #results { display: none; }
-  .pass #results, .fail #results { display: block; }
+  .checking #results, .pass #results, .fail #results { display: block; }
 
 </style>
 <h1>Sector Data Checker &mdash; The Traveller Map</h1>
@@ -71,6 +71,11 @@
     }
 
     $('#go').addEventListener('click', function () {
+      $('#summary').innerHTML = '\u231B Checking...';
+      $('#output').value = '';
+      document.body.classList.remove('pass');
+      document.body.classList.remove('fail');
+        document.body.classList.add('checking');
       var input = $('#input').value;
       fetch(Traveller.MapService.makeURL(
         '/api/sec', {
@@ -84,11 +89,11 @@
       }).then(function(response) {
         if (response.ok) {
           document.body.classList.add('pass');
-          document.body.classList.remove('fail');
+          document.body.classList.remove('checking');
           $('#summary').innerHTML = '\u2713 No errors found';
         } else {
           document.body.classList.add('fail');
-          document.body.classList.remove('pass');
+          document.body.classList.remove('checking');
           $('#summary').innerHTML = '\u2717 Errors found';
         }
         return response.text();
@@ -96,7 +101,7 @@
         $('#output').value = text;
       }).catch(function(error) {
         document.body.classList.add('fail');
-        document.body.classList.remove('pass');
+        document.body.classList.remove('checking');
         $('#summary').innerHTML = '\u2717 SERVICE ERROR \u2717';
         $('#output').value = error;
       });
