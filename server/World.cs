@@ -426,8 +426,8 @@ namespace Maps
             #endregion
 
             #region Bases
-            ErrorUnless(Bases == String.Concat(Bases.OrderBy(c => c)),
-                $"Bases: Must appear in alphabetical order: {Bases}");
+            ErrorUnless(Bases == String.Concat(Bases.OrderBy(c => c).Distinct()),
+                $"Bases: Must be distinct and appear in alphabetical order: {Bases}");
             #endregion
 
             // {Ix}
@@ -559,7 +559,7 @@ namespace Maps
             // TODO: Nobility
         }
 
-        private static readonly string[] BasesThatBoostImportance = { "NS", "NW", "W", "X", "D", "RT", "CK", "KM", "KV" };
+        private static readonly string[] BasesThatBoostImportance = { "NS", "NW", "W", "X", "D", "RT", "CK", "KM", "KV", "MN" };
         private int CalculateImportance()
         {
             int imp = 0;
