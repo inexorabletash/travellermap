@@ -1,4 +1,17 @@
 #!/usr/bin/env perl
+
+# Usage:
+#  update_world_data.pl ARGS
+#
+# Default: creates files in ../Sectors/M1105 including anomalies
+#
+# Arguments:
+#  --source-tsv      Use the .tsv files (copy/pasted from spreadsheet) as the source
+#                      * t5ss-im.tsv
+#                      * t5ss-nonim.tsv
+#  --source-data     Use the files in ./data/ as the source
+#  --extract         Create files in ./data/ without anomalies
+
 use strict;
 use warnings;
 
@@ -8,6 +21,23 @@ use FindBin;
 use lib $FindBin::Bin;
 
 use parseutil;
+
+# Command line args
+my $extractFlag = 0;
+my $source = '';
+while (defined $ARGV[0]) {
+    my $arg = shift @ARGV;
+    if ($arg eq '--extract') {
+        $extractFlag = 1;
+    } elsif ($arg eq '--source-tsv') {
+        $source = 'tsv';
+    } elsif ($arg eq '--source-data') {
+        $source = 'data';
+    } else {
+        die "Unknown arg: $arg\n";
+    }
+}
+die "Need a --source-XXX option\n" unless $source;
 
 my %sectors = (
     Afaw => "Afawahisa",
@@ -31,7 +61,7 @@ my %sectors = (
     Eali => "Ealiyasiyw",
     Empt => "Empty Quarter",
     Farf => "Far Frontiers",
-    Fore => "Foreven",
+#   Fore => "Foreven",
     Forn => "Fornast",
     Gash => "Gashikan",
     Gate => "Gateway",
@@ -76,47 +106,65 @@ my %sectors = (
     Ziaf => "Ziafrplians",
     );
 
-# If saving as tab-delimited text from MacOS Excel:
-#   Line endings: CR
-#   Input encoding: MacRoman
-# If copy/pbpaste from MacOS Excel:
-#   Line endings: CR
-#   Input encoding: UTF-8
-
-my $INPUT_LINE_ENDINGS = "\r";
 my $INPUT_ENCODING = "UTF-8";
 
-
-
-#
-# Parse T5SS TSV files
-#
 my @lines = ();
 my $header;
-{
-    my @in_files = ('t5ss-im.tsv', 't5ss-nonim.tsv');
-    local $/ = $INPUT_LINE_ENDINGS;
-    foreach my $file (@in_files) {
-        my $count = 0;
-        print "Processing: $file\n";
-        my $in_path = File::Spec->catfile($FindBin::Bin, $file);
-        open my $in, "<:encoding($INPUT_ENCODING)", $in_path or die;
-        my $keep = 0;
-        foreach my $line (<$in>) {
-            chomp $line;
-            my $sector = (split('\t', $line))[1];
-            if (!$keep && $sector eq 'Sector') {
-                $header = $line;
-                $keep = 1;
-                next;
+if ($source eq 'tsv' ) {
+
+    # If saving as tab-delimited text from MacOS Excel:
+    #   Line endings: CR
+    #   Input encoding: MacRoman
+    # If copy/pbpaste from MacOS Excel:
+    #   Line endings: CR
+    #   Input encoding: UTF-8
+
+    my $INPUT_LINE_ENDINGS = "\r";
+    my $INPUT_ENCODING = "UTF-8";
+
+    #
+    # Parse T5SS TSV files
+    #
+    {
+        my @in_files = ('t5ss-im.tsv', 't5ss-nonim.tsv');
+        local $/ = $INPUT_LINE_ENDINGS;
+        foreach my $file (@in_files) {
+            my $count = 0;
+            print "Processing: $file\n";
+            my $in_path = File::Spec->catfile($FindBin::Bin, $file);
+            open my $in, "<:encoding($INPUT_ENCODING)", $in_path or die;
+            my $keep = 0;
+            foreach my $line (<$in>) {
+                chomp $line;
+                my $sector = (split('\t', $line))[1];
+                if (!$keep && $sector eq 'Sector') {
+                    $header = $line;
+                    $keep = 1;
+                    next;
+                }
+                next unless $keep && $sector && $sector =~ /^....?$/;
+                push @lines, $line;
+                ++$count;
             }
-            next unless $keep && $sector && $sector =~ /^....?$/;
-            push @lines, $line;
-            ++$count;
+            print " count: $count lines\n";
         }
-        print " count: $count lines\n";
+    }
+} elsif ($source eq 'data') {
+    foreach my $sec (keys %sectors) {
+        my $fh = FileHandle->new;
+        my $fn = "$sectors{$sec}.tab";
+        my $pn = File::Spec->catfile($FindBin::Bin, '.', 'data', $fn);
+        open ($fh, '<:encoding(UTF-8)', $pn);
+        #print "reading $fn...\n";
+        $header = <$fh>;
+        while (my $line = <$fh>) {
+            push @lines, $line;
+        }
+        close $fh;
     }
 }
+my @header = map { trim($_) } split('\t', $header);
+
 
 #
 # Parse anomalies (calibration points, etc) column-delimited file
@@ -132,10 +180,6 @@ my @anomalies;
 
     print "Anomalies: ", scalar(@anomalies), "\n"
 }
-
-@lines = sort @lines;
-
-my @header = map { trim($_) } split('\t', $header);
 
 my @outheader = (
     'Sector',
@@ -179,12 +223,16 @@ sub hexToSS {
     return chr(ord('A') + $ssx + $ssy * 4);
 }
 
-
 #
 # Start outputting sector files
 #
 
-my $outdir = File::Spec->catdir($FindBin::Bin, '..', 'Sectors', 'M1105');
+my $outdir;
+if (!$extractFlag) {
+    $outdir = File::Spec->catdir($FindBin::Bin, '..', 'Sectors', 'M1105');
+} else {
+    $outdir = File::Spec->catdir($FindBin::Bin, '.', 'data');
+}
 my %files;
 
 # Look up appropriate sector file handle, open if needed
@@ -203,7 +251,7 @@ sub fileForSector($) {
     return $fh;
 }
 
-
+my @parsed = ();
 foreach my $line (@lines) {
     # Parse tab-delimited lines into fields
     chomp $line;
@@ -217,36 +265,49 @@ foreach my $line (@lines) {
     my $sec = $fields{'Sector'};
     next if $sec eq 'ZZZZ'; # Sentinel
 
-    # Synthesize fields
-    $fields{'SS'} = hexToSS($fields{'Hex'});
-    $fields{'Remarks'} = combine($fields{'TC'}, $fields{'Remarks'}, $fields{'Sophonts'}, $fields{'Details'});
-    $fields{'Name'} = $fields{'M1000 Names'};
+    if ($source eq 'tsv') {
+        # Synthesize fields
+        $fields{'SS'} = hexToSS($fields{'Hex'});
+        $fields{'Remarks'} = combine($fields{'TC'}, $fields{'Remarks'}, $fields{'Sophonts'}, $fields{'Details'});
+        $fields{'Name'} = $fields{'M1000 Names'};
+    }
+    push @parsed, \%fields;
+}
 
+@parsed = sort {
+    $a->{'Sector'} cmp $b->{'Sector'} ||
+    $a->{'Hex'} cmp $b->{'Hex'}
+} @parsed;
+
+foreach my $fields (@parsed) {
     # Write fields, per output header
     my @out;
     for my $i (0..$#outheader) {
-        $out[$i] = $fields{$outheader[$i]}
+        $out[$i] = $fields->{$outheader[$i]}
     }
 
+    my $sec = $fields->{'Sector'};
     my $fh = fileForSector($sec);
     print { $fh } join("\t", @out), "\n";
 }
 
 # Append anomaly entries
 
-print "Processing Anomalies...\n";
-foreach my $anomaly (@anomalies) {
-    my $sec = $anomaly->{'Sector'};
+if (!$extractFlag) {
+    print "Processing Anomalies...\n";
+    foreach my $anomaly (@anomalies) {
+        my $sec = $anomaly->{'Sector'};
 
-    # Synthesize fields
-    $anomaly->{'SS'} = hexToSS($anomaly->{'Hex'});
+        # Synthesize fields
+        $anomaly->{'SS'} = hexToSS($anomaly->{'Hex'});
 
-    # Write fields, per output header
-    my @out;
-    for my $i (0..$#outheader) {
-        $out[$i] = $anomaly->{$outheader[$i]} // '';
+        # Write fields, per output header
+        my @out;
+        for my $i (0..$#outheader) {
+            $out[$i] = $anomaly->{$outheader[$i]} // '';
+        }
+
+        my $fh = fileForSector($sec);
+        print { $fh } join("\t", @out), "\n";
     }
-
-    my $fh = fileForSector($sec);
-    print { $fh } join("\t", @out), "\n";
 }
