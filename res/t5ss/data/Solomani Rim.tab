@@ -51,7 +51,7 @@ Solo	E	0511	Yrsai	A663A9B-F		Hi Pz	A	402	ImDs	G0 V M5 V	{ 3 }	(E9B+4)	[CD7H]	BE	
 Solo	E	0518	Arukhur	E200365-9		Lo Va O:0617		522	ImDs	M3 V	{ -2 }	(920-4)	[1137]	B	7	-72
 Solo	I	0524	Irashdaa	A689869-D	S	Ri Ph Dolp0 Mr Tz		513	ImDs	M2 V M8 V	{ 3 }	(E7B+3)	[9B6E]	BCe	14	3234
 Solo	I	0527	Basse Terre	A6699AC-E		Hi Pr Pz	A	823	ImDs	K6 V M0 V	{ 3 }	(G8C+5)	[CC8H]	BcE	16	7680
-Solo	I	0528	Kidashi	A557A69-E	N	Hi Pz Mr Lk Sa	A	824	ImDs	M2 V	{ 3 }	(J9B+3)	[BD6F]	BE	11	-297
+Solo	I	0528	Kidashi	A557A69-E	N	Hi Pz Mr Lk Sa	A	824	ImDs	M2 V	{ 3 }	(J9B+3)	[BD6F]	BE	11	5346
 Solo	M	0532	Cadmus	C532423-A		Ni Po		822	SoCf	K8 V M7 V	{ 0 }	(A32-3)	[1427]		13	-180
 Solo	M	0533	Skyron	B312433-C		Ic Ni Sa		302	SoCf	M1 V M8 V	{ 1 }	(833-2)	[1529]		11	-144
 Solo	M	0536	Chinon	C696846-8		Pa Ph Pi		322	SoCf	M1 V M7 V	{ -1 }	(E74-3)	[7747]		11	-1176
@@ -60,7 +60,7 @@ Solo	A	0606	Ishadar	C000776-A		As Na Va Pi		825	ImDs	K0 III M4 V	{ 1 }	(G68-1)	[
 Solo	A	0609	Goshen	C577532-9		Ag Ni		300	ImDs	M1 V M3 V	{ 0 }	(743-4)	[1515]	BC	9	-336
 Solo	A	0610	Nukaash	C547721-8		Ag Pi		320	ImDs	M1 V M5 V	{ 0 }	(B66-5)	[3714]	BCD	11	-1980
 Solo	E	0612	Glaucas	A8869A9-E	S	Hi Ga Pr		532	ImDs	K2 V M9 V M2 V	{ 3 }	(G8C+3)	[AC6F]	BcE	13	4608
-Solo	E	0617	Hoatzin	A967986-E		Hi Pr		534	ImDs	F4 V	{ 3 }	(J8C+1)	[8C4D]	BcE	13	-96
+Solo	E	0617	Hoatzin	A967986-E		Hi Pr		534	ImDs	F4 V	{ 3 }	(J8C+1)	[8C4D]	BcE	13	1728
 Solo	E	0618	Stralsund	B0007BE-D		As Na Va Pi Pz	A	520	ImDs	A7 V	{ 2 }	(B6B+5)	[B99H]	BD	12	3630
 Solo	I	0624	York	C8A3263-A		Fl Lo O:0524		523	ImDs	F6 V	{ 0 }	(910-3)	[1227]	B	15	-27
 Solo	I	0626	Albrecht	B742747-A		He Po Pi		903	ImDs	G3 V M9 V	{ 2 }	(C69+1)	[795A]	BD	8	648
@@ -124,7 +124,7 @@ Solo	N	1034	Twylo	A551AA6-E	KM	Hi Po Cp		803	SoCf	A6 V	{ 4 }	(F9C+2)	[9E4D]		10	
 Solo	N	1035	Poictesme	A568854-C		Ri Pa Ph		601	SoCf	M3 V	{ 3 }	(B7A+1)	[6B3A]		4	770
 Solo	B	1105	Coriolanus	A437876-E	S	Ph Sa		410	ImDs	M1 V M7 V	{ 2 }	(B7A+1)	[7A4D]	Be	11	770
 Solo	B	1107	Tammuz	A7549A9-E		Hi		623	ImDs	M1 V	{ 3 }	(G8C+3)	[AC6F]	BE	13	4608
-Solo	B	1110	Quaver	A3118BC-E		Ic Na Ph Pi Pz Sa	A	735	ImDs	F2 V	{ 2 }	(J7A+4)	[BA8H]	BDe	11	-280
+Solo	B	1110	Quaver	A3118BC-E		Ic Na Ph Pi Pz Sa	A	735	ImDs	F2 V	{ 2 }	(J7A+4)	[BA8H]	BDe	11	5040
 Solo	F	1111	Dimmurak	A657944-E		Hi Ga		704	ImDs	M2 V	{ 3 }	(F8C+1)	[7C3C]	BE	12	1440
 Solo	F	1116	Esperance	A568878-C	N	Ri Pa Ph Pz Vega3	A	511	ImDs	A6 V	{ 3 }	(C7A+2)	[8B5C]	BcCe	8	1680
 Solo	F	1117	Mashaddun	C994210-9		Lo		620	ImDs	G8 IV M3 V	{ -1 }	(610-5)	[1114]	B	11	-30
@@ -219,7 +219,7 @@ Solo	C	1802	Easter	AAE7977-F		Hi Pz Sa	A	403	ImDs	M3 V M7 V	{ 3 }	(E8C+2)	[9C5F]
 Solo	C	1804	Yeremyh	A5207BF-D		De He Na Po Pi Pz	A	503	ImDs	M2 V	{ 2 }	(C6B+5)	[C9AJ]	BD	12	3960
 Solo	G	1813	Wanish Tyo	A631886-D		Na Po Ph VegaW		502	ImVd	M2 V	{ 2 }	(C7A+1)	[7A4C]	Be	15	840
 Solo	G	1814	Tsamis	A547986-E		Hi In VegaW		513	ImVd	K1 V	{ 4 }	(F8D+2)	[8D4D]	BEf	15	3120
-Solo	G	1816	Muan Issler	A554A86-E		Hi VegaW		134	ImVd	M1 V	{ 3 }	(K9B+1)	[9D4D]	BE	15	-99
+Solo	G	1816	Muan Issler	A554A86-E		Hi VegaW		134	ImVd	M1 V	{ 3 }	(K9B+1)	[9D4D]	BE	15	1881
 Solo	G	1818	Ashtagz Tyui	C548786-8		Ag Pi VegaW		803	ImVd	G5 IV M3 V M4 V	{ 0 }	(C66-2)	[6747]	BCD	15	-864
 Solo	K	1822	Nusku	A569943-F		Hi Pr		314	ImDs	K5 V K7 V	{ 3 }	(G8C-1)	[6C2C]	BcE	15	-1536
 Solo	K	1824	Agidda	A974979-C		Hi In		801	ImDs	M3 V	{ 4 }	(C8C+4)	[AD6D]	BEf	9	4608
@@ -241,7 +241,7 @@ Solo	C	2001	Hiroshi	A558774-C		Ag		120	ImDs	G6 V	{ 3 }	(B6B+1)	[5A3A]	BC	15	726
 Solo	C	2004	Charuth	A786988-E		Hi Ga Pr		502	ImDs	F6 IV	{ 3 }	(D8C+2)	[9C5E]	BcE	12	2496
 Solo	C	2010	Khiirshag	A79A9BC-F	W	Hi In Wa Pz	A	903	ImDs	M3 V	{ 5 }	(E8E+5)	[CE8J]	BEf	10	7840
 Solo	G	2011	Andiirish	B000555-E		As Ni Va		812	ImDs	F5 V	{ 1 }	(A44-1)	[363C]	B	12	-160
-Solo	G	2012	Cathay	A866ADC-E	N	Hi Ga Pz	A	325	ImDs	M1 V	{ 3 }	(K9B+5)	[DD8H]	BE	10	-495
+Solo	G	2012	Cathay	A866ADC-E	N	Hi Ga Pz	A	325	ImDs	M1 V	{ 3 }	(K9B+5)	[DD8H]	BE	10	9405
 Solo	G	2015	Duikin Tyui	A310886-E		Na Ph Pi VegaW Sa		523	ImVd	G0 V	{ 2 }	(F7A+1)	[7A4D]	BDe	13	1050
 Solo	G	2017	Hariksiat	A549886-D		Ph Pi VegaW		220	ImVd	F0 V M0 V	{ 2 }	(C7A+1)	[7A4C]	BDe	13	840
 Solo	K	2021	Ishimshulgi	E200478-7		Ni Va		702	ImDs	M1 V M2 V	{ -3 }	(631-3)	[4157]	B	13	-54
@@ -257,7 +257,7 @@ Solo	C	2106	Ogier	B10088A-C		Na Va Ph Pi		300	ImDs	M3 V	{ 2 }	(A79+3)	[AA7E]	BDe
 Solo	C	2109	Eleusis	A789831-D	N	Ri Ph Cp		912	ImDs	F1 V	{ 3 }	(D7B-2)	[4B19]	BCeF	13	-2002
 Solo	G	2114	Sithuan Hsarr	C8B6486-A		Fl Ni VegaW		403	ImVd	F5 V M6 V	{ 0 }	(932-1)	[3449]	B	6	-54
 Solo	G	2118	Dzadwahtyan	A785786-C		Ag Ga Ri VegaW		523	ImVd	K3 V M0 V	{ 4 }	(E6C+2)	[6B4B]	BCf	8	2016
-Solo	K	2121	Lagash	A667A8B-F	N	Hi Ga Cp		524	ImDs	G0 V K7 V	{ 3 }	(J9B+4)	[CD7H]	BEF	9	-396
+Solo	K	2121	Lagash	A667A8B-F	N	Hi Ga Cp		524	ImDs	G0 V K7 V	{ 3 }	(J9B+4)	[CD7H]	BEF	9	7128
 Solo	O	2131	Inferno	C578855-9		Pa Ph Pi		824	ImDs	M2 V M2 V	{ 0 }	(G76-3)	[6837]	BcDe	9	-2016
 Solo	O	2132	Forlorn	C596365-9		Lo O:1931		224	ImDs	M3 V	{ -1 }	(B20-3)	[1237]	B	13	-66
 Solo	O	2135	New Greenpernt	B798443-B	KM	Ni Pa An		704	SoCf	G8 V M0 V	{ 2 }	(A34-1)	[1628]		15	-120

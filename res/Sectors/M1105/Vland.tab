@@ -28,7 +28,7 @@ Vlan	A	0307	Enard	C8A37AC-9	S	Fl Pz	A	501	ImDv	M1 V M7 V	{ 0 }	(A69+3)	[A78C]	B	
 Vlan	E	0311	Omero	A430320-F	N	De Lo Po		822	ImDv	G8 V M3 V	{ 1 }	(921-3)	[141A]	B	13	-54
 Vlan	M	0333	Paspaa	A554455-E	N	Ni Pa		510	ImDv	G0 V K3 V	{ 1 }	(734-1)	[253C]	Bc	11	-84
 Vlan	M	0335	Nadud	D97A350-9		Lo Wa		220	ImDv	M1 V	{ -2 }	(720-5)	[1114]	B	13	-70
-Vlan	M	0336	Parsi	A989A9C-F		Hi Cp Pz	A	224	ImDv	K9 V	{ 3 }	(J9F+5)	[DD8J]	BEF	12	-675
+Vlan	M	0336	Parsi	A989A9C-F		Hi Cp Pz	A	224	ImDv	K9 V	{ 3 }	(J9F+5)	[DD8J]	BEF	12	12150
 Vlan	M	0338	Vanessa	E568330-7		Lo		510	ImDv	K8 V M0 V	{ -3 }	(520-5)	[1112]	B	14	-50
 Vlan	M	0340	Jessheim	AAC5233-E	NS	Fl Lo		425	ImDv	M2 V	{ 2 }	(B12-1)	[142B]	B	11	-22
 Vlan	A	0402	Kuk	C540222-8	S	De He Lo Po		901	ImDv	K2 V K6 V	{ -2 }	(510-5)	[1114]	B	8	-25
@@ -179,7 +179,7 @@ Vlan	B	1505	Odinaga	A2016A9-C		Ic Na Ni Va		203	ImDv	M0 V M5 V	{ 1 }	(B55+2)	[77
 Vlan	B	1509	Audhumla	A98A400-E		Ni Wa		201	ImDv	G1 V M1 V	{ 1 }	(734-3)	[1519]	B	9	-252
 Vlan	F	1515	Luunbu	E8D6255-9		Lo Da	A	810	ImDv	M2 V	{ -2 }	(510-4)	[1137]	B	13	-20
 Vlan	F	1516	Duam	E564869-6		Ri Pa Ph O:1519		710	ImDv	M1 V	{ -1 }	(A76+1)	[9767]	BcCe	11	420
-Vlan	F	1519	Kagamira	B577A83-E	N	Hi In Cp		525	ImDv	G4 V	{ 4 }	(K9G+1)	[7E2B]	BEF	10	-144
+Vlan	F	1519	Kagamira	B577A83-E	N	Hi In Cp		525	ImDv	G4 V	{ 4 }	(K9G+1)	[7E2B]	BEF	10	2736
 Vlan	F	1520	Shulishu	A55259B-D		Ni Po Da	A	410	ImDv	K1 V M0 V	{ 1 }	(845+3)	[767F]	B	10	480
 Vlan	J	1523	Ilma	D510744-7	S	Na Pi Di(Qiceteu)		601	ImDv	M0 V	{ -2 }	(966-4)	[5535]	BD	9	-1296
 Vlan	J	1530	Bakog	A8D9351-F	S	Lo		832	ImDv	G8 V	{ 1 }	(A21-3)	[141B]	B	12	-60
@@ -317,7 +317,7 @@ Vlan	G	2216	Ashbakha	A672500-B	N	He Ni		201	ImDv	K9 V M2 V	{ 1 }	(845-3)	[1616]	
 Vlan	K	2221	Karlum	B57A500-E	N	Ni Wa		920	ImDv	K2 V K5 V	{ 1 }	(945-3)	[1619]	B	10	-540
 Vlan	K	2222	Markassar	E7788CA-5		Pa Ph Pi Pz	A	923	ImDv	G2 V G4 V	{ -2 }	(A75+1)	[A677]	BcDe	12	350
 Vlan	K	2223	Gurzish	D76A326-9	S	Lo Wa		401	ImDv	M2 V M8 V	{ -2 }	(620-3)	[2148]	B	12	-36
-Vlan	K	2225	Iamone	C310A9A-E	S	Hi In Na		624	ImDv	K4 V	{ 3 }	(J9F+5)	[CD7G]	BE	11	-675
+Vlan	K	2225	Iamone	C310A9A-E	S	Hi In Na		624	ImDv	K4 V	{ 3 }	(J9F+5)	[CD7G]	BE	11	12150
 Vlan	K	2227	Zikurag	A536585-E		Ni		524	ImDv	F8 V	{ 1 }	(D45-1)	[363C]	B	15	-260
 Vlan	K	2229	Munakhiin	D2027BB-8	S	Ic Na Va Pi Pz	A	910	ImDv	K5 V	{ -2 }	(A66+1)	[957A]	BD	7	360
 Vlan	O	2232	Gikarlum	B999542-A	S	Ni		810	ImDv	G2 V M3 V	{ 1 }	(845-3)	[1616]	B	14	-480
@@ -333,7 +333,7 @@ Vlan	C	2309	Moribur	C550650-9		De Ni Po		920	ImDv	M2 V	{ -1 }	(A53-5)	[1514]	B	1
 Vlan	C	2310	Barshun	B510683-B		Na Ni		620	ImDv	F8 V M8 V	{ 1 }	(A55-2)	[3728]	B	12	-500
 Vlan	G	2314	Dangasha	C550664-8		De Ni Po O:2616		801	ImDv	M3 V	{ -2 }	(952-4)	[4436]	B	6	-360
 Vlan	G	2316	Kagush	A736300-A		Lo		724	ImDv	K6 V	{ 1 }	(B21-3)	[1415]	B	9	-66
-Vlan	G	2319	Shudi	A7669BB-A		Hi Ga Pr Pz	A	525	ImDv	G2 V G6 V	{ 3 }	(J8D+5)	[BC7C]	BcE	12	-520
+Vlan	G	2319	Shudi	A7669BB-A		Hi Ga Pr Pz	A	525	ImDv	G2 V G6 V	{ 3 }	(J8D+5)	[BC7C]	BcE	12	9360
 Vlan	G	2320	Gidapisek	B200623-C		Na Ni Va		810	ImDv	K7 V	{ 1 }	(955-2)	[3729]	B	11	-450
 Vlan	K	2321	Gikarlum	C432476-A		Ni Po		133	ImDv	M3 V	{ 0 }	(C33-1)	[3449]	B	9	-108
 Vlan	K	2322	Hefas	C775961-8	S	Hi In Mr		615	ImDv	M2 V	{ 1 }	(H8A-3)	[5A14]	BE	9	-4080
