@@ -564,6 +564,8 @@ namespace Maps
             // PBG
             ErrorIf(SecondSurvey.FromHex(PBG[PBG_P]) == 0 && PopulationExponent > 0,
                 $"PBG: Pop Multiplier = 0 but Population Exponent (={PopulationExponent}) > 0");
+            ErrorIf(SecondSurvey.FromHex(PBG[PBG_P]) > 0 && PopulationExponent == 0,
+                $"PBG: Pop Exponent = 0 but Population Multiplier (={PBG[PBG_P]}) > 0");
 
             // Worlds
             int min_worlds = 1 + GasGiants + Belts;
