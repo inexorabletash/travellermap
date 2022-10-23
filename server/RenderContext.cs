@@ -1004,7 +1004,7 @@ namespace Maps.Rendering
                         #region Importance Overlay
                         if (styles.importanceOverlay.visible)
                         {
-                            int im = SecondSurvey.Importance(world);
+                            int im = world.CalculatedImportance;
                             if (im > 0)
                             {
                                 DrawOverlay(styles.importanceOverlay, (im - 0.5f) * Astrometrics.ParsecScaleX, ref solidBrush, ref pen);
@@ -1015,7 +1015,7 @@ namespace Maps.Rendering
                         #region Capital Overlay
                         if (styles.capitalOverlay.visible)
                         {
-                            bool hasIm = SecondSurvey.Importance(world) >= 4;
+                            bool hasIm = world.CalculatedImportance >= 4;
                             bool hasCp = world.IsCapital;
 
                             if (hasIm && hasCp)

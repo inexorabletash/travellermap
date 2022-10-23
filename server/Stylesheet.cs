@@ -1383,7 +1383,7 @@ namespace Maps.Rendering
                     Field.Government => world.Government,
                     Field.Law => world.Law,
                     Field.Tech => world.TechLevel,
-                    Field.Importance => SecondSurvey.Importance(world),
+                    Field.Importance => world.CalculatedImportance,
                     _ => throw new ApplicationException("Invalid pattern"),
                 };
                 return InRange(v);

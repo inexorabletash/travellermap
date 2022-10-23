@@ -177,6 +177,16 @@ namespace Maps
             return codes.Any(s => s.Equals(code, StringComparison.InvariantCultureIgnoreCase));
         }
 
+        public bool HasBase(char code) => Bases.Contains(code);
+
+        // Naval Base (N = Imperial, K = other)
+        public bool HasNavalBase() => HasBase('N') || HasBase('K');
+        // Non-Naval Service Base (S = Scout, M = Military, V = Exploration, C = Corsair)
+        public bool HasOtherServiceBase() => HasBase('S') || HasBase('M') || HasBase('V') || HasBase('C');
+        // Special Service Base (W = Scout Way Station, D = Naval Depot)
+        public bool HasServiceSpecialBase() => HasBase('W') || HasBase('D');
+
+
         public string GetCodePrefix(string code)
         {
             if (code == null)
@@ -565,6 +575,7 @@ namespace Maps
 
         private int CalculateImportance()
         {
+            // Per T5.10
             int imp = 0;
             if ("AB".Contains(Starport)) ++imp;
             if ("DEX".Contains(Starport)) --imp;
@@ -576,8 +587,14 @@ namespace Maps
             if (IsAg) ++imp;
             if (IsRi) ++imp;
             if (IsIn) ++imp;
-            string bases = String.Concat(Bases.OrderBy(c => c).Distinct());
-            if (SecondSurvey.BasesThatBoostImportance.Contains(bases)) ++imp;
+
+            // If Naval Base AND Scout Base (or equivalent):
+            if (HasNavalBase() && HasOtherServiceBase()) ++imp;
+            // If Way Station (or equivalent):
+            if (HasServiceSpecialBase()) ++imp;
+            // Special case: Aslan Clan AND Tlaukhu base:
+            if (HasBase('R') && HasBase('T')) ++imp;
+
             return imp;
         }
 
