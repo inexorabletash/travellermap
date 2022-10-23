@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Sector>
+  <Borders>
+    <Border Allegiance="Ae" LabelPosition="1416" ShowLabel="true" WrapLabel="true">1017 1117 1216 1316 1315 1314 1414 1415 1316 1216 1117 1017 </Border>
+    <Border Allegiance="CA" LabelPosition="1110" ShowLabel="true" WrapLabel="true">0907 1007 1108 1208 1109 1009 1008 0908 0907 </Border>
+    <Border Allegiance="FC" LabelPosition="0408" ShowLabel="true" WrapLabel="true">0409 0509 0608 0709 0808 0709 0710 0609 0510 0409 </Border>
+    <Border Allegiance="GC" LabelPosition="3103" ShowLabel="true" WrapLabel="true">2901 3001 3101 3201 3202 3203 3202 3102 3001 2901 </Border>
+    <Border Allegiance="LA" LabelPosition="1013" ShowLabel="true" WrapLabel="true">0910 0911 1011 1112 1012 0912 0911 0910 </Border>
+    <Border Allegiance="LC" LabelPosition="1406" ShowLabel="true" WrapLabel="true">1205 1305 1304 1404 1405 1306 1206 1205 </Border>
+    <Border Allegiance="MC" LabelPosition="2319" ShowLabel="true" WrapLabel="true">2017 2117 2116 2216 2317 2416 2417 2418 2319 2320 2219 2120 2119 2118 2017 </Border>
+    <Border Allegiance="Sa" LabelPosition="2716" ShowLabel="true" WrapLabel="true">2615 2716 2815 2816 2817 2818 2718 2617 2616 2615 </Border>
+    <Border Allegiance="SC" LabelPosition="0215" ShowLabel="true" WrapLabel="true">0112 0211 0212 0313 0413 0514 0613 0614 0514 0414 0314 0214 0114 0113 0112 </Border>
+  </Borders>
+  <Allegiances>
+    <Allegiance Code="Ae">Asuran Empire</Allegiance>
+    <Allegiance Code="CA">Clandur Alliance</Allegiance>
+    <Allegiance Code="FC">Free Comital League</Allegiance>
+    <Allegiance Code="GC">Grennan Combine</Allegiance>
+    <Allegiance Code="LA">Likarova Alliance</Allegiance>
+    <Allegiance Code="LC">Lister Compliance</Allegiance>
+    <Allegiance Code="MC">Mahler Combine</Allegiance>
+    <Allegiance Code="Sa">Saiph Alliance</Allegiance>
+    <Allegiance Code="SC">Sulikov Corporate</Allegiance>
+  </Allegiances>
+  <Stylesheet>
+    border.Ae { color: blue }
+    border.CA { color: gray }
+    border.FC { color: pink }
+    border.GC { color: yellow }
+    border.LA { color: olive }
+    border.LC { color: green }
+    border.MC { color: aquamarine }
+    border.Sa { color: magenta }
+    border.SC { color: lime }
+  </Stylesheet>
+</Sector>
