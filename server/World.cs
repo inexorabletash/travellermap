@@ -320,6 +320,11 @@ namespace Maps
                     ErrorUnless(!HasCode(code), $"Extraneous code: {code}");
                 return calc;
             }
+
+            int OneIfZero(int n)
+            {
+                return n == 0 ? 1 : n;
+            }
             #endregion
 
             #region UWP
@@ -498,10 +503,9 @@ namespace Maps
                     // Resource Units
                     if (ResourceUnits != null)
                     {
-                        // TODO: Update data (and this check) to conform to T5.10 which eschews 0.
-                        int ru = resources * labor * infrastructure * efficiency;
+                        int ru = OneIfZero(resources) * OneIfZero(labor) * OneIfZero(infrastructure) * OneIfZero(efficiency);
                         ErrorUnless(ResourceUnits == ru,
-                            $"Resource Units={ResourceUnits} incorrect, should be R(={resources}) * L(={labor}) * I(={infrastructure}) * E(={efficiency}) = {ru}");
+                            $"Resource Units={ResourceUnits} incorrect, should be (treating 0s as 1s) R(={resources}) * L(={labor}) * I(={infrastructure}) * E(={efficiency}) = {ru}");
                     }
                 }
             }
