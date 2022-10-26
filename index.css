@@ -503,15 +503,18 @@ body:not(.wds-visible) #wds-frame { display: none; }
   display: inline-block;
   line-height: 30px;
   padding: 0 1em;
+  border-radius: 15px;
+  border: 1px solid lightgray;
 }
 
 .link-button:hover,
 .link-button-inline:hover {
-  background-color: lightgray;
+    background-color: lightgray;
 }
-.link-button-inline a:not(:hover),
-.link-button a:not(:hover) {
-  text-decoration: none;
+.link-button-inline a,
+.link-button a
+{
+    text-decoration: none;
 }
 
 /* ============================================================ */
@@ -655,7 +658,7 @@ button:hover {
 .route-ui #routeBox { display: block; }
 
 body:not(.route-shown) #routeDisplay { display: none; }
-body:not(.route-shown) #routeBox { min-height: 130px; max-height: 130px; }
+body:not(.route-shown) #routeBox { min-height: 135px; max-height: 135px; }
 
 #routeBox input[type=text] {
   box-sizing: border-box;
@@ -679,6 +682,20 @@ body:not(.route-shown) #routeBox { min-height: 130px; max-height: 130px; }
 #routeForm.J-5 #J-5,
 #routeForm.J-6 #J-6 { background-color: #E32736; }
 
+#routeForm .jump-button {
+    text-align: center;
+    clear: both;
+    line-height: 30px;
+    border-radius: 15px;
+    border: 1px solid lightgray;
+    height: auto;
+    background-color: white;
+    box-shadow: none;
+}
+#routeForm .jump-button:hover {
+    background-color: lightgray;
+}
+
 #routeForm #closeRouteBtn,
 #routeForm #swapRouteBtn {
   position: absolute;
@@ -697,7 +714,7 @@ body:not(.route-shown) #routeBox { min-height: 130px; max-height: 130px; }
 #routeBox { overflow: hidden; }
 #routeDisplay {
   position: absolute;
-  top: 145px;
+  top: 150px;
   left: 20px;
   right: 20px;
   bottom: 10px;
