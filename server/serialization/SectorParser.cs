@@ -197,7 +197,7 @@ namespace Maps.Serialization
 
         // TODO: 'O' for K'kree Outpost is nonstandard, temporarily allowed for round-tripping data.
         // TODO: 'H' (for Hiver Supply Base) and 'I' (Interface) are nonstandard, for TNE data.
-        private static readonly Regex BASES_REGEX = new Regex(@"^C?D?E?H?I?K?M?N?O?R?S?T?V?W?X?$");
+        private static readonly Regex BASES_REGEX = new Regex(@"^[CDEHIKMNORSTVWX]*$");
         private static readonly Regex ZONE_REGEX = new Regex(@"^(|A|R|F|U|B)$");
         private static readonly Regex NOBILITY_REGEX = new Regex(@"^[BcCDeEfFGH]*$");
 

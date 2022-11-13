@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Serialization;
@@ -78,7 +79,7 @@ namespace Maps
         public string? Cultural { get; set; }
         public string? Nobility { get; set; }
         public byte Worlds { get; set; }
-        public int ResourceUnits { get; set; }
+        public int? ResourceUnits { get; set; }
 
         private Hex hex;
         internal byte X => hex.X;
@@ -176,6 +177,16 @@ namespace Maps
             return codes.Any(s => s.Equals(code, StringComparison.InvariantCultureIgnoreCase));
         }
 
+        public bool HasBase(char code) => Bases.Contains(code);
+
+        // Naval Base (N = Imperial, K = other)
+        public bool HasNavalBase() => HasBase('N') || HasBase('K');
+        // Non-Naval Service Base (S = Scout, M = Military, V = Exploration, C = Corsair)
+        public bool HasOtherServiceBase() => HasBase('S') || HasBase('M') || HasBase('V') || HasBase('C');
+        // Special Service Base (W = Scout Way Station, D = Naval Depot)
+        public bool HasServiceSpecialBase() => HasBase('W') || HasBase('D');
+
+
         public string GetCodePrefix(string code)
         {
             if (code == null)
@@ -227,11 +238,8 @@ namespace Maps
                     int begin = pos;
                     bool found = false;
 
-                    foreach (var tuple in MARKERS)
+                    foreach (var (start, endchar) in MARKERS)
                     {
-                        string start = tuple.Item1;
-                        char endchar = tuple.Item2;
-
                         if (codes.MatchAt(start, pos))
                         {
                             pos += start.Length;
@@ -322,6 +330,11 @@ namespace Maps
                     ErrorUnless(!HasCode(code), $"Extraneous code: {code}");
                 return calc;
             }
+
+            int OneIfZero(int n)
+            {
+                return n == 0 ? 1 : n;
+            }
             #endregion
 
             #region UWP
@@ -392,7 +405,7 @@ namespace Maps
             ErrorUnless(Ri == IsRi, "Internal code failure: Ri/IsRi definitions");
 
             ErrorIf(HasCode("Da") && Zone != "A", "Zone: Da (Danger) requires Amber Zone");
-            ErrorIf(HasCode("Pz") && Zone != "A", "Zone: Da (Danger) requires Amber Zone");
+            ErrorIf(HasCode("Pz") && Zone != "A", "Zone: Pz (Puzzle) requires Amber Zone");
             ErrorIf(HasCode("Fo") && Zone != "R", "Zone: Fo (Forbidden) requires Red Zone");
             #endregion
 
@@ -427,6 +440,10 @@ namespace Maps
             ErrorIf(sophpop > 10, $"Codes: Sophont pop codes > 100%: {string.Join(" ", sophpops)}");
             #endregion
 
+            #region Bases
+            ErrorUnless(Bases == String.Concat(Bases.OrderBy(c => c).Distinct()),
+                $"Bases: Must be distinct and appear in alphabetical order: {Bases}");
+            #endregion
 
             // {Ix}
             int imp = CalculateImportance();
@@ -492,6 +509,14 @@ namespace Maps
 
                     ErrorIf(efficiency == 0,
                         $"(Ex) Efficiency=0 should be coded as +1 (T5SS, implied by T5.10 Book 3 pp.18)");
+
+                    // Resource Units
+                    if (ResourceUnits != null)
+                    {
+                        int ru = OneIfZero(resources) * OneIfZero(labor) * OneIfZero(infrastructure) * OneIfZero(efficiency);
+                        ErrorUnless(ResourceUnits == ru,
+                            $"Resource Units={ResourceUnits} incorrect, should be (treating 0s as 1s) R(={resources}) * L(={labor}) * I(={infrastructure}) * E(={efficiency}) = {ru}");
+                    }
                 }
             }
 
@@ -521,8 +546,8 @@ namespace Maps
                     {
                         ErrorUnless(heterogeneity.InRange(Math.Max(1, PopulationExponent - 5), Math.Max(1, PopulationExponent + 5)),
                             $"[Cx] Heterogeneity={heterogeneity} out of range; should be: Pop(={PopulationExponent}) + Flux");
-                        ErrorUnless(acceptance == Math.Max(1, PopulationExponent + imp),
-                            $"[Cx] Acceptance={acceptance} incorrect; should be: Pop(={PopulationExponent}) + Imp(={imp})");
+                        ErrorUnless(acceptance.InRange(Math.Max(1, PopulationExponent + imp - 5), Math.Max(1, PopulationExponent + imp + 5)),
+                            $"[Cx] Acceptance={acceptance} incorrect; should be: Pop(={PopulationExponent}) + Imp(={imp}) + Flux");
                         ErrorUnless(strangeness.InRange(Math.Max(1, 5 - 5), Math.Max(1, 5 + 5)),
                             $"[Cx] Strangeness={strangeness} out of range; should be: Flux + 5");
                         ErrorUnless(symbols.InRange(Math.Max(1, TechLevel - 5), Math.Max(1, TechLevel + 5)),
@@ -539,6 +564,8 @@ namespace Maps
             // PBG
             ErrorIf(SecondSurvey.FromHex(PBG[PBG_P]) == 0 && PopulationExponent > 0,
                 $"PBG: Pop Multiplier = 0 but Population Exponent (={PopulationExponent}) > 0");
+            ErrorIf(SecondSurvey.FromHex(PBG[PBG_P]) > 0 && PopulationExponent == 0,
+                $"PBG: Pop Exponent = 0 but Population Multiplier (={PBG[PBG_P]}) > 0");
 
             // Worlds
             int min_worlds = 1 + GasGiants + Belts;
@@ -550,6 +577,7 @@ namespace Maps
 
         private int CalculateImportance()
         {
+            // Per T5.10
             int imp = 0;
             if ("AB".Contains(Starport)) ++imp;
             if ("DEX".Contains(Starport)) --imp;
@@ -561,7 +589,14 @@ namespace Maps
             if (IsAg) ++imp;
             if (IsRi) ++imp;
             if (IsIn) ++imp;
-            if (Bases == "NS" || Bases == "NW" || Bases == "W" || Bases == "X" || Bases == "D" || Bases == "RT" || Bases == "CK" || Bases == "KM" || Bases == "KV") ++imp;
+
+            // If Naval Base AND Scout Base (or equivalent):
+            if (HasNavalBase() && HasOtherServiceBase()) ++imp;
+            // If Way Station (or equivalent):
+            if (HasServiceSpecialBase()) ++imp;
+            // Special case: Aslan Clan AND Tlaukhu base:
+            if (HasBase('R') && HasBase('T')) ++imp;
+
             return imp;
         }
 

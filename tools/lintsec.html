@@ -7,7 +7,8 @@
 <script src="../map.js?update=2020-01-01T14:47:00"></script>
 <style>
   #input, #output {
-    width: 1000px; height: 300px;
+    box-sizing: border-box;
+    width: 100%; height: 300px;
     white-space: pre;
     overflow: scroll;
   }
@@ -16,16 +17,21 @@
   .fail #summary { color: #800000; }
 
   #results { display: none; }
-  .pass #results, .fail #results { display: block; }
+  .checking #results, .pass #results, .fail #results { display: block; }
 
 </style>
 <h1>Sector Data Checker &mdash; The Traveller Map</h1>
 <div><textarea id="input" wrap="off" placeholder="Copy and paste data or drag and drop a file here - (SEC, T5 tab delimited, or T5 column delimited)"></textarea></div>
-<div><button id="go">Check</button>
+<div>
+    <button id="go">Check</button>
 
-  &nbsp; &nbsp; &nbsp; &nbsp; <label><input type=checkbox id=tab> Tab Delimited Output</label>
+    &nbsp; &nbsp; &nbsp; &nbsp; <label><input type=checkbox id=tab> Tab Delimited Output</label>
 
-  &nbsp; &nbsp; &nbsp; &nbsp; <label><input type=checkbox id=hide-tl checked> Hide TL Errors</label>
+    &nbsp; &nbsp; &nbsp; &nbsp; <label><input type=checkbox id=hide-tl checked> Hide TL Errors</label>
+
+    &nbsp; &nbsp; &nbsp; &nbsp; <label><input type=checkbox id=hide-uwp> Hide all UWP Errors</label>
+
+    &nbsp; &nbsp; &nbsp; &nbsp; <label><input type=checkbox id=hide-cap> Hide captive/colony Errors</label>
 
 </div>
 <div id="results">
@@ -49,6 +55,7 @@
       e.preventDefault();
       blobToString(e.dataTransfer.files[0]).then(function(s) {
         elem.value = s;
+        $('#go').click();
       });
     });
 
@@ -71,12 +78,19 @@
     }
 
     $('#go').addEventListener('click', function () {
+      $('#summary').innerHTML = '\u231B Checking...';
+      $('#output').value = '';
+      document.body.classList.remove('pass');
+      document.body.classList.remove('fail');
+        document.body.classList.add('checking');
       var input = $('#input').value;
       fetch(Traveller.MapService.makeURL(
         '/api/sec', {
           lint: 1,
           type: $('#tab').checked ? 'TabDelimited' : 'SecondSurvey',
-          'hide-tl': $('#hide-tl').checked ? 1 : 0
+          'hide-tl': $('#hide-tl').checked ? 1 : 0,
+          'hide-uwp': $('#hide-uwp').checked ? 1 : 0,
+          'hide-cap': $('#hide-cap').checked ? 1 : 0
         }), {
         method: 'POST',
         body: input,
@@ -84,11 +98,11 @@
       }).then(function(response) {
         if (response.ok) {
           document.body.classList.add('pass');
-          document.body.classList.remove('fail');
+          document.body.classList.remove('checking');
           $('#summary').innerHTML = '\u2713 No errors found';
         } else {
           document.body.classList.add('fail');
-          document.body.classList.remove('pass');
+          document.body.classList.remove('checking');
           $('#summary').innerHTML = '\u2717 Errors found';
         }
         return response.text();
@@ -96,7 +110,7 @@
         $('#output').value = text;
       }).catch(function(error) {
         document.body.classList.add('fail');
-        document.body.classList.remove('pass');
+        document.body.classList.remove('checking');
         $('#summary').innerHTML = '\u2717 SERVICE ERROR \u2717';
         $('#output').value = error;
       });

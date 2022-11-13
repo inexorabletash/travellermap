@@ -4,6 +4,8 @@
   <Credits>
     <![CDATA[
       <b>Hollow</b> sector was designed by Ade Stewart as part of Where The Stars End.
+
+      The data provided for the sector includes social details for only a few worlds: the region has been remotely surveyed, which has provided extensive physical information about the other stars, features, and worlds that lie within it.
     ]]>
   </Credits>
   <Subsectors>
@@ -13,15 +15,18 @@
   </Subsectors>
   <Labels>
     <!-- Rift Names -->
-    <Label Hex="2325" Color="gray" Size="large">Basilisk Rift</Label>
+    <Label Hex="2707" Color="gray">Back of Beyond</Label>
+    <Label Hex="0812" Color="gray">Gates of Darkness</Label>
+    <Label Hex="2323" Color="gray" Size="large">Basilisk Rift</Label>
   </Labels>
   <Borders>
-    <Border Allegiance="Dr" LabelPosition="0240" ShowLabel="true" WrapLabel="false">0036 0136 0236 0336 0436 0537 0636 0737 0738 0838 0939 0940 0840 0741 0641 0541 0441 0341 0241 0141 0041 0040 0039 0038 0037 0036 </Border>
+    <Border Allegiance="Dr" ShowLabel="false">0036 0136 0236 0336 0436 0537 0636 0737 0738 0838 0939 0940 0840 0741 0641 0541 0441 0341 0241 0141 0041 0040 0039 0038 0037 0036 </Border>
   </Borders>
   <Allegiances>
     <Allegiance Code="Dr">Dominion of Ruins</Allegiance>
   </Allegiances>
   <Stylesheet>
     border.Dr { color: blue; style: dotted }
+    route { style: dashed }
   </Stylesheet>
 </Sector>

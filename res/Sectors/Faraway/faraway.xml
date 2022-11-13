@@ -111,6 +111,38 @@
     <MetadataFile Author="Ed &quot;Dalthor Et Magera&quot; Anderson">Varan.xml</MetadataFile>
   </Sector>
 
+  <Sector Tags="Farway">
+    <X>70</X>
+    <Y>59</Y>
+    <Name>Dark Sea</Name>
+    <DataFile Author="Graham Donald" Type="SecondSurvey">Dark Sea.txt</DataFile>
+    <MetadataFile>Dark Sea.xml</MetadataFile>
+  </Sector>
+
+  <Sector Tags="Farway">
+    <X>-150</X>
+    <Y>-20</Y>
+    <Name>Markhab</Name>
+    <DataFile Author="Brendan Krause">Markhab.txt</DataFile>
+    <MetadataFile>Markhab.xml</MetadataFile>
+  </Sector>
+
+  <Sector Tags="Farway">
+    <X>-148</X>
+    <Y>-20</Y>
+    <Name>Virgo</Name>
+    <DataFile Author="Vaclav G. Ujcik">Virgo.txt</DataFile>
+    <MetadataFile>Virgo.xml</MetadataFile>
+  </Sector>
+
+  <Sector Tags="Faraway">
+    <X>-60</X>
+    <Y>60</Y>
+    <Name>Matzen</Name>
+    <DataFile Author="Roger Nicholls" Type="SecondSurvey">Matzen.txt</DataFile>
+    <MetadataFile>Matzen.xml</MetadataFile>
+  </Sector>
+
   <!-- Alternate (non-canon) versions of OTU Sectors -->
 
   <Sector Tags="Faraway Alternate" Abbreviation="JZBe" Label="The Beyond">
@@ -172,6 +204,14 @@
   </Sector>
 
   <Sector Tags="Apocryphal">
+    <Name>Ares</Name>
+    <X>74</X>
+    <Y>60</Y>
+    <DataFile Type="SecondSurvey">Ares.txt</DataFile>
+    <MetadataFile>Ares.xml</MetadataFile>
+  </Sector>
+
+  <Sector Abbreviation="Anni" Tags="Apocryphal">
     <Name>Anniversary</Name>
     <X>70</X>
     <Y>61</Y>
@@ -230,6 +270,13 @@
     <Name>Trans Dolovia</Name>
     <DataFile>Trans_Dolovia.txt</DataFile>
     <MetadataFile>Trans_Dolovia.xml</MetadataFile>
+  </Sector>
+  <Sector Tags="Faraway">
+    <X>-200</X>
+    <Y>-199</Y>
+    <Name>Lemon and Gold</Name>
+    <DataFile>Lemon_and_Gold.txt</DataFile>
+    <MetadataFile>Lemon_and_Gold.xml</MetadataFile>
   </Sector>
 
 </Sectors>

@@ -4,19 +4,24 @@
   <Credits>
     <![CDATA[
       <b>Tarchon</b> sector was designed by Ade Stewart as part of Where The Stars End.
+
+      The data provided for the sector includes no social details: the region has been remotely surveyed, which has provided extensive physical information about the stars, features, and worlds that lie within it.
     ]]>
   </Credits>
   <Labels>
     <!-- Rift Names -->
-    <Label Hex="0422" Color="gray" Size="large">Basilisk&#x0a;Rift</Label>
-    <Label Hex="2808" Color="gray" Size="large">Laurentine&#x0a;Gulf</Label>
+    <Label Hex="0822" Color="gray" Size="large">Basilisk Rift</Label>
+    <Label Hex="2509" Color="gray" Size="large">Laurentine&#x0a;Gulf</Label>
   </Labels>
   <Regions>
     <!-- Nebula -->
-    <Region Color="Red" LabelPosition="1725" Label="Basilisk Nebula">1225 1325 1324 1423 1422 1322 1321 1420 1521 1522 1523 1524 1624 1724 1823 1824 1825 1826 1727 1626 1526 1425 1326 1225 </Region>
-    <Region Color="Red">1618 1719 1818 1918 2018 2118 2217 2317 2417 2518 2418 2318 2218 2219 2120 2121 2122 2222 2323 2422 2523 2423 2324 2325 2225 2226 2126 2026 1927 1926 1925 1924 1923 1922 1821 1721 1621 1620 1619 1618 </Region>
-    <Region Color="Red">1424 1525 1424 </Region>
-    <Region Color="Red">1919 2019 1920 1919 </Region>
-    <Region Color="Red">1925 2024 2023 2123 2124 2125 2024 1925 </Region>
+    <Region Color="Red" LabelPosition="0833" Label="Basilisk Nebula">0234 0334 0333 0432 0431 0430 0330 0429 0529 0629 0630 0631 0732 0832 0932 0933 0934 0834 0735 0634 0534 0434 0335 0234 </Region>
+    <Region Color="Red">0726 0826 0926 1025 1126 1225 1325 1424 1525 1625 1526 1425 1326 1327 1227 1228 1229 1330 1430 1530 1630 1531 1431 1432 1333 1334 1233 1134 1034 1033 1032 1031 1030 1029 0929 0828 0729 0728 0727 0726 </Region>
+    <Region Color="Red">0532 0632 0532 </Region>
+    <Region Color="Red">1026 1127 1027 1026 </Region>
+    <Region Color="Red">1032 1132 1131 1230 1231 1232 1132 1032 </Region>
+    <!-- Gas Clouds -->
+    <Region Color="Darkblue" LabelPosition="1822" Label="The Wisp">1622 1722 1721 1821 1922 2021 2121 2021 1922 1923 1823 1724 1623 1622 </Region>
+    <Region Color="Darkblue" LabelPosition="2427" Label="Basilisk's Breath">2028 2128 2127 2226 2327 2426 2425 2325 2425 2525 2624 2625 2726 2727 2827 2728 2627 2528 2428 2328 2228 2128 2028 </Region>
   </Regions>
 </Sector>

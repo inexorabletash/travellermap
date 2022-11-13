@@ -1,46 +1,179 @@
-Hex  Name                 UWP       Remarks              {Ix} (Ex) [Cx] N B  Z PBG W A  Stellar
----- -------------------- --------- -------------------- ---- ---- ---- - -- - --- - -- -------
-0101 Hondre               C556420-7 Ni                                  - -  - 100   Im
-0102 Petrinium            C646653-5 Ag, Ni                              - S  - 101   Im
-0110 Kienos               CA9A447-8 Ni                                  - -  - 101   Na
-0202 Otarin               E504234-6 Ni                                  - -  - 101   Im
-0206 Gomer                B000886-D Na                                  - S  - 101   Im
-0303 Weston               X793320-1 Ni                                  - -  R 101   Im
-0308 Hadley               B666774-9 Ag, Ri                              - -  - 101   Im
-0401 Bard's Fort          C85548C-9 Ni                                  - S  - 101   Im
-0402 Canthera             B8779C9-8 In                                  - N  - 101   Im
-0408 Yopix                E564456-5 Ni                                  - -  - 100   Im
-0409 Far Rock             E110677-6 Na, Ni                              - -  - 101   Im
-0503 Shacelle             E593220-3 Ni                                  - -  - 101   Im
-0504 Fierra               C365302-9 Ni                                  - -  - 101   Im
-0506 Anniversary          A360846-B Ri, Cp                              - NS - 100   Im
-0604 Leon                 D6548CF-3                                     - -  - 100   Im
-0609 Dex Abria            C8A7355-6 Ni                                  - -  - 100   Im
-0610 Helix                A568697-B Ag, Ni, Ri                          - -  - 101   Im
-0702 Orpheus              D110500-8 Ni                                  - S  - 101   Im
-0705 Arabas               C727303-A Ni                                  - -  - 100   Im
-0706 Godfrey's Belt       B000300-A Ni                                  - N  - 100   Im
-0709 Manaschai            A440643-B Ni, Po                              - N  - 101   Im
-0805 Rechina              C87A436-6 Ni                                  - -  - 101   Im
-0806 Tukil                C539678-5 Ni                                  - -  - 101   Im
-0113 Drann'il             E363776-6 Ri                                  - -  - 101   Tl
-0114 Avinord              B588872-7 Ri                                  - -  - 100   Tl
-0212 Marcairn             B4227A7-A Na, Po                              - -  - 101   Tl
-0214 Thorr                C6547A8-5 Ag                                  - V  - 101   Tl
-0218 F7-210               ???????-? {Unexplored}                        - -  - 000   Xx
-0219 F7-211               ???????-? {Unexplored}                        - -  - 000   Xx
-0313 Altuvra              E479584-8 Ni                                  - -  - 101   Tl
-0314 Turan                A260692-A Ni, Ri, De                          - KS - 101   Tl
-0319 F7-212               ???????-? {Unexplored}                        - -  - 000   Xx
-0416 Rockard              E505110-6 Ni, Ic                              - -  - 101   Im
-0611 Nevbird              E675721-2 Ag                                  - -  - 101   Im
-0612 Pointer              C000745-7 Na, As                              - -  - 101   Im
-0617 Khenia               B230661-9 Na, Ni, Po O:0716                   - N  - 101   Im
-0713 Camroed              CAB8400-9 Ni                                  - -  - 101   Im
-0714 She'kad              A441446-E Ni, Po                              - -  - 101   Im
-0715 Kinori               B667899-A Ri                                  - N  - 101   Im
-0716 Orion                A100342-B Ni, Cp                              - -  - 101   Im
-0811 Lucard               C150650-7 Ni, Po, De                          - -  - 101   Im
-0812 Gaza                 B510100-C Ni                                  - NW - 100   Im
-0818 Owalana              C8A81C3-6 Ni                                  - -  - 101   Im
-0820 Lausau               A538898-A                                     - N  - 101   Im
+Hex  Name                 UWP       Remarks              {Ix} (Ex) [Cx] N B  Z PBG W A    Stellar
+---- -------------------- --------- -------------------- ---- ---- ---- - -- - --- - ---- ------------
+0101 Hondre               C556420-7 Pa Ni                                      100   Im
+0102 Petrinium            C646653-5 Ag Ni                                 S    101   Im
+0110 Kienos               CA9A447-8 Oc Ni                                      101   Na
+0202 Otarin               E504234-6 Ic Va Lo                                   101   Im
+0206 Gomer                B000886-D As Va Ph Pi Na                        S    101   Im
+0303 Weston               X793320-1 Lo                                       R 101   Im
+0308 Hadley               B666774-9 Ga Ag Ri                                   123   Im   G2 V
+0401 Bard's Fort          C85548C-9 Ga Pa Ni                              S    101   Im
+0402 Canthera             B8779C9-8 Hi In                                 N    101   Im
+0408 Yopix                E564456-5 Pa Ni                                      100   Im
+0409 Far Rock             E110677-6 Na Ni                                      101   Im
+0503 Shacelle             E593220-3 Lo                                         101   Im
+0504 Fierra               C365302-9 Lo                                         101   Im
+0506 Anniversary          A360846-B De Ph Ri Cp                           NS   100   Im
+0604 Leon                 D6548CF-3 Ph Pa                                      100   Im
+0609 Dex Abria            C8A7355-6 Fl Lo                                      100   Im
+0610 Helix                A568697-B Ag Ni Ri                                   101   Im
+0702 Orpheus              D110500-8 Ni                                    S    101   Im
+0705 Arabas               C727303-A Lo                                         100   Im
+0706 Godfrey's Belt       B000300-A As Va Lo                              N    100   Im
+0709 Manaschai            A440643-B De He Ni Po                           N    101   Im
+0805 Rechina              C87A436-6 Wa Ni                                      101   Im
+0806 Tukil                C539678-5 Ni                                         101   Im
+0903 Sihle's Find         B000477-E As Va Ni                              S    101   Im
+0906 Sorpine              C410688-7 Ni Na                                 S    101   Im
+1006 Unolka               EAA0553-5 He Ni                                      101   Im
+1007 Etrab                C849699-7 Ni                                         101   Im
+1008 Arcos                B123758-B Na Pi Po                                   101   Im
+1009 Iraeus               A66A855-A Wa Ph Ri                              N    101   Im
+1010 Sispas               E688577-4 Ni Ag Pr                                   101   Im
+1104 Donan's Belt         B000757-C As Va Na Pi                           NW   101   Im
+1109 Diz                  B000518-A As Va Ni                                   101   Im
+1110 Alurilter            C000699-A As Va Na Ni                           S    101   Im
+1201 Otiga                C753421-6 Ni Po                                 S    101   Im
+1203 Sora                 E543637-5 Ni Po                                      101   Im
+1204 Thutak               A765678-9 Ga Ni Ag Ri                                101   Im
+1206 Dal Riada            A0009A5-F As Va Hi Na In Cp                     NS   101   Im
+1208 Kaeraurix            A6638B9-B Ph Ri                                 N    101   Im
+1210 Gane                 C6795A9-6 Ni                                       A 100   Im
+1301 Endret               D355356-9 Lo                                         100   Im
+1302 Bethur               B223538-8 Ni Po                                 N    101   Im
+1304 Iodreh               B762655-B Ni Ri                                      101   Im
+1310 Areyn                B796556-B Ni Ag                                    A 101   Im
+1407 Tanak                A768432-8 Ni Pa                                      100   Im
+1409 Iiragimaa            C869576-A Ni Pr                                      101   Im
+1502 Breas                C555546-7 Ni Ag                                 S    101   Im
+1506 Nezer                B763613-A Ni Ri                                 N    101   Im
+1508 Svusk                B964714-8 Ag Ri                                      101   Im
+1510 Ninkera              C652523-8 Ni Po                                 S    101   Im
+1609 Ralban               C567836-5 Ph Pa Ri                                   101   Im
+0113 Drann'il             E363776-6 Ri                                         101   Tl
+0114 Avinord              B588872-7 Ph Pa Ri                                   100   Tl
+0212 Marcairn             B4227A7-A He Pi Na Po                                101   Tl
+0214 Thorr                C6547A8-5 Ag                                    V    101   Tl
+0218 F7-210               ???????-? {Unexplored}                               000   Xx
+0219 F7-211               ???????-? {Unexplored}                               000   Xx
+0313 Altuvra              E479584-8 Ni                                         101   Tl
+0314 Turan                A260692-A Ni Ri De Cx                           KS   101   Tl
+0319 F7-212               ???????-? {Unexplored}                               000   Xx
+0416 Rockard              E505110-6 Va Lo Ic                                   101   Na
+0611 Nevbird              E675721-2 Pi Ag                                      101   Im
+0612 Pointer              C000745-7 Va Pi Na As                                101   Im
+0617 Khenia               B230661-9 De Na Ni Po O:0716                    N    101   Im
+0713 Camroed              CAB8400-9 FL Ni                                      101   Im
+0714 She'kad              A441446-E He Ni Po                                   101   Im
+0715 Kinori               B667899-A Ga Ph Pa Ri                           N    101   Im
+0716 Orion                A100342-B Va Lo Cp                                   101   Im
+0811 Lucard               C150650-7 Ni Po De                                   101   Im
+0812 Gaza                 B510100-C Lo                                    N    100   Im
+0818 Owalana              C8A81C3-6 Fl Lo                                      101   Im
+0820 Lausau               A538898-A Ph                                    N    101   Im
+0919 Malinche             B7669BA-9 Ga Hi Pr                              N    101   Im
+1011 Tentzon              D566423-7 Ni Pa                                 S    100   Im
+1013 Araxia               C7567BA-5 Ga Ag                                      101   Im
+1016 Nisskar              C411475-A Ic Ni                                      101   Im
+1017 Nussin               B636A45-D Hi                                    N    101   Im
+1018 Delya                C4316AA-9 Ni Na Po                                   101   Im
+1111 Zirik                C565878-6 Ph Pa Ri                              S    101   Im
+1115 Ontrin               B764632-7 Ni Ag Ri                                   101   Im
+1118 Cornil               C344555-9 Ni Ag                                      101   Im
+1119 Isintamo             D200236-4 Va Lo                                      101   Im
+1217 Dikia                C635657-6 Ni                                    S    101   Im
+1312 Auna                 B688979-9 Hi Pr                                 NS   101   Im
+1315 Kalven               A9B6948-E Fl Hi In Cp                           NS A 101   Im
+1316 Rurek                B6687A6-8 Ag Ri                                      101   Im
+1317 Merkare              B76A545-D Wa Ni Pr                              N    101   Im
+1319 Thalea               B667347-9 Ga Lo                                 S    101   Im
+1413 Valls                C767523-5 Ga Ni Ag Pr                                101   Im
+1414 Idelma               E683215-4 Lo                                         101   Im
+1419 Yeuna                D447400-8 Ni Pa                                    A 101   Im
+1512 Cabul                B657AAA-C Ga Hi                                 S    101   Im
+1515 Firdre               C328433-9 Ni                                    S    101   Im
+1516 Juder                C100359-8 Va Lo                                      101   Im
+1520 Gonia                D756553-3 Ga Ni Ag                                   100   Im
+1611 Tiadne               B310400-D Ni                                       A 101   Im
+1615 Hanzin               D341465-7 He Ni Po O:1315                            101   Im
+1617 Paittai              B889614-A Ni Ri                                 S    101   Im
+1618 Zabun                D567334-3 Lo                                         100   Im
+0122 F7-310               ???????-? {Unexplored}                               000   Xx
+0125 F7-311               ???????-? {Unexplored}                               000   Xx
+0223 F7-312               ???????-? {Unexplored}                               000   Xx
+0527 Rane                 C446427-6 Ni Pa                                      101   Im
+0528 Arynol               D770384-5 De He Lo                                 A 101   Im
+0622 Gisako               C766613-6 Ga Ag Ni Ri                                101   Im
+0629 Oniamh               B422511-B He Ni Po                              NS   101   Im
+0721 Krabova              B754477-7 Ni Pa                                      101   Im
+0723 Iigirir              A000879-C Va Ph Pi Na As Cp                     NS   101   Im
+0724 Henynos              C9A8544-6 Fl Ni                                    A 101   Im
+0728 Lanope               A762454-A Ni                                    S    100   Im
+0821 Aminur               D777557-8 Ni Ag                                    A 100   Im
+0825 Neechi               C688744-8 Ag Ri                                 S    101   Im
+0135 F7-410               ???????-? {Unexplored}                               000   Xx
+0235 F7-411               ???????-? {Unexplored}                               000   Xx
+0531 Teotazin             E986321-5 Lo                                         101   Im
+0538 New Pyrenees         A446683-A Ni Ag                                 S    101   Im
+0631 Miast                A100476-D Va Ni                                 S    100   Im
+0632 Oserwa               C443545-5 Ni Po                                      101   Im
+0633 Ikalaaniru           A452AA6-A Hi Po                                 N    100   Im
+0636 New Andorra          B656A74-C Hi Ga                                 NS   101   Im
+0732 Akor                 C77827C-8 Lo                                       A 100   Im
+0734 Khumakiigaanar       A7A3883-A Fl Ph                                    A 101   Im
+0735 Vukkai               C300774-8 Va Na Pi                                   101   Im
+0833 Adagio               A630644-D De Ni Na Po Cp                        NS   101   Im
+0835 Nyom                 C889211-8 Lo                                         101   Im
+0836 Kumeria              C520889-9 De He Ph Na Pi Po                          101   Im
+0837 Wilnaine             C9528B8-5 Ph Po                                      101   Im
+0922 Selija               D557613-6 Ag Ni                                      101   Im
+0923 Nelerna              B00067B-B As Va Ni Na                                101   Im
+0926 Zolas                B689984-C Hi Pr                                 NS   101   Im
+0927 Arlikiigaana         C443311-8 Lo Po                                      100   Im
+0929 Ulfalon              C569784-6 Ri                                         101   Im
+1022 Izipho               C78879B-5 Ag Ri                                      101   Im
+1027 Tahua                C966623-6 Ag Ni Ri Asla:6                            101   Im
+1127 Peldar               B554AAA-D Hi                                         101   Im
+1129 Atizin               C959557-A Ni                                         101   Im
+1224 Murona               B792452-9 He Ni                                      101   Im
+1225 Agur                 A868786-D Ag Ri Cp                              NS   101   Im
+1226 Reyna                C758632-5 Ag Ni                                      100   Im
+1228 Zankor               BA78A85-C Hi In                                 NS   101   Im
+1322 Yanwey               A875513-C Ni Ag                                 S    101   Im
+1328 Iimaguurilika        C780787-9 De Ri                                      101   Im
+1329 Arress               C44487A-4 Pa Ph Pi                                   101   Im
+1422 Lakkonekki           A582333-9 Lo                                         101   Im
+1425 Surebia              B30079E-C Va Na Pi                              S  A 101   Im
+1522 Mateiki              C972683-8 He Ni                                      101   Im
+1524 Kopia                C965212-5 Lo                                         101   Im
+1528 Depot                B85A744-B Wa                                    DS A 101   Im
+1530 Grosserfelsen        X700758-7 Va Na Pi Px                              R 511   Im   A5 V
+1621 Tella                C641111-9 He Lo Po                                   100   Im
+1622 Oricon               B975511-A Ag Ni                                      101   Im
+1623 Urkiridum            CA9A888-8 Ph Pi Oc                                   100   Im
+1624 Andrene              A000955-D As Va Hi Na In                        NS   101   Im
+0933 Kuniara              A964258-D Lo                                    S    101   Im
+0935 Tiraton              A654ABD-D Hi                                    S  A 101   Im
+0937 Umzimu               C300613-8 Na Ni Va                                   100   Im
+1031 Oolah                D9B5344-8 Fl Lo                                    A 101   Im
+1036 Khashur              D696655-6 Ag Ni                                      101   Im
+1133 Moiba                A679583-B Ni                                         101   Im
+1134 Shii                 C869688-7 Ni Ri                                      101   Im
+1135 Urenia               C660714-8 De Ri                                      101   Im
+1137 Ohlis                C979672-8 Ni Asla:8 Huma:2                           101   Im
+1231 Irarmorn             A447789-B Ag Pi                                 S    101   Im
+1237 Khambul              A76989C-E Ph Ri Cp                              NS A 101   Im
+1240 Yoka                 BA6AAA9-A Hi Oc                                 S    100   Im
+1334 Aleem                C99A531-9 Ni Wa                                 S    101   Im
+1335 Menizert             A764937-B Hi Pr                                      100   Im
+1336 Valanth              B448456-C Ni Pa                                      101   Im
+1338 Hyos                 C98A533-7 Ni Pr Wa                                   100   Im
+1434 Dastein              A979312-C Lo                                         101   Im
+1435 Dicesos              C965234-5 Lo                                         101   Im
+1438 Pecilane             C892115-9 He Lo                                      101   Im
+1439 Marshall's Landing   D659224-8 Lo                                         100   Im
+1440 Ihtan                B658812-8 Ph Pa                                      100   Im
+1539 Nuan                 C784794-7 Ag Ri                                 S    101   Im
+1633 Wirraune             C684697-8 Ag Ni Ri                              S    101   Im
+1638 Durrath              B544400-9 Ni Pa                                    A 101   Im
+1639 Igana                B000314-B As Lo Va                                   101   Im

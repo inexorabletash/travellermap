@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Sector Abbreviation="Dene" Tags="Official">
+  <Y>-1</Y>
+  <X>-3</X>
+  <Name>Deneb</Name>
+  <Name Lang="zh">Nieklsdia</Name>
+  <Credits>
+    <![CDATA[
+
+             <b>Deneb</b> sector was designed by Marc W. Miller and
+             appears in <cite>Atlas of the Imperium</cite> (GDW,
+             1984).
+
+             It was refined by James Holden. Portions appear in
+             <cite>The Travellers Digest</cite> and <cite>The
+             MegaTraveller Journal #3</cite> (Digest Group
+             Publications, 1992).
+
+    ]]>
+  </Credits>
+  <Product Publisher="Mongoose Publishing" Author="Rob Eaglestone" Title="Deneb Sector" Ref="https://www.mongoosepublishing.com/products/behind-the-claw-2" />
+  <DataFile Source="Traveller 5 Second Survey" Milieu="M1900" Type="TabDelimited">Dene.tab</DataFile>
+  <Subsectors Source="MegaTraveller Journal #1">
+    <Subsector Index="A">Pretoria</Subsector>
+    <Subsector Index="B">Lamas</Subsector>
+    <Subsector Index="C">Antra</Subsector>
+    <Subsector Index="D">Million</Subsector>
+    <Subsector Index="E">Sabine</Subsector>
+    <Subsector Index="F">Inar</Subsector>
+    <Subsector Index="G">Dunmag</Subsector>
+    <Subsector Index="H">Atsah</Subsector>
+    <Subsector Index="I">Star Lane</Subsector>
+    <Subsector Index="J">Vincennes</Subsector>
+    <Subsector Index="K">Usani</Subsector>
+    <Subsector Index="L">Geniishir</Subsector>
+    <Subsector Index="M">Gulf</Subsector>
+    <Subsector Index="N">Zeng</Subsector>
+    <Subsector Index="O">Kamlar</Subsector>
+    <Subsector Index="P">Vast Heavens</Subsector>
+  </Subsectors>
+
+  <Routes Source="Rob Eaglestone">
+    <Route Start="0406" End="0007" />
+  </Routes>
+  <Borders>
+    <Border Color="Blue" Allegiance="CsRr">0406</Border>
+  </Borders>
+</Sector>

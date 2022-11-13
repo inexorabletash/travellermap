@@ -4,10 +4,30 @@
   <Credits>
     <![CDATA[
       <b>Serenity</b> sector was designed by Ade Stewart as part of Where The Stars End.
+
+      The data provided for the sector includes no social details: the region has been remotely surveyed, which has provided extensive physical information about the stars, features, and worlds that lie within it.
     ]]>
   </Credits>
   <Labels>
     <!-- Features Names -->
-    <Label Hex="1134" Color="gray" Size="small">RSS&#x0a;Se1133</Label>
+    <Label Hex="2912" Color="gray">Crown of the Drift</Label>
+    <Label Hex="2529" Color="gray">Tail of the Deep</Label>
+    <Label Hex="1134" Color="gray">RSS&#x0a;Se1133</Label>
   </Labels>
+  <Regions>
+    <!-- Anomalies -->
+    <Region Color="Plum" LabelPosition="1429" Label="The Traps">1127 1227 1327 1427 1528 1529 1530 1430 1431 1532 1533 1433 1333 1432 1431 1430 1330 1329 1228 1227 1127 </Region>
+  </Regions>
+  <Borders>
+    <Border Allegiance="Fs" LabelPosition="2132" ShowLabel="true" WrapLabel="false">1730 1829 1828 1928 2028 2029 2130 2230 2231 2332 2432 2433 2334 2335 2235 2135 2034 2033 1933 1932 1831 1731 1730 </Border>
+    <Border Allegiance="Gu" LabelPosition="0933" ShowLabel="true" WrapLabel="true">0632 0732 0731 0830 0931 1031 1132 1232 1233 1234 1235 1136 1036 0936 0935 0834 0734 0633 0632 </Border>
+  </Borders>
+  <Allegiances>
+    <Allegiance Code="Fs">Farside</Allegiance>
+    <Allegiance Code="Gu">Guardians</Allegiance>
+  </Allegiances>
+  <Stylesheet>
+    border.Fs { color: darkred; style: dotted }
+    border.Gu { color: green; style: dotted }
+  </Stylesheet>
 </Sector>

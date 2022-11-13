@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Sector>
+  <Name>Iphigenaia</Name>
+  <Credits>
+    <![CDATA[
+      CORE (basic data updated by Ade Stewart).
+
+      http://www.ocean-of-storms.com/core/astrogat/gA.htm
+    ]]>
+  </Credits>
+  <Subsectors>
+      <Subsector Index="A" Source="The Vanguard Reaches" Author="Chuck Kallenbach II" Publisher="Paranoia Press">Cheetham</Subsector>
+      <Subsector Index="B" Source="The Vanguard Reaches" Author="Chuck Kallenbach II" Publisher="Paranoia Press">La Grone</Subsector>
+      <Subsector Index="C" Source="The Vanguard Reaches" Author="Chuck Kallenbach II" Publisher="Paranoia Press">Keflin</Subsector>
+      <Subsector Index="D" Source="The Vanguard Reaches" Author="Chuck Kallenbach II" Publisher="Paranoia Press">Shillelagh</Subsector>
+    <Subsector Index="E">Tempoko</Subsector>
+    <Subsector Index="F">Noriega</Subsector>
+    <Subsector Index="G">Warzone</Subsector>
+    <Subsector Index="H">Iyarl</Subsector>
+    <Subsector Index="I">Zebylono</Subsector>
+    <Subsector Index="J">Maria</Subsector>
+    <Subsector Index="K">Ykoroni</Subsector>
+    <Subsector Index="L">Ftyeeta</Subsector>
+    <Subsector Index="M">Riter</Subsector>
+    <Subsector Index="N">Emma</Subsector>
+    <Subsector Index="O">Bablari</Subsector>
+    <Subsector Index="P">Eikaoweal</Subsector>
+  </Subsectors>
+  <Borders>
+    <Border Allegiance="As" LabelPosition="2407" ShowLabel="true" WrapLabel="true">2000 2100 2200 2300 2400 2501 2502 2602 2703 2802 2803 2904 2905 2906 2907 2908 2909 2910 2810 2811 2812 2712 2711 2610 2510 2409 2309 2208 2109 2008 2108 2107 2206 2205 2204 2203 2202 2102 2101 2000 </Border>
+    <Border Allegiance="Rm" LabelPosition="1425" ShowLabel="true" WrapLabel="false">0025 0125 0224 0324 0423 0523 0622 0722 0821 0921 0920 1019 1018 1017 1117 1217 1318 1418 1519 1619 1620 1721 1821 1822 1823 1724 1725 1726 1626 1527 1427 1327 1226 1126 1025 0926 0826 0727 0627 0528 0428 0329 0330 0331 0332 0333 0233 0133 0032 0031 0030 0029 0028 0027 0026 0025 </Border>
+  </Borders>
+  <Allegiances>
+    <Allegiance Code="Rm">Regency of Muirimi</Allegiance>
+  </Allegiances>
+  <Stylesheet>
+    border.Rm { color: green }
+  </Stylesheet>
+</Sector>

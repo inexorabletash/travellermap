@@ -4,6 +4,7 @@ using Maps.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace Maps.Rendering
@@ -134,22 +135,22 @@ namespace Maps.Rendering
 
     internal struct FontInfo
     {
-        public string name;
+        public string families;
         public float size;
         public FontStyle style;
 
-        public FontInfo(string name, float size, FontStyle style = FontStyle.Regular)
+        public FontInfo(string families, float size, FontStyle style = FontStyle.Regular)
         {
-            this.name = name;
+            this.families = families;
             this.size = size;
             this.style = style;
         }
 
         public AbstractFont MakeFont()
         {
-            if (name == null)
+            if (families == null)
                 throw new ApplicationException("AbstractFont has null name");
-            return new AbstractFont(name, size * 1.4f, style, GraphicsUnit.World);
+            return new AbstractFont(families, size * 1.4f, style, GraphicsUnit.World);
         }
     }
 
@@ -357,7 +358,7 @@ namespace Maps.Rendering
 
                 worlds.fontInfo = new FontInfo(DEFAULT_FONT, scale < WorldFullMinScale ? 0.2f : 0.15f * fontScale, FontStyle.Bold);
                 wingdingFont = new FontInfo("Wingdings", scale < WorldFullMinScale ? 0.2f : 0.175f * fontScale);
-                glyphFont = new FontInfo(DEFAULT_FONT, scale < WorldFullMinScale ? 0.175f : 0.15f * fontScale, FontStyle.Bold);
+                glyphFont = new FontInfo("Arial Unicode MS,Segoe UI Symbol,Arial", scale < WorldFullMinScale ? 0.175f : 0.15f * fontScale, FontStyle.Bold);
                 uwp.fontInfo = hexNumber.fontInfo = new FontInfo(DEFAULT_FONT, 0.1f * fontScale);
                 worlds.smallFontInfo = new FontInfo(DEFAULT_FONT, scale < WorldFullMinScale ? 0.2f : 0.1f * fontScale, FontStyle.Regular);
                 worlds.largeFontInfo = worlds.fontInfo;
@@ -476,7 +477,7 @@ namespace Maps.Rendering
             placeholder.position = new PointF(0, 0.17f);
 
             anomaly.content = "\u2316"; // POSITION INDICATOR
-            anomaly.fontInfo = new FontInfo("Segoe UI Symbol", 0.6f);
+            anomaly.fontInfo = new FontInfo("Arial Unicode MS,Segoe UI Symbol", 0.6f);
 
             var layers = new List<LayerId>
             {
@@ -713,26 +714,26 @@ namespace Maps.Rendering
                         subsectorGrid.pen.color = Color.FromArgb(inkOpacity, Color.Firebrick);
 
                         const string FONT_NAME = "Comic Sans MS";
-                        worlds.fontInfo.name = FONT_NAME;
-                        worlds.smallFontInfo.name = FONT_NAME;
-                        starport.fontInfo.name = FONT_NAME;
-                        worlds.largeFontInfo.name = FONT_NAME;
+                        worlds.fontInfo.families = FONT_NAME;
+                        worlds.smallFontInfo.families = FONT_NAME;
+                        starport.fontInfo.families = FONT_NAME;
+                        worlds.largeFontInfo.families = FONT_NAME;
                         worlds.largeFontInfo.size = worlds.fontInfo.size * 1.25f;
                         worlds.fontInfo.size *= 0.8f;
 
-                        macroNames.fontInfo.name = FONT_NAME;
-                        macroNames.mediumFontInfo.name = FONT_NAME;
-                        macroNames.smallFontInfo.name = FONT_NAME;
-                        megaNames.fontInfo.name = FONT_NAME;
-                        megaNames.mediumFontInfo.name = FONT_NAME;
-                        megaNames.smallFontInfo.name = FONT_NAME;
-                        microBorders.smallFontInfo.name = FONT_NAME;
-                        microBorders.largeFontInfo.name = FONT_NAME;
-                        microBorders.fontInfo.name = FONT_NAME;
-                        macroBorders.fontInfo.name = FONT_NAME;
-                        macroRoutes.fontInfo.name = FONT_NAME;
-                        capitals.fontInfo.name = FONT_NAME;
-                        macroBorders.smallFontInfo.name = FONT_NAME;
+                        macroNames.fontInfo.families = FONT_NAME;
+                        macroNames.mediumFontInfo.families = FONT_NAME;
+                        macroNames.smallFontInfo.families = FONT_NAME;
+                        megaNames.fontInfo.families = FONT_NAME;
+                        megaNames.mediumFontInfo.families = FONT_NAME;
+                        megaNames.smallFontInfo.families = FONT_NAME;
+                        microBorders.smallFontInfo.families = FONT_NAME;
+                        microBorders.largeFontInfo.families = FONT_NAME;
+                        microBorders.fontInfo.families = FONT_NAME;
+                        macroBorders.fontInfo.families = FONT_NAME;
+                        macroRoutes.fontInfo.families = FONT_NAME;
+                        capitals.fontInfo.families = FONT_NAME;
+                        macroBorders.smallFontInfo.families = FONT_NAME;
 
                         microBorders.textStyle.Uppercase = true;
 
@@ -750,8 +751,8 @@ namespace Maps.Rendering
 
                         worldDetails &= ~WorldDetails.Allegiance;
 
-                        subsectorNames.fontInfo.name = FONT_NAME;
-                        sectorName.fontInfo.name = FONT_NAME;
+                        subsectorNames.fontInfo.families = FONT_NAME;
+                        sectorName.fontInfo.families = FONT_NAME;
 
                         worlds.largeFontInfo.style |= FontStyle.Underline;
 
@@ -873,26 +874,26 @@ namespace Maps.Rendering
                         subsectorGrid.pen.color = Color.Cyan;
 
                         const string FONT_NAME = "Courier New";
-                        worlds.fontInfo.name = FONT_NAME;
-                        worlds.smallFontInfo.name = FONT_NAME;
-                        starport.fontInfo.name = FONT_NAME;
-                        worlds.largeFontInfo.name = FONT_NAME;
+                        worlds.fontInfo.families = FONT_NAME;
+                        worlds.smallFontInfo.families = FONT_NAME;
+                        starport.fontInfo.families = FONT_NAME;
+                        worlds.largeFontInfo.families = FONT_NAME;
                         worlds.largeFontInfo.size = worlds.fontInfo.size * 1.25f;
                         worlds.fontInfo.size *= 0.8f;
 
-                        macroNames.fontInfo.name = FONT_NAME;
-                        macroNames.mediumFontInfo.name = FONT_NAME;
-                        macroNames.smallFontInfo.name = FONT_NAME;
-                        megaNames.fontInfo.name = FONT_NAME;
-                        megaNames.mediumFontInfo.name = FONT_NAME;
-                        megaNames.smallFontInfo.name = FONT_NAME;
-                        microBorders.smallFontInfo.name = FONT_NAME;
-                        microBorders.largeFontInfo.name = FONT_NAME;
-                        microBorders.fontInfo.name = FONT_NAME;
-                        macroBorders.fontInfo.name = FONT_NAME;
-                        macroRoutes.fontInfo.name = FONT_NAME;
-                        capitals.fontInfo.name = FONT_NAME;
-                        macroBorders.smallFontInfo.name = FONT_NAME;
+                        macroNames.fontInfo.families = FONT_NAME;
+                        macroNames.mediumFontInfo.families = FONT_NAME;
+                        macroNames.smallFontInfo.families = FONT_NAME;
+                        megaNames.fontInfo.families = FONT_NAME;
+                        megaNames.mediumFontInfo.families = FONT_NAME;
+                        megaNames.smallFontInfo.families = FONT_NAME;
+                        microBorders.smallFontInfo.families = FONT_NAME;
+                        microBorders.largeFontInfo.families = FONT_NAME;
+                        microBorders.fontInfo.families = FONT_NAME;
+                        macroBorders.fontInfo.families = FONT_NAME;
+                        macroRoutes.fontInfo.families = FONT_NAME;
+                        capitals.fontInfo.families = FONT_NAME;
+                        macroBorders.smallFontInfo.families = FONT_NAME;
 
                         worlds.textStyle.Uppercase = true;
                         microBorders.textStyle.Uppercase = true;
@@ -916,8 +917,8 @@ namespace Maps.Rendering
 
                         worlds.textBackgroundStyle = TextBackgroundStyle.None;
 
-                        subsectorNames.fontInfo.name = FONT_NAME;
-                        sectorName.fontInfo.name = FONT_NAME;
+                        subsectorNames.fontInfo.families = FONT_NAME;
+                        sectorName.fontInfo.families = FONT_NAME;
 
                         worlds.largeFontInfo.style |= FontStyle.Underline;
 
@@ -975,11 +976,11 @@ namespace Maps.Rendering
                         microBorders.textColor = Color.DarkSlateGray;
 
                         const string FONT_NAME = "Calibri,Arial";
-                        worlds.fontInfo.name = FONT_NAME;
-                        worlds.smallFontInfo.name = FONT_NAME;
-                        starport.fontInfo.name = FONT_NAME;
+                        worlds.fontInfo.families = FONT_NAME;
+                        worlds.smallFontInfo.families = FONT_NAME;
+                        starport.fontInfo.families = FONT_NAME;
                         starport.fontInfo.style = FontStyle.Regular;
-                        worlds.largeFontInfo.name = FONT_NAME;
+                        worlds.largeFontInfo.families = FONT_NAME;
 
                         worlds.fontInfo.style = FontStyle.Regular;
                         worlds.largeFontInfo.style = FontStyle.Bold;
@@ -988,19 +989,19 @@ namespace Maps.Rendering
                         hexNumber.position.Y = -0.49f;
                         starport.fontInfo.style = FontStyle.Italic;
 
-                        macroNames.fontInfo.name = FONT_NAME;
-                        macroNames.mediumFontInfo.name = FONT_NAME;
-                        macroNames.smallFontInfo.name = FONT_NAME;
-                        megaNames.fontInfo.name = FONT_NAME;
-                        megaNames.mediumFontInfo.name = FONT_NAME;
-                        megaNames.smallFontInfo.name = FONT_NAME;
-                        microBorders.smallFontInfo.name = FONT_NAME;
-                        microBorders.largeFontInfo.name = FONT_NAME;
-                        microBorders.fontInfo.name = FONT_NAME;
-                        macroBorders.fontInfo.name = FONT_NAME;
-                        macroRoutes.fontInfo.name = FONT_NAME;
-                        capitals.fontInfo.name = FONT_NAME;
-                        macroBorders.smallFontInfo.name = FONT_NAME;
+                        macroNames.fontInfo.families = FONT_NAME;
+                        macroNames.mediumFontInfo.families = FONT_NAME;
+                        macroNames.smallFontInfo.families = FONT_NAME;
+                        megaNames.fontInfo.families = FONT_NAME;
+                        megaNames.mediumFontInfo.families = FONT_NAME;
+                        megaNames.smallFontInfo.families = FONT_NAME;
+                        microBorders.smallFontInfo.families = FONT_NAME;
+                        microBorders.largeFontInfo.families = FONT_NAME;
+                        microBorders.fontInfo.families = FONT_NAME;
+                        macroBorders.fontInfo.families = FONT_NAME;
+                        macroRoutes.fontInfo.families = FONT_NAME;
+                        capitals.fontInfo.families = FONT_NAME;
+                        macroBorders.smallFontInfo.families = FONT_NAME;
 
                         microBorders.textStyle.Uppercase = true;
 
@@ -1013,8 +1014,8 @@ namespace Maps.Rendering
 
                         worldDetails &= ~WorldDetails.Allegiance;
 
-                        subsectorNames.fontInfo.name = FONT_NAME;
-                        sectorName.fontInfo.name = FONT_NAME;
+                        subsectorNames.fontInfo.families = FONT_NAME;
+                        sectorName.fontInfo.families = FONT_NAME;
 
                         microBorders.pen.width = 0.11f;
                         microBorders.pen.dashStyle = DashStyle.Dot;
@@ -1159,6 +1160,8 @@ namespace Maps.Rendering
 
         public float hexContentScale = 1.0f;
         public float hexRotation = 0f;
+
+        public float routeEndAdjust = 0.25f;
 
         public string preferredMimeType;
         public bool t5AllegianceCodes;
@@ -1336,13 +1339,15 @@ namespace Maps.Rendering
             Government,
             Law,
             Tech,
-            Importance
+            Importance,
+            Bases
         }
 
 
         public Field field = Field.Starport;
         public int? min = null;
         public int? max = null;
+        public char[]? matches = null;
 
         public HighlightWorldPattern() { }
 
@@ -1356,26 +1361,40 @@ namespace Maps.Rendering
         }
         public bool Matches(World world)
         {
-            var v = field switch
+            if (matches != null)
             {
-                Field.Starport => "XEDCBA".IndexOf(world.Starport),
-                Field.Size => world.Size,
-                Field.Atmosphere => world.Atmosphere,
-                Field.Hydrosphere => world.Hydrographics,
-                Field.Population => world.PopulationExponent,
-                Field.Government => world.Government,
-                Field.Law => world.Law,
-                Field.Tech => world.TechLevel,
-                Field.Importance => SecondSurvey.Importance(world),
-                _ => throw new ApplicationException("Invalid pattern"),
-            };
-            return InRange(v);
+                var v = field switch
+                {
+                    Field.Starport => world.Starport.ToString(),
+                    Field.Bases => world.Bases,
+                    _ => throw new ApplicationException("Invalid pattern"),
+                };
+                return matches.Intersect(v.ToCharArray()).Count() > 0;
+            }
+            else
+            {
+                var v = field switch
+                {
+                    Field.Starport => "XEDCBA".IndexOf(world.Starport),
+                    Field.Size => world.Size,
+                    Field.Atmosphere => world.Atmosphere,
+                    Field.Hydrosphere => world.Hydrographics,
+                    Field.Population => world.PopulationExponent,
+                    Field.Government => world.Government,
+                    Field.Law => world.Law,
+                    Field.Tech => world.TechLevel,
+                    Field.Importance => world.CalculatedImportance,
+                    _ => throw new ApplicationException("Invalid pattern"),
+                };
+                return InRange(v);
+            }
         }
 
-        private static Regex HIGHLIGHT_BASIC_REGEX = new Regex(@"^([A-Za-z]+)(-?\d+)$", RegexOptions.Compiled);
-        private static Regex HIGHLIGHT_MIN_REGEX = new Regex(@"^([A-Za-z]+)(-?\d+)\+$", RegexOptions.Compiled);
-        private static Regex HIGHLIGHT_MAX_REGEX = new Regex(@"^([A-Za-z]+)(-?\d+)\-$", RegexOptions.Compiled);
-        private static Regex HIGHLIGHT_RANGE_REGEX = new Regex(@"^([A-Za-z]+)(-?\d+)\-(-?\d+)$", RegexOptions.Compiled);
+        private static Regex HIGHLIGHT_BASIC_REGEX = new Regex(@"^([A-Z]+)(-?\d+|[0-9A-Z])$", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        private static Regex HIGHLIGHT_MIN_REGEX = new Regex(@"^([A-Z]+)(-?\d+|[0-9A-Z])\+$", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        private static Regex HIGHLIGHT_MAX_REGEX = new Regex(@"^([A-Z]+)(-?\d+|[0-9A-Z])\-$", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        private static Regex HIGHLIGHT_RANGE_REGEX = new Regex(@"^([A-Z]+)(-?\d+|[0-9A-Z])\-(-?\d+|[0-9A-Z])$", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        private static Regex HIGHLIGHT_CHARS_REGEX = new Regex(@"^([A-Z]+):([A-Z]+)$", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
         private static bool ParseField(string s, ref Field f)
         {
@@ -1390,8 +1409,25 @@ namespace Maps.Rendering
                 case "l": f = Field.Law; return true;
                 case "t": f = Field.Tech; return true;
                 case "ix": f = Field.Importance; return true;
+                case "b": f = Field.Bases; return true;
                 default: return false;
             }
+        }
+
+        private static bool ParseNumber(string s, out int n)
+        {
+            const string HEX = "0123456789ABCDEFGHJKLMNPQRSTUVWXYZ";
+            if (s.Length == 1)
+            {
+                int i = HEX.IndexOf(s[0]);
+                if (i > 0)
+                {
+                    n = i;
+                    return true;
+                }
+            }
+            if (Int32.TryParse(s, out n)) return true;
+            return false;
         }
 
         public static HighlightWorldPattern? Parse(string s)
@@ -1404,31 +1440,37 @@ namespace Maps.Rendering
             if ((m = HIGHLIGHT_BASIC_REGEX.Match(s)).Success)
             {
                 if (!ParseField(m.Groups[1].Value, ref p.field)) return null;
-                if (!Int32.TryParse(m.Groups[2].Value, out int min)) return null;
+                if (!ParseNumber(m.Groups[2].Value, out int min)) return null;
                 p.min = p.max = min;
                 return p;
             }
             if ((m = HIGHLIGHT_MIN_REGEX.Match(s)).Success)
             {
                 if (!ParseField(m.Groups[1].Value, ref p.field)) return null;
-                if (!Int32.TryParse(m.Groups[2].Value, out int min)) return null;
+                if (!ParseNumber(m.Groups[2].Value, out int min)) return null;
                 p.min = min;
                 return p;
             }
             if ((m = HIGHLIGHT_MAX_REGEX.Match(s)).Success)
             {
                 if (!ParseField(m.Groups[1].Value, ref p.field)) return null;
-                if (!Int32.TryParse(m.Groups[2].Value, out int max)) return null;
+                if (!ParseNumber(m.Groups[2].Value, out int max)) return null;
                 p.max = max;
                 return p;
             }
             if ((m = HIGHLIGHT_RANGE_REGEX.Match(s)).Success)
             {
                 if (!ParseField(m.Groups[1].Value, ref p.field)) return null;
-                if (!Int32.TryParse(m.Groups[2].Value, out int min)) return null;
-                if (!Int32.TryParse(m.Groups[3].Value, out int max)) return null;
+                if (!ParseNumber(m.Groups[2].Value, out int min)) return null;
+                if (!ParseNumber(m.Groups[3].Value, out int max)) return null;
                 p.min = min;
                 p.max = max;
+                return p;
+            }
+            if ((m = HIGHLIGHT_CHARS_REGEX.Match(s)).Success)
+            {
+                if (!ParseField(m.Groups[1].Value, ref p.field)) return null;
+                p.matches = m.Groups[2].Value.ToUpperInvariant().ToCharArray();
                 return p;
             }
             return null;

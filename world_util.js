@@ -724,9 +724,13 @@
       }
 
       // Bases
-      world.Bases = (function(code) {
-        return (code || '').split('').map(function(code) { return BASE_TABLE[code]; });
-      }(world.Bases));
+      world.Bases = (function(code, allegiance) {
+        if (allegiance.match(/^Zh/)) {
+          if (code == 'KM') return 'Zhodani Base';
+          if (code == 'W') return 'Zhodani Relay Station';
+        }
+        return code.split('').map(function(code) { return BASE_TABLE[code]; });
+      }(world.Bases || '', world.Allegiance || ''));
 
       if (world.Remarks) {
         world.Remarks.forEach(function(remark) {
@@ -787,9 +791,9 @@
         name: world.Name,
         uwp: world.raw.UWP,
         tc: Traveller.splitRemarks(world.raw.Remarks),
-        iX: Traveller.parseIx(world.raw.Ix),
-        eX: world.raw.Ex,
-        cX: world.raw.Cx,
+        iX: Traveller.parseIx(world.raw.Ix) || '',
+        eX: world.raw.Ex || '',
+        cX: world.raw.Cx || '',
         pbg: world.raw.PBG,
         worlds: world.raw.Worlds,
         bases: world.raw.Bases,

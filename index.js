@@ -76,7 +76,7 @@ window.addEventListener('DOMContentLoaded', function() {
   //////////////////////////////////////////////////////////////////////
 
   // Tweak defaults
-  map.options = map.options | Traveller.MapOptions.NamesMinor | Traveller.MapOptions.ForceHexes;
+  map.options = map.options | Traveller.MapOptions.NamesMinor | Traveller.MapOptions.ForceHexes | Traveller.MapOptions.FilledBorders;
   map.scale = isSmallScreen ? 1 : 2;
   map.CenterAtSectorHex(0, 0, Traveller.Astrometrics.ReferenceHexX, Traveller.Astrometrics.ReferenceHexY);
   var defaults = {
@@ -102,7 +102,8 @@ window.addEventListener('DOMContentLoaded', function() {
       options: map.options
     };
     map.namedOptions.NAMES.forEach(function(name) {
-      preferences[name] = map.namedOptions.get(name);
+      var value = map.namedOptions.get(name);
+      preferences[name] = value === '' ? undefined : value;
     });
     PARAM_OPTIONS.forEach(function(option) {
       preferences[option.param] = document.body.classList.contains(option.className);
@@ -258,7 +259,7 @@ window.addEventListener('DOMContentLoaded', function() {
   });
 
   var SEARCH_TIMER_DELAY = 100; // ms
-  $("#searchBox").addEventListener('keyup', Util.debounce(function(e) {
+  $("#searchBox").addEventListener('input', Util.debounce(function(e) {
     if (e.key !== 'Enter') // Ignore double-submit on iOS
       search($('#searchBox').value, {typed: true});
   }, SEARCH_TIMER_DELAY));
@@ -312,6 +313,36 @@ window.addEventListener('DOMContentLoaded', function() {
     lastRoute = null;
   }
 
+  $('#routeStart').addEventListener('keydown', function(e) {
+    if (e.ctrlKey || e.altKey || e.metaKey)
+      return;
+    if (e.key === 'Enter' || e.keyCode === VK_RETURN) {
+      e.preventDefault();
+      e.stopPropagation();
+      $('#routeEnd').focus();
+    }
+  });
+
+  $('#routeEnd').addEventListener('keydown', function(e) {
+    if (e.ctrlKey || e.altKey || e.metaKey)
+      return;
+    if (e.key === 'Enter' || e.keyCode === VK_RETURN) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      $('#routePath').innerHTML = '';
+      var found = false;
+      ['J-1','J-2','J-3','J-4','J-5','J-6'].forEach(function(n) {
+        if ($('#routeForm').classList.contains(n)) {
+          found = true;
+          $('#'+n).click();
+        }
+      });
+      if (!found)
+        $('#J-2').click();
+    }
+  });
+
   $('#closeRouteBtn').addEventListener('click', function(e) {
     e.preventDefault();
     closeRoute();
@@ -354,6 +385,7 @@ window.addEventListener('DOMContentLoaded', function() {
   });
 
   var VK_ESCAPE = KeyboardEvent.DOM_VK_ESCAPE || 0x1B,
+      VK_RETURN = KeyboardEvent.DOM_VK_RETURN || 0x0D,
       VK_C = KeyboardEvent.DOM_VK_C || 0x43,
       VK_F = KeyboardEvent.DOM_VK_F || 0x46,
       VK_H = KeyboardEvent.DOM_VK_H || 0x48,
@@ -724,7 +756,11 @@ window.addEventListener('DOMContentLoaded', function() {
       if ('style' in preferences) map.style = preferences.style;
       if ('options' in preferences) map.options = preferences.options;
       map.namedOptions.NAMES.forEach(function(name) {
-        if (name in preferences) map.namedOptions.set(name, preferences[name]);
+        if (name in preferences) {
+          var value = preferences[name];
+          if (value !== '')
+            map.namedOptions.set(name, value);
+        }
       });
 
       PARAM_OPTIONS.forEach(function(option) {
@@ -791,6 +827,19 @@ window.addEventListener('DOMContentLoaded', function() {
       search(urlParams[key], {navigate: key === 'qn'});
     }
   });
+
+  if ('qr' in urlParams) {
+    console.log('qr');
+    try {
+      var results = JSON.parse(urlParams['qr']);
+      console.log('results: ', results);
+      var term = urlParams['search'] || '';
+      $('#searchBox').value = term;
+      search(term, {navigate: true, results: results});
+    } catch (ex) {
+      console.warn('Error parsing "qr" data: ', ex);
+    }
+  }
 
   if ('attract' in urlParams) {
     // TODO: Disable UI, or make any UI interaction cancel
@@ -931,6 +980,10 @@ window.addEventListener('DOMContentLoaded', function() {
         });
         data.DataURL = Traveller.MapService.makeURL('/api/sec', {
           sector: data.SectorName, type: 'SecondSurvey',
+          milieu: milieu
+        });
+        data.TSVDataURL = Traveller.MapService.makeURL('/api/sec', {
+          sector: data.SectorName, type: 'TabDelimited',
           milieu: milieu
         });
       }
@@ -1162,9 +1215,11 @@ window.addEventListener('DOMContentLoaded', function() {
     if (searchRequest)
       searchRequest.ignore();
 
-    searchRequest = Util.ignorable(Traveller.MapService.search(query, {
-      milieu: map.namedOptions.get('milieu')
-    }));
+    searchRequest = options.results
+      ? Promise.resolve(options.results)
+      : Util.ignorable(Traveller.MapService.search(query, {
+        milieu: map.namedOptions.get('milieu')
+      }));
     searchRequest
       .then(function(data) {
         displayResults(data);
@@ -1579,7 +1634,7 @@ window.addEventListener('DOMContentLoaded', function() {
   // Show promo, if not dismissed.
   if (false && !isIframe) {
     setTimeout(function() {
-      var promo_key = 'tm_promo1';
+      var promo_key = 'tm_promo2';
       if (!localStorage.getItem(promo_key)) {
         document.body.classList.add('show-promo');
         $('#promo-closebtn').addEventListener('click', function(e) {

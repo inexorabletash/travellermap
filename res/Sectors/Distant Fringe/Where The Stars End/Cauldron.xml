@@ -4,17 +4,16 @@
   <Credits>
     <![CDATA[
       <b>Cauldron</b> sector was designed by Ade Stewart as part of Where The Stars End.
+
+      The data provided for the sector includes no social details: the region has been remotely surveyed, which has provided extensive physical information about the stars, features, and worlds that lie within it.
     ]]>
   </Credits>
   <Subsectors>
     <Subsector Index="I">Harad</Subsector>
   </Subsectors>
-  <Borders>
-    <Border Allegiance="Lh" LabelPosition="0325" ShowLabel="true" WrapLabel="true">0022 0122 0221 0322 0323 0223 0124 0125 0025 0024 0023 0022 </Border>
-  </Borders>
   <Regions>
     <!-- Nebula -->
-    <Region Color="Red" LabelPosition="2018" Label="The&#x0a;Cauldron">1118 1217 1317 1417 1518 1519 1619 1719 1718 1717 1816 1815 1916 2015 2016 2017 2118 2217 2216 2316 2416 2517 2617 2518 2519 2619 2620 2520 2420 2419 2319 2218 2119 2120 2020 1921 1821 1721 1620 1520 1419 1320 1219 1218 1118 </Region>
+    <Region Color="Red" LabelPosition="2018" Label="The Cauldron">1118 1217 1317 1417 1518 1519 1619 1719 1718 1717 1816 1815 1916 2015 2016 2017 2118 2217 2216 2316 2416 2517 2617 2518 2519 2619 2620 2520 2420 2419 2319 2218 2119 2120 2020 1921 1821 1721 1620 1520 1419 1320 1219 1218 1118 </Region>
     <Region Color="Red">1319 1418 1419 1319 </Region>
     <Region Color="Red">1917 </Region>
     <Region Color="Red">2319 2419 2520 2420 2419 2319 </Region>
@@ -28,10 +27,13 @@
     <Region Color="Red">2022 </Region>
     <Region Color="Red">2624 2724 2725 2624 </Region>
   </Regions>
+  <Borders>
+    <Border Allegiance="Lr" ShowLabel="false">0022 0122 0221 0322 0323 0223 0124 0125 0025 0024 0023 0022 </Border>
+  </Borders>
   <Allegiances>
-    <Allegiance Code="Lh">Lords of the High Realm</Allegiance>
+    <Allegiance Code="Lr">Lords of the High Realm</Allegiance>
   </Allegiances>
   <Stylesheet>
-    border.Lh { color: green; style: dotted }
+    border.Lr { color: green; style: dotted }
   </Stylesheet>
 </Sector>

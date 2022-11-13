@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Sector>
+  <Name>Ruthless Veil</Name>
+  <Credits>
+    <![CDATA[
+      <b>Ruthless Veil</b> sector was designed by Miles A. Maria.
+    ]]>
+  </Credits>
+  <Subsectors>
+    <Subsector Index="A">Malmori</Subsector>
+    <Subsector Index="B">Abraxas</Subsector>
+    <Subsector Index="C">Adams</Subsector>
+    <Subsector Index="D">Asogainz</Subsector>
+    <Subsector Index="E">Primaris</Subsector>
+    <Subsector Index="F">Onvinda</Subsector>
+    <Subsector Index="G">Enkadus</Subsector>
+    <Subsector Index="H">Tara</Subsector>
+    <Subsector Index="I">Woldyhool</Subsector>
+    <Subsector Index="J">Zanak</Subsector>
+    <Subsector Index="K">Nagor</Subsector>
+    <Subsector Index="L">Reblais</Subsector>
+    <Subsector Index="M">Upholla</Subsector>
+    <Subsector Index="N">Seanerth</Subsector>
+    <Subsector Index="O">Soverign</Subsector>
+    <Subsector Index="P">Xandarz</Subsector>
+  </Subsectors>
+    <Regions>
+    <!-- Quinn Nebula -->
+    <Region Color="Red" LabelPosition="2532" Label="Quinn's Nebula">1732 1831 1931 2030 2029 2129 2128 2027 2026 2126 2226 2326 2426 2427 2428 2429 2430 2531 2631 2731 2830 2930 3030 3131 3031 3032 3133 3134 3234 3235 3136 3036 3037 3138 3238 3239 3139 3038 2938 2937 2836 2736 2636 2637 2738 2739 2638 2539 2439 2440 2340 2439 2438 2338 2237 2137 2036 1937 1836 1936 2036 2136 2135 2034 1934 1833 1733 1732 </Region>
+    <Region Color="Red">2421 2522 2621 2722 2821 2820 2921 2821 2822 2823 2924 3024 3124 3223 3224 3225 3126 3127 3128 3028 3029 2930 2829 2828 2728 2628 2627 2626 2625 2624 2524 2523 2522 2421 </Region>
+    <Region Color="Red">3031 </Region>
+    <Region Color="Red">2636 2737 2837 2737 2637 2636 </Region>
+    <Region Color="Red">1933 2032 2031 2131 2132 2232 2233 2234 2335 2234 2134 2033 1933 </Region>
+    <Region Color="Red">2935 3034 3033 3034 3135 3034 2935 </Region>
+    <Region Color="Red">2623 2724 2823 2822 2923 2924 3024 2925 2926 2825 2725 2624 2623 </Region>
+    <!-- Rift Anomalies -->
+    <!-- Indigo indicates Jump Shoal regions -->
+    <Region Color="Indigo">1633 </Region>
+    <Region Color="Indigo">2224 </Region>
+    <Region Color="Indigo">2328 </Region>
+    <Region Color="Indigo">2428 </Region>
+    <Region Color="Indigo">2832 </Region>
+    <Region Color="Indigo">2920 </Region>
+    <Region Color="Indigo">2930 </Region>
+    <Region Color="Indigo">2939 </Region>
+    <Region Color="Indigo">3119 </Region>
+    <Region Color="Indigo">3133 </Region>
+    <!-- Purple indicates Jump Deep regions -->
+    <Region Color="Purple">2130 </Region>
+    <Region Color="Purple">2331 </Region>
+    <Region Color="Purple">2337 </Region>
+    <Region Color="Purple">2438 </Region>
+    <Region Color="Purple">2728 </Region>
+    <Region Color="Purple">2821 </Region>
+    <Region Color="Purple">2824 </Region>
+    <Region Color="Purple">2831 </Region>
+    <Region Color="Purple">2931 </Region>
+    <Region Color="Purple">3037 </Region>
+    <Region Color="Purple">3121 </Region>
+  </Regions>
+  <Allegiances>
+    <Allegiance Code="At">Abraxan Territories</Allegiance>
+    <Allegiance Code="Bd">Bellus Frontier District</Allegiance>
+    <Allegiance Code="Mp">Mining Protectorate</Allegiance>
+    <Allegiance Code="Rc">Reblais Confederation</Allegiance>
+    <Allegiance Code="Sd">Soverign Dominate</Allegiance>
+  </Allegiances>
+  <Borders>
+    <Border Allegiance="At" LabelPosition="1107" ShowLabel="true" WrapLabel="false">0904 1003 1104 1204 1205 1206 1207 1107 1006 0906 0905 0904 </Border>
+    <Border Allegiance="Bd" LabelPosition="2105" ShowLabel="true" WrapLabel="false">1505 1604 1603 1602 1702 1802 1902 2001 2101 2201 2302 2402 2403 2404 2305 2204 2105 2004 1905 1906 1806 1707 1606 1506 1505 </Border>
+    <Border Allegiance="Mp" LabelPosition="0511" ShowLabel="true" WrapLabel="false">0206 0306 0406 0507 0607 0707 0807 0808 0909 1009 1010 1011 0912 0812 0712 0611 0511 0410 0310 0309 0208 0207 0206 </Border>
+    <Border Allegiance="Rc" LabelPosition="2024" ShowLabel="true" WrapLabel="false">2022 2122 2222 2323 2423 2424 2525 2526 2426 2326 2225 2125 2124 2023 2022 </Border>
+    <Border Allegiance="Sd" LabelPosition="1636" ShowLabel="true" WrapLabel="false">1535 1634 1735 1736 1737 1738 1637 1537 1536 1535 </Border>
+  </Borders>
+  <Routes>
+    <!-- Amderstun Route -->
+    <Route Start="2000" End="2003"/>
+    <Route Start="2003" End="1904"/>
+    <Route Start="1904" End="1804"/>
+    <Route Start="1804" End="1706"/>
+    <Route Start="2003" End="2104"/>
+    <!-- Coreward Commerce -->
+    <Route Start="1004" End="1005"/>
+    <Route Start="1005" End="1106"/>
+    <Route Start="1106" End="1207"/>
+    <Route Start="1207" End="1308"/>
+    <Route Start="1308" End="1608"/>
+    <Route Start="1608" End="1711"/>
+    <Route Start="1711" End="2012"/>
+    <!-- Malmori Hub -->
+    <Route Start="1005" End="0707"/>
+    <Route Start="0707" End="0609"/>
+    <Route Start="0609" End="0710"/>
+    <Route Start="0710" End="0811"/>
+    <Route Start="0811" End="1013"/>
+    <!-- Adams Run -->
+    <Route Start="2913" End="2812"/>
+    <Route Start="2812" End="2511"/>
+    <Route Start="2511" End="2310"/>
+    <Route Start="2310" End="2208"/>
+    <Route Start="2208" End="2110"/>
+    <Route Start="2110" End="2012"/>
+    <!-- Middle Link -->
+    <Route Start="2019" End="2116"/>
+    <Route Start="2116" End="2313"/>
+    <Route Start="2313" End="2511"/>
+    <Route Start="2313" End="2012"/>
+    <!-- Spinward Arm -->
+    <Route Start="1013" End="1215"/>
+    <Route Start="1215" End="1416"/>
+    <Route Start="1416" End="1718"/>
+    <Route Start="1718" End="2019"/>
+    <Route Start="2019" End="2022"/>
+    <Route Start="2022" End="2225"/>
+    <!-- Cross Sector -->
+    <Route Start="2730" End="2529"/>
+    <Route Start="2529" End="2526"/>
+    <Route Start="2526" End="2225"/>
+    <Route Start="2225" End="2025"/>
+    <Route Start="2025" End="1827"/>
+    <Route Start="1827" End="1625"/>
+    <Route Start="1625" End="1325"/>
+    <!-- Outer Loop -->
+    <Route Start="1130" End="0931"/>
+    <Route Start="0931" End="0828"/>
+    <Route Start="0828" End="0926"/>
+    <Route Start="0926" End="1023"/>
+    <Route Start="1023" End="1325"/>
+    <!-- Rimward Commerce -->
+    <Route Start="1637" End="1735"/>
+    <Route Start="1735" End="1634"/>
+    <Route Start="1634" End="1532"/>
+    <Route Start="1532" End="1331"/>
+    <Route Start="1331" End="1130"/>
+    <Route Start="1130" End="1127"/>
+    <Route Start="1127" End="1327"/>
+    <Route Start="1127" End="1325"/>
+  </Routes>
+  <Stylesheet>
+    border.At { color: purple; style: dotted }
+    border.Bd { color: blue }
+    border.Mp { color: green; style: dotted }
+    border.Rc { color: green; style: dotted }
+    border.Sd { color: violet; style: dotted }
+  </Stylesheet>
+</Sector>

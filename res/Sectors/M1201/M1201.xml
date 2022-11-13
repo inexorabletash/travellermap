@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <Sectors>
   <Sector Abbreviation="Spin" Tags="Unreviewed" Selected="true" Milieu="M1201">
     <Y>-1</Y>
@@ -54,20 +54,30 @@
     <DataFile Source="Traveller Chronicle 10" Milieu="M1201" Type="TabDelimited">Solomani Rim.tab</DataFile>
     <MetadataFile>Solomani Rim.xml</MetadataFile>
   </Sector>
-  <Sector Abbreviation="Old Expanses" Tags="Unreviewed" Milieu="M1201">
+  <Sector Abbreviation="OldE" Tags="Unreviewed" Milieu="M1201">
     <Y>2</Y>
     <X>1</X>
     <Name Source="DGP">Old Expanses</Name>
     <DataFile Source="TNE Rulebook" Type="TabDelimited">Old Expanses.tab</DataFile>
     <MetadataFile>Old Expanses.xml</MetadataFile>
   </Sector>
+  <Sector Abbreviation="Verg" Milieu="M1201">
+    <Y>1</Y>
+    <X>-3</X>
+    <Name>Verge</Name>
+    <Name Lang="as">Khtiyhkokaeiw</Name>
+    <Name Lang="vi">Shaakasi</Name>
+    <DataFile Author="Kevin Combs" Type="SecondSurvey">Verge.txt</DataFile>
+    <MetadataFile>Verge.xml</MetadataFile>
+  </Sector>
   <Sector Abbreviation="Reft" Tags="Unreviewed" Milieu="M1201">
     <Y>0</Y>
     <X>-3</X>
     <Name>Reft</Name>
+    <Name>Reft Sector</Name>
     <Name Lang="zh">Bransakral</Name>
     <Name Lang="vi">Sushinar</Name>
-    <DataFile Source="The Regency Sourcebook: Keepers of the Flame" Milieu="M1201" Type="TabDelimited">Reft.tab</DataFile>
+    <DataFile Source="The Regency Sourcebook: Keepers of the Flame" Milieu="M1201" Type="SecondSurvey">Reft.txt</DataFile>
     <MetadataFile>Reft.xml</MetadataFile>
   </Sector>
   <Sector Abbreviation="Troj" Tags="Unreviewed" Milieu="M1201">

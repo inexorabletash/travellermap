@@ -4,15 +4,22 @@
   <Credits>
     <![CDATA[
       <b>Amarada</b> sector was designed by Ade Stewart as part of Where the Stars End.
+
+      The data provided for the sector includes no social details: the region has been remotely surveyed, which has provided extensive physical information about the stars, features, and worlds that lie within it.
     ]]>
   </Credits>
   <Labels>
     <!-- Features Names -->
-    <Label Hex="1522" Color="gray" Size="large">Coreward&#x0a;Drift</Label>
-    <Label Hex="2604" Color="gray" Size="small">RSS&#x0a;Am2603</Label>
+    <Label Hex="1602" Color="gray" Size="large">Inner Void</Label>
+    <Label Hex="1415" Color="gray" Size="large">Coreward</Label>
+    <Label Hex="1417" Color="gray" Size="large">Drift</Label>
+    <Label Hex="2825" Color="gray" Size="large">Great Void</Label>
+    <Label Hex="1735" Color="gray">The Separation</Label>
+    <Label Hex="2604" Color="gray">RSS&#x0a;Am2603</Label>
   </Labels>
   <Regions>
-    <Region Color="Darkviolet">0123 0222 0221 0322 0323 0223 0124 0125 0124 0123</Region>
-    <Region Color="Darkviolet" LabelPosition="1027" Label="Amaric Shoal">0524 0623 0624 0725 0825 0926 1026 1126 1226 1326 1425 1424 1425 1326 1327 1227 1128 1129 1029 0929 0928 0827 0826 0726 0626 0625 0525 0524</Region>
+    <!-- Anomalies -->
+    <Region Color="Purple">0123 0222 0221 0322 0323 0223 0124 0125 0124 0123 </Region>
+    <Region Color="Purple" LabelPosition="1027" Label="Amaric Shoal"> 0524 0623 0624 0725 0825 0926 1026 1126 1226 1326 1425 1424 1425 1326 1327 1227 1128 1129 1029 0929 0928 0827 0826 0726 0626 0625 0525 0524</Region>
   </Regions>
 </Sector>

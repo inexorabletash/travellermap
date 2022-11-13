@@ -1339,8 +1339,12 @@ var Util = {
         // Interpolate scale in log space.
         this.scale = pow2(Animation.interpolate(log2(os), log2(scale), p));
         // TODO: If animating scale, this should follow an arc (parabola?) through 3space treating
-        // scale as Z and computing a height such that the target is in view at the turnaround.
-        var p2 = 1 - ((1-p) * (1-p));
+        // scale as Z and computing a height such that the target is in view at the turnaround?
+
+        // For now, animate to position in 1/2 the overall animation time, so we spend
+        // much of the animation time centered over the target.
+        var hp = Math.min(p*2, 1);
+        var p2 = 1 - ((1-hp) * (1-hp));
         this.position = [Animation.interpolate(ox, x, p2), Animation.interpolate(oy, y, p2)];
         this.redraw();
       }.bind(this);

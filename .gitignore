@@ -4,6 +4,7 @@
 .svn/
 
 # Visual Studio cruft
+.vs
 *.csproj.user
 *.suo
 App_Data/
@@ -29,3 +30,7 @@ Thumbs.db
 /.vs/config/applicationhost.config
 /.vs/ProjectSettings.json
 /.vs/slnx.sqlite
+
+# Mac cruft
+.DS_Store
+

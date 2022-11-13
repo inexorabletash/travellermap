@@ -39,10 +39,12 @@ namespace Maps.API
                     {
                         bool hide_uwp = GetBoolOption("hide-uwp", defaultValue: false);
                         bool hide_tl = GetBoolOption("hide-tl", defaultValue: false);
+                        bool hide_cap = GetBoolOption("hide-cap", defaultValue: false);
                         bool filter(ErrorLogger.Record record)
                         {
                             if (hide_uwp && record.message.StartsWith("UWP")) return false;
                             if (hide_tl && record.message.StartsWith("UWP: TL")) return false;
+                            if (hide_cap && record.message.StartsWith("Gov 6 (captive/colony)")) return false;
                             return true;
                         }
                         errors = new ErrorLogger(filter);

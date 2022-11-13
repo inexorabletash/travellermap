@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Sector>
+  <Stylesheet>
+    border.Gf { color: #66CCEE; }
+    route.Gf{ color: #00CC00; }
+    border.Gh{ color: #FF8800; }
+    route.Gh{ color: #00CC00; }
+    border.Hf{ color: #EE4444; }
+    route.Hf{ color: #00CC00; }
+    border.Ne { color: #BBAA00; }
+    route.Ne{ color: #00CC00; }
+    border.Pk { color: #BB33BB; }
+    route.Pk{ color: #00CC00; }
+    border.Rc{ color: #88CC33; }
+    route.Rc{ color: #00CC00; }
+    border.Sk { color: #3333CC; }
+    route.Sk{ color: #00CC00; }
+  </Stylesheet>
+  <Name>Lemon and Gold</Name>
+  <Subsectors>
+    <Subsector Index="A">Brabelia</Subsector>
+    <Subsector Index="B">Kilipoff</Subsector>
+    <Subsector Index="C">Wena Bark</Subsector>
+    <Subsector Index="D">Palexanda Nebula</Subsector>
+    <Subsector Index="E">Vonlinde</Subsector>
+    <Subsector Index="F">Roxandi</Subsector>
+    <Subsector Index="G">Lappelinda Gate</Subsector>
+    <Subsector Index="H">Lucresa</Subsector>
+    <Subsector Index="I">Pomp and Galax</Subsector>
+    <Subsector Index="J">Pepermunk</Subsector>
+    <Subsector Index="K">Mummu</Subsector>
+    <Subsector Index="L">Emparabuz</Subsector>
+    <Subsector Index="M">Roundabout</Subsector>
+    <Subsector Index="N">Hippelle</Subsector>
+    <Subsector Index="O">Lesilia Bridge</Subsector>
+    <Subsector Index="P">Demosalia</Subsector>
+  </Subsectors>
+  <Borders>
+    <Border Allegiance="Gf" LabelPosition="0522">0221 0321 0420 0419 0520 0620 0720 0620 0621 0622 0523 0524 0423 0324 0224 0223 0222 0221 </Border>
+    <Border Allegiance="Gh" LabelPosition="1726">0626 0726 0825 0925 1024 1124 1223 1323 1422 1421 1522 1621 1721 1821 1922 2022 2122 2221 2321 2320 2319 2320 2420 2521 2621 2722 2822 2923 3022 3122 3221 3321 3322 3323 3324 3325 3326 3327 3227 3128 3028 2929 2829 2830 2730 2630 2531 2431 2331 2231 2131 2031 1932 1831 1731 1630 1530 1429 1330 1230 1130 1030 1029 1028 0928 0827 0727 0626 </Border>
+    <Border Allegiance="Hf" LabelPosition="1535">0735 0834 0934 0933 1032 1132 1232 1333 1432 1533 1633 1734 1834 1935 1936 1937 1938 1838 1839 1740 1640 1641 1541 1441 1341 1241 1141 1041 1040 1039 1038 0938 0837 0737 0736 0735 </Border>
+    <Border Allegiance="Ne" LabelPosition="2939">2736 2835 2935 2934 2933 2932 2933 3033 3134 3234 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2840 2839 2739 2738 2737 2736 </Border>
+    <Border Allegiance="Pk" LabelPosition="0330">0027 0127 0227 0327 0328 0428 0529 0629 0730 0731 0831 0732 0631 0531 0430 0331 0231 0132 0031 0030 0029 0028 0027 </Border>
+    <Border Allegiance="Rc" LabelPosition="1416">0916 1015 1115 1214 1213 1212 1312 1412 1512 1612 1713 1813 1913 1914 1814 1815 1816 1717 1617 1618 1519 1520 1419 1319 1219 1218 1118 1017 1016 0916 </Border>
+    <Border Allegiance="Sk" LabelPosition="1202">0608 0708 0707 0706 0705 0704 0703 0802 0801 0800 0900 1000 1100 1200 1300 1400 1500 1501 1502 1602 1603 1704 1804 1705 1706 1707 1607 1508 1509 1409 1410 1409 1408 1308 1307 1306 1305 1204 1104 1004 0905 0805 0706 0707 0708 0709 0809 0810 0911 0811 0810 0710 0609 0608 </Border>
+   </Borders>
+  <Routes>
+    <Route Start="1500" End="1201"/>
+    <Route Start="1201" End="1001"/>
+    <Route Start="1001" End="0903"/>
+    <Route Start="0903" End="0904"/>
+    <Route Start="0904" End="0804"/>
+    <Route Start="0804" End="0706"/>
+    <Route Start="0706" End="0708"/>
+    <Route Start="0708" End="0810"/>
+    <Route Start="1201" End="1204"/>
+    <Route Start="1204" End="0904"/>
+    <Route Start="1204" End="1304"/>
+    <Route Start="1304" End="1502"/>
+    <Route Start="1304" End="1704"/>
+    <Route Start="1704" End="1804"/>
+    <Route Start="3338" End="3237"/>
+    <Route Start="3237" End="3037"/>
+    <Route Start="3037" End="2938"/>
+    <Route Start="2938" End="2937"/>
+    <Route Start="2937" End="3035"/>
+    <Route Start="2937" End="3037"/>
+    <Route Start="2938" End="2739"/>
+    <Route Start="2938" End="2840"/>
+    <Route Start="2938" End="3140"/>
+    <Route Start="3140" End="3041"/>
+    <Route Start="2840" End="3041"/>
+    <Route Start="2937" End="2736"/>
+    <Route Start="3324" End="3224"/>
+    <Route Start="3224" End="2926"/>
+    <Route Start="2926" End="2929"/>
+    <Route Start="2929" End="3028"/>
+    <Route Start="2929" End="2829"/>
+    <Route Start="2829" End="2830"/>
+    <Route Start="2926" End="2725"/>
+    <Route Start="2326" End="2725"/>
+    <Route Start="2326" End="2024"/>
+    <Route Start="2024" End="2027"/>
+    <Route Start="2027" End="2029"/>
+    <Route Start="2029" End="1730"/>
+    <Route Start="2829" End="2629"/>
+    <Route Start="2629" End="2431"/>
+    <Route Start="2024" End="1724"/>
+    <Route Start="1522" End="1724"/>
+    <Route Start="1730" End="1329"/>
+    <Route Start="1329" End="1230"/>
+    <Route Start="1724" End="1423"/>
+    <Route Start="1423" End="1224"/>
+    <Route Start="1224" End="1223"/>
+    <Route Start="1224" End="0925"/>
+    <Route Start="1515" End="1714"/>
+    <Route Start="1714" End="1914"/>
+    <Route Start="1515" End="1313"/>
+    <Route Start="1313" End="1212"/>
+    <Route Start="1515" End="1214"/>
+    <Route Start="1214" End="1015"/>
+    <Route Start="1515" End="1617"/>
+    <Route Start="1617" End="1418"/>
+    <Route Start="1617" End="1618"/>
+    <Route Start="0323" End="0321"/>
+    <Route Start="0321" End="0521"/>
+    <Route Start="0521" End="0720"/>
+    <Route Start="0323" End="0524"/>
+    <Route Start="0329" End="0129"/>
+    <Route Start="0129" End="0029"/>
+    <Route Start="0329" End="0428"/>
+    <Route Start="0428" End="0529"/>
+    <Route Start="0529" End="0629"/>
+    <Route Start="0629" End="0730"/>
+    <Route Start="0730" End="0732"/>
+    <Route Start="0732" End="0631"/>
+    <Route Start="0631" End="0531"/>
+    <Route Start="0531" End="0529"/>
+    <Route Start="1137" End="1035"/>
+    <Route Start="1035" End="0933"/>
+    <Route Start="1137" End="1235"/>
+    <Route Start="1235" End="1334"/>
+    <Route Start="1035" End="0936"/>
+    <Route Start="0936" End="0737"/>
+    <Route Start="1137" End="1438"/>
+    <Route Start="1438" End="1639"/>
+    <Route Start="1639" End="1441"/>
+  </Routes>
+  <Allegiances>
+    <Allegiance Code="Gh">Gebbebem Hive</Allegiance>
+    <Allegiance Code="Ne">Neo Empire</Allegiance>
+    <Allegiance Code="Sk">Sapier Kingdom</Allegiance>
+    <Allegiance Code="Gf">Galexanne Federation</Allegiance>
+    <Allegiance Code="Hf">Hipelle Federation</Allegiance>
+    <Allegiance Code="Pk">Pompetica Kingdom</Allegiance>
+    <Allegiance Code="Rc">Roxandi Confedaration</Allegiance>
+  </Allegiances>
+  <Regions>
+    <Region Color="#03fffc" LabelPosition="2905" Label="Palexanda Nebula">2702 2802 2903 3002 3003 3004 3105 3106 3006 2906 2905 2804 2704 2603 2504 2603 2703 2702</Region>
+    <Region Color="#ff004e">3203</Region>
+    <Region Color="#ff004e">3205 3206 3107 3206 3205</Region>
+    <Region Color="#ff00d2">3009 3008 3108 3208 3108 3008 3009</Region>
+    <Region Color="#188aff">2606 2706 2805 2806 2907 3007 2908 2808 2709 2808 2908 2907 2806 2706 2606 </Region>
+  </Regions>
+ </Sector>

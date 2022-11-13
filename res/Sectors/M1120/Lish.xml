@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Sector>
+  <Name>Lishun</Name>
+  <Credits>
+    <![CDATA[
+
+             <b>Lishun</b> sector was designed by Marc W. Miller and
+             appears in <cite>Atlas of the Imperium</cite> (GDW,
+             1984).
+
+             It was refined by Joe D. Fugate Sr., and portions appear
+             in <cite>The Travellers Digest</cite>, <cite>The Flaming
+             Eye</cite> (DGP, 1991) and <cite>Challenge
+             Magazine</cite>.
+
+    ]]>
+  </Credits>
+  <Product Title="MegaTraveller Alien Vol. 1: Vilani &amp; Vargr" Publisher="Digest Group Publications" Ref="https://wiki.travellerrpg.com/Alien_-_Vilani_%26_Vargr"/>
+  <Subsectors Publisher="DGP" Source="The Travellers' Digest #6">
+    <Subsector Index="A">Vakkuun</Subsector>
+    <Subsector Index="B">Adawi</Subsector>
+    <Subsector Index="C">Sotri</Subsector>
+    <Subsector Index="D">Criideu</Subsector>
+    <Subsector Index="E">Pryden</Subsector>
+    <Subsector Index="F">Masionia</Subsector>
+    <Subsector Index="G">Gama</Subsector>
+    <Subsector Index="H">Tephany</Subsector>
+    <Subsector Index="I">Shuna</Subsector>
+    <Subsector Index="J">Taccis</Subsector>
+    <Subsector Index="K">Simen</Subsector>
+    <Subsector Index="L">Ot Zell</Subsector>
+    <Subsector Index="M">Shuun</Subsector>
+    <Subsector Index="N">Welling</Subsector>
+    <Subsector Index="O">Strashna</Subsector>
+    <Subsector Index="P">Mirmida</Subsector>
+  </Subsectors>
+  <Allegiances>
+    <Allegiance Code="La">League of Antares</Allegiance>
+    <Allegiance Code="Li">Lucan's Imperium</Allegiance>
+    <Allegiance Code="Rv">Ziru Sirkaa</Allegiance>
+    <Allegiance Code="V1">First Fleet of Dzo</Allegiance>
+    <Allegiance Code="V8">Council of the Four-Pair</Allegiance>
+    <Allegiance Code="Vv">Voekhaeb Society</Allegiance>
+    <Allegiance Code="Vx">Antares Pact</Allegiance>
+  </Allegiances>
+  <Borders>
+    <Border Allegiance="La" Color="Purple">3230 3330 3230 </Border>
+    <Border Allegiance="Li" LabelPosition="1124" Color="DarkRed">0027 0128 0227 0327 0426 0526 0625 0624 0623 0622 0722 0721 0720 0619 0519 0518 0517 0516 0615 0614 0613 0612 0611 0610 0609 0509 0408 0407 0406 0507 0607 0708 0808 0909 1009 1110 1210 1311 1312 1412 1513 1514 1614 1615 1616 1617 1618 1619 1620 1621 1722 1723 1724 1725 1625 1626 1627 1628 1729 1829 1930 1931 1932 2032 2133 2233 2334 2434 2534 2634 2734 2833 2933 3032 3133 3233 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2041 1941 1841 1741 1641 1541 1441 1341 1241 1141 1041 0941 0841 0741 0641 0541 0441 0341 0241 0141 0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027 </Border>
+    <Border Allegiance="Rv" LabelPosition="0213" Color="Yellow">0006 0107 0206 0207 0208 0309 0310 0311 0411 0412 0413 0414 0415 0416 0417 0418 0419 0420 0521 0621 0522 0422 0323 0223 0124 0125 0025 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014 0013 0012 0011 0010 0009 0008 0007 0006</Border>
+    <Border Allegiance="V1" LabelPosition="2315" Color="OliveDrab">1711 1810 1910 1909 1908 1907 2006 2005 2004 2003 2002 2001 2000 2100 2200 2300 2400 2500 2600 2700 2800 2901 3000 3100 3200 3101 3001 3002 3003 3004 3005 3006 3007 3108 3008 2909 2809 2810 2711 2712 2713 2613 2514 2515 2516 2616 2717 2718 2719 2720 2620 2621 2622 2523 2423 2424 2324 2224 2125 2025 1926 1927 1827 1826 1825 1824 1823 1923 1922 2021 2020 2019 2018 2017 1917 1916 1815 1814 1813 1812 1712 1711 </Border>
+    <Border Allegiance="V8" LabelPosition="2128" WrapLabel="true" Color="OliveDrab">1929 2028 2128 2127 2126 2226 2326 2426 2427 2428 2329 2228 2129 2028 1929 </Border>
+    <Border Allegiance="Vv" LabelPosition="1104" WrapLabel="true" Color="OliveDrab">0100 0200 0300 0400 0500 0600 0700 0800 0900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 1901 1902 1802 1803 1804 1805 1706 1606 1507 1407 1308 1208 1209 1208 1108 1007 0907 0806 0706 0605 0505 0504 0403 0303 0302 0201 0101 0100 </Border>
+    <Border Allegiance="Vx" LabelPosition="2531" Color="OliveDrab">2232 2332 2431 2531 2530 2529 2628 2728 2827 2927 3026 3126 3125 3225 3325 3326 3327 3328 3329 3229 3130 3030 2931 2932 2832 2733 2632 2533 2432 2333 2232 </Border>
+    <Border Allegiance="Vx" LabelPosition="3115" Color="OliveDrab">2614 2714 2813 2913 2912 2911 3011 3111 3211 3311 3312 3313 3314 3315 3316 3317 3318 3217 3118 3018 3019 2920 2820 2819 2818 2817 2816 2815 2715 2614 </Border>
+    <Border Allegiance="Vx" LabelPosition="3205" WrapLabel="true" Color="OliveDrab">3104 3203 3202 3201 3301 3302 3303 3304 3305 3306 3307 3206 3205 3204 3104 </Border>
+  </Borders>
+</Sector>

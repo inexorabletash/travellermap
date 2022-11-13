@@ -546,7 +546,7 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <Y>-3</Y>
     <X>-2</X>
     <Name Lang="va">Ngathksirz</Name>
-    <DataFile Author="John G. Wood" Source="Underdeveloped Sectors" Ref="https://web.archive.org/web/20160205040546/http://homepage.ntlworld.com/elvwood/Traveller/Sectors/">ngathksirz.sec</DataFile>
+    <DataFile Author="John G. Wood" Source="Underdeveloped Sectors" Ref="https://web.archive.org/web/20160205040546/http://homepage.ntlworld.com/elvwood/Traveller/Sectors/" Type="SecondSurvey">ngathksirz.sec</DataFile>
     <Subsectors Author="Mike Davis" Ref="http://www.elvwood.org/Traveller/Sectors/Ngathksirz.html">
       <Subsector Index="A">Odzgoegh</Subsector>
       <Subsector Index="B">Kfirzin</Subsector>
@@ -1305,14 +1305,14 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <DataFile Author="Geir Lanesskog" Type="SecondSurvey">Fulani.txt</DataFile>
     <MetadataFile Author="Geir Lanesskog">Fulani.xml</MetadataFile>
   </Sector>
-  <Sector Abbreviation="Vang" Tags="InReview">
+  <Sector Abbreviation="Vang" Tags="InReview" Selected="true">
     <Y>0</Y>
     <X>-6</X>
     <Name>Vanguard Reaches</Name>
-    <DataFile Author="Geir Lanesskog"  Source="Traveller 5 Second Survey" Milieu="M1105" Type="TabDelimited">Vanguard Reaches.tab</DataFile>
+    <DataFile Author="Geir Lanesskog" Source="Traveller 5 Second Survey" Milieu="M1105" Type="TabDelimited">Vanguard Reaches.tab</DataFile>
     <MetadataFile Author="Geir Lanesskog">Vanguard Reaches.xml</MetadataFile>
   </Sector>
-  <Sector Abbreviation="Beyo" Tags="InReview">
+  <Sector Abbreviation="Beyo" Tags="InReview" Selected="true">
     <Y>0</Y>
     <X>-5</X>
     <Name>The Beyond</Name>
@@ -1359,7 +1359,7 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <DataFile Author="Duncan Law-Green, Leighton Piper and Jae Campbell; Martin J. Dougherty" Source="Traveller 5 Second Survey" Milieu="M1105" Type="TabDelimited">Dagudashaag.tab</DataFile>
     <MetadataFile>Dagudashaag.xml</MetadataFile>
   </Sector>
-  <Sector Abbreviation="Core" Tags="Official">
+  <Sector Abbreviation="Core" Tags="Official" Selected="true">
     <Y>0</Y>
     <X>0</X>
     <Name>Core</Name>
@@ -1451,64 +1451,16 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <X>-7</X>
     <Name>Theron</Name>
     <Name Lang="as">Iykhaiser</Name>
-    <DataFile Author="Jo Grant" Source="CORE, The Zhodani Base" Ref="http://zho.berka.com/data/CLASSIC/sector.pl?sector=THERON">theron.sec</DataFile>
-    <Subsectors Source="CORE">
-      <Subsector Index="A">Terrelay</Subsector>
-      <Subsector Index="B">Ronodik</Subsector>
-      <Subsector Index="C">Babs</Subsector>
-      <Subsector Index="D">Mirdika</Subsector>
-      <Subsector Index="E">Chang-Tu</Subsector>
-      <Subsector Index="F">Olpinures</Subsector>
-      <Subsector Index="G">Plok</Subsector>
-      <Subsector Index="H">Lisqitama</Subsector>
-      <Subsector Index="I">Ubagil</Subsector>
-      <Subsector Index="J">Babadur</Subsector>
-      <Subsector Index="K">Tynvegi</Subsector>
-      <Subsector Index="L">Joseph</Subsector>
-      <Subsector Index="M">Quadrant 01-569</Subsector>
-      <Subsector Index="N">Pozzy</Subsector>
-      <Subsector Index="O">Virtanen</Subsector>
-      <Subsector Index="P">Willwlmo</Subsector>
-    </Subsectors>
-
-    <Borders>
-      <Border Allegiance="Rm" Color="green">2734 2833 2832 2831 2830 2829 2828 2827 2927 3026 3126 3125 3225 3325 3326 3327 3328 3329 3330 3331 3332 3333 3232 3132 3032 2933 2934 2935 2936 2937 2836 2737 2736 2735 2734</Border>
-    </Borders>
-    <Allegiances>
-      <Allegiance Code="Rm">Regency of Muirimi</Allegiance>
-    </Allegiances>
+    <DataFile Author="Jo Grant" Source="CORE, The Zhodani Base" Ref="http://zho.berka.com/data/CLASSIC/sector.pl?sector=THERON" Type="SecondSurvey">Theron.txt</DataFile>
+    <MetadataFile Author="Ade Stewart">Theron.xml</MetadataFile>
   </Sector>
   <Sector>
     <Y>1</Y>
     <X>-6</X>
     <Name>Iphigenaia</Name>
     <Name Lang="as">Kyatulyare'</Name>
-    <DataFile Source="CORE" Ref="http://www.ocean-of-storms.com/core/astrogat/gA.htm">iphigenaia.sec</DataFile>
-    <Subsectors>
-      <Subsector Index="A" Source="The Vanguard Reaches" Author="Chuck Kallenbach II" Publisher="Paranoia Press">Cheetham</Subsector>
-      <Subsector Index="B" Source="The Vanguard Reaches" Author="Chuck Kallenbach II" Publisher="Paranoia Press">La Grone</Subsector>
-      <Subsector Index="C" Source="The Vanguard Reaches" Author="Chuck Kallenbach II" Publisher="Paranoia Press">Keflin</Subsector>
-      <Subsector Index="D" Source="The Vanguard Reaches" Author="Chuck Kallenbach II" Publisher="Paranoia Press">Shillelagh</Subsector>
-      <Subsector Index="E">Tempoko</Subsector>
-      <Subsector Index="F">Noriega</Subsector>
-      <Subsector Index="G">Warzone</Subsector>
-      <Subsector Index="H">Iyarl</Subsector>
-      <Subsector Index="I">Zebylono</Subsector>
-      <Subsector Index="J">Maria</Subsector>
-      <Subsector Index="K">Ykoroni</Subsector>
-      <Subsector Index="L">Ftyeeta</Subsector>
-      <Subsector Index="M">Riter</Subsector>
-      <Subsector Index="N">Emma</Subsector>
-      <Subsector Index="O">Bablari</Subsector>
-      <Subsector Index="P">Eikaoweal</Subsector>
-    </Subsectors>
-    <Borders>
-      <Border Allegiance="As">2008 2108 2107 2206 2205 2305 2304 2303 2302 2401 2502 2602 2703 2802 2803 2904 2905 2906 2907 2908 2909 2910 2810 2811 2812 2712 2711 2610 2510 2409 2309 2208 2109 2008 </Border>
-      <Border Allegiance="Rm" Color="green">0025 0125 0224 0324 0423 0523 0622 0722 0821 0921 0920 1019 1018 1017 1117 1217 1318 1418 1519 1619 1620 1721 1821 1822 1823 1724 1725 1726 1626 1527 1427 1327 1226 1126 1025 0926 0826 0727 0627 0528 0428 0329 0330 0331 0332 0333 0233 0133 0032 0031 0030 0029 0028 0027 0026 0025</Border>
-    </Borders>
-    <Allegiances>
-      <Allegiance Code="Rm">Regency of Muirimi</Allegiance>
-    </Allegiances>
+    <DataFile Source="CORE" Ref="http://www.ocean-of-storms.com/core/astrogat/gA.htm" Type="SecondSurvey">Iphigenaia.txt</DataFile>
+    <MetadataFile Author="Ade Stewart">Iphigenaia.xml</MetadataFile>
   </Sector>
   <Sector Abbreviation="Touc" Tags="InReview" Selected="true">
     <Y>1</Y>
@@ -1584,11 +1536,11 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
   <Sector>
     <Y>1</Y>
     <X>4</X>
-    <Name Lang="kk">Kaa G!'kul</Name>
     <Name Lang="hv">Numbis</Name>
+    <Name Lang="kk">Kaa G!'kul</Name>
     <Name Lang="vi">Galiin</Name>
-    <DataFile Author="Leroy W. L. Guatney, Mike McKeown, Chris Griffen" Milieu="M1105" Type="SecondSurvey">Kaa G!'kul.txt</DataFile>
-    <MetadataFile>Kaa G!'kul.xml</MetadataFile>
+    <DataFile Author="Leroy W. L. Guatney, Mike McKeown, Chris Griffen" Milieu="M1105" Type="SecondSurvey">Numbis.txt</DataFile>
+    <MetadataFile>Numbis.xml</MetadataFile>
   </Sector>
   <Sector>
     <Y>1</Y>
@@ -3070,11 +3022,15 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <Y>6</Y>
     <X>1</X>
     <Name>RimReach</Name>
+    <DataFile Author="Sam Crowley" Type="SecondSurvey">RimReach.txt</DataFile>
+    <MetadataFile Author="Sam Crowley">RimReach.xml</MetadataFile>
   </Sector>
   <Sector>
     <Y>6</Y>
     <X>2</X>
     <Name>Phlange</Name>
+    <DataFile Author="Chuck Glascock" Type="SecondSurvey">Phlange.txt</DataFile>
+    <MetadataFile Author="Chuck Glascock">Phlange.xml</MetadataFile>
   </Sector>
   <Sector>
     <Y>6</Y>
@@ -3151,6 +3107,14 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
   </Sector>
 
 
+
+  <Sector>
+    <Y>7</Y>
+    <X>0</X>
+    <Name>Ruthless Veil</Name>
+    <DataFile Author="Miles A. Maria" Type="SecondSurvey">Ruthless Veil.txt</DataFile>
+    <MetadataFile>Ruthless Veil.xml</MetadataFile>
+  </Sector>
 
   <Sector>
     <Y>7</Y>

@@ -1,13 +1,45 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<Sector>
+<Sector Abbreviation="Gvur">
+  <Y>-2</Y>
+  <X>-4</X>
+  <Name Lang="va">Gvurrdon</Name>
+  <Name Lang="zh">Briakqra'</Name>
+  <Credits>
+    <![CDATA[
+
+             <b>Gvurrdon</b> sector was designed by J. Andrew Keith,
+             Marc W. Miller and John Harshman and appears in <cite>Alien Module 3: Vargr</cite>
+             (GDW, 1984).
+
+    ]]>  
+  </Credits>
+  <DataFile Source="Traveller 5 Second Survey" Milieu="M1900" Type="TabDelimited">Gvur.tab</DataFile>
+  <Subsectors Author="J. Andrew Keith">
+    <Subsector Index="A">Ongvos</Subsector>
+    <Subsector Index="B">Zoghz</Subsector>
+    <Subsector Index="C">Adhsakh</Subsector>
+    <Subsector Index="D">Fanganger</Subsector>
+    <Subsector Index="E">Uerra Rueshken</Subsector>
+    <Subsector Index="F">Dzen</Subsector>
+    <Subsector Index="G">Lla Iz Therrg</Subsector>
+    <Subsector Index="H">Thoengling</Subsector>
+    <Subsector Index="I">Kfan Uzangou</Subsector>
+    <Subsector Index="J">Ruhk Odzuetarug</Subsector>
+    <Subsector Index="K">Ksits Usathu Odzuetarug</Subsector>
+    <Subsector Index="L">Aelluekh</Subsector>
+    <Subsector Index="M">Lianic</Subsector>
+    <Subsector Index="N">Spurl</Subsector>
+    <Subsector Index="O">Uthe</Subsector>
+    <Subsector Index="P">Firgr</Subsector>
+  </Subsectors>
+
   <Routes>
-    <Route Start="1140" End="1336" />
-    <Route Start="2240" End="1738" />
     <Route Start="2240" End="2338" />
   </Routes>
 
   <Borders>
-     <Border Color="Blue" Allegiance="Rr">1039 1139 1238 1237 1236 1336 1335 1334 1333 1334 1335 1336 1436 1537 1637 1738 1837 1937 1936 2036 2137 2236 2336 2436 2536 2537 2538 2638 2639 2740 2840 2941 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2041 1941 1841 1741 1641 1541 1441 1341 1241 1141 1140 1039</Border>
+    <Border Color="Blue" Allegiance="Rr">1539 1540 1541 1540 1539 </Border>
+    <Border Color="Blue" Allegiance="Rr">2240 2341 2241 2240 </Border>
   </Borders>
 
   <Allegiances>

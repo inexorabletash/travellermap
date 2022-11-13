@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Sectors>
+  <Sector Abbreviation="Ziaf" Selected="true" Milieu="M1900">
+    <Y>-2</Y>
+    <X>-5</X>
+    <Name Lang="zh">Ziafrplians</Name>
+    <Name Lang="va">Usingou</Name>
+    <DataFile Author="Robert Eaglestone" Type="TabDelimited">Ziaf.tab</DataFile>
+    <MetadataFile>Ziaf.xml</MetadataFile>
+  </Sector>
   <Sector Abbreviation="Gvur" Selected="true" Milieu="M1900">
     <Y>-2</Y>
     <X>-4</X>
     <Name Lang="va">Gvurrdon</Name>
     <Name Lang="zh">Briakqra'</Name>
-    <DataFile Author="Robert Eaglestone" Type="SecondSurvey">Gvur.txt</DataFile>
+    <DataFile Author="Robert Eaglestone" Type="TabDelimited">Gvur.tab</DataFile>
     <MetadataFile>Gvur.xml</MetadataFile>
   </Sector>
   <Sector Abbreviation="Spin" Selected="true" Milieu="M1900">
@@ -13,7 +21,15 @@
     <X>-4</X>
     <Name>Spinward Marches</Name>
     <Name Lang="zh">Tloql</Name>
-    <DataFile Author="Robert Eaglestone" Type="SecondSurvey">Spin.txt</DataFile>
+    <DataFile Author="Robert Eaglestone" Type="TabDelimited">Spin.tab</DataFile>
     <MetadataFile>Spin.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Dene" Selected="true" Milieu="M1900">
+    <Y>-1</Y>
+    <X>-3</X>
+    <Name>Deneb</Name>
+    <Name Lang="zh">Nieklsdia</Name>
+    <DataFile Author="Robert Eaglestone" Type="TabDelimited">Dene.tab</DataFile>
+    <MetadataFile>Dene.xml</MetadataFile>
   </Sector>
 </Sectors>

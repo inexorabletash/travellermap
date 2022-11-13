@@ -346,7 +346,7 @@ table#features, #features th, #features td { border: solid 1px black; }
         <img style="float: right; width: 48px; height: 48px; margin: 10px;" src="../res/ui/style-mongoose.png" alt="Mongoose example">
         style=mongoose
       </dt>
-      <dd>A style similar to <a target=_blank rel=noopner href="https://www.mongoosepublishing.com/rpgs/new-traveller.html">Mongoose Publishing's</a> house style for Traveller maps.</dd>
+      <dd>A style similar to <a target=_blank rel=noopener href="https://www.mongoosepublishing.com/collections/traveller-rpgs">Mongoose Publishing's</a> house style for Traveller maps.</dd>
     </dl>
 
     <h4>Page and API</h4>
@@ -356,13 +356,17 @@ table#features, #features th, #features td { border: solid 1px black; }
 
     <dl class="params">
       <dt>dimunofficial=1</dt>
-      <dd>At scales where worlds are shown (dotmap or more), sectors with unofficial
-        data will be dimmed</dd>
+      <dd>
+        At scales where worlds are shown (dotmap or more), sectors with unofficial
+        data will be dimmed
+      </dd>
 
       <dt>review=1</dt>
-      <dd>At scales where worlds are shown (dotmap or more), sectors will be
+      <dd>
+        At scales where worlds are shown (dotmap or more), sectors will be
         tinted based on T5SS review status: official - red; in review - orange;
-        unreviewed - yellow; preserve - green; apocryphal - magenta.</dd>
+        unreviewed - yellow; preserve - green; apocryphal - magenta.
+      </dd>
 
       <dt>routes=0</dt>
       <dd>Routes are not rendered (macro-scale or micro-scale)</dd>
@@ -380,56 +384,84 @@ table#features, #features th, #features td { border: solid 1px black; }
       <dd>Hex grid is not rendered. The default is to show a hex grid when zoomed in.</dd>
 
       <dt>po=1</dt>
-      <dd><b>Population overlay:</b> a yellow circle with
+      <dd>
+        <b>Population overlay:</b> a yellow circle with
         area proportional to the
         <a href="./secondsurvey#pbg">population</a>
-        of each world is overlayed.</dd>
+        of each world is overlayed.
+      </dd>
 
       <dt>im=1</dt>
-      <dd><b>Importance overlay:</b> a green circle representing
+      <dd>
+        <b>Importance overlay:</b> a green circle representing
         the world's <a href="./secondsurvey#ix">Importance</a> is
-        overlayed.</dd>
+        overlayed.
+      </dd>
 
       <dt>dw=1</dt>
-      <dd><b>Droyne World overlay:</b> worlds with Droyne
+      <dd>
+        <b>Droyne World overlay:</b> worlds with Droyne
         populations are annotated with &#x2605;, and worlds with
-        Chirper populations are annotated with &#x2606;.</dd>
+        Chirper populations are annotated with &#x2606;.
+      </dd>
 
       <dt>an=1</dt>
-      <dd><b>Ancient World overlay:</b> worlds with
-        known Ancient sites are annotated with &#x2600;.</dd>
+      <dd>
+        <b>Ancient World overlay:</b> worlds with
+        known Ancient sites are annotated with &#x2600;.
+      </dd>
 
       <dt>mh=1</dt>
-      <dd><b>Minor Race Homeworld overlay:</b> homeworlds
-        of minor races are annotated with &#x273B;.</dd>
+      <dd>
+        <b>Minor Race Homeworld overlay:</b> homeworlds
+        of minor races are annotated with &#x273B;.
+      </dd>
 
       <dt>stellar=1</dt>
-      <dd>A representation of the system's stars is shown
-        instead of rendering world details. Sizes are not to scale.</dd>
+      <dd>
+        A representation of the system's stars is shown
+        instead of rendering world details. Sizes are not to scale.
+      </dd>
 
-      <dt>hw=<var>S</var><var>N</var></dt>
-      <dt>hw=<var>S</var><var>N</var>+</dt>
-      <dt>hw=<var>S</var><var>N</var>-</dt>
-      <dt>hw=<var>S</var><var>M</var>-<var>M</var></dt>
-      <dd><b>Highlight Worlds overlay:</b>
-        Worlds with a matching characteristic are highlighted. The argument
-        starts with a field name, one of
-        <code>St</code>
-        <code>S</code>
-        <code>A</code>
-        <code>H</code>
-        <code>P</code>
-        <code>G</code>
-        <code>L</code>
-        <code>T</code>
-        <code>Ix</code>.
-        This is followed by either
-        a value (field is <var>N</var>),
-        a value and - (field is <var>N</var> or lower),
-        a value and + (field is <var>N</var> or higher),
-        or a value and - and another value (field in the range <var>N</var> to <var>M</var>).
-        Note that values are decimal integers (possibly negative), not eHex.
-        (<a target=_blank rel=noopener href="../?hw=Ix4+">example</a>)
+      <dt>hw=<var>F</var><var>N</var></dt>
+      <dt>hw=<var>F</var><var>N</var>+</dt>
+      <dt>hw=<var>F</var><var>N</var>-</dt>
+      <dt>hw=<var>F</var><var>N</var>-<var>M</var></dt>
+      <dt>hw=<var>F</var>:<var>ABC</var></dt>
+      <dd>
+        <b>Highlight Worlds overlay:</b>
+        Worlds with a matching characteristic are highlighted.
+
+        <p>The argument starts with a field name, one of
+        <code>St</code> (starport)
+        <code>S</code> (size)
+        <code>A</code> (atmosphere)
+        <code>H</code> (hydrographics)
+        <code>P</code> (population)
+        <code>G</code> (government)
+        <code>L</code> (law level)
+        <code>T</code> (tech level)
+        <code>Ix</code> (importance)
+        <code>B</code> (bases).
+
+        <p>
+        This is followed by either:
+          <ul>
+            <li>
+              a value (field is <var>N</var>) (e.g. <code>hw=T5</code> - TL 5)
+            <li>
+              a value and <code>-</code> (field is <var>N</var> or lower; e.g. <code>hw=S5-</code> - Size 5 or lower)
+            <li>
+              a value and <code>+</code> (field is <var>N</var> or higher; e.g. <code>hw=T12+</code> - TL 12 or higher)
+            <li>
+              a value and <code>-</code> and another value (field in the range <var>N</var> to <var>M</var>; e.g. <code>hw=A4-9</code> - Atmosphere 4-9)
+            <li>
+              <code>:</code> and a list of characters (starport and bases only; e.g. <code>hw=B:ND</code> - naval base or depot)
+          </ul>
+
+        <p>
+        Note that for numerical patterns the values are decimal integers (possibly negative) or eHex.
+        (<a target=_blank rel=noopener href="../?hw=Ix4%2B">example</a>).
       </dd>
 
     </dl>
@@ -1449,10 +1481,13 @@ table#features, #features th, #features td { border: solid 1px black; }
           <a href="fileformats#sec">SEC</a> (<a href="/data/spin/sec">example</a>),
           <a href="fileformats#t5tab">T5 Tab Delimited</a> (<a href="/data/spin/tab">example</a>), or
           <a href="fileformats#t5col">T5 Column Delimited</a> (<a href="/data/spin">example</a>) format.
+        Worlds with UWP <code>???????-?</code> will be rendered as placeholders; worlds with remark <code>{Anomaly}</code> will be rendered using a special marker.
+
         Metadata must be specified in either
           <a href="metadata">XML</a> (<a href="/data/spin/metadata">example</a>) or
           <a href="http://dotclue.org/t20/">MSEC</a> (<a href="/data/spin/msec">example</a>) format.
 </dl>
+
 
 <h4>Options:</h4>
 <dl class="params">
@@ -1554,6 +1589,8 @@ table#features, #features th, #features td { border: solid 1px black; }
           <a href="fileformats#sec">SEC</a> (<a href="/data/spin/sec">example</a>),
           <a href="fileformats#t5tab">T5 Tab Delimited</a> (<a href="/data/spin/tab">example</a>), or
           <a href="fileformats#t5col">T5 Column Delimited</a> (<a href="/data/spin">example</a>) format.
+        Worlds with UWP <code>???????-?</code> will be rendered as placeholders; worlds with remark <code>{Anomaly}</code> will be rendered using a special marker.
+
         Metadata must be specified in either
           <a href="metadata">XML</a> (<a href="/data/spin/metadata">example</a>) or
           <a href="http://dotclue.org/t20/">MSEC</a> (<a href="/data/spin/msec">example</a>) format.

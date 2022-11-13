@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Sector>
+  <Name>Markhab</Name>
+  <Subsectors>
+    <Subsector Index="A">Canus</Subsector>
+    <Subsector Index="B">Anoro</Subsector>
+    <Subsector Index="C">Dillon</Subsector>
+    <Subsector Index="D">Uncharted M05</Subsector>
+    <Subsector Index="E">Abax</Subsector>
+    <Subsector Index="F">Markhab</Subsector>
+    <Subsector Index="G">Llorenc</Subsector>
+    <Subsector Index="H">Uncharted M07</Subsector>
+    <Subsector Index="I">Petra</Subsector>
+    <Subsector Index="J">Nebula</Subsector>
+    <Subsector Index="K">Balnan</Subsector>
+    <Subsector Index="L">Uncharted M09</Subsector>
+    <Subsector Index="M">Tezan</Subsector>
+    <Subsector Index="N">Aranga</Subsector>
+    <Subsector Index="O">Muxia</Subsector>
+    <Subsector Index="P">Uncharted M11</Subsector>
+  </Subsectors>
+  <Borders>
+    <Border Allegiance="An">0903 1003 1103 1203 1303 1403 1503 1603 1704 1705 1706 1707 1708 1608 1509 1409 1410 1409 1309 1209 1210 1111 1011 1010 1110 1209 1208 1207 1107 1006 0907 0807 0806 0805 0804 0904</Border>
+    <Border Allegiance="Mf">1310 1311 1411 1511 1611 1612 1713 1813 1714 1614 1515 1414 1315 1316 1416 1417 1318 1319 1320 1219 1120 1020 1019 0919 0818 0817 0917 0916 1015 1014 1013 1012 1112 1211</Border>
+    <Border Allegiance="In">0915</Border>
+    <Border Allegiance="In">1122</Border>
+    <Border Allegiance="Ar">1338 1438 1339</Border>
+    <Border Allegiance="Tz">0633 0733 0633 0634 0535</Border>
+  </Borders>
+  <Labels>
+    <Label Hex="0432" Color="white">*</Label>
+    <Label Hex="0432" Color="white" Size="small" OffsetY="-.3">B-Dwarf</Label>
+    <Label Hex="0604" Color="white">*</Label>
+    <Label Hex="0604" Color="white" Size="small" OffsetY="-.3">Cal Pt.</Label>
+    <Label Hex="0804" Color="white">*</Label>
+    <Label Hex="0806" Color="white">*</Label>
+    <Label Hex="0807" Color="white">*</Label>
+    <Label Hex="0903" Color="white">*</Label>
+    <Label Hex="0904" Color="white">*</Label>
+    <Label Hex="1003" Color="white">*</Label>
+    <Label Hex="1203" Color="white">*</Label>
+    <Label Hex="1303" Color="white">*</Label>
+    <Label Hex="1314" Color="white">*</Label>
+    <Label Hex="1314" Color="white" Size="small" OffsetY="-.3">Cal Pt.</Label>
+    <Label Hex="1318" Color="white">*</Label>
+    <Label Hex="1318" Color="white" Size="small" OffsetY="-.3">B-Dwarf</Label>
+    <Label Hex="1322" Color="white">*</Label>
+    <Label Hex="1322" Color="white" Size="small" OffsetY="-.3">Cal Pt.</Label>
+    <Label Hex="1332" Color="white">*</Label>
+    <Label Hex="1332" Color="white" Size="small" OffsetY="-.3">B-Dwarf</Label>
+    <Label Hex="1403" Color="white">*</Label>
+    <Label Hex="1415" Color="white">*</Label>
+    <Label Hex="1415" Color="white" Size="small" OffsetY="-.3">Pulsar</Label>
+    <Label Hex="1503" Color="white">*</Label>
+    <Label Hex="1525" Color="white">*</Label>
+    <Label Hex="1525" Color="white" Size="small" OffsetY="-.3">Cal Pt.</Label>
+    <Label Hex="1603" Color="white">*</Label>
+    <Label Hex="1704" Color="white">*</Label>
+    <Label Hex="1705" Color="white">*</Label>
+    <Label Hex="1706" Color="white">*</Label>
+    <Label Hex="1707" Color="white">*</Label>
+  </Labels>
+  <Regions>
+    <Region Label="Nebula" Color="Purple">
+      1124 1224 1325 1326 1327 1326 1225 1125
+    </Region>
+    <Region Label="Nebula" Color="Purple">
+      2236 2237 2238 2339 2340 2240 2239 2139 2238 2237 2236
+    </Region>
+    <Region Label="" Color="Red">
+      1415
+    </Region>
+    <Region Label="" Color="Yellow">
+      0903 1003 1103 1203 1303 1403 1503 1603 1704 1705 1706 1707 1706 1705 1704 1603 1503 1403 1303 1203 1103 1003 0904 0804 0805 0806 0807 0806 0805 0804
+    </Region>
+  </Regions>
+</Sector>

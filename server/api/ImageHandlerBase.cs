@@ -90,6 +90,8 @@ namespace Maps.API
                 if (devicePixelRatio > 2)
                     devicePixelRatio = 2;
 
+                ctx.Styles.routeEndAdjust = (float)GetDoubleOption("rea", defaultValue: 0.25, queryDefaults: queryDefaults);
+
                 bool dataURI = GetBoolOption("datauri", queryDefaults: queryDefaults, defaultValue: false);
 
                 if (GetStringOption("milieu", SectorMap.DEFAULT_MILIEU) != SectorMap.DEFAULT_MILIEU)
@@ -104,6 +106,12 @@ namespace Maps.API
                     ctx.Styles.macroRoutes.visible = false;
                 }
                 #endregion
+
+                // "content-disposition: inline" is not used as Chrome opens that in a tab, then
+                // (sometimes?) fails to allow it to be saved due to being served via POST. 
+                string disposition = context.Request.HttpMethod == "POST" 
+                    && context.Request.UserAgent.Contains("Chrome")                    
+                    ? "attachment" : "inline";
 
                 MemoryStream? ms = null;
                 if (dataURI)
@@ -122,7 +130,7 @@ namespace Maps.API
                     if (!dataURI)
                     {
                         context.Response.AddHeader("content-length", stream.Length.ToString());
-                        context.Response.AddHeader("content-disposition", $"inline;filename=\"{Util.SanitizeFilename(title)}.svg\"");
+                        context.Response.AddHeader("content-disposition", $"{disposition};filename=\"{Util.SanitizeFilename(title)}.svg\"");
                     }
                     stream.WriteTo(outputStream);
                     #endregion
@@ -160,7 +168,7 @@ namespace Maps.API
                     if (!dataURI)
                     {
                         context.Response.AddHeader("content-length", stream.Length.ToString());
-                        context.Response.AddHeader("content-disposition", $"inline;filename=\"{Util.SanitizeFilename(title)}.pdf\"");
+                        context.Response.AddHeader("content-disposition", $"{disposition};filename=\"{Util.SanitizeFilename(title)}.pdf\"");
                     }
                     stream.WriteTo(outputStream);
                     #endregion
@@ -189,7 +197,7 @@ namespace Maps.API
                         RenderToGraphics(ctx, transform, graphics);
                     }
 
-                    BitmapResponse(context.Response, outputStream, ctx.Styles, bitmap, transparent ? ContentTypes.Image.Png : null);
+                    BitmapResponse(context.Response, disposition, outputStream, ctx.Styles, bitmap, transparent ? ContentTypes.Image.Png : null, title);
                     #endregion
                 }
 
@@ -270,7 +278,7 @@ namespace Maps.API
                 }
             }
 
-            private static void BitmapResponse(HttpResponse response, Stream outputStream, Stylesheet styles, Bitmap bitmap, string? mimeType)
+            private static void BitmapResponse(HttpResponse response, string disposition, Stream outputStream, Stylesheet styles, Bitmap bitmap, string? mimeType, string? title)
             {
                 try
                 {
@@ -278,6 +286,14 @@ namespace Maps.API
                     mimeType ??= styles.preferredMimeType;
 
                     response.ContentType = mimeType;
+                    string? extension = mimeType switch
+                    {
+                        ContentTypes.Image.Jpeg => "jpg",
+                        ContentTypes.Image.Gif => "gif",
+                        ContentTypes.Image.Png => "png",
+                        _ => null
+                    };
+
 
                     // Searching for a matching encoder
                     ImageCodecInfo encoder = ImageCodecInfo.GetImageEncoders()
@@ -322,6 +338,12 @@ namespace Maps.API
                         response.ContentType = ContentTypes.Image.Gif;
                         bitmap.Save(outputStream, ImageFormat.Gif);
                     }
+
+                    if (title != null && extension != null)
+                    {
+                        response.AddHeader("content-disposition", $"{disposition};filename=\"{Util.SanitizeFilename(title)}.{extension}\"");
+                    }
+
                 }
                 catch (System.Runtime.InteropServices.ExternalException)
                 {

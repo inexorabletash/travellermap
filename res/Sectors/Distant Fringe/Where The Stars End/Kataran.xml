@@ -4,15 +4,37 @@
   <Credits>
     <![CDATA[
       <b>Kataran</b> sector was designed by Ade Stewart as part of Where The Stars End.
+
+      The data provided for the sector includes social details for only a few worlds: the region has been remotely surveyed, which has provided extensive physical information about the other stars, features, and worlds that lie within it.
     ]]>
   </Credits>
   <Subsectors>
+    <Subsector Index="A">Manifest</Subsector>
     <Subsector Index="E">Trail</Subsector>
-    <Subsector Index="H">Athallo</Subsector>
     <Subsector Index="I">Frontier</Subsector>
     <Subsector Index="L">Excalisor</Subsector>
     <Subsector Index="M">Skirt</Subsector>
   </Subsectors>
+  <Routes>
+    <!-- Jannasta's Expedition -->
+    <Route Start="0010" End="0111" Color="darkred"/>
+    <Route Start="0111" End="0211" Color="darkred"/>
+    <Route Start="0211" End="0411" Color="darkred"/>
+    <Route Start="0411" End="0513" Color="darkred"/>
+    <Route Start="0513" End="0613" Color="darkred"/>
+    <Route Start="0613" End="0614" Color="darkred"/>
+    <Route Start="0614" End="0516" Color="darkred"/>
+    <Route Start="0516" End="0317" Color="darkred"/>
+    <Route Start="0317" End="0217" Color="darkred"/>
+    <Route Start="0217" End="0017" Color="darkred"/>
+  </Routes>
+  <Labels>
+    <!-- Route Names -->
+    <Label Hex="0612" Color="darkred" Size="small">Jannasta's&#x0a;Path</Label>
+    <!-- Features Names -->
+    <Label Hex="1722" Color="Gray">Jerox Abyss</Label>
+    <Label Hex="2133" Color="Gray">Kataran Void</Label>
+  </Labels>
   <Borders>
     <Border Allegiance="Lh" LabelPosition="3127" ShowLabel="false" WrapLabel="true">3024 3124 3123 3222 3322 3323 3324 3325 3225 3126 3025 3024 </Border>
   </Borders>

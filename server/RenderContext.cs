@@ -336,14 +336,19 @@ namespace Maps.Rendering
                 AbstractGraphicsState? state = null;
                 foreach (var layer in layers)
                 {
+                    // HACK: Clipping to tileRect rapidly becomes inaccurate away from
+                    // the origin due to float precision. Only do it if really necessary.
+                    bool clip = layer.clip &&
+                        !((ClipPath == null) && (graphics is BitmapGraphics));
+
                     // Impose a clipping region if desired, or remove it if not.
-                    if (layer.clip && state == null)
+                    if (clip && state == null)
                     {
                         state = graphics.Save();
                         if (ClipPath != null) graphics.IntersectClip(ClipPath);
                         else graphics.IntersectClip(tileRect);
                     }
-                    else if (!layer.clip && state != null)
+                    else if (!clip && state != null)
                     {
                         state.Dispose();
                         state = null;
@@ -719,7 +724,12 @@ namespace Maps.Rendering
             {
                 graphics.SmoothingMode = SmoothingMode.HighSpeed;
                 solidBrush.Color = styles.backgroundColor;
-                graphics.DrawRectangle(solidBrush, tileRect);
+
+                // HACK: Due to limited precisions of floats, tileRect can end up not covering
+                // the full bitmap when far from the origin.
+                var rect = tileRect;
+                rect.Inflate(rect.Width * 0.1f, rect.Height * 0.1f);
+                graphics.DrawRectangle(solidBrush, rect);
             }
 
             private void OverlayGlyph(string glyph, AbstractFont font, Point coordinates)
@@ -994,7 +1004,7 @@ namespace Maps.Rendering
                         #region Importance Overlay
                         if (styles.importanceOverlay.visible)
                         {
-                            int im = SecondSurvey.Importance(world);
+                            int im = world.CalculatedImportance;
                             if (im > 0)
                             {
                                 DrawOverlay(styles.importanceOverlay, (im - 0.5f) * Astrometrics.ParsecScaleX, ref solidBrush, ref pen);
@@ -1005,7 +1015,7 @@ namespace Maps.Rendering
                         #region Capital Overlay
                         if (styles.capitalOverlay.visible)
                         {
-                            bool hasIm = SecondSurvey.Importance(world) >= 4;
+                            bool hasIm = world.CalculatedImportance >= 4;
                             bool hasCp = world.IsCapital;
 
                             if (hasIm && hasCp)
@@ -1172,6 +1182,17 @@ namespace Maps.Rendering
                                             PointF pt = bottomUsed ? styles.BaseTopPosition : styles.BaseBottomPosition;
                                             solidBrush.Color = glyph.IsHighlighted ? styles.worlds.textHighlightColor : styles.worlds.textColor;
                                             RenderUtil.DrawGlyph(graphics, glyph, fonts, solidBrush, pt);
+                                        }
+                                    }
+
+                                    // Base 3 (!)
+                                    if (bases.Length > 2)
+                                    {
+                                        Glyph glyph = Glyph.FromBaseCode(world.LegacyAllegiance, bases[2]);
+                                        if (glyph.IsPrintable)
+                                        {
+                                            solidBrush.Color = glyph.IsHighlighted ? styles.worlds.textHighlightColor : styles.worlds.textColor;
+                                            RenderUtil.DrawGlyph(graphics, glyph, fonts, solidBrush, styles.BaseMiddlePosition);
                                         }
                                     }
 
@@ -1666,10 +1687,8 @@ namespace Maps.Rendering
                     styles.microRoutes.pen.Apply(ref pen);
                     float baseWidth = styles.microRoutes.pen.width;
 
-                    foreach (var tuple in selector.Routes)
+                    foreach (var (sector, route) in selector.Routes)
                     {
-                        Sector sector = tuple.Item1;
-                        Route route = tuple.Item2;
                         // Compute source/target sectors (may be offset)
                         sector.RouteToStartEnd(route, out Location startLocation, out Location endLocation);
                         if (startLocation == endLocation)
@@ -1684,7 +1703,7 @@ namespace Maps.Rendering
                         PointF endPoint = Astrometrics.HexToCenter(Astrometrics.LocationToCoordinates(endLocation));
 
                         // Shorten line to leave room for world glyph
-                        OffsetSegment(ref startPoint, ref endPoint, 0.25f);
+                        OffsetSegment(ref startPoint, ref endPoint, styles.routeEndAdjust);
 
                         float? routeWidth = route.Width;
                         Color? routeColor = route.Color;
@@ -1720,11 +1739,11 @@ namespace Maps.Rendering
 
             private static void OffsetSegment(ref PointF startPoint, ref PointF endPoint, float offset)
             {
-                float dx = endPoint.X - startPoint.X;
-                float dy = endPoint.Y - startPoint.Y;
+                float dx = (endPoint.X - startPoint.X) * Astrometrics.ParsecScaleX;
+                float dy = (endPoint.Y - startPoint.Y) * Astrometrics.ParsecScaleY;
                 float length = (float)Math.Sqrt(dx * dx + dy * dy);
-                float ddx = dx * offset / length;
-                float ddy = dy * offset / length;
+                float ddx = (dx * offset / length) / Astrometrics.ParsecScaleX;
+                float ddy = (dy * offset / length) / Astrometrics.ParsecScaleY;
                 startPoint.X += ddx;
                 startPoint.Y += ddy;
                 endPoint.X -= ddx;

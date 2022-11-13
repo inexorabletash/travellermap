@@ -4,13 +4,16 @@
   <Credits>
     <![CDATA[
       <b>Garadin</b> sector was designed by Ade Stewart as part of Where The Stars End.
+
+      The data provided for the sector includes no social details: the region has been remotely surveyed, which has provided extensive physical information about the stars, features, and worlds that lie within it.
     ]]>
   </Credits>
   <Labels>
     <!-- Rift Names -->
-    <Label Hex="2026" Color="gray" Size="large">Ribbon&#x0a;Rift</Label>
+    <Label Hex="1625" Color="gray" Size="large">Ribbon Rift</Label>
+    <Label Hex="1835" Color="gray">Pender Void</Label>
   </Labels>
   <Regions>
-    <Region Color="Darkviolet" LabelPosition="1418" Label="Garadin&#x0a;Irregularity">0814 0914 0915 1015 1115 1215 1216 1317 1318 1418 1519 1520 1620 1621 1521 1420 1419 1319 1318 1217 1216 1116 1016 1015 0915 0814</Region>
+    <Region Color="Darkviolet" LabelPosition="1116" WrapLabel="true" Label="Garadin Irregularity">0814 0914 0915 1015 1115 1215 1216 1317 1417 1418 1519 1520 1419 1319 1318 1217 1216 1116 1016 1015 0915 0814 </Region>
   </Regions>
 </Sector>
