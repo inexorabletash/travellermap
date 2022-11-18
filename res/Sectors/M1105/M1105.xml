@@ -2811,25 +2811,8 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <Y>5</Y>
     <X>2</X>
     <Name>Storr</Name>
-    <DataFile Author="Jo Grant and Jeff Zeitlin" Source="The Zhodani Base" Ref="http://www.zho.berka.com/data/CLASSIC/sector.pl?sector=STORR">storr.sec</DataFile>
-    <Subsectors Source="Jo Grant">
-      <Subsector Index="A">Bradbury</Subsector>
-      <Subsector Index="B">Simak</Subsector>
-      <Subsector Index="C">Wells</Subsector>
-      <Subsector Index="D">Gibson</Subsector>
-      <Subsector Index="E">Le Guin</Subsector>
-      <Subsector Index="F">Anderson</Subsector>
-      <Subsector Index="G">Niven</Subsector>
-      <Subsector Index="H">Vance</Subsector>
-      <Subsector Index="I">Asimov</Subsector>
-      <Subsector Index="J">Clarke</Subsector>
-      <Subsector Index="K">Harrison</Subsector>
-      <Subsector Index="L">Heinlein</Subsector>
-      <Subsector Index="M">Burroughs</Subsector>
-      <Subsector Index="N">Cherryh</Subsector>
-      <Subsector Index="O">Orwell</Subsector>
-      <Subsector Index="P">Herbert</Subsector>
-    </Subsectors>
+    <DataFile Author="Geir Lanesskog" Type="TabDelimited">Storr.tab</DataFile>
+    <MetadataFile Author="Geir Lanesskog">Storr.xml</MetadataFile>
   </Sector>
   <Sector>
     <Y>5</Y>
