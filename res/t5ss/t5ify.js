@@ -240,7 +240,7 @@ function t5ify(world) {
   world._Ix_ = `{ ${world.Importance} }`;
 
   // Economics Extension
-  if (world['(Ex)']) {
+  if (world['(Ex)'] && world['(Ex)'] !== '(000+1)') {
     var ex = world['(Ex)'];
     world.Resources = fromEHex(ex.substr(1, 1));
     world.Labor = fromEHex(ex.substr(2, 1));
@@ -264,7 +264,7 @@ function t5ify(world) {
   world._Ex_ = `(${toEHex(world.Resources)}${toEHex(world.Labor)}${toEHex(world.Infrastructure)}${toSInt(world.Efficiency)})`;
 
   // Cultural Extension
-  if (world['[Cx]']) {
+  if (world['[Cx]'] && world['[Cx]'] !== '[0000]') {
     var cx = world['[Cx]'];
     world.Heterogeneity = fromEHex(cx.substr(1, 1));
     world.Acceptance = fromEHex(cx.substr(2, 1));
