@@ -1540,7 +1540,7 @@ body:not(.milieu-not-default) #milieu-escape {
   margin-left: -160px;
   padding: 20px 20px;
   width: 280px;
-  height: 40px;
+  min-height: 40px;
   border-radius: 10px;
   text-align: center;
 

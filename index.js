@@ -1632,9 +1632,9 @@ window.addEventListener('DOMContentLoaded', function() {
   }
 
   // Show promo, if not dismissed.
-  if (false && !isIframe) {
+  if (!isIframe) {
     setTimeout(function() {
-      var promo_key = 'tm_promo2';
+      var promo_key = 'tm_promo3';
       if (!localStorage.getItem(promo_key)) {
         document.body.classList.add('show-promo');
         $('#promo-closebtn').addEventListener('click', function(e) {
