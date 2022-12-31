@@ -1859,41 +1859,8 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <Y>2</Y>
     <X>3</X>
     <Name>Leonidae</Name>
-    <DataFile Source="The Zhodani Base" Author="Michael Allyn &quot;MADDOG&quot; Davis" Ref="http://zho.berka.com/data/CLASSIC/sector.pl?sector=LEONIDAE">leonidae.sec</DataFile>
-    <Subsectors>
-      <Subsector Index="A" Source="Challenge #39">Nejim</Subsector>
-      <Subsector Index="B">Sastanna</Subsector>
-      <Subsector Index="C">Kah-Wak</Subsector>
-      <Subsector Index="D">Ijuw</Subsector>
-      <Subsector Index="E" Source="Challenge #39">Valc</Subsector>
-      <Subsector Index="F">Linnae</Subsector>
-      <Subsector Index="G">Lombard</Subsector>
-      <Subsector Index="H">Roncus</Subsector>
-      <Subsector Index="I" Source="Challenge #39">Zej</Subsector>
-      <Subsector Index="J">Ghidini</Subsector>
-      <Subsector Index="K">Persas</Subsector>
-      <Subsector Index="L">Balneario</Subsector>
-      <Subsector Index="M" Source="Challenge #39">Yuddunn</Subsector>
-      <Subsector Index="N">Ruffoi</Subsector>
-      <Subsector Index="O">Cujus</Subsector>
-      <Subsector Index="P">Melantris</Subsector>
-    </Subsectors>
-    <Allegiances Source="BeRKA">
-      <Allegiance Code="Cr">Corona Regnum</Allegiance>
-      <Allegiance Code="Cu">Cytrialin Unity</Allegiance>
-      <Allegiance Code="Gi">Gniivi</Allegiance>
-      <Allegiance Code="Ia">Ithklur Aexzz</Allegiance>
-      <Allegiance Code="Lp">Council of Leh Perash</Allegiance>
-      <Allegiance Code="Na">Non-Aligned</Allegiance>
-      <Allegiance Code="--">Unknown</Allegiance>
-    </Allegiances>
-    <Borders>
-      <Border Allegiance="Cr" Color="goldenrod">3001 3102 3201 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3315 3314 3313 3312 3311 3210 3110 3010 3009 3008 3007 3006 3005 3004 3003 3002 3001</Border>
-      <Border Allegiance="Cu" Color="orange">0001 0102 0201 0301 0401 0501 0502 0602 0503 0403 0404 0405 0406 0407 0408 0509 0510 0410 0411 0312 0211 0112 0011 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001</Border>
-      <Border Allegiance="Gi" Color="hotpink">0017 0118 0218 0219 0320 0321 0322 0323 0324 0224 0125 0124 0023 0022 0021 0020 0019 0018 0017</Border>
-      <Border Allegiance="Ia" Color="pink" WrapLabel="true">2240 2340 2439 2438 2539 2638 2739 2838 2938 3037 3036 3035 3135 3234 3233 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2840 2741 2641 2541 2441 2341 2240</Border>
-      <Border Allegiance="Lp" Color="blue">0033 0133 0232 0231 0230 0330 0429 0428 0528 0527 0626 0625 0725 0724 0824 0725 0625 0626 0627 0628 0729 0730 0731 0732 0632 0533 0433 0434 0435 0436 0537 0538 0539 0438 0339 0239 0238 0138 0137 0036 0035 0034 0033</Border>
-    </Borders>
+    <DataFile Source="The Zhodani Base" Author="Michael Allyn &quot;MADDOG&quot; Davis" Ref="http://zho.berka.com/data/CLASSIC/sector.pl?sector=LEONIDAE" Type="SecondSurvey">Leonidae.txt</DataFile>
+    <MetadataFile>Leonidae.xml</MetadataFile>
   </Sector>
   <Sector>
     <Y>2</Y>

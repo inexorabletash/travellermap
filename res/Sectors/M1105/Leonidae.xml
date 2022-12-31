@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<Sector xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Tags="OTU" Abbreviation="Leon">
+  <Name>Leonidae</Name>
+  <X>3</X>
+  <Y>2</Y>
+  <Subsectors>
+    <Subsector Source="Challenge #39" Index="A">Nejim</Subsector>
+    <Subsector Index="B">Sastanna</Subsector>
+    <Subsector Index="C">Kah-Wak</Subsector>
+    <Subsector Index="D">Ijuw</Subsector>
+    <Subsector Source="Challenge #39" Index="E">Valc</Subsector>
+    <Subsector Index="F">Linnae</Subsector>
+    <Subsector Index="G">Lombard</Subsector>
+    <Subsector Index="H">Roncus</Subsector>
+    <Subsector Source="Challenge #39" Index="I">Zej</Subsector>
+    <Subsector Index="J">Ghidini</Subsector>
+    <Subsector Index="K">Persas</Subsector>
+    <Subsector Index="L">Balneario</Subsector>
+    <Subsector Source="Challenge #39" Index="M">Yuddunn</Subsector>
+    <Subsector Index="N">Ruffoi</Subsector>
+    <Subsector Index="O">Cujus</Subsector>
+    <Subsector Index="P">Melantris</Subsector>
+  </Subsectors>
+  <Allegiances>
+    <Allegiance Code="Cu">Cytrialin Unity</Allegiance>
+    <Allegiance Code="DC">Dynchia Comitia</Allegiance>
+    <Allegiance Code="--">Unknown</Allegiance>
+    <Allegiance Code="HH">Harodar Hegemony</Allegiance>
+    <Allegiance Code="Gi">Gniivi</Allegiance>
+    <Allegiance Code="KC">Kargol Confederation</Allegiance>
+    <Allegiance Code="Lp">Council of Leh Perash</Allegiance>
+    <Allegiance Code="Na">Non-Aligned</Allegiance>
+    <Allegiance Code="Ia">Ithklur Aexzz</Allegiance>
+    <Allegiance Code="Cr">Corona Regnum</Allegiance>
+  </Allegiances>
+  <Borders>
+    <Border Color="Purple" Allegiance="KC" LabelPosition="1108">1008 1108 1107 1106 1105 1204 1305 1404 1504 1503 1602 1603 1604 1605 1506 1507 1407 1308 1208 1109 1008</Border>
+    <Border Color="Purple" Allegiance="KC" LabelPosition="2107">2107 2108 2107</Border>
+    <Border Color="Yellow" Allegiance="HH" LabelPosition="2012">2013 2014 2015 2014</Border>
+    <Border Color="Goldenrod" Allegiance="Cr" LabelPosition="3209">3001 3102 3201 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3315 3314 3313 3312 3311 3210 3110 3010 3009 3008 3007 3006 3005 3004 3003 3002 3001</Border>
+    <Border Color="Orange" Allegiance="Cu" LabelPosition="0307">0001 0102 0201 0301 0401 0501 0502 0602 0503 0403 0404 0405 0406 0407 0408 0509 0510 0410 0411 0312 0211 0112 0011 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001</Border>
+    <Border Color="HotPink" Allegiance="Gi" LabelPosition="0221">0017 0118 0218 0219 0320 0321 0322 0323 0324 0224 0125 0124 0023 0022 0021 0020 0019 0018 0017</Border>
+    <Border WrapLabel="true" Color="Pink" Allegiance="Ia" LabelPosition="2837">2240 2340 2439 2438 2539 2638 2739 2838 2938 3037 3036 3035 3135 3234 3233 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2840 2741 2641 2541 2441 2341 2240</Border>
+    <Border Color="Blue" Allegiance="Lp" LabelPosition="0432">0033 0133 0232 0231 0230 0330 0429 0428 0528 0527 0626 0625 0725 0724 0824 0725 0625 0626 0627 0628 0729 0730 0731 0732 0632 0533 0433 0434 0435 0436 0537 0538 0539 0438 0339 0239 0238 0138 0137 0036 0035 0034 0033</Border>
+    <Border Color="Green" Allegiance="DC" LabelPosition="2529">2026 2127 2226 2326 2425 2424 2423 2424 2425 2426 2527 2528 2529 2530 2531 2631 2632 2733 2633 2534 2633 2632 2631 2531 2430 2330 2229 2130 2131 2130 2129 2128 2027 2026</Border>
+  </Borders>
+</Sector>
