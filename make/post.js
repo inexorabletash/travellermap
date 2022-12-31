@@ -1,99 +1,96 @@
 /*global Traveller */ // for lint and IDEs
 
-// Common routines between Poster Maker and Booklet Maker
+// Common routines for various Makers:
 // * Populate sector selector, and load data on demand
 // * Add drag-and-drop handlers for TEXTAREA elements
 
-window.addEventListener('DOMContentLoaded', function() {
-  'use strict';
-  var $ = function(s) { return document.querySelector(s); };
-  var $$ = function(s) { return document.querySelectorAll(s); };
+'use strict';
 
-  function cmp(a, b) { return a < b ? -1 : b < a ? 1 : 0; }
+window.addEventListener('DOMContentLoaded', async e => {
+  const $ = s => document.querySelector(s);
+  const $$ = s => document.querySelectorAll(s);
 
-  var list = $('#sector');
+  const cmp = (a, b) => a < b ? -1 : b < a ? 1 : 0;
 
-  var seen = new Set();
-  Traveller.MapService.universe({requireData: 1})
-    .then(function(universe) {
-      universe.Sectors
-        .filter(function(sector) {
-          return Math.abs(sector.X) < 10 && Math.abs(sector.Y) < 5;
-        })
-        .map(function(sector) {
-          var name = sector.Names[0].Text;
-          if (seen.has(name))
-            name += ' (' + sector.Milieu + ')';
-          seen.add(name);
-          return {display: name,
-                  name: sector.Names[0].Text,
-                  milieu: sector.Milieu || ''};
-        })
-        .sort(function(a, b) { return cmp(a.display, b.display); })
-        .forEach(function(record) {
-          var option = document.createElement('option');
-          option.appendChild(document.createTextNode(record.display));
-          option.value = record.name + '|' + record.milieu;
-          list.appendChild(option);
-        });
+  const list = $('#sector');
+
+  const seen = new Set();
+  const universe = await Traveller.MapService.universe({requireData: 1});
+  universe.Sectors
+    .filter(sector => Math.abs(sector.X) < 10 && Math.abs(sector.Y) < 5)
+    .map(sector => {
+      let name = sector.Names[0].Text;
+      if (seen.has(name))
+        name += ' (' + sector.Milieu + ')';
+      seen.add(name);
+      return {
+        display: name,
+        name: sector.Names[0].Text,
+        milieu: sector.Milieu || ''
+      };
+    })
+    .sort((a, b) => cmp(a.display, b.display))
+    .forEach(record => {
+      const option = document.createElement('option');
+      option.appendChild(document.createTextNode(record.display));
+      option.value = record.name + '|' + record.milieu;
+      list.appendChild(option);
     });
 
-  list.addEventListener('change', function (e) {
-    var s = list.value.split('|'), name = s[0], milieu = s[1] || undefined;
+  list.addEventListener('change', e => {
+    const s = list.value.split('|'),
+          name = s[0],
+          milieu = s[1] || undefined;
     Traveller.MapService.sectorData(name, {
       type: 'SecondSurvey', metadata: 0, milieu: milieu})
-      .then(function(data) {
-        var target = $('#data');
+      .then(data => {
+        const target = $('#data');
         if (target) target.value = data;
       });
 
     Traveller.MapService.sectorMetaData(name, {
       accept: 'text/xml', milieu: milieu})
-      .then(function(data) {
-        var target = $('#metadata');
+      .then(data => {
+        const target = $('#metadata');
         if (target) target.value = data;
       });
   });
 
-  Array.from($$('textarea.drag-n-drop')).forEach(function(elem) {
-    elem.addEventListener('dragover', function (e) {
+  Array.from($$('textarea.drag-n-drop')).forEach(elem => {
+    elem.addEventListener('dragover', e => {
       e.stopPropagation();
       e.preventDefault();
       e.dataTransfer.dropEffect = 'copy';
     });
-    elem.addEventListener('drop', function (e) {
+    elem.addEventListener('drop', async e => {
       e.stopPropagation();
       e.preventDefault();
-      blobToString(e.dataTransfer.files[0]).then(function(s) {
-        elem.value = s;
-      });
+      const s = await blobToString(e.dataTransfer.files[0]);
+      elem.value = s;
     });
     elem.placeholder = 'Copy and paste data or drag and drop a file here.';
   });
 
-  function blobToString(blob) {
-    return new Promise(function(resolve, reject) {
-      var encodings = ['utf-8', 'windows-1252'];
-      (function tryNextEncoding() {
-        var encoding = encodings.shift();
-        var reader = new FileReader();
-        reader.readAsText(blob, encoding);
-        reader.onload = function(e) {
-          var result = reader.result;
-          if (result.indexOf('\uFFFD') !== -1 && encodings.length)
-            tryNextEncoding();
-          else
-            resolve(result);
-        };
-      }());
+  async function blobToString(blob) {
+    // Try UTF-8 first
+    const text = await blob.text();
+    if (text.indexOf('\uFFFD') === -1)
+      return text;
+
+    // Fall back to Windows-1252
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsText(blob, 'windows-1252');
+      reader.onload = e => { resolve(reader.result); };
+      reader.onerror = e => { reject(reader.error); };
     });
   }
 });
 
 // |data| can be string (payload) or object (key/value form data)
 // Returns Promise<string>
-function getTextViaPOST(url, data) {
-  var request;
+async function getTextViaPOST(url, data) {
+  let request;
   if (typeof data === 'string') {
     request = fetch(url, {
       method: 'POST',
@@ -102,9 +99,9 @@ function getTextViaPOST(url, data) {
     });
   } else {
     data = Object(data);
-    var fd = new FormData();
-    Object.keys(data).forEach(function(key) {
-      var value = data[key];
+    const fd = new FormData();
+    Object.keys(data).forEach(key => {
+      const value = data[key];
       if (value !== undefined && value !== null)
         fd.append(key, data[key]);
     });
@@ -114,19 +111,14 @@ function getTextViaPOST(url, data) {
     });
   }
 
-  return request
-    .then(function(response) {
-      return Promise.all([response, response.text()]);
-    })
-    .then(function(values) {
-      var response = values[0];
-      var text = values[1];
-      if (!response.ok)
-        throw text;
-      return text;
-    });
+  const response = await request;
+  const text = await response.text();
+  if (!response.ok)
+    throw text;
+  return text;
 }
 
-function getJSONViaPOST(url, data) {
-  return getTextViaPOST(url, data).then(function(text) { return JSON.parse(text); });
+async function getJSONViaPOST(url, data) {
+  const text = await getTextViaPOST(url, data);
+  return JSON.parse(text);
 }
