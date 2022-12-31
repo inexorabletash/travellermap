@@ -110,6 +110,7 @@ function refresh() {
 
   ctx.lineWidth = 4;
   ctx.strokeStyle = "green";
+  ctx.fillStyle = "green";
   routes.forEach(route => {
     ctx.beginPath();
     const start = hexToCoords(route.start),
@@ -121,6 +122,11 @@ function refresh() {
           ey = end.y;
     ctx.lineTo(ex, ey);
     ctx.stroke();
+
+    ctx.beginPath();
+    ctx.arc(sx, sy, RADIUS, 0, 2 * Math.PI, false);
+    ctx.arc(ex, ey, RADIUS, 0, 2 * Math.PI, false);
+    ctx.fill();
   });
 
   const template = ($('#form').elements.metatype.value === 'xml')
