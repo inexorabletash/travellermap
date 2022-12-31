@@ -1,5 +1,5 @@
 /*global Traveller, Util, getTextViaPOST, getJSONViaPOST, Handlebars */ // for lint and IDEs
-(function(global) {
+(global => {
   'use strict';
 
   const $ = s => document.querySelector(s);
@@ -460,4 +460,4 @@
     }
   };
 
-}(this));
+})(this);

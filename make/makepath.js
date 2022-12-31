@@ -2,15 +2,15 @@
 
 "use strict";
 
-var $ = function(s) { return document.querySelector(s); };
+const $ = s => document.querySelector(s);
 
-var PS = 16; // px/parsec
-var INSET = 2; // px
-var RADIUS = 4;
+const PS = 16; // px/parsec
+const INSET = 2; // px
+const RADIUS = 4;
 
-var sec = {};
+let sec = {};
 
-var canvas = $('#canvas'), ctx = canvas.getContext('2d');
+const canvas = $('#canvas'), ctx = canvas.getContext('2d');
 
 $('#parsesec').addEventListener('click', parse);
 
@@ -44,7 +44,7 @@ function parseSector(tabDelimitedData) {
     .map(h => h.replace(/[^a-z]/g, ''));
   lines.forEach(line => {
     if (!line.length) return;
-    var world = {};
+    const world = {};
     line
       .split('\t')
       .forEach((field, index) => {

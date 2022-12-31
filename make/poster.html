@@ -86,9 +86,9 @@
                 <option data-name="quadrant" value="Delta">Quadrant Delta </option>
               </select>
               <script>
-              document.querySelector('select#portion').addEventListener('change', function(e) {
-                var select = e.target;
-                var option = select.querySelectorAll('option')[select.selectedIndex];
+              document.querySelector('select#portion').addEventListener('change', e => {
+                const select = e.target;
+                const option = select.querySelectorAll('option')[select.selectedIndex];
                 select.setAttribute('name', option.getAttribute('data-name'));
               });
               </script>
@@ -167,9 +167,9 @@
         <label><input type="checkbox" name="stellar" value="1">Stellar Data</label><br>
         <label><input type="checkbox" id="ignore-errors" checked>Ignore Errors</label>
         <script>
-        (function() {
-          var $ = function(s) { return document.querySelector(s); };
-          var o = Traveller.MapOptions;
+        (() => {
+          const $ = s => document.querySelector(s);
+          const o = Traveller.MapOptions;
           bindCheckboxToOptionsBitmap('#options-grid', o.GridMask);
           bindCheckboxToOptionsBitmap('#options-borders', o.BordersMask);
           bindCheckboxToOptionsBitmap('#options-sector-names', o.SectorsMask);
@@ -180,23 +180,23 @@
           bindCheckboxToOptionsBitmap('#options-filled-borders', o.FilledBorders);
           makeCheckboxDependent('#options-filled-borders', '#options-borders');
           function bindCheckboxToOptionsBitmap(selector, mask) {
-            $(selector).addEventListener('click', function(e) {
-              var state = e.target.checked;
-              var input = $('input[name="options"]');
-              var options = Number(input.value);
+            $(selector).addEventListener('click', e => {
+              const state = e.target.checked;
+              const input = $('input[name="options"]');
+              let options = Number(input.value);
               options = state ? (options | mask) : (options & ~mask);
               input.value = options;
             });
           }
           function bindCheckboxToBooleanOption(selector, name) {
-            $(selector).addEventListener('click', function(e) {
-              var state = e.target.checked;
-              var input = $('input[name="' + name + '"]');
+            $(selector).addEventListener('click', e => {
+              const state = e.target.checked;
+              const input = $('input[name="' + name + '"]');
               input.value = state ? 1 : 0;
             });
           }
           function makeCheckboxDependent(dependent, master) {
-            $(master).addEventListener('click', function(e) {
+            $(master).addEventListener('click', e => {
               if (!e.target.checked)
                 $(dependent).checked = false;
             });
@@ -241,50 +241,46 @@
 </div>
 
 <script>
-(function() {
-  var $ = function(s) { return document.querySelector(s); };
+(() => {
+  const $ = s => document.querySelector(s);
 
-  $('#previewBtn').addEventListener('click', function(e) {
+  $('#previewBtn').addEventListener('click', async e => {
     e.preventDefault();
     e.stopPropagation();
 
-    var data = new FormData($('#form'));
+    const data = new FormData($('#form'));
     data.append('datauri', '1');
     data.append('thumb', '1');
     data.append('accept', '');
     data.append('lint', $('#ignore-errors').checked ? 0 : 1);
 
-    fetch(Traveller.MapService.makeURL('/api/poster'), {method: 'POST', body: data})
-      .then(function(response) {
-        return Promise.all([response, response.text()]);
-      })
-      .then(function(results) {
-        var response = results[0], text = results[1];
-        if (response.ok) {
-          $('#preview').src = text;
-          $('#preview').style.height = 'auto';
-        } else {
-          console.warn(text);
-          alert(text);
-        }
-      });
+    const response = await fetch(
+      Traveller.MapService.makeURL('/api/poster'), {method: 'POST', body: data});
+    const text = await response.text();
+    if (response.ok) {
+      $('#preview').src = text;
+      $('#preview').style.height = 'auto';
+    } else {
+      console.warn(text);
+      alert(text);
+    }
   });
 
-  $('#renderBtn').addEventListener('click', function(e) {
+  $('#renderBtn').addEventListener('click', e => {
     e.preventDefault();
     e.stopPropagation();
 
-    var form = $('#form');
+    const form = $('#form');
     form.target = '_blank';
     form.action = Traveller.MapService.makeURL('/api/poster');
     form.submit();
   });
 
-  $('#jumpBtn').addEventListener('click', function(e) {
+  $('#jumpBtn').addEventListener('click', e => {
     e.preventDefault();
     e.stopPropagation();
 
-    var form = $('#form');
+    const form = $('#form');
     form.target = '_blank';
     form.action = Traveller.MapService.makeURL('/api/jumpmap');
     form.submit();
