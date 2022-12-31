@@ -31,7 +31,7 @@ async function parse() {
     datauri: 1
   });
   $('#canvas').style.backgroundSize = '100% 100%';
-  $('#canvas').style.backgroundImage = 'url("' + dataURL + '")';
+  $('#canvas').style.backgroundImage = `url("${dataURL}")`;
   refresh();
 }
 

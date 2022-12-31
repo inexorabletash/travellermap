@@ -21,7 +21,7 @@ window.addEventListener('DOMContentLoaded', async e => {
     .map(sector => {
       let name = sector.Names[0].Text;
       if (seen.has(name))
-        name += ' (' + sector.Milieu + ')';
+        name += ` (${sector.Milieu})`;
       seen.add(name);
       return {
         display: name,

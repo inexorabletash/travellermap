@@ -1,51 +1,53 @@
 /*global Traveller */
-(function(global) {
+((global) => {
   // A* Algorithm
   //
   // Based on notes in _AI for Game Developers_, Bourg & Seemann,
   //     O'Reilly Media, Inc., July 2004.
 
-  function Node(id, cost, parent) {
-    this.id = id;
-    this.cost = cost;
-    this.parent = parent;
+  class Node {
+    constructor(id, cost, parent) {
+      this.id = id;
+      this.cost = cost;
+      this.parent = parent;
+    }
   }
 
-  function List() {
-    // TODO: Should be a Set
-    this.list = {};
-    this.count = 0;
-  }
+  class List {
+    constructor() {
+      // TODO: Should be a Set
+      this.list = {};
+      this.count = 0;
+    }
 
-  List.prototype = {
-    isEmpty: function() {
+    isEmpty() {
       return this.count == 0;
-    },
+    }
 
-    contains: function(node) {
+    contains(node) {
       return this.list[node.id] !== undefined;
-    },
+    }
 
-    add: function(node) {
+    add(node) {
       if (!this.contains(node)) {
         this.list[node.id] = node;
         this.count++;
       }
-    },
+    }
 
-    remove: function(node) {
+    remove(node) {
       if (this.contains(node)) {
         delete this.list[node.id];
         this.count--;
       }
-    },
+    }
 
-    getLowestCostNode: function() {
-      var cost  = undefined;
-      var node  = undefined;
+    getLowestCostNode() {
+      let cost  = undefined;
+      let node  = undefined;
 
-      for (var key in this.list) {
-        var currentNode = this.list[key];
+      for (const key in this.list) {
+        const currentNode = this.list[key];
 
         if (cost === undefined || currentNode.cost < cost) {
           node = currentNode;
@@ -55,12 +57,11 @@
 
       return node;
     }
-  };
-
+  }
 
   function computeRoute(map, startHex, endHex, jump) {
-    var open   = new List();
-    var closed = new List();
+    const open   = new List();
+    const closed = new List();
 
     // add the starting node to the open list
     open.add(new Node(startHex, 0, 0, undefined));
@@ -68,13 +69,13 @@
     // while the open list is not empty
     while (!open.isEmpty()) {
       // current node = node from open list with the lowest cost
-      var currentNode = open.getLowestCostNode();
+      let currentNode = open.getLowestCostNode();
 
       // if current node = goal node then path complete
       if (currentNode.id == endHex) {
-        var path = [];
+        const path = [];
 
-        var node = currentNode;
+        let node = currentNode;
         path.unshift(node.id);
 
         while (node.parent) {
@@ -89,11 +90,11 @@
         closed.add(currentNode);
 
         // examine each node adjacent to the current node
-        var adjacentHexes = reachable(currentNode.id, jump);
+        const adjacentHexes = reachable(currentNode.id, jump);
 
         // for each adjacent node
-        adjacentHexes.forEach(function(adjacentHex) {
-          var adjacentNode = new Node(adjacentHex, -1, currentNode);
+        adjacentHexes.forEach(adjacentHex => {
+          const adjacentNode = new Node(adjacentHex, -1, currentNode);
 
           // if it isn't on the open list
           if (open.contains(adjacentNode))
@@ -129,16 +130,16 @@
   function dist(a, b) {
     a = Number(a);
     b = Number(b);
-    var a_x = div(a,100);
-    var a_y = mod(a,100);
-    var b_x = div(b,100);
-    var b_y = mod(b,100);
+    const a_x = div(a,100);
+    const a_y = mod(a,100);
+    const b_x = div(b,100);
+    const b_y = mod(b,100);
 
-    var dx = b_x - a_x;
-    var dy = b_y - a_y;
+    const dx = b_x - a_x;
+    const dy = b_y - a_y;
 
-    var adx = Math.abs(dx);
-    var ody = dy + div(adx, 2);
+    let adx = Math.abs(dx);
+    let ody = dy + div(adx, 2);
 
     if (odd(a_x) && even(b_x))
       ody += 1;
@@ -160,18 +161,18 @@
   //
   // This just walks over a square and calls dist(); it could be smarter.
   function reachable(hex, jump) {
-    var results = [];
+    const results = [];
 
-    var h = Number(hex);
-    var x = div(h, 100);
-    var y = mod(h, 100);
+    const h = Number(hex);
+    const x = div(h, 100);
+    const y = mod(h, 100);
 
-    for (var rx = x - jump; rx <= x + jump; ++rx) {
-      for (var ry = y - jump; ry <= y + jump; ++ry) {
+    for (let rx = x - jump; rx <= x + jump; ++rx) {
+      for (let ry = y - jump; ry <= y + jump; ++ry) {
         if (rx >= 1 && rx <= Traveller.Astrometrics.SectorWidth &&
             ry >= 1 && ry <= Traveller.Astrometrics.SectorHeight) {
-          var candidate = hexString(rx, ry);
-          var distance = dist(hex, candidate);
+          const candidate = hexString(rx, ry);
+          const distance = dist(hex, candidate);
           if (distance > 0 && distance <= jump) {
             results.push(candidate);
           }
@@ -183,7 +184,7 @@
   }
 
   function hexString(x, y) {
-    var str = '';
+    let str = '';
     if (x < 10) str += '0';
     str += x.toString();
 
@@ -195,4 +196,4 @@
   // Exports
   global.computeRoute = computeRoute;
 
-}(this));
+})(this);

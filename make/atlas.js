@@ -1,5 +1,5 @@
 /*global Traveller, Handlebars */
-(function(global) {
+((global) => {
   'use strict';
 
   const $ = s => document.querySelector(s);
@@ -15,7 +15,7 @@
     return null;
   }
 
-  function cmp(a, b) { return a < b ? -1 : a > b ? 1 : 0; }
+  const cmp = (a, b) => a < b ? -1 : a > b ? 1 : 0;
 
   function smartquote(s) {
     return s ? s
@@ -151,7 +151,7 @@
       if (sector.credits)
         credits.push({name: short_name, credits: sector.credits});
       else
-        console.warn(sector.name + ' credits missing');
+        console.warn(`${sector.name} credits missing`);
 
       return sector;
     });
@@ -189,11 +189,11 @@
       });
       img.addEventListener('error', e => {
         setTimeout(() => {
-          console.warn('retrying ' + img.src);
+          console.warn(`retrying ${img.src}`);
           img.src = img.src + '&retry';
         }, 1000 + 5000 * Math.random());
       });
     });
   };
 
-}(self));
+})(self);
