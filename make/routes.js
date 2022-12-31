@@ -1,3 +1,5 @@
+/*global Handlebars, Traveller, getTextViaPOST */
+
 "use strict";
 
 const $ = s => document.querySelector(s);
