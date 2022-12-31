@@ -87,17 +87,6 @@ function refresh() {
   ctx.clearRect(0, 0, PS * canvas.width, PS * canvas.height);
 
   ctx.lineWidth = 2;
-  ctx.strokeStyle = 'red';
-  stack.forEach(hex => {
-    const coords = hexToCoords(hex), x = coords.x, y = coords.y;
-    ctx.beginPath();
-    ctx.arc(x,
-            y,
-            RADIUS + 2, 0, 2 * Math.PI, false);
-    ctx.stroke();
-  });
-
-  ctx.lineWidth = 2;
   ctx.strokeStyle = 'blue';
   candidates.forEach(hex => {
     const coords = hexToCoords(hex), x = coords.x, y = coords.y;
@@ -127,6 +116,17 @@ function refresh() {
     ctx.arc(sx, sy, RADIUS, 0, 2 * Math.PI, false);
     ctx.arc(ex, ey, RADIUS, 0, 2 * Math.PI, false);
     ctx.fill();
+  });
+
+  ctx.lineWidth = 2;
+  ctx.strokeStyle = 'red';
+  stack.forEach(hex => {
+    const coords = hexToCoords(hex), x = coords.x, y = coords.y;
+    ctx.beginPath();
+    ctx.arc(x,
+            y,
+            RADIUS + 2, 0, 2 * Math.PI, false);
+    ctx.stroke();
   });
 
   const template = ($('#form').elements.metatype.value === 'xml')
