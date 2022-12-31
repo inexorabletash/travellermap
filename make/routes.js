@@ -10,6 +10,7 @@ const RADIUS = 4;
 
 let sec = {worlds:{}};
 let routes = [];
+let candidates = [];
 
 const canvas = $('#canvas'), ctx = canvas.getContext('2d');
 
@@ -39,6 +40,7 @@ async function parse() {
       });
     $('#canvas').style.backgroundSize = '100% 100%';
     $('#canvas').style.backgroundImage = 'url("' + dataURL + '")';
+    candidates = [];
     routes = [];
     refresh();
   } catch (reason) {
@@ -87,6 +89,17 @@ function refresh() {
   ctx.lineWidth = 2;
   ctx.strokeStyle = 'red';
   stack.forEach(hex => {
+    const coords = hexToCoords(hex), x = coords.x, y = coords.y;
+    ctx.beginPath();
+    ctx.arc(x,
+            y,
+            RADIUS + 2, 0, 2 * Math.PI, false);
+    ctx.stroke();
+  });
+
+  ctx.lineWidth = 2;
+  ctx.strokeStyle = 'blue';
+  candidates.forEach(hex => {
     const coords = hexToCoords(hex), x = coords.x, y = coords.y;
     ctx.beginPath();
     ctx.arc(x,
@@ -190,6 +203,9 @@ function auto(t) {
 }
 
 function autoConnect(worlds, range) {
+  routes = [];
+  candidates = worlds.map(w => w.hex);
+
   // Examine each pair
   for (let i = 0; i < worlds.length - 1; ++i) {
     for (let j = i + 1; j < worlds.length; ++j) {
