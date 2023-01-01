@@ -40,9 +40,7 @@ async function parse() {
       });
     $('#canvas').style.backgroundSize = '100% 100%';
     $('#canvas').style.backgroundImage = 'url("' + dataURL + '")';
-    candidates = [];
-    routes = [];
-    refresh();
+    clear();
   } catch (reason) {
     alert('Server error: ' + reason);
   }
@@ -184,6 +182,7 @@ function undo() {
 function clear() {
   stack.length = 0;
   routes.length = 0;
+  candidates.length = 0;
   refresh();
 }
 
@@ -209,7 +208,7 @@ function auto(t) {
 }
 
 function autoConnect(worlds, range) {
-  routes = [];
+  clear();
   candidates = worlds.map(w => w.hex);
 
   // Examine each pair
