@@ -2,16 +2,16 @@
 (global => {
   'use strict';
 
-  var $ = s => document.querySelector(s);
-  var $$ = s => Array.from(document.querySelectorAll(s));
+  const $ = s => document.querySelector(s);
+  const $$ = s => Array.from(document.querySelectorAll(s));
 
   window.addEventListener('load', () => {
-    var searchParams = new URL(document.location).searchParams;
+    const searchParams = new URL(document.location).searchParams;
 
     if (searchParams.has('nopage'))
       document.body.classList.add('nopage');
 
-    var coords;
+    let coords;
     if (searchParams.has('sector') && searchParams.has('hex'))
       coords = {sector: searchParams.get('sector'), hex: searchParams.get('hex')};
     else if (searchParams.has('x') && searchParams.has('y'))
@@ -27,7 +27,7 @@
         return response.json();
       })
       .then(coords => {
-        var promises = [];
+        const promises = [];
 
         // Fetch world data and fill in sheet.
         promises.push(
@@ -60,7 +60,7 @@
 
               // Prettify URL
               if ('history' in window && 'replaceState' in window.history) {
-                var url = window.location.href.replace(/\?.*$/, '') + '?sector=' + world.Sector + '&hex=' + world.Hex;
+                let url = window.location.href.replace(/\?.*$/, '') + '?sector=' + world.Sector + '&hex=' + world.Hex;
                 ['milieu', 'style'].forEach(param => {
                   if (searchParams.has(param))
                     url += '&' + param + '=' + encodeURIComponent(searchParams.get(param));
@@ -72,8 +72,8 @@
 
         // Fill in neighborhood/jumpmap.
         if (!searchParams.has('nohood') && $('#wds-neighborhood-data')) {
-          var JUMP = 2;
-          var SCALE = 48;
+          const JUMP = 2;
+          const SCALE = 48;
 
           promises.push(
             fetch(Traveller.MapService.makeURL('/api/jumpworlds?', {
@@ -85,16 +85,16 @@
               .then(data => {
                 // Make hi-pop worlds uppercase
                 data.Worlds.forEach(world => {
-                  var pop = Traveller.fromHex(Traveller.splitUWP(world.UWP).Pop);
+                  const pop = Traveller.fromHex(Traveller.splitUWP(world.UWP).Pop);
                   if (pop >= 9)
                     world.Name = world.Name.toUpperCase();
                 });
 
-                var template = Handlebars.compile($('#wds-neighborhood-template').innerHTML);
+                const template = Handlebars.compile($('#wds-neighborhood-template').innerHTML);
                 $('#wds-neighborhood-data').innerHTML = template(data);
               })
             .then(() => {
-              var mapParams = {
+              const mapParams = {
                 x: coords.x,
                 y: coords.y,
                 milieu: searchParams.get('milieu'),
@@ -104,14 +104,14 @@
                 border: 0};
               if (window.devicePixelRatio > 1)
                 mapParams.dpr = window.devicePixelRatio;
-              var url = Traveller.MapService.makeURL('/api/jumpmap?', mapParams);
+              const url = Traveller.MapService.makeURL('/api/jumpmap?', mapParams);
               return Util.fetchImage(url, $('#wds-jumpmap'));
             })
             .then(image => {
               image.addEventListener('click', event => {
-                var result = jmapToCoords(event, JUMP, SCALE, coords.x, coords.y);
+                const result = jmapToCoords(event, JUMP, SCALE, coords.x, coords.y);
                 if (result) {
-                  var search = '?x=' + result.x + '&y=' + result.y;
+                  let search = '?x=' + result.x + '&y=' + result.y;
                   if (searchParams.has('milieu'))
                     search += '&milieu=' + encodeURIComponent(searchParams.get('milieu'));
                   window.location.search = search;
@@ -133,16 +133,16 @@
   function jmapToCoords(event, jump, scale, x, y) {
     // TODO: Reject hexes greater than J distance?
 
-    var rect = event.target.getBoundingClientRect();
-    var w = rect.right - rect.left;
-    var h = rect.bottom - rect.top;
+    const rect = event.target.getBoundingClientRect();
+    const w = rect.right - rect.left;
+    const h = rect.bottom - rect.top;
 
-    var scaleX = Math.cos(Math.PI / 6) * scale, scaleY = scale;
-    var dx = ((event.clientX  - rect.left - w / 2) / scaleX);
-    var dy = ((event.clientY - rect.top - h / 2) / scaleY);
+    const scaleX = Math.cos(Math.PI / 6) * scale, scaleY = scale;
+    let dx = ((event.clientX  - rect.left - w / 2) / scaleX);
+    let dy = ((event.clientY - rect.top - h / 2) / scaleY);
 
     function p(n) { return Math.abs(Math.round(n) - n); }
-    var THRESHOLD = 0.4;
+    const THRESHOLD = 0.4;
 
     if (p(dx) > THRESHOLD) return null;
     dx = Math.round(dx);

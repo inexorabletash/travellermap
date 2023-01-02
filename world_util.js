@@ -2,11 +2,11 @@
 (global => {
   'use strict';
 
-  var $ = s => document.querySelector(s);
-  var $$ = s => Array.from(document.querySelectorAll(s));
+  const $ = s => document.querySelector(s);
+  const $$ = s => Array.from(document.querySelectorAll(s));
 
   function worldImageURL(world, type) {
-    var S3_PREFIX = 'https://travellermap.s3.amazonaws.com/images/';
+    const S3_PREFIX = 'https://travellermap.s3.amazonaws.com/images/';
     switch (type) {
     case 'map':
       return S3_PREFIX + 'maps/'
@@ -30,7 +30,7 @@
     }
   }
 
-  var STARPORT_TABLE = {
+  const STARPORT_TABLE = {
     // Starports
     A: 'Excellent',
     B: 'Good',
@@ -46,7 +46,7 @@
     '?': 'Unknown'
   };
 
-  var SIZ_TABLE = {
+  const SIZ_TABLE = {
     0: 'Asteroid Belt',
     S: 'Small World', // MegaTraveller
     1: '1,600km',
@@ -68,7 +68,7 @@
     '?': 'Unknown'
   };
 
-  var ATM_TABLE = {
+  const ATM_TABLE = {
     0: 'No atmosphere',
     1: 'Trace',
     2: 'Very thin; Tainted',
@@ -89,7 +89,7 @@
     '?': 'Unknown'
   };
 
-  var HYD_TABLE = {
+  const HYD_TABLE = {
     0: 'Desert World',
     1: '10%',
     2: '20%',
@@ -105,7 +105,7 @@
     '?': 'Unknown'
   };
 
-  var POP_TABLE = {
+  const POP_TABLE = {
     0: 'Unpopulated',
     1: 'Tens',
     2: 'Hundreds',
@@ -126,7 +126,7 @@
     '?': 'Unknown'
   };
 
-  var GOV_TABLE = {
+  const GOV_TABLE = {
     0: 'No Government Structure',
     1: 'Company/Corporation',
     2: 'Participating Democracy',
@@ -165,7 +165,7 @@
 
   };
 
-  var LAW_TABLE = {
+  const LAW_TABLE = {
     0: 'No prohibitions',
     1: 'Body pistols, explosives, and poison gas prohibited',
     2: 'Portable energy weapons prohibited',
@@ -192,7 +192,7 @@
     '?': 'Unknown'
   };
 
-  var TECH_TABLE = {
+  const TECH_TABLE = {
     0: 'Stone Age',
     1: 'Bronze, Iron',
     2: 'Printing Press',
@@ -218,7 +218,7 @@
     '?': 'Unknown'
   };
 
-  var IX_IMP_TABLE = {
+  const IX_IMP_TABLE = {
     '-3': 'Very unimportant',
     '-2': 'Very unimportant',
     '-1': 'Unimportant',
@@ -231,7 +231,7 @@
     '?': 'Unknown'
   };
 
-  var EX_RESOURCES_TABLE = {
+  const EX_RESOURCES_TABLE = {
     2: 'Very scarce',
     3: 'Very scarce',
     4: 'Scarce',
@@ -252,9 +252,9 @@
     '?': 'Unknown'
   };
 
-  var EX_LABOR_TABLE = POP_TABLE;
+  const EX_LABOR_TABLE = POP_TABLE;
 
-  var EX_INFRASTRUCTURE_TABLE = {
+  const EX_INFRASTRUCTURE_TABLE = {
     0: 'Non-existent',
     1: 'Extremely limited',
     2: 'Extremely limited',
@@ -276,7 +276,7 @@
     '?': 'Unknown'
   };
 
-  var EX_EFFICIENCY_TABLE = {
+  const EX_EFFICIENCY_TABLE = {
     '-5': 'Extremely poor',
     '-4': 'Very poor',
     '-3': 'Poor',
@@ -291,7 +291,7 @@
     '?': 'Unknown'
   };
 
-  var CX_HETEROGENEITY_TABLE = {
+  const CX_HETEROGENEITY_TABLE = {
     0: 'N/A',
     1: 'Monolithic',
     2: 'Monolithic',
@@ -312,7 +312,7 @@
     '?': 'Unknown'
   };
 
-  var CX_ACCEPTANCE_TABLE = {
+  const CX_ACCEPTANCE_TABLE = {
     0: 'N/A',
     1: 'Extremely xenophobic',
     2: 'Very xenophobic',
@@ -332,7 +332,7 @@
     '?': 'Unknown'
   };
 
-  var CX_STRANGENESS_TABLE = {
+  const CX_STRANGENESS_TABLE = {
     0: 'N/A',
     1: 'Very typical',
     2: 'Typical',
@@ -347,7 +347,7 @@
     '?': 'Unknown'
   };
 
- var CX_SYMBOLS_TABLE = {
+ const CX_SYMBOLS_TABLE = {
     0: 'Extremely concrete',
     1: 'Extremely concrete',
     2: 'Very concrete',
@@ -372,7 +372,7 @@
     '?': 'Unknown'
   };
 
-  var NOBILITY_TABLE = {
+  const NOBILITY_TABLE = {
     B: 'Knight',
     c: 'Baronet',
     C: 'Baron',
@@ -386,7 +386,7 @@
     '?': 'Unknown'
   };
 
-  var REMARKS_TABLE = {
+  const REMARKS_TABLE = {
     // Planetary
     As: 'Asteroid Belt',
     De: 'Desert',
@@ -472,7 +472,7 @@
     Cr: 'Reserve Capital'
   };
 
-  var REMARKS_PATTERNS = [
+  const REMARKS_PATTERNS = [
     // Special
     [/^Rs\w$/, 'Research Station'],
     [/^Rw:?\w$/, 'Refugee World'],
@@ -495,7 +495,7 @@
     [ /^\{.*\}$/, '']
   ];
 
-  var BASE_TABLE = {
+  const BASE_TABLE = {
       C: 'Corsair Base',
       D: 'Naval Depot',
       E: 'Embassy',
@@ -516,7 +516,7 @@
       Z: 'Naval/Military Base' // Obsolete
   };
 
-  var SOPHONT_TABLE = {
+  const SOPHONT_TABLE = {
     // Legacy codes
     'A': 'Aslan',
     'C': 'Chirper',
@@ -532,7 +532,7 @@
   };
 
   // Promise - resolved once sophont table is fully populated.
-  var SOPHONTS_FETCHED = fetch(Traveller.MapService.makeURL('/t5ss/sophonts'))
+  const SOPHONTS_FETCHED = fetch(Traveller.MapService.makeURL('/t5ss/sophonts'))
         .then(response => {
           if (!response.ok) throw Error(response.statusText);
           return response.json();
@@ -543,7 +543,7 @@
           });
         });
 
-  var STELLAR_TABLE = {
+  const STELLAR_TABLE = {
     Ia: 'Supergiant',
     Ib: 'Supergiant',
     II: 'Giant',
@@ -557,7 +557,7 @@
     NS: 'Neutron Star'
   };
 
-  var fetch_status = new Map();
+  const fetch_status = new Map();
 
   function fetchImage(url) {
     if (fetch_status.has(url) && !fetch_status.get(url))
@@ -576,7 +576,7 @@
   }
 
   function decodeSophontPopulation(match, code, pop) {
-    var name = SOPHONT_TABLE[code] || 'Sophont';
+    const name = SOPHONT_TABLE[code] || 'Sophont';
     if (pop === '0')
       pop = '< 10%';
     else if (pop === 'W' || pop === 'w')
@@ -657,12 +657,12 @@
       if (world.PopExp >= 0 && world.PopMult >= 0)
         world.TotalPopulation = numberWithCommas(world.PopMult * Math.pow(10, world.PopExp));
 
-      var UNICODE_MINUS = '\u2212'; // U+2212 MINUS SIGN
+      const UNICODE_MINUS = '\u2212'; // U+2212 MINUS SIGN
 
       // Importance {Ix}
       if (!world.Ix) delete world.Ix;
       if (world.Ix) {
-        var ix = Traveller.parseIx(world.Ix);
+        const ix = Traveller.parseIx(world.Ix);
         world.Ix = {
           Imp: String(ix)
         };
@@ -674,7 +674,7 @@
       // Economics (Ex)
       if (!world.Ex) delete world.Ex;
       if (world.Ex) {
-        var ex = world.Ex.replace(/^\(\s*|\s*\)$/g, '');
+        const ex = world.Ex.replace(/^\(\s*|\s*\)$/g, '');
         world.Ex = {
           Res: ex.substring(0, 1),
           Lab: ex.substring(1, 2),
@@ -692,7 +692,7 @@
       // Culture [Cx]
       if (!world.Cx) delete world.Cx;
       if (world.Cx) {
-        var cx = world.Cx.replace(/^\[\s*|\s*\]$/g, '');
+        const cx = world.Cx.replace(/^\[\s*|\s*\]$/g, '');
         world.Cx = {
           Het: cx.substring(0, 1),
           Acc: cx.substring(1, 2),
@@ -717,8 +717,8 @@
       if (world.Remarks) {
         world.Remarks = Traveller.splitRemarks(world.Remarks).map(s => {
           if (s in REMARKS_TABLE) return {code: s, detail: REMARKS_TABLE[s]};
-          for (var i = 0; i < REMARKS_PATTERNS.length; ++i) {
-            var pattern = REMARKS_PATTERNS[i][0], replacement = REMARKS_PATTERNS[i][1];
+          for (let i = 0; i < REMARKS_PATTERNS.length; ++i) {
+            const pattern = REMARKS_PATTERNS[i][0], replacement = REMARKS_PATTERNS[i][1];
             if (pattern.test(s)) return {code: s, detail: s.replace(pattern, replacement)};
           }
           return {code: s, detail: '???'};
@@ -747,7 +747,7 @@
         .replace(/[OBAFGKM][0-9] D/g, 'D')
         .split(/\s+(?!Ia|Ib|II|III|IV|V|VI|VII)/)
         .map(code => {
-          var last = code.split(/\s+/).pop();
+          const last = code.split(/\s+/).pop();
           return {code: code, detail: STELLAR_TABLE[last]};
         });
 
@@ -785,9 +785,9 @@
 
       // Map Generator
       // http://members.ozemail.com.au/~jonoreita/T5%20World%20Map%20Generator/api_documentation.html
-      var GENERATOR_BASE = 'http://members.ozemail.com.au/~jonoreita/TravellerWorlds/';
+      const GENERATOR_BASE = 'http://members.ozemail.com.au/~jonoreita/TravellerWorlds/';
 
-      var map_generator_options = {
+      const map_generator_options = {
         hex: world.Hex,
         sector: world.Sector,
         name: world.Name,
@@ -811,8 +811,8 @@
 
       return world;
     }).then(world => {
-      var map_thumb = worldImageURL(world, 'map_thumb');
-      var map = worldImageURL(world, 'map');
+      const map_thumb = worldImageURL(world, 'map_thumb');
+      const map = worldImageURL(world, 'map');
       return checkImage(map_thumb)
         .then(exists => {
           if (exists) {
@@ -825,29 +825,29 @@
   };
 
   function supportsCompositeMode(ctx, mode) {
-    var orig = ctx.globalCompositeOperation;
+    const orig = ctx.globalCompositeOperation;
     ctx.globalCompositeOperation = mode;
-    var result = ctx.globalCompositeOperation === mode;
+    const result = ctx.globalCompositeOperation === mode;
     ctx.globalCompositeOperation = orig;
     return result;
   }
 
-  var showConsoleNotice = Util.once(() => {
+  const showConsoleNotice = Util.once(() => {
     if (!console || !console.log) return;
     console.log('The "404 (Not Found)" error for world images is expected, and is not a bug.');
   });
 
-  var renderWorldImageFirstTime = true;
+  let renderWorldImageFirstTime = true;
   Traveller.renderWorldImage = (world, canvas) => {
     if (!world) return undefined;
 
-    var w = canvas.width, h = canvas.height;
+    const w = canvas.width, h = canvas.height;
 
-    var bg = worldImageURL(
+    const bg = worldImageURL(
       (!world.isPlaceholder && hasCode(world, 'Sa')) ? 'gg.jpg' : 'stars.png',
       'background');
 
-    var SIZES = [
+    const SIZES = [
       { width: 0.80, height: 0.45 },
       { width: 0.25, height: 0.25 },
       { width: 0.30, height: 0.30 },
@@ -866,11 +866,11 @@
       { width: 0.95, height: 0.95 }
     ];
 
-    var render = worldImageURL(world, 'render');
-    var generic = worldImageURL(world, 'generic');
-    var isRender = true;
+    const render = worldImageURL(world, 'render');
+    const generic = worldImageURL(world, 'generic');
+    let isRender = true;
 
-    var size = SIZES[world.UWP.Siz] || {width: 0.5, height: 0.5};
+    const size = SIZES[world.UWP.Siz] || {width: 0.5, height: 0.5};
 
     return Promise.all([
       // Background
@@ -891,18 +891,18 @@
           })
     ])
       .then((images) => {
-        var bgimg = images[0];
-        var fgimg = images[1]; // null if isPlaceholder
+        const bgimg = images[0];
+        const fgimg = images[1]; // null if isPlaceholder
 
-        var ctx = canvas.getContext('2d');
+        const ctx = canvas.getContext('2d');
         ctx.save();
         try {
           ctx.imageSmoothingEnabled = true;
 
           if (!fgimg) {
             ctx.drawImage(bgimg, 0, 0, w, h);
-            var label = '?';
-            var th = h * 2/3;
+            const label = '?';
+            const th = h * 2/3;
             ctx.font = String(th) + 'px sans-serif';
             ctx.fillStyle = 'white';
             ctx.textAlign = 'center';
@@ -911,18 +911,18 @@
             return world;
           }
 
-          var iw = w * size.width, ih = h * size.height;
-          var ix = (w - iw) / 2, iy = (h - ih) / 2;
+          const iw = w * size.width, ih = h * size.height;
+          const ix = (w - iw) / 2, iy = (h - ih) / 2;
 
-          var m;
+          let m;
           if (!isRender &&
               supportsCompositeMode(ctx, 'destination-in') &&
               supportsCompositeMode(ctx, 'destination-over') &&
               supportsCompositeMode(ctx, 'multiply') &&
               world.Stars && (m = /^([OBAFGKM])([0-9])/.exec(world.Stars[0].code))) {
             // Advanced - color blend image.
-            var t = class2temp(m[1], m[2]);
-            var c = temp2color(t);
+            const t = class2temp(m[1], m[2]);
+            const c = temp2color(t);
             ctx.fillStyle = 'rgb(' + c.r + ',' + c.g + ',' + c.b + ')';
 
             ctx.fillRect(ix, iy, iw, ih);
@@ -951,7 +951,7 @@
   // Curve fit based on data from:
   // http://www.uni.edu/morgans/astro/course/Notes/section2/spectraltemps.html
   function class2temp(c, f) {
-    var n = 'OBAFGKM'.indexOf(c) + Number(f) / 10;
+    const n = 'OBAFGKM'.indexOf(c) + Number(f) / 10;
     return 26684.83 * Math.pow(n, -1.127977);
   }
 
@@ -959,7 +959,7 @@
   // Based on: http://www.zombieprototypes.com/?p=210
   function temp2color(kelvin) {
     function fit(a, b, c, x) { return Math.floor(a + b*x + c * Math.log(x)); }
-    var r, g, b;
+    let r, g, b;
 
     if (kelvin < 6600)
       r = 255;

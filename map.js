@@ -4,14 +4,16 @@
 // ======================================================================
 
 // NOTE: Used by other scripts
-var Util = {
+const Util = {
   makeURL: (base, params) => {
     'use strict';
     base = String(base).replace(/\?.*/, '');
     if (!params) return base;
-    var keys = Object.keys(params), args = '';
-    for (var i = 0; i < keys.length; ++i) {
-      var key = keys[i], value = params[key];
+    const keys = Object.keys(params);
+    let args = '';
+    for (let i = 0; i < keys.length; ++i) {
+      const key = keys[i];
+      let value = params[key];
       if (value === undefined || value === null) continue;
       if (!Array.isArray(value))
         value = [value];
@@ -25,11 +27,11 @@ var Util = {
   // Replace with URL/searchParams
   parseURLQuery: url => {
     'use strict';
-    var o = Object.create(null);
+    const o = Object.create(null);
     if (url.search && url.search.length > 1) {
       url.search.substring(1).split('&').forEach(pair => {
         if (!pair) return;
-        var kv = pair.split('=', 2);
+        const kv = pair.split('=', 2);
         if (kv.length === 2)
           o[kv[0]] = decodeURIComponent(kv[1].replace(/\+/g, ' '));
         else
@@ -54,7 +56,7 @@ var Util = {
   },
 
   once: func => {
-    var run = false;
+    let run = false;
     return function() {
       if (run) return;
       run = true;
@@ -63,7 +65,7 @@ var Util = {
   },
 
   debounce: (func, delay, immediate) => {
-    var timeoutId = 0;
+    let timeoutId = 0;
     if (immediate) {
       return function() {
         if (timeoutId)
@@ -74,7 +76,7 @@ var Util = {
       };
     } else {
       return function() {
-        var $this = this, $arguments = arguments;
+        const $this = this, $arguments = arguments;
         if (timeoutId)
           clearTimeout(timeoutId);
         timeoutId = setTimeout(() => {
@@ -86,9 +88,9 @@ var Util = {
   },
 
   memoize: f => {
-    var cache = Object.create(null);
+    const cache = Object.create(null);
     return function() {
-      var key = JSON.stringify([].slice.call(arguments));
+      const key = JSON.stringify([].slice.call(arguments));
       return (key in cache) ? cache[key] : cache[key] = f.apply(this, arguments);
     };
   },
@@ -99,8 +101,8 @@ var Util = {
   // WARNING: p = ignorable(...).then(...); p.ignore(); will fail
   // (Promise subclassing is not used)
   ignorable: p => {
-    var ignored = false;
-    var q = new Promise((resolve, reject) => {
+    let ignored = false;
+    const q = new Promise((resolve, reject) => {
       p.then(r => { if (!ignored) resolve(r); },
              r => { if (!ignored) reject(r); });
     });
@@ -118,9 +120,9 @@ var Util = {
   },
 
   parseCookies: () =>  {
-    var cookies = {};
+    const cookies = {};
     document.cookie.split(/; +/g).forEach(pair => {
-      var i = pair.indexOf('=');
+      const i = pair.indexOf('=');
       if (i === -1) cookies[''] = pair;
       else cookies[pair.substring(0, i)] = pair.substring(i+1);
     });
@@ -128,15 +130,15 @@ var Util = {
   },
 
   copyTextToClipboard: text => {
-    var ta = document.createElement('textarea');
+    const ta = document.createElement('textarea');
     ta.value = text;
     document.body.append(ta);
     if (navigator.userAgent.match(/iPad|iPhone|iPod/)) {
       ta.contentEditable = true;
       ta.readOnly = true;
-      var range = document.createRange();
+      const range = document.createRange();
       range.selectNodeContents(ta);
-      var sel = window.getSelection();
+      const sel = window.getSelection();
       sel.removeAllRanges();
       sel.addRange(range);
       ta.setSelectionRange(0, text.length);
@@ -157,14 +159,14 @@ var Util = {
   // General Traveller stuff
   //----------------------------------------------------------------------
 
-  var SERVICE_BASE = ((l) => {
+  const SERVICE_BASE = ((l) => {
     'use strict';
     if (l.hostname === 'localhost' && l.pathname.indexOf('~') !== -1)
       return 'https://travellermap.com';
     return '';
   })(window.location);
 
-  var LEGACY_STYLES = true;
+  const LEGACY_STYLES = true;
 
   function fromHex(c) {
     return '0123456789ABCDEFGHJKLMNPQRSTUVW'.indexOf(c.toUpperCase());
@@ -174,7 +176,7 @@ var Util = {
   // Enumerated types
   //----------------------------------------------------------------------
 
-  var MapOptions = {
+  const MapOptions = {
     SectorGrid: 0x0001,
     SubsectorGrid: 0x0002,
     GridMask: 0x0003,
@@ -200,7 +202,7 @@ var Util = {
     Mask: 0xffff
   };
 
-  var Styles = {
+  const Styles = {
     Poster: 'poster',
     Atlas: 'atlas',
     Print: 'print',
@@ -213,7 +215,7 @@ var Util = {
   // Astrometric Constants
   //----------------------------------------------------------------------
 
-  var Astrometrics = {
+  const Astrometrics = {
     ParsecScaleX: Math.cos(Math.PI / 6), // cos(30)
     ParsecScaleY: 1.0,
     SectorWidth: 32,
@@ -237,23 +239,23 @@ var Util = {
       x += Astrometrics.ReferenceHexX - 1;
       y += Astrometrics.ReferenceHexY - 1;
 
-      var sx = Math.floor(x / Astrometrics.SectorWidth);
-      var sy = Math.floor(y / Astrometrics.SectorHeight);
-      var hx = (x - (sx * Astrometrics.SectorWidth) + 1);
-      var hy = (y - (sy * Astrometrics.SectorHeight) + 1);
+      const sx = Math.floor(x / Astrometrics.SectorWidth);
+      const sy = Math.floor(y / Astrometrics.SectorHeight);
+      const hx = (x - (sx * Astrometrics.SectorWidth) + 1);
+      const hy = (y - (sy * Astrometrics.SectorHeight) + 1);
 
       return {sx:sx, sy:sy, hx:hx, hy:hy};
     },
 
     // Map-space: Cartesian coordinates, centered on Reference
     sectorHexToMap: (sx, sy, hx, hy) => {
-      var world = Astrometrics.sectorHexToWorld(sx, sy, hx, hy);
+      const world = Astrometrics.sectorHexToWorld(sx, sy, hx, hy);
       return Astrometrics.worldToMap(world.x, world.y);
     },
 
     worldToMap: (wx, wy) => {
-      var x = wx;
-      var y = wy;
+      let x = wx;
+      let y = wy;
 
       // Offset from the "corner" of the hex
       x -= 0.5;
@@ -271,8 +273,8 @@ var Util = {
     },
 
     mapToWorld: (x, y) => {
-      var wx = Math.round((x / Astrometrics.ParsecScaleX) + 0.5);
-      var wy = Math.round((-y / Astrometrics.ParsecScaleY) + ((wx % 2 === 0) ? 0.5 : 0));
+      const wx = Math.round((x / Astrometrics.ParsecScaleX) + 0.5);
+      const wy = Math.round((-y / Astrometrics.ParsecScaleY) + ((wx % 2 === 0) ? 0.5 : 0));
       return {x: wx, y: wy};
     },
 
@@ -280,17 +282,17 @@ var Util = {
     hexDistance: (ax, ay, bx, by) => {
       function even(x) { return (x % 2) == 0; }
       function odd (x) { return (x % 2) != 0; }
-      var dx = bx - ax;
-      var dy = by - ay;
-      var adx = Math.abs(dx);
-      var ody = dy + Math.floor(adx / 2);
+      const dx = bx - ax;
+      const dy = by - ay;
+      let adx = Math.abs(dx);
+      let ody = dy + Math.floor(adx / 2);
       if (even(ax) && odd(bx))
         ody += 1;
       return Math.max(adx - ody, ody, adx);
     }
   };
 
-  var Defaults = {
+  const Defaults = {
     options:
     MapOptions.SectorGrid | MapOptions.SubsectorGrid |
       MapOptions.SectorsSelected |
@@ -301,9 +303,9 @@ var Util = {
     style: Styles.Poster
   };
 
-  var styleLookup = (() => {
-    var sheets = {};
-    var base = {
+  const styleLookup = (() => {
+    const sheets = {};
+    const base = {
       overlay_color: '#8080ff',
       route_color: '#048104',
       main_s_color: 'pink',
@@ -326,7 +328,7 @@ var Util = {
       });
 
     return (style, property) => {
-      var sheet = sheets[style] || sheets[Defaults.style];
+      const sheet = sheets[style] || sheets[Defaults.style];
       return sheet[property];
     };
   })();
@@ -336,7 +338,7 @@ var Util = {
   // Data Services
   // ======================================================================
 
-  var MapService = (() => {
+  const MapService = (() => {
     function service(url, contentType, method) {
       return fetch(url, {method: method || 'GET',
                          headers: {Accept: contentType}})
@@ -430,11 +432,11 @@ var Util = {
 
     fetch(key) {
       key = '$' + key;
-      var value = this.map[key];
+      const value = this.map[key];
       if (value === undefined)
         return undefined;
 
-      var index = this.queue.indexOf(key);
+      const index = this.queue.indexOf(key);
       if (index !== -1)
         this.queue.splice(index, 1);
       this.queue.push(key);
@@ -444,7 +446,7 @@ var Util = {
     insert(key, value) {
       key = '$' + key;
       // Remove previous instances
-      var index = this.queue.indexOf(key);
+      const index = this.queue.indexOf(key);
       if (index !== -1)
         this.queue.splice(index, 1);
 
@@ -480,7 +482,7 @@ var Util = {
       return undefined;
     }
   }
-  var stash = new ImageStash();
+  const stash = new ImageStash();
 
 
   // ======================================================================
@@ -496,18 +498,18 @@ var Util = {
     // smooth = optional smoothing function
     // set onanimate to function called with animation position (0.0 ... 1.0)
     constructor(dur, smooth) {
-      var start = Date.now();
+      const start = Date.now();
 
       this.onanimate = null;
       this.oncancel = null;
       this.oncomplete = null;
 
-      var tickFunc = () => {
-        var f = (Date.now() - start) / 1000 / dur;
+      const tickFunc = () => {
+        const f = (Date.now() - start) / 1000 / dur;
         if (f < 1.0)
           this.timerid = requestAnimationFrame(tickFunc);
 
-        var p = f;
+        let p = f;
         if (isCallable(smooth))
           p = smooth(p);
 
@@ -541,10 +543,10 @@ var Util = {
   //
   // Reference:   http://www.w3.org/TR/2005/REC-SMIL2-20050107/smil-timemanip.html
   Animation.smooth = (t, dur, a, d) => {
-    var dacc = dur * a;
-    var ddec = dur * d;
-    var r = 1 / (1 - a / 2 - d / 2);
-    var r_t, tdec, pd;
+    const dacc = dur * a;
+    const ddec = dur * d;
+    const r = 1 / (1 - a / 2 - d / 2);
+    let r_t, tdec, pd;
 
     if (t < dacc) {
       r_t = r * (t / dacc);
@@ -574,9 +576,9 @@ var Util = {
     set(key, value) { this._options[key] = value; this._notify(key); }
     delete(key) { delete this._options[key]; this._notify(key); }
     forEach(fn, thisArg) {
-      var keys = Object.keys(this._options);
-      for (var i = 0; i < keys.length; ++i) {
-        var k = keys[i];
+      const keys = Object.keys(this._options);
+      for (let i = 0; i < keys.length; ++i) {
+        const k = keys[i];
         fn.call(thisArg, this._options[k], k, i);
       }
     }
@@ -586,7 +588,7 @@ var Util = {
   //
   // Usage:
   //
-  //   var map = new Map( document.getElementById('YourMapDiv') );
+  //   let map = new Map( document.getElementById('YourMapDiv') );
   //
   //   map.OnPositionChanged = () => { update permalink }
   //   map.OnScaleChanged    = () => { update scale indicator }
@@ -643,18 +645,18 @@ var Util = {
   function pow2(v) { return Math.pow(2, v); }
   function dist(x, y) { return Math.sqrt(x*x + y*y); }
 
-  var SINK_OFFSET = 1000;
+  const SINK_OFFSET = 1000;
 
-  var INT_OPTIONS = [
+  const INT_OPTIONS = [
     'routes', 'rifts', 'dimunofficial',
     'sscoords', 'allhexes',
     'dw', 'an', 'mh', 'po', 'im', 'cp', 'stellar'
   ];
-  var STRING_OPTIONS = [
+  const STRING_OPTIONS = [
     'ew', 'qz', 'hw', 'milieu'
   ];
 
-  var ZOOM_DELTA = 0.5;
+  const ZOOM_DELTA = 0.5;
   function roundScale(s) {
     return Math.round(s / ZOOM_DELTA) * ZOOM_DELTA;
   }
@@ -689,14 +691,14 @@ var Util = {
 
       this.defer_loading = true;
 
-      var CLICK_SCALE_DELTA = -0.5;
-      var SCROLL_SCALE_DELTA = -0.15;
-      var KEY_SCROLL_DELTA = 15;
+      const CLICK_SCALE_DELTA = -0.5;
+      const SCROLL_SCALE_DELTA = -0.15;
+      const KEY_SCROLL_DELTA = 15;
 
       container.style.position = 'relative';
 
       // Event target, so it doesn't change during refreshes
-      var sink = document.createElement('div');
+      const sink = document.createElement('div');
       sink.style.position = 'absolute';
       sink.style.left = sink.style.top = sink.style.right = sink.style.bottom = (-SINK_OFFSET) + 'px';
       sink.style.zIndex = 1000;
@@ -722,7 +724,7 @@ var Util = {
       // Mouse
       // ----------------------------------------------------------------------
 
-      var dragging, drag_coords, was_dragged, previous_focus;
+      let dragging, drag_coords, was_dragged, previous_focus;
       container.addEventListener('mousedown', e => {
         this.cancelAnimation();
         previous_focus = document.activeElement;
@@ -736,9 +738,9 @@ var Util = {
         e.stopPropagation();
       }, true);
 
-      var hover_coords;
+      let hover_coords;
       container.addEventListener('mousemove', e => {
-        var coords = this.eventCoords(e);
+        const coords = this.eventCoords(e);
 
         // Ignore mousemove immediately following mousedown with same coords.
         if (dragging && coords.x === drag_coords.x && coords.y === drag_coords.y)
@@ -753,7 +755,7 @@ var Util = {
           e.stopPropagation();
         }
 
-        var wc = this.eventToWorldCoords(e);
+        const wc = this.eventToWorldCoords(e);
 
         // Throttle the events
         if (hover_coords && hover_coords.x === wc.x && hover_coords.y === wc.y)
@@ -788,12 +790,12 @@ var Util = {
 
         this.cancelAnimation();
 
-        var MAX_DOUBLECLICK_SCALE = 9;
+        const MAX_DOUBLECLICK_SCALE = 9;
         if (this._logScale < MAX_DOUBLECLICK_SCALE) {
-          var newscale = this._logScale + CLICK_SCALE_DELTA * (e.altKey ? 1 : -1);
+          let newscale = this._logScale + CLICK_SCALE_DELTA * (e.altKey ? 1 : -1);
           newscale = Math.min(newscale, MAX_DOUBLECLICK_SCALE);
 
-          var coords = this.eventCoords(e);
+          const coords = this.eventCoords(e);
           this._setScale(newscale, coords.x, coords.y);
         }
 
@@ -803,8 +805,8 @@ var Util = {
       container.addEventListener('wheel', e => {
         this.cancelAnimation();
 
-        var newscale = this._logScale + SCROLL_SCALE_DELTA * Math.sign(e.deltaY);
-        var coords = this.eventCoords(e);
+        const newscale = this._logScale + SCROLL_SCALE_DELTA * Math.sign(e.deltaY);
+        const coords = this.eventCoords(e);
         this._setScale(newscale, coords.x, coords.y);
 
         e.preventDefault();
@@ -820,7 +822,7 @@ var Util = {
         // Timeout to work around iOS Safari giving incorrect sizes while 'resize'
         // dispatched.
         setTimeout(() => {
-          var rect = boundingElement.getBoundingClientRect();
+          const rect = boundingElement.getBoundingClientRect();
           if (rect.left === this.rect.left &&
               rect.top === this.rect.top &&
               rect.width === this.rect.width &&
@@ -835,34 +837,34 @@ var Util = {
       // Touch
       // ----------------------------------------------------------------------
 
-      var pinch1, pinch2;
-      var touch_coords, touch_wx, touch_wc, was_touch_dragged;
+      let pinch1, pinch2;
+      let touch_coords, touch_wx, touch_wc, was_touch_dragged;
 
       container.addEventListener('touchmove', e => {
         was_touch_dragged = true;
         if (e.touches.length === 1) {
 
-          var coords = this.eventCoords(e.touches[0]);
+          const coords = this.eventCoords(e.touches[0]);
           this._offset(touch_coords.x - coords.x, touch_coords.y - coords.y);
           touch_coords = coords;
           touch_wc = this.eventToWorldCoords(e.touches[0]);
 
         } else if (e.touches.length === 2) {
 
-          var od = dist(pinch2.x - pinch1.x, pinch2.y - pinch1.y),
-              ocx = (pinch1.x + pinch2.x) / 2,
-              ocy = (pinch1.y + pinch2.y) / 2;
+          const od = dist(pinch2.x - pinch1.x, pinch2.y - pinch1.y),
+                ocx = (pinch1.x + pinch2.x) / 2,
+                ocy = (pinch1.y + pinch2.y) / 2;
 
           pinch1 = this.eventCoords(e.touches[0]),
           pinch2 = this.eventCoords(e.touches[1]);
 
-          var nd = dist(pinch2.x - pinch1.x, pinch2.y - pinch1.y),
-              ncx = (pinch1.x + pinch2.x) / 2,
-              ncy = (pinch1.y + pinch2.y) / 2;
+          const nd = dist(pinch2.x - pinch1.x, pinch2.y - pinch1.y),
+                ncx = (pinch1.x + pinch2.x) / 2,
+                ncy = (pinch1.y + pinch2.y) / 2;
 
           this._offset(ocx - ncx, ocy - ncy);
 
-          var newscale = this._logScale + log2(nd / od);
+          const newscale = this._logScale + log2(nd / od);
           this._setScale(newscale, ncx, ncy);
         }
 
@@ -910,22 +912,22 @@ var Util = {
       // ----------------------------------------------------------------------
 
       // TODO: Use KeyboardEvent.prototype.key if available
-      var VK_I = KeyboardEvent.DOM_VK_I || 0x49,
-          VK_J = KeyboardEvent.DOM_VK_J || 0x4A,
-          VK_K = KeyboardEvent.DOM_VK_K || 0x4B,
-          VK_L = KeyboardEvent.DOM_VK_L || 0x4C,
-          VK_LEFT = KeyboardEvent.DOM_VK_LEFT || 0x25,
-          VK_UP = KeyboardEvent.DOM_VK_UP || 0x26,
-          VK_RIGHT = KeyboardEvent.DOM_VK_RIGHT || 0x27,
-          VK_DOWN = KeyboardEvent.DOM_VK_DOWN || 0x28,
-          VK_SUBTRACT = KeyboardEvent.DOM_VK_HYPHEN_MINUS || 0xBD,
-          VK_EQUALS = KeyboardEvent.DOM_VK_EQUALS || 0xBB;
+      const VK_I = KeyboardEvent.DOM_VK_I || 0x49,
+            VK_J = KeyboardEvent.DOM_VK_J || 0x4A,
+            VK_K = KeyboardEvent.DOM_VK_K || 0x4B,
+            VK_L = KeyboardEvent.DOM_VK_L || 0x4C,
+            VK_LEFT = KeyboardEvent.DOM_VK_LEFT || 0x25,
+            VK_UP = KeyboardEvent.DOM_VK_UP || 0x26,
+            VK_RIGHT = KeyboardEvent.DOM_VK_RIGHT || 0x27,
+            VK_DOWN = KeyboardEvent.DOM_VK_DOWN || 0x28,
+            VK_SUBTRACT = KeyboardEvent.DOM_VK_HYPHEN_MINUS || 0xBD,
+            VK_EQUALS = KeyboardEvent.DOM_VK_EQUALS || 0xBB;
 
       // Scrolling - track key down/up state and scroll with RAF.
-      var key_state = {};
-      var keyscroll_timerid;
-      var keyScroll = () => {
-        var dx = 0, dy = 0;
+      const key_state = {};
+      let keyscroll_timerid;
+      const keyScroll = () => {
+        let dx = 0, dy = 0;
 
         if (key_state[VK_UP] || key_state[VK_I])
           dy -= KEY_SCROLL_DELTA;
@@ -992,11 +994,11 @@ var Util = {
       if (newscale === this._logScale)
         return;
 
-      var cw = this.rect.width,
-        ch = this.rect.height;
+      const cw = this.rect.width,
+            ch = this.rect.height;
 
       // Mathmagic to preserve hover coordinates
-      var hx, hy;
+      let hx, hy;
       if (arguments.length >= 3) {
         hx = (this.x + (px - cw / 2) / this.scale) / this.tilesize;
         hy = (-this.y + (py - ch / 2) / this.scale) / this.tilesize;
@@ -1014,10 +1016,10 @@ var Util = {
     };
 
     resetCanvas() {
-      var cw = this.rect.width;
-      var ch = this.rect.height;
+      const cw = this.rect.width;
+      const ch = this.rect.height;
 
-      var dpr = 'devicePixelRatio' in window ? window.devicePixelRatio : 1;
+      let dpr = 'devicePixelRatio' in window ? window.devicePixelRatio : 1;
 
       // iOS devices have a limit of 3 or 5 megapixels for canvas backing
       // store; given screen resolution * ~3x size for "tilt" display this
@@ -1029,18 +1031,18 @@ var Util = {
       }
 
       // Scale factor for canvas to accomodate tilt.
-      var sx = 1, sy = 1;
+      let sx = 1, sy = 1;
       if (this.tilt_enabled) {
         sx = 1.75;
         sy = 1.85;
       }
 
       // Pixel size of the canvas backing store.
-      var pw = (cw * sx * dpr) | 0;
-      var ph = (ch * sy * dpr) | 0;
+      const pw = (cw * sx * dpr) | 0;
+      const ph = (ch * sy * dpr) | 0;
 
       // Offset of the canvas against the container.
-      var ox = 0, oy = 0;
+      let ox = 0, oy = 0;
       if (this.tilt_enabled) {
         ox = (-((cw * sx) - cw) / 2) | 0;
         oy = (-((ch * sy) - ch) * 0.8) | 0;
@@ -1077,10 +1079,10 @@ var Util = {
       this.dirty = false;
 
       // Integral scale (the tiles that will be used)
-      var tscale = Math.round(this._logScale);
+      const tscale = Math.round(this._logScale);
 
       // Tile URL (apart from x/y/scale)
-      var params = {options: this.options, style: this.style};
+      const params = {options: this.options, style: this.style};
       this.namedOptions.forEach((value, key) => {
         if (key === 'ew' || key === 'qz') return;
         params[key] = value;
@@ -1090,17 +1092,17 @@ var Util = {
       this._tile_url_base = Util.makeURL(SERVICE_BASE + '/api/tile', params);
 
       // How the tiles themselves are scaled (naturally 1, unless pinched)
-      var tmult = pow2(this._logScale - tscale),
+      const tmult = pow2(this._logScale - tscale);
 
-          // From map space to tile space
-          // (Traveller map coords change at each integral zoom level)
-          cf = pow2(tscale - 1), // Coordinate factor (integral)
+      // From map space to tile space
+      // (Traveller map coords change at each integral zoom level)
+      const cf = pow2(tscale - 1); // Coordinate factor (integral)
 
-          // Compute edges in tile space
-          cw = this.rect.width,
-          ch = this.rect.height,
+      // Compute edges in tile space
+      const cw = this.rect.width,
+            ch = this.rect.height;
 
-          l = this._tx * cf - (cw / 2) / (this.tilesize * tmult),
+      let l = this._tx * cf - (cw / 2) / (this.tilesize * tmult),
           r = this._tx * cf + (cw / 2) / (this.tilesize * tmult),
           t = this._ty * cf - (ch / 2) / (this.tilesize * tmult),
           b = this._ty * cf + (ch / 2) / (this.tilesize * tmult);
@@ -1118,7 +1120,7 @@ var Util = {
         r += 1;
       }
 
-      var tileCount = (r - l + 1) * (b - t + 1);
+      const tileCount = (r - l + 1) * (b - t + 1);
       this.cache.ensureCapacity(tileCount * 2);
 
       // TODO: Defer loading of new tiles while in the middle of a zoom gesture
@@ -1150,21 +1152,21 @@ var Util = {
 
     // Draw a rectangle (x1, y1) to (x2, y2)
     drawRectangle(x1, y1, x2, y2, scale, mult, ch, cw, cf) {
-      var $this = this;
-      var sizeMult = this.tilesize * mult;
+      const $this = this;
+      const sizeMult = this.tilesize * mult;
 
-      var dw = sizeMult;
-      var dh = sizeMult;
+      const dw = sizeMult;
+      const dh = sizeMult;
 
-      var ox = $this._tx * -cf * dw + (cw / 2);
-      var oy = $this._ty * -cf * dh + (ch / 2);
+      const ox = $this._tx * -cf * dw + (cw / 2);
+      const oy = $this._ty * -cf * dh + (ch / 2);
 
       // Start from the center, work outwards, so center tiles load first.
-      for (var dd = Math.floor((Math.min(x2 - x1 + 1, y2 - y1 + 1) + 1) / 2) - 1; dd >= 0; --dd)
+      for (let dd = Math.floor((Math.min(x2 - x1 + 1, y2 - y1 + 1) + 1) / 2) - 1; dd >= 0; --dd)
         frame(x1 + dd, y1 + dd, x2 - dd, y2 - dd);
 
       function frame(x1, y1, x2, y2) {
-        var x, y;
+        let x, y;
         if (y1 === y2) {
           for (x = x1; x <= x2; ++x) draw(x, y1);
         } else if (x1 === x2) {
@@ -1176,8 +1178,8 @@ var Util = {
       }
 
       function draw(x, y) {
-        var dx = x * dw + ox;
-        var dy = y * dh + oy;
+        const dx = x * dw + ox;
+        const dy = y * dh + oy;
         $this.drawTile(x, y, scale, dx, dy, dw, dh);
       }
     }
@@ -1188,19 +1190,19 @@ var Util = {
     // are used to fill in the gap until it loads.
     //
     drawTile(x, y, scale, dx, dy, dw, dh) {
-      var $this = this; // for closures
+      const $this = this; // for closures
 
       function drawImage(img, x, y, w, h) {
         x -= $this.canvas.offset_x;
         y -= $this.canvas.offset_y;
-        var px = x | 0;
-        var py = y | 0;
-        var pw = ((x + w) | 0) - px;
-        var ph = ((y + h) | 0) - py;
+        const px = x | 0;
+        const py = y | 0;
+        const pw = ((x + w) | 0) - px;
+        const ph = ((y + h) | 0) - py;
         $this.ctx.drawImage(img, px, py, pw, ph);
       }
 
-      var img = this.getTile(x, y, scale, this.invalidate.bind(this));
+      const img = this.getTile(x, y, scale, this.invalidate.bind(this));
 
       if (img) {
         drawImage(img, dx, dy, dw, dh);
@@ -1213,18 +1215,18 @@ var Util = {
         if (scale <= $this.min_scale)
           return;
 
-        var tscale = scale - 1;
-        var factor = pow2(scale - tscale);
+        const tscale = scale - 1;
+        const factor = pow2(scale - tscale);
 
-        var tx = Math.floor(x / factor);
-        var ty = Math.floor(y / factor);
+        const tx = Math.floor(x / factor);
+        const ty = Math.floor(y / factor);
 
-        var ax = dx - dw * (x - (tx * factor));
-        var ay = dy - dh * (y - (ty * factor));
-        var aw = dw * factor;
-        var ah = dh * factor;
+        const ax = dx - dw * (x - (tx * factor));
+        const ay = dy - dh * (y - (ty * factor));
+        const aw = dw * factor;
+        const ah = dh * factor;
 
-        var img = $this.getTile(tx, ty, tscale);
+        const img = $this.getTile(tx, ty, tscale);
         if (img)
           drawImage(img, ax, ay, aw, ah);
         else
@@ -1236,20 +1238,20 @@ var Util = {
         if (scale >= $this.max_scale)
           return;
 
-        var tscale = scale + 1;
-        var factor = pow2(scale - tscale);
+        const tscale = scale + 1;
+        const factor = pow2(scale - tscale);
 
-        for (var oy = 0; oy < 2; oy += 1) {
-          for (var ox = 0; ox < 2; ox += 1) {
+        for (let oy = 0; oy < 2; oy += 1) {
+          for (let ox = 0; ox < 2; ox += 1) {
 
-            var tx = (x / factor) + ox;
-            var ty = (y / factor) + oy;
-            var img = $this.getTile(tx, ty, tscale);
+            const tx = (x / factor) + ox;
+            const ty = (y / factor) + oy;
+            const img = $this.getTile(tx, ty, tscale);
 
-            var ax = dx + ox * dw * factor;
-            var ay = dy + oy * dh * factor;
-            var aw = dw * factor;
-            var ah = dh * factor;
+            const ax = dx + ox * dw * factor;
+            const ay = dy + oy * dh * factor;
+            const aw = dw * factor;
+            const ah = dh * factor;
 
             if (img)
               drawImage(img, ax, ay, aw, ah);
@@ -1269,11 +1271,11 @@ var Util = {
     // once it has successfully loaded.
     //
     getTile(x, y, scale, callback) {
-      var url = this._tile_url_base +
+      const url = this._tile_url_base +
             '&x=' + String(x) + '&y=' + String(y) + '&scale=' + String(pow2(scale - 1));
 
       // Have it? Great, get out fast!
-      var img = this.cache.fetch(url);
+      const img = this.cache.fetch(url);
       if (img)
         return img;
 
@@ -1311,7 +1313,7 @@ var Util = {
       if (scale !== this.scale)
         return false;
 
-      var threshold = Astrometrics.SectorHeight * 64 / this.scale;
+      const threshold = Astrometrics.SectorHeight * 64 / this.scale;
       return dist(x - this.x, y - this.y) < threshold;
     };
 
@@ -1326,9 +1328,9 @@ var Util = {
       return new Promise((resolve, reject) => {
         this.cancelAnimation();
         sec = sec || 2.0;
-        var os = this.scale,
-            ox = this.x,
-            oy = this.y;
+        const os = this.scale,
+              ox = this.x,
+              oy = this.y;
         if (ox === x && oy === y && os === scale) {
           resolve();
           return;
@@ -1344,8 +1346,8 @@ var Util = {
 
           // For now, animate to position in 1/2 the overall animation time, so we spend
           // much of the animation time centered over the target.
-          var hp = Math.min(p*2, 1);
-          var p2 = 1 - ((1-hp) * (1-hp));
+          const hp = Math.min(p*2, 1);
+          const p2 = 1 - ((1-hp) * (1-hp));
           this.position = [Animation.interpolate(ox, x, p2), Animation.interpolate(oy, y, p2)];
           this.redraw();
         };
@@ -1356,7 +1358,7 @@ var Util = {
     };
 
     drawOverlay(overlay) {
-      var ctx = this.ctx;
+      const ctx = this.ctx;
       ctx.save();
       ctx.translate(-this.canvas.offset_x, -this.canvas.offset_y);
       ctx.globalCompositeOperation = 'source-over';
@@ -1364,12 +1366,12 @@ var Util = {
       ctx.fillStyle = overlay.style || styleLookup(this.style, 'overlay_color');
       if (overlay.type === 'rectangle') {
         // Compute physical location
-        var pt1 = this.mapToPixel(overlay.x, overlay.y);
-        var pt2 = this.mapToPixel(overlay.x + overlay.w, overlay.y + overlay.h);
+        const pt1 = this.mapToPixel(overlay.x, overlay.y);
+        const pt2 = this.mapToPixel(overlay.x + overlay.w, overlay.y + overlay.h);
         ctx.fillRect(pt1.x, pt1.y, pt2.x - pt1.x, pt1.y - pt2.y);
       } else if (overlay.type === 'circle') {
-        var pt = this.mapToPixel(overlay.x, overlay.y);
-        var r = Math.abs(this.mapToPixel(overlay.x, overlay.y + overlay.r).y - pt.y);
+        const pt = this.mapToPixel(overlay.x, overlay.y);
+        const r = Math.abs(this.mapToPixel(overlay.x, overlay.y + overlay.r).y - pt.y);
         ctx.beginPath();
         ctx.ellipse(pt.x, pt.y, r, r, 0, 0, Math.PI*2);
         ctx.fill();
@@ -1378,7 +1380,7 @@ var Util = {
     };
 
     drawRoute(route) {
-      var ctx = this.ctx;
+      const ctx = this.ctx;
       ctx.save();
       ctx.translate(-this.canvas.offset_x, -this.canvas.offset_y);
       ctx.globalCompositeOperation = 'source-over';
@@ -1391,13 +1393,13 @@ var Util = {
 
       ctx.beginPath();
       route.forEach((stop, index) => {
-        var pt = Astrometrics.sectorHexToMap(stop.sx, stop.sy, stop.hx, stop.hy);
+        const pt = Astrometrics.sectorHexToMap(stop.sx, stop.sy, stop.hx, stop.hy);
         pt = this.mapToPixel(pt.x, pt.y);
         ctx[index ? 'lineTo' : 'moveTo'](pt.x, pt.y);
       }, this);
-      var dots = (this._logScale >= 7) ? route : [route[0], route[route.length - 1]];
+      const dots = (this._logScale >= 7) ? route : [route[0], route[route.length - 1]];
       dots.forEach((stop, index) => {
-        var pt = Astrometrics.sectorHexToMap(stop.sx, stop.sy, stop.hx, stop.hy);
+        let pt = Astrometrics.sectorHexToMap(stop.sx, stop.sy, stop.hx, stop.hy);
         pt = this.mapToPixel(pt.x, pt.y);
         ctx.moveTo(pt.x + ctx.lineWidth / 2, pt.y);
         ctx.arc(pt.x, pt.y, ctx.lineWidth / 2, 0, Math.PI*2);
@@ -1408,7 +1410,7 @@ var Util = {
     };
 
     drawMain(main) {
-      var ctx = this.ctx;
+      const ctx = this.ctx;
       ctx.save();
       ctx.translate(-this.canvas.offset_x, -this.canvas.offset_y);
       ctx.globalCompositeOperation = 'source-over';
@@ -1417,9 +1419,9 @@ var Util = {
                                   main.length <= 10 ? 'main_s_color' :
                                   main.length <= 50 ? 'main_m_color' : 'main_l_color');
       ctx.beginPath();
-      var radius = 1.15 * this.scale / 2;
+      const radius = 1.15 * this.scale / 2;
       main.forEach(world => {
-        var pt = Astrometrics.sectorHexToMap(world.sx, world.sy, world.hx, world.hy);
+        let pt = Astrometrics.sectorHexToMap(world.sx, world.sy, world.hx, world.hy);
         pt = this.mapToPixel(pt.x, pt.y);
         ctx.moveTo(pt.x + radius, pt.y);
         ctx.arc(pt.x, pt.y, radius, 0, Math.PI*2);
@@ -1429,16 +1431,16 @@ var Util = {
     };
 
     drawMarker(marker) {
-      var pt = this.mapToPixel(marker.x, marker.y);
+      const pt = this.mapToPixel(marker.x, marker.y);
 
-      var ctx = this.ctx;
-      var image;
+      const ctx = this.ctx;
+      let image;
 
       if (marker.url) {
         image = stash.get(marker.url, this.invalidate.bind(this));
         if (!image) return;
 
-        var MARKER_SIZE = 128;
+        const MARKER_SIZE = 128;
         ctx.save();
         ctx.translate(-this.canvas.offset_x, -this.canvas.offset_y);
         ctx.globalCompositeOperation = 'source-over';
@@ -1450,7 +1452,7 @@ var Util = {
       }
 
       if (styleLookup(this.style, marker.id + '_url')) {
-        var url = styleLookup(this.style, marker.id + '_url');
+        const url = styleLookup(this.style, marker.id + '_url');
         image = stash.get(url, this.invalidate.bind(this));
         if (!image) return;
 
@@ -1463,11 +1465,11 @@ var Util = {
     };
 
     drawWave(date) {
-      var year = 1105;
-      var w = 1; /*pc*/
-      var m;
+      let year = 1105;
+      let w = 1; /*pc*/
+      let m;
       if (date === 'milieu') {
-        var milieu = this.namedOptions.get('milieu') || 'M1105';
+        const milieu = this.namedOptions.get('milieu') || 'M1105';
         year = (milieu === 'IW') ? -2404 : Number(milieu.replace('M', ''));
       } else if ((m = /^(-?\d+)-(\d+)$/.exec(date))) {
         // day-year, e.g. 001-1105
@@ -1484,17 +1486,17 @@ var Util = {
       }
 
       // Per MWM: Velocity of wave is PI * c
-      var vel /*pc/y*/ = Math.PI /*ly/y*/ / 3.26 /*ly/pc*/;
+      const vel /*pc/y*/ = Math.PI /*ly/y*/ / 3.26 /*ly/pc*/;
 
       // Per MWM: center is 10000pc coreward
-      var x = 0, y = 10000;
+      const x = 0, y = 10000;
 
       // Per MWM: Wave crosses Ring 10,000 [Reference] on 045-1281
-      var radius = (year - (1281 + (45 - 1) / 365)) * vel + y;
+      const radius = (year - (1281 + (45 - 1) / 365)) * vel + y;
       if (radius < 0)
         return;
 
-      var ctx = this.ctx;
+      const ctx = this.ctx;
       ctx.save();
       ctx.translate(-this.canvas.offset_x, -this.canvas.offset_y);
       ctx.globalCompositeOperation = 'source-over';
@@ -1502,8 +1504,8 @@ var Util = {
       ctx.lineWidth = Math.max(w * this.scale, 5);
       ctx.strokeStyle = styleLookup(this.style, 'ew_color');
       ctx.beginPath();
-      var px_offset = 0.5; // offset from corner to center of hex
-      var pt = this.mapToPixel(x + px_offset, y + px_offset);
+      const px_offset = 0.5; // offset from corner to center of hex
+      const pt = this.mapToPixel(x + px_offset, y + px_offset);
       ctx.arc(pt.x,
               pt.y,
               this.scale * radius,
@@ -1514,8 +1516,8 @@ var Util = {
     };
 
     drawQZ() {
-      var x = -179.4, y = 131, radius = 30 * Traveller.Astrometrics.ParsecScaleX, w = 1;
-      var ctx = this.ctx;
+      const x = -179.4, y = 131, radius = 30 * Traveller.Astrometrics.ParsecScaleX, w = 1;
+      const ctx = this.ctx;
       ctx.save();
       ctx.translate(-this.canvas.offset_x, -this.canvas.offset_y);
       ctx.globalCompositeOperation = 'source-over';
@@ -1523,8 +1525,8 @@ var Util = {
       ctx.lineWidth = Math.max(w * this.scale, 5);
       ctx.strokeStyle = styleLookup(this.style, 'ew_color');
       ctx.beginPath();
-      var px_offset = 0.5; // offset from corner to center of hex
-      var pt = this.mapToPixel(x + px_offset, y + px_offset);
+      const px_offset = 0.5; // offset from corner to center of hex
+      const pt = this.mapToPixel(x + px_offset, y + px_offset);
       ctx.arc(pt.x,
               pt.y,
               this.scale * radius, 0, Math.PI * 2);
@@ -1551,12 +1553,12 @@ var Util = {
       // layerX/Y for Firefox. Touch events lack these, so compute untransformed
       // coords.
       // TODO: Map touch coordinates back into world-space.
-      var offsetX = 'offsetX' in event ? event.offsetX :
-            'layerX' in event ? event.layerX :
-            event.pageX - event.target.offsetLeft;
-      var offsetY = 'offsetY' in event ? event.offsetY :
-            'layerY' in event ? event.layerY :
-            event.pageY - event.target.offsetTop;
+      const offsetX = 'offsetX' in event ? event.offsetX :
+              'layerX' in event ? event.layerX :
+              event.pageX - event.target.offsetLeft;
+      const offsetY = 'offsetY' in event ? event.offsetY :
+              'layerY' in event ? event.layerY :
+              event.pageY - event.target.offsetTop;
 
       return {
         x: offsetX - SINK_OFFSET - this.rect.left,
@@ -1565,8 +1567,8 @@ var Util = {
     };
 
     eventToWorldCoords(event) {
-      var coords = this.eventCoords(event);
-      var map = this.pixelToMap(coords.x, coords.y);
+      const coords = this.eventCoords(event);
+      const map = this.pixelToMap(coords.x, coords.y);
       return Astrometrics.mapToWorld(map.x, map.y);
     };
 
@@ -1628,7 +1630,8 @@ var Util = {
 
     get position() { return [this._tx * this.tilesize, this._ty * -this.tilesize]; }
     set position(value) {
-      var x = value[0] / this.tilesize, y = value[1] / -this.tilesize;
+      const x = value[0] / this.tilesize,
+            y = value[1] / -this.tilesize;
       if (x === this._tx && y === this._ty) return;
       this._tx = x;
       this._ty = y;
@@ -1646,7 +1649,7 @@ var Util = {
       options = Object.assign({}, options);
 
       this.cancelAnimation();
-      var target = Astrometrics.sectorHexToMap(sx, sy, hx, hy);
+      const target = Astrometrics.sectorHexToMap(sx, sy, hx, hy);
 
       if (!options.immediate &&
           'scale' in options &&
@@ -1670,11 +1673,11 @@ var Util = {
         return;
       }
 
-      var s = this.scale * this.tilesize,
-          ox = this.x,
-          oy = this.y,
-          tx = ox + dx / s,
-          ty = oy + dy / s;
+      const s = this.scale * this.tilesize,
+            ox = this.x,
+            oy = this.y,
+            tx = ox + dx / s,
+            ty = oy + dy / s;
 
       this.animation = new Animation(1.0, p => Animation.smooth(p, 1.0, 0.1, 0.25));
       this.animation.onanimate = p => {
@@ -1695,7 +1698,7 @@ var Util = {
     // NOTE: This API is subject to change
     // |x| and |y| are map-space coordinates
     AddMarker(id, x, y, opt_url) {
-      var marker = {
+      const marker = {
         x: x,
         y: y,
         id: id,
@@ -1710,7 +1713,7 @@ var Util = {
 
     AddOverlay(o) {
       // TODO: Take id, like AddMarker
-      var overlay = Object.assign({
+      const overlay = Object.assign({
         id: 'overlay',
         z: 910
       }, o);
@@ -1735,17 +1738,17 @@ var Util = {
     }
 
     ApplyURLParameters() {
-      var params = Util.parseURLQuery(document.location);
+      const params = Util.parseURLQuery(document.location);
 
       function float(prop) {
-        var n = parseFloat(params[prop]);
+        const n = parseFloat(params[prop]);
         return isNaN(n) ? 0 : n;
       }
 
       function int(prop) {
-        var v = params[prop];
+        const v = params[prop];
         if (typeof v === 'boolean') return v ? 1 : 0;
-        var n = parseInt(v, 10);
+        const n = parseInt(v, 10);
         return isNaN(n) ? 0 : n;
       }
 
@@ -1762,17 +1765,15 @@ var Util = {
       if ('style' in params)
         this.style = params.style;
 
-      var pt;
-
       if (has(params, ['yah_sx', 'yah_sy', 'yah_hx', 'yah_hx'])) {
-        pt = Astrometrics.sectorHexToMap(int('yah_sx'), int('yah_sy'), int('yah_hx'), int('yah_hy'));
+        const pt = Astrometrics.sectorHexToMap(int('yah_sx'), int('yah_sy'), int('yah_hx'), int('yah_hy'));
         this.AddMarker('you_are_here', pt.x, pt.y);
       } else if (has(params, ['yah_x', 'yah_y'])) {
         this.AddMarker('you_are_here', float('yah_x'), float('yah_y'));
       } else if (has(params, ['yah_sector'])) {
         MapService.coordinates(params.yah_sector, params.yah_hex)
           .then(location => {
-            var pt = Astrometrics.worldToMap(location.x, location.y);
+            const pt = Astrometrics.worldToMap(location.x, location.y);
             this.AddMarker('you_are_here', pt.x, pt.y);
           }, () => {
             alert('The requested marker location "' + params.yah_sector +
@@ -1782,14 +1783,14 @@ var Util = {
       }
 
       if (has(params, ['marker_sx', 'marker_sy', 'marker_hx', 'marker_hx', 'marker_url'])) {
-        pt = Astrometrics.sectorHexToMap(int('marker_sx'), int('marker_sy'), int('marker_hx'), int('marker_hy'));
+        const pt = Astrometrics.sectorHexToMap(int('marker_sx'), int('marker_sy'), int('marker_hx'), int('marker_hy'));
         this.AddMarker('custom', pt.x, pt.y, params.marker_url);
       } else if (has(params, ['marker_x', 'marker_y', 'marker_url'])) {
         this.AddMarker('custom', float('marker_x'), float('marker_y'), params.marker_url);
       } else if (has(params, ['marker_sector', 'marker_url'])) {
         MapService.coordinates(params.marker_sector, params.marker_hex)
           .then(location => {
-            var pt = Astrometrics.worldToMap(location.x, location.y);
+            const pt = Astrometrics.worldToMap(location.x, location.y);
             this.AddMarker('custom', pt.x, pt.y, params.marker_url);
           }, () => {
             alert('The requested marker location "' + params.marker_sector +
@@ -1799,15 +1800,15 @@ var Util = {
       }
 
       // Rectangle overlays
-      for (var i = 0; ; ++i) {
-        var n = (i === 0) ? '' : i,
-            oxs = 'ox' + n, oys = 'oy' + n, ows = 'ow' + n, ohs = 'oh' + n,
-            oss = 'os' + n;
+      for (let i = 0; ; ++i) {
+        const n = (i === 0) ? '' : i,
+              oxs = 'ox' + n, oys = 'oy' + n, ows = 'ow' + n, ohs = 'oh' + n,
+              oss = 'os' + n;
         if (has(params, [oxs, oys, ows, ohs])) {
-          var x = float(oxs);
-          var y = float(oys);
-          var w = float(ows);
-          var h = float(ohs);
+          const x = float(oxs);
+          const y = float(oys);
+          const w = float(ows);
+          const h = float(ohs);
           this.AddOverlay({type: 'rectangle', x:x, y:y, w:w, h:h, style: params[oss]});
         } else {
           break;
@@ -1816,8 +1817,8 @@ var Util = {
       // Compact form
       if ('or' in params) {
         params.or.split('~').forEach(or => {
-          function float(s) { var n = parseFloat(s); return isNaN(n) ? 0 : n; }
-          var a = or.split('!');
+          function float(s) { const n = parseFloat(s); return isNaN(n) ? 0 : n; }
+          const a = or.split('!');
           this.AddOverlay({
             type: 'rectangle',
             x:float(a[0]), y:float(a[1]), w:float(a[2]), h:float(a[3]),
@@ -1827,13 +1828,13 @@ var Util = {
       }
 
       // Circle overlays
-      for (i = 0; ; ++i) {
-        n = (i === 0) ? '' : i;
-        var ocxs = 'ocx' + n, ocys = 'ocy' + n, ocrs = 'ocr' + n, ocss = 'ocs' + n;
+      for (let i = 0; ; ++i) {
+        const n = (i === 0) ? '' : i;
+        const ocxs = 'ocx' + n, ocys = 'ocy' + n, ocrs = 'ocr' + n, ocss = 'ocs' + n;
         if (has(params, [ocxs, ocys, ocrs])) {
-          var cx = float(ocxs);
-          var cy = float(ocys);
-          var cr = float(ocrs);
+          const cx = float(ocxs);
+          const cy = float(ocys);
+          const cr = float(ocrs);
           this.AddOverlay({type: 'circle', x:cx, y:cy, r:cr, style:params[ocss]});
         } else {
           break;
@@ -1842,8 +1843,8 @@ var Util = {
       // Compact form
       if ('oc' in params) {
         params.oc.split('~').forEach(oc => {
-          function float(s) { var n = parseFloat(s); return isNaN(n) ? 0 : n; }
-          var a = oc.split('!');
+          function float(s) { const n = parseFloat(s); return isNaN(n) ? 0 : n; }
+          const a = oc.split('!');
           this.AddOverlay({
             type: 'circle', x:float(a[0]), y:float(a[1]), r:float(a[2]), style: a[3]});
         });
@@ -1851,7 +1852,7 @@ var Util = {
 
       // Various coordinate schemes - ordered by priority
       if ('p' in params) {
-        var parts = params.p.split('!');
+        const parts = params.p.split('!');
         this.logScale = parseFloat(parts[2]) || 0;
         this.position = [parseFloat(parts[0]) || 0, parseFloat(parts[1]) || 0];
       } else if (has(params, ['x', 'y'])) {

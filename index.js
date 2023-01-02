@@ -45,14 +45,14 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  var mapElement = $('#dragContainer'), sizeElement = mapElement.parentNode;
-  var map = new Traveller.Map(mapElement, sizeElement);
+  const mapElement = $('#dragContainer'), sizeElement = mapElement.parentNode;
+  const map = new Traveller.Map(mapElement, sizeElement);
 
   // Export
   window.map = map;
 
-  var isIframe = (window != window.top); // != for IE
-  var isSmallScreen = mapElement.offsetWidth <= 640; // Arbitrary
+  const isIframe = (window != window.top); // != for IE
+  const isSmallScreen = mapElement.offsetWidth <= 640; // Arbitrary
 
   function toggleFullscreen() {
     if (document.fullscreen || document.webkitIsFullScreen) {
@@ -61,7 +61,7 @@ window.addEventListener('DOMContentLoaded', () => {
       else if ('webkitExitFullscreen' in document)
         document.webkitExitFullscreen();
     } else {
-      var elem = document.documentElement;
+      const elem = document.documentElement;
       if ('requestFullscreen' in elem)
         elem.requestFullscreen();
       else if ('webkitRequestFullscreen' in elem)
@@ -79,7 +79,7 @@ window.addEventListener('DOMContentLoaded', () => {
   map.options = map.options | Traveller.MapOptions.NamesMinor | Traveller.MapOptions.ForceHexes | Traveller.MapOptions.FilledBorders;
   map.scale = isSmallScreen ? 1 : 2;
   map.CenterAtSectorHex(0, 0, Traveller.Astrometrics.ReferenceHexX, Traveller.Astrometrics.ReferenceHexY);
-  var defaults = {
+  const defaults = {
     x: map.x,
     y: map.y,
     scale: map.scale,
@@ -89,20 +89,20 @@ window.addEventListener('DOMContentLoaded', () => {
     milieu: 'M1105',
     style: map.style
   };
-  var home = {
+  const home = {
     x: defaults.x,
     y: defaults.y,
     scale: defaults.scale
   };
 
-  var SAVE_PREFERENCES_DELAY_MS = 500;
-  var savePreferences = isIframe ? () => {} : Util.debounce(() => {
-    var preferences = {
+  const SAVE_PREFERENCES_DELAY_MS = 500;
+  const savePreferences = isIframe ? () => {} : Util.debounce(() => {
+    const preferences = {
       style: map.style,
       options: map.options
     };
     map.namedOptions.NAMES.forEach(name => {
-      var value = map.namedOptions.get(name);
+      const value = map.namedOptions.get(name);
       preferences[name] = value === '' ? undefined : value;
     });
     PARAM_OPTIONS.forEach(option => {
@@ -115,7 +115,7 @@ window.addEventListener('DOMContentLoaded', () => {
     }));
   }, SAVE_PREFERENCES_DELAY_MS);
 
-  var template = Util.memoize(sel => Handlebars.compile($(sel).innerHTML));
+  const template = Util.memoize(sel => Handlebars.compile($(sel).innerHTML));
 
   //////////////////////////////////////////////////////////////////////
   //
@@ -123,9 +123,9 @@ window.addEventListener('DOMContentLoaded', () => {
   //
   //////////////////////////////////////////////////////////////////////
 
-  var PERMALINK_REFRESH_DELAY_MS = 500;
-  var lastPageURL = null;
-  var updatePermalink = Util.debounce(() => {
+  const PERMALINK_REFRESH_DELAY_MS = 500;
+  let lastPageURL = null;
+  const updatePermalink = Util.debounce(() => {
     function round(n, d) {
       d = 1 / d; // Avoid twitchy IEEE754 rounding.
       return Math.round(n * d) / d;
@@ -143,7 +143,7 @@ window.addEventListener('DOMContentLoaded', () => {
     urlParams.options = map.options;
     urlParams.style = map.style;
 
-    var namedOptions = map.namedOptions.keys();
+    const namedOptions = map.namedOptions.keys();
     map.namedOptions.forEach((value, key) => {
       urlParams[key] = value;
     });
@@ -159,7 +159,7 @@ window.addEventListener('DOMContentLoaded', () => {
         urlParams[option.param] = 1;
     });
 
-    var pageURL = Util.makeURL(document.location, urlParams);
+    const pageURL = Util.makeURL(document.location, urlParams);
 
     if (pageURL === lastPageURL)
       return;
@@ -178,7 +178,7 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 
     $$('a.share').forEach(anchor => {
-      var data = {
+      const data = {
         url: encodeURIComponent(pageURL),
         text: encodeURIComponent('The Traveller Map')
       };
@@ -187,15 +187,15 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    var snapshotParams = (() => {
-      var map_center_x = map.x,
-          map_center_y = map.y,
-          scale = map.scale,
-          rect = mapElement.getBoundingClientRect(),
-          width = Math.round(rect.width),
-          height = Math.round(rect.height),
-          x = ( map_center_x * scale - ( width / 2 ) ) / width,
-          y = ( -map_center_y * scale - ( height / 2 ) ) / height;
+    const snapshotParams = (() => {
+      const map_center_x = map.x,
+            map_center_y = map.y,
+            scale = map.scale,
+            rect = mapElement.getBoundingClientRect(),
+            width = Math.round(rect.width),
+            height = Math.round(rect.height),
+            x = ( map_center_x * scale - ( width / 2 ) ) / width,
+            y = ( -map_center_y * scale - ( height / 2 ) ) / height;
       return { x: x, y: y, w: width, h: height, scale: scale };
     })();
     snapshotParams.x = round(snapshotParams.x, 1/1000);
@@ -205,7 +205,7 @@ window.addEventListener('DOMContentLoaded', () => {
     snapshotParams.style = map.style;
     snapshotParams.milieu = map.namedOptions.get('milieu');
     namedOptions.forEach(name => { snapshotParams[name] = urlParams[name]; });
-    var snapshotURL = Traveller.MapService.makeURL('/api/tile', snapshotParams);
+    let snapshotURL = Traveller.MapService.makeURL('/api/tile', snapshotParams);
     $('a#download-snapshot').href = snapshotURL;
     snapshotParams.accept = 'application/pdf';
     snapshotURL = Traveller.MapService.makeURL('/api/tile', snapshotParams);
@@ -219,12 +219,12 @@ window.addEventListener('DOMContentLoaded', () => {
   //
   //////////////////////////////////////////////////////////////////////
 
-  var original_title = document.title;
+  const original_title = document.title;
 
   // Search Bar
 
   // Mutually exclusive panes:
-  var SEARCH_PANES = ['search-results', 'route-ui', 'wds-visible', 'sds-visible'];
+  const SEARCH_PANES = ['search-results', 'route-ui', 'wds-visible', 'sds-visible'];
   function showSearchPane(pane, title) {
     if (!['wds-visible', 'sds-visible'].includes(pane))
       document.body.classList.add('ds-mini');
@@ -256,7 +256,7 @@ window.addEventListener('DOMContentLoaded', () => {
     search($('#searchBox').value, {onfocus: true});
   });
 
-  var SEARCH_TIMER_DELAY = 100; // ms
+  const SEARCH_TIMER_DELAY = 100; // ms
   $("#searchBox").addEventListener('input', Util.debounce(e => {
     if (e.key !== 'Enter') // Ignore double-submit on iOS
       search($('#searchBox').value, {typed: true});
@@ -271,8 +271,9 @@ window.addEventListener('DOMContentLoaded', () => {
   });
 
   function resizeMap() {
+    let event;
     if (typeof UIEvent === 'function') {
-      var event = new UIEvent('resize');
+      event = new UIEvent('resize');
     } else {
       event = document.createEvent('UIEvent');
       event.initUIEvent('resize', true, false, window, 0);
@@ -329,7 +330,7 @@ window.addEventListener('DOMContentLoaded', () => {
       e.stopPropagation();
 
       $('#routePath').innerHTML = '';
-      var found = false;
+      let found = false;
       ['J-1','J-2','J-3','J-4','J-5','J-6'].forEach(n => {
         if ($('#routeForm').classList.contains(n)) {
           found = true;
@@ -348,7 +349,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   $('#swapRouteBtn').addEventListener('click', e => {
     e.preventDefault();
-    var tmp = $('#routeStart').value;
+    const tmp = $('#routeStart').value;
     $('#routeStart').value = $('#routeEnd').value;
     $('#routeEnd').value = tmp;
     $('#routePath').innerHTML = '';
@@ -367,9 +368,9 @@ window.addEventListener('DOMContentLoaded', () => {
       });
       $('#routeForm').classList.add(button.id);
 
-      var start = $('#routeStart').value;
-      var end = $('#routeEnd').value;
-      var jump = button.id.replace('J-', '');;
+      const start = $('#routeStart').value;
+      const end = $('#routeEnd').value;
+      const jump = button.id.replace('J-', '');;
 
       route(start, end, jump);
     });
@@ -382,16 +383,16 @@ window.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  var VK_ESCAPE = KeyboardEvent.DOM_VK_ESCAPE || 0x1B,
-      VK_RETURN = KeyboardEvent.DOM_VK_RETURN || 0x0D,
-      VK_C = KeyboardEvent.DOM_VK_C || 0x43,
-      VK_F = KeyboardEvent.DOM_VK_F || 0x46,
-      VK_H = KeyboardEvent.DOM_VK_H || 0x48,
-      VK_M = KeyboardEvent.DOM_VK_M || 0x4D,
-      VK_T = KeyboardEvent.DOM_VK_T || 0x54,
-      VK_QUESTION_MARK = KeyboardEvent.DOM_VK_QUESTION_MARK || 0x63;
+  const VK_ESCAPE = KeyboardEvent.DOM_VK_ESCAPE || 0x1B,
+        VK_RETURN = KeyboardEvent.DOM_VK_RETURN || 0x0D,
+        VK_C = KeyboardEvent.DOM_VK_C || 0x43,
+        VK_F = KeyboardEvent.DOM_VK_F || 0x46,
+        VK_H = KeyboardEvent.DOM_VK_H || 0x48,
+        VK_M = KeyboardEvent.DOM_VK_M || 0x4D,
+        VK_T = KeyboardEvent.DOM_VK_T || 0x54,
+        VK_QUESTION_MARK = KeyboardEvent.DOM_VK_QUESTION_MARK || 0x63;
 
-  var ignoreNextKeyUp = false;
+  let ignoreNextKeyUp = false;
   document.body.addEventListener('keyup', e => {
     if (ignoreNextKeyUp) {
       ignoreNextKeyUp = false;
@@ -416,8 +417,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
   // Options Bar
 
-  var PANELS = ['legend', 'more'];
-  var TABS = ['lab', 'milieu', 'settings', 'share', 'help'];
+  const PANELS = ['legend', 'more'];
+  const TABS = ['lab', 'milieu', 'settings', 'share', 'help'];
 
   function showPanel(shown) {
     PANELS.forEach(p => {
@@ -455,7 +456,7 @@ window.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  var STYLES = ['poster', 'atlas', 'print', 'candy', 'draft', 'fasa', 'terminal', 'mongoose'];
+  const STYLES = ['poster', 'atlas', 'print', 'candy', 'draft', 'fasa', 'terminal', 'mongoose'];
   STYLES.forEach(s => {
     $('#settingsBtn-'+s).addEventListener('click', () => { map.style = s; });
   });
@@ -561,7 +562,7 @@ window.addEventListener('DOMContentLoaded', () => {
     map.options = (map.options & ~mask) | flags;
   }
 
-  var optionObservers = [];
+  const optionObservers = [];
 
   bindCheckedToOption('#ShowSectorGrid', Traveller.MapOptions.GridMask);
   bindCheckedToOption('#ShowSectorNames', Traveller.MapOptions.SectorsMask);
@@ -603,7 +604,7 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 
   function bindControl(selector, property, onChange, event, onEvent) {
-    var element = $(selector);
+    const element = $(selector);
     optionObservers.push(o => { element[property] = onChange(o); });
     element.addEventListener(event, () => { onEvent(element); });
   }
@@ -611,7 +612,7 @@ window.addEventListener('DOMContentLoaded', () => {
     bindControl(selector, 'checked', onChange, 'click', e => { onEvent(e.checked); });
   }
   function bindEnabled(selector, onChange) {
-    var element = $(selector);
+    const element = $(selector);
     optionObservers.push(o => { element.disabled = !onChange(o); });
   }
   function bindCheckedToOption(selector, bitmask) {
@@ -621,7 +622,7 @@ window.addEventListener('DOMContentLoaded', () => {
   }
   function bindCheckedToNamedOption(selector, name) {
     bindChecked(selector,
-                () => { var v = map.namedOptions.get(name);
+                () => { const v = map.namedOptions.get(name);
                         return v === undefined ? defaults[name] : v; },
                 c => {
                   if (!!c === !!defaults[name]) {
@@ -631,9 +632,9 @@ window.addEventListener('DOMContentLoaded', () => {
   }
   function bindRadioToNamedOption(selector, name) {
     optionObservers.push(o => {
-      var v = map.namedOptions.get(name);
+      const v = map.namedOptions.get(name);
       if (v === undefined) v = defaults[name];
-      var e = $(selector + '[value="' +  v + '"]');
+      const e = $(selector + '[value="' +  v + '"]');
       if (e) e.checked = true;
     });
     $$(selector).forEach(elem => {
@@ -648,7 +649,7 @@ window.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  var EVENT_DEBOUNCE_MS = 10;
+  const EVENT_DEBOUNCE_MS = 10;
 
   map.OnOptionsChanged = Util.debounce(options => {
     optionObservers.forEach(o => { o(options); });
@@ -704,7 +705,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
   // TODO: Generalize URLParam<->Control and URLParam<->Style binding
-  var PARAM_OPTIONS = [
+  const PARAM_OPTIONS = [
     {param: 'galdir', selector: '#cbGalDir', className: 'show-directions', 'default': true},
     {param: 'tilt', selector: '#cbTilt', className: 'tilt', 'default': false,
      onchange: flag => { if (flag) map.EnableTilt(); }
@@ -749,14 +750,14 @@ window.addEventListener('DOMContentLoaded', () => {
 
   (() => {
     if (isIframe) return;
-    var preferences = JSON.parse(localStorage.getItem('preferences'));
-    var location = JSON.parse(localStorage.getItem('location'));
+    const preferences = JSON.parse(localStorage.getItem('preferences'));
+    const location = JSON.parse(localStorage.getItem('location'));
     if (preferences) {
       if ('style' in preferences) map.style = preferences.style;
       if ('options' in preferences) map.options = preferences.options;
       map.namedOptions.NAMES.forEach(name => {
         if (name in preferences) {
-          var value = preferences[name];
+          const value = preferences[name];
           if (value !== '')
             map.namedOptions.set(name, value);
         }
@@ -779,7 +780,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   // Overlay to allow quick return to default milieu.
   optionObservers.push(o => {
-    var milieu = map.namedOptions.get('milieu') || defaults.milieu;
+    const milieu = map.namedOptions.get('milieu') || defaults.milieu;
     $('#milieu-field').innerText = milieu;
     $('#milieu-field-default').innerText = defaults.milieu;
     document.body.classList.toggle(
@@ -794,14 +795,14 @@ window.addEventListener('DOMContentLoaded', () => {
   //
   // Call this AFTER data binding is hooked up so UI is synchronized
   //
-  var standalone = 'standalone' in window.navigator && window.navigator.standalone;
-  var urlParams = standalone ? {} : map.ApplyURLParameters();
+  const standalone = 'standalone' in window.navigator && window.navigator.standalone;
+  const urlParams = standalone ? {} : map.ApplyURLParameters();
 
   // Force UI to synchronize in case URL parameters didn't do it
   map.OnOptionsChanged(map.options);
 
   if (isIframe) {
-    var forceui = ('forceui' in urlParams) && Boolean(Number(urlParams.forceui));
+    const forceui = ('forceui' in urlParams) && Boolean(Number(urlParams.forceui));
     if (forceui)
       document.body.classList.remove('hide-ui');
   } else {
@@ -809,10 +810,10 @@ window.addEventListener('DOMContentLoaded', () => {
     document.body.classList.remove('hide-footer');
   }
 
-  var dirty = false;
+  let dirty = false;
   PARAM_OPTIONS.forEach(option => {
     if (option.param in urlParams) {
-      var show = Boolean(Number(urlParams[option.param]));
+      const show = Boolean(Number(urlParams[option.param]));
       document.body.classList.toggle(option.className, show);
       dirty = true;
     }
@@ -830,9 +831,9 @@ window.addEventListener('DOMContentLoaded', () => {
   if ('qr' in urlParams) {
     console.log('qr');
     try {
-      var results = JSON.parse(urlParams['qr']);
+      const results = JSON.parse(urlParams['qr']);
       console.log('results: ', results);
-      var term = urlParams['search'] || '';
+      const term = urlParams['search'] || '';
       $('#searchBox').value = term;
       search(term, {navigate: true, results: results});
     } catch (ex) {
@@ -856,21 +857,21 @@ window.addEventListener('DOMContentLoaded', () => {
       return Traveller.MapService.search('(random world)', {
         milieu: map.namedOptions.get('milieu')
       }, 'POST').then(data => {
-        var items = data.Results.Items;
+        const items = data.Results.Items;
         if (items.length < 1)
           throw new Error('random world search failed');
-        var world = items[0].World;
-        var tags = world.SectorTags.split(/\s+/);
+        const world = items[0].World;
+        const tags = world.SectorTags.split(/\s+/);
         return tags.includes('OTU') ? world : pickTarget();
       });
     }
 
-    var HOME_WAIT_MS = 5e3;
-    var TARGET_WAIT_MS = 20e3;
+    const HOME_WAIT_MS = 5e3;
+    const TARGET_WAIT_MS = 20e3;
 
     goHome();
     pickTarget().then(world => {
-      var target = Traveller.Astrometrics.sectorHexToMap(
+      const target = Traveller.Astrometrics.sectorHexToMap(
         world.SectorX, world.SectorY, world.HexX, world.HexY);
       hideCards();
       setTimeout(() => {
@@ -888,13 +889,13 @@ window.addEventListener('DOMContentLoaded', () => {
   //
   //////////////////////////////////////////////////////////////////////
 
-  var dataRequest = null;
-  var dataTimeout = 0;
-  var lastX, lastY, lastMilieu;
-  var selectedSector = null;
-  var selectedWorld = null;
-  var ignoreIndirect = true;;
-  var enableContext;
+  let dataRequest = null;
+  let dataTimeout = 0;
+  let lastX, lastY, lastMilieu;
+  let selectedSector = null;
+  let selectedWorld = null;
+  let ignoreIndirect = true;;
+  let enableContext;
 
   function makeWikiURL(suffix) {
     return 'https://wiki.travellerrpg.com/' + encodeURIComponent(suffix.replace(/ /g, '_'));
@@ -910,8 +911,8 @@ window.addEventListener('DOMContentLoaded', () => {
       return;
     ignoreIndirect = options.ignoreIndirect;
 
-    var DATA_REQUEST_DELAY_MS = 100;
-    var milieu = map.namedOptions.get('milieu');
+    const DATA_REQUEST_DELAY_MS = 100;
+    const milieu = map.namedOptions.get('milieu');
 
     if (!(options.directAction || options.refresh)
         && lastX === worldX && lastY === worldY && lastMilieu === milieu)
@@ -945,7 +946,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     function displayResults(data) {
       if ('SectorTags' in data) {
-        var tags =  String(data.SectorTags).split(/\s+/);
+        const tags =  String(data.SectorTags).split(/\s+/);
         data.Unofficial = true;
         ['Official', 'InReview', 'Unreviewed', 'Apocryphal', 'Preserve']
           .filter(tag => tags.includes(tag))
@@ -1061,12 +1062,12 @@ window.addEventListener('DOMContentLoaded', () => {
   function showWorldData() {
     if (!selectedWorld)
       return;
-    var context = {
+    const context = {
       sector: selectedSector,
       hex: selectedWorld.hex
     };
     $('#wds-spinner').style.display = 'block';
-    var milieu = map.namedOptions.get('milieu');
+    const milieu = map.namedOptions.get('milieu');
     // World Data Sheet ("Info Card")
     fetch(Traveller.MapService.makeURL(
       '/api/jumpworlds?', {
@@ -1113,7 +1114,7 @@ window.addEventListener('DOMContentLoaded', () => {
         // Hook up any generated "expandy" fields
         $$('.wds-expandy').forEach(elem => {
           elem.addEventListener('click', event => {
-            var c = elem.getAttribute('data-wds-expand');
+            const c = elem.getAttribute('data-wds-expand');
             $('#wds-frame').classList.toggle(c);
           });
         });
@@ -1141,7 +1142,7 @@ window.addEventListener('DOMContentLoaded', () => {
         if ($('#wds-map')) {
           $('#wds-map').addEventListener('click', e => {
             e.preventDefault();
-            var url = e.target.getAttribute('data-map');
+            const url = e.target.getAttribute('data-map');
             if (isSmallScreen)
               window.open(url);
             else
@@ -1183,8 +1184,8 @@ window.addEventListener('DOMContentLoaded', () => {
   //
   //////////////////////////////////////////////////////////////////////
 
-  var searchRequest = null;
-  var lastQuery = null, lastQueryRoute = null;
+  let searchRequest = null;
+  let lastQuery = null, lastQueryRoute = null;
 
   function search(query, options) {
     options = Object.assign({}, options);
@@ -1201,7 +1202,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     if (query === lastQuery) {
       if (!searchRequest && options.onsubmit) {
-        var links = $$('#resultsContainer a');
+        const links = $$('#resultsContainer a');
         if (links.length > 0) {
           links[0].click();
           return;
@@ -1228,7 +1229,7 @@ window.addEventListener('DOMContentLoaded', () => {
       .then(() => {
         searchRequest = null;
         if (options.navigate) {
-          var first = $('#resultsContainer a');
+          const first = $('#resultsContainer a');
           if (first)
             first.click();
         }
@@ -1236,11 +1237,11 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // Transform the search results into clickable links
     function displayResults(data) {
-      var base_url = document.location.href.replace(/\?.*/, '');
+      const base_url = document.location.href.replace(/\?.*/, '');
 
       function applyTags(item) {
         if ('SectorTags' in item) {
-          var tags = String(item.SectorTags).split(/\s+/);
+          const tags = String(item.SectorTags).split(/\s+/);
           item.Unofficial = true;
           ['Official', 'InReview', 'Unreviewed', 'Apocryphal', 'Preserve'].forEach(tag =>{
             if (tags.includes(tag)) {
@@ -1255,18 +1256,18 @@ window.addEventListener('DOMContentLoaded', () => {
         return ('00' + n).slice(-2);
       }
 
-      var route = [];
+      const route = [];
 
       // Pre-process the data
-      for (var i = 0; i < data.Results.Items.length; ++i) {
+      for (let i = 0; i < data.Results.Items.length; ++i) {
 
-        var item = data.Results.Items[i];
-        var sx, sy, hx, hy, scale;
+        const item = data.Results.Items[i];
+        let sx, sy, hx, hy, scale;
 
         if (item.Subsector) {
-          var subsector = item.Subsector,
-            index = subsector.Index || 'A',
-            n = (index.charCodeAt(0) - 'A'.charCodeAt(0));
+          const subsector = item.Subsector,
+                index = subsector.Index || 'A',
+                n = (index.charCodeAt(0) - 'A'.charCodeAt(0));
           sx = subsector.SectorX|0;
           sy = subsector.SectorY|0;
           hx = (((n % 4) | 0) + 0.5) * (Traveller.Astrometrics.SectorWidth / 4);
@@ -1275,7 +1276,7 @@ window.addEventListener('DOMContentLoaded', () => {
           subsector.href = Util.makeURL(base_url, {scale: scale, sx: sx, sy: sy, hx: hx, hy: hy});
           applyTags(subsector);
         } else if (item.Sector) {
-          var sector = item.Sector;
+          const sector = item.Sector;
           sx = sector.SectorX|0;
           sy = sector.SectorY|0;
           hx = (Traveller.Astrometrics.SectorWidth / 2);
@@ -1287,7 +1288,7 @@ window.addEventListener('DOMContentLoaded', () => {
           });
           applyTags(sector);
         } else if (item.World) {
-          var world = item.World;
+          const world = item.World;
           world.Name = world.Name || '(Unnamed)';
           sx = world.SectorX|0;
           sy = world.SectorY|0;
@@ -1295,7 +1296,7 @@ window.addEventListener('DOMContentLoaded', () => {
           hy = world.HexY|0;
           world.Hex = pad2(hx) + pad2(hy);
           scale = world.Scale || 64;
-          var params = {scale: scale, sx: sx, sy: sy, hx: hx, hy: hy};
+          let params = {scale: scale, sx: sx, sy: sy, hx: hx, hy: hy};
           if (!data.Tour) {
             params = Object.assign(params,
                                    {sector: world.Sector, world: world.Name, hex: world.Hex});
@@ -1306,7 +1307,7 @@ window.addEventListener('DOMContentLoaded', () => {
           world.href = Util.makeURL(base_url, params);
           applyTags(world);
         } else if (item.Label) {
-          var label = item.Label;
+          const label = item.Label;
           sx = label.SectorX | 0;
           sy = label.SectorY | 0;
           hx = label.HexX | 0;
@@ -1324,12 +1325,12 @@ window.addEventListener('DOMContentLoaded', () => {
           e.preventDefault();
           selectedWorld = null;
 
-          var params = Util.parseURLQuery(e.target);
+          const params = Util.parseURLQuery(e.target);
           map.CenterAtSectorHex(params.sx|0, params.sy|0, params.hx|0, params.hy|0, {scale: params.scale|0});
           if (isSmallScreen)
             document.body.classList.remove('search-results');
 
-          var coords = Traveller.Astrometrics.sectorHexToWorld(
+          const coords = Traveller.Astrometrics.sectorHexToWorld(
             params.sx|0, params.sy|0, params.hx|0, params.hy|0);
 
           if (params.world && params.sector) {
@@ -1343,7 +1344,7 @@ window.addEventListener('DOMContentLoaded', () => {
         });
       });
 
-      var first = $('#resultsContainer a');
+      const first = $('#resultsContainer a');
       if (first && !options.typed && !options.onfocus)
         setTimeout(() => { first.focus(); }, 0);
 
@@ -1362,7 +1363,7 @@ window.addEventListener('DOMContentLoaded', () => {
   //
   //////////////////////////////////////////////////////////////////////
 
-  var lastRoute = null;
+  let lastRoute = null;
   function reroute() {
     if (lastRoute) route(lastRoute.start, lastRoute.end, lastRoute.jump);
   }
@@ -1371,7 +1372,7 @@ window.addEventListener('DOMContentLoaded', () => {
     $('#routePath').innerHTML = '';
     lastRoute = {start:start, end:end, jump:jump};
 
-    var options = {
+    const options = {
       start: start, end: end, jump: jump,
       x: map.worldX, y: map.worldY,
       milieu: map.namedOptions.get('milieu'),
@@ -1388,24 +1389,24 @@ window.addEventListener('DOMContentLoaded', () => {
       .then(data => {
         if (typeof data === 'string') throw new Error(data);
 
-        var base_url = document.location.href.replace(/\?.*/, '');
-        var route = [];
-        var total = 0;
+        const base_url = document.location.href.replace(/\?.*/, '');
+        const route = [];
+        let total = 0;
         data.forEach((world, index) => {
           world.Name = world.Name || '(Unnamed)';
-          var sx = world.SectorX|0;
-          var sy = world.SectorY|0;
-          var hx = world.HexX|0;
-          var hy = world.HexY|0;
-          var scale = 64;
+          const sx = world.SectorX|0;
+          const sy = world.SectorY|0;
+          const hx = world.HexX|0;
+          const hy = world.HexY|0;
+          const scale = 64;
           world.href = Util.makeURL(base_url, {scale: 64, sx: sx, sy: sy, hx: hx, hy: hy});
 
           if (index > 0) {
-            var prev = data[index - 1];
-            var a = Traveller.Astrometrics.sectorHexToWorld(
+            const prev = data[index - 1];
+            const a = Traveller.Astrometrics.sectorHexToWorld(
               prev.SectorX|0, prev.SectorY|0, prev.HexX|0, prev.HexY|0);
-            var b = Traveller.Astrometrics.sectorHexToWorld(sx, sy, hx, hy);
-            var dist = Traveller.Astrometrics.hexDistance(a.x, a.y, b.x, b.y);
+            const b = Traveller.Astrometrics.sectorHexToWorld(sx, sy, hx, hy);
+            const dist = Traveller.Astrometrics.hexDistance(a.x, a.y, b.x, b.y);
             prev.Distance = dist;
             total += dist;
           }
@@ -1414,7 +1415,7 @@ window.addEventListener('DOMContentLoaded', () => {
         });
 
         map.SetRoute(route);
-        var routeData = {
+        const routeData = {
           Route: data,
           Distance: total,
           Jumps: data.length - 1,
@@ -1429,7 +1430,7 @@ window.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             selectedWorld = null;
 
-            var params = Util.parseURLQuery(e.target);
+            const params = Util.parseURLQuery(e.target);
             map.CenterAtSectorHex(params.sx|0, params.sy|0, params.hx|0, params.hy|0, {scale: params.scale|0});
           });
         });
@@ -1463,29 +1464,29 @@ window.addEventListener('DOMContentLoaded', () => {
   //
   //////////////////////////////////////////////////////////////////////
 
-  var isCanvasSupported = ('getContext' in $('#scaleIndicator')),
-      animId = 0;
+  const isCanvasSupported = ('getContext' in $('#scaleIndicator'));
+  let animId = 0;
   function updateScaleIndicator() {
     if (!isCanvasSupported) return;
 
     cancelAnimationFrame(animId);
     animId = requestAnimationFrame(() => {
-      var scale = map.scale,
-          canvas = $('#scaleIndicator'),
-          ctx = canvas.getContext('2d'),
-          w = parseFloat(canvas.width),
-          h = parseFloat(canvas.height),
-          style = map.style,
-          color = ['atlas', 'print', 'draft', 'fasa', 'mongoose'].includes(style) ? 'black' : 'white';
+      const scale = map.scale,
+            canvas = $('#scaleIndicator'),
+            ctx = canvas.getContext('2d'),
+            w = parseFloat(canvas.width),
+            h = parseFloat(canvas.height),
+            style = map.style,
+            color = ['atlas', 'print', 'draft', 'fasa', 'mongoose'].includes(style) ? 'black' : 'white';
 
       ctx.clearRect(0, 0, w, h);
 
-      var dist = w / scale;
-      var factor = Math.pow(10, Math.floor(Math.log(dist) / Math.LN10));
+      let dist = w / scale;
+      const factor = Math.pow(10, Math.floor(Math.log(dist) / Math.LN10));
       dist = Math.floor(dist / factor) * factor;
       dist = parseFloat(dist.toPrecision(1));
-      var label = dist + ' pc';
-      var bar = dist * scale;
+      const label = dist + ' pc';
+      const bar = dist * scale;
 
       ctx.save();
       ctx.lineCap = 'square';
@@ -1515,7 +1516,7 @@ window.addEventListener('DOMContentLoaded', () => {
   //
   //////////////////////////////////////////////////////////////////////
 
-  var worldToMainMap;
+  let worldToMainMap;
   function showMain(worldX, worldY) {
     if (!$('#cbMains').checked) return;
     findMain(worldX, worldY)
@@ -1526,7 +1527,7 @@ window.addEventListener('DOMContentLoaded', () => {
       return sx + '/' + sy + '/' + ('0000' + ( hx * 100 + hy )).slice(-4);
     }
     function sigToSectorHex(sig) {
-      var parts = sig.split('/');
+      const parts = sig.split('/');
       return {sx: parts[0]|0, sy: parts[1]|0, hx: (parts[2] / 100) | 0, hy: parts[2] % 100};
     }
 
@@ -1547,8 +1548,8 @@ window.addEventListener('DOMContentLoaded', () => {
         });
     }
     return getMainsMapping().then(map => {
-      var sectorHex = Traveller.Astrometrics.worldToSectorHex(worldX, worldY);
-      var sig = sectorHexToSig(sectorHex.sx, sectorHex.sy, sectorHex.hx, sectorHex.hy);
+      const sectorHex = Traveller.Astrometrics.worldToSectorHex(worldX, worldY);
+      const sig = sectorHexToSig(sectorHex.sx, sectorHex.sy, sectorHex.hx, sectorHex.hy);
       return map.get(sig);
     });
   }
@@ -1560,8 +1561,8 @@ window.addEventListener('DOMContentLoaded', () => {
   //////////////////////////////////////////////////////////////////////
 
   function showLightboxImage(url) {
-    var lightbox = document.body.appendChild(document.createElement('div'));
-    var inner = lightbox.appendChild(document.createElement('div'));
+    const lightbox = document.body.appendChild(document.createElement('div'));
+    const inner = lightbox.appendChild(document.createElement('div'));
     lightbox.className = 'lightbox';
     lightbox.tabIndex = 0;
     inner.style.backgroundImage = 'url("' + url + '")';
@@ -1603,9 +1604,9 @@ window.addEventListener('DOMContentLoaded', () => {
       if (e.scale !== 1) { e.preventDefault(); }
     }, false);
     // Prevent double-tap-to-zoom.
-    var last_time = Date.now();
+    let last_time = Date.now();
     document.addEventListener('touchend', e => {
-      var now = Date.now();
+      const now = Date.now();
       if (now - last_time <= 500) {
         e.preventDefault();
         e.target.click();
@@ -1617,8 +1618,8 @@ window.addEventListener('DOMContentLoaded', () => {
   // Show cookie accept prompt, if necessary.
   if (!isIframe) {
     setTimeout(() => {
-      var cookies = Util.parseCookies();
-      var cookies_key = 'tm_accept';
+      const cookies = Util.parseCookies();
+      const cookies_key = 'tm_accept';
       if (!(cookies.tm_accept || localStorage.getItem(cookies_key))) {
         document.body.classList.add('cookies-not-accepted');
         $('#cookies button').addEventListener('click', e => {
@@ -1633,7 +1634,7 @@ window.addEventListener('DOMContentLoaded', () => {
   // Show promo, if not dismissed.
   if (!isIframe) {
     setTimeout(() => {
-      var promo_key = 'tm_promo3';
+      const promo_key = 'tm_promo3';
       if (!localStorage.getItem(promo_key)) {
         document.body.classList.add('show-promo');
         $('#promo-closebtn').addEventListener('click', e => {
