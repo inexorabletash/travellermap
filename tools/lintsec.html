@@ -50,13 +50,12 @@
       e.preventDefault();
       e.dataTransfer.dropEffect = 'copy';
     });
-    elem.addEventListener('drop', e => {
+    elem.addEventListener('drop', async e => {
       e.stopPropagation();
       e.preventDefault();
-      blobToString(e.dataTransfer.files[0]).then(s => {
-        elem.value = s;
-        $('#go').click();
-      });
+      const s = await blobToString(e.dataTransfer.files[0]);
+      elem.value = s;
+      $('#go').click();
     });
 
     function blobToString(blob) {
@@ -78,25 +77,26 @@
       });
     }
 
-    $('#go').addEventListener('click', () => {
-      $('#summary').innerHTML = '\u231B Checking...';
-      $('#output').value = '';
-      document.body.classList.remove('pass');
-      document.body.classList.remove('fail');
+    $('#go').addEventListener('click', async () => {
+      try {
+        $('#summary').innerHTML = '\u231B Checking...';
+        $('#output').value = '';
+        document.body.classList.remove('pass');
+        document.body.classList.remove('fail');
         document.body.classList.add('checking');
-      var input = $('#input').value;
-      fetch(Traveller.MapService.makeURL(
-        '/api/sec', {
-          lint: 1,
-          type: $('#tab').checked ? 'TabDelimited' : 'SecondSurvey',
-          'hide-tl': $('#hide-tl').checked ? 1 : 0,
-          'hide-uwp': $('#hide-uwp').checked ? 1 : 0,
-          'hide-cap': $('#hide-cap').checked ? 1 : 0
-        }), {
-        method: 'POST',
-        body: input,
-        headers: {'Content-Type': 'text/plain'}
-      }).then(response => {
+        const input = $('#input').value;
+        const response = await fetch(Traveller.MapService.makeURL(
+          '/api/sec', {
+            lint: 1,
+            type: $('#tab').checked ? 'TabDelimited' : 'SecondSurvey',
+            'hide-tl': $('#hide-tl').checked ? 1 : 0,
+            'hide-uwp': $('#hide-uwp').checked ? 1 : 0,
+            'hide-cap': $('#hide-cap').checked ? 1 : 0
+          }), {
+            method: 'POST',
+            body: input,
+            headers: {'Content-Type': 'text/plain'}
+          });
         if (response.ok) {
           document.body.classList.add('pass');
           document.body.classList.remove('checking');
@@ -106,15 +106,14 @@
           document.body.classList.remove('checking');
           $('#summary').innerHTML = '\u2717 Errors found';
         }
-        return response.text();
-      }).then(text => {
+        const text = await response.text();
         $('#output').value = text;
-      }).catch(error => {
+      } catch(error) {
         document.body.classList.add('fail');
         document.body.classList.remove('checking');
         $('#summary').innerHTML = '\u2717 SERVICE ERROR \u2717';
         $('#output').value = error;
-      });
+      }
     });
   });
 
