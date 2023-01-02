@@ -13,18 +13,17 @@ function parseTabDelimited(text) {
 (async () => {
 
   const universe = new Set();
-  const s = await fetch(`${origin}/data?tag=OTU&milieu=M1105`).then(r => r.json()).then(data => {
-    console.log(`fetching: ${data.Sectors.length} sectors`);
-    return Promise.all(
-      data.Sectors
-        .map(s => s.Abbreviation)
-        .map(s => Promise.all([
-          // TODO: Use X/Y from Universe data, rather than fetching metadata
-          fetch(`${origin}/data/${s}/metadata?accept=application/json`).then(r => r.json()),
-          fetch(`${origin}/data/${s}/tab`).then(r => r.text())
-        ])));
-  });
+  const response = await fetch(`${origin}/data?tag=OTU&milieu=M1105`);
+  if (!response.ok) throw new Error(response.statusText);
+  const data = await response.json();
 
+  console.log(`fetching: ${data.Sectors.length} sectors`);
+  const s = await Promise.all(
+    data.Sectors
+      .map(s => Promise.all([
+        Promise.resolve({X: s.X, Y: s.Y}),
+        fetch(`${origin}/data/${s.Abbreviation}/tab`).then(r => r.text())
+      ])));
   console.log(`parsing: ${s.length} sectors`);
 
   s.forEach(pair => {
