@@ -42,9 +42,9 @@
 <script>
   window.addEventListener('DOMContentLoaded', () => {
     'use strict';
-    var $ = s => document.querySelector(s);
+    const $ = s => document.querySelector(s);
 
-    var elem = $('#input');
+    const elem = $('#input');
     elem.addEventListener('dragover', e => {
       e.stopPropagation();
       e.preventDefault();
@@ -61,13 +61,13 @@
 
     function blobToString(blob) {
       return new Promise((resolve, reject) => {
-        var encodings = ['utf-8', 'windows-1252'];
+        const encodings = ['utf-8', 'windows-1252'];
         (function tryNextEncoding() {
-          var encoding = encodings.shift();
-          var reader = new FileReader();
+          const encoding = encodings.shift();
+          const reader = new FileReader();
           reader.readAsText(blob, encoding);
           reader.onload = e => {
-            var result = reader.result;
+            const result = reader.result;
             if (result.indexOf('\uFFFD') !== -1 && encodings.length)
               tryNextEncoding();
             else

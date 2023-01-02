@@ -33,14 +33,14 @@ const $ = s => document.querySelector(s);
 
 function fix(world) {
   // Stellar
-  var key = ['Stellar', 'Stars'].filter(key => key in world)[0];
-  var current = world[key];
+  const key = ['Stellar', 'Stars'].filter(key => key in world)[0];
+  const current = world[key];
   world[key] = current ? Restellarator.fix(current) : Restellarator.generate();
 }
 
 $('#go').addEventListener('click', () => {
   try {
-    var data = parse($('#in').value);
+    const data = parse($('#in').value);
 
     data.worlds.forEach(fix);
 

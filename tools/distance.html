@@ -31,18 +31,18 @@
 
 window.addEventListener('DOMContentLoaded', () => {
   'use strict';
-  var $ = s => document.querySelector(s);
+  const $ = s => document.querySelector(s);
 
   ['startsec', 'starthex', 'endsec', 'endhex'].forEach(id => {
     $('#'+id).addEventListener('change', refresh);
   });
 
   function distance(a, b) {
-    var dx = b.x - a.x;
-    var dy = b.y - a.y;
+    const dx = b.x - a.x;
+    const dy = b.y - a.y;
 
-    var adx = Math.abs(dx);
-    var ody = dy + div(adx, 2);
+    let adx = Math.abs(dx);
+    let ody = dy + div(adx, 2);
 
     if (even(a.x) && odd(b.x))
       ody += 1;
@@ -51,21 +51,20 @@ window.addEventListener('DOMContentLoaded', () => {
 
     function even(x) { return (x % 2) === 0; }
     function odd (x) { return (x % 2) !== 0; }
-
     function div(a, b) { return Math.floor(a / b); }
-    function mod(a, b) { return Math.floor(a % b); }
   }
 
-  function refresh() {
-    Promise.all([
-      Traveller.MapService.coordinates($('#startsec').value, $('#starthex').value),
-      Traveller.MapService.coordinates($('#endsec').value, $('#endhex').value)
-    ]).then(coords => {
-      var dist = distance(coords[0], coords[1]);
+  async function refresh() {
+    try {
+      const coords = await Promise.all([
+        Traveller.MapService.coordinates($('#startsec').value, $('#starthex').value),
+        Traveller.MapService.coordinates($('#endsec').value, $('#endhex').value)
+      ]);
+      const dist = distance(coords[0], coords[1]);
       $('#distance').value = dist;
-    }).catch(reason => {
+    } catch(reason) {
       $('#distance').value = reason.message;
-    });
+    }
   }
 });
 </script>

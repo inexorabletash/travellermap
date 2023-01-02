@@ -1265,7 +1265,7 @@
 </div>
 
 <script>
-(() => {
+(async () => {
   const $ = s => document.querySelector(s);
   const $$ = s => Array.from(document.querySelectorAll(s));
 
@@ -1282,45 +1282,45 @@
     anchor.rel = 'noopener';
   });
 
-  fetch(SERVICE_BASE + '/api/universe?requireData=1')
-   .then(response => {
-     if (!response.ok)
-       throw new Error(response.statusText);
-     return response.json();
-   })
-   .then(data => {
-     const doc = $$('a.sector').map(a => {
-       let name = a.innerText || a.textContent;
-       name = name.replace(/^The /, '');
-       return name;
-     });
-     const docSet = new Set(doc);
+  try {
+    const response = await fetch(SERVICE_BASE + '/api/universe?requireData=1');
+    if (!response.ok)
+      throw new Error(response.statusText);
 
-     const known = data.Sectors.filter(s => {
-       const tags = s.Tags.split();
-       if (tags.indexOf('meta') !== -1) return false;
-       if (tags.indexOf('ZCR') !== -1) return false;
-       return true;
-     });
-     known.forEach(s => {
-       s.Names.forEach(name => {
-         name.Text = name.Text.replace(/^The /, '');
-       });
-     });
-     const knownSet = new Set();
-     known.forEach(s => {
-       s.Names.forEach(name => { knownSet.add(name.Text); });
-     });
-     known.forEach(s => {
-       if (!s.Names.some(name => docSet.has(name.Text)))
-         console.warn('No credits for known sector: ' + s.Names[0].Text);
-     });
-     doc.forEach(s => {
-       if (!knownSet.has(s))
-         console.warn('Credits for unknown sector: ' + s);
-     });
-   })
-  .catch(reason => { console.error(reason); });
+    const data = await response.json();
+    const doc = $$('a.sector').map(a => {
+      let name = a.innerText || a.textContent;
+      name = name.replace(/^The /, '');
+      return name;
+    });
+    const docSet = new Set(doc);
+
+    const known = data.Sectors.filter(s => {
+      const tags = s.Tags.split();
+      if (tags.indexOf('meta') !== -1) return false;
+      if (tags.indexOf('ZCR') !== -1) return false;
+      return true;
+    });
+    known.forEach(s => {
+      s.Names.forEach(name => {
+        name.Text = name.Text.replace(/^The /, '');
+      });
+    });
+    const knownSet = new Set();
+    known.forEach(s => {
+      s.Names.forEach(name => { knownSet.add(name.Text); });
+    });
+    known.forEach(s => {
+      if (!s.Names.some(name => docSet.has(name.Text)))
+        console.warn('No credits for known sector: ' + s.Names[0].Text);
+    });
+    doc.forEach(s => {
+      if (!knownSet.has(s))
+        console.warn('Credits for unknown sector: ' + s);
+    });
+  } catch (reason) {
+    console.error(reason);
+  }
 })();
 </script>
 
