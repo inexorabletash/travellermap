@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <title>Border Generation</title>
 <meta charset="utf-8">
-<link rel="stylesheet" href="../site.css?update=2015-07-19">
+<link rel="stylesheet" href="../site.css?update=2022-09-10T10:37:44">
 
 <script src="borders.js"></script>
 <script>
-var $ = function(s) { return document.querySelector(s); }
+var $ = s => document.querySelector(s);
 
 var allegianceMap = {
   'Im': 'red',
@@ -58,7 +58,7 @@ function updateHex(x, y) {
 }
 
 function updateView() {
-  g_map.foreach(function(x, y) { updateHex(x, y); });
+  g_map.foreach((x, y) => { updateHex(x, y); });
 }
 
 function updateWalks() {
@@ -75,8 +75,8 @@ function updateWalks() {
       if (alleg !== UNALIGNED && alleg !== NON_ALIGNED && alleg !== last_alleg && !(label in visited)) {
 
         path = walk(g_map, x, y, alleg);
-        path = path.map(function(hex) { return hexLabel(hex[0], hex[1]); });
-        path.forEach(function(label) { visited[label] = true; });
+        path = path.map(hex => hexLabel(hex[0], hex[1]));
+        path.forEach(label => { visited[label] = true; });
 
         borders.push({
           allegiance: alleg,
@@ -87,11 +87,11 @@ function updateWalks() {
     }
   }
 
-  borders.sort(function(a, b) { return a.allegiance < b.allegiance ? -1 : a.allegiance > b.allegiance ? 1 : 0; });
+  borders.sort((a, b) => a.allegiance < b.allegiance ? -1 : a.allegiance > b.allegiance ? 1 : 0);
 
 
   var html = [];
-  borders.forEach(function(border) {
+  borders.forEach(border => {
     html.push("<li>" + border.allegiance + " : " + border.path.join(" ") + "<" + "/li>");
   });
   $('#walks').innerHTML = html.join("");
@@ -143,11 +143,11 @@ function clickHex(x, y) {
 //
 //----------------------------------------------------------------------
 
-window.addEventListener('DOMContentLoaded', function() {
+window.addEventListener('DOMContentLoaded', () => {
   var view = $('#map');
   makeMapDisplay(view, g_map);
 
-  view.addEventListener('click', function(e) {
+  view.addEventListener('click', e => {
     e = e ? e : window.event;
     var target = (e.target) ? e.target : (e.srcElement) ? e.srcElement : null;
     while (target) {
@@ -164,7 +164,7 @@ window.addEventListener('DOMContentLoaded', function() {
 });
 
 function clearMap() {
-  g_map.foreach(function(x, y) {
+  g_map.foreach((x, y) => {
     g_map.setAllegiance(x, y, UNALIGNED);
     g_map.setOccupied(x, y, false);
 
@@ -173,7 +173,7 @@ function clearMap() {
 }
 
 function run() {
-  processMap(g_map, function() {
+  processMap(g_map, () => {
     updateView();
     updateWalks();
   });

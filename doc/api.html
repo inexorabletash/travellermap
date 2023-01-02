@@ -223,11 +223,11 @@ table#features, #features th, #features td { border: solid 1px black; }
       always set/cleared together by one checkbox.
     </p>
     <script>
-      (function () {
+      (() => {
         function updateOptions() {
           var options = 0;
           var checkboxes = [].slice.call(document.querySelectorAll("#options_table input[type='checkbox']"));
-          checkboxes.forEach(function (cb) {
+          checkboxes.forEach(cb => {
             if (cb.checked) {
               options += Number(cb.value);
             }
@@ -236,11 +236,11 @@ table#features, #features th, #features td { border: solid 1px black; }
           document.querySelector("#test_options").href = "/data/spin/C/image?options=" + encodeURIComponent(String(options));
         }
         var checkboxes = [].slice.call(document.querySelectorAll("#options_table input[type='checkbox']"));
-        checkboxes.forEach(function (cb) {
+        checkboxes.forEach(cb => {
           cb.onchange = updateOptions;
         });
         updateOptions();
-      }());
+      })();
     </script>
 
     <p>
@@ -1928,19 +1928,19 @@ function jsonp_demo() {
 </div>
 
 <script>
-  (function () {
+  (() => {
     // Remove leading/trailing lines from <pre>
-    Array.from(document.querySelectorAll('pre')).forEach(function (pre) {
+    Array.from(document.querySelectorAll('pre')).forEach(pre => {
       pre.innerHTML = pre.innerHTML.replace(/(^ +\r?\n)|(\r?\n +$)/g, '');
     });
 
     // Shortcut: <a class="example" href="foo"></a>
-    Array.from(document.querySelectorAll('a.example')).forEach(function (a) {
+    Array.from(document.querySelectorAll('a.example')).forEach(a => {
       a.appendChild(document.createTextNode(a.href));
     });
 
     // Allow breaking after / ? and & in code
-    Array.from(document.querySelectorAll('.code')).forEach(function (e) {
+    Array.from(document.querySelectorAll('.code')).forEach(e => {
       function textNodes(e) {
         var t = [];
         for (var n = e.firstChild; n; n = n.nextSibling) {
@@ -1957,7 +1957,7 @@ function jsonp_demo() {
       }
 
       // Inserted ZWJs show up when copied, so insert <wbr>
-      textNodes(e).forEach(function(t) {
+      textNodes(e).forEach(t => {
         while (true) {
           var m = /[/?&]+/.exec(t.nodeValue);
           if (!m) break;
@@ -1966,7 +1966,7 @@ function jsonp_demo() {
         }
       });
     });
-  }());
+  })();
 </script>
 
 <div class="editorial">

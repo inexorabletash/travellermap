@@ -1,5 +1,5 @@
 /*global Traveller */
-((global) => {
+(global => {
   // A* Algorithm
   //
   // Based on notes in _AI for Game Developers_, Bourg & Seemann,

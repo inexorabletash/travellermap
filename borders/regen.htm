@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <title>Border Generation</title>
 <meta charset="utf-8">
-<link rel="stylesheet" href="../site.css?update=2015-07-19">
+<link rel="stylesheet" href="../site.css?update=2022-09-10T10:37:44">
 
-<script src="../map.js?update=2015-07-29"></script>
+<script src="../map.js?update=2023-01-02T12:03:06"></script>
 <script src="borders.js"></script>
 <script>
 
@@ -134,8 +134,8 @@ function updateWalks(map) {
       if (alleg !== UNALIGNED && alleg !== NON_ALIGNED && alleg !== last_alleg && !(label in visited)) {
 
         path = walk(map, x, y, alleg);
-        path = path.map(function(hex) { return hexLabel(hex[0], hex[1]); });
-        path.forEach(function(label) { visited[label] = true; });
+        path = path.map(hex => hexLabel(hex[0], hex[1]));
+        path.forEach(label => { visited[label] = true; });
 
         // Filter out holes
         var len = path.length;
@@ -158,20 +158,17 @@ function updateWalks(map) {
     }
   }
 
-  borders = borders.filter(function(border) {
-    return border.path.some(function(hex) {
-      var x = (Number(hex) / 100) | 0;
-      var y = Number(hex) % 100;
-      return (1 <= x && x <= 32) && (1 <= y && y <= 40);
-    });
-  });
+  borders = borders.filter(border => border.path.some(hex => {
+    var x = (Number(hex) / 100) | 0;
+    var y = Number(hex) % 100;
+    return (1 <= x && x <= 32) && (1 <= y && y <= 40);
+  }));
 
-  borders.sort(function(a, b) { return a.allegiance < b.allegiance ? -1 : a.allegiance > b.allegiance ? 1 : 0; });
-
+  borders.sort((a, b) => a.allegiance < b.allegiance ? -1 : a.allegiance > b.allegiance ? 1 : 0);
 
 
   var html = [];
-  borders.forEach(function(border) {
+  borders.forEach(border => {
     if (border.path.length < 2)
       return;
 
@@ -211,16 +208,16 @@ function hexContents(x, y, map) {
 function loadSector(sx, sy, milieu) {
   var sectorName = undefined;
   return Traveller.MapService.sectorDataTabDelimited(sectorName, {sx: sx, sy: sy, milieu: milieu}).then(
-    function(data) {
+    data => {
       var worlds = [];
       var lines = data.split(/\r?\n/);
       var header = lines.shift().toLowerCase().split('\t');
-      lines.forEach(function (line) {
+      lines.forEach(line => {
         if (!line.length)
           return;
 
         var world = {};
-        line.split('\t').forEach(function (field, index) {
+        line.split('\t').forEach((field, index) => {
           world[header[index]] = field;
         });
 
@@ -230,7 +227,7 @@ function loadSector(sx, sy, milieu) {
       });
       return worlds;
     },
-    function(error) { return []; });
+    error => []);
 }
 
 function showError(message) {
@@ -238,7 +235,7 @@ function showError(message) {
 }
 
 var searchParams = new URL(document.location).searchParams;
-window.onload = function() {
+window.onload = () => {
 
   function status(message) {
     var display = document.getElementById('status');
@@ -256,23 +253,22 @@ window.onload = function() {
   Traveller.MapService.coordinates(sector, {
     milieu: milieu
   }).then(
-    function(coords) {
+    coords => {
       var bigmap = new AllegianceMap(SECTOR_WIDTH * 3, SECTOR_HEIGHT * 3, 1, 1);
-
 
       var loadTasks = [];
       var ox, oy, hx, hy;
 
       for (ox = -1; ox <= 1; ox += 1) {
         for (oy = -1; oy <= 1; oy += 1) {
-          (function(ox, oy) {
+          ((ox, oy) => {
             loadTasks.push(
               loadSector(coords.sx + ox, coords.sy + oy, milieu)
-                .then(function(worlds) {
+                .then(worlds => {
                   status('Loaded sector at ' + (coords.sx + ox) + ',' + (coords.sy + oy));
-                  worlds.forEach(function(world) {
+                  worlds.forEach(world => {
 
-                    ALLEGIANCE_SETS.forEach(function(alleg_set) {
+                    ALLEGIANCE_SETS.forEach(alleg_set => {
                       if (alleg_set.indexOf(world.allegiance) !== -1) {
                         world.allegiance = alleg_set[0];
                       }
@@ -286,15 +282,15 @@ window.onload = function() {
                   });
                 })
             );
-          } (ox, oy));
+          })(ox, oy);
         }
       }
 
-      Promise.all(loadTasks).then(function() {
+      Promise.all(loadTasks).then(() => {
 
         processMap(
           bigmap,
-          function complete() {
+          /*complete*/ () => {
             var secmap = new AllegianceMap(SECTOR_WIDTH + 2, SECTOR_HEIGHT + 2, 0, 0);
             for (hx = 0; hx <= SECTOR_WIDTH + 1; hx += 1) {
               for (hy = 0; hy <= SECTOR_HEIGHT + 1; hy += 1) {
@@ -307,7 +303,7 @@ window.onload = function() {
             //makeMapDisplay(document.getElementById('map'), bigmap, 0);
             updateWalks(secmap);
           },
-          function progress(message) {
+          /*progress*/ message => {
             var secmap = new AllegianceMap(SECTOR_WIDTH + 2, SECTOR_HEIGHT + 2, 0, 0);
             for (hx = 0; hx <= SECTOR_WIDTH + 1; hx += 1) {
               for (hy = 0; hy <= SECTOR_HEIGHT + 1; hy += 1) {
@@ -321,9 +317,9 @@ window.onload = function() {
           });
       });
     },
-    function() {
+    () => {
       showError('No such sector: ' + sector);
-    }).catch(function(error) { showError('error: ' + error.message); });
+    }).catch(error => { showError('error: ' + error.message); });
 };
 
     </script>

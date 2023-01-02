@@ -1,5 +1,5 @@
 /*global Traveller, Util, Handlebars */ // for lint and IDEs
-((global) => {
+(global => {
   'use strict';
 
   var $ = s => document.querySelector(s);

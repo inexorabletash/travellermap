@@ -12,15 +12,15 @@ function parse(s) {
 }
 
 function parseTabDelimited(s) {
-  var lines = s.split('\n').filter(function(s) { return !/^\s*$|^#/.test(s); });
+  var lines = s.split('\n').filter(s => !/^\s*$|^#/.test(s));
   var fields = lines.shift().split('\t');
   return {
     type: 'tab',
     fields: fields,
-    worlds: lines.map(function(line) {
+    worlds: lines.map(line => {
       var cols = line.split('\t');
       var world = {};
-      fields.forEach(function(field, index) {
+      fields.forEach((field, index) => {
         world[field] = cols[index];
       });
       return world;
@@ -29,29 +29,27 @@ function parseTabDelimited(s) {
 }
 
 function parseColumnDelimited(s) {
-  var lines = s.split('\n').filter(function(s) { return !/^\s*$|^#/.test(s); });
+  var lines = s.split('\n').filter(s => !/^\s*$|^#/.test(s));
   var fields = lines.shift();
   var separator = lines.shift(), col = 0, cols = [];
-  separator.split(/(\s+)/).forEach(function(s) {
+  separator.split(/(\s+)/).forEach(s => {
     if (/-+/.test(s))
       cols.push([col, s.length]);
     col += s.length;
   });
 
   function colsplit(s) {
-    return cols.map(function(pair) {
-      return trim(s.substr(pair[0], pair[1]));
-    });
+    return cols.map(pair => trim(s.substr(pair[0], pair[1])));
   }
 
   fields = colsplit(fields);
   return {
     type: 'col',
     fields: fields,
-    worlds: lines.map(function(line) {
+    worlds: lines.map(line => {
       line = colsplit(line);
       var world = {};
-      fields.forEach(function(field, index) {
+      fields.forEach((field, index) => {
         world[field] = line[index] || '';
       });
       return world;
@@ -64,7 +62,7 @@ function parseSec(s) {
   var header = [];
   var worlds = [];
 
-  s.split('\n').forEach(function(line) {
+  s.split('\n').forEach(line => {
     var m;
     if ((m = /^(.*?)\s+(\d\d\d\d)\s+([ABCDEX?][0-9A-Z?]{6}-[0-9A-Z?])\s{1,2}([A-Z1-9* ])\s+(.{10,})\s+([GARBFU])?\s+(\d[0-9A-F][0-9A-F])\s+(\S\S)\s+(.*?)\s*$/.exec(line))) {
       worlds.push({
@@ -93,7 +91,7 @@ function parseSec(s) {
 
 function formatSec(data, options) {
   var out = [].concat(data.header);
-  data.worlds.forEach(function(world) {
+  data.worlds.forEach(world => {
     out.push(
       pad(world.Name,       20) + ' ' +
       world.Hex                 + ' ' +
@@ -122,8 +120,8 @@ function format(data, options) {
 function formatTabDelimited(data, options) {
   var out = [];
   out.push(data.fields.join('\t'));
-  data.worlds.forEach(function(world) {
-    out.push(data.fields.map(function(field) {
+  data.worlds.forEach(world => {
+    out.push(data.fields.map(field => {
       return world[field] || '';
     }).join('\t'));
   });
@@ -131,16 +129,16 @@ function formatTabDelimited(data, options) {
 }
 
 function formatColDelimited(data, options) {
-  var widths = data.fields.map(function(f) { return f.length; });
-  data.worlds.forEach(function(world) {
-    data.fields.forEach(function(field, index) {
+  var widths = data.fields.map(f => f.length);
+  data.worlds.forEach(world => {
+    data.fields.forEach((field, index) => {
       var value = world[field];
       widths[index] = Math.max(widths[index], value.length);
     });
   });
 
   if (options.expand) {
-    data.fields.forEach(function(field, index) {
+    data.fields.forEach((field, index) => {
       switch (field) {
         case 'Name':
         case 'Remarks':
@@ -167,14 +165,14 @@ function formatColDelimited(data, options) {
   }
 
   var out = [];
-  out.push(data.fields.map(function(field, index) {
+  out.push(data.fields.map((field, index) => {
     return pad(field, widths[index]);
   }).join(' '));
-  out.push(widths.map(function(width) {
+  out.push(widths.map(width => {
     return '-'.repeat(width);
   }).join(' '));
-  data.worlds.forEach(function(world) {
-    out.push(data.fields.map(function(field, index) {
+  data.worlds.forEach(world => {
+    out.push(data.fields.map((field, index) => {
       return (world[field] || '')  + ' '.repeat(widths[index] - world[field].length);;
     }).join(' '));
   });

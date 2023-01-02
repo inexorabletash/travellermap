@@ -4,7 +4,7 @@
 <link rel="shortcut icon" href="../favicon.ico">
 <script src="https://cdn.rawgit.com/inexorabletash/poly2/v2.0.1/polyfill.min.js"></script>
 <script src="serialize.js"></script>
-<link rel="stylesheet" href="../site.css?update=2020-06-29T21:09:21">
+<link rel="stylesheet" href="../site.css?update=2022-09-10T10:37:44">
 <style>
   #in, #out {
     width: 1000px; height: 300px;
@@ -29,16 +29,16 @@ Conversions:
 </textarea>
 <script src="restellarator.js"></script>
 <script>
-function $(s) { return document.querySelector(s); }
+const $ = s => document.querySelector(s);
 
 function fix(world) {
   // Stellar
-  var key = ['Stellar', 'Stars'].filter(function(key) { return key in world; })[0];
+  var key = ['Stellar', 'Stars'].filter(key => key in world)[0];
   var current = world[key];
   world[key] = current ? Restellarator.fix(current) : Restellarator.generate();
 }
 
-$('#go').addEventListener('click', function() {
+$('#go').addEventListener('click', () => {
   try {
     var data = parse($('#in').value);
 

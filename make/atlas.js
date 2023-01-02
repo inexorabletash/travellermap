@@ -1,5 +1,5 @@
 /*global Traveller, Handlebars */
-((global) => {
+(global => {
   'use strict';
 
   const $ = s => document.querySelector(s);

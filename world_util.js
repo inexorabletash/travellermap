@@ -1,5 +1,5 @@
 /*global Traveller, Util, Handlebars */ // for lint and IDEs
-(function(global) {
+(global => {
   'use strict';
 
   var $ = s => document.querySelector(s);
@@ -983,4 +983,4 @@
     return {r:r, g:g, b:b};
   }
 
-}(this));
+})(this);

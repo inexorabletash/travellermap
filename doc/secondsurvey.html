@@ -2178,17 +2178,17 @@
 </div>
 
 <script>
-(function() {
+(() => {
   function populateTable(query, table, cols) {
     fetch(query)
-      .then(function(response) {
+      .then(response => {
         if (!response.ok) throw new Error(response.statusText);
         return response.json();
       })
-      .then(function(data) {
-        data.forEach(function(item) {
+      .then(data => {
+        data.forEach(item => {
           var tr = table.appendChild(document.createElement('tr'));
-          cols.forEach(function(col) {
+          cols.forEach(col => {
             var td = tr.appendChild(document.createElement('td'));
             var content = item[col.property];
             if (col.className) td.className = col.className;
@@ -2197,7 +2197,7 @@
           });
         });
       })
-      .catch(function(error) {
+      .catch(error => {
         console.warn('Error processing ' + query + ': ' + error.message);
       });
   }
@@ -2222,5 +2222,5 @@
                  {property: 'LegacyCode', className: 'code'},
                  {property: 'Name'},
                  {property: 'Location', func: processLocation}]);
-}());
+})();
 </script>

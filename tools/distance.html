@@ -2,9 +2,9 @@
 <title>Distance Calculator - Traveller Map</title>
 <meta charset="utf-8">
 <link rel="shortcut icon" href="../favicon.ico">
-<link rel="stylesheet" href="../site.css?update=2020-01-19T10:43:06">
+<link rel="stylesheet" href="../site.css?update=2022-09-10T10:37:44">
 <script src="https://cdn.rawgit.com/inexorabletash/poly2/v2.0.1/polyfill.min.js"></script>
-<script src="../map.js?update=2020-01-01T14:47:00"></script>
+<script src="../map.js?update=2023-01-02T12:03:06"></script>
 <style>
   td, div { padding-top: 0.5em; }
 </style>
@@ -29,11 +29,11 @@
 
 <script>
 
-window.addEventListener('DOMContentLoaded', function () {
+window.addEventListener('DOMContentLoaded', () => {
   'use strict';
-  var $ = function (s) { return document.querySelector(s); };
+  var $ = s => document.querySelector(s);
 
-  ['startsec', 'starthex', 'endsec', 'endhex'].forEach(function(id) {
+  ['startsec', 'starthex', 'endsec', 'endhex'].forEach(id => {
     $('#'+id).addEventListener('change', refresh);
   });
 
@@ -60,10 +60,10 @@ window.addEventListener('DOMContentLoaded', function () {
     Promise.all([
       Traveller.MapService.coordinates($('#startsec').value, $('#starthex').value),
       Traveller.MapService.coordinates($('#endsec').value, $('#endhex').value)
-    ]).then(function(coords) {
+    ]).then(coords => {
       var dist = distance(coords[0], coords[1]);
       $('#distance').value = dist;
-    }).catch(function(reason) {
+    }).catch(reason => {
       $('#distance').value = reason.message;
     });
   }
