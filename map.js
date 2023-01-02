@@ -339,15 +339,13 @@ const Util = {
   // ======================================================================
 
   const MapService = (() => {
-    function service(url, contentType, method) {
-      return fetch(url, {method: method || 'GET',
-                         headers: {Accept: contentType}})
-        .then(response => {
-          if (!response.ok)
-            throw Error(response.statusText);
-          return (contentType === 'application/json') ?
-            response.json() : response.text();
-        });
+    async function service(url, contentType, method) {
+      const response = await fetch(url, {method: method || 'GET',
+                                         headers: {Accept: contentType}});
+      if (!response.ok)
+            throw new Error(response.statusText);
+      return (contentType === 'application/json') ?
+            await response.json() : await response.text();
     }
 
     function url(path, options) {
@@ -1393,7 +1391,7 @@ const Util = {
 
       ctx.beginPath();
       route.forEach((stop, index) => {
-        const pt = Astrometrics.sectorHexToMap(stop.sx, stop.sy, stop.hx, stop.hy);
+        let pt = Astrometrics.sectorHexToMap(stop.sx, stop.sy, stop.hx, stop.hy);
         pt = this.mapToPixel(pt.x, pt.y);
         ctx[index ? 'lineTo' : 'moveTo'](pt.x, pt.y);
       }, this);
@@ -1771,15 +1769,17 @@ const Util = {
       } else if (has(params, ['yah_x', 'yah_y'])) {
         this.AddMarker('you_are_here', float('yah_x'), float('yah_y'));
       } else if (has(params, ['yah_sector'])) {
-        MapService.coordinates(params.yah_sector, params.yah_hex)
-          .then(location => {
+        (async () => {
+          try {
+            const location = await MapService.coordinates(params.yah_sector, params.yah_hex);
             const pt = Astrometrics.worldToMap(location.x, location.y);
             this.AddMarker('you_are_here', pt.x, pt.y);
-          }, () => {
+          } catch (ex) {
             alert('The requested marker location "' + params.yah_sector +
                   ('yah_hex' in params ? (' ' + params.yah_hex) : '') +
                   '" was not found.');
-          });
+          }
+        })();
       }
 
       if (has(params, ['marker_sx', 'marker_sy', 'marker_hx', 'marker_hx', 'marker_url'])) {
@@ -1788,15 +1788,17 @@ const Util = {
       } else if (has(params, ['marker_x', 'marker_y', 'marker_url'])) {
         this.AddMarker('custom', float('marker_x'), float('marker_y'), params.marker_url);
       } else if (has(params, ['marker_sector', 'marker_url'])) {
-        MapService.coordinates(params.marker_sector, params.marker_hex)
-          .then(location => {
+        (async () => {
+          try {
+            const location = await MapService.coordinates(params.marker_sector, params.marker_hex);
             const pt = Astrometrics.worldToMap(location.x, location.y);
             this.AddMarker('custom', pt.x, pt.y, params.marker_url);
-          }, () => {
+          } catch (ex) {
             alert('The requested marker location "' + params.marker_sector +
                   ('marker_hex' in params ? (' ' + params.marker_hex) : '') +
                   '" was not found.');
-          });
+          }
+        })();
       }
 
       // Rectangle overlays
@@ -1861,8 +1863,9 @@ const Util = {
         this.CenterAtSectorHex(
           float('sx'), float('sy'), float('hx'), float('hy'), {scale: float('scale')});
       } else if ('sector' in params) {
-        MapService.coordinates(params.sector, params.hex, {subsector: params.subsector})
-          .then(location => {
+        (async () => {
+          try {
+            const location = await MapService.coordinates(params.sector, params.hex, {subsector: params.subsector});
             if (location.hx && location.hy) { // NOTE: Test for undefined -or- zero
               this.CenterAtSectorHex(location.sx, location.sy, location.hx, location.hy, {scale: 64});
             } else {
@@ -1872,6 +1875,7 @@ const Util = {
             }
 
             if ('yah' in params) {
+              console.log('here!!!');
               this.AddMarker('you_are_here', this.position[0], this.position[1]);
               params.yah_x = String(this.position[0]);
               params.yah_y = String(this.position[1]);
@@ -1885,11 +1889,11 @@ const Util = {
               params.marker_y = String(this.position[1]);
               delete params.marker;
             }
-
-          }, () => {
+          } catch (ex) {
             alert('The requested location "' + params.sector +
                   ('hex' in params ? (' ' + params.hex) : '') + '" was not found.');
-          });
+          }
+        })();
       }
 
       // Int/Boolean options

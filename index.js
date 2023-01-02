@@ -858,7 +858,7 @@ window.addEventListener('DOMContentLoaded', () => {
   //
   //////////////////////////////////////////////////////////////////////
 
-  function doAttract() {
+  async function doAttract() {
     async function pickTarget() {
       const data = await Traveller.MapService.search('(random world)', {
         milieu: map.namedOptions.get('milieu')
@@ -875,17 +875,15 @@ window.addEventListener('DOMContentLoaded', () => {
     const TARGET_WAIT_MS = 20e3;
 
     goHome();
-    pickTarget().then(world => {
-      const target = Traveller.Astrometrics.sectorHexToMap(
-        world.SectorX, world.SectorY, world.HexX, world.HexY);
-      hideCards();
-      setTimeout(() => {
-        map.animateTo(128, target.x, target.y, 10).then(() => {
-          updateContext(map.worldX, map.worldY, {directAction: true});
-          setTimeout(doAttract, TARGET_WAIT_MS);
-        }, () => {});
-      }, HOME_WAIT_MS);
-    });
+    const world = await pickTarget();
+    const target = Traveller.Astrometrics.sectorHexToMap(
+      world.SectorX, world.SectorY, world.HexX, world.HexY);
+    hideCards();
+    setTimeout(async () => {
+      await map.animateTo(128, target.x, target.y, 10);
+      updateContext(map.worldX, map.worldY, {directAction: true});
+      setTimeout(doAttract, TARGET_WAIT_MS);
+    }, HOME_WAIT_MS);
   }
 
   //////////////////////////////////////////////////////////////////////
@@ -935,14 +933,13 @@ window.addEventListener('DOMContentLoaded', () => {
     if (map.scale < 1) {
       displayResults({});
     } else {
-      dataTimeout = setTimeout(() => {
+      dataTimeout = setTimeout(async () => {
         dataRequest = Util.ignorable(Traveller.MapService.credits(worldX, worldY, {
           milieu: milieu
         }));
-        dataRequest.then(data => {
-          dataRequest = null;
-          displayResults(data);
-        });
+        const data = await dataRequest;
+        dataRequest = null;
+        displayResults(data);
       }, options.directAction || options.refresh ? 0 : DATA_REQUEST_DELAY_MS);
     }
 
@@ -1061,7 +1058,7 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  function showWorldData() {
+  async function showWorldData() {
     if (!selectedWorld)
       return;
     const context = {
@@ -1070,26 +1067,22 @@ window.addEventListener('DOMContentLoaded', () => {
     };
     $('#wds-spinner').style.display = 'block';
     const milieu = map.namedOptions.get('milieu');
-    // World Data Sheet ("Info Card")
-    fetch(Traveller.MapService.makeURL(
-      '/api/jumpworlds?', {
+
+    try {
+      // World Data Sheet ("Info Card")
+
+      const response = await fetch(Traveller.MapService.makeURL(
+        '/api/jumpworlds?', {
         sector: context.sector, hex: context.hex,
         milieu: milieu,
         jump: 0
-      }))
-      .then(response => {
-        if (!response.ok) throw Error(response.statusText);
-        return response.json();
-      })
-      .then(data => {
-        return Traveller.prepareWorld(data.Worlds[0]);
-      })
-      .then(world => {
-        if (!world) return undefined;
-        return Traveller.renderWorldImage(world, $('#wds-world-image'));
-      })
-      .then(world => {
-        if (!world) return;
+      }));
+      if (!response.ok) throw new Error(response.statusText);
+
+      const data = await response.json();
+      const world = await Traveller.prepareWorld(data.Worlds[0]);
+      if (world) {
+        await Traveller.renderWorldImage(world, $('#wds-world-image'));
 
         // Data Sheet
         world.DataSheetURL = Util.makeURL('print/world', {
@@ -1154,13 +1147,12 @@ window.addEventListener('DOMContentLoaded', () => {
 
         // Make it visible
         showSearchPane('wds-visible', world.Name);
-      })
-      .catch(error => {
-        console.warn(error);
-      })
-      .then(() => {
-        $('#wds-spinner').style.display = 'none';
-      });
+      }
+    } catch (error) {
+      console.warn(error);
+    } finally {
+      $('#wds-spinner').style.display = 'none';
+    }
   }
 
   $('#wds-world-image').addEventListener('click', event => {
@@ -1188,7 +1180,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   let searchRequest = null;
 
-  function search(query, options) {
+  async function search(query, options) {
     options = Object.assign({}, options);
 
     closeRoute();
@@ -1216,25 +1208,26 @@ window.addEventListener('DOMContentLoaded', () => {
     if (searchRequest)
       searchRequest.ignore();
 
-    searchRequest = options.results
-      ? Promise.resolve(options.results)
-      : Util.ignorable(Traveller.MapService.search(query, {
+    if (options.results) {
+      searchRequest = options.results;
+    } else {
+      searchRequest = Util.ignorable(Traveller.MapService.search(query, {
         milieu: map.namedOptions.get('milieu')
       }));
-    searchRequest
-      .then(data => {
-        displayResults(data);
-      }, () => {
-        $('#resultsContainer').innerHTML = '<i>Error fetching results.</i>';
-      })
-      .then(() => {
-        searchRequest = null;
-        if (options.navigate) {
-          const first = $('#resultsContainer a');
-          if (first)
-            first.click();
-        }
-      });
+    }
+    try {
+      const data = await searchRequest;
+      displayResults(data);
+    } catch (ex) {
+      $('#resultsContainer').innerHTML = '<i>Error fetching results.</i>';
+    } finally {
+      searchRequest = null;
+      if (options.navigate) {
+        const first = $('#resultsContainer a');
+        if (first)
+          first.click();
+      }
+    }
 
     // Transform the search results into clickable links
     function displayResults(data) {
@@ -1368,7 +1361,7 @@ window.addEventListener('DOMContentLoaded', () => {
     if (lastRoute) route(lastRoute.start, lastRoute.end, lastRoute.jump);
   }
 
-  function route(start, end, jump) {
+  async function route(start, end, jump) {
     $('#routePath').innerHTML = '';
     lastRoute = {start:start, end:end, jump:jump};
 
@@ -1381,81 +1374,80 @@ window.addEventListener('DOMContentLoaded', () => {
       nored: $('#route-nored').checked?1:0,
       aok: $('#route-aok').checked?1:0
     };
-    fetch(Traveller.MapService.makeURL('/api/route', options))
-      .then(response => {
-        if (!response.ok) return response.text();
-        return response.json();
-      })
-      .then(data => {
-        if (typeof data === 'string') throw new Error(data);
 
-        const base_url = document.location.href.replace(/\?.*/, '');
-        const route = [];
-        let total = 0;
-        data.forEach((world, index) => {
-          world.Name = world.Name || '(Unnamed)';
-          const sx = world.SectorX|0;
-          const sy = world.SectorY|0;
-          const hx = world.HexX|0;
-          const hy = world.HexY|0;
-          const scale = 64;
-          world.href = Util.makeURL(base_url, {scale: 64, sx: sx, sy: sy, hx: hx, hy: hy});
+    try {
+      const response = await fetch(Traveller.MapService.makeURL('/api/route', options));
+      if (!response.ok) throw new Error(response.statusText);
 
-          if (index > 0) {
-            const prev = data[index - 1];
-            const a = Traveller.Astrometrics.sectorHexToWorld(
-              prev.SectorX|0, prev.SectorY|0, prev.HexX|0, prev.HexY|0);
-            const b = Traveller.Astrometrics.sectorHexToWorld(sx, sy, hx, hy);
-            const dist = Traveller.Astrometrics.hexDistance(a.x, a.y, b.x, b.y);
-            prev.Distance = dist;
-            total += dist;
-          }
+      const data = await response.json();
+      if (typeof data === 'string') throw new Error(data);
 
-          route.push({sx:sx, sy:sy, hx:hx, hy:hy});
+      const base_url = document.location.href.replace(/\?.*/, '');
+      const route = [];
+      let total = 0;
+      data.forEach((world, index) => {
+        world.Name = world.Name || '(Unnamed)';
+        const sx = world.SectorX|0;
+        const sy = world.SectorY|0;
+        const hx = world.HexX|0;
+        const hy = world.HexY|0;
+        const scale = 64;
+        world.href = Util.makeURL(base_url, {scale: 64, sx: sx, sy: sy, hx: hx, hy: hy});
+
+        if (index > 0) {
+          const prev = data[index - 1];
+          const a = Traveller.Astrometrics.sectorHexToWorld(
+            prev.SectorX|0, prev.SectorY|0, prev.HexX|0, prev.HexY|0);
+          const b = Traveller.Astrometrics.sectorHexToWorld(sx, sy, hx, hy);
+          const dist = Traveller.Astrometrics.hexDistance(a.x, a.y, b.x, b.y);
+          prev.Distance = dist;
+          total += dist;
+        }
+
+        route.push({sx:sx, sy:sy, hx:hx, hy:hy});
+      });
+
+      map.SetRoute(route);
+      const routeData = {
+        Route: data,
+        Distance: total,
+        Jumps: data.length - 1,
+        PrintURL: Util.makeURL('./print/route', options)
+      };
+      $('#routePath').innerHTML = template('#RouteResultsTemplate')(routeData);
+      document.body.classList.add('route-shown');
+      resizeMap();
+
+      $$('#routePath .item a').forEach(a => {
+        a.addEventListener('click', e => {
+          e.preventDefault();
+          selectedWorld = null;
+
+          const params = Util.parseURLQuery(e.target);
+          map.CenterAtSectorHex(params.sx|0, params.sy|0, params.hx|0, params.hy|0, {scale: params.scale|0});
+        });
         });
 
-        map.SetRoute(route);
-        const routeData = {
+      $('#copy-route').addEventListener('click', e => {
+        e.preventDefault();
+        Util.copyTextToClipboard(template('#RouteResultsTextTemplate')({
           Route: data,
           Distance: total,
-          Jumps: data.length - 1,
-          PrintURL: Util.makeURL('./print/route', options)
-        };
-        $('#routePath').innerHTML = template('#RouteResultsTemplate')(routeData);
-        document.body.classList.add('route-shown');
-        resizeMap();
-
-        $$('#routePath .item a').forEach(a => {
-          a.addEventListener('click', e => {
-            e.preventDefault();
-            selectedWorld = null;
-
-            const params = Util.parseURLQuery(e.target);
-            map.CenterAtSectorHex(params.sx|0, params.sy|0, params.hx|0, params.hy|0, {scale: params.scale|0});
-          });
-        });
-
-        $('#copy-route').addEventListener('click', e => {
-          e.preventDefault();
-          Util.copyTextToClipboard(template('#RouteResultsTextTemplate')({
-            Route: data,
-            Distance: total,
-            Jumps: data.length - 1
-          }));
-        });
-
-        $('#print-route').addEventListener('click', e => {
-          e.preventDefault();
-          window.open(routeData.PrintURL);
-        });
-
-      })
-      .catch(reason => {
-        $('#routePath').innerHTML = template('#RouteErrorTemplate')({Message: reason.message});
-        map.SetRoute(null);
-        document.body.classList.add('route-shown');
-        resizeMap();
+          Jumps: data.length - 1
+        }));
       });
+
+      $('#print-route').addEventListener('click', e => {
+        e.preventDefault();
+        window.open(routeData.PrintURL);
+      });
+
+    } catch (reason) {
+      $('#routePath').innerHTML = template('#RouteErrorTemplate')({Message: reason.message});
+      map.SetRoute(null);
+      document.body.classList.add('route-shown');
+      resizeMap();
+    }
   }
 
   //////////////////////////////////////////////////////////////////////
@@ -1517,12 +1509,12 @@ window.addEventListener('DOMContentLoaded', () => {
   //////////////////////////////////////////////////////////////////////
 
   let worldToMainMap;
-  function showMain(worldX, worldY) {
+  async function showMain(worldX, worldY) {
     if (!$('#cbMains').checked) return;
-    findMain(worldX, worldY)
-      .then(main => { map.SetMain(main); });
+    const main = await findMain(worldX, worldY);
+    map.SetMain(main);
   }
-  function findMain(worldX, worldY) {
+  async function findMain(worldX, worldY) {
     function sectorHexToSig(sx, sy, hx, hy) {
       return sx + '/' + sy + '/' + ('0000' + ( hx * 100 + hy )).slice(-4);
     }
@@ -1531,27 +1523,27 @@ window.addEventListener('DOMContentLoaded', () => {
       return {sx: parts[0]|0, sy: parts[1]|0, hx: (parts[2] / 100) | 0, hy: parts[2] % 100};
     }
 
-    function getMainsMapping() {
+    async function getMainsMapping() {
       if (worldToMainMap)
-        return Promise.resolve(worldToMainMap);
+        return worldToMainMap;
+      const r = await fetch('./res/mains.json');
+      if (!r.ok) throw new Error(r.statusText);
+
       worldToMainMap = new Map();
-      return fetch('./res/mains.json')
-        .then(r => r.json())
-        .then(mains => {
-          mains.forEach(main => {
-            main.forEach((sig, index) => {
-              worldToMainMap.set(sig, main);
-              main[index] = sigToSectorHex(sig);
-            });
-          });
-          return worldToMainMap;
+      const mains = await r.json();
+      mains.forEach(main => {
+        main.forEach((sig, index) => {
+          worldToMainMap.set(sig, main);
+          main[index] = sigToSectorHex(sig);
         });
+      });
+      return worldToMainMap;
     }
-    return getMainsMapping().then(map => {
-      const sectorHex = Traveller.Astrometrics.worldToSectorHex(worldX, worldY);
-      const sig = sectorHexToSig(sectorHex.sx, sectorHex.sy, sectorHex.hx, sectorHex.hy);
-      return map.get(sig);
-    });
+
+    const map = await getMainsMapping();
+    const sectorHex = Traveller.Astrometrics.worldToSectorHex(worldX, worldY);
+    const sig = sectorHexToSig(sectorHex.sx, sectorHex.sy, sectorHex.hx, sectorHex.hy);
+    return map.get(sig);
   }
 
   //////////////////////////////////////////////////////////////////////
