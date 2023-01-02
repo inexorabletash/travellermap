@@ -219,6 +219,12 @@ window.addEventListener('DOMContentLoaded', () => {
   //
   //////////////////////////////////////////////////////////////////////
 
+  let lastX, lastY, lastMilieu;
+  let selectedSector = null;
+  let selectedWorld = null;
+  let lastRoute = null;
+  let lastQuery = null, lastQueryRoute = null;
+
   const original_title = document.title;
 
   // Search Bar
@@ -853,17 +859,16 @@ window.addEventListener('DOMContentLoaded', () => {
   //////////////////////////////////////////////////////////////////////
 
   function doAttract() {
-    function pickTarget() {
-      return Traveller.MapService.search('(random world)', {
+    async function pickTarget() {
+      const data = await Traveller.MapService.search('(random world)', {
         milieu: map.namedOptions.get('milieu')
-      }, 'POST').then(data => {
-        const items = data.Results.Items;
-        if (items.length < 1)
-          throw new Error('random world search failed');
-        const world = items[0].World;
-        const tags = world.SectorTags.split(/\s+/);
-        return tags.includes('OTU') ? world : pickTarget();
-      });
+      }, 'POST');
+      const items = data.Results.Items;
+      if (items.length < 1)
+        throw new Error('random world search failed');
+      const world = items[0].World;
+      const tags = world.SectorTags.split(/\s+/);
+      return tags.includes('OTU') ? world : await pickTarget();
     }
 
     const HOME_WAIT_MS = 5e3;
@@ -891,9 +896,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
   let dataRequest = null;
   let dataTimeout = 0;
-  let lastX, lastY, lastMilieu;
-  let selectedSector = null;
-  let selectedWorld = null;
   let ignoreIndirect = true;;
   let enableContext;
 
@@ -1185,7 +1187,6 @@ window.addEventListener('DOMContentLoaded', () => {
   //////////////////////////////////////////////////////////////////////
 
   let searchRequest = null;
-  let lastQuery = null, lastQueryRoute = null;
 
   function search(query, options) {
     options = Object.assign({}, options);
@@ -1363,7 +1364,6 @@ window.addEventListener('DOMContentLoaded', () => {
   //
   //////////////////////////////////////////////////////////////////////
 
-  let lastRoute = null;
   function reroute() {
     if (lastRoute) route(lastRoute.start, lastRoute.end, lastRoute.jump);
   }
