@@ -2,8 +2,8 @@
 (function(global) {
   'use strict';
 
-  var $ = function(s) { return document.querySelector(s); };
-  var $$ = function(s) { return document.querySelectorAll(s); };
+  var $ = s => document.querySelector(s);
+  var $$ = s => Array.from(document.querySelectorAll(s));
 
   function worldImageURL(world, type) {
     var S3_PREFIX = 'https://travellermap.s3.amazonaws.com/images/';
@@ -25,6 +25,8 @@
         + (world.UWP.Siz === '0' ? 'Belt' : 'Hyd' + world.UWP.Hyd) + '.png';
     case 'background':
       return S3_PREFIX + 'world_backgrounds/' + world;
+    default:
+      throw new Error(`worldImageURL: type '${type}' is not known`);
     }
   }
 
@@ -531,12 +533,12 @@
 
   // Promise - resolved once sophont table is fully populated.
   var SOPHONTS_FETCHED = fetch(Traveller.MapService.makeURL('/t5ss/sophonts'))
-        .then(function(response) {
+        .then(response => {
           if (!response.ok) throw Error(response.statusText);
           return response.json();
         })
-        .then(function(sophonts) {
-          sophonts.forEach(function(sophont) {
+        .then(sophonts => {
+          sophonts.forEach(sophont => {
             SOPHONT_TABLE[sophont.Code] = sophont.Name;
           });
         });
@@ -561,16 +563,16 @@
     if (fetch_status.has(url) && !fetch_status.get(url))
       return Promise.reject(new Error('Image not available'));
     return Util.fetchImage(url)
-      .then(function(img) { fetch_status.set(url, true); return img; })
-      .catch(function(err) { fetch_status.set(url, false); throw err; });
+      .then(img => { fetch_status.set(url, true); return img; })
+      .catch(err => { fetch_status.set(url, false); throw err; });
   }
 
   function checkImage(url) {
     if (fetch_status.has(url))
       return Promise.resolve(fetch_status.get(url));
     return fetchImage(url).then(
-      function() { return true; },
-      function() { showConsoleNotice(); return false; });
+      () => true,
+      () => { showConsoleNotice(); return false; });
   }
 
   function decodeSophontPopulation(match, code, pop) {
@@ -624,12 +626,12 @@
   };
 
   function hasCode(world, c) {
-    return world.Remarks && world.Remarks.some(function(r) { return r.code === c; });
+    return world.Remarks && world.Remarks.some(r => r.code === c);
   }
 
-  Traveller.prepareWorld = function(world) {
+  Traveller.prepareWorld = world => {
     if (!world) return undefined;
-    return SOPHONTS_FETCHED.then(function() {
+    return SOPHONTS_FETCHED.then(() => {
 
       world.raw = Object.assign({}, world);
 
@@ -706,14 +708,14 @@
 
       // Nobility
       if (world.Nobility) {
-        world.Nobility = world.Nobility.split('').map(function(s){
-          return s.replace(/./, function(n) { return NOBILITY_TABLE[n] || '???'; });
-        });
+        world.Nobility = world.Nobility.split('').map(
+          s => s.replace(/./, n => NOBILITY_TABLE[n] || '???')
+        );
       }
 
       // Remarks
       if (world.Remarks) {
-        world.Remarks = Traveller.splitRemarks(world.Remarks).map(function(s){
+        world.Remarks = Traveller.splitRemarks(world.Remarks).map(s => {
           if (s in REMARKS_TABLE) return {code: s, detail: REMARKS_TABLE[s]};
           for (var i = 0; i < REMARKS_PATTERNS.length; ++i) {
             var pattern = REMARKS_PATTERNS[i][0], replacement = REMARKS_PATTERNS[i][1];
@@ -724,16 +726,16 @@
       }
 
       // Bases
-      world.Bases = (function(code, allegiance) {
+      world.Bases = ((code, allegiance) => {
         if (allegiance.match(/^Zh/)) {
           if (code == 'KM') return 'Zhodani Base';
           if (code == 'W') return 'Zhodani Relay Station';
         }
-        return code.split('').map(function(code) { return BASE_TABLE[code]; });
-      }(world.Bases || '', world.Allegiance || ''));
+        return code.split('').map(code => BASE_TABLE[code]);
+      })(world.Bases || '', world.Allegiance || '');
 
       if (world.Remarks) {
-        world.Remarks.forEach(function(remark) {
+        world.Remarks.forEach(remark => {
           if (['Re','Px','Ex'].includes(remark.code) || remark.code.startsWith('Rs'))
             world.Bases.push(remark.detail);
         });
@@ -744,13 +746,13 @@
       world.Stars = world.Stellar
         .replace(/[OBAFGKM][0-9] D/g, 'D')
         .split(/\s+(?!Ia|Ib|II|III|IV|V|VI|VII)/)
-        .map(function(code) {
+        .map(code => {
           var last = code.split(/\s+/).pop();
           return {code: code, detail: STELLAR_TABLE[last]};
         });
 
       // Zone
-      world.Zone = (function(zone) {
+      world.Zone = (zone => {
         switch (zone) {
         case 'A': return { rule: 'Caution', rating: 'Amber', className: 'amber'};
         case 'R': return { rule: 'Restricted', rating: 'Red', className: 'red'};
@@ -762,7 +764,7 @@
                            className: 'unabsorbed'};
         default: return { rule: 'No Restrictions', rating: 'Green', className: 'green'};
         }
-      }(world.Zone));
+      })(world.Zone);
 
       // Worlds
       if (world.Worlds) {
@@ -808,11 +810,11 @@
       world.map_source_link = Util.makeURL(GENERATOR_BASE + '', map_generator_options);
 
       return world;
-    }).then(function(world) {
+    }).then(world => {
       var map_thumb = worldImageURL(world, 'map_thumb');
       var map = worldImageURL(world, 'map');
       return checkImage(map_thumb)
-        .then(function(exists) {
+        .then(exists => {
           if (exists) {
             world.map_thumb = map_thumb;
             world.map = map;
@@ -830,13 +832,13 @@
     return result;
   }
 
-  var showConsoleNotice = Util.once(function() {
+  var showConsoleNotice = Util.once(() => {
     if (!console || !console.log) return;
     console.log('The "404 (Not Found)" error for world images is expected, and is not a bug.');
   });
 
   var renderWorldImageFirstTime = true;
-  Traveller.renderWorldImage = function(world, canvas) {
+  Traveller.renderWorldImage = (world, canvas) => {
     if (!world) return undefined;
 
     var w = canvas.width, h = canvas.height;
@@ -878,17 +880,17 @@
       world.isPlaceholder
         ? null
         : fetchImage(render).then(
-          function(image) {
+          image => {
             size.height = size.width * image.naturalHeight / image.naturalWidth;
             return image;
           },
-          function() {
+          () => {
             showConsoleNotice();
             isRender = false;
             return fetchImage(generic);
           })
     ])
-      .then(function(images) {
+      .then((images) => {
         var bgimg = images[0];
         var fgimg = images[1]; // null if isPlaceholder
 

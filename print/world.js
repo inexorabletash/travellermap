@@ -1,11 +1,11 @@
 /*global Traveller, Util, Handlebars */ // for lint and IDEs
-(function(global) {
+((global) => {
   'use strict';
 
-  var $ = function(s) { return document.querySelector(s); };
-  var $$ = function(s) { return document.querySelectorAll(s); };
+  var $ = s => document.querySelector(s);
+  var $$ = s => Array.from(document.querySelectorAll(s));
 
-  window.addEventListener('load', function() {
+  window.addEventListener('load', () => {
     var searchParams = new URL(document.location).searchParams;
 
     if (searchParams.has('nopage'))
@@ -22,11 +22,11 @@
 
     // Look up canonical location.
     fetch(Traveller.MapService.makeURL('/api/coordinates?', coords))
-      .then(function(response) {
+      .then(response => {
         if (!response.ok) throw Error(response.statusText);
         return response.json();
       })
-      .then(function(coords) {
+      .then(coords => {
         var promises = [];
 
         // Fetch world data and fill in sheet.
@@ -36,18 +36,18 @@
             milieu: searchParams.get('milieu'),
             jump: 0
           }))
-            .then(function(response) {
+            .then(response => {
               if (!response.ok) throw Error(response.statusText);
               return response.json();
             })
-            .then(function(data) {
+            .then(data => {
               return Traveller.prepareWorld(data.Worlds[0]);
             })
-            .then(function(world) {
+            .then(world => {
               if (!world) return undefined;
               return Traveller.renderWorldImage(world, $('#wds-world-image'));
             })
-            .then(function(world) {
+            .then(world => {
               if (!world) return;
 
               $('#wds-world-image').classList.add('wds-ready');
@@ -61,7 +61,7 @@
               // Prettify URL
               if ('history' in window && 'replaceState' in window.history) {
                 var url = window.location.href.replace(/\?.*$/, '') + '?sector=' + world.Sector + '&hex=' + world.Hex;
-                ['milieu', 'style'].forEach(function(param) {
+                ['milieu', 'style'].forEach(param => {
                   if (searchParams.has(param))
                     url += '&' + param + '=' + encodeURIComponent(searchParams.get(param));
                 });
@@ -81,10 +81,10 @@
               milieu: searchParams.get('milieu'),
               jump: JUMP
             }))
-              .then(function(response) { return response.json(); })
-              .then(function(data) {
+              .then(response => { return response.json(); })
+              .then(data => {
                 // Make hi-pop worlds uppercase
-                data.Worlds.forEach(function(world) {
+                data.Worlds.forEach(world => {
                   var pop = Traveller.fromHex(Traveller.splitUWP(world.UWP).Pop);
                   if (pop >= 9)
                     world.Name = world.Name.toUpperCase();
@@ -93,7 +93,7 @@
                 var template = Handlebars.compile($('#wds-neighborhood-template').innerHTML);
                 $('#wds-neighborhood-data').innerHTML = template(data);
               })
-            .then(function() {
+            .then(() => {
               var mapParams = {
                 x: coords.x,
                 y: coords.y,
@@ -107,8 +107,8 @@
               var url = Traveller.MapService.makeURL('/api/jumpmap?', mapParams);
               return Util.fetchImage(url, $('#wds-jumpmap'));
             })
-            .then(function(image) {
-              image.addEventListener('click', function(event) {
+            .then(image => {
+              image.addEventListener('click', event => {
                 var result = jmapToCoords(event, JUMP, SCALE, coords.x, coords.y);
                 if (result) {
                   var search = '?x=' + result.x + '&y=' + result.y;
@@ -121,11 +121,11 @@
         }
         return Promise.all(promises);
       })
-      .then(function() {
+      .then(() => {
         if (searchParams.has('print'))
           window.print();
       })
-      .catch(function(reason) {
+      .catch(reason => {
         console.error(reason);
       });
   });
@@ -157,4 +157,4 @@
   }
 
 
-}(this));
+})(this);

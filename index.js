@@ -1,5 +1,5 @@
 /*global Traveller,Util,Handlebars */ // for lint and IDEs
-window.addEventListener('DOMContentLoaded', function() {
+window.addEventListener('DOMContentLoaded', () => {
   'use strict';
 
   //////////////////////////////////////////////////////////////////////
@@ -9,8 +9,8 @@ window.addEventListener('DOMContentLoaded', function() {
   //////////////////////////////////////////////////////////////////////
 
   // IE8: document.querySelector can't use bind()
-  var $ = function(s) { return document.querySelector(s); };
-  var $$ = function(s) { return Array.from(document.querySelectorAll(s)); };
+  const $ = s => document.querySelector(s);
+  const $$ = s => Array.from(document.querySelectorAll(s));
 
   //////////////////////////////////////////////////////////////////////
   //
@@ -31,7 +31,7 @@ window.addEventListener('DOMContentLoaded', function() {
       window.scrollTo(0, 0);
     }
   }
-  window.addEventListener('resize', function(e) {
+  window.addEventListener('resize', e => {
     // Timeout to work around iOS Safari giving incorrect sizes while 'resize'
     // dispatched.
     setTimeout(resizeWindow, 100);
@@ -96,16 +96,16 @@ window.addEventListener('DOMContentLoaded', function() {
   };
 
   var SAVE_PREFERENCES_DELAY_MS = 500;
-  var savePreferences = isIframe ? function() {} : Util.debounce(function() {
+  var savePreferences = isIframe ? () => {} : Util.debounce(() => {
     var preferences = {
       style: map.style,
       options: map.options
     };
-    map.namedOptions.NAMES.forEach(function(name) {
+    map.namedOptions.NAMES.forEach(name => {
       var value = map.namedOptions.get(name);
       preferences[name] = value === '' ? undefined : value;
     });
-    PARAM_OPTIONS.forEach(function(option) {
+    PARAM_OPTIONS.forEach(option => {
       preferences[option.param] = document.body.classList.contains(option.className);
     });
     localStorage.setItem('preferences', JSON.stringify(preferences));
@@ -115,9 +115,7 @@ window.addEventListener('DOMContentLoaded', function() {
     }));
   }, SAVE_PREFERENCES_DELAY_MS);
 
-  var template = Util.memoize(function(sel) {
-    return Handlebars.compile($(sel).innerHTML);
-  });
+  var template = Util.memoize(sel => Handlebars.compile($(sel).innerHTML));
 
   //////////////////////////////////////////////////////////////////////
   //
@@ -127,7 +125,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
   var PERMALINK_REFRESH_DELAY_MS = 500;
   var lastPageURL = null;
-  var updatePermalink = Util.debounce(function() {
+  var updatePermalink = Util.debounce(() => {
     function round(n, d) {
       d = 1 / d; // Avoid twitchy IEEE754 rounding.
       return Math.round(n * d) / d;
@@ -146,15 +144,15 @@ window.addEventListener('DOMContentLoaded', function() {
     urlParams.style = map.style;
 
     var namedOptions = map.namedOptions.keys();
-    map.namedOptions.forEach(function(value, key) {
+    map.namedOptions.forEach((value, key) => {
       urlParams[key] = value;
     });
 
-    Object.keys(defaults).forEach(function(p) {
+    Object.keys(defaults).forEach(p => {
       if (urlParams[p] === defaults[p]) delete urlParams[p];
     });
 
-    PARAM_OPTIONS.forEach(function(option) {
+    PARAM_OPTIONS.forEach(option => {
       if (document.body.classList.contains(option.className) === option['default'])
         delete urlParams[option.param];
       else
@@ -172,14 +170,14 @@ window.addEventListener('DOMContentLoaded', function() {
     $('#share-url').value = pageURL;
     $('#share-code').value = '<iframe width=400 height=300 src="' + pageURL + '">';
 
-    ['share-url', 'share-code'].forEach(function(share) {
-      $('#copy-' + share).addEventListener('click', function(e) {
+    ['share-url', 'share-code'].forEach(share => {
+      $('#copy-' + share).addEventListener('click', e => {
         e.preventDefault();
         Util.copyTextToClipboard($('#' + share).value);
       });
     });
 
-    $$('a.share').forEach(function(anchor) {
+    $$('a.share').forEach(anchor => {
       var data = {
         url: encodeURIComponent(pageURL),
         text: encodeURIComponent('The Traveller Map')
@@ -189,7 +187,7 @@ window.addEventListener('DOMContentLoaded', function() {
     });
 
 
-    var snapshotParams = (function() {
+    var snapshotParams = (() => {
       var map_center_x = map.x,
           map_center_y = map.y,
           scale = map.scale,
@@ -206,7 +204,7 @@ window.addEventListener('DOMContentLoaded', function() {
     snapshotParams.options = map.options;
     snapshotParams.style = map.style;
     snapshotParams.milieu = map.namedOptions.get('milieu');
-    namedOptions.forEach(function(name) { snapshotParams[name] = urlParams[name]; });
+    namedOptions.forEach(name => { snapshotParams[name] = urlParams[name]; });
     var snapshotURL = Traveller.MapService.makeURL('/api/tile', snapshotParams);
     $('a#download-snapshot').href = snapshotURL;
     snapshotParams.accept = 'application/pdf';
@@ -230,7 +228,7 @@ window.addEventListener('DOMContentLoaded', function() {
   function showSearchPane(pane, title) {
     if (!['wds-visible', 'sds-visible'].includes(pane))
       document.body.classList.add('ds-mini');
-    SEARCH_PANES.forEach(function(c) { document.body.classList.toggle(c, c === pane);  });
+    SEARCH_PANES.forEach(c => { document.body.classList.toggle(c, c === pane);  });
     map.SetRoute(null);
 
     document.title = title ? title + ' - ' + original_title : original_title;
@@ -249,22 +247,22 @@ window.addEventListener('DOMContentLoaded', function() {
   }
 
 
-  $("#searchForm").addEventListener('submit', function(e) {
+  $("#searchForm").addEventListener('submit', e => {
     search($('#searchBox').value, {onsubmit: true});
     e.preventDefault();
   });
 
-  $("#searchBox").addEventListener('focus', function(e) {
+  $("#searchBox").addEventListener('focus', e => {
     search($('#searchBox').value, {onfocus: true});
   });
 
   var SEARCH_TIMER_DELAY = 100; // ms
-  $("#searchBox").addEventListener('input', Util.debounce(function(e) {
+  $("#searchBox").addEventListener('input', Util.debounce(e => {
     if (e.key !== 'Enter') // Ignore double-submit on iOS
       search($('#searchBox').value, {typed: true});
   }, SEARCH_TIMER_DELAY));
 
-  $('#closeSearchBtn').addEventListener('click', function(e) {
+  $('#closeSearchBtn').addEventListener('click', e => {
     e.preventDefault();
     $('#searchBox').value = '';
     lastQuery = null;
@@ -282,7 +280,7 @@ window.addEventListener('DOMContentLoaded', function() {
     (window.dispatchEvent || window.fireEvent)(event);
   }
 
-  $("#routeBtn").addEventListener('click', function(e) {
+  $("#routeBtn").addEventListener('click', e => {
     if (selectedWorld) {
       $('#routeStart').value = selectedWorld.name;
       if (!isSmallScreen) $('#routeEnd').focus();
@@ -306,14 +304,14 @@ window.addEventListener('DOMContentLoaded', function() {
     $('#routeStart').value = '';
     $('#routeEnd').value = '';
     $('#routePath').innerHTML = '';
-    ['J-1','J-2','J-3','J-4','J-5','J-6'].forEach(function(n) {
+    ['J-1','J-2','J-3','J-4','J-5','J-6'].forEach(n => {
       $('#routeForm').classList.remove(n);
     });
     map.SetRoute(null);
     lastRoute = null;
   }
 
-  $('#routeStart').addEventListener('keydown', function(e) {
+  $('#routeStart').addEventListener('keydown', e => {
     if (e.ctrlKey || e.altKey || e.metaKey)
       return;
     if (e.key === 'Enter' || e.keyCode === VK_RETURN) {
@@ -323,7 +321,7 @@ window.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  $('#routeEnd').addEventListener('keydown', function(e) {
+  $('#routeEnd').addEventListener('keydown', e => {
     if (e.ctrlKey || e.altKey || e.metaKey)
       return;
     if (e.key === 'Enter' || e.keyCode === VK_RETURN) {
@@ -332,7 +330,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
       $('#routePath').innerHTML = '';
       var found = false;
-      ['J-1','J-2','J-3','J-4','J-5','J-6'].forEach(function(n) {
+      ['J-1','J-2','J-3','J-4','J-5','J-6'].forEach(n => {
         if ($('#routeForm').classList.contains(n)) {
           found = true;
           $('#'+n).click();
@@ -343,28 +341,28 @@ window.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  $('#closeRouteBtn').addEventListener('click', function(e) {
+  $('#closeRouteBtn').addEventListener('click', e => {
     e.preventDefault();
     closeRoute();
   });
 
-  $('#swapRouteBtn').addEventListener('click', function(e) {
+  $('#swapRouteBtn').addEventListener('click', e => {
     e.preventDefault();
     var tmp = $('#routeStart').value;
     $('#routeStart').value = $('#routeEnd').value;
     $('#routeEnd').value = tmp;
     $('#routePath').innerHTML = '';
-    ['J-1','J-2','J-3','J-4','J-5','J-6'].forEach(function(n) {
+    ['J-1','J-2','J-3','J-4','J-5','J-6'].forEach(n => {
       if ($('#routeForm').classList.contains(n))
         $('#'+n).click();
     });
   });
 
-  $$('#routeForm button[name="jump"]').forEach(function(button) {
-    button.addEventListener('click', function(e) {
+  $$('#routeForm button[name="jump"]').forEach(button => {
+    button.addEventListener('click', e => {
       e.preventDefault();
 
-      ['J-1','J-2','J-3','J-4','J-5','J-6'].forEach(function(n) {
+      ['J-1','J-2','J-3','J-4','J-5','J-6'].forEach(n => {
         $('#routeForm').classList.remove(n);
       });
       $('#routeForm').classList.add(button.id);
@@ -377,8 +375,8 @@ window.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  $$('#routeForm input[type="checkbox"]').forEach(function(input) {
-    input.addEventListener('click', function(e) {
+  $$('#routeForm input[type="checkbox"]').forEach(input => {
+    input.addEventListener('click', e => {
       if ($('#routePath').innerHTML !== '')
         reroute();
     });
@@ -394,7 +392,7 @@ window.addEventListener('DOMContentLoaded', function() {
       VK_QUESTION_MARK = KeyboardEvent.DOM_VK_QUESTION_MARK || 0x63;
 
   var ignoreNextKeyUp = false;
-  document.body.addEventListener('keyup', function(e) {
+  document.body.addEventListener('keyup', e => {
     if (ignoreNextKeyUp) {
       ignoreNextKeyUp = false;
       return;
@@ -422,47 +420,47 @@ window.addEventListener('DOMContentLoaded', function() {
   var TABS = ['lab', 'milieu', 'settings', 'share', 'help'];
 
   function showPanel(shown) {
-    PANELS.forEach(function(p) {
+    PANELS.forEach(p => {
       document.body.classList[p === shown ? 'add' : 'remove']('show-' + p);
     });
   }
 
   function togglePanel(shown) {
-    PANELS.forEach(function(p) {
+    PANELS.forEach(p => {
       document.body.classList[p === shown ? 'toggle' : 'remove']('show-' + p);
     });
   }
 
   function hidePanels() {
-    PANELS.forEach(function(p) {
+    PANELS.forEach(p => {
       document.body.classList.remove('show-' + p);
     });
   }
 
-  PANELS.forEach(function(p) {
-    $('#'+p+'Btn').addEventListener('click', function() {
+  PANELS.forEach(p => {
+    $('#'+p+'Btn').addEventListener('click', () => {
       togglePanel(p);
     });
   });
 
   function showTab(shown) {
-    TABS.forEach(function(p) {
+    TABS.forEach(p => {
       document.body.classList[shown === p ? 'add' : 'remove']('show-' + p);
     });
   }
 
-  TABS.forEach(function(p) {
-    $('#'+p+'Btn').addEventListener('click', function() {
+  TABS.forEach(p => {
+    $('#'+p+'Btn').addEventListener('click', () => {
       showTab(p);
     });
   });
 
   var STYLES = ['poster', 'atlas', 'print', 'candy', 'draft', 'fasa', 'terminal', 'mongoose'];
-  STYLES.forEach(function(s) {
-    $('#settingsBtn-'+s).addEventListener('click', function() { map.style = s; });
+  STYLES.forEach(s => {
+    $('#settingsBtn-'+s).addEventListener('click', () => { map.style = s; });
   });
-  $$('.styles-pager').forEach(function(e) {
-    e.addEventListener('click', function() { $('#styles').classList.toggle('p2'); });
+  $$('.styles-pager').forEach(e => {
+    e.addEventListener('click', () => { $('#styles').classList.toggle('p2'); });
   });
 
 
@@ -470,7 +468,7 @@ window.addEventListener('DOMContentLoaded', function() {
   $('#homeBtn2').addEventListener('click', goHome);
 
   function goHome() {
-    if (['sx', 'sy', 'hx', 'hy'].every(function(p) { return ('yah_' + p) in urlParams; })) {
+    if (['sx', 'sy', 'hx', 'hy'].every(p => ('yah_' + p) in urlParams)) {
       map.CenterAtSectorHex(
         urlParams.yah_sx|0, urlParams.yah_sy|0,
         urlParams.yah_hx|0, urlParams.yah_hy|0,
@@ -483,14 +481,14 @@ window.addEventListener('DOMContentLoaded', function() {
     map.y = home.y;
   }
 
-  $$('#share-url,#share-code').forEach(function(input) {
-    input.addEventListener('click', function(e) {
+  $$('#share-url,#share-code').forEach(input => {
+    input.addEventListener('click', e => {
       e.preventDefault();
       input.focus();
       input.select();
       input.setSelectionRange(0, input.value.length); // .select() fails on iOS
     });
-    input.addEventListener('mouseup', function(e) {
+    input.addEventListener('mouseup', e => {
       e.preventDefault();
     });
   });
@@ -499,18 +497,18 @@ window.addEventListener('DOMContentLoaded', function() {
 
   $('#zoomInBtn').addEventListener('click', map.ZoomIn.bind(map));
   $('#zoomOutBtn').addEventListener('click', map.ZoomOut.bind(map));
-  $('#tiltBtn').addEventListener('click', function() { $('#cbTilt').click(); });
+  $('#tiltBtn').addEventListener('click', () => { $('#cbTilt').click(); });
   $('#fsBtn').addEventListener('click', toggleFullscreen);
 
   // Bottom Panel
 
-  $("#LogoImage").addEventListener('dblclick', function() {
+  $("#LogoImage").addEventListener('dblclick', () => {
     document.body.classList.add('hide-footer');
   });
 
   // Keyboard Shortcuts
 
-  mapElement.addEventListener('keydown', function(e) {
+  mapElement.addEventListener('keydown', e => {
     if (e.ctrlKey || e.altKey || e.metaKey)
       return;
     if (e.key === 'c' || e.keyCode === VK_C) {
@@ -567,14 +565,14 @@ window.addEventListener('DOMContentLoaded', function() {
 
   bindCheckedToOption('#ShowSectorGrid', Traveller.MapOptions.GridMask);
   bindCheckedToOption('#ShowSectorNames', Traveller.MapOptions.SectorsMask);
-  bindEnabled('#ShowSelectedSectorNames', function(o) { return o & Traveller.MapOptions.SectorsMask; });
+  bindEnabled('#ShowSelectedSectorNames', o => o & Traveller.MapOptions.SectorsMask);
   bindChecked('#ShowSelectedSectorNames',
-              function(o) { return o & Traveller.MapOptions.SectorsSelected; },
-              function(c) { setOptions(Traveller.MapOptions.SectorsMask, c ? Traveller.MapOptions.SectorsSelected : 0); });
-  bindEnabled('#ShowAllSectorNames', function(o) { return o & Traveller.MapOptions.SectorsMask; });
+              o => o & Traveller.MapOptions.SectorsSelected,
+              c => { setOptions(Traveller.MapOptions.SectorsMask, c ? Traveller.MapOptions.SectorsSelected : 0); });
+  bindEnabled('#ShowAllSectorNames', o => o & Traveller.MapOptions.SectorsMask);
   bindChecked('#ShowAllSectorNames',
-              function(o) { return o & Traveller.MapOptions.SectorsAll; },
-              function(c) { setOptions(Traveller.MapOptions.SectorsMask, c ? Traveller.MapOptions.SectorsAll : 0); });
+              o => o & Traveller.MapOptions.SectorsAll,
+              c => { setOptions(Traveller.MapOptions.SectorsMask, c ? Traveller.MapOptions.SectorsAll : 0); });
   bindCheckedToOption('#ShowGovernmentBorders', Traveller.MapOptions.BordersMask);
   bindCheckedToNamedOption('#ShowRoutes', 'routes');
   bindCheckedToOption('#ShowGovernmentNames', Traveller.MapOptions.NamesMask);
@@ -594,8 +592,8 @@ window.addEventListener('DOMContentLoaded', function() {
   bindCheckedToNamedOption('#cbStellar', 'stellar');
   bindCheckedToNamedOption('#cbQZ', 'qz');
   bindChecked('#cbWave',
-    function(o) { return map.namedOptions.get('ew'); },
-    function(c) {
+    o => map.namedOptions.get('ew'),
+    c => {
       if (c) {
         map.namedOptions.set('ew', 'milieu');
       } else {
@@ -606,40 +604,40 @@ window.addEventListener('DOMContentLoaded', function() {
 
   function bindControl(selector, property, onChange, event, onEvent) {
     var element = $(selector);
-    optionObservers.push(function(o) { element[property] = onChange(o); });
-    element.addEventListener(event, function() { onEvent(element); });
+    optionObservers.push(o => { element[property] = onChange(o); });
+    element.addEventListener(event, () => { onEvent(element); });
   }
   function bindChecked(selector, onChange, onEvent) {
-    bindControl(selector, 'checked', onChange, 'click', function(e) { onEvent(e.checked); });
+    bindControl(selector, 'checked', onChange, 'click', e => { onEvent(e.checked); });
   }
   function bindEnabled(selector, onChange) {
     var element = $(selector);
-    optionObservers.push(function(o) { element.disabled = !onChange(o); });
+    optionObservers.push(o => { element.disabled = !onChange(o); });
   }
   function bindCheckedToOption(selector, bitmask) {
     bindChecked(selector,
-                function(o) { return (o & bitmask); },
-                function(c) { setOptions(bitmask, c ? bitmask : 0); });
+                o => (o & bitmask),
+                c => { setOptions(bitmask, c ? bitmask : 0); });
   }
   function bindCheckedToNamedOption(selector, name) {
     bindChecked(selector,
-                function() { var v = map.namedOptions.get(name);
-                             return v === undefined ? defaults[name] : v; },
-                function(c) {
+                () => { var v = map.namedOptions.get(name);
+                        return v === undefined ? defaults[name] : v; },
+                c => {
                   if (!!c === !!defaults[name]) {
                     delete urlParams[name];
                     map.namedOptions.delete(name);
                   } else map.namedOptions.set(name, c ? 1 : 0); });
   }
   function bindRadioToNamedOption(selector, name) {
-    optionObservers.push(function(o) {
+    optionObservers.push(o => {
       var v = map.namedOptions.get(name);
       if (v === undefined) v = defaults[name];
       var e = $(selector + '[value="' +  v + '"]');
       if (e) e.checked = true;
     });
-    $$(selector).forEach(function(elem) {
-      elem.addEventListener('click', function(event) {
+    $$(selector).forEach(elem => {
+      elem.addEventListener('click', event => {
         if (elem.value === defaults[name]) {
           delete urlParams[name];
           map.namedOptions.delete(name);
@@ -652,16 +650,16 @@ window.addEventListener('DOMContentLoaded', function() {
 
   var EVENT_DEBOUNCE_MS = 10;
 
-  map.OnOptionsChanged = Util.debounce(function(options) {
-    optionObservers.forEach(function(o) { o(options); });
+  map.OnOptionsChanged = Util.debounce(options => {
+    optionObservers.forEach(o => { o(options); });
     $('#legendBox').classList.toggle('world_colors', options & Traveller.MapOptions.WorldColors);
     updateContext(lastX || map.worldX, lastY || map.worldY, {refresh: true});
     updatePermalink();
     savePreferences();
   }, EVENT_DEBOUNCE_MS);
 
-  map.OnStyleChanged = Util.debounce(function(style) {
-    STYLES.forEach(function(s) {
+  map.OnStyleChanged = Util.debounce(style => {
+    STYLES.forEach(s => {
       document.body.classList.toggle('style-' + s, s === style);
     });
     updateContext(lastX || map.worldX, lastY || map.worldY, {refresh: true});
@@ -670,14 +668,14 @@ window.addEventListener('DOMContentLoaded', function() {
     savePreferences();
   }, EVENT_DEBOUNCE_MS);
 
-  map.OnScaleChanged = Util.debounce(function() {
+  map.OnScaleChanged = Util.debounce(() => {
     updateContext(lastX || map.worldX, lastY || map.worldY);
     updatePermalink();
     updateScaleIndicator();
     savePreferences();
   }, EVENT_DEBOUNCE_MS);
 
-  map.OnPositionChanged = Util.debounce(function() {
+  map.OnPositionChanged = Util.debounce(() => {
     updateContext(map.worldX, map.worldY);
     updatePermalink();
     savePreferences();
@@ -690,14 +688,14 @@ window.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  map.OnClick = function(data) {
+  map.OnClick = data => {
     hidePanels();
     updateContext(data.x, data.y, {directAction: true, activeElement: data.activeElement});
     showMain(data.x, data.y);
     post({source: 'travellermap', type: 'click', location: {x: data.x, y: data.y}});
   };
 
-  map.OnDoubleClick = function(world) {
+  map.OnDoubleClick = world => {
     hidePanels();
     updateContext(world.x, world.y, {directAction: true});
     showMain(world.x, world.y);
@@ -709,36 +707,37 @@ window.addEventListener('DOMContentLoaded', function() {
   var PARAM_OPTIONS = [
     {param: 'galdir', selector: '#cbGalDir', className: 'show-directions', 'default': true},
     {param: 'tilt', selector: '#cbTilt', className: 'tilt', 'default': false,
-     onchange: function(flag) { if (flag) map.EnableTilt(); }
+     onchange: flag => { if (flag) map.EnableTilt(); }
     },
     {param: 'mains', selector: '#cbMains', className: 'show-mains', 'default': false,
-     onchange: function(flag) { if (!flag) map.SetMain(null); }
+     onchange: flag => { if (!flag) map.SetMain(null); }
     }
   ];
-  PARAM_OPTIONS.forEach(function(option) {
-    $(option.selector).checked = option['default'];
+  PARAM_OPTIONS.forEach(option => {
+    const elem = $(option.selector);
+    elem.checked = option['default'];
     document.body.classList.toggle(option.className, option['default']);
-    $(option.selector).addEventListener('click', function() {
-      document.body.classList.toggle(option.className, this.checked);
+    elem.addEventListener('click', () => {
+      document.body.classList.toggle(option.className, elem.checked);
       updatePermalink();
       savePreferences();
       if (option.onchange)
-        option.onchange(this.checked);
+        option.onchange(elem.checked);
     });
   });
 
 
-  $('#btnResetPrefs').addEventListener('click', function(e) {
+  $('#btnResetPrefs').addEventListener('click', e => {
     e.preventDefault();
 
-    map.namedOptions.NAMES.forEach(function(name) {
+    map.namedOptions.NAMES.forEach(name => {
       delete urlParams[name];
       if (!(name in defaults))
         map.namedOptions.delete(name);
       else
         map.namedOptions.set(name, defaults[name]);
     });
-    PARAM_OPTIONS.forEach(function(option) {
+    PARAM_OPTIONS.forEach(option => {
       $(option.selector).checked = option['default'];
       document.body.classList.toggle(option.className, option['default']);
       if (option.onchange) option.onchange(option.default);
@@ -748,14 +747,14 @@ window.addEventListener('DOMContentLoaded', function() {
     savePreferences();
   });
 
-  (function() {
+  (() => {
     if (isIframe) return;
     var preferences = JSON.parse(localStorage.getItem('preferences'));
     var location = JSON.parse(localStorage.getItem('location'));
     if (preferences) {
       if ('style' in preferences) map.style = preferences.style;
       if ('options' in preferences) map.options = preferences.options;
-      map.namedOptions.NAMES.forEach(function(name) {
+      map.namedOptions.NAMES.forEach(name => {
         if (name in preferences) {
           var value = preferences[name];
           if (value !== '')
@@ -763,7 +762,7 @@ window.addEventListener('DOMContentLoaded', function() {
         }
       });
 
-      PARAM_OPTIONS.forEach(function(option) {
+      PARAM_OPTIONS.forEach(option => {
         if (option.param in preferences) {
           document.body.classList.toggle(option.className, preferences[option.param]);
           if (option.onchange)
@@ -779,14 +778,14 @@ window.addEventListener('DOMContentLoaded', function() {
   })();
 
   // Overlay to allow quick return to default milieu.
-  optionObservers.push(function(o) {
+  optionObservers.push(o => {
     var milieu = map.namedOptions.get('milieu') || defaults.milieu;
     $('#milieu-field').innerText = milieu;
     $('#milieu-field-default').innerText = defaults.milieu;
     document.body.classList.toggle(
       'milieu-not-default', milieu !== defaults.milieu);
   });
-  $('#milieu-escape').addEventListener('click', function(e) {
+  $('#milieu-escape').addEventListener('click', e => {
     map.namedOptions.set('milieu', defaults.milieu);
   });
 
@@ -811,7 +810,7 @@ window.addEventListener('DOMContentLoaded', function() {
   }
 
   var dirty = false;
-  PARAM_OPTIONS.forEach(function(option) {
+  PARAM_OPTIONS.forEach(option => {
     if (option.param in urlParams) {
       var show = Boolean(Number(urlParams[option.param]));
       document.body.classList.toggle(option.className, show);
@@ -821,7 +820,7 @@ window.addEventListener('DOMContentLoaded', function() {
   });
   if (dirty) updatePermalink();
 
-  ['q', 'qn'].forEach(function(key) {
+  ['q', 'qn'].forEach(key => {
     if (key in urlParams) {
       $('#searchBox').value = urlParams[key];
       search(urlParams[key], {navigate: key === 'qn'});
@@ -856,7 +855,7 @@ window.addEventListener('DOMContentLoaded', function() {
     function pickTarget() {
       return Traveller.MapService.search('(random world)', {
         milieu: map.namedOptions.get('milieu')
-      }, 'POST').then(function(data) {
+      }, 'POST').then(data => {
         var items = data.Results.Items;
         if (items.length < 1)
           throw new Error('random world search failed');
@@ -870,15 +869,15 @@ window.addEventListener('DOMContentLoaded', function() {
     var TARGET_WAIT_MS = 20e3;
 
     goHome();
-    pickTarget().then(function(world) {
+    pickTarget().then(world => {
       var target = Traveller.Astrometrics.sectorHexToMap(
         world.SectorX, world.SectorY, world.HexX, world.HexY);
       hideCards();
-      setTimeout(function() {
-        map.animateTo(128, target.x, target.y, 10).then(function() {
+      setTimeout(() => {
+        map.animateTo(128, target.x, target.y, 10).then(() => {
           updateContext(map.worldX, map.worldY, {directAction: true});
           setTimeout(doAttract, TARGET_WAIT_MS);
-        }, function() {});
+        }, () => {});
       }, HOME_WAIT_MS);
     });
   }
@@ -933,11 +932,11 @@ window.addEventListener('DOMContentLoaded', function() {
     if (map.scale < 1) {
       displayResults({});
     } else {
-      dataTimeout = setTimeout(function() {
+      dataTimeout = setTimeout(() => {
         dataRequest = Util.ignorable(Traveller.MapService.credits(worldX, worldY, {
           milieu: milieu
         }));
-        dataRequest.then(function(data) {
+        dataRequest.then(data => {
           dataRequest = null;
           displayResults(data);
         });
@@ -949,8 +948,8 @@ window.addEventListener('DOMContentLoaded', function() {
         var tags =  String(data.SectorTags).split(/\s+/);
         data.Unofficial = true;
         ['Official', 'InReview', 'Unreviewed', 'Apocryphal', 'Preserve']
-          .filter(function(tag) { return tags.includes(tag); })
-          .forEach(function(tag) {
+          .filter(tag => tags.includes(tag))
+          .forEach(tag => {
             delete data.Unofficial;
             data[tag] = true;
           });
@@ -959,8 +958,8 @@ window.addEventListener('DOMContentLoaded', function() {
       }
 
       data.Attribution = ['SectorAuthor', 'SectorSource', 'SectorPublisher']
-        .filter(function(p) { return p in data; })
-        .map(function(p) { return data[p]; })
+        .filter(p => p in data)
+        .map(p => data[p])
         .join(', ');
 
       if (data.SectorName) {
@@ -1037,8 +1036,8 @@ window.addEventListener('DOMContentLoaded', function() {
         $('#sds-data').innerHTML = template('#sds-template')(data);
 
         // Hook up toggle
-        $$('#sds-data .ds-mini-toggle, .sds-sectorname').forEach(function(e) {
-          e.addEventListener('click', function(event) {
+        $$('#sds-data .ds-mini-toggle, .sds-sectorname').forEach(e => {
+          e.addEventListener('click', event => {
             document.body.classList.toggle('ds-mini');
           });
         });
@@ -1075,18 +1074,18 @@ window.addEventListener('DOMContentLoaded', function() {
         milieu: milieu,
         jump: 0
       }))
-      .then(function(response) {
+      .then(response => {
         if (!response.ok) throw Error(response.statusText);
         return response.json();
       })
-      .then(function(data) {
+      .then(data => {
         return Traveller.prepareWorld(data.Worlds[0]);
       })
-      .then(function(world) {
+      .then(world => {
         if (!world) return undefined;
         return Traveller.renderWorldImage(world, $('#wds-world-image'));
       })
-      .then(function(world) {
+      .then(world => {
         if (!world) return;
 
         // Data Sheet
@@ -1112,35 +1111,35 @@ window.addEventListener('DOMContentLoaded', function() {
         $('#wds-data').innerHTML = template('#wds-template')(world);
 
         // Hook up any generated "expandy" fields
-        $$('.wds-expandy').forEach(function(elem) {
-          elem.addEventListener('click', function(event) {
+        $$('.wds-expandy').forEach(elem => {
+          elem.addEventListener('click', event => {
             var c = elem.getAttribute('data-wds-expand');
             $('#wds-frame').classList.toggle(c);
           });
         });
 
         // Hook up toggle
-        $$('#wds-data .ds-mini-toggle, #wds-data .wds-names').forEach(function(e) {
-            e.addEventListener('click', function(event) {
+        $$('#wds-data .ds-mini-toggle, #wds-data .wds-names').forEach(e => {
+            e.addEventListener('click', event => {
               document.body.classList.toggle('ds-mini');
             });
         });
 
         // Hook up buttons
-        $('#ds-route-link').addEventListener('click', function(e) {
+        $('#ds-route-link').addEventListener('click', e => {
           e.preventDefault();
           $('#routeStart').value = world.Name;
           if (!isSmallScreen) $('#routeEnd').focus();
           showRoute();
         });
 
-        $('#wds-print-ds-link').addEventListener('click', function(e) {
+        $('#wds-print-ds-link').addEventListener('click', e => {
           e.preventDefault();
           window.open(world.DataSheetURL);
         });
 
         if ($('#wds-map')) {
-          $('#wds-map').addEventListener('click', function(e) {
+          $('#wds-map').addEventListener('click', e => {
             e.preventDefault();
             var url = e.target.getAttribute('data-map');
             if (isSmallScreen)
@@ -1153,27 +1152,27 @@ window.addEventListener('DOMContentLoaded', function() {
         // Make it visible
         showSearchPane('wds-visible', world.Name);
       })
-      .catch(function(error) {
+      .catch(error => {
         console.warn(error);
       })
-      .then(function() {
+      .then(() => {
         $('#wds-spinner').style.display = 'none';
       });
   }
 
-  $('#wds-world-image').addEventListener('click', function(event) {
+  $('#wds-world-image').addEventListener('click', event => {
     document.body.classList.toggle('ds-mini');
   });
 
-  $$('#sds-closebtn,#wds-closebtn,#ds-shade').forEach(function(element) {
-    element.addEventListener('click', function(event) {
+  $$('#sds-closebtn,#wds-closebtn,#ds-shade').forEach(element => {
+    element.addEventListener('click', event => {
       hideCards();
       selectedWorld = selectedSector = null;
     });
   });
 
-  $$('#legend-closebtn,#more-closebtn,#panel-shade').forEach(function(element) {
-    element.addEventListener('click', function(event) {
+  $$('#legend-closebtn,#more-closebtn,#panel-shade').forEach(element => {
+    element.addEventListener('click', event => {
       hidePanels();
     });
   });
@@ -1221,12 +1220,12 @@ window.addEventListener('DOMContentLoaded', function() {
         milieu: map.namedOptions.get('milieu')
       }));
     searchRequest
-      .then(function(data) {
+      .then(data => {
         displayResults(data);
-      }, function() {
+      }, () => {
         $('#resultsContainer').innerHTML = '<i>Error fetching results.</i>';
       })
-      .then(function() {
+      .then(() => {
         searchRequest = null;
         if (options.navigate) {
           var first = $('#resultsContainer a');
@@ -1243,7 +1242,7 @@ window.addEventListener('DOMContentLoaded', function() {
         if ('SectorTags' in item) {
           var tags = String(item.SectorTags).split(/\s+/);
           item.Unofficial = true;
-          ['Official', 'InReview', 'Unreviewed', 'Apocryphal', 'Preserve'].forEach(function(tag) {
+          ['Official', 'InReview', 'Unreviewed', 'Apocryphal', 'Preserve'].forEach(tag =>{
             if (tags.includes(tag)) {
               delete item.Unofficial;
               item[tag] = true;
@@ -1320,8 +1319,8 @@ window.addEventListener('DOMContentLoaded', function() {
 
       $('#resultsContainer').innerHTML = template('#SearchResultsTemplate')(data);
 
-      $$('#resultsContainer a').forEach(function(a) {
-        a.addEventListener('click', function(e) {
+      $$('#resultsContainer a').forEach(a => {
+        a.addEventListener('click', e => {
           e.preventDefault();
           selectedWorld = null;
 
@@ -1346,7 +1345,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
       var first = $('#resultsContainer a');
       if (first && !options.typed && !options.onfocus)
-        setTimeout(function() { first.focus(); }, 0);
+        setTimeout(() => { first.focus(); }, 0);
 
       if (route.length) {
         map.SetRoute(route);
@@ -1382,17 +1381,17 @@ window.addEventListener('DOMContentLoaded', function() {
       aok: $('#route-aok').checked?1:0
     };
     fetch(Traveller.MapService.makeURL('/api/route', options))
-      .then(function(response) {
+      .then(response => {
         if (!response.ok) return response.text();
         return response.json();
       })
-      .then(function(data) {
+      .then(data => {
         if (typeof data === 'string') throw new Error(data);
 
         var base_url = document.location.href.replace(/\?.*/, '');
         var route = [];
         var total = 0;
-        data.forEach(function(world, index) {
+        data.forEach((world, index) => {
           world.Name = world.Name || '(Unnamed)';
           var sx = world.SectorX|0;
           var sy = world.SectorY|0;
@@ -1425,8 +1424,8 @@ window.addEventListener('DOMContentLoaded', function() {
         document.body.classList.add('route-shown');
         resizeMap();
 
-        $$('#routePath .item a').forEach(function(a) {
-          a.addEventListener('click', function(e) {
+        $$('#routePath .item a').forEach(a => {
+          a.addEventListener('click', e => {
             e.preventDefault();
             selectedWorld = null;
 
@@ -1435,7 +1434,7 @@ window.addEventListener('DOMContentLoaded', function() {
           });
         });
 
-        $('#copy-route').addEventListener('click', function(e) {
+        $('#copy-route').addEventListener('click', e => {
           e.preventDefault();
           Util.copyTextToClipboard(template('#RouteResultsTextTemplate')({
             Route: data,
@@ -1444,13 +1443,13 @@ window.addEventListener('DOMContentLoaded', function() {
           }));
         });
 
-        $('#print-route').addEventListener('click', function(e) {
+        $('#print-route').addEventListener('click', e => {
           e.preventDefault();
           window.open(routeData.PrintURL);
         });
 
       })
-      .catch(function(reason) {
+      .catch(reason => {
         $('#routePath').innerHTML = template('#RouteErrorTemplate')({Message: reason.message});
         map.SetRoute(null);
         document.body.classList.add('route-shown');
@@ -1470,7 +1469,7 @@ window.addEventListener('DOMContentLoaded', function() {
     if (!isCanvasSupported) return;
 
     cancelAnimationFrame(animId);
-    animId = requestAnimationFrame(function() {
+    animId = requestAnimationFrame(() => {
       var scale = map.scale,
           canvas = $('#scaleIndicator'),
           ctx = canvas.getContext('2d'),
@@ -1520,7 +1519,7 @@ window.addEventListener('DOMContentLoaded', function() {
   function showMain(worldX, worldY) {
     if (!$('#cbMains').checked) return;
     findMain(worldX, worldY)
-      .then(function(main) { map.SetMain(main); });
+      .then(main => { map.SetMain(main); });
   }
   function findMain(worldX, worldY) {
     function sectorHexToSig(sx, sy, hx, hy) {
@@ -1536,10 +1535,10 @@ window.addEventListener('DOMContentLoaded', function() {
         return Promise.resolve(worldToMainMap);
       worldToMainMap = new Map();
       return fetch('./res/mains.json')
-        .then(function(r) { return r.json(); })
-        .then(function(mains) {
-          mains.forEach(function(main) {
-            main.forEach(function(sig, index) {
+        .then(r => r.json())
+        .then(mains => {
+          mains.forEach(main => {
+            main.forEach((sig, index) => {
               worldToMainMap.set(sig, main);
               main[index] = sigToSectorHex(sig);
             });
@@ -1547,7 +1546,7 @@ window.addEventListener('DOMContentLoaded', function() {
           return worldToMainMap;
         });
     }
-    return getMainsMapping().then(function(map) {
+    return getMainsMapping().then(map => {
       var sectorHex = Traveller.Astrometrics.worldToSectorHex(worldX, worldY);
       var sig = sectorHexToSig(sectorHex.sx, sectorHex.sy, sectorHex.hx, sectorHex.hy);
       return map.get(sig);
@@ -1567,12 +1566,12 @@ window.addEventListener('DOMContentLoaded', function() {
     lightbox.tabIndex = 0;
     inner.style.backgroundImage = 'url("' + url + '")';
 
-    lightbox.addEventListener('click', function(e) {
+    lightbox.addEventListener('click', e => {
       e.preventDefault();
       e.stopPropagation();
       lightbox.remove();
     });
-    lightbox.addEventListener('keydown', function(e) {
+    lightbox.addEventListener('keydown', e => {
       e.preventDefault();
       e.stopPropagation();
       ignoreNextKeyUp = true;
@@ -1594,18 +1593,18 @@ window.addEventListener('DOMContentLoaded', function() {
   $('#searchBox').disabled = false;
 
   // iOS WebKit workarounds
-  if (navigator.userAgent.match(/iPad|iPhone/)) (function(){
+  if (navigator.userAgent.match(/iPad|iPhone/)) (() => {
     // Prevent inadvertant touch-scroll.
-    $$('button, input').forEach(function(e) {
-      e.addEventListener('touchmove', function(e) { e.preventDefault();  }, {passive:false});
+    $$('button, input').forEach(e => {
+      e.addEventListener('touchmove', e => { e.preventDefault();  }, {passive:false});
     });
     // Prevent inadvertant touch-zoom.
-    document.addEventListener('touchmove', function(e) {
+    document.addEventListener('touchmove', e => {
       if (e.scale !== 1) { e.preventDefault(); }
     }, false);
     // Prevent double-tap-to-zoom.
     var last_time = Date.now();
-    document.addEventListener('touchend', function(e) {
+    document.addEventListener('touchend', e => {
       var now = Date.now();
       if (now - last_time <= 500) {
         e.preventDefault();
@@ -1617,12 +1616,12 @@ window.addEventListener('DOMContentLoaded', function() {
 
   // Show cookie accept prompt, if necessary.
   if (!isIframe) {
-    setTimeout(function() {
+    setTimeout(() => {
       var cookies = Util.parseCookies();
       var cookies_key = 'tm_accept';
       if (!(cookies.tm_accept || localStorage.getItem(cookies_key))) {
         document.body.classList.add('cookies-not-accepted');
-        $('#cookies button').addEventListener('click', function(e) {
+        $('#cookies button').addEventListener('click', e => {
           document.body.classList.remove('cookies-not-accepted');
           document.cookie = 'tm_accept=1;SameSite=Strict;Secure';
           localStorage.setItem(cookies_key, 1);
@@ -1633,15 +1632,15 @@ window.addEventListener('DOMContentLoaded', function() {
 
   // Show promo, if not dismissed.
   if (!isIframe) {
-    setTimeout(function() {
+    setTimeout(() => {
       var promo_key = 'tm_promo3';
       if (!localStorage.getItem(promo_key)) {
         document.body.classList.add('show-promo');
-        $('#promo-closebtn').addEventListener('click', function(e) {
+        $('#promo-closebtn').addEventListener('click', e => {
           document.body.classList.remove('show-promo');
           localStorage.setItem(promo_key, 1);
         });
-        $('#promo-hover a').addEventListener('click', function(e) {
+        $('#promo-hover a').addEventListener('click', e => {
           document.body.classList.remove('show-promo');
           localStorage.setItem(promo_key, 1);
         });
@@ -1654,5 +1653,5 @@ window.addEventListener('DOMContentLoaded', function() {
   }
 
   // After all async events from the map have fired...
-  setTimeout(function() { enableContext = true; }, 0);
+  setTimeout(() => { enableContext = true; }, 0);
 });

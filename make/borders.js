@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   'use strict';
   const $ = s => document.querySelector(s);
-  const $$ = s => document.querySelectorAll(s);
+  const $$ = s => Array.from(document.querySelectorAll(s));
 
   // TODO: other events
   let lastValue = null;
@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
     containerElement.style.width = (map.width * sz + (map.width + 1) * pad) + 'px';
     containerElement.style.height = ((map.height + 0.5) * sz + (map.height + 1.5) * pad) + 'px';
 
-    [].slice.call($$('.hex')).forEach(e => {
+    $$('.hex').forEach(e => {
       e.onclick = () => {
         const hex = e.getAttribute('data-hex');
         if (toggleAllegiance(hex)) {

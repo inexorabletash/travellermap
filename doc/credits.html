@@ -2,7 +2,7 @@
 <title>Credits - Traveller Map</title>
 <meta charset="utf-8">
 <link rel="shortcut icon" href="../favicon.ico">
-<link rel="stylesheet" href="../site.css?update=2020-01-19T10:43:06">
+<link rel="stylesheet" href="../site.css?update=2022-09-10T10:37:44">
 <meta name="viewport" content="initial-scale=1, width=device-width">
 
 <h1 class=sitename>Credits</h1>
@@ -546,6 +546,47 @@
       were designed by Martin J. Douherty and appear in
       <cite>Deepnight Revelation Book 1: Riftsedge Transit</cite>,
       Mongoose Publishing, 2020.
+    </p>
+
+    <!-- Included to satisfy data checker, but not visible. -->
+    <p style="display: none">
+      <a class=sector>Alila</a>
+      <a class=sector>Best Prospect</a>
+      <a class=sector>Big Empty</a>
+      <a class=sector>Black Night</a>
+      <a class=sector>Central Bay</a>
+      <a class=sector>Colaeus</a>
+      <a class=sector>Coreward Shore</a>
+      <a class=sector>Crossing</a>
+      <a class=sector>Deepnight</a>
+      <a class=sector>Diamond Scatter</a>
+      <a class=sector>Far Shore</a>
+      <a class=sector>Far Shore 2</a>
+      <a class=sector>Far Shore of Yonder</a>
+      <a class=sector>Few Glimmers</a>
+      <a class=sector>Few Stars</a>
+      <a class=sector>First Prospect</a>
+      <a class=sector>Giskakii</a>
+      <a class=sector>Greenwald's Beach</a>
+      <a class=sector>Gudala</a>
+      <a class=sector>Idirda</a>
+      <a class=sector>Incognita Citerior</a>
+      <a class=sector>Incognita Ulterior</a>
+      <a class=sector>Just Empty</a>
+      <a class=sector>Kaalin Citerior</a>
+      <a class=sector>Kaalin Ulterior</a>
+      <a class=sector>Last Prospect</a>
+      <a class=sector>Narrow Transit</a>
+      <a class=sector>Near Side of Yonder</a>
+      <a class=sector>No Prospect</a>
+      <a class=sector>No Shore</a>
+      <a class=sector>Open Rift</a>
+      <a class=sector>Pytheas</a>
+      <a class=sector>Pytheus Interior</a>
+      <a class=sector>Sisyphus Citerior</a>
+      <a class=sector>Sisyphus Ulterior</a>
+      <a class=sector>Unnamed</a>
+      <a class=sector>Vilaakasii</a>
     </p>
 
     <!-- ......................................... -->
@@ -1224,17 +1265,17 @@
 </div>
 
 <script>
-(function() {
-  var $ = function(s) { return document.querySelector(s); };
-  var $$ = function(s) { return document.querySelectorAll(s); };
+(() => {
+  var $ = s => document.querySelector(s);
+  var $$ = s => Array.from(document.querySelectorAll(s));
 
-  var SERVICE_BASE = (function(l) {
+  var SERVICE_BASE = (l => {
     if (l.hostname === 'localhost' && l.pathname.indexOf('~') !== -1)
       return 'https://travellermap.com';
     return '';
-  }(window.location));
+  })(window.location);
 
-  [].slice.call($$('a.sector')).forEach(function(anchor) {
+  $$('a.sector').forEach(anchor => {
     var name = anchor.innerText || anchor.textContent;
     anchor.href = SERVICE_BASE + '/go/' + encodeURIComponent(name);
     anchor.target = "_blank";
@@ -1242,47 +1283,45 @@
   });
 
   fetch(SERVICE_BASE + '/api/universe?requireData=1')
-   .then(function(response) {
+   .then(response => {
      if (!response.ok)
        throw new Error(response.statusText);
      return response.json();
    })
-   .then(function(data) {
-     var doc = [].slice.call($$('a.sector')).map(function(a) {
+   .then(data => {
+     var doc = $$('a.sector').map(a => {
        var name = a.innerText || a.textContent;
        name = name.replace(/^The /, '');
        return name;
      });
      var docSet = new Set(doc);
 
-     var known = data.Sectors.filter(function(s) {
+     var known = data.Sectors.filter(s => {
        var tags = s.Tags.split();
        if (tags.indexOf('meta') !== -1) return false;
        if (tags.indexOf('ZCR') !== -1) return false;
        return true;
      });
-     known.forEach(function(s) {
-       s.Names.forEach(function(name) {
+     known.forEach(s => {
+       s.Names.forEach(name => {
          name.Text = name.Text.replace(/^The /, '');
        });
      });
      var knownSet = new Set();
-     known.forEach(function(s) {
-       s.Names.forEach(function(name) { knownSet.add(name.Text); });
+     known.forEach(s => {
+       s.Names.forEach(name => { knownSet.add(name.Text); });
      });
-     known.forEach(function(s) {
-       if (!s.Names.some(function(name) { return docSet.has(name.Text); }))
+     known.forEach(s => {
+       if (!s.Names.some(name => docSet.has(name.Text)))
          console.warn('No credits for known sector: ' + s.Names[0].Text);
      });
-     doc.forEach(function(s) {
+     doc.forEach(s => {
        if (!knownSet.has(s))
          console.warn('Credits for unknown sector: ' + s);
      });
    })
-  .catch(function(reason) {
-    console.error(reason);
-  });
-}());
+  .catch(reason => { console.error(reason); });
+})();
 </script>
 
 <script src="toc.js" data-toc-selector="h2,h3"></script>

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <title>Printable Route - Traveller Map</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
-<script src="../map.js?update=2022-09-10T10:37:44"></script>
+<script src="../map.js?update=2023-01-02T10:51:10"></script>
 <script>
-window.addEventListener('load', function() {
-  var $ = document.querySelector.bind(document);
-  var $$ = document.querySelectorAll.bind(document);
+window.addEventListener('load', () => {
+  var $ = s => document.querySelector(s);
+  var $$ = s => Array.from(document.querySelectorAll(s));
 
   var params = new URL(document.location.href).searchParams;
 
@@ -20,16 +20,16 @@ window.addEventListener('load', function() {
     im: !!Number(params.get('im'))?1:0,
     nored: !!Number(params.get('nored'))?1:0
   }))
-    .then(function(response) {
+    .then(response => {
       if (!response.ok) return response.text();
       return response.json();
     })
-    .then(function(data) {
+    .then(data => {
       if (typeof data === 'string') throw new Error(data);
 
       var route = [];
       var total = 0;
-      data.forEach(function(world, index) {
+      data.forEach((world, index) => {
         world.Name = world.Name || '(Unnamed)';
         var sx = world.SectorX|0;
         var sy = world.SectorY|0;
@@ -63,17 +63,17 @@ window.addEventListener('load', function() {
 
       document.title = data[0].Name + ' to ' + data[data.length - 1].Name;
 
-      return Promise.all(Array.from($$('#routePath img')).map(function(img) {
-        return new Promise(function(resolve, reject) {
-          img.onload = function() { resolve(img); };
-          img.onerror = function(e) { reject(Error('Image failed to load')); };
+      return Promise.all($$('#routePath img').map(img => {
+        return new Promise((resolve, reject) => {
+          img.onload = () => { resolve(img); };
+          img.onerror = (e) => { reject(Error('Image failed to load')); };
         });
       }));
     })
-    .then(function() {
+    .then(() => {
       window.print();
     })
-    .catch(function(reason) {
+    .catch(reason => {
       alert(reason.message);
     });
 });

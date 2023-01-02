@@ -1,4 +1,4 @@
-window.onload = function() {
+window.onload = () => {
   var headers = document.querySelectorAll('th'),
       i, len = headers.length;
 

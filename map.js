@@ -1,10 +1,11 @@
+/*global Traveller */ // for lint and IDEs
 // ======================================================================
 // Exported Functionality
 // ======================================================================
 
 // NOTE: Used by other scripts
 var Util = {
-  makeURL: function(base, params) {
+  makeURL: (base, params) => {
     'use strict';
     base = String(base).replace(/\?.*/, '');
     if (!params) return base;
@@ -14,7 +15,7 @@ var Util = {
       if (value === undefined || value === null) continue;
       if (!Array.isArray(value))
         value = [value];
-      value.forEach(function(value) {
+      value.forEach(value => {
         args += (args ? '&' : '') + encodeURIComponent(key) + '=' + encodeURIComponent(value);
       });
     }
@@ -22,11 +23,11 @@ var Util = {
   },
 
   // Replace with URL/searchParams
-  parseURLQuery: function(url) {
+  parseURLQuery: url => {
     'use strict';
     var o = Object.create(null);
     if (url.search && url.search.length > 1) {
-      url.search.substring(1).split('&').forEach(function(pair) {
+      url.search.substring(1).split('&').forEach(pair => {
         if (!pair) return;
         var kv = pair.split('=', 2);
         if (kv.length === 2)
@@ -38,9 +39,9 @@ var Util = {
     return o;
   },
 
-  escapeHTML: function(s) {
+  escapeHTML: s => {
     'use strict';
-    return String(s).replace(/[&<>"']/g, function(c) {
+    return String(s).replace(/[&<>"']/g, c => {
       switch (c) {
       case '&': return '&amp;';
       case '<': return '&lt;';
@@ -52,7 +53,7 @@ var Util = {
     });
   },
 
-  once: function(func) {
+  once: func => {
     var run = false;
     return function() {
       if (run) return;
@@ -61,7 +62,7 @@ var Util = {
     };
   },
 
-  debounce: function(func, delay, immediate) {
+  debounce: (func, delay, immediate) => {
     var timeoutId = 0;
     if (immediate) {
       return function() {
@@ -69,14 +70,14 @@ var Util = {
           clearTimeout(timeoutId);
         else
           func.apply(this, arguments);
-        timeoutId = setTimeout(function() { timeoutId = 0; }, delay);
+        timeoutId = setTimeout(() => { timeoutId = 0; }, delay);
       };
     } else {
       return function() {
         var $this = this, $arguments = arguments;
         if (timeoutId)
           clearTimeout(timeoutId);
-        timeoutId = setTimeout(function() {
+        timeoutId = setTimeout(() => {
           func.apply($this, $arguments);
           timeoutId = 0;
         }, delay);
@@ -84,7 +85,7 @@ var Util = {
     }
   },
 
-  memoize: function(f) {
+  memoize: f => {
     var cache = Object.create(null);
     return function() {
       var key = JSON.stringify([].slice.call(arguments));
@@ -97,28 +98,28 @@ var Util = {
   // p.ignore(); // p will neither resolve nor reject
   // WARNING: p = ignorable(...).then(...); p.ignore(); will fail
   // (Promise subclassing is not used)
-  ignorable: function(p) {
+  ignorable: p => {
     var ignored = false;
-    var q = new Promise(function(resolve, reject) {
-      p.then(function(r) { if (!ignored) resolve(r); },
-             function(r) { if (!ignored) reject(r); });
+    var q = new Promise((resolve, reject) => {
+      p.then(r => { if (!ignored) resolve(r); },
+             r => { if (!ignored) reject(r); });
     });
-    q.ignore = function() { ignored = true; };
+    q.ignore = () => { ignored = true; };
     return q;
   },
 
-  fetchImage: function(url, img) {
-    return new Promise(function(resolve, reject) {
+  fetchImage: (url, img) => {
+    return new Promise((resolve, reject) => {
       img = img || document.createElement('img');
       img.src = url;
-      img.onload = function() { resolve(img); };
-      img.onerror = function(e) { reject(Error('Image failed to load')); };
+      img.onload = () => { resolve(img); };
+      img.onerror = e => { reject(Error('Image failed to load')); };
     });
   },
 
-  parseCookies: function() {
+  parseCookies: () =>  {
     var cookies = {};
-    document.cookie.split(/; +/g).forEach(function(pair) {
+    document.cookie.split(/; +/g).forEach(pair => {
       var i = pair.indexOf('=');
       if (i === -1) cookies[''] = pair;
       else cookies[pair.substring(0, i)] = pair.substring(i+1);
@@ -126,7 +127,7 @@ var Util = {
     return cookies;
   },
 
-  copyTextToClipboard: function(text) {
+  copyTextToClipboard: text => {
     var ta = document.createElement('textarea');
     ta.value = text;
     document.body.append(ta);
@@ -149,19 +150,19 @@ var Util = {
 };
 
 
-(function(global) {
+((global) => {
   'use strict';
 
   //----------------------------------------------------------------------
   // General Traveller stuff
   //----------------------------------------------------------------------
 
-  var SERVICE_BASE = (function(l) {
+  var SERVICE_BASE = ((l) => {
     'use strict';
     if (l.hostname === 'localhost' && l.pathname.indexOf('~') !== -1)
       return 'https://travellermap.com';
     return '';
-  }(window.location));
+  })(window.location);
 
   var LEGACY_STYLES = true;
 
@@ -225,14 +226,14 @@ var Util = {
     MaxScale: 512,
 
     // World-space: Hex coordinate, centered on Reference
-    sectorHexToWorld: function(sx, sy, hx, hy) {
+    sectorHexToWorld: (sx, sy, hx, hy) => {
       return {
         x: (sx * Astrometrics.SectorWidth) + hx - Astrometrics.ReferenceHexX,
         y: (sy * Astrometrics.SectorHeight) + hy - Astrometrics.ReferenceHexY
       };
     },
 
-    worldToSectorHex: function(x, y) {
+    worldToSectorHex: (x, y) => {
       x += Astrometrics.ReferenceHexX - 1;
       y += Astrometrics.ReferenceHexY - 1;
 
@@ -245,12 +246,12 @@ var Util = {
     },
 
     // Map-space: Cartesian coordinates, centered on Reference
-    sectorHexToMap: function(sx, sy, hx, hy) {
+    sectorHexToMap: (sx, sy, hx, hy) => {
       var world = Astrometrics.sectorHexToWorld(sx, sy, hx, hy);
       return Astrometrics.worldToMap(world.x, world.y);
     },
 
-    worldToMap: function(wx, wy) {
+    worldToMap: (wx, wy) => {
       var x = wx;
       var y = wy;
 
@@ -269,14 +270,14 @@ var Util = {
       return {x: x, y: y};
     },
 
-    mapToWorld: function(x, y) {
+    mapToWorld: (x, y) => {
       var wx = Math.round((x / Astrometrics.ParsecScaleX) + 0.5);
       var wy = Math.round((-y / Astrometrics.ParsecScaleY) + ((wx % 2 === 0) ? 0.5 : 0));
       return {x: wx, y: wy};
     },
 
     // World-space Coordinates (Reference is 0,0)
-    hexDistance: function(ax, ay, bx, by) {
+    hexDistance: (ax, ay, bx, by) => {
       function even(x) { return (x % 2) == 0; }
       function odd (x) { return (x % 2) != 0; }
       var dx = bx - ax;
@@ -300,7 +301,7 @@ var Util = {
     style: Styles.Poster
   };
 
-  var styleLookup = (function() {
+  var styleLookup = (() => {
     var sheets = {};
     var base = {
       overlay_color: '#8080ff',
@@ -324,22 +325,22 @@ var Util = {
         you_are_here_url: 'res/ui/youarehere-gray.svg'
       });
 
-    return function(style, property) {
+    return (style, property) => {
       var sheet = sheets[style] || sheets[Defaults.style];
       return sheet[property];
     };
-  }());
+  })();
 
 
   // ======================================================================
   // Data Services
   // ======================================================================
 
-  var MapService = (function() {
+  var MapService = (() => {
     function service(url, contentType, method) {
       return fetch(url, {method: method || 'GET',
                          headers: {Accept: contentType}})
-        .then(function(response) {
+        .then(response => {
           if (!response.ok)
             throw Error(response.statusText);
           return (contentType === 'application/json') ?
@@ -352,81 +353,82 @@ var Util = {
     }
 
     return {
-      makeURL: function(path, options) {
+      makeURL: (path, options) => {
         return url(path, options);
       },
 
-      coordinates: function(sector, hex, options) {
+      coordinates: (sector, hex, options) => {
         options = Object.assign({}, options, {sector: sector, hex: hex});
         return service(url('/api/coordinates', options),
                        options.accept || 'application/json');
       },
 
-      credits: function(worldX, worldY, options) {
+      credits: (worldX, worldY, options) => {
         options = Object.assign({}, options, {x: worldX, y: worldY});
         return service(url('/api/credits', options),
                        options.accept || 'application/json');
       },
 
-      search: function(query, options, method) {
+      search: (query, options, method) => {
         options = Object.assign({}, options, {q: query});
         return service(url('/api/search', options),
                        options.accept || 'application/json', method);
       },
 
-      sectorData: function(sector, options) {
+      sectorData: (sector, options) => {
         options = Object.assign({}, options, {sector: sector});
         return service(url('/api/sec', options),
                        options.accept || 'text/plain');
       },
 
-      sectorDataTabDelimited: function(sector, options) {
+      sectorDataTabDelimited: (sector, options) => {
         options = Object.assign({}, options, {sector: sector, type: 'TabDelimited'});
         return service(url('/api/sec', options),
                        options.accept || 'text/plain');
       },
 
-      sectorMetaData: function(sector, options) {
+      sectorMetaData: (sector, options) => {
         options = Object.assign({}, options, {sector: sector});
         return service(url('/api/metadata', options),
                        options.accept || 'application/json');
       },
 
-      MSEC: function(sector, options) {
+      MSEC: (sector, options) => {
         options = Object.assign({}, options, {sector: sector});
         return service(url('/api/msec', options),
                        options.accept || 'text/plain');
       },
 
-      universe: function(options) {
+      universe: (options) => {
         options = Object.assign({}, options);
         return service(url('/api/universe', options),
                        options.accept || 'application/json');
       }
     };
-  }());
+  })();
 
   // ======================================================================
   // Least-Recently-Used Cache
   // ======================================================================
 
-  function LRUCache(capacity) {
-    this.capacity = capacity;
-    this.map = {};
-    this.queue = [];
-  }
-  LRUCache.prototype = {
-    ensureCapacity: function(capacity) {
-      if (this.capacity < capacity)
-        this.capacity = capacity;
-    },
-
-    clear: function() {
+  class LRUCache {
+    constructor(capacity) {
+      this.capacity = capacity;
       this.map = {};
       this.queue = [];
-    },
+    }
 
-    fetch: function(key) {
+    ensureCapacity(capacity) {
+      if (this.capacity < capacity)
+        this.capacity = capacity;
+    }
+
+    clear() {
+      this.map = {};
+      this.queue = [];
+    }
+
+    fetch(key) {
       key = '$' + key;
       var value = this.map[key];
       if (value === undefined)
@@ -437,9 +439,9 @@ var Util = {
         this.queue.splice(index, 1);
       this.queue.push(key);
       return value;
-    },
+    }
 
-    insert: function(key, value) {
+    insert(key, value) {
       key = '$' + key;
       // Remove previous instances
       var index = this.queue.indexOf(key);
@@ -454,29 +456,30 @@ var Util = {
         delete this.map[key];
       }
     }
-  };
+  }
 
   // ======================================================================
   // Image Stash
   // ======================================================================
 
-  function ImageStash() {
-    this.map = new Map();
-  }
-  ImageStash.prototype = {
-    get: function(url, callback) {
+  class ImageStash {
+    constructor() {
+      this.map = new Map();
+    }
+
+    get(url, callback) {
       if (this.map.has(url))
         return this.map.get(url);
 
       this.map.set(url, undefined);
-      Util.fetchImage(url).then(function(img) {
+      Util.fetchImage(url).then(img => {
         this.map.set(url, img);
         callback(img);
-      }.bind(this));
+      });
 
       return undefined;
     }
-  };
+  }
   var stash = new ImageStash();
 
 
@@ -484,24 +487,22 @@ var Util = {
   // Animation Utilities
   // ======================================================================
 
-  var Animation = (function() {
-    function isCallable(o) {
-      return typeof o === 'function';
-    }
+  function isCallable(o) {
+    return typeof o === 'function';
+  }
 
-    //
+  class Animation {
     // dur = total duration (seconds)
     // smooth = optional smoothing function
     // set onanimate to function called with animation position (0.0 ... 1.0)
-    //
-    function Animation(dur, smooth) {
+    constructor(dur, smooth) {
       var start = Date.now();
 
       this.onanimate = null;
       this.oncancel = null;
       this.oncomplete = null;
 
-      var tickFunc = function() {
+      var tickFunc = () => {
         var f = (Date.now() - start) / 1000 / dur;
         if (f < 1.0)
           this.timerid = requestAnimationFrame(tickFunc);
@@ -515,75 +516,71 @@ var Util = {
 
         if (f >= 1.0 && isCallable(this.oncomplete))
           this.oncomplete();
-      }.bind(this);
+      };
 
       this.timerid = requestAnimationFrame(tickFunc);
-   }
+    }
 
-    Animation.prototype = {
-      cancel: function() {
-        if (this.timerid) {
-          cancelAnimationFrame(this.timerid);
-          if (isCallable(this.oncancel))
-            this.oncancel();
-        }
+    cancel() {
+      if (this.timerid) {
+        cancelAnimationFrame(this.timerid);
+        if (isCallable(this.oncancel))
+          this.oncancel();
       }
-    };
+    }
+  }
 
-    Animation.interpolate = function(a, b, p) {
-      return a * (1.0 - p) + b * p;
-    };
+  Animation.interpolate = (a, b, p) => {
+    return a * (1.0 - p) + b * p;
+  };
 
-    // Time smoothing function - input time is t within duration dur.
-    // Acceleration period is a, deceleration period is d.
-    //
-    // Example:     t_filtered = smooth( t, 1.0, 0.25, 0.25 );
-    //
-    // Reference:   http://www.w3.org/TR/2005/REC-SMIL2-20050107/smil-timemanip.html
-    Animation.smooth = function(t, dur, a, d) {
-      var dacc = dur * a;
-      var ddec = dur * d;
-      var r = 1 / (1 - a / 2 - d / 2);
-      var r_t, tdec, pd;
+  // Time smoothing function - input time is t within duration dur.
+  // Acceleration period is a, deceleration period is d.
+  //
+  // Example:     t_filtered = smooth( t, 1.0, 0.25, 0.25 );
+  //
+  // Reference:   http://www.w3.org/TR/2005/REC-SMIL2-20050107/smil-timemanip.html
+  Animation.smooth = (t, dur, a, d) => {
+    var dacc = dur * a;
+    var ddec = dur * d;
+    var r = 1 / (1 - a / 2 - d / 2);
+    var r_t, tdec, pd;
 
-      if (t < dacc) {
-        r_t = r * (t / dacc);
-        return t * r_t / 2;
-      } else if (t <= (dur - ddec)) {
-        return r * (t - dacc / 2);
-      } else {
-        tdec = t - (dur - ddec);
-        pd = tdec / ddec;
+    if (t < dacc) {
+      r_t = r * (t / dacc);
+      return t * r_t / 2;
+    } else if (t <= (dur - ddec)) {
+      return r * (t - dacc / 2);
+    } else {
+      tdec = t - (dur - ddec);
+      pd = tdec / ddec;
 
-        return r * (dur - dacc / 2 - ddec + tdec * (2 - pd) / 2);
-      }
-    };
-
-    return Animation;
-  }());
+      return r * (dur - dacc / 2 - ddec + tdec * (2 - pd) / 2);
+    }
+  };
 
 
   // ======================================================================
   // Observable name/value map
   // ======================================================================
 
-  function NamedOptions(notify) {
-    this._options = {};
-    this._notify = notify;
-  }
-  NamedOptions.prototype = {
-    keys: function() { return Object.keys(this._options); },
-    get: function(key) { return this._options[key]; },
-    set: function(key, value) { this._options[key] = value; this._notify(key); },
-    delete: function(key) { delete this._options[key]; this._notify(key); },
-    forEach: function(fn, thisArg) {
+  class NamedOptions {
+    constructor(notify) {
+      this._options = {};
+      this._notify = notify;
+    }
+    keys() { return Object.keys(this._options); }
+    get(key) { return this._options[key]; }
+    set(key, value) { this._options[key] = value; this._notify(key); }
+    delete(key) { delete this._options[key]; this._notify(key); }
+    forEach(fn, thisArg) {
       var keys = Object.keys(this._options);
       for (var i = 0; i < keys.length; ++i) {
         var k = keys[i];
         fn.call(thisArg, this._options[k], k, i);
       }
     }
-  };
+  }
 
   //----------------------------------------------------------------------
   //
@@ -591,14 +588,14 @@ var Util = {
   //
   //   var map = new Map( document.getElementById('YourMapDiv') );
   //
-  //   map.OnPositionChanged = function() { update permalink }
-  //   map.OnScaleChanged    = function() { update scale indicator }
-  //   map.OnStyleChanged    = function() { update control panel }
-  //   map.OnOptionsChanged  = function() { update control panel }
+  //   map.OnPositionChanged = () => { update permalink }
+  //   map.OnScaleChanged    = () => { update scale indicator }
+  //   map.OnStyleChanged    = () => { update control panel }
+  //   map.OnOptionsChanged  = () => { update control panel }
   //
-  //   map.OnHover           = function( {x, y} ) { show data }
-  //   map.OnClick           = function( {x, y} ) { show data }
-  //   map.OnDoubleClick     = function( {x, y} ) { show data }
+  //   map.OnHover           = ( {x, y} ) => { show data }
+  //   map.OnClick           = ( {x, y} ) => { show data }
+  //   map.OnDoubleClick     = ( {x, y} ) => { show data }
   //
   //   Read-Only:
   //     map.worldX
@@ -617,7 +614,7 @@ var Util = {
   //      .get(k)
   //      .set(k, v)
   //      .delete(k)
-  //      .forEach(function(value, key, index) { ... });
+  //      .forEach((value, key, index) => { ... });
   //
   //   map.CenterAtSectorHex( sx, sy, hx, hy, {scale, immediate} );
   //   map.Scroll( dx, dy, fAnimate );
@@ -635,7 +632,7 @@ var Util = {
 
   function fireEvent(target, event, data) {
     if (typeof target['On' + event] !== 'function') return;
-    setTimeout(function() { target['On' + event](data); }, 0);
+    setTimeout(() => { target['On' + event](data); }, 0);
   }
 
   // ======================================================================
@@ -676,10 +673,10 @@ var Util = {
 
     this.cache = new LRUCache(64);
 
-    this.namedOptions = new NamedOptions(Util.debounce(function(key) {
+    this.namedOptions = new NamedOptions(Util.debounce((key) => {
       this.invalidate();
       fireEvent(this, 'OptionsChanged', this.options);
-    }.bind(this), 1));
+    }, 1));
     this.namedOptions.NAMES = INT_OPTIONS.concat(STRING_OPTIONS);
 
     this.loading = new Set();
@@ -720,7 +717,7 @@ var Util = {
     // ----------------------------------------------------------------------
 
     var dragging, drag_coords, was_dragged, previous_focus;
-    container.addEventListener('mousedown', function(e) {
+    container.addEventListener('mousedown', e => {
       this.cancelAnimation();
       previous_focus = document.activeElement;
       container.focus();
@@ -731,10 +728,10 @@ var Util = {
 
       e.preventDefault();
       e.stopPropagation();
-    }.bind(this), true);
+    }, true);
 
     var hover_coords;
-    container.addEventListener('mousemove', function(e) {
+    container.addEventListener('mousemove', e => {
       var coords = this.eventCoords(e);
 
       // Ignore mousemove immediately following mousedown with same coords.
@@ -758,9 +755,9 @@ var Util = {
 
       hover_coords = wc;
       fireEvent(this, 'Hover', hover_coords);
-    }.bind(this), true);
+    }, true);
 
-    document.addEventListener('mouseup', function(e) {
+    document.addEventListener('mouseup', e => {
       if (dragging) {
         dragging = false;
         container.classList.remove('dragging');
@@ -769,7 +766,7 @@ var Util = {
       }
     });
 
-    container.addEventListener('click', function(e) {
+    container.addEventListener('click', e => {
       e.preventDefault();
       e.stopPropagation();
 
@@ -777,9 +774,9 @@ var Util = {
         fireEvent(this, 'Click',
                   Object.assign({}, this.eventToWorldCoords(e), {activeElement: previous_focus}));
       }
-    }.bind(this));
+    });
 
-    container.addEventListener('dblclick', function(e) {
+    container.addEventListener('dblclick', e => {
       e.preventDefault();
       e.stopPropagation();
 
@@ -795,9 +792,9 @@ var Util = {
       }
 
       fireEvent(this, 'DoubleClick', this.eventToWorldCoords(e));
-    }.bind(this));
+    });
 
-    container.addEventListener('wheel', function(e) {
+    container.addEventListener('wheel', e => {
       this.cancelAnimation();
 
       var newscale = this._logScale + SCROLL_SCALE_DELTA * Math.sign(e.deltaY);
@@ -806,17 +803,17 @@ var Util = {
 
       e.preventDefault();
       e.stopPropagation();
-    }.bind(this));
+    });
 
 
     // ----------------------------------------------------------------------
     // Resize
     // ----------------------------------------------------------------------
 
-    window.addEventListener('resize', function() {
+    window.addEventListener('resize', () => {
       // Timeout to work around iOS Safari giving incorrect sizes while 'resize'
       // dispatched.
-      setTimeout(function() {
+      setTimeout(() => {
         var rect = boundingElement.getBoundingClientRect();
         if (rect.left === this.rect.left &&
             rect.top === this.rect.top &&
@@ -824,8 +821,8 @@ var Util = {
             rect.height === this.rect.height) return;
         this.rect = rect;
         this.resetCanvas();
-      }.bind(this), 150);
-    }.bind(this));
+      }, 150);
+    });
 
 
     // ----------------------------------------------------------------------
@@ -835,7 +832,7 @@ var Util = {
     var pinch1, pinch2;
     var touch_coords, touch_wx, touch_wc, was_touch_dragged;
 
-    container.addEventListener('touchmove', function(e) {
+    container.addEventListener('touchmove', e => {
       was_touch_dragged = true;
       if (e.touches.length === 1) {
 
@@ -865,9 +862,9 @@ var Util = {
 
       e.preventDefault();
       e.stopPropagation();
-    }.bind(this), true);
+    }, true);
 
-    container.addEventListener('touchend', function(e) {
+    container.addEventListener('touchend', e => {
       if (e.touches.length < 2) {
         this.defer_loading = false;
         this.invalidate();
@@ -882,9 +879,9 @@ var Util = {
       }
       e.preventDefault();
       e.stopPropagation();
-    }.bind(this), true);
+    }, true);
 
-    container.addEventListener('touchstart', function(e) {
+    container.addEventListener('touchstart', e => {
       was_touch_dragged = false;
       previous_focus = document.activeElement;
 
@@ -899,7 +896,7 @@ var Util = {
 
       e.preventDefault();
       e.stopPropagation();
-    }.bind(this), true);
+    }, true);
 
 
     // ----------------------------------------------------------------------
@@ -921,19 +918,7 @@ var Util = {
     // Scrolling - track key down/up state and scroll with RAF.
     var key_state = {};
     var keyscroll_timerid;
-    container.addEventListener('keydown', function(e) {
-      if (e.ctrlKey || e.altKey || e.metaKey)
-        return;
-      key_state[e.keyCode] = true;
-      if (!keyscroll_timerid)
-        keyscroll_timerid = requestAnimationFrame(keyScroll);
-    });
-    container.addEventListener('keyup', function(e) {
-      key_state[e.keyCode] = false;
-      if (!keyscroll_timerid)
-        keyscroll_timerid = requestAnimationFrame(keyScroll);
-    });
-    var keyScroll = function() {
+    var keyScroll = () => {
       var dx = 0, dy = 0;
 
       if (key_state[VK_UP] || key_state[VK_I])
@@ -951,9 +936,21 @@ var Util = {
       } else {
         keyscroll_timerid = 0;
       }
-    }.bind(this);
+    };
+    container.addEventListener('keydown', e => {
+      if (e.ctrlKey || e.altKey || e.metaKey)
+        return;
+      key_state[e.keyCode] = true;
+      if (!keyscroll_timerid)
+        keyscroll_timerid = requestAnimationFrame(keyScroll);
+    });
+    container.addEventListener('keyup', e => {
+      key_state[e.keyCode] = false;
+      if (!keyscroll_timerid)
+        keyscroll_timerid = requestAnimationFrame(keyScroll);
+    });
 
-    container.addEventListener('keydown', function(e) {
+    container.addEventListener('keydown', e => {
       if (e.ctrlKey || e.altKey || e.metaKey)
         return;
 
@@ -965,7 +962,7 @@ var Util = {
 
       e.preventDefault();
       e.stopPropagation();
-    }.bind(this));
+    });
 
     // Final initialization.
     this.resetCanvas();
@@ -1061,10 +1058,10 @@ var Util = {
     this.dirty = true;
     if (this._raf_handle) return;
 
-    this._raf_handle = requestAnimationFrame(function invalidationRAF(ms) {
+    this._raf_handle = requestAnimationFrame(ms => {
       this._raf_handle = null;
       this.redraw();
-    }.bind(this));
+    });
   };
 
   TravellerMap.prototype.redraw = function(force) {
@@ -1078,7 +1075,7 @@ var Util = {
 
     // Tile URL (apart from x/y/scale)
     var params = {options: this.options, style: this.style};
-    this.namedOptions.forEach(function(value, key) {
+    this.namedOptions.forEach((value, key) => {
       if (key === 'ew' || key === 'qz') return;
       params[key] = value;
     });
@@ -1292,13 +1289,13 @@ var Util = {
     this.loading.add(url);
 
     Util.fetchImage(url)
-      .then(function(img) {
+      .then(img => {
         this.loading.delete(url);
         this.cache.insert(url, img);
         callback(img);
-      }.bind(this), function() {
+      }, () => {
         this.loading.delete(url);
-      }.bind(this));
+      });
 
     return undefined;
   };
@@ -1320,7 +1317,7 @@ var Util = {
   };
 
   TravellerMap.prototype.animateTo = function(scale, x, y, sec) {
-    return new Promise(function(resolve, reject) {
+    return new Promise((resolve, reject) => {
       this.cancelAnimation();
       sec = sec || 2.0;
       var os = this.scale,
@@ -1331,11 +1328,9 @@ var Util = {
         return;
       }
 
-      this.animation = new Animation(sec, function(p) {
-        return Animation.smooth(p, 1.0, 0.1, 0.25);
-      });
+      this.animation = new Animation(sec, p => Animation.smooth(p, 1.0, 0.1, 0.25));
 
-      this.animation.onanimate = function(p) {
+      this.animation.onanimate = p => {
         // Interpolate scale in log space.
         this.scale = pow2(Animation.interpolate(log2(os), log2(scale), p));
         // TODO: If animating scale, this should follow an arc (parabola?) through 3space treating
@@ -1347,11 +1342,11 @@ var Util = {
         var p2 = 1 - ((1-hp) * (1-hp));
         this.position = [Animation.interpolate(ox, x, p2), Animation.interpolate(oy, y, p2)];
         this.redraw();
-      }.bind(this);
+      };
 
       this.animation.oncomplete = resolve;
       this.animation.oncancel = reject;
-    }.bind(this));
+    });
   };
 
   TravellerMap.prototype.drawOverlay = function(overlay) {
@@ -1389,13 +1384,13 @@ var Util = {
       ctx.lineWidth = 15;
 
     ctx.beginPath();
-    route.forEach(function(stop, index) {
+    route.forEach((stop, index) => {
       var pt = Astrometrics.sectorHexToMap(stop.sx, stop.sy, stop.hx, stop.hy);
       pt = this.mapToPixel(pt.x, pt.y);
       ctx[index ? 'lineTo' : 'moveTo'](pt.x, pt.y);
     }, this);
     var dots = (this._logScale >= 7) ? route : [route[0], route[route.length - 1]];
-    dots.forEach(function(stop, index) {
+    dots.forEach((stop, index) => {
       var pt = Astrometrics.sectorHexToMap(stop.sx, stop.sy, stop.hx, stop.hy);
       pt = this.mapToPixel(pt.x, pt.y);
       ctx.moveTo(pt.x + ctx.lineWidth / 2, pt.y);
@@ -1417,12 +1412,12 @@ var Util = {
                                 main.length <= 50 ? 'main_m_color' : 'main_l_color');
     ctx.beginPath();
     var radius = 1.15 * this.scale / 2;
-    main.forEach(function(world) {
+    main.forEach(world => {
       var pt = Astrometrics.sectorHexToMap(world.sx, world.sy, world.hx, world.hy);
       pt = this.mapToPixel(pt.x, pt.y);
       ctx.moveTo(pt.x + radius, pt.y);
       ctx.arc(pt.x, pt.y, radius, 0, Math.PI*2);
-    }, this);
+    });
     ctx.fill();
     ctx.restore();
   };
@@ -1706,12 +1701,10 @@ var Util = {
         tx = ox + dx / s,
         ty = oy + dy / s;
 
-    this.animation = new Animation(1.0, function(p) {
-      return Animation.smooth(p, 1.0, 0.1, 0.25);
-    });
-    this.animation.onanimate = function(p) {
+    this.animation = new Animation(1.0, p => Animation.smooth(p, 1.0, 0.1, 0.25));
+    this.animation.onanimate = p => {
       this.position = [Animation.interpolate(ox, tx, p), Animation.interpolate(oy, ty, p)];
-    }.bind(this);
+    };
   };
 
   var ZOOM_DELTA = 0.5;
@@ -1786,7 +1779,7 @@ var Util = {
     }
 
     function has(params, list) {
-      return list.every(function(item) { return item in params; });
+      return list.every(item => item in params);
     }
 
     if ('scale' in params)
@@ -1807,10 +1800,10 @@ var Util = {
       this.AddMarker('you_are_here', float('yah_x'), float('yah_y'));
     } else if (has(params, ['yah_sector'])) {
       MapService.coordinates(params.yah_sector, params.yah_hex)
-        .then(function(location) {
+        .then(location => {
           var pt = Astrometrics.worldToMap(location.x, location.y);
           this.AddMarker('you_are_here', pt.x, pt.y);
-        }.bind(this), function() {
+        }, () => {
           alert('The requested marker location "' + params.yah_sector +
                 ('yah_hex' in params ? (' ' + params.yah_hex) : '') +
                 '" was not found.');
@@ -1824,10 +1817,10 @@ var Util = {
       this.AddMarker('custom', float('marker_x'), float('marker_y'), params.marker_url);
     } else if (has(params, ['marker_sector', 'marker_url'])) {
       MapService.coordinates(params.marker_sector, params.marker_hex)
-        .then(function(location) {
+        .then(location => {
           var pt = Astrometrics.worldToMap(location.x, location.y);
           this.AddMarker('custom', pt.x, pt.y, params.marker_url);
-        }.bind(this), function() {
+        }, () => {
           alert('The requested marker location "' + params.marker_sector +
                 ('marker_hex' in params ? (' ' + params.marker_hex) : '') +
                 '" was not found.');
@@ -1851,7 +1844,7 @@ var Util = {
     }
     // Compact form
     if ('or' in params) {
-      params.or.split('~').forEach(function(or) {
+      params.or.split('~').forEach(or => {
         function float(s) { var n = parseFloat(s); return isNaN(n) ? 0 : n; }
         var a = or.split('!');
         this.AddOverlay({
@@ -1859,7 +1852,7 @@ var Util = {
           x:float(a[0]), y:float(a[1]), w:float(a[2]), h:float(a[3]),
           style:a[4]
         });
-      }.bind(this));
+      });
     }
 
     // Circle overlays
@@ -1877,12 +1870,12 @@ var Util = {
     }
     // Compact form
     if ('oc' in params) {
-      params.oc.split('~').forEach(function(oc) {
+      params.oc.split('~').forEach(oc => {
         function float(s) { var n = parseFloat(s); return isNaN(n) ? 0 : n; }
         var a = oc.split('!');
         this.AddOverlay({
           type: 'circle', x:float(a[0]), y:float(a[1]), r:float(a[2]), style: a[3]});
-      }.bind(this));
+      });
     }
 
     // Various coordinate schemes - ordered by priority
@@ -1897,7 +1890,7 @@ var Util = {
         float('sx'), float('sy'), float('hx'), float('hy'), {scale: float('scale')});
     } else if ('sector' in params) {
       MapService.coordinates(params.sector, params.hex, {subsector: params.subsector})
-        .then(function(location) {
+        .then(location => {
           if (location.hx && location.hy) { // NOTE: Test for undefined -or- zero
             this.CenterAtSectorHex(location.sx, location.sy, location.hx, location.hy, {scale: 64});
           } else {
@@ -1921,22 +1914,22 @@ var Util = {
             delete params.marker;
           }
 
-        }.bind(this), function() {
+        }, () => {
           alert('The requested location "' + params.sector +
                 ('hex' in params ? (' ' + params.hex) : '') + '" was not found.');
         });
     }
 
     // Int/Boolean options
-    INT_OPTIONS.forEach(function(name) {
+    INT_OPTIONS.forEach(name => {
       if (name in params)
         this.namedOptions.set(name, int(name));
-    }, this);
+    });
     // String options
-    STRING_OPTIONS.forEach(function(name) {
+    STRING_OPTIONS.forEach(name => {
       if (name in params)
         this.namedOptions.set(name, params[name]);
-    }, this);
+    });
 
     return params;
   };
@@ -1956,4 +1949,4 @@ var Util = {
     fromHex: fromHex
   };
 
-}(this));
+})(this);

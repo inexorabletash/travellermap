@@ -8,7 +8,7 @@
 
 window.addEventListener('DOMContentLoaded', async e => {
   const $ = s => document.querySelector(s);
-  const $$ = s => document.querySelectorAll(s);
+  const $$ = s => Array.from(document.querySelectorAll(s));
 
   const cmp = (a, b) => a < b ? -1 : b < a ? 1 : 0;
 
@@ -56,7 +56,7 @@ window.addEventListener('DOMContentLoaded', async e => {
       });
   });
 
-  Array.from($$('textarea.drag-n-drop')).forEach(elem => {
+  $$('textarea.drag-n-drop').forEach(elem => {
     elem.addEventListener('dragover', e => {
       e.stopPropagation();
       e.preventDefault();

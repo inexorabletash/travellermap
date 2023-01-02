@@ -1,13 +1,13 @@
-window.addEventListener('DOMContentLoaded', function() {
-  var $ = function(s) { return document.querySelector(s); };
-  var $$ = function(s) { return document.querySelectorAll(s); };
+window.addEventListener('DOMContentLoaded', () => {
+  var $ = s => document.querySelector(s);
+  var $$ = s => Array.from(document.querySelectorAll(s));
 
   var config = $('script[src="toc.js"]');
   var selector = (config && config.getAttribute('data-toc-selector')) || 'h2,h3';
 
   var toc = document.createElement('nav');
   toc.className = 'toc';
-  [].slice.call($$(selector)).forEach(function(h) {
+  $$(selector).forEach(h => {
     var a = document.createElement('a');
     var text = h.textContent || h.innerText;
     if (!h.id) {
