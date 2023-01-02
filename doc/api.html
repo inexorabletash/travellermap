@@ -1713,7 +1713,7 @@ function sectorHexToWorldXY(sx, sy, hx, hy) {
         + (hx - REFERENCE_HEX_X);
   var y = (sy - REFERENCE_SECTOR_Y) * SECTOR_HEIGHT
         + (hy - REFERENCE_HEX_Y);
-  return {x: x, y: y};
+  return { x, y };
 }
   </pre>
   <p>
@@ -1772,7 +1772,7 @@ function worldXYToMapXY(world_x, world_y) {
   var iy = isEven(world_x) ? world_y - 0.5 : world_y
   var x = ix * PARSEC_SCALE_X;
   var y = iy * -PARSEC_SCALE_Y;
-  return {x: x, y: y};
+  return { x, y };
 }
   </pre>
   <p>

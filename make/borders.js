@@ -178,10 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
               continue;
           }
 
-          borders.push({
-            allegiance: alleg,
-            path: path
-          });
+          borders.push({ allegiance: alleg, path });
         }
         last_alleg = alleg;
       }

@@ -16,7 +16,7 @@ function parseTabDelimited(s) {
   const fields = lines.shift().split('\t');
   return {
     type: 'tab',
-    fields: fields,
+    fields,
     worlds: lines.map(line => {
       const cols = line.split('\t');
       const world = {};
@@ -47,7 +47,7 @@ function parseColumnDelimited(s) {
   fields = colsplit(fields);
   return {
     type: 'col',
-    fields: fields,
+    fields,
     worlds: lines.map(line => {
       line = colsplit(line);
       const world = {};
@@ -86,8 +86,8 @@ function parseSec(s) {
   return {
     type: 'sec',
     fields: ['Name', 'Hex', 'UWP', 'Base', 'Remarks', 'Zone', 'PBG', 'Allegiance', 'Stars'],
-    header: header,
-    worlds: worlds
+    header,
+    worlds
   };
 }
 

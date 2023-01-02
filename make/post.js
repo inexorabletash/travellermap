@@ -42,14 +42,14 @@ window.addEventListener('DOMContentLoaded', async e => {
           name = s[0],
           milieu = s[1] || undefined;
     Traveller.MapService.sectorData(name, {
-      type: 'SecondSurvey', metadata: 0, milieu: milieu})
+      type: 'SecondSurvey', metadata: 0, milieu})
       .then(data => {
         const target = $('#data');
         if (target) target.value = data;
       });
 
     Traveller.MapService.sectorMetaData(name, {
-      accept: 'text/xml', milieu: milieu})
+      accept: 'text/xml', milieu})
       .then(data => {
         const target = $('#metadata');
         if (target) target.value = data;

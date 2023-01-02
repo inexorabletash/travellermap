@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <link rel="stylesheet" href="../site.css?update=2022-09-10T10:37:44">
 
-<script src="../map.js?update=2023-01-02T15:25:08"></script>
+<script src="../map.js?update=2023-01-02T15:50:20"></script>
 <script src="borders.js"></script>
 <script>
 'use strict';
@@ -148,10 +148,7 @@ function updateWalks(map) {
             continue;
         }
 
-        borders.push({
-          allegiance: alleg,
-          path: path
-        });
+        borders.push({allegiance: alleg, path});
       }
       last_alleg = alleg;
     }
@@ -207,7 +204,7 @@ function hexContents(x, y, map) {
 async function loadSector(sx, sy, milieu) {
   try {
     let sectorName = undefined;
-    const data = await Traveller.MapService.sectorDataTabDelimited(sectorName, {sx: sx, sy: sy, milieu: milieu});
+    const data = await Traveller.MapService.sectorDataTabDelimited(sectorName, {sx, sy, milieu});
     const worlds = [];
     const lines = data.split(/\r?\n/);
     const header = lines.shift().toLowerCase().split('\t');
@@ -253,7 +250,7 @@ window.onload = async () => {
 
   let coords;
   try {
-    coords = await Traveller.MapService.coordinates(sector, {milieu: milieu});
+    coords = await Traveller.MapService.coordinates(sector, {milieu});
   } catch (ex) {
     showError('No such sector: ' + sector);
     return;

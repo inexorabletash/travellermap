@@ -79,10 +79,7 @@ function updateWalks() {
         path = path.map(hex => hexLabel(hex[0], hex[1]));
         path.forEach(label => { visited[label] = true; });
 
-        borders.push({
-          allegiance: alleg,
-          path: path
-        });
+        borders.push({allegiance: alleg, path});
       }
       last_alleg = alleg;
     }

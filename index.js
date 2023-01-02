@@ -196,7 +196,7 @@ window.addEventListener('DOMContentLoaded', () => {
             height = Math.round(rect.height),
             x = ( map_center_x * scale - ( width / 2 ) ) / width,
             y = ( -map_center_y * scale - ( height / 2 ) ) / height;
-      return { x: x, y: y, w: width, h: height, scale: scale };
+      return { x, y, w: width, h: height, scale };
     })();
     snapshotParams.x = round(snapshotParams.x, 1/1000);
     snapshotParams.y = round(snapshotParams.y, 1/1000);
@@ -841,7 +841,7 @@ window.addEventListener('DOMContentLoaded', () => {
       console.log('results: ', results);
       const term = urlParams['search'] || '';
       $('#searchBox').value = term;
-      search(term, {navigate: true, results: results});
+      search(term, {navigate: true, results});
     } catch (ex) {
       console.warn('Error parsing "qr" data: ', ex);
     }
@@ -935,7 +935,7 @@ window.addEventListener('DOMContentLoaded', () => {
     } else {
       dataTimeout = setTimeout(async () => {
         dataRequest = Util.ignorable(Traveller.MapService.credits(worldX, worldY, {
-          milieu: milieu
+          milieu
         }));
         const data = await dataRequest;
         dataRequest = null;
@@ -967,7 +967,7 @@ window.addEventListener('DOMContentLoaded', () => {
         data.SectorWikiURLNoScheme = data.SectorWikiURL.replace(/^\w+:\/\//, '');
         data.BookletURL = Traveller.MapService.makeURL(
           '/data/' + encodeURIComponent(data.SectorName) + '/booklet', {
-            milieu: milieu
+            milieu
           });
 
         data.PosterURL = Traveller.MapService.makeURL('/api/poster', {
@@ -975,15 +975,15 @@ window.addEventListener('DOMContentLoaded', () => {
           accept: 'application/pdf',
           style: map.style,
           options: map.options,
-          milieu: milieu
+          milieu
         });
         data.DataURL = Traveller.MapService.makeURL('/api/sec', {
           sector: data.SectorName, type: 'SecondSurvey',
-          milieu: milieu
+          milieu
         });
         data.TSVDataURL = Traveller.MapService.makeURL('/api/sec', {
           sector: data.SectorName, type: 'TabDelimited',
-          milieu: milieu
+          milieu
         });
       }
 
@@ -1074,7 +1074,7 @@ window.addEventListener('DOMContentLoaded', () => {
       const response = await fetch(Traveller.MapService.makeURL(
         '/api/jumpworlds?', {
         sector: context.sector, hex: context.hex,
-        milieu: milieu,
+        milieu,
         jump: 0
       }));
       if (!response.ok) throw new Error(response.statusText);
@@ -1088,7 +1088,7 @@ window.addEventListener('DOMContentLoaded', () => {
         world.DataSheetURL = Util.makeURL('print/world', {
           sector: context.sector,
           hex: context.hex,
-          milieu: milieu,
+          milieu,
           style: map.style,
           print: true
         });
@@ -1097,7 +1097,7 @@ window.addEventListener('DOMContentLoaded', () => {
         world.JumpMapURL = Traveller.MapService.makeURL('/api/jumpmap', {
           sector: context.sector,
           hex: context.hex,
-          milieu: milieu,
+          milieu,
           style: map.style,
           options: map.options &
             (Traveller.MapOptions.BordersMask | Traveller.MapOptions.NamesMask |
@@ -1267,7 +1267,7 @@ window.addEventListener('DOMContentLoaded', () => {
           hx = (((n % 4) | 0) + 0.5) * (Traveller.Astrometrics.SectorWidth / 4);
           hy = (((n / 4) | 0) + 0.5) * (Traveller.Astrometrics.SectorHeight / 4);
           scale = subsector.Scale || 32;
-          subsector.href = Util.makeURL(base_url, {scale: scale, sx: sx, sy: sy, hx: hx, hy: hy});
+          subsector.href = Util.makeURL(base_url, {scale, sx, sy, hx, hy});
           applyTags(subsector);
         } else if (item.Sector) {
           const sector = item.Sector;
@@ -1277,7 +1277,7 @@ window.addEventListener('DOMContentLoaded', () => {
           hy = (Traveller.Astrometrics.SectorHeight / 2);
           scale = sector.Scale || 8;
           sector.href = Util.makeURL(base_url, {
-            scale: scale, sx: sx, sy: sy, hx: hx, hy: hy,
+            scale, sx, sy, hx, hy,
             sector: sector.Name
           });
           applyTags(sector);
@@ -1290,7 +1290,7 @@ window.addEventListener('DOMContentLoaded', () => {
           hy = world.HexY|0;
           world.Hex = pad2(hx) + pad2(hy);
           scale = world.Scale || 64;
-          let params = {scale: scale, sx: sx, sy: sy, hx: hx, hy: hy};
+          let params = {scale, sx, sy, hx, hy};
           if (!data.Tour) {
             params = Object.assign(params,
                                    {sector: world.Sector, world: world.Name, hex: world.Hex});
@@ -1307,7 +1307,7 @@ window.addEventListener('DOMContentLoaded', () => {
           hx = label.HexX | 0;
           hy = label.HexY | 0;
           scale = label.Scale || 64;
-          label.href = Util.makeURL(base_url, { scale: scale, sx: sx, sy: sy, hx: hx, hy: hy });
+          label.href = Util.makeURL(base_url, { scale, sx, sy, hx, hy });
           applyTags(label);
         }
       }
@@ -1363,10 +1363,10 @@ window.addEventListener('DOMContentLoaded', () => {
 
   async function route(start, end, jump) {
     $('#routePath').innerHTML = '';
-    lastRoute = {start:start, end:end, jump:jump};
+    lastRoute = {start, end, jump};
 
     const options = {
-      start: start, end: end, jump: jump,
+      start, end, jump,
       x: map.worldX, y: map.worldY,
       milieu: map.namedOptions.get('milieu'),
       wild: $('#route-wild').checked?1:0,
@@ -1392,7 +1392,7 @@ window.addEventListener('DOMContentLoaded', () => {
         const hx = world.HexX|0;
         const hy = world.HexY|0;
         const scale = 64;
-        world.href = Util.makeURL(base_url, {scale: 64, sx: sx, sy: sy, hx: hx, hy: hy});
+        world.href = Util.makeURL(base_url, {scale: 64, sx, sy, hx, hy});
 
         if (index > 0) {
           const prev = data[index - 1];

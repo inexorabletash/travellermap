@@ -17,7 +17,7 @@ const SECTOR_HEIGHT = 40;
 function sectorHexToWorldXY(sx, sy, hx, hy) {
   const x = ( ( sx - REFERENCE_SECTOR_X ) * SECTOR_WIDTH ) + ( hx - REFERENCE_HEX_X );
   const y = ( ( sy - REFERENCE_SECTOR_Y ) * SECTOR_HEIGHT ) + ( hy - REFERENCE_HEX_Y );
-  return {x: x, y: y};
+  return {x, y};
 }
 
 function isEven(n) { return (n % 2) === 0; }

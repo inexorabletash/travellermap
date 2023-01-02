@@ -60,7 +60,7 @@
 
   function parseSector(tabDelimitedData, metadata) {
     const sector = {
-      metadata: metadata,
+      metadata,
       worlds: [],
       subsectors: []
     };
@@ -74,7 +74,7 @@
 
       sector.subsectors[i] = {
         worlds: [],
-        index: index,
+        index,
         name: ss ? ss.Name : ''
       };
     }
@@ -275,7 +275,7 @@
         rotation: 3,
         scale: 64,
         options: options | Traveller.MapOptions.SubsectorGrid | Traveller.MapOptions.NamesMask,
-        style: style
+        style
       };
       let imageURL;
       if ('sector' in params) {
@@ -417,8 +417,8 @@
           accept: 'image/svg+xml',
           subsector: subsector.index,
           scale: 64,
-          options: options,
-          style: style
+          options,
+          style
         };
         let imageURL;
         if ('sector' in params) {

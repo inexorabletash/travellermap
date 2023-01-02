@@ -27,7 +27,7 @@
   function parseSector(tabDelimitedData, metadata) {
     let i;
     const sector = {
-      metadata: metadata,
+      metadata,
       worlds: []
     };
 

@@ -269,7 +269,7 @@ const Util = {
       x = Math.round(x * 1000) / 1000;
       y = Math.round(y * 1000) / 1000;
 
-      return {x: x, y: y};
+      return {x, y};
     },
 
     mapToWorld: (x, y) => {
@@ -358,7 +358,7 @@ const Util = {
       },
 
       coordinates: (sector, hex, options) => {
-        options = Object.assign({}, options, {sector: sector, hex: hex});
+        options = Object.assign({}, options, {sector, hex});
         return service(url('/api/coordinates', options),
                        options.accept || 'application/json');
       },
@@ -376,25 +376,25 @@ const Util = {
       },
 
       sectorData: (sector, options) => {
-        options = Object.assign({}, options, {sector: sector});
+        options = Object.assign({}, options, {sector});
         return service(url('/api/sec', options),
                        options.accept || 'text/plain');
       },
 
       sectorDataTabDelimited: (sector, options) => {
-        options = Object.assign({}, options, {sector: sector, type: 'TabDelimited'});
+        options = Object.assign({}, options, {sector, type: 'TabDelimited'});
         return service(url('/api/sec', options),
                        options.accept || 'text/plain');
       },
 
       sectorMetaData: (sector, options) => {
-        options = Object.assign({}, options, {sector: sector});
+        options = Object.assign({}, options, {sector});
         return service(url('/api/metadata', options),
                        options.accept || 'application/json');
       },
 
       MSEC: (sector, options) => {
-        options = Object.assign({}, options, {sector: sector});
+        options = Object.assign({}, options, {sector});
         return service(url('/api/msec', options),
                        options.accept || 'text/plain');
       },
@@ -1697,9 +1697,9 @@ const Util = {
     // |x| and |y| are map-space coordinates
     AddMarker(id, x, y, opt_url) {
       const marker = {
-        x: x,
-        y: y,
-        id: id,
+        x,
+        y,
+        id,
         url: opt_url,
         z: 909
       };

@@ -755,7 +755,7 @@
       .split(/\s+(?!Ia|Ib|II|III|IV|V|VI|VII)/)
       .map(code => {
         const last = code.split(/\s+/).pop();
-        return {code: code, detail: STELLAR_TABLE[last]};
+        return {code, detail: STELLAR_TABLE[last]};
       });
 
     // Zone
