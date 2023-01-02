@@ -4,10 +4,10 @@
 <script src="../map.js?update=2023-01-02T12:41:11"></script>
 <script>
 window.addEventListener('load', () => {
-  var $ = s => document.querySelector(s);
-  var $$ = s => Array.from(document.querySelectorAll(s));
+  const $ = s => document.querySelector(s);
+  const $$ = s => Array.from(document.querySelectorAll(s));
 
-  var params = new URL(document.location.href).searchParams;
+  const params = new URL(document.location.href).searchParams;
 
   fetch(Traveller.MapService.makeURL('/api/route', {
     start: params.get('start'),
@@ -27,21 +27,21 @@ window.addEventListener('load', () => {
     .then(data => {
       if (typeof data === 'string') throw new Error(data);
 
-      var route = [];
-      var total = 0;
+      const route = [];
+      let total = 0;
       data.forEach((world, index) => {
         world.Name = world.Name || '(Unnamed)';
-        var sx = world.SectorX|0;
-        var sy = world.SectorY|0;
-        var hx = world.HexX|0;
-        var hy = world.HexY|0;
+        const sx = world.SectorX|0;
+        const sy = world.SectorY|0;
+        const hx = world.HexX|0;
+        const hy = world.HexY|0;
 
         if (index > 0) {
-          var prev = data[index - 1];
-          var a = Traveller.Astrometrics.sectorHexToWorld(
+          const prev = data[index - 1];
+          const a = Traveller.Astrometrics.sectorHexToWorld(
             prev.SectorX|0, prev.SectorY|0, prev.HexX|0, prev.HexY|0);
-          var b = Traveller.Astrometrics.sectorHexToWorld(sx, sy, hx, hy);
-          var dist = Traveller.Astrometrics.hexDistance(a.x, a.y, b.x, b.y);
+          const b = Traveller.Astrometrics.sectorHexToWorld(sx, sy, hx, hy);
+          const dist = Traveller.Astrometrics.hexDistance(a.x, a.y, b.x, b.y);
           prev.Distance = dist;
           total += dist;
         }

@@ -225,8 +225,8 @@ table#features, #features th, #features td { border: solid 1px black; }
     <script>
       (() => {
         function updateOptions() {
-          var options = 0;
-          var checkboxes = [].slice.call(document.querySelectorAll("#options_table input[type='checkbox']"));
+          let options = 0;
+          const checkboxes = [].slice.call(document.querySelectorAll("#options_table input[type='checkbox']"));
           checkboxes.forEach(cb => {
             if (cb.checked) {
               options += Number(cb.value);
@@ -235,7 +235,7 @@ table#features, #features th, #features td { border: solid 1px black; }
           document.querySelector("#computed_options").innerHTML = String(options);
           document.querySelector("#test_options").href = "/data/spin/C/image?options=" + encodeURIComponent(String(options));
         }
-        var checkboxes = [].slice.call(document.querySelectorAll("#options_table input[type='checkbox']"));
+        const checkboxes = [].slice.call(document.querySelectorAll("#options_table input[type='checkbox']"));
         checkboxes.forEach(cb => {
           cb.onchange = updateOptions;
         });
@@ -1942,8 +1942,8 @@ function jsonp_demo() {
     // Allow breaking after / ? and & in code
     Array.from(document.querySelectorAll('.code')).forEach(e => {
       function textNodes(e) {
-        var t = [];
-        for (var n = e.firstChild; n; n = n.nextSibling) {
+        let t = [];
+        for (let n = e.firstChild; n; n = n.nextSibling) {
           switch (n.nodeType) {
             case Node.TEXT_NODE:
               t.push(n); break;
@@ -1959,7 +1959,7 @@ function jsonp_demo() {
       // Inserted ZWJs show up when copied, so insert <wbr>
       textNodes(e).forEach(t => {
         while (true) {
-          var m = /[/?&]+/.exec(t.nodeValue);
+          const m = /[/?&]+/.exec(t.nodeValue);
           if (!m) break;
           t = t.splitText(m.index + m[0].length);
           t.parentNode.insertBefore(document.createElement('wbr'), t);

@@ -1266,17 +1266,17 @@
 
 <script>
 (() => {
-  var $ = s => document.querySelector(s);
-  var $$ = s => Array.from(document.querySelectorAll(s));
+  const $ = s => document.querySelector(s);
+  const $$ = s => Array.from(document.querySelectorAll(s));
 
-  var SERVICE_BASE = (l => {
+  const SERVICE_BASE = (l => {
     if (l.hostname === 'localhost' && l.pathname.indexOf('~') !== -1)
       return 'https://travellermap.com';
     return '';
   })(window.location);
 
   $$('a.sector').forEach(anchor => {
-    var name = anchor.innerText || anchor.textContent;
+    const name = anchor.innerText || anchor.textContent;
     anchor.href = SERVICE_BASE + '/go/' + encodeURIComponent(name);
     anchor.target = "_blank";
     anchor.rel = 'noopener';
@@ -1289,15 +1289,15 @@
      return response.json();
    })
    .then(data => {
-     var doc = $$('a.sector').map(a => {
-       var name = a.innerText || a.textContent;
+     const doc = $$('a.sector').map(a => {
+       let name = a.innerText || a.textContent;
        name = name.replace(/^The /, '');
        return name;
      });
-     var docSet = new Set(doc);
+     const docSet = new Set(doc);
 
-     var known = data.Sectors.filter(s => {
-       var tags = s.Tags.split();
+     const known = data.Sectors.filter(s => {
+       const tags = s.Tags.split();
        if (tags.indexOf('meta') !== -1) return false;
        if (tags.indexOf('ZCR') !== -1) return false;
        return true;
@@ -1307,7 +1307,7 @@
          name.Text = name.Text.replace(/^The /, '');
        });
      });
-     var knownSet = new Set();
+     const knownSet = new Set();
      known.forEach(s => {
        s.Names.forEach(name => { knownSet.add(name.Text); });
      });

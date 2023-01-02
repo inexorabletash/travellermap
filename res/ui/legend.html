@@ -6,7 +6,7 @@
   }
 </style>
 <script>
-var SERVICE_BASE = (l => {
+const SERVICE_BASE = (l => {
   if (l.hostname === 'localhost' && l.pathname.indexOf('~') !== -1)
     return 'https://travellermap.com';
   return '';

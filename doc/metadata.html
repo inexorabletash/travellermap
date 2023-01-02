@@ -515,7 +515,7 @@ pre.example { font-family: 'Share Tech Mono', monospace; }
 document.addEventListener('DOMContentLoaded', () => {
   [].slice.call(document.querySelectorAll('script.example'))
     .forEach(script => {
-      var pre = document.createElement('pre');
+      let pre = document.createElement('pre');
       pre.className = 'code';
       // TODO: Syntax Highlighting
       pre.appendChild(document.createTextNode(script.innerHTML.trim()));

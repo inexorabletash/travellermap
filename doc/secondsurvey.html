@@ -2187,10 +2187,10 @@
       })
       .then(data => {
         data.forEach(item => {
-          var tr = table.appendChild(document.createElement('tr'));
+          const tr = table.appendChild(document.createElement('tr'));
           cols.forEach(col => {
-            var td = tr.appendChild(document.createElement('td'));
-            var content = item[col.property];
+            const td = tr.appendChild(document.createElement('td'));
+            const content = item[col.property];
             if (col.className) td.className = col.className;
             if (col.func) content = col.func(content);
             td.innerHTML = content;
