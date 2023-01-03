@@ -115,7 +115,7 @@ const Util = {
       img = img || document.createElement('img');
       img.src = url;
       img.onload = () => { resolve(img); };
-      img.onerror = e => { reject(Error('Image failed to load')); };
+      img.onerror = () => { reject(Error('Image failed to load')); };
     });
   },
 
@@ -723,22 +723,22 @@ const Util = {
       // ----------------------------------------------------------------------
 
       let dragging, drag_coords, was_dragged, previous_focus;
-      container.addEventListener('mousedown', e => {
+      container.addEventListener('mousedown', event => {
         this.cancelAnimation();
         previous_focus = document.activeElement;
         container.focus();
         dragging = true;
         was_dragged = false;
-        drag_coords = this.eventCoords(e);
+        drag_coords = this.eventCoords(event);
         container.classList.add('dragging');
 
-        e.preventDefault();
-        e.stopPropagation();
+        event.preventDefault();
+        event.stopPropagation();
       }, true);
 
       let hover_coords;
-      container.addEventListener('mousemove', e => {
-        const coords = this.eventCoords(e);
+      container.addEventListener('mousemove', event => {
+        const coords = this.eventCoords(event);
 
         // Ignore mousemove immediately following mousedown with same coords.
         if (dragging && coords.x === drag_coords.x && coords.y === drag_coords.y)
@@ -749,11 +749,11 @@ const Util = {
 
           this._offset(drag_coords.x - coords.x, drag_coords.y - coords.y);
           drag_coords = coords;
-          e.preventDefault();
-          e.stopPropagation();
+          event.preventDefault();
+          event.stopPropagation();
         }
 
-        const wc = this.eventToWorldCoords(e);
+        const wc = this.eventToWorldCoords(event);
 
         // Throttle the events
         if (hover_coords && hover_coords.x === wc.x && hover_coords.y === wc.y)
@@ -763,52 +763,52 @@ const Util = {
         fireEvent(this, 'Hover', hover_coords);
       }, true);
 
-      document.addEventListener('mouseup', e => {
+      document.addEventListener('mouseup', event => {
         if (dragging) {
           dragging = false;
           container.classList.remove('dragging');
-          e.preventDefault();
-          e.stopPropagation();
+          event.preventDefault();
+          event.stopPropagation();
         }
       });
 
-      container.addEventListener('click', e => {
-        e.preventDefault();
-        e.stopPropagation();
+      container.addEventListener('click', event => {
+        event.preventDefault();
+        event.stopPropagation();
 
         if (!was_dragged) {
           fireEvent(this, 'Click',
-                    Object.assign({}, this.eventToWorldCoords(e), {activeElement: previous_focus}));
+                    Object.assign({}, this.eventToWorldCoords(event), {activeElement: previous_focus}));
         }
       });
 
-      container.addEventListener('dblclick', e => {
-        e.preventDefault();
-        e.stopPropagation();
+      container.addEventListener('dblclick', event => {
+        event.preventDefault();
+        event.stopPropagation();
 
         this.cancelAnimation();
 
         const MAX_DOUBLECLICK_SCALE = 9;
         if (this._logScale < MAX_DOUBLECLICK_SCALE) {
-          let newscale = this._logScale + CLICK_SCALE_DELTA * (e.altKey ? 1 : -1);
+          let newscale = this._logScale + CLICK_SCALE_DELTA * (event.altKey ? 1 : -1);
           newscale = Math.min(newscale, MAX_DOUBLECLICK_SCALE);
 
-          const coords = this.eventCoords(e);
+          const coords = this.eventCoords(event);
           this._setScale(newscale, coords.x, coords.y);
         }
 
-        fireEvent(this, 'DoubleClick', this.eventToWorldCoords(e));
+        fireEvent(this, 'DoubleClick', this.eventToWorldCoords(event));
       });
 
-      container.addEventListener('wheel', e => {
+      container.addEventListener('wheel', event => {
         this.cancelAnimation();
 
-        const newscale = this._logScale + SCROLL_SCALE_DELTA * Math.sign(e.deltaY);
-        const coords = this.eventCoords(e);
+        const newscale = this._logScale + SCROLL_SCALE_DELTA * Math.sign(event.deltaY);
+        const coords = this.eventCoords(event);
         this._setScale(newscale, coords.x, coords.y);
 
-        e.preventDefault();
-        e.stopPropagation();
+        event.preventDefault();
+        event.stopPropagation();
       });
 
 
@@ -838,23 +838,23 @@ const Util = {
       let pinch1, pinch2;
       let touch_coords, touch_wx, touch_wc, was_touch_dragged;
 
-      container.addEventListener('touchmove', e => {
+      container.addEventListener('touchmove', event => {
         was_touch_dragged = true;
-        if (e.touches.length === 1) {
+        if (event.touches.length === 1) {
 
-          const coords = this.eventCoords(e.touches[0]);
+          const coords = this.eventCoords(event.touches[0]);
           this._offset(touch_coords.x - coords.x, touch_coords.y - coords.y);
           touch_coords = coords;
-          touch_wc = this.eventToWorldCoords(e.touches[0]);
+          touch_wc = this.eventToWorldCoords(event.touches[0]);
 
-        } else if (e.touches.length === 2) {
+        } else if (event.touches.length === 2) {
 
           const od = dist(pinch2.x - pinch1.x, pinch2.y - pinch1.y),
                 ocx = (pinch1.x + pinch2.x) / 2,
                 ocy = (pinch1.y + pinch2.y) / 2;
 
-          pinch1 = this.eventCoords(e.touches[0]),
-          pinch2 = this.eventCoords(e.touches[1]);
+          pinch1 = this.eventCoords(event.touches[0]),
+          pinch2 = this.eventCoords(event.touches[1]);
 
           const nd = dist(pinch2.x - pinch1.x, pinch2.y - pinch1.y),
                 ncx = (pinch1.x + pinch2.x) / 2,
@@ -866,42 +866,42 @@ const Util = {
           this._setScale(newscale, ncx, ncy);
         }
 
-        e.preventDefault();
-        e.stopPropagation();
+        event.preventDefault();
+        event.stopPropagation();
       }, true);
 
-      container.addEventListener('touchend', e => {
-        if (e.touches.length < 2) {
+      container.addEventListener('touchend', event => {
+        if (event.touches.length < 2) {
           this.defer_loading = false;
           this.invalidate();
         }
 
-        if (e.touches.length === 1)
-          touch_coords = this.eventCoords(e.touches[0]);
+        if (event.touches.length === 1)
+          touch_coords = this.eventCoords(event.touches[0]);
 
-        if (e.touches.length === 0 && !was_touch_dragged) {
+        if (event.touches.length === 0 && !was_touch_dragged) {
           fireEvent(this, 'Click',
                     Object.assign({}, touch_wc, {activeElement: previous_focus}));
         }
-        e.preventDefault();
-        e.stopPropagation();
+        event.preventDefault();
+        event.stopPropagation();
       }, true);
 
-      container.addEventListener('touchstart', e => {
+      container.addEventListener('touchstart', event => {
         was_touch_dragged = false;
         previous_focus = document.activeElement;
 
-        if (e.touches.length === 1) {
-          touch_coords = this.eventCoords(e.touches[0]);
-          touch_wc = this.eventToWorldCoords(e.touches[0]);
-        } else if (e.touches.length === 2) {
+        if (event.touches.length === 1) {
+          touch_coords = this.eventCoords(event.touches[0]);
+          touch_wc = this.eventToWorldCoords(event.touches[0]);
+        } else if (event.touches.length === 2) {
           this.defer_loading = true;
-          pinch1 = this.eventCoords(e.touches[0]),
-          pinch2 = this.eventCoords(e.touches[1]);
+          pinch1 = this.eventCoords(event.touches[0]),
+          pinch2 = this.eventCoords(event.touches[1]);
         }
 
-        e.preventDefault();
-        e.stopPropagation();
+        event.preventDefault();
+        event.stopPropagation();
       }, true);
 
 
@@ -943,31 +943,31 @@ const Util = {
           keyscroll_timerid = 0;
         }
       };
-      container.addEventListener('keydown', e => {
-        if (e.ctrlKey || e.altKey || e.metaKey)
+      container.addEventListener('keydown', event => {
+        if (event.ctrlKey || event.altKey || event.metaKey)
           return;
-        key_state[e.keyCode] = true;
+        key_state[event.keyCode] = true;
         if (!keyscroll_timerid)
           keyscroll_timerid = requestAnimationFrame(keyScroll);
       });
-      container.addEventListener('keyup', e => {
-        key_state[e.keyCode] = false;
+      container.addEventListener('keyup', event => {
+        key_state[event.keyCode] = false;
         if (!keyscroll_timerid)
           keyscroll_timerid = requestAnimationFrame(keyScroll);
       });
 
-      container.addEventListener('keydown', e => {
-        if (e.ctrlKey || e.altKey || e.metaKey)
+      container.addEventListener('keydown', event => {
+        if (event.ctrlKey || event.altKey || event.metaKey)
           return;
 
-        switch (e.keyCode) {
+        switch (event.keyCode) {
         case VK_SUBTRACT: this.ZoomOut(); break;
         case VK_EQUALS: this.ZoomIn(); break;
         default: return;
         }
 
-        e.preventDefault();
-        e.stopPropagation();
+        event.preventDefault();
+        event.stopPropagation();
       });
 
       // Final initialization.

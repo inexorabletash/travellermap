@@ -182,12 +182,12 @@
     progress.value = 0;
     document.body.appendChild(progress);
     images.forEach(img => {
-      img.addEventListener('load', e => {
+      img.addEventListener('load', event => {
         ++progress.value;
         if (progress.value === progress.max)
           progress.parentElement.removeChild(progress);
       });
-      img.addEventListener('error', e => {
+      img.addEventListener('error', event => {
         setTimeout(() => {
           console.warn(`retrying ${img.src}`);
           img.src = img.src + '&retry';

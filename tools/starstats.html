@@ -18,9 +18,9 @@ function padl(s, n) {
   return String(s).padStart(n);
 }
 
-$('textarea').addEventListener('keyup', e => { runStats(e.target.value); });
+$('textarea').addEventListener('keyup', event => { runStats(event.target.value); });
 
-$('button').addEventListener('click', e => {
+$('button').addEventListener('click', event => {
   const stars = [];
   for (let i = 0; i < 50000; ++i) {
     stars.push(Restellarator.reorder(Restellarator.generate()));

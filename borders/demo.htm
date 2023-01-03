@@ -145,9 +145,8 @@ window.addEventListener('DOMContentLoaded', () => {
   const view = $('#map');
   makeMapDisplay(view, g_map);
 
-  view.addEventListener('click', e => {
-    e = e ? e : window.event;
-    let target = (e.target) ? e.target : (e.srcElement) ? e.srcElement : null;
+  view.addEventListener('click', event => {
+    let target = (event.target) ? event.target : (event.srcElement) ? event.srcElement : null;
     while (target) {
       if (target && target.id) {
         const coords = target.id.split("_");

@@ -6,7 +6,7 @@
 
 'use strict';
 
-window.addEventListener('DOMContentLoaded', async e => {
+window.addEventListener('DOMContentLoaded', async event => {
   const $ = s => document.querySelector(s);
   const $$ = s => Array.from(document.querySelectorAll(s));
 
@@ -37,7 +37,7 @@ window.addEventListener('DOMContentLoaded', async e => {
       list.appendChild(option);
     });
 
-  list.addEventListener('change', e => {
+  list.addEventListener('change', event => {
     const s = list.value.split('|'),
           name = s[0],
           milieu = s[1] || undefined;
@@ -57,15 +57,15 @@ window.addEventListener('DOMContentLoaded', async e => {
   });
 
   $$('textarea.drag-n-drop').forEach(elem => {
-    elem.addEventListener('dragover', e => {
-      e.stopPropagation();
-      e.preventDefault();
-      e.dataTransfer.dropEffect = 'copy';
+    elem.addEventListener('dragover', event => {
+      event.stopPropagation();
+      event.preventDefault();
+      event.dataTransfer.dropEffect = 'copy';
     });
-    elem.addEventListener('drop', async e => {
-      e.stopPropagation();
-      e.preventDefault();
-      const s = await blobToString(e.dataTransfer.files[0]);
+    elem.addEventListener('drop', async event => {
+      event.stopPropagation();
+      event.preventDefault();
+      const s = await blobToString(event.dataTransfer.files[0]);
       elem.value = s;
     });
     elem.placeholder = 'Copy and paste data or drag and drop a file here.';
@@ -81,8 +81,8 @@ window.addEventListener('DOMContentLoaded', async e => {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
       reader.readAsText(blob, 'windows-1252');
-      reader.onload = e => { resolve(reader.result); };
-      reader.onerror = e => { reject(reader.error); };
+      reader.onload = event => { resolve(reader.result); };
+      reader.onerror = event => { reject(reader.error); };
     });
   }
 });

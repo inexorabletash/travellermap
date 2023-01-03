@@ -4,7 +4,7 @@
 <link rel="shortcut icon" href="../favicon.ico">
 <link rel="stylesheet" href="../site.css?update=2022-09-10T10:37:44">
 <script src="https://cdn.rawgit.com/inexorabletash/poly2/v2.0.1/polyfill.min.js"></script>
-<script src="../map.js?update=2023-01-02T15:50:20"></script>
+<script src="../map.js?update=2023-01-02T16:48:34"></script>
 <style>
   #input, #output {
     box-sizing: border-box;
@@ -45,15 +45,15 @@
     const $ = s => document.querySelector(s);
 
     const elem = $('#input');
-    elem.addEventListener('dragover', e => {
-      e.stopPropagation();
-      e.preventDefault();
-      e.dataTransfer.dropEffect = 'copy';
+    elem.addEventListener('dragover', event => {
+      event.stopPropagation();
+      event.preventDefault();
+      event.dataTransfer.dropEffect = 'copy';
     });
-    elem.addEventListener('drop', async e => {
-      e.stopPropagation();
-      e.preventDefault();
-      const s = await blobToString(e.dataTransfer.files[0]);
+    elem.addEventListener('drop', async event => {
+      event.stopPropagation();
+      event.preventDefault();
+      const s = await blobToString(event.dataTransfer.files[0]);
       elem.value = s;
       $('#go').click();
     });
@@ -65,14 +65,14 @@
           const encoding = encodings.shift();
           const reader = new FileReader();
           reader.readAsText(blob, encoding);
-          reader.onload = e => {
+          reader.onload = event => {
             const result = reader.result;
             if (result.indexOf('\uFFFD') !== -1 && encodings.length)
               tryNextEncoding();
             else
               resolve(result);
           };
-          reader.onerror = e => { reject(reader.error); };
+          reader.onerror = event => { reject(reader.error); };
         }());
       });
     }

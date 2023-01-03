@@ -413,7 +413,7 @@ async function convertAndParse(text) {
   return parse(tab);
 }
 
-$('#forss').addEventListener('click', async e => {
+$('#forss').addEventListener('click', async event => {
   const worlds = await convertAndParse($('#in').value);
   worlds.forEach(world => process(world));
   worlds.forEach(world => t5ify(world));
@@ -427,7 +427,7 @@ $('#forss').addEventListener('click', async e => {
   window.worlds = worlds;
 });
 
-$('#sectot5').addEventListener('click', async e => {
+$('#sectot5').addEventListener('click', async event => {
   const worlds = await convertAndParse($('#in').value);
   worlds.forEach(world => process(world));
   worlds.forEach(world => t5ify(world));

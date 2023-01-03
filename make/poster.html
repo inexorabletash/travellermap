@@ -3,8 +3,8 @@
 <meta charset="utf-8">
 <link rel="shortcut icon" href="../favicon.ico">
 <link rel="stylesheet" href="../site.css?update=2022-09-10T10:37:44">
-<script src="../map.js?update=2023-01-02T15:50:20"></script>
-<script src="post.js?update=2023-01-02T15:51:37"></script>
+<script src="../map.js?update=2023-01-02T16:48:34"></script>
+<script src="post.js?update=2023-01-02T16:51:21"></script>
 
 <style>
 #option_columns > tbody> tr > td { padding: 0 20px; }
@@ -86,8 +86,9 @@
                 <option data-name="quadrant" value="Delta">Quadrant Delta </option>
               </select>
               <script>
-              document.querySelector('select#portion').addEventListener('change', e => {
-                const select = e.target;
+              'use strict';
+              document.querySelector('select#portion').addEventListener('change', event => {
+                const select = event.target;
                 const option = select.querySelectorAll('option')[select.selectedIndex];
                 select.setAttribute('name', option.getAttribute('data-name'));
               });
@@ -167,6 +168,7 @@
         <label><input type="checkbox" name="stellar" value="1">Stellar Data</label><br>
         <label><input type="checkbox" id="ignore-errors" checked>Ignore Errors</label>
         <script>
+        'use strict';
         (() => {
           const $ = s => document.querySelector(s);
           const o = Traveller.MapOptions;
@@ -180,8 +182,8 @@
           bindCheckboxToOptionsBitmap('#options-filled-borders', o.FilledBorders);
           makeCheckboxDependent('#options-filled-borders', '#options-borders');
           function bindCheckboxToOptionsBitmap(selector, mask) {
-            $(selector).addEventListener('click', e => {
-              const state = e.target.checked;
+            $(selector).addEventListener('click', event => {
+              const state = event.target.checked;
               const input = $('input[name="options"]');
               let options = Number(input.value);
               options = state ? (options | mask) : (options & ~mask);
@@ -189,15 +191,15 @@
             });
           }
           function bindCheckboxToBooleanOption(selector, name) {
-            $(selector).addEventListener('click', e => {
-              const state = e.target.checked;
+            $(selector).addEventListener('click', event => {
+              const state = event.target.checked;
               const input = $('input[name="' + name + '"]');
               input.value = state ? 1 : 0;
             });
           }
           function makeCheckboxDependent(dependent, master) {
-            $(master).addEventListener('click', e => {
-              if (!e.target.checked)
+            $(master).addEventListener('click', event => {
+              if (!event.target.checked)
                 $(dependent).checked = false;
             });
           }
@@ -241,12 +243,13 @@
 </div>
 
 <script>
+'use strict';
 (() => {
   const $ = s => document.querySelector(s);
 
-  $('#previewBtn').addEventListener('click', async e => {
-    e.preventDefault();
-    e.stopPropagation();
+  $('#previewBtn').addEventListener('click', async event => {
+    event.preventDefault();
+    event.stopPropagation();
 
     const data = new FormData($('#form'));
     data.append('datauri', '1');
@@ -266,9 +269,9 @@
     }
   });
 
-  $('#renderBtn').addEventListener('click', e => {
-    e.preventDefault();
-    e.stopPropagation();
+  $('#renderBtn').addEventListener('click', event => {
+    event.preventDefault();
+    event.stopPropagation();
 
     const form = $('#form');
     form.target = '_blank';
@@ -276,9 +279,9 @@
     form.submit();
   });
 
-  $('#jumpBtn').addEventListener('click', e => {
-    e.preventDefault();
-    e.stopPropagation();
+  $('#jumpBtn').addEventListener('click', event => {
+    event.preventDefault();
+    event.stopPropagation();
 
     const form = $('#form');
     form.target = '_blank';

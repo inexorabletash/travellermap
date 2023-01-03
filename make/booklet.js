@@ -205,8 +205,8 @@
       return;
     }
 
-    $('#compose').addEventListener('click', e => {
-      e.preventDefault();
+    $('#compose').addEventListener('click', event => {
+      event.preventDefault();
       const form = $('#form');
       if (!form['data'].value.length) {
         alert('Sector data must be specified.');

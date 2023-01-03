@@ -30,7 +30,7 @@ window.addEventListener('DOMContentLoaded', () => {
       window.scrollTo(0, 0);
     }
   }
-  window.addEventListener('resize', e => {
+  window.addEventListener('resize', event => {
     // Timeout to work around iOS Safari giving incorrect sizes while 'resize'
     // dispatched.
     setTimeout(resizeWindow, 100);
@@ -170,8 +170,8 @@ window.addEventListener('DOMContentLoaded', () => {
     $('#share-code').value = '<iframe width=400 height=300 src="' + pageURL + '">';
 
     ['share-url', 'share-code'].forEach(share => {
-      $('#copy-' + share).addEventListener('click', e => {
-        e.preventDefault();
+      $('#copy-' + share).addEventListener('click', event => {
+        event.preventDefault();
         Util.copyTextToClipboard($('#' + share).value);
       });
     });
@@ -252,12 +252,12 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 
 
-  $("#searchForm").addEventListener('submit', e => {
+  $("#searchForm").addEventListener('submit', event => {
     search($('#searchBox').value, {onsubmit: true});
-    e.preventDefault();
+    event.preventDefault();
   });
 
-  $("#searchBox").addEventListener('focus', e => {
+  $("#searchBox").addEventListener('focus', event => {
     search($('#searchBox').value, {onfocus: true});
   });
 
@@ -267,8 +267,8 @@ window.addEventListener('DOMContentLoaded', () => {
       search($('#searchBox').value, {typed: true});
   }, SEARCH_TIMER_DELAY));
 
-  $('#closeSearchBtn').addEventListener('click', e => {
-    e.preventDefault();
+  $('#closeSearchBtn').addEventListener('click', event => {
+    event.preventDefault();
     $('#searchBox').value = '';
     lastQuery = null;
     hideSearch();
@@ -286,7 +286,7 @@ window.addEventListener('DOMContentLoaded', () => {
     (window.dispatchEvent || window.fireEvent)(event);
   }
 
-  $("#routeBtn").addEventListener('click', e => {
+  $("#routeBtn").addEventListener('click', event => {
     if (selectedWorld) {
       $('#routeStart').value = selectedWorld.name;
       if (!isSmallScreen) $('#routeEnd').focus();
@@ -317,22 +317,22 @@ window.addEventListener('DOMContentLoaded', () => {
     lastRoute = null;
   }
 
-  $('#routeStart').addEventListener('keydown', e => {
-    if (e.ctrlKey || e.altKey || e.metaKey)
+  $('#routeStart').addEventListener('keydown', event => {
+    if (event.ctrlKey || event.altKey || event.metaKey)
       return;
-    if (e.key === 'Enter' || e.keyCode === VK_RETURN) {
-      e.preventDefault();
-      e.stopPropagation();
+    if (event.key === 'Enter' || event.keyCode === VK_RETURN) {
+      event.preventDefault();
+      event.stopPropagation();
       $('#routeEnd').focus();
     }
   });
 
-  $('#routeEnd').addEventListener('keydown', e => {
-    if (e.ctrlKey || e.altKey || e.metaKey)
+  $('#routeEnd').addEventListener('keydown', event => {
+    if (event.ctrlKey || event.altKey || event.metaKey)
       return;
-    if (e.key === 'Enter' || e.keyCode === VK_RETURN) {
-      e.preventDefault();
-      e.stopPropagation();
+    if (event.key === 'Enter' || event.keyCode === VK_RETURN) {
+      event.preventDefault();
+      event.stopPropagation();
 
       $('#routePath').innerHTML = '';
       let found = false;
@@ -347,13 +347,13 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  $('#closeRouteBtn').addEventListener('click', e => {
-    e.preventDefault();
+  $('#closeRouteBtn').addEventListener('click', event => {
+    event.preventDefault();
     closeRoute();
   });
 
-  $('#swapRouteBtn').addEventListener('click', e => {
-    e.preventDefault();
+  $('#swapRouteBtn').addEventListener('click', event => {
+    event.preventDefault();
     const tmp = $('#routeStart').value;
     $('#routeStart').value = $('#routeEnd').value;
     $('#routeEnd').value = tmp;
@@ -365,8 +365,8 @@ window.addEventListener('DOMContentLoaded', () => {
   });
 
   $$('#routeForm button[name="jump"]').forEach(button => {
-    button.addEventListener('click', e => {
-      e.preventDefault();
+    button.addEventListener('click', event => {
+      event.preventDefault();
 
       ['J-1','J-2','J-3','J-4','J-5','J-6'].forEach(n => {
         $('#routeForm').classList.remove(n);
@@ -382,7 +382,7 @@ window.addEventListener('DOMContentLoaded', () => {
   });
 
   $$('#routeForm input[type="checkbox"]').forEach(input => {
-    input.addEventListener('click', e => {
+    input.addEventListener('click', event => {
       if ($('#routePath').innerHTML !== '')
         reroute();
     });
@@ -398,14 +398,14 @@ window.addEventListener('DOMContentLoaded', () => {
         VK_QUESTION_MARK = KeyboardEvent.DOM_VK_QUESTION_MARK || 0x63;
 
   let ignoreNextKeyUp = false;
-  document.body.addEventListener('keyup', e => {
+  document.body.addEventListener('keyup', event => {
     if (ignoreNextKeyUp) {
       ignoreNextKeyUp = false;
       return;
     }
-    if (e.key === 'Escape' || e.keyCode === VK_ESCAPE) {
-      e.preventDefault();
-      e.stopPropagation();
+    if (event.key === 'Escape' || event.keyCode === VK_ESCAPE) {
+      event.preventDefault();
+      event.stopPropagation();
 
       hidePanels();
       hideSearch();
@@ -465,8 +465,8 @@ window.addEventListener('DOMContentLoaded', () => {
   STYLES.forEach(s => {
     $('#settingsBtn-'+s).addEventListener('click', () => { map.style = s; });
   });
-  $$('.styles-pager').forEach(e => {
-    e.addEventListener('click', () => { $('#styles').classList.toggle('p2'); });
+  $$('.styles-pager').forEach(element => {
+    element.addEventListener('click', () => { $('#styles').classList.toggle('p2'); });
   });
 
 
@@ -488,14 +488,14 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 
   $$('#share-url,#share-code').forEach(input => {
-    input.addEventListener('click', e => {
-      e.preventDefault();
+    input.addEventListener('click', event => {
+      event.preventDefault();
       input.focus();
       input.select();
       input.setSelectionRange(0, input.value.length); // .select() fails on iOS
     });
-    input.addEventListener('mouseup', e => {
-      e.preventDefault();
+    input.addEventListener('mouseup', event => {
+      event.preventDefault();
     });
   });
 
@@ -514,43 +514,43 @@ window.addEventListener('DOMContentLoaded', () => {
 
   // Keyboard Shortcuts
 
-  mapElement.addEventListener('keydown', e => {
-    if (e.ctrlKey || e.altKey || e.metaKey)
+  mapElement.addEventListener('keydown', event => {
+    if (event.ctrlKey || event.altKey || event.metaKey)
       return;
-    if (e.key === 'c' || e.keyCode === VK_C) {
-      e.preventDefault();
-      e.stopPropagation();
+    if (event.key === 'c' || event.keyCode === VK_C) {
+      event.preventDefault();
+      event.stopPropagation();
       updateContext(map.worldX, map.worldY, {directAction: true});
       showMain(map.worldX, map.worldY);
       return;
     }
-    if (e.key === 'h' || e.keyCode === VK_H) {
-      e.preventDefault();
-      e.stopPropagation();
+    if (event.key === 'h' || event.keyCode === VK_H) {
+      event.preventDefault();
+      event.stopPropagation();
       goHome();
       return;
     }
-    if (e.key === 't' || e.keyCode === VK_T) {
-      e.preventDefault();
-      e.stopPropagation();
+    if (event.key === 't' || event.keyCode === VK_T) {
+      event.preventDefault();
+      event.stopPropagation();
       $('#tiltBtn').click();
       return;
     }
-    if (e.key === 'm' || e.keyCode === VK_M) {
-      e.preventDefault();
-      e.stopPropagation();
+    if (event.key === 'm' || event.keyCode === VK_M) {
+      event.preventDefault();
+      event.stopPropagation();
       showPanel('legend');
       return;
     }
-    if (e.key === 'f' || e.keyCode === VK_F) {
-      e.preventDefault();
-      e.stopPropagation();
+    if (event.key === 'f' || event.keyCode === VK_F) {
+      event.preventDefault();
+      event.stopPropagation();
       toggleFullscreen();
       return;
     }
-    if (e.key === '?' || e.keyCode === VK_QUESTION_MARK) {
-      e.preventDefault();
-      e.stopPropagation();
+    if (event.key === '?' || event.keyCode === VK_QUESTION_MARK) {
+      event.preventDefault();
+      event.stopPropagation();
       showPanel('more');
       showTab('help');
       return;
@@ -614,7 +614,7 @@ window.addEventListener('DOMContentLoaded', () => {
     element.addEventListener(event, () => { onEvent(element); });
   }
   function bindChecked(selector, onChange, onEvent) {
-    bindControl(selector, 'checked', onChange, 'click', e => { onEvent(e.checked); });
+    bindControl(selector, 'checked', onChange, 'click', element => { onEvent(element.checked); });
   }
   function bindEnabled(selector, onChange) {
     const element = $(selector);
@@ -733,8 +733,8 @@ window.addEventListener('DOMContentLoaded', () => {
   });
 
 
-  $('#btnResetPrefs').addEventListener('click', e => {
-    e.preventDefault();
+  $('#btnResetPrefs').addEventListener('click', event => {
+    event.preventDefault();
 
     map.namedOptions.NAMES.forEach(name => {
       delete urlParams[name];
@@ -791,7 +791,7 @@ window.addEventListener('DOMContentLoaded', () => {
     document.body.classList.toggle(
       'milieu-not-default', milieu !== defaults.milieu);
   });
-  $('#milieu-escape').addEventListener('click', e => {
+  $('#milieu-escape').addEventListener('click', event => {
     map.namedOptions.set('milieu', defaults.milieu);
   });
 
@@ -1035,8 +1035,8 @@ window.addEventListener('DOMContentLoaded', () => {
         $('#sds-data').innerHTML = template('#sds-template')(data);
 
         // Hook up toggle
-        $$('#sds-data .ds-mini-toggle, .sds-sectorname').forEach(e => {
-          e.addEventListener('click', event => {
+        $$('#sds-data .ds-mini-toggle, .sds-sectorname').forEach(element => {
+          element.addEventListener('click', event => {
             document.body.classList.toggle('ds-mini');
           });
         });
@@ -1114,29 +1114,29 @@ window.addEventListener('DOMContentLoaded', () => {
         });
 
         // Hook up toggle
-        $$('#wds-data .ds-mini-toggle, #wds-data .wds-names').forEach(e => {
-            e.addEventListener('click', event => {
+        $$('#wds-data .ds-mini-toggle, #wds-data .wds-names').forEach(element => {
+            element.addEventListener('click', event => {
               document.body.classList.toggle('ds-mini');
             });
         });
 
         // Hook up buttons
-        $('#ds-route-link').addEventListener('click', e => {
-          e.preventDefault();
+        $('#ds-route-link').addEventListener('click', event => {
+          event.preventDefault();
           $('#routeStart').value = world.Name;
           if (!isSmallScreen) $('#routeEnd').focus();
           showRoute();
         });
 
-        $('#wds-print-ds-link').addEventListener('click', e => {
-          e.preventDefault();
+        $('#wds-print-ds-link').addEventListener('click', event => {
+          event.preventDefault();
           window.open(world.DataSheetURL);
         });
 
         if ($('#wds-map')) {
-          $('#wds-map').addEventListener('click', e => {
-            e.preventDefault();
-            const url = e.target.getAttribute('data-map');
+          $('#wds-map').addEventListener('click', event => {
+            event.preventDefault();
+            const url = event.target.getAttribute('data-map');
             if (isSmallScreen)
               window.open(url);
             else
@@ -1314,11 +1314,11 @@ window.addEventListener('DOMContentLoaded', () => {
       $('#resultsContainer').innerHTML = template('#SearchResultsTemplate')(data);
 
       $$('#resultsContainer a').forEach(a => {
-        a.addEventListener('click', e => {
-          e.preventDefault();
+        a.addEventListener('click', event => {
+          event.preventDefault();
           selectedWorld = null;
 
-          const params = Util.parseURLQuery(e.target);
+          const params = Util.parseURLQuery(event.target);
           map.CenterAtSectorHex(params.sx|0, params.sy|0, params.hx|0, params.hy|0, {scale: params.scale|0});
           if (isSmallScreen)
             document.body.classList.remove('search-results');
@@ -1418,17 +1418,17 @@ window.addEventListener('DOMContentLoaded', () => {
       resizeMap();
 
       $$('#routePath .item a').forEach(a => {
-        a.addEventListener('click', e => {
-          e.preventDefault();
+        a.addEventListener('click', event => {
+          event.preventDefault();
           selectedWorld = null;
 
-          const params = Util.parseURLQuery(e.target);
+          const params = Util.parseURLQuery(event.target);
           map.CenterAtSectorHex(params.sx|0, params.sy|0, params.hx|0, params.hy|0, {scale: params.scale|0});
         });
         });
 
-      $('#copy-route').addEventListener('click', e => {
-        e.preventDefault();
+      $('#copy-route').addEventListener('click', event => {
+        event.preventDefault();
         Util.copyTextToClipboard(template('#RouteResultsTextTemplate')({
           Route: data,
           Distance: total,
@@ -1436,8 +1436,8 @@ window.addEventListener('DOMContentLoaded', () => {
         }));
       });
 
-      $('#print-route').addEventListener('click', e => {
-        e.preventDefault();
+      $('#print-route').addEventListener('click', event => {
+        event.preventDefault();
         window.open(routeData.PrintURL);
       });
 
@@ -1558,14 +1558,14 @@ window.addEventListener('DOMContentLoaded', () => {
     lightbox.tabIndex = 0;
     inner.style.backgroundImage = 'url("' + url + '")';
 
-    lightbox.addEventListener('click', e => {
-      e.preventDefault();
-      e.stopPropagation();
+    lightbox.addEventListener('click', event => {
+      event.preventDefault();
+      event.stopPropagation();
       lightbox.remove();
     });
-    lightbox.addEventListener('keydown', e => {
-      e.preventDefault();
-      e.stopPropagation();
+    lightbox.addEventListener('keydown', event => {
+      event.preventDefault();
+      event.stopPropagation();
       ignoreNextKeyUp = true;
       lightbox.remove();
     });
@@ -1587,20 +1587,20 @@ window.addEventListener('DOMContentLoaded', () => {
   // iOS WebKit workarounds
   if (navigator.userAgent.match(/iPad|iPhone/)) (() => {
     // Prevent inadvertant touch-scroll.
-    $$('button, input').forEach(e => {
-      e.addEventListener('touchmove', e => { e.preventDefault();  }, {passive:false});
+    $$('button, input').forEach(element => {
+      element.addEventListener('touchmove', event => { event.preventDefault();  }, {passive:false});
     });
     // Prevent inadvertant touch-zoom.
-    document.addEventListener('touchmove', e => {
-      if (e.scale !== 1) { e.preventDefault(); }
+    document.addEventListener('touchmove', event => {
+      if (event.scale !== 1) { event.preventDefault(); }
     }, false);
     // Prevent double-tap-to-zoom.
     let last_time = Date.now();
-    document.addEventListener('touchend', e => {
+    document.addEventListener('touchend', event => {
       const now = Date.now();
       if (now - last_time <= 500) {
-        e.preventDefault();
-        e.target.click();
+        event.preventDefault();
+        event.target.click();
       }
       last_time = now;
     }, false);
@@ -1613,7 +1613,7 @@ window.addEventListener('DOMContentLoaded', () => {
       const cookies_key = 'tm_accept';
       if (!(cookies.tm_accept || localStorage.getItem(cookies_key))) {
         document.body.classList.add('cookies-not-accepted');
-        $('#cookies button').addEventListener('click', e => {
+        $('#cookies button').addEventListener('click', event => {
           document.body.classList.remove('cookies-not-accepted');
           document.cookie = 'tm_accept=1;SameSite=Strict;Secure';
           localStorage.setItem(cookies_key, 1);
@@ -1628,11 +1628,11 @@ window.addEventListener('DOMContentLoaded', () => {
       const promo_key = 'tm_promo3';
       if (!localStorage.getItem(promo_key)) {
         document.body.classList.add('show-promo');
-        $('#promo-closebtn').addEventListener('click', e => {
+        $('#promo-closebtn').addEventListener('click', event => {
           document.body.classList.remove('show-promo');
           localStorage.setItem(promo_key, 1);
         });
-        $('#promo-hover a').addEventListener('click', e => {
+        $('#promo-hover a').addEventListener('click', event => {
           document.body.classList.remove('show-promo');
           localStorage.setItem(promo_key, 1);
         });

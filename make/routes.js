@@ -142,16 +142,16 @@ const msec_template = Handlebars.compile($('#msec-template').innerHTML.trim());
 });
 
 const stack = [];
-$('#canvas').addEventListener('mousedown', e => {
-  e.preventDefault();
-  e.stopPropagation();
+$('#canvas').addEventListener('mousedown', event => {
+  event.preventDefault();
+  event.stopPropagation();
 
-  const offsetX = 'offsetX' in e ? e.offsetX :
-    'layerX' in e ? e.layerX :
-    e.pageX - e.target.offsetLeft;
-  const offsetY = 'offsetY' in e ? e.offsetY :
-    'layerY' in e ? e.layerY :
-    e.pageY - e.target.offsetTop;
+  const offsetX = 'offsetX' in event ? event.offsetX :
+    'layerX' in event ? event.layerX :
+    event.pageX - event.target.offsetLeft;
+  const offsetY = 'offsetY' in event ? event.offsetY :
+    'layerY' in event ? event.layerY :
+    event.pageY - event.target.offsetTop;
   let x = offsetX, y = offsetY;
 
   x = (x - INSET) / PS / Math.cos(Math.PI/6);
