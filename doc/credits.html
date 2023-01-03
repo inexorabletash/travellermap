@@ -1277,13 +1277,13 @@
 
   $$('a.sector').forEach(anchor => {
     const name = anchor.innerText || anchor.textContent;
-    anchor.href = SERVICE_BASE + '/go/' + encodeURIComponent(name);
+    anchor.href = `${SERVICE_BASE}/go/${encodeURIComponent(name)}`;
     anchor.target = "_blank";
     anchor.rel = 'noopener';
   });
 
   try {
-    const response = await fetch(SERVICE_BASE + '/api/universe?requireData=1');
+    const response = await fetch(`${SERVICE_BASE}/api/universe?requireData=1`);
     if (!response.ok)
       throw new Error(response.statusText);
 
@@ -1312,11 +1312,11 @@
     });
     known.forEach(s => {
       if (!s.Names.some(name => docSet.has(name.Text)))
-        console.warn('No credits for known sector: ' + s.Names[0].Text);
+        console.warn(`No credits for known sector: ${s.Names[0].Text}`);
     });
     doc.forEach(s => {
       if (!knownSet.has(s))
-        console.warn('Credits for unknown sector: ' + s);
+        console.warn(`Credits for unknown sector: ${s}`);
     });
   } catch (reason) {
     console.error(reason);

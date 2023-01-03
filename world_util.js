@@ -22,7 +22,7 @@
         + encodeURIComponent(world.Hex) + '.png';
     case 'generic':
       return S3_PREFIX + 'generic_worlds/'
-        + (world.UWP.Siz === '0' ? 'Belt' : 'Hyd' + world.UWP.Hyd) + '.png';
+        + ((world.UWP.Siz === '0' ? 'Belt' : `Hyd${world.UWP.Hyd}`) + '.png';
     case 'background':
       return S3_PREFIX + 'world_backgrounds/' + world;
     default:
@@ -592,7 +592,7 @@
       pop = 'Unknown';
     else
       pop = pop + '0%';
-    return name + ', Population ' + pop;
+    return `${name}, Population ${pop}`;
   }
 
   function numberWithCommas(x) {
@@ -908,7 +908,7 @@
         ctx.drawImage(bgimg, 0, 0, w, h);
         const label = '?';
         const th = h * 2/3;
-        ctx.font = String(th) + 'px sans-serif';
+        ctx.font = `${th}px sans-serif`;
         ctx.fillStyle = 'white';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
@@ -928,7 +928,7 @@
         // Advanced - color blend image.
         const t = class2temp(m[1], m[2]);
         const c = temp2color(t);
-        ctx.fillStyle = 'rgb(' + c.r + ',' + c.g + ',' + c.b + ')';
+        ctx.fillStyle = `rgb(${c.r},${c.g},${c.b})`;
 
         ctx.fillRect(ix, iy, iw, ih);
         ctx.globalCompositeOperation = 'destination-in';

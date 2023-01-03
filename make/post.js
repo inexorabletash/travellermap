@@ -33,7 +33,7 @@ window.addEventListener('DOMContentLoaded', async event => {
     .forEach(record => {
       const option = document.createElement('option');
       option.appendChild(document.createTextNode(record.display));
-      option.value = record.name + '|' + record.milieu;
+      option.value = [record.name, record.milieu].join('|');
       list.appendChild(option);
     });
 

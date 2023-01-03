@@ -57,7 +57,7 @@ function makeMapDisplay(containerElement, map) {
 
 function updateHex(x, y) {
   // Update view
-  $('#hex_' + x + '_' + y).innerHTML = hexContents(x, y, g_map);
+  $(`#hex_${x}_${y}`).innerHTML = hexContents(x, y, g_map);
 }
 
 function updateView() {

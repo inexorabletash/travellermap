@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <link rel="stylesheet" href="../site.css?update=2022-09-10T10:37:44">
 
-<script src="../map.js?update=2023-01-02T16:48:34"></script>
+<script src="../map.js?update=2023-01-02T17:15:05"></script>
 <script src="borders.js"></script>
 <script>
 'use strict';
@@ -105,7 +105,7 @@ function makeMapDisplay(containerElement, map, inset) {
     for (let y = map.origin_y + inset; y < map.origin_y + map.height - inset; ++y) {
       top += (sz + pad);
 
-      let fragment = '<div class="hex" id="hex_' + x + '_' + y + '" style="left: ' + left + 'px; top: ' + top + 'px;">';
+      let fragment = `<div class="hex" id="hex_${x}_${y}" style="left: ${left}px; top: ${top}px;">`;
       fragment += hexContents(x, y, map);
       fragment += '<' + '/div>';
 
@@ -263,7 +263,7 @@ window.onload = async () => {
     for (let oy = -1; oy <= 1; oy += 1) {
       loadTasks.push(
         loadSector(coords.sx + ox, coords.sy + oy, milieu).then(worlds => {
-          status('Loaded sector at ' + (coords.sx + ox) + ',' + (coords.sy + oy));
+          status(`Loaded sector at ${coords.sx + ox},${coords.sy + oy}`);
           worlds.forEach(world => {
 
             ALLEGIANCE_SETS.forEach(alleg_set => {

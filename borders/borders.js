@@ -443,8 +443,7 @@ function processMap(map, success_callback, progress_callback) {
       const polity = list.shift();
       if (polity.allegiance !== NON_ALIGNED && polity.count > 1) {
         if (progress_callback)
-          progress_callback('Processing allegiance ' + polity.allegiance +
-                            ' (' + polity.count + ' worlds)');
+          progress_callback(`Processing allegiance ${polity.allegiance} (${polity.count$} worlds)`);
         processAllegiance(map, polity.allegiance);
       }
       setTimeout(doNext, 0);

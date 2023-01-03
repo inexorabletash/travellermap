@@ -39,7 +39,7 @@ async function parse() {
         po: $('#highlight-po').checked ? 1 : 0
       });
     $('#canvas').style.backgroundSize = '100% 100%';
-    $('#canvas').style.backgroundImage = 'url("' + dataURL + '")';
+    $('#canvas').style.backgroundImage = `url("${dataURL}")`;
     clear();
   } catch (reason) {
     alert('Server error: ' + reason);

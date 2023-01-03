@@ -1269,8 +1269,7 @@ const Util = {
     // once it has successfully loaded.
     //
     getTile(x, y, scale, callback) {
-      const url = this._tile_url_base +
-            '&x=' + String(x) + '&y=' + String(y) + '&scale=' + String(pow2(scale - 1));
+      const url = this._tile_url_base + `&x=${x}&y=${y}&scale=${pow2(scale - 1)}`;
 
       // Have it? Great, get out fast!
       const img = this.cache.fetch(url);

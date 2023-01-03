@@ -137,8 +137,11 @@ window.addEventListener('DOMContentLoaded', () => {
     delete urlParams.subsector;
     delete urlParams.hex;
 
-    urlParams.p = round(map.x, 1/1000) + '!' + round(map.y, 1/1000) + '!' +
-      round(map.logScale, 1/100);
+    urlParams.p = [
+      round(map.x, 1/1000),
+      round(map.y, 1/1000),
+      round(map.logScale, 1/100)
+    ].join('!');
     urlParams.options = map.options;
     urlParams.style = map.style;
 
@@ -167,12 +170,12 @@ window.addEventListener('DOMContentLoaded', () => {
       window.history.replaceState(null, document.title, pageURL);
 
     $('#share-url').value = pageURL;
-    $('#share-code').value = '<iframe width=400 height=300 src="' + pageURL + '">';
+    $('#share-code').value = `<iframe width=400 height=300 src="${pageURL}">`;
 
     ['share-url', 'share-code'].forEach(share => {
-      $('#copy-' + share).addEventListener('click', event => {
+      $(`#copy-${share}`).addEventListener('click', event => {
         event.preventDefault();
-        Util.copyTextToClipboard($('#' + share).value);
+        Util.copyTextToClipboard($(`#${share}`).value);
       });
     });
 
@@ -236,7 +239,7 @@ window.addEventListener('DOMContentLoaded', () => {
     SEARCH_PANES.forEach(c => { document.body.classList.toggle(c, c === pane);  });
     map.SetRoute(null);
 
-    document.title = title ? title + ' - ' + original_title : original_title;
+    document.title = title ? `${title} - ${original_title}` : original_title;
   }
 
   function hideSearch() {
@@ -427,19 +430,19 @@ window.addEventListener('DOMContentLoaded', () => {
 
   function showPanel(shown) {
     PANELS.forEach(p => {
-      document.body.classList[p === shown ? 'add' : 'remove']('show-' + p);
+      document.body.classList[p === shown ? 'add' : 'remove'](`show-${p}`);
     });
   }
 
   function togglePanel(shown) {
     PANELS.forEach(p => {
-      document.body.classList[p === shown ? 'toggle' : 'remove']('show-' + p);
+      document.body.classList[p === shown ? 'toggle' : 'remove'](`show-${p}`);
     });
   }
 
   function hidePanels() {
     PANELS.forEach(p => {
-      document.body.classList.remove('show-' + p);
+      document.body.classList.remove(`show-${p}`);
     });
   }
 
@@ -451,7 +454,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   function showTab(shown) {
     TABS.forEach(p => {
-      document.body.classList[shown === p ? 'add' : 'remove']('show-' + p);
+      document.body.classList[shown === p ? 'add' : 'remove'](`show-${p}`);
     });
   }
 
@@ -474,7 +477,7 @@ window.addEventListener('DOMContentLoaded', () => {
   $('#homeBtn2').addEventListener('click', goHome);
 
   function goHome() {
-    if (['sx', 'sy', 'hx', 'hy'].every(p => ('yah_' + p) in urlParams)) {
+    if (['sx', 'sy', 'hx', 'hy'].every(p => (`yah_${p}`) in urlParams)) {
       map.CenterAtSectorHex(
         urlParams.yah_sx|0, urlParams.yah_sy|0,
         urlParams.yah_hx|0, urlParams.yah_hy|0,
@@ -639,7 +642,7 @@ window.addEventListener('DOMContentLoaded', () => {
     optionObservers.push(o => {
       const v = map.namedOptions.get(name);
       if (v === undefined) v = defaults[name];
-      const e = $(selector + '[value="' +  v + '"]');
+      const e = $(`${selector}[value="${v}"]`);
       if (e) e.checked = true;
     });
     $$(selector).forEach(elem => {
@@ -666,7 +669,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   map.OnStyleChanged = Util.debounce(style => {
     STYLES.forEach(s => {
-      document.body.classList.toggle('style-' + s, s === style);
+      document.body.classList.toggle(`style-${s}`, s === style);
     });
     updateContext(lastX || map.worldX, lastY || map.worldY, {refresh: true});
     updatePermalink();
@@ -962,10 +965,10 @@ window.addEventListener('DOMContentLoaded', () => {
         .join(', ');
 
       if (data.SectorName) {
-        data.SectorWikiURL = makeWikiURL(data.SectorName + ' Sector');
+        data.SectorWikiURL = makeWikiURL(`${data.SectorName} Sector`);
         data.SectorWikiURLNoScheme = data.SectorWikiURL.replace(/^\w+:\/\//, '');
         data.BookletURL = Traveller.MapService.makeURL(
-          '/data/' + encodeURIComponent(data.SectorName) + '/booklet', {
+          `/data/${encodeURIComponent(data.SectorName)}/booklet`, {
             milieu
           });
 
@@ -1476,7 +1479,7 @@ window.addEventListener('DOMContentLoaded', () => {
       const factor = Math.pow(10, Math.floor(Math.log(dist) / Math.LN10));
       dist = Math.floor(dist / factor) * factor;
       dist = parseFloat(dist.toPrecision(1));
-      const label = dist + ' pc';
+      const label = `${dist} pc`;
       const bar = dist * scale;
 
       ctx.save();
@@ -1515,7 +1518,7 @@ window.addEventListener('DOMContentLoaded', () => {
   }
   async function findMain(worldX, worldY) {
     function sectorHexToSig(sx, sy, hx, hy) {
-      return sx + '/' + sy + '/' + ('0000' + ( hx * 100 + hy )).slice(-4);
+      return `${sx}/${sy}/` + ('0000' + ( hx * 100 + hy )).slice(-4);
     }
     function sigToSectorHex(sig) {
       const parts = sig.split('/');
@@ -1556,7 +1559,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const inner = lightbox.appendChild(document.createElement('div'));
     lightbox.className = 'lightbox';
     lightbox.tabIndex = 0;
-    inner.style.backgroundImage = 'url("' + url + '")';
+    inner.style.backgroundImage = `url("${url}")`;
 
     lightbox.addEventListener('click', event => {
       event.preventDefault();
