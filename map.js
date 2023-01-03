@@ -1200,7 +1200,7 @@ const Util = {
         $this.ctx.drawImage(img, px, py, pw, ph);
       }
 
-      const img = this.getTile(x, y, scale, this.invalidate.bind(this));
+      const img = this.getTile(x, y, scale, () => this.invalidate());
 
       if (img) {
         drawImage(img, dx, dy, dw, dh);
@@ -1435,7 +1435,7 @@ const Util = {
       let image;
 
       if (marker.url) {
-        image = stash.get(marker.url, this.invalidate.bind(this));
+        image = stash.get(marker.url, () => this.invalidate());
         if (!image) return;
 
         const MARKER_SIZE = 128;
@@ -1451,7 +1451,7 @@ const Util = {
 
       if (styleLookup(this.style, marker.id + '_url')) {
         const url = styleLookup(this.style, marker.id + '_url');
-        image = stash.get(url, this.invalidate.bind(this));
+        image = stash.get(url, () => this.invalidate());
         if (!image) return;
 
         ctx.save();

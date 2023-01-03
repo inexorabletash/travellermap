@@ -8,7 +8,6 @@ window.addEventListener('DOMContentLoaded', () => {
   //
   //////////////////////////////////////////////////////////////////////
 
-  // IE8: document.querySelector can't use bind()
   const $ = s => document.querySelector(s);
   const $$ = s => Array.from(document.querySelectorAll(s));
 
@@ -502,8 +501,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
   // Nav Bar
 
-  $('#zoomInBtn').addEventListener('click', map.ZoomIn.bind(map));
-  $('#zoomOutBtn').addEventListener('click', map.ZoomOut.bind(map));
+  $('#zoomInBtn').addEventListener('click', () => map.ZoomIn());
+  $('#zoomOutBtn').addEventListener('click', () => map.ZoomOut());
   $('#tiltBtn').addEventListener('click', () => { $('#cbTilt').click(); });
   $('#fsBtn').addEventListener('click', toggleFullscreen);
 
