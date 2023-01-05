@@ -55,7 +55,7 @@
       // Special formatting
       world.ix = world.ix.replace(/[{} ]/g, '');
       world.ex = world.ex.replace(/[() ]/g, '');
-      world.cx = world.cx.replace(/[\[\] ]/g, '');
+      world.cx = world.cx.replace(/[[\] ]/g, '');
 
       world.name = smartquote(world.name);
 
@@ -194,6 +194,6 @@
         }, 1000 + 5000 * Math.random());
       });
     });
-  };
+  }
 
 })(self);

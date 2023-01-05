@@ -104,7 +104,7 @@ const Restellarator = {
       if (spectral === 'BD') return spectral;
 
       let iter = 0;
-      while (true) {
+      for (;;) {
         if (++iter > 1000) { alert('too many iterations'); throw new Error('iterations'); }
 
         // "Spectral Decimal. Roll decimal 0 to 9."

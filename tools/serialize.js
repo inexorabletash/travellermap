@@ -175,7 +175,7 @@ function formatColDelimited(data, options) {
   }).join(' '));
   data.worlds.forEach(world => {
     out.push(data.fields.map((field, index) => {
-      return (world[field] || '')  + ' '.repeat(widths[index] - world[field].length);;
+      return (world[field] || '')  + ' '.repeat(widths[index] - world[field].length);
     }).join(' '));
   });
 

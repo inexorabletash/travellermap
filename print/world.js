@@ -39,7 +39,7 @@
           }));
           if (!response.ok) throw Error(response.statusText);
           const data = await response.json();
-          let world = await Traveller.prepareWorld(data.Worlds[0]);;
+          let world = await Traveller.prepareWorld(data.Worlds[0]);
           if (world) {
             await Traveller.renderWorldImage(world, $('#wds-world-image'));
             $('#wds-world-image').classList.add('wds-ready');

@@ -1,4 +1,4 @@
-/*global Traveller, Util, Handlebars */ // for lint and IDEs
+/*global Traveller,Util,Handlebars */ // for lint and IDEs
 (global => {
   'use strict';
 

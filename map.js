@@ -853,7 +853,7 @@ const Util = {
                 ocx = (pinch1.x + pinch2.x) / 2,
                 ocy = (pinch1.y + pinch2.y) / 2;
 
-          pinch1 = this.eventCoords(event.touches[0]),
+          pinch1 = this.eventCoords(event.touches[0]);
           pinch2 = this.eventCoords(event.touches[1]);
 
           const nd = dist(pinch2.x - pinch1.x, pinch2.y - pinch1.y),
@@ -896,7 +896,7 @@ const Util = {
           touch_wc = this.eventToWorldCoords(event.touches[0]);
         } else if (event.touches.length === 2) {
           this.defer_loading = true;
-          pinch1 = this.eventCoords(event.touches[0]),
+          pinch1 = this.eventCoords(event.touches[0]);
           pinch2 = this.eventCoords(event.touches[1]);
         }
 
@@ -1011,7 +1011,7 @@ const Util = {
 
       this.invalidate();
       fireEvent(this, 'ScaleChanged', this.scale);
-    };
+    }
 
     resetCanvas() {
       const cw = this.rect.width;
@@ -1259,7 +1259,7 @@ const Util = {
         }
       }
       drawHigher(x, y, scale, dx, dy, dw, dh);
-    };
+    }
 
 
     //
@@ -1303,7 +1303,7 @@ const Util = {
         });
 
       return undefined;
-    };
+    }
 
     shouldAnimateTo(scale, x, y) {
       // TODO: Allow scale changes if target is "visible" (zooming in)
@@ -1312,14 +1312,14 @@ const Util = {
 
       const threshold = Astrometrics.SectorHeight * 64 / this.scale;
       return dist(x - this.x, y - this.y) < threshold;
-    };
+    }
 
     cancelAnimation() {
       if (this.animation) {
         this.animation.cancel();
         this.animation = null;
       }
-    };
+    }
 
     animateTo(scale, x, y, sec) {
       return new Promise((resolve, reject) => {
@@ -1352,7 +1352,7 @@ const Util = {
         this.animation.oncomplete = resolve;
         this.animation.oncancel = reject;
       });
-    };
+    }
 
     drawOverlay(overlay) {
       const ctx = this.ctx;
@@ -1374,7 +1374,7 @@ const Util = {
         ctx.fill();
       }
       ctx.restore();
-    };
+    }
 
     drawRoute(route) {
       const ctx = this.ctx;
@@ -1404,7 +1404,7 @@ const Util = {
 
       ctx.stroke();
       ctx.restore();
-    };
+    }
 
     drawMain(main) {
       const ctx = this.ctx;
@@ -1425,7 +1425,7 @@ const Util = {
       });
       ctx.fill();
       ctx.restore();
-    };
+    }
 
     drawMarker(marker) {
       const pt = this.mapToPixel(marker.x, marker.y);
@@ -1459,7 +1459,7 @@ const Util = {
         ctx.drawImage(image, pt.x, pt.y);
         ctx.restore();
       }
-    };
+    }
 
     drawWave(date) {
       let year = 1105;
@@ -1510,7 +1510,7 @@ const Util = {
               Math.PI / 2 + Math.PI / 12);
       ctx.stroke();
       ctx.restore();
-    };
+    }
 
     drawQZ() {
       const x = -179.4, y = 131, radius = 30 * Traveller.Astrometrics.ParsecScaleX, w = 1;
@@ -1529,21 +1529,21 @@ const Util = {
               this.scale * radius, 0, Math.PI * 2);
       ctx.stroke();
       ctx.restore();
-    };
+    }
 
     mapToPixel(mx, my) {
       return {
         x: (mx - this._tx * this.tilesize) * this.scale + this.rect.width / 2,
         y: (-my - this._ty * this.tilesize) * this.scale + this.rect.height / 2
       };
-    };
+    }
 
     pixelToMap(px, py) {
       return {
         x: this._tx * this.tilesize + (px - this.rect.width  / 2) / this.scale,
         y: -(this._ty * this.tilesize + (py - this.rect.height / 2) / this.scale)
       };
-    };
+    }
 
     eventCoords(event) {
       // Attempt to get transformed coords; offsetX/Y for Chrome/Safari/IE,
@@ -1561,13 +1561,13 @@ const Util = {
         x: offsetX - SINK_OFFSET - this.rect.left,
         y: offsetY - SINK_OFFSET - this.rect.top
       };
-    };
+    }
 
     eventToWorldCoords(event) {
       const coords = this.eventCoords(event);
       const map = this.pixelToMap(coords.x, coords.y);
       return Astrometrics.mapToWorld(map.x, map.y);
-    };
+    }
 
 
     // ======================================================================

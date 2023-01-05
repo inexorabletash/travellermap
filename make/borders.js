@@ -210,7 +210,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const channel = ('00' + clamp(parseInt(alleg, 36) & 0xFF, 0x60, 0xC0).toString(16))
               .slice(-2);
         color = '#' + channel + channel + channel;
-      } catch (_) {}
+      } catch (_) { /*ignore*/ }
 
     }
     return `` +
@@ -273,7 +273,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     updateDisplay();
-  };
+  }
 
   function toggleAllegiance(hex) {
     const hx = Number(hex.substring(0, 2));
@@ -303,11 +303,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const nalleg = map.getAllegiance(nxy[0], nxy[1]);
         if (nalleg === UNALIGNED)
           continue;
-        if (votes.hasOwnProperty(nalleg))
+        if (Object.prototype.hasOwnProperty.call(votes, nalleg))
           ++votes[nalleg];
         else
           votes[nalleg] = 1;
-      } catch(_) {}
+      } catch(_) { /*ignore*/ }
     }
     const top = Object
           .keys(votes)

@@ -378,7 +378,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
       const start = $('#routeStart').value;
       const end = $('#routeEnd').value;
-      const jump = button.id.replace('J-', '');;
+      const jump = button.id.replace('J-', '');
 
       route(start, end, jump);
     });
@@ -640,7 +640,7 @@ window.addEventListener('DOMContentLoaded', () => {
   }
   function bindRadioToNamedOption(selector, name) {
     optionObservers.push(o => {
-      const v = map.namedOptions.get(name);
+      let v = map.namedOptions.get(name);
       if (v === undefined) v = defaults[name];
       const e = $(`${selector}[value="${v}"]`);
       if (e) e.checked = true;
@@ -691,9 +691,8 @@ window.addEventListener('DOMContentLoaded', () => {
   }, EVENT_DEBOUNCE_MS);
 
   function post(message) {
-    if (window.parent !== window && 'postMessage' in window.parent) {
-      // Fails cross-domain in IE10-
-      try { window.parent.postMessage(message, '*'); } catch (_) {}
+    if (window.parent !== window) {
+      window.parent.postMessage(message, '*');
     }
   }
 
@@ -837,7 +836,6 @@ window.addEventListener('DOMContentLoaded', () => {
   });
 
   if ('qr' in urlParams) {
-    console.log('qr');
     try {
       const results = JSON.parse(urlParams['qr']);
       console.log('results: ', results);
@@ -896,7 +894,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   let dataRequest = null;
   let dataTimeout = 0;
-  let ignoreIndirect = true;;
+  let ignoreIndirect = true;
   let enableContext;
 
   function makeWikiURL(suffix) {

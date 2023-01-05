@@ -458,6 +458,6 @@
     } catch (error) {
       status(`Failed: ${error}`);
     }
-  };
+  }
 
 })(this);
