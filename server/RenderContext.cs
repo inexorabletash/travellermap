@@ -461,7 +461,7 @@ namespace Maps.Rendering
                 solidBrush.Color = styles.droyneWorlds.textColor;
                 foreach (World world in selector.Worlds)
                 {
-                    bool droyne = world.HasCodePrefix("Droy");
+                    bool droyne = world.Allegiance == "Dr" || world.Allegiance == "NaDr" || world.HasCodePrefix("Droy");
                     bool chirpers = world.HasCodePrefix("Chir");
 
                     if (droyne || chirpers)
