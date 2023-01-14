@@ -1697,7 +1697,7 @@ namespace Maps.Rendering
                         // If drawing dashed lines twice and the start/end are swapped the
                         // dashes don't overlap correctly. So "sort" the points.
                         if (startLocation > endLocation)
-                            Util.Swap(ref startLocation, ref endLocation);
+                            (startLocation, endLocation) = (endLocation, startLocation);
 
                         PointF startPoint = Astrometrics.HexToCenter(Astrometrics.LocationToCoordinates(startLocation));
                         PointF endPoint = Astrometrics.HexToCenter(Astrometrics.LocationToCoordinates(endLocation));

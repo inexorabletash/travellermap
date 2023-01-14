@@ -431,8 +431,7 @@ namespace Maps.Search
                 "WHERE name = @name AND milieu = @milieu " +
                 "ORDER BY distance ASC";
 
-            if (milieu == null)
-                milieu = SectorMap.DEFAULT_MILIEU;
+            milieu ??= SectorMap.DEFAULT_MILIEU;
 
             using var connection = DBUtil.MakeConnection();
             using var sqlCommand = new SqlCommand(sql, connection);

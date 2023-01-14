@@ -507,7 +507,7 @@ namespace Maps
                         continue;
 
                     if (end == loc)
-                        Util.Swap(ref start, ref end);
+                        (start, end) = (end, start);
                     else if (start != loc)
                         continue;
 

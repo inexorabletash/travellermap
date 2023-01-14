@@ -252,7 +252,7 @@ namespace Maps.API
                     case 1: // 90 degrees clockwise
                         rotTransform.RotatePrepend(90);
                         rotTransform.TranslatePrepend(0, -bitmapHeight);
-                        Util.Swap(ref bitmapWidth, ref bitmapHeight);
+                        (bitmapWidth, bitmapHeight) = (bitmapHeight, bitmapWidth);
                         break;
                     case 2: // 180 degrees
                         rotTransform.RotatePrepend(180);
@@ -261,7 +261,7 @@ namespace Maps.API
                     case 3: // 270 degrees clockwise
                         rotTransform.RotatePrepend(270);
                         rotTransform.TranslatePrepend(-bitmapWidth, 0);
-                        Util.Swap(ref bitmapWidth, ref bitmapHeight);
+                        (bitmapWidth, bitmapHeight) = (bitmapHeight, bitmapWidth);
                         break;
                 }
 

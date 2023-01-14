@@ -189,13 +189,6 @@ namespace Maps.Utilities
     {
         public static readonly Encoding UTF8_NO_BOM = new UTF8Encoding(encoderShouldEmitUTF8Identifier: false);
 
-        public static void Swap<T>(ref T a, ref T b)
-        {
-            T tmp = a;
-            a = b;
-            b = tmp;
-        }
-
         // TODO: Could be a variant of Enumerable.Range(...).Select(...)
         public static IEnumerable<int> Sequence(int start, int end)
         {
@@ -438,7 +431,7 @@ namespace Maps.Utilities
             {
                 int pi = (ci - 1) / 2; // parent index
                 if (data[ci].CompareTo(data[pi]) >= 0) break; // child item is larger than (or equal) parent so we're done
-                T tmp = data[ci]; data[ci] = data[pi]; data[pi] = tmp;
+                (data[pi], data[ci]) = (data[ci], data[pi]);
                 ci = pi;
             }
         }
@@ -461,7 +454,7 @@ namespace Maps.Utilities
                 if (rc <= li && data[rc].CompareTo(data[ci]) < 0) // if there is a rc (ci + 1), and it is smaller than left child, use the rc instead
                     ci = rc;
                 if (data[pi].CompareTo(data[ci]) <= 0) break; // parent is smaller than (or equal to) smallest child so done
-                T tmp = data[pi]; data[pi] = data[ci]; data[ci] = tmp; // swap parent and child
+                (data[ci], data[pi]) = (data[pi], data[ci]);
                 pi = ci;
             }
 
