@@ -72,10 +72,10 @@
     <Label Hex="2834" Color="darkred" Size="small">Jannasta's&#x0a;Path</Label>
   </Labels>
   <Borders>
-    <Border Allegiance="Dr" LabelPosition="0303" ShowLabel="false" WrapLabel="false">0000 0100 0200 0300 0400 0500 0600 0700 0800 0701 0601 0502 0503 0504 0404 0304 0204 0105 0005 0006 0005 0004 0003 0002 0001 0000 </Border>
+    <Border Allegiance="Dr" LabelPosition="0303" ShowLabel="false" WrapLabel="true">0000 0100 0200 0300 0400 0500 0600 0700 0800 0701 0601 0502 0503 0504 0404 0304 0204 0105 0005 0006 0005 0004 0003 0002 0001 0000 </Border>
   </Borders>
   <Allegiances>
-    <Allegiance Code="Dr">Dominion&#x0a;of Ruins</Allegiance>
+    <Allegiance Code="Dr">Dominion of Ruins</Allegiance>
   </Allegiances>
   <Stylesheet>
     border.Dr { color: blue; style: dotted }
