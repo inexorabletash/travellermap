@@ -1,5 +1,5 @@
 /*global Traveller,Util,Handlebars */ // for lint and IDEs
-window.addEventListener('DOMContentLoaded', () => {
+(global => {
   'use strict';
 
   //////////////////////////////////////////////////////////////////////
@@ -1647,4 +1647,4 @@ window.addEventListener('DOMContentLoaded', () => {
 
   // After all async events from the map have fired...
   setTimeout(() => { enableContext = true; }, 0);
-});
+})(self);

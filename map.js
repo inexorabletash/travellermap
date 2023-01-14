@@ -1925,4 +1925,4 @@ const Util = {
     fromHex: fromHex
   };
 
-})(this);
+})(self);

@@ -987,4 +987,4 @@
     return {r:r, g:g, b:b};
   }
 
-})(this);
+})(self);
