@@ -445,6 +445,7 @@ namespace Maps.Utilities
             data.RemoveAt(li);
 
             --li; // last index (after removal)
+
             int pi = 0; // parent index. start at front of pq
             while (true)
             {
