@@ -25,17 +25,13 @@
     <Subsector Index="P">Bead</Subsector>
   </Subsectors>
   <Allegiances>
-    <Allegiance Code="NaHu" Base="Na">Non-Aligned, Human-dominated</Allegiance>
-    <Allegiance Code="CsHv" Base="Hc">Client State, Hive Federation</Allegiance>
-    <Allegiance Code="NaDr" Base="Na">Non-Aligned, Droyne-dominated</Allegiance>
-    <Allegiance Code="NaXX" Base="Na">Non-Aligned, unclaimed</Allegiance>
-    <Allegiance Code="AuRe" Base="Ar">Aurean Republic</Allegiance>
-    <Allegiance Code="BaPr" Base="Bp">Bareen Protectorate</Allegiance>
-    <Allegiance Code="MaEx" Base="Me">Malzaenan Expanse</Allegiance>
-    <Allegiance Code="SaUn" Base="Su">Saros Union</Allegiance>
-    <Allegiance Code="MeRe" Base="Mr">Menri Republic</Allegiance>
-    <Allegiance Code="OrUn" Base="Ou">Orandur Union</Allegiance>
-    <Allegiance Code="GrEy" Base="Ge">Great Eye</Allegiance>
+    <Allegiance Code="Ar">Aurean Republic</Allegiance>
+    <Allegiance Code="Bp">Bareen Protectorate</Allegiance>
+    <Allegiance Code="Me">Malzaenan Expanse</Allegiance>
+    <Allegiance Code="Su">Saros Union</Allegiance>
+    <Allegiance Code="Mr">Menri Republic</Allegiance>
+    <Allegiance Code="Ou">Orandur Union</Allegiance>
+    <Allegiance Code="Ge">Great Eye</Allegiance>
   </Allegiances>
   <Stylesheet>
     border.BaPr { color: green; }
@@ -52,11 +48,11 @@
     <Border Allegiance="MaEx" LabelPosition="1621" WrapLabel="true">1224 1324 1323 1422 1421 1420 1421 1522 1422 1423 1424 1525 1424 1324 1224 </Border>
     <Border Allegiance="SaUn" LabelPosition="2132" WrapLabel="true">1931 2031 2132 2232 2332 2232 2233 2133 2033 1934 1933 1932 1931 </Border>
     <Border Allegiance="MeRe" LabelPosition="0427" WrapLabel="true">0527 0626 0726 0626 0527 0528 0527 </Border>
-    <Border Allegiance="MeRe" ShowLabel="false">0631 </Border>   
+    <Border Allegiance="MeRe" ShowLabel="false">0631 </Border>
 
     <Border Allegiance="OrUn" LabelPosition="2019" WrapLabel="true">1518 1618 1719 1819 1920 2020 2120 2220 2120 2020 1920 1819 1719 1618 1518 </Border>
     <Border Allegiance="OrUn" ShowLabel="false">1821 </Border>
- 
+
     <Border Allegiance="GrEy" LabelPosition="0407" WrapLabel="true">0507 </Border>
     <Border Allegiance="GrEy" ShowLabel="false">0510 </Border>
   </Borders>
