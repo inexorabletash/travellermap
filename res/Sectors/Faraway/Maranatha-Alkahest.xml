@@ -5,7 +5,6 @@
   <Stylesheet>
     border { color: salmon; style: dashed; }
     border.Im { color: lightblue; style: dashed; }
-    border.Hazard { color: red; style: dotted; }
 
     route.Independent { color: darkblue; style: dashed; }
     route.Special { color: steelblue; width: 3; }
@@ -51,7 +50,7 @@
     <Border Allegiance="Sz" LabelPosition="2920" WrapLabel="true">2820 2920 2919 2918 2917 2916 2917 2918 3018 3119 3120 3220 3221 3122 3022 2922 2821 2820</Border>
     <Border Allegiance="Tc" LabelPosition="2933">2931 3030 3029 3129 3228 3227 3226 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3236 3235 3135 3134 3033 3032 2932 2931</Border>
     <Border Allegiance="Zu">0223 0323 0422 0522 0622 0722 0821 0921 1020 1120 1119 1218 1318 1319 1419 1420 1421 1422 1423 1424 1425 1426 1327 1328 1228 1229 1230 1131 1132 1133 1033 0934 0834 0734 0633 0533 0532 0431 0331 0230 0229 0228 0227 0226 0225 0224 0223</Border>
-    <Border Allegiance="Hazard" Label="Navigational Hazard" LabelPosition="0505" WrapLabel="true">0506</Border>
+    <Border Label="Navigational Hazard" LabelPosition="0505" WrapLabel="true" Color="Red" Style="Dotted">0506</Border>
   </Borders>
   <Routes>
     <Route Type="Trade" Start="0223" End="0422"/>
