@@ -4,6 +4,7 @@ using Maps.Utilities;
 using System;
 using System.Data.SqlClient;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Web;
 
@@ -63,6 +64,10 @@ namespace Maps.Admin
         {
             if (context.Request[name] != null)
                 return context.Request[name] == "1";
+            // Check for "empty" query params; a list is returned.
+            var empty = context.Request.QueryString[null];
+            if (empty != null && empty.Split(',').Contains(name))
+                return true;
             var queryDefaults = Defaults(context);
             if (queryDefaults != null && queryDefaults.ContainsKey(name))
                 return queryDefaults[name].ToString() == "1";

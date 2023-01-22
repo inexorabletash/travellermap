@@ -19,9 +19,14 @@ namespace Maps.Admin
             string? type = GetStringOption(context, "type");
             string? milieu = GetStringOption(context, "milieu");
             string? tag = GetStringOption(context, "tag");
+            bool hide_uwp = GetBoolOption(context, "hide-uwp");
             bool hide_tl = GetBoolOption(context, "hide-tl");
             bool hide_gov = GetBoolOption(context, "hide-gov");
             bool hide_stellar = GetBoolOption(context, "hide-stellar");
+            bool hide_ex = GetBoolOption(context, "hide-ex");
+            bool hide_extra = GetBoolOption(context, "hide-extra");
+            bool hide_missing = GetBoolOption(context, "hide-missing");
+            bool hide_ignoring= GetBoolOption(context, "hide-ignoring");
             ErrorLogger.Severity severity = GetBoolOption(context, "warnings", true) ? 0 : ErrorLogger.Severity.Error;
 
             // NOTE: This (re)initializes a static data structure used for 
@@ -60,9 +65,14 @@ namespace Maps.Admin
 #if DEBUG
                         worlds.ErrorList!.Report(context.Response.Output, severity, (ErrorLogger.Record record) =>
                         {
+                            if (hide_uwp && record.message.StartsWith("UWP:")) return false;
                             if (hide_gov && (record.message.StartsWith("UWP: Gov") || record.message.StartsWith("Gov"))) return false;
                             if (hide_tl && record.message.StartsWith("UWP: TL")) return false;
                             if (hide_stellar && record.message.StartsWith("Invalid stellar data:")) return false;
+                            if (hide_extra && record.message.StartsWith("Extraneous code:")) return false;
+                            if (hide_missing && record.message.StartsWith("Missing code:")) return false;
+                            if (hide_ex && record.message.StartsWith("(Ex)")) return false;
+                            if (hide_ignoring && record.message.StartsWith("Ignoring")) return false;
                             return true;
                         });
                         error_count += worlds!.ErrorList.CountOf(ErrorLogger.Severity.Error);
