@@ -23,7 +23,11 @@ namespace Maps.Admin
             bool hide_tl = GetBoolOption(context, "hide-tl");
             bool hide_gov = GetBoolOption(context, "hide-gov");
             bool hide_stellar = GetBoolOption(context, "hide-stellar");
+            bool hide_pbg = GetBoolOption(context, "hide-pbg");
+            bool hide_ix = GetBoolOption(context, "hide-ix");
             bool hide_ex = GetBoolOption(context, "hide-ex");
+            bool hide_cx = GetBoolOption(context, "hide-cx");
+            bool hide_worlds = GetBoolOption(context, "hide-worlds");
             bool hide_extra = GetBoolOption(context, "hide-extra");
             bool hide_missing = GetBoolOption(context, "hide-missing");
             bool hide_ignoring= GetBoolOption(context, "hide-ignoring");
@@ -71,7 +75,11 @@ namespace Maps.Admin
                             if (hide_stellar && record.message.StartsWith("Invalid stellar data:")) return false;
                             if (hide_extra && record.message.StartsWith("Extraneous code:")) return false;
                             if (hide_missing && record.message.StartsWith("Missing code:")) return false;
+                            if (hide_pbg && record.message.StartsWith("PBG:")) return false;
+                            if (hide_ix && record.message.StartsWith("{Ix}")) return false;
                             if (hide_ex && record.message.StartsWith("(Ex)")) return false;
+                            if (hide_cx && record.message.StartsWith("[Cx]")) return false;
+                            if (hide_worlds && record.message.StartsWith("Worlds:")) return false;
                             if (hide_ignoring && record.message.StartsWith("Ignoring")) return false;
                             return true;
                         });
