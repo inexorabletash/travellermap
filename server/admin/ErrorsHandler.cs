@@ -2,6 +2,7 @@
 using Maps.Utilities;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.InteropServices;
 
 namespace Maps.Admin
 {
@@ -89,9 +90,10 @@ namespace Maps.Admin
 
                         foreach (var world in worlds)
                         {
-                            if (sector.GetAllegianceFromCode(world.Allegiance) == null)
+                            var alleg = world.Allegiance;
+                            if (alleg != "" && sector.GetAllegianceFromCode(alleg) == null)
                             {
-                                context.Response.Output.WriteLine($"Undefined allegiance code: {world.Allegiance} (on world {world.Name} {world.Hex})");
+                                context.Response.Output.WriteLine($"Undefined allegiance code: {alleg} (on world {world.Name} {world.Hex})");
                             }
                         }
                     }
