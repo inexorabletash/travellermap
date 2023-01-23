@@ -78,6 +78,14 @@ namespace Maps.Admin
                         error_count += worlds!.ErrorList.CountOf(ErrorLogger.Severity.Error);
                         warning_count += worlds!.ErrorList.CountOf(ErrorLogger.Severity.Warning);
 #endif
+
+                        foreach (var world in worlds)
+                        {
+                            if (sector.GetAllegianceFromCode(world.Allegiance) == null)
+                            {
+                                context.Response.Output.WriteLine($"Undefined allegiance code: {world.Allegiance} (on world {world.Name} {world.Hex})");
+                            }
+                        }
                     }
                     else
                     {
