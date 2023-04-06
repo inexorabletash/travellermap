@@ -1626,17 +1626,17 @@
   // Show promo, if not dismissed.
   if (!isIframe) {
     setTimeout(() => {
-      const promo_key = 'tm_promo3';
+      const promo_key = 'tm_promo4';
       if (!localStorage.getItem(promo_key)) {
         document.body.classList.add('show-promo');
         $('#promo-closebtn').addEventListener('click', event => {
           document.body.classList.remove('show-promo');
           localStorage.setItem(promo_key, 1);
         });
-        $('#promo-hover a').addEventListener('click', event => {
+        $$('#promo-hover a').forEach(a => a.addEventListener('click', event => {
           document.body.classList.remove('show-promo');
-          localStorage.setItem(promo_key, 1);
-        });
+          //localStorage.setItem(promo_key, 1);
+        }));
       }
     }, 1000);
   }
