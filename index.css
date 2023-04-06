@@ -83,6 +83,7 @@ input[type=text] {
   background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" height="32" width="32"><path d="M0 0h32v32H0z"/><path fill="%23404040" d="M0 0h16v16H0zM16 16h16v16H16z"/></svg>');
   cursor: crosshair;
 }
+
 /* TODO: draft, fasa */
 .style-print #dragContainer,
 .style-atlas #dragContainer {
@@ -1447,6 +1448,11 @@ input[type=radio]:checked + label:before {
 @media only screen and (max-width: 375px) {
   /* Mobile Medium */
   #searchForm { width: 140px; }
+}
+
+@media only screen and (display-mode: standalone) {
+  /* True full-screen for standlone mode */
+  html, body, #dragContainer  { width: 100vw; height: 100vh; max-height: 100vh}
 }
 
 /* ============================================================ */
