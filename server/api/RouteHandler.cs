@@ -61,11 +61,23 @@ namespace Maps.API
                     }
                 }
 
-                int PathFinder.IMap<World>.CostEstimate(World a, World b)
+                double PathFinder.IMap<World>.CostEstimate(World a, World b)
                 {
                     if (a == null) throw new ArgumentNullException(nameof(a));
                     if (b == null) throw new ArgumentNullException(nameof(b));
-                    return (int)Math.Ceiling(Astrometrics.HexDistance(a.Coordinates, b.Coordinates) / (float)Jump);
+                    return Math.Ceiling(Astrometrics.HexDistance(a.Coordinates, b.Coordinates) / (double)Jump);
+                }
+
+                double PathFinder.IMap<World>.EdgeWeight(Maps.World a, Maps.World b)
+                {
+                    if (a == null) throw new ArgumentNullException(nameof(a));
+                    if (b == null) throw new ArgumentNullException(nameof(b));
+
+                    // TODO: Add additional cost if doesn't have wilderness refuelling or is a red zone.
+
+                    // Primary cost is 1 (a single jump to a world in range) but the actual
+                    // cost is slightly higher for longer jumps due to fuel usage.
+                    return 1 + (Astrometrics.HexDistance(a.Coordinates, b.Coordinates) / 36.0);
                 }
             }
 

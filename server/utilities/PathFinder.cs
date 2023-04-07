@@ -28,7 +28,8 @@ namespace Maps.Utilities
         public interface IMap<T>
         { 
             IEnumerable<T> Neighbors(T entity);
-            int CostEstimate(T a, T b);
+            double CostEstimate(T a, T b);
+            double EdgeWeight(T a, T b);
         }
 
 
@@ -48,9 +49,12 @@ namespace Maps.Utilities
                 return path;
             }
 
-
             // h is the heuristic function. h(n) estimates the cost to reach goal from node n.
             double h(T t) => map.CostEstimate(t, end);
+
+            // d(current,neighbor) is the weight of the edge from current to neighbor
+            double d(T current, T neighbor) => map.EdgeWeight(current, neighbor);
+
 
             // The set of discovered nodes that may need to be (re-)expanded.
             // Initially, only the start node is known.
@@ -83,12 +87,10 @@ namespace Maps.Utilities
 
                 if (current.Equals(end))
                     return reconstruct_path(cameFrom, current);
-                
+
                 foreach (T neighbor in map.Neighbors(current))
                 {
-                    // d(current,neighbor) is the weight of the edge from current to neighbor
                     // tentative_gScore is the distance from start to the neighbor through current
-                    double d(T current, T neighbor) => 1; // Single jump; TODO: Refuel, risk, etc.
 
                     var tentative_gScore = gScore[current] + d(current, neighbor);
                     if (!gScore.ContainsKey(neighbor) || tentative_gScore < gScore[neighbor])
