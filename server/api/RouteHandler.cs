@@ -43,7 +43,7 @@ namespace Maps.API
                     return PathFinder.FindPath<World>(this, start, end);
                 }
 
-                IEnumerable<World> PathFinder.IMap<World>.Adjacent(World world)
+                IEnumerable<World> PathFinder.IMap<World>.Neighbors(World world)
                 {
                     if (world == null) throw new ArgumentNullException(nameof(world));
                     foreach (World w in new HexSelector(map, manager, Astrometrics.CoordinatesToLocation(world.Coordinates), Jump).Worlds)
@@ -61,11 +61,11 @@ namespace Maps.API
                     }
                 }
 
-                int PathFinder.IMap<World>.Distance(World a, World b)
+                int PathFinder.IMap<World>.CostEstimate(World a, World b)
                 {
                     if (a == null) throw new ArgumentNullException(nameof(a));
                     if (b == null) throw new ArgumentNullException(nameof(b));
-                    return Astrometrics.HexDistance(a.Coordinates, b.Coordinates);
+                    return (int)Math.Ceiling(Astrometrics.HexDistance(a.Coordinates, b.Coordinates) / (float)Jump);
                 }
             }
 

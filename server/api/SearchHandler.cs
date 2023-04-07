@@ -263,7 +263,7 @@ namespace Maps.API.Results
                         label.Radius > 80 ? 4 :
                         label.Radius > 40 ? 8 :
                         label.Radius > 20 ? 32 : 64,
-                    SectorTags = sector.TagString
+                    SectorTags = sector?.TagString
                 };
             }
 

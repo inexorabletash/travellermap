@@ -4,6 +4,7 @@ using Maps.API;
 using Maps.HTTP;
 using System;
 using System.Globalization;
+using System.Net;
 using System.Web.Routing;
 
 namespace Maps
@@ -12,6 +13,9 @@ namespace Maps
     {
         protected void Application_Start(object sender, EventArgs e)
         {
+            // Shouldn't be necessary (included in 4.5 by default?), but ensure TLS 1.2 is used.
+            ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+
             CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
             RegisterRoutes(RouteTable.Routes);
         }
