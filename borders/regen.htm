@@ -184,7 +184,7 @@ function hexContents(x, y, map) {
   const hexNumber = hexLabel(x, y);
   const occupied = map.isOccupied(x, y);
   const alleg = map.getAllegiance(x, y);
-  const color = (alleg == UNALIGNED) ? "transparent" : colorFor(alleg);
+  let color = (alleg == UNALIGNED) ? "transparent" : colorFor(alleg);
   if (color === (void 0)) { color = 'gray'; }
 
   return "<div class='hexContents' style='background-color: " + color + ";'>" +
