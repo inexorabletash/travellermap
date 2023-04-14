@@ -3,6 +3,7 @@ using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Xml.Serialization;
@@ -181,33 +182,16 @@ namespace Maps
             {
                 if (s_instance == null)
                 {
-                    List<SectorMetafileEntry> files = new List<SectorMetafileEntry>
+                    List<SectorMetafileEntry> files = new List<SectorMetafileEntry>();
+
+                    using var reader = File.OpenText(System.Web.Hosting.HostingEnvironment.MapPath(@"~/res/Sectors/milieu.tab"));
+                    var parser = new Serialization.TSVParser(reader);
+                    foreach (var row in parser.Data)
                     {
-                        // Meta
-                        new SectorMetafileEntry(@"~/res/Sectors/Meta/legend.xml", new List<string> { "meta" } ),
-
-                        // OTU - Default Milieu
-                        new SectorMetafileEntry(@"~/res/Sectors/M1105/M1105.xml", new List<string> { "OTU" } ),
-                        new SectorMetafileEntry(@"~/res/Sectors/DeepnightRevelation/DeepnightRevelation.xml", new List<string> { "OTU" } ),
-                        new SectorMetafileEntry(@"~/res/Sectors/Zhodani Core Route/ZhodaniCoreRoute.xml", new List<string> { "ZCR" } ),
-                        new SectorMetafileEntry(@"~/res/Sectors/Orion OB1/orion.xml", new List<string> { "OrionOB1" } ),
-
-                        new SectorMetafileEntry(@"~/res/Sectors/Distant Fringe/distantfringe.xml", new List<string> { "DistantFringe" } ),
-                        new SectorMetafileEntry(@"~/res/Sectors/Distant Fringe/Infinitys Shore/infinitysshore.xml", new List<string> { "DistantFringe" } ),
-                        new SectorMetafileEntry(@"~/res/Sectors/Distant Fringe/Where The Stars End/wherethestarsend.xml", new List<string> { "DistantFringe" } ),
-
-                        // OTU - Other Milieu
-                        new SectorMetafileEntry(@"~/res/Sectors/IW/iw.xml", new List<string> { "OTU" } ),
-                        new SectorMetafileEntry(@"~/res/Sectors/M0/M0.xml", new List<string> { "OTU" } ),
-                        new SectorMetafileEntry(@"~/res/Sectors/M990/M990.xml", new List<string> { "OTU" } ),
-                        new SectorMetafileEntry(@"~/res/Sectors/M1120/M1120.xml", new List<string> { "OTU" } ),
-                        new SectorMetafileEntry(@"~/res/Sectors/M1201/M1201.xml", new List<string> { "OTU" } ),
-                        new SectorMetafileEntry(@"~/res/Sectors/M1248/M1248.xml", new List<string> { "OTU" } ),
-                        new SectorMetafileEntry(@"~/res/Sectors/M1900/M1900.xml", new List<string> { "OTU" } ),
-
-                        // Non-OTU
-                        new SectorMetafileEntry(@"~/res/Sectors/Faraway/faraway.xml", new List<string> { "Faraway" } ),
-                    };
+                        var path = row.dict["Path"];
+                        var tags = row.dict["Tags"].Split(',');
+                        files.Add(new SectorMetafileEntry(@"~/res/Sectors/" + path, tags.ToList()));
+                    }
 
                     s_instance = new SectorMap(files, resourceManager);
                 }
