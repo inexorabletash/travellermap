@@ -43,6 +43,7 @@ namespace Maps
             routes.Add(new RegexRoute(@"/admin/profile", new GenericRouteHandler(typeof(AdminHandler)),
                 new RouteValueDictionary(new { action = "profile" })));
             routes.Add(new RegexRoute(@"/admin/codes", new GenericRouteHandler(typeof(CodesHandler))));
+            routes.Add(new RegexRoute(@"/admin/routes", new GenericRouteHandler(typeof(RoutesHandler))));
             routes.Add(new RegexRoute(@"/admin/dump", new GenericRouteHandler(typeof(DumpHandler))));
             routes.Add(new RegexRoute(@"/admin/errors", new GenericRouteHandler(typeof(ErrorsHandler))));
             routes.Add(new RegexRoute(@"/admin/overview", new GenericRouteHandler(typeof(OverviewHandler))));

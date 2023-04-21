@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -128,6 +128,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="server\admin\RoutesHandler.cs" />
     <Compile Include="server\api\CodesHandler.cs" />
     <Compile Include="server\api\RouteHandler.cs" />
     <Compile Include="server\graphics\AbstractGraphics.cs" />
@@ -1473,6 +1474,4 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
-  
-  
 </Project>
