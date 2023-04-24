@@ -32,13 +32,6 @@
     <DataFile Author="Robert Eaglestone" Type="TabDelimited">Deneb.tab</DataFile>
     <MetadataFile>Deneb.xml</MetadataFile>
   </Sector>
-  <Sector Abbreviation="Vlan" Selected="true" Milieu="M1900">
-    <Y>-1</Y>
-    <X>-1</X>
-    <Name>Vland</Name>
-    <DataFile Author="Robert Eaglestone" Type="TabDelimited">Vland.tab</DataFile>
-    <MetadataFile>Vland.xml</MetadataFile>
-  </Sector>
   <Sector Abbreviation="Corr" Selected="true" Milieu="M1900">
     <Y>-1</Y>
     <X>-2</X>
@@ -46,4 +39,18 @@
     <DataFile Author="Robert Eaglestone" Type="TabDelimited">Corridor.tab</DataFile>
     <MetadataFile>Corridor.xml</MetadataFile>
   </Sector>
-</Sectors>
+ <Sector Abbreviation="Vlan" Selected="true" Milieu="M1900">
+    <Y>-1</Y>
+    <X>-1</X>
+    <Name>Vland</Name>
+    <DataFile Author="Robert Eaglestone" Type="TabDelimited">Vland.tab</DataFile>
+    <MetadataFile>Vland.xml</MetadataFile>
+  </Sector>
+ <Sector Abbreviation="Gush" Selected="true" Milieu="M1900">
+    <Y>0</Y>
+    <X>-2</X>
+    <Name>Gushemege</Name>
+    <DataFile Author="Robert Eaglestone" Type="TabDelimited">Gushemege.tab</DataFile>
+    <MetadataFile>Gushemege.xml</MetadataFile>
+  </Sector>
+  </Sectors>
