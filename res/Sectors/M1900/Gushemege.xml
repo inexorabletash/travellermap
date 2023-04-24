@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<Sector Abbreviation="Gush" Tags="Unreviewed">
+  <Y>0</Y>
+  <X>-2</X>
+  <Name>Gushemege</Name>
+  <Credits>
+    <![CDATA[
+
+             <b>Gushemege</b> sector was designed by Marc W. Miller
+             and appears in <cite>Atlas of the Imperium</cite> (GDW,
+             1984).
+
+             Lately, the "fast-forward" script ran this data up to
+             years 1508 and 1900.
+    ]]>
+  </Credits>
+  <DataFile Milieu="M1900" Type="TabDelimited">Gushemege.tab</DataFile>
+  <Subsectors>
+    <Subsector Index="A">Riften</Subsector>
+    <Subsector Index="B">Khiira</Subsector>
+    <Subsector Index="C">Taapvaia</Subsector>
+    <Subsector Index="D">Tansa</Subsector>
+    <Subsector Index="E">Gandonen</Subsector>
+    <Subsector Index="F">Rure</Subsector>
+    <Subsector Index="G">Ankhsusgar</Subsector>
+    <Subsector Index="H">Isi Ahto</Subsector>
+    <Subsector Index="I">Balech</Subsector>
+    <Subsector Index="J">Sallounn</Subsector>
+    <Subsector Index="K">Dashinshaii</Subsector>
+    <Subsector Index="L">Shire</Subsector>
+    <Subsector Index="M">Vipach</Subsector>
+    <Subsector Index="N">Laeth</Subsector>
+    <Subsector Index="O">Truax</Subsector>
+    <Subsector Index="P">Lagan</Subsector>
+  </Subsectors>
+
+  <Stylesheet>
+    border.Ut { color: green; }
+  </Stylesheet>
+
+  <Allegiances>
+    <Allegiance Code="Wi">Wilds</Allegiance>
+  </Allegiances>
+
+  <Borders>
+    <Border Color="Red" Label="Jump Sargasso" >0920 1019 1018 1118 1218 1318 1417 1517 1616 1615 1616 1617 1718 1618 1619 1620 1521 1522 1422 1423 1324 1224 1225 1224 1124 1023 1022 0922 0921 0920 </Border>
+    <Border Color="Orange" Label="Wilds" Allegiance="Wi">0024 0125 0224 0223 0222 0323 0422 0522 0621 0721 0820 0819 0818 0718 0617 0517 0616 0615 0614 0613 0612 0611 0610 0711 0810 0911 1010 1110 1209 1309 1308 1407 1507 1606 1605 1705 1704 1703 1702 1701 1700 1800 1900 2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 3000 3100 3200 3301 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2041 1941 1841 1741 1641 1541 1441 1341 1241 1141 1041 0941 0841 0741 0641 0541 0441 0341 0241 0141 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027 0026 0025 0024 </Border>
+  </Borders>
+  <Routes>
+  </Routes>
+</Sector>
