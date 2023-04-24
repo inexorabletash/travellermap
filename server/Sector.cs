@@ -94,6 +94,12 @@ namespace Maps
             if (metadataSource == null)
                 throw new ArgumentNullException(nameof(metadataSource));
 
+            string?[] milieux = { metadataSource.Milieu, metadataSource.DataFile?.Milieu, Milieu, DataFile?.Milieu };
+            if (milieux.Where(s => s != null).Distinct().Count() > 1)
+            {
+                throw new Exception($"Mismatching Milieu entries for {Names[0].Text}: {milieux.Where(s => s != null)}");
+            }
+
             // TODO: This is very fragile; if a new type is added to Sector we need to add more code here.
 
             if (metadataSource.Names.Any()) { Names.Clear(); Names.AddRange(metadataSource.Names); }
