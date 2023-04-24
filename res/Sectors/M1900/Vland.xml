@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<Sector Abbreviation="Vlan" Tags="Unreviewed">
+  <Y>-1</Y>
+  <X>-1</X>
+  <Name>Vland</Name>
+  <Credits>
+    <![CDATA[
+
+             <b>Vland</b> sector was designed by Marc W. Miller and
+             appears in <cite>Atlas of the Imperium</cite> (GDW,
+             1984).
+
+             It was refined by Joe D. Fugate Sr. and appears in
+             <cite>The Travellers Digest</cite> and <cite>The
+             MegaTraveller Alien, Volume 1: Vilani &amp; Vargr</cite>
+             (DGP, 1990)
+
+    ]]>
+  </Credits>
+  <DataFile Source="Zhodani Base" Milieu="M1201" Type="TabDelimited">Vland.tab</DataFile>
+  <Subsectors Source="Vilani and Vargr">
+    <Subsector Index="A">?</Subsector>
+    <Subsector Index="B">?</Subsector>
+    <Subsector Index="C">?</Subsector>
+    <Subsector Index="D">?</Subsector>
+    <Subsector Index="E">?</Subsector>
+    <Subsector Index="F">?</Subsector>
+    <Subsector Index="G">Vland</Subsector>
+    <Subsector Index="H">?</Subsector>
+    <Subsector Index="I">?</Subsector>
+    <Subsector Index="J">?</Subsector>
+    <Subsector Index="K">?</Subsector>
+    <Subsector Index="L">?</Subsector>
+    <Subsector Index="M">?</Subsector>
+    <Subsector Index="N">?</Subsector>
+    <Subsector Index="O">?</Subsector>
+    <Subsector Index="P">?</Subsector>
+  </Subsectors>
+
+  <Allegiances>
+    <Allegiance Code="Zs">Ziru Sirkaa</Allegiance>
+    <Allegiance Code="Wi">Wilds</Allegiance>
+  </Allegiances>
+
+  <Stylesheet>
+    border.Zu { color: lightblue; }
+    route.Zu { color: lightgreen; }
+  </Stylesheet>
+
+    <Borders>
+    <Border Color="Orange" Allegiance="Wild" Label="Wilds">0000 0100 0200 0300 0400 0500 0600 0700 0800 0900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 3000 3100 3200 3301 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2041 1941 1841 1741 1641 1541 1441 1341 1241 1141 1041 0941 0841 0741 0641 0541 0441 0341 0241 0141 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0131 0132 0232 0233 0234 0235 0236 0237 0238 0239 0340 0439 0539 0638 0738 0837 0937 1036 1136 1235 1335 1434 1433 1432 1533 1632 1733 1833 1934 2033 2133 2233 2234 2335 2336 2436 2537 2637 2737 2836 2936 2935 2934 3033 3133 3232 3231 3230 3229 3228 3227 3226 3126 3125 3024 3023 3022 3021 2921 2820 2720 2620 2619 2618 2518 2517 2516 2515 2514 2513 2512 2511 2410 2310 2209 2109 2008 1908 1807 1708 1607 1508 1509 1409 1410 1311 1312 1313 1314 1414 1315 1316 1317 1318 1319 1320 1321 1322 1323 1222 1123 1023 0924 0923 0922 0921 1020 1120 1119 1118 1117 1116 1115 1114 1113 1012 0912 0811 0711 0610 0510 0410 0311 0211 0112 0012 0011 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001 0000 </Border>
+    <Border Color="Orange" Allegiance="Wild" Label="Wilds">1820 1821 1822 1923 1822 1821 1820 </Border>
+    <Border Color="Orange" Allegiance="Wild" Label="Wilds">2931 3031 2931 </Border>
+    <Border Color="Green"  Allegiance="Zs"   Label="Ziru Sirka">0333 0432 0431 0430 0530 0630 0730 0829 0929 0928 0927 1027 1128 1227 1327 1426 1526 1625 1624 1623 1523 1522 1521 1520 1519 1518 1417 1517 1516 1515 1514 1513 1412 1512 1611 1610 1609 1608 1709 1809 1909 2009 2110 2210 2211 2312 2412 2413 2414 2415 2416 2417 2418 2519 2520 2521 2621 2721 2722 2822 2923 2924 2925 3025 3026 3027 3128 3129 3130 3131 3132 3032 2933 2833 2734 2634 2635 2636 2536 2435 2434 2433 2333 2232 2132 2032 1933 1832 1732 1631 1531 1431 1332 1333 1334 1234 1135 1035 0936 0836 0737 0637 0537 0437 0338 0337 0336 0335 0334 0333 </Border>
+    <Border Color="Green"  Allegiance="Zs"   Label="Ziru Sirka">0422 0522 0621 0620 0619 0620 0621 0622 0522 0422 </Border>
+  </Borders>
+
+</Sector>
