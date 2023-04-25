@@ -43,7 +43,7 @@
     <X>0</X>
     <Name>Diaspora</Name>
     <Name Lang="vi">Nakulakak</Name>
-    <DataFile  Source="TNE Rulebook" Type="TabDelimited">Diaspora.tab</DataFile>
+    <DataFile Source="TNE Rulebook" Type="TabDelimited">Diaspora.tab</DataFile>
     <MetadataFile>Diaspora.xml</MetadataFile>
   </Sector>
   <Sector Abbreviation="Solo" Tags="Unreviewed" Milieu="M1201">
@@ -93,7 +93,7 @@
     <Y>-1</Y>
     <X>-1</X>
     <Name>Vland</Name>
-    <DataFile Source="Zhodani Base - http://zho.berka.com/data/TNE/sector.pl?sector=VLAND" Milieu="M1201" Type="TabDelimited">Vland.tab</DataFile>
+    <DataFile Source="Zhodani Base" Ref="http://zho.berka.com/data/TNE/sector.pl?sector=VLAND" Milieu="M1201" Type="TabDelimited">Vland.tab</DataFile>
     <MetadataFile>Vland.xml</MetadataFile>
   </Sector>
   <Sector Abbreviation="Alph" Tags="Unreviewed" Milieu="M1201">
@@ -102,7 +102,7 @@
     <Name>Alpha Crucis</Name>
     <Name>Alpha Leonis</Name>
     <Name Lang="vi">Amkarim</Name>
-    <DataFile Milieu="M1201" Source="Opal - http://www.downport.com/bard/bard/opal/opal10016.html" Type="TabDelimited">Alpha Crucis.tab</DataFile>
+    <DataFile Milieu="M1201" Source="Opal" Ref="http://www.downport.com/bard/bard/opal/opal10016.html" Type="TabDelimited">Alpha Crucis.tab</DataFile>
     <MetadataFile>Alpha Crucis.xml</MetadataFile>
   </Sector>
   <Sector Abbreviation="Anta" Tags="Unreviewed" Milieu="M1201">
@@ -110,25 +110,25 @@
     <X>1</X>
     <Name>Antares</Name>
     <Name Lang="vi">Mikasirka</Name>
-    <DataFile Milieu="M1201" Source="CARI - http://www.downport.com/bard/bard/cari/cari9009.html" Type="TabDelimited">Antares.tab</DataFile>
+    <DataFile Milieu="M1201" Source="CARI" Ref="http://www.downport.com/bard/bard/cari/cari9009.html" Type="TabDelimited">Antares.tab</DataFile>
     <MetadataFile>Antares.xml</MetadataFile>
   </Sector>
-  <Sector Abbreviation="Empt" Tags="Unreviewed">
+  <Sector Abbreviation="Empt" Tags="Unreviewed" Milieu="M1201">
     <Y>-1</Y>
     <X>2</X>
     <Name>Empty Quarter</Name>
     <Name Lang="vi">Gushgus</Name>
-    <DataFile Milieu="M1201" Source="CARI - http://www.downport.com/bard/bard/cari/cari9009.html" Type="TabDelimited">Empty Quarter.tab</DataFile>
+    <DataFile Milieu="M1201" Source="CARI" Ref="http://www.downport.com/bard/bard/cari/cari9009.html" Type="TabDelimited">Empty Quarter.tab</DataFile>
     <MetadataFile>Empty Quarter.xml</MetadataFile>
   </Sector>
-  <Sector Abbreviation="Hint" Tags="Unreviewed">
+  <Sector Abbreviation="Hint" Tags="Unreviewed" Milieu="M1201">
     <Y>2</Y>
     <X>2</X>
     <Name>Hinterworlds</Name>
-    <DataFile Author="Rob Caswell and Karl Johnson" Source="OPAL - http://www.downport.com/bard/bard/opal/opal10416.html" Milieu="M1201" Type="TabDelimited">Hinterworlds.tab</DataFile>
+    <DataFile Author="Rob Caswell and Karl Johnson" Source="OPAL" Ref="http://www.downport.com/bard/bard/opal/opal10416.html" Milieu="M1201" Type="TabDelimited">Hinterworlds.tab</DataFile>
     <MetadataFile>Hinterworlds.xml</MetadataFile>
   </Sector>
-  <Sector Abbreviation="Reav" Tags="Unreviewed">
+  <Sector Abbreviation="Reav" Tags="Unreviewed" Milieu="M1201">
     <Y>2</Y>
     <X>-2</X>
     <Name>Reaver's Deep</Name>
@@ -138,7 +138,7 @@
     <DataFile Author="J. Andrew Keith" Milieu="M1201" Type="TabDelimited">Reavers Deep.tab</DataFile>
     <MetadataFile>Reavers Deep.xml</MetadataFile>
   </Sector>
-  <Sector Abbreviation="Corr" Tags="Unreviewed">
+  <Sector Abbreviation="Corr" Tags="Unreviewed" Milieu="M1201">
     <Y>-1</Y>
     <X>-2</X>
     <Name>Corridor</Name>
@@ -149,7 +149,7 @@
     <DataFile Source="Traveller 5 Second Survey" Milieu="M1201" Type="TabDelimited">Corridor.tab</DataFile>
     <MetadataFile>Corridor.xml</MetadataFile>
   </Sector>
-  <Sector Abbreviation="Gush" Tags="Unreviewed">
+  <Sector Abbreviation="Gush" Tags="Unreviewed" Milieu="M1201">
     <Y>0</Y>
     <X>-2</X>
     <Name>Gushemege</Name>
@@ -209,7 +209,7 @@
     <DataFile Author="Martin J. Dougherty" Source="1248 Sourcebook 1: Out of Darkness">Leonidae.sec</DataFile>
     <MetadataFile>Leonidae.xml</MetadataFile>
   </Sector>
-  <Sector Abbreviation="Beyo" Tags="Unreviewed">
+  <Sector Abbreviation="Beyo" Tags="Unreviewed" Milieu="M1201">
     <Y>0</Y>
     <X>-5</X>
     <Name>The Beyond</Name>
@@ -224,10 +224,10 @@
     <X>-4</X>
     <Name Lang="va">Gvurrdon</Name>
     <Name Lang="zh">Briakqra'</Name>
-    <DataFile Type="TabDelimited">Gvurrdon.tab</DataFile>
+    <DataFile Source="Traveller 5 Second Survey" Author="J. Andrew Keith, Marc Miller and John Harshman" Milieu="M1201" Type="TabDelimited">Gvurrdon.tab</DataFile>
     <MetadataFile>Gvurrdon.xml</MetadataFile>
   </Sector>
-  <Sector Abbreviation="Tugl" Tags="Unreviewed">
+  <Sector Abbreviation="Tugl" Tags="Unreviewed" Milieu="M1201">
     <Y>-2</Y>
     <X>-3</X>
     <Name Lang="va">Tuglikki</Name>
@@ -235,7 +235,7 @@
     <DataFile Author="David Drazul"  Source="Traveller 5 Sector Survey" Milieu="M1201" Type="TabDelimited">Tuglikki.tab</DataFile>
     <MetadataFile>Tuglikki.xml</MetadataFile>
   </Sector>
-  <Sector Abbreviation="Prov" Tags="Unreviewed">
+  <Sector Abbreviation="Prov" Tags="Unreviewed" Milieu="M1201">
     <Y>-2</Y>
     <X>-2</X>
     <Name>Provence</Name>
