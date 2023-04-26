@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Sector Abbreviation="Tugl">
+  <Y>-2</Y>
+  <X>-3</X>
+  <Name Lang="va">Tuglikki</Name>
+  <Name Lang="zh">Dravr</Name>
+  <Credits>
+    <![CDATA[
+
+             <b>Tuglikki</b> sector was designed by David Drazul.
+
+             M1201 data from http://zho.berka.com/data/TNE/sector.pl?sector=TUGLIKKI and
+             http://www.dedzone.net/traveller/sectors/tuglikki/
+
+    ]]>
+  </Credits>
+  <DataFile Author="David Drazul"  Source="Traveller 5 Sector Survey" Milieu="M1201" Type="TabDelimited">Tuglikki.tab</DataFile>
+  <Subsectors Author="David Drazul" Source="Traveller in the DED Zone" Ref="http://www.dedzone.net/traveller/sectors/tuglikki/">
+    <Subsector Index="A">Dokh</Subsector>
+    <Subsector Index="B">Saerrgh</Subsector>
+    <Subsector Index="C">Orrgueg</Subsector>
+    <Subsector Index="D">Knoukhs</Subsector>
+    <Subsector Index="E">Darrgouts</Subsector>
+    <Subsector Index="F">Uerrul</Subsector>
+    <Subsector Index="G">Tsaerlon</Subsector>
+    <Subsector Index="H">Gaerith</Subsector>
+    <Subsector Index="I">Kaeng</Subsector>
+    <Subsector Index="J">Ludzghaeth</Subsector>
+    <Subsector Index="K">Aenkazarr</Subsector>
+    <Subsector Index="L">Onrakae</Subsector>
+    <Subsector Index="M">Dhukhaegz</Subsector>
+    <Subsector Index="N">Ogaeka</Subsector>
+    <Subsector Index="O">Ourrvikh</Subsector>
+    <Subsector Index="P">Aegaek</Subsector>
+  </Subsectors>
+  <Allegiances>
+    <Allegiance Code="Va">Talgz Okloe</Allegiance>
+    <Allegiance Code="Vb">Darrsaukh</Allegiance>
+    <Allegiance Code="Vc">Gaekdil Touzdan</Allegiance>
+    <Allegiance Code="Vd">Talgz Lludag</Allegiance>
+    <Allegiance Code="Ve">Rag Fough</Allegiance>
+  </Allegiances>
+  <Borders>
+    <Border Color="Red" Allegiance="Va">0103 0202 0201 0202 0203 0204 0305 0404 0504 0603 0703 0803 0904 1004 1104 1203 1303 1302 1303 1403 1504 1505 1506 1606 1607 1708 1607 1606 1506 1405 1305 1205 1106 1205 1204 1104 1004 0904 0803 0704 0604 0504 0404 0305 0205 0105 0104 0103 </Border>
+    <Border Color="Blue" Allegiance="Vb">0120 0219 0319 0418 0518 0517 0516 0616 0717 0817 0918 0818 0719 0720 0620 0621 0622 0623 0624 0725 0825 0725 0625 0526 0426 0425 0424 0423 0323 0222 0122 0221 0220 0120 </Border>
+    <Border Color="Green" Allegiance="Vc">1502 1602 1703 1803 1904 2003 2103 2102 2101 2201 2302 2401 2501 2601 2701 2801 2902 2802 2703 2603 2504 2404 2405 2406 2407 2408 2509 2609 2710 2810 2910 2909 2910 2911 2912 3012 3113 3013 3014 2914 2813 2713 2613 2514 2414 2413 2313 2212 2112 2012 1913 1914 1915 1914 1813 1812 1811 1711 1610 1710 1809 1808 1807 1806 1805 1705 1604 1603 1602 1502 </Border>
+    <Border Color="Cyan" Allegiance="Vd">0109 0209 0309 0409 0509 0508 0507 0506 0605 0705 0804 0905 1005 1105 1005 1006 1107 1207 1308 1407 1408 1509 1510 1511 1512 1412 1313 1314 1315 1316 1416 1517 1417 1418 1319 1320 1321 1322 1323 1423 1524 1424 1324 1223 1123 1023 1022 0922 0921 0820 0920 1019 1119 1118 1117 1016 0916 0815 0715 0615 0515 0415 0316 0317 0316 0215 0115 0114 0113 0112 0111 0110 0109 </Border>
+    <Border Color="Orange" Allegiance="Ve">0802 0902 1002 0902 0802 </Border>
+  </Borders>
+</Sector>
