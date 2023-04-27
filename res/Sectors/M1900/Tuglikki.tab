@@ -54,7 +54,7 @@ Tugl	M	0439	Veg Gaghudh	E8769A8-8	 	Hi In 		503	NaVa	K8 V M1 V	{ 0 }	(987-2)	[79
 Tugl	A	0506	Uel Khozgvaeran	D88A344-7	 	Lo Wa 		223	Vd	G2 V	{ -3 }	(820+5)	[2157]	B	13	80
 Tugl	A	0508	Llorznaelokh	E693479-7	 	Ni 		322	Vd	G7 V	{ -3 }	(C30-5)	[6152]	B	11	-180
 Tugl	A	0509	Uel Raekhsva	C89A176-8	 	(Raekhsva)5 Lo Wa 		501	Vd	F5 V	{ -2 }	(B00+1)	[115A]	B	9	11
-Tugl	A	0510	Khoerin	X500000-8	 	Di Va 		602	Vd	M5 V	{ -3 }	(700+1)	[0000]	B	14	7
+Tugl	A	0510	Khoerin	X500000-8	 	Di Va 		002	Vd	M5 V	{ -3 }	(700+1)	[0000]	B	14	7
 Tugl	E	0512	Keradh Oekh	B57478C-9	 	Ag Pi 		304	Vd	G1 V	{ 2 }	(F6D+3)	[797B]	BCD	8	3510
 Tugl	E	0516	Khoergh	B42668D-8	 	Ni 		602	Vb	M0 V M6 V	{ -1 }	(751+3)	[A52B]	B	7	105
 Tugl	E	0518	Aes Ovoen	C9C29CB-B	 	Fl He Hi In 		204	Vb	M2 V	{ 3 }	(G8D+5)	[AC5C]	BE	17	8320
@@ -121,7 +121,7 @@ Tugl	B	1105	Oekangae	E555647-4	 	Ag Ni 		923	Vd	G8 V	{ -2 }	(B54+1)	[3487]	BC	14
 Tugl	B	1106	Igzaegen	B553101-B	 	Lo Po 		801	Va	F6 V	{ 1 }	(601-1)	[428D]	B	14	-6
 Tugl	B	1107	Dzignoerz	A582344-C	 	Lo 		112	Vd	F6 V F9 V	{ 1 }	(D21+4)	[846E]	B	16	104
 Tugl	B	1110	Gnael	C592958-8	 	He Hi In 		705	Vc	K9 V M1 V	{ 1 }	(B8C+1)	[7A29]	BE	12	1056
-Tugl	F	1117	Farrouka	C544000-1	 	Di 		613	Vd	K5 V M7 V	{ -2 }	(300+1)	[0000]	B	11	3
+Tugl	F	1117	Farrouka	D544000-1	 	Di 		013	Vd	K5 V M7 V	{ -3 }	(300+1)	[0000]	B	11	3
 Tugl	F	1118	Oethang	B582220-8	 	Lo 		702	Vd	K3 V	{ -1 }	(810+1)	[113B]	B	15	8
 Tugl	J	1121	Ae Insou	E4358A7-7	 	Ph 		402	Vd	M1 V	{ -2 }	(674+1)	[A636]	Be	14	168
 Tugl	J	1122	Ueguezlloug	B6467BC-9	 	Ag Pi 		700	Vd	G7 V	{ 2 }	(968-1)	[6967]	BCD	13	-432
@@ -139,7 +139,7 @@ Tugl	J	1223	Wanz	D575445-4	 	Ni Pa 		412	Vd	F7 V M5 V D	{ -3 }	(C30-3)	[1152]	Bc
 Tugl	J	1225	Vueng	C585137-6	 	Lo 		224	NaVa	F6 V	{ -2 }	(B00-3)	[1195]	B	11	-33
 Tugl	J	1226	Dhaghtin	B562301-C	 	Lo 		803	NaVa	G0 V	{ 1 }	(B21+1)	[345C]	B	12	22
 Tugl	N	1232	Gvokh	B582734-A	 	Ri 		600	NaVa	F5 V	{ 3 }	(76F+1)	[9A56]	BC	13	630
-Tugl	N	1234	Urrgal	D729000-5	 	Di 		900	NaVa	K9 V D	{ -3 }	(400-3)	[0000]	B	13	-12
+Tugl	N	1234	Urrgal	D729000-5	 	Di 		000	NaVa	K9 V D	{ -3 }	(400-3)	[0000]	B	13	-12
 Tugl	N	1236	Ngatsoek	A589433-D	 	Ni 		824	NaVa	M0 V	{ 1 }	(C36+2)	[453C]	B	16	432
 Tugl	N	1237	Sigvoth	C422505-B	 	He Ni Po 		514	NaVa	M2 V	{ 0 }	(A45-4)	[556B]	B	12	-800
 Tugl	N	1239	Igdhaego	C53369E-8	 	Na Po Ni 		312	NaVa	M1 V	{ -2 }	(A50+1)	[4455]	B	16	50
@@ -188,8 +188,8 @@ Tugl	B	1603	Aegoelluergh	E564131-7	 	Lo 		305	Vc	G6 V M2 V	{ -3 }	(800+4)	[1136]
 Tugl	B	1604	Aes Luengal	B7C6204-C	 	Fl Lo 		805	Vc	M1 III	{ 1 }	(F11-1)	[434C]	B	18	-15
 Tugl	B	1606	Kha	B200343-D	 	Lo Va 		125	Va	F5 V M8 V	{ 1 }	(A21-4)	[542E]	B	16	-80
 Tugl	B	1610	Lluerrogong	C573320-8	 	Lo 		903	Vc	F9 V D	{ -2 }	(B20+1)	[1196]	B	10	22
-Tugl	F	1613	Ugvas	A646046-0	 	Ba 		515	NaVa	G7 V	{ -1 }	(900+1)	[0000]	B	12	9
-Tugl	J	1622	Aen Kaksireng	B880076-1	 	De Di 		900	NaVa	G4 V	{ -1 }	(900-3)	[0000]	B	13	-27
+Tugl	F	1613	Ugvas	D646000-0	 	Ba 		015	NaVa	G7 V	{ -3 }	(900+1)	[0000]	B	12	9
+Tugl	J	1622	Aen Kaksireng	D880000-1	 	De Di 		000	NaVa	G4 V	{ -3 }	(900-3)	[0000]	B	13	-27
 Tugl	J	1626	Koghz	D400134-5	 	Lo Va 		914	NaVa	M1 V D	{ -3 }	(300-1)	[4124]	B	18	-3
 Tugl	J	1629	Noefa	A675778-9	 	Ag Pi 		223	NaVa	G3 V G6 V	{ 2 }	(H6B-2)	[3945]	BCD	14	-2244
 Tugl	N	1632	Ghursrue	D7A0676-4	 	He Ni 		802	NaVa	F0 V	{ -3 }	(652-3)	[5326]	B	15	-180
@@ -239,8 +239,8 @@ Tugl	K	2026	Faekourz	C559201-8	 	Lo 		704	NaVa	M0 V	{ -2 }	(C10+1)	[515A]	B	12	1
 Tugl	K	2030	Aer Thegzokh	B421651-C	 	He Na Po Ni 		214	NaVa	M2 V	{ 1 }	(G52-2)	[7768]	B	11	-320
 Tugl	O	2040	Oel Hathou	A434126-D	 	Lo 		902	NaVa	M2 V	{ 1 }	(701-3)	[125B]	B	7	-21
 Tugl	C	2101	Kaena	B00089B-A	 	As Va Na Pi Ph 		434	Vc	M1 V D	{ 2 }	(E78-5)	[9A4C]	BDe	11	-3920
-Tugl	C	2103	Nursaerrg	A545000-0	 	Ba 		702	Vc	G3 IV M0 V M3 V	{ -1 }	(500+2)	[0000]	B	15	10
-Tugl	C	2104	Aellgo	D546074-1	 	Di 		401	Vc	G6 V D	{ -3 }	(900-1)	[0000]	B	14	-9
+Tugl	C	2103	Nursaerrg	D545000-0	 	Ba 		002	Vc	G3 IV M0 V M3 V	{ -3 }	(500+2)	[0000]	B	15	10
+Tugl	C	2104	Aellgo	D546000-1	 	Di 		001	Vc	G6 V D	{ -3 }	(900-1)	[0000]	B	14	-9
 Tugl	C	2105	Okh Goeno	B666698-8	 	Ag Ri Ga Ni 		622	Vc	G3 V	{ 1 }	(E52+2)	[5777]	BC	16	280
 Tugl	G	2111	Aen Kaeghu	C550759-8	 	De Po 		233	Vc	G1 V	{ -1 }	(C65+4)	[7617]	B	19	1440
 Tugl	G	2112	Ghigh	E596400-7	 	Ni Pa 		711	Vc	G9 V D	{ -3 }	(733+1)	[5158]	Bc	14	63
@@ -272,13 +272,13 @@ Tugl	C	2405	Gouth	A537658-D	 	Ni 		911	Vc	K3 V	{ 1 }	(A56-3)	[777E]	B	13	-900
 Tugl	C	2408	Gukhtengiks	C997499-9	 	Ni Pa 		124	Vc	K0 V K2 V	{ -1 }	(G32+1)	[931A]	Bc	19	96
 Tugl	C	2409	Aes Singozoedon	A7C1857-D	 	Fl He Ph 		623	Vc	M5 III M6 V	{ 2 }	(F7B+1)	[4A3G]	Be	16	1155
 Tugl	C	2410	Errsinetsars	E5448A9-6	 	Pa Pi Ph 		315	NaVa	F8 V	{ -2 }	(971-2)	[468A]	BcDe	13	-126
-Tugl	G	2412	Ulgonguerghur	C571000-6	 	Di He 		303	NaVa	A0 V	{ -2 }	(900+4)	[0000]	B	16	36
+Tugl	G	2412	Ulgonguerghur	D571000-6	 	Di He 		003	NaVa	A0 V	{ -3 }	(900+4)	[0000]	B	16	36
 Tugl	G	2414	Arr	D433478-7	 	Ni Px Po 		922	Vc	G1 V M3 V	{ -3 }	(633-1)	[2186]	B	14	-54
 Tugl	G	2415	Ongoegzsaerngz	C554540-9	 	Ag Ni 		324	NaVa	A5 V	{ 0 }	(G43-1)	[4539]	BC	17	-192
 Tugl	K	2421	Angknul	C555525-8	 	Ag Ni 		601	NaVa	F7 V	{ -1 }	(C42+1)	[345B]	BC	14	96
 Tugl	K	2423	Klarz	C310651-8	 	Na Ni 		112	NaVa	M3 V M7 V	{ -2 }	(B52+1)	[A45A]	B	16	110
 Tugl	K	2427	Aes Nuekhazue	D9B7473-8	 	Fl Ni 		703	NaVa	F0 V	{ -3 }	(730+1)	[214A]	B	15	21
-Tugl	K	2428	Uel Fuegzguer	C98A056-4	 	Di Wa 		202	NaVa	G7 V	{ -2 }	(A00+3)	[0000]	B	15	30
+Tugl	K	2428	Uel Fuegzguer	D98A000-4	 	Di Wa 		002	NaVa	G7 V	{ -3 }	(A00+3)	[0000]	B	15	30
 Tugl	O	2434	Gogviksaer	A7689AB-B	 	Hi Pr 		403	NaVa	F4 V	{ 3 }	(B87+1)	[CC9A]	BcE	10	616
 Tugl	O	2436	Othaksukh	B642444-9	 	He Ni Po 		503	NaVa	K8 V	{ 0 }	(B31+1)	[644A]	B	13	33
 Tugl	O	2437	Kusgaek	C000526-9	 	As Va Ni 		113	NaVa	M3 V	{ -1 }	(945+3)	[645A]	B	14	540
@@ -298,7 +298,7 @@ Tugl	D	2606	Ag Arael	B401443-9	 	Ic Va Ni 		823	NaVa	K9 V	{ 0 }	(933-1)	[449B]	B
 Tugl	D	2609	Orzatsakhsdars	C79A174-9	 	Lo Wa 		604	Vc	F6 V D	{ -1 }	(800+3)	[111B]	B	15	24
 Tugl	H	2615	Aes Garghgha	D9C5675-7	 	Fl Ni 		104	NaVa	F0 V F0 V	{ -3 }	(950-1)	[2368]	B	15	-45
 Tugl	H	2618	Tuengaell	B796220-B	 	Lo 		504	NaVa	G1 V	{ 1 }	(911+1)	[536C]	B	12	9
-Tugl	P	2633	Uel Thungllas	C76A07C-2	 	Di Wa 		614	NaVa	G3 V D	{ -2 }	(A00+3)	[0000]	B	18	30
+Tugl	P	2633	Uel Thungllas	D76A000-2	 	Di Wa 		014	NaVa	G3 V D	{ -3 }	(A00+3)	[0000]	B	18	30
 Tugl	P	2637	Aellzirtath	C758300-6	 	Lo 		401	NaVa	G8 V	{ -2 }	(920-2)	[7126]	B	14	-36
 Tugl	D	2701	Udzuerrksaekh	A43478A-B	 			102	Vc	M2 V	{ 2 }	(A69+1)	[996C]	B	9	540
 Tugl	D	2702	Ingdhagz	E4277BD-7	 	Pi 		622	Vc	M1 V D	{ -2 }	(965-5)	[8539]	BD	16	-1350
@@ -342,7 +342,7 @@ Tugl	P	2937	Okhthalloe	C652ABE-C	 	Hi Po 		303	NaVa	F8 V	{ 2 }	(C97-2)	[CC3D]	BE
 Tugl	P	2938	Rusafaks	C5477B6-8	 	Ag Pi 		704	NaVa	K2 V	{ 0 }	(B64+2)	[8718]	BCD	14	528
 Tugl	D	3003	Aedh Ull	E783897-4	 	Ph Ri 		104	NaVa	G8 V	{ -1 }	(673-4)	[6771]	BCe	8	-504
 Tugl	H	3014	Aen Oksanoung	X540100-4	 	De He Lo Po 		203	Vc	G6 V	{ -3 }	(700+1)	[1151]	B	8	7
-Tugl	H	3016	Dhuek	DA99000-3	 	Di 		902	NaVa	F9 V	{ -3 }	(800+3)	[0000]	B	11	24
+Tugl	H	3016	Dhuek	DA99000-3	 	Di 		002	NaVa	F9 V	{ -3 }	(800+3)	[0000]	B	11	24
 Tugl	H	3017	Vou Firs	A593543-D	 	Ni 		401	NaVa	K1 V	{ 1 }	(545-1)	[268B]	B	11	-100
 Tugl	H	3018	Aessar	X57287A-2	 	He Ph Pi 		602	NaVa	K2 V M2 V	{ -2 }	(573+1)	[8652]	BDe	15	105
 Tugl	L	3024	Aen Gvoun	C796320-8	 	Lo 		313	NaVa	F8 V	{ -2 }	(D20+1)	[3165]	B	13	26
@@ -364,10 +364,10 @@ Tugl	D	3201	Kleg	C000538-B	 	As Va Ni 		613	NaVa	K5 V	{ 0 }	(D42+2)	[852E]	B	13	
 Tugl	D	3206	Otue Dars	A69AA9A-F	 	Hi In Wa 		423	NaVa	G9 V	{ 4 }	(A98-3)	[CE6E]	BEf	15	-2160
 Tugl	D	3210	Oro Gag	X9A95A9-2	 	Fl Ni 		204	NaVa	F0 V M1 V	{ -3 }	(841+1)	[4272]	B	14	32
 Tugl	H	3212	Kirzngoegh	D553530-6	 	Ni Po 		824	NaVa	G5 V	{ -3 }	(C40-1)	[1246]	B	11	-48
-Tugl	H	3216	Aek Gerrokh	A572046-0	 	Ba He 		305	NaVa	F5 V	{ -1 }	(B00-1)	[0000]	B	11	-11
-Tugl	H	3218	Okh Aekuedh	C865077-0	 	Ba Ga 		801	NaVa	K3 V	{ -2 }	(B00-1)	[0000]	B	14	-11
+Tugl	H	3216	Aek Gerrokh	D572000-0	 	Ba He 		005	NaVa	F5 V	{ -3 }	(B00-1)	[0000]	B	11	-11
+Tugl	H	3218	Okh Aekuedh	D865000-0	 	Ba Ga 		001	NaVa	K3 V	{ -3 }	(B00-1)	[0000]	B	14	-11
 Tugl	H	3220	Kkur	C0009A8-A	 	As Va Hi Na In 		711	NaVa	M1 V	{ 3 }	(68A+3)	[7C59]	BE	15	1440
 Tugl	L	3221	Uengtalrra	B542555-C	 	He Ni Po 		603	NaVa	F6 V	{ 1 }	(F45+4)	[465C]	B	10	1200
 Tugl	P	3235	Khon	E000847-5	 	As Va Na Pi Ph 		814	NaVa	F4 IV M2 V	{ -2 }	(672-2)	[9651]	BDe	15	-168
-Tugl	P	3238	Ikreghz	A646000-5	 	Di 		421	NaVa	K1 V	{ -1 }	(400-1)	[0000]	B	14	-4
+Tugl	P	3238	Ikreghz	D646000-5	 	Di 		021	NaVa	K1 V	{ -3 }	(400-1)	[0000]	B	14	-4
 Tugl	P	3240	Uegnaedz	B543434-B	 	Ni Po 		402	NaVa	M0 V D	{ 1 }	(735-2)	[556A]	B	12	-210
