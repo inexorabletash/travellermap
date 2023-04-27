@@ -16,6 +16,15 @@
     <DataFile Author="Robert Eaglestone" Type="TabDelimited">Gvur.tab</DataFile>
     <MetadataFile>Gvur.xml</MetadataFile>
   </Sector>
+  <Sector Abbreviation="Prov" Selected="true" Milieu="M1900">
+    <Y>-2</Y>
+    <X>-2</X>
+    <Name>Provence</Name>
+    <Name Lang="va">Orraenang</Name>
+    <Name Lang="vi">Amshagi</Name>
+    <DataFile Author="Robert Eaglestone" Type="TabDelimited">Provence.tab</DataFile>
+    <MetadataFile>Provence.xml</MetadataFile>
+  </Sector>
   <Sector Abbreviation="Tugl" Selected="true" Milieu="M1900">
     <Y>-2</Y>
     <X>-3</X>
