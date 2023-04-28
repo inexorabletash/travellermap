@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Sector Tags="Preserve">
+  <Y>-1</Y>
+  <X>-5</X>
+  <Name>Foreven</Name>
+  <Name Lang="zh">Iakr</Name>
+  <Product Publisher="Far Future Enterprises" Title="Foreven Sector: A Referee's Preserve" Ref="http://farfuture.net/FFEForevenSectorReserve2008.pdf"/>
+  <Credits>
+    <![CDATA[
+
+             <b>Foreven</b> sector has been set aside as a "referee's
+             preserve," with no further official development to be
+             done within the sector. Stellar positions were developed
+             by Greg Videll and Mike Mikesh for <cite>Imperial Lines
+             #1</cite> (GDW, 1991).
+
+    ]]>
+  </Credits>
+  <DataFile Source="Foreven Sector Reserve" Milieu="M1105" Type="TabDelimited">Foreven.tab</DataFile>
+  <Subsectors>
+    <Subsector Index="A">Witanes</Subsector>
+    <Subsector Index="B">Telni</Subsector>
+    <Subsector Index="C">Ranaph</Subsector>
+    <Subsector Index="D">Massina</Subsector>
+    <Subsector Index="E">Newa</Subsector>
+    <Subsector Index="F">Medre</Subsector>
+    <Subsector Index="G">Gensarre</Subsector>
+    <Subsector Index="H">Fessor</Subsector>
+    <Subsector Index="I">Angruten</Subsector>
+    <Subsector Index="J">Valenda</Subsector>
+    <Subsector Index="K">Ladespi</Subsector>
+    <Subsector Index="L">Reidain</Subsector>
+    <Subsector Index="M">Hosex</Subsector>
+    <Subsector Index="N">Sanbelju</Subsector>
+    <Subsector Index="O">Potor</Subsector>
+    <Subsector Index="P">Urnian</Subsector>
+  </Subsectors>
+
+  <Borders>
+  </Borders>
+
+  <Routes>
+    <Route Color="Red" Start="3217" End="0218" EndOffsetX="+1" Source="G-105" />
+    <Route Color="Red" Start="3217" End="3018" Source="G-116" />
+    <Route Color="Red" Start="3018" End="2820" Source="G-117" />
+    <Route Color="Red" Start="2820" End="2520" Source="G-118" />
+    <Route Color="Red" Start="2520" End="2422" Source="G-119" />
+    <Route Color="Red" Start="2422" End="2225" Source="G-11A" />
+    <Route Color="Red" Start="2225" End="2128" Source="G-11B" />
+    <Route Color="Red" Start="2128" End="1828" Source="G-11C" />    
+    <Route Color="Red" Start="1828" End="1528" Source="G-11D" />    
+    <Route Color="Red" Start="1528" End="1426" Source="G-11E" />    
+    <Route Color="Red" Start="1426" End="1126" Source="G-11F" />    
+    <Route Color="Red" Start="1126" End="0825" Source="G-11G" />    
+    <Route Color="Red" Start="0825" End="0527" Source="G-11H" />    
+    <Route Color="Red" Start="0527" End="0227" Source="G-11J" />    
+    <Route Color="Red" Start="0227" End="3228" EndOffsetX="-1" Source="G-11K" />    
+  </Routes>
+</Sector>
