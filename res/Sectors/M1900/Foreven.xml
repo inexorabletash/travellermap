@@ -36,8 +36,14 @@
     <Subsector Index="P">Urnian</Subsector>
   </Subsectors>
 
+  <Allegiances>
+    <Allegiance Code="Ta">Tangle Alpha</Allegiance>
+    <Allegiance Code="Tb">Tangle Beta</Allegiance>
+  </Allegiances>
+
   <Borders>
-  </Borders>
+    <Border Allegiance="Ta">0211 0311 0310 0309 0308 0307 0306 0305 0304 0403 0402 0503 0602 0702 0801 0902 1002 1103 1104 1204 1305 1404 1504 1505 1605 1706 1806 1807 1808 1709 1710 1711 1712 1612 1513 1413 1314 1315 1316 1416 1517 1617 1618 1619 1620 1621 1622 1623 1724 1725 1825 1926 1927 1827 1728 1628 1529 1429 1329 1328 1227 1127 1026 1025 1024 1023 0923 0822 0723 0623 0523 0422 0421 0420 0419 0319 0218 0217 0216 0215 0214 0213 0212 0211 </Border>
+    </Borders>
 
   <Routes>
     <Route Color="Red" Start="3217" End="0218" EndOffsetX="+1" Source="G-105" />
