@@ -41,6 +41,14 @@
     <DataFile Author="Robert Eaglestone" Type="TabDelimited">Tuglikki.tab</DataFile>
     <MetadataFile>Tuglikki.xml</MetadataFile>
   </Sector>
+  <Sector Abbreviation="Fore" Selected="true" Milieu="M1900">
+    <Y>-1</Y>
+    <X>-5</X>
+    <Name>Foreven</Name>
+    <Name Lang="zh">Iakr</Name>
+    <DataFile Author="Robert Eaglestone" Type="TabDelimited">Foreven.tab</DataFile>
+    <MetadataFile>Foreven.xml</MetadataFile>
+  </Sector>  
   <Sector Abbreviation="Spin" Selected="true" Milieu="M1900">
     <Y>-1</Y>
     <X>-4</X>
