@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Sectors>
+   <Sector Abbreviation="Ngat" Selected="true" Milieu="M1900">
+     <Y>-3</Y>
+     <X>-2</X>
+     <Name>Ngathksirz</Name>
+     <Name Lang="va">Ngathksirz</Name>
+     <DataFile Author="Robert Eaglestone" Type="TabDelimited">Ngathksirz.tab</DataFile>
+     <MetadataFile>Ngathksirz.xml</MetadataFile>
+  </Sector>
   <Sector Abbreviation="Ziaf" Selected="true" Milieu="M1900">
     <Y>-2</Y>
     <X>-5</X>
@@ -13,8 +21,8 @@
     <X>-4</X>
     <Name Lang="va">Gvurrdon</Name>
     <Name Lang="zh">Briakqra'</Name>
-    <DataFile Author="Robert Eaglestone" Type="TabDelimited">Gvur.tab</DataFile>
-    <MetadataFile>Gvur.xml</MetadataFile>
+    <DataFile Author="Robert Eaglestone" Type="TabDelimited">Gvurrdon.tab</DataFile>
+    <MetadataFile>Gvurrdon.xml</MetadataFile>
   </Sector>
   <Sector Abbreviation="Prov" Selected="true" Milieu="M1900">
     <Y>-2</Y>
@@ -33,6 +41,14 @@
     <DataFile Author="Robert Eaglestone" Type="TabDelimited">Tuglikki.tab</DataFile>
     <MetadataFile>Tuglikki.xml</MetadataFile>
   </Sector>
+  <Sector Abbreviation="Fore" Selected="true" Milieu="M1900">
+    <Y>-1</Y>
+    <X>-5</X>
+    <Name>Foreven</Name>
+    <Name Lang="zh">Iakr</Name>
+    <DataFile Author="Robert Eaglestone" Type="TabDelimited">Foreven.tab</DataFile>
+    <MetadataFile>Foreven.xml</MetadataFile>
+  </Sector>  
   <Sector Abbreviation="Spin" Selected="true" Milieu="M1900">
     <Y>-1</Y>
     <X>-4</X>
