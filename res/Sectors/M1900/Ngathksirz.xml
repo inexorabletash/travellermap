@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Sector Abbreviation="Ngat" Tags="Unreviewed">
+  <Y>-3</Y>
+  <X>-2</X>
+  <Name>Ngathkzirz</Name>
+  <Name Lang="va">Ngathkzirz</Name>
+  <Credits>
+    <![CDATA[
+
+             <b>Ngathkzirz</b> sector was designed by John G. Wood; its
+			 name and position appears in <cite>Vilani & Vargr</cite>
+			 (DGP, 1990).
+
+             Lately, the "fast-forward" script ran this data up to
+             years 1508 and 1900.
+
+    ]]>
+  </Credits>
+  <Product Publisher="Far Future Enterprises" Author="Rob Eaglestone" Title="Beowulf Operations Guide" />
+  <DataFile Source="Traveller 5 Second Survey" Milieu="M1900" Type="TabDelimited">Ngathkzirz.tab</DataFile>
+  <Subsectors Source="Unknown">
+	<Subsector Index="A">Odzgoegh</Subsector>
+	<Subsector Index="B">Kfirzin</Subsector>
+	<Subsector Index="C">Kueroe</Subsector>
+	<Subsector Index="D">Aengangvuer</Subsector>
+	<Subsector Index="E">Dhaendzouts</Subsector>
+	<Subsector Index="F">Ruevoga</Subsector>
+	<Subsector Index="G">Aenael</Subsector>
+	<Subsector Index="H">Roenvoegazdu</Subsector>
+	<Subsector Index="I">Zarrkoe</Subsector>
+	<Subsector Index="J">Thafo</Subsector>
+	<Subsector Index="K">Uengou</Subsector>
+	<Subsector Index="L">Raez</Subsector>
+	<Subsector Index="M">Vaerr</Subsector>
+	<Subsector Index="N">Nouksaezor</Subsector>
+	<Subsector Index="O">Oegerag</Subsector>
+	<Subsector Index="P">Serrken</Subsector>
+  </Subsectors>
+
+  <Routes>
+  </Routes>
+
+  <Allegiances>
+    <Allegiance Code="Va">Zekh Ka</Allegiance>
+    <Allegiance Code="Vb">Torraegoa Vuell</Allegiance>
+    <Allegiance Code="Vc">Aedokhaz Ka Vuell</Allegiance>
+    <Allegiance Code="Vd">Ue Koloung</Allegiance>
+    <Allegiance Code="Ve">Ue Sogur</Allegiance>
+    <Allegiance Code="Vf">Kell Toug</Allegiance>
+  </Allegiances>
+
+  <Borders>
+    <Border Color="Red" Allegiance="Va">0232 0233 0334 0234 0233 0232 </Border>
+    <Border LabelOffsetY="-4" Color="Blue" Allegiance="Vb">0238 0338 0337 0336 0335 0434 0433 0432 0431 0430 0530 0529 0528 0527 0426 0326 0426 0526 0626 0726 0626 0627 0628 0629 0630 0631 0632 0633 0634 0735 0736 0836 0737 0637 0538 0539 0540 0439 0340 0239 0238 </Border>
+    <Border Color="Green" Allegiance="Vc">0115 0214 0315 0414 0514 0513 0512 0511 0510 0509 0408 0508 0507 0506 0505 0504 0503 0402 0302 0401 0502 0602 0703 0803 0904 1004 1105 1205 1306 1406 1507 1607 1707 1708 1709 1809 1910 2009 2109 2108 2207 2307 2306 2405 2404 2504 2503 2502 2501 2502 2602 2703 2803 2904 3004 3105 3204 3105 3005 2906 2907 2908 2909 2910 2911 2912 3012 3113 3013 3014 3015 3016 3017 2918 2818 2719 2720 2721 2722 2622 2623 2624 2625 2525 2424 2324 2224 2124 2023 1923 1823 1724 1725 1726 1626 1527 1528 1529 1530 1531 1532 1632 1733 1832 1831 1932 2032 2033 1934 1935 2035 2135 2234 2135 2136 2036 1937 1938 1939 1940 2040 1940 1839 1740 1739 1638 1538 1437 1338 1437 1537 1536 1636 1737 1836 1936 1935 1834 1734 1633 1534 1434 1335 1235 1135 1035 1135 1134 1133 1132 1131 1030 1130 1229 1228 1227 1226 1326 1425 1424 1423 1422 1421 1321 1220 1120 1119 1118 1017 0917 0817 0718 0618 0718 0817 0917 0916 0915 0914 0813 0713 0613 0514 0414 0315 0214 0115 </Border>
+    <Border Color="Black" Allegiance="Vd">0732 0832 0933 0934 0935 0936 0937 1037 1137 1236 1336 1435 1535 1634 1735 1835 1735 1634 1535 1435 1336 1236 1237 1238 1139 1039 1040 0940 0839 0739 0738 0837 0937 0936 0935 0934 0933 0832 0732 </Border>
+    <Border Color="Orange" Allegiance="Ve">0926 1026 1126 1026 0927 0926 </Border>
+    <Border Color="Cyan" Allegiance="Vf">1631 1731 1732 1631 </Border>
+    <Border Color="Black" Allegiance="Vd">2031 2132 2232 2333 2432 2532 2531 2530 2529 2528 2527 2626 2726 2825 2824 2823 2822 2821 2921 2821 2822 2823 2824 2925 3025 3026 3127 3026 2927 2827 2728 2628 2529 2530 2531 2532 2632 2533 2534 2535 2536 2436 2337 2237 2138 2139 2140 2039 2038 2138 2237 2337 2336 2335 2334 2233 2134 2034 2134 2133 2132 2031 </Border>
+  </Borders>
+
+</Sector>
