@@ -88,7 +88,8 @@ document.addEventListener('DOMContentLoaded', () => {
     jp: 'blue',
     na: 'transparent',
     nahu: 'transparent',
-    naxx: 'transparent'
+    naxx: 'transparent',
+    wild: 'lightgray',
   };
 
   function colorFor(alleg) {
