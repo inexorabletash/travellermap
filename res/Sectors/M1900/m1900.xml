@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Sectors>
+   <Sector Abbreviation="Knoe" Selected="true" Milieu="M1900">
+      <Y>-3</Y>
+      <X>-4</X>
+      <Name>Knoellighz</Name>
+      <DataFile Author="Robert Eaglestone" Type="TabDelimited">Knoellighz.tab</DataFile>
+      <MetadataFile>Knoellighz.xml</MetadataFile>
+   </Sector>
    <Sector Abbreviation="Ngat" Selected="true" Milieu="M1900">
      <Y>-3</Y>
      <X>-2</X>
