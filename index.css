@@ -671,7 +671,7 @@ body:not(.route-shown) #routeBox { min-height: 135px; max-height: 135px; }
   border-radius: 0;
 }
 #routeForm button {
-  height: 20px; margin: 0 4px;
+  height: 20px; margin: 0 2px;
 }
 
 #routeForm.J-1 #J-1,
@@ -706,6 +706,10 @@ body:not(.route-shown) #routeBox { min-height: 135px; max-height: 135px; }
   box-shadow: none;
   background-color: transparent;
 }
+
+#H-1 { display: none; }
+.milieu-M1900 #H-1 { display: initial; }
+.milieu-M1900 #routeForm .jump-button { padding: 0 5px; margin: 0; }
 
 #routeBox #closeRouteBtn { top: 5px; }
 #routeBox #swapRouteBtn { top: 57px; }

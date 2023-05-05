@@ -36,12 +36,12 @@
 <meta property="fb:admins" content="617166358">
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus">
-<link rel="stylesheet" href="index.css?update=2023-03-20T08:33:10">
+<link rel="stylesheet" href="index.css?update=2023-05-04T19:18:53">
 
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
 <script defer src="map.js?update=2023-01-13T18:06:24"></script>
 <script defer src="world_util.js?update=2023-03-09T19:43:37"></script>
-<script defer src="index.js?update=2023-04-05T21:23:24"></script>
+<script defer src="index.js?update=2023-05-04T19:10:34"></script>
 
 <body class="hide-ui hide-footer ds-mini show-settings">
   <div id="mapContainer">
@@ -191,13 +191,13 @@
               title="Swap start/end">
       </button>
 
-      <!--
-      --><button id="J-1" class=jump-button name=jump title="Calculate a Jump-1 route">J-1</button><!--
-      --><button id="J-2" class=jump-button name=jump title="Calculate a Jump-2 route">J-2</button><!--
-      --><button id="J-3" class=jump-button name=jump title="Calculate a Jump-3 route">J-3</button><!--
-      --><button id="J-4" class=jump-button name=jump title="Calculate a Jump-4 route">J-4</button><!--
-      --><button id="J-5" class=jump-button name=jump title="Calculate a Jump-5 route">J-5</button><!--
-      --><button id="J-6" class=jump-button name=jump title="Calculate a Jump-6 route">J-6</button>
+      <button id="J-1" class=jump-button name=jump title="Calculate a Jump-1 route" data-parsecs=1 >J-1</button>
+      <button id="J-2" class=jump-button name=jump title="Calculate a Jump-2 route" data-parsecs=2 >J-2</button>
+      <button id="J-3" class=jump-button name=jump title="Calculate a Jump-3 route" data-parsecs=3 >J-3</button>
+      <button id="J-4" class=jump-button name=jump title="Calculate a Jump-4 route" data-parsecs=4 >J-4</button>
+      <button id="J-5" class=jump-button name=jump title="Calculate a Jump-5 route" data-parsecs=5 >J-5</button>
+      <button id="J-6" class=jump-button name=jump title="Calculate a Jump-6 route" data-parsecs=6 >J-6</button>
+      <button id="H-1" class=jump-button name=jump title="Calculate a Hop-1 route"  data-parsecs=10>H-1</button>
 
       <div id="routeDisplay">
         <div id="routePath"></div>
@@ -947,9 +947,9 @@
 
   <div id="promo-hover">
     <button id=promo-closebtn class="closebtn dim" title="Close"></button>
+    Please support the
+    <br>
     <a target=_blank rel=noopener href="https://www.gofundme.com/f/call-to-the-travellers-aid-society-for-keith-frye">Keith Frye Memorial Fundraiser</a>
-    <br>⑆<br>
-    <a target=_blank rel=noopener href="https://www.cyborgprime.com/traveller-rpg-blog/traveller-rpg-mayday-mayday-2023-official-event-page">Traveller RPG Mayday Mayday 2023</a>
   </div>
 
   <div id="cookies">

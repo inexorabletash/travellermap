@@ -116,6 +116,11 @@
 
   const template = Util.memoize(sel => Handlebars.compile($(sel).innerHTML));
 
+  const jump_button_ids = $$('.jump-button').map(e => e.id);
+  const milieu_choices =
+        $$('#milieu-choices input[type=radio][name=milieu]')
+        .map(e => e.value);
+
   //////////////////////////////////////////////////////////////////////
   //
   // Permalink
@@ -313,7 +318,7 @@
     $('#routeStart').value = '';
     $('#routeEnd').value = '';
     $('#routePath').innerHTML = '';
-    ['J-1','J-2','J-3','J-4','J-5','J-6'].forEach(n => {
+    jump_button_ids.forEach(n => {
       $('#routeForm').classList.remove(n);
     });
     map.SetRoute(null);
@@ -339,7 +344,7 @@
 
       $('#routePath').innerHTML = '';
       let found = false;
-      ['J-1','J-2','J-3','J-4','J-5','J-6'].forEach(n => {
+      jump_button_ids.forEach(n => {
         if ($('#routeForm').classList.contains(n)) {
           found = true;
           $('#'+n).click();
@@ -361,7 +366,7 @@
     $('#routeStart').value = $('#routeEnd').value;
     $('#routeEnd').value = tmp;
     $('#routePath').innerHTML = '';
-    ['J-1','J-2','J-3','J-4','J-5','J-6'].forEach(n => {
+    jump_button_ids.forEach(n => {
       if ($('#routeForm').classList.contains(n))
         $('#'+n).click();
     });
@@ -371,14 +376,14 @@
     button.addEventListener('click', event => {
       event.preventDefault();
 
-      ['J-1','J-2','J-3','J-4','J-5','J-6'].forEach(n => {
+      jump_button_ids.forEach(n => {
         $('#routeForm').classList.remove(n);
       });
       $('#routeForm').classList.add(button.id);
 
       const start = $('#routeStart').value;
       const end = $('#routeEnd').value;
-      const jump = button.id.replace('J-', '');
+      const jump = button.dataset.parsecs;
 
       route(start, end, jump);
     });
@@ -792,6 +797,10 @@
     $('#milieu-field-default').innerText = defaults.milieu;
     document.body.classList.toggle(
       'milieu-not-default', milieu !== defaults.milieu);
+
+    milieu_choices.forEach(m => {
+      document.body.classList.toggle('milieu-' + m, m === milieu);
+    });
   });
   $('#milieu-escape').addEventListener('click', event => {
     map.namedOptions.set('milieu', defaults.milieu);
