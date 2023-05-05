@@ -117,6 +117,9 @@
   const template = Util.memoize(sel => Handlebars.compile($(sel).innerHTML));
 
   const jump_button_ids = $$('.jump-button').map(e => e.id);
+  const milieu_choices =
+        $$('#milieu-choices input[type=radio][name=milieu]')
+        .map(e => e.value);
 
   //////////////////////////////////////////////////////////////////////
   //
@@ -380,7 +383,7 @@
 
       const start = $('#routeStart').value;
       const end = $('#routeEnd').value;
-      const jump = button.id.replace('J-', '');
+      const jump = button.dataset.parsecs;
 
       route(start, end, jump);
     });
@@ -794,6 +797,10 @@
     $('#milieu-field-default').innerText = defaults.milieu;
     document.body.classList.toggle(
       'milieu-not-default', milieu !== defaults.milieu);
+
+    milieu_choices.forEach(m => {
+      document.body.classList.toggle('milieu-' + m, m === milieu);
+    });
   });
   $('#milieu-escape').addEventListener('click', event => {
     map.namedOptions.set('milieu', defaults.milieu);
