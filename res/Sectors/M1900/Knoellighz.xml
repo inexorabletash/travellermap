@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<Sector Abbreviation="Knoe" Tags="Unreviewed">>
+  <Y>-3</Y>
+  <X>-4</X>
+  <Name Lang="va">Knoellighz</Name>
+  <Name Lang="va" Source="Consolidated Traveller Region Name List">Khoellighz</Name>
+  <Name Lang="zh">Tlabrieish</Name>
+  <Credits>
+    <![CDATA[
+
+             <b>Knoellighz</b> sector was designed by John G.
+             Wood and "Pakkrat", with updates by Michael Gonzalez.
+
+             Stellar positions were developed by Joe D. Fugate Sr.
+             and appear in <cite>The MegaTraveller Alien, Volume 1:
+             Vilani &amp; Vargr</cite> (Digest Group Publications,
+             1990).
+
+             Lately, the "fast-forward" script ran this data up to
+             years 1508 and 1900.
+
+    ]]>
+  </Credits>
+  <Subsectors>
+    <Subsector Index="A">Riadr</Subsector>
+    <Subsector Index="B">Dzighkafe</Subsector>
+    <Subsector Index="C">Rourukhae</Subsector>
+    <Subsector Index="D">Ourdzoeg</Subsector>
+    <Subsector Index="E">Etlieejibia</Subsector>
+    <Subsector Index="F">Engakhs</Subsector>
+    <Subsector Index="G">Oguegh</Subsector>
+    <Subsector Index="H">Elkhaghaza</Subsector>
+    <Subsector Index="I">Yeplzhaf</Subsector>
+    <Subsector Index="J">Irrarrdhang</Subsector>
+    <Subsector Index="K">Thoeg</Subsector>
+    <Subsector Index="L">Goengsakh</Subsector>
+    <Subsector Index="M">Piprninsh</Subsector>
+    <Subsector Index="N">Khuzedhoth</Subsector>
+    <Subsector Index="O">Raelas</Subsector>
+    <Subsector Index="P">Zarthurrue</Subsector>
+  </Subsectors>
+
+  <Allegiances>
+    <Allegiance Code="Ae">Followers of Kasou</Allegiance>
+  </Allegiances>
+
+  <Borders>
+    <Border Color="Olivedrab" Allegiance="Ae">0103 0202 0201 0302 0401 0501 0601 0702 0801 0901 1001 1101 1102 1202 1303 1403 1404 1405 1506 1605 1705 1804 1904 2003 2103 2104 2105 2205 2306 2406 2507 2606 2607 2608 2609 2610 2611 2712 2812 2913 3013 3113 3114 3115 3215 3116 3117 3017 2918 2818 2819 2820 2921 3021 3122 3123 3124 3224 3125 3126 3127 3128 3129 3130 3131 3132 3232 3133 3134 3034 2935 2936 2835 2935 3034 3134 3133 3132 3131 3030 2930 2829 2730 2630 2531 2431 2332 2333 2334 2335 2435 2335 2234 2134 2034 1935 1936 1937 1836 1737 1736 1835 1935 2034 2033 2032 2031 2030 1930 1829 1729 1629 1530 1531 1532 1533 1534 1533 1432 1332 1231 1131 1031 1032 1033 1034 1035 0935 0834 0934 1033 1032 0932 0832 0831 0830 0829 0929 1028 1027 1026 1025 1024 1023 1024 1125 1225 1325 1424 1524 1523 1522 1521 1520 1419 1319 1218 1118 1018 1019 1018 0918 0817 0717 0816 0815 0916 1016 1117 1216 1316 1315 1314 1213 1212 1112 1011 0911 0910 0809 0709 0609 0510 0410 0310 0309 0208 0108 0208 0308 0407 0406 0405 0404 0304 0203 0103 </Border>
+    <Border Color="Olivedrab" Allegiance="Ae">0423 0523 0522 0521 0522 0622 0723 0623 0523 0423 </Border>
+  </Borders>
+
+  <Routes>
+   <Route Color="Red" Start="0302" End="0403" />
+   <Route Color="Red" Start="0403" End="0705" />
+   <Route Color="Red" Start="0705" End="1004" />
+   <Route Color="Red" Start="0705" End="0907" />
+   <Route Color="Red" Start="0907" End="1109" />
+   <Route Color="Red" Start="1109" End="1410" />
+   <Route Color="Red" Start="1410" End="1710" />
+   <Route Color="Red" Start="1710" End="2008" />
+   <Route Color="Red" Start="1710" End="1714" />
+   <Route Color="Red" Start="2008" End="2207" />
+   <Route Color="Red" Start="2207" End="2308" />
+   <Route Color="Red" Start="2308" End="2509" />
+   <Route Color="Red" Start="2509" End="2411" />
+   <Route Color="Red" Start="2411" End="2414" />
+   <Route Color="Red" Start="2414" End="2517" />
+   <Route Color="Red" Start="2517" End="2817" />
+   <Route Color="Red" Start="2817" End="2820" />
+   <Route Color="Red" Start="2820" End="2621" />
+   <Route Color="Red" Start="2621" End="2322" />
+   <Route Color="Red" Start="1619" End="1720" />
+   <Route Color="Red" Start="1720" End="2020" />
+   <Route Color="Red" Start="2020" End="2322" />
+   <Route Color="Red" Start="1225" End="1327" />
+   <Route Color="Green" Start="1327" End="1927" />
+   <Route Color="Green" Start="1927" End="2322" />
+   <Route Color="Red" Start="1926" End="1927" />
+   <Route Color="Red" Start="2032" End="2030" />
+   <Route Color="Green" Start="2030" End="1927" />
+   <Route Color="Green" Start="1927" End="2628" />
+   <Route Color="Green" Start="2628" End="2725" />
+   <Route Color="Green" Start="2628" End="3026" />
+   <Route Color="Green" Start="2322" End="2725" />
+   <Route Color="Green" Start="0723" End="1225" />
+  </Routes>
+</Sector>
