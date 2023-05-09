@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Sectors>
+   <Sector Abbreviation="Sidi" Selected="true" Milieu="M1900">
+      <Y>-3</Y>
+      <X>-8</X>
+      <Name>Sidiadl</Name>
+      <DataFile Author="Robert Eaglestone" Type="TabDelimited">Sidiadl.tab</DataFile>
+      <MetadataFile>Sidiadl.xml</MetadataFile>
+   </Sector>
    <Sector Abbreviation="Dhue" Selected="true" Milieu="M1900">
       <Y>-3</Y>
       <X>-3</X>
