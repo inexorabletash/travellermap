@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Sectors>
+   <Sector Abbreviation="Stia" Selected="true" Milieu="M1900">
+      <Y>-3</Y>
+      <X>-6</X>
+      <Name>Stiatlchepr</Name>
+      <DataFile Author="Robert Eaglestone" Type="TabDelimited">Stiatlchepr.tab</DataFile>
+      <MetadataFile>Stiatlchepr.xml</MetadataFile>
+   </Sector>
    <Sector Abbreviation="Eiap" Selected="true" Milieu="M1900">
       <Y>-2</Y>
       <X>-8</X>
