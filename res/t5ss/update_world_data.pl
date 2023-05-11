@@ -1,16 +1,18 @@
 #!/usr/bin/env perl
 
-# Usage:
-#  update_world_data.pl ARGS
-#
-# Default: creates files in ../Sectors/M1105 including anomalies
-#
-# Arguments:
-#  --source-tsv      Use the .tsv files (copy/pasted from spreadsheet) as the source
-#                      * t5ss-im.tsv
-#                      * t5ss-nonim.tsv
-#  --source-data     Use the files in ./data/ as the source
-#  --extract         Create files in ./data/ without anomalies
+my $help = <<'END_HELP';
+Usage:
+  update_world_data.pl --source-XXX ARGS
+
+Default: creates files in ../Sectors/M1105 including anomalies
+
+Arguments:
+ --source-tsv      Use the .tsv files (copy/pasted from spreadsheet) as the source
+                     * t5ss-im.tsv
+                     * t5ss-nonim.tsv
+ --source-data     Use the files in ./data/ as the source
+ --extract         Create files in ./data/ without anomalies
+END_HELP
 
 use strict;
 use warnings;
@@ -33,6 +35,9 @@ while (defined $ARGV[0]) {
         $source = 'tsv';
     } elsif ($arg eq '--source-data') {
         $source = 'data';
+    } elsif ($arg eq '--help') {
+        print $help;
+        exit(0);
     } else {
         die "Unknown arg: $arg\n";
     }
