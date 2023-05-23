@@ -1548,7 +1548,7 @@ namespace Maps.Rendering
                     return styles.amberZone;
                 if (world.IsRed)
                     return styles.redZone;
-                if (styles.greenZone.visible)
+                if (styles.greenZone.visible && !world.IsPlaceholder)
                     return styles.greenZone;
                 return null;
             }
