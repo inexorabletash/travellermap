@@ -62,6 +62,17 @@
     <Route Color="Red" Start="0720" End="1119" />
     <Route Color="Red" Start="0922" End="1223" />
   </Routes>
+    <Allegiances>
+      <Allegiance Code="Du">Duchy of Mora</Allegiance>
+      <Allegiance Code="Cs">Client State, Republic of Regina</Allegiance>
+      <Allegiance Code="Pa">Pavabid</Allegiance>
+      <Allegiance Code="Rr">Republic of Regina</Allegiance>
+      <Allegiance Code="Na">Non-Aligned, Human-dominated</Allegiance>
+      <Allegiance Code="Sw">Sword Worlds Confederation</Allegiance>
+      <Allegiance Code="Vi">Vilis</Allegiance>
+      <Allegiance Code="Wi">Wilds</Allegiance>
+  </Allegiances>
+
   <Stylesheet>
     border.DaCf { color: lightblue; }
     route.DaCf { color: lightgreen; }
