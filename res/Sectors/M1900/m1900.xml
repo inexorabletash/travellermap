@@ -71,6 +71,13 @@
      <DataFile Author="Robert Eaglestone" Type="TabDelimited">Ngathksirz.tab</DataFile>
      <MetadataFile>Ngathksirz.xml</MetadataFile>
   </Sector>
+  <Sector>
+    <Y>-3</Y>
+    <X>-1</X>
+    <Name Lang="va">Fa Dzaets</Name>
+    <DataFile>Fa Dzaets.sec</DataFile>
+    <MetadataFile>Fa Dzaets.xml</MetadataFile>
+  </Sector>  
   <Sector Abbreviation="Ziaf" Selected="true" Milieu="M1900">
     <Y>-2</Y>
     <X>-5</X>
@@ -87,6 +94,14 @@
     <DataFile Author="Robert Eaglestone" Type="TabDelimited">Gvurrdon.tab</DataFile>
     <MetadataFile>Gvurrdon.xml</MetadataFile>
   </Sector>
+  <Sector Abbreviation="Tugl" Selected="true" Milieu="M1900">
+    <Y>-2</Y>
+    <X>-3</X>
+    <Name Lang="va">Tuglikki</Name>
+    <Name Lang="zh">Dravr</Name>
+    <DataFile Author="Robert Eaglestone" Type="TabDelimited">Tuglikki.tab</DataFile>
+    <MetadataFile>Tuglikki.xml</MetadataFile>
+  </Sector>
   <Sector Abbreviation="Prov" Selected="true" Milieu="M1900">
     <Y>-2</Y>
     <X>-2</X>
@@ -96,14 +111,13 @@
     <DataFile Author="Robert Eaglestone" Type="TabDelimited">Provence.tab</DataFile>
     <MetadataFile>Provence.xml</MetadataFile>
   </Sector>
-  <Sector Abbreviation="Tugl" Selected="true" Milieu="M1900">
-    <Y>-2</Y>
-    <X>-3</X>
-    <Name Lang="va">Tuglikki</Name>
-    <Name Lang="zh">Dravr</Name>
-    <DataFile Author="Robert Eaglestone" Type="TabDelimited">Tuglikki.tab</DataFile>
-    <MetadataFile>Tuglikki.xml</MetadataFile>
-  </Sector>
+   <Sector Abbreviation="Wind" Selected="true" Milieu="M1900">
+      <Y>-2</Y>
+      <X>-1</X>
+      <Name>Windhorn</Name>
+      <DataFile Author="Robert Eaglestone" Type="TabDelimited">Windhorn.tab</DataFile>
+      <MetadataFile>Windhorn.xml</MetadataFile>
+   </Sector>
   <Sector Abbreviation="FarF" Selected="true" Milieu="M1900">
     <Y>-1</Y>
     <X>-6</X>
