@@ -1376,7 +1376,7 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <DataFile Source="Traveller 5 Second Survey" Milieu="M1105" Type="TabDelimited">Fornast.tab</DataFile>
     <MetadataFile>Fornast.xml</MetadataFile>
   </Sector>
-  <Sector Abbreviation="Ley"  Tags="Official">
+  <Sector Abbreviation="Ley" Selected="true" Tags="Official">
     <Y>0</Y>
     <X>2</X>
     <Name>Ley</Name>
@@ -1385,7 +1385,7 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <DataFile Author="Martin J. Dougherty and Hunter Gordon" Source="Traveller 5 Second Survey" Milieu="M1105" Type="TabDelimited">Ley.tab</DataFile>
     <MetadataFile>Ley.xml</MetadataFile>
   </Sector>
-  <Sector Abbreviation="Gate" Tags="InReview">
+  <Sector Abbreviation="Gate" Selected="true" Tags="InReview">
     <Y>0</Y>
     <X>3</X>
     <Name>Gateway</Name>
@@ -1816,7 +1816,7 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <DataFile Source="Traveller 5 Second Survey" Milieu="M1105" Type="TabDelimited">Ealiyasiyw.tab</DataFile>
     <MetadataFile Source="Traveller 5 Second Survey" Milieu="M1105">Ealiyasiyw.xml</MetadataFile>
   </Sector>
-  <Sector Abbreviation="Reav" Tags="Official">
+  <Sector Abbreviation="Reav" Selected="true" Tags="Official">
     <Y>2</Y>
     <X>-2</X>
     <Name>Reaver's Deep</Name>
@@ -2126,7 +2126,7 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
       <Subsector Index="P">Aiaiheh</Subsector>
     </Subsectors>
   </Sector>
-  <Sector Abbreviation="Dark" Tags="Official">
+  <Sector Abbreviation="Dark" Selected="true" Tags="Official">
     <Y>3</Y>
     <X>-2</X>
     <Name>Dark Nebula</Name>
