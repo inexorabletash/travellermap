@@ -1506,6 +1506,7 @@ input[type=radio]:checked + label:before {
   line-height: 40px;
   cursor: pointer;
 }
+.hide-ui #milieu-escape,
 body:not(.milieu-not-default) #milieu-escape {
   display: none;
 }

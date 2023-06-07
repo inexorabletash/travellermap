@@ -822,8 +822,14 @@
     if (forceui)
       document.body.classList.remove('hide-ui');
   } else {
-    document.body.classList.remove('hide-ui');
-    document.body.classList.remove('hide-footer');
+    const hideui = ('hideui' in urlParams) && Boolean(Number(urlParams.hideui));
+    if (!hideui) {
+      document.body.classList.remove('hide-ui');
+      document.body.classList.remove('hide-footer');
+    }
+  }
+  if (document.body.classList.contains('hide-ui')) {
+    mapElement.title = '';
   }
 
   let dirty = false;
