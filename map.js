@@ -724,6 +724,7 @@ const Util = {
 
       let dragging, drag_coords, was_dragged, previous_focus;
       container.addEventListener('mousedown', event => {
+        if (event.button !== 0) return;
         this.cancelAnimation();
         previous_focus = document.activeElement;
         container.focus();
@@ -764,6 +765,7 @@ const Util = {
       }, true);
 
       document.addEventListener('mouseup', event => {
+        if (event.button !== 0) return;
         if (dragging) {
           dragging = false;
           container.classList.remove('dragging');
