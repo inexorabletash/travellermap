@@ -161,7 +161,8 @@ const Util = {
 
   const SERVICE_BASE = ((l) => {
     'use strict';
-    if (l.hostname === 'localhost' && l.pathname.indexOf('~') !== -1)
+    if ((l.hostname === 'localhost' && l.pathname.indexOf('~') !== -1) ||
+        (l.protocol === 'file:'))
       return 'https://travellermap.com';
     return '';
   })(window.location);
