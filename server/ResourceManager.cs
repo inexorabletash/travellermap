@@ -29,7 +29,7 @@ namespace Maps
             {
                 object o = new XmlSerializer(typeof(T)).Deserialize(stream);
                 if (o.GetType() != typeof(T))
-                    throw new InvalidOperationException();
+                    throw new ApplicationException($"Invalid file: {name}");
                 return (T)o;
             }
             catch (InvalidOperationException ex) when (ex.InnerException is System.Xml.XmlException)
@@ -47,7 +47,6 @@ namespace Maps
                 if (o == null)
                 {
                     o = GetXmlFileObject<T>(name);
-
                     cache[name] = o;
                 }
                 if (o == null)
@@ -74,7 +73,7 @@ namespace Maps
                 ides.Deserialize(stream, mediaType);
 
                 if (obj.GetType() != typeof(T))
-                    throw new InvalidOperationException("Object is of the wrong type.");
+                    throw new ApplicationException($"Invalid file: {name}");
 
                 return (T)obj;
             }
@@ -84,9 +83,7 @@ namespace Maps
             // PERF: Whole cache is locked while loading a single item. Should use finer granularity
             lock (cache)
             {
-                object? obj = null;
-
-                obj = cache[name];
+                object? obj = cache[name];
 
                 if (obj == null)
                 {

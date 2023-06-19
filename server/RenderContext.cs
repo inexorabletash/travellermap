@@ -536,7 +536,8 @@ namespace Maps.Rendering
             {
                 if (!styles.capitals.visible || (options & MapOptions.WorldsMask) == 0)
                     return;
-                if (resourceManager.GetCachedXmlFileObject<WorldObjectCollection>(@"~/res/labels/Worlds.xml") is WorldObjectCollection worlds && worlds.Worlds != null)
+                var worlds = resourceManager.GetCachedXmlFileObject<WorldObjectCollection>(@"~/res/labels/Worlds.xml");
+                if (worlds.Worlds != null)
                 {
                     graphics.SmoothingMode = SmoothingMode.HighQuality;
                     solidBrush.Color = styles.capitals.textColor;

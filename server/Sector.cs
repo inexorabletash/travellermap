@@ -240,7 +240,7 @@ namespace Maps
                 if (DataFile != null)
                 {
                     // Yes, load/parse it.
-                    data = ResourceManager.GetDeserializableFileObject<WorldCollection>(DataFile.FileName, mediaType: DataFile.Type) as WorldCollection;
+                    data = ResourceManager.GetDeserializableFileObject<WorldCollection>(DataFile.FileName, mediaType: DataFile.Type);
                 }
                 else if (Milieu != null && Milieu != SectorMap.DEFAULT_MILIEU)
                 {
