@@ -153,7 +153,7 @@ namespace Maps.Graphics
                     if (image == null)
                     {
                         // Use a stream since Image.FromFile(path) locks the file on disk.
-                        using var stream = new FileStream(path, FileMode.Open, FileAccess.Read);
+                        using var stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read);
                         image = Image.FromStream(stream);
                     }
                     return image;
