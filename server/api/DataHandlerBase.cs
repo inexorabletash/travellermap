@@ -52,7 +52,7 @@ namespace Maps.API
 
             try
             {
-                GetResponder(context).Process(new ResourceManager(context.Server));
+                GetResponder(context).Process(new ResourceManager());
             }
             catch (HttpError error)
             {

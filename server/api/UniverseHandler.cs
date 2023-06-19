@@ -26,7 +26,7 @@ namespace Maps.API
                 // NOTE: This (re)initializes a static data structure used for 
                 // resolving names into sector locations, so needs to be run
                 // before any other objects (e.g. Worlds) are loaded.
-                SectorMap map = SectorMap.GetInstance(resourceManager);
+                SectorMap map = SectorMap.GetInstance();
 
                 // Filter parameters
                 string? milieu = GetStringOption("milieu") ?? GetStringOption("era");
@@ -68,7 +68,7 @@ namespace Maps.API
                 // NOTE: This (re)initializes a static data structure used for 
                 // resolving names into sector locations, so needs to be run
                 // before any other objects (e.g. Worlds) are loaded.
-                SectorMap map = SectorMap.GetInstance(resourceManager);
+                SectorMap map = SectorMap.GetInstance();
 
                 SendResult(map.GetMilieux().Select(code => new Results.Milieu(code)).ToList());
             }

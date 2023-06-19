@@ -4,6 +4,7 @@ using System;
 using System.IO;
 using System.Reflection;
 using System.Web;
+using System.Web.Hosting;
 using System.Xml.Serialization;
 
 namespace Maps
@@ -15,83 +16,82 @@ namespace Maps
 
     internal class ResourceManager
     {
-        public HttpServerUtility Server { get; }
-        public LRUCache Cache { get; } = new LRUCache(50);
+        private LRUCache cache = new LRUCache(50);
 
-        public ResourceManager(HttpServerUtility serverUtility)
+        public ResourceManager()
         {
-            Server = serverUtility;
         }
 
-        public object GetXmlFileObject(string name, Type type, bool cache = true)
+        public static T GetXmlFileObject<T>(string name)
         {
-            if (!cache)
+            using var stream = new FileStream(HostingEnvironment.MapPath(name), FileMode.Open, FileAccess.Read, FileShare.Read);
+            try
             {
-                using var stream = new FileStream(Server.MapPath(name), FileMode.Open, FileAccess.Read, FileShare.Read);
-                try
-                {
-                    object o = new XmlSerializer(type).Deserialize(stream);
-                    if (o.GetType() != type)
-                        throw new InvalidOperationException();
-                    return o;
-                }
-                catch (InvalidOperationException ex) when (ex.InnerException is System.Xml.XmlException)
-                {
-                    throw ex.InnerException;
-                }
+                object o = new XmlSerializer(typeof(T)).Deserialize(stream);
+                if (o.GetType() != typeof(T))
+                    throw new InvalidOperationException();
+                return (T)o;
             }
-
-            lock (Cache)
+            catch (InvalidOperationException ex) when (ex.InnerException is System.Xml.XmlException)
             {
-                object? o = Cache[name];
+                throw ex.InnerException;
+            }
+        }
+
+        public T GetCachedXmlFileObject<T>(string name)
+        {
+            lock (cache)
+            {
+                object? o = cache[name];
 
                 if (o == null)
                 {
-                    o = GetXmlFileObject(name, type, cache: false);
+                    o = GetXmlFileObject<T>(name);
 
-                    Cache[name] = o;
+                    cache[name] = o;
                 }
+                if (o == null)
+                    throw new ApplicationException("Unexpected null");
 
-                return o;
+                return (T)o;
             }
         }
 
-        public T GetDeserializableFileObject<T>(string name, bool cacheResults, string mediaType)
+        public static T GetDeserializableFileObject<T>(string name, string mediaType)
         {
-            if (!cacheResults)
+            using (var stream = new FileStream(HostingEnvironment.MapPath(name), FileMode.Open, FileAccess.Read, FileShare.Read))
             {
-                using (var stream = new FileStream(Server.MapPath(name), FileMode.Open, FileAccess.Read, FileShare.Read))
-                {
-                    ConstructorInfo constructorInfoObj = (typeof(T)).GetConstructor(
-                        BindingFlags.Instance | BindingFlags.Public, null,
-                        CallingConventions.HasThis, new Type[0], null) ??
-                        throw new TargetException();
+                ConstructorInfo constructorInfoObj = (typeof(T)).GetConstructor(
+                    BindingFlags.Instance | BindingFlags.Public, null,
+                    CallingConventions.HasThis, new Type[0], null) ??
+                    throw new TargetException();
 
-                    object obj = constructorInfoObj.Invoke(null);
+                object obj = constructorInfoObj.Invoke(null);
 
-                    IDeserializable ides = obj as IDeserializable ??
-                        throw new TargetException();
+                IDeserializable ides = obj as IDeserializable ??
+                    throw new TargetException();
 
-                    ides.Deserialize(stream, mediaType);
+                ides.Deserialize(stream, mediaType);
 
-                    if (obj.GetType() != typeof(T))
-                        throw new InvalidOperationException("Object is of the wrong type.");
+                if (obj.GetType() != typeof(T))
+                    throw new InvalidOperationException("Object is of the wrong type.");
 
-                    return (T)obj;
-                }
+                return (T)obj;
             }
-
+        }
+        public T GetCachedDeserializableFileObject<T>(string name, string mediaType)
+        {
             // PERF: Whole cache is locked while loading a single item. Should use finer granularity
-            lock (Cache)
+            lock (cache)
             {
                 object? obj = null;
 
-                obj = Cache[name];
+                obj = cache[name];
 
                 if (obj == null)
                 {
-                    obj = GetDeserializableFileObject<T>(name, false, mediaType);
-                    Cache[name] = obj;
+                    obj = GetDeserializableFileObject<T>(name, mediaType);
+                    cache[name] = obj;
                 }
                 if (obj == null)
                     throw new ApplicationException("Unexpected null");

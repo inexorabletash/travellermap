@@ -117,7 +117,7 @@ namespace Maps.API
 
             public override void Process(ResourceManager resourceManager)
             {
-                SectorMap.Milieu map = SectorMap.ForMilieu(resourceManager, GetStringOption("milieu"));
+                SectorMap.Milieu map = SectorMap.ForMilieu(GetStringOption("milieu"));
 
                 World? startWorld = ResolveLocation(Context, "start", resourceManager, map);
                 if (startWorld == null)

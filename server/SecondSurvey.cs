@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Web.Hosting;
 
 namespace Maps
 {
@@ -254,7 +255,7 @@ namespace Maps
         // TODO: Parse this from data file
 
         private static readonly AllegianceDictionary s_t5Allegiances = AllegianceDictionary
-            .FromFile(System.Web.Hosting.HostingEnvironment.MapPath("~/res/t5ss/allegiance_codes.tab"))
+            .FromFile(HostingEnvironment.MapPath("~/res/t5ss/allegiance_codes.tab"))
             .Merge(new AllegianceDictionary {
             // T5Code, LegacyCode, BaseCode, Name
 

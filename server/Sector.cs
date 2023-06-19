@@ -240,12 +240,12 @@ namespace Maps
                 if (DataFile != null)
                 {
                     // Yes, load/parse it.
-                    data = resourceManager.GetDeserializableFileObject<WorldCollection>(DataFile.FileName, cacheResults: false, mediaType: DataFile.Type) as WorldCollection;
+                    data = ResourceManager.GetDeserializableFileObject<WorldCollection>(DataFile.FileName, mediaType: DataFile.Type) as WorldCollection;
                 }
                 else if (Milieu != null && Milieu != SectorMap.DEFAULT_MILIEU)
                 {
                     // Nope... maybe we can construct a dotmap from the default milieu?
-                    SectorMap.Milieu map = SectorMap.ForMilieu(resourceManager, SectorMap.DEFAULT_MILIEU);
+                    SectorMap.Milieu map = SectorMap.ForMilieu(SectorMap.DEFAULT_MILIEU);
                     Sector? basis = map.FromLocation(this.Location);
                     if (basis == null)
                         return null;

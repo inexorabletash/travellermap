@@ -9,6 +9,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Web.Hosting;
 
 namespace Maps.Rendering
 {
@@ -128,10 +129,10 @@ namespace Maps.Rendering
             private static object s_lock = new object();
             private static StaticImageCache? s_instance = null;
 
-            public StaticImageCache(ResourceManager resourceManager)
+            public StaticImageCache()
             {
                 AbstractImage prepare(string urlPath) =>
-                    new AbstractImage(resourceManager.Server.MapPath("~" + urlPath), urlPath);
+                    new AbstractImage(HostingEnvironment.MapPath("~" + urlPath), urlPath);
 
                 // Actual images are loaded lazily.
                 nebulaImage = prepare("/res/Candy/Nebula.png");
@@ -154,11 +155,11 @@ namespace Maps.Rendering
                         };
             }
 
-            public static StaticImageCache GetInstance(ResourceManager resourceManager)
+            public static StaticImageCache GetInstance()
             {
                 lock (s_lock)
                 {
-                    s_instance ??= new StaticImageCache(resourceManager);
+                    s_instance ??= new StaticImageCache();
                 }
                 return s_instance;
             }
@@ -211,7 +212,7 @@ namespace Maps.Rendering
 
         public void Render(AbstractGraphics g)
         {
-            var renderer = new Renderer(this, g, StaticImageCache.GetInstance(resourceManager));
+            var renderer = new Renderer(this, g, StaticImageCache.GetInstance());
             renderer.Render();
         }
 
@@ -535,7 +536,7 @@ namespace Maps.Rendering
             {
                 if (!styles.capitals.visible || (options & MapOptions.WorldsMask) == 0)
                     return;
-                if (resourceManager.GetXmlFileObject(@"~/res/labels/Worlds.xml", typeof(WorldObjectCollection)) is WorldObjectCollection worlds && worlds.Worlds != null)
+                if (resourceManager.GetCachedXmlFileObject<WorldObjectCollection>(@"~/res/labels/Worlds.xml") is WorldObjectCollection worlds && worlds.Worlds != null)
                 {
                     graphics.SmoothingMode = SmoothingMode.HighQuality;
                     solidBrush.Color = styles.capitals.textColor;
@@ -674,7 +675,7 @@ namespace Maps.Rendering
                 styles.macroRoutes.pen.Apply(ref pen);
                 graphics.SmoothingMode = SmoothingMode.AntiAlias;
                 foreach (var vec in routeFiles
-                    .Select(file => resourceManager.GetXmlFileObject(file, typeof(VectorObject)))
+                    .Select(file => resourceManager.GetCachedXmlFileObject<VectorObject>(file))
                     .OfType<VectorObject>()
                     .Where(vec => (vec.MapOptions & options & MapOptions.BordersMask) != 0))
                 {
@@ -690,7 +691,7 @@ namespace Maps.Rendering
                 styles.macroBorders.pen.Apply(ref pen);
                 graphics.SmoothingMode = SmoothingMode.AntiAlias;
                 foreach (var vec in borderFiles
-                    .Select(file => resourceManager.GetXmlFileObject(file, typeof(VectorObject)))
+                    .Select(file => resourceManager.GetCachedXmlFileObject<VectorObject>(file))
                     .OfType<VectorObject>()
                     .Where(vec => (vec.MapOptions & options & MapOptions.BordersMask) != 0))
                 {
@@ -750,7 +751,7 @@ namespace Maps.Rendering
                 graphics.SmoothingMode = SmoothingMode.HighQuality;
 
                 foreach (var vec in borderFiles
-                .Select(file => resourceManager.GetXmlFileObject(file, typeof(VectorObject)))
+                .Select(file => resourceManager.GetCachedXmlFileObject<VectorObject>(file))
                 .OfType<VectorObject>()
                 .Where(vec => (vec.MapOptions & options & MapOptions.NamesMask) != 0))
                 {
@@ -765,7 +766,7 @@ namespace Maps.Rendering
                 }
 
                 foreach (var vec in riftFiles
-                    .Select(file => resourceManager.GetXmlFileObject(file, typeof(VectorObject)))
+                    .Select(file => resourceManager.GetCachedXmlFileObject<VectorObject>(file))
                     .OfType<VectorObject>()
                     .Where(vec => (vec.MapOptions & options & MapOptions.NamesMask) != 0))
                 {
@@ -783,7 +784,7 @@ namespace Maps.Rendering
                 if (styles.macroRoutes.visible)
                 {
                     foreach (var vec in routeFiles
-                        .Select(file => resourceManager.GetXmlFileObject(file, typeof(VectorObject)))
+                        .Select(file => resourceManager.GetCachedXmlFileObject<VectorObject>(file))
                         .OfType<VectorObject>()
                         .Where(vec => (vec.MapOptions & options & MapOptions.NamesMask) != 0))
                     {

@@ -47,7 +47,7 @@ namespace Maps.API
                 // Do the search
                 //
                 string? milieu = GetStringOption("milieu", SectorMap.DEFAULT_MILIEU);
-                SectorMap.Milieu map = SectorMap.ForMilieu(resourceManager, milieu);
+                SectorMap.Milieu map = SectorMap.ForMilieu(milieu);
 
                 int NUM_RESULTS;
                 IEnumerable<SearchResult> searchResults;

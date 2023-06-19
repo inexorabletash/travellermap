@@ -37,7 +37,7 @@ namespace Maps.Admin
             // resolving names into sector locations, so needs to be run
             // before any other objects (e.g. Worlds) are loaded.
             SectorMap.Flush();
-            SectorMap map = SectorMap.GetInstance(resourceManager);
+            SectorMap map = SectorMap.GetInstance();
 
             var sectorQuery = from sector in map.Sectors where
                               (!sector.Tags.Contains("ZCR")) && (!sector.Tags.Contains("meta"))

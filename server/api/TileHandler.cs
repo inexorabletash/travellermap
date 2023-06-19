@@ -54,7 +54,7 @@ namespace Maps.API
                     Height = (float)(tileSize.Height / (scale * Astrometrics.ParsecScaleY))
                 };
 
-                Selector selector = new RectSelector(SectorMap.ForMilieu(resourceManager, GetStringOption("milieu")), resourceManager, tileRect);
+                Selector selector = new RectSelector(SectorMap.ForMilieu(GetStringOption("milieu")), resourceManager, tileRect);
                 Stylesheet styles = new Stylesheet(scale, options, style);
                 RenderContext ctx = new RenderContext(resourceManager, selector, tileRect, scale, options, styles, tileSize)
                 {

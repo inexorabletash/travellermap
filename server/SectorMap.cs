@@ -143,12 +143,12 @@ namespace Maps
         public IEnumerable<string> GetMilieux() => milieux.Keys;
 
         // Singleton initialization
-        private SectorMap(IEnumerable<SectorMetafileEntry> metafiles, ResourceManager resourceManager)
+        private SectorMap(IEnumerable<SectorMetafileEntry> metafiles)
         {
             // Load all sectors from all metafiles.
             foreach (var metafile in metafiles)
             {
-                if (!(resourceManager.GetXmlFileObject(metafile.filename, typeof(SectorCollection), cache: false) is SectorCollection collection))
+                if (!(ResourceManager.GetXmlFileObject<SectorCollection>(metafile.filename) is SectorCollection collection))
                     throw new ApplicationException($"Invalid file: {metafile.filename}");
 
                 foreach (var sector in collection.Sectors)
@@ -164,7 +164,7 @@ namespace Maps
             {
                 if (sector.MetadataFile != null)
                 {
-                    if (!(resourceManager.GetXmlFileObject(sector.MetadataFile, typeof(Sector), cache: false) is Sector metadata))
+                    if (!(ResourceManager.GetXmlFileObject<Sector>(sector.MetadataFile) is Sector metadata))
                         throw new ApplicationException($"Invalid file: {sector.MetadataFile}");
 
                     metadata.AdjustRelativePaths(sector.MetadataFile);
@@ -176,7 +176,7 @@ namespace Maps
         }
 
         // Singleton accessor
-        public static SectorMap GetInstance(ResourceManager resourceManager)
+        public static SectorMap GetInstance()
         {
             lock (SectorMap.s_lock)
             {
@@ -193,7 +193,7 @@ namespace Maps
                         files.Add(new SectorMetafileEntry(@"~/res/Sectors/" + path, tags.ToList()));
                     }
 
-                    s_instance = new SectorMap(files, resourceManager);
+                    s_instance = new SectorMap(files);
                 }
             }
 
@@ -246,8 +246,8 @@ namespace Maps
                 => map.FromName(name, milieu);
         }
 
-        public static Milieu ForMilieu(ResourceManager resourceManager, string? milieu)
-            => new Milieu(SectorMap.GetInstance(resourceManager), milieu);
+        public static Milieu ForMilieu(string? milieu)
+            => new Milieu(SectorMap.GetInstance(), milieu);
 
         /// <summary>
         /// Helper to find MilieuMaps by name.

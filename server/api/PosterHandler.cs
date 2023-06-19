@@ -46,7 +46,7 @@ namespace Maps.API
                     // NOTE: This (re)initializes a static data structure used for
                     // resolving names into sector locations, so needs to be run
                     // before any other objects (e.g. Worlds) are loaded.
-                    SectorMap.Milieu map = SectorMap.ForMilieu(resourceManager, GetStringOption("milieu"));
+                    SectorMap.Milieu map = SectorMap.ForMilieu(GetStringOption("milieu"));
                     selector = new RectSelector(map, resourceManager, tileRect, slop: false);
 
                     // Include specified hexes
@@ -107,7 +107,7 @@ namespace Maps.API
                     // NOTE: This (re)initializes a static data structure used for
                     // resolving names into sector locations, so needs to be run
                     // before any other objects (e.g. Worlds) are loaded.
-                    SectorMap.Milieu map = SectorMap.ForMilieu(resourceManager, GetStringOption("milieu"));
+                    SectorMap.Milieu map = SectorMap.ForMilieu(GetStringOption("milieu"));
                     selector = new RectSelector(map, resourceManager, tileRect, slop: false);
 
                     // Include selected hexes
@@ -162,7 +162,7 @@ namespace Maps.API
                         string sectorName = GetStringOption("sector") ??
                             throw new HttpError(400, "Bad Request", "No sector specified.");
 
-                        SectorMap.Milieu map = SectorMap.ForMilieu(resourceManager, GetStringOption("milieu"));
+                        SectorMap.Milieu map = SectorMap.ForMilieu(GetStringOption("milieu"));
 
                         sector = map.FromName(sectorName) ??
                             throw new HttpError(404, "Not Found", $"The specified sector '{sectorName}' was not found.");

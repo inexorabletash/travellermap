@@ -20,7 +20,7 @@ namespace Maps.API
                 // NOTE: This (re)initializes a static data structure used for 
                 // resolving names into sector locations, so needs to be run
                 // before any other objects (e.g. Worlds) are loaded.
-                SectorMap.Milieu map = SectorMap.ForMilieu(resourceManager, GetStringOption("milieu"));
+                SectorMap.Milieu map = SectorMap.ForMilieu(GetStringOption("milieu"));
                 Sector sector;
 
                 if (HasOption("sx") && HasOption("sy"))

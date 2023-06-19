@@ -44,7 +44,7 @@ namespace Maps.Admin
                 context.Response.Flush();
                 return;
             }
-            Process(context, new ResourceManager(context.Server));
+            Process(context, new ResourceManager());
         }
 
         protected abstract void Process(HttpContext context, ResourceManager resourceManager);
@@ -157,7 +157,7 @@ namespace Maps.Admin
         private static void Reindex(HttpContext context)
         {
             Write(context.Response, "Initializing resource manager...");
-            ResourceManager resourceManager = new ResourceManager(context.Server);
+            ResourceManager resourceManager = new ResourceManager();
 
             SearchEngine.PopulateDatabase(resourceManager, s => Write(context.Response, s));
 
