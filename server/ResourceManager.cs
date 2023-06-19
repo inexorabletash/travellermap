@@ -56,41 +56,48 @@ namespace Maps
             }
         }
 
-        public object GetDeserializableFileObject(string name, Type type, bool cacheResults, string mediaType)
+        public T GetDeserializableFileObject<T>(string name, bool cacheResults, string mediaType)
         {
-            object? obj = null;
+            if (!cacheResults)
+            {
+                using (var stream = new FileStream(Server.MapPath(name), FileMode.Open, FileAccess.Read, FileShare.Read))
+                {
+                    ConstructorInfo constructorInfoObj = (typeof(T)).GetConstructor(
+                        BindingFlags.Instance | BindingFlags.Public, null,
+                        CallingConventions.HasThis, new Type[0], null) ??
+                        throw new TargetException();
+
+                    object obj = constructorInfoObj.Invoke(null);
+
+                    IDeserializable ides = obj as IDeserializable ??
+                        throw new TargetException();
+
+                    ides.Deserialize(stream, mediaType);
+
+                    if (obj.GetType() != typeof(T))
+                        throw new InvalidOperationException("Object is of the wrong type.");
+
+                    return (T)obj;
+                }
+            }
 
             // PERF: Whole cache is locked while loading a single item. Should use finer granularity
             lock (Cache)
             {
+                object? obj = null;
+
                 obj = Cache[name];
 
                 if (obj == null)
                 {
-                    using (var stream = new FileStream(Server.MapPath(name), FileMode.Open, FileAccess.Read, FileShare.Read))
-                    {
-                        ConstructorInfo constructorInfoObj = type.GetConstructor(
-                            BindingFlags.Instance | BindingFlags.Public, null,
-                            CallingConventions.HasThis, new Type[0], null) ??
-                            throw new TargetException();
-
-                        obj = constructorInfoObj.Invoke(null);
-
-                        IDeserializable ides = obj as IDeserializable ??
-                            throw new TargetException();
-
-                        ides.Deserialize(stream, mediaType);
-                    }
-
-                    if (cacheResults)
-                        Cache[name] = obj;
+                    obj = GetDeserializableFileObject<T>(name, false, mediaType);
+                    Cache[name] = obj;
                 }
+                if (obj == null)
+                    throw new ApplicationException("Unexpected null");
+
+                return (T)obj;
             }
-
-            if (obj.GetType() != type)
-                throw new InvalidOperationException("Object is of the wrong type.");
-
-            return obj;
         }
     }
 }
