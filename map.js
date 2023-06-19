@@ -1664,6 +1664,34 @@ const Util = {
       this.position = [target.x, target.y];
     }
 
+    // Move and scale display to show the specified world space area
+    CenterOnArea(minWorldX, minWorldY, maxWorldX, maxWorldY) {
+      const worldWidth = maxWorldX - minWorldX;
+      const worldHeight = maxWorldY - minWorldY;
+      // Calculate the hex to center the view around
+      const centerWorldX = Math.round(worldWidth / 2) + minWorldX;
+      const centerWorldY = Math.round(worldHeight / 2) + minWorldY;
+      const centerSectorHex = Astrometrics.worldToSectorHex(centerWorldX, centerWorldY);
+      // Calculate how large the area covered by the area is in current pixel coordinates
+      const minMapPosition = Astrometrics.worldToMap(minWorldX, minWorldY);
+      const maxMapPosition = Astrometrics.worldToMap(maxWorldX, maxWorldY);
+      const minPixelPosition = this.mapToPixel(minMapPosition.x, minMapPosition.y);
+      const maxPixelPosition = this.mapToPixel(maxMapPosition.x, maxMapPosition.y);
+      const pixelWidth = maxPixelPosition.x - minPixelPosition.x;
+      const pixelHeight = maxPixelPosition.y - minPixelPosition.y;
+      // Calculate the new scale value based on the current scale value
+      const pixelRatio = (pixelWidth > pixelHeight) ? (pixelWidth / this.rect.width) : (pixelHeight / this.rect.height);
+      const divisor = Math.abs(pixelRatio) * 2;
+      const newScale = this.scale / divisor;
+      // Update the view
+      this.CenterAtSectorHex(
+        centerSectorHex.sx,
+        centerSectorHex.sy,
+        centerSectorHex.hx,
+        centerSectorHex.hy,
+        { scale: newScale });
+   }
+
     // Scroll the map view by the specified dx/dy (in pixels)
     Scroll(dx, dy, fAnimate) {
       this.cancelAnimation();
@@ -1719,6 +1747,17 @@ const Util = {
       }, o);
 
       this.overlays.push(overlay);
+      this.invalidate();
+    }
+
+    // Remove overlays that don't match the specified filter
+    FilterOverlays(filterCallback) {
+      this.overlays = this.overlays.filter(filterCallback);
+      this.invalidate();
+    }
+
+    ClearOverlays() {
+      this.overlays = [];
       this.invalidate();
     }
 
