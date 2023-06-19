@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Sector>
+  <Name>Alte Grenzen</Name>
+  <Credits>
+    <![CDATA[
+        <b>Alte Grenzen</b> sector was created by Graham Donald. Inspired in part by material from Queskania 3.
+    ]]>
+  </Credits>
+  <Stylesheet>
+    border { color: gray }
+    route.TradeMinor { Color: gray; style: dashed; width: 0.5 }
+  </Stylesheet>
+  <Allegiance>
+    <Allegiance Code="AS">Amphictyony of Suntha</Allegiance>
+    <Allegiance Code="Au">Agricultural Union</Allegiance>
+    <Allegiance Code="BI">Republic of the Bright Islands</Allegiance>
+    <Allegiance Code="GA">Grand Duchy of Alvilen</Allegiance>
+    <Allegiance Code="OC">Oranite Confederation</Allegiance>
+  </Allegiance>
+  <Subsectors>
+    <Subsector Index="A">Giling</Subsector>
+    <Subsector Index="B">Dethia's Archipelago</Subsector>
+    <Subsector Index="C">Atsilk's Heptad</Subsector>
+    <Subsector Index="D">Dyad</Subsector>
+    <Subsector Index="E">Chekei</Subsector>
+    <Subsector Index="F">Elios</Subsector>
+    <Subsector Index="G">Vimoris</Subsector>
+    <Subsector Index="H">Pebbles</Subsector>
+    <Subsector Index="I">Krenia</Subsector>
+    <Subsector Index="J">Alvilen</Subsector>
+    <Subsector Index="K">Giest</Subsector>
+    <Subsector Index="L">Stepping Stones</Subsector>
+    <Subsector Index="M">Halldon Marches</Subsector>
+    <Subsector Index="N">Onnos</Subsector>
+    <Subsector Index="O">Twilight's Reach</Subsector>
+    <Subsector Index="P">Night's Edge</Subsector>
+  </Subsectors>
+    <Routes>
+    <Route Start="2839" End="2941" Type="TradeMinor"/>
+    <Route Start="2940" End="2941" Type="TradeMinor"/>
+    <Route Start="2839" End="2638" Type="TradeMinor"/>
+    <Route Start="2638" End="2540" Type="TradeMinor"/>
+    <Route Start="2638" End="2537" Type="TradeMinor"/>
+    <Route Start="2839" End="2837" Type="TradeMinor"/>
+    <Route Start="2836" End="2837" Type="TradeMinor"/>
+    <Route Start="2537" End="2635" Type="TradeMinor"/>
+    <Route Start="2833" End="2832" Type="TradeMinor"/>
+    <Route Start="2832" End="2631" Type="TradeMinor"/>
+    <Route Start="2531" End="2631" Type="TradeMinor"/>
+    <Route Start="2833" End="2735" Type="TradeMinor"/>
+    <Route Start="2635" End="2735" Type="TradeMinor"/>
+    <Route Start="2836" End="2735" Type="TradeMinor"/>
+    <Route Start="2837" End="2937" Type="TradeMinor"/>
+    <Route Start="2631" End="2533" Type="TradeMinor"/>
+    <Route Start="2631" End="2531" Type="TradeMinor"/>
+    <Route Start="2533" End="2531" Type="TradeMinor"/>
+    <Route Start="1737" End="1738" Type="TradeMinor"/>
+    <Route Start="1738" End="1739" Type="TradeMinor"/>
+    <Route Start="1740" End="1739" Type="TradeMinor"/>
+    <Route Start="1740" End="1741" Type="TradeMinor"/>
+    <Route Start="1741" End="1840" Type="TradeMinor"/>
+    <Route Start="1840" End="2039" Type="TradeMinor"/>
+    <Route Start="2537" End="2435" Type="TradeMinor"/>
+    <Route Start="2335" End="2435" Type="TradeMinor"/>
+    <Route Start="2335" End="2136" Type="TradeMinor"/>
+    <Route Start="2039" End="2138" Type="TradeMinor"/>
+    <Route Start="2137" End="2136" Type="TradeMinor"/>
+    <Route Start="2138" End="2137" Type="TradeMinor"/>
+    <Route Start="2136" End="2035" Type="TradeMinor"/>
+    <Route Start="1934" End="2035" Type="TradeMinor"/>
+    <Route Start="2533" End="2433" Type="TradeMinor"/>
+    <Route Start="2433" End="2132" Type="TradeMinor"/>
+    <Route Start="2531" End="2331" Type="TradeMinor"/>
+    <Route Start="2231" End="2132" Type="TradeMinor"/>
+    <Route Start="2331" End="2231" Type="TradeMinor"/>
+    <Route Start="2733" End="2833" Type="TradeMinor"/>
+    <Route Start="2933" End="2833" Type="TradeMinor"/>
+    <Route Start="2933" End="2832" Type="TradeMinor"/>
+    <Route Start="2733" End="2832" Type="TradeMinor"/>
+    <Route Start="2640" End="2540" Type="TradeMinor"/>
+    <Route Start="1934" End="1932" Type="TradeMinor"/>
+    <Route Start="1932" End="1831" Type="TradeMinor"/>
+    <Route Start="1732" End="1831" Type="TradeMinor"/>
+    <Route Start="1932" End="2132" Type="TradeMinor"/>
+    <Route Start="2039" End="2240" Type="TradeMinor"/>
+    <Route Start="1934" End="1932" Type="TradeMinor"/>
+    <Route Start="1932" End="1831" Type="TradeMinor"/>
+    <Route Start="1732" End="1831" Type="TradeMinor"/>
+    <Route Start="1932" End="2132" Type="TradeMinor"/>
+    <Route Start="2039" End="2240" Type="TradeMinor"/>
+    <Route Start="1840" End="1941" Type="TradeMinor"/>
+    <Route Start="2039" End="1941" Type="TradeMinor"/>
+    <Route Start="2039" End="2141" Type="TradeMinor"/>
+    <Route Start="2240" End="2141" Type="TradeMinor"/>
+  </Routes>
+  <Borders>
+    <Border Allegiance="Au">2733 2832 2933 2934 2935 2835 2736 2735 2734 2733 </Border>
+    <Border Allegiance="OC">1739 1740 1840 1941 2041 2141 2240 2241 2141 2041 1941 1841 1741 1740 1739 </Border>
+</Borders>
+ </Sector>
