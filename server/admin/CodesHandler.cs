@@ -103,44 +103,54 @@ namespace Maps.Admin
             SectorMap.Flush();
             SectorMap map = SectorMap.GetInstance();
 
-            var sectorQuery = from sector in map.Sectors
-                              where (sectorName == null || sector.Names[0].Text.StartsWith(sectorName, ignoreCase: true, culture: CultureInfo.InvariantCulture))
-                              && (sector.DataFile != null)
-                              && (type == null || sector.DataFile.Type == type)
-                              && (!sector.Tags.Contains("ZCR"))
-                              && (!sector.Tags.Contains("meta"))
-                              && (milieu == null || sector.CanonicalMilieu == milieu)
-                              orderby sector.Names[0].Text
-                              select sector;
-
-            Dictionary<string, HashSet<string>> codes = new Dictionary<string, HashSet<string>>();
-
-            Regex filter = new Regex(regex ?? ".*");
-
-            foreach (var sector in sectorQuery)
+            try
             {
-                WorldCollection? worlds = sector.GetWorlds(resourceManager, cacheResults: false);
-                if (worlds == null)
-                    continue;
 
-                foreach (var code in worlds
-                    .SelectMany(world => world.Codes)
-                    .Where(code => filter.IsMatch(code) && !s_knownCodes.IsMatch(code)))
+                var sectorQuery = from sector in map.Sectors
+                                  where (sectorName == null || sector.Names[0].Text.StartsWith(sectorName, ignoreCase: true, culture: CultureInfo.InvariantCulture))
+                                  && (sector.DataFile != null)
+                                  && (type == null || sector.DataFile.Type == type)
+                                  && (!sector.Tags.Contains("ZCR"))
+                                  && (!sector.Tags.Contains("meta"))
+                                  && (milieu == null || sector.CanonicalMilieu == milieu)
+                                  orderby sector.Names[0].Text
+                                  select sector;
+
+                Dictionary<string, HashSet<string>> codes = new Dictionary<string, HashSet<string>>();
+
+                Regex filter = new Regex(regex ?? ".*");
+
+                foreach (var sector in sectorQuery)
                 {
-                    if (!codes.ContainsKey(code))
-                    {
-                        codes.Add(code, new HashSet<string>());
-                    }
-                    codes[code].Add($"{sector.Names[0].Text} [{sector.CanonicalMilieu}]");
-                }
-            }
+                    WorldCollection? worlds = sector.GetWorlds(resourceManager, cacheResults: false);
+                    if (worlds == null)
+                        continue;
 
-            foreach (var code in codes.Keys.OrderBy(s => s))
+                    foreach (var code in worlds
+                        .SelectMany(world => world.Codes)
+                        .Where(code => filter.IsMatch(code) && !s_knownCodes.IsMatch(code)))
+                    {
+                        if (!codes.ContainsKey(code))
+                        {
+                            codes.Add(code, new HashSet<string>());
+                        }
+                        codes[code].Add($"{sector.Names[0].Text} [{sector.CanonicalMilieu}]");
+                    }
+                }
+
+                foreach (var code in codes.Keys.OrderBy(s => s))
+                {
+                    context.Response.Output.Write(code + " - ");
+                    foreach (var sector in codes[code].OrderBy(s => s))
+                        context.Response.Output.Write(sector + " ");
+                    context.Response.Output.WriteLine("");
+                }
+
+            }
+            finally
             {
-                context.Response.Output.Write(code + " - ");
-                foreach (var sector in codes[code].OrderBy(s => s))
-                    context.Response.Output.Write(sector + " ");
-                context.Response.Output.WriteLine("");
+                SectorMap.Flush();
+                resourceManager.Flush();
             }
         }
     }

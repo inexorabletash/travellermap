@@ -40,19 +40,21 @@ namespace Maps.Admin
             SectorMap.Flush();
             SectorMap map = SectorMap.GetInstance();
 
-            var sectorQuery = from sector in map.Sectors
-                              where (sectorName == null || sector.Names[0].Text.StartsWith(sectorName, ignoreCase: true, culture: CultureInfo.InvariantCulture))
-                              && (sector.DataFile != null)
-                              && (type == null || sector.DataFile.Type == type)
-                              && (milieu == null || sector.CanonicalMilieu == milieu)
-                              && (tag == null || sector.Tags.Contains(tag))
-                              && (sector.Tags.Contains("OTU") || sector.Tags.Contains("Apocryphal") || sector.Tags.Contains("Faraway"))
-                              orderby sector.Names[0].Text
-                              select sector;
-
-            foreach (var sector in sectorQuery)
+            try
             {
-                context.Response.Output.WriteLine($"{sector.Names[0].Text} - {sector.Milieu}");
+                var sectorQuery = from sector in map.Sectors
+                                  where (sectorName == null || sector.Names[0].Text.StartsWith(sectorName, ignoreCase: true, culture: CultureInfo.InvariantCulture))
+                                  && (sector.DataFile != null)
+                                  && (type == null || sector.DataFile.Type == type)
+                                  && (milieu == null || sector.CanonicalMilieu == milieu)
+                                  && (tag == null || sector.Tags.Contains(tag))
+                                  && (sector.Tags.Contains("OTU") || sector.Tags.Contains("Apocryphal") || sector.Tags.Contains("Faraway"))
+                                  orderby sector.Names[0].Text
+                                  select sector;
+
+                foreach (var sector in sectorQuery)
+                {
+                    context.Response.Output.WriteLine($"{sector.Names[0].Text} - {sector.Milieu}");
 #if DEBUG
                 int error_count = 0;
                 int warning_count = 0;
@@ -160,9 +162,14 @@ namespace Maps.Admin
                 }
                 context.Response.Output.WriteLine($"{error_count} errors, {warning_count} warnings.");
 #endif
-                context.Response.Output.WriteLine();
+                    context.Response.Output.WriteLine();
+                }
             }
-            return;
+            finally
+            {
+                SectorMap.Flush();
+                resourceManager.Flush();
+            }
         }
     }
 }

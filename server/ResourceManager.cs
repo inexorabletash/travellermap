@@ -99,5 +99,12 @@ namespace Maps
                 return (T)obj;
             }
         }
+        public void Flush()
+        {
+            lock (cache)
+            {
+                cache.Clear();
+            }
+        }
     }
 }

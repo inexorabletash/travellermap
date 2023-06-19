@@ -39,46 +39,54 @@ namespace Maps.Admin
             SectorMap.Flush();
             SectorMap map = SectorMap.GetInstance();
 
-            var sectorQuery = from sector in map.Sectors where
-                              (!sector.Tags.Contains("ZCR")) && (!sector.Tags.Contains("meta"))
-                              && (milieu == null || sector.CanonicalMilieu == milieu)
-                              select sector;
-
-
-            Dictionary<RouteKey, RouteTally> results = new Dictionary<RouteKey, RouteTally>();
-
-            foreach (var sector in sectorQuery)
+            try
             {
-                // TODO: Dedupe outsector routes across sectors
-                foreach (var route in sector.Routes)
+                var sectorQuery = from sector in map.Sectors where
+                                  (!sector.Tags.Contains("ZCR")) && (!sector.Tags.Contains("meta"))
+                                  && (milieu == null || sector.CanonicalMilieu == milieu)
+                                  select sector;
+
+
+                Dictionary<RouteKey, RouteTally> results = new Dictionary<RouteKey, RouteTally>();
+
+                foreach (var sector in sectorQuery)
                 {
-                    string route_type = route.Type ?? "unknown";
-                    string route_allegiance = route.Allegiance ?? "unknown";
-                    if (type != null && type != route_type) continue;
-                    if (allegiance != null && allegiance != route_allegiance) continue;
-
-                    RouteKey key = new RouteKey { type = route_type, allegiance = route_allegiance };
-                    RouteTally tally;
-                    if (!results.TryGetValue(key, out tally))
+                    // TODO: Dedupe outsector routes across sectors
+                    foreach (var route in sector.Routes)
                     {
-                        tally = new RouteTally();
-                        results.Add(key, tally);
+                        string route_type = route.Type ?? "unknown";
+                        string route_allegiance = route.Allegiance ?? "unknown";
+                        if (type != null && type != route_type) continue;
+                        if (allegiance != null && allegiance != route_allegiance) continue;
+
+                        RouteKey key = new RouteKey { type = route_type, allegiance = route_allegiance };
+                        RouteTally tally;
+                        if (!results.TryGetValue(key, out tally))
+                        {
+                            tally = new RouteTally();
+                            results.Add(key, tally);
+                        }
+
+                        sector.RouteToStartEnd(route, out Location start, out Location end);
+                        int distance = Astrometrics.HexDistance(
+                            Astrometrics.LocationToCoordinates(start),
+                            Astrometrics.LocationToCoordinates(end));
+
+                        tally.count += 1;
+                        tally.distance += distance;
                     }
-
-                    sector.RouteToStartEnd(route, out Location start, out Location end);
-                    int distance = Astrometrics.HexDistance(
-                        Astrometrics.LocationToCoordinates(start), 
-                        Astrometrics.LocationToCoordinates(end));
-
-                    tally.count += 1;
-                    tally.distance += distance;
                 }
-            }
 
-            context.Response.Output.WriteLine("Allegiance\tType\tCount\tDistance");
-            foreach (var item in results.OrderBy(i => i.Key.allegiance).ThenBy(i => i.Key.type))
+                context.Response.Output.WriteLine("Allegiance\tType\tCount\tDistance");
+                foreach (var item in results.OrderBy(i => i.Key.allegiance).ThenBy(i => i.Key.type))
+                {
+                    context.Response.Output.WriteLine($"{item.Key.allegiance}\t{item.Key.type}\t{item.Value.count}\t{item.Value.distance}");
+                }
+            } 
+            finally
             {
-                context.Response.Output.WriteLine($"{item.Key.allegiance}\t{item.Key.type}\t{item.Value.count}\t{item.Value.distance}");
+                SectorMap.Flush();
+                resourceManager.Flush();
             }
         }
     }
