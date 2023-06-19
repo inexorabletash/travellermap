@@ -158,8 +158,7 @@ namespace Maps.Rendering
             {
                 lock (s_lock)
                 {
-                    if (s_instance == null)
-                        s_instance = new StaticImageCache(resourceManager);
+                    s_instance ??= new StaticImageCache(resourceManager);
                 }
                 return s_instance;
             }

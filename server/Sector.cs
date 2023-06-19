@@ -374,8 +374,7 @@ namespace Maps
         {
             lock (this)
             {
-                if (clipPathsCache[(int)type] == null)
-                    clipPathsCache[(int)type] = new ClipPath(this.Bounds, type);
+                clipPathsCache[(int)type] ??= new ClipPath(this.Bounds, type);
                 return clipPathsCache[(int)type];
             }
         }
@@ -763,8 +762,7 @@ namespace Maps
         {
             lock (this)
             {
-                if (borderPathsCache[(int)type] == null)
-                    borderPathsCache[(int)type] = new BorderPath(this, sector, type);
+                borderPathsCache[(int)type] ??= new BorderPath(this, sector, type);
                 return borderPathsCache[(int)type];
             }
         }
