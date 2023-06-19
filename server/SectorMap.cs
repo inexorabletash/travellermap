@@ -209,17 +209,9 @@ namespace Maps
         }
 
         // This method supports deserializing of Location instances that reference sectors by name.
-        // Throws if the map is not initialized.
         public static Point GetSectorCoordinatesByName(string name)
         {
-            SectorMap? instance;
-            lock (SectorMap.s_lock)
-            {
-                instance = s_instance;
-            }
-            if (instance == null)
-                throw new MapNotInitializedException();
-            Sector? sector = instance.FromName(name, null);
+            Sector? sector = GetInstance().FromName(name, null);
             if (sector == null)
                 throw new ApplicationException($"Sector not found: {name}");
             return sector.Location;
