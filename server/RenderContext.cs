@@ -1809,7 +1809,7 @@ namespace Maps.Rendering
                         if (ClipOutsectorBorders &&
                             (layer == BorderLayer.Fill || styles.microBorderStyle != MicroBorderStyle.Curve))
                         {
-                            Sector.ClipPath clip = sector.ComputeClipPath(borderPathType);
+                            ClipPath clip = sector.ComputeClipPath(borderPathType);
                             if (!tileRect.IntersectsWith(clip.bounds))
                                 continue;
 

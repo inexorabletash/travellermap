@@ -368,44 +368,6 @@ namespace Maps
             worlds.Serialize(writer, mediaType, options);
         }
 
-        // TODO: Move this elsewhere
-        internal class ClipPath
-        {
-            public readonly PointF[] clipPathPoints;
-            public readonly byte[] clipPathPointTypes;
-            public readonly RectangleF bounds;
-
-            public ClipPath(Sector sector, PathUtil.PathType borderPathType)
-            {
-                RenderUtil.HexEdges(borderPathType, out float[] edgex, out float[] edgey);
-
-                IEnumerable<Hex> hexes =
-                    Util.Sequence(1, Astrometrics.SectorWidth).Select(x => new Hex((byte)x, 1))
-                    .Concat(Util.Sequence(2, Astrometrics.SectorHeight).Select(y => new Hex(Astrometrics.SectorWidth, (byte)y)))
-                    .Concat(Util.Sequence(Astrometrics.SectorWidth - 1, 1).Select(x => new Hex((byte)x, Astrometrics.SectorHeight)))
-                    .Concat(Util.Sequence(Astrometrics.SectorHeight - 1, 1).Select(y => new Hex(1, (byte)y)));
-
-                Rectangle bounds = sector.Bounds;
-                IEnumerable<Point> points = (from hex in hexes select new Point(hex.X + bounds.X, hex.Y + bounds.Y)).ToList();
-                PathUtil.ComputeBorderPath(points, edgex, edgey, out clipPathPoints, out clipPathPointTypes);
-
-                PointF min = clipPathPoints[0];
-                PointF max = clipPathPoints[0];
-                for (int i = 1; i < clipPathPoints.Length; ++i)
-                {
-                    PointF pt = clipPathPoints[i];
-                    if (pt.X < min.X)
-                        min.X = pt.X;
-                    if (pt.Y < min.Y)
-                        min.Y = pt.Y;
-                    if (pt.X > max.X)
-                        max.X = pt.X;
-                    if (pt.Y > max.Y)
-                        max.Y = pt.Y;
-                }
-                this.bounds = new RectangleF(min, new SizeF(max.X - min.X, max.Y - min.Y));
-            }
-        }
 
         private ClipPath[] clipPathsCache = new ClipPath[(int)PathUtil.PathType.TypeCount];
         internal ClipPath ComputeClipPath(PathUtil.PathType type)
@@ -413,7 +375,7 @@ namespace Maps
             lock (this)
             {
                 if (clipPathsCache[(int)type] == null)
-                    clipPathsCache[(int)type] = new ClipPath(this, type);
+                    clipPathsCache[(int)type] = new ClipPath(this.Bounds, type);
                 return clipPathsCache[(int)type];
             }
         }
