@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<JumpWorlds xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<JumpWorlds xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <World>
     <Name>No Water Present</Name>
     <Hex>0602</Hex>
@@ -10,7 +10,7 @@
     <Allegiance>Im</Allegiance>
     <Stellar />
     <Worlds>0</Worlds>
-    <ResourceUnits>0</ResourceUnits>
+    <ResourceUnits xsi:nil="true" />
     <Remarks />
     <LegacyBaseCode />
   </World>
@@ -24,7 +24,7 @@
     <Allegiance>Im</Allegiance>
     <Stellar />
     <Worlds>0</Worlds>
-    <ResourceUnits>0</ResourceUnits>
+    <ResourceUnits xsi:nil="true" />
     <Remarks />
     <LegacyBaseCode />
   </World>

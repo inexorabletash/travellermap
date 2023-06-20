@@ -61,6 +61,7 @@ namespace Maps
         }
 
         private int? calculatedImportance; // cache
+        [XmlIgnore, JsonIgnore]
         public int CalculatedImportance
         {
             get
