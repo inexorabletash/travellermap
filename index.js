@@ -1541,7 +1541,7 @@
     async function getMainsMapping() {
       if (worldToMainMap)
         return worldToMainMap;
-      const r = await fetch('./res/mains.json');
+      const r = await fetch(Traveller.MapService.makeURL('/res/mains.json'));
       if (!r.ok) throw new Error(r.statusText);
 
       worldToMainMap = new Map();
