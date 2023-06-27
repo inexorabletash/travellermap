@@ -105,8 +105,9 @@ namespace Maps
                             string? abbrev = sector.SynthesizeAbbreviation();
                             if (abbrev != null)
                             {
-                                if (nameMap.TryAdd(abbrev, sector))
+                                if (nameMap.TryAdd(abbrev, sector) || nameMap[abbrev] == sector)
                                 {
+                                    // If abbreviation isn't taken, or abbreviation is one of the names
                                     sector.Abbreviation = abbrev;
                                 }
                                 else
@@ -116,9 +117,10 @@ namespace Maps
                                     {
                                         string suffix = i.ToString();
                                         string prefix = abbrev.Substring(0, 4 - suffix.Length);
-                                        if (nameMap.TryAdd(prefix + suffix, sector))
+                                        abbrev = prefix + suffix;
+                                        if (nameMap.TryAdd(abbrev, sector))
                                         {
-                                            sector.Abbreviation = prefix + suffix;
+                                            sector.Abbreviation = abbrev;
                                             break;
                                         }
                                     }
