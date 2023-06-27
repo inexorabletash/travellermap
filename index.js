@@ -296,13 +296,40 @@
 
   $("#routeBtn").addEventListener('click', event => {
     if (selectedWorld) {
-      $('#routeStart').value = selectedWorld.name;
+      setRouteStart(selectedWorld.name, selectedWorld.hex, selectedSector);
       if (!isSmallScreen) $('#routeEnd').focus();
     } else {
       if (!isSmallScreen) $('#routeStart').focus();
     }
     showRoute();
   });
+
+  // Track precise route start/end location to use by default, as
+  // world names can be ambiguous (e.g. Inthe and Aramis in SPIN)
+  let routeStart = undefined, routeEnd = undefined;
+  function setRouteStart(name, hex, sector) {
+    $('#routeStart').value = name;
+    routeStart = { name, hex, sector };
+  }
+  function setRouteEnd(name, hex, sector) {
+    $('#routeEnd').value = name;
+    routeEnd= { name, hex, sector };
+  }
+  function clearRouteStart() {
+    $('#routeStart').value = '';
+    routeStart = undefined;
+  }
+  function clearRouteEnd() {
+    $('#routeEnd').value = '';
+    routeEnd = undefined;
+  }
+  $('#routeStart').addEventListener('change', event => {
+    routeStart = undefined;
+  });
+  $('#routeEnd').addEventListener('change', event => {
+    routeEnd = undefined;
+  });
+
 
   function showRoute() {
     hidePanels();
@@ -315,8 +342,8 @@
     document.body.classList.remove('route-ui');
     resizeMap();
     document.body.classList.remove('route-shown');
-    $('#routeStart').value = '';
-    $('#routeEnd').value = '';
+    clearRouteStart();
+    clearRouteEnd();
     $('#routePath').innerHTML = '';
     jump_button_ids.forEach(n => {
       $('#routeForm').classList.remove(n);
@@ -362,9 +389,8 @@
 
   $('#swapRouteBtn').addEventListener('click', event => {
     event.preventDefault();
-    const tmp = $('#routeStart').value;
-    $('#routeStart').value = $('#routeEnd').value;
-    $('#routeEnd').value = tmp;
+    [$('#routeStart').value, $('#routeEnd').value] = [$('#routeEnd').value, $('#routeStart').value];
+    [routeStart, routeEnd] = [routeEnd, routeStart];
     $('#routePath').innerHTML = '';
     jump_button_ids.forEach(n => {
       if ($('#routeForm').classList.contains(n))
@@ -381,10 +407,9 @@
       });
       $('#routeForm').classList.add(button.id);
 
-      const start = $('#routeStart').value;
-      const end = $('#routeEnd').value;
+      const start = routeStart ? `${routeStart.sector} ${routeStart.hex}` : $('#routeStart').value;
+      const end = routeEnd ? `${routeEnd.sector} ${routeEnd.hex}` : $('#routeEnd').value;
       const jump = button.dataset.parsecs;
-
       route(start, end, jump);
     });
   });
@@ -853,7 +878,6 @@
   if ('qr' in urlParams) {
     try {
       const results = JSON.parse(urlParams['qr']);
-      console.log('results: ', results);
       const term = urlParams['search'] || '';
       $('#searchBox').value = term;
       search(term, {navigate: true, results});
@@ -1014,23 +1038,23 @@
         selectedWorld = null;
         if (options.activeElement === $('#routeStart')) {
           if (data.WorldName) {
-            $('#routeStart').value = data.WorldName;
+            setRouteStart(data.WorldName, data.WorldHex, data.SectorName);
             $('#routeEnd').focus();
           } else {
             $('#routeStart').focus();
           }
         } else if (options.activeElement === $('#routeEnd')) {
           if (data.WorldName) {
-            $('#routeEnd').value = data.WorldName;
+            setRouteEnd(data.WorldName, data.WorldHex, data.SectorName);
             $('#J-2').click();
           } else {
             $('#routeEnd').focus();
           }
         } else if ($('#routeStart').value === '' && data.WorldName) {
-          $('#routeStart').value = data.WorldName;
+          setRouteStart(data.WorldName, data.WorldHex, data.SectorName);
           if (!isSmallScreen) $('#routeEnd').focus();
         } else if ($('#routeEnd').value === '' && data.WorldName) {
-          $('#routeEnd').value = data.WorldName;
+          setRouteEnd(data.WorldName, data.WorldHex, data.SectorName);
           $('#J-2').click();
         }
         return;
@@ -1139,7 +1163,7 @@
         // Hook up buttons
         $('#ds-route-link').addEventListener('click', event => {
           event.preventDefault();
-          $('#routeStart').value = world.Name;
+          setRouteStart(world.Name, world.Hex, world.Sector);
           if (!isSmallScreen) $('#routeEnd').focus();
           showRoute();
         });
