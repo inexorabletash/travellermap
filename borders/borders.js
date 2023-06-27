@@ -6,7 +6,7 @@
 // Based on allygen by J. Greely http://dotclue.org/t20
 //
 // The Traveller game in all forms is owned by Far Future Enterprises.
-// Copyright (C) 1977-2008 Far Future Enterprises.
+// Copyright (C) 1977 - 2023 Far Future Enterprises.
 
 'use strict';
 
