@@ -121,7 +121,7 @@ namespace Maps.Serialization
                             WriteAllegiance(allegiance);
                             break;
                         case Border border:
-                            WriteBorder(border, alleg);
+                            WriteBorder(border, alleg, code);
                             break;
                         case Label label:
                             WriteLabel(label);
@@ -193,7 +193,7 @@ namespace Maps.Serialization
                 // TODO: Other properties
             }
 
-            private void WriteBorder(Border border, Allegiance? alleg)
+            private void WriteBorder(Border border, Allegiance? alleg, string? code = null)
             {
                 if (border.ShowLabel && (border.Label != null || alleg != null))
                 {
@@ -207,7 +207,7 @@ namespace Maps.Serialization
                 writer.Write(border is Region ? "region " : "border ");
                 writer.Write(border.PathString);
 
-                SectorStylesheet.StyleResult ssr = sector.ApplyStylesheet(border is Region ? "region" : "border", alleg?.T5Code);
+                SectorStylesheet.StyleResult ssr = sector.ApplyStylesheet(border is Region ? "region" : "border", alleg?.T5Code ?? code);
                 Color? color = border.Color ?? ssr.GetColor("color");
                 if (color.HasValue)
                 {
