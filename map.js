@@ -842,15 +842,16 @@ const Util = {
       let touch_coords, touch_wx, touch_wc, was_touch_dragged;
 
       container.addEventListener('touchmove', event => {
-        was_touch_dragged = true;
         if (event.touches.length === 1) {
-
           const coords = this.eventCoords(event.touches[0]);
-          this._offset(touch_coords.x - coords.x, touch_coords.y - coords.y);
-          touch_coords = coords;
-          touch_wc = this.eventToWorldCoords(event.touches[0]);
-
+          if (touch_coords.x !== coords.x || touch_coords.y !== coords.y) {
+            was_touch_dragged = true;
+            this._offset(touch_coords.x - coords.x, touch_coords.y - coords.y);
+            touch_coords = coords;
+            touch_wc = this.eventToWorldCoords(event.touches[0]);
+          }
         } else if (event.touches.length === 2) {
+          was_touch_dragged = true;
 
           const od = dist(pinch2.x - pinch1.x, pinch2.y - pinch1.y),
                 ocx = (pinch1.x + pinch2.x) / 2,
