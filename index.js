@@ -868,29 +868,6 @@
   });
   if (dirty) updatePermalink();
 
-  ['q', 'qn'].forEach(key => {
-    if (key in urlParams) {
-      $('#searchBox').value = urlParams[key];
-      search(urlParams[key], {navigate: key === 'qn'});
-    }
-  });
-
-  if ('qr' in urlParams) {
-    try {
-      const results = JSON.parse(urlParams['qr']);
-      const term = urlParams['search'] || '';
-      $('#searchBox').value = term;
-      search(term, {navigate: true, results});
-    } catch (ex) {
-      console.warn('Error parsing "qr" data: ', ex);
-    }
-  }
-
-  if ('attract' in urlParams) {
-    // TODO: Disable UI, or make any UI interaction cancel
-    doAttract();
-  }
-
   //////////////////////////////////////////////////////////////////////
   //
   // Attract Mode
@@ -1684,6 +1661,32 @@
     navigator.serviceWorker.register('sw.js');
   }
 
+  // Process URL params that drive the map
+
+  ['q', 'qn'].forEach(key => {
+    if (key in urlParams) {
+      $('#searchBox').value = urlParams[key];
+      search(urlParams[key], {navigate: key === 'qn'});
+    }
+  });
+
+  if ('qr' in urlParams) {
+    try {
+      const results = JSON.parse(urlParams['qr']);
+      const term = urlParams['search'] || '';
+      $('#searchBox').value = term;
+      search(term, {navigate: true, results});
+    } catch (ex) {
+      console.warn('Error parsing "qr" data: ', ex);
+    }
+  }
+
+  if ('attract' in urlParams) {
+    // TODO: Disable UI, or make any UI interaction cancel
+    doAttract();
+  }
+
   // After all async events from the map have fired...
   setTimeout(() => { enableContext = true; }, 0);
+
 })(self);
