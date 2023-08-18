@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<Sector xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Selected="true" Tags="Official OTU" Abbreviation="Lubb">
+  <Name>Lubbock</Name>
+  <Credits><![CDATA[
+
+             <b>Lubbock</b> sector was designed by Martin Dougherty
+             and appears (partially) in <cite>Rim Expeditions</cite> (Mongoose, 2023).
+
+    ]]></Credits>
+  <X>0</X>
+  <Y>3</Y>
+  <Product Author="Martin J. Dougherty" Title="Rim Expeditions" Publisher="Mongoose Publishing" Ref="https://www.mongoosepublishing.com/products/rim-expeditions" />
+  <Subsectors>
+    <Subsector Index="A">A</Subsector>
+    <Subsector Index="B">B</Subsector>
+    <Subsector Index="C">C</Subsector>
+    <Subsector Index="D">D</Subsector>
+    <Subsector Index="E">E</Subsector>
+    <Subsector Index="F">F</Subsector>
+    <Subsector Index="G">G</Subsector>
+    <Subsector Index="H">Horden</Subsector>
+    <Subsector Index="I">I</Subsector>
+    <Subsector Index="J">J</Subsector>
+    <Subsector Index="K">K</Subsector>
+    <Subsector Index="L">L</Subsector>
+    <Subsector Index="M">M</Subsector>
+    <Subsector Index="N">N</Subsector>
+    <Subsector Index="O">O</Subsector>
+    <Subsector Index="P">P</Subsector>
+  </Subsectors>
+  <Allegiances>
+    <Allegiance Code="SoCf" Base="So">Solomani Confederation</Allegiance>
+    <Allegiance Code="SoLe" Base="So">Solomani Confederation, Lubbock Enclave</Allegiance>
+    <Allegiance Code="NaHu" Base="Na">Non-Aligned, Human-dominated</Allegiance>
+  </Allegiances>
+  <Borders>
+    <Border WrapLabel="true" Allegiance="SoCf" LabelPosition="3010">3211</Border>
+    <Border Color="Blue" Allegiance="SoLe" LabelPosition="2917" Label="Lubbock Enclave">2712 2812 2913 3013 3014 3015 3016 3017 3018 2919 2818 2718 2618 2718 2817 2816 2815 2814 2813 2713 2712</Border>
+  </Borders>
+  <Routes>
+    <Route Start="2915" End="3015" Allegiance="SoLe" />
+  </Routes>
+</Sector>
