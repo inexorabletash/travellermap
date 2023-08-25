@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
-<Sector xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Selected="true" Tags="Official OTU" Abbreviation="Lubb">
-  <Name>Lubbock</Name>
+<Sector xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Selected="true" Tags="Official OTU" Abbreviation='Xuan'>
+  <Name>Xuanzang</Name>
   <Credits><![CDATA[
 
-             <b>Lubbock</b> sector was designed by Martin Dougherty
+             <b>Xuanzang</b> sector was designed by Martin Dougherty
              and appears (partially) in <cite>Rim Expeditions</cite> (Mongoose, 2023).
 
     ]]></Credits>
@@ -18,21 +18,19 @@
     <Subsector Index="E">E</Subsector>
     <Subsector Index="F">F</Subsector>
     <Subsector Index="G">G</Subsector>
-    <Subsector Index="H">Horden</Subsector>
+    <Subsector Index="H">H</Subsector>
     <Subsector Index="I">I</Subsector>
     <Subsector Index="J">J</Subsector>
     <Subsector Index="K">K</Subsector>
     <Subsector Index="L">L</Subsector>
-    <Subsector Index="M">M</Subsector>
+    <Subsector Index="M">Moksadeva</Subsector>
     <Subsector Index="N">N</Subsector>
     <Subsector Index="O">O</Subsector>
     <Subsector Index="P">P</Subsector>
   </Subsectors>
   <Borders>
-    <Border WrapLabel="true" Allegiance="SoCf" LabelPosition="3010">3211</Border>
-    <Border Color="Blue" Allegiance="SoLE" LabelPosition="2917" Label="Lubbock Enclave">2712 2812 2913 3013 3014 3015 3016 3017 3018 2919 2818 2718 2618 2718 2817 2816 2815 2814 2813 2713 2712</Border>
+     <Border Color="Blue" Allegiance="SoXE" LabelPosition='0735' Label='Xuanzang Enclave'>0536 0636 0737 0636 0537 0536</Border>
   </Borders>
   <Routes>
-    <Route Start="2915" End="3015" Allegiance="SoLE" />
   </Routes>
 </Sector>

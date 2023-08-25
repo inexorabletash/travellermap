@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<Sector xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Selected="true" Tags="Official OTU" Abbreviation="Krus">
+  <Name>Kruse</Name>
+  <Credits><![CDATA[
+
+             <b>Kruse</b> sector was designed by Martin Dougherty
+             and appears in <cite>Rim Expeditions</cite> (Mongoose, 2023).
+
+    ]]></Credits>
+  <X>0</X>
+  <Y>-9</Y>
+  <Product Author="Martin J. Dougherty" Title="Rim Expeditions" Publisher="Mongoose Publishing" Ref="https://www.mongoosepublishing.com/products/rim-expeditions" />
+  <Subsectors>
+    <Subsector Index="A">Adams</Subsector>
+    <Subsector Index="B">Barratt</Subsector>
+    <Subsector Index="C">Chase</Subsector>
+    <Subsector Index="D">Drower</Subsector>
+    <Subsector Index="E">Eberhardt</Subsector>
+    <Subsector Index="F">French</Subsector>
+    <Subsector Index="G">Gower</Subsector>
+    <Subsector Index="H">Hagan</Subsector>
+    <Subsector Index="I">Ivy</Subsector>
+    <Subsector Index="J">Jain</Subsector>
+    <Subsector Index="K">Kane</Subsector>
+    <Subsector Index="L">Luomala</Subsector>
+    <Subsector Index="M">Mullings</Subsector>
+    <Subsector Index="N">Neyzi</Subsector>
+    <Subsector Index="O">Osthoff</Subsector>
+    <Subsector Index="P">Pletneva</Subsector>
+  </Subsectors>
+  <Borders>
+    <Border Color="Orange" Allegiance="Ec" Label="Eberhardt Corporate Republic" LabelPosition="0619">0417 0517 0516 0615 0616 0717 0817 0718 0618 0518 0417 </Border>
+    <Border Color="Purple" Allegiance="Ir" Label="Interstellar Republic" LabelPosition="2918">2716 2815 2916 3015 2916 2917 2816 2716 </Border>
+    <Border Color="Gray" LabelPosition="2305" Label="Rule of Man" Allegiance="RM">2208 2308 2307 2306 2307 2407 2308 2208 2209 2208 </Border>
+    <Border Color="Red" LabelPosition="0625" Label="Rammak Worlds" Allegiance="Rm">0426 0526 0625 0725 0726 0727 0827 0728 0628 0627 0527 0426 </Border>
+    <Border Color="Blue" LabelPosition="0706" Label="Solomani" Allegiance="So">0704 0705 0706 0707 0706 0705 0704 </Border>
+    <Border Color="Blue" LabelPosition="1314" Label="Kruse Enclave Solomani" Allegiance="So">1016 1116 1215 1315 1415 1516 1416 1417 1317 1216 1116 1016 </Border>
+     <Border Color="Blue" Allegiance="SoCf" LabelPosition="0217" Label="Solomani">0317</Border>
+     <Border Color="Blue" Allegiance="SoCf" LabelPosition="3008" Label="Solomani">3007</Border>
+     <Border Color="Blue" Allegiance="SoCf" LabelPosition="1208" Label="Solomani">1207</Border>
+     <Border Color="Blue" Allegiance="SoCf" LabelPosition="2132" Label="Solomani">2133</Border>
+     <Border Color="Blue" Allegiance="SoCf" LabelPosition="2924" Label="Solomani">3023</Border>
+     <Border Color="Blue" Allegiance="SoCf" LabelPosition="3113" Label="Solomani">3112</Border>
+    <Border Color="Green" LabelPosition="1236" Label="The Sovereignty" Allegiance="Sv">1233 1333 1432 1431 1532 1631 1532 1432 1433 1434 1335 1235 1234 1233 </Border>
+  </Borders>
+  <Routes>
+  </Routes>
+</Sector>
