@@ -14,15 +14,14 @@ Prerequisites
 
 Setup and Build
 ---------------
-1. Clone the source for PDFsharp:
-    * example: `git clone https://github.com/inexorabletash/PDFsharp.git`
-    * This fork includes required patches that have not yet been accepted upstream.
-2. Using Visual Studio, open `PDFsharp\code\BuildAll-PdfSharp-VS2010.sln`, select the Release target, and build.
+1. Clone the source for PDFsharp 1.5:
+    * example: `git clone https://github.com/empira/PDFsharp-1.5`
+2. Using Visual Studio, open `PDFsharp\code\BuildAll-PdfSharp.sln`, select the Release target, and build.
 3. Clone this repository:
     * example: `git clone https://github.com/inexorabletash/travellermap.git`
 4. In your clone, copy the included `web.config.sample` file to `web.config`
 5. Using Visual Studio, open `Maps.sln`
-6. In the Solution Explorer pane, in both the Maps project and the UnitTests project, delete and re-add the references to PdfSharp to point to the PDFSharp DLL you just built (`PDFsharp\code\PDFSharp\bin\Release\PdfSharp.dll`)
+6. In the Solution Explorer pane, in both the Maps project and the UnitTests project, delete and re-add the references to PdfSharp to point to the PDFSharp DLL you just built (`PDFsharp-1.5\src\PdfSharp-gdi\bin\Release\PdfSharp-gdi.dll`)
 7. Optionally, modify the `web.config` file in the solution:
     * Add an _admin key_ - this can be used to trigger flushing of the memory cache and rebuilding the search index.
     * Find the `<sessionState>` element and the `stateConnectionString` attribute; change `50103` to your local IISExpress port number. Find this by opening the Maps project's properties and looking for the Web tab, "Servers" subsection, Project URL box (mine says `http://localhost:50103/` for example).

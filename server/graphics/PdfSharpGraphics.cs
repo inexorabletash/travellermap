@@ -51,7 +51,7 @@ namespace Maps.Graphics
         {
             if (fontMap.ContainsKey(font))
                 return fontMap[font];
-            XFont xfont = new XFont(font, new XPdfFontOptions(PdfFontEncoding.Unicode, PdfFontEmbedding.Always));
+            XFont xfont = new XFont(font, new XPdfFontOptions(PdfFontEncoding.Unicode));
             fontMap.Add(font, xfont);
             return xfont;
         }
