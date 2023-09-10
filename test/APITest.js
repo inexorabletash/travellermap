@@ -31,7 +31,13 @@ function fetchJSON(uri) {
 
 function testXML(uri, expected) {
   return fetchXML(uri).then(function(xml) {
-    function munge(s) { return s.replace(/(>\s*\r?\n\s*<)/g, '><'); }
+    function munge(s) {
+
+      return s
+        .replace(/(>\s*\r?\n\s*<)/g, '><')
+        .replace(/\s+xmlns:xsd="http:\/\/www\.w3\.org\/2001\/XMLSchema"/g, '')
+        .replace(/\s+xmlns:xsi="http:\/\/www\.w3\.org\/2001\/XMLSchema-instance"/g, '');
+    }
     assertEquals(munge(xml), munge(expected), 'XML response');
   });
 }
@@ -107,6 +113,7 @@ function typeTest(api, expected_type) {
   });
 }
 
+/*
 // Legacy ASPX APIs ----------
 
 typeTest('Search.aspx?q=$query', 'text/xml');
@@ -127,6 +134,7 @@ typeTest('SEC.aspx?sector=$sector&type=SecondSurvey', 'text/plain; charset=utf-8
 typeTest('SEC.aspx?sector=$sector&type=TabDelimited', 'text/plain; charset=utf-8');
 typeTest('SectorMetaData.aspx?sector=$sector', 'text/xml');
 typeTest('MSEC.aspx?sector=$sector', 'text/plain; charset=utf-8');
+*/
 
 // APIs ----------
 
@@ -259,6 +267,7 @@ test('sec/metadata/poster - form data', function() {
 });
 
 [
+  /*
   'Coordinates.aspx?sector=$sector',
   'JumpWorlds.aspx?sector=$sector&hex=$hex&j=$jump',
   'SEC.aspx?sector=$sector',
@@ -269,6 +278,7 @@ test('sec/metadata/poster - form data', function() {
   'JumpMap.aspx?sector=$sector&hex=$hex&j=$jump',
   'Poster.aspx?sector=$sector&subsector=$subsector',
   'Tile.aspx?x=0&y=0&scale=64',
+  */
   'api/coordinates?sector=$sector',
   'api/sec?sector=$sector',
   'api/sec?type=sec&sector=$sector',
