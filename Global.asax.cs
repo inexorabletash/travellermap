@@ -11,6 +11,8 @@ namespace Maps
 {
     public class GlobalAsax : System.Web.HttpApplication
     {
+        public static readonly DateTime startup_time = DateTime.Now;
+
         protected void Application_Start(object sender, EventArgs e)
         {
             // Shouldn't be necessary (included in 4.5 by default?), but ensure TLS 1.2 is used.
@@ -42,6 +44,8 @@ namespace Maps
                 new RouteValueDictionary(new { action = "reindex" })));
             routes.Add(new RegexRoute(@"/admin/profile", new GenericRouteHandler(typeof(AdminHandler)),
                 new RouteValueDictionary(new { action = "profile" })));
+            routes.Add(new RegexRoute(@"/admin/uptime", new GenericRouteHandler(typeof(AdminHandler)),
+                new RouteValueDictionary(new { action = "uptime" })));
             routes.Add(new RegexRoute(@"/admin/codes", new GenericRouteHandler(typeof(CodesHandler))));
             routes.Add(new RegexRoute(@"/admin/routes", new GenericRouteHandler(typeof(RoutesHandler))));
             routes.Add(new RegexRoute(@"/admin/dump", new GenericRouteHandler(typeof(DumpHandler))));

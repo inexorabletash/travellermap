@@ -105,6 +105,7 @@ namespace Maps.Admin
                 case "reindex": Reindex(context); return;
                 case "flush": Flush(context); return;
                 case "profile": Profile(context); return;
+                case "uptime": Uptime(context); return;
             }
             Write(context.Response, "Unknown action: <pre>" + action + "</pre>");
             Write(context.Response, "<b>&Omega;</b>");
@@ -136,7 +137,13 @@ namespace Maps.Admin
         {
             Write(response, name + ": " + value.ToString());
         }
+        private static void Uptime(HttpContext context)
+        {
+            TimeSpan uptime = DateTime.Now - Maps.GlobalAsax.startup_time;
 
+            Write(context.Response, $"Uptime: {uptime.Days}d {uptime.Hours}h {uptime.Minutes}m {uptime.Seconds}s<br>");
+            Write(context.Response, "<b>&Omega;</b>");
+        }
         private static void Profile(HttpContext context)
         {
             WriteStat(context.Response, "Cache.Count", context.Cache.Count);
