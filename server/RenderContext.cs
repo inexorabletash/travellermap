@@ -49,6 +49,7 @@ namespace Maps.Rendering
         public AbstractPath? ClipPath { get; set; }
         public bool DrawBorder { get; set; }
         public bool ClipOutsectorBorders { get; set; }
+        public bool ForceClip { get; set; }
 
         public Stylesheet Styles => styles;
         private readonly AbstractMatrix worldSpaceToImageSpace;
@@ -338,8 +339,8 @@ namespace Maps.Rendering
                 {
                     // HACK: Clipping to tileRect rapidly becomes inaccurate away from
                     // the origin due to float precision. Only do it if really necessary.
-                    bool clip = layer.clip &&
-                        !((ClipPath == null) && (graphics is BitmapGraphics));
+                    bool clip = layer.clip && (ctx.ForceClip ||
+                        !((ClipPath == null) && (graphics is BitmapGraphics)));
 
                     // Impose a clipping region if desired, or remove it if not.
                     if (clip && state == null)

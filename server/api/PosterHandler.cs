@@ -271,6 +271,8 @@ namespace Maps.API
                 if (hrot != 0)
                     ApplyHexRotation(hrot, stylesheet, ref bitmapSize, ref hexTransform);
 
+                bool transparent = false;
+                bool forceClip = false;
                 AbstractMatrix clampTransform = AbstractMatrix.Identity;
                 if (GetBoolOption("clampar", defaultValue: false))
                 {
@@ -294,6 +296,8 @@ namespace Maps.API
                             (newSize.Width - bitmapSize.Width) / 2f,
                             (newSize.Height - bitmapSize.Height) / 2f);
                         bitmapSize = newSize;
+                        transparent = true;
+                        forceClip = true;
                     }
                 }
 
@@ -306,9 +310,10 @@ namespace Maps.API
 
                 RenderContext ctx = new RenderContext(resourceManager, selector, tileRect, scale, options, stylesheet, tileSize)
                 {
+                    ForceClip = forceClip,
                     ClipOutsectorBorders = clipOutsectorBorders
                 };
-                ProduceResponse(Context, title, ctx, bitmapSize, transform);
+                ProduceResponse(Context, title, ctx, bitmapSize, transform, transparent);
             }
         }
     }
