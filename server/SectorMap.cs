@@ -1,6 +1,6 @@
 #nullable enable
+using Maps.Utilities;
 using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
@@ -32,11 +32,10 @@ namespace Maps
 
     internal class SectorMap
     {
-        private static object s_lock = new object();
-
         /// <summary>
         /// Singleton - initialized once and retained for the life of the application.
         /// </summary>
+        [ThreadStatic]
         private static SectorMap? s_instance;
 
         /// <summary>
@@ -58,8 +57,8 @@ namespace Maps
             public MilieuMap(string name) { Name = name; }
             public string Name { get; }
 
-            private ConcurrentDictionary<string, Sector> nameMap = new ConcurrentDictionary<string, Sector>(StringComparer.InvariantCultureIgnoreCase);
-            private ConcurrentDictionary<Point, Sector> locationMap = new ConcurrentDictionary<Point, Sector>();
+            private Dictionary<string, Sector> nameMap = new Dictionary<string, Sector>(StringComparer.InvariantCultureIgnoreCase);
+            private Dictionary<Point, Sector> locationMap = new Dictionary<Point, Sector>();
 
             public Sector FromName(string name)
             {
@@ -75,55 +74,49 @@ namespace Maps
 
             public void TryAdd(Sector sector)
             {
-                lock (this)
+                if (!locationMap.TryAdd(sector.Location, sector))
+                    return;
+
+                sector.MilieuMap = this;
+
+                foreach (var name in sector.Names)
                 {
-                    if (!locationMap.TryAdd(sector.Location, sector))
-                        return;
-
-                    sector.MilieuMap = this;
-
-                    foreach (var name in sector.Names)
+                    if (name.Text != null)
                     {
-                        if (name.Text != null)
-                        {
-                            nameMap.TryAdd(name.Text, sector);
+                        nameMap.TryAdd(name.Text, sector);
 
-                            // Automatically alias "SpinwardMarches"
-                            nameMap.TryAdd(name.Text.Replace(" ", ""), sector);
-                        }
+                        // Automatically alias "SpinwardMarches"
+                        nameMap.TryAdd(name.Text.Replace(" ", ""), sector);
                     }
+                }
 
-                    lock (sector)
+                if (!string.IsNullOrEmpty(sector.Abbreviation))
+                {
+                    nameMap.TryAdd(sector.Abbreviation ?? "", sector);
+                }
+                else
+                {
+                    // Synthesize an abbreviation, e.g. "Cent"
+                    string? abbrev = sector.SynthesizeAbbreviation();
+                    if (abbrev != null)
                     {
-                        if (!string.IsNullOrEmpty(sector.Abbreviation))
+                        if (nameMap.TryAdd(abbrev, sector) || nameMap[abbrev] == sector)
                         {
-                            nameMap.TryAdd(sector.Abbreviation ?? "", sector);
+                            // If abbreviation isn't taken, or abbreviation is one of the names
+                            sector.Abbreviation = abbrev;
                         }
                         else
                         {
-                            // Synthesize an abbreviation, e.g. "Cent"
-                            string? abbrev = sector.SynthesizeAbbreviation();
-                            if (abbrev != null)
+                            // But if that's used, try "Cen2", etc.
+                            for (int i = 2; i <= 99; ++i)
                             {
-                                if (nameMap.TryAdd(abbrev, sector) || nameMap[abbrev] == sector)
+                                string suffix = i.ToString();
+                                string prefix = abbrev.Substring(0, 4 - suffix.Length);
+                                abbrev = prefix + suffix;
+                                if (nameMap.TryAdd(abbrev, sector))
                                 {
-                                    // If abbreviation isn't taken, or abbreviation is one of the names
                                     sector.Abbreviation = abbrev;
-                                }
-                                else
-                                {
-                                    // But if that's used, try "Cen2", etc.
-                                    for (int i = 2; i <= 99; ++i)
-                                    {
-                                        string suffix = i.ToString();
-                                        string prefix = abbrev.Substring(0, 4 - suffix.Length);
-                                        abbrev = prefix + suffix;
-                                        if (nameMap.TryAdd(abbrev, sector))
-                                        {
-                                            sector.Abbreviation = abbrev;
-                                            break;
-                                        }
-                                    }
+                                    break;
                                 }
                             }
                         }
@@ -137,8 +130,8 @@ namespace Maps
         /// <summary>
         /// Holds all milieu, keyed by name (e.g. "M0").
         /// </summary>
-        private ConcurrentDictionary<string, MilieuMap> milieux
-            = new ConcurrentDictionary<string, MilieuMap>(StringComparer.InvariantCultureIgnoreCase);
+        private Dictionary<string, MilieuMap> milieux
+            = new Dictionary<string, MilieuMap>(StringComparer.InvariantCultureIgnoreCase);
 
         private MilieuMap GetMilieuMap(string name) => milieux.GetOrAdd(name, n => new MilieuMap(n));
 
@@ -176,23 +169,20 @@ namespace Maps
         // Singleton accessor
         public static SectorMap GetInstance()
         {
-            lock (SectorMap.s_lock)
+            if (s_instance == null)
             {
-                if (s_instance == null)
+                List<SectorMetafileEntry> files = new List<SectorMetafileEntry>();
+
+                using var reader = Util.SharedFileReader(System.Web.Hosting.HostingEnvironment.MapPath(@"~/res/Sectors/milieu.tab"));
+                var parser = new Serialization.TSVParser(reader);
+                foreach (var row in parser.Data)
                 {
-                    List<SectorMetafileEntry> files = new List<SectorMetafileEntry>();
-
-                    using var reader = File.OpenText(System.Web.Hosting.HostingEnvironment.MapPath(@"~/res/Sectors/milieu.tab"));
-                    var parser = new Serialization.TSVParser(reader);
-                    foreach (var row in parser.Data)
-                    {
-                        var path = row.dict["Path"];
-                        var tags = row.dict["Tags"].Split(',');
-                        files.Add(new SectorMetafileEntry(@"~/res/Sectors/" + path, tags.ToList()));
-                    }
-
-                    s_instance = new SectorMap(files);
+                    var path = row.dict["Path"];
+                    var tags = row.dict["Tags"].Split(',');
+                    files.Add(new SectorMetafileEntry(@"~/res/Sectors/" + path, tags.ToList()));
                 }
+
+                s_instance = new SectorMap(files);
             }
 
             return s_instance;
@@ -200,10 +190,7 @@ namespace Maps
 
         public static void Flush()
         {
-            lock (SectorMap.s_lock)
-            {
-                s_instance = null;
-            }
+            s_instance = null;
         }
 
         // This method supports deserializing of Location instances that reference sectors by name.

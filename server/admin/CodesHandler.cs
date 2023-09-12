@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Threading;
 
 namespace Maps.Admin
 {
@@ -26,8 +27,8 @@ namespace Maps.Admin
             "Z", // Zhodani
         };
 
-        static readonly RegexMap<string> s_knownCodes = new RegexMap<string>
-        {
+        static ThreadLocal<RegexMap<string>> s_knownCodes = new ThreadLocal<RegexMap<string>>(() =>
+            new RegexMap<string> {
             // General
             { @"^Rs[ABGDEZHT]$", "Rs" },
             { @"^O:[0-9]{4}(-\w+)?$", "O:nnnn" },
@@ -85,7 +86,7 @@ namespace Maps.Admin
             { @"^Mr\((" + string.Join("|", SecondSurvey.AllegianceCodes) + @")\)$", "(military rule)" },
 
             { @"^{.*}$", "(comment)" }
-        };
+        });
 
         protected override void Process(System.Web.HttpContext context, ResourceManager resourceManager)
         {
@@ -128,7 +129,7 @@ namespace Maps.Admin
 
                     foreach (var code in worlds
                         .SelectMany(world => world.Codes)
-                        .Where(code => filter.IsMatch(code) && !s_knownCodes.IsMatch(code)))
+                        .Where(code => filter.IsMatch(code) && !s_knownCodes.Value.IsMatch(code)))
                     {
                         if (!codes.ContainsKey(code))
                         {

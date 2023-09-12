@@ -127,6 +127,7 @@ namespace Maps.Graphics
                 if (dataUrl == null)
                 {
                     string contentType = Utilities.ContentTypes.TypeForPath(path);
+                    // TODO: Use reader with FileShare.Read
                     byte[] bytes = File.ReadAllBytes(path);
                     dataUrl = "data:" + contentType + ";base64," + Convert.ToBase64String(bytes, Base64FormattingOptions.None);
                 }

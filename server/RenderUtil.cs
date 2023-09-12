@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Text;
 using System.Linq;
+using System.Threading;
 
 namespace Maps.Rendering
 {
@@ -62,22 +63,22 @@ namespace Maps.Rendering
         // because the glyphs are much higher quality.
         // See http://www.alanwood.net/demos/wingdings.html for a good mapping
 
-        private static IReadOnlyDictionary<char, char> DING_MAP = new EasyInitConcurrentDictionary<char, char>
-        {
+        private static ThreadLocal<IReadOnlyDictionary<char, char>> DING_MAP = new ThreadLocal<IReadOnlyDictionary<char, char>>(() =>
+            new Dictionary<char, char> {
             { '\x2666', '\x74' }, // U+2666 (BLACK DIAMOND SUIT)
             { '\x2756', '\x76' }, // U+2756 (BLACK DIAMOND MINUS WHITE X)
             { '\x2726', '\xAA' }, // U+2726 (BLACK FOUR POINTED STAR)
             { '\x2605', '\xAB' }, // U+2605 (BLACK STAR)
             { '\x2736', '\xAC' }, // U+2736 (BLACK SIX POINTED STAR)
-        };
+        });
 
         public static void DrawGlyph(AbstractGraphics g, Glyph glyph, FontCache styleRes, AbstractBrush brush, PointF pt)
         {
             AbstractFont font;
             string s = glyph.Characters;
-            if (g.SupportsWingdings && s.All(c => DING_MAP.ContainsKey(c)))
+            if (g.SupportsWingdings && s.All(c => DING_MAP.Value.ContainsKey(c)))
             {
-                s = string.Join("", s.Select(c => DING_MAP[c]));
+                s = string.Join("", s.Select(c => DING_MAP.Value[c]));
                 font = styleRes.WingdingFont;
             }
             else
@@ -274,7 +275,8 @@ namespace Maps.Rendering
             return glyph;
         }
 
-        private static readonly RegexMap<Glyph> s_baseGlyphTable = new GlobMap<Glyph> {
+        private static ThreadLocal<RegexMap<Glyph>> s_baseGlyphTable = new ThreadLocal<RegexMap<Glyph>>(() =>
+            new GlobMap<Glyph> {
             { "*.C", new Glyph(Glyph.StarStar, bias:GlyphBias.Bottom) }, // Vargr Corsair Base
             { "Im.D", new Glyph(Glyph.Square, bias:GlyphBias.Bottom) }, // Imperial Depot
             { "*.D", new Glyph(Glyph.Square, highlight:true)}, // Depot
@@ -295,9 +297,9 @@ namespace Maps.Rendering
             { "Sc.H", Glyph.HiverSupplyBase }, // Hiver Supply Base
             { "*.I", Glyph.Interface }, // Interface
             { "*.T", Glyph.Terminus }, // Terminus
-        };
+        });
 
-        public static Glyph FromBaseCode(string allegiance, char code) => s_baseGlyphTable.Match(allegiance + "." + code);
+        public static Glyph FromBaseCode(string allegiance, char code) => s_baseGlyphTable.Value.Match(allegiance + "." + code);
     }
 
     // BorderPath is a render-ready representation of a Border.
@@ -623,22 +625,25 @@ namespace Maps.Rendering
     internal static class StellarRendering
     {
         // Additions to radius based on luminosity.
-        private static IReadOnlyDictionary<string, float> LUM = new EasyInitConcurrentDictionary<string, float>
-            {
+        private static ThreadLocal<IReadOnlyDictionary<string, float>> LUM = new ThreadLocal<IReadOnlyDictionary<string, float>>(() =>
+            new Dictionary<string, float> {
                 { "Ia", 7 },
                 { "Ib", 5 },
                 { "II", 3 },
                 { "III", 2 },
                 { "IV", 1 },
                 { "V", 0 }
-            };
+            });
 
         // Base radius for spectral class.
-        private static IReadOnlyDictionary<char, float> RAD = new EasyInitConcurrentDictionary<char, float>
-            { { 'O', 4 }, { 'B', 3 }, { 'A', 2 }, { 'F', 1.5f }, { 'G', 1 }, { 'K', 0.7f }, { 'M', 0.5f } };
+        private static ThreadLocal<IReadOnlyDictionary<char, float>> RAD = new ThreadLocal<IReadOnlyDictionary<char, float>>(() =>
+            new Dictionary<char, float> { 
+                { 'O', 4 }, { 'B', 3 }, { 'A', 2 }, { 'F', 1.5f }, { 'G', 1 }, { 'K', 0.7f }, { 'M', 0.5f }
+            });
 
         // Maps spectral class to color.
-        private static IReadOnlyDictionary<char, Color> COLOR = new EasyInitConcurrentDictionary<char, Color> {
+        private static ThreadLocal<IReadOnlyDictionary<char, Color>> COLOR = new ThreadLocal<IReadOnlyDictionary<char, Color>>(() =>
+            new Dictionary<char, Color> {
                 { 'O', Color.FromArgb(0x9d, 0xb4, 0xff) },
                 { 'B', Color.FromArgb(0xbb, 0xcc, 0xff) },
                 { 'A', Color.FromArgb(0xfb, 0xf8, 0xff) },
@@ -646,7 +651,7 @@ namespace Maps.Rendering
                 { 'G', Color.FromArgb(0xff, 0xff, 0x00) },
                 { 'K', Color.FromArgb(0xff, 0x98, 0x33) },
                 { 'M', Color.FromArgb(0xff, 0x00, 0x00) },
-            };
+            });
 
         public static StarProps StarToProps(StellarData.Star star)
         {
@@ -660,7 +665,7 @@ namespace Maps.Rendering
             if (star.classification == "BD")
                 return new StarProps(Color.Brown, Color.Black, 0.3f);
 
-            return new StarProps(COLOR[star.type], Color.Black, RAD[star.type] + LUM[star.luminosity ?? "V"]);
+            return new StarProps(COLOR.Value[star.type], Color.Black, RAD.Value[star.type] + LUM.Value[star.luminosity ?? "V"]);
         }
 
         private static float SinF(double r) => (float)Math.Sin(r);

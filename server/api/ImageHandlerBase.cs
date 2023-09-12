@@ -143,7 +143,7 @@ namespace Maps.API
                     using var stream = new MemoryStream();
 
                     // PDFSharp 1.5 is not thread-safe, so serialize usage
-                    lock (s_pdf_serialization_lock)
+                    lock (ImageHandlerBase.s_pdf_serialization_lock)
                     {
                         using var document = new PdfDocument();
                         document.Version = 14; // 1.4 for opacity

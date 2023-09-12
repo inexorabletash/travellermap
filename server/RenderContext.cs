@@ -3,7 +3,6 @@
 using Maps.Graphics;
 using Maps.Utilities;
 using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -70,7 +69,7 @@ namespace Maps.Rendering
             public static IList<MapLabel> FromFile(string path)
             {
                 List<MapLabel> list = new List<MapLabel>();
-                using (var reader = System.IO.File.OpenText(path))
+                using (var reader = Util.SharedFileReader(path))
                 {
                     var parser = new Serialization.TSVParser(reader);
                     foreach (var row in parser.Data)
@@ -118,19 +117,19 @@ namespace Maps.Rendering
         #endregion
 
         #region Static Caches
-        private class StaticImageCache
+        private class ImageCache
         {
             // TODO: Consider not caching these across sessions
             public AbstractImage nebulaImage;
             public AbstractImage galaxyImage;
             public AbstractImage galaxyImageGray;
             public AbstractImage riftImage;
-            public ConcurrentDictionary<string, AbstractImage> worldImages;
+            public Dictionary<string, AbstractImage> worldImages;
 
-            private static object s_lock = new object();
-            private static StaticImageCache? s_instance = null;
+            [ThreadStatic]
+            private static ImageCache? s_instance = null;
 
-            public StaticImageCache()
+            private ImageCache()
             {
                 AbstractImage prepare(string urlPath) =>
                     new AbstractImage(HostingEnvironment.MapPath("~" + urlPath), urlPath);
@@ -140,7 +139,7 @@ namespace Maps.Rendering
                 riftImage = prepare("/res/Candy/Rifts.png");
                 galaxyImage = prepare("/res/Candy/Galaxy.png");
                 galaxyImageGray = prepare("/res/Candy/Galaxy_Gray.png");
-                worldImages = new EasyInitConcurrentDictionary<string, AbstractImage> {
+                worldImages = new Dictionary<string, AbstractImage> {
                             { "Hyd0", prepare("/res/Candy/Hyd0.png") },
                             { "Hyd1", prepare("/res/Candy/Hyd1.png") },
                             { "Hyd2", prepare("/res/Candy/Hyd2.png") },
@@ -156,13 +155,9 @@ namespace Maps.Rendering
                         };
             }
 
-            public static StaticImageCache GetInstance()
+            public static ImageCache GetInstance()
             {
-                lock (s_lock)
-                {
-                    s_instance ??= new StaticImageCache();
-                }
-                return s_instance;
+                return s_instance ??= new ImageCache();
             }
         }
         #endregion
@@ -213,7 +208,7 @@ namespace Maps.Rendering
 
         public void Render(AbstractGraphics g)
         {
-            var renderer = new Renderer(this, g, StaticImageCache.GetInstance());
+            var renderer = new Renderer(this, g, ImageCache.GetInstance());
             renderer.Render();
         }
 
@@ -224,7 +219,7 @@ namespace Maps.Rendering
             private AbstractBrush solidBrush;
             private AbstractPen pen;
             private FontCache fonts;
-            private StaticImageCache images;
+            private ImageCache images;
 
             #region Proxies
 #pragma warning disable IDE1006 // Naming Styles
@@ -241,7 +236,7 @@ namespace Maps.Rendering
 #pragma warning restore IDE1006 // Naming Styles
             #endregion
 
-            public Renderer(RenderContext ctx, AbstractGraphics g, StaticImageCache images)
+            public Renderer(RenderContext ctx, AbstractGraphics g, ImageCache images)
             {
                 this.ctx = ctx;
                 this.images = images;

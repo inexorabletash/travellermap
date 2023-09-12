@@ -44,7 +44,7 @@ namespace Maps.Admin
                 context.Response.Flush();
                 return;
             }
-            Process(context, new ResourceManager());
+            Process(context, ResourceManager.GetInstance());
         }
 
         protected abstract void Process(HttpContext context, ResourceManager resourceManager);
@@ -150,21 +150,24 @@ namespace Maps.Admin
             WriteStat(context.Response, "Cache.EffectivePercentagePhysicalMemoryLimit", context.Cache.EffectivePercentagePhysicalMemoryLimit);
             WriteStat(context.Response, "Cache.EffectivePrivateBytesLimit", context.Cache.EffectivePrivateBytesLimit);
             var process = System.Diagnostics.Process.GetCurrentProcess();
+            WriteStat(context.Response, "Process.Id", process.Id);
             WriteStat(context.Response, "Process.MinWorkingSet", process.MinWorkingSet);
             WriteStat(context.Response, "Process.MaxWorkingSet", process.MaxWorkingSet);
             WriteStat(context.Response, "Process.PeakWorkingSet64", process.PeakWorkingSet64);
             WriteStat(context.Response, "Process.PagedMemorySize64", process.PagedMemorySize64);
             WriteStat(context.Response, "Process.PeakPagedMemorySize64", process.PeakPagedMemorySize64);
             WriteStat(context.Response, "Process.PrivateMemorySize64", process.PrivateMemorySize64);
+            WriteStat(context.Response, "Process.StartTime", process.StartTime);
             WriteStat(context.Response, "Process.VirtualMemorySize64", process.VirtualMemorySize64);
             WriteStat(context.Response, "Process.WorkingSet64", process.WorkingSet64);
+            WriteStat(context.Response, "Process.Threads.Count", process.Threads.Count);
             Write(context.Response, "<b>&Omega;</b>");
         }
 
         private static void Reindex(HttpContext context)
         {
             Write(context.Response, "Initializing resource manager...");
-            ResourceManager resourceManager = new ResourceManager();
+            ResourceManager resourceManager = ResourceManager.GetDedicatedInstance();
 
             SearchEngine.PopulateDatabase(resourceManager, s => Write(context.Response, s));
 

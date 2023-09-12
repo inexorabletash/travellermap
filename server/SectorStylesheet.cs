@@ -1,7 +1,6 @@
 ﻿#nullable enable
 using Maps.Utilities;
 using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
@@ -284,7 +283,7 @@ namespace Maps
         public static SectorStylesheet Parse(TextReader reader) => new SectorStylesheet(new Parser(reader).ParseStylesheet());
         public static SectorStylesheet FromFile(string path)
         {
-            using var reader = File.OpenText(path);
+            using var reader = Util.SharedFileReader(path);
             return Parse(reader);
         }
 
@@ -372,8 +371,7 @@ namespace Maps
             }
         }
 
-        // Concurrent to allow static instance in Sector
-        private ConcurrentDictionary<Tuple<string, string?>, StyleResult> memo = new ConcurrentDictionary<Tuple<string, string?>, StyleResult>();
+        private Dictionary<Tuple<string, string?>, StyleResult> memo = new Dictionary<Tuple<string, string?>, StyleResult>();
 
         private List<SectorStylesheet> Chain()
         {

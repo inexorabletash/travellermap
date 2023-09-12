@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Web.Hosting;
 
 namespace Maps
@@ -63,7 +64,8 @@ namespace Maps
         // V     Any        Exploration base
         // W     Any        Way station
 
-        private static readonly RegexMap<string> s_legacyBaseDecodeTable = new GlobMap<string> {
+        private static ThreadLocal<RegexMap<string>> s_legacyBaseDecodeTable = new ThreadLocal<RegexMap<string>>(() =>
+            new GlobMap<string> {
             { "*.2", "NS" },  // Imperial Naval base + Scout base
             { "*.A", "NS" },  // Imperial Naval base + Scout base
             { "*.B", "NW" },  // Imperial Naval base + Scout Way station
@@ -95,16 +97,17 @@ namespace Maps
             { "Sc.H", "H" },  // Hiver Supply Base
             { "*.I", "I" },  // Interface
             { "*.T", "T" },  // Terminus
-        };
+        });
 
         public static string DecodeLegacyBases(string allegiance, string code)
         {
             allegiance = AllegianceCodeToBaseAllegianceCode(allegiance);
-            string match = s_legacyBaseDecodeTable.Match(allegiance + "." + code);
+            string match = s_legacyBaseDecodeTable.Value.Match(allegiance + "." + code);
             return (match != default) ? match : code;
         }
 
-        private static RegexMap<string> s_legacyBaseEncodeTable = new GlobMap<string> {
+        private static ThreadLocal<RegexMap<string>> s_legacyBaseEncodeTable = new ThreadLocal<RegexMap<string>>(() =>
+            new GlobMap<string> {
             { "*.NS", "A" },  // Imperial Naval base + Scout base
             { "*.NW", "B" },  // Imperial Naval base + Scout Way station
             { "*.C", "C" },   // Vargr Corsair base
@@ -136,22 +139,30 @@ namespace Maps
             { "Sc.H", "H" },  // Hiver Supply Base
             { "*.I", "I" },  // Interface
             { "*.T", "T" },  // Terminus
-        };
+        });
 
         public static string EncodeLegacyBases(string allegiance, string bases)
         {
             allegiance = AllegianceCodeToBaseAllegianceCode(allegiance);
-            string match = s_legacyBaseEncodeTable.Match(allegiance + "." + bases);
+            string match = s_legacyBaseEncodeTable.Value.Match(allegiance + "." + bases);
             return (match != default) ? match : bases;
         }
         #endregion // Bases
 
         #region Allegiance
 
-        private class AllegianceDictionary : EasyInitConcurrentDictionary<string, Allegiance>
+        private class AllegianceDictionary : Dictionary<string, Allegiance>
         {
             public AllegianceDictionary() { }
-            public AllegianceDictionary(IEnumerable<KeyValuePair<string, Allegiance>> e) : base(e) { }
+            public AllegianceDictionary(IEnumerable<KeyValuePair<string, Allegiance>> collection) {
+                foreach (var pair in collection)
+                    this.Add(pair);
+            }
+
+            public void Add(KeyValuePair<string, Allegiance> pair)
+            {
+                Add(pair.Key, pair.Value);
+            }
 
             public void Add(string code, string name)
             {
@@ -166,13 +177,13 @@ namespace Maps
             public AllegianceDictionary Merge(AllegianceDictionary other)
             {
                 foreach (var pair in other)
-                    TryAdd(pair.Key, pair.Value);
+                    this.TryAdd(pair.Key, pair.Value);
                 return this;
             }
 
             public static AllegianceDictionary FromFile(string path)
             {
-                using var reader = File.OpenText(path);
+                using var reader = Util.SharedFileReader(path);
                 return Parse(reader);
             }
 
@@ -192,7 +203,8 @@ namespace Maps
         }
 
         // Overrides or additions where Legacy -> T5SS code mapping is ambiguous.
-        private static readonly IReadOnlyDictionary<string, string> s_legacyAllegianceToT5Overrides = new EasyInitConcurrentDictionary<string, string> {
+        private static ThreadLocal<IReadOnlyDictionary<string, string>> s_legacyAllegianceToT5Overrides = new ThreadLocal<IReadOnlyDictionary<string, string>>(() =>
+            new Dictionary<string, string> {
             { "J-", "JuPr" },
             { "Jp", "JuPr" },
             { "Ju", "JuPr" },
@@ -202,7 +214,7 @@ namespace Maps
             { "Zh", "ZhCo" },
             { "??", "XXXX" },
             { "--", "XXXX" }
-        };
+        });
 
         // Cases where T5SS codes don't apply: e.g. the Hierate or Imperium, or where no codes exist yet
         private static readonly AllegianceDictionary s_legacyAllegiances = new AllegianceDictionary {
@@ -222,14 +234,14 @@ namespace Maps
             if (code == null)
                 return null;
 
-            if (s_t5Allegiances.ContainsKey(code))
-                return s_t5Allegiances[code];
-            if (s_legacyAllegianceToT5Overrides.ContainsKey(code))
-                return s_t5Allegiances[s_legacyAllegianceToT5Overrides[code]];
+            if (s_t5Allegiances.Value.ContainsKey(code))
+                return s_t5Allegiances.Value[code];
+            if (s_legacyAllegianceToT5Overrides.Value.ContainsKey(code))
+                return s_t5Allegiances.Value[s_legacyAllegianceToT5Overrides.Value[code]];
             if (s_legacyAllegiances.ContainsKey(code))
                 return s_legacyAllegiances[code];
-            if (s_legacyToT5Allegiance.ContainsKey(code))
-                return s_legacyToT5Allegiance[code];
+            if (s_legacyToT5Allegiance.Value.ContainsKey(code))
+                return s_legacyToT5Allegiance.Value[code];
 
             return null;
         }
@@ -247,14 +259,13 @@ namespace Maps
 
         public static string T5AllegianceCodeToLegacyCode(string t5code)
         {
-            if (!s_t5Allegiances.ContainsKey(t5code))
+            if (!s_t5Allegiances.Value.ContainsKey(t5code))
                 return t5code;
-            return s_t5Allegiances[t5code].LegacyCode;
+            return s_t5Allegiances.Value[t5code].LegacyCode;
         }
 
-        // TODO: Parse this from data file
-
-        private static readonly AllegianceDictionary s_t5Allegiances = AllegianceDictionary
+        private static ThreadLocal<AllegianceDictionary> s_t5Allegiances = new ThreadLocal<AllegianceDictionary>(() =>             
+            AllegianceDictionary
             .FromFile(HostingEnvironment.MapPath("~/res/t5ss/allegiance_codes.tab"))
             .Merge(new AllegianceDictionary {
             // T5Code, LegacyCode, BaseCode, Name
@@ -280,18 +291,20 @@ namespace Maps
             { "CRGe", "CG", null, "Geonee Cultural Region" },
             { "CRSu", "CS", null, "Suerrat Cultural Region" },
             { "CRAk", "CA", null, "Anakudnu Cultural Region" },
-        });
-        public static IEnumerable<string> AllegianceCodes => s_t5Allegiances.Keys;
+        }));
+
+        public static IEnumerable<string> AllegianceCodes => s_t5Allegiances.Value.Keys;
         // May need GroupBy to handle duplicates
-        private static readonly IReadOnlyDictionary<string, Allegiance> s_legacyToT5Allegiance =
+        private static ThreadLocal<IReadOnlyDictionary<string, Allegiance>> s_legacyToT5Allegiance = new ThreadLocal<IReadOnlyDictionary<string, Allegiance>>(() =>
             new AllegianceDictionary(
-                s_t5Allegiances.Values
+                s_t5Allegiances.Value.Values
                 .Where(a => a.LegacyCode != null)
                 .GroupBy(a => a.LegacyCode)
                 .Select(g => g.First())
-                .Select(a => new KeyValuePair<string, Allegiance>(a.LegacyCode!, a)));
+                .Select(a => new KeyValuePair<string, Allegiance>(a.LegacyCode!, a))));
 
-        private static readonly ConcurrentSet<string> s_defaultAllegiances = new ConcurrentSet<string> {
+        private static ThreadLocal<HashSet<string>> s_defaultAllegiances = new ThreadLocal<HashSet<string>>(() =>
+            new HashSet<string> {
             "Im", // Classic Imperium
             "ImAp", // Third Imperium, Amec Protectorate (Dagu)
             "ImDa", // Third Imperium, Domain of Antares (Anta/Empt/Lish)
@@ -309,10 +322,10 @@ namespace Maps
             "XXXX", // Unknown
             "??", // Placeholder - show as blank
             "--", // Placeholder - show as blank
-        };
+        });
 
-        public static bool IsDefaultAllegiance(string code) => s_defaultAllegiances.Contains(code);
-        public static bool IsKnownT5Allegiance(string code) => s_t5Allegiances.ContainsKey(code);
+        public static bool IsDefaultAllegiance(string code) => s_defaultAllegiances.Value.Contains(code);
+        public static bool IsKnownT5Allegiance(string code) => s_t5Allegiances.Value.ContainsKey(code);
 
         #endregion Allegiance
 
@@ -336,7 +349,7 @@ namespace Maps
             }
             public static SophontDictionary FromFile(string path)
             {
-                using var reader = File.OpenText(path);
+                using var reader = Util.SharedFileReader(path);
                 return Parse(reader);
             }
 

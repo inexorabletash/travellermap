@@ -228,46 +228,43 @@ namespace Maps
         private WorldCollection? worlds;
         internal virtual WorldCollection? GetWorlds(ResourceManager resourceManager, bool cacheResults = true)
         {
-            lock (this)
+            // Have it cached - just return it
+            if (worlds != null)
+                return worlds;
+
+            WorldCollection? data = null;
+
+            // Do we have data?
+            if (DataFile != null)
             {
-                // Have it cached - just return it
-                if (worlds != null)
-                    return worlds;
-
-                WorldCollection? data = null;
-
-                // Do we have data?
-                if (DataFile != null)
-                {
-                    // Yes, load/parse it.
-                    data = ResourceManager.GetDeserializableFileObject<WorldCollection>(DataFile.FileName, mediaType: DataFile.Type);
-                }
-                else if (Milieu != null && Milieu != SectorMap.DEFAULT_MILIEU)
-                {
-                    // Nope... maybe we can construct a dotmap from the default milieu?
-                    SectorMap.Milieu map = SectorMap.ForMilieu(SectorMap.DEFAULT_MILIEU);
-                    Sector? basis = map.FromLocation(this.Location);
-                    if (basis == null)
-                        return null;
-
-                    WorldCollection? worlds = basis.GetWorlds(resourceManager, cacheResults);
-                    if (worlds == null)
-                        return null;
-
-                    data = worlds.MakeDotmap();
-                }
-
-                if (data == null)
+                // Yes, load/parse it.
+                data = resourceManager.GetCachedDeserializableFileObject<WorldCollection>(DataFile.FileName, mediaType: DataFile.Type);
+            }
+            else if (Milieu != null && Milieu != SectorMap.DEFAULT_MILIEU)
+            {
+                // Nope... maybe we can construct a dotmap from the default milieu?
+                SectorMap.Milieu map = SectorMap.ForMilieu(SectorMap.DEFAULT_MILIEU);
+                Sector? basis = map.FromLocation(this.Location);
+                if (basis == null)
                     return null;
 
-                foreach (World world in data)
-                    world.Sector = this;
+                WorldCollection? worlds = basis.GetWorlds(resourceManager, cacheResults);
+                if (worlds == null)
+                    return null;
 
-                if (cacheResults)
-                    worlds = data;
-
-                return data;
+                data = worlds.MakeDotmap();
             }
+
+            if (data == null)
+                return null;
+
+            foreach (World world in data)
+                world.Sector = this;
+
+            if (cacheResults)
+                worlds = data;
+
+            return data;
         }
 
         internal void Serialize(ResourceManager resourceManager, TextWriter writer, string? mediaType, SectorSerializeOptions options)
@@ -372,11 +369,8 @@ namespace Maps
         private ClipPath[] clipPathsCache = new ClipPath[(int)PathUtil.PathType.TypeCount];
         internal ClipPath ComputeClipPath(PathUtil.PathType type)
         {
-            lock (this)
-            {
-                clipPathsCache[(int)type] ??= new ClipPath(this.Bounds, type);
-                return clipPathsCache[(int)type];
-            }
+            clipPathsCache[(int)type] ??= new ClipPath(this.Bounds, type);
+            return clipPathsCache[(int)type];
         }
 
         internal Rectangle Bounds => new Rectangle(
@@ -409,7 +403,7 @@ namespace Maps
 
         private static readonly SectorStylesheet s_defaultStyleSheet =
             s_defaultStyleSheet = SectorStylesheet.Parse(
-                File.OpenText(System.Web.Hosting.HostingEnvironment.MapPath("~/res/styles/otu.css")));
+                Util.SharedFileReader(System.Web.Hosting.HostingEnvironment.MapPath("~/res/styles/otu.css")));
 
         internal SectorStylesheet? Stylesheet { get; set; }
 
@@ -528,24 +522,21 @@ namespace Maps
 
         internal override WorldCollection? GetWorlds(ResourceManager resourceManager, bool cacheResults = true)
         {
-            lock (this)
-            {
-                if (this.worlds != null)
-                    return this.worlds;
+            if (this.worlds != null)
+                return this.worlds;
 
-                WorldCollection? worlds = basis.GetWorlds(resourceManager, cacheResults);
-                if (worlds == null)
-                    return null;
+            WorldCollection? worlds = basis.GetWorlds(resourceManager, cacheResults);
+            if (worlds == null)
+                return null;
 
-                WorldCollection dots = worlds.MakeDotmap();
-                foreach (World world in dots)
-                    world.Sector = this;
+            WorldCollection dots = worlds.MakeDotmap();
+            foreach (World world in dots)
+                world.Sector = this;
 
-                if (cacheResults)
-                    this.worlds = dots;
+            if (cacheResults)
+                this.worlds = dots;
 
-                return dots;
-            }
+            return dots;
         }
     }
 
@@ -760,11 +751,8 @@ namespace Maps
         private BorderPath[] borderPathsCache = new BorderPath[(int)PathUtil.PathType.TypeCount];
         internal BorderPath ComputeGraphicsPath(Sector sector, PathUtil.PathType type)
         {
-            lock (this)
-            {
-                borderPathsCache[(int)type] ??= new BorderPath(this, sector, type);
-                return borderPathsCache[(int)type];
-            }
+            borderPathsCache[(int)type] ??= new BorderPath(this, sector, type);
+            return borderPathsCache[(int)type];
         }
 
         internal string? GetLabel(Sector sector)

@@ -16,9 +16,30 @@ namespace Maps
 
     internal class ResourceManager
     {
+        // Thread affinity
+        [ThreadStatic]
+        private static ResourceManager? s_instance;
+        
+        /// <summary>
+        /// Use for caching where thread-affinity is desired.
+        /// </summary>
+        /// <returns></returns>
+        public static ResourceManager GetInstance()
+        {
+            return s_instance ??= new ResourceManager();
+        }
+        /// <summary>
+        /// Use for tasks where caching should expire at the end of the lifetime.
+        /// </summary>
+        /// <returns></returns>
+        public static ResourceManager GetDedicatedInstance()
+        {
+            return new ResourceManager();
+        }
+
         private LRUCache cache = new LRUCache(50);
 
-        public ResourceManager()
+        private ResourceManager()
         {
         }
 
@@ -40,23 +61,20 @@ namespace Maps
 
         public T GetCachedXmlFileObject<T>(string name)
         {
-            lock (cache)
+            object? o = cache[name];
+
+            if (o == null)
             {
-                object? o = cache[name];
-
-                if (o == null)
-                {
-                    o = GetXmlFileObject<T>(name);
-                    cache[name] = o;
-                }
-                if (o == null)
-                    throw new ApplicationException("Unexpected null");
-
-                return (T)o;
+                o = GetXmlFileObject<T>(name);
+                cache[name] = o;
             }
+            if (o == null)
+                throw new ApplicationException("Unexpected null");
+
+            return (T)o;
         }
 
-        public static T GetDeserializableFileObject<T>(string name, string mediaType)
+        private static T GetDeserializableFileObject<T>(string name, string mediaType)
         {
             using (var stream = new FileStream(HostingEnvironment.MapPath(name), FileMode.Open, FileAccess.Read, FileShare.Read))
             {
@@ -80,28 +98,21 @@ namespace Maps
         }
         public T GetCachedDeserializableFileObject<T>(string name, string mediaType)
         {
-            // PERF: Whole cache is locked while loading a single item. Should use finer granularity
-            lock (cache)
+            object? obj = cache[name];
+
+            if (obj == null)
             {
-                object? obj = cache[name];
-
-                if (obj == null)
-                {
-                    obj = GetDeserializableFileObject<T>(name, mediaType);
-                    cache[name] = obj;
-                }
-                if (obj == null)
-                    throw new ApplicationException("Unexpected null");
-
-                return (T)obj;
+                obj = GetDeserializableFileObject<T>(name, mediaType);
+                cache[name] = obj;
             }
+            if (obj == null)
+                throw new ApplicationException("Unexpected null");
+
+            return (T)obj;
         }
         public void Flush()
         {
-            lock (cache)
-            {
-                cache.Clear();
-            }
+            cache.Clear();
         }
     }
 }
