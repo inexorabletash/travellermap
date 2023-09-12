@@ -3,6 +3,7 @@ using Maps.Utilities;
 using System;
 using System.IO;
 using System.Reflection;
+using System.Threading;
 using System.Web;
 using System.Web.Hosting;
 using System.Xml.Serialization;
@@ -17,8 +18,7 @@ namespace Maps
     internal class ResourceManager
     {
         // Thread affinity
-        [ThreadStatic]
-        private static ResourceManager? s_instance;
+        private static ThreadLocal<ResourceManager> s_instance = new ThreadLocal<ResourceManager>(() => new ResourceManager());
         
         /// <summary>
         /// Use for caching where thread-affinity is desired.
@@ -26,7 +26,7 @@ namespace Maps
         /// <returns></returns>
         public static ResourceManager GetInstance()
         {
-            return s_instance ??= new ResourceManager();
+            return s_instance.Value;
         }
         /// <summary>
         /// Use for tasks where caching should expire at the end of the lifetime.

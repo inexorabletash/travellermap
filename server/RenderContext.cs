@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Web.Hosting;
 
 namespace Maps.Rendering
@@ -126,8 +127,11 @@ namespace Maps.Rendering
             public AbstractImage riftImage;
             public Dictionary<string, AbstractImage> worldImages;
 
-            [ThreadStatic]
-            private static ImageCache? s_instance = null;
+            private static ThreadLocal<ImageCache> s_instance = new ThreadLocal<ImageCache>(() => new ImageCache());
+            public static ImageCache GetInstance()
+            {
+                return s_instance.Value;
+            }
 
             private ImageCache()
             {
@@ -153,11 +157,6 @@ namespace Maps.Rendering
                             { "HydA", prepare("/res/Candy/HydA.png") },
                             { "Belt", prepare("/res/Candy/Belt.png") },
                         };
-            }
-
-            public static ImageCache GetInstance()
-            {
-                return s_instance ??= new ImageCache();
             }
         }
         #endregion
