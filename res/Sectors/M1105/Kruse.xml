@@ -29,20 +29,13 @@
     <Subsector Index="P">Pletneva</Subsector>
   </Subsectors>
   <Borders>
-    <Border Color="Orange" Allegiance="Ec" Label="Eberhardt Corporate Republic" LabelPosition="0619">0417 0517 0516 0615 0616 0717 0817 0718 0618 0518 0417 </Border>
-    <Border Color="Purple" Allegiance="Ir" Label="Interstellar Republic" LabelPosition="2918">2716 2815 2916 3015 2916 2917 2816 2716 </Border>
-    <Border Color="Gray" LabelPosition="2305" Label="Rule of Man" Allegiance="RM">2208 2308 2307 2306 2307 2407 2308 2208 2209 2208 </Border>
-    <Border Color="Red" LabelPosition="0625" Label="Rammak Worlds" Allegiance="Rm">0426 0526 0625 0725 0726 0727 0827 0728 0628 0627 0527 0426 </Border>
-    <Border Color="Blue" LabelPosition="0706" Label="Solomani" Allegiance="So">0704 0705 0706 0707 0706 0705 0704 </Border>
-    <Border Color="Blue" LabelPosition="1314" Label="Kruse Enclave Solomani" Allegiance="So">1016 1116 1215 1315 1415 1516 1416 1417 1317 1216 1116 1016 </Border>
-     <Border Color="Blue" Allegiance="SoCf" LabelPosition="0217" Label="Solomani">0317</Border>
-     <Border Color="Blue" Allegiance="SoCf" LabelPosition="3008" Label="Solomani">3007</Border>
-     <Border Color="Blue" Allegiance="SoCf" LabelPosition="1208" Label="Solomani">1207</Border>
-     <Border Color="Blue" Allegiance="SoCf" LabelPosition="2132" Label="Solomani">2133</Border>
-     <Border Color="Blue" Allegiance="SoCf" LabelPosition="2924" Label="Solomani">3023</Border>
-     <Border Color="Blue" Allegiance="SoCf" LabelPosition="3113" Label="Solomani">3112</Border>
-    <Border Color="Green" LabelPosition="1236" Label="The Sovereignty" Allegiance="Sv">1233 1333 1432 1431 1532 1631 1532 1432 1433 1434 1335 1235 1234 1233 </Border>
+    <Border Color="Blue" Allegiance="SoKe" LabelPosition="1314" Label="Kruse Enclave">1315 1316 1416 1516 1416 1417 1416 1316 1216 1316 1315</Border>
+    <Border Color="Orange" Allegiance="EcRp" LabelPosition="0619" Label="Eberhardt Corporate Republic">0615 0616 0717 0817 0718 0618 0518 0417 0517 0516 0615</Border>
   </Borders>
-  <Routes>
-  </Routes>
+  <Regions>
+    <Region WrapLabel="true" Color="Purple" LabelPosition="2739" Label="Hoydell's Chaos">2638 2738 2838 2839 2740 2639 2638</Region>
+    <Region Color="Pink" LabelPosition="2907">2806 2907 2908 2907 2806</Region>
+  </Regions>
 </Sector>
+
+
