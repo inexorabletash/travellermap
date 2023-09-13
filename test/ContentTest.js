@@ -44,8 +44,14 @@
   }
 
   global.diff = function(text1, text2) {
-    var lines1 = text1.split(/\r?\n/);
-    var lines2 = text2.split(/\r?\n/);
+    function removeNamespaces(s) {
+      return s
+        .replace(/\s+xmlns:xsd="http:\/\/www\.w3\.org\/2001\/XMLSchema"/g, '')
+        .replace(/\s+xmlns:xsi="http:\/\/www\.w3\.org\/2001\/XMLSchema-instance"/g, '');
+    }
+
+    var lines1 = removeNamespaces(text1).split(/\r?\n/);
+    var lines2 = removeNamespaces(text2).split(/\r?\n/);
     var out = [];
     idiff(lines1, lines2)
       .filter(function(pair) { return pair[0] !== '='; })
