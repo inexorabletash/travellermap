@@ -17,7 +17,7 @@ window.addEventListener('DOMContentLoaded', async event => {
   const seen = new Set();
   const universe = await Traveller.MapService.universe({requireData: 1});
   universe.Sectors
-    .filter(sector => Math.abs(sector.X) < 10 && Math.abs(sector.Y) < 5)
+    .filter(sector => Math.abs(sector.X) < 10 && Math.abs(sector.Y) < 7)
     .map(sector => {
       let name = sector.Names[0].Text;
       if (seen.has(name))
