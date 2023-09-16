@@ -4,58 +4,50 @@
 // Test Helpers
 //
 
-var SERVICE_BASE = (function(l) {
+const SERVICE_BASE = (function(l) {
   'use strict';
   if (l.hostname === 'localhost' && l.pathname.indexOf('~') !== -1)
     return 'https://travellermap.com';
   return '';
 }(window.location));
 
-function fetchXML(uri) {
-  return fetch(SERVICE_BASE + '/' + uri, {headers: {'Accept': 'text/xml'}})
-    .then(function(r) {
-      assertEquals(r.status, 200, 'HTTP Status');
-      assertEquals(r.headers.get('Content-Type'), 'text/xml', 'Content-Type');
-      return r.text();
-    });
+async function fetchXML(uri) {
+  const r = await fetch(SERVICE_BASE + '/' + uri, {headers: {'Accept': 'text/xml'}});
+  assertEquals(r.status, 200, 'HTTP Status');
+  assertEquals(r.headers.get('Content-Type'), 'text/xml', 'Content-Type');
+  return await r.text();
 }
 
-function fetchJSON(uri) {
-  return fetch(SERVICE_BASE + '/' + uri, {headers: {'Accept': 'application/json'}})
-    .then(function(r) {
-      assertEquals(r.status, 200, 'HTTP Status');
-      assertEquals(r.headers.get('Content-Type'), 'application/json', 'Content-Type');
-      return r.json();
-    });
+async function fetchJSON(uri) {
+  const r = await fetch(SERVICE_BASE + '/' + uri, {headers: {'Accept': 'application/json'}});
+  assertEquals(r.status, 200, 'HTTP Status');
+  assertEquals(r.headers.get('Content-Type'), 'application/json', 'Content-Type');
+  return await r.json();
 }
 
-function testXML(uri, expected) {
-  return fetchXML(uri).then(function(xml) {
-    function munge(s) {
+async function testXML(uri, expected) {
+  function munge(s) {
+    return s
+      .replace(/(>\s*\r?\n\s*<)/g, '><')
+      .replace(/\s+xmlns:xsd="http:\/\/www\.w3\.org\/2001\/XMLSchema"/g, '')
+      .replace(/\s+xmlns:xsi="http:\/\/www\.w3\.org\/2001\/XMLSchema-instance"/g, '');
+  }
 
-      return s
-        .replace(/(>\s*\r?\n\s*<)/g, '><')
-        .replace(/\s+xmlns:xsd="http:\/\/www\.w3\.org\/2001\/XMLSchema"/g, '')
-        .replace(/\s+xmlns:xsi="http:\/\/www\.w3\.org\/2001\/XMLSchema-instance"/g, '');
-    }
-    assertEquals(munge(xml), munge(expected), 'XML response');
-  });
+  const xml = await fetchXML(uri);
+  assertEquals(munge(xml), munge(expected), 'XML response');
 }
 
-function testJSON(uri, expected) {
-  return fetchJSON(uri).then(function(json) {
-    assertEquals(json, expected, 'JSON response');
-  });
+async function testJSON(uri, expected) {
+  const json = await fetchJSON(uri);
+  assertEquals(json, expected, 'JSON response');
 }
 
-function getBlob(url, type) {
+async function getBlob(url, type) {
   assertTrue('Blob' in self, 'Blob support');
-  return fetch(SERVICE_BASE + '/' + url)
-    .then(function(r) {
-      assertEquals(r.status, 200, 'HTTP Status for ' + url);
-      assertEquals(r.headers.get('Content-Type'), type, 'Content-Type for ' + url);
-      return r.blob();
-    });
+  const r = await fetch(SERVICE_BASE + '/' + url);
+  assertEquals(r.status, 200, 'HTTP Status for ' + url);
+  assertEquals(r.headers.get('Content-Type'), type, 'Content-Type for ' + url);
+  return await r.blob();
 }
 
 //
@@ -64,22 +56,22 @@ function getBlob(url, type) {
 var tests = [];
 function test(name, func) { tests.push({ name: name, func: func }); }
 
-test('Coordinates JSON - Sector Only', function() {
+test('Coordinates JSON - Sector Only', () => {
   return testJSON('api/coordinates?sector=spin',
                   { sx: -4, sy: -1, hx: 0, hy: 0, x: -129, y: -80 });
 });
 
-test('Coordinates JSON - Sector + Hex', function() {
+test('Coordinates JSON - Sector + Hex', () => {
   return testJSON('api/coordinates?sector=spin&hex=1910',
                   { sx: -4, sy: -1, hx: 19, hy: 10, x: -110, y: -70 });
 });
 
-test('Coordinates XML - Sector Only', function() {
+test('Coordinates XML - Sector Only', () => {
   return testXML('api/coordinates?sector=spin',
       '<?xml version="1.0"?><Coordinates xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><sx>-4<\/sx><sy>-1<\/sy><hx>0<\/hx><hy>0<\/hy><x>-129<\/x><y>-80<\/y><\/Coordinates>');
 });
 
-test('Coordinates XML - Sector + Hex', function() {
+test('Coordinates XML - Sector + Hex', () => {
   return testXML('api/coordinates?sector=spin&hex=1910',
       '<?xml version="1.0"?><Coordinates xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><sx>-4<\/sx><sy>-1<\/sy><hx>19<\/hx><hy>10<\/hy><x>-110<\/x><y>-70<\/y><\/Coordinates>');
 });
@@ -103,13 +95,11 @@ function substituteParams(call) {
 
 function typeTest(api, expected_type) {
   api = substituteParams(api);
-  test(api, function() {
-    return fetch(SERVICE_BASE + '/' + api)
-      .then(function(r) {
-        assertEquals(r.status, 200, 'HTTP Status');
-        var result_type = r.headers.get('Content-Type');
-        assertEquals(result_type, expected_type, 'Content-Type');
-      });
+  test(api, async () => {
+    const r = await fetch(SERVICE_BASE + '/' + api);
+    assertEquals(r.status, 200, 'HTTP Status');
+    const result_type = r.headers.get('Content-Type');
+    assertEquals(result_type, expected_type, 'Content-Type');
   });
 }
 
@@ -233,37 +223,37 @@ typeTest('data/$sector/$ssname/sec', 'text/plain; charset=Windows-1252');
 typeTest('data/$sector/$ssname/image', 'image/png');
 
 
-test('sec/metadata/poster - blobs', function () {
+test('sec/metadata/poster - blobs', async () => {
   assertTrue('FormData' in self, 'FormData support');
 
-  return Promise.all([
+  const blobs = await Promise.all([
     getBlob('api/sec?sector=spin', 'text/plain; charset=utf-8'),
     getBlob('api/metadata?sector=spin&accept=text/xml', 'text/xml')
-  ]).then(function(blobs) {
-    var fd = new FormData();
-    fd.append('file', blobs[0]);
-    fd.append('metadata', blobs[1]);
-    return fetch(SERVICE_BASE + '/api/poster', {method: 'POST', body: fd});
-  }).then(function(r) {
-    assertEquals(r.status, 200, 'HTTP Status');
-    assertEquals(r.headers.get('Content-Type'), 'image/png', 'Content-Type');
-  });
+  ]);
+
+  const fd = new FormData();
+  fd.append('file', blobs[0]);
+  fd.append('metadata', blobs[1]);
+
+  const r = await fetch(SERVICE_BASE + '/api/poster', {method: 'POST', body: fd});
+  assertEquals(r.status, 200, 'HTTP Status');
+  assertEquals(r.headers.get('Content-Type'), 'image/png', 'Content-Type');
 });
 
-test('sec/metadata/poster - form data', function() {
+test('sec/metadata/poster - form data', async () => {
   assertTrue('FormData' in self, 'FormData support');
-  return Promise.all([
+  const blobs = await Promise.all([
     getBlob('api/sec?sector=spin', 'text/plain; charset=utf-8'),
     getBlob('api/metadata?sector=spin&accept=text/xml', 'text/xml')
-  ]).then(function(blobs) {
-    var fd = new FormData();
-    fd.append('file', blobs[0]);
-    fd.append('metadata', blobs[1]);
-    return fetch(SERVICE_BASE + '/api/jumpmap?hex=1910', {method: 'POST', body: fd});
-  }).then(function(r) {
-    assertEquals(r.status, 200, 'HTTP Status');
-    assertEquals(r.headers.get('Content-Type'), 'image/png', 'Content-Type');
-  });
+  ]);
+
+  const fd = new FormData();
+  fd.append('file', blobs[0]);
+  fd.append('metadata', blobs[1]);
+
+  const r = await fetch(SERVICE_BASE + '/api/jumpmap?hex=1910', {method: 'POST', body: fd});
+  assertEquals(r.status, 200, 'HTTP Status');
+  assertEquals(r.headers.get('Content-Type'), 'image/png', 'Content-Type');
 });
 
 [
@@ -291,14 +281,12 @@ test('sec/metadata/poster - form data', function() {
 ].forEach(function(api) {
   api = substituteParams(api);
 
-  test("No Accept: " + api, function() {
-    return fetch(SERVICE_BASE + '/' + api, {headers: {'Accept': ''}})
-      .then(function(response) {
-        assertEquals(response.status, 200, 'HTTP Status');
-      });
+  test("No Accept: " + api, async () => {
+    const response = await fetch(SERVICE_BASE + '/' + api, {headers: {'Accept': ''}});
+    assertEquals(response.status, 200, 'HTTP Status');
   });
 });
 
 // Initiate Test Harness
 
-window.onload = function() { runTests(tests); };
+window.onload = () => { runTests(tests); };

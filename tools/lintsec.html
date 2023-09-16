@@ -57,23 +57,30 @@
       $('#go').click();
     });
 
-    function blobToString(blob) {
+    // Like Blob.prototype.text(), but with specified encoding.
+    function blobTextWithEncoding(blob, encoding) {
       return new Promise((resolve, reject) => {
-        const encodings = ['utf-8', 'windows-1252'];
-        (function tryNextEncoding() {
-          const encoding = encodings.shift();
-          const reader = new FileReader();
-          reader.readAsText(blob, encoding);
-          reader.onload = event => {
-            const result = reader.result;
-            if (result.indexOf('\uFFFD') !== -1 && encodings.length)
-              tryNextEncoding();
-            else
-              resolve(result);
-          };
-          reader.onerror = event => { reject(reader.error); };
-        }());
+        const reader = new FileReader();
+        reader.readAsText(blob, encoding);
+        reader.onload = event => {
+          const result = reader.result;
+          if (result.indexOf('\uFFFD') !== -1 && encodings.length)
+            resolve();
+          else
+            resolve(result);
+        };
+        reader.onerror = event => { reject(reader.error); };
       });
+    }
+
+    async function blobToString(blob) {
+      const encodings = ['utf-8', 'windows-1252'];
+      for (const encoding of encodings) {
+        const result = await blobTextWithEncoding(blob, encoding);
+        if (result === undefined)
+          continue;
+        return result;
+      }
     }
 
     $('#go').addEventListener('click', async () => {

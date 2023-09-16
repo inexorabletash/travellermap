@@ -1,4 +1,4 @@
-(function(global) {
+(global => {
 
   // http://rosettacode.org/wiki/Longest_Common_Substring
   function lcs(a, b) {
@@ -63,29 +63,27 @@
   };
 
 
-  function fetchPair(contentType, url1, url2) {
+  async function fetchPair(contentType, url1, url2) {
 
-    function getHeaderAndBody(response) {
-      return response.text().then(function(text) {
-        return {
-          headers: response.headers,
-          text: text
-        };
-      });
+    async function getHeaderAndBody(response) {
+      const text = await response.text();
+      return {
+        headers: response.headers,
+        text: text
+      };
     }
 
     var requestContentType = contentType.replace(/;.*/, '');
 
-    return Promise.all([fetch(url1).then(getHeaderAndBody),
-                 fetch(url2, {headers: {Accept: requestContentType }}).then(getHeaderAndBody)])
-      .then(function(responses) {
-        var a = 'Content-Type: ' + contentType + '\n'
-              + responses[0].text;
-        var b = 'Content-Type: ' + responses[1].headers.get('Content-Type') + '\n'
-              + responses[1].text;
+    const responses = await Promise.all([
+      fetch(url1).then(getHeaderAndBody),
+      fetch(url2, {headers: {Accept: requestContentType }}).then(getHeaderAndBody)]);
 
-        return [a, b];
-      });
+    const a = 'Content-Type: ' + contentType + '\n'
+          + responses[0].text;
+    const b = 'Content-Type: ' + responses[1].headers.get('Content-Type') + '\n'
+          + responses[1].text;
+    return [a, b];
   }
 
   var $ = function(selector) { return document.querySelector(selector); };
@@ -115,7 +113,7 @@
     $('#status_failed').innerHTML = String(status.completed - status.passed);
   }
 
-  global.runTest = function(leftTitle, rightTitle, func) {
+  global.runTest = async (leftTitle, rightTitle, func) => {
     ++status.tests;
 
     var tr1 = $('#results').appendChild(elem('tr'));
@@ -127,41 +125,40 @@
     var tr2 = $('#results').appendChild(elem('tr'));
     tr2.classList.add('content');
 
-    func().then(function(results) {
-        tr1.classList.add(results.pass ? 'pass' : 'fail');
-        tr2.classList.add(results.pass ? 'pass' : 'fail');
+    const results = await func();
 
-        tr2.appendChild(elem('td')).appendChild(elem('textarea', {wrap: 'off'})).value = results.left;
-        tr2.appendChild(elem('td')).appendChild(elem('textarea', {wrap: 'off'})).value = results.right;
-        tr2.appendChild(elem('td')).appendChild(elem('textarea', {wrap: 'off'})).value = results.diff;
+    tr1.classList.add(results.pass ? 'pass' : 'fail');
+    tr2.classList.add(results.pass ? 'pass' : 'fail');
 
-        ++status.completed;
-        if (results.pass)
-          ++status.passed;
-        update();
-      });
+    tr2.appendChild(elem('td')).appendChild(elem('textarea', {wrap: 'off'})).value = results.left;
+    tr2.appendChild(elem('td')).appendChild(elem('textarea', {wrap: 'off'})).value = results.right;
+    tr2.appendChild(elem('td')).appendChild(elem('textarea', {wrap: 'off'})).value = results.diff;
+
+    ++status.completed;
+    if (results.pass)
+      ++status.passed;
+    update();
   };
 
-  global.check = function(contentType, url1, url2, filter) {
-    global.runTest(url1, url2, function() {
-      return fetchPair(contentType, url1, url2)
-        .then(function(pair) {
-          var a = pair[0], b = pair[1];
-          if (filter) {
-            a = filter(a);
-            b = filter(b);
-          }
-
-          var d = global.diff(a, b);
-          return {left: a, right: b, diff: d, pass: !d};
-        }, function(error) {
-          return {left: '', right: '', diff: 'Fetch failed: ' + error, pass: false};
-        });
+  global.check = (contentType, url1, url2, filter) => {
+    global.runTest(url1, url2, async function() {
+      try {
+        const pair = await fetchPair(contentType, url1, url2);
+        let a = pair[0], b = pair[1];
+        if (filter) {
+          a = filter(a);
+          b = filter(b);
+        }
+        const d = global.diff(a, b);
+        return {left: a, right: b, diff: d, pass: !d};
+      } catch(error) {
+        return {left: '', right: '', diff: 'Fetch failed: ' + error, pass: false};
+      }
     });
   };
 
-  global.filter_timestamp = function(s) {
+  global.filter_timestamp = s => {
     return s.replace(/# \d\d\d\d-\d\d-\d\dT\d\d:\d\d:\d\d.*\r?\n/g, '# <TIMESTAMP>');
   };
 
-}(self));
+})(self);

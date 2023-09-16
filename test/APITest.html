@@ -176,14 +176,14 @@ function runTests(tests) {
 
   setProgress(0);
   tests.forEach(function(test, i) {
-    setTimeout(function() {
-      Promise.resolve().then(test.func)
-             .then(function(result) {
-               recordSuccess(test.name);
-             })
-             .catch(function(reason) {
-               recordFailure(test.name, reason.message);
-             });
+    setTimeout(async () => {
+      await Promise.resolve();
+      try {
+        const result = await test.func();
+        recordSuccess(test.name);
+      } catch(reason) {
+        recordFailure(test.name, reason.message);
+      }
     }, 10 * i);
   });
 }
