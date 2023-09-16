@@ -53,7 +53,7 @@ async function getBlob(url, type) {
 //
 // Tests
 //
-var tests = [];
+const tests = [];
 function test(name, func) { tests.push({ name: name, func: func }); }
 
 test('Coordinates JSON - Sector Only', () => {
@@ -78,7 +78,7 @@ test('Coordinates XML - Sector + Hex', () => {
 
 
 function substituteParams(call) {
-  var values = {
+  const values = {
     "$sector": "solo",
     "$subsector": "A",
     "$ssname": "Sol",
