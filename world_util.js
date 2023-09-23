@@ -816,15 +816,16 @@
     world.map_link = Util.makeURL(GENERATOR_BASE + '', map_generator_options);
     world.map_source_link = Util.makeURL(GENERATOR_BASE + '', map_generator_options);
 
-
     const map_thumb = worldImageURL(world, 'map_thumb');
     const map = worldImageURL(world, 'map');
+    world.map_exists = checkImage(map_thumb);
+    world.map_exists.then(exists => {
+      if (exists) {
+        world.map_thumb = map_thumb;
+        world.map = map;
+      }
+    });
 
-    const exists = await checkImage(map_thumb);
-    if (exists) {
-      world.map_thumb = map_thumb;
-      world.map = map;
-    }
     return world;
   };
 
@@ -841,7 +842,6 @@
     console.log('The "404 (Not Found)" error for world images is expected, and is not a bug.');
   });
 
-  let renderWorldImageFirstTime = true;
   Traveller.renderWorldImage = async (world, canvas) => {
     if (!world) return undefined;
 

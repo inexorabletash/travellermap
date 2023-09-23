@@ -1065,7 +1065,7 @@
 
         if (selectedWorld) {
           showWorldData();
-        } else if (selectedSector && map.scale <= 16) {
+        } else if (selectedSector) {
           showSearchPane('sds-visible', data.SectorName);
         } else {
           hideCards();
@@ -1098,7 +1098,10 @@
       const data = await response.json();
       const world = await Traveller.prepareWorld(data.Worlds[0]);
       if (world) {
-        await Traveller.renderWorldImage(world, $('#wds-world-image'));
+        await Promise.all([
+          Traveller.renderWorldImage(world, $('#wds-world-image')),
+          world.map_exists // Once resolved, `map`/`map_thumb` are set
+        ]);
 
         // Data Sheet
         world.DataSheetURL = Util.makeURL('print/world', {
