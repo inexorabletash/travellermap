@@ -217,12 +217,13 @@ namespace Maps
         });
 
         // Cases where T5SS codes don't apply: e.g. the Hierate or Imperium, or where no codes exist yet
-        private static readonly AllegianceDictionary s_legacyAllegiances = new AllegianceDictionary {
+        private static ThreadLocal<AllegianceDictionary> s_legacyAllegiances = new ThreadLocal<AllegianceDictionary>(() =>
+            new AllegianceDictionary {
             { "As", "Aslan Hierate" }, // T5SS: Clan, client state, or unknown; no generic code
             { "Dr", "Droyne" }, // T5SS: Polity name or unaligned w/ Droyne population
             { "Im", "Third Imperium" }, // T5SS: Domain or cultural region; no generic code
             { "Kk", "The Two Thousand Worlds" }, // T5SS: (Not yet assigned)
-        };
+        });
 
         // In priority order:
         // * T5 Allegiance code (T5SS)
@@ -238,8 +239,8 @@ namespace Maps
                 return s_t5Allegiances.Value[code];
             if (s_legacyAllegianceToT5Overrides.Value.ContainsKey(code))
                 return s_t5Allegiances.Value[s_legacyAllegianceToT5Overrides.Value[code]];
-            if (s_legacyAllegiances.ContainsKey(code))
-                return s_legacyAllegiances[code];
+            if (s_legacyAllegiances.Value.ContainsKey(code))
+                return s_legacyAllegiances.Value[code];
             if (s_legacyToT5Allegiance.Value.ContainsKey(code))
                 return s_legacyToT5Allegiance.Value[code];
 
@@ -363,22 +364,23 @@ namespace Maps
             }
         }
 
-        private static readonly SophontDictionary s_sophontCodes = SophontDictionary
-            .FromFile(System.Web.Hosting.HostingEnvironment.MapPath("~/res/t5ss/sophont_codes.tab"));
+        private static ThreadLocal<SophontDictionary> s_sophontCodes = new ThreadLocal<SophontDictionary>(() =>
+            SophontDictionary
+            .FromFile(System.Web.Hosting.HostingEnvironment.MapPath("~/res/t5ss/sophont_codes.tab")));
 
         public static string? SophontCodeToName(string code)
         {
-            if (s_sophontCodes.ContainsKey(code))
-                return s_sophontCodes[code].Name;
+            if (s_sophontCodes.Value.ContainsKey(code))
+                return s_sophontCodes.Value[code].Name;
             return null;
         }
         public static Sophont? SophontForCode(string code)
         {
-            if (s_sophontCodes.ContainsKey(code))
-                return s_sophontCodes[code];
+            if (s_sophontCodes.Value.ContainsKey(code))
+                return s_sophontCodes.Value[code];
             return null;
         }
-        public static IEnumerable<string> SophontCodes => s_sophontCodes.Keys;
+        public static IEnumerable<string> SophontCodes => s_sophontCodes.Value.Keys;
         #endregion // Sophonts
 
     }
