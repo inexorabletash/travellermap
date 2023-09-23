@@ -228,7 +228,7 @@ namespace Maps.Utilities
         public static string SanitizeFilename(string input) => alphanumeric.Replace(input, "_");
         public static StreamReader SharedFileReader(string path)
         {
-            return new StreamReader(new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite));
+            return new StreamReader(new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read));
         }
     }
 
