@@ -11,6 +11,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Xml.Serialization;
 
 namespace Maps
@@ -401,14 +402,14 @@ namespace Maps
                 new Hex((byte)(Astrometrics.SubsectorWidth * (2 * ssx + 1) / 2), (byte)(Astrometrics.SubsectorHeight * (2 * ssy + 1) / 2)));
         }
 
-        private static readonly SectorStylesheet s_defaultStyleSheet =
-            s_defaultStyleSheet = SectorStylesheet.Parse(
-                Util.SharedFileReader(System.Web.Hosting.HostingEnvironment.MapPath("~/res/styles/otu.css")));
+        private static ThreadLocal<SectorStylesheet> s_defaultStyleSheet = new ThreadLocal<SectorStylesheet>(() =>
+            SectorStylesheet.Parse(
+                Util.SharedFileReader(System.Web.Hosting.HostingEnvironment.MapPath("~/res/styles/otu.css"))));
 
         internal SectorStylesheet? Stylesheet { get; set; }
 
         internal SectorStylesheet.StyleResult ApplyStylesheet(string element, string? code)
-            => (Stylesheet ?? s_defaultStyleSheet).Apply(element, code);
+            => (Stylesheet ?? s_defaultStyleSheet.Value).Apply(element, code);
 
         [XmlElement("Stylesheet"), JsonName("Stylesheet")]
         public string? StylesheetText
@@ -420,7 +421,7 @@ namespace Maps
                 if (value != null)
                 {
                     Stylesheet = SectorStylesheet.Parse(value);
-                    Stylesheet.Parent = s_defaultStyleSheet;
+                    Stylesheet.Parent = s_defaultStyleSheet.Value;
                 }
             }
         }
