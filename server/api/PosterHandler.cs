@@ -24,6 +24,8 @@ namespace Maps.API
                 ParseOptions(ref options, ref style);
                 string title;
                 bool clipOutsectorBorders;
+                bool transparent = false;
+                bool forceClip = false;
 
                 if (HasOption("x1") && HasOption("x2") &&
                     HasOption("y1") && HasOption("y2"))
@@ -231,6 +233,12 @@ namespace Maps.API
 
                 int rot = GetIntOption("rotation", 0) % 4;
                 int hrot = GetIntOption("hrotation", 0);
+                if (hrot !=0)
+                {
+                    forceClip = true;
+                    transparent = true;
+                }
+
                 bool thumb = GetBoolOption("thumb", false);
 
                 Stylesheet stylesheet = new Stylesheet(scale, options, style);
@@ -271,8 +279,6 @@ namespace Maps.API
                 if (hrot != 0)
                     ApplyHexRotation(hrot, stylesheet, ref bitmapSize, ref hexTransform);
 
-                bool transparent = false;
-                bool forceClip = false;
                 AbstractMatrix clampTransform = AbstractMatrix.Identity;
                 if (GetBoolOption("clampar", defaultValue: false))
                 {
