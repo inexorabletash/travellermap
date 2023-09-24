@@ -1047,18 +1047,6 @@
         selectedWorld = null;
       }
 
-      if (selectedSector && (options.refresh || options.directAction)) {
-        // BUG: This is being applied even if world is going to be shown.
-        $('#sds-data').innerHTML = template('#sds-template')(data);
-
-        // Hook up toggle
-        $$('#sds-data .ds-mini-toggle, .sds-sectorname').forEach(element => {
-          element.addEventListener('click', event => {
-            document.body.classList.toggle('ds-mini');
-          });
-        });
-      }
-
       if (options.directAction) {
         document.body.classList.toggle('sector-selected', selectedSector);
         document.body.classList.toggle('world-selected', selectedWorld);
@@ -1066,12 +1054,25 @@
         if (selectedWorld) {
           showWorldData();
         } else if (selectedSector) {
-          showSearchPane('sds-visible', data.SectorName);
+          showSectorData(data);
         } else {
           hideCards();
         }
       }
     }
+  }
+
+  async function showSectorData(data) {
+    $('#sds-data').innerHTML = template('#sds-template')(data);
+
+    // Hook up toggle
+    $$('#sds-data .ds-mini-toggle, .sds-sectorname').forEach(element => {
+      element.addEventListener('click', event => {
+        document.body.classList.toggle('ds-mini');
+      });
+    });
+
+    showSearchPane('sds-visible', data.SectorName);
   }
 
   async function showWorldData() {
@@ -1081,7 +1082,7 @@
       sector: selectedSector,
       hex: selectedWorld.hex
     };
-    $('#wds-spinner').style.display = 'block';
+    $('#spinner').style.display = 'block';
     const milieu = map.namedOptions.get('milieu');
 
     try {
@@ -1170,7 +1171,7 @@
     } catch (error) {
       console.warn(error);
     } finally {
-      $('#wds-spinner').style.display = 'none';
+      $('#spinner').style.display = 'none';
     }
   }
 

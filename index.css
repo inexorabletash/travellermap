@@ -268,12 +268,11 @@ body:not(.wds-visible) #wds-frame { display: none; }
   margin-bottom: 1em;
 }
 
-#wds-spinner {
+#spinner {
   display: none;
 
   position: absolute;
-  right: 30px;
-  top: 10px;
+  top: 10px; right: 40px;
   width: 20px;
   height: 20px;
 
@@ -1024,7 +1023,6 @@ body:not(.search-results) #closeSearchBtn { display: none; }
   background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMy4xNSIgaGVpZ2h0PSIxMS4xNSI+PHBhdGggZD0iTTIwLjM3IDBhMi43OSAyLjc5IDAgMCAwLTIuNCA0LjJsLTMuMzIgMy4zNy01LjQxLTUuNTRhLjg1Ljg1IDAgMCAwLS42MS0uMjYuODUuODUgMCAwIDAtLjYuMjRMNC4wNiA1LjljLS4zOS0uMi0uODItLjMyLTEuMjYtLjMyQTIuNzkgMi43OSAwIDEgMCA1LjI2IDcuMUw4LjYgMy44Mmw1LjQzIDUuNTZhLjg1Ljg1IDAgMCAwIDEuMiAwbDQtNC4wNEEyLjc5IDIuNzkgMCAxIDAgMjAuMzYgMHoiLz48L3N2Zz4K);
 }
 .route-ui #routeBtn { display: none; }
-
 
 /* ============================================================ */
 /* More Box */
