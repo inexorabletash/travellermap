@@ -791,8 +791,7 @@
     world.sector_url_noscheme = world.sector_url.replace(/^\w+:\/\//, '');
 
     // Map Generator
-    // http://members.ozemail.com.au/~jonoreita/T5%20World%20Map%20Generator/api_documentation.html
-    const GENERATOR_BASE = 'http://members.ozemail.com.au/~jonoreita/TravellerWorlds/';
+    const GENERATOR_BASE = 'https://travellerworlds.com/';
 
     const map_generator_options = {
       hex: world.Hex,
