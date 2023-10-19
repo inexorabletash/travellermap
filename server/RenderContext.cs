@@ -51,6 +51,8 @@ namespace Maps.Rendering
         public bool ClipOutsectorBorders { get; set; }
         public bool ForceClip { get; set; }
 
+        public bool TransparentGridBorder { get; set; } // TODO: This could do with a better name
+
         public Stylesheet Styles => styles;
         private readonly AbstractMatrix worldSpaceToImageSpace;
         public AbstractMatrix ImageSpaceToWorldSpace { get; }
@@ -213,6 +215,22 @@ namespace Maps.Rendering
 
         private class Renderer
         {
+            // TODO: I'm not sure if this is the best way to do constants in C#
+            static readonly AbstractBrush TransparentBrush = new AbstractBrush(Color.Transparent);
+            static readonly byte[] CompositionHorzCutoutTypes = new byte[] {
+                    (byte)PathPointType.Start,
+                    (byte)PathPointType.Line,
+                    (byte)PathPointType.Line,
+                    (byte)PathPointType.Line,
+                    (byte)(PathPointType.Line | PathPointType.CloseSubpath),
+                };
+            static readonly byte[] CompositionVertCutoutTypes = new byte[] {
+                    (byte)PathPointType.Start,
+                    (byte)PathPointType.Line,
+                    (byte)PathPointType.Line,
+                    (byte)(PathPointType.Line | PathPointType.CloseSubpath),
+                };
+
             private RenderContext ctx;
             private AbstractGraphics graphics;
             private AbstractBrush solidBrush;
@@ -232,6 +250,7 @@ namespace Maps.Rendering
             private Size tileSize => ctx.tileSize;
             private AbstractMatrix worldSpaceToImageSpace => ctx.worldSpaceToImageSpace;
             private bool ClipOutsectorBorders => ctx.ClipOutsectorBorders;
+            private bool TransparentGridBorder => ctx.TransparentGridBorder;
 #pragma warning restore IDE1006 // Naming Styles
             #endregion
 
@@ -286,6 +305,8 @@ namespace Maps.Rendering
                 
                 new LayerAction(LayerId.Macro_Borders, ctx => ctx.DrawMacroBorders(), clip:true),
                 new LayerAction(LayerId.Macro_Routes, ctx => ctx.DrawMacroRoutes(), clip:true),
+
+                new LayerAction(LayerId.Compositing_Cutouts, ctx => ctx.DrawCompositingCutouts(), clip:true),
 
                 new LayerAction(LayerId.Grid_Sector, ctx => ctx.DrawSectorGrid(), clip:true),
                 new LayerAction(LayerId.Grid_Subsector, ctx => ctx.DrawSubsectorGrid(), clip:true),
@@ -808,6 +829,109 @@ namespace Maps.Rendering
                             RenderUtil.DrawString(graphics, label.text, font, solidBrush, 0, 0);
                         }
                     }
+                }
+            }
+
+            private void DrawCompositingCutouts()
+            {
+                if (!TransparentGridBorder)
+                    return;
+
+                graphics.SmoothingMode = SmoothingMode.HighQuality;
+
+                int hx = (int)Math.Floor(tileRect.Left);
+                int hw = (int)Math.Ceiling(tileRect.Width);
+                int hy = (int)Math.Floor(tileRect.Top);
+                int hh = (int)Math.Ceiling(tileRect.Height);
+
+                styles.parsecGrid.pen.Apply(ref pen);
+
+                System.Drawing.Graphics? cutoutGraphics = graphics.Graphics;
+                if (cutoutGraphics == null)
+                    return; // Graphics don't support drawing
+
+                bool squareHexes = styles.hexStyle == HexStyle.Square;
+
+                CompositingMode oldMode = cutoutGraphics.CompositingMode;
+                cutoutGraphics.CompositingMode = CompositingMode.SourceCopy;
+                try
+                {
+                    PointF[] horzPoints = new PointF[5];
+                    for (int px = hx - 1; px < hx + hw; px++)
+                    {
+                        // Top cutout
+                        if ((px % 2) == 0)
+                        {
+                            float py = hy;
+                            if (squareHexes)
+                            {
+                                graphics.DrawRectangle(TransparentBrush, px, py, 1.0f, 0.5f);
+                            }
+                            else
+                            {
+                                horzPoints[0] = new PointF(px + -RenderUtil.HEX_EDGE, py);
+                                horzPoints[1] = new PointF(px + RenderUtil.HEX_EDGE, py + 0.5f);
+                                horzPoints[2] = new PointF(px + 1.0f - RenderUtil.HEX_EDGE, py + 0.5f);
+                                horzPoints[3] = new PointF(px + 1.0f + RenderUtil.HEX_EDGE, py);
+                                horzPoints[4] = horzPoints[0];
+                                graphics.DrawPath(TransparentBrush, new AbstractPath(horzPoints, CompositionHorzCutoutTypes));
+                            }
+                        }
+
+                        // Bottom cutout
+                        if ((px % 2) != 0)
+                        {
+                            float py = (hy + hh) - 0.5f;
+                            if (squareHexes)
+                            {
+                                graphics.DrawRectangle(TransparentBrush, px, py - 0.5f, 1.0f, 0.5f);
+                            }
+                            else
+                            {
+                                horzPoints[0] = new PointF(px + -RenderUtil.HEX_EDGE, py);
+                                horzPoints[1] = new PointF(px + RenderUtil.HEX_EDGE, py - 0.5f);
+                                horzPoints[2] = new PointF(px + 1.0f - RenderUtil.HEX_EDGE, py - 0.5f);
+                                horzPoints[3] = new PointF(px + 1.0f + RenderUtil.HEX_EDGE, py);
+                                horzPoints[4] = horzPoints[0];
+                                graphics.DrawPath(TransparentBrush, new AbstractPath(horzPoints, CompositionHorzCutoutTypes));
+                            }
+                        }
+                    }
+
+                    if (squareHexes)
+                    {
+                        // Left & Right cutouts
+                        graphics.DrawRectangle(TransparentBrush, hx, hy, 1.0f, hh);
+                        graphics.DrawRectangle(TransparentBrush, hx + hw, hy, 1.0f, hh);
+                    }
+                    else
+                    {
+                        PointF[] vertPoints = new PointF[4];
+                        for (int py = hy - 1; py < hy + hh; py++)
+                        {
+                            // Left cutout
+                            int px = hx + 1;
+                            float yOffset = ((px % 2) != 0) ? 0.0f : 0.5f;
+                            vertPoints[0] = new PointF(px + -RenderUtil.HEX_EDGE, py + 0.5f + yOffset);
+                            vertPoints[1] = new PointF(px + RenderUtil.HEX_EDGE, py + 1.0f + yOffset);
+                            vertPoints[2] = new PointF(vertPoints[0].X, vertPoints[0].Y + 1.0f);
+                            vertPoints[3] = vertPoints[0];
+                            graphics.DrawPath(TransparentBrush, new AbstractPath(vertPoints, CompositionVertCutoutTypes));
+
+                            // Right cutout
+                            px = hx + hw;
+                            yOffset = ((px % 2) == 0) ? 0.0f : 0.5f;
+                            vertPoints[0] = new PointF(px + RenderUtil.HEX_EDGE, py + 0.5f + yOffset);
+                            vertPoints[1] = new PointF(px + - RenderUtil.HEX_EDGE, py + 1.0f + yOffset);
+                            vertPoints[2] = new PointF(vertPoints[0].X, vertPoints[0].Y + 1.0f);
+                            vertPoints[3] = vertPoints[0];
+                            graphics.DrawPath(TransparentBrush, new AbstractPath(vertPoints, CompositionVertCutoutTypes));
+                        }
+                    }
+                }
+                finally
+                {
+                    cutoutGraphics.CompositingMode = oldMode;
                 }
             }
 

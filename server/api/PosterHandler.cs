@@ -26,6 +26,8 @@ namespace Maps.API
                 bool clipOutsectorBorders;
                 bool transparent = false;
                 bool forceClip = false;
+                bool compositing = GetBoolOption("compositing", false);
+                bool nopadding = !compositing ? GetBoolOption("nopadding", false) : true; // no padding madatory when compositing
 
                 if (HasOption("x1") && HasOption("x2") &&
                     HasOption("y1") && HasOption("y2"))
@@ -55,6 +57,19 @@ namespace Maps.API
                     tileRect.Offset(-1, -1);
                     tileRect.Width += 1;
                     tileRect.Height += 1;
+
+                    if (nopadding)
+                    {
+                        // TODO: This change isn't needed for what I'm doing but I've made it so the API is consistent
+                        // TODO: Logically this is a bit odd as the no padding option actually increases the size of the image. This is
+                        // due to the fact the default implementation doesn't add any padding, but importantly it doesn't expand the
+                        // rect so it will fully contain all the hexes being rendered, the result of this is worlds can be half rendered
+                        // as their hex only half overlaps the rendered image. I'm not sure if that's intentional or a bug, for the
+                        // composition cutout alogirthm to work properly the rect needs to be the full extent of all hexes being rendered
+                        tileRect.Height += 0.5f;
+                        tileRect.X -= RenderUtil.HEX_EDGE;
+                        tileRect.Width += RenderUtil.HEX_EDGE * 2;
+                    }
 
                     title = $"Poster ({x1},{y1}) - ({x2},{y2})";
                     clipOutsectorBorders = true;
@@ -119,9 +134,18 @@ namespace Maps.API
 
                     // Account for jagged hexes
                     tileRect.Height += 0.5f;
-                    tileRect.Inflate(0.25f, 0.10f);
-                    if (style == Style.Candy)
-                        tileRect.Width += 0.75f;
+                    if (nopadding)
+                    {
+                        // TODO: This change isn't needed for what I'm doing but I've made it so the API is consistent
+                        tileRect.X -= RenderUtil.HEX_EDGE;
+                        tileRect.Width += RenderUtil.HEX_EDGE * 2;
+                    }
+                    else
+                    {
+                        tileRect.Inflate(0.25f, 0.10f);
+                        if (style == Style.Candy)
+                            tileRect.Width += 0.75f;
+                    }
 
                     clipOutsectorBorders = true;
                 }
@@ -129,7 +153,8 @@ namespace Maps.API
                 {
                     // Sector - either POSTed or specified by name
                     Sector? sector = null;
-                    options &= ~MapOptions.SectorGrid;
+                    if (!compositing)
+                        options &= ~MapOptions.SectorGrid;
 
                     if (Context.Request.HttpMethod == "POST")
                     {
@@ -183,7 +208,8 @@ namespace Maps.API
 
                         tileRect = sector.SubsectorBounds(index);
 
-                        options &= ~(MapOptions.SectorGrid | MapOptions.SubsectorGrid);
+                        if (!compositing)
+                            options &= ~(MapOptions.SectorGrid | MapOptions.SubsectorGrid);
 
                         title = $"{title} - Subsector {'A' + index}";
                     }
@@ -204,7 +230,8 @@ namespace Maps.API
                         selector = new QuadrantSelector(resourceManager, sector, index);
                         tileRect = sector.QuadrantBounds(index);
 
-                        options &= ~(MapOptions.SectorGrid | MapOptions.SubsectorGrid | MapOptions.SectorsMask);
+                        if (!compositing)
+                            options &= ~(MapOptions.SectorGrid | MapOptions.SubsectorGrid | MapOptions.SectorsMask);
 
                         title = $"{title} - {quadrant} Quadrant";
                     }
@@ -217,14 +244,23 @@ namespace Maps.API
                         selector = new SectorSelector(resourceManager, sector);
                         tileRect = sector.Bounds;
 
-                        options &= ~(MapOptions.SectorGrid);
+                        if (!compositing)
+                            options &= ~(MapOptions.SectorGrid);
                     }
 
                     // Account for jagged hexes
                     tileRect.Height += 0.5f;
-                    tileRect.Inflate(0.25f, 0.10f);
-                    if (style == Style.Candy)
-                        tileRect.Width += 0.75f;
+                    if (nopadding)
+                    {
+                        tileRect.X -= RenderUtil.HEX_EDGE;
+                        tileRect.Width += RenderUtil.HEX_EDGE * 2;
+                    }
+                    else
+                    {
+                        tileRect.Inflate(0.25f, 0.10f);
+                        if (style == Style.Candy)
+                            tileRect.Width += 0.75f;
+                    }
                     clipOutsectorBorders = false;
                 }
 
@@ -243,7 +279,10 @@ namespace Maps.API
 
                 Stylesheet stylesheet = new Stylesheet(scale, options, style);
 
-                Size tileSize = new Size((int)Math.Floor(tileRect.Width * scale * Astrometrics.ParsecScaleX), (int)Math.Floor(tileRect.Height * scale * Astrometrics.ParsecScaleY));
+                // TODO: Without padding, I was seeing the generated image being truncated by a
+                // pixel until I switched Floor to Ceiling. I'm not sure if it might make sense
+                // to make the same change to thumbnails below.
+                Size tileSize = new Size((int)Math.Ceiling(tileRect.Width * scale * Astrometrics.ParsecScaleX), (int)Math.Ceiling(tileRect.Height * scale * Astrometrics.ParsecScaleY));
 
                 if (thumb)
                 {
@@ -317,7 +356,8 @@ namespace Maps.API
                 RenderContext ctx = new RenderContext(resourceManager, selector, tileRect, scale, options, stylesheet, tileSize)
                 {
                     ForceClip = forceClip,
-                    ClipOutsectorBorders = clipOutsectorBorders
+                    ClipOutsectorBorders = clipOutsectorBorders,
+                    TransparentGridBorder = compositing
                 };
                 ProduceResponse(Context, title, ctx, bitmapSize, transform, transparent);
             }
