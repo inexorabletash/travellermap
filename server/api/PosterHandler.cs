@@ -23,10 +23,10 @@ namespace Maps.API
                 Style style = Style.Poster;
                 ParseOptions(ref options, ref style);
                 string title;
-                bool clipOutsectorBorders;
-                bool transparent = false;
-                bool forceClip = false;
                 bool compositing = GetBoolOption("compositing", false);
+                bool clipOutsectorBorders;
+                bool transparent = compositing ? true : false; // compositing requires the returned poster is a png for transparency
+                bool forceClip = false;
                 bool nopadding = !compositing ? GetBoolOption("nopadding", false) : true; // no padding madatory when compositing
 
                 if (HasOption("x1") && HasOption("x2") &&
