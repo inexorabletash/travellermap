@@ -101,13 +101,6 @@ namespace Maps.Rendering
         Macro_Borders,
         Macro_Routes,
 
-        // TODO: I think this would be the best place for a new action for drawing the cutouts. It's after
-        // the background and routes/borders so those will be cut out out but it's before the sector & hex
-        // grids so they will be drawn. This does mean sector grids will be drawn over adjacent sector hexes
-        // but I think that's actually desirable as at least then the grid lines will be consistent widths
-        // rather than steps where it transisitoins between adjacent & custom sectors
-        Compositing_Cutouts,
-
         Grid_Sector,
         Grid_Subsector,
         Grid_Parsec,
@@ -119,6 +112,8 @@ namespace Maps.Rendering
         Micro_BordersStroke,
         Micro_Routes,
         Micro_BorderExplicitLabels,
+
+        Compositing_Cutouts,
 
         Names_Sector,
 
@@ -505,8 +500,6 @@ namespace Maps.Rendering
                 LayerId.Macro_Borders,
                 LayerId.Macro_Routes,
 
-                LayerId.Compositing_Cutouts,
-
                 LayerId.Grid_Sector,
                 LayerId.Grid_Subsector,
                 LayerId.Grid_Parsec,
@@ -518,6 +511,14 @@ namespace Maps.Rendering
                 LayerId.Micro_BordersStroke,
                 LayerId.Micro_Routes,
                 LayerId.Micro_BorderExplicitLabels,
+
+
+                // TODO: It looks like this might be the best place for the cutouts as it's after
+                // filled borders. The downside of having it here is it's after the sector grid is
+                // drawn so those could have an inconsistent width when composited next to a
+                // non-custom sector. It's also making the assumption that sub sector names won't
+                // overlap the map edges that get cut out
+                LayerId.Compositing_Cutouts,
 
                 LayerId.Names_Sector,
 

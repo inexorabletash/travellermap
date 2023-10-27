@@ -306,8 +306,6 @@ namespace Maps.Rendering
                 new LayerAction(LayerId.Macro_Borders, ctx => ctx.DrawMacroBorders(), clip:true),
                 new LayerAction(LayerId.Macro_Routes, ctx => ctx.DrawMacroRoutes(), clip:true),
 
-                new LayerAction(LayerId.Compositing_Cutouts, ctx => ctx.DrawCompositingCutouts(), clip:true),
-
                 new LayerAction(LayerId.Grid_Sector, ctx => ctx.DrawSectorGrid(), clip:true),
                 new LayerAction(LayerId.Grid_Subsector, ctx => ctx.DrawSubsectorGrid(), clip:true),
                 new LayerAction(LayerId.Grid_Parsec, ctx => ctx.DrawParsecGrid(), clip:true),
@@ -319,6 +317,8 @@ namespace Maps.Rendering
                 new LayerAction(LayerId.Micro_BordersStroke, ctx => ctx.DrawMicroBordersStroke(), clip:true),
                 new LayerAction(LayerId.Micro_Routes, ctx => ctx.DrawMicroRoutes(), clip:true),
                 new LayerAction(LayerId.Micro_BorderExplicitLabels, ctx => ctx.DrawMicroLabels(), clip:false),
+
+                new LayerAction(LayerId.Compositing_Cutouts, ctx => ctx.DrawCompositingCutouts(), clip:true),
 
                 new LayerAction(LayerId.Names_Sector, ctx => ctx.DrawSectorNames(), clip:true),
                 new LayerAction(LayerId.Macro_GovernmentRiftRouteNames, ctx => ctx.DrawMacroNames(), clip:true),
