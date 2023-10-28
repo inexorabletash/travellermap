@@ -51,7 +51,7 @@ namespace Maps.Rendering
         public bool ClipOutsectorBorders { get; set; }
         public bool ForceClip { get; set; }
 
-        public bool TransparentGridBorder { get; set; } // TODO: This could do with a better name
+        public bool Compositing { get; set; }
 
         public Stylesheet Styles => styles;
         private readonly AbstractMatrix worldSpaceToImageSpace;
@@ -250,7 +250,7 @@ namespace Maps.Rendering
             private Size tileSize => ctx.tileSize;
             private AbstractMatrix worldSpaceToImageSpace => ctx.worldSpaceToImageSpace;
             private bool ClipOutsectorBorders => ctx.ClipOutsectorBorders;
-            private bool TransparentGridBorder => ctx.TransparentGridBorder;
+            private bool Compositing => ctx.Compositing;
 #pragma warning restore IDE1006 // Naming Styles
             #endregion
 
@@ -834,7 +834,7 @@ namespace Maps.Rendering
 
             private void DrawCompositingCutouts()
             {
-                if (!TransparentGridBorder)
+                if (!Compositing)
                     return;
 
                 graphics.SmoothingMode = SmoothingMode.HighQuality;

@@ -357,7 +357,7 @@ namespace Maps.API
                 {
                     ForceClip = forceClip,
                     ClipOutsectorBorders = clipOutsectorBorders,
-                    TransparentGridBorder = compositing
+                    Compositing = compositing
                 };
                 ProduceResponse(Context, title, ctx, bitmapSize, transform, transparent);
             }
