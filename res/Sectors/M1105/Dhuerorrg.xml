@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Sector>
+  <Credits>
+    <![CDATA[
+      <b>Dhuerorrg</b> sector was designed by John G. Wood.
+
+      Stellar positions were developed by Joe D. Fugate Sr.
+      and appear in <cite>The MegaTraveller Alien, Volume 1:
+      Vilani &amp; Vargr</cite> (Digest Group Publications,
+      1990).
+    ]]>
+  </Credits>
+  <Name>Dhuerorrg</Name>
+  <Subsectors Author="Mike Davis" Ref="http://www.elvwood.org/Traveller/Sectors/Dhuerorrg.html">
+    <Subsector Index="A">Ugaethi</Subsector>
+    <Subsector Index="B">Sogae</Subsector>
+    <Subsector Index="C">Oekhsith</Subsector>
+    <Subsector Index="D">Voetsgouz</Subsector>
+    <Subsector Index="E">Vatsu</Subsector>
+    <Subsector Index="F">Gadhognae</Subsector>
+    <Subsector Index="G">Khoeng</Subsector>
+    <Subsector Index="H">Dhaetsae</Subsector>
+    <Subsector Index="I">Udzginger</Subsector>
+    <Subsector Index="J">Agzaengaez</Subsector>
+    <Subsector Index="K">Rangrrourae</Subsector>
+    <Subsector Index="L">Aegroul</Subsector>
+    <Subsector Index="M">Llako</Subsector>
+    <Subsector Index="N">Dagvigae</Subsector>
+    <Subsector Index="O">Utheng</Subsector>
+    <Subsector Index="P">Ithueng</Subsector>
+  </Subsectors>
+  <Allegiances Source="Vilani and Vargr">
+    <Allegiance Code="Va">Non-Aligned, Vargr-dominated</Allegiance>
+    <Allegiance Code="Vb">Bakne Alliance</Allegiance>
+    <Allegiance Code="Vd">Democracy of Greats</Allegiance>
+    <Allegiance Code="Ve">Empire of Varroerth</Allegiance>
+    <Allegiance Code="Vm">Members of Knaeleng</Allegiance>
+    <Allegiance Code="Vo">Opposition Alliance</Allegiance>
+  </Allegiances>
+  <Borders>
+    <Border Allegiance="Vb" LabelPosition="1135">0430 0530 0529 0629 0729 0829 0929 1029 1130 1229 1329 1330 1430 1531 1631 1732 1831 1932 2032 2132 2231 2331 2430 2530 2529 2528 2628 2728 2827 2828 2929 2829 2730 2630 2631 2632 2633 2534 2535 2536 2537 2437 2337 2236 2137 2037 1938 1838 1839 1840 1741 1641 1541 1441 1341 1241 1141 1041 0941 0841 0741 0641 0640 0540 0439 0438 0538 0537 0536 0535 0534 0533 0532 0531 0430 </Border>
+    <Border Allegiance="Vd" LabelPosition="0517">0004 0104 0203 0303 0304 0404 0505 0605 0706 0707 0708 0709 0809 0910 1010 1011 1012 1113 1213 1114 1115 1116 1016 1017 1018 1019 1020 1021 1022 1123 1124 1023 0924 0824 0725 0625 0626 0526 0426 0327 0227 0127 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014 0013 0012 0011 0010 0009 0008 0007 0006 0005 0004 </Border>
+    <Border Allegiance="Ve" LabelPosition="2708">1200 1300 1400 1500 1600 1700 1800 1900 2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 3000 3001 3102 3202 3203 3204 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3214 3115 3014 2915 2914 2813 2713 2612 2513 2413 2314 2214 2115 2014 1914 1813 1713 1712 1711 1710 1709 1708 1707 1606 1605 1604 1504 1403 1402 1401 1301 1200 </Border>
+    <Border Allegiance="Ve" LabelPosition="3037" WrapLabel="true">2540 2639 2739 2738 2737 2837 2937 3036 3136 3235 3335 3336 3337 3338 3237 3138 3038 3039 3040 3041 2941 2841 2741 2641 2541 2540 </Border>
+    <Border Allegiance="Vm" LabelPosition="2219" WrapLabel="true">1525 1624 1623 1622 1621 1620 1619 1720 1819 1919 2018 2118 2217 2216 2317 2417 2518 2618 2718 2817 2718 2719 2720 2721 2722 2723 2724 2624 2525 2526 2426 2327 2227 2127 2026 1926 1826 1726 1625 1525 </Border>
+    <Border Allegiance="Vo" ShowLabel="false">0037 0038 0139 0140 0039 0038 0037 </Border>
+</Borders>
+  <Stylesheet>
+    border.Vb { color: olivedrab }
+    border.Vd { color: olivedrab }
+    border.Ve { color: olivedrab }
+    border.Vm { color: olivedrab }
+    border.Vo { color: olivedrab }
+    border.Vi { color: olivedrab }
+    route { style: dashed }
+  </Stylesheet>
+</Sector>

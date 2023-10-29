@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Sector>
+  <Credits>
+    <![CDATA[
+      <b>Ngathksirz</b> sector was designed by John G. Wood.
+
+      Stellar positions were developed by Joe D. Fugate Sr.
+      and appear in <cite>The MegaTraveller Alien, Volume 1:
+      Vilani &amp; Vargr</cite> (Digest Group Publications,
+      1990).
+    ]]>
+  </Credits>
+  <Name>Ngathksirz</Name>
+  <Subsectors Author="Mike Davis" Ref="http://www.elvwood.org/Traveller/Sectors/Ngathksirz.html">
+    <Subsector Index="A">Odzgoegh</Subsector>
+    <Subsector Index="B">Kfirzin</Subsector>
+    <Subsector Index="C">Kueroe</Subsector>
+    <Subsector Index="D">Aengangvuer</Subsector>
+    <Subsector Index="E">Dhaendzouts</Subsector>
+    <Subsector Index="F">Ruevoga</Subsector>
+    <Subsector Index="G">Aenael</Subsector>
+    <Subsector Index="H">Roenvoegazdu</Subsector>
+    <Subsector Index="I">Zarrkoe</Subsector>
+    <Subsector Index="J">Thafo</Subsector>
+    <Subsector Index="K">Uengou</Subsector>
+    <Subsector Index="L">Raez</Subsector>
+    <Subsector Index="M">Vaerr</Subsector>
+    <Subsector Index="N">Nouksaezor</Subsector>
+    <Subsector Index="O">Oegerag</Subsector>
+    <Subsector Index="P">Serrken</Subsector>
+  </Subsectors>
+  <Allegiances Source="Vilani and Vargr">
+    <Allegiance Code="Va">Non-Aligned, Vargr-dominated</Allegiance>
+    <Allegiance Code="Ve">Empire of Varroerth</Allegiance>
+  </Allegiances>
+  <Borders>
+    <Border Allegiance="Ve" LabelPosition="2129">0004 0105 0205 0306 0406 0507 0606 0707 0708 0808 0809 0910 1010 1111 1210 1310 1409 1509 1508 1507 1406 1306 1205 1306 1406 1506 1605 1604 1603 1602 1702 1801 1901 2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 3000 3100 3200 3300 3301 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2041 1941 1841 1741 1641 1541 1441 1341 1241 1141 1041 0941 0841 0741 0641 0541 0440 0340 0239 0139 0038 0037 0036 0035 0034 0033 0133 0232 0332 0331 0330 0429 0529 0528 0527 0526 0525 0424 0524 0623 0622 0621 0721 0720 0719 0618 0518 0517 0516 0415 0315 0214 0115 0014 0013 0012 0011 0010 0009 0008 0007 0006 0005 0004 </Border>
+  </Borders>
+  <Stylesheet>
+    border.Ve { color: olivedrab }
+  </Stylesheet>
+</Sector>
