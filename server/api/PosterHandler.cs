@@ -26,6 +26,11 @@ namespace Maps.API
                 bool clipOutsectorBorders;
                 bool transparent = false;
                 bool forceClip = false;
+                AbstractPath? clipPath = null;
+
+                const double NormalScale = 64; // pixels/parsec - standard subsector-rendering scale
+                double scale = GetDoubleOption("scale", NormalScale).Clamp(MinScale, MaxScale);
+                Stylesheet stylesheet = new Stylesheet(scale, options, style);
 
                 if (HasOption("x1") && HasOption("x2") &&
                     HasOption("y1") && HasOption("y2"))
@@ -222,14 +227,25 @@ namespace Maps.API
 
                     // Account for jagged hexes
                     tileRect.Height += 0.5f;
-                    tileRect.Inflate(0.25f, 0.10f);
-                    if (style == Style.Candy)
-                        tileRect.Width += 0.75f;
+
+                    // TODO(cthulhustig): Refine the name and behavior here, then drop "experimental-" prefix.
+                    if (GetBoolOption("experimental-compositing", false))
+                    {
+                        PathUtil.PathType borderPathType = stylesheet.microBorderStyle == MicroBorderStyle.Square ?
+                            PathUtil.PathType.Square : PathUtil.PathType.Hex;
+                        ClipPath clip = sector.ComputeClipPath(borderPathType);
+                        clipPath = new AbstractPath(clip.clipPathPoints, clip.clipPathPointTypes);
+                        tileRect.Inflate(RenderUtil.HEX_EDGE, 0);
+                    }
+                    else
+                    {
+                        tileRect.Inflate(0.25f, 0.10f);
+                        if (style == Style.Candy)
+                            tileRect.Width += 0.75f;
+                    }
+
                     clipOutsectorBorders = false;
                 }
-
-                const double NormalScale = 64; // pixels/parsec - standard subsector-rendering scale
-                double scale = GetDoubleOption("scale", NormalScale).Clamp(MinScale, MaxScale);
 
                 int rot = GetIntOption("rotation", 0) % 4;
                 int hrot = GetIntOption("hrotation", 0);
@@ -241,7 +257,6 @@ namespace Maps.API
 
                 bool thumb = GetBoolOption("thumb", false);
 
-                Stylesheet stylesheet = new Stylesheet(scale, options, style);
 
                 Size tileSize = new Size((int)Math.Floor(tileRect.Width * scale * Astrometrics.ParsecScaleX), (int)Math.Floor(tileRect.Height * scale * Astrometrics.ParsecScaleY));
 
@@ -307,6 +322,8 @@ namespace Maps.API
                     }
                 }
 
+
+
                 // Compose in this order so aspect ratio adjustments to image size (computed last)
                 // are applied first.
                 AbstractMatrix transform = AbstractMatrix.Identity;
@@ -317,7 +334,8 @@ namespace Maps.API
                 RenderContext ctx = new RenderContext(resourceManager, selector, tileRect, scale, options, stylesheet, tileSize)
                 {
                     ForceClip = forceClip,
-                    ClipOutsectorBorders = clipOutsectorBorders
+                    ClipOutsectorBorders = clipOutsectorBorders,
+                    ClipPath = clipPath,
                 };
                 ProduceResponse(Context, title, ctx, bitmapSize, transform, transparent);
             }
