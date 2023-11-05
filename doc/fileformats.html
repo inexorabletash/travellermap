@@ -761,11 +761,19 @@ The format utilizes the UTF-8 encoding. Therefore, each character may
 take more than one byte, but most of Earth's writing systems can be
 represented using <a href="http://unicode.org">Unicode</a>.
 This is a variable-width, line-oriented format. Fields are fixed
-width, separated by one space, left aligned and padded by spaces.
+width, separated by at least one space, left aligned and padded by spaces.
 Lines in the file are terminated with either LF
 (U+000A) or CR+LF (U+000D, U+000A).
 There is no escaping mechanism  &ndash; neither tabs nor
 line breaking characters may occur within fields.
+</p>
+
+<p>
+NOTE: At this time, Unicode code points beyond U+FFFF are not
+correctly supported by the site. This is because the underlying
+implementation internally uses .NET's UTF-16 representation for
+strings, and characters beyond U+FFFF encode into two UTF-16 code
+units, which mean column counts will be incorrect.
 </p>
 
 <p>
@@ -779,7 +787,7 @@ the field names. The header line is composed of field
 names padded by spaces. The header line is followed by a
 <dfn>separator line</dfn> which defines the field widths.
 The separator line is composed of runs of <code>-</code> (U+002D)
-characters separated by space characters (U+0020).
+characters separated by one or more space characters (U+0020).
 To parse the file, the header line should be saved, then the
 separator line parsed to determine field widths and offsets.
 The header line can then be parsed to determine field names.
@@ -787,6 +795,12 @@ The fields do not appear in a fixed order; after parsing
 the separator line and the header line, a field index to field
 name mapping can be constructed to use for parsing the rest of
 the file.
+</p>
+
+<p>
+Leading and trailing spaces on the separator line are permitted.
+Non-space characters that appear in any line between fields
+result in a parse error.
 </p>
 
 <p>
