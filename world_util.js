@@ -542,18 +542,36 @@
   })();
 
   const STELLAR_TABLE = {
+    // Ordinary stars
     Ia: 'Supergiant',
     Ib: 'Supergiant',
     II: 'Giant',
     III: 'Giant',
     IV: 'Subgiant',
-    V: 'Dwarf',
+    V: 'Dwarf (Main Sequence)',
+
+    // Compact stars
     D: 'White Dwarf',
     BD: 'Brown Dwarf',
     BH: 'Black Hole',
     PSR: 'Pulsar',
     NS: 'Neutron Star'
   };
+
+  const STELLAR_OVERRIDES = {
+    // Avoid "blue dwarf" for O and B, "white dwarf" for A.
+    'Main Sequence': /^[OBA][0-9] V$/,
+  };
+
+  const STELLAR_COLOR = {
+    'Blue':         /^[OB][0-9] /,
+    'White':        /^A[0-9] /,
+    'Yellow-White': /^F[0-9] /,
+    'Yellow':       /^G[0-9] /,
+    'Orange':       /^K[0-9] /,
+    'Red':          /^M[0-9] /,
+  };
+
 
   const fetch_status = new Map();
 
@@ -755,7 +773,20 @@
       .split(/\s+(?!Ia|Ib|II|III|IV|V|VI|VII)/)
       .map(code => {
         const last = code.split(/\s+/).pop();
-        return {code, detail: STELLAR_TABLE[last]};
+        let detail = STELLAR_TABLE[last];
+
+        Object.keys(STELLAR_OVERRIDES).forEach(key => {
+          if (code.match(STELLAR_OVERRIDES[key]))
+            detail = key;
+        });
+
+        // Prepend color for ordinary stars
+        Object.keys(STELLAR_COLOR).forEach(key => {
+          if (code.match(STELLAR_COLOR[key]))
+            detail = key + ' ' + detail;
+        });
+
+        return {code, detail};
       });
 
     // Zone
