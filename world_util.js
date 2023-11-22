@@ -541,6 +541,13 @@
     });
   })();
 
+  // Promise - resolved once world details is available.
+  const DETAILS_FETCHED = (async () => {
+    const response = await fetch(Traveller.MapService.makeURL('/res/maps/world_details.json'));
+    if (!response.ok) throw Error(response.statusText);
+    return await response.json();
+  })();
+
   const STELLAR_TABLE = {
     // Ordinary stars
     Ia: 'Supergiant',
@@ -656,7 +663,7 @@
 
   Traveller.prepareWorld = async world => {
     if (!world) return undefined;
-    await SOPHONTS_FETCHED;
+    await Promise.all([SOPHONTS_FETCHED, DETAILS_FETCHED]);
 
     world.raw = Object.assign({}, world);
 
@@ -849,10 +856,11 @@
     const map_thumb = worldImageURL(world, 'map_thumb');
     const map = worldImageURL(world, 'map');
     world.map_exists = checkImage(map_thumb);
-    world.map_exists.then(exists => {
+    world.map_exists.then(async exists => {
       if (exists) {
         world.map_thumb = map_thumb;
         world.map = map;
+        world.map_details = (await DETAILS_FETCHED)[world.SectorAbbreviation + ' ' + world.Hex];
       }
     });
 
