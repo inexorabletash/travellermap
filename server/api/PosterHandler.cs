@@ -228,8 +228,7 @@ namespace Maps.API
                     // Account for jagged hexes
                     tileRect.Height += 0.5f;
 
-                    // TODO(cthulhustig): Refine the name and behavior here, then drop "experimental-" prefix.
-                    if (GetBoolOption("experimental-compositing", false))
+                    if (GetBoolOption("compositing", false))
                     {
                         PathUtil.PathType borderPathType = stylesheet.microBorderStyle == MicroBorderStyle.Square ?
                             PathUtil.PathType.Square : PathUtil.PathType.Hex;
