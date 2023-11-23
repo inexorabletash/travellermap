@@ -1644,7 +1644,7 @@
   }
 
   // Show promo, if not dismissed.
-  if (!isIframe) {
+  if (!isIframe && $('#promo-closebtn')) {
     setTimeout(() => {
       const promo_key = 'tm_promo5';
       if (!localStorage.getItem(promo_key)) {
