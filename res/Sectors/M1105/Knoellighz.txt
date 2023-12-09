@@ -34,9 +34,9 @@ Hex  Name                 UWP       Remarks                                     
 0309 Fitsekr              B342442-8 He Ni Po                                             { -1 } (931+1) [4339]       -   U 204 13 ZhSh M3 V
 0310 Klefriaaatsidl       B355333-C Lo                                                   { 1 }  (A21-4) [148C]       -   - 304  8 ZhSh F8 V D
 0314 Ila                  B7A4669-8 Fl Ni                                                { -1 } (755+4) [355B]       -   - 303 10 ZhSh M2 V D
-0318 Idrrrzrovryazh       D326774-7 Pi                                                   { -2 } (465-1) [6539]       -   - 905 11 ZhSh M6 V K5 V
-0319 Ipzhdievrebl         C543664-8 Ni Po O:Knoe-0520                                    { -2 } (751+5) [545B]       -   - 101 13 ZhSh M6 V K5 V
-0320 Odlinche             D221679-8 Na Ni Po                                             { -3 } (751+0) [8346]       -   - 101 10 ZhSh M6 V K5 V
+0318 Idrrrzrovryazh       D326774-7 Pi                                                   { -2 } (465-1) [6539]       -   - 905 11 ZhSh K5 V M6 V
+0319 Ipzhdievrebl         C543664-8 Ni Po O:Knoe-0520                                    { -2 } (751+5) [545B]       -   - 101 13 ZhSh K5 V M6 V
+0320 Odlinche             D221679-8 Na Ni Po                                             { -3 } (751+0) [8346]       -   - 101 10 ZhSh K5 V M6 V
 0321 Zhiblchins           A323553-D Ni Po Cp                                             { 1 }  (F45+2) [365E]       -   - 603 10 ZhSh M5 V
 0322 Prtabrket            D3204A9-A De He Ni Po                                          { -1 } (934+3) [8395]       -   U 101 10 ZhSh M5 V
 0324 Chavlzhdoblshet      B526765-8 Pi                                                   { 0 }  (866+3) [576C]       -   - 503  9 ZhSh F8 V D
@@ -94,7 +94,7 @@ Hex  Name                 UWP       Remarks                                     
 0637 Asal                 B5A0500-D He Ni                                                { 1 }  (A47+1) [563D]       C   - 312 10 NaVa M0 V
 0639 Thaerarrg            C6A0331-6 He Lo                                                { -2 } (B21-1) [5154]       -   - 502 13 NaVa M6 II K2 V
 0705 Ghingtholkoengaedh   C4126BC-A Ic Na Ni Co Pz                                       { 0 }  (D56+0) [3656]       -   A 104 15 NaVa M0 V D
-0707 Kaezthuerserrgh      D410545-7 Ni                                                   { -3 } (740+3) [1267]       K   - 300  8 NaVa M8 V M6 V D
+0707 Kaezthuerserrgh      D410545-7 Ni                                                   { -3 } (740+3) [1267]       K   - 300  8 NaVa M6 V M8 V D
 0710 Iezhdebdleflsha      A260301-E De Lo Cp                                             { 2 }  (921+0) [358F]       KM  - 802  8 ZhSh F5 V D
 0711 Tliaklo              B221675-C Na Ni Po                                             { 1 }  (A55+0) [678B]       -   - 802  9 ZhSh M4 V
 0712 Epfintsplrz          D310534-6 Ni                                                   { -3 } (842+2) [5251]       -   - 101  7 ZhSh M4 V
@@ -157,10 +157,10 @@ Hex  Name                 UWP       Remarks                                     
 1110 Dhughre              C240165-6 De Lo Po O:Knoe-1109                                 { -2 } (701-3) [1188]       C   - 111  9 NaVa F6 V
 1114 Aenguezae            B140664-8 De Ni Po O:Knoe-1212                                 { -1 } (C53+2) [553C]       -   - 203 14 NaVa F2 V D
 1119 Vanthoskaedhokhsig   C451267-6 Lo Po O:Knoe-1020                                    { -2 } (811+0) [5195]       -   - 304 11 NaVa F9 V D
-1123 Aegverrgfakh         C564103-5 Lo                                                   { -2 } (601+2) [2173]       -   - 204 13 NaVa M7 V D K2 V
+1123 Aegverrgfakh         C564103-5 Lo                                                   { -2 } (601+2) [2173]       -   - 204 13 NaVa K2 V D M7 V
 1127 Thueknorrurr         B679000-A Di                                                   { 1 }  (B03-1) [0000]       K   - 315 16 VAsP F9 V D
 1128 Ukhunllorr           D237854-6 Ph                                                   { -2 } (476+1) [766B]       K   - 101  8 VAsP F9 V D
-1131 Tsouu                D98A463-5 Ni Wa                                                { -3 } (833+5) [4181]       C   - 102  8 VInL K5 V F7 V D
+1131 Tsouu                D98A463-5 Ni Wa                                                { -3 } (833+5) [4181]       C   - 102  8 VInL F7 V K5 V D
 1134 Tuellaerrghog        C5A0588-4 He Ni                                                { -2 } (742+0) [2334]       -   - 803 10 NaVa F9 V D
 1137 Orrgto               A475253-D Lo                                                   { 1 }  (911-2) [337D]       -   - 101 10 VInL F9 V D
 1138 Duelunogoerrzuez     B000A79-B As Hi In Na Va C:Knoe-1036 Cp Cx                     { 4 }  (99C+1) [BE6A]       -   - 602 13 VInL G5 V D
@@ -346,7 +346,7 @@ Hex  Name                 UWP       Remarks                                     
 2233 Ksaellaez            C553102-5 Lo Po                                                { -2 } (501+1) [21A2]       C   - 312  8 NaVa F5 V D
 2237 Uosa                 D544976-8 Hi In                                                { 0 }  (A8B+1) [B945]       C   - 116 16 VAsP F6 V D
 2240 Uknonueng            X78A576-1 Ni Pr Wa                                             { -3 } (B43-4) [7254]       C   - 808  8 VAsP K6 V D
-2301 Oknaeg               B40547B-B Ic Ni Va Co                                          { 1 }  (D34-2) [353E]       C   - 503 16 NaVa M3 V M1 V
+2301 Oknaeg               B40547B-B Ic Ni Va Co                                          { 1 }  (D34-2) [353E]       C   - 503 16 NaVa M1 V M3 V
 2302 Gaeksan              A577000-0 Ba C:Knoe-2201                                       { -1 } (900-5) [0000]       K   - 801  9 NaVa F9 V
 2303 Aergghdza            D767859-4 Ga Pa Ph Ri                                          { -1 } (676+1) [9784]       -   - 000  9 NaVa F9 V
 2304 Ekhsgvo              C9B0401-C He Ni                                                { 0 }  (935-5) [143D]       -   - 101  8 NaVa F9 V
@@ -381,7 +381,7 @@ Hex  Name                 UWP       Remarks                                     
 2510 Negarrghoeoegong     A558454-B Ni Pa Cp                                             { 1 }  (C33-4) [351E]       K   - 104 12 VDeG F0 V
 2513 Vafozouthallkfuks    E586474-7 Ni Pa                                                { -3 } (230+4) [3199]       C   - 300  4 VDeG F8 V
 2517 Adhaeoe              A7C7237-C Fl Lo Cp                                             { 1 }  (911+0) [333D]       K   - 202 12 VDeG G6 V D
-2518 Ghukno               E000685-3 As Na Ni Va                                          { -3 } (352-2) [3333]       C   - 500 13 VDeG M4 V M7 III
+2518 Ghukno               E000685-3 As Na Ni Va                                          { -3 } (352-2) [3333]       C   - 500 13 VDeG M7 III M4 V
 2519 Unaluks              C98A540-9 Ni Pr Wa                                             { -1 } (B41+0) [445C]       C   - 922  7 VDeG G3 V
 2520 Oall                 D869587-3 Ni Pr                                                { -3 } (943-2) [A256]       -   - 101 12 VDeG G3 V
 2521 Atokhlloeg           A323333-C Lo Po                                                { 1 }  (721-1) [545H]       K   - 202 11 VDeG M2 V
@@ -391,7 +391,7 @@ Hex  Name                 UWP       Remarks                                     
 2602 Sueodhoeng           C53559B-9 Ni                                                   { -1 } (444+0) [543B]       -   - 200  8 NaVa M4 II
 2605 Gzaeogvaksksueks     A52489A-6 Ph Pi                                                { 0 }  (474+1) [9851]       K   - 303 13 VDeG F3 V D
 2606 Zuloth               C595343-6 Lo Tp                                                { -2 } (921+2) [1118]       -   - 101 11 VDeG F3 V D
-2607 Oudhurlongkou        E000205-5 As Lo Va                                             { -3 } (A11-3) [1171]       C   - 705 11 VDeG M6 V M3 V
+2607 Oudhurlongkou        E000205-5 As Lo Va                                             { -3 } (A11-3) [1171]       C   - 705 11 VDeG M3 V M6 V
 2610 Nogvullfaghzaellvang C35489A-2 Pa Ph                                                { -1 } (B74-2) [D751]       K   - 901 12 VDeG F2 V
 2611 Rurzsik              B998310-B Lo Tp                                                { 1 }  (621+1) [143D]       -   - 000 12 VDeG F2 V
 2613 Oukughoell           E342200-5 He Lo Po                                             { -3 } (911-3) [4134]       -   - 206 12 VDeG K0 V D
@@ -403,7 +403,7 @@ Hex  Name                 UWP       Remarks                                     
 2623 Raggzarrgh           C210573-9 Ni                                                   { -1 } (A42-1) [7458]       K   - 102 12 VDeG M3 V
 2624 Goevozuou            B85A356-9 Lo Wa                                                { 0 }  (C21+4) [431C]       K   - 302 12 VDeG G1 V D
 2625 Oeghdon              E330501-7 De Ni Po                                             { -3 } (940-1) [5249]       -   - 101  9 VDeG G1 V D
-2626 Dugzkoegzoen         C30036B-5 Lo Va                                                { -2 } (621-5) [2151]       -   - 303  8 VDeG M6 V K6 V
+2626 Dugzkoegzoen         C30036B-5 Lo Va                                                { -2 } (621-5) [2151]       -   - 303  8 VDeG K6 V M6 V
 2628 Toghdzoerzuedh       C303000-B Ic Va Co Di                                          { 0 }  (907+0) [0000]       -   - 904 14 VDeG K8 V M7 V D D
 2630 Idzagudzuegaets      A611400-A Ic Ni Co                                             { 1 }  (E35+2) [656B]       -   - 903 12 NaVa F0 IV M5 V
 2638 Nullkfaetskhuen      A546376-A Lo Cp                                                { 1 }  (B21+0) [1489]       -   - 203 14 NaVa F0 V
