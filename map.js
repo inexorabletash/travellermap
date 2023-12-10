@@ -227,6 +227,7 @@ const Util = {
     TileHeight: 256,
     MinScale: 0.0078125,
     MaxScale: 512,
+    HexEdge: Math.tan(Math.PI / 6) / 4 / Math.cos(Math.PI / 6),
 
     // World-space: Hex coordinate, centered on Reference
     sectorHexToWorld: (sx, sy, hx, hy) => {
@@ -1375,6 +1376,26 @@ const Util = {
         const r = Math.abs(this.mapToPixel(overlay.x, overlay.y + overlay.r).y - pt.y);
         ctx.beginPath();
         ctx.ellipse(pt.x, pt.y, r, r, 0, 0, Math.PI*2);
+        ctx.fill();
+      } else if (overlay.type === 'hex') {
+        const halfH = 0.5;
+        const halfMinW = (0.5 - Astrometrics.HexEdge) * Astrometrics.ParsecScaleX;
+        const halfMaxW = (0.5 + Astrometrics.HexEdge) * Astrometrics.ParsecScaleX;
+        const pts = [
+          this.mapToPixel(overlay.x - halfMinW, overlay.y - halfH),
+          this.mapToPixel(overlay.x + halfMinW, overlay.y - halfH),
+          this.mapToPixel(overlay.x + halfMaxW, overlay.y),
+          this.mapToPixel(overlay.x + halfMinW, overlay.y + halfH),
+          this.mapToPixel(overlay.x - halfMinW, overlay.y + halfH),
+          this.mapToPixel(overlay.x - halfMaxW, overlay.y)
+        ];
+        ctx.beginPath();
+        let pt = pts[pts.length - 1];
+        ctx.moveTo(pt.x, pt.y);
+        for (let i = 0; i < pts.length; ++i) {
+          pt = pts[i];
+          ctx.lineTo(pt.x, pt.y);
+        }
         ctx.fill();
       }
       ctx.restore();
