@@ -1397,6 +1397,30 @@ const Util = {
           ctx.lineTo(pt.x, pt.y);
         }
         ctx.fill();
+      } else if (overlay.type === 'polygon') {
+        let pts = overlay.points;
+        let pt = this.mapToPixel(pts[0].x, pts[0].y);
+        ctx.beginPath();
+        ctx.moveTo(pt.x, pt.y);
+        for (let i = 1; i < pts.length; ++i) {
+          let pt = this.mapToPixel(pts[i].x, pts[i].y)
+          ctx.lineTo(pt.x, pt.y);
+        }
+        ctx.closePath();
+
+        if (('line' in overlay) || ('fill' in overlay)) {
+          if ('fill' in overlay) {
+            ctx.fillStyle = overlay.fill;
+            ctx.fill();
+          }
+          if ('line' in overlay) {
+            ctx.strokeStyle = overlay.line;
+            ctx.lineWidth = 'w' in overlay ? overlay.w : 1;
+            ctx.stroke();
+          }
+        } else {
+          ctx.fill();
+        }
       }
       ctx.restore();
     }
