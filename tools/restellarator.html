@@ -34,7 +34,7 @@ function fix(world) {
   // Stellar
   const key = ['Stellar', 'Stars'].filter(key => key in world)[0];
   const current = world[key];
-  world[key] = current ? Restellarator.fix(current) : Restellarator.generate();
+  world[key] = Restellarator.reorder(current ? Restellarator.fix(current) : Restellarator.generate());
 }
 
 $('#go').addEventListener('click', () => {

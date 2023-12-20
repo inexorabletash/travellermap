@@ -201,7 +201,7 @@ const Restellarator = {
       let order = TYPES.indexOf(a.type) - TYPES.indexOf(b.type);
       if (order) return order;
 
-      order = SPECTRALS.indexOf(a.spectral) - SPECTRALS.indexOf(b.spectral);
+      order = SPECTRALS.indexOf(b.spectral) - SPECTRALS.indexOf(a.spectral);
       if (order) return order;
 
       return Number(a.decimal) - Number(b.decimal);
