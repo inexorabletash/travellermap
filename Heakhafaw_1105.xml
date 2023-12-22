@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Sector xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Tags="OTU" Abbreviation="Heak">
+  <Name Lang="as">Heakhafaw</Name>
+  <Credits><![CDATA[
+
+             <b>Heakhafaw</b> dot map was created by 
+             Peter G. Celella and James Holden and 	
+             appears in <cite>The MegaTraveller Alien
+             , Volume 2: Solomani &amp; Aslan</cite> 
+             (DGP, 1991).
+
+             Heakhafaw was refined and updated to  
+             T5 standards by Leigh Heron.
+
+    ]]></Credits>
+  <X>-6</X>
+  <Y>4</Y>
+  <DataFile Source="Solomani and Aslan" Milieu="M1105" Ref="https://travellermap.com/data/heakhafaw" />
+  <Product Author="Randy Dorman" Title="The Deep and the Dark" Publisher="Mongoose Publishing" />
+  <DataFile Author="Peter G. Celella, James Holden" Source="Traveller 5 Second Survey" Milieu="M1105" />
+  <Subsectors>
+    <Subsector Index="A">Staiahio</Subsector>
+    <Subsector Index="B">Aaotla</Subsector>
+    <Subsector Index="C">Tlah</Subsector>
+    <Subsector Index="D">Khte</Subsector>
+    <Subsector Index="E">Ihtofi</Subsector>
+    <Subsector Index="F">Kaeaa</Subsector>
+    <Subsector Index="G">Ileikhtaulr</Subsector>
+    <Subsector Index="H">Ihriyhiyr</Subsector>
+    <Subsector Index="I">Htyehrahao</Subsector>
+    <Subsector Index="J">Ileaseiha</Subsector>
+    <Subsector Index="K">Kyakiaha</Subsector>
+    <Subsector Index="L">Tleiftu'ea'</Subsector>
+    <Subsector Index="M">Kheseal</Subsector>
+    <Subsector Index="N">Eulrakhiyrl</Subsector>
+    <Subsector Index="O">Yooi</Subsector>
+    <Subsector Index="P">Eihoihkyowas</Subsector>
+  </Subsectors>
+  <Allegiances>
+    <Allegiance Code="AsMw" Base="As">Aslan Hierate, single multiple-world clan dominates</Allegiance>
+    <Allegiance Code="AsVc" Base="As">Aslan Hierate, vassal clan dominates</Allegiance>
+    <Allegiance Code="AsSc" Base="As">Aslan Hierate, multiple clans split control</Allegiance>
+    <Allegiance Code="AsTv" Base="As">Aslan Hierate, Tlaukhu vassal clan dominates</Allegiance>
+    <Allegiance Code="AsT7" Base="As">Aslan Hierate, Tlaukhu control, Ikhtealyo (8), Tlerfearlyo (20), Yehtahikh (24)</Allegiance>
+    <Allegiance Code="AsT2" Base="As">Aslan Hierate, Tlaukhu control, Syoisuis (3)</Allegiance>
+    <Allegiance Code="AsT5" Base="As">Aslan Hierate, Tlaukhu control, Hlyueawi (6), Isoitiyro (15)</Allegiance>
+    <Allegiance Code="AsWc" Base="As">Aslan Hierate, single one-world clan dominates</Allegiance>
+    <Allegiance Code="AsT4" Base="As">Aslan Hierate, Tlaukhu control, Eakhtiyho (5), Eteawyolei' (11), Fteweyeakh (23)</Allegiance>
+    <Allegiance Code="AsT8" Base="As">Aslan Hierate, Tlaukhu control, Seieakh (9), Akatoiloh (18), We'okunir (29)</Allegiance>
+    <Allegiance Code="AsT3" Base="As">Aslan Hierate, Tlaukhu control, Tralyeaeawi (4), Yulraleh (12), Aiheilar (25), Riyhalaei (28)</Allegiance>
+    <Allegiance Code="AsT0" Base="As">Aslan Hierate, Tlaukhu control, Yerlyaruiwo (1), Hrawoao (13), Eisohiyw (14), Ferekhearl (19)</Allegiance>
+    <Allegiance Code="NaAs" Base="As">Non-Aligned, Aslan-dominated</Allegiance>
+    <Allegiance Code="NaHu" Base="Na">Non-Aligned, Human-dominated</Allegiance>
+    <Allegiance Code="AsT6" Base="As">Aslan Hierate, Tlaukhu control, Uiktawa (7), Iykyasea (17), Faowaou (27)</Allegiance>
+    <Allegiance Code="AsT9" Base="As">Aslan Hierate, Tlaukhu control, Aokhalte (10), Sahao' (21), Ouokhoi (26)</Allegiance>
+    <Allegiance Code="AsT1" Base="As">Aslan Hierate, Tlaukhu control, Khauleairl (2), Estoieie' (16), Toaseilwi (22)</Allegiance>
+    <Allegiance Code="NaXX" Base="Na">Non-Aligned, unclaimed</Allegiance>
+    <Allegiance Code="AsXX" Base="As">Aslan Hierate, unclaimed</Allegiance>
+  </Allegiances>
+  <Borders>
+    <Border Allegiance="As" LabelPosition="1028">0000 0100 0200 0300 0400 0500 0600 0700 0800 0900 1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000 2100 2200 2300 2400 2500 2600 2700            2800 2900 3000 3100 3200 3300 3301 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3236 3237 3138 3038 3039 2940 2839 2739 2639 2540 2439 2340 2239 2139 2038 1938 1838 1738 1637 1537 1436 1337 1236 1136 1035 0935 0834 0735 0634 0534 0433 0432 0431 0331 0230 0130 0029 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014 0013 0012 0011 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001 0000</Border>
+  </Borders>
+  <Routes>
+    <Route Start="2201" End="2240" EndOffsetY="-1" Allegiance="As" />
+    <Route Start="2603" End="2201" Allegiance="As" />
+    <Route Start="2702" End="2603" Allegiance="As" />
+    <Route Start="3002" End="2702" Allegiance="As" />
+    <Route Start="3002" End="3240" EndOffsetY="-1" Allegiance="As" />
+    <Route Start="2603" End="2406" Allegiance="As" />
+    <Route Start="2406" End="2107" Allegiance="As" />
+    <Route Start="2107" End="1808" Allegiance="As" />
+    <Route Start="1808" End="1711" Allegiance="As" />
+    <Route Start="1711" End="1612" Allegiance="As" />
+    <Route Start="1711" End="1712" Allegiance="As" />
+    <Route Start="1612" End="1712" Allegiance="As" />
+    <Route Start="1712" End="1915" Allegiance="As" />
+    <Route Start="1915" End="1917" Allegiance="As" />
+    <Route Start="1917" End="1818" Allegiance="As" />
+    <Route Start="1818" End="1720" Allegiance="As" />
+    <Route Start="1612" End="1415" Allegiance="As" />
+    <Route Start="1415" End="1518" Allegiance="As" />
+    <Route Start="1518" End="1720" Allegiance="As" />
+    <Route Start="1720" End="1722" Allegiance="As" />
+    <Route Start="1722" End="1824" Allegiance="As" />
+    <Route Start="1824" End="1525" Allegiance="As" />
+    <Route Start="1525" End="1324" Allegiance="As" />
+    <Route Start="1324" End="1222" Allegiance="As" />
+    <Route Start="1321" End="1021" Allegiance="As" />
+    <Route Start="1321" End="1219" Allegiance="As" />
+    <Route Start="1824" End="1726" Allegiance="As" />
+    <Route Start="1726" End="1828" Allegiance="As" />
+    <Route Start="1828" End="2028" Allegiance="As" />
+    <Route Start="0127" End="3128" EndOffsetX="-1" Allegiance="As" />
+    <Route Start="0426" End="0127" Allegiance="As" />
+    <Route Start="0524" End="0426" Allegiance="As" />
+    <Route Start="0422" End="0524" Allegiance="As" />
+    <Route Start="0721" End="0422" Allegiance="As" />
+    <Route Start="1021" End="0721" Allegiance="As" />
+    <Route Start="1518" End="1321" Allegiance="As" />
+    <Route Start="1222" End="1021" Allegiance="As" />
+    <Route Start="1222" End="1324" Allegiance="As" />
+    <Route Start="3112" End="0111" EndOffsetX="1" Allegiance="As" />
+    <Route Start="2816" End="2813" Allegiance="As" />
+    <Route Start="2919" End="2816" Allegiance="As" />
+    <Route Start="3020" End="2919" Allegiance="As" />
+    <Route Start="2919" End="3118" Allegiance="As" />
+    <Route Start="3013" End="3112" Allegiance="As" />
+    <Route Start="2813" End="3013" Allegiance="As" />
+    <Route Start="2614" End="2813" Allegiance="As" />
+    <Route Start="2415" End="2614" Allegiance="As" />
+    <Route Start="2017" End="2415" Allegiance="As" />
+    <Route Start="1917" End="2017" Allegiance="As" />
+    <Route Start="3020" End="0122" EndOffsetX="1" Allegiance="As" />
+    <Route Start="2722" End="3020" Allegiance="As" />
+    <Route Start="2623" End="2722" Allegiance="As" />
+    <Route Start="2526" End="2623" Allegiance="As" />
+    <Route Start="2726" End="2526" Allegiance="As" />
+    <Route Start="3027" End="2726" Allegiance="As" />
+    <Route Start="2327" End="2526" Allegiance="As" />
+    <Route Start="2028" End="2327" Allegiance="As" />
+    <Route Start="3027" End="0129" EndOffsetX="1" Allegiance="As" />
+    <Route Start="3027" End="3031" Allegiance="As" />
+    <Route Start="3031" End="2732" Allegiance="As" />
+    <Route Start="2732" End="2433" Allegiance="As" />
+    <Route Start="2433" End="2734" Allegiance="As" />
+    <Route Start="2433" End="2333" Allegiance="As" />
+    <Route Start="2333" End="2230" Allegiance="As" />
+    <Route Start="2230" End="2028" Allegiance="As" />
+    <Route Start="2732" End="2734" Allegiance="As" />
+    <Route Start="2734" End="2835" Allegiance="As" />
+    <Route Start="2835" End="3036" Allegiance="As" />
+    <Route Start="2835" End="2837" Allegiance="As" />
+    <Route Start="2837" End="2639" Allegiance="As" />
+    <Route Start="2639" End="2401" EndOffsetY="1" Allegiance="As" />
+  </Routes>
+</Sector>
