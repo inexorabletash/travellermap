@@ -35,6 +35,9 @@ Trying it out
 
 To Add a Database
 -----------------
+
+Some features such as search require a database.
+
 1. Ensure you have some version of SQL Server installed (Express, Developer, etc). [SQL Server Downloads](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
 1. Track down the **connection string** for the database. When installing SQL Server Express Edition, this is given at the end of the install, and looks like: `Server=localhost\SQLEXPRESS;Database=master;Trusted_Connection=True;`
 1. Open the Solution > Maps > `Web.config` file and find the `<connectionStrings>` element
