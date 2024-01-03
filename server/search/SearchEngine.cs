@@ -5,8 +5,8 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
-using System.Web;
 using System.Text.RegularExpressions;
+using System.Web;
 
 namespace Maps.Search
 {
@@ -16,7 +16,15 @@ namespace Maps.Search
         {
             string connectionStringName = HttpContext.Current.Request.IsLocal ? "SqlDev" : "SqlProd";
             string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings[connectionStringName].ConnectionString;
-            SqlConnection conn = new SqlConnection(connectionString);
+            SqlConnection conn;
+            try
+            {
+                conn = new SqlConnection(connectionString);
+            }
+            catch (ArgumentException ex)
+            {
+                throw new ArgumentException("Database is not setup correctly. Check connection string in web.config.", ex);
+            }
             conn.Open();
             return conn;
         }
