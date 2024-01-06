@@ -871,6 +871,9 @@ body:not(.route-shown) #routeBox { min-height: 135px; max-height: 135px; }
 .style-mongoose #legendBox .pop-few { text-transform: uppercase; }
 .style-mongoose #legendBox .pop-many { text-transform: uppercase; font-weight: bold; }
 .style-mongoose #legendBox .pop-capital { text-transform: uppercase; }
+.style-draft #legendBox .pop-few { text-transform: uppercase; }
+.style-draft #legendBox .pop-many { text-transform: uppercase; text-decoration: underline; }
+.style-draft #legendBox .pop-capital { text-transform: uppercase; }
 
 #legendBox .glyph { font-size: 140%; }
 #legendBox .glyph.g8 { font-size: 80%; }
