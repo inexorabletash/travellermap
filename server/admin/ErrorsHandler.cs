@@ -2,6 +2,7 @@
 using Maps.Utilities;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.InteropServices;
 
 namespace Maps.Admin
 {
@@ -19,30 +20,41 @@ namespace Maps.Admin
             string? type = GetStringOption(context, "type");
             string? milieu = GetStringOption(context, "milieu");
             string? tag = GetStringOption(context, "tag");
+            bool hide_uwp = GetBoolOption(context, "hide-uwp");
             bool hide_tl = GetBoolOption(context, "hide-tl");
             bool hide_gov = GetBoolOption(context, "hide-gov");
             bool hide_stellar = GetBoolOption(context, "hide-stellar");
+            bool hide_pbg = GetBoolOption(context, "hide-pbg");
+            bool hide_ix = GetBoolOption(context, "hide-ix");
+            bool hide_ex = GetBoolOption(context, "hide-ex");
+            bool hide_cx = GetBoolOption(context, "hide-cx");
+            bool hide_worlds = GetBoolOption(context, "hide-worlds");
+            bool hide_extra = GetBoolOption(context, "hide-extra");
+            bool hide_missing = GetBoolOption(context, "hide-missing");
+            bool hide_ignoring= GetBoolOption(context, "hide-ignoring");
             ErrorLogger.Severity severity = GetBoolOption(context, "warnings", true) ? 0 : ErrorLogger.Severity.Error;
 
             // NOTE: This (re)initializes a static data structure used for 
             // resolving names into sector locations, so needs to be run
             // before any other objects (e.g. Worlds) are loaded.
             SectorMap.Flush();
-            SectorMap map = SectorMap.GetInstance(resourceManager);
+            SectorMap map = SectorMap.GetInstance();
 
-            var sectorQuery = from sector in map.Sectors
-                              where (sectorName == null || sector.Names[0].Text.StartsWith(sectorName, ignoreCase: true, culture: CultureInfo.InvariantCulture))
-                              && (sector.DataFile != null)
-                              && (type == null || sector.DataFile.Type == type)
-                              && (milieu == null || sector.CanonicalMilieu == milieu)
-                              && (tag == null || sector.Tags.Contains(tag))
-                              && (sector.Tags.Contains("OTU") || sector.Tags.Contains("Apocryphal") || sector.Tags.Contains("Faraway"))
-                              orderby sector.Names[0].Text
-                              select sector;
-
-            foreach (var sector in sectorQuery)
+            try
             {
-                context.Response.Output.WriteLine($"{sector.Names[0].Text} - {sector.Milieu}");
+                var sectorQuery = from sector in map.Sectors
+                                  where (sectorName == null || sector.Names[0].Text.StartsWith(sectorName, ignoreCase: true, culture: CultureInfo.InvariantCulture))
+                                  && (sector.DataFile != null)
+                                  && (type == null || sector.DataFile.Type == type)
+                                  && (milieu == null || sector.CanonicalMilieu == milieu)
+                                  && (tag == null || sector.Tags.Contains(tag))
+                                  && (sector.Tags.Contains("OTU") || sector.Tags.Contains("Apocryphal") || sector.Tags.Contains("Faraway"))
+                                  orderby sector.Names[0].Text
+                                  select sector;
+
+                foreach (var sector in sectorQuery)
+                {
+                    context.Response.Output.WriteLine($"{sector.Names[0].Text} - {sector.Milieu}");
 #if DEBUG
                 int error_count = 0;
                 int warning_count = 0;
@@ -60,14 +72,32 @@ namespace Maps.Admin
 #if DEBUG
                         worlds.ErrorList!.Report(context.Response.Output, severity, (ErrorLogger.Record record) =>
                         {
+                            if (hide_uwp && record.message.StartsWith("UWP:")) return false;
                             if (hide_gov && (record.message.StartsWith("UWP: Gov") || record.message.StartsWith("Gov"))) return false;
                             if (hide_tl && record.message.StartsWith("UWP: TL")) return false;
                             if (hide_stellar && record.message.StartsWith("Invalid stellar data:")) return false;
+                            if (hide_extra && record.message.StartsWith("Extraneous code:")) return false;
+                            if (hide_missing && record.message.StartsWith("Missing code:")) return false;
+                            if (hide_pbg && record.message.StartsWith("PBG:")) return false;
+                            if (hide_ix && record.message.StartsWith("{Ix}")) return false;
+                            if (hide_ex && record.message.StartsWith("(Ex)")) return false;
+                            if (hide_cx && record.message.StartsWith("[Cx]")) return false;
+                            if (hide_worlds && record.message.StartsWith("Worlds:")) return false;
+                            if (hide_ignoring && record.message.StartsWith("Ignoring")) return false;
                             return true;
                         });
                         error_count += worlds!.ErrorList.CountOf(ErrorLogger.Severity.Error);
                         warning_count += worlds!.ErrorList.CountOf(ErrorLogger.Severity.Warning);
 #endif
+
+                        foreach (var world in worlds)
+                        {
+                            var alleg = world.Allegiance;
+                            if (alleg != "" && sector.GetAllegianceFromCode(alleg) == null)
+                            {
+                                context.Response.Output.WriteLine($"Undefined allegiance code: {alleg} (on world {world.Name} {world.Hex})");
+                            }
+                        }
                     }
                     else
                     {
@@ -132,9 +162,14 @@ namespace Maps.Admin
                 }
                 context.Response.Output.WriteLine($"{error_count} errors, {warning_count} warnings.");
 #endif
-                context.Response.Output.WriteLine();
+                    context.Response.Output.WriteLine();
+                }
             }
-            return;
+            finally
+            {
+                SectorMap.Flush();
+                resourceManager.Flush();
+            }
         }
     }
 }

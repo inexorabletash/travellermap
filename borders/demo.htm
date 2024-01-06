@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <title>Border Generation</title>
 <meta charset="utf-8">
-<link rel="stylesheet" href="../site.css?update=2015-07-19">
+<link rel="stylesheet" href="../site.css?update=2022-09-10T10:37:44">
 
-<script src="https://cdn.rawgit.com/inexorabletash/poly2/v2.0.1/polyfill.min.js"></script>
 <script src="borders.js"></script>
 <script>
-var $ = function(s) { return document.querySelector(s); }
+'use strict';
 
-var allegianceMap = {
+const $ = s => document.querySelector(s);
+
+const allegianceMap = {
   'Im': 'red',
   'As': 'yellow',
   'Kk': 'green',
@@ -19,7 +20,7 @@ var allegianceMap = {
   'Na': 'gray'
 };
 
-var g_map = new AllegianceMap(16, 20, 1, 1);
+const g_map = new AllegianceMap(16, 20, 1, 1);
 
 //----------------------------------------------------------------------
 //
@@ -28,17 +29,18 @@ var g_map = new AllegianceMap(16, 20, 1, 1);
 //----------------------------------------------------------------------
 
 function makeMapDisplay(containerElement, map) {
-  var fragments = [], fragment;
+  const fragments = [];
+  let fragment;
 
-  var sz = 20;
-  var pad = 5;
-  var top, left = -sz;
+  const sz = 20;
+  const pad = 5;
+  let top, left = -sz;
 
-  for (x = g_map.origin_x; x < g_map.origin_x + g_map.width; ++x) {
+  for (let x = g_map.origin_x; x < g_map.origin_x + g_map.width; ++x) {
     left += (sz + pad);
     top = (x % 2 ? 0 : (sz + pad) / 2) - sz;
 
-    for (y = g_map.origin_y; y < g_map.origin_y + g_map.height; ++y) {
+    for (let y = g_map.origin_y; y < g_map.origin_y + g_map.height; ++y) {
       top += (sz + pad);
 
       fragment = "<div class='hex' id='hex_" + x + "_" + y + "' style='width: " + sz + "px; height: " + sz + "px; left: " + left + "px; top: " + top + "px;'>";
@@ -55,44 +57,39 @@ function makeMapDisplay(containerElement, map) {
 
 function updateHex(x, y) {
   // Update view
-  $('#hex_' + x + '_' + y).innerHTML = hexContents(x, y, g_map);
+  $(`#hex_${x}_${y}`).innerHTML = hexContents(x, y, g_map);
 }
 
 function updateView() {
-  g_map.foreach(function(x, y) { updateHex(x, y); });
+  g_map.foreach((x, y) => { updateHex(x, y); });
 }
 
 function updateWalks() {
-  var borders = [];
-  var bounds = g_map.getBounds();
-  var allegiance;
-  var x, y, visited = {}, label, alleg, last_alleg, path;
+  const borders = [];
+  let visited = {}
 
-  for (x = g_map.origin_x; x < g_map.origin_x + g_map.width; x += 1) {
-    lastalleg = UNALIGNED;
-    for (y = g_map.origin_y; y < g_map.origin_y + g_map.height; y += 1) {
-      label = hexLabel(x, y);
-      alleg = g_map.getAllegiance(x, y);
+  for (let x = g_map.origin_x; x < g_map.origin_x + g_map.width; x += 1) {
+    let last_alleg = UNALIGNED;
+    for (let y = g_map.origin_y; y < g_map.origin_y + g_map.height; y += 1) {
+      const label = hexLabel(x, y);
+      const alleg = g_map.getAllegiance(x, y);
       if (alleg !== UNALIGNED && alleg !== NON_ALIGNED && alleg !== last_alleg && !(label in visited)) {
 
-        path = walk(g_map, x, y, alleg);
-        path = path.map(function(hex) { return hexLabel(hex[0], hex[1]); });
-        path.forEach(function(label) { visited[label] = true; });
+        let path = walk(g_map, x, y, alleg);
+        path = path.map(hex => hexLabel(hex[0], hex[1]));
+        path.forEach(label => { visited[label] = true; });
 
-        borders.push({
-          allegiance: alleg,
-          path: path
-        });
+        borders.push({allegiance: alleg, path});
       }
       last_alleg = alleg;
     }
   }
 
-  borders.sort(function(a, b) { return a.allegiance < b.allegiance ? -1 : a.allegiance > b.allegiance ? 1 : 0; });
+  borders.sort((a, b) => a.allegiance < b.allegiance ? -1 : a.allegiance > b.allegiance ? 1 : 0);
 
 
-  var html = [];
-  borders.forEach(function(border) {
+  const html = [];
+  borders.forEach(border => {
     html.push("<li>" + border.allegiance + " : " + border.path.join(" ") + "<" + "/li>");
   });
   $('#walks').innerHTML = html.join("");
@@ -103,10 +100,10 @@ function hexLabel(x, y) {
 }
 
 function hexContents(x, y, map) {
-  var hexNumber = hexLabel(x, y);
-  var occupied = map.isOccupied(x, y);
-  var alleg = map.getAllegiance(x, y);
-  var color = (alleg == UNALIGNED) ? "transparent" : allegianceMap[alleg];
+  const hexNumber = hexLabel(x, y);
+  const occupied = map.isOccupied(x, y);
+  const alleg = map.getAllegiance(x, y);
+  const color = (alleg == UNALIGNED) ? "transparent" : allegianceMap[alleg];
 
   return "<div class='hexContents' style='background-color: " + color + ";'>" +
     "<span class='hexNumber'>" + hexNumber + "<" + "/span><br/>" +
@@ -122,12 +119,12 @@ function hexContents(x, y, map) {
 //----------------------------------------------------------------------
 
 function selectedAllegiance() {
-  var select = $('#allegiance');
+  const select = $('#allegiance');
   return select.options[select.selectedIndex].value;
 }
 
 function clickHex(x, y) {
-  var occupied = !g_map.isOccupied(x, y);
+  const occupied = !g_map.isOccupied(x, y);
   g_map.setOccupied(x, y, occupied);
   if (occupied) {
     g_map.setAllegiance(x, y, selectedAllegiance());
@@ -144,16 +141,15 @@ function clickHex(x, y) {
 //
 //----------------------------------------------------------------------
 
-window.addEventListener('DOMContentLoaded', function() {
-  var view = $('#map');
+window.addEventListener('DOMContentLoaded', () => {
+  const view = $('#map');
   makeMapDisplay(view, g_map);
 
-  view.addEventListener('click', function(e) {
-    e = e ? e : window.event;
-    var target = (e.target) ? e.target : (e.srcElement) ? e.srcElement : null;
+  view.addEventListener('click', event => {
+    let target = (event.target) ? event.target : (event.srcElement) ? event.srcElement : null;
     while (target) {
       if (target && target.id) {
-        var coords = target.id.split("_");
+        const coords = target.id.split("_");
         if (coords[0] == "hex") {
           clickHex(coords[1], coords[2]);
           break;
@@ -165,7 +161,7 @@ window.addEventListener('DOMContentLoaded', function() {
 });
 
 function clearMap() {
-  g_map.foreach(function(x, y) {
+  g_map.foreach((x, y) => {
     g_map.setAllegiance(x, y, UNALIGNED);
     g_map.setOccupied(x, y, false);
 
@@ -174,7 +170,7 @@ function clearMap() {
 }
 
 function run() {
-  processMap(g_map, function() {
+  processMap(g_map, () => {
     updateView();
     updateWalks();
   });

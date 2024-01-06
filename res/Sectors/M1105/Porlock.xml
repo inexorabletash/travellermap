@@ -29,7 +29,6 @@
     <Subsector Index="P">Goophl</Subsector>
   </Subsectors>
   <Allegiances>
-    <Allegiance Code="HvFd">Hive Federation</Allegiance>
     <Allegiance Code="Hc">Hive Client State</Allegiance>
     <Allegiance Code="Hp">Splendor of Pawoox</Allegiance>
     <Allegiance Code="Hq">Queendom Remnants</Allegiance>
@@ -51,10 +50,10 @@
     <Border WrapLabel="true" Allegiance="HvFd" LabelPosition="1410">
       0000 0100 0200 0300 0400 0500 0600 0700 0800 0900 1000 1100 1200 1300 1400 1500
       1600 1700 1800 1900 2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 3000 3100 3200 3300 3301
-      3300 3301 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316      
-      3317 3216 3117 3017 2918 2818 2718 2618     
+      3300 3301 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316
+      3317 3216 3117 3017 2918 2818 2718 2618
       2518 2418 2319 2219 2119 2019 1919 1819
-      1719 1618 1518 1418 1318 1218 1119 1019 0919 0819 0719 0618 0519 0419 0319 0218 0119 
+      1719 1618 1518 1418 1318 1218 1119 1019 0919 0819 0719 0618 0519 0419 0319 0218 0119
       0019 0020 0021 0022 0023 0024 0025 0026
       0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014 0013 0012 0011 0010
       0009 0008 0007 0006 0005 0004 0003 0002 0001 0000
@@ -73,7 +72,7 @@
     </Border>
   </Borders>
   <Routes>
-    
+
     <Route Start="0819" End="0717" Type="Trade"/>
     <Route Start="0717" End="0515" Type="Trade"/>
     <Route Start="0515" End="0113" Type="Trade"/>
@@ -125,7 +124,7 @@
 
     <Route Start="3204" End="3504" Type="Trade" />
     <Route Start="3204" End="2805" Type="Trade" />
-    
+
     <Route Start="2415" End="2517" Type="Trade" />
     <Route Start="2817" End="2517" Type="Trade" />
     <Route Start="2117" End="2219" Type="Trade" />

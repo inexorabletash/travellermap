@@ -1,34 +1,37 @@
 /*global Traveller, Util, getTextViaPOST, Handlebars, AllegianceMap, walk, neighbor, processMap, UNALIGNED, NON_ALIGNED */
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
   'use strict';
-  var $ = function(s) { return document.querySelector(s); };
-  var $$ = function(s) { return document.querySelectorAll(s); };
+  const $ = s => document.querySelector(s);
+  const $$ = s => Array.from(document.querySelectorAll(s));
 
   // TODO: other events
-  var lastValue = null;
-  setInterval(function() {
-    var value = $('#data').value;
+  let lastValue = null;
+  setInterval(async () => {
+    const value = $('#data').value;
     if (value !== lastValue) {
       $('#metadata_generated').value = '';
       lastValue = value;
       if (!value) return;
-      convertData(value)
-        .then(parseSector)
-        .then(buildMap)
-        .catch(function(reason) { alert(reason); });
+      try {
+        const converted = await convertData(value);
+        const sector = parseSector(converted);
+        await buildMap(sector);
+      } catch (reason) {
+        alert(reason);
+      }
     }
   }, 500);
 
-  $('#go').addEventListener('click', function() {
+  $('#go').addEventListener('click', () => {
     run();
   });
-  $('#edges').addEventListener('click', function() {
+  $('#edges').addEventListener('click', () => {
     if (claimEdges()) {
       updateDisplay();
       updateWalks();
     }
   });
-  [$('#xml'), $('#msec')].forEach(function(e) {
+  [$('#xml'), $('#msec')].forEach(e => {
     e.addEventListener('click', updateWalks);
   });
 
@@ -40,31 +43,28 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   function parseSector(tabDelimitedData) {
-    return new Promise(function(resolve, reject) {
-      var sector = {
-        worlds: []
-      };
+    const sector = {
+      worlds: []
+    };
 
-      var lines = tabDelimitedData.split(/\r?\n/);
-      var header = lines.shift().toLowerCase().split(/\t/);
-      lines.forEach(function (line) {
-        if (!line.length)
-          return;
-        var world = {};
-        line.split(/\t/).forEach(function (field, index) {
-          var col = header[index].replace(/[^a-z]/g, '');
-          world[col] = field;
-        });
-        sector.worlds.push(world);
+    const lines = tabDelimitedData.split(/\r?\n/);
+    const header = lines.shift().toLowerCase().split(/\t/);
+    lines.forEach(line => {
+      if (!line.length)
+        return;
+      const world = {};
+      line.split(/\t/).forEach( (field, index) => {
+        const col = header[index].replace(/[^a-z]/g, '');
+        world[col] = field;
       });
-
-      resolve(sector);
+      sector.worlds.push(world);
     });
+    return sector;
   }
 
-  var SECTOR_WIDTH = 32, SECTOR_HEIGHT = 40;
+  const SECTOR_WIDTH = 32, SECTOR_HEIGHT = 40;
 
-  var ALLEGIANCE_COLORS = {
+  const ALLEGIANCE_COLORS = {
     im: 'red',
     cs: 'pink',
     imcs: 'pink',
@@ -88,7 +88,8 @@ document.addEventListener('DOMContentLoaded', function() {
     jp: 'blue',
     na: 'transparent',
     nahu: 'transparent',
-    naxx: 'transparent'
+    naxx: 'transparent',
+    wild: 'lightgray',
   };
 
   function colorFor(alleg) {
@@ -105,30 +106,29 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   function makeMapDisplay(containerElement, map, inset) {
-    var fragments = [], fragment;
-    var sz = 15;
-    var pad = 3;
-    var top, left = -sz;
+    const sz = 15;
+    const pad = 3;
 
-    var x, y;
-    for (x = map.origin_x + inset; x < map.origin_x + map.width - inset; ++x) {
+    const fragments = [];
+    let fragment;
+    let top, left = -sz;
+
+    for (let x = map.origin_x + inset; x < map.origin_x + map.width - inset; ++x) {
       left += (sz + pad);
       top = (x % 2 ? 0 : (sz + pad) / 2) - sz;
 
-      for (y = map.origin_y + inset; y < map.origin_y + map.height - inset; ++y) {
+      for (let y = map.origin_y + inset; y < map.origin_y + map.height - inset; ++y) {
         top += (sz + pad);
 
-        var className = 'hex' +
+        const className = 'hex' +
               ((x < 1 || x > Traveller.Astrometrics.SectorWidth ||
                y < 1 || y > Traveller.Astrometrics.SectorHeight) ? ' outside' : '');
 
-        fragment = '<div class="' + className +
-          '" data-hex="' + hexLabel(x, y) + '" style="left: ' + left + 'px; top: ' + top + 'px;">';
-        fragment += hexContents(x, y, map);
-        fragment += '<' + '/div>';
-
+        fragment = `<div class="${className}" data-hex="${hexLabel(x, y)}"
+                         style="left: ${left}px; top: ${top}px;">
+                      ${hexContents(x, y, map)}
+                    </div>`;
         fragments.push(fragment);
-
       }
     }
 
@@ -136,9 +136,9 @@ document.addEventListener('DOMContentLoaded', function() {
     containerElement.style.width = (map.width * sz + (map.width + 1) * pad) + 'px';
     containerElement.style.height = ((map.height + 0.5) * sz + (map.height + 1.5) * pad) + 'px';
 
-    [].slice.call($$('.hex')).forEach(function(e) {
-      e.onclick = function() {
-        var hex = this.getAttribute('data-hex');
+    $$('.hex').forEach(e => {
+      e.onclick = () => {
+        const hex = e.getAttribute('data-hex');
         if (toggleAllegiance(hex)) {
           updateDisplay();
           updateWalks();
@@ -147,90 +147,85 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  var xml_template = Handlebars.compile($('#xml-template').innerHTML.trim());
-  var msec_template = Handlebars.compile($('#msec-template').innerHTML.trim());
+  const xml_template = Handlebars.compile($('#xml-template').innerHTML.trim());
+  const msec_template = Handlebars.compile($('#msec-template').innerHTML.trim());
 
   function updateWalks() {
-    var borders = [];
-    var bounds = map.getBounds();
-    var allegiance;
-    var x, y, visited = {}, label, alleg, last_alleg, path;
+    let borders = [];
+    const bounds = map.getBounds();
+    const visited = {};
+    let last_alleg = UNALIGNED;
 
-    for (x = map.origin_x; x < map.origin_x + map.width; x += 1) {
-      var lastalleg = UNALIGNED;
-      for (y = map.origin_y; y < map.origin_y + map.height; y += 1) {
-        label = hexLabel(x, y);
-        alleg = map.getAllegiance(x, y);
+    for (let x = map.origin_x; x < map.origin_x + map.width; x += 1) {
+      for (let y = map.origin_y; y < map.origin_y + map.height; y += 1) {
+        const label = hexLabel(x, y);
+        const alleg = map.getAllegiance(x, y);
         if (alleg !== UNALIGNED && alleg !== NON_ALIGNED &&
             alleg !== last_alleg && !(label in visited)) {
 
-          path = walk(map, x, y, alleg);
-          path = path.map(function(hex) { return hexLabel(hex[0], hex[1]); });
-          path.forEach(function(label) { visited[label] = true; });
+          let path = walk(map, x, y, alleg);
+          path = path.map(hex => hexLabel(hex[0], hex[1]));
+          path.forEach(label => { visited[label] = true; });
 
           // Filter out holes
-          var len = path.length;
+          const len = path.length;
           if (len > 1) {
-            var hex1 = path[len - 2], hex2 = path[len - 1];
-            var x1 = Number(hex1.substring(0, 2));
-            var x2 = Number(hex2.substring(0, 2));
-            var y1 = Number(hex1.substring(2, 4));
-            var y2 = Number(hex2.substring(2, 4));
+            const hex1 = path[len - 2], hex2 = path[len - 1];
+            const x1 = Number(hex1.substring(0, 2));
+            const x2 = Number(hex2.substring(0, 2));
+            const y1 = Number(hex1.substring(2, 4));
+            const y2 = Number(hex2.substring(2, 4));
             if ((x1 < x2) || (x1 === x2 && y1 < y2))
               continue;
           }
 
-          borders.push({
-            allegiance: alleg,
-            path: path
-          });
+          borders.push({ allegiance: alleg, path });
         }
         last_alleg = alleg;
       }
     }
 
-    borders.sort(function(a, b) { return a.allegiance < b.allegiance ? -1 : a.allegiance > b.allegiance ? 1 : 0; });
+    borders.sort((a, b) => a.allegiance < b.allegiance ? -1 : a.allegiance > b.allegiance ? 1 : 0);
 
-    borders = borders.filter(function(border) { return border.path.length > 2; });
+    borders = borders.filter(border => border.path.length > 2);
 
-    var template = ($('#form').elements.metatype.value === 'xml') ? xml_template : msec_template;
+    const template = ($('#form').elements.metatype.value === 'xml') ? xml_template : msec_template;
     $('#metadata_generated').value = template({borders:borders});
   }
 
   function hexLabel(x, y) {
-    function pad2(n) { return ('0' + String(n)).slice(-2); }
+    const pad2 = n => ('0' + String(n)).slice(-2);
     return pad2(x) + pad2(y);
   }
 
-  function clamp(n, min, max) {
-    return Math.max(Math.min(n, max), min);
-  }
+  const clamp = (n, min, max) => Math.max(Math.min(n, max), min);
 
   function hexContents(x, y, map) {
-    var hexNumber = hexLabel(x, y);
-    var occupied = map.isOccupied(x, y);
-    var alleg = map.getTrueAllegiance(x, y);
-    var color = (alleg == UNALIGNED) ? 'transparent' : colorFor(alleg);
+    const hexNumber = hexLabel(x, y);
+    const occupied = map.isOccupied(x, y);
+    const alleg = map.getTrueAllegiance(x, y);
+    let color = (alleg == UNALIGNED) ? 'transparent' : colorFor(alleg);
     if (color === (void 0)) {
       color = 'gray';
       try {
-        var channel = ('00' + clamp(parseInt(alleg, 36) & 0xFF, 0x60, 0xC0).toString(16))
+        const channel = ('00' + clamp(parseInt(alleg, 36) & 0xFF, 0x60, 0xC0).toString(16))
               .slice(-2);
         color = '#' + channel + channel + channel;
-      } catch (_) {}
+      } catch (_) { /*ignore*/ }
 
     }
-    return "<div class='hexContents' style='background-color: " + color + ";'>" +
-      "<span class='hexNumber'>" + hexNumber + "<" + "/span>" +
-      (occupied ? "<span class='world'>" + alleg + "</span>" : "") +
-      "<" + "/div>";
+    return `` +
+      `<div class='hexContents' style='background-color: ${color};'>` +
+      `<span class='hexNumber'>${hexNumber}</span>` +
+      (occupied ? `<span class='world'>${alleg}</span>` : "") +
+      `</div>`;
   }
 
-  var map = new AllegianceMap(SECTOR_WIDTH + 2, SECTOR_HEIGHT + 2, 0, 0);
+  const map = new AllegianceMap(SECTOR_WIDTH + 2, SECTOR_HEIGHT + 2, 0, 0);
 
   function buildMap(sector) {
-    for (var hx = 0; hx <= Traveller.Astrometrics.SectorWidth + 1; ++hx) {
-      for (var hy = 0; hy <= Traveller.Astrometrics.SectorHeight + 1; ++hy) {
+    for (let hx = 0; hx <= Traveller.Astrometrics.SectorWidth + 1; ++hx) {
+      for (let hy = 0; hy <= Traveller.Astrometrics.SectorHeight + 1; ++hy) {
           map.setOccupied(hx, hy, false);
           map.setAllegiance(hx, hy, UNALIGNED);
       }
@@ -271,23 +266,23 @@ document.addEventListener('DOMContentLoaded', function() {
       return a;
     }
 
-    sector.worlds.forEach(function(world) {
-      var hx = Number(world.hex.substring(0, 2));
-      var hy = Number(world.hex.substring(2, 4));
+    sector.worlds.forEach(world => {
+      const hx = Number(world.hex.substring(0, 2));
+      const hy = Number(world.hex.substring(2, 4));
       map.setOccupied(hx, hy, true);
       map.setAllegiance(hx, hy, effectiveAllegiance(world.allegiance), world.allegiance);
     });
 
     updateDisplay();
-  };
+  }
 
   function toggleAllegiance(hex) {
-    var hx = Number(hex.substring(0, 2));
-    var hy = Number(hex.substring(2, 4));
+    const hx = Number(hex.substring(0, 2));
+    const hy = Number(hex.substring(2, 4));
     if (map.isOccupied(hx, hy))
       return false;
 
-    var alleg = map.getAllegiance(hx, hy);
+    const alleg = map.getAllegiance(hx, hy);
     if (alleg !== UNALIGNED) {
       map.setAllegiance(hx, hy, UNALIGNED);
       return true;
@@ -297,27 +292,29 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   function claimByVotes(hx, hy, ignoreOutSector) {
-    var votes = {};
-    for (var dir = 0; dir < 6; ++dir) {
-      var nxy = neighbor(hx, hy, dir);
+    const votes = {};
+    for (let dir = 0; dir < 6; ++dir) {
+      const nxy = neighbor(hx, hy, dir);
       if (ignoreOutSector &&
           (nxy[0] < 1 || nxy[0] > Traveller.Astrometrics.SectorWidth ||
            nxy[1] < 1 || nxy[1] > Traveller.Astrometrics.SectorHeight))
         continue;
 
       try {
-        var nalleg = map.getAllegiance(nxy[0], nxy[1]);
+        const nalleg = map.getAllegiance(nxy[0], nxy[1]);
         if (nalleg === UNALIGNED)
           continue;
-        if (votes.hasOwnProperty(nalleg))
+        if (Object.prototype.hasOwnProperty.call(votes, nalleg))
           ++votes[nalleg];
         else
           votes[nalleg] = 1;
-      } catch(_) {}
+      } catch(_) { /*ignore*/ }
     }
-    var top = Object.keys(votes).reduce(function(cur, key) {
-      return votes[key] > cur[1] ? [key, votes[key]] : cur;
-    }, ['--', 0])[0];
+    const top = Object
+          .keys(votes)
+          .reduce(
+            (cur, key) => votes[key] > cur[1] ? [key, votes[key]] : cur,
+            ['--', 0])[0];
     if (top === UNALIGNED)
       return false;
     map.setAllegiance(hx, hy, top);
@@ -325,12 +322,12 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   function claimEdges() {
-    var dirty = false;
-    for (var hx = 0; hx <= Traveller.Astrometrics.SectorWidth + 1; ++hx) {
+    let dirty = false;
+    for (let hx = 0; hx <= Traveller.Astrometrics.SectorWidth + 1; ++hx) {
       dirty = claimByVotes(hx, 0, true) || dirty;
       dirty = claimByVotes(hx, Traveller.Astrometrics.SectorHeight + 1, true) || dirty;
     }
-    for (var hy = 0; hy <= Traveller.Astrometrics.SectorHeight + 1; ++hy) {
+    for (let hy = 0; hy <= Traveller.Astrometrics.SectorHeight + 1; ++hy) {
       dirty = claimByVotes(0, hy, true) || dirty;
       dirty = claimByVotes(Traveller.Astrometrics.SectorWidth + 1, hy, true) || dirty;
     }
@@ -345,12 +342,12 @@ document.addEventListener('DOMContentLoaded', function() {
   function run() {
     processMap(
       map,
-      function complete() {
+      () => {
         status('');
         updateDisplay();
         updateWalks();
       },
-      function progress(message) {
+      (message) => {
         status(message);
         updateDisplay();
         updateWalks();

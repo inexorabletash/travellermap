@@ -1,7 +1,7 @@
 const Restellarator = {
 
   // Apply heuristics to "fix" legacy stellar line.
-  fix: function(s) {
+  fix: s => {
     let stars = [], m;
     while ((m = /^([OBAFGKM][0-9] ?(?:Ia|Ib|II|III|IV|V|VI|VII|D)|[OAFGKML] ?D|D|BD|BH|D[OBAFGKM])\b\s*/.exec(s))) {
       stars.push(m[1]);
@@ -41,7 +41,7 @@ const Restellarator = {
   },
 
   // Generate a new stellar line, using (modified) T5.10 rules.
-  generate: function() {
+  generate: () => {
     function roll1D() { return Math.floor(Math.random() * 6) + 1; }
     function roll1D10() { return Math.floor(Math.random() * 10) + 1; }
     function flux() { return roll1D() - roll1D(); }
@@ -104,7 +104,7 @@ const Restellarator = {
       if (spectral === 'BD') return spectral;
 
       let iter = 0;
-      while (true) {
+      for (;;) {
         if (++iter > 1000) { alert('too many iterations'); throw new Error('iterations'); }
 
         // "Spectral Decimal. Roll decimal 0 to 9."
@@ -175,7 +175,7 @@ const Restellarator = {
   },
 
   // Given a stellar description line, ensure the biggest/brightest star is first.
-  reorder: function(line) {
+  reorder: line => {
     const SPECTRALS = ['O', 'B', 'A', 'F', 'G', 'K', 'M'];
     const TYPES = ['Ia', 'Ib', 'II', 'III', 'IV', 'V', 'VI', 'VII'];
 
@@ -201,7 +201,7 @@ const Restellarator = {
       let order = TYPES.indexOf(a.type) - TYPES.indexOf(b.type);
       if (order) return order;
 
-      order = SPECTRALS.indexOf(a.spectral) - SPECTRALS.indexOf(b.spectral);
+      order = SPECTRALS.indexOf(b.spectral) - SPECTRALS.indexOf(a.spectral);
       if (order) return order;
 
       return Number(a.decimal) - Number(b.decimal);

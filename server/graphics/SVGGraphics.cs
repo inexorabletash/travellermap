@@ -508,7 +508,7 @@ namespace Maps.Graphics
         private System.Drawing.Graphics? scratch;
         public SizeF MeasureString(string text, AbstractFont font)
         {
-            if (scratch == null) scratch = System.Drawing.Graphics.FromImage(new Bitmap(1, 1));
+            scratch ??= System.Drawing.Graphics.FromImage(new Bitmap(1, 1));
             return scratch.MeasureString(text, font.Font);
         }
 

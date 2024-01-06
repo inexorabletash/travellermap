@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<Sector Abbreviation="Corr" Tags="Unreviewed">
+  <Y>-1</Y>
+  <X>-2</X>
+  <Name>Corridor</Name>
+  <Name Lang="vi">Amshagi</Name>
+  <Name Lang="vi">Eneri</Name>
+  <Name Lang="va">Roughantz</Name>
+  <Name Lang="va">Llananae Tourz</Name>
+  <Credits>
+    <![CDATA[
+
+             <b>Corridor</b> sector was designed by Marc W. Miller and
+             appears in <cite>Atlas of the Imperium</cite> (GDW,
+             1984).
+
+             It was refined by David Riddell. Portions appear in
+             <cite>The Travellers Digest</cite>.
+             
+             Lately, the "fast-forward" script ran this data up to
+             years 1508 and 1900.
+    ]]>
+  </Credits>
+  <Subsectors>
+    <Subsector Index="A">Khouth</Subsector>
+    <Subsector Index="B">Khukish</Subsector>
+    <Subsector Index="C">Lemish</Subsector>
+    <Subsector Index="D">The Narrows</Subsector>
+    <Subsector Index="E">Ian</Subsector>
+    <Subsector Index="F">Strand</Subsector>
+    <Subsector Index="G">Naadi</Subsector>
+    <Subsector Index="H">Uantil</Subsector>
+    <Subsector Index="I">Shush</Subsector>
+    <Subsector Index="J">The Empty Void</Subsector>
+    <Subsector Index="K">Atu'l</Subsector>
+    <Subsector Index="L">Kivu</Subsector>
+    <Subsector Index="M">Two Worlds</Subsector>
+    <Subsector Index="N">Ashishinipar</Subsector>
+    <Subsector Index="O">Sinta</Subsector>
+    <Subsector Index="P">Sashrakusha</Subsector>
+  </Subsectors>
+
+  <Stylesheet>
+    border.Br { color: purple; }
+  </Stylesheet>
+
+  <Allegiances>
+    <Allegiance Code="Br">Brinn</Allegiance>
+    <Allegiance Code="Wi">Wilds</Allegiance>
+  </Allegiances>
+
+  <Routes>
+    <Route Color="Red" Start="0112" End="0510" Source="SR-108" />
+    <Route Color="Red" Start="0510" End="0910" Source="SR-109" />
+    <Route Color="Red" Start="0910" End="1309" Source="SR-10A" />
+    <Route Color="Red" Start="1309" End="1607" Source="SR-10B" />
+    <Route Color="Red" Start="1607" End="2009" Source="SR-10C" />
+    <Route Color="Red" Start="2009" End="2409" Source="SR-10D" />
+    <Route Color="Red" Start="2409" End="2810" Source="SR-10E" />
+    <Route Color="Red" Start="2810" End="3209" Source="SR-10F" />
+    <Route Color="Red" Start="3209" End="0311" EndOffsetX="+1" Source="SR-10G" />
+  </Routes>
+
+  <Borders>
+    <Border Color="Green"  Allegiance="Br" Label="Brinn">2238 2239 2238</Border>
+    <Border Color="Orange" Label="Wilds" Allegiance="Wild">0001 0102 0201 0200 0300 0400 0401 0502 0601 0702 0802 0903 1003 1004 1105 1205 1305 1304 1303 1402 1303 1304 1305 1405 1406 1507 1606 1706 1805 1905 2005 2106 2205 2305 2404 2504 2503 2603 2604 2605 2606 2707 2807 2907 3006 3106 3105 3104 3105 3106 3107 3207 3307 3308 3309 3310 3209 3110 3010 2911 2811 2711 2611 2511 2411 2312 2212 2113 2114 2115 2116 2115 2114 2013 1913 1813 1714 1614 1515 1415 1416 1417 1418 1318 1218 1118 1017 0918 0817 0717 0617 0517 0417 0318 0218 0219 0220 0221 0220 0219 0119 0019 0018 0017 0016 0015 0014 0013 0012 0011 0010 0009 0008 0007 0006 0005 0105 0204 0203 0202 0102 0002 0001 </Border>
+    <Border Color="Orange" Label="Wilds" Allegiance="Wild">1140 1141 1140 </Border>
+    <Border Color="Orange" Label="Wilds" Allegiance="Wild">1430 1531 1631 1732 1832 1933 2033 2134 2233 2333 2432 2532 2631 2731 2830 2930 3029 3129 3228 3227 3226 3225 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2041 1941 1841 1741 1840 1940 2039 2038 2037 2137 2136 2135 2134 2033 1933 1832 1732 1631 1532 1432 1431 1430 </Border>
+  </Borders>
+</Sector>

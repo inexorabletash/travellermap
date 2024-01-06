@@ -1,21 +1,140 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Sectors>
+   <Sector Abbreviation="Itvi" Selected="true" Milieu="M1900">
+      <Y>-3</Y>
+      <X>-5</X>
+      <Name>Itvikiastaf</Name>
+      <DataFile Author="Robert Eaglestone" Type="TabDelimited">Itvikiastaf.tab</DataFile>
+      <MetadataFile>Itvikiastaf.xml</MetadataFile>
+   </Sector>
+   <Sector Abbreviation="Tien" Selected="true" Milieu="M1900">
+      <Y>-2</Y>
+      <X>-6</X>
+      <Name>Tienspevnekr</Name>
+      <DataFile Author="Robert Eaglestone" Type="TabDelimited">Tienspevnekr.tab</DataFile>
+      <MetadataFile>Tienspevnekr.xml</MetadataFile>
+   </Sector>
+   <Sector Abbreviation="Stia" Selected="true" Milieu="M1900">
+      <Y>-3</Y>
+      <X>-6</X>
+      <Name>Stiatlchepr</Name>
+      <DataFile Author="Robert Eaglestone" Type="TabDelimited">Stiatlchepr.tab</DataFile>
+      <MetadataFile>Stiatlchepr.xml</MetadataFile>
+   </Sector>
+   <Sector Abbreviation="Eiap" Selected="true" Milieu="M1900">
+      <Y>-2</Y>
+      <X>-8</X>
+      <Name>Eiaplial</Name>
+      <DataFile Author="Robert Eaglestone" Type="TabDelimited">Eiaplial.tab</DataFile>
+      <MetadataFile>Eiaplial.xml</MetadataFile>
+   </Sector>
+   <Sector Abbreviation="Sidi" Selected="true" Milieu="M1900">
+      <Y>-3</Y>
+      <X>-8</X>
+      <Name>Sidiadl</Name>
+      <DataFile Author="Robert Eaglestone" Type="TabDelimited">Sidiadl.tab</DataFile>
+      <MetadataFile>Sidiadl.xml</MetadataFile>
+   </Sector>
+   <Sector Abbreviation="Zhda" Selected="true" Milieu="M1900">
+      <Y>-2</Y>
+      <X>-7</X>
+      <Name>Zhdant</Name>
+      <DataFile Author="Robert Eaglestone" Type="TabDelimited">Zhdant.tab</DataFile>
+      <MetadataFile>Zhdant.xml</MetadataFile>
+   </Sector>
+   <Sector Abbreviation="Zdie" Selected="true" Milieu="M1900">
+      <Y>-3</Y>
+      <X>-7</X>
+      <Name>Zdiedeiant</Name>
+      <DataFile Author="Robert Eaglestone" Type="TabDelimited">Zdiedeiant.tab</DataFile>
+      <MetadataFile>Zdiedeiant.xml</MetadataFile>
+   </Sector>
+   <Sector Abbreviation="Dhue" Selected="true" Milieu="M1900">
+      <Y>-3</Y>
+      <X>-3</X>
+      <Name>Dhuerorrg</Name>
+      <DataFile Author="Robert Eaglestone" Type="TabDelimited">Dhuerorrg.tab</DataFile>
+      <MetadataFile>Dhuerorrg.xml</MetadataFile>
+   </Sector>
+   <Sector Abbreviation="Knoe" Selected="true" Milieu="M1900">
+      <Y>-3</Y>
+      <X>-4</X>
+      <Name>Knoellighz</Name>
+      <DataFile Author="Robert Eaglestone" Type="TabDelimited">Knoellighz.tab</DataFile>
+      <MetadataFile>Knoellighz.xml</MetadataFile>
+   </Sector>
+   <Sector Abbreviation="Ngat" Selected="true" Milieu="M1900">
+     <Y>-3</Y>
+     <X>-2</X>
+     <Name>Ngathksirz</Name>
+     <Name Lang="va">Ngathksirz</Name>
+     <DataFile Author="Robert Eaglestone" Type="TabDelimited">Ngathksirz.tab</DataFile>
+     <MetadataFile>Ngathksirz.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Fadz" Selected="true" Milieu="M1900">
+    <Y>-3</Y>
+    <X>-1</X>
+    <Name>Fa Dzaets</Name>
+    <Name Lang="va">Fa Dzaets</Name>
+    <DataFile Author="Robert Eaglestone" Type="TabDelimited">Fa Dzaets.tab</DataFile>
+    <MetadataFile>Fa Dzaets.xml</MetadataFile>
+  </Sector>  
   <Sector Abbreviation="Ziaf" Selected="true" Milieu="M1900">
     <Y>-2</Y>
     <X>-5</X>
     <Name Lang="zh">Ziafrplians</Name>
     <Name Lang="va">Usingou</Name>
     <DataFile Author="Robert Eaglestone" Type="TabDelimited">Ziaf.tab</DataFile>
-    <MetadataFile>Ziaf.xml</MetadataFile>
+    <MetadataFile>Ziafrplians.xml</MetadataFile>
   </Sector>
   <Sector Abbreviation="Gvur" Selected="true" Milieu="M1900">
     <Y>-2</Y>
     <X>-4</X>
     <Name Lang="va">Gvurrdon</Name>
     <Name Lang="zh">Briakqra'</Name>
-    <DataFile Author="Robert Eaglestone" Type="TabDelimited">Gvur.tab</DataFile>
-    <MetadataFile>Gvur.xml</MetadataFile>
+    <DataFile Author="Robert Eaglestone" Type="TabDelimited">Gvurrdon.tab</DataFile>
+    <MetadataFile>Gvurrdon.xml</MetadataFile>
   </Sector>
+  <Sector Abbreviation="Tugl" Selected="true" Milieu="M1900">
+    <Y>-2</Y>
+    <X>-3</X>
+    <Name Lang="va">Tuglikki</Name>
+    <Name Lang="zh">Dravr</Name>
+    <DataFile Author="Robert Eaglestone" Type="TabDelimited">Tuglikki.tab</DataFile>
+    <MetadataFile>Tuglikki.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Prov" Selected="true" Milieu="M1900">
+    <Y>-2</Y>
+    <X>-2</X>
+    <Name>Provence</Name>
+    <Name Lang="va">Orraenang</Name>
+    <Name Lang="vi">Amshagi</Name>
+    <DataFile Author="Robert Eaglestone" Type="TabDelimited">Provence.tab</DataFile>
+    <MetadataFile>Provence.xml</MetadataFile>
+  </Sector>
+   <Sector Abbreviation="Wind" Selected="true" Milieu="M1900">
+      <Y>-2</Y>
+      <X>-1</X>
+      <Name>Windhorn</Name>
+      <DataFile Author="Robert Eaglestone" Type="TabDelimited">Windhorn.tab</DataFile>
+      <MetadataFile>Windhorn.xml</MetadataFile>
+   </Sector>
+  <Sector Abbreviation="FarF" Selected="true" Milieu="M1900">
+    <Y>-1</Y>
+    <X>-6</X>
+    <Name>Far Frontiers</Name>
+    <Name Lang="zh">Afachtiabr</Name>
+    <DataFile Author="Robert Eaglestone" Type="TabDelimited">Far Frontiers.tab</DataFile>
+    <MetadataFile>Far Frontiers.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Fore" Selected="true" Milieu="M1900">
+    <Y>-1</Y>
+    <X>-5</X>
+    <Name>Foreven</Name>
+    <Name Lang="zh">Iakr</Name>
+    <DataFile Author="Robert Eaglestone" Type="TabDelimited">Foreven.tab</DataFile>
+    <MetadataFile>Foreven.xml</MetadataFile>
+  </Sector>  
   <Sector Abbreviation="Spin" Selected="true" Milieu="M1900">
     <Y>-1</Y>
     <X>-4</X>
@@ -29,7 +148,63 @@
     <X>-3</X>
     <Name>Deneb</Name>
     <Name Lang="zh">Nieklsdia</Name>
-    <DataFile Author="Robert Eaglestone" Type="TabDelimited">Dene.tab</DataFile>
-    <MetadataFile>Dene.xml</MetadataFile>
+    <DataFile Author="Robert Eaglestone" Type="TabDelimited">Deneb.tab</DataFile>
+    <MetadataFile>Deneb.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Corr" Selected="true" Milieu="M1900">
+    <Y>-1</Y>
+    <X>-2</X>
+    <Name>Corridor</Name>
+    <DataFile Author="Robert Eaglestone" Type="TabDelimited">Corridor.tab</DataFile>
+    <MetadataFile>Corridor.xml</MetadataFile>
+  </Sector>
+ <Sector Abbreviation="Vlan" Selected="true" Milieu="M1900">
+    <Y>-1</Y>
+    <X>-1</X>
+    <Name>Vland</Name>
+    <DataFile Author="Robert Eaglestone" Type="TabDelimited">Vland.tab</DataFile>
+    <MetadataFile>Vland.xml</MetadataFile>
+  </Sector>
+ <Sector Abbreviation="Reft" Selected="true" Milieu="M1900">
+    <Y>0</Y>
+    <X>-3</X>
+    <Name>Reft</Name>
+    <DataFile Author="Robert Eaglestone" Type="TabDelimited">Reft.tab</DataFile>
+    <MetadataFile>Reft.xml</MetadataFile>
+  </Sector>
+ <Sector Abbreviation="Gush" Selected="true" Milieu="M1900">
+    <Y>0</Y>
+    <X>-2</X>
+    <Name>Gushemege</Name>
+    <DataFile Author="Robert Eaglestone" Type="TabDelimited">Gushemege.tab</DataFile>
+    <MetadataFile>Gushemege.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Dagu" Selected="true" Milieu="M1900">
+    <Y>0</Y>
+    <X>-1</X>
+    <Name>Dagudashaag</Name>
+    <DataFile Author="Robert Eaglestone" Type="TabDelimited">Dagudashaag.tab</DataFile>
+    <MetadataFile>Dagudashaag.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Verg" Selected="true" Milieu="M1900">
+    <Y>1</Y>
+    <X>-3</X>
+    <Name>Verge</Name>
+    <DataFile Author="Robert Eaglestone" Type="TabDelimited">Verge.tab</DataFile>
+    <MetadataFile>Verge.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Ilel" Selected="true" Milieu="M1900">
+    <Y>1</Y>
+    <X>-2</X>
+    <Name>Ilelish</Name>
+    <DataFile Author="Robert Eaglestone" Type="TabDelimited">Ilelish.tab</DataFile>
+    <MetadataFile>Ilelish.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Zaru" Selected="true" Milieu="M1900">
+    <Y>1</Y>
+    <X>-1</X>
+    <Name>Zarushagar</Name>
+    <DataFile Author="Robert Eaglestone" Type="TabDelimited">Zarushagar.tab</DataFile>
+    <MetadataFile>Zarushagar.xml</MetadataFile>
   </Sector>
 </Sectors>

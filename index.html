@@ -8,13 +8,14 @@
                services for generating custom maps and APIs for incorporating maps
                into other sites.">
 
-<link rel="shortcut icon" href="favicon.ico">
+<link rel="shortcut icon" href="favicon.svg">
 <link rel="manifest" href="res/app/manifest.json">
 <!-- Microsoft/Edge -->
 <meta name="msapplication-config" content="res/app/browserconfig.xml">
 <meta name="theme-color" content="#000000">
 <!-- Apple/Safari -->
 <link rel="mask-icon" href="res/app/safari-pinned-tab.svg" color="#000000">
+<link rel="apple-touch-icon" sizes="152x152" href="res/app/regina152.png">
 <link rel="apple-touch-icon" sizes="180x180" href="res/app/regina180.png">
 
 <!-- Mobile -->
@@ -35,14 +36,13 @@
 <meta property="og:site_name" content="The Traveller Map">
 <meta property="fb:admins" content="617166358">
 
-<link rel="stylesheet" href="index.css?update=2022-10-24T15:44:54">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus">
+<link rel="stylesheet" href="index.css?update=2023-11-22T17:45:18">
 
-<!--[if lt IE 11]><script>alert("IE10 is no longer supported.");</script><![endif]-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
-<script src="https://cdn.rawgit.com/inexorabletash/poly2/v2.0.1/polyfill.min.js"></script>
-<script src="map.js?update=2022-09-10T10:37:44"></script>
-<script src="index.js?update=2022-10-19T18:09:30"></script>
-<script src="world_util.js?update=2022-09-22T17:54:47"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+<script defer src="map.js?update=2023-08-08T08:43:57"></script>
+<script defer src="world_util.js?update=2023-11-22T16:49:41"></script>
+<script defer src="index.js?update=2023-11-22T18:27:54"></script>
 
 <body class="hide-ui hide-footer ds-mini show-settings">
   <div id="mapContainer">
@@ -70,6 +70,7 @@
              autocapitalize="none"
              spellcheck="false"
              >
+      <div id=spinner></div>
       <button id="searchBtn" class=dim
               title="Search">
       </button>
@@ -192,13 +193,13 @@
               title="Swap start/end">
       </button>
 
-      <!--
-      --><button id="J-1" class=jump-button name=jump title="Calculate a Jump-1 route">J-1</button><!--
-      --><button id="J-2" class=jump-button name=jump title="Calculate a Jump-2 route">J-2</button><!--
-      --><button id="J-3" class=jump-button name=jump title="Calculate a Jump-3 route">J-3</button><!--
-      --><button id="J-4" class=jump-button name=jump title="Calculate a Jump-4 route">J-4</button><!--
-      --><button id="J-5" class=jump-button name=jump title="Calculate a Jump-5 route">J-5</button><!--
-      --><button id="J-6" class=jump-button name=jump title="Calculate a Jump-6 route">J-6</button>
+      <button id="J-1" class=jump-button name=jump title="Calculate a Jump-1 route" data-parsecs=1 >J-1</button>
+      <button id="J-2" class=jump-button name=jump title="Calculate a Jump-2 route" data-parsecs=2 >J-2</button>
+      <button id="J-3" class=jump-button name=jump title="Calculate a Jump-3 route" data-parsecs=3 >J-3</button>
+      <button id="J-4" class=jump-button name=jump title="Calculate a Jump-4 route" data-parsecs=4 >J-4</button>
+      <button id="J-5" class=jump-button name=jump title="Calculate a Jump-5 route" data-parsecs=5 >J-5</button>
+      <button id="J-6" class=jump-button name=jump title="Calculate a Jump-6 route" data-parsecs=6 >J-6</button>
+      <button id="H-1" class=jump-button name=jump title="Calculate a Hop-1 route"  data-parsecs=10>H-1</button>
 
       <div id="routeDisplay">
         <div id="routePath"></div>
@@ -463,9 +464,7 @@
       <a class=share id=share-facebook target=_blank rel=noopener data-template="http://www.facebook.com/sharer.php?u={{url}}">Facebook</a>
       <a class=share id=share-pinterest target=_blank rel=noopener data-template="http://pinterest.com/pin/create/button/?url={{url}}&amp;description={{text}}">Pinterest</a>
       <a class=share id=share-reddit target=_blank rel=noopener data-template="http://reddit.com/submit?url={{url}}&amp;title={{text}}">Reddit</a>
-      <a class=share id=share-twitter target=_blank rel=noopener data-template="https://twitter.com/share?url={{url}}&amp;text={{text}}&amp;hashtags={{hashtags}}">Twitter</a>
       <a class=share id=share-tumblr target=_blank rel=noopener data-template="http://www.tumblr.com/share/link?url={{url}}&amp;title={{text}}">Tumblr</a>
-      <a class=share id=share-su target=_blank rel=noopener data-template="http://www.stumbleupon.com/submit?url={{url}}&amp;title={{text}}">StumbleUpon</a>
       <a class=share id=share-linkedin target=_blank rel=noopener data-template="https://www.linkedin.com/shareArticle?mini=true&amp;url={{url}}&amp;title={{text}}">LinkedIn</a>
       <a class=share id=share-email target=_blank rel=noopener data-template="mailto:?Subject={{text}}&amp;Body={{url}}">Email</a>
     </section>
@@ -497,7 +496,7 @@
       <div id="image2"></div>
     </section>
     <section id="world_colors">
-      <h2>World<br>Characteristics</h2><br>
+      <h2>World Characteristics</h2><br>
       <ul>
         <li class=extended-only><span class="glyph RiAg">&#x25CF;</span> Rich &amp; Agricultural
         <li class=extended-only><span class="glyph Ag">&#x25CF;</span> Agricultural
@@ -599,7 +598,7 @@
       <div class="credits">
         The Traveller game in all forms is owned by
         <a target=_blank rel=noopener href="https://farfuture.net">Far Future Enterprises</a>.
-        Copyright <span class=copyright>&copy;</span> 1977 &ndash; 2020 Far Future Enterprises.
+        Copyright <span class=copyright>&copy;</span> 1977 &ndash; 2023 Far Future Enterprises.
       </div>
     </div>
     <script id="MetadataTemplate" type="text/x-handlebars-template">
@@ -753,7 +752,6 @@
       <canvas id=wds-world-image width=200 height=200></canvas>
       <div id=wds-data></div>
     </div>
-    <div id=wds-spinner></div>
     <button id=wds-closebtn class="closebtn dim" title="Close"></button>
   </div>
 
@@ -789,6 +787,9 @@
 <tr>
 <td colspan=3 style="text-align: center;">
 <img id=wds-map src="{{map_thumb}}" data-map="{{map}}">
+{{#if map_details}}
+<div>Source: {{map_details}}</div>
+{{/if}}
 </td>
 </tr>
 </tbody>
@@ -946,15 +947,14 @@
     Tap to return to <span id="milieu-field-default"></span>.
   </div>
 
+  <!--
   <div id="promo-hover">
     <button id=promo-closebtn class="closebtn dim" title="Close"></button>
-    <!--
-    Traveller RPG Mayday 2021 Event <br>
-    <a target=_blank rel=noopener href="https://www.cyborgprime.com/traveller-rpg-blog/mayday-mayday-traveller-day-2021-event">
-      Click for Info
-    </a>
-    -->
+    Calling all Free Traders!
+    <br>
+    <a target=_blank rel=noopener href="https://www.kickstarter.com/projects/tcon-usa/travellerconusa-2023-20-22-october-2023">Travellercon/USA 2023 Kickstarter</a>
   </div>
+  -->
 
   <div id="cookies">
     This site uses cookies. &nbsp;

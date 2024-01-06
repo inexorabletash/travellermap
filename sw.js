@@ -6,7 +6,7 @@ const urlsToCache = [
   // https://developers.google.com/web/tools/lighthouse/audits/cache-contains-start_url
 
   'offline.html',
-  'favicon.ico',
+  'favicon.svg',
   'https://fonts.googleapis.com/css?family=Marcellus',
 ];
 

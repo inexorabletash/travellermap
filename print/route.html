@@ -1,82 +1,74 @@
 <!DOCTYPE html>
 <title>Printable Route - Traveller Map</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
-<script src="https://cdn.rawgit.com/inexorabletash/poly2/v2.0.1/polyfill.min.js"></script>
-<script src="../map.js?update=2022-09-10T10:37:44"></script>
+<script src="../map.js?update=2023-08-08T08:43:57"></script>
 <script>
-window.addEventListener('load', function() {
-  var $ = document.querySelector.bind(document);
-  var $$ = document.querySelectorAll.bind(document);
+window.addEventListener('load', async () => {
+  const $ = s => document.querySelector(s);
+  const $$ = s => Array.from(document.querySelectorAll(s));
 
-  var params = new URL(document.location.href).searchParams;
+  const params = new URL(document.location.href).searchParams;
 
-  fetch(Traveller.MapService.makeURL('/api/route', {
-    start: params.get('start'),
-    end: params.get('end'),
-    jump: params.get('jump'),
-    x: params.get('x'),
-    y: params.get('y'),
-    milieu: params.get('milieu'),
-    wild: !!Number(params.get('wild'))?1:0,
-    im: !!Number(params.get('im'))?1:0,
-    nored: !!Number(params.get('nored'))?1:0
-  }))
-    .then(function(response) {
-      if (!response.ok) return response.text();
-      return response.json();
-    })
-    .then(function(data) {
-      if (typeof data === 'string') throw new Error(data);
+  try {
+    const response = await fetch(Traveller.MapService.makeURL('/api/route', {
+      start: params.get('start'),
+      end: params.get('end'),
+      jump: params.get('jump'),
+      x: params.get('x'),
+      y: params.get('y'),
+      milieu: params.get('milieu'),
+      wild: !!Number(params.get('wild'))?1:0,
+      im: !!Number(params.get('im'))?1:0,
+      nored: !!Number(params.get('nored'))?1:0
+    }));
+    if (!response.ok) return response.text();
 
-      var route = [];
-      var total = 0;
-      data.forEach(function(world, index) {
-        world.Name = world.Name || '(Unnamed)';
-        var sx = world.SectorX|0;
-        var sy = world.SectorY|0;
-        var hx = world.HexX|0;
-        var hy = world.HexY|0;
+    const data = await response.json();
+    if (typeof data === 'string') throw new Error(data);
 
-        if (index > 0) {
-          var prev = data[index - 1];
-          var a = Traveller.Astrometrics.sectorHexToWorld(
-            prev.SectorX|0, prev.SectorY|0, prev.HexX|0, prev.HexY|0);
-          var b = Traveller.Astrometrics.sectorHexToWorld(sx, sy, hx, hy);
-          var dist = Traveller.Astrometrics.hexDistance(a.x, a.y, b.x, b.y);
-          prev.Distance = dist;
-          total += dist;
-        }
+    const route = [];
+    let total = 0;
+    data.forEach((world, index) => {
+      world.Name = world.Name || '(Unnamed)';
+      const sx = world.SectorX|0;
+      const sy = world.SectorY|0;
+      const hx = world.HexX|0;
+      const hy = world.HexY|0;
 
-        world.Starport = world.UWP.substr(0, 1);
-        world.GasGiant = Number(world.PBG.substr(2, 1)) > 0;
-        world.AmberZone = world.Zone === 'A';
-        world.RedZone = world.Zone === 'R';
-      });
+      if (index > 0) {
+        const prev = data[index - 1];
+        const a = Traveller.Astrometrics.sectorHexToWorld(
+          prev.SectorX|0, prev.SectorY|0, prev.HexX|0, prev.HexY|0);
+        const b = Traveller.Astrometrics.sectorHexToWorld(sx, sy, hx, hy);
+        const dist = Traveller.Astrometrics.hexDistance(a.x, a.y, b.x, b.y);
+        prev.Distance = dist;
+        total += dist;
+      }
 
-      $('#routePath').innerHTML = Handlebars.compile($('#RouteResultsTemplate').innerHTML)({
-        Route: data,
-        From: data[0],
-        To: data[data.length - 1],
-        Jump: params.get('jump'),
-        Distance: total,
-        Jumps: data.length - 1
-      });
-
-      document.title = data[0].Name + ' to ' + data[data.length - 1].Name;
-
-      return Promise.all(Array.from($$('#routePath img')).map(function(img) {
-        return new Promise(function(resolve, reject) {
-          img.onload = function() { resolve(img); };
-          img.onerror = function(e) { reject(Error('Image failed to load')); };
-        });
-      }));
-    })
-    .then(function() {
-      window.print();
-    })
-    .catch(function(reason) {
-      alert(reason.message);
+      world.Starport = world.UWP.substr(0, 1);
+      world.GasGiant = Number(world.PBG.substr(2, 1)) > 0;
+      world.AmberZone = world.Zone === 'A';
+      world.RedZone = world.Zone === 'R';
     });
+
+    $('#routePath').innerHTML = Handlebars.compile($('#RouteResultsTemplate').innerHTML)({
+      Route: data,
+      From: data[0],
+      To: data[data.length - 1],
+      Jump: params.get('jump'),
+      Distance: total,
+      Jumps: data.length - 1
+    });
+
+    document.title = data[0].Name + ' to ' + data[data.length - 1].Name;
+
+    await Promise.all($$('#routePath img').map(img => Util.fetchImage(img)));
+
+    window.print();
+
+  } catch(reason) {
+    alert(reason.message);
+  }
 });
 </script>
 
@@ -201,5 +193,5 @@ h2 {
 
   The <em class=product>Traveller</em> game in all forms is owned by
   Far Future Enterprises. Copyright <span class=copyright>&copy;</span>
-  1977 &ndash; 2020 Far Future Enterprises.
+  1977 &ndash; 2023 Far Future Enterprises.
 </div>

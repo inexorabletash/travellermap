@@ -4,6 +4,7 @@ using Maps.Utilities;
 using System;
 using System.Data.SqlClient;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Web;
 
@@ -43,7 +44,7 @@ namespace Maps.Admin
                 context.Response.Flush();
                 return;
             }
-            Process(context, new ResourceManager(context.Server));
+            Process(context, ResourceManager.GetInstance());
         }
 
         protected abstract void Process(HttpContext context, ResourceManager resourceManager);
@@ -63,6 +64,10 @@ namespace Maps.Admin
         {
             if (context.Request[name] != null)
                 return context.Request[name] == "1";
+            // Check for "empty" query params; a list is returned.
+            var empty = context.Request.QueryString[null];
+            if (empty != null && empty.Split(',').Contains(name))
+                return true;
             var queryDefaults = Defaults(context);
             if (queryDefaults != null && queryDefaults.ContainsKey(name))
                 return queryDefaults[name].ToString() == "1";
@@ -100,6 +105,7 @@ namespace Maps.Admin
                 case "reindex": Reindex(context); return;
                 case "flush": Flush(context); return;
                 case "profile": Profile(context); return;
+                case "uptime": Uptime(context); return;
             }
             Write(context.Response, "Unknown action: <pre>" + action + "</pre>");
             Write(context.Response, "<b>&Omega;</b>");
@@ -131,28 +137,37 @@ namespace Maps.Admin
         {
             Write(response, name + ": " + value.ToString());
         }
+        private static void Uptime(HttpContext context)
+        {
+            TimeSpan uptime = DateTime.Now - Maps.GlobalAsax.startup_time;
 
+            Write(context.Response, $"Uptime: {uptime.Days}d {uptime.Hours}h {uptime.Minutes}m {uptime.Seconds}s<br>");
+            Write(context.Response, "<b>&Omega;</b>");
+        }
         private static void Profile(HttpContext context)
         {
             WriteStat(context.Response, "Cache.Count", context.Cache.Count);
             WriteStat(context.Response, "Cache.EffectivePercentagePhysicalMemoryLimit", context.Cache.EffectivePercentagePhysicalMemoryLimit);
             WriteStat(context.Response, "Cache.EffectivePrivateBytesLimit", context.Cache.EffectivePrivateBytesLimit);
             var process = System.Diagnostics.Process.GetCurrentProcess();
+            WriteStat(context.Response, "Process.Id", process.Id);
             WriteStat(context.Response, "Process.MinWorkingSet", process.MinWorkingSet);
             WriteStat(context.Response, "Process.MaxWorkingSet", process.MaxWorkingSet);
             WriteStat(context.Response, "Process.PeakWorkingSet64", process.PeakWorkingSet64);
             WriteStat(context.Response, "Process.PagedMemorySize64", process.PagedMemorySize64);
             WriteStat(context.Response, "Process.PeakPagedMemorySize64", process.PeakPagedMemorySize64);
             WriteStat(context.Response, "Process.PrivateMemorySize64", process.PrivateMemorySize64);
+            WriteStat(context.Response, "Process.StartTime", process.StartTime);
             WriteStat(context.Response, "Process.VirtualMemorySize64", process.VirtualMemorySize64);
             WriteStat(context.Response, "Process.WorkingSet64", process.WorkingSet64);
+            WriteStat(context.Response, "Process.Threads.Count", process.Threads.Count);
             Write(context.Response, "<b>&Omega;</b>");
         }
 
         private static void Reindex(HttpContext context)
         {
             Write(context.Response, "Initializing resource manager...");
-            ResourceManager resourceManager = new ResourceManager(context.Server);
+            ResourceManager resourceManager = ResourceManager.GetDedicatedInstance();
 
             SearchEngine.PopulateDatabase(resourceManager, s => Write(context.Response, s));
 

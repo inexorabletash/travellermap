@@ -47,7 +47,7 @@ namespace Maps.API
                 // Do the search
                 //
                 string? milieu = GetStringOption("milieu", SectorMap.DEFAULT_MILIEU);
-                SectorMap.Milieu map = SectorMap.ForMilieu(resourceManager, milieu);
+                SectorMap.Milieu map = SectorMap.ForMilieu(milieu);
 
                 int NUM_RESULTS;
                 IEnumerable<SearchResult> searchResults;
@@ -263,7 +263,7 @@ namespace Maps.API.Results
                         label.Radius > 80 ? 4 :
                         label.Radius > 40 ? 8 :
                         label.Radius > 20 ? 32 : 64,
-                    SectorTags = sector.TagString
+                    SectorTags = sector?.TagString
                 };
             }
 

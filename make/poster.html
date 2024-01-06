@@ -1,11 +1,10 @@
 ﻿<!DOCTYPE html>
 <title>Poster Maker - Traveller Map</title>
 <meta charset="utf-8">
-<link rel="shortcut icon" href="../favicon.ico">
-<link rel="stylesheet" href="../site.css?update=2020-06-29T21:09:21">
-<script src="https://cdn.rawgit.com/inexorabletash/poly2/v2.0.1/polyfill.min.js"></script>
-<script src="../map.js?update=2020-11-28T09:56:16"></script>
-<script src="post.js?update=2020-06-29T21:09:20"></script>
+<link rel="shortcut icon" href="../favicon.svg">
+<link rel="stylesheet" href="../site.css?update=2023-08-08T08:43:58">
+<script src="../map.js?update=2023-08-08T08:43:57"></script>
+<script src="post.js?update=2023-09-13T19:20:48"></script>
 
 <style>
 #option_columns > tbody> tr > td { padding: 0 20px; }
@@ -87,9 +86,10 @@
                 <option data-name="quadrant" value="Delta">Quadrant Delta </option>
               </select>
               <script>
-              document.querySelector('select#portion').addEventListener('change', function(e) {
-                var select = e.target;
-                var option = select.querySelectorAll('option')[select.selectedIndex];
+              'use strict';
+              document.querySelector('select#portion').addEventListener('change', event => {
+                const select = event.target;
+                const option = select.querySelectorAll('option')[select.selectedIndex];
                 select.setAttribute('name', option.getAttribute('data-name'));
               });
               </script>
@@ -168,9 +168,10 @@
         <label><input type="checkbox" name="stellar" value="1">Stellar Data</label><br>
         <label><input type="checkbox" id="ignore-errors" checked>Ignore Errors</label>
         <script>
-        (function() {
-          var $ = function(s) { return document.querySelector(s); };
-          var o = Traveller.MapOptions;
+        'use strict';
+        (() => {
+          const $ = s => document.querySelector(s);
+          const o = Traveller.MapOptions;
           bindCheckboxToOptionsBitmap('#options-grid', o.GridMask);
           bindCheckboxToOptionsBitmap('#options-borders', o.BordersMask);
           bindCheckboxToOptionsBitmap('#options-sector-names', o.SectorsMask);
@@ -181,28 +182,28 @@
           bindCheckboxToOptionsBitmap('#options-filled-borders', o.FilledBorders);
           makeCheckboxDependent('#options-filled-borders', '#options-borders');
           function bindCheckboxToOptionsBitmap(selector, mask) {
-            $(selector).addEventListener('click', function(e) {
-              var state = e.target.checked;
-              var input = $('input[name="options"]');
-              var options = Number(input.value);
+            $(selector).addEventListener('click', event => {
+              const state = event.target.checked;
+              const input = $('input[name="options"]');
+              let options = Number(input.value);
               options = state ? (options | mask) : (options & ~mask);
               input.value = options;
             });
           }
           function bindCheckboxToBooleanOption(selector, name) {
-            $(selector).addEventListener('click', function(e) {
-              var state = e.target.checked;
-              var input = $('input[name="' + name + '"]');
+            $(selector).addEventListener('click', event => {
+              const state = event.target.checked;
+              const input = $('input[name="' + name + '"]');
               input.value = state ? 1 : 0;
             });
           }
           function makeCheckboxDependent(dependent, master) {
-            $(master).addEventListener('click', function(e) {
-              if (!e.target.checked)
+            $(master).addEventListener('click', event => {
+              if (!event.target.checked)
                 $(dependent).checked = false;
             });
           }
-        }());
+        })();
         </script>
     </tr>
   </table>
@@ -236,61 +237,58 @@
 
 <div style="margin-top: 10px; font-size: 80%">
   The <em class="product">Traveller</em> game in all forms is owned by Far
-  Future Enterprises. Copyright <span class=copyright>&copy;</span> 1977 &ndash; 2020
+  Future Enterprises. Copyright <span class=copyright>&copy;</span> 1977 &ndash; 2023
   Far Future Enterprises.
   <a href="https://farfuture.net/FFEFairUsePolicy2008.pdf">Fair Use Policy</a>
 </div>
 
 <script>
-(function() {
-  var $ = function(s) { return document.querySelector(s); };
+'use strict';
+(() => {
+  const $ = s => document.querySelector(s);
 
-  $('#previewBtn').addEventListener('click', function(e) {
-    e.preventDefault();
-    e.stopPropagation();
+  $('#previewBtn').addEventListener('click', async event => {
+    event.preventDefault();
+    event.stopPropagation();
 
-    var data = new FormData($('#form'));
+    const data = new FormData($('#form'));
     data.append('datauri', '1');
     data.append('thumb', '1');
     data.append('accept', '');
     data.append('lint', $('#ignore-errors').checked ? 0 : 1);
 
-    fetch(Traveller.MapService.makeURL('/api/poster'), {method: 'POST', body: data})
-      .then(function(response) {
-        return Promise.all([response, response.text()]);
-      })
-      .then(function(results) {
-        var response = results[0], text = results[1];
-        if (response.ok) {
-          $('#preview').src = text;
-          $('#preview').style.height = 'auto';
-        } else {
-          console.warn(text);
-          alert(text);
-        }
-      });
+    const response = await fetch(
+      Traveller.MapService.makeURL('/api/poster'), {method: 'POST', body: data});
+    const text = await response.text();
+    if (response.ok) {
+      $('#preview').src = text;
+      $('#preview').style.height = 'auto';
+    } else {
+      console.warn(text);
+      alert(text);
+    }
   });
 
-  $('#renderBtn').addEventListener('click', function(e) {
-    e.preventDefault();
-    e.stopPropagation();
+  $('#renderBtn').addEventListener('click', event => {
+    event.preventDefault();
+    event.stopPropagation();
 
-    var form = $('#form');
+    const form = $('#form');
     form.target = '_blank';
     form.action = Traveller.MapService.makeURL('/api/poster');
     form.submit();
   });
 
-  $('#jumpBtn').addEventListener('click', function(e) {
-    e.preventDefault();
-    e.stopPropagation();
+  $('#jumpBtn').addEventListener('click', event => {
+    event.preventDefault();
+    event.stopPropagation();
 
-    var form = $('#form');
+    const form = $('#form');
     form.target = '_blank';
     form.action = Traveller.MapService.makeURL('/api/jumpmap');
     form.submit();
   });
-}());
+})();
 </script>
 
 <img id="preview">

@@ -1,9 +1,8 @@
 ﻿<!DOCTYPE html>
 <title>Image Tests</title>
 <meta charset="utf-8">
-<link rel="shortcut icon" href="../favicon.ico">
-<link rel="stylesheet" href="../site.css?update=2017-08-16T15:42:20">
-<script src="https://cdn.rawgit.com/inexorabletash/poly2/v2.0.1/polyfill.min.js"></script>
+<link rel="shortcut icon" href="../favicon.svg">
+<link rel="stylesheet" href="../site.css?update=2022-09-10T10:37:44">
 
 <style>
 tbody#results td,
@@ -221,6 +220,7 @@ tbody#results tr.fail td { border: 1px solid red; }
   // Regression: clipping
   check("refs/ref42.png", "/data/spin/1910/jump/3/image?style=mongoose&scale=128");
   check("refs/ref43.png", "/data/spin/1910/jump/2/image?style=poster&scale=128&im=1&review=1");
+  check("refs/ref44.png", "/data/spin/a/image?hrotation=60");
 
   // Template:
   // check(ref_image, live_image, opt_rgb_threshold, opt_num_bad_pixels);

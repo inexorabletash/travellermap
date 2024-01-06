@@ -1,10 +1,9 @@
 ﻿<!DOCTYPE html>
 <title>Sector Metadata - Traveller Map</title>
 <meta charset="utf-8">
-<link rel="shortcut icon" href="../favicon.ico">
+<link rel="shortcut icon" href="../favicon.svg">
 <link rel="stylesheet" href="../site.css">
 <meta name="viewport" content="initial-scale=1, width=device-width">
-<script src="https://cdn.rawgit.com/inexorabletash/poly2/v2.0.1/polyfill.min.js"></script>
 
 <style>
 pre.example { font-family: 'Share Tech Mono', monospace; }
@@ -507,16 +506,16 @@ pre.example { font-family: 'Share Tech Mono', monospace; }
   <p>
     The <em class="product">Traveller</em> game in all forms is owned by Far
     Future Enterprises. Copyright <span class=copyright>&copy;</span> 1977
-    &ndash; 2020 Far Future Enterprises.
+    &ndash; 2023 Far Future Enterprises.
     <a href="https://farfuture.net/FFEFairUsePolicy2008.pdf">Fair Use Policy</a>
   </p>
 </div>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
   [].slice.call(document.querySelectorAll('script.example'))
-    .forEach(function(script) {
-      var pre = document.createElement('pre');
+    .forEach(script => {
+      let pre = document.createElement('pre');
       pre.className = 'code';
       // TODO: Syntax Highlighting
       pre.appendChild(document.createTextNode(script.innerHTML.trim()));

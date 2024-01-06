@@ -84,6 +84,21 @@
     </Allegiances>
   </Sector>
 
+  <Sector Abbreviation="AABC" Label="Corridor" Tags="Apocryphal">
+    <X>156</X>
+    <Y>-1</Y>
+    <Name>Corridor (AABP)</Name>
+    <DataFile Author="Clayton R. Bush" Publisher="AABP" Type="SecondSurvey">Corridor_AABP.txt</DataFile>
+    <MetadataFile>Corridor_AABP.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="MSYK" Label="Yiklerzdanzh" Tags="Apocryphal">
+    <X>151</X>
+    <Y>-1</Y>
+    <Name>Yiklerzdanzh (Meshan Saga)</Name>
+    <DataFile Author="Martin Rait" Publisher="Meshan Saga" Type="SecondSurvey">Yiklerdanzh-MeshanSaga.txt</DataFile>
+    <MetadataFile>Yiklerdanzh-MeshanSaga.xml</MetadataFile>
+  </Sector>
+
   <!-- Paranoia Press Sectors -->
 
   <Sector Abbreviation="VR91" Label="Vanguard Reaches" Tags="Apocryphal">
@@ -135,6 +150,14 @@
     <MetadataFile>Virgo.xml</MetadataFile>
   </Sector>
 
+  <Sector Tags="Farway">
+    <X>-146</X>
+    <Y>-20</Y>
+    <Name>Sagittarius Cluster</Name>
+    <DataFile Author="Vaclav G. Ujcik">Sagittarius.txt</DataFile>
+    <MetadataFile>Sagittarius.xml</MetadataFile>
+  </Sector>
+
   <Sector Tags="Faraway">
     <X>-60</X>
     <Y>60</Y>
@@ -149,8 +172,16 @@
     <X>70</X>
     <Y>70</Y>
     <Name>The Beyond (Jeff Zeitlin)</Name>
-    <DataFile>beyond.sec</DataFile>
+    <DataFile Author="Jeff Zeitlin" Source="The Zhodani Base" Ref="http://zho.berka.com/data/CLASSIC/sector.pl?sector=BEYOND">beyond.sec</DataFile>
     <MetadataFile>Zeitlin Beyond.xml</MetadataFile>
+  </Sector>
+
+  <Sector Tags="Faraway">
+    <X>74</X>
+    <Y>76</Y>
+    <Name>Rim Worlds</Name>
+    <DataFile Author="Brian Smaller">Rim Worlds.sec</DataFile>
+    <MetadataFile>Rim Worlds.xml</MetadataFile>
   </Sector>
 
   <!-- Non-OTU Sectors from Publications and Fanzines -->
@@ -161,6 +192,14 @@
     <Name>Precipice</Name>
     <DataFile Source="Disappearance on Aramat" Author="Gary Pilkington" Publisher="Grenadier Models Inc." Type="SecondSurvey">Precipice.txt</DataFile>
     <MetadataFile>Precipice.xml</MetadataFile>
+  </Sector>
+
+  <Sector Tags="Apocryphal">
+    <X>69</X>
+    <Y>59</Y>
+    <Name>Alte Grenzen</Name>
+    <DataFile Author="Graham Donald" Type="SecondSurvey">Alte Grenzen.txt</DataFile>
+    <MetadataFile>Alte Grenzen.xml</MetadataFile>
   </Sector>
 
   <Sector Tags="Apocryphal">

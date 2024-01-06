@@ -5,8 +5,8 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
-using System.Web;
 using System.Text.RegularExpressions;
+using System.Web;
 
 namespace Maps.Search
 {
@@ -16,7 +16,15 @@ namespace Maps.Search
         {
             string connectionStringName = HttpContext.Current.Request.IsLocal ? "SqlDev" : "SqlProd";
             string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings[connectionStringName].ConnectionString;
-            SqlConnection conn = new SqlConnection(connectionString);
+            SqlConnection conn;
+            try
+            {
+                conn = new SqlConnection(connectionString);
+            }
+            catch (ArgumentException ex)
+            {
+                throw new ArgumentException("Database is not setup correctly. Check connection string in web.config.", ex);
+            }
             conn.Open();
             return conn;
         }
@@ -89,7 +97,7 @@ namespace Maps.Search
                 // NOTE: This (re)initializes a static data structure used for 
                 // resolving names into sector locations, so needs to be run
                 // before any other objects (e.g. Worlds) are loaded.
-                SectorMap map = SectorMap.GetInstance(resourceManager);
+                SectorMap map = SectorMap.GetInstance();
 
                 using (var connection = DBUtil.MakeConnection())
                 {
@@ -431,8 +439,7 @@ namespace Maps.Search
                 "WHERE name = @name AND milieu = @milieu " +
                 "ORDER BY distance ASC";
 
-            if (milieu == null)
-                milieu = SectorMap.DEFAULT_MILIEU;
+            milieu ??= SectorMap.DEFAULT_MILIEU;
 
             using var connection = DBUtil.MakeConnection();
             using var sqlCommand = new SqlCommand(sql, connection);

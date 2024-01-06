@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <title>Content Tests</title>
 <meta charset="utf-8">
-<link rel="shortcut icon" href="../favicon.ico">
-<link rel="stylesheet" href="../site.css?update=2017-08-16T15:42:20">
-<script src="https://cdn.rawgit.com/inexorabletash/poly2/v2.0.1/polyfill.min.js"></script>
+<link rel="shortcut icon" href="../favicon.svg">
+<link rel="stylesheet" href="../site.css?update=2022-09-10T10:37:44">
 
 <style>
 tbody#results td,
@@ -160,19 +159,15 @@ check('application/json',
 // Sector Parsing
 
 function sectorParserTest(input, expected) {
-  runTest('SEC Source', 'Parsed Output', function() {
-    return fetch(SERVICE_BASE + '/api/sec', {method: 'POST', body: input})
-    .then(function(response) {
-      if (!response.ok) throw new Error(response.statusText);
-      return response.text();
-    })
-    .then(function(body) {
-      var d = diff(expected, body);
-      return {left: input,
-              right: body,
-              diff: d,
-              pass: !d};
-    });
+  runTest('SEC Source', 'Parsed Output', async () => {
+    const response = await fetch(SERVICE_BASE + '/api/sec', {method: 'POST', body: input});
+    if (!response.ok) throw new Error(response.statusText);
+    const body = await response.text();
+    const d = diff(expected, body);
+    return {left: input,
+            right: body,
+            diff: d,
+            pass: !d};
   });
 }
 

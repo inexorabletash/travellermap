@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <title>Second Survey Data - Traveller Map</title>
 <meta charset="utf-8">
-<link rel="shortcut icon" href="../favicon.ico">
+<link rel="shortcut icon" href="../favicon.svg">
 <link rel="stylesheet" href="../site.css">
 <meta name="viewport" content="initial-scale=1, width=device-width">
-<script src="https://cdn.rawgit.com/inexorabletash/poly2/v2.0.1/polyfill.min.js"></script>
 
 <style>
   table {
@@ -2174,33 +2173,33 @@
   <p>
     The <em class="product">Traveller</em> game in all forms is owned by Far
     Future Enterprises. Copyright <span class=copyright>&copy;</span> 1977
-    &ndash; 2020 Far Future Enterprises.
+    &ndash; 2023 Far Future Enterprises.
     <a href="https://farfuture.net/FFEFairUsePolicy2008.pdf">Fair Use Policy</a>
 </div>
 
 <script>
-(function() {
-  function populateTable(query, table, cols) {
-    fetch(query)
-      .then(function(response) {
-        if (!response.ok) throw new Error(response.statusText);
-        return response.json();
-      })
-      .then(function(data) {
-        data.forEach(function(item) {
-          var tr = table.appendChild(document.createElement('tr'));
-          cols.forEach(function(col) {
-            var td = tr.appendChild(document.createElement('td'));
-            var content = item[col.property];
-            if (col.className) td.className = col.className;
-            if (col.func) content = col.func(content);
-            td.innerHTML = content;
-          });
+(() => {
+  async function populateTable(query, table, cols) {
+    try {
+      const response = await fetch(query);
+      if (!response.ok)
+        throw new Error(response.statusText);
+      const data = await  response.json();
+      data.forEach(item => {
+        const tr = table.appendChild(document.createElement('tr'));
+        cols.forEach(col => {
+          const td = tr.appendChild(document.createElement('td'));
+          let content = item[col.property];
+          if (col.className)
+            td.className = col.className;
+          if (col.func)
+            content = col.func(content);
+          td.innerHTML = content;
         });
-      })
-      .catch(function(error) {
-        console.warn('Error processing ' + query + ': ' + error.message);
       });
+    } catch (error)  {
+      console.warn(`Error processing ${query}: ${error.message}`);
+    }
   }
 
   function processLocation(text) {
@@ -2223,5 +2222,5 @@
                  {property: 'LegacyCode', className: 'code'},
                  {property: 'Name'},
                  {property: 'Location', func: processLocation}]);
-}());
+})();
 </script>

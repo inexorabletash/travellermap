@@ -127,6 +127,7 @@ namespace Maps.Graphics
                 if (dataUrl == null)
                 {
                     string contentType = Utilities.ContentTypes.TypeForPath(path);
+                    // TODO: Use reader with FileShare.Read
                     byte[] bytes = File.ReadAllBytes(path);
                     dataUrl = "data:" + contentType + ";base64," + Convert.ToBase64String(bytes, Base64FormattingOptions.None);
                 }
@@ -153,7 +154,7 @@ namespace Maps.Graphics
                     if (image == null)
                     {
                         // Use a stream since Image.FromFile(path) locks the file on disk.
-                        using var stream = new FileStream(path, FileMode.Open, FileAccess.Read);
+                        using var stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read);
                         image = Image.FromStream(stream);
                     }
                     return image;

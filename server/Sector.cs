@@ -11,6 +11,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Xml.Serialization;
 
 namespace Maps
@@ -93,6 +94,12 @@ namespace Maps
         {
             if (metadataSource == null)
                 throw new ArgumentNullException(nameof(metadataSource));
+
+            string?[] milieux = { metadataSource.Milieu, metadataSource.DataFile?.Milieu, Milieu, DataFile?.Milieu };
+            if (milieux.Where(s => s != null).Distinct().Count() > 1)
+            {
+                throw new Exception($"Mismatching Milieu entries for {Names[0].Text}: {milieux.Where(s => s != null)}");
+            }
 
             // TODO: This is very fragile; if a new type is added to Sector we need to add more code here.
 
@@ -222,46 +229,43 @@ namespace Maps
         private WorldCollection? worlds;
         internal virtual WorldCollection? GetWorlds(ResourceManager resourceManager, bool cacheResults = true)
         {
-            lock (this)
+            // Have it cached - just return it
+            if (worlds != null)
+                return worlds;
+
+            WorldCollection? data = null;
+
+            // Do we have data?
+            if (DataFile != null)
             {
-                // Have it cached - just return it
-                if (worlds != null)
-                    return worlds;
-
-                WorldCollection? data = null;
-
-                // Do we have data?
-                if (DataFile != null)
-                {
-                    // Yes, load/parse it.
-                    data = resourceManager.GetDeserializableFileObject(DataFile.FileName, typeof(WorldCollection), cacheResults: false, mediaType: DataFile.Type) as WorldCollection;
-                }
-                else if (Milieu != null && Milieu != SectorMap.DEFAULT_MILIEU)
-                {
-                    // Nope... maybe we can construct a dotmap from the default milieu?
-                    SectorMap.Milieu map = SectorMap.ForMilieu(resourceManager, SectorMap.DEFAULT_MILIEU);
-                    Sector? basis = map.FromLocation(this.Location);
-                    if (basis == null)
-                        return null;
-
-                    WorldCollection? worlds = basis.GetWorlds(resourceManager, cacheResults);
-                    if (worlds == null)
-                        return null;
-
-                    data = worlds.MakeDotmap();
-                }
-
-                if (data == null)
+                // Yes, load/parse it.
+                data = resourceManager.GetCachedDeserializableFileObject<WorldCollection>(DataFile.FileName, mediaType: DataFile.Type);
+            }
+            else if (Milieu != null && Milieu != SectorMap.DEFAULT_MILIEU)
+            {
+                // Nope... maybe we can construct a dotmap from the default milieu?
+                SectorMap.Milieu map = SectorMap.ForMilieu(SectorMap.DEFAULT_MILIEU);
+                Sector? basis = map.FromLocation(this.Location);
+                if (basis == null)
                     return null;
 
-                foreach (World world in data)
-                    world.Sector = this;
+                WorldCollection? worlds = basis.GetWorlds(resourceManager, cacheResults);
+                if (worlds == null)
+                    return null;
 
-                if (cacheResults)
-                    worlds = data;
-
-                return data;
+                data = worlds.MakeDotmap();
             }
+
+            if (data == null)
+                return null;
+
+            foreach (World world in data)
+                world.Sector = this;
+
+            if (cacheResults)
+                worlds = data;
+
+            return data;
         }
 
         internal void Serialize(ResourceManager resourceManager, TextWriter writer, string? mediaType, SectorSerializeOptions options)
@@ -362,54 +366,12 @@ namespace Maps
             worlds.Serialize(writer, mediaType, options);
         }
 
-        // TODO: Move this elsewhere
-        internal class ClipPath
-        {
-            public readonly PointF[] clipPathPoints;
-            public readonly byte[] clipPathPointTypes;
-            public readonly RectangleF bounds;
-
-            public ClipPath(Sector sector, PathUtil.PathType borderPathType)
-            {
-                RenderUtil.HexEdges(borderPathType, out float[] edgex, out float[] edgey);
-
-                IEnumerable<Hex> hexes =
-                    Util.Sequence(1, Astrometrics.SectorWidth).Select(x => new Hex((byte)x, 1))
-                    .Concat(Util.Sequence(2, Astrometrics.SectorHeight).Select(y => new Hex(Astrometrics.SectorWidth, (byte)y)))
-                    .Concat(Util.Sequence(Astrometrics.SectorWidth - 1, 1).Select(x => new Hex((byte)x, Astrometrics.SectorHeight)))
-                    .Concat(Util.Sequence(Astrometrics.SectorHeight - 1, 1).Select(y => new Hex(1, (byte)y)));
-
-                Rectangle bounds = sector.Bounds;
-                IEnumerable<Point> points = (from hex in hexes select new Point(hex.X + bounds.X, hex.Y + bounds.Y)).ToList();
-                PathUtil.ComputeBorderPath(points, edgex, edgey, out clipPathPoints, out clipPathPointTypes);
-
-                PointF min = clipPathPoints[0];
-                PointF max = clipPathPoints[0];
-                for (int i = 1; i < clipPathPoints.Length; ++i)
-                {
-                    PointF pt = clipPathPoints[i];
-                    if (pt.X < min.X)
-                        min.X = pt.X;
-                    if (pt.Y < min.Y)
-                        min.Y = pt.Y;
-                    if (pt.X > max.X)
-                        max.X = pt.X;
-                    if (pt.Y > max.Y)
-                        max.Y = pt.Y;
-                }
-                this.bounds = new RectangleF(min, new SizeF(max.X - min.X, max.Y - min.Y));
-            }
-        }
 
         private ClipPath[] clipPathsCache = new ClipPath[(int)PathUtil.PathType.TypeCount];
         internal ClipPath ComputeClipPath(PathUtil.PathType type)
         {
-            lock (this)
-            {
-                if (clipPathsCache[(int)type] == null)
-                    clipPathsCache[(int)type] = new ClipPath(this, type);
-                return clipPathsCache[(int)type];
-            }
+            clipPathsCache[(int)type] ??= new ClipPath(this.Bounds, type);
+            return clipPathsCache[(int)type];
         }
 
         internal Rectangle Bounds => new Rectangle(
@@ -440,14 +402,14 @@ namespace Maps
                 new Hex((byte)(Astrometrics.SubsectorWidth * (2 * ssx + 1) / 2), (byte)(Astrometrics.SubsectorHeight * (2 * ssy + 1) / 2)));
         }
 
-        private static readonly SectorStylesheet s_defaultStyleSheet =
-            s_defaultStyleSheet = SectorStylesheet.Parse(
-                File.OpenText(System.Web.Hosting.HostingEnvironment.MapPath("~/res/styles/otu.css")));
+        private static ThreadLocal<SectorStylesheet> s_defaultStyleSheet = new ThreadLocal<SectorStylesheet>(() =>
+            SectorStylesheet.Parse(
+                Util.SharedFileReader(System.Web.Hosting.HostingEnvironment.MapPath("~/res/styles/otu.css"))));
 
         internal SectorStylesheet? Stylesheet { get; set; }
 
         internal SectorStylesheet.StyleResult ApplyStylesheet(string element, string? code)
-            => (Stylesheet ?? s_defaultStyleSheet).Apply(element, code);
+            => (Stylesheet ?? s_defaultStyleSheet.Value).Apply(element, code);
 
         [XmlElement("Stylesheet"), JsonName("Stylesheet")]
         public string? StylesheetText
@@ -459,7 +421,7 @@ namespace Maps
                 if (value != null)
                 {
                     Stylesheet = SectorStylesheet.Parse(value);
-                    Stylesheet.Parent = s_defaultStyleSheet;
+                    Stylesheet.Parent = s_defaultStyleSheet.Value;
                 }
             }
         }
@@ -507,7 +469,7 @@ namespace Maps
                         continue;
 
                     if (end == loc)
-                        Util.Swap(ref start, ref end);
+                        (start, end) = (end, start);
                     else if (start != loc)
                         continue;
 
@@ -561,24 +523,21 @@ namespace Maps
 
         internal override WorldCollection? GetWorlds(ResourceManager resourceManager, bool cacheResults = true)
         {
-            lock (this)
-            {
-                if (this.worlds != null)
-                    return this.worlds;
+            if (this.worlds != null)
+                return this.worlds;
 
-                WorldCollection? worlds = basis.GetWorlds(resourceManager, cacheResults);
-                if (worlds == null)
-                    return null;
+            WorldCollection? worlds = basis.GetWorlds(resourceManager, cacheResults);
+            if (worlds == null)
+                return null;
 
-                WorldCollection dots = worlds.MakeDotmap();
-                foreach (World world in dots)
-                    world.Sector = this;
+            WorldCollection dots = worlds.MakeDotmap();
+            foreach (World world in dots)
+                world.Sector = this;
 
-                if (cacheResults)
-                    this.worlds = dots;
+            if (cacheResults)
+                this.worlds = dots;
 
-                return dots;
-            }
+            return dots;
         }
     }
 
@@ -793,12 +752,8 @@ namespace Maps
         private BorderPath[] borderPathsCache = new BorderPath[(int)PathUtil.PathType.TypeCount];
         internal BorderPath ComputeGraphicsPath(Sector sector, PathUtil.PathType type)
         {
-            lock (this)
-            {
-                if (borderPathsCache[(int)type] == null)
-                    borderPathsCache[(int)type] = new BorderPath(this, sector, type);
-                return borderPathsCache[(int)type];
-            }
+            borderPathsCache[(int)type] ??= new BorderPath(this, sector, type);
+            return borderPathsCache[(int)type];
         }
 
         internal string? GetLabel(Sector sector)

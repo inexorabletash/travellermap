@@ -1,5 +1,5 @@
 /*global Traveller, Handlebars */
-(function(global) {
+(global => {
   'use strict';
 
   const $ = s => document.querySelector(s);
@@ -15,7 +15,7 @@
     return null;
   }
 
-  function cmp(a, b) { return a < b ? -1 : a > b ? 1 : 0; }
+  const cmp = (a, b) => a < b ? -1 : a > b ? 1 : 0;
 
   function smartquote(s) {
     return s ? s
@@ -27,7 +27,7 @@
   function parseSector(tabDelimitedData, metadata) {
     let i;
     const sector = {
-      metadata: metadata,
+      metadata,
       worlds: []
     };
 
@@ -55,7 +55,7 @@
       // Special formatting
       world.ix = world.ix.replace(/[{} ]/g, '');
       world.ex = world.ex.replace(/[() ]/g, '');
-      world.cx = world.cx.replace(/[\[\] ]/g, '');
+      world.cx = world.cx.replace(/[[\] ]/g, '');
 
       world.name = smartquote(world.name);
 
@@ -151,7 +151,7 @@
       if (sector.credits)
         credits.push({name: short_name, credits: sector.credits});
       else
-        console.warn(sector.name + ' credits missing');
+        console.warn(`${sector.name} credits missing`);
 
       return sector;
     });
@@ -182,18 +182,18 @@
     progress.value = 0;
     document.body.appendChild(progress);
     images.forEach(img => {
-      img.addEventListener('load', e => {
+      img.addEventListener('load', event => {
         ++progress.value;
         if (progress.value === progress.max)
           progress.parentElement.removeChild(progress);
       });
-      img.addEventListener('error', e => {
+      img.addEventListener('error', event => {
         setTimeout(() => {
-          console.warn('retrying ' + img.src);
+          console.warn(`retrying ${img.src}`);
           img.src = img.src + '&retry';
         }, 1000 + 5000 * Math.random());
       });
     });
-  };
+  }
 
-}(self));
+})(self);

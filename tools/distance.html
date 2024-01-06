@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <title>Distance Calculator - Traveller Map</title>
 <meta charset="utf-8">
-<link rel="shortcut icon" href="../favicon.ico">
-<link rel="stylesheet" href="../site.css?update=2020-01-19T10:43:06">
-<script src="https://cdn.rawgit.com/inexorabletash/poly2/v2.0.1/polyfill.min.js"></script>
-<script src="../map.js?update=2020-01-01T14:47:00"></script>
+<link rel="shortcut icon" href="../favicon.svg">
+<link rel="stylesheet" href="../site.css?update=2022-09-10T10:37:44">
+<script src="../map.js?update=2023-06-19T09:13:17"></script>
 <style>
   td, div { padding-top: 0.5em; }
 </style>
@@ -29,20 +28,20 @@
 
 <script>
 
-window.addEventListener('DOMContentLoaded', function () {
+window.addEventListener('DOMContentLoaded', () => {
   'use strict';
-  var $ = function (s) { return document.querySelector(s); };
+  const $ = s => document.querySelector(s);
 
-  ['startsec', 'starthex', 'endsec', 'endhex'].forEach(function(id) {
+  ['startsec', 'starthex', 'endsec', 'endhex'].forEach(id => {
     $('#'+id).addEventListener('change', refresh);
   });
 
   function distance(a, b) {
-    var dx = b.x - a.x;
-    var dy = b.y - a.y;
+    const dx = b.x - a.x;
+    const dy = b.y - a.y;
 
-    var adx = Math.abs(dx);
-    var ody = dy + div(adx, 2);
+    let adx = Math.abs(dx);
+    let ody = dy + div(adx, 2);
 
     if (even(a.x) && odd(b.x))
       ody += 1;
@@ -51,21 +50,20 @@ window.addEventListener('DOMContentLoaded', function () {
 
     function even(x) { return (x % 2) === 0; }
     function odd (x) { return (x % 2) !== 0; }
-
     function div(a, b) { return Math.floor(a / b); }
-    function mod(a, b) { return Math.floor(a % b); }
   }
 
-  function refresh() {
-    Promise.all([
-      Traveller.MapService.coordinates($('#startsec').value, $('#starthex').value),
-      Traveller.MapService.coordinates($('#endsec').value, $('#endhex').value)
-    ]).then(function(coords) {
-      var dist = distance(coords[0], coords[1]);
+  async function refresh() {
+    try {
+      const coords = await Promise.all([
+        Traveller.MapService.coordinates($('#startsec').value, $('#starthex').value),
+        Traveller.MapService.coordinates($('#endsec').value, $('#endhex').value)
+      ]);
+      const dist = distance(coords[0], coords[1]);
       $('#distance').value = dist;
-    }).catch(function(reason) {
+    } catch(reason) {
       $('#distance').value = reason.message;
-    });
+    }
   }
 });
 </script>

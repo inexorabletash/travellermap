@@ -6,11 +6,11 @@
   }
 </style>
 <script>
-var SERVICE_BASE = (function(l) {
+const SERVICE_BASE = (l => {
   if (l.hostname === 'localhost' && l.pathname.indexOf('~') !== -1)
     return 'https://travellermap.com';
   return '';
-}(window.location));
+})(window.location);
 
 ['poster', 'atlas', 'print', 'candy', 'draft', 'fasa', 'terminal', 'mongoose'].forEach(style => {
   const div = document.documentElement.appendChild(document.createElement('div'));

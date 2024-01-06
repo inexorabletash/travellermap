@@ -1,7 +1,6 @@
 ﻿#nullable enable
 using System;
 using System.Collections;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -183,18 +182,35 @@ namespace Maps.Utilities
             list.Insert(index < 0 ? list.Count : index + 1, item);
         }
         #endregion
+
+        #region Dictionary Methods
+        public static bool TryAdd<TKey, TValue>(this Dictionary<TKey, TValue> dict, TKey key, TValue value)
+        {
+            if (!dict.ContainsKey(key))
+            {
+                dict.Add(key, value);
+                return true;
+            }
+
+            return false;
+        }
+
+        public static TValue GetOrAdd<TKey, TValue>(this Dictionary<TKey, TValue> dict, TKey key, Func<TKey, TValue> func)
+        {
+            if (!dict.ContainsKey(key))
+            {
+                TValue value = func(key);
+                dict.Add(key, value);
+                return value;
+            }
+            return dict[key];
+        }
+        #endregion
     }
 
     internal static class Util
     {
         public static readonly Encoding UTF8_NO_BOM = new UTF8Encoding(encoderShouldEmitUTF8Identifier: false);
-
-        public static void Swap<T>(ref T a, ref T b)
-        {
-            T tmp = a;
-            a = b;
-            b = tmp;
-        }
 
         // TODO: Could be a variant of Enumerable.Range(...).Select(...)
         public static IEnumerable<int> Sequence(int start, int end)
@@ -210,6 +226,10 @@ namespace Maps.Utilities
 
         private static Regex alphanumeric = new Regex(@"\W+");
         public static string SanitizeFilename(string input) => alphanumeric.Replace(input, "_");
+        public static StreamReader SharedFileReader(string path)
+        {
+            return new StreamReader(new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read));
+        }
     }
 
     // Like Regex, but takes shell-style globs:
@@ -222,30 +242,12 @@ namespace Maps.Utilities
             : base("^" + Regex.Escape(pattern).Replace(@"\*", ".*").Replace(@"\?", ".") + "$", options) { }
     }
 
-    internal class ConcurrentSet<T> : IEnumerable<T>
-    {
-        private ConcurrentDictionary<T, bool> dict = new ConcurrentDictionary<T, bool>();
-        public void Add(T e) { if (!dict.TryAdd(e, true)) throw new ApplicationException("Unexpected initialization failure"); }
-        public bool Contains(T e) => dict.ContainsKey(e);
-
-        public IEnumerator<T> GetEnumerator() => dict.Keys.GetEnumerator();
-        IEnumerator IEnumerable.GetEnumerator() => dict.Keys.GetEnumerator();
-    }
-
-    internal class EasyInitConcurrentDictionary<TKey, TValue> : ConcurrentDictionary<TKey, TValue>
-    {
-        public EasyInitConcurrentDictionary() { }
-        public EasyInitConcurrentDictionary(IEqualityComparer<TKey> c) : base(c) { }
-        public EasyInitConcurrentDictionary(IEnumerable<KeyValuePair<TKey, TValue>> e) : base(e) { }
-        public void Add(TKey k, TValue v) { TryAdd(k, v); }
-    }
-
     internal class RegexMap<T> : IEnumerable<KeyValuePair<Regex, T>>
     {
-        private ConcurrentQueue<KeyValuePair<Regex, T>> list = new ConcurrentQueue<KeyValuePair<Regex, T>>();
+        private List<KeyValuePair<Regex, T>> list = new List<KeyValuePair<Regex, T>>();
         public RegexMap() { }
 
-        public void Add(Regex r, T v) { list.Enqueue(new KeyValuePair<Regex, T>(r, v)); }
+        public void Add(Regex r, T v) { list.Add(new KeyValuePair<Regex, T>(r, v)); }
         public virtual void Add(string r, T v) { Add(new Regex(r), v); }
         public virtual void Add(T v) { Add(new Regex("^" + Regex.Escape(v!.ToString()) + "$"), v); }
 
@@ -438,7 +440,7 @@ namespace Maps.Utilities
             {
                 int pi = (ci - 1) / 2; // parent index
                 if (data[ci].CompareTo(data[pi]) >= 0) break; // child item is larger than (or equal) parent so we're done
-                T tmp = data[ci]; data[ci] = data[pi]; data[pi] = tmp;
+                (data[pi], data[ci]) = (data[ci], data[pi]);
                 ci = pi;
             }
         }
@@ -452,6 +454,7 @@ namespace Maps.Utilities
             data.RemoveAt(li);
 
             --li; // last index (after removal)
+
             int pi = 0; // parent index. start at front of pq
             while (true)
             {
@@ -461,7 +464,7 @@ namespace Maps.Utilities
                 if (rc <= li && data[rc].CompareTo(data[ci]) < 0) // if there is a rc (ci + 1), and it is smaller than left child, use the rc instead
                     ci = rc;
                 if (data[pi].CompareTo(data[ci]) <= 0) break; // parent is smaller than (or equal to) smallest child so done
-                T tmp = data[pi]; data[pi] = data[ci]; data[ci] = tmp; // swap parent and child
+                (data[ci], data[pi]) = (data[pi], data[ci]);
                 pi = ci;
             }
 

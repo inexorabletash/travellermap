@@ -24,6 +24,13 @@ namespace Maps.API
                 ParseOptions(ref options, ref style);
                 string title;
                 bool clipOutsectorBorders;
+                bool transparent = false;
+                bool forceClip = false;
+                AbstractPath? clipPath = null;
+
+                const double NormalScale = 64; // pixels/parsec - standard subsector-rendering scale
+                double scale = GetDoubleOption("scale", NormalScale).Clamp(MinScale, MaxScale);
+                Stylesheet stylesheet = new Stylesheet(scale, options, style);
 
                 if (HasOption("x1") && HasOption("x2") &&
                     HasOption("y1") && HasOption("y2"))
@@ -46,7 +53,7 @@ namespace Maps.API
                     // NOTE: This (re)initializes a static data structure used for
                     // resolving names into sector locations, so needs to be run
                     // before any other objects (e.g. Worlds) are loaded.
-                    SectorMap.Milieu map = SectorMap.ForMilieu(resourceManager, GetStringOption("milieu"));
+                    SectorMap.Milieu map = SectorMap.ForMilieu(GetStringOption("milieu"));
                     selector = new RectSelector(map, resourceManager, tileRect, slop: false);
 
                     // Include specified hexes
@@ -107,7 +114,7 @@ namespace Maps.API
                     // NOTE: This (re)initializes a static data structure used for
                     // resolving names into sector locations, so needs to be run
                     // before any other objects (e.g. Worlds) are loaded.
-                    SectorMap.Milieu map = SectorMap.ForMilieu(resourceManager, GetStringOption("milieu"));
+                    SectorMap.Milieu map = SectorMap.ForMilieu(GetStringOption("milieu"));
                     selector = new RectSelector(map, resourceManager, tileRect, slop: false);
 
                     // Include selected hexes
@@ -162,7 +169,7 @@ namespace Maps.API
                         string sectorName = GetStringOption("sector") ??
                             throw new HttpError(400, "Bad Request", "No sector specified.");
 
-                        SectorMap.Milieu map = SectorMap.ForMilieu(resourceManager, GetStringOption("milieu"));
+                        SectorMap.Milieu map = SectorMap.ForMilieu(GetStringOption("milieu"));
 
                         sector = map.FromName(sectorName) ??
                             throw new HttpError(404, "Not Found", $"The specified sector '{sectorName}' was not found.");
@@ -220,20 +227,35 @@ namespace Maps.API
 
                     // Account for jagged hexes
                     tileRect.Height += 0.5f;
-                    tileRect.Inflate(0.25f, 0.10f);
-                    if (style == Style.Candy)
-                        tileRect.Width += 0.75f;
+
+                    if (GetBoolOption("compositing", false))
+                    {
+                        PathUtil.PathType borderPathType = stylesheet.microBorderStyle == MicroBorderStyle.Square ?
+                            PathUtil.PathType.Square : PathUtil.PathType.Hex;
+                        ClipPath clip = sector.ComputeClipPath(borderPathType);
+                        clipPath = new AbstractPath(clip.clipPathPoints, clip.clipPathPointTypes);
+                        tileRect.Inflate(RenderUtil.HEX_EDGE, 0);
+                    }
+                    else
+                    {
+                        tileRect.Inflate(0.25f, 0.10f);
+                        if (style == Style.Candy)
+                            tileRect.Width += 0.75f;
+                    }
+
                     clipOutsectorBorders = false;
                 }
 
-                const double NormalScale = 64; // pixels/parsec - standard subsector-rendering scale
-                double scale = GetDoubleOption("scale", NormalScale).Clamp(MinScale, MaxScale);
-
                 int rot = GetIntOption("rotation", 0) % 4;
                 int hrot = GetIntOption("hrotation", 0);
+                if (hrot !=0)
+                {
+                    forceClip = true;
+                    transparent = true;
+                }
+
                 bool thumb = GetBoolOption("thumb", false);
 
-                Stylesheet stylesheet = new Stylesheet(scale, options, style);
 
                 Size tileSize = new Size((int)Math.Floor(tileRect.Width * scale * Astrometrics.ParsecScaleX), (int)Math.Floor(tileRect.Height * scale * Astrometrics.ParsecScaleY));
 
@@ -252,7 +274,7 @@ namespace Maps.API
                     case 1: // 90 degrees clockwise
                         rotTransform.RotatePrepend(90);
                         rotTransform.TranslatePrepend(0, -bitmapHeight);
-                        Util.Swap(ref bitmapWidth, ref bitmapHeight);
+                        (bitmapWidth, bitmapHeight) = (bitmapHeight, bitmapWidth);
                         break;
                     case 2: // 180 degrees
                         rotTransform.RotatePrepend(180);
@@ -261,7 +283,7 @@ namespace Maps.API
                     case 3: // 270 degrees clockwise
                         rotTransform.RotatePrepend(270);
                         rotTransform.TranslatePrepend(-bitmapWidth, 0);
-                        Util.Swap(ref bitmapWidth, ref bitmapHeight);
+                        (bitmapWidth, bitmapHeight) = (bitmapHeight, bitmapWidth);
                         break;
                 }
 
@@ -294,8 +316,12 @@ namespace Maps.API
                             (newSize.Width - bitmapSize.Width) / 2f,
                             (newSize.Height - bitmapSize.Height) / 2f);
                         bitmapSize = newSize;
+                        transparent = true;
+                        forceClip = true;
                     }
                 }
+
+
 
                 // Compose in this order so aspect ratio adjustments to image size (computed last)
                 // are applied first.
@@ -306,9 +332,11 @@ namespace Maps.API
 
                 RenderContext ctx = new RenderContext(resourceManager, selector, tileRect, scale, options, stylesheet, tileSize)
                 {
-                    ClipOutsectorBorders = clipOutsectorBorders
+                    ForceClip = forceClip,
+                    ClipOutsectorBorders = clipOutsectorBorders,
+                    ClipPath = clipPath,
                 };
-                ProduceResponse(Context, title, ctx, bitmapSize, transform);
+                ProduceResponse(Context, title, ctx, bitmapSize, transform, transparent);
             }
         }
     }

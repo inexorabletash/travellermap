@@ -1,7 +1,5 @@
-@import url(https://fonts.googleapis.com/css?family=Marcellus);
-
 html, body { overflow: hidden; }
-html { margin: 0; padding: 0; width: 100vw; height: 100vh; }
+html { margin: 0; padding: 0; width: 100%; height: 100%; }
 
 form { margin: 0; padding: 0; }
 p { margin: 0; }
@@ -14,10 +12,11 @@ body {
   position: absolute; /* size may be changed by script */
   margin: 0; padding: 0;
   border: none; overflow: hidden;
-  width: 100vw; height: 100vh; max-height: 100vh;
+  width: 100%; height: 100%; max-height: 100%;
 
   font-size: 10pt;
   color: white; background-color: black;
+  text-wrap: balance;
 
   -webkit-touch-callout: none;
   -webkit-text-size-adjust: 100%;
@@ -79,12 +78,13 @@ input[type=text] {
 }
 #dragContainer {
   position: absolute;
-  width: 100vw; height: 100vh;
+  width: 100%; height: 100%;
   transform: translateZ(500px) perspective(1000px);
   transition: 1s ease-in-out;
   background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" height="32" width="32"><path d="M0 0h32v32H0z"/><path fill="%23404040" d="M0 0h16v16H0zM16 16h16v16H16z"/></svg>');
   cursor: crosshair;
 }
+
 /* TODO: draft, fasa */
 .style-print #dragContainer,
 .style-atlas #dragContainer {
@@ -269,12 +269,11 @@ body:not(.wds-visible) #wds-frame { display: none; }
   margin-bottom: 1em;
 }
 
-#wds-spinner {
+#spinner {
   display: none;
 
   position: absolute;
-  right: 30px;
-  top: 10px;
+  top: 10px; right: 40px;
   width: 20px;
   height: 20px;
 
@@ -672,7 +671,7 @@ body:not(.route-shown) #routeBox { min-height: 135px; max-height: 135px; }
   border-radius: 0;
 }
 #routeForm button {
-  height: 20px; margin: 0 4px;
+  height: 20px; margin: 0 2px;
 }
 
 #routeForm.J-1 #J-1,
@@ -707,6 +706,10 @@ body:not(.route-shown) #routeBox { min-height: 135px; max-height: 135px; }
   box-shadow: none;
   background-color: transparent;
 }
+
+#H-1 { display: none; }
+.milieu-M1900 #H-1 { display: initial; }
+.milieu-M1900 #routeForm .jump-button { padding: 0 5px; margin: 0; }
 
 #routeBox #closeRouteBtn { top: 5px; }
 #routeBox #swapRouteBtn { top: 57px; }
@@ -980,9 +983,7 @@ body:not(.route-shown) #routeBox { min-height: 135px; max-height: 135px; }
 #share-facebook  { background-position:  -40px 0; }
 #share-pinterest { background-position: -120px 0; }
 #share-reddit    { background-position: -160px 0; }
-#share-su        { background-position: -200px 0; }
 #share-tumblr    { background-position: -240px 0; }
-#share-twitter   { background-position: -280px 0; }
 #share-linkedin  { background-position: -320px 0; }
 
 
@@ -1023,7 +1024,6 @@ body:not(.search-results) #closeSearchBtn { display: none; }
   background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMy4xNSIgaGVpZ2h0PSIxMS4xNSI+PHBhdGggZD0iTTIwLjM3IDBhMi43OSAyLjc5IDAgMCAwLTIuNCA0LjJsLTMuMzIgMy4zNy01LjQxLTUuNTRhLjg1Ljg1IDAgMCAwLS42MS0uMjYuODUuODUgMCAwIDAtLjYuMjRMNC4wNiA1LjljLS4zOS0uMi0uODItLjMyLTEuMjYtLjMyQTIuNzkgMi43OSAwIDEgMCA1LjI2IDcuMUw4LjYgMy44Mmw1LjQzIDUuNTZhLjg1Ljg1IDAgMCAwIDEuMiAwbDQtNC4wNEEyLjc5IDIuNzkgMCAxIDAgMjAuMzYgMHoiLz48L3N2Zz4K);
 }
 .route-ui #routeBtn { display: none; }
-
 
 /* ============================================================ */
 /* More Box */
@@ -1451,6 +1451,11 @@ input[type=radio]:checked + label:before {
   #searchForm { width: 140px; }
 }
 
+@media only screen and (display-mode: standalone) {
+  /* True full-screen for standlone mode */
+  html, body, #dragContainer  { width: 100vw; height: 100vh; max-height: 100vh}
+}
+
 /* ============================================================ */
 /* Touch-optimized styles */
 
@@ -1498,6 +1503,7 @@ input[type=radio]:checked + label:before {
   line-height: 40px;
   cursor: pointer;
 }
+.hide-ui #milieu-escape,
 body:not(.milieu-not-default) #milieu-escape {
   display: none;
 }
@@ -1540,7 +1546,7 @@ body:not(.milieu-not-default) #milieu-escape {
   margin-left: -160px;
   padding: 20px 20px;
   width: 280px;
-  height: 40px;
+  min-height: 40px;
   border-radius: 10px;
   text-align: center;
 

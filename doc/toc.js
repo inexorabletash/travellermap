@@ -1,15 +1,15 @@
-window.addEventListener('DOMContentLoaded', function() {
-  var $ = function(s) { return document.querySelector(s); };
-  var $$ = function(s) { return document.querySelectorAll(s); };
+window.addEventListener('DOMContentLoaded', () => {
+  const $ = s => document.querySelector(s);
+  const $$ = s => Array.from(document.querySelectorAll(s));
 
-  var config = $('script[src="toc.js"]');
-  var selector = (config && config.getAttribute('data-toc-selector')) || 'h2,h3';
+  const config = $('script[src="toc.js"]');
+  const selector = (config && config.getAttribute('data-toc-selector')) || 'h2,h3';
 
-  var toc = document.createElement('nav');
+  const toc = document.createElement('nav');
   toc.className = 'toc';
-  [].slice.call($$(selector)).forEach(function(h) {
-    var a = document.createElement('a');
-    var text = h.textContent || h.innerText;
+  $$(selector).forEach(h => {
+    const a = document.createElement('a');
+    const text = h.textContent || h.innerText;
     if (!h.id) {
       h.id = text
         .toLowerCase()
@@ -22,7 +22,7 @@ window.addEventListener('DOMContentLoaded', function() {
     a.appendChild(document.createTextNode(text));
     toc.appendChild(a);
   });
-  var title = document.createElement('h2');
+  const title = document.createElement('h2');
   title.appendChild(document.createTextNode('Contents'));
   toc.insertBefore(title, toc.firstChild);
   document.body.appendChild(toc);

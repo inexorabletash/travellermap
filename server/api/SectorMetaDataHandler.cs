@@ -3,6 +3,7 @@ using Maps.Serialization;
 using Maps.Utilities;
 using System.Collections.Generic;
 using System.Web;
+using System.Xml;
 using System.Xml.Serialization;
 
 namespace Maps.API
@@ -24,7 +25,7 @@ namespace Maps.API
                 // NOTE: This (re)initializes a static data structure used for 
                 // resolving names into sector locations, so needs to be run
                 // before any other objects (e.g. Worlds) are loaded.
-                SectorMap.Milieu map = SectorMap.ForMilieu(resourceManager, GetStringOption("milieu"));
+                SectorMap.Milieu map = SectorMap.ForMilieu(GetStringOption("milieu"));
                 Sector sector;
                 string? postedMilieu = null;
 
@@ -92,7 +93,7 @@ namespace Maps.API.Results
         public string Abbreviation { get => sector.Abbreviation; set { } }
         [XmlElement("Name")]
         public List<Name> Names => sector.Names;
-        public string Credits { get => sector.Credits; set { } }
+        public XmlCDataSection Credits { get => new XmlDocument().CreateCDataSection(sector.Credits); set { } }
 
         public int X { get => sector.X; set { } }
         public int Y { get => sector.Y; set { } }

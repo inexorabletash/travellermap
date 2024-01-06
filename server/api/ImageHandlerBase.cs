@@ -109,8 +109,8 @@ namespace Maps.API
 
                 // "content-disposition: inline" is not used as Chrome opens that in a tab, then
                 // (sometimes?) fails to allow it to be saved due to being served via POST. 
-                string disposition = context.Request.HttpMethod == "POST" 
-                    && context.Request.UserAgent.Contains("Chrome")                    
+                string disposition = context.Request.HttpMethod == "POST"
+                    && context.Request.UserAgent.Contains("Chrome")
                     ? "attachment" : "inline";
 
                 MemoryStream? ms = null;
@@ -139,31 +139,35 @@ namespace Maps.API
                 else if (accepter.Accepts(context, ContentTypes.Application.Pdf, ignoreHeaderFallbacks: true))
                 {
                     #region PDF Generation
-#pragma warning disable IDE0017 // Simplify object initialization
-                    using var document = new PdfDocument();
-#pragma warning restore IDE0017 // Simplify object initialization
-                    document.Version = 14; // 1.4 for opacity
-                    document.Info.Title = title;
-                    document.Info.Author = "Joshua Bell";
-                    document.Info.Creator = "TravellerMap.com";
-                    document.Info.Subject = DateTime.Now.ToString("F", CultureInfo.InvariantCulture);
-                    document.Info.Keywords = "The Traveller game in all forms is owned by Far Future Enterprises. Copyright (C) 1977 - 2020 Far Future Enterprises. Traveller is a registered trademark of Far Future Enterprises.";
-
-                    // TODO: Credits/Copyright
-                    // This is close, but doesn't define the namespace correctly:
-                    // document.Info.Elements.Add( new KeyValuePair<string, PdfItem>( "/photoshop/Copyright", new PdfString( "HelloWorld" ) ) );
-
-                    PdfPage page = document.AddPage();
-
-                    // NOTE: only PageUnit currently supported in MGraphics is Points
-                    page.Width = XUnit.FromPoint(tileSize.Width);
-                    page.Height = XUnit.FromPoint(tileSize.Height);
-
-                    using var gfx = new PdfSharpGraphics(XGraphics.FromPdfPage(page));
-                    RenderToGraphics(ctx, transform, gfx);
 
                     using var stream = new MemoryStream();
-                    document.Save(stream, closeStream: false);
+
+                    // PDFSharp 1.5 is not thread-safe, so serialize usage
+                    lock (ImageHandlerBase.s_pdf_serialization_lock)
+                    {
+                        using var document = new PdfDocument();
+                        document.Version = 14; // 1.4 for opacity
+                        document.Info.Title = title;
+                        document.Info.Author = "Joshua Bell";
+                        document.Info.Creator = "TravellerMap.com";
+                        document.Info.Subject = DateTime.Now.ToString("F", CultureInfo.InvariantCulture);
+                        document.Info.Keywords = "The Traveller game in all forms is owned by Far Future Enterprises. Copyright (C) 1977 - 2023 Far Future Enterprises. Traveller is a registered trademark of Far Future Enterprises.";
+
+                        // TODO: Credits/Copyright
+                        // This is close, but doesn't define the namespace correctly:
+                        // document.Info.Elements.Add( new KeyValuePair<string, PdfItem>( "/photoshop/Copyright", new PdfString( "HelloWorld" ) ) );
+
+                        PdfPage page = document.AddPage();
+
+                        // NOTE: only PageUnit currently supported in MGraphics is Points
+                        page.Width = XUnit.FromPoint(tileSize.Width);
+                        page.Height = XUnit.FromPoint(tileSize.Height);
+
+                        using var gfx = new PdfSharpGraphics(XGraphics.FromPdfPage(page));
+                        RenderToGraphics(ctx, transform, gfx);
+
+                        document.Save(stream, closeStream: false);
+                    }
                     context.Response.ContentType = ContentTypes.Application.Pdf;
                     if (!dataURI)
                     {
@@ -414,5 +418,7 @@ namespace Maps.API
             stylesheet.hexRotation = (float)degrees;
             stylesheet.microBorders.textStyle.Rotation = degrees;
         }
+
+        private static object s_pdf_serialization_lock = new object();
     }
 }

@@ -1,7 +1,6 @@
 <?xml version="1.0"?>
 <Sector>
   <Name Lang="kk">Gur</Name>
-  <DataFile Author="Jim Kundert" Type="SecondSurvey">Gur.txt</DataFile>
   <Credits>
     <![CDATA[
 
@@ -27,12 +26,6 @@
     <Subsector Index="O">Alab</Subsector>
     <Subsector Index="P">G'krola</Subsector>
   </Subsectors>
-  <Allegiances>
-    <Allegiance Code="Va">Non-Aligned, Vargr-dominated</Allegiance>
-    <Allegiance Code="Na">Non-Aligned, Human-dominated</Allegiance>
-    <Allegiance Code="Kk">The Two Thousand Worlds</Allegiance>
-    <Allegiance Code="Kc">K'kree Client World</Allegiance>
-  </Allegiances>
   <Borders>
     <Border WrapLabel="true" Allegiance="Kk" LabelPosition="1932">
       0023 0024 0025 0126 0226 0327 0426 0527 0627 0728 0828 0928 1027 1127 1226 1327 1427 1528 1627 1727 1826 1927 2027 2128 2227 2327 2426 2526 2626 2726 2825 2925 3024 3023 3124 3224

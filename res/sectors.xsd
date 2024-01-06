@@ -39,7 +39,7 @@
               <xs:attribute name="Publisher" type="xs:string" use="required" />
               <xs:attribute name="Title" type="xs:string" use="required" />
               <xs:attribute name="Author" type="xs:string" use="optional" />
-              <xs:attribute name="Ref" type="xs:anyURI" use="required" />
+              <xs:attribute name="Ref" type="xs:anyURI" use="optional" />
             </xs:complexType>
           </xs:element>
           <xs:element name="Credits" type="xs:string"/>
@@ -73,7 +73,7 @@
           <xs:element name="Subsectors">
             <xs:complexType>
               <xs:sequence>
-                <xs:element maxOccurs="unbounded" name="Subsector">
+                <xs:element minOccurs="0" maxOccurs="16" name="Subsector">
                   <xs:complexType>
                     <xs:simpleContent>
                       <xs:extension base="xs:string">
@@ -104,8 +104,11 @@
                       <xs:extension base="xs:string">
                         <xs:attribute name="Allegiance" type="xs:string" use="optional" />
                         <xs:attribute name="Hex" type="xs:unsignedShort" use="required" />
-                        <xs:attribute name="Color" type="xs:string" use="optional" />
+                        <xs:attribute name="Color" type="xs:string" use="required" />
                         <xs:attribute name="Size" type="xs:string" use="optional" />
+                        <xs:attribute name="Wrap" type="xs:boolean" use="optional" />
+                        <xs:attribute name="OffsetX" type="xs:float" use="optional" />
+                        <xs:attribute name="OffsetY" type="xs:float" use="optional" />
                         <xs:attributeGroup ref="metadata"/>
                       </xs:extension>
                     </xs:simpleContent>
@@ -145,13 +148,39 @@
                   <xs:complexType>
                     <xs:simpleContent>
                       <xs:extension base="xs:string">
-                        <xs:attribute name="Allegiance" type="xs:string" use="required" />
+                        <xs:attribute name="Allegiance" type="xs:string" use="optional" />
                         <xs:attribute name="Color" type="xs:string" use="optional" />
                         <xs:attribute name="Style" type="xs:string" use="optional" />
                         <xs:attribute name="Label" type="xs:string" use="optional" />
                         <xs:attribute name="ShowLabel" type="xs:boolean" use="optional" />
                         <xs:attribute name="WrapLabel" type="xs:boolean" use="optional" />
                         <xs:attribute name="LabelPosition" type="xs:unsignedShort" use="optional" />
+                        <xs:attribute name="LabelOffsetX" type="xs:float" use="optional" />
+                        <xs:attribute name="LabelOffsetY" type="xs:float" use="optional" />
+                        <xs:attributeGroup ref="metadata"/>
+                      </xs:extension>
+                    </xs:simpleContent>
+                  </xs:complexType>
+                </xs:element>
+              </xs:sequence>
+              <xs:attributeGroup ref="metadata"/>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Regions">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element minOccurs="0" maxOccurs="unbounded" name="Region">
+                  <xs:complexType>
+                    <xs:simpleContent>
+                      <xs:extension base="xs:string">
+                        <xs:attribute name="Allegiance" type="xs:string" use="optional" />
+                        <xs:attribute name="Color" type="xs:string" use="optional" />
+                        <xs:attribute name="Label" type="xs:string" use="optional" />
+                        <xs:attribute name="ShowLabel" type="xs:boolean" use="optional" />
+                        <xs:attribute name="WrapLabel" type="xs:boolean" use="optional" />
+                        <xs:attribute name="LabelPosition" type="xs:unsignedShort" use="optional" />
+                        <xs:attribute name="LabelOffsetX" type="xs:float" use="optional" />
+                        <xs:attribute name="LabelOffsetY" type="xs:float" use="optional" />
                         <xs:attributeGroup ref="metadata"/>
                       </xs:extension>
                     </xs:simpleContent>

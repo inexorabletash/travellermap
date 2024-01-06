@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Sector Abbreviation="Prov">
+  <Y>-2</Y>
+  <X>-2</X>
+  <Name>Provence</Name>
+  <Name Lang="va">Orraenang</Name>
+  <Name Lang="vi">Amshagi</Name>
+  <Credits>
+    <![CDATA[
+
+             <b>Provence</b> sector was designed by David Drazul.
+
+             Lately, the "fast-forward" script ran this data up to
+             years 1508 and 1900.
+
+    ]]>
+  </Credits>
+  <Subsectors>
+    <Subsector Index="A">Llaezgaen</Subsector>
+    <Subsector Index="B">Vorvoun</Subsector>
+    <Subsector Index="C" Source="MegaTraveller Imperial Encyclopedia">Grnouf</Subsector>
+    <Subsector Index="D">Tsaegag</Subsector>
+    <Subsector Index="E">Anghikh</Subsector>
+    <Subsector Index="F">Kaegrogz</Subsector>
+    <Subsector Index="G">Gveghz</Subsector>
+    <Subsector Index="H">Thon</Subsector>
+    <Subsector Index="I">Dzarrvaer</Subsector>
+    <Subsector Index="J">Aenkuk</Subsector>
+    <Subsector Index="K">Karrdzae</Subsector>
+    <Subsector Index="L">Kaerfoz</Subsector>
+    <Subsector Index="M">Lighoz</Subsector>
+    <Subsector Index="N">Voudzeur</Subsector>
+    <Subsector Index="O">Uekhourg</Subsector>
+    <Subsector Index="P">Daekvagul</Subsector>
+  </Subsectors>
+
+  <Stylesheet>
+    border.Kv { color: olivedrab; }
+    border.Vl { color: olivedrab; }
+  </Stylesheet>
+  <Allegiances>
+    <Allegiance Code="Va">Soukazog</Allegiance>
+    <Allegiance Code="Vb">Aeraeghegaa</Allegiance>
+    <Allegiance Code="Vc">Galloua</Allegiance>
+    <Allegiance Code="Vd">Dzouga</Allegiance>
+    <Allegiance Code="Ve">Songell</Allegiance>
+    <Allegiance Code="Vf">Vakh</Allegiance>
+  </Allegiances>
+
+    <Borders>
+    <Border Color="Red"    Allegiance="Va">0335 0434 0534 0633 0733 0832 0831 0830 0829 0929 1028 1128 1227 1226 1225 1224 1223 1222 1122 1222 1322 1422 1522 1523 1524 1525 1526 1527 1627 1728 1828 1729 1629 1530 1430 1431 1432 1333 1233 1234 1235 1236 1337 1436 1536 1635 1735 1635 1636 1637 1538 1539 1540 1541 1441 1341 1340 1239 1140 1039 0939 0839 0740 0741 0740 0739 0738 0637 0537 0536 0435 0335 </Border>
+    <Border Color="Green"  Allegiance="Vb">2219 2319 2219 2220 2219 </Border>
+    <Border Color="Blue"   Allegiance="Vc">0000 0100 0200 0201 0302 0401 0400 0401 0502 0601 0600 0700 0800 0900 1000 0901 0902 0903 0803 0804 0805 0906 0806 0707 0607 0608 0508 0507 0506 0505 0404 0304 0303 0202 0102 0002 0001 0000 </Border>
+    <Border Color="Orange" Allegiance="Vd">0003 0103 0003 </Border>
+    <Border Color="Yellow" Allegiance="Ve">0305 0306 0406 0306 0305 </Border>
+    <Border Color="Cyan"   Allegiance="Vf">0904 1003 1002 1003 0904 </Border>
+    </Borders>
+</Sector>

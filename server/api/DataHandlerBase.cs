@@ -12,6 +12,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Web;
 using System.Web.Routing;
 using System.Xml.Serialization;
@@ -52,7 +53,7 @@ namespace Maps.API
 
             try
             {
-                GetResponder(context).Process(new ResourceManager(context.Server));
+                GetResponder(context).Process(ResourceManager.GetInstance());
             }
             catch (HttpError error)
             {
@@ -273,7 +274,8 @@ namespace Maps.API
                 ParseOptions(Context.Request, Defaults(Context), ref options, ref style);
             }
 
-            private static readonly IReadOnlyDictionary<string, Style> s_nameToStyle = new EasyInitConcurrentDictionary<string, Style> {
+            private static ThreadLocal<IReadOnlyDictionary<string, Style>> s_nameToStyle = new ThreadLocal<IReadOnlyDictionary<string, Style>>(() =>
+                new Dictionary<string, Style> {
                 { "poster", Style.Poster },
                 { "atlas" , Style.Atlas },
                 { "print" , Style.Print },
@@ -282,7 +284,7 @@ namespace Maps.API
                 { "fasa"  , Style.FASA },
                 { "terminal", Style.Terminal },
                 { "mongoose", Style.Mongoose },
-            };
+                });
 
             public void ParseOptions(HttpRequest request, IDictionary<string, object> queryDefaults, ref MapOptions options, ref Style style)
             {
@@ -299,9 +301,9 @@ namespace Maps.API
                 if (HasOption("style", queryDefaults))
                 {
                     string opt = GetStringOption("style", queryDefaults)!.ToLowerInvariant();
-                    if (!s_nameToStyle.ContainsKey(opt))
+                    if (!s_nameToStyle.Value.ContainsKey(opt))
                         throw new HttpError(400, "Bad Request", $"Invalid style option: {opt}");
-                    style = s_nameToStyle[opt];
+                    style = s_nameToStyle.Value[opt];
                 }
             }
 

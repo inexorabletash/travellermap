@@ -9,25 +9,6 @@ namespace UnitTests
     public class UtilTest
     {
         [TestMethod]
-        public void SwapTest()
-        {
-            object o = new object();
-            object p = new object();
-            Assert.AreNotEqual(o, p);
-
-            object a = o;
-            object b = p;
-            Assert.AreEqual(o, a);
-            Assert.AreEqual(p, b);
-            Assert.AreNotEqual(a, b);
-
-            Util.Swap(ref a, ref b);
-            Assert.AreEqual(o, b);
-            Assert.AreEqual(p, a);
-            Assert.AreNotEqual(a, b);
-        }
-
-        [TestMethod]
         public void SequenceTest()
         {
             CollectionAssert.AreEqual(new int[] { 0 }, Util.Sequence(0, 0).ToArray());

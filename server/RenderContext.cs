@@ -3,12 +3,13 @@
 using Maps.Graphics;
 using Maps.Utilities;
 using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Threading;
+using System.Web.Hosting;
 
 namespace Maps.Rendering
 {
@@ -48,6 +49,7 @@ namespace Maps.Rendering
         public AbstractPath? ClipPath { get; set; }
         public bool DrawBorder { get; set; }
         public bool ClipOutsectorBorders { get; set; }
+        public bool ForceClip { get; set; }
 
         public Stylesheet Styles => styles;
         private readonly AbstractMatrix worldSpaceToImageSpace;
@@ -68,7 +70,7 @@ namespace Maps.Rendering
             public static IList<MapLabel> FromFile(string path)
             {
                 List<MapLabel> list = new List<MapLabel>();
-                using (var reader = System.IO.File.OpenText(path))
+                using (var reader = Util.SharedFileReader(path))
                 {
                     var parser = new Serialization.TSVParser(reader);
                     foreach (var row in parser.Data)
@@ -116,29 +118,32 @@ namespace Maps.Rendering
         #endregion
 
         #region Static Caches
-        private class StaticImageCache
+        private class ImageCache
         {
             // TODO: Consider not caching these across sessions
             public AbstractImage nebulaImage;
             public AbstractImage galaxyImage;
             public AbstractImage galaxyImageGray;
             public AbstractImage riftImage;
-            public ConcurrentDictionary<string, AbstractImage> worldImages;
+            public Dictionary<string, AbstractImage> worldImages;
 
-            private static object s_lock = new object();
-            private static StaticImageCache? s_instance = null;
+            private static ThreadLocal<ImageCache> s_instance = new ThreadLocal<ImageCache>(() => new ImageCache());
+            public static ImageCache GetInstance()
+            {
+                return s_instance.Value;
+            }
 
-            public StaticImageCache(ResourceManager resourceManager)
+            private ImageCache()
             {
                 AbstractImage prepare(string urlPath) =>
-                    new AbstractImage(resourceManager.Server.MapPath("~" + urlPath), urlPath);
+                    new AbstractImage(HostingEnvironment.MapPath("~" + urlPath), urlPath);
 
                 // Actual images are loaded lazily.
                 nebulaImage = prepare("/res/Candy/Nebula.png");
                 riftImage = prepare("/res/Candy/Rifts.png");
                 galaxyImage = prepare("/res/Candy/Galaxy.png");
                 galaxyImageGray = prepare("/res/Candy/Galaxy_Gray.png");
-                worldImages = new EasyInitConcurrentDictionary<string, AbstractImage> {
+                worldImages = new Dictionary<string, AbstractImage> {
                             { "Hyd0", prepare("/res/Candy/Hyd0.png") },
                             { "Hyd1", prepare("/res/Candy/Hyd1.png") },
                             { "Hyd2", prepare("/res/Candy/Hyd2.png") },
@@ -152,16 +157,6 @@ namespace Maps.Rendering
                             { "HydA", prepare("/res/Candy/HydA.png") },
                             { "Belt", prepare("/res/Candy/Belt.png") },
                         };
-            }
-
-            public static StaticImageCache GetInstance(ResourceManager resourceManager)
-            {
-                lock (s_lock)
-                {
-                    if (s_instance == null)
-                        s_instance = new StaticImageCache(resourceManager);
-                }
-                return s_instance;
             }
         }
         #endregion
@@ -212,7 +207,7 @@ namespace Maps.Rendering
 
         public void Render(AbstractGraphics g)
         {
-            var renderer = new Renderer(this, g, StaticImageCache.GetInstance(resourceManager));
+            var renderer = new Renderer(this, g, ImageCache.GetInstance());
             renderer.Render();
         }
 
@@ -223,7 +218,7 @@ namespace Maps.Rendering
             private AbstractBrush solidBrush;
             private AbstractPen pen;
             private FontCache fonts;
-            private StaticImageCache images;
+            private ImageCache images;
 
             #region Proxies
 #pragma warning disable IDE1006 // Naming Styles
@@ -240,7 +235,7 @@ namespace Maps.Rendering
 #pragma warning restore IDE1006 // Naming Styles
             #endregion
 
-            public Renderer(RenderContext ctx, AbstractGraphics g, StaticImageCache images)
+            public Renderer(RenderContext ctx, AbstractGraphics g, ImageCache images)
             {
                 this.ctx = ctx;
                 this.images = images;
@@ -338,8 +333,8 @@ namespace Maps.Rendering
                 {
                     // HACK: Clipping to tileRect rapidly becomes inaccurate away from
                     // the origin due to float precision. Only do it if really necessary.
-                    bool clip = layer.clip &&
-                        !((ClipPath == null) && (graphics is BitmapGraphics));
+                    bool clip = layer.clip && (ctx.ForceClip ||
+                        !((ClipPath == null) && (graphics is BitmapGraphics)));
 
                     // Impose a clipping region if desired, or remove it if not.
                     if (clip && state == null)
@@ -461,7 +456,7 @@ namespace Maps.Rendering
                 solidBrush.Color = styles.droyneWorlds.textColor;
                 foreach (World world in selector.Worlds)
                 {
-                    bool droyne = world.HasCodePrefix("Droy");
+                    bool droyne = world.Allegiance == "Dr" || world.Allegiance == "NaDr" || world.HasCodePrefix("Droy");
                     bool chirpers = world.HasCodePrefix("Chir");
 
                     if (droyne || chirpers)
@@ -536,7 +531,8 @@ namespace Maps.Rendering
             {
                 if (!styles.capitals.visible || (options & MapOptions.WorldsMask) == 0)
                     return;
-                if (resourceManager.GetXmlFileObject(@"~/res/labels/Worlds.xml", typeof(WorldObjectCollection)) is WorldObjectCollection worlds && worlds.Worlds != null)
+                var worlds = resourceManager.GetCachedXmlFileObject<WorldObjectCollection>(@"~/res/labels/Worlds.xml");
+                if (worlds.Worlds != null)
                 {
                     graphics.SmoothingMode = SmoothingMode.HighQuality;
                     solidBrush.Color = styles.capitals.textColor;
@@ -675,7 +671,7 @@ namespace Maps.Rendering
                 styles.macroRoutes.pen.Apply(ref pen);
                 graphics.SmoothingMode = SmoothingMode.AntiAlias;
                 foreach (var vec in routeFiles
-                    .Select(file => resourceManager.GetXmlFileObject(file, typeof(VectorObject)))
+                    .Select(file => resourceManager.GetCachedXmlFileObject<VectorObject>(file))
                     .OfType<VectorObject>()
                     .Where(vec => (vec.MapOptions & options & MapOptions.BordersMask) != 0))
                 {
@@ -691,7 +687,7 @@ namespace Maps.Rendering
                 styles.macroBorders.pen.Apply(ref pen);
                 graphics.SmoothingMode = SmoothingMode.AntiAlias;
                 foreach (var vec in borderFiles
-                    .Select(file => resourceManager.GetXmlFileObject(file, typeof(VectorObject)))
+                    .Select(file => resourceManager.GetCachedXmlFileObject<VectorObject>(file))
                     .OfType<VectorObject>()
                     .Where(vec => (vec.MapOptions & options & MapOptions.BordersMask) != 0))
                 {
@@ -751,7 +747,7 @@ namespace Maps.Rendering
                 graphics.SmoothingMode = SmoothingMode.HighQuality;
 
                 foreach (var vec in borderFiles
-                .Select(file => resourceManager.GetXmlFileObject(file, typeof(VectorObject)))
+                .Select(file => resourceManager.GetCachedXmlFileObject<VectorObject>(file))
                 .OfType<VectorObject>()
                 .Where(vec => (vec.MapOptions & options & MapOptions.NamesMask) != 0))
                 {
@@ -766,7 +762,7 @@ namespace Maps.Rendering
                 }
 
                 foreach (var vec in riftFiles
-                    .Select(file => resourceManager.GetXmlFileObject(file, typeof(VectorObject)))
+                    .Select(file => resourceManager.GetCachedXmlFileObject<VectorObject>(file))
                     .OfType<VectorObject>()
                     .Where(vec => (vec.MapOptions & options & MapOptions.NamesMask) != 0))
                 {
@@ -784,7 +780,7 @@ namespace Maps.Rendering
                 if (styles.macroRoutes.visible)
                 {
                     foreach (var vec in routeFiles
-                        .Select(file => resourceManager.GetXmlFileObject(file, typeof(VectorObject)))
+                        .Select(file => resourceManager.GetCachedXmlFileObject<VectorObject>(file))
                         .OfType<VectorObject>()
                         .Where(vec => (vec.MapOptions & options & MapOptions.NamesMask) != 0))
                     {
@@ -1548,7 +1544,7 @@ namespace Maps.Rendering
                     return styles.amberZone;
                 if (world.IsRed)
                     return styles.redZone;
-                if (styles.greenZone.visible)
+                if (styles.greenZone.visible && !world.IsPlaceholder)
                     return styles.greenZone;
                 return null;
             }
@@ -1697,7 +1693,7 @@ namespace Maps.Rendering
                         // If drawing dashed lines twice and the start/end are swapped the
                         // dashes don't overlap correctly. So "sort" the points.
                         if (startLocation > endLocation)
-                            Util.Swap(ref startLocation, ref endLocation);
+                            (startLocation, endLocation) = (endLocation, startLocation);
 
                         PointF startPoint = Astrometrics.HexToCenter(Astrometrics.LocationToCoordinates(startLocation));
                         PointF endPoint = Astrometrics.HexToCenter(Astrometrics.LocationToCoordinates(endLocation));
@@ -1809,7 +1805,7 @@ namespace Maps.Rendering
                         if (ClipOutsectorBorders &&
                             (layer == BorderLayer.Fill || styles.microBorderStyle != MicroBorderStyle.Curve))
                         {
-                            Sector.ClipPath clip = sector.ComputeClipPath(borderPathType);
+                            ClipPath clip = sector.ComputeClipPath(borderPathType);
                             if (!tileRect.IntersectsWith(clip.bounds))
                                 continue;
 

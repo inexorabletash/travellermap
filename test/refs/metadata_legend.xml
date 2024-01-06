@@ -1,45 +1,49 @@
 <?xml version="1.0"?>
-<Sector xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<Sector xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Tags="meta">
   <Name>Legend</Name>
+  <Credits><![CDATA[]]></Credits>
+  <X>32</X>
+  <Y>-8</Y>
+  <DataFile Milieu="M1105" />
   <Subsectors />
   <Allegiances>
     <Allegiance Code="Xx">Unknown</Allegiance>
     <Allegiance Code="Im">Third Imperium</Allegiance>
     <Allegiance Code="Cs">Client state, Third Imperium</Allegiance>
-    <Allegiance Code="Na">Non-Aligned, Human-dominated</Allegiance>
-    <Allegiance Code="Zh">Zhodani Consulate</Allegiance>
-    <Allegiance Code="Va">Non-Aligned, Vargr-dominated</Allegiance>
-    <Allegiance Code="So">Solomani Confederation</Allegiance>
-    <Allegiance Code="Hv">Hive Federation</Allegiance>
+    <Allegiance Code="Na" Base="Na">Non-Aligned, Human-dominated</Allegiance>
+    <Allegiance Code="Zh" Base="Zh">Zhodani Consulate</Allegiance>
+    <Allegiance Code="Va" Base="Va">Non-Aligned, Vargr-dominated</Allegiance>
+    <Allegiance Code="So" Base="So">Solomani Confederation</Allegiance>
+    <Allegiance Code="Hv" Base="Hv">Hive Federation</Allegiance>
     <Allegiance Code="As">Aslan Hierate</Allegiance>
     <Allegiance Code="Kk">The Two Thousand Worlds</Allegiance>
     <Allegiance Code="Dr">Droyne</Allegiance>
   </Allegiances>
   <Labels>
-    <Label Hex="601" Color="Yellow" OffsetY="0">World
+    <Label Hex="0601" Color="#FFCC00" Wrap="false">World
 Characteristics</Label>
-    <Label Hex="605" Color="Yellow" OffsetY="0">Population</Label>
-    <Label Hex="1401" Color="Yellow" OffsetY="0">Travel Zones</Label>
-    <Label Hex="1405" Color="Yellow" OffsetY="0">Bases</Label>
-    <Label Hex="1001" Color="Yellow" OffsetY="0">Map Legend</Label>
-    <Label Hex="1002" Color="White" Size="small" OffsetY="0">Starport
+    <Label Hex="0605" Color="#FFCC00" Wrap="false">Population</Label>
+    <Label Hex="1401" Color="#FFCC00" Wrap="false">Travel Zones</Label>
+    <Label Hex="1405" Color="#FFCC00" Wrap="false">Bases</Label>
+    <Label Hex="1001" Color="#FFCC00" Wrap="false">Map Legend</Label>
+    <Label Hex="1002" Color="White" Size="small" Wrap="false">Starport
 Type</Label>
-    <Label Hex="1103" Color="White" Size="small" OffsetY="0">Gas Giant</Label>
-    <Label Hex="1104" Color="White" Size="small" OffsetY="0">Allegiance</Label>
-    <Label Hex="1004" Color="White" Size="small" OffsetY="0">World
+    <Label Hex="1103" Color="White" Size="small" Wrap="false">Gas Giant</Label>
+    <Label Hex="1104" Color="White" Size="small" Wrap="false">
+Allegiance</Label>
+    <Label Hex="1004" Color="White" Size="small" Wrap="false">World
 Name</Label>
-    <Label Hex="904" Color="White" Size="small" OffsetY="0">X-Boat
+    <Label Hex="0904" Color="White" Size="small" Wrap="false">X-Boat
 Route</Label>
-    <Label Hex="903" Color="White" Size="small" OffsetY="0">Bases</Label>
-    <Label Hex="1106" Color="White" Size="small" OffsetY="0">No
+    <Label Hex="0903" Color="White" Size="small" Wrap="false">Bases</Label>
+    <Label Hex="1106" Color="White" Size="small" Wrap="false">No
 Gas Giant</Label>
-    <Label Hex="906" Color="White" Size="small" OffsetY="0">Travel
-Zone Code
-(Red)</Label>
-    <Label Hex="907" Color="White" Size="small" OffsetY="0">Border</Label>
+    <Label Hex="0906" Color="White" Size="small" Wrap="false">Travel
+Zone</Label>
+    <Label Hex="0907" Color="White" Size="small" Wrap="false">Border</Label>
   </Labels>
   <Borders>
-    <Border ShowLabel="false" WrapLabel="false" Allegiance="Im" LabelPosition="1108">0908 1007 1107 1206 1207 1208 1109 1009 0910 0909 0908</Border>
+    <Border ShowLabel="false" Allegiance="Im" LabelPosition="1108">0908 1007 1107 1206 1207 1208 1109 1009 0910 0909 0908</Border>
   </Borders>
   <Routes>
     <Route Start="1003" End="0904" />

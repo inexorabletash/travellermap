@@ -6,112 +6,108 @@
 // Based on allygen by J. Greely http://dotclue.org/t20
 //
 // The Traveller game in all forms is owned by Far Future Enterprises.
-// Copyright (C) 1977-2008 Far Future Enterprises.
+// Copyright (C) 1977 - 2023 Far Future Enterprises.
 
-var UNALIGNED = "--";
-var NON_ALIGNED = "Na";
+'use strict';
 
-var AllegianceMap = (function() {
-  'use strict';
+const UNALIGNED = "--";
+const NON_ALIGNED = "Na";
 
-  function AllegianceMap(width, height, origin_x, origin_y) {
+class AllegianceMap {
+  constructor (width, height, origin_x, origin_y) {
     this.width = width;
     this.height = height;
     this.origin_x = arguments.length >= 3 ? origin_x : 1;
     this.origin_y = arguments.length >= 4 ? origin_y : 1;
 
     this.map = [];
-    for (var x = 0; x < width; ++x) {
+    for (let x = 0; x < width; ++x) {
       this.map[x] = [];
-      for (var y = 0; y < height; ++y) {
+      for (let y = 0; y < height; ++y) {
         this.map[x][y] = { 'occupied': false, 'alleg': UNALIGNED, 'mark': false };
       }
     }
   }
 
-  AllegianceMap.prototype = {
-    getBounds: function() {
-      return {
-        'top':    this.origin_y,
-        'left':   this.origin_x,
-        'right':  this.origin_x + this.width  - 1,
-        'bottom': this.origin_y + this.height - 1
-      };
-    },
+  getBounds() {
+    return {
+      'top':    this.origin_y,
+      'left':   this.origin_x,
+      'right':  this.origin_x + this.width  - 1,
+      'bottom': this.origin_y + this.height - 1
+    };
+  }
 
-    inBounds: function( x, y ) {
-      if (x - this.origin_x < 0 || x - this.origin_x >= this.width ||
-          y - this.origin_y < 0 || y - this.origin_y >= this.height) {
-        return false;
-      } else {
-        return true;
-      }
-    },
-
-    foreach: function(func) {
-      var bounds = this.getBounds();
-      for (var c = bounds.left; c <= bounds.right; ++c) {
-        for (var r = bounds.top; r <= bounds.bottom; ++r) {
-          func(c, r);
-        }
-      }
-    },
-
-    isOccupied: function(x, y) {
-      if (!this.inBounds(x, y))
-        throw "Coordinates out of bounds";
-
-      return this.map[x - this.origin_x][y - this.origin_y].occupied;
-    },
-
-    setOccupied: function(x, y, occupied) {
-      if (!this.inBounds(x, y))
-        throw "Coordinates out of bounds";
-
-      this.map[x - this.origin_x][y - this.origin_y].occupied = occupied;
-    },
-
-    getAllegiance: function(x, y) {
-      if (!this.inBounds(x, y))
-        throw "Coordinates out of bounds";
-
-      return this.map[x - this.origin_x][y - this.origin_y].alleg;
-    },
-
-    getTrueAllegiance: function(x, y) {
-      if (!this.inBounds(x, y))
-        throw "Coordinates out of bounds";
-
-      var hex = this.map[x - this.origin_x][y - this.origin_y];
-      return hex.trueAllegiance || hex.alleg;
-    },
-
-    setAllegiance: function(x, y, effectiveAllegiance, trueAllegiance) {
-      if (!this.inBounds(x, y))
-        throw "Coordinates out of bounds";
-
-      this.map[x - this.origin_x][y - this.origin_y].alleg = effectiveAllegiance;
-      this.map[x - this.origin_x][y - this.origin_y].trueAllegiance = trueAllegiance;
-    },
-
-    // TODO: Would be simpler if we returned a Hex object
-    isMarked: function(x, y) {
-      if (!this.inBounds(x, y))
-        throw "Coordinates out of bounds";
-
-      return this.map[x - this.origin_x][y - this.origin_y].mark;
-    },
-
-    setMarked: function(x, y, mark) {
-      if (!this.inBounds(x, y))
-        throw "Coordinates out of bounds";
-
-      this.map[x - this.origin_x][y - this.origin_y].mark = mark;
+  inBounds(x, y) {
+    if (x - this.origin_x < 0 || x - this.origin_x >= this.width ||
+        y - this.origin_y < 0 || y - this.origin_y >= this.height) {
+      return false;
+    } else {
+      return true;
     }
-  };
+  }
 
-  return AllegianceMap;
-}());
+  foreach(func) {
+    const bounds = this.getBounds();
+    for (let c = bounds.left; c <= bounds.right; ++c) {
+      for (let r = bounds.top; r <= bounds.bottom; ++r) {
+        func(c, r);
+      }
+    }
+  }
+
+  isOccupied(x, y) {
+    if (!this.inBounds(x, y))
+      throw "Coordinates out of bounds";
+
+    return this.map[x - this.origin_x][y - this.origin_y].occupied;
+  }
+
+  setOccupied(x, y, occupied) {
+    if (!this.inBounds(x, y))
+      throw "Coordinates out of bounds";
+
+    this.map[x - this.origin_x][y - this.origin_y].occupied = occupied;
+  }
+
+  getAllegiance(x, y) {
+    if (!this.inBounds(x, y))
+      throw "Coordinates out of bounds";
+
+    return this.map[x - this.origin_x][y - this.origin_y].alleg;
+  }
+
+  getTrueAllegiance(x, y) {
+    if (!this.inBounds(x, y))
+      throw "Coordinates out of bounds";
+
+    const hex = this.map[x - this.origin_x][y - this.origin_y];
+    return hex.trueAllegiance || hex.alleg;
+  }
+
+  setAllegiance(x, y, effectiveAllegiance, trueAllegiance) {
+    if (!this.inBounds(x, y))
+      throw "Coordinates out of bounds";
+
+    this.map[x - this.origin_x][y - this.origin_y].alleg = effectiveAllegiance;
+    this.map[x - this.origin_x][y - this.origin_y].trueAllegiance = trueAllegiance;
+  }
+
+  // TODO: Would be simpler if we returned a Hex object
+  isMarked(x, y) {
+    if (!this.inBounds(x, y))
+      throw "Coordinates out of bounds";
+
+    return this.map[x - this.origin_x][y - this.origin_y].mark;
+  }
+
+  setMarked(x, y, mark) {
+    if (!this.inBounds(x, y))
+      throw "Coordinates out of bounds";
+
+    this.map[x - this.origin_x][y - this.origin_y].mark = mark;
+  }
+}
 
 // Find neighbor of a hex in a given direction.
 //       2
@@ -137,22 +133,22 @@ function neighbor(c, r, direction) {
 
 function erode(map, allegiance, n) {
   'use strict';
-  var erodeList = [];
+  const erodeList = [];
 
-  map.foreach(function(c, r) {
+  map.foreach((c, r) => {
 
     // Only process empty hexes of the specified allegiance
     if (map.isOccupied(c, r) || map.getAllegiance(c, r) !== allegiance) {
       return;
     }
 
-    for (var dir = 0; dir < 6; ++dir) {
-      var count = 0;
+    for (let dir = 0; dir < 6; ++dir) {
+      let count = 0;
 
-      for (var offset = 0; offset < n; ++offset) {
-        var hex = neighbor(c, r, (dir + offset) % 6);
-        var x = hex[0];
-        var y = hex[1];
+      for (let offset = 0; offset < n; ++offset) {
+        const hex = neighbor(c, r, (dir + offset) % 6);
+        const x = hex[0];
+        const y = hex[1];
 
         count += (!map.inBounds(x, y) || map.getAllegiance(x, y) !== allegiance);
       }
@@ -164,8 +160,8 @@ function erode(map, allegiance, n) {
   });
 
   // Break the spots we identified
-  for (var i = 0; i < erodeList.length; ++i) {
-    var coord = erodeList[i];
+  for (let i = 0; i < erodeList.length; ++i) {
+    const coord = erodeList[i];
     map.setAllegiance(coord[0], coord[1], UNALIGNED);
   }
 
@@ -176,23 +172,23 @@ function erode(map, allegiance, n) {
 
 function walk(map, start_x, start_y, allegiance, func) {
   'use strict';
-  var border = [[start_x, start_y]];
+  const border = [[start_x, start_y]];
 
   if (func) { func(start_x, start_y, -1); }
 
   // Directions checked in starting hex: sw=0, nw=1, n=2 (by definition)
-  var checked = [true, true, true];
-  var checkfirst = 3; // northeast - first direction to test
-  var checklast;
-  var current = [start_x, start_y]; // First hex
-  var next; // Next hex
+  const checked = [true, true, true];
+  let checkfirst = 3; // northeast - first direction to test
+  let checklast;
+  let current = [start_x, start_y]; // First hex
+  let next; // Next hex
 
-  var done = false;
+  let done = false;
   while (!done) {
     checklast = checkfirst + 5; // test all directions
 
-    var dir;
-    for (var i = checkfirst; i <= checklast; ++i) {
+    let dir;
+    for (let i = checkfirst; i <= checklast; ++i) {
       dir = i % 6;
 
       // Start hex?
@@ -239,10 +235,10 @@ function walk(map, start_x, start_y, allegiance, func) {
 // border path for persistence/rendering.
 function findTopLeft(map, allegiance) {
   'use strict';
-  var bounds = map.getBounds();
+  const bounds = map.getBounds();
 
-  for (var c = bounds.left; c <= bounds.right; ++c) {
-    for (var r = bounds.top; r <= bounds.bottom; ++r) {
+  for (let c = bounds.left; c <= bounds.right; ++c) {
+    for (let r = bounds.top; r <= bounds.bottom; ++r) {
       if (map.getAllegiance(c, r) === allegiance)
         return [c, r];
     }
@@ -253,10 +249,10 @@ function findTopLeft(map, allegiance) {
 
 function breakSpans(map, allegiance, n) {
   'use strict';
-  var breakList = []; // List of hexes at which to "break" once scan is done
-  var spanList = []; // Running list of contiguous non-world hexes
-  var dirList = []; // Running list of contiguous non-world hexes in same dir
-  var lastDir = -1;
+  const breakList = []; // List of hexes at which to "break" once scan is done
+  let spanList = []; // Running list of contiguous non-world hexes
+  let dirList = []; // Running list of contiguous non-world hexes in same dir
+  let lastDir = -1;
 
   function breakCallback(c, r, dir) {
     // Mark the current hex as visted - only need to walk each region once
@@ -293,16 +289,16 @@ function breakSpans(map, allegiance, n) {
 
   // Scan the whole map, looking for regions of the appropriate allegiance.
   // When found, walk the perimeter looking for spans to break
-  var bounds = map.getBounds();
-  for (var c = bounds.left; c <= bounds.right; ++c) {
+  const bounds = map.getBounds();
+  for (let c = bounds.left; c <= bounds.right; ++c) {
     // Start out fresh on each row since it is not adjacent to
     // last hex on previous row. If allegiance matches, it will
     // either be marked (same region) or not (different region)
-    var previous = null;
+    let previous = null;
 
-    for (var r = bounds.top; r <= bounds.bottom; ++r) {
-      var current = map.getAllegiance(c, r);
-      var walked = map.isMarked(c, r);
+    for (let r = bounds.top; r <= bounds.bottom; ++r) {
+      const current = map.getAllegiance(c, r);
+      const walked = map.isMarked(c, r);
 
       if (previous === current) {
         // Inside the same region as previous hex
@@ -325,11 +321,11 @@ function breakSpans(map, allegiance, n) {
   }
 
   // Clear marks
-  map.foreach(function(c, r) { map.setMarked(c, r, false); });
+  map.foreach((c, r) => { map.setMarked(c, r, false); });
 
   // Break the spots we identified
-  for (var i = 0; i < breakList.length; ++i) {
-    var coord = breakList[i];
+  for (let i = 0; i < breakList.length; ++i) {
+    const coord = breakList[i];
     map.setAllegiance(coord[0], coord[1], UNALIGNED);
   }
 
@@ -345,21 +341,21 @@ function buildBridges(map, allegiance) {
   // in each case.
 
   function neighborAllegiance(c, r, dir) {
-    var hex = neighbor(c, r, dir);
-    var x = hex[0];
-    var y = hex[1];
+    const hex = neighbor(c, r, dir);
+    const x = hex[0];
+    const y = hex[1];
     return map.inBounds(x, y) ? map.getAllegiance(x, y) : UNALIGNED;
   }
 
-  var bounds = map.getBounds();
-  for (var c = bounds.left; c <= bounds.right; ++c) {
-    for (var r = bounds.top; r <= bounds.bottom; ++r) {
+  const bounds = map.getBounds();
+  for (let c = bounds.left; c <= bounds.right; ++c) {
+    for (let r = bounds.top; r <= bounds.bottom; ++r) {
       if (map.getAllegiance(c, r) === UNALIGNED) {
-        var na = [];
-        for (var i = 0; i < 6; i += 1)
+        const na = [];
+        for (let i = 0; i < 6; i += 1)
           na[i] = neighborAllegiance(c, r, i);
 
-        for (i = 0; i < 6; i += 1) {
+        for (let i = 0; i < 6; i += 1) {
           if (na[i] === allegiance &&
               na[(i + 1) % 6] !== allegiance &&
               na[(i + 2) % 6] === allegiance) {
@@ -376,7 +372,7 @@ function buildBridges(map, allegiance) {
 // Claim all unclaimed hexes to be of the specified allegiance
 function claimAllUnclaimed(map, allegiance) {
   'use strict';
-  map.foreach(function(c, r) {
+  map.foreach((c, r) => {
     if (map.getAllegiance(c, r) === UNALIGNED)
       map.setAllegiance(c, r, allegiance);
   });
@@ -390,7 +386,7 @@ function processAllegiance(map, allegiance) {
 
   // Reduce to the "alpha shape" of the polity
   //
-  var dirty;
+  let dirty;
   do {
     dirty = false;
 
@@ -415,16 +411,16 @@ function processAllegiance(map, allegiance) {
 // the smallest number of claimed worlds.
 function processMap(map, success_callback, progress_callback) {
   'use strict';
-  var counts = {};
+  const counts = {};
 
   // Compute allegiance counts
 
-  setTimeout(function() {
+  setTimeout(() => {
     if (progress_callback) progress_callback('Computing allegiance counts...');
 
-    map.foreach(function(c, r) {
+    map.foreach((c, r) => {
       if (map.isOccupied(c, r)) {
-        var alleg = map.getAllegiance(c, r);
+        const alleg = map.getAllegiance(c, r);
         if (counts[alleg]) {
           counts[alleg] += 1;
         } else {
@@ -433,23 +429,21 @@ function processMap(map, success_callback, progress_callback) {
       }
     });
 
-    var list = [];
-    Object.keys(counts).forEach(function(key) {
+    const list = [];
+    Object.keys(counts).forEach(key => {
       list.push({ allegiance: key, count: counts[key] });
     });
-    list.sort(function(a, b) { return a.count - b.count; });
-
+    list.sort((a, b) => a.count - b.count);
 
     function doNext() {
       if (!list.length) {
         success_callback();
         return;
       }
-      var polity = list.shift();
+      const polity = list.shift();
       if (polity.allegiance !== NON_ALIGNED && polity.count > 1) {
         if (progress_callback)
-          progress_callback('Processing allegiance ' + polity.allegiance +
-                            ' (' + polity.count + ' worlds)');
+          progress_callback(`Processing allegiance ${polity.allegiance} (${polity.count$} worlds)`);
         processAllegiance(map, polity.allegiance);
       }
       setTimeout(doNext, 0);

@@ -43,7 +43,7 @@ namespace Maps.API
                     return PathFinder.FindPath<World>(this, start, end);
                 }
 
-                IEnumerable<World> PathFinder.IMap<World>.Adjacent(World world)
+                IEnumerable<World> PathFinder.IMap<World>.Neighbors(World world)
                 {
                     if (world == null) throw new ArgumentNullException(nameof(world));
                     foreach (World w in new HexSelector(map, manager, Astrometrics.CoordinatesToLocation(world.Coordinates), Jump).Worlds)
@@ -61,11 +61,23 @@ namespace Maps.API
                     }
                 }
 
-                int PathFinder.IMap<World>.Distance(World a, World b)
+                double PathFinder.IMap<World>.CostEstimate(World a, World b)
                 {
                     if (a == null) throw new ArgumentNullException(nameof(a));
                     if (b == null) throw new ArgumentNullException(nameof(b));
-                    return Astrometrics.HexDistance(a.Coordinates, b.Coordinates);
+                    return Math.Ceiling(Astrometrics.HexDistance(a.Coordinates, b.Coordinates) / (double)Jump);
+                }
+
+                double PathFinder.IMap<World>.EdgeWeight(Maps.World a, Maps.World b)
+                {
+                    if (a == null) throw new ArgumentNullException(nameof(a));
+                    if (b == null) throw new ArgumentNullException(nameof(b));
+
+                    // TODO: Add additional cost if doesn't have wilderness refuelling or is a red zone.
+
+                    // Primary cost is 1 (a single jump to a world in range) but the actual
+                    // cost is slightly higher for longer jumps due to fuel usage.
+                    return 1 + (Astrometrics.HexDistance(a.Coordinates, b.Coordinates) / 36.0);
                 }
             }
 
@@ -105,7 +117,7 @@ namespace Maps.API
 
             public override void Process(ResourceManager resourceManager)
             {
-                SectorMap.Milieu map = SectorMap.ForMilieu(resourceManager, GetStringOption("milieu"));
+                SectorMap.Milieu map = SectorMap.ForMilieu(GetStringOption("milieu"));
 
                 World? startWorld = ResolveLocation(Context, "start", resourceManager, map);
                 if (startWorld == null)

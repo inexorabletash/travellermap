@@ -49,7 +49,7 @@ Allegiance:
 #PlanetName   Loc. UPP Code   B   Notes         Z  PBG Al LRX *
 #----------   ---- ---------  - --------------- -  --- -- --- ---
               0102 X8A3000-0    Ba Fl Ni           313 Na G4V
-              0107 X69A000-0    Ba Ni Wa           911 Na M8V M3V
+              0107 X69A000-0    Ba Ni Wa           911 Na M3V M8V
               0110 X7A7000-0    Ba Fl Ni           403 Na G3II
               0204 X748000-0    Ba Ni              603 Na M3V
               0301 X210000-0    Ba Ni Po           125 Na K1IV
@@ -59,7 +59,7 @@ Allegiance:
               0310 X100000-0    Ba Ni Va           101 Na M4V
               0402 X596000-0    Ag                 722 Na M0V M8V
               0406 XA6A000-0    Ba Ni Wa           410 Na F0V
-              0408 X520000-0    Ba De Ni Po        112 Na M6V M2V
+              0408 X520000-0    Ba De Ni Po        112 Na M2V M6V
               0410 X468000-0    Ba Ni              424 Na F5V
               0503 X976000-0    Ba Ni              522 Na M8V
 ADRABLAR      0505 A867954-B  A Ag Hi In Cp        202 Na G3IV
@@ -85,7 +85,7 @@ Shitrav       0907 C511427-8  M Ic Ni              702 Na M2V M2V
 Zhobard       0910 C6A6531-7    Ag Fl Ni           400 Tn M1V M2V M3V
 Yieleba       1002 C766310-5  M Lo Ni              310 Na M7V
 Capistra      1009 C8B7000-0    Ba Fl Lo Ni        411 Na G8V M5V
-Izmali        1101 X320000-0    Ba De Ni           804 Na M3V M0V
+Izmali        1101 X320000-0    Ba De Ni           804 Na M0V M3V
 Lavelier      1104 A777530-B  N Ag Ni              702 Ed G6V
 Chaviets      1107 B352553-C  N Ni Po              220 Ed M9V
 Mietle        1110 C987659-9    Ri                 423 Tn M6V
@@ -94,7 +94,7 @@ Monteselo     1203 D513264-7    Ic Lo Ni           512 Na G3V
 Senjakr       1205 B867876-B    Ag Ri              103 Ed M8V
 Piza          1207 B000357-9  M As Lo Ni        R  500 Ed F0V
 Dubrovnik     1209 A7566B9-B  N Lo Ni              912 Tn G0V M7V
-Milan         1305 B343679-8    Po                 504 Ed M8V M1V
+Milan         1305 B343679-8    Po                 504 Ed M1V M8V
 Shrek         1310 C9678A5-B    Ri Ni              202 Tn M2III
 Quasi         1401 B795484-7    Ni                 414 Ed M1V M6V
 Iachav        1402 B8A7652-A  N Ag Fl Ni           213 Ed G2V
@@ -127,9 +127,9 @@ Pummerin      1903 B445634-8    Ag Ni              221 Ed M5V
 DOLENS        1904 B6759CA-B  A Hi In              410 Ed M3IV
 TSAR          1905 D5449DB-5    Hi In              802 Ed F9V
 Geert         1907 B655400-B    Ni                 422 Ed M2V
-Sigismund     2003 B554730-9    Ag                 512 Ed M9V F2V
+Sigismund     2003 B554730-9    Ag                 512 Ed F2V M9V
 Bongdeoksa    2005 B535463-A    Ni                 101 Ed K2III
-NOTRE DAME    2006 C8B69A7-A    Fl Hi In           922 Ed F7V M1IV
+NOTRE DAME    2006 C8B69A7-A    Fl Hi In           922 Ed M1IV F7V
 Cha           2101 B6437C8-9  Z Po                 403 Zh G3IV
 Gloriosa      2106 A9EA573-D  D Fl Ni Wa           100 Ed F4V
 Vie           2110 E210300-9    Lo Ni              714 Na M2III
@@ -137,16 +137,16 @@ Tiadesi       2202 B87659A-B  Z Ag Ni              312 Zh M3IV
 Lutine        2205 B101303-C  N Ic Lo Ni Va        114 Ed F2III
 NEXRABL       2206 C856AE9-9    Hi In              103 Ed M8V
 TASH          2207 A88A954-D  A Hi In Wa Cp        504 Ed M6V
-Dlebavien     2210 E375215-5    Lo Ni              713 Na M9V M6D
+Dlebavien     2210 E375215-5    Lo Ni              713 Na M6V M9V
 Nebadle       2304 C86A679-8    Ni Ri Wa           214 Zh M5V
 Viesiensh     2309 E66796B-7    Hi In              123 Zh M3V
-Chatsie       2310 B73A658-B  Z Ni Wa              200 Zh M8Iv
-Elba          2401 C665543-6    Ag Ni              800 Zh F4v
+Chatsie       2310 B73A658-B  Z Ni Wa              200 Zh M8IV
+Elba          2401 C665543-6    Ag Ni              800 Zh F4V
 Neenjtsi      2404 B557742-8    Ag                 405 Zh F2IV
 EKR           2405 D638ABB-9    Hi In              302 Zh M6V
-Zdietlie      2406 A455688-D  Y Ag Ni              221 Zh K2III M3D
+Zdietlie      2406 A455688-D  Y Ag Ni              221 Zh K2III M3V
 Stia          2408 B999224-A    Lo Ni              814 Zh F7V
-Jdezhdle      2409 C974785-8    Ag                 714 Zh G3V M1D
+Jdezhdle      2409 C974785-8    Ag                 714 Zh G3V M1V
 Ozdleietsba   2410 B753264-7    Lo Ni Po           204 Zh M7V
 
 @SUB-SECTOR D: Driaflzha SECTOR: Tsadra
@@ -158,12 +158,12 @@ IDETIDLER     2501 C8A5ADE-C    Fl Hi In           715 Zh G2V
 Piprebia      2502 C120359-B    De Lo Ni Po        301 Zh F3III
 JDE           2503 D411AC9-9    Hi Ic In Na        304 Zh M1IV
 Intsdients    2504 B588324-8    Lo Ni              111 Zh G7V
-Zhdrvie       2505 E579637-5    Ni                 420 Zh M9V M7D
+Zhdrvie       2505 E579637-5    Ni                 420 Zh M7V M9V
 Brimedr       2508 E98746B-2    Ni                 213 Zh G4V
 PLI           2604 B3459ED-A  Z Hi In              401 Zh M7V
 Tsiadle       2606 C520413-8    De Ni              814 Zh M6V
 Fezhdrejlep   2609 B200766-B    Na Va              921 Zh K3IV
-Chtamiesdle   2610 C585742-3    Ag Ri              903 Zh F8V M2D
+Chtamiesdle   2610 C585742-3    Ag Ri              903 Zh F8V M2V
 Chamediet     2703 C7595AB-5    Ni                 511 Zh M2III
 Basaidients   2705 C6862C3-6    Lo Ni              414 Zh M4IV
 Tiazhdr       2707 C110537-B    Ni                 203 Zh M3V
@@ -177,7 +177,7 @@ Bazhed        2910 C84857A-6    Ag Ni              905 Zh F6V
 SIEDLESI      3003 AA99966-C  Z Hi In Wa           700 Zh G4V
 Ozhdr         3101 D546466-5    Ni                 303 Zh K2III
 Vle           3102 A593410-D  Z Ni                 702 Zh M5V
-SHITA         3103 C4839A6-A    Hi In              812 Zh F3V M2IV
+SHITA         3103 C4839A6-A    Hi In              812 Zh M2IV F3V
 Stiedle       3105 B311483-9    Ic Ni              602 Zh K7V
 DRIAFLZHA     3108 A987999-D  Y Hi In Ri Cp        114 Zh F6V
 FLEBASI       3203 D5A6956-A    Fl Hi In           500 Zh M7V
@@ -202,7 +202,7 @@ Sizhdriet     3209 A000775-F  r As Na              204 Zh K4V
               0415 X343000-0    Ba Ni Po           323 Na M1v
               0417 X696000-0    Ba Ni              213 Na G2V
               0419 X687000-0    Ba Ni              413 Na M3II
-              0511 X635000-0    Ba Ni              402 Na M8V M1D
+              0511 X635000-0    Ba Ni              402 Na M1V M8V
               0512 X799000-0    Ba Ni Wa           502 Na M7v
               0516 X8A7000-0    Ba Fl Ni           802 Na G2IV
               0518 X630000-0    Ba De Ni           713 Na M1V M3V
@@ -245,9 +245,9 @@ EJIEK         1415 C546988-5    Hi In              803 Tn M4V
 Bramez        1418 B53278B-7    Na Po              513 Tn K3V
 Staaluncri    1515 B400310-8    Lo Ni Va           822 Tn M3V
 Kedrellie     1517 C748303-8    Lo Ni              504 Tn F1V
-Pipequal      1520 A876624-C  N Ag Ni              713 Tn M7V M2D
+Pipequal      1520 A876624-C  N Ag Ni              713 Tn M2V M7V
 Chantseria    1611 C243300-A    Lo Ni Po           802 Tn K0V
-Serenesan     1614 A630878-B  N De Na Po           201 Tn M6V F1V
+Serenesan     1614 A630878-B  N De Na Po           201 Tn F1V M6V
 Altiea        1618 C948554-9    Ag Ni              313 Tn M2III
 
 @SUB-SECTOR G: Lisheen SECTOR: Tsadra
@@ -300,7 +300,7 @@ FREZHDR       2512 C6E696E-5    Hi In              113 Zh M6IV
 Plensfozh     2513 B797653-B  Z Ag Ni              914 Zh F9v
 Vlel          2515 E1103A7-A    Lo Ni              523 Zh M7V
 Chadzhebl     2517 B6766A7-9    Ag Ni              413 Zh M3V
-Iplmiek       2611 B100223-D  r Lo Ni Va           902 Zh M8V F1V
+Iplmiek       2611 B100223-D  r Lo Ni Va           902 Zh F1V M8V
 Bridapabr     2612 B463466-7    Ni                 812 Zh K3V
 Fletzlich     2613 B275658-B    Ag Ni              524 Zh M3V M3V
 ZHEDEBRIL     2618 A787ABC-C  Z Hi In              214 Zh G3V
@@ -312,12 +312,12 @@ Flestal       2714 E3378B8-8    Ni                 220 Zh F8V M7V
 Qiemisod      2716 E693336-5    Lo Ni              924 Zh M2V
 Dlebla        2717 E986340-5    Lo Ni              812 Zh F6V
 Chtolshte     2719 B4485A7-C  Z Ag Ni              904 Zh M5V
-Kretsevli     2811 C5A0578-A    De Fl Ni           223 Zh M0V K1V
+Kretsevli     2811 C5A0578-A    De Fl Ni           223 Zh K1V M0V
 Beshpri       2813 B456213-9    Lo Ni Po           323 Zh K5V
 BATSBEVEL     2815 C422965-9    Hi In Na Po        203 Zh M8V
 Vladrkrie     2818 B331444-9    Ni Po              915 Zh M9V
 Itlieflat     2820 A68A467-C  Z Ni Wa              400 Zh G9V
-Ezchta        2915 B200783-A    Na Va              212 Zh M7V M0V
+Ezchta        2915 B200783-A    Na Va              212 Zh M0V M7V
 IPLZHDR       2916 A86A986-D  Z Hi In Wa Cp        101 Zh G4V
 Krienzh       3011 B525413-8    Ni                 204 Zh K3V
 Ietla         3013 B545362-7    Lo Ni              505 Zh M2V
@@ -349,11 +349,11 @@ Tsialsier     3220 A230553-D  Y De Lo Ni Po        604 Zh M3V
               0224 X400000-0    Ba Ni Va           204 Na F2III
               0226 X300000-0    Ba Ni Va           911 Na K2V
               0227 X596000-0    Ba Ni              804 Na M2V M2V
-              0324 X446000-0    Ba Ni              111 Na F5V M2D
+              0324 X446000-0    Ba Ni              111 Na F5V M2V
               0326 X236000-0    Ba Ni              404 Na F8V
               0330 X381000-0    Ba Ni              603 Na F3V M1V
               0427 X411000-0    Ba Ni              314 Na K2V
-              0429 X649000-0    Ba Ni              502 Na F7V M3D
+              0429 X649000-0    Ba Ni              502 Na F7V M3V
               0521 X532000-0    Ba Ni              805 Na M7V
               0523 X000000-0    As Ni An           624 Na K3III
 ADRSIDLE      0525 A8679B5-C  N Hi In              123 Na G8V
@@ -384,9 +384,9 @@ Ismlz         1324 A423398-B  N Lo Ni Po           314 Tn M2V
 Ozh           1421 A1008AA-C  N Na Va              522 Tn F7V
 JDIBLA        1425 A876954-C  A Hi In Cp           222 Na M4V
 Ezianzh       1523 C20067A-A    Na Ni Va           501 Tn F2V
-              1527 X000000-0    As Ni              202 Na M4V M1V
+              1527 X000000-0    As Ni              202 Na M1V M4V
 Chta'Inch     1622 AA67958-B  N Lo Ni              322 Tn G3V
-              1628 X798000-0    Ba Na              915 Na F7v M1D
+              1628 X798000-0    Ba Na              915 Na F7V M1V
 
 @SUB-SECTOR K: Chazhdar SECTOR: Tsadra
 #
@@ -408,7 +408,7 @@ Rathaus       2222 A100559-D  r Ni Va              513 Fj M5V
 Sazhefr       2321 E100300-8    Lo Ni Va           321 Na M7V
 Norrway       2322 CAA7652-7    Fl Ni              513 Fj F8V
 Fynlan        2324 A764637-A  N Ag Ni              902 Fj M4V
-              2327 X511000-0    Ba Ni Po           603 Na M2V K4V
+              2327 X511000-0    Ba Ni Po           603 Na K4V M2V
               2426 X544000-0    Ba Ni              322 Na G3IV
 
 
@@ -424,11 +424,11 @@ Faroe         2625 B200588-C  N Ni Va              513 Fj M4V
 Leidham       2627 B351354-D  r Lo Ni Po           714 Na F3V
 Karlsberg     2722 C687213-9  N Lo Ni              911 Fj M2V M2V
 Narke         2724 CA8A675-B  N Ni Ri Wa           920 Fj M6V
-Lappland      2726 C675331-6    Lo Ni              303 Fj M7V M3D
+Lappland      2726 C675331-6    Lo Ni              303 Fj M3V M7V
 Eriksborg     2823 C7A8856-9  N Fl                 115 Fj F2IV
 NORDICA       2825 AAA7AA7-D  A Fl Hi In           402 Fj G6V
-SCANIA        2827 C220AA5-C  N De Hi In Na Po     125 Fj F3v M2D
-Noerwald      2830 E857352-5    Lo Ni              201 Na M3v
+SCANIA        2827 C220AA5-C  N De Hi In Na Po     125 Fj F3V M2V
+Noerwald      2830 E857352-5    Lo Ni              201 Na M3V
 Iceland       2922 B41379C-C  N Ni Ic Po           401 Fj M2V
 Olafshold     2924 C555766-9  N Ag Ni              114 Fj F6V
 Gottoland     2927 A363735-B  N Ni Ri              212 Fj M2III
@@ -501,7 +501,7 @@ Afar          3230 D6A7501-2    Fl Ni              622 Tc G2V
               1735 X696000-0    Ba Ni              210 Na M3V M3V
               1740 X255000-0    Ba Ni              322 Na K4V
               1837 X704000-0    Ba Ic Ni Va        613 Na M6V
-              1931 X333000-0    Ba Ni Po           104 Na M5V M8V M2V
+              1931 X333000-0    Ba Ni Po           104 Na M2V M8V M5V
               1935 XAB7000-0    Ba Fl Ni           503 Na F5V
               2031 X548000-0    Ba Ni              203 Na F2V
               2037 X000000-0    As Ni              921 Na F7IV
@@ -526,7 +526,7 @@ Afar          3230 D6A7501-2    Fl Ni              622 Tc G2V
               2732 X566000-0    Ba Ni              312 Na F6V
               2833 X000000-0    As Ni              501 Na M2III
               2835 X777000-0    Ba Ni              622 Na G3V
-              2838 X445000-0    Ba Ni An           224 Na F7V M3D
+              2838 X445000-0    Ba Ni An           224 Na F7V M3V
               2839 X234000-0    Ba Ni Po           912 Na M1V
               2933 X430000-0    Ba De Ni Po        602 Na F3IV
               2937 X325000-0    Ba Ni              404 Na K2III

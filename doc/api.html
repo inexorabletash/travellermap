@@ -1,10 +1,9 @@
 ﻿<!DOCTYPE html>
 <title>API - Traveller Map</title>
 <meta charset="utf-8">
-<link rel="shortcut icon" href="../favicon.ico">
-<link rel="stylesheet" href="../site.css?update=2020-01-19T10:43:06">
+<link rel="shortcut icon" href="../favicon.svg">
+<link rel="stylesheet" href="../site.css?update=2022-09-10T10:37:44">
 <meta name="viewport" content="initial-scale=1, width=device-width">
-<script src="https://cdn.rawgit.com/inexorabletash/poly2/v2.0.1/polyfill.min.js"></script>
 
 <style>
 h3 { text-decoration: underline; }
@@ -224,11 +223,11 @@ table#features, #features th, #features td { border: solid 1px black; }
       always set/cleared together by one checkbox.
     </p>
     <script>
-      (function () {
+      (() => {
         function updateOptions() {
-          var options = 0;
-          var checkboxes = [].slice.call(document.querySelectorAll("#options_table input[type='checkbox']"));
-          checkboxes.forEach(function (cb) {
+          let options = 0;
+          const checkboxes = [].slice.call(document.querySelectorAll("#options_table input[type='checkbox']"));
+          checkboxes.forEach(cb => {
             if (cb.checked) {
               options += Number(cb.value);
             }
@@ -236,12 +235,12 @@ table#features, #features th, #features td { border: solid 1px black; }
           document.querySelector("#computed_options").innerHTML = String(options);
           document.querySelector("#test_options").href = "/data/spin/C/image?options=" + encodeURIComponent(String(options));
         }
-        var checkboxes = [].slice.call(document.querySelectorAll("#options_table input[type='checkbox']"));
-        checkboxes.forEach(function (cb) {
+        const checkboxes = [].slice.call(document.querySelectorAll("#options_table input[type='checkbox']"));
+        checkboxes.forEach(cb => {
           cb.onchange = updateOptions;
         });
         updateOptions();
-      }());
+      })();
     </script>
 
     <p>
@@ -486,16 +485,6 @@ table#features, #features th, #features td { border: solid 1px black; }
         to insert into HTML.</dd>
     </dl>
 
-    <h4>IFRAME Only</h4>
-
-    <p>These options are available only when the <a href="#iframe">IFRAME</a> API is used.</p>
-
-    <dl class="params">
-      <dt>forceui=1</dt>
-      <dd>The page UI (search box, options buttons, etc) is shown. The default is to hide
-      the UI when the map is embedded in another page. Note that not all options may make
-      sense.</dd>
-    </dl>
   </section>
   </section>
 
@@ -529,6 +518,10 @@ table#features, #features th, #features td { border: solid 1px black; }
       <dt>p=<var>x</var>!<var>y</var>!<var>s</var>
       <dd>compact coordinates; <var>x</var> and <var>y</var> are  <a href="#system_map">Map-space coordinates</a>;
         <var>s</var> is 1 + log<sub>2</sub> <var>scale</var>.
+
+      <dt>hideui=1</dt>
+      <dd>The page UI (search box, options buttons, etc) is not shown.
+      Note that not all options may make sense.</dd>
 
     </dl>
 
@@ -730,6 +723,16 @@ table#features, #features th, #features td { border: solid 1px black; }
         width: 200px; height: 200px; border: solid 1px black;
     </p>
 
+  <section id="query">
+    <h4>Query Parameters:</h4>
+    <dl class="params">
+      <dt>forceui=1</dt>
+      <dd>The page UI (search box, options buttons, etc) is shown. The default is to hide
+      the UI when the map is embedded in another page.</dd>
+    </dl>
+  </section>
+
+
    <h4>Notes:</h4>
     <ul>
         <li>You use the same URL as for the main page. The site detects that it's running in an iframe and automatically hides the UI.
@@ -749,7 +752,7 @@ table#features, #features th, #features td { border: solid 1px black; }
     </pre>
 
     <iframe src="https://travellermap.com/go/spin/1910?style=print"
-            style="border: ridge 10px gray;">
+            style="border: ridge 10px gray;" loading=lazy>
     </iframe>
 
    <h4>Beta Features:</h4>
@@ -1302,7 +1305,7 @@ table#features, #features th, #features td { border: solid 1px black; }
 
     <h4>Example:</h4>
     <p>
-        <a class="example" href="/api/universe?era=1000"></a>
+        <a class="example" href="/api/universe?milieu=M1105"></a>
     </p>
   </section>
 
@@ -1499,6 +1502,7 @@ table#features, #features th, #features td { border: solid 1px black; }
     <dt>style <dd><a href="#options">rendering style</a>
     <dt>accept <dd>specify <code>application/pdf</code> for PDF output or <code>image/svg+xml</code> for SVG
     <dt>thumb=1 <dd>render a thumbnail (16 pixels/parsec)
+    <dt>compositing=1 <dd>clip to the exact hex borders and render on transparent background
 </dl>
 
 <h4>Notes:</h4>
@@ -1714,7 +1718,7 @@ function sectorHexToWorldXY(sx, sy, hx, hy) {
         + (hx - REFERENCE_HEX_X);
   var y = (sy - REFERENCE_SECTOR_Y) * SECTOR_HEIGHT
         + (hy - REFERENCE_HEX_Y);
-  return {x: x, y: y};
+  return { x, y };
 }
   </pre>
   <p>
@@ -1773,7 +1777,7 @@ function worldXYToMapXY(world_x, world_y) {
   var iy = isEven(world_x) ? world_y - 0.5 : world_y
   var x = ix * PARSEC_SCALE_X;
   var y = iy * -PARSEC_SCALE_Y;
-  return {x: x, y: y};
+  return { x, y };
 }
   </pre>
   <p>
@@ -1929,22 +1933,22 @@ function jsonp_demo() {
 </div>
 
 <script>
-  (function () {
+  (() => {
     // Remove leading/trailing lines from <pre>
-    Array.from(document.querySelectorAll('pre')).forEach(function (pre) {
+    Array.from(document.querySelectorAll('pre')).forEach(pre => {
       pre.innerHTML = pre.innerHTML.replace(/(^ +\r?\n)|(\r?\n +$)/g, '');
     });
 
     // Shortcut: <a class="example" href="foo"></a>
-    Array.from(document.querySelectorAll('a.example')).forEach(function (a) {
+    Array.from(document.querySelectorAll('a.example')).forEach(a => {
       a.appendChild(document.createTextNode(a.href));
     });
 
     // Allow breaking after / ? and & in code
-    Array.from(document.querySelectorAll('.code')).forEach(function (e) {
+    Array.from(document.querySelectorAll('.code')).forEach(e => {
       function textNodes(e) {
-        var t = [];
-        for (var n = e.firstChild; n; n = n.nextSibling) {
+        let t = [];
+        for (let n = e.firstChild; n; n = n.nextSibling) {
           switch (n.nodeType) {
             case Node.TEXT_NODE:
               t.push(n); break;
@@ -1958,23 +1962,23 @@ function jsonp_demo() {
       }
 
       // Inserted ZWJs show up when copied, so insert <wbr>
-      textNodes(e).forEach(function(t) {
+      textNodes(e).forEach(t => {
         while (true) {
-          var m = /[/?&]+/.exec(t.nodeValue);
+          const m = /[/?&]+/.exec(t.nodeValue);
           if (!m) break;
           t = t.splitText(m.index + m[0].length);
           t.parentNode.insertBefore(document.createElement('wbr'), t);
         }
       });
     });
-  }());
+  })();
 </script>
 
 <div class="editorial">
   <p>
     The <em class="product">Traveller</em> game in all forms is owned by Far
     Future Enterprises. Copyright <span class=copyright>&copy;</span> 1977
-    &ndash; 2020 Far Future Enterprises.
+    &ndash; 2023 Far Future Enterprises.
     <a href="https://farfuture.net/FFEFairUsePolicy2008.pdf">Fair Use Policy</a>
 </div>
 

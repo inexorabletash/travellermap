@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Sector>
+  <Credits>
+    <![CDATA[
+      <b>Gzaekfueg</b> sector was designed by John G. Wood.
+
+      Stellar positions were developed by Joe D. Fugate Sr.
+      and appear in <cite>The MegaTraveller Alien, Volume 1:
+      Vilani &amp; Vargr</cite> (Digest Group Publications,
+      1990).
+    ]]>
+  </Credits>
+  <Name>Gzaekfueg</Name>
+  <Subsectors Author="Alvin Plummer">
+    <Subsector Index="A">Dortokh</Subsector>
+    <Subsector Index="B">Gvineks</Subsector>
+    <Subsector Index="C">Gzos</Subsector>
+    <Subsector Index="D">Terruerr</Subsector>
+    <Subsector Index="E">Gueghedudun</Subsector>
+    <Subsector Index="F">Teksuelats</Subsector>
+    <Subsector Index="G">Gadoeth</Subsector>
+    <Subsector Index="H">Noung</Subsector>
+    <Subsector Index="I">Athin</Subsector>
+    <Subsector Index="J">Reofhunkdzo's</Subsector>
+    <Subsector Index="K">'soenk</Subsector>
+    <Subsector Index="L">Siigikhakma</Subsector>
+    <Subsector Index="M">Aghoukone</Subsector>
+    <Subsector Index="N">Okhuemgir</Subsector>
+    <Subsector Index="O">Ungludh</Subsector>
+    <Subsector Index="P">Nikhigireki</Subsector>
+  </Subsectors>
+  <Allegiances Source="Vilani and Vargr">
+    <Allegiance Code="Ga">Third Empire of Gashikan</Allegiance>
+    <Allegiance Code="Na">Non-Aligned, Human-dominated</Allegiance>
+    <Allegiance Code="V5">Ruler of Five</Allegiance>
+    <Allegiance Code="Va">Non-Aligned, Vargr-dominated</Allegiance>
+    <Allegiance Code="Ve">Empire of Varroerth</Allegiance>
+    <Allegiance Code="VG">Glorious Sons of Raek</Allegiance>
+    <Allegiance Code="VN">Drr'lana Network</Allegiance>
+  </Allegiances>
+  <Borders>
+    <Border Allegiance="Ga" WrapLabel="true">2727 2826 2825 2824 2924 3023 3022 3021 3020 3019 3018 3118 3218 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341 3240 3140 3139 3038 2938 2837 2836 2835 2834 2833 2832 2831 2830 2829 2828 2728 2727 </Border>
+    <Border Allegiance="V5" LabelPosition="2120">0210 0310 0309 0308 0307 0306 0405 0404 0504 0603 0703 0802 0801 0902 1002 1103 1203 1303 1402 1403 1504 1604 1705 1805 1905 2005 2106 2205 2306 2307 2407 2508 2608 2708 2709 2710 2711 2611 2612 2513 2514 2515 2516 2517 2617 2518 2519 2520 2521 2421 2422 2423 2424 2425 2426 2427 2528 2428 2429 2330 2331 2332 2333 2334 2434 2535 2635 2636 2637 2638 2739 2839 2940 2941 2841 2741 2641 2541 2441 2341 2241 2141 2041 1941 1841 1741 1641 1541 1441 1341 1241 1141 1240 1340 1339 1338 1337 1336 1335 1234 1334 1333 1332 1331 1330 1329 1328 1327 1326 1225 1224 1223 1323 1322 1321 1320 1319 1218 1217 1216 1116 1115 1014 0914 0913 0912 0811 0711 0610 0510 0410 0310 0210 </Border>
+    <Border Allegiance="Ve" LabelPosition="0301" WrapLabel="true">0001 0101 0100 0200 0300 0400 0500 0600 0700 0701 0601 0501 0401 0302 0202 0203 0204 0105 0106 0107 0108 0008 0007 0006 0005 0004 0003 0002 0001 </Border>
+    <Border Allegiance="VG" LabelPosition="1902" WrapLabel="true">1501 1600 1700 1800 1900 2000 2100 2200 2201 2302 2402 2503 2402 2303 2203 2103 2002 1902 1802 1703 1602 1601 1501 </Border>
+    <Border Allegiance="VN" WrapLabel="true">3007 3008 3109 3209 3310 3311 3312 3313 3212 3112 3012 3011 3010 3009 3008 3007 </Border>
+  </Borders>
+  <Labels>
+    <!-- Rift Regions -->
+    <Label Hex="0623" Color="white">Windhorn Rift</Label>
+  </Labels>
+  <Stylesheet>
+    border.Ga { color: yellow }
+    border.V5 { color: olivedrab }
+    border.VG { color: olivedrab }
+    border.VN { color: olivedrab }
+    border.Ve { color: olivedrab }
+  </Stylesheet>
+</Sector>

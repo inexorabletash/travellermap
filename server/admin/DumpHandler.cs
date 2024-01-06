@@ -14,7 +14,7 @@ namespace Maps.Admin
             // NOTE: This (re)initializes a static data structure used for 
             // resolving names into sector locations, so needs to be run
             // before any other objects (e.g. Worlds) are loaded.
-            SectorMap map = SectorMap.GetInstance(resourceManager);
+            SectorMap map = SectorMap.GetInstance();
 
             context.Response.ContentType = ContentTypes.Text.Plain;
             context.Response.BufferOutput = false;

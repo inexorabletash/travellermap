@@ -7,13 +7,12 @@ sector Legend
 #
 label 1004/+30 World
 label 1004/-30 Name
-label 1104 Allegiance
+label 1104/-30 Allegiance
 label 1103 Gas Giant
 label 0904/+30 X-Boat
 label 0904/-30 Route
-label 0906/+60 Travel
-label 0906 Zone Code
-label 0906/-60 (Red)
+label 0906/+30 Travel
+label 0906/-30 Zone
 label 1106/+30 No
 label 1106/-30 Gas Giant
 label 0903 Bases
@@ -30,4 +29,4 @@ route 1003 0904
 
 # Third Imperium
 #
-border 0908 1007 1107 1206 1207 1208 1109 1009 0910 0909 0908 red
+border 0908 1007 1107 1206 1207 1208 1109 1009 0910 0909 0908 #e32736

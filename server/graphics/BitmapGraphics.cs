@@ -94,7 +94,7 @@ namespace Maps.Graphics
                     return;
                 }
 
-                ImageAttributes attr = new ImageAttributes();
+                using var attr = new ImageAttributes();
                 attr.SetColorMatrix(new ColorMatrix()
                 {
                     Matrix00 = 1,

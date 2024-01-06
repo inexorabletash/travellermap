@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <title>MSEC to XML - Traveller Map</title>
 <meta charset="utf-8">
-<link rel="shortcut icon" href="../favicon.ico">
-<link rel="stylesheet" href="../site.css?update=2020-01-19T10:43:06">
-<script src="https://cdn.rawgit.com/inexorabletash/poly2/v2.0.1/polyfill.min.js"></script>
-<script src="../map.js?update=2020-01-01T14:47:00"></script>
+<link rel="shortcut icon" href="../favicon.svg">
+<link rel="stylesheet" href="../site.css?update=2022-09-10T10:37:44">
+<script src="../map.js?update=2023-06-19T09:13:17"></script>
 <style>
   #input, #output {
     width: 1000px; height: 300px;
@@ -31,49 +30,59 @@
 </div>
 
 <script>
-  window.addEventListener('DOMContentLoaded', function () {
+  window.addEventListener('DOMContentLoaded', () => {
     'use strict';
-    var $ = function (s) { return document.querySelector(s); };
+    const $ = s => document.querySelector(s);
 
-    var elem = $('#input');
-    elem.addEventListener('dragover', function (e) {
-      e.stopPropagation();
-      e.preventDefault();
-      e.dataTransfer.dropEffect = 'copy';
+    const elem = $('#input');
+    elem.addEventListener('dragover', event => {
+      event.stopPropagation();
+      event.preventDefault();
+      event.dataTransfer.dropEffect = 'copy';
     });
-    elem.addEventListener('drop', function (e) {
-      e.stopPropagation();
-      e.preventDefault();
-      blobToString(e.dataTransfer.files[0]).then(function(s) {
-        elem.value = s;
-      });
+    elem.addEventListener('drop', async event => {
+      event.stopPropagation();
+      event.preventDefault();
+      const s = await blobToString(event.dataTransfer.files[0]);
+      elem.value = s;
+      $('#go').click();
     });
 
-    function blobToString(blob) {
-      return new Promise(function(resolve, reject) {
-        var encodings = ['utf-8', 'windows-1252'];
-        (function tryNextEncoding() {
-          var encoding = encodings.shift();
-          var reader = new FileReader();
-          reader.readAsText(blob, encoding);
-          reader.onload = function(e) {
-            var result = reader.result;
-            if (result.indexOf('\uFFFD') !== -1 && encodings.length)
-              tryNextEncoding();
-            else
-              resolve(result);
-          };
-        }());
+    // Like Blob.prototype.text(), but with specified encoding.
+    function blobTextWithEncoding(blob, encoding) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsText(blob, encoding);
+        reader.onload = event => {
+          const result = reader.result;
+          if (result.indexOf('\uFFFD') !== -1 && encodings.length)
+            resolve();
+          else
+            resolve(result);
+        };
+        reader.onerror = event => { reject(reader.error); };
       });
     }
 
-    $('#go').addEventListener('click', function () {
-      var input = $('#input').value;
-      fetch(Traveller.MapService.makeURL('/api/metadata'), {
-        method: 'POST',
-        body: input,
-        headers: {'Content-Type': 'text/plain', 'Accept': 'text/xml'}
-      }).then(function(response) {
+    async function blobToString(blob) {
+      const encodings = ['utf-8', 'windows-1252'];
+      for (const encoding of encodings) {
+        const result = await blobTextWithEncoding(blob, encoding);
+        if (result === undefined)
+          continue;
+        return result;
+      }
+    }
+
+    $('#go').addEventListener('click', async () => {
+      const input = $('#input').value;
+      try {
+        const response = await fetch(Traveller.MapService.makeURL('/api/metadata'), {
+          method: 'POST',
+          body: input,
+          headers: {'Content-Type': 'text/plain', 'Accept': 'text/xml'}
+        });
+
         if (response.ok) {
           document.body.classList.add('pass');
           document.body.classList.remove('fail');
@@ -83,15 +92,14 @@
           document.body.classList.remove('pass');
           $('#summary').innerHTML = '\u2717 Errors found';
         }
-        return response.text();
-      }).then(function(text) {
+        const text = await response.text();
         $('#output').value = text;
-      }).catch(function(error) {
+      } catch(error) {
         document.body.classList.add('fail');
         document.body.classList.remove('pass');
         $('#summary').innerHTML = '\u2717 SERVICE ERROR \u2717';
         $('#output').value = error;
-      });
+      }
     });
   });
 
@@ -99,7 +107,7 @@
 <div class="editorial">
   <p>
     The <em class="product">Traveller</em> game in all forms is owned by Far
-    Future Enterprises. Copyright <span class=copyright>&copy;</span> 1977 &ndash; 2020
+    Future Enterprises. Copyright <span class=copyright>&copy;</span> 1977 &ndash; 2023
     Far Future Enterprises.
     <a href="https://farfuture.net/FFEFairUsePolicy2008.pdf">Fair Use Policy</a>
 </div>

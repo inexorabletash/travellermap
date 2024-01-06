@@ -1,4 +1,4 @@
-/*global Restellarator*/
+/*global Restellarator, Request*/
 'use strict';
 
 const EHEX = '0123456789ABCDEFGHJKLMNPQRSTUV';
@@ -240,7 +240,7 @@ function t5ify(world) {
   world._Ix_ = `{ ${world.Importance} }`;
 
   // Economics Extension
-  if (world['(Ex)']) {
+  if (world['(Ex)'] && world['(Ex)'] !== '(000+1)') {
     var ex = world['(Ex)'];
     world.Resources = fromEHex(ex.substr(1, 1));
     world.Labor = fromEHex(ex.substr(2, 1));
@@ -264,7 +264,7 @@ function t5ify(world) {
   world._Ex_ = `(${toEHex(world.Resources)}${toEHex(world.Labor)}${toEHex(world.Infrastructure)}${toSInt(world.Efficiency)})`;
 
   // Cultural Extension
-  if (world['[Cx]']) {
+  if (world['[Cx]'] && world['[Cx]'] !== '[0000]') {
     var cx = world['[Cx]'];
     world.Heterogeneity = fromEHex(cx.substr(1, 1));
     world.Acceptance = fromEHex(cx.substr(2, 1));
@@ -406,58 +406,56 @@ function format(world) {
 
 function $(s) { return document.querySelector(s); }
 
-function convertAndParse(text) {
-  return fetch(new Request('https://travellermap.com/api/sec?type=TabDelimited',
-                           {method: 'POST', body: text}))
-    .then(response => response.text())
-    .then(tab => parse(tab));
+async function convertAndParse(text) {
+  const response = await fetch(new Request('https://travellermap.com/api/sec?type=TabDelimited',
+                           {method: 'POST', body: text}));
+  const tab = await response.text();
+  return parse(tab);
 }
 
-$('#forss').addEventListener('click', e => {
-  convertAndParse($('#in').value).then(worlds => {
-    worlds.forEach(world => process(world));
-    worlds.forEach(world => t5ify(world));
+$('#forss').addEventListener('click', async event => {
+  const worlds = await convertAndParse($('#in').value);
+  worlds.forEach(world => process(world));
+  worlds.forEach(world => t5ify(world));
 
-    worlds.sort((a, b) => a.Hex < b.Hex ? -1 : b.Hex < a.Hex ? 1 : 0);
+  worlds.sort((a, b) => a.Hex < b.Hex ? -1 : b.Hex < a.Hex ? 1 : 0);
 
-    $('#out').value = worlds
-      .map(world => format(world).join('\t'))
-      .join('\n') + '\n';
+  $('#out').value = worlds
+    .map(world => format(world).join('\t'))
+    .join('\n') + '\n';
 
-    window.worlds = worlds;
-  });
+  window.worlds = worlds;
 });
 
-$('#sectot5').addEventListener('click', e => {
-  convertAndParse($('#in').value).then(worlds => {
-    worlds.forEach(world => process(world));
-    worlds.forEach(world => t5ify(world));
-    const cols = ['Hex', 'Name', 'UWP', 'Bases', 'Remarks', 'Zone', 'PBG',
-                  'Allegiance', 'Stars', '{Ix}', '(Ex)', '[Cx]', 'Nobility', 'W'];
+$('#sectot5').addEventListener('click', async event => {
+  const worlds = await convertAndParse($('#in').value);
+  worlds.forEach(world => process(world));
+  worlds.forEach(world => t5ify(world));
+  const cols = ['Hex', 'Name', 'UWP', 'Bases', 'Remarks', 'Zone', 'PBG',
+                'Allegiance', 'Stars', '{Ix}', '(Ex)', '[Cx]', 'Nobility', 'W'];
 
-    worlds.sort((a, b) => a.Hex < b.Hex ? -1 : b.Hex < a.Hex ? 1 : 0);
+  worlds.sort((a, b) => a.Hex < b.Hex ? -1 : b.Hex < a.Hex ? 1 : 0);
 
-    $('#out').value =
-      cols.join('\t') + '\n' +
-      worlds
-      .map(world => [
-        world.Hex,
-        world.Name,
-        world.UWP,
-        world.Bases,
-        world.Remarks,
-        world.Zone,
-        world.PBG,
-        world.Allegiance,
-        world.Stars,
-        world._Ix_,
-        world._Ex_,
-        world._Cx_,
-        '',
-        world.Worlds
-      ].join('\t'))
-      .join('\n');
+  $('#out').value =
+    cols.join('\t') + '\n' +
+    worlds
+    .map(world => [
+      world.Hex,
+      world.Name,
+      world.UWP,
+      world.Bases,
+      world.Remarks,
+      world.Zone,
+      world.PBG,
+      world.Allegiance,
+      world.Stars,
+      world._Ix_,
+      world._Ex_,
+      world._Cx_,
+      '',
+      world.Worlds
+    ].join('\t'))
+    .join('\n');
 
-    window.worlds = worlds;
-  });
+  window.worlds = worlds;
 });

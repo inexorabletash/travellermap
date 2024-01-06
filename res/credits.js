@@ -1,17 +1,19 @@
-window.onload = function() {
-  var headers = document.querySelectorAll('th'),
-      i, len = headers.length;
+// TODO: Unused? Delete?
 
-  for (i = 0; i < len; i += 1) {
+window.onload = () => {
+  const headers = document.querySelectorAll('th'),
+        len = headers.length;
+
+  for (let i = 0; i < len; i += 1) {
     window.addEvent(headers[i], 'click', onclick);
   }
 };
 
 function onclick(event) {
-  var th = event.target,
-      tr = th.parentNode,
-      tbody = tr.parentNode;
-  var i = 0;
+  const th = event.target,
+        tr = th.parentNode,
+        tbody = tr.parentNode;
+  let i = 0;
   while (tr.children[i] != th) {
     i += 1;
   }
@@ -19,7 +21,8 @@ function onclick(event) {
 }
 
 function sortTable(tbody, col) {
-  var rows = [], tr;
+  const rows = [];
+  let tr;
   while (tbody.children.length > 1) {
     tr = tbody.children[1];
     rows.push(tr);
@@ -27,7 +30,7 @@ function sortTable(tbody, col) {
   }
 
   function compare(a, b) {
-    var ta = a.children[col].innerText || a.children[col].textContent,
+    let ta = a.children[col].innerText || a.children[col].textContent,
         tb = b.children[col].innerText || b.children[col].textContent;
     if (ta === String(Number(ta)) && tb === String(Number(tb))) {
       ta = Number(ta);
