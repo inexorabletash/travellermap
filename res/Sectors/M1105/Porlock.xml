@@ -63,8 +63,8 @@
       1635 1735 1834 1833 1934 2034 2134 2034 1935 1936 1836 1737 1636
     </Border>
 
-    <Border WrapLabel="false" Color="Green" Allegiance="Hp" LabelPosition="1728">
-      1428 1528 1428
+    <Border WrapLabel="false" Color="Green" Allegiance="Hp" LabelPosition="1727">
+      1425 1526 1626 1527 1528 1428 1528 1527 1526 1425 
     </Border>
 
     <Border WrapLabel="true" Color="Green" Allegiance="Hq" LabelPosition="0738">
@@ -128,5 +128,18 @@
     <Route Start="2415" End="2517" Type="Trade" />
     <Route Start="2817" End="2517" Type="Trade" />
     <Route Start="2117" End="2219" Type="Trade" />
+
+    <Route Start="1526" End="1428" />
+    <Route Start="1526" End="1524" />
+    <Route Start="1622" End="1524" />
+    <Route Start="1622" End="1620" />
+    <Route Start="1819" End="1620" />
+
+    <Route Start="1635" End="1433" />
+        <Route Start="1332" End="1433" />
+        <Route Start="1332" End="1229" />
+        <Route Start="1428" End="1229" />
+        <Route Start="1332" End="1034" />
+        <Route Start="0737" End="1034" />
   </Routes>
 </Sector>
