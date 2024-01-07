@@ -1,29 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Sector>
-  <Borders>
-    <Border Allegiance="Ae" LabelPosition="1416" ShowLabel="true" WrapLabel="true">1017 1117 1216 1316 1315 1314 1414 1415 1316 1216 1117 1017 </Border>
-    <Border Allegiance="CA" LabelPosition="1110" ShowLabel="true" WrapLabel="true">0907 1007 1108 1208 1109 1009 1008 0908 0907 </Border>
-    <Border Allegiance="EC" LabelPosition="1127" Showlabel="true" Wraplabel="true">1026 1126 1125 1224 1225 1226 1327 1328 1428 1328 1327 1226 1126 1026 </Border>
-    <Border Allegiance="LA" LabelPosition="1013" ShowLabel="true" WrapLabel="true">0910 0911 1011 1112 1012 0912 0911 0910 </Border>
-    <Border Allegiance="LC" LabelPosition="1406" ShowLabel="true" WrapLabel="true">1205 1305 1304 1404 1405 1306 1206 1205 </Border>
-    <Border Allegiance="SC" LabelPosition="0215" ShowLabel="true" WrapLabel="true">0112 0211 0212 0313 0413 0514 0613 0614 0514 0414 0314 0214 0114 0113 0112 </Border>
-  </Borders>
-  <Allegiances>
-    <Allegiance Code="Ae">Asuran Empire</Allegiance>
-    <Allegiance Code="EC">Ertask Combine</Allegiance>
-    <Allegiance Code="CA">Clandur Alliance</Allegiance>
-    <Allegiance Code="LA">Likarova Alliance</Allegiance>
-    <Allegiance Code="LC">Lister Compliance</Allegiance>
-    <Allegiance Code="SC">Sulikov Corporate</Allegiance>
-  </Allegiances>
-  <Stylesheet>
-    border.Ae { color: blue }
-    border.EC { color: yellow }
-    border.CA { color: gray }
-    border.LA { color: olive }
-    border.LC { color: green }
-    border.SC { color: lime }
-  </Stylesheet>
   <Subsectors>
     <Subsector Index="A">Comitas</Subsector>
     <Subsector Index="B">Lister</Subsector>
@@ -42,4 +18,40 @@
     <Subsector Index="O">Disx</Subsector>
     <Subsector Index="P">Vihle</Subsector>
   </Subsectors>
+  <Allegiances>
+    <Allegiance Code="SC">Sulikov Corporate</Allegiance>
+    <Allegiance Code="CA">Clandur Alliance</Allegiance>
+    <Allegiance Code="LA">Likarova Alliance</Allegiance>
+    <Allegiance Code="Ae">Asuran Empire</Allegiance>
+    <Allegiance Code="EC">Ertask Combine</Allegiance>
+    <Allegiance Code="FC">Free Comitas League</Allegiance>
+    <Allegiance Code="LC">Lister Compliance</Allegiance>
+    <Allegiance Code="GC">Grennan Combine</Allegiance>
+    <Allegiance Code="MC">Mahler Combine</Allegiance>
+    <Allegiance Code="SA">Saiph Alliance</Allegiance>
+  </Allegiances>
+  <Stylesheet>
+    border.Ae { color: blue }
+    border.EC { color: yellow }
+    border.CA { color: gray }
+    border.LA { color: olive }
+    border.LC { color: green }
+    border.SC { color: lime }
+    border.SA { color: White }
+    border.MC { color: Pink }
+    border.FC { color: Red }
+    border.GC { color: Orange }
+  </Stylesheet>
+  <Borders>
+    <Border WrapLabel="true" Allegiance="Ae" LabelPosition="1416">1017 1117 1216 1316 1315 1314 1414 1415 1316 1216 1117 1017</Border>
+    <Border WrapLabel="true" Allegiance="CA" LabelPosition="1110">0907 1007 1108 1208 1109 1009 1008 0908 0907</Border>
+    <Border WrapLabel="true" Allegiance="EC" LabelPosition="1127">1026 1126 1125 1224 1225 1226 1327 1328 1428 1328 1327 1226 1126 1026</Border>
+    <Border WrapLabel="true" Allegiance="LA" LabelPosition="1013">0910 0911 1011 1112 1012 0912 0911 0910</Border>
+    <Border WrapLabel="true" Allegiance="LC" LabelPosition="1406">1205 1305 1304 1404 1405 1306 1206 1205</Border>
+    <Border WrapLabel="true" Allegiance="SC" LabelPosition="0215">0112 0211 0212 0313 0413 0514 0613 0614 0514 0414 0314 0214 0114 0113 0112</Border>
+    <Border WrapLabel="true" Allegiance="SA" LabelPosition="2717">2615 2716 2816 2817 2818 2718 2717 2716 2615</Border>
+    <Border WrapLabel="true" Allegiance="GC" LabelPosition="3002">2901 3001 3101 3201 3202 3203 3202 3201 3101 3001 2901</Border>
+    <Border WrapLabel="true" Allegiance="MC" LabelPosition="2018">2116 2216 2317 2318 2218 2219 2120 2119 2118 2017 2117 2116</Border>
+    <Border WrapLabel="true" Allegiance="FC" LabelPosition="0508">0409 0509 0608 0709 0808 0709 0710 0610 0510 0410 0409</Border>
+  </Borders>
 </Sector>
