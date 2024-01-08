@@ -50,13 +50,14 @@
   </Borders>
 
   <Regions>
-    <Region Color="Aquamarine" Label="Aqaroo Demarcation" WrapLabel="true">
+    <Region Color="Aquamarine" LabelPosition="0306" Label="Aqaroo Demarcation" WrapLabel="true">
       0106 0205 0204 0305 0404 0305 0205 0106
     </Region>
   </Regions>
 
   <Routes>
-    <Route Start="0207" End="0210" Type="Trade"/>
+    <Route Start="0207" End="0209" Type="Trade"/>
+    <Route Start="0209" End="0210" Type="Trade"/>
     <Route Start="0207" End="0307" Type="Trade"/>
     <Route Start="0506" End="0307" Type="Trade"/>
     <Route Start="0008" End="0210" Type="Trade"/>
@@ -72,8 +73,8 @@
     <Route Start="0122" End="0522" Type="Trade"/>
     <Route Start="0823" End="0522" Type="Trade"/>
     <Route Start="1610" End="1512" Type="Trade"/>
-    <Route Start="1909" End="1610" Type="Trade"/>
-    <Route Start="1909" End="2209" Type="Trade"/>
+    <Route Start="2010" End="1610" Type="Trade"/>
+    <Route Start="2010" End="2209" Type="Trade"/>
     <Route Start="2209" End="2408" Type="Trade"/>
     <Route Start="2408" End="2607" Type="Trade"/>
     <Route Start="0127" End="0327" Type="Trade"/>
@@ -90,7 +91,13 @@
     <Route Start="1116" End="1213" Type="Trade"/>
     <Route Start="1512" End="1213" Type="Trade"/>
     <Route Start="1011" End="1213" Type="Trade"/>
-    <Route Start="1011" End="1008" Type="Trade"/>
+    <Route Start="1011" End="1009" Type="Trade"/>
+    <Route Start="1009" End="1008" Type="Trade"/>
+    <Route Start="0906" End="1008" Type="Trade"/>
+    <Route Start="0906" End="0905" Type="Trade"/>
+    <Route Start="0905" End="0506" Type="Trade"/>
+    <Route Start="0903" End="0905" Type="Trade"/>
+    <Route Start="0903" End="1001" Type="Trade"/>    
     <Route Start="1512" End="1614" Type="Trade"/>
     <Route Start="1715" End="1614" Type="Trade"/>
     <Route Start="1715" End="1916" Type="Trade"/>
@@ -98,7 +105,7 @@
     <Route Start="2020" End="2018" Type="Trade"/>
     <Route Start="1618" End="1614" Type="Trade"/>
     <Route Start="0101" End="0001" Type="Trade"/>
-
+    <Route Start="1001" End="0940" EndOffsetY="-1" Type="Trade" />
     <Route Start="2518" End="2719" Type="Trade"/>
     <Route Start="2518" End="2217" Type="Trade"/>
     <Route Start="2217" End="1916" Type="Trade"/>
