@@ -34,22 +34,22 @@
   </Allegiances>
 
   <Regions>
-    <Region Color="Aquamarine" Label="Gurvin Interstellar Democratic Republic" WrapLabel="true">
+    <Region Color="Aquamarine" LabelPosition="0607" Label="Gurvin Interstellar Democratic Republic" WrapLabel="true">
       0102 0202 0302 0401 0502 0601 0701 0801 0901 1001 1102 1201 1302 1402
       1502 1402 1403 1404 1505 1506 1406 1307 1207 1108 1008 0909 0808 0709
       0708 0607 0606 0506 0406 0306 0205 0204 0104 0103
     </Region>
 
-    <Region Color="Aquamarine" Label="Kamuke People's Collective" WrapLabel="true">
+    <Region Color="Aquamarine" LabelPosition="0816" Label="Kamuke People's Collective" WrapLabel="true">
       0118 0117 0116 0115 0215 0216 0317 0416 0516 0515 0615 0616
       0717 0817 0818 0719 0618 0518 0417 0318 0218 0118
     </Region>
 
-    <Region Color="Aquamarine" Label="Pocaanir Cultural Reserve" WrapLabel="true">
+    <Region Color="Aquamarine" LabelPosition="2616" Label="Pocaanir Cultural Reserve" WrapLabel="true">
       2318 2417 2416 2516 2615 2616 2617 2518 2519 2418 2318
     </Region>
 
-    <Region Color="Aquamarine" Label="Dagaut Cultural Locality" WrapLabel="true">
+    <Region Color="Aquamarine" LabelPosition="0734" Label="Dagaut Cultural Locality" WrapLabel="true">
       0632 0732 0832 0733 0632
     </Region>
 
@@ -154,6 +154,10 @@
     <Route Start="1821" End="2124" Type="Trade"/>
     <Route Start="1829" End="2129" Type="Trade"/>
     <Route Start="2129" End="2528" Type="Trade"/>
+    <Route Start="2729" End="2528" Type="Trade"/>
+    <Route Start="2931" End="3031" Type="Trade"/>
+    <Route Start="3128" End="3031" Type="Trade"/>
+    <Route Start="2720" End="3031" Type="Trade"/>
     <Route Start="2509" End="2706" Type="Trade"/>
     <Route Start="2403" End="2706" Type="Trade"/>
     <Route Start="2403" End="2202" Type="Trade"/>
