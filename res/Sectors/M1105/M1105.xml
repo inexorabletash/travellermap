@@ -2881,48 +2881,14 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <X>4</X>
     <Name>Darret</Name>
     <DataFile Source="The Core Route Project" Type="SecondSurvey" Author="Bari Z. Stafford Sr." Ref="https://web.archive.org/web/20030406042613/http://www.geocities.com/traveller_core_route/proj004/proj004.html">darret.txt</DataFile>
-    <Subsectors>
-      <Subsector Index="A">Arret</Subsector>
-      <Subsector Index="B">Barrec</Subsector>
-      <Subsector Index="C">Chirrn</Subsector>
-      <Subsector Index="D">Drret</Subsector>
-      <Subsector Index="E">Eretd</Subsector>
-      <Subsector Index="F">Freddet</Subsector>
-      <Subsector Index="G">Gherr</Subsector>
-      <Subsector Index="H">Herrem</Subsector>
-      <Subsector Index="I">Ierrol</Subsector>
-      <Subsector Index="J">Jerrbole</Subsector>
-      <Subsector Index="K">Kherrez</Subsector>
-      <Subsector Index="L">Lerrin</Subsector>
-      <Subsector Index="M">Mreete</Subsector>
-      <Subsector Index="N">Nerveen</Subsector>
-      <Subsector Index="O">Orrvek</Subsector>
-      <Subsector Index="P">Prerr</Subsector>
-    </Subsectors>
+    <MetadataFile>Darret.xml</MetadataFile>
   </Sector>
   <Sector>
     <Y>5</Y>
     <X>5</X>
     <Name>Ataurre</Name>
     <DataFile Source="The Core Route Project" Type="SecondSurvey" Author="Bari Z. Stafford Sr." Ref="https://web.archive.org/web/20030406042613/http://www.geocities.com/traveller_core_route/proj004/proj004.html">ataurre.txt</DataFile>
-    <Subsectors>
-      <Subsector Index="A">Ataur</Subsector>
-      <Subsector Index="B">Baurre</Subsector>
-      <Subsector Index="C">Catauk</Subsector>
-      <Subsector Index="D">Daurtee</Subsector>
-      <Subsector Index="E">Erruat</Subsector>
-      <Subsector Index="F">Flataur</Subsector>
-      <Subsector Index="G">Ghaurrge</Subsector>
-      <Subsector Index="H">Hurrek</Subsector>
-      <Subsector Index="I">Itaurres</Subsector>
-      <Subsector Index="J">Jataum</Subsector>
-      <Subsector Index="K">Klatau</Subsector>
-      <Subsector Index="L">Laurrex</Subsector>
-      <Subsector Index="M">Muarred</Subsector>
-      <Subsector Index="N">Natuaan</Subsector>
-      <Subsector Index="O">Otauna</Subsector>
-      <Subsector Index="P">Pretau</Subsector>
-    </Subsectors>
+    <MetadataFile>ataurre.xml</MetadataFile>
   </Sector>
   <Sector>
     <Y>5</Y>
@@ -3058,7 +3024,7 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
   <Sector>
     <Y>6</Y>
     <X>4</X>
-    <Name Lang="hv" Publisher="HIWG">Wrence</Name>
+    <Name Lang="hv" Publisher="HIWG">Wrence</Name> 
   </Sector>
   <Sector>
     <Y>6</Y>

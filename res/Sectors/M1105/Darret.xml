@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Sector Author="Bari Z. Stafford, Sr." Source="General Turokan's Expedition to the Rim">
+  <X>4</X>
+  <Y>5</Y>
+  <Name>Darret</Name>
+  <DataFile Type="SecondSurvey">darret.txt</DataFile>
+  <Subsectors>
+    <Subsector Index="A">Arret</Subsector>
+    <Subsector Index="B">Barrec</Subsector>
+    <Subsector Index="C">Chirrn</Subsector>
+    <Subsector Index="D">Drret</Subsector>
+    <Subsector Index="E">Eretd</Subsector>
+    <Subsector Index="F">Freddet</Subsector>
+    <Subsector Index="G">Gherr</Subsector>
+    <Subsector Index="H">Herrem</Subsector>
+    <Subsector Index="I">Ierrol</Subsector>
+    <Subsector Index="J">Jerrbole</Subsector>
+    <Subsector Index="K">Kherrez</Subsector>
+    <Subsector Index="L">Lerrin</Subsector>
+    <Subsector Index="M">Mreete</Subsector>
+    <Subsector Index="N">Nerveen</Subsector>
+    <Subsector Index="O">Orrvek</Subsector>
+    <Subsector Index="P">Prerr</Subsector>
+  </Subsectors>
+  <Routes>
+    <!-- Just do the route isn't lost -->
+    <!--
+    <Route Start="0402" End="0239" EndOffsetX="0" EndOffsetY="-1" Type="2" />
+    <Route Start="0402" End="0505" Type="2" /> 
+    <Route Start="0505" End="0608" Type="2" /> 
+    <Route Start="0608" End="0911" Type="2" /> 
+    <Route Start="0911" End="1114" Type="2" /> 
+    <Route Start="1114" End="1216" Type="2" /> 
+    <Route Start="1216" End="1320" Type="2" /> 
+    <Route Start="1320" End="1523" Type="2" /> 
+    <Route Start="1523" End="1725" Type="2" /> 
+    <Route Start="1725" End="1928" Type="2" /> 
+    <Route Start="1928" End="2230" Type="2" /> 
+    <Route Start="2230" End="2432" Type="2" /> 
+    <Route Start="2432" End="2735" Type="2" /> 
+    <Route Start="2735" End="2938" Type="2" /> 
+    <Route Start="2938" End="3240" Type="2" /> 
+    <Route Start="3240" End="0402" EndOffsetX="1" EndOffsetY="1" Type="2" />
+    -->
+  </Routes>
+  <Allegiances>
+    <Allegiance Code="It">Itaurrec Unification</Allegiance>
+  </Allegiances>
+</Sector>
