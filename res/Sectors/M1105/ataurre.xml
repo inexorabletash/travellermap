@@ -25,7 +25,11 @@
   <Routes>
   </Routes>
   <Allegiances>
+    <Allegiance Code="Oc">Otuana Confederation</Allegiance>
+    <Allegiance Code="Jg">Johrn-Guunanek Axis</Allegiance>
   </Allegiances>
   <Borders>
+    <Border Allegiance="Oc" Color="yellow">1631 1731 1830 1931 2031 1932 1831 1731 1631</Border>
+    <Border Allegiance="Jg" Color="red">0525 0625 0726 0825 0925 0924 0923 1023 1024 1125 1126 1127 1026 0927 0827 0826 0726 0625 0525</Border>
   </Borders>
 </Sector>
