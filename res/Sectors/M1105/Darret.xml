@@ -43,7 +43,10 @@
     <Route Start="3240" End="0402" EndOffsetX="1" EndOffsetY="1" Type="2" />
     -->
   </Routes>
-  <Allegiances>
-    <Allegiance Code="It">Itaurrec Unification</Allegiance>
+  <Allegiances> 
+    <Allegiance Code="Bo">Borin Consortium</Allegiance>
   </Allegiances>
+  <Borders> 
+    <Border Allegiance="Bo" Color="blue">1004 1003 1002 1102 1002 1003 1104 1204 1205 1306 1206 1106 1105 1004</Border>
+  </Borders>
 </Sector>
