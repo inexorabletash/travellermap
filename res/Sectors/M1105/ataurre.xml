@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Sector>
+  <X>5</X>
+  <Y>5</Y>
+  <Name>Ataurre</Name>
+  <Subsectors>
+    <Subsector Index="A">Ataur</Subsector>
+    <Subsector Index="B">Baurre</Subsector>
+    <Subsector Index="C">Catauk</Subsector>
+    <Subsector Index="D">Daurtee</Subsector>
+    <Subsector Index="E">Erruat</Subsector>
+    <Subsector Index="F">Flataur</Subsector>
+    <Subsector Index="G">Ghaurrge</Subsector>
+    <Subsector Index="H">Hurrek</Subsector>
+    <Subsector Index="I">Itaurres</Subsector>
+    <Subsector Index="J">Jataum</Subsector>
+    <Subsector Index="K">Klatau</Subsector>
+    <Subsector Index="L">Laurrex</Subsector>
+    <Subsector Index="M">Muarred</Subsector>
+    <Subsector Index="N">Natuaan</Subsector>
+    <Subsector Index="O">Otauna</Subsector>
+    <Subsector Index="P">Pretau</Subsector>
+  </Subsectors>
+  <Routes>
+  </Routes>
+  <Allegiances>
+    <Allegiance Code="Oc">Otuana Confederation</Allegiance>
+    <Allegiance Code="Jg">Johrn-Guunanek Axis</Allegiance>
+  </Allegiances>
+  <Borders>
+    <Border Allegiance="Oc" Color="yellow">1631 1731 1830 1931 2031 1932 1831 1731 1631</Border>
+    <Border Allegiance="Jg" Color="red">0525 0625 0726 0825 0925 0924 0923 1023 1024 1125 1126 1127 1026 0927 0827 0826 0726 0625 0525</Border>
+  </Borders>
+</Sector>

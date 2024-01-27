@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Sector>
+  <X>4</X>
+  <Y>5</Y>
+  <Name>Darret</Name>
+  <Subsectors>
+    <Subsector Index="A">Arret</Subsector>
+    <Subsector Index="B">Barrec</Subsector>
+    <Subsector Index="C">Chirrn</Subsector>
+    <Subsector Index="D">Drret</Subsector>
+    <Subsector Index="E">Eretd</Subsector>
+    <Subsector Index="F">Freddet</Subsector>
+    <Subsector Index="G">Gherr</Subsector>
+    <Subsector Index="H">Herrem</Subsector>
+    <Subsector Index="I">Ierrol</Subsector>
+    <Subsector Index="J">Jerrbole</Subsector>
+    <Subsector Index="K">Kherrez</Subsector>
+    <Subsector Index="L">Lerrin</Subsector>
+    <Subsector Index="M">Mreete</Subsector>
+    <Subsector Index="N">Nerveen</Subsector>
+    <Subsector Index="O">Orrvek</Subsector>
+    <Subsector Index="P">Prerr</Subsector>
+  </Subsectors>
+  <Routes>
+    <!-- Just so the route isn't lost -->
+    <!--
+    <Route Start="0402" End="0239" EndOffsetX="0" EndOffsetY="-1" Type="2" />
+    <Route Start="0402" End="0505" Type="2" /> 
+    <Route Start="0505" End="0608" Type="2" /> 
+    <Route Start="0608" End="0911" Type="2" /> 
+    <Route Start="0911" End="1114" Type="2" /> 
+    <Route Start="1114" End="1216" Type="2" /> 
+    <Route Start="1216" End="1320" Type="2" /> 
+    <Route Start="1320" End="1523" Type="2" /> 
+    <Route Start="1523" End="1725" Type="2" /> 
+    <Route Start="1725" End="1928" Type="2" /> 
+    <Route Start="1928" End="2230" Type="2" /> 
+    <Route Start="2230" End="2432" Type="2" /> 
+    <Route Start="2432" End="2735" Type="2" /> 
+    <Route Start="2735" End="2938" Type="2" /> 
+    <Route Start="2938" End="3240" Type="2" /> 
+    <Route Start="3240" End="0402" EndOffsetX="1" EndOffsetY="1" Type="2" />
+    -->
+  </Routes>
+  <Allegiances> 
+    <Allegiance Code="Bo">Borin Consortium</Allegiance>
+    <Allegiance Code="Ae">Ayt Commonwealth</Allegiance>
+    <Allegiance Code="Je">Jerrbole Consortium</Allegiance>
+  </Allegiances>
+  <Borders> 
+    <Border Allegiance="Bo" Color="blue">1004 1003 1002 1102 1002 1003 1104 1204 1205 1306 1206 1106 1105 1004</Border>
+    <Border Allegiance="Ae" Color="red">1310 1409 1408 1409 1510 1410 1411 1410 1310</Border>
+    <Border Allegiance="Je" Color="yellow">1121 1120 1220 1320 1420 1520 1521 1621 1522 1523 1422 1323 1322 1221 1121</Border>
+  </Borders>
+</Sector>
