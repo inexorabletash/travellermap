@@ -20,7 +20,6 @@ Useful Links
 * Blog: https://travellermap.blogspot.com
 * GitHub repo: https://github.com/inexorabletash/travellermap
 * Issue tracker: https://github.com/inexorabletash/travellermap/issues
-* Wish List: https://trello.com/b/y61wmEKJ/travellermap-com-wish-list
 
 
 Dependencies
