@@ -1,9 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Sector Author="Bari Z. Stafford, Sr." Source="General Turokan's Expedition to the Rim">
+<Sector>
   <X>4</X>
   <Y>5</Y>
   <Name>Darret</Name>
-  <DataFile Type="SecondSurvey">darret.txt</DataFile>
   <Subsectors>
     <Subsector Index="A">Arret</Subsector>
     <Subsector Index="B">Barrec</Subsector>
@@ -23,7 +22,7 @@
     <Subsector Index="P">Prerr</Subsector>
   </Subsectors>
   <Routes>
-    <!-- Just do the route isn't lost -->
+    <!-- Just so the route isn't lost -->
     <!--
     <Route Start="0402" End="0239" EndOffsetX="0" EndOffsetY="-1" Type="2" />
     <Route Start="0402" End="0505" Type="2" /> 
