@@ -4,25 +4,23 @@
     <Y>12</Y>
     <Name>Ebollan</Name>
     <Subsectors>
-      <Subsector Index="A">A</Subsector>
-      <Subsector Index="B">B</Subsector>
+      <Subsector Index="A">Abolla</Subsector>
+      <Subsector Index="B">Beboll</Subsector>
       <Subsector Index="C">Clebolla</Subsector>
-      <Subsector Index="D">Dresea</Subsector>
-      <Subsector Index="E">E</Subsector>
-      <Subsector Index="F">F</Subsector>
+      <Subsector Index="D">Dresaebol</Subsector>
+      <Subsector Index="E">Ebolli</Subsector>
+      <Subsector Index="F">Frollob</Subsector>
       <Subsector Index="G">Graboolo</Subsector>
       <Subsector Index="H">Hollbul</Subsector>
-      <Subsector Index="I">I</Subsector>
-      <Subsector Index="J">J</Subsector>
-      <Subsector Index="K">K</Subsector>
-      <Subsector Index="L">L</Subsector>
-      <Subsector Index="M">M</Subsector>
-      <Subsector Index="N">N</Subsector>
-      <Subsector Index="O">O</Subsector>
-      <Subsector Index="P">P</Subsector>
+      <Subsector Index="I">Iboll</Subsector>
+      <Subsector Index="J">Jedeboll</Subsector>
+      <Subsector Index="K">Kranabo</Subsector>
+      <Subsector Index="L">Labollan</Subsector>
+      <Subsector Index="M">Mebolla</Subsector>
+      <Subsector Index="N">Nibollan</Subsector>
+      <Subsector Index="O">Ollani</Subsector>
+      <Subsector Index="P">Pollaba</Subsector>
     </Subsectors>
-    <Routes>
-    </Routes>
     <Allegiances>
         <Allegiance Code="Dt">Dresean Triclic Union</Allegiance>
     </Allegiances>
@@ -34,8 +32,33 @@
         <Route Start="2705" End="2807" Type="Trade"/>
         <Route Start="2807" End="3006" Type="Trade"/>
         <Route Start="3106" End="3006" Type="Trade"/>
+
+      <!--
+      <Route Start="0102" End="0404" Type="2" />
+      <Route Start="0102" End="3239" EndOffsetX="-1" EndOffsetY="-1" Type="2" />
+      <Route Start="0404" End="0707" Type="2" />
+      <Route Start="0707" End="0810" Type="2" />
+      <Route Start="0810" End="1013" Type="2" />
+      <Route Start="1013" End="1215" Type="2" />
+      <Route Start="1215" End="1518" Type="2" />
+      <Route Start="1518" End="1720" Type="2" />
+      <Route Start="1720" End="1823" Type="2" />
+      <Route Start="1823" End="2025" Type="2" />
+      <Route Start="2025" End="2328" Type="2" />
+      <Route Start="2328" End="2630" Type="2" />
+      <Route Start="2630" End="2932" Type="2" />
+      <Route Start="2932" End="3135" Type="2" />
+      <Route Start="3135" End="3238" Type="2" />
+      <Route Start="3238" End="0101" EndOffsetX="1" EndOffsetY="1" Type="2" />
+
+
+      <Route Start="2702" End="2539" EndOffsetX="0" EndOffsetY="-1" Type="10" />
+      <Route Start="2702" End="2905" Type="10" />
+      <Route Start="2905" End="0107" EndOffsetX="1" EndOffsetY="0" Type="10" />
+      -->
     </Routes>
    <Regions>
-     <Region WrapLabel="true" Color="Pink" LabelPosition="2132" Label="Old Night Nebula">1629 1730 1829 1828 1928 2027 2128 2227 2228 2329 2429 2530 2531 2532 2533 2534 2634 2734 2735 2635 2636 2537 2437 2338 2238 2139 2038 1939 1838 1837 1836 1835 1834 1734 1633 1632 1631 1630 1629</Region>
+     <Region WrapLabel="true" Color="Pink" LabelPosition="2135" Label="Old Night Nebula">1629 1730 1829 1828 1928 2027 2128 2227 2228 2329 2429 2530 2531 2532 2533 2534 2634 2734 2735 2635 2636 2537 2437 2338 2238 2139 2038 1939 1838 1837 1836 1835 1834 1734 1633 1632 1631 1630 1629</Region>
+     <Region Color="Purple">1929 2029 2129 2229 2230 2131 2132 2232 2333 2433 2534 2535 2536 2537 2437 2338 2238 2139 2038 1939 1938 1937 1936 1835 1834 1734 1633 1632 1631 1731 1831 1931 1930 1929</Region>
   </Regions>
   </Sector>
