@@ -2,13 +2,13 @@ Hex  Name                 UWP       Remarks              {Ix} (Ex) [Cx] N B  Z P
 ---- -------------------- --------- -------------------- ---- ---- ---- - -- - --- - -- -------
 0102                      D859749-3                                     - S  - 903   Na        
 0107                      B100423-C Ni Va                               - S  - 400   Na        
-0109                      C382265-6 Lo                                  - -  - 704   Na        
-0110                      C457784-9 Ag                                  - S  - 313   Na        
+0109                      C382265-6 Lo O:0110                           - -  - 704   Su        
+0110 Sayd                 C457784-9 Ag Cx                               - S  - 313   Su        
 0202                      C458641-8 Ag Ni                               - -  - 301   Na        
 0204                      B5A0000-0 Ba He                               - -  - 013   Na        
 0207                      C6747FG-8 Ag Pi                               - -  A 603   Na        
-0209                      C767674-8 Ag Ni Ri Ga                         - S  A 632   Na        
-0210                      A7A3566-A Fl Ni                               - N  - 214   Na        
+0209                      C767674-8 Ag Ni Ri Ga                         - M  A 632   Su        
+0210                      A7A3566-A Fl Ni O:0110                        - N  - 214   Su        
 0303                      C502227-6 Ic Lo Va                            - S  - 905   Na        
 0304                      C313411-A Ic Ni                               - S  - 200   Na        
 0306                      BAA4202-B Fl Lo                               - -  - 704   Na        
@@ -25,16 +25,16 @@ Hex  Name                 UWP       Remarks              {Ix} (Ex) [Cx] N B  Z P
 0508                      E565520-6 Ag Ni Pr                            - -  - 402   Na        
 0509                      CAA9537-9 Fl Ni                               - -  - 734   Na        
 0601                      E67A424-8 Ni Wa                               - -  - 712   Na        
-0602                      D442762-2 Po He Pi                            - -  - 104   Na        
+0602                      D442752-5 Po He Pi                            - -  - 104   Na        
 0604                      C779732-6 Pi                                  - -  - 913   Na        
 0702                      E639444-9 Ni                                  - -  - 724   Na        
 0703                      C562488-9 Ni                                  - S  - 200   Na        
 0704                      B2108BE-7 Ph Pi Na                            - S  - 203   Na        
 0706                      C54888A-5 Pa Pi Ph                            - -  - 503   Na        
 0707                      C66288A-6 Ph Ri                               - S  - 304   Na        
-0803                      A977668-9 Ag Ni                               - N  - 805   Na        
+0803                      A977658-9 Ag Ni                               - N  - 805   Na        
 0806                      C565120-4 Lo                                  - S  - 105   Na        
-0902                      E75A869-8 Ph Wa                               - -  - 400   Na        
+0902                      E75A879-8 Ph Wa                               - -  - 400   Na        
 0906                      C747675-5 Ag Ni                               - -  A 303   Na        
 0909                      B251677-B Ni Po                               - NS A 300   Na        
 1001                      B6867A9-7 Ag Ga Ri                            - -  - 401   Na        
@@ -43,22 +43,22 @@ Hex  Name                 UWP       Remarks              {Ix} (Ex) [Cx] N B  Z P
 1008                      B201643-C Ic Na Ni Va                         - N  - 504   Na        
 1102                      C200537-6 Ni Va                               - S  - 913   Na        
 1106                      D676323-2 Lo                                  - -  - 804   Na        
-1305                      C210467-A Ni                                  - -  - 602   Na        
+1305                      C210477-A Ni                                  - -  - 602   Na        
 1308                      E76A432-9 Ni Wa                               - -  - 223   Na        
-1309                      C788665-3 Ag Ni Ri                            - S  - 425   Na        
-1401                      C2108BE-A Ph Pi Na                            - -  - 724   Na        
-1406                      B6A2863-7 Fl He Ph                            - -  - 624   Na        
+1309                      C788675-3 Ag Ni Ri                            - S  - 425   Na        
+1401                      C2108BE-A Ph Pi Na                            - -  - 724   Fe        
+1406                      B6A2833-7 Fl He Ph                            - -  - 624   Na        
 1408                      C8B4855-6 Fl Ph                               - -  - 225   Na        
 1409                      C000678-6 As Va Na Ni                         - -  - 205   Na        
-1503                      B140653-B De Ni Po                            - NS - 322   Na        
+1503 Fetarre              B140653-B De Ni Po Cs                         - N  - 322   Fe        
 1508                      C44689B-8 Ph Pa Pi                            - -  - 500   Na        
 1509                      B945835-7 Ph Pa Pi                            - -  - 414   Na        
-1601                      C100668-9 Na Ni Va                            - -  - 432   Na        
-1602                      D76A567-8 Ni Wa Pr                            - S  - 603   Na        
+1601                      C100668-9 Na Ni Va O:1503                     - -  - 432   Fe        
+1602                      D76A567-8 Ni Wa Pr O:1503                     - S  - 603   Fe        
 1605                      C72A78A-7 Pi                                  - S  - 901   Na        
 1607                      C547768-3 Ag Pi                               - S  - 320   Na        
 1610                      E4737B7-4 Pi                                  - -  - 705   Na        
-1701                      C303765-9 Ic Na Va Pi                         - -  - 701   Na        
+1701                      C303765-9 Ic Na Va Pi                         - -  - 701   Fe        
 1705                      B8797BC-9 Pi                                  - S  - 200   Na        
 1706                      C632575-5 Ni Po                               - -  A 404   Na        
 1707                      D582357-8 Lo                                  - S  - 303   Na        
