@@ -1,38 +1,38 @@
 <?xml version="1.0"?>
 <Sector Author="Bari Z. Stafford, Sr." Source="General Turokan's Expedition to the Rim">
-    <X>11</X>
-    <Y>12</Y>
-    <Name>Ebollan</Name>
-    <Subsectors>
-      <Subsector Index="A">A</Subsector>
-      <Subsector Index="B">B</Subsector>
-      <Subsector Index="C">Clebolla</Subsector>
-      <Subsector Index="D">Dresea</Subsector>
-      <Subsector Index="E">E</Subsector>
-      <Subsector Index="F">F</Subsector>
-      <Subsector Index="G">Graboolo</Subsector>
-      <Subsector Index="H">Hollbul</Subsector>
-      <Subsector Index="I">I</Subsector>
-      <Subsector Index="J">J</Subsector>
-      <Subsector Index="K">K</Subsector>
-      <Subsector Index="L">L</Subsector>
-      <Subsector Index="M">M</Subsector>
-      <Subsector Index="N">N</Subsector>
-      <Subsector Index="O">O</Subsector>
-      <Subsector Index="P">P</Subsector>
-    </Subsectors>
-    <Routes>
-    </Routes>
-    <Allegiances>
-        <Allegiance Code="Dt">Dresean Triclic Union</Allegiance>
-    </Allegiances>
-    <Borders>
-        <Border Allegiance="Dt" WrapLabel="false" Color="Goldenrod" LabelPosition="2506">2704 2804 2905 3005 3106 3006 2907 2807 2708 2707 2706 2705 2704</Border>
-    </Borders>
-    <Routes>
-        <Route Start="2705" End="3106" Type="Trade"/>
-        <Route Start="2705" End="2807" Type="Trade"/>
-        <Route Start="2807" End="3006" Type="Trade"/>
-        <Route Start="3106" End="3006" Type="Trade"/>
-    </Routes>
-  </Sector>
+  <X>11</X>
+  <Y>12</Y>
+  <Name>Ebollan</Name>
+  <Subsectors>
+    <Subsector Index="A">A</Subsector>
+    <Subsector Index="B">B</Subsector>
+    <Subsector Index="C">Clebolla</Subsector>
+    <Subsector Index="D">Dresea</Subsector>
+    <Subsector Index="E">E</Subsector>
+    <Subsector Index="F">F</Subsector>
+    <Subsector Index="G">Graboolo</Subsector>
+    <Subsector Index="H">Hollbul</Subsector>
+    <Subsector Index="I">I</Subsector>
+    <Subsector Index="J">J</Subsector>
+    <Subsector Index="K">K</Subsector>
+    <Subsector Index="L">L</Subsector>
+    <Subsector Index="M">M</Subsector>
+    <Subsector Index="N">N</Subsector>
+    <Subsector Index="O">O</Subsector>
+    <Subsector Index="P">P</Subsector>
+  </Subsectors>
+  <Routes>
+  </Routes>
+  <Allegiances>
+    <Allegiance Code="Dt">Dresean Triclic Union</Allegiance>
+  </Allegiances>
+  <Borders>
+    <Border Allegiance="Dt" WrapLabel="false" Color="Goldenrod" LabelPosition="2506">2704 2804 2905 3005 3106 3006 2907 2807 2708 2707 2706 2705 2704</Border>
+  </Borders>
+  <Routes>
+    <Route Start="2705" End="3106" Type="Trade"/>
+    <Route Start="2705" End="2807" Type="Trade"/>
+    <Route Start="2807" End="3006" Type="Trade"/>
+    <Route Start="3106" End="3006" Type="Trade"/>
+  </Routes>
+</Sector>
