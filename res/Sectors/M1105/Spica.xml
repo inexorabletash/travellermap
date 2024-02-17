@@ -32,7 +32,69 @@
     <Subsector Index="O">Kurfane</Subsector>
     <Subsector Index="P">Syzygy</Subsector>
   </Subsectors>
-
+  <Allegiances>
+    <Allegiance Code="SoCf" Base="So">Solomani Confederation</Allegiance>
+    <Allegiance Code="CsHv">Client state, Hive Federation</Allegiance>
+    <Allegiance Code="NaHu" Base="Na">Non-Aligned, Human-dominated</Allegiance>
+    <Allegiance Code="HvFd" Base="Hv">Hive Federation</Allegiance>
+    <Allegiance Code="Hf">Hive FDA Uplift/Observation Site</Allegiance>
+  </Allegiances>
+  <Routes>
+    <Route Start="3230" End="0332" EndOffsetX="1" Type="Trade" />
+    <Route Start="2930" End="3230" Type="Trade" />
+    <Route Start="2630" End="2930" Type="Trade" />
+    <Route Start="2532" End="2630" Type="Trade" />
+    <Route Start="2529" End="2630" Type="Trade" />
+    <Route Start="2529" End="2328" Type="Trade" />
+    <Route Start="2026" End="1827" Type="Trade" />
+    <Route Start="2026" End="2328" Type="Trade" />
+    <Route Start="1827" End="1528" Type="Trade" />
+    <Route Start="1528" End="1327" Type="Trade" />
+    <Route Start="2026" End="2224" Type="Trade" />
+    <Route Start="2224" End="2524" Type="Trade" />
+    <Route Start="2524" End="2724" Type="Trade" />
+    <Route Start="2524" End="2621" Type="Trade" />
+    <Route Start="2621" End="2724" Type="Trade" />
+    <Route Start="2724" End="2925" Type="Trade" />
+    <Route Start="2925" End="3225" Type="Trade" />
+    <Route Start="3225" End="0125" EndOffsetX="1" Type="Trade" />
+    <Route Start="2621" End="2518" Type="Trade" />
+    <Route Start="2518" End="2318" Type="Trade" />
+    <Route Start="2318" End="2118" Type="Trade" />
+    <Route Start="2118" End="1919" Type="Trade" />
+    <Route Start="1919" End="1921" Type="Trade" />
+    <Route Start="1921" End="1922" Type="Trade" />
+    <Route Start="1922" End="2124" Type="Trade" />
+    <Route Start="2124" End="2224" Type="Trade" />
+    <Route Start="2532" End="2433" Type="Trade" />
+    <Route Start="2433" End="2235" Type="Trade" />
+    <Route Start="2235" End="2137" Type="Trade" />
+    <Route Start="2137" End="2339" Type="Trade" />
+    <Route Start="2339" End="2240" Type="Trade" />
+    <Route Start="2240" End="2201" EndOffsetY="1" Type="Trade" />
+    <Route Start="2339" End="2640" Type="Trade" />
+    <Route Start="2640" End="2940" Type="Trade" />
+    <Route Start="2940" End="3002" EndOffsetY="1" Type="Trade" />
+    <Route Start="2940" End="3238" Type="Trade" />
+    <Route Start="3238" End="0238" EndOffsetX="1" Type="Trade" />
+    <Route Start="0323" End="3124" EndOffsetX="-1" Allegiance="SoCf" />
+    <Route Start="0323" End="0623" Allegiance="SoCf" />
+    <Route Start="0623" End="0824" Allegiance="SoCf" />
+    <Route Start="0824" End="1126" Allegiance="SoCf" />
+    <Route Start="0238" End="3137" EndOffsetX="-1" Allegiance="SoCf" />
+    <Route Start="0238" End="0539" Allegiance="SoCf" />
+    <Route Start="0238" End="0435" Allegiance="SoCf" />
+    <Route Start="0435" End="0634" Allegiance="SoCf" />
+    <Route Start="0634" End="0731" Allegiance="SoCf" />
+    <Route Start="0731" End="0828" Allegiance="SoCf" />
+    <Route Start="0828" End="0824" Allegiance="SoCf" />
+    <Route Start="0113" End="3112" EndOffsetX="-1" Allegiance="SoCf" />
+    <Route Start="0315" End="0113" Allegiance="SoCf" />
+    <Route Start="0317" End="0315" Allegiance="SoCf" />
+    <Route Start="0518" End="0317" Allegiance="SoCf" />
+    <Route Start="0220" End="0317" Allegiance="SoCf" />
+    <Route Start="0323" End="0220" Allegiance="SoCf" />
+  </Routes>
   <Borders>
     <Border Allegiance="SoCf">0001 0102 0202 0302 0401 0502 0601 0602 0503 0403 0404 0405 0406 0507 0607 0708 0808 0909 0809 0710 0610 0511 0512 0513 0514 0614 0715 0815 0916 1016 1116 1117 1118 1119 1219 1220 1221 1222 1323 1223 1124 1125 1225 1325 1225 1126 1127 1128 1129 1028 0929 0930 1030 1131 1132 1133 1233 1334 1433 1432 1433 1434 1435 1336 1337 1237 1238 1239 1238 1138 1037 0938 0939 0940 0941 0841 0741 0641 0541 0441 0341 0241 0141 0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014 0013 0012 0011 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001</Border>
     <Border Allegiance="HvFd" LabelPosition="1624" WrapLabel="true">1029 1130 1229 1228 1227 1226 1326 1425 1424 1324 1224 1324 1423 1422 1322 1321 1320 1319 1419 1519 1619 1719 1718 1717 1616 1717 1817 1918 2017 2117 2217 2318 2417 2517 2616 2716 2816 2917 3016 3116 3117 3217 3317 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2041 1941 1841 1741 1641 1541 1441 1341 1241 1141 1040 1039 1038 1139 1140 1240 1340 1339 1338 1437 1436 1536 1535 1534 1533 1532 1431 1332 1333 1232 1231 1230 1130 1029</Border>
