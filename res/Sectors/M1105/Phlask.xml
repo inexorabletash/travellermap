@@ -23,17 +23,20 @@
   </Subsectors>
   <Allegiances>
     <Allegiance Code="Ia">Ithklur Aexzz</Allegiance>
+    <Allegiance Code="Hf">Hive FDA Uplift/Observation Site</Allegiance>
+    <Allegiance Code="CsHv">Client state, Hive Federation</Allegiance>
+    <Allegiance Code="Xh">Hive FDA extra-Federation operation</Allegiance>
   </Allegiances>
 
   <Regions>
-    <Region Color="Aquamarine" Label="Nainur Regime" WrapLabel="true">
+    <Region Color="Aquamarine" Label="Nainur Regime" LabelPosition="2014" WrapLabel="true">
       1916 2015 2115 2114 2115 2215 2116 2015 1916
     </Region>
   </Regions>
 
   <Borders>
-    <Border Allegiance="HvFd">0017 0117 0217 0317 0417 0517 0616 0716 0815 0915 1014 1114 1213 1313 1412 1512 1612 1713 1813 1913 2012 2112 2212 2312 2411 2511 2611 2712 2811 2912 3011 3112 3211 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2041 1941 1841 1741 1641 1541 1441 1341 1241 1141 1041 0941 0841 0741 0641 0541 0441 0341 0241 0141 0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017</Border>
-    <Border Allegiance="Ia" Color="pink" WrapLabel="true">2200 2300 2400 2500 2600 2700 2800 2900 3000 3100 3200 3300 3301 3201 3102 3103 3102 3001 2901 2800 2701 2601 2602 2603 2504 2403 2402 2302 2301 2200</Border>
+    <Border Allegiance="HvFd" LabelPosition="1525">0017 0117 0217 0317 0417 0517 0616 0716 0815 0915 1014 1114 1213 1313 1412 1512 1612 1713 1813 1913 2012 2112 2212 2312 2411 2511 2611 2712 2811 2912 3011 3112 3211 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2041 1941 1841 1741 1641 1541 1441 1341 1241 1141 1041 0941 0841 0741 0641 0541 0441 0341 0241 0141 0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017</Border>
+    <Border Allegiance="Ia" Color="pink" LabelPosition="2502" WrapLabel="true">2200 2300 2400 2500 2600 2700 2800 2900 3000 3100 3200 3300 3301 3201 3102 3103 3102 3001 2901 2800 2701 2601 2602 2603 2504 2403 2402 2302 2301 2200</Border>
   </Borders>
 
   <Routes>
@@ -57,10 +60,11 @@
     <Route Start="0720" End="0820" Type="Trade"/>
     <Route Start="1021" End="0820" Type="Trade"/>
     <Route Start="1021" End="1122" Type="Trade"/>
+    <Route Start="1122" End="1222" Type="Trade"/>
     <Route Start="1222" End="1120" Type="Trade"/>
     <Route Start="1222" End="1323" Type="Trade"/>
     <Route Start="1624" End="1323" Type="Trade"/>
-    <Route Start="1325" End="1323" Type="Trade" />
+    <Route Start="1325" End="1323" Type="Trade"/>
     <Route Start="1325" End="1226" Type="Trade"/>
     <Route Start="1818" End="2118" Type="Trade"/>
     <Route Start="2215" End="2118" Type="Trade"/>
@@ -79,6 +83,8 @@
     <Route Start="0737" End="0539" Type="Trade"/>
     <Route Start="0834" End="0434" Type="Trade"/>
     <Route Start="0434" End="0332" Type="Trade"/>
+    <Route Start="0332" End="0431" Type="Trade"/>
+    <Route Start="0332" End="3230" EndOffsetX="-1" Type="Trade" />
     <Route Start="0431" End="0531" Type="Trade"/>
     <Route Start="0531" End="0732" Type="Trade"/>
     <Route Start="2631" End="2931" Type="Trade"/>
@@ -90,9 +96,9 @@
     <Route Start="3020" End="2619" Type="Trade"/>
     <Route Start="3020" End="3121" Type="Trade"/>
     <Route Start="2512" End="2516" Type="Trade"/>
-    <Route Start="0332" End="0434" Type="Trade"/>
     <Route Start="1430" End="1632" Type="Trade"/>
     <Route Start="1330" End="1630" Type="Trade"/>
+    <Route Start="1330" End="1430" Type="Trade"/>
     <Route Start="1934" End="1632" Type="Trade"/>
     <Route Start="1433" End="1632" Type="Trade"/>
     <Route Start="1433" End="1434" Type="Trade"/>
@@ -124,11 +130,15 @@
     <Route Start="1234" End="0935" Type="Trade"/>
     <Route Start="0935" End="0834" Type="Trade"/>
     <Route Start="0539" End="0238" Type="Trade"/>
+    <Route Start="0238" End="3238" EndOffsetX="-1" Type="Trade" />
     <Route Start="2828" End="2927" Type="Trade"/>
     <Route Start="2927" End="3224" Type="Trade"/>
     <Route Start="2931" End="3133" Type="Trade"/>
     <Route Start="2937" End="3135" Type="Trade"/>
     <Route Start="3135" End="3133" Type="Trade"/>
     <Route Start="0625" End="1026" Type="Trade"/>
+    <Route Start="0625" End="0423" Type="Trade"/>
+    <Route Start="0423" End="0125" Type="Trade"/>
+    <Route Start="0125" End="3225" EndOffsetX="-1" Type="Trade" />
   </Routes>
 </Sector>
