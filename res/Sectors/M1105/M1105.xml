@@ -1722,7 +1722,7 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <DataFile Source="Traveller 5 Second Survey" Milieu="M1105" Type="TabDelimited">Daibei.tab</DataFile>
     <MetadataFile>Daibei.xml</MetadataFile>
   </Sector>
-  <Sector Abbreviation="Dias" Tags="Official">
+  <Sector Abbreviation="Dias" Tags="Official" Selected="true">
     <Y>2</Y>
     <X>0</X>
     <Name>Diaspora</Name>
@@ -1738,7 +1738,7 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <DataFile Source="Traveller 5 Second Survey" Author="Jim Cunningham, Gordon Sheridan, Craig Johnson" Milieu="M1105" Type="TabDelimited">Old Expanses.tab</DataFile>
     <MetadataFile>Old Expanses.xml</MetadataFile>
   </Sector>
-  <Sector Abbreviation="Hint" Tags="Official">
+  <Sector Abbreviation="Hint" Tags="Official" Selected="true">
     <Y>2</Y>
     <X>2</X>
     <Name>Hinterworlds</Name>
