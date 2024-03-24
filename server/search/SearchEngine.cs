@@ -76,6 +76,7 @@ namespace Maps.Search
             "pbg nchar(3) NULL",
             "zone nchar(1) NULL",
             "alleg nchar(4) NULL",
+            "stellar nvarchar(30) NULL",
             "ix int NOT NULL",
             "ex nchar(5) NULL",
             "cx nchar(4) NULL",
@@ -212,6 +213,7 @@ namespace Maps.Search
                                     world.PBG,
                                     string.IsNullOrEmpty(world.Zone) ? "G" : world.Zone,
                                     world.Allegiance,
+                                    world.Stellar,
                                     world.CalculatedImportance,
                                     StripBrackets(world.Economic) ?? (object)DBNull.Value,
                                     StripBrackets(world.Cultural) ?? (object)DBNull.Value,
@@ -271,6 +273,7 @@ namespace Maps.Search
                         "CREATE NONCLUSTERED INDEX world_uwp ON worlds ( uwp ASC )" + INDEX_OPTIONS,
                         "CREATE NONCLUSTERED INDEX world_pbg ON worlds ( pbg ASC )" + INDEX_OPTIONS,
                         "CREATE NONCLUSTERED INDEX world_alleg ON worlds ( alleg ASC )" + INDEX_OPTIONS,
+                        "CREATE NONCLUSTERED INDEX world_stellar ON worlds ( stellar ASC )" + INDEX_OPTIONS,
                         "CREATE NONCLUSTERED INDEX world_sector_name ON worlds ( sector_name ASC )" + INDEX_OPTIONS,
                         "CREATE NONCLUSTERED INDEX world_milieu ON worlds ( milieu ASC )" + INDEX_OPTIONS,
 
@@ -419,6 +422,7 @@ namespace Maps.Search
                                                    "pbg:",
                                                    "zone:",
                                                    "alleg:",
+                                                   "stellar:",
                                                    "remark:",
                                                    "exact:",
                                                    "like:",
@@ -538,6 +542,11 @@ namespace Maps.Search
                 else if (op == "alleg:")
                 {
                     clause = "alleg LIKE @term";
+                    types = SearchResultsType.Worlds;
+                }
+                else if (op == "stellar:")
+                {
+                    clause = "' ' + stellar+ ' ' LIKE '% ' + @term + ' %'";
                     types = SearchResultsType.Worlds;
                 }
                 else if (op == "remark:")
