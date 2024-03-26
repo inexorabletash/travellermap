@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<Sector Abbreviation="Zhie" Tags="Unreviewed">
+  <Y>-5</Y>
+  <X>-7</X>
+  <Name Lang="zh">Zhiensh</Name>
+  <Credits>
+    <![CDATA[
+
+             <b>Zhiensh</b> sector was designed by Bella at Mongoose
+             Publishing.
+
+    ]]>
+  </Credits>
+  <Subsectors Source="Mongoose" Author="Bella">
+    <Subsector Index="B">Zhatant</Subsector>
+  </Subsectors>
+  <Routes>
+    <Route Start="1101" End="1202" Allegiance="ZhCo" Type="Core Route"/>
+    <Route Start="1202" End="1103" Allegiance="ZhCo" Type="Core Route"/>
+    <Route Start="1103" End="1104" Allegiance="ZhCo" Type="Core Route"/>
+    <Route Start="1104" End="1004" Allegiance="ZhCo" Type="Core Route"/>
+    <Route Start="1004" End="1106" Allegiance="ZhCo" Type="Core Route"/>
+    <Route Start="1106" End="1206" Allegiance="ZhCo" Type="Core Route"/>
+    <Route Start="1206" End="1208" Allegiance="ZhCo" Type="Core Route"/>
+    <Route Start="1208" End="1209" Allegiance="ZhCo" Type="Core Route"/>
+    <Route Start="1209" End="1110" Allegiance="ZhCo" Type="Core Route"/>
+  </Routes>
+</Sector>
