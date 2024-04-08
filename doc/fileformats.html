@@ -700,12 +700,15 @@ Lines in the file are terminated with either LF (U+000A) or CR+LF (U+000D, U+000
 
 Every line in the file has fields separated by the Tab character
 (U+0009). There is no escaping mechanism &ndash; neither tabs nor line
-breaking characters may occur within fields. Comments are not supported.
-Blank lines should be ignored.
+breaking characters may occur within fields.
 </p>
 
 <p>
-The first line in the file is the <dfn>header</dfn>; it is tab-delimited
+Blank lines are ignored. Lines starting with <code>#</code> (U+0023) are ignored.
+</p>
+
+<p>
+The first non-blank/non-comment line in the file is the <dfn>header</dfn>; it is tab-delimited
 and defines the fields. The fields do not appear in a fixed order.
 Parsers should read the header line and use it to construct a
 field index to field name mapping for use with the rest of the file.

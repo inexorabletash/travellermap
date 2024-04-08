@@ -252,6 +252,11 @@ sub fileForSector($) {
     my $fh = FileHandle->new;
     $files{$sec} = $fh;
     open ($fh, '>:encoding(UTF-8)', File::Spec->catfile($outdir, "$sectors{$sec}.tab"));
+    print { $fh } << 'EOF';
+# Generated file - DO NOT MODIFY
+# Update source files in res/t5ss/data instead
+
+EOF
     print { $fh } join("\t", @outheader), "\n";
     return $fh;
 }
