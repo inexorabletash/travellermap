@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Sector>
+  <Credits>
+    <![CDATA[
+
+             <b>Zarushagar</b> sector was designed by Marc W. Miller
+             and appears in <cite>Atlas of the Imperium</cite> (GDW,
+             1984).
+
+             It was refined by Greg Videll. Portions appear in
+             <cite>The Travellers Digest</cite> and the
+             <cite>MegaTraveller Referee's Gaming Kit</cite> (Digest
+             Group Publications, 1989).
+
+             M1120 data by Greg Videll.
+    ]]>
+  </Credits>
+  <Subsectors>
+    <Subsector Index="A">Ibaru</Subsector>
+    <Subsector Index="B">Triton</Subsector>
+    <Subsector Index="C">Lagaar</Subsector>
+    <Subsector Index="D">Lode</Subsector>
+    <Subsector Index="E">Iimii</Subsector>
+    <Subsector Index="F">Khipge</Subsector>
+    <Subsector Index="G">Epshu</Subsector>
+    <Subsector Index="H">Gaussi</Subsector>
+    <Subsector Index="I">Mizar</Subsector>
+    <Subsector Index="J">Liasdi</Subsector>
+    <Subsector Index="K" Publisher="DGP" Source="The Travellers' Digest #21">Wolf</Subsector>
+    <Subsector Index="L" Publisher="DGP" Source="The Travellers' Digest #21">Oasis</Subsector>
+    <Subsector Index="M">Void</Subsector>
+    <Subsector Index="N">Allegro</Subsector>
+    <Subsector Index="O">Rhamsteppe</Subsector>
+    <Subsector Index="P">Mongrabi</Subsector>
+  </Subsectors>
+  <Allegiances>
+    <Allegiance Code="Di">Federation of Daibei</Allegiance>
+    <Allegiance Code="Du">Federation of Ilelish</Allegiance>
+    <Allegiance Code="Lu">Lucan's Imperium</Allegiance>
+    <Allegiance Code="Oa">Duchy of Oasis</Allegiance>
+  </Allegiances>
+  <Borders>
+    <Border Allegiance="FdDa" Color="Blue">1739 1839 1940 2040 2140 2239 2339 2239 2140 2141 2041 1941 1841 1741 1740 1739 </Border>
+    <Border Allegiance="FdDa" Color="Blue">2640 2740 2839 2940 2839 2740 2741 2641 2640 </Border>
+    <Border Allegiance="FdIl" Color="Purple">0000 0100 0200 0300 0400 0500 0600 0700 0800 0900 1000 0901 0902 0903 0904 0905 0906 0907 1007 0908 0909 0809 0810 0811 0812 0713 0714 0715 0615 0516 0517 0518 0418 0319 0320 0321 0220 0121 0021 0020 0019 0018 0017 0016 0015 0014 0013 0012 0011 0010 0009 0008 0007 0006 0005 0004 0003 0002 0001 0000 </Border>
+    <Border Allegiance="LuIm" Color="DarkRed">1727 1728 1729 1728 1727 </Border>
+    <Border Allegiance="LuIm" Color="DarkRed">1821 1921 2020 2120 2119 2120 2020 1921 1821 </Border>
+    <Border Allegiance="LuIm" Color="DarkRed">2400 2500 2600 2700 2800 2900 3000 3100 3200 3301 3302 3303 3304 3305 3306 3307 3308 3208 3109 3008 2909 2809 2709 2609 2510 2511 2611 2512 2412 2512 2511 2510 2609 2608 2607 2606 2605 2604 2504 2503 2502 2501 2400 </Border>
+    <Border Allegiance="Oa">2023 2123 2222 2323 2422 2522 2523 2623 2724 2824 2925 3024 3025 3026 3027 3128 3129 3229 3329 3229 3130 3030 2930 2829 2730 2630 2629 2628 2528 2427 2327 2226 2225 2224 2124 2023 </Border>
+  </Borders>
+</Sector>

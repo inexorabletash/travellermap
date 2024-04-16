@@ -1,0 +1,573 @@
+# File provided by Greg Videll
+# Mangled to be parsable as SEC by Joshua Bell
+
+# UWP Data for Zarushagar
+#
+#	Notes:
+#	(1) All data given here is circa 1120 and has been altered from the original GDW database in order to eliminate redundant entries. Please note that the information presented here will possibly differ from previously published materials for this reason. See the Collapsed sector information for stellar data.
+#	(2) No additional Ancient sites, Droyne or Chirper worlds have been added. Likewise, all Naval, Scout and Military bases remain unchanged as well.
+#	(3) Hi pop world names appear in CAPS.
+#	(4) The World system (2740 Mongrebi) was named as such in the Atlas of the Imperium and has not been changed.
+#	(5) Allegiance codes are as follows: Di=Daibei, Du=Dulinor, Lu=Lucan, Na=Non-aligned, Oa=Duchy of Oasis. Systems marked as "Cs" are client states of Rebellion era powers. Most often, but not always, client states were loyal to the nearest Rebellion power.
+
+# Subsector A: Mizar
+
+# Name     Hex  UWP       B  Trade Code(s)    TPPG  Alg
+Didraga    0101 C1008BC-8 S  Va                603  Du
+Ymirial    0106 B100302-A    Lo Ni Va          303  Du
+San Nuska Kilna           0108 B5547BD-E    Cp                202  Du
+Zed        0109 B331721-A S  Na Po             104  Du
+Norsec     0110 B527596-B    Ni                504  Du
+Selsinia   0201 B640774-B    De Po Xb          614  Du
+Allis      0204 C438553-B S  Ni                103  Du
+Arxani     0209 B446459-D N  Lo Ni             703  Du
+Point Zulu 0302 B1008AE-C    Na Va             524  Du
+Makkus     0304 B585672-E    Ni Ri             603  Du
+Freeport   0305 C321100-C    Lo Ni Po          424  Du
+Woden      0306 D5A1566-B N  Fl Ni             901  Du
+Ichiban    0309 A253112-D    Lo Ni Po          321  Du
+Shadishi   0310 B669322-B N  Lo Ni             924  Du
+Rogreis    0402 A7B2203-F N  Fl Lo Ni          800  Du
+Bolten     0404 C8B6542-D    D3 An Ni          531  Du
+Ulaun      0405 C667153-C    Lo Ni             804  Du
+Imled      0406 D641831-C    Po                804  Du
+Strela     0407 B6449CB-C    Hi In             703  Du
+Engaki     0502 E310110-6    Lo Ni             213  Du
+Dugemaa    0503 E1108CB-6    Na Xb             904  Du
+Leniv Fenl 0504 D253420-9    Lo Ni Po          202  Du
+Villenuve  0507 C652310-A N  Lo Ni Po          402  Du
+Toulon-Cadiz           0510 B8C7525-D    Fl Ni            A 314  Du
+Aslungi    0605 C211655-C    Ic Ni Po          222  Du
+Apkenumir  0606 E11049B-6    Lo Ni             503  Du
+Miller's World           0607 B465740-C    Ag Ri             402  Du
+Nedadzia   0701 B130477-D    De Lo Ni Po       901  Du
+Ledadzia   0704 C657777-C    Ag                410  Du
+Dorevann   0708 D464222-6    Lo Ni             714  Du
+New Orlando 0710 D756440-9    Lo Ni             211  Du
+Airvae     0801 B11146A-A N  Lo Ni             402  Du
+Sufizi     0802 A554210-E N  Lo Ni             422  Du
+Cyrpus     0803 B101534-E    Ic Ni Va          604  Du
+Gishin     0804 E620A79-9 N  De Hi Na Xb       102  Du
+Ginshe     0805 X5B6000-0    Ba Fl             002  Na
+Madagast   0806 C756300-A    Lo Ni             922  Du
+
+# Subsector B: Triton
+
+# Name     Hex  UWP       B  Trade Code(s)    TPPG  Alg
+Megrim Bama 0901 B466433-A    Lo Ni            110  Du
+McCandliss 0905 B657656-B    Ag Ni             805  Du
+Tatsu      0909 C464721-B    Ag                630  Du
+Amdiimuda  1001 A695754-F    Cp              A 812  Na
+Whisper    1007 EA62485-8 S  Lo Ni             710  Du
+Shedkhikhu 1102 C110589-A    Ni                803  Na
+Amash      1103 B210743-E N                    310  Na
+Ifni       1104 C455676-B S  Ag Ni             704  Na
+Clark Station           1105 B777555-D    Ag Ni             510  Na
+Mizen      1106 B443531-C    Ni Po             604  Na
+Wyong      1107 A52488A-D    Po                603  Na
+Darkhu     1109 X342000-0    Ba                013  Na
+Ladkiir    1110 C132434-A    Lo Ni Po          800  Na
+Ne Pnal    1204 B77A405-E S  Lo Ni Wa          710  Na
+Shugi      1205 B000638-D N  As Ni             202  Cs
+Chupchuk   1209 D8A68AC-6    Fl                901  Na
+Messina    1210 C63579B-E                    A 922  Na
+Kiezupug   1303 B000721-A N  As Na             724  Cs
+Ushant     1306 B541587-D    Ni Po             903  Na
+Selkirk    1309 B9B78CA-E    Fl                904  Na
+Amgidii    1406 C446459-A    Lo Ni             814  Cs
+Mushiar    1407 E766502-6    Ag Ni             200  Cs
+Lentuli    1408 B433254-E    Lo Ni Po          203  Na
+Collignswode           1409 B788568-B    Ag Ni             210  Na
+Sternbach  1410 A113846-F N  Na Ic             323  Na
+Lynshire   1501 B657533-B    Ag Ni             303  Na
+Churruca   1502 A8C758B-C N  Fl Ni             702  Cs
+KN04       1504 B48A667-C    Ni Ri Wa          824  Cs
+Embd's Cloak           1506 A000785-D N  As Na             124  Na
+Crashlanding           1508 BAE5865-C                      702  Na
+San Pietro 1602 B544602-D    Ag Ni             503  Na
+Riou       1605 B0006AC-E N  As Na Ni          820  Na
+Finsterre  1607 D446433-7    Lo Ni             911  Na
+
+# Subsector C: Lagaar
+
+# Name     Hex  UWP       B  Trade Code(s)    TPPG  Alg
+Bondi      1707 B784532-C N  Ag Ni             903  Cs
+Upunesh    1708 E96947A-8    Lo Ni             604  Cs
+Teredore   1709 A475320-D    Lo Ni             304  Na
+Fen        1802 C8A68AC-8    Fl              A 904  Cs
+Khii       1902 B555256-B S  Ag Lo Ni          902  Cs
+Colton's Green           1903 B445105-E N  Lo Ni             201  Na
+Al Mansur  1904 B79A230-E    Lo Ni Wa          814  Na
+Hypaethral 1906 B465621-B N  Ni                515  Cs
+Compunccioun           1907 B7A2774-E    Fl Ni             304  Na
+Tinskeep   1908 D897554-9 S  Ag Ni             502  Na
+Citenic    1910 B63279D-E S  Ni Po             203  Na
+Wilson's World           2001 D965253-8    Lo Ni             723  Na
+Deanne     2002 B763430-A    Lo Ni             204  Na
+Rumorindi  2005 B333623-B N  Na Po             913  Na
+Westminster 2009 B565621-D    Ni                404  Na
+Icebox     2102 B130355-D N  De Lo Ni Po       525  Na
+Sovron     2103 B557610-B N  Ni                103  Na
+Margaretten 2105 B331320-C    Lo Po             212  Cs
+Boa        2106 D447587-6    Ag Ni             700  Cs
+Loskene    2110 A263426-F    Lo Ni             703  Na
+Libuka     2202 B973966-D N  Hi Xb             623  Cs
+Owen       2204 B541465-C N  Lo Ni Po          203  Cs
+Exmin      2207 A467568-F    Cp Ni             503  Cs
+Fema       2210 C7638B9-C    Ni                312  Cs
+Halla      2304 B462314-D S  Lo Ni             212  Cs
+Indus      2305 B759453-A    Lo Ni             514  Cs
+Boshant    2306 B897554-C    Ag Ni             821  Cs
+Ur'kytarre 2402 B652643-F    Ni Po             211  Cs
+New Aria   2407 B547252-C    Lo Ni             600  Cs
+Liquari    2410 E3318A9-A    Na Po             321  Cs
+
+# Subsector D: Lode
+
+# Name     Hex  UWP       B  Trade Code(s)    TPPG  Alg
+Mystic     2501 A645635-F N  Ag Ni             714  Lu
+Ophin      2504 C540551-8    De Ni Po          100  Lu
+Tular      2603 B259340-E N  Lo Ni Xb          804  Lu
+Planet P   2606 E687899-6    Ri                414  Lu
+Port Arthur 2609 B64448B-E    Lo Ni             104  Lu
+Ursa Minor 2610 B455875-D                      304  Cs
+Liagkimes  2701 B466547-E N  Ni                504  Lu
+Merwan     2707 B633689-A N  Ni                313  Lu
+Ogre       2708 B8C758B-C    Fl Ni            A 303  Lu
+Dis        2801 B12057B-D N  Ni Po             700  Lu
+Slorm      2802 A757742-C N                    404  Lu
+Karfa      2805 B898532-A    Ag Ni Xb          804  Lu
+Kurae      2806 D667989-6    Hi                714  Lu
+Binary     2809 B8A3846-C S  Fl                503  Lu
+St. George 2810 B695754-D    Ag               A 502  Cs
+Avon       2901 B625785-B N                    513  Lu
+Nessus     2903 B675300-D    Lo Ni Xb          500  Lu
+Itane      2904 B4206A9-E N  Ni Po             605  Lu
+Amargim    2905 A756523-D    Ag Ni             902  Lu
+Lode       2908 B000944-E    As Na Xb          504  Lu
+Sixty-One  2910 B654102-A N  Lo Ni             904  Cs
+Wonderland 3001 BA73775-C    Ag                713  Lu
+Farland    3003 E7997A7-7                      304  Lu
+Gigash     3005 B425257-C    Lo Ni             504  Lu
+Novy Okorovo           3008 B434521-D N  Ni                804  Lu
+Piepsk     3010 B530879-C N  De Po             301  Cs
+Urak       3101 B6889CE-A    Hi Xb             403  Lu
+Shai Sulta 3102 B88467A-C    Ag Ni Ri          913  Lu
+Luki       3103 B32159C-E N  Ni Po             504  Lu
+Eryx       3104 A578343-D N  Lo Ni             802  Lu
+Sofia      3109 B786658-C S  Ag Ni Ri          523  Lu
+Munin      3110 B200421-A    Lo Ni Va          400  Cs
+Talamein   3201 B8A68AC-D S  Fl                713  Lu
+Woerner    3202 B622763-C    Po               A 514  Lu
+Fleet      3206 AA78798-F    Ag Cp             800  Lu
+Kupio      3208 B7997A7-C                      214  Lu
+Fulcrum    3210 C425220-B S  Lo Ni             202  Cs
+
+# Subsector E: Iimii
+
+# Name     Hex  UWP       B  Trade Code(s)    TPPG  Alg
+Numdaag    0112 D253A85-A    Hi Po             603  Du
+Tsunami    0114 C342640-A S  Ni Po             525  Du
+Framiller  0115 B7C679C-D    Fl                612  Du
+Travis     0116 B87A320-E    An C6 Lo Ni Wa    213  Du
+490-859    0120 B310110-A    Lo Ni             314  Du
+Ansset     0217 B766502-B S  Ag Ni             203  Du
+Mikal      0219 B446435-D N  Lo Ni             502  Du
+Leonida    0220 A784532-F    Ag Ni             405  Du
+Kirst      0315 D8C758B-9 S  Fl Ni             304  Du
+AC 337     0317 D487220-7    Lo Ni             315  Du
+Prudhoe    0318 C764452-A    Lo Ni             605  Du
+Chaikin    0320 B755487-A    Lo Ni             302  Du
+New Vision 0411 E4248DA-7                      715  Du
+Holtan Rock 0513 A337110-C    Lo Ni             602  Du
+Lonesh     0517 A657589-D    Ag Ni             702  Du
+Siam       0518 B000788-E    As Ni             803  Du
+Omicron Xi 0519 B210433-B    Lo Ni             102  Na
+Cassini    0520 C555677-9    Ag Ni             912  Na
+Bluve      0614 B150884-E N  Ni Po             803  Du
+Clemons Folly           0618 E465220-7    Lo Ni             613  Na
+Iimii      0715 B897944-C    Cp Hi In Xb       910  Du
+Saratoga   0719 E58A543-6    Ni Wa             813  Cs
+Rockledge  0812 B434463-C    Lo Ni             123  Du
+Bienhien   0815 D6B8677-9    Fl Ni             202  Cs
+Ferrati    0816 D331721-8    Na Po             830  Na
+Al Rahn Kormani           0817 B576858-E    Ni                501  Na
+Gengil     0818 B325474-E    Lo Ni Po          623  Na
+
+# Subsector F: Khipge
+# Name     Hex  UWP       B  Trade Code(s)    TPPG  Alg
+Khipge     0914 E756AA6-9    Hi                114  Lu
+Deyis II   0917 E874000-8    Ba               A 900  Na
+Hirah      0918 AABA433-E N  Fl Lo Ni          103  Na
+Belebrat   1011 C7997A7-9                      605  Na
+Resra      1012 C425100-B S  Lo Ni             932  Na
+Pleru      1019 B599633-A    Ni                210  Na
+Ramer      1112 B465220-E    Lo Ni             100  Na
+N'mra      1113 C756440-A    C2 Lo Ni          622  Na
+Rawin      1114 E878665-7    Ag Ni             504  Na
+Odew       1116 A667253-F    Lo Ni             102  Na
+Rotek      1119 D6118CF-9 S  Ic Na Po          204  Na
+Carson's Desert           1214 E140434-7    Lo Ni Po          905  Na
+Keeli-Ho   1314 D63A340-E    Lo Ni             103  Na
+Arneua     1319 B300867-A    De Na             102  Na
+Tree       1320 B9B6454-E    Fl Lo Ni          404  Na
+Niver      1411 C465220-B    Lo Ni             102  Na
+Vugaash    1414 D000440-6 S  As Ni             513  Na
+Stonie     1415 B59A433-B S  Lo Ni Wa          623  Na
+Kawa-Kwi   1420 A656677-F    Ag Ni             903  Cs
+Ypse       1511 A465220-F N  Lo Ni             301  Na
+Seeplis    1512 B756440-E    Lo Ni             624  Na
+Tomas      1514 C000554-B S  As Ni             812  Na
+Sheqap     1516 B274667-A N  Ni                913  Na
+Verza      1519 B7BA433-D    Fl Lo Ni Wa       804  Cs
+Fotose     1611 B655636-E    Ag Ni             305  Na
+Cassionia  1612 B465220-D N  Lo Ni             704  Na
+Pethatone  1614 C756440-A    Lo Ni             904  Na
+Zigme      1615 E897554-A    Ag Ni             825  Na
+Olavuz     1616 B667253-D    Lo Ni             825  Na
+Base X     1617 B6518CF-D N  Po                603  Na
+Brating    1618 A64448B-F    Cp Lo Ni          700  Lu
+
+
+# Subsector G: Epshu
+
+# Name     Hex  UWP       B  Trade Code(s)    TPPG  Alg
+Murdstone  1712 B78A444-C    Lo Ni Wa          303  Na
+Benici     1713 B100513-C    Ni Va             803  Na
+Ludtke     1715 A537897-E                      404  Na
+Sinting    1717 B332734-B    Po                802  Na
+Frey       1811 B69A7C7-B S  Wa               A 804  Na
+Escalona   1816 B559434-B    Lo Ni             813  Na
+Pagac      1818 B463102-E    Lo Ni             505  Na
+Kleior     1820 C767565-B    Ag Ni             224  Na
+Depot      1920 C6888CF-A D                    100  Na
+Endarma    2013 B000402-D    As Lo Ni          905  Na
+Sao Pacora 2015 B267300-D N  Lo Ni             204  Na
+Magheru    2018 B46A541-B    Ni Wa             514  Na
+Algoani    2019 C58A377-C W  Lo Ni             203  Cs
+Chellis    2020 C466230-9    Lo Ni             921  Lu
+Kaixi      2111 A639340-C N  Lo Ni             820  Na
+Birmingham 2112 B879545-E    Ni                624  Na
+Samarkand  2113 B962976-A N  Hi                921  Na
+Nahsora    2115 B873200-C    Lo Ni             302  Na
+Serenity   2119 B332699-B    Ni Po             504  Lu
+T'Saeis    2212 A893534-D    Ni                124  Na
+Angmar     2213 A212651-F    Na Ni Po          902  Na
+Xaff       2214 E87A113-A    Lo Ni Wa          500  Na
+Port Artemus           2216 B534200-B    Lo Ni             304  Lu
+Lone Star  2217 BA8A47B-D N  Lo Ni Wa          524  Na
+Dishere    2219 B453322-C S  Lo Ni Po          903  Na
+Anatsov    2311 B664564-E    Ni                724  Na
+Bari       2312 B667100-B    An C4 Lo Ni       812  Na
+Maxadan    2313 D64448B-A    Lo Ni             603  Na
+Harding    2315 B44049C-E N  De Lo Ni Po       724  Cs
+Lonic      2318 B343445-D N  Lo Ni             503  Na
+Sirgol     2320 A636321-F    Lo Ni             803  Na
+Komo Niva  2412 A527587-F N  Ni                223  Lu
+Freehold   2413 A253420-E    Lo Ni Po          512  Na
+Mordor     2415 E6307BB-9    De Na Ni Po       512  Na
+Diego Cruces           2419 D892586-9    Ni                804  Na
+Schmidt    2420 B487767-D N  Cp Ni Ri          103  Na
+
+# Subsector H: Gaussi
+
+# Name     Hex  UWP       B  Trade Code(s)    TPPG  Alg
+Poutre     2511 C354555-B    Ni Po             604  Lu
+Lios       2515 B57A89A-D                      715  Na
+Norman     2517 C6899A7-8 S  Hi                404  Na
+Siepta     2518 B86659D-E    Ni                822  Na
+Lineal     2611 E4469BD-A    Hi In             801  Lu
+Bikaner    2615 E659423-8    Lo Ni             820  Na
+Mogok      2616 E389421-9    Lo Ni             102  Na
+Ad Dobere  2617 A878223-F    Lo Ni             103  Na
+Voss       2712 B322555-D    Ni Po             812  Na
+Victoria   2718 B6A2884-B N  Fl                403  Na
+Chanaran   2814 BA78798-A    Ag                502  Na
+Sassuolo   2815 D7997A7-A                      923  Na
+Keevis     2816 B358654-E N  Ag Ni             704  Na
+Banjul     2818 C636321-9 S  Lo Ni             812  Na
+Hefei      2820 B300200-C S  Lo Ni Va          104  Na
+Zlotoja    2911 B8A68AC-A    Fl                621  Na
+Kalasin    2914 B645735-C S  Ag Cp            A 202  Na
+Malinu     2915 DA78798-7    Ag                704  Na
+Ayachuco   2917 B79479A-C    Ag                702  Na
+Tamak      2918 A461220-F N  Lo Ni             214  Na
+Porter     2919 B405589-A    Ni                310  Na
+De Zara    3011 C434553-8    Ni                113  Na
+Dirkou     3015 A567683-C    Ag Ni             414  Na
+Bernous Koro           3016 A331334-C    Lo Ni Po          813  Na
+Mekele     3017 B542120-C    Lo Ni Po          220  Na
+Laxou      3019 B4696A7-A    Ni Va             803  Na
+Kirn       3020 B223434-B    Lo Ni Po          503  Na
+Senj       3111 D878223-A    Lo Ni             223  Na
+Baza Lubrin3115 B322311-A    Lo Ni Po          604  Na
+Banquo     3116 B246434-D S  Lo Ni             112  Na
+Kifri      3117 A465878-E    Ni Ri             825  Na
+Nbheji     3119 A10058C-F    Ni Va             112  Na
+Sheqi      3120 B430687-B    De Ni Po          314  Na
+Merestone  3214 A100633-F    Na Ni Va          904  Na
+Balikessir 3218 C733752-9    Ni Po             403  Na
+
+# Subsector I: Ibaru
+
+# Name     Hex  UWP       B  Trade Code(s)    TPPG  Alg
+Corta      0121 D625785-8                      922  Du
+Lorrius    0124 B124424-E    Lo Ni Po          213  Na
+Adzel      0126 C422665-B    Ni Po             800  Na
+Quippa     0127 B757462-E    Lo Ni             512  Na
+Fuji       0130 B8A0202-D    An C2 De Lo Ni    704  Na
+Jersi      0224 A462433-E N  Lo Ni             612  Na
+Keeton     0227 B586444-D    Lo NI             824  Na
+Ibaru      0321 B7799A7-D    Hi In Xb          203  Du
+Portobello 0323 B630330-D    De Lo Ni Po       802  Na
+Kumiko     0324 D431453-9 S  Lo Ni             905  Na
+Boswach    0326 B444420-C    Lo NI             500  Na
+Gaiging    0328 B6B75AA-C N  Fl Ni             213  Na
+Kotar      0329 B785327-C N  Lo Ni            A 113  Na
+Perigrad   0422 A522326-F W  Lo Ni Po          100  Na
+Minban     0425 C532678-9    Ni Po             402  Na
+Rudriff    0427 E331721-8    Na Po             722  Na
+First Star 0428 B573300-D    Lo Ni             515  Na
+Airkhipaa  0430 B212464-B N  Lo Ni Po          803  Na
+Unchin     0522 A337743-E N  Na Po             620  Na
+Omadarondu 0524 B526436-B    Lo Ni             604  Na
+Vanysh     0525 B128542-C    Ni                300  Na
+Skarno     0527 B575466-A N  Lo Ni             123  Na
+Balder     0528 D3358A8-6                      103  Na
+Geta       0529 C527587-C    Ni                204  Na
+Lenox      0621 C755423-A S  Lo Ni             924  Na
+Titania    0622 C897554-A    Ag Ni             103  Na
+Koquillon  0624 B221736-E    Na Po             401  Na
+Burke      0625 E6868CF-7    An C5             904  Na
+Marinus    0627 A644655-F    Ag Ni             720  Na
+Kaas       0628 B449964-E    Cp Hi In          512  Na
+Waitangi   0721 B556677-D    Ag Ni             310  Na
+Hogun's World           0723 B3317BF-C    Na Po             404  Na
+IC-8095    0724 A679523-E A  Ni                300  Na
+Mikoyan    0726 B465215-B N  Lo Ni             103  Na
+Smithson   0729 A756225-C    Lo Ni             901  Na
+Augusta    0821 B621451-B    Lo Ni Po          914  Na
+Kali       0825 B8C758B-E    Fl Ni             415  Na
+Lewitt     0826 B487220-C    Lo Ni             504  Na
+K'Pyrene   0827 C5A4622-B    Fl Ni             805  Na
+Lomo       0829 B5746AC-D    Ag Ni             714  Na
+
+# Subsector J: Liasdi
+
+# Name     Hex  UWP       B  Trade Code(s)    TPPG  Alg
+Bugei      0921 B241652-E N  Ni Po             414  Na
+Eiling     0922 B468223-C N  Lo Ni             812  Na
+Glomar     0924 B796547-D    Ni                914  Na
+Liasdi     0928 A887944-C    Hi Sector Cp      404  Na
+Maxx       1022 C698663-9 S  Ni                702  Na
+Fanshang   1023 D468425-8    C2 Lo Ni          500  Na
+Berkshire  1024 A756864-F    Cp Ni             400  Na
+Gomi       1025 E896785-6    Ag Ni             503  Na
+Jorba      1027 C664561-C    Ni                811  Na
+Diridlu    1029 E696341-8    Lo Ni             814  Na
+Mirail     1121 B640668-C N  De Ni             703  Na
+Miskiar    1122 A449895-F S                    904  Na
+Apsaser    1125 E437448-7    Lo Ni             604  Na
+Adadnai    1127 E551472-7    Lo Ni Po          123  Na
+Lidki      1129 B878223-A    Lo Ni             604  Na
+Siiskig    1223 A404220-F S  Ic Lo Ni          203  Na
+Vogasphere 1226 B725473-E N  Lo Ni             924  Na
+Ueah       1227 B755432-E N  Lo Ni             302  Na
+Djinn      1322 A68A533-D    Ni Wa             904  Na
+Ishag      1323 BA98986-A N  Hi In             515  Na
+Dineal     1324 A720630-F N  De Ni Po          424  Na
+Nidke      1325 A897444-E    Ag Ni             503  Na
+Driuden    1326 B6676AA-B N  Ag Ni             911  Na
+Arramu     1327 C6478CF-8                      903  Na
+Edno       1328 B687165-E    Lo Ni             515  Na
+Monitor    1421 C331721-8 S  Na Po             800  Na
+F'ornans   1427 B556563-D N  Ag Ni             211  Na
+Hirbun     1428 B322645-E N  Ni Po             500  Na
+Ishmael    1521 B522643-C    Ni Po             621  Na
+Warth      1525 B331668-B    Na Po             703  Na
+Ipadmali   1527 B500510-C    Ni Va             320  Na
+Muumiagda  1528 A254402-E    Lo Ni Po          203  Na
+Mavic Chen 1529 D639340-9    Lo Ni             604  Na
+Aslairaa   1530 B00058B-B    As Ni             303  Na
+Hlaven     1623 B449895-C                      203  Na
+Sheegish   1625 B446459-A    Lo Ni             424  Na
+Shawngi    1629 B76A559-A    Ni Wa             304  Na
+
+# Subsector K: Wolf
+
+# Name     Hex  UWP       B  Trade Code(s)    TPPG  Alg
+Staring    1721 D527587-7    Ni                514  Na   M3V K3D
+Lianma     1727 A1009A7-F    Hi In Na Va Xb    204  Lu   F0V
+Ponand     1729 A636321-F    Lo Ni Xb          614  Lu   M3V
+Temenee    1821 B465220-D    Lo Ni             804  Lu   F3V M4D
+Sagree     1822 C756440-A    Lo Ni             605  Na   K0V M9D
+Tetrini    1823 B876554-C    Ag Ni             812  Na   G2V
+Zecu       1826 B667253-D    Lo Ni             603  Na   K0V M8D
+Sensee     1922 B310010-A  N Lo Ni             715  Na   G4IV M0D
+Kdept      1924 E625785-9                      623  Na   F4V M2D
+Ter-ritt   2023 B765440-A  N Lo Ni             603  Oa   F2IV M2D
+Alcau      2030 B897554-7  N Ag Ni             100  Na   G2V
+Reemen     2129 B77A405-A  S Lo Ni Wa          703  Na   F2V
+Mettari    2130 D654002-9  S Lo Ni             204  Na   F1IV M4D
+Clavert    2222 B100433-B    Lo Ni Va          914  Oa   K0IV
+Bacelbron  2223 B525677-C  S Ni                614  Oa   A5V
+Dust       2224 B331721-B    Na Po             724  Oa   M0V
+Reunder    2225 B100434-A    Lo Ni Va          803  Oa   G0III
+Hepa       2226 D465220-6    Lo Ni             701  Oa   G4V M1D
+Farock     2228 B100434-D    Lo Ni Va          820  Na   A3V
+Laner      2230 D465984-9    Hi                404  Na   G2V
+Cesall     2321 B434656-D    Ni                322  Na   K2V
+Radema     2323 C444420-C    Lo Ni             214  Oa   G2IV
+Lonely     2324 B200667-A  S Na Ni Va O:2325   402  Oa   M0V
+Provalan   2325 A688899-F    Ri Xb             604  Oa   G5Ib
+Yeara      2328 C64448B-B    Lo Ni             504  Na   M9II
+Preserve   2329 E449895-A    Ba               R 913  Na   M5III
+Adni       2330 B300A98-E    Na Hi In Va Xb    122  Na   F3D
+Skaob-heti 2422 B5A4622-D  N Fl Ni             903  Oa   M2V M2D
+Cossor     2424 B0006AC-D  N As Na Ni          604  Oa   K0V
+Hentier    2426 B100432-B    Lo Ni Va          412  Oa   M0V
+Corants    2430 E756442-9    Lo Ni             901  Na   G0V
+
+# Subsector L: Oasis 
+# Name     Hex  UWP       B  Trade Code(s)    TPPG  Alg
+Altacen    2522 B799647-C    Ni                303  Oa   F2V
+Olesno     2524 B89A554-A    Ni Wa             113  Oa   G5III
+Reina      2525 A661677-F    Ni Ri O:2826      303  Oa   M4V
+Pora       2528 B110421-B    Lo Ni             524  Oa   M0V
+Kezfi      2621 C322311-B    Lo Ni Po          402  Na   M9V
+Irap       2630 B100AA9-C    Hi In Na Xb       702  Oa   K0Ib
+Chronus    2722 B100403-B  S Lo Ni Va          201  Na   M3V
+Shiganisa  2725 B4416C9-C    Ni Po             704  Oa   G2V M0D
+Egama      2729 E756440-9    Lo Ni             602  Oa   F1V M8D
+Tibiles    2730 A887554-C  S Ag An D0 Ni       703  Oa   F5V M2D
+Kamov      2822 B457243-D  N Lo Ni             824  Na   G3V
+Peolanti   2824 E7A4673-9    Fl Ni             603  Oa   F1IV
+Shytek-Oberon           2826 A887887-F  N Cp Ri             614  Oa   G2V
+DeFranco   2921 E541530-D    Ni Po Xb          401  Na   F4V
+Harmless   2925 E776510-A    Ag Ni             714  Oa   G4V
+Dothama    2928 B584161-F  N Ni ReS Xb O:2826  402  Oa   K4V
+Dethis     2930 E110867-C    Na O:3030         202  Oa   M4IV
+Uhlis      3021 B100441-B    Lo Ni Va          114  Na   M8IV M3D
+Arising    3022 E565677-7    Ag Ni Ri          305  Na   K7II
+Kuire      3024 E100433-C    An C8 Lo Ni Va    223  Oa   G0IV
+Alakar     3025 C525686-C    Ni                103  Oa   M2V M2D
+Hiistan    3028 B100466-B    Lo Ni Va O:3129   700  Oa   M4V
+Tagend     3030 C543635-D  S Ni Po             505  Oa   M3V
+Nar Sumeck 3122 B7B0430-E    De Fl Lo Ni       822  Na   F7V M7D
+Isaji      3128 B9E5537-D  N Fl Ni             913  Oa   G4V M1D
+Romany     3129 A686623-C    Ag Ni             904  Oa   G0IV
+Oasis      3130 C656644-C    Ag Ni             804  Oa   G5III
+Payabyab   3222 E8A4551-8    Fl Ni             703  Na   F7V M9D
+Scimonelli 3223 E667343-8    C8 Lo Ni          404  Na   F3V
+Nuaimy     3224 B68A875-A    Wa                302  Na   G1III
+Thagam     3225 C64548B-A    Lo Ni             200  Na   F4V
+Aypoole    3226 D459895-6  S                   405  Na   K1V
+Sidna      3229 D446459-9    Lo Ni             800  Oa   G0IV
+Donsam     3230 B766502-A    Ag Ni             303  Oa   K4V
+
+# Subsector M: Void
+# Name     Hex  UWP       B  Trade Code(s)    TPPG  Alg
+Farreach   0135 X677000-0    Ba                824  Na
+Askyat     0140 B665835-B    An Dw             314  Na
+Noritomo   0239 B675563-B    Ag Ni O:0338      623  Na
+Havre      0338 B577985-E    Hi In             110  Na
+Lutyen     0432 X639000-0    Ba                805  Na
+Dent       0433 X885521-8    Ag Ni             622  Na
+Colony Four 0738 B897944-C    Hi In             623  Na
+# Note: Subsector was administered from Subsector I so there was no local subsector capital.
+
+# Subsector N: Allegro
+
+# Name     Hex  UWP       B  Trade Code(s)    TPPG  Alg
+Union      0934 C654477-E    Lo Ni             412  Na
+Vail       0937 X879000-0    Ba                400  Na
+Craxi      1038 X310000-0    Ba                501  Na
+Allegro    1140 X322000-0    Ba                704  Na
+Highstaff  1239 X520000-0    Ba De             710  Na
+Star's End 1340 X449000-0    Ba                521  Na
+Zero Zero  1535 X487000-0    Ba                414  Na
+Faesi      1631 X435000-0    Ba                924  Na
+# Note: Subsector was administered from Subsector O so there was no local subsector capital.
+
+# Subsector O: Rhamsteppe
+
+# Name     Hex  UWP       B  Trade Code(s)    TPPG  Alg
+Century    1731 A434223-F  N Lo Ni             101  Na
+Ripple     1734 B131343-D    Lo Ni Po          125  Na
+Cheyene    1735 B368745-D  N                   700  Na
+Rosa       1736 B674589-E  S Ag Ni             403  Na
+Dorsiki    1739 B773663-C    Ni                802  Di
+Aashrikan  1740 B765656-C  S Ag Cp Ni Ri       204  Di
+Dyko       1835 D4559A7-A    Hi                700  Na
+Bradley    1840 B636321-A    Lo Ni             823  Di
+Coad       1931 B532464-C  N Ni Po             804  Na
+Heep       1932 B545898-A                      800  Na
+Udim       1933 D787944-A    Hi                414  Na
+Znin       1934 B479568-A    Ni                624  Na
+Gaboro     1935 E626320-A    Lo Ni             300  Na
+Rook       1936 B532498-A  N Lo Ni Po          900  Na
+Sukhoi     1937 B124112-D    Lo Ni             804  Na
+Daiunki    1940 D642434-7    Lo Ni             113  Di
+Wasa       2031 B210135-B    Lo Ni Po          104  Na
+Cubic      2032 BAE6547-B    Ni                715  Na
+Shipruud   2039 D524598-8    Ni                602  Na
+Sellelle   2131 B300300-D    Lo Ni Po          202  Na
+Kep Aru    2134 B625575-A    Ni                202  Na
+Neiblung   2135 E137434-9    Lo Ni             405  Na
+Tenuke     2136 B467203-D    Lo Ni             513  Na
+Deta 3     2137 B7A0334-E  S De Lo Ni          901  Na
+Yakima     2140 B521443-B  S Lo Ni Po          305  Di
+Lieed      2232 B1136A5-B    Ic Ni             514  Na
+Megabratim 2240 B7B9842-D    Fl                920  Na
+Quode      2331 B133624-A    Ni Po             201  Na
+Lauma      2333 B423610-B    Ni Po             303  Na
+Udiid      2335 C756AA6-C    Hi                205  Na
+Apa        2338 B874445-D  N Lo Ni             402  Na
+Transcorium2339 B574343-B    Lo Ni             803  Di
+Phota      2340 B3657CF-E    Ag                214  Na
+Midantic   2435 C000584-C    As Ni             910  Na
+Disi       2436 B54A513-A  N Ni Wa             600  Di
+Greymere   2439 B668589-C  N Ni                902  Na
+
+
+# Subsector P: Mongrebi
+
+# Name     Hex  UWP       B  Trade Code(s)    TPPG  Alg
+Mynos      2531 B510100-C  N De Lo Ni Po       202  Na
+Alekki     2532 C452465-A    Lo Ni             604  Na
+Siven      2539 B798137-E    Lo Ni             511  Na
+Mongrebi   2540 B883855-E    Cp Ri             303  Na
+Kunkneesh  2634 B5317BE-B  N Po               A 423  Na
+Onoju      2635 B3368BC-E  N                   613  Na
+Aleta      2640 B534867-E  S                   303  Di
+Riggs      2731 B66688A-D    An C3 Ri          223  Na
+Pegasus    2734 B642332-B  N Lo Ni Po          803  Na
+Moolly     2735 C66359C-B  S Ni                213  Na
+Talmec     2736 B443200-E    Lo Ni Po          403  Na
+Hanait     2737 A446459-F  W Lo Ni             314  Na
+World      2740 D766AA8-8  S Hi                100  Di
+Yoshiyumi  2831 A667610-D    Ag Ni             810  Di
+Qisoy      2832 B687542-D    Ag Ni             205  Na
+Zimilia    2838 C6449CB-C    Hi In             113  Na
+Politsie   2840 B310210-C    Lo Ni Po          904  Na
+Mesrees    2933 B320510-C    De Ni Po          902  Na
+Cold Heart 2935 B88949C-B    Lo Ni             405  Na
+Kees       2937 A527986-E    Hi In             424  Na
+Unita      2939 E8A68AC-6    Fl                713  Na
+Megi       2940 D695754-8    Ag               A 501  Di
+Oaskyu     3031 A331721-F  N Na Po             700  Na
+Pinelette  3032 C859434-C    Lo Ni             100  Na
+Ralik      3037 C465220-B    Lo Ni             205  Na
+Noire      3038 D000556-7    As Ni             705  Na
+Jobere     3039 C896566-8    Ag Ni             405  Na
+Borderline 3040 B664756-D  N Ni                711  Na
+Abrams     3131 B6438DB-D    Po                611  Na
+Overton    3133 A766849-F                      902  Na
+Pylon      3134 D556652-A    Ag Ni             403  Na
+Aquivda    3135 C365730-8  S                   902  Na
+Gaidraa    3136 B5859A9-C  S Hi                400  Na
+Ermi       3139 E656986-8    Hi                203  Na
+Shade      3230 B762243-A    Lo Ni             303  Na
+Nuevo Geneva           3233 D435254-7    Lo Ni             712  Na
+McKinley   3236 D784532-9    Ag Ni             105  Na
+Caffe      3239 B462433-D    Lo Ni             902  Na

@@ -99,7 +99,13 @@
     <Name>Ilelish</Name>
     <MetadataFile>Ilel.xml</MetadataFile>
   </Sector>
-
+  <Sector Abbreviation="Zaru" Tags="Unreviewed" Selected="true" Milieu="M1120">
+    <Y>1</Y>
+    <X>-1</X>
+    <Name>Zarushagar</Name>
+    <DataFile Author="Greg Videll">1120_Zaru.sec</DataFile>
+    <MetadataFile>1120_Zaru.xml</MetadataFile>
+  </Sector>
 
   <!-- Vilani & Vargr -->
   <Sector Abbreviation="Vlan" Tags="Unreviewed" Selected="true" Milieu="M1120">
