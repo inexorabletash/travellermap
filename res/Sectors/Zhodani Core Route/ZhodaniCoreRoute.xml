@@ -5456,6 +5456,7 @@
 	<Sector Author="Clifford Linehan" Source="Zhodani Core Route Project" Ref="https://web.archive.org/web/20050828212346/http://www.geocities.com/traveller_core_route/proj001/proj001.html" >
 		<X>-7</X>
 		<Y>-52</Y>
+		<Name Lang="zh">Tledr</Name>
 		<Name Lang="zh">Tledrbreplebr</Name>
 		<DataFile>tledrbre.sec</DataFile>
 		<Subsectors>
@@ -5582,6 +5583,10 @@
 			<Route Start="2907" End="3003" Type="Core Route" />
 			<Route Start="3003" End="3040" EndOffsetY="-1" Type="Core Route" />
 		</Routes>
+                <Borders>
+                  <Border Allegiance="ZhVQ">0909 1009 1109 1108 1007 1006 1106 1107 1207 1308 1407 1406 1306 1405 1506 1507 1407 1308 1309 1208 1109 1110 1210 1110 1010 0910 0909 </Border>
+                  <Border Allegiance="ZhVQ">1202 1302 1401 1402 1403 1303 1202 </Border>
+                </Borders>
 		<Allegiances>
 			<Allegiance Code="Zc">Zhodani Client</Allegiance>
 		</Allegiances>
@@ -6353,6 +6358,9 @@
 		<Allegiances>
 			<Allegiance Code="Zc">Zhodani Client</Allegiance>
 		</Allegiances>
+                <Borders>
+                  <Border Allegiance="ZhVQ">1036 1136 1135 1134 1135 1235 1336 1435 1336 1337 1338 1339 1239 1240 1239 1238 1138 1037 1036 </Border>
+                </Borders>
 	</Sector>
 	<Sector Author="Clifford Linehan" Source="Zhodani Core Route Project" Ref="https://web.archive.org/web/20050828212346/http://www.geocities.com/traveller_core_route/proj001/proj001.html" >
 		<X>-7</X>
@@ -6782,6 +6790,7 @@
 	<Sector Author="Clifford Linehan" Source="Zhodani Core Route Project" Ref="https://web.archive.org/web/20050828212346/http://www.geocities.com/traveller_core_route/proj001/proj001.html" >
 		<X>-7</X>
 		<Y>-23</Y>
+		<Name Lang="zh">Dilea</Name>
 		<Name Lang="zh">Dliea</Name>
 		<DataFile>dliea.sec</DataFile>
 		<Subsectors>
