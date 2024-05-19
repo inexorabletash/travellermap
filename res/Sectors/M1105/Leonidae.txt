@@ -1,5 +1,5 @@
 Hex  Name                 UWP       Remarks              {Ix} (Ex) [Cx] N B  Z PBG W A  Stellar
----- -------------------- --------- -------------------- ---- ---- ---- - -- - --- - -- ---------------
+---- -------------------- --------- -------------------- ---- ---- ---- - -- - --- - -- ------------------
 0103 Imur                 A5479D9-E Hi                                  - N  - 224   Cu
 0106 Ulid                 A552564-C                                     - -  - 915   Cu
 0108 Ensik                A362676-B                                     - -  - 814   Cu
@@ -211,41 +211,41 @@ Hex  Name                 UWP       Remarks              {Ix} (Ex) [Cx] N B  Z P
 1517 Doric                D692219-6 Lo                                  - K  - 903   Na
 1614 Thruhleow            C270362-6 De Lo                               - -  - 803   Na
 1618 Meragrand            X300000-0 Ba Lo Va                            - -  - 002   --
-1711 Meschac              X400000-0 Ba Lo Va                            - -  - 003   --
-1712 Shadrac              X210000-0 Ba Lo                               - -  - 003   --
-1713 Abednigo             XAB3000-0 Ba Fl Lo                            - -  - 004   --
-1720 Mukikikam            E988447-5                                     - -  - 204   Na
-1811 Endicott             E442456-5 Lo                                  - -  - 512   Na
-1813 Masada               D6108EJ-7                                     - -  R 703   Na
-1817 Nakanyike            X230000-0 Ba De Lo                            - -  - 002   --
-1820 Digide               D263579-7                                     - K  - 903   Na
-1918 Argiker              B443435-B                                     - -  - 501   Na
-1920 Ligug                C320310-9 De Lo                               - -  - 313   Na
-2013 Idnukagaka           C644744-7 Ag                                  - -  - 715   HH
-2014 Iknugagaka           B533365-8 Lo                                  - -  - 203   HH
-2015 Ilnuhagaka           A8959CC-C Hi                                  - N  - 302   HH
-2018 Arsa                 D474443-6 Lo                                  - -  - 305   Na
-2116 Apgisa               XAC9000-0 Ba Fl Lo                            - -  - 023   --
-2119 Dakade               D200210-7 Lo Va                               - -  - 200   Na
-2212 Panumil              C445583-7 Ag                                  - -  - 410   Na
-2218 Abbenyi              X210000-0 Ba Lo                               - -  - 004   --
-2311 Lakhu                X160000-0 Ba De Lo                            - -  - 024   --
-2312 Nfah                 C97A887-8 Wa                                  - M  - 703   Na
-2316 Makuchi              X7A3000-0 Ba Fl Lo                            - -  - 003   --
-2317 Onaiwu               X310000-0 Ba Lo                               - -  - 011   --
-2320 Dakuka               D888263-1 Lo                                  - -  - 601   Na
-2414 Laanii               X120000-0 Ba De Lo                            - -  - 023   --
-2416 Zoetermeer           D537265-7 Lo                                  - -  - 704   Na
-2418 Ogbomo               X110000-0 Ba Lo                               - -  - 001   --
-2515 Titilayo             D3547AB-4 Ag                                  - -  - 701   Na
-2519 Kudzidu              C413300-A Ic Lo                               - -  - 700   Na
-2619 Tsanga               B6938A7-9                                     - -  - 901   Na
-2711 Salo                 X310000-0 Ba Lo                               - -  - 024   --
-2716 Dinkii               X202000-0 Ba Ic Lo Va                         - -  - 005   --
-2817 Kuukadi              X000000-0 As Ba Lo                            - -  - 003   --
-2919 Ufomata              X673000-0 Ba Lo                               - -  - 013   --
-3118 Gri-ulm              B44479B-8 Ag                                  - -  - 825   Cr
-3217 Urbana               B8649A8-B Hi                                  - N  - 115   Cr
+1711 Meschac              X400000-0 Ba Va                               - -  - 003   -- F4 V M1 V
+1712 Shadrac              X210000-0 Ba                                  - -  - 003   -- G5 VI
+1713 Abednigo             XAB3000-0 Ba Fl                               - -  - 004   -- K6 V M1 V
+1720 Mukikikam            E988447-5 Ni Pa                               - -  - 204   Na G3 V M0 V
+1811 Endicott             E442456-5 He Ni Po                            - -  - 512   Na F6 V G5 V
+1813 Masada               D6108EJ-7 Na Ph Pi                            - -  R 703   Na F0 V K4 V
+1817 Nakanyike            X230000-0 Ba De Po                            - -  - 002   -- G5 III
+1820 Digide               D263579-7 Ni Pr                               - K  - 903   Na F7 V G6 V M5 V
+1918 Argiker              B443435-B Ni Po                               - -  - 501   Na F1 V K1 V
+1920 Ligug                C320310-9 De He Lo Po                         - -  - 313   Na K1 IV
+2013 Idnukagaka           C644744-7 Ag Pi O:2015                        - -  - 715   HH F6 V G8 V
+2014 Iknugagaka           B533365-8 Lo Po O:2015                        - -  - 203   HH K4 IV M9 V
+2015 Ilnuhagaka           A8959CC-C Hi In                               - N  - 302   HH K5 V M1 VI
+2018 Arsa                 D474443-6 Ni Pa                               - -  - 305   Na M1 V M8 V
+2116 Apgisa               XAC9000-0 Ba Fl                               - -  - 023   -- K6 V
+2119 Dakade               D200210-7 Lo Va                               - -  - 200   Na F0 IV F8 IV
+2212 Panumil              C445583-7 Ag Ni                               - -  - 410   Na F4 V
+2218 Abbenyi              X210000-0 Ba                                  - -  - 004   -- G5 V G9 V M8 V
+2311 Lakhu                X160000-0 Ba De                               - -  - 024   -- F8 III F2 V
+2312 Nfah                 C97A887-8 Ph Pi Wa                            - M  - 703   Na M8 II
+2316 Makuchi              X7A3000-0 Ba Fl                               - -  - 003   -- F1 V F7 V
+2317 Onaiwu               X310000-0 Ba                                  - -  - 011   -- K0 V
+2320 Dakuka               D888263-1 Lo Re                               - -  - 601   Na G9 V
+2414 Laanii               X120000-0 Ba De Po                            - -  - 023   -- F0 V
+2416 Zoetermeer           D537265-7 Lo Mr                               - -  - 704   Na F4 V G0 V
+2418 Ogbomo               X110000-0 Ba                                  - -  - 001   -- M3 V
+2515 Titilayo             D3547AB-4 Ag                                  - -  - 701   Na A3 V A7 V
+2519 Kudzidu              C413300-A Ic Lo                               - -  - 700   Na G1 V K0 V
+2619 Tsanga               B6938A7-9 Ph Pi Dync3                         - -  - 901   Na G1 V M6 V
+2711 Salo                 X310000-0 Ba                                  - -  - 024   -- K2 III
+2716 Dinkii               X202000-0 Ba Ic Va                            - -  - 005   -- K9 II
+2817 Kuukadi              X000000-0 As Ba Va                            - -  - 003   -- K1 V
+2919 Ufomata              X673000-0 Ba                                  - -  - 013   -- G3 IV
+3118 Gri-ulm              B44479B-8 Ag Pi                               - -  - 825   Cr G1 V G5 V
+3217 Urbana               B8649A8-B Hi Pr Hive1                         - N  - 115   Cr F6 V
 0125 Ghi-khup'l           C442546-9                                     - -  - 512   Gi
 0127 Simubu               X340000-0 Ba De Lo                            - -  - 002   --
 0128 Dii                  X6A6000-0 Ba Fl Lo                            - -  - 014   --
