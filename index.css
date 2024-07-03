@@ -880,7 +880,10 @@ body:not(.route-shown) #routeBox { min-height: 135px; max-height: 135px; }
 #legendBox .glyph.g10 { font-size: 100%; }
 #legendBox .glyph.g12 { font-size: 120%; }
 
-#legendBox:not(.world_colors) li.extended-only { display: none; }
+#legendBox:not(.world_colors) li.extended-only,
+#legendBox:not(.opt-mh) li.opt-mh-only,
+#legendBox:not(.opt-dw) li.opt-dw-only,
+#legendBox:not(.opt-an) li.opt-an-only { display: none; }
 
 /* Extended World Colors */
 #legendBox .glyph.RiAg { color: rgb(241,194,50); }
