@@ -245,6 +245,10 @@ input[type=text] {
   font-weight: var(--textbox-font-weight);
 }
 
+:root {
+  scrollbar-color: #444 transparent;
+  scrollbar-width: thin;
+}
 
 /* ============================================================ */
 /* Map Display */
@@ -931,6 +935,9 @@ body:not(.route-shown) #routeBox { min-height: 135px; max-height: 135px; }
   background-color: inherit;
   border: 1px solid gray;
   box-shadow: 2px 2px 4px #404040;
+
+  scrollbar-color: #888 transparent;
+  scrollbar-width: thin;
 }
 
 #legendBoxContent {
@@ -1749,20 +1756,18 @@ noscript div {
 /* Browser-specific Hacks */
 
 /* Buttons - FF */
-::-moz-focus-inner {
-  padding: 0;
+@supports selector(::-moz-focus-inner) {
+  ::-moz-focus-inner {
+    padding: 0;
+  }
 }
 
-/* Scrollbars */
+/* Scrollbars - Chrome/Safari */
+@supports selector(::-webkit-scrollbar) {
+  ::-webkit-scrollbar { background-color: transparent; width: 6px; height: 6px; }
+  ::-webkit-scrollbar-thumb { background-color: #888; }
+  ::-webkit-scrollbar-thumb:hover { background-color: #444; }
 
-/* -- Chrome/Safari */
-::-webkit-scrollbar { background-color: transparent; width: 6px; height: 6px; }
-::-webkit-scrollbar-thumb { background-color: #404040; }
-::-webkit-scrollbar-thumb:hover { background-color: #808080; }
-.ds-frame::-webkit-scrollbar-thumb,
-.style-print::-webkit-scrollbar-thumb,
-.style-atlas::-webkit-scrollbar-thumb { background-color: #b0b0b0; }
-.ds-frame::-webkit-scrollbar-thumb:hover,
-.style-print::-webkit-scrollbar-thumb:hover,
-.style-atlas::-webkit-scrollbar-thumb:hover { background-color: #808080; }
-
+  #legendBox::-webkit-scrollbar-thumb { background-color: #444; }
+  #legendBox::-webkit-scrollbar-thumb:hover { background-color: #888; }
+}
