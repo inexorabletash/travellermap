@@ -7,6 +7,9 @@
   --popup-highlight-color: #E32736; /* TODO: Needed? */
   --popup-border: 1px solid var(--popup-fg-color);
   --popup-scrollbar: #444;
+  --popup-button-hover: lightgray;
+  --popup-button-border: 1px solid lightgray;
+  --popup-textbox-border: 1px solid darkgray;
 
   --alert-fg-color: #e0e0e0;
   --alert-bg-color: #202020;
@@ -711,21 +714,20 @@ body:not(.wds-visible) #wds-frame { display: none; }
 .link-button {
   text-align: center;
   clear: both;
-  line-height: 30px;
-  border-radius: 15px;
-  border: 1px solid lightgray;
 }
 .link-button-inline {
   display: inline-block;
-  line-height: 30px;
   padding: 0 1em;
-  border-radius: 15px;
-  border: 1px solid lightgray;
 }
 
+.link-button, .link-button-inline {
+  line-height: 30px;
+  border-radius: 15px;
+  border: var(--popup-button-border);
+}
 .link-button:hover,
 .link-button-inline:hover {
-    background-color: lightgray;
+  background-color: var(--popup-button-hover);
 }
 .link-button-inline a,
 .link-button a
@@ -881,7 +883,7 @@ body:not(.route-shown) #routeBox { min-height: 135px; max-height: 135px; }
   padding: 5px 10px;
   margin: 0 0 10px;
   border: none;
-  border-bottom: 1px solid darkgray;
+  border-bottom: var(--popup-textbox-border);
   border-radius: 0;
 }
 #routeForm button {
@@ -896,17 +898,17 @@ body:not(.route-shown) #routeBox { min-height: 135px; max-height: 135px; }
 #routeForm.J-6 #J-6 { background-color: var(--highlight-color); }
 
 #routeForm .jump-button {
-    text-align: center;
-    clear: both;
-    line-height: 30px;
-    border-radius: 15px;
-    border: 1px solid lightgray;
-    height: auto;
-    background-color: var(--popup-bg-color);
-    box-shadow: none;
+  text-align: center;
+  clear: both;
+  line-height: 30px;
+  border-radius: 15px;
+  border: var(--popup-button-border);
+  height: auto;
+  background-color: var(--popup-bg-color);
+  box-shadow: none;
 }
 #routeForm .jump-button:hover {
-    background-color: lightgray;
+  background-color: var(--popup-button-hover);
 }
 
 #routeForm #closeRouteBtn,
@@ -1160,7 +1162,7 @@ body:not(.route-shown) #routeBox { min-height: 135px; max-height: 135px; }
 
 #share-tab section { margin-top: 1em; }
 #share-tab section:first-of-type { margin-top: 0; }
-#share-tab input { width: 240px; padding: 5px; border: 1px solid var(--popup-fg-color); }
+#share-tab input { width: 240px; padding: 5px; border: var(--popup-textbox-border); }
 #share-tab a.share {
   display: inline-block;
   font-size: 0;
