@@ -1,46 +1,40 @@
-html, body { overflow: hidden; }
-html { margin: 0; padding: 0; width: 100%; height: 100%; }
-
-form { margin: 0; padding: 0; }
-p { margin: 0; }
-.indent { margin-left: 20px; }
-.nowrap { white-space: nowrap; display: inline-block; }
-
-.dim:not(:hover) { opacity: 0.5; }
+/* ============================================================ */
+/* Display Styles */
 
 :root {
-  --map-bg-image-dark: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" height="32" width="32"><path d="M0 0h32v32H0z"/><path fill="%23404040" d="M0 0h16v16H0zM16 16h16v16H16z"/></svg>');
-  --map-bg-image-lite: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" height="32" width="32"><path fill="white" d="M0 0h32v32H0z"/><path fill="%23D0D0D0" d="M0 0h16v16H0zM16 16h16v16H16z"/></svg>');
+  --checkerboard-dark: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" height="32" width="32"><path d="M0 0h32v32H0z"/><path fill="%23404040" d="M0 0h16v16H0zM16 16h16v16H16z"/></svg>');
+  --checkerboard-lite: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" height="32" width="32"><path fill="white" d="M0 0h32v32H0z"/><path fill="%23D0D0D0" d="M0 0h16v16H0zM16 16h16v16H16z"/></svg>');
 }
 
+/* ==================================================*/
+/* Poster (default; color on black background) */
 body {
+  /* ---------------------------------------- */
+  /* UI */
   --fg-color: white;
   --bg-color: black;
   --highlight-color: #E32736;
 
-  --link-color: white;
+  --link-color: var(--footer-fg-color);
   --textbox-bg-color: white;
   --textbox-fg-color: black;
   --textbox-border: none;
   --textbox-shadow: 2px 2px 4px #404040;
   --textbox-font-weight: normal;
   --direction-color: var(--highlight-color);
-  --pane-fg-color: white;
-  --pane-bg-color: rgba(0,0,0,0.65);
+  --footer-fg-color: white;
+  --footer-bg-color: rgba(0,0,0,0.65);
   --stripe-color: var(--highlight-color);
-  --legend-divider-color: white;
   --font-family-title: Optima, Marcellus, "Times New Roman", serif;
   --font-family-body: Univers, Helvetica, Arial, sans-serif;
   --font-family-copyright: Helvetica, Arial, sans-serif; /* Univers' (C) is tiny. */
   --logo-flat: url("res/ui/logo-flat.svg");
   --logo-stacked: url("res/ui/logo-stacked.svg");
-  --legend-image1: url("res/ui/Legend_1003_poster.svg");
-  --legend-image2: url("res/ui/Legend_1006_poster.svg");
   --button-fg-color: black;
   --button-bg-color: #606060;
   --button-hover-color: var(--highlight-color);
   --button-shadow: 2px 2px 4px #404040;
-  --map-bg-image: var(--map-bg-image-dark);
+  --map-bg-image: var(--checkerboard-dark);
 
   --status-official: #048104;
   --status-preserve: #048104;
@@ -48,6 +42,11 @@ body {
   --status-unreviewed: orange;
   --status-apocryphal: magenta;
   --status-unofficial: #E32736;
+
+  /* ---------------------------------------- */
+  /* Legend */
+  --legend-image1: url("res/ui/Legend_1003_poster.svg");
+  --legend-image2: url("res/ui/Legend_1006_poster.svg");
 
   --legend-colors-display: block;
   --legend-bases-display: block;
@@ -58,7 +57,7 @@ body {
   --amberzone: #FFCC00;
   --redzone: #E32736;
 
-  --legend-highlight: #E32736;
+  --glyph-highlight: #E32736;
   --water-color: #00bfff;
   --water-border: transparent;
   --nowater-color: var(--fg-color);
@@ -71,108 +70,43 @@ body {
   --pop-many-decoration: none;
   --pop-capital-weight: normal;
   --pop-capital-decoration: none;
-  --pop-capital-color: var(--legend-highlight);
+  --pop-capital-color: var(--glyph-highlight);
 }
-body.style-candy {
-  --legend-image1: url("res/ui/Legend_1003_candy.svg");
-  --legend-image2: url("res/ui/Legend_1006_candy.svg");
 
-  --legend-colors-display: none;
-  --legend-bases-display: none;
-}
+/* ==================================================*/
+/* Print (color on white background) */
 body.style-print {
+  /* ---------------------------------------- */
+  /* UI */
   --fg-color: black;
   --bg-color: white;
-  --link-color: black;
   --textbox-bg-color: #e0e0e0;
-  --pane-fg-color: black;
-  --pane-bg-color: rgba(255,255,255,0.65);
+  --footer-fg-color: black;
+  --footer-bg-color: rgba(255,255,255,0.65);
   --stripe-color: black;
-  --legend-divider-color: black;
   --logo-flat: url("res/ui/logo-flat-gray.svg");
   --logo-stacked: url("res/ui/logo-stacked-gray.svg");
+  --map-bg-image: var(--checkerboard-lite);
+
+  /* ---------------------------------------- */
+  /* Legend */
   --legend-image1: url("res/ui/Legend_1003_print.svg");
   --legend-image2: url("res/ui/Legend_1006_print.svg");
-  --map-bg-image: var(--map-bg-image-lite);
 
   --nowater-color: white;
   --nowater-border: black;
 }
-body.style-fasa {
-  --fg-color: black;
-  --bg-color: white;
-  --link-color: #5C4033;
-  --textbox-bg-color: #e0e0e0;
-  --direction-color: #5C4033;
-  --pane-fg-color: #5C4033;
-  --pane-bg-color: rgba(255,255,255,0.65);
-  --stripe-color: #5C4033;
-  --legend-divider-color: black;
-  --logo-flat: url("res/ui/logo-flat-gray.svg");
-  --logo-stacked: url("res/ui/logo-stacked-gray.svg");
-  --legend-image1: url("res/ui/Legend_1003_fasa.svg");
-  --legend-image2: url("res/ui/Legend_1006_fasa.svg");
-  --map-bg-image: var(--map-bg-image-lite);
 
-  --legend-colors-display: none;
-  --legend-bases-display: none;
-  --legend-pop-display: none;
-
-  --amberzone: #5C4033;
-  --redzone: #AD9F98;
-}
-body.style-atlas {
-  --fg-color: black;
-  --bg-color: white;
-  --link-color: black;
-  --textbox-bg-color: #e0e0e0;
-  --direction-color: gray;
-  --pane-fg-color: black;
-  --pane-bg-color: rgba(255,255,255,0.65);
-  --stripe-color: black;
-  --legend-divider-color: black;
-  --logo-flat: url("res/ui/logo-flat-gray.svg");
-  --logo-stacked: url("res/ui/logo-stacked-gray.svg");
-  --legend-image1: url("res/ui/Legend_1003_atlas.svg");
-  --legend-image2: url("res/ui/Legend_1006_atlas.svg");
-  --map-bg-image: var(--map-bg-image-lite);
-
-  --amberzone: #c0c0c0;
-  --redzone: #black;
-
-  --legend-highlight: gray;
-  --water-color: black;
-  --nowater-color: white;
-  --nowater-border: black;
-}
-body.style-draft {
-  --fg-color: black;
-  --bg-color: antiquewhite;
-  --link-color: black;
-  --textbox-bg-color: #e0e0e0;
-  --pane-fg-color: black;
-  --pane-bg-color: antiquewhite;
-  --legend-divider-color: black;
-  --logo-flat: url("res/ui/logo-flat-gray.svg");
-  --logo-stacked: url("res/ui/logo-stacked-gray.svg");
-  --legend-image1: url("res/ui/Legend_1003_draft.svg");
-  --legend-image2: url("res/ui/Legend_1006_draft.svg");
-  --map-bg-image: var(--map-bg-image-lite);
-
-  --amberzone: #4D4943;
-
-  --water-color: antiquewhite;
-  --water-border: #4D4943;
-  --nowater-color: #4D4943;
-
-  --pop-transform: uppercase;
-  --pop-many-weight: bold;
-  --pop-many-decoration: underline;
-}
+/* ================================================== */
+/* Mongoose */
 body.style-mongoose {
+  /* ---------------------------------------- */
+  /* UI */
   --fg-color: black;
   --bg-color: #e6e7e8;
-  --legend-divider-color: black;
+
+  /* ---------------------------------------- */
+  /* Legend */
   --legend-image1: url("res/ui/Legend_1003_mongoose.svg");
   --legend-image2: url("res/ui/Legend_1006_mongoose.svg");
 
@@ -186,20 +120,128 @@ body.style-mongoose {
   --pop-transform: uppercase;
   --pop-many-weight: bold;
 }
+
+/* ================================================== */
+/* Eye Candy (bitmap worlds, simplified details) */
+body.style-candy {
+  /* ---------------------------------------- */
+  /* Legend */
+  --legend-image1: url("res/ui/Legend_1003_candy.svg");
+  --legend-image2: url("res/ui/Legend_1006_candy.svg");
+
+  --legend-colors-display: none;
+  --legend-bases-display: none;
+}
+
+/* ================================================== */
+/* Draft (hand-drawn) */
+body.style-draft {
+  /* ---------------------------------------- */
+  /* UI */
+  --fg-color: black;
+  --bg-color: antiquewhite;
+  --textbox-bg-color: #e0e0e0;
+  --footer-fg-color: black;
+  --footer-bg-color: antiquewhite;
+  --logo-flat: url("res/ui/logo-flat-gray.svg");
+  --logo-stacked: url("res/ui/logo-stacked-gray.svg");
+  --map-bg-image: var(--checkerboard-lite);
+
+  /* ---------------------------------------- */
+  /* Legend */
+  --legend-image1: url("res/ui/Legend_1003_draft.svg");
+  --legend-image2: url("res/ui/Legend_1006_draft.svg");
+
+  --amberzone: #4D4943;
+
+  --water-color: antiquewhite;
+  --water-border: #4D4943;
+  --nowater-color: #4D4943;
+
+  --pop-transform: uppercase;
+  --pop-many-weight: bold;
+  --pop-many-decoration: underline;
+}
+
+/* ================================================== */
+/* FASA (simplified print) */
+body.style-fasa {
+  /* ---------------------------------------- */
+  /* UI */
+  --fg-color: black;
+  --bg-color: white;
+  --link-color: #5C4033;
+  --textbox-bg-color: #e0e0e0;
+  --direction-color: #5C4033;
+  --footer-fg-color: #5C4033;
+  --footer-bg-color: rgba(255,255,255,0.65);
+  --stripe-color: #5C4033;
+  --logo-flat: url("res/ui/logo-flat-gray.svg");
+  --logo-stacked: url("res/ui/logo-stacked-gray.svg");
+  --map-bg-image: var(--checkerboard-lite);
+
+  /* ---------------------------------------- */
+  /* Legend */
+  --legend-image1: url("res/ui/Legend_1003_fasa.svg");
+  --legend-image2: url("res/ui/Legend_1006_fasa.svg");
+
+  --legend-colors-display: none;
+  --legend-bases-display: none;
+  --legend-pop-display: none;
+
+  --amberzone: #5C4033;
+  --redzone: #AD9F98;
+}
+
+/* ================================================== */
+/* Atlas (black on white) */
+body.style-atlas {
+  /* ---------------------------------------- */
+  /* UI */
+  --fg-color: black;
+  --bg-color: white;
+  --textbox-bg-color: #e0e0e0;
+  --direction-color: gray;
+  --footer-fg-color: black;
+  --footer-bg-color: rgba(255,255,255,0.65);
+  --stripe-color: black;
+  --logo-flat: url("res/ui/logo-flat-gray.svg");
+  --logo-stacked: url("res/ui/logo-stacked-gray.svg");
+  --map-bg-image: var(--checkerboard-lite);
+
+  /* ---------------------------------------- */
+  /* Legend */
+  --legend-image1: url("res/ui/Legend_1003_atlas.svg");
+  --legend-image2: url("res/ui/Legend_1006_atlas.svg");
+
+  --amberzone: #c0c0c0;
+  --redzone: #black;
+
+  --glyph-highlight: gray;
+  --water-color: black;
+  --nowater-color: white;
+  --nowater-border: black;
+}
+
+/* ================================================== */
+/* Terminal (retro computer) */
 body.style-terminal {
+  /* ---------------------------------------- */
+  /* UI */
   --fg-color: cyan;
   --textbox-shadow: none;
   --textbox-border: 1px solid gray;
   --textbox-font-weight: bold;
-  --legend-divider-color: cyan;
   --font-family-body: "Courier New", "Courier", monospace;
   --font-family-copyright: "Courier New", "Courier", monospace;
-  --legend-image1: url("res/ui/Legend_1003_terminal.svg");
-  --legend-image2: url("res/ui/Legend_1006_terminal.svg");
   --button-bg-color: lightgray;
-  --button-hover-color: var(--highlight-color);
   --button-shadow: none;
   --stripe-color: cyan;
+
+  /* ---------------------------------------- */
+  /* Legend */
+  --legend-image1: url("res/ui/Legend_1003_terminal.svg");
+  --legend-image2: url("res/ui/Legend_1006_terminal.svg");
 
   --water-color: black;
   --water-border: cyan;
@@ -209,6 +251,19 @@ body.style-terminal {
   --pop-capital-weight: bold;
   --pop-capital-color: white;
 }
+
+/* ============================================================ */
+/* General Layout */
+
+html, body { overflow: hidden; }
+html { margin: 0; padding: 0; width: 100%; height: 100%; }
+
+form { margin: 0; padding: 0; }
+p { margin: 0; }
+.indent { margin-left: 20px; }
+.nowrap { white-space: nowrap; display: inline-block; }
+
+.dim:not(:hover) { opacity: 0.5; }
 
 body {
   position: absolute; /* size may be changed by script */
@@ -313,8 +368,8 @@ input[type=text] {
   left: 0; right: 0; bottom: 0; height: 105px;
   padding: 10px; padding-top: 0;
   overflow: hidden;
-  color: var(--pane-fg-color);
-  background-color: var(--pane-bg-color);
+  color: var(--footer-fg-color);
+  background-color: var(--footer-bg-color);
  }
 
 #LogoImage {
@@ -948,7 +1003,7 @@ body:not(.route-shown) #routeBox { min-height: 135px; max-height: 135px; }
   display: inline-block;
   margin-top: 0;
   margin-bottom: 6px;
-  border-bottom: 3px solid var(--legend-divider-color);
+  border-bottom: 3px solid var(--fg-color);
   padding: 2px 0px;
   text-transform: uppercase;
   font-size: 100%;
@@ -971,7 +1026,7 @@ body:not(.route-shown) #routeBox { min-height: 135px; max-height: 135px; }
 }
 
 #legendBox .glyph { display: inline-block; width: 20px; text-align: center; }
-#legendBox .highlight { color: var(--legend-highlight); }
+#legendBox .highlight { color: var(--glyph-highlight); }
 #legendBox .glyph.water {
   color: var(--water-color);
   text-shadow: -1px -1px 0 var(--water-border), -1px 1px 0 var(--water-border), 1px -1px 0 var(--water-border), 1px 1px 0 var(--water-border);
