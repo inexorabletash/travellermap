@@ -8,6 +8,11 @@ p { margin: 0; }
 
 .dim:not(:hover) { opacity: 0.5; }
 
+:root {
+  --map-bg-image-dark: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" height="32" width="32"><path d="M0 0h32v32H0z"/><path fill="%23404040" d="M0 0h16v16H0zM16 16h16v16H16z"/></svg>');
+  --map-bg-image-lite: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" height="32" width="32"><path fill="white" d="M0 0h32v32H0z"/><path fill="%23D0D0D0" d="M0 0h16v16H0zM16 16h16v16H16z"/></svg>');
+}
+
 body {
   --fg-color: white;
   --bg-color: black;
@@ -16,6 +21,7 @@ body {
   --textbox-fg-color: black;
   --textbox-border: none;
   --textbox-shadow: 2px 2px 4px #404040;
+  --textbox-font-weight: normal;
   --direction-color: #E32736;
   --pane-fg-color: white;
   --pane-bg-color: rgba(0,0,0,0.65);
@@ -32,6 +38,7 @@ body {
   --button-bg-color: #606060;
   --button-hover-color: #E32736;
   --button-shadow: 2px 2px 4px #404040;
+  --map-bg-image: var(--map-bg-image-dark);
 }
 body.style-candy {
   --legend-image1: url("res/ui/Legend_1003_candy.svg");
@@ -50,6 +57,7 @@ body.style-print {
   --logo-stacked: url("res/ui/logo-stacked-gray.svg");
   --legend-image1: url("res/ui/Legend_1003_print.svg");
   --legend-image2: url("res/ui/Legend_1006_print.svg");
+  --map-bg-image: var(--map-bg-image-lite);
 }
 body.style-fasa {
   --fg-color: black;
@@ -65,6 +73,7 @@ body.style-fasa {
   --logo-stacked: url("res/ui/logo-stacked-gray.svg");
   --legend-image1: url("res/ui/Legend_1003_fasa.svg");
   --legend-image2: url("res/ui/Legend_1006_fasa.svg");
+  --map-bg-image: var(--map-bg-image-lite);
 }
 body.style-atlas {
   --fg-color: black;
@@ -80,6 +89,7 @@ body.style-atlas {
   --logo-stacked: url("res/ui/logo-stacked-gray.svg");
   --legend-image1: url("res/ui/Legend_1003_atlas.svg");
   --legend-image2: url("res/ui/Legend_1006_atlas.svg");
+  --map-bg-image: var(--map-bg-image-lite);
 }
 body.style-draft {
   --fg-color: black;
@@ -93,6 +103,7 @@ body.style-draft {
   --logo-stacked: url("res/ui/logo-stacked-gray.svg");
   --legend-image1: url("res/ui/Legend_1003_draft.svg");
   --legend-image2: url("res/ui/Legend_1006_draft.svg");
+  --map-bg-image: var(--map-bg-image-lite);
 }
 body.style-mongoose {
   --fg-color: black;
@@ -105,6 +116,7 @@ body.style-terminal {
   --fg-color: cyan;
   --textbox-shadow: none;
   --textbox-border: 1px solid gray;
+  --textbox-font-weight: bold;
   --legend-divider-color: cyan;
   --font-family-body: "Courier New", "Courier", monospace;
   --font-family-copyright: "Courier New", "Courier", monospace;
@@ -148,10 +160,7 @@ input[type=text] {
   -webkit-appearance: none; /* No inner shadow on iOS. */
   color: var(--textbox-fg-color);
   background-color: var(--textbox-bg-color);
-}
-
-.style-terminal input[type=text] {
-  font-weight: bold;
+  font-weight: var(--textbox-font-weight);
 }
 
 
@@ -168,14 +177,8 @@ input[type=text] {
   width: 100%; height: 100%;
   transform: translateZ(500px) perspective(1000px);
   transition: 1s ease-in-out;
-  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" height="32" width="32"><path d="M0 0h32v32H0z"/><path fill="%23404040" d="M0 0h16v16H0zM16 16h16v16H16z"/></svg>');
+  background-image: var(--map-bg-image);
   cursor: crosshair;
-}
-
-/* TODO: draft, fasa */
-.style-print #dragContainer,
-.style-atlas #dragContainer {
-  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" height="32" width="32"><path fill="white" d="M0 0h32v32H0z"/><path fill="%23D0D0D0" d="M0 0h16v16H0zM16 16h16v16H16z"/></svg>');
 }
 
 .tilt #dragContainer {
