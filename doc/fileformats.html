@@ -71,6 +71,10 @@ File Format</a> for more details.
 <section id="trader">
 <h2>TRADER Format</h2>
 
+<p class=highlight>
+    NOTE: This format is documented for posterity; it is not supported by the site's tools.
+</p>
+
 <p>
 The original electronic format for sector data was defined
 by Marc Miller in <em>"Electronically Exploring the Traveller Universe"</em>
@@ -751,6 +755,10 @@ These commonly include:
 
 <section id="t5col">
 <h2>T5 Column Delimited Format</h2>
+
+<p class=highlight>
+  NOTE: If not explicitly specified by request headers, the site's tools only auto-detect this format if the <code>{Ix}</code>, <code>(Ex)</code> and <code>[Cx]</code> headers are present. Otherwise another format will be inferred. Include those fields in the header (even if the content is blank) to use this format.
+</p>
 
 <p>
 Although the tab-delimited format is the most convenient for interchange
