@@ -556,6 +556,8 @@
     III: 'Giant',
     IV: 'Subgiant',
     V: 'Dwarf (Main Sequence)',
+    VI: 'Subdwarf', // Obsolete
+    VII: 'White Dwarf', // Obsolete
 
     // Compact stars
     D: 'White Dwarf',
