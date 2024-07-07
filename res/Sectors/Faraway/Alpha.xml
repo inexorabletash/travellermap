@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Sector>
+  <Name>Alpha</Name>
+  <Credits>
+    Alpha Sector was created by Richard Hewitt.
+  </Credits>
+  <Subsectors>
+    <Subsector Index="A">Oskin</Subsector>
+    <Subsector Index="B">Marne</Subsector>
+    <Subsector Index="C">Styles Reaches</Subsector>
+    <Subsector Index="D">Treum</Subsector>
+    <Subsector Index="E">Quinne</Subsector>
+    <Subsector Index="F">Odessa</Subsector>
+    <Subsector Index="G">Luun</Subsector>
+    <Subsector Index="H">Tourline</Subsector>
+    <Subsector Index="I">Clar</Subsector>
+    <Subsector Index="J">Neron</Subsector>
+    <Subsector Index="K">Freon</Subsector>
+    <Subsector Index="L">Comete</Subsector>
+    <Subsector Index="M">El Quinto</Subsector>
+    <Subsector Index="N">Regal</Subsector>
+    <Subsector Index="O">Zynar</Subsector>
+    <Subsector Index="P">Pithia</Subsector>
+  </Subsectors>
+  <Routes>
+    <!-- Imperial Routes -->
+    <!-- Oskin -->
+    <Route Start="0101" End="0303"/>
+    <Route Start="0303" End="0601"/>
+    <Route Start="0303" End="0405"/>
+    <Route Start="0405" End="0708"/>
+    <Route Start="0601" End="0801"/>
+    <Route Start="0801" End="1102"/>
+    <Route Start="0708" End="0709"/>
+    <Route Start="0709" End="0410"/>
+
+    <!-- Marne -->
+    <Route Start="1102" End="1403"/>
+
+    <!-- Quinne -->
+    <Route Start="0410" End="0513"/>
+    <Route Start="0513" End="0813"/>
+    <Route Start="0817" End="0519"/>
+    <Route Start="0519" End="0321"/>
+
+    <!-- Clar -->
+    <Route Start="0519" End="0321"/>
+    <Route Start="0321" End="0122"/>
+    <Route Start="0321" End="0423"/>
+    <Route Start="0526" End="0427"/>
+    <Route Start="0423" End="0526"/>
+    <Route Start="0526" End="0627"/>
+    <Route Start="0627" End="1027"/>
+
+    <!-- El Quinto -->
+    <Route Start="0333" End="0134"/>
+    <Route Start="0134" End="0234"/>
+    <Route Start="0234" End="0237"/>
+    <Route Start="0237" End="0539"/>
+    <Route Start="0539" End="0738"/>
+    <Route Start="0738" End="1038"/>
+
+    <!-- Odessa -->
+    <Route Start="0813" End="1016"/>
+    <Route Start="0817" End="1016"/>
+    <Route Start="1016" End="1316"/>
+    <Route Start="1316" End="1416"/>
+    <Route Start="1416" End="1516"/>
+    <Route Start="1416" End="1519"/>
+    <Route Start="1519" End="1322"/>
+    <Route Start="1516" End="1514"/>
+    <Route Start="1514" End="1313"/>
+    <Route Start="1514" End="1811"/>
+    <Route Start="1313" End="1111"/>
+    <Route Start="1516" End="1816"/>
+
+    <!-- Neron -->
+    <Route Start="1027" End="1129"/>
+    <Route Start="1129" End="1230"/>
+    <Route Start="1628" End="1726"/>
+    <Route Start="1628" End="1829"/>
+    <Route Start="1829" End="1631"/>
+
+    <!-- Regal -->
+    <Route Start="1230" End="1332"/>
+    <Route Start="1332" End="1631"/>
+    <Route Start="1332" End="1333"/>
+    <Route Start="1333" End="1335"/>
+    <Route Start="1335" End="1436"/>
+    <Route Start="1436" End="1038"/>
+
+    <!-- Styles Reaches -->
+    <Route Start="2101" End="2201"/>
+    <Route Start="2201" End="2202"/>
+    <Route Start="2202" End="2304"/>
+    <Route Start="2304" End="2006"/>
+    <Route Start="2006" End="2209"/>
+    <Route Start="2209" End="1810"/>
+    <Route Start="1810" End="1811"/>
+    <Route Start="2209" End="2407"/>
+
+    <!-- Luun -->
+    <Route Start="1810" End="1811"/>
+    <Route Start="1816" End="2116"/>
+    <Route Start="2116" End="2217"/>
+    <Route Start="2217" End="2119"/>
+    <Route Start="2119" End="1819"/>
+    <Route Start="1819" End="1519"/>
+    <Route Start="2119" End="1922"/>
+    <Route Start="2217" End="2517"/>
+
+    <!-- Freon -->
+    <Route Start="1922" End="2022"/>
+    <Route Start="1922" End="1824"/>
+    <Route Start="1824" End="1825"/>
+    <Route Start="1825" End="1726"/>
+    <Route Start="1825" End="2128"/>
+    <Route Start="2128" End="2426"/>
+
+    <!-- Zynar -->
+    <Route Start="1436" End="1739"/>
+    <Route Start="1739" End="1640"/>
+    <Route Start="1739" End="2038"/>
+    <Route Start="2038" End="2139"/>
+    <Route Start="2139" End="2240"/>
+    <Route Start="2139" End="2338"/>
+    <Route Start="2338" End="2636"/>
+
+    <!-- Treum -->
+    <Route Start="2304" End="2602"/>
+    <Route Start="2602" End="2701"/>
+    <Route Start="2602" End="2804"/>
+    <Route Start="2804" End="3003"/>
+    <Route Start="3003" End="3201"/>
+    <Route Start="2407" End="2708"/>
+
+    <!-- Tourline -->
+    <Route Start="2209" End="2511"/>
+    <Route Start="2511" End="2812"/>
+    <Route Start="2812" End="2714"/>
+    <Route Start="2714" End="2514"/>
+    <Route Start="2514" End="2517"/>
+    <Route Start="2517" End="2916"/>
+    <Route Start="2916" End="3118"/>
+    <Route Start="3118" End="2919"/>
+    <Route Start="3118" End="3220"/>
+    <Route Start="2517" End="2618"/>
+    <Route Start="2618" End="2722"/>
+
+    <!-- Comete -->
+    <Route Start="2722" End="2822"/>
+    <Route Start="2822" End="3023"/>
+    <Route Start="3023" End="3223"/>
+    <Route Start="3023" End="2625"/>
+    <Route Start="2625" End="2426"/>
+    <Route Start="2625" End="2727"/>
+    <Route Start="2727" End="2929"/>
+    <Route Start="2929" End="2931"/>
+
+    <!-- Pithia -->
+    <Route Start="2931" End="3231"/>
+    <Route Start="2931" End="2932"/>
+    <Route Start="2932" End="2835"/>
+    <Route Start="2835" End="2636"/>
+    <Route Start="2835" End="3037"/>
+    <Route Start="3037" End="3138"/>
+    <Route Start="3037" End="3038"/>
+    <Route Start="3038" End="2939"/>
+    <Route Start="2939" End="2640"/>
+  </Routes>
+</Sector>
