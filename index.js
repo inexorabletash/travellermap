@@ -692,6 +692,9 @@
   map.OnOptionsChanged = Util.debounce(options => {
     optionObservers.forEach(o => { o(options); });
     $('#legendBox').classList.toggle('world_colors', options & Traveller.MapOptions.WorldColors);
+    map.namedOptions.NAMES.forEach(name => {
+      $('#legendBox').classList.toggle(`opt-${name}`, !!map.namedOptions.get(name));
+    });
     updateContext(lastX || map.worldX, lastY || map.worldY, {refresh: true});
     updatePermalink();
     savePreferences();

@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Sector>
+  <X>6</X>
+  <Y>6</Y>
+  <Name Lang="hv">Lancask</Name>
+  <Subsectors>
+    <Subsector Index="A">Alanca</Subsector>
+    <Subsector Index="B">Bancass</Subsector>
+    <Subsector Index="C">Casklier</Subsector>
+    <Subsector Index="D">Dancask</Subsector>
+    <Subsector Index="E">Erancl</Subsector>
+    <Subsector Index="F">Frocask</Subsector>
+    <Subsector Index="G">Ghancask</Subsector>
+    <Subsector Index="H">Hacasell</Subsector>
+    <Subsector Index="I">Icaskarn</Subsector>
+    <Subsector Index="J">Jananca</Subsector>
+    <Subsector Index="K">Kloonac</Subsector>
+    <Subsector Index="L">Lanikasc</Subsector>
+    <Subsector Index="M">Milanco</Subsector>
+    <Subsector Index="N">Nolcask</Subsector>
+    <Subsector Index="O">Olannak</Subsector>
+    <Subsector Index="P">Pocanask</Subsector>
+  </Subsectors>
+  <Routes>
+    <!-- Just so the Rim Route isn't lost -->
+    <!--
+    <Route Start="0209" End="0412" Color="Blue" Style="Dashed" />
+    <Route Start="0209" End="3107" EndOffsetX="-1" EndOffsetY="0" Color="Blue" Style="Dashed" />
+    <Route Start="0412" End="0516" Color="Blue" Style="Dashed" />
+    <Route Start="0516" End="0618" Color="Blue" Style="Dashed" />
+    <Route Start="0618" End="1020" Color="Blue" Style="Dashed" />
+    <Route Start="1020" End="1124" Color="Blue" Style="Dashed" />
+    <Route Start="1124" End="1327" Color="Blue" Style="Dashed" />
+    <Route Start="1327" End="1330" Color="Blue" Style="Dashed" />
+    <Route Start="1330" End="1533" Color="Blue" Style="Dashed" />
+    <Route Start="1533" End="1636" Color="Blue" Style="Dashed" />
+    <Route Start="1636" End="1940" Color="Blue" Style="Dashed" />
+    <Route Start="1940" End="2302" EndOffsetX="0" EndOffsetY="1" Color="Blue" Style="Dashed" />
+    -->
+  </Routes>
+  <Allegiances>
+    <Allegiance Code="It">Itaurrec Unification</Allegiance>
+    <Allegiance Code="Ki">Klushan Universal Imperium</Allegiance>
+    <Allegiance Code="Lr">Lasiir Domination</Allegiance>
+    <Allegiance Code="Su">Sayd Trade Union</Allegiance>
+    <Allegiance Code="Fe">Society of Friends of Fetarre</Allegiance>
+    
+  </Allegiances>
+  <Borders>
+    <Border Allegiance="Ki" Color="blue">1738 1838 1839 1940 2040 1940 1839 1739 1738</Border>
+    <Border Allegiance="It" Color="red">1536 1636 1736 1835 1834 1734 1834 1934 1935 2035 2136 2137 2237 2137 2036 1937 1836 1736 1636 1536</Border>
+    <Border Allegiance="Lr" Color="yellow">1926 2026 2126 2225 2326 2425 2525 2526 2527 2528 2428 2427 2327 2227 2128 2027 2026</Border>
+    <Border Allegiance="Su" Color="green">0009 0109 0209 0210 0110 0009</Border>
+    <Border Allegiance="Fe" Color="orange">1401 1502 1601 1701 1601 1602 1503 1502 1401</Border>
+
+  </Borders>
+</Sector>

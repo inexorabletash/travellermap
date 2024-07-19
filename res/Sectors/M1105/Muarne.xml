@@ -1,0 +1,60 @@
+﻿<Sector>
+  <X>5</X>
+  <Y>6</Y>
+  <Name Lang="hv">Muarne</Name>
+  <Subsectors>
+    <Subsector Index="A">Amuar</Subsector>
+    <Subsector Index="B">Barnes</Subsector>
+    <Subsector Index="C">Clamuar</Subsector>
+    <Subsector Index="D">Dluarne</Subsector>
+    <Subsector Index="E">Emuart</Subsector>
+    <Subsector Index="F">Fruardi</Subsector>
+    <Subsector Index="G">Grauarn</Subsector>
+    <Subsector Index="H">Haluarg</Subsector>
+    <Subsector Index="I">Imuarff</Subsector>
+    <Subsector Index="J">Juarnest</Subsector>
+    <Subsector Index="K">Klinuar</Subsector>
+    <Subsector Index="L">Lonuarneb</Subsector>
+    <Subsector Index="M">Muaring</Subsector>
+    <Subsector Index="N">Nevuan</Subsector>
+    <Subsector Index="O">Omonuar</Subsector>
+    <Subsector Index="P">Pluast</Subsector>
+  </Subsectors>
+  <Routes>
+    <!-- Just so the Rim Route isn't lost -->
+    <!--
+    <Route Start="2601" End="2339" EndOffsetX="0" EndOffsetY="-1" Color="Blue" Style="Dashed" />
+    <Route Start="2601" End="2705" Color="Blue" Style="Dashed" />
+    <Route Start="2705" End="3107" Color="Blue" Style="Dashed" />
+    <Route Start="3107" End="0209" EndOffsetX="1" EndOffsetY="0" Color="Blue" Style="Dashed" />
+
+    <Route Start="0220" End="3220" EndOffsetX="-1" EndOffsetY="0" Color="Yellow" Style="Dashed" />
+    <Route Start="0220" End="0521" Color="Yellow" Style="Dashed" />
+    <Route Start="0922" End="0521" Color="Yellow" Style="Dashed" />
+    <Route Start="0922" End="1123" Color="Yellow" Style="Dashed" />
+    <Route Start="1524" End="1123" Color="Yellow" Style="Dashed" />
+    <Route Start="1524" End="1726" Color="Yellow" Style="Dashed" />
+    <Route Start="2027" End="1726" Color="Yellow" Style="Dashed" />
+    <Route Start="2027" End="2130" Color="Yellow" Style="Dashed" />
+    <Route Start="2430" End="2130" Color="Yellow" Style="Dashed" />
+    <Route Start="2430" End="2632" Color="Yellow" Style="Dashed" />
+    <Route Start="2834" End="2632" Color="Yellow" Style="Dashed" />
+    <Route Start="2834" End="2936" Color="Yellow" Style="Dashed" />
+    <Route Start="3138" End="2936" Color="Yellow" Style="Dashed" />
+    <Route Start="3138" End="3140" Color="Yellow" Style="Dashed" />
+    <Route Start="3140" End="0202" EndOffsetX="1" EndOffsetY="1" Color="Yellow" Style="Dashed" />
+    -->
+  </Routes>
+  <Allegiances>
+    <Allegiance Code="Hi">Hillayag Federation</Allegiance>
+    <Allegiance Code="Ki">Kitram Ascendancy</Allegiance>
+    <Allegiance Code="Iu">Ickoul Union</Allegiance>
+    <Allegiance Code="Su">Sayd Trade Union</Allegiance>
+  </Allegiances>
+  <Borders>
+    <Border Allegiance="Ki" Color="olivedrab">2407 2507 2506 2606 2706 2705 2706 2707 2607 2508 2407</Border>
+    <Border Allegiance="Hi" Color="blue">2712 2812 2912 3011 3112 3012 3013 2913 2813 2814 2813 2812 2712</Border>
+    <Border Allegiance="Iu" Color="yellow">0122 0222 0323 0324 0325 0325 0326 0325 0324 0223 0123 0122</Border>
+    <Border Allegiance="Su" Color="green">3209 3309 3310 3209</Border>
+  </Borders>
+</Sector>

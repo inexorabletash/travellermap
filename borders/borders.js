@@ -255,11 +255,14 @@ function breakSpans(map, allegiance, n) {
   let lastDir = -1;
 
   function breakCallback(c, r, dir) {
+    const kBreakOffset = 2;
+    if (kBreakOffset > n) throw new Error(`invalid breakSpan() length: ${n}`);
+
     // Mark the current hex as visted - only need to walk each region once
     map.setMarked(c, r, true);
 
     // Sneaky bit #1:
-    // Break only when three hexes are in the same direction
+    // Break only when `n` hexes are in the same direction
     // to avoid breaks at concave turns in a border that might
     // be between worlds.
     if (lastDir !== dir)
@@ -272,8 +275,8 @@ function breakSpans(map, allegiance, n) {
       // Sneaky bit #2:
       // Break when we've found a span of the right length, and with
       // enough hexes in a line to avoid bad breaks
-      if (spanList.length >= n && dirList.length >= 2) {
-        breakList.push(dirList[dirList.length - 2]);
+      if (spanList.length >= n && dirList.length >= kBreakOffset) {
+        breakList.push(dirList[dirList.length - kBreakOffset]);
 
         spanList = [];
         dirList = [];
