@@ -269,6 +269,7 @@ foreach my $line (@lines) {
     my %fields = ();
     for my $i (0..$#header) {
         my $value = $cols[$i];
+        die "Missing field $header[$i]: $line\n" if not defined $value;
         $value = $1 if $value =~ /^"(.*)"$/;
         $fields{$header[$i]} = $value;
     }
