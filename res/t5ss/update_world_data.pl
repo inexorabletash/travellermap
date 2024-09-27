@@ -228,6 +228,11 @@ sub hexToSS {
     return chr(ord('A') + $ssx + $ssy * 4);
 }
 
+sub fromEHex ($) {
+  my ($c) = @_;
+  return index('0123456789ABCDEFGHJKLMNPQRSTUV', $c);
+}
+
 #
 # Start outputting sector files
 #
@@ -269,6 +274,7 @@ foreach my $line (@lines) {
     my %fields = ();
     for my $i (0..$#header) {
         my $value = $cols[$i];
+        die "Missing field $header[$i]: $line\n" if not defined $value;
         $value = $1 if $value =~ /^"(.*)"$/;
         $fields{$header[$i]} = $value;
     }
@@ -281,6 +287,12 @@ foreach my $line (@lines) {
         $fields{'Remarks'} = combine($fields{'TC'}, $fields{'Remarks'}, $fields{'Sophonts'}, $fields{'Details'});
         $fields{'Name'} = $fields{'M1000 Names'};
     }
+
+    # Add synthesized codes
+    my $tl = fromEHex(substr($fields{'UWP'}, 8, 1));
+    my $tlr = ($tl <= 5) ? 'Lt' : ($tl >= 12) ? 'Ht' : '';
+    $fields{'Remarks'} = combine($fields{'Remarks'}, $tlr);
+
     push @parsed, \%fields;
 }
 

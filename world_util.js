@@ -825,6 +825,7 @@
     }
     world.world_url = makeWikiURL(world.Name + ' (world)');
     world.world_url_noscheme = world.world_url.replace(/^\w+:\/\//, '');
+    world.world_url += `?sector=${encodeURIComponent(world.Sector)}&hex=${encodeURIComponent(world.Hex)}`;
     world.ss_url = makeWikiURL(world.SubsectorName + ' Subsector');
     world.ss_url_noscheme = world.ss_url.replace(/^\w+:\/\//, '');
     world.sector_url = makeWikiURL(world.Sector + ' Sector');

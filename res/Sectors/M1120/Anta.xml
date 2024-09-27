@@ -1,0 +1,140 @@
+<?xml version="1.0"?>
+<Sector xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Tags="Official OTU" Abbreviation="Anta">
+  <Name>Antares</Name>
+  <Name Lang="vi">Mikasirka</Name>
+  <Credits><![CDATA[
+
+             <b>Antares</b> sector was designed by Marc W. Miller and
+             appears in <cite>Atlas of the Imperium</cite> (GDW,
+             1984).
+
+    ]]></Credits>
+  <X>1</X>
+  <Y>-1</Y>
+  <Subsectors>
+    <Subsector Source="Challenge #49" Index="A">Pelusium</Subsector>
+    <Subsector Source="Challenge #49" Index="B">Ninik</Subsector>
+    <Subsector Source="Challenge #49" Index="C">Dartho</Subsector>
+    <Subsector Source="Challenge #49" Index="D">Oulduktak</Subsector>
+    <Subsector Source="Challenge #69" Index="E">Shurlarlem</Subsector>
+    <Subsector Source="The Zhodani Base" Index="F">Sarar</Subsector>
+    <Subsector Source="The Zhodani Base" Index="G">Gimgir</Subsector>
+    <Subsector Source="The Zhodani Base" Index="H">Kiirkandin</Subsector>
+    <Subsector Source="The Zhodani Base" Index="I">Urunishu</Subsector>
+    <Subsector Source="The Zhodani Base" Index="J">Uradnim</Subsector>
+    <Subsector Source="The Zhodani Base" Index="K">Antares</Subsector>
+    <Subsector Source="The Zhodani Base" Index="L">Mukusi</Subsector>
+    <Subsector Source="The Zhodani Base" Index="M">Urgusap</Subsector>
+    <Subsector Source="The Zhodani Base" Index="N">Gaakish</Subsector>
+    <Subsector Source="The Zhodani Base" Index="O">Sakhag</Subsector>
+    <Subsector Source="The Zhodani Base" Index="P">Celebes</Subsector>
+  </Subsectors>
+  <Allegiances>
+    <Allegiance Code="ImDa" Base="Im">Third Imperium, Domain of Antares</Allegiance>
+    <Allegiance Code="NaVa" Base="Va">Non-Aligned, Vargr-dominated</Allegiance>
+    <Allegiance Code="NaHu" Base="Na">Non-Aligned, Human-dominated</Allegiance>
+    <Allegiance Code="CsIm">Client state, Third Imperium</Allegiance>
+    <Allegiance Code="ImLa" Base="Im">Third Imperium, League of Antares</Allegiance>
+    <Allegiance Code="JuRu" Base="Jr">Julian Protectorate, Rukadukaz Republic</Allegiance>
+  </Allegiances>
+   <Borders>
+    <Border Color="Blue" Allegiance="Jr">2400 2500 2600 2700 2800 2900 3000 3100 3200 3300 3301 3302 3303 3304 3305 3306 3307 3308 3309 3310 3209 3109 3008 2909 2908 2907 2806 2805 2804 2704 2603 2602 2502 2401 2400 </Border>
+    <Border Color="Purple" Allegiance="La">0030 0131 0231 0331 0430 0530 0529 0528 0527 0526 0525 0524 0423 0422 0421 0420 0419 0519 0518 0517 0516 0515 0514 0513 0612 0712 0711 0810 0910 0909 0908 0907 0906 1005 1105 1205 1305 1405 1505 1604 1705 1805 1905 2005 2106 2206 2306 2405 2505 2506 2507 2508 2608 2709 2609 2610 2611 2612 2713 2812 2713 2612 2513 2413 2414 2415 2416 2417 2418 2419 2420 2421 2422 2423 2424 2425 2426 2427 2528 2628 2729 2829 2930 3029 3129 3130 3230 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2041 1941 1841 1741 1641 1541 1441 1341 1241 1141 1041 0941 0841 0840 0839 0739 0738 0737 0636 0536 0435 0434 0334 0233 0133 0132 0131 0030 </Border>
+    <Border Color="Red" Allegiance="Li">0034 0134 0135 0235 0336 0436 0437 0438 0539 0639 0640 0741 0641 0541 0441 0341 0241 0141 0041 0040 0039 0038 0037 0036 0035 0034 </Border>
+    <Border Color="Green" Allegiance="Vx">0000 0100 0200 0300 0400 0500 0600 0601 0502 0402 0403 0504 0505 0405 0406 0407 0408 0309 0310 0311 0312 0313 0314 0315 0316 0216 0215 0115 0015 0014 0013 0012 0011 0111 0210 0209 0208 0207 0206 0205 0204 0203 0103 0003 0002 0001 0000 </Border>
+    <Border Color="Green" Allegiance="Vx">0026 0126 0225 0226 0327 0227 0128 0028 0027 0026 </Border>
+  </Borders>  <Routes>
+    <Route Start="0339" End="0436" />
+    <Route Start="0339" End="0639" />
+    <Route Start="0339" End="3240" EndOffsetX="-1" />
+    <Route Start="0419" End="0421" />
+    <Route Start="0419" End="0616" />
+    <Route Start="0421" End="0524" />
+    <Route Start="0432" End="0734" />
+    <Route Start="0524" End="0627" />
+    <Route Start="0616" End="0714" />
+    <Route Start="0616" End="0917" />
+    <Route Start="0627" End="1029" />
+    <Route Start="0714" End="1012" />
+    <Route Start="0734" End="1033" />
+    <Route Start="0917" End="1019" />
+    <Route Start="0917" End="1216" />
+    <Route Start="1012" End="1109" />
+    <Route Start="1012" End="1115" />
+    <Route Start="1012" End="1313" />
+    <Route Start="1019" End="1121" />
+    <Route Start="1029" End="1329" />
+    <Route Start="1033" End="1334" />
+    <Route Start="1038" End="1438" />
+    <Route Start="1106" End="1109" />
+    <Route Start="1109" End="1509" />
+    <Route Start="1115" End="1216" />
+    <Route Start="1121" End="1323" />
+    <Route Start="1201" End="1502" Allegiance="JuPr" />
+    <Route Start="1216" End="1516" />
+    <Route Start="1231" End="1329" />
+    <Route Start="1231" End="1334" />
+    <Route Start="1313" End="1513" />
+    <Route Start="1323" End="1420" />
+    <Route Start="1323" End="1624" />
+    <Route Start="1329" End="1527" />
+    <Route Start="1334" End="1635" />
+    <Route Start="1420" End="1518" />
+    <Route Start="1438" End="1635" />
+    <Route Start="1502" End="1603" Allegiance="JuPr" />
+    <Route Start="1502" End="1640" EndOffsetY="-1" Allegiance="JuPr" />
+    <Route Start="1509" End="1808" />
+    <Route Start="1513" End="1713" />
+    <Route Start="1516" End="1816" />
+    <Route Start="1518" End="1816" />
+    <Route Start="1527" End="1624" />
+    <Route Start="1603" End="1804" Allegiance="JuPr" />
+    <Route Start="1624" End="1822" />
+    <Route Start="1635" End="1935" />
+    <Route Start="1713" End="1816" />
+    <Route Start="1713" End="1911" />
+    <Route Start="1808" End="1911" />
+    <Route Start="1808" End="2006" />
+    <Route Start="1816" End="2118" />
+    <Route Start="1822" End="2122" />
+    <Route Start="1911" End="2013" />
+    <Route Start="1932" End="1935" />
+    <Route Start="1932" End="2030" />
+    <Route Start="1935" End="2138" />
+    <Route Start="1935" End="2235" />
+    <Route Start="2006" End="2209" />
+    <Route Start="2013" End="2112" />
+    <Route Start="2013" End="2315" />
+    <Route Start="2030" End="2227" />
+    <Route Start="2040" End="2138" />
+    <Route Start="2112" End="2209" />
+    <Route Start="2118" End="2216" />
+    <Route Start="2118" End="2220" />
+    <Route Start="2122" End="2421" />
+    <Route Start="2209" End="2308" />
+    <Route Start="2216" End="2315" />
+    <Route Start="2220" End="2421" />
+    <Route Start="2227" End="2324" />
+    <Route Start="2235" End="2634" />
+    <Route Start="2308" End="2406" />
+    <Route Start="2315" End="2413" />
+    <Route Start="2324" End="2421" />
+    <Route Start="2324" End="2427" />
+    <Route Start="2427" End="2730" />
+    <Route Start="2504" End="2905" Allegiance="JuRu" />
+    <Route Start="2634" End="2638" />
+    <Route Start="2634" End="2935" />
+    <Route Start="2638" End="2940" />
+    <Route Start="2730" End="3129" />
+    <Route Start="2905" End="3108" Allegiance="JuRu" />
+    <Route Start="2940" End="3139" />
+    <Route Start="3010" End="3108" Allegiance="JuRu" />
+    <Route Start="3108" End="0208" EndOffsetX="1" Allegiance="JuRu" />
+    <Route Start="3108" End="3204" Allegiance="JuRu" />
+    <Route Start="3129" End="0128" EndOffsetX="1" />
+    <Route Start="3129" End="0132" EndOffsetX="1" />
+    <Route Start="3139" End="0338" EndOffsetX="1" />
+    <Route Start="3201" End="3204" Allegiance="JuRu" />
+    <Route Start="3201" End="3239" EndOffsetY="-1" Allegiance="JuRu" />
+  </Routes>
+</Sector>
