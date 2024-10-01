@@ -1526,7 +1526,13 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <Y>2</Y>
     <X>-6</X>
     <Name Lang="as">Ftaoiyekyu</Name>
-    <DataFile Source="CORE" Ref="http://www.ocean-of-storms.com/core/astrogat/hA.htm">ftaoiyekyu.sec</DataFile>
+    <DataFile Source="CORE" Ref="http://www.ocean-of-storms.com/core/astrogat/hA.htm" Type="TabDelimited">Ftaoiyekyu.tab</DataFile>
+    <Credits>
+      <![CDATA[
+               <b>Ftaoiyekyu</b> sector was updated to T5SS format by
+               Randy Dorman, based on data from Jo Grant's CORE site.
+      ]]>
+    </Credits>
     <Subsectors Source="CORE">
       <Subsector Index="A">Uir</Subsector>
       <Subsector Index="B">Yerler</Subsector>
@@ -1862,7 +1868,13 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <Y>3</Y>
     <X>-7</X>
     <Name Lang="as">Esai'yo</Name>
-    <DataFile Source="CORE" Ref="http://www.ocean-of-storms.com/core/astrogat/i5.htm">esai-yo.sec</DataFile>
+    <DataFile Source="CORE" Ref="http://www.ocean-of-storms.com/core/astrogat/i5.htm" Type="TabDelimited">Esai-yo.tab</DataFile>
+    <Credits>
+      <![CDATA[
+               <b>Esai'yo</b> sector was updated to T5SS format by
+               Randy Dorman, based on data from Jo Grant's CORE site.
+      ]]>
+    </Credits>
     <Subsectors Source="CORE">
       <Subsector Index="A">Ekhtaoe</Subsector>
       <Subsector Index="B">Ktehlaahkyo</Subsector>
