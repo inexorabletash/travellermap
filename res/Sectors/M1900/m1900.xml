@@ -214,6 +214,36 @@
     <DataFile Author="Robert Eaglestone" Type="TabDelimited">Zarushagar.tab</DataFile>
     <MetadataFile>Zarushagar.xml</MetadataFile>
   </Sector>
+
+  <Sector Abbreviation="Kaas" Selected="true" Milieu="M1900">
+    <Y>-202</Y>
+    <X>349</X>
+    <Name>Kaasena-Thakon</Name>
+    <DataFile Author="Robert Eaglestone" Type="TabDelimited">Kaas.tab</DataFile>
+    <MetadataFile>Kaas.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Tash" Selected="true" Milieu="M1900">
+    <Y>-202</Y>
+    <X>350</X>
+    <Name>Tashbon-Thakon</Name>
+    <DataFile Author="Robert Eaglestone" Type="TabDelimited">Tash.tab</DataFile>
+    <MetadataFile>Tash.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Loow" Selected="true" Milieu="M1900">
+    <Y>-202</Y>
+    <X>351</X>
+    <Name>Loowaj-Thakon</Name>
+    <DataFile Author="Robert Eaglestone" Type="TabDelimited">Loow.tab</DataFile>
+    <MetadataFile>Loow.xml</MetadataFile>
+  </Sector>
+
+  <Sector Abbreviation="Pars" Selected="true" Milieu="M1900">
+    <Y>-201</Y>
+    <X>349</X>
+    <Name>Parsjan-Thakon</Name>
+    <DataFile Author="Robert Eaglestone" Type="TabDelimited">Pars.tab</DataFile>
+    <MetadataFile>Pars.xml</MetadataFile>
+  </Sector>
   <Sector Abbreviation="Dush" Selected="true" Milieu="M1900">
     <Y>-201</Y>
     <X>350</X>
@@ -221,4 +251,33 @@
     <DataFile Author="Robert Eaglestone" Type="TabDelimited">Dushis.tab</DataFile>
     <MetadataFile>Dushis.xml</MetadataFile>
   </Sector>
+  <Sector Abbreviation="Rish" Selected="true" Milieu="M1900">
+    <Y>-201</Y>
+    <X>351</X>
+    <Name>Rish-Thakon</Name>
+    <DataFile Author="Robert Eaglestone" Type="TabDelimited">Rish.tab</DataFile>
+    <MetadataFile>Rish.xml</MetadataFile>
+  </Sector>
+
+  <Sector Abbreviation="Kloo" Selected="true" Milieu="M1900">
+    <Y>-200</Y>
+    <X>349</X>
+    <Name>Kloosh-Thakon</Name>
+    <DataFile Author="Robert Eaglestone" Type="TabDelimited">Kloo.tab</DataFile>
+    <MetadataFile>Kloo.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Uthm" Selected="true" Milieu="M1900">
+    <Y>-200</Y>
+    <X>350</X>
+    <Name>Uthmet-Thakon</Name>
+    <DataFile Author="Robert Eaglestone" Type="TabDelimited">Uthm.tab</DataFile>
+    <MetadataFile>Uthm.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Snen" Selected="true" Milieu="M1900">
+    <Y>-200</Y>
+    <X>351</X>
+    <Name>Snenser-Thakon</Name>
+    <DataFile Author="Robert Eaglestone" Type="TabDelimited">Snen.tab</DataFile>
+    <MetadataFile>Snen.xml</MetadataFile>
+  </Sector>  
 </Sectors>
