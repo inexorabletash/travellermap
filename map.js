@@ -914,31 +914,19 @@ const Util = {
       // Keyboard
       // ----------------------------------------------------------------------
 
-      // TODO: Use KeyboardEvent.prototype.key if available
-      const VK_I = KeyboardEvent.DOM_VK_I || 0x49,
-            VK_J = KeyboardEvent.DOM_VK_J || 0x4A,
-            VK_K = KeyboardEvent.DOM_VK_K || 0x4B,
-            VK_L = KeyboardEvent.DOM_VK_L || 0x4C,
-            VK_LEFT = KeyboardEvent.DOM_VK_LEFT || 0x25,
-            VK_UP = KeyboardEvent.DOM_VK_UP || 0x26,
-            VK_RIGHT = KeyboardEvent.DOM_VK_RIGHT || 0x27,
-            VK_DOWN = KeyboardEvent.DOM_VK_DOWN || 0x28,
-            VK_SUBTRACT = KeyboardEvent.DOM_VK_HYPHEN_MINUS || 0xBD,
-            VK_EQUALS = KeyboardEvent.DOM_VK_EQUALS || 0xBB;
-
       // Scrolling - track key down/up state and scroll with RAF.
       const key_state = {};
       let keyscroll_timerid;
       const keyScroll = () => {
         let dx = 0, dy = 0;
 
-        if (key_state[VK_UP] || key_state[VK_I])
+        if (key_state['ArrowUp'] || key_state['i'])
           dy -= KEY_SCROLL_DELTA;
-        if (key_state[VK_DOWN] || key_state[VK_K])
+        if (key_state['ArrowDown'] || key_state['k'])
           dy += KEY_SCROLL_DELTA;
-        if (key_state[VK_LEFT] || key_state[VK_J])
+        if (key_state['ArrowLeft'] || key_state['j'])
           dx -= KEY_SCROLL_DELTA;
-        if (key_state[VK_RIGHT] || key_state[VK_L])
+        if (key_state['ArrowRight'] || key_state['l'])
           dx += KEY_SCROLL_DELTA;
 
         if (dx || dy) {
@@ -951,12 +939,12 @@ const Util = {
       container.addEventListener('keydown', event => {
         if (event.ctrlKey || event.altKey || event.metaKey)
           return;
-        key_state[event.keyCode] = true;
+        key_state[event.key] = true;
         if (!keyscroll_timerid)
           keyscroll_timerid = requestAnimationFrame(keyScroll);
       });
       container.addEventListener('keyup', event => {
-        key_state[event.keyCode] = false;
+        key_state[event.key] = false;
         if (!keyscroll_timerid)
           keyscroll_timerid = requestAnimationFrame(keyScroll);
       });
@@ -965,9 +953,9 @@ const Util = {
         if (event.ctrlKey || event.altKey || event.metaKey)
           return;
 
-        switch (event.keyCode) {
-        case VK_SUBTRACT: this.ZoomOut(); break;
-        case VK_EQUALS: this.ZoomIn(); break;
+        switch (event.key) {
+        case '-': this.ZoomOut(); break;
+        case '=': this.ZoomIn(); break;
         default: return;
         }
 

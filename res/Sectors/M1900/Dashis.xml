@@ -1,12 +1,22 @@
 <?xml version="1.0"?>
-<Sector Abbreviation="Dush" Tabs="Unreviewed">
-  <Y>-225</Y>
-  <X>320</X>
-  <Name>Dushis</Name>
+<Sector Abbreviation="Dash" Tabs="Unreviewed">
+  <Name>Dashis</Name>
   <Credits>
     <![CDATA[
 
-	Created by Robert Eaglestone, October 2024.
+	  Created by Robert Eaglestone, October 2024.
+
+    This sector modifies TL determination as follows:
+
+    	TL = 2D - 2                     # +1D - 2
+        += 7 if Starport eq 'A';      # +1
+        += 5 if Starport eq 'B';      # +1
+        += 3 if Starport eq 'C';      # +1
+        += 1 if SIZ > 9;              # New
+        += 1 if ATM == 4 or ATM == 7 or ATM == 9; # New
+        += 2 if HYD == 9;             # +1
+        += 3 if HYD == 10;            # +1
+        += 4 if POP > 8;              # +2
 
     ]]>
   </Credits>
