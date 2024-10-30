@@ -6,7 +6,7 @@
 // Based on allygen by J. Greely http://dotclue.org/t20
 //
 // The Traveller game in all forms is owned by Mongoose Publishing.
-// Copyright (C) 1977 - 2024 Mongoose Pubishing.
+// Copyright (C) 1977 - 2024 Mongoose Publishing.
 
 'use strict';
 
