@@ -627,16 +627,21 @@
   bindCheckedToNamedOption('#cbMinorHomeworlds', 'mh');
   bindCheckedToNamedOption('#cbStellar', 'stellar');
   bindCheckedToNamedOption('#cbQZ', 'qz');
-  bindChecked('#cbWave',
-    o => map.namedOptions.get('ew'),
-    c => {
-      if (c) {
-        map.namedOptions.set('ew', 'milieu');
-      } else {
-        map.namedOptions.delete('ew');
-        delete urlParams['ew'];
-      }
-    });
+
+  // Overlays that take "milieu" or a year
+  [['#cbWave', 'ew'], ['#cbAS', 'as']].forEach(pair => {
+    const [id, op] = pair;
+    bindChecked(id,
+                o => map.namedOptions.get(op),
+                c => {
+                  if (c) {
+                    map.namedOptions.set(op, 'milieu');
+                  } else {
+                    map.namedOptions.delete(op);
+                    delete urlParams[op];
+                  }
+                });
+  });
 
   function bindControl(selector, property, onChange, event, onEvent) {
     const element = $(selector);
