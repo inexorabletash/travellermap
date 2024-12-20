@@ -1196,14 +1196,14 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <DataFile Author="Geir Lanesskog" Type="SecondSurvey">Fulani.txt</DataFile>
     <MetadataFile Author="Geir Lanesskog">Fulani.xml</MetadataFile>
   </Sector>
-  <Sector Abbreviation="Vang" Tags="InReview" Selected="true">
+  <Sector Abbreviation="Vang" Tags="Official" Selected="true">
     <Y>0</Y>
     <X>-6</X>
     <Name>Vanguard Reaches</Name>
     <DataFile Author="Geir Lanesskog" Source="Traveller 5 Second Survey" Milieu="M1105" Type="TabDelimited">Vanguard Reaches.tab</DataFile>
     <MetadataFile Author="Geir Lanesskog">Vanguard Reaches.xml</MetadataFile>
   </Sector>
-  <Sector Abbreviation="Beyo" Tags="InReview" Selected="true">
+  <Sector Abbreviation="Beyo" Tags="Official" Selected="true">
     <Y>0</Y>
     <X>-5</X>
     <Name>The Beyond</Name>
@@ -1275,7 +1275,7 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <DataFile Author="Martin J. Dougherty and Hunter Gordon" Source="Traveller 5 Second Survey" Milieu="M1105" Type="TabDelimited">Ley.tab</DataFile>
     <MetadataFile>Ley.xml</MetadataFile>
   </Sector>
-  <Sector Abbreviation="Gate" Selected="true" Tags="InReview">
+  <Sector Abbreviation="Gate" Selected="true" Tags="Official">
     <Y>0</Y>
     <X>3</X>
     <Name>Gateway</Name>
@@ -1354,7 +1354,7 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <DataFile Source="CORE" Ref="http://www.ocean-of-storms.com/core/astrogat/gA.htm" Type="SecondSurvey">Iphigenaia.txt</DataFile>
     <MetadataFile Author="Ade Stewart">Iphigenaia.xml</MetadataFile>
   </Sector>
-  <Sector Abbreviation="Touc" Tags="InReview" Selected="true">
+  <Sector Abbreviation="Touc" Tags="Official" Selected="true">
     <Y>1</Y>
     <X>-5</X>
     <Name>Touchstone</Name>
@@ -1555,7 +1555,7 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
       <Border Allegiance="As">1341 1440 1439 1539 1638 1738 1838 1938 2037 2138 2237 2337 2436 2536 2535 2635 2736 2835 2935 3034 3134 3233 3232 3231 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2041 1941 1841 1741 1641 1541 1441 1341</Border>
     </Borders>
   </Sector>
-  <Sector Abbreviation="Afaw" Tags="InReview" Selected="true">
+  <Sector Abbreviation="Afaw" Tags="Official" Selected="true">
     <Y>2</Y>
     <X>-5</X>
     <Name Lang="as">Afawahisa</Name>
@@ -3077,7 +3077,11 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <DataFile Author="Miles A. Maria" Type="SecondSurvey">Ruthless Veil.txt</DataFile>
     <MetadataFile>Ruthless Veil.xml</MetadataFile>
   </Sector>
-
+  <Sector>
+    <Y>7</Y>
+    <X>1</X>
+    <Name Source="Rim Expeditions" Author="Martin J. Dougherty">OutReach</Name>
+  </Sector>
   <Sector>
     <Y>7</Y>
     <X>2</X>
@@ -3255,6 +3259,11 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <X>0</X>
     <Name Source="Rim Expeditions" Author="Martin J. Dougherty">Darkly Veiled</Name>
   </Sector>
+  <Sector>
+    <Y>8</Y>
+    <X>1</X>
+    <Name Source="Rim Expeditions" Author="Martin J. Dougherty">Strange</Name>
+  </Sector>
 
   <Sector>
     <Y>9</Y>
@@ -3272,6 +3281,11 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <Name Source="Rim Expeditions" Author="Martin J. Dougherty">Kruse</Name>
     <DataFile Type="SecondSurvey">Kruse.txt</DataFile>
     <MetadataFile>Kruse.xml</MetadataFile>
+  </Sector>
+  <Sector>
+    <Y>9</Y>
+    <X>1</X>
+    <Name Source="Rim Expeditions" Author="Martin J. Dougherty">Flous Nebula</Name>
   </Sector>
 
   <Sector>
