@@ -74,6 +74,11 @@
     float: right;
   }
 
+  .example + h3,
+  h2 + h3 {
+    margin-top: 0;
+  }
+  
 </style>
 
 <h1 class=sitename>Second Survey Data</h1>
@@ -94,7 +99,7 @@
       an influential world on the edge of the Third Imperium can be summarized
       in Second Survey format as:
     </p>
-    <div class="example"><code><a href="#hex">1910</a> <a href="#name">Regina</a> <a href="#uwp">A788899-C</a> <a href="#remarks">Ht Ri Pa Ph An Cp (Amindii)2</a>   <a href="#ix">{ 4 }</a>  <a href="#ex">(D7E+4)</a> <a href="#cx">[9C6D]</a> <a href="#nobility">BcCeF</a> <a href="#bases">NS</a> <a href="#zone">-</a> <a href="#pbg">703</a> <a href="#worlds">8</a> <a href="#allegiance">ImDd</a> <a href="#stellar">F7 V BD M3 V</a></code></div>
+    <div class="example"><code><a href="#hex">1910</a> <a href="#name">Regina</a> <a href="#uwp">A788899-C</a> <a href="#remarks">Ht Ri Pa Ph An Cp (Amindii)2</a>   <a href="#ix">{ 4 }</a>  <a href="#ex">(D7E+5)</a> <a href="#cx">[9C6D]</a> <a href="#nobility">BcCeF</a> <a href="#bases">NS</a> <a href="#zone">-</a> <a href="#pbg">703</a> <a href="#worlds">8</a> <a href="#allegiance">ImDd</a> <a href="#stellar">F7 V BD M3 V</a></code></div>
     <p class="aside">
       Different editions of <cite>Traveller</cite> and different
       authors and publications may include different fields, present
@@ -123,6 +128,7 @@
            <li><a href="#worlds">Worlds</a></li>
            <li><a href="#allegiance">Allegiance</a></li>
            <li><a href="#stellar">Stellar Data</a></li>
+           <li><a href="#ru">Resource Units</a></li>
          </ul>
       </li>
       <li>Appendix
@@ -135,7 +141,7 @@
 
   <section id="hex">
     <h2>Hex Location</h2>
-    <div class="example"><code><span class="highlight">1910</span> Regina A788899-C Ht Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF NS - 703 8 ImDd F7 V BD M3 V</code></div>
+    <div class="example"><code><span class="highlight">1910</span> Regina A788899-C Ht Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+5) [9C6D] BcCeF NS - 703 8 ImDd F7 V BD M3 V</code></div>
     <p>
       The location of the world within a sector, given as a
       four digit number identifying a position on a hexagonal grid.
@@ -149,7 +155,7 @@
 
   <section id="name">
     <h2>Main World Name</h2>
-    <div class="example"><code>1910 <span class="highlight">Regina</span> A788899-C Ht Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF NS - 703 8 ImDd F7 V BD M3 V</code></div>
+    <div class="example"><code>1910 <span class="highlight">Regina</span> A788899-C Ht Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+5) [9C6D] BcCeF NS - 703 8 ImDd F7 V BD M3 V</code></div>
     <p>
       Name of the primary world in the system. Most characteristics
       given in the UWP, such as physical and cultural attributes,
@@ -159,7 +165,7 @@
 
   <section id="uwp">
     <h2>UWP - Universal World Profile</h2>
-    <div class="example"><code>1910 Regina <span class="highlight">A788899-C</span> Ht Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF NS - 703 8 ImDd F7 V BD M3 V</code></div>
+    <div class="example"><code>1910 Regina <span class="highlight">A788899-C</span> Ht Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+5) [9C6D] BcCeF NS - 703 8 ImDd F7 V BD M3 V</code></div>
     <p>
       The UWP gives a compact description of the physical and cultural
       aspects of the Main World, as well the starport facilities and
@@ -206,7 +212,7 @@
 
     <section id="starport">
       <h3>Starport</h3>
-      <div class="example"><code>1910 Regina <span class="highlight">A</span>788899-C Ht Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF NS - 703 8 ImDd F7 V BD M3 V</code></div>
+      <div class="example"><code>1910 Regina <span class="highlight">A</span>788899-C Ht Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+5) [9C6D] BcCeF NS - 703 8 ImDd F7 V BD M3 V</code></div>
       <p>
         Starport indicates the best quality starport in the star
         system available to travellers.
@@ -291,7 +297,7 @@
     </section>
     <section id="size">
       <h3>Size</h3>
-      <div class="example"><code>1910 Regina A<span class="highlight">7</span>88899-C Ht Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF NS - 703 8 ImDd F7 V BD M3 V</code></div>
+      <div class="example"><code>1910 Regina A<span class="highlight">7</span>88899-C Ht Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+5) [9C6D] BcCeF NS - 703 8 ImDd F7 V BD M3 V</code></div>
       <p>
         Size expresses the diameter of a world in approximately
         1,600km units (or 1,000 mile units).
@@ -445,7 +451,7 @@
     </section>
     <section id="atmosphere">
       <h3>Atmosphere</h3>
-      <div class="example"><code>1910 Regina A7<span class="highlight">8</span>8899-C Ht Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF NS - 703 8 ImDd F7 V BD M3 V</code></div>
+      <div class="example"><code>1910 Regina A7<span class="highlight">8</span>8899-C Ht Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+5) [9C6D] BcCeF NS - 703 8 ImDd F7 V BD M3 V</code></div>
       <p>
         Atmosphere type shows the general character of the atmosphere
         for a world on its surface.
@@ -531,7 +537,7 @@
     </section>
     <section id="hydrographics">
       <h3>Hydrographics</h3>
-      <div class="example"><code>1910 Regina A78<span class="highlight">8</span>899-C Ht Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF NS - 703 8 ImDd F7 V BD M3 V</code></div>
+      <div class="example"><code>1910 Regina A78<span class="highlight">8</span>899-C Ht Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+5) [9C6D] BcCeF NS - 703 8 ImDd F7 V BD M3 V</code></div>
       <p>
         Hydrographics shows the percentage of world surface covered by
         seas or oceans. If atmosphere type is <code>A</code> or above,
@@ -596,7 +602,7 @@
     </section>
     <section id="population_exponent">
       <h3>Population Exponent</h3>
-      <div class="example"><code>1910 Regina A788<span class="highlight">8</span>99-C Ht Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF NS - 703 8 ImDd F7 V BD M3 V</code></div>
+      <div class="example"><code>1910 Regina A788<span class="highlight">8</span>99-C Ht Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+5) [9C6D] BcCeF NS - 703 8 ImDd F7 V BD M3 V</code></div>
       <p>
         The population exponent gives an order-of-magnitude
          approximation of a world's population. Together with the
@@ -605,7 +611,7 @@
       </p>
 
       <p class="equation">
-        population = <i>multiplier</i> &times; 10<sup><i>exponent</i></sup>
+        population = <var>multiplier</var> &times; 10<sup><var>exponent</var></sup>
       </p>
 
 
@@ -689,7 +695,7 @@
     </section>
     <section id="government">
       <h3>Government Type</h3>
-      <div class="example"><code>1910 Regina A7888<span class="highlight">9</span>9-C Ht Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF NS - 703 8 ImDd F7 V BD M3 V</code></div>
+      <div class="example"><code>1910 Regina A7888<span class="highlight">9</span>9-C Ht Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+5) [9C6D] BcCeF NS - 703 8 ImDd F7 V BD M3 V</code></div>
       <p>
         Government shows the basic governmental structure for a world.
       </p>
@@ -956,7 +962,7 @@
     </section>
     <section id="law_level">
       <h3>Law Level</h3>
-      <div class="example"><code>1910 Regina A78889<span class="highlight">9</span>-C Ht Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF NS - 703 8 ImDd F7 V BD M3 V</code></div>
+      <div class="example"><code>1910 Regina A78889<span class="highlight">9</span>-C Ht Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+5) [9C6D] BcCeF NS - 703 8 ImDd F7 V BD M3 V</code></div>
       <p>
         Law level indicates basic legal status and shows probability
         of harassment by local enforcers.
@@ -1075,7 +1081,7 @@
     </section>
     <section id="tech_level">
       <h3>Technological Level</h3>
-      <div class="example"><code>1910 Regina A788899-<span class="highlight">C</span> Ht Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF NS - 703 8 ImDd F7 V BD M3 V</code></div>
+      <div class="example"><code>1910 Regina A788899-<span class="highlight">C</span> Ht Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+5) [9C6D] BcCeF NS - 703 8 ImDd F7 V BD M3 V</code></div>
       <p>
         Technological level shows the degree of technological
         sophistication to be expected on a world.
@@ -1191,7 +1197,7 @@
 
   <section id="remarks">
     <h2>Remarks and Trade Codes</h2>
-    <div class="example"><code>1910 Regina A788899-C <span class="highlight">Ht Ri Pa Ph An Cp (Amindii)2</span>   { 4 }  (D7E+4) [9C6D] BcCeF NS - 703 8 ImDd F7 V BD M3 V</code></div>
+    <div class="example"><code>1910 Regina A788899-C <span class="highlight">Ht Ri Pa Ph An Cp (Amindii)2</span>   { 4 }  (D7E+5) [9C6D] BcCeF NS - 703 8 ImDd F7 V BD M3 V</code></div>
     <p>
       Remarks and trade classifications indicate obvious or important
       characteristics for the Main World in the system. They serve to
@@ -1361,17 +1367,22 @@
 
   <section id="ix" class="t5">
     <h2>Importance Extension</h2>
-    <div class="example"><code>1910 Regina A788899-C Ht Ri Pa Ph An Cp (Amindii)2   <span class="highlight">{ 4 }</span>  (D7E+4) [9C6D] BcCeF NS - 703 8 ImDd F7 V BD M3 V</code></div>
+    <div class="example"><code>1910 Regina A788899-C Ht Ri Pa Ph An Cp (Amindii)2   <span class="highlight">{ 4 }</span>  (D7E+5) [9C6D] BcCeF NS - 703 8 ImDd F7 V BD M3 V</code></div>
+    <h3><cite>Traveller<sup>5</sup></cite></h3>
     <p>
       The Importance Extension is abbreviated Ix and written in braces
       (<code>{}</code>). It is a decimal integer (positive, negative,
       or zero) ranking the importance of the world within a region.
     </p>
+    <p>
+      A world's Importance is calculated by adding or subtracting modifiers based on several factors, such as <a href="#starport">Starport</a> type, <a href="#tech_level">Tech Level</a>, <a href="#population_exponent">Population Exponent</a>, <a href="#remarks">Economic codes</a>, and <a href="#bases">Bases</a>. Values range from <code>-3</code> (very unimportant) to <code>5</code> (very important).
+    </p>
   </section>
 
   <section id="ex" class="t5">
     <h2>Economic Extension</h2>
-    <div class="example"><code>1910 Regina A788899-C Ht Ri Pa Ph An Cp (Amindii)2   { 4 }  <span class="highlight">(D7E+4)</span> [9C6D] BcCeF NS - 703 8 ImDd F7 V BD M3 V</code></div>
+    <div class="example"><code>1910 Regina A788899-C Ht Ri Pa Ph An Cp (Amindii)2   { 4 }  <span class="highlight">(D7E+5)</span> [9C6D] BcCeF NS - 703 8 ImDd F7 V BD M3 V</code></div>
+    <h3><cite>Traveller<sup>5</sup></cite></h3>
     <p>
       The Economic Extension is abbreviated Ex and written in
       parentheses (<code>()</code>). It describes the strength of a
@@ -1381,24 +1392,52 @@
       representing <dfn>Efficiency</dfn> written with a leading sign.
       (Note Efficiency-0 is coded as <code>+1</code> as it is functionally equivalent.)
     </p>
+    <p>
+      Resources range from <code>2</code> (very scarce) to <code>J</code> (extremely abundant).
+    </p>
+    <p>
+      Labor correlates closely with <a href="#population_exponent">Population Exponent</a>.
+    </p>
+    <p>
+      Infrastructure ranges from <code>0</code> (non-existent) to <code>H</code> (very comprehensive).
+    </p>
+    <p>
+      Efficiency ranges from <code>-5</code> (extremely poor) to <code>+5</code> (very advanced).
+    </p>
+
   </section>
 
   <section id="cx" class="t5">
     <h2>Cultural Extension</h2>
-    <div class="example"><code>1910 Regina A788899-C Ht Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) <span class="highlight">[9C6D]</span> BcCeF NS - 703 8 ImDd F7 V BD M3 V</code></div>
+    <div class="example"><code>1910 Regina A788899-C Ht Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+5) <span class="highlight">[9C6D]</span> BcCeF NS - 703 8 ImDd F7 V BD M3 V</code></div>
+    <h3><cite>Traveller<sup>5</sup></cite></h3>
     <p>
       The Cultural Extension is abbreviated Cx and written in brackets
       (<code>[]</code>). It gives insight into the social behavior of
       the world's population. It is given as
       four <a href="#ehex">eHex</a> digits
       representing <dfn>Heterogeneity</dfn>, <dfn>Acceptance</dfn>,
-      <dfn>Strangeness</dfn>, and <dfn>Symbols</dfn>.
+      <dfn>Strangeness</dfn>, and <dfn>Symbols</dfn>. Unpopulated worlds
+      will have <code>0</code> for all values.
+    </p>
+    <p>
+      Heterogeneity ranges from <code>1</code> (monolithic) to <code>G</code> (fragmented).
+    </p>
+    <p>
+      Acceptance ranges from <code>1</code> (extremely xenophobic) to <code>F</code> (extremely xenophilic).
+    </p>
+    <p>
+      Strangeness ranges from <code>1</code> (very typical) to <code>A</code> (incomprehensible).
+    </p>
+    <p>
+      Symbols ranges from <code>0</code> (extremely concrete) to <code>L</code> (incomprehensibly abstract).
     </p>
   </section>
 
   <section id="nobility" class="t5">
     <h2>Nobility</h2>
-    <div class="example"><code>1910 Regina A788899-C Ht Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] <span class="highlight">BcCeF</span> NS - 703 8 ImDd F7 V BD M3 V</code></div>
+    <div class="example"><code>1910 Regina A788899-C Ht Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+5) [9C6D] <span class="highlight">BcCeF</span> NS - 703 8 ImDd F7 V BD M3 V</code></div>
+    <h3><cite>Traveller<sup>5</sup></cite></h3>
     <p>For Imperial worlds, the noble ranks assigned to the world by the Emperor based on importance.</p>
     <p>
        If no noble ranks are assigned to the system, the field may be
@@ -1421,7 +1460,7 @@
 
   <section id="bases">
     <h2>Bases</h2>
-    <div class="example"><code>1910 Regina A788899-C Ht Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF <span class="highlight">NS</span> - 703 8 ImDd F7 V BD M3 V</code></div>
+    <div class="example"><code>1910 Regina A788899-C Ht Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+5) [9C6D] BcCeF <span class="highlight">NS</span> - 703 8 ImDd F7 V BD M3 V</code></div>
     <p>
       Base codes show the presence of military bases in a system;
       special codes deal with the presence of more than one type of
@@ -1642,7 +1681,7 @@
 
   <section id="zone">
     <h2>Travel Zone</h2>
-    <div class="example"><code>1910 Regina A788899-C Ht Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF NS <span class="highlight">-</span> 703 8 ImDd F7 V BD M3 V</code></div>
+    <div class="example"><code>1910 Regina A788899-C Ht Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+5) [9C6D] BcCeF NS <span class="highlight">-</span> 703 8 ImDd F7 V BD M3 V</code></div>
     <p>
       Codes assigned to the system by government or private
       institutions about the safety of travel within the system.
@@ -1699,10 +1738,10 @@
 
   <section id="pbg">
     <h2>PBG - Population, Belts, Giants</h2>
-    <div class="example"><code>1910 Regina A788899-C Ht Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF NS - <span class="highlight">703</span> 8 ImDd F7 V BD M3 V</code></div>
+    <div class="example"><code>1910 Regina A788899-C Ht Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+5) [9C6D] BcCeF NS - <span class="highlight">703</span> 8 ImDd F7 V BD M3 V</code></div>
 
     <h3>Population Multiplier</h3>
-    <div class="example"><code>1910 Regina A788899-C Ht Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF NS - <span class="highlight">7</span>03 8 ImDd F7 V BD M3 V</code></div>
+    <div class="example"><code>1910 Regina A788899-C Ht Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+5) [9C6D] BcCeF NS - <span class="highlight">7</span>03 8 ImDd F7 V BD M3 V</code></div>
     <p>
       The first <a href="#ehex">eHex</a> digit is the population
       multiplier. Together with the
@@ -1710,7 +1749,7 @@
       field, the world population can be computed as:
     </p>
     <p class="equation">
-      population = <i>multiplier</i> &times; 10<sup><i>exponent</i></sup>
+      population = <var>multiplier</var> &times; 10<sup><var>exponent</var></sup>
     </p>
     <p class="aside">
       Some legacy files may erroneously have <code>0</code> for the
@@ -1722,7 +1761,7 @@
 
 
     <h3>Planetoid Belts</h3>
-    <div class="example"><code>1910 Regina A788899-C Ht Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF NS - 7<span class="highlight">0</span>3 8 ImDd F7 V BD M3 V</code></div>
+    <div class="example"><code>1910 Regina A788899-C Ht Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+5) [9C6D] BcCeF NS - 7<span class="highlight">0</span>3 8 ImDd F7 V BD M3 V</code></div>
     <p>
       The second <a href="#ehex">eHex</a> digit is the number of
       planetoid belts in the system. A Main World of
@@ -1732,7 +1771,7 @@
     <p>If unknown, <code>?</code> can be specified.</p>
 
     <h3>Gas Giants</h3>
-    <div class="example"><code>1910 Regina A788899-C Ht Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF NS - 70<span class="highlight">3</span> 8 ImDd F7 V BD M3 V</code></div>
+    <div class="example"><code>1910 Regina A788899-C Ht Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+5) [9C6D] BcCeF NS - 70<span class="highlight">3</span> 8 ImDd F7 V BD M3 V</code></div>
     <p>
       The third <a href="#ehex">eHex</a> digit is the number of gas
       giants in the system, suitable for fuel skimming.
@@ -1743,7 +1782,8 @@
 
   <section id="worlds" class="t5">
     <h2>Worlds</h2>
-    <div class="example"><code>1910 Regina A788899-C Ht Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF NS - 703 <span class="highlight">8</span> ImDd F7 V BD M3 V</code></div>
+    <div class="example"><code>1910 Regina A788899-C Ht Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+5) [9C6D] BcCeF NS - 703 <span class="highlight">8</span> ImDd F7 V BD M3 V</code></div>
+    <h3><cite>Traveller<sup>5</sup></cite></h3>
     <p>
       The number of "worlds" in the system. This is given as a decimal
       integer, and will always be at least 1 (the Main World) plus the
@@ -1761,7 +1801,7 @@
 
   <section id="allegiance">
     <h2>Allegiance</h2>
-    <div class="example"><code>1910 Regina A788899-C Ht Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF NS - 703 8 <span class="highlight">ImDd</span> F7 V BD M3 V</code></div>
+    <div class="example"><code>1910 Regina A788899-C Ht Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+5) [9C6D] BcCeF NS - 703 8 <span class="highlight">ImDd</span> F7 V BD M3 V</code></div>
     <p>
       Allegiances indicate the government which dominates a system. A
       short abbreviation is used.
@@ -1846,7 +1886,7 @@
 
   <section id="stellar">
     <h2>Stellar Data</h2>
-    <div class="example"><code>1910 Regina A788899-C Ht Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+4) [9C6D] BcCeF NS - 703 8 ImDd <span class="highlight">F7 V BD M3 V</span></code></div>
+    <div class="example"><code>1910 Regina A788899-C Ht Ri Pa Ph An Cp (Amindii)2   { 4 }  (D7E+5) [9C6D] BcCeF NS - 703 8 ImDd <span class="highlight">F7 V BD M3 V</span></code></div>
     <p>
       Stellar data lists the stars in the system.
     </p>
@@ -1940,7 +1980,6 @@
         <td><code>Ib</code>
         <td>Weak Supergiant.
         <td>30 - 3000
-
       <tr>
         <td><code>II</code>
         <td>Bright Giant.
@@ -2024,6 +2063,20 @@
       The special code <code>PSR</code> may be used for pulsars, rapidly spinning neutron stars with active radio beams.
     </p>
 
+  </section>
+
+  <section id="ru" class="t5">
+    <h2>Resource Units</h2>
+    <h3><cite>Traveller<sup>5</sup></cite></h3>
+    <p>
+      <dfn>Resource Units</dfn> (RU) provide a summary of the economic activity of a system, and are provided in some data files. RU is calculated by multiplying together each member of the <a href="#ex">Economic Extension</a>,  treating any <code>0</code> as a <code>1</code>.
+    </p>
+    <p class="equation">
+      RU = <var>R</var> &times; <var>L</var> &times; <var>I</var> &times; <var>E</var>
+    </p>
+    <p>
+      For example, Regina's <a href="#ex">Economic Extension</a> is <code>(D7E+5)</code>, so its RU is 13 &times; 7 &times; 14 &times; +5 = 6370.
+    </p>
   </section>
 
   <section id="ehex">
