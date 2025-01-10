@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<title>Redirect - Traveller Map</title>
+<meta charset="utf-8">
+<link rel="shortcut icon" href="favicon.svg">
+<link rel="stylesheet" href="site.css?update=2024-07-04T17:49:03">
+<meta name="viewport" content="initial-scale=1, width=device-width">
+<style>
+a { color: blue; }
+#skip { vertical-align: middle; }
+</style>
+
+<h1>You are now leaving the Traveller Map</h1>
+<div class="content">
+
+<p>
+  You have clicked on a link that is taking you to an external site. If you encounter any problems, please report them to the administrator of that site.
+</p>
+
+<p>
+  Click here to proceed: <a id=link rel=noopener></a>
+</p>
+
+<p>
+  <label><input id=skip type=checkbox> Skip this notice next time</label>
+</p>
+
+</div>
+
+<script>
+const $ = s => document.querySelector(s);
+
+const url = new URL(document.location);
+const href = url.searchParams.get('href');
+const site = href.split('?')[0];
+$('#link').href = href;
+$('#link').innerText = site;
+
+const key = `tm_redirect_skip:${site}`;
+const skip = localStorage.getItem(key) === 'true';
+if (skip) {
+  $('#skip').checked = true;
+  document.location = href;
+}
+$('#skip').addEventListener('change', e => {
+  localStorage.setItem(key, String($('#skip').checked));
+});
+</script>

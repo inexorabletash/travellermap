@@ -653,7 +653,7 @@ const Util = {
     'dw', 'an', 'mh', 'po', 'im', 'cp', 'stellar'
   ];
   const STRING_OPTIONS = [
-    'ew', 'qz', 'hw', 'milieu'
+    'ew', 'qz', 'as', 'hw', 'milieu'
   ];
 
   const ZOOM_DELTA = 0.5;
@@ -914,31 +914,19 @@ const Util = {
       // Keyboard
       // ----------------------------------------------------------------------
 
-      // TODO: Use KeyboardEvent.prototype.key if available
-      const VK_I = KeyboardEvent.DOM_VK_I || 0x49,
-            VK_J = KeyboardEvent.DOM_VK_J || 0x4A,
-            VK_K = KeyboardEvent.DOM_VK_K || 0x4B,
-            VK_L = KeyboardEvent.DOM_VK_L || 0x4C,
-            VK_LEFT = KeyboardEvent.DOM_VK_LEFT || 0x25,
-            VK_UP = KeyboardEvent.DOM_VK_UP || 0x26,
-            VK_RIGHT = KeyboardEvent.DOM_VK_RIGHT || 0x27,
-            VK_DOWN = KeyboardEvent.DOM_VK_DOWN || 0x28,
-            VK_SUBTRACT = KeyboardEvent.DOM_VK_HYPHEN_MINUS || 0xBD,
-            VK_EQUALS = KeyboardEvent.DOM_VK_EQUALS || 0xBB;
-
       // Scrolling - track key down/up state and scroll with RAF.
       const key_state = {};
       let keyscroll_timerid;
       const keyScroll = () => {
         let dx = 0, dy = 0;
 
-        if (key_state[VK_UP] || key_state[VK_I])
+        if (key_state['ArrowUp'] || key_state['i'])
           dy -= KEY_SCROLL_DELTA;
-        if (key_state[VK_DOWN] || key_state[VK_K])
+        if (key_state['ArrowDown'] || key_state['k'])
           dy += KEY_SCROLL_DELTA;
-        if (key_state[VK_LEFT] || key_state[VK_J])
+        if (key_state['ArrowLeft'] || key_state['j'])
           dx -= KEY_SCROLL_DELTA;
-        if (key_state[VK_RIGHT] || key_state[VK_L])
+        if (key_state['ArrowRight'] || key_state['l'])
           dx += KEY_SCROLL_DELTA;
 
         if (dx || dy) {
@@ -951,12 +939,12 @@ const Util = {
       container.addEventListener('keydown', event => {
         if (event.ctrlKey || event.altKey || event.metaKey)
           return;
-        key_state[event.keyCode] = true;
+        key_state[event.key] = true;
         if (!keyscroll_timerid)
           keyscroll_timerid = requestAnimationFrame(keyScroll);
       });
       container.addEventListener('keyup', event => {
-        key_state[event.keyCode] = false;
+        key_state[event.key] = false;
         if (!keyscroll_timerid)
           keyscroll_timerid = requestAnimationFrame(keyScroll);
       });
@@ -965,9 +953,9 @@ const Util = {
         if (event.ctrlKey || event.altKey || event.metaKey)
           return;
 
-        switch (event.keyCode) {
-        case VK_SUBTRACT: this.ZoomOut(); break;
-        case VK_EQUALS: this.ZoomIn(); break;
+        switch (event.key) {
+        case '-': this.ZoomOut(); break;
+        case '=': this.ZoomIn(); break;
         default: return;
         }
 
@@ -1087,7 +1075,7 @@ const Util = {
       // Tile URL (apart from x/y/scale)
       const params = {options: this.options, style: this.style};
       this.namedOptions.forEach((value, key) => {
-        if (key === 'ew' || key === 'qz') return;
+        if (['ew', 'qz', 'as'].includes(key)) return;
         params[key] = value;
       });
       if ('devicePixelRatio' in window && window.devicePixelRatio > 1)
@@ -1151,6 +1139,9 @@ const Util = {
 
       if (this.namedOptions.get('qz'))
         this.drawQZ();
+
+      if (this.namedOptions.get('as'))
+        this.drawAS(this.namedOptions.get('as'));
     }
 
     // Draw a rectangle (x1, y1) to (x2, y2)
@@ -1510,9 +1501,8 @@ const Util = {
       }
     }
 
-    drawWave(date) {
+    currentYear(date) {
       let year = 1105;
-      let w = 1; /*pc*/
       let m;
       if (date === 'milieu') {
         const milieu = this.namedOptions.get('milieu') || 'M1105';
@@ -1520,15 +1510,29 @@ const Util = {
       } else if ((m = /^(-?\d+)-(\d+)$/.exec(date))) {
         // day-year, e.g. 001-1105
         year = Number(m[2]) + (Number(m[1]) - 1) / 365;
-        w = 0.1;
       } else if (/^(-?\d+)\.(\d*)$/.test(date)) {
         // decimal year, e.g. 1105.5
         year = Number(date);
-        w = 0.1;
       } else if (/^-?\d+$/.test(date)) {
         // year
         year = Number(date) + 0.5;
-        w = 1;
+      }
+      return year;
+    }
+
+    // Empress Wave
+    drawWave(date) {
+      const year = this.currentYear(date);
+
+      // Width?
+      let w = 1; /*pc*/
+      let m;
+      if ((m = /^(-?\d+)-(\d+)$/.exec(date))) {
+        // day-year, e.g. 001-1105
+        w = 0.1;
+      } else if (/^(-?\d+)\.(\d*)$/.test(date)) {
+        // decimal year, e.g. 1105.5
+        w = 0.1;
       }
 
       // Per MWM: Velocity of wave is PI * c
@@ -1561,6 +1565,7 @@ const Util = {
       ctx.restore();
     }
 
+    // Qrekrsha Zone
     drawQZ() {
       const x = -179.4, y = 131, radius = 30 * Traveller.Astrometrics.ParsecScaleX, w = 1;
       const ctx = this.ctx;
@@ -1578,6 +1583,45 @@ const Util = {
               this.scale * radius, 0, Math.PI * 2);
       ctx.stroke();
       ctx.restore();
+    }
+
+    // Antares Supernova
+    drawAS(date) {
+      const year = this.currentYear(date);
+
+      // Velocity of effect is light speed (so 1 ly/y)
+      const vel /*pc/y*/ = 1 /*ly/y*/ / 3.26 /*ly/pc*/;
+
+      // Center is Antares (ANT 2421)*/
+      const x = 46.698, y = 58.5;
+
+      // Different effect radii
+      [0.5, 4, 8, 12].forEach(max => {
+
+        // Date of supernova: 1270
+        let radius = (year - 1270) * vel;
+        if (radius < 0)
+          return;
+
+        // Maximum area of effect: 12 parsecs
+        if (radius > max)
+          radius = max;
+
+        const ctx = this.ctx;
+        ctx.save();
+        ctx.translate(-this.canvas.offset_x, -this.canvas.offset_y);
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.globalAlpha = 0.3 / 2;
+        ctx.fillStyle = styleLookup(this.style, 'ew_color');
+        ctx.beginPath();
+        const px_offset = 0.5; // offset from corner to center of hex
+        const pt = this.mapToPixel(x + px_offset, y + px_offset);
+        ctx.arc(pt.x,
+                pt.y,
+                this.scale * radius, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      });
     }
 
     mapToPixel(mx, my) {

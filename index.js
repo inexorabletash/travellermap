@@ -355,7 +355,7 @@
   $('#routeStart').addEventListener('keydown', event => {
     if (event.ctrlKey || event.altKey || event.metaKey)
       return;
-    if (event.key === 'Enter' || event.keyCode === VK_RETURN) {
+    if (event.key === 'Enter') {
       event.preventDefault();
       event.stopPropagation();
       $('#routeEnd').focus();
@@ -365,7 +365,7 @@
   $('#routeEnd').addEventListener('keydown', event => {
     if (event.ctrlKey || event.altKey || event.metaKey)
       return;
-    if (event.key === 'Enter' || event.keyCode === VK_RETURN) {
+    if (event.key === 'Enter') {
       event.preventDefault();
       event.stopPropagation();
 
@@ -421,22 +421,13 @@
     });
   });
 
-  const VK_ESCAPE = KeyboardEvent.DOM_VK_ESCAPE || 0x1B,
-        VK_RETURN = KeyboardEvent.DOM_VK_RETURN || 0x0D,
-        VK_C = KeyboardEvent.DOM_VK_C || 0x43,
-        VK_F = KeyboardEvent.DOM_VK_F || 0x46,
-        VK_H = KeyboardEvent.DOM_VK_H || 0x48,
-        VK_M = KeyboardEvent.DOM_VK_M || 0x4D,
-        VK_T = KeyboardEvent.DOM_VK_T || 0x54,
-        VK_QUESTION_MARK = KeyboardEvent.DOM_VK_QUESTION_MARK || 0x63;
-
   let ignoreNextKeyUp = false;
   document.body.addEventListener('keyup', event => {
     if (ignoreNextKeyUp) {
       ignoreNextKeyUp = false;
       return;
     }
-    if (event.key === 'Escape' || event.keyCode === VK_ESCAPE) {
+    if (event.key === 'Escape') {
       event.preventDefault();
       event.stopPropagation();
 
@@ -550,42 +541,48 @@
   mapElement.addEventListener('keydown', event => {
     if (event.ctrlKey || event.altKey || event.metaKey)
       return;
-    if (event.key === 'c' || event.keyCode === VK_C) {
+    if (event.key === 'c') {
       event.preventDefault();
       event.stopPropagation();
       updateContext(map.worldX, map.worldY, {directAction: true});
       showMain(map.worldX, map.worldY);
       return;
     }
-    if (event.key === 'h' || event.keyCode === VK_H) {
+    if (event.key === 'h') {
       event.preventDefault();
       event.stopPropagation();
       goHome();
       return;
     }
-    if (event.key === 't' || event.keyCode === VK_T) {
+    if (event.key === 't') {
       event.preventDefault();
       event.stopPropagation();
       $('#tiltBtn').click();
       return;
     }
-    if (event.key === 'm' || event.keyCode === VK_M) {
+    if (event.key === 'm') {
       event.preventDefault();
       event.stopPropagation();
       showPanel('legend');
       return;
     }
-    if (event.key === 'f' || event.keyCode === VK_F) {
+    if (event.key === 'f') {
       event.preventDefault();
       event.stopPropagation();
       toggleFullscreen();
       return;
     }
-    if (event.key === '?' || event.keyCode === VK_QUESTION_MARK) {
+    if (event.key === '?') {
       event.preventDefault();
       event.stopPropagation();
       showPanel('more');
       showTab('help');
+      return;
+    }
+    if (event.key === '/') {
+      event.preventDefault();
+      event.stopPropagation();
+      $('#searchBox').focus();
       return;
     }
   });
@@ -630,16 +627,21 @@
   bindCheckedToNamedOption('#cbMinorHomeworlds', 'mh');
   bindCheckedToNamedOption('#cbStellar', 'stellar');
   bindCheckedToNamedOption('#cbQZ', 'qz');
-  bindChecked('#cbWave',
-    o => map.namedOptions.get('ew'),
-    c => {
-      if (c) {
-        map.namedOptions.set('ew', 'milieu');
-      } else {
-        map.namedOptions.delete('ew');
-        delete urlParams['ew'];
-      }
-    });
+
+  // Overlays that take "milieu" or a year
+  [['#cbWave', 'ew'], ['#cbAS', 'as']].forEach(pair => {
+    const [id, op] = pair;
+    bindChecked(id,
+                o => map.namedOptions.get(op),
+                c => {
+                  if (c) {
+                    map.namedOptions.set(op, 'milieu');
+                  } else {
+                    map.namedOptions.delete(op);
+                    delete urlParams[op];
+                  }
+                });
+  });
 
   function bindControl(selector, property, onChange, event, onEvent) {
     const element = $(selector);
@@ -692,6 +694,9 @@
   map.OnOptionsChanged = Util.debounce(options => {
     optionObservers.forEach(o => { o(options); });
     $('#legendBox').classList.toggle('world_colors', options & Traveller.MapOptions.WorldColors);
+    map.namedOptions.NAMES.forEach(name => {
+      $('#legendBox').classList.toggle(`opt-${name}`, !!map.namedOptions.get(name));
+    });
     updateContext(lastX || map.worldX, lastY || map.worldY, {refresh: true});
     updatePermalink();
     savePreferences();

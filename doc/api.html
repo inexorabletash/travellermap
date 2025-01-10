@@ -1163,42 +1163,57 @@ table#features, #features th, #features td { border: solid 1px black; }
 
     <h4>Notes:</h4>
     <ul>
-        <li>Perform a search of names for matching sectors, subsectors, worlds
-          and labeled regions.
+        <li>
+            Perform a search of names for matching sectors, subsectors, worlds
+            and labeled regions.
         <li>All searches are <em>case-insensitive</em>.
         <li>By default, only matches at the start of names or after spaces are returned. So "<code>sol</code>" will match "Sol", "Solomani Rim" and "Nowa Sol" but not "Marsol"
-        <li>Wildcards:
-          <code>*</code> and <code>%</code> can be used as a "zero or more of any character";
-          <code>?</code> and <code>_</code> can be used as "exactly one character".
-          <code>[]</code> can be used for character ranges, e.g. <code>[0-5]</code> or <code>[m-z]</code> or <code>[89ABC]</code>.
-          For example, "<code>r*a</code>" will match Regina.
+        <li>
+            Wildcards:
+            <code>*</code> and <code>%</code> can be used as a "zero or more of any character";
+            <code>?</code> and <code>_</code> can be used as "exactly one character".
+            <code>[]</code> can be used for character ranges, e.g. <code>[0-5]</code> or <code>[m-z]</code> or <code>[89ABC]</code>.
+            For example, "<code>r*a</code>" will match Regina.
         <li>Specifying a wildcard within a word turns <em>off</em> the "start of word" match. So "<code>re*in</code>" will <em>not</em> match "Regina" (but "<code>re*in*</code>" will).
         <li>Add <code>exact:</code> as a prefix to force an exact match, e.g. "<code>exact:sol</code>" will not match "Solomani Rim"
         <li>Add <code>like:</code> as a prefix to do a "sounds like" match, e.g. "<code>like:tear</code>" will find "Terra"
-        <li>Specify more than one (space-delimited) word in the query to refine the search. Words are joined as logical <em>and</em> clauses. So "<code>so ri</code>" will match "Solomani Rim"
-          (This combines strangely with wildcards; "<code>sol* ri*</code>" tries to find something matching both "<code>sol*</code>" <em>and</em> "<code>ri*</code>" so nothing will be found!)
-        <li>Add <code>uwp:</code> as a prefix to a word to search the relevant fields. Examples:
+        <li>
+            Specify more than one (space-delimited) word in the query to refine the search. Words are joined as logical <em>and</em> clauses. So "<code>so ri</code>" will match "Solomani Rim"
+            (This combines strangely with wildcards; "<code>sol* ri*</code>" tries to find something matching both "<code>sol*</code>" <em>and</em> "<code>ri*</code>" so nothing will be found!)
+        <li>
+            Add <code>uwp:</code> as a prefix to a word to search the relevant fields. Examples:
             <dl class="params">
-                <dt>uwp:a* <dd>find worlds with class A starports
-                <dt>t* uwp:*f <dd>find worlds with names beginning with T that are tech level F
+                <dt>uwp:a*
+                <dd>find worlds with class A starports
+                <dt>t* uwp:*f
+                <dd>find worlds with names beginning with T that are tech level F
             </dl>
-        <li>Similarly, you can use <code>pbg:</code>, <code>zone:</code>, <code>alleg:</code>
-          to match on PBG, Zone or Allegiance respectively.
-        <li>Use <code>remark:</code> to require a specific remark, e.g. <code>remark:Hi</code>
-          to limit the results to high-population worlds.
-        <li>Add <code>in:</code> as a prefix to a word to search the sector name. Examples:
+        <li>
+            Similarly, you can use <code>pbg:</code>, <code>zone:</code>, <code>alleg:</code>
+            to match on PBG, Zone or Allegiance respectively.
+        <li>
+            Use <code>stellar:</code> to match a specific star type, e.g. <code>stellar:"M? I*"</code>
+            for red giants, or <code>stellar:"M? I*" stellar:D</code> for red giants with white
+            dwarf companions.
+        <li>
+            Use <code>remark:</code> to require a specific remark, e.g. <code>remark:Hi</code>
+            to limit the results to high-population worlds.
+        <li>
+            Add <code>in:</code> as a prefix to a word to search the sector name. Examples:
             <dl class="params">
-                <dt>t* in:spin <dd>find worlds in Spinward Marches sector begining with T
-                <dt>uwp:*-f in:"Solomani Rim"<dd>find worlds with tech level F in the Solomani Rim
+                <dt>t* in:spin
+                <dd>find worlds in Spinward Marches sector begining with T
+                <dt>uwp:*-f in:"Solomani Rim"
+                <dd>find worlds with tech level F in the Solomani Rim
             </dl>
 
         <li>Specifying a search query of XXXXXXX-X (seven alphanumeric characters, hyphen, one alphanumeric character) is a shortcut for <code>uwp:</code>
         <li>Searches are performed on individual items (sectors, subsectors, worlds). You cannot at present do scoped search such as "TL-F worlds in the Solomani Rim"
         <li>Results may appear for items with multiple names (e.g. Solomani Rim sector is known as <em>Kushuggi</em> in Vilani); this is a correct result, although the alternate name is not apparent on the site.
         <li>
-          The default output format is <a href="https://json.org/">JSON</a>. To retrieve results in XML form, specify
-          the HTTP header <code>Accept: text/xml</code> or include <code>accept=text/xml</code>
-          in the query string.
+            The default output format is <a href="https://json.org/">JSON</a>. To retrieve results in XML form, specify
+            the HTTP header <code>Accept: text/xml</code> or include <code>accept=text/xml</code>
+            in the query string.
     </ul>
 
     <h4>Example:</h4>
@@ -1976,10 +1991,8 @@ function jsonp_demo() {
 
 <div class="editorial">
   <p>
-    The <em class="product">Traveller</em> game in all forms is owned by Far
-    Future Enterprises. Copyright <span class=copyright>&copy;</span> 1977
-    &ndash; 2023 Far Future Enterprises.
-    <a href="https://farfuture.net/FFEFairUsePolicy2008.pdf">Fair Use Policy</a>
+    The <em class="product">Traveller</em> game in all forms is owned by Mongoose Publishing. Copyright 1977 &ndash; 2024 Mongoose Publishing.
+    <a href="https://cdn.shopify.com/s/files/1/0609/6139/0839/files/Traveller_Fair_Use_Policy_2024.pdf?v=1725357857">Fair Use Policy</a>
 </div>
 
 <a class="forkme" href="https://github.com/inexorabletash/travellermap"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>

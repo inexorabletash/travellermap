@@ -556,6 +556,8 @@
     III: 'Giant',
     IV: 'Subgiant',
     V: 'Dwarf (Main Sequence)',
+    VI: 'Subdwarf', // Obsolete
+    VII: 'White Dwarf', // Obsolete
 
     // Compact stars
     D: 'White Dwarf',
@@ -823,6 +825,7 @@
     }
     world.world_url = makeWikiURL(world.Name + ' (world)');
     world.world_url_noscheme = world.world_url.replace(/^\w+:\/\//, '');
+    world.world_url += `?sector=${encodeURIComponent(world.Sector)}&hex=${encodeURIComponent(world.Hex)}`;
     world.ss_url = makeWikiURL(world.SubsectorName + ' Subsector');
     world.ss_url_noscheme = world.ss_url.replace(/^\w+:\/\//, '');
     world.sector_url = makeWikiURL(world.Sector + ' Sector');
@@ -850,8 +853,8 @@
       seed: world.Hex + world.Hex,
       place_nobz: 1
     };
-    world.map_link = Util.makeURL(GENERATOR_BASE + '', map_generator_options);
-    world.map_source_link = Util.makeURL(GENERATOR_BASE + '', map_generator_options);
+    const map_link = Util.makeURL(GENERATOR_BASE + '', map_generator_options);
+    world.map_link = Util.makeURL('redir.html', {href: map_link});
 
     const map_thumb = worldImageURL(world, 'map_thumb');
     const map = worldImageURL(world, 'map');

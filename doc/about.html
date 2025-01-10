@@ -37,17 +37,18 @@
     <p>
       The <dfn>Official Traveller Universe</dfn> (OTU) is the primary
       setting for various editions of the <cite>Traveller</cite> game,
-      controlled by Far Future Enterprises (FFE). This is the universe
-      described by publications from GDW, FFE and Mongoose Publishing, and by past
-      licensees such as Digest Group, FASA, Imperium Games and others,
-      The setting includes the Third Imperium, Zhodani Consulate and
+      owned by Mongoose Publishing. This is the universe described by
+      publications from Game Designers' Workshop (GDW), Far Future
+      Enterprises (FFE) and Mongoose Publishing, and by past licensees
+      such as Digest Group, FASA, Imperium Games and others. The
+      setting includes the Third Imperium, Zhodani Consulate and
       Solomani Confederation, alien species such as the Aslan, K'kree,
       Vargr, Hivers and Droyne, and a history from the Ancients
       through the New Era.
     </p>
     <p>
       Under the <a target=_blank rel=noopener
-      href="https://farfuture.net/FFEFairUsePolicy2008.pdf">FFE Fair
+      href="https://cdn.shopify.com/s/files/1/0609/6139/0839/files/Traveller_Fair_Use_Policy_2024.pdf?v=1725357857">Fair
       Use Policy</a>, the Traveller Map presents an interactive view
       into the OTU, making use of official data approved and provided
       by FFE &mdash; as well as apocryphal and unofficial data.
@@ -114,90 +115,101 @@
   <section id="tips">
     <h2>Tips and Tricks</h2>
 
-  <section id="search">
-    <h3>Search Tips</h3>
+    <section id="search">
+        <h3>Search Tips</h3>
 
-    <p>
-      Use the search field to look up worlds, subsectors, sectors, and
-      regions by name. By default, searches use "prefix" search. So
-      <code>reg</code> will find the Regina system and the Regina
-      subsector, among others.
-    </p>
-    <p>
-      You can use <code>*</code> and <code>?</code> as wildcards.
-      <code>*</code> matches zero or more characters, so
-      <code>*ward</code> will find the Spinward Marches sector.
-      <code>?</code> matches exactly one character, so
-      <code>t?rra</code> will find the Terra system. You can also use
-      character ranges like <code>[8-C]</code> or <code>[89A]</code>.
-    </p>
-    <p>
-      Specify <code>uwp:</code> to search UWPs. For example,
-      <code>uwp:*-g</code> will find tech level 16 worlds.
-      <code>uwp:B[5-7][6-7][3-9][4-8]?[4-7]-[B-D]</code> will
-      find all starport B, medium size, standard atmosphere,
-      wet, moderate poulation and law-level words with
-      average stellar tech level.
-    </p>
-    <p>
-      Specify <code>pbg:</code> to search PBG. For example,
-      <code>pbg:??0</code> will find systems without gas giants.
-    </p>
-    <p>
-      Specify <code>zone:</code> to search travel zones,
-      using <code>G</code> for "green" or no zone. For example,
-      <code>zone:A</code> will find Amber Zone worlds.
-    </p>
-    <p>
-      Specify <code>alleg:</code> to search allegiances. For example,
-      <code>alleg:Im*</code> will find Imperial worlds (in any domain).
-    </p>
-    <p>
-      Specify <code>ix:</code>, <code>ex:</code>, or <code>cx:</code>
-      to search T5 Importance, Economic, or Cultural extensions.
-      For example, <code>ix:5</code> will find worlds with Importance 5,
-      <code>cx:[8-F]???</code> will find worlds with Heterogeneity 8 or
-      higher.
-    </p>
-    <p>
-      Specify <code>remark:</code> to search for remarks/codes. For example,
-      <code>remark:Hi</code> will find high-population worlds.
-    </p>
-    <p>
-      Specify <code>in:</code> to restrict search to workds in
-      a sector. For example,
-      <code>uwp:*-f in:Deneb</code> will find tech level 15 worlds
-      in Deneb sector.
-    </p>
-    <p>
-      Specify <code>like:</code> to find similar-sounding words. For
-      example, <code>like:caboodle</code> will find Capital.
-    </p>
-    <p>
-      Specify <code>exact:</code> to find exact matches. For example,
-      <code>exact:sol</code> will find Sol subsector, but not the
-      Solomani Rim sector. You can also surround a word or multiple
-      words in quotes like <code>"Nova Terra"</code> to require an
-      exact match.
-    </p>
-    <p>
-      Specify <code>world</code>, <code>subsector</code> or
-      <code>sector</code> to restrict searches to just that type of
-      result. For example <code>solo sector</code> will find only
-      the Solomani Rim sector.
-    </p>
-    <p>
-      Multiple words form an "and" search. For example, <code>sol
-      ri</code> will find the Solomani Rim sector, but not the Sol
-      subsector. <code>c* uwp:*-f</code> will find all worlds starting
-      with C that are tech level 15.
-    </p>
-    <p>
-      As a special case, searching for <code>sector hex</code>
-      will find a specific world if present,
-      e.g. <code>Vland 1717</code> or <code>SPIN 1910</code>.
-    </p>
-  </section>
+        <p>
+            Use the search field to look up worlds, subsectors, sectors, and
+            regions by name. By default, searches use "prefix" search. So
+            <code>reg</code> will find the Regina system and the Regina
+            subsector, among others.
+        </p>
+        <p>
+            You can use <code>*</code> and <code>?</code> as wildcards.
+            <code>*</code> matches zero or more characters, so
+            <code>*ward</code> will find the Spinward Marches sector.
+            <code>?</code> matches exactly one character, so
+            <code>t?rra</code> will find the Terra system. You can also use
+            character ranges like <code>[8-C]</code> or <code>[89A]</code>,
+            and inverted ranges like <code>[^0AB]</code>.
+        </p>
+        <p>
+            Specify <code>uwp:</code> to search UWPs. For example,
+            <code>uwp:*-g</code> will find tech level 16 worlds.
+            <code>uwp:B[5-7][6-7][3-9][4-8]?[4-7]-[B-D]</code> will
+            find all starport B, medium size, standard atmosphere,
+            wet, moderate population and law-level words with
+            average stellar tech level.
+        </p>
+        <p>
+            Specify <code>pbg:</code> to search PBG. For example,
+            <code>pbg:??0</code> will find systems without gas giants.
+        </p>
+        <p>
+            Specify <code>zone:</code> to search travel zones,
+            using <code>G</code> for "green" or no zone. For example,
+            <code>zone:A</code> will find Amber Zone worlds.
+        </p>
+        <p>
+            Specify <code>alleg:</code> to search allegiances. For example,
+            <code>alleg:Im*</code> will find Imperial worlds (in any domain).
+        </p>
+        <p>
+            Specify <code>stellar:</code> to search stellar data. For example,
+            <code>stellar:"M? I*" stellar:D</code> will find red giant stars
+            with white dwarf companions. (The question mark matches any spectral 
+            digit, the asterisk finds any luminosity class starting with I,
+            and quotes are needed because of the space between the 
+            spectral class and the luminosity class.)
+        </p>
+        <p>
+            Specify <code>ix:</code>, <code>ex:</code>, or <code>cx:</code>
+            to search T5 Importance, Economic, or Cultural extensions.
+            For example, <code>ix:5</code> will find worlds with Importance 5,
+            <code>cx:[8-F]???</code> will find worlds with Heterogeneity 8 or
+            higher.
+        </p>
+        <p>
+            Specify <code>remark:</code> to search for remarks/codes. For example,
+            <code>remark:Hi</code> will find high-population worlds.
+        </p>
+        <p>
+            Specify <code>in:</code> to restrict search to worlds in
+            a sector. For example,
+            <code>uwp:*-f in:Deneb</code> will find tech level 15 worlds
+            in Deneb sector.
+        </p>
+        <p>
+            Specify <code>like:</code> to find similar-sounding words. For
+            example, <code>like:caboodle</code> will find Capital.
+        </p>
+        <p>
+            Specify <code>exact:</code> to find exact matches. For example,
+            <code>exact:sol</code> will find Sol subsector, but not the
+            Solomani Rim sector. You can also surround a word or multiple
+            words in quotes like <code>"Nova Terra"</code> to require an
+            exact match.
+        </p>
+        <p>
+            Specify <code>world</code>, <code>subsector</code> or
+            <code>sector</code> to restrict searches to just that type of
+            result. For example <code>solo sector</code> will find only
+            the Solomani Rim sector.
+        </p>
+        <p>
+            Multiple words form an "and" search. For example, <code>
+                sol
+                ri
+            </code> will find the Solomani Rim sector, but not the Sol
+            subsector. <code>c* uwp:*-f</code> will find all worlds starting
+            with C that are tech level 15.
+        </p>
+        <p>
+            As a special case, searching for <code>sector hex</code>
+            will find a specific world if present,
+            e.g. <code>Vland 1717</code> or <code>SPIN 1910</code>.
+        </p>
+    </section>
 
   <section id="keyboard">
     <style scoped>
@@ -229,6 +241,7 @@
       <div><kbd>H</kbd> - Home (default view)</div>
       <div><kbd>M</kbd> - Show map legend</div>
       <div><kbd>T</kbd> - Toggle tilted view</div>
+      <div><kbd>/</kbd> - Focus search box</div>
       <div><kbd>I</kbd> or <kbd>&uarr;</kbd> - Scroll up (coreward)</div>
       <div><kbd>J</kbd> or <kbd>&larr;</kbd> - Scroll left (spinward)</div>
       <div><kbd>K</kbd> or <kbd>&darr;</kbd> - Scroll down (rimward)</div>
@@ -325,7 +338,7 @@
 
     <p>
       This site was inspired by many sources, most prominently some of
-      the treasured posessions from my childhood:
+      the treasured possessions from my childhood:
       the <a target=_blank rel=noopener class=lightbox
       href="https://travellermap.s3.amazonaws.com/images/about/Imperium+Poster.jpg">
       Imperium Map poster</a> which provided an overview of Charted
@@ -382,7 +395,7 @@
     </p>
 
     <p>
-      <a target=_blank rel=nooopener href="http://members.ozemail.com.au/~jonoreita/TravellerWorlds/">Traveller World Builder</a> - World map generator following the <cite>Traveller 5</cite> rules.
+      <a target=_blank rel=nooopener href="https://www.travellerworlds.com/">Traveller World Builder</a> - World map generator following the <cite>Traveller 5</cite> rules.
     </p>
 
     <p>
@@ -411,10 +424,12 @@
       from raw sector data.
     </p>
 
+    <!--
     <p>
       Samuel Penn's <a target=_blank rel=noopener href="http://mapcraft.glendale.org.uk/worldgen">WorldGen</a>
       project.
     </p>
+    -->
 
     <h4>Archived Sites</h4>
     <i> (via <a target=_blank rel=noopener href="https://archive.org">The Internet Archive's Wayback Machine</a>)</i>
@@ -521,32 +536,18 @@
     <h2>Copyright Information</h2>
 
     <p>
-      The <b><i>Traveller</i></b> game in all forms is owned by <a
-      target=_blank rel=noopener href="https://farfuture.net"> Far Future
-      Enterprises</a>. Copyright <span class=copyright>&copy;</span>
-      1977 &ndash; 2023 Far Future Enterprises.
-      <b><i>Traveller</i></b> is a registered trademark of Far Future
-      Enterprises. Far Future permits web sites and fanzines for this
-      game, provided it contains this notice, that Far Future is
-      notified, and subject to a withdrawal of permission on 90 days
-      notice. The contents of this site are for personal,
-      non-commercial use only. Any use of Far Future Enterprises's
-      copyrighted material or trademarks anywhere on this web site and
-      its files should not be viewed as a challenge to those
-      copyrights or trademarks. In addition, any program/articles/file
-      on this site cannot be republished or distributed without the
-      consent of the author who contributed it.
+      The <cite>Traveller</cite> game in all forms is owned by <a target=_blank rel=noopener href="https://www.mongoosepublishing.com/">Mongoose Publishing</a>. Copyright 1977 &ndash; 2024 Mongoose Publishing. Traveller is a registered trademark of Mongoose Publishing. Mongoose Publishing permits web sites and fanzines for this game, provided it contains this notice, that Mongoose Publishing is notified, and subject to a withdrawal of permission on 90 days notice. The contents of this site are for personal, non-commercial use only. Any use of Mongoose Publishing’s copyrighted material or trademarks anywhere on this web site and its files should not be viewed as a challenge to those copyrights or trademarks. In addition, any program/articles/file on this site cannot be republished or distributed without the consent of the author who contributed it.
     </p>
     <p>
       Materials produced by <b>Digest Group Publications</b> (DGP) are
-      copyright <span class=copyright>&copy;</span> Roger Sanger. Any
+      copyright Roger Sanger. Any
       use of Digest Group Publications' copyrighted material or
       trademarks anywhere on this Web site and its files should not be
       viewed as a challenge to those copyrights. Usage is intended to
       follow the guidelines <a target=_blank rel=noopener
       href="http://members.tip.net.au/~davidjw/tavspecs/maint/dgp_faq.htm">
       announced by Roger Sanger on the Traveller Mailing List</a> for
-      preserving the overall <b><i>Traveller</i></b> milieu.
+      preserving the overall <cite>Traveller</cite> milieu.
     </p>
   </section>
 

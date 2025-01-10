@@ -1,0 +1,203 @@
+<?xml version="1.0"?>
+<Sector xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Selected="true" Tags="Official OTU" Abbreviation="Troj">
+  <Name>Trojan Reach</Name>
+  <Name>Trojan Reaches</Name>
+  <Name Lang="as">Hlaoirloahaurl</Name>
+  <Name Lang="zh">Idrflanta</Name>
+  <Credits><![CDATA[
+
+             Egyrn and Pax Rulin subsectors of <b>Trojan Reach</b>
+             sector were designed by Bob McWilliams and appear in
+             <cite>Traveller Adventure 4: Leviathan</cite> (GDW,
+             1980).
+
+             The rest of Trojan Reach sector was designed by Marc W.
+             Miller and appears in <cite>Atlas of the Imperium</cite>
+             (GDW, 1984).
+
+             The remaining subsectors were refined by Mike Jackson and
+             appear in <cite>Third Imperium Magazine</cite>
+             (1986-1988), <cite>Travellers' Digest #20</cite>
+             (Digest Group Publications, 1990) and
+             <cite>The MegaTraveller Journal #3</cite>
+             (Digest Group Publications, 1992).
+
+            ]]></Credits>
+  <Subsectors>
+    <Subsector Index="A">Menorial</Subsector>
+    <Subsector Index="B">Egyrn</Subsector>
+    <Subsector Index="C">Pax Rulin</Subsector>
+    <Subsector Index="D">Gazulin</Subsector>
+    <Subsector Index="E">Yggdrasil</Subsector>
+    <Subsector Index="F">Dpres</Subsector>
+    <Subsector Index="G">Sindal</Subsector>
+    <Subsector Index="H">Tobia</Subsector>
+    <Subsector Index="I">Nora'a</Subsector>
+    <Subsector Index="J">Goertel</Subsector>
+    <Subsector Index="K">Tlaiowaha</Subsector>
+    <Subsector Index="L">The Borderland</Subsector>
+    <Subsector Index="M">Ranib</Subsector>
+    <Subsector Index="N">Silraaihe</Subsector>
+    <Subsector Index="O">Hkea'as</Subsector>
+    <Subsector Index="P">Binary</Subsector>
+  </Subsectors>
+  <Stylesheet>
+    route.FlLe { color: LightGreen; }
+  </Stylesheet>
+  <Labels>
+    <Label Hex="1512" Color="#FFCC00" Wrap="false">Outrim Void</Label>
+  </Labels>
+  <Borders>
+    <Border Allegiance="As" LabelPosition="0732">0023 0123 0122 0221 0220 0320 0420 0521 0621 0721 0820 0920 1019 1119 1118 1117 1016 1015 1115 1114 1213 1313 1412 1411 1410 1510 1609 1608 1607 1606 1605 1606 1607 1608 1709 1809 1909 2008 2108 2208 2309 2409 2510 2609 2709 2809 2910 3010 3111 3211 3312 3313 3314 3315 3316 3317 3318 3319 3219 3120 3020 2921 2922 2923 2823 2824 2725 2625 2526 2527 2427 2428 2329 2330 2331 2332 2232 2233 2134 2034 1935 1835 1736 1636 1637 1638 1639 1640 1641 1541 1441 1341 1241 1141 1041 0941 0841 0741 0641 0541 0441 0341 0241 0141 0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027 0026 0025 0024 0023 </Border>
+    <Border WrapLabel="true" Color="Blue" Allegiance="BlSo" LabelPosition="1007">1005 1106 1206 1207 1308 1207 1206 1106 1005 </Border>
+    <Border Color="Green" Allegiance="FlLe" LabelPosition="0412">0010 0110 0210 0310 0410 0510 0511 0512 0612 0713 0714 0715 0716 0616 0517 0417 0418 0319 0218 0119 0018 0017 0016 0015 0014 0013 0012 0011 0010 </Border>
+    <Border WrapLabel="true" Allegiance="ImDd" LabelPosition="3109" Label="Third Imperium">2000 2100 2200 2300 2400 2500 2600 2700 2800 2900 3000 3100 3200 3300 3301 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3210 3110 3009 2909 2808 2708 2607 2507 2406 2306 2205 2105 2104 2103 2002 2001 2000 </Border>
+  </Borders>
+  <Routes>
+    <Route Start="2715" End="2815" />
+    <Route Start="2815" End="2916" />
+    <Route Start="2916" End="2918" />
+    <Route Start="3013" End="2813" />
+    <Route Start="2813" End="2714" />
+    <Route Start="3013" End="3012" />
+    <Route Start="0408" End="0210" StartOffsetX="1" EndOffsetX="1" />
+    <Route Start="2102" End="2140" EndOffsetY="-1" />
+    <Route Start="2102" End="2204" />
+    <Route Start="2804" End="2805" />
+    <Route Start="2804" End="2902" />
+    <Route Start="2902" End="2739" EndOffsetY="-1" />
+    <Route Start="2708" End="2805" />
+    <Route Start="0210" End="0213" Allegiance="FlLe" />
+    <Route Start="0213" End="0415" Allegiance="FlLe" />
+    <Route Start="0213" End="3114" EndOffsetX="-1" Allegiance="FlLe" />
+    <Route Start="0317" End="0415" Allegiance="FlLe" />
+    <Route Start="0415" End="0614" Allegiance="FlLe" />
+    <Route Start="0415" End="0616" Allegiance="FlLe" />
+    <Route Start="0220" End="0322" Allegiance="As" />
+    <Route Start="1621" End="1619" Allegiance="As" />
+    <Route Start="1621" End="1723" Allegiance="As" />
+    <Route Start="0122" End="0223" Allegiance="As" />
+    <Route Start="0223" End="0224" Allegiance="As" />
+    <Route Start="0223" End="0322" Allegiance="As" />
+    <Route Start="0523" End="0322" Allegiance="As" />
+    <Route Start="0523" End="0525" Allegiance="As" />
+    <Route Start="1723" End="1823" Allegiance="As" />
+    <Route Start="1823" End="2023" Allegiance="As" />
+    <Route Start="0224" End="0425" Allegiance="As" />
+    <Route Start="0425" End="0525" Allegiance="As" />
+    <Route Start="0126" End="0127" Allegiance="As" />
+    <Route Start="0127" End="0129" Allegiance="As" />
+    <Route Start="0129" End="0130" Allegiance="As" />
+    <Route Start="0130" End="0132" Allegiance="As" />
+    <Route Start="0126" End="0224" Allegiance="As" />
+    <Route Start="1426" End="1626" Allegiance="As" />
+    <Route Start="1626" End="1728" Allegiance="As" />
+    <Route Start="1927" End="1928" Allegiance="As" />
+    <Route Start="0328" End="0429" Allegiance="As" />
+    <Route Start="0328" End="0528" Allegiance="As" />
+    <Route Start="0528" End="0727" Allegiance="As" />
+    <Route Start="0825" End="0727" Allegiance="As" />
+    <Route Start="1728" End="1928" Allegiance="As" />
+    <Route Start="1928" End="2029" Allegiance="As" />
+    <Route Start="0129" End="0328" Allegiance="As" />
+    <Route Start="0429" End="0431" Allegiance="As" />
+    <Route Start="0429" End="0528" Allegiance="As" />
+    <Route Start="1429" End="1630" Allegiance="As" />
+    <Route Start="0130" End="0132" Allegiance="As" />
+    <Route Start="0430" End="0431" Allegiance="As" />
+    <Route Start="0930" End="0934" Allegiance="As" />
+    <Route Start="0931" End="1030" Allegiance="As" />
+    <Route Start="0929" End="0930" Allegiance="As" />
+    <Route Start="0929" End="1030" Allegiance="As" />
+    <Route Start="1230" End="1030" Allegiance="As" />
+    <Route Start="0929" End="1028" Allegiance="As" />
+    <Route Start="1027" End="1028" Allegiance="As" />
+    <Route Start="1027" End="1026" Allegiance="As" />
+    <Route Start="0825" End="1026" Allegiance="As" />
+    <Route Start="0825" End="0824" Allegiance="As" />
+    <Route Start="0824" End="1023" Allegiance="As" />
+    <Route Start="1023" End="1223" Allegiance="As" />
+    <Route Start="1223" End="1324" Allegiance="As" />
+    <Route Start="1223" End="1222" Allegiance="As" />
+    <Route Start="1222" End="1221" Allegiance="As" />
+    <Route Start="1221" End="1220" Allegiance="As" />
+    <Route Start="1221" End="1022" Allegiance="As" />
+    <Route Start="1023" End="1022" Allegiance="As" />
+    <Route Start="1121" End="1022" Allegiance="As" />
+    <Route Start="1126" End="1026" Allegiance="As" />
+    <Route Start="1230" End="1429" Allegiance="As" />
+    <Route Start="1630" End="1631" Allegiance="As" />
+    <Route Start="1631" End="1733" Allegiance="As" />
+    <Route Start="1931" End="1933" Allegiance="As" />
+    <Route Start="1931" End="2029" Allegiance="As" />
+    <Route Start="0132" End="0232" Allegiance="As" />
+    <Route Start="0232" End="0234" Allegiance="As" />
+    <Route Start="0232" End="0531" Allegiance="As" />
+    <Route Start="1733" End="1735" Allegiance="As" />
+    <Route Start="1733" End="1933" Allegiance="As" />
+    <Route Start="0934" End="1034" Allegiance="As" />
+    <Route Start="1034" End="1038" Allegiance="As" />
+    <Route Start="1534" End="1733" Allegiance="As" />
+    <Route Start="1534" End="1735" Allegiance="As" />
+    <Route Start="1534" End="1835" Allegiance="As" />
+    <Route Start="0835" End="0837" Allegiance="As" />
+    <Route Start="0835" End="0934" Allegiance="As" />
+    <Route Start="0835" End="1036" Allegiance="As" />
+    <Route Start="1235" End="1436" Allegiance="As" />
+    <Route Start="1436" End="1438" Allegiance="As" />
+    <Route Start="1036" End="1235" Allegiance="As" />
+    <Route Start="1235" End="1335" Allegiance="As" />
+    <Route Start="1335" End="1534" Allegiance="As" />
+    <Route Start="1534" End="1733" Allegiance="As" />
+    <Route Start="0837" End="0839" Allegiance="As" />
+    <Route Start="0837" End="1036" Allegiance="As" />
+    <Route Start="0139" End="0240" Allegiance="As" />
+    <Route Start="0139" End="0338" Allegiance="As" />
+    <Route Start="0839" End="0640" Allegiance="As" />
+    <Route Start="0839" End="0840" Allegiance="As" />
+    <Route Start="1339" End="1438" Allegiance="As" />
+    <Route Start="2227" End="2226" Allegiance="As" />
+    <Route Start="2226" End="2425" Allegiance="As" />
+    <Route Start="2624" End="2425" Allegiance="As" />
+    <Route Start="2527" End="2425" Allegiance="As" />
+    <Route Start="2624" End="2424" Allegiance="As" />
+    <Route Start="2624" End="2824" Allegiance="As" />
+    <Route Start="2824" End="2823" Allegiance="As" />
+    <Route Start="2823" End="2923" Allegiance="As" />
+    <Route Start="2823" End="2722" Allegiance="As" />
+    <Route Start="2722" End="2621" Allegiance="As" />
+    <Route Start="2621" End="2721" Allegiance="As" />
+    <Route Start="2721" End="2820" Allegiance="As" />
+    <Route Start="2820" End="2819" Allegiance="As" />
+    <Route Start="2819" End="2918" Allegiance="As" />
+    <Route Start="2918" End="3119" Allegiance="As" />
+    <Route Start="2918" End="3117" Allegiance="As" />
+    <Route Start="3117" End="3215" Allegiance="As" />
+    <Route Start="2918" End="2916" Allegiance="As" />
+    <Route Start="2916" End="2815" Allegiance="As" />
+    <Route Start="2815" End="2715" Allegiance="As" />
+    <Route Start="2715" End="2614" Allegiance="As" />
+    <Route Start="2614" End="2714" Allegiance="As" />
+    <Route Start="2714" End="2813" Allegiance="As" />
+    <Route Start="2813" End="3013" Allegiance="As" />
+    <Route Start="3013" End="3212" Allegiance="As" />
+    <Route Start="2813" End="2912" Allegiance="As" />
+    <Route Start="2614" End="2515" Allegiance="As" />
+    <Route Start="2515" End="2314" Allegiance="As" />
+    <Route Start="2314" End="2513" Allegiance="As" />
+    <Route Start="2621" End="2520" Allegiance="As" />
+    <Route Start="2621" End="2421" Allegiance="As" />
+    <Route Start="2520" End="2421" Allegiance="As" />
+    <Route Start="2421" End="2221" Allegiance="As" />
+    <Route Start="2221" End="2020" Allegiance="As" />
+    <Route Start="2020" End="1919" Allegiance="As" />
+    <Route Start="2421" End="2322" Allegiance="As" />
+    <Route Start="2322" End="2123" Allegiance="As" />
+    <Route Start="2123" End="2223" Allegiance="As" />
+    <Route Start="2223" End="2324" Allegiance="As" />
+    <Route Start="2324" End="2424" Allegiance="As" />
+    <Route Start="2123" End="2023" Allegiance="As" />
+    <Route Start="2332" End="2233" Allegiance="As" />
+    <Route Start="2233" End="2234" Allegiance="As" />
+  </Routes>
+</Sector>

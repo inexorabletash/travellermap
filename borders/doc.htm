@@ -27,23 +27,23 @@ div.figure { margin: 2em; }
   <h2>Background</h2>
 
   <p>
-      Sectors in <cite class="traveller">Traveller</cite> are hexagonal grids of 32 by 40 hexes. Each grid space may contain a
+      Sectors in <cite>Traveller</cite> are hexagonal grids of 32 by 40 hexes. Each grid space may contain a
       single star system, represented by a "main world." Further details (multiple stars, multiple worlds) are ignored at this
       level of representation. The fraction of occupied hexes varies, including at the extreme some large empty areas known as
       rifts, but outside of rifts the density is generally between 0.3 and 0.6. Each main world has an allegiance to an interstellar
-      polity, or is "non-aligned". <cite class="traveller">Traveller</cite> data for sectors has generally consisted of lists
+      polity, or is "non-aligned". <cite>Traveller</cite> data for sectors has generally consisted of lists
       of the occupied hexes and the details of the main world compressed into a data format known as Universal World Profile (UWP),
       commonly shared as "flat" text files with the .SEC extension.
   </p>
   <p>
       No polity allegiance data is given for empty hexes. It is possible to argue that since there is nothing in such a hex it
       can't be claimed by a polity, but deep within a large empire it is unlikely that incursions of a foreign force will be viewed
-      with indifference regardless of what hex it lies within. Maps of <cite class="traveller">Traveller</cite> sectors &mdash; most
+      with indifference regardless of what hex it lies within. Maps of <cite>Traveller</cite> sectors &mdash; most
       notably the classic references <cite>Supplement 3: The Spinward Marches</cite> and <cite>Supplement 10: The Solomani Rim, </cite>
       show borders around the edges of polities, thus implicitly claiming the empty hexes.
   </p>
   <p>
-      Recently, several hex maps of <cite class="traveller">Traveller</cite> sectors have been produced with polity borders like
+      Recently, several hex maps of <cite>Traveller</cite> sectors have been produced with polity borders like
       the following.
   </p>
   <div class="figure">
@@ -55,7 +55,7 @@ div.figure { margin: 2em; }
       (3), and worlds that end up cut off from the main body of the polity due to unclaimed hexes (4).
   </p>
   <p>
-      The features are not present or are rare in the classic <cite class="traveller">Traveller</cite> reference materials. One
+      The features are not present or are rare in the classic <cite>Traveller</cite> reference materials. One
       reason is that thanks to fast personal computers and software aids, borders now are often automatically generated.
   </p>
 
@@ -66,13 +66,13 @@ div.figure { margin: 2em; }
 
   <h2>Automatic Border Generation</h2>
   <p>
-      One of the best resources for <cite class="traveller">TRAVELLER</cite> cartographers today is J. Greely's <a href="http://dotclue.org/t20/">
+      One of the best resources for <cite>TRAVELLER</cite> cartographers today is J. Greely's <a href="http://dotclue.org/t20/">
           Gateway to PDF</a><a href="#ref_g2p" class="reference">[1]</a> which includes <cite>sec2pdf</cite>, a tool for generating PDF maps from classic ".SEC" sector format
       files, and <cite>allygen</cite>, a tool that <cite>"tries to create plausible regional borders for a sector, based on starports,
           tech level, and population."</cite> Greely also defines a ".MSEC" data format for sector metadata beyond simple tables
       of UWPs, including allegiances, borders, routes, and other features necessary to generate complete sector maps. The tools
       are provided with full source, and modification and redistribution is encouraged. Sample data is provided for the classic
-      Spinward Marches as well as the Gateway Domain sectors featured in <cite class="traveller">TRAVELLER d20</cite> (T20.)
+      Spinward Marches as well as the Gateway Domain sectors featured in <cite>TRAVELLER d20</cite> (T20.)
   </p>
   <p>
       The <cite>allygen</cite> and <cite>sec2pdf</cite> tools also share and define an elegant mechanism for representing borders
@@ -80,7 +80,7 @@ div.figure { margin: 2em; }
       amenable to producing graphical representations of the border.
   </p>
   <p>
-      This author used <cite>allygen</cite> while generating borders for many sectors for the <cite class="traveller">Traveller</cite>
+      This author used <cite>allygen</cite> while generating borders for many sectors for the <cite>Traveller</cite>
       Map site (<a href="https://travellermap.com/">https://travellermap.com</a>), but found that the borders generated
       suffered from the issues identified above.
   </p>
@@ -132,7 +132,7 @@ div.figure { margin: 2em; }
       very reasonable "surfaces" over point sets, when the value of &alpha; is carefully chosen.
   </p>
   <p>
-      These algorithms take place in Cartesian space. In the hexagonally quantized space of <cite class="traveller">Traveller</cite>,
+      These algorithms take place in Cartesian space. In the hexagonally quantized space of <cite>Traveller</cite>,
       an approximation is used. The following algorithm is proposed.
   </p>
   <ul>
@@ -219,7 +219,7 @@ div.figure { margin: 2em; }
   </p>
   <div class="figure"><img alt="Known Issue" width="173" height="120" src="bd_images/image023.gif"></div>
   <p>
-      Non-aligned worlds that end up "within" polities are not considered. In the classic <cite class="traveller">Traveller</cite>
+      Non-aligned worlds that end up "within" polities are not considered. In the classic <cite>Traveller</cite>
       references, borders are not consistently shown for these hexes.
   </p>
 

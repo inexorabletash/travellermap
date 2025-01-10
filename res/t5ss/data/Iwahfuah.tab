@@ -28,7 +28,7 @@ Iwah	M	0332	Ktetlauea	C8A3686-9		Fl Ni		400	AsVc	K6 II D	{ -1 }	(853-2)	[5548]		
 Iwah	M	0333	Oahahlauaih	C787167-8		Lo Ga O:0330		410	AsSc	K3 V	{ -2 }	(400-2)	[1158]		6	-8
 Iwah	M	0336	Toawaoyatal	C200246-A		Lo Va		500	AsWc	M1 V	{ 0 }	(410-1)	[1249]		8	-4
 Iwah	M	0337	Eaiy	B621269-C		He Lo Po O:0237		512	AsT3	G5 V	{ 1 }	(711+2)	[336D]		9	14
-Iwah	M	0338	Fiyhreae	C566686-7		Ag Ni Ri		421	AsT9	K4 V M8 V	{ 0 }	(854-1)	[5646]		6	-160
+Iwah	M	0338	Fiyhreae	C566686-7		Ag Ni Ri		421	AsT1	K4 V M8 V	{ 0 }	(854-1)	[5646]		6	-160
 Iwah	M	0339	Eyuwailiyh	E7B616A-8		Fl Lo Da O:0237	A	200	AsT3	M2 V	{ -3 }	(300-1)	[317A]		7	-3
 Iwah	A	0403	Eahahau	A559478-A		Ni		213	AsSc	K3 V	{ 1 }	(A34+1)	[455A]		14	120
 Iwah	A	0407	Alrarl	A562438-D		Ni		104	AsMw	G1 V M5 V	{ 1 }	(A34+1)	[455D]		10	120
@@ -36,8 +36,8 @@ Iwah	A	0410	Kyukh	C100115-B		Lo Va		202	AsMw	M1 V M6 V	{ 0 }	(500-2)	[1139]		9	-
 Iwah	E	0413	Eye	C40047C-9		Ni Va		400	AsSc	K2 V M3 V	{ -1 }	(632+2)	[738C]		6	72
 Iwah	E	0417	Khtaseaei	D200784-8		Na Va Pi		424	AsVc	M2 V M7 V M3 V	{ -2 }	(F66-4)	[5536]		19	-2160
 Iwah	E	0420	Urlousas	E77A486-9		Ni Wa		824	AsWc	M2 V	{ -2 }	(C31-3)	[3248]		12	-108
-Iwah	I	0424	Staten	B575A8D-E		Hi In Pz Huma8	A	434	AsTz	F0 V	{ 4 }	(K9G+5)	[EE9J]		14	13680
-Iwah	I	0426	Monterey	C879889-9		Ph Pi Huma9		924	AsTz	M2 V M3 V	{ 0 }	(G79+1)	[986A]		17	1008
+Iwah	I	0424	Staten	B575A8D-E	T	Hi In Pz Huma8	A	434	AsTz	F0 V	{ 4 }	(K9G+5)	[EE9J]		14	13680
+Iwah	I	0426	Monterey	C879889-9	RT	Ph Pi Huma9		924	AsTz	M2 V M3 V	{ 1 }	(G79+1)	[996A]		17	1008
 Iwah	I	0428	Waye	C69A48B-8		Ni Wa		704	AsT3	M2 V M6 V	{ -2 }	(A31+1)	[627A]		12	30
 Iwah	I	0430	Sail	C300443-9		Ni Va		512	AsMw	M1 V M2 V	{ -1 }	(932-4)	[1326]		12	-216
 Iwah	M	0431	Tlaarleaheas	BA97167-A		Lo O:0330		302	AsSc	G2 V M3 V	{ 1 }	(501+1)	[125A]		14	5
@@ -100,7 +100,7 @@ Iwah	M	0835	Holreawilai	C743313-9		Lo Po		903	AsMw	M3 V M6 V	{ -1 }	(820-4)	[122
 Iwah	M	0837	Owaa	B7668A6-A	T	Ga Ri Pa Ph		625	AsTv	M1 V	{ 3 }	(H7C+2)	[7B49]		16	2856
 Iwah	M	0839	Kaw	C869558-B		Ni Pr		700	AsWc	M2 V M7 V	{ 0 }	(744+1)	[555B]		10	112
 Iwah	M	0840	Lyolasora'ya	C545898-8		Pa Ph Pi		714	AsT1	M2 V	{ -1 }	(F77-1)	[8758]		8	-735
-Iwah	B	0904	Yoktooieal	E581215-5		Lo		610	AsT9	M0 V	{ -3 }	(410-5)	[1133]		8	-20
+Iwah	B	0904	Yoktooieal	E581215-5		Lo		610	AsT0	M0 V	{ -3 }	(410-5)	[1133]		8	-20
 Iwah	B	0906	Hleakhaseoii	A575698-A		Ag Ni		602	AsMw	M0 V M3 V	{ 2 }	(A56+2)	[685A]		6	600
 Iwah	B	0907	Ftei	B410383-D		Lo		305	AsTv	M3 V M8 V	{ 1 }	(A21-2)	[142A]		12	-40
 Iwah	B	0910	Hrasyuewea	A300586-B		Ni Va		913	AsMw	M3 V	{ 1 }	(B45+1)	[464A]		9	220
@@ -145,7 +145,7 @@ Iwah	N	1236	Uirehih	C635498-8		Ni		214	AsT8	F0 V M1 V	{ -2 }	(B31-2)	[4258]		13	
 Iwah	N	1237	Oihiworl	C543577-9		Ni Po		112	AsSc	K4 V	{ -1 }	(A43-1)	[5459]		15	-120
 Iwah	N	1238	Teahea	A54249A-C		He Ni Po		122	AsWc	K2 IV M5 V	{ 1 }	(A34+3)	[657E]		14	360
 Iwah	N	1240	Ealea	B532454-D	T	Ni Po		703	AsT4	K2 V	{ 1 }	(934-1)	[253B]		8	-108
-Iwah	B	1305	Hiraihaikhah	E63568A-7		Ni		804	AsT6	M6 III	{ -3 }	(851-1)	[8379]		14	-40
+Iwah	B	1305	Hiraihaikhah	E63568A-7		Ni		804	AsT1	M6 III	{ -3 }	(851-1)	[8379]		14	-40
 Iwah	B	1306	Iysaiaorl	E542000-0		Ba He Po		001	AsXX	M1 V	{ -3 }	(200-5)	[0000]		7	-10
 Iwah	F	1318	Uhuahyahe	C647587-7		Ag Ni		704	AsWc	G8 IV	{ -1 }	(743-1)	[5457]		11	-84
 Iwah	J	1321	Hasoihao	B55649A-A	T	Ni Pa		112	AsVc	K2 V	{ 1 }	(934+3)	[657C]		10	324
@@ -224,7 +224,7 @@ Iwah	O	1938	Aiealia	B425314-C	T	Lo		902	AsTv	M0 V	{ 1 }	(721-1)	[143A]		10	-14
 Iwah	O	1939	Aoteahou	C75A494-8		Ni Wa		802	AsT1	G8 III	{ -2 }	(831-4)	[2236]		7	-96
 Iwah	C	2002	Ras	B553586-B		Ni Po		402	AsT7	M2 V	{ 1 }	(945+1)	[464A]		12	180
 Iwah	C	2003	Tiwa	B310684-C		Na Ni		304	AsWc	K2 V	{ 1 }	(C55-1)	[473A]		10	-300
-Iwah	C	2006	Aukhoih	C657498-9		Ni Ga Pa		711	AsT9	K3 V	{ -1 }	(832-1)	[4359]		7	-48
+Iwah	C	2006	Aukhoih	C657498-9		Ni Ga Pa		711	AsT1	K3 V	{ -1 }	(832-1)	[4359]		7	-48
 Iwah	C	2008	Foloilr	E310A76-9		Hi In Na		300	AsSc	K2 V M7 V	{ 1 }	(C9B+1)	[9B48]		9	1188
 Iwah	C	2010	Kheiw	C6B1279-A		Fl He Lo		304	AsSc	K7 V	{ 0 }	(810+1)	[326B]		15	8
 Iwah	G	2012	Uaihoi	D785778-6		Ag Ga Ri		802	AsSc	M0 V	{ 0 }	(967+1)	[7756]		12	378
@@ -237,7 +237,7 @@ Iwah	K	2027	Yaalr	C20037A-A		Lo Va		300	AsSc	M4 III D	{ 0 }	(520+2)	[537C]		10	2
 Iwah	K	2028	Earatliyrl	B566589-B		Ag Ni Pr		200	AsVc	M2 V M5 V	{ 2 }	(746+3)	[676C]		7	504
 Iwah	K	2030	Khtei	C668787-8		Ag Ri		804	AsWc	K1 V M4 V	{ 1 }	(D69+1)	[7858]		15	702
 Iwah	O	2032	Uihoa	BAB5898-B	T	Fl Ph		502	AsTv	G3 V	{ 2 }	(C7C+2)	[8A5B]		14	2016
-Iwah	O	2034	Hekheaowis	B9A47BB-B		Fl Pz	A	121	AsT6	M2 V	{ 2 }	(C6C+4)	[997D]		8	3456
+Iwah	O	2034	Hekheaowis	B9A47BB-B		Fl Pz	A	121	AsT0	M2 V	{ 2 }	(C6C+4)	[997D]		8	3456
 Iwah	O	2038	Eieiata	C310886-A		Na Ph Pi		100	AsMw	K1 V	{ 1 }	(A7A+1)	[7949]		7	700
 Iwah	O	2039	Steal	B555886-A		Pa Ph		313	AsMw	M2 V	{ 2 }	(E7B+1)	[7A49]		14	1078
 Iwah	O	2040	Fteieihi	C66126B-8		Lo O:2039		703	AsMw	M2 V	{ -2 }	(710+1)	[417A]		10	7
@@ -248,7 +248,7 @@ Iwah	C	2110	Eahlou	B727384-A		Lo		813	AsTv	M2 V M5 V	{ 1 }	(921-1)	[1438]		9	-18
 Iwah	G	2112	Tehaohtiyar	X5385A7-6		Ni Fo	R	714	AsT1	M3 V	{ -3 }	(741-3)	[5256]		11	-84
 Iwah	G	2116	Ea'eahao	E75A447-9		Ni Wa		200	AsVc	M2 V	{ -2 }	(631-2)	[4259]		6	-36
 Iwah	G	2118	Takhyae	X3107CA-7		Na Pi Fo	R	300	AsVc	K4 V	{ -2 }	(966+1)	[9579]		9	324
-Iwah	K	2121	Oalryokh	B565138-A		Lo		701	AsT8	F8 V M2 V	{ 1 }	(401+1)	[125A]		12	4
+Iwah	K	2121	Oalryokh	B565138-A		Lo		701	AsT1	F8 V M2 V	{ 1 }	(401+1)	[125A]		12	4
 Iwah	K	2122	Ea'aiw	C5558BB-8		Pa Ph Pz	A	501	AsTv	M2 III	{ -1 }	(B77+1)	[A77A]		10	539
 Iwah	K	2125	Eakhaoaiaiei	A75A5AC-E		Ni Wa Da	A	713	AsVc	M2 V M4 V	{ 1 }	(B45+4)	[868H]		11	880
 Iwah	K	2129	Aoiyauarl	C551587-8		Ni Po		720	AsT3	M1 V M5 V	{ -2 }	(942-2)	[5358]		5	-144
@@ -290,17 +290,17 @@ Iwah	O	2436	Oiyar	C8A375A-A		Fl		425	AsMw	M2 V	{ 1 }	(G6A+3)	[987C]		16	2880
 Iwah	O	2437	Kawai	C627485-9		Ni		320	AsTv	M1 V	{ -1 }	(832-3)	[2337]		9	-144
 Iwah	O	2438	Hayayokh	C592687-8		He Ni		904	AsT9	M1 V	{ -2 }	(C52-2)	[6458]		11	-240
 Iwah	O	2440	Eahikha'aokh	C100314-8		Lo Va		902	AsMw	G6 III	{ -2 }	(720-4)	[1136]		12	-56
-Iwah	D	2501	Khtearloa	B535854-C		Ph		800	AsMw	M0 V M3 V	{ 2 }	(A7C+1)	[6A3A]		4	840
-Iwah	D	2502	Hkaieakhte	A000448-D		As Ni Va		423	AsWc	K3 V	{ 1 }	(B34+1)	[455D]		13	132
-Iwah	D	2504	Eaoieiw	A573416-A		Ni		600	AsT6	M0 V	{ 1 }	(634+1)	[3549]		5	72
-Iwah	D	2505	Yoyel	X565278-3		Lo Fo	R	412	AsSc	G9 V M5 V	{ -3 }	(410-3)	[2153]		8	-12
+Iwah	D	2501	Khtearloa	B535854-C	R	Ph		800	AsMw	M0 V M3 V	{ 2 }	(A7C+1)	[6A3A]		4	840
+Iwah	D	2502	Hkaieakhte	A000448-D	R	As Ni Va		423	AsWc	A2 V	{ 1 }	(B34+1)	[455D]		13	132
+Iwah	D	2504	Eaoieiw	A573416-A		Ni Tz		600	AsT2	M0 V	{ 1 }	(634+1)	[3549]		5	72
+Iwah	D	2505	Yoyel	X565278-3		Lo Ho Fo	R	412	AsSc	G9 V M5 V	{ -3 }	(410-3)	[2153]		8	-12
 Iwah	H	2511	Aurlaouiiyl	E572379-7		He Lo		505	AsSc	M1 V	{ -3 }	(520-2)	[4168]		18	-20
 Iwah	H	2513	Us	E553688-6		Ni Po		404	AsMw	A1 II M8 V	{ -3 }	(851-3)	[6356]		14	-120
 Iwah	H	2514	Earlyehta	A30016A-D		Lo Va O:2711		602	AsVc	G6 V M0 V	{ 1 }	(501+3)	[327F]		10	15
 Iwah	H	2518	Aiehiiy	C686884-8		Ga Ri Pa Ph		310	AsMw	M2 V M6 V	{ 0 }	(B78-2)	[6836]		9	-1232
 Iwah	L	2522	Outeasikh	C200445-7		Ni Va		101	AsMw	M1 V	{ -2 }	(631-4)	[2235]		5	-72
 Iwah	L	2523	Yahryew	X546687-5		Ag Ni Fo	R	504	AsVc	M0 V	{ -2 }	(852-2)	[6455]		14	-160
-Iwah	D	2601	Uitiy	B987974-C	T	Hi Pr		604	AsSc	K7 V M2 V	{ 3 }	(F8E+1)	[7C3A]		14	1680
+Iwah	D	2601	Uitiy	B987974-C	RT	Hi Pr		604	AsSc	K7 V M2 V	{ 4 }	(F8E+1)	[7D3A]		14	1680
 Iwah	D	2610	Akteaeirlar	D539484-9		Ni		503	AsMw	K0 V M2 V	{ -2 }	(931-4)	[2237]		10	-108
 Iwah	H	2612	Ealasoul	E300495-9		Ni Va		313	AsMw	M0 III M6 V	{ -2 }	(A31-4)	[2237]		12	-120
 Iwah	H	2613	Alaieleakhur	C10058B-B		Ni Va		415	AsWc	F2 V M0 V	{ 0 }	(D44+2)	[757D]		16	416
@@ -316,10 +316,10 @@ Iwah	P	2632	Hlaihawakha	A887247-A		Lo Ga		204	AsT1	M0 V	{ 1 }	(811+1)	[235A]		15
 Iwah	P	2633	Oiyeleyo'	X4225AC-7		He Ni Po Fo	R	513	AsWc	A1 V M5 V	{ -3 }	(741+1)	[828A]		17	28
 Iwah	P	2638	Khiai	X54326B-5		Lo Po Fo O:2739	R	914	AsVc	M0 V M1 V M2 V	{ -3 }	(410-1)	[4177]		13	-4
 Iwah	P	2639	Khye	C676786-8		Ag Pi		304	AsVc	M2 V	{ 0 }	(D68-1)	[6747]		15	-624
-Iwah	D	2705	Tisaryarlou	DA7A205-8		Lo Oc		900	AsMw	M8 III D	{ -3 }	(410-5)	[1136]		13	-20
-Iwah	D	2706	Ihyuhiyilya	B42426B-8		Lo O:3003		505	AsMw	K1 V	{ -1 }	(910+1)	[417A]		17	9
-Iwah	D	2708	Ahyaaw	D432327-9		Lo Po		604	AsWc	M1 V	{ -2 }	(920-2)	[3159]		11	-36
-Iwah	D	2709	Feheah	B769503-D		Ni Pr		800	AsMw	M3 V	{ 1 }	(745-2)	[262A]		8	-280
+Iwah	D	2705	Tisaryarlou	DA7A205-8		Lo Oc		900	AsMw	K8 V D	{ -3 }	(410-5)	[1136]		13	-20
+Iwah	D	2706	Ihyuhiyilya	B42426B-8	R	Lo O:3003		505	AsMw	K1 V	{ -1 }	(910+1)	[417A]		17	9
+Iwah	D	2708	Ahyaaw	D432327-9		Lo Po Tz		604	AsWc	M1 V	{ -2 }	(920-2)	[3159]		11	-36
+Iwah	D	2709	Feheah	B769503-D	R	Ni Pr		800	AsMw	M3 V	{ 1 }	(745-2)	[262A]		8	-280
 Iwah	D	2710	Htyafteaoir	A200368-E		Lo Va O:2711		302	AsVc	G9 V M9 V	{ 1 }	(721+1)	[345E]		8	14
 Iwah	H	2711	Iyesuaea	A96A796-B		Ri Wa		114	AsVc	M2 V	{ 3 }	(E6D+2)	[6A4A]		11	2184
 Iwah	L	2721	Hauisea	X756886-2		Ga Pa Ph Fo	R	502	AsTv	K9 II D	{ -2 }	(A73-3)	[7641]		10	-630
@@ -334,7 +334,7 @@ Iwah	P	2736	Oaheiktala	C100887-9		Na Va Ph Pi		210	AsWc	M0 V	{ 0 }	(B79+1)	[8859
 Iwah	P	2738	Eikhaiwisa	B434369-9		Lo O:2739		804	AsVc	M1 V	{ 0 }	(920+1)	[436A]		11	18
 Iwah	P	2739	Oiwokhei	A668788-C		Ag Ri		105	AsVc	G2 V M6 V	{ 4 }	(E6E+4)	[7B5C]		11	4704
 Iwah	P	2740	Hteosah	C668686-8		Ag Ni Ri		800	AsT2	K0 V	{ 0 }	(854-1)	[5647]		9	-160
-Iwah	D	2801	Iyes	B310388-C		Lo		902	AsMw	K7 V M5 V	{ 1 }	(721+1)	[345C]		6	14
+Iwah	D	2801	Iyes	B310388-C		Lo		902	AsMw	K3 III D	{ 1 }	(721+1)	[345C]		6	14
 Iwah	D	2808	Kikhtoiw	B557386-B		Lo		903	AsT2	M3 V M9 V	{ 1 }	(821+1)	[244A]		15	16
 Iwah	H	2811	El	C79A6BA-8		Ni Wa Da	A	310	AsVc	K0 V	{ -2 }	(952+1)	[847A]		10	90
 Iwah	H	2812	Aiyekhoa	E7698AA-7		Ri Ph Pz	A	114	AsTv	G6 V M2 V	{ -1 }	(A77+1)	[A779]		15	490
@@ -348,24 +348,24 @@ Iwah	P	2832	Iylreifoa	B547894-A		Pa Ph Pi		904	AsMw	M1 V	{ 2 }	(E7B+1)	[6A38]		1
 Iwah	P	2833	Osealais	C567266-6		Lo O:2832		504	AsMw	M0 V	{ -2 }	(410-3)	[1145]		16	-12
 Iwah	P	2834	Tyawoal	A68657A-D		Ag Ni Ga Pr		705	AsSc	M7 III	{ 2 }	(C46+4)	[777F]		16	1152
 Iwah	P	2836	Eaouaiy	X432725-6		Na Po Fo	R	523	AsVc	M5 III	{ -2 }	(965-4)	[5534]		9	-1080
-Iwah	P	2839	Tisarewoilr	C6578BB-8		Ga Pa Ph Pz	A	514	AsT8	M2 II	{ -1 }	(F77+1)	[A77A]		10	735
-Iwah	D	2904	Hreiaeaw	A667166-9		Lo Ga O:3003		804	AsMw	K3 V	{ 0 }	(700-1)	[1148]		8	-7
+Iwah	P	2839	Tisarewoilr	C6578BB-8		Ga Pa Ph Pz	A	514	AsT0	M2 II	{ -1 }	(F77+1)	[A77A]		10	735
+Iwah	D	2904	Hreiaeaw	A667166-9		Lo Ga Co O:3003		804	AsMw	K3 V	{ 0 }	(700-1)	[1148]		8	-7
 Iwah	D	2905	Eiyetaoyel	C524368-8		Lo O:3003		115	AsMw	M1 V	{ -2 }	(B20-2)	[3158]		12	-44
-Iwah	D	2906	Arleahaeihiy	D100733-9		Na Va Pi		500	AsMw	M2 V	{ -1 }	(968-4)	[4626]		12	-1728
-Iwah	D	2907	Uilekhalr	A310268-E	R	Lo O:2909		710	AsT0	M2 V M3 V	{ 1 }	(511+1)	[235E]		5	5
-Iwah	D	2909	Tyaou	B1008B8-D	R	Na Va Ph Pi		614	AsT0	K2 V	{ 2 }	(F7D+2)	[8A5D]		10	2730
-Iwah	D	2910	Yeil	D595338-7		Lo		310	AsT4	G6 V	{ -3 }	(520-3)	[3157]		9	-30
+Iwah	D	2906	Arleahaeihiy	D100733-9	R	Na Va Pi		500	AsMw	M2 V	{ -1 }	(968-4)	[4626]		12	-1728
+Iwah	D	2907	Uilekhalr	A310268-E	R	Lo Tz O:2909		710	AsMw	M2 V M3 V	{ 1 }	(511+1)	[235E]		5	5
+Iwah	D	2909	Tyaou	B1008B8-D	R	Na Va Ph Pi		614	AsMw	K2 V	{ 2 }	(F7D+2)	[8A5D]		10	2730
+Iwah	D	2910	Yeil	D595338-7		Lo Ho		310	AsT4	G6 V	{ -3 }	(520-3)	[3157]		9	-30
 Iwah	H	2915	Oirahea	C43745A-B		Ni		105	AsWc	M1 V M8 V	{ 0 }	(B33+2)	[647D]		13	198
 Iwah	H	2916	Ftow	D96A438-6		Ni Wa		305	AsWc	M2 V M4 V	{ -3 }	(631-3)	[4156]		14	-54
 Iwah	H	2918	Uiaour	B434975-E	R	Hi		403	AsSc	M1 V	{ 3 }	(E8F+1)	[7C3C]		13	1680
 Iwah	P	2936	Wuikeas	B78A487-D	T	Ni Wa		204	AsTv	M9 III	{ 1 }	(A34+1)	[455D]		11	120
 Iwah	P	2940	Te	A57416A-C		Lo O:2739		812	AsVc	M0 V	{ 1 }	(601+3)	[327E]		12	18
-Iwah	D	3002	Iysas	E100A8A-B		Hi In Na Va		502	AsTv	K0 V M4 V M7 V	{ 2 }	(E9D+4)	[CC7D]		7	6552
-Iwah	D	3003	Hfae	C541A88-A		He Hi In Po		303	AsMw	K2 V M6 V	{ 3 }	(F9D+3)	[AD5A]		11	5265
-Iwah	D	3004	Foahleahiyah	B997683-9		Ag Ni		423	AsWc	K4 V	{ 1 }	(D55-2)	[3726]		15	-650
-Iwah	D	3009	Aulaolrew	A000694-B	R	As Na Ni Va		702	AsVc	A8 IV	{ 1 }	(A55-1)	[4739]		7	-250
+Iwah	D	3002	Iysas	E100A8A-B		Hi In Na Va Lk		502	AsTv	K0 V M4 V M7 V	{ 2 }	(E9D+4)	[CC7D]		7	6552
+Iwah	D	3003	Hfae	C541A88-A	R	He Hi In Po		303	AsMw	K2 V M6 V	{ 3 }	(F9D+3)	[AD5A]		11	5265
+Iwah	D	3004	Foahleahiyah	B997683-9	R	Ag Ni		423	AsWc	K4 V	{ 1 }	(D55-2)	[3726]		15	-650
+Iwah	D	3009	Aulaolrew	A000694-B	R	As Na Ni Va		702	AsVc	G8 IV	{ 1 }	(A55-1)	[4739]		7	-250
 Iwah	D	3010	Hahoaui	X564A76-6		Hi Fo	R	704	AsSc	K0 V	{ -1 }	(C97-2)	[9945]		16	-1512
-Iwah	H	3011	Taoea	B434554-D		Ni		123	AsT6	K1 V	{ 1 }	(C45-1)	[363B]		12	-240
+Iwah	H	3011	Taoea	B434554-D		Ni		123	AsT1	K1 V	{ 1 }	(C45-1)	[363B]		12	-240
 Iwah	H	3017	Aialoiiyrei	D687266-6		Lo Ga O:2918		212	AsSc	M5 III D	{ -3 }	(410-4)	[1145]		16	-16
 Iwah	H	3019	Hoikiyhaiha	C200899-A		Na Va Ph Pi		600	AsWc	G5 III	{ 1 }	(A7A+2)	[996B]		5	1400
 Iwah	H	3020	Aeesa	C9E4547-7		Ni		200	AsT2	M3 V	{ -2 }	(742-2)	[5357]		7	-112
@@ -376,7 +376,7 @@ Iwah	L	3028	Iyw	A577553-D		Ag Ni		600	AsTv	M3 V	{ 2 }	(746-1)	[272A]		10	-168
 Iwah	L	3030	Yeyewearlal	X659675-3		Ni Fo	R	825	AsSc	G0 V	{ -3 }	(851-5)	[4331]		11	-200
 Iwah	P	3032	Heaai	B433754-D	T	Na Po		502	AsT0	G0 V M0 V	{ 2 }	(B6D+1)	[593B]		12	858
 Iwah	P	3034	Khtai	C432347-B		Lo Po		210	AsT5	K7 III	{ 0 }	(620+1)	[335B]		11	12
-Iwah	D	3106	Yelaohiya	D556478-7		Ni Pa		703	AsSc	M2 V	{ -3 }	(631-3)	[4157]		7	-54
+Iwah	D	3106	Yelaohiya	D556478-7	T	Ni Pa		703	AsSc	M2 V	{ -3 }	(631-3)	[4157]		7	-54
 Iwah	D	3107	Oahoi'ieyus	C556227-7		Lo		824	AsVc	K8 V	{ -2 }	(410-2)	[2157]		12	-8
 Iwah	H	3115	Stairearl	A628984-D		Hi In		504	AsMw	A6 V K5 V	{ 4 }	(F8G+2)	[7D3B]		10	3840
 Iwah	H	3116	Ayarlyeea	D310978-A		Hi In Na		203	AsSc	M3 V	{ 2 }	(E8C+2)	[9B5A]		9	2688
@@ -389,11 +389,11 @@ Iwah	L	3130	Areieileea	C587225-9		Lo		403	AsTv	F0 V	{ -1 }	(710-3)	[1137]		7	-21
 Iwah	P	3131	Iystea	C9C5759-A		Fl		312	AsTv	M1 V	{ 1 }	(C6A+2)	[886B]		12	1440
 Iwah	P	3138	Htiyh	C3105A7-8		Ni		400	AsVc	G7 IV	{ -2 }	(742-2)	[5358]		12	-112
 Iwah	D	3201	Eiwew	C9795A9-7		Ni		300	AsTv	G9 V M0 V	{ -2 }	(742-1)	[6368]		4	-56
-Iwah	D	3202	Ahreah	C7C4A75-D		Fl Hi In		303	AsSc	M1 V M3 V	{ 3 }	(F9F+1)	[8D3B]		12	2025
-Iwah	D	3203	Eayeakha'	C200637-8		Na Ni Va		412	AsMw	M2 V	{ -2 }	(B52-2)	[6458]		11	-220
+Iwah	D	3202	Ahreah	C7C4A75-D	R	Fl Hi In		303	AsSc	M1 V M3 V	{ 3 }	(F9F+1)	[8D3B]		12	2025
+Iwah	D	3203	Eayeakha'	C200637-8	R	Na Ni Va Lk		412	AsMw	M2 V	{ -2 }	(B52-2)	[6458]		11	-220
 Iwah	D	3205	Khyaktaeis	A8A4343-D	R	Fl Lo		804	AsMw	M1 V M3 V	{ 1 }	(921-2)	[142A]		8	-36
-Iwah	D	3207	Ahkoi	A6A258C-D		Fl He Ni Da	A	604	AsTv	M2 V	{ 1 }	(B45+4)	[868G]		12	880
-Iwah	D	3209	Fteira	E100789-9		Na Va Pi		104	AsWc	M1 V M5 V	{ -1 }	(D68+1)	[866A]		14	624
+Iwah	D	3207	Ahkoi	A6A258C-D	RT	Fl He Ni Da Fr	A	604	AsTv	M2 V	{ 2 }	(B45+4)	[878G]		12	880
+Iwah	D	3209	Fteira	E100789-9		Na Va Pi Sa		104	AsWc	M1 V M5 V	{ -1 }	(D68+1)	[866A]		14	624
 Iwah	D	3210	Earlah	B79A497-D		Ni Wa		500	AsWc	G4 V M9 V	{ 1 }	(634+1)	[455D]		9	72
 Iwah	H	3219	Eroaewe	B410687-A		Na Ni		803	AsVc	G3 V M4 V	{ 1 }	(B55+1)	[675A]		10	275
 Iwah	H	3220	Eiihea	D522355-9		He Lo Po		603	AsWc	M3 V	{ -2 }	(820-4)	[1137]		8	-64

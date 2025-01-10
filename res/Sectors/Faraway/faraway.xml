@@ -116,6 +116,23 @@
     <MetadataFile>Beyond 1991.xml</MetadataFile>
   </Sector>
 
+  <!-- Don McKinney updates to Paranoia Press Sectors -->
+
+  <Sector Abbreviation="VRDM" Label="Vanguard Reaches" Tags="Apocryphal">
+    <X>152</X>
+    <Y>2</Y>
+    <Name>Vanguard Reaches (Don McKinney 2015)</Name>
+    <DataFile Type="TabDelimited">Vanguard Reaches DonM.tab</DataFile>
+    <MetadataFile>Vanguard Reaches DonM.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="BEDM" Label="The Beyond" Tags="Apocryphal">
+    <X>153</X>
+    <Y>2</Y>
+    <Name>The Beyond (Don McKinney 2015)</Name>
+    <DataFile Type="TabDelimited">Beyond DonM.tab</DataFile>
+    <MetadataFile>Beyond DonM.xml</MetadataFile>
+  </Sector>
+
   <!-- Fan-Submitted, non-OTU Sectors -->
 
   <Sector Tags="Faraway">
@@ -164,6 +181,14 @@
     <Name>Matzen</Name>
     <DataFile Author="Roger Nicholls" Type="SecondSurvey">Matzen.txt</DataFile>
     <MetadataFile>Matzen.xml</MetadataFile>
+  </Sector>
+
+  <Sector Tags="Faraway">
+    <Name>Odessa</Name>
+    <X>66</X>
+    <Y>69</Y>
+    <DataFile Type="TabDelimited">Odessa.tab</DataFile>
+    <MetadataFile>Odessa.xml</MetadataFile>
   </Sector>
 
   <!-- Alternate (non-canon) versions of OTU Sectors -->

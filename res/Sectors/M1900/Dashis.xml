@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<Sector Abbreviation="Dash" Tabs="Unreviewed">
+  <Name>Dashis</Name>
+  <Credits>
+    <![CDATA[
+
+	  Created by Robert Eaglestone, October 2024.
+
+    This sector modifies TL determination as follows:
+
+    	TL = 2D - 2                     # +1D - 2
+        += 7 if Starport eq 'A';      # +1
+        += 5 if Starport eq 'B';      # +1
+        += 3 if Starport eq 'C';      # +1
+        += 1 if SIZ > 9;              # New
+        += 1 if ATM == 4 or ATM == 7 or ATM == 9; # New
+        += 2 if HYD == 9;             # +1
+        += 3 if HYD == 10;            # +1
+        += 4 if POP > 8;              # +2
+
+    ]]>
+  </Credits>
+  
+  <Subsectors>
+    <Subsector Index="A">Gawirkkan</Subsector>
+    <Subsector Index="B">Ool</Subsector>
+    <Subsector Index="C">Kbin</Subsector>
+    <Subsector Index="D">Treemlow</Subsector>
+    <Subsector Index="E">Anchus</Subsector>
+    <Subsector Index="F">Twull</Subsector>
+    <Subsector Index="G">Kussgreb</Subsector>
+    <Subsector Index="H">Tilakbi</Subsector>
+    <Subsector Index="I">Wishgiwl</Subsector>
+    <Subsector Index="J">Glin</Subsector>
+    <Subsector Index="K">Tramb</Subsector>
+    <Subsector Index="L">Sunbafi</Subsector>
+    <Subsector Index="M">Bagash</Subsector>
+    <Subsector Index="N">Niell</Subsector>
+    <Subsector Index="O">Danmal</Subsector>
+    <Subsector Index="P">Sharanu</Subsector>
+  </Subsectors>
+</Sector>

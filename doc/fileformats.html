@@ -71,6 +71,10 @@ File Format</a> for more details.
 <section id="trader">
 <h2>TRADER Format</h2>
 
+<p class=highlight>
+    NOTE: This format is documented for posterity; it is not supported by the site's tools.
+</p>
+
 <p>
 The original electronic format for sector data was defined
 by Marc Miller in <em>"Electronically Exploring the Traveller Universe"</em>
@@ -700,12 +704,15 @@ Lines in the file are terminated with either LF (U+000A) or CR+LF (U+000D, U+000
 
 Every line in the file has fields separated by the Tab character
 (U+0009). There is no escaping mechanism &ndash; neither tabs nor line
-breaking characters may occur within fields. Comments are not supported.
-Blank lines should be ignored.
+breaking characters may occur within fields.
 </p>
 
 <p>
-The first line in the file is the <dfn>header</dfn>; it is tab-delimited
+Blank lines are ignored. Lines starting with <code>#</code> (U+0023) are ignored.
+</p>
+
+<p>
+The first non-blank/non-comment line in the file is the <dfn>header</dfn>; it is tab-delimited
 and defines the fields. The fields do not appear in a fixed order.
 Parsers should read the header line and use it to construct a
 field index to field name mapping for use with the rest of the file.
@@ -748,6 +755,10 @@ These commonly include:
 
 <section id="t5col">
 <h2>T5 Column Delimited Format</h2>
+
+<p class=highlight>
+  NOTE: If not explicitly specified by request headers, the site's tools only auto-detect this format if the <code>{Ix}</code>, <code>(Ex)</code> and <code>[Cx]</code> headers are present. Otherwise another format will be inferred. Include those fields in the header (even if the content is blank) to use this format.
+</p>
 
 <p>
 Although the tab-delimited format is the most convenient for interchange
@@ -1146,10 +1157,8 @@ Hex, Name, UWP, Remarks, Ix, Ex, Cx, N, B, Z, PBG, W, A, Stellar.
 
 <div class="editorial">
   <p>
-    The <em class="product">Traveller</em> game in all forms is owned by Far
-    Future Enterprises. Copyright <span class=copyright>&copy;</span> 1977
-    &ndash; 2023 Far Future Enterprises.
-    <a href="https://farfuture.net/FFEFairUsePolicy2008.pdf">Fair Use Policy</a>
+    The <em class="product">Traveller</em> game in all forms is owned by Mongoose Publishing. Copyright 1977 &ndash; 2024 Mongoose Publishing.
+    <a href="https://cdn.shopify.com/s/files/1/0609/6139/0839/files/Traveller_Fair_Use_Policy_2024.pdf?v=1725357857">Fair Use Policy</a>
 </div>
 
 <script src="toc.js"></script>
