@@ -21,7 +21,7 @@ namespace Maps
             public string? luminosity; // Ia, Ib, II, III, IV, V, VI, VII
         }
 
-        private static readonly Regex STELLAR_REGEX = new Regex(@"([OBAFGKM][0-9] ?(?:Ia|Ib|II|III|IV|V|VI|VII|D)|D|NS|PSR|BH|BD)",
+        private static readonly Regex STELLAR_REGEX = new Regex(@"([OBAFGKM][0-9] ?(?:Ia|Ib|III|II|IV|VII|VI|V|D)|D|NS|PSR|BH|BD)",
             RegexOptions.Compiled | RegexOptions.CultureInvariant);
 
         private static Regex STAR_REGEX = new Regex(@"^([OBAFGKM])([0-9]) ?(Ia|Ib|II|III|IV|V|VI)$",
