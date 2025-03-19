@@ -290,7 +290,9 @@ body {
   font-size: 10pt;
   color: var(--fg-color);
   background-color: var(--bg-color);
-  text-wrap: balance;
+
+  /* Bad things to UI in Safari? */
+  x-text-wrap: balance;
 
   -webkit-touch-callout: none;
   -webkit-text-size-adjust: 100%;
@@ -1146,7 +1148,7 @@ body:not(.route-shown) #routeBox { min-height: 135px; max-height: 135px; }
 
 /* checkbox/radio buttons are larger on iOS */
 .settings h3 { font-size: 10pt; font-weight: bold; margin: 0; }
-.settings-item { line-height: 25px; margin-left: 20px; }
+.settings-item { line-height: 25px; margin-left: 20px; white-space: nowrap; }
 
 #settingsBtn-poster { background-image: url('res/ui/style-poster.png'); }
 #settingsBtn-atlas  { background-image: url('res/ui/style-atlas.png'); }
