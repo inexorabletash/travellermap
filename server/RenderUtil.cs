@@ -633,7 +633,7 @@ namespace Maps.Rendering
                 { "III", 2 },
                 { "IV", 1 },
                 { "V", 0 },
-                { "VI", 0 }
+                { "VI", -0.1f }
             });
 
         // Base radius for spectral class.
