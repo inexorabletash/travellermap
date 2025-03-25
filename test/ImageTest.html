@@ -117,11 +117,9 @@ tbody#results tr.fail td { border: 1px solid red; }
     }
   }
 
-  function check(url1, url2, opt_threshold, opt_count) {
+  function check(url1, url2, threshold=DEFAULT_THRESHOLD, count=DEFAULT_COUNT) {
     url2 = SERVICE_BASE + url2;
 
-    var threshold = (opt_threshold === undefined) ? DEFAULT_THRESHOLD : opt_threshold;
-    var count = (opt_count === undefined) ? DEFAULT_COUNT: opt_count;
     var tr, td;
 
     tr = document.createElement('tr');
