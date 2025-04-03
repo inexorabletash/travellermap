@@ -224,3 +224,17 @@ nav.toc a.H3 { margin-left: 2em; }
 nav.toc a.H4 { margin-left: 3em; font-style: italic; }
 nav.toc a.H5 { margin-left: 4em; }
 nav.toc a.H6 { margin-left: 5em; }
+
+/* Navigation Bar - when trapped in a standalone window */
+
+#navbar { display: none; }
+@media (display-mode: standalone) {
+  body {
+    padding-top: 20px;
+  }
+  #navbar {
+    position: fixed;
+    top: 10px;
+    display: initial;
+  }
+}
