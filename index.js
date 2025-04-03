@@ -539,8 +539,19 @@
   // Keyboard Shortcuts
 
   mapElement.addEventListener('keydown', event => {
+    if (event.ctrlKey) {
+      if (!isIframe && event.key === '/') {
+        console.log('hi there');
+        event.preventDefault();
+        event.stopPropagation();
+        document.location = 'doc/about#keyboard-controls';
+        return;
+      }
+    }
+
     if (event.ctrlKey || event.altKey || event.metaKey)
       return;
+
     if (event.key === 'c') {
       event.preventDefault();
       event.stopPropagation();
