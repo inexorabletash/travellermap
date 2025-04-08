@@ -1660,9 +1660,9 @@
   }
 
   // Show promo, if not dismissed.
-  if (!isIframe && $('#promo-closebtn')) {
+  if (!isIframe && $('#promo-hover')) {
     setTimeout(() => {
-      const promo_key = 'tm_promo5';
+      const promo_key = $('#promo-hover').dataset.key;
       if (!localStorage.getItem(promo_key)) {
         document.body.classList.add('show-promo');
         $('#promo-closebtn').addEventListener('click', event => {
