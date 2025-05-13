@@ -832,7 +832,7 @@
     world.sector_url_noscheme = world.sector_url.replace(/^\w+:\/\//, '');
 
     // Map Generator
-    const GENERATOR_BASE = 'https://travellerworlds.com/';
+    const GENERATOR_BASE = 'https://www.travellerworlds.com/';
 
     const map_generator_options = {
       hex: world.Hex,
