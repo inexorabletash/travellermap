@@ -1644,6 +1644,7 @@
   })();
 
   // Show cookie accept prompt, if necessary.
+  /*
   if (!isIframe) {
     setTimeout(() => {
       const cookies = Util.parseCookies();
@@ -1658,6 +1659,7 @@
       }
     }, 1000);
   }
+  */
 
   // Show promo, if not dismissed.
   if (!isIframe && $('#promo-hover')) {
