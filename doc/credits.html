@@ -727,6 +727,11 @@
       are present on the map, located far away from charted space:
       <a class=sector>The Beyond (Paranoia Press 1991)</a> and
       <a class=sector>Vanguard Reaches (Paranoia Press 1991)</a>.
+
+      Don McKinney made another update to these sectors in 2015, which
+      are present on the map as
+      <a class=sector>The Beyond (Don McKinney 2015)</a> and
+      <a class=sector>Vanguard Reaches (Don McKinney 2015)</a>.
     </p>
 
     <p>
@@ -1296,6 +1301,16 @@
           sectors were designed by P-O Bergstedt.
       </p>
 
+      <p>
+          <a class=sector>Odessa</a>
+          sector was designed by Richard Hewitt.
+      </p>
+
+      <p>
+          <a class=sector>Solo 6</a>
+          sector was designed by Sean Nelson.
+      </p>
+
       <!-- ================================================================================ -->
       <h2>Borders and Routes</h2>
       <!-- ================================================================================ -->
@@ -1390,6 +1405,7 @@
       const tags = s.Tags.split();
       if (tags.indexOf('meta') !== -1) return false;
       if (tags.indexOf('ZCR') !== -1) return false;
+      if (s.Milieu === 'M1900') return false;
       return true;
     });
     known.forEach(s => {
