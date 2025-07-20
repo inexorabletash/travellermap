@@ -39,6 +39,15 @@
     return null;
   }
 
+  function fetchImage(url, img) {
+    return new Promise((resolve, reject) => {
+      img = img || document.createElement('img');
+      img.src = url;
+      img.onload = () => { resolve(img); };
+      img.onerror = () => { reject(Error(`failed to load ${url}`)); };
+    });
+  }
+
   let finished = false;
   function status(string, pending) {
     if (finished) return;
@@ -192,20 +201,23 @@
     return Promise.reject(new Error('No sector or metadata specified.'));
   }
 
-  window.addEventListener('DOMContentLoaded', () => {
+  window.addEventListener('DOMContentLoaded', async () => {
     const searchParams = new URL(document.location).searchParams;
     if (searchParams.has('sector')) {
       document.body.classList.add('render');
-      render({
+      const success = await render({
         sector: searchParams.get('sector'),
         milieu: searchParams.get('milieu'),
         style: searchParams.get('style'),
         options: searchParams.get('options')
       });
+      if (success && searchParams.has('print')) {
+        window.print();
+      }
       return;
     }
 
-    $('#compose').addEventListener('click', event => {
+    $('#compose').addEventListener('click', async event => {
       event.preventDefault();
       const form = $('#form');
       if (!form['data'].value.length) {
@@ -214,7 +226,7 @@
       }
       document.body.classList.add('render');
       document.body.classList.add('style-' + $('#data-style').value);
-      render({
+      await render({
         data: form['data'].value,
         metadata: form['metadata'].value,
         style: form['map-style'].value
@@ -289,7 +301,8 @@
         imageURL = getTextViaPOST(Traveller.MapService.makeURL('/api/poster'), url_params);
       }
       pending_promises.push(imageURL.then(url => {
-        return () => { $('img.sector-image').src = url; };
+        // This task is run after the page is generated via template.
+        return () => fetchImage(url, $('img.sector-image'));
       }));
 
       range(16).forEach(i => {
@@ -432,11 +445,8 @@
           imageURL = getTextViaPOST(Traveller.MapService.makeURL('/api/poster'), url_params);
         }
         pending_promises.push(imageURL.then(url => {
-          return () => {
-            const img = $(`#ss${subsector.index} img.subsector-image`);
-            img.src = url;
-            window['img_' + subsector.index] = img;
-          };
+          // This task is run after the page is generated via template.
+          return () => fetchImage(url, $(`#ss${subsector.index} img.subsector-image`));
         }));
 
         subsector.density = (subsector.worlds.length < 42) ? 'sparse' : 'dense';
@@ -452,11 +462,13 @@
       document.body.innerHTML = template(sector);
 
       // Other results are tasks to run.
-      results.forEach(result => { result(); });
+      await Promise.all(results.map(r => r()));
 
       window.location.hash = hash;
+      return true;
     } catch (error) {
       status(`Failed: ${error}`);
+      return false;
     }
   }
 
