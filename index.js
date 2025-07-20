@@ -999,7 +999,8 @@
         data.SectorWikiURLNoScheme = data.SectorWikiURL.replace(/^\w+:\/\//, '');
         data.BookletURL = Traveller.MapService.makeURL(
           `/data/${encodeURIComponent(data.SectorName)}/booklet`, {
-            milieu
+            milieu,
+            print: 1,
           });
 
         data.PosterURL = Traveller.MapService.makeURL('/api/poster', {
@@ -1086,6 +1087,16 @@
       element.addEventListener('click', event => {
         document.body.classList.toggle('ds-mini');
       });
+    });
+
+    $('#sds-print-booklet-link').addEventListener('click', event => {
+      event.preventDefault();
+      window.open(data.BookletURL);
+    });
+    $('#sds-print-poster-link').addEventListener('click', event => {
+      event.preventDefault();
+      const w = window.open(data.PosterURL);
+      w.onload = () => { w.print(); };
     });
 
     showSearchPane('sds-visible', data.SectorName);

@@ -37,12 +37,12 @@
 <meta property="fb:admins" content="617166358">
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus">
-<link rel="stylesheet" href="index.css?update=2025-02-26T20:50:23">
+<link rel="stylesheet" href="index.css?update=2025-07-20T12:05:23">
 
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js"></script>
 <script defer src="map.js?update=2025-01-05T13:15:37"></script>
 <script defer src="world_util.js?update=2025-05-11T22:42:51"></script>
-<script defer src="index.js?update=2025-05-15T16:55:39"></script>
+<script defer src="index.js?update=2025-07-20T11:09:54"></script>
 
 <body class="hide-ui hide-footer ds-mini show-settings">
   <div id="mapContainer">
@@ -699,12 +699,12 @@
       </div>
 
       <div id=sds-print-links class=ds-print-links>
-        <a title="Printable booklet" id=sds-booklet target=_blank rel=noopener href="{{BookletURL}}">Booklet</a>
-        &bull;
-        <a title="PDF map" id=sds-poster target=_blank rel=noopener href="{{PosterURL}}">Poster</a>
-        &bull;
-        <a title="Data as a text file" id=sds-data target=_blank rel=noopener href="{{DataURL}}">Raw Data</a>
-        (or <a title="Data for spreadsheets" id=sds-data target=_blank rel=noopener href="{{TSVDataURL}}">TSV</a>)
+        <span id=sds-print-booklet-link class=link-button-inline>
+          <a title="Print sector booklet" href="#" class=print-icon>Print Booklet</a>
+        </span>
+        <span id=sds-print-poster-link class=link-button-inline>
+          <a title="Print sector poster" href="#" class=print-icon>Print Poster</a>
+        </span>
       </div>
 
       <div class=sds-status>
@@ -771,6 +771,15 @@
       </div>
       {{/ProductRef}}
 
+      <br>
+      <div id=sds-download-links class=ds-print-links>
+        <span id=sds-download-data class=link-button-inline>
+          <a title="Download sector data" href="{{DataURL}}" target=_blank rel=noopener download="{{SectorName}}.txt" class=download-icon>Download Data</a>
+        </span>
+        <span id=sds-download-tsv class=link-button-inline>
+          <a title="Download tab-delimited data" href="{{TSVDataURL}}" target=_blank rel=noopener download="{{SectorName}}.tsv" class=download-icon>Download TSV</a>
+        </span>
+      </div>
   </script>
 
   <div id=ds-shade></div>
