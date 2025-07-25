@@ -1,4 +1,4 @@
-// version 3
+// version 4
 
 const CACHE_NAME = 'offline-resources';
 const urlsToCache = [

@@ -4,7 +4,7 @@ XML metadata for Traveller sectors
 by Joshua Bell, 2006-2023
 
 The Traveller game in all forms is owned by Mongoose Publishing.
-Copyright (C) 1977 - 2024 Mongoose Pubishing.
+Copyright (C) 1977 - 2024 Mongoose Publishing.
 
 This evolved from a copy of "The Consolidated Traveller Region Name List"
 by Steve Bonneville, and has grown to incorporate finer grained metadata.
@@ -1196,14 +1196,14 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <DataFile Author="Geir Lanesskog" Type="SecondSurvey">Fulani.txt</DataFile>
     <MetadataFile Author="Geir Lanesskog">Fulani.xml</MetadataFile>
   </Sector>
-  <Sector Abbreviation="Vang" Tags="InReview" Selected="true">
+  <Sector Abbreviation="Vang" Tags="Official" Selected="true">
     <Y>0</Y>
     <X>-6</X>
     <Name>Vanguard Reaches</Name>
     <DataFile Author="Geir Lanesskog" Source="Traveller 5 Second Survey" Milieu="M1105" Type="TabDelimited">Vanguard Reaches.tab</DataFile>
     <MetadataFile Author="Geir Lanesskog">Vanguard Reaches.xml</MetadataFile>
   </Sector>
-  <Sector Abbreviation="Beyo" Tags="InReview" Selected="true">
+  <Sector Abbreviation="Beyo" Tags="Official" Selected="true">
     <Y>0</Y>
     <X>-5</X>
     <Name>The Beyond</Name>
@@ -1275,7 +1275,7 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <DataFile Author="Martin J. Dougherty and Hunter Gordon" Source="Traveller 5 Second Survey" Milieu="M1105" Type="TabDelimited">Ley.tab</DataFile>
     <MetadataFile>Ley.xml</MetadataFile>
   </Sector>
-  <Sector Abbreviation="Gate" Selected="true" Tags="InReview">
+  <Sector Abbreviation="Gate" Selected="true" Tags="Official">
     <Y>0</Y>
     <X>3</X>
     <Name>Gateway</Name>
@@ -1354,7 +1354,7 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <DataFile Source="CORE" Ref="http://www.ocean-of-storms.com/core/astrogat/gA.htm" Type="SecondSurvey">Iphigenaia.txt</DataFile>
     <MetadataFile Author="Ade Stewart">Iphigenaia.xml</MetadataFile>
   </Sector>
-  <Sector Abbreviation="Touc" Tags="InReview" Selected="true">
+  <Sector Abbreviation="Touc" Tags="Official" Selected="true">
     <Y>1</Y>
     <X>-5</X>
     <Name>Touchstone</Name>
@@ -1555,7 +1555,7 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
       <Border Allegiance="As">1341 1440 1439 1539 1638 1738 1838 1938 2037 2138 2237 2337 2436 2536 2535 2635 2736 2835 2935 3034 3134 3233 3232 3231 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2041 1941 1841 1741 1641 1541 1441 1341</Border>
     </Borders>
   </Sector>
-  <Sector Abbreviation="Afaw" Tags="InReview" Selected="true">
+  <Sector Abbreviation="Afaw" Tags="Official" Selected="true">
     <Y>2</Y>
     <X>-5</X>
     <Name Lang="as">Afawahisa</Name>
@@ -2143,7 +2143,7 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <Y>4</Y>
     <X>-8</X>
     <Name Lang="as">Yahehwe</Name>
-    <DataFile Source="Solomani and Aslan" Ref="https://travellermap.com/data/yahehwe">yahehwe.sec</DataFile>
+    <DataFile Source="Solomani and Aslan" Ref="https://travellermap.com/data/yahehwe" Type="TabDelimited">yahehwe.tab</DataFile>
     <Subsectors>
       <Subsector Index="A">Aloiui</Subsector>
       <Subsector Index="B">Ouei'ya</Subsector>
@@ -2165,7 +2165,7 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <Borders>
       <Border Allegiance="As">0611 0712 0812 0912 1011 1012 0913 0914 0915 0916 0917 1017 1018 1119 1219 1320 1321 1322 1222 1123 1023 0924 0925 0926 0825 0824 0724 0723 0722 0721 0720 0719 0718 0717 0716 0715 0714 0713 0712 0611</Border>
       <Border Allegiance="As" LabelPosition="1806">1406 1506 1605 1604 1704 1803 1802 1903 2003 2104 2204 2305 2405 2505 2504 2503 2502 2501 2500 2600 2700 2800 2900 3000 3100 3200 3300 3301 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3224 3124 3123 3022 2922 2821 2721 2620 2520 2519 2518 2517 2516 2515 2514 2513 2512 2511 2510 2409 2509 2608 2607 2606 2506 2405 2305 2205 2106 2006 2007 1908 1909 1910 1911 1912 1911 1810 1809 1709 1608 1508 1507 1406</Border>
-      <Border Allegiance="As">1721 1820 1921 2021 2022 2023 1924 1925 1926 1927 1928 1929 2029 1929 1829 1828 1827 1727 1726 1725 1724 1723 1722 1721</Border>
+      <Border Allegiance="As" LabelPosition="1926">1721 1820 1921 2021 2022 2023 1924 1925 1926 1927 1928 1929 2029 1929 1829 1828 1827 1727 1726 1725 1724 1723 1722 1721</Border>
     </Borders>
   </Sector>
   <Sector>
@@ -2484,7 +2484,7 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <Y>5</Y>
     <X>-8</X>
     <Name Lang="as">Ohieraoi</Name>
-    <DataFile Source="Solomani and Aslan" Ref="https://travellermap.com/data/ohieraoi">ohieraoi.sec</DataFile>
+    <DataFile Source="Solomani and Aslan" Author="Leigh Heron" Ref="https://travellermap.com/data/ohieraoi" Type="TabDelimited">ohieraoi.tab</DataFile> 
     <Subsectors>
       <Subsector Index="A">Ol</Subsector>
       <Subsector Index="B">Irluikaei</Subsector>
@@ -2512,7 +2512,7 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <Y>5</Y>
     <X>-7</X>
     <Name Lang="as">Fahreahluis</Name>
-    <DataFile Source="Solomani and Aslan" Ref="https://travellermap.com/data/fahreahluis" Type="TabDelimited">fahreahluis.tab</DataFile>
+    <DataFile Source="Solomani and Aslan" Author="Leigh Heron" Ref="https://travellermap.com/data/fahreahluis" Type="TabDelimited">fahreahluis.tab</DataFile>
     <Subsectors>
       <Subsector Index="A">Weoasoar</Subsector>
       <Subsector Index="B">Eaearleke</Subsector>
@@ -2669,7 +2669,7 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
 
       ]]>
     </Credits>
-    <DataFile Author="WG Zeist" Source="explorerbase" Ref="https://explorerbase.wordpress.com/sector-data/" Type="SecondSurvey">Ahkiweahi.txt</DataFile>
+    <DataFile Author="WG Zeist" Source="explorerbase" Ref="https://explorerbase.wordpress.com/sector-data/" Type="TabDelimited">Ahkiweahi.tab</DataFile>
     <Subsectors>
       <Subsector Index="A">Iyiykhiyais</Subsector>
       <Subsector Index="B">Atehel</Subsector>
@@ -2689,10 +2689,10 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
       <Subsector Index="P">Sihoauiw</Subsector>
     </Subsectors>
     <Borders>
-      <Border Allegiance="As">0406 0506 0605 0705 0804 0904 1003 1104 1203 1303 1402 1503 1603 1504 1505 1405 1306 1206 1107 1007 1008 0909 0910 0911 0811 0712 0611 0512 0511 0510 0409 0408 0407 0406</Border>
-      <Border Allegiance="As">0634 0734 0833 0832 0831 0931 1030 1029 1130 1230 1330 1429 1428 1528 1527 1626 1627 1628 1629 1730 1830 1831 1732 1632 1633 1634 1535 1434 1335 1235 1135 1034 0934 0834 0735 0634</Border>
-      <Border Allegiance="As">2432 2532 2631 2630 2629 2730 2830 2930 3029 3129 3130 3131 3231 3232 3233 3234 3235 3236 3136 3035 2935 2835 2736 2735 2634 2534 2433 2432</Border>
-      <Border Allegiance="Sh" Color="goldenrod">2216 2316 2315 2414 2413 2514 2613 2714 2814 2915 3015 3115 3116 3117 3118 3018 2919 2819 2720 2620 2621 2622 2623 2624 2524 2423 2324 2323 2222 2221 2220 2219 2218 2217 2216</Border>
+      <Border Allegiance="As" LabelPosition="0806">0406 0506 0605 0705 0804 0904 1003 1104 1203 1303 1402 1503 1603 1504 1505 1405 1306 1206 1107 1007 1008 0909 0910 0911 0811 0712 0611 0512 0511 0510 0409 0408 0407 0406</Border>
+      <Border Allegiance="As" LabelPosition="1533">0634 0734 0833 0832 0831 0931 1030 1029 1130 1230 1330 1429 1428 1528 1527 1626 1627 1628 1629 1730 1830 1831 1732 1632 1633 1634 1535 1434 1335 1235 1135 1034 0934 0834 0735 0634</Border>
+      <Border Allegiance="As" LabelPosition="2834">2432 2532 2631 2630 2629 2730 2830 2930 3029 3129 3130 3131 3231 3232 3233 3234 3235 3236 3136 3035 2935 2835 2736 2735 2634 2534 2433 2432</Border>
+      <Border Allegiance="Sh" Color="goldenrod" LabelPosition="2718">2216 2316 2315 2414 2413 2514 2613 2714 2814 2915 3015 3115 3116 3117 3118 3018 2919 2819 2720 2620 2621 2622 2623 2624 2524 2423 2324 2323 2222 2221 2220 2219 2218 2217 2216</Border>
     </Borders>
     <Allegiances Source="Solomani and Aslan">
       <Allegiance Code="Sh">Steaakh Hlaia</Allegiance>
@@ -3077,7 +3077,11 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <DataFile Author="Miles A. Maria" Type="SecondSurvey">Ruthless Veil.txt</DataFile>
     <MetadataFile>Ruthless Veil.xml</MetadataFile>
   </Sector>
-
+  <Sector>
+    <Y>7</Y>
+    <X>1</X>
+    <Name Source="Rim Expeditions" Author="Martin J. Dougherty">OutReach</Name>
+  </Sector>
   <Sector>
     <Y>7</Y>
     <X>2</X>
@@ -3255,6 +3259,11 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <X>0</X>
     <Name Source="Rim Expeditions" Author="Martin J. Dougherty">Darkly Veiled</Name>
   </Sector>
+  <Sector>
+    <Y>8</Y>
+    <X>1</X>
+    <Name Source="Rim Expeditions" Author="Martin J. Dougherty">Strange</Name>
+  </Sector>
 
   <Sector>
     <Y>9</Y>
@@ -3272,6 +3281,11 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <Name Source="Rim Expeditions" Author="Martin J. Dougherty">Kruse</Name>
     <DataFile Type="SecondSurvey">Kruse.txt</DataFile>
     <MetadataFile>Kruse.xml</MetadataFile>
+  </Sector>
+  <Sector>
+    <Y>9</Y>
+    <X>1</X>
+    <Name Source="Rim Expeditions" Author="Martin J. Dougherty">Flous Nebula</Name>
   </Sector>
 
   <Sector>

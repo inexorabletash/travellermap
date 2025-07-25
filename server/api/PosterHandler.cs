@@ -30,7 +30,6 @@ namespace Maps.API
 
                 const double NormalScale = 64; // pixels/parsec - standard subsector-rendering scale
                 double scale = GetDoubleOption("scale", NormalScale).Clamp(MinScale, MaxScale);
-                Stylesheet stylesheet = new Stylesheet(scale, options, style);
 
                 if (HasOption("x1") && HasOption("x2") &&
                     HasOption("y1") && HasOption("y2"))
@@ -134,7 +133,7 @@ namespace Maps.API
                 {
                     // Sector - either POSTed or specified by name
                     Sector? sector = null;
-                    options &= ~MapOptions.SectorGrid;
+                    MapOptions modifiedOptions = options & ~MapOptions.SectorGrid;
 
                     if (Context.Request.HttpMethod == "POST")
                     {
@@ -162,7 +161,7 @@ namespace Maps.API
                         title = sector.Names.Count > 0 ? sector.Names[0].Text : "User Data";
 
                         // TODO: Suppress all OTU rendering.
-                        options &= ~(MapOptions.WorldsHomeworlds | MapOptions.WorldsCapitals);
+                        modifiedOptions &= ~(MapOptions.WorldsHomeworlds | MapOptions.WorldsCapitals);
                     }
                     else
                     {
@@ -188,7 +187,7 @@ namespace Maps.API
 
                         tileRect = sector.SubsectorBounds(index);
 
-                        options &= ~(MapOptions.SectorGrid | MapOptions.SubsectorGrid);
+                        modifiedOptions &= ~(MapOptions.SectorGrid | MapOptions.SubsectorGrid);
 
                         title = $"{title} - Subsector {'A' + index}";
                     }
@@ -209,7 +208,7 @@ namespace Maps.API
                         selector = new QuadrantSelector(resourceManager, sector, index);
                         tileRect = sector.QuadrantBounds(index);
 
-                        options &= ~(MapOptions.SectorGrid | MapOptions.SubsectorGrid | MapOptions.SectorsMask);
+                        modifiedOptions &= ~(MapOptions.SectorGrid | MapOptions.SubsectorGrid | MapOptions.SectorsMask);
 
                         title = $"{title} - {quadrant} Quadrant";
                     }
@@ -222,7 +221,7 @@ namespace Maps.API
                         selector = new SectorSelector(resourceManager, sector);
                         tileRect = sector.Bounds;
 
-                        options &= ~(MapOptions.SectorGrid);
+                        modifiedOptions &= ~(MapOptions.SectorGrid);
                     }
 
                     // Account for jagged hexes
@@ -230,17 +229,25 @@ namespace Maps.API
 
                     if (GetBoolOption("compositing", false))
                     {
-                        PathUtil.PathType borderPathType = stylesheet.microBorderStyle == MicroBorderStyle.Square ?
+                        // Final stylesheet is computed later; various control flows up through this point
+                        // modify `options`, so we can't compute it earlier.
+                        Stylesheet tmp = new Stylesheet(scale, options, style);
+    
+                        PathUtil.PathType borderPathType = tmp.microBorderStyle == MicroBorderStyle.Square ?
                             PathUtil.PathType.Square : PathUtil.PathType.Hex;
                         ClipPath clip = sector.ComputeClipPath(borderPathType);
                         clipPath = new AbstractPath(clip.clipPathPoints, clip.clipPathPointTypes);
                         tileRect.Inflate(RenderUtil.HEX_EDGE, 0);
+
+                        // `modifiedOptions` is discarded in this case.
                     }
                     else
                     {
                         tileRect.Inflate(0.25f, 0.10f);
                         if (style == Style.Candy)
                             tileRect.Width += 0.75f;
+
+                        options = modifiedOptions;
                     }
 
                     clipOutsectorBorders = false;
@@ -248,7 +255,7 @@ namespace Maps.API
 
                 int rot = GetIntOption("rotation", 0) % 4;
                 int hrot = GetIntOption("hrotation", 0);
-                if (hrot !=0)
+                if (hrot != 0)
                 {
                     forceClip = true;
                     transparent = true;
@@ -256,6 +263,7 @@ namespace Maps.API
 
                 bool thumb = GetBoolOption("thumb", false);
 
+                Stylesheet stylesheet = new Stylesheet(scale, options, style);
 
                 Size tileSize = new Size((int)Math.Floor(tileRect.Width * scale * Astrometrics.ParsecScaleX), (int)Math.Floor(tileRect.Height * scale * Astrometrics.ParsecScaleY));
 
@@ -263,6 +271,7 @@ namespace Maps.API
                 {
                     tileSize.Width = (int)Math.Floor(16 * tileSize.Width / scale);
                     tileSize.Height = (int)Math.Floor(16 * tileSize.Height / scale);
+                    // NOTE: Intentionally changes `scale` after stylesheet is computed.
                     scale = 16;
                 }
 
@@ -320,8 +329,6 @@ namespace Maps.API
                         forceClip = true;
                     }
                 }
-
-
 
                 // Compose in this order so aspect ratio adjustments to image size (computed last)
                 // are applied first.

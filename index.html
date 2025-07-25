@@ -37,12 +37,12 @@
 <meta property="fb:admins" content="617166358">
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus">
-<link rel="stylesheet" href="index.css?update=2024-07-04T13:35:15">
+<link rel="stylesheet" href="index.css?update=2025-07-20T12:05:23">
 
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js"></script>
-<script defer src="map.js?update=2024-10-18T17:24:41"></script>
-<script defer src="world_util.js?update=2024-10-14T18:03:31"></script>
-<script defer src="index.js?update=2024-10-18T17:37:38"></script>
+<script defer src="map.js?update=2025-01-05T13:15:37"></script>
+<script defer src="world_util.js?update=2025-07-24T20:54:58"></script>
+<script defer src="index.js?update=2025-07-20T11:09:54"></script>
 
 <body class="hide-ui hide-footer ds-mini show-settings">
   <div id="mapContainer">
@@ -393,6 +393,7 @@
     <section>
       <h3>Overlays</h3>
       <div id=overlays>
+        <div class=settings-item><input type="checkbox" id=cbMains><label for=cbMains title="Highlight Jump-1 Mains"> Mains</label></div>
         <div class=settings-item><input type="checkbox" id=cbImpOverlay><label for=cbImpOverlay title="Highlight world importance"> Importance</label></div>
         <div class=settings-item><input type="checkbox" id=cbPopOverlay><label for=cbPopOverlay title="Highlight world population"> Population</label></div>
         <div class=settings-item><input type="checkbox" id=cbCapitalOverlay><label for=cbCapitalOverlay title="Highlight capitals/candidates"> Capitals/Candidates</label></div>
@@ -402,7 +403,7 @@
         <div class=settings-item><input type="checkbox" id=cbStellar><label for=cbStellar title="Render stars rather than world details"> Stellar</label></div>
         <div class=settings-item><input type="checkbox" id=cbWave><label for=cbWave title="Show position of the Empress Wave"> Empress Wave</label></div>
         <div class=settings-item><input type="checkbox" id=cbQZ><label for=cbQZ title="Show position of the Qrekrsha Zone"> Qrekrsha Zone</label></div>
-        <div class=settings-item><input type="checkbox" id=cbMains><label for=cbMains title="Highlight Jump-1 Mains"> Mains</label></div>
+        <div class=settings-item><input type="checkbox" id=cbAS><label for=cbAS title="Show position of the Antares Supernova"> Antares Supernova</label></div>
       </div>
     </section>
   </div>
@@ -412,22 +413,30 @@
 
    <section>
       <h3>Traveller</h3>
-      <p><a target=_blank rel=noopener href="https://traveller5.net">Traveller &amp; Far Future Enterprises</a></p>
-      <p><a target=_blank rel=noopener href="http://travellerrpg.com/">Citizens of the Imperium Forum</a></p>
-      <p><a target=_blank rel=noopener href="https://wiki.travellerrpg.com/">The Traveller Wiki</a></p>
-      <p><a target=_blank rel=noopener href="https://www.mongoosepublishing.com/collections/traveller-rpgs">Mongoose Publishing</a>
-        &bull; <a target=_blank rel=noopener href="http://forum.mongoosepublishing.com/viewforum.php?f=89">Forum</a></p>
+      <p>
+        <a target=_blank rel=noopener href="https://www.mongoosepublishing.com/collections/traveller-rpgs">About Traveller</a>
+        &bull;
+        <a target=_blank rel=noopener href="http://forum.mongoosepublishing.com/viewforum.php?f=89">Forum</a>
+        &bull;
+        <a target=_blank rel=noopener href="https://discord.gg/XATNxsBAPY">Discord</a>
+
+      </p>
+      <p>
+        <a target=_blank rel=noopener href="https://mongoosepublishing.com">Mongoose Publishing</a>
+        &bull;
+        <a target=_blank rel=noopener href="https://traveller5.net">FFE</a>
+      </p>
     </section>
 
     <section>
       <h3>The Traveller Map</h3>
       <p><a target=_blank rel=noopener href="doc/about">About the Traveller Map</a></p>
       <p><a target=_blank rel=noopener href="doc/credits">Credits and Data Sources</a></p>
-      <p>
+      <!--<p>
         <a target=_blank rel=noopener href="https://travellermap.blogspot.com/">News &amp; Feedback</a>
         &bull;
         <a target=_blank rel=noopener href="https://github.com/inexorabletash/travellermap/issues">Bug Reports</a>
-      </p>
+      </p>-->
 
     </section>
 
@@ -449,6 +458,21 @@
       <p><a target=_blank rel=noopener href="doc/api">Explore the API</a></p>
       <p><a target=_blank rel=noopener href="https://github.com/inexorabletash/travellermap">Get the source code</a></p>
     </section>
+
+    <section>
+      <h3>Traveller Tools</h3>
+      <p>
+        <a target=_blank rel=noopener href="https://wiki.travellerrpg.com/Main_Page">Traveller Wiki</a>
+        &bull;
+        <a target=_blank rel=noopener href="https://www.travellerworlds.com/">Traveller Worlds</a>
+      </p>
+      <!--<p><a target=_blank rel=noopener href="https://www.taunoyen.com/traveller/corsairwordgen2.html">Alien Word Generators</a></p>-->
+      <p><a target=_blank rel=noopener href="https://www.travellerrpg.com/">Citizens of the Imperium Forum</a></p>
+      <!--<p><a target=_blank rel=noopener href="https://www.mongoosepublishing.com/pages/traveller-licensing">Traveller Licensing</a></p>-->
+
+    </section>
+
+
 
   </div>
 
@@ -601,7 +625,7 @@
 
     <div id="MetadataDisplay">
       <div class="credits">
-        The <b><i>Traveller</i></b> game in all forms is owned by <a target=_blank rel=noopener href="https://mongoosepublishing.com">Mongoose Publishing</a>. Copyright 1977 &ndash; 2024 Mongoose Pubishing.
+        The <b><i>Traveller</i></b> game in all forms is owned by <a target=_blank rel=noopener href="https://mongoosepublishing.com">Mongoose Publishing</a>. Copyright 1977 &ndash; 2024 Mongoose Publishing.
       </div>
     </div>
     <script id="MetadataTemplate" type="text/x-handlebars-template">
@@ -675,12 +699,12 @@
       </div>
 
       <div id=sds-print-links class=ds-print-links>
-        <a title="Printable booklet" id=sds-booklet target=_blank rel=noopener href="{{BookletURL}}">Booklet</a>
-        &bull;
-        <a title="PDF map" id=sds-poster target=_blank rel=noopener href="{{PosterURL}}">Poster</a>
-        &bull;
-        <a title="Data as a text file" id=sds-data target=_blank rel=noopener href="{{DataURL}}">Raw Data</a>
-        (or <a title="Data for spreadsheets" id=sds-data target=_blank rel=noopener href="{{TSVDataURL}}">TSV</a>)
+        <span id=sds-print-booklet-link class=link-button-inline>
+          <a title="Print sector booklet" href="#" class=print-icon>Print Booklet</a>
+        </span>
+        <span id=sds-print-poster-link class=link-button-inline>
+          <a title="Print sector poster" href="#" class=print-icon>Print Poster</a>
+        </span>
       </div>
 
       <div class=sds-status>
@@ -747,6 +771,15 @@
       </div>
       {{/ProductRef}}
 
+      <br>
+      <div id=sds-download-links class=ds-print-links>
+        <span id=sds-download-data class=link-button-inline>
+          <a title="Download sector data" href="{{DataURL}}" target=_blank rel=noopener download="{{SectorName}}.txt" class=download-icon>Download Data</a>
+        </span>
+        <span id=sds-download-tsv class=link-button-inline>
+          <a title="Download tab-delimited data" href="{{TSVDataURL}}" target=_blank rel=noopener download="{{SectorName}}.tsv" class=download-icon>Download TSV</a>
+        </span>
+      </div>
   </script>
 
   <div id=ds-shade></div>
@@ -951,19 +984,23 @@
   </div>
 
   <!--
-  <div id="promo-hover">
+  <div id="promo-hover" data-key="promo6">
     <button id=promo-closebtn class="closebtn dim" title="Close"></button>
-    Calling all Free Traders!
+    Traveller RPG Mayday 2025 Event
     <br>
-    <a target=_blank rel=noopener href="https://www.kickstarter.com/projects/tcon-usa/travellerconusa-2023-20-22-october-2023">Travellercon/USA 2023 Kickstarter</a>
+    April 26 - May 1, 2025
+    <br>
+    <a target=_blank rel=noopener href="https://www.cyborgprime.com/traveller-rpg-blog/traveller-rpg-mayday-mayday-2025-official-event-page">Click here for details</a>
   </div>
   -->
 
+  <!--
   <div id="cookies">
     This site uses cookies. &nbsp;
     <a target=_blank href="doc/about#privacy-policy">Details</a> &nbsp;
     <button>Accept</button>
   </div>
+  -->
 
   <noscript><div>
     This site requires JavaScript.

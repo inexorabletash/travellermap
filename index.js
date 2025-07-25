@@ -539,8 +539,19 @@
   // Keyboard Shortcuts
 
   mapElement.addEventListener('keydown', event => {
+    if (event.ctrlKey) {
+      if (!isIframe && event.key === '/') {
+        console.log('hi there');
+        event.preventDefault();
+        event.stopPropagation();
+        document.location = 'doc/about#keyboard-controls';
+        return;
+      }
+    }
+
     if (event.ctrlKey || event.altKey || event.metaKey)
       return;
+
     if (event.key === 'c') {
       event.preventDefault();
       event.stopPropagation();
@@ -627,16 +638,21 @@
   bindCheckedToNamedOption('#cbMinorHomeworlds', 'mh');
   bindCheckedToNamedOption('#cbStellar', 'stellar');
   bindCheckedToNamedOption('#cbQZ', 'qz');
-  bindChecked('#cbWave',
-    o => map.namedOptions.get('ew'),
-    c => {
-      if (c) {
-        map.namedOptions.set('ew', 'milieu');
-      } else {
-        map.namedOptions.delete('ew');
-        delete urlParams['ew'];
-      }
-    });
+
+  // Overlays that take "milieu" or a year
+  [['#cbWave', 'ew'], ['#cbAS', 'as']].forEach(pair => {
+    const [id, op] = pair;
+    bindChecked(id,
+                o => map.namedOptions.get(op),
+                c => {
+                  if (c) {
+                    map.namedOptions.set(op, 'milieu');
+                  } else {
+                    map.namedOptions.delete(op);
+                    delete urlParams[op];
+                  }
+                });
+  });
 
   function bindControl(selector, property, onChange, event, onEvent) {
     const element = $(selector);
@@ -983,7 +999,8 @@
         data.SectorWikiURLNoScheme = data.SectorWikiURL.replace(/^\w+:\/\//, '');
         data.BookletURL = Traveller.MapService.makeURL(
           `/data/${encodeURIComponent(data.SectorName)}/booklet`, {
-            milieu
+            milieu,
+            print: 1,
           });
 
         data.PosterURL = Traveller.MapService.makeURL('/api/poster', {
@@ -1070,6 +1087,16 @@
       element.addEventListener('click', event => {
         document.body.classList.toggle('ds-mini');
       });
+    });
+
+    $('#sds-print-booklet-link').addEventListener('click', event => {
+      event.preventDefault();
+      window.open(data.BookletURL);
+    });
+    $('#sds-print-poster-link').addEventListener('click', event => {
+      event.preventDefault();
+      const w = window.open(data.PosterURL);
+      w.onload = () => { w.print(); };
     });
 
     showSearchPane('sds-visible', data.SectorName);
@@ -1628,6 +1655,7 @@
   })();
 
   // Show cookie accept prompt, if necessary.
+  /*
   if (!isIframe) {
     setTimeout(() => {
       const cookies = Util.parseCookies();
@@ -1642,11 +1670,12 @@
       }
     }, 1000);
   }
+  */
 
   // Show promo, if not dismissed.
-  if (!isIframe && $('#promo-closebtn')) {
+  if (!isIframe && $('#promo-hover')) {
     setTimeout(() => {
-      const promo_key = 'tm_promo5';
+      const promo_key = $('#promo-hover').dataset.key;
       if (!localStorage.getItem(promo_key)) {
         document.body.classList.add('show-promo');
         $('#promo-closebtn').addEventListener('click', event => {

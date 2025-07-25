@@ -207,4 +207,24 @@
     <MetadataFile>Anta.xml</MetadataFile>
   </Sector>
 
+  <Sector Abbreviation="Troj" Tags="Unreviewed" Milieu="M1120">
+    <Y>0</Y>
+    <X>-4</X>
+    <Name>Trojan Reach</Name>
+    <Name>Trojan Reaches</Name>
+    <Name Lang="as">Hlaoirloahaurl</Name>
+    <Name Lang="zh">Idrflanta</Name>
+    <DataFile Type="TabDelimited">Troj.tab</DataFile>
+    <MetadataFile>Troj.xml</MetadataFile>
+  </Sector>
+
+  <Sector Abbreviation="Magy" Tags="Unreviewed" Milieu="M1120">
+    <Y>3</Y>
+    <X>-1</X>
+    <Name>Magyar</Name>
+    <Name Lang="vi">Magaar</Name>
+    <DataFile Type="TabDelimited">Magy.tab</DataFile>
+    <MetadataFile>Magy.xml</MetadataFile>
+  </Sector>
+
 </Sectors>

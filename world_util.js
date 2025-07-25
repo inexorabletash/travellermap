@@ -832,7 +832,7 @@
     world.sector_url_noscheme = world.sector_url.replace(/^\w+:\/\//, '');
 
     // Map Generator
-    const GENERATOR_BASE = 'https://travellerworlds.com/';
+    const GENERATOR_BASE = 'https://www.travellerworlds.com/';
 
     const map_generator_options = {
       hex: world.Hex,
@@ -854,7 +854,15 @@
       place_nobz: 1
     };
     const map_link = Util.makeURL(GENERATOR_BASE + '', map_generator_options);
-    world.map_link = Util.makeURL('redir.html', {href: map_link});
+
+    const link_site = map_link.split('?')[0];
+    const link_key = `tm_redirect_skip:${link_site}`;
+    const redir = localStorage.getItem(link_key) !== 'true';
+    if (redir) {
+      world.map_link = Util.makeURL('redir.html', {href: map_link});
+    } else {
+      world.map_link = map_link;
+    }
 
     const map_thumb = worldImageURL(world, 'map_thumb');
     const map = worldImageURL(world, 'map');

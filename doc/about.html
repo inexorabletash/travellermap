@@ -2,9 +2,11 @@
 <title>Information - Traveller Map</title>
 <meta charset="utf-8">
 <link rel="shortcut icon" href="../favicon.svg">
-<link rel="stylesheet" href="../site.css?update=2022-09-10T10:37:44">
+<link rel="stylesheet" href="../site.css?update=2025-04-02T18:13:01">
 <link rel="stylesheet" href="../lib/lightbox/lightbox.css">
 <meta name="viewport" content="initial-scale=1, width=device-width">
+
+<div id="navbar"><button id="back_button" onclick="history.back()">&larr; Back</button></div>
 
 <h1>The Traveller Map</h1>
 <div class="content">
@@ -130,14 +132,15 @@
             <code>*ward</code> will find the Spinward Marches sector.
             <code>?</code> matches exactly one character, so
             <code>t?rra</code> will find the Terra system. You can also use
-            character ranges like <code>[8-C]</code> or <code>[89A]</code>.
+            character ranges like <code>[8-C]</code> or <code>[89A]</code>,
+            and inverted ranges like <code>[^0AB]</code>.
         </p>
         <p>
             Specify <code>uwp:</code> to search UWPs. For example,
             <code>uwp:*-g</code> will find tech level 16 worlds.
             <code>uwp:B[5-7][6-7][3-9][4-8]?[4-7]-[B-D]</code> will
             find all starport B, medium size, standard atmosphere,
-            wet, moderate poulation and law-level words with
+            wet, moderate population and law-level words with
             average stellar tech level.
         </p>
         <p>
@@ -173,7 +176,7 @@
             <code>remark:Hi</code> will find high-population worlds.
         </p>
         <p>
-            Specify <code>in:</code> to restrict search to workds in
+            Specify <code>in:</code> to restrict search to worlds in
             a sector. For example,
             <code>uwp:*-f in:Deneb</code> will find tech level 15 worlds
             in Deneb sector.
@@ -337,7 +340,7 @@
 
     <p>
       This site was inspired by many sources, most prominently some of
-      the treasured posessions from my childhood:
+      the treasured possessions from my childhood:
       the <a target=_blank rel=noopener class=lightbox
       href="https://travellermap.s3.amazonaws.com/images/about/Imperium+Poster.jpg">
       Imperium Map poster</a> which provided an overview of Charted
@@ -394,7 +397,7 @@
     </p>
 
     <p>
-      <a target=_blank rel=nooopener href="http://members.ozemail.com.au/~jonoreita/TravellerWorlds/">Traveller World Builder</a> - World map generator following the <cite>Traveller 5</cite> rules.
+      <a target=_blank rel=nooopener href="https://www.travellerworlds.com/">Traveller World Builder</a> - World map generator following the <cite>Traveller 5</cite> rules.
     </p>
 
     <p>
@@ -423,10 +426,12 @@
       from raw sector data.
     </p>
 
+    <!--
     <p>
       Samuel Penn's <a target=_blank rel=noopener href="http://mapcraft.glendale.org.uk/worldgen">WorldGen</a>
       project.
     </p>
+    -->
 
     <h4>Archived Sites</h4>
     <i> (via <a target=_blank rel=noopener href="https://archive.org">The Internet Archive's Wayback Machine</a>)</i>
@@ -533,7 +538,7 @@
     <h2>Copyright Information</h2>
 
     <p>
-      The <cite>Traveller</cite> game in all forms is owned by <a target=_blank rel=noopener href="https://www.mongoosepublishing.com/">Mongoose Publishing</a>. Copyright 1977 &ndash; 2024 Mongoose Pubishing. Traveller is a registered trademark of Mongoose Publishing. Mongoose Publishing permits web sites and fanzines for this game, provided it contains this notice, that Mongoose Publishing is notified, and subject to a withdrawal of permission on 90 days notice. The contents of this site are for personal, non-commercial use only. Any use of Mongoose Publishing’s copyrighted material or trademarks anywhere on this web site and its files should not be viewed as a challenge to those copyrights or trademarks. In addition, any program/articles/file on this site cannot be republished or distributed without the consent of the author who contributed it.
+      The <cite>Traveller</cite> game in all forms is owned by <a target=_blank rel=noopener href="https://www.mongoosepublishing.com/">Mongoose Publishing</a>. Copyright 1977 &ndash; 2024 Mongoose Publishing. Traveller is a registered trademark of Mongoose Publishing. Mongoose Publishing permits web sites and fanzines for this game, provided it contains this notice, that Mongoose Publishing is notified, and subject to a withdrawal of permission on 90 days notice. The contents of this site are for personal, non-commercial use only. Any use of Mongoose Publishing’s copyrighted material or trademarks anywhere on this web site and its files should not be viewed as a challenge to those copyrights or trademarks. In addition, any program/articles/file on this site cannot be republished or distributed without the consent of the author who contributed it.
     </p>
     <p>
       Materials produced by <b>Digest Group Publications</b> (DGP) are

@@ -77,7 +77,12 @@ tbody#results tr.fail td { border: 1px solid red; }
       function getImagePixels(img) {
         var c = makeCanvas(w, h);
         var ctx = c.getContext('2d');
-        ctx.drawImage(img, 0, 0);
+        try {
+          // TODO: Consider blurring e.g.: ctx.filter = 'blur(2px)';
+          ctx.drawImage(img, 0, 0);
+        } catch (ex) {
+          console.warn(ex.message);
+        }
         var id = ctx.getImageData(0, 0, w, h);
         return id;
       }
@@ -117,11 +122,9 @@ tbody#results tr.fail td { border: 1px solid red; }
     }
   }
 
-  function check(url1, url2, opt_threshold, opt_count) {
+  function check(url1, url2, threshold=DEFAULT_THRESHOLD, count=DEFAULT_COUNT) {
     url2 = SERVICE_BASE + url2;
 
-    var threshold = (opt_threshold === undefined) ? DEFAULT_THRESHOLD : opt_threshold;
-    var count = (opt_count === undefined) ? DEFAULT_COUNT: opt_count;
     var tr, td;
 
     tr = document.createElement('tr');
@@ -221,6 +224,9 @@ tbody#results tr.fail td { border: 1px solid red; }
   check("refs/ref42.png", "/data/spin/1910/jump/3/image?style=mongoose&scale=128");
   check("refs/ref43.png", "/data/spin/1910/jump/2/image?style=poster&scale=128&im=1&review=1");
   check("refs/ref44.png", "/data/spin/a/image?hrotation=60");
+
+  // Regression: compositing
+  check("refs/ref45.png", "/api/poster?sector=Spinward+Marches&subsector=C&compositing=1");
 
   // Template:
   // check(ref_image, live_image, opt_rgb_threshold, opt_num_bad_pixels);

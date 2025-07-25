@@ -35,11 +35,21 @@ const site = href.split('?')[0];
 $('#link').href = href;
 $('#link').innerText = site;
 
+const standalone = window.matchMedia && window.matchMedia('(display-mode: standalone) or (display-mode: minimal-ui)').matches;
+
+if (standalone) {
+  $('#link').target = '_blank';
+  $('#link').onclick = () => { window.close(); };
+}
+
 const key = `tm_redirect_skip:${site}`;
 const skip = localStorage.getItem(key) === 'true';
 if (skip) {
   $('#skip').checked = true;
-  document.location = href;
+  if (!standalone) {
+    document.location = href;
+  }
+  // Otherwise... ignore, so the other site isn't trapped in a PWA window.
 }
 $('#skip').addEventListener('change', e => {
   localStorage.setItem(key, String($('#skip').checked));

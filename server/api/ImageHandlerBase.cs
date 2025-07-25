@@ -151,7 +151,7 @@ namespace Maps.API
                         document.Info.Author = "Joshua Bell";
                         document.Info.Creator = "TravellerMap.com";
                         document.Info.Subject = DateTime.Now.ToString("F", CultureInfo.InvariantCulture);
-                        document.Info.Keywords = "The Traveller game in all forms is owned by Mongoose Publishing. Copyright 1977 - 2024 Mongoose Pubishing.";
+                        document.Info.Keywords = "The Traveller game in all forms is owned by Mongoose Publishing. Copyright 1977 - 2024 Mongoose Publishing.";
 
                         // TODO: Credits/Copyright
                         // This is close, but doesn't define the namespace correctly:
