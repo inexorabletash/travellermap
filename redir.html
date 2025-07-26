@@ -17,7 +17,7 @@ a { color: blue; }
 </p>
 
 <p>
-  Click here to proceed: <a id=link rel=noopener></a>
+  Click here to proceed: <a id=link target="_blank" rel=noopener></a>
 </p>
 
 <p>
@@ -30,19 +30,15 @@ a { color: blue; }
 const $ = s => document.querySelector(s);
 
 const url = new URL(document.location);
-const href = url.searchParams.get('href');
+const href = url.searchParams.get('href') || 'https://example.com';
 const site = href.split('?')[0];
 $('#link').href = href;
 $('#link').innerText = site;
+$('#link').onclick = () => { setTimeout(() => window.close(), 100); };
 
 const standalone = window.matchMedia && window.matchMedia('(display-mode: standalone) or (display-mode: minimal-ui)').matches;
 
-if (standalone) {
-  $('#link').target = '_blank';
-  $('#link').onclick = () => { window.close(); };
-}
-
-const key = `tm_redirect_skip:${site}`;
+const key = `tm_redirect_skip:${URL.parse(href).origin}`;
 const skip = localStorage.getItem(key) === 'true';
 if (skip) {
   $('#skip').checked = true;
