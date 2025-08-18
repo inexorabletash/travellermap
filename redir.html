@@ -38,7 +38,7 @@ $('#link').onclick = () => { setTimeout(() => window.close(), 100); };
 
 const standalone = window.matchMedia && window.matchMedia('(display-mode: standalone) or (display-mode: minimal-ui)').matches;
 
-const key = `tm_redirect_skip:${URL.parse(href).origin}`;
+const key = `tm_redirect_skip:${new URL(href).origin}`;
 const skip = localStorage.getItem(key) === 'true';
 if (skip) {
   $('#skip').checked = true;

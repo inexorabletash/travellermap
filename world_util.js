@@ -855,7 +855,7 @@
     };
     const map_link = Util.makeURL(GENERATOR_BASE + '', map_generator_options);
 
-    const link_key = `tm_redirect_skip:${URL.parse(map_link).origin}`;
+    const link_key = `tm_redirect_skip:${new URL(map_link).origin}`;
     const redir = localStorage.getItem(link_key) !== 'true';
     if (redir) {
       world.map_link = Util.makeURL('redir.html', {href: map_link});
