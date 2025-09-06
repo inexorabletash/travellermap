@@ -1,6 +1,7 @@
 The Traveller Map
 
-Source Code Copyright &copy; 2006-2023 Joshua Bell
+Source Code Copyright &copy; 2025 Rod Chamberlin and
+derived from https://github.com/inexorabletash/travellermap &copy; 2006-2023 Joshua Bell
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use these files except in compliance with the License. You may obtain a copy of the License at
 

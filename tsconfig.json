@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "module": "node16",
+    "target": "es2020",
+    "sourceMap": true,
+    "outDir": "build",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "allowSyntheticDefaultImports": true,
+    "declaration": true,
+    "strict": true
+  },
+  "exclude": [
+    "node_modules",
+    "build"
+  ],
+  "include": [
+    "src/**/*"
+  ]
+}
