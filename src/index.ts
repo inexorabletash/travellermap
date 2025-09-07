@@ -1,3 +1,4 @@
+#!/usr/bin/env -S node --enable-source-maps
 import {WebServer, WireRequest} from "./webServer.js";
 import path from "node:path";
 import {TileRender} from "./render/tileRender.js";

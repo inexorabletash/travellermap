@@ -1,6 +1,6 @@
 {
   "name": "@rodchamberlin/travellermap-mtu",
-  "version": "1.0.2",
+  "version": "1.0.5",
   "main": "build/index.js",
   "type": "module",
   "scripts": {
@@ -15,6 +15,9 @@
     "pino": "^9.9.4",
     "pino-pretty": "^13.1.1",
     "yaml": "2.8.1"
+  },
+  "bin": {
+    "travellermap": "build/index.js"
   },
   "devDependencies": {
     "@types/express": "5.0.3",
