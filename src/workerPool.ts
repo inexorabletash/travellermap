@@ -12,7 +12,7 @@ export class WorkerPool {
     protected readyWorkers: Worker[] = [];
     protected allWorkers: Map<Worker,WorkerNotify> = new Map();
     protected workerWait!: Promise<void>;
-    protected workerReady!: () => void;
+    protected workerReady_!: () => void;
 
     constructor(count = 8) {
         this.createWorkerWait();
@@ -58,20 +58,28 @@ export class WorkerPool {
     }
 
     async invoke(query: any): Promise<any> {
-        const worker = await this.worker();
+        let worker: Worker|undefined = undefined;
         try {
+            worker = await this.worker();
+            logger.debug(`Obtained worker ${worker.threadId} for ${query.path} (${JSON.stringify(query.query)}) `);
+            if(!worker) {
+                throw new Error(`Did not get a worker for ${query.path}`);
+            }
             const result = new Promise((resolve, reject) => {
-                this.allWorkers.set(worker, { reject, resolve });
+                this.allWorkers.set(<any>worker, { reject, resolve });
             });
             worker.postMessage(query);
             return await result;
         } finally {
-            if(this.allWorkers.get(worker)) {
-                this.allWorkers.set(worker, {});
-                if (this.readyWorkers.length === 0) {
-                    this.workerReady();
+            logger.debug(`Releasing worker ${worker?.threadId}`);
+            if(worker) {
+                if (this.allWorkers.get(worker)) {
+                    this.allWorkers.set(worker, {});
+                    if (this.readyWorkers.length === 0) {
+                        this.workerReady();
+                    }
+                    this.readyWorkers.push(worker);
                 }
-                this.readyWorkers.push(worker);
             }
         }
     }
@@ -89,14 +97,20 @@ export class WorkerPool {
 
     protected async worker(): Promise<Worker> {
         while(this.readyWorkers.length === 0) {
+            logger.debug(`Waiting for worker ...`);
             await this.workerWait;
-            this.createWorkerWait();
         }
         const worker = <any>this.readyWorkers.shift();
         return worker;
     }
 
+    protected workerReady() {
+        this.workerReady_();
+        this.createWorkerWait();
+
+    }
+
     protected createWorkerWait() {
-        this.workerWait = new Promise<void>(resolve => this.workerReady = resolve);
+        this.workerWait = new Promise<void>(resolve => this.workerReady_ = resolve);
     }
 }

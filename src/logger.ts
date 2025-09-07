@@ -1,6 +1,7 @@
 import pino from 'pino';
 import {threadId} from "node:worker_threads";
 
+
 let transport;
 if(!process.env.JSON_LOGGING) {
     transport = {
@@ -16,6 +17,8 @@ if(!process.env.JSON_LOGGING) {
     }
 }
 
+const pkg = require('../package.json');
+
 export default pino({
     level: process.env.PINO_LOG_LEVEL ?? 'info',
     formatters: {
@@ -27,6 +30,7 @@ export default pino({
             host: bindings.hostname,
             threadId: threadId,
             node_version: process.version,
+            version: pkg.version,
         }),
     },
     transport,
