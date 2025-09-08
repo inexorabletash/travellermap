@@ -23,7 +23,7 @@ jobs:
     - name: Lint
       run: npm run lint-fix
     - name: Test
-      run: npm run test:unit
+      run: npm run test
     - name: Build
       run: npm run build      
     - name: Release
