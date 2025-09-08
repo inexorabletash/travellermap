@@ -1,11 +1,12 @@
 {
   "name": "@rodchamberlin/travellermap-mtu",
-  "version": "1.0.5",
+  "version": "0.0.0-semantic-release",
   "main": "build/index.js",
   "type": "module",
   "scripts": {
     "build": "tsc",
-    "test": "jest"
+    "test": "true",
+    "prepare": "husky"
   },
   "dependencies": {
     "canvas": "3.1.2",
@@ -20,10 +21,13 @@
     "travellermap": "build/index.js"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
     "@types/express": "5.0.3",
     "@types/jest": "30.0.0",
     "@types/node": "24.3.0",
     "@types/yaml": "1.9.6",
+    "husky": "^9.1.7",
     "jest": "30.0.5",
     "ts-jest": "29.4.1",
     "ts-mockito": "2.6.1",
