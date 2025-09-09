@@ -6,15 +6,15 @@ name: Docker
 # documentation.
 
 on:
-#  push:
-#    # Publish semver tags as releases.
-#    tags: [ 'v*.*.*' ]
+  push:
+    # Publish semver tags as releases.
+    tags: [ 'v*.*.*' ]
 #    branches: [ "main" ]
-  workflow_run:
-    types:
-      - completed
-    workflows:
-      - Release
+#  workflow_run:
+#    types:
+#      - completed
+#    workflows:
+#      - Release
   pull_request:
     branches:
       - main
