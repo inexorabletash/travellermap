@@ -13,8 +13,11 @@ on:
 #  workflow_run:
 #    types:
 #      - completed
-    workflows:
-      - Release
+#    workflows:
+#      - Release
+  release:
+    types:
+      - published
   pull_request:
     branches:
       - main
