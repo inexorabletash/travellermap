@@ -5,7 +5,8 @@ import path from "node:path";
 
 
 const FILENAME = import.meta.filename;
-const pkg = JSON.parse(fs.readFileSync(path.join(FILENAME,'..','package.json'), 'utf8'));
+console.log(path.join(path.dirname(FILENAME),'..','package.json'));
+const pkg = JSON.parse(fs.readFileSync(path.join(path.dirname(FILENAME),'..','package.json'), 'utf8'));
 
 let transport;
 if(!process.env.JSON_LOGGING) {
