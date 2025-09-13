@@ -1,12 +1,13 @@
 //const Glyphs: Record<s>
 import {World} from "../universe/world.js";
-import {CanvasRenderingContext2D} from "canvas";
+import {Canvas, CanvasRenderingContext2D, createCanvas} from "canvas";
 import {Sector} from "../universe/sector.js";
 import {Glyph} from "./glyph.js";
 import {TileRender} from "./tileRender.js";
-import {parseHex, renderBorder} from "./border.js";
+import {borderPath, parseHex, renderBorder, toCoordsWorld} from "./border.js";
 import {HEX_SIDE_EXTRA, HEX_SIDE_LENGTH, HEX_X_SCALE} from "./constants.js";
 import {inspect} from "node:util";
+import {Universe} from "../universe.js";
 
 export abstract class Renderer {
     abstract worldColor(w: World, options: number): { line: typeof CanvasRenderingContext2D.prototype.fillStyle, fill: typeof CanvasRenderingContext2D.prototype.fillStyle};
@@ -19,10 +20,16 @@ export abstract class Renderer {
 
     abstract font(w: World | Sector, options: number, type: string, data?: any): typeof CanvasRenderingContext2D.prototype.font;
 
+    createCanvas(width: number, height: number, type?: 'pdf'|'svg'): Canvas {
+        return createCanvas(width, height, type);
+    }
+
     setBackground(context: CanvasRenderingContext2D, width: number, height: number, scale: number, options: number) {
         context.fillStyle = '#000';
         context.globalCompositeOperation = 'destination-over';
         context.fillRect(0, 0, width / HEX_X_SCALE, height);
+
+        this.setupContextDefaults(context);
     }
 
     renderSectorName(ctx: CanvasRenderingContext2D, s: Sector, x: number, y: number, scale: number, options: number) {
@@ -91,6 +98,9 @@ export abstract class Renderer {
             ctx.stroke();
         }
         ctx.lineCap = lco;
+
+        this.setupContextDefaults(ctx);
+
     }
 
     sectorCoordScale(coord: [number,number]): [number, number] {
@@ -155,6 +165,9 @@ export abstract class Renderer {
                 }
             }
         }
+
+        this.setupContextDefaults(ctx);
+
     }
 
 
@@ -190,6 +203,9 @@ export abstract class Renderer {
             ctx.stroke();
             ctx.fill();
         }
+
+        this.setupContextDefaults(ctx);
+
     }
 
     renderHexBorder(ctx: CanvasRenderingContext2D, w: World | undefined, x: number, y: number, scale: number, options: number) {
@@ -212,6 +228,9 @@ export abstract class Renderer {
             [-(HEX_SIDE_EXTRA + HEX_SIDE_LENGTH / 2) / HEX_X_SCALE, 0],
         ].map(([xc, yc]) => ctx.lineTo(xc, yc));
         ctx.stroke();
+
+        this.setupContextDefaults(ctx);
+
     }
 
     renderHexName(ctx: CanvasRenderingContext2D, w: World, scale: number, options: number) {
@@ -315,6 +334,7 @@ export abstract class Renderer {
         ctx.fillStyle = this.textColor(w, options, 'name')
         ctx.fillText(hex, -size.width / 2, 0.50);
 
+        this.setupContextDefaults(ctx);
     }
 
     renderZone(ctx: CanvasRenderingContext2D, w: World, scale: number, options: number) {
@@ -383,4 +403,91 @@ export abstract class Renderer {
             this.centerText(ctx, word, drawx, drawy, isStroke, rotation);
         })
     }
+
+    setupHexTransform(ctx: CanvasRenderingContext2D, x: number, y: number, oddEven: number, scale: number) {
+        // The hex transform.  renderer.is set so that (0,0) is the center of the hex
+        ctx.setTransform(scale * HEX_X_SCALE, 0, 0, scale, HEX_X_SCALE * scale * (x+0.5), scale * (y - ((oddEven)/2)));
+        this.setupContextDefaults(ctx);
+    }
+
+    setupSectorTransform(ctx: CanvasRenderingContext2D, x: number, y: number, scale: number) {
+        ctx.setTransform(scale * HEX_X_SCALE * Sector.SECTOR_WIDTH, 0, 0, scale * Sector.SECTOR_HEIGHT,
+            HEX_X_SCALE * scale * (x+ 0.5 * Sector.SECTOR_WIDTH),
+            scale * (y - 0.5 * Sector.SECTOR_HEIGHT));
+        this.setupContextDefaults(ctx);
+    }
+
+    setupContextDefaults(ctx: CanvasRenderingContext2D) {
+        ctx.globalCompositeOperation = 'screen';
+
+    }
+
+
+    drawClearBorder(ctx: CanvasRenderingContext2D, x: number, y: number, scale: number, hexes: [number,number][]) {
+        ctx.setTransform(scale * HEX_X_SCALE * Sector.SECTOR_WIDTH, 0, 0, scale * Sector.SECTOR_HEIGHT,
+            scale * HEX_X_SCALE * (- x + 1),
+            scale * (- y + 0.5 ));
+
+        const pathHexes = hexes.map(hex => toCoordsWorld(hex));
+
+        ctx.globalCompositeOperation = 'copy';
+        const color = '#333333';
+        ctx.strokeStyle = color;
+        ctx.fillStyle = color;
+        ctx.globalAlpha = 1;
+
+        const fillPaths0 = borderPath(pathHexes.slice(0, pathHexes.length / 2 + 2), 0, ()=>false);
+        const fillPaths1 = borderPath([...pathHexes.slice(pathHexes.length / 2), ...pathHexes.slice(0, 2)], 0, ()=>false);
+        let path = fillPaths0[0];
+        ctx.beginPath();
+        ctx.moveTo(...path[0]);
+        for (const comp of path.slice(1)) {
+            ctx.lineTo(...comp);
+        }
+        let end = path[path.length-1];
+        ctx.lineTo(end[0],end[1]+Sector.SECTOR_HEIGHT);
+        ctx.lineTo(end[0]+Sector.SECTOR_WIDTH,end[1]+Sector.SECTOR_HEIGHT);
+        ctx.lineTo(end[0]+Sector.SECTOR_WIDTH,path[0][1]-Sector.SECTOR_HEIGHT);
+        ctx.lineTo(path[0][0],path[0][1]-Sector.SECTOR_HEIGHT);
+        ctx.closePath();
+        ctx.fill();
+
+        path = fillPaths1[0];
+        ctx.beginPath();
+        ctx.moveTo(...path[0]);
+        for (const comp of path.slice(1)) {
+            ctx.lineTo(...comp);
+        }
+        end = path[path.length-2];
+        ctx.lineTo(end[0],end[1]-Sector.SECTOR_HEIGHT);
+        ctx.lineTo(end[0]-Sector.SECTOR_WIDTH,end[1]-Sector.SECTOR_HEIGHT);
+        ctx.lineTo(end[0]-Sector.SECTOR_WIDTH,path[0][1]+Sector.SECTOR_HEIGHT);
+        ctx.lineTo(path[0][0],path[0][1]+Sector.SECTOR_HEIGHT);
+        ctx.closePath();
+        ctx.fill();
+
+        ctx.globalAlpha = 0;
+        pathHexes.push(pathHexes[0]);
+        const paths = borderPath(pathHexes, 0, () => false);
+
+        const scaleFactor = Math.max(32 / scale, 1);
+        ctx.lineWidth = 0.1 / Sector.SECTOR_HEIGHT * scaleFactor;
+        const borderColor = '#cccccc';
+        ctx.strokeStyle = borderColor;
+        ctx.fillStyle = borderColor;
+        ctx.globalCompositeOperation = 'copy';
+        for (const path of paths) {
+            ctx.beginPath();
+            ctx.moveTo(...path[0]);
+            for (const comp of path.slice(1)) {
+                ctx.lineTo(...comp);
+            }
+            ctx.stroke();
+        }
+
+        this.setupContextDefaults(ctx);
+
+    }
+
+
 }
