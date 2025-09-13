@@ -20,6 +20,7 @@ COPY lib /app/static/lib/
 COPY res /app/static/res/
 COPY make /app/static/make/
 COPY print /app/static/print/
+COPY t5ss /app/static/t5ss/
 COPY package.json /app/package.json
 
 COPY --from=build /build/build /app/build/
