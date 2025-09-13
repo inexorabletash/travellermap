@@ -1,7 +1,7 @@
 FROM node:24 AS build
 RUN mkdir /build
 WORKDIR /build
-COPY package.json tsconfig.json jest.config.js /build/
+COPY package.json tsconfig.json jest.config.ts /build/
 RUN npm install
 COPY src /build/src/
 RUN ls -lt

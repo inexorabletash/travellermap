@@ -1,8 +1,6 @@
 import { Worker } from 'worker_threads';
 import logger from "./logger.js";
 
-const FILENAME = import.meta.filename;
-
 type WorkerNotify = {
     resolve?: (v: any) => void;
     reject?: (v: Error) => void;
@@ -13,17 +11,26 @@ export class WorkerPool {
     protected allWorkers: Map<Worker,WorkerNotify> = new Map();
     protected workerWait!: Promise<void>;
     protected workerReady_!: () => void;
+    protected totalStarted_ = 0;
 
-    constructor(count = 8) {
+    constructor(count = 8, protected readonly workerScript = process.argv[1]) {
         this.createWorkerWait();
         for(let i = 0 ; i < count; ++i) {
             this.startOne();
         }
     }
 
+    workerCount() {
+        return this.allWorkers.size;
+    }
+
+    totalStarted() {
+        return this.totalStarted_;
+    }
+
     protected startOne() {
         //const runPath = path.join(path.dirname(FILENAME),'index.js');
-        const runPath = process.argv[1];
+        const runPath = this.workerScript;
 
         const worker = new Worker(runPath, {
             eval: false,
@@ -41,9 +48,9 @@ export class WorkerPool {
                 notify?.reject?.(new Error(`Worker shutdown with code ${code}`));
             })
             .on('message', result => {
-                if(result instanceof Error) {
+                if(result.message && result.stack) {
                     logger.warn(result,`Error processing request`);
-                    this.allWorkers.get(worker)?.reject?.(result);
+                    this.allWorkers.get(worker)?.reject?.(new Error(result.stack));
                 } else {
                     this.allWorkers.get(worker)?.resolve?.(result);
                 }
@@ -55,6 +62,7 @@ export class WorkerPool {
 
         this.readyWorkers.push(worker);
         this.allWorkers.set(worker, {});
+        ++this.totalStarted_;
     }
 
     async invoke(query: any): Promise<any> {

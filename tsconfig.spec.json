@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "module": "nodenext",
+    "allowImportingTsExtensions": true,
     "target": "esnext",
     "esModuleInterop": true,
     "sourceMap": true,
