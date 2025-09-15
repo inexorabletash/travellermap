@@ -33,6 +33,10 @@ export class TileRender {
     static readonly XRenderRoutes = 0x100000;       // Render routes  (passed in as routes=0/1)
 
 
+    constructor(protected rendererFactory: (name: string) => Renderer) {
+
+    }
+
     static parseNumeric(v: any, deflt: number): number {
         if(v === undefined || v === null) {
             return deflt;
@@ -82,6 +86,7 @@ export class TileRender {
         // Note the width,height parameters don't work as you might expect in travellermap, since they
         // seem to actually scale the coordinates by the ratio of width/256.  We're not goind to do that.
         const opts = this.defaultRenderOpts(query, contentType);
+        const renderer = this.rendererFactory(opts.style)
 
         opts.x = TileRender.parseNumeric(query.x, 0);
         opts.y = TileRender.parseNumeric(query.y, 0);
@@ -93,7 +98,6 @@ export class TileRender {
         const width = tileWidth / opts.scaleFactor / HEX_X_SCALE;
         const height = tileHeight / opts.scaleFactor;
         const [x, y] = this.sanifyCoords(opts.x, opts.y, opts.scale, baseTileWidth, baseTileHeight); // Note this is the original x,y and pre-scaled to DPR scale value
-        const renderer = new PosterRenderer();
         const canvas = renderer.createCanvas(tileWidth, tileHeight, opts.canvasType);
         const context = canvas.getContext("2d");
         this.draw(renderer, universe, context, x, y, width, height, opts.scaleFactor, opts.options);
@@ -110,6 +114,7 @@ export class TileRender {
     renderSector(universe: Universe, query: Record<string, any>, contentType: string): Buffer {
         const sectorName = query.sector;
         const opts = this.defaultRenderOpts(query, contentType);
+        const renderer = this.rendererFactory(opts.style)
         let range!: [number,number,number,number];
 
         if(query.sector) {
@@ -130,7 +135,6 @@ export class TileRender {
             ];
         }
         --range[1]; // Kludge me
-        const renderer = new PosterRenderer();
         const canvas = renderer.createCanvas(range[2]*opts.scaleFactor*HEX_X_SCALE, range[3]*opts.scaleFactor, opts.canvasType);
         const context = canvas.getContext("2d");
         this.draw(renderer, universe, context, ...range, opts.scaleFactor, opts.options);
@@ -146,6 +150,7 @@ export class TileRender {
      */
     renderJump(universe: Universe, query: Record<string, any>, contentType: string): Buffer {
         const opts = this.defaultRenderOpts(query, contentType);
+        const renderer = this.rendererFactory(opts.style)
         const midx = query.x;
         const midy = query.y;
         const jump = TileRender.parseNumeric(query.jump,6);
@@ -154,7 +159,6 @@ export class TileRender {
         const y = midy - jump - 1 + ((midx+1) % 2)/2;
         const dims = jump*2+1 + 1;
 
-        const renderer = new PosterRenderer();
         const canvas = renderer.createCanvas(dims*opts.scaleFactor*HEX_X_SCALE, dims*opts.scaleFactor, opts.canvasType);
         const context = canvas.getContext("2d");
         this.draw(renderer, universe, context, x, y, dims, dims, opts.scaleFactor, opts.options);
@@ -202,7 +206,7 @@ export class TileRender {
                 const sector = universe.getSector(sx, sy);
 
                 //ctx.globalCompositeOperation = 'screen';
-                if(sector !== undefined) {
+                if(sector) {
                     renderer.renderSectorName(ctx, sector, sx, sy, scale, options);
                     renderer.renderRoutes(ctx, sector, sx, sy, scale, options);
                     renderer.renderBorders(ctx, sector, sx, sy, scale, options);
@@ -222,7 +226,7 @@ export class TileRender {
                 //ctx.setTransform(scale * HEX_X_SCALE, 0, 0, scale, HEX_X_SCALE * scale * (xOff+x+0.5), scale * (yOff + y - ((Math.abs(baseX+x+1) % 2)/2)));
                 renderer.renderHexBorder(ctx, w, x + baseX, y + baseY, scale, options);
 
-                if(w === undefined) {
+                if(!w) {
                     continue;
                 }
                 renderer.renderWorld(ctx, w, scale, options)
@@ -236,7 +240,6 @@ export class TileRender {
 
 
         // backgroud rendering
-        ctx.setTransform(scale * HEX_X_SCALE, 0, 0, scale, 0, 0);
         renderer.setBackground(ctx, width * HEX_X_SCALE, height, scale, options);
     }
 

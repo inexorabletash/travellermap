@@ -15,6 +15,7 @@ import express from "express";
 import {WorkerPool} from "./workerPool.js";
 import {isMainThread, parentPort, threadId} from "node:worker_threads";
 import {addListeners} from "./controller.js";
+import {PosterRenderer} from "./render/posterRenderer.js";
 
 process.on('SIGINT', () => {
     console.warn('Received SIGINT - shutting down');
@@ -37,7 +38,7 @@ const server = new WebServer(() => logger.info(`Server started on port ${port} w
         parentPort: () => parentPort,
         threadId: () => threadId,
     });
-const tileRenderer = new TileRender();
+const tileRenderer = new TileRender(() => new PosterRenderer());
 
 addListeners(server, tileRenderer);
 

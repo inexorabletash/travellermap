@@ -25,6 +25,7 @@ export abstract class Renderer {
     }
 
     setBackground(context: CanvasRenderingContext2D, width: number, height: number, scale: number, options: number) {
+        context.setTransform(scale * HEX_X_SCALE, 0, 0, scale, 0, 0);
         context.fillStyle = '#000';
         context.globalCompositeOperation = 'destination-over';
         context.fillRect(0, 0, width / HEX_X_SCALE, height);
