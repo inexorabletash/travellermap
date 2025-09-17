@@ -23,9 +23,9 @@ export class Sector {
     public constructor(protected metadata: SectorMetadata) {
     }
 
-    async mergeGlobalAllegiances() {
+    async mergeGlobalAllegiances(universe: Universe) {
         this.allegiances_ = this.metadata.allegiances;
-        const globalAllegiances = await Universe.getAllegiances()
+        const globalAllegiances = await universe.getAllegiances()
         for(const allegiance of Object.values(globalAllegiances)) {
             if (!this.allegiances_[allegiance.code]) {
                 this.allegiances_[allegiance.code] = allegiance;

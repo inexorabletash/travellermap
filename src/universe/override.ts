@@ -20,7 +20,7 @@ export type OverrideSector = {
     subsector: Record<string,string>;
 } & OverrideCommon;
 
-export type OverrideAllegiance = Allegiance & OverrideCommon;
+export type OverrideAllegiance = Allegiance;
 
 export type OverrideBorder = Border & {
     hexes?: string[];

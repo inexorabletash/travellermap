@@ -6,10 +6,11 @@ import {XML} from "./xml.js";
 import csv from "csv-parser";
 import {inspect} from "node:util";
 import {Allegiance, SectorMetadata} from "./universe/sectorMetadata.js";
-import {Override, OverrideCommon, OverrideSector} from "./universe/override.js";
+import {Override, OverrideAllegiance, OverrideCommon, OverrideSector} from "./universe/override.js";
 import * as YAML from 'yaml';
 import logger from './logger.js';
 import {CaseInsensitiveFileResolver} from "./caseInsensitiveFileResolver.js";
+import {combinePartials} from "./util.js";
 
 export type Milieu = {
     code: string;
@@ -92,7 +93,7 @@ export class Universe {
         return Universe.universes.get(key) as Promise<Universe>;
     }
 
-    static async getAllegiances(): Promise<Record<string,Allegiance>> {
+    static async getGlobalAllegiances(): Promise<Record<string,Allegiance>> {
         if(Universe.allegianceTab === undefined) {
             this.allegianceTab = this.loadCsv(path.join(Universe.baseDir, Universe.ALLEGIANCE_TAB_GLOBAL),
                 (data) => {
@@ -110,6 +111,18 @@ export class Universe {
         }
         await Universe.allegianceTab;
         return Universe.allegianceTab;
+    }
+
+    protected allegianceOverrides: OverrideAllegiance[] = [];
+    protected allegiances_!: Record<string,Allegiance>;
+    async getAllegiances(): Promise<Record<string,Allegiance>> {
+        if(this.allegiances_ === undefined) {
+            this.allegiances_ = {...await Universe.getGlobalAllegiances()};
+            for(const ovr of this.allegianceOverrides) {
+                this.allegiances_[ovr.code] = combinePartials(this.allegiances_[ovr.code] ?? {}, ovr);
+            }
+        }
+        return this.allegiances_;
     }
 
     static async getSophonts(): Promise<Record<string,Sophont>> {
@@ -246,11 +259,7 @@ export class Universe {
                 overrides.forEach(override => World.applyOverride(sector, override));
             }
         });
-        this.doOneOverrideSector(override.allegiance, defaultSector, (sector, overrides) => {
-            if(sector !== undefined) {
-                overrides.forEach(override => sector.applyAllegianceOverride(override));
-            }
-        });
+        this.allegianceOverrides.push(...(Array.isArray(override.allegiance) ? override.allegiance : [override.allegiance]));
         this.doOneOverrideSector(override.route, defaultSector, (sector, overrides) => {
             if(sector !== undefined) {
                 sector.applyRouteOverride(overrides);
@@ -365,7 +374,6 @@ export class Universe {
             }
 
             if(data !== undefined) {
-                await data.mergeGlobalAllegiances();
                 const sectorKey = this.sectorKey(data.x, data.y);
                 if(!universe._sectors.has(sectorKey)) {
                     // don't redefine existing sectors
@@ -378,6 +386,10 @@ export class Universe {
             }
         }
         await universe.loadOverrides(overridePath);
+
+        for(const sector of universe.sectors()) {
+            await sector.mergeGlobalAllegiances(universe);
+        }
 
         return universe;
     }
