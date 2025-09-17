@@ -6,7 +6,7 @@ import {Canvas, CanvasRenderingContext2D} from "canvas";
 import {Sector} from "../../build/universe/sector.js";
 import * as util from "node:util";
 import {World} from "../../build/universe/world.js";
-import {HEX_X_SCALE} from "../../src/render/constants";
+import {HEX_X_SCALE} from "../../build/render/constants.js";
 
 
 function setupMocks() {

@@ -88,6 +88,13 @@ export class Sector {
         return this.metadata.credits;
     }
 
+    get tags(): string {
+        return this.metadata.credits.SectorTags;
+    }
+
+    get milieu(): string {
+        return this.metadata.credits.SectorMilieu;
+    }
 
     get allegiances(): Record<string,Allegiance> {
         return this.allegiances_;

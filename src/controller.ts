@@ -5,7 +5,7 @@ import {worldBfs} from "./universe/bfs.js";
 import {World} from "./universe/world.js";
 import fs from "node:fs";
 import path from "node:path";
-import {absCoordinate, requestUniverse} from "./util.js";
+import {absCoordinate, combinePartials, requestUniverse} from "./util.js";
 
 
 export function addListeners(server: WebServer, tileRenderer: TileRender) {
@@ -31,6 +31,20 @@ export function addListeners(server: WebServer, tileRenderer: TileRender) {
             body: content,
         };
     }, ['image/png', 'image/svg+xml', 'application/pdf']);
+
+    server.registerRaw('/api/poster', 'post', async (req) => {
+        const universe = await requestUniverse(req);
+        const query = combinePartials(req.query, req.body);
+        const content = tileRenderer.renderSector(universe, query, req.contentType??'');
+
+        return {
+            contentType: req.contentType,
+            statusCode: 200,
+            body: content,
+        };
+    }, ['image/png', 'image/svg+xml', 'application/pdf']);
+
+
 
     server.registerRaw('/api/jumpmap', 'get', async (req) => {
         const universe = await requestUniverse(req);
@@ -123,7 +137,19 @@ export function addListeners(server: WebServer, tileRenderer: TileRender) {
         return { Results: universe.search(q) };
     });
 
-
+    server.registerJson('/api/universe', 'get', async(req) => {
+        const universe = await requestUniverse(req);
+        return {
+            Sectors: universe.sectors().map(sector => ({
+                X: sector.x,
+                Y: sector.y,
+                Milieu: sector.milieu,
+                Abbreviation: sector.abbreviation,
+                Names: [{ Text: sector.name}],
+                Tags: sector.tags,
+            }))
+        };
+    })
 
     server.staticRoute('/', path.join(process.cwd(), 'static'));
 

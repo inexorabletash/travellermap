@@ -1,9 +1,11 @@
 import express, { Request, Response } from "express";
+import bodyParser from "body-parser";
+import multer from 'multer';
 import {WorkerPool} from "./workerPool.js";
-import fs from "node:fs";
 import {requestLogger} from "./requestLogger.js";
 import logger from "./logger.js";
 import {MessagePort} from "worker_threads";
+import {inspect} from "node:util";
 
 export type WebServerFactories = {
     expressFactory: () => express.Express;
@@ -48,6 +50,9 @@ export class WebServer {
         if(factories.isMainThread()) {
             this.app = factories.expressFactory();
             this.app.use(requestLogger as any);
+            this.app.use(bodyParser.json());
+            this.app.use(bodyParser.urlencoded());
+            this.app.use(multer().none());
         }
 
         if(this.workerThreads && factories.isMainThread()) {

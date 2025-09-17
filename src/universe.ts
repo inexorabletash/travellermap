@@ -55,7 +55,7 @@ export class Universe {
     protected static allegianceTab: Promise<Record<string,Allegiance>>;
     protected static baseDir = path.join(process.cwd(), 'static', 'res', 'Sectors');
     public static readonly OVERRIDE_DIR = path.join(process.cwd(), 'static', 'res', 'overrides');
-    protected sectors: Map<string,Sector> = new Map<string, Sector>();
+    protected _sectors: Map<string,Sector> = new Map<string, Sector>();
     static readonly LOADER_LOOKUP: Record<string,(metadata: SectorMetadata, file: string) => Promise<Sector|undefined>> = {
         TabDelimited: (metadata, file) => Sector.loadFileTab(metadata, file),
         SecondSurvey: (metadata, file) => Sector.loadFileSecondSurvey(metadata, file),
@@ -138,7 +138,7 @@ export class Universe {
         const worldy = absy - secyBase * Sector.SECTOR_HEIGHT;
         const secKey = Universe.sectorKey(secx, secy);
 
-        const sector = this.sectors.get(secKey);
+        const sector = this._sectors.get(secKey);
         return sector?.lookupWorld(worldx, worldy);
     }
 
@@ -180,15 +180,18 @@ export class Universe {
         ];
     }
 
-
+    sectors() : Sector[] {
+        const sectorSet = new Set(this._sectors.values());
+        return [...sectorSet.values()];
+    }
     getSector(sx: number, sy: number) : Sector|undefined {
-        return this.sectors.get(Universe.sectorKey(sx,sy));
+        return this._sectors.get(Universe.sectorKey(sx,sy));
     }
     getSectorByName(name: string) : Sector|undefined {
-        return this.sectors.get(name.toLowerCase());
+        return this._sectors.get(name.toLowerCase());
     }
     getSectorBySubsectorName(name: string): Sector|undefined {
-        for(const s of this.sectors.values()) {
+        for(const s of this._sectors.values()) {
             if(s.subsectors().has(name)) {
                 return s;
             }
@@ -209,7 +212,7 @@ export class Universe {
             return pv;
         }, {}) ?? {};
         Object.entries(groupedOverrides).forEach(([sName, data]) => {
-            const sector = this.sectors.get(sName);
+            const sector = this._sectors.get(sName);
             apply(sector, data);
         });
     }
@@ -230,7 +233,7 @@ export class Universe {
             if(ovr.sector === undefined) {
                 console.warn('Skipping sector override because it has no "sector" member');
             }
-            const sector = this.sectors.get(ovr.sector);
+            const sector = this._sectors.get(ovr.sector);
             if(sector) {
                 sector.applySectorOverride(this, ovr);
                 if(defaultSector === undefined) {
@@ -262,7 +265,7 @@ export class Universe {
     }
 
     search(query: string): SearchResponse {
-        const x = [ ...this.sectors.values() ];
+        const x = [ ...this._sectors.values() ];
         const y = x.flatMap(sector => [...sector.getWorlds()]);
         const z: Set<World> = new Set([...y]);
         let matches: Set<World>[] = [z];
@@ -364,12 +367,12 @@ export class Universe {
             if(data !== undefined) {
                 await data.mergeGlobalAllegiances();
                 const sectorKey = this.sectorKey(data.x, data.y);
-                if(!universe.sectors.has(sectorKey)) {
+                if(!universe._sectors.has(sectorKey)) {
                     // don't redefine existing sectors
-                    universe.sectors.set(sectorKey, data);
-                    universe.sectors.set(data.name.toLowerCase(), data);
+                    universe._sectors.set(sectorKey, data);
+                    universe._sectors.set(data.name.toLowerCase(), data);
                     if (data.abbreviation) {
-                        universe.sectors.set(data.abbreviation.toLowerCase(), data);
+                        universe._sectors.set(data.abbreviation.toLowerCase(), data);
                     }
                 }
             }
@@ -419,11 +422,11 @@ export class Universe {
     }
 
     removeSector(name: string) {
-        this.sectors.delete(name);
+        this._sectors.delete(name);
     }
 
     addSector(name: string, sector: Sector) {
-        this.sectors.set(name, sector);
+        this._sectors.set(name, sector);
     }
 
 }
