@@ -48,7 +48,10 @@ export class WorkerPool {
                 notify?.reject?.(new Error(`Worker shutdown with code ${code}`));
             })
             .on('message', result => {
-                if(result.message && result.stack) {
+                if(!result) {
+                    logger.warn(`Empty message received`);
+                    this.allWorkers.get(worker)?.reject?.(new Error(`Empty message received`));
+                } else if(result.message && result.stack) {
                     logger.warn(result,`Error processing request`);
                     this.allWorkers.get(worker)?.reject?.(new Error(result.stack));
                 } else {

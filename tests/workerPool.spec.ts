@@ -35,6 +35,15 @@ test('Worker Pool Execute single task', async () => {
     expect(result).toEqual({message: PAYLOAD});
 });
 
+test('Worker Pool with empty payload', async () => {
+    const workerPool = new WorkerPool(8, SCRIPT);
+    const PAYLOAD = undefined;
+
+    await expect(() => workerPool.invoke(PAYLOAD)).rejects.toThrow();
+});
+
+
+
 test('Worker Pool Execute single exception', async () => {
     const workerPool = new WorkerPool(8, SCRIPT);
     const PAYLOAD = {error: 'Hello', path:'path'};
