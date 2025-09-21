@@ -9,6 +9,7 @@ RUN npm run build
 
 
 FROM node:24
+ARG VERSION
 RUN mkdir /app
 WORKDIR /app
 ENTRYPOINT [ "/usr/local/bin/node" ]
@@ -22,6 +23,7 @@ COPY make /app/static/make/
 COPY print /app/static/print/
 COPY t5ss /app/static/t5ss/
 COPY package.json /app/package.json
+ENV PACKAGE_VERSION=${VERSION:-}
 
 COPY --from=build /build/build /app/build/
 

@@ -5,7 +5,11 @@ import path from "node:path";
 
 
 const FILENAME = import.meta.filename;
-const pkg = JSON.parse(fs.readFileSync(path.join(path.dirname(FILENAME),'..','package.json'), 'utf8'));
+let VERSION: undefined|string = process.env.PACKAGE_VERSION;
+if(!VERSION) {
+    const pkg = JSON.parse(fs.readFileSync(path.join(path.dirname(FILENAME), '..', 'package.json'), 'utf8'));
+    VERSION = pkg?.version;
+}
 
 let transport;
 if(!process.env.JSON_LOGGING) {
@@ -32,7 +36,7 @@ export default pino({
             host: bindings.hostname,
             threadId: threadId,
             node_version: process.version,
-            version: pkg.version,
+            version: VERSION,
         }),
     },
     transport,
