@@ -21,10 +21,13 @@ export class Sector {
     protected subsectors_!: Record<string,string>;
 
     public constructor(protected metadata: SectorMetadata) {
+        this.allegiances_ = this.metadata.allegiances;
+        this.borders_ = this.metadata.borders;
+        this.routes_ = this.metadata.routes;
+        this.subsectors_ = this.metadata.subsectors ?? {};
     }
 
     async mergeGlobalAllegiances(universe: Universe) {
-        this.allegiances_ = this.metadata.allegiances;
         const globalAllegiances = await universe.getAllegiances()
         for(const allegiance of Object.values(globalAllegiances)) {
             if (!this.allegiances_[allegiance.code]) {
@@ -41,9 +44,6 @@ export class Sector {
                 this.tryMergeAllegiance(allegiance, globalAllegiances[allegiance.baseCode]);
             }
         }
-        this.borders_ = this.metadata.borders;
-        this.routes_ = this.metadata.routes;
-        this.subsectors_ = this.metadata.subsectors ?? {};
     }
 
     lookupWorld(hex: string, _?: undefined): World;
@@ -184,30 +184,9 @@ export class Sector {
         this.subsectors_ = combinePartials(this.subsectors_, ovr.subsector);
     }
 
-    applyAllegianceOverride(ovr: OverrideAllegiance) {
-        if(ovr.code === undefined) {
-            return;
-        }
-        const current = this.allegiances_[ovr.code] ?? {
-            code: ovr.code
-        }
-        this.allegiances_[ovr.code] = combinePartials(current, ovr);
-
-        // Now if this is in abbreviation apply color fields
-        for(const allegiance of Object.values(this.allegiances_)) {
-            if(allegiance.legacy && allegiance.legacy === ovr.code) {
-                this.overrideAllegianceColors(allegiance, ovr);
-            }
-            if(allegiance.baseCode && allegiance.baseCode === ovr.code) {
-                this.overrideAllegianceColors(allegiance, ovr);
-            }
-        }
-
-    }
-
     applyRouteOverride(ovr: OverrideRoute[]) {
         // remove duplicate old routes
-        const oldRoutes = this.routes_.filter(
+        const oldRoutes = this.routes_?.filter(
             (route: Route) => {
                 if(ovr.findIndex(v =>
                     ( (v.start === route.start || v.start === route.end) &&
@@ -224,7 +203,7 @@ export class Sector {
                     return false;
                 }
                 return true;
-            });
+            }) ?? [];
         const newRoutes = ovr.filter(route => route.start && route.end);
 
         this.routes_ = [ ...oldRoutes, ...newRoutes]

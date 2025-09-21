@@ -1,14 +1,9 @@
 #!/usr/bin/env -S node --enable-source-maps
+
 import {WebServer, WireRequest} from "./webServer.js";
 import path from "node:path";
 import {TileRender} from "./render/tileRender.js";
 import {Universe} from "./universe.js";
-import fs from "node:fs";
-import {Sector} from "./universe/sector.js";
-import {World} from "./universe/world.js";
-import {hexRadius} from "./render/border.js";
-import {worldBfs} from "./universe/bfs.js";
-import {inspect} from "node:util";
 import {FilePoller} from "./filePoller.js";
 import logger from './logger.js';
 import express from "express";
@@ -16,6 +11,8 @@ import {WorkerPool} from "./workerPool.js";
 import {isMainThread, parentPort, threadId} from "node:worker_threads";
 import {addListeners} from "./controller.js";
 import {PosterRenderer} from "./render/posterRenderer.js";
+import {program} from 'commander';
+
 
 process.on('SIGINT', () => {
     console.warn('Received SIGINT - shutting down');
@@ -28,8 +25,20 @@ process.on('SIGTERM', () => {
 });
 
 
-const workers = Number.parseInt(process.env['WORKERS'] ?? '8');
-const port = Number.parseInt(process.env['PORT'] ?? '8000');
+program
+    .option('--workers <number>', 'number of workers', process.env['WORKERS'] ?? '8')
+    .option('--port <number', 'listen port', '8000')
+    .option('--sector <string>', 'sector directory', path.join(process.cwd(), 'static', 'res', 'Sectors'))
+    .option('--override <string>', 'override directory', path.join(process.cwd(), 'static', 'res', 'Sectors'))
+;
+program.parse();
+const opts = program.opts();
+
+Universe.baseDir = opts['sector'];
+Universe.OVERRIDE_DIR = opts['override'];
+const workers = Number.parseInt(opts['workers']);
+const port = Number.parseInt(opts['port']);
+
 const server = new WebServer(() => logger.info(`Server started on port ${port} with ${workers} workers`), workers,
     {
         expressFactory: () => express(),

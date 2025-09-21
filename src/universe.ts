@@ -54,8 +54,8 @@ export class Universe {
     protected static milieuTab: Promise<Record<string,Milieu>>;
     protected static sophontTab: Promise<Record<string,Sophont>>;
     protected static allegianceTab: Promise<Record<string,Allegiance>>;
-    protected static baseDir = path.join(process.cwd(), 'static', 'res', 'Sectors');
-    public static readonly OVERRIDE_DIR = path.join(process.cwd(), 'static', 'res', 'overrides');
+    static baseDir = path.join(process.cwd(), 'static', 'res', 'Sectors');
+    static OVERRIDE_DIR = path.join(process.cwd(), 'static', 'res', 'overrides');
     protected _sectors: Map<string,Sector> = new Map<string, Sector>();
     static readonly LOADER_LOOKUP: Record<string,(metadata: SectorMetadata, file: string) => Promise<Sector|undefined>> = {
         TabDelimited: (metadata, file) => Sector.loadFileTab(metadata, file),

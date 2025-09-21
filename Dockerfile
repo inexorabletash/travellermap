@@ -12,7 +12,7 @@ FROM node:24
 ARG VERSION
 RUN mkdir /app
 WORKDIR /app
-ENTRYPOINT [ "/usr/local/bin/node" ]
+ENTRYPOINT [ "/usr/local/bin/node", "--enable-source-maps" ]
 CMD [ "build/index.js" ]
 COPY --from=build /build/node_modules /app/node_modules
 RUN mkdir -p static/res
