@@ -1,10 +1,13 @@
 import { Worker } from 'worker_threads';
 import logger from "./logger.js";
+import {isMainThread, workerData} from "node:worker_threads";
 
 type WorkerNotify = {
     resolve?: (v: any) => void;
     reject?: (v: Error) => void;
 }
+
+export type WorkerOptions = Record<string,any>;
 
 export class WorkerPool {
     protected readyWorkers: Worker[] = [];
@@ -12,11 +15,24 @@ export class WorkerPool {
     protected workerWait!: Promise<void>;
     protected workerReady_!: () => void;
     protected totalStarted_ = 0;
+    protected static options: WorkerOptions;
 
     constructor(count = 8, protected readonly workerScript = process.argv[1]) {
         this.createWorkerWait();
         for(let i = 0 ; i < count; ++i) {
             this.startOne();
+        }
+    }
+
+    static get opts(): WorkerOptions {
+        return WorkerPool.options;
+    }
+
+    static initOptions(generator: () => WorkerOptions) {
+        if(isMainThread) {
+            WorkerPool.options = generator();
+        } else {
+            WorkerPool.options = workerData.opts;
         }
     }
 
@@ -35,6 +51,7 @@ export class WorkerPool {
         const worker = new Worker(runPath, {
             eval: false,
             workerData: {
+                opts: WorkerPool.options,
             },
         });
         const workerThreadId = worker.threadId;

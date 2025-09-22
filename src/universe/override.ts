@@ -17,7 +17,8 @@ export type OverrideSector = {
     name?: string;
     x?: number;
     y?: number;
-    subsector: Record<string,string>;
+    subsector?: Record<string,string>;
+    milieu?: string;
 } & OverrideCommon;
 
 export type OverrideAllegiance = Allegiance;

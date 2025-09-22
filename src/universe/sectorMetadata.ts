@@ -92,6 +92,10 @@ export class SectorMetadata {
         return this.data.credits;
     }
 
+    set credits(data: Record<string,any>) {
+        this.data.credits = data;
+    }
+
     get borders(): Border[] {
         return this.borders_;
     }

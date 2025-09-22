@@ -25,10 +25,12 @@ export abstract class Renderer {
     }
 
     setBackground(context: CanvasRenderingContext2D, width: number, height: number, scale: number, options: number) {
-        context.setTransform(scale * HEX_X_SCALE, 0, 0, scale, 0, 0);
+        context.setTransform(scale, 0, 0, scale, 0, 0);
         context.fillStyle = '#000';
-        context.globalCompositeOperation = 'destination-over';
-        context.fillRect(0, 0, width / HEX_X_SCALE, height);
+        context.strokeStyle = '#000';
+        context.globalAlpha = 1;
+        context.globalCompositeOperation = 'screen';
+        context.fillRect(-width, -height, width*10, height*10);
 
         this.setupContextDefaults(context);
     }
@@ -419,6 +421,7 @@ export abstract class Renderer {
     }
 
     setupContextDefaults(ctx: CanvasRenderingContext2D) {
+        ctx.globalAlpha = 1;
         ctx.globalCompositeOperation = 'screen';
 
     }

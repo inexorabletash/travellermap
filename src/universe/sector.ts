@@ -4,9 +4,17 @@ import {World} from "./world.js";
 import {Transform} from "node:stream";
 import {XML} from "../xml.js";
 import {Universe} from "../universe.js";
-import {OverrideAllegiance, OverrideBorder, OverrideRoute, OverrideSector} from "./override.js";
+import {
+    Override,
+    OverrideAllegiance,
+    OverrideBorder,
+    OverrideCommon,
+    OverrideRoute,
+    OverrideSector
+} from "./override.js";
 import {Allegiance, Border, CreditDetails, Route, SectorMetadata} from "./sectorMetadata.js";
 import {combinePartials} from "../util.js";
+import logger from "../logger.js";
 
 export class Sector {
     static readonly SECTOR_WIDTH = 32;
@@ -181,6 +189,12 @@ export class Sector {
             this.metadata.y = ovr.y ?? this.y;
             universe.addSector(Universe.sectorKey(this.x, this.y), this);
         }
+        if(ovr.milieu) {
+            if(this.metadata.credits === undefined) {
+                this.metadata.credits = {};
+            }
+            this.metadata.credits.SectorMilieu;
+        }
         this.subsectors_ = combinePartials(this.subsectors_, ovr.subsector);
     }
 
@@ -224,8 +238,8 @@ export class Sector {
             for(let existIdx = 0; existIdx < existingBorders.length; ++existIdx) {
                 const border = existingBorders[existIdx];
 
-                const startLoc = border.hexes.findIndex(v => v === start);
-                const endLoc = border.hexes.findIndex(v => v === end);
+                const startLoc = border.hexes?.findIndex(v => v === start) ?? -1;
+                const endLoc = border.hexes?.findIndex(v => v === end) ?? -1;
 
                 if(startLoc<0 && endLoc <0) {
                     continue;
@@ -491,6 +505,51 @@ export class Sector {
             });
     }
 
+    applyOverrides(universe: Universe, overrides: Override[]) {
+        for(const override of overrides) {
+            const overrideSectors = universe.overrideSectors(override);
+            const defaultSector = overrideSectors.length == 1 ? overrideSectors[0]?.sector : undefined;
+
+            this.doOneOverrideSector(overrideSectors, defaultSector, ovr => {
+                this.applySectorOverride(universe, ovr);
+            });
+            this.doOneOverrideSector(override.world, defaultSector, ovr => {
+                World.applyOverride(this, ovr);
+            });
+            this.doOneOverrideSector(override.route, defaultSector, ovr => {
+                this.applyRouteOverride([ovr])
+            });
+            this.doOneOverrideSector(override.border, defaultSector, ovr => {
+                this.applyBorderOverride([ovr]);
+           });
+        }
+
+    }
+
+    sectorMatch(name: string|undefined) {
+        if(name === undefined) {
+            return false;
+        }
+        return (name.toLowerCase() === this.name?.toLowerCase() || name.toLowerCase() === this.abbreviation?.toLowerCase());
+    }
+
+    doOneOverrideSector<T extends OverrideCommon>(overrides: T[]|T, defaultSector: string|undefined, apply: (overrides: T) => void) {
+        if(!overrides) {
+            return;
+        }
+        if(!Array.isArray(overrides)) {
+            overrides = [overrides];
+        }
+        for(const ovr of overrides) {
+            if(ovr === undefined || ovr === null) {
+                continue;
+            }
+            if((ovr.sector === undefined && this.sectorMatch(defaultSector)) || this.sectorMatch(ovr.sector)) {
+                logger.info(`processing override for ${ovr.sector ?? defaultSector}: ${JSON.stringify(ovr)}`);
+                apply(ovr);
+            }
+        }
+    }
 }
 
 

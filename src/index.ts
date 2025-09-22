@@ -25,15 +25,18 @@ process.on('SIGTERM', () => {
 });
 
 
-program
-    .option('--workers <number>', 'number of workers', process.env['WORKERS'] ?? '8')
-    .option('--port <number', 'listen port', '8000')
-    .option('--sector <string>', 'sector directory', path.join(process.cwd(), 'static', 'res', 'Sectors'))
-    .option('--override <string>', 'override directory', path.join(process.cwd(), 'static', 'res', 'overrides'))
-;
-program.parse();
-const opts = program.opts();
+WorkerPool.initOptions(() => {
+    program
+        .option('--workers <number>', 'number of workers', process.env['WORKERS'] ?? '8')
+        .option('--port <number', 'listen port', '8000')
+        .option('--sector <string>', 'sector directory', path.join(process.cwd(), 'static', 'res', 'Sectors'))
+        .option('--override <string>', 'override directory', path.join(process.cwd(), 'static', 'res', 'overrides'))
+    ;
+    program.parse();
+    return program.opts();
+});
 
+const opts = WorkerPool.opts;
 Universe.baseDir = opts['sector'];
 Universe.OVERRIDE_DIR = opts['override'];
 const workers = Number.parseInt(opts['workers']);

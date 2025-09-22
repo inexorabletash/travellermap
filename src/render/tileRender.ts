@@ -186,6 +186,7 @@ export class TileRender {
         const endX = Math.ceil(startX + width) - baseX;
         const endY = Math.ceil(startY + height) - baseY;
 
+        renderer.setBackground(ctx, width * HEX_X_SCALE, height, scale, options);
         // Planets are placed at .5 offsets of X
         // Planets are placed at .5 offset of Y if X is event or 0 offset if Y is odd.
 
@@ -240,7 +241,6 @@ export class TileRender {
 
 
         // backgroud rendering
-        renderer.setBackground(ctx, width * HEX_X_SCALE, height, scale, options);
     }
 
 

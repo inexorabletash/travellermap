@@ -51,7 +51,8 @@ export class Universe {
     static readonly ALLEGIANCE_TAB_GLOBAL = 'allegiance_global.tab';
     static readonly DEFAULT_MILIEU = 'M1105';
     protected static universes: Map<string,Promise<Universe>> = new Map();
-    protected static milieuTab: Promise<Record<string,Milieu>>;
+    protected static milieuTab_: Promise<Record<string,Milieu>>;
+    protected static milieuDefs: Promise<Record<string,Set<string>>>;
     protected static sophontTab: Promise<Record<string,Sophont>>;
     protected static allegianceTab: Promise<Record<string,Allegiance>>;
     static baseDir = path.join(process.cwd(), 'static', 'res', 'Sectors');
@@ -64,10 +65,28 @@ export class Universe {
         'SEC': (metadata, file) => Sector.loadFileSec(metadata, file),
     };
 
-    static async getUniverse(key: string|undefined): Promise<Universe> {
-        key ??= Universe.DEFAULT_MILIEU;
-        if(this.milieuTab === undefined) {
-            this.milieuTab = this.loadCsv(path.join(Universe.baseDir, Universe.MILIEU_TAB),
+    static async milieuToLoad(key: string): Promise<Set<string>> {
+        if(this.milieuDefs === undefined) {
+            try {
+                this.milieuDefs = this.loadCsv(path.join(Universe.OVERRIDE_DIR, Universe.MILIEU_TAB),
+                    data => {
+                        return [data.Name, new Set(data.Milieu?.split(/\s+/) ?? [])];
+                    });
+            } catch(e: any) {
+                logger.warn(`Failed to load milieu definitions: ${e.stack}`);
+            }
+        }
+        const defs = await this.milieuDefs;
+        let milieuMatch = new Set([key]);
+        if(defs[key]) {
+            milieuMatch = defs[key] ?? new Set();
+        }
+        return milieuMatch;
+    }
+
+    static get milieuTab(): Promise<Record<string,Milieu>> {
+        if(this.milieuTab_ === undefined) {
+            this.milieuTab_ = this.loadCsv(path.join(Universe.baseDir, Universe.MILIEU_TAB),
                 (data) => {
                     const code = path.dirname(data.Path);
                     return [ code, {
@@ -78,19 +97,39 @@ export class Universe {
                     }];
                 });
         }
+        return this.milieuTab_;
+    }
 
-        const milieuTab = await Universe.milieuTab;
-        if(Universe.universes.get(key) === undefined) {
-            if(milieuTab[key] === undefined) {
-                throw new Error(`Unknown Milieu ${key}`);
-            }
-            const loaded = Universe.loadConfig(
-                path.join(Universe.baseDir, milieuTab[key].configPath),
-                path.join(Universe.OVERRIDE_DIR, path.dirname(milieuTab[key].configPath)),
-                );
-            Universe.universes.set(key, loaded);
+    static async loadUniverse(key: string, milieuMatch: Set<string>): Promise<Universe> {
+        const universe = new Universe();
+        const milieuTab = await this.milieuTab;
+        const overrideFiles = await this.loadOverrideFiles(path.join(Universe.OVERRIDE_DIR, key));
+
+        universe.applyAllegianceOverrides(overrideFiles);
+
+        for(const milieu of Object.values(milieuTab)) {
+            await Universe.loadConfig(
+                universe,
+                path.join(Universe.baseDir, milieu.configPath),
+                overrideFiles,
+                milieuMatch
+            );
+            milieu.configPath
         }
-        return Universe.universes.get(key) as Promise<Universe>;
+        return universe;
+    }
+
+    static async getUniverse(key: string|undefined): Promise<Universe> {
+        key ??= this.DEFAULT_MILIEU;
+        const milieuMatch = await this.milieuToLoad(key);
+        let universe = Universe.universes.get(key);
+
+        if(universe === undefined) {
+            universe = this.loadUniverse(key, milieuMatch);
+            Universe.universes.set(key,universe);
+        }
+
+        return universe;
     }
 
     static async getGlobalAllegiances(): Promise<Record<string,Allegiance>> {
@@ -212,65 +251,25 @@ export class Universe {
         return undefined;
     }
 
-    doOneOverrideSector<T extends OverrideCommon>(overrides: T[]|T, defaultSector: string|undefined, apply: (sector: Sector|undefined, overrides: T[]) => void) {
-        if(!Array.isArray(overrides)) {
-            overrides = [overrides];
+    applyAllegianceOverrides(overrides: Override[]) {
+        for(const override of overrides) {
+            this.allegianceOverrides.push(...(Array.isArray(override.allegiance) ? override.allegiance : [override.allegiance]));
         }
-        const groupedOverrides: Record<string,T[]> = overrides?.reduce((pv: Record<string,T[]>, cv) => {
-            const sector = cv?.sector ?? defaultSector;
-            pv[sector] ??= [];
-            if(cv !== undefined) {
-                pv[sector].push(cv);
-            }
-            return pv;
-        }, {}) ?? {};
-        Object.entries(groupedOverrides).forEach(([sName, data]) => {
-            const sector = this._sectors.get(sName);
-            apply(sector, data);
-        });
     }
 
-    applyOverride(override: Override) {
-        let defaultSector: string|undefined = undefined;
+    overrideSectors(override: Override) {
         let sectors: OverrideSector[] = [];
 
-        if(override.sector === undefined) {
-        } else if(typeof override.sector === 'string') {
-            defaultSector = override.sector;
-        } else if(Array.isArray(override.sector)) {
+        if (override.sector === undefined) {
+            return [];
+        } else if (typeof override.sector === 'string') {
+            return [ {sector: override.sector}];
+        } else if (Array.isArray(override.sector)) {
             sectors = override.sector;
         } else {
-            sectors = [ override.sector ];
+            sectors = [override.sector];
         }
-        sectors.forEach(ovr => {
-            if(ovr.sector === undefined) {
-                console.warn('Skipping sector override because it has no "sector" member');
-            }
-            const sector = this._sectors.get(ovr.sector);
-            if(sector) {
-                sector.applySectorOverride(this, ovr);
-                if(defaultSector === undefined) {
-                    defaultSector = sector.abbreviation.toLowerCase();
-                }
-            }
-        });
-        this.doOneOverrideSector(override.world, defaultSector, (sector, overrides) => {
-            if(sector !== undefined) {
-                overrides.forEach(override => World.applyOverride(sector, override));
-            }
-        });
-        this.allegianceOverrides.push(...(Array.isArray(override.allegiance) ? override.allegiance : [override.allegiance]));
-        this.doOneOverrideSector(override.route, defaultSector, (sector, overrides) => {
-            if(sector !== undefined) {
-                sector.applyRouteOverride(overrides);
-            }
-        });
-        this.doOneOverrideSector(override.border, defaultSector, (sector, overrides) => {
-            if(sector !== undefined) {
-                sector.applyBorderOverride(overrides);
-            }
-        });
-
+        return sectors;
     }
 
     search(query: string): SearchResponse {
@@ -313,33 +312,34 @@ export class Universe {
         }
     }
 
-    async loadOverrides(overrideDir: string) {
+    static async loadOverrideFiles(overrideDir: string): Promise<Override[]> {
         try {
             const files = await fs.promises.readdir(overrideDir, {
                 encoding: 'utf8',
                 recursive: true,
                 withFileTypes: true
             });
-            for (const file of files) {
-                try {
-                    if (file.isFile() && !file.name.startsWith('#') && path.extname(file.name) === '.yml') {
+            return Promise.all(files
+                .filter(file => file.isFile() && !file.name.startsWith('#') && path.extname(file.name) === '.yml')
+                .map(async file => {
+                    try {
                         const yamlData = await fs.promises.readFile(path.join(overrideDir, file.name), {encoding: 'utf8'});
                         const parsed = YAML.parse(yamlData);
-                        this.applyOverride(parsed);
+                        return parsed;
+                    } catch (e) {
+                        logger.warn(e, `Failed to process override file: ${overrideDir}/${file.name}`);
+                        return undefined;
                     }
-                } catch(e) {
-                    logger.warn(e, `Failed to process override file: ${overrideDir}/${file.name}`);
-                }
-            }
+                })
+                .filter(result => result !== undefined));
         } catch(e) {
-            logger.warn(`Failed to process directory ${overrideDir}`);
+            return [];
         }
     }
 
-    static async loadConfig(file: string, overridePath: string): Promise<Universe> {
+    static async loadConfig(universe: Universe, file: string, overrides: Override[], milieuMatch: Set<string>): Promise<Universe> {
         const xml = await XML.fromFile(file);
         const dirName = path.dirname(file);
-        const universe = new Universe();
         const resolver = new CaseInsensitiveFileResolver();
 
         const sectors = xml.path('Sectors.Sector');
@@ -360,35 +360,43 @@ export class Universe {
                 }
             }
 
-            let data: Sector|undefined;
+            let sectorData: Sector|undefined;
             if (metadata.x === undefined || metadata.y === undefined) {
-                data = undefined;
+                sectorData = undefined;
             } else if (dataFile === undefined) {
-                data = new Sector(metadata);
+                sectorData = new Sector(metadata);
             } else {
                 const rawFilePath = path.join(dirName, dataFile);
                 const dataFilePath = await resolver.resolve(rawFilePath);
                 if(dataFilePath !== undefined) {
-                    data = await this.LOADER_LOOKUP[dataFileType](metadata, dataFilePath);
+                    sectorData = await this.LOADER_LOOKUP[dataFileType](metadata, dataFilePath);
                 }
             }
 
-            if(data !== undefined) {
-                const sectorKey = this.sectorKey(data.x, data.y);
+            if(sectorData !== undefined) {
+                sectorData.applyOverrides(universe, overrides);
+                await sectorData.mergeGlobalAllegiances(universe);
+
+                if(sectorData.milieu !== undefined && !milieuMatch.has(sectorData.milieu)) {
+                    continue;
+                }
+                const sectorKey = this.sectorKey(sectorData.x, sectorData.y);
+                if(universe._sectors.has(sectorKey) &&
+                    ((universe._sectors.get(sectorKey)?.milieu === undefined && sectorData.milieu !== undefined))) {
+                    // If the sector is already defined but is not an explicit milieu match, drop the old one
+                    universe.removeSector(sectorKey);
+                }
+                // If the sector is already defined use the existing
                 if(!universe._sectors.has(sectorKey)) {
                     // don't redefine existing sectors
-                    universe._sectors.set(sectorKey, data);
-                    universe._sectors.set(data.name.toLowerCase(), data);
-                    if (data.abbreviation) {
-                        universe._sectors.set(data.abbreviation.toLowerCase(), data);
+                    universe._sectors.set(sectorKey, sectorData);
+                    universe._sectors.set(sectorData.name.toLowerCase(), sectorData);
+                    if (sectorData.abbreviation) {
+                        universe._sectors.set(sectorData.abbreviation.toLowerCase(), sectorData);
                     }
                 }
             }
-        }
-        await universe.loadOverrides(overridePath);
 
-        for(const sector of universe.sectors()) {
-            await sector.mergeGlobalAllegiances(universe);
         }
 
         return universe;
