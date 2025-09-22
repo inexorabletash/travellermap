@@ -4,13 +4,13 @@ import fs, {unlink} from "node:fs";
 import path from "node:path";
 import {XML} from "./xml.js";
 import csv from "csv-parser";
-import {inspect} from "node:util";
 import {Allegiance, SectorMetadata} from "./universe/sectorMetadata.js";
 import {Override, OverrideAllegiance, OverrideCommon, OverrideSector} from "./universe/override.js";
 import * as YAML from 'yaml';
 import logger from './logger.js';
 import {CaseInsensitiveFileResolver} from "./caseInsensitiveFileResolver.js";
 import {combinePartials} from "./util.js";
+import {inspect} from "node:util";
 
 export type Milieu = {
     code: string;

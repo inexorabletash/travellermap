@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Sectors>
+  <Sector Abbreviation="Fore" Tags="Preserve" Selected="true">
+    <Y>-1</Y>
+    <X>-5</X>
+    <Name>Foreven</Name>
+    <DataFile Source="Foreven Sector Reserve" Type="TabDelimited">Foreven.tab</DataFile>
+    <MetadataFile>Foreven.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Spin" Tags="Official" Selected="true" Milieu="M1105">
+    <Y>-1</Y>
+    <X>-4</X>
+    <Name>Spinward Marches</Name>
+    <Name Lang="zh">Tloql</Name>
+    <DataFile Source="Traveller 5 Second Survey" Milieu="M1105" Type="TabDelimited">Spinward Marches.tab</DataFile>
+    <MetadataFile>Spinward Marches.xml</MetadataFile>
+  </Sector>
+  <Sector Abbreviation="Core" Tags="Official" Selected="true" Milieu="M1105">
+    <Y>0</Y>
+    <X>0</X>
+    <Name>Core</Name>
+    <Name Lang="vi">Ukan</Name>
+    <DataFile Source="Traveller 5 Second Survey" Milieu="M1105" Type="TabDelimited">Core.tab</DataFile>
+    <MetadataFile>Core.xml</MetadataFile>
+  </Sector>
+
+</Sectors>
+

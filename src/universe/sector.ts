@@ -290,6 +290,12 @@ export class Sector {
             ?.[0] ?? 'Unknown';
 
         const sector = new Sector(metadata);
+        let doneResolve: any;
+        let doneReject: any;
+        const done = new Promise<void>((resolve, reject) => {
+            doneResolve = resolve;
+            doneReject = reject;
+        });
 
         fs.createReadStream(filename)
             .pipe(new Transform({
@@ -338,8 +344,14 @@ export class Sector {
             }))
             .on('data', (data) => sector.addWorld(new World(sector, data)) )
             .on('end', () => {
+                doneResolve();
+            })
+            .on('error', e => {
+                doneReject(e);
+            })
+                ;
 
-            });
+        await done;
         return sector;
     }
 

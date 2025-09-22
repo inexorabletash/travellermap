@@ -1,0 +1,197 @@
+sector:
+  sector: spin
+
+route:
+  - start: '1223'
+    end: '1523'
+    allegiance: SwCf
+
+  - start: '1223'
+    end: '1126'
+    allegiance: SwCf
+
+  - replace: [ '1126', '1225' ]
+  - replace: [ '1223', '1324' ]
+  - replace: [ '1523', '1524' ]
+  - replace: '1525'
+
+  - start: '1324'
+    end: '1424'
+    allegiance: BwCf
+    
+  - start: '1424'
+    end: '1524'
+    allegiance: BwCf
+
+  - start: '1424'
+    end: '1325'
+    allegiance: BwCf
+
+  - start: '1325'
+    end: '1225'
+    allegiance: BwCf
+
+  - remove: '1525'
+
+  - start: '1329'
+    end: '1727'
+    allegiance: ImDd
+  - start: '1727'
+    end: '1826'
+    allegiance: ImDd
+  - start: '1826'
+    end: '1824'
+    allegiance: Im
+
+
+border:
+  - hexes:  # SwCf no longer controls these
+      - '1021'
+      - '1121'
+      - '1221'
+      - '1322'
+      - '1421'
+      - '1522'
+      - '1523'
+      - '1423'
+      - '1323'
+      - '1223'
+      - '1224'
+      - '1125'
+      - '1126'
+      - '1127'
+      - '1128'
+      - '1129'
+      - '1130'
+      - '1129'
+      - '1028'
+      - '0928'
+      - '0927'
+      - '0926'
+      - '0925'
+      - '0924'
+      - '0923'
+      - '0922'
+      - '0921'
+      - '1021'
+    allegiance: SwCf
+    label: Sword Worlds Confederation
+    labelPosition: '1024'
+
+  - hexes:  # Expand Darrien Borders
+      - '0421'
+      - '0521'
+      - '0620'
+      - '0720'
+      - '0820'
+      - '0821'
+    allegiance: DaCf
+    label: Darrien Confereration
+    wrapLabel: true
+    labelPosition: 0423
+      
+
+  - hexes:  # BwCf
+      - '1324'
+      - '1424'
+      - '1524'
+      - '1424'
+      - '1325'
+      - '1225'
+      - '1325'
+      - '1324'
+    allegiance: BwCf
+    label: Border Worlds
+    labelPosition: '1423'
+    wrapLabel: true
+
+  - replace: '1329' 
+
+  - hexes:  # Im claims
+      - '1729'
+      - '1628'
+      - '1529'
+      - '1429'
+      - '1430'
+      - '1330'
+      - '1329'
+      - '1328'
+      - '1327'
+      - '1426'
+      - '1526'
+      - '1625'
+      - '1624'
+      - '1724'
+      - '1823'
+      
+
+world:
+  - hex: '0620'
+    allegiance: DaCf
+  - hex: '0720'
+    allegiance: DaCf
+  - hex: '0820'
+    allegiance: DaCf
+    
+  - hex: '1225'
+    allegiance: BwCf
+  - hex: '1324'
+    allegiance: BwCf
+  - hex: '1325'
+    allegiance: BwCf
+  - hex: '1424'
+    allegiance: BwCf
+    notes:
+      - Ag
+      - Ni
+      - Ga
+      - Ri
+      - Cx
+  - hex: '1524'
+    allegiance: BwCf
+
+  - hex: '1525'
+    allegiance: CsIm
+
+  - hex: '1525'
+    allegiance: CsIm
+    bases: ''
+
+  - hex: '1526'
+    allegiance: ImDd
+    bases: ''
+
+  - hex: '1529'
+    uwp: E655361-8
+    pbg: '424'
+    allegiance: ImDd
+    notes:
+      - Ga
+      
+
+  - hex: '1626'
+    allegiance: ImDd
+
+  - hex: '1627'
+    allegiance: ImDd
+
+  - hex: '1628'
+    allegiance: ImDd
+
+
+
+
+allegiance:
+  - code: BwCf
+    allegiance: BwCf
+    borderColor: orange
+    routeColor: orange
+    
+  - code: SwCf
+    borderColor: blue
+    routeColor: lightblue
+
+  - code: Zh
+    borderColor: coral
+    routeColor: lightgreen
+    

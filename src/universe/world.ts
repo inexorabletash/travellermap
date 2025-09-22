@@ -139,6 +139,18 @@ export class World {
         return this.hex_[1];
     }
 
+    get ix(): string {
+        return this.ix_;
+    }
+
+    get cx(): string {
+        return this.cx_;
+    }
+
+    get ex(): string {
+        return this.ex_;
+    }
+
     get globalCoords(): [number, number] {
         return Universe.universeCoords({sx: this.sector_.x, sy: this.sector_.y, hx: this.x, hy: this.y})
     }
