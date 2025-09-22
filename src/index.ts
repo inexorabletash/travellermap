@@ -29,7 +29,7 @@ program
     .option('--workers <number>', 'number of workers', process.env['WORKERS'] ?? '8')
     .option('--port <number', 'listen port', '8000')
     .option('--sector <string>', 'sector directory', path.join(process.cwd(), 'static', 'res', 'Sectors'))
-    .option('--override <string>', 'override directory', path.join(process.cwd(), 'static', 'res', 'Sectors'))
+    .option('--override <string>', 'override directory', path.join(process.cwd(), 'static', 'res', 'overrides'))
 ;
 program.parse();
 const opts = program.opts();
