@@ -253,14 +253,16 @@ export class Universe {
 
     applyAllegianceOverrides(overrides: Override[]) {
         for(const override of overrides) {
-            this.allegianceOverrides.push(...(Array.isArray(override.allegiance) ? override.allegiance : [override.allegiance]));
+            if(override?.allegiance) {
+                this.allegianceOverrides.push(...(Array.isArray(override.allegiance) ? override.allegiance : [override.allegiance]));
+            }
         }
     }
 
     overrideSectors(override: Override) {
         let sectors: OverrideSector[] = [];
 
-        if (override.sector === undefined) {
+        if (override.sector == undefined) {
             return [];
         } else if (typeof override.sector === 'string') {
             return [ {sector: override.sector}];
@@ -313,25 +315,44 @@ export class Universe {
     }
 
     static async loadOverrideFiles(overrideDir: string): Promise<Override[]> {
+        // We don't use readdir withtypes here because that will return isSymlink() rather than isFile() for a
+        // link to a file.  Instead we get the filenames and then stat each file explicitly which resolves symlinks
+        // to the file/directory/non-existent entity.
         try {
             const files = await fs.promises.readdir(overrideDir, {
                 encoding: 'utf8',
                 recursive: true,
-                withFileTypes: true
+                withFileTypes: false
             });
-            return Promise.all(files
-                .filter(file => file.isFile() && !file.name.startsWith('#') && path.extname(file.name) === '.yml')
-                .map(async file => {
+            const overrideFiles = await Promise.all(files
+                .map(async name => {
+                    const fullPath = path.join(overrideDir, name);
                     try {
-                        const yamlData = await fs.promises.readFile(path.join(overrideDir, file.name), {encoding: 'utf8'});
+                        const st = await fs.promises.stat(fullPath);
+                        if(st.isFile()) {
+                            return fullPath;
+                        }
+                        return undefined;
+                    } catch(e) {
+                        return undefined;
+                    }
+                }));
+            const allOverrides = await Promise.all((overrideFiles
+                .filter(file => file !== undefined && !file.startsWith('#') && path.extname(file) === '.yml') as string[])
+                .map(async (file) => {
+                    try {
+                        const yamlData = await fs.promises.readFile(file, {encoding: 'utf8'});
                         const parsed = YAML.parse(yamlData);
                         return parsed;
                     } catch (e) {
-                        logger.warn(e, `Failed to process override file: ${overrideDir}/${file.name}`);
+                        logger.warn(e, `Failed to process override file: ${file}`);
                         return undefined;
                     }
-                })
-                .filter(result => result !== undefined));
+                }));
+            const result = allOverrides
+                .filter(result => result !== undefined && result !== null);
+            logger.info(`Overrides: ${JSON.stringify(result, undefined, 2)}`);
+            return result;
         } catch(e) {
             return [];
         }
@@ -420,7 +441,9 @@ export class Universe {
                         }))
                         .on('data', (data: any) => {
                             const record = keyfn(data);
-                            loaded[record[0]] = record[1];
+                            if(Array.isArray(record)) {
+                                loaded[record[0]] = record[1];
+                            }
                         })
                         .on('headers', headers => {
                             //console.log(`${filename} => ${headers}`);
