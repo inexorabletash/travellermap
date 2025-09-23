@@ -351,7 +351,6 @@ export class Universe {
                 }));
             const result = allOverrides
                 .filter(result => result !== undefined && result !== null);
-            logger.info(`Overrides: ${JSON.stringify(result, undefined, 2)}`);
             return result;
         } catch(e) {
             return [];
