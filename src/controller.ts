@@ -72,8 +72,15 @@ export function addListeners(server: WebServer, tileRenderer: TileRender) {
         const jump = TileRender.parseNumeric(req.query.jump, 0);
         const universe = await requestUniverse(req);
         const coords = absCoordinate(universe, req.query);
-        const worldList = hexRadius([coords.x, coords.y], jump, true);
-        const worlds = worldList.map(w => universe.lookupWorld(w[0], w[1])?.jumpWorld()).filter(jw => !!jw);
+        let worldList;
+        if(coords.hsuffix) {
+            const sector = universe.getSector(coords.sx, coords.sy);
+            worldList = [sector?.lookupWorld(World.coordsToHex([coords.hx, coords.hy, coords.hsuffix]))];
+        } else {
+            worldList = hexRadius([coords.x, coords.y], jump, true)
+                .map(w => universe.lookupWorld(w[0], w[1]));
+        }
+        const worlds = worldList.map(w => w?.jumpWorld()).filter(jw => !!jw);
         return {
             Worlds: worlds,
         };

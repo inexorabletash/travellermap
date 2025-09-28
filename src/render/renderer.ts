@@ -1,5 +1,5 @@
 //const Glyphs: Record<s>
-import {World} from "../universe/world.js";
+import {HexType, World} from "../universe/world.js";
 import {Canvas, CanvasRenderingContext2D, createCanvas} from "canvas";
 import {Sector} from "../universe/sector.js";
 import {Glyph} from "./glyph.js";
@@ -106,7 +106,7 @@ export abstract class Renderer {
 
     }
 
-    sectorCoordScale(coord: [number,number]): [number, number] {
+    sectorCoordScale(coord: HexType): [number, number] {
         const centerx = ((coord[0]-0.5) / Sector.SECTOR_WIDTH) - 0.5;
         const centery = ((coord[1]-(coord[0]%2)/2) / Sector.SECTOR_HEIGHT) - 0.5;
 

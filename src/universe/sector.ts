@@ -10,7 +10,7 @@ import {
     OverrideBorder,
     OverrideCommon,
     OverrideRoute,
-    OverrideSector
+    OverrideSector, OverrideWorld
 } from "./override.js";
 import {Allegiance, Border, CreditDetails, Route, SectorMetadata} from "./sectorMetadata.js";
 import {combinePartials} from "../util.js";
@@ -113,6 +113,10 @@ export class Sector {
     }
 
     getWorlds() {
+        return this.worlds.values().filter(w => w.hex.indexOf('-')<0);
+    }
+
+    getAllWorlds() {
         return this.worlds.values();
     }
 
@@ -536,6 +540,11 @@ export class Sector {
            });
         }
 
+        //this.enrichWorlds();
+    }
+
+    enrichWorlds(): Array<OverrideWorld> {
+        return <any>[...this.worlds.values().filter(w => !w.hasOverride).flatMap(w => w.enrichWorld() ?? [])];
     }
 
     sectorMatch(name: string|undefined) {

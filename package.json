@@ -22,7 +22,8 @@
     "yaml": "2.8.1"
   },
   "bin": {
-    "travellermap": "build/index.js"
+    "travellermap": "build/index.js",
+    "generate": "build/generate.js"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.8.1",

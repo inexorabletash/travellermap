@@ -1102,6 +1102,11 @@
     showSearchPane('sds-visible', data.SectorName);
   }
 
+  function showSystemWorld(hex) {
+    selectedWorld.hex = hex;
+    showWorldData();
+  }
+
   async function showWorldData() {
     if (!selectedWorld)
       return;
@@ -1192,7 +1197,15 @@
           });
         }
 
-        // Make it visible
+        $$('.wds-system-world').forEach(elem => {
+          elem.addEventListener('click', event => {
+            const c = elem.getAttribute('wds-system-world');
+            console.log(`System-World=${c}`);
+            showSystemWorld(c);
+          });
+        });
+
+      // Make it visible
         showSearchPane('wds-visible', world.Name);
       }
     } catch (error) {

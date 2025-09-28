@@ -18,6 +18,7 @@ if(!process.env.JSON_LOGGING) {
         options: {
             translateTime: 'UTC:yyyy-mm-dd HH:MM:ss.l',
             singleLine: true,
+            sync: true,
         }
     };
 } else {

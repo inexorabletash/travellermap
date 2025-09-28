@@ -9,7 +9,7 @@ export type Override = {
 }
 
 export type OverrideCommon = {
-    sector: string;
+    sector?: string;
 }
 
 export type OverrideSector = {

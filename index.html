@@ -950,6 +950,27 @@
 {{/Zone}}
 </table>
 
+{{#if System}}
+<tbody class=wds-expandy data-wds-expand=wds-expand-system>
+<tr class=wds-deets><td>Star System: Total {{System.size}}<span class=wds-toggle></span></big>
+</tbody>
+<table id=wds-system>
+<!-- <tbody id=wds-system class=wds-decode> -->
+{{#each System}}
+  <tr>
+{{#if Active}}
+  <td colspan=2><big class="wds-sectorhex">{{Name}}</big>
+{{else}}
+  <td colspan=2><big class="wds-decode">{{Name}}</big>
+{{/if}}
+<td colspan><big class="wds-decode"><a wds-system-world="{{Hex}}" class="wds-system-world" style="text-decoration: underline;" rel=noopener>{{UWP}}</a></big>
+<td><big class="wds-decode">{{Flags}}</big>
+  </tr>
+{{/each}}
+<!-- </tbody> -->
+</table>
+{{/if}}
+
 <div id="wds-print-links" class=ds-print-links>
   <div id=wds-print-ds-link class=link-button>
     <a href="#" class=print-icon>Print</a>

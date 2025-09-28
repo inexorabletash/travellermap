@@ -491,6 +491,10 @@
     [ /^([A-Z][A-Za-z']{3})([0-9W?])$/, decodeSophontPopulation],
     [ /^([ACDFHIMVXZ])([0-9w])$/, decodeSophontPopulation],
 
+    // TL/LL-specializations
+    [ /^TL:([^:])*:(.)/, decodeTLSpecialization],
+    [ /^LL:([^:])*:(.)/, decodeLLSpecialization],
+
     // Comments
     [ /^\{.*\}$/, '']
   ];
@@ -620,6 +624,14 @@
     else
       pop = pop + '0%';
     return `${name}, Population ${pop}`;
+  }
+
+  function decodeTLSpecialization(match, text, tl) {
+    return `${TECH_TABLE[tl]}`;
+  }
+
+  function decodeLLSpecialization(match, text, ll) {
+    return `${LAW_TABLE[ll]}`;
   }
 
   function numberWithCommas(x) {
@@ -775,7 +787,6 @@
       });
     }
 
-
     // Stars
     world.Stars = world.Stellar
       .replace(/[OBAFGKM][0-9] D/g, 'D')
@@ -817,6 +828,14 @@
     if (world.Worlds) {
       world.Worlds = Number(world.Worlds);
       world.OtherWorlds = Math.max(world.Worlds - 1 - world.PBG.Belts - world.PBG.GG, 0);
+    }
+
+    if(world.System) {
+      world.System.forEach(w => {
+        if(w.Hex === world.Hex) {
+          w.Active = true;
+        }
+      });
     }
 
     // Wiki Links
