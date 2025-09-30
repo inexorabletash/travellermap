@@ -129,7 +129,7 @@ test('spin steel world stats (Test milieu)', async() => {
     expect(steel?.cx).toEqual('[0000]');
     expect(steel?.bases).toEqual('');
     expect(steel?.pbg).toEqual('424');
-    expect(steel?.notes).toEqual(new Set(['Ga']));
+    expect(steel?.notes).toEqual(new Set(['Ga','Ba','Lt']));
 });
 
 test('spin sector routes and borders', async () => {
