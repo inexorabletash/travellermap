@@ -1,39 +1,217 @@
-import {fluxAmount, fluxAmountCalc, FluxRandom} from "../util.js";
-import {World} from "./world.js";
+import {fluxAmountCalc, FluxRandom} from "../util.js";
+import {Notes, World} from "./world.js";
 import {OverrideWorld} from "./override.js";
 import logger from "../logger.js";
+import {processClassifications} from "./tables.js";
 
-export type StellarBody = {
-    name: string;
-    star?: string;
-    uwp?: UWPElements;
-    orbits?: (undefined|StellarBody)[];
-    primary?: boolean;
+export type StellarBodyType=StellarBodyPlanet|StellarBodyStar|StellarBodyNoOrbit;
+
+export type NotFunction<T,N> = T extends (...args: any[]) => any
+    ? never
+    : N;
+
+export type FieldsOnly<T> = {
+    [K in keyof T as NotFunction<T[K],K>]: T[K]
 }
-export type StellarBodyStar = StellarBody & {
-    orbits: (undefined|StellarBody)[];
+export type ExcludeFields<T,LL> = {
+    [K in keyof T as Exclude<K,LL>]: T[K]
+}
+export type SBFields<T> = ExcludeFields<FieldsOnly<T>,'parentStar'|'orbits'|'driveLimits'|'suffix'|'factions'> & {orbitCnt: number};
+
+export class StellarBody {
+    name: string;
+    orbit?: number;
+    orbits: (undefined | StellarBodyType)[];
+    primary: boolean;
+    parent: StellarBodyType | undefined;
+    worldGen: WorldGen;
+
+    constructor(body: SBFields<StellarBody>) {
+        this.name = body.name;
+        this.orbits = Array<undefined | StellarBodyType>(body.orbitCnt);
+        this.primary = body.primary;
+        this.parent = body.parent;
+        this.worldGen = body.worldGen;
+    }
+
+    get suffix(): string {
+        let suffix = '';
+        let sb: StellarBody|undefined = this;
+        while(sb.parent) {
+            suffix = `-${sb.orbit}${suffix}`;
+            sb = sb.parent;
+        }
+        return suffix;
+    }
+
+    get parentStar(): StellarBodyStar | undefined {
+        if (this.parent === undefined) {
+            return undefined;
+        }
+        if (this.parent instanceof StellarBodyStar) {
+            return this.parent;
+        }
+        return this.parent.parentStar;
+    }
+
+    setOrbit(index: number, to: StellarBodyStar | StellarBodyPlanet) {
+        if (this?.orbits === undefined) {
+            throw new Error(`setOrbit on ${this?.name} - no orbits`);
+        }
+        if (!Number.isInteger(index)) {
+            throw new Error(`setOrbit on ${this.name} - ${index} isn't valid`);
+        }
+        if (index < 0 || index >= this.orbits.length) {
+            throw new Error(`setOrbit on ${this.name} - ${index} is out of range (max ${this.orbits.length})`);
+        }
+        if (this.orbits[index] !== undefined) {
+            throw new Error(`setOrbit on ${this.name} - ${index} already has something present`);
+        }
+        this.orbits[index] = to;
+        to.orbit = index;
+
+        if (to.star === undefined && to.uwp?.population && to.uwp?.govt !== 6) {
+            this.worldGen.worlds.push(<StellarBodyPlanet>to);
+        }
+    }
+
+    applyStellarNotes(orbit: number, uwp: UWPElements) {
+    }
+}
+
+export class StellarBodyStar extends StellarBody {
     star: string;
     driveLimits: DriveLimitsStar;
-};
-export type StellarBodyPlanet = StellarBody & {
-    orbits: (undefined|StellarBody)[];
+    uwp?: undefined;
+
+    constructor(body: SBFields<StellarBodyStar>) {
+        super(body);
+        this.star = body.star;
+
+        this.driveLimits = StellarBodyStar.starLimits(this.star, this.parentStar?.driveLimits);
+
+        // Fill precluded orbits
+        for(let idx = 0; idx < this.driveLimits?.precluded; ++idx) {
+            this.orbits[idx] = new StellarBodyNoOrbit(this.worldGen, this);
+        }
+    }
+
+    setOrbit(index: number, to: StellarBodyStar|StellarBodyPlanet) {
+        super.setOrbit(index, to);
+
+        if(to.uwp) {
+            this.applyStellarNotes(index, to.uwp);
+        }
+    }
+
+    applyStellarNotes(orbit: number, uwp: UWPElements) {
+        if (orbit < 2) {
+            uwp.notes.add('Tz');
+        }
+        if (orbit === this.driveLimits.hz) {
+            uwp.notes.add('Hz');
+        }
+
+        if(orbit > this.driveLimits.hz + 1) {
+            uwp.notes.add('Fr');
+        } else if(orbit == this.driveLimits.hz-1) {
+            if(WorldGen.checkInCodeList(uwp.size ?? -1,'6789') &&
+                WorldGen.checkInCodeList(uwp.atmosphere ?? -1,'456789') &&
+                WorldGen.checkInCodeList(uwp.hydrographic ?? -1, '34567')) {
+                uwp.notes.add('Tr');
+            } else {
+                uwp.notes.add('Ho');
+            }
+        } else if(orbit == this.driveLimits.hz+1) {
+            if(WorldGen.checkInCodeList(uwp.size ?? -1,'6789') &&
+                WorldGen.checkInCodeList(uwp.atmosphere ?? -1,'456789') &&
+                WorldGen.checkInCodeList(uwp.hydrographic ?? -1, '34567')) {
+                uwp.notes.add('Tu');
+            } else {
+                uwp.notes.add('Co');
+            }
+        } else if(orbit == this.driveLimits.hz) {
+            uwp.notes.add('Hz');
+        }
+
+    }
+
+    static starLimits(star: string, previous?: DriveLimitsStar) : DriveLimitsStar {
+        const jdrive = WorldGen.starTable(star, WorldGen.JUMP_LIMIT_TABLE) ?? -1;
+        let mdrive = jdrive;
+        let gdrive = jdrive;
+        if(jdrive >= 0) {
+            while(gdrive > 0 && ORBIT_AUS[gdrive-1] > ORBIT_AUS[jdrive]/10) {
+                --gdrive;
+            }
+            while(mdrive+1 < ORBIT_AUS.length && ORBIT_AUS[mdrive+1] < ORBIT_AUS[jdrive]*10) {
+                ++mdrive;
+            }
+        }
+        const precluded = WorldGen.starTable(star, WorldGen.PRECLUDED_ORBITS_TABLE) ?? -1
+        return {
+            mdrive: Math.max(previous?.mdrive ?? -1, mdrive),
+            jdrive: Math.max(previous?.jdrive ?? -1, jdrive),
+            gdrive: Math.max(previous?.gdrive ?? -1, gdrive),
+            precluded,
+            hz: WorldGen.habitableZone(star),
+        };
+    }
+}
+
+export class StellarBodyPlanet extends StellarBody {
     uwp: UWPElements;
-};
-export type StellarBodySatellite = StellarBody & {
-    orbits: undefined;
-    uwp?: string;
-};
+    star?: undefined;
+    factions: UWPElements[];
+
+    constructor(body: SBFields<StellarBodyPlanet>) {
+        super(body);
+        this.uwp = body.uwp;
+        this.factions = [];
+    }
+
+    setOrbit(index: number, to: StellarBodyStar|StellarBodyPlanet) {
+        super.setOrbit(index, to);
+
+        if(!to.uwp) {
+            throw new Error(`Star added to planetary orbit?`);
+        }
+        this.applyStellarNotes(index, to.uwp);
+    }
+
+    addFaction(uwp: UWPElements) {
+        this.factions.push(uwp);
+    }
+
+    applyStellarNotes(orbit: number, uwp: UWPElements) {
+        this.parent?.applyStellarNotes(this.orbit ?? 0, uwp);
+    }
+}
+
+export class StellarBodyNoOrbit extends StellarBody {
+    uwp?: undefined;
+    star?: undefined;
+
+    constructor(worldGen: WorldGen, parent: StellarBodyStar) {
+        super({
+            worldGen,
+            name: '***',
+            orbitCnt: 0,
+            primary: false,
+            parent,
+        });
+    }
+}
+
 
 export type DriveLimitsStar = {
     mdrive: number,
     jdrive: number,
     gdrive: number
+    precluded: number,
+    hz: number,
 };
 
-
-export const NO_ORBIT : StellarBody = {
-    name: '***'
-};
 
 export const ORBIT_AUS =
     [
@@ -45,15 +223,16 @@ export const ORBIT_AUS =
 
 
 export type UWPElements = {
-    starport: string,
-    size: number|undefined,
-    atmosphere: number|undefined,
-    hydrographic: number|undefined,
-    population: number|undefined,
-    govt: number|undefined,
-    lawLevel: number|undefined,
-    techLevel: number|undefined,
+    starport?: string,
+    size?: number,
+    atmosphere?: number,
+    hydrographic?: number,
+    population?: number,
+    govt?: number,
+    lawLevel?: number,
+    techLevel?: number,
     notes: Set<string>,
+    populationDigit?: number,
 };
 
 export type UWPDMs = {
@@ -67,6 +246,8 @@ export type UWPDMs = {
     techLevel?: number,
     sizeDice?: number,
     maxSize?: number,
+    maxPopulation?: number,
+    maxPopulationDigit?: number,
     notes?: string[],
 };
 
@@ -82,6 +263,7 @@ export class WorldGen {
     starBodies: StellarBodyStar[];
     mainWorld!: StellarBodyPlanet;
     worldIdx: number;
+    worlds: StellarBodyPlanet[];
 
     constructor(protected world: World) {
         this.uwp = WorldGen.getUWP(world);
@@ -93,9 +275,10 @@ export class WorldGen {
         this.random = new FluxRandom(`PLANET-DETAILS/${world.sec}/${world.hex}`);
 
         this.stars = WorldGen.getStars(world);
-        this.starBodies = WorldGen.stellarBodyForStars(this.random, world.name, this.stars);
+        this.starBodies = this.stellarBodyForStars(this.random, world.name, this.stars);
         this.system = this.starBodies[0];
         this.worldIdx = 0;
+        this.worlds = [];
     }
 
     static TECH_TYPES = [
@@ -388,10 +571,10 @@ export class WorldGen {
         const uwp = world?.uwp;
 
         // TODO - deal with missing stuff
-        return this.extractUWP(uwp, world?.notes);
+        return this.extractUWP(uwp, world?.notes, world?.pbg);
     }
 
-    static extractUWP(uwp: string, notes: Set<string>): UWPElements {
+    static extractUWP(uwp: string, notes: Set<string>, pbg?: string): UWPElements {
         const base = {
             starport: uwp.substring(0,1) ?? 'X',
             size: World.digitValue(uwp?.substring(1,2)) ?? 0,
@@ -402,6 +585,7 @@ export class WorldGen {
             lawLevel: World.digitValue(uwp?.substring(6,7)) ?? 0,
             techLevel: World.digitValue(uwp?.substring(8,9)) ?? 0,
             notes: notes ?? new Set<string>(),
+            populationDigit: World.digitValue(pbg?.substring(0,1)) ?? 1,
         };
         return base;
     }
@@ -479,6 +663,10 @@ export class WorldGen {
         return result;
     }
 
+    static checkInCodeList(value: number|undefined, codeList: string): boolean {
+        const code = World.encodedValue(value??-1);
+        return codeList.indexOf(code) >= 0;
+    }
 
     static maxOrbitsForOrbit(orbit: number) {
         let maxOrbits = orbit - 2;
@@ -517,24 +705,7 @@ export class WorldGen {
         return this.starTable(star, this.HABITABLE_ZONE_TABLE) ?? 0;
     }
 
-    static starLimits(star: string, previous?: DriveLimitsStar) : DriveLimitsStar {
-        const jdrive = this.starTable(star, this.JUMP_LIMIT_TABLE) ?? -1;
-        let mdrive = jdrive;
-        let gdrive = jdrive;
-        if(jdrive >= 0) {
-            while(gdrive > 0 && ORBIT_AUS[gdrive-1] > ORBIT_AUS[jdrive]/10) {
-                --gdrive;
-            }
-            while(mdrive+1 < ORBIT_AUS.length && ORBIT_AUS[mdrive+1] < ORBIT_AUS[jdrive]*10) {
-                ++mdrive;
-            }
-        }
-        return {
-            mdrive: Math.max(previous?.mdrive ?? -1, mdrive),
-            jdrive: Math.max(previous?.jdrive ?? -1, jdrive),
-            gdrive: Math.max(previous?.gdrive ?? -1, gdrive),
-        };
-    }
+    // FIXME: populate as we create
 
     static primaryOrbit(w: World, star: string, starDm: number) {
         const uwp = this.getUWP(w);
@@ -545,9 +716,9 @@ export class WorldGen {
 
         // MW is satelite?
         let habitableZone = this.habitableZone(star) + starDm;
-        if(w.notes.has('Tr')) {
+        if(w.notes.has('Tr') || w.notes.has('Ho')) {
             ++habitableZone;
-        } else if(w.notes.has('Tu')) {
+        } else if(w.notes.has('Tu') || w.notes.has('Co')) {
             --habitableZone;
         } else if(w.notes.has('Fr')) {
             habitableZone -= 2;
@@ -578,32 +749,34 @@ export class WorldGen {
         return pos;
     }
 
-    static stellarBodyForStar(name: string, star: string, maxOrbits: number, previous?: StellarBodyStar): StellarBodyStar {
-        const disallowed = this.starTable(star, this.PRECLUDED_ORBITS_TABLE) ?? -1;
-        return {
-            name: name,
-            star,
-            orbits: Array(maxOrbits).map((_,idx) => idx >= disallowed ? NO_ORBIT : undefined),
-            driveLimits: this.starLimits(star, previous?.driveLimits),
-        };
+    stellarBodyForStar(name: string, star: string, maxOrbits: number, previous?: StellarBodyStar): StellarBodyStar {
+        const disallowed = WorldGen.starTable(star, WorldGen.PRECLUDED_ORBITS_TABLE) ?? -1;
+        const result = new StellarBodyStar({
+                worldGen: this,
+                name: name,
+                parent: previous,
+                star,
+                orbitCnt: maxOrbits,
+                //driveLimits: WorldGen.starLimits(star, previous?.driveLimits),
+                primary: false,
+            }
+        );
+        return result;
     }
 
-    static addBodyForStar(name: string, star: string, parent: StellarBodyStar, target: number, bodyList: StellarBodyStar[]) {
-        const orbit = this.orbitalPosition(parent, target);
-        const body = this.stellarBodyForStar(`${name}-${orbit}`, star, this.maxOrbitsForOrbit(orbit), parent);
-        this.setOrbit(parent, orbit, body);
+    addBodyForStar(name: string, star: string, parent: StellarBodyStar, target: number, bodyList: StellarBodyStar[]) {
+        const orbit = WorldGen.orbitalPosition(parent, target);
+        const body = this.stellarBodyForStar(`${name}-${orbit}`, star, WorldGen.maxOrbitsForOrbit(orbit), parent);
+        parent.setOrbit(orbit, body);
         return body;
     }
 
-    static stellarBodyForStars(random: FluxRandom, name: string, stars: (string|undefined)[]): StellarBodyStar[] {
-        console.log(`stellarBodyForStars: ${name} - ${stars}`);
-        console.log(`\t0: ${stars[0]}`);
+    stellarBodyForStars(random: FluxRandom, name: string, stars: (string|undefined)[]): StellarBodyStar[] {
         const rv: StellarBodyStar[] = [
             this.stellarBodyForStar(name, stars[0]??'', 20),
         ];
         if(stars[1]) {
             this.addBodyForStar(rv[0].name, stars[1], rv[0], 0, rv);
-            console.log(`\t0-0: ${stars[1]}`);
         }
 
         for(let pos = 2; pos < stars.length; pos += 2) {
@@ -611,10 +784,8 @@ export class WorldGen {
                 const orbit = random.die(6) + pos * 3 - 6;
                 const parent = this.addBodyForStar(rv[0].name, <string>stars[pos], rv[0], orbit, rv);
                 rv.push(parent);
-                console.log(`\t${orbit}: ${stars[pos]}`);
 
                 if(stars[pos+1]) {
-                    console.log(`\t${orbit}-0: ${stars[pos+1]}`);
                     this.addBodyForStar(parent.name, <string>stars[pos+1], parent, 0, rv);
                 }
             }
@@ -629,12 +800,15 @@ export class WorldGen {
             `-${World.encodedValue(uwp.techLevel)}`;
     }
 
-    static stellarBodyForPlanet(name: string, maxOrbits: number, uwp: UWPElements, parent: StellarBodyStar|StellarBodyPlanet): StellarBodyPlanet {
-        return {
+    stellarBodyForPlanet(name: string, maxOrbits: number, uwp: UWPElements, parent: StellarBodyType): StellarBodyPlanet {
+        return new StellarBodyPlanet({
+            worldGen: this,
             name,
-            orbits: Array(maxOrbits).map((_,idx) => undefined),
+            parent,
+            orbitCnt: maxOrbits,
             uwp,
-        };
+            primary: false,
+        });
     }
 
     static makeGasGiant(random: FluxRandom) {
@@ -665,12 +839,15 @@ export class WorldGen {
         return Math.max(0,Math.min(10,base));
     }
 
-    static makePopulation(random: FluxRandom, maxPopulation: number, dm: number) {
-        const base = Math.max(0,random.die(6,2)-2 + dm);
-        if(base == 10) {
-            return Math.min(maxPopulation, random.die(6,2)+3);
+    static makePopulation(random: FluxRandom, dms: UWPDMs): { population: number, populationDigit: number} {
+        let population = Math.max(0,random.die(6,2)-2 + (dms.population ?? 0));
+        if(population == 10) {
+            population = random.die(6,2)+3;
         }
-        return Math.min(maxPopulation, base);
+        return {
+            population: Math.min(dms.maxPopulation??99, population),
+            populationDigit: population > 0 ? population === dms.maxPopulation ? random.die(dms.maxPopulationDigit) : random.die(9) : 0,
+        }
     }
 
     static makeTL(random: FluxRandom, starport: string, size: number, atm: number, hyd: number, pop: number, gov: number, dm: number): number {
@@ -714,32 +891,235 @@ export class WorldGen {
         return Math.max(0, random.die(6,2) + dm);
     }
 
-    static makeWorld(random: FluxRandom, maxPopulation: number, dms: UWPDMs={}): UWPElements {
-        const spRoll = random.die() + (dms.starport??0);
-        const starport = spRoll >= 4 ? 'F' : spRoll == 3 ? 'G' : spRoll>0 ? 'H' : 'X';
+    static makeStarport(random: FluxRandom, dm: number, maxStarport: string|undefined, spaceportVsStarportDm: number = 0) {
+        // We are possibly making a spaceport.
+        if(maxStarport) {
+            if(maxStarport < 'F' && (random.die()+spaceportVsStarportDm) >= 2) {
+                // Generate a spaceport. 2:3 normally if not primary, but more chance if faction
+                const spRoll = random.die() + (dm??0);
+                const starport = spRoll >= 4 ? 'F' : spRoll == 3 ? 'G' : spRoll>0 ? 'H' : 'X';
+                return starport;
+            }
+        }
+        let sp = '0';
+        while(sp < (maxStarport ?? 'A')) {
+            const roll = random.die(6,2);
+            if(roll < 5) {
+                sp = 'A';
+            } else if(roll < 7) {
+                sp = 'B';
+            } else if(roll < 9) {
+                sp = 'C';
+            } else if(roll < 10) {
+                sp = 'D';
+            } else if(roll < 12) {
+                sp = 'E';
+            } else {
+                sp = 'X';
+            }
+        }
+        return sp;
+    }
+
+    static makePhysicalWorld(random: FluxRandom, dms: UWPDMs) : UWPElements {
         const size = Math.min(dms.maxSize ?? 24, Math.max(0,random.die(6,dms.sizeDice??2)+(dms.size ?? 0)));
         const atmosphere = Math.max(0,Math.min(15,size + random.flux() + (dms.atmosphere??0)));
-        const hydrographic = this.makeHydrographic(random, size, atmosphere, dms.hydrographic??0);
-        const population = this.makePopulation(random, maxPopulation, dms.population ??0);
-        const govt = population == 0 ? 0 : Math.max(0, Math.min(15, population + random.flux() + (dms.population??0)));
-        const lawLevel = population == 0 ? 0 : Math.max(0, Math.min(18, govt + random.flux() + (dms.lawLevel??0)));
-        const techLevel = this.makeTL(random, starport, size, atmosphere, hydrographic, population, govt, dms.techLevel ?? 0);
+        const hydrographic = WorldGen.makeHydrographic(random, size, atmosphere, dms.hydrographic??0);
+
         return {
-            starport,
             size,
             atmosphere,
             hydrographic,
+            notes: new Set(dms.notes),
+        };
+    }
+
+    static makeEmptyWorld(random: FluxRandom, dms: UWPDMs) : UWPElements {
+        return {
+            ...this.makePhysicalWorld(random, dms),
+            starport: 'X',
+            population: 0,
+            govt: 0,
+            lawLevel: 0,
+            techLevel: 0,
+        }
+    }
+
+    postProcessWorld(random: FluxRandom, world: StellarBodyPlanet) {
+        processClassifications(world, world.uwp, this.mainWorld?.uwp ?? this.uwp);
+
+        if(world.uwp.govt == 7) { // Balkanisation
+            const subRandom = random.sub('balkans');
+            const notes:string[] = [];
+            let factions = subRandom.die();
+            if(factions == 1) {
+                factions = 3;
+            }
+            let bestStarportFaction = subRandom.die(factions)+1;
+
+            for(let faction = 1; faction <= factions; ++faction) {
+                const elements = {
+                    size: world.uwp.size,
+                    atmosphere: world.uwp.atmosphere,
+                    hydrographic: world.uwp.hydrographic,
+                };
+
+                let { starport, population, populationDigit, govt, lawLevel, techLevel } :
+                    { starport:string, population:number, populationDigit:number, govt:number, lawLevel:number, techLevel:number } = <any>world.uwp;
+                if(faction != 1) {
+                    const popVars =
+                        WorldGen.makePopulation(subRandom, {maxPopulation: world.uwp.population, maxPopulationDigit: world.uwp.populationDigit,});
+                    population = popVars.population;
+                    populationDigit = popVars.population;
+                    techLevel += fluxAmountCalc(subRandom, 5, 1);
+                    lawLevel = population == 0 ? 0 : Math.max(0, Math.min(18, govt + subRandom.flux()));
+                } else {
+                    // If the primary faction on the primary world has an owner then this faction is owned by that owner
+                    // I don't actually think this is possible, since govt would be 6 in that case, but this covers for
+                    // other possible cases.
+                    const primaryOwner = world.primary ? [ ...world?.uwp.notes ].find(n => n.startsWith('O:')) : undefined;
+                    if(primaryOwner) {
+                        notes.push(primaryOwner);
+                    }
+                }
+
+                if(faction !== bestStarportFaction) {
+                    starport = WorldGen.makeStarport(subRandom, 0, world.uwp.starport, -2);
+                }
+                while(govt == 7) {
+                    govt = (population == 0 ? 0 : Math.max(0, Math.min(15, (population ?? 0) + subRandom.flux())));
+                }
+
+                const uwp: UWPElements = {
+                    ...elements,
+                    notes: new Set<string>(notes),
+                    starport, population, populationDigit, govt, lawLevel, techLevel
+                };
+                world.addFaction(uwp);
+                WorldGen.enrichNotes(subRandom, uwp);
+                processClassifications(world, uwp, this.mainWorld?.uwp ?? this.uwp);
+            }
+        } else {
+            WorldGen.enrichNotes(random, world.uwp);
+        }
+
+    }
+
+    makeWorldFromWorld(random: FluxRandom, from: StellarBodyPlanet, dms: UWPDMs): UWPElements {
+        const elements = WorldGen.makePhysicalWorld(random, dms);
+
+        // Logic ([pop-size]/2+1 >= 1d*) then captive otherwise inherit.
+        let { population, populationDigit } = WorldGen.makePopulation(random, {...dms, maxPopulation: from.uwp.population, maxPopulationDigit: from.uwp.populationDigit ?? 9 });
+        let govt = 0;
+        let techLevel = 0;
+        let lawLevel = 0;
+        //let populationDigit = 0;
+        let starport = 'X';
+        if (population > 0) {
+            let die = random.die();
+            let roll = 0;
+            const faction = from.factions.length > 0 ? random.die(from.factions.length)-1 : -1;
+            const fromUwp = faction >= 0 ? from.factions[faction] : from.uwp;
+            const suffix = from.suffix + (faction >= 0 ? String.fromCharCode(65+faction): '');
+            do {
+                die = random.die();
+                roll += die;
+            } while (die == 6);
+
+            if (roll < 1 + Math.floor(population / 2)) {
+                govt = fromUwp.govt ?? 0;
+                techLevel = (fromUwp.techLevel ?? 0) + fluxAmountCalc(random, 2, 1);
+                lawLevel = (fromUwp.techLevel ?? 0) + fluxAmountCalc(random, 5, 5);
+                starport = WorldGen.makeStarport(random, dms.starport??0, this.uwp.starport);
+                elements.notes.add('Cy');
+            } else {
+                govt = 6; // Captive / colony
+                techLevel = fromUwp.techLevel ?? 0;
+                lawLevel = fromUwp.lawLevel ?? 0;
+                starport = WorldGen.makeStarport(random, dms.starport??0, 'E');
+                elements.notes.add('Cy');
+            }
+            const primaryOwner = from.primary ? [ ...fromUwp?.notes ].find(n => n.startsWith('O:')) : undefined;
+            if(primaryOwner) {
+                elements.notes.add(primaryOwner);
+            } else {
+                elements.notes.add(`O:${this.world.hex}${suffix}`)
+            }
+            if(techLevel < 8 && techLevel-5>=random.die()) {
+                techLevel = 0;
+                lawLevel = 0;
+                starport = 'X';
+                population = 0;
+                populationDigit = 0;
+                elements.notes.add('Re');
+            }
+        } else {
+            elements.notes.add('Re');
+        }
+
+        return {
+            ...elements,
+            starport,
             population,
             govt,
             lawLevel,
             techLevel,
-            notes: new Set(dms.notes ?? []),
-        };
+            populationDigit,
+        }
     }
 
 
-    static makeBigWorld(random: FluxRandom, maxPopulation: number): UWPElements {
-        return this.makeWorld(random, maxPopulation, {size:8})
+    makeWorldCore(random: FluxRandom, dms: UWPDMs={}): UWPElements {
+        const elements = WorldGen.makePhysicalWorld(random, dms);
+        const starport = WorldGen.makeStarport(random, dms.starport??0, this.uwp.starport, -2)
+        const {population,populationDigit} = WorldGen.makePopulation(random, dms);
+        const govt = population == 0 ? 0 : Math.max(0, Math.min(15, population + random.flux() + (dms.population??0)));
+        const lawLevel = population == 0 ? 0 : Math.max(0, Math.min(18, govt + random.flux() + (dms.lawLevel??0)));
+        const techLevel = WorldGen.makeTL(random, starport, elements.size??0, elements.atmosphere??0, elements.hydrographic??0, population, govt, dms.techLevel ?? 0);
+        return {
+            ...elements,
+            starport,
+            population,
+            govt,
+            lawLevel,
+            techLevel,
+            populationDigit,
+        };
+    }
+
+    makeWorld(bodyIn: StellarBodyPlanet |StellarBodyStar, orbit: number, dms: UWPDMs={}): UWPElements {
+        let body: StellarBodyStar;
+        const orbitIn = orbit;
+        const random = this.random.sub(`${bodyIn.name}-${orbitIn}`);
+        if(bodyIn.star) {
+            body = <StellarBodyStar>bodyIn;
+        } else {
+            body = <StellarBodyStar>bodyIn.parentStar;
+            orbit = body.orbits.findIndex(b => b === bodyIn);
+        }
+        //const body: StellarBodyStar = <StellarBodyStar>(bodyIn.star ? bodyIn : bodyIn.parentStar);
+        // If we are outside the m-drive range it is really unlikely to see a populated world
+        const randomWt = this.random.sub('world-type');
+        if(orbit > body.driveLimits.mdrive) {
+            if(randomWt.die(10)<10) {
+                //console.log(`Creating empty world at ${bodyIn.name}-${orbitIn}`);
+                return WorldGen.makeEmptyWorld(random, dms);
+            }
+            //console.log(`${bodyIn.name}-${orbitIn} is outside mdrive range`);
+        }
+
+        if(dms.maxPopulation === 0) {
+            //console.log(`Creating empty world at ${bodyIn.name}-${orbitIn}`);
+            return WorldGen.makeEmptyWorld(random, dms);
+        } else if(dms.maxPopulation !== 0 && randomWt.die(4+this.worlds.length) < 4) {
+            //console.log(`Creating colony in ${bodyIn.name}-${orbitIn}`);
+            const worldDie = randomWt.die(this.worlds.length)-1;
+            return this.makeWorldFromWorld(random, this.worlds[worldDie], dms);
+        } else {
+            //console.log(`Creating world at ${bodyIn.name}-${orbitIn}`);
+            return this.makeWorldCore(random, dms);
+        }
+
     }
 
     nextStar(): StellarBodyStar {
@@ -751,55 +1131,41 @@ export class WorldGen {
         }
     }
 
-    static setOrbit(orbit: StellarBody|undefined, index: number, to: StellarBody) {
-        if(orbit?.orbits === undefined) {
-            throw new Error(`setOrbit on ${orbit?.name} - no orbits`);
-        }
-        if(!Number.isInteger(index)) {
-            throw new Error(`setOrbit on ${orbit.name} - ${index} isn't valid`);
-        }
-        if(index < 0 || index >= orbit.orbits.length) {
-            throw new Error(`setOrbit on ${orbit.name} - ${index} is out of range (max ${orbit.orbits.length})`);
-        }
-        if(orbit.orbits[index] !== undefined) {
-            throw new Error(`setOrbit on ${orbit.name} - ${index} already has something present`);
-        }
-        orbit.orbits[index] = to;
-    }
-
-    placeGG() {
+    placeGG(random: FluxRandom) {
         const body = this.nextStar();
 
         // Note we haven't done ice giants here....
 
         const hz = WorldGen.habitableZone(body.star);
-        const gg = WorldGen.makeGasGiant(this.random);
+        const gg = WorldGen.makeGasGiant(random);
         const offset = (gg.size > 22) ? -5 : -4;
-        const posOffset = this.random.die(6,2)+offset;
+        const posOffset = random.die(6,2)+offset;
         const ggPos = WorldGen.orbitalPosition(body, Math.max(0,hz+posOffset));
         if(ggPos < 0) {
             logger.error(`Unable to place world on ${body.name}`);
             return;
         }
-        WorldGen.setOrbit(body,ggPos,WorldGen.stellarBodyForPlanet(`${body.name}-${ggPos}`, WorldGen.maxSatelliteOrbitsForOrbit(ggPos, gg.size), gg,body));
+        body.setOrbit(ggPos,this.stellarBodyForPlanet(`${body.name}-${ggPos}`, WorldGen.maxSatelliteOrbitsForOrbit(ggPos, gg.size), gg,body));
         --this.gg;
         --this.planets;
     }
 
-    placeBelt(isPrimary = false): StellarBodyPlanet|undefined {
+    placeBelt(random: FluxRandom, isPrimary = false): StellarBodyPlanet|undefined {
         const body = this.nextStar();
 
         const hz = WorldGen.habitableZone(body.star);
-        const posOffset = this.random.die(6,2)-3;
+        const posOffset = random.die(6,2)-3;
         const pos = WorldGen.orbitalPosition(body, Math.max(0,hz+posOffset));
         if(pos < 0) {
             logger.error(`Unable to place world on ${body.name}`);
             // Don't decrement planets ... we will try again
             return undefined;
         }
-        const belt = isPrimary ? this.uwp : WorldGen.makeWorld(this.random, this.world?.populationDigit ?? 0, { size:-100, notes: ['As']});
-        const beltBody = WorldGen.stellarBodyForPlanet(`${body.name}-${pos}`, 0, belt, body)
-        WorldGen.setOrbit(body, pos, beltBody);
+        const belt = isPrimary ? this.uwp : this.makeWorld(body, pos,
+            { size:-100, notes: ['As'], maxPopulation: this.uwp.population ?? 0, maxPopulationDigit: this.uwp.populationDigit ?? 1,});
+        const beltBody = this.stellarBodyForPlanet(`${body.name}-${pos}`, 0, belt, body)
+        body.setOrbit(pos, beltBody);
+        this.postProcessWorld(random, beltBody);
         --this.belts;
         --this.planets;
         return beltBody;
@@ -823,7 +1189,7 @@ export class WorldGen {
         }
     }
 
-    placeWorld() {
+    placeWorld(random: FluxRandom) {
         let body;
         let posOffset;
 
@@ -832,7 +1198,7 @@ export class WorldGen {
             posOffset = this.random.die(6,2)+5;
         } else {
             body = this.nextStar();
-            posOffset = [10,8,6,4,2,0,1,3,5,7,9][this.random.die(6,2)-2];
+            posOffset = [10,8,6,4,2,0,1,3,5,7,9][random.die(6,2)-2];
         }
         const hz = WorldGen.habitableZone(body.star);
         const pos = WorldGen.orbitalPosition(body, hz+posOffset);
@@ -844,12 +1210,14 @@ export class WorldGen {
 
         let dms: UWPDMs = this.uwpDMs(posOffset, false);
 
-        const world = WorldGen.makeWorld(this.random, this.world?.populationDigit??0, dms)
-        WorldGen.setOrbit(body, pos, WorldGen.stellarBodyForPlanet(`${body.name}-${pos}`, WorldGen.maxSatelliteOrbitsForOrbit(pos, world.size), world, body));
+        const world = this.makeWorld(body, pos, { ...dms, maxPopulation: this.uwp.population ?? 0, maxPopulationDigit: this.uwp.populationDigit ?? 1,});
+        const newBody = this.stellarBodyForPlanet(`${body.name}-${pos}`, WorldGen.maxSatelliteOrbitsForOrbit(pos, world.size), world, body);
+        body.setOrbit(pos, newBody);
+        this.postProcessWorld(random, newBody);
         --this.planets;
     }
 
-    satelliteOrbit(orbitIdx: number, orbit: StellarBodyPlanet) {
+    satelliteOrbit(random: FluxRandom, orbitIdx: number, orbit: StellarBodyPlanet) {
         const orbits = WorldGen.maxSatelliteOrbitsForOrbit(orbitIdx, orbit.uwp.size);
         if(orbits <= 0) {
             return -1;
@@ -858,34 +1226,38 @@ export class WorldGen {
 
         while(target >= orbits) {
             const md = Math.floor((orbits - 5) / 3) - 1;
-            const die = md <= 1 ? 0 : (this.random.die(md) - 1);
+            const die = md <= 1 ? 0 : (random.die(md) - 1);
             const dm = die * 3 + 5;
-            target = this.random.flux() + dm;
+            target = random.flux() + dm;
         }
         return target;
     }
 
     placeSatellite(orbitIdx: number, body: StellarBodyPlanet, star: StellarBodyStar) {
+        const random = this.random.sub(`satelite/${body.name}/${orbitIdx}`);
         if(!WorldGen.hasAvailableOrbits(body)) {
             //console.log(`${body.name} - placeSatelite - no orbits`);
             return;
         }
-        const target = WorldGen.orbitalPosition(body, this.satelliteOrbit(orbitIdx, body));
+        const target = WorldGen.orbitalPosition(body, this.satelliteOrbit(random, orbitIdx, body));
 
         const hz = WorldGen.habitableZone(star.star);
         let dms: UWPDMs = this.uwpDMs(target-hz, true);
         const maxSize = body.uwp.size;
 
-        const world = WorldGen.makeWorld(this.random, this.world?.populationDigit??0, { ...dms, maxSize})
-        WorldGen.setOrbit(body, target, WorldGen.stellarBodyForPlanet(`${body.name}-${target}`, 0, world, body));
+        const world = this.makeWorld(body, target, { ...dms, maxSize, maxPopulation: this.uwp.population ?? 0, maxPopulationDigit: this.uwp.populationDigit ?? 1,})
+        const newBody = this.stellarBodyForPlanet(`${body.name}-${target}`, 0, world, body);
+        body.setOrbit(target, newBody);
+        this.postProcessWorld(random, newBody);
     }
 
     placeRing(orbitIdx: number, body: StellarBodyPlanet) {
+        const random = this.random.sub(`ring/${body.name}/${orbitIdx}`);
         if(!WorldGen.hasAvailableOrbits(body)) {
             //console.log(`${body.name} - placeRing - no orbits`);
             return;
         }
-        const target = WorldGen.orbitalPosition(body, this.satelliteOrbit(orbitIdx, body));
+        const target = WorldGen.orbitalPosition(body, this.satelliteOrbit(random, orbitIdx, body));
 
         const world = {
             starport: 'X',
@@ -896,21 +1268,22 @@ export class WorldGen {
             govt: 0,
             lawLevel: 0,
             techLevel: 0,
-            notes: new Set<string>(),
+            notes: new Set<string>(['Ring']),
         };
-        WorldGen.setOrbit(body, target, WorldGen.stellarBodyForPlanet(`${body.name}-${target}`, 0, world, body));
+        body.setOrbit(target, this.stellarBodyForPlanet(`${body.name}-${target}`, 0, world, body));
     }
 
 
     addPrimaryWorld() {
         let primarySystem = this.system;
         let primaryOrbit = WorldGen.primaryOrbit(this.world, this.stars[0] ??'', 0);
+        const random = this.random.sub('primary');
 
         if(this.system.orbits[primaryOrbit]) {
             // If the primary orbit is occupied by a star we have two options.  Firstly we will try to put the primary
             // in some orbit of the companion star.
             const newPrimaryOrbit = WorldGen.orbitalPosition(
-                <StellarBodyStar>this.system.orbits[primaryOrbit],WorldGen.primaryOrbit(this.world, this.stars[0] ??'', 1));
+                <StellarBodyStar>this.system.orbits[primaryOrbit],WorldGen.primaryOrbit(this.world, this.stars[0] ??'', 0));
             if(newPrimaryOrbit < 0) {
                 // If we can't do that, we will just adjust the original with the orbitalPosition method
                 primaryOrbit = WorldGen.orbitalPosition(this.system, primaryOrbit);
@@ -925,10 +1298,10 @@ export class WorldGen {
         if(primaryOrbit < 0) {
             // This is an asteroid belt
             while(this.mainWorld === undefined) {
-                this.mainWorld = <any>this.placeBelt(true);
+                this.mainWorld = <any>this.placeBelt(random, true);
             }
         } else if(primarySystem.orbits) {
-            if(this.random.flux()<-2) {
+            if(random.flux()<-2) {
                 // MW is satellite.  Note that the near/far probabilities are equal so we just place the world in any
                 // available slot assuming that will be near/far.  TBH I'm not sure how this is supposed to work since
                 // for most systems the available orbits around a world at the HZ would mean there are no far orbits
@@ -939,7 +1312,7 @@ export class WorldGen {
                 let uwp: UWPElements|undefined = undefined;
                 let satelliteOrbits = 0;
                 if (this.gg > 0) {
-                    uwp = WorldGen.makeGasGiant(this.random);
+                    uwp = WorldGen.makeGasGiant(random);
                     satelliteOrbits = WorldGen.maxSatelliteOrbitsForOrbit(primaryOrbit, uwp.size ?? 0);
                     if(!satelliteOrbits) {
                         uwp = undefined;
@@ -949,7 +1322,10 @@ export class WorldGen {
                     }
                 }
                 if(uwp === undefined) {
-                    uwp = WorldGen.makeBigWorld(this.random, this.uwp.population??0);
+                    // Brutal kludge - this will get overwritten later but we need it for makeBigWorld
+                    //this.worlds = [this.stellarBodyForPlanet(`${primarySystem.name}-tmp}`, 0, this.uwp, this.system)];
+
+                    uwp = this.makeWorldCore(random, { maxPopulation: this.uwp.population ?? 0, maxPopulationDigit: this.uwp.populationDigit ?? 1, size: 8});
                     satelliteOrbits = WorldGen.maxSatelliteOrbitsForOrbit(primaryOrbit, uwp.size ?? 0);
                     if(!satelliteOrbits) {
                         uwp = undefined;
@@ -959,22 +1335,26 @@ export class WorldGen {
                 }
                 if(uwp === undefined) {
                     logger.error(`Can't generate primary for ${this.world.hex}:${this.world.name} @${primaryOrbit} [${this.stars[0]}] - no satelite orbits`);
-                    this.mainWorld = WorldGen.stellarBodyForPlanet(`${primarySystem.name}-${primaryOrbit}`, WorldGen.maxSatelliteOrbitsForOrbit(primaryOrbit, this.uwp.size), this.uwp, primarySystem)
-                    WorldGen.setOrbit(primarySystem, primaryOrbit, this.mainWorld);
+                    this.mainWorld = this.stellarBodyForPlanet(`${primarySystem.name}-${primaryOrbit}`, WorldGen.maxSatelliteOrbitsForOrbit(primaryOrbit, this.uwp.size), this.uwp, primarySystem)
+                    primarySystem.setOrbit(primaryOrbit, this.mainWorld);
                     --this.planets;
                 } else {
-                    WorldGen.setOrbit(primarySystem, primaryOrbit,
-                        WorldGen.stellarBodyForPlanet(`${primarySystem.name}-${primaryOrbit}`, satelliteOrbits, uwp, primarySystem));
+                    primarySystem.setOrbit(primaryOrbit,
+                        this.stellarBodyForPlanet(`${primarySystem.name}-${primaryOrbit}`, satelliteOrbits, uwp, primarySystem));
                     const orbit = WorldGen.orbitalPosition(<StellarBodyPlanet>primarySystem.orbits[primaryOrbit],
-                        this.satelliteOrbit(primaryOrbit, <StellarBodyPlanet>primarySystem.orbits[primaryOrbit]));
-                    this.mainWorld = WorldGen.stellarBodyForPlanet(`${primarySystem.name}-${primaryOrbit}-${orbit}`, WorldGen.maxSatelliteOrbitsForOrbit(orbit, this.uwp.size), this.uwp, <any>primarySystem.orbits[primaryOrbit])
-                    WorldGen.setOrbit(primarySystem.orbits[primaryOrbit], orbit, this.mainWorld);
+                        this.satelliteOrbit(random, primaryOrbit, <StellarBodyPlanet>primarySystem.orbits[primaryOrbit]));
+                    this.mainWorld = this.stellarBodyForPlanet(`${primarySystem.name}-${primaryOrbit}-${orbit}`, WorldGen.maxSatelliteOrbitsForOrbit(orbit, this.uwp.size), this.uwp, <any>primarySystem.orbits[primaryOrbit])
+                    primarySystem.orbits[primaryOrbit]?.setOrbit(orbit, this.mainWorld);
                 }
             } else {
-                this.mainWorld = WorldGen.stellarBodyForPlanet(`${primarySystem.name}-${primaryOrbit}`, WorldGen.maxSatelliteOrbitsForOrbit(primaryOrbit, this.uwp.size), this.uwp, primarySystem);
-                WorldGen.setOrbit(primarySystem, primaryOrbit, this.mainWorld);
+                this.mainWorld = this.stellarBodyForPlanet(`${primarySystem.name}-${primaryOrbit}`, WorldGen.maxSatelliteOrbitsForOrbit(primaryOrbit, this.uwp.size), this.uwp, primarySystem);
+                primarySystem.setOrbit(primaryOrbit, this.mainWorld);
                 --this.planets;
             }
+
+            this.worlds = [this.mainWorld];
+            this.mainWorld.primary = true;
+            this.postProcessWorld(random, this.mainWorld);
         } else {
             logger.error(`Can't generate primary for ${this.world.hex}:${this.world.name} - no orbits`);
         }
@@ -986,17 +1366,20 @@ export class WorldGen {
         this.worldIdx = 1;
 
         // GGs
+        let ggIdx = 0;
         while(this.gg > 0) {
-            this.placeGG();
+            this.placeGG(this.random.sub(`GG-${ggIdx++}`));
         }
 
         // Belts
+        let beltIdx = 0;
         while(this.belts > 0) {
-            this.placeBelt();
+            this.placeBelt(this.random.sub(`BELT-${beltIdx++}`));
         }
 
+        let worldIdx = 0;
         while(this.planets>0) {
-            this.placeWorld();
+            this.placeWorld(this.random.sub(`WORLD-${worldIdx++}`));
         }
 
         // Now add satellites
@@ -1035,27 +1418,20 @@ export class WorldGen {
         }
     }
 
-    enrichNotes(body: StellarBody) {
-        //uwp: UWPElements, sectorName: string, worldName: string) {
-        if(!body.uwp) {
-            return;
-        }
-        const uwp = body.uwp;
-
+    static enrichNotes(random: FluxRandom, uwp: UWPElements) {
         if((uwp?.population ?? 0) === 0) {
             return;
         }
 
-        const baseKey = '/' + this.world.secName + '/' + body.name;
-        WorldGen.enrichType(new FluxRandom(baseKey+'TL'), 'TL', WorldGen.TECH_TYPES, uwp.techLevel, 2, 1).forEach(e => uwp.notes.add(e));
-        WorldGen.enrichType(new FluxRandom(baseKey+'LL'), 'LL', WorldGen.LAW_TYPES, uwp.lawLevel, 5, 5).forEach(e => uwp.notes.add(e));
+        WorldGen.enrichType(random.sub('TL'), 'TL', WorldGen.TECH_TYPES, uwp.techLevel, 2, 1).forEach(e => uwp.notes.add(e));
+        WorldGen.enrichType(random.sub('LL'), 'LL', WorldGen.LAW_TYPES, uwp.lawLevel, 5, 5).forEach(e => uwp.notes.add(e));
     }
 
     static enrichPlanets(world: World): OverrideWorld[] {
         const wg = new WorldGen(world);
 
         wg.generatePlanets();
-        wg.iterateOverAll(wg.system, p => wg.enrichNotes(p))
+        //wg.iterateOverAll(wg.system, p => wg.enrichNotes(p))
 
         return [{
             hex: wg.world.hex,
@@ -1072,7 +1448,8 @@ export class WorldGen {
         body.orbits?.forEach(p => this.iterateOverAll(p, process));
     }
 
-    starsToWorld(suffix: string, body: StellarBody): OverrideWorld[] {
+    starsToWorld(suffix: string, body: StellarBodyType): OverrideWorld[] {
+        let factions: OverrideWorld[] = [];
         let base: OverrideWorld = {
             hex: this.world.hex + (suffix ? suffix : '-*'),
             name: body.name,
@@ -1089,11 +1466,20 @@ export class WorldGen {
             base = {
                 ...base,
                 uwp: WorldGen.encodeUwpElements(body.uwp),
-                notes: [...body.uwp.notes],
-                ...(<any>body)?.driveLimits,
+                notes: [...body.uwp.notes, ...(body.primary ? [Notes.MAINWORLD]: [])],
+                pbg: (body.uwp.population ?? 0) > 0 ? `${body.uwp.populationDigit ?? 1}**` : undefined,
             };
+            if(body.factions && body.factions.length) {
+                factions = body.factions.map((f,idx) => ({
+                    hex: this.world.hex + (suffix ? suffix : '-*') + String.fromCharCode(65 + idx),
+                    name: body.name + '-faction-' + String.fromCharCode(65 + idx),
+                    uwp: WorldGen.encodeUwpElements(f),
+                    notes: [...f.notes ],
+                    pbg: (f.population ?? 0) > 0 ? `${f.populationDigit ?? 1}**` : undefined,
+                }));
+            }
         }
-        const rv = [base];
+        const rv = [base, ...factions];
         const children = body.orbits?.flatMap((child,idx) => child === undefined ? undefined : this.starsToWorld(`${suffix}-${idx}`, child))?.filter(v => v !== undefined) ?? [];
         rv.push(...children);
         return rv;

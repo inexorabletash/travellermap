@@ -18,6 +18,7 @@ export const STAR_FAR_COMPANION = 7;
 export enum Notes {
     NO_JUMP = '!J',
     NO_MANOUVER = '!M',
+    MAINWORLD = 'Main',
 }
 
 export class World {
@@ -284,17 +285,40 @@ export class World {
 
     }
 
+    static compareChildData(a: { Hex: string }, b: { Hex: string }) {
+        const acmps = a.Hex.split('-');
+        const bcmps = b.Hex.split('-');
+        for(let idx = 0; idx < Math.min(acmps.length,bcmps.length); ++idx) {
+            const av = idx > 0 ? Number.parseInt(acmps[idx]) : acmps[idx];
+            const bv = idx > 0 ? Number.parseInt(bcmps[idx]) : bcmps[idx];
+            if(av < bv) {
+                return -1;
+            } else if(av > bv) {
+                return 1;
+            }
+        }
+        if(acmps.length > bcmps.length) {
+            return 1;
+        } else if (acmps.length < bcmps.length) {
+            return -1;
+        }
+        return 0;
+    }
+
     jumpWorld(): Record<string,any> {
         const ssCoords = this.sector_.subSectorCoords(this.hex);
+        const baseHex = World.coordsToHex(<[number,number]>this.hex_.slice(0,2));
+
         const System = this.children.map(child => ({
             Hex: child.hex,
             Name: child.name,
             UWP: child.uwp,
             Notes: [...child.notes],
+            MainWorld: !!(child.hex === baseHex || child.notes.has(Notes.MAINWORLD)),
             Flags:
                 (child.notes.has(Notes.NO_JUMP) ? '*' : '') +
                     (child.notes.has(Notes.NO_MANOUVER) ? '!': ''),
-            }))
+            })).sort(World.compareChildData);
         return {
             "Name": this.name,
             "Hex": this.hex,

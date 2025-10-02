@@ -94,6 +94,10 @@ export class FluxRandom {
         this.data = crypto.hash('md5',this.key,'buffer');
     }
 
+    sub(key: string): FluxRandom {
+        return new FluxRandom(this.key + '/' + key);
+    }
+
     nextByte(): number {
         if(this.index >= this.data.length) {
             this.key += '*';

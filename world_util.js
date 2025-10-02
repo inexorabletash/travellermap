@@ -830,12 +830,17 @@
       world.OtherWorlds = Math.max(world.Worlds - 1 - world.PBG.Belts - world.PBG.GG, 0);
     }
 
-    if(world.System) {
+    if(world.System && world.System.length > 1) {
       world.System.forEach(w => {
         if(w.Hex === world.Hex) {
           w.Active = true;
+        } else if(world.Hex.indexOf('-')<0 && w.MainWorld) {
+          w.Active = true;
         }
       });
+      world.SystemBodies = world.System.length-1;
+    } else {
+      world.System = undefined;
     }
 
     // Wiki Links

@@ -631,10 +631,12 @@ body:not(.wds-visible) #wds-frame { display: none; }
 
 #wds-frame:not(.wds-expand-uwp) #wds-uwp,
 #wds-frame:not(.wds-expand-ex) #wds-ex,
+#wds-frame:not(.wds-expand-system) #wds-system,
 #wds-frame:not(.wds-expand-cx) #wds-cx { display: none; }
 
 .wds-expand-uwp .wds-expandy[data-wds-expand="wds-expand-uwp"] .wds-toggle,
 .wds-expand-ex .wds-expandy[data-wds-expand="wds-expand-ex"] .wds-toggle,
+.wds-expand-system .wds-expandy[data-wds-expand="wds-expand-system"] .wds-toggle,
 .wds-expand-cx .wds-expandy[data-wds-expand="wds-expand-cx"] .wds-toggle {
   background-image: var(--chevron-down);
 }
@@ -675,6 +677,13 @@ body:not(.wds-visible) #wds-frame { display: none; }
   width: 25px;
   font-size: 14px; font-weight: bold;
   text-align: center;
+}
+.wds-properties .wds-system-flags {
+  float: right;
+  padding-top: 2px; padding-bottom: 2px;
+  font-size: 11px; font-weight: normal;
+  horiz-align: center;
+  vertical-align: middle;
 }
 
 /* Specific Data Fields */
