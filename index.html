@@ -848,13 +848,16 @@
     {{#Stars}} <span class=wds-star><big>{{code}}</big> <small>{{detail}}</small></span> {{/Stars}}
     </div>
     <div>
+      {{#PBG.GG}}
       <span class=nowrap>
         <big>{{PBG.GG}}</big> <small>Gas Giants</small>
       </span>
+      {{/PBG.GG}}
       &mdash;
-      <span class=nowrap>
+      {{#PBG.Belts}}<span class=nowrap>
         <big>{{PBG.Belts}}</big> <small>Planetoid Belts</small>
       </span>
+      {{/PBG.Belts}}
       {{#if OtherWorlds}}
       &mdash;
       <span class=nowrap>

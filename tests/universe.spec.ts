@@ -162,7 +162,7 @@ test('planetary system data - Regina (Test Milieu)', async () => {
     expect(regina?.uwp).toEqual('A788899-C');
     
     // Get the jumpWorld data which includes System field
-    const jumpData = regina?.jumpWorld();
+    const jumpData = regina?.jumpWorld(universe);
     expect(jumpData).toBeDefined();
     expect(jumpData?.System).toBeDefined();
     expect(Array.isArray(jumpData?.System)).toBe(true);
@@ -206,7 +206,7 @@ test('planetary system data - multi-star system (Test Milieu)', async () => {
     expect(jenghe?.name).toEqual('Jenghe');
     expect(jenghe?.uwp).toEqual('B777588-9');
     
-    const jumpData = jenghe?.jumpWorld();
+    const jumpData = jenghe?.jumpWorld(universe);
     expect(jumpData).toBeDefined();
     expect(jumpData?.System).toBeDefined();
     
@@ -249,11 +249,145 @@ test('planetary system data - System array sorting (Test Milieu)', async () => {
     const spin = universe.getSectorByName('spin');
     const regina = spin?.lookupWorld('1910');
     
-    const jumpData = regina?.jumpWorld();
+    const jumpData = regina?.jumpWorld(universe);
     expect(jumpData?.System).toBeDefined();
     
     // Verify System array is sorted correctly
     // Main world (1910) should come first, then suffixed versions in order
     const hexes = jumpData?.System?.map((w: any) => w.Hex);
     expect(hexes).toEqual(['1910', '1910-2', '1910-5', '1910-8']);
+});
+
+test('wiki URL - world-level override (Test Milieu)', async () => {
+    const universe = await Universe.getUniverse('Test');
+    const spin = universe.getSectorByName('spin');
+    const regina = spin?.lookupWorld('1910');
+    
+    expect(regina).toBeDefined();
+    
+    // Regina has a custom wiki URL set at world level
+    const jumpData = regina?.jumpWorld(universe);
+    expect(jumpData?.Wiki).toEqual('https://custom.wiki.com/Regina');
+});
+
+test('wiki URL - universe-level template with ${name} (Test Milieu)', async () => {
+    const universe = await Universe.getUniverse('Test');
+    const spin = universe.getSectorByName('spin');
+    const jenghe = spin?.lookupWorld('2007');
+    
+    expect(jenghe).toBeDefined();
+    
+    // Jenghe should use the universe-level template
+    const jumpData = jenghe?.jumpWorld(universe);
+    expect(jumpData?.Wiki).toEqual('https://wiki.travellerrpg.com/Jenghe');
+});
+
+test('wiki URL - universe-level template with ${basename} (Test Milieu)', async () => {
+    const universe = await Universe.getUniverse('Test');
+    const spin = universe.getSectorByName('spin');
+    const innerPlanet = spin?.lookupWorld('1910-2');
+    
+    expect(innerPlanet).toBeDefined();
+    expect(innerPlanet?.name).toEqual('Regina Inner');
+    
+    // Test that basename strips suffix from name
+    // baseName should be "Regina Inner" (the full name, as suffix is not part of the name)
+    const wikiUrl = universe.wiki(innerPlanet!);
+    expect(wikiUrl).toEqual('https://wiki.travellerrpg.com/Regina%20Inner');
+});
+
+test('wiki URL - template variable ${hex} (TestTemplate Milieu)', async () => {
+    const universe = await Universe.getUniverse('TestTemplate');
+    const spin = universe.getSectorByName('spin');
+    const steel = spin?.lookupWorld('1529');
+    
+    expect(steel).toBeDefined();
+    
+    // Test hex variable
+    const wikiUrl = universe.wiki(steel!);
+    expect(wikiUrl).toContain('hex=1529');
+    expect(wikiUrl).toContain('name=Steel');
+});
+
+test('wiki URL - template variable ${basehex} (TestTemplate Milieu)', async () => {
+    const universe = await Universe.getUniverse('TestTemplate');
+    const spin = universe.getSectorByName('spin');
+    const companionWorld = spin?.lookupWorld('2007-1-3');
+    
+    expect(companionWorld).toBeDefined();
+    expect(companionWorld?.hex).toEqual('2007-1-3');
+    expect(companionWorld?.baseHex).toEqual('2007');
+    
+    // Test that basehex returns the base hex without suffix
+    const wikiUrl = universe.wiki(companionWorld!);
+    expect(wikiUrl).toContain('hex=2007-1-3');
+});
+
+test('wiki URL - template variable ${sec} (TestTemplate Milieu)', async () => {
+    const universe = await Universe.getUniverse('TestTemplate');
+    const spin = universe.getSectorByName('spin');
+    const jenghe = spin?.lookupWorld('2007');
+    
+    expect(jenghe).toBeDefined();
+    
+    // Test sector name variable
+    const wikiUrl = universe.wiki(jenghe!);
+    expect(wikiUrl).toContain('sector=Spinward%20Marches');
+});
+
+test('wiki URL - template variable ${abbrev} (TestTemplate Milieu)', async () => {
+    const universe = await Universe.getUniverse('TestTemplate');
+    const spin = universe.getSectorByName('spin');
+    const world = spin?.lookupWorld('1910');
+    
+    expect(spin).toBeDefined();
+    expect(spin?.abbreviation).toBeDefined();
+    expect(world).toBeDefined();
+});
+
+test('wiki URL - template variable ${suffix} and ${rawsuffix} (TestTemplate Milieu)', async () => {
+    const universe = await Universe.getUniverse('TestTemplate');
+    const spin = universe.getSectorByName('spin');
+    const companionWorld = spin?.lookupWorld('2007-1-3');
+    
+    expect(companionWorld).toBeDefined();
+    expect(companionWorld?.suffix).toEqual('-1-3');
+    expect(companionWorld?.hex).toEqual('2007-1-3');
+});
+
+test('wiki URL - no wiki configured (GM Milieu)', async () => {
+    const universe = await Universe.getUniverse('GM');
+    const spin = universe.getSectorByName('spin');
+    const world = spin?.lookupWorld('1910');
+    
+    expect(world).toBeDefined();
+    
+    // GM milieu has no wiki URL configured
+    const wikiUrl = universe.wiki(world!);
+    expect(wikiUrl).toBeUndefined();
+});
+
+test('wiki URL - comprehensive template test (TestTemplate Milieu)', async () => {
+    const universe = await Universe.getUniverse('TestTemplate');
+    const spin = universe.getSectorByName('spin');
+    const jenghe = spin?.lookupWorld('2007');
+    
+    expect(jenghe).toBeDefined();
+    
+    // Test the full template with multiple variables
+    const wikiUrl = universe.wiki(jenghe!);
+    expect(wikiUrl).toBe('https://wiki.example.com/world?name=Jenghe&hex=2007&sector=Spinward%20Marches');
+});
+
+test('wiki URL - world with suffix uses basename correctly (Test Milieu)', async () => {
+    const universe = await Universe.getUniverse('Test');
+    const spin = universe.getSectorByName('spin');
+    const innerPlanet = spin?.lookupWorld('1910-2');
+    
+    expect(innerPlanet).toBeDefined();
+    expect(innerPlanet?.baseName).toEqual('Regina Inner');
+    
+    // baseName should be the full name since suffix is not part of the name
+    const wikiUrl = universe.wiki(innerPlanet!);
+    expect(wikiUrl).toEqual('https://wiki.travellerrpg.com/Regina%20Inner');
 });

@@ -42,6 +42,7 @@ export class World {
     nobility_: string;
     w_: string;
     ru_: string;
+    wiki_: string|undefined;
     hasOverride_: boolean;
 
     constructor(sector: Sector, x: number, y: number);
@@ -64,6 +65,7 @@ export class World {
         this.ru_ = '';
         this.secName_ = sector.name
         this.hasOverride_ = false;
+        this.wiki_ = undefined;
 
         if(typeof x === 'object') {
             this.hex_ = World.hexToCoords(x.Hex);
@@ -110,6 +112,7 @@ export class World {
         this.w_ = x.W ?? this.w_;
         this.ru_ = x.RU ?? this.ru_;
         this.hasOverride_ = x.hasOverride ?? this.hasOverride_;
+        this.wiki_ = x.Wiki;
     }
 
 
@@ -242,7 +245,7 @@ export class World {
     }
 
     get children(): World[] {
-        const baseName = World.coordsToHex(<[number,number]>this.hex_.slice(0,2));
+        const baseName = this.baseHex;
         return [ ...this.sector_.getAllWorlds().filter(w => w.hex.startsWith(baseName)) ];
     }
 
@@ -254,7 +257,27 @@ export class World {
         return undefined;
     }
 
+    get baseHex() : string {
+        return World.coordsToHex(<[number,number]>this.hex_.slice(0,2));
+    }
+    get suffix(): string {
+        return this.hex.substring(4);
+    }
 
+    get baseName() : string {
+        if(this.name.endsWith(this.suffix)) {
+            return this.name.substring(0, this.name.length - this.suffix.length);
+        }
+        return this.name;
+    }
+
+
+    get wiki(): string|undefined {
+        if(this.wiki_) {
+            return this.wiki_;
+        }
+        return undefined;
+    }
 
     credits(): Record<string,any> {
         const ssCoords = this.sector_.subSectorCoords(this.hex);
@@ -307,7 +330,7 @@ export class World {
         return 0;
     }
 
-    jumpWorld(): Record<string,any> {
+    jumpWorld(universe: Universe): Record<string,any> {
         const ssCoords = this.sector_.subSectorCoords(this.hex);
         const baseHex = World.coordsToHex(<[number,number]>this.hex_.slice(0,2));
 
@@ -351,6 +374,7 @@ export class World {
             "HexY": this.y,
             "Parent": this.parent ? { Hex: this.parent.hex, UWP: this.parent.uwp } : undefined,
             "System": System.length ? System : undefined,
+            "Wiki": this.wiki ?? universe.wiki(this),
         }
     }
 
@@ -442,6 +466,7 @@ export class World {
             Nobility: ovr.nobility,
             W: this.convertValue(ovr.w,1),
             RU: this.convertValue(ovr.ru,1),
+            Wiki: ovr.wiki,
             hasOverride: true,
         };
         if(!def.Hex) {

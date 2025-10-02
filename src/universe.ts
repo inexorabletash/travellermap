@@ -45,6 +45,12 @@ export type SearchResponse = {
     Items: SearchElement[],
 }
 
+export type MilieuDef = {
+    id: string;
+    sources: Set<string>;
+    wiki?: string;
+}
+
 export class Universe {
     static readonly MILIEU_TAB = 'milieu.tab';
     static readonly SOPHONT_TAB_GLOBAL = 'sophonts.tab';
@@ -52,12 +58,14 @@ export class Universe {
     static readonly DEFAULT_MILIEU = 'M1105';
     protected static universes: Map<string,Promise<Universe>> = new Map();
     protected static milieuTab_: Promise<Record<string,Milieu>>;
-    protected static milieuDefs: Promise<Record<string,Set<string>>>;
+    //protected static milieuDefs: Promise<Record<string,Set<string>>>;
+    protected static milieuDefs: Promise<Record<string,MilieuDef>>;
     protected static sophontTab: Promise<Record<string,Sophont>>;
     protected static allegianceTab: Promise<Record<string,Allegiance>>;
     static baseDir = path.join(process.cwd(), 'static', 'res', 'Sectors');
     static OVERRIDE_DIR = path.join(process.cwd(), 'static', 'res', 'overrides');
-    protected _sectors: Map<string,Sector> = new Map<string, Sector>();
+    protected sectors_: Map<string,Sector> = new Map<string, Sector>();
+    protected wikiUrl_: string|undefined;
     static readonly LOADER_LOOKUP: Record<string,(metadata: SectorMetadata, file: string) => Promise<Sector|undefined>> = {
         TabDelimited: (metadata, file) => Sector.loadFileTab(metadata, file),
         SecondSurvey: (metadata, file) => Sector.loadFileSecondSurvey(metadata, file),
@@ -65,21 +73,25 @@ export class Universe {
         'SEC': (metadata, file) => Sector.loadFileSec(metadata, file),
     };
 
-    static async milieuToLoad(key: string): Promise<Set<string>> {
+    static async milieuToLoad(key: string): Promise<MilieuDef> {
         if(this.milieuDefs === undefined) {
             try {
                 this.milieuDefs = this.loadCsv(path.join(Universe.OVERRIDE_DIR, Universe.MILIEU_TAB),
                     data => {
-                        return [data.Name, new Set(data.Milieu?.split(/\s+/) ?? [])];
+                        return [data.Name, {
+                            id: data.Name,
+                            sources: new Set(data.Milieu?.split(/\s+/) ?? []),
+                            wiki: data.Wiki !== undefined && data.Wiki.trim() !== '' ? data.Wiki.trim() : undefined,
+                        }];
                     });
             } catch(e: any) {
                 logger.warn(`Failed to load milieu definitions: ${e.stack}`);
             }
         }
         const defs = await this.milieuDefs;
-        let milieuMatch = new Set([key]);
+        let milieuMatch = { id: key, sources: new Set<string>([key]) };
         if(defs[key]) {
-            milieuMatch = defs[key] ?? new Set();
+            milieuMatch = defs[key] ?? milieuMatch;
         }
         return milieuMatch;
     }
@@ -100,11 +112,13 @@ export class Universe {
         return this.milieuTab_;
     }
 
-    static async loadUniverse(key: string, milieuMatch: Set<string>): Promise<Universe> {
+    static async loadUniverse(key: string, milieuDef: MilieuDef): Promise<Universe> {
+        const milieuMatch = milieuDef.sources;
         const universe = new Universe();
         const milieuTab = await this.milieuTab;
         const overrideFiles = await this.loadOverrideFiles(path.join(Universe.OVERRIDE_DIR, key));
 
+        universe.wikiUrl_ = milieuDef.wiki;
         universe.applyAllegianceOverrides(overrideFiles);
 
         for(const milieu of Object.values(milieuTab)) {
@@ -190,7 +204,7 @@ export class Universe {
         const worldy = absy - secyBase * Sector.SECTOR_HEIGHT;
         const secKey = Universe.sectorKey(secx, secy);
 
-        const sector = this._sectors.get(secKey);
+        const sector = this.sectors_.get(secKey);
         return sector?.lookupWorld(worldx, worldy);
     }
 
@@ -233,17 +247,17 @@ export class Universe {
     }
 
     sectors() : Sector[] {
-        const sectorSet = new Set(this._sectors.values());
+        const sectorSet = new Set(this.sectors_.values());
         return [...sectorSet.values()];
     }
     getSector(sx: number, sy: number) : Sector|undefined {
-        return this._sectors.get(Universe.sectorKey(sx,sy));
+        return this.sectors_.get(Universe.sectorKey(sx,sy));
     }
     getSectorByName(name: string) : Sector|undefined {
-        return this._sectors.get(name.toLowerCase());
+        return this.sectors_.get(name.toLowerCase());
     }
     getSectorBySubsectorName(name: string): Sector|undefined {
-        for(const s of this._sectors.values()) {
+        for(const s of this.sectors_.values()) {
             if(s.subsectors().has(name)) {
                 return s;
             }
@@ -275,7 +289,7 @@ export class Universe {
     }
 
     search(query: string): SearchResponse {
-        const x = [ ...this._sectors.values() ];
+        const x = [ ...this.sectors_.values() ];
         const y = x.flatMap(sector => [...sector.getWorlds()]);
         const z: Set<World> = new Set([...y]);
         let matches: Set<World>[] = [z];
@@ -401,18 +415,18 @@ export class Universe {
                     continue;
                 }
                 const sectorKey = this.sectorKey(sectorData.x, sectorData.y);
-                if(universe._sectors.has(sectorKey) &&
-                    ((universe._sectors.get(sectorKey)?.milieu === undefined && sectorData.milieu !== undefined))) {
+                if(universe.sectors_.has(sectorKey) &&
+                    ((universe.sectors_.get(sectorKey)?.milieu === undefined && sectorData.milieu !== undefined))) {
                     // If the sector is already defined but is not an explicit milieu match, drop the old one
                     universe.removeSector(sectorKey);
                 }
                 // If the sector is already defined use the existing
-                if(!universe._sectors.has(sectorKey)) {
+                if(!universe.sectors_.has(sectorKey)) {
                     // don't redefine existing sectors
-                    universe._sectors.set(sectorKey, sectorData);
-                    universe._sectors.set(sectorData.name.toLowerCase(), sectorData);
+                    universe.sectors_.set(sectorKey, sectorData);
+                    universe.sectors_.set(sectorData.name.toLowerCase(), sectorData);
                     if (sectorData.abbreviation) {
-                        universe._sectors.set(sectorData.abbreviation.toLowerCase(), sectorData);
+                        universe.sectors_.set(sectorData.abbreviation.toLowerCase(), sectorData);
                     }
                 }
             }
@@ -464,13 +478,47 @@ export class Universe {
     }
 
     removeSector(name: string) {
-        this._sectors.delete(name);
+        this.sectors_.delete(name);
     }
 
     addSector(name: string, sector: Sector) {
-        this._sectors.set(name, sector);
+        this.sectors_.set(name, sector);
     }
 
+    wiki(world: World): string|undefined {
+        if(!this.wikiUrl_) {
+            return undefined;
+        }
+        // No placeholders - use legacy version
+        if(this.wikiUrl_.indexOf('$') < 0) {
+            return `${this.wikiUrl_}?${encodeURIComponent(world.name + ' (world)')}?sector=${encodeURIComponent(world.sector_.name)}&hex=${encodeURIComponent(world.hex)}`
+        }
+        return this.wikiUrl_.replaceAll(/\$\{([^}]*)}/g,(m, p) => {
+            if(p === 'basename') {
+                return encodeURIComponent(world.baseName);
+            } else if(p === 'name') {
+                return encodeURIComponent(world.name);
+            } else if(p === 'sec') {
+                return encodeURIComponent(world.sector_.name ?? world.sec);
+            } else if(p === 'abbrev') {
+                return encodeURIComponent(world.sector_.abbreviation ?? world.sec);
+            } else if(p === 'hex') {
+                return encodeURIComponent(world.hex);
+            } else if(p === 'basehex') {
+                return encodeURIComponent(world.baseHex);
+            } else if(p === 'rawsuffix') {
+                return encodeURIComponent(world.suffix);
+            } else if(p === 'suffix') {
+                // Skip leading -
+                let suffix = world.suffix;
+                if(suffix[0] == '-') {
+                    suffix = suffix.substring(1);
+                }
+                return encodeURIComponent(suffix);
+            }
+            return ''
+        });
+    }
 }
 
 

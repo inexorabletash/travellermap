@@ -49,5 +49,6 @@ export type OverrideWorld = {
     w?: string|number;
     ru?: string|number;
     delete?: boolean;
+    wiki?: string;
 } & OverrideCommon;
 

@@ -80,7 +80,7 @@ export function addListeners(server: WebServer, tileRenderer: TileRender) {
             worldList = hexRadius([coords.x, coords.y], jump, true)
                 .map(w => universe.lookupWorld(w[0], w[1]));
         }
-        const worlds = worldList.map(w => w?.jumpWorld()).filter(jw => !!jw);
+        const worlds = worldList.map(w => w?.jumpWorld(universe)).filter(jw => !!jw);
         return {
             Worlds: worlds,
         };
@@ -126,7 +126,7 @@ export function addListeners(server: WebServer, tileRenderer: TileRender) {
                 }
                 return true;
             })
-        return worlds?.map(w => w.jumpWorld()) ?? [];
+        return worlds?.map(w => w.jumpWorld(universe)) ?? [];
     })
 
     server.registerJson('/api/coordinates', 'get', async (req) => {

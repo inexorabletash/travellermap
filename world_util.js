@@ -655,11 +655,13 @@
     function fix(value, replacement) {
       return value === -1 ? replacement : value;
     }
-    return {
+    const result = {
       Pop: Traveller.fromHex(pbg.substring(0, 1)),
-      Belts: fix(Traveller.fromHex(pbg.substring(1, 2)), '???'),
-      GG: fix(Traveller.fromHex(pbg.substring(2, 3)), '???')
+      Belts: fix(Traveller.fromHex(pbg.substring(1, 2)), null),
+      GG: fix(Traveller.fromHex(pbg.substring(2, 3)), null)
     };
+    // Special case - only a population digit
+    return result;
   };
 
   Traveller.splitRemarks = function splitRemarks(remarks) {
@@ -827,7 +829,7 @@
     // Worlds
     if (world.Worlds) {
       world.Worlds = Number(world.Worlds);
-      world.OtherWorlds = Math.max(world.Worlds - 1 - world.PBG.Belts - world.PBG.GG, 0);
+      world.OtherWorlds = Math.max(world.Worlds - 1 - (world.PBG.Belts ?? 0) - (world.PBG.GG ?? 0), 0);
     }
 
     if(world.System && world.System.length > 1) {
@@ -847,9 +849,14 @@
     function makeWikiURL(suffix) {
       return 'https://wiki.travellerrpg.com/' + encodeURIComponent(suffix.replace(/ /g, '_'));
     }
-    world.world_url = makeWikiURL(world.Name + ' (world)');
-    world.world_url_noscheme = world.world_url.replace(/^\w+:\/\//, '');
-    world.world_url += `?sector=${encodeURIComponent(world.Sector)}&hex=${encodeURIComponent(world.Hex)}`;
+    if(world.Wiki) {
+      world.world_url = world.Wiki;
+      world.world_url_noscheme = world.world_url.replace(/^\w+:\/\//, '').replace(/\?.*/,'');
+    } else {
+      world.world_url = makeWikiURL(world.Name + ' (world)');
+      world.world_url_noscheme = world.world_url.replace(/^\w+:\/\//, '');
+      world.world_url += `?sector=${encodeURIComponent(world.Sector)}&hex=${encodeURIComponent(world.Hex)}`;
+    }
     world.ss_url = makeWikiURL(world.SubsectorName + ' Subsector');
     world.ss_url_noscheme = world.ss_url.replace(/^\w+:\/\//, '');
     world.sector_url = makeWikiURL(world.Sector + ' Sector');
