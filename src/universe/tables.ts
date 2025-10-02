@@ -1,4 +1,5 @@
-import {StellarBodyType, UWPElements, WorldGen} from "./worldGen.js";
+import {WorldGen} from "./worldGen.js";
+import {StellarBodyType, UWPElements} from "./stellarBody.js";
 
 export type RangeOrFunction =
     string |
