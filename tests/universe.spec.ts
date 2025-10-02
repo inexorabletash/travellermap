@@ -152,3 +152,108 @@ test('spin sector routes and borders (Test Milieu)', async () => {
     expect(spin1?.borders).toEqual([{"allegiance":"ZhIN","label":"Zhodani Consulate","labelPosition":205,"wrapLabel":true,"hexes":["0000","0100","0200","0101","0102","0202","0303","0403","0504","0604","0705","0804","0904","1003","1103","1102","1201","1302","1401","1402","1303","1202","1103","1003","0904","0804","0705","0604","0505","0506","0507","0508","0608","0609","0610","0611","0712","0612","0613","0614","0514","0413","0412","0512","0511","0610","0609","0608","0508","0407","0307","0206","0106","0006","0005","0004","0003","0002","0001","0000"]},{"allegiance":"ImDd","label":"Third Imperium","labelPosition":335,"wrapLabel":true,"hexes":["0133","0232","0332","0432","0533","0632","0732","0733","0633","0534","0535","0635","0636","0737","0738","0638","0539","0438","0339","0238","0139","0138","0137","0136","0135","0134","0133"]},{"allegiance":"ImDd","label":"Third Imperium","wrapLabel":true,"hexes":["930"]},{"allegiance":"SwCf","labelPosition":"1024","wrapLabel":true,"hexes":["1021","1121","1221","1322","1421","1522","1523","1423","1323","1223","1224","1125","1126","1127","1128","1129","1130","1129","1028","0928","0927","0926","0925","0924","0923","0922","0921","1021"],"label":"Sword Worlds Confederation"},{"allegiance":"DaCf","labelPosition":423,"wrapLabel":true,"hexes":["0223","0323","0422","0421","0521","0620","0720","0820","0821","0822","0723","0724","0725","0726","0727","0728","0627","0527","0427","0426","0326","0325","0224","0223"],"label":"Darrien Confereration"},{"hexes":["1324","1424","1524","1424","1325","1225","1325","1324"],"allegiance":"BwCf","label":"Border Worlds","labelPosition":"1423","wrapLabel":true},{"allegiance":"ImDd","label":"Third Imperium","labelPosition":2021,"wrapLabel":true,"hexes":["1005","1105","1204","1305","1405","1505","1604","1704","1803","1802","1903","2002","2102","2201","2302","2402","2502","2601","2701","2801","2902","3001","3102","3201","3302","3303","3304","3305","3306","3307","3308","3309","3310","3311","3312","3313","3314","3315","3316","3317","3318","3319","3320","3321","3322","3323","3324","3325","3326","3327","3328","3329","3330","3331","3332","3333","3334","3335","3336","3337","3338","3339","3340","3341","3241","3141","3041","2941","2841","2741","2641","2541","2441","2341","2241","2141","2041","1941","1840","1839","1739","1738","1637","1537","1636","1736","1835","1834","1833","1733","1832","1831","1731","1730","1729","1628","1529","1429","1430","1330","1329","1328","1327","1426","1526","1625","1624","1724","1823","1822","1821","1721","1620","1520","1419","1320","1219","1119","1019","1020","1019","1018","1118","1117","1116","1215","1214","1314","1313","1412","1512","1611","1711","1810","1910","1909","1808","1708","1607","1507","1407","1307","1207","1107","1006","1005"]}])
 });
 
+test('planetary system data - Regina (Test Milieu)', async () => {
+    const universe = await Universe.getUniverse('Test');
+    const spin = universe.getSectorByName('spin');
+    const regina = spin?.lookupWorld('1910');
+    
+    expect(regina).toBeDefined();
+    expect(regina?.name).toEqual('Regina');
+    expect(regina?.uwp).toEqual('A788899-C');
+    
+    // Get the jumpWorld data which includes System field
+    const jumpData = regina?.jumpWorld();
+    expect(jumpData).toBeDefined();
+    expect(jumpData?.System).toBeDefined();
+    expect(Array.isArray(jumpData?.System)).toBe(true);
+    
+    // Should have 4 worlds total (main + 3 planets)
+    expect(jumpData?.System?.length).toBe(4);
+    
+    // Verify main world is marked correctly
+    const mainWorld = jumpData?.System?.find((w: any) => w.MainWorld === true);
+    expect(mainWorld).toBeDefined();
+    expect(mainWorld?.Hex).toEqual('1910');
+    expect(mainWorld?.Name).toEqual('Regina');
+    
+    // Verify planetary data with hex suffixes
+    const innerPlanet = jumpData?.System?.find((w: any) => w.Hex === '1910-2');
+    expect(innerPlanet).toBeDefined();
+    expect(innerPlanet?.Name).toEqual('Regina Inner');
+    expect(innerPlanet?.UWP).toEqual('Y200000-0');
+    expect(innerPlanet?.MainWorld).toBe(false);
+    expect(innerPlanet?.Notes).toContain('Va');
+    expect(innerPlanet?.Notes).toContain('Ba');
+    
+    const gasGiant = jumpData?.System?.find((w: any) => w.Hex === '1910-5');
+    expect(gasGiant).toBeDefined();
+    expect(gasGiant?.Name).toEqual('Regina Gas Giant');
+    expect(gasGiant?.UWP).toEqual('YS00000-0');
+    
+    const outerPlanet = jumpData?.System?.find((w: any) => w.Hex === '1910-8');
+    expect(outerPlanet).toBeDefined();
+    expect(outerPlanet?.Name).toEqual('Regina Outer');
+    expect(outerPlanet?.UWP).toEqual('Y100000-0');
+    expect(outerPlanet?.Notes).toContain('Ic');
+});
+
+test('planetary system data - multi-star system (Test Milieu)', async () => {
+    const universe = await Universe.getUniverse('Test');
+    const spin = universe.getSectorByName('spin');
+    const jenghe = spin?.lookupWorld('2007');
+    
+    expect(jenghe).toBeDefined();
+    expect(jenghe?.name).toEqual('Jenghe');
+    expect(jenghe?.uwp).toEqual('B777588-9');
+    
+    const jumpData = jenghe?.jumpWorld();
+    expect(jumpData).toBeDefined();
+    expect(jumpData?.System).toBeDefined();
+    
+    // Should have 2 worlds (main + companion world)
+    expect(jumpData?.System?.length).toBe(2);
+    
+    // Verify main world
+    const mainWorld = jumpData?.System?.find((w: any) => w.MainWorld === true);
+    expect(mainWorld).toBeDefined();
+    expect(mainWorld?.Hex).toEqual('2007');
+    
+    // Verify companion star planet with multi-part suffix
+    const companionWorld = jumpData?.System?.find((w: any) => w.Hex === '2007-1-3');
+    expect(companionWorld).toBeDefined();
+    expect(companionWorld?.Name).toEqual('Jenghe Companion World');
+    expect(companionWorld?.UWP).toEqual('Y430000-0');
+    expect(companionWorld?.MainWorld).toBe(false);
+    expect(companionWorld?.Notes).toContain('De');
+    expect(companionWorld?.Notes).toContain('Po');
+});
+
+test('planetary system data - hex suffix format validation (Test Milieu)', async () => {
+    const universe = await Universe.getUniverse('Test');
+    const spin = universe.getSectorByName('spin');
+    
+    // Test that we can look up worlds by their suffixed hex
+    const innerPlanet = spin?.lookupWorld('1910-2');
+    expect(innerPlanet).toBeDefined();
+    expect(innerPlanet?.hex).toEqual('1910-2');
+    expect(innerPlanet?.name).toEqual('Regina Inner');
+    
+    const companionWorld = spin?.lookupWorld('2007-1-3');
+    expect(companionWorld).toBeDefined();
+    expect(companionWorld?.hex).toEqual('2007-1-3');
+    expect(companionWorld?.name).toEqual('Jenghe Companion World');
+});
+
+test('planetary system data - System array sorting (Test Milieu)', async () => {
+    const universe = await Universe.getUniverse('Test');
+    const spin = universe.getSectorByName('spin');
+    const regina = spin?.lookupWorld('1910');
+    
+    const jumpData = regina?.jumpWorld();
+    expect(jumpData?.System).toBeDefined();
+    
+    // Verify System array is sorted correctly
+    // Main world (1910) should come first, then suffixed versions in order
+    const hexes = jumpData?.System?.map((w: any) => w.Hex);
+    expect(hexes).toEqual(['1910', '1910-2', '1910-5', '1910-8']);
+});

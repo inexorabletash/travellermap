@@ -179,7 +179,69 @@ world:
   - hex: '1628'
     allegiance: ImDd
 
+  # Add planetary system data for testing
+  # Main world at 1910
+  - hex: '1910'
+    name: 'Regina'
+    uwp: 'A788899-C'
+    bases: 'NS'
+    allegiance: ImDd
+    notes:
+      - Ri
+      - Pa
+      - Ph
+      - An
+      - Cp
+      - Main
+    
+  # Inner planet (orbit 2 on primary star)
+  - hex: '1910-2'
+    name: 'Regina Inner'
+    uwp: 'Y200000-0'
+    allegiance: ImDd
+    notes:
+      - Va
+      - Ba
+    
+  # Gas giant (orbit 5 on primary star)
+  - hex: '1910-5'
+    name: 'Regina Gas Giant'
+    uwp: 'YS00000-0'
+    allegiance: ImDd
+    notes:
+      - Ba
+    
+  # Outer planet (orbit 8 on primary star)
+  - hex: '1910-8'
+    name: 'Regina Outer'
+    uwp: 'Y100000-0'
+    allegiance: ImDd
+    notes:
+      - Va
+      - Ba
+      - Ic
 
+  # Multi-star system test - world at 2007
+  - hex: '2007'
+    name: 'Jenghe'
+    uwp: 'B777588-9'
+    bases: 'S'
+    allegiance: ImDd
+    notes:
+      - Ag
+      - Ni
+      - Main
+    stars: 'F7 V / M3 V'
+    
+  # Planet on companion star (orbit 3 on companion)
+  - hex: '2007-1-3'
+    name: 'Jenghe Companion World'
+    uwp: 'Y430000-0'
+    allegiance: ImDd
+    notes:
+      - De
+      - Ba
+      - Po
 
 
 allegiance:
