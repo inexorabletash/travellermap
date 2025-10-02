@@ -945,67 +945,135 @@ export class WorldGen {
         }
     }
 
+    determineWorldOwner(world: StellarBodyPlanet) : string|undefined {
+        return [ ...world.uwp.notes ].find(n => n.startsWith('O:'));
+    }
+
+    determineColonyOwner(random: FluxRandom, exclude: StellarBodyPlanet[] = []): undefined|{ world: StellarBodyPlanet, owner: string } {
+        if(this.worlds.length - (exclude !== undefined ? exclude.length : 0) < 1) {
+            return undefined;
+        }
+        if(random.die(4+this.worlds.length) < 4) {
+            while(true) {
+                //console.log(`Creating colony in ${bodyIn.name}-${orbitIn}`);
+                const worldDie = random.die(this.worlds.length) - 1;
+                const world = this.worlds[worldDie];
+
+                if(exclude.find(x => x === world)) {
+                    continue;
+                }
+                const primaryOwner = world ? this.determineWorldOwner(world) : undefined;
+                const owner = primaryOwner ? primaryOwner : `O:${this.world.hex}${world.suffix}`;
+
+                return {
+                    world,
+                    owner,
+                }
+            }
+        } else {
+            //console.log(`Creating world at ${bodyIn.name}-${orbitIn}`);
+            return undefined
+        }
+    }
+
+    createFaction(random: FluxRandom, world: StellarBodyPlanet, owner: StellarBodyPlanet|undefined, ownerName: string|undefined, isPrimary: boolean, isBestStarport: boolean) {
+        const notes:string[] = [];
+        const elements = {
+            size: world.uwp.size,
+            atmosphere: world.uwp.atmosphere,
+            hydrographic: world.uwp.hydrographic,
+        };
+
+        if(ownerName) {
+            notes.push(ownerName);
+            if(!world.primary && world.uwp.notes.has(ownerName)) {
+                notes.push('Cy');
+            }
+        }
+
+        let {starport, population, populationDigit, govt, lawLevel, techLevel}:
+            {
+                starport: string,
+                population: number,
+                populationDigit: number,
+                govt: number,
+                lawLevel: number,
+                techLevel: number
+            } = <any>world.uwp;
+        // The primary world inherits population, TL and Law-level
+        if (isPrimary) {
+            const popVars =
+                WorldGen.makePopulation(random, {
+                    maxPopulation: world.uwp.population,
+                    maxPopulationDigit: world.uwp.populationDigit,
+                });
+            population = popVars.population;
+            populationDigit = popVars.population;
+            techLevel += fluxAmountCalc(random, 5, 1);
+            lawLevel = population == 0 ? 0 : Math.max(0, Math.min(18, govt + random.flux()));
+        }
+
+        if (!isBestStarport) {
+            starport = WorldGen.makeStarport(random, 0, world.uwp.starport, -2);
+        }
+
+        // Generate a new government type - this cannot be a balkanized govt.  However if we reroll balkanized
+        // we take it as an indicator of local unrest.
+        let iterations = 0;
+        while (govt == 7) {
+            govt = (population == 0 ? 0 : Math.max(0, Math.min(15, (population ?? 0) + random.flux())));
+            ++iterations;
+        }
+        if(iterations > 1) {
+            notes.push(Notes.UNREST);
+        }
+
+        const uwp: UWPElements = {
+            ...elements,
+            notes: new Set<string>(notes),
+            starport, population, populationDigit, govt, lawLevel, techLevel
+        };
+        world.addFaction(uwp);
+        WorldGen.enrichNotes(random, uwp);
+        processClassifications(world, uwp, this.mainWorld?.uwp ?? this.uwp);
+    }
+
+
+    createFactions(random: FluxRandom, world: StellarBodyPlanet) {
+        let factions = 2 + (random.die()-1)%4;
+        let bestStarportFaction = random.die(factions);
+        const knownFactions: StellarBodyPlanet[] = [];
+
+        for(let faction = 1; faction <= factions; ++faction) {
+            const subRandom = random.sub(`Faction=${faction}`);
+            let owner;
+            if(faction == 1) {
+                owner = {
+                    world,
+                    owner: this.determineWorldOwner(world),
+                }
+            } else {
+                owner = this.determineColonyOwner(subRandom, knownFactions)
+            }
+            knownFactions.push(world);
+            this.createFaction(subRandom, world, owner?.world, owner?.owner, faction == 1, faction == bestStarportFaction);
+        }
+    }
+
+
     postProcessWorld(random: FluxRandom, world: StellarBodyPlanet) {
         processClassifications(world, world.uwp, this.mainWorld?.uwp ?? this.uwp);
 
         if(world.uwp.govt == 7) { // Balkanisation
             const subRandom = random.sub('balkans');
-            const notes:string[] = [];
-            let factions = subRandom.die();
-            if(factions == 1) {
-                factions = 3;
-            }
-            let bestStarportFaction = subRandom.die(factions)+1;
-
-            for(let faction = 1; faction <= factions; ++faction) {
-                const elements = {
-                    size: world.uwp.size,
-                    atmosphere: world.uwp.atmosphere,
-                    hydrographic: world.uwp.hydrographic,
-                };
-
-                let { starport, population, populationDigit, govt, lawLevel, techLevel } :
-                    { starport:string, population:number, populationDigit:number, govt:number, lawLevel:number, techLevel:number } = <any>world.uwp;
-                if(faction != 1) {
-                    const popVars =
-                        WorldGen.makePopulation(subRandom, {maxPopulation: world.uwp.population, maxPopulationDigit: world.uwp.populationDigit,});
-                    population = popVars.population;
-                    populationDigit = popVars.population;
-                    techLevel += fluxAmountCalc(subRandom, 5, 1);
-                    lawLevel = population == 0 ? 0 : Math.max(0, Math.min(18, govt + subRandom.flux()));
-                } else {
-                    // If the primary faction on the primary world has an owner then this faction is owned by that owner
-                    // I don't actually think this is possible, since govt would be 6 in that case, but this covers for
-                    // other possible cases.
-                    const primaryOwner = world.primary ? [ ...world?.uwp.notes ].find(n => n.startsWith('O:')) : undefined;
-                    if(primaryOwner) {
-                        notes.push(primaryOwner);
-                    }
-                }
-
-                if(faction !== bestStarportFaction) {
-                    starport = WorldGen.makeStarport(subRandom, 0, world.uwp.starport, -2);
-                }
-                while(govt == 7) {
-                    govt = (population == 0 ? 0 : Math.max(0, Math.min(15, (population ?? 0) + subRandom.flux())));
-                }
-
-                const uwp: UWPElements = {
-                    ...elements,
-                    notes: new Set<string>(notes),
-                    starport, population, populationDigit, govt, lawLevel, techLevel
-                };
-                world.addFaction(uwp);
-                WorldGen.enrichNotes(subRandom, uwp);
-                processClassifications(world, uwp, this.mainWorld?.uwp ?? this.uwp);
-            }
+            this.createFactions(subRandom, world)
         } else {
             WorldGen.enrichNotes(random, world.uwp);
         }
 
     }
 
-    makeWorldFromWorld(random: FluxRandom, from: StellarBodyPlanet, dms: UWPDMs): UWPElements {
+    makeWorldFromWorld(random: FluxRandom, from: StellarBodyPlanet, primaryOwner: string, dms: UWPDMs): UWPElements {
         const elements = WorldGen.makePhysicalWorld(random, dms);
 
         // Logic ([pop-size]/2+1 >= 1d*) then captive otherwise inherit.
@@ -1039,11 +1107,8 @@ export class WorldGen {
                 starport = WorldGen.makeStarport(random, dms.starport??0, 'E');
                 elements.notes.add('Cy');
             }
-            const primaryOwner = from.primary ? [ ...fromUwp?.notes ].find(n => n.startsWith('O:')) : undefined;
             if(primaryOwner) {
                 elements.notes.add(primaryOwner);
-            } else {
-                elements.notes.add(`O:${this.world.hex}${suffix}`)
             }
             if(techLevel < 8 && techLevel-5>=random.die()) {
                 techLevel = 0;
@@ -1087,6 +1152,7 @@ export class WorldGen {
         };
     }
 
+
     makeWorld(bodyIn: StellarBodyPlanet |StellarBodyStar, orbit: number, dms: UWPDMs={}): UWPElements {
         let body: StellarBodyStar;
         const orbitIn = orbit;
@@ -1111,13 +1177,13 @@ export class WorldGen {
         if(dms.maxPopulation === 0) {
             //console.log(`Creating empty world at ${bodyIn.name}-${orbitIn}`);
             return WorldGen.makeEmptyWorld(random, dms);
-        } else if(dms.maxPopulation !== 0 && randomWt.die(4+this.worlds.length) < 4) {
-            //console.log(`Creating colony in ${bodyIn.name}-${orbitIn}`);
-            const worldDie = randomWt.die(this.worlds.length)-1;
-            return this.makeWorldFromWorld(random, this.worlds[worldDie], dms);
         } else {
-            //console.log(`Creating world at ${bodyIn.name}-${orbitIn}`);
-            return this.makeWorldCore(random, dms);
+            const owner = this.determineColonyOwner(randomWt);
+            if(owner) {
+                return this.makeWorldFromWorld(random, owner.world, owner.owner, dms);
+            } else {
+                return this.makeWorldCore(random, dms);
+            }
         }
 
     }

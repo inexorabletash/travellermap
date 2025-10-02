@@ -479,7 +479,7 @@
 
     // Ownership
     [ /^O:\d\d\d\d$/, 'Controlled'],
-    [ /^O:\d\d\d\d-\w+$/, 'Controlled'],
+    [ /^O:\d\d\d\d-[-\w]+$/, 'Controlled'],
     [ /^O:\w\w$/, 'Controlled'],
     [ /^Mr:\d\d\d\d$/, 'Military rule'],
 

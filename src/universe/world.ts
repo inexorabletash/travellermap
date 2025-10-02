@@ -19,6 +19,8 @@ export enum Notes {
     NO_JUMP = '!J',
     NO_MANOUVER = '!M',
     MAINWORLD = 'Main',
+
+    UNREST = 'Unrest',
 }
 
 export class World {
