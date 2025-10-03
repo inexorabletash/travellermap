@@ -67,10 +67,6 @@ export class StellarBody {
         }
         this.orbits[index] = to;
         to.orbit = index;
-
-        if (to.star === undefined && to.uwp?.population && to.uwp?.govt !== 6) {
-            this.worldGen.worlds.push(<StellarBodyPlanet>to);
-        }
     }
 
     applyStellarNotes(orbit: number, uwp: UWPElements) {
@@ -164,7 +160,7 @@ export class StellarBodyStar extends StellarBody {
 
         const body = new StellarBodyStar({
                 worldGen,
-                name: `${parent.name}-${orbit}`,
+                name: `${this.name}-${orbit}`,
                 parent: this,
                 star,
                 orbitCnt,
@@ -584,14 +580,15 @@ export const ORBIT_AUS =
 
 
 export type UWPElements = {
-    starport?: string,
-    size?: number,
-    atmosphere?: number,
-    hydrographic?: number,
-    population?: number,
-    govt?: number,
-    lawLevel?: number,
-    techLevel?: number,
+    starport: string,
+    size: number,
+    atmosphere: number,
+    hydrographic: number,
+    population: number,
+    govt: number,
+    lawLevel: number,
+    techLevel: number,
     notes: Set<string>,
-    populationDigit?: number,
+    populationDigit: number,
+    faction: string|undefined,
 };

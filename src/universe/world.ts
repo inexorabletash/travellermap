@@ -271,6 +271,11 @@ export class World {
         return this.name;
     }
 
+    get owner(): string {
+        const factionOwnerString = [ ...this.notes ].find(n => n.startsWith('O:'));
+        const faction = factionOwnerString ? factionOwnerString.substring(2) : this.hex;
+        return faction;
+    }
 
     get wiki(): string|undefined {
         if(this.wiki_) {
