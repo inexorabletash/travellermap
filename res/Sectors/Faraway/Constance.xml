@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<Sector xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Tags="">
+  <Name>Constance</Name>
+  <Credits><![CDATA[
+    <b>Constance</b> sector was designed by Brian Smaller.
+  ]]></Credits>
+  <Subsectors>
+    <Subsector Index="A">Danika</Subsector>
+    <Subsector Index="B">Felicity</Subsector>
+    <Subsector Index="C">Westward Ho</Subsector>
+    <Subsector Index="D">Hitachi</Subsector>
+    <Subsector Index="E">Kiyev</Subsector>
+    <Subsector Index="F">Falkenberg</Subsector>
+    <Subsector Index="G">Weiss</Subsector>
+    <Subsector Index="H">Starstruck</Subsector>
+    <Subsector Index="I">Misha's Gate</Subsector>
+    <Subsector Index="J">Ashanti</Subsector>
+    <Subsector Index="K">Gabon</Subsector>
+    <Subsector Index="L">Verseilles</Subsector>
+    <Subsector Index="M">Goa</Subsector>
+    <Subsector Index="N">Fortnam</Subsector>
+    <Subsector Index="O">Bizet</Subsector>
+    <Subsector Index="P">Hunan</Subsector>
+  </Subsectors>
+  <Labels>
+    <Label Hex="1214" Color="#FFCC00" Wrap="false">Falkenberg Gap</Label>
+    <Label Hex="1219" Color="#FFCC00" Wrap="false">Lars Cluster</Label>
+    <Label Hex="2501" Color="#FFCC00" Wrap="false">Free Worlds League</Label>
+    <Label Hex="1302" Color="#FFCC00" Wrap="false">Marian Empire</Label>
+    <Label Hex="0602" Color="#FFCC00" Wrap="false">Nihongi Empire</Label>
+    <Label Hex="1909" Color="#FFCC00" Wrap="false">Mormon Alliance</Label>
+    <Label Hex="1433" Color="#FFCC00" Wrap="false">New Trade Cooperative</Label>
+    <Label Hex="2335" Color="#FFCC00" Wrap="false">Dikeli Conglomerate</Label>
+  </Labels>
+  <Borders>
+    <Border Color="MediumOrchid" LabelPosition="2502">2601 2502 2503 2402 2401 2400 2500 2600 2601</Border>
+    <Border Color="Brown" LabelPosition="1302">1701 1601 1602 1503 1403 1303 1203 1103 1102 1001 0901 0900 1000 1100 1200 1300 1400 1500 1600 1700 1701</Border>
+    <Border Color="BlueViolet" LabelPosition="0402">0000 0100 0200 0300 0400 0500 0501 0502 0602 0702 0801 0801 0802 0703 0603 0503 0402 0303 0302 0201 0101 0001 0000</Border>
+    <Border Color="Green" LabelPosition="1807">1509 1608 1607 1606 1605 1604 1704 1804 1805 1806 1807 1908 2008 2009 1910 1809 1709 1609 1509</Border>
+    <Border Color="DarkBlue" LabelPosition="1332">1133 1232 1231 1331 1430 1431 1432 1333 1233 1134 1133</Border>
+    <Border Color="Crimson" LabelPosition="2333">2232 2332 2331 2332 2333 2334 2234 2233 2232</Border>
+  </Borders>
+  <Routes>
+    <Route Start="2402" End="2340" EndOffsetY="-1" Color="Gold" />
+    <Route Start="1401" End="1440" EndOffsetY="-1" Color="Chocolate" />
+    <Route Start="1401" End="1503" Color="Chocolate" />
+    <Route Start="1606" End="1806" Color="LimeGreen" />
+    <Route Start="1606" End="1705" Color="LimeGreen" />
+    <Route Start="1606" End="1708" Color="LimeGreen" />
+    <Route Start="1708" End="1609" Color="LimeGreen" />
+    <Route Start="1708" End="1809" Color="LimeGreen" />
+    <Route Start="1809" End="1910" Color="LimeGreen" />
+  </Routes>
+</Sector>
