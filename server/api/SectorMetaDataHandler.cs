@@ -91,6 +91,8 @@ namespace Maps.API.Results
         public string Tags { get => sector.TagString; set { } }
         [XmlAttribute]
         public string Abbreviation { get => sector.Abbreviation; set { } }
+        [XmlAttribute]
+        public string Label { get => sector.Label; set { } }
         [XmlElement("Name")]
         public List<Name> Names => sector.Names;
         public XmlCDataSection Credits { get => new XmlDocument().CreateCDataSection(sector.Credits); set { } }
