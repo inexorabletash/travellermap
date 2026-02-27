@@ -731,7 +731,9 @@
   }, EVENT_DEBOUNCE_MS);
 
   map.OnPositionChanged = Util.debounce(() => {
-    updateContext(map.worldX, map.worldY);
+    if(map.worldX !== undefined && map.worldY !== undefined) {
+      updateContext(map.worldX, map.worldY);
+    }
     updatePermalink();
     savePreferences();
   }, EVENT_DEBOUNCE_MS);
