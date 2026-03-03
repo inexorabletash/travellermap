@@ -1731,7 +1731,7 @@ const Util = {
 
     get worldX() { return Astrometrics.mapToWorld(this.x, this.y).x; }
 
-    get world() { return Astrometrics.mapToWorld(this.x, this.y).y; }
+    get worldY() { return Astrometrics.mapToWorld(this.x, this.y).y; }
 
     // This places the specified Sector, Hex coordinates (parsec)
     // at the center of the viewport.
