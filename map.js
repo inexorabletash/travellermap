@@ -1342,7 +1342,6 @@ const Util = {
           const hp = Math.min(p*2, 1);
           const p2 = 1 - ((1-hp) * (1-hp));
           this.position = [Animation.interpolate(ox, x, p2), Animation.interpolate(oy, y, p2)];
-          this.redraw();
         };
 
         this.animation.oncomplete = resolve;
