@@ -345,7 +345,6 @@ const Util = {
     function getAbortController(key) {
       if (abortControllers[key]) {
         abortControllers[key].abort();
-        console.log(`Aborted previous request for ${key}`);
       }
       abortControllers[key] = new AbortController();
       return abortControllers[key];
@@ -365,7 +364,7 @@ const Util = {
       const signal = options.signal ?? getAbortController(key).signal;
       const contentType = options.contentType || 'application/json';
       const response = await fetch(url, {
-        method: options.method || 'GET',
+        method: options.method ?? 'GET',
         headers: { Accept: contentType },
         signal
       });
@@ -376,8 +375,9 @@ const Util = {
     }
 
     function makeServiceUrl(path, options) {
-      delete options.signal; // Not a query parameter
-      return Util.makeURL(SERVICE_BASE + path, options);
+      // remove non-query parameters from options without mutating options object
+      const { signal, method, contentType, ...queryOptions } = options;
+      return Util.makeURL(SERVICE_BASE + path, queryOptions);
     }
 
     return {
@@ -1336,17 +1336,17 @@ const Util = {
     * @param {number} x - The x coordinate of the tile.
     * @param {number} y - The y coordinate of the tile.
     * @param {number} scale - The zoom level of the tile.
-    * @param {boolean} [doFetch] - Whether to fetch the tile if not found in cache.
+    * @param {boolean} [allowFetch=false] - If fetching the tile from the server is allowed if not found in cache.
     * @returns {HTMLImageElement|undefined} The tile image if found in cache, or undefined if not found.
     */
-    getTile(x, y, scale, doFetch) {
+    getTile(x, y, scale, allowFetch = false) {
       const url = this._tile_url_base + `&x=${x}&y=${y}&scale=${pow2(scale - 1)}`;
 
       const cached = this.cache.fetch(url);
       if (cached) return cached;
 
       const canRequest =
-        doFetch &&
+        allowFetch &&
         !this._activeTileRequests.has(url) &&
         !this.defer_loading &&
         navigator.onLine &&
