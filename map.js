@@ -356,27 +356,27 @@ const Util = {
      * @param {string} url - The URL to send the request to.
      * @param {Object} [options] - Optional parameters for the request.
      * @param {string} [options.method] - HTTP method (default: 'GET')
-     * @param {string} [options.contentType] - Optional Accept ContentType header value to specify the desired response format. Defaults to 'application/json'.
+     * @param {string} [options.accept] - Optional Accept ContentType header value to specify the desired response format. Defaults to 'application/json'.
      * @param {AbortSignal} [options.signal] - Optional AbortSignal to cancel the request.
      * @returns {Promise<any>} The response data, parsed as JSON if the response is application/json, or as text otherwise.
      */
     async function service(key, url, options = {}) {
       const signal = options.signal ?? getAbortController(key).signal;
-      const contentType = options.contentType ?? 'application/json';
+      const accept = options.accept ?? 'application/json';
       const response = await fetch(url, {
         method: options.method ?? 'GET',
-        headers: { Accept: contentType },
+        headers: { Accept: accept },
         signal
       });
       if (!response.ok)
         throw new Error(response.statusText);
-      return (contentType === 'application/json') ?
+      return (accept === 'application/json') ?
         await response.json() : await response.text();
     }
 
     function makeServiceUrl(path, options) {
       // remove non-query parameters from options without mutating options object
-      const { signal, method, contentType, ...queryOptions } = options;
+      const { signal, method, ...queryOptions } = options;
       return Util.makeURL(SERVICE_BASE + path, queryOptions);
     }
 
@@ -385,10 +385,10 @@ const Util = {
         return makeServiceUrl(path, options);
       },
 
-      coordinates: (sector, hex, options) => {
+      coordinates: (sector, hex, options = {}) => {
         const urlOptions = { ...options, sector, hex };
         const url = makeServiceUrl('/api/coordinates', urlOptions);
-        options.contentType = options.contentType || 'application/json';
+        options.accept = options.accept ?? 'application/json';
         return service('coordinates', url, options);
       },
 
@@ -399,7 +399,7 @@ const Util = {
        * @param {string} milieu - The milieu context for the credits request.
        * @param {Object} [options] - Optional parameters for the request.
        * @param {string} [options.method] - HTTP method (default: 'GET')
-       * @param {string} [options.contentType] - Optional Accept ContentType header value to specify the desired response format. Defaults to 'application/json'.
+       * @param {string} [options.accept] - Optional Accept ContentType header value to specify the desired response format. Defaults to 'application/json'.
        * @param {AbortSignal} [options.signal] - Optional AbortSignal to cancel the request.
        * @returns {any} The credits data, parsed as JSON if the response is application/json, or as text otherwise.
        */
@@ -424,7 +424,7 @@ const Util = {
       sectorDataTabDelimited: (sector, options = {}) => {
         const urlOptions = { ...options, sector, type: 'TabDelimited' };
         const url = makeServiceUrl('/api/sec', urlOptions);
-        options.contentType = options.contentType || 'text/plain';
+        options.accept = options.accept ?? 'text/plain';
         return service('sectorDataTabDelimited', url, options);
       },
 
@@ -437,7 +437,7 @@ const Util = {
       MSEC: (sector, options = {}) => {
         const urlOptions = { ...options, sector  };
         const url = makeServiceUrl('/api/msec', urlOptions);
-        options.contentType = options.contentType || 'text/plain';
+        options.accept = options.accept ?? 'text/plain';
         return service('MSEC', url, options);
       },
 
