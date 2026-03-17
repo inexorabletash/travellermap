@@ -95,24 +95,22 @@ const Util = {
     };
   },
 
-  // p = ignorable(other_promise);
-  // p.then(...);
-  // p.ignore(); // p will neither resolve nor reject
-  // WARNING: p = ignorable(...).then(...); p.ignore(); will fail
-  // (Promise subclassing is not used)
-  ignorable: p => {
-    let ignored = false;
-    const q = new Promise((resolve, reject) => {
-      p.then(r => { if (!ignored) resolve(r); },
-             r => { if (!ignored) reject(r); });
-    });
-    q.ignore = () => { ignored = true; };
-    return q;
-  },
-
-  fetchImage: (url, img) => {
+ /**
+   * Fetches an image from the specified URL, returning a promise that resolves with an image element.
+   * @param {string} url 
+   * @param {Object} [options]
+   * @param {AbortSignal} [options.signal] - Optional AbortSignal to cancel the image request.
+   * @param {HTMLImageElement} [options.imageElement] - Optional existing image element to reuse.
+   * @returns {Promise<HTMLImageElement>} A promise that resolves with the loaded image.
+   */
+  fetchImage: (url, options = {}) => {
     return new Promise((resolve, reject) => {
-      img = img || document.createElement('img');
+      options.signal?.addEventListener('abort', () => {
+          img.src = '';
+          reject(new DOMException('Aborted', 'AbortError'));
+      });
+      const img = options.imageElement || document.createElement('img');
+      img.decoding = 'async';
       img.src = url;
       img.onload = () => { resolve(img); };
       img.onerror = () => { reject(Error('Image failed to load')); };
@@ -341,70 +339,112 @@ const Util = {
   // ======================================================================
 
   const MapService = (() => {
-    async function service(url, contentType, method) {
-      const response = await fetch(url, {method: method || 'GET',
-                                         headers: {Accept: contentType}});
-      if (!response.ok)
-            throw new Error(response.statusText);
-      return (contentType === 'application/json') ?
-            await response.json() : await response.text();
+    // Internal abort controllers for each service function
+    const abortControllers = {};
+
+    function getAbortController(key) {
+      if (abortControllers[key]) {
+        abortControllers[key].abort();
+        console.log(`Aborted previous request for ${key}`);
+      }
+      abortControllers[key] = new AbortController();
+      return abortControllers[key];
     }
 
-    function url(path, options) {
+    /**
+     * Generic service function to make HTTP requests.
+     * @param {string} key - A unique key to identify the request, used for aborting previous requests.
+     * @param {string} url - The URL to send the request to.
+     * @param {Object} [options] - Optional parameters for the request.
+     * @param {string} [options.method] - HTTP method (default: 'GET')
+     * @param {string} [options.contentType] - Optional Accept ContentType header value to specify the desired response format. Defaults to 'application/json'.
+     * @param {AbortSignal} [options.signal] - Optional AbortSignal to cancel the request.
+     * @returns {Promise<any>} The response data, parsed as JSON if the response is application/json, or as text otherwise.
+     */
+    async function service(key, url, options = {}) {
+      const signal = options.signal ?? getAbortController(key).signal;
+      const contentType = options.contentType || 'application/json';
+      const response = await fetch(url, {
+        method: options.method || 'GET',
+        headers: { Accept: contentType },
+        signal
+      });
+      if (!response.ok)
+        throw new Error(response.statusText);
+      return (contentType === 'application/json') ?
+        await response.json() : await response.text();
+    }
+
+    function makeServiceUrl(path, options) {
+      delete options.signal; // Not a query parameter
       return Util.makeURL(SERVICE_BASE + path, options);
     }
 
     return {
-      makeURL: (path, options) => {
-        return url(path, options);
+      makeURL: (path, options) => {        
+        return makeServiceUrl(path, options);
       },
 
       coordinates: (sector, hex, options) => {
-        options = Object.assign({}, options, {sector, hex});
-        return service(url('/api/coordinates', options),
-                       options.accept || 'application/json');
+        const urlOptions = { ...options, sector, hex };
+        const url = makeServiceUrl('/api/coordinates', urlOptions);
+        options.contentType = options.contentType || 'application/json';
+        return service('coordinates', url, options);
       },
 
-      credits: (worldX, worldY, options) => {
-        options = Object.assign({}, options, {x: worldX, y: worldY});
-        return service(url('/api/credits', options),
-                       options.accept || 'application/json');
+      /**
+       * Fetch the credits for the world at the specified coordinates.
+       * @param {float} worldX - The X coordinate of the world.
+       * @param {float} worldY - The Y coordinate of the world.
+       * @param {string} milieu - The milieu context for the credits request.
+       * @param {Object} [options] - Optional parameters for the request.
+       * @param {string} [options.method] - HTTP method (default: 'GET')
+       * @param {string} [options.contentType] - Optional Accept ContentType header value to specify the desired response format. Defaults to 'application/json'.
+       * @param {AbortSignal} [options.signal] - Optional AbortSignal to cancel the request.
+       * @returns {any} The credits data, parsed as JSON if the response is application/json, or as text otherwise.
+       */
+      credits: (worldX, worldY, milieu, options = {}) => {
+        const urlOptions = { ...options, x: worldX, y: worldY, milieu };
+        const url = makeServiceUrl('/api/credits', urlOptions);
+        return service('credits', url, options);
       },
 
-      search: (query, options, method) => {
-        options = Object.assign({}, options, {q: query});
-        return service(url('/api/search', options),
-                       options.accept || 'application/json', method);
+      search: (query, milieu, options = {}) => {
+        const urlOptions = { ...options, q: query, milieu };
+        const url = makeServiceUrl('/api/search', urlOptions);
+        return service('search', url, options);
       },
 
-      sectorData: (sector, options) => {
-        options = Object.assign({}, options, {sector});
-        return service(url('/api/sec', options),
-                       options.accept || 'text/plain');
+      sectorData: (sector, options = {}) => {
+        const urlOptions = { ...options, sector };
+        const url = makeServiceUrl('/api/sec', urlOptions);
+        return service('sectorData', url, options);
       },
 
-      sectorDataTabDelimited: (sector, options) => {
-        options = Object.assign({}, options, {sector, type: 'TabDelimited'});
-        return service(url('/api/sec', options),
-                       options.accept || 'text/plain');
+      sectorDataTabDelimited: (sector, options = {}) => {
+        const urlOptions = { ...options, sector, type: 'TabDelimited' };
+        const url = makeServiceUrl('/api/sec', urlOptions);
+        options.contentType = options.contentType || 'text/plain';
+        return service('sectorDataTabDelimited', url, options);
       },
 
-      sectorMetaData: (sector, options) => {
-        options = Object.assign({}, options, {sector});
-        return service(url('/api/metadata', options),
-                       options.accept || 'application/json');
+      sectorMetaData: (sector, options = {}) => {
+        const urlOptions = { ...options, sector };
+        const url = makeServiceUrl('/api/metadata', urlOptions);
+        return service('sectorMetaData', url, options);
       },
 
-      MSEC: (sector, options) => {
-        options = Object.assign({}, options, {sector});
-        return service(url('/api/msec', options),
-                       options.accept || 'text/plain');
+      MSEC: (sector, options = {}) => {
+        const urlOptions = { ...options, sector  };
+        const url = makeServiceUrl('/api/msec', urlOptions);
+        options.contentType = options.contentType || 'text/plain';
+        return service('MSEC', url, options);
       },
 
-      universe: (options) => {
-        options = Object.assign({}, options);
-        return service(url('/api/universe', options),
-                       options.accept || 'application/json');
+      universe: (options = {}) => {
+        const urlOptions = { ...options };
+        const url = makeServiceUrl('/api/universe', urlOptions);
+        return service('universe', url, options);
       }
     };
   })();
@@ -687,7 +727,19 @@ const Util = {
       }, 1));
       this.namedOptions.NAMES = INT_OPTIONS.concat(STRING_OPTIONS);
 
-      this.loading = new Set();
+      /**
+       * Batch tile load redraws to avoid thrashing on rapid tile loads
+       * @type {Function}
+       */
+      this._tileLoadDebounce = Util.debounce(() => this.invalidate(), 10);
+
+      /**
+       * Active tile requests and their abortControllers, keyed by tile URL
+       * @type {Map<string, AbortController>}
+       */
+      this._activeTileRequests = new Map();
+      this._maxConcurrentTileRequests = 8;
+      this._tileRequestTimeout = 30000; // 30 seconds
 
       this.defer_loading = true;
 
@@ -1196,7 +1248,7 @@ const Util = {
         $this.ctx.drawImage(img, px, py, pw, ph);
       }
 
-      const img = this.getTile(x, y, scale, () => this.invalidate());
+      const img = this.getTile(x, y, scale, true);
 
       if (img) {
         drawImage(img, dx, dy, dw, dh);
@@ -1258,46 +1310,53 @@ const Util = {
     }
 
 
-    //
-    // Looks in the tile cache for the specified tile. If found, it is
-    // returned immediately. If not found and a callback is specified,
-    // the image is requested and the callback is called with the image
-    // once it has successfully loaded.
-    //
-    getTile(x, y, scale, callback) {
+    /**
+     * Perform the tile request for the specified URL, with timeout and error handling.
+     * @param {string} url - The URL of the tile to request.
+     * @param {AbortController} abortController - The AbortController used if the request is timed-out.
+     * @returns 
+     */
+    async _doTileRequest(url, abortController) {
+        const timeout = setTimeout(() => abortController.abort(), this._tileRequestTimeout);
+        try {
+            const img = await Util.fetchImage(url, { signal: abortController.signal });
+            this.cache.insert(url, img);
+            this._tileLoadDebounce();
+        } catch (err) {
+            if (err?.name === 'AbortError') return;
+            console.error(`Error loading tile ${url}:`, err);
+        } finally {
+            clearTimeout(timeout);
+            this._activeTileRequests.delete(url);
+        }
+    }
+
+    /**
+    * Looks in the tile cache for the specified tile.
+    * @param {number} x - The x coordinate of the tile.
+    * @param {number} y - The y coordinate of the tile.
+    * @param {number} scale - The zoom level of the tile.
+    * @param {boolean} [doFetch] - Whether to fetch the tile if not found in cache.
+    * @returns {HTMLImageElement|undefined} The tile image if found in cache, or undefined if not found.
+    */
+    getTile(x, y, scale, doFetch) {
       const url = this._tile_url_base + `&x=${x}&y=${y}&scale=${pow2(scale - 1)}`;
 
-      // Have it? Great, get out fast!
-      const img = this.cache.fetch(url);
-      if (img)
-        return img;
+      const cached = this.cache.fetch(url);
+      if (cached) return cached;
 
-      // Load if missing?
-      if (!callback)
-        return undefined;
+      const canRequest =
+        doFetch &&
+        !this._activeTileRequests.has(url) &&
+        !this.defer_loading &&
+        navigator.onLine &&
+        this._activeTileRequests.size < this._maxConcurrentTileRequests;
 
-      // In progress?
-      if (this.loading.has(url))
-        return undefined;
+      if (!canRequest) return undefined;
 
-      if (this.defer_loading)
-        return undefined;
-
-      if ('onLine' in navigator && !navigator.onLine)
-        return undefined;
-
-      // Nope, better try loading it
-      this.loading.add(url);
-
-      Util.fetchImage(url)
-        .then(img => {
-          this.loading.delete(url);
-          this.cache.insert(url, img);
-          callback(img);
-        }, () => {
-          this.loading.delete(url);
-        });
-
+      const abortController = new AbortController();
+      this._activeTileRequests.set(url, abortController);
+      this._doTileRequest(url, abortController);
       return undefined;
     }
 
