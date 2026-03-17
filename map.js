@@ -839,6 +839,8 @@ const Util = {
       // Touch
       // ----------------------------------------------------------------------
 
+      const DRAG_THRESHOLD = 8;
+      let touch_start_coords;
       let pinch1, pinch2;
       let touch_coords, touch_wx, touch_wc, was_touch_dragged;
 
@@ -846,7 +848,14 @@ const Util = {
         if (event.touches.length === 1) {
           const coords = this.eventCoords(event.touches[0]);
           if (touch_coords.x !== coords.x || touch_coords.y !== coords.y) {
-            was_touch_dragged = true;
+
+            // Only flag as dragged if movement exceeds threshold from starting point
+            const dx = touch_start_coords.x - coords.x;
+            const dy = touch_start_coords.y - coords.y;
+            if (!was_touch_dragged && Math.sqrt(dx * dx + dy * dy) > DRAG_THRESHOLD) {
+              was_touch_dragged = true;
+            }
+
             this._offset(touch_coords.x - coords.x, touch_coords.y - coords.y);
             touch_coords = coords;
             touch_wc = this.eventToWorldCoords(event.touches[0]);
@@ -898,6 +907,7 @@ const Util = {
 
         if (event.touches.length === 1) {
           touch_coords = this.eventCoords(event.touches[0]);
+          touch_start_coords = touch_coords;
           touch_wc = this.eventToWorldCoords(event.touches[0]);
         } else if (event.touches.length === 2) {
           this.defer_loading = true;
