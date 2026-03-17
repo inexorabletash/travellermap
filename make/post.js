@@ -49,7 +49,7 @@ window.addEventListener('DOMContentLoaded', async event => {
       });
 
     Traveller.MapService.sectorMetaData(name, {
-      accept: 'text/xml', milieu})
+      contentType: 'text/xml', milieu})
       .then(data => {
         const target = $('#metadata');
         if (target) target.value = data;
