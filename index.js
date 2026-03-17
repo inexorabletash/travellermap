@@ -1260,8 +1260,8 @@
           { signal: searchAbortController.signal }
         );
       displayResults(data);
-    } catch (e) {
-      if (e?.name === 'AbortError') return;
+    } catch (err) {
+      if (err?.name === 'AbortError') return;
       $('#resultsContainer').innerHTML = '<i>Error fetching results.</i>';
     } finally {
       searchAbortController = null;
