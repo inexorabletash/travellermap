@@ -362,7 +362,7 @@ const Util = {
      */
     async function service(key, url, options = {}) {
       const signal = options.signal ?? getAbortController(key).signal;
-      const contentType = options.contentType || 'application/json';
+      const contentType = options.contentType ?? 'application/json';
       const response = await fetch(url, {
         method: options.method ?? 'GET',
         headers: { Accept: contentType },
