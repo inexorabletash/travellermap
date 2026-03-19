@@ -499,6 +499,7 @@
       C: 'Corsair Base',
       D: 'Naval Depot',
       E: 'Embassy',
+      F: 'Ruins', // for M1900
       H: 'Hiver Supply Base', // For TNE
       I: 'Interface', // For TNE
       K: 'Naval Base',

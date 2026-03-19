@@ -47,13 +47,14 @@ namespace Maps
         #endregion // eHex
 
         #region Bases
-        // Bases should be string containing zero or more of: CDEKMNRSTWXZ (plus nonstandard O)
+        // Bases should be string containing zero or more of: CDEKMNRSTWXZ (plus nonstandard FO)
 
         // Code  Owner      Description
         // ----  ---------  ------------------------
         // C     Vargr      Corsair base
         // D     Any        Depot
         // E     Hiver      Embassy
+        // F     Any        Ruins ---------------- NONSTANDARD
         // K     Any        Naval base
         // M     Any        Military base
         // N     Imperial   Naval base
