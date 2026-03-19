@@ -605,7 +605,6 @@
       const img = await fetchImage(url);
       return true;
     } catch (ex) {
-      showConsoleNotice();
       return false;
     }
   }
@@ -886,11 +885,6 @@
     return result;
   }
 
-  const showConsoleNotice = Util.once(() => {
-    if (!console || !console.log) return;
-    console.log('The "404 (Not Found)" error for world images is expected, and is not a bug.');
-  });
-
   Traveller.renderWorldImage = async (world, canvas) => {
     if (!world) return undefined;
 
@@ -938,7 +932,6 @@
           size.height = size.width * image.naturalHeight / image.naturalWidth;
           return image;
         } catch (ex) {
-          showConsoleNotice();
           isRender = false;
           return await fetchImage(generic);
         }
