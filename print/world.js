@@ -100,7 +100,7 @@
             if (window.devicePixelRatio > 1)
               mapParams.dpr = window.devicePixelRatio;
             const url = Traveller.MapService.makeURL('/api/jumpmap?', mapParams);
-            const image = await Util.fetchImage(url, $('#wds-jumpmap'));
+            const image = await Util.fetchImage(url, { imageElement: $('#wds-jumpmap') });
 
             image.addEventListener('click', event => {
               const result = jmapToCoords(event, JUMP, SCALE, coords.x, coords.y);

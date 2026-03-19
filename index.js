@@ -892,9 +892,11 @@
 
   async function doAttract() {
     async function pickTarget() {
-      const data = await Traveller.MapService.search('(random world)', {
-        milieu: map.namedOptions.get('milieu')
-      }, 'POST');
+      const data = await Traveller.MapService.search(
+        '(random world)',
+        map.namedOptions.get('milieu'), 
+        { method: 'POST' }
+      );
       const items = data.Results.Items;
       if (items.length < 1)
         throw new Error('random world search failed');
@@ -924,7 +926,6 @@
   //
   //////////////////////////////////////////////////////////////////////
 
-  let dataRequest = null;
   let dataTimeout = 0;
   let ignoreIndirect = true;
   let enableContext;
@@ -954,11 +955,6 @@
     lastY = worldY;
     lastMilieu = milieu;
 
-    if (dataRequest) {
-      dataRequest.ignore();
-      dataRequest = null;
-    }
-
     if (dataTimeout)
       window.clearTimeout(dataTimeout);
 
@@ -966,12 +962,13 @@
       displayResults({});
     } else {
       dataTimeout = setTimeout(async () => {
-        dataRequest = Util.ignorable(Traveller.MapService.credits(worldX, worldY, {
-          milieu
-        }));
-        const data = await dataRequest;
-        dataRequest = null;
-        displayResults(data);
+        try {
+          const data = await Traveller.MapService.credits(worldX, worldY, milieu);
+          displayResults(data);
+        } catch (err) {
+          if (err?.name === 'AbortError') return
+          displayResults({});
+        }
       }, options.directAction || options.refresh ? 0 : DATA_REQUEST_DELAY_MS);
     }
 
@@ -1224,9 +1221,8 @@
   // Search
   //
   //////////////////////////////////////////////////////////////////////
-
-  let searchRequest = null;
-
+  let searchAbortController = null;
+  
   async function search(query, options) {
     options = Object.assign({}, options);
 
@@ -1241,7 +1237,7 @@
       query = '(default)';
 
     if (query === lastQuery) {
-      if (!searchRequest && options.onsubmit) {
+      if (!searchAbortController && options.onsubmit) {
         const links = $$('#resultsContainer a');
         if (links.length > 0) {
           links[0].click();
@@ -1251,24 +1247,24 @@
       map.SetRoute(lastQueryRoute);
       return;
     }
-
-    if (searchRequest)
-      searchRequest.ignore();
-
-    if (options.results) {
-      searchRequest = options.results;
-    } else {
-      searchRequest = Util.ignorable(Traveller.MapService.search(query, {
-        milieu: map.namedOptions.get('milieu')
-      }));
-    }
+    
     try {
-      const data = await searchRequest;
+      if (searchAbortController) {
+        searchAbortController.abort();
+      }
+      searchAbortController = new AbortController();
+      const data = options.results || 
+        await Traveller.MapService.search(
+          query,
+          map.namedOptions.get('milieu'),
+          { signal: searchAbortController.signal }
+        );
       displayResults(data);
-    } catch (ex) {
+    } catch (err) {
+      if (err?.name === 'AbortError') return;
       $('#resultsContainer').innerHTML = '<i>Error fetching results.</i>';
     } finally {
-      searchRequest = null;
+      searchAbortController = null;
       if (options.navigate) {
         const first = $('#resultsContainer a');
         if (first)
