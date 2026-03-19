@@ -55,7 +55,7 @@ Dene	B	1502	Mur	X100000-A		Di Va		020	Wild	F1 V K1 V	{ -1 }	(B00-3)	[0000]	B	10	
 Dene	B	1504	Gila	X663000-5		Di		001	Wild	K5 V M1 V	{ -3 }	(800-2)	[0000]	B	7	-16
 Dene	B	1505	Lagut	C312588-A		Ic Ni		432	Wild	F9 V	{ 0 }	(C41+2)	[452C]	B	10	96
 Dene	B	1508	Pek'e	X541000-7		Di He Po		012	Wild	M3 V	{ -3 }	(500+3)	[0000]	B	6	15
-Dene	B	1509	Prolam	B769447-A	N	Ni		323	Wild	K7 V	{ 1 }	(B32+1)	[4539]	B	8	66
+Dene	B	1509	Prolam	B769447-A	F	Ni		323	Wild	K7 V	{ 1 }	(B32+1)	[4539]	B	8	66
 Dene	B	1601	Gzigorlloe	X311000-A		Di Ic		001	Wild	M1 V	{ -1 }	(900+2)	[0000]	B	8	18
 Dene	B	1603	Gzonksoeg	X567000-4		Di		001	Wild	G9 V	{ -3 }	(400-4)	[0000]	B	12	-16
 Dene	B	1606	Yef	E543000-5		Di Po		002	Wild	M2 V	{ -3 }	(500+1)	[0000]	B	14	5
@@ -63,11 +63,11 @@ Dene	B	1608	Gaashushnu Li	X744000-5		Di		004	Wild	F4 V	{ -3 }	(400+1)	[0000]	B	1
 Dene	B	1609	Ansirk	E100000-F		Di Va		022	Wild	F2 V	{ -1 }	(700+1)	[0000]	B	11	7
 Dene	C	1704	Graek	X787997-0		rgW Ga Hi Pr		301	Wild	K4 V	{ -1 }	(B84+1)	[5841]	BcE	11	352
 Dene	C	1706	Dunant	X311000-D		Di Ic		023	Wild	G2 V M4 V	{ -1 }	(A00-4)	[0000]	B	8	-40
-Dene	C	1708	Remsen	B788455-B	S	Ni Pa		124	Wild	F9 V K0 V	{ 1 }	(E35-2)	[355C]	Bc	14	-420
+Dene	C	1708	Remsen	A788755-D	K	Ag Ri		124	Wild	F9 V K0 V	{ 4 }	(E6B-2)	[3B5C]	Bc	14	-1848
 Dene	C	1710	Uakari	C534854-7		Ph		212	Wild	K6 V	{ -1 }	(A72-4)	[B74A]	Be	8	-560
 Dene	C	1802	Dzoungdzi	X557000-2		Di		024	Wild	K7 V	{ -3 }	(500-1)	[0000]	B	14	-5
 Dene	C	1805	Cilnodan	D542000-5		Di He Po		032	Wild	M3 V M9 V	{ -3 }	(400+1)	[0000]	B	12	4
-Dene	C	1808	Antra	A537847-D		Ph		301	Wild	M0 V M3 V	{ 2 }	(B77-1)	[7A4F]	Be	12	-539
+Dene	C	1808	Antra	C537647-B		Ni		301	Wild	M0 V M3 V	{ 0 }	(B53-1)	[7A4F]	Be	12	-165
 Dene	C	1810	Syr Darya	E557000-5		Di		022	Wild	G3 V K4 V	{ -3 }	(800+1)	[0000]	B	11	8
 Dene	C	1902	Noscius	X422000-8		Di He Po		011	Wild	G3 V M8 V	{ -3 }	(600+1)	[0000]	B	12	6
 Dene	C	1903	Fursuelgigz	X200000-8		Di Va		001	Wild	M1 V	{ -3 }	(A00+1)	[0000]	B	5	10
@@ -91,7 +91,7 @@ Dene	D	2506	Moskene	X200000-A		Di Va		003	Wild	F5 V G7 V	{ -1 }	(600+1)	[0000]	B
 Dene	D	2603	Unekh	X200000-7		Di Va		002	Wild	M1 V	{ -3 }	(A00+4)	[0000]	B	10	40
 Dene	D	2702	Fosfog	E575000-7		Di		014	Wild	G5 IV M3 V	{ -3 }	(700+2)	[0000]	B	14	14
 Dene	D	2704	Talon	C54379A-7		(Souggvuez)8 rg2 Pi Po		524	Wild	K4 V	{ -1 }	(B65-2)	[5364]	B	18	-660
-Dene	D	2802	Utsbesyult	A785776-D		DroyW An Ga Ag Ri		522	Wild	F3 V M6 V	{ 4 }	(B6A-4)	[A7AD]	B	9	-2640
+Dene	D	2802	Utsbesyult	A785776-D	K	DroyW An Ga Ag Ri		522	Wild	F3 V M6 V	{ 4 }	(B6A-4)	[A7AD]	B	9	-2640
 Dene	D	2804	Akkip	E542000-8		Di He Po		022	Wild	F8 V	{ -3 }	(C00+1)	[0000]	B	16	12
 Dene	D	2807	Gabrael	C573674-8		Huma5 Varg5 rg3 Ni 		824	Wild	K4 V	{ -2 }	(850+4)	[3456]	B	13	160
 Dene	D	2810	Tensas	D556515-3		Ag Ni		104	Wild	K8 V	{ -2 }	(744-2)	[8328]	BC	10	-224
@@ -149,30 +149,30 @@ Dene	F	1115	Pecena	D547000-A		Di		022	Wild	M4 V	{ -1 }	(900+1)	[0000]	B	11	9
 Dene	F	1116	Abydos	D435443-9	S	Ni		910	Wild	M5 V	{ -2 }	(932-2)	[223A]	B	14	-108
 Dene	F	1118	Karabeth	E663374-7		Lo		502	Wild	K9 V M3 V	{ -3 }	(620+2)	[7129]	B	14	24
 Dene	F	1212	Prigojin	E100451-9		Ni Va		603	Wild	K4 V	{ -2 }	(932-3)	[5269]	B	7	-162
-Dene	F	1213	Inar	A310778-C	N	Na Pi		603	Wild	M7 V	{ 2 }	(C69-3)	[896E]	BD	6	-1944
+Dene	F	1213	Inar	A310778-C	F	Na Pi		603	Wild	M7 V	{ 2 }	(C69-3)	[896E]	BD	6	-1944
 Dene	F	1216	Lori	C544586-9		Ni Ag		313	Wild	M2 V	{ 0 }	(741+2)	[5457]	B	12	56
 Dene	F	1217	Clarissa	X536000-A		Di		014	Wild	M4 V	{ -1 }	(B00+4)	[0000]	B	15	44
 Dene	F	1218	Gaagir	X86A000-A		Di Wa		001	Wild	K6 V K9 V	{ -1 }	(600+4)	[0000]	B	11	24
-Dene	F	1220	Minde's Star	D435349-9	S	Lo Px		803	Wild	M4 V	{ -2 }	(920-3)	[3136]	B	9	-54
+Dene	F	1220	Minde	D435349-9	F	Lo		803	Wild	M4 V	{ -2 }	(920-3)	[3136]	B	9	-54
 Dene	F	1311	Quanah	X567000-6		Di		023	Wild	K4 V	{ -3 }	(600+1)	[0000]	B	11	6
 Dene	F	1313	Rayel	X693000-8		Di		010	Wild	G3 V	{ -3 }	(900-2)	[0000]	B	14	-18
 Dene	F	1314	Modika	D550000-8		De Di Po		003	Wild	F5 V M3 V	{ -3 }	(900+1)	[0000]	B	13	9
 Dene	F	1318	Ciprien	X553000-7		Di Po		021	Wild	F5 V	{ -3 }	(500+2)	[0000]	B	10	10
-Dene	F	1319	Thane	D585477-7	S	Ni Pa		421	Wild	K3 V	{ -3 }	(630+1)	[6157]	Bc	6	18
-Dene	F	1415	Taillon	C78A633-9	S	Ni Ri Wa		401	Wild	G6 V M6 V	{ 0 }	(954-3)	[9654]	BC	8	-540
-Dene	F	1417	Starn	B000954-G	S	RsB As Va Hi Na In		422	Wild	K0 V	{ 5 }	(F8E+1)	[CE7L]	BEf	12	1680
+Dene	F	1319	Thane	D585477-7	F	Ni Pa		421	Wild	K3 V	{ -3 }	(630+1)	[6157]	Bc	6	18
+Dene	F	1415	Taillon	C78A633-9	F	Ni Ri Wa		401	Wild	G6 V M6 V	{ 0 }	(954-3)	[9654]	BC	8	-540
+Dene	F	1417	Starn	B000954-E	K	RsB As Va Hi Na In		422	Wild	K0 V	{ 4 }	(F8E+1)	[CE7E]	BEf	12	1680
 Dene	F	1419	Montcolm	D675000-7		Di		022	Wild	K4 V	{ -3 }	(400-1)	[0000]	B	9	-4
 Dene	F	1420	Quebraco	E78A000-5		Di Wa		024	Wild	K3 V M1 V	{ -3 }	(700-1)	[0000]	B	11	-7
 Dene	F	1518	Trevith	E673000-5		Di		022	Wild	G0 V M2 V	{ -3 }	(500+3)	[0000]	B	7	15
-Dene	F	1520	Kauai	BA89488-B	NS	Ni		224	Wild	F8 V K5 V	{ 2 }	(D35+3)	[162E]	B	9	585
-Dene	F	1613	Urell	A100555-G	D	Ni Va		820	Wild	F9 V	{ 3 }	(A49-2)	[585M]	B	11	-720
+Dene	F	1520	Kauai	BA89488-B	F	Ni		224	Wild	F8 V K5 V	{ 1 }	(D35+3)	[162E]	B	9	585
+Dene	F	1613	Urell	A100555-G	F	Ni Va		820	Wild	F9 V	{ 2 }	(A45-2)	[585M]	B	11	-400
 Dene	F	1614	Springarn	E564000-5		Di		010	Wild	G9 V K3 V	{ -3 }	(500+2)	[0000]	B	14	10
-Dene	F	1615	Gaza	B430659-B	W	De Na Po Ni		323	Wild	G1 V K5 V	{ 2 }	(D57-2)	[3819]	B	11	-910
+Dene	F	1615	Gaza	B430659-B	F	De Na Po Ni		323	Wild	G1 V K5 V	{ 1 }	(D57-2)	[3819]	B	11	-910
 Dene	F	1618	Ashasi	E9D5A85-B		Hi		421	Wild	M3 V	{ 1 }	(F95+1)	[7B3C]	BE	7	675
 Dene	F	1619	Neopidan	EA9A000-9		Di Oc		024	Wild	K3 V	{ -2 }	(D00+2)	[0000]	B	11	26
 Dene	F	1620	Surisha	D682000-3		Di		001	Wild	M1 V M4 V	{ -3 }	(400-2)	[0000]	B	10	-8
-Dene	G	1712	Petrarch	B55487A-7	NS	Pa Ph		110	Wild	K6 V	{ 1 }	(A77-2)	[7914]	Bce	11	-980
-Dene	G	1713	Stoyben	D313000-8	S	Di Ic		011	Wild	M3 V	{ -3 }	(900-5)	[0000]	B	9	-45
+Dene	G	1712	Petrarch	B55487A-7	S	Pa Ph		110	Wild	K6 V	{ 0 }	(A77-2)	[7914]	Bce	11	-980
+Dene	G	1713	Stoyben	D313000-8	F	Di Ic		011	Wild	M3 V	{ -3 }	(900-5)	[0000]	B	9	-45
 Dene	G	1714	Andalia	E87A000-7		Di Wa		003	Wild	G7 V M5 V	{ -3 }	(600-5)	[0000]	B	7	-30
 Dene	G	1716	Reims	C6247AA-7		Pi		401	Wild	M0 V M9 V	{ -1 }	(964+3)	[B65B]	BD	11	648
 Dene	G	1717	Kennebec	E978000-6		Di		023	Wild	F7 V	{ -3 }	(700+1)	[0000]	B	9	7
@@ -181,20 +181,20 @@ Dene	G	1814	Karst	B876622-6		Ag Ni		533	Wild	F8 V	{ 0 }	(955+2)	[4658]	BC	13	450
 Dene	G	1917	Donu-na	C560875-8		De Ph Ri		425	Wild	F6 V M6 V	{ 0 }	(H73-2)	[A86A]	BCe	13	-714
 Dene	G	1918	Shinorasus	E410000-E		Di		003	Wild	F8 V K6 V	{ -1 }	(700+5)	[0000]	B	7	35
 Dene	G	2011	Orenberg	B430655-D		Jonk8 De Na Po Ni		101	Wild	M1 V M5 V	{ 1 }	(955+2)	[875F]	B	10	450
-Dene	G	2013	Twinian	C404453-8	S	Ic Va Ni		102	Wild	M5 V	{ -2 }	(833+3)	[1246]	B	7	216
+Dene	G	2013	Twinian	C404453-8	F	Ic Va Ni		102	Wild	M5 V	{ -2 }	(833+3)	[1246]	B	7	216
 Dene	G	2014	Zinuun	E43679D-6				311	Wild	M8 V	{ -2 }	(964+2)	[A561]	B	14	432
 Dene	G	2016	Ugrik	E300000-0		Ba Va		021	Wild	F7 V	{ -3 }	(200-1)	[0000]	B	13	-2
 Dene	G	2017	Ruwenzori	E749000-7		Di		003	Wild	K8 V	{ -3 }	(600-1)	[0000]	B	8	-6
-Dene	G	2019	Namidshur	B31067B-C	S	Na Ni		115	Wild	G9 V	{ 1 }	(E55+1)	[477C]	B	10	350
+Dene	G	2019	Namidshur	B31067B-C	F	Na Ni		115	Wild	G9 V	{ 1 }	(E55+1)	[477C]	B	10	350
 Dene	G	2111	Diiski	E66A000-8		Di Wa		012	Wild	K7 V	{ -3 }	(700-5)	[0000]	B	6	-35
-Dene	G	2114	Kadidun	D5A2000-9	S	Di Fl He		020	Wild	K1 IV K0 V	{ -2 }	(500+1)	[0000]	B	7	5
+Dene	G	2114	Kadidun	D5A2000-9	F	Di Fl He		020	Wild	K1 IV K0 V	{ -2 }	(500+1)	[0000]	B	7	5
 Dene	G	2116	Piram	E311772-7		Ic Na Pi		311	Wild	G2 V	{ -2 }	(965+3)	[9568]	BD	11	810
 Dene	G	2117	Cunha	C626677-7		Ni		824	Wild	M3 V	{ -2 }	(954+2)	[A456]	B	9	360
 Dene	G	2120	Teatro	E8A7000-8		Di Fl		003	Wild	F8 V M7 V	{ -3 }	(D00+2)	[0000]	B	11	26
-Dene	G	2212	Imlaar	D677000-6	S	Di		023	Wild	G5 V K5 V	{ -3 }	(700-2)	[0000]	B	11	-14
+Dene	G	2212	Imlaar	D677000-6	F	Di		023	Wild	G5 V K5 V	{ -3 }	(700-2)	[0000]	B	11	-14
 Dene	G	2220	Torm	C556341-9	S	Lo		534	Wild	K5 V	{ -1 }	(D20+1)	[1276]	B	13	26
 Dene	G	2316	Giikusu	E64799D-8		(Kirissukyoya) Hi In		505	Wild	K8 V	{ 0 }	(H82+1)	[891D]	BE	10	272
-Dene	G	2317	Lan-chou	D855686-6	S	Ag Ga Ni		520	Wild	K5 V K8 V	{ -2 }	(950+3)	[546A]	BC	5	135
+Dene	G	2317	Lan-chou	D855686-6	F	Ag Ga Ni		520	Wild	K5 V K8 V	{ -2 }	(950+3)	[546A]	BC	5	135
 Dene	G	2411	Nibel	X688000-3		Di		001	Wild	K5 V M1 V	{ -3 }	(500+3)	[0000]	B	9	15
 Dene	G	2412	Pagamin	E571000-7		Di He		002	Wild	K7 V	{ -3 }	(300+5)	[0000]	B	10	15
 Dene	G	2413	Dunmag	X427000-C		Di		001	Wild	F7 V M3 V M7 V	{ -1 }	(400-2)	[0000]	B	14	-8
@@ -231,21 +231,21 @@ Dene	I	0222	Breslow	D540641-4		De He Ni Po	R	202	Na	K8 V M4 V	{ -3 }	(750+4)	[83
 Dene	I	0223	Daumier	B88A443-D		Ni Wa		510	Na	K7 V M9 V	{ 1 }	(733+1)	[75AB]	B	10	63
 Dene	I	0224	Adapam	E796434-7		Ni Pa		722	Na	K8 V	{ -3 }	(630-1)	[4148]	Bc	7	-18
 Dene	I	0226	Wroclaw	C566772-7		Ag Ri	A	723	Na	G8 V K2 V	{ 1 }	(968-1)	[8883]	BC	12	-432
-Dene	I	0228	Rimkuku	D9A8887-7	S	Fl Ph		324	Na	G1 V M3 V	{ -2 }	(774-2)	[7697]	Be	15	-392
+Dene	I	0228	Rimkuku	D9A8887-7	F	Fl Ph		324	Na	G1 V M3 V	{ -2 }	(774-2)	[7697]	Be	15	-392
 Dene	I	0229	Aziziyah	C86A676-8		Ni Ri Wa		424	Wild	G3 V	{ -1 }	(C55+3)	[6758]	B	9	900
-Dene	I	0327	Barbary	C57179B-5	S	He Pi	A	613	Na	F5 V M4 V	{ -1 }	(966+2)	[A658]	BD	7	648
+Dene	I	0327	Barbary	C57179B-5	F	He Pi	A	613	Na	F5 V M4 V	{ -1 }	(966+2)	[A658]	BD	7	648
 Dene	I	0328	Dunstan	C649220-8		Lo		423	Na	G4 V	{ -2 }	(910+2)	[1124]	B	8	18
-Dene	I	0330	Canisus	C431787-8	S	Na Po		401	Wild	G4 V M9 V M2 V	{ -1 }	(A65+1)	[968B]	B	10	300
+Dene	I	0330	Canisus	C431787-8	F	Na Po		401	Wild	G4 V M9 V M2 V	{ -1 }	(A65+1)	[968B]	B	10	300
 Dene	I	0422	Rouenet	C562211-9		Lo		705	Na	K0 V	{ -1 }	(910-1)	[1168]	B	11	-9
 Dene	I	0524	Isurkun	A541379-A		He Lo Po		521	Na	G4 IV	{ 1 }	(821+3)	[144B]	B	11	48
 Dene	I	0525	Sejmal	C310655-B		Na Ni		434	Na	K4 V	{ 0 }	(F52-1)	[661C]	B	10	-150
 Dene	I	0529	Moltke	E646000-0		Ba Di		004	Wild	G6 V K6 V	{ -3 }	(700-2)	[0000]	B	8	-14
-Dene	I	0622	Mushinag	D575540-7	S	Ag Ni		720	Na	F6 V	{ -2 }	(740+3)	[43A7]	BC	14	84
-Dene	I	0623	Araa	C566200-A	S	Lo		522	Na	F7 V K9 V	{ 0 }	(810+1)	[123B]	B	12	8
-Dene	I	0624	Helmuth	C846323-7	S	Lo		222	Na	K9 V	{ -2 }	(420-2)	[2148]	B	9	-16
+Dene	I	0622	Mushinag	D575540-7	F	Ag Ni		720	Na	F6 V	{ -2 }	(740+3)	[43A7]	BC	14	84
+Dene	I	0623	Araa	C566200-A	F	Lo		522	Na	F7 V K9 V	{ 0 }	(810+1)	[123B]	B	12	8
+Dene	I	0624	Helmuth	C846323-7	F	Lo		222	Na	K9 V	{ -2 }	(420-2)	[2148]	B	9	-16
 Dene	I	0626	Kernal	B5667B8-7		(Yafizethe) Ag Ri		423	Na	G3 V	{ 2 }	(969+1)	[5938]	BC	9	486
 Dene	I	0629	Askigaak	E549000-0		(Sigka) Ba Di		001	Wild	M1 V	{ -3 }	(700+4)	[0000]	B	9	28
-Dene	I	0727	Shen-Yang	C665575-5	S	Ag Pr Ga Ni		302	Wild	F7 V K1 V	{ -1 }	(745-5)	[6449]	BcC	14	-700
+Dene	I	0727	Shen-Yang	C665575-5	F	Ag Pr Ga Ni		302	Wild	F7 V K1 V	{ -1 }	(745-5)	[6449]	BcC	14	-700
 Dene	I	0729	Norg	E000000-D		As Va Di		010	Wild	M7 V	{ -1 }	(400+4)	[0000]	B	4	16
 Dene	I	0730	Sultana	E649000-9		Di		021	Wild	M4 V	{ -2 }	(900-2)	[0000]	B	6	-18
 Dene	I	0824	Tlaza	C303122-9		Ic Va Lo		913	Na	M6 V	{ -1 }	(700+1)	[1149]	B	12	7
@@ -257,33 +257,33 @@ Dene	J	0921	Northammon	B764647-A	NS	Ag Ri Ni		820	Na	K5 V	{ 4 }	(A59+1)	[4A6A]	B
 Dene	J	0922	Teyobald	B8B3622-B		Fl Ni		122	Na	M4 V M4 V	{ 1 }	(B56-5)	[5757]	B	15	-1650
 Dene	J	0925	Ibix Donora	C432344-9		Lo Po		201	Na	K1 V M3 V	{ -1 }	(520-1)	[5237]	B	7	-10
 Dene	J	0929	Sipedon	E553676-6		Ni Po		402	Wild	M2 V M4 V	{ -3 }	(850-2)	[4363]	B	14	-80
-Dene	J	0930	Arnyl	B683656-9	NS	Ni Ri		523	Wild	G2 V	{ 2 }	(D56+1)	[7845]	BC	10	390
-Dene	J	1023	Irumunu	B7B3676-B	W	Fl Ni Px		101	Na	M6 V M6 V	{ 2 }	(956+2)	[981A]	B	14	540
+Dene	J	0930	Arnyl	B683656-9	S	Ni Ri		523	Wild	G2 V	{ 1 }	(D56+1)	[7845]	BC	10	390
+Dene	J	1023	Irumunu	B7B3676-B	F	Fl Ni		101	Na	M6 V M6 V	{ 1 }	(956+2)	[981A]	B	14	540
 Dene	J	1025	Frisgar	E4247A7-8		Pi		201	Wild	K7 V K7 V M1 V	{ -2 }	(A65-2)	[7596]	BD	9	-600
 Dene	J	1026	Burtrum	C53878B-8				301	Wild	M0 V M3 V	{ -1 }	(A62-1)	[9656]	B	14	-120
 Dene	J	1030	Prege	D79A000-9		Di Wa		002	Wild	M2 V	{ -2 }	(A00+1)	[0000]	B	9	10
 Dene	J	1122	Vincennes	A8999A8-E		Hi In		713	Wild	G1 V K7 V K1 V	{ 4 }	(G8C-2)	[9D9E]	BEf	14	-3072
 Dene	J	1123	Erisis	D679000-7		Di		013	Wild	M1 V	{ -3 }	(600+1)	[0000]	B	11	6
-Dene	J	1128	Dekha	C100A75-F	S	Hi Na In Va		110	Wild	F3 V M6 V	{ 3 }	(D97-3)	[AD4J]	BE	10	-2457
+Dene	J	1128	Dekha	C100551-8	K	JonkW Ni Va		110	Wild	F3 V M6 V	{ -2 }	(741-3)	[A348]	BE	10	-84
 Dene	J	1221	Peres	X536000-6		(Yaitlat) Di		001	Wild	K2 V M6 V	{ -3 }	(400-1)	[0000]	B	10	-4
 Dene	J	1223	Montane	X683000-7		Di		022	Wild	G8 V	{ -3 }	(300+4)	[0000]	B	8	12
 Dene	J	1224	Achemadon	E547000-A		Di		001	Wild	K7 V M3 V	{ -1 }	(A00+1)	[0000]	B	5	10
-Dene	J	1226	Bishop	B201514-D	S	Ic Va Ni		324	Wild	M6 III	{ 1 }	(D45-2)	[466D]	B	14	-520
+Dene	J	1226	Bishop	C201400-B	K	JonkW Ic Va Ni		324	Wild	M6 III	{ 0 }	(D31-2)	[466B]	B	14	-78
 Dene	J	1227	Taburi Nen	D546000-B		Di		021	Wild	K7 V	{ -1 }	(A00+1)	[0000]	B	16	10
-Dene	J	1229	Djar	C30079B-7	S	Na Pi Va		702	Wild	F0 V M4 V	{ -1 }	(A63+2)	[8612]	BD	6	360
+Dene	J	1229	Djar	C300330-7	K	JonkW Lo Va		702	Wild	F0 V M4 V	{ -2 }	(A20+2)	[8612]	BD	6	40
 Dene	J	1323	Al-Uqayr	E567000-5		Di		013	Wild	M2 V	{ -3 }	(400-5)	[0000]	B	13	-20
-Dene	J	1324	Jonkeer	C5908B8-8	S	(Jonkeereen) De He Ph Pi		101	Wild	G1 V M1 V	{ -1 }	(B79-1)	[7727]	BDe	14	-693
+Dene	J	1324	Jonkeer	C5908B8-8	K	(Jonkeereen) De He Ph Pi		101	Wild	G1 V M1 V	{ -1 }	(B79-1)	[7727]	BDe	14	-693
 Dene	J	1327	Medard	D421000-C		Di He Po		001	Wild	K9 V M9 V M7 V	{ -1 }	(700+3)	[0000]	B	14	21
 Dene	J	1424	Sarden	E552575-7		Ni Po		201	Wild	M2 V	{ -3 }	(841-1)	[8245]	B	13	-32
 Dene	J	1426	Kew	E512000-B		Di Ic		013	Wild	M3 V	{ -1 }	(700+1)	[0000]	B	13	7
 Dene	J	1428	Condamine	C665572-7		Ag Pr Ga Ni		621	Wild	F9 V M0 V	{ -1 }	(744+3)	[5464]	BcC	9	336
 Dene	J	1429	Ishiri	E565855-6		Pa Ri Ph		921	Wild	F7 V M0 V K0 V	{ -1 }	(B78+2)	[5741]	BcCe	9	1232
 Dene	J	1430	Eretaro	D9C4000-B		Di Fl		001	Wild	M2 V M3 V	{ -1 }	(400+1)	[0000]	B	9	4
-Dene	J	1522	Bumushe	C68A632-6	S	Ni Ri Wa		124	Wild	F9 V	{ -1 }	(855-3)	[5536]	BC	14	-600
+Dene	J	1522	Bumushe	C68A632-6	F	Ni Ri Wa		124	Wild	F9 V	{ -1 }	(855-3)	[5536]	BC	14	-600
 Dene	J	1524	Verd	E550000-6		JonkW De Di Po		002	Wild	G2 V M7 V	{ -3 }	(600+4)	[0000]	B	15	24
 Dene	J	1623	HRD	A401441-F	N	Ic Va Ni		410	Wild	M5 III	{ 1 }	(936+2)	[754E]	B	9	324
 Dene	J	1626	Risir	E430000-9		De Di Po		010	Wild	K1 V M3 V	{ -2 }	(500+1)	[0000]	B	5	5
-Dene	J	1628	Alaungpaya	C540744-8	S	De He Pi Po		301	Wild	M4 V	{ -1 }	(A67+1)	[868B]	BD	12	420
+Dene	J	1628	Alang Paya	C54057A-4	F	JonkW De He Ni Po		301	Wild	M4 V	{ -2 }	(A41+1)	[8684]	BD	12	40
 Dene	J	1630	Brontitor	E9C4000-9		Di Fl		004	Wild	K0 IV	{ -2 }	(800+2)	[0000]	B	7	16
 Dene	K	1722	Redemption	E540553-7		JonkW De He Ni Po		433	Wild	G0 V	{ -3 }	(840-1)	[6254]	B	15	-32
 Dene	K	1726	Woaros	X747000-5		Di		014	Wild	K4 V	{ -3 }	(800-2)	[0000]	B	12	-16
@@ -295,20 +295,20 @@ Dene	K	1824	Farraco	E200333-9		Lo Va		712	Wild	K7 V	{ -2 }	(920-2)	[114A]	B	13	-
 Dene	K	1826	Eshamlii	E434000-B		Di		023	Wild	K2 IV	{ -1 }	(A00+5)	[0000]	B	8	50
 Dene	K	1827	Prefecture	E430720-8		De Na Po		324	Wild	G1 V	{ -2 }	(F64+3)	[B566]	B	9	1080
 Dene	K	1829	Bisistra	E557000-B		Di		002	Wild	M0 V	{ -1 }	(900-2)	[0000]	B	8	-18
-Dene	K	1830	Ronsard	DA8967B-7	S	Sull8 Ni Ri		125	Wild	G5 V K3 V	{ -2 }	(854-5)	[545C]	BC	14	-800
+Dene	K	1830	Ronsard	DA8967B-7	F	Sull8 Ni Ri		125	Wild	G5 V K3 V	{ -2 }	(854-5)	[545C]	BC	14	-800
 Dene	K	1923	Liran	B000896-A		As Va Na Pi Ph		311	Wild	M0 V M1 V M5 V	{ 2 }	(C78+1)	[8A49]	BDe	14	672
-Dene	K	1925	Deneb	B537A98-A	N	An (Nenlat)4 Hi		410	Wild	A2 Ia	{ 3 }	(D99+3)	[9D18]	BE	4	3159
+Dene	K	1925	Deneb	B537A98-A	K	An (Nenlat)4 Hi		410	Wild	A2 Ia	{ 3 }	(D99+3)	[9D18]	BE	4	3159
 Dene	K	1926	Amshal	D687000-9		Di Ga		022	Wild	M0 V	{ -2 }	(900-2)	[0000]	B	7	-18
 Dene	K	1927	Thussar Ozoam	X545000-0		Ba Di		015	Wild	G3 V M1 V	{ -3 }	(300+2)	[0000]	B	11	6
 Dene	K	1928	Exile	X799000-0		Ba Di		010	Wild	F8 V	{ -3 }	(400+5)	[0000]	B	14	20
 Dene	K	1930	Turkoman	B9C6745-9		Fl		120	Wild	A4 V	{ 1 }	(B69+4)	[7878]	B	5	2376
-Dene	K	2023	Bruyere	C544777-5	S	Chir9 Ag Pi		422	Wild	F4 V	{ 0 }	(96A-1)	[4785]	BCD	7	-540
+Dene	K	2023	Bruyere	C544777-5	F	DroyW Ag Pi		422	Wild	F4 V	{ 0 }	(96A-1)	[4785]	BCD	7	-540
 Dene	K	2024	Minocoy	X422000-D		Di He Po		020	Wild	G4 V K5 V	{ -1 }	(900-1)	[0000]	B	9	-9
 Dene	K	2027	Avernus	E886534-4		Ag Pr Ga Ni		202	Wild	G3 V M9 V	{ -2 }	(740-5)	[4326]	BcC	9	-140
-Dene	K	2028	Nyassl	B300432-D	N	Ni Va		124	Wild	F0 V M2 V	{ 1 }	(E34-2)	[8549]	B	15	-336
+Dene	K	2028	Nyassl	B300432-C	K	Ni Va		124	Wild	F0 V M2 V	{ 1 }	(E34-2)	[8549]	B	15	-336
 Dene	K	2126	Arcanum	D43489E-6		Ph		410	Wild	M6 V	{ -2 }	(A72+3)	[4686]	Be	10	420
 Dene	K	2127	Nusukha	E310000-7		Di		015	Wild	G7 V G7 V	{ -3 }	(300+1)	[0000]	B	9	3
-Dene	K	2223	Byblos	C673846-7	S	Ph Pi		301	Wild	M1 V	{ -1 }	(A75-1)	[5747]	BDe	10	-350
+Dene	K	2223	Byblos	C673846-7	K	Ph Pi		301	Wild	M1 V	{ -1 }	(A75-1)	[5747]	BDe	10	-350
 Dene	K	2224	Revoc	D9AA000-A		Di Fl		002	Wild	F7 V K5 V	{ -1 }	(900+1)	[0000]	B	10	9
 Dene	K	2225	Usani	A552676-C	NS	Ni Po		202	Wild	K0 V	{ 2 }	(A57-3)	[A84E]	B	13	-1050
 Dene	K	2322	Sage	D563000-7		Di		020	Wild	K5 V M1 V	{ -3 }	(500+2)	[0000]	B	10	10
@@ -316,17 +316,17 @@ Dene	K	2323	Azed Bek	D766000-A		Di Ga		010	Wild	G5 V	{ -1 }	(600-4)	[0000]	B	13	
 Dene	K	2424	Ayers	X430000-A		De Di Po		023	Wild	F8 V	{ -1 }	(D00-3)	[0000]	B	11	-39
 Dene	K	2425	Hysyl	E540535-6		De He Ni Po		202	Wild	M3 V	{ -3 }	(941-4)	[5254]	B	14	-144
 Dene	L	2521	Geniishir	E310000-D		Di		002	Wild	K8 V	{ -1 }	(500-3)	[0000]	B	9	-15
-Dene	L	2522	Maelstrom	B79A832-C		Chir5 RsG Ph Pi Wa		502	Wild	G3 V M0 V M3 V	{ 2 }	(C75+1)	[3A48]	BDe	12	420
+Dene	L	2522	Maelstrom	B79A832-C	K	Chir5 Ph Pi Wa		502	Wild	G3 V M0 V M3 V	{ 2 }	(C75+1)	[3A48]	BDe	12	420
 Dene	L	2523	Exotrope	X300000-7		Di Va		001	Wild	M6 V M6 V	{ -3 }	(800+1)	[0000]	B	11	8
 Dene	L	2721	Newpenton	X595000-3		(Kurakhash) Di		003	Wild	M2 V	{ -3 }	(500+2)	[0000]	B	15	10
 Dene	M	0138	Iruku	B310443-9		Ni		201	Wild	F1 V M2 V	{ 0 }	(734+3)	[44A6]	B	13	252
-Dene	M	0233	Inkekush	A540545-D	N	De He Ni Po		131	Wild	F9 V M2 V	{ 1 }	(B47+2)	[765G]	B	14	616
+Dene	M	0233	Inkekush	B540745-C	N	De He Pi Po		231	Wild	F9 V M2 V	{ 2 }	(B67+2)	[765G]	B	14	924
 Dene	M	0235	Saguenay	E438000-E		Di		024	Wild	M0 V	{ -1 }	(A00-2)	[0000]	B	9	-20
 Dene	M	0237	Taman	E874000-5		Di		010	Wild	G7 V M3 V	{ -3 }	(500+1)	[0000]	B	11	5
 Dene	M	0238	Nouakchat	E532000-6		Di Po		003	Wild	M4 V	{ -3 }	(300+1)	[0000]	B	14	3
 Dene	M	0332	Aosta	E669000-C		Di		012	Wild	M1 V	{ -1 }	(700-2)	[0000]	B	12	-14
 Dene	M	0334	Furens	E8A9000-A		Di Fl		003	Wild	M2 V M7 V	{ -1 }	(B00+5)	[0000]	B	8	55
-Dene	M	0336	Upuraku	B584579-8	W	Ag Pr Ni		301	Wild	G2 V	{ 1 }	(843+1)	[8679]	BcC	6	96
+Dene	M	0336	Upuraku	C584579-8	F	Ag Pr Ni		301	Wild	G2 V	{ -1 }	(843+1)	[8679]	BcC	6	96
 Dene	M	0339	Tuwayk	B6728C9-A		He Ph Pi		201	Wild	G8 V	{ 2 }	(B7D+5)	[7A89]	BDe	14	5005
 Dene	M	0431	Zyedl	E55147C-5		Ni Po		301	Wild	K3 V	{ -3 }	(630-2)	[1121]	B	5	-36
 Dene	M	0436	Endup	D69388C-6		Ph Pi		504	Wild	F6 V M4 V	{ -2 }	(B76+4)	[A667]	BDe	7	1848
@@ -334,53 +334,53 @@ Dene	M	0439	Beaxon	D88AA79-C		Hi Wa		423	Wild	M1 V	{ 1 }	(H9C-1)	[7B48]	BE	8	-18
 Dene	M	0440	Noghon	D797000-8		Di		021	Wild	F5 V G8 V	{ -3 }	(E00+1)	[0000]	B	7	14
 Dene	M	0531	Briaxis	C420477-B		De He Ni Po		401	Wild	M1 V M9 V	{ 0 }	(732+1)	[844C]	B	11	42
 Dene	M	0534	Maricutin	X764000-A		Di		013	Wild	F9 V K5 V	{ -1 }	(700-3)	[0000]	B	11	-21
-Dene	M	0633	Preslin	B430635-C	N	Jonk9 De Na Po Ni		110	Wild	M2 V	{ 1 }	(952+1)	[575B]	B	11	90
+Dene	M	0633	Preslin	D430635-A	F	Jonk9 De Na Po Ni		110	Wild	M2 V	{ -1 }	(952+1)	[575B]	B	11	90
 Dene	M	0638	Brufort	D669000-6		Di		020	Wild	F5 V G5 V	{ -3 }	(800-5)	[0000]	B	7	-40
-Dene	M	0731	Qevar	A432646-E	NS	Na Px Po Ni		403	Wild	M6 V	{ 2 }	(B55+5)	[581F]	B	6	1375
+Dene	M	0731	Qevar	D432000-E	F	Di Po		003	Wild	M6 V	{ -1 }	(B00+5)	[0000]	B	6	55
 Dene	M	0734	Raguseppe	B410531-A		Ni		110	Wild	M0 V M0 V	{ 1 }	(843-4)	[663B]	B	14	-384
 Dene	M	0735	Kiangya	E7C2000-B		Di Fl He		014	Wild	M3 V	{ -1 }	(900+1)	[0000]	B	14	9
 Dene	M	0737	Taomina	D421000-7		Di He Po		034	Wild	G8 V	{ -3 }	(800-4)	[0000]	B	10	-32
 Dene	M	0740	Mtensc	D551000-8		Di Po		023	Wild	M0 V	{ -3 }	(B00-3)	[0000]	B	13	-33
 Dene	M	0833	Mephit	E9B8000-8		Di Fl		002	Wild	G6 V K4 V	{ -3 }	(800+3)	[0000]	B	8	24
 Dene	N	0933	Echura	C683745-8		Ri		103	Wild	M1 V	{ 0 }	(C68+4)	[779B]	BC	7	2304
-Dene	N	0935	Inquar	B8B5772-A	S	Fl		223	Wild	M6 III	{ 2 }	(E6B-1)	[595B]	B	13	-924
+Dene	N	0935	Inquar	D8B5772-A	F	Fl		223	Wild	M6 III	{ 0 }	(E6B-1)	[595B]	B	13	-924
 Dene	N	0936	Tullyhome	D669776-5		Ri		101	Wild	K2 V M1 V	{ -1 }	(969-1)	[A685]	BC	14	-486
 Dene	N	0939	Sestos	D5A6859-9		Fl Ph		503	Wild	K6 V M6 V	{ -1 }	(D72+1)	[C765]	Be	11	182
 Dene	N	1032	Quinthept	D521000-A		Di He Po		021	Wild	G0 V	{ -1 }	(A00+3)	[0000]	B	11	30
 Dene	N	1035	Storm	DAD6000-A		Di		014	Wild	M0 V	{ -1 }	(900+1)	[0000]	B	11	9
-Dene	N	1038	Timmer	C562635-7	S	Ni Ri		114	Wild	G6 V K3 V	{ -1 }	(854-1)	[2586]	BC	8	-160
+Dene	N	1038	Timmer	C562635-7	F	Ni Ri		114	Wild	G6 V K3 V	{ -1 }	(854-1)	[2586]	BC	8	-160
 Dene	N	1133	Keirei	X310000-B		Di		034	Wild	M7 V	{ -1 }	(C00-1)	[0000]	B	10	-12
-Dene	N	1135	Lilad	C547ACA-C		Hi In		424	Wild	K6 V	{ 3 }	(J99+4)	[FD5C]	BE	14	5832
+Dene	N	1135	Lilad	B547ACA-C	K	Hi In		424	Wild	K6 V	{ 4 }	(J99+4)	[FD5C]	BE	14	5832
 Dene	N	1137	Third Mu	DA7A000-C		Di Oc		025	Wild	K3 V	{ -1 }	(B00-4)	[0000]	B	10	-44
 Dene	N	1138	Ushashin	EA9A000-7		Di Oc		034	Wild	G7 V	{ -3 }	(400-3)	[0000]	B	11	-12
 Dene	N	1140	Oriryu	B53658C-9		Ni		201	Wild	M3 V M4 V	{ 0 }	(842+1)	[1579]	B	8	64
-Dene	N	1231	Point Ay	C560544-9	S	De Ni Pr		402	Wild	M1 V	{ -1 }	(940+3)	[343A]	Bc	14	108
-Dene	N	1235	Veldt	C567789-7	S	Ag Ri		414	Wild	F6 V	{ 1 }	(96B+2)	[5877]	BC	14	1188
-Dene	N	1238	Muntgumree	B553435-9	NS	Ni Po		103	Wild	K1 V	{ 1 }	(B36+1)	[1559]	B	7	198
+Dene	N	1231	Point Ay	C560544-9	S	JonkW De Ni Pr		402	Wild	M1 V	{ -1 }	(940+3)	[343A]	Bc	14	108
+Dene	N	1235	Veldt	C567769-7	K	O:1135 Ag Ri		414	Wild	F6 V	{ 1 }	(96B+2)	[5877]	BC	14	1188
+Dene	N	1238	Muntgumree	C553435-9	K	Ni Po		103	Wild	K1 V	{ -1 }	(B32+1)	[1559]	B	7	66
 Dene	N	1332	Giffert	E7A8000-D		Di Fl		020	Wild	F5 V K8 V	{ -1 }	(900-1)	[0000]	B	8	-9
-Dene	N	1333	Shiiku	D651758-7	S	Po		222	Wild	M0 V	{ -2 }	(966+4)	[B58B]	B	17	1296
-Dene	N	1334	Giranima	D797873-6	S	(Khethss) Pa Pi Ph		913	Wild	K9 V M1 V	{ -2 }	(B75+1)	[6685]	BcDe	13	385
+Dene	N	1333	Shiiku	D651758-7	F	Po		222	Wild	M0 V	{ -2 }	(966+4)	[B58B]	B	17	1296
+Dene	N	1334	Giranima	D797873-6	F	(Khethss) Pa Pi Ph		913	Wild	K9 V M1 V	{ -2 }	(B75+1)	[6685]	BcDe	13	385
 Dene	N	1336	Dawn	XA9A000-C		Di Oc		003	Wild	F9 V	{ -1 }	(A00-2)	[0000]	B	7	-20
 Dene	N	1337	Unxava	X677000-7		Di		023	Wild	G3 IV	{ -3 }	(800-2)	[0000]	B	13	-16
 Dene	N	1338	Sorel	X539000-C		Di		001	Wild	K1 V K6 V	{ -1 }	(400+1)	[0000]	B	10	4
 Dene	N	1339	Zeng	D426000-C		Di		011	Wild	M3 V	{ -1 }	(800-2)	[0000]	B	15	-16
 Dene	N	1340	Agdarmi	B56679D-A		Ag Ri		324	Wild	M2 V	{ 4 }	(F6A+2)	[6B29]	BCf	10	1800
-Dene	N	1432	Pashus	A432474-F	S	RsZ Ni Po		312	Wild	F9 V	{ 1 }	(936-4)	[751F]	B	14	-648
-Dene	N	1433	Atab	C540789-8	S	JonkW De He Pi Po		803	Wild	G7 V M7 V	{ -1 }	(D63+2)	[A617]	BD	12	468
+Dene	N	1432	Pashus	D432000-F	F	Di Po		012	Wild	F9 V	{ -1 }	(900-4)	[0000]	B	14	-36
+Dene	N	1433	Atab	C540789-8	K	JonkW De He Pi Po		803	Wild	G7 V M7 V	{ -1 }	(D63+2)	[A617]	BD	12	468
 Dene	N	1435	Quirinal	C651684-8		Ni Po		401	Wild	G2 V M9 V M9 V	{ -2 }	(A54-1)	[6449]	B	8	-200
 Dene	N	1436	Isidor	D571000-8		Di He		023	Wild	M0 V	{ -3 }	(C00-1)	[0000]	B	13	-12
 Dene	N	1439	Breit-Tuve	X425000-B		Di		011	Wild	M1 V	{ -1 }	(900+1)	[0000]	B	12	9
 Dene	N	1440	Fessenden	C43577B-6				101	Wild	M1 V	{ -1 }	(965-4)	[C662]	B	9	-1080
 Dene	N	1532	Rajan	D87A000-B		Di Wa		021	Wild	M2 V M5 V	{ -1 }	(600-2)	[0000]	B	11	-12
-Dene	N	1633	Pikha	B738A75-C		Hi		112	Wild	K7 V	{ 3 }	(F9E+1)	[8D3C]	BE	12	1890
+Dene	N	1633	Pikha	B738A75-C	F	Hi		112	Wild	K7 V	{ 3 }	(F9E+1)	[8D3C]	BE	12	1890
 Dene	N	1635	Ibsen	D434520-7		Ni		510	Wild	K8 V M2 V	{ -3 }	(840-4)	[6279]	B	12	-128
-Dene	N	1636	Balzac	A552887-C	N	(Crocodiles) Ph Po		313	Wild	G1 IV M3 V	{ 2 }	(E76-3)	[8A9E]	Be	14	-1764
+Dene	N	1636	Balzac	A552887-C	K	Di(Crocodiles) SullW Ph Po		313	Wild	G1 IV M3 V	{ 2 }	(E76-3)	[8A9E]	Be	14	-1764
 Dene	N	1639	Uushadiiru	D551000-A		Di Po		021	Wild	G0 V	{ -1 }	(900-2)	[0000]	B	6	-18
-Dene	N	1640	Jecife	A439552-H	N	Ni		723	Wild	F6 V	{ 2 }	(D45-1)	[174K]	B	8	-260
+Dene	N	1640	Jecife	A439552-H	K	Ni		723	Wild	F6 V	{ 2 }	(D45-1)	[174K]	B	8	-260
 Dene	O	1732	Rif	X687000-6		Di Ga		002	Wild	G4 IV F4 V	{ -3 }	(400+3)	[0000]	B	11	12
-Dene	O	1733	Imazura	C555546-8	S	Ag Ni		103	Wild	K8 V	{ -1 }	(A41-2)	[5449]	BC	11	-80
+Dene	O	1733	Imazura	C555546-8	K	Ag Ni		103	Wild	K8 V	{ -1 }	(A41-2)	[5449]	BC	11	-80
 Dene	O	1831	Takahira	E9C5000-9		Di Fl		022	Wild	M2 V	{ -2 }	(800-2)	[0000]	B	12	-16
-Dene	O	1832	Kamlar	B587457-C	N	Ni Pa		310	Wild	M2 V	{ 1 }	(735-2)	[257G]	Bc	10	-210
+Dene	O	1832	Kamlar	B587457-C	K	Ni Pa		310	Wild	M2 V	{ 1 }	(735-2)	[257G]	Bc	10	-210
 Dene	O	2131	Javan	X77A000-A		Di Wa		010	Wild	M0 V	{ -1 }	(400+2)	[0000]	B	13	8
 Dene	O	2234	Catacomb	X8A7000-B		(Sulliji) Di Fl		001	Wild	K1 V K6 V	{ -1 }	(800-3)	[0000]	B	9	-24
 Dene	P	2734	Lorin Antune	X525000-0		Ba Di		010	Wild	M2 V M2 V	{ -3 }	(A00-3)	[0000]	B	11	-30
