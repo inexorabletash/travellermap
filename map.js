@@ -376,12 +376,12 @@ const Util = {
 
     function makeServiceUrl(path, options = {}) {
       // remove non-query parameters from options without mutating options object
-      const { signal, method, ...queryOptions } = options;
+      const { signal, method, accept, ...queryOptions } = options;
       return Util.makeURL(SERVICE_BASE + path, queryOptions);
     }
 
     return {
-      makeURL: (path, options = {}) => {        
+      makeURL: (path, options = {}) => {
         return makeServiceUrl(path, options);
       },
 
