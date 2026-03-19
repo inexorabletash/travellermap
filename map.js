@@ -374,14 +374,14 @@ const Util = {
         await response.json() : await response.text();
     }
 
-    function makeServiceUrl(path, options) {
+    function makeServiceUrl(path, options = {}) {
       // remove non-query parameters from options without mutating options object
       const { signal, method, ...queryOptions } = options;
       return Util.makeURL(SERVICE_BASE + path, queryOptions);
     }
 
     return {
-      makeURL: (path, options) => {        
+      makeURL: (path, options = {}) => {        
         return makeServiceUrl(path, options);
       },
 
