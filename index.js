@@ -938,7 +938,7 @@
     if (!enableContext || document.body.classList.contains('hide-ui'))
       return;
 
-    options = Object.assign({}, options);
+    options = {...options};
 
     if (ignoreIndirect && !options.directAction)
       return;
@@ -966,7 +966,7 @@
           const data = await Traveller.MapService.credits(worldX, worldY, milieu);
           displayResults(data);
         } catch (err) {
-          if (err?.name === 'AbortError') return
+          if (err?.name === 'AbortError') return;
           displayResults({});
         }
       }, options.directAction || options.refresh ? 0 : DATA_REQUEST_DELAY_MS);
@@ -1222,9 +1222,9 @@
   //
   //////////////////////////////////////////////////////////////////////
   let searchAbortController = null;
-  
+
   async function search(query, options) {
-    options = Object.assign({}, options);
+    options = {...options};
 
     closeRoute();
     hideCards();
@@ -1335,8 +1335,8 @@
           scale = world.Scale || 64;
           let params = {scale, sx, sy, hx, hy};
           if (!data.Tour) {
-            params = Object.assign(params,
-                                   {sector: world.Sector, world: world.Name, hex: world.Hex});
+            params = {...params,
+                      sector: world.Sector, world: world.Name, hex: world.Hex};
           }
           if (data.Route) {
             route.push({sx:sx, sy:sy, hx:hx, hy:hy});

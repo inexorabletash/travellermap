@@ -667,7 +667,7 @@
     if (!world) return undefined;
     await Promise.all([SOPHONTS_FETCHED, DETAILS_FETCHED]);
 
-    world.raw = Object.assign({}, world);
+    world.raw = { ...world };
 
     world.isPlaceholder = (world.UWP === 'XXXXXXX-X' || world.UWP === '???????-?');
 

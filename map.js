@@ -318,15 +318,15 @@ const Util = {
     sheets[Styles.Poster] = base;
     sheets[Styles.Candy] = base;
     sheets[Styles.Draft] = base;
-    sheets[Styles.Atlas] = Object.assign({}, base, {
+    sheets[Styles.Atlas] = { ...base,
       overlay_color: '#808080',
       you_are_here_url: 'res/ui/youarehere-gray.svg'
-    });
-    sheets[Styles.FASA] = sheets[Styles.Print] =
-      Object.assign({}, base, {
-        you_are_here_url: 'res/ui/youarehere-gray.svg'
-      });
-
+    };
+    sheets[Styles.FASA] = sheets[Styles.Print] = {
+      ...base,
+      you_are_here_url: 'res/ui/youarehere-gray.svg'
+    };
+    
     return (style, property) => {
       const sheet = sheets[style] || sheets[Defaults.style];
       return sheet[property];
@@ -834,7 +834,7 @@ const Util = {
 
         if (!was_dragged) {
           fireEvent(this, 'Click',
-                    Object.assign({}, this.eventToWorldCoords(event), {activeElement: previous_focus}));
+                    {...this.eventToWorldCoords(event), activeElement: previous_focus});
         }
       });
 
@@ -947,7 +947,7 @@ const Util = {
 
         if (event.touches.length === 0 && !was_touch_dragged) {
           fireEvent(this, 'Click',
-                    Object.assign({}, touch_wc, {activeElement: previous_focus}));
+                    {...touch_wc, activeElement: previous_focus});
         }
         event.preventDefault();
         event.stopPropagation();
@@ -1462,7 +1462,7 @@ const Util = {
         ctx.beginPath();
         ctx.moveTo(pt.x, pt.y);
         for (let i = 1; i < pts.length; ++i) {
-          let pt = this.mapToPixel(pts[i].x, pts[i].y)
+          let pt = this.mapToPixel(pts[i].x, pts[i].y);
           ctx.lineTo(pt.x, pt.y);
         }
         ctx.closePath();
@@ -1804,7 +1804,7 @@ const Util = {
     // This places the specified Sector, Hex coordinates (parsec)
     // at the center of the viewport.
     CenterAtSectorHex(sx, sy, hx, hy, options) {
-      options = Object.assign({}, options);
+      options = {...options};
 
       this.cancelAnimation();
       const target = Astrometrics.sectorHexToMap(sx, sy, hx, hy);
@@ -1899,10 +1899,10 @@ const Util = {
 
     AddOverlay(o) {
       // TODO: Take id, like AddMarker
-      const overlay = Object.assign({
+      const overlay = {
         id: 'overlay',
-        z: 910
-      }, o);
+        z: 910,
+        ...o};
 
       this.overlays.push(overlay);
       this.invalidate();
