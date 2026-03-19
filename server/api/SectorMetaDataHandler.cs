@@ -2,6 +2,7 @@
 using Maps.Serialization;
 using Maps.Utilities;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web;
 using System.Xml;
 using System.Xml.Serialization;
@@ -110,19 +111,31 @@ namespace Maps.API.Results
         {
             get
             {
-                if (worlds == null)
-                    return null;
+                var allegiances = new Dictionary<string, Allegiance>();
 
-                // Ensure the allegiance list documents the codes as used by the worlds
-                var list = new List<Allegiance>();
+                // Document the codes as used by the worlds
                 foreach (var code in worlds.AllegianceCodes())
                 {
                     var alleg = sector.GetAllegianceFromCode(code);
                     if (alleg == null)
                         continue;
-                    list.Add(new Allegiance(code, alleg.Name, alleg.LegacyCode, alleg.Base));
+                    allegiances.Add(code, new Allegiance(code, alleg.Name, alleg.LegacyCode, alleg.Base));
                 }
-                return list;
+
+                // Add any used by borders
+                foreach (var border in sector.BordersAndRegions)
+                {
+                    var code = border.Allegiance;
+                    if (code == null)
+                        continue;
+                    var alleg = sector.GetAllegianceFromCode(code);
+                    if (alleg == null)
+                        continue;
+                    if (!allegiances.ContainsKey(code))
+                        allegiances.Add(code, new Allegiance(code, alleg.Name, alleg.LegacyCode, alleg.Base));
+                }
+
+                return allegiances.Values.ToList();
             }
         }
 
