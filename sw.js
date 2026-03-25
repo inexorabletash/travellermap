@@ -10,7 +10,8 @@ const urlsToCache = [
   'https://fonts.googleapis.com/css?family=Marcellus',
 ];
 
-self.addEventListener('install', event => {
+
+self.addEventListener('install', /** @type {ExtendableEvent} */ event => {
   event.waitUntil(
     (async () => {
       const cache = await self.caches.open(CACHE_NAME);
@@ -22,7 +23,7 @@ self.addEventListener('install', event => {
   self.skipWaiting();
 });
 
-self.addEventListener('activate', event => {
+self.addEventListener('activate', /** @type {ExtendableEvent} */ event => {
  event.waitUntil(
     (async () => {
       if ("navigationPreload" in self.registration) {
@@ -33,7 +34,7 @@ self.addEventListener('activate', event => {
   self.clients.claim();
 });
 
-self.addEventListener('fetch', event => {
+self.addEventListener('fetch', /** @type {FetchEvent} */ event => {
   if (event.request.mode !== 'navigate')
     return;
 

@@ -2,11 +2,8 @@
 <title>Border Generation</title>
 <meta charset="utf-8">
 <link rel="stylesheet" href="../site.css?update=2022-09-10T10:37:44">
-
-<script src="borders.js"></script>
-<script>
-'use strict';
-
+<script type="module">
+import { AllegianceMap, erode, walk, breakSpans, claimAllUnclaimed } from '../borders/borders.js';
 const $ = s => document.querySelector(s);
 
 const allegianceMap = {
@@ -43,9 +40,9 @@ function makeMapDisplay(containerElement, map) {
     for (let y = g_map.origin_y; y < g_map.origin_y + g_map.height; ++y) {
       top += (sz + pad);
 
-      fragment = "<div class='hex' id='hex_" + x + "_" + y + "' style='width: " + sz + "px; height: " + sz + "px; left: " + left + "px; top: " + top + "px;'>";
+      fragment = `<div class='hex' id='hex_${x}_${y}' style='width: ${sz}px; height: ${sz}px; left: ${left}px; top: ${top}px;'>`;
       fragment += hexContents(x, y, map);
-      fragment += "<" + "/div>";
+      fragment += `</div>`;
       fragments.push(fragment);
     }
 }
@@ -89,9 +86,9 @@ function updateWalks() {
 
 
   const html = [];
-  borders.forEach(border => {
-    html.push("<li>" + border.allegiance + " : " + border.path.join(" ") + "<" + "/li>");
-  });
+  for(const border of borders) {
+    html.push(`<li>${border.allegiance} : ${border.path.join(" ")}</li>`);
+  };
   $('#walks').innerHTML = html.join("");
 }
 
@@ -105,10 +102,10 @@ function hexContents(x, y, map) {
   const alleg = map.getAllegiance(x, y);
   const color = (alleg == UNALIGNED) ? "transparent" : allegianceMap[alleg];
 
-  return "<div class='hexContents' style='background-color: " + color + ";'>" +
-    "<span class='hexNumber'>" + hexNumber + "<" + "/span><br/>" +
-    (occupied ? "<span class='world'>&bull;</span>" : "") +
-    "<" + "/div>";
+  return `<div class='hexContents' style='background-color: ${color};'>
+    <span class='hexNumber'>${hexNumber}</span><br/>
+    ${occupied ? "<span class='world'>&bull;</span>" : ""}
+  </div>`;
 }
 
 

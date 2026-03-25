@@ -3,11 +3,9 @@
 <meta charset="utf-8">
 <link rel="stylesheet" href="../site.css?update=2022-09-10T10:37:44">
 
-<script src="../map.js?update=2023-06-19T09:13:17"></script>
-<script src="borders.js"></script>
-<script>
-'use strict';
-
+<script type="module">
+  import * as Traveller from '../map.js';
+  import { AllegianceMap } from '../borders/borders.js';
 const SECTOR_WIDTH = 32, SECTOR_HEIGHT = 40;
 
 const ALLEGIANCE_COLORS = {
@@ -168,9 +166,9 @@ function updateWalks(map) {
     if (border.path.length < 2)
       return;
 
-    const str = '<Border Allegiance="' + Util.escapeHTML(border.allegiance) + '">' +
+    const str = '<Border Allegiance="' + Traveller.escapeHTML(border.allegiance) + '">' +
       border.path.join(' ') + '</Border>';
-    html.push("<li>" + Util.escapeHTML(str));
+    html.push("<li>" + Traveller.escapeHTML(str));
   });
 
   document.getElementById("walks").innerHTML = html.join("");
@@ -232,12 +230,12 @@ function showError(message) {
   document.body.appendChild(document.createElement('div')).appendChild(document.createTextNode(message));
 }
 
-const searchParams = new URL(document.location).searchParams;
+const searchParams = new URLSearchParams(document.location.search);
 window.onload = async () => {
 
   function status(message) {
     const display = document.getElementById('status');
-    display.innerHTML += '<div>' + Util.escapeHTML(message) + '<' + '/div>';
+    display.innerHTML += `<div>${Traveller.escapeHTML(message)}</div>`;
     display.scrollTop = display.scrollHeight
   }
 

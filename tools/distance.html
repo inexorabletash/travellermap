@@ -3,7 +3,6 @@
 <meta charset="utf-8">
 <link rel="shortcut icon" href="../favicon.svg">
 <link rel="stylesheet" href="../site.css?update=2022-09-10T10:37:44">
-<script src="../map.js?update=2023-06-19T09:13:17"></script>
 <style>
   td, div { padding-top: 0.5em; }
 </style>
@@ -26,44 +25,46 @@
 
 <div>Distance: <input type=text readonly id=distance title="Distance in hexes"> hexes
 
-<script>
+<script type="module">
+  
+  import * as Traveller from '../map.js';
+  const Util = Traveller.Util;
+  const $ = Util.$;
+  const $$ = Util.$$;
 
-window.addEventListener('DOMContentLoaded', () => {
-  'use strict';
-  const $ = s => document.querySelector(s);
+  window.addEventListener('DOMContentLoaded', () => {
+    ['startsec', 'starthex', 'endsec', 'endhex'].forEach(id => {
+      $('#'+id).addEventListener('change', refresh);
+    });
 
-  ['startsec', 'starthex', 'endsec', 'endhex'].forEach(id => {
-    $('#'+id).addEventListener('change', refresh);
-  });
+    function distance(a, b) {
+      const dx = b.x - a.x;
+      const dy = b.y - a.y;
 
-  function distance(a, b) {
-    const dx = b.x - a.x;
-    const dy = b.y - a.y;
+      let adx = Math.abs(dx);
+      let ody = dy + div(adx, 2);
 
-    let adx = Math.abs(dx);
-    let ody = dy + div(adx, 2);
+      if (even(a.x) && odd(b.x))
+        ody += 1;
 
-    if (even(a.x) && odd(b.x))
-      ody += 1;
+      return Math.max(adx - ody, ody, adx);
 
-    return Math.max(adx - ody, ody, adx);
-
-    function even(x) { return (x % 2) === 0; }
-    function odd (x) { return (x % 2) !== 0; }
-    function div(a, b) { return Math.floor(a / b); }
-  }
-
-  async function refresh() {
-    try {
-      const coords = await Promise.all([
-        Traveller.MapService.coordinates($('#startsec').value, $('#starthex').value),
-        Traveller.MapService.coordinates($('#endsec').value, $('#endhex').value)
-      ]);
-      const dist = distance(coords[0], coords[1]);
-      $('#distance').value = dist;
-    } catch(reason) {
-      $('#distance').value = reason.message;
+      function even(x) { return (x % 2) === 0; }
+      function odd (x) { return (x % 2) !== 0; }
+      function div(a, b) { return Math.floor(a / b); }
     }
-  }
-});
+
+    async function refresh() {
+      try {
+        const coords = await Promise.all([
+          Traveller.MapService.coordinates($('#startsec').value, $('#starthex').value),
+          Traveller.MapService.coordinates($('#endsec').value, $('#endhex').value)
+        ]);
+        const dist = distance(coords[0], coords[1]);
+        $('#distance').value = dist;
+      } catch(reason) {
+        $('#distance').value = reason.message;
+      }
+    }
+  });
 </script>

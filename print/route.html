@@ -1,75 +1,77 @@
 <!DOCTYPE html>
 <title>Printable Route - Traveller Map</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js"></script>
-<script src="../map.js?update=2026-03-19T15:05:15"></script>
-<script>
-window.addEventListener('load', async () => {
-  const $ = s => document.querySelector(s);
-  const $$ = s => Array.from(document.querySelectorAll(s));
+<script type="module">
+  import * as Traveller from '../map.js';
+  
+  const Util = Traveller.Util;
+  const $ = Util.$;
+  const $$ = Util.$$;
 
-  const params = new URL(document.location.href).searchParams;
+  window.addEventListener('load', async () => {    
+    const searchParams = new URLSearchParams(document.location.search);
 
-  try {
-    const response = await fetch(Traveller.MapService.makeURL('/api/route', {
-      start: params.get('start'),
-      end: params.get('end'),
-      jump: params.get('jump'),
-      x: params.get('x'),
-      y: params.get('y'),
-      milieu: params.get('milieu'),
-      wild: !!Number(params.get('wild'))?1:0,
-      im: !!Number(params.get('im'))?1:0,
-      nored: !!Number(params.get('nored'))?1:0
-    }));
-    if (!response.ok) return response.text();
+    try {
+      const response = await fetch(Traveller.MapService.makeURL('/api/route', {
+        start: searchParams.get('start'),
+        end: searchParams.get('end'),
+        jump: searchParams.get('jump'),
+        x: searchParams.get('x'),
+        y: searchParams.get('y'),
+        milieu: searchParams.get('milieu'),
+        wild: !!Number(searchParams.get('wild'))?1:0,
+        im: !!Number(searchParams.get('im'))?1:0,
+        nored: !!Number(searchParams.get('nored'))?1:0
+      }));
+      if (!response.ok) return response.text();
 
-    const data = await response.json();
-    if (typeof data === 'string') throw new Error(data);
+      const data = await response.json();
+      if (typeof data === 'string') throw new Error(data);
 
-    const route = [];
-    let total = 0;
-    data.forEach((world, index) => {
-      world.Name = world.Name || '(Unnamed)';
-      const sx = world.SectorX|0;
-      const sy = world.SectorY|0;
-      const hx = world.HexX|0;
-      const hy = world.HexY|0;
+      const route = [];
+      let total = 0;
+      for(const [index, world] of data.entries()) {
+        world.Name = world.Name || '(Unnamed)';
+        const sx = world.SectorX|0;
+        const sy = world.SectorY|0;
+        const hx = world.HexX|0;
+        const hy = world.HexY|0;
 
-      if (index > 0) {
-        const prev = data[index - 1];
-        const a = Traveller.Astrometrics.sectorHexToWorld(
-          prev.SectorX|0, prev.SectorY|0, prev.HexX|0, prev.HexY|0);
-        const b = Traveller.Astrometrics.sectorHexToWorld(sx, sy, hx, hy);
-        const dist = Traveller.Astrometrics.hexDistance(a.x, a.y, b.x, b.y);
-        prev.Distance = dist;
-        total += dist;
-      }
+        if (index > 0) {
+          const prev = data[index - 1];
+          const a = Traveller.Astrometrics.sectorHexToWorld(
+            prev.SectorX|0, prev.SectorY|0, prev.HexX|0, prev.HexY|0);
+          const b = Traveller.Astrometrics.sectorHexToWorld(sx, sy, hx, hy);
+          const dist = Traveller.Astrometrics.hexDistance(a.x, a.y, b.x, b.y);
+          prev.Distance = dist;
+          total += dist;
+        }
 
-      world.Starport = world.UWP.substr(0, 1);
-      world.GasGiant = Number(world.PBG.substr(2, 1)) > 0;
-      world.AmberZone = world.Zone === 'A';
-      world.RedZone = world.Zone === 'R';
-    });
+        world.Starport = world.UWP.substr(0, 1);
+        world.GasGiant = Number(world.PBG.substr(2, 1)) > 0;
+        world.AmberZone = world.Zone === 'A';
+        world.RedZone = world.Zone === 'R';
+      };
 
-    $('#routePath').innerHTML = Handlebars.compile($('#RouteResultsTemplate').innerHTML)({
-      Route: data,
-      From: data[0],
-      To: data[data.length - 1],
-      Jump: params.get('jump'),
-      Distance: total,
-      Jumps: data.length - 1
-    });
+      $('#routePath').innerHTML = Handlebars.compile($('#RouteResultsTemplate').innerHTML)({
+        Route: data,
+        From: data[0],
+        To: data[data.length - 1],
+        Jump: searchParams.get('jump'),
+        Distance: total,
+        Jumps: data.length - 1
+      });
 
-    document.title = data[0].Name + ' to ' + data[data.length - 1].Name;
+      document.title = data[0].Name + ' to ' + data[data.length - 1].Name;
 
-    await Promise.all($$('#routePath img').map(img => Util.fetchImage(img)));
+      await Promise.all($$('#routePath img').map(img => Traveller.fetchImage(img)));
 
-    window.print();
+      window.print();
 
-  } catch(reason) {
-    alert(reason.message);
-  }
-});
+    } catch(reason) {
+      alert(reason.message);
+    }
+  });
 </script>
 
 
@@ -111,7 +113,7 @@ window.addEventListener('load', async () => {
 }
 @media only print {
   @page { size: portrait; margin: 0.25in;  }
-  html, body { margin: 0; padding: 0; -webkit-print-color-adjust: exact; }
+  html, body { margin: 0; padding: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }
 
 body {

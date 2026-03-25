@@ -1,5 +1,4 @@
-/*global Restellarator, Request*/
-'use strict';
+import Restellarator from '../../tools/restellarator.js';
 
 const EHEX = '0123456789ABCDEFGHJKLMNPQRSTUV';
 function fromEHex(c) { return EHEX.indexOf(c); }
@@ -10,43 +9,52 @@ function roll2D() { return roll1D() + roll1D(); }
 function roll1D10() { return Math.floor(Math.random() * 10) + 1; }
 function flux() { return roll1D() - roll1D(); }
 
-Number.prototype.in = function(min, max) {
+// @ts-ignore
+Number.prototype.in = function (min, max) {
   if (Array.isArray(min))
     return min.indexOf(this) !== -1;
   return min <= this && this <= max;
 };
 
+/**
+ * Parses a sector from tab-delimited data.
+ * @param {string} text 
+ * @returns {Array<object>}
+ */
 function parse(text) {
   const lines = text.split(/\r\n|\r|\n/).filter(s => s.length > 0);
-  const header = lines.shift().split('\t');
+  const header = lines.shift()?.split('\t');
+  if (header === undefined) {
+    throw new Error("No header line found");
+  }
   const worlds = lines.map(line => {
     const world = {};
     const cols = line.split('\t');
-    cols.forEach((value, index) => {
+    for (const [index, value] of cols.entries()) {
       world[header[index]] = value === '-' ? '' : value;
-    });
+    }
     return world;
   });
   return worlds;
 }
 
 function process(world) {
-  world.St  = world.UWP.substr(0, 1);
+  world.St = world.UWP.substr(0, 1);
   world.Siz = fromEHex(world.UWP.substr(1, 1));
   world.Atm = fromEHex(world.UWP.substr(2, 1));
   world.Hyd = fromEHex(world.UWP.substr(3, 1));
   world.Pop = fromEHex(world.UWP.substr(4, 1));
   world.Gov = fromEHex(world.UWP.substr(5, 1));
   world.Law = fromEHex(world.UWP.substr(6, 1));
-  world.TL  = fromEHex(world.UWP.substr(8, 1));
+  world.TL = fromEHex(world.UWP.substr(8, 1));
 
-  world.PMult  = fromEHex(world.PBG.substr(0, 1));
-  world.Belts  = fromEHex(world.PBG.substr(1, 1));
-  world.GG     = fromEHex(world.PBG.substr(2, 1));
+  world.PMult = fromEHex(world.PBG.substr(0, 1));
+  world.Belts = fromEHex(world.PBG.substr(1, 1));
+  world.GG = fromEHex(world.PBG.substr(2, 1));
 
   const codes = world.Remarks.split(/\s+/g)
-          .filter(s => s.length)
-          .map(c => c === 'Cr' ? 'Cx' : c);
+    .filter(s => s.length)
+    .map(c => c === 'Cr' ? 'Cx' : c);
   const codeSet = new Set(codes);
 
   if (world.Pop === 0)
@@ -67,9 +75,9 @@ function process(world) {
   world.He = world.Siz.in([3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
     && world.Atm.in([2, 4, 7, 9, 10, 11, 12]) && world.Hyd.in(0, 2);
   world.Ic = world.Atm.in(0, 1) && world.Hyd.in(1, 10);
-  world.Oc = world.Siz.in(10, 15) && world.Atm.in(3,9) && world.Hyd === 10;
+  world.Oc = world.Siz.in(10, 15) && world.Atm.in(3, 9) && world.Hyd === 10;
   world.Va = world.Atm === 0;
-  world.Wa = world.Siz.in(3, 9) && world.Atm.in(3,9) && world.Hyd === 10;
+  world.Wa = world.Siz.in(3, 9) && world.Atm.in(3, 9) && world.Hyd === 10;
 
   const PLANETARY_CODES = ['As', 'De', 'Fl', 'Ga', 'He', 'Ic', 'Oc', 'Va', 'Wa'];
   PLANETARY_CODES.forEach(c => {
@@ -90,14 +98,14 @@ function process(world) {
   });
 
   // Economic
-  world.Pa = world.Atm.in(4, 9) && world.Hyd.in(4, 8) && world.Pop.in([4,8]);
+  world.Pa = world.Atm.in(4, 9) && world.Hyd.in(4, 8) && world.Pop.in([4, 8]);
   world.Ag = world.Atm.in(4, 9) && world.Hyd.in(4, 8) && world.Pop.in(5, 7);
   world.Na = world.Atm.in(0, 3) && world.Hyd.in(0, 3) && world.Pop.in(6, 12);
-  world.Pi = world.Atm.in([0,1,2,4,7,9]) && world.Pop.in(7, 8);
-  world.In = world.Atm.in([0,1,2,4,7,9,10,11,12]) && world.Pop.in(9, 15);
+  world.Pi = world.Atm.in([0, 1, 2, 4, 7, 9]) && world.Pop.in(7, 8);
+  world.In = world.Atm.in([0, 1, 2, 4, 7, 9, 10, 11, 12]) && world.Pop.in(9, 15);
   world.Po = world.Atm.in(2, 5) && world.Hyd.in(0, 3);
-  world.Pr = world.Atm.in([6,8]) && world.Pop.in([5,9]);
-  world.Ri = world.Atm.in([6,8]) && world.Pop.in(6, 8);
+  world.Pr = world.Atm.in([6, 8]) && world.Pop.in([5, 9]);
+  world.Ri = world.Atm.in([6, 8]) && world.Pop.in(6, 8);
 
   const ECONOMIC_CODES = ['Pa', 'Ag', 'Na', 'Pi', 'In', 'Po', 'Pr', 'Ri'];
   ECONOMIC_CODES.forEach(c => {
@@ -160,21 +168,20 @@ function process(world) {
     .join(' ');
 
   // Stellar configuration - just remove
-  codes.filter(c => /^S[0-9A-F]+/.test(c)).forEach(c => {
+  for (const c of codes.filter(c => /^S[0-9A-F]+/.test(c))) {
     codeSet.delete(c);
-  });
+  }
 
   // Report unmatched codes
   if (codeSet.size)
-    console.warn(`Unmatched codes (${world.Hex}): ` + Array.from(codeSet).map(s=>JSON.stringify(s)).join(' '));
+    console.warn(`Unmatched codes (${world.Hex}): ` + Array.from(codeSet).map(s => JSON.stringify(s)).join(' '));
 
 
-  world.Remarks = ([]
-                   .concat(PLANETARY_CODES,POPULATION_CODES,ECONOMIC_CODES)
-                   .map(code => world[code] ? code : '')
-                   .join(' ')
-                   + ' ' + world.Sophonts
-                   + ' ' + world.Details).trim().replace(/\s{2,}/g, ' ');
+  world.Remarks = ([...PLANETARY_CODES, ...POPULATION_CODES, ...ECONOMIC_CODES]
+    .map(code => world[code] ? code : '')
+    .join(' ')
+    + ' ' + world.Sophonts
+    + ' ' + world.Details).trim().replace(/\s{2,}/g, ' ');
 }
 
 function t5ify(world) {
@@ -193,27 +200,27 @@ function t5ify(world) {
   // Derived from:
   // Hlakhoi Ealiyasiyw Staihaia'yo Iwahfuah Riftspan Reaches
   const NA_TABLE = [
-    {freq: 29, entry: 'NaAs'},
-    {freq:  2, entry: 'NaXX'}
+    { freq: 29, entry: 'NaAs' },
+    { freq: 2, entry: 'NaXX' }
   ];
   const AS_TABLE = [
-    {freq: 274, entry: 'AsSc'},
-    {freq: 274, entry: 'AsMw'},
-    {freq: 204, entry: 'AsTv'},
-    {freq: 195, entry: 'AsVc'},
-    {freq: 156, entry: 'AsWc'},
-    {freq:  76, entry: 'AsT9'},
-    {freq:  70, entry: 'AsT1'},
-    {freq:  68, entry: 'AsT0'},
-    {freq:  64, entry: 'AsT6'},
-    {freq:  60, entry: 'AsT4'},
-    {freq:  56, entry: 'AsT8'},
-    {freq:  56, entry: 'AsT3'},
-    {freq:  53, entry: 'AsT2'},
-    {freq:  48, entry: 'AsT5'},
-    {freq:  45, entry: 'AsT7'},
-    {freq:  26, entry: 'AsXX'},
-    {freq:  10, entry: 'AsTz'}
+    { freq: 274, entry: 'AsSc' },
+    { freq: 274, entry: 'AsMw' },
+    { freq: 204, entry: 'AsTv' },
+    { freq: 195, entry: 'AsVc' },
+    { freq: 156, entry: 'AsWc' },
+    { freq: 76, entry: 'AsT9' },
+    { freq: 70, entry: 'AsT1' },
+    { freq: 68, entry: 'AsT0' },
+    { freq: 64, entry: 'AsT6' },
+    { freq: 60, entry: 'AsT4' },
+    { freq: 56, entry: 'AsT8' },
+    { freq: 56, entry: 'AsT3' },
+    { freq: 53, entry: 'AsT2' },
+    { freq: 48, entry: 'AsT5' },
+    { freq: 45, entry: 'AsT7' },
+    { freq: 26, entry: 'AsXX' },
+    { freq: 10, entry: 'AsTz' }
   ];
   if (world.Allegiance === 'Na') world.Allegiance = world.Pop === 0 ? 'NaXX' : pickFromFrequencyTable(NA_TABLE);
   if (world.Allegiance === 'As') world.Allegiance = pickFromFrequencyTable(AS_TABLE);
@@ -235,8 +242,8 @@ function t5ify(world) {
     (world.Ri ? 1 : 0) +
     (world.In ? 1 : 0) +
     (world.Bases === 'NS' || world.Bases === 'NW' || world.Bases === 'W' ||
-     world.Bases === 'X' || world.Bases === 'D' || world.Bases === 'RT' ||
-     world.Bases === 'CK' || world.Bases === 'KM' ? 1 : 0);
+      world.Bases === 'X' || world.Bases === 'D' || world.Bases === 'RT' ||
+      world.Bases === 'CK' || world.Bases === 'KM' ? 1 : 0);
   world._Ix_ = `{ ${world.Importance} }`;
 
   // Economics Extension
@@ -249,16 +256,16 @@ function t5ify(world) {
   } else {
     world.Resources =
       Math.max(0,
-               roll2D() + (world.TL >= 8 ? world.GG + world.Belts : 0));
+        roll2D() + (world.TL >= 8 ? world.GG + world.Belts : 0));
     world.Labor =
       Math.max(0,
-               world.Pop - 1);
+        world.Pop - 1);
     world.Infrastructure =
       Math.max(0,
-               world.Ba/* || world.Di*/ ? 0 : // Per Errata "Di should not impact Infrastructure"
-               world.Lo ? 1 :
-               world.Ni ? roll1D()  + world.Importance:
-               roll2D() + world.Importance);
+        world.Ba/* || world.Di*/ ? 0 : // Per Errata "Di should not impact Infrastructure"
+          world.Lo ? 1 :
+            world.Ni ? roll1D() + world.Importance :
+              roll2D() + world.Importance);
     world.Efficiency = flux();
   }
   world._Ex_ = `(${toEHex(world.Resources)}${toEHex(world.Labor)}${toEHex(world.Infrastructure)}${toSInt(world.Efficiency)})`;
@@ -294,8 +301,8 @@ function pickFromFrequencyTable(table) {
   let n = Math.floor(Math.random() * sum);
   for (let i = 0; i < table.length; ++i) {
     const row = table[i];
-      if (n < row.freq)
-        return row.entry;
+    if (n < row.freq)
+      return row.entry;
     n -= row.freq;
   }
   throw new Error("Logic bug");
@@ -408,7 +415,7 @@ function $(s) { return document.querySelector(s); }
 
 async function convertAndParse(text) {
   const response = await fetch(new Request('https://travellermap.com/api/sec?type=TabDelimited',
-                           {method: 'POST', body: text}));
+    { method: 'POST', body: text }));
   const tab = await response.text();
   return parse(tab);
 }
@@ -423,8 +430,6 @@ $('#forss').addEventListener('click', async event => {
   $('#out').value = worlds
     .map(world => format(world).join('\t'))
     .join('\n') + '\n';
-
-  window.worlds = worlds;
 });
 
 $('#sectot5').addEventListener('click', async event => {
@@ -432,30 +437,28 @@ $('#sectot5').addEventListener('click', async event => {
   worlds.forEach(world => process(world));
   worlds.forEach(world => t5ify(world));
   const cols = ['Hex', 'Name', 'UWP', 'Bases', 'Remarks', 'Zone', 'PBG',
-                'Allegiance', 'Stars', '{Ix}', '(Ex)', '[Cx]', 'Nobility', 'W'];
+    'Allegiance', 'Stars', '{Ix}', '(Ex)', '[Cx]', 'Nobility', 'W'];
 
   worlds.sort((a, b) => a.Hex < b.Hex ? -1 : b.Hex < a.Hex ? 1 : 0);
 
   $('#out').value =
     cols.join('\t') + '\n' +
     worlds
-    .map(world => [
-      world.Hex,
-      world.Name,
-      world.UWP,
-      world.Bases,
-      world.Remarks,
-      world.Zone,
-      world.PBG,
-      world.Allegiance,
-      world.Stars,
-      world._Ix_,
-      world._Ex_,
-      world._Cx_,
-      '',
-      world.Worlds
-    ].join('\t'))
-    .join('\n');
-
-  window.worlds = worlds;
+      .map(world => [
+        world.Hex,
+        world.Name,
+        world.UWP,
+        world.Bases,
+        world.Remarks,
+        world.Zone,
+        world.PBG,
+        world.Allegiance,
+        world.Stars,
+        world._Ix_,
+        world._Ex_,
+        world._Cx_,
+        '',
+        world.Worlds
+      ].join('\t'))
+      .join('\n');
 });

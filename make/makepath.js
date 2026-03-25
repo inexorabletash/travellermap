@@ -1,14 +1,16 @@
-/*global Traveller, getTextViaPOST, computeRoute */
+import { computeRoute } from './path.js';
+import { getTextViaPOST } from './post.js';
+import * as Traveller from '../map.js';
 
-"use strict";
-
-const $ = s => document.querySelector(s);
+const Util = Traveller.Util;
+const $ = Util.$;
+const $$ = Util.$$;
 
 const PS = 16; // px/parsec
 const INSET = 2; // px
 const RADIUS = 4;
 
-let sec = {};
+let sec;
 
 const canvas = $('#canvas'), ctx = canvas.getContext('2d');
 
@@ -18,10 +20,10 @@ async function parse() {
   const data = $('#data').value;
   if (!data.length) return;
   const text = await getTextViaPOST(
-    Traveller.MapService.makeURL('/api/sec', {type: 'TabDelimited'}),
+    Traveller.MapService.makeURL('/api/sec', { type: 'TabDelimited' }),
     data
   );
-  const sector = sec = parseSector(text);
+  sec = Util.parseSector(text);
   const dataURL = await getTextViaPOST(Traveller.MapService.makeURL('/api/poster'), {
     data: $('#data').value,
     metadata: $('#metadata').value,
@@ -35,27 +37,8 @@ async function parse() {
   refresh();
 }
 
-function parseSector(tabDelimitedData) {
-  const sector = {
-    worlds: {}
-  };
-  const lines = tabDelimitedData.split(/\r?\n/);
-  const header = lines.shift().toLowerCase().split('\t')
-    .map(h => h.replace(/[^a-z]/g, ''));
-  lines.forEach(line => {
-    if (!line.length) return;
-    const world = {};
-    line
-      .split('\t')
-      .forEach((field, index) => {
-        world[header[index]] = field;
-      });
-    sector.worlds[world.hex] = world;
-  });
-  return sector;
-}
-
-let route = [];
+/** @type {string[]|undefined} */
+let route;
 
 function refresh() {
   function hexToCoords(hex) {
@@ -66,40 +49,40 @@ function refresh() {
   function hxhyToCoords(hx, hy) {
     let x = hx, y = hy;
     const dy = (x % 2) ? 0.5 : 0;
-    x *= Math.cos(Math.PI/6); // cos(30deg)
-    return {x:x*PS+INSET+PS/2, y:(y+dy)*PS+INSET+PS/2};
+    x *= Math.cos(Math.PI / 6); // cos(30deg)
+    return { x: x * PS + INSET + PS / 2, y: (y + dy) * PS + INSET + PS / 2 };
   }
 
   ctx.clearRect(0, 0, PS * canvas.width, PS * canvas.height);
 
   ctx.lineWidth = 2;
   ctx.strokeStyle = 'red';
-  stack.forEach(hex => {
+  for (const hex of stack) {
     const coords = hexToCoords(hex);
     ctx.beginPath();
     ctx.arc(coords.x,
-            coords.y,
-            RADIUS + 2, 0, 2 * Math.PI, false);
+      coords.y,
+      RADIUS + 2, 0, 2 * Math.PI, false);
     ctx.stroke();
-  });
+  }
 
   let out = '';
   if (route) {
     ctx.lineWidth = 2;
     ctx.strokeStyle = 'rgba(0,128,0,0.5)';
-    route.forEach((hex, index) => {
+    for (const hex of route) {
       const coords = hexToCoords(hex);
       ctx.beginPath();
       ctx.arc(coords.x,
-              coords.y,
-              RADIUS + 2, 0, 2 * Math.PI, false);
+        coords.y,
+        RADIUS + 2, 0, 2 * Math.PI, false);
       ctx.stroke();
-    });
+    }
 
     ctx.lineWidth = 4;
     ctx.strokeStyle = "green";
     ctx.beginPath();
-    route.forEach((hex, index) => {
+    for (const [index, hex] of route.entries()) {
       const coords = hexToCoords(hex);
       if (index === 0) {
         ctx.moveTo(coords.x, coords.y);
@@ -108,7 +91,7 @@ function refresh() {
         ctx.lineTo(coords.x, coords.y);
         out += ' -> ' + hex;
       }
-    });
+    }
     ctx.stroke();
   } else {
     out = 'No route found.';
@@ -124,18 +107,18 @@ $('#canvas').addEventListener('mousedown', event => {
 
   const offsetX = 'offsetX' in event ? event.offsetX :
     'layerX' in event ? event.layerX :
-    event.pageX - event.target.offsetLeft;
+      event.pageX - event.target.offsetLeft;
   const offsetY = 'offsetY' in event ? event.offsetY :
     'layerY' in event ? event.layerY :
-    event.pageY - event.target.offsetTop;
+      event.pageY - event.target.offsetTop;
   let x = offsetX, y = offsetY;
 
-  x = (x - INSET) / PS / Math.cos(Math.PI/6);
+  x = (x - INSET) / PS / Math.cos(Math.PI / 6);
   y = (y - INSET) / PS;
   x = Math.floor(x);
   if (x % 2) y -= 0.5;
   y = Math.floor(y);
-  const hex = ('00' + (x+1)).slice(-2) + ('00' + (y+1)).slice(-2);
+  const hex = ('00' + (x + 1)).slice(-2) + ('00' + (y + 1)).slice(-2);
 
   if (stack.length) {
     const start = stack.pop();

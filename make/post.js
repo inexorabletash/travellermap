@@ -1,21 +1,22 @@
-/*global Traveller */ // for lint and IDEs
+import * as Traveller from '../map.js';
+
+const Util = Traveller.Util;
+const $ = Util.$;
+const $$ = Util.$$;
 
 // Common routines for various Makers:
 // * Populate sector selector, and load data on demand
 // * Add drag-and-drop handlers for TEXTAREA elements
 
-'use strict';
+populateSector();
 
-window.addEventListener('DOMContentLoaded', async event => {
-  const $ = s => document.querySelector(s);
-  const $$ = s => Array.from(document.querySelectorAll(s));
-
+export async function populateSector() {
   const cmp = (a, b) => a < b ? -1 : b < a ? 1 : 0;
 
   const list = $('#sector');
 
   const seen = new Set();
-  const universe = await Traveller.MapService.universe({requireData: 1});
+  const universe = await Traveller.MapService.universe({ requireData: 1 });
   universe.Sectors
     .filter(sector => Math.abs(sector.X) < 10 && Math.abs(sector.Y) < 7)
     .map(sector => {
@@ -39,17 +40,19 @@ window.addEventListener('DOMContentLoaded', async event => {
 
   list.addEventListener('change', event => {
     const s = list.value.split('|'),
-          name = s[0],
-          milieu = s[1] || undefined;
+      name = s[0],
+      milieu = s[1] || undefined;
     Traveller.MapService.sectorData(name, {
-      type: 'SecondSurvey', metadata: 0, milieu})
+      type: 'SecondSurvey', metadata: 0, milieu
+    })
       .then(data => {
         const target = $('#data');
         if (target) target.value = data;
       });
 
     Traveller.MapService.sectorMetaData(name, {
-      accept: 'text/xml', milieu})
+      accept: 'text/xml', milieu
+    })
       .then(data => {
         const target = $('#metadata');
         if (target) target.value = data;
@@ -70,41 +73,42 @@ window.addEventListener('DOMContentLoaded', async event => {
     });
     elem.placeholder = 'Copy and paste data or drag and drop a file here.';
   });
+}
 
-  async function blobToString(blob) {
-    // Try UTF-8 first
-    const text = await blob.text();
-    if (text.indexOf('\uFFFD') === -1)
-      return text;
 
-    // Fall back to Windows-1252
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsText(blob, 'windows-1252');
-      reader.onload = event => { resolve(reader.result); };
-      reader.onerror = event => { reject(reader.error); };
-    });
-  }
-});
+export async function blobToString(blob) {
+  // Try UTF-8 first
+  const text = await blob.text();
+  if (text.indexOf('\uFFFD') === -1)
+    return text;
+
+  // Fall back to Windows-1252
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsText(blob, 'windows-1252');
+    reader.onload = event => { resolve(reader.result); };
+    reader.onerror = event => { reject(reader.error); };
+  });
+}
 
 // |data| can be string (payload) or object (key/value form data)
 // Returns Promise<string>
-async function getTextViaPOST(url, data) {
+export async function getTextViaPOST(url, data) {
   let request;
   if (typeof data === 'string') {
     request = fetch(url, {
       method: 'POST',
-      headers: {'Content-Type': 'text/plain'},  // Safari doesn't infer this.
+      headers: { 'Content-Type': 'text/plain' },  // Safari doesn't infer this.
       body: data
     });
   } else {
     data = Object(data);
     const fd = new FormData();
-    Object.keys(data).forEach(key => {
+    for (const key of Object.keys(data)) {
       const value = data[key];
       if (value !== undefined && value !== null)
         fd.append(key, data[key]);
-    });
+    }
     request = fetch(url, {
       method: 'POST',
       body: fd
@@ -118,7 +122,7 @@ async function getTextViaPOST(url, data) {
   return text;
 }
 
-async function getJSONViaPOST(url, data) {
+export async function getJSONViaPOST(url, data) {
   const text = await getTextViaPOST(url, data);
   return JSON.parse(text);
 }
