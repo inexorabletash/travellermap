@@ -14,13 +14,9 @@ setInterval(async () => {
     $('#metadata_generated').value = '';
     lastValue = value;
     if (!value) return;
-    try {
-      const converted = await convertData(value);
-      const sector = parseSector(converted);
-      await buildMap(sector);
-    } catch (reason) {
-      alert(reason);
-    }
+    const converted = await convertData(value);
+    const sector = parseSector(converted);
+    await buildMap(sector);
   }
 }, 500);
 
@@ -54,7 +50,7 @@ function parseSector(tabDelimitedData) {
   const header = lines.shift().toLowerCase().split(/\t/);
   for(const line of lines) {
     if (!line.length)
-      return;
+      break;
     const world = {};
     for(const [index, field] of line.split(/\t/).entries()) {
       const col = header[index].replace(/[^a-z]/g, '');
