@@ -3,8 +3,31 @@
 <meta charset="utf-8">
 <link rel="stylesheet" href="../site.css?update=2022-09-10T10:37:44">
 <script type="module">
-import { AllegianceMap, erode, walk, breakSpans, claimAllUnclaimed } from '../borders/borders.js';
+import { AllegianceMap, erode, walk, breakSpans, claimAllUnclaimed, processMap, UNALIGNED, NON_ALIGNED } from '../borders/borders.js';
 const $ = s => document.querySelector(s);
+
+$('#btnClaimAll').addEventListener('click', () => {
+  claimAllUnclaimed(g_map, selectedAllegiance());
+  updateView();
+});
+
+$('#btnErode').addEventListener('click', () => {
+  erode(g_map, selectedAllegiance(), 3);
+  updateView();
+});
+
+$('#btnBreakSpans').addEventListener('click', () => {
+  breakSpans(g_map, selectedAllegiance(), 4);
+  updateView();
+});
+
+$('#btnRun').addEventListener('click', () => {
+  run();
+});
+
+$('#btnClearMap').addEventListener('click', () => {
+  clearMap();
+});
 
 const allegianceMap = {
   'Im': 'red',
@@ -227,14 +250,14 @@ function run() {
     Click a hex to toggle empty/occupied
     </div>
     <div>
-    <input type="button" value="Run Algorithm" onclick="run();" />
-    <input type="button" value="Clear Map" onclick="clearMap();" />
+    <input type="button" id="btnRun" value="Run Algorithm" />
+    <input type="button" id="btnClearMap" value="Clear Map" />
     </div>
     <div>
     For selected allegiance only:
-    <input type="button" value="Claim All" onclick="claimAllUnclaimed(g_map,selectedAllegiance()); updateView();" />
-    <input type="button" value="Erode" onclick="erode(g_map,selectedAllegiance(),3); updateView();" />
-    <input type="button" value="Break Spans" onclick="breakSpans(g_map,selectedAllegiance(),4); updateView();" />
+    <input type="button" id="btnClaimAll" value="Claim All" />
+    <input type="button" id="btnErode" value="Erode"  />
+    <input type="button" id="btnBreakSpans" value="Break Spans" />
     </div>
     <ul id="walks">
     </ul>
