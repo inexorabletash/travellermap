@@ -40,7 +40,15 @@
 <link rel="stylesheet" href="index.css?update=2026-03-17T13:19:33">
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js"></script>
-<script type="module" src="index.js"></script>
+<script type="importmap">
+{
+  "imports": {
+    "./map.js": "./map.js?update=2026-04-01T13:40:25",
+    "./world_util.js": "./world_util.js?update=2026-04-01T13:40:25"
+  }
+}
+</script>
+<script type="module" src="index.js?update=2026-04-01T13:40:25"></script>
 
 <body class="hide-ui hide-footer ds-mini show-settings">
   <div id="mapContainer">
