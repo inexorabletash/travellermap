@@ -173,9 +173,9 @@ function updateWalks(map) {
     if (border.path.length < 2)
       return;
 
-    const str = '<Border Allegiance="' + Traveller.escapeHTML(border.allegiance) + '">' +
+    const str = '<Border Allegiance="' + Traveller.Util.escapeHTML(border.allegiance) + '">' +
       border.path.join(' ') + '</Border>';
-    html.push("<li>" + Traveller.escapeHTML(str));
+    html.push("<li>" + Traveller.Util.escapeHTML(str));
   });
 
   document.getElementById("walks").innerHTML = html.join("");
@@ -242,7 +242,7 @@ window.onload = async () => {
 
   function status(message) {
     const display = document.getElementById('status');
-    display.innerHTML += `<div>${Traveller.escapeHTML(message)}</div>`;
+    display.innerHTML += `<div>${Traveller.Util.escapeHTML(message)}</div>`;
     display.scrollTop = display.scrollHeight
   }
 
