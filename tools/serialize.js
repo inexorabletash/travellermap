@@ -1,7 +1,7 @@
 function pad(s, len) { return s + ' '.repeat(len - s.length); }
 function trim(s) { return s.replace(/\s+$/, ''); }
 
-function parse(s) {
+export function parse(s) {
   if (/\t/.test(s)) {
     return parseTabDelimited(s);
   }
@@ -111,7 +111,7 @@ function formatSec(data, options) {
 }
 
 
-function format(data, options) {
+export function format(data, options) {
   if (data.type === 'tab')
     return formatTabDelimited(data, options);
   if (data.type === 'col')

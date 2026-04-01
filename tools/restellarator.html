@@ -28,12 +28,14 @@ Conversions:
 <script type="importmap">
 {
   "imports": {
-    "./restellarator.js": "./restellarator.js?update=2026-04-01T13:40:25"
+    "./restellarator.js": "./restellarator.js?update=2026-04-01T13:40:25",
+    "./serialize.js": "./serialize.js?update=2026-04-01T13:40:25"
   }
 }
 </script>
 <script type="module">
 import Restellarator from './restellarator.js';
+import { parse, format } from './serialize.js';
 
 function fix(world) {
   // Stellar
@@ -42,13 +44,13 @@ function fix(world) {
   world[key] = Restellarator.reorder(current ? Restellarator.fix(current) : Restellarator.generate());
 }
 
-$('#go').addEventListener('click', () => {
+document.getElementById('go').addEventListener('click', () => {
   try {
-    const data = parse($('#in').value);
+    const data = parse(document.getElementById('in').value);
 
     data.worlds.forEach(fix);
 
-    $('#out').value = format(data, {expand: $('#expand').checked});
+    document.getElementById('out').value = format(data, {expand: document.getElementById('expand').checked});
   } catch (ex) {
     alert('Error encountered:\n\n' + ex.message +
           '\n\nReport to the author (include the input data).');
