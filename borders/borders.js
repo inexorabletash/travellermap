@@ -411,7 +411,7 @@ function processAllegiance(map, allegiance) {
  * the smallest number of claimed worlds.
  * @param {AllegianceMap} map - The map to process
  * @param {function} success_callback - Called when processing is complete
- * @param {function} progress_callback - Called with a string describing the current step of processing, for display to the user
+ * @param {function} [progress_callback] - Called with a string describing the current step of processing, for display to the user
  */
 export function processMap(map, success_callback, progress_callback) {
   const counts = {};
@@ -451,7 +451,7 @@ export function processMap(map, success_callback, progress_callback) {
       const polity = list.shift();
       if (polity.allegiance !== NON_ALIGNED && polity.count > 1) {
         if (progress_callback)
-          progress_callback(`Processing allegiance ${polity.allegiance} (${polity.count$} worlds)`);
+          progress_callback(`Processing allegiance ${polity.allegiance} (${polity.count} worlds)`);
         processAllegiance(map, polity.allegiance);
       }
       setTimeout(doNext, 0);
