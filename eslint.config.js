@@ -14,7 +14,8 @@ export default [
     languageOptions: {
       globals: {
         ...globals.browser,
-        Handlebars: true
+        /** @type {typeof import('handlebars')} */
+        Handlebars: Handlebars,
       },
     },
   },

@@ -6,10 +6,11 @@
         "strictNullChecks": true,
         "strictFunctionTypes": true,
         "checkJs": true,
-        //"noImplicitAny": true,
+        "useUnknownInCatchVariables": false,
+        "noImplicitAny": false,
     },
     //"include": ["types/**/*.d.ts"],
-    //"typeAcquisition": { "enable": true },
+    "typeAcquisition": { "enable": true },
     "exclude": ["sw.js"],
     "include": ["**/*.js"]
 }

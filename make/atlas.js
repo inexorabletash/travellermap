@@ -1,8 +1,3 @@
-/**
- * @typedef {Object} Handlebars
- * @property {function} compile - Compiles a Handlebars template
- **/
-
 import * as Traveller from '../map.js';
 
 const Util = Traveller.Util;
