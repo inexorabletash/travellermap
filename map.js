@@ -80,7 +80,7 @@ export class Util {
 
   static once(func) {
     let run = false;
-    return function () {
+    return /** @this {unknown} */ function () {
       if (run) return;
       run = true;
       func.apply(this, arguments);
@@ -95,30 +95,22 @@ export class Util {
    * @returns {function}
    */
   static debounce(func, delay, immediate = false) {
-    let timeoutId = 0;
-    if (immediate) {
-      return function () {
-        if (timeoutId)
-          clearTimeout(timeoutId);
-        else
-          func.apply(this, arguments);
-        timeoutId = setTimeout(() => { timeoutId = 0; }, delay);
-      };
-    } else {
-      return function () {
-        const $this = this, $arguments = arguments;
-        if (timeoutId)
-          clearTimeout(timeoutId);
-        timeoutId = setTimeout(() => {
-          func.apply($this, $arguments);
-          timeoutId = 0;
-        }, delay);
-      };
-    }
+    let timeoutId = null;
+    /** @this {unknown} */
+    return function (...args) {
+      const callNow = immediate && !timeoutId;
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        timeoutId = null;
+        if (!immediate) func.apply(this, args);
+      }, delay);
+      if (callNow) func.apply(this, args);
+    };
   }
 
   static memoize(f) {
     const cache = Object.create(null);
+    /** @this {unknown} */ 
     return function () {
       const key = JSON.stringify([].slice.call(arguments));
       return (key in cache) ? cache[key] : cache[key] = f.apply(this, arguments);
