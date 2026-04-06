@@ -16,7 +16,15 @@ function firstOrNull(a) {
 
 const cmp = (a, b) => a < b ? -1 : a > b ? 1 : 0;
 
+/**
+ * 
+ * @param {string} s 
+ * @returns {string}
+ */
 function smartquote(s) {
+  if(typeof s !== 'string') {
+    return s;
+  }
   return s ? s
     .replace("'", "\u2019")
     .replace(' "', " \u201C")
