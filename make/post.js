@@ -38,24 +38,34 @@ export async function populateSector() {
       list.appendChild(option);
     });
 
-  list.addEventListener('change', event => {
+  list.addEventListener('change', (_event) => {
     const s = list.value.split('|'),
       name = s[0],
       milieu = s[1] || undefined;
+
     Traveller.MapService.sectorData(name, {
-      type: 'SecondSurvey', metadata: 0, milieu
+      type: 'SecondSurvey', metadata: 0, milieu, abortKey: 'sectorData'
     })
       .then(data => {
         const target = $('#data');
         if (target) target.value = data;
+      })
+      .catch(err => {
+        if (err?.name === 'AbortError') return;
+        console.error(err);
       });
 
+
     Traveller.MapService.sectorMetaData(name, {
-      accept: 'text/xml', milieu
+      accept: 'text/xml', milieu, abortKey: 'sectorMetaData'
     })
       .then(data => {
         const target = $('#metadata');
         if (target) target.value = data;
+      })
+      .catch(err => {
+        if (err?.name === 'AbortError') return;
+        console.error(err);
       });
   });
 

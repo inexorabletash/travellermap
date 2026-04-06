@@ -891,7 +891,7 @@ async function doAttract() {
     const data = await Traveller.MapService.search(
       '(random world)',
       map.namedOptions.get('milieu'),
-      { method: 'POST' }
+      { method: 'POST', abortKey: 'search' }
     );
     const items = data.Results.Items;
     if (items.length < 1)
@@ -959,7 +959,7 @@ function updateContext(worldX, worldY, options) {
   } else {
     dataTimeout = setTimeout(async () => {
       try {
-        const data = await Traveller.MapService.credits(worldX, worldY, milieu);
+        const data = await Traveller.MapService.credits(worldX, worldY, milieu, { abortKey: options.abortKey });
         displayResults(data);
       } catch (err) {
         if (err?.name === 'AbortError') return;
@@ -1254,7 +1254,7 @@ async function search(query, options) {
       await Traveller.MapService.search(
         query,
         map.namedOptions.get('milieu'),
-        { signal: searchAbortController.signal }
+        { abortController: searchAbortController }
       );
     displayResults(data);
   } catch (err) {

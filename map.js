@@ -392,17 +392,26 @@ export class MapService {
   }
 
   /**
-   * Generic service function to make HTTP requests.
-   * @param {string} key - A unique key to identify the request, used for aborting previous requests.
+   * Generic service function to make HTTP requests. If options.abortKey and options.signal are provided, will use an abortSignal.
    * @param {string} url - The URL to send the request to.
    * @param {Object} [options] - Optional parameters for the request.
    * @param {string} [options.method] - HTTP method (default: 'GET')
    * @param {string} [options.accept] - Optional Accept ContentType header value to specify the desired response format. Defaults to 'application/json'.
-   * @param {AbortSignal} [options.signal] - Optional AbortSignal to cancel the request.
+   * @param {string} [options.abortKey] - Optional key when provided will automatically abort when a new request is made with the same key.
+   * @param {AbortController} [options.abortController] - Optional AbortController to cancel the request.
    * @returns {Promise<any>} The response data, parsed as JSON if the response is application/json, or as text otherwise.
    */
-  static async #service(key, url, options = {}) {
-    const signal = options.signal ?? this.#getAbortController(key).signal;
+  static async #service(url, options = {}) {
+    let signal = undefined;
+    let abortController = undefined;
+    if(options.abortKey !== undefined && options.abortKey !== null) {
+      abortController = options.abortController ?? this.#getAbortController(options.abortKey);
+    } else {
+      abortController = options.abortController;
+    }
+    if(abortController) {
+      signal = abortController.signal;
+    }
     const accept = options.accept ?? 'application/json';
     const response = await fetch(url, {
       method: options.method ?? 'GET',
@@ -417,7 +426,7 @@ export class MapService {
 
   static #makeServiceUrl(path, options = {}) {
     // remove non-query parameters from options without mutating options object
-    const { signal, method, accept, ...queryOptions } = options;
+    const { signal, method, accept, abortKey, abortController, ...queryOptions } = options;
     return Util.makeURL(SERVICE_BASE + path, queryOptions);
   }
 
@@ -429,7 +438,7 @@ export class MapService {
     const urlOptions = { ...options, sector, hex };
     const url = this.#makeServiceUrl('/api/coordinates', urlOptions);
     options.accept = options.accept ?? 'application/json';
-    return this.#service('coordinates', url, options);
+    return this.#service(url, options);
   }
 
   /**
@@ -440,51 +449,52 @@ export class MapService {
    * @param {Object} [options] - Optional parameters for the request.
    * @param {string} [options.method] - HTTP method (default: 'GET')
    * @param {string} [options.accept] - Optional Accept ContentType header value to specify the desired response format. Defaults to 'application/json'.
-   * @param {AbortSignal} [options.signal] - Optional AbortSignal to cancel the request.
+   * @param {string} [options.abortKey] - Optional key when provided will automatically abort when a new request is made with the same key.
+   * @param {AbortController} [options.abortController] - Optional AbortController to cancel the request.
    * @returns {any} The credits data, parsed as JSON if the response is application/json, or as text otherwise.
    */
   static credits(worldX, worldY, milieu, options = {}) {
     const urlOptions = { ...options, x: worldX, y: worldY, milieu };
     const url = this.#makeServiceUrl('/api/credits', urlOptions);
-    return this.#service('credits', url, options);
+    return this.#service(url, options);
   }
 
   static search(query, milieu, options = {}) {
     const urlOptions = { ...options, q: query, milieu };
     const url = this.#makeServiceUrl('/api/search', urlOptions);
-    return this.#service('search', url, options);
+    return this.#service(url, options);
   }
 
   static sectorData(sector, options = {}) {
     const urlOptions = { ...options, sector };
     const url = this.#makeServiceUrl('/api/sec', urlOptions);
-    return this.#service('sectorData', url, options);
+    return this.#service(url, options);
   }
 
   static sectorDataTabDelimited(sector, options = {}) {
     const urlOptions = { ...options, sector, type: 'TabDelimited' };
     const url = this.#makeServiceUrl('/api/sec', urlOptions);
     options.accept = options.accept ?? 'text/plain';
-    return this.#service('sectorDataTabDelimited', url, options);
+    return this.#service(url, options);
   }
 
   static sectorMetaData(sector, options = {}) {
     const urlOptions = { ...options, sector };
     const url = this.#makeServiceUrl('/api/metadata', urlOptions);
-    return this.#service('sectorMetaData', url, options);
+    return this.#service(url, options);
   }
 
   static MSEC(sector, options = {}) {
     const urlOptions = { ...options, sector };
     const url = this.#makeServiceUrl('/api/msec', urlOptions);
     options.accept = options.accept ?? 'text/plain';
-    return this.#service('MSEC', url, options);
+    return this.#service(url, options);
   }
 
   static universe(options = {}) {
     const urlOptions = { ...options };
     const url = this.#makeServiceUrl('/api/universe', urlOptions);
-    return this.#service('universe', url, options);
+    return this.#service(url, options);
   }
 }
 
