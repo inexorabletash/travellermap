@@ -910,7 +910,7 @@ async function doAttract() {
     world.SectorX, world.SectorY, world.HexX, world.HexY);
   hideCards();
   setTimeout(async () => {
-    await map.animateTo(128, target.x, target.y, 10);
+    await map.animateTo(128, target.x, target.y, { duration: 10 });
     updateContext(map.worldX, map.worldY, { directAction: true });
     setTimeout(doAttract, TARGET_WAIT_MS);
   }, HOME_WAIT_MS);

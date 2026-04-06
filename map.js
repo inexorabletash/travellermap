@@ -110,7 +110,7 @@ export class Util {
 
   static memoize(f) {
     const cache = Object.create(null);
-    /** @this {unknown} */ 
+    /** @this {unknown} */
     return function () {
       const key = JSON.stringify([].slice.call(arguments));
       return (key in cache) ? cache[key] : cache[key] = f.apply(this, arguments);
@@ -583,9 +583,12 @@ function isCallable(o) {
 }
 
 class Animation {
-  // dur = total duration (seconds)
-  // smooth = optional smoothing function
-  // set onanimate to function called with animation position (0.0 ... 1.0)
+  /**
+   * Creates an animation that runs for a specified duration and optionally applies a smoothing function to the animation progress.
+   * set onanimate to function called with animation position (0.0 ... 1.0)
+   * @param {number} dur - The total duration of the animation in seconds.
+   * @param {Function} smooth - An optional smoothing function that takes a position (0.0 to 1.0) and returns a modified position for easing effects.
+   */
   constructor(dur, smooth) {
     const start = Date.now();
 
@@ -619,36 +622,47 @@ class Animation {
         this.oncancel();
     }
   }
-}
 
-Animation.interpolate = (a, b, p) => {
-  return a * (1.0 - p) + b * p;
-};
-
-// Time smoothing function - input time is t within duration dur.
-// Acceleration period is a, deceleration period is d.
-//
-// Example:     t_filtered = smooth( t, 1.0, 0.25, 0.25 );
-//
-// Reference:   http://www.w3.org/TR/2005/REC-SMIL2-20050107/smil-timemanip.html
-Animation.smooth = (t, dur, a, d) => {
-  const dacc = dur * a;
-  const ddec = dur * d;
-  const r = 1 / (1 - a / 2 - d / 2);
-  let r_t, tdec, pd;
-
-  if (t < dacc) {
-    r_t = r * (t / dacc);
-    return t * r_t / 2;
-  } else if (t <= (dur - ddec)) {
-    return r * (t - dacc / 2);
-  } else {
-    tdec = t - (dur - ddec);
-    pd = tdec / ddec;
-
-    return r * (dur - dacc / 2 - ddec + tdec * (2 - pd) / 2);
+  /**
+   * @param {number} a
+   * @param {number} b
+   * @param {number} p
+   * @return {number}
+   */
+  static interpolate(a, b, p) {
+    return a * (1.0 - p) + b * p;
   }
-};
+  
+  /**
+   * Time smoothing function - input time is t within duration dur.
+   * Acceleration period is a, deceleration period is d.
+   * Reference:   http://www.w3.org/TR/2005/REC-SMIL2-20050107/smil-timemanip.html
+   * @usage t_filtered = Animation.smooth( t, 1.0, 0.25, 0.25 );
+   * @param {number} t
+   * @param {number} dur
+   * @param {number} a
+   * @param {number} d
+   * @return {number}
+   */
+  static smooth(t, dur, a, d) {
+    const dacc = dur * a;
+    const ddec = dur * d;
+    const r = 1 / (1 - a / 2 - d / 2);
+    let r_t, tdec, pd;
+
+    if (t < dacc) {
+      r_t = r * (t / dacc);
+      return t * r_t / 2;
+    } else if (t <= (dur - ddec)) {
+      return r * (t - dacc / 2);
+    } else {
+      tdec = t - (dur - ddec);
+      pd = tdec / ddec;
+
+      return r * (dur - dacc / 2 - ddec + tdec * (2 - pd) / 2);
+    }
+  }
+}
 
 
 // ======================================================================
@@ -686,14 +700,14 @@ class NamedOptions {
 //
 //   let map = new Map( document.getElementById('YourMapDiv') );
 //
-//   map.OnPositionChanged = () => { update permalink }
-//   map.OnScaleChanged    = () => { update scale indicator }
-//   map.OnStyleChanged    = () => { update control panel }
-//   map.OnOptionsChanged  = () => { update control panel }
+//   map.onPositionChanged = () => { update permalink }
+//   map.onScaleChanged    = () => { update scale indicator }
+//   map.onStyleChanged    = () => { update control panel }
+//   map.onOptionsChanged  = () => { update control panel }
 //
-//   map.OnHover           = ( {x, y} ) => { show data }
-//   map.OnClick           = ( {x, y} ) => { show data }
-//   map.OnDoubleClick     = ( {x, y} ) => { show data }
+//   map.onHover           = ( {x, y} ) => { show data }
+//   map.onClick           = ( {x, y} ) => { show data }
+//   map.onDoubleClick     = ( {x, y} ) => { show data }
 //
 //   Read-Only:
 //     map.worldX
@@ -732,8 +746,18 @@ class NamedOptions {
 // Slippy Map using Tiles
 // ======================================================================
 
+/**
+ * @param {number} v
+ */
 function log2(v) { return Math.log(v) / Math.LN2; }
+/**
+ * @param {number} v
+ */
 function pow2(v) { return Math.pow(2, v); }
+/**
+ * @param {number} x
+ * @param {number} y
+ */
 function dist(x, y) { return Math.sqrt(x * x + y * y); }
 
 const SINK_OFFSET = 1000;
@@ -1428,6 +1452,11 @@ export class TravellerMap {
     return undefined;
   }
 
+  /**
+   * @param {number} scale
+   * @param {number} x
+   * @param {number} y
+   */
   shouldAnimateTo(scale, x, y) {
     // TODO: Allow scale changes if target is "visible" (zooming in)
     if (scale !== this.scale)
@@ -1444,10 +1473,16 @@ export class TravellerMap {
     }
   }
 
-  animateTo(scale, x, y, sec) {
+  /**
+   * @param {number} scale
+   * @param {number} x
+   * @param {number} y
+   * @param {Object} [options]
+   * @param {number} [options.duration=2.0] - The duration of the animation in seconds.
+   */
+  animateTo(scale, x, y, options = { duration: 2.0 }) {
     return /** @type {Promise<void>} */(new Promise((resolve, reject) => {
       this.cancelAnimation();
-      sec = sec || 2.0;
       const os = this.scale,
         ox = this.x,
         oy = this.y;
@@ -1456,7 +1491,8 @@ export class TravellerMap {
         return;
       }
 
-      this.animation = new Animation(sec, p => Animation.smooth(p, 1.0, 0.1, 0.25));
+      const duration = options.duration ?? 2.0;
+      this.animation = new Animation(duration, p => Animation.smooth(p, 1.0, 0.1, 0.25));
 
       this.animation.onanimate = p => {
         // Interpolate scale in log space.
@@ -1868,24 +1904,30 @@ export class TravellerMap {
 
   get worldY() { return Astrometrics.mapToWorld(this.x, this.y).y; }
 
-  // This places the specified Sector, Hex coordinates (parsec)
-  // at the center of the viewport.
-  CenterAtSectorHex(sx, sy, hx, hy, options) {
-    options = { ...options };
-
+  // 
+  /**
+   * Place the specified Sector, Hex coordinates (parsec) at the center of the viewport.
+   * @param {number} sx
+   * @param {number} sy
+   * @param {number} hx
+   * @param {number} hy
+   * @param {Object} [options]
+   * @param {number} [options.scale] - If specified, the scale to set after centering.
+   * @param {boolean} [options.immediate=false] - If true, the centering will happen immediately without animation, even if the target is within the animation threshold.
+   */
+  CenterAtSectorHex(sx, sy, hx, hy, options = { scale: undefined, immediate: false }) {
     this.cancelAnimation();
     const target = Astrometrics.sectorHexToMap(sx, sy, hx, hy);
 
-    if (!options.immediate &&
-      'scale' in options &&
-      this.shouldAnimateTo(options.scale, target.x, target.y)) {
-      this.animateTo(options.scale, target.x, target.y)
-        .catch(function () { });
-      return;
-    }
-
-    if ('scale' in options)
+    if (options.scale !== undefined) {
+      if (!options.immediate &&
+        this.shouldAnimateTo(options.scale, target.x, target.y)) {
+        this.animateTo(options.scale, target.x, target.y)
+          .catch(function () { });
+        return;
+      }
       this.scale = options.scale;
+    }
     this.position = [target.x, target.y];
   }
 
