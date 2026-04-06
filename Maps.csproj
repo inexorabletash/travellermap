@@ -145,6 +145,7 @@
     <Compile Include="server\utilities\Util.cs" />
     <Compile Include="server\WorldCollection.cs" />
     <Content Include="404.html" />
+    <Content Include="borders\**\*.*" />
     <Content Include="doc\**\*.*" />
     <Content Include="lib\**\*.*" />
     <Content Include="make\**\*.*" />
@@ -218,6 +219,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="SETUP.md" />
+    <Content Include="borders\README.md" />
     <None Include="Properties\PublishProfiles\TravellerMapBackup - Web Deploy.pubxml" />
     <None Include="Web.config.sample">
       <SubType>Designer</SubType>
