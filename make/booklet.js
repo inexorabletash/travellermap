@@ -103,11 +103,11 @@ function parseSector(tabDelimitedData, metadata) {
   const header = lines.shift().toLowerCase().split('\t');
   for (const line of lines) {
     if (!line.length)
-      return;
+      break;
 
-    /** @type {{index: string, name: string, worlds: Array, hex: string, ss: string, population: number, hipop?: boolean, uwp: string, pbg: string}} */
+    /** @type {{name: string, worlds: Array, hex: string, ss: string, population: number, hipop?: boolean, uwp: string, pbg: string}} */
     const world = { };
-    for(const [field, index] of line.split('\t').entries()) {
+    for(const [index, field] of line.split('\t').entries()) {
       const col = header[index].replace(/[^a-z]/g, '');
       world[col] = field;
     }
