@@ -113,13 +113,16 @@ namespace Maps.API.Results
             {
                 var allegiances = new Dictionary<string, Allegiance>();
 
-                // Document the codes as used by the worlds
-                foreach (var code in worlds.AllegianceCodes())
+                if (worlds != null)
                 {
-                    var alleg = sector.GetAllegianceFromCode(code);
-                    if (alleg == null)
-                        continue;
-                    allegiances.Add(code, new Allegiance(code, alleg.Name, alleg.LegacyCode, alleg.Base));
+                    // Document the codes as used by the worlds
+                    foreach (var code in worlds.AllegianceCodes())
+                    {
+                        var alleg = sector.GetAllegianceFromCode(code);
+                        if (alleg == null)
+                            continue;
+                        allegiances.Add(code, new Allegiance(code, alleg.Name, alleg.LegacyCode, alleg.Base));
+                    }
                 }
 
                 // Add any used by borders
