@@ -9,7 +9,6 @@
         "useUnknownInCatchVariables": false,
         "noImplicitAny": false,
     },
-    //"include": ["types/**/*.d.ts"],
     "typeAcquisition": { "enable": true },
     "exclude": ["sw.js"],
     "include": ["**/*.js"]
