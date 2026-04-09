@@ -472,7 +472,7 @@ export class MapService {
   }
 
   static makeURL(path, options = {}) {
-    return this.#makeServiceUrl(path, options);
+    return Util.makeURL(SERVICE_BASE + path, options);
   }
 
   static coordinates(sector, hex, options = {}) {

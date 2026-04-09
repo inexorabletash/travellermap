@@ -24,7 +24,7 @@ window.addEventListener('load', async () => {
   // Look up canonical location.
   try {
     const response =
-        await fetch(Traveller.MapService.makeURL('/api/coordinates?', query));
+        await fetch(Traveller.MapService.makeURL('/api/coordinates', query));
     if (!response.ok)
       throw Error(response.statusText);
     const coords = await response.json();
@@ -34,7 +34,7 @@ window.addEventListener('load', async () => {
       // Fetch world data and fill in sheet.
       (async () => {
         const response =
-            await fetch(Traveller.MapService.makeURL('/api/jumpworlds?', {
+            await fetch(Traveller.MapService.makeURL('/api/jumpworlds', {
               x: coords.x,
               y: coords.y,
               milieu: searchParams.get('milieu'),
@@ -77,7 +77,7 @@ window.addEventListener('load', async () => {
           const SCALE = 48;
 
           const response =
-              await fetch(Traveller.MapService.makeURL('/api/jumpworlds?', {
+              await fetch(Traveller.MapService.makeURL('/api/jumpworlds', {
                 x: coords.x,
                 y: coords.y,
                 milieu: searchParams.get('milieu'),
@@ -109,7 +109,7 @@ window.addEventListener('load', async () => {
           };
           if (window.devicePixelRatio > 1)
             mapParams.dpr = window.devicePixelRatio;
-          const url = Traveller.MapService.makeURL('/api/jumpmap?', mapParams);
+          const url = Traveller.MapService.makeURL('/api/jumpmap', mapParams);
           const image =
               await Util.fetchImage(url, {imageElement: $('#wds-jumpmap')});
 
