@@ -1,8 +1,7 @@
 // TODO: Unused? Delete?
 
 window.onload = () => {
-  const headers = document.querySelectorAll('th'),
-        len = headers.length;
+  const headers = document.querySelectorAll('th'), len = headers.length;
 
   for (let i = 0; i < len; i += 1) {
     window.addEvent(headers[i], 'click', onclick);
@@ -10,9 +9,7 @@ window.onload = () => {
 };
 
 function onclick(event) {
-  const th = event.target,
-        tr = th.parentNode,
-        tbody = tr.parentNode;
+  const th = event.target, tr = th.parentNode, tbody = tr.parentNode;
   let i = 0;
   while (tr.children[i] != th) {
     i += 1;

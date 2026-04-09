@@ -20,13 +20,9 @@ class List {
     this.count = 0;
   }
 
-  isEmpty() {
-    return this.count == 0;
-  }
+  isEmpty() { return this.count == 0; }
 
-  contains(node) {
-    return this.list[node.id] !== undefined;
-  }
+  contains(node) { return this.list[node.id] !== undefined; }
 
   add(node) {
     if (!this.contains(node)) {
@@ -154,8 +150,9 @@ function odd(x) { return (x % 2) != 0; }
 function div(a, b) { return Math.floor(a / b); }
 function mod(a, b) { return Math.floor(a % b); }
 
-function max(a, b, c) { return (a >= b && a >= c) ? a : (b >= a && b >= c) ? b : c; }
-
+function max(a, b, c) {
+  return (a >= b && a >= c) ? a : (b >= a && b >= c) ? b : c;
+}
 
 // Returns list of hexes within range:
 // reachable('0101', 2) -> ['0102', '0201', '0202', '0301', '0302']
@@ -170,8 +167,8 @@ function reachable(hex, jump) {
 
   for (let rx = x - jump; rx <= x + jump; ++rx) {
     for (let ry = y - jump; ry <= y + jump; ++ry) {
-      if (rx >= 1 && rx <= Traveller.Astrometrics.SectorWidth &&
-        ry >= 1 && ry <= Traveller.Astrometrics.SectorHeight) {
+      if (rx >= 1 && rx <= Traveller.Astrometrics.SectorWidth && ry >= 1 &&
+          ry <= Traveller.Astrometrics.SectorHeight) {
         const candidate = hexString(rx, ry);
         const distance = dist(hex, candidate);
         if (distance > 0 && distance <= jump) {
@@ -186,10 +183,12 @@ function reachable(hex, jump) {
 
 function hexString(x, y) {
   let str = '';
-  if (x < 10) str += '0';
+  if (x < 10)
+    str += '0';
   str += x.toString();
 
-  if (y < 10) str += '0';
+  if (y < 10)
+    str += '0';
   str += y.toString();
   return str;
 }

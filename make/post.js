@@ -16,57 +16,62 @@ export async function populateSector() {
   const list = $('#sector');
 
   const seen = new Set();
-  const universe = await Traveller.MapService.universe({ requireData: 1 });
+  const universe = await Traveller.MapService.universe({requireData : 1});
   universe.Sectors
-    .filter(sector => Math.abs(sector.X) < 10 && Math.abs(sector.Y) < 7)
-    .map(sector => {
-      let name = sector.Names[0].Text;
-      if (seen.has(name))
-        name += ` (${sector.Milieu})`;
-      seen.add(name);
-      return {
-        display: name,
-        name: sector.Names[0].Text,
-        milieu: sector.Milieu || ''
-      };
-    })
-    .sort((a, b) => cmp(a.display, b.display))
-    .forEach(record => {
-      const option = document.createElement('option');
-      option.appendChild(document.createTextNode(record.display));
-      option.value = [record.name, record.milieu].join('|');
-      list.appendChild(option);
-    });
+      .filter(sector => Math.abs(sector.X) < 10 && Math.abs(sector.Y) < 7)
+      .map(sector => {
+        let name = sector.Names[0].Text;
+        if (seen.has(name))
+          name += ` (${sector.Milieu})`;
+        seen.add(name);
+        return {
+          display : name,
+          name : sector.Names[0].Text,
+          milieu : sector.Milieu || ''
+        };
+      })
+      .sort((a, b) => cmp(a.display, b.display))
+      .forEach(record => {
+        const option = document.createElement('option');
+        option.appendChild(document.createTextNode(record.display));
+        option.value = [ record.name, record.milieu ].join('|');
+        list.appendChild(option);
+      });
 
   list.addEventListener('change', (_event) => {
-    const s = list.value.split('|'),
-      name = s[0],
-      milieu = s[1] || undefined;
+    const s = list.value.split('|'), name = s[0], milieu = s[1] || undefined;
 
-    Traveller.MapService.sectorData(name, {
-      type: 'SecondSurvey', metadata: 0, milieu, abortKey: 'sectorData'
-    })
-      .then(data => {
-        const target = $('#data');
-        if (target) target.value = data;
-      })
-      .catch(err => {
-        if (err?.name === 'AbortError') return;
-        console.error(err);
-      });
+    Traveller.MapService
+        .sectorData(name, {
+          type : 'SecondSurvey',
+          metadata : 0,
+          milieu,
+          abortKey : 'sectorData'
+        })
+        .then(data => {
+          const target = $('#data');
+          if (target)
+            target.value = data;
+        })
+        .catch(err => {
+          if (err?.name === 'AbortError')
+            return;
+          console.error(err);
+        });
 
-
-    Traveller.MapService.sectorMetaData(name, {
-      accept: 'text/xml', milieu, abortKey: 'sectorMetaData'
-    })
-      .then(data => {
-        const target = $('#metadata');
-        if (target) target.value = data;
-      })
-      .catch(err => {
-        if (err?.name === 'AbortError') return;
-        console.error(err);
-      });
+    Traveller.MapService
+        .sectorMetaData(
+            name, {accept : 'text/xml', milieu, abortKey : 'sectorMetaData'})
+        .then(data => {
+          const target = $('#metadata');
+          if (target)
+            target.value = data;
+        })
+        .catch(err => {
+          if (err?.name === 'AbortError')
+            return;
+          console.error(err);
+        });
   });
 
   $$('textarea.drag-n-drop').forEach(elem => {
@@ -84,7 +89,6 @@ export async function populateSector() {
     elem.placeholder = 'Copy and paste data or drag and drop a file here.';
   });
 }
-
 
 export async function blobToString(blob) {
   // Try UTF-8 first
@@ -107,9 +111,9 @@ export async function getTextViaPOST(url, data) {
   let request;
   if (typeof data === 'string') {
     request = fetch(url, {
-      method: 'POST',
-      headers: { 'Content-Type': 'text/plain' },  // Safari doesn't infer this.
-      body: data
+      method : 'POST',
+      headers : {'Content-Type' : 'text/plain'}, // Safari doesn't infer this.
+      body : data
     });
   } else {
     data = Object(data);
@@ -119,10 +123,7 @@ export async function getTextViaPOST(url, data) {
       if (value !== undefined && value !== null)
         fd.append(key, data[key]);
     }
-    request = fetch(url, {
-      method: 'POST',
-      body: fd
-    });
+    request = fetch(url, {method : 'POST', body : fd});
   }
 
   const response = await request;

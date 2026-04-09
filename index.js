@@ -1,5 +1,5 @@
 import * as Traveller from './map.js';
-import { prepareWorld, renderWorldImage } from './world_util.js';
+import {prepareWorld, renderWorldImage} from './world_util.js';
 
 const Util = Traveller.Util;
 const $ = Util.$;
@@ -11,9 +11,10 @@ const $$ = Util.$$;
 //
 //////////////////////////////////////////////////////////////////////
 
-const standalone = window.matchMedia('(display-mode: standalone)').matches
-  || window.matchMedia('(display-mode: fullscreen)').matches
-  || ('standalone' in navigator && navigator.standalone);  // ios ~2012 legacy fallback
+const standalone = window.matchMedia('(display-mode: standalone)').matches ||
+                   window.matchMedia('(display-mode: fullscreen)').matches ||
+                   ('standalone' in navigator &&
+                    navigator.standalone); // ios ~2012 legacy fallback
 
 // Account for adjustments to innerHeight (dynamic browser UI)
 // (Repro: Safari on iPhone, enter landscape, make url bar appear)
@@ -45,7 +46,7 @@ if (navigator.userAgent.match(/iPad|iPhone|iPod/)) {
 const mapElement = $('#dragContainer'), sizeElement = mapElement.parentNode;
 const map = new Traveller.TravellerMap(mapElement, sizeElement);
 
-const isIframe = (window != window.top); // != for IE
+const isIframe = (window != window.top);             // != for IE
 const isSmallScreen = mapElement.offsetWidth <= 640; // Arbitrary
 
 function toggleFullscreen() {
@@ -73,51 +74,50 @@ function toggleFullscreen() {
 //////////////////////////////////////////////////////////////////////
 
 // Tweak defaults
-map.options = map.options | Traveller.MapOptions.NamesMinor | Traveller.MapOptions.ForceHexes | Traveller.MapOptions.FilledBorders;
+map.options = map.options | Traveller.MapOptions.NamesMinor |
+              Traveller.MapOptions.ForceHexes |
+              Traveller.MapOptions.FilledBorders;
 map.scale = isSmallScreen ? 1 : 2;
-map.CenterAtSectorHex(0, 0, Traveller.Astrometrics.ReferenceHexX, Traveller.Astrometrics.ReferenceHexY);
+map.CenterAtSectorHex(0, 0, Traveller.Astrometrics.ReferenceHexX,
+                      Traveller.Astrometrics.ReferenceHexY);
 const defaults = {
-  x: map.x,
-  y: map.y,
-  scale: map.scale,
-  options: map.options,
-  routes: 1,
-  dimunofficial: 0,
-  milieu: 'M1105',
-  style: map.style
+  x : map.x,
+  y : map.y,
+  scale : map.scale,
+  options : map.options,
+  routes : 1,
+  dimunofficial : 0,
+  milieu : 'M1105',
+  style : map.style
 };
 const home = {
-  x: defaults.x,
-  y: defaults.y,
-  scale: defaults.scale
+  x : defaults.x,
+  y : defaults.y,
+  scale : defaults.scale
 };
 
 const SAVE_PREFERENCES_DELAY_MS = 500;
-const savePreferences = isIframe ? () => { } : Util.debounce(() => {
-  const preferences = {
-    style: map.style,
-    options: map.options
-  };
+const savePreferences = isIframe ? () => {} : Util.debounce(() => {
+  const preferences = {style : map.style, options : map.options};
   for (const name of map.namedOptions.NAMES) {
     const value = map.namedOptions.get(name);
     preferences[name] = value === '' ? undefined : value;
   }
   for (const option of PARAM_OPTIONS) {
-    preferences[option.param] = document.body.classList.contains(option.className);
+    preferences[option.param] =
+        document.body.classList.contains(option.className);
   }
   localStorage.setItem('preferences', JSON.stringify(preferences));
-  localStorage.setItem('location', JSON.stringify({
-    position: { x: map.x, y: map.y },
-    scale: map.scale
-  }));
+  localStorage.setItem(
+      'location',
+      JSON.stringify({position : {x : map.x, y : map.y}, scale : map.scale}));
 }, SAVE_PREFERENCES_DELAY_MS);
 
 const template = Util.memoize(sel => Handlebars.compile($(sel).innerHTML));
 
 const jump_button_ids = $$('.jump-button').map(e => e.id);
 const milieu_choices =
-  $$('#milieu-choices input[type=radio][name=milieu]')
-    .map(e => e.value);
+    $$('#milieu-choices input[type=radio][name=milieu]').map(e => e.value);
 
 //////////////////////////////////////////////////////////////////////
 //
@@ -141,23 +141,21 @@ const updatePermalink = Util.debounce(() => {
   delete urlParams.hex;
 
   urlParams.p = [
-    round(map.x, 1 / 1000),
-    round(map.y, 1 / 1000),
-    round(map.logScale, 1 / 100)
+    round(map.x, 1 / 1000), round(map.y, 1 / 1000), round(map.logScale, 1 / 100)
   ].join('!');
   urlParams.options = map.options;
   urlParams.style = map.style;
 
-  map.namedOptions.forEach((value, key) => {
-    urlParams[key] = value;
-  });
+  map.namedOptions.forEach((value, key) => { urlParams[key] = value; });
 
   for (const p of Object.keys(defaults)) {
-    if (urlParams[p] === defaults[p]) delete urlParams[p];
+    if (urlParams[p] === defaults[p])
+      delete urlParams[p];
   }
 
   for (const option of PARAM_OPTIONS) {
-    if (document.body.classList.contains(option.className) === option['default'])
+    if (document.body.classList.contains(option.className) ===
+        option['default'])
       delete urlParams[option.param];
     else
       urlParams[option.param] = 1;
@@ -168,7 +166,8 @@ const updatePermalink = Util.debounce(() => {
   if (pageURL === lastPageURL)
     return;
 
-  if ('history' in window && 'replaceState' in window.history && document.location.href !== pageURL)
+  if ('history' in window && 'replaceState' in window.history &&
+      document.location.href !== pageURL)
     window.history.replaceState(null, document.title, pageURL);
 
   $('#share-url').value = pageURL;
@@ -183,23 +182,23 @@ const updatePermalink = Util.debounce(() => {
 
   for (const anchor of $$('a.share')) {
     const data = {
-      url: encodeURIComponent(pageURL),
-      text: encodeURIComponent('The Traveller Map')
+      url : encodeURIComponent(pageURL),
+      text : encodeURIComponent('The Traveller Map')
     };
-    anchor.__func = anchor.__func || Handlebars.compile(anchor.getAttribute('data-template'));
+    anchor.__func = anchor.__func ||
+                    Handlebars.compile(anchor.getAttribute('data-template'));
     anchor.href = anchor.__func(data);
   }
-
 
   const rect = mapElement.getBoundingClientRect();
   const width = Math.round(rect.width);
   const height = Math.round(rect.height);
   const snapshotParams = {
-    x: (map.x * map.scale - (width / 2)) / width,
-    y: (-map.y * map.scale - (height / 2)) / height,
-    w: width,
-    h: height,
-    scale: map.scale
+    x : (map.x * map.scale - (width / 2)) / width,
+    y : (-map.y * map.scale - (height / 2)) / height,
+    w : width,
+    h : height,
+    scale : map.scale
   };
   snapshotParams.x = round(snapshotParams.x, 1 / 1000);
   snapshotParams.y = round(snapshotParams.y, 1 / 1000);
@@ -207,13 +206,14 @@ const updatePermalink = Util.debounce(() => {
   snapshotParams.options = map.options;
   snapshotParams.style = map.style;
   snapshotParams.milieu = map.namedOptions.get('milieu');
-  for (const name of map.namedOptions.keys()) { snapshotParams[name] = urlParams[name]; }
+  for (const name of map.namedOptions.keys()) {
+    snapshotParams[name] = urlParams[name];
+  }
   let snapshotURL = Traveller.MapService.makeURL('/api/tile', snapshotParams);
   $('a#download-snapshot').href = snapshotURL;
   snapshotParams.accept = 'application/pdf';
   snapshotURL = Traveller.MapService.makeURL('/api/tile', snapshotParams);
   $('a#download-snapshot-pdf').href = snapshotURL;
-
 }, PERMALINK_REFRESH_DELAY_MS);
 
 //////////////////////////////////////////////////////////////////////
@@ -233,11 +233,14 @@ const original_title = document.title;
 // Search Bar
 
 // Mutually exclusive panes:
-const SEARCH_PANES = ['search-results', 'route-ui', 'wds-visible', 'sds-visible'];
+const SEARCH_PANES =
+    [ 'search-results', 'route-ui', 'wds-visible', 'sds-visible' ];
 function showSearchPane(pane, title) {
   if (!['wds-visible', 'sds-visible'].includes(pane))
     document.body.classList.add('ds-mini');
-  for (const c of SEARCH_PANES) { document.body.classList.toggle(c, c === pane); }
+  for (const c of SEARCH_PANES) {
+    document.body.classList.toggle(c, c === pane);
+  }
   map.SetRoute(null);
 
   document.title = title ? `${title} - ${original_title}` : original_title;
@@ -255,20 +258,19 @@ function hideCards() {
   document.title = original_title;
 }
 
-
 $("#searchForm").addEventListener('submit', event => {
-  search($('#searchBox').value, { onsubmit: true });
+  search($('#searchBox').value, {onsubmit : true});
   event.preventDefault();
 });
 
-$("#searchBox").addEventListener('focus', event => {
-  search($('#searchBox').value, { onfocus: true });
-});
+$("#searchBox")
+    .addEventListener(
+        'focus', event => { search($('#searchBox').value, {onfocus : true}); });
 
 const SEARCH_TIMER_DELAY = 100; // ms
 $("#searchBox").addEventListener('input', Util.debounce(e => {
   if (e.key !== 'Enter') // Ignore double-submit on iOS
-    search($('#searchBox').value, { typed: true });
+    search($('#searchBox').value, {typed : true});
 }, SEARCH_TIMER_DELAY));
 
 $('#closeSearchBtn').addEventListener('click', event => {
@@ -287,9 +289,11 @@ function resizeMap() {
 $("#routeBtn").addEventListener('click', event => {
   if (selectedWorld) {
     setRouteStart(selectedWorld.name, selectedWorld.hex, selectedSector);
-    if (!isSmallScreen) $('#routeEnd').focus();
+    if (!isSmallScreen)
+      $('#routeEnd').focus();
   } else {
-    if (!isSmallScreen) $('#routeStart').focus();
+    if (!isSmallScreen)
+      $('#routeStart').focus();
   }
   showRoute();
 });
@@ -299,11 +303,11 @@ $("#routeBtn").addEventListener('click', event => {
 let routeStart = undefined, routeEnd = undefined;
 function setRouteStart(name, hex, sector) {
   $('#routeStart').value = name;
-  routeStart = { name, hex, sector };
+  routeStart = {name, hex, sector};
 }
 function setRouteEnd(name, hex, sector) {
   $('#routeEnd').value = name;
-  routeEnd = { name, hex, sector };
+  routeEnd = {name, hex, sector};
 }
 function clearRouteStart() {
   $('#routeStart').value = '';
@@ -313,13 +317,9 @@ function clearRouteEnd() {
   $('#routeEnd').value = '';
   routeEnd = undefined;
 }
-$('#routeStart').addEventListener('change', event => {
-  routeStart = undefined;
-});
-$('#routeEnd').addEventListener('change', event => {
-  routeEnd = undefined;
-});
-
+$('#routeStart')
+    .addEventListener('change', event => { routeStart = undefined; });
+$('#routeEnd').addEventListener('change', event => { routeEnd = undefined; });
 
 function showRoute() {
   hidePanels();
@@ -379,8 +379,9 @@ $('#closeRouteBtn').addEventListener('click', event => {
 
 $('#swapRouteBtn').addEventListener('click', event => {
   event.preventDefault();
-  [$('#routeStart').value, $('#routeEnd').value] = [$('#routeEnd').value, $('#routeStart').value];
-  [routeStart, routeEnd] = [routeEnd, routeStart];
+  [$('#routeStart').value, $('#routeEnd').value] =
+      [ $('#routeEnd').value, $('#routeStart').value ];
+  [routeStart, routeEnd] = [ routeEnd, routeStart ];
   $('#routePath').innerHTML = '';
   for (const n of jump_button_ids) {
     if ($('#routeForm').classList.contains(n))
@@ -397,8 +398,10 @@ for (const button of $$('#routeForm button[name="jump"]')) {
     }
     $('#routeForm').classList.add(button.id);
 
-    const start = routeStart ? `${routeStart.sector} ${routeStart.hex}` : $('#routeStart').value;
-    const end = routeEnd ? `${routeEnd.sector} ${routeEnd.hex}` : $('#routeEnd').value;
+    const start = routeStart ? `${routeStart.sector} ${routeStart.hex}`
+                             : $('#routeStart').value;
+    const end =
+        routeEnd ? `${routeEnd.sector} ${routeEnd.hex}` : $('#routeEnd').value;
     const jump = button.dataset.parsecs;
     route(start, end, jump);
   });
@@ -432,12 +435,12 @@ document.body.addEventListener('keyup', event => {
 
     mapElement.focus();
   }
-}, { capture: true });
+}, {capture : true});
 
 // Options Bar
 
-const PANELS = ['legend', 'more'];
-const TABS = ['lab', 'milieu', 'settings', 'share', 'help'];
+const PANELS = [ 'legend', 'more' ];
+const TABS = [ 'lab', 'milieu', 'settings', 'share', 'help' ];
 
 function showPanel(shown) {
   for (const p of PANELS) {
@@ -458,9 +461,7 @@ function hidePanels() {
 }
 
 for (const p of PANELS) {
-  $('#' + p + 'Btn').addEventListener('click', () => {
-    togglePanel(p);
-  });
+  $('#' + p + 'Btn').addEventListener('click', () => { togglePanel(p); });
 }
 
 function showTab(shown) {
@@ -470,29 +471,28 @@ function showTab(shown) {
 }
 
 for (const p of TABS) {
-  $('#' + p + 'Btn').addEventListener('click', () => {
-    showTab(p);
-  });
+  $('#' + p + 'Btn').addEventListener('click', () => { showTab(p); });
 }
 
-const STYLES = ['poster', 'atlas', 'print', 'candy', 'draft', 'fasa', 'terminal', 'mongoose'];
+const STYLES = [
+  'poster', 'atlas', 'print', 'candy', 'draft', 'fasa', 'terminal', 'mongoose'
+];
 for (const s of STYLES) {
   $('#settingsBtn-' + s).addEventListener('click', () => { map.style = s; });
 }
 for (const element of $$('.styles-pager')) {
-  element.addEventListener('click', () => { $('#styles').classList.toggle('p2'); });
+  element.addEventListener('click',
+                           () => { $('#styles').classList.toggle('p2'); });
 }
-
 
 $('#homeBtn').addEventListener('click', goHome);
 $('#homeBtn2').addEventListener('click', goHome);
 
 function goHome() {
-  if (['sx', 'sy', 'hx', 'hy'].every(p => (`yah_${p}`) in urlParams)) {
-    map.CenterAtSectorHex(
-      urlParams.yah_sx | 0, urlParams.yah_sy | 0,
-      urlParams.yah_hx | 0, urlParams.yah_hy | 0,
-      { scale: 64 });
+  if ([ 'sx', 'sy', 'hx', 'hy' ].every(p => (`yah_${p}`) in urlParams)) {
+    map.CenterAtSectorHex(urlParams.yah_sx | 0, urlParams.yah_sy | 0,
+                          urlParams.yah_hx | 0, urlParams.yah_hy | 0,
+                          {scale : 64});
     return;
   }
   map.cancelAnimation();
@@ -508,9 +508,7 @@ for (const input of $$('#share-url,#share-code')) {
     input.select();
     input.setSelectionRange(0, input.value.length); // .select() fails on iOS
   });
-  input.addEventListener('mouseup', event => {
-    event.preventDefault();
-  });
+  input.addEventListener('mouseup', event => { event.preventDefault(); });
 }
 
 // Nav Bar
@@ -522,9 +520,9 @@ $('#fsBtn').addEventListener('click', toggleFullscreen);
 
 // Bottom Panel
 
-$("#LogoImage").addEventListener('dblclick', () => {
-  document.body.classList.add('hide-footer');
-});
+$("#LogoImage")
+    .addEventListener('dblclick',
+                      () => { document.body.classList.add('hide-footer'); });
 
 // Keyboard Shortcuts
 
@@ -544,7 +542,7 @@ mapElement.addEventListener('keydown', event => {
   if (event.key === 'c') {
     event.preventDefault();
     event.stopPropagation();
-    updateContext(map.worldX, map.worldY, { directAction: true });
+    updateContext(map.worldX, map.worldY, {directAction : true});
     showMain(map.worldX, map.worldY);
     return;
   }
@@ -601,14 +599,19 @@ const optionObservers = [];
 
 bindCheckedToOption('#ShowSectorGrid', Traveller.MapOptions.GridMask);
 bindCheckedToOption('#ShowSectorNames', Traveller.MapOptions.SectorsMask);
-bindEnabled('#ShowSelectedSectorNames', o => o & Traveller.MapOptions.SectorsMask);
+bindEnabled('#ShowSelectedSectorNames',
+            o => o & Traveller.MapOptions.SectorsMask);
 bindChecked('#ShowSelectedSectorNames',
-  o => o & Traveller.MapOptions.SectorsSelected,
-  c => { setOptions(Traveller.MapOptions.SectorsMask, c ? Traveller.MapOptions.SectorsSelected : 0); });
+            o => o & Traveller.MapOptions.SectorsSelected, c => {
+              setOptions(Traveller.MapOptions.SectorsMask,
+                         c ? Traveller.MapOptions.SectorsSelected : 0);
+            });
 bindEnabled('#ShowAllSectorNames', o => o & Traveller.MapOptions.SectorsMask);
-bindChecked('#ShowAllSectorNames',
-  o => o & Traveller.MapOptions.SectorsAll,
-  c => { setOptions(Traveller.MapOptions.SectorsMask, c ? Traveller.MapOptions.SectorsAll : 0); });
+bindChecked('#ShowAllSectorNames', o => o & Traveller.MapOptions.SectorsAll,
+            c => {
+              setOptions(Traveller.MapOptions.SectorsMask,
+                         c ? Traveller.MapOptions.SectorsAll : 0);
+            });
 bindCheckedToOption('#ShowGovernmentBorders', Traveller.MapOptions.BordersMask);
 bindCheckedToNamedOption('#ShowRoutes', 'routes');
 bindCheckedToOption('#ShowGovernmentNames', Traveller.MapOptions.NamesMask);
@@ -629,18 +632,16 @@ bindCheckedToNamedOption('#cbStellar', 'stellar');
 bindCheckedToNamedOption('#cbQZ', 'qz');
 
 // Overlays that take "milieu" or a year
-for (const pair of [['#cbWave', 'ew'], ['#cbAS', 'as']]) {
+for (const pair of [[ '#cbWave', 'ew' ], [ '#cbAS', 'as' ]]) {
   const [id, op] = pair;
-  bindChecked(id,
-    o => map.namedOptions.get(op),
-    c => {
-      if (c) {
-        map.namedOptions.set(op, 'milieu');
-      } else {
-        map.namedOptions.delete(op);
-        delete urlParams[op];
-      }
-    });
+  bindChecked(id, o => map.namedOptions.get(op), c => {
+    if (c) {
+      map.namedOptions.set(op, 'milieu');
+    } else {
+      map.namedOptions.delete(op);
+      delete urlParams[op];
+    }
+  });
 }
 
 function bindControl(selector, property, onChange, event, onEvent) {
@@ -649,36 +650,39 @@ function bindControl(selector, property, onChange, event, onEvent) {
   element.addEventListener(event, () => { onEvent(element); });
 }
 function bindChecked(selector, onChange, onEvent) {
-  bindControl(selector, 'checked', onChange, 'click', element => { onEvent(element.checked); });
+  bindControl(selector, 'checked', onChange, 'click',
+              element => { onEvent(element.checked); });
 }
 function bindEnabled(selector, onChange) {
   const element = $(selector);
   optionObservers.push(o => { element.disabled = !onChange(o); });
 }
 function bindCheckedToOption(selector, bitmask) {
-  bindChecked(selector,
-    o => (o & bitmask),
-    c => { setOptions(bitmask, c ? bitmask : 0); });
+  bindChecked(selector, o => (o & bitmask),
+              c => { setOptions(bitmask, c ? bitmask : 0); });
 }
 function bindCheckedToNamedOption(selector, name) {
   bindChecked(selector,
-    () => {
-      const v = map.namedOptions.get(name);
-      return v === undefined ? defaults[name] : v;
-    },
-    c => {
-      if (!!c === !!defaults[name]) {
-        delete urlParams[name];
-        map.namedOptions.delete(name);
-      } else map.namedOptions.set(name, c ? 1 : 0);
-    });
+              () => {
+                const v = map.namedOptions.get(name);
+                return v === undefined ? defaults[name] : v;
+              },
+              c => {
+                if (!!c === !!defaults[name]) {
+                  delete urlParams[name];
+                  map.namedOptions.delete(name);
+                } else
+                  map.namedOptions.set(name, c ? 1 : 0);
+              });
 }
 function bindRadioToNamedOption(selector, name) {
   optionObservers.push(o => {
     let v = map.namedOptions.get(name);
-    if (v === undefined) v = defaults[name];
+    if (v === undefined)
+      v = defaults[name];
     const e = $(`${selector}[value="${v}"]`);
-    if (e) e.checked = true;
+    if (e)
+      e.checked = true;
   });
   for (const elem of $$(selector)) {
     elem.addEventListener('click', event => {
@@ -695,12 +699,17 @@ function bindRadioToNamedOption(selector, name) {
 const EVENT_DEBOUNCE_MS = 10;
 
 map.onOptionsChanged = Util.debounce(options => {
-  for (const o of optionObservers) { o(options); }
-  $('#legendBox').classList.toggle('world_colors', options & Traveller.MapOptions.WorldColors);
-  for (const name of map.namedOptions.NAMES) {
-    $('#legendBox').classList.toggle(`opt-${name}`, !!map.namedOptions.get(name));
+  for (const o of optionObservers) {
+    o(options);
   }
-  updateContext(lastX || map.worldX, lastY || map.worldY, { refresh: true });
+  $('#legendBox')
+      .classList.toggle('world_colors',
+                        options & Traveller.MapOptions.WorldColors);
+  for (const name of map.namedOptions.NAMES) {
+    $('#legendBox')
+        .classList.toggle(`opt-${name}`, !!map.namedOptions.get(name));
+  }
+  updateContext(lastX || map.worldX, lastY || map.worldY, {refresh : true});
   updatePermalink();
   savePreferences();
 }, EVENT_DEBOUNCE_MS);
@@ -709,7 +718,7 @@ map.onStyleChanged = Util.debounce(style => {
   for (const s of STYLES) {
     document.body.classList.toggle(`style-${s}`, s === style);
   }
-  updateContext(lastX || map.worldX, lastY || map.worldY, { refresh: true });
+  updateContext(lastX || map.worldX, lastY || map.worldY, {refresh : true});
   updatePermalink();
   updateScaleIndicator();
   savePreferences();
@@ -736,28 +745,50 @@ function post(message) {
 
 map.onClick = data => {
   hidePanels();
-  updateContext(data.x, data.y, { directAction: true, activeElement: data.activeElement });
+  updateContext(data.x, data.y,
+                {directAction : true, activeElement : data.activeElement});
   showMain(data.x, data.y);
-  post({ source: 'travellermap', type: 'click', location: { x: data.x, y: data.y } });
+  post({
+    source : 'travellermap',
+    type : 'click',
+    location : {x : data.x, y : data.y}
+  });
 };
 
 map.onDoubleClick = world => {
   hidePanels();
-  updateContext(world.x, world.y, { directAction: true });
+  updateContext(world.x, world.y, {directAction : true});
   showMain(world.x, world.y);
-  post({ source: 'travellermap', type: 'doubleclick', location: world });
+  post({source : 'travellermap', type : 'doubleclick', location : world});
 };
 
 // TODO: Generalize URLParam<->Control and URLParam<->Style binding
 const PARAM_OPTIONS = [
-  { param: 'galdir', selector: '#cbGalDir', className: 'show-directions', 'default': true },
   {
-    param: 'tilt', selector: '#cbTilt', className: 'tilt', 'default': false,
-    onchange: flag => { if (flag) map.EnableTilt(); }
+    param : 'galdir',
+    selector : '#cbGalDir',
+    className : 'show-directions',
+    'default' : true
   },
   {
-    param: 'mains', selector: '#cbMains', className: 'show-mains', 'default': false,
-    onchange: flag => { if (!flag) map.SetMain(null); }
+    param : 'tilt',
+    selector : '#cbTilt',
+    className : 'tilt',
+    'default' : false,
+    onchange : flag => {
+      if (flag)
+        map.EnableTilt();
+    }
+  },
+  {
+    param : 'mains',
+    selector : '#cbMains',
+    className : 'show-mains',
+    'default' : false,
+    onchange : flag => {
+      if (!flag)
+        map.SetMain(null);
+    }
   }
 ];
 for (const option of PARAM_OPTIONS) {
@@ -773,7 +804,6 @@ for (const option of PARAM_OPTIONS) {
   });
 }
 
-
 $('#btnResetPrefs').addEventListener('click', event => {
   event.preventDefault();
 
@@ -787,22 +817,25 @@ $('#btnResetPrefs').addEventListener('click', event => {
   for (const option of PARAM_OPTIONS) {
     $(option.selector).checked = option['default'];
     document.body.classList.toggle(option.className, option['default']);
-    if (option.onchange) option.onchange(option.default);
+    if (option.onchange)
+      option.onchange(option.default);
   };
   map.options = defaults.options;
   updatePermalink();
   savePreferences();
 });
 
-
 if (!isIframe) {
   const storedPreferences = localStorage.getItem('preferences');
   const storedLocation = localStorage.getItem('location');
-  const preferences = storedPreferences ? JSON.parse(storedPreferences) : undefined;
+  const preferences =
+      storedPreferences ? JSON.parse(storedPreferences) : undefined;
   const location = storedLocation ? JSON.parse(storedLocation) : undefined;
   if (preferences) {
-    if ('style' in preferences) map.style = preferences.style;
-    if ('options' in preferences) map.options = preferences.options;
+    if ('style' in preferences)
+      map.style = preferences.style;
+    if ('options' in preferences)
+      map.options = preferences.options;
     for (const name of map.namedOptions.NAMES) {
       if (name in preferences) {
         const value = preferences[name];
@@ -813,7 +846,8 @@ if (!isIframe) {
 
     for (const option of PARAM_OPTIONS) {
       if (option.param in preferences) {
-        document.body.classList.toggle(option.className, preferences[option.param]);
+        document.body.classList.toggle(option.className,
+                                       preferences[option.param]);
         if (option.onchange)
           option.onchange(preferences[option.param]);
       }
@@ -821,27 +855,30 @@ if (!isIframe) {
   }
 
   if (location) {
-    if ('scale' in location) map.scale = location.scale;
-    if ('position' in location) { map.x = location.position.x; map.y = location.position.y; }
+    if ('scale' in location)
+      map.scale = location.scale;
+    if ('position' in location) {
+      map.x = location.position.x;
+      map.y = location.position.y;
+    }
   }
 }
-
 
 // Overlay to allow quick return to default milieu.
 optionObservers.push(o => {
   const milieu = map.namedOptions.get('milieu') || defaults.milieu;
   $('#milieu-field').innerText = milieu;
   $('#milieu-field-default').innerText = defaults.milieu;
-  document.body.classList.toggle(
-    'milieu-not-default', milieu !== defaults.milieu);
+  document.body.classList.toggle('milieu-not-default',
+                                 milieu !== defaults.milieu);
 
   for (const m of milieu_choices) {
     document.body.classList.toggle('milieu-' + m, m === milieu);
   }
 });
-$('#milieu-escape').addEventListener('click', event => {
-  map.namedOptions.set('milieu', defaults.milieu);
-});
+$('#milieu-escape')
+    .addEventListener(
+        'click', event => { map.namedOptions.set('milieu', defaults.milieu); });
 
 //
 // Pull in options from URL - from permalinks
@@ -854,7 +891,8 @@ const urlParams = standalone ? {} : map.ApplyURLParameters();
 map.onOptionsChanged(map.options);
 
 if (isIframe) {
-  const forceui = ('forceui' in urlParams) && Boolean(Number(urlParams.forceui));
+  const forceui =
+      ('forceui' in urlParams) && Boolean(Number(urlParams.forceui));
   if (forceui)
     document.body.classList.remove('hide-ui');
 } else {
@@ -875,9 +913,11 @@ for (const option of PARAM_OPTIONS) {
     document.body.classList.toggle(option.className, show);
     dirty = true;
   }
-  $(option.selector).checked = document.body.classList.contains(option.className);
+  $(option.selector).checked =
+      document.body.classList.contains(option.className);
 };
-if (dirty) updatePermalink();
+if (dirty)
+  updatePermalink();
 
 //////////////////////////////////////////////////////////////////////
 //
@@ -888,10 +928,8 @@ if (dirty) updatePermalink();
 async function doAttract() {
   async function pickTarget() {
     const data = await Traveller.MapService.search(
-      '(random world)',
-      map.namedOptions.get('milieu'),
-      { method: 'POST', abortKey: 'search' }
-    );
+        '(random world)', map.namedOptions.get('milieu'),
+        {method : 'POST', abortKey : 'search'});
     const items = data.Results.Items;
     if (items.length < 1)
       throw new Error('random world search failed');
@@ -906,11 +944,11 @@ async function doAttract() {
   goHome();
   const world = await pickTarget();
   const target = Traveller.Astrometrics.sectorHexToMap(
-    world.SectorX, world.SectorY, world.HexX, world.HexY);
+      world.SectorX, world.SectorY, world.HexX, world.HexY);
   hideCards();
   setTimeout(async () => {
-    await map.animateTo(128, target.x, target.y, { duration: 10 });
-    updateContext(map.worldX, map.worldY, { directAction: true });
+    await map.animateTo(128, target.x, target.y, {duration : 10});
+    updateContext(map.worldX, map.worldY, {directAction : true});
     setTimeout(doAttract, TARGET_WAIT_MS);
   }, HOME_WAIT_MS);
 }
@@ -926,14 +964,15 @@ let ignoreIndirect = true;
 let enableContext;
 
 function makeWikiURL(suffix) {
-  return 'https://wiki.travellerrpg.com/' + encodeURIComponent(suffix.replace(/ /g, '_'));
+  return 'https://wiki.travellerrpg.com/' +
+         encodeURIComponent(suffix.replace(/ /g, '_'));
 }
 
 function updateContext(worldX, worldY, options) {
   if (!enableContext || document.body.classList.contains('hide-ui'))
     return;
 
-  options = { ...options };
+  options = {...options};
 
   if (ignoreIndirect && !options.directAction)
     return;
@@ -942,8 +981,8 @@ function updateContext(worldX, worldY, options) {
   const DATA_REQUEST_DELAY_MS = 100;
   const milieu = map.namedOptions.get('milieu');
 
-  if (!(options.directAction || options.refresh)
-    && lastX === worldX && lastY === worldY && lastMilieu === milieu)
+  if (!(options.directAction || options.refresh) && lastX === worldX &&
+      lastY === worldY && lastMilieu === milieu)
     return;
 
   lastX = worldX;
@@ -958,10 +997,12 @@ function updateContext(worldX, worldY, options) {
   } else {
     dataTimeout = setTimeout(async () => {
       try {
-        const data = await Traveller.MapService.credits(worldX, worldY, milieu, { abortKey: options.abortKey });
+        const data = await Traveller.MapService.credits(
+            worldX, worldY, milieu, {abortKey : options.abortKey});
         displayResults(data);
       } catch (err) {
-        if (err?.name === 'AbortError') return;
+        if (err?.name === 'AbortError')
+          return;
         displayResults({});
       }
     }, options.directAction || options.refresh ? 0 : DATA_REQUEST_DELAY_MS);
@@ -971,7 +1012,8 @@ function updateContext(worldX, worldY, options) {
     if ('SectorTags' in data) {
       const tags = String(data.SectorTags).split(/\s+/);
       data.Unofficial = true;
-      for (const tag of ['Official', 'InReview', 'Unreviewed', 'Apocryphal', 'Preserve']) {
+      for (const tag of ['Official', 'InReview', 'Unreviewed', 'Apocryphal',
+                         'Preserve']) {
         if (tags.includes(tag)) {
           delete data.Unofficial;
           data[tag] = true;
@@ -981,35 +1023,33 @@ function updateContext(worldX, worldY, options) {
       data.Unmapped = true;
     }
 
-    data.Attribution = ['SectorAuthor', 'SectorSource', 'SectorPublisher']
-      .filter(p => p in data)
-      .map(p => data[p])
-      .join(', ');
+    data.Attribution = [ 'SectorAuthor', 'SectorSource', 'SectorPublisher' ]
+                           .filter(p => p in data)
+                           .map(p => data[p])
+                           .join(', ');
 
     if (data.SectorName) {
       data.SectorWikiURL = makeWikiURL(`${data.SectorName} Sector`);
       data.SectorWikiURLNoScheme = data.SectorWikiURL.replace(/^\w+:\/\//, '');
       data.BookletURL = Traveller.MapService.makeURL(
-        `/data/${encodeURIComponent(data.SectorName)}/booklet`, {
-        milieu,
-        print: 1,
-      });
+          `/data/${encodeURIComponent(data.SectorName)}/booklet`, {
+            milieu,
+            print : 1,
+          });
 
       data.PosterURL = Traveller.MapService.makeURL('/api/poster', {
-        sector: data.SectorName,
-        accept: 'application/pdf',
-        style: map.style,
-        options: map.options,
+        sector : data.SectorName,
+        accept : 'application/pdf',
+        style : map.style,
+        options : map.options,
         milieu
       });
-      data.DataURL = Traveller.MapService.makeURL('/api/sec', {
-        sector: data.SectorName, type: 'SecondSurvey',
-        milieu
-      });
-      data.TSVDataURL = Traveller.MapService.makeURL('/api/sec', {
-        sector: data.SectorName, type: 'TabDelimited',
-        milieu
-      });
+      data.DataURL = Traveller.MapService.makeURL(
+          '/api/sec',
+          {sector : data.SectorName, type : 'SecondSurvey', milieu});
+      data.TSVDataURL = Traveller.MapService.makeURL(
+          '/api/sec',
+          {sector : data.SectorName, type : 'TabDelimited', milieu});
     }
 
     if (data.SectorY)
@@ -1038,17 +1078,22 @@ function updateContext(worldX, worldY, options) {
         }
       } else if ($('#routeStart').value === '' && data.WorldName) {
         setRouteStart(data.WorldName, data.WorldHex, data.SectorName);
-        if (!isSmallScreen) $('#routeEnd').focus();
+        if (!isSmallScreen)
+          $('#routeEnd').focus();
       } else if ($('#routeEnd').value === '' && data.WorldName) {
         setRouteEnd(data.WorldName, data.WorldHex, data.SectorName);
         $('#J-2').click();
       }
       return;
-    } else if (options.directAction && !document.body.classList.contains('route-ui')) {
+    } else if (options.directAction &&
+               !document.body.classList.contains('route-ui')) {
       mapElement.focus();
-      selectedSector = ('SectorName' in data && 'SectorTags' in data) ? data.SectorName : null;
+      selectedSector = ('SectorName' in data && 'SectorTags' in data)
+                           ? data.SectorName
+                           : null;
       selectedWorld = map.scale > 16 && 'WorldHex' in data
-        ? { name: data.WorldName, hex: data.WorldHex } : null;
+                          ? {name : data.WorldName, hex : data.WorldHex}
+                          : null;
     } else if (options.refresh) {
       // Keep as-is
     } else {
@@ -1076,9 +1121,8 @@ async function showSectorData(data) {
 
   // Hook up toggle
   for (const element of $$('#sds-data .ds-mini-toggle, .sds-sectorname')) {
-    element.addEventListener('click', event => {
-      document.body.classList.toggle('ds-mini');
-    });
+    element.addEventListener(
+        'click', event => { document.body.classList.toggle('ds-mini'); });
   }
 
   $('#sds-print-booklet-link').addEventListener('click', event => {
@@ -1098,10 +1142,7 @@ async function showSectorData(data) {
 async function showWorldData() {
   if (!selectedWorld)
     return;
-  const context = {
-    sector: selectedSector,
-    hex: selectedWorld.hex
-  };
+  const context = {sector : selectedSector, hex : selectedWorld.hex};
   $('#spinner').style.display = 'block';
   const milieu = map.namedOptions.get('milieu');
 
@@ -1109,12 +1150,10 @@ async function showWorldData() {
     // World Data Sheet ("Info Card")
 
     const response = await fetch(Traveller.MapService.makeURL(
-      '/api/jumpworlds?', {
-      sector: context.sector, hex: context.hex,
-      milieu,
-      jump: 0
-    }));
-    if (!response.ok) throw new Error(response.statusText);
+        '/api/jumpworlds?',
+        {sector : context.sector, hex : context.hex, milieu, jump : 0}));
+    if (!response.ok)
+      throw new Error(response.statusText);
 
     const data = await response.json();
     const world = await prepareWorld(data.Worlds[0]);
@@ -1126,22 +1165,23 @@ async function showWorldData() {
 
       // Data Sheet
       world.DataSheetURL = Util.makeURL('print/world', {
-        sector: context.sector,
-        hex: context.hex,
+        sector : context.sector,
+        hex : context.hex,
         milieu,
-        style: map.style,
-        print: true
+        style : map.style,
+        print : true
       });
 
       // Jump Maps
       world.JumpMapURL = Traveller.MapService.makeURL('/api/jumpmap', {
-        sector: context.sector,
-        hex: context.hex,
+        sector : context.sector,
+        hex : context.hex,
         milieu,
-        style: map.style,
-        options: map.options &
-          (Traveller.MapOptions.BordersMask | Traveller.MapOptions.NamesMask |
-            Traveller.MapOptions.WorldColors | Traveller.MapOptions.FilledBorders)
+        style : map.style,
+        options : map.options & (Traveller.MapOptions.BordersMask |
+                                 Traveller.MapOptions.NamesMask |
+                                 Traveller.MapOptions.WorldColors |
+                                 Traveller.MapOptions.FilledBorders)
       });
 
       $('#wds-data').innerHTML = template('#wds-template')(world);
@@ -1155,17 +1195,18 @@ async function showWorldData() {
       }
 
       // Hook up toggle
-      for (const element of $$('#wds-data .ds-mini-toggle, #wds-data .wds-names')) {
-        element.addEventListener('click', event => {
-          document.body.classList.toggle('ds-mini');
-        });
+      for (const element of $$(
+               '#wds-data .ds-mini-toggle, #wds-data .wds-names')) {
+        element.addEventListener(
+            'click', event => { document.body.classList.toggle('ds-mini'); });
       }
 
       // Hook up buttons
       $('#ds-route-link').addEventListener('click', event => {
         event.preventDefault();
         setRouteStart(world.Name, world.Hex, world.Sector);
-        if (!isSmallScreen) $('#routeEnd').focus();
+        if (!isSmallScreen)
+          $('#routeEnd').focus();
         showRoute();
       });
 
@@ -1195,9 +1236,9 @@ async function showWorldData() {
   }
 }
 
-$('#wds-world-image').addEventListener('click', event => {
-  document.body.classList.toggle('ds-mini');
-});
+$('#wds-world-image')
+    .addEventListener('click',
+                      event => { document.body.classList.toggle('ds-mini'); });
 
 for (const element of $$('#sds-closebtn,#wds-closebtn,#ds-shade')) {
   element.addEventListener('click', event => {
@@ -1207,9 +1248,7 @@ for (const element of $$('#sds-closebtn,#wds-closebtn,#ds-shade')) {
 }
 
 for (const element of $$('#legend-closebtn,#more-closebtn,#panel-shade')) {
-  element.addEventListener('click', event => {
-    hidePanels();
-  });
+  element.addEventListener('click', event => { hidePanels(); });
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -1220,7 +1259,7 @@ for (const element of $$('#legend-closebtn,#more-closebtn,#panel-shade')) {
 let searchAbortController = null;
 
 async function search(query, options) {
-  options = { ...options };
+  options = {...options};
 
   closeRoute();
   hideCards();
@@ -1249,15 +1288,14 @@ async function search(query, options) {
       searchAbortController.abort();
     }
     searchAbortController = new AbortController();
-    const data = options.results ||
-      await Traveller.MapService.search(
-        query,
-        map.namedOptions.get('milieu'),
-        { abortController: searchAbortController }
-      );
+    const data =
+        options.results || await Traveller.MapService.search(
+                               query, map.namedOptions.get('milieu'),
+                               {abortController : searchAbortController});
     displayResults(data);
   } catch (err) {
-    if (err?.name === 'AbortError') return;
+    if (err?.name === 'AbortError')
+      return;
     $('#resultsContainer').innerHTML = '<i>Error fetching results.</i>';
   } finally {
     searchAbortController = null;
@@ -1276,7 +1314,8 @@ async function search(query, options) {
       if ('SectorTags' in item) {
         const tags = String(item.SectorTags).split(/\s+/);
         item.Unofficial = true;
-        const allowedTags = ['Official', 'InReview', 'Unreviewed', 'Apocryphal', 'Preserve'];
+        const allowedTags =
+            [ 'Official', 'InReview', 'Unreviewed', 'Apocryphal', 'Preserve' ];
         for (const tag of allowedTags) {
           if (tags.includes(tag)) {
             delete item.Unofficial;
@@ -1286,9 +1325,7 @@ async function search(query, options) {
       }
     }
 
-    function pad2(n) {
-      return ('00' + n).slice(-2);
-    }
+    function pad2(n) { return ('00' + n).slice(-2); }
 
     /** @type {any[]} */
     const route = [];
@@ -1300,15 +1337,14 @@ async function search(query, options) {
       let sx, sy, hx, hy, scale;
 
       if (item.Subsector) {
-        const subsector = item.Subsector,
-          index = subsector.Index || 'A',
-          n = (index.charCodeAt(0) - 'A'.charCodeAt(0));
+        const subsector = item.Subsector, index = subsector.Index || 'A',
+              n = (index.charCodeAt(0) - 'A'.charCodeAt(0));
         sx = subsector.SectorX | 0;
         sy = subsector.SectorY | 0;
         hx = (((n % 4) | 0) + 0.5) * (Traveller.Astrometrics.SectorWidth / 4);
         hy = (((n / 4) | 0) + 0.5) * (Traveller.Astrometrics.SectorHeight / 4);
         scale = subsector.Scale || 32;
-        subsector.href = Util.makeURL(base_url, { scale, sx, sy, hx, hy });
+        subsector.href = Util.makeURL(base_url, {scale, sx, sy, hx, hy});
         applyTags(subsector);
       } else if (item.Sector) {
         const sector = item.Sector;
@@ -1317,10 +1353,8 @@ async function search(query, options) {
         hx = (Traveller.Astrometrics.SectorWidth / 2);
         hy = (Traveller.Astrometrics.SectorHeight / 2);
         scale = sector.Scale || 8;
-        sector.href = Util.makeURL(base_url, {
-          scale, sx, sy, hx, hy,
-          sector: sector.Name
-        });
+        sector.href = Util.makeURL(
+            base_url, {scale, sx, sy, hx, hy, sector : sector.Name});
         applyTags(sector);
       } else if (item.World) {
         const world = item.World;
@@ -1331,15 +1365,17 @@ async function search(query, options) {
         hy = world.HexY | 0;
         world.Hex = pad2(hx) + pad2(hy);
         scale = world.Scale || 64;
-        let params = { scale, sx, sy, hx, hy };
+        let params = {scale, sx, sy, hx, hy};
         if (!data.Tour) {
           params = {
             ...params,
-            sector: world.Sector, world: world.Name, hex: world.Hex
+            sector : world.Sector,
+            world : world.Name,
+            hex : world.Hex
           };
         }
         if (data.Route) {
-          route.push({ sx: sx, sy: sy, hx: hx, hy: hy });
+          route.push({sx : sx, sy : sy, hx : hx, hy : hy});
         }
         world.href = Util.makeURL(base_url, params);
         applyTags(world);
@@ -1350,7 +1386,7 @@ async function search(query, options) {
         hx = label.HexX | 0;
         hy = label.HexY | 0;
         scale = label.Scale || 64;
-        label.href = Util.makeURL(base_url, { scale, sx, sy, hx, hy });
+        label.href = Util.makeURL(base_url, {scale, sx, sy, hx, hy});
         applyTags(label);
       }
     }
@@ -1363,20 +1399,23 @@ async function search(query, options) {
         selectedWorld = null;
 
         const params = Util.parseURLQuery(event.target);
-        map.CenterAtSectorHex(params.sx | 0, params.sy | 0, params.hx | 0, params.hy | 0, { scale: params.scale | 0 });
+        map.CenterAtSectorHex(params.sx | 0, params.sy | 0, params.hx | 0,
+                              params.hy | 0, {scale : params.scale | 0});
         if (isSmallScreen)
           document.body.classList.remove('search-results');
 
         const coords = Traveller.Astrometrics.sectorHexToWorld(
-          params.sx | 0, params.sy | 0, params.hx | 0, params.hy | 0);
+            params.sx | 0, params.sy | 0, params.hx | 0, params.hy | 0);
 
         if (params.world && params.sector) {
           selectedSector = params.sector;
-          selectedWorld = { name: params.name, hex: params.hex };
-          updateContext(coords.x, coords.y, { directAction: true, ignoreIndirect: true });
+          selectedWorld = {name : params.name, hex : params.hex};
+          updateContext(coords.x, coords.y,
+                        {directAction : true, ignoreIndirect : true});
         } else if (params.sector) {
           selectedSector = params.sector;
-          updateContext(coords.x, coords.y, { directAction: true, ignoreIndirect: true });
+          updateContext(coords.x, coords.y,
+                        {directAction : true, ignoreIndirect : true});
         }
       });
     }
@@ -1401,29 +1440,36 @@ async function search(query, options) {
 //////////////////////////////////////////////////////////////////////
 
 function reroute() {
-  if (lastRoute) route(lastRoute.start, lastRoute.end, lastRoute.jump);
+  if (lastRoute)
+    route(lastRoute.start, lastRoute.end, lastRoute.jump);
 }
 
 async function route(start, end, jump) {
   $('#routePath').innerHTML = '';
-  lastRoute = { start, end, jump };
+  lastRoute = {start, end, jump};
 
   const options = {
-    start, end, jump,
-    x: map.worldX, y: map.worldY,
-    milieu: map.namedOptions.get('milieu'),
-    wild: $('#route-wild').checked ? 1 : 0,
-    im: $('#route-im').checked ? 1 : 0,
-    nored: $('#route-nored').checked ? 1 : 0,
-    aok: $('#route-aok').checked ? 1 : 0
+    start,
+    end,
+    jump,
+    x : map.worldX,
+    y : map.worldY,
+    milieu : map.namedOptions.get('milieu'),
+    wild : $('#route-wild').checked ? 1 : 0,
+    im : $('#route-im').checked ? 1 : 0,
+    nored : $('#route-nored').checked ? 1 : 0,
+    aok : $('#route-aok').checked ? 1 : 0
   };
 
   try {
-    const response = await fetch(Traveller.MapService.makeURL('/api/route', options));
-    if (!response.ok) throw new Error(response.statusText);
+    const response =
+        await fetch(Traveller.MapService.makeURL('/api/route', options));
+    if (!response.ok)
+      throw new Error(response.statusText);
 
     const data = await response.json();
-    if (typeof data === 'string') throw new Error(data);
+    if (typeof data === 'string')
+      throw new Error(data);
 
     const base_url = document.location.href.replace(/\?.*/, '');
     const route = [];
@@ -1435,27 +1481,27 @@ async function route(start, end, jump) {
       const hx = world.HexX | 0;
       const hy = world.HexY | 0;
       const scale = 64;
-      world.href = Util.makeURL(base_url, { scale: 64, sx, sy, hx, hy });
+      world.href = Util.makeURL(base_url, {scale : 64, sx, sy, hx, hy});
 
       if (index > 0) {
         const prev = data[index - 1];
         const a = Traveller.Astrometrics.sectorHexToWorld(
-          prev.SectorX | 0, prev.SectorY | 0, prev.HexX | 0, prev.HexY | 0);
+            prev.SectorX | 0, prev.SectorY | 0, prev.HexX | 0, prev.HexY | 0);
         const b = Traveller.Astrometrics.sectorHexToWorld(sx, sy, hx, hy);
         const dist = Traveller.Astrometrics.hexDistance(a.x, a.y, b.x, b.y);
         prev.Distance = dist;
         total += dist;
       }
 
-      route.push({ sx: sx, sy: sy, hx: hx, hy: hy });
+      route.push({sx : sx, sy : sy, hx : hx, hy : hy});
     }
 
     map.SetRoute(route);
     const routeData = {
-      Route: data,
-      Distance: total,
-      Jumps: data.length - 1,
-      PrintURL: Util.makeURL('./print/route', options)
+      Route : data,
+      Distance : total,
+      Jumps : data.length - 1,
+      PrintURL : Util.makeURL('./print/route', options)
     };
     $('#routePath').innerHTML = template('#RouteResultsTemplate')(routeData);
     document.body.classList.add('route-shown');
@@ -1467,17 +1513,15 @@ async function route(start, end, jump) {
         selectedWorld = null;
 
         const params = Util.parseURLQuery(event.target);
-        map.CenterAtSectorHex(params.sx | 0, params.sy | 0, params.hx | 0, params.hy | 0, { scale: params.scale | 0 });
+        map.CenterAtSectorHex(params.sx | 0, params.sy | 0, params.hx | 0,
+                              params.hy | 0, {scale : params.scale | 0});
       });
     }
 
     $('#copy-route').addEventListener('click', event => {
       event.preventDefault();
-      Util.copyTextToClipboard(template('#RouteResultsTextTemplate')({
-        Route: data,
-        Distance: total,
-        Jumps: data.length - 1
-      }));
+      Util.copyTextToClipboard(template('#RouteResultsTextTemplate')(
+          {Route : data, Distance : total, Jumps : data.length - 1}));
     });
 
     $('#print-route').addEventListener('click', event => {
@@ -1486,7 +1530,8 @@ async function route(start, end, jump) {
     });
 
   } catch (reason) {
-    $('#routePath').innerHTML = template('#RouteErrorTemplate')({ Message: reason.message });
+    $('#routePath').innerHTML =
+        template('#RouteErrorTemplate')({Message : reason.message});
     map.SetRoute(null);
     document.body.classList.add('route-shown');
     resizeMap();
@@ -1502,17 +1547,18 @@ async function route(start, end, jump) {
 const isCanvasSupported = ('getContext' in $('#scaleIndicator'));
 let animId = 0;
 function updateScaleIndicator() {
-  if (!isCanvasSupported) return;
+  if (!isCanvasSupported)
+    return;
 
   cancelAnimationFrame(animId);
   animId = requestAnimationFrame(() => {
-    const scale = map.scale,
-      canvas = $('#scaleIndicator'),
-      ctx = canvas.getContext('2d'),
-      w = parseFloat(canvas.width),
-      h = parseFloat(canvas.height),
-      style = map.style,
-      color = ['atlas', 'print', 'draft', 'fasa', 'mongoose'].includes(style) ? 'black' : 'white';
+    const scale = map.scale, canvas = $('#scaleIndicator'),
+          ctx = canvas.getContext('2d'), w = parseFloat(canvas.width),
+          h = parseFloat(canvas.height), style = map.style,
+          color =
+              [ 'atlas', 'print', 'draft', 'fasa', 'mongoose' ].includes(style)
+                  ? 'black'
+                  : 'white';
 
     ctx.clearRect(0, 0, w, h);
 
@@ -1544,7 +1590,6 @@ function updateScaleIndicator() {
 }
 updateScaleIndicator();
 
-
 //////////////////////////////////////////////////////////////////////
 //
 // Mains
@@ -1553,7 +1598,8 @@ updateScaleIndicator();
 
 let worldToMainMap;
 async function showMain(worldX, worldY) {
-  if (!$('#cbMains').checked) return;
+  if (!$('#cbMains').checked)
+    return;
   const main = await findMain(worldX, worldY);
   map.SetMain(main);
 }
@@ -1563,14 +1609,20 @@ async function findMain(worldX, worldY) {
   }
   function sigToSectorHex(sig) {
     const parts = sig.split('/');
-    return { sx: parts[0] | 0, sy: parts[1] | 0, hx: (parts[2] / 100) | 0, hy: parts[2] % 100 };
+    return {
+      sx : parts[0] | 0,
+      sy : parts[1] | 0,
+      hx : (parts[2] / 100) | 0,
+      hy : parts[2] % 100
+    };
   }
 
   async function getMainsMapping() {
     if (worldToMainMap)
       return worldToMainMap;
     const r = await fetch(Traveller.MapService.makeURL('/res/mains.json'));
-    if (!r.ok) throw new Error(r.statusText);
+    if (!r.ok)
+      throw new Error(r.statusText);
 
     worldToMainMap = new Map();
     const mains = await r.json();
@@ -1585,7 +1637,8 @@ async function findMain(worldX, worldY) {
 
   const map = await getMainsMapping();
   const sectorHex = Traveller.Astrometrics.worldToSectorHex(worldX, worldY);
-  const sig = sectorHexToSig(sectorHex.sx, sectorHex.sy, sectorHex.hx, sectorHex.hy);
+  const sig =
+      sectorHexToSig(sectorHex.sx, sectorHex.sy, sectorHex.hx, sectorHex.hy);
   return map.get(sig);
 }
 
@@ -1632,7 +1685,8 @@ $('#searchBox').disabled = false;
 if (navigator.userAgent.match(/iPad|iPhone/)) {
   // Prevent inadvertant touch-scroll.
   for (const element of $$('button, input')) {
-    element.addEventListener('touchmove', event => { event.preventDefault(); }, { passive: false });
+    element.addEventListener('touchmove', event => { event.preventDefault(); },
+                             {passive : false});
   }
   // Prevent inadvertant touch-zoom.
   document.addEventListener('touchmove', event => {
@@ -1701,7 +1755,7 @@ if ('serviceWorker' in navigator && location.protocol === 'https:') {
 for (const key of ['q', 'qn']) {
   if (key in urlParams) {
     $('#searchBox').value = urlParams[key];
-    search(urlParams[key], { navigate: key === 'qn' });
+    search(urlParams[key], {navigate : key === 'qn'});
   }
 }
 
@@ -1710,7 +1764,7 @@ if ('qr' in urlParams) {
     const results = JSON.parse(urlParams['qr']);
     const term = urlParams['search'] || '';
     $('#searchBox').value = term;
-    search(term, { navigate: true, results });
+    search(term, {navigate : true, results});
   } catch (ex) {
     console.warn('Error parsing "qr" data: ', ex);
   }

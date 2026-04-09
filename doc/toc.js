@@ -3,7 +3,8 @@ window.addEventListener('DOMContentLoaded', () => {
   const $$ = s => Array.from(document.querySelectorAll(s));
 
   const config = $('script[src="toc.js"]');
-  const selector = (config && config.getAttribute('data-toc-selector')) || 'h2,h3';
+  const selector =
+      (config && config.getAttribute('data-toc-selector')) || 'h2,h3';
 
   const toc = document.createElement('nav');
   toc.className = 'toc';
@@ -11,11 +12,10 @@ window.addEventListener('DOMContentLoaded', () => {
     const a = document.createElement('a');
     const text = h.textContent || h.innerText;
     if (!h.id) {
-      h.id = text
-        .toLowerCase()
-        .replace(/[^a-z0-9 -]/g, '')
-        .trim()
-        .replace(/\s+/g, '-');
+      h.id = text.toLowerCase()
+                 .replace(/[^a-z0-9 -]/g, '')
+                 .trim()
+                 .replace(/\s+/g, '-');
     }
     a.href = '#' + h.id;
     a.className = h.tagName;

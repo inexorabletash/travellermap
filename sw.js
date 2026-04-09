@@ -10,27 +10,21 @@ const urlsToCache = [
   'https://fonts.googleapis.com/css?family=Marcellus',
 ];
 
-
 self.addEventListener('install', /** @type {ExtendableEvent} */ event => {
-  event.waitUntil(
-    (async () => {
-      const cache = await self.caches.open(CACHE_NAME);
-      await cache.addAll(
-        urlsToCache.map(url => new Request(url, {cache:'reload'}))
-      );
-    })()
-  );
+  event.waitUntil((async () => {
+    const cache = await self.caches.open(CACHE_NAME);
+    await cache.addAll(
+        urlsToCache.map(url => new Request(url, {cache : 'reload'})));
+  })());
   self.skipWaiting();
 });
 
 self.addEventListener('activate', /** @type {ExtendableEvent} */ event => {
- event.waitUntil(
-    (async () => {
-      if ("navigationPreload" in self.registration) {
-        await self.registration.navigationPreload.enable();
-      }
-    })()
-  );
+  event.waitUntil((async () => {
+    if ("navigationPreload" in self.registration) {
+      await self.registration.navigationPreload.enable();
+    }
+  })());
   self.clients.claim();
 });
 
@@ -38,19 +32,17 @@ self.addEventListener('fetch', /** @type {FetchEvent} */ event => {
   if (event.request.mode !== 'navigate')
     return;
 
-  event.respondWith(
-    (async () => {
-      try {
-          const preloadResponse = await event.preloadResponse;
-          if (preloadResponse)
-            return preloadResponse;
-          const networkResponse = await fetch(event.request);
-          return networkResponse;
-        } catch (error) {
-          const cache = await self.caches.open(CACHE_NAME);
-          const cachedResponse = await cache.match('offline.html');
-          return cachedResponse;
-        }
-    })()
-  );
+  event.respondWith((async () => {
+    try {
+      const preloadResponse = await event.preloadResponse;
+      if (preloadResponse)
+        return preloadResponse;
+      const networkResponse = await fetch(event.request);
+      return networkResponse;
+    } catch (error) {
+      const cache = await self.caches.open(CACHE_NAME);
+      const cachedResponse = await cache.match('offline.html');
+      return cachedResponse;
+    }
+  })());
 });

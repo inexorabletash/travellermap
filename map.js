@@ -4,26 +4,25 @@ export class Util {
    * @param {string} s
    * @returns {any}
    */
-  static $(s) {
-    return document.querySelector(s);
-  }
+  static $(s) { return document.querySelector(s); }
 
   /**
    * Element selector shorthand for multiple elements.
    * @param {string} s
    * @returns {any[]}
    */
-  static $$(s) {
-    return Array.from(document.querySelectorAll(s));
-  }
+  static $$(s) { return Array.from(document.querySelectorAll(s)); }
 
   /**
    * Constructs a URL by appending query parameters to a base URL.
    * Existing query parameters on the base URL are discarded.
    * Relative URLs are resolved against the current page (`location.href`).
    *
-   * @param {string|URL|Location} base - The base URL. May be absolute, root-relative, or page-relative.
-   * @param {Object.<string, string|number|boolean|Array.<string|number|boolean>>} [params] - Query parameters to append. Null/undefined values are skipped.
+   * @param {string|URL|Location} base - The base URL. May be absolute,
+   *     root-relative, or page-relative.
+   * @param {Object.<string,
+   *     string|number|boolean|Array.<string|number|boolean>>} [params] - Query
+   *     parameters to append. Null/undefined values are skipped.
    * @returns {string} The constructed URL with query parameters.
    *
    * @example
@@ -36,8 +35,9 @@ export class Util {
     if (params) {
       const searchParams = new URLSearchParams();
       for (const [key, value] of Object.entries(params)) {
-        if (value == null) continue;
-        for (const v of (Array.isArray(value) ? value : [value])) {
+        if (value == null)
+          continue;
+        for (const v of (Array.isArray(value) ? value : [ value ])) {
           searchParams.append(key, String(v));
         }
       }
@@ -51,7 +51,8 @@ export class Util {
     const o = Object.create(null);
     if (url.search && url.search.length > 1) {
       for (const pair of url.search.substring(1).split('&')) {
-        if (!pair) continue;
+        if (!pair)
+          continue;
         const kv = pair.split('=', 2);
         if (kv.length === 2)
           o[kv[0]] = decodeURIComponent(kv[1].replace(/\+/g, ' '));
@@ -65,63 +66,80 @@ export class Util {
   static escapeHTML(s) {
     return String(s).replace(/[&<>"']/g, c => {
       switch (c) {
-        case '&': return '&amp;';
-        case '<': return '&lt;';
-        case '>': return '&gt;';
-        case '"': return '&quot;';
-        case "'": return '&#39;';
-        default: return c;
+      case '&':
+        return '&amp;';
+      case '<':
+        return '&lt;';
+      case '>':
+        return '&gt;';
+      case '"':
+        return '&quot;';
+      case "'":
+        return '&#39;';
+      default:
+        return c;
       }
     });
   }
 
   static once(func) {
     let run = false;
-    return /** @this {unknown} */ function () {
-      if (run) return;
+    return /** @this {unknown} */ function() {
+      if (run)
+        return;
       run = true;
       func.apply(this, arguments);
     };
   }
 
   /**
-   * Returns a debounced version of the provided function that delays until the sp;ecified time has elapsed since the last call.
+   * Returns a debounced version of the provided function that delays until the
+   * sp;ecified time has elapsed since the last call.
    * @param {function} func - The function to debounce.
-   * @param {number} delay - The delay in milliseconds to wait before invoking the function after the last call.
-   * @param {boolean} [immediate=false] - Whether to execute the function immediately on the leading edge instead of the trailing edge.
+   * @param {number} delay - The delay in milliseconds to wait before invoking
+   *     the function after the last call.
+   * @param {boolean} [immediate=false] - Whether to execute the function
+   *     immediately on the leading edge instead of the trailing edge.
    * @returns {function}
    */
   static debounce(func, delay, immediate = false) {
     let timeoutId = null;
     /** @this {unknown} */
-    return function (...args) {
+    return function(...args) {
       const callNow = immediate && !timeoutId;
       clearTimeout(timeoutId);
       timeoutId = setTimeout(() => {
         timeoutId = null;
-        if (!immediate) func.apply(this, args);
+        if (!immediate)
+          func.apply(this, args);
       }, delay);
-      if (callNow) func.apply(this, args);
+      if (callNow)
+        func.apply(this, args);
     };
   }
 
   static memoize(f) {
     const cache = Object.create(null);
     /** @this {unknown} */
-    return function () {
+    return function() {
       const key = JSON.stringify([].slice.call(arguments));
-      return (key in cache) ? cache[key] : cache[key] = f.apply(this, arguments);
+      return (key in cache) ? cache[key]
+                            : cache[key] = f.apply(this, arguments);
     };
   }
 
   /**
-    * Fetches an image from the specified URL, returning a promise that resolves with an image element.
-    * @param {string} url
-    * @param {Object} [options]
-    * @param {AbortSignal} [options.signal] - Optional AbortSignal to cancel the image request.
-    * @param {HTMLImageElement} [options.imageElement] - Optional existing image element to reuse.
-    * @returns {Promise<HTMLImageElement>} A promise that resolves with the loaded image.
-    */
+   * Fetches an image from the specified URL, returning a promise that resolves
+   * with an image element.
+   * @param {string} url
+   * @param {Object} [options]
+   * @param {AbortSignal} [options.signal] - Optional AbortSignal to cancel the
+   *     image request.
+   * @param {HTMLImageElement} [options.imageElement] - Optional existing image
+   *     element to reuse.
+   * @returns {Promise<HTMLImageElement>} A promise that resolves with the
+   *     loaded image.
+   */
   static fetchImage(url, options = {}) {
     return new Promise((resolve, reject) => {
       options.signal?.addEventListener('abort', () => {
@@ -141,8 +159,10 @@ export class Util {
     const cookies = {};
     for (const pair of document.cookie.split(/; +/g)) {
       const i = pair.indexOf('=');
-      if (i === -1) cookies[''] = pair;
-      else cookies[pair.substring(0, i)] = pair.substring(i + 1);
+      if (i === -1)
+        cookies[''] = pair;
+      else
+        cookies[pair.substring(0, i)] = pair.substring(i + 1);
     }
     return cookies;
   }
@@ -179,18 +199,14 @@ export class Util {
    * @returns {{ worlds: { [hex: string]: any } }} sector
    */
   static parseSector(tabDelimitedData) {
-    const sector = {
-      worlds: {}
-    };
+    const sector = {worlds : {}};
     const lines = tabDelimitedData.split(/\r?\n/);
     // @ts-ignore
-    const header = lines
-      .shift()
-      .toLowerCase()
-      .split('\t')
-      .map(h => h.replace(/[^a-z]/g, ''));
+    const header = lines.shift().toLowerCase().split('\t').map(
+        h => h.replace(/[^a-z]/g, ''));
     for (const line of lines) {
-      if (!line.length) break;
+      if (!line.length)
+        break;
       const world = {};
       for (const [index, field] of line.split('\t').entries()) {
         world[header[index]] = field;
@@ -207,7 +223,7 @@ export class Util {
 
 const SERVICE_BASE = ((l) => {
   if ((l.hostname === 'localhost' && l.pathname.indexOf('~') !== -1) ||
-    (l.protocol === 'file:'))
+      (l.protocol === 'file:'))
     return 'https://travellermap.com';
   return '';
 })(window.location);
@@ -219,38 +235,38 @@ const LEGACY_STYLES = true;
 //----------------------------------------------------------------------
 
 export const MapOptions = {
-  SectorGrid: 0x0001,
-  SubsectorGrid: 0x0002,
-  GridMask: 0x0003,
-  SectorsSelected: 0x0004,
-  SectorsAll: 0x0008,
-  SectorsMask: 0x000c,
-  BordersMajor: 0x0010,
-  BordersMinor: 0x0020,
-  BordersMask: 0x0030,
-  NamesMajor: 0x0040,
-  NamesMinor: 0x0080,
-  NamesMask: 0x00c0,
-  WorldsCapitals: 0x0100,
-  WorldsHomeworlds: 0x0200,
-  WorldsMask: 0x0300,
-  RoutesSelectedDeprecated: 0x0400,
-  PrintStyleDeprecated: 0x0800,
-  CandyStyleDeprecated: 0x1000,
-  StyleMaskDeprecated: 0x1800,
-  ForceHexes: 0x2000,
-  WorldColors: 0x4000,
-  FilledBorders: 0x8000,
-  Mask: 0xffff
+  SectorGrid : 0x0001,
+  SubsectorGrid : 0x0002,
+  GridMask : 0x0003,
+  SectorsSelected : 0x0004,
+  SectorsAll : 0x0008,
+  SectorsMask : 0x000c,
+  BordersMajor : 0x0010,
+  BordersMinor : 0x0020,
+  BordersMask : 0x0030,
+  NamesMajor : 0x0040,
+  NamesMinor : 0x0080,
+  NamesMask : 0x00c0,
+  WorldsCapitals : 0x0100,
+  WorldsHomeworlds : 0x0200,
+  WorldsMask : 0x0300,
+  RoutesSelectedDeprecated : 0x0400,
+  PrintStyleDeprecated : 0x0800,
+  CandyStyleDeprecated : 0x1000,
+  StyleMaskDeprecated : 0x1800,
+  ForceHexes : 0x2000,
+  WorldColors : 0x4000,
+  FilledBorders : 0x8000,
+  Mask : 0xffff
 };
 
 export const Styles = {
-  Poster: 'poster',
-  Atlas: 'atlas',
-  Print: 'print',
-  Candy: 'candy',
-  Draft: 'draft',
-  FASA: 'fasa'
+  Poster : 'poster',
+  Atlas : 'atlas',
+  Print : 'print',
+  Candy : 'candy',
+  Draft : 'draft',
+  FASA : 'fasa'
 };
 
 //----------------------------------------------------------------------
@@ -273,8 +289,8 @@ export class Astrometrics {
   // World-space: Hex coordinate, centered on Reference
   static sectorHexToWorld(sx, sy, hx, hy) {
     return {
-      x: (sx * this.SectorWidth) + hx - this.ReferenceHexX,
-      y: (sy * this.SectorHeight) + hy - this.ReferenceHexY
+      x : (sx * this.SectorWidth) + hx - this.ReferenceHexX,
+      y : (sy * this.SectorHeight) + hy - this.ReferenceHexY
     };
   }
 
@@ -287,7 +303,7 @@ export class Astrometrics {
     const hx = (x - (sx * this.SectorWidth) + 1);
     const hy = (y - (sy * this.SectorHeight) + 1);
 
-    return { sx: sx, sy: sy, hx: hx, hy: hy };
+    return {sx : sx, sy : sy, hx : hx, hy : hy};
   }
 
   // Map-space: Cartesian coordinates, centered on Reference
@@ -312,13 +328,14 @@ export class Astrometrics {
     x = Math.round(x * 1000) / 1000;
     y = Math.round(y * 1000) / 1000;
 
-    return { x, y };
+    return {x, y};
   }
 
   static mapToWorld(x, y) {
     const wx = Math.round((x / this.ParsecScaleX) + 0.5);
-    const wy = Math.round((-y / this.ParsecScaleY) + ((wx % 2 === 0) ? 0.5 : 0));
-    return { x: wx, y: wy };
+    const wy =
+        Math.round((-y / this.ParsecScaleY) + ((wx % 2 === 0) ? 0.5 : 0));
+    return {x : wx, y : wy};
   }
 
   // World-space Coordinates (Reference is 0,0)
@@ -336,41 +353,51 @@ export class Astrometrics {
 };
 
 const Defaults = {
-  options:
-    MapOptions.SectorGrid | MapOptions.SubsectorGrid |
-    MapOptions.SectorsSelected |
-    MapOptions.BordersMajor | MapOptions.BordersMinor |
-    MapOptions.NamesMajor |
-    MapOptions.WorldsCapitals | MapOptions.WorldsHomeworlds,
-  scale: 2,
-  style: Styles.Poster
+  options : MapOptions.SectorGrid | MapOptions.SubsectorGrid |
+                MapOptions.SectorsSelected | MapOptions.BordersMajor |
+                MapOptions.BordersMinor | MapOptions.NamesMajor |
+                MapOptions.WorldsCapitals | MapOptions.WorldsHomeworlds,
+  scale : 2,
+  style : Styles.Poster
 };
 
 const STYLE_DEFAULTS = {
-  overlay_color: '#8080ff',
-  route_color: '#048104',
-  main_s_color: 'pink',
-  main_m_color: '#FFCC00',
-  main_l_color: 'cyan',
-  main_opacity: 0.25,
-  ew_color: '#FFCC00',
-  you_are_here_url: 'res/ui/youarehere.svg',
+  overlay_color : '#8080ff',
+  route_color : '#048104',
+  main_s_color : 'pink',
+  main_m_color : '#FFCC00',
+  main_l_color : 'cyan',
+  main_opacity : 0.25,
+  ew_color : '#FFCC00',
+  you_are_here_url : 'res/ui/youarehere.svg',
 };
 
 const STYLE_SHEETS = new Map([
-  [Styles.Poster, STYLE_DEFAULTS],
-  [Styles.Candy, STYLE_DEFAULTS],
-  [Styles.Draft, STYLE_DEFAULTS],
-  [Styles.Atlas, { ...STYLE_DEFAULTS, overlay_color: '#808080', you_are_here_url: 'res/ui/youarehere-gray.svg' }],
-  [Styles.FASA, { ...STYLE_DEFAULTS, you_are_here_url: 'res/ui/youarehere-gray.svg' }],
-  [Styles.Print, { ...STYLE_DEFAULTS, you_are_here_url: 'res/ui/youarehere-gray.svg' }],
+  [ Styles.Poster, STYLE_DEFAULTS ],
+  [ Styles.Candy, STYLE_DEFAULTS ],
+  [ Styles.Draft, STYLE_DEFAULTS ],
+  [
+    Styles.Atlas, {
+      ...STYLE_DEFAULTS,
+      overlay_color : '#808080',
+      you_are_here_url : 'res/ui/youarehere-gray.svg'
+    }
+  ],
+  [
+    Styles.FASA,
+    {...STYLE_DEFAULTS, you_are_here_url : 'res/ui/youarehere-gray.svg'}
+  ],
+  [
+    Styles.Print,
+    {...STYLE_DEFAULTS, you_are_here_url : 'res/ui/youarehere-gray.svg'}
+  ],
 ]);
 
 function styleLookup(style, property) {
-  const sheet = STYLE_SHEETS.get(style) ?? STYLE_SHEETS.get(Defaults.style) ?? STYLE_DEFAULTS;
+  const sheet = STYLE_SHEETS.get(style) ?? STYLE_SHEETS.get(Defaults.style) ??
+                STYLE_DEFAULTS;
   return sheet[property];
 }
-
 
 // ======================================================================
 // Data Services
@@ -389,41 +416,48 @@ export class MapService {
   }
 
   /**
-   * Generic service function to make HTTP requests. If options.abortKey and options.signal are provided, will use an abortSignal.
+   * Generic service function to make HTTP requests. If options.abortKey and
+   * options.signal are provided, will use an abortSignal.
    * @param {string} url - The URL to send the request to.
    * @param {Object} [options] - Optional parameters for the request.
    * @param {string} [options.method] - HTTP method (default: 'GET')
-   * @param {string} [options.accept] - Optional Accept ContentType header value to specify the desired response format. Defaults to 'application/json'.
-   * @param {string} [options.abortKey] - Optional key when provided will automatically abort when a new request is made with the same key.
-   * @param {AbortController} [options.abortController] - Optional AbortController to cancel the request.
-   * @returns {Promise<any>} The response data, parsed as JSON if the response is application/json, or as text otherwise.
+   * @param {string} [options.accept] - Optional Accept ContentType header value
+   *     to specify the desired response format. Defaults to 'application/json'.
+   * @param {string} [options.abortKey] - Optional key when provided will
+   *     automatically abort when a new request is made with the same key.
+   * @param {AbortController} [options.abortController] - Optional
+   *     AbortController to cancel the request.
+   * @returns {Promise<any>} The response data, parsed as JSON if the response
+   *     is application/json, or as text otherwise.
    */
   static async #service(url, options = {}) {
     let signal = undefined;
-    let abortController = undefined;
-    if(options.abortKey !== undefined && options.abortKey !== null) {
-      abortController = options.abortController ?? this.#getAbortController(options.abortKey);
+    let abortController;
+    if (options.abortKey !== undefined && options.abortKey !== null) {
+      abortController =
+          options.abortController ?? this.#getAbortController(options.abortKey);
     } else {
       abortController = options.abortController;
     }
-    if(abortController) {
+    if (abortController) {
       signal = abortController.signal;
     }
     const accept = options.accept ?? 'application/json';
     const response = await fetch(url, {
-      method: options.method ?? 'GET',
-      headers: { Accept: accept },
+      method : options.method ?? 'GET',
+      headers : {Accept : accept},
       signal
     });
     if (!response.ok)
       throw new Error(response.statusText);
-    return (accept === 'application/json') ?
-      await response.json() : await response.text();
+    return (accept === 'application/json') ? await response.json()
+                                           : await response.text();
   }
 
   static #makeServiceUrl(path, options = {}) {
     // remove non-query parameters from options without mutating options object
-    const { signal, method, accept, abortKey, abortController, ...queryOptions } = options;
+    const {signal, method, accept, abortKey, abortController, ...queryOptions} =
+        options;
     return Util.makeURL(SERVICE_BASE + path, queryOptions);
   }
 
@@ -432,7 +466,7 @@ export class MapService {
   }
 
   static coordinates(sector, hex, options = {}) {
-    const urlOptions = { ...options, sector, hex };
+    const urlOptions = {...options, sector, hex};
     const url = this.#makeServiceUrl('/api/coordinates', urlOptions);
     options.accept = options.accept ?? 'application/json';
     return this.#service(url, options);
@@ -445,51 +479,55 @@ export class MapService {
    * @param {string} milieu - The milieu context for the credits request.
    * @param {Object} [options] - Optional parameters for the request.
    * @param {string} [options.method] - HTTP method (default: 'GET')
-   * @param {string} [options.accept] - Optional Accept ContentType header value to specify the desired response format. Defaults to 'application/json'.
-   * @param {string} [options.abortKey] - Optional key when provided will automatically abort when a new request is made with the same key.
-   * @param {AbortController} [options.abortController] - Optional AbortController to cancel the request.
-   * @returns {any} The credits data, parsed as JSON if the response is application/json, or as text otherwise.
+   * @param {string} [options.accept] - Optional Accept ContentType header value
+   *     to specify the desired response format. Defaults to 'application/json'.
+   * @param {string} [options.abortKey] - Optional key when provided will
+   *     automatically abort when a new request is made with the same key.
+   * @param {AbortController} [options.abortController] - Optional
+   *     AbortController to cancel the request.
+   * @returns {any} The credits data, parsed as JSON if the response is
+   *     application/json, or as text otherwise.
    */
   static credits(worldX, worldY, milieu, options = {}) {
-    const urlOptions = { ...options, x: worldX, y: worldY, milieu };
+    const urlOptions = {...options, x : worldX, y : worldY, milieu};
     const url = this.#makeServiceUrl('/api/credits', urlOptions);
     return this.#service(url, options);
   }
 
   static search(query, milieu, options = {}) {
-    const urlOptions = { ...options, q: query, milieu };
+    const urlOptions = {...options, q : query, milieu};
     const url = this.#makeServiceUrl('/api/search', urlOptions);
     return this.#service(url, options);
   }
 
   static sectorData(sector, options = {}) {
-    const urlOptions = { ...options, sector };
+    const urlOptions = {...options, sector};
     const url = this.#makeServiceUrl('/api/sec', urlOptions);
     return this.#service(url, options);
   }
 
   static sectorDataTabDelimited(sector, options = {}) {
-    const urlOptions = { ...options, sector, type: 'TabDelimited' };
+    const urlOptions = {...options, sector, type : 'TabDelimited'};
     const url = this.#makeServiceUrl('/api/sec', urlOptions);
     options.accept = options.accept ?? 'text/plain';
     return this.#service(url, options);
   }
 
   static sectorMetaData(sector, options = {}) {
-    const urlOptions = { ...options, sector };
+    const urlOptions = {...options, sector};
     const url = this.#makeServiceUrl('/api/metadata', urlOptions);
     return this.#service(url, options);
   }
 
   static MSEC(sector, options = {}) {
-    const urlOptions = { ...options, sector };
+    const urlOptions = {...options, sector};
     const url = this.#makeServiceUrl('/api/msec', urlOptions);
     options.accept = options.accept ?? 'text/plain';
     return this.#service(url, options);
   }
 
   static universe(options = {}) {
-    const urlOptions = { ...options };
+    const urlOptions = {...options};
     const url = this.#makeServiceUrl('/api/universe', urlOptions);
     return this.#service(url, options);
   }
@@ -551,9 +589,7 @@ class LRUCache {
 // ======================================================================
 
 class ImageStash {
-  constructor() {
-    this.map = new Map();
-  }
+  constructor() { this.map = new Map(); }
 
   get(url, callback) {
     if (this.map.has(url))
@@ -570,21 +606,21 @@ class ImageStash {
 }
 const stash = new ImageStash();
 
-
 // ======================================================================
 // Animation Utilities
 // ======================================================================
 
-function isCallable(o) {
-  return typeof o === 'function';
-}
+function isCallable(o) { return typeof o === 'function'; }
 
 class Animation {
   /**
-   * Creates an animation that runs for a specified duration and optionally applies a smoothing function to the animation progress.
-   * set onanimate to function called with animation position (0.0 ... 1.0)
+   * Creates an animation that runs for a specified duration and optionally
+   * applies a smoothing function to the animation progress. set onanimate to
+   * function called with animation position (0.0 ... 1.0)
    * @param {number} dur - The total duration of the animation in seconds.
-   * @param {Function} smooth - An optional smoothing function that takes a position (0.0 to 1.0) and returns a modified position for easing effects.
+   * @param {Function} smooth - An optional smoothing function that takes a
+   *     position (0.0 to 1.0) and returns a modified position for easing
+   *     effects.
    */
   constructor(dur, smooth) {
     const start = Date.now();
@@ -626,14 +662,12 @@ class Animation {
    * @param {number} p
    * @return {number}
    */
-  static interpolate(a, b, p) {
-    return a * (1.0 - p) + b * p;
-  }
+  static interpolate(a, b, p) { return a * (1.0 - p) + b * p; }
 
   /**
    * Time smoothing function - input time is t within duration dur.
    * Acceleration period is a, deceleration period is d.
-   * Reference:   http://www.w3.org/TR/2005/REC-SMIL2-20050107/smil-timemanip.html
+   * Reference: http://www.w3.org/TR/2005/REC-SMIL2-20050107/smil-timemanip.html
    * @usage t_filtered = Animation.smooth( t, 1.0, 0.25, 0.25 );
    * @param {number} t
    * @param {number} dur
@@ -661,7 +695,6 @@ class Animation {
   }
 }
 
-
 // ======================================================================
 // Observable name/value map
 // ======================================================================
@@ -675,10 +708,17 @@ class NamedOptions {
   }
   keys() { return Object.keys(this._options); }
   get(key) { return this._options[key]; }
-  set(key, value) { this._options[key] = value; this._notify(key); }
-  delete(key) { delete this._options[key]; this._notify(key); }
+  set(key, value) {
+    this._options[key] = value;
+    this._notify(key);
+  }
+  delete(key) {
+    delete this._options[key];
+    this._notify(key);
+  }
   /**
-   * Iterates over each key/value pair in the options, invoking the provided callback function with the value, key, and index as arguments.
+   * Iterates over each key/value pair in the options, invoking the provided
+   * callback function with the value, key, and index as arguments.
    * @param {function} fn
    * @param {any} thisArg
    */
@@ -734,8 +774,9 @@ class NamedOptions {
 //
 //   map.SetRoute()
 //   map.AddMarker(id, x, y, opt_url); // should have CSS style for .marker#<id>
-//   map.AddOverlay({type:'rectangle', x, y, w, h}); // should have CSS style for .overlay
-//   map.AddOverlay({type:'circle', x, y, r}); // should have CSS style for .overlay
+//   map.AddOverlay({type:'rectangle', x, y, w, h}); // should have CSS style
+//   for .overlay map.AddOverlay({type:'circle', x, y, r}); // should have CSS
+//   style for .overlay
 //
 //----------------------------------------------------------------------
 
@@ -760,20 +801,13 @@ function dist(x, y) { return Math.sqrt(x * x + y * y); }
 const SINK_OFFSET = 1000;
 
 const INT_OPTIONS = [
-  'routes', 'rifts', 'dimunofficial',
-  'sscoords', 'allhexes',
-  'dw', 'an', 'mh', 'po', 'im', 'cp', 'stellar'
+  'routes', 'rifts', 'dimunofficial', 'sscoords', 'allhexes', 'dw', 'an', 'mh',
+  'po', 'im', 'cp', 'stellar'
 ];
-const STRING_OPTIONS = [
-  'ew', 'qz', 'as', 'hw', 'milieu'
-];
+const STRING_OPTIONS = [ 'ew', 'qz', 'as', 'hw', 'milieu' ];
 
 const ZOOM_DELTA = 0.5;
-function roundScale(s) {
-  return Math.round(s / ZOOM_DELTA) * ZOOM_DELTA;
-}
-
-
+function roundScale(s) { return Math.round(s / ZOOM_DELTA) * ZOOM_DELTA; }
 
 export class TravellerMap {
   constructor(container, boundingElement) {
@@ -826,7 +860,8 @@ export class TravellerMap {
     // Event target, so it doesn't change during refreshes
     const sink = document.createElement('div');
     sink.style.position = 'absolute';
-    sink.style.left = sink.style.top = sink.style.right = sink.style.bottom = (-SINK_OFFSET) + 'px';
+    sink.style.left = sink.style.top = sink.style.right = sink.style.bottom =
+        (-SINK_OFFSET) + 'px';
     sink.style.zIndex = '1000';
     container.appendChild(sink);
 
@@ -838,7 +873,8 @@ export class TravellerMap {
     this.ctx = this.canvas.getContext('2d');
 
     if (!this.ctx) {
-      throw new Error('2D context not supported or canvas initialization failed.');
+      throw new Error(
+          '2D context not supported or canvas initialization failed.');
     }
 
     this.markers = [];
@@ -857,7 +893,8 @@ export class TravellerMap {
 
     let dragging, drag_coords, was_dragged, previous_focus;
     container.addEventListener('mousedown', event => {
-      if (event.button !== 0) return;
+      if (event.button !== 0)
+        return;
       this.cancelAnimation();
       previous_focus = document.activeElement;
       container.focus();
@@ -898,7 +935,8 @@ export class TravellerMap {
     }, true);
 
     document.addEventListener('mouseup', event => {
-      if (event.button !== 0) return;
+      if (event.button !== 0)
+        return;
       if (dragging) {
         dragging = false;
         container.classList.remove('dragging');
@@ -912,7 +950,10 @@ export class TravellerMap {
       event.stopPropagation();
 
       if (!was_dragged) {
-        this._clicked({ ...this.eventToWorldCoords(event), activeElement: previous_focus });
+        this._clicked({
+          ...this.eventToWorldCoords(event),
+          activeElement : previous_focus
+        });
       }
     });
 
@@ -924,7 +965,8 @@ export class TravellerMap {
 
       const MAX_DOUBLECLICK_SCALE = 9;
       if (this._logScale < MAX_DOUBLECLICK_SCALE) {
-        let newscale = this._logScale + CLICK_SCALE_DELTA * (event.altKey ? 1 : -1);
+        let newscale =
+            this._logScale + CLICK_SCALE_DELTA * (event.altKey ? 1 : -1);
         newscale = Math.min(newscale, MAX_DOUBLECLICK_SCALE);
 
         const coords = this.eventCoords(event);
@@ -937,14 +979,14 @@ export class TravellerMap {
     container.addEventListener('wheel', event => {
       this.cancelAnimation();
 
-      const newscale = this._logScale + SCROLL_SCALE_DELTA * Math.sign(event.deltaY);
+      const newscale =
+          this._logScale + SCROLL_SCALE_DELTA * Math.sign(event.deltaY);
       const coords = this.eventCoords(event);
       this._setScale(newscale, coords.x, coords.y);
 
       event.preventDefault();
       event.stopPropagation();
     });
-
 
     // ----------------------------------------------------------------------
     // Resize
@@ -955,15 +997,13 @@ export class TravellerMap {
       // dispatched.
       setTimeout(() => {
         const rect = boundingElement.getBoundingClientRect();
-        if (rect.left === this.rect.left &&
-          rect.top === this.rect.top &&
-          rect.width === this.rect.width &&
-          rect.height === this.rect.height) return;
+        if (rect.left === this.rect.left && rect.top === this.rect.top &&
+            rect.width === this.rect.width && rect.height === this.rect.height)
+          return;
         this.rect = rect;
         this.resetCanvas();
       }, 150);
     });
-
 
     // ----------------------------------------------------------------------
     // Touch
@@ -979,10 +1019,12 @@ export class TravellerMap {
         const coords = this.eventCoords(event.touches[0]);
         if (touch_coords.x !== coords.x || touch_coords.y !== coords.y) {
 
-          // Only flag as dragged if movement exceeds threshold from starting point
+          // Only flag as dragged if movement exceeds threshold from starting
+          // point
           const dx = touch_start_coords.x - coords.x;
           const dy = touch_start_coords.y - coords.y;
-          if (!was_touch_dragged && Math.sqrt(dx * dx + dy * dy) > DRAG_THRESHOLD) {
+          if (!was_touch_dragged &&
+              Math.sqrt(dx * dx + dy * dy) > DRAG_THRESHOLD) {
             was_touch_dragged = true;
           }
 
@@ -994,15 +1036,13 @@ export class TravellerMap {
         was_touch_dragged = true;
 
         const od = dist(pinch2.x - pinch1.x, pinch2.y - pinch1.y),
-          ocx = (pinch1.x + pinch2.x) / 2,
-          ocy = (pinch1.y + pinch2.y) / 2;
+              ocx = (pinch1.x + pinch2.x) / 2, ocy = (pinch1.y + pinch2.y) / 2;
 
         pinch1 = this.eventCoords(event.touches[0]);
         pinch2 = this.eventCoords(event.touches[1]);
 
         const nd = dist(pinch2.x - pinch1.x, pinch2.y - pinch1.y),
-          ncx = (pinch1.x + pinch2.x) / 2,
-          ncy = (pinch1.y + pinch2.y) / 2;
+              ncx = (pinch1.x + pinch2.x) / 2, ncy = (pinch1.y + pinch2.y) / 2;
 
         this._offset(ocx - ncx, ocy - ncy);
 
@@ -1024,7 +1064,7 @@ export class TravellerMap {
         touch_coords = this.eventCoords(event.touches[0]);
 
       if (event.touches.length === 0 && !was_touch_dragged) {
-        this._clicked({ ...touch_wc, activeElement: previous_focus });
+        this._clicked({...touch_wc, activeElement : previous_focus});
       }
       event.preventDefault();
       event.stopPropagation();
@@ -1047,7 +1087,6 @@ export class TravellerMap {
       event.preventDefault();
       event.stopPropagation();
     }, true);
-
 
     // ----------------------------------------------------------------------
     // Keyboard
@@ -1093,9 +1132,14 @@ export class TravellerMap {
         return;
 
       switch (event.key) {
-        case '-': this.ZoomOut(); break;
-        case '=': this.ZoomIn(); break;
-        default: return;
+      case '-':
+        this.ZoomOut();
+        break;
+      case '=':
+        this.ZoomIn();
+        break;
+      default:
+        return;
       }
 
       event.preventDefault();
@@ -1116,7 +1160,7 @@ export class TravellerMap {
   // ======================================================================
 
   _offset(dx, dy) {
-    this.position = [this.x + dx / this.scale, this.y - dy / this.scale];
+    this.position = [ this.x + dx / this.scale, this.y - dy / this.scale ];
   }
 
   _setScale(newscale, px, py) {
@@ -1126,15 +1170,16 @@ export class TravellerMap {
 
     this._logScale = newscale;
 
-    const cw = this.rect.width,
-      ch = this.rect.height;
+    const cw = this.rect.width, ch = this.rect.height;
 
     // Mathmagic to preserve hover coordinates
     if (arguments.length >= 3) {
       const hx = (this.x + (px - cw / 2) / this.scale) / this.tilesize;
       const hy = (-this.y + (py - ch / 2) / this.scale) / this.tilesize;
-      this.position = [hx * this.tilesize - (px - cw / 2) / this.scale,
-      -(hy * this.tilesize - (py - ch / 2) / this.scale)];
+      this.position = [
+        hx * this.tilesize - (px - cw / 2) / this.scale,
+        -(hy * this.tilesize - (py - ch / 2) / this.scale)
+      ];
     }
 
     this.invalidate();
@@ -1150,9 +1195,8 @@ export class TravellerMap {
     // iOS devices have a limit of 3 or 5 megapixels for canvas backing
     // store; given screen resolution * ~3x size for "tilt" display this
     // can easily be reached, so reduce effective dpr.
-    if (dpr > 1 && /\biPad\b/.test(navigator.userAgent) &&
-      this.tilt_enabled &&
-      (cw * ch * dpr * dpr * 2 * 2) > 3e6) {
+    if (dpr > 1 && /\biPad\b/.test(navigator.userAgent) && this.tilt_enabled &&
+        (cw * ch * dpr * dpr * 2 * 2) > 3e6) {
       dpr = 1;
     }
 
@@ -1194,7 +1238,8 @@ export class TravellerMap {
 
   invalidate() {
     this.dirty = true;
-    if (this._raf_handle) return;
+    if (this._raf_handle)
+      return;
 
     this._raf_handle = requestAnimationFrame(ms => {
       this._raf_handle = null;
@@ -1212,9 +1257,10 @@ export class TravellerMap {
     const tscale = Math.round(this._logScale);
 
     // Tile URL (apart from x/y/scale)
-    const params = { options: this.options, style: this.style };
+    const params = {options : this.options, style : this.style};
     this.namedOptions.forEach((value, key) => {
-      if (['ew', 'qz', 'as'].includes(key)) return;
+      if ([ 'ew', 'qz', 'as' ].includes(key))
+        return;
       params[key] = value;
     });
     if ('devicePixelRatio' in window && window.devicePixelRatio > 1)
@@ -1229,13 +1275,12 @@ export class TravellerMap {
     const cf = pow2(tscale - 1); // Coordinate factor (integral)
 
     // Compute edges in tile space
-    const cw = this.rect.width,
-      ch = this.rect.height;
+    const cw = this.rect.width, ch = this.rect.height;
 
     let l = this._tx * cf - (cw / 2) / (this.tilesize * tmult),
-      r = this._tx * cf + (cw / 2) / (this.tilesize * tmult),
-      t = this._ty * cf - (ch / 2) / (this.tilesize * tmult),
-      b = this._ty * cf + (ch / 2) / (this.tilesize * tmult);
+        r = this._tx * cf + (cw / 2) / (this.tilesize * tmult),
+        t = this._ty * cf - (ch / 2) / (this.tilesize * tmult),
+        b = this._ty * cf + (ch / 2) / (this.tilesize * tmult);
 
     // Quantize to bounding tiles
     l = Math.floor(l) - 1;
@@ -1254,7 +1299,8 @@ export class TravellerMap {
     this.cache.ensureCapacity(tileCount * 2);
 
     // TODO: Defer loading of new tiles while in the middle of a zoom gesture
-    // Draw a rectanglular area of the map in a spiral from the center of the requested map outward
+    // Draw a rectanglular area of the map in a spiral from the center of the
+    // requested map outward
     this.ctx.save();
     this.ctx.setTransform(1, 0, 0, 1, 0, 0);
     this.ctx.globalCompositeOperation = 'source-over';
@@ -1265,8 +1311,10 @@ export class TravellerMap {
     this.drawRectangle(l, t, r, b, tscale, tmult, ch, cw, cf);
 
     // Draw markers and overlays.
-    for (const marker of this.markers) this.drawMarker(marker);
-    for (const overlay of this.overlays) this.drawOverlay(overlay);
+    for (const marker of this.markers)
+      this.drawMarker(marker);
+    for (const overlay of this.overlays)
+      this.drawOverlay(overlay);
 
     if (this.main)
       this.drawMain(this.main);
@@ -1295,18 +1343,27 @@ export class TravellerMap {
     const oy = $this._ty * -cf * dh + (ch / 2);
 
     // Start from the center, work outwards, so center tiles load first.
-    for (let dd = Math.floor((Math.min(x2 - x1 + 1, y2 - y1 + 1) + 1) / 2) - 1; dd >= 0; --dd)
+    for (let dd = Math.floor((Math.min(x2 - x1 + 1, y2 - y1 + 1) + 1) / 2) - 1;
+         dd >= 0; --dd)
       frame(x1 + dd, y1 + dd, x2 - dd, y2 - dd);
 
     function frame(x1, y1, x2, y2) {
       let x, y;
       if (y1 === y2) {
-        for (x = x1; x <= x2; ++x) draw(x, y1);
+        for (x = x1; x <= x2; ++x)
+          draw(x, y1);
       } else if (x1 === x2) {
-        for (y = y1; y <= y2; ++y) draw(x1, y);
+        for (y = y1; y <= y2; ++y)
+          draw(x1, y);
       } else {
-        for (x = x1; x <= x2; ++x) { draw(x, y1); draw(x, y2); }
-        for (y = y1 + 1; y <= y2 - 1; ++y) { draw(x1, y); draw(x2, y); }
+        for (x = x1; x <= x2; ++x) {
+          draw(x, y1);
+          draw(x, y2);
+        }
+        for (y = y1 + 1; y <= y2 - 1; ++y) {
+          draw(x1, y);
+          draw(x2, y);
+        }
       }
     }
 
@@ -1344,7 +1401,8 @@ export class TravellerMap {
       return;
     }
 
-    // Otherwise, while we're waiting, see if we have upscale/downscale versions to draw instead
+    // Otherwise, while we're waiting, see if we have upscale/downscale versions
+    // to draw instead
 
     function drawLower(x, y, scale, dx, dy, dw, dh) {
       if (scale <= $this.min_scale)
@@ -1390,29 +1448,32 @@ export class TravellerMap {
 
           if (img)
             drawImage(img, ax, ay, aw, ah);
-          // NOTE:  Don't recurse if not found as it would try an exponential number of tiles
-          // e.g. drawHigher(tx, ty, tscale, ax, ay, aw, ah);
+          // NOTE:  Don't recurse if not found as it would try an exponential
+          // number of tiles e.g. drawHigher(tx, ty, tscale, ax, ay, aw, ah);
         }
       }
     }
     drawHigher(x, y, scale, dx, dy, dw, dh);
   }
 
-
   /**
-   * Perform the tile request for the specified URL, with timeout and error handling.
+   * Perform the tile request for the specified URL, with timeout and error
+   * handling.
    * @param {string} url - The URL of the tile to request.
-   * @param {AbortController} abortController - The AbortController used if the request is timed-out.
+   * @param {AbortController} abortController - The AbortController used if the
+   *     request is timed-out.
    * @returns
    */
   async _doTileRequest(url, abortController) {
-    const timeout = setTimeout(() => abortController.abort(), this._tileRequestTimeout);
+    const timeout =
+        setTimeout(() => abortController.abort(), this._tileRequestTimeout);
     try {
-      const img = await Util.fetchImage(url, { signal: abortController.signal });
+      const img = await Util.fetchImage(url, {signal : abortController.signal});
       this.cache.insert(url, img);
       this._tileLoadDebounce();
     } catch (err) {
-      if (err?.name === 'AbortError') return;
+      if (err?.name === 'AbortError')
+        return;
       console.error(`Error loading tile ${url}:`, err);
     } finally {
       clearTimeout(timeout);
@@ -1425,23 +1486,25 @@ export class TravellerMap {
    * @param {number} x - The x coordinate of the tile.
    * @param {number} y - The y coordinate of the tile.
    * @param {number} scale - The zoom level of the tile.
-   * @param {boolean} [allowFetch=false] - If fetching the tile from the server is allowed if not found in cache.
-   * @returns {HTMLImageElement|undefined} The tile image if found in cache, or undefined if not found.
+   * @param {boolean} [allowFetch=false] - If fetching the tile from the server
+   *     is allowed if not found in cache.
+   * @returns {HTMLImageElement|undefined} The tile image if found in cache, or
+   *     undefined if not found.
    */
   getTile(x, y, scale, allowFetch = false) {
     const url = this._tile_url_base + `&x=${x}&y=${y}&scale=${pow2(scale - 1)}`;
 
     const cached = this.cache.fetch(url);
-    if (cached) return cached;
+    if (cached)
+      return cached;
 
     const canRequest =
-      allowFetch &&
-      !this._activeTileRequests.has(url) &&
-      !this.defer_loading &&
-      navigator.onLine &&
-      this._activeTileRequests.size < this._maxConcurrentTileRequests;
+        allowFetch && !this._activeTileRequests.has(url) &&
+        !this.defer_loading && navigator.onLine &&
+        this._activeTileRequests.size < this._maxConcurrentTileRequests;
 
-    if (!canRequest) return undefined;
+    if (!canRequest)
+      return undefined;
 
     const abortController = new AbortController();
     this._activeTileRequests.set(url, abortController);
@@ -1475,33 +1538,36 @@ export class TravellerMap {
    * @param {number} x
    * @param {number} y
    * @param {Object} [options]
-   * @param {number} [options.duration=2.0] - The duration of the animation in seconds.
+   * @param {number} [options.duration=2.0] - The duration of the animation in
+   *     seconds.
    */
-  animateTo(scale, x, y, options = { duration: 2.0 }) {
-    return /** @type {Promise<void>} */(new Promise((resolve, reject) => {
+  animateTo(scale, x, y, options = {duration : 2.0}) {
+    return /** @type {Promise<void>} */ (new Promise((resolve, reject) => {
       this.cancelAnimation();
-      const os = this.scale,
-        ox = this.x,
-        oy = this.y;
+      const os = this.scale, ox = this.x, oy = this.y;
       if (ox === x && oy === y && os === scale) {
         resolve();
         return;
       }
 
       const duration = options.duration ?? 2.0;
-      this.animation = new Animation(duration, p => Animation.smooth(p, 1.0, 0.1, 0.25));
+      this.animation =
+          new Animation(duration, p => Animation.smooth(p, 1.0, 0.1, 0.25));
 
       this.animation.onanimate = p => {
         // Interpolate scale in log space.
         this.scale = pow2(Animation.interpolate(log2(os), log2(scale), p));
-        // TODO: If animating scale, this should follow an arc (parabola?) through 3space treating
-        // scale as Z and computing a height such that the target is in view at the turnaround?
+        // TODO: If animating scale, this should follow an arc (parabola?)
+        // through 3space treating scale as Z and computing a height such that
+        // the target is in view at the turnaround?
 
-        // For now, animate to position in 1/2 the overall animation time, so we spend
-        // much of the animation time centered over the target.
+        // For now, animate to position in 1/2 the overall animation time, so we
+        // spend much of the animation time centered over the target.
         const hp = Math.min(p * 2, 1);
         const p2 = 1 - ((1 - hp) * (1 - hp));
-        this.position = [Animation.interpolate(ox, x, p2), Animation.interpolate(oy, y, p2)];
+        this.position = [
+          Animation.interpolate(ox, x, p2), Animation.interpolate(oy, y, p2)
+        ];
       };
 
       this.animation.oncomplete = resolve;
@@ -1524,7 +1590,8 @@ export class TravellerMap {
       ctx.fillRect(pt1.x, pt1.y, pt2.x - pt1.x, pt1.y - pt2.y);
     } else if (overlay.type === 'circle') {
       const pt = this.mapToPixel(overlay.x, overlay.y);
-      const r = Math.abs(this.mapToPixel(overlay.x, overlay.y + overlay.r).y - pt.y);
+      const r =
+          Math.abs(this.mapToPixel(overlay.x, overlay.y + overlay.r).y - pt.y);
       ctx.beginPath();
       ctx.ellipse(pt.x, pt.y, r, r, 0, 0, Math.PI * 2);
       ctx.fill();
@@ -1596,7 +1663,8 @@ export class TravellerMap {
       pt = this.mapToPixel(pt.x, pt.y);
       ctx[index ? 'lineTo' : 'moveTo'](pt.x, pt.y);
     }
-    const dots = (this._logScale >= 7) ? route : [route[0], route[route.length - 1]];
+    const dots =
+        (this._logScale >= 7) ? route : [ route[0], route[route.length - 1] ];
     for (const stop of dots) {
       let pt = Astrometrics.sectorHexToMap(stop.sx, stop.sy, stop.hx, stop.hy);
       pt = this.mapToPixel(pt.x, pt.y);
@@ -1615,13 +1683,15 @@ export class TravellerMap {
     ctx.translate(-this.canvas.offset_x, -this.canvas.offset_y);
     ctx.globalCompositeOperation = 'source-over';
     ctx.globalAlpha = styleLookup(this.style, 'main_opacity');
-    ctx.fillStyle = styleLookup(this.style,
-      main.length <= 10 ? 'main_s_color' :
-        main.length <= 50 ? 'main_m_color' : 'main_l_color');
+    ctx.fillStyle =
+        styleLookup(this.style, main.length <= 10   ? 'main_s_color'
+                                : main.length <= 50 ? 'main_m_color'
+                                                    : 'main_l_color');
     ctx.beginPath();
     const radius = 1.15 * this.scale / 2;
     for (const world of main) {
-      let pt = Astrometrics.sectorHexToMap(world.sx, world.sy, world.hx, world.hy);
+      let pt =
+          Astrometrics.sectorHexToMap(world.sx, world.sy, world.hx, world.hy);
       pt = this.mapToPixel(pt.x, pt.y);
       ctx.moveTo(pt.x + radius, pt.y);
       ctx.arc(pt.x, pt.y, radius, 0, Math.PI * 2);
@@ -1638,16 +1708,16 @@ export class TravellerMap {
 
     if (marker.url) {
       image = stash.get(marker.url, () => this.invalidate());
-      if (!image) return;
+      if (!image)
+        return;
 
       const MARKER_SIZE = 128;
       ctx.save();
       // @ts-ignore
       ctx.translate(-this.canvas.offset_x, -this.canvas.offset_y);
       ctx.globalCompositeOperation = 'source-over';
-      ctx.drawImage(image,
-        pt.x - MARKER_SIZE / 2, pt.y - MARKER_SIZE / 2,
-        MARKER_SIZE, MARKER_SIZE);
+      ctx.drawImage(image, pt.x - MARKER_SIZE / 2, pt.y - MARKER_SIZE / 2,
+                    MARKER_SIZE, MARKER_SIZE);
       ctx.restore();
       return;
     }
@@ -1655,7 +1725,8 @@ export class TravellerMap {
     if (styleLookup(this.style, marker.id + '_url')) {
       const url = styleLookup(this.style, marker.id + '_url');
       image = stash.get(url, () => this.invalidate());
-      if (!image) return;
+      if (!image)
+        return;
 
       ctx.save();
       // @ts-ignore
@@ -1722,11 +1793,8 @@ export class TravellerMap {
     ctx.beginPath();
     const px_offset = 0.5; // offset from corner to center of hex
     const pt = this.mapToPixel(x + px_offset, y + px_offset);
-    ctx.arc(pt.x,
-      pt.y,
-      this.scale * radius,
-      Math.PI / 2 - Math.PI / 12,
-      Math.PI / 2 + Math.PI / 12);
+    ctx.arc(pt.x, pt.y, this.scale * radius, Math.PI / 2 - Math.PI / 12,
+            Math.PI / 2 + Math.PI / 12);
     ctx.stroke();
     ctx.restore();
   }
@@ -1745,9 +1813,7 @@ export class TravellerMap {
     ctx.beginPath();
     const px_offset = 0.5; // offset from corner to center of hex
     const pt = this.mapToPixel(x + px_offset, y + px_offset);
-    ctx.arc(pt.x,
-      pt.y,
-      this.scale * radius, 0, Math.PI * 2);
+    ctx.arc(pt.x, pt.y, this.scale * radius, 0, Math.PI * 2);
     ctx.stroke();
     ctx.restore();
   }
@@ -1784,9 +1850,7 @@ export class TravellerMap {
       ctx.beginPath();
       const px_offset = 0.5; // offset from corner to center of hex
       const pt = this.mapToPixel(x + px_offset, y + px_offset);
-      ctx.arc(pt.x,
-        pt.y,
-        this.scale * radius, 0, Math.PI * 2);
+      ctx.arc(pt.x, pt.y, this.scale * radius, 0, Math.PI * 2);
       ctx.fill();
       ctx.restore();
     }
@@ -1794,15 +1858,15 @@ export class TravellerMap {
 
   mapToPixel(mx, my) {
     return {
-      x: (mx - this._tx * this.tilesize) * this.scale + this.rect.width / 2,
-      y: (-my - this._ty * this.tilesize) * this.scale + this.rect.height / 2
+      x : (mx - this._tx * this.tilesize) * this.scale + this.rect.width / 2,
+      y : (-my - this._ty * this.tilesize) * this.scale + this.rect.height / 2
     };
   }
 
   pixelToMap(px, py) {
     return {
-      x: this._tx * this.tilesize + (px - this.rect.width / 2) / this.scale,
-      y: -(this._ty * this.tilesize + (py - this.rect.height / 2) / this.scale)
+      x : this._tx * this.tilesize + (px - this.rect.width / 2) / this.scale,
+      y : -(this._ty * this.tilesize + (py - this.rect.height / 2) / this.scale)
     };
   }
 
@@ -1811,16 +1875,16 @@ export class TravellerMap {
     // layerX/Y for Firefox. Touch events lack these, so compute untransformed
     // coords.
     // TODO: Map touch coordinates back into world-space.
-    const offsetX = 'offsetX' in event ? event.offsetX :
-      'layerX' in event ? event.layerX :
-        event.pageX - event.target.offsetLeft;
-    const offsetY = 'offsetY' in event ? event.offsetY :
-      'layerY' in event ? event.layerY :
-        event.pageY - event.target.offsetTop;
+    const offsetX = 'offsetX' in event  ? event.offsetX
+                    : 'layerX' in event ? event.layerX
+                                        : event.pageX - event.target.offsetLeft;
+    const offsetY = 'offsetY' in event  ? event.offsetY
+                    : 'layerY' in event ? event.layerY
+                                        : event.pageY - event.target.offsetTop;
 
     return {
-      x: offsetX - SINK_OFFSET - this.rect.left,
-      y: offsetY - SINK_OFFSET - this.rect.top
+      x : offsetX - SINK_OFFSET - this.rect.left,
+      y : offsetY - SINK_OFFSET - this.rect.top
     };
   }
 
@@ -1829,7 +1893,6 @@ export class TravellerMap {
     const map = this.pixelToMap(coords.x, coords.y);
     return Astrometrics.mapToWorld(map.x, map.y);
   }
-
 
   // ======================================================================
   // Public API
@@ -1854,15 +1917,18 @@ export class TravellerMap {
   set options(value) {
     if (LEGACY_STYLES) {
       // Handle legacy styles specified in options bits
-      if ((value & MapOptions.StyleMaskDeprecated) === MapOptions.PrintStyleDeprecated)
+      if ((value & MapOptions.StyleMaskDeprecated) ===
+          MapOptions.PrintStyleDeprecated)
         this.style = 'atlas';
-      else if ((value & MapOptions.StyleMaskDeprecated) === MapOptions.CandyStyleDeprecated)
+      else if ((value & MapOptions.StyleMaskDeprecated) ===
+               MapOptions.CandyStyleDeprecated)
         this.style = 'candy';
       value = value & ~MapOptions.StyleMaskDeprecated;
     }
 
     value = value & MapOptions.Mask;
-    if (value === this._options) return;
+    if (value === this._options)
+      return;
 
     this._options = value;
     this.cache.clear();
@@ -1872,7 +1938,8 @@ export class TravellerMap {
 
   get style() { return this._style; }
   set style(value) {
-    if (value === this._style) return;
+    if (value === this._style)
+      return;
 
     this._style = value;
     this.cache.clear();
@@ -1881,16 +1948,18 @@ export class TravellerMap {
   }
 
   get x() { return this._tx * this.tilesize; }
-  set x(value) { this.position = [value, this.y]; }
+  set x(value) { this.position = [ value, this.y ]; }
 
   get y() { return this._ty * -this.tilesize; }
-  set y(value) { this.position = [this.x, value]; }
+  set y(value) { this.position = [ this.x, value ]; }
 
-  get position() { return [this._tx * this.tilesize, this._ty * -this.tilesize]; }
+  get position() {
+    return [ this._tx * this.tilesize, this._ty * -this.tilesize ];
+  }
   set position(value) {
-    const x = value[0] / this.tilesize,
-      y = value[1] / -this.tilesize;
-    if (x === this._tx && y === this._ty) return;
+    const x = value[0] / this.tilesize, y = value[1] / -this.tilesize;
+    if (x === this._tx && y === this._ty)
+      return;
     this._tx = x;
     this._ty = y;
     this.invalidate();
@@ -1903,29 +1972,33 @@ export class TravellerMap {
 
   //
   /**
-   * Place the specified Sector, Hex coordinates (parsec) at the center of the viewport.
+   * Place the specified Sector, Hex coordinates (parsec) at the center of the
+   * viewport.
    * @param {number} sx
    * @param {number} sy
    * @param {number} hx
    * @param {number} hy
    * @param {Object} [options]
-   * @param {number} [options.scale] - If specified, the scale to set after centering.
-   * @param {boolean} [options.immediate=false] - If true, the centering will happen immediately without animation, even if the target is within the animation threshold.
+   * @param {number} [options.scale] - If specified, the scale to set after
+   *     centering.
+   * @param {boolean} [options.immediate=false] - If true, the centering will
+   *     happen immediately without animation, even if the target is within the
+   *     animation threshold.
    */
-  CenterAtSectorHex(sx, sy, hx, hy, options = { scale: undefined, immediate: false }) {
+  CenterAtSectorHex(sx, sy, hx, hy,
+                    options = {scale : undefined, immediate: false}) {
     this.cancelAnimation();
     const target = Astrometrics.sectorHexToMap(sx, sy, hx, hy);
 
     if (options.scale !== undefined) {
       if (!options.immediate &&
-        this.shouldAnimateTo(options.scale, target.x, target.y)) {
-        this.animateTo(options.scale, target.x, target.y)
-          .catch(function () { });
+          this.shouldAnimateTo(options.scale, target.x, target.y)) {
+        this.animateTo(options.scale, target.x, target.y).catch(function() {});
         return;
       }
       this.scale = options.scale;
     }
-    this.position = [target.x, target.y];
+    this.position = [ target.x, target.y ];
   }
 
   // Move and scale display to show the specified world space area
@@ -1935,25 +2008,28 @@ export class TravellerMap {
     // Calculate the hex to center the view around
     const centerWorldX = Math.round(worldWidth / 2) + minWorldX;
     const centerWorldY = Math.round(worldHeight / 2) + minWorldY;
-    const centerSectorHex = Astrometrics.worldToSectorHex(centerWorldX, centerWorldY);
-    // Calculate how large the area covered by the area is in current pixel coordinates
+    const centerSectorHex =
+        Astrometrics.worldToSectorHex(centerWorldX, centerWorldY);
+    // Calculate how large the area covered by the area is in current pixel
+    // coordinates
     const minMapPosition = Astrometrics.worldToMap(minWorldX, minWorldY);
     const maxMapPosition = Astrometrics.worldToMap(maxWorldX, maxWorldY);
-    const minPixelPosition = this.mapToPixel(minMapPosition.x, minMapPosition.y);
-    const maxPixelPosition = this.mapToPixel(maxMapPosition.x, maxMapPosition.y);
+    const minPixelPosition =
+        this.mapToPixel(minMapPosition.x, minMapPosition.y);
+    const maxPixelPosition =
+        this.mapToPixel(maxMapPosition.x, maxMapPosition.y);
     const pixelWidth = maxPixelPosition.x - minPixelPosition.x;
     const pixelHeight = maxPixelPosition.y - minPixelPosition.y;
     // Calculate the new scale value based on the current scale value
-    const pixelRatio = (pixelWidth > pixelHeight) ? (pixelWidth / this.rect.width) : (pixelHeight / this.rect.height);
+    const pixelRatio = (pixelWidth > pixelHeight)
+                           ? (pixelWidth / this.rect.width)
+                           : (pixelHeight / this.rect.height);
     const divisor = Math.abs(pixelRatio) * 2;
     const newScale = this.scale / divisor;
     // Update the view
-    this.CenterAtSectorHex(
-      centerSectorHex.sx,
-      centerSectorHex.sy,
-      centerSectorHex.hx,
-      centerSectorHex.hy,
-      { scale: newScale });
+    this.CenterAtSectorHex(centerSectorHex.sx, centerSectorHex.sy,
+                           centerSectorHex.hx, centerSectorHex.hy,
+                           {scale : newScale});
   }
 
   // Scroll the map view by the specified dx/dy (in pixels)
@@ -1965,51 +2041,34 @@ export class TravellerMap {
       return;
     }
 
-    const s = this.scale * this.tilesize,
-      ox = this.x,
-      oy = this.y,
-      tx = ox + dx / s,
-      ty = oy + dy / s;
+    const s = this.scale * this.tilesize, ox = this.x, oy = this.y,
+          tx = ox + dx / s, ty = oy + dy / s;
 
-    this.animation = new Animation(1.0, p => Animation.smooth(p, 1.0, 0.1, 0.25));
+    this.animation =
+        new Animation(1.0, p => Animation.smooth(p, 1.0, 0.1, 0.25));
     this.animation.onanimate = p => {
-      this.position = [Animation.interpolate(ox, tx, p), Animation.interpolate(oy, ty, p)];
+      this.position = [
+        Animation.interpolate(ox, tx, p), Animation.interpolate(oy, ty, p)
+      ];
     };
   }
 
+  ZoomIn() { this._setScale(roundScale(this._logScale) + ZOOM_DELTA); }
 
-  ZoomIn() {
-    this._setScale(roundScale(this._logScale) + ZOOM_DELTA);
-  }
-
-  ZoomOut() {
-    this._setScale(roundScale(this._logScale) - ZOOM_DELTA);
-  }
-
+  ZoomOut() { this._setScale(roundScale(this._logScale) - ZOOM_DELTA); }
 
   // NOTE: This API is subject to change
   // |x| and |y| are map-space coordinates
   AddMarker(id, x, y, opt_url) {
-    const marker = {
-      x,
-      y,
-      id,
-      url: opt_url,
-      z: 909
-    };
+    const marker = {x, y, id, url : opt_url, z : 909};
 
     this.markers.push(marker);
     this.invalidate();
   }
 
-
   AddOverlay(o) {
     // TODO: Take id, like AddMarker
-    const overlay = {
-      id: 'overlay',
-      z: 910,
-      ...o
-    };
+    const overlay = {id : 'overlay', z : 910, ...o};
 
     this.overlays.push(overlay);
     this.invalidate();
@@ -2052,14 +2111,13 @@ export class TravellerMap {
 
     function int(prop) {
       const v = params[prop];
-      if (typeof v === 'boolean') return v ? 1 : 0;
+      if (typeof v === 'boolean')
+        return v ? 1 : 0;
       const n = parseInt(v, 10);
       return isNaN(n) ? 0 : n;
     }
 
-    function has(params, list) {
-      return list.every(item => item in params);
-    }
+    function has(params, list) { return list.every(item => item in params); }
 
     if ('scale' in params)
       this.scale = float('scale');
@@ -2070,55 +2128,69 @@ export class TravellerMap {
     if ('style' in params)
       this.style = params.style;
 
-    if (has(params, ['yah_sx', 'yah_sy', 'yah_hx', 'yah_hx'])) {
-      const pt = Astrometrics.sectorHexToMap(int('yah_sx'), int('yah_sy'), int('yah_hx'), int('yah_hy'));
+    if (has(params, [ 'yah_sx', 'yah_sy', 'yah_hx', 'yah_hx' ])) {
+      const pt = Astrometrics.sectorHexToMap(int('yah_sx'), int('yah_sy'),
+                                             int('yah_hx'), int('yah_hy'));
       this.AddMarker('you_are_here', pt.x, pt.y);
-    } else if (has(params, ['yah_x', 'yah_y'])) {
+    } else if (has(params, [ 'yah_x', 'yah_y' ])) {
       this.AddMarker('you_are_here', float('yah_x'), float('yah_y'));
-    } else if (has(params, ['yah_sector'])) {
+    } else if (has(params, [ 'yah_sector' ])) {
       (async () => {
         try {
-          const location = await MapService.coordinates(params.yah_sector, params.yah_hex);
+          const location =
+              await MapService.coordinates(params.yah_sector, params.yah_hex);
           const pt = Astrometrics.worldToMap(location.x, location.y);
           this.AddMarker('you_are_here', pt.x, pt.y);
         } catch (ex) {
           alert('The requested marker location "' + params.yah_sector +
-            ('yah_hex' in params ? (' ' + params.yah_hex) : '') +
-            '" was not found.');
+                ('yah_hex' in params ? (' ' + params.yah_hex) : '') +
+                '" was not found.');
         }
       })();
     }
 
-    if (has(params, ['marker_sx', 'marker_sy', 'marker_hx', 'marker_hx', 'marker_url'])) {
-      const pt = Astrometrics.sectorHexToMap(int('marker_sx'), int('marker_sy'), int('marker_hx'), int('marker_hy'));
+    if (has(params, [
+          'marker_sx', 'marker_sy', 'marker_hx', 'marker_hx', 'marker_url'
+        ])) {
+      const pt =
+          Astrometrics.sectorHexToMap(int('marker_sx'), int('marker_sy'),
+                                      int('marker_hx'), int('marker_hy'));
       this.AddMarker('custom', pt.x, pt.y, params.marker_url);
-    } else if (has(params, ['marker_x', 'marker_y', 'marker_url'])) {
-      this.AddMarker('custom', float('marker_x'), float('marker_y'), params.marker_url);
-    } else if (has(params, ['marker_sector', 'marker_url'])) {
+    } else if (has(params, [ 'marker_x', 'marker_y', 'marker_url' ])) {
+      this.AddMarker('custom', float('marker_x'), float('marker_y'),
+                     params.marker_url);
+    } else if (has(params, [ 'marker_sector', 'marker_url' ])) {
       (async () => {
         try {
-          const location = await MapService.coordinates(params.marker_sector, params.marker_hex);
+          const location = await MapService.coordinates(params.marker_sector,
+                                                        params.marker_hex);
           const pt = Astrometrics.worldToMap(location.x, location.y);
           this.AddMarker('custom', pt.x, pt.y, params.marker_url);
         } catch (ex) {
           alert('The requested marker location "' + params.marker_sector +
-            ('marker_hex' in params ? (' ' + params.marker_hex) : '') +
-            '" was not found.');
+                ('marker_hex' in params ? (' ' + params.marker_hex) : '') +
+                '" was not found.');
         }
       })();
     }
 
     // Rectangle overlays
-    for (let i = 0; ; ++i) {
-      const n = (i === 0) ? '' : i,
-        oxs = 'ox' + n, oys = 'oy' + n, ows = 'ow' + n, ohs = 'oh' + n,
-        oss = 'os' + n;
-      if (has(params, [oxs, oys, ows, ohs])) {
+    for (let i = 0;; ++i) {
+      const n = (i === 0) ? '' : i, oxs = 'ox' + n, oys = 'oy' + n,
+            ows = 'ow' + n, ohs = 'oh' + n, oss = 'os' + n;
+      if (has(params, [ oxs, oys, ows, ohs ])) {
         const x = float(oxs);
         const y = float(oys);
         const w = float(ows);
         const h = float(ohs);
-        this.AddOverlay({ type: 'rectangle', x: x, y: y, w: w, h: h, style: params[oss] });
+        this.AddOverlay({
+          type : 'rectangle',
+          x : x,
+          y : y,
+          w : w,
+          h : h,
+          style : params[oss]
+        });
       } else {
         break;
       }
@@ -2126,25 +2198,33 @@ export class TravellerMap {
     // Compact form
     if ('or' in params) {
       for (const or of params.or.split('~')) {
-        function float(s) { const n = parseFloat(s); return isNaN(n) ? 0 : n; }
+        function float(s) {
+          const n = parseFloat(s);
+          return isNaN(n) ? 0 : n;
+        }
         const a = or.split('!');
         this.AddOverlay({
-          type: 'rectangle',
-          x: float(a[0]), y: float(a[1]), w: float(a[2]), h: float(a[3]),
-          style: a[4]
+          type : 'rectangle',
+          x : float(a[0]),
+          y : float(a[1]),
+          w : float(a[2]),
+          h : float(a[3]),
+          style : a[4]
         });
       }
     }
 
     // Circle overlays
-    for (let i = 0; ; ++i) {
+    for (let i = 0;; ++i) {
       const n = (i === 0) ? '' : i;
-      const ocxs = 'ocx' + n, ocys = 'ocy' + n, ocrs = 'ocr' + n, ocss = 'ocs' + n;
-      if (has(params, [ocxs, ocys, ocrs])) {
+      const ocxs = 'ocx' + n, ocys = 'ocy' + n, ocrs = 'ocr' + n,
+            ocss = 'ocs' + n;
+      if (has(params, [ ocxs, ocys, ocrs ])) {
         const cx = float(ocxs);
         const cy = float(ocys);
         const cr = float(ocrs);
-        this.AddOverlay({ type: 'circle', x: cx, y: cy, r: cr, style: params[ocss] });
+        this.AddOverlay(
+            {type : 'circle', x : cx, y : cy, r : cr, style : params[ocss]});
       } else {
         break;
       }
@@ -2152,10 +2232,17 @@ export class TravellerMap {
     // Compact form
     if ('oc' in params) {
       for (const oc of params.oc.split('~')) {
-        function float(s) { const n = parseFloat(s); return isNaN(n) ? 0 : n; }
+        function float(s) {
+          const n = parseFloat(s);
+          return isNaN(n) ? 0 : n;
+        }
         const a = oc.split('!');
         this.AddOverlay({
-          type: 'circle', x: float(a[0]), y: float(a[1]), r: float(a[2]), style: a[3]
+          type : 'circle',
+          x : float(a[0]),
+          y : float(a[1]),
+          r : float(a[2]),
+          style : a[3]
         });
       }
     }
@@ -2164,22 +2251,25 @@ export class TravellerMap {
     if ('p' in params) {
       const parts = params.p.split('!');
       this.logScale = parseFloat(parts[2]) || 0;
-      this.position = [parseFloat(parts[0]) || 0, parseFloat(parts[1]) || 0];
-    } else if (has(params, ['x', 'y'])) {
-      this.position = [float('x'), float('y')];
-    } else if (has(params, ['sx', 'sy', 'hx', 'hy', 'scale'])) {
-      this.CenterAtSectorHex(
-        float('sx'), float('sy'), float('hx'), float('hy'), { scale: float('scale') });
+      this.position = [ parseFloat(parts[0]) || 0, parseFloat(parts[1]) || 0 ];
+    } else if (has(params, [ 'x', 'y' ])) {
+      this.position = [ float('x'), float('y') ];
+    } else if (has(params, [ 'sx', 'sy', 'hx', 'hy', 'scale' ])) {
+      this.CenterAtSectorHex(float('sx'), float('sy'), float('hx'), float('hy'),
+                             {scale : float('scale')});
     } else if ('sector' in params) {
       (async () => {
         try {
-          const location = await MapService.coordinates(params.sector, params.hex, { subsector: params.subsector });
-          if (location.hx && location.hy) { // NOTE: Test for undefined -or- zero
-            this.CenterAtSectorHex(location.sx, location.sy, location.hx, location.hy, { scale: 64 });
+          const location = await MapService.coordinates(
+              params.sector, params.hex, {subsector : params.subsector});
+          if (location.hx &&
+              location.hy) { // NOTE: Test for undefined -or- zero
+            this.CenterAtSectorHex(location.sx, location.sy, location.hx,
+                                   location.hy, {scale : 64});
           } else {
             this.CenterAtSectorHex(location.sx, location.sy,
-              Astrometrics.SectorWidth / 2, Astrometrics.SectorHeight / 2,
-              { scale: 16 });
+                                   Astrometrics.SectorWidth / 2,
+                                   Astrometrics.SectorHeight / 2, {scale : 16});
           }
 
           if ('yah' in params) {
@@ -2190,7 +2280,8 @@ export class TravellerMap {
           }
 
           if ('marker' in params) {
-            this.AddMarker('custom', this.position[0], this.position[1], params['marker']);
+            this.AddMarker('custom', this.position[0], this.position[1],
+                           params['marker']);
             params.marker_url = params.marker;
             params.marker_x = String(this.position[0]);
             params.marker_y = String(this.position[1]);
@@ -2198,7 +2289,8 @@ export class TravellerMap {
           }
         } catch (ex) {
           alert('The requested location "' + params.sector +
-            ('hex' in params ? (' ' + params.hex) : '') + '" was not found.');
+                ('hex' in params ? (' ' + params.hex) : '') +
+                '" was not found.');
         }
       })();
     }
@@ -2233,43 +2325,31 @@ export class TravellerMap {
   onHovered;
 
   /**
-   * Fire the specified event handler with the specified data, if the handler is defined.
+   * Fire the specified event handler with the specified data, if the handler is
+   * defined.
    * @param {Function|undefined} func
    * @param {any} data
    */
   _fireEvent(func, data = undefined) {
-    if (func === undefined) return;
+    if (func === undefined)
+      return;
     const invoke = () => {
-      if (func === undefined) return;
+      if (func === undefined)
+        return;
       try {
         func.call(this, data);
-      }
-      catch (err) {
+      } catch (err) {
         console.error('Event handler error', func?.name || '<handler>', err);
       }
     };
     queueMicrotask(invoke);
   }
 
-  _doubleClicked(data) {
-    this._fireEvent(this.onDoubleClick, data);
-  }
-  _clicked(data) {
-    this._fireEvent(this.onClick, data);
-  }
-  _positionChanged() {
-    this._fireEvent(this.onPositionChanged);
-  }
-  _scaleChanged(data) {
-    this._fireEvent(this.onScaleChanged, data);
-  }
-  _styleChanged(data) {
-    this._fireEvent(this.onStyleChanged, data);
-  }
-  _optionsChanged(data) {
-    this._fireEvent(this.onOptionsChanged, data);
-  }
-  _hovered(data) {
-    this._fireEvent(this.onHovered, data);
-  }
+  _doubleClicked(data) { this._fireEvent(this.onDoubleClick, data); }
+  _clicked(data) { this._fireEvent(this.onClick, data); }
+  _positionChanged() { this._fireEvent(this.onPositionChanged); }
+  _scaleChanged(data) { this._fireEvent(this.onScaleChanged, data); }
+  _styleChanged(data) { this._fireEvent(this.onStyleChanged, data); }
+  _optionsChanged(data) { this._fireEvent(this.onOptionsChanged, data); }
+  _hovered(data) { this._fireEvent(this.onHovered, data); }
 }

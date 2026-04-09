@@ -1,28 +1,27 @@
-import globals from "globals";
 import js from "@eslint/js";
+import globals from "globals";
 
 export default [
   js.configs.recommended,
   {
-    rules: {
-      "no-unused-vars": "off",
+    rules : {
+      "no-unused-vars" : "off",
     },
   },
   {
-    files: ["**/*.js"],
-    ignores: ["sw.js"],
-    languageOptions: {
-      globals: {
+    files : [ "**/*.js" ],
+    ignores : [ "sw.js" ],
+    languageOptions : {
+      globals : {
         ...globals.browser,
-        /** @type {typeof import('handlebars')} */
-        Handlebars: Handlebars,
+        Handlebars : true,
       },
     },
   },
   {
-    files: ["sw.js"],
-    languageOptions: {
-      globals: {
+    files : [ "sw.js" ],
+    languageOptions : {
+      globals : {
         ...globals.serviceworker,
       },
     },

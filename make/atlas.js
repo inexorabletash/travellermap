@@ -22,13 +22,13 @@ const cmp = (a, b) => a < b ? -1 : a > b ? 1 : 0;
  * @returns {string}
  */
 function smartquote(s) {
-  if(typeof s !== 'string') {
+  if (typeof s !== 'string') {
     return s;
   }
-  return s ? s
-    .replace("'", "\u2019")
-    .replace(' "', " \u201C")
-    .replace('" ', "\u201D ") : s;
+  return s ? s.replace("'", "\u2019")
+                 .replace(' "', " \u201C")
+                 .replace('" ', "\u201D ")
+           : s;
 }
 
 function parseSector(tabDelimitedData, metadata) {
@@ -36,7 +36,7 @@ function parseSector(tabDelimitedData, metadata) {
   const sector = {
     metadata,
     /** @type {any} */
-    worlds: []
+    worlds : []
   };
 
   const lines = tabDelimitedData.split(/\r?\n/);
@@ -73,10 +73,9 @@ function parseSector(tabDelimitedData, metadata) {
   sector.worlds.sort((a, b) => cmp(a.hex, b.hex));
 
   const LINES = 114, COLUMNS = 2;
-  sector.pages = partition(sector.worlds, LINES * COLUMNS)
-    .map(a => ({
-      columns: partition(a, LINES).map(w => ({ worlds: w }))
-    }));
+  sector.pages =
+      partition(sector.worlds, LINES * COLUMNS)
+          .map(a => ({columns : partition(a, LINES).map(w => ({worlds : w}))}));
 
   for (const [index, page] of sector.pages.entries()) {
     // TODO: Replace with a counter?
@@ -108,22 +107,77 @@ function partition(list, ...counts) {
 window.addEventListener('DOMContentLoaded', async () => {
   let sectors;
   sectors = [
-      /*                                                         */ 'gash', 'tren',
-      /*        */ 'tien', 'ziaf', 'gvur', 'tugl', 'prov', 'wind', 'mesh', 'mend', 'amdu', 'arzu',
-      /*        */ 'farf', 'fore', 'spin', 'dene', 'corr', 'vlan', 'lish', 'anta', 'empt', 'star',
-      /*        */ 'vang', 'beyo', 'troj', 'reft', 'gush', 'dagu', 'core', 'forn', 'ley', 'gate',
-    'thet', /*       */ 'touc', 'rift', 'verg', 'ilel', 'zaru', 'mass', 'delp', 'glim', 'cruc',
-      /*               */ 'afaw', 'hlak', 'eali', 'reav', 'daib', 'dias', 'olde', 'hint',
-      /*                      */ 'stai', 'iwah', 'dark', 'magy', 'solo', 'alph', 'spic',
-      /*                      */ 'akti', 'uist', 'ustr', 'cano', 'alde', 'newo', 'lang',
+    /*                                                         */ 'gash',
+    'tren',
+    /*        */ 'tien',
+    'ziaf',
+    'gvur',
+    'tugl',
+    'prov',
+    'wind',
+    'mesh',
+    'mend',
+    'amdu',
+    'arzu',
+    /*        */ 'farf',
+    'fore',
+    'spin',
+    'dene',
+    'corr',
+    'vlan',
+    'lish',
+    'anta',
+    'empt',
+    'star',
+    /*        */ 'vang',
+    'beyo',
+    'troj',
+    'reft',
+    'gush',
+    'dagu',
+    'core',
+    'forn',
+    'ley',
+    'gate',
+    'thet',
+    /*       */ 'touc',
+    'rift',
+    'verg',
+    'ilel',
+    'zaru',
+    'mass',
+    'delp',
+    'glim',
+    'cruc',
+    /*               */ 'afaw',
+    'hlak',
+    'eali',
+    'reav',
+    'daib',
+    'dias',
+    'olde',
+    'hint',
+    /*                      */ 'stai',
+    'iwah',
+    'dark',
+    'magy',
+    'solo',
+    'alph',
+    'spic',
+    /*                      */ 'akti',
+    'uist',
+    'ustr',
+    'cano',
+    'alde',
+    'newo',
+    'lang',
   ];
 
   // Uncomment for for testing:
-  //sectors = ['spin', 'dene', 'troj', 'reft', 'solo'];
+  // sectors = ['spin', 'dene', 'troj', 'reft', 'solo'];
 
   render(await Promise.all(sectors.map(name => Promise.all([
-    name,
-    Traveller.MapService.sectorDataTabDelimited(name),
+    name, Traveller.MapService.sectorDataTabDelimited(name),
     Traveller.MapService.sectorMetaData(name)
   ]))));
 });
@@ -131,12 +185,17 @@ window.addEventListener('DOMContentLoaded', async () => {
 function render(sectors) {
   const data = {};
 
-  data.charted_space_src = Traveller.MapService.makeURL(
-    '/api/poster', {
-    x1: -256, x2: 255, y1: -159, y2: 160,
-    options: 41975, scale: 8, style: 'print',
-    accept: 'image/svg+xml',
-    dimunofficial: 1, rotation: 3
+  data.charted_space_src = Traveller.MapService.makeURL('/api/poster', {
+    x1 : -256,
+    x2 : 255,
+    y1 : -159,
+    y2 : 160,
+    options : 41975,
+    scale : 8,
+    style : 'print',
+    accept : 'image/svg+xml',
+    dimunofficial : 1,
+    rotation : 3
   });
 
   const index = [];
@@ -147,19 +206,16 @@ function render(sectors) {
     const sector = parseSector(data, metadata);
 
     sector.img_src = Traveller.MapService.makeURL(
-      '/api/poster', {
-      sector: name,
-      style: 'print',
-      accept: 'image/svg+xml'
-    });
+        '/api/poster',
+        {sector : name, style : 'print', accept : 'image/svg+xml'});
 
     const short_name = sector.name.replace(/^The /, '');
 
-    index.push({ name: short_name, page: ++page_count });
+    index.push({name : short_name, page : ++page_count});
     page_count += sector.page_count;
 
     if (sector.credits)
-      credits.push({ name: short_name, credits: sector.credits });
+      credits.push({name : short_name, credits : sector.credits});
     else
       console.warn(`${sector.name} credits missing`);
 
@@ -168,13 +224,10 @@ function render(sectors) {
   index.sort((a, b) => cmp(a.name, b.name));
   data.index = index;
   data.credits = partition(
-    credits
-      .sort((a, b) => cmp(a.name, b.name))
-      .map(o => o.credits),
-    26, 30);
+      credits.sort((a, b) => cmp(a.name, b.name)).map(o => o.credits), 26, 30);
 
   data.date = (new Date).toLocaleDateString(
-    'en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+      'en-US', {year : 'numeric', month : 'long', day : 'numeric'});
 
   const template = Handlebars.compile($('#template').innerHTML);
   const html = template(data);

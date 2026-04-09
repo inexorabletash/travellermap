@@ -23,23 +23,27 @@ export class AllegianceMap {
     for (let x = 0; x < width; ++x) {
       this.map[x] = [];
       for (let y = 0; y < height; ++y) {
-        this.map[x][y] = { 'occupied': false, 'alleg': UNALIGNED, 'mark': false };
+        this.map[x][y] = {
+          'occupied' : false,
+          'alleg' : UNALIGNED,
+          'mark' : false
+        };
       }
     }
   }
 
   getBounds() {
     return {
-      'top': this.origin_y,
-      'left': this.origin_x,
-      'right': this.origin_x + this.width - 1,
-      'bottom': this.origin_y + this.height - 1
+      'top' : this.origin_y,
+      'left' : this.origin_x,
+      'right' : this.origin_x + this.width - 1,
+      'bottom' : this.origin_y + this.height - 1
     };
   }
 
   inBounds(x, y) {
     if (x - this.origin_x < 0 || x - this.origin_x >= this.width ||
-      y - this.origin_y < 0 || y - this.origin_y >= this.height) {
+        y - this.origin_y < 0 || y - this.origin_y >= this.height) {
       return false;
     } else {
       return true;
@@ -95,7 +99,8 @@ export class AllegianceMap {
       throw "Coordinates out of bounds";
 
     this.map[x - this.origin_x][y - this.origin_y].alleg = effectiveAllegiance;
-    this.map[x - this.origin_x][y - this.origin_y].trueAllegiance = trueAllegiance;
+    this.map[x - this.origin_x][y - this.origin_y].trueAllegiance =
+        trueAllegiance;
   }
 
   // TODO: Would be simpler if we returned a Hex object
@@ -124,22 +129,33 @@ export class AllegianceMap {
 // will be incorrect for zero-based coordinate systems.
 export function neighbor(c, r, direction) {
   switch (direction) {
-    case 0: r += 1 - (c-- % 2); break;
-    case 1: r -= (c-- % 2); break;
-    case 2: r--; break;
-    case 3: r -= (c++ % 2); break;
-    case 4: r += 1 - (c++ % 2); break;
-    case 5: r++; break;
+  case 0:
+    r += 1 - (c-- % 2);
+    break;
+  case 1:
+    r -= (c-- % 2);
+    break;
+  case 2:
+    r--;
+    break;
+  case 3:
+    r -= (c++ % 2);
+    break;
+  case 4:
+    r += 1 - (c++ % 2);
+    break;
+  case 5:
+    r++;
+    break;
   }
 
-  return [c, r];
+  return [ c, r ];
 }
 
 export function erode(map, allegiance, n) {
   const erodeList = [];
 
   map.foreach((c, r) => {
-
     // Only process empty hexes of the specified allegiance
     if (map.isOccupied(c, r) || map.getAllegiance(c, r) !== allegiance) {
       return;
@@ -153,11 +169,12 @@ export function erode(map, allegiance, n) {
         const x = hex[0];
         const y = hex[1];
 
-        count += +(!map.inBounds(x, y) || map.getAllegiance(x, y) !== allegiance);
+        count +=
+            +(!map.inBounds(x, y) || map.getAllegiance(x, y) !== allegiance);
       }
 
       if (count >= n) {
-        erodeList.push([c, r]);
+        erodeList.push([ c, r ]);
       }
     }
   });
@@ -174,15 +191,17 @@ export function erode(map, allegiance, n) {
 // TODO: Standardize on ( x, y ) vs. [ x, y ] vs. { x:x, y:y }
 
 export function walk(map, start_x, start_y, allegiance, func) {
-  const border = [[start_x, start_y]];
+  const border = [ [ start_x, start_y ] ];
 
-  if (func) { func(start_x, start_y, -1); }
+  if (func) {
+    func(start_x, start_y, -1);
+  }
 
   // Directions checked in starting hex: sw=0, nw=1, n=2 (by definition)
-  const checked = [true, true, true];
+  const checked = [ true, true, true ];
   let checkfirst = 3; // northeast - first direction to test
   let checklast;
-  let current = [start_x, start_y]; // First hex
+  let current = [ start_x, start_y ]; // First hex
   /** @type {any} */
   let next; // Next hex
 
@@ -216,7 +235,7 @@ export function walk(map, start_x, start_y, allegiance, func) {
     }
 
     if (!done && map.inBounds(next[0], next[1]) &&
-      map.getAllegiance(next[0], next[1]) === allegiance) {
+        map.getAllegiance(next[0], next[1]) === allegiance) {
       // Found a friend!
       if (func)
         func(next[0], next[1], dir);
@@ -242,7 +261,7 @@ function findTopLeft(map, allegiance) {
   for (let c = bounds.left; c <= bounds.right; ++c) {
     for (let r = bounds.top; r <= bounds.bottom; ++r) {
       if (map.getAllegiance(c, r) === allegiance)
-        return [c, r];
+        return [ c, r ];
     }
   }
 
@@ -251,13 +270,14 @@ function findTopLeft(map, allegiance) {
 
 export function breakSpans(map, allegiance, n) {
   const breakList = []; // List of hexes at which to "break" once scan is done
-  let spanList = []; // Running list of contiguous non-world hexes
+  let spanList = [];    // Running list of contiguous non-world hexes
   let dirList = []; // Running list of contiguous non-world hexes in same dir
   let lastDir = -1;
 
   function breakCallback(c, r, dir) {
     const kBreakOffset = 2;
-    if (kBreakOffset > n) throw new Error(`invalid breakSpan() length: ${n}`);
+    if (kBreakOffset > n)
+      throw new Error(`invalid breakSpan() length: ${n}`);
 
     // Mark the current hex as visted - only need to walk each region once
     map.setMarked(c, r, true);
@@ -270,8 +290,8 @@ export function breakSpans(map, allegiance, n) {
       dirList = [];
 
     if (map.inBounds(c, r) && !map.isOccupied(c, r)) {
-      spanList.push([c, r]);
-      dirList.push([c, r]);
+      spanList.push([ c, r ]);
+      dirList.push([ c, r ]);
 
       // Sneaky bit #2:
       // Break when we've found a span of the right length, and with
@@ -312,9 +332,8 @@ export function breakSpans(map, allegiance, n) {
 
       previous = current;
 
-      if (walked || current !== allegiance ||
-        current === UNALIGNED ||
-        current === NON_ALIGNED) {
+      if (walked || current !== allegiance || current === UNALIGNED ||
+          current === NON_ALIGNED) {
         // Don't care or already processed, so skip
         continue;
       }
@@ -335,7 +354,6 @@ export function breakSpans(map, allegiance, n) {
 
   return breakList.length > 0;
 }
-
 
 function buildBridges(map, allegiance) {
   // Scan the whole map, looking for 1 parsec gaps within a polity
@@ -358,9 +376,8 @@ function buildBridges(map, allegiance) {
           na[i] = neighborAllegiance(c, r, i);
 
         for (let i = 0; i < 6; i += 1) {
-          if (na[i] === allegiance &&
-            na[(i + 1) % 6] !== allegiance &&
-            na[(i + 2) % 6] === allegiance) {
+          if (na[i] === allegiance && na[(i + 1) % 6] !== allegiance &&
+              na[(i + 2) % 6] === allegiance) {
             map.setAllegiance(c, r, allegiance);
             break;
           }
@@ -369,7 +386,6 @@ function buildBridges(map, allegiance) {
     }
   }
 }
-
 
 // Claim all unclaimed hexes to be of the specified allegiance
 export function claimAllUnclaimed(map, allegiance) {
@@ -401,17 +417,18 @@ function processAllegiance(map, allegiance) {
     dirty = dirty || breakSpans(map, allegiance, 4);
 
     // repeat until a steady state is obtained
-  }
-  while (dirty);
+  } while (dirty);
 
   buildBridges(map, allegiance);
 }
 
-/** Process all allegiances in the map, starting with the polity with
+/**
+ * Process all allegiances in the map, starting with the polity with
  * the smallest number of claimed worlds.
  * @param {AllegianceMap} map - The map to process
  * @param {function} success_callback - Called when processing is complete
- * @param {function} [progress_callback] - Called with a string describing the current step of processing, for display to the user
+ * @param {function} [progress_callback] - Called with a string describing the
+ *     current step of processing, for display to the user
  */
 export function processMap(map, success_callback, progress_callback) {
   const counts = {};
@@ -419,27 +436,28 @@ export function processMap(map, success_callback, progress_callback) {
   // Compute allegiance counts
 
   setTimeout(() => {
-    if (progress_callback) progress_callback('Computing allegiance counts...');
+    if (progress_callback)
+      progress_callback('Computing allegiance counts...');
 
     map.foreach(
-      /**
-       * @param {number} c
-       * @param {number} r
-       */
-      (c, r) => {
-        if (map.isOccupied(c, r)) {
-          const alleg = map.getAllegiance(c, r);
-          if (counts[alleg]) {
-            counts[alleg] += 1;
-          } else {
-            counts[alleg] = 1;
+        /**
+         * @param {number} c
+         * @param {number} r
+         */
+        (c, r) => {
+          if (map.isOccupied(c, r)) {
+            const alleg = map.getAllegiance(c, r);
+            if (counts[alleg]) {
+              counts[alleg] += 1;
+            } else {
+              counts[alleg] = 1;
+            }
           }
-        }
-      });
+        });
 
     const list = [];
     for (const key of Object.keys(counts)) {
-      list.push({ allegiance: key, count: counts[key] });
+      list.push({allegiance : key, count : counts[key]});
     }
     list.sort((a, b) => a.count - b.count);
 
@@ -451,12 +469,12 @@ export function processMap(map, success_callback, progress_callback) {
       const polity = list.shift();
       if (polity.allegiance !== NON_ALIGNED && polity.count > 1) {
         if (progress_callback)
-          progress_callback(`Processing allegiance ${polity.allegiance} (${polity.count} worlds)`);
+          progress_callback(`Processing allegiance ${polity.allegiance} (${
+              polity.count} worlds)`);
         processAllegiance(map, polity.allegiance);
       }
       setTimeout(doNext, 0);
     }
     doNext();
-
   }, 0);
 }

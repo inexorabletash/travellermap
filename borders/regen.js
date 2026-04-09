@@ -1,81 +1,88 @@
+import {
+  AllegianceMap,
+  NON_ALIGNED,
+  processMap,
+  UNALIGNED,
+  walk
+} from '../borders/borders.js';
 import * as Traveller from '../map.js';
-import { AllegianceMap, processMap, NON_ALIGNED, UNALIGNED, walk } from '../borders/borders.js';
+
 const SECTOR_WIDTH = 32, SECTOR_HEIGHT = 40;
 
 const ALLEGIANCE_COLORS = {
-    'Im': 'red',
-    'As': 'yellow',
-    'Kk': 'green',
-    'Va': 'olive',
-    'ZhCo': 'blue',
-    'SoCo': 'orange',
-    'Hv': 'purple',
-    'Fa': 'green',
-    'DaCf': 'lightblue',
-    'SwCf': 'blue',
-    'Na': 'transparent',
+  'Im' : 'red',
+  'As' : 'yellow',
+  'Kk' : 'green',
+  'Va' : 'olive',
+  'ZhCo' : 'blue',
+  'SoCo' : 'orange',
+  'Hv' : 'purple',
+  'Fa' : 'green',
+  'DaCf' : 'lightblue',
+  'SwCf' : 'blue',
+  'Na' : 'transparent',
 };
 
 function colorFor(alleg) {
-    if (alleg.indexOf('V') === 0) return 'olivedrab';
-    return ALLEGIANCE_COLORS[alleg];
+  if (alleg.indexOf('V') === 0)
+    return 'olivedrab';
+  return ALLEGIANCE_COLORS[alleg];
 }
 
 // All later entries in each set are mapped to the first
 const ALLEGIANCE_SETS = [
 
-    // Non-Aligned (no borders)
-    ['Na', // Non-aligned
-        'Dr', // Droyne
-        '--', // Unknown
-        '??', // Unknown
-        'Va', // Vargr
-        'va', // "
-        'Cs', // Client State
-        'Cv', // Vargr client state
-        'cv', // "
-        'J-', // Julian Protectorate
+  // Non-Aligned (no borders)
+  [
+    'Na', // Non-aligned
+    'Dr', // Droyne
+    '--', // Unknown
+    '??', // Unknown
+    'Va', // Vargr
+    'va', // "
+    'Cs', // Client State
+    'Cv', // Vargr client state
+    'cv', // "
+    'J-', // Julian Protectorate
 
-        'NaAs', 'NaHu', 'NaVa', 'NaXX',
-        'XXXX',
-        'CsCa', 'CsHv', 'CsIm', 'CsMP', 'CsZh',
-    ],
+    'NaAs', 'NaHu', 'NaVa', 'NaXX', 'XXXX',
+    'CsCa', 'CsHv', 'CsIm', 'CsMP', 'CsZh',
+  ],
 
-    // Classic Imperium
-    ['Im',
-        //'ImAp', // Amec Protectorate (Dagu)
-        'ImDa', // Domain of Antares (Anta/Empt/Lish)
-        'ImDc', // Domain of Sylea (Core/Delp/Forn/Mass)
-        'ImDd', // Domain of Deneb (Dene/Reft/Spin/Troj)
-        'ImDg', // Domain of Gateway (Glim/Hint/Ley)
-        'ImDi', // Domain of Ilelish (Daib/Ilel/Reav/Verg/Zaru)
-        'ImDs', // Domain of Sol (Alph/Dias/Magy/Olde/Solo)
-        'ImDv', // Domain of Vland (Corr/Dagu/Gush/Reft/Vlan)
-        //'ImLa', // League of Antares (Anta)
-        //'ImLu', // Luriani Cultural Association (Ley/Forn)
-        //'ImSy', // Sylean Worlds (Core)
-        //'ImVd' Vegan Autonomous District (Solo)
-    ],
+  // Classic Imperium
+  [
+    'Im',
+    //'ImAp', // Amec Protectorate (Dagu)
+    'ImDa', // Domain of Antares (Anta/Empt/Lish)
+    'ImDc', // Domain of Sylea (Core/Delp/Forn/Mass)
+    'ImDd', // Domain of Deneb (Dene/Reft/Spin/Troj)
+    'ImDg', // Domain of Gateway (Glim/Hint/Ley)
+    'ImDi', // Domain of Ilelish (Daib/Ilel/Reav/Verg/Zaru)
+    'ImDs', // Domain of Sol (Alph/Dias/Magy/Olde/Solo)
+    'ImDv', // Domain of Vland (Corr/Dagu/Gush/Reft/Vlan)
+            //'ImLa', // League of Antares (Anta)
+            //'ImLu', // Luriani Cultural Association (Ley/Forn)
+            //'ImSy', // Sylean Worlds (Core)
+            //'ImVd' Vegan Autonomous District (Solo)
+  ],
 
-    ['As', 'A0', 'A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8', 'A9',
-        'AsIf', 'AsMw', 'AsOf', 'AsSc', 'AsSF', 'AsT0', 'AsT1', 'AsT2',
-        'AsT3', 'AsT4', 'AsT5', 'AsT6', 'AsT7', 'AsT8', 'AsT9', 'AsTA',
-        'AsTv', 'AsTz', 'AsVc', 'AsWc', 'AsXX'
-    ], // Aslan clans
+  [
+    'As',   'A0',   'A1',   'A2',   'A3',   'A4',   'A5',   'A6',   'A7',
+    'A8',   'A9',   'AsIf', 'AsMw', 'AsOf', 'AsSc', 'AsSF', 'AsT0', 'AsT1',
+    'AsT2', 'AsT3', 'AsT4', 'AsT5', 'AsT6', 'AsT7', 'AsT8', 'AsT9', 'AsTA',
+    'AsTv', 'AsTz', 'AsVc', 'AsWc', 'AsXX'
+  ], // Aslan clans
 
-    ['Uc', 'C1', 'C2', 'C3', 'C4'], // Union Crucis (Judges Guild)
-    ['SoCf', 'SoNS', 'SoRD', 'SoWu', 'So'], // Solomani Confederation
-    ['ZhCo', 'ZhCa', 'ZhIN', 'Zh'], // Zhodani Consulate
+  [ 'Uc', 'C1', 'C2', 'C3', 'C4' ],         // Union Crucis (Judges Guild)
+  [ 'SoCf', 'SoNS', 'SoRD', 'SoWu', 'So' ], // Solomani Confederation
+  [ 'ZhCo', 'ZhCa', 'ZhIN', 'Zh' ],         // Zhodani Consulate
 
-    // Comment out to get member state borders
-    ['CA', 'CAEM', 'CAin', 'CAKT'], // Comsentient Alliance (Beyo/Vang)
+  // Comment out to get member state borders
+  [ 'CA', 'CAEM', 'CAin', 'CAKT' ], // Comsentient Alliance (Beyo/Vang)
 
-    //Julian Protectorate
-    ['JuPr', 'JuRu', 'JuHl']
+  // Julian Protectorate
+  [ 'JuPr', 'JuRu', 'JuHl' ]
 ];
-
-
-
 
 //----------------------------------------------------------------------
 //
@@ -84,110 +91,118 @@ const ALLEGIANCE_SETS = [
 //----------------------------------------------------------------------
 
 function makeMapDisplay(containerElement, map, inset) {
-    const fragments = [];
+  const fragments = [];
 
-    const sz = 15;
-    const pad = 3;
-    let left = -sz;
+  const sz = 15;
+  const pad = 3;
+  let left = -sz;
 
-    for (let x = map.origin_x + inset; x < map.origin_x + map.width - inset; ++x) {
-        left += (sz + pad);
-        let top = (x % 2 ? 0 : (sz + pad) / 2) - sz;
+  for (let x = map.origin_x + inset; x < map.origin_x + map.width - inset;
+       ++x) {
+    left += (sz + pad);
+    let top = (x % 2 ? 0 : (sz + pad) / 2) - sz;
 
-        for (let y = map.origin_y + inset; y < map.origin_y + map.height - inset; ++y) {
-            top += (sz + pad);
+    for (let y = map.origin_y + inset; y < map.origin_y + map.height - inset;
+         ++y) {
+      top += (sz + pad);
 
-            let fragment = `<div class="hex" id="hex_${x}_${y}" style="left: ${left}px; top: ${top}px;">`;
-            fragment += hexContents(x, y, map);
-            fragment += '<' + '/div>';
+      let fragment = `<div class="hex" id="hex_${x}_${y}" style="left: ${
+          left}px; top: ${top}px;">`;
+      fragment += hexContents(x, y, map);
+      fragment += '<' +
+                  '/div>';
 
-            fragments.push(fragment);
-
-        }
+      fragments.push(fragment);
     }
+  }
 
-    containerElement.innerHTML = fragments.join("");
-    containerElement.style.width = (map.width * sz + (map.width + 1) * pad) + "px";
-    containerElement.style.height = ((map.height + 0.5) * sz + (map.height + 1.5) * pad) + "px";
+  containerElement.innerHTML = fragments.join("");
+  containerElement.style.width =
+      (map.width * sz + (map.width + 1) * pad) + "px";
+  containerElement.style.height =
+      ((map.height + 0.5) * sz + (map.height + 1.5) * pad) + "px";
 }
 
-
-
 function updateWalks(map) {
-    let borders = [];
-    let visited = {};
+  let borders = [];
+  let visited = {};
 
-    for (let x = map.origin_x; x < map.origin_x + map.width; x += 1) {
-        let last_alleg = UNALIGNED;
-        for (let y = map.origin_y; y < map.origin_y + map.height; y += 1) {
-            let label = hexLabel(x, y);
-            let alleg = map.getAllegiance(x, y);
-            if (alleg !== UNALIGNED && alleg !== NON_ALIGNED && alleg !== last_alleg && !(label in visited)) {
+  for (let x = map.origin_x; x < map.origin_x + map.width; x += 1) {
+    let last_alleg = UNALIGNED;
+    for (let y = map.origin_y; y < map.origin_y + map.height; y += 1) {
+      let label = hexLabel(x, y);
+      let alleg = map.getAllegiance(x, y);
+      if (alleg !== UNALIGNED && alleg !== NON_ALIGNED &&
+          alleg !== last_alleg && !(label in visited)) {
 
-                let path = walk(map, x, y, alleg);
-                const pathLabels = path.map(hex => hexLabel(hex[0], hex[1]));
-                pathLabels.forEach(label => { visited[label] = true; });
+        let path = walk(map, x, y, alleg);
+        const pathLabels = path.map(hex => hexLabel(hex[0], hex[1]));
+        pathLabels.forEach(label => { visited[label] = true; });
 
-                // Filter out holes
-                const len = pathLabels.length;
-                if (len > 1) {
-                    const hex1 = pathLabels[len - 2], hex2 = pathLabels[len - 1];
-                    const x1 = Number(hex1.substring(0, 2));
-                    const x2 = Number(hex2.substring(0, 2));
-                    const y1 = Number(hex1.substring(2, 4));
-                    const y2 = Number(hex2.substring(2, 4));
-                    if ((x1 < x2) || (x1 === x2 && y1 < y2))
-                        continue;
-                }
-
-                borders.push({ allegiance: alleg, path: pathLabels });
-            }
-            last_alleg = alleg;
+        // Filter out holes
+        const len = pathLabels.length;
+        if (len > 1) {
+          const hex1 = pathLabels[len - 2], hex2 = pathLabels[len - 1];
+          const x1 = Number(hex1.substring(0, 2));
+          const x2 = Number(hex2.substring(0, 2));
+          const y1 = Number(hex1.substring(2, 4));
+          const y2 = Number(hex2.substring(2, 4));
+          if ((x1 < x2) || (x1 === x2 && y1 < y2))
+            continue;
         }
+
+        borders.push({allegiance : alleg, path : pathLabels});
+      }
+      last_alleg = alleg;
     }
+  }
 
-    borders = borders.filter(border => border.path.some(hex => {
-        const x = (Number(hex) / 100) | 0;
-        const y = Number(hex) % 100;
-        return (1 <= x && x <= 32) && (1 <= y && y <= 40);
-    }));
+  borders = borders.filter(border => border.path.some(hex => {
+    const x = (Number(hex) / 100) | 0;
+    const y = Number(hex) % 100;
+    return (1 <= x && x <= 32) && (1 <= y && y <= 40);
+  }));
 
-    borders.sort((a, b) => a.allegiance < b.allegiance ? -1 : a.allegiance > b.allegiance ? 1 : 0);
+  borders.sort((a, b) => a.allegiance < b.allegiance   ? -1
+                         : a.allegiance > b.allegiance ? 1
+                                                       : 0);
 
+  const html = [];
+  borders.forEach(border => {
+    if (border.path.length < 2)
+      return;
 
-    const html = [];
-    borders.forEach(border => {
-        if (border.path.length < 2)
-            return;
+    const str = '<Border Allegiance="' +
+                Traveller.Util.escapeHTML(border.allegiance) + '">' +
+                border.path.join(' ') + '</Border>';
+    html.push("<li>" + Traveller.Util.escapeHTML(str));
+  });
 
-        const str = '<Border Allegiance="' + Traveller.Util.escapeHTML(border.allegiance) + '">' +
-            border.path.join(' ') + '</Border>';
-        html.push("<li>" + Traveller.Util.escapeHTML(str));
-    });
-
-    const walksElement = document.getElementById("walks");
-    if (walksElement === null) throw new Error("Element with id 'walks' not found");
-    walksElement.innerHTML = html.join("");
+  const walksElement = document.getElementById("walks");
+  if (walksElement === null)
+    throw new Error("Element with id 'walks' not found");
+  walksElement.innerHTML = html.join("");
 }
 
 function hexLabel(x, y) {
-    return (x < 10 ? "0" : "") + x + (y < 10 ? "0" : "") + y;
+  return (x < 10 ? "0" : "") + x + (y < 10 ? "0" : "") + y;
 }
 
 function hexContents(x, y, map) {
-    const hexNumber = hexLabel(x, y);
-    const occupied = map.isOccupied(x, y);
-    const alleg = map.getAllegiance(x, y);
-    let color = (alleg == UNALIGNED) ? "transparent" : colorFor(alleg);
-    if (color === (void 0)) { color = 'gray'; }
+  const hexNumber = hexLabel(x, y);
+  const occupied = map.isOccupied(x, y);
+  const alleg = map.getAllegiance(x, y);
+  let color = (alleg == UNALIGNED) ? "transparent" : colorFor(alleg);
+  if (color === (void 0)) {
+    color = 'gray';
+  }
 
-    return "<div class='hexContents' style='background-color: " + color + ";'>" +
-        "<span class='hexNumber'>" + hexNumber + "<" + "/span>" +
-        (occupied ? "<span class='world'>" + alleg + "</span>" : "") +
-        "<" + "/div>";
+  return "<div class='hexContents' style='background-color: " + color + ";'>" +
+         "<span class='hexNumber'>" + hexNumber + "<" +
+         "/span>" +
+         (occupied ? "<span class='world'>" + alleg + "</span>" : "") + "<" +
+         "/div>";
 }
-
-
 
 //----------------------------------------------------------------------
 //
@@ -196,120 +211,131 @@ function hexContents(x, y, map) {
 //----------------------------------------------------------------------
 
 async function loadSector(sx, sy, milieu) {
-    try {
-        let sectorName = undefined;
-        const data = await Traveller.MapService.sectorDataTabDelimited(sectorName, { sx, sy, milieu });
-        const worlds = [];
-        const lines = data.split(/\r?\n/);
-        const header = lines.shift().toLowerCase().split('\t');
-        lines.forEach(line => {
-            if (!line.length)
-                return;
+  try {
+    let sectorName = undefined;
+    const data = await Traveller.MapService.sectorDataTabDelimited(
+        sectorName, {sx, sy, milieu});
+    const worlds = [];
+    const lines = data.split(/\r?\n/);
+    const header = lines.shift().toLowerCase().split('\t');
+    lines.forEach(line => {
+      if (!line.length)
+        return;
 
-            const world = {};
-            line.split('\t').forEach((field, index) => {
-                world[header[index]] = field;
-            });
+      const world = {};
+      line.split('\t').forEach(
+          (field, index) => { world[header[index]] = field; });
 
-            world.x = parseInt(world.hex.substring(0, 2), 10);
-            world.y = parseInt(world.hex.substring(2, 4), 10);
-            worlds.push(world);
-        });
-        return worlds;
-    } catch (ex) {
-        return [];
-    }
+      world.x = parseInt(world.hex.substring(0, 2), 10);
+      world.y = parseInt(world.hex.substring(2, 4), 10);
+      worlds.push(world);
+    });
+    return worlds;
+  } catch (ex) {
+    return [];
+  }
 }
 
-
 function showError(message) {
-    document.body.appendChild(document.createElement('div')).appendChild(document.createTextNode(message));
+  document.body.appendChild(document.createElement('div'))
+      .appendChild(document.createTextNode(message));
 }
 
 const searchParams = new URLSearchParams(document.location.search);
 
 document.addEventListener('DOMContentLoaded', async () => {
-    function status(message) {
-        const display = document.getElementById('status');
-        if (display === null) throw new Error("Element with id 'status' not found");
-        display.innerHTML += `<div>${Traveller.Util.escapeHTML(message)}</div>`;
-        display.scrollTop = display.scrollHeight;
-    }
+  function status(message) {
+    const display = document.getElementById('status');
+    if (display === null)
+      throw new Error("Element with id 'status' not found");
+    display.innerHTML += `<div>${Traveller.Util.escapeHTML(message)}</div>`;
+    display.scrollTop = display.scrollHeight;
+  }
 
-    if (!searchParams.has('sector')) {
-        showError("Missing sector in URL");
-        return;
-    }
-    const sector = searchParams.get('sector');
-    const milieu = searchParams.get('milieu');
+  if (!searchParams.has('sector')) {
+    showError("Missing sector in URL");
+    return;
+  }
+  const sector = searchParams.get('sector');
+  const milieu = searchParams.get('milieu');
 
-    let coords;
-    try {
-        coords = await Traveller.MapService.coordinates(sector, { milieu });
-    } catch (ex) {
-        showError('No such sector: ' + sector);
-        return;
-    }
+  let coords;
+  try {
+    coords = await Traveller.MapService.coordinates(sector, {milieu});
+  } catch (ex) {
+    showError('No such sector: ' + sector);
+    return;
+  }
 
-    const bigmap = new AllegianceMap(SECTOR_WIDTH * 3, SECTOR_HEIGHT * 3, 1, 1);
-    const loadTasks = [];
+  const bigmap = new AllegianceMap(SECTOR_WIDTH * 3, SECTOR_HEIGHT * 3, 1, 1);
+  const loadTasks = [];
 
-    for (let ox = -1; ox <= 1; ox += 1) {
-        for (let oy = -1; oy <= 1; oy += 1) {
-            loadTasks.push(
-                loadSector(coords.sx + ox, coords.sy + oy, milieu).then(worlds => {
-                    status(`Loaded sector at ${coords.sx + ox},${coords.sy + oy}`);
-                    worlds.forEach(world => {
-
-                        ALLEGIANCE_SETS.forEach(alleg_set => {
-                            if (alleg_set.indexOf(world.allegiance) !== -1) {
-                                world.allegiance = alleg_set[0];
-                            }
-                        });
-
-                        const hx = world.x + ((ox + 1) * SECTOR_WIDTH);
-                        const hy = world.y + ((oy + 1) * SECTOR_HEIGHT);
-
-                        bigmap.setOccupied(hx, hy, true);
-                        bigmap.setAllegiance(hx, hy, world.allegiance);
-                    });
-                })
-            );
-        }
-    }
-
-    try {
-        await Promise.all(loadTasks);
-
-        processMap(
-            bigmap,
-      /*complete*/() => {
-                const secmap = new AllegianceMap(SECTOR_WIDTH + 2, SECTOR_HEIGHT + 2, 0, 0);
-                for (let hx = 0; hx <= SECTOR_WIDTH + 1; hx += 1) {
-                    for (let hy = 0; hy <= SECTOR_HEIGHT + 1; hy += 1) {
-                        secmap.setOccupied(hx, hy, bigmap.isOccupied(hx + SECTOR_WIDTH, hy + SECTOR_HEIGHT));
-                        secmap.setAllegiance(hx, hy, bigmap.getAllegiance(hx + SECTOR_WIDTH, hy + SECTOR_HEIGHT));
-                    }
+  for (let ox = -1; ox <= 1; ox += 1) {
+    for (let oy = -1; oy <= 1; oy += 1) {
+      loadTasks.push(
+          loadSector(coords.sx + ox, coords.sy + oy, milieu).then(worlds => {
+            status(`Loaded sector at ${coords.sx + ox},${coords.sy + oy}`);
+            worlds.forEach(world => {
+              ALLEGIANCE_SETS.forEach(alleg_set => {
+                if (alleg_set.indexOf(world.allegiance) !== -1) {
+                  world.allegiance = alleg_set[0];
                 }
+              });
 
-                makeMapDisplay(document.getElementById('map'), secmap, 1);
-                //makeMapDisplay(document.getElementById('map'), bigmap, 0);
-                updateWalks(secmap);
-            },
-      /*progress*/ message => {
-                const secmap = new AllegianceMap(SECTOR_WIDTH + 2, SECTOR_HEIGHT + 2, 0, 0);
-                for (let hx = 0; hx <= SECTOR_WIDTH + 1; hx += 1) {
-                    for (let hy = 0; hy <= SECTOR_HEIGHT + 1; hy += 1) {
-                        secmap.setOccupied(hx, hy, bigmap.isOccupied(hx + SECTOR_WIDTH, hy + SECTOR_HEIGHT));
-                        secmap.setAllegiance(hx, hy, bigmap.getAllegiance(hx + SECTOR_WIDTH, hy + SECTOR_HEIGHT));
-                    }
-                }
+              const hx = world.x + ((ox + 1) * SECTOR_WIDTH);
+              const hy = world.y + ((oy + 1) * SECTOR_HEIGHT);
 
-                makeMapDisplay(document.getElementById('map'), secmap, 1);
-                status(message);
+              bigmap.setOccupied(hx, hy, true);
+              bigmap.setAllegiance(hx, hy, world.allegiance);
             });
-
-    } catch (error) {
-        showError('error: ' + error.message);
+          }));
     }
+  }
+
+  try {
+    await Promise.all(loadTasks);
+
+    processMap(
+        bigmap,
+        /*complete*/
+        () => {
+          const secmap =
+              new AllegianceMap(SECTOR_WIDTH + 2, SECTOR_HEIGHT + 2, 0, 0);
+          for (let hx = 0; hx <= SECTOR_WIDTH + 1; hx += 1) {
+            for (let hy = 0; hy <= SECTOR_HEIGHT + 1; hy += 1) {
+              secmap.setOccupied(
+                  hx, hy,
+                  bigmap.isOccupied(hx + SECTOR_WIDTH, hy + SECTOR_HEIGHT));
+              secmap.setAllegiance(
+                  hx, hy,
+                  bigmap.getAllegiance(hx + SECTOR_WIDTH, hy + SECTOR_HEIGHT));
+            }
+          }
+
+          makeMapDisplay(document.getElementById('map'), secmap, 1);
+          // makeMapDisplay(document.getElementById('map'), bigmap, 0);
+          updateWalks(secmap);
+        },
+        /*progress*/
+        message => {
+          const secmap =
+              new AllegianceMap(SECTOR_WIDTH + 2, SECTOR_HEIGHT + 2, 0, 0);
+          for (let hx = 0; hx <= SECTOR_WIDTH + 1; hx += 1) {
+            for (let hy = 0; hy <= SECTOR_HEIGHT + 1; hy += 1) {
+              secmap.setOccupied(
+                  hx, hy,
+                  bigmap.isOccupied(hx + SECTOR_WIDTH, hy + SECTOR_HEIGHT));
+              secmap.setAllegiance(
+                  hx, hy,
+                  bigmap.getAllegiance(hx + SECTOR_WIDTH, hy + SECTOR_HEIGHT));
+            }
+          }
+
+          makeMapDisplay(document.getElementById('map'), secmap, 1);
+          status(message);
+        });
+
+  } catch (error) {
+    showError('error: ' + error.message);
+  }
 });

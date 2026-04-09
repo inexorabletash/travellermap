@@ -11,27 +11,24 @@ function parseTabDelimited(text) {
 }
 
 (async () => {
-
   const universe = new Set();
   const response = await fetch(`${origin}/data?tag=OTU&milieu=M1105`);
-  if (!response.ok) throw new Error(response.statusText);
+  if (!response.ok)
+    throw new Error(response.statusText);
   const data = await response.json();
 
   console.log(`fetching: ${data.Sectors.length} sectors`);
-  const s = await Promise.all(
-    data.Sectors
-      .map(s => Promise.all([
-        Promise.resolve({X: s.X, Y: s.Y}),
-        fetch(`${origin}/data/${s.Abbreviation}/tab`).then(r => r.text())
-      ])));
+  const s = await Promise.all(data.Sectors.map(s => Promise.all([
+    Promise.resolve({X : s.X, Y : s.Y}),
+    fetch(`${origin}/data/${s.Abbreviation}/tab`).then(r => r.text())
+  ])));
   console.log(`parsing: ${s.length} sectors`);
 
   s.forEach(pair => {
     const [meta, tab] = pair;
     const x = meta.X, y = meta.Y;
-    parseTabDelimited(tab).forEach(world => {
-      universe.add(`${x}/${y}/${world.Hex}`);
-    });
+    parseTabDelimited(tab).forEach(
+        world => { universe.add(`${x}/${y}/${world.Hex}`); });
   });
 
   function neighbors(world) {
@@ -48,10 +45,22 @@ function parseTabDelimited(text) {
 
     function at(hx, hy) {
       let nsx = sx, nsy = sy;
-      if (hx === 0) { hx = 32; --nsx; }
-      if (hx === 33) { hx = 1; ++nsx; }
-      if (hy === 0) { hy = 40; --nsy; }
-      if (hy === 41) { hy = 1; ++nsy; }
+      if (hx === 0) {
+        hx = 32;
+        --nsx;
+      }
+      if (hx === 33) {
+        hx = 1;
+        ++nsx;
+      }
+      if (hy === 0) {
+        hy = 40;
+        --nsy;
+      }
+      if (hy === 41) {
+        hy = 1;
+        ++nsy;
+      }
       return sig(nsx, nsy, hx, hy);
     }
 
@@ -75,7 +84,8 @@ function parseTabDelimited(text) {
   let main = 0;
   const seen = new Map();
   for (let world of universe) {
-    if (seen.has(world)) continue;
+    if (seen.has(world))
+      continue;
     ++main;
     const stack = [];
     stack.push(world);
@@ -83,7 +93,8 @@ function parseTabDelimited(text) {
       const entry = stack.pop();
       seen.set(entry, main);
       for (let neighbor of neighbors(entry)) {
-        if (seen.has(neighbor)) continue;
+        if (seen.has(neighbor))
+          continue;
         stack.push(neighbor);
       }
     }
@@ -104,7 +115,8 @@ function parseTabDelimited(text) {
   console.log('done');
 
   const ta = document.createElement('textarea');
-  ta.cols = 80; ta.rows = 24;
+  ta.cols = 80;
+  ta.rows = 24;
   document.body.appendChild(ta);
   ta.value = JSON.stringify(mains);
 })();

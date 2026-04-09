@@ -3,16 +3,20 @@
 // Apply heuristics to "fix" legacy stellar line.
 export function fix(s) {
   let stars = [], m;
-  while ((m = /^([OBAFGKM][0-9] ?(?:Ia|Ib|II|III|IV|V|VI|VII|D)|[OAFGKML] ?D|D|BD|BH|D[OBAFGKM])\b\s*/.exec(s))) {
+  while ((
+      m = /^([OBAFGKM][0-9] ?(?:Ia|Ib|II|III|IV|V|VI|VII|D)|[OAFGKML] ?D|D|BD|BH|D[OBAFGKM])\b\s*/
+              .exec(s))) {
     stars.push(m[1]);
     s = s.substring(m[0].length);
   }
-  if (s) console.log('leftover: ' + s);
+  if (s)
+    console.log('leftover: ' + s);
   stars = stars.map((star, index) => {
     if ((m = /^(D)([OBAFGKM])$/.exec(star)))
       star = m[2] + m[1];
 
-    if ((m = (/^([OBAFGKM][0-9]) ?(Ia|Ib|II|III|IV|V|VI|VII|D)\b/.exec(star) || /^([OAFGKML]) ?(D)/.exec(star)))) {
+    if ((m = (/^([OBAFGKM][0-9]) ?(Ia|Ib|II|III|IV|V|VI|VII|D)\b/.exec(star) ||
+              /^([OAFGKML]) ?(D)/.exec(star)))) {
       let spec = m[1], lum = m[2];
 
       // VII -> D
@@ -54,97 +58,313 @@ export function generate() {
     function clamp(a, min, max) { return a < min ? min : a > max ? max : a; }
 
     const T510_TABLE = {
-      Sp: {
-        '-6': 'OB', '-5': 'A', '-4': 'A', '-3': 'F', '-2': 'F', '-1': 'G',
-        0: 'G', 1: 'K', 2: 'K', 3: 'M', 4: 'M', 5: 'M', 6: 'BD', 7: 'BD', 8: 'BD'
+      Sp : {
+        '-6' : 'OB',
+        '-5' : 'A',
+        '-4' : 'A',
+        '-3' : 'F',
+        '-2' : 'F',
+        '-1' : 'G',
+        0 : 'G',
+        1 : 'K',
+        2 : 'K',
+        3 : 'M',
+        4 : 'M',
+        5 : 'M',
+        6 : 'BD',
+        7 : 'BD',
+        8 : 'BD'
       },
-      O: {
-        '-6': 'Ia', '-5': 'Ia', '-4': 'Ib', '-3': 'II', '-2': 'III', '-1': 'III',
-        0: 'III', 1: 'V', 2: 'V', 3: 'V', 4: 'IV', 5: 'D', 6: 'IV', 7: 'IV', 8: 'IV'
+      O : {
+        '-6' : 'Ia',
+        '-5' : 'Ia',
+        '-4' : 'Ib',
+        '-3' : 'II',
+        '-2' : 'III',
+        '-1' : 'III',
+        0 : 'III',
+        1 : 'V',
+        2 : 'V',
+        3 : 'V',
+        4 : 'IV',
+        5 : 'D',
+        6 : 'IV',
+        7 : 'IV',
+        8 : 'IV'
       },
-      B: {
-        '-6': 'Ia', '-5': 'Ia', '-4': 'Ib', '-3': 'II', '-2': 'III', '-1': 'III',
-        0: 'III', 1: 'III', 2: 'V', 3: 'V', 4: 'IV', 5: 'D', 6: 'IV', 7: 'IV', 8: 'IV'
+      B : {
+        '-6' : 'Ia',
+        '-5' : 'Ia',
+        '-4' : 'Ib',
+        '-3' : 'II',
+        '-2' : 'III',
+        '-1' : 'III',
+        0 : 'III',
+        1 : 'III',
+        2 : 'V',
+        3 : 'V',
+        4 : 'IV',
+        5 : 'D',
+        6 : 'IV',
+        7 : 'IV',
+        8 : 'IV'
       },
-      A: {
-        '-6': 'Ia', '-5': 'Ia', '-4': 'Ib', '-3': 'II', '-2': 'III', '-1': 'IV',
-        0: 'V', 1: 'V', 2: 'V', 3: 'V', 4: 'V', 5: 'D', 6: 'V', 7: 'V', 8: 'V'
+      A : {
+        '-6' : 'Ia',
+        '-5' : 'Ia',
+        '-4' : 'Ib',
+        '-3' : 'II',
+        '-2' : 'III',
+        '-1' : 'IV',
+        0 : 'V',
+        1 : 'V',
+        2 : 'V',
+        3 : 'V',
+        4 : 'V',
+        5 : 'D',
+        6 : 'V',
+        7 : 'V',
+        8 : 'V'
       },
-      F: {
-        '-6': 'II', '-5': 'II', '-4': 'III', '-3': 'IV', '-2': 'V', '-1': 'V',
-        0: 'V', 1: 'V', 2: 'V', 3: 'V', 4: 'VI', 5: 'D', 6: 'VI', 7: 'VI', 8: 'VI'
+      F : {
+        '-6' : 'II',
+        '-5' : 'II',
+        '-4' : 'III',
+        '-3' : 'IV',
+        '-2' : 'V',
+        '-1' : 'V',
+        0 : 'V',
+        1 : 'V',
+        2 : 'V',
+        3 : 'V',
+        4 : 'VI',
+        5 : 'D',
+        6 : 'VI',
+        7 : 'VI',
+        8 : 'VI'
       },
-      G: {
-        '-6': 'II', '-5': 'II', '-4': 'III', '-3': 'IV', '-2': 'V', '-1': 'V',
-        0: 'V', 1: 'V', 2: 'V', 3: 'V', 4: 'VI', 5: 'D', 6: 'VI', 7: 'VI', 8: 'VI'
+      G : {
+        '-6' : 'II',
+        '-5' : 'II',
+        '-4' : 'III',
+        '-3' : 'IV',
+        '-2' : 'V',
+        '-1' : 'V',
+        0 : 'V',
+        1 : 'V',
+        2 : 'V',
+        3 : 'V',
+        4 : 'VI',
+        5 : 'D',
+        6 : 'VI',
+        7 : 'VI',
+        8 : 'VI'
       },
-      K: {
-        '-6': 'II', '-5': 'II', '-4': 'III', '-3': 'IV', '-2': 'V', '-1': 'V',
-        0: 'V', 1: 'V', 2: 'V', 3: 'V', 4: 'VI', 5: 'D', 6: 'VI', 7: 'VI', 8: 'VI'
+      K : {
+        '-6' : 'II',
+        '-5' : 'II',
+        '-4' : 'III',
+        '-3' : 'IV',
+        '-2' : 'V',
+        '-1' : 'V',
+        0 : 'V',
+        1 : 'V',
+        2 : 'V',
+        3 : 'V',
+        4 : 'VI',
+        5 : 'D',
+        6 : 'VI',
+        7 : 'VI',
+        8 : 'VI'
       },
-      M: {
-        '-6': 'II', '-5': 'II', '-4': 'II', '-3': 'II', '-2': 'III', '-1': 'V',
-        0: 'V', 1: 'V', 2: 'V', 3: 'V', 4: 'VI', 5: 'D', 6: 'VI', 7: 'VI', 8: 'VI'
+      M : {
+        '-6' : 'II',
+        '-5' : 'II',
+        '-4' : 'II',
+        '-3' : 'II',
+        '-2' : 'III',
+        '-1' : 'V',
+        0 : 'V',
+        1 : 'V',
+        2 : 'V',
+        3 : 'V',
+        4 : 'VI',
+        5 : 'D',
+        6 : 'VI',
+        7 : 'VI',
+        8 : 'VI'
       }
     };
 
     const T5SS_TABLE = {
-      Sp: {
-        '-6': 'OB', '-5': 'A', '-4': 'F', '-3': 'G', '-2': 'G', '-1': 'K',
-        0: 'K', 1: 'M', 2: 'M', 3: 'M', 4: 'M', 5: 'M', 6: 'M', 7: 'BD', 8: 'BD'
+      Sp : {
+        '-6' : 'OB',
+        '-5' : 'A',
+        '-4' : 'F',
+        '-3' : 'G',
+        '-2' : 'G',
+        '-1' : 'K',
+        0 : 'K',
+        1 : 'M',
+        2 : 'M',
+        3 : 'M',
+        4 : 'M',
+        5 : 'M',
+        6 : 'M',
+        7 : 'BD',
+        8 : 'BD'
       },
-      O: {
-        '-6': 'Ia', '-5': 'Ia', '-4': 'Ib', '-3': 'II', '-2': 'III', '-1': 'III',
-        0: 'III', 1: 'V', 2: 'V', 3: 'V', 4: 'IV', 5: 'D', 6: 'IV', 7: 'IV', 8: 'IV'
+      O : {
+        '-6' : 'Ia',
+        '-5' : 'Ia',
+        '-4' : 'Ib',
+        '-3' : 'II',
+        '-2' : 'III',
+        '-1' : 'III',
+        0 : 'III',
+        1 : 'V',
+        2 : 'V',
+        3 : 'V',
+        4 : 'IV',
+        5 : 'D',
+        6 : 'IV',
+        7 : 'IV',
+        8 : 'IV'
       },
-      B: {
-        '-6': 'Ia', '-5': 'Ia', '-4': 'Ib', '-3': 'II', '-2': 'III', '-1': 'III',
-        0: 'III', 1: 'III', 2: 'V', 3: 'V', 4: 'IV', 5: 'D', 6: 'IV', 7: 'IV', 8: 'IV'
+      B : {
+        '-6' : 'Ia',
+        '-5' : 'Ia',
+        '-4' : 'Ib',
+        '-3' : 'II',
+        '-2' : 'III',
+        '-1' : 'III',
+        0 : 'III',
+        1 : 'III',
+        2 : 'V',
+        3 : 'V',
+        4 : 'IV',
+        5 : 'D',
+        6 : 'IV',
+        7 : 'IV',
+        8 : 'IV'
       },
-      A: {
-        '-6': 'Ib', '-5': 'II', '-4': 'III', '-3': 'IV', '-2': 'V', '-1': 'V',
-        0: 'V', 1: 'V', 2: 'V', 3: 'V', 4: 'V', 5: 'D', 6: 'V', 7: 'V', 8: 'V'
+      A : {
+        '-6' : 'Ib',
+        '-5' : 'II',
+        '-4' : 'III',
+        '-3' : 'IV',
+        '-2' : 'V',
+        '-1' : 'V',
+        0 : 'V',
+        1 : 'V',
+        2 : 'V',
+        3 : 'V',
+        4 : 'V',
+        5 : 'D',
+        6 : 'V',
+        7 : 'V',
+        8 : 'V'
       },
-      F: {
-        '-6': 'II', '-5': 'III', '-4': 'IV', '-3': 'V', '-2': 'V', '-1': 'V',
-        0: 'V', 1: 'V', 2: 'V', 3: 'V', 4: 'V', 5: 'D', 6: 'IV', 7: 'V', 8: 'V'
+      F : {
+        '-6' : 'II',
+        '-5' : 'III',
+        '-4' : 'IV',
+        '-3' : 'V',
+        '-2' : 'V',
+        '-1' : 'V',
+        0 : 'V',
+        1 : 'V',
+        2 : 'V',
+        3 : 'V',
+        4 : 'V',
+        5 : 'D',
+        6 : 'IV',
+        7 : 'V',
+        8 : 'V'
       },
-      G: {
-        '-6': 'II', '-5': 'III', '-4': 'IV', '-3': 'V', '-2': 'V', '-1': 'V',
-        0: 'V', 1: 'V', 2: 'V', 3: 'V', 4: 'V', 5: 'D', 6: 'IV', 7: 'V', 8: 'V'
+      G : {
+        '-6' : 'II',
+        '-5' : 'III',
+        '-4' : 'IV',
+        '-3' : 'V',
+        '-2' : 'V',
+        '-1' : 'V',
+        0 : 'V',
+        1 : 'V',
+        2 : 'V',
+        3 : 'V',
+        4 : 'V',
+        5 : 'D',
+        6 : 'IV',
+        7 : 'V',
+        8 : 'V'
       },
-      K: {
-        '-6': 'II', '-5': 'III', '-4': 'IV', '-3': 'V', '-2': 'V', '-1': 'V',
-        0: 'V', 1: 'V', 2: 'V', 3: 'V', 4: 'V', 5: 'D', 6: 'V', 7: 'V', 8: 'V'
+      K : {
+        '-6' : 'II',
+        '-5' : 'III',
+        '-4' : 'IV',
+        '-3' : 'V',
+        '-2' : 'V',
+        '-1' : 'V',
+        0 : 'V',
+        1 : 'V',
+        2 : 'V',
+        3 : 'V',
+        4 : 'V',
+        5 : 'D',
+        6 : 'V',
+        7 : 'V',
+        8 : 'V'
       },
-      M: {
-        '-6': 'II', '-5': 'III', '-4': 'V', '-3': 'V', '-2': 'V', '-1': 'V',
-        0: 'V', 1: 'V', 2: 'V', 3: 'V', 4: 'V', 5: 'V', 6: 'V', 7: 'V', 8: 'V'
+      M : {
+        '-6' : 'II',
+        '-5' : 'III',
+        '-4' : 'V',
+        '-3' : 'V',
+        '-2' : 'V',
+        '-1' : 'V',
+        0 : 'V',
+        1 : 'V',
+        2 : 'V',
+        3 : 'V',
+        4 : 'V',
+        5 : 'V',
+        6 : 'V',
+        7 : 'V',
+        8 : 'V'
       }
     };
 
     const table = T5SS_TABLE;
 
-    // "Spectral Type: Roll Flux for Primary. For all others, Primary Flux + (1D-1)."
-    let spectral = table.Sp[clamp(
-      primary ? primarySpectralFlux : primarySpectralFlux + roll1D() - 1, -6, 8)];
+    // "Spectral Type: Roll Flux for Primary. For all others, Primary Flux +
+    // (1D-1)."
+    let spectral = table.Sp[clamp(primary ? primarySpectralFlux
+                                          : primarySpectralFlux + roll1D() - 1,
+                                  -6, 8)];
 
     // "Select further between O or B."
-    if (spectral === 'OB') spectral = roll1D() <= 3 ? 'O' : 'B';
+    if (spectral === 'OB')
+      spectral = roll1D() <= 3 ? 'O' : 'B';
 
     // "If Spectral= BD ignore remaining rolls."
-    if (spectral === 'BD') return spectral;
+    if (spectral === 'BD')
+      return spectral;
 
     let iter = 0;
-    for (; ;) {
-      if (++iter > 1000) { alert('too many iterations'); throw new Error('iterations'); }
+    for (;;) {
+      if (++iter > 1000) {
+        alert('too many iterations');
+        throw new Error('iterations');
+      }
 
       // "Spectral Decimal. Roll decimal 0 to 9."
       let spectralDecimal = roll1D10() - 1;
 
-      // "Stellar Size. Roll Flux for Primary. For all others, use Primary Flux + (1D+2)."
+      // "Stellar Size. Roll Flux for Primary. For all others, use Primary Flux
+      // + (1D+2)."
       let size = table[spectral][clamp(
-        primary ? primarySizeFlux : primarySizeFlux + roll1D() + 2, -6, 8)];
+          primary ? primarySizeFlux : primarySizeFlux + roll1D() + 2, -6, 8)];
 
       // T5SS: Disallow D as primary
       if (primary && size === 'D') {
@@ -154,16 +374,19 @@ export function generate() {
 
       // "If Size= D, ignore Spectral Decimal."
       // T5SS: Use only 'D' not 'MD' etc.
-      if (size === 'D') return size;
+      if (size === 'D')
+        return size;
 
       // "Size IV not for K5-K9 and M0-M9."
-      if (size === 'IV' && ((spectral === 'K' && inRange(spectralDecimal, 5, 9)) ||
-        spectral === 'M'))
+      if (size === 'IV' &&
+          ((spectral === 'K' && inRange(spectralDecimal, 5, 9)) ||
+           spectral === 'M'))
         continue;
 
       // "Size VI not for A0-A9 and F0-F4."
-      if (size === 'VI' && (spectral === 'A' ||
-        (spectral === 'F' && inRange(spectralDecimal, 0, 4))))
+      if (size === 'VI' &&
+          (spectral === 'A' ||
+           (spectral === 'F' && inRange(spectralDecimal, 0, 4))))
         continue;
 
       return `${spectral}${spectralDecimal} ${size}`;
@@ -172,35 +395,39 @@ export function generate() {
 
   const stars = [];
 
-  const T510_SYSTEM = { close: 3, near: 3, far: 3, companion: 3 };
-  const T5SS_SYSTEM = { close: 4, near: 3, far: 3, companion: 4 };
+  const T510_SYSTEM = {close : 3, near : 3, far : 3, companion : 3};
+  const T5SS_SYSTEM = {close : 4, near : 3, far : 3, companion : 4};
   const system = T5SS_SYSTEM;
 
   // Primary
   stars.push(generateStar(true));
 
   // Companion
-  if (flux() >= system.companion) stars.push(generateStar());
+  if (flux() >= system.companion)
+    stars.push(generateStar());
 
   // Close
   if (flux() >= system.close) {
     stars.push(generateStar());
     // Companion
-    if (flux() >= system.companion) stars.push(generateStar());
+    if (flux() >= system.companion)
+      stars.push(generateStar());
   }
 
   // Near
   if (flux() >= system.near) {
     stars.push(generateStar());
     // Companion
-    if (flux() >= system.companion) stars.push(generateStar());
+    if (flux() >= system.companion)
+      stars.push(generateStar());
   }
 
   // Far
   if (flux() >= system.far) {
     stars.push(generateStar());
     // Companion
-    if (flux() >= system.companion) stars.push(generateStar());
+    if (flux() >= system.companion)
+      stars.push(generateStar());
   }
 
   return stars.join(' ');
@@ -208,17 +435,16 @@ export function generate() {
 
 // Given a stellar description line, ensure the biggest/brightest star is first.
 export function reorder(line) {
-  const SPECTRALS = ['O', 'B', 'A', 'F', 'G', 'K', 'M'];
-  const TYPES = ['Ia', 'Ib', 'II', 'III', 'IV', 'V', 'VI', 'VII'];
+  const SPECTRALS = [ 'O', 'B', 'A', 'F', 'G', 'K', 'M' ];
+  const TYPES = [ 'Ia', 'Ib', 'II', 'III', 'IV', 'V', 'VI', 'VII' ];
 
   function parse(star) {
     if (star.match(/^([OBAFGKM])(\d) (Ia|Ib|II|III|IV|V|VI|VII)$/)) {
-      return { spectral: RegExp.$1, decimal: RegExp.$2, type: RegExp.$3 };
+      return {spectral : RegExp.$1, decimal : RegExp.$2, type : RegExp.$3};
     } else {
-      return { type: star };
+      return {type : star};
     }
   }
-
 
   function order(a, b) {
     if (!a.spectral && !b.spectral)
@@ -231,14 +457,15 @@ export function reorder(line) {
       return 1;
 
     let order = TYPES.indexOf(a.type) - TYPES.indexOf(b.type);
-    if (order) return order;
+    if (order)
+      return order;
 
     order = SPECTRALS.indexOf(b.spectral) - SPECTRALS.indexOf(a.spectral);
-    if (order) return order;
+    if (order)
+      return order;
 
     return Number(a.decimal) - Number(b.decimal);
   }
-
 
   let stars = line.split(/\s+(?!Ia|Ib|II|III|IV|V|VI|VII)/);
 
@@ -256,4 +483,4 @@ export function reorder(line) {
   return stars.join(' ');
 }
 
-export default { fix, generate, reorder };
+export default {fix, generate, reorder};

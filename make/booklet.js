@@ -1,5 +1,6 @@
 import * as Traveller from '../map.js';
-import { getTextViaPOST, getJSONViaPOST } from './post.js';
+
+import {getJSONViaPOST, getTextViaPOST} from './post.js';
 
 const Util = Traveller.Util;
 const $ = Util.$;
@@ -30,9 +31,7 @@ function capitalize(s) {
   return s.substring(0, 1).toUpperCase() + s.substring(1);
 }
 
-function titleCaps(s) {
-  return s.split(/ /g).map(capitalize).join(' ');
-}
+function titleCaps(s) { return s.split(/ /g).map(capitalize).join(' '); }
 
 function firstOrNull(a) {
   if (a && a.length > 0)
@@ -51,10 +50,10 @@ function fetchImage(url, img) {
 
 let finished = false;
 function status(string, pending) {
-  if (finished) return;
-  const statusElement = $('#status'),
-    statusText = $('#statusText'),
-    statusImage = $('#statusImage');
+  if (finished)
+    return;
+  const statusElement = $('#status'), statusText = $('#statusText'),
+        statusImage = $('#statusImage');
 
   if (!string && !pending) {
     statusElement.style.display = 'none';
@@ -77,24 +76,28 @@ function status(string, pending) {
 function parseSector(tabDelimitedData, metadata) {
   const sector = {
     metadata,
-    /** @type {Array<{index: string, name: string, worlds: Array, hex: string, ss: string}>} */
-    worlds: [],
+    /**
+       @type {Array<{index: string, name: string, worlds: Array, hex: string,
+           ss: string}>}
+     */
+    worlds : [],
     /** @type {Array<{index: string, name: string, worlds: Array}>} */
-    subsectors: []
+    subsectors : []
   };
 
   for (let i = 0; i < 16; i += 1) {
     const index = String.fromCharCode('A'.charCodeAt(0) + i);
-    const ss = firstOrNull(
-      (metadata.Subsectors || [])
-        .filter(s => s.Index === index)
-    );
+    const ss =
+        firstOrNull((metadata.Subsectors || []).filter(s => s.Index === index));
 
     sector.subsectors[i] = {
-      /** @type {Array<{index: string, name: string, worlds: Array, hex: string, ss: string}>} */
-      worlds: [],
+      /**
+         @type {Array<{index: string, name: string, worlds: Array, hex: string,
+             ss: string}>}
+       */
+      worlds : [],
       index,
-      name: ss ? ss.Name : '',
+      name : ss ? ss.Name : '',
     };
   }
 
@@ -105,9 +108,12 @@ function parseSector(tabDelimitedData, metadata) {
     if (!line.length)
       break;
 
-    /** @type {{name: string, worlds: Array, hex: string, ss: string, population: number, hipop?: boolean, uwp: string, pbg: string}} */
-    const world = { };
-    for(const [index, field] of line.split('\t').entries()) {
+    /**
+     * @type {{name: string, worlds: Array, hex: string, ss: string,
+     *     population: number, hipop?: boolean, uwp: string, pbg: string}}
+     */
+    const world = {};
+    for (const [index, field] of line.split('\t').entries()) {
       const col = header[index].replace(/[^a-z]/g, '');
       world[col] = field;
     }
@@ -122,19 +128,17 @@ function parseSector(tabDelimitedData, metadata) {
 
   // partition worlds into subsectors
   sector.index = [];
-  for(const world of sector.worlds) {
+  for (const world of sector.worlds) {
     const x = Math.floor(parseInt(world.hex, 10) / 100),
-      y = Math.floor(parseInt(world.hex, 10) % 100),
-      ss = Math.floor((x - 1) / (Traveller.Astrometrics.SectorWidth / 4)) +
-        Math.floor((y - 1) / (Traveller.Astrometrics.SectorHeight / 4)) * 4;
+          y = Math.floor(parseInt(world.hex, 10) % 100),
+          ss = Math.floor((x - 1) / (Traveller.Astrometrics.SectorWidth / 4)) +
+               Math.floor((y - 1) / (Traveller.Astrometrics.SectorHeight / 4)) *
+                   4;
 
     sector.subsectors[ss].worlds.push(world);
 
     if (world.name.length) {
-      sector.index.push({
-        name: world.name,
-        location: world.ss + world.hex
-      });
+      sector.index.push({name : world.name, location : world.ss + world.hex});
     }
   };
   sector.index.sort((a, b) => a.name.localeCompare(b.name, 'en-us'));
@@ -154,7 +158,9 @@ function parseSector(tabDelimitedData, metadata) {
   };
 
   if ('Allegiances' in metadata) {
-    metadata.Allegiances.sort((a, b) => a.Code < b.Code ? -1 : a.Code > b.Code ? 1 : 0);
+    metadata.Allegiances.sort((a, b) => a.Code < b.Code   ? -1
+                                        : a.Code > b.Code ? 1
+                                                          : 0);
   }
 
   return sector;
@@ -186,13 +192,13 @@ function range(start, stop) {
 function sectorData(params) {
   if ('sector' in params) {
     return Traveller.MapService.sectorDataTabDelimited(
-      params.sector, { milieu: params.milieu });
+        params.sector, {milieu : params.milieu});
   }
 
   if ('data' in params) {
     return getTextViaPOST(
-      Traveller.MapService.makeURL('/api/sec', { type: 'TabDelimited' }),
-      params.data);
+        Traveller.MapService.makeURL('/api/sec', {type : 'TabDelimited'}),
+        params.data);
   }
 
   return Promise.reject(new Error('No sector or data specified.'));
@@ -200,15 +206,14 @@ function sectorData(params) {
 
 function sectorMetaData(params) {
   if ('sector' in params) {
-    return Traveller.MapService.sectorMetaData(
-      params.sector, { milieu: params.milieu });
+    return Traveller.MapService.sectorMetaData(params.sector,
+                                               {milieu : params.milieu});
   }
 
   if ('metadata' in params) {
-    return getJSONViaPOST(
-      Traveller.MapService.makeURL('/api/metadata', { accept: 'application/json' }),
-      params.metadata
-    );
+    return getJSONViaPOST(Traveller.MapService.makeURL(
+                              '/api/metadata', {accept : 'application/json'}),
+                          params.metadata);
   }
 
   return Promise.reject(new Error('No sector or metadata specified.'));
@@ -219,10 +224,10 @@ window.addEventListener('DOMContentLoaded', async () => {
   if (searchParams.has('sector')) {
     document.body.classList.add('render');
     const success = await render({
-      sector: searchParams.get('sector'),
-      milieu: searchParams.get('milieu'),
-      style: searchParams.get('style'),
-      options: searchParams.get('options')
+      sector : searchParams.get('sector'),
+      milieu : searchParams.get('milieu'),
+      style : searchParams.get('style'),
+      options : searchParams.get('options')
     });
     if (success && searchParams.has('print')) {
       window.print();
@@ -240,9 +245,9 @@ window.addEventListener('DOMContentLoaded', async () => {
     document.body.classList.add('render');
     document.body.classList.add('style-' + $('#data-style').value);
     await render({
-      data: form['data'].value,
-      metadata: form['metadata'].value,
-      style: form['map-style'].value
+      data : form['data'].value,
+      metadata : form['metadata'].value,
+      style : form['map-style'].value
     });
   });
 
@@ -254,15 +259,15 @@ async function render(params) {
   window.location.hash = '';
 
   const options = (params.options !== undefined && params.options !== null)
-    ? Number(params.options) : Traveller.MapOptions.BordersMask,
-    style = params.style || 'print';
+                      ? Number(params.options)
+                      : Traveller.MapOptions.BordersMask,
+        style = params.style || 'print';
 
   status('Fetching data...', true);
 
   try {
-    const [data, metadata] = await Promise.all(
-      [sectorData(params), sectorMetaData(params)]
-    );
+    const [data, metadata] =
+        await Promise.all([ sectorData(params), sectorMetaData(params) ]);
 
     status('Processing data...', true);
     const pending_promises = [];
@@ -291,27 +296,31 @@ async function render(params) {
         sector.metadata.DataFile.Era = '-2349';
       } else {
         const m = /^M(\d+)$/.exec(milieu);
-        if (m) sector.metadata.DataFile.Era = m[1];
+        if (m)
+          sector.metadata.DataFile.Era = m[1];
       }
     }
     document.title = sector.title;
     const url_params = {
-      accept: 'image/svg+xml',
-      rotation: 3,
-      scale: 64,
-      options: options | Traveller.MapOptions.SubsectorGrid | Traveller.MapOptions.NamesMask,
+      accept : 'image/svg+xml',
+      rotation : 3,
+      scale : 64,
+      options : options | Traveller.MapOptions.SubsectorGrid |
+                    Traveller.MapOptions.NamesMask,
       style
     };
     let imageURL;
     if ('sector' in params) {
       url_params.sector = params.sector;
       url_params.milieu = params.milieu;
-      imageURL = Promise.resolve(Traveller.MapService.makeURL('/api/poster', url_params));
+      imageURL = Promise.resolve(
+          Traveller.MapService.makeURL('/api/poster', url_params));
     } else {
       url_params.data = params.data;
       url_params.metadata = params.metadata;
       url_params.datauri = 1;
-      imageURL = getTextViaPOST(Traveller.MapService.makeURL('/api/poster'), url_params);
+      imageURL = getTextViaPOST(Traveller.MapService.makeURL('/api/poster'),
+                                url_params);
     }
     pending_promises.push(imageURL.then(url => {
       // This task is run after the page is generated via template.
@@ -322,7 +331,8 @@ async function render(params) {
       const subsector = sector.subsectors[i];
 
       if (subsector.name.length === 0) {
-        subsector.article = 'subsector ' + String.fromCharCode('A'.charCodeAt(0) + i);
+        subsector.article =
+            'subsector ' + String.fromCharCode('A'.charCodeAt(0) + i);
       } else if (/^District /i.test(subsector.name)) {
         subsector.article = subsector.name;
       } else if (/^The /i.test(subsector.name)) {
@@ -333,8 +343,7 @@ async function render(params) {
       subsector.title = titleCaps(subsector.article);
 
       function neighbor(n, dx, dy) {
-        const x = (n % 4) + dx,
-          y = Math.floor(n / 4) + dy;
+        const x = (n % 4) + dx, y = Math.floor(n / 4) + dy;
 
         if (x < 0 || x >= 4 || y < 0 || y >= 4) {
           return '\xA0'; // Make sure the space doesn't collapse
@@ -360,13 +369,16 @@ async function render(params) {
         subsector.population += world.population;
 
         if (world.name !== '') {
-          if (!subsector.maxpop || subsector.maxpop.population < world.population) {
+          if (!subsector.maxpop ||
+              subsector.maxpop.population < world.population) {
             subsector.maxpop = world;
           }
 
-          if (!subsector.maxtl || Util.fromHex(subsector.maxtl[0].uwp.charAt(8)) < Util.fromHex(world.uwp.charAt(8))) {
-            subsector.maxtl = [world];
-          } else if (Util.fromHex(subsector.maxtl[0].uwp.charAt(8)) === Util.fromHex(world.uwp.charAt(8))) {
+          if (!subsector.maxtl || Util.fromHex(subsector.maxtl[0].uwp.charAt(
+                                      8)) < Util.fromHex(world.uwp.charAt(8))) {
+            subsector.maxtl = [ world ];
+          } else if (Util.fromHex(subsector.maxtl[0].uwp.charAt(8)) ===
+                     Util.fromHex(world.uwp.charAt(8))) {
             subsector.maxtl.push(world);
           }
 
@@ -380,69 +392,58 @@ async function render(params) {
       });
 
       subsector.blurb = [];
-      if (subsector.worlds.length > 1 && subsector.worlds.length > subsector.unexplored) {
-        subsector.blurb.push(
-          `
+      if (subsector.worlds.length > 1 &&
+          subsector.worlds.length > subsector.unexplored) {
+        subsector.blurb.push(`
             ${capitalize(subsector.article)} contains
             ${subsector.worlds.length} worlds with a
             ${(subsector.unexplored > 0 ? 'known' : '')} population of
             ${friendlyNumber(subsector.population)}.
-            `
-        );
+            `);
 
         if (subsector.maxpop && subsector.maxpop.population > 0) {
-          subsector.blurb.push(
-            `
+          subsector.blurb.push(`
               The highest population is
               ${friendlyNumber(subsector.maxpop.population)},
               at ${subsector.maxpop.name}.
-              `
-          );
+              `);
         }
       } else if (subsector.worlds.length === 1 && subsector.maxpop) {
-        subsector.blurb.push(
-          `
+        subsector.blurb.push(`
             ${capitalize(subsector.article)} contains one world,
             ${subsector.maxpop.name}, with a population of
             ${friendlyNumber(subsector.maxpop.population)}.
-            `
-        );
+            `);
       } else if (subsector.worlds.length === 1) {
         subsector.blurb.push(
-          `${capitalize(subsector.article)} contains one barren world.`
-        );
+            `${capitalize(subsector.article)} contains one barren world.`);
       } else if (subsector.worlds.length === 0) {
         subsector.blurb.push(
-          `${capitalize(subsector.article)} contains no charted worlds.`
-        );
+            `${capitalize(subsector.article)} contains no charted worlds.`);
       }
 
       if (subsector.unexplored > 0) {
-        subsector.blurb.push(
-          `${capitalize(subsector.article)} contains ${subsector.unexplored} unexplored worlds.`
-        );
+        subsector.blurb.push(`${capitalize(subsector.article)} contains ${
+            subsector.unexplored} unexplored worlds.`);
       }
 
       if (subsector.maxtl && subsector.maxtl.length > 0) {
-        subsector.blurb.push(
-          `
+        subsector.blurb.push(`
             The highest tech level is ${subsector.maxtl[0].uwp.charAt(8)}
             at ${friendlyJoin(subsector.maxtl.map(world => world.name))}.
-            `
-        );
+            `);
       }
 
       if (subsector.capital) {
         subsector.blurb.push(
-          `The subsector capital is at ${subsector.capital.name}.`
-        );
+            `The subsector capital is at ${subsector.capital.name}.`);
       }
 
       subsector.blurb = subsector.blurb.join(' ');
       const url_params = {
-        accept: 'image/svg+xml',
-        subsector: subsector.index,
-        scale: 64,
+        accept : 'image/svg+xml',
+        subsector : subsector.index,
+        scale : 64,
         options,
         style
       };
@@ -450,16 +451,19 @@ async function render(params) {
       if ('sector' in params) {
         url_params.sector = params.sector;
         url_params.milieu = params.milieu;
-        imageURL = Promise.resolve(Traveller.MapService.makeURL('/api/poster', url_params));
+        imageURL = Promise.resolve(
+            Traveller.MapService.makeURL('/api/poster', url_params));
       } else {
         url_params.data = params.data;
         url_params.metadata = params.metadata;
         url_params.datauri = 1;
-        imageURL = getTextViaPOST(Traveller.MapService.makeURL('/api/poster'), url_params);
+        imageURL = getTextViaPOST(Traveller.MapService.makeURL('/api/poster'),
+                                  url_params);
       }
       pending_promises.push(imageURL.then(url => {
         // This task is run after the page is generated via template.
-        return () => fetchImage(url, $(`#ss${subsector.index} img.subsector-image`));
+        return () => fetchImage(url,
+                                $(`#ss${subsector.index} img.subsector-image`));
       }));
 
       subsector.density = (subsector.worlds.length < 42) ? 'sparse' : 'dense';
