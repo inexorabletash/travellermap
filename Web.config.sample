@@ -92,7 +92,24 @@
 
     <!-- Pass URLs with things like + along to routing. -->
     <security>
-      <requestFiltering allowDoubleEscaping="true" />
+      <requestFiltering allowDoubleEscaping="true">
+        <!-- Block access to specific files (404) -->
+        <hiddenSegments>
+          <add segment="package.json" />
+          <add segment="package-lock.json" />
+          <add segment="yarn.lock" />
+          <add segment="jsconfig.json" />
+          <add segment="jsconfig.sw.json" />
+          <add segment="eslint.config.js" />
+          <add segment=".env" />
+          <add segment=".gitignore" />
+          <add segment="Maps.csproj.user" />
+          <add segment=".git" />
+          <add segment=".vscode" />
+          <add segment=".vs" />
+          <add segment="node_modules" />
+        </hiddenSegments>
+      </requestFiltering>
     </security>
 
     <rewrite>

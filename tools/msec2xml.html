@@ -3,7 +3,6 @@
 <meta charset="utf-8">
 <link rel="shortcut icon" href="../favicon.svg">
 <link rel="stylesheet" href="../site.css?update=2022-09-10T10:37:44">
-<script src="../map.js?update=2023-06-19T09:13:17"></script>
 <style>
   #input, #output {
     width: 1000px; height: 300px;
@@ -29,11 +28,21 @@
   <div><textarea id="output" wrap="off" readonly></textarea></div>
 </div>
 
-<script>
-  window.addEventListener('DOMContentLoaded', () => {
-    'use strict';
-    const $ = s => document.querySelector(s);
+<script type="importmap">
+{
+  "imports": {
+    "../map.js": "../map.js?update=2026-04-01T13:40:25"
+  }
+}
+</script>
+<script type="module">
+  import * as Traveller from '../map.js';
 
+  const Util = Traveller.Util;
+  const $ = Util.$;
+  const $$ = Util.$$;
+
+  window.addEventListener('DOMContentLoaded', () => {
     const elem = $('#input');
     elem.addEventListener('dragover', event => {
       event.stopPropagation();

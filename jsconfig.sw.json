@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "lib": ["webworker"],
+    "target": "esnext",
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "checkJs": true
+  },
+  "include": ["sw.js"]
+}

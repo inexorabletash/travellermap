@@ -57,3 +57,10 @@ To verify that the database is populated, you can run a query:
 * `http://localhost:<YOUR_PORT>/api/search?q=regina`
 
 > NOTE: When the Debug build target is running, only the worlds in "selected" sectors will be indexed. A Release build will index all worlds.
+
+Linting the client-side javascript:
+-----------------
+
+1. Choose Node and ESLint from the Visual Studio Installer option, or Download and install Node https://docs.npmjs.com/cli/v11/configuring-npm/install
+2. Run "npm install" in the project root to download the development packages used for linting.
+3. Automatically ESLint from Visual Studio or your chosen IDE's ESLint extension, or manually run "npx eslint fileName.js".

@@ -3,11 +3,17 @@
 <title>World Data Sheet - Traveller Map</title>
 <meta charset="utf-8">
 <link rel="shortcut icon" href="../favicon.svg">
-<link rel="stylesheet" href="../site.css">
+<link rel="stylesheet" href="../site.css?update=2026-03-17T13:19:33">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js"></script>
-<script src="../map.js?update=2026-03-19T15:05:15"></script>
-<script src="../world_util.js?update=2026-03-19T14:55:27"></script>
-<script src="world.js?update=2026-03-19T15:05:15"></script>
+<script type="importmap">
+{
+  "imports": {
+    "../map.js": "../map.js?update=2026-04-01T13:40:25",
+    "../world_util.js": "../world_util.js?update=2026-04-01T13:40:25"
+  }
+}
+</script>
+<script type="module" src="world.js?update=2026-04-01T13:40:25"></script>
 
 <style>
 @import url(https://fonts.googleapis.com/css?family=PT+Sans+Narrow);
@@ -76,6 +82,7 @@ td { vertical-align: top; }
 .wds-decode tr:first-of-type td { padding-bottom: 4px; font-weight: bold;}
 .wds-decode td {
   padding: 0; margin: 0; width: 16px; font-size: 14px; line-height: 14px;
+  /* TODO: x-vertical-align does not exist in CSS? Delete? */
   x-vertical-align: middle;
   text-align: center;
   overflow: hidden;

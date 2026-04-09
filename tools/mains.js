@@ -92,6 +92,7 @@ function parseTabDelimited(text) {
   const MIN_SIZE = 5;
 
   console.log('inverting mains');
+  /** @type {any[]} */
   let mains = [];
   for (let i = 1; i <= main; ++i)
     mains[i] = [];
@@ -101,8 +102,7 @@ function parseTabDelimited(text) {
   mains.sort((a, b) => b.length - a.length);
 
   console.log('done');
-
-  window.mains = mains;
+  
   const ta = document.createElement('textarea');
   ta.cols = 80; ta.rows = 24;
   document.body.appendChild(ta);

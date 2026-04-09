@@ -1,8 +1,9 @@
-/*global Handlebars, Traveller, getTextViaPOST */
+import * as Traveller from '../map.js';
+import { getTextViaPOST } from './post.js';
 
-"use strict";
-
-const $ = s => document.querySelector(s);
+const Util = Traveller.Util;
+const $ = Util.$;
+const $$ = Util.$$;
 
 const PS = 16; // px/parsec
 const INSET = 2; // px
@@ -25,7 +26,7 @@ async function parse() {
     const text = await getTextViaPOST(
         Traveller.MapService.makeURL('/api/sec', {type: 'TabDelimited'}),
       data);
-    const sector = await parseSector(text);
+    const sector = await Util.parseSector(text);
     sec = sector;
     const dataURL = await getTextViaPOST(
       Traveller.MapService.makeURL('/api/poster'), {
@@ -46,29 +47,6 @@ async function parse() {
   }
 }
 
-function parseSector(tabDelimitedData) {
-  const sector = {
-    worlds: {}
-  };
-  const lines = tabDelimitedData.split(/\r?\n/);
-  const header = lines
-          .shift()
-          .toLowerCase()
-          .split('\t')
-          .map(h => h.replace(/[^a-z]/g, ''));
-  lines.forEach(line => {
-    if (!line.length) return;
-    const world = {};
-    line
-      .split('\t')
-      .forEach((field, index) => {
-        world[header[index]] = field;
-      });
-    sector.worlds[world.hex] = world;
-  });
-  return sector;
-}
-
 function hexToCoords(hex) {
   const x = parseFloat(hex.substring(0, 2)) - 1;
   const y = parseFloat(hex.substring(2, 4)) - 1;
@@ -86,19 +64,19 @@ function refresh() {
 
   ctx.lineWidth = 2;
   ctx.strokeStyle = 'blue';
-  candidates.forEach(hex => {
+  for (const hex of candidates) {
     const coords = hexToCoords(hex), x = coords.x, y = coords.y;
     ctx.beginPath();
     ctx.arc(x,
             y,
             RADIUS + 2, 0, 2 * Math.PI, false);
     ctx.stroke();
-  });
+  }
 
   ctx.lineWidth = 4;
   ctx.strokeStyle = "green";
   ctx.fillStyle = "green";
-  routes.forEach(route => {
+  for (const route of routes) {
     ctx.beginPath();
     const start = hexToCoords(route.start),
           sx = start.x,
@@ -114,18 +92,18 @@ function refresh() {
     ctx.arc(sx, sy, RADIUS, 0, 2 * Math.PI, false);
     ctx.arc(ex, ey, RADIUS, 0, 2 * Math.PI, false);
     ctx.fill();
-  });
+  }
 
   ctx.lineWidth = 2;
   ctx.strokeStyle = 'red';
-  stack.forEach(hex => {
+  for (const hex of stack) {
     const coords = hexToCoords(hex), x = coords.x, y = coords.y;
     ctx.beginPath();
     ctx.arc(x,
             y,
             RADIUS + 2, 0, 2 * Math.PI, false);
     ctx.stroke();
-  });
+  }
 
   const template = ($('#form').elements.metatype.value === 'xml')
           ? xml_template : msec_template;
@@ -137,9 +115,9 @@ function refresh() {
 const xml_template = Handlebars.compile($('#xml-template').innerHTML.trim());
 const msec_template = Handlebars.compile($('#msec-template').innerHTML.trim());
 
-[$('#xml'), $('#msec')].forEach(e => {
+for(const e of [$('#xml'), $('#msec')]) {
   e.addEventListener('click', refresh);
-});
+}
 
 const stack = [];
 $('#canvas').addEventListener('mousedown', event => {

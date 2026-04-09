@@ -1,0 +1,207 @@
+var SERVICE_BASE = (function (l) {
+    if (l.hostname === 'localhost' && l.pathname.indexOf('~') !== -1)
+        return 'https://travellermap.com';
+    return '';
+}(window.location));
+
+var DEFAULT_THRESHOLD = 8;
+var DEFAULT_COUNT = 0;
+
+function compareImages(url1, url2, threshold, count, callback) {
+    var img1 = new Image(), img1Loaded = false;
+    var img2 = new Image(), img2Loaded = false;
+    img1.onload = img1.onerror = function () {
+        img1Loaded = true;
+        if (img2Loaded) { doCompare(); }
+    };
+    img2.onload = img2.onerror = function () {
+        img2Loaded = true;
+        if (img1Loaded) { doCompare(); }
+    };
+    img1.crossOrigin = 'anonymous';
+    img1.src = url1;
+    img2.crossOrigin = 'anonymous';
+    img2.src = url2;
+    function doCompare() {
+        var w = Math.max(img1.width, img2.width), h = Math.max(img1.height, img2.height);
+
+        function makeCanvas(w, h) {
+            var c = document.createElement('canvas');
+            c.width = w;
+            c.height = h;
+
+            // Hack for IE which fails to apply max-width + height: auto to a canvas
+            c.style.width = '256px';
+            c.style.height = String(256 * h / w) + 'px';
+
+            return c;
+        }
+
+        function getImagePixels(img) {
+            var c = makeCanvas(w, h);
+            var ctx = c.getContext('2d');
+            if(ctx === null) {
+                throw new Error('Failed to get canvas context');
+            }
+            try {
+                // TODO: Consider blurring e.g.: ctx.filter = 'blur(2px)';
+                ctx.drawImage(img, 0, 0);
+            } catch (ex) {
+                console.warn(ex.message);
+            }
+            var id = ctx.getImageData(0, 0, w, h);
+            return id;
+        }
+        var id1 = getImagePixels(img1);
+        var id2 = getImagePixels(img2);
+
+        var c3 = makeCanvas(w, h);
+        var ctx3 = c3.getContext('2d');
+        if(ctx3 === null) {
+            throw new Error('Failed to get canvas context');
+        }
+        var id3 = ctx3.getImageData(0, 0, w, h);
+        var d1 = id1.data, d2 = id2.data, d3 = id3.data, len = d3.length;
+        var dirty = false;
+        for (var p = 0; p < len; p += 4) {
+            var dr = Math.abs(d1[p] - d2[p]);
+            var dg = Math.abs(d1[p + 1] - d2[p + 1]);
+            var db = Math.abs(d1[p + 2] - d2[p + 2]);
+            dr = (dr < threshold) ? 0 : dr;
+            dg = (dg < threshold) ? 0 : dg;
+            db = (db < threshold) ? 0 : db;
+            var d = dr + dg + db;
+
+            if (!dirty && d > 0) {
+                if (count) {
+                    --count;
+                } else {
+                    dirty = true;
+                }
+            }
+
+            d3[p] = 255;
+            d3[p + 1] = 0;
+            d3[p + 2] = 0;
+            d3[p + 3] = d ? 255 : 0;
+        }
+
+        ctx3.putImageData(id3, 0, 0);
+        callback(img1, img2, c3, !dirty);
+    }
+}
+
+function check(url1, url2, threshold = DEFAULT_THRESHOLD, count = DEFAULT_COUNT) {
+    url2 = SERVICE_BASE + url2;
+
+    var tr, td;
+
+    tr = document.createElement('tr');
+
+    td = tr.appendChild(document.createElement('td'));
+    td.appendChild(document.createTextNode(url1));
+
+    td = tr.appendChild(document.createElement('td'));
+    td.appendChild(document.createTextNode(url2));
+
+    td = tr.appendChild(document.createElement('td'));
+    td.appendChild(document.createTextNode('threshold = ' + threshold));
+
+    const resultsElement = document.querySelector('#results');
+    if(resultsElement === null) {
+        throw new Error('Failed to find results element');
+    }
+    resultsElement.appendChild(tr);
+
+    tr = document.createElement('tr');
+    resultsElement.appendChild(tr);
+
+    compareImages(url1, url2, threshold, count, function (a, b, c, pass) {
+        for (var i = 0; i < 3; ++i) {
+            var item = arguments[i];
+            td = document.createElement('td');
+            tr.appendChild(td);
+            td.appendChild(item);
+        }
+        tr.className = pass ? "pass" : "fail";
+    });
+}
+
+/// Tests
+
+// Ensure image diff is working
+check("refs/ref_bad_example.png", "/api/jumpmap?sector=Spinward+Marches&hex=1911&jump=2");
+
+// Basics
+check("refs/ref1.png", "/api/jumpmap?sector=Spinward+Marches&hex=1910&jump=3");
+check("refs/ref2.png", "/api/poster?sector=Spinward+Marches", 24);
+check("refs/ref3.png", "/api/poster?sector=Spinward+Marches&subsector=C");
+
+// Scales
+check("refs/ref4.png", "/api/tile?x=-0.5&y=-0.5&scale=0.016", 32);
+check("refs/ref5.png", "/api/tile?x=-0.5&y=-0.5&scale=0.031", 32);
+check("refs/ref6.png", "/api/tile?x=-0.5&y=-0.5&scale=0.063", 32);
+check("refs/ref7.png", "/api/tile?x=-0.5&y=-0.5&scale=0.125", 32);
+check("refs/ref8.png", "/api/tile?x=-0.5&y=-0.5&scale=0.25", 32);
+check("refs/ref9.png", "/api/tile?x=-0.5&y=-0.5&scale=0.5", 32);
+check("refs/ref10.png", "/api/tile?x=-0.5&y=-0.5&scale=1");
+check("refs/ref11.png", "/api/tile?x=-0.5&y=-0.5&scale=2");
+check("refs/ref12.png", "/api/tile?x=-0.5&y=-0.5&scale=4");
+check("refs/ref13.png", "/api/tile?x=-0.5&y=-0.5&scale=8");
+check("refs/ref14.png", "/api/tile?x=-0.5&y=-0.5&scale=16");
+check("refs/ref15.png", "/api/tile?x=-0.5&y=-0.5&scale=32");
+check("refs/ref16.png", "/api/tile?x=-0.5&y=-0.5&scale=64");
+check("refs/ref17.png", "/api/tile?x=-0.5&y=-0.5&scale=128");
+check("refs/ref18.png", "/api/tile?x=-0.5&y=-0.5&scale=256");
+
+// Rotation
+check("refs/ref19.png", "/api/poster?sector=Spinward+Marches&scale=8&rotation=0");
+check("refs/ref20.png", "/api/poster?sector=Spinward+Marches&scale=8&rotation=1");
+check("refs/ref21.png", "/api/poster?sector=Spinward+Marches&scale=8&rotation=2");
+check("refs/ref22.png", "/api/poster?sector=Spinward+Marches&scale=8&rotation=3");
+
+// Options and Styles
+check("refs/ref23.png", "/api/poster?sector=Spinward+Marches&subsector=C&routes=0");
+check("refs/ref24.png", "/api/poster?sector=Spinward+Marches&subsector=C&sscoords=1");
+check("refs/ref25.png", "/api/tile?x=-0.5&y=-0.5&scale=32&options=8192"); // Force Hexes
+check("refs/ref26.png", "/api/poster?sector=Spinward+Marches&subsector=C&style=Atlas");
+check("refs/ref27.png", "/api/poster?sector=Spinward+Marches&subsector=C&style=Print");
+check("refs/ref28.jpg", "/api/poster?sector=Spinward+Marches&subsector=C&style=Candy", 32, 32);
+check("refs/ref29.png", "/api/poster?sector=Spinward+Marches&subsector=C&options=17271"); // World Colors
+check("refs/ref30.png", "/api/poster?sector=Spinward+Marches&subsector=B&options=33655"); // Filled Borders
+check("refs/ref39.png", "/api/poster?sector=Spinward+Marches&subsector=C&style=Draft");
+check("refs/ref40.png", "/api/poster?sector=Spinward+Marches&subsector=C&style=FASA");
+check("refs/ref41.png", "/api/poster?sector=Spinward+Marches&subsector=C&style=Mongoose");
+
+
+
+
+if (String(location).indexOf('localhost') !== -1) {
+    // Data Overview
+    check("refs/ref31.png", "/admin/overview");
+}
+
+// Regression: hex selector calculation
+check("refs/ref32.png", "/api/tile?x=-74&y=-86&scale=512&options=887&style=poster");
+// Regression: candy sector grid lines
+check("refs/ref33.jpg", "/api/tile?x=-0.5&y=-0.25&w=512&h=512&scale=32&options=9079&style=candy", 24);
+
+// Quadrant
+check("refs/ref34.png", "/api/poster/spin/alpha");
+
+// Aspect Ratio (+rotation)
+check("refs/ref35.png", "/api/poster?sector=Spinward+Marches&scale=8&rotation=0&clampar=1");
+check("refs/ref36.png", "/api/poster?sector=Spinward+Marches&scale=8&rotation=1&clampar=1");
+check("refs/ref37.png", "/api/poster?sector=Spinward+Marches&scale=8&rotation=2&clampar=1");
+check("refs/ref38.png", "/api/poster?sector=Spinward+Marches&scale=8&rotation=3&clampar=1");
+
+// Regression: clipping
+check("refs/ref42.png", "/data/spin/1910/jump/3/image?style=mongoose&scale=128");
+check("refs/ref43.png", "/data/spin/1910/jump/2/image?style=poster&scale=128&im=1&review=1");
+check("refs/ref44.png", "/data/spin/a/image?hrotation=60");
+
+// Regression: compositing
+check("refs/ref45.png", "/api/poster?sector=Spinward+Marches&subsector=C&compositing=1");
+
+// Template:
+// check(ref_image, live_image, opt_rgb_threshold, opt_num_bad_pixels);

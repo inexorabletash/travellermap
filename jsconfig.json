@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "module": "node16",
+        "target": "esnext",
+        "moduleResolution": "node16",
+        "strictNullChecks": true,
+        "strictFunctionTypes": true,
+        "checkJs": true,
+        "useUnknownInCatchVariables": false,
+        "noImplicitAny": false,
+    },
+    "typeAcquisition": { "enable": true },
+    "exclude": ["sw.js"],
+    "include": ["**/*.js"]
+}
