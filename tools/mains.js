@@ -102,7 +102,7 @@ function parseTabDelimited(text) {
   mains.sort((a, b) => b.length - a.length);
 
   console.log('done');
-  
+
   const ta = document.createElement('textarea');
   ta.cols = 80; ta.rows = 24;
   document.body.appendChild(ta);

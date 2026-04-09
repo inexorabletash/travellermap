@@ -20,7 +20,7 @@ window.addEventListener('load', async () => {
     query = { sector: 'spin', hex: '1910' };
   // @ts-ignore
   query.milieu = searchParams.get('milieu');
-  
+
   // Look up canonical location.
   try {
     const response = await fetch(Traveller.MapService.makeURL('/api/coordinates?', query));

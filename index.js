@@ -531,7 +531,6 @@ $("#LogoImage").addEventListener('dblclick', () => {
 mapElement.addEventListener('keydown', event => {
   if (event.ctrlKey) {
     if (!isIframe && event.key === '/') {
-      console.log('hi there');
       event.preventDefault();
       event.stopPropagation();
       document.location = 'doc/about#keyboard-controls';

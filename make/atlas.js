@@ -17,8 +17,8 @@ function firstOrNull(a) {
 const cmp = (a, b) => a < b ? -1 : a > b ? 1 : 0;
 
 /**
- * 
- * @param {string} s 
+ *
+ * @param {string} s
  * @returns {string}
  */
 function smartquote(s) {

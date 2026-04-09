@@ -57,8 +57,8 @@ export class AllegianceMap {
 
   /**
    * Check if the hex at (x, y) is occupied.
-   * @param {number} x 
-   * @param {number} y 
+   * @param {number} x
+   * @param {number} y
    * @returns {boolean}
    */
   isOccupied(x, y) {
@@ -423,8 +423,8 @@ export function processMap(map, success_callback, progress_callback) {
 
     map.foreach(
       /**
-       * @param {number} c 
-       * @param {number} r 
+       * @param {number} c
+       * @param {number} r
        */
       (c, r) => {
         if (map.isOccupied(c, r)) {

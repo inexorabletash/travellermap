@@ -69,9 +69,9 @@ function status(string, pending) {
 }
 
 /**
- * 
- * @param {string} tabDelimitedData 
- * @param {object} metadata 
+ *
+ * @param {string} tabDelimitedData
+ * @param {object} metadata
  * @returns {object}
  */
 function parseSector(tabDelimitedData, metadata) {

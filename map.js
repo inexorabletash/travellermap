@@ -1,19 +1,16 @@
 export class Util {
   /**
- * Element selector shorthand.
- * @param {string} s 
- * @returns {any}
- */
+   * Element selector shorthand.
+   * @param {string} s
+   * @returns {any}
+   */
   static $(s) {
-    if (s[0] === '#') {
-      return document.getElementById(s.slice(1));
-    }
     return document.querySelector(s);
   }
 
   /**
    * Element selector shorthand for multiple elements.
-   * @param {string} s 
+   * @param {string} s
    * @returns {any[]}
    */
   static $$(s) {
@@ -89,7 +86,7 @@ export class Util {
 
   /**
    * Returns a debounced version of the provided function that delays until the sp;ecified time has elapsed since the last call.
-   * @param {function} func - The function to debounce. 
+   * @param {function} func - The function to debounce.
    * @param {number} delay - The delay in milliseconds to wait before invoking the function after the last call.
    * @param {boolean} [immediate=false] - Whether to execute the function immediately on the leading edge instead of the trailing edge.
    * @returns {function}
@@ -119,7 +116,7 @@ export class Util {
 
   /**
     * Fetches an image from the specified URL, returning a promise that resolves with an image element.
-    * @param {string} url 
+    * @param {string} url
     * @param {Object} [options]
     * @param {AbortSignal} [options.signal] - Optional AbortSignal to cancel the image request.
     * @param {HTMLImageElement} [options.imageElement] - Optional existing image element to reuse.
@@ -177,10 +174,10 @@ export class Util {
   }
 
   /**
- * Parses a sector from tab-delimited data.
- * @param {string} tabDelimitedData 
- * @returns {{ worlds: { [hex: string]: any } }} sector
- */
+   * Parses a sector from tab-delimited data.
+   * @param {string} tabDelimitedData
+   * @returns {{ worlds: { [hex: string]: any } }} sector
+   */
   static parseSector(tabDelimitedData) {
     const sector = {
       worlds: {}
@@ -632,7 +629,7 @@ class Animation {
   static interpolate(a, b, p) {
     return a * (1.0 - p) + b * p;
   }
-  
+
   /**
    * Time smoothing function - input time is t within duration dur.
    * Acceleration period is a, deceleration period is d.
@@ -682,8 +679,8 @@ class NamedOptions {
   delete(key) { delete this._options[key]; this._notify(key); }
   /**
    * Iterates over each key/value pair in the options, invoking the provided callback function with the value, key, and index as arguments.
-   * @param {function} fn 
-   * @param {any} thisArg 
+   * @param {function} fn
+   * @param {any} thisArg
    */
   forEach(fn, thisArg = undefined) {
     const keys = Object.keys(this._options);
@@ -1406,7 +1403,7 @@ export class TravellerMap {
    * Perform the tile request for the specified URL, with timeout and error handling.
    * @param {string} url - The URL of the tile to request.
    * @param {AbortController} abortController - The AbortController used if the request is timed-out.
-   * @returns 
+   * @returns
    */
   async _doTileRequest(url, abortController) {
     const timeout = setTimeout(() => abortController.abort(), this._tileRequestTimeout);
@@ -1424,13 +1421,13 @@ export class TravellerMap {
   }
 
   /**
-  * Looks in the tile cache for the specified tile.
-  * @param {number} x - The x coordinate of the tile.
-  * @param {number} y - The y coordinate of the tile.
-  * @param {number} scale - The zoom level of the tile.
-  * @param {boolean} [allowFetch=false] - If fetching the tile from the server is allowed if not found in cache.
-  * @returns {HTMLImageElement|undefined} The tile image if found in cache, or undefined if not found.
-  */
+   * Looks in the tile cache for the specified tile.
+   * @param {number} x - The x coordinate of the tile.
+   * @param {number} y - The y coordinate of the tile.
+   * @param {number} scale - The zoom level of the tile.
+   * @param {boolean} [allowFetch=false] - If fetching the tile from the server is allowed if not found in cache.
+   * @returns {HTMLImageElement|undefined} The tile image if found in cache, or undefined if not found.
+   */
   getTile(x, y, scale, allowFetch = false) {
     const url = this._tile_url_base + `&x=${x}&y=${y}&scale=${pow2(scale - 1)}`;
 
@@ -1904,7 +1901,7 @@ export class TravellerMap {
 
   get worldY() { return Astrometrics.mapToWorld(this.x, this.y).y; }
 
-  // 
+  //
   /**
    * Place the specified Sector, Hex coordinates (parsec) at the center of the viewport.
    * @param {number} sx
@@ -2186,7 +2183,6 @@ export class TravellerMap {
           }
 
           if ('yah' in params) {
-            console.log('here!!!');
             this.AddMarker('you_are_here', this.position[0], this.position[1]);
             params.yah_x = String(this.position[0]);
             params.yah_y = String(this.position[1]);
@@ -2238,8 +2234,8 @@ export class TravellerMap {
 
   /**
    * Fire the specified event handler with the specified data, if the handler is defined.
-   * @param {Function|undefined} func 
-   * @param {any} data 
+   * @param {Function|undefined} func
+   * @param {any} data
    */
   _fireEvent(func, data = undefined) {
     if (func === undefined) return;
@@ -2277,4 +2273,3 @@ export class TravellerMap {
     this._fireEvent(this.onHovered, data);
   }
 }
-

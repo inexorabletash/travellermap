@@ -166,7 +166,7 @@ function updateWalks() {
         let path = walk(map, x, y, alleg);
         path = path.map(hex => hexLabel(hex[0], hex[1]));
         for (const label of path) {
-          visited[label] = true;  
+          visited[label] = true;
         }
 
         // Filter out holes
