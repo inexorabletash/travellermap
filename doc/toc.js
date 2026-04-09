@@ -1,6 +1,6 @@
 window.addEventListener('DOMContentLoaded', () => {
   const $ = s => document.querySelector(s);
-  const $$ = s => Array.from(document.querySelectorAll(s));
+  const $$ = s => [...document.querySelectorAll(s)];
 
   const config = $('script[src="toc.js"]');
   const selector =

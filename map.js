@@ -14,7 +14,7 @@ export class Util {
    * @returns {any[]}
    */
   static $$(s) {
-    return Array.from(document.querySelectorAll(s));
+    return [...document.querySelectorAll(s)];
   }
 
   /**

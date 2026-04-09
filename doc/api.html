@@ -1949,17 +1949,17 @@ function jsonp_demo() {
 <script>
   (() => {
     // Remove leading/trailing lines from <pre>
-    Array.from(document.querySelectorAll('pre')).forEach(pre => {
+    [...document.querySelectorAll('pre')].forEach(pre => {
       pre.innerHTML = pre.innerHTML.replace(/(^ +\r?\n)|(\r?\n +$)/g, '');
     });
 
     // Shortcut: <a class="example" href="foo"></a>
-    Array.from(document.querySelectorAll('a.example')).forEach(a => {
+    [...document.querySelectorAll('a.example')].forEach(a => {
       a.appendChild(document.createTextNode(a.href));
     });
 
     // Allow breaking after / ? and & in code
-    Array.from(document.querySelectorAll('.code')).forEach(e => {
+    [...document.querySelectorAll('.code')].forEach(e => {
       function textNodes(e) {
         let t = [];
         for (let n = e.firstChild; n; n = n.nextSibling) {

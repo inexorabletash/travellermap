@@ -174,7 +174,7 @@ function process(world) {
 
   // Report unmatched codes
   if (codeSet.size)
-    console.warn(`Unmatched codes (${world.Hex}): ` + Array.from(codeSet).map(s => JSON.stringify(s)).join(' '));
+    console.warn(`Unmatched codes (${world.Hex}): ` + [...codeSet].map(s => JSON.stringify(s)).join(' '));
 
 
   world.Remarks = ([...PLANETARY_CODES, ...POPULATION_CODES, ...ECONOMIC_CODES]

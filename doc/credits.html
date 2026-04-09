@@ -1379,7 +1379,7 @@
 <script>
 (async () => {
   const $ = s => document.querySelector(s);
-  const $$ = s => Array.from(document.querySelectorAll(s));
+  const $$ = s => [...document.querySelectorAll(s)];
 
   const SERVICE_BASE = (l => {
     if (l.hostname === 'localhost' && l.pathname.indexOf('~') !== -1)
