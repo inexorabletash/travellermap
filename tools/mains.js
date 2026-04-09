@@ -19,7 +19,7 @@ function parseTabDelimited(text) {
 
   console.log(`fetching: ${data.Sectors.length} sectors`);
   const s = await Promise.all(data.Sectors.map(s => Promise.all([
-    Promise.resolve({X : s.X, Y : s.Y}),
+    Promise.resolve({X: s.X, Y: s.Y}),
     fetch(`${origin}/data/${s.Abbreviation}/tab`).then(r => r.text())
   ])));
   console.log(`parsing: ${s.length} sectors`);
@@ -27,8 +27,9 @@ function parseTabDelimited(text) {
   s.forEach(pair => {
     const [meta, tab] = pair;
     const x = meta.X, y = meta.Y;
-    parseTabDelimited(tab).forEach(
-        world => { universe.add(`${x}/${y}/${world.Hex}`); });
+    parseTabDelimited(tab).forEach(world => {
+      universe.add(`${x}/${y}/${world.Hex}`);
+    });
   });
 
   function neighbors(world) {

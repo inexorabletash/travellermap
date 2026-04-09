@@ -20,9 +20,13 @@ class List {
     this.count = 0;
   }
 
-  isEmpty() { return this.count == 0; }
+  isEmpty() {
+    return this.count == 0;
+  }
 
-  contains(node) { return this.list[node.id] !== undefined; }
+  contains(node) {
+    return this.list[node.id] !== undefined;
+  }
 
   add(node) {
     if (!this.contains(node)) {
@@ -144,11 +148,19 @@ function dist(a, b) {
   return max(adx - ody, ody, adx);
 }
 
-function even(x) { return (x % 2) == 0; }
-function odd(x) { return (x % 2) != 0; }
+function even(x) {
+  return (x % 2) == 0;
+}
+function odd(x) {
+  return (x % 2) != 0;
+}
 
-function div(a, b) { return Math.floor(a / b); }
-function mod(a, b) { return Math.floor(a % b); }
+function div(a, b) {
+  return Math.floor(a / b);
+}
+function mod(a, b) {
+  return Math.floor(a % b);
+}
 
 function max(a, b, c) {
   return (a >= b && a >= c) ? a : (b >= a && b >= c) ? b : c;

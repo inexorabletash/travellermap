@@ -12,9 +12,9 @@ const $$ = Util.$$;
 //////////////////////////////////////////////////////////////////////
 
 const standalone = window.matchMedia('(display-mode: standalone)').matches ||
-                   window.matchMedia('(display-mode: fullscreen)').matches ||
-                   ('standalone' in navigator &&
-                    navigator.standalone); // ios ~2012 legacy fallback
+    window.matchMedia('(display-mode: fullscreen)').matches ||
+    ('standalone' in navigator &&
+     navigator.standalone);  // ios ~2012 legacy fallback
 
 // Account for adjustments to innerHeight (dynamic browser UI)
 // (Repro: Safari on iPhone, enter landscape, make url bar appear)
@@ -46,8 +46,8 @@ if (navigator.userAgent.match(/iPad|iPhone|iPod/)) {
 const mapElement = $('#dragContainer'), sizeElement = mapElement.parentNode;
 const map = new Traveller.TravellerMap(mapElement, sizeElement);
 
-const isIframe = (window != window.top);             // != for IE
-const isSmallScreen = mapElement.offsetWidth <= 640; // Arbitrary
+const isIframe = (window != window.top);              // != for IE
+const isSmallScreen = mapElement.offsetWidth <= 640;  // Arbitrary
 
 function toggleFullscreen() {
   // @ts-ignore support Safari on iOS 12 (Release date: 2018-09-17)
@@ -75,30 +75,30 @@ function toggleFullscreen() {
 
 // Tweak defaults
 map.options = map.options | Traveller.MapOptions.NamesMinor |
-              Traveller.MapOptions.ForceHexes |
-              Traveller.MapOptions.FilledBorders;
+    Traveller.MapOptions.ForceHexes | Traveller.MapOptions.FilledBorders;
 map.scale = isSmallScreen ? 1 : 2;
-map.CenterAtSectorHex(0, 0, Traveller.Astrometrics.ReferenceHexX,
-                      Traveller.Astrometrics.ReferenceHexY);
+map.CenterAtSectorHex(
+    0, 0, Traveller.Astrometrics.ReferenceHexX,
+    Traveller.Astrometrics.ReferenceHexY);
 const defaults = {
-  x : map.x,
-  y : map.y,
-  scale : map.scale,
-  options : map.options,
-  routes : 1,
-  dimunofficial : 0,
-  milieu : 'M1105',
-  style : map.style
+  x: map.x,
+  y: map.y,
+  scale: map.scale,
+  options: map.options,
+  routes: 1,
+  dimunofficial: 0,
+  milieu: 'M1105',
+  style: map.style
 };
 const home = {
-  x : defaults.x,
-  y : defaults.y,
-  scale : defaults.scale
+  x: defaults.x,
+  y: defaults.y,
+  scale: defaults.scale
 };
 
 const SAVE_PREFERENCES_DELAY_MS = 500;
 const savePreferences = isIframe ? () => {} : Util.debounce(() => {
-  const preferences = {style : map.style, options : map.options};
+  const preferences = {style: map.style, options: map.options};
   for (const name of map.namedOptions.NAMES) {
     const value = map.namedOptions.get(name);
     preferences[name] = value === '' ? undefined : value;
@@ -110,7 +110,7 @@ const savePreferences = isIframe ? () => {} : Util.debounce(() => {
   localStorage.setItem('preferences', JSON.stringify(preferences));
   localStorage.setItem(
       'location',
-      JSON.stringify({position : {x : map.x, y : map.y}, scale : map.scale}));
+      JSON.stringify({position: {x: map.x, y: map.y}, scale: map.scale}));
 }, SAVE_PREFERENCES_DELAY_MS);
 
 const template = Util.memoize(sel => Handlebars.compile($(sel).innerHTML));
@@ -129,7 +129,7 @@ const PERMALINK_REFRESH_DELAY_MS = 500;
 let lastPageURL = null;
 const updatePermalink = Util.debounce(() => {
   function round(n, d) {
-    d = 1 / d; // Avoid twitchy IEEE754 rounding.
+    d = 1 / d;  // Avoid twitchy IEEE754 rounding.
     return Math.round(n * d) / d;
   }
 
@@ -146,7 +146,9 @@ const updatePermalink = Util.debounce(() => {
   urlParams.options = map.options;
   urlParams.style = map.style;
 
-  map.namedOptions.forEach((value, key) => { urlParams[key] = value; });
+  map.namedOptions.forEach((value, key) => {
+    urlParams[key] = value;
+  });
 
   for (const p of Object.keys(defaults)) {
     if (urlParams[p] === defaults[p])
@@ -182,11 +184,11 @@ const updatePermalink = Util.debounce(() => {
 
   for (const anchor of $$('a.share')) {
     const data = {
-      url : encodeURIComponent(pageURL),
-      text : encodeURIComponent('The Traveller Map')
+      url: encodeURIComponent(pageURL),
+      text: encodeURIComponent('The Traveller Map')
     };
     anchor.__func = anchor.__func ||
-                    Handlebars.compile(anchor.getAttribute('data-template'));
+        Handlebars.compile(anchor.getAttribute('data-template'));
     anchor.href = anchor.__func(data);
   }
 
@@ -194,11 +196,11 @@ const updatePermalink = Util.debounce(() => {
   const width = Math.round(rect.width);
   const height = Math.round(rect.height);
   const snapshotParams = {
-    x : (map.x * map.scale - (width / 2)) / width,
-    y : (-map.y * map.scale - (height / 2)) / height,
-    w : width,
-    h : height,
-    scale : map.scale
+    x: (map.x * map.scale - (width / 2)) / width,
+    y: (-map.y * map.scale - (height / 2)) / height,
+    w: width,
+    h: height,
+    scale: map.scale
   };
   snapshotParams.x = round(snapshotParams.x, 1 / 1000);
   snapshotParams.y = round(snapshotParams.y, 1 / 1000);
@@ -234,7 +236,7 @@ const original_title = document.title;
 
 // Mutually exclusive panes:
 const SEARCH_PANES =
-    [ 'search-results', 'route-ui', 'wds-visible', 'sds-visible' ];
+    ['search-results', 'route-ui', 'wds-visible', 'sds-visible'];
 function showSearchPane(pane, title) {
   if (!['wds-visible', 'sds-visible'].includes(pane))
     document.body.classList.add('ds-mini');
@@ -258,19 +260,19 @@ function hideCards() {
   document.title = original_title;
 }
 
-$("#searchForm").addEventListener('submit', event => {
-  search($('#searchBox').value, {onsubmit : true});
+$('#searchForm').addEventListener('submit', event => {
+  search($('#searchBox').value, {onsubmit: true});
   event.preventDefault();
 });
 
-$("#searchBox")
-    .addEventListener(
-        'focus', event => { search($('#searchBox').value, {onfocus : true}); });
+$('#searchBox').addEventListener('focus', event => {
+  search($('#searchBox').value, {onfocus: true});
+});
 
-const SEARCH_TIMER_DELAY = 100; // ms
-$("#searchBox").addEventListener('input', Util.debounce(e => {
-  if (e.key !== 'Enter') // Ignore double-submit on iOS
-    search($('#searchBox').value, {typed : true});
+const SEARCH_TIMER_DELAY = 100;  // ms
+$('#searchBox').addEventListener('input', Util.debounce(e => {
+  if (e.key !== 'Enter')  // Ignore double-submit on iOS
+    search($('#searchBox').value, {typed: true});
 }, SEARCH_TIMER_DELAY));
 
 $('#closeSearchBtn').addEventListener('click', event => {
@@ -286,7 +288,7 @@ function resizeMap() {
   window.dispatchEvent(event);
 }
 
-$("#routeBtn").addEventListener('click', event => {
+$('#routeBtn').addEventListener('click', event => {
   if (selectedWorld) {
     setRouteStart(selectedWorld.name, selectedWorld.hex, selectedSector);
     if (!isSmallScreen)
@@ -317,9 +319,12 @@ function clearRouteEnd() {
   $('#routeEnd').value = '';
   routeEnd = undefined;
 }
-$('#routeStart')
-    .addEventListener('change', event => { routeStart = undefined; });
-$('#routeEnd').addEventListener('change', event => { routeEnd = undefined; });
+$('#routeStart').addEventListener('change', event => {
+  routeStart = undefined;
+});
+$('#routeEnd').addEventListener('change', event => {
+  routeEnd = undefined;
+});
 
 function showRoute() {
   hidePanels();
@@ -380,8 +385,8 @@ $('#closeRouteBtn').addEventListener('click', event => {
 $('#swapRouteBtn').addEventListener('click', event => {
   event.preventDefault();
   [$('#routeStart').value, $('#routeEnd').value] =
-      [ $('#routeEnd').value, $('#routeStart').value ];
-  [routeStart, routeEnd] = [ routeEnd, routeStart ];
+      [$('#routeEnd').value, $('#routeStart').value];
+  [routeStart, routeEnd] = [routeEnd, routeStart];
   $('#routePath').innerHTML = '';
   for (const n of jump_button_ids) {
     if ($('#routeForm').classList.contains(n))
@@ -398,8 +403,8 @@ for (const button of $$('#routeForm button[name="jump"]')) {
     }
     $('#routeForm').classList.add(button.id);
 
-    const start = routeStart ? `${routeStart.sector} ${routeStart.hex}`
-                             : $('#routeStart').value;
+    const start = routeStart ? `${routeStart.sector} ${routeStart.hex}` :
+                               $('#routeStart').value;
     const end =
         routeEnd ? `${routeEnd.sector} ${routeEnd.hex}` : $('#routeEnd').value;
     const jump = button.dataset.parsecs;
@@ -435,12 +440,12 @@ document.body.addEventListener('keyup', event => {
 
     mapElement.focus();
   }
-}, {capture : true});
+}, {capture: true});
 
 // Options Bar
 
-const PANELS = [ 'legend', 'more' ];
-const TABS = [ 'lab', 'milieu', 'settings', 'share', 'help' ];
+const PANELS = ['legend', 'more'];
+const TABS = ['lab', 'milieu', 'settings', 'share', 'help'];
 
 function showPanel(shown) {
   for (const p of PANELS) {
@@ -461,7 +466,9 @@ function hidePanels() {
 }
 
 for (const p of PANELS) {
-  $('#' + p + 'Btn').addEventListener('click', () => { togglePanel(p); });
+  $('#' + p + 'Btn').addEventListener('click', () => {
+    togglePanel(p);
+  });
 }
 
 function showTab(shown) {
@@ -471,28 +478,33 @@ function showTab(shown) {
 }
 
 for (const p of TABS) {
-  $('#' + p + 'Btn').addEventListener('click', () => { showTab(p); });
+  $('#' + p + 'Btn').addEventListener('click', () => {
+    showTab(p);
+  });
 }
 
 const STYLES = [
   'poster', 'atlas', 'print', 'candy', 'draft', 'fasa', 'terminal', 'mongoose'
 ];
 for (const s of STYLES) {
-  $('#settingsBtn-' + s).addEventListener('click', () => { map.style = s; });
+  $('#settingsBtn-' + s).addEventListener('click', () => {
+    map.style = s;
+  });
 }
 for (const element of $$('.styles-pager')) {
-  element.addEventListener('click',
-                           () => { $('#styles').classList.toggle('p2'); });
+  element.addEventListener('click', () => {
+    $('#styles').classList.toggle('p2');
+  });
 }
 
 $('#homeBtn').addEventListener('click', goHome);
 $('#homeBtn2').addEventListener('click', goHome);
 
 function goHome() {
-  if ([ 'sx', 'sy', 'hx', 'hy' ].every(p => (`yah_${p}`) in urlParams)) {
-    map.CenterAtSectorHex(urlParams.yah_sx | 0, urlParams.yah_sy | 0,
-                          urlParams.yah_hx | 0, urlParams.yah_hy | 0,
-                          {scale : 64});
+  if (['sx', 'sy', 'hx', 'hy'].every(p => (`yah_${p}`) in urlParams)) {
+    map.CenterAtSectorHex(
+        urlParams.yah_sx | 0, urlParams.yah_sy | 0, urlParams.yah_hx | 0,
+        urlParams.yah_hy | 0, {scale: 64});
     return;
   }
   map.cancelAnimation();
@@ -506,23 +518,27 @@ for (const input of $$('#share-url,#share-code')) {
     event.preventDefault();
     input.focus();
     input.select();
-    input.setSelectionRange(0, input.value.length); // .select() fails on iOS
+    input.setSelectionRange(0, input.value.length);  // .select() fails on iOS
   });
-  input.addEventListener('mouseup', event => { event.preventDefault(); });
+  input.addEventListener('mouseup', event => {
+    event.preventDefault();
+  });
 }
 
 // Nav Bar
 
 $('#zoomInBtn').addEventListener('click', () => map.ZoomIn());
 $('#zoomOutBtn').addEventListener('click', () => map.ZoomOut());
-$('#tiltBtn').addEventListener('click', () => { $('#cbTilt').click(); });
+$('#tiltBtn').addEventListener('click', () => {
+  $('#cbTilt').click();
+});
 $('#fsBtn').addEventListener('click', toggleFullscreen);
 
 // Bottom Panel
 
-$("#LogoImage")
-    .addEventListener('dblclick',
-                      () => { document.body.classList.add('hide-footer'); });
+$('#LogoImage').addEventListener('dblclick', () => {
+  document.body.classList.add('hide-footer');
+});
 
 // Keyboard Shortcuts
 
@@ -542,7 +558,7 @@ mapElement.addEventListener('keydown', event => {
   if (event.key === 'c') {
     event.preventDefault();
     event.stopPropagation();
-    updateContext(map.worldX, map.worldY, {directAction : true});
+    updateContext(map.worldX, map.worldY, {directAction: true});
     showMain(map.worldX, map.worldY);
     return;
   }
@@ -599,19 +615,22 @@ const optionObservers = [];
 
 bindCheckedToOption('#ShowSectorGrid', Traveller.MapOptions.GridMask);
 bindCheckedToOption('#ShowSectorNames', Traveller.MapOptions.SectorsMask);
-bindEnabled('#ShowSelectedSectorNames',
-            o => o & Traveller.MapOptions.SectorsMask);
-bindChecked('#ShowSelectedSectorNames',
-            o => o & Traveller.MapOptions.SectorsSelected, c => {
-              setOptions(Traveller.MapOptions.SectorsMask,
-                         c ? Traveller.MapOptions.SectorsSelected : 0);
-            });
+bindEnabled(
+    '#ShowSelectedSectorNames', o => o & Traveller.MapOptions.SectorsMask);
+bindChecked(
+    '#ShowSelectedSectorNames', o => o & Traveller.MapOptions.SectorsSelected,
+    c => {
+      setOptions(
+          Traveller.MapOptions.SectorsMask,
+          c ? Traveller.MapOptions.SectorsSelected : 0);
+    });
 bindEnabled('#ShowAllSectorNames', o => o & Traveller.MapOptions.SectorsMask);
-bindChecked('#ShowAllSectorNames', o => o & Traveller.MapOptions.SectorsAll,
-            c => {
-              setOptions(Traveller.MapOptions.SectorsMask,
-                         c ? Traveller.MapOptions.SectorsAll : 0);
-            });
+bindChecked(
+    '#ShowAllSectorNames', o => o & Traveller.MapOptions.SectorsAll, c => {
+      setOptions(
+          Traveller.MapOptions.SectorsMask,
+          c ? Traveller.MapOptions.SectorsAll : 0);
+    });
 bindCheckedToOption('#ShowGovernmentBorders', Traveller.MapOptions.BordersMask);
 bindCheckedToNamedOption('#ShowRoutes', 'routes');
 bindCheckedToOption('#ShowGovernmentNames', Traveller.MapOptions.NamesMask);
@@ -632,7 +651,7 @@ bindCheckedToNamedOption('#cbStellar', 'stellar');
 bindCheckedToNamedOption('#cbQZ', 'qz');
 
 // Overlays that take "milieu" or a year
-for (const pair of [[ '#cbWave', 'ew' ], [ '#cbAS', 'as' ]]) {
+for (const pair of [['#cbWave', 'ew'], ['#cbAS', 'as']]) {
   const [id, op] = pair;
   bindChecked(id, o => map.namedOptions.get(op), c => {
     if (c) {
@@ -646,34 +665,43 @@ for (const pair of [[ '#cbWave', 'ew' ], [ '#cbAS', 'as' ]]) {
 
 function bindControl(selector, property, onChange, event, onEvent) {
   const element = $(selector);
-  optionObservers.push(o => { element[property] = onChange(o); });
-  element.addEventListener(event, () => { onEvent(element); });
+  optionObservers.push(o => {
+    element[property] = onChange(o);
+  });
+  element.addEventListener(event, () => {
+    onEvent(element);
+  });
 }
 function bindChecked(selector, onChange, onEvent) {
-  bindControl(selector, 'checked', onChange, 'click',
-              element => { onEvent(element.checked); });
+  bindControl(selector, 'checked', onChange, 'click', element => {
+    onEvent(element.checked);
+  });
 }
 function bindEnabled(selector, onChange) {
   const element = $(selector);
-  optionObservers.push(o => { element.disabled = !onChange(o); });
+  optionObservers.push(o => {
+    element.disabled = !onChange(o);
+  });
 }
 function bindCheckedToOption(selector, bitmask) {
-  bindChecked(selector, o => (o & bitmask),
-              c => { setOptions(bitmask, c ? bitmask : 0); });
+  bindChecked(selector, o => (o & bitmask), c => {
+    setOptions(bitmask, c ? bitmask : 0);
+  });
 }
 function bindCheckedToNamedOption(selector, name) {
-  bindChecked(selector,
-              () => {
-                const v = map.namedOptions.get(name);
-                return v === undefined ? defaults[name] : v;
-              },
-              c => {
-                if (!!c === !!defaults[name]) {
-                  delete urlParams[name];
-                  map.namedOptions.delete(name);
-                } else
-                  map.namedOptions.set(name, c ? 1 : 0);
-              });
+  bindChecked(
+      selector,
+      () => {
+        const v = map.namedOptions.get(name);
+        return v === undefined ? defaults[name] : v;
+      },
+      c => {
+        if (!!c === !!defaults[name]) {
+          delete urlParams[name];
+          map.namedOptions.delete(name);
+        } else
+          map.namedOptions.set(name, c ? 1 : 0);
+      });
 }
 function bindRadioToNamedOption(selector, name) {
   optionObservers.push(o => {
@@ -703,13 +731,13 @@ map.onOptionsChanged = Util.debounce(options => {
     o(options);
   }
   $('#legendBox')
-      .classList.toggle('world_colors',
-                        options & Traveller.MapOptions.WorldColors);
+      .classList.toggle(
+          'world_colors', options & Traveller.MapOptions.WorldColors);
   for (const name of map.namedOptions.NAMES) {
     $('#legendBox')
         .classList.toggle(`opt-${name}`, !!map.namedOptions.get(name));
   }
-  updateContext(lastX || map.worldX, lastY || map.worldY, {refresh : true});
+  updateContext(lastX || map.worldX, lastY || map.worldY, {refresh: true});
   updatePermalink();
   savePreferences();
 }, EVENT_DEBOUNCE_MS);
@@ -718,7 +746,7 @@ map.onStyleChanged = Util.debounce(style => {
   for (const s of STYLES) {
     document.body.classList.toggle(`style-${s}`, s === style);
   }
-  updateContext(lastX || map.worldX, lastY || map.worldY, {refresh : true});
+  updateContext(lastX || map.worldX, lastY || map.worldY, {refresh: true});
   updatePermalink();
   updateScaleIndicator();
   savePreferences();
@@ -745,47 +773,47 @@ function post(message) {
 
 map.onClick = data => {
   hidePanels();
-  updateContext(data.x, data.y,
-                {directAction : true, activeElement : data.activeElement});
+  updateContext(
+      data.x, data.y, {directAction: true, activeElement: data.activeElement});
   showMain(data.x, data.y);
   post({
-    source : 'travellermap',
-    type : 'click',
-    location : {x : data.x, y : data.y}
+    source: 'travellermap',
+    type: 'click',
+    location: {x: data.x, y: data.y}
   });
 };
 
 map.onDoubleClick = world => {
   hidePanels();
-  updateContext(world.x, world.y, {directAction : true});
+  updateContext(world.x, world.y, {directAction: true});
   showMain(world.x, world.y);
-  post({source : 'travellermap', type : 'doubleclick', location : world});
+  post({source: 'travellermap', type: 'doubleclick', location: world});
 };
 
 // TODO: Generalize URLParam<->Control and URLParam<->Style binding
 const PARAM_OPTIONS = [
   {
-    param : 'galdir',
-    selector : '#cbGalDir',
-    className : 'show-directions',
-    'default' : true
+    param: 'galdir',
+    selector: '#cbGalDir',
+    className: 'show-directions',
+    'default': true
   },
   {
-    param : 'tilt',
-    selector : '#cbTilt',
-    className : 'tilt',
-    'default' : false,
-    onchange : flag => {
+    param: 'tilt',
+    selector: '#cbTilt',
+    className: 'tilt',
+    'default': false,
+    onchange: flag => {
       if (flag)
         map.EnableTilt();
     }
   },
   {
-    param : 'mains',
-    selector : '#cbMains',
-    className : 'show-mains',
-    'default' : false,
-    onchange : flag => {
+    param: 'mains',
+    selector: '#cbMains',
+    className: 'show-mains',
+    'default': false,
+    onchange: flag => {
       if (!flag)
         map.SetMain(null);
     }
@@ -846,8 +874,8 @@ if (!isIframe) {
 
     for (const option of PARAM_OPTIONS) {
       if (option.param in preferences) {
-        document.body.classList.toggle(option.className,
-                                       preferences[option.param]);
+        document.body.classList.toggle(
+            option.className, preferences[option.param]);
         if (option.onchange)
           option.onchange(preferences[option.param]);
       }
@@ -869,16 +897,16 @@ optionObservers.push(o => {
   const milieu = map.namedOptions.get('milieu') || defaults.milieu;
   $('#milieu-field').innerText = milieu;
   $('#milieu-field-default').innerText = defaults.milieu;
-  document.body.classList.toggle('milieu-not-default',
-                                 milieu !== defaults.milieu);
+  document.body.classList.toggle(
+      'milieu-not-default', milieu !== defaults.milieu);
 
   for (const m of milieu_choices) {
     document.body.classList.toggle('milieu-' + m, m === milieu);
   }
 });
-$('#milieu-escape')
-    .addEventListener(
-        'click', event => { map.namedOptions.set('milieu', defaults.milieu); });
+$('#milieu-escape').addEventListener('click', event => {
+  map.namedOptions.set('milieu', defaults.milieu);
+});
 
 //
 // Pull in options from URL - from permalinks
@@ -929,7 +957,7 @@ async function doAttract() {
   async function pickTarget() {
     const data = await Traveller.MapService.search(
         '(random world)', map.namedOptions.get('milieu'),
-        {method : 'POST', abortKey : 'search'});
+        {method: 'POST', abortKey: 'search'});
     const items = data.Results.Items;
     if (items.length < 1)
       throw new Error('random world search failed');
@@ -947,8 +975,8 @@ async function doAttract() {
       world.SectorX, world.SectorY, world.HexX, world.HexY);
   hideCards();
   setTimeout(async () => {
-    await map.animateTo(128, target.x, target.y, {duration : 10});
-    updateContext(map.worldX, map.worldY, {directAction : true});
+    await map.animateTo(128, target.x, target.y, {duration: 10});
+    updateContext(map.worldX, map.worldY, {directAction: true});
     setTimeout(doAttract, TARGET_WAIT_MS);
   }, HOME_WAIT_MS);
 }
@@ -965,7 +993,7 @@ let enableContext;
 
 function makeWikiURL(suffix) {
   return 'https://wiki.travellerrpg.com/' +
-         encodeURIComponent(suffix.replace(/ /g, '_'));
+      encodeURIComponent(suffix.replace(/ /g, '_'));
 }
 
 function updateContext(worldX, worldY, options) {
@@ -998,7 +1026,7 @@ function updateContext(worldX, worldY, options) {
     dataTimeout = setTimeout(async () => {
       try {
         const data = await Traveller.MapService.credits(
-            worldX, worldY, milieu, {abortKey : options.abortKey});
+            worldX, worldY, milieu, {abortKey: options.abortKey});
         displayResults(data);
       } catch (err) {
         if (err?.name === 'AbortError')
@@ -1012,8 +1040,9 @@ function updateContext(worldX, worldY, options) {
     if ('SectorTags' in data) {
       const tags = String(data.SectorTags).split(/\s+/);
       data.Unofficial = true;
-      for (const tag of ['Official', 'InReview', 'Unreviewed', 'Apocryphal',
-                         'Preserve']) {
+      for (const tag
+               of ['Official', 'InReview', 'Unreviewed', 'Apocryphal',
+                   'Preserve']) {
         if (tags.includes(tag)) {
           delete data.Unofficial;
           data[tag] = true;
@@ -1023,7 +1052,7 @@ function updateContext(worldX, worldY, options) {
       data.Unmapped = true;
     }
 
-    data.Attribution = [ 'SectorAuthor', 'SectorSource', 'SectorPublisher' ]
+    data.Attribution = ['SectorAuthor', 'SectorSource', 'SectorPublisher']
                            .filter(p => p in data)
                            .map(p => data[p])
                            .join(', ');
@@ -1034,22 +1063,20 @@ function updateContext(worldX, worldY, options) {
       data.BookletURL = Traveller.MapService.makeURL(
           `/data/${encodeURIComponent(data.SectorName)}/booklet`, {
             milieu,
-            print : 1,
+            print: 1,
           });
 
       data.PosterURL = Traveller.MapService.makeURL('/api/poster', {
-        sector : data.SectorName,
-        accept : 'application/pdf',
-        style : map.style,
-        options : map.options,
+        sector: data.SectorName,
+        accept: 'application/pdf',
+        style: map.style,
+        options: map.options,
         milieu
       });
       data.DataURL = Traveller.MapService.makeURL(
-          '/api/sec',
-          {sector : data.SectorName, type : 'SecondSurvey', milieu});
+          '/api/sec', {sector: data.SectorName, type: 'SecondSurvey', milieu});
       data.TSVDataURL = Traveller.MapService.makeURL(
-          '/api/sec',
-          {sector : data.SectorName, type : 'TabDelimited', milieu});
+          '/api/sec', {sector: data.SectorName, type: 'TabDelimited', milieu});
     }
 
     if (data.SectorY)
@@ -1085,15 +1112,15 @@ function updateContext(worldX, worldY, options) {
         $('#J-2').click();
       }
       return;
-    } else if (options.directAction &&
-               !document.body.classList.contains('route-ui')) {
+    } else if (
+        options.directAction && !document.body.classList.contains('route-ui')) {
       mapElement.focus();
-      selectedSector = ('SectorName' in data && 'SectorTags' in data)
-                           ? data.SectorName
-                           : null;
-      selectedWorld = map.scale > 16 && 'WorldHex' in data
-                          ? {name : data.WorldName, hex : data.WorldHex}
-                          : null;
+      selectedSector = ('SectorName' in data && 'SectorTags' in data) ?
+          data.SectorName :
+          null;
+      selectedWorld = map.scale > 16 && 'WorldHex' in data ?
+          {name: data.WorldName, hex: data.WorldHex} :
+          null;
     } else if (options.refresh) {
       // Keep as-is
     } else {
@@ -1121,8 +1148,9 @@ async function showSectorData(data) {
 
   // Hook up toggle
   for (const element of $$('#sds-data .ds-mini-toggle, .sds-sectorname')) {
-    element.addEventListener(
-        'click', event => { document.body.classList.toggle('ds-mini'); });
+    element.addEventListener('click', event => {
+      document.body.classList.toggle('ds-mini');
+    });
   }
 
   $('#sds-print-booklet-link').addEventListener('click', event => {
@@ -1133,7 +1161,9 @@ async function showSectorData(data) {
     event.preventDefault();
     const w = window.open(data.PosterURL);
     // @ts-ignore
-    w.onload = () => { w.print(); };
+    w.onload = () => {
+      w.print();
+    };
   });
 
   showSearchPane('sds-visible', data.SectorName);
@@ -1142,7 +1172,7 @@ async function showSectorData(data) {
 async function showWorldData() {
   if (!selectedWorld)
     return;
-  const context = {sector : selectedSector, hex : selectedWorld.hex};
+  const context = {sector: selectedSector, hex: selectedWorld.hex};
   $('#spinner').style.display = 'block';
   const milieu = map.namedOptions.get('milieu');
 
@@ -1151,7 +1181,7 @@ async function showWorldData() {
 
     const response = await fetch(Traveller.MapService.makeURL(
         '/api/jumpworlds?',
-        {sector : context.sector, hex : context.hex, milieu, jump : 0}));
+        {sector: context.sector, hex: context.hex, milieu, jump: 0}));
     if (!response.ok)
       throw new Error(response.statusText);
 
@@ -1160,28 +1190,28 @@ async function showWorldData() {
     if (world) {
       await Promise.all([
         renderWorldImage(world, $('#wds-world-image')),
-        world.map_exists // Once resolved, `map`/`map_thumb` are set
+        world.map_exists  // Once resolved, `map`/`map_thumb` are set
       ]);
 
       // Data Sheet
       world.DataSheetURL = Util.makeURL('print/world', {
-        sector : context.sector,
-        hex : context.hex,
+        sector: context.sector,
+        hex: context.hex,
         milieu,
-        style : map.style,
-        print : true
+        style: map.style,
+        print: true
       });
 
       // Jump Maps
       world.JumpMapURL = Traveller.MapService.makeURL('/api/jumpmap', {
-        sector : context.sector,
-        hex : context.hex,
+        sector: context.sector,
+        hex: context.hex,
         milieu,
-        style : map.style,
-        options : map.options & (Traveller.MapOptions.BordersMask |
-                                 Traveller.MapOptions.NamesMask |
-                                 Traveller.MapOptions.WorldColors |
-                                 Traveller.MapOptions.FilledBorders)
+        style: map.style,
+        options: map.options &
+            (Traveller.MapOptions.BordersMask | Traveller.MapOptions.NamesMask |
+             Traveller.MapOptions.WorldColors |
+             Traveller.MapOptions.FilledBorders)
       });
 
       $('#wds-data').innerHTML = template('#wds-template')(world);
@@ -1197,8 +1227,9 @@ async function showWorldData() {
       // Hook up toggle
       for (const element of $$(
                '#wds-data .ds-mini-toggle, #wds-data .wds-names')) {
-        element.addEventListener(
-            'click', event => { document.body.classList.toggle('ds-mini'); });
+        element.addEventListener('click', event => {
+          document.body.classList.toggle('ds-mini');
+        });
       }
 
       // Hook up buttons
@@ -1236,9 +1267,9 @@ async function showWorldData() {
   }
 }
 
-$('#wds-world-image')
-    .addEventListener('click',
-                      event => { document.body.classList.toggle('ds-mini'); });
+$('#wds-world-image').addEventListener('click', event => {
+  document.body.classList.toggle('ds-mini');
+});
 
 for (const element of $$('#sds-closebtn,#wds-closebtn,#ds-shade')) {
   element.addEventListener('click', event => {
@@ -1248,7 +1279,9 @@ for (const element of $$('#sds-closebtn,#wds-closebtn,#ds-shade')) {
 }
 
 for (const element of $$('#legend-closebtn,#more-closebtn,#panel-shade')) {
-  element.addEventListener('click', event => { hidePanels(); });
+  element.addEventListener('click', event => {
+    hidePanels();
+  });
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -1288,10 +1321,10 @@ async function search(query, options) {
       searchAbortController.abort();
     }
     searchAbortController = new AbortController();
-    const data =
-        options.results || await Traveller.MapService.search(
-                               query, map.namedOptions.get('milieu'),
-                               {abortController : searchAbortController});
+    const data = options.results ||
+        await Traveller.MapService.search(
+            query, map.namedOptions.get('milieu'),
+            {abortController: searchAbortController});
     displayResults(data);
   } catch (err) {
     if (err?.name === 'AbortError')
@@ -1315,7 +1348,7 @@ async function search(query, options) {
         const tags = String(item.SectorTags).split(/\s+/);
         item.Unofficial = true;
         const allowedTags =
-            [ 'Official', 'InReview', 'Unreviewed', 'Apocryphal', 'Preserve' ];
+            ['Official', 'InReview', 'Unreviewed', 'Apocryphal', 'Preserve'];
         for (const tag of allowedTags) {
           if (tags.includes(tag)) {
             delete item.Unofficial;
@@ -1325,14 +1358,15 @@ async function search(query, options) {
       }
     }
 
-    function pad2(n) { return ('00' + n).slice(-2); }
+    function pad2(n) {
+      return ('00' + n).slice(-2);
+    }
 
     /** @type {any[]} */
     const route = [];
 
     // Pre-process the data
     for (let i = 0; i < data.Results.Items.length; ++i) {
-
       const item = data.Results.Items[i];
       let sx, sy, hx, hy, scale;
 
@@ -1354,7 +1388,7 @@ async function search(query, options) {
         hy = (Traveller.Astrometrics.SectorHeight / 2);
         scale = sector.Scale || 8;
         sector.href = Util.makeURL(
-            base_url, {scale, sx, sy, hx, hy, sector : sector.Name});
+            base_url, {scale, sx, sy, hx, hy, sector: sector.Name});
         applyTags(sector);
       } else if (item.World) {
         const world = item.World;
@@ -1369,13 +1403,13 @@ async function search(query, options) {
         if (!data.Tour) {
           params = {
             ...params,
-            sector : world.Sector,
-            world : world.Name,
-            hex : world.Hex
+            sector: world.Sector,
+            world: world.Name,
+            hex: world.Hex
           };
         }
         if (data.Route) {
-          route.push({sx : sx, sy : sy, hx : hx, hy : hy});
+          route.push({sx: sx, sy: sy, hx: hx, hy: hy});
         }
         world.href = Util.makeURL(base_url, params);
         applyTags(world);
@@ -1399,8 +1433,9 @@ async function search(query, options) {
         selectedWorld = null;
 
         const params = Util.parseURLQuery(event.target);
-        map.CenterAtSectorHex(params.sx | 0, params.sy | 0, params.hx | 0,
-                              params.hy | 0, {scale : params.scale | 0});
+        map.CenterAtSectorHex(
+            params.sx | 0, params.sy | 0, params.hx | 0, params.hy | 0,
+            {scale: params.scale | 0});
         if (isSmallScreen)
           document.body.classList.remove('search-results');
 
@@ -1409,20 +1444,22 @@ async function search(query, options) {
 
         if (params.world && params.sector) {
           selectedSector = params.sector;
-          selectedWorld = {name : params.name, hex : params.hex};
-          updateContext(coords.x, coords.y,
-                        {directAction : true, ignoreIndirect : true});
+          selectedWorld = {name: params.name, hex: params.hex};
+          updateContext(
+              coords.x, coords.y, {directAction: true, ignoreIndirect: true});
         } else if (params.sector) {
           selectedSector = params.sector;
-          updateContext(coords.x, coords.y,
-                        {directAction : true, ignoreIndirect : true});
+          updateContext(
+              coords.x, coords.y, {directAction: true, ignoreIndirect: true});
         }
       });
     }
 
     const first = $('#resultsContainer a');
     if (first && !options.typed && !options.onfocus)
-      setTimeout(() => { first.focus(); }, 0);
+      setTimeout(() => {
+        first.focus();
+      }, 0);
 
     if (route.length) {
       map.SetRoute(route);
@@ -1452,13 +1489,13 @@ async function route(start, end, jump) {
     start,
     end,
     jump,
-    x : map.worldX,
-    y : map.worldY,
-    milieu : map.namedOptions.get('milieu'),
-    wild : $('#route-wild').checked ? 1 : 0,
-    im : $('#route-im').checked ? 1 : 0,
-    nored : $('#route-nored').checked ? 1 : 0,
-    aok : $('#route-aok').checked ? 1 : 0
+    x: map.worldX,
+    y: map.worldY,
+    milieu: map.namedOptions.get('milieu'),
+    wild: $('#route-wild').checked ? 1 : 0,
+    im: $('#route-im').checked ? 1 : 0,
+    nored: $('#route-nored').checked ? 1 : 0,
+    aok: $('#route-aok').checked ? 1 : 0
   };
 
   try {
@@ -1481,7 +1518,7 @@ async function route(start, end, jump) {
       const hx = world.HexX | 0;
       const hy = world.HexY | 0;
       const scale = 64;
-      world.href = Util.makeURL(base_url, {scale : 64, sx, sy, hx, hy});
+      world.href = Util.makeURL(base_url, {scale: 64, sx, sy, hx, hy});
 
       if (index > 0) {
         const prev = data[index - 1];
@@ -1493,15 +1530,15 @@ async function route(start, end, jump) {
         total += dist;
       }
 
-      route.push({sx : sx, sy : sy, hx : hx, hy : hy});
+      route.push({sx: sx, sy: sy, hx: hx, hy: hy});
     }
 
     map.SetRoute(route);
     const routeData = {
-      Route : data,
-      Distance : total,
-      Jumps : data.length - 1,
-      PrintURL : Util.makeURL('./print/route', options)
+      Route: data,
+      Distance: total,
+      Jumps: data.length - 1,
+      PrintURL: Util.makeURL('./print/route', options)
     };
     $('#routePath').innerHTML = template('#RouteResultsTemplate')(routeData);
     document.body.classList.add('route-shown');
@@ -1513,15 +1550,17 @@ async function route(start, end, jump) {
         selectedWorld = null;
 
         const params = Util.parseURLQuery(event.target);
-        map.CenterAtSectorHex(params.sx | 0, params.sy | 0, params.hx | 0,
-                              params.hy | 0, {scale : params.scale | 0});
+        map.CenterAtSectorHex(
+            params.sx | 0, params.sy | 0, params.hx | 0, params.hy | 0,
+            {scale: params.scale | 0});
       });
     }
 
     $('#copy-route').addEventListener('click', event => {
       event.preventDefault();
-      Util.copyTextToClipboard(template('#RouteResultsTextTemplate')(
-          {Route : data, Distance : total, Jumps : data.length - 1}));
+      Util.copyTextToClipboard(
+          template('#RouteResultsTextTemplate')(
+              {Route: data, Distance: total, Jumps: data.length - 1}));
     });
 
     $('#print-route').addEventListener('click', event => {
@@ -1531,7 +1570,7 @@ async function route(start, end, jump) {
 
   } catch (reason) {
     $('#routePath').innerHTML =
-        template('#RouteErrorTemplate')({Message : reason.message});
+        template('#RouteErrorTemplate')({Message: reason.message});
     map.SetRoute(null);
     document.body.classList.add('route-shown');
     resizeMap();
@@ -1556,9 +1595,9 @@ function updateScaleIndicator() {
           ctx = canvas.getContext('2d'), w = parseFloat(canvas.width),
           h = parseFloat(canvas.height), style = map.style,
           color =
-              [ 'atlas', 'print', 'draft', 'fasa', 'mongoose' ].includes(style)
-                  ? 'black'
-                  : 'white';
+              ['atlas', 'print', 'draft', 'fasa', 'mongoose'].includes(style) ?
+        'black' :
+        'white';
 
     ctx.clearRect(0, 0, w, h);
 
@@ -1610,10 +1649,10 @@ async function findMain(worldX, worldY) {
   function sigToSectorHex(sig) {
     const parts = sig.split('/');
     return {
-      sx : parts[0] | 0,
-      sy : parts[1] | 0,
-      hx : (parts[2] / 100) | 0,
-      hy : parts[2] % 100
+      sx: parts[0] | 0,
+      sy: parts[1] | 0,
+      hx: (parts[2] / 100) | 0,
+      hy: parts[2] % 100
     };
   }
 
@@ -1685,8 +1724,9 @@ $('#searchBox').disabled = false;
 if (navigator.userAgent.match(/iPad|iPhone/)) {
   // Prevent inadvertant touch-scroll.
   for (const element of $$('button, input')) {
-    element.addEventListener('touchmove', event => { event.preventDefault(); },
-                             {passive : false});
+    element.addEventListener('touchmove', event => {
+      event.preventDefault();
+    }, {passive: false});
   }
   // Prevent inadvertant touch-zoom.
   document.addEventListener('touchmove', event => {
@@ -1755,7 +1795,7 @@ if ('serviceWorker' in navigator && location.protocol === 'https:') {
 for (const key of ['q', 'qn']) {
   if (key in urlParams) {
     $('#searchBox').value = urlParams[key];
-    search(urlParams[key], {navigate : key === 'qn'});
+    search(urlParams[key], {navigate: key === 'qn'});
   }
 }
 
@@ -1764,7 +1804,7 @@ if ('qr' in urlParams) {
     const results = JSON.parse(urlParams['qr']);
     const term = urlParams['search'] || '';
     $('#searchBox').value = term;
-    search(term, {navigate : true, results});
+    search(term, {navigate: true, results});
   } catch (ex) {
     console.warn('Error parsing "qr" data: ', ex);
   }
@@ -1776,4 +1816,6 @@ if ('attract' in urlParams) {
 }
 
 // After all async events from the map have fired...
-setTimeout(() => { enableContext = true; }, 0);
+setTimeout(() => {
+  enableContext = true;
+}, 0);

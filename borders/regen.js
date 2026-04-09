@@ -1,26 +1,20 @@
-import {
-  AllegianceMap,
-  NON_ALIGNED,
-  processMap,
-  UNALIGNED,
-  walk
-} from '../borders/borders.js';
+import {AllegianceMap, NON_ALIGNED, processMap, UNALIGNED, walk} from '../borders/borders.js';
 import * as Traveller from '../map.js';
 
 const SECTOR_WIDTH = 32, SECTOR_HEIGHT = 40;
 
 const ALLEGIANCE_COLORS = {
-  'Im' : 'red',
-  'As' : 'yellow',
-  'Kk' : 'green',
-  'Va' : 'olive',
-  'ZhCo' : 'blue',
-  'SoCo' : 'orange',
-  'Hv' : 'purple',
-  'Fa' : 'green',
-  'DaCf' : 'lightblue',
-  'SwCf' : 'blue',
-  'Na' : 'transparent',
+  'Im': 'red',
+  'As': 'yellow',
+  'Kk': 'green',
+  'Va': 'olive',
+  'ZhCo': 'blue',
+  'SoCo': 'orange',
+  'Hv': 'purple',
+  'Fa': 'green',
+  'DaCf': 'lightblue',
+  'SwCf': 'blue',
+  'Na': 'transparent',
 };
 
 function colorFor(alleg) {
@@ -34,16 +28,16 @@ const ALLEGIANCE_SETS = [
 
   // Non-Aligned (no borders)
   [
-    'Na', // Non-aligned
-    'Dr', // Droyne
-    '--', // Unknown
-    '??', // Unknown
-    'Va', // Vargr
-    'va', // "
-    'Cs', // Client State
-    'Cv', // Vargr client state
-    'cv', // "
-    'J-', // Julian Protectorate
+    'Na',  // Non-aligned
+    'Dr',  // Droyne
+    '--',  // Unknown
+    '??',  // Unknown
+    'Va',  // Vargr
+    'va',  // "
+    'Cs',  // Client State
+    'Cv',  // Vargr client state
+    'cv',  // "
+    'J-',  // Julian Protectorate
 
     'NaAs', 'NaHu', 'NaVa', 'NaXX', 'XXXX',
     'CsCa', 'CsHv', 'CsIm', 'CsMP', 'CsZh',
@@ -53,17 +47,17 @@ const ALLEGIANCE_SETS = [
   [
     'Im',
     //'ImAp', // Amec Protectorate (Dagu)
-    'ImDa', // Domain of Antares (Anta/Empt/Lish)
-    'ImDc', // Domain of Sylea (Core/Delp/Forn/Mass)
-    'ImDd', // Domain of Deneb (Dene/Reft/Spin/Troj)
-    'ImDg', // Domain of Gateway (Glim/Hint/Ley)
-    'ImDi', // Domain of Ilelish (Daib/Ilel/Reav/Verg/Zaru)
-    'ImDs', // Domain of Sol (Alph/Dias/Magy/Olde/Solo)
-    'ImDv', // Domain of Vland (Corr/Dagu/Gush/Reft/Vlan)
-            //'ImLa', // League of Antares (Anta)
-            //'ImLu', // Luriani Cultural Association (Ley/Forn)
-            //'ImSy', // Sylean Worlds (Core)
-            //'ImVd' Vegan Autonomous District (Solo)
+    'ImDa',  // Domain of Antares (Anta/Empt/Lish)
+    'ImDc',  // Domain of Sylea (Core/Delp/Forn/Mass)
+    'ImDd',  // Domain of Deneb (Dene/Reft/Spin/Troj)
+    'ImDg',  // Domain of Gateway (Glim/Hint/Ley)
+    'ImDi',  // Domain of Ilelish (Daib/Ilel/Reav/Verg/Zaru)
+    'ImDs',  // Domain of Sol (Alph/Dias/Magy/Olde/Solo)
+    'ImDv',  // Domain of Vland (Corr/Dagu/Gush/Reft/Vlan)
+             //'ImLa', // League of Antares (Anta)
+             //'ImLu', // Luriani Cultural Association (Ley/Forn)
+             //'ImSy', // Sylean Worlds (Core)
+             //'ImVd' Vegan Autonomous District (Solo)
   ],
 
   [
@@ -71,17 +65,17 @@ const ALLEGIANCE_SETS = [
     'A8',   'A9',   'AsIf', 'AsMw', 'AsOf', 'AsSc', 'AsSF', 'AsT0', 'AsT1',
     'AsT2', 'AsT3', 'AsT4', 'AsT5', 'AsT6', 'AsT7', 'AsT8', 'AsT9', 'AsTA',
     'AsTv', 'AsTz', 'AsVc', 'AsWc', 'AsXX'
-  ], // Aslan clans
+  ],  // Aslan clans
 
-  [ 'Uc', 'C1', 'C2', 'C3', 'C4' ],         // Union Crucis (Judges Guild)
-  [ 'SoCf', 'SoNS', 'SoRD', 'SoWu', 'So' ], // Solomani Confederation
-  [ 'ZhCo', 'ZhCa', 'ZhIN', 'Zh' ],         // Zhodani Consulate
+  ['Uc', 'C1', 'C2', 'C3', 'C4'],          // Union Crucis (Judges Guild)
+  ['SoCf', 'SoNS', 'SoRD', 'SoWu', 'So'],  // Solomani Confederation
+  ['ZhCo', 'ZhCa', 'ZhIN', 'Zh'],          // Zhodani Consulate
 
   // Comment out to get member state borders
-  [ 'CA', 'CAEM', 'CAin', 'CAKT' ], // Comsentient Alliance (Beyo/Vang)
+  ['CA', 'CAEM', 'CAin', 'CAKT'],  // Comsentient Alliance (Beyo/Vang)
 
   // Julian Protectorate
-  [ 'JuPr', 'JuRu', 'JuHl' ]
+  ['JuPr', 'JuRu', 'JuHl']
 ];
 
 //----------------------------------------------------------------------
@@ -110,17 +104,17 @@ function makeMapDisplay(containerElement, map, inset) {
           left}px; top: ${top}px;">`;
       fragment += hexContents(x, y, map);
       fragment += '<' +
-                  '/div>';
+          '/div>';
 
       fragments.push(fragment);
     }
   }
 
-  containerElement.innerHTML = fragments.join("");
+  containerElement.innerHTML = fragments.join('');
   containerElement.style.width =
-      (map.width * sz + (map.width + 1) * pad) + "px";
+      (map.width * sz + (map.width + 1) * pad) + 'px';
   containerElement.style.height =
-      ((map.height + 0.5) * sz + (map.height + 1.5) * pad) + "px";
+      ((map.height + 0.5) * sz + (map.height + 1.5) * pad) + 'px';
 }
 
 function updateWalks(map) {
@@ -134,10 +128,11 @@ function updateWalks(map) {
       let alleg = map.getAllegiance(x, y);
       if (alleg !== UNALIGNED && alleg !== NON_ALIGNED &&
           alleg !== last_alleg && !(label in visited)) {
-
         let path = walk(map, x, y, alleg);
         const pathLabels = path.map(hex => hexLabel(hex[0], hex[1]));
-        pathLabels.forEach(label => { visited[label] = true; });
+        pathLabels.forEach(label => {
+          visited[label] = true;
+        });
 
         // Filter out holes
         const len = pathLabels.length;
@@ -151,7 +146,7 @@ function updateWalks(map) {
             continue;
         }
 
-        borders.push({allegiance : alleg, path : pathLabels});
+        borders.push({allegiance: alleg, path: pathLabels});
       }
       last_alleg = alleg;
     }
@@ -163,9 +158,10 @@ function updateWalks(map) {
     return (1 <= x && x <= 32) && (1 <= y && y <= 40);
   }));
 
-  borders.sort((a, b) => a.allegiance < b.allegiance   ? -1
-                         : a.allegiance > b.allegiance ? 1
-                                                       : 0);
+  borders.sort(
+      (a, b) => a.allegiance < b.allegiance ? -1 :
+          a.allegiance > b.allegiance       ? 1 :
+                                              0);
 
   const html = [];
   borders.forEach(border => {
@@ -173,35 +169,36 @@ function updateWalks(map) {
       return;
 
     const str = '<Border Allegiance="' +
-                Traveller.Util.escapeHTML(border.allegiance) + '">' +
-                border.path.join(' ') + '</Border>';
-    html.push("<li>" + Traveller.Util.escapeHTML(str));
+        Traveller.Util.escapeHTML(border.allegiance) + '">' +
+        border.path.join(' ') + '</Border>';
+    html.push('<li>' + Traveller.Util.escapeHTML(str));
   });
 
-  const walksElement = document.getElementById("walks");
+  const walksElement = document.getElementById('walks');
   if (walksElement === null)
-    throw new Error("Element with id 'walks' not found");
-  walksElement.innerHTML = html.join("");
+    throw new Error('Element with id \'walks\' not found');
+  walksElement.innerHTML = html.join('');
 }
 
 function hexLabel(x, y) {
-  return (x < 10 ? "0" : "") + x + (y < 10 ? "0" : "") + y;
+  return (x < 10 ? '0' : '') + x + (y < 10 ? '0' : '') + y;
 }
 
 function hexContents(x, y, map) {
   const hexNumber = hexLabel(x, y);
   const occupied = map.isOccupied(x, y);
   const alleg = map.getAllegiance(x, y);
-  let color = (alleg == UNALIGNED) ? "transparent" : colorFor(alleg);
+  let color = (alleg == UNALIGNED) ? 'transparent' : colorFor(alleg);
   if (color === (void 0)) {
     color = 'gray';
   }
 
-  return "<div class='hexContents' style='background-color: " + color + ";'>" +
-         "<span class='hexNumber'>" + hexNumber + "<" +
-         "/span>" +
-         (occupied ? "<span class='world'>" + alleg + "</span>" : "") + "<" +
-         "/div>";
+  return '<div class=\'hexContents\' style=\'background-color: ' + color +
+      ';\'>' +
+      '<span class=\'hexNumber\'>' + hexNumber + '<' +
+      '/span>' +
+      (occupied ? '<span class=\'world\'>' + alleg + '</span>' : '') + '<' +
+      '/div>';
 }
 
 //----------------------------------------------------------------------
@@ -223,8 +220,9 @@ async function loadSector(sx, sy, milieu) {
         return;
 
       const world = {};
-      line.split('\t').forEach(
-          (field, index) => { world[header[index]] = field; });
+      line.split('\t').forEach((field, index) => {
+        world[header[index]] = field;
+      });
 
       world.x = parseInt(world.hex.substring(0, 2), 10);
       world.y = parseInt(world.hex.substring(2, 4), 10);
@@ -247,13 +245,13 @@ document.addEventListener('DOMContentLoaded', async () => {
   function status(message) {
     const display = document.getElementById('status');
     if (display === null)
-      throw new Error("Element with id 'status' not found");
+      throw new Error('Element with id \'status\' not found');
     display.innerHTML += `<div>${Traveller.Util.escapeHTML(message)}</div>`;
     display.scrollTop = display.scrollHeight;
   }
 
   if (!searchParams.has('sector')) {
-    showError("Missing sector in URL");
+    showError('Missing sector in URL');
     return;
   }
   const sector = searchParams.get('sector');

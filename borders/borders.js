@@ -8,8 +8,8 @@
 // The Traveller game in all forms is owned by Mongoose Publishing.
 // Copyright (C) 1977 - 2024 Mongoose Publishing.
 
-export const UNALIGNED = "--";
-export const NON_ALIGNED = "Na";
+export const UNALIGNED = '--';
+export const NON_ALIGNED = 'Na';
 
 export class AllegianceMap {
   constructor(width, height, origin_x, origin_y) {
@@ -23,21 +23,17 @@ export class AllegianceMap {
     for (let x = 0; x < width; ++x) {
       this.map[x] = [];
       for (let y = 0; y < height; ++y) {
-        this.map[x][y] = {
-          'occupied' : false,
-          'alleg' : UNALIGNED,
-          'mark' : false
-        };
+        this.map[x][y] = {'occupied': false, 'alleg': UNALIGNED, 'mark': false};
       }
     }
   }
 
   getBounds() {
     return {
-      'top' : this.origin_y,
-      'left' : this.origin_x,
-      'right' : this.origin_x + this.width - 1,
-      'bottom' : this.origin_y + this.height - 1
+      'top': this.origin_y,
+      'left': this.origin_x,
+      'right': this.origin_x + this.width - 1,
+      'bottom': this.origin_y + this.height - 1
     };
   }
 
@@ -67,28 +63,28 @@ export class AllegianceMap {
    */
   isOccupied(x, y) {
     if (!this.inBounds(x, y))
-      throw "Coordinates out of bounds";
+      throw 'Coordinates out of bounds';
 
     return this.map[x - this.origin_x][y - this.origin_y].occupied;
   }
 
   setOccupied(x, y, occupied) {
     if (!this.inBounds(x, y))
-      throw "Coordinates out of bounds";
+      throw 'Coordinates out of bounds';
 
     this.map[x - this.origin_x][y - this.origin_y].occupied = occupied;
   }
 
   getAllegiance(x, y) {
     if (!this.inBounds(x, y))
-      throw "Coordinates out of bounds";
+      throw 'Coordinates out of bounds';
 
     return this.map[x - this.origin_x][y - this.origin_y].alleg;
   }
 
   getTrueAllegiance(x, y) {
     if (!this.inBounds(x, y))
-      throw "Coordinates out of bounds";
+      throw 'Coordinates out of bounds';
 
     const hex = this.map[x - this.origin_x][y - this.origin_y];
     return hex.trueAllegiance || hex.alleg;
@@ -96,7 +92,7 @@ export class AllegianceMap {
 
   setAllegiance(x, y, effectiveAllegiance, trueAllegiance) {
     if (!this.inBounds(x, y))
-      throw "Coordinates out of bounds";
+      throw 'Coordinates out of bounds';
 
     this.map[x - this.origin_x][y - this.origin_y].alleg = effectiveAllegiance;
     this.map[x - this.origin_x][y - this.origin_y].trueAllegiance =
@@ -106,14 +102,14 @@ export class AllegianceMap {
   // TODO: Would be simpler if we returned a Hex object
   isMarked(x, y) {
     if (!this.inBounds(x, y))
-      throw "Coordinates out of bounds";
+      throw 'Coordinates out of bounds';
 
     return this.map[x - this.origin_x][y - this.origin_y].mark;
   }
 
   setMarked(x, y, mark) {
     if (!this.inBounds(x, y))
-      throw "Coordinates out of bounds";
+      throw 'Coordinates out of bounds';
 
     this.map[x - this.origin_x][y - this.origin_y].mark = mark;
   }
@@ -129,27 +125,27 @@ export class AllegianceMap {
 // will be incorrect for zero-based coordinate systems.
 export function neighbor(c, r, direction) {
   switch (direction) {
-  case 0:
-    r += 1 - (c-- % 2);
-    break;
-  case 1:
-    r -= (c-- % 2);
-    break;
-  case 2:
-    r--;
-    break;
-  case 3:
-    r -= (c++ % 2);
-    break;
-  case 4:
-    r += 1 - (c++ % 2);
-    break;
-  case 5:
-    r++;
-    break;
+    case 0:
+      r += 1 - (c-- % 2);
+      break;
+    case 1:
+      r -= (c-- % 2);
+      break;
+    case 2:
+      r--;
+      break;
+    case 3:
+      r -= (c++ % 2);
+      break;
+    case 4:
+      r += 1 - (c++ % 2);
+      break;
+    case 5:
+      r++;
+      break;
   }
 
-  return [ c, r ];
+  return [c, r];
 }
 
 export function erode(map, allegiance, n) {
@@ -174,7 +170,7 @@ export function erode(map, allegiance, n) {
       }
 
       if (count >= n) {
-        erodeList.push([ c, r ]);
+        erodeList.push([c, r]);
       }
     }
   });
@@ -191,23 +187,23 @@ export function erode(map, allegiance, n) {
 // TODO: Standardize on ( x, y ) vs. [ x, y ] vs. { x:x, y:y }
 
 export function walk(map, start_x, start_y, allegiance, func) {
-  const border = [ [ start_x, start_y ] ];
+  const border = [[start_x, start_y]];
 
   if (func) {
     func(start_x, start_y, -1);
   }
 
   // Directions checked in starting hex: sw=0, nw=1, n=2 (by definition)
-  const checked = [ true, true, true ];
-  let checkfirst = 3; // northeast - first direction to test
+  const checked = [true, true, true];
+  let checkfirst = 3;  // northeast - first direction to test
   let checklast;
-  let current = [ start_x, start_y ]; // First hex
+  let current = [start_x, start_y];  // First hex
   /** @type {any} */
-  let next; // Next hex
+  let next;  // Next hex
 
   let done = false;
   while (!done) {
-    checklast = checkfirst + 5; // test all directions
+    checklast = checkfirst + 5;  // test all directions
 
     let dir = 0;
     for (let i = checkfirst; i <= checklast; ++i) {
@@ -261,7 +257,7 @@ function findTopLeft(map, allegiance) {
   for (let c = bounds.left; c <= bounds.right; ++c) {
     for (let r = bounds.top; r <= bounds.bottom; ++r) {
       if (map.getAllegiance(c, r) === allegiance)
-        return [ c, r ];
+        return [c, r];
     }
   }
 
@@ -269,9 +265,9 @@ function findTopLeft(map, allegiance) {
 }
 
 export function breakSpans(map, allegiance, n) {
-  const breakList = []; // List of hexes at which to "break" once scan is done
-  let spanList = [];    // Running list of contiguous non-world hexes
-  let dirList = []; // Running list of contiguous non-world hexes in same dir
+  const breakList = [];  // List of hexes at which to "break" once scan is done
+  let spanList = [];     // Running list of contiguous non-world hexes
+  let dirList = [];  // Running list of contiguous non-world hexes in same dir
   let lastDir = -1;
 
   function breakCallback(c, r, dir) {
@@ -290,8 +286,8 @@ export function breakSpans(map, allegiance, n) {
       dirList = [];
 
     if (map.inBounds(c, r) && !map.isOccupied(c, r)) {
-      spanList.push([ c, r ]);
-      dirList.push([ c, r ]);
+      spanList.push([c, r]);
+      dirList.push([c, r]);
 
       // Sneaky bit #2:
       // Break when we've found a span of the right length, and with
@@ -344,7 +340,9 @@ export function breakSpans(map, allegiance, n) {
   }
 
   // Clear marks
-  map.foreach((c, r) => { map.setMarked(c, r, false); });
+  map.foreach((c, r) => {
+    map.setMarked(c, r, false);
+  });
 
   // Break the spots we identified
   for (let i = 0; i < breakList.length; ++i) {
@@ -457,7 +455,7 @@ export function processMap(map, success_callback, progress_callback) {
 
     const list = [];
     for (const key of Object.keys(counts)) {
-      list.push({allegiance : key, count : counts[key]});
+      list.push({allegiance: key, count: counts[key]});
     }
     list.sort((a, b) => a.count - b.count);
 

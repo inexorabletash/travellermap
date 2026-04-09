@@ -6,11 +6,11 @@ const Util = Traveller.Util;
 const $ = Util.$;
 const $$ = Util.$$;
 
-const PS = 16;   // px/parsec
-const INSET = 2; // px
+const PS = 16;    // px/parsec
+const INSET = 2;  // px
 const RADIUS = 4;
 
-let sec = {worlds : {}};
+let sec = {worlds: {}};
 let routes = [];
 let candidates = [];
 
@@ -26,20 +26,19 @@ async function parse() {
     if (!data.length)
       return;
     const text = await getTextViaPOST(
-        Traveller.MapService.makeURL('/api/sec', {type : 'TabDelimited'}),
-        data);
+        Traveller.MapService.makeURL('/api/sec', {type: 'TabDelimited'}), data);
     const sector = await Util.parseSector(text);
     sec = sector;
     const dataURL =
         await getTextViaPOST(Traveller.MapService.makeURL('/api/poster'), {
-          data : $('#data').value,
-          metadata : $('#metadata').value,
-          style : 'print',
-          options : 41975,
-          scale : 64,
-          datauri : 1,
-          im : $('#highlight-im').checked ? 1 : 0,
-          po : $('#highlight-po').checked ? 1 : 0
+          data: $('#data').value,
+          metadata: $('#metadata').value,
+          style: 'print',
+          options: 41975,
+          scale: 64,
+          datauri: 1,
+          im: $('#highlight-im').checked ? 1 : 0,
+          po: $('#highlight-po').checked ? 1 : 0
         });
     $('#canvas').style.backgroundSize = '100% 100%';
     $('#canvas').style.backgroundImage = `url("${dataURL}")`;
@@ -57,8 +56,8 @@ function hexToCoords(hex) {
 function hxhyToCoords(hx, hy) {
   let x = hx, y = hy;
   const dy = (x % 2) ? 0.5 : 0;
-  x *= Math.cos(Math.PI / 6); // cos(30deg)
-  return {x : x * PS + INSET + PS / 2, y : (y + dy) * PS + INSET + PS / 2};
+  x *= Math.cos(Math.PI / 6);  // cos(30deg)
+  return {x: x * PS + INSET + PS / 2, y: (y + dy) * PS + INSET + PS / 2};
 }
 
 function refresh() {
@@ -74,8 +73,8 @@ function refresh() {
   }
 
   ctx.lineWidth = 4;
-  ctx.strokeStyle = "green";
-  ctx.fillStyle = "green";
+  ctx.strokeStyle = 'green';
+  ctx.fillStyle = 'green';
   for (const route of routes) {
     ctx.beginPath();
     const start = hexToCoords(route.start), sx = start.x, sy = start.y;
@@ -99,10 +98,10 @@ function refresh() {
     ctx.stroke();
   }
 
-  const template = ($('#form').elements.metatype.value === 'xml')
-                       ? xml_template
-                       : msec_template;
-  $('#metadata_generated').value = template({routes : routes});
+  const template = ($('#form').elements.metatype.value === 'xml') ?
+      xml_template :
+      msec_template;
+  $('#metadata_generated').value = template({routes: routes});
 
   ctx.fillStyle = 'black';
 }
@@ -119,12 +118,12 @@ $('#canvas').addEventListener('mousedown', event => {
   event.preventDefault();
   event.stopPropagation();
 
-  const offsetX = 'offsetX' in event  ? event.offsetX
-                  : 'layerX' in event ? event.layerX
-                                      : event.pageX - event.target.offsetLeft;
-  const offsetY = 'offsetY' in event  ? event.offsetY
-                  : 'layerY' in event ? event.layerY
-                                      : event.pageY - event.target.offsetTop;
+  const offsetX = 'offsetX' in event ? event.offsetX :
+      'layerX' in event              ? event.layerX :
+                                       event.pageX - event.target.offsetLeft;
+  const offsetY = 'offsetY' in event ? event.offsetY :
+      'layerY' in event              ? event.layerY :
+                                       event.pageY - event.target.offsetTop;
   let x = offsetX, y = offsetY;
 
   x = (x - INSET) / PS / Math.cos(Math.PI / 6);
@@ -138,7 +137,7 @@ $('#canvas').addEventListener('mousedown', event => {
   if (stack.length) {
     const start = stack.pop();
     if (start !== hex)
-      routes.push({start : start, end : hex});
+      routes.push({start: start, end: hex});
   } else {
     stack.push(hex);
   }
@@ -160,29 +159,35 @@ function clear() {
   refresh();
 }
 
-$('#auto-kk').addEventListener('click', () => { auto('kk'); });
-$('#auto-zh').addEventListener('click', () => { auto('zh'); });
+$('#auto-kk').addEventListener('click', () => {
+  auto('kk');
+});
+$('#auto-zh').addEventListener('click', () => {
+  auto('zh');
+});
 
 function auto(t) {
   switch (t) {
-  case 'kk':
-    autoConnect(Object.values(sec.worlds).filter(world => {
-      if (!world.allegiance.startsWith('Kk'))
-        return false;
-      if (world.uwp[0] !== 'A')
-        return false;
-      return true;
-    }),
-                3);
-    break;
-  case 'zh':
-    autoConnect(Object.values(sec.worlds).filter(world => {
-      if (!world.allegiance.startsWith('Zh'))
-        return false;
-      return [ 'K', 'M', 'D', 'W' ].some(b => world.bases.includes(b));
-    }),
-                4);
-    break;
+    case 'kk':
+      autoConnect(
+          Object.values(sec.worlds).filter(world => {
+            if (!world.allegiance.startsWith('Kk'))
+              return false;
+            if (world.uwp[0] !== 'A')
+              return false;
+            return true;
+          }),
+          3);
+      break;
+    case 'zh':
+      autoConnect(
+          Object.values(sec.worlds).filter(world => {
+            if (!world.allegiance.startsWith('Zh'))
+              return false;
+            return ['K', 'M', 'D', 'W'].some(b => world.bases.includes(b));
+          }),
+          4);
+      break;
   }
 }
 
@@ -195,7 +200,7 @@ function autoConnect(worlds, range) {
     for (let j = i + 1; j < worlds.length; ++j) {
       const hex1 = worlds[i].hex, hex2 = worlds[j].hex;
       if (dist(hex1, hex2) <= range) {
-        routes.push({start : hex1, end : hex2});
+        routes.push({start: hex1, end: hex2});
       }
     }
   }
@@ -224,11 +229,19 @@ function dist(a, b) {
 
   return max(adx - ody, ody, adx);
 
-  function even(x) { return (x % 2) == 0; }
-  function odd(x) { return (x % 2) != 0; }
+  function even(x) {
+    return (x % 2) == 0;
+  }
+  function odd(x) {
+    return (x % 2) != 0;
+  }
 
-  function div(a, b) { return Math.floor(a / b); }
-  function mod(a, b) { return Math.floor(a % b); }
+  function div(a, b) {
+    return Math.floor(a / b);
+  }
+  function mod(a, b) {
+    return Math.floor(a % b);
+  }
 
   function max(a, b, c) {
     return (a >= b && a >= c) ? a : (b >= a && b >= c) ? b : c;
@@ -282,8 +295,9 @@ function removeIntersections() {
     const coords2 = hexToCoords(route2.start);
     const coords3 = hexToCoords(route2.end);
 
-    return segmentIntersect(coords0.x, coords0.y, coords1.x, coords1.y,
-                            coords2.x, coords2.y, coords3.x, coords3.y);
+    return segmentIntersect(
+        coords0.x, coords0.y, coords1.x, coords1.y, coords2.x, coords2.y,
+        coords3.x, coords3.y);
   }
 
   // https://stackoverflow.com/questions/563198/how-do-you-detect-where-two-line-segments-intersect

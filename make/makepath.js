@@ -7,8 +7,8 @@ const Util = Traveller.Util;
 const $ = Util.$;
 const $$ = Util.$$;
 
-const PS = 16;   // px/parsec
-const INSET = 2; // px
+const PS = 16;    // px/parsec
+const INSET = 2;  // px
 const RADIUS = 4;
 
 let sec;
@@ -22,16 +22,16 @@ async function parse() {
   if (!data.length)
     return;
   const text = await getTextViaPOST(
-      Traveller.MapService.makeURL('/api/sec', {type : 'TabDelimited'}), data);
+      Traveller.MapService.makeURL('/api/sec', {type: 'TabDelimited'}), data);
   sec = Util.parseSector(text);
   const dataURL =
       await getTextViaPOST(Traveller.MapService.makeURL('/api/poster'), {
-        data : $('#data').value,
-        metadata : $('#metadata').value,
-        style : 'print',
-        options : 41975,
-        scale : 64,
-        datauri : 1
+        data: $('#data').value,
+        metadata: $('#metadata').value,
+        style: 'print',
+        options: 41975,
+        scale: 64,
+        datauri: 1
       });
   $('#canvas').style.backgroundSize = '100% 100%';
   $('#canvas').style.backgroundImage = `url("${dataURL}")`;
@@ -50,8 +50,8 @@ function refresh() {
   function hxhyToCoords(hx, hy) {
     let x = hx, y = hy;
     const dy = (x % 2) ? 0.5 : 0;
-    x *= Math.cos(Math.PI / 6); // cos(30deg)
-    return {x : x * PS + INSET + PS / 2, y : (y + dy) * PS + INSET + PS / 2};
+    x *= Math.cos(Math.PI / 6);  // cos(30deg)
+    return {x: x * PS + INSET + PS / 2, y: (y + dy) * PS + INSET + PS / 2};
   }
 
   ctx.clearRect(0, 0, PS * canvas.width, PS * canvas.height);
@@ -77,7 +77,7 @@ function refresh() {
     }
 
     ctx.lineWidth = 4;
-    ctx.strokeStyle = "green";
+    ctx.strokeStyle = 'green';
     ctx.beginPath();
     for (const [index, hex] of route.entries()) {
       const coords = hexToCoords(hex);
@@ -101,12 +101,12 @@ $('#canvas').addEventListener('mousedown', event => {
   event.preventDefault();
   event.stopPropagation();
 
-  const offsetX = 'offsetX' in event  ? event.offsetX
-                  : 'layerX' in event ? event.layerX
-                                      : event.pageX - event.target.offsetLeft;
-  const offsetY = 'offsetY' in event  ? event.offsetY
-                  : 'layerY' in event ? event.layerY
-                                      : event.pageY - event.target.offsetTop;
+  const offsetX = 'offsetX' in event ? event.offsetX :
+      'layerX' in event              ? event.layerX :
+                                       event.pageX - event.target.offsetLeft;
+  const offsetY = 'offsetY' in event ? event.offsetY :
+      'layerY' in event              ? event.layerY :
+                                       event.pageY - event.target.offsetTop;
   let x = offsetX, y = offsetY;
 
   x = (x - INSET) / PS / Math.cos(Math.PI / 6);

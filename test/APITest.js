@@ -2,7 +2,9 @@
 // Assertion Logic
 //
 
-var $ = function(s) { return document.querySelector(s); };
+var $ = function(s) {
+  return document.querySelector(s);
+};
 
 function compare(a, b) {
   // Handle primitive cases
@@ -50,12 +52,13 @@ function assertFalse(b, msg) {
   internal_assert(!b, msg + ': Expected false, was: ' + JSON.stringify(b));
 }
 function assertEquals(a, b, msg) {
-  internal_assert(compare(a, b), msg + ': Expected ' + JSON.stringify(b) +
-                                     ' was ' + JSON.stringify(a));
+  internal_assert(
+      compare(a, b),
+      msg + ': Expected ' + JSON.stringify(b) + ' was ' + JSON.stringify(a));
 }
 function assertNotEquals(a, b, msg) {
-  internal_assert(!compare(a, b),
-                  msg + ': Expected not ' + JSON.stringify(b) + ' but was');
+  internal_assert(
+      !compare(a, b), msg + ': Expected not ' + JSON.stringify(b) + ' but was');
 }
 
 //
@@ -63,7 +66,9 @@ function assertNotEquals(a, b, msg) {
 //
 
 const tests = [];
-function test(name, func) { tests.push({name : name, func : func}); }
+function test(name, func) {
+  tests.push({name: name, func: func});
+}
 
 function runTests(tests) {
   var tests_total = tests.length, tests_run = 0, tests_passed = 0,
@@ -102,8 +107,8 @@ function runTests(tests) {
     tests_run += 1;
 
     if (tests_passed + tests_failed !== tests_run)
-      console.error('Accounting mismatch!', tests_passed, tests_failed,
-                    tests_run);
+      console.error(
+          'Accounting mismatch!', tests_passed, tests_failed, tests_run);
 
     $('#tests_run').textContent = tests_run;
     $('#tests_passed').textContent = tests_passed;
@@ -132,16 +137,17 @@ function runTests(tests) {
 
 function substituteParams(call) {
   const values = {
-    "$sector" : "solo",
-    "$subsector" : "A",
-    "$ssname" : "Sol",
-    "$quadrant" : "gamma",
-    "$hex" : "1827",
-    "$jump" : 2,
-    "$query" : "terra"
+    '$sector': 'solo',
+    '$subsector': 'A',
+    '$ssname': 'Sol',
+    '$quadrant': 'gamma',
+    '$hex': '1827',
+    '$jump': 2,
+    '$query': 'terra'
   };
-  Object.keys(values).forEach(function(
-      key) { call = call.replace(key, values[key]); });
+  Object.keys(values).forEach(function(key) {
+    call = call.replace(key, values[key]);
+  });
   return call;
 }
 
@@ -161,19 +167,19 @@ const SERVICE_BASE = (function(l) {
 }(window.location));
 
 async function fetchXML(uri) {
-  const r = await fetch(SERVICE_BASE + '/' + uri,
-                        {headers : {'Accept' : 'text/xml'}});
+  const r =
+      await fetch(SERVICE_BASE + '/' + uri, {headers: {'Accept': 'text/xml'}});
   assertEquals(r.status, 200, 'HTTP Status');
   assertEquals(r.headers.get('Content-Type'), 'text/xml', 'Content-Type');
   return await r.text();
 }
 
 async function fetchJSON(uri) {
-  const r = await fetch(SERVICE_BASE + '/' + uri,
-                        {headers : {'Accept' : 'application/json'}});
+  const r = await fetch(
+      SERVICE_BASE + '/' + uri, {headers: {'Accept': 'application/json'}});
   assertEquals(r.status, 200, 'HTTP Status');
-  assertEquals(r.headers.get('Content-Type'), 'application/json',
-               'Content-Type');
+  assertEquals(
+      r.headers.get('Content-Type'), 'application/json', 'Content-Type');
   return await r.json();
 }
 
@@ -196,13 +202,15 @@ async function testJSON(uri, expected) {
 }
 
 test('Coordinates JSON - Sector Only', () => {
-  return testJSON('api/coordinates?sector=spin',
-                  {sx : -4, sy : -1, hx : 0, hy : 0, x : -129, y : -80});
+  return testJSON(
+      'api/coordinates?sector=spin',
+      {sx: -4, sy: -1, hx: 0, hy: 0, x: -129, y: -80});
 });
 
 test('Coordinates JSON - Sector + Hex', () => {
-  return testJSON('api/coordinates?sector=spin&hex=1910',
-                  {sx : -4, sy : -1, hx : 19, hy : 10, x : -110, y : -70});
+  return testJSON(
+      'api/coordinates?sector=spin&hex=1910',
+      {sx: -4, sy: -1, hx: 19, hy: 10, x: -110, y: -70});
 });
 
 test('Coordinates XML - Sector Only', () => {
@@ -263,15 +271,16 @@ typeTest('api/route?start=SPIN+1910&end=SPIN+2207', 'application/json');
 // Rendering
 
 typeTest('api/jumpmap?sector=$sector&hex=$hex&j=$jump', 'image/png');
-typeTest('api/jumpmap?sector=$sector&hex=$hex&j=$jump&style=candy',
-         'image/png');
-typeTest('api/jumpmap?sector=$sector&hex=$hex&j=$jump&style=candy&clip=0',
-         'image/jpeg');
+typeTest(
+    'api/jumpmap?sector=$sector&hex=$hex&j=$jump&style=candy', 'image/png');
+typeTest(
+    'api/jumpmap?sector=$sector&hex=$hex&j=$jump&style=candy&clip=0',
+    'image/jpeg');
 
 typeTest('api/poster?sector=$sector', 'image/png');
 typeTest('api/poster?sector=$sector&subsector=$subsector', 'image/png');
-typeTest('api/poster?sector=$sector&subsector=$subsector&style=candy',
-         'image/jpeg');
+typeTest(
+    'api/poster?sector=$sector&subsector=$subsector&style=candy', 'image/jpeg');
 typeTest('api/poster?sector=$sector&quadrant=$quadrant', 'image/png');
 
 typeTest('api/poster/$sector', 'image/png');
@@ -286,16 +295,16 @@ typeTest('api/tile?x=0&y=0&scale=64&style=candy', 'image/jpeg');
 
 typeTest('api/coordinates?sector=$sector', 'application/json');
 typeTest('api/credits?sector=$sector', 'application/json');
-typeTest('api/jumpworlds?sector=$sector&hex=$hex&jump=$jump',
-         'application/json');
+typeTest(
+    'api/jumpworlds?sector=$sector&hex=$hex&jump=$jump', 'application/json');
 typeTest('api/universe', 'application/json');
 
 // Data Retrieval
 
 typeTest('api/sec?sector=$sector', 'text/plain; charset=utf-8');
 typeTest('api/sec?type=sec&sector=$sector', 'text/plain; charset=Windows-1252');
-typeTest('api/sec?type=TabDelimited&sector=$sector',
-         'text/plain; charset=utf-8');
+typeTest(
+    'api/sec?type=TabDelimited&sector=$sector', 'text/plain; charset=utf-8');
 
 typeTest('api/sec/$sector', 'text/plain; charset=utf-8');
 typeTest('api/sec/$sector/$quadrant', 'text/plain; charset=utf-8');
@@ -366,7 +375,7 @@ test('sec/metadata/poster - blobs', async () => {
   fd.append('metadata', blobs[1]);
 
   const r =
-      await fetch(SERVICE_BASE + '/api/poster', {method : 'POST', body : fd});
+      await fetch(SERVICE_BASE + '/api/poster', {method: 'POST', body: fd});
   assertEquals(r.status, 200, 'HTTP Status');
   assertEquals(r.headers.get('Content-Type'), 'image/png', 'Content-Type');
 });
@@ -382,8 +391,8 @@ test('sec/metadata/poster - form data', async () => {
   fd.append('file', blobs[0]);
   fd.append('metadata', blobs[1]);
 
-  const r = await fetch(SERVICE_BASE + '/api/jumpmap?hex=1910',
-                        {method : 'POST', body : fd});
+  const r = await fetch(
+      SERVICE_BASE + '/api/jumpmap?hex=1910', {method: 'POST', body: fd});
   assertEquals(r.status, 200, 'HTTP Status');
   assertEquals(r.headers.get('Content-Type'), 'image/png', 'Content-Type');
 });
@@ -410,9 +419,9 @@ test('sec/metadata/poster - form data', async () => {
     .forEach(function(api) {
       api = substituteParams(api);
 
-      test("No Accept: " + api, async () => {
+      test('No Accept: ' + api, async () => {
         const response =
-            await fetch(SERVICE_BASE + '/' + api, {headers : {'Accept' : ''}});
+            await fetch(SERVICE_BASE + '/' + api, {headers: {'Accept': ''}});
         assertEquals(response.status, 200, 'HTTP Status');
       });
     });

@@ -2,7 +2,7 @@
 
 const CACHE_NAME = 'offline-resources';
 const urlsToCache = [
-  '/', // start_url in manifest, even though this isn't served; see:
+  '/',  // start_url in manifest, even though this isn't served; see:
   // https://developers.google.com/web/tools/lighthouse/audits/cache-contains-start_url
 
   'offline.html',
@@ -14,14 +14,14 @@ self.addEventListener('install', /** @type {ExtendableEvent} */ event => {
   event.waitUntil((async () => {
     const cache = await self.caches.open(CACHE_NAME);
     await cache.addAll(
-        urlsToCache.map(url => new Request(url, {cache : 'reload'})));
+        urlsToCache.map(url => new Request(url, {cache: 'reload'})));
   })());
   self.skipWaiting();
 });
 
 self.addEventListener('activate', /** @type {ExtendableEvent} */ event => {
   event.waitUntil((async () => {
-    if ("navigationPreload" in self.registration) {
+    if ('navigationPreload' in self.registration) {
       await self.registration.navigationPreload.enable();
     }
   })());

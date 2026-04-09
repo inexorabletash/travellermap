@@ -13,14 +13,11 @@ window.addEventListener('load', async () => {
 
   let query;
   if (searchParams.has('sector') && searchParams.has('hex'))
-    query = {
-      sector : searchParams.get('sector'),
-      hex : searchParams.get('hex')
-    };
+    query = {sector: searchParams.get('sector'), hex: searchParams.get('hex')};
   else if (searchParams.has('x') && searchParams.has('y'))
-    query = {x : searchParams.get('x'), y : searchParams.get('y')};
+    query = {x: searchParams.get('x'), y: searchParams.get('y')};
   else
-    query = {sector : 'spin', hex : '1910'};
+    query = {sector: 'spin', hex: '1910'};
   // @ts-ignore
   query.milieu = searchParams.get('milieu');
 
@@ -38,10 +35,10 @@ window.addEventListener('load', async () => {
       (async () => {
         const response =
             await fetch(Traveller.MapService.makeURL('/api/jumpworlds?', {
-              x : coords.x,
-              y : coords.y,
-              milieu : searchParams.get('milieu'),
-              jump : 0
+              x: coords.x,
+              y: coords.y,
+              milieu: searchParams.get('milieu'),
+              jump: 0
             }));
         if (!response.ok)
           throw Error(response.statusText);
@@ -60,7 +57,7 @@ window.addEventListener('load', async () => {
           // Prettify URL
           if ('history' in window && 'replaceState' in window.history) {
             let url = window.location.href.replace(/\?.*$/, '') +
-                      '?sector=' + world.Sector + '&hex=' + world.Hex;
+                '?sector=' + world.Sector + '&hex=' + world.Hex;
             ['milieu', 'style'].forEach(param => {
               const value = searchParams.get(param);
               if (value !== null) {
@@ -81,10 +78,10 @@ window.addEventListener('load', async () => {
 
           const response =
               await fetch(Traveller.MapService.makeURL('/api/jumpworlds?', {
-                x : coords.x,
-                y : coords.y,
-                milieu : searchParams.get('milieu'),
-                jump : JUMP
+                x: coords.x,
+                y: coords.y,
+                milieu: searchParams.get('milieu'),
+                jump: JUMP
               }));
           if (!response.ok)
             throw Error(response.statusText);
@@ -102,19 +99,19 @@ window.addEventListener('load', async () => {
           $('#wds-neighborhood-data').innerHTML = template(data);
 
           const mapParams = {
-            x : coords.x,
-            y : coords.y,
-            milieu : searchParams.get('milieu'),
-            style : searchParams.get('style'),
-            jump : JUMP,
-            scale : SCALE,
-            border : 0
+            x: coords.x,
+            y: coords.y,
+            milieu: searchParams.get('milieu'),
+            style: searchParams.get('style'),
+            jump: JUMP,
+            scale: SCALE,
+            border: 0
           };
           if (window.devicePixelRatio > 1)
             mapParams.dpr = window.devicePixelRatio;
           const url = Traveller.MapService.makeURL('/api/jumpmap?', mapParams);
           const image =
-              await Util.fetchImage(url, {imageElement : $('#wds-jumpmap')});
+              await Util.fetchImage(url, {imageElement: $('#wds-jumpmap')});
 
           image.addEventListener('click', event => {
             const result = jmapToCoords(event, JUMP, SCALE, coords.x, coords.y);
@@ -149,7 +146,9 @@ function jmapToCoords(event, jump, scale, x, y) {
   let dx = ((event.clientX - rect.left - w / 2) / scaleX);
   let dy = ((event.clientY - rect.top - h / 2) / scaleY);
 
-  function p(n) { return Math.abs(Math.round(n) - n); }
+  function p(n) {
+    return Math.abs(Math.round(n) - n);
+  }
   const THRESHOLD = 0.4;
 
   if (p(dx) > THRESHOLD)
@@ -163,5 +162,5 @@ function jmapToCoords(event, jump, scale, x, y) {
     return null;
   dy = Math.round(dy);
 
-  return {x : x + dx, y : y + dy};
+  return {x: x + dx, y: y + dy};
 }

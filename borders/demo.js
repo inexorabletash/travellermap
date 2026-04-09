@@ -1,25 +1,16 @@
-import {
-  AllegianceMap,
-  breakSpans,
-  claimAllUnclaimed,
-  erode,
-  NON_ALIGNED,
-  processMap,
-  UNALIGNED,
-  walk
-} from '../borders/borders.js';
+import {AllegianceMap, breakSpans, claimAllUnclaimed, erode, NON_ALIGNED, processMap, UNALIGNED, walk} from '../borders/borders.js';
 
 const $ = s => document.querySelector(s);
 
 const allegianceMap = {
-  'Im' : 'red',
-  'As' : 'yellow',
-  'Kk' : 'green',
-  'Va' : 'olive',
-  'Zh' : 'cyan',
-  'So' : 'orange',
-  'Hv' : 'purple',
-  'Na' : 'gray'
+  'Im': 'red',
+  'As': 'yellow',
+  'Kk': 'green',
+  'Va': 'olive',
+  'Zh': 'cyan',
+  'So': 'orange',
+  'Hv': 'purple',
+  'Na': 'gray'
 };
 
 const g_map = new AllegianceMap(16, 20, 1, 1);
@@ -53,11 +44,11 @@ function makeMapDisplay(containerElement, map) {
     }
   }
 
-  containerElement.innerHTML = fragments.join("");
+  containerElement.innerHTML = fragments.join('');
   containerElement.style.width =
-      (g_map.width * sz + (g_map.width + 1) * pad) + "px";
+      (g_map.width * sz + (g_map.width + 1) * pad) + 'px';
   containerElement.style.height =
-      ((g_map.height + 0.5) * sz + (g_map.height + 1.5) * pad) + "px";
+      ((g_map.height + 0.5) * sz + (g_map.height + 1.5) * pad) + 'px';
 }
 
 function updateHex(x, y) {
@@ -66,7 +57,9 @@ function updateHex(x, y) {
 }
 
 function updateView() {
-  g_map.foreach((x, y) => { updateHex(x, y); });
+  g_map.foreach((x, y) => {
+    updateHex(x, y);
+  });
 }
 
 function updateWalks() {
@@ -80,41 +73,43 @@ function updateWalks() {
       const alleg = g_map.getAllegiance(x, y);
       if (alleg !== UNALIGNED && alleg !== NON_ALIGNED &&
           alleg !== last_alleg && !(label in visited)) {
-
         let path = walk(g_map, x, y, alleg);
         let pathLabels = path.map(hex => hexLabel(hex[0], hex[1]));
-        pathLabels.forEach(label => { visited[label] = true; });
+        pathLabels.forEach(label => {
+          visited[label] = true;
+        });
 
-        borders.push({allegiance : alleg, path : pathLabels});
+        borders.push({allegiance: alleg, path: pathLabels});
       }
       last_alleg = alleg;
     }
   }
 
-  borders.sort((a, b) => a.allegiance < b.allegiance   ? -1
-                         : a.allegiance > b.allegiance ? 1
-                                                       : 0);
+  borders.sort(
+      (a, b) => a.allegiance < b.allegiance ? -1 :
+          a.allegiance > b.allegiance       ? 1 :
+                                              0);
 
   const html = [];
   for (const border of borders) {
-    html.push(`<li>${border.allegiance} : ${border.path.join(" ")}</li>`);
+    html.push(`<li>${border.allegiance} : ${border.path.join(' ')}</li>`);
   };
-  $('#walks').innerHTML = html.join("");
+  $('#walks').innerHTML = html.join('');
 }
 
 function hexLabel(x, y) {
-  return (x < 10 ? "0" : "") + x + (y < 10 ? "0" : "") + y;
+  return (x < 10 ? '0' : '') + x + (y < 10 ? '0' : '') + y;
 }
 
 function hexContents(x, y, map) {
   const hexNumber = hexLabel(x, y);
   const occupied = map.isOccupied(x, y);
   const alleg = map.getAllegiance(x, y);
-  const color = (alleg == UNALIGNED) ? "transparent" : allegianceMap[alleg];
+  const color = (alleg == UNALIGNED) ? 'transparent' : allegianceMap[alleg];
 
   return `<div class='hexContents' style='background-color: ${color};'>
     <span class='hexNumber'>${hexNumber}</span><br/>
-    ${occupied ? "<span class='world'>&bull;</span>" : ""}
+    ${occupied ? '<span class=\'world\'>&bull;</span>' : ''}
   </div>`;
 }
 
@@ -163,21 +158,25 @@ window.addEventListener('DOMContentLoaded', () => {
     updateView();
   });
 
-  $('#btnRun').addEventListener('click', () => { run(); });
+  $('#btnRun').addEventListener('click', () => {
+    run();
+  });
 
-  $('#btnClearMap').addEventListener('click', () => { clearMap(); });
+  $('#btnClearMap').addEventListener('click', () => {
+    clearMap();
+  });
 
   const view = $('#map');
   makeMapDisplay(view, g_map);
 
   view.addEventListener('click', event => {
-    let target = (event.target)       ? event.target
-                 : (event.srcElement) ? event.srcElement
-                                      : null;
+    let target = (event.target) ? event.target :
+        (event.srcElement)      ? event.srcElement :
+                                  null;
     while (target) {
       if (target && target.id) {
-        const coords = target.id.split("_");
-        if (coords[0] == "hex") {
+        const coords = target.id.split('_');
+        if (coords[0] == 'hex') {
           clickHex(coords[1], coords[2]);
           break;
         }

@@ -96,8 +96,8 @@ function compareImages(url1, url2, threshold, count, callback) {
   }
 }
 
-function check(url1, url2, threshold = DEFAULT_THRESHOLD,
-               count = DEFAULT_COUNT) {
+function check(
+    url1, url2, threshold = DEFAULT_THRESHOLD, count = DEFAULT_COUNT) {
   url2 = SERVICE_BASE + url2;
 
   var tr, td;
@@ -129,112 +129,130 @@ function check(url1, url2, threshold = DEFAULT_THRESHOLD,
       tr.appendChild(td);
       td.appendChild(item);
     }
-    tr.className = pass ? "pass" : "fail";
+    tr.className = pass ? 'pass' : 'fail';
   });
 }
 
 /// Tests
 
 // Ensure image diff is working
-check("refs/ref_bad_example.png",
-      "/api/jumpmap?sector=Spinward+Marches&hex=1911&jump=2");
+check(
+    'refs/ref_bad_example.png',
+    '/api/jumpmap?sector=Spinward+Marches&hex=1911&jump=2');
 
 // Basics
-check("refs/ref1.png", "/api/jumpmap?sector=Spinward+Marches&hex=1910&jump=3");
-check("refs/ref2.png", "/api/poster?sector=Spinward+Marches", 24);
-check("refs/ref3.png", "/api/poster?sector=Spinward+Marches&subsector=C");
+check('refs/ref1.png', '/api/jumpmap?sector=Spinward+Marches&hex=1910&jump=3');
+check('refs/ref2.png', '/api/poster?sector=Spinward+Marches', 24);
+check('refs/ref3.png', '/api/poster?sector=Spinward+Marches&subsector=C');
 
 // Scales
-check("refs/ref4.png", "/api/tile?x=-0.5&y=-0.5&scale=0.016", 32);
-check("refs/ref5.png", "/api/tile?x=-0.5&y=-0.5&scale=0.031", 32);
-check("refs/ref6.png", "/api/tile?x=-0.5&y=-0.5&scale=0.063", 32);
-check("refs/ref7.png", "/api/tile?x=-0.5&y=-0.5&scale=0.125", 32);
-check("refs/ref8.png", "/api/tile?x=-0.5&y=-0.5&scale=0.25", 32);
-check("refs/ref9.png", "/api/tile?x=-0.5&y=-0.5&scale=0.5", 32);
-check("refs/ref10.png", "/api/tile?x=-0.5&y=-0.5&scale=1");
-check("refs/ref11.png", "/api/tile?x=-0.5&y=-0.5&scale=2");
-check("refs/ref12.png", "/api/tile?x=-0.5&y=-0.5&scale=4");
-check("refs/ref13.png", "/api/tile?x=-0.5&y=-0.5&scale=8");
-check("refs/ref14.png", "/api/tile?x=-0.5&y=-0.5&scale=16");
-check("refs/ref15.png", "/api/tile?x=-0.5&y=-0.5&scale=32");
-check("refs/ref16.png", "/api/tile?x=-0.5&y=-0.5&scale=64");
-check("refs/ref17.png", "/api/tile?x=-0.5&y=-0.5&scale=128");
-check("refs/ref18.png", "/api/tile?x=-0.5&y=-0.5&scale=256");
+check('refs/ref4.png', '/api/tile?x=-0.5&y=-0.5&scale=0.016', 32);
+check('refs/ref5.png', '/api/tile?x=-0.5&y=-0.5&scale=0.031', 32);
+check('refs/ref6.png', '/api/tile?x=-0.5&y=-0.5&scale=0.063', 32);
+check('refs/ref7.png', '/api/tile?x=-0.5&y=-0.5&scale=0.125', 32);
+check('refs/ref8.png', '/api/tile?x=-0.5&y=-0.5&scale=0.25', 32);
+check('refs/ref9.png', '/api/tile?x=-0.5&y=-0.5&scale=0.5', 32);
+check('refs/ref10.png', '/api/tile?x=-0.5&y=-0.5&scale=1');
+check('refs/ref11.png', '/api/tile?x=-0.5&y=-0.5&scale=2');
+check('refs/ref12.png', '/api/tile?x=-0.5&y=-0.5&scale=4');
+check('refs/ref13.png', '/api/tile?x=-0.5&y=-0.5&scale=8');
+check('refs/ref14.png', '/api/tile?x=-0.5&y=-0.5&scale=16');
+check('refs/ref15.png', '/api/tile?x=-0.5&y=-0.5&scale=32');
+check('refs/ref16.png', '/api/tile?x=-0.5&y=-0.5&scale=64');
+check('refs/ref17.png', '/api/tile?x=-0.5&y=-0.5&scale=128');
+check('refs/ref18.png', '/api/tile?x=-0.5&y=-0.5&scale=256');
 
 // Rotation
-check("refs/ref19.png",
-      "/api/poster?sector=Spinward+Marches&scale=8&rotation=0");
-check("refs/ref20.png",
-      "/api/poster?sector=Spinward+Marches&scale=8&rotation=1");
-check("refs/ref21.png",
-      "/api/poster?sector=Spinward+Marches&scale=8&rotation=2");
-check("refs/ref22.png",
-      "/api/poster?sector=Spinward+Marches&scale=8&rotation=3");
+check(
+    'refs/ref19.png', '/api/poster?sector=Spinward+Marches&scale=8&rotation=0');
+check(
+    'refs/ref20.png', '/api/poster?sector=Spinward+Marches&scale=8&rotation=1');
+check(
+    'refs/ref21.png', '/api/poster?sector=Spinward+Marches&scale=8&rotation=2');
+check(
+    'refs/ref22.png', '/api/poster?sector=Spinward+Marches&scale=8&rotation=3');
 
 // Options and Styles
-check("refs/ref23.png",
-      "/api/poster?sector=Spinward+Marches&subsector=C&routes=0");
-check("refs/ref24.png",
-      "/api/poster?sector=Spinward+Marches&subsector=C&sscoords=1");
-check("refs/ref25.png",
-      "/api/tile?x=-0.5&y=-0.5&scale=32&options=8192"); // Force Hexes
-check("refs/ref26.png",
-      "/api/poster?sector=Spinward+Marches&subsector=C&style=Atlas");
-check("refs/ref27.png",
-      "/api/poster?sector=Spinward+Marches&subsector=C&style=Print");
-check("refs/ref28.jpg",
-      "/api/poster?sector=Spinward+Marches&subsector=C&style=Candy", 32, 32);
 check(
-    "refs/ref29.png",
-    "/api/poster?sector=Spinward+Marches&subsector=C&options=17271"); // World
-                                                                      // Colors
+    'refs/ref23.png',
+    '/api/poster?sector=Spinward+Marches&subsector=C&routes=0');
 check(
-    "refs/ref30.png",
-    "/api/poster?sector=Spinward+Marches&subsector=B&options=33655"); // Filled
-                                                                      // Borders
-check("refs/ref39.png",
-      "/api/poster?sector=Spinward+Marches&subsector=C&style=Draft");
-check("refs/ref40.png",
-      "/api/poster?sector=Spinward+Marches&subsector=C&style=FASA");
-check("refs/ref41.png",
-      "/api/poster?sector=Spinward+Marches&subsector=C&style=Mongoose");
+    'refs/ref24.png',
+    '/api/poster?sector=Spinward+Marches&subsector=C&sscoords=1');
+check(
+    'refs/ref25.png',
+    '/api/tile?x=-0.5&y=-0.5&scale=32&options=8192');  // Force Hexes
+check(
+    'refs/ref26.png',
+    '/api/poster?sector=Spinward+Marches&subsector=C&style=Atlas');
+check(
+    'refs/ref27.png',
+    '/api/poster?sector=Spinward+Marches&subsector=C&style=Print');
+check(
+    'refs/ref28.jpg',
+    '/api/poster?sector=Spinward+Marches&subsector=C&style=Candy', 32, 32);
+check(
+    'refs/ref29.png',
+    '/api/poster?sector=Spinward+Marches&subsector=C&options=17271');  // World
+                                                                       // Colors
+check(
+    'refs/ref30.png',
+    '/api/poster?sector=Spinward+Marches&subsector=B&options=33655');  // Filled
+                                                                       // Borders
+check(
+    'refs/ref39.png',
+    '/api/poster?sector=Spinward+Marches&subsector=C&style=Draft');
+check(
+    'refs/ref40.png',
+    '/api/poster?sector=Spinward+Marches&subsector=C&style=FASA');
+check(
+    'refs/ref41.png',
+    '/api/poster?sector=Spinward+Marches&subsector=C&style=Mongoose');
 
 if (String(location).indexOf('localhost') !== -1) {
   // Data Overview
-  check("refs/ref31.png", "/admin/overview");
+  check('refs/ref31.png', '/admin/overview');
 }
 
 // Regression: hex selector calculation
-check("refs/ref32.png",
-      "/api/tile?x=-74&y=-86&scale=512&options=887&style=poster");
+check(
+    'refs/ref32.png',
+    '/api/tile?x=-74&y=-86&scale=512&options=887&style=poster');
 // Regression: candy sector grid lines
-check("refs/ref33.jpg",
-      "/api/tile?x=-0.5&y=-0.25&w=512&h=512&scale=32&options=9079&style=candy",
-      24);
+check(
+    'refs/ref33.jpg',
+    '/api/tile?x=-0.5&y=-0.25&w=512&h=512&scale=32&options=9079&style=candy',
+    24);
 
 // Quadrant
-check("refs/ref34.png", "/api/poster/spin/alpha");
+check('refs/ref34.png', '/api/poster/spin/alpha');
 
 // Aspect Ratio (+rotation)
-check("refs/ref35.png",
-      "/api/poster?sector=Spinward+Marches&scale=8&rotation=0&clampar=1");
-check("refs/ref36.png",
-      "/api/poster?sector=Spinward+Marches&scale=8&rotation=1&clampar=1");
-check("refs/ref37.png",
-      "/api/poster?sector=Spinward+Marches&scale=8&rotation=2&clampar=1");
-check("refs/ref38.png",
-      "/api/poster?sector=Spinward+Marches&scale=8&rotation=3&clampar=1");
+check(
+    'refs/ref35.png',
+    '/api/poster?sector=Spinward+Marches&scale=8&rotation=0&clampar=1');
+check(
+    'refs/ref36.png',
+    '/api/poster?sector=Spinward+Marches&scale=8&rotation=1&clampar=1');
+check(
+    'refs/ref37.png',
+    '/api/poster?sector=Spinward+Marches&scale=8&rotation=2&clampar=1');
+check(
+    'refs/ref38.png',
+    '/api/poster?sector=Spinward+Marches&scale=8&rotation=3&clampar=1');
 
 // Regression: clipping
-check("refs/ref42.png",
-      "/data/spin/1910/jump/3/image?style=mongoose&scale=128");
-check("refs/ref43.png",
-      "/data/spin/1910/jump/2/image?style=poster&scale=128&im=1&review=1");
-check("refs/ref44.png", "/data/spin/a/image?hrotation=60");
+check(
+    'refs/ref42.png', '/data/spin/1910/jump/3/image?style=mongoose&scale=128');
+check(
+    'refs/ref43.png',
+    '/data/spin/1910/jump/2/image?style=poster&scale=128&im=1&review=1');
+check('refs/ref44.png', '/data/spin/a/image?hrotation=60');
 
 // Regression: compositing
-check("refs/ref45.png",
-      "/api/poster?sector=Spinward+Marches&subsector=C&compositing=1");
+check(
+    'refs/ref45.png',
+    '/api/poster?sector=Spinward+Marches&subsector=C&compositing=1');
 
 // Template:
 // check(ref_image, live_image, opt_rgb_threshold, opt_num_bad_pixels);

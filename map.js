@@ -4,14 +4,18 @@ export class Util {
    * @param {string} s
    * @returns {any}
    */
-  static $(s) { return document.querySelector(s); }
+  static $(s) {
+    return document.querySelector(s);
+  }
 
   /**
    * Element selector shorthand for multiple elements.
    * @param {string} s
    * @returns {any[]}
    */
-  static $$(s) { return Array.from(document.querySelectorAll(s)); }
+  static $$(s) {
+    return Array.from(document.querySelectorAll(s));
+  }
 
   /**
    * Constructs a URL by appending query parameters to a base URL.
@@ -37,7 +41,7 @@ export class Util {
       for (const [key, value] of Object.entries(params)) {
         if (value == null)
           continue;
-        for (const v of (Array.isArray(value) ? value : [ value ])) {
+        for (const v of (Array.isArray(value) ? value : [value])) {
           searchParams.append(key, String(v));
         }
       }
@@ -66,18 +70,18 @@ export class Util {
   static escapeHTML(s) {
     return String(s).replace(/[&<>"']/g, c => {
       switch (c) {
-      case '&':
-        return '&amp;';
-      case '<':
-        return '&lt;';
-      case '>':
-        return '&gt;';
-      case '"':
-        return '&quot;';
-      case "'":
-        return '&#39;';
-      default:
-        return c;
+        case '&':
+          return '&amp;';
+        case '<':
+          return '&lt;';
+        case '>':
+          return '&gt;';
+        case '"':
+          return '&quot;';
+        case '\'':
+          return '&#39;';
+        default:
+          return c;
       }
     });
   }
@@ -123,8 +127,8 @@ export class Util {
     /** @this {unknown} */
     return function() {
       const key = JSON.stringify([].slice.call(arguments));
-      return (key in cache) ? cache[key]
-                            : cache[key] = f.apply(this, arguments);
+      return (key in cache) ? cache[key] :
+                              cache[key] = f.apply(this, arguments);
     };
   }
 
@@ -149,8 +153,12 @@ export class Util {
       const img = options.imageElement ?? document.createElement('img');
       img.decoding = 'async';
       img.src = url;
-      img.onload = () => { resolve(img); };
-      img.onerror = () => { reject(Error('Image failed to load')); };
+      img.onload = () => {
+        resolve(img);
+      };
+      img.onerror = () => {
+        reject(Error('Image failed to load'));
+      };
     });
   }
 
@@ -173,7 +181,7 @@ export class Util {
     ta.value = text;
     document.body.append(ta);
     if (navigator.userAgent.match(/iPad|iPhone|iPod/)) {
-      ta.contentEditable = "true";
+      ta.contentEditable = 'true';
       ta.readOnly = true;
       const range = document.createRange();
       range.selectNodeContents(ta);
@@ -199,7 +207,7 @@ export class Util {
    * @returns {{ worlds: { [hex: string]: any } }} sector
    */
   static parseSector(tabDelimitedData) {
-    const sector = {worlds : {}};
+    const sector = {worlds: {}};
     const lines = tabDelimitedData.split(/\r?\n/);
     // @ts-ignore
     const header = lines.shift().toLowerCase().split('\t').map(
@@ -235,38 +243,38 @@ const LEGACY_STYLES = true;
 //----------------------------------------------------------------------
 
 export const MapOptions = {
-  SectorGrid : 0x0001,
-  SubsectorGrid : 0x0002,
-  GridMask : 0x0003,
-  SectorsSelected : 0x0004,
-  SectorsAll : 0x0008,
-  SectorsMask : 0x000c,
-  BordersMajor : 0x0010,
-  BordersMinor : 0x0020,
-  BordersMask : 0x0030,
-  NamesMajor : 0x0040,
-  NamesMinor : 0x0080,
-  NamesMask : 0x00c0,
-  WorldsCapitals : 0x0100,
-  WorldsHomeworlds : 0x0200,
-  WorldsMask : 0x0300,
-  RoutesSelectedDeprecated : 0x0400,
-  PrintStyleDeprecated : 0x0800,
-  CandyStyleDeprecated : 0x1000,
-  StyleMaskDeprecated : 0x1800,
-  ForceHexes : 0x2000,
-  WorldColors : 0x4000,
-  FilledBorders : 0x8000,
-  Mask : 0xffff
+  SectorGrid: 0x0001,
+  SubsectorGrid: 0x0002,
+  GridMask: 0x0003,
+  SectorsSelected: 0x0004,
+  SectorsAll: 0x0008,
+  SectorsMask: 0x000c,
+  BordersMajor: 0x0010,
+  BordersMinor: 0x0020,
+  BordersMask: 0x0030,
+  NamesMajor: 0x0040,
+  NamesMinor: 0x0080,
+  NamesMask: 0x00c0,
+  WorldsCapitals: 0x0100,
+  WorldsHomeworlds: 0x0200,
+  WorldsMask: 0x0300,
+  RoutesSelectedDeprecated: 0x0400,
+  PrintStyleDeprecated: 0x0800,
+  CandyStyleDeprecated: 0x1000,
+  StyleMaskDeprecated: 0x1800,
+  ForceHexes: 0x2000,
+  WorldColors: 0x4000,
+  FilledBorders: 0x8000,
+  Mask: 0xffff
 };
 
 export const Styles = {
-  Poster : 'poster',
-  Atlas : 'atlas',
-  Print : 'print',
-  Candy : 'candy',
-  Draft : 'draft',
-  FASA : 'fasa'
+  Poster: 'poster',
+  Atlas: 'atlas',
+  Print: 'print',
+  Candy: 'candy',
+  Draft: 'draft',
+  FASA: 'fasa'
 };
 
 //----------------------------------------------------------------------
@@ -274,11 +282,11 @@ export const Styles = {
 //----------------------------------------------------------------------
 
 export class Astrometrics {
-  static ParsecScaleX = Math.cos(Math.PI / 6); // cos(30)
+  static ParsecScaleX = Math.cos(Math.PI / 6);  // cos(30)
   static ParsecScaleY = 1.0;
   static SectorWidth = 32;
   static SectorHeight = 40;
-  static ReferenceHexX = 1; // Reference is at Core 0140
+  static ReferenceHexX = 1;  // Reference is at Core 0140
   static ReferenceHexY = 40;
   static TileWidth = 256;
   static TileHeight = 256;
@@ -289,8 +297,8 @@ export class Astrometrics {
   // World-space: Hex coordinate, centered on Reference
   static sectorHexToWorld(sx, sy, hx, hy) {
     return {
-      x : (sx * this.SectorWidth) + hx - this.ReferenceHexX,
-      y : (sy * this.SectorHeight) + hy - this.ReferenceHexY
+      x: (sx * this.SectorWidth) + hx - this.ReferenceHexX,
+      y: (sy * this.SectorHeight) + hy - this.ReferenceHexY
     };
   }
 
@@ -303,7 +311,7 @@ export class Astrometrics {
     const hx = (x - (sx * this.SectorWidth) + 1);
     const hy = (y - (sy * this.SectorHeight) + 1);
 
-    return {sx : sx, sy : sy, hx : hx, hy : hy};
+    return {sx: sx, sy: sy, hx: hx, hy: hy};
   }
 
   // Map-space: Cartesian coordinates, centered on Reference
@@ -335,13 +343,17 @@ export class Astrometrics {
     const wx = Math.round((x / this.ParsecScaleX) + 0.5);
     const wy =
         Math.round((-y / this.ParsecScaleY) + ((wx % 2 === 0) ? 0.5 : 0));
-    return {x : wx, y : wy};
+    return {x: wx, y: wy};
   }
 
   // World-space Coordinates (Reference is 0,0)
   static hexDistance(ax, ay, bx, by) {
-    function even(x) { return (x % 2) == 0; }
-    function odd(x) { return (x % 2) != 0; }
+    function even(x) {
+      return (x % 2) == 0;
+    }
+    function odd(x) {
+      return (x % 2) != 0;
+    }
     const dx = bx - ax;
     const dy = by - ay;
     let adx = Math.abs(dx);
@@ -353,49 +365,49 @@ export class Astrometrics {
 };
 
 const Defaults = {
-  options : MapOptions.SectorGrid | MapOptions.SubsectorGrid |
-                MapOptions.SectorsSelected | MapOptions.BordersMajor |
-                MapOptions.BordersMinor | MapOptions.NamesMajor |
-                MapOptions.WorldsCapitals | MapOptions.WorldsHomeworlds,
-  scale : 2,
-  style : Styles.Poster
+  options: MapOptions.SectorGrid | MapOptions.SubsectorGrid |
+      MapOptions.SectorsSelected | MapOptions.BordersMajor |
+      MapOptions.BordersMinor | MapOptions.NamesMajor |
+      MapOptions.WorldsCapitals | MapOptions.WorldsHomeworlds,
+  scale: 2,
+  style: Styles.Poster
 };
 
 const STYLE_DEFAULTS = {
-  overlay_color : '#8080ff',
-  route_color : '#048104',
-  main_s_color : 'pink',
-  main_m_color : '#FFCC00',
-  main_l_color : 'cyan',
-  main_opacity : 0.25,
-  ew_color : '#FFCC00',
-  you_are_here_url : 'res/ui/youarehere.svg',
+  overlay_color: '#8080ff',
+  route_color: '#048104',
+  main_s_color: 'pink',
+  main_m_color: '#FFCC00',
+  main_l_color: 'cyan',
+  main_opacity: 0.25,
+  ew_color: '#FFCC00',
+  you_are_here_url: 'res/ui/youarehere.svg',
 };
 
 const STYLE_SHEETS = new Map([
-  [ Styles.Poster, STYLE_DEFAULTS ],
-  [ Styles.Candy, STYLE_DEFAULTS ],
-  [ Styles.Draft, STYLE_DEFAULTS ],
+  [Styles.Poster, STYLE_DEFAULTS],
+  [Styles.Candy, STYLE_DEFAULTS],
+  [Styles.Draft, STYLE_DEFAULTS],
   [
     Styles.Atlas, {
       ...STYLE_DEFAULTS,
-      overlay_color : '#808080',
-      you_are_here_url : 'res/ui/youarehere-gray.svg'
+      overlay_color: '#808080',
+      you_are_here_url: 'res/ui/youarehere-gray.svg'
     }
   ],
   [
     Styles.FASA,
-    {...STYLE_DEFAULTS, you_are_here_url : 'res/ui/youarehere-gray.svg'}
+    {...STYLE_DEFAULTS, you_are_here_url: 'res/ui/youarehere-gray.svg'}
   ],
   [
     Styles.Print,
-    {...STYLE_DEFAULTS, you_are_here_url : 'res/ui/youarehere-gray.svg'}
+    {...STYLE_DEFAULTS, you_are_here_url: 'res/ui/youarehere-gray.svg'}
   ],
 ]);
 
 function styleLookup(style, property) {
   const sheet = STYLE_SHEETS.get(style) ?? STYLE_SHEETS.get(Defaults.style) ??
-                STYLE_DEFAULTS;
+      STYLE_DEFAULTS;
   return sheet[property];
 }
 
@@ -443,15 +455,13 @@ export class MapService {
       signal = abortController.signal;
     }
     const accept = options.accept ?? 'application/json';
-    const response = await fetch(url, {
-      method : options.method ?? 'GET',
-      headers : {Accept : accept},
-      signal
-    });
+    const response = await fetch(
+        url,
+        {method: options.method ?? 'GET', headers: {Accept: accept}, signal});
     if (!response.ok)
       throw new Error(response.statusText);
-    return (accept === 'application/json') ? await response.json()
-                                           : await response.text();
+    return (accept === 'application/json') ? await response.json() :
+                                             await response.text();
   }
 
   static #makeServiceUrl(path, options = {}) {
@@ -489,13 +499,13 @@ export class MapService {
    *     application/json, or as text otherwise.
    */
   static credits(worldX, worldY, milieu, options = {}) {
-    const urlOptions = {...options, x : worldX, y : worldY, milieu};
+    const urlOptions = {...options, x: worldX, y: worldY, milieu};
     const url = this.#makeServiceUrl('/api/credits', urlOptions);
     return this.#service(url, options);
   }
 
   static search(query, milieu, options = {}) {
-    const urlOptions = {...options, q : query, milieu};
+    const urlOptions = {...options, q: query, milieu};
     const url = this.#makeServiceUrl('/api/search', urlOptions);
     return this.#service(url, options);
   }
@@ -507,7 +517,7 @@ export class MapService {
   }
 
   static sectorDataTabDelimited(sector, options = {}) {
-    const urlOptions = {...options, sector, type : 'TabDelimited'};
+    const urlOptions = {...options, sector, type: 'TabDelimited'};
     const url = this.#makeServiceUrl('/api/sec', urlOptions);
     options.accept = options.accept ?? 'text/plain';
     return this.#service(url, options);
@@ -589,7 +599,9 @@ class LRUCache {
 // ======================================================================
 
 class ImageStash {
-  constructor() { this.map = new Map(); }
+  constructor() {
+    this.map = new Map();
+  }
 
   get(url, callback) {
     if (this.map.has(url))
@@ -610,7 +622,9 @@ const stash = new ImageStash();
 // Animation Utilities
 // ======================================================================
 
-function isCallable(o) { return typeof o === 'function'; }
+function isCallable(o) {
+  return typeof o === 'function';
+}
 
 class Animation {
   /**
@@ -662,7 +676,9 @@ class Animation {
    * @param {number} p
    * @return {number}
    */
-  static interpolate(a, b, p) { return a * (1.0 - p) + b * p; }
+  static interpolate(a, b, p) {
+    return a * (1.0 - p) + b * p;
+  }
 
   /**
    * Time smoothing function - input time is t within duration dur.
@@ -706,8 +722,12 @@ class NamedOptions {
     this._options = {};
     this._notify = notify;
   }
-  keys() { return Object.keys(this._options); }
-  get(key) { return this._options[key]; }
+  keys() {
+    return Object.keys(this._options);
+  }
+  get(key) {
+    return this._options[key];
+  }
   set(key, value) {
     this._options[key] = value;
     this._notify(key);
@@ -787,16 +807,22 @@ class NamedOptions {
 /**
  * @param {number} v
  */
-function log2(v) { return Math.log(v) / Math.LN2; }
+function log2(v) {
+  return Math.log(v) / Math.LN2;
+}
 /**
  * @param {number} v
  */
-function pow2(v) { return Math.pow(2, v); }
+function pow2(v) {
+  return Math.pow(2, v);
+}
 /**
  * @param {number} x
  * @param {number} y
  */
-function dist(x, y) { return Math.sqrt(x * x + y * y); }
+function dist(x, y) {
+  return Math.sqrt(x * x + y * y);
+}
 
 const SINK_OFFSET = 1000;
 
@@ -804,10 +830,12 @@ const INT_OPTIONS = [
   'routes', 'rifts', 'dimunofficial', 'sscoords', 'allhexes', 'dw', 'an', 'mh',
   'po', 'im', 'cp', 'stellar'
 ];
-const STRING_OPTIONS = [ 'ew', 'qz', 'as', 'hw', 'milieu' ];
+const STRING_OPTIONS = ['ew', 'qz', 'as', 'hw', 'milieu'];
 
 const ZOOM_DELTA = 0.5;
-function roundScale(s) { return Math.round(s / ZOOM_DELTA) * ZOOM_DELTA; }
+function roundScale(s) {
+  return Math.round(s / ZOOM_DELTA) * ZOOM_DELTA;
+}
 
 export class TravellerMap {
   constructor(container, boundingElement) {
@@ -847,7 +875,7 @@ export class TravellerMap {
      */
     this._activeTileRequests = new Map();
     this._maxConcurrentTileRequests = 8;
-    this._tileRequestTimeout = 30000; // 30 seconds
+    this._tileRequestTimeout = 30000;  // 30 seconds
 
     this.defer_loading = true;
 
@@ -950,10 +978,8 @@ export class TravellerMap {
       event.stopPropagation();
 
       if (!was_dragged) {
-        this._clicked({
-          ...this.eventToWorldCoords(event),
-          activeElement : previous_focus
-        });
+        this._clicked(
+            {...this.eventToWorldCoords(event), activeElement: previous_focus});
       }
     });
 
@@ -1018,7 +1044,6 @@ export class TravellerMap {
       if (event.touches.length === 1) {
         const coords = this.eventCoords(event.touches[0]);
         if (touch_coords.x !== coords.x || touch_coords.y !== coords.y) {
-
           // Only flag as dragged if movement exceeds threshold from starting
           // point
           const dx = touch_start_coords.x - coords.x;
@@ -1064,7 +1089,7 @@ export class TravellerMap {
         touch_coords = this.eventCoords(event.touches[0]);
 
       if (event.touches.length === 0 && !was_touch_dragged) {
-        this._clicked({...touch_wc, activeElement : previous_focus});
+        this._clicked({...touch_wc, activeElement: previous_focus});
       }
       event.preventDefault();
       event.stopPropagation();
@@ -1132,14 +1157,14 @@ export class TravellerMap {
         return;
 
       switch (event.key) {
-      case '-':
-        this.ZoomOut();
-        break;
-      case '=':
-        this.ZoomIn();
-        break;
-      default:
-        return;
+        case '-':
+          this.ZoomOut();
+          break;
+        case '=':
+          this.ZoomIn();
+          break;
+        default:
+          return;
       }
 
       event.preventDefault();
@@ -1151,7 +1176,7 @@ export class TravellerMap {
     this.defer_loading = false;
     this.invalidate();
 
-    if (window == window.top) // == for IE
+    if (window == window.top)  // == for IE
       container.focus();
   }
 
@@ -1160,7 +1185,7 @@ export class TravellerMap {
   // ======================================================================
 
   _offset(dx, dy) {
-    this.position = [ this.x + dx / this.scale, this.y - dy / this.scale ];
+    this.position = [this.x + dx / this.scale, this.y - dy / this.scale];
   }
 
   _setScale(newscale, px, py) {
@@ -1257,9 +1282,9 @@ export class TravellerMap {
     const tscale = Math.round(this._logScale);
 
     // Tile URL (apart from x/y/scale)
-    const params = {options : this.options, style : this.style};
+    const params = {options: this.options, style: this.style};
     this.namedOptions.forEach((value, key) => {
-      if ([ 'ew', 'qz', 'as' ].includes(key))
+      if (['ew', 'qz', 'as'].includes(key))
         return;
       params[key] = value;
     });
@@ -1272,7 +1297,7 @@ export class TravellerMap {
 
     // From map space to tile space
     // (Traveller map coords change at each integral zoom level)
-    const cf = pow2(tscale - 1); // Coordinate factor (integral)
+    const cf = pow2(tscale - 1);  // Coordinate factor (integral)
 
     // Compute edges in tile space
     const cw = this.rect.width, ch = this.rect.height;
@@ -1380,7 +1405,7 @@ export class TravellerMap {
   // are used to fill in the gap until it loads.
   //
   drawTile(x, y, scale, dx, dy, dw, dh) {
-    const $this = this; // for closures
+    const $this = this;  // for closures
 
     function drawImage(img, x, y, w, h) {
       // @ts-ignore
@@ -1436,7 +1461,6 @@ export class TravellerMap {
 
       for (let oy = 0; oy < 2; oy += 1) {
         for (let ox = 0; ox < 2; ox += 1) {
-
           const tx = (x / factor) + ox;
           const ty = (y / factor) + oy;
           const img = $this.getTile(tx, ty, tscale);
@@ -1468,7 +1492,7 @@ export class TravellerMap {
     const timeout =
         setTimeout(() => abortController.abort(), this._tileRequestTimeout);
     try {
-      const img = await Util.fetchImage(url, {signal : abortController.signal});
+      const img = await Util.fetchImage(url, {signal: abortController.signal});
       this.cache.insert(url, img);
       this._tileLoadDebounce();
     } catch (err) {
@@ -1498,8 +1522,7 @@ export class TravellerMap {
     if (cached)
       return cached;
 
-    const canRequest =
-        allowFetch && !this._activeTileRequests.has(url) &&
+    const canRequest = allowFetch && !this._activeTileRequests.has(url) &&
         !this.defer_loading && navigator.onLine &&
         this._activeTileRequests.size < this._maxConcurrentTileRequests;
 
@@ -1541,7 +1564,7 @@ export class TravellerMap {
    * @param {number} [options.duration=2.0] - The duration of the animation in
    *     seconds.
    */
-  animateTo(scale, x, y, options = {duration : 2.0}) {
+  animateTo(scale, x, y, options = {duration: 2.0}) {
     return /** @type {Promise<void>} */ (new Promise((resolve, reject) => {
       this.cancelAnimation();
       const os = this.scale, ox = this.x, oy = this.y;
@@ -1664,7 +1687,7 @@ export class TravellerMap {
       ctx[index ? 'lineTo' : 'moveTo'](pt.x, pt.y);
     }
     const dots =
-        (this._logScale >= 7) ? route : [ route[0], route[route.length - 1] ];
+        (this._logScale >= 7) ? route : [route[0], route[route.length - 1]];
     for (const stop of dots) {
       let pt = Astrometrics.sectorHexToMap(stop.sx, stop.sy, stop.hx, stop.hy);
       pt = this.mapToPixel(pt.x, pt.y);
@@ -1683,10 +1706,11 @@ export class TravellerMap {
     ctx.translate(-this.canvas.offset_x, -this.canvas.offset_y);
     ctx.globalCompositeOperation = 'source-over';
     ctx.globalAlpha = styleLookup(this.style, 'main_opacity');
-    ctx.fillStyle =
-        styleLookup(this.style, main.length <= 10   ? 'main_s_color'
-                                : main.length <= 50 ? 'main_m_color'
-                                                    : 'main_l_color');
+    ctx.fillStyle = styleLookup(
+        this.style,
+        main.length <= 10     ? 'main_s_color' :
+            main.length <= 50 ? 'main_m_color' :
+                                'main_l_color');
     ctx.beginPath();
     const radius = 1.15 * this.scale / 2;
     for (const world of main) {
@@ -1716,8 +1740,9 @@ export class TravellerMap {
       // @ts-ignore
       ctx.translate(-this.canvas.offset_x, -this.canvas.offset_y);
       ctx.globalCompositeOperation = 'source-over';
-      ctx.drawImage(image, pt.x - MARKER_SIZE / 2, pt.y - MARKER_SIZE / 2,
-                    MARKER_SIZE, MARKER_SIZE);
+      ctx.drawImage(
+          image, pt.x - MARKER_SIZE / 2, pt.y - MARKER_SIZE / 2, MARKER_SIZE,
+          MARKER_SIZE);
       ctx.restore();
       return;
     }
@@ -1791,10 +1816,11 @@ export class TravellerMap {
     ctx.lineWidth = Math.max(w * this.scale, 5);
     ctx.strokeStyle = styleLookup(this.style, 'ew_color');
     ctx.beginPath();
-    const px_offset = 0.5; // offset from corner to center of hex
+    const px_offset = 0.5;  // offset from corner to center of hex
     const pt = this.mapToPixel(x + px_offset, y + px_offset);
-    ctx.arc(pt.x, pt.y, this.scale * radius, Math.PI / 2 - Math.PI / 12,
-            Math.PI / 2 + Math.PI / 12);
+    ctx.arc(
+        pt.x, pt.y, this.scale * radius, Math.PI / 2 - Math.PI / 12,
+        Math.PI / 2 + Math.PI / 12);
     ctx.stroke();
     ctx.restore();
   }
@@ -1811,7 +1837,7 @@ export class TravellerMap {
     ctx.lineWidth = Math.max(w * this.scale, 5);
     ctx.strokeStyle = styleLookup(this.style, 'ew_color');
     ctx.beginPath();
-    const px_offset = 0.5; // offset from corner to center of hex
+    const px_offset = 0.5;  // offset from corner to center of hex
     const pt = this.mapToPixel(x + px_offset, y + px_offset);
     ctx.arc(pt.x, pt.y, this.scale * radius, 0, Math.PI * 2);
     ctx.stroke();
@@ -1830,7 +1856,6 @@ export class TravellerMap {
 
     // Different effect radii
     for (const max of [0.5, 4, 8, 12]) {
-
       // Date of supernova: 1270
       let radius = (year - 1270) * vel;
       if (radius < 0)
@@ -1848,7 +1873,7 @@ export class TravellerMap {
       ctx.globalAlpha = 0.3 / 2;
       ctx.fillStyle = styleLookup(this.style, 'ew_color');
       ctx.beginPath();
-      const px_offset = 0.5; // offset from corner to center of hex
+      const px_offset = 0.5;  // offset from corner to center of hex
       const pt = this.mapToPixel(x + px_offset, y + px_offset);
       ctx.arc(pt.x, pt.y, this.scale * radius, 0, Math.PI * 2);
       ctx.fill();
@@ -1858,15 +1883,15 @@ export class TravellerMap {
 
   mapToPixel(mx, my) {
     return {
-      x : (mx - this._tx * this.tilesize) * this.scale + this.rect.width / 2,
-      y : (-my - this._ty * this.tilesize) * this.scale + this.rect.height / 2
+      x: (mx - this._tx * this.tilesize) * this.scale + this.rect.width / 2,
+      y: (-my - this._ty * this.tilesize) * this.scale + this.rect.height / 2
     };
   }
 
   pixelToMap(px, py) {
     return {
-      x : this._tx * this.tilesize + (px - this.rect.width / 2) / this.scale,
-      y : -(this._ty * this.tilesize + (py - this.rect.height / 2) / this.scale)
+      x: this._tx * this.tilesize + (px - this.rect.width / 2) / this.scale,
+      y: -(this._ty * this.tilesize + (py - this.rect.height / 2) / this.scale)
     };
   }
 
@@ -1875,16 +1900,16 @@ export class TravellerMap {
     // layerX/Y for Firefox. Touch events lack these, so compute untransformed
     // coords.
     // TODO: Map touch coordinates back into world-space.
-    const offsetX = 'offsetX' in event  ? event.offsetX
-                    : 'layerX' in event ? event.layerX
-                                        : event.pageX - event.target.offsetLeft;
-    const offsetY = 'offsetY' in event  ? event.offsetY
-                    : 'layerY' in event ? event.layerY
-                                        : event.pageY - event.target.offsetTop;
+    const offsetX = 'offsetX' in event ? event.offsetX :
+        'layerX' in event              ? event.layerX :
+                                         event.pageX - event.target.offsetLeft;
+    const offsetY = 'offsetY' in event ? event.offsetY :
+        'layerY' in event              ? event.layerY :
+                                         event.pageY - event.target.offsetTop;
 
     return {
-      x : offsetX - SINK_OFFSET - this.rect.left,
-      y : offsetY - SINK_OFFSET - this.rect.top
+      x: offsetX - SINK_OFFSET - this.rect.left,
+      y: offsetY - SINK_OFFSET - this.rect.top
     };
   }
 
@@ -1898,7 +1923,9 @@ export class TravellerMap {
   // Public API
   // ======================================================================
 
-  get scale() { return pow2(this._logScale - 1); }
+  get scale() {
+    return pow2(this._logScale - 1);
+  }
   set scale(value) {
     value = 1 + log2(Number(value));
     if (value === this._logScale)
@@ -1906,22 +1933,27 @@ export class TravellerMap {
     this._setScale(value);
   }
 
-  get logScale() { return this._logScale; }
+  get logScale() {
+    return this._logScale;
+  }
   set logScale(value) {
     if (value === this._logScale)
       return;
     this._setScale(value);
   }
 
-  get options() { return this._options; }
+  get options() {
+    return this._options;
+  }
   set options(value) {
     if (LEGACY_STYLES) {
       // Handle legacy styles specified in options bits
       if ((value & MapOptions.StyleMaskDeprecated) ===
           MapOptions.PrintStyleDeprecated)
         this.style = 'atlas';
-      else if ((value & MapOptions.StyleMaskDeprecated) ===
-               MapOptions.CandyStyleDeprecated)
+      else if (
+          (value & MapOptions.StyleMaskDeprecated) ===
+          MapOptions.CandyStyleDeprecated)
         this.style = 'candy';
       value = value & ~MapOptions.StyleMaskDeprecated;
     }
@@ -1936,7 +1968,9 @@ export class TravellerMap {
     this._optionsChanged(this._options);
   }
 
-  get style() { return this._style; }
+  get style() {
+    return this._style;
+  }
   set style(value) {
     if (value === this._style)
       return;
@@ -1947,14 +1981,22 @@ export class TravellerMap {
     this._styleChanged(this._style);
   }
 
-  get x() { return this._tx * this.tilesize; }
-  set x(value) { this.position = [ value, this.y ]; }
+  get x() {
+    return this._tx * this.tilesize;
+  }
+  set x(value) {
+    this.position = [value, this.y];
+  }
 
-  get y() { return this._ty * -this.tilesize; }
-  set y(value) { this.position = [ this.x, value ]; }
+  get y() {
+    return this._ty * -this.tilesize;
+  }
+  set y(value) {
+    this.position = [this.x, value];
+  }
 
   get position() {
-    return [ this._tx * this.tilesize, this._ty * -this.tilesize ];
+    return [this._tx * this.tilesize, this._ty * -this.tilesize];
   }
   set position(value) {
     const x = value[0] / this.tilesize, y = value[1] / -this.tilesize;
@@ -1966,9 +2008,13 @@ export class TravellerMap {
     this._positionChanged();
   }
 
-  get worldX() { return Astrometrics.mapToWorld(this.x, this.y).x; }
+  get worldX() {
+    return Astrometrics.mapToWorld(this.x, this.y).x;
+  }
 
-  get worldY() { return Astrometrics.mapToWorld(this.x, this.y).y; }
+  get worldY() {
+    return Astrometrics.mapToWorld(this.x, this.y).y;
+  }
 
   //
   /**
@@ -1985,8 +2031,8 @@ export class TravellerMap {
    *     happen immediately without animation, even if the target is within the
    *     animation threshold.
    */
-  CenterAtSectorHex(sx, sy, hx, hy,
-                    options = {scale : undefined, immediate: false}) {
+  CenterAtSectorHex(
+      sx, sy, hx, hy, options = {scale: undefined, immediate: false}) {
     this.cancelAnimation();
     const target = Astrometrics.sectorHexToMap(sx, sy, hx, hy);
 
@@ -1998,7 +2044,7 @@ export class TravellerMap {
       }
       this.scale = options.scale;
     }
-    this.position = [ target.x, target.y ];
+    this.position = [target.x, target.y];
   }
 
   // Move and scale display to show the specified world space area
@@ -2021,15 +2067,15 @@ export class TravellerMap {
     const pixelWidth = maxPixelPosition.x - minPixelPosition.x;
     const pixelHeight = maxPixelPosition.y - minPixelPosition.y;
     // Calculate the new scale value based on the current scale value
-    const pixelRatio = (pixelWidth > pixelHeight)
-                           ? (pixelWidth / this.rect.width)
-                           : (pixelHeight / this.rect.height);
+    const pixelRatio = (pixelWidth > pixelHeight) ?
+        (pixelWidth / this.rect.width) :
+        (pixelHeight / this.rect.height);
     const divisor = Math.abs(pixelRatio) * 2;
     const newScale = this.scale / divisor;
     // Update the view
-    this.CenterAtSectorHex(centerSectorHex.sx, centerSectorHex.sy,
-                           centerSectorHex.hx, centerSectorHex.hy,
-                           {scale : newScale});
+    this.CenterAtSectorHex(
+        centerSectorHex.sx, centerSectorHex.sy, centerSectorHex.hx,
+        centerSectorHex.hy, {scale: newScale});
   }
 
   // Scroll the map view by the specified dx/dy (in pixels)
@@ -2047,20 +2093,23 @@ export class TravellerMap {
     this.animation =
         new Animation(1.0, p => Animation.smooth(p, 1.0, 0.1, 0.25));
     this.animation.onanimate = p => {
-      this.position = [
-        Animation.interpolate(ox, tx, p), Animation.interpolate(oy, ty, p)
-      ];
+      this.position =
+          [Animation.interpolate(ox, tx, p), Animation.interpolate(oy, ty, p)];
     };
   }
 
-  ZoomIn() { this._setScale(roundScale(this._logScale) + ZOOM_DELTA); }
+  ZoomIn() {
+    this._setScale(roundScale(this._logScale) + ZOOM_DELTA);
+  }
 
-  ZoomOut() { this._setScale(roundScale(this._logScale) - ZOOM_DELTA); }
+  ZoomOut() {
+    this._setScale(roundScale(this._logScale) - ZOOM_DELTA);
+  }
 
   // NOTE: This API is subject to change
   // |x| and |y| are map-space coordinates
   AddMarker(id, x, y, opt_url) {
-    const marker = {x, y, id, url : opt_url, z : 909};
+    const marker = {x, y, id, url: opt_url, z: 909};
 
     this.markers.push(marker);
     this.invalidate();
@@ -2068,7 +2117,7 @@ export class TravellerMap {
 
   AddOverlay(o) {
     // TODO: Take id, like AddMarker
-    const overlay = {id : 'overlay', z : 910, ...o};
+    const overlay = {id: 'overlay', z: 910, ...o};
 
     this.overlays.push(overlay);
     this.invalidate();
@@ -2117,7 +2166,9 @@ export class TravellerMap {
       return isNaN(n) ? 0 : n;
     }
 
-    function has(params, list) { return list.every(item => item in params); }
+    function has(params, list) {
+      return list.every(item => item in params);
+    }
 
     if ('scale' in params)
       this.scale = float('scale');
@@ -2128,13 +2179,13 @@ export class TravellerMap {
     if ('style' in params)
       this.style = params.style;
 
-    if (has(params, [ 'yah_sx', 'yah_sy', 'yah_hx', 'yah_hx' ])) {
-      const pt = Astrometrics.sectorHexToMap(int('yah_sx'), int('yah_sy'),
-                                             int('yah_hx'), int('yah_hy'));
+    if (has(params, ['yah_sx', 'yah_sy', 'yah_hx', 'yah_hx'])) {
+      const pt = Astrometrics.sectorHexToMap(
+          int('yah_sx'), int('yah_sy'), int('yah_hx'), int('yah_hy'));
       this.AddMarker('you_are_here', pt.x, pt.y);
-    } else if (has(params, [ 'yah_x', 'yah_y' ])) {
+    } else if (has(params, ['yah_x', 'yah_y'])) {
       this.AddMarker('you_are_here', float('yah_x'), float('yah_y'));
-    } else if (has(params, [ 'yah_sector' ])) {
+    } else if (has(params, ['yah_sector'])) {
       (async () => {
         try {
           const location =
@@ -2142,9 +2193,10 @@ export class TravellerMap {
           const pt = Astrometrics.worldToMap(location.x, location.y);
           this.AddMarker('you_are_here', pt.x, pt.y);
         } catch (ex) {
-          alert('The requested marker location "' + params.yah_sector +
-                ('yah_hex' in params ? (' ' + params.yah_hex) : '') +
-                '" was not found.');
+          alert(
+              'The requested marker location "' + params.yah_sector +
+              ('yah_hex' in params ? (' ' + params.yah_hex) : '') +
+              '" was not found.');
         }
       })();
     }
@@ -2152,24 +2204,25 @@ export class TravellerMap {
     if (has(params, [
           'marker_sx', 'marker_sy', 'marker_hx', 'marker_hx', 'marker_url'
         ])) {
-      const pt =
-          Astrometrics.sectorHexToMap(int('marker_sx'), int('marker_sy'),
-                                      int('marker_hx'), int('marker_hy'));
+      const pt = Astrometrics.sectorHexToMap(
+          int('marker_sx'), int('marker_sy'), int('marker_hx'),
+          int('marker_hy'));
       this.AddMarker('custom', pt.x, pt.y, params.marker_url);
-    } else if (has(params, [ 'marker_x', 'marker_y', 'marker_url' ])) {
-      this.AddMarker('custom', float('marker_x'), float('marker_y'),
-                     params.marker_url);
-    } else if (has(params, [ 'marker_sector', 'marker_url' ])) {
+    } else if (has(params, ['marker_x', 'marker_y', 'marker_url'])) {
+      this.AddMarker(
+          'custom', float('marker_x'), float('marker_y'), params.marker_url);
+    } else if (has(params, ['marker_sector', 'marker_url'])) {
       (async () => {
         try {
-          const location = await MapService.coordinates(params.marker_sector,
-                                                        params.marker_hex);
+          const location = await MapService.coordinates(
+              params.marker_sector, params.marker_hex);
           const pt = Astrometrics.worldToMap(location.x, location.y);
           this.AddMarker('custom', pt.x, pt.y, params.marker_url);
         } catch (ex) {
-          alert('The requested marker location "' + params.marker_sector +
-                ('marker_hex' in params ? (' ' + params.marker_hex) : '') +
-                '" was not found.');
+          alert(
+              'The requested marker location "' + params.marker_sector +
+              ('marker_hex' in params ? (' ' + params.marker_hex) : '') +
+              '" was not found.');
         }
       })();
     }
@@ -2178,19 +2231,13 @@ export class TravellerMap {
     for (let i = 0;; ++i) {
       const n = (i === 0) ? '' : i, oxs = 'ox' + n, oys = 'oy' + n,
             ows = 'ow' + n, ohs = 'oh' + n, oss = 'os' + n;
-      if (has(params, [ oxs, oys, ows, ohs ])) {
+      if (has(params, [oxs, oys, ows, ohs])) {
         const x = float(oxs);
         const y = float(oys);
         const w = float(ows);
         const h = float(ohs);
-        this.AddOverlay({
-          type : 'rectangle',
-          x : x,
-          y : y,
-          w : w,
-          h : h,
-          style : params[oss]
-        });
+        this.AddOverlay(
+            {type: 'rectangle', x: x, y: y, w: w, h: h, style: params[oss]});
       } else {
         break;
       }
@@ -2204,12 +2251,12 @@ export class TravellerMap {
         }
         const a = or.split('!');
         this.AddOverlay({
-          type : 'rectangle',
-          x : float(a[0]),
-          y : float(a[1]),
-          w : float(a[2]),
-          h : float(a[3]),
-          style : a[4]
+          type: 'rectangle',
+          x: float(a[0]),
+          y: float(a[1]),
+          w: float(a[2]),
+          h: float(a[3]),
+          style: a[4]
         });
       }
     }
@@ -2219,12 +2266,12 @@ export class TravellerMap {
       const n = (i === 0) ? '' : i;
       const ocxs = 'ocx' + n, ocys = 'ocy' + n, ocrs = 'ocr' + n,
             ocss = 'ocs' + n;
-      if (has(params, [ ocxs, ocys, ocrs ])) {
+      if (has(params, [ocxs, ocys, ocrs])) {
         const cx = float(ocxs);
         const cy = float(ocys);
         const cr = float(ocrs);
         this.AddOverlay(
-            {type : 'circle', x : cx, y : cy, r : cr, style : params[ocss]});
+            {type: 'circle', x: cx, y: cy, r: cr, style: params[ocss]});
       } else {
         break;
       }
@@ -2238,11 +2285,11 @@ export class TravellerMap {
         }
         const a = oc.split('!');
         this.AddOverlay({
-          type : 'circle',
-          x : float(a[0]),
-          y : float(a[1]),
-          r : float(a[2]),
-          style : a[3]
+          type: 'circle',
+          x: float(a[0]),
+          y: float(a[1]),
+          r: float(a[2]),
+          style: a[3]
         });
       }
     }
@@ -2251,25 +2298,27 @@ export class TravellerMap {
     if ('p' in params) {
       const parts = params.p.split('!');
       this.logScale = parseFloat(parts[2]) || 0;
-      this.position = [ parseFloat(parts[0]) || 0, parseFloat(parts[1]) || 0 ];
-    } else if (has(params, [ 'x', 'y' ])) {
-      this.position = [ float('x'), float('y') ];
-    } else if (has(params, [ 'sx', 'sy', 'hx', 'hy', 'scale' ])) {
-      this.CenterAtSectorHex(float('sx'), float('sy'), float('hx'), float('hy'),
-                             {scale : float('scale')});
+      this.position = [parseFloat(parts[0]) || 0, parseFloat(parts[1]) || 0];
+    } else if (has(params, ['x', 'y'])) {
+      this.position = [float('x'), float('y')];
+    } else if (has(params, ['sx', 'sy', 'hx', 'hy', 'scale'])) {
+      this.CenterAtSectorHex(
+          float('sx'), float('sy'), float('hx'), float('hy'),
+          {scale: float('scale')});
     } else if ('sector' in params) {
       (async () => {
         try {
           const location = await MapService.coordinates(
-              params.sector, params.hex, {subsector : params.subsector});
+              params.sector, params.hex, {subsector: params.subsector});
           if (location.hx &&
-              location.hy) { // NOTE: Test for undefined -or- zero
-            this.CenterAtSectorHex(location.sx, location.sy, location.hx,
-                                   location.hy, {scale : 64});
+              location.hy) {  // NOTE: Test for undefined -or- zero
+            this.CenterAtSectorHex(
+                location.sx, location.sy, location.hx, location.hy,
+                {scale: 64});
           } else {
-            this.CenterAtSectorHex(location.sx, location.sy,
-                                   Astrometrics.SectorWidth / 2,
-                                   Astrometrics.SectorHeight / 2, {scale : 16});
+            this.CenterAtSectorHex(
+                location.sx, location.sy, Astrometrics.SectorWidth / 2,
+                Astrometrics.SectorHeight / 2, {scale: 16});
           }
 
           if ('yah' in params) {
@@ -2280,17 +2329,17 @@ export class TravellerMap {
           }
 
           if ('marker' in params) {
-            this.AddMarker('custom', this.position[0], this.position[1],
-                           params['marker']);
+            this.AddMarker(
+                'custom', this.position[0], this.position[1], params['marker']);
             params.marker_url = params.marker;
             params.marker_x = String(this.position[0]);
             params.marker_y = String(this.position[1]);
             delete params.marker;
           }
         } catch (ex) {
-          alert('The requested location "' + params.sector +
-                ('hex' in params ? (' ' + params.hex) : '') +
-                '" was not found.');
+          alert(
+              'The requested location "' + params.sector +
+              ('hex' in params ? (' ' + params.hex) : '') + '" was not found.');
         }
       })();
     }
@@ -2345,11 +2394,25 @@ export class TravellerMap {
     queueMicrotask(invoke);
   }
 
-  _doubleClicked(data) { this._fireEvent(this.onDoubleClick, data); }
-  _clicked(data) { this._fireEvent(this.onClick, data); }
-  _positionChanged() { this._fireEvent(this.onPositionChanged); }
-  _scaleChanged(data) { this._fireEvent(this.onScaleChanged, data); }
-  _styleChanged(data) { this._fireEvent(this.onStyleChanged, data); }
-  _optionsChanged(data) { this._fireEvent(this.onOptionsChanged, data); }
-  _hovered(data) { this._fireEvent(this.onHovered, data); }
+  _doubleClicked(data) {
+    this._fireEvent(this.onDoubleClick, data);
+  }
+  _clicked(data) {
+    this._fireEvent(this.onClick, data);
+  }
+  _positionChanged() {
+    this._fireEvent(this.onPositionChanged);
+  }
+  _scaleChanged(data) {
+    this._fireEvent(this.onScaleChanged, data);
+  }
+  _styleChanged(data) {
+    this._fireEvent(this.onStyleChanged, data);
+  }
+  _optionsChanged(data) {
+    this._fireEvent(this.onOptionsChanged, data);
+  }
+  _hovered(data) {
+    this._fireEvent(this.onHovered, data);
+  }
 }

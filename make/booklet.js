@@ -31,7 +31,9 @@ function capitalize(s) {
   return s.substring(0, 1).toUpperCase() + s.substring(1);
 }
 
-function titleCaps(s) { return s.split(/ /g).map(capitalize).join(' '); }
+function titleCaps(s) {
+  return s.split(/ /g).map(capitalize).join(' ');
+}
 
 function firstOrNull(a) {
   if (a && a.length > 0)
@@ -43,8 +45,12 @@ function fetchImage(url, img) {
   return new Promise((resolve, reject) => {
     img = img || document.createElement('img');
     img.src = url;
-    img.onload = () => { resolve(img); };
-    img.onerror = () => { reject(Error(`failed to load ${url}`)); };
+    img.onload = () => {
+      resolve(img);
+    };
+    img.onerror = () => {
+      reject(Error(`failed to load ${url}`));
+    };
   });
 }
 
@@ -80,9 +86,9 @@ function parseSector(tabDelimitedData, metadata) {
        @type {Array<{index: string, name: string, worlds: Array, hex: string,
            ss: string}>}
      */
-    worlds : [],
+    worlds: [],
     /** @type {Array<{index: string, name: string, worlds: Array}>} */
-    subsectors : []
+    subsectors: []
   };
 
   for (let i = 0; i < 16; i += 1) {
@@ -95,9 +101,9 @@ function parseSector(tabDelimitedData, metadata) {
          @type {Array<{index: string, name: string, worlds: Array, hex: string,
              ss: string}>}
        */
-      worlds : [],
+      worlds: [],
       index,
-      name : ss ? ss.Name : '',
+      name: ss ? ss.Name : '',
     };
   }
 
@@ -132,13 +138,12 @@ function parseSector(tabDelimitedData, metadata) {
     const x = Math.floor(parseInt(world.hex, 10) / 100),
           y = Math.floor(parseInt(world.hex, 10) % 100),
           ss = Math.floor((x - 1) / (Traveller.Astrometrics.SectorWidth / 4)) +
-               Math.floor((y - 1) / (Traveller.Astrometrics.SectorHeight / 4)) *
-                   4;
+        Math.floor((y - 1) / (Traveller.Astrometrics.SectorHeight / 4)) * 4;
 
     sector.subsectors[ss].worlds.push(world);
 
     if (world.name.length) {
-      sector.index.push({name : world.name, location : world.ss + world.hex});
+      sector.index.push({name: world.name, location: world.ss + world.hex});
     }
   };
   sector.index.sort((a, b) => a.name.localeCompare(b.name, 'en-us'));
@@ -158,9 +163,10 @@ function parseSector(tabDelimitedData, metadata) {
   };
 
   if ('Allegiances' in metadata) {
-    metadata.Allegiances.sort((a, b) => a.Code < b.Code   ? -1
-                                        : a.Code > b.Code ? 1
-                                                          : 0);
+    metadata.Allegiances.sort(
+        (a, b) => a.Code < b.Code ? -1 :
+            a.Code > b.Code       ? 1 :
+                                    0);
   }
 
   return sector;
@@ -192,12 +198,12 @@ function range(start, stop) {
 function sectorData(params) {
   if ('sector' in params) {
     return Traveller.MapService.sectorDataTabDelimited(
-        params.sector, {milieu : params.milieu});
+        params.sector, {milieu: params.milieu});
   }
 
   if ('data' in params) {
     return getTextViaPOST(
-        Traveller.MapService.makeURL('/api/sec', {type : 'TabDelimited'}),
+        Traveller.MapService.makeURL('/api/sec', {type: 'TabDelimited'}),
         params.data);
   }
 
@@ -206,14 +212,15 @@ function sectorData(params) {
 
 function sectorMetaData(params) {
   if ('sector' in params) {
-    return Traveller.MapService.sectorMetaData(params.sector,
-                                               {milieu : params.milieu});
+    return Traveller.MapService.sectorMetaData(
+        params.sector, {milieu: params.milieu});
   }
 
   if ('metadata' in params) {
-    return getJSONViaPOST(Traveller.MapService.makeURL(
-                              '/api/metadata', {accept : 'application/json'}),
-                          params.metadata);
+    return getJSONViaPOST(
+        Traveller.MapService.makeURL(
+            '/api/metadata', {accept: 'application/json'}),
+        params.metadata);
   }
 
   return Promise.reject(new Error('No sector or metadata specified.'));
@@ -224,10 +231,10 @@ window.addEventListener('DOMContentLoaded', async () => {
   if (searchParams.has('sector')) {
     document.body.classList.add('render');
     const success = await render({
-      sector : searchParams.get('sector'),
-      milieu : searchParams.get('milieu'),
-      style : searchParams.get('style'),
-      options : searchParams.get('options')
+      sector: searchParams.get('sector'),
+      milieu: searchParams.get('milieu'),
+      style: searchParams.get('style'),
+      options: searchParams.get('options')
     });
     if (success && searchParams.has('print')) {
       window.print();
@@ -245,9 +252,9 @@ window.addEventListener('DOMContentLoaded', async () => {
     document.body.classList.add('render');
     document.body.classList.add('style-' + $('#data-style').value);
     await render({
-      data : form['data'].value,
-      metadata : form['metadata'].value,
-      style : form['map-style'].value
+      data: form['data'].value,
+      metadata: form['metadata'].value,
+      style: form['map-style'].value
     });
   });
 
@@ -258,16 +265,16 @@ async function render(params) {
   const hash = window.location.hash;
   window.location.hash = '';
 
-  const options = (params.options !== undefined && params.options !== null)
-                      ? Number(params.options)
-                      : Traveller.MapOptions.BordersMask,
+  const options = (params.options !== undefined && params.options !== null) ?
+      Number(params.options) :
+      Traveller.MapOptions.BordersMask,
         style = params.style || 'print';
 
   status('Fetching data...', true);
 
   try {
     const [data, metadata] =
-        await Promise.all([ sectorData(params), sectorMetaData(params) ]);
+        await Promise.all([sectorData(params), sectorMetaData(params)]);
 
     status('Processing data...', true);
     const pending_promises = [];
@@ -302,11 +309,11 @@ async function render(params) {
     }
     document.title = sector.title;
     const url_params = {
-      accept : 'image/svg+xml',
-      rotation : 3,
-      scale : 64,
-      options : options | Traveller.MapOptions.SubsectorGrid |
-                    Traveller.MapOptions.NamesMask,
+      accept: 'image/svg+xml',
+      rotation: 3,
+      scale: 64,
+      options: options | Traveller.MapOptions.SubsectorGrid |
+          Traveller.MapOptions.NamesMask,
       style
     };
     let imageURL;
@@ -319,8 +326,8 @@ async function render(params) {
       url_params.data = params.data;
       url_params.metadata = params.metadata;
       url_params.datauri = 1;
-      imageURL = getTextViaPOST(Traveller.MapService.makeURL('/api/poster'),
-                                url_params);
+      imageURL = getTextViaPOST(
+          Traveller.MapService.makeURL('/api/poster'), url_params);
     }
     pending_promises.push(imageURL.then(url => {
       // This task is run after the page is generated via template.
@@ -346,7 +353,7 @@ async function render(params) {
         const x = (n % 4) + dx, y = Math.floor(n / 4) + dy;
 
         if (x < 0 || x >= 4 || y < 0 || y >= 4) {
-          return '\xA0'; // Make sure the space doesn't collapse
+          return '\xA0';  // Make sure the space doesn't collapse
         } else {
           n = x + (4 * y);
           return sector.subsectors[n].name;
@@ -374,11 +381,13 @@ async function render(params) {
             subsector.maxpop = world;
           }
 
-          if (!subsector.maxtl || Util.fromHex(subsector.maxtl[0].uwp.charAt(
-                                      8)) < Util.fromHex(world.uwp.charAt(8))) {
-            subsector.maxtl = [ world ];
-          } else if (Util.fromHex(subsector.maxtl[0].uwp.charAt(8)) ===
-                     Util.fromHex(world.uwp.charAt(8))) {
+          if (!subsector.maxtl ||
+              Util.fromHex(subsector.maxtl[0].uwp.charAt(8)) <
+                  Util.fromHex(world.uwp.charAt(8))) {
+            subsector.maxtl = [world];
+          } else if (
+              Util.fromHex(subsector.maxtl[0].uwp.charAt(8)) ===
+              Util.fromHex(world.uwp.charAt(8))) {
             subsector.maxtl.push(world);
           }
 
@@ -441,9 +450,9 @@ async function render(params) {
 
       subsector.blurb = subsector.blurb.join(' ');
       const url_params = {
-        accept : 'image/svg+xml',
-        subsector : subsector.index,
-        scale : 64,
+        accept: 'image/svg+xml',
+        subsector: subsector.index,
+        scale: 64,
         options,
         style
       };
@@ -457,13 +466,13 @@ async function render(params) {
         url_params.data = params.data;
         url_params.metadata = params.metadata;
         url_params.datauri = 1;
-        imageURL = getTextViaPOST(Traveller.MapService.makeURL('/api/poster'),
-                                  url_params);
+        imageURL = getTextViaPOST(
+            Traveller.MapService.makeURL('/api/poster'), url_params);
       }
       pending_promises.push(imageURL.then(url => {
         // This task is run after the page is generated via template.
-        return () => fetchImage(url,
-                                $(`#ss${subsector.index} img.subsector-image`));
+        return () => fetchImage(
+                   url, $(`#ss${subsector.index} img.subsector-image`));
       }));
 
       subsector.density = (subsector.worlds.length < 42) ? 'sparse' : 'dense';

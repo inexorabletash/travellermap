@@ -25,10 +25,10 @@ function smartquote(s) {
   if (typeof s !== 'string') {
     return s;
   }
-  return s ? s.replace("'", "\u2019")
-                 .replace(' "', " \u201C")
-                 .replace('" ', "\u201D ")
-           : s;
+  return s ? s.replace('\'', '\u2019')
+                 .replace(' "', ' \u201C')
+                 .replace('" ', '\u201D ') :
+             s;
 }
 
 function parseSector(tabDelimitedData, metadata) {
@@ -36,7 +36,7 @@ function parseSector(tabDelimitedData, metadata) {
   const sector = {
     metadata,
     /** @type {any} */
-    worlds : []
+    worlds: []
   };
 
   const lines = tabDelimitedData.split(/\r?\n/);
@@ -75,7 +75,7 @@ function parseSector(tabDelimitedData, metadata) {
   const LINES = 114, COLUMNS = 2;
   sector.pages =
       partition(sector.worlds, LINES * COLUMNS)
-          .map(a => ({columns : partition(a, LINES).map(w => ({worlds : w}))}));
+          .map(a => ({columns: partition(a, LINES).map(w => ({worlds: w}))}));
 
   for (const [index, page] of sector.pages.entries()) {
     // TODO: Replace with a counter?
@@ -186,16 +186,16 @@ function render(sectors) {
   const data = {};
 
   data.charted_space_src = Traveller.MapService.makeURL('/api/poster', {
-    x1 : -256,
-    x2 : 255,
-    y1 : -159,
-    y2 : 160,
-    options : 41975,
-    scale : 8,
-    style : 'print',
-    accept : 'image/svg+xml',
-    dimunofficial : 1,
-    rotation : 3
+    x1: -256,
+    x2: 255,
+    y1: -159,
+    y2: 160,
+    options: 41975,
+    scale: 8,
+    style: 'print',
+    accept: 'image/svg+xml',
+    dimunofficial: 1,
+    rotation: 3
   });
 
   const index = [];
@@ -206,16 +206,15 @@ function render(sectors) {
     const sector = parseSector(data, metadata);
 
     sector.img_src = Traveller.MapService.makeURL(
-        '/api/poster',
-        {sector : name, style : 'print', accept : 'image/svg+xml'});
+        '/api/poster', {sector: name, style: 'print', accept: 'image/svg+xml'});
 
     const short_name = sector.name.replace(/^The /, '');
 
-    index.push({name : short_name, page : ++page_count});
+    index.push({name: short_name, page: ++page_count});
     page_count += sector.page_count;
 
     if (sector.credits)
-      credits.push({name : short_name, credits : sector.credits});
+      credits.push({name: short_name, credits: sector.credits});
     else
       console.warn(`${sector.name} credits missing`);
 
@@ -227,7 +226,7 @@ function render(sectors) {
       credits.sort((a, b) => cmp(a.name, b.name)).map(o => o.credits), 26, 30);
 
   data.date = (new Date).toLocaleDateString(
-      'en-US', {year : 'numeric', month : 'long', day : 'numeric'});
+      'en-US', {year: 'numeric', month: 'long', day: 'numeric'});
 
   const template = Handlebars.compile($('#template').innerHTML);
   const html = template(data);

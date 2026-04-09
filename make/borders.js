@@ -1,11 +1,4 @@
-import {
-  AllegianceMap,
-  neighbor,
-  NON_ALIGNED,
-  processMap,
-  UNALIGNED,
-  walk
-} from '../borders/borders.js';
+import {AllegianceMap, neighbor, NON_ALIGNED, processMap, UNALIGNED, walk} from '../borders/borders.js';
 import * as Traveller from '../map.js';
 
 import {getTextViaPOST} from './post.js';
@@ -29,25 +22,28 @@ setInterval(async () => {
   }
 }, 500);
 
-$('#go').addEventListener('click', () => { run(); });
+$('#go').addEventListener('click', () => {
+  run();
+});
 $('#edges').addEventListener('click', () => {
   if (claimEdges()) {
     updateDisplay();
     updateWalks();
   }
 });
-[$('#xml'), $('#msec')].forEach(
-    e => { e.addEventListener('click', updateWalks); });
+[$('#xml'), $('#msec')].forEach(e => {
+  e.addEventListener('click', updateWalks);
+});
 
 function convertData(text) {
   return getTextViaPOST(
-      Traveller.MapService.makeURL('/api/sec', {type : 'TabDelimited'}), text);
+      Traveller.MapService.makeURL('/api/sec', {type: 'TabDelimited'}), text);
 }
 
 function parseSector(tabDelimitedData) {
   const sector = {
     /** @type {any[]} */
-    worlds : []
+    worlds: []
   };
 
   const lines = tabDelimitedData.split(/\r?\n/);
@@ -133,11 +129,11 @@ function makeMapDisplay(containerElement, map, inset) {
          ++y) {
       top += (sz + pad);
 
-      const className =
-          'hex' + ((x < 1 || x > Traveller.Astrometrics.SectorWidth || y < 1 ||
-                    y > Traveller.Astrometrics.SectorHeight)
-                       ? ' outside'
-                       : '');
+      const className = 'hex' +
+          ((x < 1 || x > Traveller.Astrometrics.SectorWidth || y < 1 ||
+            y > Traveller.Astrometrics.SectorHeight) ?
+               ' outside' :
+               '');
 
       fragment = `<div class="${className}" data-hex="${hexLabel(x, y)}"
                          style="left: ${left}px; top: ${top}px;">
@@ -179,7 +175,6 @@ function updateWalks() {
       const alleg = map.getAllegiance(x, y);
       if (alleg !== UNALIGNED && alleg !== NON_ALIGNED &&
           alleg !== last_alleg && !(label in visited)) {
-
         /** @type {any[]} */
         let path = walk(map, x, y, alleg);
         path = path.map(hex => hexLabel(hex[0], hex[1]));
@@ -199,22 +194,23 @@ function updateWalks() {
             continue;
         }
 
-        borders.push({allegiance : alleg, path});
+        borders.push({allegiance: alleg, path});
       }
       last_alleg = alleg;
     }
   }
 
-  borders.sort((a, b) => a.allegiance < b.allegiance   ? -1
-                         : a.allegiance > b.allegiance ? 1
-                                                       : 0);
+  borders.sort(
+      (a, b) => a.allegiance < b.allegiance ? -1 :
+          a.allegiance > b.allegiance       ? 1 :
+                                              0);
 
   borders = borders.filter(border => border.path.length > 2);
 
-  const template = ($('#form').elements.metatype.value === 'xml')
-                       ? xml_template
-                       : msec_template;
-  $('#metadata_generated').value = template({borders : borders});
+  const template = ($('#form').elements.metatype.value === 'xml') ?
+      xml_template :
+      msec_template;
+  $('#metadata_generated').value = template({borders: borders});
 }
 
 function hexLabel(x, y) {
@@ -240,9 +236,9 @@ function hexContents(x, y, map) {
     }
   }
   return `` +
-         `<div class='hexContents' style='background-color: ${color};'>` +
-         `<span class='hexNumber'>${hexNumber}</span>` +
-         (occupied ? `<span class='world'>${alleg}</span>` : "") + `</div>`;
+      `<div class='hexContents' style='background-color: ${color};'>` +
+      `<span class='hexNumber'>${hexNumber}</span>` +
+      (occupied ? `<span class='world'>${alleg}</span>` : '') + `</div>`;
 }
 
 const map = new AllegianceMap(SECTOR_WIDTH + 2, SECTOR_HEIGHT + 2, 0, 0);
@@ -272,26 +268,26 @@ function buildMap(sector) {
       return 'Na';
 
     switch (a) {
-    case 'Cs': // Imperial Client
-    case 'Cz': // Zhodani Client
-    case 'Hc': // Hiver Client
-    case 'Kc': // K'kree Client
-      return 'Na';
+      case 'Cs':  // Imperial Client
+      case 'Cz':  // Zhodani Client
+      case 'Hc':  // Hiver Client
+      case 'Kc':  // K'kree Client
+        return 'Na';
 
-    case 'A0': // Aslan Tlauku
-    case 'A1':
-    case 'A2':
-    case 'A3':
-    case 'A4':
-    case 'A5':
-    case 'A6':
-    case 'A7':
-    case 'A8':
-    case 'A9':
-      return 'As';
+      case 'A0':  // Aslan Tlauku
+      case 'A1':
+      case 'A2':
+      case 'A3':
+      case 'A4':
+      case 'A5':
+      case 'A6':
+      case 'A7':
+      case 'A8':
+      case 'A9':
+        return 'As';
 
-    case '--':
-      return 'Na';
+      case '--':
+        return 'Na';
     }
 
     return a;
@@ -301,8 +297,8 @@ function buildMap(sector) {
     const hx = Number(world.hex.substring(0, 2));
     const hy = Number(world.hex.substring(2, 4));
     map.setOccupied(hx, hy, true);
-    map.setAllegiance(hx, hy, effectiveAllegiance(world.allegiance),
-                      world.allegiance);
+    map.setAllegiance(
+        hx, hy, effectiveAllegiance(world.allegiance), world.allegiance);
   }
 
   updateDisplay();
@@ -344,8 +340,8 @@ function claimByVotes(hx, hy, ignoreOutSector) {
     }
   }
   const top = Object.keys(votes).reduce(
-      (cur, key) => votes[key] > cur[1] ? [ key, votes[key] ] : cur,
-      [ '--', 0 ])[0];
+      (cur, key) => votes[key] > cur[1] ? [key, votes[key]] : cur,
+      ['--', 0])[0];
   if (top === UNALIGNED)
     return false;
   map.setAllegiance(hx, hy, top);
@@ -357,7 +353,7 @@ function claimEdges() {
   for (let hx = 0; hx <= Traveller.Astrometrics.SectorWidth + 1; ++hx) {
     dirty = claimByVotes(hx, 0, true) || dirty;
     dirty = claimByVotes(hx, Traveller.Astrometrics.SectorHeight + 1, true) ||
-            dirty;
+        dirty;
   }
   for (let hy = 0; hy <= Traveller.Astrometrics.SectorHeight + 1; ++hy) {
     dirty = claimByVotes(0, hy, true) || dirty;
@@ -373,17 +369,20 @@ function updateDisplay() {
 }
 
 function run() {
-  processMap(map,
-             () => {
-               status('');
-               updateDisplay();
-               updateWalks();
-             },
-             (message) => {
-               status(message);
-               updateDisplay();
-               updateWalks();
-             });
+  processMap(
+      map,
+      () => {
+        status('');
+        updateDisplay();
+        updateWalks();
+      },
+      (message) => {
+        status(message);
+        updateDisplay();
+        updateWalks();
+      });
 }
 
-function status(message) { $('#status').innerHTML = Util.escapeHTML(message); }
+function status(message) {
+  $('#status').innerHTML = Util.escapeHTML(message);
+}

@@ -108,6 +108,7 @@
           <add segment=".vscode" />
           <add segment=".vs" />
           <add segment="node_modules" />
+          <add segment=".clang-format" />
         </hiddenSegments>
       </requestFiltering>
     </security>
