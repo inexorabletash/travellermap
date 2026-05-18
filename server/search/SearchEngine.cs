@@ -556,7 +556,7 @@ namespace Maps.Search
                 }
                 else if (op == "in:")
                 {
-                    clause = "sector_name LIKE @term + '%'";
+                    clause = "sector_name LIKE '%' + @term + '%'";
                     types = SearchResultsType.Worlds;
                 }
                 else if (op == "exact:")
