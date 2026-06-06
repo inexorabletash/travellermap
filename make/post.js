@@ -18,7 +18,7 @@ export async function populateSector() {
   const seen = new Set();
   const universe = await Traveller.MapService.universe({requireData: 1});
   universe.Sectors
-      .filter(sector => Math.abs(sector.X) < 10 && Math.abs(sector.Y) < 7)
+      .filter(sector => Math.abs(sector.X) < 10 && Math.abs(sector.Y) < 8)
       .map(sector => {
         let name = sector.Names[0].Text;
         if (seen.has(name))
