@@ -75,7 +75,7 @@ function process(world) {
   world.He = world.Siz.in([3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
     && world.Atm.in([2, 4, 7, 9, 10, 11, 12]) && world.Hyd.in(0, 2);
   world.Ic = world.Atm.in(0, 1) && world.Hyd.in(1, 10);
-  world.Oc = world.Siz.in(10, 15) && world.Atm.in(3, 9) && world.Hyd === 10;
+  world.Oc = world.Siz.in(10, 15) && (world.Atm.in(3, 9) || world.Atm.in(13, 15)) && world.Hyd === 10;
   world.Va = world.Atm === 0;
   world.Wa = world.Siz.in(3, 9) && world.Atm.in(3, 9) && world.Hyd === 10;
 
@@ -144,15 +144,29 @@ function process(world) {
     if (world[c]) codeSet.delete(c);
   });
 
-  world.Sophonts = codes.filter(
+  const sophonts = codes.filter(
     c =>
       /^....[0-9W]$/.test(c) ||
       /^(Di)?\(.*\)[0-9W]?$/.test(c)
   ).map(c => {
     codeSet.delete(c);
     return c;
-  }).join(' ');
+  });
 
+  for (let i = 0; i < 10; ++i) {
+    let c = 'C' + i;
+    if (codes.includes(c)) {
+      sophonts.push('Chir' + i);
+      codeSet.delete(c);
+    }
+    c = 'D' + i;
+    if (codes.includes(c)) {
+      sophonts.push('Droy' + i);
+      codeSet.delete(c);
+    }
+  }
+
+  world.Sophonts = sophonts.sort().join(' ');
 
   world.Details = codes.filter(
     c => /^Rs/.test(c) || /^Mr.+/.test(c) || /^O:/.test(c)
@@ -194,7 +208,7 @@ function t5ify(world) {
     'VQ': 'VYoe',
     'VT': 'VTrA',
     'Zc': 'CsZh',
-    'Zh': 'ZhMe'
+    'Zh': 'ZhJp' // manually tweaked when auditing a sector
   })[world.Allegiance] || world.Allegiance;
 
   // Derived from:
@@ -233,11 +247,11 @@ function t5ify(world) {
   world.Importance = 0 +
     (world.St === 'A' || world.St === 'B' ? 1 : 0) +
     (world.St === 'D' || world.St === 'E' || world.St === 'X' ? -1 : 0) +
-    (world.TL >= 10 ? 1 : 0) +
     (world.TL >= 16 ? 1 : 0) +
+    (world.TL >= 10 ? 1 : 0) +
     (world.TL <= 8 ? -1 : 0) +
     (world.Pop <= 6 ? -1 : 0) +
-    (world.Pop >= 9 ? 1 : 0) +
+    (world.Pop >= 9 ? 1 : 0) + // 'Hi'
     (world.Ag ? 1 : 0) +
     (world.Ri ? 1 : 0) +
     (world.In ? 1 : 0) +
@@ -260,13 +274,17 @@ function t5ify(world) {
     world.Labor =
       Math.max(0,
         world.Pop - 1);
-    world.Infrastructure =
-      Math.max(0,
-        world.Ba/* || world.Di*/ ? 0 : // Per Errata "Di should not impact Infrastructure"
-          world.Lo ? 1 :
-            world.Ni ? roll1D() + world.Importance :
-              roll2D() + world.Importance);
+    world.Infrastructure = Math.max(0, (() => {
+      if (world.Pop === 0) return 0;
+      if (1 <= world.Pop && world.Pop <= 3) return world.Importance;
+      if (4 <= world.Pop && world.Pop <= 6) return roll1D() + world.Importance;
+      return roll2D() + world.Importance;
+    })());
     world.Efficiency = flux();
+    if (world.Efficiency === 0) {
+      // Efficiency=0 should be coded as +1 (T5SS, implied by T5.10 Book 3 pp.18)
+      world.Efficiency = 1;
+    }
   }
   world._Ex_ = `(${toEHex(world.Resources)}${toEHex(world.Labor)}${toEHex(world.Infrastructure)}${toSInt(world.Efficiency)})`;
 
