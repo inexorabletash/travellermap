@@ -18,7 +18,7 @@ Number.prototype.in = function (min, max) {
 
 /**
  * Parses a sector from tab-delimited data.
- * @param {string} text 
+ * @param {string} text
  * @returns {Array<object>}
  */
 function parse(text) {
@@ -56,6 +56,14 @@ function process(world) {
     .filter(s => s.length)
     .map(c => c === 'Cr' ? 'Cx' : c);
   const codeSet = new Set(codes);
+
+  if (world.Allegiance.startsWith('Zh') && world.Pop.in(1, 3) && !codeSet.has('ChirW') && !codeSet.has('DroyW')) {
+    world.Pop = world.Gov = world.Law = world.TL = 0;
+    world.Bases = '';
+    world['{Ix}'] = '';
+    world['(Ex)'] = '';
+    world['[Cx]'] = '';
+  }
 
   if (world.Pop === 0)
     world.Gov = world.Law = world.PMult = 0;
@@ -164,6 +172,10 @@ function process(world) {
       sophonts.push('Droy' + i);
       codeSet.delete(c);
     }
+  }
+
+  if (world.Pop === 0) {
+    sophonts.length = 0;
   }
 
   world.Sophonts = sophonts.sort().join(' ');
