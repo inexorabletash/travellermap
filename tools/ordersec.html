@@ -1,0 +1,45 @@
+<!doctype html>
+<meta charset=utf8>
+<title>Order sector data</title>
+<style>
+  #input, #output {
+    box-sizing: border-box;
+    width: 100%; height: 300px;
+    white-space: pre;
+    overflow: scroll;
+  }
+</style>
+<body>
+  <textarea id=input></textarea>
+  <br>
+  <button onclick='go()'>Go</button>
+  <br>
+  <textarea id=output></textarea>
+  <script>
+  const $ = s => document.querySelector(s);
+  const $$ = s => [...document.querySelectorAll(s)];
+  function go() {
+
+    function ss(hex) {
+      return Math.floor((Number(hex.substr(2,2))-1) / 10) * 4 +
+        Math.floor((Number(hex.substr(0,2))-1) / 8);
+    }
+    
+    const lines = $('#input').value.split(/\r?\n/g);
+    const header = lines.slice(0,2);
+    const rest = lines.slice(2);
+
+    
+    const ordered = rest.sort((a, b) => {
+      const hex1 = a.substr(0,4);
+      const hex2 = b.substr(0,4);
+      return ss(hex1) - ss(hex2);
+    });
+
+
+    $('#output').value = header.concat(ordered).join('\n');
+  }
+
+
+  </script>
+</body>
