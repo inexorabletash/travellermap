@@ -52,7 +52,7 @@ function process(world) {
   world.Belts = fromEHex(world.PBG.substr(1, 1));
   world.GG = fromEHex(world.PBG.substr(2, 1));
 
-  const codes = world.Remarks.split(/\s+/g)
+  const codes = world.Remarks.split(/\s+(?![^(]*\))/g)
     .filter(s => s.length)
     .map(c => c === 'Cr' ? 'Cx' : c);
   const codeSet = new Set(codes);
@@ -152,10 +152,11 @@ function process(world) {
     if (world[c]) codeSet.delete(c);
   });
 
-  const sophonts = codes.filter(
+  let sophonts = codes.filter(
     c =>
       /^....[0-9W]$/.test(c) ||
-      /^(Di)?\(.*\)[0-9W]?$/.test(c)
+      /^(Di)?\(.*?\)[0-9W]?$/.test(c) ||
+      /^\[.*?\]$/.test(c)
   ).map(c => {
     codeSet.delete(c);
     return c;
@@ -175,7 +176,7 @@ function process(world) {
   }
 
   if (world.Pop === 0) {
-    sophonts.length = 0;
+    sophonts = sophonts.filter(c => /^Di/.test(c));
   }
 
   world.Sophonts = sophonts.sort().join(' ');
@@ -203,11 +204,12 @@ function process(world) {
     console.warn(`Unmatched codes (${world.Hex}): ` + [...codeSet].map(s => JSON.stringify(s)).join(' '));
 
 
-  world.Remarks = ([...PLANETARY_CODES, ...POPULATION_CODES, ...ECONOMIC_CODES]
-    .map(code => world[code] ? code : '')
-    .join(' ')
-    + ' ' + world.Sophonts
-    + ' ' + world.Details).trim().replace(/\s{2,}/g, ' ');
+  world.Remarks = ([...PLANETARY_CODES, ...POPULATION_CODES, ...ECONOMIC_CODES, ...POLITICAL_CODES, ...SPECIAL_CODES, ...ADDITIONAL_CODES]
+                   .map(code => world[code] ? code : '')
+                   .join(' ')
+                   + ' ' + world.Sophonts
+                   + ' ' + world.Details
+                  ).trim().replace(/\s{2,}/g, ' ');
 }
 
 function t5ify(world) {
@@ -292,12 +294,13 @@ function t5ify(world) {
       if (4 <= world.Pop && world.Pop <= 6) return roll1D() + world.Importance;
       return roll2D() + world.Importance;
     })());
-    world.Efficiency = flux();
     if (world.Efficiency === 0) {
       // Efficiency=0 should be coded as +1 (T5SS, implied by T5.10 Book 3 pp.18)
       world.Efficiency = 1;
     }
   }
+  // Unpopulated worlds should have Efficiency of -5 (T5SS / MgT WBH)
+  if (world.Pop === 0) world.Efficiency = -5;
   world._Ex_ = `(${toEHex(world.Resources)}${toEHex(world.Labor)}${toEHex(world.Infrastructure)}${toSInt(world.Efficiency)})`;
 
   // Cultural Extension
