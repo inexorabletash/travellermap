@@ -108,6 +108,7 @@ my %sectors = (
     Vlan => "Vland",
     Wind => 'Windhorn',
     Zaru => "Zarushagar",
+    Zhda => "Zhdant",
     Ziaf => "Ziafrplians",
     );
 
