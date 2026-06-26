@@ -10,7 +10,7 @@
           false at all other times. For more information, refer to the documentation about
           debugging ASP.NET files.
     -->
-    <compilation defaultLanguage="c#" debug="true" targetFramework="4.5.1"/>
+    <compilation defaultLanguage="c#" debug="false" targetFramework="4.6.1"/>
     <!--  CUSTOM ERROR MESSAGES
           Set customErrors mode="On" or "RemoteOnly" to enable custom error messages, "Off" to disable.
           Add <error> tags for each of the errors you want to handle.
@@ -68,11 +68,10 @@
     -->
     <globalization requestEncoding="utf-8" responseEncoding="utf-8" fileEncoding="utf-8"/>
     <xhtmlConformance mode="Legacy"/>
-
     <pages controlRenderingCompatibilityVersion="3.5" clientIDMode="AutoID"/>
 
     <!-- Disable most ASP.NET request validation -->
-    <httpRuntime requestValidationMode="2.0" requestPathInvalidCharacters="&lt;,&gt;,%,&amp;,:,\,?"/>
+    <httpRuntime requestValidationMode="2.0" requestPathInvalidCharacters="&lt;,&gt;,%,&amp;,:,\,?" executionTimeout="30"/>
   </system.web>
   <system.webServer>
     <urlCompression doStaticCompression="true" doDynamicCompression="true"/>
@@ -87,6 +86,7 @@
     <httpProtocol>
       <customHeaders>
         <add name="Access-Control-Allow-Origin" value="*" />
+        <add name="Arr-Disable-Session-Affinity" value="true" />
       </customHeaders>
     </httpProtocol>
 
@@ -109,13 +109,14 @@
           <add segment=".vs" />
           <add segment="node_modules" />
           <add segment=".clang-format" />
+          <add segment="server" />
         </hiddenSegments>
       </requestFiltering>
     </security>
-
     <rewrite>
       <rules>
-        <rule name="Remove www" stopProcessing="true">
+
+        <rule name="Remove www">
           <match url="(.*)" ignoreCase="true" />
           <conditions logicalGrouping="MatchAll">
             <add input="{HTTP_HOST}" pattern="^www\.(.+)$" />
@@ -123,7 +124,7 @@
           <action type="Redirect" url="https://{C:1}/{R:1}" redirectType="Permanent" />
         </rule>
 
-        <rule name="Redirect to HTTPS" stopProcessing="true">
+        <rule name="Redirect to HTTPS">
           <match url="(.*)" />
           <conditions logicalGrouping="MatchAll" trackAllCaptures="false">
             <add input="{HTTPS}" pattern="off" />
@@ -132,13 +133,12 @@
           <action type="Redirect" url="https://{HTTP_HOST}/{R:1}" redirectType="Permanent" />
         </rule>
 
-        <rule name="Extensionless Pages" stopProcessing="true">
-          <match url="^(world|(doc|make|print|tools)/\w+)$"/>
+        <rule name="Extensionless Pages">
+          <match url="^((doc|make|print|tools)/\w+)$" />
           <action type="Rewrite" url="{R:0}.html"/>
         </rule>
       </rules>
     </rewrite>
-
     <handlers>
       <remove name="WebDAV"/>
       <remove name="OPTIONSVerbHandler"/>
