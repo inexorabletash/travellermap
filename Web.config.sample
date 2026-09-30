@@ -10,7 +10,7 @@
           false at all other times. For more information, refer to the documentation about
           debugging ASP.NET files.
     -->
-    <compilation defaultLanguage="c#" debug="false" targetFramework="4.6.1"/>
+    <compilation defaultLanguage="c#" debug="false" targetFramework="4.8"/>
     <!--  CUSTOM ERROR MESSAGES
           Set customErrors mode="On" or "RemoteOnly" to enable custom error messages, "Off" to disable.
           Add <error> tags for each of the errors you want to handle.
@@ -174,4 +174,18 @@
     <add key="AdminKey" value="YOUR_KEY_HERE"/>
     <!-- <add key="PageFooter" value="PAGE_FOOTER_HERE"/> -->
   </appSettings>
+
+  <!-- Required by PDFsharp 6 dependencies (see build warning MSB3247 if versions change). -->
+  <runtime>
+    <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
+      <dependentAssembly>
+        <assemblyIdentity name="Microsoft.Extensions.Logging.Abstractions" culture="neutral" publicKeyToken="adb9793829ddae60"/>
+        <bindingRedirect oldVersion="0.0.0.0-8.0.0.3" newVersion="8.0.0.3"/>
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Security.Cryptography.Pkcs" culture="neutral" publicKeyToken="b03f5f7f11d50a3a"/>
+        <bindingRedirect oldVersion="0.0.0.0-8.0.0.1" newVersion="8.0.0.1"/>
+      </dependentAssembly>
+    </assemblyBinding>
+  </runtime>
 </configuration>

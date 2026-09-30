@@ -39,9 +39,13 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="PdfSharp-gdi">
-      <HintPath>..\..\..\PDFsharp-1.5\src\PdfSharp-gdi\bin\Release\PdfSharp-gdi.dll</HintPath>
-    </Reference>
+    <PackageReference Include="PDFsharp-GDI">
+      <Version>6.2.4</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies">
+      <Version>1.0.3</Version>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
   </ItemGroup>
