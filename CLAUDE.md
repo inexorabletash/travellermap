@@ -76,11 +76,15 @@ redirects to copy into `Web.config.sample`.
   (under `Common7\IDE\Extensions\TestPlatform\`). They cover utilities, JSON, and column/MSEC
   serialization only. Known pre-existing failures: `ColumnParserTest` (stale test input) and
   `MSECWriterTest` (needs `HostingEnvironment`, which doesn't exist outside IIS).
+- **JS unit tests**: `npm test` (Node's built-in `node --test`, no extra dependencies).
+  Tests live in `test/unit/*.test.js`. Import `./setup.js` first; it stubs `window`,
+  `location`, `localStorage`, and the `fetch` calls that `world_util.js` makes at import time,
+  so `map.js` and `world_util.js` load unchanged in Node.
 - **Integration tests** (browser): with the site running, open `test/APITest.html`,
   `test/ContentTest.html`, `test/ImageTest.html`. Reference data/images live in `test/refs/`.
 - **Data validation**: `/admin/errors` (parse errors across all sectors), `/admin/codes`
   (unknown allegiance/sophont codes), `tools/lintsec.html`.
-- **JS lint**: `npm install` then `npx eslint <file>.js` (flat config in `eslint.config.js`).
+- **JS lint**: `npm install` then `npm run lint` or `npx eslint <file>.js` (flat config in `eslint.config.js`).
   Type checking via `jsconfig.json` (`checkJs`) in editors that support it.
 
 There is no CI; run the relevant checks manually before committing.
@@ -89,7 +93,12 @@ There is no CI; run the relevant checks manually before committing.
 
 - C#: `#nullable enable` at the top of files, Allman braces, 4-space indent, `Maps.*` namespaces.
 - JS: 2-space indent, `const`/`let`, ES modules, clang-format style (`.clang-format`).
-- Cache-busting: `index.html` loads `index.js?update=<timestamp>`; bump it when shipping JS changes.
+- Cache-busting: pages load scripts as `x.js?update=<timestamp>`, and pages that import
+  `map.js`/`world_util.js` pin them in an `<script type="importmap">`. When changing a shared
+  module's API, bump its timestamp on **every** page that maps it, or a cached old `map.js`
+  can be paired with a new `world_util.js`.
+- Browser storage: use `Util.storageGet`/`storageSet`/`storageGetJSON` (they tolerate
+  disabled storage and corrupt values), not `localStorage` directly.
 - Coordinates: hex `XXYY` is 1-based within a sector (`0101`–`3240`). World-space ("x,y")
   coordinates are relative to Reference (Core 0140); see `server/Astrometrics.cs` and
   `Astrometrics` in `map.js` — keep the two in sync.

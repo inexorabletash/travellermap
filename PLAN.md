@@ -55,7 +55,16 @@ Original scope:
 - B11: return 400 only for input errors, 500 plus logging otherwise.
 - Check: new unit tests; `curl` against the admin page, oversized posters, and subsector poster titles.
 
-## Phase 2 — Browser fixes and JavaScript tests (≈1 day) [up]
+## Phase 2 — Browser fixes and JavaScript tests [up] — DONE (branch `phase2-client`)
+Done: B4, B5, B15, O2, plus B17 (Zhodani `Bases`, latent), B18 (`redir.html` accepted any URL
+scheme), B19 (blocked popup). `npm test` runs 13 tests in `test/unit/`. The script cache-busters
+are bumped on every page, because `world_util.js` now depends on new `Util` methods.
+Checked in headless Chrome against the running site: corrupt storage, rapid world selection,
+closing the card mid-load, and `redir.html`. All 4 bugs reproduce on the old code and are
+fixed on the new code. The check script is not committed; it could become a CI browser test
+in Phase 4.
+
+Original scope:
 - Add `"test": "node --test"` and `test/unit/`; export `LRUCache`, `Util.makeURL`, and the
   `world_util` decoders.
 - B4 stale world card (request token), B5 guarded preferences, B15 service-worker fallback.
