@@ -1,4 +1,4 @@
-// version 4
+// version 5
 
 const CACHE_NAME = 'offline-resources';
 const urlsToCache = [
@@ -42,7 +42,13 @@ self.addEventListener('fetch', /** @type {FetchEvent} */ event => {
     } catch (error) {
       const cache = await self.caches.open(CACHE_NAME);
       const cachedResponse = await cache.match('offline.html');
-      return cachedResponse;
+      // If the offline page was never cached, respond with something rather
+      // than undefined (which surfaces as a generic network error).
+      return cachedResponse ??
+          new Response(
+              '<!DOCTYPE html><title>Offline</title>' +
+                  '<p>The Traveller Map is not available offline.',
+              {status: 503, headers: {'Content-Type': 'text/html'}});
     }
   })());
 });

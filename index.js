@@ -107,8 +107,8 @@ const savePreferences = isIframe ? () => {} : Util.debounce(() => {
     preferences[option.param] =
         document.body.classList.contains(option.className);
   }
-  localStorage.setItem('preferences', JSON.stringify(preferences));
-  localStorage.setItem(
+  Util.storageSet('preferences', JSON.stringify(preferences));
+  Util.storageSet(
       'location',
       JSON.stringify({position: {x: map.x, y: map.y}, scale: map.scale}));
 }, SAVE_PREFERENCES_DELAY_MS);
@@ -854,12 +854,10 @@ $('#btnResetPrefs').addEventListener('click', event => {
 });
 
 if (!isIframe) {
-  const storedPreferences = localStorage.getItem('preferences');
-  const storedLocation = localStorage.getItem('location');
-  const preferences =
-      storedPreferences ? JSON.parse(storedPreferences) : undefined;
-  const location = storedLocation ? JSON.parse(storedLocation) : undefined;
-  if (preferences) {
+  // Missing or corrupt stored values fall back to defaults.
+  const preferences = Util.storageGetJSON('preferences');
+  const location = Util.storageGetJSON('location');
+  if (preferences && typeof preferences === 'object') {
     if ('style' in preferences)
       map.style = preferences.style;
     if ('options' in preferences)
@@ -882,10 +880,11 @@ if (!isIframe) {
     };
   }
 
-  if (location) {
-    if ('scale' in location)
+  if (location && typeof location === 'object') {
+    if (Number.isFinite(location.scale))
       map.scale = location.scale;
-    if ('position' in location) {
+    if (location.position && Number.isFinite(location.position.x) &&
+        Number.isFinite(location.position.y)) {
       map.x = location.position.x;
       map.y = location.position.y;
     }
@@ -1160,7 +1159,8 @@ async function showSectorData(data) {
   $('#sds-print-poster-link').addEventListener('click', event => {
     event.preventDefault();
     const w = window.open(data.PosterURL);
-    // @ts-ignore
+    if (!w)
+      return;  // Popup blocked
     w.onload = () => {
       w.print();
     };
@@ -1176,6 +1176,11 @@ async function showWorldData() {
   $('#spinner').style.display = 'block';
   const milieu = map.namedOptions.get('milieu');
 
+  // The user may select something else or close the card while this is in
+  // flight; drop stale results rather than showing the wrong world.
+  const requestedWorld = selectedWorld;
+  const isCurrent = () => selectedWorld === requestedWorld;
+
   try {
     // World Data Sheet ("Info Card")
 
@@ -1186,12 +1191,16 @@ async function showWorldData() {
       throw new Error(response.statusText);
 
     const data = await response.json();
+    if (!isCurrent())
+      return;
     const world = await prepareWorld(data.Worlds[0]);
-    if (world) {
+    if (world && isCurrent()) {
       await Promise.all([
         renderWorldImage(world, $('#wds-world-image')),
         world.map_exists  // Once resolved, `map`/`map_thumb` are set
       ]);
+      if (!isCurrent())
+        return;
 
       // Data Sheet
       world.DataSheetURL = Util.makeURL('print/world', {
@@ -1263,7 +1272,9 @@ async function showWorldData() {
   } catch (error) {
     console.warn(error);
   } finally {
-    $('#spinner').style.display = 'none';
+    // Leave the spinner up if a newer world request is still in flight.
+    if (isCurrent() || !selectedWorld)
+      $('#spinner').style.display = 'none';
   }
 }
 
@@ -1770,16 +1781,16 @@ if (!isIframe) {
 if (!isIframe && $('#promo-hover')) {
   setTimeout(() => {
     const promo_key = $('#promo-hover').dataset.key;
-    if (!localStorage.getItem(promo_key)) {
+    if (!Util.storageGet(promo_key)) {
       document.body.classList.add('show-promo');
       $('#promo-closebtn').addEventListener('click', event => {
         document.body.classList.remove('show-promo');
-        localStorage.setItem(promo_key, '1');
+        Util.storageSet(promo_key, '1');
       });
       for (const a of $$('#promo-hover a')) {
         a.addEventListener('click', event => {
           document.body.classList.remove('show-promo');
-          localStorage.setItem(promo_key, '1');
+          Util.storageSet(promo_key, '1');
         });
       }
     }
