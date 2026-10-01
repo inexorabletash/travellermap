@@ -33,10 +33,10 @@ namespace Maps
     internal class SectorMap
     {
         /// <summary>
-        /// Singleton - initialized once and retained for the life of the application.
+        /// One instance per thread (lookups can add Dotmap sectors, so it isn't shared),
+        /// rebuilt after Flush() on this thread or CacheGeneration.InvalidateAll().
         /// </summary>
-        [ThreadStatic]
-        private static SectorMap? s_instance;
+        private static readonly ThreadLocalCache<SectorMap> s_instance = new ThreadLocalCache<SectorMap>(Load);
 
         /// <summary>
         /// Holds all known sectors across all milieux.
@@ -166,32 +166,30 @@ namespace Maps
             }
         }
 
-        // Singleton accessor
-        public static SectorMap GetInstance()
+        public static SectorMap GetInstance() => s_instance.Value;
+
+        private static SectorMap Load()
         {
-            if (s_instance == null)
+            List<SectorMetafileEntry> files = new List<SectorMetafileEntry>();
+
+            using var reader = Util.SharedFileReader(System.Web.Hosting.HostingEnvironment.MapPath(@"~/res/Sectors/milieu.tab"));
+            var parser = new Serialization.TSVParser(reader);
+            foreach (var row in parser.Data)
             {
-                List<SectorMetafileEntry> files = new List<SectorMetafileEntry>();
-
-                using var reader = Util.SharedFileReader(System.Web.Hosting.HostingEnvironment.MapPath(@"~/res/Sectors/milieu.tab"));
-                var parser = new Serialization.TSVParser(reader);
-                foreach (var row in parser.Data)
-                {
-                    var path = row.dict["Path"];
-                    var tags = row.dict["Tags"].Split(',');
-                    files.Add(new SectorMetafileEntry(@"~/res/Sectors/" + path, tags.ToList()));
-                }
-
-                s_instance = new SectorMap(files);
+                var path = row.dict["Path"];
+                var tags = row.dict["Tags"].Split(',');
+                files.Add(new SectorMetafileEntry(@"~/res/Sectors/" + path, tags.ToList()));
             }
 
-            return s_instance;
+            return new SectorMap(files);
         }
 
-        public static void Flush()
-        {
-            s_instance = null;
-        }
+        /// <summary>
+        /// Discards the current thread's instance only (used by admin reports that load
+        /// everything and then release it). To reload data on all threads, use
+        /// CacheGeneration.InvalidateAll().
+        /// </summary>
+        public static void Flush() => s_instance.Reset();
 
         // This method supports deserializing of Location instances that reference sectors by name.
         public static Point GetSectorCoordinatesByName(string name)
