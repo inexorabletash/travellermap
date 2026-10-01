@@ -418,6 +418,8 @@ namespace Maps.Utilities
 
         public int CountOf(Severity sev) => log.Where(r => r.severity == sev).Count();
 
+        public IEnumerable<Record> Records => log;
+
         public void Report(TextWriter writer, Severity minSeverity, Func<ErrorLogger.Record, bool>? filter = null)
         {
             foreach (var record in log)

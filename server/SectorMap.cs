@@ -168,7 +168,14 @@ namespace Maps
 
         public static SectorMap GetInstance() => s_instance.Value;
 
-        private static SectorMap Load()
+        private static SectorMap Load() => new SectorMap(ReadMetafileEntries());
+
+        /// <summary>
+        /// The milieu index files (lists of sectors) named by res/Sectors/milieu.tab.
+        /// </summary>
+        internal static IEnumerable<string> MetafilePaths() => ReadMetafileEntries().Select(e => e.filename);
+
+        private static List<SectorMetafileEntry> ReadMetafileEntries()
         {
             List<SectorMetafileEntry> files = new List<SectorMetafileEntry>();
 
@@ -180,8 +187,7 @@ namespace Maps
                 var tags = row.dict["Tags"].Split(',');
                 files.Add(new SectorMetafileEntry(@"~/res/Sectors/" + path, tags.ToList()));
             }
-
-            return new SectorMap(files);
+            return files;
         }
 
         /// <summary>
