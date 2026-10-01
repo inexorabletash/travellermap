@@ -40,6 +40,17 @@ namespace UnitTests
             validator.ValidateXml(SectorMap.MetafilePaths()
                 .Concat(map.Sectors.Where(s => s.MetadataFile != null).Select(s => s.MetadataFile)));
 
+            // Optional full report (errors and warnings) for triage: TM_VALIDATION_REPORT=<path>
+            string reportPath = Environment.GetEnvironmentVariable("TM_VALIDATION_REPORT");
+            if (!string.IsNullOrEmpty(reportPath))
+            {
+                File.WriteAllLines(reportPath,
+                    new[] { "severity\tcategory\twhere\tmessage" }.Concat(validator.Findings.Select(f =>
+                        $"{f.Severity}\t{f.Category}\t{f.Where}\t{f.Message.Replace('\t', ' ')}")),
+                    new UTF8Encoding(false));
+                Console.WriteLine($"Wrote {validator.Findings.Count} findings to {reportPath}");
+            }
+
             var errors = validator.Findings.Where(f => f.Severity == DataValidator.Severity.Error).ToList();
             var current = Count(errors.Select(Key));
 

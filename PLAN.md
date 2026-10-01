@@ -116,6 +116,55 @@ Original scope:
    (msbuild restore/build, vstest). The Windows job now works because the reference
    assemblies come from NuGet. **[fork]** first; offer upstream if wanted.
 
+## Phase 4b — Data quality backlog (revisit errors and warnings)
+The Phase 4 ratchet stops *new* errors; this item works down the existing ones. Analysis from
+2026-10-01 (full report: run `DataValidationTest` with `TM_VALIDATION_REPORT=<path>`).
+
+**Where the 187,263 warnings and 725 errors come from**
+- 112k warnings (60%) are in the **Zhodani Core Route** fan project (tag `ZCR`, 2005, legacy
+  `.sec`). `/admin/errors` deliberately skips non-curated tags; the Phase 4 validator didn't.
+- The **T5SS-generated official sectors** (files headed "Generated file - DO NOT MODIFY") have
+  only **1,110** warnings. Their source is `res/t5ss/data`, not the generated files.
+- 64k warnings are in **hand-maintained official sectors** (e.g. Koog, Rfigh, Hadji, Harbinger;
+  HIWG-era data). These use **pre-T5 trade-code conventions**: population-0 outposts coded
+  `Ba Lo Ni`, and Ni on population 1–3. Classic Traveller defined Lo as ≤3 and Ni as ≤6; T5
+  (which the checker implements) defines them as 1–3 and 4–6. `Extraneous code: Ni/Lo` alone
+  is 73k warnings.
+- 74% of all warnings (137,776) are trade codes, which are fully determined by the UWP.
+
+**Proposals, with measured effect** (cumulative; warnings / errors)
+
+| # | Change | Owner | After |
+|---|---|---|---|
+| — | Today | | 187,263 / 725 |
+| T1 | Validator warnings use the same scope as `/admin/errors` (OTU/Apocryphal/Faraway); errors still checked everywhere | us [up] | 74,931 / 725 |
+| T2 | Demote generation-rule checks (TL = mods+1D, Gov/Law = Flux) to Hint: they test whether a world *could be randomly generated*, and canon worlds deviate on purpose. Still visible on `/admin/errors` as hints | us [up] | 60,057 / 725 |
+| T3 | `World.Validate` crashes on placeholder `{Ix}`/`(Ex)` (`----`), reported as 40 "Parse Error"s in Nadir. Data is fine (production shows the worlds); treat dashes as absent | us [up] | 60,057 / 685 |
+| T4 | `sectors.xsd`: `Label/@Color` is optional (the server defaults it to amber) | us [up] | 60,057 / 664 |
+| D1 | Tool that recomputes T5 trade codes from the UWP for a sector file, producing a reviewable diff; apply per sector with maintainer agreement (changes published data conventions) | tool: us; data: maintainers | 18,906 / 664 |
+| D2 | Same tool: population-0 Ex efficiency −5 / infrastructure rules (mechanical) | as D1 | 9,875 / 664 |
+| D3 | Rim Worlds (Faraway): 262 worlds use lowercase `na`; almost certainly `Na` (Non-aligned). Codes are case-sensitive, and real codes differ by case (`Cs`/`CS`), so fix the data, not the lookup | sector author (active upstream contributor) | 9,875 / 402 |
+
+**Smaller data fixes worth doing** (each confirmed by reading the file)
+- *Visible on the map:* `M1201/Spinward Marches.xml:219` uses `label=` instead of `Label=`, so the
+  "Federation of Arden" border label never renders. `M1105/Kidunal.xml:44,48` uses
+  `Wraplabel=` instead of `WrapLabel=`. `M1105/Astron.xml:42-44` puts `WrapLabel` on `<Label>`
+  (should be `Wrap`; value is false, so there's no visible effect).
+- Vanguard Reaches: zero-length route `2340 → 2340`; delete it.
+- Undefined border allegiances (8): `Ec` (Kruse), `Tangle` (Dhuerorrg ×2), `Ds` (Ziafrplians),
+  `Dw` and `MF` (The Beyond), `Au` and `OC` (Alte Grenzen). Add `<Allegiance>` definitions
+  (names needed from the source material).
+- Remaining undefined world allegiance codes (~330, after `na`): `Cc` in Gvurrdon M1248 (48;
+  defined for Faraway sectors but not here), `Ne`, `Dw`, `Hf`, `Ms`, `Mr`, … Review per sector.
+- 38 schema errors are stray text inside `<Routes>`/`<Borders>`/`<Sector>` (22 in `Rzakki.xml`),
+  probably notes that should be XML comments.
+- `Tabs`, `Era`, `Source-Milieu` attributes aren't read by the server; remove them, or declare
+  them as ignored in the schema.
+
+**Suggested order:** T1–T4 first (small code changes, no data judgement, upstream-friendly), then
+the visible-on-map fixes, then D1/D2 as an opt-in tool, then D3 and the allegiance definitions
+with their authors. Regenerate the baseline after each step to lock in the gains.
+
 ## Phase 5 — Remaining version updates
 - MSTest v1 → MSTest 3.x NuGet (drop the VS2010-era `Choose` blocks). **[up]**
 - Remove the TLS 1.1 line, add SRI to the Handlebars tag, drop `@types/handlebars`, set
