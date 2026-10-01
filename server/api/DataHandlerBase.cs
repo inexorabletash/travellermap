@@ -227,19 +227,13 @@ namespace Maps.API
             protected bool HasOption(string name) => HasOption(name, Defaults(Context));
 
             public bool HasOption(string name, IDictionary<string, object> queryDefaults)
-                => Context.Request[name] != null || (queryDefaults != null && queryDefaults.ContainsKey(name));
+                => HandlerBase.HasOption(Context.Request, queryDefaults, name);
 
             protected string? GetStringOption(string name, string? defaultValue = null)
                 => GetStringOption(name, Defaults(Context), defaultValue);
 
             public string? GetStringOption(string name, IDictionary<string, object> queryDefaults, string? defaultValue = null)
-            {
-                if (Context.Request[name] != null)
-                    return Context.Request[name];
-                if (queryDefaults != null && queryDefaults.ContainsKey(name))
-                    return queryDefaults[name].ToString();
-                return defaultValue;
-            }
+                => HandlerBase.GetStringOption(Context.Request, queryDefaults, name, defaultValue);
 
             protected string[]? GetStringsOption(string name, string[]? defaultValue = null)
             {
@@ -270,11 +264,7 @@ namespace Maps.API
             protected bool GetBoolOption(string name, bool defaultValue) => GetBoolOption(name, Defaults(Context), defaultValue);
 
             public bool GetBoolOption(string name, IDictionary<string, object> queryDefaults, bool defaultValue)
-            {
-                if (int.TryParse(GetStringOption(name, queryDefaults), NumberStyles.Integer, CultureInfo.InvariantCulture, out int temp))
-                    return temp != 0;
-                return defaultValue;
-            }
+                => HandlerBase.GetBoolOption(Context.Request, queryDefaults, name, defaultValue);
 
             public bool HasLocation() => (HasOption("sx") && HasOption("sy")) || (HasOption("x") && HasOption("y"));
 
