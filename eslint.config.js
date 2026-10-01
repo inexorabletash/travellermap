@@ -19,6 +19,15 @@ export default [
     },
   },
   {
+    // Node scripts (test runners and tools)
+    files: ['**/*.mjs'],
+    languageOptions: {
+      globals: {
+        ...globals.node,
+      },
+    },
+  },
+  {
     files: ['sw.js'],
     languageOptions: {
       globals: {
