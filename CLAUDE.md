@@ -75,23 +75,37 @@ redirects to copy into `Web.config.sample`.
 
 ## Tests & linting
 
-- **Unit tests** (C#, MSTest): `unittests/UnitTests` — run from VS Test Explorer or
+- **Unit tests** (C#, MSTest; the test project is C# 7.3, so no nullable annotations or
+  `using var`): `unittests/UnitTests`. Run from VS Test Explorer or
   `vstest.console.exe unittests\UnitTests\bin\Debug\UnitTests.dll`
-  (under `Common7\IDE\Extensions\TestPlatform\`). They cover utilities, JSON, and column/MSEC
-  serialization only. Known pre-existing failures: `ColumnParserTest` (stale test input) and
-  `MSECWriterTest` (needs `HostingEnvironment`, which doesn't exist outside IIS).
+  (under `Common7\IDE\Extensions\TestPlatform\`). Tests run outside IIS, so `TestSetup` sets
+  `Util.ContentRoot` to the repo root. Server code must resolve data files with
+  `Util.MapPath("~/...")`, not `HostingEnvironment.MapPath`.
+  - `RoutingTest`: URL → handler and route values, in registration order. Update it when
+    adding or reordering routes.
+  - `AstrometricsTest` and the JS tests share `test/fixtures/astrometrics.json`, so server
+    and client coordinate math can't drift.
+- **Data validation** (`DataValidationTest`, ~10 s, Debug build): every sector's data and
+  metadata must parse, use defined allegiance codes, and match `res/sectors.xsd`. Existing
+  problems are listed in `test/data-validation-baseline.txt`; the test fails only on errors
+  not in the baseline. After fixing data, regenerate the baseline by running the test with
+  `TM_UPDATE_BASELINE=1` and commit it. Interactive equivalents: `/admin/errors`,
+  `/admin/codes`, `tools/lintsec.html`.
 - **JS unit tests**: `npm test` (Node's built-in `node --test`, no extra dependencies).
   Tests live in `test/unit/*.test.js`. Import `./setup.js` first; it stubs `window`,
   `location`, `localStorage`, and the `fetch` calls that `world_util.js` makes at import time,
   so `map.js` and `world_util.js` load unchanged in Node.
-- **Integration tests** (browser): with the site running, open `test/APITest.html`,
-  `test/ContentTest.html`, `test/ImageTest.html`. Reference data/images live in `test/refs/`.
-- **Data validation**: `/admin/errors` (parse errors across all sectors), `/admin/codes`
-  (unknown allegiance/sophont codes), `tools/lintsec.html`.
-- **JS lint**: `npm install` then `npm run lint` or `npx eslint <file>.js` (flat config in `eslint.config.js`).
-  Type checking via `jsconfig.json` (`checkJs`) in editors that support it.
+- **Browser tests**: with the site running on port 50103, `npm run test:browser -- --no-search`
+  runs `test/APITest.html`, `ContentTest.html`, and `ImageTest.html` in headless Chrome
+  (`--no-search` when there's no SQL Server search index). Or open the pages directly.
+  References live in `test/refs/`. When data changes legitimately alter output, update the
+  matching reference after confirming the difference is the data change.
+- **JS lint**: `npm install` then `npm run lint` (whole repo) or `npx eslint <file>`. The flat
+  config is in `eslint.config.js`. Type checking via `jsconfig.json` (`checkJs`) in editors that
+  support it.
 
-There is no CI; run the relevant checks manually before committing.
+**CI** (`.github/workflows/ci.yml`): lint and JS tests on Linux; MSBuild, C# unit tests, and
+data validation on Windows; browser tests too if the runner has IIS Express.
 
 ## Conventions
 
