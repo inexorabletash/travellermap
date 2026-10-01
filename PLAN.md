@@ -165,11 +165,31 @@ The Phase 4 ratchet stops *new* errors; this item works down the existing ones. 
 the visible-on-map fixes, then D1/D2 as an opt-in tool, then D3 and the allegiance definitions
 with their authors. Regenerate the baseline after each step to lock in the gains.
 
-## Phase 5 — Remaining version updates
-- MSTest v1 → MSTest 3.x NuGet (drop the VS2010-era `Choose` blocks). **[up]**
-- Remove the TLS 1.1 line, add SRI to the Handlebars tag, drop `@types/handlebars`, set
-  `LangVersion` to latest. **[up]**
+## Phase 5 — Remaining version updates — DONE (branch `phase5-updates`) [up]
+- MSTest v1 → **MSTest 4.4.1** NuGet (supports net462+ and modern .NET). Its analyzers found 7 swapped
+  expected/actual assertions and 1 always-true assertion; fixed.
+- SRI hash on all 7 Handlebars script tags (verified a wrong hash blocks the script).
+- Removed the TLS line (no outgoing calls). If outgoing calls are added, set
+  `<httpRuntime targetFramework="4.8">` so they use OS TLS defaults.
+- C# 8.0 → **12.0** pinned in both projects (no new warnings).
+- `@types/handlebars`: **kept**. The review was wrong: it provides the real types for the
+  CDN-loaded global.
 - ~~Microsoft.Data.SqlClient~~: dropped (see Decisions).
+- **CI image tests** (follow-up from Phase 4): the CI artifact showed two causes.
+  1. About half the "failures" were images that didn't load in time (byte-identical on
+     re-fetch). Fixed by limiting concurrency and reporting load errors.
+  2. The rest are **ClearType** sub-pixel fringes on text (14–802 px, ≤0.035% of an image).
+     `ImageHandlerBase` renders text with `TextRenderingHint.ClearTypeGridFit`, whose fringe
+     colors vary by machine. A pixel tolerance would also hide real regressions such as a
+     missing label (similar size).
+
+  **Decision for you:**
+  - (a) keep ImageTest informational in CI (the status quo);
+  - (b) keep a second, CI-specific set of references; or
+  - (c) render PNG text with grayscale anti-aliasing (`AntiAliasGridFit`). ClearType is designed
+    for one LCD's sub-pixel layout, so it's arguably wrong in a downloadable image. (c) changes
+    every rendered image slightly and needs all references regenerated; it's an upstream
+    product call.
 
 ## Phase 6 — Simplifications (after the tests exist) [up, case by case]
 - S1 one option parser, S2 route-table helper, S3 split `ProduceResponse`, S4 domain table,

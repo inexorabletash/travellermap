@@ -84,13 +84,13 @@ edge cases or ops; **Low** = robustness/cosmetic.
 | PDFsharp | 1.5, built from source, DLL referenced by relative path | **PDFsharp 6.x** (NuGet, MIT) | Biggest setup-pain removal: no separate clone/build, no re-adding references (SETUP steps 1-2, 6). 6.x supports .NET Framework 4.6.2+; API is mostly compatible (`XGraphics`, `PdfDocument`). Keep the global PDF lock unless you confirm 6.x's thread-safety for this use. |
 | Unit test framework | MSTest v1 (`Microsoft.VisualStudio.QualityTools.UnitTestFramework`, VS2010-era conditions in csproj) | **MSTest 3.x** (`MSTest.TestFramework` + `MSTest.TestAdapter` NuGet) | Enables command-line `vstest`/`dotnet test` and CI. |
 | Project format | Legacy non-SDK `.csproj` (ToolsVersion 12) | SDK-style csproj (still targeting `net48`) | Smaller project files, NuGet `PackageReference`; web projects need care (MSBuild.SDK.SystemWeb). |
-| C# language | `LangVersion 8.0` | `latest` | Syntax-only features (file-scoped namespaces, pattern improvements) work on .NET Framework. |
+| C# language | `LangVersion 8.0` | `latest` | Syntax-only features (file-scoped namespaces, pattern improvements) work on .NET Framework. **Done: pinned to 12.0 rather than `latest`, so every machine compiles the same language.** |
 | SQL client | `System.Data.SqlClient` | `Microsoft.Data.SqlClient` | The old one is in maintenance only. |
 | .NET Framework | 4.8 | 4.8.1 (optional) | Long-term, moving off `System.Web` to ASP.NET Core would allow Linux hosting, but it's a rewrite of the handler/routing layer and `System.Drawing` rendering (→ SkiaSharp/ImageSharp) — only worth it with a strong reason. |
 | TLS | `Tls11 \| Tls12` enabled explicitly | Remove the line (4.8 uses OS defaults incl. TLS 1.3) | |
 | `Web.config.sample` | `targetFramework="4.6.1"` | `4.8`, and add `<httpRuntime targetFramework="4.8">` | Mismatch with the csproj. |
 | Handlebars | 4.7.8 from cdnjs, no SRI | same version + `integrity`/`crossorigin` attributes | 4.7.8 is the current 4.x. |
-| `@types/handlebars` | ^4.0.40 | remove | Handlebars ships its own types; this package is a deprecated stub. |
+| `@types/handlebars` | ^4.0.40 | ~~remove~~ **keep** | **Correction:** 4.0.40 holds the real type definitions. Handlebars comes from the CDN, not npm, so this is the only source of types for `checkJs`. |
 | ESLint / globals | 10.x / 17.x | current | Up to date. |
 | Docs | README said IIS8 / .NET 4.6.1 | — | Fixed in this change. |
 
