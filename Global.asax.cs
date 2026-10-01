@@ -74,8 +74,8 @@ namespace Maps
             routes.Add(new RegexRoute(@"/api/milieux", new GenericRouteHandler(typeof(MilieuxCodesHandler)), DEFAULT_JSON));
             routes.Add(new RegexRoute(@"/api/sec", new GenericRouteHandler(typeof(SECHandler)), new RouteValueDictionary { { "type", "SecondSurvey" } }));
             routes.Add(new RegexRoute(@"/api/sec/(?<sector>[^/]+)", new GenericRouteHandler(typeof(SECHandler)), new RouteValueDictionary { { "type", "SecondSurvey" } }));
-            routes.Add(new RegexRoute(@"/api/sec/(?<sector>[^/]+)/(?<quadrant>alpha|beta|gamma|delta)", new GenericRouteHandler(typeof(SECHandler)), new RouteValueDictionary { { "type", "SecondSurvey" }, { "metadata", 0 } }));
-            routes.Add(new RegexRoute(@"/api/sec/(?<sector>[^/]+)/(?<subsector>[^/]+)", new GenericRouteHandler(typeof(SECHandler)), new RouteValueDictionary { { "type", "SecondSurvey" }, { "metadata", 0 } }));
+            routes.Add(new RegexRoute(@"/api/sec/(?<sector>[^/]+)/(?<quadrant>alpha|beta|gamma|delta)", new GenericRouteHandler(typeof(SECHandler)), new RouteValueDictionary { { "type", "SecondSurvey" }, { "metadata", "0" } }));
+            routes.Add(new RegexRoute(@"/api/sec/(?<sector>[^/]+)/(?<subsector>[^/]+)", new GenericRouteHandler(typeof(SECHandler)), new RouteValueDictionary { { "type", "SecondSurvey" }, { "metadata", "0" } }));
             routes.Add(new RegexRoute(@"/api/metadata", new GenericRouteHandler(typeof(SectorMetaDataHandler)), DEFAULT_JSON));
             routes.Add(new RegexRoute(@"/api/metadata/(?<sector>[^/]+)", new GenericRouteHandler(typeof(SectorMetaDataHandler)), DEFAULT_JSON));
             routes.Add(new RegexRoute(@"/api/msec", new GenericRouteHandler(typeof(MSECHandler))));
@@ -97,17 +97,20 @@ namespace Maps
 
             routes.Add(new RegexRoute(@"/data/(?<sector>[^/]+)/booklet", new RedirectRouteHandler("/make/booklet?sector={sector}", statusCode: 302)));
 
+            // Part of a sector (quadrant or subsector): data, /sec, /tab, /image
+            void AddSectorPartRoutes(string part)
+            {
+                routes.Add(new RegexRoute($@"/data/(?<sector>[^/]+)/{part}", new GenericRouteHandler(typeof(SECHandler)), new RouteValueDictionary { { "type", "SecondSurvey" }, { "metadata", "0" } }));
+                routes.Add(new RegexRoute($@"/data/(?<sector>[^/]+)/{part}/sec", new GenericRouteHandler(typeof(SECHandler)), new RouteValueDictionary { { "metadata", "0" } }));
+                routes.Add(new RegexRoute($@"/data/(?<sector>[^/]+)/{part}/tab", new GenericRouteHandler(typeof(SECHandler)), new RouteValueDictionary { { "type", "TabDelimited" }, { "metadata", "0" } }));
+                routes.Add(new RegexRoute($@"/data/(?<sector>[^/]+)/{part}/image", new GenericRouteHandler(typeof(PosterHandler))));
+            }
+
             // Quadrant, e.g. /data/Spinward Marches/Alpha
-            routes.Add(new RegexRoute(@"/data/(?<sector>[^/]+)/(?<quadrant>alpha|beta|gamma|delta)", new GenericRouteHandler(typeof(SECHandler)), new RouteValueDictionary { { "type", "SecondSurvey" }, { "metadata", "0" } }));
-            routes.Add(new RegexRoute(@"/data/(?<sector>[^/]+)/(?<quadrant>alpha|beta|gamma|delta)/sec", new GenericRouteHandler(typeof(SECHandler)), new RouteValueDictionary { { "metadata", "0" } }));
-            routes.Add(new RegexRoute(@"/data/(?<sector>[^/]+)/(?<quadrant>alpha|beta|gamma|delta)/tab", new GenericRouteHandler(typeof(SECHandler)), new RouteValueDictionary { { "type", "TabDelimited" }, { "metadata", "0" } }));
-            routes.Add(new RegexRoute(@"/data/(?<sector>[^/]+)/(?<quadrant>alpha|beta|gamma|delta)/image", new GenericRouteHandler(typeof(PosterHandler))));
+            AddSectorPartRoutes("(?<quadrant>alpha|beta|gamma|delta)");
 
             // Subsector by Index, e.g. /data/Spinward Marches/C
-            routes.Add(new RegexRoute(@"/data/(?<sector>[^/]+)/(?<subsector>[A-Pa-p])", new GenericRouteHandler(typeof(SECHandler)), new RouteValueDictionary { { "type", "SecondSurvey" }, { "metadata", "0" } }));
-            routes.Add(new RegexRoute(@"/data/(?<sector>[^/]+)/(?<subsector>[A-Pa-p])/sec", new GenericRouteHandler(typeof(SECHandler)), new RouteValueDictionary { { "metadata", "0" } }));
-            routes.Add(new RegexRoute(@"/data/(?<sector>[^/]+)/(?<subsector>[A-Pa-p])/tab", new GenericRouteHandler(typeof(SECHandler)), new RouteValueDictionary { { "type", "TabDelimited" }, { "metadata", "0" } }));
-            routes.Add(new RegexRoute(@"/data/(?<sector>[^/]+)/(?<subsector>[A-Pa-p])/image", new GenericRouteHandler(typeof(PosterHandler))));
+            AddSectorPartRoutes("(?<subsector>[A-Pa-p])");
 
             // World e.g. /data/Spinward Marches/1910
             routes.Add(new RegexRoute(@"/data/(?<sector>[^/]+)/(?<hex>[0-9]{4})", new GenericRouteHandler(typeof(JumpWorldsHandler)), new RouteValueDictionary { { "accept", JsonConstants.MediaType }, { "jump", "0" } }));
@@ -120,10 +123,8 @@ namespace Maps
             routes.Add(new RegexRoute(@"/data/(?<sector>[^/]+)/(?<hex>[0-9]{4})/sheet", new RedirectRouteHandler("/print/world?sector={sector}&hex={hex}", statusCode: 302)));
 
             // Subsector by Name e.g. /data/Spinward Marches/Regina
-            routes.Add(new RegexRoute(@"/data/(?<sector>[^/]+)/(?<subsector>[^/]+)", new GenericRouteHandler(typeof(SECHandler)), new RouteValueDictionary { { "type", "SecondSurvey" }, { "metadata", "0" } }));
-            routes.Add(new RegexRoute(@"/data/(?<sector>[^/]+)/(?<subsector>[^/]+)/sec", new GenericRouteHandler(typeof(SECHandler)), new RouteValueDictionary { { "metadata", "0" } }));
-            routes.Add(new RegexRoute(@"/data/(?<sector>[^/]+)/(?<subsector>[^/]+)/tab", new GenericRouteHandler(typeof(SECHandler)), new RouteValueDictionary { { "type", "TabDelimited" }, { "metadata", "0" } }));
-            routes.Add(new RegexRoute(@"/data/(?<sector>[^/]+)/(?<subsector>[^/]+)/image", new GenericRouteHandler(typeof(PosterHandler))));
+            // NOTE: Must come after the more specific /data/{sector}/... routes above.
+            AddSectorPartRoutes("(?<subsector>[^/]+)");
 
             // T5SS Stock Data -------------------------------------
 
