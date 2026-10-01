@@ -11,13 +11,11 @@ namespace Maps.HTTP
     {
         private readonly Regex regex;
 
-        public RegexRoute(string pattern, IRouteHandler handler, RouteValueDictionary? defaults = null, bool caseInsensitive = false)
+        // Routes always match case-insensitively (e.g. /data/Spin/TAB).
+        public RegexRoute(string pattern, IRouteHandler handler, RouteValueDictionary? defaults = null)
             : base(null, defaults, handler)
         {
-            RegexOptions options = RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.ExplicitCapture;
-            if (caseInsensitive) options |= RegexOptions.IgnoreCase;
-
-            regex = new Regex("^" + pattern + "$", options);
+            regex = new Regex("^" + pattern + "$", RegexOptions.Compiled | RegexOptions.IgnoreCase | RegexOptions.ExplicitCapture);
         }
 
         public override RouteData? GetRouteData(HttpContextBase context)
