@@ -30,24 +30,48 @@ a { color: blue; }
 const $ = s => document.querySelector(s);
 
 const url = new URL(document.location);
-const href = url.searchParams.get('href') || 'https://example.com';
-const site = href.split('?')[0];
-$('#link').href = href;
-$('#link').innerText = site;
-$('#link').onclick = () => { setTimeout(() => window.close(), 100); };
 
-const standalone = window.matchMedia && window.matchMedia('(display-mode: standalone) or (display-mode: minimal-ui)').matches;
-
-const key = `tm_redirect_skip:${new URL(href).origin}`;
-const skip = localStorage.getItem(key) === 'true';
-if (skip) {
-  $('#skip').checked = true;
-  if (!standalone) {
-    document.location = href;
+// Only follow web links. Other schemes (e.g. javascript:) could run script on
+// this site's origin.
+function parseWebURL(s) {
+  try {
+    const u = new URL(s);
+    return (u.protocol === 'http:' || u.protocol === 'https:') ? u : null;
+  } catch (ex) {
+    return null;
   }
-  // Otherwise... ignore, so the other site isn't trapped in a PWA window.
 }
-$('#skip').addEventListener('change', e => {
-  localStorage.setItem(key, String($('#skip').checked));
-});
+const target = parseWebURL(url.searchParams.get('href') || 'https://example.com');
+
+if (!target) {
+  $('#link').replaceWith('(invalid link)');
+  $('#skip').disabled = true;
+} else {
+  const href = target.href;
+  const site = href.split('?')[0];
+  $('#link').href = href;
+  $('#link').innerText = site;
+  $('#link').onclick = () => { setTimeout(() => window.close(), 100); };
+
+  const standalone = window.matchMedia && window.matchMedia('(display-mode: standalone) or (display-mode: minimal-ui)').matches;
+
+  // localStorage can throw if storage is disabled; then just show the notice.
+  const key = `tm_redirect_skip:${target.origin}`;
+  let skip = false;
+  try {
+    skip = localStorage.getItem(key) === 'true';
+  } catch (ex) {}
+  if (skip) {
+    $('#skip').checked = true;
+    if (!standalone) {
+      document.location = href;
+    }
+    // Otherwise... ignore, so the other site isn't trapped in a PWA window.
+  }
+  $('#skip').addEventListener('change', e => {
+    try {
+      localStorage.setItem(key, String($('#skip').checked));
+    } catch (ex) {}
+  });
+}
 </script>
