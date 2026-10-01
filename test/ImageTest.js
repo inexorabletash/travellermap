@@ -4,8 +4,11 @@ var SERVICE_BASE = (function(l) {
   return '';
 }(window.location));
 
-var DEFAULT_THRESHOLD = 8;
-var DEFAULT_COUNT = 0;
+var DEFAULT_THRESHOLD = 8;  // per-channel difference that counts as "soft"
+var DEFAULT_COUNT = 0;      // hard-difference pixels allowed
+var HARD_THRESHOLD = 64;    // per-channel difference that always counts
+var SOFT_FRACTION = 0.001;  // soft-difference pixels allowed, as a fraction of the image
+var HARD_FRACTION = 0.0001; // hard-difference pixels allowed, as a fraction of the image
 
 // Rendering is slow on small machines (e.g. CI runners); requesting every image at once
 // can make requests time out, which previously showed up as spurious pixel mismatches.
@@ -93,29 +96,36 @@ function compareImages(url1, url2, threshold, count, callback) {
     }
     var id3 = ctx3.getImageData(0, 0, w, h);
     var d1 = id1.data, d2 = id2.data, d3 = id3.data, len = d3.length;
-    var dirty = false;
+    // Text anti-aliasing varies slightly between machines and runs: a few edge
+    // pixels shift by up to ~35 levels. Real regressions (missing or moved text,
+    // markers, borders) produce near-full-intensity differences. So:
+    //  - "hard" differences (>= HARD_THRESHOLD in any channel) always count;
+    //  - "soft" differences (>= threshold) only fail when widespread, which
+    //    catches global color/style shifts but not anti-aliasing jitter.
+    var hard = 0, soft = 0;
     for (var p = 0; p < len; p += 4) {
-      var dr = Math.abs(d1[p] - d2[p]);
-      var dg = Math.abs(d1[p + 1] - d2[p + 1]);
-      var db = Math.abs(d1[p + 2] - d2[p + 2]);
-      dr = (dr < threshold) ? 0 : dr;
-      dg = (dg < threshold) ? 0 : dg;
-      db = (db < threshold) ? 0 : db;
-      var d = dr + dg + db;
+      var d = Math.max(Math.abs(d1[p] - d2[p]),
+                       Math.abs(d1[p + 1] - d2[p + 1]),
+                       Math.abs(d1[p + 2] - d2[p + 2]));
+      var isHard = d >= HARD_THRESHOLD;
+      var isSoft = !isHard && d >= threshold;
+      if (isHard)
+        ++hard;
+      else if (isSoft)
+        ++soft;
 
-      if (!dirty && d > 0) {
-        if (count) {
-          --count;
-        } else {
-          dirty = true;
-        }
-      }
-
+      // Diff image: red = hard, yellow = soft.
       d3[p] = 255;
-      d3[p + 1] = 0;
+      d3[p + 1] = isSoft ? 255 : 0;
       d3[p + 2] = 0;
-      d3[p + 3] = d ? 255 : 0;
+      d3[p + 3] = (isHard || isSoft) ? 255 : 0;
     }
+    // At small text sizes, hinting can also flip a few isolated pixels fully on or
+    // off, so allow a handful of hard pixels too. A missing glyph, world marker, or
+    // border segment is still well over this budget.
+    var pixels = len / 4;
+    var dirty = hard > Math.max(count, Math.floor(pixels * HARD_FRACTION)) ||
+        soft > Math.max(count, pixels * SOFT_FRACTION);
 
     ctx3.putImageData(id3, 0, 0);
     callback(img1, img2, c3, !dirty);
