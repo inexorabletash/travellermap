@@ -73,7 +73,7 @@ namespace Maps.HTTP
 
     internal class RedirectRouteHandler : IRouteHandler
     {
-        private Regex replacer = new Regex(@"{(.*?)}", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+        private static readonly Regex replacer = new Regex(@"{(.*?)}", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
         private readonly string pattern;
         private readonly int statusCode;
@@ -89,9 +89,17 @@ namespace Maps.HTTP
             if (context == null)
                 throw new ArgumentNullException(nameof(context));
 
-            RouteValueDictionary dict = context.RouteData.Values;
-            var url = replacer.Replace(pattern, new MatchEvaluator(m => dict[m.Groups[1].Value].ToString()));
-            return new RedirectHandler(url, statusCode);
+            return new RedirectHandler(ExpandTarget(pattern, context.RouteData.Values), statusCode);
+        }
+
+        /// <summary>
+        /// Substitutes {name} placeholders in a redirect target with route values. Values
+        /// are URL-encoded since all current targets place them in the query string, and
+        /// names may contain characters like '&amp;' or '#'.
+        /// </summary>
+        internal static string ExpandTarget(string pattern, RouteValueDictionary values)
+        {
+            return replacer.Replace(pattern, m => Uri.EscapeDataString(values[m.Groups[1].Value].ToString()));
         }
 
         private class RedirectHandler : IHttpHandler

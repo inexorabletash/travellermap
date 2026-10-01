@@ -60,11 +60,34 @@ namespace Maps.API
                 SendError(context.Response, error.Code, error.Description, error.Message);
             }
 #if !DEBUG
+            catch (Exception ex) when (IsServerFault(ex))
+            {
+                System.Diagnostics.Trace.TraceError($"{context.Request.RawUrl}: {ex}");
+                SendError(context.Response, 500, "Internal Server Error", "An internal error occurred.");
+            }
             catch (Exception ex)
             {
+                // Most other exceptions here are thrown while parsing or resolving request
+                // input (unknown sectors, malformed data, etc.)
                 SendError(context.Response, 400, "Bad Request", ex.Message);
             }
 #endif
+        }
+
+        /// <summary>
+        /// Exception types that indicate a bug or environment problem rather than bad
+        /// request input. Other types are reported to the client as 400 Bad Request,
+        /// since the codebase uses general exception types for input errors too.
+        /// </summary>
+        internal static bool IsServerFault(Exception ex)
+        {
+            return ex is NullReferenceException
+                || ex is InvalidCastException
+                || ex is IndexOutOfRangeException
+                || ex is OutOfMemoryException
+                || ex is IOException
+                || ex is UnauthorizedAccessException
+                || ex is System.Data.Common.DbException;
         }
 
         protected class HttpError : Exception

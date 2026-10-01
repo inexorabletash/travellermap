@@ -189,7 +189,7 @@ namespace Maps.API
 
                         modifiedOptions &= ~(MapOptions.SectorGrid | MapOptions.SubsectorGrid);
 
-                        title = $"{title} - Subsector {'A' + index}";
+                        title = $"{title} - Subsector {(char)('A' + index)}";
                     }
                     else if (sector != null && HasOption("quadrant") && GetStringOption("quadrant")!.Length > 0)
                     {
@@ -253,7 +253,8 @@ namespace Maps.API
                     clipOutsectorBorders = false;
                 }
 
-                int rot = GetIntOption("rotation", 0) % 4;
+                // Normalize so that e.g. -1 means 270 degrees rather than no rotation.
+                int rot = ((GetIntOption("rotation", 0) % 4) + 4) % 4;
                 int hrot = GetIntOption("hrotation", 0);
                 if (hrot != 0)
                 {
@@ -265,15 +266,25 @@ namespace Maps.API
 
                 Stylesheet stylesheet = new Stylesheet(scale, options, style);
 
-                Size tileSize = new Size((int)Math.Floor(tileRect.Width * scale * Astrometrics.ParsecScaleX), (int)Math.Floor(tileRect.Height * scale * Astrometrics.ParsecScaleY));
+                // Computed as doubles and checked before converting, since an arbitrary
+                // rectangle at a large scale can overflow int.
+                double tileWidth = Math.Floor(tileRect.Width * scale * Astrometrics.ParsecScaleX);
+                double tileHeight = Math.Floor(tileRect.Height * scale * Astrometrics.ParsecScaleY);
 
                 if (thumb)
                 {
-                    tileSize.Width = (int)Math.Floor(16 * tileSize.Width / scale);
-                    tileSize.Height = (int)Math.Floor(16 * tileSize.Height / scale);
+                    tileWidth = Math.Floor(16 * tileWidth / scale);
+                    tileHeight = Math.Floor(16 * tileHeight / scale);
                     // NOTE: Intentionally changes `scale` after stylesheet is computed.
                     scale = 16;
                 }
+
+                if (!IsImageSizeAllowed(tileWidth, tileHeight, bitmap: false))
+                {
+                    throw new HttpError(400, "Bad Request",
+                        $"Requested poster size ({tileWidth}x{tileHeight}) is too large or invalid; reduce the area or scale.");
+                }
+                Size tileSize = new Size((int)tileWidth, (int)tileHeight);
 
                 int bitmapWidth = tileSize.Width, bitmapHeight = tileSize.Height;
 

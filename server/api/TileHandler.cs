@@ -37,7 +37,7 @@ namespace Maps.API
                     throw new HttpError(400, "Bad Request",
                           $"Requested dimensions ({width}x{height}) invalid.");
                 }
-                if (width * height > MaxDimension * MaxDimension)
+                if ((long)width * height > (long)MaxDimension * MaxDimension)
                 {
                     throw new HttpError(400, "Bad Request",
                          $"Requested dimensions ({width}x{height}) too large.");
