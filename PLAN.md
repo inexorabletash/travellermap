@@ -183,13 +183,15 @@ with their authors. Regenerate the baseline after each step to lock in the gains
      colors vary by machine. A pixel tolerance would also hide real regressions such as a
      missing label (similar size).
 
-  **Decision for you:**
-  - (a) keep ImageTest informational in CI (the status quo);
-  - (b) keep a second, CI-specific set of references; or
-  - (c) render PNG text with grayscale anti-aliasing (`AntiAliasGridFit`). ClearType is designed
-    for one LCD's sub-pixel layout, so it's arguably wrong in a downloadable image. (c) changes
-    every rendered image slightly and needs all references regenerated; it's an upstream
-    product call.
+  **Decided: (c), done on branch `grayscale-text`.** PNG text now uses `AntiAliasGridFit`, and all
+  references were regenerated. Grayscale text still jitters slightly between environments, and
+  even between server runs on one machine: a few edge pixels up to ~35 levels, plus 2–3 isolated
+  full-intensity flips in small text. The root cause wasn't found: it isn't DPI (all 96), request
+  order, or worker threads. So ImageTest now tolerates sparse differences (hard ≥64 up to 0.01%
+  of pixels, soft up to 0.1%). That was validated both ways: jittered references pass, and a
+  covered label, a single covered letter, and a +12 color shift all fail.
+  **Follow-up:** ImageTest is still informational in CI. If it reports PASS on the Windows
+  runner, drop `--informational ImageTest` from `.github/workflows/ci.yml` to make it gating.
 
 ## Phase 6 — Simplifications — DONE (branch `phase6-simplify`, built on `phase5-updates`) [up, case by case]
 Each refactor was checked for unchanged behavior with more than the unit tests:
