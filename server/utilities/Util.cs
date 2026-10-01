@@ -230,6 +230,28 @@ namespace Maps.Utilities
         {
             return new StreamReader(new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read));
         }
+
+        /// <summary>
+        /// Site root used to resolve "~/..." paths when not running under ASP.NET
+        /// (unit tests, command-line tools). Ignored when hosted.
+        /// </summary>
+        public static string? ContentRoot { get; set; }
+
+        /// <summary>
+        /// Maps a site-relative path like "~/res/Sectors/milieu.tab" to a physical path.
+        /// Uses the ASP.NET host when running in IIS, otherwise ContentRoot.
+        /// </summary>
+        public static string MapPath(string virtualPath)
+        {
+            if (System.Web.Hosting.HostingEnvironment.IsHosted)
+                return System.Web.Hosting.HostingEnvironment.MapPath(virtualPath);
+
+            if (ContentRoot == null)
+                throw new InvalidOperationException($"Util.ContentRoot must be set to resolve {virtualPath} outside of ASP.NET");
+
+            string relative = virtualPath.TrimStart('~').TrimStart('/', '\\').Replace('/', Path.DirectorySeparatorChar);
+            return Path.GetFullPath(Path.Combine(ContentRoot, relative));
+        }
     }
 
     // Like Regex, but takes shell-style globs:

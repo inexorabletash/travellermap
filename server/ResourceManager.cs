@@ -45,7 +45,7 @@ namespace Maps
 
         public static T GetXmlFileObject<T>(string name)
         {
-            using var stream = new FileStream(HostingEnvironment.MapPath(name), FileMode.Open, FileAccess.Read, FileShare.Read);
+            using var stream = new FileStream(Util.MapPath(name), FileMode.Open, FileAccess.Read, FileShare.Read);
             try
             {
                 object o = new XmlSerializer(typeof(T)).Deserialize(stream);
@@ -76,7 +76,7 @@ namespace Maps
 
         private static T GetDeserializableFileObject<T>(string name, string mediaType)
         {
-            using (var stream = new FileStream(HostingEnvironment.MapPath(name), FileMode.Open, FileAccess.Read, FileShare.Read))
+            using (var stream = new FileStream(Util.MapPath(name), FileMode.Open, FileAccess.Read, FileShare.Read))
             {
                 ConstructorInfo constructorInfoObj = (typeof(T)).GetConstructor(
                     BindingFlags.Instance | BindingFlags.Public, null,

@@ -84,10 +84,10 @@ namespace Maps.Rendering
         }
 
         private static readonly IList<MapLabel> minorLabels = MapLabel.FromFile(
-            System.Web.Hosting.HostingEnvironment.MapPath("~/res/labels/minor_labels.tab"));
+            Util.MapPath("~/res/labels/minor_labels.tab"));
 
         private static readonly IList<MapLabel> megaLabels = MapLabel.FromFile(
-            System.Web.Hosting.HostingEnvironment.MapPath("~/res/labels/mega_labels.tab"));
+            Util.MapPath("~/res/labels/mega_labels.tab"));
 
         private static readonly string[] borderFiles = {
             @"~/res/Vectors/Imperium.xml",
@@ -136,7 +136,7 @@ namespace Maps.Rendering
             private ImageCache()
             {
                 AbstractImage prepare(string urlPath) =>
-                    new AbstractImage(HostingEnvironment.MapPath("~" + urlPath), urlPath);
+                    new AbstractImage(Util.MapPath("~" + urlPath), urlPath);
 
                 // Actual images are loaded lazily.
                 nebulaImage = prepare("/res/Candy/Nebula.png");

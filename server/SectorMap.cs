@@ -172,7 +172,7 @@ namespace Maps
         {
             List<SectorMetafileEntry> files = new List<SectorMetafileEntry>();
 
-            using var reader = Util.SharedFileReader(System.Web.Hosting.HostingEnvironment.MapPath(@"~/res/Sectors/milieu.tab"));
+            using var reader = Util.SharedFileReader(Util.MapPath(@"~/res/Sectors/milieu.tab"));
             var parser = new Serialization.TSVParser(reader);
             foreach (var row in parser.Data)
             {
