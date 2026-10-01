@@ -28,7 +28,7 @@ edge cases or ops; **Low** = robustness/cosmetic.
 | B10 | Low | `server/http/Routing.cs:93` | Redirect targets (`/go/...`, `/booklet/...`, `/sheet/...`) substitute route values **unencoded** into the query string; a name containing `&`, `#`, `+` or `%` is mangled. Use `Uri.EscapeDataString`. |
 | B11 | Low | `server/api/DataHandlerBase.cs:63` | Release builds map *every* unhandled exception to **400 Bad Request**, hiding server faults (and they're not logged). Keep 400 for `ArgumentException`/`FormatException`/parse errors; return 500 and log otherwise. |
 | B12 | Low | `server/api/DataHandlerBase.cs:187,197` | JSONP pre/postamble wrap `Response.OutputStream` in a `using StreamWriter`, whose `Dispose` closes the underlying stream. It evidently works today under `HttpResponseStream`, but it's fragile; write via `Response.Output`/`Response.Write` instead. JSONP also has no test coverage (see §5). |
-| B13 | Low | `server/search/SearchEngine.cs` (`LIKE` clauses) | User search text isn't escaped for `LIKE` wildcards (`%`, `_`, `[`). Not SQL injection (parameters are used correctly), but `_` in a query matches any character. |
+| ~~B13~~ | — | `server/search/SearchEngine.cs` | **Withdrawn:** wildcards in search are a documented feature (`SearchHandler` turns `*` into `%`), so escaping them would break search. |
 | B14 | Low | `server/http/Routing.cs:14-18` | `caseInsensitive` parameter is dead — `IgnoreCase` is always set. Either remove the parameter or honor it. |
 | B16 | Low | `server/api/PosterHandler.cs:192` | `$"Subsector {'A' + index}"` adds a char and an int, so subsector poster titles and download filenames say "Subsector 67" instead of "Subsector C". Use `(char)('A' + index)`. (Found while verifying the PDFsharp upgrade.) |
 | B17 | Low | `world_util.js` `prepareWorld` | For Zhodani worlds with a `KM`/`W` base, `Bases` was a string, so a world that also had an `Re`/`Px`/`Ex`/`Rs*` remark threw on `Bases.push` and its card never opened. Latent: no such world exists in current data (all 679 sectors in 9 milieux checked). |
@@ -71,11 +71,11 @@ edge cases or ops; **Low** = robustness/cosmetic.
   table of `(param, setter)` pairs.
 - **S4 — `PosterHandler` domain table.** The `switch` of named domains is data; move it to a
   static dictionary (or a resource file, per the existing TODO).
-- **S5 — Legacy style bits.** `#define LEGACY_STYLES` in `DataHandlerBase.cs` — if the old
-  `options` style bits are no longer sent by any client, remove the path.
+- **S5 — Legacy style bits.** ~~Remove~~ **Keep:** `doc/api.html` promises that old URLs using the deprecated `options` style flags keep working.
 - **S6 — Stale compat code** in `Global.asax.cs` (`Tls11`), `index.js` (`isIframe` "!= for IE",
   iOS 12 `webkit*` fullscreen shims), `Maps.csproj` (`DefaultTargetSchema IE50`,
   `DefaultClientScript JScript`, etc.). Safe to trim.
+  **Update:** the TLS line was removed in Phase 5. The rest was skipped: the `webkit` fullscreen fallbacks still serve iPads before iPadOS 16.4, and the `.csproj` IDE properties are inert.
 
 ## 4. Version updates
 

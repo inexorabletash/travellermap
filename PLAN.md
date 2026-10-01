@@ -191,11 +191,37 @@ with their authors. Regenerate the baseline after each step to lock in the gains
     every rendered image slightly and needs all references regenerated; it's an upstream
     product call.
 
-## Phase 6 — Simplifications (after the tests exist) [up, case by case]
-- S1 one option parser, S2 route-table helper, S3 split `ProduceResponse`, S4 domain table,
-  S5 legacy style bits, S6 dead compatibility code; B13 escaping `LIKE` wildcards, B14, O3.
-- S2/S3 conflict most with upstream code changes. Skip them if Phase 7 goes ahead, since the
-  migration rewrites those files anyway.
+## Phase 6 — Simplifications — DONE (branch `phase6-simplify`, built on `phase5-updates`) [up, case by case]
+Each refactor was checked for unchanged behavior with more than the unit tests:
+- **S1** One option parser in `HandlerBase`, shared by the APIs and admin pages
+  (`OptionParsingTest`). Edge-case changes: admin `=2` is now true, and API booleans accept bare
+  flags (`?nogrid`).
+- **S2** Route helper for the quadrant/subsector groups. A full route-table dump (67 routes:
+  pattern, handler, defaults, order) is identical before and after.
+- **S3** `ProduceResponse` split into style options, DPR, SVG/PDF/bitmap writers, and the data
+  URI. 14 output variants are byte-identical before and after (PDFs equal apart from the
+  per-request XMP timestamps/UUIDs and font-subset tags, which differ between any two requests).
+- **S4** Poster domains as a table; domain posters are byte-identical (`PosterDomainsTest`).
+- **B14** dead route parameter; **O3** `TOP 1`.
+
+Not done, with reasons:
+- **S5 (legacy style bits): keep.** `doc/api.html` promises old URLs using the deprecated
+  `options` style flags keep working.
+- **S6 (compatibility code): skip.** The `webkit` fullscreen fallbacks still serve iPads before
+  iPadOS 16.4. The legacy `.csproj` IDE properties are ignored by MSBuild and would go away in a
+  Phase 7 project conversion.
+- **B13 (LIKE wildcards): not a bug.** Wildcards are a documented search feature (`*` → `%` in
+  `SearchHandler`), so escaping them would break search.
+
+Notes:
+- Since Phase 1's bitmap cap, the large undocumented `domain` posters (e.g. `chartedspace`, 16×8
+  sectors) need an explicit smaller `scale`. Before Phase 1 they tried to allocate ~580M-pixel
+  bitmaps.
+- **ImageTest also drifts locally:** during Phase 6, 11 text-heavy references started failing
+  on this dev machine *with code that had passed earlier the same day*. The cause was confirmed
+  by building the earlier commit, which renders the same new output. It's the same ClearType
+  machine-dependence as CI (Phase 5 note). That makes the ClearType decision more pressing:
+  refreshing the references would only fix them for one machine, temporarily.
 
 ## Phase 7 — Moving off Microsoft infrastructure [fork] (to be scoped separately)
 Rough order, each step keeping the site working:

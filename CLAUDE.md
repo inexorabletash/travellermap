@@ -18,7 +18,10 @@ Most upstream commits are **data** changes under `res/Sectors/`, not code.
 **Server — ASP.NET (System.Web), .NET Framework 4.8, C# 12 (pinned), Windows/IIS only.**
 - `Global.asax.cs` — registers every URL route (regex-based, see `server/http/Routing.cs`).
   Route order matters: more specific patterns (e.g. `/data/{sector}/sec`) must be registered
-  before catch-alls (e.g. `/data/{sector}/{subsector}`).
+  before catch-alls (e.g. `/data/{sector}/{subsector}`). `AddSectorPartRoutes` registers the
+  data/`sec`/`tab`/`image` routes for quadrants and subsectors.
+- Query options: use `HandlerBase.GetStringOption`/`GetBoolOption`/`HasOption` (the request
+  first, then route defaults). Booleans: non-zero integer or a bare flag (`?nogrid`) is true.
 - `server/api/*Handler.cs` — one handler per API. Data handlers derive from `DataHandlerBase`
   (content negotiation: `accept=` query param → `Accept` header → route default → handler
   default; JSON/XML/text; JSONP via `jsonp=`). Image handlers derive from `ImageHandlerBase`
