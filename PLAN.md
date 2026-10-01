@@ -34,7 +34,17 @@ Tag legend: **[up]** = upstream PR candidate, **[fork]** = fork only.
 - Unit tests: 17/19 pass. Both failures predate this work (see Phase 4, item 1).
 - `SETUP.md`, `README.md` and `CLAUDE.md` updated. **[up]** candidate once it has run a while.
 
-## Phase 1 — Security and safety fixes (≈1 day) [up]
+## Phase 1 — Security and safety fixes [up] — DONE (`bce47ea1`, branch `phase1-fixes`)
+Done: B1, B3, B6, B7, B8, B9, B10, B11 (narrowed: 500 only for exception types that always
+mean a server fault, because the code also uses `ApplicationException`/`Exception` for input
+errors), B16. Unit tests: `HandlerTest.cs`. Checked end to end under IIS Express, except
+B1, which can't be exercised from localhost (local requests are always allowed); the unit
+test covers it. Bitmap cap: 2^27 pixels; vector cap: 2^20 per side.
+Upstream note: cherry-picking onto upstream `main` will conflict in `UnitTests.csproj`
+(the PDFsharp reference lines differ). The fix is to keep upstream's reference and add
+`HandlerTest.cs` + `System.Web`.
+
+Original scope:
 - B1 admin key bypass. Put the check in a pure function: reject a missing or empty key and the
   placeholder, compare in constant time, and unit-test it.
 - B3 duplicate 403 body.
