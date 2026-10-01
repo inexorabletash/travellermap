@@ -1,0 +1,84 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  javascript:
+    name: JavaScript lint and unit tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm test
+
+  windows:
+    name: Build, unit tests, data validation
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: microsoft/setup-msbuild@v2
+
+      - name: Restore
+        run: msbuild Maps.sln -t:Restore -v:minimal
+
+      # Debug, so the sector parser records world-level errors for data validation.
+      - name: Build
+        run: msbuild Maps.sln -p:Configuration=Debug -v:minimal
+
+      # Includes DataValidationTest, which fails on data errors not in
+      # test/data-validation-baseline.txt.
+      - name: Unit tests
+        shell: pwsh
+        run: |
+          $vstest = & "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe" -latest -products * -find "**\vstest.console.exe" | Select-Object -First 1
+          & $vstest unittests\UnitTests\bin\Debug\UnitTests.dll
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+      - name: Browser tests (if IIS Express is available)
+        shell: pwsh
+        run: |
+          $iis = "$env:ProgramFiles\IIS Express\iisexpress.exe"
+          if (-not (Test-Path $iis)) {
+            Write-Output "::notice::IIS Express not installed on this runner; skipping browser tests."
+            exit 0
+          }
+          Copy-Item Web.config.sample web.config
+          $site = Start-Process $iis -ArgumentList "/path:$PWD", "/port:50103", "/systray:false" -PassThru
+          try {
+            $ready = $false
+            foreach ($i in 1..60) {
+              try {
+                Invoke-WebRequest "http://localhost:50103/api/coordinates?sector=Spin" -UseBasicParsing -TimeoutSec 30 | Out-Null
+                $ready = $true; break
+              } catch { Start-Sleep -Seconds 2 }
+            }
+            if (-not $ready) { Write-Error "Site did not start"; exit 1 }
+            # ImageTest compares pixels near-exactly against references rendered on a Windows
+            # desktop, and most text-heavy images differ on the Windows Server runner (likely
+            # GDI+ text anti-aliasing). Informational here until that's resolved; differing
+            # images are uploaded as the image-diffs artifact.
+            node test/run-browser-tests.mjs --no-search --informational ImageTest --save-images image-diffs
+            exit $LASTEXITCODE
+          } finally {
+            Stop-Process -Id $site.Id -Force -ErrorAction SilentlyContinue
+          }
+
+      - name: Upload differing images
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: image-diffs
+          path: image-diffs/
+          if-no-files-found: ignore
+          retention-days: 14

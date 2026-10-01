@@ -34,6 +34,7 @@ edge cases or ops; **Low** = robustness/cosmetic.
 | B17 | Low | `world_util.js` `prepareWorld` | For Zhodani worlds with a `KM`/`W` base, `Bases` was a string, so a world that also had an `Re`/`Px`/`Ex`/`Rs*` remark threw on `Bases.push` and its card never opened. Latent: no such world exists in current data (all 679 sectors in 9 milieux checked). |
 | B18 | Med | `redir.html` | `href` from the query string was used as a link and for automatic navigation with any URL scheme, including `javascript:`. Exploiting it needs a user click (the link is `target=_blank rel=noopener`) or a previously ticked "skip" for that origin, but only `http:`/`https:` should be accepted. |
 | B19 | Low | `index.js` `showSectorData` | `window.open(...).onload` threw when popups were blocked (`window.open` returns null). |
+| B20 | Low | `server/SecondSurvey.cs` legacy base tables | First-match GlobMaps had specific entries after matching `*` entries: Solomani/Zhodani `KM` encoded as `F` (should be `K`/`Z`), Droyne `M` as `M` (should be `Q`), and Hiver `Sc.H` decoded as `CK` (should be `H`). The test reference files had captured the wrong output. Fixed in Phase 4. |
 | B15 | Low | `sw.js` fetch handler | If `offline.html` isn't in the cache, `respondWith(undefined)` yields a network error. Return `Response.error()` or a minimal inline response. |
 
 ## 2. Optimizations

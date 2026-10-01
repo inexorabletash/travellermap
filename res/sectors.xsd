@@ -214,6 +214,8 @@
       <xs:attribute name="Abbreviation" type="xs:string" use="optional" />
       <xs:attribute name="Label" type="xs:string" use="optional" />
       <xs:attribute name="Tags" type="xs:NMTOKENS" use="optional" />
+      <!-- Sector derives from MetadataItem, so accepts Source/Author/Ref/Milieu/etc. -->
+      <xs:attributeGroup ref="metadata"/>
     </xs:complexType>
   </xs:element>
 

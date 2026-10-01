@@ -49,6 +49,7 @@
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -63,10 +64,15 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="AstrometricsTest.cs" />
     <Compile Include="CacheTest.cs" />
+    <Compile Include="DataValidationTest.cs" />
     <Compile Include="HandlerTest.cs" />
     <Compile Include="JsonTest.cs" />
+    <Compile Include="RoutingTest.cs" />
+    <Compile Include="SecondSurveyTest.cs" />
     <Compile Include="SerializationTest.cs" />
+    <Compile Include="TestSetup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UtilTest.cs" />
   </ItemGroup>

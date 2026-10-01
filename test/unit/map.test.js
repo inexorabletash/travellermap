@@ -1,5 +1,6 @@
 import {MemoryStorage} from './setup.js';
 import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
 import {test} from 'node:test';
 import {Astrometrics, LRUCache, Util} from '../../map.js';
 
@@ -62,21 +63,20 @@ test('Util.fromHex uses Traveller eHex digits (no I or O)', () => {
   assert.equal(Util.fromHex('?'), -1);
 });
 
-test('Astrometrics world coordinates match the server', () => {
-  // Reference (Core 0140) is the origin.
-  assert.deepEqual(Astrometrics.sectorHexToWorld(0, 0, 1, 40), {x: 0, y: 0});
-  // Regina (Spinward Marches 1910): server /api/coordinates gives
-  // sx=-4, sy=-1, x=-110, y=-70.
-  assert.deepEqual(Astrometrics.sectorHexToWorld(-4, -1, 19, 10), {x: -110, y: -70});
-  assert.deepEqual(Astrometrics.worldToSectorHex(-110, -70), {sx: -4, sy: -1, hx: 19, hy: 10});
+// Shared with the C# unit tests so client and server Astrometrics agree.
+const FIXTURE = JSON.parse(readFileSync(
+    new URL('../fixtures/astrometrics.json', import.meta.url), 'utf8'));
 
-  // Round trip across sector corners, including negative sectors.
-  for (const [sx, sy] of [[0, 0], [-1, -1], [3, -2]]) {
-    for (const [hx, hy] of [[1, 1], [32, 40], [1, 40], [32, 1]]) {
-      const {x, y} = Astrometrics.sectorHexToWorld(sx, sy, hx, hy);
-      assert.deepEqual(Astrometrics.worldToSectorHex(x, y), {sx, sy, hx, hy});
-    }
+test('Astrometrics world coordinates match the shared fixture', () => {
+  for (const {sx, sy, hx, hy, x, y} of FIXTURE.locations) {
+    assert.deepEqual(Astrometrics.sectorHexToWorld(sx, sy, hx, hy), {x, y});
+    assert.deepEqual(Astrometrics.worldToSectorHex(x, y), {sx, sy, hx, hy});
   }
+});
+
+test('Astrometrics.hexDistance matches the shared fixture', () => {
+  for (const {ax, ay, bx, by, d} of FIXTURE.distances)
+    assert.equal(Astrometrics.hexDistance(ax, ay, bx, by), d, `${ax},${ay} -> ${bx},${by}`);
 });
 
 test('Util.storage* tolerate missing, corrupt, and throwing storage', () => {

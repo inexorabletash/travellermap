@@ -88,7 +88,23 @@ Original scope:
 - O1: one shared, immutable `SectorMap`. **[fork]**, and only if memory matters. It's
   more naturally done during the Phase 7 host migration.
 
-## Phase 4 — Tests and CI (≈2–3 days)
+## Phase 4 — Tests and CI — DONE (branch `phase4-tests`)
+- Fixed both long-failing tests. They needed `Util.MapPath` and `Util.ContentRoot`, so data
+  files load outside IIS; `MSECWriterTest`'s expectation had been stale since a 2017 color
+  change.
+- `DataValidator` and `DataValidationTest`, with a baseline ratchet of 725 known errors.
+  `sectors.xsd` now allows metadata attributes on `<Sector>`, which removed about 1,400
+  false schema errors.
+- New unit tests: SecondSurvey (found and fixed B20), Astrometrics (fixture shared with JS),
+  PathFinder, and the route table. 45 C# tests and 14 JS tests.
+- `npm run test:browser` runs the three browser suites headlessly. Added JSONP tests and
+  refreshed stale references (legend legacy codes after B20; Regina's world count; the
+  overview image).
+- GitHub Actions CI (Linux JS job, Windows build/test/data job). It has not run on GitHub yet.
+- Search query parsing tests were not done: `ParseQuery` is private and tied to SQL. That
+  fits better with Phase 7's search interface.
+
+Original scope:
 1. Fix the two old test failures: update the `ColumnParserTest` input; make
    `Sector`'s default stylesheet path injectable so `MSECWriterTest` runs outside IIS. **[up]**
 2. Data validation tool: load every milieu, sector and metadata file, check the XML against

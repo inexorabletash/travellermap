@@ -2,7 +2,8 @@
   "type": "module",
   "scripts": {
     "test": "node --test \"test/unit/*.test.js\"",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test:browser": "node test/run-browser-tests.mjs"
   },
   "devDependencies": {
     "@types/handlebars": "^4.0.40",

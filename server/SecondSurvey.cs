@@ -76,6 +76,8 @@ namespace Maps
             { "So.F", "K" },  // Solomani Naval Base
             { "*.F", "KM" },  // Military & Naval Base
             { "*.G", "K" },   // Vargr Naval Base
+            // NOTE: First match wins, so specific allegiances must precede "*" entries.
+            { "Sc.H", "H" },  // Hiver Supply Base (TNE)
             { "*.H", "CK" },  // Vargr Corsair Base + Naval Base
             { "*.J", "K" },   // Naval Base
             { "So.K", "KM" }, // Solomani Naval and Planetary Base
@@ -95,7 +97,6 @@ namespace Maps
             { "*.X", "W" },   // Zhodani Relay Station
             { "*.Y", "D" },   // Zhodani Depot
             { "*.Z", "KM" },  // Zhodani Naval/Military Base
-            { "Sc.H", "H" },  // Hiver Supply Base
             { "*.I", "I" },  // Interface
             { "*.T", "T" },  // Terminus
         });
@@ -115,19 +116,21 @@ namespace Maps
             { "Zh.D", "Y" }, // Zhodani Depot
             { "*.D", "D" },   // Depot
             { "*.E", "E"},   // Hiver Embassy
+            // NOTE: First match wins, so specific allegiances must precede "*" entries.
+            { "So.KM", "K" }, // Solomani Naval and Planetary Base
+            { "Zh.KM", "Z" }, // Zhodani Naval/Military Base
             { "*.KM", "F" },  // Military & Naval Base
             { "So.K", "F" },  // Solomani Naval Base
             { "V*.K", "G" },   // Vargr Naval Base
             { "*.CK", "H" },  // Vargr Corsair Base + Naval Base
-            { "So.KM", "K" }, // Solomani Naval and Planetary Base
             { "Kk.K", "K" },   // K'kree Naval Base
             { "Hv.K", "L" },   // Hiver Naval Base
             { "Dr.K", "P" },   // Droyne Naval Base
             { "*.K", "J" },   // Naval Base
+            { "Dr.M", "Q" },   // Droyne Military Garrison
             { "*.M", "M" },   // Military base
             { "*.N", "N" },   // Naval base
             { "*.O", "O" },   // K'kree Naval Outpost     - TODO: Approved T5SS code for Outpost
-            { "Dr.M", "Q" },   // Droyne Military Garrison
             { "*.R", "R" },   // Aslan Clan Base
             { "*.S", "S" },   // Imperial Scout Base
             { "*.T", "T" },   // Aslan Tlaukhu Base
@@ -135,7 +138,6 @@ namespace Maps
             { "*.V", "V" },   // Exploration
             { "Zh.W", "X" },  // Zhodani Relay Station
             { "*.W", "W" },   // Imperial Scout Way Station
-            { "Zh.KM", "Z" }, // Zhodani Naval/Military Base
             // TNE
             { "Sc.H", "H" },  // Hiver Supply Base
             { "*.I", "I" },  // Interface
@@ -269,7 +271,7 @@ namespace Maps
         // Loaded from a data file, so reloaded after CacheGeneration.InvalidateAll().
         private static readonly ThreadLocalCache<AllegianceDictionary> s_t5Allegiances = new ThreadLocalCache<AllegianceDictionary>(() =>
             AllegianceDictionary
-            .FromFile(HostingEnvironment.MapPath("~/res/t5ss/allegiance_codes.tab"))
+            .FromFile(Util.MapPath("~/res/t5ss/allegiance_codes.tab"))
             .Merge(new AllegianceDictionary {
             // T5Code, LegacyCode, BaseCode, Name
 
@@ -370,7 +372,7 @@ namespace Maps
         // Loaded from a data file, so reloaded after CacheGeneration.InvalidateAll().
         private static readonly ThreadLocalCache<SophontDictionary> s_sophontCodes = new ThreadLocalCache<SophontDictionary>(() =>
             SophontDictionary
-            .FromFile(System.Web.Hosting.HostingEnvironment.MapPath("~/res/t5ss/sophont_codes.tab")));
+            .FromFile(Util.MapPath("~/res/t5ss/sophont_codes.tab")));
 
         public static string? SophontCodeToName(string code)
         {

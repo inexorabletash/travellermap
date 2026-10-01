@@ -225,6 +225,22 @@ test('Coordinates XML - Sector + Hex', () => {
       '<?xml version="1.0"?><Coordinates xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><sx>-4</sx><sy>-1</sy><hx>19</hx><hy>10</hy><x>-110</x><y>-70</y></Coordinates>');
 });
 
+test('Coordinates JSONP', async () => {
+  const r = await fetch(
+      SERVICE_BASE + '/api/coordinates?sector=spin&hex=1910&jsonp=cb');
+  assertEquals(r.status, 200, 'HTTP Status');
+  assertEquals(
+      await r.text(),
+      'cb({"sx":-4,"sy":-1,"hx":19,"hy":10,"x":-110,"y":-70});',
+      'JSONP body');
+});
+
+test('JSONP rejects non-identifier callbacks', async () => {
+  const r = await fetch(
+      SERVICE_BASE + '/api/coordinates?sector=spin&hex=1910&jsonp=alert(1)');
+  assertEquals(r.status, 400, 'HTTP Status');
+});
+
 function typeTest(api, expected_type) {
   api = substituteParams(api);
   test(api, async () => {

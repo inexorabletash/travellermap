@@ -405,7 +405,7 @@ namespace Maps
         // Loaded from a data file, so reloaded after CacheGeneration.InvalidateAll().
         private static readonly ThreadLocalCache<SectorStylesheet> s_defaultStyleSheet = new ThreadLocalCache<SectorStylesheet>(() =>
             SectorStylesheet.Parse(
-                Util.SharedFileReader(System.Web.Hosting.HostingEnvironment.MapPath("~/res/styles/otu.css"))));
+                Util.SharedFileReader(Util.MapPath("~/res/styles/otu.css"))));
 
         internal SectorStylesheet? Stylesheet { get; set; }
 

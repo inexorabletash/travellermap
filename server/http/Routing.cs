@@ -53,6 +53,8 @@ namespace Maps.HTTP
             this.type = type;
         }
 
+        internal Type HandlerType => type;
+
         IHttpHandler? IRouteHandler.GetHttpHandler(RequestContext context)
         {
             if (context == null)
@@ -76,6 +78,7 @@ namespace Maps.HTTP
         private static readonly Regex replacer = new Regex(@"{(.*?)}", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
         private readonly string pattern;
+        internal string Target => pattern;
         private readonly int statusCode;
 
         public RedirectRouteHandler(string target, int statusCode = 301)

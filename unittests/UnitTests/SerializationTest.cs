@@ -41,8 +41,8 @@ namespace UnitTests
                 "\r\n" +
                 "1    2    3   4        5         6 7\r\n" +
                 "---- -    --- -------- --------- - ----\r\n" +
-                "a a  b  x c   d     d          e f g   \r\n" +
-                "AAAAABBBBBCCCCDDDDDDDDDEEEEEEEEEEFFGGGGGGGG\r\n");
+                "a a  b    c   d     d          e f g   \r\n" +
+                "AAAA B    CCC DDDDDDDD EEEEEEEEE F GGGG\r\n");
 
             var parsed = new ColumnParser(reader);
 
@@ -68,6 +68,31 @@ namespace UnitTests
             Assert.AreEqual("EEEEEEEEE", dict["5"]);
             Assert.AreEqual("F", dict["6"]);
             Assert.AreEqual("GGGG", dict["7"]);
+        }
+
+        [TestMethod]
+        public void ColumnParserRejectsDataBetweenColumns()
+        {
+            // Data in the gaps between columns usually means misaligned columns, which
+            // would otherwise silently truncate values (see issue #182).
+            foreach (string row in new string[] {
+                "a a  b  x c   d     d          e f g   ",
+                "AAAAABBBBBCCCCDDDDDDDDDEEEEEEEEEEFFGGGGGGGG" })
+            {
+                var reader = new StringReader(
+                    "1    2    3   4        5         6 7\r\n" +
+                    "---- -    --- -------- --------- - ----\r\n" +
+                    row + "\r\n");
+                try
+                {
+                    new ColumnParser(reader);
+                    Assert.Fail("Expected ParseException for: " + row);
+                }
+                catch (ParseException ex)
+                {
+                    StringAssert.Contains(ex.Message, "line 3");
+                }
+            }
         }
 
         [TestMethod]
@@ -158,7 +183,7 @@ namespace UnitTests
                 "# Third Imperium",
                 "#",
                 "route -1 -1 3240 1 1 0101 red",
-                "route 0101 0202 green",
+                "route 0101 0202 #048104", // default for route.Im in res/styles/otu.css
                 "",
                 "# Seven Evil Exes",
                 "#",
