@@ -22,7 +22,7 @@ namespace Maps
             RegisterRoutes(RouteTable.Routes);
         }
 
-        private static void RegisterRoutes(RouteCollection routes)
+        internal static void RegisterRoutes(RouteCollection routes)
         {
             var DEFAULT_JSON = new RouteValueDictionary { { "accept", JsonConstants.MediaType } };
 
