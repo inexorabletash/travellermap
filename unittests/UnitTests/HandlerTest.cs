@@ -70,6 +70,22 @@ namespace UnitTests
         }
 
         [TestMethod]
+        public void PosterDomainsTest()
+        {
+            // The documented Imperial domains are 2x2 sectors.
+            foreach (var name in new[] { "Sylea", "Vland", "Gateway", "Ilelish", "Antares", "Sol", "Deneb" })
+            {
+                Assert.IsTrue(PosterHandler.Domains.TryGetValue(name, out var d), name);
+                Assert.AreEqual(2.0, d.W, name);
+                Assert.AreEqual(2.0, d.H, name);
+                StringAssert.StartsWith(d.Title, "Domain of", name);
+            }
+            Assert.AreEqual(PosterHandler.Domains["hive"], PosterHandler.Domains["hiver"]);
+            Assert.AreEqual("Solomani Confederacy", PosterHandler.Domains["SOLOMANI"].Title);
+            Assert.IsFalse(PosterHandler.Domains.ContainsKey("nope"));
+        }
+
+        [TestMethod]
         public void ServerFaultTest()
         {
             Assert.IsTrue(DataHandlerBase.IsServerFault(new NullReferenceException()));

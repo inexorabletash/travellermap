@@ -49,7 +49,7 @@ namespace UnitTests
             CollectionAssert.AreEqual(new string[] { "1", "2", "3", "4", "5", "6", "7" }, parsed.Fields.ToList());
 
             var data = parsed.Data;
-            Assert.AreEqual(data.Count,2);
+            Assert.AreEqual(2, data.Count);
 
             var dict = data[0].dict;
             Assert.AreEqual("a a", dict["1"]);

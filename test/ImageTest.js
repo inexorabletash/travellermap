@@ -7,26 +7,52 @@ var SERVICE_BASE = (function(l) {
 var DEFAULT_THRESHOLD = 8;
 var DEFAULT_COUNT = 0;
 
+// Rendering is slow on small machines (e.g. CI runners); requesting every image at once
+// can make requests time out, which previously showed up as spurious pixel mismatches.
+var MAX_CONCURRENT = 4;
+var active = 0, queue = [];
+function schedule(task) {
+  queue.push(task);
+  pump();
+}
+function pump() {
+  while (active < MAX_CONCURRENT && queue.length) {
+    ++active;
+    queue.shift()(function() {
+      --active;
+      pump();
+    });
+  }
+}
+
 function compareImages(url1, url2, threshold, count, callback) {
-  var img1 = new Image(), img1Loaded = false;
-  var img2 = new Image(), img2Loaded = false;
-  img1.onload = img1.onerror = function() {
-    img1Loaded = true;
-    if (img2Loaded) {
+  var img1 = new Image(), img2 = new Image();
+  var pending = 2, loadErrors = [];
+  function loaded() {
+    if (--pending === 0)
       doCompare();
-    }
+  }
+  img1.onload = img2.onload = loaded;
+  img1.onerror = function() {
+    loadErrors.push(url1);
+    loaded();
   };
-  img2.onload = img2.onerror = function() {
-    img2Loaded = true;
-    if (img1Loaded) {
-      doCompare();
-    }
+  img2.onerror = function() {
+    loadErrors.push(url2);
+    loaded();
   };
   img1.crossOrigin = 'anonymous';
   img1.src = url1;
   img2.crossOrigin = 'anonymous';
   img2.src = url2;
   function doCompare() {
+    if (loadErrors.length) {
+      // Report load failures as such rather than comparing against a blank image.
+      var msg = document.createElement('div');
+      msg.textContent = 'Failed to load: ' + loadErrors.join(', ');
+      callback(img1, img2, msg, false);
+      return;
+    }
     var w = Math.max(img1.width, img2.width),
         h = Math.max(img1.height, img2.height);
 
@@ -122,14 +148,17 @@ function check(
   tr = document.createElement('tr');
   resultsElement.appendChild(tr);
 
-  compareImages(url1, url2, threshold, count, function(a, b, c, pass) {
-    for (var i = 0; i < 3; ++i) {
-      var item = arguments[i];
-      td = document.createElement('td');
-      tr.appendChild(td);
-      td.appendChild(item);
-    }
-    tr.className = pass ? 'pass' : 'fail';
+  schedule(function(done) {
+    compareImages(url1, url2, threshold, count, function(a, b, c, pass) {
+      for (var i = 0; i < 3; ++i) {
+        var item = arguments[i];
+        td = document.createElement('td');
+        tr.appendChild(td);
+        td.appendChild(item);
+      }
+      tr.className = pass ? 'pass' : 'fail';
+      done();
+    });
   });
 }
 

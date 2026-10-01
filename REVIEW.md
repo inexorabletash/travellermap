@@ -28,7 +28,7 @@ edge cases or ops; **Low** = robustness/cosmetic.
 | B10 | Low | `server/http/Routing.cs:93` | Redirect targets (`/go/...`, `/booklet/...`, `/sheet/...`) substitute route values **unencoded** into the query string; a name containing `&`, `#`, `+` or `%` is mangled. Use `Uri.EscapeDataString`. |
 | B11 | Low | `server/api/DataHandlerBase.cs:63` | Release builds map *every* unhandled exception to **400 Bad Request**, hiding server faults (and they're not logged). Keep 400 for `ArgumentException`/`FormatException`/parse errors; return 500 and log otherwise. |
 | B12 | Low | `server/api/DataHandlerBase.cs:187,197` | JSONP pre/postamble wrap `Response.OutputStream` in a `using StreamWriter`, whose `Dispose` closes the underlying stream. It evidently works today under `HttpResponseStream`, but it's fragile; write via `Response.Output`/`Response.Write` instead. JSONP also has no test coverage (see §5). |
-| B13 | Low | `server/search/SearchEngine.cs` (`LIKE` clauses) | User search text isn't escaped for `LIKE` wildcards (`%`, `_`, `[`). Not SQL injection (parameters are used correctly), but `_` in a query matches any character. |
+| ~~B13~~ | — | `server/search/SearchEngine.cs` | **Withdrawn:** wildcards in search are a documented feature (`SearchHandler` turns `*` into `%`), so escaping them would break search. |
 | B14 | Low | `server/http/Routing.cs:14-18` | `caseInsensitive` parameter is dead — `IgnoreCase` is always set. Either remove the parameter or honor it. |
 | B16 | Low | `server/api/PosterHandler.cs:192` | `$"Subsector {'A' + index}"` adds a char and an int, so subsector poster titles and download filenames say "Subsector 67" instead of "Subsector C". Use `(char)('A' + index)`. (Found while verifying the PDFsharp upgrade.) |
 | B17 | Low | `world_util.js` `prepareWorld` | For Zhodani worlds with a `KM`/`W` base, `Bases` was a string, so a world that also had an `Re`/`Px`/`Ex`/`Rs*` remark threw on `Bases.push` and its card never opened. Latent: no such world exists in current data (all 679 sectors in 9 milieux checked). |
@@ -71,11 +71,11 @@ edge cases or ops; **Low** = robustness/cosmetic.
   table of `(param, setter)` pairs.
 - **S4 — `PosterHandler` domain table.** The `switch` of named domains is data; move it to a
   static dictionary (or a resource file, per the existing TODO).
-- **S5 — Legacy style bits.** `#define LEGACY_STYLES` in `DataHandlerBase.cs` — if the old
-  `options` style bits are no longer sent by any client, remove the path.
+- **S5 — Legacy style bits.** ~~Remove~~ **Keep:** `doc/api.html` promises that old URLs using the deprecated `options` style flags keep working.
 - **S6 — Stale compat code** in `Global.asax.cs` (`Tls11`), `index.js` (`isIframe` "!= for IE",
   iOS 12 `webkit*` fullscreen shims), `Maps.csproj` (`DefaultTargetSchema IE50`,
   `DefaultClientScript JScript`, etc.). Safe to trim.
+  **Update:** the TLS line was removed in Phase 5. The rest was skipped: the `webkit` fullscreen fallbacks still serve iPads before iPadOS 16.4, and the `.csproj` IDE properties are inert.
 
 ## 4. Version updates
 
@@ -84,13 +84,13 @@ edge cases or ops; **Low** = robustness/cosmetic.
 | PDFsharp | 1.5, built from source, DLL referenced by relative path | **PDFsharp 6.x** (NuGet, MIT) | Biggest setup-pain removal: no separate clone/build, no re-adding references (SETUP steps 1-2, 6). 6.x supports .NET Framework 4.6.2+; API is mostly compatible (`XGraphics`, `PdfDocument`). Keep the global PDF lock unless you confirm 6.x's thread-safety for this use. |
 | Unit test framework | MSTest v1 (`Microsoft.VisualStudio.QualityTools.UnitTestFramework`, VS2010-era conditions in csproj) | **MSTest 3.x** (`MSTest.TestFramework` + `MSTest.TestAdapter` NuGet) | Enables command-line `vstest`/`dotnet test` and CI. |
 | Project format | Legacy non-SDK `.csproj` (ToolsVersion 12) | SDK-style csproj (still targeting `net48`) | Smaller project files, NuGet `PackageReference`; web projects need care (MSBuild.SDK.SystemWeb). |
-| C# language | `LangVersion 8.0` | `latest` | Syntax-only features (file-scoped namespaces, pattern improvements) work on .NET Framework. |
+| C# language | `LangVersion 8.0` | `latest` | Syntax-only features (file-scoped namespaces, pattern improvements) work on .NET Framework. **Done: pinned to 12.0 rather than `latest`, so every machine compiles the same language.** |
 | SQL client | `System.Data.SqlClient` | `Microsoft.Data.SqlClient` | The old one is in maintenance only. |
 | .NET Framework | 4.8 | 4.8.1 (optional) | Long-term, moving off `System.Web` to ASP.NET Core would allow Linux hosting, but it's a rewrite of the handler/routing layer and `System.Drawing` rendering (→ SkiaSharp/ImageSharp) — only worth it with a strong reason. |
 | TLS | `Tls11 \| Tls12` enabled explicitly | Remove the line (4.8 uses OS defaults incl. TLS 1.3) | |
 | `Web.config.sample` | `targetFramework="4.6.1"` | `4.8`, and add `<httpRuntime targetFramework="4.8">` | Mismatch with the csproj. |
 | Handlebars | 4.7.8 from cdnjs, no SRI | same version + `integrity`/`crossorigin` attributes | 4.7.8 is the current 4.x. |
-| `@types/handlebars` | ^4.0.40 | remove | Handlebars ships its own types; this package is a deprecated stub. |
+| `@types/handlebars` | ^4.0.40 | ~~remove~~ **keep** | **Correction:** 4.0.40 holds the real type definitions. Handlebars comes from the CDN, not npm, so this is the only source of types for `checkJs`. |
 | ESLint / globals | 10.x / 17.x | current | Up to date. |
 | Docs | README said IIS8 / .NET 4.6.1 | — | Fixed in this change. |
 

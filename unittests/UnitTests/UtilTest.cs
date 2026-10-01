@@ -49,31 +49,31 @@ namespace UnitTests
         {
             OrderedHashSet<string> set = new OrderedHashSet<string>();
 
-            Assert.AreEqual(set.Count(), 0);
+            Assert.AreEqual(0, set.Count());
             CollectionAssert.AreEqual(new string[] { }, set.ToArray());
             Assert.IsFalse(set.Contains("a"));
             Assert.IsFalse(set.Contains("b"));
 
             set.Add("b");
-            Assert.AreEqual(set.Count(), 1);
+            Assert.AreEqual(1, set.Count());
             Assert.IsFalse(set.Contains("a"));
             Assert.IsTrue(set.Contains("b"));
             CollectionAssert.AreEqual(new string[] { "b" }, set.ToArray());
 
             set.Add("a");
-            Assert.AreEqual(set.Count(), 2);
+            Assert.AreEqual(2, set.Count());
             Assert.IsTrue(set.Contains("a"));
             Assert.IsTrue(set.Contains("b"));
             CollectionAssert.AreEqual(new string[] { "b", "a" }, set.ToArray());
 
             set.Add("b");
-            Assert.AreEqual(set.Count(), 2);
+            Assert.AreEqual(2, set.Count());
             Assert.IsTrue(set.Contains("a"));
             Assert.IsTrue(set.Contains("b"));
             CollectionAssert.AreEqual(new string[] { "b", "a" }, set.ToArray());
 
-            Assert.AreEqual(set[0], "b");
-            Assert.AreEqual(set[1], "a");
+            Assert.AreEqual("b", set[0]);
+            Assert.AreEqual("a", set[1]);
 
             set.Remove("b");
 

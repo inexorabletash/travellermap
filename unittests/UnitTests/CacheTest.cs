@@ -24,7 +24,8 @@ namespace UnitTests
             int built = 0;
             var cache = new ThreadLocalCache<Box>(() => new Box { Id = Interlocked.Increment(ref built) });
 
-            Assert.AreSame(cache.Value, cache.Value);
+            Box first = cache.Value, second = cache.Value;
+            Assert.AreSame(first, second, "repeated access returns the cached value");
             Assert.AreEqual(1, built);
 
             // Another thread gets its own value.

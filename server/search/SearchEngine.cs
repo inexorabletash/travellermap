@@ -437,7 +437,8 @@ namespace Maps.Search
 
         public static WorldResult? FindNearestWorldMatch(string name, string milieu, int x, int y)
         {
-            const string sql = "SELECT sector_x, sector_y, hex_x, hex_y, " +
+            // Only the nearest row is read.
+            const string sql = "SELECT TOP 1 sector_x, sector_y, hex_x, hex_y, " +
                 "((@x - x) * (@x - x) + (@y - y) * (@y - y)) AS distance " +
                 "FROM worlds " +
                 "WHERE name = @name AND milieu = @milieu " +

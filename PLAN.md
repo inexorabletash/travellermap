@@ -116,17 +116,112 @@ Original scope:
    (msbuild restore/build, vstest). The Windows job now works because the reference
    assemblies come from NuGet. **[fork]** first; offer upstream if wanted.
 
-## Phase 5 — Remaining version updates
-- MSTest v1 → MSTest 3.x NuGet (drop the VS2010-era `Choose` blocks). **[up]**
-- Remove the TLS 1.1 line, add SRI to the Handlebars tag, drop `@types/handlebars`, set
-  `LangVersion` to latest. **[up]**
-- ~~Microsoft.Data.SqlClient~~: dropped (see Decisions).
+## Phase 4b — Data quality backlog (revisit errors and warnings)
+The Phase 4 ratchet stops *new* errors; this item works down the existing ones. Analysis from
+2026-10-01 (full report: run `DataValidationTest` with `TM_VALIDATION_REPORT=<path>`).
 
-## Phase 6 — Simplifications (after the tests exist) [up, case by case]
-- S1 one option parser, S2 route-table helper, S3 split `ProduceResponse`, S4 domain table,
-  S5 legacy style bits, S6 dead compatibility code; B13 escaping `LIKE` wildcards, B14, O3.
-- S2/S3 conflict most with upstream code changes. Skip them if Phase 7 goes ahead, since the
-  migration rewrites those files anyway.
+**Where the 187,263 warnings and 725 errors come from**
+- 112k warnings (60%) are in the **Zhodani Core Route** fan project (tag `ZCR`, 2005, legacy
+  `.sec`). `/admin/errors` deliberately skips non-curated tags; the Phase 4 validator didn't.
+- The **T5SS-generated official sectors** (files headed "Generated file - DO NOT MODIFY") have
+  only **1,110** warnings. Their source is `res/t5ss/data`, not the generated files.
+- 64k warnings are in **hand-maintained official sectors** (e.g. Koog, Rfigh, Hadji, Harbinger;
+  HIWG-era data). These use **pre-T5 trade-code conventions**: population-0 outposts coded
+  `Ba Lo Ni`, and Ni on population 1–3. Classic Traveller defined Lo as ≤3 and Ni as ≤6; T5
+  (which the checker implements) defines them as 1–3 and 4–6. `Extraneous code: Ni/Lo` alone
+  is 73k warnings.
+- 74% of all warnings (137,776) are trade codes, which are fully determined by the UWP.
+
+**Proposals, with measured effect** (cumulative; warnings / errors)
+
+| # | Change | Owner | After |
+|---|---|---|---|
+| — | Today | | 187,263 / 725 |
+| T1 | Validator warnings use the same scope as `/admin/errors` (OTU/Apocryphal/Faraway); errors still checked everywhere | us [up] | 74,931 / 725 |
+| T2 | Demote generation-rule checks (TL = mods+1D, Gov/Law = Flux) to Hint: they test whether a world *could be randomly generated*, and canon worlds deviate on purpose. Still visible on `/admin/errors` as hints | us [up] | 60,057 / 725 |
+| T3 | `World.Validate` crashes on placeholder `{Ix}`/`(Ex)` (`----`), reported as 40 "Parse Error"s in Nadir. Data is fine (production shows the worlds); treat dashes as absent | us [up] | 60,057 / 685 |
+| T4 | `sectors.xsd`: `Label/@Color` is optional (the server defaults it to amber) | us [up] | 60,057 / 664 |
+| D1 | Tool that recomputes T5 trade codes from the UWP for a sector file, producing a reviewable diff; apply per sector with maintainer agreement (changes published data conventions) | tool: us; data: maintainers | 18,906 / 664 |
+| D2 | Same tool: population-0 Ex efficiency −5 / infrastructure rules (mechanical) | as D1 | 9,875 / 664 |
+| D3 | Rim Worlds (Faraway): 262 worlds use lowercase `na`; almost certainly `Na` (Non-aligned). Codes are case-sensitive, and real codes differ by case (`Cs`/`CS`), so fix the data, not the lookup | sector author (active upstream contributor) | 9,875 / 402 |
+
+**Smaller data fixes worth doing** (each confirmed by reading the file)
+- *Visible on the map:* `M1201/Spinward Marches.xml:219` uses `label=` instead of `Label=`, so the
+  "Federation of Arden" border label never renders. `M1105/Kidunal.xml:44,48` uses
+  `Wraplabel=` instead of `WrapLabel=`. `M1105/Astron.xml:42-44` puts `WrapLabel` on `<Label>`
+  (should be `Wrap`; value is false, so there's no visible effect).
+- Vanguard Reaches: zero-length route `2340 → 2340`; delete it.
+- Undefined border allegiances (8): `Ec` (Kruse), `Tangle` (Dhuerorrg ×2), `Ds` (Ziafrplians),
+  `Dw` and `MF` (The Beyond), `Au` and `OC` (Alte Grenzen). Add `<Allegiance>` definitions
+  (names needed from the source material).
+- Remaining undefined world allegiance codes (~330, after `na`): `Cc` in Gvurrdon M1248 (48;
+  defined for Faraway sectors but not here), `Ne`, `Dw`, `Hf`, `Ms`, `Mr`, … Review per sector.
+- 38 schema errors are stray text inside `<Routes>`/`<Borders>`/`<Sector>` (22 in `Rzakki.xml`),
+  probably notes that should be XML comments.
+- `Tabs`, `Era`, `Source-Milieu` attributes aren't read by the server; remove them, or declare
+  them as ignored in the schema.
+
+**Suggested order:** T1–T4 first (small code changes, no data judgement, upstream-friendly), then
+the visible-on-map fixes, then D1/D2 as an opt-in tool, then D3 and the allegiance definitions
+with their authors. Regenerate the baseline after each step to lock in the gains.
+
+## Phase 5 — Remaining version updates — DONE (branch `phase5-updates`) [up]
+- MSTest v1 → **MSTest 4.4.1** NuGet (supports net462+ and modern .NET). Its analyzers found 7 swapped
+  expected/actual assertions and 1 always-true assertion; fixed.
+- SRI hash on all 7 Handlebars script tags (verified a wrong hash blocks the script).
+- Removed the TLS line (no outgoing calls). If outgoing calls are added, set
+  `<httpRuntime targetFramework="4.8">` so they use OS TLS defaults.
+- C# 8.0 → **12.0** pinned in both projects (no new warnings).
+- `@types/handlebars`: **kept**. The review was wrong: it provides the real types for the
+  CDN-loaded global.
+- ~~Microsoft.Data.SqlClient~~: dropped (see Decisions).
+- **CI image tests** (follow-up from Phase 4): the CI artifact showed two causes.
+  1. About half the "failures" were images that didn't load in time (byte-identical on
+     re-fetch). Fixed by limiting concurrency and reporting load errors.
+  2. The rest are **ClearType** sub-pixel fringes on text (14–802 px, ≤0.035% of an image).
+     `ImageHandlerBase` renders text with `TextRenderingHint.ClearTypeGridFit`, whose fringe
+     colors vary by machine. A pixel tolerance would also hide real regressions such as a
+     missing label (similar size).
+
+  **Decision for you:**
+  - (a) keep ImageTest informational in CI (the status quo);
+  - (b) keep a second, CI-specific set of references; or
+  - (c) render PNG text with grayscale anti-aliasing (`AntiAliasGridFit`). ClearType is designed
+    for one LCD's sub-pixel layout, so it's arguably wrong in a downloadable image. (c) changes
+    every rendered image slightly and needs all references regenerated; it's an upstream
+    product call.
+
+## Phase 6 — Simplifications — DONE (branch `phase6-simplify`, built on `phase5-updates`) [up, case by case]
+Each refactor was checked for unchanged behavior with more than the unit tests:
+- **S1** One option parser in `HandlerBase`, shared by the APIs and admin pages
+  (`OptionParsingTest`). Edge-case changes: admin `=2` is now true, and API booleans accept bare
+  flags (`?nogrid`).
+- **S2** Route helper for the quadrant/subsector groups. A full route-table dump (67 routes:
+  pattern, handler, defaults, order) is identical before and after.
+- **S3** `ProduceResponse` split into style options, DPR, SVG/PDF/bitmap writers, and the data
+  URI. 14 output variants are byte-identical before and after (PDFs equal apart from the
+  per-request XMP timestamps/UUIDs and font-subset tags, which differ between any two requests).
+- **S4** Poster domains as a table; domain posters are byte-identical (`PosterDomainsTest`).
+- **B14** dead route parameter; **O3** `TOP 1`.
+
+Not done, with reasons:
+- **S5 (legacy style bits): keep.** `doc/api.html` promises old URLs using the deprecated
+  `options` style flags keep working.
+- **S6 (compatibility code): skip.** The `webkit` fullscreen fallbacks still serve iPads before
+  iPadOS 16.4. The legacy `.csproj` IDE properties are ignored by MSBuild and would go away in a
+  Phase 7 project conversion.
+- **B13 (LIKE wildcards): not a bug.** Wildcards are a documented search feature (`*` → `%` in
+  `SearchHandler`), so escaping them would break search.
+
+Notes:
+- Since Phase 1's bitmap cap, the large undocumented `domain` posters (e.g. `chartedspace`, 16×8
+  sectors) need an explicit smaller `scale`. Before Phase 1 they tried to allocate ~580M-pixel
+  bitmaps.
+- **ImageTest also drifts locally:** during Phase 6, 11 text-heavy references started failing
+  on this dev machine *with code that had passed earlier the same day*. The cause was confirmed
+  by building the earlier commit, which renders the same new output. It's the same ClearType
+  machine-dependence as CI (Phase 5 note). That makes the ClearType decision more pressing:
+  refreshing the references would only fix them for one machine, temporarily.
 
 ## Phase 7 — Moving off Microsoft infrastructure [fork] (to be scoped separately)
 Rough order, each step keeping the site working:

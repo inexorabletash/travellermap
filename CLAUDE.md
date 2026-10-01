@@ -15,10 +15,13 @@ Most upstream commits are **data** changes under `res/Sectors/`, not code.
 
 ## Architecture
 
-**Server — ASP.NET (System.Web), .NET Framework 4.8, C# 8, Windows/IIS only.**
+**Server — ASP.NET (System.Web), .NET Framework 4.8, C# 12 (pinned), Windows/IIS only.**
 - `Global.asax.cs` — registers every URL route (regex-based, see `server/http/Routing.cs`).
   Route order matters: more specific patterns (e.g. `/data/{sector}/sec`) must be registered
-  before catch-alls (e.g. `/data/{sector}/{subsector}`).
+  before catch-alls (e.g. `/data/{sector}/{subsector}`). `AddSectorPartRoutes` registers the
+  data/`sec`/`tab`/`image` routes for quadrants and subsectors.
+- Query options: use `HandlerBase.GetStringOption`/`GetBoolOption`/`HasOption` (the request
+  first, then route defaults). Booleans: non-zero integer or a bare flag (`?nogrid`) is true.
 - `server/api/*Handler.cs` — one handler per API. Data handlers derive from `DataHandlerBase`
   (content negotiation: `accept=` query param → `Accept` header → route default → handler
   default; JSON/XML/text; JSONP via `jsonp=`). Image handlers derive from `ImageHandlerBase`
@@ -44,7 +47,8 @@ Most upstream commits are **data** changes under `res/Sectors/`, not code.
 - `index.html` + `index.js` — main page UI (search, routes, world/sector info cards, settings).
 - `map.js` — the `TravellerMap` tiled map widget, `MapService` API client, `Util`, LRU cache.
 - `world_util.js` — decodes UWP/extensions/remarks into human-readable world details.
-- Templates are Handlebars (loaded from cdnjs), inlined in `<script type="text/x-handlebars-template">`.
+- Templates are Handlebars (loaded from cdnjs with an SRI `integrity` hash, so update the hash
+  if you change the version), inlined in `<script type="text/x-handlebars-template">`.
 - `sw.js` — service worker providing an offline fallback page.
 - `make/` (posters, booklets, atlases, border/route makers), `print/` (world sheets),
   `borders/` (border generation), `doc/` (API/file-format docs), `tools/` (ad-hoc tools).
@@ -75,8 +79,9 @@ redirects to copy into `Web.config.sample`.
 
 ## Tests & linting
 
-- **Unit tests** (C#, MSTest; the test project is C# 7.3, so no nullable annotations or
-  `using var`): `unittests/UnitTests`. Run from VS Test Explorer or
+- **Unit tests** (C#, MSTest 4 from NuGet; C# 12 like the main project, nullable context
+  opt-in per file). MSTest's analyzers run as errors: put `expected` before `actual` in
+  assertions. Tests are in `unittests/UnitTests`. Run from VS Test Explorer or
   `vstest.console.exe unittests\UnitTests\bin\Debug\UnitTests.dll`
   (under `Common7\IDE\Extensions\TestPlatform\`). Tests run outside IIS, so `TestSetup` sets
   `Util.ContentRoot` to the repo root. Server code must resolve data files with

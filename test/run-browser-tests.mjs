@@ -100,7 +100,10 @@ try {
     const failedRows = rows.filter((r, i) => i % 2 === 0 && rows[i + 1]?.className === 'fail');
     return {done: results.length > 0 && results.every(r => r.className),
             total: results.length,
-            failures: failedRows.map(clean),
+            failures: failedRows.map(r => {
+              const next = r.nextElementSibling?.textContent ?? '';
+              return clean(r) + (next.includes('Failed to load') ? ' — ' + next.trim() : '');
+            }),
             images: failedRows.map(r => ({ref: r.cells[0].textContent, url: r.cells[1].textContent}))};
   })()`;
 

@@ -70,30 +70,11 @@ namespace Maps.Admin
 
         protected abstract void Process(HttpContext context, ResourceManager resourceManager);
 
-        // TODO: Dedupe w/ DataResponder
         protected static string? GetStringOption(HttpContext context, string name)
-        {
-            if (context.Request[name] != null)
-                return context.Request[name];
-            var queryDefaults = Defaults(context);
-            if (queryDefaults != null && queryDefaults.ContainsKey(name))
-                return queryDefaults[name].ToString();
-            return null;
-        }
+            => GetStringOption(context.Request, Defaults(context), name);
 
         protected static bool GetBoolOption(HttpContext context, string name, bool defaultValue = false)
-        {
-            if (context.Request[name] != null)
-                return context.Request[name] == "1";
-            // Check for "empty" query params; a list is returned.
-            var empty = context.Request.QueryString[null];
-            if (empty != null && empty.Split(',').Contains(name))
-                return true;
-            var queryDefaults = Defaults(context);
-            if (queryDefaults != null && queryDefaults.ContainsKey(name))
-                return queryDefaults[name].ToString() == "1";
-            return defaultValue;
-        }
+            => GetBoolOption(context.Request, Defaults(context), name, defaultValue);
     }
 
     internal class AdminHandler : AdminHandlerBase
