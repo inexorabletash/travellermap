@@ -146,7 +146,8 @@ namespace Maps.Admin
 
         private static void Flush(HttpContext context)
         {
-            SectorMap.Flush();
+            // Every thread's sector map, resource cache, and code tables reload on next use.
+            CacheGeneration.InvalidateAll();
 
             var enumerator = context.Cache.GetEnumerator();
             while (enumerator.MoveNext())
@@ -154,7 +155,7 @@ namespace Maps.Admin
                 context.Cache.Remove(enumerator.Key.ToString());
             }
 
-            Write(context.Response, "Sector map flushed.");
+            Write(context.Response, $"Caches flushed on all threads (generation {CacheGeneration.Current}).");
             Write(context.Response, "<b>&Omega;</b>");
         }
 

@@ -63,6 +63,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="CacheTest.cs" />
     <Compile Include="HandlerTest.cs" />
     <Compile Include="JsonTest.cs" />
     <Compile Include="SerializationTest.cs" />

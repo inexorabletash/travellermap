@@ -17,8 +17,8 @@ namespace Maps
 
     internal class ResourceManager
     {
-        // Thread affinity
-        private static ThreadLocal<ResourceManager> s_instance = new ThreadLocal<ResourceManager>(() => new ResourceManager());
+        // Thread affinity; replaced (dropping its cache) after CacheGeneration.InvalidateAll().
+        private static readonly ThreadLocalCache<ResourceManager> s_instance = new ThreadLocalCache<ResourceManager>(() => new ResourceManager());
         
         /// <summary>
         /// Use for caching where thread-affinity is desired.

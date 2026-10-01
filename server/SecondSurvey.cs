@@ -266,7 +266,8 @@ namespace Maps
             return s_t5Allegiances.Value[t5code].LegacyCode;
         }
 
-        private static ThreadLocal<AllegianceDictionary> s_t5Allegiances = new ThreadLocal<AllegianceDictionary>(() =>             
+        // Loaded from a data file, so reloaded after CacheGeneration.InvalidateAll().
+        private static readonly ThreadLocalCache<AllegianceDictionary> s_t5Allegiances = new ThreadLocalCache<AllegianceDictionary>(() =>
             AllegianceDictionary
             .FromFile(HostingEnvironment.MapPath("~/res/t5ss/allegiance_codes.tab"))
             .Merge(new AllegianceDictionary {
@@ -297,7 +298,8 @@ namespace Maps
 
         public static IEnumerable<string> AllegianceCodes => s_t5Allegiances.Value.Keys;
         // May need GroupBy to handle duplicates
-        private static ThreadLocal<IReadOnlyDictionary<string, Allegiance>> s_legacyToT5Allegiance = new ThreadLocal<IReadOnlyDictionary<string, Allegiance>>(() =>
+        // Derived from s_t5Allegiances, so must be rebuilt with it.
+        private static readonly ThreadLocalCache<IReadOnlyDictionary<string, Allegiance>> s_legacyToT5Allegiance = new ThreadLocalCache<IReadOnlyDictionary<string, Allegiance>>(() =>
             new AllegianceDictionary(
                 s_t5Allegiances.Value.Values
                 .Where(a => a.LegacyCode != null)
@@ -365,7 +367,8 @@ namespace Maps
             }
         }
 
-        private static ThreadLocal<SophontDictionary> s_sophontCodes = new ThreadLocal<SophontDictionary>(() =>
+        // Loaded from a data file, so reloaded after CacheGeneration.InvalidateAll().
+        private static readonly ThreadLocalCache<SophontDictionary> s_sophontCodes = new ThreadLocalCache<SophontDictionary>(() =>
             SophontDictionary
             .FromFile(System.Web.Hosting.HostingEnvironment.MapPath("~/res/t5ss/sophont_codes.tab")));
 

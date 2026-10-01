@@ -32,9 +32,13 @@ Most upstream commits are **data** changes under `res/Sectors/`, not code.
 - `server/RenderContext.cs`, `Stylesheet.cs`, `RenderUtil.cs`, `server/graphics/` — map rendering.
   `AbstractGraphics` has Bitmap/SVG/PdfSharp backends; keep all three working.
 - `server/search/SearchEngine.cs` — SQL Server search index (built by `/admin/reindex`).
-- Caches are **thread-affine** (`ThreadLocal` / `[ThreadStatic]`): `ResourceManager`,
-  `SectorMap`, and many lookup tables. Mutable shared state is avoided this way, so don't
-  convert them to plain statics without adding locking.
+- Caches are **thread-affine**: one copy per worker thread, so they need no locking. Don't
+  convert them to plain statics without adding locking. Anything loaded from a data file
+  (`SectorMap`, `ResourceManager`, the T5SS allegiance/sophont tables, the default sector
+  stylesheet) uses `ThreadLocalCache<T>` (`server/utilities/ThreadLocalCache.cs`), so
+  `/admin/flush` → `CacheGeneration.InvalidateAll()` reloads it on every thread. Use it for
+  any new file-backed cache; plain `ThreadLocal<T>` is fine for constant tables.
+  `SectorMap.Flush()` resets only the current thread (admin reports use it to release memory).
 
 **Client — plain ES modules, no build step.**
 - `index.html` + `index.js` — main page UI (search, routes, world/sector info cards, settings).

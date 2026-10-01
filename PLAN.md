@@ -71,7 +71,18 @@ Original scope:
 - O2: rebuild `LRUCache` on `Map`, with tests.
 - Bump the `index.js?update=` cache-buster.
 
-## Phase 3 — Server cache correctness
+## Phase 3 — Server cache correctness — B2 DONE (branch `phase3-flush`) [up]
+New `ThreadLocalCache<T>` plus a global `CacheGeneration` counter. `/admin/flush` now reloads
+`SectorMap`, `ResourceManager`, the T5SS allegiance/sophont tables, and the default stylesheet
+on every thread. The code tables previously needed an app restart. `SectorMap.Flush()` keeps
+its thread-local meaning for the admin report pages.
+Checked under IIS Express with 64 concurrent clients after editing a sector's metadata. On the
+old code, 1 of 300 requests saw the edit after a flush; on the new code, 300 of 300. The
+allegiance table edit reached 300 of 300 after a flush. `/admin/errors` and `/admin/codes`
+still work. Unit tests: `CacheTest.cs` (4 tests).
+O1 (one shared map instead of one per thread) is still deferred, per below.
+
+Original scope:
 - B2: a generation counter makes `/admin/flush` reach every thread's `SectorMap` and
   `ResourceManager`. **[up]**
 - O1: one shared, immutable `SectorMap`. **[fork]**, and only if memory matters. It's

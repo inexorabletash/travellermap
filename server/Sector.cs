@@ -402,7 +402,8 @@ namespace Maps
                 new Hex((byte)(Astrometrics.SubsectorWidth * (2 * ssx + 1) / 2), (byte)(Astrometrics.SubsectorHeight * (2 * ssy + 1) / 2)));
         }
 
-        private static ThreadLocal<SectorStylesheet> s_defaultStyleSheet = new ThreadLocal<SectorStylesheet>(() =>
+        // Loaded from a data file, so reloaded after CacheGeneration.InvalidateAll().
+        private static readonly ThreadLocalCache<SectorStylesheet> s_defaultStyleSheet = new ThreadLocalCache<SectorStylesheet>(() =>
             SectorStylesheet.Parse(
                 Util.SharedFileReader(System.Web.Hosting.HostingEnvironment.MapPath("~/res/styles/otu.css"))));
 
