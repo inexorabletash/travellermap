@@ -235,7 +235,10 @@ namespace Maps.API
 
                 using (var g = System.Drawing.Graphics.FromImage(bitmap))
                 {
-                    g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+                    // Grayscale anti-aliasing. ClearType's sub-pixel color fringes depend on the
+                    // rendering machine's ClearType settings (so output varied between machines)
+                    // and assume an LCD's sub-pixel layout, which a saved/scaled image doesn't have.
+                    g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
 
                     using var graphics = new BitmapGraphics(g);
                     graphics.ScaleTransform((float)devicePixelRatio);
