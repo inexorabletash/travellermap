@@ -12,6 +12,9 @@ namespace Maps.Admin
 {
     internal abstract class AdminHandlerBase : Maps.HandlerBase, IHttpHandler
     {
+        // Value shipped in Web.config.sample; never accepted as a real key.
+        internal const string PlaceholderAdminKey = "YOUR_KEY_HERE";
+
         public static bool AdminAuthorized(HttpContext context)
         {
             if (context.Request.IsLocal)
@@ -20,11 +23,29 @@ namespace Maps.Admin
             if (!context.Request.IsSecureConnection)
                 return false;
 
-            if (context.Request["key"] == System.Configuration.ConfigurationManager.AppSettings["AdminKey"])
-                return true;
+            return IsValidAdminKey(context.Request["key"],
+                System.Configuration.ConfigurationManager.AppSettings["AdminKey"]);
+        }
 
-            SendError(context.Response, 403, "Forbidden", "Access Denied");
-            return false;
+        /// <summary>
+        /// True if the provided key matches the configured key. A missing, empty, or
+        /// placeholder configured key never matches, so remote admin access is disabled
+        /// unless a real key has been set.
+        /// </summary>
+        internal static bool IsValidAdminKey(string? provided, string? configured)
+        {
+            if (string.IsNullOrEmpty(configured) || configured == PlaceholderAdminKey)
+                return false;
+            if (provided == null)
+                return false;
+
+            // Constant-time comparison, to avoid leaking the key via response timing.
+            byte[] a = Encoding.UTF8.GetBytes(provided);
+            byte[] b = Encoding.UTF8.GetBytes(configured);
+            int diff = a.Length ^ b.Length;
+            for (int i = 0; i < Math.Min(a.Length, b.Length); ++i)
+                diff |= a[i] ^ b[i];
+            return diff == 0;
         }
 
         public bool IsReusable => true;

@@ -22,6 +22,28 @@ namespace Maps.API
         public const double MinScale = 0.0078125; // Math.Pow(2, -7);
         public const double MaxScale = 512; // Math.Pow(2, 9);
 
+        // The largest legitimate bitmap is roughly a full sector at 128 px/parsec with dpr=2
+        // (~7200x10300, ~74M pixels). Allow headroom, but refuse requests that would
+        // allocate many gigabytes or render for minutes.
+        public const long MaxBitmapPixels = 1L << 27; // ~134M pixels, 512MB at 32bpp
+
+        // Vector output (SVG/PDF) is cheap per unit of size, but dimensions must still fit in
+        // an int; this also rejects nonsensical requests.
+        public const int MaxVectorDimension = 1 << 20;
+
+        /// <summary>
+        /// Checks requested output dimensions (in output pixels/points). Uses doubles so
+        /// callers can check sizes before converting to int, avoiding overflow.
+        /// </summary>
+        internal static bool IsImageSizeAllowed(double width, double height, bool bitmap)
+        {
+            if (double.IsNaN(width) || double.IsNaN(height) || width < 1 || height < 1)
+                return false;
+            if (width > MaxVectorDimension || height > MaxVectorDimension)
+                return false;
+            return !bitmap || width * height <= MaxBitmapPixels;
+        }
+
         protected abstract class ImageResponder : DataResponder
         {
             protected ImageResponder(HttpContext context) : base(context) { }
@@ -110,7 +132,7 @@ namespace Maps.API
                 // "content-disposition: inline" is not used as Chrome opens that in a tab, then
                 // (sometimes?) fails to allow it to be saved due to being served via POST. 
                 string disposition = context.Request.HttpMethod == "POST"
-                    && context.Request.UserAgent.Contains("Chrome")
+                    && context.Request.UserAgent?.Contains("Chrome") == true
                     ? "attachment" : "inline";
 
                 MemoryStream? ms = null;
@@ -180,8 +202,15 @@ namespace Maps.API
                 else
                 {
                     #region Bitmap Generation
-                    int width = (int)Math.Floor(tileSize.Width * devicePixelRatio);
-                    int height = (int)Math.Floor(tileSize.Height * devicePixelRatio);
+                    double requestedWidth = Math.Floor(tileSize.Width * devicePixelRatio);
+                    double requestedHeight = Math.Floor(tileSize.Height * devicePixelRatio);
+                    if (!IsImageSizeAllowed(requestedWidth, requestedHeight, bitmap: true))
+                    {
+                        throw new HttpError(400, "Bad Request",
+                            $"Requested image size ({requestedWidth}x{requestedHeight}) is too large or invalid; reduce the area, scale, or dpr.");
+                    }
+                    int width = (int)requestedWidth;
+                    int height = (int)requestedHeight;
                     using var bitmap = TryConstructBitmap(width, height, PixelFormat.Format32bppArgb);
                     if (bitmap == null)
                     {
