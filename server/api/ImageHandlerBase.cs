@@ -60,200 +60,207 @@ namespace Maps.API
                 AbstractMatrix transform,
                 bool transparent, IDictionary<string, object> queryDefaults)
             {
-                // New-style Options
-
-                #region URL Parameters
-                // TODO: move to ParseOptions (maybe - requires options to be parsed after stylesheet creation?)
-                if (GetBoolOption("sscoords", queryDefaults: queryDefaults, defaultValue: false))
-                    ctx.Styles.hexCoordinateStyle = HexCoordinateStyle.Subsector;
-
-                if (GetBoolOption("allhexes", queryDefaults: queryDefaults, defaultValue: false))
-                    ctx.Styles.numberAllHexes = true;
-
-                if (GetBoolOption("nogrid", queryDefaults: queryDefaults, defaultValue: false))
-                    ctx.Styles.parsecGrid.visible = false;
-
-                if (!GetBoolOption("routes", queryDefaults: queryDefaults, defaultValue: true))
-                {
-                    ctx.Styles.macroRoutes.visible = false;
-                    ctx.Styles.microRoutes.visible = false;
-                }
-
-                if (!GetBoolOption("rifts", queryDefaults: queryDefaults, defaultValue: true))
-                    ctx.Styles.showRiftOverlay = false;
-
-                if (GetBoolOption("po", queryDefaults: queryDefaults, defaultValue: false))
-                    ctx.Styles.populationOverlay.visible = true;
-
-                if (GetBoolOption("im", queryDefaults: queryDefaults, defaultValue: false))
-                    ctx.Styles.importanceOverlay.visible = true;
-
-                if (GetBoolOption("cp", queryDefaults: queryDefaults, defaultValue: false))
-                    ctx.Styles.capitalOverlay.visible = true;
-
-                if (GetBoolOption("stellar", queryDefaults: queryDefaults, defaultValue: false))
-                    ctx.Styles.showStellarOverlay = true;
-
-                ctx.Styles.dimUnofficialSectors = GetBoolOption("dimunofficial", queryDefaults: queryDefaults, defaultValue: false);
-                ctx.Styles.colorCodeSectorStatus = GetBoolOption("review", queryDefaults: queryDefaults, defaultValue: false);
-                ctx.Styles.droyneWorlds.visible = GetBoolOption("dw", queryDefaults: queryDefaults, defaultValue: false);
-                ctx.Styles.minorHomeWorlds.visible = GetBoolOption("mh", queryDefaults: queryDefaults, defaultValue: false);
-                ctx.Styles.ancientsWorlds.visible = GetBoolOption("an", queryDefaults: queryDefaults, defaultValue: false);
-
-                // TODO: Return an error if pattern is invalid?
-                ctx.Styles.highlightWorldsPattern = HighlightWorldPattern.Parse(
-                    GetStringOption("hw", queryDefaults: queryDefaults, defaultValue: String.Empty)!.Replace(' ', '+'));
-                ctx.Styles.highlightWorlds.visible = ctx.Styles.highlightWorldsPattern != null;
-
-                double devicePixelRatio = GetDoubleOption("dpr", defaultValue: 1, queryDefaults: queryDefaults);
-                devicePixelRatio = Math.Round(devicePixelRatio, 1);
-                if (devicePixelRatio <= 0)
-                    devicePixelRatio = 1;
-                if (devicePixelRatio > 2)
-                    devicePixelRatio = 2;
-
-                ctx.Styles.routeEndAdjust = (float)GetDoubleOption("rea", defaultValue: 0.25, queryDefaults: queryDefaults);
-
+                ApplyStyleOptions(ctx.Styles, queryDefaults);
+                double devicePixelRatio = GetDevicePixelRatio(queryDefaults);
                 bool dataURI = GetBoolOption("datauri", queryDefaults: queryDefaults, defaultValue: false);
 
-                if (GetStringOption("milieu", SectorMap.DEFAULT_MILIEU) != SectorMap.DEFAULT_MILIEU)
-                {
-                    // TODO: Make this declarative in resource files.
-                    if (ctx.Styles.macroBorders.visible)
-                    {
-                        ctx.Styles.macroBorders.visible = false;
-                        ctx.Styles.microBorders.visible = true;
-                    }
-                    ctx.Styles.macroNames.visible = false;
-                    ctx.Styles.macroRoutes.visible = false;
-                }
-                #endregion
-
                 // "content-disposition: inline" is not used as Chrome opens that in a tab, then
-                // (sometimes?) fails to allow it to be saved due to being served via POST. 
+                // (sometimes?) fails to allow it to be saved due to being served via POST.
                 string disposition = context.Request.HttpMethod == "POST"
                     && context.Request.UserAgent?.Contains("Chrome") == true
                     ? "attachment" : "inline";
 
-                MemoryStream? ms = null;
-                if (dataURI)
-                    ms = new MemoryStream();
-                Stream outputStream = ms ?? Context.Response.OutputStream;
+                // A data: URI is built from the rendered bytes, so render into memory first.
+                using MemoryStream? dataUriBuffer = dataURI ? new MemoryStream() : null;
+                Stream outputStream = dataUriBuffer ?? Context.Response.OutputStream;
+                // Download headers don't apply to data: URIs.
+                string? downloadDisposition = dataURI ? null : disposition;
 
                 if (accepter.Accepts(context, ContentTypes.Image.Svg, ignoreHeaderFallbacks: true))
-                {
-                    #region SVG Generation
-                    using var svg = new SVGGraphics(tileSize.Width, tileSize.Height);
-                    RenderToGraphics(ctx, transform, svg);
-
-                    using var stream = new MemoryStream();
-                    svg.Serialize(new StreamWriter(stream));
-                    context.Response.ContentType = ContentTypes.Image.Svg;
-                    if (!dataURI)
-                    {
-                        context.Response.AddHeader("content-length", stream.Length.ToString());
-                        context.Response.AddHeader("content-disposition", $"{disposition};filename=\"{Util.SanitizeFilename(title)}.svg\"");
-                    }
-                    stream.WriteTo(outputStream);
-                    #endregion
-                }
-
+                    WriteSvg(context.Response, outputStream, downloadDisposition, title, ctx, tileSize, transform);
                 else if (accepter.Accepts(context, ContentTypes.Application.Pdf, ignoreHeaderFallbacks: true))
-                {
-                    #region PDF Generation
-
-                    using var stream = new MemoryStream();
-
-                    // PDFSharp 1.5 is not thread-safe, so serialize usage
-                    lock (ImageHandlerBase.s_pdf_serialization_lock)
-                    {
-                        using var document = new PdfDocument();
-                        document.Version = 14; // 1.4 for opacity
-                        document.Info.Title = title;
-                        document.Info.Author = "Joshua Bell";
-                        document.Info.Creator = "TravellerMap.com";
-                        document.Info.Subject = DateTime.Now.ToString("F", CultureInfo.InvariantCulture);
-                        document.Info.Keywords = "The Traveller game in all forms is owned by Mongoose Publishing. Copyright 1977 - 2024 Mongoose Publishing.";
-
-                        // TODO: Credits/Copyright
-                        // This is close, but doesn't define the namespace correctly:
-                        // document.Info.Elements.Add( new KeyValuePair<string, PdfItem>( "/photoshop/Copyright", new PdfString( "HelloWorld" ) ) );
-
-                        PdfPage page = document.AddPage();
-
-                        // NOTE: only PageUnit currently supported in MGraphics is Points
-                        page.Width = XUnit.FromPoint(tileSize.Width);
-                        page.Height = XUnit.FromPoint(tileSize.Height);
-
-                        using var gfx = new PdfSharpGraphics(XGraphics.FromPdfPage(page));
-                        RenderToGraphics(ctx, transform, gfx);
-
-                        document.Save(stream, closeStream: false);
-                    }
-                    context.Response.ContentType = ContentTypes.Application.Pdf;
-                    if (!dataURI)
-                    {
-                        context.Response.AddHeader("content-length", stream.Length.ToString());
-                        context.Response.AddHeader("content-disposition", $"{disposition};filename=\"{Util.SanitizeFilename(title)}.pdf\"");
-                    }
-                    stream.WriteTo(outputStream);
-                    #endregion
-                }
+                    WritePdf(context.Response, outputStream, downloadDisposition, title, ctx, tileSize, transform);
                 else
-                {
-                    #region Bitmap Generation
-                    double requestedWidth = Math.Floor(tileSize.Width * devicePixelRatio);
-                    double requestedHeight = Math.Floor(tileSize.Height * devicePixelRatio);
-                    if (!IsImageSizeAllowed(requestedWidth, requestedHeight, bitmap: true))
-                    {
-                        throw new HttpError(400, "Bad Request",
-                            $"Requested image size ({requestedWidth}x{requestedHeight}) is too large or invalid; reduce the area, scale, or dpr.");
-                    }
-                    int width = (int)requestedWidth;
-                    int height = (int)requestedHeight;
-                    using var bitmap = TryConstructBitmap(width, height, PixelFormat.Format32bppArgb);
-                    if (bitmap == null)
-                    {
-                        throw new HttpError(500, "Internal Server Error",
-                            $"Failed to allocate bitmap ({width}x{height}). Insufficient memory?");
-                    }
+                    WriteBitmap(context.Response, outputStream, disposition, title, ctx, tileSize, transform, devicePixelRatio, transparent);
 
-                    if (transparent)
-                        bitmap.MakeTransparent();
-
-                    using (var g = System.Drawing.Graphics.FromImage(bitmap))
-                    {
-                        g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
-
-                        using var graphics = new BitmapGraphics(g);
-                        graphics.ScaleTransform((float)devicePixelRatio);
-                        RenderToGraphics(ctx, transform, graphics);
-                    }
-
-                    BitmapResponse(context.Response, disposition, outputStream, ctx.Styles, bitmap, transparent ? ContentTypes.Image.Png : null, title);
-                    #endregion
-                }
-
-                if (dataURI)
-                {
-                    string contentType = context.Response.ContentType;
-                    context.Response.ContentType = ContentTypes.Text.Plain;
-                    ms!.Seek(0, SeekOrigin.Begin);
-
-                    context.Response.Output.Write("data:");
-                    context.Response.Output.Write(contentType);
-                    context.Response.Output.Write(";base64,");
-                    context.Response.Output.Flush();
-
-                    System.Security.Cryptography.ICryptoTransform encoder = new System.Security.Cryptography.ToBase64Transform();
-                    using System.Security.Cryptography.CryptoStream cs = new System.Security.Cryptography.CryptoStream(context.Response.OutputStream, encoder, System.Security.Cryptography.CryptoStreamMode.Write);
-                    ms!.WriteTo(cs);
-                    cs.FlushFinalBlock();
-                }
+                if (dataUriBuffer != null)
+                    WriteDataUri(context.Response, dataUriBuffer);
 
                 context.Response.Flush();
                 context.Response.Close();
-                return;
+            }
+
+            /// <summary>URL parameters that adjust the stylesheet (overlays, grids, labels).</summary>
+            private void ApplyStyleOptions(Stylesheet styles, IDictionary<string, object> queryDefaults)
+            {
+                bool Option(string name, bool defaultValue) => GetBoolOption(name, queryDefaults, defaultValue);
+
+                // TODO: move to ParseOptions (maybe - requires options to be parsed after stylesheet creation?)
+                if (Option("sscoords", false))
+                    styles.hexCoordinateStyle = HexCoordinateStyle.Subsector;
+                if (Option("allhexes", false))
+                    styles.numberAllHexes = true;
+                if (Option("nogrid", false))
+                    styles.parsecGrid.visible = false;
+                if (!Option("routes", true))
+                {
+                    styles.macroRoutes.visible = false;
+                    styles.microRoutes.visible = false;
+                }
+                if (!Option("rifts", true))
+                    styles.showRiftOverlay = false;
+                if (Option("po", false))
+                    styles.populationOverlay.visible = true;
+                if (Option("im", false))
+                    styles.importanceOverlay.visible = true;
+                if (Option("cp", false))
+                    styles.capitalOverlay.visible = true;
+                if (Option("stellar", false))
+                    styles.showStellarOverlay = true;
+
+                styles.dimUnofficialSectors = Option("dimunofficial", false);
+                styles.colorCodeSectorStatus = Option("review", false);
+                styles.droyneWorlds.visible = Option("dw", false);
+                styles.minorHomeWorlds.visible = Option("mh", false);
+                styles.ancientsWorlds.visible = Option("an", false);
+
+                // TODO: Return an error if pattern is invalid?
+                styles.highlightWorldsPattern = HighlightWorldPattern.Parse(
+                    GetStringOption("hw", queryDefaults: queryDefaults, defaultValue: String.Empty)!.Replace(' ', '+'));
+                styles.highlightWorlds.visible = styles.highlightWorldsPattern != null;
+
+                styles.routeEndAdjust = (float)GetDoubleOption("rea", defaultValue: 0.25, queryDefaults: queryDefaults);
+
+                if (GetStringOption("milieu", SectorMap.DEFAULT_MILIEU) != SectorMap.DEFAULT_MILIEU)
+                {
+                    // TODO: Make this declarative in resource files.
+                    if (styles.macroBorders.visible)
+                    {
+                        styles.macroBorders.visible = false;
+                        styles.microBorders.visible = true;
+                    }
+                    styles.macroNames.visible = false;
+                    styles.macroRoutes.visible = false;
+                }
+            }
+
+            /// <summary>Device pixel ratio for bitmaps: rounded to 0.1, in (0, 2], default 1.</summary>
+            private double GetDevicePixelRatio(IDictionary<string, object> queryDefaults)
+            {
+                double dpr = Math.Round(GetDoubleOption("dpr", defaultValue: 1, queryDefaults: queryDefaults), 1);
+                if (dpr <= 0)
+                    return 1;
+                return Math.Min(dpr, 2);
+            }
+
+            /// <summary>Content-Length and Content-Disposition for a downloadable response.</summary>
+            private static void AddDownloadHeaders(HttpResponse response, string? disposition, string title, string extension, long length)
+            {
+                if (disposition == null)
+                    return;
+                response.AddHeader("content-length", length.ToString());
+                response.AddHeader("content-disposition", $"{disposition};filename=\"{Util.SanitizeFilename(title)}.{extension}\"");
+            }
+
+            private static void WriteSvg(HttpResponse response, Stream output, string? disposition, string title,
+                RenderContext ctx, Size tileSize, AbstractMatrix transform)
+            {
+                using var svg = new SVGGraphics(tileSize.Width, tileSize.Height);
+                RenderToGraphics(ctx, transform, svg);
+
+                using var stream = new MemoryStream();
+                svg.Serialize(new StreamWriter(stream));
+                response.ContentType = ContentTypes.Image.Svg;
+                AddDownloadHeaders(response, disposition, title, "svg", stream.Length);
+                stream.WriteTo(output);
+            }
+
+            private static void WritePdf(HttpResponse response, Stream output, string? disposition, string title,
+                RenderContext ctx, Size tileSize, AbstractMatrix transform)
+            {
+                using var stream = new MemoryStream();
+
+                // PDFSharp 1.5 is not thread-safe, so serialize usage
+                lock (ImageHandlerBase.s_pdf_serialization_lock)
+                {
+                    using var document = new PdfDocument();
+                    document.Version = 14; // 1.4 for opacity
+                    document.Info.Title = title;
+                    document.Info.Author = "Joshua Bell";
+                    document.Info.Creator = "TravellerMap.com";
+                    document.Info.Subject = DateTime.Now.ToString("F", CultureInfo.InvariantCulture);
+                    document.Info.Keywords = "The Traveller game in all forms is owned by Mongoose Publishing. Copyright 1977 - 2024 Mongoose Publishing.";
+
+                    // TODO: Credits/Copyright
+                    // This is close, but doesn't define the namespace correctly:
+                    // document.Info.Elements.Add( new KeyValuePair<string, PdfItem>( "/photoshop/Copyright", new PdfString( "HelloWorld" ) ) );
+
+                    PdfPage page = document.AddPage();
+
+                    // NOTE: only PageUnit currently supported in MGraphics is Points
+                    page.Width = XUnit.FromPoint(tileSize.Width);
+                    page.Height = XUnit.FromPoint(tileSize.Height);
+
+                    using var gfx = new PdfSharpGraphics(XGraphics.FromPdfPage(page));
+                    RenderToGraphics(ctx, transform, gfx);
+
+                    document.Save(stream, closeStream: false);
+                }
+                response.ContentType = ContentTypes.Application.Pdf;
+                AddDownloadHeaders(response, disposition, title, "pdf", stream.Length);
+                stream.WriteTo(output);
+            }
+
+            private static void WriteBitmap(HttpResponse response, Stream output, string disposition, string title,
+                RenderContext ctx, Size tileSize, AbstractMatrix transform, double devicePixelRatio, bool transparent)
+            {
+                double requestedWidth = Math.Floor(tileSize.Width * devicePixelRatio);
+                double requestedHeight = Math.Floor(tileSize.Height * devicePixelRatio);
+                if (!IsImageSizeAllowed(requestedWidth, requestedHeight, bitmap: true))
+                {
+                    throw new HttpError(400, "Bad Request",
+                        $"Requested image size ({requestedWidth}x{requestedHeight}) is too large or invalid; reduce the area, scale, or dpr.");
+                }
+                int width = (int)requestedWidth;
+                int height = (int)requestedHeight;
+                using var bitmap = TryConstructBitmap(width, height, PixelFormat.Format32bppArgb);
+                if (bitmap == null)
+                {
+                    throw new HttpError(500, "Internal Server Error",
+                        $"Failed to allocate bitmap ({width}x{height}). Insufficient memory?");
+                }
+
+                if (transparent)
+                    bitmap.MakeTransparent();
+
+                using (var g = System.Drawing.Graphics.FromImage(bitmap))
+                {
+                    g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+
+                    using var graphics = new BitmapGraphics(g);
+                    graphics.ScaleTransform((float)devicePixelRatio);
+                    RenderToGraphics(ctx, transform, graphics);
+                }
+
+                BitmapResponse(response, disposition, output, ctx.Styles, bitmap, transparent ? ContentTypes.Image.Png : null, title);
+            }
+
+            /// <summary>Writes the buffered rendering as text: "data:{type};base64,...".</summary>
+            private static void WriteDataUri(HttpResponse response, MemoryStream rendered)
+            {
+                string contentType = response.ContentType;
+                response.ContentType = ContentTypes.Text.Plain;
+                rendered.Seek(0, SeekOrigin.Begin);
+
+                response.Output.Write("data:");
+                response.Output.Write(contentType);
+                response.Output.Write(";base64,");
+                response.Output.Flush();
+
+                using var encoder = new System.Security.Cryptography.ToBase64Transform();
+                using var cs = new System.Security.Cryptography.CryptoStream(response.OutputStream, encoder, System.Security.Cryptography.CryptoStreamMode.Write);
+                rendered.WriteTo(cs);
+                cs.FlushFinalBlock();
             }
 
             private static Bitmap? TryConstructBitmap(int width, int height, PixelFormat pixelFormat)
