@@ -6,10 +6,13 @@
 //   npm run test:browser -- --base http://localhost:8080 --no-search
 //
 // --no-search: allow /api/search failures (no SQL Server search index configured).
+// --informational <Page>: report the page's failures but don't fail the run (repeatable).
+// --save-images <dir>: for failed ImageTest checks, save the reference and the actual
+//   rendering as <dir>/<name>.ref.png and <dir>/<name>.actual.png.
 // Set CHROME to the browser executable if it isn't found automatically.
 
 import {spawn} from 'node:child_process';
-import {existsSync, mkdtempSync, rmSync} from 'node:fs';
+import {copyFileSync, existsSync, mkdirSync, mkdtempSync, rmSync, writeFileSync} from 'node:fs';
 import {tmpdir} from 'node:os';
 import path from 'node:path';
 
@@ -25,6 +28,9 @@ const PAGES = ['test/APITest.html', 'test/ContentTest.html', 'test/ImageTest.htm
 const ALLOWED = [/ref_bad_example/];  // ImageTest's self-check that diffs are detected
 if (args.includes('--no-search'))
   ALLOWED.push(/api\/search/);
+
+const INFORMATIONAL = args.flatMap((a, i) => a === '--informational' ? [args[i + 1]] : []);
+const SAVE_IMAGES = opt('--save-images');
 
 const CHROME = process.env.CHROME ?? [
   'C:/Program Files/Google/Chrome/Application/chrome.exe',
@@ -91,9 +97,11 @@ try {
     // ImageTest: a description row then a result row, classed pass/fail when done.
     const rows = [...document.querySelectorAll('#results tr')].slice(1);
     const results = rows.filter((_, i) => i % 2 === 1);
+    const failedRows = rows.filter((r, i) => i % 2 === 0 && rows[i + 1]?.className === 'fail');
     return {done: results.length > 0 && results.every(r => r.className),
             total: results.length,
-            failures: rows.filter((r, i) => i % 2 === 0 && rows[i + 1]?.className === 'fail').map(clean)};
+            failures: failedRows.map(clean),
+            images: failedRows.map(r => ({ref: r.cells[0].textContent, url: r.cells[1].textContent}))};
   })()`;
 
   for (const page of PAGES) {
@@ -112,11 +120,27 @@ try {
     }
     const unexpected = state.failures.filter(f => !ALLOWED.some(re => re.test(f)));
     const allowed = state.failures.length - unexpected.length;
-    console.log(`${unexpected.length ? 'FAIL' : 'PASS'} ${page}: ${state.total - state.failures.length}/${state.total} passed` +
-        (allowed ? ` (${allowed} expected failure${allowed > 1 ? 's' : ''})` : ''));
+    const informational = INFORMATIONAL.some(p => page.includes(p));
+    const status = !unexpected.length ? 'PASS' : informational ? 'WARN' : 'FAIL';
+    console.log(`${status} ${page}: ${state.total - state.failures.length}/${state.total} passed` +
+        (allowed ? ` (${allowed} expected failure${allowed > 1 ? 's' : ''})` : '') +
+        (informational && unexpected.length ? ' (informational; not failing the run)' : ''));
     for (const f of unexpected)
       console.log('    ' + f);
-    if (unexpected.length) exitCode = 1;
+    if (unexpected.length && !informational) exitCode = 1;
+
+    if (SAVE_IMAGES && state.images?.length) {
+      mkdirSync(SAVE_IMAGES, {recursive: true});
+      const toSave = state.images.filter(({ref}) => !ALLOWED.some(re => re.test(ref)));
+      for (const {ref, url} of toSave) {
+        const name = path.basename(ref, '.png');
+        copyFileSync(path.join('test', ref), path.join(SAVE_IMAGES, `${name}.ref.png`));
+        const r = await fetch(new URL(url, BASE));
+        writeFileSync(path.join(SAVE_IMAGES, `${name}.actual.png`), Buffer.from(await r.arrayBuffer()));
+      }
+      if (toSave.length)
+        console.log(`    Saved ${toSave.length} reference/actual image pair(s) to ${SAVE_IMAGES}`);
+    }
   }
   ws.close();
 } catch (ex) {
