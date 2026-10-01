@@ -162,6 +162,38 @@ export class Util {
     });
   }
 
+  // localStorage access can throw (storage disabled, some private modes, quota
+  // exceeded); treat failures as "nothing stored" / "not saved".
+
+  /** @returns {string|null} */
+  static storageGet(key) {
+    try {
+      return localStorage.getItem(key);
+    } catch (ex) {
+      return null;
+    }
+  }
+
+  static storageSet(key, value) {
+    try {
+      localStorage.setItem(key, value);
+    } catch (ex) {
+      // Ignore
+    }
+  }
+
+  /** Parsed JSON value stored under `key`, or undefined if missing/invalid. */
+  static storageGetJSON(key) {
+    const s = Util.storageGet(key);
+    if (s === null)
+      return undefined;
+    try {
+      return JSON.parse(s);
+    } catch (ex) {
+      return undefined;
+    }
+  }
+
   /** @returns {object} */
   static parseCookies() {
     const cookies = {};
@@ -547,11 +579,16 @@ export class MapService {
 // Least-Recently-Used Cache
 // ======================================================================
 
-class LRUCache {
+// A Map iterates in insertion order, so re-inserting an entry on access keeps
+// the least recently used entry first. All operations are O(1).
+export class LRUCache {
   constructor(capacity) {
     this.capacity = capacity;
-    this.map = {};
-    this.queue = [];
+    this.map = new Map();
+  }
+
+  get size() {
+    return this.map.size;
   }
 
   ensureCapacity(capacity) {
@@ -560,37 +597,26 @@ class LRUCache {
   }
 
   clear() {
-    this.map = {};
-    this.queue = [];
+    this.map.clear();
   }
 
   fetch(key) {
-    key = '$' + key;
-    const value = this.map[key];
+    const value = this.map.get(key);
     if (value === undefined)
       return undefined;
 
-    const index = this.queue.indexOf(key);
-    if (index !== -1)
-      this.queue.splice(index, 1);
-    this.queue.push(key);
+    // Mark as most recently used.
+    this.map.delete(key);
+    this.map.set(key, value);
     return value;
   }
 
   insert(key, value) {
-    key = '$' + key;
-    // Remove previous instances
-    const index = this.queue.indexOf(key);
-    if (index !== -1)
-      this.queue.splice(index, 1);
+    this.map.delete(key);
+    this.map.set(key, value);
 
-    this.map[key] = value;
-    this.queue.push(key);
-
-    while (this.queue.length > this.capacity) {
-      key = this.queue.shift();
-      delete this.map[key];
-    }
+    while (this.map.size > this.capacity)
+      this.map.delete(this.map.keys().next().value);
   }
 }
 

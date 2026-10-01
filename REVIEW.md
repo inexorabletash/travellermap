@@ -31,6 +31,9 @@ edge cases or ops; **Low** = robustness/cosmetic.
 | B13 | Low | `server/search/SearchEngine.cs` (`LIKE` clauses) | User search text isn't escaped for `LIKE` wildcards (`%`, `_`, `[`). Not SQL injection (parameters are used correctly), but `_` in a query matches any character. |
 | B14 | Low | `server/http/Routing.cs:14-18` | `caseInsensitive` parameter is dead — `IgnoreCase` is always set. Either remove the parameter or honor it. |
 | B16 | Low | `server/api/PosterHandler.cs:192` | `$"Subsector {'A' + index}"` adds a char and an int, so subsector poster titles and download filenames say "Subsector 67" instead of "Subsector C". Use `(char)('A' + index)`. (Found while verifying the PDFsharp upgrade.) |
+| B17 | Low | `world_util.js` `prepareWorld` | For Zhodani worlds with a `KM`/`W` base, `Bases` was a string, so a world that also had an `Re`/`Px`/`Ex`/`Rs*` remark threw on `Bases.push` and its card never opened. Latent: no such world exists in current data (all 679 sectors in 9 milieux checked). |
+| B18 | Med | `redir.html` | `href` from the query string was used as a link and for automatic navigation with any URL scheme, including `javascript:`. Exploiting it needs a user click (the link is `target=_blank rel=noopener`) or a previously ticked "skip" for that origin, but only `http:`/`https:` should be accepted. |
+| B19 | Low | `index.js` `showSectorData` | `window.open(...).onload` threw when popups were blocked (`window.open` returns null). |
 | B15 | Low | `sw.js` fetch handler | If `offline.html` isn't in the cache, `respondWith(undefined)` yields a network error. Return `Response.error()` or a minimal inline response. |
 
 ## 2. Optimizations

@@ -1,5 +1,9 @@
 {
   "type": "module",
+  "scripts": {
+    "test": "node --test \"test/unit/*.test.js\"",
+    "lint": "eslint"
+  },
   "devDependencies": {
     "@types/handlebars": "^4.0.40",
     "@eslint/js": "^10.0.1",

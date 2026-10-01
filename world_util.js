@@ -766,11 +766,12 @@ export async function prepareWorld(world) {
 
   // Bases
   world.Bases = ((code, allegiance) => {
+    // Always an array; remark-derived bases are appended below.
     if (allegiance.match(/^Zh/)) {
       if (code == 'KM')
-        return 'Zhodani Base';
+        return ['Zhodani Base'];
       if (code == 'W')
-        return 'Zhodani Relay Station';
+        return ['Zhodani Relay Station'];
     }
     return code.split('').map(code => BASE_TABLE[code]);
   })(world.Bases || '', world.Allegiance || '');
@@ -880,7 +881,7 @@ export async function prepareWorld(world) {
   const map_link = Util.makeURL(GENERATOR_BASE + '', map_generator_options);
 
   const link_key = `tm_redirect_skip:${new URL(map_link).origin}`;
-  const redir = localStorage.getItem(link_key) !== 'true';
+  const redir = Util.storageGet(link_key) !== 'true';
   if (redir) {
     world.map_link = Util.makeURL('redir.html', {href: map_link});
   } else {
