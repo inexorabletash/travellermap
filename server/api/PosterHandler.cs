@@ -3,6 +3,7 @@ using Maps.Graphics;
 using Maps.Rendering;
 using Maps.Utilities;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Web;
 
@@ -11,6 +12,35 @@ namespace Maps.API
     internal class PosterHandler : ImageHandlerBase
     {
         protected override DataResponder GetResponder(HttpContext context) => new Responder(context);
+
+        // Named regions for ?domain=, in sector coordinates: origin (X, Y) and size (W, H).
+        internal static readonly IReadOnlyDictionary<string, (double X, double Y, double W, double H, string Title)> Domains =
+            new Dictionary<string, (double, double, double, double, string)>(StringComparer.OrdinalIgnoreCase)
+            {
+                ["deneb"] = (-4, -1, 2, 2, "Domain of Deneb"),
+                ["vland"] = (-2, -1, 2, 2, "Domain of Vland"),
+                ["ilelish"] = (-2, 1, 2, 2, "Domain of Ilelish"),
+                ["antares"] = (0, -2, 2, 2, "Domain of Antares"),
+                ["sylea"] = (0, 0, 2, 2, "Domain of Sylea"),
+                ["sol"] = (0, 2, 2, 2, "Domain of Sol"),
+                ["gateway"] = (2, 0, 2, 2, "Domain of Gateway"),
+
+                // And these aren't domains, but...
+                ["foreven"] = (-6, -1, 2, 2, "Land Grant / Foreven"),
+                ["imperium"] = (-4, -1, 7, 5, "Third Imperium"),
+                ["solomani"] = (-1.5, 2.75, 4, 2.25, "Solomani Confederacy"),
+                ["zhodani"] = (-8, -3, 5, 3, "Zhodani Consulate"),
+                ["hive"] = (2, 1, 6, 4, "Hive Federation"),
+                ["hiver"] = (2, 1, 6, 4, "Hive Federation"),
+                ["aslan"] = (-8, 1, 7, 4, "Aslan Hierate"),
+                ["vargr"] = (-4, -4, 8, 3, "Vargr Extents"),
+                ["kkree"] = (4, -2, 4, 4, "Two Thousand Worlds"),
+                ["jp"] = (0, -3, 4, 3, "Julian Protectorate"),
+                // TODO: Zhodani provinces
+
+                ["chartedspace"] = (-8, -3, 16, 8, "Charted Space"),
+                ["jg"] = (160, 0, 2, 2, "Judges Guild"),
+            };
 
         private class Responder : ImageResponder
         {
@@ -66,36 +96,10 @@ namespace Maps.API
                 else if (HasOption("domain"))
                 {
                     string domain = GetStringOption("domain")!;
-                    double x, y, w = 2, h = 2;
-                    switch (domain.ToLowerInvariant())
-                    {
-                        case "deneb": x = -4; y = -1; title = "Domain of Deneb"; break;
-                        case "vland": x = -2; y = -1; title = "Domain of Vland"; break;
-                        case "ilelish": x = -2; y = 1; title = "Domain of Ilelish"; break;
-                        case "antares": x = 0; y = -2; title = "Domain of Antares"; break;
-                        case "sylea": x = 0; y = 0; title = "Domain of Sylea"; break;
-                        case "sol": x = 0; y = 2; title = "Domain of Sol"; break;
-                        case "gateway": x = 2; y = 0; title = "Domain of Gateway"; break;
-
-                        // And these aren't domains, but...
-                        case "foreven": x = -6; y = -1; title = "Land Grant / Foreven"; break;
-                        case "imperium": x = -4; y = -1; w = 7; h = 5; title = "Third Imperium"; break;
-                        case "solomani": x = -1.5; y = 2.75; w = 4; h = 2.25; title = "Solomani Confederacy"; break;
-                        case "zhodani": x = -8; y = -3; w = 5; h = 3; title = "Zhodani Consulate"; break;
-                        case "hive":
-                        case "hiver": x = 2; y = 1; w = 6; h = 4; title = "Hive Federation"; break;
-                        case "aslan": x = -8; y = 1; w = 7; h = 4; title = "Aslan Hierate"; break;
-                        case "vargr": x = -4; y = -4; w = 8; h = 3; title = "Vargr Extents"; break;
-                        case "kkree": x = 4; y = -2; w = 4; h = 4; title = "Two Thousand Worlds"; break;
-                        case "jp": x = 0; y = -3; w = 4; h = 3; title = "Julian Protectorate"; break;
-                        // TODO: Zhodani provinces
-
-                        case "chartedspace": x = -8; y = -3; w = 16; h = 8; title = "Charted Space"; break;
-                        case "jg": x = 160; y = 0; w = 2; h = 2; title = "Judges Guild"; break;
-
-                        default:
-                            throw new HttpError(404, "Not Found", $"Unknown domain: {domain}");
-                    }
+                    if (!Domains.TryGetValue(domain, out var d))
+                        throw new HttpError(404, "Not Found", $"Unknown domain: {domain}");
+                    double x = d.X, y = d.Y, w = d.W, h = d.H;
+                    title = d.Title;
 
                     int x1 = (int)Math.Round(x * Astrometrics.SectorWidth - Astrometrics.ReferenceHex.X + 1);
                     int y1 = (int)Math.Round(y * Astrometrics.SectorHeight - Astrometrics.ReferenceHex.Y + 1);
