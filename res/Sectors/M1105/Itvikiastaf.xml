@@ -2,8 +2,7 @@
 <Sector>
   <Name Lang="zh">Itvikiastaf</Name>
   <Name Lang="va">Aerenfors</Name>
-  <Credits>
-    <![CDATA[
+  <Credits><![CDATA[
 
              <b>Chit Botshti</b> sector was designed by John G.
              Wood and WG Zeist, with updates by Michael Gonzalez.
@@ -13,8 +12,7 @@
              Vilani &amp; Vargr</cite> (Digest Group Publications,
              1990).
 
-    ]]>
-  </Credits>
+    ]]></Credits>
   <Subsectors>
     <Subsector Index="A">Tlitllitle</Subsector>
     <Subsector Index="B">Stetsie</Subsector>
@@ -34,13 +32,161 @@
     <Subsector Index="P">Sierfiens</Subsector>
   </Subsectors>
   <Borders>
-    <Border ShowLabel="false" WrapLabel="false" Allegiance="ZhCo" LabelPosition="1721">0010 0110 0109 0208 0308 0407 0507 0606 0605 0706 0805 0905 1004 1105 1204 1304 1403 1504 1604 1704 1804 1905 2005 2106 2206 2306 2405 2505 2605 2705 2805 2906 3006 3007 3008 3109 3110 3210 3111 3112 3012 3013 3014 3015 3016 3017 3118 3119 3120 3220 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2041 1941 1841 1741 1641 1541 1441 1341 1241 1141 1041 0941 0841 0741 0641 0541 0441 0341 0241 0141 0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014 0013 0012 0011 0010</Border>
+    <Border ShowLabel="false" Allegiance="ZhCo" LabelPosition="1721">0010 0110 0109 0208 0308 0407 0507 0606 0605 0706 0805 0905 1004 1105 1204 1304 1403 1504 1604 1704 1804 1905 2005 2106 2206 2306 2405 2505 2605 2705 2805 2906 3006 3007 3008 3109 3110 3210 3111 3112 3012 3013 3014 3015 3016 3017 3118 3119 3120 3220 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3340 3341 3241 3141 3041 2941 2841 2741 2641 2541 2441 2341 2241 2141 2041 1941 1841 1741 1641 1541 1441 1341 1241 1141 1041 0941 0841 0741 0641 0541 0441 0341 0241 0141 0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014 0013 0012 0011 0010</Border>
   </Borders>
   <Regions>
-    <Region Color="red" Label="Pelican Nebula">
-      2032 2132 2231 2331 2332 2432 2532 2632 2633 2634 2635 2535 2435 2335 2234 2134 2033 2032
-    </Region>
-    <Region Color="red">2533 2534 2533</Region>
-    <Region Color="red">2133 2232 2233 2133</Region>
+    <Region Color="Red" LabelPosition="2333" Label="Pelican Nebula">2032 2132 2231 2331 2332 2432 2532 2632 2633 2634 2635 2535 2435 2335 2234 2134 2033 2032</Region>
+    <Region Color="Red" LabelPosition="2534">2533 2534 2533</Region>
+    <Region Color="Red" LabelPosition="2233">2133 2232 2233 2133</Region>
   </Regions>
+  <Routes>
+    <Route Start="0117" End="3217" Allegiance="ZhCo" EndOffsetX="-1" />
+    <Route Start="0117" End="0215" Allegiance="ZhCo" />
+    <Route Start="0215" End="0213" Allegiance="ZhCo" />
+    <Route Start="0213" End="3214" Allegiance="ZhCo" EndOffsetX="-1" />
+    <Route Start="0213" End="0513" Allegiance="ZhCo" />
+    <Route Start="0513" End="0610" Allegiance="ZhCo" />
+    <Route Start="0610" End="0309" Allegiance="ZhCo" />
+    <Route Start="0309" End="3210" Allegiance="ZhCo" EndOffsetX="-1" />
+    <Route Start="0610" End="0908" Allegiance="ZhCo" />
+    <Route Start="0908" End="0907" Allegiance="ZhCo" />
+    <Route Start="0907" End="0906" Allegiance="ZhCo" />
+    <Route Start="0906" End="0706" Allegiance="ZhCo" />
+    <Route Start="0706" End="0606" Allegiance="ZhCo" />
+    <Route Start="0906" End="1005" Allegiance="ZhCo" />
+    <Route Start="1005" End="1004" Allegiance="ZhCo" />
+    <Route Start="1005" End="1205" Allegiance="ZhCo" />
+    <Route Start="1205" End="1206" Allegiance="ZhCo" />
+    <Route Start="1206" End="1409" Allegiance="ZhCo" />
+    <Route Start="1409" End="1509" Allegiance="ZhCo" />
+    <Route Start="1409" End="1210" Allegiance="ZhCo" />
+    <Route Start="1409" End="1711" Allegiance="ZhCo" />
+    <Route Start="1711" End="1910" Allegiance="ZhCo" />
+    <Route Start="1910" End="1906" Allegiance="ZhCo" />
+    <Route Start="1910" End="2113" Allegiance="ZhCo" />
+    <Route Start="2113" End="2213" Allegiance="ZhCo" />
+    <Route Start="2113" End="1913" Allegiance="ZhCo" />
+    <Route Start="2213" End="2513" Allegiance="ZhCo" />
+    <Route Start="2513" End="2812" Allegiance="ZhCo" />
+    <Route Start="2510" End="2708" Allegiance="ZhCo" />
+    <Route Start="2213" End="2116" Allegiance="ZhCo" />
+    <Route Start="2116" End="2117" Allegiance="ZhCo" />
+    <Route Start="2117" End="2019" Allegiance="ZhCo" />
+    <Route Start="2019" End="2022" Allegiance="ZhCo" />
+    <Route Start="2022" End="2323" Allegiance="ZhCo" />
+    <Route Start="2323" End="2325" Allegiance="ZhCo" />
+    <Route Start="2323" End="2421" Allegiance="ZhCo" />
+    <Route Start="2421" End="2622" Allegiance="ZhCo" />
+    <Route Start="2421" End="2618" Allegiance="ZhCo" />
+    <Route Start="2116" End="1815" Allegiance="ZhCo" />
+    <Route Start="1815" End="1717" Allegiance="ZhCo" />
+    <Route Start="1717" End="1718" Allegiance="ZhCo" />
+    <Route Start="1718" End="1721" Allegiance="ZhCo" />
+    <Route Start="1718" End="1418" Allegiance="ZhCo" />
+    <Route Start="1205" End="1605" Allegiance="ZhCo" />
+    <Route Start="1605" End="1906" Allegiance="ZhCo" />
+    <Route Start="1906" End="1806" Allegiance="ZhCo" />
+    <Route Start="1906" End="2107" Allegiance="ZhCo" />
+    <Route Start="2107" End="2507" Allegiance="ZhCo" />
+    <Route Start="2507" End="2606" Allegiance="ZhCo" />
+    <Route Start="2507" End="2708" Allegiance="ZhCo" />
+    <Route Start="2708" End="2908" Allegiance="ZhCo" />
+    <Route Start="2908" End="2906" Allegiance="ZhCo" />
+    <Route Start="2908" End="3011" Allegiance="ZhCo" />
+    <Route Start="3011" End="2812" Allegiance="ZhCo" />
+    <Route Start="2812" End="2913" Allegiance="ZhCo" />
+    <Route Start="2812" End="3015" Allegiance="ZhCo" />
+    <Route Start="3015" End="2916" Allegiance="ZhCo" />
+    <Route Start="2916" End="2618" Allegiance="ZhCo" />
+    <Route Start="2618" End="2819" Allegiance="ZhCo" />
+    <Route Start="2819" End="3118" Allegiance="ZhCo" />
+    <Route Start="2819" End="3020" Allegiance="ZhCo" />
+    <Route Start="3020" End="3124" Allegiance="ZhCo" />
+    <Route Start="3124" End="0225" Allegiance="ZhCo" EndOffsetX="1" />
+    <Route Start="3124" End="2927" Allegiance="ZhCo" />
+    <Route Start="2927" End="2827" Allegiance="ZhCo" />
+    <Route Start="2827" End="2530" Allegiance="ZhCo" />
+    <Route Start="3232" End="0231" Allegiance="ZhCo" EndOffsetX="1" />
+    <Route Start="3232" End="3135" Allegiance="ZhCo" />
+    <Route Start="3135" End="2835" Allegiance="ZhCo" />
+    <Route Start="2835" End="2734" Allegiance="ZhCo" />
+    <Route Start="2835" End="2838" Allegiance="ZhCo" />
+    <Route Start="2838" End="2840" Allegiance="ZhCo" />
+    <Route Start="2840" End="2903" Allegiance="ZhCo" EndOffsetY="1" />
+    <Route Start="0324" End="3223" Allegiance="ZhCo" EndOffsetX="-1" />
+    <Route Start="0324" End="0521" Allegiance="ZhCo" />
+    <Route Start="0521" End="0321" Allegiance="ZhCo" />
+    <Route Start="0521" End="0722" Allegiance="ZhCo" />
+    <Route Start="0521" End="0619" Allegiance="ZhCo" />
+    <Route Start="0619" End="0719" Allegiance="ZhCo" />
+    <Route Start="0619" End="0720" Allegiance="ZhCo" />
+    <Route Start="0720" End="0820" Allegiance="ZhCo" />
+    <Route Start="0820" End="0921" Allegiance="ZhCo" />
+    <Route Start="0921" End="1222" Allegiance="ZhCo" />
+    <Route Start="1222" End="1423" Allegiance="ZhCo" />
+    <Route Start="0619" End="0618" Allegiance="ZhCo" />
+    <Route Start="0618" End="0616" Allegiance="ZhCo" />
+    <Route Start="0616" End="0417" Allegiance="ZhCo" />
+    <Route Start="0616" End="0613" Allegiance="ZhCo" />
+    <Route Start="0613" End="0513" Allegiance="ZhCo" />
+    <Route Start="0613" End="0714" Allegiance="ZhCo" />
+    <Route Start="0714" End="1116" Allegiance="ZhCo" />
+    <Route Start="1116" End="1214" Allegiance="ZhCo" />
+    <Route Start="1214" End="1411" Allegiance="ZhCo" />
+    <Route Start="1411" End="1210" Allegiance="ZhCo" />
+    <Route Start="1116" End="1418" Allegiance="ZhCo" />
+    <Route Start="0610" End="0712" Allegiance="ZhCo" />
+    <Route Start="0324" End="0424" Allegiance="ZhCo" />
+    <Route Start="0324" End="0126" Allegiance="ZhCo" />
+    <Route Start="0126" End="0328" Allegiance="ZhCo" />
+    <Route Start="0328" End="0427" Allegiance="ZhCo" />
+    <Route Start="0328" End="0131" Allegiance="ZhCo" />
+    <Route Start="0131" End="3230" Allegiance="ZhCo" EndOffsetX="-1" />
+    <Route Start="0138" End="3035" Allegiance="ZhCo" EndOffsetX="-1" />
+    <Route Start="0138" End="0238" Allegiance="ZhCo" />
+    <Route Start="0238" End="0139" Allegiance="ZhCo" />
+    <Route Start="0139" End="3240" Allegiance="ZhCo" EndOffsetX="-1" />
+    <Route Start="1740" End="1501" Allegiance="ZhCo" EndOffsetY="1" />
+    <Route Start="1740" End="2102" Allegiance="ZhCo" EndOffsetY="1" />
+    <Route Start="1740" End="1838" Allegiance="ZhCo" />
+    <Route Start="1838" End="2238" Allegiance="ZhCo" />
+    <Route Start="2238" End="2337" Allegiance="ZhCo" />
+    <Route Start="2337" End="2136" Allegiance="ZhCo" />
+    <Route Start="2136" End="1735" Allegiance="ZhCo" />
+    <Route Start="1735" End="1838" Allegiance="ZhCo" />
+    <Route Start="1735" End="1634" Allegiance="ZhCo" />
+    <Route Start="1634" End="1631" Allegiance="ZhCo" />
+    <Route Start="1631" End="1828" Allegiance="ZhCo" />
+    <Route Start="1828" End="1725" Allegiance="ZhCo" />
+    <Route Start="1725" End="1925" Allegiance="ZhCo" />
+    <Route Start="1925" End="2023" Allegiance="ZhCo" />
+    <Route Start="2023" End="2022" Allegiance="ZhCo" />
+    <Route Start="1725" End="1623" Allegiance="ZhCo" />
+    <Route Start="1623" End="1723" Allegiance="ZhCo" />
+    <Route Start="1723" End="1721" Allegiance="ZhCo" />
+    <Route Start="1623" End="1423" Allegiance="ZhCo" />
+    <Route Start="1725" End="1625" Allegiance="ZhCo" />
+    <Route Start="1625" End="1327" Allegiance="ZhCo" />
+    <Route Start="1327" End="0928" Allegiance="ZhCo" />
+    <Route Start="0928" End="0831" Allegiance="ZhCo" />
+    <Route Start="0831" End="0832" Allegiance="ZhCo" />
+    <Route Start="1327" End="1229" Allegiance="ZhCo" />
+    <Route Start="1229" End="1132" Allegiance="ZhCo" />
+    <Route Start="1132" End="0832" Allegiance="ZhCo" />
+    <Route Start="1327" End="1428" Allegiance="ZhCo" />
+    <Route Start="0832" End="0634" Allegiance="ZhCo" />
+    <Route Start="0634" End="0735" Allegiance="ZhCo" />
+    <Route Start="0735" End="1137" Allegiance="ZhCo" />
+    <Route Start="1137" End="1336" Allegiance="ZhCo" />
+    <Route Start="1336" End="1634" Allegiance="ZhCo" />
+    <Route Start="1137" End="1338" Allegiance="ZhCo" />
+    <Route Start="1338" End="1438" Allegiance="ZhCo" />
+    <Route Start="1438" End="1838" Allegiance="ZhCo" />
+    <Route Start="1137" End="1139" Allegiance="ZhCo" />
+    <Route Start="1139" End="0939" Allegiance="ZhCo" />
+    <Route Start="0939" End="0840" Allegiance="ZhCo" />
+    <Route Start="0840" End="0740" Allegiance="ZhCo" />
+    <Route Start="0740" End="0638" Allegiance="ZhCo" />
+    <Route Start="0638" End="0238" Allegiance="ZhCo" />
+  </Routes>
 </Sector>

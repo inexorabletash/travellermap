@@ -1,0 +1,121 @@
+<?xml version="1.0"?>
+<Sector>
+  <Name Lang="zh">Tsadra</Name>
+  <Name>Farway</Name>
+  <Subsectors>
+    <Subsector Index="A">Adrablar</Subsector>
+    <Subsector Index="B">Ziebell</Subsector>
+    <Subsector Index="C">Tash</Subsector>
+    <Subsector Index="D">Driaflzha</Subsector>
+    <Subsector Index="E">Ezh'Bremla</Subsector>
+    <Subsector Index="F">Ritsie</Subsector>
+    <Subsector Index="G">Lisheen</Subsector>
+    <Subsector Index="H">Iplzhdr</Subsector>
+    <Subsector Index="I">Adrsidle</Subsector>
+    <Subsector Index="J">Jdibla</Subsector>
+    <Subsector Index="K">Chazhdar</Subsector>
+    <Subsector Index="L">Fjords</Subsector>
+    <Subsector Index="M">Ozenj</Subsector>
+    <Subsector Index="N">Febasi</Subsector>
+    <Subsector Index="O">Shtiaiqr'</Subsector>
+    <Subsector Index="P">Zhdoekl</Subsector>
+  </Subsectors>
+  <Allegiances Author="Dale Jenkins">
+    <Allegiance Code="Ed">Eiaplial Davr</Allegiance>
+    <Allegiance Code="Fj">Fjords</Allegiance>
+    <Allegiance Code="Tn">Tsadra Nadir</Allegiance>
+    <Allegiance Code="Tc">Talpaku Client</Allegiance>
+    <Allegiance Code="Tl">Talpaku Communality</Allegiance>
+  </Allegiances>
+  <Borders>
+    <Border Color="Purple" Allegiance="Ed" LabelPosition="1605">1104 1204 1304 1403 1402 1401 1301 1200 1300 1400 1500 1600 1700 1800 1801 1902 1903 2003 2004 2105 2205 2206 2207 2107 2006 1907 1807 1707 1606 1507 1407 1307 1207 1107 1106 1105 1104</Border>
+    <Border Color="Gray" Allegiance="Fj" LabelPosition="2725">2222 2322 2422 2522 2622 2722 2822 2922 3022 3123 3223 3124 3125 3025 2926 2927 2928 2827 2826 2726 2625 2525 2424 2324 2323 2222 </Border>
+    <Border Color="Tan" Allegiance="Tn" LabelPosition="1219">0709 0808 0809 0910 1010 1110 1209 1310 1410 1510 1609 1710 1809 1810 1911 2011 1912 1812 1813 1714 1715 1716 1717 1718 1719 1819 1720 1721 1621 1622 1523 1423 1324 1223 1124 1023 0923 0922 0821 0921 0920 0919 0918 0917 0916 0915 0914 0913 0812 0811 0711 0710 0709</Border>
+    <Border WrapLabel="true" Color="Orange" Allegiance="Tl" LabelPosition="3127">3128 3227 3327 3328 3329 3330 3229 3129 3128</Border>
+    <Border Allegiance="ZhCo" LabelPosition="2909">1916 2015 2014 2114 2113 2212 2211 2311 2310 2309 2408 2407 2406 2405 2404 2304 2303 2202 2201 2101 2100 2200 2300 2400 2500 2600 2700 2800 2900 3000 3100 3200 3300 3301 3302 3303 3304 3305 3306 3307 3308 3309 3310 3311 3312 3313 3314 3315 3316 3317 3318 3218 3219 3220 3120 3019 2920 2820 2720 2620 2520 2420 2320 2219 2119 2118 2017 1917 1916</Border>
+  </Borders>
+  <Routes>
+    <Route Start="3117" End="0117" Allegiance="ZhCo" EndOffsetX="1" />
+    <Route Start="3117" End="2916" Allegiance="ZhCo" />
+    <Route Start="3117" End="3018" Allegiance="ZhCo" />
+    <Route Start="3117" End="3215" Allegiance="ZhCo" />
+    <Route Start="3215" End="3112" Allegiance="ZhCo" />
+    <Route Start="3112" End="3108" Allegiance="ZhCo" />
+    <Route Start="3108" End="2905" Allegiance="ZhCo" />
+    <Route Start="2905" End="3003" Allegiance="ZhCo" />
+    <Route Start="3003" End="0105" Allegiance="ZhCo" EndOffsetX="1" />
+    <Route Start="3003" End="3102" Allegiance="ZhCo" />
+    <Route Start="3102" End="3140" Allegiance="ZhCo" EndOffsetY="-1" />
+    <Route Start="2905" End="2604" Allegiance="ZhCo" />
+    <Route Start="2604" End="2202" Allegiance="ZhCo" />
+    <Route Start="2202" End="2101" Allegiance="ZhCo" />
+    <Route Start="2101" End="2139" Allegiance="ZhCo" EndOffsetY="-1" />
+    <Route Start="2604" End="2406" Allegiance="ZhCo" />
+    <Route Start="2406" End="2106" Allegiance="ZhCo" />
+    <Route Start="2406" End="2709" Allegiance="ZhCo" />
+    <Route Start="2709" End="2711" Allegiance="ZhCo" />
+    <Route Start="2711" End="2611" Allegiance="ZhCo" />
+    <Route Start="2611" End="2411" Allegiance="ZhCo" />
+    <Route Start="2411" End="2310" Allegiance="ZhCo" />
+    <Route Start="2611" End="2513" Allegiance="ZhCo" />
+    <Route Start="2513" End="2213" Allegiance="ZhCo" />
+    <Route Start="2213" End="2113" Allegiance="ZhCo" />
+    <Route Start="2213" End="2014" Allegiance="ZhCo" />
+    <Route Start="2014" End="1715" Allegiance="ZhCo" />
+    <Route Start="2014" End="1916" Allegiance="ZhCo" />
+    <Route Start="1916" End="1917" Allegiance="ZhCo" />
+    <Route Start="2213" End="2317" Allegiance="ZhCo" />
+    <Route Start="2317" End="2218" Allegiance="ZhCo" />
+    <Route Start="2218" End="2219" Allegiance="ZhCo" />
+    <Route Start="2219" End="2320" Allegiance="ZhCo" />
+    <Route Start="2317" End="2618" Allegiance="ZhCo" />
+    <Route Start="2618" End="2916" Allegiance="ZhCo" />
+    <Route Start="2618" End="2719" Allegiance="ZhCo" />
+    <Route Start="2719" End="2820" Allegiance="ZhCo" />
+    <Route Start="2916" End="3018" Allegiance="ZhCo" />
+    <Route Start="3018" End="3220" Allegiance="ZhCo" />
+    <Route Start="3220" End="3022" Allegiance="ZhCo" />
+    <Route Start="1715" End="1317" />
+    <Route Start="1317" End="1220" />
+    <Route Start="1220" End="1221" />
+    <Route Start="1221" End="1022" />
+    <Route Start="1221" End="1124" />
+    <Route Start="1221" End="1324" />
+    <Route Start="1220" End="1421" />
+    <Route Start="1421" End="1622" />
+    <Route Start="1317" End="1520" />
+    <Route Start="1520" End="1721" />
+    <Route Start="1317" End="0919" />
+    <Route Start="1317" End="1014" />
+    <Route Start="1014" End="0812" />
+    <Route Start="0812" End="0911" />
+    <Route Start="0911" End="0809" />
+    <Route Start="0911" End="1209" />
+    <Route Start="0302" End="0202" />
+    <Route Start="1715" End="1614" />
+    <Route Start="1614" End="1412" />
+    <Route Start="1412" End="1312" />
+    <Route Start="1412" End="1712" />
+    <Route Start="1712" End="1809" />
+    <Route Start="1712" End="1912" />
+    <Route Start="1912" End="2011" />
+    <Route Start="3022" End="2922" Type="Trade" />
+    <Route Start="3022" End="3223" Type="Trade" />
+    <Route Start="3223" End="0225" Type="Trade" EndOffsetX="1" />
+    <Route Start="3022" End="2924" Type="Trade" />
+    <Route Start="2924" End="2825" Type="Trade" />
+    <Route Start="2825" End="2724" Type="Trade" />
+    <Route Start="2724" End="2522" Type="Trade" />
+    <Route Start="2522" End="2222" Type="Trade" />
+    <Route Start="2222" End="2324" Type="Trade" />
+    <Route Start="2324" End="2125" Type="Trade" />
+    <Route Start="2324" End="2525" Type="Trade" />
+    <Route Start="2525" End="2625" Type="Trade" />
+    <Route Start="2625" End="2825" Type="Trade" />
+    <Route Start="2825" End="2927" Type="Trade" />
+    <Route Start="2927" End="2827" Type="Trade" />
+    <Route Start="2927" End="2928" Type="Trade" />
+    <Route Start="2928" End="3129" Type="Trade" />
+    <Route Start="3129" End="0228" Color="Brown" EndOffsetX="1" />
+  </Routes>
+</Sector>
