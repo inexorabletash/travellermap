@@ -256,8 +256,35 @@ namespace Maps.Rendering
         {
             float onePixel = 1f / (float)scale;
 
-            grayscale = false;
-            lightBackground = false;
+
+            // "Early" settings
+            // TODO: Rework all of this
+            switch (style)
+            {
+                case Style.Poster:
+                case Style.Candy:
+                case Style.Terminal:
+                    {
+                        monochrome = false;
+                        lightBackground = false;
+                        break;
+                    }
+                case Style.Atlas:
+                case Style.FASA:
+                    {
+                        monochrome = true;
+                        lightBackground = true;
+                        break;
+                    }
+                case Style.Print:
+                case Style.Draft:
+                case Style.Mongoose:
+                    {
+                        monochrome = false;
+                        lightBackground = true;
+                        break;
+                    }
+            }
 
             subsectorGrid.visible = ((scale >= SubsectorsMinScale) && options.HasFlag(MapOptions.SubsectorGrid));
             sectorGrid.visible = ((scale >= SectorGridMinScale) && options.HasFlag(MapOptions.SectorGrid));
@@ -287,8 +314,14 @@ namespace Maps.Rendering
                 : HexStyle.Hex;
             microBorderStyle = hexStyle == HexStyle.Square ? MicroBorderStyle.Square : MicroBorderStyle.Hex;
 
-            macroBorders.visible = (scale >= MacroBorderMinScale) && (scale < MicroBorderMinScale) && ((options & MapOptions.BordersMask) != 0);
-            microBorders.visible = (scale >= MicroBorderMinScale) && ((options & MapOptions.BordersMask) != 0);
+            float effectiveMicroBorderMinScale = MicroBorderMinScale;
+            if (lightBackground)
+            {
+                effectiveMicroBorderMinScale = MicroBorderMinScale / 2;
+            }
+
+            macroBorders.visible = (scale >= MacroBorderMinScale) && (scale < effectiveMicroBorderMinScale) && ((options & MapOptions.BordersMask) != 0);
+            microBorders.visible = (scale >= effectiveMicroBorderMinScale) && ((options & MapOptions.BordersMask) != 0);
             fillMicroBorders = microBorders.visible && options.HasFlag(MapOptions.FilledBorders);
             microRoutes.visible = (scale >= RouteMinScale);
 
@@ -441,7 +474,7 @@ namespace Maps.Rendering
             float penScale = (scale <= 64) ? 1f : (64f / (float)scale);
 
             float borderPenWidth =
-                (scale < MicroBorderMinScale) ? 1 : // When rendering vector borders
+                (scale < effectiveMicroBorderMinScale) ? 1 : // When rendering vector borders
                 (scale < ParsecMinScale) ? 1 :      // When not rendering "hexes"
                 0.16f * penScale; // ... but cut in half by clipping
 
@@ -549,9 +582,6 @@ namespace Maps.Rendering
                     }
                 case Style.Atlas:
                     {
-                        grayscale = true;
-                        lightBackground = true;
-
                         capitals.fillColor = Color.DarkGray;
                         capitals.textColor = Color.Black;
                         amberZone.pen.color = Color.LightGray;
@@ -599,9 +629,6 @@ namespace Maps.Rendering
 
                         foregroundColor = inkColor;
                         backgroundColor = Color.White;
-
-                        grayscale = true; // TODO: Tweak to be "monochrome"
-                        lightBackground = true;
 
                         capitals.fillColor = inkColor;
                         capitals.textColor = inkColor;
@@ -665,8 +692,6 @@ namespace Maps.Rendering
                     }
                 case Style.Print:
                     {
-                        lightBackground = true;
-
                         foregroundColor = Color.Black;
                         backgroundColor = Color.White;
                         lightColor = Color.DarkGray;
@@ -698,7 +723,6 @@ namespace Maps.Rendering
                         int inkOpacity = 0xB0;
 
                         showGalaxyBackground = false;
-                        lightBackground = true;
 
                         deepBackgroundOpacity = 0f;
 
@@ -861,7 +885,6 @@ namespace Maps.Rendering
                     {
                         fadeSectorSubsectorNames = false;
                         showGalaxyBackground = false;
-                        lightBackground = false;
 
                         backgroundColor = Color.Black;
                         foregroundColor = Color.Cyan;
@@ -950,7 +973,6 @@ namespace Maps.Rendering
                 case Style.Mongoose:
                     {
                         showGalaxyBackground = false;
-                        lightBackground = true;
                         showGasGiantRing = true;
                         showTL = true;
                         ignoreBaseBias = true;
@@ -971,7 +993,7 @@ namespace Maps.Rendering
                         darkColor = Color.Black;
                         dimColor = Color.Gray;
 
-                        sectorGrid.pen.color = subsectorGrid.pen.color = parsecGrid.pen.color = foregroundColor;
+                        sectorGrid.pen.color = subsectorGrid.pen.color = parsecGrid.pen.color = Color.FromArgb(0x50, 0x50, 0x50);
 
                         microBorders.textColor = Color.DarkSlateGray;
 
@@ -1000,6 +1022,7 @@ namespace Maps.Rendering
                         microBorders.fontInfo.families = FONT_NAME;
                         macroBorders.fontInfo.families = FONT_NAME;
                         macroRoutes.fontInfo.families = FONT_NAME;
+
                         capitals.fontInfo.families = FONT_NAME;
                         macroBorders.smallFontInfo.families = FONT_NAME;
 
@@ -1019,6 +1042,9 @@ namespace Maps.Rendering
 
                         microBorders.pen.width = 0.11f;
                         microBorders.pen.dashStyle = DashStyle.Dot;
+
+                        // TODO: Enable this, after fixing Solomani Rim border vector
+                        // macroBorders.fillColor = Color.FromArgb(0x40, TravellerColors.Red);
 
                         worldWater.fillColor = Color.MediumBlue;
                         worldNoWater.fillColor = Color.DarkKhaki;
@@ -1152,7 +1178,7 @@ namespace Maps.Rendering
 
         public float deepBackgroundOpacity;
 
-        public bool grayscale;
+        public bool monochrome;
         public bool lightBackground;
 
         public bool showRiftOverlay;

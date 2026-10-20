@@ -141,7 +141,7 @@ namespace Maps.Rendering
             }
         }
 
-        internal void Draw(AbstractGraphics graphics, RectangleF rect, AbstractPen pen)
+        internal void Draw(AbstractGraphics graphics, RectangleF rect, AbstractPen pen, AbstractBrush? brush = null)
         {
             if (graphics == null)
                 throw new ArgumentNullException(nameof(graphics));
@@ -155,6 +155,10 @@ namespace Maps.Rendering
                     graphics.ScaleTransform(ScaleX, ScaleY);
                     graphics.TranslateTransform(-OriginX, -OriginY);
                     graphics.DrawPath(pen, path);
+                    if (brush != null && brush.Color != Color.Transparent)
+                    {
+                        graphics.DrawPath(brush, path);
+                    }
                 }
             }
         }

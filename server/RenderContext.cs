@@ -685,13 +685,14 @@ namespace Maps.Rendering
                     return;
 
                 styles.macroBorders.pen.Apply(ref pen);
+                solidBrush.Color = styles.macroBorders.fillColor;
                 graphics.SmoothingMode = SmoothingMode.AntiAlias;
                 foreach (var vec in borderFiles
                     .Select(file => resourceManager.GetCachedXmlFileObject<VectorObject>(file))
                     .OfType<VectorObject>()
                     .Where(vec => (vec.MapOptions & options & MapOptions.BordersMask) != 0))
                 {
-                    vec.Draw(graphics, tileRect, pen);
+                    vec.Draw(graphics, tileRect, pen, solidBrush);
                 }
             }
 
@@ -1658,7 +1659,7 @@ namespace Maps.Rendering
                                 _ => styles.microBorders.Font,
                             };
 
-                            if (!styles.grayscale &&
+                            if (!styles.monochrome &&
                                 label.Color != null &&
                                 ColorUtil.NoticeableDifference(label.Color.Value, styles.backgroundColor) &&
                                 (label.Color != Label.DefaultColor))
@@ -1711,14 +1712,14 @@ namespace Maps.Rendering
                         routeWidth ??= (float?)ssr.GetNumber("width") ?? 1.0f;
 
                         // In grayscale, convert default color and style to non-default style
-                        if (styles.grayscale && !routeColor.HasValue && !routeStyle.HasValue)
+                        if (styles.monochrome && !routeColor.HasValue && !routeStyle.HasValue)
                             routeStyle = LineStyle.Dashed;
 
                         routeColor ??= styles.microRoutes.pen.color;
                         routeStyle ??= LineStyle.Solid;
 
                         // Ensure color is visible
-                        if (styles.grayscale || !ColorUtil.NoticeableDifference(routeColor.Value, styles.backgroundColor))
+                        if (styles.monochrome || !ColorUtil.NoticeableDifference(routeColor.Value, styles.backgroundColor))
                             routeColor = styles.microRoutes.pen.color; // default
 
                         if (routeStyle.Value == LineStyle.None)
@@ -1832,7 +1833,7 @@ namespace Maps.Rendering
                             if (layer == BorderLayer.Stroke && borderStyle.Value == LineStyle.None)
                                 continue;
 
-                            if (styles.grayscale ||
+                            if (styles.monochrome ||
                                 !ColorUtil.NoticeableDifference(borderColor.Value, styles.backgroundColor))
                             {
                                 borderColor = styles.microBorders.pen.color; // default
