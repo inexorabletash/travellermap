@@ -163,12 +163,7 @@ namespace Maps.Rendering
 
             lines.ForEachZip(sizes, (line, sz) =>
             {
-                if (pen != null)
-                {
-                    g.DrawString(line, font, pen, x + widthFactor * sz.Width + sz.Width / 2, y, Graphics.StringAlignment.Centered);
-                }
-
-                g.DrawString(line, font, brush, x + widthFactor * sz.Width + sz.Width / 2, y, Graphics.StringAlignment.Centered);
+                g.DrawString(line, font, brush, x + widthFactor * sz.Width + sz.Width / 2, y, Graphics.StringAlignment.Centered, pen);
 
                 y += lineSpacing;
             });

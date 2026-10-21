@@ -512,16 +512,15 @@ namespace Maps.Graphics
             return scratch.MeasureString(text, font.Font);
         }
 
-        public void DrawString(string s, AbstractFont font, AbstractBrush brush, float x, float y, StringAlignment alignment)
+        public void DrawString(string s, AbstractFont font, AbstractBrush brush, float x, float y, StringAlignment alignment, AbstractPen? pen)
         {
             Element e = DrawStringCommon(s, font, x, ref y, alignment);
             e.Apply(brush);
-        }
-
-        public void DrawString(string s, AbstractFont font, AbstractPen pen, float x, float y, StringAlignment alignment)
-        {
-            Element e = DrawStringCommon(s, font, x, ref y, alignment);
-            e.Apply(pen);
+            if (pen != null)
+            {
+                e.Apply(pen);
+                e.attributes.Add("paint-order", "stroke");
+            }
         }
 
         private Element DrawStringCommon(string s, AbstractFont font, float x, ref float y, StringAlignment alignment)

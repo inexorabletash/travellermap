@@ -162,31 +162,23 @@ namespace Maps.Graphics
 
         public SizeF MeasureString(string text, AbstractFont font) => g.MeasureString(text, font.Font).ToSizeF();
 
-        public void DrawString(string s, AbstractFont font, AbstractBrush brush, float x, float y, StringAlignment format)
+        public void DrawString(string s, AbstractFont font, AbstractBrush brush, float x, float y, StringAlignment format, AbstractPen? pen)
         {
             Apply(brush);
-            g.DrawString(s, Convert(font.Font), this.brush, x, y, Format(format));
-        }
-        public void DrawString(string s, AbstractFont font, AbstractPen pen, float x, float y, StringAlignment format)
-        {
-            XGraphicsPath path = new XGraphicsPath();
             XFont xfont = Convert(font.Font);
-            Apply(pen);
-            if (format == StringAlignment.Baseline)
+            if (pen == null)
             {
-                float fontUnitsToWorldUnits = font.Size / font.FontFamily.GetEmHeight(font.Style);
-                float ascent = font.FontFamily.GetCellAscent(font.Style) * fontUnitsToWorldUnits;
-                path.AddString(s, xfont.FontFamily, xfont.Style, font.Size, new XPoint(x, y - ascent), null);
+                g.DrawString(s, xfont, this.brush, x, y, Format(format));
             }
             else
             {
-                path.AddString(s, xfont.FontFamily, xfont.Style, font.Size, new XPoint(x, y), Format(format));
+                Apply(pen);
+                XGraphicsPath path = new XGraphicsPath();
+                path.AddString(s, xfont.FontFamily, xfont.Style, xfont.Size, new XPoint(x, y), Format(format));
+                g.DrawPath(this.pen, path);
+                g.DrawPath(this.brush, path);
             }
-            g.DrawPath(this.pen, path);
         }
-
-
-
 
         public AbstractGraphicsState Save() => new State(this, g.Save());
         public void Restore(AbstractGraphicsState state) { g.Restore(((State)state).state); }

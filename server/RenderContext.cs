@@ -1620,7 +1620,7 @@ namespace Maps.Rendering
                 using (graphics.Save())
                 {
                     AbstractBrush solidBrush = new AbstractBrush();
-                    AbstractPen outlinePen = new AbstractPen(styles.worlds.textColor, 0.06f); // TODO: dedicated style?
+                    AbstractPen outlinePen = new AbstractPen(styles.worlds.textColor, 0.04f); // TODO: dedicated style?
 
                     graphics.SmoothingMode = SmoothingMode.AntiAlias;
 

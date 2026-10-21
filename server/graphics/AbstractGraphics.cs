@@ -45,8 +45,12 @@ namespace Maps.Graphics
         void DrawImageAlpha(float alpha, AbstractImage image, RectangleF targetRect);
 
         SizeF MeasureString(string text, AbstractFont font);
-        void DrawString(string s, AbstractFont font, AbstractBrush brush, float x, float y, StringAlignment format);
-        void DrawString(string s, AbstractFont font, AbstractPen pen, float x, float y, StringAlignment format);
+
+        // A unified fill with optional stroke is provided, rather than separate methods as in other methods, because
+        // underlying text rendering implementations may require performing stroke using a separate outline path,
+        // and that may diverge substantually from the precise shaping used for normal text rendering. So normal
+        // text rendering is used only if the pen is not provided, otherwise, a path is used.
+        void DrawString(string s, AbstractFont font, AbstractBrush brush, float x, float y, StringAlignment format, AbstractPen? pen = null);
 
         AbstractGraphicsState Save();
         void Restore(AbstractGraphicsState state);
