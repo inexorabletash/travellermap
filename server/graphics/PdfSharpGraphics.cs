@@ -167,6 +167,26 @@ namespace Maps.Graphics
             Apply(brush);
             g.DrawString(s, Convert(font.Font), this.brush, x, y, Format(format));
         }
+        public void DrawString(string s, AbstractFont font, AbstractPen pen, float x, float y, StringAlignment format)
+        {
+            XGraphicsPath path = new XGraphicsPath();
+            XFont xfont = Convert(font.Font);
+            Apply(pen);
+            if (format == StringAlignment.Baseline)
+            {
+                float fontUnitsToWorldUnits = font.Size / font.FontFamily.GetEmHeight(font.Style);
+                float ascent = font.FontFamily.GetCellAscent(font.Style) * fontUnitsToWorldUnits;
+                path.AddString(s, xfont.FontFamily, xfont.Style, font.Size, new XPoint(x, y - ascent), null);
+            }
+            else
+            {
+                path.AddString(s, xfont.FontFamily, xfont.Style, font.Size, new XPoint(x, y), Format(format));
+            }
+            g.DrawPath(this.pen, path);
+        }
+
+
+
 
         public AbstractGraphicsState Save() => new State(this, g.Save());
         public void Restore(AbstractGraphicsState state) { g.Restore(((State)state).state); }

@@ -977,6 +977,7 @@ namespace Maps.Rendering
                         showTL = true;
                         ignoreBaseBias = true;
                         shadeMicroBorders = true;
+                        colorizeMicroBorderLabels = true;
 
                         // Re-order these elements
                         layers.MoveAfter(LayerId.Worlds_Background, LayerId.Micro_BordersStroke);
@@ -1019,14 +1020,16 @@ namespace Maps.Rendering
                         megaNames.smallFontInfo.families = FONT_NAME;
                         microBorders.smallFontInfo.families = FONT_NAME;
                         microBorders.largeFontInfo.families = FONT_NAME;
-                        microBorders.fontInfo.families = FONT_NAME;
+                        microBorders.fontInfo.families = "Impact";
+                        microBorders.fontInfo.size *= 1.5f;
+                        microBorders.fontInfo.style = FontStyle.Regular;
                         macroBorders.fontInfo.families = FONT_NAME;
                         macroRoutes.fontInfo.families = FONT_NAME;
 
                         capitals.fontInfo.families = FONT_NAME;
                         macroBorders.smallFontInfo.families = FONT_NAME;
 
-                        microBorders.textStyle.Uppercase = true;
+                        microBorders.textStyle.Uppercase = false;
 
                         sectorName.textStyle.Uppercase = true;
                         subsectorNames.textStyle.Uppercase = true;
@@ -1264,6 +1267,7 @@ namespace Maps.Rendering
         public bool fillMicroBorders;
         public bool shadeMicroBorders;
         public bool showMicroNames;
+        public bool colorizeMicroBorderLabels;
         public MicroBorderStyle microBorderStyle;
         public HexStyle hexStyle;
         public LineStyle? overrideLineStyle;

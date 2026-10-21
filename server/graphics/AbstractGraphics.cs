@@ -46,6 +46,7 @@ namespace Maps.Graphics
 
         SizeF MeasureString(string text, AbstractFont font);
         void DrawString(string s, AbstractFont font, AbstractBrush brush, float x, float y, StringAlignment format);
+        void DrawString(string s, AbstractFont font, AbstractPen pen, float x, float y, StringAlignment format);
 
         AbstractGraphicsState Save();
         void Restore(AbstractGraphicsState state);

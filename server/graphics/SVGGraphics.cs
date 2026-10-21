@@ -514,6 +514,18 @@ namespace Maps.Graphics
 
         public void DrawString(string s, AbstractFont font, AbstractBrush brush, float x, float y, StringAlignment alignment)
         {
+            Element e = DrawStringCommon(s, font, x, ref y, alignment);
+            e.Apply(brush);
+        }
+
+        public void DrawString(string s, AbstractFont font, AbstractPen pen, float x, float y, StringAlignment alignment)
+        {
+            Element e = DrawStringCommon(s, font, x, ref y, alignment);
+            e.Apply(pen);
+        }
+
+        private Element DrawStringCommon(string s, AbstractFont font, float x, ref float y, StringAlignment alignment)
+        {
             var e = Append(new Element(ElementNames.TEXT));
             e.content = s;
 
@@ -541,7 +553,7 @@ namespace Maps.Graphics
 
             e.Set("x", x);
             e.Set("y", y);
-            e.Apply(brush);
+            return e;
         }
         #endregion
 

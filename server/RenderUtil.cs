@@ -114,7 +114,7 @@ namespace Maps.Rendering
         // String is positioned relative to x,y according to TextFormat.
         // TextFormat also controls text alignment (left, center, right).
         // Handles embedded newlines.
-        public static void DrawString(AbstractGraphics g, string text, AbstractFont font, AbstractBrush brush, float x, float y, TextFormat format = TextFormat.Center)
+        public static void DrawString(AbstractGraphics g, string text, AbstractFont font, AbstractBrush brush, float x, float y, TextFormat format = TextFormat.Center, AbstractPen? pen = null)
         {
             if (string.IsNullOrWhiteSpace(text))
                 return;
@@ -163,14 +163,20 @@ namespace Maps.Rendering
 
             lines.ForEachZip(sizes, (line, sz) =>
             {
+                if (pen != null)
+                {
+                    g.DrawString(line, font, pen, x + widthFactor * sz.Width + sz.Width / 2, y, Graphics.StringAlignment.Centered);
+                }
+
                 g.DrawString(line, font, brush, x + widthFactor * sz.Width + sz.Width / 2, y, Graphics.StringAlignment.Centered);
+
                 y += lineSpacing;
             });
         }
 
         // Used for Sector/Subsector names and labels (borders and explicit).
         // Always centered on given coordinates.
-        public static void DrawLabel(AbstractGraphics g, string text, PointF center, AbstractFont font, AbstractBrush brush, LabelStyle labelStyle)
+        public static void DrawLabel(AbstractGraphics g, string text, PointF center, AbstractFont font, AbstractBrush brush, LabelStyle labelStyle, AbstractPen? pen = null)
         {
             using (g.Save())
             {
@@ -189,7 +195,7 @@ namespace Maps.Rendering
                 if (labelStyle.Rotation != 0 && g.Graphics != null)
                     g.Graphics.TextRenderingHint = TextRenderingHint.AntiAlias;
 
-                DrawString(g, text, font, brush, 0, 0);
+                DrawString(g, text, font, brush, 0, 0, TextFormat.Center, pen);
             }
         }
     }

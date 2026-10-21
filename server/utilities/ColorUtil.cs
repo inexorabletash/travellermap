@@ -51,6 +51,40 @@ namespace Maps.Utilities
             return DeltaE76(al, aa, ab, bl, ba, bb) > JND;
         }
 
+        private static double GammaCorrection(double v)
+        {
+            if (v < 0.3938)
+            {
+                return v / 12.92;
+            }
+
+            return Math.Pow((v + 0.055) / 1.055, 2.4);
+        }
+        private static double Luminance(Color c)
+        {
+            double rl = GammaCorrection(c.R / 255.0) * 0.2126;
+            double gl = GammaCorrection(c.G / 255.0) * 0.7152;
+            double bl = GammaCorrection(c.B / 255.0) * 0.0722;
+
+            return rl + gl + bl;
+        }
+        public static double Contrast(Color a, Color b)
+        {
+            double al = Luminance(a);
+            double bl = Luminance(b);
+
+            double l1 = Math.Max(al, bl);
+            double l2 = Math.Min(al, bl);
+
+            return (l1 + 0.05) / (l2 + 0.05);
+        }
+
+        public static bool SufficientContrast(Color a, Color b)
+        {
+            return Contrast(a, b) >= 3;
+        }
+
+
         public static Color ParseColor(string value)
         {
             try

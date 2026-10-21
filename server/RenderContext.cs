@@ -1620,6 +1620,7 @@ namespace Maps.Rendering
                 using (graphics.Save())
                 {
                     AbstractBrush solidBrush = new AbstractBrush();
+                    AbstractPen outlinePen = new AbstractPen(styles.worlds.textColor, 0.06f); // TODO: dedicated style?
 
                     graphics.SmoothingMode = SmoothingMode.AntiAlias;
 
@@ -1638,9 +1639,22 @@ namespace Maps.Rendering
                             labelPos.X += border.LabelOffsetX * 0.7f;
                             labelPos.Y -= border.LabelOffsetY * 0.7f;
 
-                            RenderUtil.DrawLabel(graphics, label, labelPos, styles.microBorders.Font, solidBrush, styles.microBorders.textStyle);
+                            AbstractPen? pen = null;
+                            if (styles.colorizeMicroBorderLabels)
+                            {
+                                Color color;
+                                LineStyle lineStyle;
+                                GetBorderColorAndStyle(sector, border, out color, out lineStyle);
+                                solidBrush.Color = color;
+
+                                outlinePen.Color = ColorUtil.SufficientContrast(color, styles.worlds.textColor) ? styles.worlds.textColor : styles.backgroundColor;
+                                pen = outlinePen;
+                            }
+
+                            RenderUtil.DrawLabel(graphics, label, labelPos, styles.microBorders.Font, solidBrush, styles.microBorders.textStyle, pen);
                         }
 
+                        solidBrush.Color = styles.microBorders.textColor;
                         foreach (Label label in sector.Labels)
                         {
                             string text = label.Text;
@@ -1780,6 +1794,25 @@ namespace Maps.Rendering
                     _ => throw new NotImplementedException(),
                 };
 
+            private void GetBorderColorAndStyle(Sector sector, Border border, out Color color, out LineStyle lineStyle)
+            {
+                Color? borderColor = border.Color;
+                LineStyle? borderStyle = border.Style;
+
+                SectorStylesheet.StyleResult ssr = sector.ApplyStylesheet("border", border.Allegiance);
+                borderStyle ??= ssr.GetEnum<LineStyle>("style") ?? LineStyle.Solid;
+                borderColor ??= ssr.GetColor("color") ?? styles.microBorders.pen.color;
+
+                if (styles.monochrome ||
+                    !ColorUtil.NoticeableDifference(borderColor.Value, styles.backgroundColor))
+                {
+                    borderColor = styles.microBorders.pen.color; // default
+                }
+
+                color = borderColor.Value;
+                lineStyle = borderStyle.Value;
+            }
+
             private enum BorderLayer { Fill, Shade, Stroke, Regions };
             private void DrawMicroBorders(BorderLayer layer)
             {
@@ -1823,24 +1856,15 @@ namespace Maps.Rendering
 
                             AbstractPath drawPath = new AbstractPath(borderPath.points, borderPath.types);
 
-                            Color? borderColor = border.Color;
-                            LineStyle? borderStyle = border.Style;
+                            Color borderColor;
+                            LineStyle borderStyle;
+                            GetBorderColorAndStyle(sector, border, out borderColor, out borderStyle);
 
-                            SectorStylesheet.StyleResult ssr = sector.ApplyStylesheet("border", border.Allegiance);
-                            borderStyle ??= ssr.GetEnum<LineStyle>("style") ?? LineStyle.Solid;
-                            borderColor ??= ssr.GetColor("color") ?? styles.microBorders.pen.color;
-
-                            if (layer == BorderLayer.Stroke && borderStyle.Value == LineStyle.None)
+                            if (layer == BorderLayer.Stroke && borderStyle == LineStyle.None)
                                 continue;
 
-                            if (styles.monochrome ||
-                                !ColorUtil.NoticeableDifference(borderColor.Value, styles.backgroundColor))
-                            {
-                                borderColor = styles.microBorders.pen.color; // default
-                            }
-
-                            pen.Color = borderColor.Value;
-                            pen.DashStyle = LineStyleToDashStyle(borderStyle.Value);
+                            pen.Color = borderColor;
+                            pen.DashStyle = LineStyleToDashStyle(borderStyle);
 
                             // Allow style to override
                             if (styles.microBorders.pen.dashStyle != Graphics.DashStyle.Solid)
@@ -1864,7 +1888,7 @@ namespace Maps.Rendering
                                     {
                                         case BorderLayer.Regions:
                                         case BorderLayer.Fill:
-                                            solidBrush.Color = Color.FromArgb(FILL_ALPHA, borderColor.Value);
+                                            solidBrush.Color = Color.FromArgb(FILL_ALPHA, borderColor);
                                             graphics.DrawPath(solidBrush, drawPath);
                                             break;
                                         case BorderLayer.Shade:
@@ -1880,7 +1904,7 @@ namespace Maps.Rendering
                                 {
                                     case BorderLayer.Regions:
                                     case BorderLayer.Fill:
-                                        solidBrush.Color = Color.FromArgb(FILL_ALPHA, borderColor.Value);
+                                        solidBrush.Color = Color.FromArgb(FILL_ALPHA, borderColor);
                                         graphics.DrawClosedCurve(solidBrush, borderPath.points);
                                         break;
 
