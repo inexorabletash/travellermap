@@ -692,6 +692,19 @@ namespace Maps.Rendering
                     .OfType<VectorObject>()
                     .Where(vec => (vec.MapOptions & options & MapOptions.BordersMask) != 0))
                 {
+                    if (styles.colorMacroBorders)
+                    {
+                        if (vec.Color != null)
+                        {
+                            pen.Color = vec.Color.Value;
+                            solidBrush.Color = Color.FromArgb(styles.macroBorders.fillColor.A, vec.Color.Value);
+                        }
+                        else
+                        {
+                            pen.Color = styles.macroBorders.pen.color;
+                            solidBrush.Color = styles.macroBorders.fillColor;
+                        }
+                    }
                     vec.Draw(graphics, tileRect, pen, solidBrush);
                 }
             }

@@ -300,6 +300,10 @@ namespace Maps.Rendering
             t5AllegianceCodes = scale >= T5AllegianceCodeMinScale;
 
             riftOpacity = ScaleInterpolate(0f, 0.85f, scale, 1 / 4f, 4f);
+            if (lightBackground)
+            {
+                riftOpacity = Math.Min(riftOpacity, 0.30f);
+            }
 
             deepBackgroundOpacity = ScaleInterpolate(1f, 0f, scale, 1 / 8f, 2f);
 
@@ -314,14 +318,8 @@ namespace Maps.Rendering
                 : HexStyle.Hex;
             microBorderStyle = hexStyle == HexStyle.Square ? MicroBorderStyle.Square : MicroBorderStyle.Hex;
 
-            float effectiveMicroBorderMinScale = MicroBorderMinScale;
-            if (lightBackground)
-            {
-                effectiveMicroBorderMinScale = MicroBorderMinScale / 2;
-            }
-
-            macroBorders.visible = (scale >= MacroBorderMinScale) && (scale < effectiveMicroBorderMinScale) && ((options & MapOptions.BordersMask) != 0);
-            microBorders.visible = (scale >= effectiveMicroBorderMinScale) && ((options & MapOptions.BordersMask) != 0);
+            macroBorders.visible = (scale >= MacroBorderMinScale) && (scale < MicroBorderMinScale) && ((options & MapOptions.BordersMask) != 0);
+            microBorders.visible = (scale >= MicroBorderMinScale) && ((options & MapOptions.BordersMask) != 0);
             fillMicroBorders = microBorders.visible && options.HasFlag(MapOptions.FilledBorders);
             microRoutes.visible = (scale >= RouteMinScale);
 
@@ -435,6 +433,14 @@ namespace Maps.Rendering
 
             backgroundColor = Color.Black;
 
+            if (lightBackground)
+            {
+                colorMacroBorders = !monochrome;
+
+                macroBorders.pen.color = Color.DimGray;
+                macroBorders.fillColor = Color.FromArgb(0x40, Color.DimGray);
+            }
+
             microBorders.textColor = TravellerColors.Amber;
             worldWater.fillColor = Color.DeepSkyBlue;
             worldNoWater.fillColor = Color.White;
@@ -474,7 +480,7 @@ namespace Maps.Rendering
             float penScale = (scale <= 64) ? 1f : (64f / (float)scale);
 
             float borderPenWidth =
-                (scale < effectiveMicroBorderMinScale) ? 1 : // When rendering vector borders
+                (scale < MicroBorderMinScale) ? 1 : // When rendering vector borders
                 (scale < ParsecMinScale) ? 1 :      // When not rendering "hexes"
                 0.16f * penScale; // ... but cut in half by clipping
 
@@ -604,8 +610,6 @@ namespace Maps.Rendering
                         worldNoWater.fillColor = Color.White;
                         worldNoWater.pen = new PenInfo(Color.Black, onePixel);
 
-                        riftOpacity = Math.Min(riftOpacity, 0.70f);
-
                         showWorldDetailColors = false;
 
                         populationOverlay.fillColor = Color.FromArgb(0x40, highlightColor);
@@ -705,8 +709,6 @@ namespace Maps.Rendering
                         worldNoWater.fillColor = Color.White;
                         worldNoWater.pen = new PenInfo(Color.Black, onePixel);
 
-                        riftOpacity = Math.Min(riftOpacity, 0.70f);
-
                         populationOverlay.fillColor = Color.FromArgb(0x40, populationOverlay.fillColor);
                         populationOverlay.pen.color = Color.Gray;
 
@@ -795,8 +797,6 @@ namespace Maps.Rendering
 
                         parsecGrid.pen.color = lightColor;
                         microBorders.textColor = Color.FromArgb(inkOpacity, Color.Brown);
-
-                        riftOpacity = Math.Min(riftOpacity, 0.30f);
 
                         numberAllHexes = true;
 
@@ -961,8 +961,6 @@ namespace Maps.Rendering
                         parsecGrid.pen.color = Color.Plum;
                         microBorders.textColor = Color.Cyan;
 
-                        riftOpacity = Math.Min(riftOpacity, 0.30f);
-
                         numberAllHexes = true;
 
                         if (scale >= 64)
@@ -993,8 +991,6 @@ namespace Maps.Rendering
                         lightColor = Color.Black;
                         darkColor = Color.Black;
                         dimColor = Color.Gray;
-
-                        sectorGrid.pen.color = subsectorGrid.pen.color = parsecGrid.pen.color = Color.FromArgb(0x50, 0x50, 0x50);
 
                         microBorders.textColor = Color.DarkSlateGray;
 
@@ -1046,9 +1042,6 @@ namespace Maps.Rendering
                         microBorders.pen.width = 0.11f;
                         microBorders.pen.dashStyle = DashStyle.Dot;
 
-                        // TODO: Enable this, after fixing Solomani Rim border vector
-                        // macroBorders.fillColor = Color.FromArgb(0x40, TravellerColors.Red);
-
                         worldWater.fillColor = Color.MediumBlue;
                         worldNoWater.fillColor = Color.DarkKhaki;
                         worldWater.pen = worldNoWater.pen = new PenInfo(Color.DarkGray, onePixel * 2);
@@ -1062,8 +1055,6 @@ namespace Maps.Rendering
                         redZone.pen.color = Color.FromArgb(0xff, 0x00, 0x00);
 
                         microBorders.textColor = Color.DarkSlateGray;
-
-                        riftOpacity = Math.Min(riftOpacity, 0.30f);
 
                         discRadius = 0.11f;
                         GasGiantPosition = new PointF(0, -0.23f);
@@ -1257,6 +1248,7 @@ namespace Maps.Rendering
         public StyleElement macroRoutes;
         public StyleElement microRoutes;
         public StyleElement macroBorders;
+        public bool colorMacroBorders;
         public StyleElement megaNames;
         public StyleElement macroNames;
         public StyleElement pseudoRandomStars;

@@ -1,5 +1,7 @@
 #nullable enable
+using Json;
 using Maps.Graphics;
+using Maps.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -103,6 +105,13 @@ namespace Maps.Rendering
             }
         }
 
+        internal Color? Color { get; set; }
+        [XmlElement("Color")]
+        public string? ColorHtml
+        {
+            get => Color.HasValue ? ColorTranslator.ToHtml(Color.Value) : null;
+            set { if (value != null) Color = ColorUtil.ParseColor(value); }
+        }
 
         public MapOptions MapOptions { get; set; }
 
@@ -155,7 +164,7 @@ namespace Maps.Rendering
                     graphics.ScaleTransform(ScaleX, ScaleY);
                     graphics.TranslateTransform(-OriginX, -OriginY);
                     graphics.DrawPath(pen, path);
-                    if (brush != null && brush.Color != Color.Transparent)
+                    if (brush != null && brush.Color != System.Drawing.Color.Transparent)
                     {
                         graphics.DrawPath(brush, path);
                     }
