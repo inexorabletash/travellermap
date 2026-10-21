@@ -17,33 +17,34 @@
 
 /* ==================================================*/
 /* Poster (default; color on black background) */
+/* Also covers light-dark variations */
 body {
   /* ---------------------------------------- */
   /* UI */
-  --fg-color: white;
-  --bg-color: black;
+  --fg-color: light-dark(black, white);
+  --bg-color: light-dark(white, black);
   --highlight-color: #E32736;
 
   --link-color: var(--footer-fg-color);
-  --textbox-bg-color: white;
+  --textbox-bg-color: #e0e0e0; /* TODO: light-dark() */
   --textbox-fg-color: black;
   --textbox-border: none;
   --textbox-shadow: 2px 2px 4px #404040;
   --textbox-font-weight: normal;
   --direction-color: var(--highlight-color);
-  --footer-fg-color: white;
-  --footer-bg-color: rgba(0,0,0,0.65);
+  --footer-fg-color: light-dark(black, white);
+  --footer-bg-color: alpha(from var(--bg-color) / 0.75);
   --stripe-color: var(--highlight-color);
   --font-family-title: Optima, Marcellus, "Times New Roman", serif;
   --font-family-body: Univers, Helvetica, Arial, sans-serif;
   --font-family-copyright: Helvetica, Arial, sans-serif; /* Univers' (C) is tiny. */
-  --logo-flat: url("res/ui/logo-flat.svg");
-  --logo-stacked: url("res/ui/logo-stacked.svg");
+  --logo-flat: light-dark(url("res/ui/logo-flat-gray.svg"), url("res/ui/logo-flat.svg"));
+  --logo-stacked: light-dark(url("res/ui/logo-stacked-gray.svg"), url("res/ui/logo-stacked.svg"));
   --button-fg-color: black;
   --button-bg-color: #606060;
   --button-hover-color: var(--highlight-color);
   --button-shadow: 2px 2px 4px #404040;
-  --map-bg-image: var(--checkerboard-dark);
+  --map-bg-image: light-dark(var(--checkerboard-lite), var(--checkerboard-dark));
 
   --status-official: #048104;
   --status-preserve: #048104;
@@ -94,15 +95,7 @@ body {
 body.style-print {
   /* ---------------------------------------- */
   /* UI */
-  --fg-color: black;
-  --bg-color: white;
-  --textbox-bg-color: #e0e0e0;
-  --footer-fg-color: black;
-  --footer-bg-color: rgba(255,255,255,0.65);
-  --stripe-color: black;
-  --logo-flat: url("res/ui/logo-flat-gray.svg");
-  --logo-stacked: url("res/ui/logo-stacked-gray.svg");
-  --map-bg-image: var(--checkerboard-lite);
+  --stripe-color: var(--fg-color);
 
   /* ---------------------------------------- */
   /* Legend */
@@ -118,8 +111,8 @@ body.style-print {
 body.style-mongoose {
   /* ---------------------------------------- */
   /* UI */
-  --fg-color: black;
   --bg-color: #e6e7e8;
+  --stripe-color: var(--fg-color);
 
   /* ---------------------------------------- */
   /* Legend */
@@ -152,27 +145,24 @@ body.style-candy {
 /* ================================================== */
 /* Draft (hand-drawn) */
 body.style-draft {
+  --draft-dark: #4D4943;
+  --draft-lite: antiquewhite;
+
   /* ---------------------------------------- */
   /* UI */
-  --fg-color: black;
-  --bg-color: antiquewhite;
-  --textbox-bg-color: #e0e0e0;
-  --footer-fg-color: black;
-  --footer-bg-color: antiquewhite;
-  --logo-flat: url("res/ui/logo-flat-gray.svg");
-  --logo-stacked: url("res/ui/logo-stacked-gray.svg");
-  --map-bg-image: var(--checkerboard-lite);
+  --bg-color: var(--draft-lite);
+  --stripe-color: var(--fg-color);
 
   /* ---------------------------------------- */
   /* Legend */
   --legend-image1: url("res/ui/Legend_1003_draft.svg");
   --legend-image2: url("res/ui/Legend_1006_draft.svg");
 
-  --amberzone: #4D4943;
+  --amberzone: var(--draft-dark);
 
-  --water-color: antiquewhite;
-  --water-border: #4D4943;
-  --nowater-color: #4D4943;
+  --water-color: var(--draft-lite);
+  --water-border: var(--draft-dark);
+  --nowater-color: var(--draft-dark);
 
   --pop-transform: uppercase;
   --pop-many-weight: bold;
@@ -182,19 +172,15 @@ body.style-draft {
 /* ================================================== */
 /* FASA (simplified print) */
 body.style-fasa {
+  --fasa-dark: #5C4033;
+  --fasa-lite: #AD9F98;
+
   /* ---------------------------------------- */
   /* UI */
-  --fg-color: black;
-  --bg-color: white;
-  --link-color: #5C4033;
-  --textbox-bg-color: #e0e0e0;
-  --direction-color: #5C4033;
-  --footer-fg-color: #5C4033;
-  --footer-bg-color: rgba(255,255,255,0.65);
-  --stripe-color: #5C4033;
-  --logo-flat: url("res/ui/logo-flat-gray.svg");
-  --logo-stacked: url("res/ui/logo-stacked-gray.svg");
-  --map-bg-image: var(--checkerboard-lite);
+  --link-color: var(--fasa-dark);
+  --direction-color: var(--fasa-dark);
+  --footer-fg-color: var(--fasa-dark);
+  --stripe-color: var(--fasa-dark);
 
   /* ---------------------------------------- */
   /* Legend */
@@ -205,8 +191,8 @@ body.style-fasa {
   --legend-bases-display: none;
   --legend-pop-display: none;
 
-  --amberzone: #5C4033;
-  --redzone: #AD9F98;
+  --amberzone: var(--fasa-dark);
+  --redzone: var(--fasa-lite);
 }
 
 /* ================================================== */
@@ -214,16 +200,8 @@ body.style-fasa {
 body.style-atlas {
   /* ---------------------------------------- */
   /* UI */
-  --fg-color: black;
-  --bg-color: white;
-  --textbox-bg-color: #e0e0e0;
   --direction-color: gray;
-  --footer-fg-color: black;
-  --footer-bg-color: rgba(255,255,255,0.65);
-  --stripe-color: black;
-  --logo-flat: url("res/ui/logo-flat-gray.svg");
-  --logo-stacked: url("res/ui/logo-stacked-gray.svg");
-  --map-bg-image: var(--checkerboard-lite);
+  --stripe-color: var(--fg-color);
 
   /* ---------------------------------------- */
   /* Legend */
@@ -252,7 +230,7 @@ body.style-terminal {
   --font-family-copyright: "Courier New", "Courier", monospace;
   --button-bg-color: lightgray;
   --button-shadow: none;
-  --stripe-color: cyan;
+  --stripe-color: var(--fg-color);
 
   /* ---------------------------------------- */
   /* Legend */
@@ -664,8 +642,12 @@ body:not(.wds-visible) #wds-frame { display: none; }
 .wds-properties big { font-size: 14px; }
 .wds-properties small { font-size: 10px; }
 
-.wds-properties .wds-decode tr:nth-child(odd) { background-color: #ddd; }
-.wds-properties .wds-decode tr:nth-child(even) { background-color: #eee; }
+.wds-properties .wds-decode tr:nth-child(odd) {
+  background-color: rgba(0,0,0,0.05);
+}
+.wds-properties .wds-decode tr:nth-child(even) {
+  background-color: rgba(0,0,0,0.15);
+}
 .wds-properties .wds-decode td {
   padding-top: 2px; padding-bottom: 2px;
   font-size: 11px; font-weight: normal;
@@ -1851,6 +1833,8 @@ noscript div {
 /* ============================================================ */
 /* Images */
 
+/* NOTE: # inside a url() misbehaves (e.g. #rrggbb)*/
+
 :root {
   /* Map background */
   --checkerboard-dark: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" height="32" width="32"><path d="M0 0h32v32H0z"/><path fill="%23404040" d="M0 0h16v16H0zM16 16h16v16H16z"/></svg>');
@@ -1858,55 +1842,55 @@ noscript div {
 
   /* Button symbols */
 
-  --close-symbol: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMS44OCIgaGVpZ2h0PSIxMS44OCI+PHBhdGggZD0iTTEuOTUgMEwwIDEuOTNsNCA0LjAxLTQgNCAxLjkzIDEuOTQgNC4wMS00IDQgNCAxLjk0LTEuOTMtNC00LjAxIDQtNEw5Ljk1IDBsLTQgNC00LjAyLTR6Ii8+PC9zdmc+);
+  --close-symbol: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="11.88" height="11.88"><path d="M1.95 0L0 1.93l4 4.01-4 4 1.93 1.94 4.01-4 4 4 1.94-1.93-4-4.01 4-4L9.95 0l-4 4-4.02-4z"/></svg>');
 
-  --print-symbol: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiI+PHBhdGggZD0iTTIgMHY1QzEgNSAwIDYgMCA3djRoMnY0aDEydi00aDJWN2MwLTEtMS0yLTItMlYwSDJ6bTEgMWgxMHY0SDNWMXptMTEgNWExIDEgMCAwIDEgMSAxIDEgMSAwIDAgMS0xIDEgMSAxIDAgMCAxLTEtMSAxIDEgMCAwIDEgMS0xek0zIDloMTB2NUgzVjl6bTEgMXYxaDh2LTFINHptMCAydjFoOHYtMUg0eiIvPjwvc3ZnPgo=);
+  --print-symbol: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><path d="M2 0v5C1 5 0 6 0 7v4h2v4h12v-4h2V7c0-1-1-2-2-2V0H2zm1 1h10v4H3V1zm11 5a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1zM3 9h10v5H3V9zm1 1v1h8v-1H4zm0 2v1h8v-1H4z"/></svg>');
 
-  --download-symbol: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiI+PHBhdGggZD0iTTggM3Y4TTExIDhsLTMgMyBNMyAxMXYzTTEzIDExdjNNMyAxNGgxME01IDhsMyAzIiBzdHlsZT0ic3Ryb2tlOiMwMDA7c3Ryb2tlLXdpZHRoOjEuNTtzdHJva2UtbGluZWNhcDpyb3VuZCIvPjwvc3ZnPgo=');
+  --download-symbol: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><path d="M8 3v8M11 8l-3 3 M3 11v3M13 11v3M3 14h10M5 8l3 3" stroke="black" stroke-width="1.5" stroke-linecap="round"/></svg>');
 
-  --copy-symbol: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiI+PHBhdGggZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDAwIiBzdHJva2UtbGluZWNhcD0ic3F1YXJlIiBzdHJva2Utd2lkdGg9IjEuMzIiIGQ9Ik00LjYzIDEyLjM0SDEuNjZWLjY2aDkuNjh2Mi45MiIvPjxwYXRoIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzAwMCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2Utd2lkdGg9IjEuMzIiIGQ9Ik00LjY2IDMuNjZoOS42OHYxMS42OEg0LjY2eiIvPjwvc3ZnPgo=);
+  --copy-symbol: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><path fill="none" stroke="black" stroke-linecap="square" stroke-width="1.32" d="M4.63 12.34H1.66V.66h9.68v2.92"/><path fill="none" stroke="black" stroke-linecap="round" stroke-width="1.32" d="M4.66 3.66h9.68v11.68H4.66z"/></svg>');
 
-  --search-symbol: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNS42NyIgaGVpZ2h0PSIxNS42NyI+PHBhdGggZD0iTTEuNzggMS43OGE2IDYuMDUgNDUgMCAwLS4wMyA4LjUyIDYgNi4wNSA0NSAwIDAgOC4xOS4yN2wuNDcuNDctLjQuMzkgNC4yNSA0LjI0IDEuNDEtMS40MS00LjI0LTQuMjQtLjQuMzktLjQ2LS40N2E2IDYuMDUgNDUgMCAwLS4yNy04LjIgNiA2LjA1IDQ1IDAgMC04LjUyLjA0ek0zLjIgMy4yYTQgNC4wMyA0NSAwIDEgNS42OC0uMDMgNCA0LjAzIDQ1IDAgMS0uMDMgNS42OCA0IDQuMDMgNDUgMCAxLTUuNjguMDNBNCA0LjAzIDQ1IDAgMSAzLjIgMy4yeiIvPjwvc3ZnPg==);
+  --search-symbol: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="15.67" height="15.67"><path d="M1.78 1.78a6 6.05 45 0 0-.03 8.52 6 6.05 45 0 0 8.19.27l.47.47-.4.39 4.25 4.24 1.41-1.41-4.24-4.24-.4.39-.46-.47a6 6.05 45 0 0-.27-8.2 6 6.05 45 0 0-8.52.04zM3.2 3.2a4 4.03 45 0 1 5.68-.03 4 4.03 45 0 1-.03 5.68 4 4.03 45 0 1-5.68.03A4 4.03 45 0 1 3.2 3.2z"/></svg>');
 
-  --swap-symbol: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNCIgaGVpZ2h0PSIxNC40Ij48cGF0aCBkPSJNMTAuNSAwTDcuMDIgMy44M2gyLjIydjkuMzdoMi42VjMuODNIMTR6bS03IDE0LjRMMCAxMC41N2gyLjIyVjEuMmgyLjZ2OS4zOGgyLjE1eiIvPjwvc3ZnPgo=);
+  --swap-symbol: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14.4"><path d="M10.5 0L7.02 3.83h2.22v9.37h2.6V3.83H14zm-7 14.4L0 10.57h2.22V1.2h2.6v9.38h2.15z"/></svg>');
 
-  --route-symbol: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMy4xNSIgaGVpZ2h0PSIxMS4xNSI+PHBhdGggZD0iTTIwLjM3IDBhMi43OSAyLjc5IDAgMCAwLTIuNCA0LjJsLTMuMzIgMy4zNy01LjQxLTUuNTRhLjg1Ljg1IDAgMCAwLS42MS0uMjYuODUuODUgMCAwIDAtLjYuMjRMNC4wNiA1LjljLS4zOS0uMi0uODItLjMyLTEuMjYtLjMyQTIuNzkgMi43OSAwIDEgMCA1LjI2IDcuMUw4LjYgMy44Mmw1LjQzIDUuNTZhLjg1Ljg1IDAgMCAwIDEuMiAwbDQtNC4wNEEyLjc5IDIuNzkgMCAxIDAgMjAuMzYgMHoiLz48L3N2Zz4K);
+  --route-symbol: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="23.15" height="11.15"><path d="M20.37 0a2.79 2.79 0 0 0-2.4 4.2l-3.32 3.37-5.41-5.54a.85.85 0 0 0-.61-.26.85.85 0 0 0-.6.24L4.06 5.9c-.39-.2-.82-.32-1.26-.32A2.79 2.79 0 1 0 5.26 7.1L8.6 3.82l5.43 5.56a.85.85 0 0 0 1.2 0l4-4.04A2.79 2.79 0 1 0 20.36 0z"/></svg>');
 
-  --menu-symbol: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMyIgaGVpZ2h0PSIxNSI+PHJlY3Qgd2lkdGg9IjEzIiBoZWlnaHQ9IjMiIHk9IjYiIHJ5PSIwIi8+PHJlY3Qgd2lkdGg9IjEzIiBoZWlnaHQ9IjMiIHk9IjEyIiByeT0iMCIvPjxyZWN0IHdpZHRoPSIxMyIgaGVpZ2h0PSIzIiByeT0iMCIvPjwvc3ZnPg==);
+  --menu-symbol: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="13" height="15"><rect width="13" height="3" y="6" ry="0"/><rect width="13" height="3" y="12" ry="0"/><rect width="13" height="3" ry="0"/></svg>');
 
-  --home-symbol: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiI+PHBhdGggZD0iTTcuMjkgOC45MnY1LjQ2aC01LjVWOC4wOUguMjNMOC4xIDEuNjJsMy4yOCAyLjgxVjIuNTdoMS4zNXYyLjg3bDMuMDQgMi42NWgtMS41NXY2LjI5aC0zLjg1VjguOTJ6Ii8+PC9zdmc+Cg==);
+  --home-symbol: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><path d="M7.29 8.92v5.46h-5.5V8.09H.23L8.1 1.62l3.28 2.81V2.57h1.35v2.87l3.04 2.65h-1.55v6.29h-3.85V8.92z"/></svg>');
 
-  --key-symbol: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMy40NiIgaGVpZ2h0PSIxMSI+PHBhdGggZD0iTTUuNSAwYTUuNSA1LjUgMCAxIDAgNS4yMiA3LjIyaDMuNDd2Mi4xNWMwIC4zMi4yNS41OC41Ny41OGgyLjNhLjU3LjU3IDAgMCAwIC41OC0uNThWNy4yMkgyMHYyLjE1YzAgLjMyLjI2LjU4LjU4LjU4aDIuM2EuNTcuNTcgMCAwIDAgLjU3LS41OFY0LjRhLjU3LjU3IDAgMCAwLS40Mi0uNTUuNTcuNTcgMCAwIDAtLjI4LS4wOEgxMC43QTUuNSA1LjUgMCAwIDAgNS41IDB6bTAgMy42MmExLjg4IDEuODggMCAxIDEgMCAzLjc2IDEuODggMS44OCAwIDAgMSAwLTMuNzZ6IiBmaWxsLXJ1bGU9ImV2ZW5vZGQiLz48L3N2Zz4=);
+  --key-symbol: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="23.46" height="11"><path d="M5.5 0a5.5 5.5 0 1 0 5.22 7.22h3.47v2.15c0 .32.25.58.57.58h2.3a.57.57 0 0 0 .58-.58V7.22H20v2.15c0 .32.26.58.58.58h2.3a.57.57 0 0 0 .57-.58V4.4a.57.57 0 0 0-.42-.55.57.57 0 0 0-.28-.08H10.7A5.5 5.5 0 0 0 5.5 0zm0 3.62a1.88 1.88 0 1 1 0 3.76 1.88 1.88 0 0 1 0-3.76z" fill-rule="evenodd"/></svg>');
 
-  --gear-symbol: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMy4xNyIgaGVpZ2h0PSIxMy4xNyI+PHBhdGggZmlsbD0icmVkIiBkPSJNNS4xOCAwdjEuNzlhNSA1IDAgMCAwLTEgLjRMMi45Mi45NS45NCAyLjkyIDIuMiA0LjJhNSA1IDAgMCAwLS40MS45OUgwdjIuODFoMS43OWE1IDUgMCAwIDAgLjQgMUwuOTUgMTAuMjVsMS45OCAxLjk4IDEuMjctMS4yNmE1IDUgMCAwIDAgLjk5LjQxdjEuNzloMi44MXYtMS43OWE1IDUgMCAwIDAgMS0uNGwxLjI2IDEuMjUgMS45OC0xLjk4LTEuMjYtMS4yN2E1IDUgMCAwIDAgLjQxLS45OWgxLjc5VjUuMThoLTEuNzlhNSA1IDAgMCAwLS40LTFsMS4yNS0xLjI2TDEwLjI1Ljk0IDguOTggMi4yQTUgNSAwIDAgMCA4IDEuNzlWMEg1LjE4em0xLjQgMy42OGEyLjkgMi45IDAgMCAxIDIuOSAyLjkgMi45IDIuOSAwIDAgMS0yLjkgMi45IDIuOSAyLjkgMCAwIDEtMi45LTIuOSAyLjkgMi45IDAgMCAxIDIuOS0yLjl6Ii8+PC9zdmc+Cg==);
+  --gear-symbol: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="13.17" height="13.17"><path fill="red" d="M5.18 0v1.79a5 5 0 0 0-1 .4L2.92.95.94 2.92 2.2 4.2a5 5 0 0 0-.41.99H0v2.81h1.79a5 5 0 0 0 .4 1L.95 10.25l1.98 1.98 1.27-1.26a5 5 0 0 0 .99.41v1.79h2.81v-1.79a5 5 0 0 0 1-.4l1.26 1.25 1.98-1.98-1.26-1.27a5 5 0 0 0 .41-.99h1.79V5.18h-1.79a5 5 0 0 0-.4-1l1.25-1.26L10.25.94 8.98 2.2A5 5 0 0 0 8 1.79V0H5.18zm1.4 3.68a2.9 2.9 0 0 1 2.9 2.9 2.9 2.9 0 0 1-2.9 2.9 2.9 2.9 0 0 1-2.9-2.9 2.9 2.9 0 0 1 2.9-2.9z"/></svg>');
 
-  --flask-symbol: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiI+PHBhdGggZmlsbD0icmVkIiBkPSJNNi4xNy4yM2MtMS44MyAwLTEuODMgMS44MiAwIDEuODJWNS43TDMuNDMgMTAuM2MtMi43NSAzLjY1LTEuODMgNS40OCAwIDUuNDhoOS4xNGMxLjgzIDAgMi43NS0xLjgzIDAtNS40OEw5LjgzIDUuN1YyLjA1YzEuODMgMCAxLjgzLTEuODIgMC0xLjgyem0uOTIgMS44Mkg4Ljl2NC41OGwyLjc1IDQuNTdINC4zNEw3LjEgNi42M3oiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPjwvc3ZnPgo=);
+  --flask-symbol: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><path fill="red" d="M6.17.23c-1.83 0-1.83 1.82 0 1.82V5.7L3.43 10.3c-2.75 3.65-1.83 5.48 0 5.48h9.14c1.83 0 2.75-1.83 0-5.48L9.83 5.7V2.05c1.83 0 1.83-1.82 0-1.82zm.92 1.82H8.9v4.58l2.75 4.57H4.34L7.1 6.63z" fill-rule="evenodd"/></svg>');
 
-  --clock-symbol: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNS43MSIgaGVpZ2h0PSIxNS43MSI+PHBhdGggZmlsbD0icmVkIiBkPSJNNy44NiAwQTcuODYgNy44NiAwIDAgMCAwIDcuODZhNy44NiA3Ljg2IDAgMCAwIDcuODYgNy44NSA3Ljg2IDcuODYgMCAwIDAgNy44NS03Ljg1QTcuODYgNy44NiAwIDAgMCA3Ljg2IDB6bTAgMi4wNWE1LjggNS44IDAgMCAxIDUuOCA1LjggNS44IDUuOCAwIDAgMS01LjggNS44MSA1LjggNS44IDAgMCAxLTUuOC01LjggNS44IDUuOCAwIDAgMSA1LjgtNS44em0tMS4xIDEuMTNMNi43IDguMDVhMS4wNiAxLjA2IDAgMCAwIC41OS45NmwzLjU1IDEuNzguOTUtMS45LTIuOTctMS40Ny4wNi00LjIxLTIuMTItLjAzeiIvPjwvc3ZnPgo=);
+  --clock-symbol: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="15.71" height="15.71"><path fill="red" d="M7.86 0A7.86 7.86 0 0 0 0 7.86a7.86 7.86 0 0 0 7.86 7.85 7.86 7.86 0 0 0 7.85-7.85A7.86 7.86 0 0 0 7.86 0zm0 2.05a5.8 5.8 0 0 1 5.8 5.8 5.8 5.8 0 0 1-5.8 5.81 5.8 5.8 0 0 1-5.8-5.8 5.8 5.8 0 0 1 5.8-5.8zm-1.1 1.13L6.7 8.05a1.06 1.06 0 0 0 .59.96l3.55 1.78.95-1.9-2.97-1.47.06-4.21-2.12-.03z"/></svg>');
 
-  --share-symbol: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiI+PHBhdGggZmlsbD0icmVkIiBkPSJNMTAuNzguNTl2My4wNXMtNS4wMy42Ny01LjkzIDUuNTVjMy4xNS0zLjM2IDUuOTMtMi41IDUuOTMtMi41djMuMDRsNS00LjU3LTUtNC41N3pNLjIgNC4zNHYxMS4wN2gxNC44NlY5Ljg2bC0xLjc3IDEuNDF2Mi4zN0gxLjk4VjUuOTdoLjczbDEuMjctMS42M0guMjF6Ii8+PC9zdmc+Cg==);
+  --share-symbol: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><path fill="red" d="M10.78.59v3.05s-5.03.67-5.93 5.55c3.15-3.36 5.93-2.5 5.93-2.5v3.04l5-4.57-5-4.57zM.2 4.34v11.07h14.86V9.86l-1.77 1.41v2.37H1.98V5.97h.73l1.27-1.63H.21z"/></svg>');
 
-  --help-symbol: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiI+PHBhdGggZmlsbD0icmVkIiBkPSJNNi40OCAxMi43NWgzLjE4djMuMDJINi40OHYtMy4wMnpNMi42IDUuMjVxLjEzLTIuOTggMi4xMi00LjIyIDEuMjYtLjggMy4xLS44IDIuNCAwIDQgMS4xM3QxLjYgMy4zNHEwIDEuMzUtLjcgMi4yOC0uNC41Ny0xLjU1IDEuNDRMMTAuNCA5cS0uNjIuNDctLjgyIDEuMS0uMTMuMzktLjE0IDEuMjJINi41NnEuMDYtMS43Ni4zNC0yLjQzLjI4LS42OCAxLjQzLTEuNTVsLjc4LS42cS4zOC0uMjguNjItLjYxLjQzLS41OC40My0xLjI2IDAtLjgtLjQ4LTEuNDQtLjQ3LS42Ni0xLjczLS42Ni0xLjI0IDAtMS43Ni44dC0uNTIgMS42N0gyLjZ6Ii8+PC9zdmc+Cg==);
+  --help-symbol: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><path fill="red" d="M6.48 12.75h3.18v3.02H6.48v-3.02zM2.6 5.25q.13-2.98 2.12-4.22 1.26-.8 3.1-.8 2.4 0 4 1.13t1.6 3.34q0 1.35-.7 2.28-.4.57-1.55 1.44L10.4 9q-.62.47-.82 1.1-.13.39-.14 1.22H6.56q.06-1.76.34-2.43.28-.68 1.43-1.55l.78-.6q.38-.28.62-.61.43-.58.43-1.26 0-.8-.48-1.44-.47-.66-1.73-.66-1.24 0-1.76.8t-.52 1.67H2.6z"/></svg>');
 
-  --plus-symbol: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMyIgaGVpZ2h0PSIxMyI+PHBhdGggZD0iTTUgMHY1SDB2M2g1djVoM1Y4aDVWNUg4VjB6Ii8+PC9zdmc+);
+  --plus-symbol: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13"><path d="M5 0v5H0v3h5v5h3V8h5V5H8V0z"/></svg>');
 
-  --minus-symbol: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMyIgaGVpZ2h0PSIzIj48cmVjdCB3aWR0aD0iMTMiIGhlaWdodD0iMyIgcnk9IjAiLz48L3N2Zz4=);
+  --minus-symbol: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="13" height="3"><rect width="13" height="3" ry="0"/></svg>');
 
-  --tilt-symbol: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiI+PHBhdGggZD0iTTIuODMgMi41NmwtLjY5IDQuMjhINy4xVjIuNTZIMi44M3ptNi4wOCAwdjQuMjhoNC45NWwtLjY4LTQuMjhIOC45em0tNyA1Ljc0bC0uODIgNS4xNGg2VjguM0gxLjkxem03IDB2NS4xNGg2TDE0LjEgOC4zSDguOTF6Ii8+PC9zdmc+);
+  --tilt-symbol: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><path d="M2.83 2.56l-.69 4.28H7.1V2.56H2.83zm6.08 0v4.28h4.95l-.68-4.28H8.9zm-7 5.74l-.82 5.14h6V8.3H1.91zm7 0v5.14h6L14.1 8.3H8.91z"/></svg>');
 
-  --fullscreen-symbol: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiI+PHBhdGggZD0iTTAgMGg2LjV2Mi41aC00djRIMHptMTYgMEg5LjV2Mi41aDR2NEgxNnpNMCAxNmg2LjV2LTIuNWgtNHYtNEgwem0xNiAwSDkuNXYtMi41aDRWOUgxNnoiLz48L3N2Zz4=);
+  --fullscreen-symbol: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><path d="M0 0h6.5v2.5h-4v4H0zm16 0H9.5v2.5h4v4H16zM0 16h6.5v-2.5h-4v-4H0zm16 0H9.5v-2.5h4V9H16z"/></svg>');
 
-  --exitfullscreen-symbol: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiI+PHBhdGggZD0iTTYuNSA2LjVIMFY0aDRWMGgyLjV6bTMgMEgxNlY0aC00VjBIOS41em0tMyAzSDBWMTJoNHY0aDIuNXptMyAwSDE2VjEyaC00djRIOS41eiIvPjwvc3ZnPg==);
+  --exitfullscreen-symbol: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><path d="M6.5 6.5H0V4h4V0h2.5zm3 0H16V4h-4V0H9.5zm-3 3H0V12h4v4h2.5zm3 0H16V12h-4v4H9.5z"/></svg>');
 
   /* Widgets */
 
-  --chevron-left: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiI+PHBhdGggZD0iTTEyLjM0IDMuMkwxMC40IDEuMjYgMy42NyA4bDYuNzMgNi43NCAxLjkzLTEuOTRMNy41NCA4bDQuOC00Ljh6Ii8+PC9zdmc+);
+  --chevron-left: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><path d="M12.34 3.2L10.4 1.26 3.67 8l6.73 6.74 1.93-1.94L7.54 8l4.8-4.8z"/></svg>');
 
-  --chevron-right: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiI+PHBhdGggZD0iTTMuNjcgMy4yTDUuNiAxLjI2IDEyLjMzIDggNS42IDE0Ljc0IDMuNjcgMTIuOCA4LjQ3IDhsLTQuOC00Ljh6Ii8+PC9zdmc+);
+  --chevron-right: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><path d="M3.67 3.2L5.6 1.26 12.33 8 5.6 14.74 3.67 12.8 8.47 8l-4.8-4.8z"/></svg>');
 
-  --chevron-down: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiI+PHBhdGggZD0iTTMuMiAxMi4zNEwxLjI2IDEwLjQgOCAzLjY3bDYuNzQgNi43My0xLjk0IDEuOTRMOCA3LjU0bC00LjggNC44eiIvPjwvc3ZnPg==);
+  --chevron-down: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><path d="M3.2 12.34L1.26 10.4 8 3.67l6.74 6.73-1.94 1.94L8 7.54l-4.8 4.8z"/></svg>');
 
-  --chevron-up: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiI+PHBhdGggZD0iTTMuMiAzLjY2TDEuMjYgNS42IDggMTIuMzNsNi43NC02LjczLTEuOTQtMS45NEw4IDguNDZsLTQuOC00Ljh6Ii8+PC9zdmc+);
+  --chevron-up: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><path d="M3.2 3.66L1.26 5.6 8 12.33l6.74-6.73-1.94-1.94L8 8.46l-4.8-4.8z"/></svg>');
 
   --checkbox-unchecked: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8.73 5.29" height="20" width="33"><g transform="translate(163.1 -206.83)"><circle r="2.34" transform="scale(1 -1)" cx="-160.38" cy="-209.48" fill="%23b3b3b3"/><path d="M-160.39 207.83c-1-.04-1.8 1.06-1.47 2 .2.69.9 1.15 1.6 1.1l4.02-.01c.98 0 1.75-1.08 1.43-2-.2-.69-.9-1.14-1.6-1.1h-3.98z" fill="%23b3b3b3"/><circle r="2.23" cy="209.4" cx="-160.38" fill="%23fafafa"/></g></svg>');
 
@@ -1916,10 +1900,9 @@ noscript div {
 
   /* Stops on route display */
 
-  --route-stop: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxMjgiIHdpZHRoPSIxNiIgaGVpZ2h0PSIxMjgiPjxjaXJjbGUgY3g9IjgiIGN5PSI4IiByPSI4IiBmaWxsPSIjMDQ4MTA0Ii8+PHBhdGggZmlsbD0iIzA0ODEwNCIgZD0iTTUgOGg2djEyOEg1eiIvPjwvc3ZnPg==
-);
+  --route-stop: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 128" width="16" height="128"><circle cx="8" cy="8" r="8" fill="green"/><path fill="green" d="M5 8h6v128H5z"/></svg>');
 
-  --route-end: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxNiIgd2lkdGg9IjE2IiBoZWlnaHQ9IjE2Ij48Y2lyY2xlIGN4PSI4IiBjeT0iOCIgcj0iOCIgZmlsbD0iIzA0ODEwNCIvPjwvc3ZnPg==);
+  --route-end: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16"><circle cx="8" cy="8" r="8" fill="green"/></svg>');
 
-  --loading-spinner: url(data:image/gif;base64,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);
+  --loading-spinner: url('data:image/svg+xml,<?xml version="1.0" encoding="utf-8" ?><svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><style>.spinner{transform-origin:center;animation:spin_kf 1s infinite linear}@keyframes spin_kf{100%{rotate:360deg;}}</style><circle cx="10" cy="10" r="8" fill="transparent" stroke="darkgray" stroke-width="1"/><path d="M 2 10 A 8 8 0 0 0 18 10" fill="transparent" stroke="black" stroke-width="2" class="spinner"/></svg>');
 }

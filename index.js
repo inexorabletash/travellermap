@@ -486,6 +486,16 @@ for (const p of TABS) {
 const STYLES = [
   'poster', 'atlas', 'print', 'candy', 'draft', 'fasa', 'terminal', 'mongoose'
 ];
+const STYLE_TO_MODE = {
+  poster: 'dark',
+  atlas: 'light',
+  print: 'light',
+  candy: 'dark',
+  draft: 'light',
+  fasa: 'light',
+  terminal: 'dark',
+  mongoose: 'light',
+};
 for (const s of STYLES) {
   $('#settingsBtn-' + s).addEventListener('click', () => {
     map.style = s;
@@ -743,6 +753,7 @@ map.onOptionsChanged = Util.debounce(options => {
 }, EVENT_DEBOUNCE_MS);
 
 map.onStyleChanged = Util.debounce(style => {
+  document.documentElement.style.colorScheme = STYLE_TO_MODE[style];
   for (const s of STYLES) {
     document.body.classList.toggle(`style-${s}`, s === style);
   }
