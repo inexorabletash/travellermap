@@ -42,7 +42,7 @@ namespace Maps.API
                     .Select(code =>
                     {
                         var alleg = SecondSurvey.GetStockAllegianceFromCode(code)!;
-                        return new Results.AllegianceCode(code, alleg.LegacyCode, alleg.Name, alleg.Location);
+                        return new Results.AllegianceCode(code, alleg.LegacyCode, alleg.Name, alleg.Location, alleg.ShortName);
                     }).ToList());
             }
         }
@@ -67,18 +67,20 @@ namespace Maps.API.Results
     public class AllegianceCode
     {
         public AllegianceCode() { }
-        public AllegianceCode(string code, string legacy, string name, string location)
+        public AllegianceCode(string code, string legacy, string name, string location, string shortName)
         {
             Code = code;
             LegacyCode = legacy;
             Name = name;
             Location = location;
+            ShortName = shortName;
         }
 
         public string Code { get; set; }
         public string LegacyCode { get; set; }
         public string Name { get; set; }
         public string Location { get; set; }
+        public string ShortName { get; set; }
     }
 #nullable restore
 }

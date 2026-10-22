@@ -170,9 +170,9 @@ namespace Maps
                 Add(code, new Allegiance(code, name));
             }
 
-            public void Add(string code, string legacy, string? baseCode, string name, string? location = null)
+            public void Add(string code, string legacy, string? baseCode, string name, string? location = null, string? shortName = null)
             {
-                Add(code, new Allegiance(code, name, legacy, baseCode, location));
+                Add(code, new Allegiance(code, name, legacy, baseCode, location, shortName));
             }
 
             public AllegianceDictionary Merge(AllegianceDictionary other)
@@ -197,7 +197,7 @@ namespace Maps
                 {
                     dict.Add(
                         row.dict["Code"], row.dict["Legacy"], nullIfEmpty(row.dict["BaseCode"]),
-                        row.dict["Name"], nullIfEmpty(row.dict["Location"]));
+                        row.dict["Name"], nullIfEmpty(row.dict["Location"]), nullIfEmpty(row.dict["ShortName"]));
                 }
                 return dict;
             }
@@ -270,7 +270,7 @@ namespace Maps
             AllegianceDictionary
             .FromFile(HostingEnvironment.MapPath("~/res/t5ss/allegiance_codes.tab"))
             .Merge(new AllegianceDictionary {
-            // T5Code, LegacyCode, BaseCode, Name
+            // T5Code, LegacyCode, BaseCode, Name, ShortName
 
             // -----------------------
             // Unofficial/Unreviewed

@@ -121,7 +121,7 @@ namespace Maps.API.Results
                         var alleg = sector.GetAllegianceFromCode(code);
                         if (alleg == null)
                             continue;
-                        allegiances.Add(code, new Allegiance(code, alleg.Name, alleg.LegacyCode, alleg.Base));
+                        allegiances.Add(code, new Allegiance(code, alleg.Name, alleg.LegacyCode, alleg.Base, null, alleg.ShortName));
                     }
                 }
 
@@ -135,7 +135,7 @@ namespace Maps.API.Results
                     if (alleg == null)
                         continue;
                     if (!allegiances.ContainsKey(code))
-                        allegiances.Add(code, new Allegiance(code, alleg.Name, alleg.LegacyCode, alleg.Base));
+                        allegiances.Add(code, new Allegiance(code, alleg.Name, alleg.LegacyCode, alleg.Base, null, alleg.ShortName));
                 }
 
                 return allegiances.Values.ToList();

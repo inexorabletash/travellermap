@@ -607,13 +607,14 @@ namespace Maps
             Name = name;
             LegacyCode = t5code;
         }
-        public Allegiance(string t5code, string name, string legacyCode, string? baseCode = null, string? location = null)
+        public Allegiance(string t5code, string name, string legacyCode, string? baseCode = null, string? location = null, string? shortName = null)
         {
             T5Code = t5code;
             Name = name;
             LegacyCode = legacyCode;
             Base = baseCode;
             Location = location;
+            ShortName = shortName;
         }
 
         [XmlText]
@@ -648,6 +649,14 @@ namespace Maps
         /// </summary>
         [XmlAttribute]
         public string? Location { get; set; }
+
+        /// <summary>
+        /// A shorter name, for use in tables with limited width. Eliminates a lot of detail.
+        /// "NA" is used for non-aligned, client states, etc.
+        /// May be blank if not specified; fall back on the full name as needed.
+        /// </summary>
+        [XmlAttribute]
+        public string? ShortName { get; set; }
 
         string? IAllegiance.Allegiance => T5Code;
     }
