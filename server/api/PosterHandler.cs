@@ -176,6 +176,8 @@ namespace Maps.API
                         title = sector.Names[0].Text;
                     }
 
+                    Rectangle compositing_bounds = Rectangle.Empty;
+
                     if (sector != null && HasOption("subsector") && GetStringOption("subsector")!.Length > 0)
                     {
                         string subsector = GetStringOption("subsector")!;
@@ -188,6 +190,8 @@ namespace Maps.API
                         tileRect = sector.SubsectorBounds(index);
 
                         modifiedOptions &= ~(MapOptions.SectorGrid | MapOptions.SubsectorGrid);
+
+                        compositing_bounds = sector.SubsectorBounds(index);
 
                         title = $"{title} - Subsector {'A' + index}";
                     }
@@ -210,6 +214,8 @@ namespace Maps.API
 
                         modifiedOptions &= ~(MapOptions.SectorGrid | MapOptions.SubsectorGrid | MapOptions.SectorsMask);
 
+                        compositing_bounds = sector.QuadrantBounds(index);
+
                         title = $"{title} - {quadrant} Quadrant";
                     }
                     else if (sector == null)
@@ -222,6 +228,8 @@ namespace Maps.API
                         tileRect = sector.Bounds;
 
                         modifiedOptions &= ~(MapOptions.SectorGrid);
+
+                        compositing_bounds = sector.Bounds;
                     }
 
                     // Account for jagged hexes
@@ -235,7 +243,7 @@ namespace Maps.API
     
                         PathUtil.PathType borderPathType = tmp.microBorderStyle == MicroBorderStyle.Square ?
                             PathUtil.PathType.Square : PathUtil.PathType.Hex;
-                        ClipPath clip = sector.ComputeClipPath(borderPathType);
+                        ClipPath clip = new ClipPath(compositing_bounds, borderPathType);
                         clipPath = new AbstractPath(clip.clipPathPoints, clip.clipPathPointTypes);
                         tileRect.Inflate(RenderUtil.HEX_EDGE, 0);
 

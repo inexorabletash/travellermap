@@ -587,10 +587,10 @@ namespace Maps.Rendering
             RenderUtil.HexEdges(borderPathType, out float[] edgex, out float[] edgey);
 
             IEnumerable<Hex> hexes =
-                Util.Sequence(1, Astrometrics.SectorWidth).Select(x => new Hex((byte)x, 1))
-                .Concat(Util.Sequence(2, Astrometrics.SectorHeight).Select(y => new Hex(Astrometrics.SectorWidth, (byte)y)))
-                .Concat(Util.Sequence(Astrometrics.SectorWidth - 1, 1).Select(x => new Hex((byte)x, Astrometrics.SectorHeight)))
-                .Concat(Util.Sequence(Astrometrics.SectorHeight - 1, 1).Select(y => new Hex(1, (byte)y)));
+                Util.Sequence(1, (byte)bounds.Width).Select(x => new Hex((byte)x, 1))
+                .Concat(Util.Sequence(2, (byte)bounds.Height).Select(y => new Hex((byte)bounds.Width, (byte)y)))
+                .Concat(Util.Sequence((byte)bounds.Width - 1, 1).Select(x => new Hex((byte)x, (byte)bounds.Height)))
+                .Concat(Util.Sequence((byte)bounds.Height - 1, 1).Select(y => new Hex(1, (byte)y)));
 
             IEnumerable<Point> points = (from hex in hexes select new Point(hex.X + bounds.X, hex.Y + bounds.Y)).ToList();
             PathUtil.ComputeBorderPath(points, edgex, edgey, out clipPathPoints, out clipPathPointTypes);

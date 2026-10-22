@@ -374,7 +374,7 @@ namespace Maps
             return clipPathsCache[(int)type];
         }
 
-        internal Rectangle Bounds => new Rectangle(
+        public Rectangle Bounds => new Rectangle(
                         (Location.X * Astrometrics.SectorWidth) - Astrometrics.ReferenceHex.X,
                         (Location.Y * Astrometrics.SectorHeight) - Astrometrics.ReferenceHex.Y,
                         Astrometrics.SectorWidth, Astrometrics.SectorHeight
