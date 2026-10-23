@@ -63,6 +63,7 @@ namespace Maps.API
                         data.ProductTitle = sector.Products[0].Title;
                         data.ProductAuthor = sector.Products[0].Author;
                         data.ProductRef = sector.Products[0].Ref;
+                        data.ProductImage = sector.Products[0].Image;
                     }
 
                     // Tags
@@ -176,6 +177,7 @@ namespace Maps.API.Results
         public string ProductTitle { get; set; }
         public string ProductAuthor { get; set; }
         public string ProductRef { get; set; }
+        public string ProductImage { get; set; }
     }
 #nullable restore
 }

@@ -57,6 +57,9 @@ namespace Maps
 
         [XmlAttribute]
         public string? Ref { get => TryGet("ref"); set => metaData["ref"] = value; }
+
+        [XmlAttribute]
+        public string? Image { get => TryGet("image"); set => metaData["image"] = value; }
     }
 
     public class MetadataCollection<T> : List<T>, IMetadata
