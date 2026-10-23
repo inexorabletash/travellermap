@@ -156,6 +156,9 @@ namespace Maps.Rendering
                             { "Hyd9", prepare("/res/Candy/Hyd9.png") },
                             { "HydA", prepare("/res/Candy/HydA.png") },
                             { "Belt", prepare("/res/Candy/Belt.png") },
+                            { "min-wet", prepare("/res/Candy/mong-wet.png")},
+                            { "min-dry", prepare("/res/Candy/mong-dry.png")},
+                            { "min-ast", prepare("/res/Candy/mong-ast.png")},
                         };
             }
         }
@@ -1249,7 +1252,27 @@ namespace Maps.Rendering
                                     using (graphics.Save())
                                     {
                                         graphics.TranslateTransform(styles.DiscPosition.X, styles.DiscPosition.Y);
-                                        if (world.Size <= 0)
+                                        if (styles.useBasicWorldImages)
+                                        {
+                                            AbstractImage img;
+                                            float w = styles.discRadius*2;
+                                            float h = styles.discRadius*2;
+                                            if (world.Size <= 0)
+                                            {
+                                                img = images.worldImages["min-ast"]!;
+                                                w *= 1.14f;
+                                            }
+                                            else if (world.Hydrographics == 0)
+                                            {
+                                                img = images.worldImages["min-dry"]!;
+                                            }
+                                            else
+                                            {
+                                                img = images.worldImages["min-wet"];
+                                            }
+
+                                            graphics.DrawImage(img, -w/2, -h/2, w, h);
+                                        } else if (world.Size <= 0)
                                         {
                                             #region Asteroid-Belt
                                             if (styles.worldDetails.HasFlag(WorldDetails.Asteroids))

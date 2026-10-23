@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Web.Configuration;
 
 namespace Maps.Rendering
 {
@@ -1064,6 +1065,9 @@ namespace Maps.Rendering
                         starport.position = new PointF(0.175f, 0.17f);
                         uwp.position = new PointF(0, 0.40f);
                         DiscPosition = new PointF(-discRadius, 0.16f);
+
+                        useBasicWorldImages = true;
+
                         worlds.textStyle.Translation = new PointF(0, -0.04f);
 
                         worlds.textBackgroundStyle = TextBackgroundStyle.None;
@@ -1167,6 +1171,7 @@ namespace Maps.Rendering
         public bool showNebulaBackground;
         public bool showGalaxyBackground;
         public bool useWorldImages;
+        public bool useBasicWorldImages; // TODO: Make these an enum or something.
         public bool dimUnofficialSectors;
         public bool colorCodeSectorStatus;
 
