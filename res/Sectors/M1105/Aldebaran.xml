@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Sector Abbreviation="Alde" Tags="InReview">
+<Sector Abbreviation="Alde" Tags="InReview" Selected="true">
   <Name>Aldebaran</Name>
   <Credits>
     <![CDATA[
@@ -11,8 +11,13 @@
              Solomani &amp; Aslan</cite> (Digest Group Publications,
              1991).
 
+             Two subsectors are detailed in <cite>The Order of
+             Prometheus</cite> by Martin J. Dougherty (Mongoose
+             Publishing, 2023).
+
     ]]>
   </Credits>
+  <Product Publisher="Mongoose Publishing" Author="Martin J. Dougherty" Title="The Order of Prometheus" Ref="https://www.mongoosepublishing.com/products/order-of-prometheus" Image="https://travellermap.s3.amazonaws.com/images/covers/the_order_of_prometheus.jpg" />
   <Subsectors>
     <Subsector Source="Supplement 10 - The Solomani Rim" Index="A">Euxene</Subsector>
     <Subsector Source="Supplement 10 - The Solomani Rim" Index="B">Aldebaran</Subsector>
