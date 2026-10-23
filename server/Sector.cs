@@ -127,6 +127,8 @@ namespace Maps
             StylesheetText = metadataSource.StylesheetText;
 
             Tags.AddRange(metadataSource.Tags);
+
+            Selected = Selected || metadataSource.Selected;
         }
 
         [XmlAttribute("Tags"), JsonName("Tags")]
