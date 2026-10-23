@@ -400,22 +400,23 @@ namespace Maps.Rendering
                 {
                     solidBrush.Color = Color.FromArgb(128, styles.backgroundColor);
                     foreach (Sector sector in selector.Sectors
-                        .Where(sector => !sector.Tags.Contains("Official") && !sector.Tags.Contains("Preserve") && !sector.Tags.Contains("InReview")))
+                        .Where(sector => !sector.Tags.Contains(SecondSurvey.OFFICIAL) && !sector.Tags.Contains(SecondSurvey.PRESERVE) &&
+                        !sector.Tags.Contains(SecondSurvey.IN_REVIEW) && !sector.Tags.Contains(SecondSurvey.UNREVIEWED)))
                         graphics.DrawRectangle(solidBrush, sector.Bounds);
                 }
                 if (styles.colorCodeSectorStatus && styles.worlds.visible)
                 {
                     foreach (Sector sector in selector.Sectors)
                     {
-                        if (sector.Tags.Contains("Official"))
+                        if (sector.Tags.Contains(SecondSurvey.OFFICIAL))
                             solidBrush.Color = Color.FromArgb(128, TravellerColors.Red);
-                        else if (sector.Tags.Contains("InReview"))
+                        else if (sector.Tags.Contains(SecondSurvey.IN_REVIEW))
                             solidBrush.Color = Color.FromArgb(128, Color.Orange);
-                        else if (sector.Tags.Contains("Unreviewed"))
+                        else if (sector.Tags.Contains(SecondSurvey.UNREVIEWED))
                             solidBrush.Color = Color.FromArgb(128, TravellerColors.Amber);
-                        else if (sector.Tags.Contains("Apocryphal"))
+                        else if (sector.Tags.Contains(SecondSurvey.APOCRYPHAL))
                             solidBrush.Color = Color.FromArgb(128, Color.Magenta);
-                        else if (sector.Tags.Contains("Preserve"))
+                        else if (sector.Tags.Contains(SecondSurvey.PRESERVE))
                             solidBrush.Color = Color.FromArgb(128, TravellerColors.Green);
                         else
                             continue;

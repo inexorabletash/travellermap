@@ -11,6 +11,13 @@ namespace Maps
 {
     internal static class SecondSurvey
     {
+        public const string OFFICIAL = "Official";
+        public const string IN_REVIEW = "InReview";
+        public const string UNREVIEWED = "Unreviewed";
+        public const string PRESERVE = "Preserve";
+        public const string APOCRYPHAL = "Apocryphal";
+        public const string UNOFFICIAL = "Unofficial";
+
         #region eHex
         private const string HEX = "0123456789ABCDEFGHJKLMNPQRSTUVWXYZ";
         // Decimal hi:              0000000000111111111122222222223333

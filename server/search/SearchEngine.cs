@@ -145,7 +145,7 @@ namespace Maps.Search
                             continue;
 
                         // Apply suffix to borders/labels so that alternate versions are not merged.
-                        string suffix = sector.Tags.Contains("Apocryphal") ? " (Apocryphal)" :
+                        string suffix = sector.Tags.Contains(SecondSurvey.APOCRYPHAL) ? " (Apocryphal)" :
                             sector.Tags.Contains("Alternate") ? " (Alternate)" : "";
 
                         foreach (Name name in sector.Names)
