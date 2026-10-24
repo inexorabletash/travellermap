@@ -754,6 +754,10 @@ map.onOptionsChanged = Util.debounce(options => {
 
 map.onStyleChanged = Util.debounce(style => {
   document.documentElement.style.colorScheme = STYLE_TO_MODE[style];
+
+  // Workaround for non-light-dark() usage
+  document.documentElement.style.setProperty('--color-scheme', document.documentElement.style.colorScheme);
+
   for (const s of STYLES) {
     document.body.classList.toggle(`style-${s}`, s === style);
   }

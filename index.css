@@ -38,13 +38,23 @@ body {
   --font-family-title: Optima, Marcellus, "Times New Roman", serif;
   --font-family-body: Univers, Helvetica, Arial, sans-serif;
   --font-family-copyright: Helvetica, Arial, sans-serif; /* Univers' (C) is tiny. */
-  --logo-flat: light-dark(url("res/ui/logo-flat-gray.svg"), url("res/ui/logo-flat.svg"));
-  --logo-stacked: light-dark(url("res/ui/logo-stacked-gray.svg"), url("res/ui/logo-stacked.svg"));
   --button-fg-color: black;
   --button-bg-color: #606060;
   --button-hover-color: var(--highlight-color);
   --button-shadow: 2px 2px 4px #404040;
-  --map-bg-image: light-dark(var(--checkerboard-lite), var(--checkerboard-dark));
+
+  /* Safari doesn't support light-dark() for images until version 27 */
+  /* TODO: Move these to light-dark() in 2028 or so, and remove JS that sets property. */
+  @container style(--color-scheme: light) {
+    --logo-flat: url("res/ui/logo-flat-gray.svg");
+    --logo-stacked: url("res/ui/logo-stacked-gray.svg");
+    --map-bg-image: var(--checkerboard-lite);
+  }
+  @container style(--color-scheme: dark) {
+    --logo-flat: url("res/ui/logo-flat.svg");
+    --logo-stacked: url("res/ui/logo-stacked.svg");
+    --map-bg-image: var(--checkerboard-dark);
+  }
 
   --status-official: #048104;
   --status-preserve: #048104;
@@ -1743,6 +1753,7 @@ body:not(.milieu-not-default) #milieu-escape {
 
   animation: fadein 1s linear 1 forwards;
 }
+#promo-hover a { color: var(--alert-fg-color); }
 #promo-hover a:not(:hover) { text-decoration: none; }
 
 #promo-closebtn { filter: invert(100%); }
