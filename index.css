@@ -2,6 +2,9 @@
 /* Display Styles */
 
 :root {
+  /* Workaround for non-light-dark() usage */
+  --color-scheme: dark;
+
   --popup-fg-color: black;
   --popup-bg-color: white;
   --popup-highlight-color: #E32736; /* TODO: Needed? */
