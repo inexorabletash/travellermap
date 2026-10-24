@@ -642,6 +642,10 @@ body:not(.wds-visible) #wds-frame { display: none; }
 .wds-properties big { font-size: 14px; }
 .wds-properties small { font-size: 10px; }
 
+.wds-properties .spread { margin: 0 2pt; }
+.wds-properties .spread:first-of-type { margin-left: 0; }
+.wds-properties .spread:last-of-type { margin-right: 0; }
+
 .wds-properties .wds-decode tr:nth-child(odd) {
   background-color: rgba(0,0,0,0.05);
 }
