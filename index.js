@@ -1515,9 +1515,10 @@ async function route(start, end, jump) {
 
   try {
     const response =
-        await fetch(Traveller.MapService.makeURL('/api/route', options));
-    if (!response.ok)
-      throw new Error(response.statusText);
+          await fetch(Traveller.MapService.makeURL('/api/route', options));
+    if (!response.ok) {
+      throw new Error(response.statusText || await response.text());
+    }
 
     const data = await response.json();
     if (typeof data === 'string')
