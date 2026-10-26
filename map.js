@@ -1193,14 +1193,18 @@ export class TravellerMap {
     if (newscale === this._logScale)
       return;
 
-    this._logScale = newscale;
-
     const cw = this.rect.width, ch = this.rect.height;
 
     // Mathmagic to preserve hover coordinates
+    let hx, hy;
     if (arguments.length >= 3) {
-      const hx = (this.x + (px - cw / 2) / this.scale) / this.tilesize;
-      const hy = (-this.y + (py - ch / 2) / this.scale) / this.tilesize;
+      hx = (this.x + (px - cw / 2) / this.scale) / this.tilesize;
+      hy = (-this.y + (py - ch / 2) / this.scale) / this.tilesize;
+    }
+
+    this._logScale = newscale;
+
+    if (arguments.length >= 3) {
       this.position = [
         hx * this.tilesize - (px - cw / 2) / this.scale,
         -(hy * this.tilesize - (py - ch / 2) / this.scale)
