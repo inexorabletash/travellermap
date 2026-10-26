@@ -21,6 +21,8 @@ window.addEventListener('load', async () => {
   // @ts-ignore
   query.milieu = searchParams.get('milieu');
 
+  const print = searchParams.has('print');
+
   // Look up canonical location.
   try {
     const response =
@@ -117,10 +119,12 @@ window.addEventListener('load', async () => {
             const result = jmapToCoords(event, JUMP, SCALE, coords.x, coords.y);
             if (result) {
               let search = '?x=' + result.x + '&y=' + result.y;
-              const milieu = searchParams.get('milieu');
-              if (milieu !== null) {
-                search += '&milieu=' + encodeURIComponent(milieu);
-              }
+              ['milieu', 'style'].forEach(param => {
+                const value = searchParams.get(param);
+                if (value !== null) {
+                  search += `&${param}=${encodeURIComponent(value)}`;
+                }
+              });
               window.location.search = search;
             }
           });
@@ -128,7 +132,9 @@ window.addEventListener('load', async () => {
       })(),
     ]);
 
-    window.print();
+    if (print) {
+      window.print();
+    }
 
   } catch (reason) {
     console.error(reason);
