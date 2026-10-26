@@ -229,17 +229,19 @@ th, td {
 .ss-page-left {
   height: 8.25in;
   float: left;
+  .content {
+    padding: 0.25in;
+  }
 }
-.ss-page-left .content {
-  padding: 0.25in;
-}
-.ss-page-right .content {
-  padding-top: 0.25in;
-}
+
 .ss-page-right {
   height: 8.25in;
   float: left;
+  .content {
+    padding-top: 0.25in;
+  }
 }
+
 .subsector-body {
   text-align: left;
   white-space: normal;
@@ -255,31 +257,34 @@ th, td {
 table.uwp-data {
   width: 100%;
   font-family: "PT Sans Narrow", "Helvetica Narrow", "Arial Narrow", Tahoma, sans-serif;
-}
-.uwp-data th {
-  text-align: left;
-  font-weight: normal;
-  font-style: italic;
-}
-.uwp-data th,
-.uwp-data td {
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
 
-.uwp-data th.world-remarks,
-.uwp-data td.world-remarks {
-  max-width: 150px;
+  th {
+    text-align: left;
+    font-weight: normal;
+    font-style: italic;
+  }
+
+  th,
+  td {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  th.world-remarks,
+  td.world-remarks {
+    max-width: 150px;
+  }
 }
 
 .uwp-data .world-name.hipop { text-transform: uppercase; }
 
-
-.style-classic .world-ix,
-.style-classic .world-ex,
-.style-classic .world-cx,
-.style-classic .world-nobility,
-.style-classic .world-worlds { display: none; }
+.style-classic {
+  .world-ix,
+  .world-ex,
+  .world-cx,
+  .world-nobility,
+  .world-worlds { display: none; }
+}
 
 .subsector-image,
 .subsector-image-border {
@@ -360,10 +365,9 @@ table.uwp-data {
 
 .details-page {
   height: 8.25in;
-}
-
-.details-page .content {
-  padding: 0.25in;
+  .content {
+    padding: 0.25in;
+  }
 }
 
 .details_title {
@@ -383,42 +387,44 @@ table.uwp-data {
 
 /* Legend  ============================== */
 
-.legend h4 {
-  text-transform: uppercase;
-  margin-bottom: 0;
-}
+.legend {
+  h4 {
+    text-transform: uppercase;
+    margin-bottom: 0;
+  }
 
-.legend td {
-  vertical-align: top;
+  td {
+    vertical-align: top;
   padding: 0 0.125in;
-}
+  }
 
-.legend ul {
-  padding-left: 0.25in;
-  margin: 0;
-}
+  ul {
+    padding-left: 0.25in;
+    margin: 0;
+  }
 
-.legend li {
-  list-style: none;
-  height: 0.2in;
-}
+  li {
+    list-style: none;
+    height: 0.2in;
+  }
 
-.legend .glyph {
-  display: inline-block;
-  width: 0.3in;
-  line-height: 12pt;
-  overflow: hidden;
-  text-align: center;
-  vertical-align: text-bottom;
-}
-.legend .highlight { color: #E32736; }
-.legend .glyph.water { color: #00bfff; }
-.legend .amberzone { color: #FFCC00; }
-.legend .redzone { color: #E32736; }
-.legend .popname {
-  display: inline-block;
-  width: 0.75in;
-  text-align: left;
+  .glyph {
+    display: inline-block;
+    width: 0.3in;
+    line-height: 12pt;
+    overflow: hidden;
+    text-align: center;
+    vertical-align: text-bottom;
+  }
+  .highlight { color: #E32736; }
+  .glyph.water { color: #00bfff; }
+  .amberzone { color: #FFCC00; }
+  .redzone { color: #E32736; }
+  .popname {
+    display: inline-block;
+    width: 0.75in;
+    text-align: left;
+  }
 }
 
 table.field-definitions td:first-of-type {
@@ -438,13 +444,14 @@ table.subsector-grid {
   border: 0.03in solid black;
   float: left;
   margin-right: 20px;
-}
-table.subsector-grid td {
-  width: 0.25in;
-  height: 0.4in;
-  border: 0.03in solid black;
-  vertical-align: top;
-  font-weight: bold;
+
+  td {
+    width: 0.25in;
+    height: 0.4in;
+    border: 0.03in solid black;
+    vertical-align: top;
+    font-weight: bold;
+  }
 }
 
 table.subsector-list tr td:first-of-type {
@@ -455,10 +462,9 @@ table.subsector-list tr td:first-of-type {
 
 .index-page {
   height: 8.25in;
-}
-
-.index-page .content {
-  padding: 0.25in;
+  .content {
+    padding: 0.25in;
+  }
 }
 
 .index_title {

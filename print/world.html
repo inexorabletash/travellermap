@@ -23,15 +23,17 @@ body.nopage { margin: 0; padding: 0; overflow: hidden; }
 #wds-paper { text-align: left; background-color: white; color: black; overflow: hidden;  }
 #wds-page { position: relative; width: 7in; height: 9in;}
 
-h1 a { text-decoration: none; }
-h1 a:hover { text-decoration: underline; }
-h1 small { font-size: 65%; }
+h1 {
+  a { text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  small { font-size: 65%; }
+}
 
-@media only screen {
+@media screen {
   #wds-page { margin: 0.25in; }
 }
 
-@media only screen and (min-width: 8in) {
+@media screen and (min-width: 8in) {
   body { text-align: center; background-color: gray; width: 100%; }
   #wds-paper { width: 8in; height: 9.75in; margin: 0.25in auto; box-shadow: 0 0 30px 5px #202020;}
   #wds-page { margin: 0.5in; }
@@ -42,7 +44,7 @@ h1 small { font-size: 65%; }
 
 .nopage #footer { display: none; }
 
-@media only print {
+@media print {
   @page {
     size: portrait;
     margin: 0.5in;
@@ -78,23 +80,26 @@ td { vertical-align: top; }
 
 /* Data Blocks */
 
-.wds-decode { white-space: nowrap; margin: 10px 10px; }
-.wds-decode tr:first-of-type td { padding-bottom: 4px; font-weight: bold;}
-.wds-decode td {
-  padding: 0; margin: 0; width: 16px; font-size: 14px; line-height: 14px;
-  /* TODO: x-vertical-align does not exist in CSS? Delete? */
-  x-vertical-align: middle;
-  text-align: center;
-  overflow: hidden;
-}
-.wds-decode img {
-  margin-top: 2px;
-}
+.wds-decode {
+  white-space: nowrap; margin: 10px 10px;
+  
+  tr:first-of-type td { padding-bottom: 4px; font-weight: bold;}
+  td {
+    padding: 0; margin: 0; width: 16px; font-size: 14px; line-height: 14px;
+    /* TODO: x-vertical-align does not exist in CSS? Delete? */
+    x-vertical-align: middle;
+    text-align: center;
+    overflow: hidden;
+  }
+  img {
+    margin-top: 2px;
+  }
 
-.wds-decode td:first-of-type {
-  text-align: right; padding-right: 4px; font-size: 11px; width: 150px; }
-.wds-decode td:last-of-type {
-  text-align: left; padding-left: 4px; font-size: 11px; width: auto; }
+  td:first-of-type {
+    text-align: right; padding-right: 4px; font-size: 11px; width: 150px; }
+  td:last-of-type {
+    text-align: left; padding-left: 4px; font-size: 11px; width: auto; }
+}
 
 /* Specific Data Fields */
 
@@ -113,13 +118,15 @@ td { vertical-align: top; }
 
 /* UWP Table */
 
-.wds-uwp th { font-size: 9pt; text-align: left; }
-.wds-uwp td, .wds-uwp th { padding-right: 0.5em; white-space: nowrap}
-.wds-uwp td { font-family: "PT Sans Narrow"; font-size: 8.5pt; }
+.wds-uwp {
+  th { font-size: 9pt; text-align: left; }
+  td, .wds-uwp th { padding-right: 0.5em; white-space: nowrap}
+  td { font-family: "PT Sans Narrow"; font-size: 8.5pt; }
+  a { text-decoration: none; }
+  a:hover { text-decoration: underline; }
+}
 #wds-jumpmap { width: 236px; height: 254px; cursor: pointer; }
 #wds-neighborhood { width: 100%; }
-.wds-uwp a { text-decoration: none; }
-.wds-uwp a:hover { text-decoration: underline; }
 
 </style>
 

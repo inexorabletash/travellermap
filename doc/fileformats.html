@@ -6,20 +6,27 @@
 <meta name="viewport" content="initial-scale=1, width=device-width">
 
 <style>
-table.format { margin-left: -0.75in; }
-table.format { border: none; border-collapse: separate; }
-table.format .numbers td { border: none; color: gray; }
-table.format .characters td { border: 1px solid black; margin: 2px; font-size: 16pt; font-family: 'Share Tech Mono', monospace; vertical-align: middle; text-align: center; }
-table.format .characters.small td { font-size: 12pt; }
-table.format .fields td.field { background-color: #e0e0e0; }
+table.format {
+  margin-left: -0.75in;
+  border: none; border-collapse: separate;
 
-table.fields { margin: 20px 0; }
-table.fields, table.fields td, table.fields th { border: 1px solid black }
-table.fields th.columns { width: 70px; }
-table.fields th.field { width: 140px; }
-table.fields th.example { width: 140px; }
-table.fields td.example { font-family: 'Share Tech Mono', monospace; }
-table.fields th.details { x-width: 200px; }
+  .numbers td { border: none; color: gray; }
+  .characters td { border: 1px solid black; margin: 2px; font-size: 16pt; font-family: 'Share Tech Mono', monospace; vertical-align: middle; text-align: center; }
+  .characters.small td { font-size: 12pt; }
+  .fields td.field { background-color: #e0e0e0; }
+}
+
+table.fields {
+  margin: 20px 0;
+  border: 1px solid black;
+
+  td,  th { border: 1px solid black }
+  th.columns { width: 70px; }
+  th.field { width: 140px; }
+  th.example { width: 140px; }
+  td.example { font-family: 'Share Tech Mono', monospace; }
+  th.details { x-width: 200px; }
+}
 
 pre.example { font-family: 'Share Tech Mono', monospace; }
 </style>
