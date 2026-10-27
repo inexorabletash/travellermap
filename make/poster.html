@@ -155,6 +155,7 @@
       <td>
         <input type="hidden" name="options" value="9207">
         <input type="hidden" name="routes" value="1">
+        <input type="hidden" name="allhexes" value="0">
         <label><input type="checkbox" id="options-sector-names" checked>Sector/Subsector Names</label><br>
         <label><input type="checkbox" id="options-grid" checked>Subsector Grid</label><br>
         <label><input type="checkbox" id="options-routes" checked>Routes</label><br>
@@ -162,6 +163,7 @@
         <label><input type="checkbox" id="options-borders" checked>Borders</label><br>
         &nbsp;&nbsp;&nbsp;&nbsp;<label><input type="checkbox" id="options-filled-borders"> Filled</label><br>
         <label><input type="checkbox" id="options-force-hexes" checked>Force Hexes</label><br>
+        <label><input type="checkbox" id="options-number-all-hexes">Number All Hexes</label><br>
         <label><input type="checkbox" id="options-world-colors">World Colors</label><br>
         <label><input type="checkbox" name="stellar" value="1">Stellar Data</label><br>
         <label><input type="checkbox" id="ignore-errors" checked>Ignore Errors</label>
@@ -223,6 +225,7 @@
   bindCheckboxToOptionsBitmap('#options-names', o.NamesMask);
   bindCheckboxToBooleanOption('#options-routes', 'routes');
   bindCheckboxToOptionsBitmap('#options-force-hexes', o.ForceHexes);
+  bindCheckboxToBooleanOption('#options-number-all-hexes', 'allhexes');
   bindCheckboxToOptionsBitmap('#options-world-colors', o.WorldColors);
   bindCheckboxToOptionsBitmap('#options-filled-borders', o.FilledBorders);
   makeCheckboxDependent('#options-filled-borders', '#options-borders');
