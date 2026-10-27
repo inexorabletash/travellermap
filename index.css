@@ -54,11 +54,13 @@ body {
     --logo-flat: url("res/ui/logo-flat-gray.svg");
     --logo-stacked: url("res/ui/logo-stacked-gray.svg");
     --map-bg-image: var(--checkerboard-lite);
+    --legend-closebtn-filter: none;
   }
   @container style(--color-scheme: dark) {
     --logo-flat: url("res/ui/logo-flat.svg");
     --logo-stacked: url("res/ui/logo-stacked.svg");
     --map-bg-image: var(--checkerboard-dark);
+    --legend-closebtn-filter: invert(100%);
   }
 
   --status-official: #048104;
@@ -452,7 +454,7 @@ input[type=text] {
 }
 
 #legend-closebtn {
-  filter: invert(100%);
+  filter: var(--legend-closebtn-filter);
 }
 
 .closebtn,
