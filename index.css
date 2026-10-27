@@ -1620,22 +1620,26 @@ input[type=radio]:checked + label:before {
   body:not(.ds-mini) #sds-frame {
     height: 320px;
   }
-  .ds-mini .ds-frame {
-    bottom: -1px; /* Chrome rendering bug with bottom border */
-    height: 179px;
-  }
-  .ds-mini #sds-frame {
-    height: 149px;
-  }
-  @supports (height: env(safe-area-inset-bottom)) {
-    .ds-mini .ds-frame { height: calc(179px + env(safe-area-inset-bottom)); }
-    .ds-mini #sds-frame { height: calc(149px + env(safe-area-inset-bottom)); }
-  }
+  .ds-mini {
+    --wds-mini-height: 190px;
+    --sds-mini-height: 180px;
 
-  /* Don't wrap when mini so height is fixed and can be transitioned. */
-  .ds-mini .ds-frame #sds-data > div,
-  .ds-mini .ds-frame .wds-names > div {
-    white-space: nowrap;
+    .ds-frame {
+      bottom: -1px; /* Chrome rendering bug with bottom border */
+    }
+    #wds-frame {
+      height: var(--wds-mini-height);
+
+      @supports (height: env(safe-area-inset-bottom)) {
+        & { height: calc(var(--wds-mini-height) + env(safe-area-inset-bottom)); }
+      }
+    }
+    #sds-frame {
+      height: var(--sds-mini-height);
+      @supports (height: env(safe-area-inset-bottom)) {
+        & { height: calc(var(--sds-mini-height) + env(safe-area-inset-bottom)); }
+      }
+    }
   }
 
   .sds-visible #bottom-pane,
