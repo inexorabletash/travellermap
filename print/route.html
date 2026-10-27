@@ -73,8 +73,9 @@
 
       await Promise.all($$('#routePath img').map(img => Traveller.fetchImage(img)));
 
-      window.print();
-
+      if (searchParams.has('print')) {
+        window.print();
+      }
     } catch(reason) {
       alert(reason.message);
     }
