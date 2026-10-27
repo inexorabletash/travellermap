@@ -22,6 +22,8 @@
 /* Poster (default; color on black background) */
 /* Also covers light-dark variations */
 body {
+  --style: poster;
+
   /* ---------------------------------------- */
   /* UI */
   --fg-color: light-dark(black, white);
@@ -106,6 +108,8 @@ body {
 /* ==================================================*/
 /* Print (color on white background) */
 body.style-print {
+  --style: print;
+
   /* ---------------------------------------- */
   /* UI */
   --stripe-color: var(--fg-color);
@@ -122,6 +126,8 @@ body.style-print {
 /* ================================================== */
 /* Mongoose */
 body.style-mongoose {
+  --style: mongoose;
+
   /* ---------------------------------------- */
   /* UI */
   --bg-color: #e6e7e8;
@@ -146,6 +152,8 @@ body.style-mongoose {
 /* ================================================== */
 /* Eye Candy (bitmap worlds, simplified details) */
 body.style-candy {
+  --style: candy;
+
   /* ---------------------------------------- */
   /* Legend */
   --legend-image1: url("res/ui/Legend_1003_candy.svg");
@@ -158,6 +166,8 @@ body.style-candy {
 /* ================================================== */
 /* Draft (hand-drawn) */
 body.style-draft {
+  --style: draft;
+
   --draft-dark: #4D4943;
   --draft-lite: antiquewhite;
 
@@ -185,6 +195,8 @@ body.style-draft {
 /* ================================================== */
 /* FASA (simplified print) */
 body.style-fasa {
+  --style: fasa;
+
   --fasa-dark: #5C4033;
   --fasa-lite: #AD9F98;
 
@@ -211,6 +223,8 @@ body.style-fasa {
 /* ================================================== */
 /* Atlas (black on white) */
 body.style-atlas {
+  --style: atlas;
+
   /* ---------------------------------------- */
   /* UI */
   --direction-color: gray;
@@ -233,6 +247,8 @@ body.style-atlas {
 /* ================================================== */
 /* Terminal (retro computer) */
 body.style-terminal {
+  --style: terminal;
+
   /* ---------------------------------------- */
   /* UI */
   --fg-color: cyan;
@@ -283,7 +299,7 @@ body {
   background-color: var(--bg-color);
 
   /* Bad things to UI in Safari? */
-  x-text-wrap: balance;
+  /* text-wrap: balance; */
 
   -webkit-touch-callout: none;
   -webkit-text-size-adjust: 100%;
@@ -331,8 +347,6 @@ input[type=text] {
   cursor: crosshair;
 
   &.dragging {
-    cursor: move;
-    cursor: url(res/ui/grabbing.cur), move;
     cursor: grabbing;
   }
 }
@@ -508,12 +522,14 @@ body:not(.wds-visible) #wds-frame { display: none; }
   background-image: var(--loading-spinner);
 }
 
-.ds-map-links,
-.ds-print-links {
+.ds-links {
+  clear: both;
   text-align: center;
 }
 
 .ds-map-links {
+  clear: both;
+  text-align: center;
   margin-top: 10px;
 }
 
@@ -547,12 +563,6 @@ body:not(.wds-visible) #wds-frame { display: none; }
 }
 .ds-wiki-link a { color: blue; }
 
-
-#ds-route-link a {
-  padding-left: 28px;
-  background-repeat: no-repeat;
-  background-position: left center;
-}
 
 .ds-frame {
   #sds-data > div,
@@ -598,6 +608,10 @@ body:not(.wds-visible) #wds-frame { display: none; }
   height: auto;
   border: 2px solid var(--popup-fg-color);
   cursor: zoom-in;
+}
+
+#wds-map-links {
+  margin-top: 10px;
 }
 
 #wds-print-jump-links {
@@ -752,6 +766,12 @@ body:not(.wds-visible) #wds-frame { display: none; }
 /* ============================================================ */
 /* Icons Buttons */
 
+.route-icon {
+  padding-left: 28px;
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-image: var(--route-symbol);
+}
 .print-icon {
   padding-left: 24px;
   background-repeat: no-repeat;
@@ -991,7 +1011,7 @@ body:not(.route-shown) {
     }
   }
 
-  .item-distance { position: absolute; left: 0px; top: 22px; }
+  .item-distance { position: absolute; left: 0; top: 22px; }
   .item-main { font-size: 125%; }
   .item-location { margin-left: 10pt; }
   .item-title { margin-left: 10pt; }
@@ -1059,7 +1079,7 @@ body:not(.route-shown) {
       margin-top: 0;
       margin-bottom: 6px;
       border-bottom: 3px solid var(--fg-color);
-      padding: 2px 0px;
+      padding: 2px 0;
       text-transform: uppercase;
       font-size: 100%;
       font-weight: normal;
@@ -1289,7 +1309,6 @@ body:not(.search-results) #closeSearchBtn { display: none; }
   background-image: var(--swap-symbol);
 }
 
-.route-icon,
 #routeBtn {
   background-image: var(--route-symbol);
 }
@@ -1827,7 +1846,7 @@ body:not(.milieu-not-default) #milieu-escape {
   line-height: 20px;
   cursor: pointer;
 
-  animation: fadein 1s linear 1 forwards;
+  animation: fadein 1s linear 1s forwards;
 
   a {
     color: var(--alert-fg-color);

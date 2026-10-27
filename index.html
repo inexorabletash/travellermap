@@ -38,18 +38,18 @@
 <meta property="fb:admins" content="617166358">
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus">
-<link rel="stylesheet" href="index.css?update=2026-10-26T11:50:00">
+<link rel="stylesheet" href="index.css?update=2026-10-27T11:33:54">
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js"></script>
 <script type="importmap">
 {
   "imports": {
-    "./map.js": "./map.js?update=2026-10-26T11:50:01",
-    "./world_util.js": "./world_util.js?update=2026-10-26T11:50:00"
+    "./map.js": "./map.js?update=2026-10-27T11:31:10",
+    "./world_util.js": "./world_util.js?update=2026-10-27T10:37:20"
   }
 }
 </script>
-<script type="module" src="index.js?update=2026-10-26T11:50:00"></script>
+<script type="module" src="index.js?update=2026-10-27T11:31:10"></script>
 
 <body class="hide-ui hide-footer ds-mini show-settings">
   <div id="mapContainer">
@@ -707,7 +707,7 @@
         <a target=_blank rel=noopener href="{{SectorWikiURL}}">{{SectorWikiURLNoScheme}}</a>
       </div>
 
-      <div id=sds-print-links class=ds-print-links>
+      <div id=sds-print-links class=ds-links>
         <span id=sds-print-booklet-link class=link-button-inline>
           <a title="Print sector booklet" href="#" class=print-icon>Print Booklet</a>
         </span>
@@ -781,7 +781,7 @@
       {{/ProductRef}}
 
       <br>
-      <div id=sds-download-links class=ds-print-links>
+      <div id=sds-download-links class=ds-links>
         <span id=sds-download-data class=link-button-inline>
           <a title="Download sector data" href="{{DataURL}}" target=_blank rel=noopener download="{{SectorName}}.txt" class=download-icon>Download Data</a>
         </span>
@@ -958,7 +958,7 @@
 {{/Zone}}
 </table>
 
-<div id="wds-print-links" class=ds-print-links>
+<div id="wds-print-links" class=ds-links>
   <div id=wds-print-ds-link class=link-button>
     <a href="#" class=print-icon>Print</a>
   </div>
@@ -973,7 +973,7 @@
 </div>
 
 {{#if map_link}}
-<div id="wds-map-links" class="ds-map-links">
+<div id="wds-map-links" class="ds-links">
   <a target=_blank rel=noopener href="{{map_link}}">
     Generate World Map
   </a>
