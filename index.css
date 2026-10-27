@@ -316,7 +316,7 @@ body, input[type=text], button {
 }
 
 a {
-  -webkit-tap-highlight-color: initial;
+  -webkit-tap-highlight-color: unset;
   color: var(--link-color);
 }
 
@@ -494,9 +494,10 @@ body:not(.wds-visible) #wds-frame { display: none; }
 
   overflow-y: scroll;
   overflow-x: hidden;
-}
-@supports (left: max(0px)) and (left: env(safe-area-inset-left)) {
-  .ds-frame { left: max(10px, env(safe-area-inset-left)); }
+
+  @supports (left: max(0px)) and (left: env(safe-area-inset-left)) {
+    left: max(10px, env(safe-area-inset-left));
+  }
 }
 
 .ds-scroll { margin: 10px; }
@@ -800,9 +801,9 @@ body:not(.wds-visible) #wds-frame { display: none; }
   z-index: 20;
 }
 
-.hide-ui .ui { display: none; }
-:-webkit-full-screen #bottom-pane { display: none; }
-:fullscreen #bottom-pane { display: none; }
+.hide-ui .ui { display: none !important; }
+:-webkit-full-screen #bottom-pane,
+:fullscreen #bottom-pane,
 .hide-footer #bottom-pane { display: none; }
 
 button {
@@ -838,17 +839,15 @@ button {
 }
 .hoverbox-right {
   right: 10px; top: 55px; bottom: 160px;
-}
-@supports (right: max(0px)) and (right: env(safe-area-inset-right)) {
-  .hoverbox-right {
+
+  @supports (right: max(0px)) and (right: env(safe-area-inset-right)) {
     right: max(10px, env(safe-area-inset-right));
   }
 }
 .hoverbox-left {
   left: 10px; top: 55px; bottom: 110px;
-}
-@supports (left: max(0px)) and (left: env(safe-area-inset-left)) {
-  .hoverbox-left {
+
+  @supports (left: max(0px)) and (left: env(safe-area-inset-left)) {
     left: max(10px, env(safe-area-inset-left));
     top: calc(45px + max(10px, env(safe-area-inset-top)));
   }
@@ -909,9 +908,8 @@ button {
   padding: 9px; /* +1px border to align box with search form at 10px */
   min-height: 115px;
   max-height: 350px;
-}
-@supports (left: max(0px)) and (left: env(safe-area-inset-left)) {
-  #routeBox {
+
+  @supports (left: max(0px)) and (left: env(safe-area-inset-left)) {
     left: max(5px, env(safe-area-inset-left));
     top: max(5px, env(safe-area-inset-top));
   }
@@ -934,18 +932,18 @@ body:not(.route-shown) {
   border-bottom: var(--popup-textbox-border);
   border-radius: 0;
 }
-#routeForm button {
-  height: 20px; margin: 0 2px;
-}
-
-#routeForm.J-1 #J-1,
-#routeForm.J-2 #J-2,
-#routeForm.J-3 #J-3,
-#routeForm.J-4 #J-4,
-#routeForm.J-5 #J-5,
-#routeForm.J-6 #J-6 { background-color: var(--highlight-color); }
-
 #routeForm {
+  button {
+    height: 20px; margin: 0 2px;
+  }
+
+  &.J-1 #J-1,
+  &.J-2 #J-2,
+  &.J-3 #J-3,
+  &.J-4 #J-4,
+  &.J-5 #J-5,
+  &.J-6 #J-6 { background-color: var(--highlight-color); }
+
   .jump-button {
     text-align: center;
     clear: both;
@@ -974,7 +972,7 @@ body:not(.route-shown) {
 }
 
 #H-1 { display: none; }
-.milieu-M1900 #H-1 { display: initial; }
+.milieu-M1900 #H-1 { display: unset; }
 .milieu-M1900 #routeForm .jump-button { padding: 0 5px; margin: 0; }
 
 #routeBox {
@@ -1017,6 +1015,7 @@ body:not(.route-shown) {
   .item-main { font-size: 125%; }
   .item-location { margin-left: 10pt; }
   .item-title { margin-left: 10pt; }
+
   .route-summary  { display: block; text-align: center; padding: 5px 0; }
   .route-links { display: block; text-align: center; padding-top: 10px; }
 }
@@ -1331,9 +1330,8 @@ body:not(.search-results) #closeSearchBtn { display: none; }
   top: 55px; min-height: 155px; height: auto; bottom: 155px;
 
   overflow: hidden;
-}
-@supports (right: max(0px)) and (right: env(safe-area-inset-right)) {
-  #moreBox {
+
+  @supports (right: max(0px)) and (right: env(safe-area-inset-right)) {
     right: max(10px, env(safe-area-inset-right));
   }
 }
@@ -1341,18 +1339,19 @@ body:not(.search-results) #closeSearchBtn { display: none; }
   position: absolute;
   left: 20px; right: 20px; top: 5px; height: 40px;
   text-align: center;
-}
-#more-tabs button {
-  width: 40px; height: 40px;
-  background-color: transparent;
-  box-shadow: none;
-  border-bottom: 2px solid transparent;
-  filter: brightness(0%);
 
-  &:hover {
+  button {
+    width: 40px; height: 40px;
     background-color: transparent;
-    border-bottom: 2px solid var(--highlight-color);
-    filter: none;
+    box-shadow: none;
+    border-bottom: 2px solid transparent;
+    filter: brightness(0%);
+
+    &:hover {
+      background-color: transparent;
+      border-bottom: 2px solid var(--highlight-color);
+      filter: none;
+    }
   }
 }
 #moreScroll {
@@ -1461,9 +1460,8 @@ body:not(.search-results) #closeSearchBtn { display: none; }
   height: 40px;
   white-space: nowrap;
   pointer-events: none;
-}
-@supports (left: max(0px)) and (left: env(safe-area-inset-left)) {
-  .ui.bar {
+
+  @supports (left: max(0px)) and (left: env(safe-area-inset-left)) {
     left: max(10px, env(safe-area-inset-left));
     right: max(10px, env(safe-area-inset-right));
   }
@@ -1478,14 +1476,15 @@ body:not(.search-results) #closeSearchBtn { display: none; }
   pointer-events: none;
 }
 
-#topBar, #topBarRight { top: 10px; }
+#topBar, #topBarRight {
+  top: 10px;
+  @supports (top: max(0px)) and (top: env(safe-area-inset-top)) {
+    top: max(10px, env(safe-area-inset-top));
+  }
+}
 #topBar {
   overflow: hidden;
   z-index: 21; /* So search box overlaps right buttons */
-}
-
-@supports (top: max(0px)) and (top: env(safe-area-inset-top)) {
-  #topBar,#topBarRight { top: max(10px, env(safe-area-inset-top)); }
 }
 
 
@@ -1604,53 +1603,11 @@ input[type=radio]:checked + label:before {
 /* "Small Tablet" - shrink bottom bar a lot, data sheets/menu at bottom */
 @media screen and (max-width: 640px) {
 
-  /* Info cards at bottom */
+  /* If full world datasheet is showing, dim the rest of the display */
   .wds-visible:not(.ds-mini) #ds-shade { display: block; }
 
-  .ds-frame {
-    left: 10px; right: 10px; width: auto;
-    top: auto; bottom: -1px; height: 90%;
-    transition: height 0.25s;
-    min-height: 0;
-    border-color: darkgray;
-    border-bottom: none;
-    border-radius: 5px 5px 0 0;
-  }
-  body:not(.sds-visible) #sds-frame,
-  body:not(.wds-visible) #wds-frame { height: 0; display: block; }
-
-  body:not(.ds-mini) #sds-frame {
-    height: 320px;
-  }
-  .ds-mini {
-    --wds-mini-height: 190px;
-    --sds-mini-height: 180px;
-
-    .ds-frame {
-      bottom: -1px; /* Chrome rendering bug with bottom border */
-    }
-    #wds-frame {
-      height: var(--wds-mini-height);
-
-      @supports (height: env(safe-area-inset-bottom)) {
-        & { height: calc(var(--wds-mini-height) + env(safe-area-inset-bottom)); }
-      }
-    }
-    #sds-frame {
-      height: var(--sds-mini-height);
-      @supports (height: env(safe-area-inset-bottom)) {
-        & { height: calc(var(--sds-mini-height) + env(safe-area-inset-bottom)); }
-      }
-    }
-  }
-
-  .sds-visible #bottom-pane,
-  .wds-visible #bottom-pane { display: none; }
-
-  .ds-mini .ds-mini-toggle { background-image: var(--chevron-down); }
-  .ds-mini-toggle { background-image: var(--chevron-up); }
-
-  /* More/Legend box docked bottom, modal */
+  /* Datasheets, menu and legend pop up from bottom */
+  .ds-frame,
   #moreBox,
   #legendBox {
     left: 10px; right: 10px; width: auto;
@@ -1661,14 +1618,64 @@ input[type=radio]:checked + label:before {
     border-bottom: none;
     border-radius: 5px 5px 0 0;
   }
-  #moreBox { height: 330px; }
-  @supports (height: env(safe-area-inset-bottom)) {
-    #moreBox { height: calc(330px + env(safe-area-inset-bottom)); }
-  }
 
-  #legendBox { height: 90%; }
+  /* Collapse height rather than hide to allow transitions */
+  body:not(.sds-visible) #sds-frame,
+  body:not(.wds-visible) #wds-frame,
   body:not(.show-more) #moreBox,
   body:not(.show-legend) #legendBox { height: 0; display: block; }
+
+
+  /* World/Sector sheet full height */
+  #wds-frame {
+    height: 90%;
+  }
+  #sds-frame {
+    height: 320px;
+  }
+
+  /* Mini Mode */
+  .ds-mini {
+    --wds-mini-height: 190px;
+    --sds-mini-height: 180px;
+
+    .ds-frame {
+      bottom: -1px; /* Chrome rendering bug with bottom border */
+    }
+    #wds-frame {
+      height: var(--wds-mini-height);
+      @supports (height: env(safe-area-inset-bottom)) {
+        height: calc(var(--wds-mini-height) + env(safe-area-inset-bottom));
+      }
+    }
+    #sds-frame {
+      height: var(--sds-mini-height);
+      @supports (height: env(safe-area-inset-bottom)) {
+        height: calc(var(--sds-mini-height) + env(safe-area-inset-bottom));
+      }
+    }
+  }
+
+  /* When visible, hide the bottom pane. TODO: Why? */
+  .sds-visible #bottom-pane,
+  .wds-visible #bottom-pane { display: none; }
+
+  /* Chevron direction changes */
+  .ds-mini .ds-mini-toggle { background-image: var(--chevron-down); }
+  .ds-mini-toggle { background-image: var(--chevron-up); }
+
+  /* Menu size */
+  #moreBox {
+    height: 330px;
+    @supports (height: env(safe-area-inset-bottom)) {
+      height: calc(330px + env(safe-area-inset-bottom));
+    }
+  }
+
+  /* Legend size */
+  #legendBox { height: 90%; }
+
+  /* If legend/menu is showing, dim the rest of the display */
   .show-legend #panel-shade,
   .show-more #panel-shade { display: block; }
 
@@ -1683,9 +1690,11 @@ input[type=radio]:checked + label:before {
   /* Simplify/merge footer/navigation bar */
 
   #navBarRight .bar-button { display: none; }
-  #navBar, #navBarRight { bottom: 5px; right: 115px; pointer-events: none; }
-  @supports (bottom: max(0px)) and (bottom: env(safe-area-inset-bottom)) {
-    #navBar, #navBarRight { bottom: max(10px, env(safe-area-inset-bottom)); }
+  #navBar, #navBarRight {
+    bottom: 5px; right: 115px; pointer-events: none;
+    @supports (bottom: max(0px)) and (bottom: env(safe-area-inset-bottom)) {
+      bottom: max(10px, env(safe-area-inset-bottom));
+    }
   }
 
   #bottom-pane { background-color: transparent !important; pointer-events: none; }
@@ -1712,38 +1721,36 @@ input[type=radio]:checked + label:before {
 @media screen and (max-width: 425px) {
   /* Mobile/Portrait - Dock Route UI to top */
 
-  #searchForm { width: 180px; }
+  #searchForm { width: calc(100vw - 160px); }
 
-  .route-ui #routeBox {
-    left: 0; top: 0; right: 0; width: auto;
-    height: 300px;
-  }
-  @supports (left: env(safe-area-inset-left)) {
-    .route-ui #routeBox {
-      left: env(safe-area-inset-left);
-      right: env(safe-area-inset-right);
-      top: env(safe-area-inset-top);
+  .route-ui {
+    #routeBox {
+      left: 0; top: 0; right: 0; width: auto;
+      height: 300px;
+
+      @supports (left: env(safe-area-inset-left)) {
+        left: env(safe-area-inset-left);
+        right: env(safe-area-inset-right);
+        top: env(safe-area-inset-top);
+      }
     }
-  }
 
-  .route-ui.route-shown #mapContainer {
-    top: 320px;
-  }
-  .route-ui #mapContainer {
-    top: 137px;
-  }
+    /* Shrink the actual map */
+    &.route-shown #mapContainer {
+      top: 320px;
+    }
 
-  .route-ui #moreBox,
-  .route-ui #legendBox { display: none !important; }
+    #mapContainer {
+      top: 150px;
+    }
+
+    #moreBox,
+    #legendBox { display: none !important; }
+  }
 
   /* Resize search box */
   .search-results #searchForm { width: 100%; }
   #resultsBox { right: 10px; width: auto; }
-}
-
-@media screen and (max-width: 375px) {
-  /* Mobile Medium */
-  #searchForm { width: 140px; }
 }
 
 @media screen and (display-mode: standalone) {
@@ -1781,7 +1788,7 @@ input[type=radio]:checked + label:before {
 }
 
 /* ============================================================ */
-/* Milieu */
+/* Milieu Escape */
 
 #milieu-escape {
   color: var(--alert-fg-color);
@@ -1798,15 +1805,15 @@ input[type=radio]:checked + label:before {
   text-align: center;
   line-height: 40px;
   cursor: pointer;
+
+  @supports (top: env(safe-area-inset-top)) {
+    top: calc(60px + env(safe-area-inset-top));
+  }
 }
+
 .hide-ui #milieu-escape,
 body:not(.milieu-not-default) #milieu-escape {
   display: none;
-}
-@supports (top: env(safe-area-inset-top)) {
-  #milieu-escape {
-    top: calc(60px + env(safe-area-inset-top));
-  }
 }
 
 
@@ -1838,7 +1845,7 @@ body:not(.milieu-not-default) #milieu-escape {
   background-color: var(--alert-bg-color);
   z-index: 10;
   position: absolute;
-  bottom: 120px;
+  bottom: 160px;
   left: 50%;
   margin-left: -160px;
   padding: 20px 20px;
@@ -1852,7 +1859,7 @@ body:not(.milieu-not-default) #milieu-escape {
   line-height: 20px;
   cursor: pointer;
 
-  animation: fadein 1s linear 1s forwards;
+  animation: fadein 1s linear forwards;
 
   a {
     color: var(--alert-fg-color);
@@ -1863,12 +1870,18 @@ body:not(.milieu-not-default) #milieu-escape {
   }
 
   #promo-closebtn { filter: invert(100%); }
+
+  @media screen and (max-width: 640px) {
+    bottom: 80px;
+  }
 }
 
-@media screen and (max-width: 640px) { #promo-hover { bottom: 60px; } }
-:-webkit-full-screen #promo-hover { bottom: 15px; }
-:fullscreen #promo-hover { bottom: 15px; }
-.hide-footer #promo-hover { bottom: 15px; }
+:-webkit-full-screen #promo-hover,
+:fullscreen #promo-hover,
+.hide-footer #promo-hover {
+  bottom: 60px;
+}
+
 body:not(.show-promo) #promo-hover {
   display: none;
 }
@@ -1893,27 +1906,25 @@ body:not(.show-promo) #promo-hover {
   text-align: center;
   line-height: 45px;
   font-size: 14pt;
-}
-body:not(.cookies-not-accepted) #cookies {
-  display: none;
-}
-@supports (padding: env(safe-area-inset-bottom)) {
-  #cookies {
+
+  @supports (padding: env(safe-area-inset-bottom)) {
     padding-bottom: env(safe-area-inset-bottom);
   }
-}
 
-#cookies {
   button {
     font-size: 14pt;
     font-weight: bold;
   }
+
   a {
     color: #e02020;
     font-weight: bold;
 
     &:not(:hover) { text-decoration: none; }
   }
+}
+:not(.cookies-not-accepted) #cookies {
+  display: none;
 }
 
 /* ============================================================ */
@@ -1939,14 +1950,14 @@ noscript div {
 /* Browser-specific Hacks */
 
 /* Buttons - FF */
-@supports selector(::-moz-focus-inner) {
+@supports (selector(::-moz-focus-inner)) {
   ::-moz-focus-inner {
     padding: 0;
   }
 }
 
 /* Scrollbars - Chrome/Safari */
-@supports selector(::-webkit-scrollbar) {
+@supports (selector(::-webkit-scrollbar)) {
   ::-webkit-scrollbar { background-color: transparent; width: 6px; height: 6px; }
   ::-webkit-scrollbar-thumb { background-color: #888; }
   ::-webkit-scrollbar-thumb:hover { background-color: #444; }

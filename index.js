@@ -1768,7 +1768,7 @@ if (navigator.userAgent.match(/iPad|iPhone/)) {
 /*
 if (!isIframe) {
   setTimeout(() => {
-    const cookies = Traveller.parseCookies();
+    const cookies = Util.parseCookies();
     const cookies_key = 'tm_accept';
     if (!(cookies.tm_accept || localStorage.getItem(cookies_key))) {
       document.body.classList.add('cookies-not-accepted');
