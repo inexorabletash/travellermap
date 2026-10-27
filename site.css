@@ -28,12 +28,12 @@ h1 {
   margin-bottom: 4pt;
 }
 
-@media only screen and (max-width: 425px)  {
+@media screen and (max-width: 425px)  {
   h1 .sitename {
     display: none;
   }
 }
-@media only screen and (min-width: 768px)  {
+@media screen and (min-width: 768px)  {
   h1 {
     padding-left: 45px;
     background-image: url(https://travellermap.s3.amazonaws.com/images/ImperialStarburst.svg);
@@ -187,10 +187,10 @@ textarea {
 
 /* Responsive Layout */
 
-@media only screen and (max-width: 768px)  {
+@media screen and (max-width: 768px)  {
   .content { width: auto; margin-left: 0.5in; margin-right: 0.5in; }
 }
-@media only screen and (max-width: 425px)  {
+@media screen and (max-width: 425px)  {
   h1 { font-size: 18pt; }
   .content { width: auto; margin: 0; }
   pre.code {
@@ -205,7 +205,7 @@ textarea {
 
 /* Table of Contents */
 
-@media only screen and (min-width: 1024px) {
+@media screen and (min-width: 1024px) {
   nav.toc { display: block !important; }
 }
 nav.toc {
