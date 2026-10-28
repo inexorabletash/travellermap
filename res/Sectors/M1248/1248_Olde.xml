@@ -41,9 +41,10 @@
     <Allegiance Code="Cw">Freedom League, Core Member</Allegiance>
     <Allegiance Code="Dc">Drand Compact</Allegiance>
     <Allegiance Code="Dr">Droyne World</Allegiance>
-    <Allegiance Code="Fs">Freedom League, Calibration Point</Allegiance>
-    <Allegiance Code="La">Freedom League, Affiliate</Allegiance>
-    <Allegiance Code="Lm">Freedom League, Member</Allegiance>
+    <Allegiance Code="FL">Freedom League</Allegiance>
+    <Allegiance Code="Fs" Base="FL">Freedom League, Calibration Point</Allegiance>
+    <Allegiance Code="La" Base="FL">Freedom League, Affiliate</Allegiance>
+    <Allegiance Code="Lm" Base="FL">Freedom League, Member</Allegiance>
     <Allegiance Code="Na">Non-Aligned</Allegiance>
     <Allegiance Code="Pc">Crowell Defense Pact Client State</Allegiance>
     <Allegiance Code="Rr">Republic of Renj</Allegiance>
@@ -61,7 +62,7 @@
     <Border WrapLabel="true" Color=" #5555ff" Allegiance="Uc" LabelPosition="2503" Label="TUoV Client">2502</Border>
     <Border WrapLabel="true" Color=" #5555ff" Allegiance="Uc" LabelPosition="2910" Label="TUoV Client">2909</Border>
     <Border WrapLabel="true" Color=" #5555ff" Allegiance="Uc" LabelPosition="3005" Label="TUoV Client">3004</Border>
-    <Border Color="#ee1c25" LabelPosition="0627" Label="Freedom League">0013 0113 0212 0312 0412 0512 0612 0712 0811 0911 0910 0909 0808 0708 0607 0507 0406 0306 0405 0404 0403 0402 0302 0201 0302 0402 0503 0603 0504 0505 0506 0507 0607 0708 0808 0909 1009 1110 1209 1309 1408 1409 1310 1209 1110 1010 1011 1012 1113 1213 1214 1315 1415 1516 1616 1717 1817 1917 2016 2116 2216 2316 2315 2316 2216 2116 2016 2017 2018 2019 2020 2121 2221 2222 2323 2423 2523 2622 2621 2622 2523 2524 2424 2425 2426 2427 2428 2529 2428 2329 2229 2129 2029 2030 2031 1932 1933 1934 1935 2035 2136 2236 2136 2036 1937 1936 1835 1736 1737 1738 1838 1739 1639 1640 1741 1640 1540 1439 1339 1238 1139 1039 1040 1141 1041 0941 0841 0741 0641 0640 0540 0439 0340 0240 0239 0139 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014 0013</Border>
+    <Border Color="#ee1c25" Allegiance="FL" LabelPosition="0627">0013 0113 0212 0312 0412 0512 0612 0712 0811 0911 0910 0909 0808 0708 0607 0507 0406 0306 0405 0404 0403 0402 0302 0201 0302 0402 0503 0603 0504 0505 0506 0507 0607 0708 0808 0909 1009 1110 1209 1309 1408 1409 1310 1209 1110 1010 1011 1012 1113 1213 1214 1315 1415 1516 1616 1717 1817 1917 2016 2116 2216 2316 2315 2316 2216 2116 2016 2017 2018 2019 2020 2121 2221 2222 2323 2423 2523 2622 2621 2622 2523 2524 2424 2425 2426 2427 2428 2529 2428 2329 2229 2129 2029 2030 2031 1932 1933 1934 1935 2035 2136 2236 2136 2036 1937 1936 1835 1736 1737 1738 1838 1739 1639 1640 1741 1640 1540 1439 1339 1238 1139 1039 1040 1141 1041 0941 0841 0741 0641 0640 0540 0439 0340 0240 0239 0139 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 0027 0026 0025 0024 0023 0022 0021 0020 0019 0018 0017 0016 0015 0014 0013</Border>
     <Border WrapLabel="true" ShowLabel="false" Color="#ee1c25" Allegiance="La">1605</Border>
     <Border WrapLabel="true" ShowLabel="false" Color="#ee1c25" Allegiance="La">1610</Border>
     <Border WrapLabel="true" ShowLabel="false" Color="#ee1c25" Allegiance="La">2828</Border>

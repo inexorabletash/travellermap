@@ -170,6 +170,7 @@ namespace Maps.API.Results
             PBG = w.PBG;
             Zone = w.Zone;
             AllegianceName = w.AllegianceName;
+            AllegianceShortName = w.AllegianceShortName;
 
         }
 
@@ -188,6 +189,7 @@ namespace Maps.API.Results
         public string PBG { get; set; }
         public string Zone { get; set; }
         public string AllegianceName { get; set; }
+        public string AllegianceShortName { get; set; }
     }
 #nullable restore
 }

@@ -202,9 +202,20 @@ namespace Maps
                 var parser = new Serialization.TSVParser(reader);
                 foreach (var row in parser.Data)
                 {
+                    // Blank means "use full name"; "NA" means we want nothing..
+                    string shortName = row.dict["ShortName"];
+                    if (string.IsNullOrWhiteSpace(shortName))
+                    {
+                        shortName = row.dict["Name"];
+                    }
+                    else if (shortName == "NA")
+                    {
+                        shortName = "";
+                    }
+
                     dict.Add(
                         row.dict["Code"], row.dict["Legacy"], nullIfEmpty(row.dict["BaseCode"]),
-                        row.dict["Name"], nullIfEmpty(row.dict["Location"]), nullIfEmpty(row.dict["ShortName"]));
+                        row.dict["Name"], nullIfEmpty(row.dict["Location"]), shortName);
                 }
                 return dict;
             }
