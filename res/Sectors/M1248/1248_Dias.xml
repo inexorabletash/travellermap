@@ -44,8 +44,9 @@
     <Allegiance Code="Bc">Bellin Confederacy</Allegiance>
     <Allegiance Code="Dr">Droyne World</Allegiance>
     <Allegiance Code="Du">Federation of Duwamish</Allegiance>
-    <Allegiance Code="La">Freedom League Affiliate World</Allegiance>
-    <Allegiance Code="Lm">Freedom League Member</Allegiance>
+    <Allegiance Code="FL">Freedom League</Allegiance>
+    <Allegiance Code="La" Base="FL">Freedom League, Affiliate</Allegiance>
+    <Allegiance Code="Lm" Base="FL">Freedom League, Member</Allegiance>
     <Allegiance Code="Mc">Mixem Concordiat</Allegiance>
     <Allegiance Code="Na">Non-Aligned</Allegiance>
     <Allegiance Code="Su">Covenant of Sufren</Allegiance>
@@ -61,7 +62,7 @@
     <Border WrapLabel="true" Color="Lime" Allegiance="Ts" LabelPosition="0539">0137 0236 0336 0335 0336 0337 0338 0339 0238 0138 0137</Border>
     <Border WrapLabel="true" ShowLabel="false" Color="#ee1c25" Allegiance="La">2018</Border>
     <Border WrapLabel="true" ShowLabel="true" Color="#ee1c25" Allegiance="La" LabelPosition="2803" Label="Freedom League">3004</Border>
-    <Border Color="#ee1c25" Allegiance="Lm" Label="Freedom League">2112 2212 2312 2411 2412 2413 2514 2614 2715 2815 2916 3016 3116 3215 3214 3213 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3239 3140 3239 3238 3138 3037 2937 2836 2936 2935 2834 2734 2633 2533 2432 2333 2432 2431 2430 2330 2229 2228 2128 2127 2126 2125 2024 2023 2024 2125 2224 2324 2323 2322 2421 2420 2419 2418 2318 2317 2318 2418 2419 2420 2421 2322 2323 2324 2424 2524 2624 2725 2824 2924 3023 3022 3021 3020 3019 2919 3018 3017 2917 2916 2815 2715 2614 2514 2413 2313 2212 2112 </Border>
+    <Border Color="#ee1c25" Allegiance="FL">2112 2212 2312 2411 2412 2413 2514 2614 2715 2815 2916 3016 3116 3215 3214 3213 3313 3314 3315 3316 3317 3318 3319 3320 3321 3322 3323 3324 3325 3326 3327 3328 3329 3330 3331 3332 3333 3334 3335 3336 3337 3338 3339 3239 3140 3239 3238 3138 3037 2937 2836 2936 2935 2834 2734 2633 2533 2432 2333 2432 2431 2430 2330 2229 2228 2128 2127 2126 2125 2024 2023 2024 2125 2224 2324 2323 2322 2421 2420 2419 2418 2318 2317 2318 2418 2419 2420 2421 2322 2323 2324 2424 2524 2624 2725 2824 2924 3023 3022 3021 3020 3019 2919 3018 3017 2917 2916 2815 2715 2614 2514 2413 2313 2212 2112 </Border>
     <Border Color="#ee1c25" Allegiance="Lm" LabelPosition="2039" Label="Freedom League">1938 2037 2137 2136 2236 2337 2338 2237 2137 2037 1938 </Border>
     <Border WrapLabel="true" ShowLabel="false" Color="#ee1c25" Allegiance="Lm">1639 1740 1640 1639</Border>
     <Border WrapLabel="true" ShowLabel="false" Color="#ee1c25" Allegiance="Lm">2015</Border>

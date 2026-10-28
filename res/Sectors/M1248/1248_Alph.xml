@@ -36,7 +36,8 @@
     <Allegiance Code="Al"> New Alban Protectorate</Allegiance>
     <Allegiance Code="Cf">Colfax Freehold</Allegiance>
     <Allegiance Code="Dg">Dagir Commonwealth</Allegiance>
-    <Allegiance Code="La">Freedom League, Affiliate</Allegiance>
+    <Allegiance Code="FL">Freedom League</Allegiance>
+    <Allegiance Code="La" Base="FL">Freedom League, Affiliate</Allegiance>
     <Allegiance Code="Na">Non-aligned</Allegiance>
     <Allegiance Code="Rr">Republic of Renj</Allegiance>
     <Allegiance Code="Si">Solomani Imperium</Allegiance>
@@ -46,7 +47,7 @@
     <Border Color="#bbffbb" Allegiance="Cf" LabelPosition="1407">1406 1506 1505 1605 1606 1506 1406 </Border>
     <Border Color="#ffbbff" Allegiance="Dg" LabelPosition="2202">1602 1702 1801 1901 2001 2101 2201 2301 2201 2102 2103 2003 1904 1804 1704 1603 1602 </Border>
     <Border WrapLabel="false" ShowLabel="false" Color="#ee1c25" Allegiance="La">0202 0302 0402 0302 0202 0203 0204 0305 0204 0203 0202 </Border>
-    <Border WrapLabel="false" ShowLabel="true" Color="#ee1c25" Allegiance="La" LabelPosition="1102" Label="Freedom League">0600 0700 0800 0900 1000 1100 1101 1201 1202 1303 1304 1203 1103 1002 0903 0802 0702 0601 0600 </Border>
+    <Border WrapLabel="false" ShowLabel="true" Color="#ee1c25" Allegiance="FL" LabelPosition="1102">0600 0700 0800 0900 1000 1100 1101 1201 1202 1303 1304 1203 1103 1002 0903 0802 0702 0601 0600 </Border>
     <Border WrapLabel="false" ShowLabel="false" Color="#ee1c25" Allegiance="La">1500 1600 1701 1600 1500</Border>
     <Border WrapLabel="false" Color="#00aa00" Allegiance="Rr" LabelPosition="2602">2600 2701 2600 </Border>
     <Border WrapLabel="false" ShowLabel="false" Color="#00aa00" Allegiance="Rr">2401</Border>
