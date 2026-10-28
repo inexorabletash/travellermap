@@ -28,6 +28,7 @@ body {
   /* UI */
   --fg-color: light-dark(black, white);
   --bg-color: light-dark(white, black);
+  --footer-bg-color: light-dark(rgb(255 255 255 / 0.75), rgb(0 0 0 / 0.75)); /* 2026: Safari < 18 doesn't support alpha() */
   --highlight-color: #E32736;
 
   --link-color: var(--footer-fg-color);
@@ -38,7 +39,6 @@ body {
   --textbox-font-weight: normal;
   --direction-color: var(--highlight-color);
   --footer-fg-color: light-dark(black, white);
-  --footer-bg-color: alpha(from var(--bg-color) / 0.75);
   --stripe-color: var(--highlight-color);
   --font-family-title: Optima, Marcellus, "Times New Roman", serif;
   --font-family-body: Univers, Helvetica, Arial, sans-serif;
@@ -48,7 +48,7 @@ body {
   --button-hover-color: var(--highlight-color);
   --button-shadow: 2px 2px 4px #404040;
 
-  /* Safari doesn't support light-dark() for images until version 27 */
+  /* 2026: Safari < 27 doesn't support light-dark() for images */
   /* TODO: Move these to light-dark() in 2028 or so, and remove JS that sets property. */
   @container style(--color-scheme: light) {
     --logo-flat: url("res/ui/logo-flat-gray.svg");
@@ -133,6 +133,7 @@ body.style-mongoose {
   /* ---------------------------------------- */
   /* UI */
   --bg-color: #e6e7e8;
+  --footer-bg-color: rgb(230 231 232 / 0.75); /* 2026: Safari < 18 doesn't support alpha() */
   --stripe-color: var(--fg-color);
 
   /* ---------------------------------------- */
@@ -176,6 +177,7 @@ body.style-draft {
   /* ---------------------------------------- */
   /* UI */
   --bg-color: var(--draft-lite);
+  --footer-bg-color: rgb(250 235 215 / 0.75); /* 2026: Safari < 18 doesn't support alpha() */
   --stripe-color: var(--fg-color);
 
   /* ---------------------------------------- */
@@ -358,10 +360,14 @@ input[type=text] {
   transition: 1s ease-in-out;
 }
 
-
 .direction {
   font-weight: bold; text-transform: uppercase; font-size: 120%;
   color: var(--direction-color);
+  text-shadow:
+    -1px -1px 0 var(--bg-color),
+    1px -1px 0 var(--bg-color),
+    -1px 1px 0 var(--bg-color),
+    1px 1px 0 var(--bg-color);
   pointer-events: none;
   position: absolute;
   text-align: center;
@@ -374,7 +380,7 @@ input[type=text] {
   top: 4px; left: 0; right: 0;
 }
 #direction-rimward {
-  bottom: 4px; left: 0; right: 0;
+  bottom: calc(var(--bottom-pane-height) + 4px); left: 0; right: 0;
 }
 #direction-spinward {
   top: 50%; left: 0.9em;
@@ -388,10 +394,14 @@ input[type=text] {
 /* ============================================================ */
 /* Bottom Pane */
 
+:root {
+  --bottom-pane-height: 105px;
+}
+
 #bottom-pane {
   position: absolute;
   box-sizing: border-box;
-  left: 0; right: 0; bottom: 0; height: 105px;
+  left: 0; right: 0; bottom: 0; height: var(--bottom-pane-height);
   padding: 10px; padding-top: 0;
   overflow: hidden;
   color: var(--footer-fg-color);
@@ -478,6 +488,7 @@ input[type=text] {
 body:not(.sds-visible) #sds-frame,
 body:not(.wds-visible) #wds-frame { display: none; }
 
+/* NOTE: Unknown selectors result in entire rule being rejected. */
 :-webkit-full-screen .ds-frame { bottom: 15px; }
 :fullscreen .ds-frame { bottom: 15px; }
 .hide-footer .ds-frame { bottom: 15px; }
@@ -802,9 +813,14 @@ body:not(.wds-visible) #wds-frame { display: none; }
 }
 
 .hide-ui .ui { display: none !important; }
-:-webkit-full-screen #bottom-pane,
-:fullscreen #bottom-pane,
+
+/* NOTE: Unknown selectors result in entire rule being rejected. */
+:-webkit-full-screen #bottom-pane { display: none; }
+:-webkit-full-screen { --bottom-pane-height: 0px; }
+:fullscreen #bottom-pane { display: none; }
+:fullscreen { --bottom-pane-height: 0px; }
 .hide-footer #bottom-pane { display: none; }
+.hide-footer { --bottom-pane-height: 0px; }
 
 button {
   font-size: 10pt;
@@ -1430,6 +1446,7 @@ body:not(.search-results) #closeSearchBtn { display: none; }
   background-image: var(--fullscreen-symbol);
 }
 
+/* NOTE: Unknown selectors result in entire rule being rejected. */
 :-webkit-full-screen #fsBtn {
   background-image: var(--exitfullscreen-symbol);
 }
@@ -1482,13 +1499,9 @@ body:not(.search-results) #closeSearchBtn { display: none; }
     top: max(10px, env(safe-area-inset-top));
   }
 }
-#topBar {
-  overflow: hidden;
-  z-index: 21; /* So search box overlaps right buttons */
-}
-
 
 #navBar, #navBarRight { bottom: 110px; }
+/* NOTE: Unknown selectors result in entire rule being rejected. */
 :-webkit-full-screen #navBar,
 :-webkit-full-screen #navBarRight { bottom: 15px; }
 :fullscreen #navBar,
@@ -1581,7 +1594,10 @@ input[type=radio]:checked + label:before {
 
 /* ... */
 @media screen and (max-width: 640px), only screen and (max-height: 425px) {
-  #bottom-pane { font-size: 75%; height: 45px; padding: 2px;}
+  :root {
+    --bottom-pane-height: 45px;
+  }
+  #bottom-pane { font-size: 75%; padding: 2px;}
   #stripe { height: 4px; margin: 2px 0; }
   #LogoImage { width: 105px; height: 35.5px; }
   #navBar, #navBarRight { bottom: 55px; }
@@ -1657,8 +1673,10 @@ input[type=radio]:checked + label:before {
   }
 
   /* When visible, hide the bottom pane. TODO: Why? */
-  .sds-visible #bottom-pane,
-  .wds-visible #bottom-pane { display: none; }
+  .sds-visible, .wds-visible {
+    #bottom-pane { display: none; }
+    --bottom-pane-height: 0px;
+  }
 
   /* Chevron direction changes */
   .ds-mini .ds-mini-toggle { background-image: var(--chevron-down); }
@@ -1876,11 +1894,10 @@ body:not(.milieu-not-default) #milieu-escape {
   }
 }
 
-:-webkit-full-screen #promo-hover,
-:fullscreen #promo-hover,
-.hide-footer #promo-hover {
-  bottom: 60px;
-}
+/* NOTE: Unknown selectors result in entire rule being rejected. */
+:-webkit-full-screen #promo-hover { bottom: 60px; }
+:fullscreen #promo-hover { bottom: 60px; }
+.hide-footer #promo-hover { bottom: 60px; }
 
 body:not(.show-promo) #promo-hover {
   display: none;
@@ -1969,7 +1986,7 @@ noscript div {
 /* ============================================================ */
 /* Images */
 
-/* NOTE: # inside a url() misbehaves (e.g. #rrggbb)*/
+/* NOTE: # inside a url() misbehaves (e.g. #rrggbb), escape with %23 or use keywords*/
 
 :root {
   /* Map background */
