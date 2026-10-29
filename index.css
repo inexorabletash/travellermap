@@ -1757,7 +1757,11 @@ input[type=radio]:checked + label:before {
   }
 
   /* Resize search box */
-  .search-results #searchForm { width: 100%; }
+  .search-results {
+    #searchForm { width: 100%; }
+    #legendBtn, #moreBtn { display: none; }
+  }
+
   #resultsBox { right: 10px; width: auto; }
 }
 
