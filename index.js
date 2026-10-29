@@ -1231,11 +1231,13 @@ async function showWorldData() {
 
       $('#wds-data').innerHTML = template('#wds-template')(world);
 
-      // Hook up any generated "expandy" fields
-      for (const elem of $$('.wds-expandy')) {
+      // Hook up any generated "disclosure" fields
+      for (const elem of $$('.disclosure')) {
         elem.addEventListener('click', event => {
-          const c = elem.getAttribute('data-wds-expand');
-          $('#wds-frame').classList.toggle(c);
+          event.preventDefault();
+          const target = document.getElementById(elem.dataset.toggle);
+          target.dataset.open = (target.dataset.open !== 'open') ? 'open' : '';
+          elem.dataset.open = target.dataset.open; // Set on target so marker can react
         });
       }
 

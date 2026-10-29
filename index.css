@@ -642,28 +642,22 @@ body:not(.wds-visible) #wds-frame { display: none; }
 
 /* Expand/Collapse Sections */
 
-.wds-expandy { cursor: pointer; }
-.wds-expandy:not(:hover) .wds-toggle { opacity: 0.5; }
-.wds-toggle {
-  float: right;
-  display: block;
-  height: 14px;
-  width: 14px;
-  margin-right: 15px;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-image: var(--chevron-up);
+.disclosure {
+  cursor: pointer;
+  &:not(:hover) .marker { opacity: 0.5; }
+  .marker {
+    float: right;
+    display: block;
+    height: 14px;
+    width: 14px;
+    margin-right: 15px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-image: var(--chevron-down);
+  }
+  &:not([data-open="open"]) .marker { background-image: var(--chevron-up); }
 }
-
-#wds-frame:not(.wds-expand-uwp) #wds-uwp,
-#wds-frame:not(.wds-expand-ex) #wds-ex,
-#wds-frame:not(.wds-expand-cx) #wds-cx { display: none; }
-
-.wds-expand-uwp .wds-expandy[data-wds-expand="wds-expand-uwp"] .wds-toggle,
-.wds-expand-ex .wds-expandy[data-wds-expand="wds-expand-ex"] .wds-toggle,
-.wds-expand-cx .wds-expandy[data-wds-expand="wds-expand-cx"] .wds-toggle {
-  background-image: var(--chevron-down);
-}
+.details:not([data-open="open"]) { display: none; }
 
 /* Data Blocks */
 
