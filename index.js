@@ -1602,12 +1602,8 @@ async function route(start, end, jump) {
 //
 //////////////////////////////////////////////////////////////////////
 
-const isCanvasSupported = ('getContext' in $('#scaleIndicator'));
 let animId = 0;
 function updateScaleIndicator() {
-  if (!isCanvasSupported)
-    return;
-
   cancelAnimationFrame(animId);
   animId = requestAnimationFrame(() => {
     const scale = map.scale, canvas = $('#scaleIndicator'),
