@@ -360,6 +360,7 @@ input[type=text] {
   transition: 1s ease-in-out;
 }
 
+/* Coreward/Spinward/Rimward/Trailing overlays */
 .direction {
   font-weight: bold; text-transform: uppercase; font-size: 120%;
   color: var(--direction-color);
@@ -408,6 +409,7 @@ input[type=text] {
   background-color: var(--footer-bg-color);
  }
 
+/* Branding */
 #LogoImage {
   float: right;
   background-size: contain;
@@ -423,7 +425,6 @@ input[type=text] {
   background-color: var(--stripe-color);
 }
 
-/* ============================================================ */
 /* Credits/Metadata */
 
 .credits { font-style: italic; }
@@ -522,6 +523,7 @@ body:not(.wds-visible) #wds-frame { display: none; }
   margin-bottom: 1em;
 }
 
+/* Spinner that shows in the search box while data is loading */
 #spinner {
   display: none;
 
@@ -539,12 +541,6 @@ body:not(.wds-visible) #wds-frame { display: none; }
 .ds-links {
   clear: both;
   text-align: center;
-}
-
-.ds-map-links {
-  clear: both;
-  text-align: center;
-  margin-top: 10px;
 }
 
 /* Mini Mode */
@@ -644,7 +640,7 @@ body:not(.wds-visible) #wds-frame { display: none; }
   background-color: var(--popup-fg-color);
 }
 
-/* Expand/Collapse */
+/* Expand/Collapse Sections */
 
 .wds-expandy { cursor: pointer; }
 .wds-expandy:not(:hover) .wds-toggle { opacity: 0.5; }
@@ -1965,13 +1961,6 @@ noscript div {
 
 /* ============================================================ */
 /* Browser-specific Hacks */
-
-/* Buttons - FF */
-@supports (selector(::-moz-focus-inner)) {
-  ::-moz-focus-inner {
-    padding: 0;
-  }
-}
 
 /* Scrollbars - Chrome/Safari */
 @supports (selector(::-webkit-scrollbar)) {
