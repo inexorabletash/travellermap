@@ -445,15 +445,16 @@ document.body.addEventListener('keyup', event => {
 // Options Bar
 
 const PANELS = ['legend', 'more'];
-const TABS = ['lab', 'milieu', 'settings', 'share', 'help'];
 
 function showPanel(shown) {
+  // Mutually exclusive, so hide other panels when showing one.
   for (const p of PANELS) {
     document.body.classList[p === shown ? 'add' : 'remove'](`show-${p}`);
   }
 }
 
 function togglePanel(shown) {
+  // Mutually exclusive, so hide other panels when showing one.
   for (const p of PANELS) {
     document.body.classList[p === shown ? 'toggle' : 'remove'](`show-${p}`);
   }
@@ -472,16 +473,15 @@ for (const p of PANELS) {
 }
 
 function showTab(shown) {
-  for (const p of TABS) {
-    document.body.classList[shown === p ? 'add' : 'remove'](`show-${p}`);
-  }
+  $('#moreBox').dataset.tab = shown;
 }
 
-for (const p of TABS) {
-  $('#' + p + 'Btn').addEventListener('click', () => {
-    showTab(p);
+$$('.tab-button').forEach(button => {
+  button.addEventListener('click', event => {
+    event.preventDefault();
+    document.getElementById(button.dataset.owner).dataset.tab = button.dataset.tab;
   });
-}
+});
 
 const STYLES = [
   'poster', 'atlas', 'print', 'candy', 'draft', 'fasa', 'terminal', 'mongoose'
@@ -1295,7 +1295,7 @@ for (const element of $$('#sds-closebtn,#wds-closebtn,#ds-shade')) {
   });
 }
 
-for (const element of $$('#legend-closebtn,#more-closebtn,#panel-shade')) {
+for (const element of $$('#legendBox .closebtn,#moreBox .closebtn,#panel-shade')) {
   element.addEventListener('click', event => {
     hidePanels();
   });
@@ -1609,10 +1609,7 @@ function updateScaleIndicator() {
     const scale = map.scale, canvas = $('#scaleIndicator'),
           ctx = canvas.getContext('2d'), w = parseFloat(canvas.width),
           h = parseFloat(canvas.height), style = map.style,
-          color =
-              ['atlas', 'print', 'draft', 'fasa', 'mongoose'].includes(style) ?
-        'black' :
-        'white';
+          color = document.documentElement.style.colorScheme === 'light' ? 'black' : 'white';
 
     ctx.clearRect(0, 0, w, h);
 

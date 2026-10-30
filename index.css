@@ -464,7 +464,7 @@ input[type=text] {
   }
 }
 
-#legend-closebtn {
+#legendBox .closebtn {
   filter: var(--legend-closebtn-filter);
 }
 
@@ -1037,17 +1037,17 @@ body:not(.route-shown) {
 .show-legend #legendBtn { background-color: var(--highlight-color); }
 
 /* Tabs */
-.show-settings #settings-tab,
-.show-lab #lab-tab,
-.show-milieu #milieu-tab,
-.show-share #share-tab,
-.show-help #help-tab { display: block; }
+#moreBox:not([data-tab="settings"]) #settings-tab,
+#moreBox:not([data-tab="lab"]) #lab-tab,
+#moreBox:not([data-tab="milieu"]) #milieu-tab,
+#moreBox:not([data-tab="share"]) #share-tab,
+#moreBox:not([data-tab="help"]) #help-tab { display: none; }
 
-.show-lab #labBtn,
-.show-milieu #milieuBtn,
-.show-settings #settingsBtn,
-.show-share #shareBtn,
-.show-help #helpBtn {
+#moreBox[data-tab="settings"] #settingsBtn,
+#moreBox[data-tab="lab"] #labBtn,
+#moreBox[data-tab="milieu"] #milieuBtn,
+#moreBox[data-tab="share"] #shareBtn,
+#moreBox[data-tab="help"] #helpBtn {
   border-bottom: 2px solid var(--highlight-color);
   filter: none;
 }
@@ -1340,6 +1340,10 @@ body:not(.search-results) #closeSearchBtn { display: none; }
   @supports (right: max(0px)) and (right: env(safe-area-inset-right)) {
     right: max(10px, env(safe-area-inset-right));
   }
+
+  .closebtn {
+    margin-right: 5px; /* no scrollbar to push it over, unlike ds-closebtn */
+  }
 }
 #more-tabs {
   position: absolute;
@@ -1368,14 +1372,8 @@ body:not(.search-results) #closeSearchBtn { display: none; }
   overflow-y: auto;
   overflow-x: hidden;
 }
-.more-tab {
-  display: none;
-}
 .more-tab a {
   color: var(--popup-fg-color);
-}
-#more-closebtn {
-  margin-right: 5px; /* no scrollbar to push it over, unlike ds-closebtn */
 }
 
 

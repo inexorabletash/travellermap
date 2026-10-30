@@ -51,7 +51,7 @@
 </script>
 <script type="module" src="index.js?update=2026-10-27T11:31:10"></script>
 
-<body class="hide-ui hide-footer ds-mini show-settings">
+<body class="hide-ui hide-footer ds-mini">
   <div id="mapContainer">
     <div id="dragContainer"
          tabindex="0"
@@ -259,31 +259,42 @@
 
   <div id=panel-shade></div>
   <div id="moreBox"
+       data-tab="settings"
        class="ui"
   >
     <div id="more-tabs">
       <button id="settingsBtn"
               class=tab-button
+              data-owner=moreBox
+              data-tab=settings
               title="Change the map appearance">
       </button>
       <button id="labBtn"
               class=tab-button
+              data-owner=moreBox
+              data-tab=lab
               title="Experimental features">
       </button>
       <button id="milieuBtn"
               class=tab-button
+              data-owner=moreBox
+              data-tab=milieu
               title="Milieu">
       </button>
       <button id="shareBtn"
               class=tab-button
+              data-owner=moreBox
+              data-tab=share
               title="Share links to the map">
       </button>
       <button id="helpBtn"
               class=tab-button
+              data-owner=moreBox
+              data-tab=help
               title="Help, feedback, and more">
       </button>
     </div>
-    <button id=more-closebtn class="closebtn dim" title="Close"></button>
+    <button class="closebtn dim" title="Close"></button>
     <div id="moreScroll">
 
 
@@ -521,7 +532,7 @@
 
   <div id="legendBox"
        class="ui hoverbox hoverbox-right">
-    <button id=legend-closebtn class="closebtn dim" title="Close"></button>
+    <button class="closebtn dim" title="Close"></button>
     <div id="legendBoxContent">
     <section>
       <h2>Map Legend</h2><br>
