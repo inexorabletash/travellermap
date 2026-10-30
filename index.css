@@ -1491,8 +1491,6 @@ body:not(.search-results) #closeSearchBtn { display: none; }
 .hide-footer #navBar,
 .hide-footer #navBarRight { bottom: 15px; }
 
-#homeBtn2 { display: none; } /* only shown in mobile layout */
-
 .bar-button {
   height: 40px; width: 40px;
 }
@@ -1683,9 +1681,14 @@ input[type=radio]:checked + label:before {
   #navBarRight .bar-button { display: none; }
 }
 
+.mobile-only { display: none; }
+
 /* "Phone" - simplify controls/options significantly */
 @media screen and (max-width: 480px), only screen and (max-height: 480px) {
   /* Mobile (portrait or landscape) */
+
+  .non-mobile { display: none; }
+  .mobile-only { display: unset; }
 
   /* Simplify/merge footer/navigation bar */
 
@@ -1703,18 +1706,7 @@ input[type=radio]:checked + label:before {
 
   /* Simplify options */
 
-  #share-embed { display: none; }
-
-  #help-tools,
-  #help-developers { display: none; }
-
   .direction { display: none; }
-  #settings-show { display: none; }
-
-  /* Show alternate Home button in lower right */
-
-  #homeBtn { display: none; }
-  #homeBtn2 { display: block; }
 }
 
 
