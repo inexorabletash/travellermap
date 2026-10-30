@@ -1282,7 +1282,9 @@ body:not(.search-results) #closeSearchBtn { display: none; }
 #routeBtn {
   background-image: var(--route-symbol);
 }
-.route-ui #routeBtn { display: none; }
+.route-ui {
+  #searchForm, #routeBtn { display: none; }
+}
 
 /* ============================================================ */
 /* More Box */
@@ -1516,6 +1518,7 @@ body:not(.search-results) #closeSearchBtn { display: none; }
 
 input:checked + label { color: var(--highlight-color); }
 input:disabled + label { opacity: 0.5; }
+input:focus-visible + label { text-decoration: underline; }
 
 input[type=checkbox],
 input[type=radio] {
