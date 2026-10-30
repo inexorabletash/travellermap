@@ -384,11 +384,11 @@ input[type=text] {
   bottom: calc(var(--bottom-pane-height) + 4px); left: 0; right: 0;
 }
 #direction-spinward {
-  top: 50%; left: 0.9em;
+  top: calc((100% - var(--bottom-pane-height)) / 2); left: 0.9em;
   transform: translateY(-50%) translateX(-50%) rotate(270deg);
 }
 #direction-trailing {
-  top: 50%; right: 0.9em;
+  top: calc((100% - var(--bottom-pane-height)) / 2); right: 0.9em;
   transform: translateY(-50%) translateX(50%) rotate(270deg);
 }
 
