@@ -289,15 +289,21 @@ function resizeMap() {
 }
 
 $('#routeBtn').addEventListener('click', event => {
+  event.preventDefault();
   if (selectedWorld) {
     setRouteStart(selectedWorld.name, selectedWorld.hex, selectedSector);
+  }
+
+  showRoute();
+
+  if (selectedWorld) {
     if (!isSmallScreen)
       $('#routeEnd').focus();
   } else {
-    if (!isSmallScreen)
+    if (!isSmallScreen) {
       $('#routeStart').focus();
+    }
   }
-  showRoute();
 });
 
 // Track precise route start/end location to use by default, as
