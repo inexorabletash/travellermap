@@ -939,8 +939,10 @@ export class TravellerMap {
     container.addEventListener('mousemove', event => {
       const coords = this.eventCoords(event);
 
-      // Ignore mousemove immediately following mousedown with same coords.
-      if (dragging && coords.x === drag_coords.x && coords.y === drag_coords.y)
+      const threshold = 3;
+
+      // Ignore mousemove immediately following mousedown with "same" coords.
+      if (dragging && Math.abs(coords.x - drag_coords.x) < threshold && Math.abs(coords.y - drag_coords.y) < threshold)
         return;
 
       if (dragging) {
