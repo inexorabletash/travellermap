@@ -57,14 +57,14 @@
          tabindex="0"
          title="Mouse: Drag to scroll, wheel to zoom&#x0A;Keyboard: Arrows to scroll, +/- to zoom">
     </div>
+    <div id="direction-coreward" class="direction">Coreward</div>
+    <div id="direction-rimward" class="direction">Rimward</div>
+    <div id="direction-spinward" class="direction">Spinward</div>
+    <div id="direction-trailing" class="direction">Trailing</div>
   </div>
-  <div id="direction-coreward" class="direction">Coreward</div>
-  <div id="direction-rimward" class="direction">Rimward</div>
-  <div id="direction-spinward" class="direction">Spinward</div>
-  <div id="direction-trailing" class="direction">Trailing</div>
 
   <div id="topBar" class="ui bar">
-    <form id="searchForm" action=".">
+    <form id="searchForm" action="." class="bar-left">
       <input type="submit" style="visibility: hidden; position: absolute;">
       <input type="text"
              id="searchBox"
@@ -87,27 +87,26 @@
     </form>
 
     <button id="routeBtn"
-            class=bar-button
+            class="bar-button bar-left"
             title="Calculate a jump route between worlds">
     </button>
 
+    <span class="filler"></span>
+
+    <button id="homeBtn"
+            class="bar-button bar-right non-mobile"
+            title="Return to the default view&#x0A;Keyboard: H">
+    </button>
+    <button id="legendBtn"
+            class="bar-button bar-left"
+            title="Map legend and symbols&#x0A;Keyboard: M">
+    </button>
+    <button id="moreBtn"
+            class="bar-button bar-left"
+            title="Show options">
+    </button>
   </div>
-  <div id=topBarRight class="ui bar">
-    <div class="bar-right">
-      <button id="homeBtn"
-              class="bar-button non-mobile"
-              title="Return to the default view&#x0A;Keyboard: H">
-      </button>
-      <button id="legendBtn"
-              class=bar-button
-              title="Map legend and symbols&#x0A;Keyboard: M">
-      </button>
-      <button id="moreBtn"
-              class=bar-button
-              title="Show options">
-      </button>
-    </div>
-  </div>
+
 
   <div id="resultsBox"
        class="ui hoverbox hoverbox-left">
@@ -605,35 +604,31 @@
   <div id="navBar"
        class="ui bar">
     <button id="homeBtn2"
-            class="bar-button mobile-only"
+            class="bar-button bar-left mobile-only"
             title="Return to the default view&#x0A;Keyboard: H">
     </button>
-  </div>
-
-  <div id="navBarRight"
-       class="ui bar">
-    <div class="bar-right">
-      <canvas id="scaleIndicator"
-              title="Scale"
-              width="120" height="30">
-      </canvas>
-      <button id="zoomInBtn"
-              class=bar-button
-              title="Zoom in&#x0A;Keyboard: +">
-      </button>
-      <button id="zoomOutBtn"
-              class=bar-button
+    <span class="filler"></span>
+    <canvas id="scaleIndicator"
+            class="bar-right"
+            title="Scale"
+            width="120" height="30">
+    </canvas>
+    <button id="zoomInBtn"
+            class="bar-button bar-right"
+            title="Zoom in&#x0A;Keyboard: +">
+    </button>
+    <button id="zoomOutBtn"
+            class="bar-button bar-right"
             title="Zoom out&#x0A;Keyboard: -">
-      </button>
-      <button id="tiltBtn"
-              class=bar-button
-              title="Tilt&#x0A;Keyboard: T">
-      </button>
-      <button id="fsBtn"
-              class=bar-button
-              title="Full screen&#x0A;Keyboard: F">
-      </button>
-    </div>
+    </button>
+    <button id="tiltBtn"
+            class="bar-button bar-right"
+            title="Tilt&#x0A;Keyboard: T">
+    </button>
+    <button id="fsBtn"
+            class="bar-button bar-right"
+            title="Full screen&#x0A;Keyboard: F">
+    </button>
   </div>
 
   <div id="bottom-pane"
@@ -699,14 +694,14 @@
     </script>
   </div>
 
+  <div id=ds-shade></div>
   <div id=sds-frame class=ds-frame>
     <div id=sds-scroll class=ds-scroll>
       <div id=sds-data></div>
     </div>
     <button id=sds-closebtn class="closebtn dim" title="Close"></button>
-  </div>
 
-  <script id=sds-template type="text/x-handlebars-template">
+    <script id=sds-template type="text/x-handlebars-template">
       <div class=ds-title>
         {{SectorName}}
         <small>({{SectorX}},{{SectorY}})</small>
@@ -798,16 +793,15 @@
           <a title="Download tab-delimited data" href="{{TSVDataURL}}" target=_blank rel=noopener download="{{SectorName}}.tsv" class=download-icon>Download TSV</a>
         </span>
       </div>
-  </script>
+    </script>
+  </div>
 
-  <div id=ds-shade></div>
   <div id=wds-frame class=ds-frame>
     <div id=wds-scroll class=ds-scroll>
       <canvas id=wds-world-image width=200 height=200></canvas>
       <div id=wds-data></div>
     </div>
     <button id=wds-closebtn class="closebtn dim" title="Close"></button>
-  </div>
 
 <script id=wds-template type="text/x-handlebars-template">
 
@@ -995,6 +989,7 @@
 </div>
 
 </script>
+  </div>
 
   <div id="milieu-escape">
     Viewing <span id="milieu-field"></span> data.

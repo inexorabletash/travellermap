@@ -816,7 +816,7 @@ button {
   font-size: 10pt;
   font-weight: bold;
   padding: 0 10px; margin: 0; border: none;
-  min-width: 37px;
+  min-width: 40px;
   color: var(--button-fg-color);
   background-color: var(--button-bg-color);
   background-position: center;
@@ -867,6 +867,7 @@ button {
   position: relative;
   float: left;
   width: 275px;
+  /* TODO: Get this working despite starting/ending at width: 100% */
   transition: width 0.1s ease-in-out;
 }
 #searchBox {
@@ -1464,11 +1465,22 @@ body:not(.search-results) #closeSearchBtn { display: none; }
     left: max(10px, env(safe-area-inset-left));
     right: max(10px, env(safe-area-inset-right));
   }
+
+  display: flex;
+  gap: 4px;
+
+  & > * {
+    pointer-events: auto;
+  }
+
+  .bar-button {
+    height: 40px; width: 40px;
+  }
+
+
+  .filler { flex-grow: 1; }
 }
 
-.ui.bar > * {
-  pointer-events: auto;
-}
 
 #scaleIndicator {
   margin-top: 10px;
@@ -1482,41 +1494,12 @@ body:not(.search-results) #closeSearchBtn { display: none; }
   }
 }
 
-#navBar, #navBarRight { bottom: 110px; }
+#navBar { bottom: 110px; }
 /* NOTE: Unknown selectors result in entire rule being rejected. */
-:-webkit-full-screen #navBar,
-:-webkit-full-screen #navBarRight { bottom: 15px; }
-:fullscreen #navBar,
-:fullscreen #navBarRight { bottom: 15px; }
-.hide-footer #navBar,
-.hide-footer #navBarRight { bottom: 15px; }
+:-webkit-full-screen #navBar { bottom: 15px; }
+:fullscreen #navBar { bottom: 15px; }
+.hide-footer #navBar { bottom: 15px; }
 
-.bar-button {
-  height: 40px; width: 40px;
-}
-
-.ui.bar > * {
-  float: left;
-  margin-left: 4px;
-
-  &:first-child {
-    margin-left: 0;
-  }
-}
-
-.ui.bar .bar-right {
-  float: right;
-  margin: 0;
-  pointer-events: none;
-}
-
-.ui.bar .bar-right > * {
-  float: left;
-  margin-right: 4px;
-  pointer-events: auto;
-
-  &:last-child { margin-right: 0; }
-}
 
 
 /* ============================================================ */
@@ -1580,7 +1563,7 @@ input[type=radio]:checked + label:before {
   #bottom-pane { font-size: 75%; padding: 2px;}
   #stripe { height: 4px; margin: 2px 0; }
   #LogoImage { width: 105px; height: 35.5px; }
-  #navBar, #navBarRight { bottom: 55px; }
+  #navBar { bottom: 55px; }
   .hoverbox-right,
   .hoverbox-left,
   #moreBox,
@@ -1678,7 +1661,7 @@ input[type=radio]:checked + label:before {
   .show-more #panel-shade { display: block; }
 
   /* No Zoom/Tilt/Fullscreen buttons (but keep scale indicator)*/
-  #navBarRight .bar-button { display: none; }
+  #zoomInBtn, #zoomOutBtn, #tiltBtn, #fsBtn { display: none; }
 }
 
 .mobile-only { display: none; }
@@ -1692,8 +1675,7 @@ input[type=radio]:checked + label:before {
 
   /* Simplify/merge footer/navigation bar */
 
-  #navBarRight .bar-button { display: none; }
-  #navBar, #navBarRight {
+  #navBar {
     bottom: 5px; right: 115px; pointer-events: none;
     @supports (bottom: max(0px)) and (bottom: env(safe-area-inset-bottom)) {
       bottom: max(10px, env(safe-area-inset-bottom));
@@ -1713,7 +1695,8 @@ input[type=radio]:checked + label:before {
 @media screen and (max-width: 425px) {
   /* Mobile/Portrait - Dock Route UI to top */
 
-  #searchForm { width: calc(100vw - 160px); }
+  #searchForm { width: 100%; }
+  #topBar .filler { display: none; }
 
   .route-ui {
     #routeBox {
@@ -1742,8 +1725,8 @@ input[type=radio]:checked + label:before {
 
   /* Resize search box */
   .search-results {
-    #searchForm { width: 100%; }
-    #legendBtn, #moreBtn { display: none; }
+    /* NOTE: This doesn't allow #searchForm to animate since width already 100%. */
+    #routeBtn, #legendBtn, #moreBtn { display: none; }
   }
 
   #resultsBox { right: 10px; width: auto; }
