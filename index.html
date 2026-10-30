@@ -234,8 +234,8 @@
       </div>
       {{/Route}}
       <span class="route-links">
-        <span id=print-route class=link-button-inline><a href="#" class=print-icon>Print</a></span>
-        <span id=copy-route class=link-button-inline><a href="#" class=copy-icon>Copy to Clipboard</a></span>
+        <a id=print-route class="link-button-inline print-icon" href="#">Print</a>
+        <a id=copy-route class="link-button-inline copy-icon" href="#">Copy to Clipboard</a>
       </span>
 
     </script>
@@ -512,13 +512,13 @@
 
     <section>
       Share this link:
-      <a href="#" id=copy-share-url class=copy-icon>Copy</a>
+      <a href="#" id=copy-share-url class=share-copy-icon>Copy</a>
       <input readonly id="share-url" title="Copy and paste">
     </section>
 
     <section class=non-mobile>
       Embed this HTML:
-      <a href="#" id=copy-share-code class=copy-icon>Copy</a>
+      <a href="#" id=copy-share-code class=share-copy-icon>Copy</a>
       <input readonly id="share-code" title="Copy and paste">
     </section>
   </div>
@@ -712,12 +712,8 @@
       </div>
 
       <div id=sds-print-links class=ds-links>
-        <span id=sds-print-booklet-link class=link-button-inline>
-          <a title="Print sector booklet" href="#" class=print-icon>Print Booklet</a>
-        </span>
-        <span id=sds-print-poster-link class=link-button-inline>
-          <a title="Print sector poster" href="#" class=print-icon>Print Poster</a>
-        </span>
+        <a id=sds-print-booklet-link class="link-button-inline print-icon" title="Print sector booklet" href="#">Print Booklet</a>
+        <a id=sds-print-poster-link class="link-button-inline print-icon" title="Print sector poster" href="#" class=print-icon>Print Poster</a>
       </div>
 
       <div class=sds-status>
@@ -786,12 +782,8 @@
 
       <br>
       <div id=sds-download-links class=ds-links>
-        <span id=sds-download-data class=link-button-inline>
-          <a title="Download sector data" href="{{DataURL}}" target=_blank rel=noopener download="{{SectorName}}.txt" class=download-icon>Download Data</a>
-        </span>
-        <span id=sds-download-tsv class=link-button-inline>
-          <a title="Download tab-delimited data" href="{{TSVDataURL}}" target=_blank rel=noopener download="{{SectorName}}.tsv" class=download-icon>Download TSV</a>
-        </span>
+        <a id=sds-download-data class="link-button-inline download-icon" title="Download sector data" href="{{DataURL}}" target=_blank rel=noopener download="{{SectorName}}.txt">Download Data</a>
+        <a id=sds-download-tsv class="link-button-inline download-icon" title="Download tab-delimited data" href="{{TSVDataURL}}" target=_blank rel=noopener download="{{SectorName}}.tsv">Download TSV</a>
       </div>
      </div>
     </script>

@@ -743,55 +743,55 @@ body:not(.wds-visible) #wds-frame { display: none; }
 /* ============================================================ */
 /* Link-Buttons */
 
+:root {
+  --link-button-padding-lr: 1em;
+}
+
 .link-button {
+  display: block;
   text-align: center;
   clear: both;
+
+  /* link-button has a child <a> so icon is snug against text */
+  a {
+    text-decoration: none;
+    background-repeat: no-repeat;
+    background-position: left var(--link-button-padding-lr) center;
+  }
 }
 .link-button-inline {
   display: inline-block;
+  background-repeat: no-repeat;
+  background-position: left var(--link-button-padding-lr) center;
 }
 
 .link-button, .link-button-inline {
   user-select: none;
-  padding: 0 1em;
+  padding: 0 var(--link-button-padding-lr);
   line-height: 30px;
   border-radius: 15px;
   border: var(--popup-button-border);
-
-  a {
-    text-decoration: none;
-  }
+  text-decoration: none;
 
   &:hover {
     background-color: var(--popup-button-hover);
   }
 }
 
-/* ============================================================ */
-/* Icons Buttons */
-
 .route-icon {
-  padding-left: 28px;
-  background-repeat: no-repeat;
-  background-position: left center;
+  padding-left: calc(var(--link-button-padding-lr) + 28px);
   background-image: var(--route-symbol);
 }
 .print-icon {
-  padding-left: 24px;
-  background-repeat: no-repeat;
-  background-position: left center;
+  padding-left: calc(var(--link-button-padding-lr) + 24px);
   background-image: var(--print-symbol);
 }
 .download-icon {
-  padding-left: 24px;
-  background-repeat: no-repeat;
-  background-position: left center;
+  padding-left: calc(var(--link-button-padding-lr) + 24px);
   background-image: var(--download-symbol);
 }
 .copy-icon {
-  padding-left: 24px;
-  background-repeat: no-repeat;
-  background-position: left center;
+  padding-left: calc(var(--link-button-padding-lr) + 24px);
   background-image: var(--copy-symbol);
 }
 
@@ -1235,10 +1235,15 @@ body:not(.route-shown) {
     background-repeat: no-repeat;
     background-image: url('res/ui/share.png');
   }
-  .copy-icon {
+  .share-copy-icon {
     display: inline-block;
     float: right;
     margin-right: 20px;
+    padding-left: 24px;
+
+    background-image: var(--copy-symbol);
+    background-repeat: no-repeat;
+    background-position: left center;
 
     &:not(:hover) {
       text-decoration: none;
