@@ -481,9 +481,18 @@ input[type=text] {
 #ds-shade {
   display: none;
   position: absolute;
-  z-index: 29;
   left: 0; right: 0; top: 0; bottom: 0;
   background-color: rgba(0, 0, 0, 0.50);
+}
+
+#ds-shade {
+  /* just below .ds-frame at 30 */
+  z-index: 29;
+}
+
+#panel-shade {
+  /* just below #legendBox/#moreBox at 50 */
+  z-index: 49;
 }
 
 body:not(.sds-visible) #sds-frame,
