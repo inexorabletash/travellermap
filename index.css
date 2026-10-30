@@ -1217,35 +1217,10 @@ body:not(.route-shown) {
 #styles:not(.p2) .styles-p2 { display: none; }
 #styles.p2 .styles-p1 { display: none; }
 
-.settings {
-  section {
-    margin-top: 1em;
-    &:first-of-type { margin-top: 0; }
-  }
-
-  /* checkbox/radio buttons are larger on iOS */
-  h3 { font-size: 10pt; font-weight: bold; margin: 0; }
-  .settings-item { line-height: 25px; margin-left: 20px; white-space: nowrap; }
-
-  #settingsBtn-poster { background-image: url('res/ui/style-poster.png'); }
-  #settingsBtn-atlas  { background-image: url('res/ui/style-atlas.png'); }
-  #settingsBtn-print  { background-image: url('res/ui/style-print.png'); }
-  #settingsBtn-candy  { background-image: url('res/ui/style-candy.png'); }
-  #settingsBtn-fasa  { background-image: url('res/ui/style-fasa.png'); }
-  #settingsBtn-draft  { background-image: url('res/ui/style-draft.png'); }
-  #settingsBtn-terminal { background-image: url('res/ui/style-terminal.png'); }
-  #settingsBtn-mongoose { background-image: url('res/ui/style-mongoose.png'); }
-}
-
 /* ============================================================ */
 /* Share Tab */
 
 #share-tab {
-  section {
-    margin-top: 1em;
-    &:first-of-type { margin-top: 0; }
-  }
-
   input {
     width: 240px; padding: 5px; border: var(--popup-textbox-border);
     color: var(--popup-fg-color);
@@ -1281,25 +1256,12 @@ body:not(.route-shown) {
 /* Help Tab */
 
 #help-tab {
-  section {
-    margin-top: 1em;
-    &:first-of-type { margin-top: 0; }
-  }
-
-  p {
-    margin-top: 0.5em;
-    &:first-of-type { margin-top: 0; }
-  }
-
   h3 {
-    x-font-style: italic; x-font-weight: normal;
+    font-size: 16px !important;
     color: var(--highlight-color);
     border-bottom: 2px solid var(--highlight-color);
-    margin-bottom: 10px;
-    &:first-of-type { margin-top: 0; }
+    margin-bottom: 10px !important;
   }
-
-  a:not(:hover) { text-decoration: none; }
 }
 
 /* ============================================================ */
@@ -1344,6 +1306,28 @@ body:not(.search-results) #closeSearchBtn { display: none; }
   .closebtn {
     margin-right: 5px; /* no scrollbar to push it over, unlike ds-closebtn */
   }
+
+  section {
+    margin-top: 1em;
+    &:first-of-type { margin-top: 0; }
+  }
+
+  h3 {
+    font-size: 10pt;
+    font-weight: bold;
+    margin: 0;
+    &:first-of-type { margin-top: 0; }
+  }
+
+  p {
+    margin-top: 0.5em;
+    &:first-of-type { margin-top: 0; }
+  }
+
+  a:not(:hover) { text-decoration: none; }
+
+  /* checkbox/radio buttons are larger on iOS */
+  .settings-item { line-height: 25px; margin-left: 20px; white-space: nowrap; }
 }
 #more-tabs {
   position: absolute;
@@ -1376,6 +1360,16 @@ body:not(.search-results) #closeSearchBtn { display: none; }
   color: var(--popup-fg-color);
 }
 
+.more-tab {
+  #settingsBtn-poster { background-image: url('res/ui/style-poster.png'); }
+  #settingsBtn-atlas  { background-image: url('res/ui/style-atlas.png'); }
+  #settingsBtn-print  { background-image: url('res/ui/style-print.png'); }
+  #settingsBtn-candy  { background-image: url('res/ui/style-candy.png'); }
+  #settingsBtn-fasa  { background-image: url('res/ui/style-fasa.png'); }
+  #settingsBtn-draft  { background-image: url('res/ui/style-draft.png'); }
+  #settingsBtn-terminal { background-image: url('res/ui/style-terminal.png'); }
+  #settingsBtn-mongoose { background-image: url('res/ui/style-mongoose.png'); }
+}
 
 /* ============================================================ */
 /* Options Bar Buttons */
