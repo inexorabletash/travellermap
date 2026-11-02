@@ -78,7 +78,11 @@
   h2 + h3 {
     margin-top: 0;
   }
-  
+
+  .toc {
+    left: auto !important;
+    right: 1em !important;
+  }
 </style>
 
 <h1 class=sitename>Second Survey Data</h1>
@@ -94,12 +98,6 @@
       characteristics, and some details about other bodies in the
       system of interest to travellers.
     </p>
-    <p>
-      The data for Regina (Spinward Marches 1910), home of Duke Norris and
-      an influential world on the edge of the Third Imperium can be summarized
-      in Second Survey format as:
-    </p>
-    <div class="example"><code><a href="#hex">1910</a> <a href="#name">Regina</a> <a href="#uwp">A788899-C</a> <a href="#remarks">Ht Ri Pa Ph An Cp (Amindii)2</a>   <a href="#ix">{ 4 }</a>  <a href="#ex">(D7E+5)</a> <a href="#cx">[9C6D]</a> <a href="#nobility">BcCeF</a> <a href="#bases">NS</a> <a href="#zone">-</a> <a href="#pbg">703</a> <a href="#worlds">8</a> <a href="#allegiance">ImDd</a> <a href="#stellar">F7 V BD M3 V</a></code></div>
     <p class="aside">
       Different editions of <cite>Traveller</cite> and different
       authors and publications may include different fields, present
@@ -107,37 +105,14 @@
       fields. The companion document <a href="fileformats">Sector Data
       File Formats</a> may be used for reference.
     </p>
+    <p>
+      The data for Regina (Spinward Marches 1910), home of Duke Norris and
+      an influential world on the edge of the Third Imperium can be summarized
+      in Second Survey format as:
+    </p>
+    <div class="example"><code><a href="#hex">1910</a> <a href="#name">Regina</a> <a href="#uwp">A788899-C</a> <a href="#remarks">Ht Ri Pa Ph An Cp (Amindii)2</a>   <a href="#ix">{ 4 }</a>  <a href="#ex">(D7E+5)</a> <a href="#cx">[9C6D]</a> <a href="#nobility">BcCeF</a> <a href="#bases">NS</a> <a href="#zone">-</a> <a href="#pbg">703</a> <a href="#worlds">8</a> <a href="#allegiance">ImDd</a> <a href="#stellar">F7 V BD M3 V</a></code></div>
   </div>
 
-  <section id="toc">
-    <h3>Contents</h3>
-    <ul>
-      <li>Data Fields
-         <ul>
-           <li><a href="#hex">Hex Location</a></li>
-           <li><a href="#name">Main World Name</a></li>
-           <li><a href="#uwp">UWP - Universal World Profile</a></li>
-           <li><a href="#remarks">Remarks and Trade Codes</a></li>
-           <li><a href="#ix">Importance Extension</a></li>
-           <li><a href="#ex">Economic Extension</a></li>
-           <li><a href="#cx">Cultural Extension</a></li>
-           <li><a href="#nobility">Nobility</a></li>
-           <li><a href="#bases">Bases</a></li>
-           <li><a href="#zone">Travel Zone</a></li>
-           <li><a href="#pbg">PBG - Population, Belts, Giants</a></li>
-           <li><a href="#worlds">Worlds</a></li>
-           <li><a href="#allegiance">Allegiance</a></li>
-           <li><a href="#stellar">Stellar Data</a></li>
-           <li><a href="#ru">Resource Units</a></li>
-         </ul>
-      </li>
-      <li>Appendix
-        <ul>
-          <li><a href="#ehex">eHex</a></li>
-        </ul>
-      </li>
-    </ul>
-  </section>
 
   <section id="hex">
     <h2>Hex Location</h2>
@@ -2275,3 +2250,5 @@
                  {property: 'Location', func: processLocation}]);
 })();
 </script>
+
+<script src="toc.js" data-toc-selector="h2"></script>

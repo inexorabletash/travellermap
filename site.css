@@ -220,12 +220,18 @@ nav.toc {
 
   h2 { margin-top: 0; }
   a { display: block; text-decoration: none; }
-  a.H1 { margin-left: 0; }
-  a.H2 { margin-left: 1em; font-weight: bold; }
-  a.H3 { margin-left: 2em; }
-  a.H4 { margin-left: 3em; font-style: italic; }
-  a.H5 { margin-left: 4em; }
-  a.H6 { margin-left: 5em; }
+  a.H1 { padding-left: 0; }
+  a.H2 { padding-left: 1em; font-weight: bold; }
+  a.H3 { padding-left: 2em; }
+  a.H4 { padding-left: 3em; font-style: italic; }
+  a.H5 { padding-left: 4em; }
+  a.H6 { padding-left: 5em; }
+
+  scroll-target-group: auto;
+
+  a:target-current {
+    background-color: lightgray;
+  }
 }
 
 /* Navigation Bar - when trapped in a standalone window */
