@@ -1012,6 +1012,10 @@ body:not(.route-shown) {
 #routePath {
   margin-bottom: 10px; text-align: left;
 
+  &.updating {
+    opacity: 50%;
+  }
+
   .item {
     position: relative;
     padding-left: 30px;

@@ -370,7 +370,6 @@ $('#routeEnd').addEventListener('keydown', event => {
     event.preventDefault();
     event.stopPropagation();
 
-    $('#routePath').innerHTML = '';
     let found = false;
     for (const n of jump_button_ids) {
       if ($('#routeForm').classList.contains(n)) {
@@ -393,7 +392,6 @@ $('#swapRouteBtn').addEventListener('click', event => {
   [$('#routeStart').value, $('#routeEnd').value] =
       [$('#routeEnd').value, $('#routeStart').value];
   [routeStart, routeEnd] = [routeEnd, routeStart];
-  $('#routePath').innerHTML = '';
   for (const n of jump_button_ids) {
     if ($('#routeForm').classList.contains(n))
       $('#' + n).click();
@@ -1505,7 +1503,7 @@ function reroute() {
 }
 
 async function route(start, end, jump) {
-  $('#routePath').innerHTML = '';
+  $('#routePath').classList.add('updating');
   lastRoute = {start, end, jump};
 
   const options = {
@@ -1566,6 +1564,7 @@ async function route(start, end, jump) {
       PrintURL: Util.makeURL('./print/route', options)
     };
     $('#routePath').innerHTML = template('#RouteResultsTemplate')(routeData);
+    $('#routePath').classList.remove('updating');
     document.body.classList.add('route-shown');
     resizeMap();
 
@@ -1596,6 +1595,7 @@ async function route(start, end, jump) {
   } catch (reason) {
     $('#routePath').innerHTML =
         template('#RouteErrorTemplate')({Message: reason.message});
+    $('#routePath').classList.remove('updating');
     map.SetRoute(null);
     document.body.classList.add('route-shown');
     resizeMap();
