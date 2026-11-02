@@ -230,15 +230,25 @@ window.addEventListener('DOMContentLoaded', async () => {
   const searchParams = new URLSearchParams(document.location.search);
   if (searchParams.has('sector')) {
     document.body.classList.add('render');
+
+    const print = searchParams.has('print');
+
+    // Simplify displayed URL
+    const url = new URL(document.location);
+    url.searchParams.delete('print');
+    window.history.replaceState(null, document.title, url);
+
     const success = await render({
       sector: searchParams.get('sector'),
       milieu: searchParams.get('milieu'),
       style: searchParams.get('style'),
       options: searchParams.get('options')
     });
-    if (success && searchParams.has('print')) {
+
+    if (success && print) {
       window.print();
     }
+
     return;
   }
 

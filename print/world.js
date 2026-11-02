@@ -8,9 +8,6 @@ const $$ = Util.$$;
 window.addEventListener('load', async () => {
   const searchParams = new URLSearchParams(document.location.search);
 
-  if (searchParams.has('nopage'))
-    document.body.classList.add('nopage');
-
   let query;
   if (searchParams.has('sector') && searchParams.has('hex'))
     query = {sector: searchParams.get('sector'), hex: searchParams.get('hex')};
@@ -47,34 +44,32 @@ window.addEventListener('load', async () => {
         const data = await response.json();
         const world = await prepareWorld(data.Worlds[0]);
         if (world) {
-          await renderWorldImage(world, $('#wds-world-image'));
-          $('#wds-world-image').classList.add('wds-ready');
-          $('#wds-world-data').innerHTML =
-              Handlebars.compile($('#wds-world-template').innerHTML)(world);
+          await renderWorldImage(world, $('#world-image'));
+          $('#world-image').classList.add('ready');
+          $('#world-data').innerHTML =
+              Handlebars.compile($('#world-template').innerHTML)(world);
 
           // Document title
           document.title = Handlebars.compile(
               '{{{Name}}} ({{{Sector}}} {{{Hex}}}) - World Data Sheet')(world);
 
           // Prettify URL
-          if ('history' in window && 'replaceState' in window.history) {
-            let url = window.location.href.replace(/\?.*$/, '') +
-                '?sector=' + world.Sector + '&hex=' + world.Hex;
-            ['milieu', 'style'].forEach(param => {
-              const value = searchParams.get(param);
-              if (value !== null) {
-                url += '&' + param + '=' + encodeURIComponent(value);
-              }
-            });
-            window.history.replaceState(null, document.title, url);
-          }
+          let url = window.location.href.replace(/\?.*$/, '') +
+              '?sector=' + world.Sector + '&hex=' + world.Hex;
+          ['milieu', 'style'].forEach(param => {
+            const value = searchParams.get(param);
+            if (value !== null) {
+              url += '&' + param + '=' + encodeURIComponent(value);
+            }
+          });
+          window.history.replaceState(null, document.title, url);
         }
       })(),
 
       // --------------------------------------------------
       // Fill in neighborhood/jumpmap.
       (async () => {
-        if (!searchParams.has('nohood') && $('#wds-neighborhood-data')) {
+        if (!searchParams.has('nohood') && $('#neighborhood-data')) {
           const JUMP = 2;
           const SCALE = 48;
 
@@ -97,8 +92,8 @@ window.addEventListener('load', async () => {
           }
 
           const template =
-              Handlebars.compile($('#wds-neighborhood-template').innerHTML);
-          $('#wds-neighborhood-data').innerHTML = template(data);
+              Handlebars.compile($('#neighborhood-template').innerHTML);
+          $('#neighborhood-data').innerHTML = template(data);
 
           const mapParams = {
             x: coords.x,
@@ -113,7 +108,7 @@ window.addEventListener('load', async () => {
             mapParams.dpr = window.devicePixelRatio;
           const url = Traveller.MapService.makeURL('/api/jumpmap', mapParams);
           const image =
-              await Util.fetchImage(url, {imageElement: $('#wds-jumpmap')});
+              await Util.fetchImage(url, {imageElement: $('#jumpmap')});
 
           image.addEventListener('click', event => {
             const result = jmapToCoords(event, JUMP, SCALE, coords.x, coords.y);

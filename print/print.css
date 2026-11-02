@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Sans+Narrow|Marcellus|Share+Tech+Mono');
+
+/* Faux Print Preview */
+
+@media screen and (min-width: 8in) {
+  html { text-align: center; background-color: gray; width: 100%; }
+  body { text-align: left; width: 8in; margin: 0.25in auto; box-shadow: 0 0 30px 5px #202020;}
+}
+@media print {
+  @page { size: portrait; margin: 0.25in;  }
+  html, body { margin: 0; padding: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+
+body {
+  padding: 0.25in;
+  font-size: 12px;
+  font-family: Univers, Helvetica, Arial, sans-serif;
+  color: black;
+  background-color: white;
+}
+
+/* General Text Styling */
+
+body {
+  color: black;
+  background-color: white;
+}
+body, table, select {
+  font-size: 10pt;
+  font-family: Univers, Arial, sans-serif;
+}
+
+h1, h2, h3 {
+  font-family: Optima, Marcellus, "Times New Roman", serif;
+}
+h4, h5, h6 {
+  font-family: Univers, Arial, Helvetica, sans-serif;
+}
+
+h1 {
+  margin-bottom: 0;
+  font-size: 30px;
+  font-style: italic;
+  padding-bottom: 4pt;
+  border-bottom: 4pt solid black;
+  margin-bottom: 4pt;
+
+  padding-left: 45px;
+  background-image: url('https://travellermap.s3.amazonaws.com/images/ImperialStarburst.svg');
+  background-size: 40px 40px;
+  background-repeat: no-repeat;
+}
+
+h2 {
+  border-bottom: 2pt solid black;
+}
+h2, h3 {
+  margin-top: 24pt;
+  margin-bottom: 6pt;
+}
+h4 {
+  font-size: 10pt;
+  font-weight: bold;
+  margin-bottom: 6pt;
+}
+
+a {
+  color: black;
+}
+
+table {
+  border-collapse: collapse;
+}

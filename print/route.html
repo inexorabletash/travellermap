@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <title>Printable Route - Traveller Map</title>
+<meta charset="utf-8">
+<link rel="shortcut icon" href="../favicon.svg">
+<link rel="stylesheet" href="print.css?update=2026-03-19T16:43:58">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js"></script>
 <script type="importmap">
 {
@@ -10,13 +13,19 @@
 </script>
 <script type="module">
   import * as Traveller from '../map.js';
-  
+
   const Util = Traveller.Util;
   const $ = Util.$;
   const $$ = Util.$$;
 
-  window.addEventListener('load', async () => {    
+  window.addEventListener('load', async () => {
     const searchParams = new URLSearchParams(document.location.search);
+    const print = searchParams.has('print');
+
+    // Simplify displayed URL
+    const url = new URL(document.location);
+    url.searchParams.delete('print');
+    window.history.replaceState(null, document.title, url);
 
     try {
       const response = await fetch(Traveller.MapService.makeURL('/api/route', {
@@ -73,7 +82,7 @@
 
       await Promise.all($$('#routePath img').map(img => Traveller.fetchImage(img)));
 
-      if (searchParams.has('print')) {
+      if (print) {
         window.print();
       }
     } catch(reason) {
@@ -113,24 +122,6 @@
   {{/Route}}
 </script>
 <style>
-@import url(https://fonts.googleapis.com/css?family=Marcellus);
-
-@media screen and (min-width: 8in) {
-  html { text-align: center; background-color: gray; width: 100%; }
-  body { width: 8in; margin: 0.25in auto; box-shadow: 0 0 30px 5px #202020;}
-}
-@media print {
-  @page { size: portrait; margin: 0.25in;  }
-  html, body { margin: 0; padding: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-}
-
-body {
-  padding: 0.25in;
-  font-size: 12px;
-  font-family: Univers, Helvetica, Arial, sans-serif;
-  color: black;
-  background-color: white;
-}
 
 .copyright {
   font-family: Arial;
@@ -140,13 +131,18 @@ body {
   margin-bottom: 10px; text-align: left;
 }
 
+body {
+    font-size: 12px;
+}
+
 h1 {
   font-size: 28px;
+  font-style: normal;
   line-height: 35px;
   padding-bottom: 6px;
-  font-family: Optima, Marcellus, "Times New Roman", serif;
   border-bottom: 4px solid black;
-
+  margin-bottom: revert;
+  
   padding-left: 45px;
   background-image: url(https://travellermap.s3.amazonaws.com/images/ImperialStarburst.svg);
   background-size: 40px 40px;
@@ -158,7 +154,10 @@ h1 {
 h2 {
   font-size: 18px;
   font-family: Univers, Helvetica, Arial, sans-serif;
+  margin-top: revert;
+  margin-bottom: revert;
   margin-left: 30px;
+  border-bottom: none;
 }
 
 #routePath {

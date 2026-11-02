@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html>
 <title>World Data Sheet - Traveller Map</title>
 <meta charset="utf-8">
 <link rel="shortcut icon" href="../favicon.svg">
-<link rel="stylesheet" href="../site.css?update=2026-03-19T16:43:58">
+<link rel="stylesheet" href="print.css?update=2026-03-19T16:43:58">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js"></script>
 <script type="importmap">
 {
@@ -16,48 +15,30 @@
 <script type="module" src="world.js?update=2026-04-08T19:52:10"></script>
 
 <style>
-@import url(https://fonts.googleapis.com/css?family=PT+Sans+Narrow);
 
-html, body { margin: 0; padding: 0; }
-body.nopage { margin: 0; padding: 0; overflow: hidden; }
-#wds-paper { text-align: left; background-color: white; color: black; overflow: hidden;  }
-#wds-page { position: relative; width: 7in; height: 9in;}
+body {
+  position: relative;
+  width: 7in;
+  height: 8.75in;
+  padding: 0.5in;
+}
+
 
 h1 {
+  margin-top: 0;
+  margin-right: calc(-0.5in + 3px);
   a { text-decoration: none; }
   a:hover { text-decoration: underline; }
   small { font-size: 65%; }
 }
 
-@media screen {
-  #wds-page { margin: 0.25in; }
-}
-
-@media screen and (min-width: 8in) {
-  body { text-align: center; background-color: gray; width: 100%; }
-  #wds-paper { width: 8in; height: 9.75in; margin: 0.25in auto; box-shadow: 0 0 30px 5px #202020;}
-  #wds-page { margin: 0.5in; }
-
-  .nopage #wds-paper { width: 8in; height: 6.5in; margin: 0; }
-  .nopage #wds-page { width: 7in; height: 5.5in; }
-}
-
-.nopage #footer { display: none; }
-
-@media print {
-  @page {
-    size: portrait;
-    margin: 0.5in;
-  }
-  #wds-page, #wds-paper { margin: 0; padding: 0; }
-}
 
 td { vertical-align: top; }
 .nowrap { white-space: nowrap; display: inline-block; }
 
 /* Names */
 
-.wds-names {
+.names {
   min-height: 104px;
   max-height: 110px;
   margin: 10px 10px 5px;
@@ -66,21 +47,21 @@ td { vertical-align: top; }
 
 /* World Image */
 
-#wds-world-image {
+#world-image {
   visibility: hidden;
   position: absolute;
-  top: 0; right: 0;
+  top: 0.5in; right: 0.5in;
   width: 140px;
   height: 140px;
   border: 2px solid black;
 }
-#wds-world-image.wds-ready {
+#world-image.ready {
   visibility: visible;
 }
 
 /* Data Blocks */
 
-.wds-decode {
+.decode {
   white-space: nowrap; margin: 10px 10px;
   
   tr:first-of-type td { padding-bottom: 4px; font-weight: bold;}
@@ -103,41 +84,37 @@ td { vertical-align: top; }
 
 /* Specific Data Fields */
 
-.wds-imp-blurb { font-weight: normal; }
+.imp-blurb { font-weight: normal; }
 
-.wds-stars .wds-star:after,
-.wds-bases .wds-base:after,
-.wds-nobility .wds-noble:after { content: ' \2014 '; } /* U+2014 EM DASH */
+.stars .star:after,
+.bases .base:after,
+.nobility .noble:after { content: ' \2014 '; } /* U+2014 EM DASH */
 
-.wds-stars .wds-star:last-child:after,
-.wds-bases .wds-base:last-child:after,
-.wds-nobility .wds-noble:last-child:after { content: ''; }
+.stars .star:last-child:after,
+.bases .base:last-child:after,
+.nobility .noble:last-child:after { content: ''; }
 
-.wds-zone-amber { background-color: #FFCC00; padding: 2px 20px; display: inline-block; }
-.wds-zone-red { background-color: #E32736; padding: 2px 20px; display: inline-block; }
+.zone-amber { background-color: #FFCC00; padding: 2px 20px; display: inline-block; }
+.zone-red { background-color: #E32736; padding: 2px 20px; display: inline-block; }
 
 /* UWP Table */
 
-.wds-uwp {
+.uwp {
   th { font-size: 9pt; text-align: left; }
-  td, .wds-uwp th { padding-right: 0.5em; white-space: nowrap}
+  td, .uwp th { padding-right: 0.5em; white-space: nowrap}
   td { font-family: "PT Sans Narrow"; font-size: 8.5pt; }
   a { text-decoration: none; }
   a:hover { text-decoration: underline; }
 }
-#wds-jumpmap { width: 236px; height: 254px; cursor: pointer; }
-#wds-neighborhood { width: 100%; }
+#jumpmap { width: 236px; height: 254px; cursor: pointer; }
+#neighborhood { width: 100%; }
 
 </style>
 
-<div id=wds-paper>
-<div id=wds-page>
+<canvas id=world-image width=280 height=280></canvas>
 
-
-<canvas id=wds-world-image width=280 height=280></canvas>
-
-<div id=wds-world-data></div>
-<script id=wds-world-template type="text/x-handlebars-template">
+<div id=world-data></div>
+<script id=world-template type="text/x-handlebars-template">
 
 <h1>
 {{#if Name}} <a target=_blank rel=noopener href="{{world_url}}">{{Name}}</a> {{else}} (Unnamed) {{/if}}
@@ -148,17 +125,17 @@ td { vertical-align: top; }
 </h1>
 
 {{#if AllegianceName}}
-<table class=wds-decode><tr>
+<table class=decode><tr>
 <td>Allegiance:
 <td><big>{{AllegianceName}}</big> ({{Allegiance}})
 </table>
 {{/if}}
 
-<table class=wds-decode><tr>
+<table class=decode><tr>
 <td>System:
 <td>
-    <div class=wds-stars>
-    {{#Stars}} <span class=wds-star><big>{{code}}</big> <small>{{detail}}</small></span> {{/Stars}}
+    <div class=stars>
+    {{#Stars}} <span class=star><big>{{code}}</big> <small>{{detail}}</small></span> {{/Stars}}
     </div>
     <div>
       <big>{{PBG.GG}}</big> <small>Gas Giants</small>
@@ -169,14 +146,14 @@ td { vertical-align: top; }
       <big>{{OtherWorlds}}</big> <small>Other Worlds</small>
       {{/if}}
     </div>
-    <div class=wds-bases>
-      {{#Bases}} <span class=wds-base>{{.}}</span> {{/Bases}}
+    <div class=bases>
+      {{#Bases}} <span class=base>{{.}}</span> {{/Bases}}
     </div>
 </table>
 
 
 {{#UWP}}
-<table class=wds-decode>
+<table class=decode>
 <tr><td>Universal World Profile:<td>{{Starport}}<td>{{Siz}}<td>{{Atm}}<td>{{Hyd}}<td>{{Pop}}<td>{{Gov}}<td>{{Law}}<td>&ndash;<td>{{Tech}}<td>
     <tr><td>Starport ({{StarportBlurb}})<td colspan=9 rowspan=4><img width="144" height="49" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNDQgNDkiIGhlaWdodD0iNDkiIHdpZHRoPSIxNDQiPjxwYXRoIGQ9Ik0wIDQ4di0xaDU2VjBoMnY0OUgwdi0xem03Mi0yMy41VjBoMnY0N2g3MHYySDcyVjI0LjV6TTAgMzR2LTFoNDBWMGgydjM1SDB2LTF6bTg4LTE2LjVWMGgydjMzaDU0djJIODhWMTcuNXpNMCAyMHYtMWgyNFYwaDJ2MjFIMHYtMXptMTA0LTkuNVYwaDJ2MTloMzh2MmgtNDBWMTAuNXpNMCA2VjVoOFYwaDJ2N0gwVjZ6bTEzNi0yLjVWMGgydjVoNnYyaC04VjMuNXoiLz48L3N2Zz4=" alt=""><td>Technology Level ({{TechBlurb}})
 <tr><td>Size ({{SizBlurb}})<td>Law Level ({{LawBlurb}})
@@ -186,13 +163,13 @@ td { vertical-align: top; }
 {{/UWP}}
 
 {{#Ix}}
-<table class=wds-decode>
-<tr><td>Importance {Ix}:<td>{<td>{{Imp}}<td>} <td> <span class=wds-imp-blurb>{{ImpBlurb}}</span>
+<table class=decode>
+<tr><td>Importance {Ix}:<td>{<td>{{Imp}}<td>} <td> <span class=imp-blurb>{{ImpBlurb}}</span>
 </table>
 {{/Ix}}
 
 {{#Ex}}
-<table class=wds-decode>
+<table class=decode>
 <tr><td>Economics (Ex):<td>(<td>{{Res}}<td>{{Lab}}<td>{{Inf}}<td>{{Eff}}<td>)<td>
 <tr><td>Resources ({{ResBlurb}})<td colspan=6 rowspan=2><img width="96" height="21" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA5NiAyMSIgaGVpZ2h0PSIyMSIgd2lkdGg9Ijk2Ij48cGF0aCBkPSJNMCAyMHYtMWg0MFYwaDJ2MjFIMHYtMXptNTYtOS41VjBoMnYxOWgzOHYySDU2VjEwLjV6TTAgNlY1aDI0VjBoMnY3SDBWNnptNzItMi41VjBoMnY1aDIydjJINzJWMy41eiIvPjwvc3ZnPg==" alt=""><td>Efficiency ({{EffBlurb}})
 <tr><td>Labor ({{LabBlurb}})<td>Infrastructure ({{InfBlurb}})
@@ -200,7 +177,7 @@ td { vertical-align: top; }
 {{/Ex}}
 
 {{#Cx}}
-<table class=wds-decode>
+<table class=decode>
 <tr><td>Culture [Cx]:<td>[<td>{{Het}}<td>{{Acc}}<td>{{Str}}<td>{{Sym}}<td>]<td>
 <tr><td>Heterogeneity ({{HetBlurb}})<td colspan=6 rowspan=2><img width="96" height="21" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA5NiAyMSIgaGVpZ2h0PSIyMSIgd2lkdGg9Ijk2Ij48cGF0aCBkPSJNMCAyMHYtMWg0MFYwaDJ2MjFIMHYtMXptNTYtOS41VjBoMnYxOWgzOHYySDU2VjEwLjV6TTAgNlY1aDI0VjBoMnY3SDBWNnptNzItMi41VjBoMnY1aDIydjJINzJWMy41eiIvPjwvc3ZnPg==" alt=""><td>Symbols ({{SymBlurb}})
 <tr><td>Acceptance ({{AccBlurb}})<td>Strangeness ({{StrBlurb}})
@@ -208,21 +185,21 @@ td { vertical-align: top; }
 {{/Cx}}
 
 {{#if TotalPopulation }}
-<table class=wds-decode><tr>
+<table class=decode><tr>
 <td style="vertical-align: bottom">Total Population:
 <td><big>{{PopMult}} &times; 10<sup>{{PopExp}}</sup> = {{TotalPopulation}}</big>
 </table>
 {{/if}}
 
 {{#if Nobility}}
-<table class=wds-decode><tr>
+<table class=decode><tr>
 <td>Nobility:
-<td><big class=wds-nobility>{{#Nobility}} <span class=wds-noble>{{.}}</span> {{/Nobility}}</big>
+<td><big class=nobility>{{#Nobility}} <span class=noble>{{.}}</span> {{/Nobility}}</big>
 </table>
 {{/if}}
 
 {{#if Remarks}}
-<table class=wds-decode><tr>
+<table class=decode><tr>
 <td>Remarks:
 <td style="white-space: normal">
 {{#Remarks}}<span class=nowrap><big>{{code}}</big> <small>{{detail}}</small></span>&#x20;{{/Remarks}}
@@ -230,22 +207,22 @@ td { vertical-align: top; }
 {{/if}}
 
 {{#Zone}}
-<table class=wds-decode><tr>
+<table class=decode><tr>
 <td>Travel Zone:
-<td><big class="wds-zone-{{className}}">{{rule}}</big> <br> <small>Travellers' Aid Society Rating: {{rating}}</small>
+<td><big class="zone-{{className}}">{{rule}}</big> <br> <small>Travellers' Aid Society Rating: {{rating}}</small>
 </table>
 {{/Zone}}
 
 </script>
 
-<div id=wds-neighborhood-data></div>
-<script id=wds-neighborhood-template type="text/x-handlebars-template">
+<div id=neighborhood-data></div>
+<script id=neighborhood-template type="text/x-handlebars-template">
   <h2 style="margin-top: 0;">Jump-2 Neighborhood</h2>
-  <table id=wds-neighborhood>
+  <table id=neighborhood>
     <tr>
-      <td><img id=wds-jumpmap></td>
-      <td><div class=wds-uwp>
-          <table class=wds-uwp>
+      <td><img id=jumpmap></td>
+      <td><div class=uwp>
+          <table class=uwp>
             <tr><th>Name<th>Hex<th>UWP<th>B<th>Remarks<th>Z<th>PBG<th>A<th>Stellar</tr>
             {{#Worlds}}
             <tr>
@@ -269,6 +246,3 @@ td { vertical-align: top; }
   The <em class="product">Traveller</em> game in all forms is owned by Mongoose Publishing. Copyright 1977 &ndash; 2024 Mongoose Publishing.
   <a href="https://cdn.shopify.com/s/files/1/0609/6139/0839/files/Traveller_Fair_Use_Policy_2024.pdf?v=1725357857">Fair Use Policy</a>
 </div>
-</div>
-</div>
-</html>
