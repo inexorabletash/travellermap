@@ -14,6 +14,8 @@ export async function populateSector() {
   const cmp = (a, b) => a < b ? -1 : b < a ? 1 : 0;
 
   const list = $('#sector');
+  if (!list)
+    return;
 
   const seen = new Set();
   const universe = await Traveller.MapService.universe({requireData: 1});

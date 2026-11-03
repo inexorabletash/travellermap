@@ -1079,11 +1079,11 @@ function updateContext(worldX, worldY, options) {
     if (data.SectorName) {
       data.SectorWikiURL = makeWikiURL(`${data.SectorName} Sector`);
       data.SectorWikiURLNoScheme = data.SectorWikiURL.replace(/^\w+:\/\//, '');
-      data.BookletURL = Traveller.MapService.makeURL(
-          `/data/${encodeURIComponent(data.SectorName)}/booklet`, {
-            milieu,
-            print: 1,
-          });
+      data.BookletURL = Util.makeURL('./print/booklet', {
+        sector: data.SectorName,
+        milieu,
+        print: true,
+      });
 
       data.PosterURL = Traveller.MapService.makeURL('/api/poster', {
         sector: data.SectorName,
