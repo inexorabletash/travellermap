@@ -7,7 +7,7 @@ const urlsToCache = [
 
   'offline.html',
   'favicon.svg',
-  'https://fonts.googleapis.com/css?family=Marcellus',
+  'https://fonts.googleapis.com/css2?family=Marcellus',
 ];
 
 self.addEventListener('install', /** @type {ExtendableEvent} */ event => {
