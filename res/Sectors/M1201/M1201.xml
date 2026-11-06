@@ -51,7 +51,7 @@
     <X>0</X>
     <Name>Solomani Rim</Name>
     <Name Lang="vi">Kushuggi</Name>
-    <DataFile Source="Traveller Chronicle 10" Milieu="M1201" Type="TabDelimited">Solomani Rim.tab</DataFile>
+    <DataFile Source="The Traveller Chronicle 10" Milieu="M1201" Type="TabDelimited">Solomani Rim.tab</DataFile>
     <MetadataFile>Solomani Rim.xml</MetadataFile>
   </Sector>
   <Sector Abbreviation="OldE" Tags="Unreviewed" Milieu="M1201">
@@ -93,7 +93,7 @@
     <Y>-1</Y>
     <X>-1</X>
     <Name>Vland</Name>
-    <DataFile Source="Zhodani Base" Ref="http://zho.berka.com/data/TNE/sector.pl?sector=VLAND" Milieu="M1201" Type="TabDelimited">Vland.tab</DataFile>
+    <DataFile Source="The Zhodani Base" Ref="http://zho.berka.com/data/TNE/sector.pl?sector=VLAND" Milieu="M1201" Type="TabDelimited">Vland.tab</DataFile>
     <MetadataFile>Vland.xml</MetadataFile>
   </Sector>
   <Sector Abbreviation="Alph" Tags="Unreviewed" Milieu="M1201">
@@ -102,7 +102,7 @@
     <Name>Alpha Crucis</Name>
     <Name>Alpha Leonis</Name>
     <Name Lang="vi">Amkarim</Name>
-    <DataFile Milieu="M1201" Source="Opal" Ref="http://www.downport.com/bard/bard/opal/opal10016.html" Type="TabDelimited">Alpha Crucis.tab</DataFile>
+    <DataFile Milieu="M1201" Source="Bureau of Aggregate Reference Data" Ref="http://www.downport.com/bard/bard/opal/opal10016.html" Type="TabDelimited">Alpha Crucis.tab</DataFile>
     <MetadataFile>Alpha Crucis.xml</MetadataFile>
   </Sector>
   <Sector Abbreviation="Anta" Tags="Unreviewed" Milieu="M1201">
@@ -110,7 +110,7 @@
     <X>1</X>
     <Name>Antares</Name>
     <Name Lang="vi">Mikasirka</Name>
-    <DataFile Milieu="M1201" Source="CARI" Ref="http://www.downport.com/bard/bard/cari/cari9009.html" Type="TabDelimited">Antares.tab</DataFile>
+    <DataFile Milieu="M1201" Source="Bureau of Aggregate Reference Data" Ref="http://www.downport.com/bard/bard/cari/cari9009.html" Type="TabDelimited">Antares.tab</DataFile>
     <MetadataFile>Antares.xml</MetadataFile>
   </Sector>
   <Sector Abbreviation="Empt" Tags="Unreviewed" Milieu="M1201">
@@ -118,14 +118,14 @@
     <X>2</X>
     <Name>Empty Quarter</Name>
     <Name Lang="vi">Gushgus</Name>
-    <DataFile Milieu="M1201" Source="CARI" Ref="http://www.downport.com/bard/bard/cari/cari9009.html" Type="TabDelimited">Empty Quarter.tab</DataFile>
+    <DataFile Milieu="M1201" Source="Bureau of Aggregate Reference Data" Ref="http://www.downport.com/bard/bard/cari/cari9009.html" Type="TabDelimited">Empty Quarter.tab</DataFile>
     <MetadataFile>Empty Quarter.xml</MetadataFile>
   </Sector>
   <Sector Abbreviation="Hint" Tags="Unreviewed" Milieu="M1201">
     <Y>2</Y>
     <X>2</X>
     <Name>Hinterworlds</Name>
-    <DataFile Author="Rob Caswell and Karl Johnson" Source="OPAL" Ref="http://www.downport.com/bard/bard/opal/opal10416.html" Milieu="M1201" Type="TabDelimited">Hinterworlds.tab</DataFile>
+    <DataFile Author="Rob Caswell and Karl Johnson" Source="Bureau of Aggregate Reference Data" Ref="http://www.downport.com/bard/bard/opal/opal10416.html" Milieu="M1201" Type="TabDelimited">Hinterworlds.tab</DataFile>
     <MetadataFile>Hinterworlds.xml</MetadataFile>
   </Sector>
   <Sector Abbreviation="Reav" Tags="Unreviewed" Milieu="M1201">
@@ -232,7 +232,7 @@
     <X>-3</X>
     <Name Lang="va">Tuglikki</Name>
     <Name Lang="zh">Dravr</Name>
-    <DataFile Author="David Drazul"  Source="Traveller 5 Sector Survey" Milieu="M1201" Type="TabDelimited">Tuglikki.tab</DataFile>
+    <DataFile Author="David Drazul"  Source="Traveller 5 Second Survey" Milieu="M1201" Type="TabDelimited">Tuglikki.tab</DataFile>
     <MetadataFile>Tuglikki.xml</MetadataFile>
   </Sector>
   <Sector Abbreviation="Prov" Tags="Unreviewed" Milieu="M1201">
@@ -241,7 +241,7 @@
     <Name>Provence</Name>
     <Name Lang="va">Orraenang</Name>
     <Name Lang="vi">Amshagi</Name>
-    <DataFile Author="David Drazul" Source="Traveller 5 Sector Survey" Milieu="M1201" Type="TabDelimited">Provence.tab</DataFile>
+    <DataFile Author="David Drazul" Source="Traveller 5 Second Survey" Milieu="M1201" Type="TabDelimited">Provence.tab</DataFile>
     <MetadataFile>Provence.xml</MetadataFile>
   </Sector>
   <Sector Abbreviation="Wind" Tags="Unreviewed" Milieu="M1201">
@@ -257,7 +257,7 @@
     <Y>-2</Y>
     <X>0</X>
     <Name>Meshan</Name>
-    <DataFile Author="Michael R. Mikesh" Source="Traveller 5 Sector Survey" Milieu="M1201" Type="TabDelimited">Meshan.tab</DataFile>
+    <DataFile Author="Michael R. Mikesh" Source="Traveller 5 Second Survey" Milieu="M1201" Type="TabDelimited">Meshan.tab</DataFile>
     <MetadataFile>Meshan.xml</MetadataFile>
   </Sector>
 </Sectors>

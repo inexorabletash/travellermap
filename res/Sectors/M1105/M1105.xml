@@ -93,8 +93,8 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <Y>-5</Y>
     <X>-7</X>
     <Name Lang="zh">Zhiensh</Name>
-    <DataFile Source="Mongoose Publishing" Author="Isabella Treccani-Chinelli" Type="TabDelimited">Zhiensh.tab</DataFile>
-    <MetadataFile Source="Mongoose Publishing" Author="Isabella Treccani-Chinelli">Zhiensh.xml</MetadataFile>
+    <DataFile Source="The Core Expeditions" Publisher="Mongoose Publishing" Author="Isabella Treccani-Chinelli" Type="TabDelimited">Zhiensh.tab</DataFile>
+    <MetadataFile Source="The Core Expeditions" Publisher="Mongoose Publishing" Author="Isabella Treccani-Chinelli">Zhiensh.xml</MetadataFile>
   </Sector>
   <Sector>
     <Y>-5</Y>
@@ -2272,7 +2272,7 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <Y>4</Y>
     <X>-7</X>
     <Name Lang="as">Kefiykhta</Name>
-    <DataFile Source="Solomani and Aslan (dotmap)" Ref="https://travellermap.com/data/kefiykhta" Author="Randy Dorman" Type="TabDelimited">Kefiykhta.tab</DataFile>
+    <DataFile Source="Solomani and Aslan" Ref="https://travellermap.com/data/kefiykhta" Author="Randy Dorman" Type="TabDelimited">Kefiykhta.tab</DataFile>
     <Labels>
       <Label Hex="2413" Color="White" Wrap="false">Keawe Rift</Label>
     </Labels>
@@ -2329,7 +2329,7 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <Y>4</Y>
     <X>-5</X>
     <Name Lang="as">Etakhasoa</Name>
-    <DataFile Source="Solomani and Aslan (dotmap)" Ref="https://travellermap.com/data/etakhasoa" Author="Randy Dorman" Type="TabDelimited">Etakhasoa.tab</DataFile>
+    <DataFile Source="Solomani and Aslan" Ref="https://travellermap.com/data/etakhasoa" Author="Randy Dorman" Type="TabDelimited">Etakhasoa.tab</DataFile>
     <Subsectors>
       <Subsector Index="A">Teao</Subsector>
       <Subsector Index="B">Ha</Subsector>
@@ -2484,14 +2484,14 @@ Left:   0041 0040 0039 0038 0037 0036 0035 0034 0033 0032 0031 0030 0029 0028 00
     <Y>4</Y>
     <X>-1</X>
     <Name>Canopus</Name>
-    <DataFile Source="Randy Dorman" Type="TabDelimited">Canopus.tab</DataFile>
+    <DataFile Author="Randy Dorman" Type="TabDelimited">Canopus.tab</DataFile>
     <MetadataFile>Canopus.xml</MetadataFile>
   </Sector>
   <Sector Abbreviation="Alde" Tags="InReview">
     <Y>4</Y>
     <X>0</X>
     <Name>Aldebaran</Name>
-    <DataFile Source="Randy Dorman" Type="TabDelimited">Aldebaran.tab</DataFile>
+    <DataFile Author="Randy Dorman" Type="TabDelimited">Aldebaran.tab</DataFile>
     <MetadataFile>Aldebaran.xml</MetadataFile>
   </Sector>
   <Sector Abbreviation="Newo" Tags="InReview">
