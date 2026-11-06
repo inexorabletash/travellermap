@@ -1079,23 +1079,6 @@ function updateContext(worldX, worldY, options) {
     if (data.SectorName) {
       data.SectorWikiURL = makeWikiURL(`${data.SectorName} Sector`);
       data.SectorWikiURLNoScheme = data.SectorWikiURL.replace(/^\w+:\/\//, '');
-      data.BookletURL = Util.makeURL('./print/booklet', {
-        sector: data.SectorName,
-        milieu,
-        print: true,
-      });
-
-      data.PosterURL = Traveller.MapService.makeURL('/api/poster', {
-        sector: data.SectorName,
-        accept: 'application/pdf',
-        style: map.style,
-        options: map.options,
-        milieu
-      });
-      data.DataURL = Traveller.MapService.makeURL(
-          '/api/sec', {sector: data.SectorName, type: 'SecondSurvey', milieu});
-      data.TSVDataURL = Traveller.MapService.makeURL(
-          '/api/sec', {sector: data.SectorName, type: 'TabDelimited', milieu});
     }
 
     if (data.SectorY)
@@ -1172,17 +1155,16 @@ async function showSectorData(data) {
     });
   }
 
-  $('#sds-print-booklet-link').addEventListener('click', event => {
-    event.preventDefault();
-    window.open(data.BookletURL);
-  });
-  $('#sds-print-poster-link').addEventListener('click', event => {
-    event.preventDefault();
-    const w = window.open(data.PosterURL);
-    // @ts-ignore
-    w.onload = () => {
-      w.print();
-    };
+  [
+    ['#sds-print-booklet-link', printSectorBooklet],
+    ['#sds-download-data', downloadSectorData],
+    ['#sds-download-tsv', downloadSectorTSVData],
+    ['#sds-print-poster-link', printSectorPoster],
+  ].forEach(([sel, func]) => {
+    $(sel).addEventListener('click', event => {
+      event.preventDefault();
+      func();
+    });
   });
 
   showSearchPane('sds-visible', data.SectorName);
@@ -1211,15 +1193,6 @@ async function showWorldData() {
         renderWorldImage(world, $('#wds-world-image')),
         world.map_exists  // Once resolved, `map`/`map_thumb` are set
       ]);
-
-      // Data Sheet
-      world.DataSheetURL = Util.makeURL('print/world', {
-        sector: context.sector,
-        hex: context.hex,
-        milieu,
-        style: map.style,
-        print: true
-      });
 
       // Jump Maps
       world.JumpMapURL = Traveller.MapService.makeURL('/api/jumpmap', {
@@ -1264,7 +1237,7 @@ async function showWorldData() {
 
       $('#wds-print-ds-link').addEventListener('click', event => {
         event.preventDefault();
-        window.open(world.DataSheetURL);
+        printWorldDataSheet();
       });
 
       if ($('#wds-map')) {
@@ -1286,6 +1259,60 @@ async function showWorldData() {
   } finally {
     $('#spinner').style.display = 'none';
   }
+}
+
+// The following rely on global state, not anything from
+// `showSectorData()` or `showWorldData()` because they include style
+// and/or milieu which don't necessarily cause a refresh.
+
+function printWorldDataSheet() {
+  window.open(Util.makeURL('print/world', {
+    sector: selectedSector,
+    hex: selectedWorld.hex,
+    milieu: map.namedOptions.get('milieu'),
+    style: map.style,
+    print: true
+  }));
+}
+
+function printSectorBooklet() {
+  window.open(Util.makeURL('./print/booklet', {
+    sector: selectedSector,
+    milieu: map.namedOptions.get('milieu'),
+    style: map.style === defaults.style ? 'print' : map.style,
+    print: true,
+  }));
+}
+
+function printSectorPoster() {
+  const w = window.open(Traveller.MapService.makeURL('/api/poster', {
+    sector: selectedSector,
+    milieu: map.namedOptions.get('milieu'),
+    accept: 'application/pdf',
+    style: map.style,
+    options: map.options,
+  }));
+
+  // @ts-ignore
+  w.onload = () => {
+    w.print();
+  };
+}
+
+function downloadSectorData() {
+  window.open(Traveller.MapService.makeURL('/api/sec', {
+    sector: selectedSector,
+    milieu: map.namedOptions.get('milieu'),
+    type: 'SecondSurvey',
+  }));
+}
+
+function downloadSectorTSVData() {
+  window.open(Traveller.MapService.makeURL('/api/sec', {
+    sector: selectedSector,
+    milieu: map.namedOptions.get('milieu'),
+    type: 'TabDelimited',
+  }));
 }
 
 $('#wds-world-image').addEventListener('click', event => {
