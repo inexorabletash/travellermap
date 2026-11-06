@@ -1128,11 +1128,6 @@ function updateContext(worldX, worldY, options) {
       selectedWorld = map.scale > 16 && 'WorldHex' in data ?
           {name: data.WorldName, hex: data.WorldHex} :
           null;
-    } else if (options.refresh) {
-      // Keep as-is
-    } else {
-      selectedSector = null;
-      selectedWorld = null;
     }
 
     if (options.directAction || forceSheetUpdate) {
