@@ -898,9 +898,12 @@ namespace Maps.Rendering
                             };
                             using (graphics.Save())
                             {
-                                graphics.TranslateTransform(px + 0.5f, py + yOffset);
+                                graphics.TranslateTransform(px + 0.5f, py + 0.5f + yOffset);
                                 graphics.ScaleTransform(styles.hexContentScale / Astrometrics.ParsecScaleX, styles.hexContentScale / Astrometrics.ParsecScaleY);
-                                graphics.DrawString(hex, styles.hexNumber.Font, solidBrush, 0, 0, Graphics.StringAlignment.TopCenter);
+                                graphics.DrawString(hex, styles.hexNumber.Font, solidBrush,
+                                    styles.hexNumber.position.X,
+                                    styles.hexNumber.position.Y,
+                                    Graphics.StringAlignment.TopCenter);
                             }
                         }
                     }
@@ -1066,7 +1069,7 @@ namespace Maps.Rendering
                                         using (graphics.Save())
                                         {
                                             graphics.ScaleTransform(Astrometrics.ParsecScaleX, Astrometrics.ParsecScaleY);
-                                            graphics.ScaleTransform(0.95f, 0.95f);
+                                            graphics.ScaleTransform(0.925f, 0.925f);
                                             elem.pen.Apply(ref pen);
                                             graphics.DrawPath(pen, RenderUtil.HexPath);
                                         }
@@ -1076,7 +1079,7 @@ namespace Maps.Rendering
                                         if (!elem.fillColor.IsEmpty)
                                         {
                                             solidBrush.Color = elem.fillColor;
-                                            graphics.DrawEllipse(solidBrush, -0.4f, -0.4f, 0.8f, 0.8f);
+                                            graphics.DrawEllipse(solidBrush, -styles.zoneRadius, -styles.zoneRadius, styles.zoneRadius * 2, styles.zoneRadius * 2);
                                         }
 
                                         PenInfo pi = elem.pen;
@@ -1089,12 +1092,12 @@ namespace Maps.Rendering
                                                 using (graphics.Save())
                                                 {
                                                     graphics.IntersectClip(new RectangleF(-.5f, -.5f, 1f, renderUWP ? 0.65f : 0.75f));
-                                                    graphics.DrawEllipse(pen, -0.4f, -0.4f, 0.8f, 0.8f);
+                                                    graphics.DrawEllipse(pen, -styles.zoneRadius, -styles.zoneRadius, styles.zoneRadius * 2, styles.zoneRadius * 2);
                                                 }
                                             }
                                             else
                                             {
-                                                graphics.DrawEllipse(pen, -0.4f, -0.4f, 0.8f, 0.8f);
+                                                graphics.DrawEllipse(pen, -styles.zoneRadius, -styles.zoneRadius, styles.zoneRadius * 2, styles.zoneRadius * 2);
                                             }
                                         }
                                     }
@@ -1115,7 +1118,8 @@ namespace Maps.Rendering
                                 solidBrush.Color = styles.hexNumber.textColor;
                                 graphics.DrawString(hex, styles.hexNumber.Font, solidBrush,
                                     styles.hexNumber.position.X,
-                                    styles.hexNumber.position.Y, Graphics.StringAlignment.TopCenter);
+                                    styles.hexNumber.position.Y,
+                                    Graphics.StringAlignment.TopCenter);
                             }
                             #endregion
                         }
@@ -1125,6 +1129,8 @@ namespace Maps.Rendering
                             Stylesheet.StyleElement? elem = ZoneStyle(world);
                             TextBackgroundStyle worldTextBackgroundStyle = (!elem?.fillColor.IsEmpty ?? false)
                                 ? TextBackgroundStyle.None : styles.worlds.textBackgroundStyle;
+                            TextBackgroundStyle starportTextBackgroundStyle = (!elem?.fillColor.IsEmpty ?? false)
+                                ? TextBackgroundStyle.None : styles.starport.textBackgroundStyle;
 
                             if (!isPlaceholder)
                             {
@@ -1146,7 +1152,7 @@ namespace Maps.Rendering
                                     string starport = world.Starport.ToString();
                                     if (styles.showTL)
                                         starport += "-" + SecondSurvey.ToHex(world.TechLevel);
-                                    DrawWorldLabel(worldTextBackgroundStyle, solidBrush, styles.worlds.textColor, styles.starport.position, styles.starport.Font, starport);
+                                    DrawWorldLabel(starportTextBackgroundStyle, solidBrush, styles.worlds.textColor, styles.starport.position, styles.starport.Font, starport);
                                 }
                                 #endregion
 
@@ -1154,7 +1160,7 @@ namespace Maps.Rendering
                                 if (renderUWP)
                                 {
                                     solidBrush.Color = styles.uwp.fillColor;
-                                    DrawWorldLabel(styles.uwp.textBackgroundStyle, solidBrush, styles.uwp.textColor, styles.uwp.position, styles.hexNumber.Font, world.UWP);
+                                    DrawWorldLabel(styles.uwp.textBackgroundStyle, solidBrush, styles.uwp.textColor, styles.uwp.position, styles.uwp.Font, world.UWP);
                                 }
                                 #endregion
 
@@ -1287,7 +1293,7 @@ namespace Maps.Rendering
                                                 int[] lpy = { -2, -2, -2, 0, 0, 0, 0, 2, 2, 2 };
                                                 float[] lpr = { 0.5f, 0.9f, 0.5f, 0.6f, 0.9f, 0.9f, 0.6f, 0.5f, 0.9f, 0.5f };
 
-                                                solidBrush.Color = styles.worlds.textColor;
+                                                solidBrush.Color = styles.worldBelt.fillColor;
 
                                                 // Random generator is seeded with world location so it is always the same
                                                 Random rand = new Random(world.Coordinates.X ^ world.Coordinates.Y);
@@ -1598,19 +1604,27 @@ namespace Maps.Rendering
 
                     default:
                     case TextBackgroundStyle.Rectangle:
-                        if (!styles.fillMicroBorders)
-                        {
-                            // TODO: Implement this with a clipping region instead
-                            brush.Color = styles.backgroundColor;
-                            graphics.DrawRectangle(brush, position.X - size.Width / 2, position.Y - size.Height / 2, size.Width, size.Height);
-                        }
+                        if (styles.fillMicroBorders)
+                            break;
+
+                        // TODO: Implement this with a clipping region instead
+                        brush.Color = styles.backgroundColor;
+                        graphics.DrawRectangle(brush, position.X - size.Width / 2, position.Y - size.Height / 2, size.Width, size.Height);
                         break;
 
                     case TextBackgroundStyle.Filled:
                         graphics.DrawRectangle(brush, position.X - size.Width / 2, position.Y - size.Height / 2, size.Width, size.Height);
                         break;
 
+                    case TextBackgroundStyle.ThinFilled:
+                        graphics.DrawRectangle(brush, position.X - size.Width / 2, position.Y - size.Height * 0.9f / 2, size.Width, size.Height * 0.8f);
+                        break;
+
                     case TextBackgroundStyle.Outline:
+                        if (styles.fillMicroBorders)
+                            break;
+                        goto case TextBackgroundStyle.Shadow;
+
                     case TextBackgroundStyle.Shadow:
                         {
                             // TODO: These scaling factors are constant for a render; compute once
@@ -1776,7 +1790,7 @@ namespace Maps.Rendering
                         if (routeStyle.Value == LineStyle.None)
                             continue;
 
-                        pen.Color = routeColor.Value;
+                        pen.Color = Color.FromArgb(styles.microRoutes.pen.color.A, routeColor.Value);
                         pen.Width = routeWidth.Value * baseWidth;
                         pen.DashStyle = LineStyleToDashStyle(routeStyle.Value);
 

@@ -90,7 +90,7 @@ namespace Maps.API
                 if (devicePixelRatio > 2)
                     devicePixelRatio = 2;
 
-                ctx.Styles.routeEndAdjust = (float)GetDoubleOption("rea", defaultValue: 0.25, queryDefaults: queryDefaults);
+                ctx.Styles.routeEndAdjust = (float)GetDoubleOption("rea", defaultValue: ctx.Styles.routeEndAdjust, queryDefaults: queryDefaults);
 
                 bool dataURI = GetBoolOption("datauri", queryDefaults: queryDefaults, defaultValue: false);
 
