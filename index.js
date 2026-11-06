@@ -1027,10 +1027,15 @@ function updateContext(worldX, worldY, options) {
 
   const DATA_REQUEST_DELAY_MS = 100;
   const milieu = map.namedOptions.get('milieu');
+  let forceSheetUpdate = false;
 
   if (!(options.directAction || options.refresh) && lastX === worldX &&
       lastY === worldY && lastMilieu === milieu)
     return;
+
+  if (milieu !== lastMilieu) {
+    forceSheetUpdate = true;
+  }
 
   lastX = worldX;
   lastY = worldY;
@@ -1130,10 +1135,7 @@ function updateContext(worldX, worldY, options) {
       selectedWorld = null;
     }
 
-    if (options.directAction) {
-      document.body.classList.toggle('sector-selected', selectedSector);
-      document.body.classList.toggle('world-selected', selectedWorld);
-
+    if (options.directAction || forceSheetUpdate) {
       if (selectedWorld) {
         showWorldData();
       } else if (selectedSector) {
@@ -1183,8 +1185,12 @@ async function showWorldData() {
     const response = await fetch(Traveller.MapService.makeURL(
         '/api/jumpworlds?',
         {sector: context.sector, hex: context.hex, milieu, jump: 0}));
-    if (!response.ok)
-      throw new Error(response.statusText);
+    if (!response.ok) {
+      // No data - just close the sheet
+      hideCards();
+      selectedWorld = selectedSector = null;
+      return;
+    }
 
     const data = await response.json();
     const world = await prepareWorld(data.Worlds[0]);
