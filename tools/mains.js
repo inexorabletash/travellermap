@@ -12,7 +12,7 @@ function parseTabDelimited(text) {
 
 (async () => {
   const universe = new Set();
-  const response = await fetch(`${origin}/data?tag=OTU&milieu=M1105`);
+  const response = await fetch(`${origin}/data?milieu=M1105`);
   if (!response.ok)
     throw new Error(response.statusText);
   const data = await response.json();
