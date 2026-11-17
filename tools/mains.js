@@ -18,10 +18,17 @@ function parseTabDelimited(text) {
   const data = await response.json();
 
   console.log(`fetching: ${data.Sectors.length} sectors`);
-  const s = await Promise.all(data.Sectors.map(s => Promise.all([
-    Promise.resolve({X: s.X, Y: s.Y}),
-    fetch(`${origin}/data/${s.Abbreviation}/tab`).then(r => r.text())
-  ])));
+  const s = await Promise.all(
+    data.Sectors
+      .filter(s => {
+        const tags = s.Tags.split(' ');
+        return tags.includes('OTU') || tags.includes('Faraway')
+      })
+      .map(s => Promise.all([
+        Promise.resolve({X: s.X, Y: s.Y}),
+        fetch(`${origin}/data/${s.Names[0].Text}/tab`).then(r => r.text())
+      ]))
+  );
   console.log(`parsing: ${s.length} sectors`);
 
   s.forEach(pair => {
