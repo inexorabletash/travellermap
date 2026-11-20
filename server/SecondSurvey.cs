@@ -7,73 +7,68 @@ using System.Linq;
 using System.Threading;
 using System.Web.Hosting;
 
-namespace Maps
-{
-    internal static class SecondSurvey
-    {
-        public const string OFFICIAL = "Official";
-        public const string IN_REVIEW = "InReview";
-        public const string UNREVIEWED = "Unreviewed";
-        public const string PRESERVE = "Preserve";
-        public const string APOCRYPHAL = "Apocryphal";
-        public const string UNOFFICIAL = "Unofficial";
+namespace Maps {
+  internal static class SecondSurvey {
+    public const string OFFICIAL = "Official";
+    public const string IN_REVIEW = "InReview";
+    public const string UNREVIEWED = "Unreviewed";
+    public const string PRESERVE = "Preserve";
+    public const string APOCRYPHAL = "Apocryphal";
+    public const string UNOFFICIAL = "Unofficial";
 
-        #region eHex
-        private const string HEX = "0123456789ABCDEFGHJKLMNPQRSTUVWXYZ";
-        // Decimal hi:              0000000000111111111122222222223333
-        // Decimal lo:              0123456789012345678901234567890123
+    #region eHex
+    private const string HEX = "0123456789ABCDEFGHJKLMNPQRSTUVWXYZ";
+    // Decimal hi:              0000000000111111111122222222223333
+    // Decimal lo:              0123456789012345678901234567890123
 
-        public static char ToHex(int c)
-        {
-            if (c == -1)
-                return 'S'; // Hack for "small" worlds
+    public static char ToHex(int c) {
+      if (c == -1)
+        return 'S'; // Hack for "small" worlds
 
-            if (0 <= c && c < HEX.Length)
-                return HEX[c];
+      if (0 <= c && c < HEX.Length)
+        return HEX[c];
 
-            throw new ArgumentOutOfRangeException(nameof(c), c, "Expected value in eHex range");
-        }
+      throw new ArgumentOutOfRangeException(nameof(c), c, "Expected value in eHex range");
+    }
 
-        public static int FromHex(char c, int? valueIfUnknown = null)
-        {
-            c = Char.ToUpperInvariant(c);
+    public static int FromHex(char c, int? valueIfUnknown = null) {
+      c = Char.ToUpperInvariant(c);
 
-            if ((c == 'X' || c == '?' || c == '_') && valueIfUnknown.HasValue)
-                return valueIfUnknown.Value;
+      if ((c == 'X' || c == '?' || c == '_') && valueIfUnknown.HasValue)
+        return valueIfUnknown.Value;
 
-            int value = HEX.IndexOf(c);
-            if (value != -1)
-                return value;
-            return c switch
-            {
-                'O' => 0,// Typo found in some data files
-                'I' => 1,// Typo found in some data files
-                _ => throw new ParseException($"Invalid eHex digit: '{c}'"),
-            };
-        }
-        #endregion // eHex
+      int value = HEX.IndexOf(c);
+      if (value != -1)
+        return value;
+      return c switch {
+        'O' => 0,// Typo found in some data files
+        'I' => 1,// Typo found in some data files
+        _ => throw new ParseException($"Invalid eHex digit: '{c}'"),
+      };
+    }
+    #endregion // eHex
 
-        #region Bases
-        // Bases should be string containing zero or more of: CDEKMNRSTWXZ (plus nonstandard FO)
+    #region Bases
+    // Bases should be string containing zero or more of: CDEKMNRSTWXZ (plus nonstandard FO)
 
-        // Code  Owner      Description
-        // ----  ---------  ------------------------
-        // C     Vargr      Corsair base
-        // D     Any        Depot
-        // E     Hiver      Embassy
-        // F     Any        Ruins ---------------- NONSTANDARD
-        // K     Any        Naval base
-        // M     Any        Military base
-        // N     Imperial   Naval base
-        // O     K'kree     Naval Outpost -------- NONSTANDARD
-        // R     Aslan      Clan base
-        // S     Imperial   Scout base
-        // T     Aslan      Tlaukhu base
-        // V     Any        Exploration base
-        // W     Any        Way station
+    // Code  Owner      Description
+    // ----  ---------  ------------------------
+    // C     Vargr      Corsair base
+    // D     Any        Depot
+    // E     Hiver      Embassy
+    // F     Any        Ruins ---------------- NONSTANDARD
+    // K     Any        Naval base
+    // M     Any        Military base
+    // N     Imperial   Naval base
+    // O     K'kree     Naval Outpost -------- NONSTANDARD
+    // R     Aslan      Clan base
+    // S     Imperial   Scout base
+    // T     Aslan      Tlaukhu base
+    // V     Any        Exploration base
+    // W     Any        Way station
 
-        private static ThreadLocal<RegexMap<string>> s_legacyBaseDecodeTable = new ThreadLocal<RegexMap<string>>(() =>
-            new GlobMap<string> {
+    private static ThreadLocal<RegexMap<string>> s_legacyBaseDecodeTable = new ThreadLocal<RegexMap<string>>(() =>
+        new GlobMap<string> {
             { "*.2", "NS" },  // Imperial Naval base + Scout base
             { "*.A", "NS" },  // Imperial Naval base + Scout base
             { "*.B", "NW" },  // Imperial Naval base + Scout Way station
@@ -105,17 +100,16 @@ namespace Maps
             { "Sc.H", "H" },  // Hiver Supply Base
             { "*.I", "I" },  // Interface
             { "*.T", "T" },  // Terminus
-        });
+    });
 
-        public static string DecodeLegacyBases(string allegiance, string code)
-        {
-            allegiance = AllegianceCodeToBaseAllegianceCode(allegiance);
-            string match = s_legacyBaseDecodeTable.Value.Match(allegiance + "." + code);
-            return (match != default) ? match : code;
-        }
+    public static string DecodeLegacyBases(string allegiance, string code) {
+      allegiance = AllegianceCodeToBaseAllegianceCode(allegiance);
+      string match = s_legacyBaseDecodeTable.Value.Match(allegiance + "." + code);
+      return (match != default) ? match : code;
+    }
 
-        private static ThreadLocal<RegexMap<string>> s_legacyBaseEncodeTable = new ThreadLocal<RegexMap<string>>(() =>
-            new GlobMap<string> {
+    private static ThreadLocal<RegexMap<string>> s_legacyBaseEncodeTable = new ThreadLocal<RegexMap<string>>(() =>
+        new GlobMap<string> {
             { "*.NS", "A" },  // Imperial Naval base + Scout base
             { "*.NW", "B" },  // Imperial Naval base + Scout Way station
             { "*.C", "C" },   // Vargr Corsair base
@@ -147,83 +141,71 @@ namespace Maps
             { "Sc.H", "H" },  // Hiver Supply Base
             { "*.I", "I" },  // Interface
             { "*.T", "T" },  // Terminus
-        });
+    });
 
-        public static string EncodeLegacyBases(string allegiance, string bases)
-        {
-            allegiance = AllegianceCodeToBaseAllegianceCode(allegiance);
-            string match = s_legacyBaseEncodeTable.Value.Match(allegiance + "." + bases);
-            return (match != default) ? match : bases;
+    public static string EncodeLegacyBases(string allegiance, string bases) {
+      allegiance = AllegianceCodeToBaseAllegianceCode(allegiance);
+      string match = s_legacyBaseEncodeTable.Value.Match(allegiance + "." + bases);
+      return (match != default) ? match : bases;
+    }
+    #endregion // Bases
+
+    #region Allegiance
+
+    private class AllegianceDictionary : Dictionary<string, Allegiance> {
+      public AllegianceDictionary() { }
+      public AllegianceDictionary(IEnumerable<KeyValuePair<string, Allegiance>> collection) {
+        foreach (var pair in collection)
+          this.Add(pair);
+      }
+
+      public void Add(KeyValuePair<string, Allegiance> pair) {
+        Add(pair.Key, pair.Value);
+      }
+
+      public void Add(string code, string name) {
+        Add(code, new Allegiance(code, name));
+      }
+
+      public void Add(string code, string legacy, string? baseCode, string name, string? location = null, string? shortName = null) {
+        Add(code, new Allegiance(code, name, legacy, baseCode, location, shortName));
+      }
+
+      public AllegianceDictionary Merge(AllegianceDictionary other) {
+        foreach (var pair in other)
+          this.TryAdd(pair.Key, pair.Value);
+        return this;
+      }
+
+      public static AllegianceDictionary FromFile(string path) {
+        using var reader = Util.SharedFileReader(path);
+        return Parse(reader);
+      }
+
+      private static AllegianceDictionary Parse(StreamReader reader) {
+        static string? nullIfEmpty(string s) => string.IsNullOrWhiteSpace(s) ? null : s;
+        var dict = new AllegianceDictionary();
+        var parser = new Serialization.TSVParser(reader);
+        foreach (var row in parser.Data) {
+          // Blank means "use full name"; "NA" means we want nothing..
+          string shortName = row.dict["ShortName"];
+          if (string.IsNullOrWhiteSpace(shortName)) {
+            shortName = row.dict["Name"];
+          } else if (shortName == "NA") {
+            shortName = "";
+          }
+
+          dict.Add(
+              row.dict["Code"], row.dict["Legacy"], nullIfEmpty(row.dict["BaseCode"]),
+              row.dict["Name"], nullIfEmpty(row.dict["Location"]), shortName);
         }
-        #endregion // Bases
+        return dict;
+      }
+    }
 
-        #region Allegiance
-
-        private class AllegianceDictionary : Dictionary<string, Allegiance>
-        {
-            public AllegianceDictionary() { }
-            public AllegianceDictionary(IEnumerable<KeyValuePair<string, Allegiance>> collection) {
-                foreach (var pair in collection)
-                    this.Add(pair);
-            }
-
-            public void Add(KeyValuePair<string, Allegiance> pair)
-            {
-                Add(pair.Key, pair.Value);
-            }
-
-            public void Add(string code, string name)
-            {
-                Add(code, new Allegiance(code, name));
-            }
-
-            public void Add(string code, string legacy, string? baseCode, string name, string? location = null, string? shortName = null)
-            {
-                Add(code, new Allegiance(code, name, legacy, baseCode, location, shortName));
-            }
-
-            public AllegianceDictionary Merge(AllegianceDictionary other)
-            {
-                foreach (var pair in other)
-                    this.TryAdd(pair.Key, pair.Value);
-                return this;
-            }
-
-            public static AllegianceDictionary FromFile(string path)
-            {
-                using var reader = Util.SharedFileReader(path);
-                return Parse(reader);
-            }
-
-            private static AllegianceDictionary Parse(StreamReader reader)
-            {
-                static string? nullIfEmpty(string s) => string.IsNullOrWhiteSpace(s) ? null : s;
-                var dict = new AllegianceDictionary();
-                var parser = new Serialization.TSVParser(reader);
-                foreach (var row in parser.Data)
-                {
-                    // Blank means "use full name"; "NA" means we want nothing..
-                    string shortName = row.dict["ShortName"];
-                    if (string.IsNullOrWhiteSpace(shortName))
-                    {
-                        shortName = row.dict["Name"];
-                    }
-                    else if (shortName == "NA")
-                    {
-                        shortName = "";
-                    }
-
-                    dict.Add(
-                        row.dict["Code"], row.dict["Legacy"], nullIfEmpty(row.dict["BaseCode"]),
-                        row.dict["Name"], nullIfEmpty(row.dict["Location"]), shortName);
-                }
-                return dict;
-            }
-        }
-
-        // Overrides or additions where Legacy -> T5SS code mapping is ambiguous.
-        private static ThreadLocal<IReadOnlyDictionary<string, string>> s_legacyAllegianceToT5Overrides = new ThreadLocal<IReadOnlyDictionary<string, string>>(() =>
-            new Dictionary<string, string> {
+    // Overrides or additions where Legacy -> T5SS code mapping is ambiguous.
+    private static ThreadLocal<IReadOnlyDictionary<string, string>> s_legacyAllegianceToT5Overrides = new ThreadLocal<IReadOnlyDictionary<string, string>>(() =>
+        new Dictionary<string, string> {
             { "J-", "JuPr" },
             { "Jp", "JuPr" },
             { "Ju", "JuPr" },
@@ -233,61 +215,58 @@ namespace Maps
             { "Zh", "ZhCo" },
             { "??", "XXXX" },
             { "--", "XXXX" }
-        });
+    });
 
-        // Cases where T5SS codes don't apply: e.g. the Hierate or Imperium, or where no codes exist yet
-        private static ThreadLocal<AllegianceDictionary> s_legacyAllegiances = new ThreadLocal<AllegianceDictionary>(() =>
-            new AllegianceDictionary {
+    // Cases where T5SS codes don't apply: e.g. the Hierate or Imperium, or where no codes exist yet
+    private static ThreadLocal<AllegianceDictionary> s_legacyAllegiances = new ThreadLocal<AllegianceDictionary>(() =>
+        new AllegianceDictionary {
             { "As", "Aslan Hierate" }, // T5SS: Clan, client state, or unknown; no generic code
             { "Dr", "Droyne" }, // T5SS: Polity name or unaligned w/ Droyne population
             { "Im", "Third Imperium" }, // T5SS: Domain or cultural region; no generic code
             { "Kk", "The Two Thousand Worlds" }, // T5SS: (Not yet assigned)
-        });
+    });
 
-        // In priority order:
-        // * T5 Allegiance code (T5SS)
-        // * Legacy -> T5 overrides
-        // * Legacy stock codes
-        // * Legacy -> T5 (T5SS)
-        public static Allegiance? GetStockAllegianceFromCode(string code)
-        {
-            if (code == null)
-                return null;
+    // In priority order:
+    // * T5 Allegiance code (T5SS)
+    // * Legacy -> T5 overrides
+    // * Legacy stock codes
+    // * Legacy -> T5 (T5SS)
+    public static Allegiance? GetStockAllegianceFromCode(string code) {
+      if (code == null)
+        return null;
 
-            if (s_t5Allegiances.Value.ContainsKey(code))
-                return s_t5Allegiances.Value[code];
-            if (s_legacyAllegianceToT5Overrides.Value.ContainsKey(code))
-                return s_t5Allegiances.Value[s_legacyAllegianceToT5Overrides.Value[code]];
-            if (s_legacyAllegiances.Value.ContainsKey(code))
-                return s_legacyAllegiances.Value[code];
-            if (s_legacyToT5Allegiance.Value.ContainsKey(code))
-                return s_legacyToT5Allegiance.Value[code];
+      if (s_t5Allegiances.Value.ContainsKey(code))
+        return s_t5Allegiances.Value[code];
+      if (s_legacyAllegianceToT5Overrides.Value.ContainsKey(code))
+        return s_t5Allegiances.Value[s_legacyAllegianceToT5Overrides.Value[code]];
+      if (s_legacyAllegiances.Value.ContainsKey(code))
+        return s_legacyAllegiances.Value[code];
+      if (s_legacyToT5Allegiance.Value.ContainsKey(code))
+        return s_legacyToT5Allegiance.Value[code];
 
-            return null;
-        }
+      return null;
+    }
 
-        // TODO: This discounts the Sector's allegiance/base definitions, if any.
-        public static string AllegianceCodeToBaseAllegianceCode(string code)
-        {
-            Allegiance? alleg = GetStockAllegianceFromCode(code);
-            if (alleg == null)
-                return code;
-            if (string.IsNullOrEmpty(alleg.Base))
-                return code;
-            return alleg.Base!;
-        }
+    // TODO: This discounts the Sector's allegiance/base definitions, if any.
+    public static string AllegianceCodeToBaseAllegianceCode(string code) {
+      Allegiance? alleg = GetStockAllegianceFromCode(code);
+      if (alleg == null)
+        return code;
+      if (string.IsNullOrEmpty(alleg.Base))
+        return code;
+      return alleg.Base!;
+    }
 
-        public static string T5AllegianceCodeToLegacyCode(string t5code)
-        {
-            if (!s_t5Allegiances.Value.ContainsKey(t5code))
-                return t5code;
-            return s_t5Allegiances.Value[t5code].LegacyCode;
-        }
+    public static string T5AllegianceCodeToLegacyCode(string t5code) {
+      if (!s_t5Allegiances.Value.ContainsKey(t5code))
+        return t5code;
+      return s_t5Allegiances.Value[t5code].LegacyCode;
+    }
 
-        private static ThreadLocal<AllegianceDictionary> s_t5Allegiances = new ThreadLocal<AllegianceDictionary>(() =>             
-            AllegianceDictionary
-            .FromFile(HostingEnvironment.MapPath("~/res/t5ss/allegiance_codes.tab"))
-            .Merge(new AllegianceDictionary {
+    private static ThreadLocal<AllegianceDictionary> s_t5Allegiances = new ThreadLocal<AllegianceDictionary>(() =>
+        AllegianceDictionary
+        .FromFile(HostingEnvironment.MapPath("~/res/t5ss/allegiance_codes.tab"))
+        .Merge(new AllegianceDictionary {
             // T5Code, LegacyCode, BaseCode, Name, ShortName
 
             // -----------------------
@@ -311,20 +290,20 @@ namespace Maps
             { "CRGe", "CG", null, "Geonee Cultural Region" },
             { "CRSu", "CS", null, "Suerrat Cultural Region" },
             { "CRAk", "CA", null, "Anakudnu Cultural Region" },
-        }));
+    }));
 
-        public static IEnumerable<string> AllegianceCodes => s_t5Allegiances.Value.Keys;
-        // May need GroupBy to handle duplicates
-        private static ThreadLocal<IReadOnlyDictionary<string, Allegiance>> s_legacyToT5Allegiance = new ThreadLocal<IReadOnlyDictionary<string, Allegiance>>(() =>
-            new AllegianceDictionary(
-                s_t5Allegiances.Value.Values
-                .Where(a => a.LegacyCode != null)
-                .GroupBy(a => a.LegacyCode)
-                .Select(g => g.First())
-                .Select(a => new KeyValuePair<string, Allegiance>(a.LegacyCode!, a))));
+    public static IEnumerable<string> AllegianceCodes => s_t5Allegiances.Value.Keys;
+    // May need GroupBy to handle duplicates
+    private static ThreadLocal<IReadOnlyDictionary<string, Allegiance>> s_legacyToT5Allegiance = new ThreadLocal<IReadOnlyDictionary<string, Allegiance>>(() =>
+        new AllegianceDictionary(
+            s_t5Allegiances.Value.Values
+            .Where(a => a.LegacyCode != null)
+            .GroupBy(a => a.LegacyCode)
+            .Select(g => g.First())
+            .Select(a => new KeyValuePair<string, Allegiance>(a.LegacyCode!, a))));
 
-        private static ThreadLocal<HashSet<string>> s_defaultAllegiances = new ThreadLocal<HashSet<string>>(() =>
-            new HashSet<string> {
+    private static ThreadLocal<HashSet<string>> s_defaultAllegiances = new ThreadLocal<HashSet<string>>(() =>
+        new HashSet<string> {
             "Im", // Classic Imperium
             "ImAp", // Third Imperium, Amec Protectorate (Dagu)
             "ImDa", // Third Imperium, Domain of Antares (Anta/Empt/Lish)
@@ -342,65 +321,57 @@ namespace Maps
             "XXXX", // Unknown
             "??", // Placeholder - show as blank
             "--", // Placeholder - show as blank
-        });
+    });
 
-        public static bool IsDefaultAllegiance(string code) => s_defaultAllegiances.Value.Contains(code);
-        public static bool IsKnownT5Allegiance(string code) => s_t5Allegiances.Value.ContainsKey(code);
+    public static bool IsDefaultAllegiance(string code) => s_defaultAllegiances.Value.Contains(code);
+    public static bool IsKnownT5Allegiance(string code) => s_t5Allegiances.Value.ContainsKey(code);
 
-        #endregion Allegiance
+    #endregion Allegiance
 
-        #region Sophonts
-        internal class Sophont
-        {
-            public Sophont(string code, string name, string location)
-            {
-                Code = code; Name = name; Location = location;
-            }
-            public string Code { get; }
-            public string Name { get; }
-            public string Location { get; }
-        }
-
-        private class SophontDictionary : Dictionary<string, Sophont>
-        {
-            public void Add(string code, string name, string location)
-            {
-                Add(code, new Sophont(code, name, location));
-            }
-            public static SophontDictionary FromFile(string path)
-            {
-                using var reader = Util.SharedFileReader(path);
-                return Parse(reader);
-            }
-
-            private static SophontDictionary Parse(StreamReader reader)
-            {
-                var dict = new SophontDictionary();
-                var parser = new Serialization.TSVParser(reader);
-                foreach (var row in parser.Data)
-                    dict.Add(row.dict["Code"], row.dict["Name"], row.dict["Location"]);
-                return dict;
-            }
-        }
-
-        private static ThreadLocal<SophontDictionary> s_sophontCodes = new ThreadLocal<SophontDictionary>(() =>
-            SophontDictionary
-            .FromFile(System.Web.Hosting.HostingEnvironment.MapPath("~/res/t5ss/sophont_codes.tab")));
-
-        public static string? SophontCodeToName(string code)
-        {
-            if (s_sophontCodes.Value.ContainsKey(code))
-                return s_sophontCodes.Value[code].Name;
-            return null;
-        }
-        public static Sophont? SophontForCode(string code)
-        {
-            if (s_sophontCodes.Value.ContainsKey(code))
-                return s_sophontCodes.Value[code];
-            return null;
-        }
-        public static IEnumerable<string> SophontCodes => s_sophontCodes.Value.Keys;
-        #endregion // Sophonts
-
+    #region Sophonts
+    internal class Sophont {
+      public Sophont(string code, string name, string location) {
+        Code = code; Name = name; Location = location;
+      }
+      public string Code { get; }
+      public string Name { get; }
+      public string Location { get; }
     }
+
+    private class SophontDictionary : Dictionary<string, Sophont> {
+      public void Add(string code, string name, string location) {
+        Add(code, new Sophont(code, name, location));
+      }
+      public static SophontDictionary FromFile(string path) {
+        using var reader = Util.SharedFileReader(path);
+        return Parse(reader);
+      }
+
+      private static SophontDictionary Parse(StreamReader reader) {
+        var dict = new SophontDictionary();
+        var parser = new Serialization.TSVParser(reader);
+        foreach (var row in parser.Data)
+          dict.Add(row.dict["Code"], row.dict["Name"], row.dict["Location"]);
+        return dict;
+      }
+    }
+
+    private static ThreadLocal<SophontDictionary> s_sophontCodes = new ThreadLocal<SophontDictionary>(() =>
+        SophontDictionary
+        .FromFile(System.Web.Hosting.HostingEnvironment.MapPath("~/res/t5ss/sophont_codes.tab")));
+
+    public static string? SophontCodeToName(string code) {
+      if (s_sophontCodes.Value.ContainsKey(code))
+        return s_sophontCodes.Value[code].Name;
+      return null;
+    }
+    public static Sophont? SophontForCode(string code) {
+      if (s_sophontCodes.Value.ContainsKey(code))
+        return s_sophontCodes.Value[code];
+      return null;
+    }
+    public static IEnumerable<string> SophontCodes => s_sophontCodes.Value.Keys;
+    #endregion // Sophonts
+
+  }
 }

@@ -2,139 +2,122 @@
 using System;
 using System.Drawing;
 
-namespace Maps.Search
-{
-    internal abstract class SearchResult
-    {
+namespace Maps.Search {
+  internal abstract class SearchResult {
+  }
+
+  internal class WorldResult : SearchResult {
+    public WorldResult() { }
+
+    public WorldResult(Sector sector, World world) {
+      if (sector == null)
+        throw new ArgumentNullException(nameof(sector));
+      if (world == null)
+        throw new ArgumentNullException(nameof(world));
+
+      Sector = sector.Location;
+      Hex = new Hex(world.X, world.Y);
     }
 
-    internal class WorldResult : SearchResult
-    {
-        public WorldResult() { }
-
-        public WorldResult(Sector sector, World world)
-        {
-            if (sector == null)
-                throw new ArgumentNullException(nameof(sector));
-            if (world == null)
-                throw new ArgumentNullException(nameof(world));
-
-            Sector = sector.Location;
-            Hex = new Hex(world.X, world.Y);
-        }
-
-        public WorldResult(int sector_x, int sector_y, byte hex_x, byte hex_y)
-        {
-            Sector = new Point(sector_x, sector_y);
-            Hex = new Hex(hex_x, hex_y);
-        }
-
-        public Point Sector { get; set; }
-        public Hex Hex { get; set; }
-
-        public void Resolve(SectorMap.Milieu sectorMap, ResourceManager resourceManager, out Sector? sector, out World? world)
-        {
-            if (sectorMap == null)
-                throw new ArgumentNullException(nameof(sectorMap));
-
-            world = null;
-
-            sector = sectorMap.FromLocation(Sector.X, Sector.Y);
-            if (sector == null)
-                return;
-
-            WorldCollection? worlds = sector.GetWorlds(resourceManager, cacheResults: true);
-            if (worlds != null)
-                world = worlds[Hex];
-        }
+    public WorldResult(int sector_x, int sector_y, byte hex_x, byte hex_y) {
+      Sector = new Point(sector_x, sector_y);
+      Hex = new Hex(hex_x, hex_y);
     }
 
-    internal class SubsectorResult : SearchResult
-    {
-        public SubsectorResult() { }
+    public Point Sector { get; set; }
+    public Hex Hex { get; set; }
 
-        public SubsectorResult(Sector sector, Subsector subsector)
-        {
-            if (sector == null)
-                throw new ArgumentNullException(nameof(sector));
-            if (subsector == null)
-                throw new ArgumentNullException(nameof(subsector));
+    public void Resolve(SectorMap.Milieu sectorMap, ResourceManager resourceManager, out Sector? sector, out World? world) {
+      if (sectorMap == null)
+        throw new ArgumentNullException(nameof(sectorMap));
 
-            SectorLocation = sector.Location;
-            Index = subsector.Index[0];
-        }
+      world = null;
 
-        public SubsectorResult(int x, int y, char index)
-        {
-            SectorLocation = new Point(x, y);
-            Index = index;
-        }
+      sector = sectorMap.FromLocation(Sector.X, Sector.Y);
+      if (sector == null)
+        return;
 
-        public Point SectorLocation { get; set; }
-        public char Index { get; set; }
+      WorldCollection? worlds = sector.GetWorlds(resourceManager, cacheResults: true);
+      if (worlds != null)
+        world = worlds[Hex];
+    }
+  }
 
-        public void Resolve(SectorMap.Milieu sectorMap, out Sector? sector, out Subsector? subsector)
-        {
-            if (sectorMap == null)
-                throw new ArgumentNullException(nameof(sectorMap));
+  internal class SubsectorResult : SearchResult {
+    public SubsectorResult() { }
 
-            subsector = null;
+    public SubsectorResult(Sector sector, Subsector subsector) {
+      if (sector == null)
+        throw new ArgumentNullException(nameof(sector));
+      if (subsector == null)
+        throw new ArgumentNullException(nameof(subsector));
 
-            sector = sectorMap.FromLocation(SectorLocation.X, SectorLocation.Y);
-            if (sector != null)
-                subsector = sector.Subsector(Index);
-        }
+      SectorLocation = sector.Location;
+      Index = subsector.Index[0];
     }
 
-    internal class SectorResult : SearchResult
-    {
-        public SectorResult() { }
-
-        public SectorResult(Sector sector)
-        {
-            if (sector == null)
-                throw new ArgumentNullException(nameof(sector));
-
-            SectorCoords = sector.Location;
-        }
-        public SectorResult(int x, int y)
-        {
-            SectorCoords = new Point(x, y);
-        }
-
-        public Point SectorCoords { get; set; }
-
-        public Sector? Resolve(SectorMap.Milieu sectorMap)
-        {
-            if (sectorMap == null)
-                throw new ArgumentNullException(nameof(sectorMap));
-
-            return sectorMap.FromLocation(SectorCoords.X, SectorCoords.Y);
-        }
+    public SubsectorResult(int x, int y, char index) {
+      SectorLocation = new Point(x, y);
+      Index = index;
     }
 
-    internal class LabelResult : SearchResult
-    {
-        public LabelResult() { }
+    public Point SectorLocation { get; set; }
+    public char Index { get; set; }
 
-        public LabelResult(string label, Point coords, int radius)
-        {
-            Label = label;
-            Coords = coords;
-            Radius = radius;
-        }
+    public void Resolve(SectorMap.Milieu sectorMap, out Sector? sector, out Subsector? subsector) {
+      if (sectorMap == null)
+        throw new ArgumentNullException(nameof(sectorMap));
 
-        public string Label { get; set; } = "";
-        public Point Coords { get; set; }
-        public int Radius { get; set; }
+      subsector = null;
 
-        public Sector? Resolve(SectorMap.Milieu sectorMap)
-        {
-            if (sectorMap == null)
-                throw new ArgumentNullException(nameof(sectorMap));
-
-            return sectorMap.FromLocation(Astrometrics.CoordinatesToLocation(Coords).Sector);
-        }
-
+      sector = sectorMap.FromLocation(SectorLocation.X, SectorLocation.Y);
+      if (sector != null)
+        subsector = sector.Subsector(Index);
     }
+  }
+
+  internal class SectorResult : SearchResult {
+    public SectorResult() { }
+
+    public SectorResult(Sector sector) {
+      if (sector == null)
+        throw new ArgumentNullException(nameof(sector));
+
+      SectorCoords = sector.Location;
+    }
+    public SectorResult(int x, int y) {
+      SectorCoords = new Point(x, y);
+    }
+
+    public Point SectorCoords { get; set; }
+
+    public Sector? Resolve(SectorMap.Milieu sectorMap) {
+      if (sectorMap == null)
+        throw new ArgumentNullException(nameof(sectorMap));
+
+      return sectorMap.FromLocation(SectorCoords.X, SectorCoords.Y);
+    }
+  }
+
+  internal class LabelResult : SearchResult {
+    public LabelResult() { }
+
+    public LabelResult(string label, Point coords, int radius) {
+      Label = label;
+      Coords = coords;
+      Radius = radius;
+    }
+
+    public string Label { get; set; } = "";
+    public Point Coords { get; set; }
+    public int Radius { get; set; }
+
+    public Sector? Resolve(SectorMap.Milieu sectorMap) {
+      if (sectorMap == null)
+        throw new ArgumentNullException(nameof(sectorMap));
+
+      return sectorMap.FromLocation(Astrometrics.CoordinatesToLocation(Coords).Sector);
+    }
+
+  }
 }

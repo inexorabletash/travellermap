@@ -4,57 +4,52 @@ using System.Globalization;
 using System.Linq;
 using System.Runtime.InteropServices;
 
-namespace Maps.Admin
-{
-    /// <summary>
-    /// Summary description for Search.
-    /// </summary>
-    internal class ErrorsHandler : AdminHandlerBase
-    {
-        protected override void Process(System.Web.HttpContext context, ResourceManager resourceManager)
-        {
-            context.Response.ContentType = ContentTypes.Text.Plain;
-            context.Response.BufferOutput = false;
+namespace Maps.Admin {
+  /// <summary>
+  /// Summary description for Search.
+  /// </summary>
+  internal class ErrorsHandler : AdminHandlerBase {
+    protected override void Process(System.Web.HttpContext context, ResourceManager resourceManager) {
+      context.Response.ContentType = ContentTypes.Text.Plain;
+      context.Response.BufferOutput = false;
 
-            string? sectorName = GetStringOption(context, "sector");
-            string? type = GetStringOption(context, "type");
-            string? milieu = GetStringOption(context, "milieu");
-            string? tag = GetStringOption(context, "tag");
-            bool hide_uwp = GetBoolOption(context, "hide-uwp");
-            bool hide_tl = GetBoolOption(context, "hide-tl");
-            bool hide_gov = GetBoolOption(context, "hide-gov");
-            bool hide_stellar = GetBoolOption(context, "hide-stellar");
-            bool hide_pbg = GetBoolOption(context, "hide-pbg");
-            bool hide_ix = GetBoolOption(context, "hide-ix");
-            bool hide_ex = GetBoolOption(context, "hide-ex");
-            bool hide_cx = GetBoolOption(context, "hide-cx");
-            bool hide_worlds = GetBoolOption(context, "hide-worlds");
-            bool hide_extra = GetBoolOption(context, "hide-extra");
-            bool hide_missing = GetBoolOption(context, "hide-missing");
-            bool hide_ignoring= GetBoolOption(context, "hide-ignoring");
-            ErrorLogger.Severity severity = GetBoolOption(context, "warnings", true) ? 0 : ErrorLogger.Severity.Error;
+      string? sectorName = GetStringOption(context, "sector");
+      string? type = GetStringOption(context, "type");
+      string? milieu = GetStringOption(context, "milieu");
+      string? tag = GetStringOption(context, "tag");
+      bool hide_uwp = GetBoolOption(context, "hide-uwp");
+      bool hide_tl = GetBoolOption(context, "hide-tl");
+      bool hide_gov = GetBoolOption(context, "hide-gov");
+      bool hide_stellar = GetBoolOption(context, "hide-stellar");
+      bool hide_pbg = GetBoolOption(context, "hide-pbg");
+      bool hide_ix = GetBoolOption(context, "hide-ix");
+      bool hide_ex = GetBoolOption(context, "hide-ex");
+      bool hide_cx = GetBoolOption(context, "hide-cx");
+      bool hide_worlds = GetBoolOption(context, "hide-worlds");
+      bool hide_extra = GetBoolOption(context, "hide-extra");
+      bool hide_missing = GetBoolOption(context, "hide-missing");
+      bool hide_ignoring = GetBoolOption(context, "hide-ignoring");
+      ErrorLogger.Severity severity = GetBoolOption(context, "warnings", true) ? 0 : ErrorLogger.Severity.Error;
 
-            // NOTE: This (re)initializes a static data structure used for 
-            // resolving names into sector locations, so needs to be run
-            // before any other objects (e.g. Worlds) are loaded.
-            SectorMap.Flush();
-            SectorMap map = SectorMap.GetInstance();
+      // NOTE: This (re)initializes a static data structure used for 
+      // resolving names into sector locations, so needs to be run
+      // before any other objects (e.g. Worlds) are loaded.
+      SectorMap.Flush();
+      SectorMap map = SectorMap.GetInstance();
 
-            try
-            {
-                var sectorQuery = from sector in map.Sectors
-                                  where (sectorName == null || sector.Names[0].Text.StartsWith(sectorName, ignoreCase: true, culture: CultureInfo.InvariantCulture))
-                                  && (sector.DataFile != null)
-                                  && (type == null || sector.DataFile.Type == type)
-                                  && (milieu == null || sector.CanonicalMilieu == milieu)
-                                  && (tag == null || sector.Tags.Contains(tag))
-                                  && (sector.Tags.Contains("OTU") || sector.Tags.Contains(SecondSurvey.APOCRYPHAL) || sector.Tags.Contains("Faraway"))
-                                  orderby sector.Names[0].Text
-                                  select sector;
+      try {
+        var sectorQuery = from sector in map.Sectors
+                          where (sectorName == null || sector.Names[0].Text.StartsWith(sectorName, ignoreCase: true, culture: CultureInfo.InvariantCulture))
+                          && (sector.DataFile != null)
+                          && (type == null || sector.DataFile.Type == type)
+                          && (milieu == null || sector.CanonicalMilieu == milieu)
+                          && (tag == null || sector.Tags.Contains(tag))
+                          && (sector.Tags.Contains("OTU") || sector.Tags.Contains(SecondSurvey.APOCRYPHAL) || sector.Tags.Contains("Faraway"))
+                          orderby sector.Names[0].Text
+                          select sector;
 
-                foreach (var sector in sectorQuery)
-                {
-                    context.Response.Output.WriteLine($"{sector.Names[0].Text} - {sector.Milieu}");
+        foreach (var sector in sectorQuery) {
+          context.Response.Output.WriteLine($"{sector.Names[0].Text} - {sector.Milieu}");
 #if DEBUG
                 int error_count = 0;
                 int warning_count = 0;
@@ -162,14 +157,12 @@ namespace Maps.Admin
                 }
                 context.Response.Output.WriteLine($"{error_count} errors, {warning_count} warnings.");
 #endif
-                    context.Response.Output.WriteLine();
-                }
-            }
-            finally
-            {
-                SectorMap.Flush();
-                resourceManager.Flush();
-            }
+          context.Response.Output.WriteLine();
         }
+      } finally {
+        SectorMap.Flush();
+        resourceManager.Flush();
+      }
     }
+  }
 }

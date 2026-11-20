@@ -6,15 +6,13 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading;
 
-namespace Maps.Admin
-{
-    /// <summary>
-    /// Summary description for Search.
-    /// </summary>
-    internal class CodesHandler : AdminHandler
+namespace Maps.Admin {
+  /// <summary>
+  /// Summary description for Search.
+  /// </summary>
+  internal class CodesHandler : AdminHandler {
+    static readonly IReadOnlyList<string> s_legacySophontCodes = new List<string>
     {
-        static readonly IReadOnlyList<string> s_legacySophontCodes = new List<string>
-        {
             "A", // Aslan
             "C", // Chirper
             "D", // Droyne
@@ -27,8 +25,8 @@ namespace Maps.Admin
             "Z", // Zhodani
         };
 
-        static ThreadLocal<RegexMap<string>> s_knownCodes = new ThreadLocal<RegexMap<string>>(() =>
-            new RegexMap<string> {
+    static ThreadLocal<RegexMap<string>> s_knownCodes = new ThreadLocal<RegexMap<string>>(() =>
+        new RegexMap<string> {
             // General
             { @"^Rs[ABGDEZHT]$", "Rs" },
             { @"^O:[0-9]{4}(-\w+)?$", "O:nnnn" },
@@ -86,73 +84,65 @@ namespace Maps.Admin
             { @"^Mr\((" + string.Join("|", SecondSurvey.AllegianceCodes) + @")\)$", "(military rule)" },
 
             { @"^{.*}$", "(comment)" }
-        });
+    });
 
-        protected override void Process(System.Web.HttpContext context, ResourceManager resourceManager)
-        {
-            context.Response.ContentType = ContentTypes.Text.Plain;
-            context.Response.StatusCode = 200;
+    protected override void Process(System.Web.HttpContext context, ResourceManager resourceManager) {
+      context.Response.ContentType = ContentTypes.Text.Plain;
+      context.Response.StatusCode = 200;
 
-            string? sectorName = GetStringOption(context, "sector");
-            string? type = GetStringOption(context, "type");
-            string? regex = GetStringOption(context, "regex");
-            string? milieu = GetStringOption(context, "milieu");
+      string? sectorName = GetStringOption(context, "sector");
+      string? type = GetStringOption(context, "type");
+      string? regex = GetStringOption(context, "regex");
+      string? milieu = GetStringOption(context, "milieu");
 
-            // NOTE: This (re)initializes a static data structure used for 
-            // resolving names into sector locations, so needs to be run
-            // before any other objects (e.g. Worlds) are loaded.
-            SectorMap.Flush();
-            SectorMap map = SectorMap.GetInstance();
+      // NOTE: This (re)initializes a static data structure used for 
+      // resolving names into sector locations, so needs to be run
+      // before any other objects (e.g. Worlds) are loaded.
+      SectorMap.Flush();
+      SectorMap map = SectorMap.GetInstance();
 
-            try
-            {
+      try {
 
-                var sectorQuery = from sector in map.Sectors
-                                  where (sectorName == null || sector.Names[0].Text.StartsWith(sectorName, ignoreCase: true, culture: CultureInfo.InvariantCulture))
-                                  && (sector.DataFile != null)
-                                  && (type == null || sector.DataFile.Type == type)
-                                  && (!sector.Tags.Contains("ZCR"))
-                                  && (!sector.Tags.Contains("meta"))
-                                  && (milieu == null || sector.CanonicalMilieu == milieu)
-                                  orderby sector.Names[0].Text
-                                  select sector;
+        var sectorQuery = from sector in map.Sectors
+                          where (sectorName == null || sector.Names[0].Text.StartsWith(sectorName, ignoreCase: true, culture: CultureInfo.InvariantCulture))
+                          && (sector.DataFile != null)
+                          && (type == null || sector.DataFile.Type == type)
+                          && (!sector.Tags.Contains("ZCR"))
+                          && (!sector.Tags.Contains("meta"))
+                          && (milieu == null || sector.CanonicalMilieu == milieu)
+                          orderby sector.Names[0].Text
+                          select sector;
 
-                Dictionary<string, HashSet<string>> codes = new Dictionary<string, HashSet<string>>();
+        Dictionary<string, HashSet<string>> codes = new Dictionary<string, HashSet<string>>();
 
-                Regex filter = new Regex(regex ?? ".*");
+        Regex filter = new Regex(regex ?? ".*");
 
-                foreach (var sector in sectorQuery)
-                {
-                    WorldCollection? worlds = sector.GetWorlds(resourceManager, cacheResults: false);
-                    if (worlds == null)
-                        continue;
+        foreach (var sector in sectorQuery) {
+          WorldCollection? worlds = sector.GetWorlds(resourceManager, cacheResults: false);
+          if (worlds == null)
+            continue;
 
-                    foreach (var code in worlds
-                        .SelectMany(world => world.Codes)
-                        .Where(code => filter.IsMatch(code) && !s_knownCodes.Value.IsMatch(code)))
-                    {
-                        if (!codes.ContainsKey(code))
-                        {
-                            codes.Add(code, new HashSet<string>());
-                        }
-                        codes[code].Add($"{sector.Names[0].Text} [{sector.CanonicalMilieu}]");
-                    }
-                }
-
-                foreach (var code in codes.Keys.OrderBy(s => s))
-                {
-                    context.Response.Output.Write(code + " - ");
-                    foreach (var sector in codes[code].OrderBy(s => s))
-                        context.Response.Output.Write(sector + " ");
-                    context.Response.Output.WriteLine("");
-                }
-
+          foreach (var code in worlds
+              .SelectMany(world => world.Codes)
+              .Where(code => filter.IsMatch(code) && !s_knownCodes.Value.IsMatch(code))) {
+            if (!codes.ContainsKey(code)) {
+              codes.Add(code, new HashSet<string>());
             }
-            finally
-            {
-                SectorMap.Flush();
-                resourceManager.Flush();
-            }
+            codes[code].Add($"{sector.Names[0].Text} [{sector.CanonicalMilieu}]");
+          }
         }
+
+        foreach (var code in codes.Keys.OrderBy(s => s)) {
+          context.Response.Output.Write(code + " - ");
+          foreach (var sector in codes[code].OrderBy(s => s))
+            context.Response.Output.Write(sector + " ");
+          context.Response.Output.WriteLine("");
+        }
+
+      } finally {
+        SectorMap.Flush();
+        resourceManager.Flush();
+      }
     }
+  }
 }
