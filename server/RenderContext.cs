@@ -160,12 +160,11 @@ namespace Maps.Rendering {
     /// </summary>
     private class Timer {
 #if SHOW_TIMING
-            public DateTime dt = DateTime.Now;
-            public string label;
-            public Timer(string label)
-            {
-                this.label = label;
-            }
+      public DateTime dt = DateTime.Now;
+      public string label;
+      public Timer(string label) {
+        this.label = label;
+      }
 #else
 #pragma warning disable IDE0060 // Remove unused parameter
       public Timer(string label) { }
@@ -233,7 +232,7 @@ namespace Maps.Rendering {
 
       public void Render() {
 #if SHOW_TIMING
-            DateTime dtStart = DateTime.Now;
+        DateTime dtStart = DateTime.Now;
 #endif
 
 
@@ -247,8 +246,7 @@ namespace Maps.Rendering {
         graphics.MultiplyTransform(ctx.ImageSpaceToWorldSpace);
 
         // Order here doesn't matter, as these will be sorted according to |styles.layerOrder|
-        var layers = new List<LayerAction>
-    {
+        var layers = new List<LayerAction> {
                 //------------------------------------------------------------
                 // Background
                 //------------------------------------------------------------
@@ -338,34 +336,30 @@ namespace Maps.Rendering {
 
         #region timing
 #if SHOW_TIMING
-                using( graphics.Save() )
-                {
-                    Font font = new Font( FontFamily.GenericSansSerif, 12, FontStyle.Regular);
-                    graphics.MultiplyTransform( worldSpaceToImageSpace );
-                    float cursorX = 20.0f, cursorY = 20.0f;
-                    DateTime last = dtStart;
-                    foreach ( Timer s in timers )
-                    {
-                        TimeSpan ts = s.dt - last;
-                        last = s.dt;
-                        double rounded = Math.Round(ts.TotalMilliseconds);
-                        if (rounded == 0)
-                            continue;
+        using (graphics.Save()) {
+          Font font = new Font(FontFamily.GenericSansSerif, 12, FontStyle.Regular);
+          graphics.MultiplyTransform(worldSpaceToImageSpace);
+          float cursorX = 20.0f, cursorY = 20.0f;
+          DateTime last = dtStart;
+          foreach (Timer s in timers) {
+            TimeSpan ts = s.dt - last;
+            last = s.dt;
+            double rounded = Math.Round(ts.TotalMilliseconds);
+            if (rounded == 0)
+              continue;
 
-                        string str = $"{rounded} {s.label}";
-                        for ( int dx = -1; dx <= 1; ++dx )
-                        {
-                            for( int dy = -1; dy <= 1; ++dy )
-                            {
-                                solidBrush.Color = Color.Black;
-                                graphics.DrawString(str, font, solidBrush, cursorX + dx, cursorY + dy, StringAlignment.TopLeft);
-                            }
-                        }
-                        solidBrush.Color = TravellerColors.Amber;
-                        graphics.DrawString(str, font, solidBrush, cursorX, cursorY, StringAlignment.TopLeft);
-                        cursorY += 14;
-                    }
-                }
+            string str = $"{rounded} {s.label}";
+            for (int dx = -1; dx <= 1; ++dx) {
+              for (int dy = -1; dy <= 1; ++dy) {
+                solidBrush.Color = Color.Black;
+                graphics.DrawString(str, font, solidBrush, cursorX + dx, cursorY + dy, StringAlignment.TopLeft);
+              }
+            }
+            solidBrush.Color = TravellerColors.Amber;
+            graphics.DrawString(str, font, solidBrush, cursorX, cursorY, StringAlignment.TopLeft);
+            cursorY += 14;
+          }
+        }
 #endif
         #endregion
 

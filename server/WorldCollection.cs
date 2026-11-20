@@ -14,7 +14,7 @@ namespace Maps {
   internal class WorldCollection : IDeserializable, IEnumerable<World> {
     public WorldCollection() {
 #if DEBUG
-            errors = new ErrorLogger();
+      errors = new ErrorLogger();
 #endif
     }
 

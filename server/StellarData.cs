@@ -113,11 +113,10 @@ namespace Maps {
     private abstract class Unit {
       public static bool Parse(SeekableReader r, out Unit? unit) {
 #if EXTENDED_SYSTEM_PARSING
-                if( Pair.Parse( r, out Pair p ) )
-                {
-                    unit = p;
-                    return true;
-                }
+        if (Pair.Parse(r, out Pair p)) {
+          unit = p;
+          return true;
+        }
 #endif
         if (Star.Parse(r, out Star? s)) {
           unit = s;
@@ -132,52 +131,47 @@ namespace Maps {
     }
 
 #if EXTENDED_SYSTEM_PARSING
-        private class Pair : Unit
-        {
-            public Star Star1;
-            public Star Star2;
+    private class Pair : Unit {
+      public Star Star1;
+      public Star Star2;
 
-            public override string ToString( OutputFormat format )
-            {
-                switch( format )
-                {
-                    default:
-                    case OutputFormat.Compact:
-                    case OutputFormat.Basic:
-                        return Star1.ToString( format ) + " " + Star2.ToString( format );
-                    case OutputFormat.Extended:
-                        return "(" + Star1.ToString( format ) + " " + Star2.ToString( format ) + ")";
-                }
-            }
-
-            public static bool Parse( SeekableReader r, out Pair pair )
-            {
-                if( r.Peek() != '(' )
-                {
-                    pair = null;
-                    return false;
-                }
-
-                pair = new Pair();
-                r.Read(); // "("
-
-                if( !Star.Parse( r, out pair.Star1 ) )
-                    throw new InvalidSystemException( "Invalid star within pair" );
-
-                if( r.Peek() != ' ' ) // w+
-                    throw new InvalidSystemException( "Missing whitespace within pair" );
-                while( r.Peek() == ' ' )
-                    r.Read();
-
-                if( !Star.Parse( r, out pair.Star2 ) )
-                    throw new InvalidSystemException( "Invalid star within pair" );
-
-                if( r.Read() != ')' )
-                    throw new InvalidSystemException( "Unclosed pair" );
-
-                return true;
-            }
+      public override string ToString(OutputFormat format) {
+        switch (format) {
+          default:
+          case OutputFormat.Compact:
+          case OutputFormat.Basic:
+            return Star1.ToString(format) + " " + Star2.ToString(format);
+          case OutputFormat.Extended:
+            return "(" + Star1.ToString(format) + " " + Star2.ToString(format) + ")";
         }
+      }
+
+      public static bool Parse(SeekableReader r, out Pair pair) {
+        if (r.Peek() != '(') {
+          pair = null;
+          return false;
+        }
+
+        pair = new Pair();
+        r.Read(); // "("
+
+        if (!Star.Parse(r, out pair.Star1))
+          throw new InvalidSystemException("Invalid star within pair");
+
+        if (r.Peek() != ' ') // w+
+          throw new InvalidSystemException("Missing whitespace within pair");
+        while (r.Peek() == ' ')
+          r.Read();
+
+        if (!Star.Parse(r, out pair.Star2))
+          throw new InvalidSystemException("Invalid star within pair");
+
+        if (r.Read() != ')')
+          throw new InvalidSystemException("Unclosed pair");
+
+        return true;
+      }
+    }
 #endif
 
     private abstract class Companion {
@@ -187,11 +181,10 @@ namespace Maps {
           return true;
         }
 #if EXTENDED_SYSTEM_PARSING
-                if( FarCompanion.Parse( r, out FarCompanion fc ) )
-                {
-                    companion = fc;
-                    return true;
-                }
+        if (FarCompanion.Parse(r, out FarCompanion fc)) {
+          companion = fc;
+          return true;
+        }
 #endif
         companion = null;
         return false;
@@ -219,42 +212,37 @@ namespace Maps {
     }
 
 #if EXTENDED_SYSTEM_PARSING
-        private class FarCompanion : Companion
-        {
-            public System Companion;
-            public override string ToString( OutputFormat format )
-            {
-                switch( format )
-                {
-                    default:
-                    case OutputFormat.Compact:
-                    case OutputFormat.Basic:
-                        return Companion.ToString( format );
+    private class FarCompanion : Companion {
+      public System Companion;
+      public override string ToString(OutputFormat format) {
+        switch (format) {
+          default:
+          case OutputFormat.Compact:
+          case OutputFormat.Basic:
+            return Companion.ToString(format);
 
-                    case OutputFormat.Extended:
-                        return "[" + Companion.ToString( format ) + "]";
-                }
-            }
-            public static bool Parse( SeekableReader r, out FarCompanion far )
-            {
-                if( r.Peek() != '[' )
-                {
-                    far = null;
-                    return false;
-                }
-
-                far = new FarCompanion();
-                r.Read(); // '['
-
-                if( !System.Parse(r, out far.Companion) )
-                    throw new InvalidSystemException( "Invalid far companion" );
-
-                if( r.Read() != ']' )
-                    throw new InvalidSystemException( "Unclosed far companion" );
-
-                return true;
-            }
+          case OutputFormat.Extended:
+            return "[" + Companion.ToString(format) + "]";
         }
+      }
+      public static bool Parse(SeekableReader r, out FarCompanion far) {
+        if (r.Peek() != '[') {
+          far = null;
+          return false;
+        }
+
+        far = new FarCompanion();
+        r.Read(); // '['
+
+        if (!System.Parse(r, out far.Companion))
+          throw new InvalidSystemException("Invalid far companion");
+
+        if (r.Read() != ']')
+          throw new InvalidSystemException("Unclosed far companion");
+
+        return true;
+      }
+    }
 #endif
 
     private class System {
@@ -358,11 +346,10 @@ namespace Maps {
           }
 
 #if EXTENDED_SYSTEM_PARSING
-                    if (r.Peek() == '*')
-                    {
-                        r.Read();
-                        star.Main = true;
-                    }
+          if (r.Peek() == '*') {
+            r.Read();
+            star.Main = true;
+          }
 #endif
           return true;
         }

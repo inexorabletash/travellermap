@@ -86,7 +86,7 @@ namespace Maps.Admin {
       }
       WriteLine("</style>");
 #if DEBUG
-            WriteLine("<h1>Traveller Map - Administration [DEBUG]</h1>");
+      WriteLine("<h1>Traveller Map - Administration [DEBUG]</h1>");
 #else
       WriteLine("<h1>Traveller Map - Administration</h1>");
 #endif

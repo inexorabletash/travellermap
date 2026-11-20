@@ -167,8 +167,8 @@ namespace Maps.Search {
             }
 
 #if DEBUG
-                        if (!sector.Selected)
-                            continue;
+            if (!sector.Selected)
+              continue;
 #endif
             // NOTE: May need to page this at some point
             WorldCollection? worlds = sector.GetWorlds(resourceManager, cacheResults: false);

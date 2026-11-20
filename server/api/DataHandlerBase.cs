@@ -34,7 +34,7 @@ namespace Maps.API {
         context.Response.Cache.SetCacheability(HttpCacheability.NoCache);
       } else {
 #if DEBUG
-                context.Response.Cache.SetCacheability(HttpCacheability.NoCache);
+        context.Response.Cache.SetCacheability(HttpCacheability.NoCache);
 #else
         context.Response.Cache.SetCacheability(HttpCacheability.Public);
         context.Response.Cache.SetMaxAge(TimeSpan.FromHours(1));
