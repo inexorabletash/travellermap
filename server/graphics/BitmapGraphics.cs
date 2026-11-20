@@ -91,11 +91,10 @@ namespace Maps.Graphics {
           Matrix33 = alpha
         });
 
-        PointF[] dest = new PointF[]
-        {
-                    new PointF(targetRect.Left, targetRect.Top),
-                    new PointF(targetRect.Right, targetRect.Top),
-                    new PointF(targetRect.Left, targetRect.Bottom)
+        PointF[] dest = new PointF[] {
+          new PointF(targetRect.Left, targetRect.Top),
+          new PointF(targetRect.Right, targetRect.Top),
+          new PointF(targetRect.Left, targetRect.Bottom)
         };
 
         g.DrawImage(gdiImage, dest, new RectangleF(0, 0, gdiImage.Width, gdiImage.Height), GraphicsUnit.Pixel, attr);

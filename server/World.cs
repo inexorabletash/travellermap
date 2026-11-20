@@ -196,12 +196,11 @@ namespace Maps {
     // "Di(Sophont)" - minor race (dieback)
     // "{comment ... }" - arbitrary comment
     // "xyz" - other code
-    private static readonly Tuple<string, char>[] MARKERS = new Tuple<string, char>[]
-    {
-            Tuple.Create("[", ']'),
-            Tuple.Create("(", ')'),
-            Tuple.Create("{", '}'),
-            Tuple.Create("Di(", ')')
+    private static readonly Tuple<string, char>[] MARKERS = new Tuple<string, char>[] {
+      Tuple.Create("[", ']'),
+      Tuple.Create("(", ')'),
+      Tuple.Create("{", '}'),
+      Tuple.Create("Di(", ')')
     };
 
     private class CodeList : IEnumerable<string> {

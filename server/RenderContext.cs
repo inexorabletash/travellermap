@@ -236,10 +236,9 @@ namespace Maps.Rendering {
 #endif
 
 
-        List<Timer> timers = new List<Timer>
-        {
-                   new Timer("preload")
-                };
+        List<Timer> timers = new List<Timer> {
+          new Timer("preload")
+        };
 
         // Overall, rendering is all in world-space; individual steps may transform back
         // to image-space as needed.

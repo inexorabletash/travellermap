@@ -81,10 +81,7 @@ namespace Maps {
       public List<Selector>? ParseSelectorList() {
         Selector? selector = ParseSelector();
         if (selector == null) return null;
-        List<Selector> selectors = new List<Selector>
-        {
-                    selector
-                };
+        List<Selector> selectors = new List<Selector> { selector };
         WS();
         while (reader.Peek() == ',') {
           Expect(',');
@@ -310,8 +307,7 @@ namespace Maps {
         return null;
       }
 
-      public T? GetEnum<T>(string property) where T : struct // enum 
-      {
+      public T? GetEnum<T>(string property) where T : struct { // enum
         if (!typeof(T).IsEnum)
           throw new ParseException("Type must be an enum");
 

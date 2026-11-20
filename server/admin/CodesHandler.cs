@@ -11,19 +11,18 @@ namespace Maps.Admin {
   /// Summary description for Search.
   /// </summary>
   internal class CodesHandler : AdminHandler {
-    static readonly IReadOnlyList<string> s_legacySophontCodes = new List<string>
-    {
-            "A", // Aslan
-            "C", // Chirper
-            "D", // Droyne
-            "F", // Non-Hiver Federation Member
-            "H", // Hiver
-            "I", // Ithklur
-            "M", // Human (Provence/Tuglikki)
-            "V", // Vargr
-            "X", // Addaxur (Zhodani)
-            "Z", // Zhodani
-        };
+    static readonly IReadOnlyList<string> s_legacySophontCodes = new List<string> {
+      "A", // Aslan
+      "C", // Chirper
+      "D", // Droyne
+      "F", // Non-Hiver Federation Member
+      "H", // Hiver
+      "I", // Ithklur
+      "M", // Human (Provence/Tuglikki)
+      "V", // Vargr
+      "X", // Addaxur (Zhodani)
+      "Z", // Zhodani
+    };
 
     static ThreadLocal<RegexMap<string>> s_knownCodes = new ThreadLocal<RegexMap<string>>(() =>
         new RegexMap<string> {

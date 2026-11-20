@@ -107,10 +107,9 @@ namespace Maps.Rendering {
           throw new ApplicationException("Invalid VectorObject - PathDataPoints required");
 
         if (pathDataTypes == null) {
-          List<byte> types = new List<byte>(PathDataPoints.Length)
-          {
-                        (byte)PathPointType.Start
-                    };
+          List<byte> types = new List<byte>(PathDataPoints.Length) { 
+            (byte)PathPointType.Start 
+          };
           for (int i = 1; i < PathDataPoints.Length; ++i)
             types.Add((byte)PathPointType.Line);
           pathDataTypes = types.ToArray();

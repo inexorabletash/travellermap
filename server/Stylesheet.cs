@@ -493,56 +493,55 @@ namespace Maps.Rendering {
       anomaly.content = "\u2316"; // POSITION INDICATOR
       anomaly.fontInfo = new FontInfo("Arial Unicode MS,Segoe UI Symbol", 0.6f);
 
-      var layers = new List<LayerId>
-      {
-                //------------------------------------------------------------
-                // Background
-                //------------------------------------------------------------
+      var layers = new List<LayerId> {
+        //------------------------------------------------------------
+        // Background
+        //------------------------------------------------------------
 
-                LayerId.Background_Solid,
-                LayerId.Background_NebulaTexture,
-                LayerId.Background_Galaxy,
-                LayerId.Background_PseudoRandomStars,
-                LayerId.Background_Rifts,
+        LayerId.Background_Solid,
+        LayerId.Background_NebulaTexture,
+        LayerId.Background_Galaxy,
+        LayerId.Background_PseudoRandomStars,
+        LayerId.Background_Rifts,
 
-                //------------------------------------------------------------
-                // Foreground
-                //------------------------------------------------------------
+        //------------------------------------------------------------
+        // Foreground
+        //------------------------------------------------------------
 
-                LayerId.Macro_Borders,
-                LayerId.Macro_Routes,
+        LayerId.Macro_Borders,
+        LayerId.Macro_Routes,
 
-                LayerId.Grid_Sector,
-                LayerId.Grid_Subsector,
-                LayerId.Grid_Parsec,
+        LayerId.Grid_Sector,
+        LayerId.Grid_Subsector,
+        LayerId.Grid_Parsec,
 
-                LayerId.Names_Subsector,
+        LayerId.Names_Subsector,
 
-                LayerId.Micro_BordersFill,
-                LayerId.Micro_BordersShade,
-                LayerId.Micro_BordersStroke,
-                LayerId.Micro_Routes,
-                LayerId.Micro_BorderExplicitLabels,
+        LayerId.Micro_BordersFill,
+        LayerId.Micro_BordersShade,
+        LayerId.Micro_BordersStroke,
+        LayerId.Micro_Routes,
+        LayerId.Micro_BorderExplicitLabels,
 
-                LayerId.Names_Sector,
+        LayerId.Names_Sector,
 
-                LayerId.Macro_GovernmentRiftRouteNames,
-                LayerId.Macro_CapitalsAndHomeWorlds,
-                LayerId.Mega_GalaxyScaleLabels,
+        LayerId.Macro_GovernmentRiftRouteNames,
+        LayerId.Macro_CapitalsAndHomeWorlds,
+        LayerId.Mega_GalaxyScaleLabels,
 
-                LayerId.Worlds_Background,
-                LayerId.Worlds_Foreground,
-                LayerId.Worlds_Overlays,
+        LayerId.Worlds_Background,
+        LayerId.Worlds_Foreground,
+        LayerId.Worlds_Overlays,
 
-                //------------------------------------------------------------
-                // Overlays
-                //------------------------------------------------------------
+        //------------------------------------------------------------
+        // Overlays
+        //------------------------------------------------------------
 
-                LayerId.Overlay_DroyneChirperWorlds,
-                LayerId.Overlay_MinorHomeworlds,
-                LayerId.Overlay_AncientsWorlds,
-                LayerId.Overlay_ReviewStatus,
-            };
+        LayerId.Overlay_DroyneChirperWorlds,
+        LayerId.Overlay_MinorHomeworlds,
+        LayerId.Overlay_AncientsWorlds,
+        LayerId.Overlay_ReviewStatus,
+      };
 
       // Generic colors; applied to various elements by default (see end of this method).
       // May be overridden by specific styles
@@ -1503,32 +1502,31 @@ namespace Maps.Rendering {
       if (disposed)
         return;
 #if DISPOSABLE_RESOURCES
-            if( disposing )
-            {
-                sectorNameFont?.Dispose();
-                sectorNameFont = null;
-                subsectorNameFont?.Dispose();
-                subsectorNameFont = null;
-                microPolityNameFont?.Dispose();
-                microPolityNameFont = null;
-                microPolityNameSmallFont?.Dispose();
-                microPolityNameSmallFont = null;
+      if (disposing) {
+        sectorNameFont?.Dispose();
+        sectorNameFont = null;
+        subsectorNameFont?.Dispose();
+        subsectorNameFont = null;
+        microPolityNameFont?.Dispose();
+        microPolityNameFont = null;
+        microPolityNameSmallFont?.Dispose();
+        microPolityNameSmallFont = null;
 
-                worldFont?.Dispose();
-                worldFont = null;
-                symbolFont?.Dispose();
-                symbolFont = null;
-                glyphFont?.Dispose();
-                glyphFont = null;
-                hexFont?.Dispose();
-                hexFont = null;
-                smallFont?.Dispose();
-                smallFont = null;
-                largeFont?.Dispose();
-                largeFont = null;
-                starportFont?.Dispose();
-                starportFont = null;
-            }
+        worldFont?.Dispose();
+        worldFont = null;
+        symbolFont?.Dispose();
+        symbolFont = null;
+        glyphFont?.Dispose();
+        glyphFont = null;
+        hexFont?.Dispose();
+        hexFont = null;
+        smallFont?.Dispose();
+        smallFont = null;
+        largeFont?.Dispose();
+        largeFont = null;
+        starportFont?.Dispose();
+        starportFont = null;
+      }
 #endif
       disposed = true;
     }
