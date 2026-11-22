@@ -481,7 +481,9 @@ const REMARKS_PATTERNS = [
   [/^O:\w\w$/, 'Controlled'], [/^Mr:\d\d\d\d$/, 'Military rule'],
 
   // Sophonts
-  [/^\[.*\]\??$/, 'Homeworld'], [/^\(.*\)\??$/, 'Homeworld'],
+  [/^\[.*\]\??$/, 'Homeworld'],
+  [/^\[.*\](\d)?$/, 'Homeworld, Population $1$`0%'],
+  [/^\(.*\)\??$/, 'Homeworld'],
   [/^\(.*\)(\d)$/, 'Homeworld, Population $1$`0%'],
   [/^Di\(.*\)$/, 'Homeworld, Extinct'],
   [/^([A-Z][A-Za-z']{3})([0-9W?])$/, decodeSophontPopulation],
