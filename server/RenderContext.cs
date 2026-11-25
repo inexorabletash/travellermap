@@ -815,16 +815,8 @@ namespace Maps.Rendering {
         // scale factor. Note that these are positioned in
         // screen space, not world space.
 
-        //const int nStars = 75;
         int nMinStars = tileSize.Width * tileSize.Height / 300;
         int nStars = scale >= 1 ? nMinStars : (int)(nMinStars / scale);
-
-        // NOTE: For performance's sake, three different cases are considered:
-        // (1) Tile is entirely within charted space (most common) - just render
-        //     the pseudorandom stars into the tile
-        // (2) Tile intersects the galaxy bounds - render pseudorandom stars
-        //     into a texture, then fill the galaxy vector with it
-        // (3) Tile is entire outside the galaxy - don't render stars
 
         using (graphics.Save()) {
           graphics.SmoothingMode = SmoothingMode.HighQuality;
